@@ -1,31 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Collections;
-import java.util.List;
 import java.util.function.Function;
 
 public class bvz {
-   public static bve<btt> a(float $$0) {
-      return byq.a(
-         (Function<byq.b<btt>, ? extends App<byq.c<btt>, byt<btt>>>)($$1 -> $$1.group($$1.c(cco.m))
-               .apply(
-                  $$1,
-                  $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.h($$3.dp())) {
-                           return false;
-                        } else {
-                           iz $$5 = $$3.dp();
-                           List<iz> $$6 = iz.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(iz::i).collect(ac.b());
-                           Collections.shuffle($$6);
-                           $$6.stream()
-                              .filter($$1xxx -> !$$2.h($$1xxx))
-                              .filter($$2x -> $$2.a($$2x, $$3))
-                              .filter($$2x -> $$2.g($$3))
-                              .findFirst()
-                              .ifPresent($$2x -> $$1x.a(new ccr($$2x, $$0, 0)));
-                           return true;
-                        }
+   private static iz a(btp $$0, iz $$1) {
+      azf $$2 = $$0.dP().z;
+      return $$1.b(a($$2), 0, a($$2));
+   }
+
+   private static int a(azf $$0) {
+      return $$0.a(3) - 1;
+   }
+
+   public static <E extends btp> bwr<E> a(ccr<iz> $$0, int $$1, float $$2) {
+      return byt.a(
+         (Function<byt.b<E>, ? extends App<byt.c<E>, byw<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(ccr.o), $$3.c(ccr.m), $$3.a(ccr.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     iz $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dp(), (double)$$1);
+                     if (!$$8) {
+                        bvi.a($$5x, a($$5x, $$7), $$2, $$1);
                      }
-               ))
+
+                     return true;
+                  }))
       );
    }
 }

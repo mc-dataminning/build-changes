@@ -1,51 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dly extends dik {
-   public static final MapCodec<dly> a = b(dly::new);
-
+public interface dly extends dfe, djo {
    @Override
-   public MapCodec<dly> a() {
-      return a;
-   }
-
-   public dly(drw.d $$0) {
-      super($$0);
+   default boolean a(@Nullable cmv $$0, dbc $$1, iz $$2, dsa $$3, ens $$4) {
+      return $$4 == enu.c;
    }
 
    @Override
-   public void a(dbt $$0, drx $$1, iz $$2, bsp $$3, float $$4) {
-      if ($$3.bX()) {
-         super.a($$0, $$1, $$2, $$3, $$4);
+   default boolean a(dbx $$0, iz $$1, dsa $$2, ent $$3) {
+      if (!$$2.c(dsq.C) && $$3.a() == enu.c) {
+         if (!$$0.x_()) {
+            $$0.a($$1, $$2.a(dsq.C, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
+
+         return true;
       } else {
-         $$3.a($$4, 0.0F, $$0.aj().k());
+         return false;
       }
    }
 
    @Override
-   public void a(daz $$0, bsp $$1) {
-      if ($$1.bX()) {
-         super.a($$0, $$1);
+   default cun a(@Nullable cmv $$0, dbx $$1, iz $$2, dsa $$3) {
+      if ($$3.c(dsq.C)) {
+         $$1.a($$2, $$3.a(dsq.C, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
+
+         return new cun(cuq.qz);
       } else {
-         this.a($$1);
-      }
-   }
-
-   private void a(bsp $$0) {
-      evm $$1 = $$0.ds();
-      if ($$1.d < 0.0) {
-         double $$2 = $$0 instanceof btk ? 1.0 : 0.8;
-         $$0.o($$1.c, -$$1.d * $$2, $$1.e);
+         return cun.l;
       }
    }
 
    @Override
-   public void a(dbt $$0, iz $$1, drx $$2, bsp $$3) {
-      double $$4 = Math.abs($$3.ds().d);
-      if ($$4 < 0.1 && !$$3.bW()) {
-         double $$5 = 0.4 + $$4 * 0.2;
-         $$3.h($$3.ds().d($$5, 1.0, $$5));
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   default Optional<avy> as_() {
+      return enu.c.j();
    }
 }

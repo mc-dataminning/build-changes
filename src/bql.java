@@ -1,44 +1,86 @@
-public class bql {
-   public static void a(dbt $$0, iz $$1, bqi $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+import java.util.Set;
+import java.util.function.Predicate;
+
+public interface bql extends bqj {
+   float o_ = 4.0F;
+
+   int b();
+
+   boolean c();
+
+   cun a(int var1);
+
+   cun a(int var1, int var2);
+
+   cun b(int var1);
+
+   void a(int var1, cun var2);
+
+   default int ai_() {
+      return 99;
    }
 
-   public static void a(dbt $$0, bsp $$1, bqi $$2) {
-      a($$0, $$1.du(), $$1.dw(), $$1.dA(), $$2);
+   default int e_(cun $$0) {
+      return Math.min(this.ai_(), $$0.j());
    }
 
-   private static void a(dbt $$0, double $$1, double $$2, double $$3, bqi $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
-      }
+   void e();
+
+   boolean a(cmv var1);
+
+   default void d_(cmv $$0) {
    }
 
-   public static void a(dbt $$0, iz $$1, jr<cuk> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   default void c(cmv $$0) {
    }
 
-   public static void a(dbt $$0, double $$1, double $$2, double $$3, cuk $$4) {
-      double $$5 = (double)bsv.ag.l();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
-
-      while (!$$4.e()) {
-         cjc $$11 = new cjc($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
-      }
+   default boolean b(int $$0, cun $$1) {
+      return true;
    }
 
-   public static void a(drx $$0, drx $$1, dbt $$2, iz $$3) {
-      if (!$$0.a($$1.b())) {
-         if ($$2.c_($$3) instanceof bqi $$5) {
-            a($$2, $$3, $$5);
-            $$2.c($$3, $$0.b());
+   default boolean a(bql $$0, int $$1, cun $$2) {
+      return true;
+   }
+
+   default int a_(cui $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cun $$3 = this.a($$2);
+         if ($$3.g().equals($$0)) {
+            $$1 += $$3.I();
          }
+      }
+
+      return $$1;
+   }
+
+   default boolean a(Set<cui> $$0) {
+      return this.a_($$1 -> !$$1.e() && $$0.contains($$1.g()));
+   }
+
+   default boolean a_(Predicate<cun> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cun $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   static boolean a(dpf $$0, cmv $$1) {
+      return a($$0, $$1, 4.0F);
+   }
+
+   static boolean a(dpf $$0, cmv $$1, float $$2) {
+      dbw $$3 = $$0.i();
+      iz $$4 = $$0.az_();
+      if ($$3 == null) {
+         return false;
+      } else {
+         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
       }
    }
 }

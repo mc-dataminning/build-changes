@@ -1,49 +1,77 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Predicate;
 
-public enum bqm implements azp {
-   a(0, "peaceful"),
-   b(1, "easy"),
-   c(2, "normal"),
-   d(3, "hard");
+public class bqm {
+   public static final String a = "Items";
 
-   public static final azp.a<bqm> e = azp.a(bqm::values);
-   private static final IntFunction<bqm> f = axl.a(bqm::a, values(), axl.a.b);
-   private final int g;
-   private final String h;
-
-   private bqm(final int $$0, final String $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public static cun a(List<cun> $$0, int $$1, int $$2) {
+      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).e() && $$2 > 0 ? $$0.get($$1).a($$2) : cun.l;
    }
 
-   public int a() {
-      return this.g;
+   public static cun a(List<cun> $$0, int $$1) {
+      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cun.l) : cun.l;
    }
 
-   public xl b() {
-      return xl.c("options.difficulty." + this.h);
+   public static ur a(ur $$0, jr<cun> $$1, jk.a $$2) {
+      return a($$0, $$1, true, $$2);
    }
 
-   public xl d() {
-      return xl.c("options.difficulty." + this.h + ".info");
+   public static ur a(ur $$0, jr<cun> $$1, boolean $$2, jk.a $$3) {
+      ux $$4 = new ux();
+
+      for (int $$5 = 0; $$5 < $$1.size(); $$5++) {
+         cun $$6 = $$1.get($$5);
+         if (!$$6.e()) {
+            ur $$7 = new ur();
+            $$7.a("Slot", (byte)$$5);
+            $$4.add($$6.b($$3, $$7));
+         }
+      }
+
+      if (!$$4.isEmpty() || $$2) {
+         $$0.a("Items", $$4);
+      }
+
+      return $$0;
    }
 
-   public static bqm a(int $$0) {
-      return f.apply($$0);
+   public static void b(ur $$0, jr<cun> $$1, jk.a $$2) {
+      ux $$3 = $$0.c("Items", 10);
+
+      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+         ur $$5 = $$3.a($$4);
+         int $$6 = $$5.f("Slot") & 255;
+         if ($$6 >= 0 && $$6 < $$1.size()) {
+            $$1.set($$6, cun.a($$2, (vo)$$5).orElse(cun.l));
+         }
+      }
    }
 
-   @Nullable
-   public static bqm a(String $$0) {
-      return e.a($$0);
+   public static int a(bql $$0, Predicate<cun> $$1, int $$2, boolean $$3) {
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
+         cun $$6 = $$0.a($$5);
+         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
+         if ($$7 > 0 && !$$3 && $$6.e()) {
+            $$0.a($$5, cun.l);
+         }
+
+         $$4 += $$7;
+      }
+
+      return $$4;
    }
 
-   public String e() {
-      return this.h;
-   }
-
-   @Override
-   public String c() {
-      return this.h;
+   public static int a(cun $$0, Predicate<cun> $$1, int $$2, boolean $$3) {
+      if ($$0.e() || !$$1.test($$0)) {
+         return 0;
+      } else if ($$3) {
+         return $$0.I();
+      } else {
+         int $$4 = $$2 < 0 ? $$0.I() : Math.min($$2, $$0.I());
+         $$0.h($$4);
+         return $$4;
+      }
    }
 }

@@ -1,38 +1,55 @@
-public class gaw extends gbx {
-   gaw(fxq $$0, double $$1, double $$2, double $$3, double $$4) {
+public class gaw extends gca {
+   gaw(fxt $$0, double $$1, double $$2, double $$3) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.66F;
-      this.C = true;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.2;
-      this.v = Math.max(0.0F, ayu.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.w = Math.max(0.0F, ayu.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.x = Math.max(0.0F, ayu.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.D *= 1.5F;
-      this.t = 6;
+      this.u = 0.75F;
+      this.B = 0.999F;
+      this.j *= 0.8F;
+      this.k *= 0.8F;
+      this.l *= 0.8F;
+      this.k = (double)(this.r.i() * 0.4F + 0.05F);
+      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public gbb b() {
-      return gbb.b;
+   public gbe b() {
+      return gbe.b;
+   }
+
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      int $$2 = 240;
+      int $$3 = $$1 >> 16 & 0xFF;
+      return 240 | $$3 << 16;
    }
 
    @Override
    public float b(float $$0) {
-      return this.D * ayu.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1);
    }
 
-   public static class a implements gba<lm> {
-      private final gbs a;
+   @Override
+   public void a() {
+      super.a();
+      if (!this.o) {
+         float $$0 = (float)this.s / (float)this.t;
+         if (this.r.i() > $$0) {
+            this.c.a(li.ae, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
+      }
+   }
 
-      public a(gbs $$0) {
+   public static class a implements gbd<lm> {
+      private final gbv a;
+
+      public a(gbv $$0) {
          this.a = $$0;
       }
 
-      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gaw $$8 = new gaw($$1, $$2, $$3, $$4, $$5);
+      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gaw $$8 = new gaw($$1, $$2, $$3, $$4);
          $$8.a(this.a);
          return $$8;
       }

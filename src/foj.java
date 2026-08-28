@@ -1,99 +1,82 @@
-public class foj extends fnw<cqg> implements fqr {
-   private static final alb D = new alb("textures/gui/container/crafting_table.png");
-   private final fql E = new fql();
-   private boolean F;
+public class foj extends fny {
+   private final dpp s;
+   private fhj<dpp.a> u;
+   private fhj<Boolean> v;
+   private fhj<Boolean> w;
+   private dpp.a x = dpp.a.c;
+   private boolean y;
+   private boolean z;
 
-   public foj(cqg $$0, cmr $$1, xl $$2) {
-      super($$0, $$1, $$2);
+   public foj(dpp $$0) {
+      this.s = $$0;
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.F = this.n < 379;
-      this.E.a(this.n, this.o, this.m, this.F, this.w);
-      this.z = this.E.a(this.n, this.c);
-      this.c(new fhl(this.z + 5, this.o / 2 - 49, 20, 18, fql.a, $$0 -> {
-         this.E.e();
-         this.z = this.E.a(this.n, this.c);
-         $$0.c(this.z + 5, this.o / 2 - 49);
-      }));
-      this.d(this.E);
-      this.r = 29;
+   dax m() {
+      return this.s.b();
    }
 
    @Override
-   public void C() {
-      super.C();
-      this.E.h();
+   int D() {
+      return 135;
    }
 
    @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
-      if (this.E.f() && this.F) {
-         this.b($$0, $$1, $$2, $$3);
-         this.E.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         this.E.a($$0, $$1, $$2, $$3);
-         this.E.a($$0, this.z, this.A, true, $$3);
-      }
+   protected void aM_() {
+      super.aM_();
+      this.u = this.c(fhj.<dpp.a>a($$0 -> {
+         return switch ($$0) {
+            case a -> xo.c("advMode.mode.sequence");
+            case b -> xo.c("advMode.mode.auto");
+            case c -> xo.c("advMode.mode.redstone");
+         };
+      }).a(dpp.a.values()).a().a(this.x).a(this.n / 2 - 50 - 100 - 4, 165, 100, 20, xo.c("advMode.mode"), ($$0, $$1) -> this.x = $$1));
+      this.v = this.c(
+         fhj.a(xo.c("advMode.mode.conditional"), xo.c("advMode.mode.unconditional"))
+            .a()
+            .a(this.y)
+            .a(this.n / 2 - 50, 165, 100, 20, xo.c("advMode.type"), ($$0, $$1) -> this.y = $$1)
+      );
+      this.w = this.c(
+         fhj.a(xo.c("advMode.mode.autoexec.bat"), xo.c("advMode.mode.redstoneTriggered"))
+            .a()
+            .a(this.z)
+            .a(this.n / 2 + 50 + 4, 165, 100, 20, xo.c("advMode.triggering"), ($$0, $$1) -> this.z = $$1)
+      );
+      this.e(false);
+   }
 
-      this.a($$0, $$1, $$2);
-      this.E.a($$0, this.z, this.A, $$1, $$2);
+   private void e(boolean $$0) {
+      this.c.j = $$0;
+      this.r.j = $$0;
+      this.u.j = $$0;
+      this.v.j = $$0;
+      this.w.j = $$0;
+   }
+
+   public void F() {
+      dax $$0 = this.s.b();
+      this.a.a($$0.m());
+      boolean $$1 = $$0.p();
+      this.x = this.s.l();
+      this.y = this.s.u();
+      this.z = this.s.d();
+      this.r.a($$1);
+      this.u.a(this.x);
+      this.v.a(this.y);
+      this.w.a(this.z);
+      this.c($$1);
+      this.e(true);
    }
 
    @Override
-   protected void a(fgm $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.z;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
+   public void a(ffd $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.e(true);
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.E.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.E.a($$0, $$1) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
-      return (!this.F || !this.E.f()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.E.a($$0, $$1, $$2)) {
-         this.a(this.E);
-         return true;
-      } else {
-         return this.F && this.E.f() ? true : super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.d);
-      return this.E.a($$0, $$1, this.z, this.A, this.c, this.d, $$4) && $$5;
-   }
-
-   @Override
-   protected void a(crk $$0, int $$1, int $$2, cpy $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.E.a($$0);
-   }
-
-   @Override
-   public void E() {
-      this.E.i();
-   }
-
-   @Override
-   public fql F() {
-      return this.E;
+   protected void a(dax $$0) {
+      this.m.L().b(new aij(iz.a($$0.g()), this.a.a(), this.x, $$0.p(), this.y, this.z));
    }
 }

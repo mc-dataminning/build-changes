@@ -1,89 +1,61 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public abstract class cze implements cyq<bqi> {
-   protected final cyn a;
-   protected final cuk b;
-   private final cyv<?> d;
-   private final cyu<?> e;
-   protected final String c;
-
-   public cze(cyv<?> $$0, cyu<?> $$1, String $$2, cyn $$3, cuk $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.a = $$3;
-      this.b = $$4;
+public class cze extends cyl {
+   public cze(cyj $$0) {
+      super($$0);
    }
 
-   @Override
-   public cyv<?> e() {
-      return this.d;
+   public boolean a(cqi $$0, dbw $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cun $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if (dex.a($$5.g()) instanceof dlw) {
+               $$2++;
+            } else {
+               if (!($$5.g() instanceof cth)) {
+                  return false;
+               }
+
+               $$3++;
+            }
+
+            if ($$3 > 1 || $$2 > 1) {
+               return false;
+            }
+         }
+      }
+
+      return $$2 == 1 && $$3 == 1;
    }
 
-   @Override
-   public cyu<?> ap_() {
-      return this.e;
-   }
+   public cun a(cqi $$0, jk.a $$1) {
+      cun $$2 = cun.l;
+      cth $$3 = (cth)cuq.ri;
 
-   @Override
-   public String c() {
-      return this.c;
-   }
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cun $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            cui $$6 = $$5.g();
+            if (dex.a($$6) instanceof dlw) {
+               $$2 = $$5;
+            } else if ($$6 instanceof cth) {
+               $$3 = (cth)$$6;
+            }
+         }
+      }
 
-   @Override
-   public cuk a(jk.a $$0) {
-      return this.b;
-   }
-
-   @Override
-   public jr<cyn> a() {
-      jr<cyn> $$0 = jr.a();
-      $$0.add(this.a);
-      return $$0;
+      dex $$7 = dlw.a($$3.c());
+      return $$2.a($$7, 1);
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return true;
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public cuk a(bqi $$0, jk.a $$1) {
-      return this.b.s();
-   }
-
-   public interface a<T extends cze> {
-      T create(String var1, cyn var2, cuk var3);
-   }
-
-   public static class b<T extends cze> implements cyu<T> {
-      final cze.a<T> x;
-      private final MapCodec<T> y;
-      private final zj<ww, T> z;
-
-      protected b(cze.a<T> $$0) {
-         this.x = $$0;
-         this.y = RecordCodecBuilder.mapCodec(
-            $$1 -> $$1.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter($$0xx -> $$0xx.c),
-                     cyn.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
-                     cuk.d.fieldOf("result").forGetter($$0xx -> $$0xx.b)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.z = zj.a(zh.l, $$0x -> $$0x.c, cyn.b, $$0x -> $$0x.a, cuk.i, $$0x -> $$0x.b, $$0::create);
-      }
-
-      @Override
-      public MapCodec<T> a() {
-         return this.y;
-      }
-
-      @Override
-      public zj<ww, T> b() {
-         return this.z;
-      }
+   public cyx<?> ap_() {
+      return cyx.m;
    }
 }

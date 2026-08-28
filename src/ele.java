@@ -1,49 +1,55 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class ele extends els {
-   public static final MapCodec<ele> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
-               je.a.e.fieldOf("axis").orElse(je.a.b).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, ele::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
-   private final je.a g;
+public class ele extends eii {
+   public static final MapCodec<ele> d = a(ele::new);
 
-   public ele(float $$0, float $$1, int $$2, int $$3, je.a $$4) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
-      } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
+   public ele(eii.c $$0) {
+      super($$0);
+   }
+
+   @Override
+   public Optional<eii.b> a(eii.a $$0) {
+      dlk $$1 = dlk.a($$0.f());
+      iz $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new eii.b($$2, (Consumer<eja>)($$3 -> this.a($$3, $$0, $$2, $$1))));
+   }
+
+   private void a(eja $$0, eii.a $$1, iz $$2, dlk $$3) {
+      List<eld.i> $$4 = Lists.newLinkedList();
+      eld.a($$1.e(), $$2, $$3, $$4, $$1.f());
+      $$4.forEach($$0::a);
+   }
+
+   @Override
+   public void a(dcr $$0, dcp $$1, dtx $$2, azf $$3, eia $$4, dbd $$5, eix $$6) {
+      iz.a $$7 = new iz.a();
+      int $$8 = $$0.I_();
+      eia $$9 = $$6.b();
+      int $$10 = $$9.i();
+
+      for (int $$11 = $$4.h(); $$11 <= $$4.k(); $$11++) {
+         for (int $$12 = $$4.j(); $$12 <= $$4.m(); $$12++) {
+            $$7.d($$11, $$10, $$12);
+            if (!$$0.u($$7) && $$9.b($$7) && $$6.a($$7)) {
+               for (int $$13 = $$10 - 1; $$13 > $$8; $$13--) {
+                  $$7.q($$13);
+                  if (!$$0.u($$7) && !$$0.a_($$7).k()) {
+                     break;
+                  }
+
+                  $$0.a($$7, dez.m.o(), 2);
+               }
+            }
+         }
       }
    }
 
    @Override
-   public boolean a(iz $$0, iz $$1, iz $$2, azc $$3) {
-      je $$4 = je.a(je.b.a, this.g);
-      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
-      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
-      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
-      int $$8 = (int)($$5 + $$6 + $$7);
-      float $$9 = $$3.i();
-      return $$9 <= ayu.b(this.b, this.d, ayu.g((float)$$8, (float)this.e, (float)this.f));
-   }
-
-   @Override
-   protected elt<?> a() {
-      return elt.c;
+   public eir<?> e() {
+      return eir.p;
    }
 }

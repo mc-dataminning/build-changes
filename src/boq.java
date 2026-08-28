@@ -1,29 +1,5 @@
-public class boq implements bor {
-   public static final bor a = new boq();
+import java.util.List;
 
-   @Override
-   public void a() {
-   }
-
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public bnd f() {
-      return bna.a;
-   }
-
-   @Override
-   public void d() {
-   }
+public interface boq {
+   List<bon> bv();
 }

@@ -1,25 +1,23 @@
-public record aag(String b, int c) implements zs<zy> {
-   public static final zj<wl, aag> a = zs.a(aag::a, aag::new);
+import java.util.Optional;
+import java.util.UUID;
+
+public record aag(Optional<UUID> b) implements zv<aab> {
+   public static final zm<wl, aag> a = zv.a(aag::a, aag::new);
 
    private aag(wl $$0) {
-      this($$0.p(), $$0.l());
+      this($$0.b(kc.g));
    }
 
    private void a(wl $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
+      $$0.a(this.b, kc.g);
    }
 
    @Override
-   public zu<aag> a() {
-      return aai.h;
+   public zx<aag> a() {
+      return aal.e;
    }
 
-   public void a(zy $$0) {
+   public void a(aab $$0) {
       $$0.a(this);
-   }
-
-   public int e() {
-      return this.c;
    }
 }

@@ -1,58 +1,26 @@
-import com.google.common.collect.ImmutableList;
+public class fvo<T extends cfz> extends fvi<T> {
+   private float j;
 
-public class fvo<T extends cke> extends fun<T> {
-   private static final String a = "lid";
-   private static final String b = "base";
-   private final fwv f;
-   private final fwv g;
-   private final fwv h;
-
-   public fvo(fwv $$0) {
-      super(gdr::f);
-      this.g = $$0.b("lid");
-      this.f = $$0.b("base");
-      this.h = $$0.b("head");
+   public fvo(fwy $$0) {
+      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static fxb a() {
-      fxd $$0 = new fxd();
-      fxe $$1 = $$0.a();
-      $$1.a("lid", fxa.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fwx.a(0.0F, 24.0F, 0.0F));
-      $$1.a("base", fxa.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fwx.a(0.0F, 24.0F, 0.0F));
-      $$1.a("head", fxa.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fwx.a(0.0F, 12.0F, 0.0F));
-      return fxb.a($$0, 64, 64);
+   public static fxe c() {
+      fxg $$0 = fvi.a(12, fxc.a);
+      fxh $$1 = $$0.a();
+      $$1.a("head", fxd.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), fxa.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", fxd.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), fxa.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      return fxe.a($$0, 64, 32);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.c = 6.0F + $$0.G($$3) * 9.0F;
+      this.j = $$0.H($$3);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$3 - (float)$$0.ai;
-      float $$7 = (0.5F + $$0.G($$6)) * (float) Math.PI;
-      float $$8 = -1.0F + ayu.a($$7);
-      float $$9 = 0.0F;
-      if ($$7 > (float) Math.PI) {
-         $$9 = ayu.a($$3 * 0.1F) * 0.7F;
-      }
-
-      this.g.a(0.0F, 16.0F + ayu.a($$7) * 8.0F + $$9, 0.0F);
-      if ($$0.G($$6) > 0.3F) {
-         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
-      } else {
-         this.g.f = 0.0F;
-      }
-
-      this.h.e = $$5 * (float) (Math.PI / 180.0);
-      this.h.f = ($$0.ba - 180.0F - $$0.aY) * (float) (Math.PI / 180.0);
-   }
-
-   @Override
-   public Iterable<fwv> d() {
-      return ImmutableList.of(this.f, this.g);
-   }
-
-   public fwv b() {
-      return this.g;
-   }
-
-   public fwv c() {
-      return this.h;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a.e = this.j;
    }
 }

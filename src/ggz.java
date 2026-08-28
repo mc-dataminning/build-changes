@@ -1,64 +1,151 @@
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-public class ggz implements ggv.a {
-   private final ffa a;
-   private static final int b = 2;
-   private static final float c = 0.09375F;
+public class ggz implements ggy.a {
+   private final ffd a;
+   private static final int b = 32;
+   private static final float c = 1.0F;
+   private final List<ggz.a> d = Lists.newArrayList();
+   private final List<ggz.b> e = Lists.newArrayList();
 
-   public ggz(ffa $$0) {
+   public ggz(ffd $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(ezt $$0, gdj $$1, double $$2, double $$3, double $$4) {
-      dbu $$5 = this.a.r;
-      ezx $$6 = $$1.getBuffer(gdr.A());
-      iz $$7 = iz.a($$2, 0.0, $$4);
+   public void a(ezw $$0, gdm $$1, double $$2, double $$3, double $$4) {
+      dbw $$5 = this.a.r;
+      if ($$5 == null) {
+         this.d.clear();
+         this.e.clear();
+      } else {
+         evp $$6 = new evp($$2, 0.0, $$4);
+         this.d.removeIf(ggz.a::a);
+         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
+         faa $$7 = $$1.getBuffer(gdu.y());
 
-      for (int $$8 = -2; $$8 <= 2; $$8++) {
-         for (int $$9 = -2; $$9 <= 2; $$9++) {
-            dtt $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
+         for (ggz.b $$8 : this.e) {
+            $$8.a($$5).ifPresent($$6x -> {
+               double $$7x = $$6x.a() - (double)$$8.b();
+               double $$8x = $$6x.b() - (double)$$8.b();
+               double $$9 = $$6x.c() - (double)$$8.b();
+               double $$10 = $$6x.a() + (double)$$8.b();
+               double $$11 = $$6x.b() + (double)$$8.b();
+               double $$12x = $$6x.c() + (double)$$8.b();
+               gdk.a($$0, $$7, ewf.a(new evk($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
+            });
+         }
 
-            for (Entry<dxp.a, dxp> $$11 : $$10.e()) {
-               dxp.a $$12 = $$11.getKey();
-               dba $$13 = $$10.f();
-               Vector3f $$14 = this.a($$12);
+         faa $$9 = $$1.getBuffer(gdu.A());
 
-               for (int $$15 = 0; $$15 < 16; $$15++) {
-                  for (int $$16 = 0; $$16 < 16; $$16++) {
-                     int $$17 = kb.a($$13.e, $$15);
-                     int $$18 = kb.a($$13.f, $$16);
-                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
-                     gdh.b(
+         for (ggz.b $$10 : this.e) {
+            $$10.a($$5)
+               .ifPresent(
+                  $$5x -> gdk.b(
                         $$0,
-                        $$6,
-                        (double)((float)$$17 + 0.25F) - $$2,
-                        (double)$$19,
-                        (double)((float)$$18 + 0.25F) - $$4,
-                        (double)((float)$$17 + 0.75F) - $$2,
-                        (double)($$19 + 0.09375F),
-                        (double)((float)$$18 + 0.75F) - $$4,
-                        $$14.x(),
-                        $$14.y(),
-                        $$14.z(),
-                        1.0F
-                     );
-                  }
-               }
-            }
+                        $$9,
+                        $$5x.a() - 0.25 - $$2,
+                        $$5x.b() - $$3,
+                        $$5x.c() - 0.25 - $$4,
+                        $$5x.a() + 0.25 - $$2,
+                        $$5x.b() - $$3 + 1.0,
+                        $$5x.c() + 0.25 - $$4,
+                        1.0F,
+                        1.0F,
+                        0.0F,
+                        0.35F
+                     )
+               );
+         }
+
+         for (ggz.b $$11 : this.e) {
+            $$11.a($$5).ifPresent($$2x -> {
+               ggy.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
+               ggy.a($$0, $$1, iz.a($$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
+            });
+         }
+
+         for (ggz.a $$12 : this.d) {
+            evp $$13 = $$12.c;
+            double $$14 = 0.2F;
+            double $$15 = $$13.c - 0.2F;
+            double $$16 = $$13.d - 0.2F;
+            double $$17 = $$13.e - 0.2F;
+            double $$18 = $$13.c + 0.2F;
+            double $$19 = $$13.d + 0.2F + 0.5;
+            double $$20 = $$13.e + 0.2F;
+            a($$0, $$1, new evk($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
+            ggy.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
          }
       }
    }
 
-   private Vector3f a(dxp.a $$0) {
-      return switch ($$0) {
-         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
+   private static void a(ezw $$0, gdm $$1, evk $$2, float $$3, float $$4, float $$5, float $$6) {
+      feo $$7 = ffd.Q().j.l();
+      if ($$7.h()) {
+         evp $$8 = $$7.b().e();
+         ggy.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
+      }
+   }
+
+   public void a(ald<dwt> $$0, evp $$1) {
+      this.d.add(new ggz.a(ac.c(), $$0, $$1));
+   }
+
+   public void a(dwx $$0, int $$1) {
+      this.e.add(new ggz.b($$0, $$1));
+   }
+
+   static record a(long a, ald<dwt> b, evp c) {
+
+      public boolean a() {
+         return ac.c() - this.a > 3000L;
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public ald<dwt> c() {
+         return this.b;
+      }
+
+      public evp d() {
+         return this.c;
+      }
+   }
+
+   static class b implements dwv {
+      public final dwx a;
+      public final int b;
+
+      public b(dwx $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public boolean a(dbw $$0, evp $$1) {
+         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
+      }
+
+      public Optional<evp> a(dbw $$0) {
+         return this.a.a($$0);
+      }
+
+      @Override
+      public dwx a() {
+         return this.a;
+      }
+
+      @Override
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public boolean a(are $$0, ji<dwt> $$1, dwt.a $$2, evp $$3) {
+         return false;
+      }
    }
 }

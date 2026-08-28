@@ -1,36 +1,39 @@
-public class gfz implements gfj<dqq> {
-   private final giq a;
+public class gfz implements gfm<dqo> {
+   private final fvr<?> a;
 
-   public gfz(gfk.a $$0) {
-      this.a = $$0.c();
+   public gfz(gfn.a $$0) {
+      this.a = new fvr($$0.a(fwx.bk));
    }
 
-   public void a(dqq $$0, float $$1, ezt $$2, gdj $$3, int $$4, int $$5) {
-      dbt $$6 = $$0.i();
-      if ($$6 != null) {
-         dav $$7 = $$0.c();
-         bsp $$8 = $$7.b($$6, $$0.aA_());
-         if ($$8 != null) {
-            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
+   public void a(dqo $$0, float $$1, ezw $$2, gdm $$3, int $$4, int $$5) {
+      je $$6 = je.b;
+      if ($$0.m()) {
+         dsa $$7 = $$0.i().a_($$0.az_());
+         if ($$7.b() instanceof dlw) {
+            $$6 = $$7.c(dlw.b);
          }
       }
-   }
 
-   public static void a(float $$0, ezt $$1, gdj $$2, int $$3, bsp $$4, giq $$5, double $$6, double $$7) {
-      $$1.a();
-      $$1.a(0.5F, 0.0F, 0.5F);
-      float $$8 = 0.53125F;
-      float $$9 = Math.max($$4.dj(), $$4.dk());
-      if ((double)$$9 > 1.0) {
-         $$8 /= $$9;
+      ctg $$8 = $$0.u();
+      grb $$9;
+      if ($$8 == null) {
+         $$9 = geb.i;
+      } else {
+         $$9 = geb.j.get($$8.a());
       }
 
-      $$1.a(0.0F, 0.4F, 0.0F);
-      $$1.a(a.d.rotationDegrees((float)ayu.d((double)$$0, $$6, $$7) * 10.0F));
-      $$1.a(0.0F, -0.2F, 0.0F);
-      $$1.a(a.b.rotationDegrees(-30.0F));
-      $$1.b($$8, $$8, $$8);
-      $$5.a($$4, 0.0, 0.0, 0.0, 0.0F, $$0, $$1, $$2, $$3);
-      $$1.b();
+      $$2.a();
+      $$2.a(0.5F, 0.5F, 0.5F);
+      float $$11 = 0.9995F;
+      $$2.b(0.9995F, 0.9995F, 0.9995F);
+      $$2.a($$6.b());
+      $$2.b(1.0F, -1.0F, -1.0F);
+      $$2.a(0.0F, -1.0F, 0.0F);
+      fwy $$12 = this.a.b();
+      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
+      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
+      faa $$13 = $$9.a($$3, gdu::e);
+      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

@@ -5,15 +5,15 @@ import javax.annotation.Nullable;
 
 public class ov implements oo {
    private final op b;
-   private final cuf c;
-   private final cyn d;
+   private final cui c;
+   private final cyq d;
    private final int e;
    private final Map<String, an<?>> f = new LinkedHashMap<>();
    @Nullable
    private String g;
-   private final cze.a<?> h;
+   private final czh.a<?> h;
 
-   public ov(op $$0, cze.a<?> $$1, cyn $$2, dbs $$3, int $$4) {
+   public ov(op $$0, czh.a<?> $$1, cyq $$2, dbv $$3, int $$4) {
       this.b = $$0;
       this.h = $$1;
       this.c = $$3.r();
@@ -21,12 +21,12 @@ public class ov implements oo {
       this.e = $$4;
    }
 
-   public static ov a(cyn $$0, op $$1, dbs $$2) {
-      return new ov($$1, czk::new, $$0, $$2, 1);
+   public static ov a(cyq $$0, op $$1, dbv $$2) {
+      return new ov($$1, czn::new, $$0, $$2, 1);
    }
 
-   public static ov a(cyn $$0, op $$1, dbs $$2, int $$3) {
-      return new ov($$1, czk::new, $$0, $$2, $$3);
+   public static ov a(cyq $$0, op $$1, dbv $$2, int $$3) {
+      return new ov($$1, czn::new, $$0, $$2, $$3);
    }
 
    public ov b(String $$0, an<?> $$1) {
@@ -40,20 +40,20 @@ public class ov implements oo {
    }
 
    @Override
-   public cuf a() {
+   public cui a() {
       return this.c;
    }
 
    @Override
-   public void a(oq $$0, alb $$1) {
+   public void a(oq $$0, ale $$1) {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", dp.a($$1)).a(aj.a.a($$1)).a(ai.a.b);
       this.f.forEach($$2::a);
-      cze $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new cuk(this.c, this.e));
+      czh $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new cun(this.c, this.e));
       $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.b.a() + "/")));
    }
 
-   private void a(alb $$0) {
+   private void a(ale $$0) {
       if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }

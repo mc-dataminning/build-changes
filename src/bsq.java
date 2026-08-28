@@ -1,27 +1,38 @@
-import java.util.List;
+public class bsq {
+   public static final bsq a = new bsq(0.75F, 0.5F, 0.25F);
+   public static final bsq b = new bsq(0.95F, 0.69F, 0.32F);
+   private final float c;
+   private final float d;
+   private final float e;
 
-public enum bsq {
-   a(bsq.a.c),
-   b(bsq.a.b),
-   c(bsq.a.c),
-   d(bsq.a.d);
-
-   private final bsq.a e;
-
-   private bsq(final bsq.a $$0) {
-      this.e = $$0;
+   private bsq(float $$0, float $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public List<evm> a(float $$0, float $$1) {
-      return this.e.create($$0, $$1);
+   public bsq.a a(float $$0) {
+      if ($$0 < this.e) {
+         return bsq.a.d;
+      } else if ($$0 < this.d) {
+         return bsq.a.c;
+      } else {
+         return $$0 < this.c ? bsq.a.b : bsq.a.a;
+      }
    }
 
-   public interface a {
-      List<evm> a = List.of(evm.b);
-      bsq.a b = ($$0, $$1) -> a;
-      bsq.a c = ($$0, $$1) -> List.of(new evm(0.0, (double)$$1, 0.0));
-      bsq.a d = ($$0, $$1) -> List.of(new evm(0.0, (double)$$1 / 2.0, 0.0));
+   public bsq.a a(cun $$0) {
+      return !$$0.l() ? bsq.a.a : this.a($$0.n(), $$0.o());
+   }
 
-      List<evm> create(float var1, float var2);
+   public bsq.a a(int $$0, int $$1) {
+      return this.a((float)($$1 - $$0) / (float)$$1);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

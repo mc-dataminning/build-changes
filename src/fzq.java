@@ -1,25 +1,17 @@
-public class fzq extends gbx {
-   fzq(fxq $$0, double $$1, double $$2, double $$3, drx $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a(ffa.Q().ao().a().a($$4));
-      this.u = 0.0F;
-      this.t = 80;
-      this.n = false;
+public class fzq extends fzs {
+   protected fzq(fxt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gbv $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
    }
 
-   @Override
-   public gbb b() {
-      return gbb.a;
-   }
+   public static class a implements gbd<lm> {
+      private final gbv a;
 
-   @Override
-   public float b(float $$0) {
-      return 0.5F;
-   }
+      public a(gbv $$0) {
+         this.a = $$0;
+      }
 
-   public static class a implements gba<la> {
-      public gax a(la $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzq($$1, $$2, $$3, $$4, $$0.b());
+      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fzq($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
       }
    }
 }

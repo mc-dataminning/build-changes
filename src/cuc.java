@@ -1,26 +1,58 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class cuc extends cui {
+   private static final int a = 40;
 
-public record cuc(ji<avv> e, int f, float g) {
-   public static final Codec<cuc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avv.b.fieldOf("sound_event").forGetter(cuc::a), ayc.l.fieldOf("use_duration").forGetter(cuc::b), ayc.m.fieldOf("range").forGetter(cuc::c)
-            )
-            .apply($$0, cuc::new)
-   );
-   public static final zj<ww, cuc> b = zj.a(avv.d, cuc::a, zh.g, cuc::b, zh.i, cuc::c, cuc::new);
-   public static final Codec<ji<cuc>> c = akx.a(lq.E, a);
-   public static final zj<ww, ji<cuc>> d = zh.a(lq.E, b);
-
-   public ji<avv> a() {
-      return this.e;
+   public cuc(cui.a $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.f;
+   @Override
+   public cun a(cun $$0, dbw $$1, btn $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$2 instanceof arf $$3) {
+         am.A.a($$3, $$0);
+         $$3.b(awj.c.b(this));
+      }
+
+      if (!$$1.B) {
+         $$2.e(bsc.s);
+      }
+
+      if ($$0.e()) {
+         return new cun(cuq.sl);
+      } else {
+         if ($$2 instanceof cmv $$4 && !$$4.fP()) {
+            cun $$5 = new cun(cuq.sl);
+            if (!$$4.gc().f($$5)) {
+               $$4.a($$5, false);
+            }
+         }
+
+         return $$0;
+      }
    }
 
-   public float c() {
-      return this.g;
+   @Override
+   public int b(cun $$0) {
+      return 40;
+   }
+
+   @Override
+   public cwi c(cun $$0) {
+      return cwi.c;
+   }
+
+   @Override
+   public avy al_() {
+      return avz.mD;
+   }
+
+   @Override
+   public avy am_() {
+      return avz.mD;
+   }
+
+   @Override
+   public bqt<cun> a(dbw $$0, cmv $$1, bqr $$2) {
+      return cup.a($$0, $$1, $$2);
    }
 }

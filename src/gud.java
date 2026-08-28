@@ -1,65 +1,59 @@
-import java.time.Duration;
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gud {
-   private final UUID a = UUID.randomUUID();
-   private final gty b;
-   private final guh c;
-   private final guj d = new guj();
-   private final gug e;
-   private final gui f;
+public class gud implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = ".json";
+   private static final int c = 7;
+   private final bly d;
+   @Nullable
+   private CompletableFuture<Optional<gtz>> e;
 
-   public gud(gty $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
-      this.c = new guh($$3);
-      this.e = new gug();
-      this.f = new gui($$1, $$2);
-      this.b = $$0.decorate($$0x -> {
-         this.c.a($$0x);
-         $$0x.a(gub.i, this.a);
-      });
+   private gud(bly $$0) {
+      this.d = $$0;
    }
 
-   public void a() {
-      this.e.a(this.b);
+   public static CompletableFuture<Optional<gud>> a(Path $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            bly $$1 = bly.a($$0, ".json");
+            $$1.a().a(LocalDate.now(), 7).a();
+            return Optional.of(new gud($$1));
+         } catch (Exception var2) {
+            a.error("Failed to create telemetry log manager", var2);
+            return Optional.empty();
+         }
+      }, ac.g());
    }
 
-   public void a(dbq $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-      this.d.a();
-      this.b();
-   }
-
-   public void a(String $$0) {
-      this.c.a($$0);
-      this.b();
-   }
-
-   public void a(long $$0) {
-      this.d.a($$0);
-   }
-
-   public void b() {
-      if (this.c.a(this.b)) {
-         this.f.a(this.b);
-         this.e.a();
+   public CompletableFuture<Optional<gua>> a() {
+      if (this.e == null) {
+         this.e = CompletableFuture.supplyAsync(() -> {
+            try {
+               bly.e $$0 = this.d.a(LocalDate.now());
+               FileChannel $$1 = $$0.e();
+               return Optional.of(new gtz($$1, ac.g()));
+            } catch (IOException var3) {
+               a.error("Failed to open channel for telemetry event log", var3);
+               return Optional.empty();
+            }
+         }, ac.g());
       }
+
+      return this.e.thenApply($$0 -> $$0.map(gtz::a));
    }
 
-   public void c() {
-      this.c.a(this.b);
-      this.e.d();
-      this.d.a(this.b);
-   }
-
-   public void a(dbt $$0, af $$1) {
-      alb $$2 = $$1.a();
-      if ($$1.b().g() && "minecraft".equals($$2.b())) {
-         long $$3 = $$0.Z();
-         this.b.send(gtz.f, $$2x -> {
-            $$2x.a(gub.D, $$2.toString());
-            $$2x.a(gub.E, $$3);
-         });
+   @Override
+   public void close() {
+      if (this.e != null) {
+         this.e.thenAccept($$0 -> $$0.ifPresent(gtz::close));
       }
    }
 }

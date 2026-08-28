@@ -1,35 +1,30 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public class gpg implements goy {
-   private static final Logger c = LogUtils.getLogger();
+public class gpg implements gpb {
    public static final MapCodec<gpg> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alb.a.fieldOf("resource").forGetter($$0x -> $$0x.d), alb.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, gpg::new)
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gpg::new)
    );
-   private final alb d;
-   private final Optional<alb> e;
+   private final String c;
+   private final String d;
 
-   public gpg(alb $$0, Optional<alb> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public gpg(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a(aul $$0, goy.a $$1) {
-      alb $$2 = a.a(this.d);
-      Optional<auj> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.e.orElse(this.d), $$3.get());
-      } else {
-         c.warn("Missing sprite: {}", $$2);
-      }
+   public void a(auo $$0, gpb.a $$1) {
+      akx $$2 = new akx("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         ale $$4 = $$2.b($$2x).d(this.d);
+         $$1.a($$4, $$3);
+      });
    }
 
    @Override
-   public gpa a() {
-      return gpb.a;
+   public gpd a() {
+      return gpe.b;
    }
 }

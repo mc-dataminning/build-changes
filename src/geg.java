@@ -1,39 +1,84 @@
-public class geg {
-   protected final int[] a;
-   protected final int b;
-   protected final je c;
-   protected final gou d;
-   private final boolean e;
+public class geg implements aup {
+   private final gef a;
+   private final gei b;
+   private final gcz c;
+   private final geh d;
+   private final azf e = azf.a();
+   private final fgg f;
 
-   public geg(int[] $$0, int $$1, je $$2, gou $$3, boolean $$4) {
+   public geg(gef $$0, gcz $$1, fgg $$2) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+      this.c = $$1;
+      this.f = $$2;
+      this.b = new gei(this.f);
+      this.d = new geh();
    }
 
-   public gou a() {
-      return this.d;
-   }
-
-   public int[] b() {
+   public gef a() {
       return this.a;
    }
 
-   public boolean c() {
-      return this.b != -1;
+   public void a(dsa $$0, iz $$1, daz $$2, ezw $$3, faa $$4) {
+      if ($$0.l() == dld.c) {
+         gqy $$5 = this.a.b($$0);
+         long $$6 = $$0.a($$1);
+         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, goo.d);
+      }
    }
 
-   public int d() {
+   public void a(dsa $$0, iz $$1, daz $$2, ezw $$3, faa $$4, boolean $$5, azf $$6) {
+      try {
+         dld $$7 = $$0.l();
+         if ($$7 == dld.c) {
+            this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.a($$1), goo.d);
+         }
+      } catch (Throwable var11) {
+         o $$9 = o.a(var11, "Tesselating block in world");
+         p $$10 = $$9.a("Block being tesselated");
+         p.a($$10, $$2, $$1, $$0);
+         throw new y($$9);
+      }
+   }
+
+   public void a(iz $$0, daz $$1, faa $$2, dsa $$3, ent $$4) {
+      try {
+         this.d.a($$1, $$0, $$2, $$3, $$4);
+      } catch (Throwable var9) {
+         o $$6 = o.a(var9, "Tesselating liquid in world");
+         p $$7 = $$6.a("Block being tesselated");
+         p.a($$7, $$1, $$0, null);
+         throw new y($$6);
+      }
+   }
+
+   public gei b() {
       return this.b;
    }
 
-   public je e() {
-      return this.c;
+   public gqy a(dsa $$0) {
+      return this.a.b($$0);
    }
 
-   public boolean f() {
-      return this.e;
+   public void a(dsa $$0, ezw $$1, gdm $$2, int $$3, int $$4) {
+      dld $$5 = $$0.l();
+      if ($$5 != dld.a) {
+         switch ($$5) {
+            case c:
+               gqy $$6 = this.a($$0);
+               int $$7 = this.f.a($$0, null, null, 0);
+               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+               float $$10 = (float)($$7 & 0xFF) / 255.0F;
+               this.b.a($$1.c(), $$2.getBuffer(gdh.a($$0, false)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
+               break;
+            case b:
+               this.c.a(new cun($$0.b()), cuk.a, $$1, $$2, $$3, $$4);
+         }
+      }
+   }
+
+   @Override
+   public void a(auo $$0) {
+      this.d.a();
    }
 }

@@ -1,30 +1,75 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
-public class esd extends erp {
-   static final MapCodec<esd> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(euj.a.fieldOf("value").forGetter($$0x -> $$0x.b)).apply($$0, esd::new));
-   private final eui b;
+public class esd extends ers {
+   public static final MapCodec<esd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(eqe.e.fieldOf("component").forGetter($$0x -> $$0x.b), equ.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
+            .apply($$0, esd::new)
+   );
+   private final eqd<?> b;
+   private final List<eqw> c;
 
-   private esd(List<etn> $$0, eui $$1) {
+   esd(List<etq> $$0, eqd<?> $$1, List<eqw> $$2) {
       super($$0);
       this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public Set<esw<?>> a() {
-      return this.b.a();
+   public eru<esd> b() {
+      return erv.t;
    }
 
    @Override
-   public err<esd> b() {
-      return ers.R;
+   public cun a(cun $$0, eqg $$1) {
+      if ($$0.e()) {
+         return $$0;
+      } else {
+         Builder<cun> $$2 = Stream.builder();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(eql.a($$1.d(), $$2::add), $$1)));
+         this.b.a($$0, $$2.build());
+         return $$0;
+      }
    }
 
    @Override
-   public cuk a(cuk $$0, eqd $$1) {
-      $$0.b(km.n, new cxa(this.b.a($$1)));
-      return $$0;
+   public void a(eqm $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
+   }
+
+   public static esd.a a(eqd<?> $$0) {
+      return new esd.a($$0);
+   }
+
+   public static class a extends ers.a<esd.a> {
+      private final com.google.common.collect.ImmutableList.Builder<eqw> a = ImmutableList.builder();
+      private final eqd<?> b;
+
+      public a(eqd<?> $$0) {
+         this.b = $$0;
+      }
+
+      protected esd.a a() {
+         return this;
+      }
+
+      public esd.a a(eqw.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public ert b() {
+         return new esd(this.g(), this.b, this.a.build());
+      }
    }
 }

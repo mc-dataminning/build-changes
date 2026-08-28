@@ -1,14 +1,29 @@
-public interface ajg extends acb, agt {
-   @Override
-   default wk b() {
-      return wk.d;
+public class ajg implements zv<ajb> {
+   public static final zm<wl, ajg> a = zv.a(ajg::a, ajg::new);
+   private final xo b;
+
+   public ajg(xo $$0) {
+      this.b = $$0;
    }
 
-   void a(aji var1);
+   private ajg(wl $$0) {
+      this.b = xo.a.b($$0.d(262144), jw.b);
+   }
 
-   void a(ajj var1);
+   private void a(wl $$0) {
+      $$0.a(xo.a.a(this.b, jw.b));
+   }
 
-   void a(ajh var1);
+   @Override
+   public zx<ajg> a() {
+      return ajh.e;
+   }
 
-   void a(ajk var1);
+   public void a(ajb $$0) {
+      $$0.a(this);
+   }
+
+   public xo b() {
+      return this.b;
+   }
 }

@@ -1,26 +1,30 @@
-import javax.annotation.Nullable;
+public class cbv extends cal {
+   private final btw a;
 
-public class cbv extends cbf {
-   public static final float i = 0.001F;
-   protected final float j;
-
-   public cbv(btt $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public cbv(btw $$0) {
+      this.a = $$0;
    }
 
-   public cbv(btt $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected evm h() {
-      if (this.b.bh()) {
-         evm $$0 = cei.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
-      } else {
-         return this.b.el().i() >= this.j ? cei.a(this.b, 10, 7) : super.h();
+   public boolean a() {
+      return this.a.aE() && !this.a.dP().b_(this.a.dp()).a(awu.a);
+   }
+
+   @Override
+   public void c() {
+      iz $$0 = null;
+
+      for (iz $$2 : iz.b(
+         ayx.a(this.a.du() - 2.0), ayx.a(this.a.dw() - 2.0), ayx.a(this.a.dA() - 2.0), ayx.a(this.a.du() + 2.0), this.a.dv(), ayx.a(this.a.dA() + 2.0)
+      )) {
+         if (this.a.dP().b_($$2).a(awu.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

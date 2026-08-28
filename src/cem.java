@@ -1,122 +1,119 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cem implements dbg {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-   private cem.a c;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
+public class cem {
+   private static final int a = 10;
 
-   public cem() {
-      this.c = cem.a.c;
+   public static iz a(azf $$0, int $$1, int $$2) {
+      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
+      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
+      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
+      return new iz($$3, $$4, $$5);
    }
 
-   @Override
-   public int a(arb $$0, boolean $$1, boolean $$2) {
-      if (!$$0.R() && $$1) {
-         float $$3 = $$0.f(0.0F);
-         if ((double)$$3 == 0.5) {
-            this.c = $$0.z.a(10) == 0 ? cem.a.b : cem.a.c;
-         }
-
-         if (this.c == cem.a.c) {
-            return 0;
-         } else {
-            if (!this.b) {
-               if (!this.a($$0)) {
-                  return 0;
-               }
-
-               this.b = true;
-            }
-
-            if (this.e > 0) {
-               this.e--;
-               return 0;
-            } else {
-               this.e = 2;
-               if (this.d > 0) {
-                  this.b($$0);
-                  this.d--;
-               } else {
-                  this.c = cem.a.c;
-               }
-
-               return 1;
-            }
-         }
+   @Nullable
+   public static iz a(azf $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      double $$7 = ayx.d($$5, $$4) - (float) (Math.PI / 2);
+      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
+      double $$9 = Math.sqrt($$0.j()) * (double)ayx.g * (double)$$1;
+      double $$10 = -$$9 * Math.sin($$8);
+      double $$11 = $$9 * Math.cos($$8);
+      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
+         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
+         return iz.a($$10, (double)$$12, $$11);
       } else {
-         this.c = cem.a.c;
-         this.b = false;
-         return 0;
+         return null;
       }
    }
 
-   private boolean a(arb $$0) {
-      for (cms $$1 : $$0.x()) {
-         if (!$$1.N_()) {
-            iz $$2 = $$1.dp();
-            if ($$0.c($$2) && !$$0.t($$2).a(awk.af)) {
-               for (int $$3 = 0; $$3 < 10; $$3++) {
-                  float $$4 = $$0.z.i() * (float) (Math.PI * 2);
-                  this.f = $$2.u() + ayu.d(ayu.b($$4) * 32.0F);
-                  this.g = $$2.v();
-                  this.h = $$2.w() + ayu.d(ayu.a($$4) * 32.0F);
-                  if (this.a($$0, new iz(this.f, this.g, this.h)) != null) {
-                     this.e = 0;
-                     this.d = 20;
-                     break;
-                  }
-               }
+   @VisibleForTesting
+   public static iz a(iz $$0, int $$1, Predicate<iz> $$2) {
+      if (!$$2.test($$0)) {
+         return $$0;
+      } else {
+         iz $$3 = $$0.c();
 
-               return true;
+         while ($$3.v() < $$1 && $$2.test($$3)) {
+            $$3 = $$3.c();
+         }
+
+         return $$3;
+      }
+   }
+
+   @VisibleForTesting
+   public static iz a(iz $$0, int $$1, int $$2, Predicate<iz> $$3) {
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
+      } else if (!$$3.test($$0)) {
+         return $$0;
+      } else {
+         iz $$4 = $$0.c();
+
+         while ($$4.v() < $$2 && $$3.test($$4)) {
+            $$4 = $$4.c();
+         }
+
+         iz $$5 = $$4;
+
+         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
+            iz $$6 = $$5.c();
+            if ($$3.test($$6)) {
+               break;
             }
-         }
-      }
 
-      return false;
-   }
-
-   private void b(arb $$0) {
-      evm $$1 = this.a($$0, new iz(this.f, this.g, this.h));
-      if ($$1 != null) {
-         ckr $$2;
-         try {
-            $$2 = new ckr($$0);
-            $$2.a($$0, $$0.d_($$2.dp()), bto.h, null);
-         } catch (Exception var5) {
-            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
-            return;
+            $$5 = $$6;
          }
 
-         $$2.b($$1.c, $$1.d, $$1.e, $$0.z.i() * 360.0F, 0.0F);
-         $$0.a_($$2);
+         return $$5;
       }
    }
 
    @Nullable
-   private evm a(arb $$0, iz $$1) {
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         int $$3 = $$1.u() + $$0.z.a(16) - 8;
-         int $$4 = $$1.w() + $$0.z.a(16) - 8;
-         int $$5 = $$0.a(dxp.a.b, $$3, $$4);
-         iz $$6 = new iz($$3, $$5, $$4);
-         if ($$0.c($$6) && cjy.b(bsv.bu, $$0, bto.h, $$6, $$0.z)) {
-            return evm.c($$6);
+   public static evp a(btw $$0, Supplier<iz> $$1) {
+      return a($$1, $$0::d);
+   }
+
+   @Nullable
+   public static evp a(Supplier<iz> $$0, ToDoubleFunction<iz> $$1) {
+      double $$2 = Double.NEGATIVE_INFINITY;
+      iz $$3 = null;
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         iz $$5 = $$0.get();
+         if ($$5 != null) {
+            double $$6 = $$1.applyAsDouble($$5);
+            if ($$6 > $$2) {
+               $$2 = $$6;
+               $$3 = $$5;
+            }
          }
       }
 
-      return null;
+      return $$3 != null ? evp.c($$3) : null;
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public static iz a(btw $$0, int $$1, azf $$2, iz $$3) {
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      if ($$0.gb() && $$1 > 1) {
+         iz $$6 = $$0.fY();
+         if ($$0.du() > (double)$$6.u()) {
+            $$4 -= $$2.a($$1 / 2);
+         } else {
+            $$4 += $$2.a($$1 / 2);
+         }
+
+         if ($$0.dA() > (double)$$6.w()) {
+            $$5 -= $$2.a($$1 / 2);
+         } else {
+            $$5 += $$2.a($$1 / 2);
+         }
+      }
+
+      return iz.a((double)$$4 + $$0.du(), (double)$$3.v() + $$0.dw(), (double)$$5 + $$0.dA());
    }
 }

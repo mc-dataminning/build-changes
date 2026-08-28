@@ -1,125 +1,153 @@
-import java.util.Locale;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class fcf extends gvb {
-   private static final xl a = xl.c("mco.backup.info.title");
-   private static final xl b = xl.c("mco.backup.unknown");
-   private final fmy c;
-   final fap B;
-   final fkm C = new fkm(this);
-   private fcf.a D;
+public class fcf extends fhc {
+   private static final ale u = new ale("widget/slot_frame");
+   private static final ale v = new ale("icon/checkmark");
+   public static final ale a = new ale("textures/gui/realms/empty_frame.png");
+   public static final ale b = new ale("minecraft", "textures/gui/title/background/panorama_0.png");
+   public static final ale c = new ale("minecraft", "textures/gui/title/background/panorama_2.png");
+   public static final ale d = new ale("minecraft", "textures/gui/title/background/panorama_3.png");
+   private static final xo w = xo.c("mco.configure.world.slot.tooltip.active");
+   private static final xo x = xo.c("mco.configure.world.slot.tooltip.minigame");
+   private static final xo y = xo.c("mco.configure.world.slot.tooltip");
+   static final xo z = xo.c("mco.worldSlot.minigame");
+   private final int A;
+   @Nullable
+   private fcf.b B;
 
-   public fcf(fmy $$0, fap $$1) {
-      super(a);
-      this.c = $$0;
-      this.B = $$1;
+   public fcf(int $$0, int $$1, int $$2, int $$3, int $$4, fhc.c $$5) {
+      super($$0, $$1, $$2, $$3, xn.a, $$5, q);
+      this.A = $$4;
    }
 
-   @Override
-   public void aN_() {
-      this.C.a(a, this.p);
-      this.D = this.C.c(new fcf.a(this.m));
-      this.C.b(fgz.a(xk.k, $$0 -> this.d()).a());
-      this.c();
-      this.C.a($$1 -> {
-         fgx var10000 = this.c($$1);
-      });
+   @Nullable
+   public fcf.b a() {
+      return this.B;
    }
 
-   @Override
-   protected void c() {
-      this.D.b(this.n, this.C.d());
-      this.C.a();
+   public void a(fbd $$0) {
+      this.B = new fcf.b($$0, this.A);
+      this.a(this.B, $$0.o);
    }
 
-   @Override
-   public void d() {
-      this.m.a(this.c);
+   private void a(fcf.b $$0, @Nullable String $$1) {
+      xo $$2 = switch ($$0.c) {
+         case b -> $$0.b ? x : y;
+         case c -> w;
+         default -> null;
+      };
+      if ($$2 != null) {
+         this.a(fin.a($$2));
+      }
+
+      yc $$3 = xo.b($$0.e);
+      if ($$0.b && $$1 != null) {
+         $$3 = $$3.b(xn.v).f($$1);
+      }
+
+      this.b($$3);
    }
 
-   xl a(String $$0, String $$1) {
-      String $$2 = $$0.toLowerCase(Locale.ROOT);
-      if ($$2.contains("game") && $$2.contains("mode")) {
-         return this.b($$1);
+   static fcf.a a(fbd $$0, boolean $$1, boolean $$2) {
+      if ($$1 && !$$0.j && $$0.e != fbd.c.c) {
+         return fcf.a.c;
       } else {
-         return (xl)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : xl.b($$1));
+         return $$1 || $$2 && $$0.j ? fcf.a.a : fcf.a.b;
       }
    }
 
-   private xl a(String $$0) {
-      try {
-         return fdc.a.get(Integer.parseInt($$0)).b();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
-
-   private xl b(String $$0) {
-      try {
-         return fdc.b.get(Integer.parseInt($$0)).e();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
-
-   class a extends fhv<fcf.b> {
-      public a(final ffa $$0) {
-         super($$0, fcf.this.n, fcf.this.C.d(), fcf.this.C.c(), 36);
-         if (fcf.this.B.e != null) {
-            fcf.this.B.e.forEach(($$0x, $$1) -> this.b(fcf.this.new b($$0x, $$1)));
+   @Override
+   public void b(fgp $$0, int $$1, int $$2, float $$3) {
+      if (this.B != null) {
+         int $$4 = this.C();
+         int $$5 = this.D();
+         boolean $$6 = this.A();
+         ale $$7;
+         if (this.B.b) {
+            $$7 = fds.a(String.valueOf(this.B.h), this.B.i);
+         } else if (this.B.a) {
+            $$7 = a;
+         } else if (this.B.i != null && this.B.h != -1L) {
+            $$7 = fds.a(String.valueOf(this.B.h), this.B.i);
+         } else if (this.A == 1) {
+            $$7 = b;
+         } else if (this.A == 2) {
+            $$7 = c;
+         } else if (this.A == 3) {
+            $$7 = d;
+         } else {
+            $$7 = a;
          }
+
+         if (this.B.d) {
+            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+         }
+
+         $$0.a($$7, $$4 + 3, $$5 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
+         boolean $$14 = $$6 && this.B.c != fcf.a.a;
+         if ($$14) {
+            $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         } else if (this.B.d) {
+            $$0.a(0.8F, 0.8F, 0.8F, 1.0F);
+         } else {
+            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+         }
+
+         $$0.a(u, $$4, $$5, 80, 80);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         if (this.B.d) {
+            RenderSystem.enableBlend();
+            $$0.a(v, $$4 + 67, $$5 + 4, 9, 8);
+            RenderSystem.disableBlend();
+         }
+
+         fgn $$15 = ffd.Q().h;
+         $$0.a($$15, this.B.e, $$4 + 40, $$5 + 66, -1);
+         $$0.a($$15, fah.a(this.B.f, this.B.g.a()), $$4 + 40, $$5 + 80 + 2, -1);
       }
    }
 
-   class b extends fhv.a<fcf.b> {
-      private static final xl b = xl.c("mco.backup.entry.templateName");
-      private static final xl c = xl.c("mco.backup.entry.gameDifficulty");
-      private static final xl d = xl.c("mco.backup.entry.name");
-      private static final xl e = xl.c("mco.backup.entry.gameServerVersion");
-      private static final xl f = xl.c("mco.backup.entry.uploaded");
-      private static final xl g = xl.c("mco.backup.entry.enabledPack");
-      private static final xl h = xl.c("mco.backup.entry.description");
-      private static final xl i = xl.c("mco.backup.entry.gameMode");
-      private static final xl j = xl.c("mco.backup.entry.seed");
-      private static final xl k = xl.c("mco.backup.entry.worldType");
-      private static final xl l = xl.c("mco.backup.entry.undefined");
-      private final String m;
-      private final String n;
+   public static enum a {
+      a,
+      b,
+      c;
+   }
 
-      public b(final String $$0, final String $$1) {
-         this.m = $$0;
-         this.n = $$1;
-      }
+   public static class b {
+      final boolean d;
+      final String e;
+      final String f;
+      final fbd.a g;
+      final long h;
+      @Nullable
+      final String i;
+      public final boolean a;
+      public final boolean b;
+      public final fcf.a c;
 
-      @Override
-      public void a(fgm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.b(fcf.this.p, this.a(this.m), $$3, $$2, -6250336);
-         $$0.b(fcf.this.p, fcf.this.a(this.m, this.n), $$3, $$2 + 12, -1);
-      }
+      public b(fbd $$0, int $$1) {
+         this.b = $$1 == 4;
+         if (this.b) {
+            this.d = $$0.m == fbd.d.b;
+            this.e = fcf.z.getString();
+            this.h = (long)$$0.p;
+            this.i = $$0.q;
+            this.a = $$0.p == -1;
+            this.f = "";
+            this.g = fbd.a.a;
+         } else {
+            fbk $$2 = $$0.i.get($$1);
+            this.d = $$0.n == $$1 && $$0.m != fbd.d.b;
+            this.e = $$2.a($$1);
+            this.h = $$2.l;
+            this.i = $$2.m;
+            this.a = $$2.n;
+            this.f = $$2.j;
+            this.g = $$2.k;
+         }
 
-      private xl a(String $$0) {
-         return switch ($$0) {
-            case "template_name" -> b;
-            case "game_difficulty" -> c;
-            case "name" -> d;
-            case "game_server_version" -> e;
-            case "uploaded" -> f;
-            case "enabled_packs" -> g;
-            case "description" -> h;
-            case "game_mode" -> i;
-            case "seed" -> j;
-            case "world_type" -> k;
-            default -> l;
-         };
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
-      }
-
-      @Override
-      public xl a() {
-         return xl.a("narrator.select", this.m + " " + this.n);
+         this.c = fcf.a($$0, this.d, this.b);
       }
    }
 }

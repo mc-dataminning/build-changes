@@ -1,19 +1,63 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
+import java.util.List;
 
-public record cxb(Map<ji<deu>, dta<?>> c) {
-   public static final cxb a = new cxb(Map.of());
-   public static final Codec<cxb> b = Codec.dispatchedMap(lp.e.r(), $$0 -> Codec.STRING.comapFlatMap($$1 -> {
-         dta<?> $$2 = ((deu)$$0.a()).l().a($$1);
-         return $$2 != null ? DataResult.success($$2) : DataResult.error(() -> "No property on " + $$0.g() + " with name: " + $$1);
-      }, dta::f)).xmap(cxb::new, cxb::a);
+public final class cxb {
+   public static final cxb a = new cxb(List.of());
+   public static final Codec<cxb> b = cun.b.listOf().xmap(cxb::new, $$0 -> $$0.d);
+   public static final zm<wz, cxb> c = cun.i.a(zk.a()).a(cxb::new, $$0 -> $$0.d);
+   private final List<cun> d;
 
-   public cxb a(ji<deu> $$0, dta<?> $$1) {
-      return new cxb(ac.a(this.c, $$0, $$1));
+   private cxb(List<cun> $$0) {
+      this.d = $$0;
    }
 
-   public Map<ji<deu>, dta<?>> a() {
-      return this.c;
+   public static cxb a(cun $$0) {
+      return new cxb(List.of($$0.s()));
+   }
+
+   public static cxb a(List<cun> $$0) {
+      return new cxb(List.copyOf(Lists.transform($$0, cun::s)));
+   }
+
+   public boolean a(cui $$0) {
+      for (cun $$1 : this.d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public List<cun> a() {
+      return Lists.transform(this.d, cun::s);
+   }
+
+   public boolean b() {
+      return this.d.isEmpty();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cxb $$1 && cun.a(this.d, $$1.d)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return cun.a(this.d);
+   }
+
+   @Override
+   public String toString() {
+      return "ChargedProjectiles[items=" + this.d + "]";
    }
 }

@@ -1,52 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edn implements ecx {
+public record edn(int b, int c, int d, ji<ehm> e) implements eda {
    public static final Codec<edn> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ehj.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
-               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
-               axb.b(lq.f).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
-               eey.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
-               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
-               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
-               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
-               eey.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
-               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
-               dyw.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
+               ayf.l.fieldOf("tries").orElse(128).forGetter(edn::a),
+               ayf.k.fieldOf("xz_spread").orElse(7).forGetter(edn::b),
+               ayf.k.fieldOf("y_spread").orElse(3).forGetter(edn::c),
+               ehm.b.fieldOf("feature").forGetter(edn::d)
             )
             .apply($$0, edn::new)
    );
-   public final ji<ehj> b;
-   public final int c;
-   public final int d;
-   public final axb<deu> e;
-   public final eey f;
-   public final int g;
-   public final int h;
-   public final int i;
-   public final int j;
-   public final eey k;
-   public final int l;
-   public final int n;
-   public final dyw o;
 
-   public edn(ji<ehj> $$0, int $$1, int $$2, axb<deu> $$3, eey $$4, int $$5, int $$6, int $$7, int $$8, eey $$9, int $$10, int $$11, dyw $$12) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.n = $$11;
-      this.o = $$12;
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public ji<ehm> d() {
+      return this.e;
    }
 }

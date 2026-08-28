@@ -1,31 +1,35 @@
-public record abd(iz c, String d, int e) implements aat {
-   public static final zj<wl, abd> a = aat.a(abd::a, abd::new);
-   public static final aat.b<abd> b = aat.a("debug/poi_added");
+public record abd(abd.a c) implements aaw {
+   public static final zm<wl, abd> a = aaw.a(abd::a, abd::new);
+   public static final aaw.b<abd> b = aaw.a("debug/hive");
 
    private abd(wl $$0) {
-      this($$0.e(), $$0.p(), $$0.readInt());
+      this(new abd.a($$0));
    }
 
    private void a(wl $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.p(this.e);
+      this.c.a($$0);
    }
 
    @Override
-   public aat.b<abd> a() {
+   public aaw.b<abd> a() {
       return b;
    }
 
-   public iz b() {
+   public abd.a b() {
       return this.c;
    }
 
-   public String c() {
-      return this.d;
-   }
+   public static record a(iz a, String b, int c, int d, boolean e) {
+      public a(wl $$0) {
+         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
 
-   public int d() {
-      return this.e;
+      public void a(wl $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.p(this.c);
+         $$0.p(this.d);
+         $$0.a(this.e);
+      }
    }
 }

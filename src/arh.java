@@ -1,113 +1,177 @@
 import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.IntSupplier;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class arh extends aqo {
-   public static final int a = 33;
-   private static final int c = 4;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final Long2ObjectOpenHashMap<azm<arf<?>>> d = new Long2ObjectOpenHashMap();
+public class arh extends eni implements AutoCloseable {
+   public static final int a = 1000;
+   private static final Logger d = LogUtils.getLogger();
+   private final bpl<Runnable> e;
+   private final ObjectList<Pair<arh.a, Runnable>> f = new ObjectArrayList();
+   private final aqn g;
+   private final bpk<aqq.a<Runnable>> h;
+   private final int i = 1000;
+   private final AtomicBoolean j = new AtomicBoolean();
 
-   public arh() {
-      super(34, 16, 256);
-      this.b.defaultReturnValue((byte)33);
+   public arh(duj $$0, aqn $$1, boolean $$2, bpl<Runnable> $$3, bpk<aqq.a<Runnable>> $$4) {
+      super($$0, true, $$2);
+      this.g = $$1;
+      this.h = $$4;
+      this.e = $$3;
    }
 
-   private azm<arf<?>> g(long $$0) {
-      return (azm<arf<?>>)this.d.computeIfAbsent($$0, $$0x -> azm.a(4));
+   @Override
+   public void close() {
    }
 
-   private int a(azm<arf<?>> $$0) {
-      return $$0.isEmpty() ? 34 : $$0.b().b();
+   @Override
+   public int a() {
+      throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Ran automatically on a different thread!"));
    }
 
-   public void a(long $$0, arf<?> $$1) {
-      azm<arf<?>> $$2 = this.g($$0);
-      int $$3 = this.a($$2);
-      $$2.add($$1);
-      if ($$1.b() < $$3) {
-         this.b($$0, $$1.b(), true);
-      }
+   @Override
+   public void a(iz $$0) {
+      iz $$1 = $$0.i();
+      this.a(kb.a($$0.u()), kb.a($$0.w()), arh.a.a, ac.a((Runnable)(() -> super.a($$1)), (Supplier<String>)(() -> "checkBlock " + $$1)));
    }
 
-   public void b(long $$0, arf<?> $$1) {
-      azm<arf<?>> $$2 = this.g($$0);
-      $$2.remove($$1);
-      if ($$2.isEmpty()) {
-         this.d.remove($$0);
-      }
+   protected void a(dbd $$0) {
+      this.a($$0.e, $$0.f, () -> 0, arh.a.a, ac.a((Runnable)(() -> {
+         super.b($$0, false);
+         super.a($$0, false);
 
-      this.b($$0, this.a($$2), false);
+         for (int $$1 = this.d(); $$1 < this.e(); $$1++) {
+            super.a(dcf.b, kb.a($$0, $$1), null);
+            super.a(dcf.a, kb.a($$0, $$1), null);
+         }
+
+         for (int $$2 = this.c.ao(); $$2 < this.c.ap(); $$2++) {
+            super.a(kb.a($$0, $$2), true);
+         }
+      }), (Supplier<String>)(() -> "updateChunkStatus " + $$0 + " true")));
    }
 
-   public <T> void a(arg<T> $$0, dba $$1, int $$2, T $$3) {
-      this.a($$1.a(), new arf<>($$0, $$2, $$3));
+   @Override
+   public void a(kb $$0, boolean $$1) {
+      this.a($$0.a(), $$0.c(), () -> 0, arh.a.a, ac.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "updateSectionStatus " + $$0 + " " + $$1)));
    }
 
-   public <T> void b(arg<T> $$0, dba $$1, int $$2, T $$3) {
-      arf<T> $$4 = new arf<>($$0, $$2, $$3);
-      this.b($$1.a(), $$4);
+   @Override
+   public void b(dbd $$0) {
+      this.a($$0.e, $$0.f, arh.a.a, ac.a((Runnable)(() -> super.b($$0)), (Supplier<String>)(() -> "propagateLight " + $$0)));
    }
 
-   public void a(int $$0) {
-      List<Pair<arf<dba>, Long>> $$1 = new ArrayList<>();
-      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
+   @Override
+   public void a(dbd $$0, boolean $$1) {
+      this.a($$0.e, $$0.f, arh.a.a, ac.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "enableLight " + $$0 + " " + $$1)));
+   }
 
-      while (var3.hasNext()) {
-         Entry<azm<arf<?>>> $$2 = (Entry<azm<arf<?>>>)var3.next();
+   @Override
+   public void a(dcf $$0, kb $$1, @Nullable dub $$2) {
+      this.a($$1.a(), $$1.c(), () -> 0, arh.a.a, ac.a((Runnable)(() -> super.a($$0, $$1, $$2)), (Supplier<String>)(() -> "queueData " + $$1)));
+   }
 
-         for (arf<?> $$3 : (azm)$$2.getValue()) {
-            if ($$3.a() == arg.c) {
-               $$1.add(Pair.of($$3, $$2.getLongKey()));
+   private void a(int $$0, int $$1, arh.a $$2, Runnable $$3) {
+      this.a($$0, $$1, this.g.c(dbd.c($$0, $$1)), $$2, $$3);
+   }
+
+   private void a(int $$0, int $$1, IntSupplier $$2, arh.a $$3, Runnable $$4) {
+      this.h.a(aqq.a(() -> {
+         this.f.add(Pair.of($$3, $$4));
+         if (this.f.size() >= 1000) {
+            this.f();
+         }
+      }, dbd.c($$0, $$1), $$2));
+   }
+
+   @Override
+   public void b(dbd $$0, boolean $$1) {
+      this.a($$0.e, $$0.f, () -> 0, arh.a.a, ac.a((Runnable)(() -> super.b($$0, $$1)), (Supplier<String>)(() -> "retainData " + $$0)));
+   }
+
+   public CompletableFuture<dtw> a(dtw $$0, boolean $$1) {
+      dbd $$2 = $$0.f();
+      this.a($$2.e, $$2.f, arh.a.a, ac.a((Runnable)(() -> {
+         duh[] $$2x = $$0.d();
+
+         for (int $$3 = 0; $$3 < $$0.an(); $$3++) {
+            duh $$4 = $$2x[$$3];
+            if (!$$4.c()) {
+               int $$5 = this.c.g($$3);
+               super.a(kb.a($$2, $$5), false);
             }
+         }
+      }), (Supplier<String>)(() -> "initializeLight: " + $$2)));
+      return CompletableFuture.supplyAsync(() -> {
+         super.a($$2, $$1);
+         super.b($$2, false);
+         return $$0;
+      }, $$1x -> this.a($$2.e, $$2.f, arh.a.b, $$1x));
+   }
+
+   public CompletableFuture<dtw> b(dtw $$0, boolean $$1) {
+      dbd $$2 = $$0.f();
+      $$0.b(false);
+      this.a($$2.e, $$2.f, arh.a.a, ac.a((Runnable)(() -> {
+         if (!$$1) {
+            super.b($$2);
+         }
+      }), (Supplier<String>)(() -> "lightChunk " + $$2 + " " + $$1)));
+      return CompletableFuture.supplyAsync(() -> {
+         $$0.b(true);
+         this.g.b($$2);
+         return $$0;
+      }, $$1x -> this.a($$2.e, $$2.f, arh.a.b, $$1x));
+   }
+
+   public void b() {
+      if ((!this.f.isEmpty() || super.K_()) && this.j.compareAndSet(false, true)) {
+         this.e.a(() -> {
+            this.f();
+            this.j.set(false);
+         });
+      }
+   }
+
+   private void f() {
+      int $$0 = Math.min(this.f.size(), 1000);
+      ObjectListIterator<Pair<arh.a, Runnable>> $$1 = this.f.iterator();
+
+      int $$2;
+      for ($$2 = 0; $$1.hasNext() && $$2 < $$0; $$2++) {
+         Pair<arh.a, Runnable> $$3 = (Pair<arh.a, Runnable>)$$1.next();
+         if ($$3.getFirst() == arh.a.a) {
+            ((Runnable)$$3.getSecond()).run();
          }
       }
 
-      for (Pair<arf<dba>, Long> $$4 : $$1) {
-         Long $$5 = (Long)$$4.getSecond();
-         arf<dba> $$6 = (arf<dba>)$$4.getFirst();
-         this.b($$5, $$6);
-         dba $$7 = new dba($$5);
-         arg<dba> $$8 = $$6.a();
-         this.a($$8, $$7, $$0, $$7);
+      $$1.back($$2);
+      super.a();
+
+      for (int var5 = 0; $$1.hasNext() && var5 < $$0; var5++) {
+         Pair<arh.a, Runnable> $$4 = (Pair<arh.a, Runnable>)$$1.next();
+         if ($$4.getFirst() == arh.a.b) {
+            ((Runnable)$$4.getSecond()).run();
+         }
+
+         $$1.remove();
       }
    }
 
-   @Override
-   protected int b(long $$0) {
-      azm<arf<?>> $$1 = (azm<arf<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
+   public CompletableFuture<?> a(int $$0, int $$1) {
+      return CompletableFuture.runAsync(() -> {
+      }, $$2 -> this.a($$0, $$1, arh.a.b, $$2));
    }
 
-   public int a(dba $$0) {
-      return this.c($$0.a());
-   }
-
-   @Override
-   protected int c(long $$0) {
-      return this.b.get($$0);
-   }
-
-   @Override
-   protected void a(long $$0, int $$1) {
-      if ($$1 >= 33) {
-         this.b.remove($$0);
-      } else {
-         this.b.put($$0, (byte)$$1);
-      }
-   }
-
-   public void a() {
-      this.b(Integer.MAX_VALUE);
-   }
-
-   public String d(long $$0) {
-      azm<arf<?>> $$1 = (azm<arf<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   static enum a {
+      a,
+      b;
    }
 }

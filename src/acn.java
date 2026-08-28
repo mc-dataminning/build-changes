@@ -1,31 +1,45 @@
-public class acn implements zs<ace> {
-   public static final zj<ww, acn> a = zj.a(iz.b, acn::e, zh.a(deu.q), acn::b, acn::new);
-   private final iz b;
-   private final drx c;
+public class acn implements zv<ach> {
+   public static final zm<wl, acn> a = zv.a(acn::a, acn::new);
+   private final int b;
+   private final iz c;
+   private final int d;
 
-   public acn(iz $$0, drx $$1) {
+   public acn(int $$0, iz $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
    }
 
-   public acn(daz $$0, iz $$1) {
-      this($$1, $$0.a_($$1));
+   private acn(wl $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
+      this.d = $$0.readUnsignedByte();
+   }
+
+   private void a(wl $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.k(this.d);
    }
 
    @Override
-   public zu<acn> a() {
-      return agq.k;
+   public zx<acn> a() {
+      return agt.h;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public drx b() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
    public iz e() {
-      return this.b;
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

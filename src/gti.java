@@ -1,29 +1,87 @@
-import it.unimi.dsi.fastutil.floats.FloatConsumer;
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface gti extends gth {
-   int a = 8192;
+public class gti {
+   private final Set<gti.a> a = Sets.newIdentityHashSet();
+   final exs b;
+   final Executor c;
 
-   boolean a(FloatConsumer var1) throws IOException;
-
-   @Override
-   default ByteBuffer a(int $$0) throws IOException {
-      gtg $$1 = new gtg($$0 + 8192);
-
-      while (this.a($$1) && $$1.b() < $$0) {
-      }
-
-      return $$1.a();
+   public gti(exs $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   default ByteBuffer b() throws IOException {
-      gtg $$0 = new gtg(16384);
+   public CompletableFuture<gti.a> a(exs.c $$0) {
+      CompletableFuture<gti.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         exr $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            gti.a $$3 = new gti.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
+         } else {
+            $$1.complete(null);
+         }
+      });
+      return $$1;
+   }
 
-      while (this.a($$0)) {
+   public void a(Consumer<Stream<exr>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   }
+
+   public void a() {
+      this.c.execute(() -> {
+         Iterator<gti.a> $$0 = this.a.iterator();
+
+         while ($$0.hasNext()) {
+            gti.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
+            }
+         }
+      });
+   }
+
+   public void b() {
+      this.a.forEach(gti.a::b);
+      this.a.clear();
+   }
+
+   public class a {
+      @Nullable
+      exr b;
+      private boolean c;
+
+      public boolean a() {
+         return this.c;
       }
 
-      return $$0.a();
+      public a(final exr $$1) {
+         this.b = $$1;
+      }
+
+      public void a(Consumer<exr> $$0) {
+         gti.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
+            }
+         });
+      }
+
+      public void b() {
+         this.c = true;
+         gti.this.b.a(this.b);
+         this.b = null;
+      }
    }
 }

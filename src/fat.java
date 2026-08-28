@@ -1,30 +1,33 @@
-import com.google.gson.JsonObject;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.UUID;
+import java.util.Iterator;
+import java.util.List;
 import org.slf4j.Logger;
 
-public class fat extends fbp {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
-   public UUID d;
-   public Date e;
+public class fat extends fbs {
+   private static final Logger b = LogUtils.getLogger();
+   public List<fas> a;
 
-   public static fat a(JsonObject $$0) {
-      fat $$1 = new fat();
+   public static fat a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      fat $$2 = new fat();
+      $$2.a = Lists.newArrayList();
 
       try {
-         $$1.a = fdm.b("invitationId", $$0, "");
-         $$1.b = fdm.b("worldName", $$0, "");
-         $$1.c = fdm.b("worldOwnerName", $$0, "");
-         $$1.d = fdm.a("worldOwnerUuid", $$0, ac.e);
-         $$1.e = fdm.b("date", $$0);
-      } catch (Exception var3) {
-         f.error("Could not parse PendingInvite: {}", var3.getMessage());
+         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
+         if ($$3.isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$2.a.add(fas.a($$4.next()));
+            }
+         }
+      } catch (Exception var5) {
+         b.error("Could not parse BackupList: {}", var5.getMessage());
       }
 
-      return $$1;
+      return $$2;
    }
 }

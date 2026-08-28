@@ -1,12 +1,45 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
 
-public interface bnb extends bnd {
-   bnc d();
+public class bnb implements bnf {
+   public static final bnb a = new bnb();
 
-   @Nullable
-   bmw.a c(String var1);
+   private bnb() {
+   }
 
-   Set<Pair<String, boj>> e();
+   @Override
+   public List<bni> a(String $$0) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public boolean a(Path $$0) {
+      return false;
+   }
+
+   @Override
+   public long a() {
+      return 0L;
+   }
+
+   @Override
+   public int b() {
+      return 0;
+   }
+
+   @Override
+   public long c() {
+      return 0L;
+   }
+
+   @Override
+   public int d() {
+      return 0;
+   }
+
+   @Override
+   public String e() {
+      return "";
+   }
 }

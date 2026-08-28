@@ -1,14 +1,45 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
-public interface bpt<P extends bps> {
-   bpt<bpq> a = a("constant", bpq.b);
-   bpt<bpz> b = a("uniform", bpz.a);
-   bpt<bpo> c = a("clamped_normal", bpo.a);
-   bpt<bpy> d = a("trapezoid", bpy.a);
+public class bpt extends bpv {
+   public static final bpt a = new bpt(0.0F);
+   public static final MapCodec<bpt> b = Codec.FLOAT.fieldOf("value").xmap(bpt::a, bpt::d);
+   private final float d;
 
-   MapCodec<P> codec();
+   public static bpt a(float $$0) {
+      return $$0 == 0.0F ? a : new bpt($$0);
+   }
 
-   static <P extends bps> bpt<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.L, $$0, () -> $$1);
+   private bpt(float $$0) {
+      this.d = $$0;
+   }
+
+   public float d() {
+      return this.d;
+   }
+
+   @Override
+   public float a(azf $$0) {
+      return this.d;
+   }
+
+   @Override
+   public float a() {
+      return this.d;
+   }
+
+   @Override
+   public float b() {
+      return this.d + 1.0F;
+   }
+
+   @Override
+   public bpw<?> c() {
+      return bpw.a;
+   }
+
+   @Override
+   public String toString() {
+      return Float.toString(this.d);
    }
 }

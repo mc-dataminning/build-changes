@@ -1,93 +1,30 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import com.google.common.collect.ImmutableMap;
 
-public class ezu extends ezs {
-   private final ezx f;
-   private final Matrix4f g;
-   private final Matrix3f h;
-   private final float i;
-   private float j;
-   private float k;
-   private float l;
-   private int m;
-   private int n;
-   private int o;
-   private float p;
-   private float q;
-   private float r;
-
-   public ezu(ezx $$0, ezt.a $$1, float $$2) {
-      this.f = $$0;
-      this.g = new Matrix4f($$1.a()).invert();
-      this.h = new Matrix3f($$1.b()).invert();
-      this.i = $$2;
-      this.a();
-   }
-
-   private void a() {
-      this.j = 0.0F;
-      this.k = 0.0F;
-      this.l = 0.0F;
-      this.m = 0;
-      this.n = 10;
-      this.o = 15728880;
-      this.p = 0.0F;
-      this.q = 1.0F;
-      this.r = 0.0F;
-   }
-
-   @Override
-   public void e() {
-      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
-      je $$1 = je.a($$0.x(), $$0.y(), $$0.z());
-      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
-      $$2.rotateY((float) Math.PI);
-      $$2.rotateX((float) (-Math.PI / 2));
-      $$2.rotate($$1.b());
-      float $$3 = -$$2.x() * this.i;
-      float $$4 = -$$2.y() * this.i;
-      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
-      this.a();
-   }
-
-   @Override
-   public ezx a(double $$0, double $$1, double $$2) {
-      this.j = (float)$$0;
-      this.k = (float)$$1;
-      this.l = (float)$$2;
-      return this;
-   }
-
-   @Override
-   public ezx a(int $$0, int $$1, int $$2, int $$3) {
-      return this;
-   }
-
-   @Override
-   public ezx a(float $$0, float $$1) {
-      return this;
-   }
-
-   @Override
-   public ezx a(int $$0, int $$1) {
-      this.m = $$0;
-      this.n = $$1;
-      return this;
-   }
-
-   @Override
-   public ezx b(int $$0, int $$1) {
-      this.o = $$0 | $$1 << 16;
-      return this;
-   }
-
-   @Override
-   public ezx a(float $$0, float $$1, float $$2) {
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      return this;
-   }
+public class ezu {
+   public static final fac a = new fac(0, fac.a.a, fac.b.a, 3);
+   public static final fac b = new fac(0, fac.a.b, fac.b.c, 4);
+   public static final fac c = new fac(0, fac.a.a, fac.b.d, 2);
+   public static final fac d = new fac(1, fac.a.e, fac.b.d, 2);
+   public static final fac e = new fac(2, fac.a.e, fac.b.d, 2);
+   public static final fac f = new fac(0, fac.a.c, fac.b.b, 3);
+   public static final fac g = new fac(0, fac.a.c, fac.b.e, 1);
+   public static final fac h = c;
+   public static final fab i = new fab(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
+   public static final fab j = new fab(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final fab k = new fab(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final fab l = new fab(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
+   public static final fab m = new fab(ImmutableMap.builder().put("Position", a).build());
+   public static final fab n = new fab(ImmutableMap.builder().put("Position", a).put("Color", b).build());
+   public static final fab o = new fab(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
+   public static final fab p = new fab(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
+   public static final fab q = new fab(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
+   public static final fab r = new fab(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
+   public static final fab s = new fab(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
+   public static final fab t = new fab(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
+   public static final fab u = new fab(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
+   public static final fab v = new fab(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
 }

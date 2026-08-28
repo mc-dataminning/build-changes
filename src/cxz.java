@@ -1,72 +1,62 @@
-public abstract class cxz implements cyq<bqi> {
-   protected final cyv<?> a;
-   protected final cyf b;
-   protected final String c;
-   protected final cyn d;
-   protected final cuk e;
-   protected final float f;
-   protected final int g;
+public class cxz extends cxy {
+   private final je b;
 
-   public cxz(cyv<?> $$0, String $$1, cyf $$2, cyn $$3, cuk $$4, float $$5, int $$6) {
-      this.a = $$0;
+   public cxz(dbw $$0, iz $$1, je $$2, cun $$3, je $$4) {
+      super($$0, null, bqr.a, $$3, new evl(evp.c($$1), $$4, $$1, false));
       this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
    }
 
    @Override
-   public boolean a(bqi $$0, dbt $$1) {
-      return this.d.a($$0.a(0));
+   public iz a() {
+      return this.j().a();
    }
 
    @Override
-   public cuk a(bqi $$0, jk.a $$1) {
-      return this.e.s();
+   public boolean b() {
+      return this.q().a_(this.j().a()).a(this);
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public boolean c() {
+      return this.b();
    }
 
    @Override
-   public jr<cyn> a() {
-      jr<cyn> $$0 = jr.a();
-      $$0.add(this.d);
-      return $$0;
-   }
-
-   public float b() {
-      return this.f;
+   public je d() {
+      return je.a;
    }
 
    @Override
-   public cuk a(jk.a $$0) {
-      return this.e;
+   public je[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new je[]{je.a, je.c, je.f, je.d, je.e, je.b};
+         case b:
+            return new je[]{je.a, je.b, je.c, je.f, je.d, je.e};
+         case c:
+            return new je[]{je.a, je.c, je.f, je.e, je.b, je.d};
+         case d:
+            return new je[]{je.a, je.d, je.f, je.e, je.b, je.c};
+         case e:
+            return new je[]{je.a, je.e, je.d, je.b, je.c, je.f};
+         case f:
+            return new je[]{je.a, je.f, je.d, je.b, je.c, je.e};
+      }
    }
 
    @Override
-   public String c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.g;
+   public je g() {
+      return this.b.o() == je.a.b ? je.c : this.b;
    }
 
    @Override
-   public cyv<?> e() {
-      return this.a;
+   public boolean h() {
+      return false;
    }
 
-   public cyf f() {
-      return this.b;
-   }
-
-   public interface a<T extends cxz> {
-      T create(String var1, cyf var2, cyn var3, cuk var4, float var5, int var6);
+   @Override
+   public float i() {
+      return (float)(this.b.e() * 90);
    }
 }

@@ -1,19 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+public class cdb extends ccz {
+   private boolean p;
 
-public class cdb extends cdu<bsj> {
+   public cdb(btp $$0, dbw $$1) {
+      super($$0, $$1);
+   }
+
    @Override
-   public Set<cco<?>> a() {
-      return ImmutableSet.of(cco.K, cco.h);
+   protected eoj a(int $$0) {
+      this.p = this.a.ak() == bsy.y;
+      this.o = new eon(this.p);
+      return new eoj(this.o, $$0);
    }
 
-   protected void a(arb $$0, bsj $$1) {
-      $$1.dS().c(cco.h).ifPresent($$1x -> this.a($$1, $$1x));
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bi();
    }
 
-   private void a(bsj $$0, ccq $$1) {
-      Optional<bsj> $$2 = $$1.a($$1x -> $$1x.ak() == $$0.ak() && !$$1x.p_()).map(bsj.class::cast);
-      $$0.dS().a(cco.K, $$2);
+   @Override
+   protected evp b() {
+      return new evp(this.a.du(), this.a.e(0.5), this.a.dA());
+   }
+
+   @Override
+   protected double a(evp $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(evp $$0, evp $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(iz $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

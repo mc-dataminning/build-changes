@@ -1,77 +1,113 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
 
-public abstract class enb<M extends enb<M>> {
-   private static final int b = 2;
-   private final long[] c = new long[2];
-   private final dty[] d = new dty[2];
-   private boolean e;
-   protected final Long2ObjectOpenHashMap<dty> a;
+public final class enb extends enk<enc.a, enc> {
+   private final iz.a g = new iz.a();
 
-   protected enb(Long2ObjectOpenHashMap<dty> $$0) {
-      this.a = $$0;
-      this.c();
-      this.e = true;
+   public enb(duj $$0) {
+      this($$0, new enc($$0));
    }
 
-   public abstract M b();
-
-   public dty a(long $$0) {
-      dty $$1 = ((dty)this.a.get($$0)).b();
-      this.a.put($$0, $$1);
-      this.c();
-      return $$1;
+   @VisibleForTesting
+   public enb(duj $$0, enc $$1) {
+      super($$0, $$1);
    }
 
-   public boolean b(long $$0) {
-      return this.a.containsKey($$0);
+   @Override
+   protected void a(long $$0) {
+      long $$1 = kb.e($$0);
+      if (this.f.b($$1)) {
+         dsa $$2 = this.c(this.g.f($$0));
+         int $$3 = this.a($$0, $$2);
+         int $$4 = this.f.e($$0);
+         if ($$3 < $$4) {
+            this.f.a($$0, 0);
+            this.b($$0, enk.a.a($$4));
+         } else {
+            this.b($$0, c);
+         }
+
+         if ($$3 > 0) {
+            this.c($$0, enk.a.a($$3, a($$2)));
+         }
+      }
    }
 
-   @Nullable
-   public dty c(long $$0) {
-      if (this.e) {
-         for (int $$1 = 0; $$1 < 2; $$1++) {
-            if ($$0 == this.c[$$1]) {
-               return this.d[$$1];
+   @Override
+   protected void a(long $$0, long $$1, int $$2) {
+      dsa $$3 = null;
+
+      for (je $$4 : d) {
+         if (enk.a.a($$1, $$4)) {
+            long $$5 = iz.a($$0, $$4);
+            if (this.f.b(kb.e($$5))) {
+               int $$6 = this.f.e($$5);
+               int $$7 = $$2 - 1;
+               if ($$7 > $$6) {
+                  this.g.f($$5);
+                  dsa $$8 = this.c(this.g);
+                  int $$9 = $$2 - this.a($$8, this.g);
+                  if ($$9 > $$6) {
+                     if ($$3 == null) {
+                        $$3 = enk.a.b($$1) ? dez.a.o() : this.c(this.g.f($$0));
+                     }
+
+                     if (!this.a($$0, $$3, $$5, $$8, $$4)) {
+                        this.f.a($$5, $$9);
+                        if ($$9 > 1) {
+                           this.c($$5, enk.a.a($$9, a($$8), $$4.g()));
+                        }
+                     }
+                  }
+               }
             }
          }
       }
+   }
 
-      dty $$2 = (dty)this.a.get($$0);
-      if ($$2 == null) {
-         return null;
-      } else {
-         if (this.e) {
-            for (int $$3 = 1; $$3 > 0; $$3--) {
-               this.c[$$3] = this.c[$$3 - 1];
-               this.d[$$3] = this.d[$$3 - 1];
+   @Override
+   protected void a(long $$0, long $$1) {
+      int $$2 = enk.a.a($$1);
+
+      for (je $$3 : d) {
+         if (enk.a.a($$1, $$3)) {
+            long $$4 = iz.a($$0, $$3);
+            if (this.f.b(kb.e($$4))) {
+               int $$5 = this.f.e($$4);
+               if ($$5 != 0) {
+                  if ($$5 <= $$2 - 1) {
+                     dsa $$6 = this.c(this.g.f($$4));
+                     int $$7 = this.a($$4, $$6);
+                     this.f.a($$4, 0);
+                     if ($$7 < $$5) {
+                        this.b($$4, enk.a.a($$5, $$3.g()));
+                     }
+
+                     if ($$7 > 0) {
+                        this.c($$4, enk.a.a($$7, a($$6)));
+                     }
+                  } else {
+                     this.c($$4, enk.a.b($$5, false, $$3.g()));
+                  }
+               }
             }
-
-            this.c[0] = $$0;
-            this.d[0] = $$2;
          }
-
-         return $$2;
       }
    }
 
-   @Nullable
-   public dty d(long $$0) {
-      return (dty)this.a.remove($$0);
+   private int a(long $$0, dsa $$1) {
+      int $$2 = $$1.h();
+      return $$2 > 0 && this.f.j(kb.e($$0)) ? $$2 : 0;
    }
 
-   public void a(long $$0, dty $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   public void c() {
-      for (int $$0 = 0; $$0 < 2; $$0++) {
-         this.c[$$0] = Long.MAX_VALUE;
-         this.d[$$0] = null;
+   @Override
+   public void b(dbd $$0) {
+      this.a($$0, true);
+      dui $$1 = this.e.c($$0.e, $$0.f);
+      if ($$1 != null) {
+         $$1.a(($$0x, $$1x) -> {
+            int $$2 = $$1x.h();
+            this.c($$0x.a(), enk.a.a($$2, a($$1x)));
+         });
       }
-   }
-
-   public void d() {
-      this.e = false;
    }
 }

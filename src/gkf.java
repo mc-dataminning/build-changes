@@ -1,31 +1,32 @@
-public class gkf extends gjy<cfq, fuv> {
-   private static final alb a = new alb("textures/entity/parrot/parrot_red_blue.png");
-   private static final alb i = new alb("textures/entity/parrot/parrot_blue.png");
-   private static final alb j = new alb("textures/entity/parrot/parrot_green.png");
-   private static final alb k = new alb("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final alb l = new alb("textures/entity/parrot/parrot_grey.png");
+public class gkf extends giu<btu> {
+   private static final float a = 40.0F;
+   private static final int f = 50;
+   private final gjt g;
 
-   public gkf(gis.a $$0) {
-      super($$0, new fuv($$0.a(fwu.aG)), 0.3F);
+   protected gkf(giv.a $$0) {
+      super($$0);
+      this.g = $$0.b();
    }
 
-   public alb a(cfq $$0) {
-      return a($$0.gy());
+   public ale a(btu $$0) {
+      return gow.e;
    }
 
-   public static alb a(cfq.b $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-         case e -> l;
-      };
-   }
+   public void a(btu $$0, float $$1, float $$2, ezw $$3, gdm $$4, int $$5) {
+      cun $$6 = $$0.s();
+      if (!$$6.e()) {
+         $$3.a();
+         if ($$0.ai <= 50) {
+            float $$7 = Math.min((float)$$0.ai + $$2, 50.0F) / 50.0F;
+            $$3.b($$7, $$7, $$7);
+         }
 
-   public float a(cfq $$0, float $$1) {
-      float $$2 = ayu.i($$1, $$0.ce, $$0.cb);
-      float $$3 = ayu.i($$1, $$0.cd, $$0.cc);
-      return (ayu.a($$2) + 1.0F) * $$3;
+         dbw $$8 = $$0.dP();
+         float $$9 = ayx.g((float)($$8.Z() - 1L)) * 40.0F;
+         float $$10 = ayx.g((float)$$8.Z()) * 40.0F;
+         $$3.a(a.d.rotationDegrees(ayx.j($$2, $$9, $$10)));
+         gjr.a(this.g, $$3, $$4, 15728880, $$6, $$8.z, $$8);
+         $$3.b();
+      }
    }
 }

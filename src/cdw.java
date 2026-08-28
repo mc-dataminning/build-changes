@@ -1,48 +1,37 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
-public class cdw extends cdu<btt> {
-   public static final int a = 10;
-   private static final ceb c = ceb.b().a(10.0).d();
-   private final Predicate<cuk> d;
+public class cdw {
+   private final btp a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
 
-   public cdw(Predicate<cuk> $$0) {
-      this.d = $$0;
+   public cdw(btp $$0) {
+      this.a = $$0;
    }
 
-   protected void a(arb $$0, btt $$1) {
-      bum<?> $$2 = $$1.dS();
-      List<cms> $$3 = $$0.x()
-         .stream()
-         .filter(bsu.f)
-         .filter($$1x -> c.a($$1, $$1x))
-         .filter($$1x -> $$1.a($$1x, 10.0))
-         .filter(this::a)
-         .filter($$1x -> !$$1.x($$1x))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      if (!$$3.isEmpty()) {
-         cms $$4 = $$3.get(0);
-         $$2.a(cco.O, $$4);
+   public void a() {
+      this.b.clear();
+      this.c.clear();
+   }
+
+   public boolean a(bss $$0) {
+      int $$1 = $$0.al();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
       } else {
-         $$2.b(cco.O);
+         this.a.dP().ag().a("hasLineOfSight");
+         boolean $$2 = this.a.E($$0);
+         this.a.dP().ag().c();
+         if ($$2) {
+            this.b.add($$1);
+         } else {
+            this.c.add($$1);
+         }
+
+         return $$2;
       }
-   }
-
-   private boolean a(cms $$0) {
-      return this.a($$0.eX()) || this.a($$0.eY());
-   }
-
-   private boolean a(cuk $$0) {
-      return this.d.test($$0);
-   }
-
-   @Override
-   public Set<cco<?>> a() {
-      return ImmutableSet.of(cco.O);
    }
 }

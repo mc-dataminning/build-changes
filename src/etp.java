@@ -1,30 +1,65 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class etp {
-   private static final Codec<etn> u = lp.H.q().dispatch("condition", etn::b, eto::a);
-   public static final Codec<etn> a = Codec.lazyInitialized(() -> Codec.withAlternative(u, etb.b));
-   public static final Codec<ji<etn>> b = akx.a(lq.aW, a);
-   public static final eto c = a("inverted", etk.a);
-   public static final eto d = a("any_of", etc.a);
-   public static final eto e = a("all_of", etb.a);
-   public static final eto f = a("random_chance", ets.a);
-   public static final eto g = a("random_chance_with_looting", ett.a);
-   public static final eto h = a("entity_properties", etq.a);
-   public static final eto i = a("killed_by_player", etr.a);
-   public static final eto j = a("entity_scores", eti.a);
-   public static final eto k = a("block_state_property", etm.a);
-   public static final eto l = a("match_tool", etu.a);
-   public static final eto m = a("table_bonus", etd.a);
-   public static final eto n = a("survives_explosion", etj.a);
-   public static final eto o = a("damage_source_properties", eth.a);
-   public static final eto p = a("location_check", etl.a);
-   public static final eto q = a("weather_check", etx.a);
-   public static final eto r = a("reference", etf.a);
-   public static final eto s = a("time_check", etv.a);
-   public static final eto t = a("value_check", etw.a);
+public record etp(ji<dex> b, Optional<dx> c) implements etq {
+   public static final MapCodec<etp> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(lp.e.r().fieldOf("block").forGetter(etp::c), dx.a.optionalFieldOf("properties").forGetter(etp::d)).apply($$0, etp::new)
+      )
+      .validate(etp::a);
 
-   private static eto a(String $$0, MapCodec<? extends etn> $$1) {
-      return jv.a(lp.H, new alb($$0), new eto($$1));
+   private static DataResult<etp> a(etp $$0) {
+      return $$0.d()
+         .flatMap($$1 -> $$1.a($$0.c().a().l()))
+         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
+         .orElse(DataResult.success($$0));
+   }
+
+   @Override
+   public etr b() {
+      return ets.k;
+   }
+
+   @Override
+   public Set<esz<?>> a() {
+      return Set.of(etc.g);
+   }
+
+   public boolean a(eqg $$0) {
+      dsa $$1 = $$0.c(etc.g);
+      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
+   }
+
+   public static etp.a a(dex $$0) {
+      return new etp.a($$0);
+   }
+
+   public ji<dex> c() {
+      return this.b;
+   }
+
+   public Optional<dx> d() {
+      return this.c;
+   }
+
+   public static class a implements etq.a {
+      private final ji<dex> a;
+      private Optional<dx> b = Optional.empty();
+
+      public a(dex $$0) {
+         this.a = $$0.s();
+      }
+
+      public etp.a a(dx.a $$0) {
+         this.b = $$0.b();
+         return this;
+      }
+
+      @Override
+      public etq build() {
+         return new etp(this.a, this.b);
+      }
    }
 }

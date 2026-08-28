@@ -1,50 +1,41 @@
-@FunctionalInterface
-public interface gfk<T extends dpc> {
-   gfj<T> create(gfk.a var1);
+public class gfk implements gfm<dpd> {
+   public static final grb a = new grb(gow.e, new ale("entity/bell/bell_body"));
+   private static final String b = "bell_body";
+   private final fwy c;
 
-   public static class a {
-      private final gfi a;
-      private final ged b;
-      private final gjq c;
-      private final giq d;
-      private final fwr e;
-      private final fgk f;
+   public gfk(gfn.a $$0) {
+      fwy $$1 = $$0.a(fwx.l);
+      this.c = $$1.b("bell_body");
+   }
 
-      public a(gfi $$0, ged $$1, gjq $$2, giq $$3, fwr $$4, fgk $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
+   public static fxe b() {
+      fxg $$0 = new fxg();
+      fxh $$1 = $$0.a();
+      fxh $$2 = $$1.a("bell_body", fxd.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), fxa.a(8.0F, 12.0F, 8.0F));
+      $$2.a("bell_base", fxd.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), fxa.a(-8.0F, -12.0F, -8.0F));
+      return fxe.a($$0, 32, 32);
+   }
+
+   public void a(dpd $$0, float $$1, ezw $$2, gdm $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      float $$7 = 0.0F;
+      float $$8 = 0.0F;
+      if ($$0.b) {
+         float $$9 = ayx.a($$6 / (float) Math.PI) / (4.0F + $$6 / 3.0F);
+         if ($$0.c == je.c) {
+            $$7 = -$$9;
+         } else if ($$0.c == je.d) {
+            $$7 = $$9;
+         } else if ($$0.c == je.f) {
+            $$8 = -$$9;
+         } else if ($$0.c == je.e) {
+            $$8 = $$9;
+         }
       }
 
-      public gfi a() {
-         return this.a;
-      }
-
-      public ged b() {
-         return this.b;
-      }
-
-      public giq c() {
-         return this.d;
-      }
-
-      public gjq d() {
-         return this.c;
-      }
-
-      public fwr e() {
-         return this.e;
-      }
-
-      public fwv a(fwt $$0) {
-         return this.e.a($$0);
-      }
-
-      public fgk f() {
-         return this.f;
-      }
+      this.c.e = $$7;
+      this.c.g = $$8;
+      faa $$10 = a.a($$3, gdu::c);
+      this.c.a($$2, $$10, $$4, $$5);
    }
 }

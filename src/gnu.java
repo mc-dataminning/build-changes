@@ -1,15 +1,23 @@
-public class gnu extends gne<cgd, fwm<cgd>> {
-   private static final alb a = new alb("textures/entity/wolf/wolf_collar.png");
-
-   public gnu(gko<cgd, fwm<cgd>> $$0) {
-      super($$0);
+public class gnu<T extends btn> extends gml<T, fwn<T>> {
+   public gnu(gkr<T, fwn<T>> $$0, gdi $$1) {
+      super($$0, $$1);
    }
 
-   public void a(ezt $$0, gdj $$1, int $$2, cgd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.s() && !$$3.ch()) {
-         float[] $$10 = $$3.gB().d();
-         ezx $$11 = $$1.getBuffer(gdr.e(a));
-         this.c().a($$0, $$11, $$2, gol.d, $$10[0], $$10[1], $$10[2], 1.0F);
+   @Override
+   public void a(ezw $$0, gdm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cun $$10 = $$3.eX();
+      $$0.a();
+      if ($$10.a(cuq.sk)) {
+         this.c().d().a($$0);
+         this.c().e().a($$0);
+         $$0.a(0.0625F, 0.25F, 0.0F);
+         $$0.a(a.f.rotationDegrees(180.0F));
+         $$0.a(a.b.rotationDegrees(140.0F));
+         $$0.a(a.f.rotationDegrees(10.0F));
+         $$0.a(0.0F, -0.4F, 0.4F);
       }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+      $$0.b();
    }
 }

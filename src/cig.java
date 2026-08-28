@@ -1,26 +1,43 @@
 import javax.annotation.Nullable;
 
-public interface cig {
-   boolean a();
+public class cig extends cib {
+   @Nullable
+   private evp b;
 
-   void b();
+   public cig(chz $$0) {
+      super($$0);
+   }
 
-   void c();
+   @Override
+   public void c() {
+      if (this.b == null) {
+         this.b = this.a.dn();
+      }
+   }
 
-   void a(chv var1, iz var2, bri var3, @Nullable cms var4);
+   @Override
+   public boolean a() {
+      return true;
+   }
 
-   void d();
+   @Override
+   public void d() {
+      this.b = null;
+   }
 
-   void e();
-
-   float f();
-
-   float h();
-
-   cim<? extends cig> i();
+   @Override
+   public float f() {
+      return 1.0F;
+   }
 
    @Nullable
-   evm g();
+   @Override
+   public evp g() {
+      return this.b;
+   }
 
-   float a(bri var1, float var2);
+   @Override
+   public cip<cig> i() {
+      return cip.k;
+   }
 }

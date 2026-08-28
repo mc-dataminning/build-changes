@@ -1,3 +1,3 @@
 public interface fwi {
-   fwv c();
+   void a(boolean var1);
 }

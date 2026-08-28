@@ -23,7 +23,7 @@ public class iz extends kd {
    public static final Codec<iz> a = Codec.INT_STREAM
       .comapFlatMap($$0 -> ac.a($$0, 3).map($$0x -> new iz($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()))
       .stable();
-   public static final zj<ByteBuf, iz> b = new zj<ByteBuf, iz>() {
+   public static final zm<ByteBuf, iz> b = new zm<ByteBuf, iz>() {
       public iz a(ByteBuf $$0) {
          return wl.b($$0);
       }
@@ -34,7 +34,7 @@ public class iz extends kd {
    };
    private static final Logger e = LogUtils.getLogger();
    public static final iz c = new iz(0, 0, 0);
-   private static final int h = 1 + ayu.f(ayu.c(30000000));
+   private static final int h = 1 + ayx.f(ayx.c(30000000));
    private static final int i = h;
    public static final int d = 64 - h - i;
    private static final long j = (1L << h) - 1L;
@@ -77,7 +77,7 @@ public class iz extends kd {
    }
 
    public static iz a(double $$0, double $$1, double $$2) {
-      return new iz(ayu.a($$0), ayu.a($$1), ayu.a($$2));
+      return new iz(ayx.a($$0), ayx.a($$1), ayx.a($$2));
    }
 
    public static iz a(js $$0) {
@@ -111,8 +111,8 @@ public class iz extends kd {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new iz(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public evm b() {
-      return evm.b(this);
+   public evp b() {
+      return evp.b(this);
    }
 
    public iz a(kd $$0) {
@@ -198,7 +198,7 @@ public class iz extends kd {
       }
    }
 
-   public iz a(dlh $$0) {
+   public iz a(dlk $$0) {
       switch ($$0) {
          case a:
          default:
@@ -228,7 +228,7 @@ public class iz extends kd {
       return new iz.a(this.u(), this.v(), this.w());
    }
 
-   public static Iterable<iz> a(azc $$0, int $$1, iz $$2, int $$3) {
+   public static Iterable<iz> a(azf $$0, int $$1, iz $$2, int $$3) {
       return a($$0, $$1, $$2.u() - $$3, $$2.v() - $$3, $$2.w() - $$3, $$2.u() + $$3, $$2.v() + $$3, $$2.w() + $$3);
    }
 
@@ -237,7 +237,7 @@ public class iz extends kd {
       return Stream.of($$0, $$0.f(), $$0.h(), $$0.f().h());
    }
 
-   public static Iterable<iz> a(azc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+   public static Iterable<iz> a(azf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
       int $$8 = $$5 - $$2 + 1;
       int $$9 = $$6 - $$3 + 1;
       int $$10 = $$7 - $$4 + 1;
@@ -339,7 +339,7 @@ public class iz extends kd {
       return StreamSupport.stream(c($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<iz> a(ehx $$0) {
+   public static Stream<iz> a(eia $$0) {
       return a(
          Math.min($$0.h(), $$0.k()),
          Math.min($$0.i(), $$0.l()),
@@ -350,8 +350,8 @@ public class iz extends kd {
       );
    }
 
-   public static Stream<iz> a(evh $$0) {
-      return a(ayu.a($$0.a), ayu.a($$0.b), ayu.a($$0.c), ayu.a($$0.d), ayu.a($$0.e), ayu.a($$0.f));
+   public static Stream<iz> a(evk $$0) {
+      return a(ayx.a($$0.a), ayx.a($$0.b), ayx.a($$0.c), ayx.a($$0.d), ayx.a($$0.e), ayx.a($$0.f));
    }
 
    public static Stream<iz> a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
@@ -451,7 +451,7 @@ public class iz extends kd {
       }
 
       public a(double $$0, double $$1, double $$2) {
-         this(ayu.a($$0), ayu.a($$1), ayu.a($$2));
+         this(ayx.a($$0), ayx.a($$1), ayx.a($$2));
       }
 
       @Override
@@ -475,7 +475,7 @@ public class iz extends kd {
       }
 
       @Override
-      public iz a(dlh $$0) {
+      public iz a(dlk $$0) {
          return super.a($$0).i();
       }
 
@@ -487,7 +487,7 @@ public class iz extends kd {
       }
 
       public iz.a b(double $$0, double $$1, double $$2) {
-         return this.d(ayu.a($$0), ayu.a($$1), ayu.a($$2));
+         return this.d(ayx.a($$0), ayx.a($$1), ayx.a($$2));
       }
 
       public iz.a g(kd $$0) {
@@ -533,11 +533,11 @@ public class iz extends kd {
       public iz.a a(je.a $$0, int $$1, int $$2) {
          switch ($$0) {
             case a:
-               return this.d(ayu.a(this.u(), $$1, $$2), this.v(), this.w());
+               return this.d(ayx.a(this.u(), $$1, $$2), this.v(), this.w());
             case b:
-               return this.d(this.u(), ayu.a(this.v(), $$1, $$2), this.w());
+               return this.d(this.u(), ayx.a(this.v(), $$1, $$2), this.w());
             case c:
-               return this.d(this.u(), this.v(), ayu.a(this.w(), $$1, $$2));
+               return this.d(this.u(), this.v(), ayx.a(this.w(), $$1, $$2));
             default:
                throw new IllegalStateException("Unable to clamp axis " + $$0);
          }

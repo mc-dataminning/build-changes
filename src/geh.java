@@ -1,174 +1,320 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
-
 public class geh {
-   private static final boolean f = false;
-   private static final float g = -16.0F;
-   private static final float h = 32.0F;
-   public final Vector3f a;
-   public final Vector3f b;
-   public final Map<je, gei> c;
-   public final gej d;
-   public final boolean e;
+   private static final float a = 0.8888889F;
+   private final gox[] b = new gox[2];
+   private final gox[] c = new gox[2];
+   private gox d;
 
-   public geh(Vector3f $$0, Vector3f $$1, Map<je, gei> $$2, @Nullable gej $$3, boolean $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.a();
+   protected void a() {
+      this.b[0] = ffd.Q().aD().b().b(dez.H.o()).e();
+      this.b[1] = grd.c.c();
+      this.c[0] = ffd.Q().aD().b().b(dez.G.o()).e();
+      this.c[1] = grd.d.c();
+      this.d = grd.e.c();
    }
 
-   private void a() {
-      for (Entry<je, gei> $$0 : this.c.entrySet()) {
-         float[] $$1 = this.a($$0.getKey());
-         $$0.getValue().e.a($$1);
-      }
+   private static boolean a(ent $$0, ent $$1) {
+      return $$1.a().a($$0.a());
    }
 
-   private float[] a(je $$0) {
-      switch ($$0) {
-         case a:
-            return new float[]{this.a.x(), 16.0F - this.b.z(), this.b.x(), 16.0F - this.a.z()};
-         case b:
-            return new float[]{this.a.x(), this.a.z(), this.b.x(), this.b.z()};
-         case c:
-         default:
-            return new float[]{16.0F - this.b.x(), 16.0F - this.b.y(), 16.0F - this.a.x(), 16.0F - this.a.y()};
-         case d:
-            return new float[]{this.a.x(), 16.0F - this.b.y(), this.b.x(), 16.0F - this.a.y()};
-         case e:
-            return new float[]{this.a.z(), 16.0F - this.b.y(), this.b.z(), 16.0F - this.a.y()};
-         case f:
-            return new float[]{16.0F - this.b.z(), 16.0F - this.b.y(), 16.0F - this.a.z(), 16.0F - this.a.y()};
+   private static boolean a(dbc $$0, je $$1, float $$2, iz $$3, dsa $$4) {
+      if ($$4.p()) {
+         ewi $$5 = ewf.a(0.0, 0.0, 0.0, 1.0, (double)$$2, 1.0);
+         ewi $$6 = $$4.c($$0, $$3);
+         return ewf.a($$5, $$6, $$1);
+      } else {
+         return false;
       }
    }
 
-   protected static class a implements JsonDeserializer<geh> {
-      private static final boolean a = true;
+   private static boolean a(dbc $$0, iz $$1, je $$2, float $$3, dsa $$4) {
+      return a($$0, $$2, $$3, $$1.a($$2), $$4);
+   }
 
-      public geh a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Vector3f $$4 = this.e($$3);
-         Vector3f $$5 = this.d($$3);
-         gej $$6 = this.a($$3);
-         Map<je, gei> $$7 = this.a($$2, $$3);
-         if ($$3.has("shade") && !ayk.c($$3, "shade")) {
-            throw new JsonParseException("Expected shade to be a Boolean");
+   private static boolean a(dbc $$0, iz $$1, dsa $$2, je $$3) {
+      return a($$0, $$3.g(), 1.0F, $$1, $$2);
+   }
+
+   public static boolean a(daz $$0, iz $$1, ent $$2, dsa $$3, je $$4, ent $$5) {
+      return !a($$0, $$1, $$3, $$4) && !a($$2, $$5);
+   }
+
+   public void a(daz $$0, iz $$1, faa $$2, dsa $$3, ent $$4) {
+      boolean $$5 = $$4.a(awu.b);
+      gox[] $$6 = $$5 ? this.b : this.c;
+      int $$7 = $$5 ? 16777215 : gcy.c($$0, $$1);
+      float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+      float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+      float $$10 = (float)($$7 & 0xFF) / 255.0F;
+      dsa $$11 = $$0.a_($$1.a(je.a));
+      ent $$12 = $$11.u();
+      dsa $$13 = $$0.a_($$1.a(je.b));
+      ent $$14 = $$13.u();
+      dsa $$15 = $$0.a_($$1.a(je.c));
+      ent $$16 = $$15.u();
+      dsa $$17 = $$0.a_($$1.a(je.d));
+      ent $$18 = $$17.u();
+      dsa $$19 = $$0.a_($$1.a(je.e));
+      ent $$20 = $$19.u();
+      dsa $$21 = $$0.a_($$1.a(je.f));
+      ent $$22 = $$21.u();
+      boolean $$23 = !a($$4, $$14);
+      boolean $$24 = a($$0, $$1, $$4, $$3, je.a, $$12) && !a($$0, $$1, je.a, 0.8888889F, $$11);
+      boolean $$25 = a($$0, $$1, $$4, $$3, je.c, $$16);
+      boolean $$26 = a($$0, $$1, $$4, $$3, je.d, $$18);
+      boolean $$27 = a($$0, $$1, $$4, $$3, je.e, $$20);
+      boolean $$28 = a($$0, $$1, $$4, $$3, je.f, $$22);
+      if ($$23 || $$24 || $$28 || $$27 || $$25 || $$26) {
+         float $$29 = $$0.a(je.a, true);
+         float $$30 = $$0.a(je.b, true);
+         float $$31 = $$0.a(je.c, true);
+         float $$32 = $$0.a(je.e, true);
+         ens $$33 = $$4.a();
+         float $$34 = this.a($$0, $$33, $$1, $$3, $$4);
+         float $$35;
+         float $$36;
+         float $$37;
+         float $$38;
+         if ($$34 >= 1.0F) {
+            $$35 = 1.0F;
+            $$36 = 1.0F;
+            $$37 = 1.0F;
+            $$38 = 1.0F;
          } else {
-            boolean $$8 = ayk.a($$3, "shade", true);
-            return new geh($$4, $$5, $$7, $$6, $$8);
-         }
-      }
-
-      @Nullable
-      private gej a(JsonObject $$0) {
-         gej $$1 = null;
-         if ($$0.has("rotation")) {
-            JsonObject $$2 = ayk.u($$0, "rotation");
-            Vector3f $$3 = this.a($$2, "origin");
-            $$3.mul(0.0625F);
-            je.a $$4 = this.c($$2);
-            float $$5 = this.b($$2);
-            boolean $$6 = ayk.a($$2, "rescale", false);
-            $$1 = new gej($$3, $$4, $$5, $$6);
+            float $$39 = this.a($$0, $$33, $$1.e(), $$15, $$16);
+            float $$40 = this.a($$0, $$33, $$1.f(), $$17, $$18);
+            float $$41 = this.a($$0, $$33, $$1.h(), $$21, $$22);
+            float $$42 = this.a($$0, $$33, $$1.g(), $$19, $$20);
+            $$35 = this.a($$0, $$33, $$34, $$39, $$41, $$1.a(je.c).a(je.f));
+            $$36 = this.a($$0, $$33, $$34, $$39, $$42, $$1.a(je.c).a(je.e));
+            $$37 = this.a($$0, $$33, $$34, $$40, $$41, $$1.a(je.d).a(je.f));
+            $$38 = this.a($$0, $$33, $$34, $$40, $$42, $$1.a(je.d).a(je.e));
          }
 
-         return $$1;
-      }
-
-      private float b(JsonObject $$0) {
-         float $$1 = ayk.m($$0, "angle");
-         if ($$1 != 0.0F && ayu.e($$1) != 22.5F && ayu.e($$1) != 45.0F) {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
-         } else {
-            return $$1;
-         }
-      }
-
-      private je.a c(JsonObject $$0) {
-         String $$1 = ayk.i($$0, "axis");
-         je.a $$2 = je.a.a($$1.toLowerCase(Locale.ROOT));
-         if ($$2 == null) {
-            throw new JsonParseException("Invalid rotation axis: " + $$1);
-         } else {
-            return $$2;
-         }
-      }
-
-      private Map<je, gei> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<je, gei> $$2 = this.b($$0, $$1);
-         if ($$2.isEmpty()) {
-            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
-         } else {
-            return $$2;
-         }
-      }
-
-      private Map<je, gei> b(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<je, gei> $$2 = Maps.newEnumMap(je.class);
-         JsonObject $$3 = ayk.u($$1, "faces");
-
-         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-            je $$5 = this.a($$4.getKey());
-            $$2.put($$5, (gei)$$0.deserialize($$4.getValue(), gei.class));
-         }
-
-         return $$2;
-      }
-
-      private je a(String $$0) {
-         je $$1 = je.a($$0);
-         if ($$1 == null) {
-            throw new JsonParseException("Unknown facing: " + $$0);
-         } else {
-            return $$1;
-         }
-      }
-
-      private Vector3f d(JsonObject $$0) {
-         Vector3f $$1 = this.a($$0, "to");
-         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
-            return $$1;
-         } else {
-            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
-         }
-      }
-
-      private Vector3f e(JsonObject $$0) {
-         Vector3f $$1 = this.a($$0, "from");
-         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
-            return $$1;
-         } else {
-            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
-         }
-      }
-
-      private Vector3f a(JsonObject $$0, String $$1) {
-         JsonArray $$2 = ayk.v($$0, $$1);
-         if ($$2.size() != 3) {
-            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
-         } else {
-            float[] $$3 = new float[3];
-
-            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-               $$3[$$4] = ayk.e($$2.get($$4), $$1 + "[" + $$4 + "]");
+         double $$47 = (double)($$1.u() & 15);
+         double $$48 = (double)($$1.v() & 15);
+         double $$49 = (double)($$1.w() & 15);
+         float $$50 = 0.001F;
+         float $$51 = $$24 ? 0.001F : 0.0F;
+         if ($$23 && !a($$0, $$1, je.b, Math.min(Math.min($$36, $$38), Math.min($$37, $$35)), $$13)) {
+            $$36 -= 0.001F;
+            $$38 -= 0.001F;
+            $$37 -= 0.001F;
+            $$35 -= 0.001F;
+            evp $$52 = $$4.c($$0, $$1);
+            float $$54;
+            float $$56;
+            float $$58;
+            float $$60;
+            float $$55;
+            float $$57;
+            float $$59;
+            float $$61;
+            if ($$52.c == 0.0 && $$52.e == 0.0) {
+               gox $$53 = $$6[0];
+               $$54 = $$53.a(0.0F);
+               $$55 = $$53.c(0.0F);
+               $$56 = $$54;
+               $$57 = $$53.c(1.0F);
+               $$58 = $$53.a(1.0F);
+               $$59 = $$57;
+               $$60 = $$58;
+               $$61 = $$55;
+            } else {
+               gox $$62 = $$6[1];
+               float $$63 = (float)ayx.d($$52.e, $$52.c) - (float) (Math.PI / 2);
+               float $$64 = ayx.a($$63) * 0.25F;
+               float $$65 = ayx.b($$63) * 0.25F;
+               float $$66 = 0.5F;
+               $$54 = $$62.a(0.5F + (-$$65 - $$64));
+               $$55 = $$62.c(0.5F + -$$65 + $$64);
+               $$56 = $$62.a(0.5F + -$$65 + $$64);
+               $$57 = $$62.c(0.5F + $$65 + $$64);
+               $$58 = $$62.a(0.5F + $$65 + $$64);
+               $$59 = $$62.c(0.5F + ($$65 - $$64));
+               $$60 = $$62.a(0.5F + ($$65 - $$64));
+               $$61 = $$62.c(0.5F + (-$$65 - $$64));
             }
 
-            return new Vector3f($$3[0], $$3[1], $$3[2]);
+            float $$75 = ($$54 + $$56 + $$58 + $$60) / 4.0F;
+            float $$76 = ($$55 + $$57 + $$59 + $$61) / 4.0F;
+            float $$77 = $$6[0].k();
+            $$54 = ayx.i($$77, $$54, $$75);
+            $$56 = ayx.i($$77, $$56, $$75);
+            $$58 = ayx.i($$77, $$58, $$75);
+            $$60 = ayx.i($$77, $$60, $$75);
+            $$55 = ayx.i($$77, $$55, $$76);
+            $$57 = ayx.i($$77, $$57, $$76);
+            $$59 = ayx.i($$77, $$59, $$76);
+            $$61 = ayx.i($$77, $$61, $$76);
+            int $$78 = this.a($$0, $$1);
+            float $$79 = $$30 * $$8;
+            float $$80 = $$30 * $$9;
+            float $$81 = $$30 * $$10;
+            this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
+            this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
+            if ($$4.b($$0, $$1.c())) {
+               this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
+               this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
+               this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
+               this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
+            }
+         }
+
+         if ($$24) {
+            float $$82 = $$6[0].c();
+            float $$83 = $$6[0].d();
+            float $$84 = $$6[0].g();
+            float $$85 = $$6[0].h();
+            int $$86 = this.a($$0, $$1.d());
+            float $$87 = $$29 * $$8;
+            float $$88 = $$29 * $$9;
+            float $$89 = $$29 * $$10;
+            this.a($$2, $$47, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$82, $$85, $$86);
+            this.a($$2, $$47, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$82, $$84, $$86);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$83, $$84, $$86);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$83, $$85, $$86);
+         }
+
+         int $$90 = this.a($$0, $$1);
+
+         for (je $$91 : je.c.a) {
+            float $$92;
+            float $$93;
+            double $$94;
+            double $$96;
+            double $$95;
+            double $$97;
+            boolean $$98;
+            switch ($$91) {
+               case c:
+                  $$92 = $$36;
+                  $$93 = $$35;
+                  $$94 = $$47;
+                  $$95 = $$47 + 1.0;
+                  $$96 = $$49 + 0.001F;
+                  $$97 = $$49 + 0.001F;
+                  $$98 = $$25;
+                  break;
+               case d:
+                  $$92 = $$37;
+                  $$93 = $$38;
+                  $$94 = $$47 + 1.0;
+                  $$95 = $$47;
+                  $$96 = $$49 + 1.0 - 0.001F;
+                  $$97 = $$49 + 1.0 - 0.001F;
+                  $$98 = $$26;
+                  break;
+               case e:
+                  $$92 = $$38;
+                  $$93 = $$36;
+                  $$94 = $$47 + 0.001F;
+                  $$95 = $$47 + 0.001F;
+                  $$96 = $$49 + 1.0;
+                  $$97 = $$49;
+                  $$98 = $$27;
+                  break;
+               default:
+                  $$92 = $$35;
+                  $$93 = $$37;
+                  $$94 = $$47 + 1.0 - 0.001F;
+                  $$95 = $$47 + 1.0 - 0.001F;
+                  $$96 = $$49;
+                  $$97 = $$49 + 1.0;
+                  $$98 = $$28;
+            }
+
+            if ($$98 && !a($$0, $$1, $$91, Math.max($$92, $$93), $$0.a_($$1.a($$91)))) {
+               iz $$120 = $$1.a($$91);
+               gox $$121 = $$6[1];
+               if (!$$5) {
+                  dex $$122 = $$0.a_($$120).b();
+                  if ($$122 instanceof din || $$122 instanceof djh) {
+                     $$121 = this.d;
+                  }
+               }
+
+               float $$123 = $$121.a(0.0F);
+               float $$124 = $$121.a(0.5F);
+               float $$125 = $$121.c((1.0F - $$92) * 0.5F);
+               float $$126 = $$121.c((1.0F - $$93) * 0.5F);
+               float $$127 = $$121.c(0.5F);
+               float $$128 = $$91.o() == je.a.c ? $$31 : $$32;
+               float $$129 = $$30 * $$128 * $$8;
+               float $$130 = $$30 * $$128 * $$9;
+               float $$131 = $$30 * $$128 * $$10;
+               this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
+               this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
+               this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
+               this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
+               if ($$121 != this.d) {
+                  this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
+                  this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
+                  this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
+                  this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
+               }
+            }
          }
       }
+   }
+
+   private float a(daz $$0, ens $$1, float $$2, float $$3, float $$4, iz $$5) {
+      if (!($$4 >= 1.0F) && !($$3 >= 1.0F)) {
+         float[] $$6 = new float[2];
+         if ($$4 > 0.0F || $$3 > 0.0F) {
+            float $$7 = this.a($$0, $$1, $$5);
+            if ($$7 >= 1.0F) {
+               return 1.0F;
+            }
+
+            this.a($$6, $$7);
+         }
+
+         this.a($$6, $$2);
+         this.a($$6, $$4);
+         this.a($$6, $$3);
+         return $$6[0] / $$6[1];
+      } else {
+         return 1.0F;
+      }
+   }
+
+   private void a(float[] $$0, float $$1) {
+      if ($$1 >= 0.8F) {
+         $$0[0] += $$1 * 10.0F;
+         $$0[1] += 10.0F;
+      } else if ($$1 >= 0.0F) {
+         $$0[0] += $$1;
+         $$0[1]++;
+      }
+   }
+
+   private float a(daz $$0, ens $$1, iz $$2) {
+      dsa $$3 = $$0.a_($$2);
+      return this.a($$0, $$1, $$2, $$3, $$3.u());
+   }
+
+   private float a(daz $$0, ens $$1, iz $$2, dsa $$3, ent $$4) {
+      if ($$1.a($$4.a())) {
+         dsa $$5 = $$0.a_($$2.c());
+         return $$1.a($$5.u().a()) ? 1.0F : $$4.d();
+      } else {
+         return !$$3.e() ? 0.0F : -1.0F;
+      }
+   }
+
+   private void a(faa $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      $$0.a($$1, $$2, $$3).a($$4, $$5, $$6, 1.0F).a($$7, $$8).b($$9).a(0.0F, 1.0F, 0.0F).e();
+   }
+
+   private int a(daz $$0, iz $$1) {
+      int $$2 = gdk.a($$0, $$1);
+      int $$3 = gdk.a($$0, $$1.c());
+      int $$4 = $$2 & 0xFF;
+      int $$5 = $$3 & 0xFF;
+      int $$6 = $$2 >> 16 & 0xFF;
+      int $$7 = $$3 >> 16 & 0xFF;
+      return ($$4 > $$5 ? $$4 : $$5) | ($$6 > $$7 ? $$6 : $$7) << 16;
    }
 }

@@ -1,15 +1,10 @@
-public class dpy extends doq {
-   public dpy(iz $$0, drx $$1) {
-      super(dpe.a, $$0, $$1, cyv.b);
+public class dpy extends dpx {
+   public dpy(iz $$0, dsa $$1) {
+      super(dph.g, $$0, $$1);
    }
 
    @Override
-   protected xl k() {
-      return xl.c("container.furnace");
-   }
-
-   @Override
-   protected cpp a(int $$0, cmr $$1) {
-      return new cql($$0, $$1, this, this.m);
+   protected xo k() {
+      return xo.c("container.dropper");
    }
 }

@@ -1,11 +1,13 @@
-public class ghp extends gjy<cgj, fst> {
-   private static final alb a = new alb("textures/entity/armadillo.png");
+public abstract class ghp<T extends chh, M extends fuj<T>> extends gkb<T, M> {
+   private final float a;
 
-   public ghp(gis.a $$0) {
-      super($$0, new fst($$0.a(fwu.b)), 0.4F);
+   public ghp(giv.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   public alb a(cgj $$0) {
-      return a;
+   protected void a(T $$0, ezw $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

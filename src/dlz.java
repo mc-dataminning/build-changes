@@ -1,113 +1,82 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public class dlz extends dhc implements dex, dlv {
-   public static final MapCodec<dlz> c = b(dlz::new);
-   private static final dso g = dsn.C;
-   public static final dsr d = dsn.R;
-   protected static final float e = 6.0F;
-   protected static final ewf f = deu.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class dlz extends ddt {
+   public static final MapCodec<dlz> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dlz.a.b.fieldOf("kind").forGetter(ddt::b), u()).apply($$0, dlz::new));
+   public static final int d = dtg.a();
+   private static final int b = d + 1;
+   public static final dta e = dsq.ba;
+   protected static final ewi f = dex.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   protected static final ewi g = dex.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
 
    @Override
-   public MapCodec<dlz> a() {
+   public MapCodec<? extends dlz> a() {
       return c;
    }
 
-   public dlz(drw.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, dst.b).a(g, Boolean.valueOf(false)).a(d, je.c));
+   protected dlz(dlz.a $$0, drz.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(e, Integer.valueOf(0)));
    }
 
    @Override
-   protected ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
-      return f;
+   protected ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
+      return this.b() == dlz.b.h ? g : f;
    }
 
    @Override
-   protected boolean b(drx $$0, daz $$1, iz $$2) {
-      return $$0.a(awl.bx) || $$1.b_($$2.c()).a(enr.c) && super.b($$0, $$1, $$2);
-   }
-
-   @Nullable
-   @Override
-   public drx a(cxv $$0) {
-      drx $$1 = super.a($$0);
-      return $$1 != null ? c($$0.q(), $$0.a(), $$1.a(d, $$0.g().g())) : null;
+   protected ewi f(dsa $$0, dbc $$1, iz $$2) {
+      return ewf.a();
    }
 
    @Override
-   public void a(dbt $$0, iz $$1, drx $$2, btk $$3, cuk $$4) {
-      if (!$$0.x_()) {
-         iz $$5 = $$1.c();
-         drx $$6 = dhc.c($$0, $$5, this.n().a(b, dst.a).a(d, $$2.c(d)));
-         $$0.a($$5, $$6, 3);
+   public dsa a(cxy $$0) {
+      return super.a($$0).a(e, Integer.valueOf(dtg.a($$0.i())));
+   }
+
+   @Override
+   protected dsa a(dsa $$0, dlk $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected dsa a(dsa $$0, dju $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected void a(dsb.a<dex, dsa> $$0) {
+      super.a($$0);
+      $$0.a(e);
+   }
+
+   public interface a extends azs {
+      Map<String, dlz.a> a = new Object2ObjectArrayMap();
+      Codec<dlz.a> b = Codec.stringResolver(azs::c, a::get);
+   }
+
+   public static enum b implements dlz.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(final String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
-   }
 
-   @Override
-   protected enq b_(drx $$0) {
-      return $$0.c(g) ? enr.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(drx $$0, dbw $$1, iz $$2) {
-      if ($$0.c(b) == dst.a) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         iz $$3 = $$2.d();
-         drx $$4 = $$1.a_($$3);
-         return this.b($$4, $$1, $$3);
+      @Override
+      public String c() {
+         return this.j;
       }
-   }
-
-   @Override
-   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
-      if ($$0.c(g)) {
-         $$3.a($$4, enr.c, enr.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      $$0.a(b, g, d);
-   }
-
-   @Override
-   public boolean b(dbw $$0, iz $$1, drx $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dbt $$0, azc $$1, iz $$2, drx $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arb $$0, azc $$1, iz $$2, drx $$3) {
-      if ($$3.c(dhc.b) == dst.b) {
-         iz $$4 = $$2.c();
-         $$0.a($$4, $$0.b_($$4).g(), 18);
-         der.a($$0, $$1, $$2, $$3.c(d));
-      } else {
-         iz $$5 = $$2.d();
-         this.a($$0, $$1, $$5, $$0.a_($$5));
-      }
-   }
-
-   @Override
-   protected drx a(drx $$0, dlh $$1) {
-      return $$0.a(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected drx a(drx $$0, djr $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected float au_() {
-      return 0.1F;
    }
 }

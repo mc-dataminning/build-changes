@@ -1,30 +1,35 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class arw implements aiw {
-   private final MinecraftServer a;
-   private final wj b;
+public record arw(String b, xs c) {
+   public static final arw a = a("");
 
-   public arw(MinecraftServer $$0, wj $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static arw a(String $$0) {
+      return new arw($$0, xs.c);
    }
 
-   @Override
-   public void a(ait $$0) {
-      if ($$0.g() != ais.b) {
-         throw new UnsupportedOperationException("Invalid intention " + $$0.g());
-      } else {
-         this.b.a(ajf.a, new asd(this.a, this.b, false));
-         this.b.a(ajf.b);
-      }
+   public static arw b(String $$0) {
+      return new arw($$0, xs.b);
    }
 
-   @Override
-   public void a(xl $$0) {
+   @Nullable
+   public String a() {
+      return this.c.a(this.b);
    }
 
-   @Override
+   public String b() {
+      return Objects.requireNonNullElse(this.a(), "");
+   }
+
    public boolean c() {
-      return this.b.i();
+      return !this.c.a();
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public xs e() {
+      return this.c;
    }
 }

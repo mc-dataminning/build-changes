@@ -1,45 +1,85 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-public record etl(Optional<dc> b, iz c) implements etn {
-   private static final MapCodec<iz> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(kd::u),
-               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(kd::v),
-               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(kd::w)
-            )
-            .apply($$0, iz::new)
-   );
+public record etl(Map<String, eqf> b, eqg.b c) implements etq {
    public static final MapCodec<etl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dc.a.optionalFieldOf("predicate").forGetter(etl::c), d.forGetter(etl::d)).apply($$0, etl::new)
+      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, eqf.a).fieldOf("scores").forGetter(etl::c), eqg.b.e.fieldOf("entity").forGetter(etl::d))
+            .apply($$0, etl::new)
    );
 
    @Override
-   public eto b() {
-      return etp.p;
+   public etr b() {
+      return ets.j;
    }
 
-   public boolean a(eqd $$0) {
-      evm $$1 = $$0.c(esz.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   @Override
+   public Set<esz<?>> a() {
+      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
    }
 
-   public static etn.a a(dc.a $$0) {
-      return () -> new etl(Optional.of($$0.b()), iz.c);
+   public boolean a(eqg $$0) {
+      bss $$1 = $$0.c(this.c.a());
+      if ($$1 == null) {
+         return false;
+      } else {
+         ewt $$2 = $$0.d().f();
+
+         for (Entry<String, eqf> $$3 : this.b.entrySet()) {
+            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 
-   public static etn.a a(dc.a $$0, iz $$1) {
-      return () -> new etl(Optional.of($$0.b()), $$1);
+   protected boolean a(eqg $$0, bss $$1, ewt $$2, String $$3, eqf $$4) {
+      ewl $$5 = $$2.a($$3);
+      if ($$5 == null) {
+         return false;
+      } else {
+         ewp $$6 = $$2.d($$1, $$5);
+         return $$6 == null ? false : $$4.b($$0, $$6.a());
+      }
    }
 
-   public Optional<dc> c() {
+   public static etl.a a(eqg.b $$0) {
+      return new etl.a($$0);
+   }
+
+   public Map<String, eqf> c() {
       return this.b;
    }
 
-   public iz d() {
+   public eqg.b d() {
       return this.c;
+   }
+
+   public static class a implements etq.a {
+      private final Builder<String, eqf> a = ImmutableMap.builder();
+      private final eqg.b b;
+
+      public a(eqg.b $$0) {
+         this.b = $$0;
+      }
+
+      public etl.a a(String $$0, eqf $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public etq build() {
+         return new etl(this.a.build(), this.b);
+      }
    }
 }

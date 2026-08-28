@@ -1,3 +1,8 @@
-public interface grs {
-   void a();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface grs {
 }

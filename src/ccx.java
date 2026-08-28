@@ -1,50 +1,78 @@
-import javax.annotation.Nullable;
-
-public class ccx extends ccv {
-   @Nullable
-   private iz p;
-
-   public ccx(btm $$0, dbt $$1) {
+public class ccx extends ccz {
+   public ccx(btp $$0, dbw $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public eoe a(iz $$0, int $$1) {
-      this.p = $$0;
-      return super.a($$0, $$1);
+   protected eoj a(int $$0) {
+      this.o = new eoe();
+      this.o.a(true);
+      return new eoj(this.o, $$0);
    }
 
    @Override
-   public eoe a(bsp $$0, int $$1) {
-      this.p = $$0.dp();
-      return super.a($$0, $$1);
+   protected boolean a(evp $$0, evp $$1) {
+      return a(this.a, $$0, $$1, true);
    }
 
    @Override
-   public boolean a(bsp $$0, double $$1) {
-      eoe $$2 = this.a($$0, 0);
-      if ($$2 != null) {
-         return this.a($$2, $$1);
-      } else {
-         this.p = $$0.dp();
-         this.d = $$1;
-         return true;
-      }
+   protected boolean a() {
+      return this.p() && this.a.bi() || !this.a.bR();
+   }
+
+   @Override
+   protected evp b() {
+      return this.a.dn();
+   }
+
+   @Override
+   public eoh a(bss $$0, int $$1) {
+      return this.a($$0.dp(), $$1);
    }
 
    @Override
    public void c() {
+      this.e++;
+      if (this.m) {
+         this.i();
+      }
+
       if (!this.l()) {
-         super.c();
-      } else {
-         if (this.p != null) {
-            if (!this.p.a(this.a.dn(), (double)this.a.dj())
-               && (!(this.a.dw() > (double)this.p.v()) || !iz.a((double)this.p.u(), this.a.dw(), (double)this.p.w()).a(this.a.dn(), (double)this.a.dj()))) {
-               this.a.H().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
-            } else {
-               this.p = null;
+         if (this.a()) {
+            this.k();
+         } else if (this.c != null && !this.c.c()) {
+            evp $$0 = this.c.a(this.a);
+            if (this.a.dt() == ayx.a($$0.c) && this.a.dv() == ayx.a($$0.d) && this.a.dz() == ayx.a($$0.e)) {
+               this.c.a();
             }
          }
+
+         ags.a(this.b, this.a, this.c, this.l);
+         if (!this.l()) {
+            evp $$1 = this.c.a(this.a);
+            this.a.H().a($$1.c, $$1.d, $$1.e, this.d);
+         }
       }
+   }
+
+   public void b(boolean $$0) {
+      this.o.b($$0);
+   }
+
+   public boolean d() {
+      return this.o.d();
+   }
+
+   public void c(boolean $$0) {
+      this.o.a($$0);
+   }
+
+   public boolean e() {
+      return this.o.d();
+   }
+
+   @Override
+   public boolean a(iz $$0) {
+      return this.b.a_($$0).a(this.b, $$0, this.a);
    }
 }

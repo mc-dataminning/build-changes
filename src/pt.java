@@ -1,40 +1,40 @@
 import java.util.concurrent.CompletableFuture;
 
-public class pt extends py<bsv<?>> {
+public class pt extends py<bsy<?>> {
    public pt(ly $$0, CompletableFuture<jk.a> $$1) {
       super($$0, lq.v, $$1, $$0x -> $$0x.r().h());
    }
 
    @Override
    protected void a(jk.a $$0) {
-      this.a(awp.a).a(bsv.aN, bsv.aY, bsv.bq, bsv.aO);
-      this.a(awp.b).a(bsv.bv, bsv.bu, bsv.bw, bsv.bx, bsv.bt, bsv.B, bsv.ac);
-      this.a(awp.c).a(bsv.J, bsv.aC, bsv.aH, bsv.bk, bsv.ad, bsv.bo);
-      this.a(awp.d).a(awp.a).a(awp.b).a(bsv.bp).a(bsv.ay);
-      this.a(awp.e).a(bsv.h);
-      this.a(awp.f).a(bsv.e, bsv.aV);
-      this.a(awp.g).a(awp.f).a(bsv.P).a(bsv.aT, bsv.ak, bsv.aQ, bsv.C, bsv.bf, bsv.A, bsv.br);
-      this.a(awp.h).a(bsv.aG, bsv.I, bsv.aM, bsv.Q);
-      this.a(awp.j).a(bsv.bg, bsv.aF, bsv.aI, bsv.u, bsv.aX, bsv.W, bsv.ba);
-      this.a(awp.i).a(bsv.B, bsv.Y, bsv.D);
-      this.a(awp.k).a(bsv.aY, bsv.aD, bsv.aS, bsv.bp);
-      this.a(awp.l).a(bsv.aZ, bsv.i, bsv.ap);
-      this.a(awp.m).a(awp.d).a(bsv.f, bsv.R, bsv.Y, bsv.D, bsv.bh, bsv.W, bsv.u, bsv.aF, bsv.aI, bsv.aX, bsv.bg, bsv.ba, bsv.d);
-      this.a(awp.n).a(bsv.aP, bsv.ap);
-      this.a(awp.o).a(bsv.af, bsv.aS, bsv.aK, bsv.a, bsv.g, bsv.h, bsv.i, bsv.p, bsv.t, bsv.T, bsv.ay, bsv.ap, bsv.au, bsv.ax, bsv.bp);
-      this.a(awp.p).a(bsv.o, bsv.t, bsv.z, bsv.ab, bsv.an, bsv.at, bsv.az, bsv.aH, bsv.aW, bsv.aZ, bsv.be, bsv.bv);
-      this.a(awp.q).a(bsv.aP, bsv.ap);
-      this.a(awp.t).a(bsv.J).a(bsv.ad).a(bsv.aC).a(bsv.bk);
-      this.a(awp.u).a(bsv.bh).a(bsv.f).a(bsv.Y).a(bsv.D).a(bsv.u).a(bsv.aF).a(bsv.aI).a(bsv.bg).a(bsv.y).a(bsv.aX).a(bsv.W).a(bsv.ba);
-      this.a(awp.v).a(bsv.h).a(bsv.I).a(bsv.aM).a(bsv.aW).a(bsv.q);
-      this.a(awp.w).a(awp.d);
-      this.a(awp.x).a(awp.d);
-      this.a(awp.y).a(awp.d);
-      this.a(awp.z).a(awp.t);
-      this.a(awp.A).a(bsv.bh).a(bsv.Y).a(bsv.D).a(bsv.u).a(bsv.aF).a(bsv.aI).a(bsv.bg).a(bsv.y).a(bsv.aX).a(bsv.W).a(bsv.ba);
-      this.a(awp.B).a(awp.u);
-      this.a(awp.C).a(awp.v);
-      this.a(awp.D).a(awp.d);
-      this.a(awp.H).a(bsv.ak);
+      this.a(aws.a).a(bsy.aN, bsy.aY, bsy.bq, bsy.aO);
+      this.a(aws.b).a(bsy.bv, bsy.bu, bsy.bw, bsy.bx, bsy.bt, bsy.B, bsy.ac);
+      this.a(aws.c).a(bsy.J, bsy.aC, bsy.aH, bsy.bk, bsy.ad, bsy.bo);
+      this.a(aws.d).a(aws.a).a(aws.b).a(bsy.bp).a(bsy.ay);
+      this.a(aws.e).a(bsy.h);
+      this.a(aws.f).a(bsy.e, bsy.aV);
+      this.a(aws.g).a(aws.f).a(bsy.P).a(bsy.aT, bsy.ak, bsy.aQ, bsy.C, bsy.bf, bsy.A, bsy.br);
+      this.a(aws.h).a(bsy.aG, bsy.I, bsy.aM, bsy.Q);
+      this.a(aws.j).a(bsy.bg, bsy.aF, bsy.aI, bsy.u, bsy.aX, bsy.W, bsy.ba);
+      this.a(aws.i).a(bsy.B, bsy.Y, bsy.D);
+      this.a(aws.k).a(bsy.aY, bsy.aD, bsy.aS, bsy.bp);
+      this.a(aws.l).a(bsy.aZ, bsy.i, bsy.ap);
+      this.a(aws.m).a(aws.d).a(bsy.f, bsy.R, bsy.Y, bsy.D, bsy.bh, bsy.W, bsy.u, bsy.aF, bsy.aI, bsy.aX, bsy.bg, bsy.ba, bsy.d);
+      this.a(aws.n).a(bsy.aP, bsy.ap);
+      this.a(aws.o).a(bsy.af, bsy.aS, bsy.aK, bsy.a, bsy.g, bsy.h, bsy.i, bsy.p, bsy.t, bsy.T, bsy.ay, bsy.ap, bsy.au, bsy.ax, bsy.bp);
+      this.a(aws.p).a(bsy.o, bsy.t, bsy.z, bsy.ab, bsy.an, bsy.at, bsy.az, bsy.aH, bsy.aW, bsy.aZ, bsy.be, bsy.bv);
+      this.a(aws.q).a(bsy.aP, bsy.ap);
+      this.a(aws.t).a(bsy.J).a(bsy.ad).a(bsy.aC).a(bsy.bk);
+      this.a(aws.u).a(bsy.bh).a(bsy.f).a(bsy.Y).a(bsy.D).a(bsy.u).a(bsy.aF).a(bsy.aI).a(bsy.bg).a(bsy.y).a(bsy.aX).a(bsy.W).a(bsy.ba);
+      this.a(aws.v).a(bsy.h).a(bsy.I).a(bsy.aM).a(bsy.aW).a(bsy.q);
+      this.a(aws.w).a(aws.d);
+      this.a(aws.x).a(aws.d);
+      this.a(aws.y).a(aws.d);
+      this.a(aws.z).a(aws.t);
+      this.a(aws.A).a(bsy.bh).a(bsy.Y).a(bsy.D).a(bsy.u).a(bsy.aF).a(bsy.aI).a(bsy.bg).a(bsy.y).a(bsy.aX).a(bsy.W).a(bsy.ba);
+      this.a(aws.B).a(aws.u);
+      this.a(aws.C).a(aws.v);
+      this.a(aws.D).a(aws.d);
+      this.a(aws.H).a(bsy.ak);
    }
 }

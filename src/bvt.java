@@ -1,79 +1,73 @@
-import java.util.Map;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class bvt<E extends btk & cmd> extends bvd<E> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private final Function<btk, Optional<bwr>> e;
-   private final float f;
+public class bvt extends bvg<btw> {
+   public static final int c = 100;
+   public static final double d = 2.5;
+   public static final double e = 3.5;
+   private final Function<btn, Float> f;
+   private final Function<btn, Double> g;
 
-   public bvt(Function<btk, Optional<bwr>> $$0, float $$1, int $$2) {
-      super(Map.of(cco.n, ccp.c, cco.m, ccp.c, cco.aP, ccp.c), $$2);
-      this.e = $$0;
-      this.f = $$1;
+   public bvt(Function<btn, Float> $$0) {
+      this($$0, $$0x -> 2.5);
+   }
+
+   public bvt(Function<btn, Float> $$0, Function<btn, Double> $$1) {
+      super(ac.a(() -> {
+         Builder<ccr<?>, ccs> $$0x = ImmutableMap.builder();
+         $$0x.put(ccr.n, ccs.c);
+         $$0x.put(ccr.m, ccs.c);
+         $$0x.put(ccr.P, ccs.b);
+         $$0x.put(ccr.R, ccs.c);
+         $$0x.put(ccr.O, ccs.a);
+         $$0x.put(ccr.r, ccs.b);
+         $$0x.put(ccr.Z, ccs.b);
+         return $$0x.build();
+      }));
+      this.f = $$0;
+      this.g = $$1;
+   }
+
+   protected float a(btw $$0) {
+      return this.f.apply($$0);
+   }
+
+   private Optional<cmv> b(btw $$0) {
+      return $$0.dS().c(ccr.O);
    }
 
    @Override
-   protected boolean a(arb $$0, E $$1) {
-      return this.b($$1);
+   protected boolean a(long $$0) {
+      return false;
    }
 
-   @Override
-   protected boolean a(arb $$0, E $$1, long $$2) {
-      return this.b($$1);
+   protected boolean a(are $$0, btw $$1, long $$2) {
+      return this.b($$1).isPresent() && !$$1.dS().a(ccr.r) && !$$1.dS().a(ccr.Z);
    }
 
-   @Override
-   protected void d(arb $$0, E $$1, long $$2) {
-      this.e.apply($$1).ifPresent($$1x -> bvf.a($$1, $$1x, this.f, 3));
+   protected void b(are $$0, btw $$1, long $$2) {
+      $$1.dS().a(ccr.R, true);
    }
 
-   @Override
-   protected void c(arb $$0, E $$1, long $$2) {
-      Optional<bwr> $$3 = this.e.apply($$1);
-      if (!$$3.isEmpty()) {
-         bwr $$4 = $$3.get();
-         double $$5 = $$4.a().f($$1.bx());
-         if ($$5 < 3.0) {
-            cuk $$6 = $$1.y().a(0, 1);
-            if (!$$6.e()) {
-               a($$1, $$6, a($$4));
-               if ($$1 instanceof cgg $$7) {
-                  cgh.a((btk)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
-               }
-
-               $$1.dS().a(cco.aP, 60);
-            }
-         }
-      }
+   protected void c(are $$0, btw $$1, long $$2) {
+      bup<?> $$3 = $$1.dS();
+      $$3.a(ccr.P, 100);
+      $$3.a(ccr.R, false);
+      $$3.b(ccr.m);
+      $$3.b(ccr.n);
    }
 
-   private void a(bwr $$0, cuk $$1, arc $$2) {
-      iz $$3 = $$0.b().d();
-      am.aa.a($$2, $$3, $$1);
-   }
-
-   private boolean b(E $$0) {
-      if ($$0.y().c()) {
-         return false;
+   protected void d(are $$0, btw $$1, long $$2) {
+      cmv $$3 = this.b($$1).get();
+      bup<?> $$4 = $$1.dS();
+      $$4.a(ccr.n, new bvr($$3, true));
+      double $$5 = this.g.apply($$1);
+      if ($$1.g($$3) < ayx.k($$5)) {
+         $$4.b(ccr.m);
       } else {
-         Optional<bwr> $$1 = this.e.apply($$0);
-         return $$1.isPresent();
-      }
-   }
-
-   private static evm a(bwr $$0) {
-      return $$0.a().b(0.0, 1.0, 0.0);
-   }
-
-   public static void a(btk $$0, cuk $$1, evm $$2) {
-      evm $$3 = new evm(0.2F, 0.3F, 0.2F);
-      bvf.a($$0, $$1, $$2, $$3, 0.2F);
-      dbt $$4 = $$0.dP();
-      if ($$4.Z() % 7L == 0L && $$4.z.j() < 0.9) {
-         float $$5 = ac.<Float>a(cgg.d, $$4.E_());
-         $$4.a(null, $$0, avw.g, avx.g, 1.0F, $$5);
+         $$4.a(ccr.m, new ccu(new bvr($$3, false), this.a($$1), 2));
       }
    }
 }

@@ -1,9 +1,10 @@
-public class czr extends czv {
-   public czr() {
-      super(czv.a(awu.bR, 2, 4, czv.a(15, 9), czv.a(65, 9), 4, cpg.a(cpi.c), bsw.a));
+public class czr extends czy {
+   public czr(czy.b $$0) {
+      super($$0);
    }
 
-   public static float a(float $$0, float $$1) {
-      return ayu.a($$1 - 0.15F * $$0, 0.0F, 1.0F);
+   @Override
+   public boolean a(czy $$0) {
+      return $$0 instanceof daf ? false : super.a($$0);
    }
 }

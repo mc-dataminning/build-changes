@@ -1,57 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
-
-public record dap(ji<cuf> d, int e, kk f, cuk g) {
-   public static final Codec<dap> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cuk.a.fieldOf("id").forGetter(dap::a),
-               ayc.l.fieldOf("count").orElse(1).forGetter(dap::b),
-               kk.a.optionalFieldOf("components", kk.c).forGetter(dap::c)
-            )
-            .apply($$0, dap::new)
-   );
-   public static final zj<ww, dap> b = zj.a(zh.b(lq.G), dap::a, zh.g, dap::b, kk.b, dap::c, dap::new);
-   public static final zj<ww, Optional<dap>> c = b.a(zh::a);
-
-   public dap(dbs $$0) {
-      this($$0, 1);
+public class dap extends czy {
+   public dap() {
+      super(czy.a(awx.bR, 2, 3, czy.a(15, 9), czy.a(65, 9), 4, cpj.a(cpl.c), bsz.a));
    }
 
-   public dap(dbs $$0, int $$1) {
-      this($$0.r().o(), $$1, kk.c);
+   @Override
+   public void c(btn $$0, bss $$1, int $$2) {
+      float $$3 = 0.25F + 0.25F * (float)$$2;
+      $$0.dP().a(null, null, new dap.a($$3), $$0.du(), $$0.dw(), $$0.dA(), 3.5F, false, dbw.a.e, li.A, li.z, avz.Cm);
    }
 
-   public dap(ji<cuf> $$0, int $$1, kk $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
+   @Override
+   public boolean k() {
+      return false;
    }
 
-   public dap a(UnaryOperator<kk.a> $$0) {
-      return new dap(this.d, this.e, $$0.apply(kk.a()).a());
+   @Override
+   public boolean l() {
+      return false;
    }
 
-   private static cuk a(ji<cuf> $$0, int $$1, kk $$2) {
-      return new cuk($$0, $$1, $$2.c());
-   }
+   static final class a extends cod.a {
+      private final float a;
 
-   public boolean a(cuk $$0) {
-      return $$0.a(this.d) && this.f.a($$0);
-   }
+      public a(float $$0) {
+         this.a = $$0;
+      }
 
-   public ji<cuf> a() {
-      return this.d;
-   }
+      @Override
+      public float a(bss $$0) {
+         boolean var10000;
+         label17: {
+            if ($$0 instanceof cmv $$1 && $$1.gd().b) {
+               var10000 = true;
+               break label17;
+            }
 
-   public int b() {
-      return this.e;
-   }
+            var10000 = false;
+         }
 
-   public kk c() {
-      return this.f;
-   }
-
-   public cuk d() {
-      return this.g;
+         boolean $$2 = var10000;
+         return !$$2 ? this.a : 0.0F;
+      }
    }
 }

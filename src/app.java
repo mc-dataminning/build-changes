@@ -1,62 +1,47 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.function.Function;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-public class app implements apq {
-   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("commands.data.block.invalid"));
-   public static final Function<String, apr.c> a = $$0 -> new apr.c() {
-         @Override
-         public apq a(CommandContext<ep> $$0x) throws CommandSyntaxException {
-            iz $$1 = gl.a($$0, $$0 + "Pos");
-            dpc $$2 = ((ep)$$0.getSource()).e().c_($$1);
-            if ($$2 == null) {
-               throw app.b.create();
-            } else {
-               return new app($$2, $$1);
-            }
-         }
+public class app {
+   private static final int a = -1;
 
-         @Override
-         public ArgumentBuilder<ep, ?> a(ArgumentBuilder<ep, ?> $$0x, Function<ArgumentBuilder<ep, ?>, ArgumentBuilder<ep, ?>> $$1) {
-            return $$0.then(eq.a("block").then($$1.apply(eq.a($$0 + "Pos", gl.a()))));
-         }
-      };
-   private final dpc c;
-   private final iz d;
-
-   public app(dpc $$0, iz $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public static void a(CommandDispatcher<ep> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("weather").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     ((LiteralArgumentBuilder)eq.a("clear").executes($$0x -> a((ep)$$0x.getSource(), -1)))
+                        .then(eq.a("duration", ge.a(1)).executes($$0x -> a((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)eq.a("rain").executes($$0x -> b((ep)$$0x.getSource(), -1)))
+                     .then(eq.a("duration", ge.a(1)).executes($$0x -> b((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+               ))
+            .then(
+               ((LiteralArgumentBuilder)eq.a("thunder").executes($$0x -> c((ep)$$0x.getSource(), -1)))
+                  .then(eq.a("duration", ge.a(1)).executes($$0x -> c((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+            )
+      );
    }
 
-   @Override
-   public void a(ur $$0) {
-      drx $$1 = this.c.i().a_(this.d);
-      this.c.c($$0, this.c.i().H_());
-      this.c.e();
-      this.c.i().a(this.d, $$1, $$1, 3);
+   private static int a(ep $$0, int $$1, bpx $$2) {
+      return $$1 == -1 ? $$2.a($$0.l().I().E_()) : $$1;
    }
 
-   @Override
-   public ur a() {
-      return this.c.b(this.c.i().H_());
+   private static int a(ep $$0, int $$1) {
+      $$0.l().I().a(a($$0, $$1, are.b), 0, false, false);
+      $$0.a(() -> xo.c("commands.weather.set.clear"), true);
+      return $$1;
    }
 
-   @Override
-   public xl b() {
-      return xl.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
+   private static int b(ep $$0, int $$1) {
+      $$0.l().I().a(0, a($$0, $$1, are.c), true, false);
+      $$0.a(() -> xo.c("commands.weather.set.rain"), true);
+      return $$1;
    }
 
-   @Override
-   public xl a(vo $$0) {
-      return xl.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), vg.c($$0));
-   }
-
-   @Override
-   public xl a(fh.g $$0, double $$1, int $$2) {
-      return xl.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+   private static int c(ep $$0, int $$1) {
+      $$0.l().I().a(0, a($$0, $$1, are.d), true, true);
+      $$0.a(() -> xo.c("commands.weather.set.thunder"), true);
+      return $$1;
    }
 }

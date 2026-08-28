@@ -1,29 +1,11 @@
-public class aam implements zs<aaj> {
-   public static final zj<wl, aam> a = zs.a(aam::a, aam::new);
-   private final long b;
+public interface aam extends ace, agw {
+   void a(aap var1);
 
-   public aam(long $$0) {
-      this.b = $$0;
-   }
+   void a(aaq var1);
 
-   private aam(wl $$0) {
-      this.b = $$0.readLong();
-   }
+   void a(aao var1);
 
-   private void a(wl $$0) {
-      $$0.b(this.b);
-   }
+   void a(aar var1);
 
-   @Override
-   public zu<aam> a() {
-      return aai.l;
-   }
-
-   public void a(aaj $$0) {
-      $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
-   }
+   void a(aan var1);
 }

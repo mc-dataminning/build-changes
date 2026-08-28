@@ -1,19 +1,19 @@
 import com.mojang.serialization.Codec;
 
 public class jx {
-   public static <E> Codec<jm<E>> a(ala<? extends jv<E>> $$0, Codec<E> $$1) {
+   public static <E> Codec<jm<E>> a(ald<? extends jv<E>> $$0, Codec<E> $$1) {
       return a($$0, $$1, false);
    }
 
-   public static <E> Codec<jm<E>> a(ala<? extends jv<E>> $$0, Codec<E> $$1, boolean $$2) {
-      return akv.a($$0, akx.a($$0, $$1), $$2);
+   public static <E> Codec<jm<E>> a(ald<? extends jv<E>> $$0, Codec<E> $$1, boolean $$2) {
+      return aky.a($$0, ala.a($$0, $$1), $$2);
    }
 
-   public static <E> Codec<jm<E>> a(ala<? extends jv<E>> $$0) {
+   public static <E> Codec<jm<E>> a(ald<? extends jv<E>> $$0) {
       return a($$0, false);
    }
 
-   public static <E> Codec<jm<E>> a(ala<? extends jv<E>> $$0, boolean $$1) {
-      return akv.a($$0, aky.a($$0), $$1);
+   public static <E> Codec<jm<E>> a(ald<? extends jv<E>> $$0, boolean $$1) {
+      return aky.a($$0, alb.a($$0), $$1);
    }
 }

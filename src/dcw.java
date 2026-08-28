@@ -1,142 +1,111 @@
 import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Map.Entry;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class dcw implements dcv {
-   public static final Codec<dcw> a = lp.ab.q().dispatchStable(dcw::a, Function.identity());
-   private final Supplier<Set<ji<dcs>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
+public class dcw {
+   private static final Logger c = LogUtils.getLogger();
+   public static final dcw a = new dcw(ImmutableMap.of(), ImmutableList.of());
+   public static final MapCodec<dcw> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.simpleMap(dxo.a.c, dzv.c.promotePartial(ac.a("Carver: ", c::error)), azs.a(dxo.a.values())).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               ehm.d.promotePartial(ac.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dcw::new)
+   );
+   private final Map<dxo.a, jm<dzv<?>>> d;
+   private final List<jm<ehm>> e;
+   private final Supplier<List<eaj<?, ?>>> f;
+   private final Supplier<Set<ehm>> g;
 
-   protected dcw() {
+   dcw(Map<dxo.a, jm<dzv<?>>> $$0, List<jm<ehm>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(jm::a).map(ji::a).flatMap(ehm::a).filter($$0xx -> $$0xx.b() == eaw.g).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(jm::a).map(ji::a).collect(Collectors.toSet()));
    }
 
-   protected abstract MapCodec<? extends dcw> a();
-
-   protected abstract Stream<ji<dcs>> b();
-
-   public Set<ji<dcs>> c() {
-      return this.b.get();
+   public Iterable<ji<dzv<?>>> a(dxo.a $$0) {
+      return Objects.requireNonNullElseGet(this.d.get($$0), List::of);
    }
 
-   public Set<ji<dcs>> a(int $$0, int $$1, int $$2, int $$3, ddb.f $$4) {
-      int $$5 = jt.a($$0 - $$3);
-      int $$6 = jt.a($$1 - $$3);
-      int $$7 = jt.a($$2 - $$3);
-      int $$8 = jt.a($$0 + $$3);
-      int $$9 = jt.a($$1 + $$3);
-      int $$10 = jt.a($$2 + $$3);
-      int $$11 = $$8 - $$5 + 1;
-      int $$12 = $$9 - $$6 + 1;
-      int $$13 = $$10 - $$7 + 1;
-      Set<ji<dcs>> $$14 = Sets.newHashSet();
+   public List<eaj<?, ?>> a() {
+      return this.f.get();
+   }
 
-      for (int $$15 = 0; $$15 < $$13; $$15++) {
-         for (int $$16 = 0; $$16 < $$11; $$16++) {
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               int $$18 = $$5 + $$16;
-               int $$19 = $$6 + $$17;
-               int $$20 = $$7 + $$15;
-               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
-            }
-         }
+   public List<jm<ehm>> b() {
+      return this.e;
+   }
+
+   public boolean a(ehm $$0) {
+      return this.g.get().contains($$0);
+   }
+
+   public static class a extends dcw.b {
+      private final jj<ehm> a;
+      private final jj<dzv<?>> b;
+
+      public a(jj<ehm> $$0, jj<dzv<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return $$14;
-   }
+      public dcw.a a(dxo.b $$0, ald<ehm> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
 
-   @Nullable
-   public Pair<iz, ji<dcs>> a(int $$0, int $$1, int $$2, int $$3, Predicate<ji<dcs>> $$4, azc $$5, ddb.f $$6) {
-      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
-   }
-
-   @Nullable
-   public Pair<iz, ji<dcs>> a(iz $$0, int $$1, int $$2, int $$3, Predicate<ji<dcs>> $$4, ddb.f $$5, dbw $$6) {
-      Set<ji<dcs>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
-      if ($$7.isEmpty()) {
-         return null;
-      } else {
-         int $$8 = Math.floorDiv($$1, $$2);
-         int[] $$9 = ayu.a($$0.v(), $$6.I_() + 1, $$6.am(), $$3).toArray();
-
-         for (iz.a $$10 : iz.a(iz.c, $$8, je.f, je.d)) {
-            int $$11 = $$0.u() + $$10.u() * $$2;
-            int $$12 = $$0.w() + $$10.w() * $$2;
-            int $$13 = jt.a($$11);
-            int $$14 = jt.a($$12);
-
-            for (int $$15 : $$9) {
-               int $$16 = jt.a($$15);
-               ji<dcs> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
-               if ($$7.contains($$17)) {
-                  return Pair.of(new iz($$11, $$15, $$12), $$17);
-               }
-            }
-         }
-
-         return null;
+      public dcw.a a(dxo.a $$0, ald<dzv<?>> $$1) {
+         this.a($$0, this.b.b($$1));
+         return this;
       }
    }
 
-   @Nullable
-   public Pair<iz, ji<dcs>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<ji<dcs>> $$5, azc $$6, boolean $$7, ddb.f $$8) {
-      int $$9 = jt.a($$0);
-      int $$10 = jt.a($$2);
-      int $$11 = jt.a($$3);
-      int $$12 = jt.a($$1);
-      Pair<iz, ji<dcs>> $$13 = null;
-      int $$14 = 0;
-      int $$15 = $$7 ? 0 : $$11;
-      int $$16 = $$15;
+   public static class b {
+      private final Map<dxo.a, List<ji<dzv<?>>>> a = Maps.newLinkedHashMap();
+      private final List<List<ji<ehm>>> b = Lists.newArrayList();
 
-      while ($$16 <= $$11) {
-         for (int $$17 = aa.as ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
-            boolean $$18 = Math.abs($$17) == $$16;
-
-            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
-               if ($$7) {
-                  boolean $$20 = Math.abs($$19) == $$16;
-                  if (!$$20 && !$$18) {
-                     continue;
-                  }
-               }
-
-               int $$21 = $$9 + $$19;
-               int $$22 = $$10 + $$17;
-               ji<dcs> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
-               if ($$5.test($$23)) {
-                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
-                     iz $$24 = new iz(jt.c($$21), $$1, jt.c($$22));
-                     if ($$7) {
-                        return Pair.of($$24, $$23);
-                     }
-
-                     $$13 = Pair.of($$24, $$23);
-                  }
-
-                  $$14++;
-               }
-            }
-         }
-
-         $$16 += $$4;
+      public dcw.b a(dxo.b $$0, ji<ehm> $$1) {
+         return this.a($$0.ordinal(), $$1);
       }
 
-      return $$13;
-   }
+      public dcw.b a(int $$0, ji<ehm> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
+      }
 
-   @Override
-   public abstract ji<dcs> getNoiseBiome(int var1, int var2, int var3, ddb.f var4);
+      public dcw.b a(dxo.a $$0, ji<dzv<?>> $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+         return this;
+      }
 
-   public void a(List<String> $$0, iz $$1, ddb.f $$2) {
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
+         }
+      }
+
+      public dcw a() {
+         return new dcw(
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> jm.a((List)$$0.getValue()))),
+            this.b.stream().map(jm::a).collect(ImmutableList.toImmutableList())
+         );
+      }
    }
 }

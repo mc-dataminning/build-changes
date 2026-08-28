@@ -1,42 +1,76 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Set;
 
-public class bae extends bfq {
-   private static final String a = "minecraft:wolf";
-   private static final String b = "minecraft:generic.max_health";
+public enum bae {
+   a(bgv.a),
+   b(bgv.b),
+   c(bgv.c),
+   d(bgv.d),
+   e(bgv.e),
+   f(bgv.f),
+   g(bgv.g),
+   h(bgv.h),
+   i(bgv.i),
+   j(bgv.j),
+   k(bgv.k),
+   l(bgv.l),
+   m(bgv.m),
+   n(bgv.o),
+   o(bgv.n),
+   p(bgv.p),
+   q(bgv.q),
+   r(bgv.M),
+   s(bgv.r);
 
-   public bae(Schema $$0) {
-      super($$0, false, "FixWolfHealth", bgs.B, "minecraft:wolf");
+   public static final Set<TypeReference> t;
+   private final TypeReference u;
+
+   private bae(final TypeReference $$0) {
+      this.u = $$0;
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> {
-            MutableBoolean $$1 = new MutableBoolean(false);
-            $$0x = $$0x.update(
-               "Attributes",
-               $$1x -> $$1x.createList(
-                     $$1x.asStream()
-                        .map($$1xx -> "minecraft:generic.max_health".equals(bid.a($$1xx.get("Name").asString(""))) ? $$1xx.update("Base", $$1xxx -> {
-                              if ($$1xxx.asDouble(0.0) == 20.0) {
-                                 $$1.setTrue();
-                                 return $$1xxx.createDouble(40.0);
-                              } else {
-                                 return $$1xxx;
-                              }
-                           }) : $$1xx)
-                  )
-            );
-            if ($$1.isTrue()) {
-               $$0x = $$0x.update("Health", $$0xx -> $$0xx.createFloat($$0xx.asFloat(0.0F) * 2.0F));
-            }
+   static int a() {
+      return aa.b().d().c();
+   }
 
-            return $$0x;
+   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
+      return new Codec<A>() {
+         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
+            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(bae.a())));
          }
-      );
+
+         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
+            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
+            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
+            Dynamic<T> $$4 = bae.this.a($$1, $$3, $$2);
+            return $$0.decode($$4);
+         }
+      };
+   }
+
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
+      return $$0.update(this.u, $$1, $$2, $$3);
+   }
+
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   public ur a(DataFixer $$0, ur $$1, int $$2, int $$3) {
+      return (ur)this.a($$0, new Dynamic(vf.a, $$1), $$2, $$3).getValue();
+   }
+
+   public ur a(DataFixer $$0, ur $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   static {
+      t = Set.of(a.u);
    }
 }

@@ -1,110 +1,74 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
-public class cgh {
-   private static final float a = 1.0F;
-   private static final float b = 2.25F;
-   private static final float c = 1.75F;
-   private static final float d = 2.5F;
-   private static final int e = 4;
-   private static final int f = 16;
-   private static final int g = 6;
-   private static final int h = 30;
-   private static final int i = 60;
-   private static final int j = 600;
-   private static final int k = 32;
-   private static final int l = 20;
+public final class cgh {
+   public static final Codec<cgh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ale.a.fieldOf("wild_texture").forGetter($$0x -> $$0x.c),
+               ale.a.fieldOf("tame_texture").forGetter($$0x -> $$0x.d),
+               ale.a.fieldOf("angry_texture").forGetter($$0x -> $$0x.e),
+               jx.a(lq.az).fieldOf("biomes").forGetter(cgh::d)
+            )
+            .apply($$0, cgh::new)
+   );
+   public static final Codec<ji<cgh>> b = ala.a(lq.m, a);
+   private final ale c;
+   private final ale d;
+   private final ale e;
+   private final ale f;
+   private final ale g;
+   private final ale h;
+   private final jm<dcv> i;
 
-   protected static bum<?> a(bum<cgg> $$0) {
-      b($$0);
-      c($$0);
-      $$0.a(ImmutableSet.of(coh.a));
-      $$0.b(coh.b);
-      $$0.f();
-      return $$0;
+   public cgh(ale $$0, ale $$1, ale $$2, jm<dcv> $$3) {
+      this.c = $$0;
+      this.f = a($$0);
+      this.d = $$1;
+      this.g = a($$1);
+      this.e = $$2;
+      this.h = a($$2);
+      this.i = $$3;
    }
 
-   private static void b(bum<cgg> $$0) {
-      $$0.a(coh.a, 0, ImmutableList.of(new bxx(0.8F), new buy(2.5F), new bwj(45, 90), new bwn(), new bvj(cco.aO), new bvj(cco.aP)));
+   private static ale a(ale $$0) {
+      return $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"));
    }
 
-   private static void c(bum<cgg> $$0) {
-      $$0.a(
-         coh.b,
-         ImmutableList.of(
-            Pair.of(0, bvx.a($$0x -> true, 1.75F, true, 32)),
-            Pair.of(1, new bvt(cgh::b, 2.25F, 20)),
-            Pair.of(2, bxr.a(cgh::b, Predicate.not(cgh::c), 4, 16, 2.25F)),
-            Pair.of(3, bxd.a(6.0F, bqa.a(30, 60))),
-            Pair.of(4, new bxa(ImmutableList.of(Pair.of(bwv.b(1.0F), 2), Pair.of(bxk.a(1.0F, 3), 2), Pair.of(new bvn(30, 60), 1))))
-         ),
-         ImmutableSet.of()
-      );
+   public ale a() {
+      return this.f;
    }
 
-   public static void a(cgg $$0) {
-      $$0.dS().a(ImmutableList.of(coh.b));
+   public ale b() {
+      return this.g;
    }
 
-   public static void a(btk $$0, iz $$1) {
-      bum<?> $$2 = $$0.dS();
-      jh $$3 = jh.a($$0.dP().af(), $$1);
-      Optional<jh> $$4 = $$2.c(cco.aN);
-      if ($$4.isEmpty()) {
-         $$2.a(cco.aN, $$3);
-         $$2.a(cco.aO, 600);
-      } else if ($$4.get().equals($$3)) {
-         $$2.a(cco.aO, 600);
+   public ale c() {
+      return this.h;
+   }
+
+   public jm<dcv> d() {
+      return this.i;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return !($$0 instanceof cgh $$1)
+            ? false
+            : Objects.equals(this.c, $$1.c) && Objects.equals(this.d, $$1.d) && Objects.equals(this.e, $$1.e) && Objects.equals(this.i, $$1.i);
       }
    }
 
-   private static Optional<bwr> b(btk $$0) {
-      bum<?> $$1 = $$0.dS();
-      Optional<jh> $$2 = $$1.c(cco.aN);
-      if ($$2.isPresent()) {
-         jh $$3 = $$2.get();
-         if (a($$0, $$1, $$3)) {
-            return Optional.of(new bvg($$3.b().c()));
-         }
-
-         $$1.b(cco.aN);
-      }
-
-      return d($$0);
-   }
-
-   private static boolean c(btk $$0) {
-      bum<?> $$1 = $$0.dS();
-      return $$1.a(cco.L);
-   }
-
-   private static boolean a(btk $$0, bum<?> $$1, jh $$2) {
-      Optional<Integer> $$3 = $$1.c(cco.aO);
-      dbt $$4 = $$0.dP();
-      return $$4.af() == $$2.a() && $$4.a_($$2.b()).a(dew.aY) && $$3.isPresent();
-   }
-
-   private static Optional<bwr> d(btk $$0) {
-      return a($$0).map($$0x -> new bvo($$0x, true));
-   }
-
-   public static Optional<arc> a(btk $$0) {
-      dbt $$1 = $$0.dP();
-      if (!$$1.x_() && $$1 instanceof arb $$2) {
-         Optional<UUID> $$3 = $$0.dS().c(cco.aM);
-         if ($$3.isPresent()) {
-            if ($$2.a($$3.get()) instanceof arc $$5 && ($$5.e.d() || $$5.e.e()) && $$5.a($$0, 64.0)) {
-               return Optional.of($$5);
-            }
-
-            return Optional.empty();
-         }
-      }
-
-      return Optional.empty();
+   @Override
+   public int hashCode() {
+      int $$0 = 1;
+      $$0 = 31 * $$0 + this.c.hashCode();
+      $$0 = 31 * $$0 + this.d.hashCode();
+      $$0 = 31 * $$0 + this.e.hashCode();
+      return 31 * $$0 + this.i.hashCode();
    }
 }

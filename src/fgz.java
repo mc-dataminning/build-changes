@@ -1,100 +1,26 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public abstract class fgz extends fha {
+   private final fgn a;
+   private int b = 16777215;
 
-public class fgz extends fgq {
-   public static final int f = 120;
-   public static final int m = 150;
-   public static final int n = 200;
-   public static final int o = 20;
-   public static final int p = 8;
-   protected static final fgz.b q = $$0 -> $$0.get();
-   protected final fgz.c r;
-   protected final fgz.b s;
-
-   public static fgz.a a(xl $$0, fgz.c $$1) {
-      return new fgz.a($$0, $$1);
-   }
-
-   protected fgz(int $$0, int $$1, int $$2, int $$3, xl $$4, fgz.c $$5, fgz.b $$6) {
+   public fgz(int $$0, int $$1, int $$2, int $$3, xo $$4, fgn $$5) {
       super($$0, $$1, $$2, $$3, $$4);
-      this.r = $$5;
-      this.s = $$6;
+      this.a = $$5;
    }
 
    @Override
-   public void b() {
-      this.r.onPress(this);
+   protected void a(fky $$0) {
    }
 
-   @Override
-   protected xz aL_() {
-      return this.s.createNarrationMessage(() -> super.aL_());
+   public fgz a(int $$0) {
+      this.b = $$0;
+      return this;
    }
 
-   @Override
-   public void a(fkv $$0) {
-      this.c($$0);
+   protected final fgn a() {
+      return this.a;
    }
 
-   public static class a {
-      private final xl a;
-      private final fgz.c b;
-      @Nullable
-      private fik c;
-      private int d;
-      private int e;
-      private int f = 150;
-      private int g = 20;
-      private fgz.b h = fgz.q;
-
-      public a(xl $$0, fgz.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public fgz.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public fgz.a a(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fgz.a b(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         return this;
-      }
-
-      public fgz.a a(int $$0, int $$1, int $$2, int $$3) {
-         return this.a($$0, $$1).b($$2, $$3);
-      }
-
-      public fgz.a a(@Nullable fik $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fgz.a a(fgz.b $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public fgz a() {
-         fgz $$0 = new fgz(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
-         $$0.a(this.c);
-         return $$0;
-      }
-   }
-
-   public interface b {
-      xz createNarrationMessage(Supplier<xz> var1);
-   }
-
-   public interface c {
-      void onPress(fgz var1);
+   protected final int b() {
+      return this.b;
    }
 }

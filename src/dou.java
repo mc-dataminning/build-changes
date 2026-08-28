@@ -1,97 +1,109 @@
-public class dou {
-   public static final ala<dos> a = a("base");
-   public static final ala<dos> b = a("square_bottom_left");
-   public static final ala<dos> c = a("square_bottom_right");
-   public static final ala<dos> d = a("square_top_left");
-   public static final ala<dos> e = a("square_top_right");
-   public static final ala<dos> f = a("stripe_bottom");
-   public static final ala<dos> g = a("stripe_top");
-   public static final ala<dos> h = a("stripe_left");
-   public static final ala<dos> i = a("stripe_right");
-   public static final ala<dos> j = a("stripe_center");
-   public static final ala<dos> k = a("stripe_middle");
-   public static final ala<dos> l = a("stripe_downright");
-   public static final ala<dos> m = a("stripe_downleft");
-   public static final ala<dos> n = a("small_stripes");
-   public static final ala<dos> o = a("cross");
-   public static final ala<dos> p = a("straight_cross");
-   public static final ala<dos> q = a("triangle_bottom");
-   public static final ala<dos> r = a("triangle_top");
-   public static final ala<dos> s = a("triangles_bottom");
-   public static final ala<dos> t = a("triangles_top");
-   public static final ala<dos> u = a("diagonal_left");
-   public static final ala<dos> v = a("diagonal_up_right");
-   public static final ala<dos> w = a("diagonal_up_left");
-   public static final ala<dos> x = a("diagonal_right");
-   public static final ala<dos> y = a("circle");
-   public static final ala<dos> z = a("rhombus");
-   public static final ala<dos> A = a("half_vertical");
-   public static final ala<dos> B = a("half_horizontal");
-   public static final ala<dos> C = a("half_vertical_right");
-   public static final ala<dos> D = a("half_horizontal_bottom");
-   public static final ala<dos> E = a("border");
-   public static final ala<dos> F = a("curly_border");
-   public static final ala<dos> G = a("gradient");
-   public static final ala<dos> H = a("gradient_up");
-   public static final ala<dos> I = a("bricks");
-   public static final ala<dos> J = a("globe");
-   public static final ala<dos> K = a("creeper");
-   public static final ala<dos> L = a("skull");
-   public static final ala<dos> M = a("flower");
-   public static final ala<dos> N = a("mojang");
-   public static final ala<dos> O = a("piglin");
-   public static final ala<dos> P = a("flow");
-   public static final ala<dos> Q = a("guster");
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   private static ala<dos> a(String $$0) {
-      return ala.a(lq.d, new alb($$0));
+public class dou extends dpf implements bqx {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 6;
+   private static final String c = "patterns";
+   @Nullable
+   private xo d;
+   private ctg e;
+   private dow f = dow.a;
+
+   public dou(iz $$0, dsa $$1) {
+      super(dph.t, $$0, $$1);
+      this.e = ((ddo)$$1.b()).b();
    }
 
-   public static void a(rc<dos> $$0) {
-      a($$0, a);
-      a($$0, b);
-      a($$0, c);
-      a($$0, d);
-      a($$0, e);
-      a($$0, f);
-      a($$0, g);
-      a($$0, h);
-      a($$0, i);
-      a($$0, j);
-      a($$0, k);
-      a($$0, l);
-      a($$0, m);
-      a($$0, n);
-      a($$0, o);
-      a($$0, p);
-      a($$0, q);
-      a($$0, r);
-      a($$0, s);
-      a($$0, t);
-      a($$0, u);
-      a($$0, v);
-      a($$0, w);
-      a($$0, x);
-      a($$0, y);
-      a($$0, z);
-      a($$0, A);
-      a($$0, B);
-      a($$0, C);
-      a($$0, D);
-      a($$0, E);
-      a($$0, F);
-      a($$0, G);
-      a($$0, H);
-      a($$0, I);
-      a($$0, J);
-      a($$0, K);
-      a($$0, L);
-      a($$0, M);
-      a($$0, N);
-      a($$0, O);
+   public dou(iz $$0, dsa $$1, ctg $$2) {
+      this($$0, $$1);
+      this.e = $$2;
    }
 
-   public static void a(rc<dos> $$0, ala<dos> $$1) {
-      $$0.a($$1, new dos($$1.a(), "block.minecraft.banner." + $$1.a().e()));
+   public void a(cun $$0, ctg $$1) {
+      this.e = $$1;
+      this.a($$0);
+   }
+
+   @Override
+   public xo af() {
+      return (xo)(this.d != null ? this.d : xo.c("block.minecraft.banner"));
+   }
+
+   @Nullable
+   @Override
+   public xo ah() {
+      return this.d;
+   }
+
+   @Override
+   protected void b(ur $$0, jk.a $$1) {
+      super.b($$0, $$1);
+      if (!this.f.equals(dow.a)) {
+         $$0.a("patterns", (vo)dow.b.encodeStart($$1.a(vf.a), this.f).getOrThrow());
+      }
+
+      if (this.d != null) {
+         $$0.a("CustomName", xo.a.a(this.d, $$1));
+      }
+   }
+
+   @Override
+   protected void a(ur $$0, jk.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("CustomName", 8)) {
+         this.d = xo.a.a($$0.l("CustomName"), $$1);
+      }
+
+      if ($$0.e("patterns")) {
+         dow.b
+            .parse($$1.a(vf.a), $$0.c("patterns"))
+            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
+            .ifPresent($$0x -> this.f = $$0x);
+      }
+   }
+
+   public aco a() {
+      return aco.a(this);
+   }
+
+   @Override
+   public ur a(jk.a $$0) {
+      return this.d($$0);
+   }
+
+   public dow b() {
+      return this.f;
+   }
+
+   public cun c() {
+      cun $$0 = new cun(dec.a(this.e));
+      $$0.b(this.s());
+      return $$0;
+   }
+
+   public ctg f() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(dpf.b $$0) {
+      super.a($$0);
+      this.f = $$0.a(km.W, dow.a);
+      this.d = $$0.a(km.f);
+   }
+
+   @Override
+   protected void a(ki.a $$0) {
+      super.a($$0);
+      $$0.a(km.W, this.f);
+      $$0.a(km.f, this.d);
+   }
+
+   @Override
+   public void a(ur $$0) {
+      $$0.r("patterns");
+      $$0.r("CustomName");
    }
 }

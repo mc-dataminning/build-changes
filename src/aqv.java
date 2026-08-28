@@ -1,35 +1,85 @@
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.Set;
+public class aqv extends arg {
+   public static final int a = 5;
+   public static final int b = 120500;
+   private boolean e;
+   private boolean f;
+   private int g;
+   private int h;
 
-public final class aqv {
-   private final Object2BooleanMap<arc> a = new Object2BooleanOpenHashMap();
-
-   public Set<arc> a() {
-      return this.a.keySet();
+   public aqv(arf $$0) {
+      super($$0);
    }
 
-   public void a(arc $$0, boolean $$1) {
-      this.a.put($$0, $$1);
+   @Override
+   public void a() {
+      super.a();
+      this.h++;
+      long $$0 = this.c.Z();
+      long $$1 = $$0 / 24000L + 1L;
+      if (!this.e && this.h > 20) {
+         this.e = true;
+         this.d.c.b(new ado(ado.g, 0.0F));
+      }
+
+      this.f = $$0 > 120500L;
+      if (this.f) {
+         this.g++;
+      }
+
+      if ($$0 % 24000L == 500L) {
+         if ($$1 <= 6L) {
+            if ($$1 == 6L) {
+               this.d.c.b(new ado(ado.g, 104.0F));
+            } else {
+               this.d.a(xo.c("demo.day." + $$1));
+            }
+         }
+      } else if ($$1 == 1L) {
+         if ($$0 == 100L) {
+            this.d.c.b(new ado(ado.g, 101.0F));
+         } else if ($$0 == 175L) {
+            this.d.c.b(new ado(ado.g, 102.0F));
+         } else if ($$0 == 250L) {
+            this.d.c.b(new ado(ado.g, 103.0F));
+         }
+      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
+         this.d.a(xo.c("demo.day.warning"));
+      }
    }
 
-   public void a(arc $$0) {
-      this.a.removeBoolean($$0);
+   private void f() {
+      if (this.g > 100) {
+         this.d.a(xo.c("demo.reminder"));
+         this.g = 0;
+      }
    }
 
-   public void b(arc $$0) {
-      this.a.replace($$0, true);
+   @Override
+   public void a(iz $$0, ahz.a $$1, je $$2, int $$3, int $$4) {
+      if (this.f) {
+         this.f();
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
-   public void c(arc $$0) {
-      this.a.replace($$0, false);
+   @Override
+   public bqs a(arf $$0, dbw $$1, cun $$2, bqr $$3) {
+      if (this.f) {
+         this.f();
+         return bqs.e;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
    }
 
-   public boolean d(arc $$0) {
-      return this.a.getOrDefault($$0, true);
-   }
-
-   public boolean e(arc $$0) {
-      return this.a.getBoolean($$0);
+   @Override
+   public bqs a(arf $$0, dbw $$1, cun $$2, bqr $$3, evl $$4) {
+      if (this.f) {
+         this.f();
+         return bqs.e;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 }

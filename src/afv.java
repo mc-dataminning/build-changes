@@ -1,45 +1,30 @@
-public class afv implements zs<ace> {
-   public static final zj<wl, afv> a = zs.a(afv::a, afv::new);
-   private final long b;
-   private final long c;
+import java.util.Optional;
 
-   public afv(long $$0, long $$1, boolean $$2) {
-      this.b = $$0;
-      long $$3 = $$1;
-      if (!$$2) {
-         $$3 = -$$1;
-         if ($$3 == 0L) {
-            $$3 = -1L;
-         }
-      }
-
-      this.c = $$3;
-   }
-
-   private afv(wl $$0) {
-      this.b = $$0.readLong();
-      this.c = $$0.readLong();
-   }
-
-   private void a(wl $$0) {
-      $$0.b(this.b);
-      $$0.b(this.c);
-   }
+public record afv(String b, String c, int d, Optional<xo> e, Optional<ze> f) implements zv<ach> {
+   public static final zm<wz, afv> a = zm.a(zk.l, afv::b, zk.l, afv::e, zk.g, afv::f, xq.e, afv::g, zg.d, afv::h, afv::new);
 
    @Override
-   public zu<afv> a() {
-      return agq.aO;
+   public zx<afv> a() {
+      return agt.aL;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public long b() {
-      return this.b;
+   public String e() {
+      return this.c;
    }
 
-   public long e() {
-      return this.c;
+   public int f() {
+      return this.d;
+   }
+
+   public Optional<xo> g() {
+      return this.e;
+   }
+
+   public Optional<ze> h() {
+      return this.f;
    }
 }

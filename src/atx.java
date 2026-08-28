@@ -1,33 +1,33 @@
-import java.util.function.UnaryOperator;
+public enum atx {
+   a("old"),
+   b("new"),
+   c("compatible");
 
-public interface atx {
-   UnaryOperator<xl> a = UnaryOperator.identity();
-   atx b = a(a, true);
-   atx c = a(a("pack.source.builtin"), true);
-   atx d = a(a("pack.source.feature"), false);
-   atx e = a(a("pack.source.world"), true);
-   atx f = a(a("pack.source.server"), true);
+   private final xo d;
+   private final xo e;
 
-   xl a(xl var1);
-
-   boolean a();
-
-   static atx a(final UnaryOperator<xl> $$0, final boolean $$1) {
-      return new atx() {
-         @Override
-         public xl a(xl $$0x) {
-            return $$0.apply($$0);
-         }
-
-         @Override
-         public boolean a() {
-            return $$1;
-         }
-      };
+   private atx(final String $$0) {
+      this.d = xo.c("pack.incompatible." + $$0).a(n.h);
+      this.e = xo.c("pack.incompatible.confirm." + $$0);
    }
 
-   private static UnaryOperator<xl> a(String $$0) {
-      xl $$1 = xl.c($$0);
-      return $$1x -> xl.a("pack.nameAndSource", $$1x, $$1).a(n.h);
+   public boolean a() {
+      return this == c;
+   }
+
+   public static atx a(ayp<Integer> $$0, int $$1) {
+      if ($$0.b() < $$1) {
+         return a;
+      } else {
+         return $$1 < $$0.a() ? b : c;
+      }
+   }
+
+   public xo b() {
+      return this.d;
+   }
+
+   public xo c() {
+      return this.e;
    }
 }

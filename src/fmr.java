@@ -1,31 +1,58 @@
-public class fmr extends fmy {
-   private static final xl a = xl.c("outOfMemory.title");
-   private static final xl b = xl.c("outOfMemory.message");
-   private static final int c = 300;
-   private final fkm d = new fkm(this);
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public fmr() {
-      super(a);
+public class fmr extends fnd {
+   private static final xo a = xo.c("options.online.title");
+   @Nullable
+   private final ffg<Unit> u;
+
+   public static fmr a(ffd $$0, fnb $$1, ffh $$2) {
+      List<ffg<?>> $$3 = new ArrayList<>();
+      $$3.add($$2.T());
+      $$3.add($$2.U());
+      ffg<Unit> $$4 = x.a(
+         $$0.r,
+         $$0x -> {
+            bqp $$1x = $$0x.al();
+            return new ffg<>(
+               "options.difficulty.online",
+               ffg.a(),
+               ($$1xx, $$2x) -> $$1x.b(),
+               new ffg.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
+               Unit.INSTANCE,
+               $$0xx -> {
+               }
+            );
+         }
+      );
+      if ($$4 != null) {
+         $$3.add($$4);
+      }
+
+      return new fmr($$1, $$2, $$3.toArray(new ffg[0]), $$4);
+   }
+
+   private fmr(fnb $$0, ffh $$1, ffg<?>[] $$2, @Nullable ffg<Unit> $$3) {
+      super($$0, $$1, a, $$2);
+      this.u = $$3;
    }
 
    @Override
-   protected void aN_() {
-      this.d.a(a, this.p);
-      this.d.c(new fhk(300, b, this.p));
-      fkq $$0 = this.d.b(fkq.e().a(8));
-      $$0.a(fgz.a(xk.l, $$0x -> this.m.a(new fnd())).a());
-      $$0.a(fgz.a(xl.c("menu.quit"), $$0x -> this.m.q()).a());
-      this.d.a(this::c);
-      this.c();
-   }
+   protected void aM_() {
+      super.aM_();
+      if (this.u != null) {
+         fha $$0 = this.s.b(this.u);
+         if ($$0 != null) {
+            $$0.j = false;
+         }
+      }
 
-   @Override
-   protected void c() {
-      this.d.a();
-   }
-
-   @Override
-   public boolean aE_() {
-      return false;
+      fha $$1 = this.s.b(this.c.ai());
+      if ($$1 != null) {
+         $$1.j = this.m.D();
+      }
    }
 }

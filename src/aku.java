@@ -1,33 +1,12 @@
-import java.util.List;
-import java.util.Map;
-
 public class aku {
-   private final String a;
-   private final String b;
+   public static final ald<dex> a = a("pumpkin");
+   public static final ald<dex> b = a("pumpkin_stem");
+   public static final ald<dex> c = a("attached_pumpkin_stem");
+   public static final ald<dex> d = a("melon");
+   public static final ald<dex> e = a("melon_stem");
+   public static final ald<dex> f = a("attached_melon_stem");
 
-   public aku(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public static aku a(String $$0) {
-      return new aku($$0, ".json");
-   }
-
-   public alb a(alb $$0) {
-      return $$0.c(this.a + "/" + $$0.a() + this.b);
-   }
-
-   public alb b(alb $$0) {
-      String $$1 = $$0.a();
-      return $$0.c($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
-   }
-
-   public Map<alb, auj> a(aul $$0) {
-      return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
-   }
-
-   public Map<alb, List<auj>> b(aul $$0) {
-      return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
+   private static ald<dex> a(String $$0) {
+      return ald.a(lq.f, new ale($$0));
    }
 }

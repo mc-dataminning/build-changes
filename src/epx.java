@@ -1,94 +1,77 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public interface epx {
-   int d = 19133;
-   int e = 19132;
+public class epx {
+   private static final Logger b = LogUtils.getLogger();
+   private final File c;
+   protected final DataFixer a;
+   private static final DateTimeFormatter d = epp.a();
 
-   dcn D();
-
-   void a(dcn var1);
-
-   boolean F();
-
-   Set<String> G();
-
-   Set<String> H();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.G()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.x();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
-      });
+   public epx(epu.c $$0, DataFixer $$1) {
+      this.a = $$1;
+      this.c = $$0.a(eps.c).toFile();
+      this.c.mkdirs();
    }
 
-   default String f(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
+   public void a(cmv $$0) {
+      try {
+         ur $$1 = $$0.f(new ur());
+         Path $$2 = this.c.toPath();
+         Path $$3 = Files.createTempFile($$2, $$0.cA() + "-", ".dat");
+         ve.a($$1, $$3);
+         Path $$4 = $$2.resolve($$0.cA() + ".dat");
+         Path $$5 = $$2.resolve($$0.cA() + ".dat_old");
+         ac.a($$4, $$3, $$5);
+      } catch (Exception var7) {
+         b.warn("Failed to save player data for {}", $$0.af().getString());
       }
    }
 
-   @Nullable
-   ur E();
+   private void a(cmv $$0, String $$1) {
+      Path $$2 = this.c.toPath();
+      Path $$3 = $$2.resolve($$0.cA() + $$1);
+      Path $$4 = $$2.resolve($$0.cA() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
+      if (Files.isRegularFile($$3)) {
+         try {
+            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
+         } catch (Exception var7) {
+            b.warn("Failed to copy the player.dat file for {}", $$0.af().getString(), var7);
+         }
+      }
+   }
 
-   void a(@Nullable ur var1);
+   private Optional<ur> b(cmv $$0, String $$1) {
+      File $$2 = new File(this.c, $$0.cA() + $$1);
+      if ($$2.exists() && $$2.isFile()) {
+         try {
+            return Optional.of(ve.a($$2.toPath(), va.a()));
+         } catch (Exception var5) {
+            b.warn("Failed to load player data for {}", $$0.af().getString());
+         }
+      }
 
-   epw I();
+      return Optional.empty();
+   }
 
-   dbx J();
+   public Optional<ur> b(cmv $$0) {
+      Optional<ur> $$1 = this.b($$0, ".dat");
+      if ($$1.isEmpty()) {
+         this.a($$0, ".dat");
+      }
 
-   ur a(jw var1, @Nullable ur var2);
-
-   boolean l();
-
-   int x();
-
-   String e();
-
-   dbq k();
-
-   void a(dbq var1);
-
-   boolean m();
-
-   bqm q();
-
-   void a(bqm var1);
-
-   boolean r();
-
-   void d(boolean var1);
-
-   dbp o();
-
-   @Nullable
-   ur w();
-
-   dvs.a C();
-
-   void a(dvs.a var1);
-
-   dyn y();
-
-   boolean z();
-
-   boolean A();
-
-   Lifecycle B();
-
-   default cpg K() {
-      return this.D().b();
+      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
+         int $$2 = vg.b($$1x, -1);
+         $$1x = bae.b.a(this.a, $$1x, $$2);
+         $$0.g($$1x);
+         return $$1x;
+      });
    }
 }

@@ -1,78 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class diw extends deu implements dhm, dic {
-   public static final MapCodec<diw> a = b(diw::new);
-   public static final dsv<jg> b = dsn.T;
+public class diw extends dex {
+   public static final MapCodec<diw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(lp.e.q().fieldOf("host").forGetter(diw::b), u()).apply($$0, diw::new));
+   private final dex b;
+   private static final Map<dex, dex> c = Maps.newIdentityHashMap();
+   private static final Map<dsa, dsa> d = Maps.newIdentityHashMap();
+   private static final Map<dsa, dsa> e = Maps.newIdentityHashMap();
 
    @Override
-   public MapCodec<diw> a() {
+   public MapCodec<? extends diw> a() {
       return a;
    }
 
-   protected diw(drw.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, jg.k));
+   public diw(dex $$0, drz.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
    }
 
-   @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      $$0.a(b);
+   public dex b() {
+      return this.b;
    }
 
-   @Override
-   protected drx a(drx $$0, dlh $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
+   public static boolean m(dsa $$0) {
+      return c.containsKey($$0.b());
    }
 
-   @Override
-   protected drx a(drx $$0, djr $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   public drx a(cxv $$0) {
-      je $$1 = $$0.k();
-      je $$2;
-      if ($$1.o() == je.a.b) {
-         $$2 = $$0.g().g();
-      } else {
-         $$2 = je.b;
-      }
-
-      return this.n().a(b, jg.a($$1, $$2));
-   }
-
-   @Override
-   public dpc a(iz $$0, drx $$1) {
-      return new dqc($$0, $$1);
-   }
-
-   @Override
-   protected bqp a(drx $$0, dbt $$1, iz $$2, cms $$3, evi $$4) {
-      dpc $$5 = $$1.c_($$2);
-      if ($$5 instanceof dqc && $$3.gz()) {
-         $$3.a((dqc)$$5);
-         return bqp.a($$1.B);
-      } else {
-         return bqp.e;
+   private void a(are $$0, iz $$1) {
+      cki $$2 = bsy.aM.a((dbw)$$0);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.R();
       }
    }
 
-   public static boolean a(emf.c $$0, emf.c $$1) {
-      je $$2 = m($$0.b());
-      je $$3 = m($$1.b());
-      je $$4 = n($$0.b());
-      je $$5 = n($$1.b());
-      dqc.a $$6 = dqc.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dqc.a.b : dqc.a.a);
-      boolean $$7 = $$6 == dqc.a.a;
-      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
+   @Override
+   protected void a(dsa $$0, are $$1, iz $$2, cun $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.ab().b(dbs.h) && czz.a(dab.v, $$3) == 0) {
+         this.a($$1, $$2);
+      }
    }
 
-   public static je m(drx $$0) {
-      return $$0.c(b).a();
+   public static dsa n(dsa $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).o());
    }
 
-   public static je n(drx $$0) {
-      return $$0.c(b).b();
+   public dsa o(dsa $$0) {
+      return a(e, $$0, () -> this.b().o());
+   }
+
+   private static dsa a(Map<dsa, dsa> $$0, dsa $$1, Supplier<dsa> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dsa $$2x = $$2.get();
+
+         for (dtd $$3 : $$1x.B()) {
+            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
+         }
+
+         return $$2x;
+      });
    }
 }

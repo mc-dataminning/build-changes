@@ -1,16 +1,23 @@
-public record agd(xl b, xl c) implements zs<ace> {
-   public static final zj<ww, agd> a = zj.a(xn.d, agd::b, xn.d, agd::e, agd::new);
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public zu<agd> a() {
-      return agq.aW;
+public class agd implements zv<ach> {
+   public static final agd a = new agd();
+   public static final zm<ByteBuf, agd> b = zm.a(a);
+
+   private agd() {
    }
 
-   public void a(ace $$0) {
+   @Override
+   public zx<agd> a() {
+      return agt.aT;
+   }
+
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public xl e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

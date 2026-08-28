@@ -1,109 +1,130 @@
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
 public class guc {
-   final Map<gub<?>, Object> a;
+   static final Map<String, guc> h = new Object2ObjectLinkedOpenHashMap();
+   public static final Codec<guc> a = Codec.STRING.comapFlatMap($$0 -> {
+      guc $$1 = h.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No TelemetryEventType with key: '" + $$0 + "'");
+   }, guc::a);
+   private static final List<gue<?>> i = List.of(gue.a, gue.b, gue.c, gue.d, gue.e, gue.f, gue.g, gue.h, gue.m, gue.l);
+   private static final List<gue<?>> j = Stream.concat(i.stream(), Stream.of(gue.i, gue.j, gue.k)).toList();
+   public static final guc b = a("world_loaded", "WorldLoaded").a(j).a(gue.n).a(gue.o).b();
+   public static final guc c = a("performance_metrics", "PerformanceMetrics").a(j).a(gue.r).a(gue.s).a(gue.t).a(gue.u).a(gue.v).a(gue.w).a().b();
+   public static final guc d = a("world_load_times", "WorldLoadTimes").a(j).a(gue.x).a(gue.y).a().b();
+   public static final guc e = a("world_unloaded", "WorldUnloaded").a(j).a(gue.p).a(gue.q).b();
+   public static final guc f = a("advancement_made", "AdvancementMade").a(j).a(gue.D).a(gue.E).a().b();
+   public static final guc g = a("game_load_times", "GameLoadTimes").a(i).a(gue.z).a(gue.A).a(gue.B).a(gue.C).a().b();
+   private final String k;
+   private final String l;
+   private final List<gue<?>> m;
+   private final boolean n;
+   private final MapCodec<gty> o;
 
-   guc(Map<gub<?>, Object> $$0) {
-      this.a = $$0;
+   guc(String $$0, String $$1, List<gue<?>> $$2, boolean $$3) {
+      this.k = $$0;
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.o = guf.a($$2).xmap($$0x -> new gty(this, $$0x), gty::b);
    }
 
-   public static guc.a a() {
-      return new guc.a();
+   public static guc.a a(String $$0, String $$1) {
+      return new guc.a($$0, $$1);
    }
 
-   public static MapCodec<guc> a(final List<gub<?>> $$0) {
-      return new MapCodec<guc>() {
-         public <T> RecordBuilder<T> a(guc $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
-            RecordBuilder<T> $$3 = $$2;
-
-            for (gub<?> $$4 : $$0) {
-               $$3 = this.a($$0, $$3, $$4);
-            }
-
-            return $$3;
-         }
-
-         private <T, V> RecordBuilder<T> a(guc $$0x, RecordBuilder<T> $$1, gub<V> $$2) {
-            V $$3 = $$0.a($$2);
-            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
-         }
-
-         public <T> DataResult<guc> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
-            DataResult<guc.a> $$2 = DataResult.success(new guc.a());
-
-            for (gub<?> $$3 : $$0) {
-               $$2 = this.a($$2, $$0, $$1, $$3);
-            }
-
-            return $$2.map(guc.a::a);
-         }
-
-         private <T, V> DataResult<guc.a> a(DataResult<guc.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, gub<V> $$3) {
-            T $$4 = (T)$$2.get($$3.b());
-            if ($$4 != null) {
-               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
-               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
-            } else {
-               return $$0;
-            }
-         }
-
-         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-            return $$0.stream().map(gub::b).map($$0::createString);
-         }
-      };
+   public String a() {
+      return this.k;
    }
 
-   @Nullable
-   public <T> T a(gub<T> $$0) {
-      return (T)this.a.get($$0);
+   public List<gue<?>> b() {
+      return this.m;
+   }
+
+   public MapCodec<gty> c() {
+      return this.o;
+   }
+
+   public boolean d() {
+      return this.n;
+   }
+
+   public TelemetryEvent a(TelemetrySession $$0, guf $$1) {
+      TelemetryEvent $$2 = $$0.createNewEvent(this.l);
+
+      for (gue<?> $$3 : this.m) {
+         $$3.a($$1, $$2);
+      }
+
+      return $$2;
+   }
+
+   public <T> boolean a(gue<T> $$0) {
+      return this.m.contains($$0);
    }
 
    @Override
    public String toString() {
-      return this.a.toString();
+      return "TelemetryEventType[" + this.k + "]";
    }
 
-   public Set<gub<?>> b() {
-      return this.a.keySet();
+   public yc e() {
+      return this.a("title");
+   }
+
+   public yc f() {
+      return this.a("description");
+   }
+
+   private yc a(String $$0) {
+      return xo.c("telemetry.event." + this.k + "." + $$0);
+   }
+
+   public static List<guc> g() {
+      return List.copyOf(h.values());
    }
 
    public static class a {
-      private final Map<gub<?>, Object> a = new Reference2ObjectOpenHashMap();
+      private final String a;
+      private final String b;
+      private final List<gue<?>> c = new ArrayList<>();
+      private boolean d;
 
-      a() {
+      a(String $$0, String $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public <T> guc.a a(gub<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
+      public guc.a a(List<gue<?>> $$0) {
+         this.c.addAll($$0);
          return this;
       }
 
-      public <T> guc.a b(gub<T> $$0, @Nullable T $$1) {
-         if ($$1 != null) {
-            this.a.put($$0, $$1);
+      public <T> guc.a a(gue<T> $$0) {
+         this.c.add($$0);
+         return this;
+      }
+
+      public guc.a a() {
+         this.d = true;
+         return this;
+      }
+
+      public guc b() {
+         guc $$0 = new guc(this.a, this.b, List.copyOf(this.c), this.d);
+         if (guc.h.putIfAbsent(this.a, $$0) != null) {
+            throw new IllegalStateException("Duplicate TelemetryEventType with key: '" + this.a + "'");
+         } else {
+            return $$0;
          }
-
-         return this;
-      }
-
-      public guc.a a(guc $$0) {
-         this.a.putAll($$0.a);
-         return this;
-      }
-
-      public guc a() {
-         return new guc(this.a);
       }
    }
 }

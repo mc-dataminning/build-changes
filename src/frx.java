@@ -1,312 +1,173 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.Lifecycle;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class frx {
-   private static final Logger a = LogUtils.getLogger();
-   private static final UUID b = UUID.fromString("640a6a92-b6cb-48a0-b391-831586500359");
-   private final ffa c;
-   private final epr d;
+class frx {
+   private static final int a = 44;
+   private final List<frx.c> b;
 
-   public frx(ffa $$0, epr $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   frx(List<frx.c> $$0) {
+      this.b = $$0;
    }
 
-   public void a(String $$0, dbx $$1, dyn $$2, Function<jw, dyk> $$3, fmy $$4) {
-      this.c.d(new fme(xl.c("selectWorld.data_read")));
-      epr.c $$5 = this.a($$0);
-      if ($$5 != null) {
-         atw $$6 = atz.a($$5);
-         dcn $$7 = $$1.g();
-
-         try {
-            alx.d $$8 = new alx.d($$6, $$7, false, false);
-            aly $$9 = this.a($$8, $$3x -> {
-               dyk.b $$4x = $$3.apply($$3x.c()).a($$3x.d().d(lq.aT));
-               return new alx.b<>(new epv($$1, $$2, $$4x.d(), $$4x.a()), $$4x.b());
-            }, aly::new);
-            this.c.a($$5, $$6, $$9, true);
-         } catch (Exception var11) {
-            a.warn("Failed to load datapacks, can't proceed with server load", var11);
-            $$5.c();
-            this.c.a($$4);
-         }
-      }
+   public void a() {
+      this.b.forEach(frx.c::a);
    }
 
-   @Nullable
-   private epr.c a(String $$0) {
-      try {
-         return this.d.d($$0);
-      } catch (IOException var3) {
-         a.warn("Failed to read level {} data", $$0, var3);
-         fjh.a(this.c, $$0);
-         this.c.a(null);
-         return null;
-      } catch (evb var4) {
-         a.warn("{}", var4.getMessage());
-         this.c.a(fmn.a(() -> this.c.a(null)));
-         return null;
-      }
+   public static frx.a a(int $$0) {
+      return new frx.a($$0);
    }
 
-   public void a(epr.c $$0, alm $$1, jp<alk> $$2, epx $$3) {
-      atw $$4 = atz.a($$0);
-      aub $$5 = (aub)new alx.d($$4, $$3.D(), false, false).a().getSecond();
-      this.c.a($$0, $$4, new aly($$5, $$1, $$2, $$3), true);
-   }
+   public static class a {
+      final int a;
+      private final List<frx.d> b = new ArrayList<>();
+      int c;
+      int d = 4;
+      int e;
+      Optional<frx.b> f = Optional.empty();
 
-   public aly a(Dynamic<?> $$0, boolean $$1, atw $$2) throws Exception {
-      alx.d $$3 = epr.a($$0, $$2, $$1);
-      return this.a($$3, $$1x -> {
-         jv<dvq> $$2x = $$1x.d().d(lq.aT);
-         epo $$3x = epr.a($$0, $$1x.b(), $$2x, $$1x.c());
-         return new alx.b<>($$3x.a(), $$3x.b().b());
-      }, aly::new);
-   }
-
-   public Pair<dbx, frv> a(epr.c $$0) throws Exception {
-      atw $$1 = atz.a($$0);
-      Dynamic<?> $$2 = $$0.h();
-      alx.d $$3 = epr.a($$2, $$1, false);
-
-      record a(dbx a, dyn b, jv<dvq> c) {
+      public a(int $$0) {
+         this.a = $$0;
       }
 
-      return this.a($$3, $$1x -> {
-         jv<dvq> $$2x = new jq<>(lq.aT, Lifecycle.stable()).l();
-         epo $$3x = epr.a($$2, $$1x.b(), $$2x, $$1x.c());
-         return new alx.b<>(new a($$3x.a().J(), $$3x.a().y(), $$3x.b().c()), $$1x.d());
-      }, ($$0x, $$1x, $$2x, $$3x) -> {
-         $$0x.close();
-         return Pair.of($$3x.a, new frv($$3x.b, new dyk($$3x.c), $$2x, $$1x, $$3x.a.g()));
-      });
-   }
-
-   private <D, R> R a(alx.d $$0, alx.f<D> $$1, alx.e<D, R> $$2) throws Exception {
-      alx.c $$3 = new alx.c($$0, eq.a.c, 2);
-      CompletableFuture<R> $$4 = alx.a($$3, $$1, $$2, ac.g(), this.c);
-      this.c.c($$4::isDone);
-      return $$4.get();
-   }
-
-   private void a(epr.c $$0, boolean $$1, Runnable $$2, Runnable $$3) {
-      xl $$4;
-      xl $$5;
-      if ($$1) {
-         $$4 = xl.c("selectWorld.backupQuestion.customized");
-         $$5 = xl.c("selectWorld.backupWarning.customized");
-      } else {
-         $$4 = xl.c("selectWorld.backupQuestion.experimental");
-         $$5 = xl.c("selectWorld.backupWarning.experimental");
+      void a() {
+         this.e++;
       }
 
-      this.c.a(new fll($$3, ($$2x, $$3x) -> {
-         if ($$2x) {
-            frp.a($$0);
-         }
-
-         $$2.run();
-      }, $$4, $$5, false));
-   }
-
-   public static void a(ffa $$0, frn $$1, Lifecycle $$2, Runnable $$3, boolean $$4) {
-      BooleanConsumer $$5 = $$3x -> {
-         if ($$3x) {
-            $$3.run();
-         } else {
-            $$0.a($$1);
-         }
-      };
-      if ($$4 || $$2 == Lifecycle.stable()) {
-         $$3.run();
-      } else if ($$2 == Lifecycle.experimental()) {
-         $$0.a(new flq($$5, xl.c("selectWorld.warning.experimental.title"), xl.c("selectWorld.warning.experimental.question")));
-      } else {
-         $$0.a(new flq($$5, xl.c("selectWorld.warning.deprecated.title"), xl.c("selectWorld.warning.deprecated.question")));
-      }
-   }
-
-   public void a(String $$0, Runnable $$1) {
-      this.c.d(new fme(xl.c("selectWorld.data_read")));
-      epr.c $$2 = this.a($$0);
-      if ($$2 != null) {
-         this.a($$2, $$1);
-      }
-   }
-
-   private void a(epr.c $$0, Runnable $$1) {
-      this.c.d(new fme(xl.c("selectWorld.data_read")));
-
-      Dynamic<?> $$2;
-      eps $$3;
-      try {
-         $$2 = $$0.h();
-         $$3 = $$0.a($$2);
-      } catch (vc | vi | IOException var10) {
-         this.c.a(new fmx(this.c, $$2x -> {
-            if ($$2x) {
-               this.a($$0, $$1);
-            } else {
-               $$0.c();
-               $$1.run();
-            }
-         }, $$0));
-         return;
-      } catch (OutOfMemoryError var11) {
-         ays.b();
-         System.gc();
-         String $$6 = "Ran out of memory trying to read level data of world folder \"" + $$0.f() + "\"";
-         a.error(LogUtils.FATAL_MARKER, $$6);
-         OutOfMemoryError $$7 = new OutOfMemoryError("Ran out of memory reading level data");
-         $$7.initCause(var11);
-         o $$8 = o.a($$7, $$6);
-         p $$9 = $$8.a("World details");
-         $$9.a("World folder", $$0.f());
-         throw new y($$8);
-      }
-
-      this.a($$0, $$3, $$2, $$1);
-   }
-
-   private void a(epr.c $$0, eps $$1, Dynamic<?> $$2, Runnable $$3) {
-      if (!$$1.r()) {
-         $$0.c();
-         this.c.a(new flk($$3, xl.c("selectWorld.incompatible.title").b(-65536), xl.a("selectWorld.incompatible.description", $$1.k())));
-      } else {
-         eps.a $$4 = $$1.o();
-         if ($$4.a()) {
-            String $$5 = "selectWorld.backupQuestion." + $$4.c();
-            String $$6 = "selectWorld.backupWarning." + $$4.c();
-            xz $$7 = xl.c($$5);
-            if ($$4.b()) {
-               $$7.b(-2142128);
-            }
-
-            xl $$8 = xl.a($$6, $$1.k(), aa.b().c());
-            this.c.a(new fll(() -> {
-               $$0.c();
-               $$3.run();
-            }, ($$3x, $$4x) -> {
-               if ($$3x) {
-                  frp.a($$0);
-               }
-
-               this.a($$0, $$2, false, $$3);
-            }, $$7, $$8, false));
-         } else {
-            this.a($$0, $$2, false, $$3);
-         }
-      }
-   }
-
-   private void a(epr.c $$0, Dynamic<?> $$1, boolean $$2, Runnable $$3) {
-      this.c.d(new fme(xl.c("selectWorld.resource_load")));
-      atw $$4 = atz.a($$0);
-
-      aly $$5;
-      try {
-         $$5 = this.a($$1, $$2, $$4);
-      } catch (Exception var8) {
-         a.warn("Failed to load level data or datapacks, can't proceed with server load", var8);
-         if (!$$2) {
-            this.c.a(new flv(() -> {
-               $$0.c();
-               $$3.run();
-            }, () -> this.a($$0, $$1, true, $$3)));
-         } else {
-            $$0.c();
-            this.c.a(new flk($$3, xl.c("datapackFailure.safeMode.failed.title"), xl.c("datapackFailure.safeMode.failed.description"), xk.k, true));
-         }
-
-         return;
-      }
-
-      this.a($$0, $$5, $$4, $$3);
-   }
-
-   private void a(epr.c $$0, aly $$1, atw $$2, Runnable $$3) {
-      epx $$4 = $$1.d();
-      boolean $$5 = $$4.y().e();
-      boolean $$6 = $$4.B() != Lifecycle.stable();
-      if (!$$5 && !$$6) {
-         this.b($$0, $$1, $$2, $$3);
-      } else {
-         this.a($$0, $$5, () -> this.b($$0, $$1, $$2, $$3), () -> {
-            $$1.close();
-            $$0.c();
-            $$3.run();
-         });
-      }
-   }
-
-   private void b(epr.c $$0, aly $$1, atw $$2, Runnable $$3) {
-      grk $$4 = this.c.ae();
-      this.a($$4, $$0).thenApply($$0x -> true).exceptionallyComposeAsync($$0x -> {
-         a.warn("Failed to load pack: ", $$0x);
-         return this.a();
-      }, this.c).thenAcceptAsync($$5 -> {
-         if ($$5) {
-            this.a($$0, $$1, $$4, $$2, $$3);
-         } else {
-            $$4.e();
-            $$1.close();
-            $$0.c();
-            $$3.run();
-         }
-      }, this.c).exceptionally($$0x -> {
-         this.c.a(o.a($$0x, "Load world"));
-         return null;
-      });
-   }
-
-   private void a(epr.c $$0, aly $$1, grk $$2, atw $$3, Runnable $$4) {
-      if ($$0.b()) {
-         this.c.a(new flq($$5 -> {
-            if ($$5) {
-               this.a($$0, $$1, $$3);
-            } else {
-               $$2.e();
-               $$1.close();
-               $$0.c();
-               $$4.run();
-            }
-         }, xl.c("selectWorld.warning.lowDiskSpace.title").a(n.m), xl.c("selectWorld.warning.lowDiskSpace.description"), xk.j, xk.k));
-      } else {
-         this.a($$0, $$1, $$3);
-      }
-   }
-
-   private void a(epr.c $$0, aly $$1, atw $$2) {
-      this.c.a($$0, $$2, $$1, false);
-   }
-
-   private CompletableFuture<Void> a(grk $$0, epr.c $$1) {
-      Path $$2 = $$1.a(epp.k);
-      if (Files.exists($$2) && !Files.isDirectory($$2)) {
-         $$0.f();
-         CompletableFuture<Void> $$3 = $$0.b(b);
-         $$0.a(b, $$2);
+      public frx.d a(xo $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
+         frx.d $$3 = new frx.d($$0, $$1, $$2, 44);
+         this.b.add($$3);
          return $$3;
-      } else {
-         return CompletableFuture.completedFuture(null);
+      }
+
+      public frx.a a(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public frx.a b(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public frx a(Consumer<fkr> $$0) {
+         fko $$1 = new fko().b(this.d);
+         $$1.a(fku.a(this.a - 44), 0, 0);
+         $$1.a(fku.a(44), 0, 1);
+         List<frx.c> $$2 = new ArrayList<>();
+         this.e = 0;
+
+         for (frx.d $$3 : this.b) {
+            $$2.add($$3.a(this, $$1, 0));
+         }
+
+         $$1.a();
+         $$0.accept($$1);
+         frx $$4 = new frx($$2);
+         $$4.a();
+         return $$4;
+      }
+
+      public frx.a a(int $$0, boolean $$1) {
+         this.f = Optional.of(new frx.b($$0, $$1));
+         return this;
       }
    }
 
-   private CompletableFuture<Boolean> a() {
-      CompletableFuture<Boolean> $$0 = new CompletableFuture<>();
-      this.c.a(new flq($$0::complete, xl.c("multiplayer.texturePrompt.failure.line1"), xl.c("multiplayer.texturePrompt.failure.line2"), xk.i, xk.e));
-      return $$0;
+   static record b(int a, boolean b) {
+   }
+
+   static record c(fhj<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
+      public void a() {
+         this.a.a(this.b.getAsBoolean());
+         if (this.c != null) {
+            this.a.j = this.c.getAsBoolean();
+         }
+      }
+
+      public fhj<Boolean> b() {
+         return this.a;
+      }
+
+      public BooleanSupplier c() {
+         return this.b;
+      }
+
+      @Nullable
+      public BooleanSupplier d() {
+         return this.c;
+      }
+   }
+
+   public static class d {
+      private final xo a;
+      private final BooleanSupplier b;
+      private final Consumer<Boolean> c;
+      @Nullable
+      private xo d;
+      @Nullable
+      private BooleanSupplier e;
+      private final int f;
+
+      d(xo $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = $$3;
+      }
+
+      public frx.d a(BooleanSupplier $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public frx.d a(xo $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      frx.c a(frx.a $$0, fko $$1, int $$2) {
+         $$0.a();
+         fij $$3 = new fij(this.a, ffd.Q().h).d();
+         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
+         Optional<frx.b> $$4 = $$0.f;
+         fhj.a<Boolean> $$5 = fhj.b(this.b.getAsBoolean());
+         $$5.a();
+         boolean $$6 = this.d != null && $$4.isEmpty();
+         if ($$6) {
+            fin $$7 = fin.a(this.d);
+            $$5.a($$1x -> $$7);
+         }
+
+         if (this.d != null && !$$6) {
+            $$5.a($$0x -> xn.a(this.a, $$0x.d(), this.d));
+         } else {
+            $$5.a($$0x -> xn.a(this.a, $$0x.d()));
+         }
+
+         fhj<Boolean> $$8 = $$5.a(0, 0, this.f, 20, xo.i(), ($$0x, $$1x) -> this.c.accept($$1x));
+         if (this.e != null) {
+            $$8.j = this.e.getAsBoolean();
+         }
+
+         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
+         if (this.d != null) {
+            $$4.ifPresent($$3x -> {
+               xo $$4x = this.d.f().a(n.h);
+               fgn $$5x = ffd.Q().h;
+               fhw $$6x = new fhw($$4x, $$5x);
+               $$6x.d($$0.a - $$0.c - this.f);
+               $$6x.e($$3x.a());
+               $$0.a();
+               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.v() : 0;
+               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
+            });
+         }
+
+         return new frx.c($$8, this.b, this.e);
+      }
    }
 }

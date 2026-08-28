@@ -1,20 +1,25 @@
-public class dpb extends doq {
-   public dpb(iz $$0, drx $$1) {
-      super(dpe.C, $$0, $$1, cyv.c);
+public class dpb extends dpf {
+   private ctg a;
+
+   public dpb(iz $$0, dsa $$1) {
+      super(dph.y, $$0, $$1);
+      this.a = ((deq)$$1.b()).b();
    }
 
-   @Override
-   protected xl k() {
-      return xl.c("container.blast_furnace");
+   public dpb(iz $$0, dsa $$1, ctg $$2) {
+      super(dph.y, $$0, $$1);
+      this.a = $$2;
    }
 
-   @Override
-   protected int b(cuk $$0) {
-      return super.b($$0) / 2;
+   public aco b() {
+      return aco.a(this);
    }
 
-   @Override
-   protected cpp a(int $$0, cmr $$1) {
-      return new cpt($$0, $$1, this, this.m);
+   public ctg c() {
+      return this.a;
+   }
+
+   public void a(ctg $$0) {
+      this.a = $$0;
    }
 }

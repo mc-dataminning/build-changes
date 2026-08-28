@@ -1,27 +1,48 @@
-public class foh extends fnw<cpw> implements fpc<cpw> {
-   private static final alb D = new alb("textures/gui/container/generic_54.png");
-   private final int E;
+public class foh extends fnz<cpx> {
+   private static final ale D = new ale("container/brewing_stand/fuel_length");
+   private static final ale E = new ale("container/brewing_stand/brew_progress");
+   private static final ale F = new ale("container/brewing_stand/bubbles");
+   private static final ale G = new ale("textures/gui/container/brewing_stand.png");
+   private static final int[] H = new int[]{29, 24, 20, 16, 11, 6, 0};
 
-   public foh(cpw $$0, cmr $$1, xl $$2) {
+   public foh(cpx $$0, cmu $$1, xo $$2) {
       super($$0, $$1, $$2);
-      int $$3 = 222;
-      int $$4 = 114;
-      this.E = $$0.m();
-      this.d = 114 + this.E * 18;
-      this.v = this.d - 94;
    }
 
    @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+   protected void aM_() {
+      super.aM_();
+      this.r = (this.c - this.p.a(this.l)) / 2;
+   }
+
+   @Override
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
       this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(fgm $$0, float $$1, int $$2, int $$3) {
+   protected void a(fgp $$0, float $$1, int $$2, int $$3) {
       int $$4 = (this.n - this.c) / 2;
       int $$5 = (this.o - this.d) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.E * 18 + 17);
-      $$0.a(D, $$4, $$5 + this.E * 18 + 17, 0, 126, this.c, 96);
+      $$0.a(G, $$4, $$5, 0, 0, this.c, this.d);
+      int $$6 = this.w.l();
+      int $$7 = ayx.a((18 * $$6 + 20 - 1) / 20, 0, 18);
+      if ($$7 > 0) {
+         $$0.a(D, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+      }
+
+      int $$8 = this.w.m();
+      if ($$8 > 0) {
+         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
+         if ($$9 > 0) {
+            $$0.a(E, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
+         }
+
+         $$9 = H[$$8 / 2 % 7];
+         if ($$9 > 0) {
+            $$0.a(F, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
+         }
+      }
    }
 }

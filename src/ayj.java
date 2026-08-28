@@ -1,30 +1,80 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import java.util.List;
 
-public final class ayj {
-   private ayj() {
+@FunctionalInterface
+public interface ayj {
+   ayj a = $$0 -> true;
+
+   boolean accept(ayk var1);
+
+   static ayj codepoint(int $$0, yl $$1) {
+      return $$2 -> $$2.accept(0, $$1, $$0);
    }
 
-   public static <T> boolean a(Map<T, Set<T>> $$0, Set<T> $$1, Set<T> $$2, Consumer<T> $$3, T $$4) {
-      if ($$1.contains($$4)) {
-         return false;
-      } else if ($$2.contains($$4)) {
-         return true;
-      } else {
-         $$2.add($$4);
+   static ayj forward(String $$0, yl $$1) {
+      return $$0.isEmpty() ? a : $$2 -> azr.a($$0, $$1, $$2);
+   }
 
-         for (T $$5 : $$0.getOrDefault($$4, ImmutableSet.of())) {
-            if (a($$0, $$1, $$2, $$3, $$5)) {
-               return true;
+   static ayj forward(String $$0, yl $$1, Int2IntFunction $$2) {
+      return $$0.isEmpty() ? a : $$3 -> azr.a($$0, $$1, decorateOutput($$3, $$2));
+   }
+
+   static ayj backward(String $$0, yl $$1) {
+      return $$0.isEmpty() ? a : $$2 -> azr.b($$0, $$1, $$2);
+   }
+
+   static ayj backward(String $$0, yl $$1, Int2IntFunction $$2) {
+      return $$0.isEmpty() ? a : $$3 -> azr.b($$0, $$1, decorateOutput($$3, $$2));
+   }
+
+   static ayk decorateOutput(ayk $$0, Int2IntFunction $$1) {
+      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
+   }
+
+   static ayj composite() {
+      return a;
+   }
+
+   static ayj composite(ayj $$0) {
+      return $$0;
+   }
+
+   static ayj composite(ayj $$0, ayj $$1) {
+      return fromPair($$0, $$1);
+   }
+
+   static ayj composite(ayj... $$0) {
+      return fromList(ImmutableList.copyOf($$0));
+   }
+
+   static ayj composite(List<ayj> $$0) {
+      int $$1 = $$0.size();
+      switch ($$1) {
+         case 0:
+            return a;
+         case 1:
+            return $$0.get(0);
+         case 2:
+            return fromPair($$0.get(0), $$0.get(1));
+         default:
+            return fromList(ImmutableList.copyOf($$0));
+      }
+   }
+
+   static ayj fromPair(ayj $$0, ayj $$1) {
+      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
+   }
+
+   static ayj fromList(List<ayj> $$0) {
+      return $$1 -> {
+         for (ayj $$2 : $$0) {
+            if (!$$2.accept($$1)) {
+               return false;
             }
          }
 
-         $$2.remove($$4);
-         $$1.add($$4);
-         $$3.accept($$4);
-         return false;
-      }
+         return true;
+      };
    }
 }

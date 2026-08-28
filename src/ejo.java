@@ -1,112 +1,129 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableObject;
 
-public class ejo {
-   private static final int c = Integer.MIN_VALUE;
-   private static final MutableObject<Codec<ji<ejo>>> d = new MutableObject();
-   public static final Codec<ejo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.lazyInitialized(d::getValue).fieldOf("fallback").forGetter(ejo::a),
-               Codec.mapPair(ejm.e.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ejo::new)
-   );
-   public static final Codec<ji<ejo>> b = ac.a(akx.a(lq.aM, a), d::setValue);
-   private final List<Pair<ejm, Integer>> e;
-   private final ObjectArrayList<ejm> f;
-   private final ji<ejo> g;
-   private int h = Integer.MIN_VALUE;
+public class ejo extends ejp {
+   private static final Codec<Either<ale, emi>> a = Codec.of(ejo::a, ale.a.map(Either::left));
+   public static final MapCodec<ejo> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c(), b(), d()).apply($$0, ejo::new));
+   protected final Either<ale, emi> c;
+   protected final ji<emg> d;
 
-   public ejo(ji<ejo> $$0, List<Pair<ejm, Integer>> $$1) {
-      this.e = $$1;
-      this.f = new ObjectArrayList();
+   private static <T> DataResult<T> a(Either<ale, emi> $$0, DynamicOps<T> $$1, T $$2) {
+      Optional<ale> $$3 = $$0.left();
+      return $$3.isEmpty() ? DataResult.error(() -> "Can not serialize a runtime pool element") : ale.a.encode($$3.get(), $$1, $$2);
+   }
 
-      for (Pair<ejm, Integer> $$2 : $$1) {
-         ejm $$3 = (ejm)$$2.getFirst();
+   protected static <E extends ejo> RecordCodecBuilder<E, ji<emg>> b() {
+      return emh.d.fieldOf("processors").forGetter($$0 -> $$0.d);
+   }
 
-         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
-            this.f.add($$3);
+   protected static <E extends ejo> RecordCodecBuilder<E, Either<ale, emi>> c() {
+      return a.fieldOf("location").forGetter($$0 -> $$0.c);
+   }
+
+   protected ejo(Either<ale, emi> $$0, ji<emg> $$1, ejr.a $$2) {
+      super($$2);
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   @Override
+   public kd a(emj $$0, dlk $$1) {
+      emi $$2 = this.a($$0);
+      return $$2.a($$1);
+   }
+
+   private emi a(emj $$0) {
+      return (emi)this.c.map($$0::a, Function.identity());
+   }
+
+   public List<emi.c> a(emj $$0, iz $$1, dlk $$2, boolean $$3) {
+      emi $$4 = this.a($$0);
+      List<emi.c> $$5 = $$4.a($$1, new eme().a($$2), dez.pa, $$3);
+      List<emi.c> $$6 = Lists.newArrayList();
+
+      for (emi.c $$7 : $$5) {
+         ur $$8 = $$7.c();
+         if ($$8 != null) {
+            dtk $$9 = dtk.valueOf($$8.l("mode"));
+            if ($$9 == dtk.d) {
+               $$6.add($$7);
+            }
          }
       }
 
-      this.g = $$0;
+      return $$6;
    }
 
-   public ejo(ji<ejo> $$0, List<Pair<Function<ejo.a, ? extends ejm>, Integer>> $$1, ejo.a $$2) {
-      this.e = Lists.newArrayList();
-      this.f = new ObjectArrayList();
+   @Override
+   public List<emi.c> a(emj $$0, iz $$1, dlk $$2, azf $$3) {
+      emi $$4 = this.a($$0);
+      ObjectArrayList<emi.c> $$5 = $$4.a($$1, new eme().a($$2), dez.pb, true);
+      ac.c($$5, $$3);
+      a($$5);
+      return $$5;
+   }
 
-      for (Pair<Function<ejo.a, ? extends ejm>, Integer> $$3 : $$1) {
-         ejm $$4 = (ejm)((Function)$$3.getFirst()).apply($$2);
-         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
+   @VisibleForTesting
+   static void a(List<emi.c> $$0) {
+      $$0.sort(Comparator.<emi.c>comparingInt($$0x -> x.a($$0x.c(), $$0xx -> $$0xx.h("selection_priority"), 0)).reversed());
+   }
 
-         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
-            this.f.add($$4);
+   @Override
+   public eia a(emj $$0, iz $$1, dlk $$2) {
+      emi $$3 = this.a($$0);
+      return $$3.b(new eme().a($$2), $$1);
+   }
+
+   @Override
+   public boolean a(emj $$0, dcr $$1, dcp $$2, dtx $$3, iz $$4, iz $$5, dlk $$6, eia $$7, azf $$8, boolean $$9) {
+      emi $$10 = this.a($$0);
+      eme $$11 = this.a($$6, $$7, $$9);
+      if (!$$10.a($$1, $$4, $$5, $$11, $$8, 18)) {
+         return false;
+      } else {
+         for (emi.c $$13 : emi.a($$1, $$4, $$5, $$11, this.a($$0, $$4, $$6, false))) {
+            this.a($$1, $$13, $$4, $$6, $$8, $$7);
          }
-      }
 
-      this.g = $$0;
+         return true;
+      }
    }
 
-   public int a(emg $$0) {
-      if (this.h == Integer.MIN_VALUE) {
-         this.h = this.f.stream().filter($$0x -> $$0x != ejf.b).mapToInt($$1 -> $$1.a($$0, iz.c, dlh.a).e()).max().orElse(0);
+   protected eme a(dlk $$0, eia $$1, boolean $$2) {
+      eme $$3 = new eme();
+      $$3.a($$1);
+      $$3.a($$0);
+      $$3.c(true);
+      $$3.a(false);
+      $$3.a(elk.b);
+      $$3.d(true);
+      if (!$$2) {
+         $$3.a(elq.b);
       }
 
-      return this.h;
+      this.d.a().a().forEach($$3::a);
+      this.e().b().forEach($$3::a);
+      return $$3;
    }
 
-   public ji<ejo> a() {
-      return this.g;
+   @Override
+   public ejq<?> a() {
+      return ejq.a;
    }
 
-   public ejm a(azc $$0) {
-      return (ejm)this.f.get($$0.a(this.f.size()));
-   }
-
-   public List<ejm> b(azc $$0) {
-      return ac.a(this.f, $$0);
-   }
-
-   public int b() {
-      return this.f.size();
-   }
-
-   public static enum a implements azp {
-      a("terrain_matching", ImmutableList.of(new elm(dxp.a.a, -1))),
-      b("rigid", ImmutableList.of());
-
-      public static final azp.a<ejo.a> c = azp.a(ejo.a::values);
-      private final String d;
-      private final ImmutableList<emc> e;
-
-      private a(final String $$0, final ImmutableList<emc> $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      public static ejo.a a(String $$0) {
-         return c.a($$0);
-      }
-
-      public ImmutableList<emc> b() {
-         return this.e;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   @Override
+   public String toString() {
+      return "Single[" + this.c + "]";
    }
 }

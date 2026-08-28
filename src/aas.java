@@ -1,8 +1,13 @@
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record aas(aas.a c) implements aat {
-   public static final zj<wl, aas> a = aat.a(aas::a, aas::new);
-   public static final aat.b<aas> b = aat.a("debug/breeze");
+public record aas(aas.a c) implements aaw {
+   public static final zm<wl, aas> a = aaw.a(aas::a, aas::new);
+   public static final aaw.b<aas> b = aaw.a("debug/bee");
 
    private aas(wl $$0) {
       this(new aas.a($$0));
@@ -13,7 +18,7 @@ public record aas(aas.a c) implements aat {
    }
 
    @Override
-   public aat.b<aas> a() {
+   public aaw.b<aas> a() {
       return b;
    }
 
@@ -21,20 +26,29 @@ public record aas(aas.a c) implements aat {
       return this.c;
    }
 
-   public static record a(UUID a, int b, Integer c, iz d) {
+   public static record a(UUID a, int b, evp c, @Nullable eoh d, @Nullable iz e, @Nullable iz f, int g, Set<String> h, List<iz> i) {
       public a(wl $$0) {
-         this($$0.n(), $$0.readInt(), $$0.c(wl::readInt), $$0.c(iz.b));
+         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(eoh::b), $$0.c(iz.b), $$0.c(iz.b), $$0.readInt(), $$0.a(HashSet::new, wl::p), $$0.a(iz.b));
       }
 
       public void a(wl $$0) {
          $$0.a(this.a);
          $$0.p(this.b);
-         $$0.a(this.c, wl::p);
-         $$0.a(this.d, iz.b);
+         $$0.a(this.c);
+         $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
+         $$0.a(this.e, iz.b);
+         $$0.a(this.f, iz.b);
+         $$0.p(this.g);
+         $$0.a(this.h, wl::a);
+         $$0.a(this.i, iz.b);
+      }
+
+      public boolean a(iz $$0) {
+         return Objects.equals($$0, this.e);
       }
 
       public String a() {
-         return ago.a(this.a);
+         return agr.a(this.a);
       }
 
       @Override
@@ -50,12 +64,35 @@ public record aas(aas.a c) implements aat {
          return this.b;
       }
 
-      public Integer d() {
+      public evp d() {
          return this.c;
       }
 
-      public iz e() {
+      @Nullable
+      public eoh e() {
          return this.d;
+      }
+
+      @Nullable
+      public iz f() {
+         return this.e;
+      }
+
+      @Nullable
+      public iz g() {
+         return this.f;
+      }
+
+      public int h() {
+         return this.g;
+      }
+
+      public Set<String> i() {
+         return this.h;
+      }
+
+      public List<iz> j() {
+         return this.i;
       }
    }
 }

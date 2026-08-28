@@ -1,35 +1,4 @@
-import java.net.InetSocketAddress;
-
+@FunctionalInterface
 public interface fzg {
-   String a();
-
-   String b();
-
-   int c();
-
-   InetSocketAddress d();
-
-   static fzg a(final InetSocketAddress $$0) {
-      return new fzg() {
-         @Override
-         public String a() {
-            return $$0.getAddress().getHostName();
-         }
-
-         @Override
-         public String b() {
-            return $$0.getAddress().getHostAddress();
-         }
-
-         @Override
-         public int c() {
-            return $$0.getPort();
-         }
-
-         @Override
-         public InetSocketAddress d() {
-            return $$0;
-         }
-      };
-   }
+   zv<agv> predict(int var1);
 }

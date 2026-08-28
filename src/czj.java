@@ -1,15 +1,22 @@
-public class czj extends cxz {
-   public czj(String $$0, cyf $$1, cyn $$2, cuk $$3, float $$4, int $$5) {
-      super(cyv.d, $$0, $$1, $$2, $$3, $$4, $$5);
+public interface czj extends cyt<bql> {
+   @Override
+   default cyy<?> e() {
+      return cyy.g;
    }
 
    @Override
-   public cuk g() {
-      return new cuk(dew.nV);
+   default boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 1;
    }
 
    @Override
-   public cyu<?> ap_() {
-      return cyu.r;
+   default cun g() {
+      return new cun(dez.ob);
    }
+
+   boolean a(cun var1);
+
+   boolean b(cun var1);
+
+   boolean c(cun var1);
 }

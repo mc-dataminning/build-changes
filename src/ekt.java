@@ -1,216 +1,252 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
-public class ekt extends eif {
-   private static final String[] e = new String[]{
-      "ruined_portal/portal_1",
-      "ruined_portal/portal_2",
-      "ruined_portal/portal_3",
-      "ruined_portal/portal_4",
-      "ruined_portal/portal_5",
-      "ruined_portal/portal_6",
-      "ruined_portal/portal_7",
-      "ruined_portal/portal_8",
-      "ruined_portal/portal_9",
-      "ruined_portal/portal_10"
+public class ekt {
+   static final emf a = a(dez.I, dez.J, eqc.bh);
+   static final emf b = a(dez.L, dez.M, eqc.bi);
+   private static final ale[] c = new ale[]{
+      new ale("underwater_ruin/warm_1"),
+      new ale("underwater_ruin/warm_2"),
+      new ale("underwater_ruin/warm_3"),
+      new ale("underwater_ruin/warm_4"),
+      new ale("underwater_ruin/warm_5"),
+      new ale("underwater_ruin/warm_6"),
+      new ale("underwater_ruin/warm_7"),
+      new ale("underwater_ruin/warm_8")
    };
-   private static final String[] f = new String[]{"ruined_portal/giant_portal_1", "ruined_portal/giant_portal_2", "ruined_portal/giant_portal_3"};
-   private static final float g = 0.05F;
-   private static final int h = 15;
-   private final List<ekt.a> i;
-   public static final MapCodec<ekt> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), ayc.a(ekt.a.a.listOf()).fieldOf("setups").forGetter($$0x -> $$0x.i)).apply($$0, ekt::new)
-   );
+   private static final ale[] d = new ale[]{
+      new ale("underwater_ruin/brick_1"),
+      new ale("underwater_ruin/brick_2"),
+      new ale("underwater_ruin/brick_3"),
+      new ale("underwater_ruin/brick_4"),
+      new ale("underwater_ruin/brick_5"),
+      new ale("underwater_ruin/brick_6"),
+      new ale("underwater_ruin/brick_7"),
+      new ale("underwater_ruin/brick_8")
+   };
+   private static final ale[] e = new ale[]{
+      new ale("underwater_ruin/cracked_1"),
+      new ale("underwater_ruin/cracked_2"),
+      new ale("underwater_ruin/cracked_3"),
+      new ale("underwater_ruin/cracked_4"),
+      new ale("underwater_ruin/cracked_5"),
+      new ale("underwater_ruin/cracked_6"),
+      new ale("underwater_ruin/cracked_7"),
+      new ale("underwater_ruin/cracked_8")
+   };
+   private static final ale[] f = new ale[]{
+      new ale("underwater_ruin/mossy_1"),
+      new ale("underwater_ruin/mossy_2"),
+      new ale("underwater_ruin/mossy_3"),
+      new ale("underwater_ruin/mossy_4"),
+      new ale("underwater_ruin/mossy_5"),
+      new ale("underwater_ruin/mossy_6"),
+      new ale("underwater_ruin/mossy_7"),
+      new ale("underwater_ruin/mossy_8")
+   };
+   private static final ale[] g = new ale[]{
+      new ale("underwater_ruin/big_brick_1"),
+      new ale("underwater_ruin/big_brick_2"),
+      new ale("underwater_ruin/big_brick_3"),
+      new ale("underwater_ruin/big_brick_8")
+   };
+   private static final ale[] h = new ale[]{
+      new ale("underwater_ruin/big_mossy_1"),
+      new ale("underwater_ruin/big_mossy_2"),
+      new ale("underwater_ruin/big_mossy_3"),
+      new ale("underwater_ruin/big_mossy_8")
+   };
+   private static final ale[] i = new ale[]{
+      new ale("underwater_ruin/big_cracked_1"),
+      new ale("underwater_ruin/big_cracked_2"),
+      new ale("underwater_ruin/big_cracked_3"),
+      new ale("underwater_ruin/big_cracked_8")
+   };
+   private static final ale[] j = new ale[]{
+      new ale("underwater_ruin/big_warm_4"),
+      new ale("underwater_ruin/big_warm_5"),
+      new ale("underwater_ruin/big_warm_6"),
+      new ale("underwater_ruin/big_warm_7")
+   };
 
-   public ekt(eif.c $$0, List<ekt.a> $$1) {
-      super($$0);
-      this.i = $$1;
+   private static emf a(dex $$0, dex $$1, ald<eql> $$2) {
+      return new elo(new emb(List.of(new elx(new ell($$0), elg.b, elu.b, $$1.o(), new emm($$2)))), bpu.a(5));
    }
 
-   public ekt(eif.c $$0, ekt.a $$1) {
-      this($$0, List.of($$1));
+   private static ale a(azf $$0) {
+      return ac.a(c, $$0);
    }
 
-   @Override
-   public Optional<eif.b> a(eif.a $$0) {
-      eks.a $$1 = new eks.a();
-      dyo $$2 = $$0.f();
-      ekt.a $$3 = null;
-      if (this.i.size() > 1) {
-         float $$4 = 0.0F;
+   private static ale b(azf $$0) {
+      return ac.a(j, $$0);
+   }
 
-         for (ekt.a $$5 : this.i) {
-            $$4 += $$5.h();
-         }
+   public static void a(emj $$0, iz $$1, dlk $$2, ein $$3, azf $$4, eku $$5) {
+      boolean $$6 = $$4.i() <= $$5.f;
+      float $$7 = $$6 ? 0.9F : 0.8F;
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if ($$6 && $$4.i() <= $$5.g) {
+         a($$0, $$4, $$2, $$1, $$5, $$3);
+      }
+   }
 
-         float $$6 = $$2.i();
+   private static void a(emj $$0, azf $$1, dlk $$2, iz $$3, eku $$4, ein $$5) {
+      iz $$6 = new iz($$3.u(), 90, $$3.w());
+      iz $$7 = emi.a(new iz(15, 0, 15), dju.a, $$2, iz.c).a((kd)$$6);
+      eia $$8 = eia.a($$6, $$7);
+      iz $$9 = new iz(Math.min($$6.u(), $$7.u()), $$6.v(), Math.min($$6.w(), $$7.w()));
+      List<iz> $$10 = a($$1, $$9);
+      int $$11 = ayx.a($$1, 4, 8);
 
-         for (ekt.a $$7 : this.i) {
-            $$6 -= $$7.h() / $$4;
-            if ($$6 < 0.0F) {
-               $$3 = $$7;
-               break;
+      for (int $$12 = 0; $$12 < $$11; $$12++) {
+         if (!$$10.isEmpty()) {
+            int $$13 = $$1.a($$10.size());
+            iz $$14 = $$10.remove($$13);
+            dlk $$15 = dlk.a($$1);
+            iz $$16 = emi.a(new iz(5, 0, 6), dju.a, $$15, iz.c).a((kd)$$14);
+            eia $$17 = eia.a($$14, $$16);
+            if (!$$17.a($$8)) {
+               a($$0, $$14, $$15, $$5, $$1, $$4, false, 0.8F);
             }
          }
-      } else {
-         $$3 = this.i.get(0);
+      }
+   }
+
+   private static List<iz> a(azf $$0, iz $$1) {
+      List<iz> $$2 = Lists.newArrayList();
+      $$2.add($$1.b(-16 + ayx.a($$0, 1, 8), 0, 16 + ayx.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + ayx.a($$0, 1, 8), 0, ayx.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + ayx.a($$0, 1, 8), 0, -16 + ayx.a($$0, 4, 8)));
+      $$2.add($$1.b(ayx.a($$0, 1, 7), 0, 16 + ayx.a($$0, 1, 7)));
+      $$2.add($$1.b(ayx.a($$0, 1, 7), 0, -16 + ayx.a($$0, 4, 6)));
+      $$2.add($$1.b(16 + ayx.a($$0, 1, 7), 0, 16 + ayx.a($$0, 3, 8)));
+      $$2.add($$1.b(16 + ayx.a($$0, 1, 7), 0, ayx.a($$0, 1, 7)));
+      $$2.add($$1.b(16 + ayx.a($$0, 1, 7), 0, -16 + ayx.a($$0, 4, 8)));
+      return $$2;
+   }
+
+   private static void a(emj $$0, iz $$1, dlk $$2, ein $$3, azf $$4, eku $$5, boolean $$6, float $$7) {
+      switch ($$5.e) {
+         case a:
+         default:
+            ale $$8 = $$6 ? b($$4) : a($$4);
+            $$3.a(new ekt.a($$0, $$8, $$1, $$2, $$7, $$5.e, $$6));
+            break;
+         case b:
+            ale[] $$9 = $$6 ? g : d;
+            ale[] $$10 = $$6 ? i : e;
+            ale[] $$11 = $$6 ? h : f;
+            int $$12 = $$4.a($$9.length);
+            $$3.a(new ekt.a($$0, $$9[$$12], $$1, $$2, $$7, $$5.e, $$6));
+            $$3.a(new ekt.a($$0, $$10[$$12], $$1, $$2, 0.7F, $$5.e, $$6));
+            $$3.a(new ekt.a($$0, $$11[$$12], $$1, $$2, 0.5F, $$5.e, $$6));
+      }
+   }
+
+   public static class a extends eis {
+      private final eku.a h;
+      private final float i;
+      private final boolean j;
+
+      public a(emj $$0, ale $$1, iz $$2, dlk $$3, float $$4, eku.a $$5, boolean $$6) {
+         super(eiz.H, 0, $$0, $$1, $$1.toString(), a($$3, $$4, $$5), $$2);
+         this.i = $$4;
+         this.h = $$5;
+         this.j = $$6;
       }
 
-      if ($$3 == null) {
-         throw new IllegalStateException();
-      } else {
-         ekt.a $$8 = $$3;
-         $$1.d = a($$2, $$8.b());
-         $$1.c = $$8.c();
-         $$1.e = $$8.d();
-         $$1.f = $$8.e();
-         $$1.g = $$8.g();
-         alb $$9;
-         if ($$2.i() < 0.05F) {
-            $$9 = new alb(f[$$2.a(f.length)]);
-         } else {
-            $$9 = new alb(e[$$2.a(e.length)]);
-         }
+      private a(emj $$0, ur $$1, dlk $$2, float $$3, eku.a $$4, boolean $$5) {
+         super(eiz.H, $$1, $$0, $$3x -> a($$2, $$3, $$4));
+         this.i = $$3;
+         this.h = $$4;
+         this.j = $$5;
+      }
 
-         emf $$11 = $$0.e().a($$9);
-         dlh $$12 = ac.a(dlh.values(), $$2);
-         djr $$13 = $$2.i() < 0.5F ? djr.a : djr.c;
-         iz $$14 = new iz($$11.a().u() / 2, 0, $$11.a().w() / 2);
-         dtu $$15 = $$0.b();
-         dbv $$16 = $$0.i();
-         dyd $$17 = $$0.d();
-         iz $$18 = $$0.h().l();
-         ehx $$19 = $$11.a($$18, $$12, $$14, $$13);
-         iz $$20 = $$19.g();
-         int $$21 = $$15.a($$20.u(), $$20.w(), eks.a($$8.a()), $$16, $$17) - 1;
-         int $$22 = a($$2, $$15, $$8.a(), $$1.d, $$21, $$19.e(), $$19, $$16, $$17);
-         iz $$23 = new iz($$18.u(), $$22, $$18.w());
-         return Optional.of(new eif.b($$23, (Consumer<eix>)($$10 -> {
-            if ($$8.f()) {
-               $$1.b = a($$23, $$0.b().c().getNoiseBiome(jt.a($$23.u()), jt.a($$23.v()), jt.a($$23.w()), $$17.b()));
+      private static eme a(dlk $$0, float $$1, eku.a $$2) {
+         emf $$3 = $$2 == eku.a.b ? ekt.b : ekt.a;
+         return new eme().a($$0).a(dju.a).a(new elm($$1)).a(elk.d).a($$3);
+      }
+
+      public static ekt.a a(emj $$0, ur $$1) {
+         dlk $$2 = dlk.valueOf($$1.l("Rot"));
+         float $$3 = $$1.j("Integrity");
+         eku.a $$4 = eku.a.valueOf($$1.l("BiomeType"));
+         boolean $$5 = $$1.q("IsLarge");
+         return new ekt.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      @Override
+      protected void a(eiy $$0, ur $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+         $$1.a("Integrity", this.i);
+         $$1.a("BiomeType", this.h.toString());
+         $$1.a("IsLarge", this.j);
+      }
+
+      @Override
+      protected void a(String $$0, iz $$1, dcl $$2, azf $$3, eia $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, dez.cv.o().a(dga.e, Boolean.valueOf($$2.b_($$1).a(awu.a))), 2);
+            dpf $$5 = $$2.c_($$1);
+            if ($$5 instanceof dpm) {
+               ((dpm)$$5).a(this.j ? eqc.F : eqc.E, $$3.g());
             }
-
-            $$10.a(new eks($$0.e(), $$23, $$8.a(), $$1, $$9, $$11, $$12, $$13, $$14));
-         })));
-      }
-   }
-
-   private static boolean a(dyo $$0, float $$1) {
-      if ($$1 == 0.0F) {
-         return false;
-      } else {
-         return $$1 == 1.0F ? true : $$0.i() < $$1;
-      }
-   }
-
-   private static boolean a(iz $$0, ji<dcs> $$1) {
-      return $$1.a().b($$0);
-   }
-
-   private static int a(azc $$0, dtu $$1, eks.b $$2, boolean $$3, int $$4, int $$5, ehx $$6, dbv $$7, dyd $$8) {
-      int $$9 = $$7.I_() + 15;
-      int $$10;
-      if ($$2 == eks.b.f) {
-         if ($$3) {
-            $$10 = ayu.b($$0, 32, 100);
-         } else if ($$0.i() < 0.5F) {
-            $$10 = ayu.b($$0, 27, 29);
-         } else {
-            $$10 = ayu.b($$0, 29, 100);
-         }
-      } else if ($$2 == eks.b.d) {
-         int $$13 = $$4 - $$5;
-         $$10 = a($$0, 70, $$13);
-      } else if ($$2 == eks.b.e) {
-         int $$15 = $$4 - $$5;
-         $$10 = a($$0, $$9, $$15);
-      } else if ($$2 == eks.b.b) {
-         $$10 = $$4 - $$5 + ayu.b($$0, 2, 8);
-      } else {
-         $$10 = $$4;
-      }
-
-      List<iz> $$19 = ImmutableList.of(new iz($$6.h(), 0, $$6.j()), new iz($$6.k(), 0, $$6.j()), new iz($$6.h(), 0, $$6.m()), new iz($$6.k(), 0, $$6.m()));
-      List<dcf> $$20 = $$19.stream().map($$3x -> $$1.a($$3x.u(), $$3x.w(), $$7, $$8)).collect(Collectors.toList());
-      dxp.a $$21 = $$2 == eks.b.c ? dxp.a.c : dxp.a.a;
-
-      int $$22;
-      for ($$22 = $$10; $$22 > $$9; $$22--) {
-         int $$23 = 0;
-
-         for (dcf $$24 : $$20) {
-            drx $$25 = $$24.a($$22);
-            if ($$21.e().test($$25)) {
-               if (++$$23 == 3) {
-                  return $$22;
+         } else if ("drowned".equals($$0)) {
+            cjp $$6 = bsy.B.a((dbw)$$2.E());
+            if ($$6 != null) {
+               $$6.fU();
+               $$6.a($$1, 0.0F, 0.0F);
+               $$6.a($$2, $$2.d_($$1), btr.d, null);
+               $$2.a_($$6);
+               if ($$1.v() > $$2.z_()) {
+                  $$2.a($$1, dez.a.o(), 2);
+               } else {
+                  $$2.a($$1, dez.G.o(), 2);
                }
             }
          }
       }
 
-      return $$22;
-   }
-
-   private static int a(azc $$0, int $$1, int $$2) {
-      return $$1 < $$2 ? ayu.b($$0, $$1, $$2) : $$2;
-   }
-
-   @Override
-   public eio<?> e() {
-      return eio.l;
-   }
-
-   public static record a(eks.b b, float c, float d, boolean e, boolean f, boolean g, boolean h, float i) {
-      public static final Codec<ekt.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  eks.b.g.fieldOf("placement").forGetter(ekt.a::a),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("air_pocket_probability").forGetter(ekt.a::b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("mossiness").forGetter(ekt.a::c),
-                  Codec.BOOL.fieldOf("overgrown").forGetter(ekt.a::d),
-                  Codec.BOOL.fieldOf("vines").forGetter(ekt.a::e),
-                  Codec.BOOL.fieldOf("can_be_cold").forGetter(ekt.a::f),
-                  Codec.BOOL.fieldOf("replace_with_blackstone").forGetter(ekt.a::g),
-                  ayc.m.fieldOf("weight").forGetter(ekt.a::h)
-               )
-               .apply($$0, ekt.a::new)
-      );
-
-      public eks.b a() {
-         return this.b;
+      @Override
+      public void a(dcr $$0, dcp $$1, dtx $$2, azf $$3, eia $$4, dbd $$5, iz $$6) {
+         int $$7 = $$0.a(dxs.a.c, this.d.u(), this.d.w());
+         this.d = new iz(this.d.u(), $$7, this.d.w());
+         iz $$8 = emi.a(new iz(this.b.a().u() - 1, 0, this.b.a().w() - 1), dju.a, this.c.d(), iz.c).a((kd)this.d);
+         this.d = new iz(this.d.u(), this.a(this.d, $$0, $$8), this.d.w());
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
 
-      public float b() {
-         return this.c;
-      }
+      private int a(iz $$0, dbc $$1, iz $$2) {
+         int $$3 = $$0.v();
+         int $$4 = 512;
+         int $$5 = $$3 - 1;
+         int $$6 = 0;
 
-      public float c() {
-         return this.d;
-      }
+         for (iz $$7 : iz.c($$0, $$2)) {
+            int $$8 = $$7.u();
+            int $$9 = $$7.w();
+            int $$10 = $$0.v() - 1;
+            iz.a $$11 = new iz.a($$8, $$10, $$9);
+            dsa $$12 = $$1.a_($$11);
 
-      public boolean d() {
-         return this.e;
-      }
+            for (ent $$13 = $$1.b_($$11); ($$12.i() || $$13.a(awu.a) || $$12.a(awo.am)) && $$10 > $$1.I_() + 1; $$13 = $$1.b_($$11)) {
+               $$11.d($$8, --$$10, $$9);
+               $$12 = $$1.a_($$11);
+            }
 
-      public boolean e() {
-         return this.f;
-      }
+            $$4 = Math.min($$4, $$10);
+            if ($$10 < $$5 - 2) {
+               $$6++;
+            }
+         }
 
-      public boolean f() {
-         return this.g;
-      }
+         int $$14 = Math.abs($$0.u() - $$2.u());
+         if ($$5 - $$4 > 2 && $$6 > $$14 - 2) {
+            $$3 = $$4 + 1;
+         }
 
-      public boolean g() {
-         return this.h;
-      }
-
-      public float h() {
-         return this.i;
+         return $$3;
       }
    }
 }

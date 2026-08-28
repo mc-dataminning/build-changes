@@ -1,38 +1,46 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-
-public enum bte implements ayx, azp {
-   a(0, "left", "options.mainHand.left"),
-   b(1, "right", "options.mainHand.right");
-
-   public static final Codec<bte> c = azp.a(bte::values);
-   public static final IntFunction<bte> d = axl.a(bte::a, values(), axl.a.a);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private bte(final int $$0, final String $$1, final String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   public bte e() {
-      return this == a ? b : a;
+public abstract class bte extends btp {
+   protected bte(bsy<? extends bte> $$0, dbw $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public int a() {
-      return this.e;
+   protected void a(double $$0, boolean $$1, dsa $$2, iz $$3) {
    }
 
    @Override
-   public String b() {
-      return this.g;
+   public void a(evp $$0) {
+      if (this.da()) {
+         if (this.be()) {
+            this.a(0.02F, $$0);
+            this.a(bts.a, this.ds());
+            this.h(this.ds().a(0.8F));
+         } else if (this.bs()) {
+            this.a(0.02F, $$0);
+            this.a(bts.a, this.ds());
+            this.h(this.ds().a(0.5));
+         } else {
+            float $$1 = 0.91F;
+            if (this.aE()) {
+               $$1 = this.dP().a_(this.aK()).b().h() * 0.91F;
+            }
+
+            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
+            $$1 = 0.91F;
+            if (this.aE()) {
+               $$1 = this.dP().a_(this.aK()).b().h() * 0.91F;
+            }
+
+            this.a(this.aE() ? 0.1F * $$2 : 0.02F, $$0);
+            this.a(bts.a, this.ds());
+            this.h(this.ds().a((double)$$1));
+         }
+      }
+
+      this.r(false);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public boolean q_() {
+      return false;
    }
 }

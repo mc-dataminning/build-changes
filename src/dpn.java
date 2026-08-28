@@ -1,27 +1,23 @@
-public class dpn extends dpc {
-   private int a;
+public class dpn {
+   private boolean a;
+   private float b;
+   private float c;
 
-   public dpn(iz $$0, drx $$1) {
-      super(dpe.s, $$0, $$1);
+   public void a() {
+      this.c = this.b;
+      float $$0 = 0.1F;
+      if (!this.a && this.b > 0.0F) {
+         this.b = Math.max(this.b - 0.1F, 0.0F);
+      } else if (this.a && this.b < 1.0F) {
+         this.b = Math.min(this.b + 0.1F, 1.0F);
+      }
    }
 
-   @Override
-   protected void b(ur $$0, jk.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("OutputSignal", this.a);
+   public float a(float $$0) {
+      return ayx.i($$0, this.c, this.b);
    }
 
-   @Override
-   protected void a(ur $$0, jk.a $$1) {
-      super.a($$0, $$1);
-      this.a = $$0.h("OutputSignal");
-   }
-
-   public int b() {
-      return this.a;
-   }
-
-   public void a(int $$0) {
+   public void a(boolean $$0) {
       this.a = $$0;
    }
 }

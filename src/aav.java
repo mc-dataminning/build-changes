@@ -1,26 +1,61 @@
-public record aav(ala<dwq> c, evm d) implements aat {
-   public static final zj<wl, aav> a = aat.a(aav::a, aav::new);
-   public static final aat.b<aav> b = aat.a("debug/game_event");
+import java.util.UUID;
+
+public record aav(aav.a c) implements aaw {
+   public static final zm<wl, aav> a = aaw.a(aav::a, aav::new);
+   public static final aaw.b<aav> b = aaw.a("debug/breeze");
 
    private aav(wl $$0) {
-      this($$0.a(lq.C), $$0.k());
+      this(new aav.a($$0));
    }
 
    private void a(wl $$0) {
-      $$0.b(this.c);
-      $$0.a(this.d);
+      this.c.a($$0);
    }
 
    @Override
-   public aat.b<aav> a() {
+   public aaw.b<aav> a() {
       return b;
    }
 
-   public ala<dwq> b() {
+   public aav.a b() {
       return this.c;
    }
 
-   public evm c() {
-      return this.d;
+   public static record a(UUID a, int b, Integer c, iz d) {
+      public a(wl $$0) {
+         this($$0.n(), $$0.readInt(), $$0.c(wl::readInt), $$0.c(iz.b));
+      }
+
+      public void a(wl $$0) {
+         $$0.a(this.a);
+         $$0.p(this.b);
+         $$0.a(this.c, wl::p);
+         $$0.a(this.d, iz.b);
+      }
+
+      public String a() {
+         return agr.a(this.a);
+      }
+
+      @Override
+      public String toString() {
+         return this.a();
+      }
+
+      public UUID b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public Integer d() {
+         return this.c;
+      }
+
+      public iz e() {
+         return this.d;
+      }
    }
 }

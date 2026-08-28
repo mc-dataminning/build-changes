@@ -1,60 +1,53 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Objects;
-import java.util.Optional;
+public class ekp {
+   private static final ale[] a = new ale[]{
+      new ale("nether_fossils/fossil_1"),
+      new ale("nether_fossils/fossil_2"),
+      new ale("nether_fossils/fossil_3"),
+      new ale("nether_fossils/fossil_4"),
+      new ale("nether_fossils/fossil_5"),
+      new ale("nether_fossils/fossil_6"),
+      new ale("nether_fossils/fossil_7"),
+      new ale("nether_fossils/fossil_8"),
+      new ale("nether_fossils/fossil_9"),
+      new ale("nether_fossils/fossil_10"),
+      new ale("nether_fossils/fossil_11"),
+      new ale("nether_fossils/fossil_12"),
+      new ale("nether_fossils/fossil_13"),
+      new ale("nether_fossils/fossil_14")
+   };
 
-public class ekp extends eif {
-   public static final MapCodec<ekp> d = a(ekp::new);
-
-   public ekp(eif.c $$0) {
-      super($$0);
+   public static void a(emj $$0, ein $$1, azf $$2, iz $$3) {
+      dlk $$4 = dlk.a($$2);
+      $$1.a(new ekp.a($$0, ac.a(a, $$2), $$3, $$4));
    }
 
-   @Override
-   public Optional<eif.b> a(eif.a $$0) {
-      int $$1 = $$0.h().a(9);
-      int $$2 = $$0.h().b(9);
-
-      for (ji<dcs> $$4 : $$0.c().a($$1, $$0.b().e(), $$2, 29, $$0.d().b())) {
-         if (!$$4.a(awk.X)) {
-            return Optional.empty();
-         }
+   public static class a extends eis {
+      public a(emj $$0, ale $$1, iz $$2, dlk $$3) {
+         super(eiz.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
       }
 
-      return a($$0, dxp.a.c, $$1x -> a($$1x, $$0));
-   }
-
-   private static eij a(dba $$0, dyo $$1) {
-      int $$2 = $$0.d() - 29;
-      int $$3 = $$0.e() - 29;
-      je $$4 = je.c.a.a($$1);
-      return new eko.h($$1, $$2, $$3, $$4);
-   }
-
-   private static void a(eix $$0, eif.a $$1) {
-      $$0.a(a($$1.h(), $$1.f()));
-   }
-
-   public static eiu a(dba $$0, long $$1, eiu $$2) {
-      if ($$2.a()) {
-         return $$2;
-      } else {
-         dyo $$3 = new dyo(new dxq(dye.a()));
-         $$3.c($$1, $$0.e, $$0.f);
-         eij $$4 = $$2.c().get(0);
-         ehx $$5 = $$4.f();
-         int $$6 = $$5.h();
-         int $$7 = $$5.j();
-         je $$8 = je.c.a.a($$3);
-         je $$9 = Objects.requireNonNullElse($$4.i(), $$8);
-         eij $$10 = new eko.h($$3, $$6, $$7, $$9);
-         eix $$11 = new eix();
-         $$11.a($$10);
-         return $$11.a();
+      public a(emj $$0, ur $$1) {
+         super(eiz.ac, $$1, $$0, $$1x -> a(dlk.valueOf($$1.l("Rot"))));
       }
-   }
 
-   @Override
-   public eio<?> e() {
-      return eio.j;
+      private static eme a(dlk $$0) {
+         return new eme().a($$0).a(dju.a).a(elk.d);
+      }
+
+      @Override
+      protected void a(eiy $$0, ur $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, iz $$1, dcl $$2, azf $$3, eia $$4) {
+      }
+
+      @Override
+      public void a(dcr $$0, dcp $$1, dtx $$2, azf $$3, eia $$4, dbd $$5, iz $$6) {
+         $$4.b(this.b.b(this.c, this.d));
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
    }
 }

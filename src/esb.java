@@ -2,58 +2,43 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 
-public class esb extends erp {
+public class esb extends ers {
    public static final MapCodec<esb> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  ala.a(lq.aU).fieldOf("name").forGetter($$0x -> $$0x.b),
-                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
-                  lp.k.r().fieldOf("type").forGetter($$0x -> $$0x.d)
+                  arv.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
+                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
+                  ayf.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
                )
             )
             .apply($$0, esb::new)
    );
-   private final ala<eqi> b;
-   private final long c;
-   private final ji<dpe<?>> d;
+   private final Optional<String> b;
+   private final Optional<arv<String>> c;
+   private final Optional<Integer> d;
 
-   private esb(List<etn> $$0, ala<eqi> $$1, long $$2, ji<dpe<?>> $$3) {
+   public esb(List<etq> $$0, Optional<arv<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
+      this.b = $$2;
+      this.c = $$1;
       this.d = $$3;
    }
 
    @Override
-   public err<esb> b() {
-      return ers.y;
+   protected cun a(cun $$0, eqg $$1) {
+      $$0.a(km.I, cxw.a, this::a);
+      return $$0;
+   }
+
+   private cxw a(cxw $$0) {
+      return new cxw(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
    }
 
    @Override
-   public cuk a(cuk $$0, eqd $$1) {
-      if ($$0.e()) {
-         return $$0;
-      } else {
-         $$0.b(km.ad, new cxn(this.b, this.c));
-         return $$0;
-      }
-   }
-
-   @Override
-   public void a(eqj $$0) {
-      super.a($$0);
-      if ($$0.a().a(lq.aU, this.b).isEmpty()) {
-         $$0.b("Missing loot table used for container: " + this.b.a());
-      }
-   }
-
-   public static erp.a<?> a(dpe<?> $$0, ala<eqi> $$1) {
-      return a($$2 -> new esb($$2, $$1, 0L, $$0.a()));
-   }
-
-   public static erp.a<?> a(dpe<?> $$0, ala<eqi> $$1, long $$2) {
-      return a($$3 -> new esb($$3, $$1, $$2, $$0.a()));
+   public eru<esb> b() {
+      return erv.M;
    }
 }

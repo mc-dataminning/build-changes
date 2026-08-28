@@ -1,25 +1,16 @@
-public record adf(long[] b, blq c) implements zs<ace> {
-   public static final zj<wl, adf> a = zs.a(adf::a, adf::new);
-
-   private adf(wl $$0) {
-      this($$0.d(), $$0.b(blq.class));
-   }
-
-   private void a(wl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
+public record adf(cui b, int c) implements zv<ach> {
+   public static final zm<wz, adf> a = zm.a(zk.a(lq.G), adf::b, zk.g, adf::e, adf::new);
 
    @Override
-   public zu<adf> a() {
-      return agq.A;
+   public zx<adf> a() {
+      return agt.x;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public blq e() {
+   public int e() {
       return this.c;
    }
 }

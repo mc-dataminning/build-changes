@@ -33,7 +33,7 @@ public final class kc {
       }
    }, UndashedUuid::toString), a);
    public static final Codec<UUID> f = Codec.withAlternative(a, d);
-   public static final zj<ByteBuf, UUID> g = new zj<ByteBuf, UUID>() {
+   public static final zm<ByteBuf, UUID> g = new zm<ByteBuf, UUID>() {
       public UUID a(ByteBuf $$0) {
          return wl.e($$0);
       }

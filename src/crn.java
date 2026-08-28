@@ -1,116 +1,156 @@
-import java.util.List;
-import java.util.OptionalInt;
+import com.mojang.datafixers.util.Pair;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class crn extends cqr {
-   public static final int k = 0;
-   public static final int l = 1;
-   public static final int m = 2;
-   public static final int n = 3;
-   public static final int s = 8;
-   public static final int t = 26;
-   public static final int u = 44;
-   private static final int w = 98;
-   public static final int v = 48;
-   private final dbt x;
-   @Nullable
-   private cys<czg> y;
-   private final List<cys<czg>> z;
+public class crn {
+   private final int a;
+   public final bql c;
+   public int d;
+   public final int e;
+   public final int f;
 
-   public crn(int $$0, cmr $$1) {
-      this($$0, $$1, cqa.a);
+   public crn(bql $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.a = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public crn(int $$0, cmr $$1, cqa $$2) {
-      super(cqw.v, $$0, $$1, $$2);
-      this.x = $$1.l.dP();
-      this.z = this.x.r().a(cyv.g);
-   }
-
-   @Override
-   protected cqs l() {
-      return cqs.a()
-         .a(0, 8, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().a($$0)))
-         .a(1, 26, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().b($$0)))
-         .a(2, 44, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().c($$0)))
-         .a(3, 98, 48)
-         .a();
-   }
-
-   @Override
-   protected boolean a(drx $$0) {
-      return $$0.a(dew.ob);
-   }
-
-   @Override
-   protected boolean a(cms $$0, boolean $$1) {
-      return this.y != null && this.y.b().a(this.q, this.x);
-   }
-
-   @Override
-   protected void a(cms $$0, cuk $$1) {
-      $$1.a($$0.dP(), $$0, $$1.I());
-      this.r.a($$0, this.n());
-      this.e(0);
-      this.e(1);
-      this.e(2);
-      this.o.a(($$0x, $$1x) -> $$0x.c(1044, $$1x, 0));
-   }
-
-   private List<cuk> n() {
-      return List.of(this.q.a(0), this.q.a(1), this.q.a(2));
-   }
-
-   private void e(int $$0) {
-      cuk $$1 = this.q.a($$0);
-      if (!$$1.e()) {
-         $$1.h(1);
-         this.q.a($$0, $$1);
+   public void b(cun $$0, cun $$1) {
+      int $$2 = $$1.I() - $$0.I();
+      if ($$2 > 0) {
+         this.a($$1, $$2);
       }
    }
 
-   @Override
-   public void m() {
-      List<cys<czg>> $$0 = this.x.r().b(cyv.g, this.q, this.x);
-      if ($$0.isEmpty()) {
-         this.r.a(0, cuk.l);
+   protected void a(cun $$0, int $$1) {
+   }
+
+   protected void b(int $$0) {
+   }
+
+   protected void b_(cun $$0) {
+   }
+
+   public void a(cmv $$0, cun $$1) {
+      this.b();
+   }
+
+   public boolean a(cun $$0) {
+      return true;
+   }
+
+   public cun g() {
+      return this.c.a(this.a);
+   }
+
+   public boolean h() {
+      return !this.g().e();
+   }
+
+   public void e(cun $$0) {
+      this.a($$0, this.g());
+   }
+
+   public void a(cun $$0, cun $$1) {
+      this.f($$0);
+   }
+
+   public void f(cun $$0) {
+      this.c.a(this.a, $$0);
+      this.b();
+   }
+
+   public void b() {
+      this.c.e();
+   }
+
+   public int a() {
+      return this.c.ai_();
+   }
+
+   public int a_(cun $$0) {
+      return Math.min(this.a(), $$0.j());
+   }
+
+   @Nullable
+   public Pair<ale, ale> c() {
+      return null;
+   }
+
+   public cun a(int $$0) {
+      return this.c.a(this.a, $$0);
+   }
+
+   public boolean a(cmv $$0) {
+      return true;
+   }
+
+   public boolean d() {
+      return true;
+   }
+
+   public Optional<cun> a(int $$0, int $$1, cmv $$2) {
+      if (!this.a($$2)) {
+         return Optional.empty();
+      } else if (!this.b($$2) && $$1 < this.g().I()) {
+         return Optional.empty();
       } else {
-         cys<czg> $$1 = $$0.get(0);
-         cuk $$2 = $$1.b().a(this.q, this.x.H_());
-         if ($$2.a(this.x.J())) {
-            this.y = $$1;
-            this.r.a($$1);
-            this.r.a(0, $$2);
+         $$0 = Math.min($$0, $$1);
+         cun $$3 = this.a($$0);
+         if ($$3.e()) {
+            return Optional.empty();
+         } else {
+            if (this.g().e()) {
+               this.a(cun.l, $$3);
+            }
+
+            return Optional.of($$3);
          }
       }
    }
 
-   @Override
-   public int d(cuk $$0) {
-      return this.e($$0).orElse(0);
+   public cun b(int $$0, int $$1, cmv $$2) {
+      Optional<cun> $$3 = this.a($$0, $$1, $$2);
+      $$3.ifPresent($$1x -> this.a($$2, $$1x));
+      return $$3.orElse(cun.l);
    }
 
-   private static OptionalInt a(czg $$0, cuk $$1) {
-      if ($$0.a($$1)) {
-         return OptionalInt.of(0);
-      } else if ($$0.b($$1)) {
-         return OptionalInt.of(1);
+   public cun d(cun $$0) {
+      return this.b($$0, $$0.I());
+   }
+
+   public cun b(cun $$0, int $$1) {
+      if (!$$0.e() && this.a($$0)) {
+         cun $$2 = this.g();
+         int $$3 = Math.min(Math.min($$1, $$0.I()), this.a_($$0) - $$2.I());
+         if ($$2.e()) {
+            this.e($$0.a($$3));
+         } else if (cun.c($$2, $$0)) {
+            $$0.h($$3);
+            $$2.g($$3);
+            this.e($$2);
+         }
+
+         return $$0;
       } else {
-         return $$0.c($$1) ? OptionalInt.of(2) : OptionalInt.empty();
+         return $$0;
       }
    }
 
-   @Override
-   public boolean a(cuk $$0, crk $$1) {
-      return $$1.c != this.r && super.a($$0, $$1);
+   public boolean b(cmv $$0) {
+      return this.a($$0) && this.a(this.g());
    }
 
-   @Override
-   public boolean c(cuk $$0) {
-      return this.e($$0).isPresent();
+   public int i() {
+      return this.a;
    }
 
-   private OptionalInt e(cuk $$0) {
-      return this.z.stream().flatMapToInt($$1 -> a($$1.b(), $$0).stream()).filter($$0x -> !this.b($$0x).h()).findFirst();
+   public boolean e() {
+      return true;
+   }
+
+   public boolean f() {
+      return false;
    }
 }

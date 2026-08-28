@@ -1,11 +1,8 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface eub {
-   @Nullable
-   vo a(eqd var1);
-
-   Set<esw<?>> b();
-
-   eua a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eub {
 }

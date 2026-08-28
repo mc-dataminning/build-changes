@@ -1,11 +1,12 @@
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public interface bne {
-   long a();
+public interface bne extends bng {
+   bnf d();
 
-   long b();
+   @Nullable
+   bmz.a c(String var1);
 
-   long c();
-
-   Object2LongMap<String> d();
+   Set<Pair<String, bom>> e();
 }

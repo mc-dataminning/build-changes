@@ -1,117 +1,84 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dlo extends deg implements dlv {
-   public static final MapCodec<dlo> a = b(dlo::new);
-   public static final dso b = dsn.F;
-   public static final dso c = dsn.C;
-   public static final dso d = dsn.G;
-   protected static final ewf e = deu.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final double f = e.c(je.a.b);
+public class dlo extends dhh implements dln {
+   public static final MapCodec<dlo> b = b(dlo::new);
 
    @Override
    public MapCodec<dlo> a() {
-      return a;
+      return b;
    }
 
-   public dlo(drw.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      $$0.a(b);
-      $$0.a(c);
-      $$0.a(d);
+   public dlo(drz.d $$0) {
+      super(bpu.a(1), $$0);
    }
 
    @Override
-   public void a(dbt $$0, iz $$1, drx $$2, bsp $$3) {
-      if ($$0 instanceof arb $$4) {
-         arc $$5 = dqk.a($$3);
-         if ($$5 != null) {
-            $$4.a($$1, dpe.L).ifPresent($$2x -> $$2x.a($$4, $$5));
+   public int a(dls.a $$0, dbx $$1, iz $$2, azf $$3, dls $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         iz $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               iz $$10 = $$7.c();
+               dsa $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.w().e(), awa.e, 1.0F, 1.0F);
+            }
+
+            return Math.max(0, $$6 - $$9);
+         } else {
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
          }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void a(drx $$0, dbt $$1, iz $$2, drx $$3, boolean $$4) {
-      if ($$1 instanceof arb $$5 && $$0.c(b) && !$$0.a($$3.b())) {
-         $$5.a($$2, dpe.L).ifPresent($$1x -> $$1x.a($$5));
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected void a(drx $$0, arb $$1, iz $$2, azc $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
-         $$1.a($$2, dpe.L).ifPresent($$1x -> $$1x.a($$1));
+      } else {
+         return $$6;
       }
    }
 
-   @Override
-   protected dla a_(drx $$0) {
-      return dla.c;
+   private static int a(dls $$0, iz $$1, iz $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = ayx.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = ayx.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
    }
 
-   @Override
-   protected ewf b(drx $$0, daz $$1, iz $$2, evr $$3) {
-      return e;
-   }
-
-   @Override
-   protected ewf f(drx $$0, daz $$1, iz $$2) {
-      return e;
-   }
-
-   @Override
-   protected boolean f_(drx $$0) {
-      return true;
-   }
-
-   @Nullable
-   @Override
-   public dpc a(iz $$0, drx $$1) {
-      return new dqk($$0, $$1);
-   }
-
-   @Override
-   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, enr.c, enr.c.a($$3));
+   private dsa a(dbx $$0, iz $$1, azf $$2, boolean $$3) {
+      dsa $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = dez.qV.o().a(dlr.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = dez.qQ.o();
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return $$4.b(dsq.C) && !$$0.b_($$1).c() ? $$4.a(dsq.C, Boolean.valueOf(true)) : $$4;
    }
 
-   @Nullable
-   @Override
-   public drx a(cxv $$0) {
-      return this.n().a(c, Boolean.valueOf($$0.q().b_($$0.a()).a() == enr.c));
-   }
+   private static boolean a(dbx $$0, iz $$1) {
+      dsa $$2 = $$0.a_($$1.c());
+      if ($$2.i() || $$2.a(dez.G) && $$2.u().b(enu.c)) {
+         int $$3 = 0;
 
-   @Override
-   protected enq b_(drx $$0) {
-      return $$0.c(c) ? enr.c.a(false) : super.b_($$0);
-   }
+         for (iz $$4 : iz.c($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            dsa $$5 = $$0.a_($$4);
+            if ($$5.a(dez.qQ) || $$5.a(dez.qV)) {
+               $$3++;
+            }
 
-   @Override
-   protected void a(drx $$0, arb $$1, iz $$2, cuk $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, bpr.a(5));
+            if ($$3 > 2) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
-   @Nullable
    @Override
-   public <T extends dpc> dpd<T> a(dbt $$0, drx $$1, dpe<T> $$2) {
-      return !$$0.B ? deg.a($$2, dpe.L, ($$0x, $$1x, $$2x, $$3) -> dwz.c.a($$0x, $$3.gs(), $$3.gt())) : null;
+   public boolean d() {
+      return false;
    }
 }

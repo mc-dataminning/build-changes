@@ -1,44 +1,107 @@
-public class ghj implements ggv.a {
-   private final ffa a;
+import com.google.common.collect.Maps;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-   public ghj(ffa $$0) {
+public class ghj implements ggy.a {
+   private final ffd a;
+   private final Map<ald<dbw>, Map<String, eia>> b = Maps.newIdentityHashMap();
+   private final Map<ald<dbw>, Map<String, abk.a>> c = Maps.newIdentityHashMap();
+   private static final int d = 500;
+
+   public ghj(ffd $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(ezt $$0, gdj $$1, double $$2, double $$3, double $$4) {
-      iz $$5 = this.a.s.dp();
-      dbw $$6 = this.a.s.dP();
-
-      for (iz $$7 : iz.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         enq $$8 = $$6.b_($$7);
-         if ($$8.a(awr.a)) {
-            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
-            ggv.a(
-               $$0,
-               $$1,
-               new evh(
-                     (double)((float)$$7.u() + 0.01F),
-                     (double)((float)$$7.v() + 0.01F),
-                     (double)((float)$$7.w() + 0.01F),
-                     (double)((float)$$7.u() + 0.99F),
-                     $$9,
-                     (double)((float)$$7.w() + 0.99F)
-                  )
-                  .d(-$$2, -$$3, -$$4),
-               0.0F,
-               1.0F,
-               0.0F,
-               0.15F
-            );
+   public void a(ezw $$0, gdm $$1, double $$2, double $$3, double $$4) {
+      feo $$5 = this.a.j.l();
+      ald<dbw> $$6 = this.a.r.af();
+      iz $$7 = iz.a($$5.b().c, 0.0, $$5.b().e);
+      faa $$8 = $$1.getBuffer(gdu.y());
+      if (this.b.containsKey($$6)) {
+         for (eia $$9 : this.b.get($$6).values()) {
+            if ($$7.a($$9.g(), 500.0)) {
+               gdk.a(
+                  $$0,
+                  $$8,
+                  (double)$$9.h() - $$2,
+                  (double)$$9.i() - $$3,
+                  (double)$$9.j() - $$4,
+                  (double)($$9.k() + 1) - $$2,
+                  (double)($$9.l() + 1) - $$3,
+                  (double)($$9.m() + 1) - $$4,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F
+               );
+            }
          }
       }
 
-      for (iz $$10 : iz.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         enq $$11 = $$6.b_($$10);
-         if ($$11.a(awr.a)) {
-            ggv.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+      Map<String, abk.a> $$10 = this.c.get($$6);
+      if ($$10 != null) {
+         for (abk.a $$11 : $$10.values()) {
+            eia $$12 = $$11.a();
+            if ($$7.a($$12.g(), 500.0)) {
+               if ($$11.b()) {
+                  gdk.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F
+                  );
+               } else {
+                  gdk.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     0.0F,
+                     1.0F,
+                     1.0F,
+                     0.0F,
+                     0.0F,
+                     1.0F
+                  );
+               }
+            }
          }
       }
+   }
+
+   public void a(eia $$0, List<abk.a> $$1, ald<dbw> $$2) {
+      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
+      Map<String, abk.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
+
+      for (abk.a $$4 : $$1) {
+         $$3.put($$4.a().toString(), $$4);
+      }
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 }

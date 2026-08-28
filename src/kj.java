@@ -42,15 +42,15 @@ public final class kj {
             if ($$4.isPresent()) {
                $$1.put(new kj.b($$3, false), $$4.get());
             } else {
-               $$1.put(new kj.b($$3, true), azx.a);
+               $$1.put(new kj.b($$3, true), baa.a);
             }
          }
       }
 
       return $$1;
    });
-   public static final zj<ww, kj> c = new zj<ww, kj>() {
-      public kj a(ww $$0) {
+   public static final zm<wz, kj> c = new zm<wz, kj>() {
+      public kj a(wz $$0) {
          int $$1 = $$0.l();
          int $$2 = $$0.l();
          if ($$1 == 0 && $$2 == 0) {
@@ -73,7 +73,7 @@ public final class kj {
          }
       }
 
-      public void a(ww $$0, kj $$1) {
+      public void a(wz $$0, kj $$1) {
          if ($$1.d()) {
             $$0.c(0);
             $$0.c(0);
@@ -117,7 +117,7 @@ public final class kj {
          }
       }
 
-      private static <T> void a(ww $$0, kl<T> $$1, Object $$2) {
+      private static <T> void a(wz $$0, kl<T> $$1, Object $$2) {
          $$1.e().encode($$0, (T)$$2);
       }
    };
@@ -260,7 +260,7 @@ public final class kj {
             $$0 = $$0.substring("!".length());
          }
 
-         alb $$2 = alb.a($$0);
+         ale $$2 = ale.a($$0);
          kl<?> $$3 = lp.as.a($$2);
          if ($$3 == null) {
             return DataResult.error(() -> "No component with type: '" + $$2 + "'");
@@ -269,12 +269,12 @@ public final class kj {
          }
       }, $$0 -> {
          kl<?> $$1 = $$0.b();
-         alb $$2 = lp.as.b($$1);
+         ale $$2 = lp.as.b($$1);
          return $$2 == null ? DataResult.error(() -> "Unregistered component: " + $$1) : DataResult.success($$0.c() ? "!" + $$2 : $$2.toString());
       });
 
       public Codec<?> a() {
-         return this.c ? Codec.unit(azx.a) : this.b.c();
+         return this.c ? Codec.unit(baa.a) : this.b.c();
       }
    }
 

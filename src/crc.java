@@ -1,28 +1,57 @@
-public abstract class crc<C extends bqi> extends cpp {
-   public crc(cqw<?> $$0, int $$1) {
-      super($$0, $$1);
-   }
+public class crc extends crn {
+   private final cra a;
+   private final cmv b;
+   private int g;
+   private final dat h;
 
-   public void a(boolean $$0, cys<?> $$1, arc $$2) {
-      new akp<>(this).a($$2, (cys<? extends cyq<C>>)$$1, $$0);
+   public crc(cmv $$0, dat $$1, cra $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.h = $$1;
+      this.a = $$2;
    }
-
-   public abstract void a(cmw var1);
 
    @Override
-   public abstract void l();
+   public boolean a(cun $$0) {
+      return false;
+   }
 
-   public abstract boolean a(cys<? extends cyq<C>> var1);
+   @Override
+   public cun a(int $$0) {
+      if (this.h()) {
+         this.g = this.g + Math.min($$0, this.g().I());
+      }
 
-   public abstract int m();
+      return super.a($$0);
+   }
 
-   public abstract int n();
+   @Override
+   protected void a(cun $$0, int $$1) {
+      this.g += $$1;
+      this.b_($$0);
+   }
 
-   public abstract int o();
+   @Override
+   protected void b_(cun $$0) {
+      $$0.a(this.b.dP(), this.b, this.g);
+      this.g = 0;
+   }
 
-   public abstract int p();
+   @Override
+   public void a(cmv $$0, cun $$1) {
+      this.b_($$1);
+      dau $$2 = this.a.g();
+      if ($$2 != null) {
+         cun $$3 = this.a.a(0);
+         cun $$4 = this.a.a(1);
+         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
+            this.h.a($$2);
+            $$0.a(awj.T);
+            this.a.a(0, $$3);
+            this.a.a(1, $$4);
+         }
 
-   public abstract crd t();
-
-   public abstract boolean e(int var1);
+         this.h.u(this.h.u() + $$2.q());
+      }
+   }
 }

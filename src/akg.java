@@ -1,23 +1,12 @@
-public record akg<T>(int a, akh<T> b) {
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         akg<?> $$1 = (akg<?>)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
+public class akg {
+   public static final zx<akc> a = a("status_response");
+   public static final zx<akf> b = b("status_request");
+
+   private static <T extends zv<akb>> zx<T> a(String $$0) {
+      return new zx<>(zw.b, new ale($$0));
    }
 
-   @Override
-   public int hashCode() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<entity data: " + this.a + ">";
+   private static <T extends zv<ake>> zx<T> b(String $$0) {
+      return new zx<>(zw.a, new ale($$0));
    }
 }

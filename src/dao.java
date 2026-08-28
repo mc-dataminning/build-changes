@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class dao extends czy {
+   public dao(czy.b $$0) {
+      super($$0);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dao {
+   @Override
+   public boolean a(czy $$0) {
+      return super.a($$0) && $$0 != dab.j;
+   }
 }

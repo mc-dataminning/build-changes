@@ -1,12 +1,9 @@
 public class cph {
-   private final String a;
+   final cpk a;
+   final long b;
 
-   public cph(String $$0) {
+   cph(cpk $$0, int $$1) {
       this.a = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.a;
+      this.b = 1L << $$1;
    }
 }

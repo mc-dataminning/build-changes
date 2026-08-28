@@ -1,84 +1,53 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dms extends deg implements dic {
-   public static final MapCodec<dms> a = b(dms::new);
-   public static final dsv<dth> b = dsn.bj;
+public class dms extends dlx {
+   public static final MapCodec<dms> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dtn.a.fieldOf("wood_type").forGetter(dlx::d), u()).apply($$0, dms::new));
+   public static final dta b = dsq.ba;
 
    @Override
    public MapCodec<dms> a() {
       return a;
    }
 
-   protected dms(drw.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, dth.b));
+   public dms(dtn $$0, drz.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.k(this.E.b().a(b, Integer.valueOf(0)).a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   public dpc a(iz $$0, drx $$1) {
-      return new dqr($$0, $$1);
+   protected boolean a(dsa $$0, dbz $$1, iz $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   protected bqp a(drx $$0, dbt $$1, iz $$2, cms $$3, evi $$4) {
-      dpc $$5 = $$1.c_($$2);
-      if ($$5 instanceof dqr) {
-         return ((dqr)$$5).a($$3) ? bqp.a($$1.B) : bqp.e;
-      } else {
-         return bqp.e;
-      }
+   public dsa a(cxy $$0) {
+      ent $$1 = $$0.q().b_($$0.a());
+      return this.o().a(b, Integer.valueOf(dtg.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == enu.c));
    }
 
    @Override
-   public void a(dbt $$0, iz $$1, drx $$2, @Nullable btk $$3, cuk $$4) {
-      if (!$$0.B) {
-         if ($$3 != null) {
-            dpc $$5 = $$0.c_($$1);
-            if ($$5 instanceof dqr) {
-               ((dqr)$$5).a($$3);
-            }
-         }
-      }
+   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
+      return $$1 == je.a && !this.a($$0, $$3, $$4) ? dez.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected dla a_(drx $$0) {
-      return dla.c;
+   public float g(dsa $$0) {
+      return dtg.b($$0.c(b));
    }
 
    @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      $$0.a(b);
+   protected dsa a(dsa $$0, dlk $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected void a(drx $$0, dbt $$1, iz $$2, deu $$3, iz $$4, boolean $$5) {
-      if ($$1 instanceof arb) {
-         if ($$1.c_($$2) instanceof dqr $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.D();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((arb)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
-      }
+   protected dsa a(dsa $$0, dju $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
-   private void a(arb $$0, dqr $$1) {
-      switch ($$1.v()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.c($$0);
-            break;
-         case c:
-            $$1.B();
-         case d:
-      }
+   @Override
+   protected void a(dsb.a<dex, dsa> $$0) {
+      $$0.a(b, f);
    }
 }

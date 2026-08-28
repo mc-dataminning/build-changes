@@ -1,16 +1,18 @@
-public class gap extends gbx {
-   private final gbs a;
+public class gap extends gca {
+   private final gbv a;
 
-   protected gap(fxq $$0, double $$1, double $$2, double $$3, double $$4, gbs $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
+   protected gap(fxt $$0, double $$1, double $$2, double $$3, gbv $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
+      this.b($$4);
+      this.t = 12 + this.r.a(4);
+      this.D = 1.0F;
+      this.b(1.0F, 1.0F);
+   }
+
+   @Override
+   public gbe b() {
+      return gbe.d;
    }
 
    @Override
@@ -20,9 +22,6 @@ public class gap extends gbx {
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
       if (this.s++ >= this.t) {
          this.k();
       } else {
@@ -30,20 +29,29 @@ public class gap extends gbx {
       }
    }
 
-   @Override
-   public gbb b() {
-      return gbb.d;
-   }
+   public static class a implements gbd<lm> {
+      private final gbv a;
 
-   public static class a implements gba<lm> {
-      private final gbs a;
-
-      public a(gbs $$0) {
+      public a(gbv $$0) {
          this.a = $$0;
       }
 
-      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gap($$1, $$2, $$3, $$4, $$5, this.a);
+      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gap($$1, $$2, $$3, $$4, this.a);
+      }
+   }
+
+   public static class b implements gbd<lm> {
+      private final gbv a;
+
+      public b(gbv $$0) {
+         this.a = $$0;
+      }
+
+      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gba $$8 = new gap($$1, $$2, $$3, $$4, this.a);
+         $$8.d(0.15F);
+         return $$8;
       }
    }
 }

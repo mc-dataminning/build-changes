@@ -1,190 +1,96 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
 
-public class dgd extends deg implements dic {
-   public static final MapCodec<dgd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.fieldOf("automatic").forGetter($$0x -> $$0x.e), u()).apply($$0, dgd::new)
-   );
-   private static final Logger d = LogUtils.getLogger();
-   public static final dsr b = dgx.a;
-   public static final dso c = dsn.c;
-   private final boolean e;
+public class dgd extends dkl {
+   public static final MapCodec<dgd> a = b(dgd::new);
 
    @Override
    public MapCodec<dgd> a() {
       return a;
    }
 
-   public dgd(boolean $$0, drw.d $$1) {
-      super($$1);
-      this.k(this.E.b().a(b, je.c).a(c, Boolean.valueOf(false)));
-      this.e = $$0;
+   protected dgd(drz.d $$0) {
+      super(0.3125F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+            .a(f, Boolean.valueOf(false))
+            .a(g, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   public dpc a(iz $$0, drx $$1) {
-      dpm $$2 = new dpm($$0, $$1);
-      $$2.b(this.e);
-      return $$2;
+   public dsa a(cxy $$0) {
+      return a($$0.q(), $$0.a(), this.o());
+   }
+
+   public static dsa a(dbc $$0, iz $$1, dsa $$2) {
+      dsa $$3 = $$0.a_($$1.d());
+      dsa $$4 = $$0.a_($$1.c());
+      dsa $$5 = $$0.a_($$1.e());
+      dsa $$6 = $$0.a_($$1.h());
+      dsa $$7 = $$0.a_($$1.f());
+      dsa $$8 = $$0.a_($$1.g());
+      dex $$9 = $$2.b();
+      return $$2.b(g, Boolean.valueOf($$3.a($$9) || $$3.a(dez.kv) || $$3.a(dez.fz)))
+         .b(f, Boolean.valueOf($$4.a($$9) || $$4.a(dez.kv)))
+         .b(b, Boolean.valueOf($$5.a($$9) || $$5.a(dez.kv)))
+         .b(c, Boolean.valueOf($$6.a($$9) || $$6.a(dez.kv)))
+         .b(d, Boolean.valueOf($$7.a($$9) || $$7.a(dez.kv)))
+         .b(e, Boolean.valueOf($$8.a($$9) || $$8.a(dez.kv)));
    }
 
    @Override
-   protected void a(drx $$0, dbt $$1, iz $$2, deu $$3, iz $$4, boolean $$5) {
-      if (!$$1.B) {
-         if ($$1.c_($$2) instanceof dpm $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.c();
-            $$7.a($$8);
-            if (!$$9 && !$$7.d() && $$7.l() != dpm.a.a) {
-               if ($$8) {
-                  $$7.k();
-                  $$1.a($$2, this, 1);
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(drx $$0, arb $$1, iz $$2, azc $$3) {
-      if ($$1.c_($$2) instanceof dpm $$5) {
-         dau $$6 = $$5.b();
-         boolean $$7 = !azq.b($$6.m());
-         dpm.a $$8 = $$5.l();
-         boolean $$9 = $$5.j();
-         if ($$8 == dpm.a.b) {
-            $$5.k();
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.u()) {
-               $$6.a(0);
-            }
-
-            if ($$5.c() || $$5.d()) {
-               $$1.a($$2, this, 1);
-            }
-         } else if ($$8 == dpm.a.c) {
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.u()) {
-               $$6.a(0);
-            }
-         }
-
-         $$1.c($$2, this);
-      }
-   }
-
-   private void a(drx $$0, dbt $$1, iz $$2, dau $$3, boolean $$4) {
-      if ($$4) {
-         $$3.a($$1);
+   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
-         $$3.a(0);
-      }
-
-      a($$1, $$2, $$0.c(b));
-   }
-
-   @Override
-   protected bqp a(drx $$0, dbt $$1, iz $$2, cms $$3, evi $$4) {
-      dpc $$5 = $$1.c_($$2);
-      if ($$5 instanceof dpm && $$3.gz()) {
-         $$3.a((dpm)$$5);
-         return bqp.a($$1.B);
-      } else {
-         return bqp.e;
+         boolean $$6 = $$2.a(this) || $$2.a(dez.kv) || $$1 == je.a && $$2.a(dez.fz);
+         return $$0.a(h.get($$1), Boolean.valueOf($$6));
       }
    }
 
    @Override
-   protected boolean c_(drx $$0) {
-      return true;
+   protected void a(dsa $$0, are $$1, iz $$2, azf $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
    }
 
    @Override
-   protected int a(drx $$0, dbt $$1, iz $$2) {
-      dpc $$3 = $$1.c_($$2);
-      return $$3 instanceof dpm ? ((dpm)$$3).b().k() : 0;
-   }
+   protected boolean a(dsa $$0, dbz $$1, iz $$2) {
+      dsa $$3 = $$1.a_($$2.d());
+      boolean $$4 = !$$1.a_($$2.c()).i() && !$$3.i();
 
-   @Override
-   public void a(dbt $$0, iz $$1, drx $$2, btk $$3, cuk $$4) {
-      if ($$0.c_($$1) instanceof dpm $$6) {
-         dau $$7 = $$6.b();
-         if (!$$0.B) {
-            if (!$$4.b(km.N)) {
-               $$7.a($$0.ab().b(dbp.p));
-               $$6.b(this.e);
+      for (je $$5 : je.c.a) {
+         iz $$6 = $$2.a($$5);
+         dsa $$7 = $$1.a_($$6);
+         if ($$7.a(this)) {
+            if ($$4) {
+               return false;
             }
 
-            if ($$6.l() == dpm.a.a) {
-               boolean $$8 = $$0.C($$1);
-               $$6.a($$8);
+            dsa $$8 = $$1.a_($$6.d());
+            if ($$8.a(this) || $$8.a(dez.fz)) {
+               return true;
             }
          }
       }
+
+      return $$3.a(this) || $$3.a(dez.fz);
    }
 
    @Override
-   protected dla a_(drx $$0) {
-      return dla.c;
+   protected void a(dsb.a<dex, dsa> $$0) {
+      $$0.a(b, c, d, e, f, g);
    }
 
    @Override
-   protected drx a(drx $$0, dlh $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected drx a(drx $$0, djr $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public drx a(cxv $$0) {
-      return this.n().a(b, $$0.d().g());
-   }
-
-   private static void a(dbt $$0, iz $$1, je $$2) {
-      iz.a $$3 = $$1.j();
-      dbp $$4 = $$0.ab();
-      int $$5 = $$4.c(dbp.x);
-
-      while ($$5-- > 0) {
-         $$3.c($$2);
-         drx $$6 = $$0.a_($$3);
-         deu $$7 = $$6.b();
-         if (!$$6.a(dew.kH) || !($$0.c_($$3) instanceof dpm $$9) || $$9.l() != dpm.a.a) {
-            break;
-         }
-
-         if ($$9.c() || $$9.d()) {
-            dau $$10 = $$9.b();
-            if ($$9.k()) {
-               if (!$$10.a($$0)) {
-                  break;
-               }
-
-               $$0.c($$3, $$7);
-            } else if ($$9.u()) {
-               $$10.a(0);
-            }
-         }
-
-         $$2 = $$6.c(b);
-      }
-
-      if ($$5 <= 0) {
-         int $$11 = Math.max($$4.c(dbp.x), 0);
-         d.warn("Command Block chain tried to execute more than {} steps!", $$11);
-      }
+   protected boolean a(dsa $$0, eoi $$1) {
+      return false;
    }
 }

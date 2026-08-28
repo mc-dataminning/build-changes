@@ -1,20 +1,8 @@
-import com.mojang.authlib.GameProfile;
-import io.netty.buffer.ByteBuf;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record aja(GameProfile b) implements zs<aiy> {
-   public static final zj<ByteBuf, aja> a = zh.u.a(aja::new, aja::b);
-
-   @Override
-   public zu<aja> a() {
-      return aje.b;
-   }
-
-   public void a(aiy $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aja {
 }

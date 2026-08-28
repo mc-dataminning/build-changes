@@ -1,13 +1,15 @@
-public interface btv extends btu {
-   void b(int var1);
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   boolean a();
+public interface btv {
+   @Nullable
+   UUID W_();
 
-   void c(int var1);
+   dbn e();
 
-   void b();
-
-   default int c() {
-      return 0;
+   @Nullable
+   default btn P_() {
+      UUID $$0 = this.W_();
+      return $$0 == null ? null : this.e().b($$0);
    }
 }

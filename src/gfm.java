@@ -1,23 +1,15 @@
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+public interface gfm<T extends dpf> {
+   void a(T var1, float var2, ezw var3, gdm var4, int var5, int var6);
 
-public class gfm<S extends dpc> implements dhb.b<S, Int2IntFunction> {
-   public Int2IntFunction a(S $$0, S $$1) {
-      return $$2 -> {
-         int $$3 = gdh.a($$0.i(), $$0.aA_());
-         int $$4 = gdh.a($$1.i(), $$1.aA_());
-         int $$5 = gdi.a($$3);
-         int $$6 = gdi.a($$4);
-         int $$7 = gdi.b($$3);
-         int $$8 = gdi.b($$4);
-         return gdi.a(Math.max($$5, $$6), Math.max($$7, $$8));
-      };
+   default boolean a(T $$0) {
+      return false;
    }
 
-   public Int2IntFunction a(S $$0) {
-      return $$0x -> $$0x;
+   default int aP_() {
+      return 64;
    }
 
-   public Int2IntFunction a() {
-      return $$0 -> $$0;
+   default boolean a(T $$0, evp $$1) {
+      return evp.b($$0.az_()).a((js)$$1, (double)this.aP_());
    }
 }

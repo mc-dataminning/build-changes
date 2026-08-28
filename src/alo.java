@@ -1,79 +1,102 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.Lifecycle;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 
-public class alo extends aup {
+public class alo {
    private static final Logger a = LogUtils.getLogger();
    private static final Gson b = new GsonBuilder().create();
-   private Map<alb, af> c = Map.of();
-   private ak d = new ak();
-   private final jk.a e;
+   private static final ju c = new ju(Optional.empty(), Lifecycle.experimental());
 
-   public alo(jk.a $$0) {
-      super(b, "advancements");
-      this.e = $$0;
+   public static CompletableFuture<jp<aln>> a(jp<aln> $$0, auo $$1, Executor $$2) {
+      jw.b $$3 = $$0.b(aln.d);
+      alc<JsonElement> $$4 = new alo.a($$3).a(JsonOps.INSTANCE);
+      List<CompletableFuture<ke<?>>> $$5 = eqi.a().map($$3x -> a($$3x, $$4, $$1, $$2)).toList();
+      CompletableFuture<List<ke<?>>> $$6 = ac.d($$5);
+      return $$6.thenApplyAsync($$1x -> a($$0, $$1x), $$2);
    }
 
-   protected void a(Map<alb, JsonElement> $$0, aul $$1, bnd $$2) {
-      akz<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
-      Builder<alb, af> $$4 = ImmutableMap.builder();
-      $$0.forEach(($$2x, $$3x) -> {
-         try {
-            ae $$4x = (ae)ae.a.parse($$3, $$3x).getOrThrow(JsonParseException::new);
-            this.a($$2x, $$4x);
-            $$4.put($$2x, new af($$2x, $$4x));
-         } catch (Exception var6x) {
-            a.error("Parsing error loading custom advancement {}: {}", $$2x, var6x.getMessage());
-         }
-      });
-      this.c = $$4.buildOrThrow();
-      ak $$5 = new ak();
-      $$5.a(this.c.values());
+   private static <T> CompletableFuture<ke<?>> a(eqi<T> $$0, alc<JsonElement> $$1, auo $$2, Executor $$3) {
+      return CompletableFuture.supplyAsync(() -> {
+         ke<T> $$3x = new jq<>($$0.b(), Lifecycle.experimental());
+         Map<ale, JsonElement> $$4 = new HashMap<>();
+         aus.a($$2, $$0.d(), b, $$4);
+         $$4.forEach(($$3xx, $$4x) -> $$0.a($$3xx, $$1, $$4x).ifPresent($$3xxx -> $$3x.a(ald.a($$0.b(), $$3xx), (T)$$3xxx, c)));
+         return $$3x;
+      }, $$3);
+   }
 
-      for (ag $$6 : $$5.b()) {
-         if ($$6.b().b().c().isPresent()) {
-            as.a($$6);
-         }
+   private static jp<aln> a(jp<aln> $$0, List<ke<?>> $$1) {
+      jp<aln> $$2 = b($$0, $$1);
+      azd.a $$3 = new azd.a();
+      jw.b $$4 = $$2.a();
+      eqm $$5 = new eqm($$3, etb.q, $$4.b());
+      eqi.a().forEach($$2x -> a($$5, $$2x, $$4));
+      $$3.a().forEach(($$0x, $$1x) -> a.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
+      return $$2;
+   }
+
+   private static jp<aln> b(jp<aln> $$0, List<ke<?>> $$1) {
+      jw $$2 = new jw.c($$1);
+      ((ke)$$2.<eql>d(lq.aU)).a(eqc.a, eql.a, c);
+      return $$0.a(aln.d, $$2.d());
+   }
+
+   private static <T> void a(eqm $$0, eqi<T> $$1, jw $$2) {
+      jv<T> $$3 = $$2.d($$1.b());
+      $$3.h().forEach($$2x -> $$1.a($$0, $$2x.h(), (T)$$2x.a()));
+   }
+
+   static class a implements jk.a {
+      private final jw a;
+
+      a(jw $$0) {
+         this.a = $$0;
       }
 
-      this.d = $$5;
-   }
+      @Override
+      public Stream<ald<? extends jv<?>>> a() {
+         return this.a.a();
+      }
 
-   private void a(alb $$0, ae $$1) {
-      aza.a $$2 = new aza.a();
-      $$1.a($$2, this.e.b());
-      Multimap<String, String> $$3 = $$2.a();
-      if (!$$3.isEmpty()) {
-         String $$4 = $$3.asMap()
-            .entrySet()
-            .stream()
-            .map($$0x -> "  at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
-            .collect(Collectors.joining("\n"));
-         a.warn("Found validation problems in advancement {}: \n{}", $$0, $$4);
+      @Override
+      public <T> Optional<jk.b<T>> a(ald<? extends jv<? extends T>> $$0) {
+         return this.a.c($$0).map(jv::u);
       }
    }
 
-   @Nullable
-   public af a(alb $$0) {
-      return this.c.get($$0);
-   }
+   public static class b {
+      private final jw.b a;
 
-   public ak a() {
-      return this.d;
-   }
+      public b(jw.b $$0) {
+         this.a = $$0;
+      }
 
-   public Collection<af> b() {
-      return this.c.values();
+      public jw.b a() {
+         return this.a;
+      }
+
+      public jj.a b() {
+         return this.a.b();
+      }
+
+      public Collection<ale> a(ald<? extends jv<?>> $$0) {
+         return this.a.c($$0).stream().flatMap($$0x -> $$0x.h().map($$0xx -> $$0xx.h().a())).toList();
+      }
+
+      public eql b(ald<eql> $$0) {
+         return this.a.a(lq.aU).flatMap($$1 -> $$1.a($$0)).map(ji::a).orElse(eql.a);
+      }
    }
 }

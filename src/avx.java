@@ -1,22 +1,18 @@
-public enum avx {
-   a("master"),
-   b("music"),
-   c("record"),
-   d("weather"),
-   e("block"),
-   f("hostile"),
-   g("neutral"),
-   h("player"),
-   i("ambient"),
-   j("voice");
+public class avx {
+   private static final int h = 20;
+   private static final int i = 600;
+   private static final int j = 12000;
+   private static final int k = 24000;
+   private static final int l = 6000;
+   public static final avw a = new avw(avz.pZ, 20, 600, true);
+   public static final avw b = new avw(avz.pE, 12000, 24000, false);
+   public static final avw c = new avw(avz.pF, 0, 0, true);
+   public static final avw d = new avw(avz.pW, 0, 0, true);
+   public static final avw e = new avw(avz.pX, 6000, 24000, true);
+   public static final avw f = a(avz.qy);
+   public static final avw g = a(avz.pY);
 
-   private final String k;
-
-   private avx(final String $$0) {
-      this.k = $$0;
-   }
-
-   public String a() {
-      return this.k;
+   public static avw a(ji<avy> $$0) {
+      return new avw($$0, 12000, 24000, false);
    }
 }

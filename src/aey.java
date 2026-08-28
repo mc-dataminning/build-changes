@@ -1,37 +1,33 @@
-public class aey implements zs<ace> {
-   public static final zj<wl, aey> a = zs.a(aey::a, aey::new);
-   private final double b;
-   private final double c;
+import javax.annotation.Nullable;
 
-   public aey(dto $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
+public class aey implements zv<ach> {
+   public static final zm<wl, aey> a = zv.a(aey::a, aey::new);
+   @Nullable
+   private final ale b;
+
+   public aey(@Nullable ale $$0) {
+      this.b = $$0;
    }
 
    private aey(wl $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
+      this.b = $$0.c(wl::q);
    }
 
    private void a(wl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.a(this.b, wl::a);
    }
 
    @Override
-   public zu<aey> a() {
-      return agq.ar;
+   public zx<aey> a() {
+      return agt.ao;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.c;
-   }
-
-   public double e() {
+   @Nullable
+   public ale b() {
       return this.b;
    }
 }

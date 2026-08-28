@@ -1,36 +1,17 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import java.util.function.Function;
 
-public class etj implements etn {
-   private static final etj b = new etj();
-   public static final MapCodec<etj> a = MapCodec.unit(b);
+public interface etj<T extends etj<T>> {
+   T b(etq.a var1);
 
-   private etj() {
-   }
+   default <E> T a_(Iterable<E> $$0, Function<E, etq.a> $$1) {
+      T $$2 = this.d();
 
-   @Override
-   public eto b() {
-      return etp.n;
-   }
-
-   @Override
-   public Set<esw<?>> a() {
-      return ImmutableSet.of(esz.j);
-   }
-
-   public boolean a(eqd $$0) {
-      Float $$1 = $$0.c(esz.j);
-      if ($$1 != null) {
-         azc $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
       }
+
+      return $$2;
    }
 
-   public static etn.a c() {
-      return () -> b;
-   }
+   T d();
 }

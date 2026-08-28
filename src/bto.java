@@ -1,27 +1,57 @@
-public enum bto {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f,
-   g,
-   h,
-   i,
-   j,
-   k,
-   l,
-   m,
-   n,
-   o,
-   p,
-   q;
+public class bto extends bss {
+   private static final String b = "data";
+   private ur c = new ur();
 
-   public static boolean a(bto $$0) {
-      return $$0 == c || $$0 == q;
+   public bto(bsy<?> $$0, dbw $$1) {
+      super($$0, $$1);
+      this.ag = true;
    }
 
-   public static boolean b(bto $$0) {
-      return $$0 == q;
+   @Override
+   public void l() {
+   }
+
+   @Override
+   protected void a(akn.a $$0) {
+   }
+
+   @Override
+   protected void a(ur $$0) {
+      this.c = $$0.p("data");
+   }
+
+   @Override
+   protected void b(ur $$0) {
+      $$0.a("data", this.c.h());
+   }
+
+   @Override
+   public zv<ach> dl() {
+      throw new IllegalStateException("Markers should never be sent");
+   }
+
+   @Override
+   protected boolean r(bss $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean bJ() {
+      return false;
+   }
+
+   @Override
+   protected void p(bss $$0) {
+      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
+   }
+
+   @Override
+   public eny k_() {
+      return eny.d;
+   }
+
+   @Override
+   public boolean r_() {
+      return true;
    }
 }

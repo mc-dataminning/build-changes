@@ -1,9 +1,24 @@
 public class fxc {
-   final int a;
-   final int b;
+   public static final fxc a = new fxc(0.0F);
+   final float b;
+   final float c;
+   final float d;
 
-   public fxc(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fxc(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   public fxc(float $$0) {
+      this($$0, $$0, $$0);
+   }
+
+   public fxc a(float $$0) {
+      return new fxc(this.b + $$0, this.c + $$0, this.d + $$0);
+   }
+
+   public fxc a(float $$0, float $$1, float $$2) {
+      return new fxc(this.b + $$0, this.c + $$1, this.d + $$2);
    }
 }

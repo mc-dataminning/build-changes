@@ -1,48 +1,85 @@
+import com.google.common.net.HostAndPort;
 import com.mojang.logging.LogUtils;
-import java.util.Hashtable;
-import java.util.Optional;
-import javax.naming.directory.Attribute;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
+import java.net.IDN;
 import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface fzk {
-   Logger a = LogUtils.getLogger();
-   fzk b = $$0 -> Optional.empty();
+public final class fzk {
+   private static final Logger a = LogUtils.getLogger();
+   private final HostAndPort b;
+   private static final fzk c = new fzk(HostAndPort.fromParts("server.invalid", 25565));
 
-   Optional<fzh> lookupRedirect(fzh var1);
+   public fzk(String $$0, int $$1) {
+      this(HostAndPort.fromParts($$0, $$1));
+   }
 
-   static fzk createDnsSrvRedirectHandler() {
-      DirContext $$2;
+   private fzk(HostAndPort $$0) {
+      this.b = $$0;
+   }
+
+   public String a() {
       try {
-         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
-         Class.forName("com.sun.jndi.dns.DnsContextFactory");
-         Hashtable<String, String> $$1 = new Hashtable<>();
-         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
-         $$1.put("java.naming.provider.url", "dns:");
-         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
-         $$2 = new InitialDirContext($$1);
-      } catch (Throwable var3) {
-         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
-         return b;
+         return IDN.toASCII(this.b.getHost());
+      } catch (IllegalArgumentException var2) {
+         return "";
+      }
+   }
+
+   public int b() {
+      return this.b.getPort();
+   }
+
+   public static fzk a(String $$0) {
+      if ($$0 == null) {
+         return c;
+      } else {
+         try {
+            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
+            return $$1.getHost().isEmpty() ? c : new fzk($$1);
+         } catch (IllegalArgumentException var2) {
+            a.info("Failed to parse URL {}", $$0, var2);
+            return c;
+         }
+      }
+   }
+
+   public static boolean b(String $$0) {
+      try {
+         HostAndPort $$1 = HostAndPort.fromString($$0);
+         String $$2 = $$1.getHost();
+         if (!$$2.isEmpty()) {
+            IDN.toASCII($$2);
+            return true;
+         }
+      } catch (IllegalArgumentException var3) {
       }
 
-      return $$1x -> {
-         if ($$1x.b() == 25565) {
-            try {
-               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
-               Attribute $$3x = $$2x.get("srv");
-               if ($$3x != null) {
-                  String[] $$4x = $$3x.get().toString().split(" ", 4);
-                  return Optional.of(new fzh($$4x[3], fzh.c($$4x[2])));
-               }
-            } catch (Throwable var5) {
-            }
-         }
+      return false;
+   }
 
-         return Optional.empty();
-      };
+   static int c(String $$0) {
+      try {
+         return Integer.parseInt($$0.trim());
+      } catch (Exception var2) {
+         return 25565;
+      }
+   }
+
+   @Override
+   public String toString() {
+      return this.b.toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof fzk ? this.b.equals(((fzk)$$0).b) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 }

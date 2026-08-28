@@ -1,177 +1,56 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
 
-public class cyt extends aup {
-   private static final Gson a = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-   private static final Logger b = LogUtils.getLogger();
-   private final jk.a c;
-   private Map<cyv<?>, Map<alb, cys<?>>> d = ImmutableMap.of();
-   private Map<alb, cys<?>> e = ImmutableMap.of();
-   private boolean f;
+public interface cyt<C extends bql> {
+   Codec<cyt<?>> h = lp.t.q().dispatch(cyt::ap_, cyx::a);
+   zm<wz, cyt<?>> i = zk.a(lq.Z).b(cyt::ap_, cyx::b);
 
-   public cyt(jk.a $$0) {
-      super(a, "recipes");
-      this.c = $$0;
-   }
+   boolean a(C var1, dbw var2);
 
-   protected void a(Map<alb, JsonElement> $$0, aul $$1, bnd $$2) {
-      this.f = false;
-      Map<cyv<?>, Builder<alb, cys<?>>> $$3 = Maps.newHashMap();
-      Builder<alb, cys<?>> $$4 = ImmutableMap.builder();
-      akz<JsonElement> $$5 = this.c.a(JsonOps.INSTANCE);
+   cun a(C var1, jk.a var2);
 
-      for (Entry<alb, JsonElement> $$6 : $$0.entrySet()) {
-         alb $$7 = $$6.getKey();
+   boolean a(int var1, int var2);
 
-         try {
-            JsonObject $$8 = ayk.m($$6.getValue(), "top element");
-            cyq<?> $$9 = (cyq<?>)cyq.h.parse($$5, $$8).getOrThrow(JsonParseException::new);
-            cys<?> $$10 = new cys<>($$7, $$9);
-            $$3.computeIfAbsent($$9.e(), $$0x -> ImmutableMap.builder()).put($$7, $$10);
-            $$4.put($$7, $$10);
-         } catch (IllegalArgumentException | JsonParseException var13) {
-            b.error("Parsing error loading recipe {}", $$7, var13);
+   cun a(jk.a var1);
+
+   default jr<cun> a(C $$0) {
+      jr<cun> $$1 = jr.a($$0.b(), cun.l);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cui $$3 = $$0.a($$2).g();
+         if ($$3.v()) {
+            $$1.set($$2, new cun($$3.u()));
          }
       }
 
-      this.d = $$3.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0x -> ((Builder)$$0x.getValue()).build()));
-      this.e = $$4.build();
-      b.info("Loaded {} recipes", $$3.size());
+      return $$1;
    }
 
-   public boolean a() {
-      return this.f;
+   default jr<cyq> a() {
+      return jr.a();
    }
 
-   public <C extends bqi, T extends cyq<C>> Optional<cys<T>> a(cyv<T> $$0, C $$1, dbt $$2) {
-      return this.c($$0).values().stream().filter($$2x -> $$2x.b().a($$1, $$2)).findFirst();
+   default boolean ao_() {
+      return false;
    }
 
-   public <C extends bqi, T extends cyq<C>> Optional<Pair<alb, cys<T>>> a(cyv<T> $$0, C $$1, dbt $$2, @Nullable alb $$3) {
-      Map<alb, cys<T>> $$4 = this.c($$0);
-      if ($$3 != null) {
-         cys<T> $$5 = $$4.get($$3);
-         if ($$5 != null && $$5.b().a($$1, $$2)) {
-            return Optional.of(Pair.of($$3, $$5));
-         }
-      }
-
-      return $$4.entrySet()
-         .stream()
-         .filter($$2x -> ((cys)$$2x.getValue()).b().a($$1, $$2))
-         .findFirst()
-         .map($$0x -> Pair.of((alb)$$0x.getKey(), (cys)$$0x.getValue()));
+   default boolean h() {
+      return true;
    }
 
-   public <C extends bqi, T extends cyq<C>> List<cys<T>> a(cyv<T> $$0) {
-      return List.copyOf(this.c($$0).values());
+   default String c() {
+      return "";
    }
 
-   public <C extends bqi, T extends cyq<C>> List<cys<T>> b(cyv<T> $$0, C $$1, dbt $$2) {
-      return this.c($$0)
-         .values()
-         .stream()
-         .filter($$2x -> $$2x.b().a($$1, $$2))
-         .sorted(Comparator.comparing($$1x -> $$1x.b().a($$2.H_()).t()))
-         .collect(Collectors.toList());
+   default cun g() {
+      return new cun(dez.cA);
    }
 
-   private <C extends bqi, T extends cyq<C>> Map<alb, cys<T>> c(cyv<T> $$0) {
-      return (Map<alb, cys<T>>)this.d.getOrDefault($$0, Collections.emptyMap());
-   }
+   cyx<?> ap_();
 
-   public <C extends bqi, T extends cyq<C>> jr<cuk> c(cyv<T> $$0, C $$1, dbt $$2) {
-      Optional<cys<T>> $$3 = this.a($$0, $$1, $$2);
-      if ($$3.isPresent()) {
-         return $$3.get().b().a($$1);
-      } else {
-         jr<cuk> $$4 = jr.a($$1.b(), cuk.l);
+   cyy<?> e();
 
-         for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
-            $$4.set($$5, $$1.a($$5));
-         }
-
-         return $$4;
-      }
-   }
-
-   public Optional<cys<?>> a(alb $$0) {
-      return Optional.ofNullable(this.e.get($$0));
-   }
-
-   public Collection<cys<?>> b() {
-      return this.d.values().stream().flatMap($$0 -> $$0.values().stream()).collect(Collectors.toSet());
-   }
-
-   public Stream<alb> d() {
-      return this.d.values().stream().flatMap($$0 -> $$0.keySet().stream());
-   }
-
-   @VisibleForTesting
-   protected static cys<?> a(alb $$0, JsonObject $$1, jk.a $$2) {
-      cyq<?> $$3 = (cyq<?>)cyq.h.parse($$2.a(JsonOps.INSTANCE), $$1).getOrThrow(JsonParseException::new);
-      return new cys<>($$0, $$3);
-   }
-
-   public void a(Iterable<cys<?>> $$0) {
-      this.f = false;
-      Map<cyv<?>, Map<alb, cys<?>>> $$1 = Maps.newHashMap();
-      Builder<alb, cys<?>> $$2 = ImmutableMap.builder();
-      $$0.forEach($$2x -> {
-         Map<alb, cys<?>> $$3 = $$1.computeIfAbsent($$2x.b().e(), $$0xx -> Maps.newHashMap());
-         alb $$4 = $$2x.a();
-         cys<?> $$5 = $$3.put($$4, $$2x);
-         $$2.put($$4, $$2x);
-         if ($$5 != null) {
-            throw new IllegalStateException("Duplicate recipe ignored with ID " + $$4);
-         }
-      });
-      this.d = ImmutableMap.copyOf($$1);
-      this.e = $$2.build();
-   }
-
-   public static <C extends bqi, T extends cyq<C>> cyt.a<C, T> b(final cyv<T> $$0) {
-      return new cyt.a<C, T>() {
-         @Nullable
-         private alb b;
-
-         @Override
-         public Optional<cys<T>> a(C $$0x, dbt $$1) {
-            cyt $$2 = $$1.r();
-            Optional<Pair<alb, cys<T>>> $$3 = $$2.a($$0, $$0, $$1, this.b);
-            if ($$3.isPresent()) {
-               Pair<alb, cys<T>> $$4 = $$3.get();
-               this.b = (alb)$$4.getFirst();
-               return Optional.of((cys<T>)$$4.getSecond());
-            } else {
-               return Optional.empty();
-            }
-         }
-      };
-   }
-
-   public interface a<C extends bqi, T extends cyq<C>> {
-      Optional<cys<T>> a(C var1, dbt var2);
+   default boolean i() {
+      jr<cyq> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
    }
 }

@@ -1,121 +1,61 @@
+import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.DirectoryNotEmptyException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class asr {
-   private static final Logger a = LogUtils.getLogger();
+public abstract class asr implements ata {
+   private static final Logger c = LogUtils.getLogger();
+   private final asz d;
 
-   public static void a(Path $$0, int $$1) {
-      try {
-         List<asr.b> $$2 = a($$0);
-         int $$3 = $$2.size() - $$1;
-         if ($$3 <= 0) {
-            return;
+   protected asr(asz $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   @Override
+   public <T> T a(atn<T> $$0) throws IOException {
+      aug<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
+      if ($$1 == null) {
+         return null;
+      } else {
+         Object var4;
+         try (InputStream $$2 = $$1.get()) {
+            var4 = a($$0, $$2);
          }
 
-         $$2.sort(asr.b.a);
-         List<asr.a> $$4 = a($$2);
-         Collections.reverse($$4);
-         $$4.sort(asr.a.a);
-         Set<Path> $$5 = new HashSet<>();
+         return (T)var4;
+      }
+   }
 
-         for (int $$6 = 0; $$6 < $$3; $$6++) {
-            asr.a $$7 = $$4.get($$6);
-            Path $$8 = $$7.b;
+   @Nullable
+   public static <T> T a(atn<T> $$0, InputStream $$1) {
+      JsonObject $$3;
+      try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1, StandardCharsets.UTF_8))) {
+         $$3 = ayn.a($$2);
+      } catch (Exception var9) {
+         c.error("Couldn't load {} metadata", $$0.a(), var9);
+         return null;
+      }
 
-            try {
-               Files.delete($$8);
-               if ($$7.c == 0) {
-                  $$5.add($$8.getParent());
-               }
-            } catch (IOException var12) {
-               a.warn("Failed to delete cache file {}", $$8, var12);
-            }
+      if (!$$3.has($$0.a())) {
+         return null;
+      } else {
+         try {
+            return $$0.a(ayn.u($$3, $$0.a()));
+         } catch (Exception var7) {
+            c.error("Couldn't load {} metadata", $$0.a(), var7);
+            return null;
          }
-
-         $$5.remove($$0);
-
-         for (Path $$10 : $$5) {
-            try {
-               Files.delete($$10);
-            } catch (DirectoryNotEmptyException var10) {
-            } catch (IOException var11) {
-               a.warn("Failed to delete empty(?) cache directory {}", $$10, var11);
-            }
-         }
-      } catch (UncheckedIOException | IOException var13) {
-         a.error("Failed to vacuum cache dir {}", $$0, var13);
       }
    }
 
-   private static List<asr.b> a(final Path $$0) throws IOException {
-      try {
-         final List<asr.b> $$1 = new ArrayList<>();
-         Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
-            public FileVisitResult a(Path $$0x, BasicFileAttributes $$1) {
-               if ($$1.isRegularFile() && !$$0.getParent().equals($$0)) {
-                  FileTime $$2 = $$1.lastModifiedTime();
-                  $$1.add(new asr.b($$0, $$2));
-               }
-
-               return FileVisitResult.CONTINUE;
-            }
-         });
-         return $$1;
-      } catch (NoSuchFileException var2) {
-         return List.of();
-      }
-   }
-
-   private static List<asr.a> a(List<asr.b> $$0) {
-      List<asr.a> $$1 = new ArrayList<>();
-      Object2IntOpenHashMap<Path> $$2 = new Object2IntOpenHashMap();
-
-      for (asr.b $$3 : $$0) {
-         int $$4 = $$2.addTo($$3.b.getParent(), 1);
-         $$1.add(new asr.a($$3.b, $$4));
-      }
-
-      return $$1;
-   }
-
-   static record a(Path b, int c) {
-      public static final Comparator<asr.a> a = Comparator.comparing(asr.a::b).reversed();
-
-      public Path a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-   }
-
-   static record b(Path b, FileTime c) {
-      public static final Comparator<asr.b> a = Comparator.comparing(asr.b::b).reversed();
-
-      public Path a() {
-         return this.b;
-      }
-
-      public FileTime b() {
-         return this.c;
-      }
+   @Override
+   public asz a() {
+      return this.d;
    }
 }

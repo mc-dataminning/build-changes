@@ -1,48 +1,40 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
 
-public class byo extends bvd<cmf> {
-   private static final int c = 300;
-   private static final double d = 1.73;
-   private long e;
-
+public class byo extends bvg<cmi> {
    public byo() {
-      super(ImmutableMap.of(cco.c, ccp.a, cco.n, ccp.c));
+      super(ImmutableMap.of());
    }
 
-   protected boolean b(arb $$0, cmf $$1) {
-      if ($$0.Z() - this.e < 300L) {
-         return false;
-      } else if ($$0.z.a(2) != 0) {
-         return false;
-      } else {
-         this.e = $$0.Z();
-         jh $$2 = $$1.dS().c(cco.c).get();
-         return $$2.a() == $$0.af() && $$2.b().a($$1.dn(), 1.73);
+   protected boolean a(are $$0, cmi $$1, long $$2) {
+      return c($$1) || b($$1);
+   }
+
+   protected void b(are $$0, cmi $$1, long $$2) {
+      if (c($$1) || b($$1)) {
+         bup<?> $$3 = $$1.dS();
+         if (!$$3.c(cok.g)) {
+            $$3.b(ccr.t);
+            $$3.b(ccr.m);
+            $$3.b(ccr.n);
+            $$3.b(ccr.r);
+            $$3.b(ccr.q);
+         }
+
+         $$3.a(cok.g);
       }
    }
 
-   protected void a(arb $$0, cmf $$1, long $$2) {
-      bum<cmf> $$3 = $$1.dS();
-      $$3.a(cco.J, $$2);
-      $$3.c(cco.c).ifPresent($$1x -> $$3.a(cco.n, new bvg($$1x.b())));
-      $$1.gF();
-      this.a($$0, $$1);
-      if ($$1.gE()) {
-         $$1.gD();
+   protected void c(are $$0, cmi $$1, long $$2) {
+      if ($$2 % 100L == 0L) {
+         $$1.a($$0, $$2, 3);
       }
    }
 
-   protected void a(arb $$0, cmf $$1) {
+   public static boolean b(btn $$0) {
+      return $$0.dS().a(ccr.A);
    }
 
-   protected boolean b(arb $$0, cmf $$1, long $$2) {
-      Optional<jh> $$3 = $$1.dS().c(cco.c);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         jh $$4 = $$3.get();
-         return $$4.a() == $$0.af() && $$4.b().a($$1.dn(), 1.73);
-      }
+   public static boolean c(btn $$0) {
+      return $$0.dS().a(ccr.x);
    }
 }

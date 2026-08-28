@@ -1,79 +1,65 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cbb extends cai {
-   public static final int a = 1;
-   protected final btt b;
-   protected final double c;
-   protected double d;
-   protected double e;
-   protected double f;
-   protected boolean g;
+public class cbb extends cal {
+   private final btp a;
+   private btn b;
+   private int c;
 
-   public cbb(btt $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(cai.a.a));
+   public cbb(btp $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cal.a.a, cal.a.b));
    }
 
    @Override
    public boolean a() {
-      if (!this.h()) {
-         return false;
-      } else {
-         if (this.b.bQ()) {
-            iz $$0 = this.a(this.b.dP(), this.b, 5);
-            if ($$0 != null) {
-               this.d = (double)$$0.u();
-               this.e = (double)$$0.v();
-               this.f = (double)$$0.w();
-               return true;
-            }
-         }
-
-         return this.i();
-      }
-   }
-
-   protected boolean h() {
-      return this.b.em() != null || this.b.dE() || this.b.bQ();
-   }
-
-   protected boolean i() {
-      evm $$0 = cef.a(this.b, 5, 4);
+      btn $$0 = this.a.p();
       if ($$0 == null) {
          return false;
       } else {
-         this.d = $$0.c;
-         this.e = $$0.d;
-         this.f = $$0.e;
+         this.b = $$0;
          return true;
       }
    }
 
-   public boolean k() {
-      return this.g;
-   }
-
    @Override
-   public void c() {
-      this.b.K().a(this.d, this.e, this.f, this.c);
-      this.g = true;
+   public boolean b() {
+      if (!this.b.bD()) {
+         return false;
+      } else {
+         return this.a.g(this.b) > 225.0 ? false : !this.a.K().l() || this.a();
+      }
    }
 
    @Override
    public void d() {
-      this.g = false;
+      this.b = null;
+      this.a.K().n();
    }
 
    @Override
-   public boolean b() {
-      return !this.b.K().l();
+   public boolean R_() {
+      return true;
    }
 
-   @Nullable
-   protected iz a(daz $$0, bsp $$1, int $$2) {
-      iz $$3 = $$1.dp();
-      return !$$0.a_($$3).k($$0, $$3).c() ? null : iz.a($$1.dp(), $$2, 1, $$1x -> $$0.b_($$1x).a(awr.a)).orElse(null);
+   @Override
+   public void e() {
+      this.a.G().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dj() * 2.0F * this.a.dj() * 2.0F);
+      double $$1 = this.a.i(this.b.du(), this.b.dw(), this.b.dA());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
+
+      this.a.K().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.C(this.b);
+         }
+      }
    }
 }

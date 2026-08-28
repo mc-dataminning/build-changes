@@ -1,71 +1,23 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonObject;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface aun {
-   aun a = new aun() {
-      @Override
-      public <T> Optional<T> a(atk<T> $$0) {
-         return Optional.empty();
-      }
-   };
-   aud<aun> b = () -> a;
+public class aun {
+   private static final Codec<aun> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(azg.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, aun::new)
+   );
+   public static final ato<aun> a = ato.a("filter", b);
+   private final List<azg> c;
 
-   static aun a(InputStream $$0) throws IOException {
-      aun var3;
-      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
-         final JsonObject $$2 = ayk.a($$1);
-         var3 = new aun() {
-            @Override
-            public <T> Optional<T> a(atk<T> $$0) {
-               String $$1 = $$0.a();
-               return $$2.has($$1) ? Optional.of($$0.a(ayk.u($$2, $$1))) : Optional.empty();
-            }
-         };
-      }
-
-      return var3;
+   public aun(List<azg> $$0) {
+      this.c = List.copyOf($$0);
    }
 
-   <T> Optional<T> a(atk<T> var1);
-
-   default aun a(Collection<atk<?>> $$0) {
-      aun.a $$1 = new aun.a();
-
-      for (atk<?> $$2 : $$0) {
-         this.a($$1, $$2);
-      }
-
-      return $$1.a();
+   public boolean a(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
    }
 
-   private <T> void a(aun.a $$0, atk<T> $$1) {
-      this.a($$1).ifPresent($$2 -> $$0.a($$1, (T)$$2));
-   }
-
-   public static class a {
-      private final Builder<atk<?>, Object> a = ImmutableMap.builder();
-
-      public <T> aun.a a(atk<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      public aun a() {
-         final ImmutableMap<atk<?>, Object> $$0 = this.a.build();
-         return $$0.isEmpty() ? aun.a : new aun() {
-            @Override
-            public <T> Optional<T> a(atk<T> $$0x) {
-               return Optional.ofNullable((T)$$0.get($$0));
-            }
-         };
-      }
+   public boolean b(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
    }
 }

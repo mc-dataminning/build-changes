@@ -1,147 +1,76 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public abstract class dow extends dpc implements bqi, bqt, bqu {
-   private bqs d = bqs.a;
-   @Nullable
-   private xl e;
+public record dow(List<dow.b> d) {
+   static final Logger e = LogUtils.getLogger();
+   public static final dow a = new dow(List.of());
+   public static final Codec<dow> b = dow.b.a.listOf().xmap(dow::new, dow::b);
+   public static final zm<wz, dow> c = dow.b.b.a(zk.a()).a(dow::new, dow::b);
 
-   protected dow(dpe<?> $$0, iz $$1, drx $$2) {
-      super($$0, $$1, $$2);
+   public dow a() {
+      return new dow(List.copyOf(this.d.subList(0, this.d.size() - 1)));
    }
 
-   @Override
-   protected void a(ur $$0, jk.a $$1) {
-      super.a($$0, $$1);
-      this.d = bqs.b($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.e = xl.a.a($$0.l("CustomName"), $$1);
-      }
+   public List<dow.b> b() {
+      return this.d;
    }
 
-   @Override
-   protected void b(ur $$0, jk.a $$1) {
-      super.b($$0, $$1);
-      this.d.a($$0);
-      if (this.e != null) {
-         $$0.a("CustomName", xl.a.a(this.e, $$1));
-      }
-   }
+   public static class a {
+      private final Builder<dow.b> a = ImmutableList.builder();
 
-   @Override
-   public xl af() {
-      return this.e != null ? this.e : this.k();
-   }
-
-   @Override
-   public xl O_() {
-      return this.af();
-   }
-
-   @Nullable
-   @Override
-   public xl ah() {
-      return this.e;
-   }
-
-   protected abstract xl k();
-
-   public boolean d(cms $$0) {
-      return a($$0, this.d, this.O_());
-   }
-
-   public static boolean a(cms $$0, bqs $$1, xl $$2) {
-      if (!$$0.N_() && !$$1.a($$0.eX())) {
-         $$0.a(xl.a("container.isLocked", $$2), true);
-         $$0.a(avw.eP, avx.e, 1.0F, 1.0F);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   protected abstract jr<cuk> j();
-
-   protected abstract void a(jr<cuk> var1);
-
-   @Override
-   public boolean c() {
-      for (cuk $$0 : this.j()) {
-         if (!$$0.e()) {
-            return false;
+      @Deprecated
+      public dow.a a(jj<dov> $$0, ald<dov> $$1, ctg $$2) {
+         Optional<ji.c<dov>> $$3 = $$0.a($$1);
+         if ($$3.isEmpty()) {
+            dow.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
+            return this;
+         } else {
+            return this.a($$3.get(), $$2);
          }
       }
 
-      return true;
-   }
-
-   @Override
-   public cuk a(int $$0) {
-      return this.j().get($$0);
-   }
-
-   @Override
-   public cuk a(int $$0, int $$1) {
-      cuk $$2 = bqj.a(this.j(), $$0, $$1);
-      if (!$$2.e()) {
-         this.e();
+      public dow.a a(ji<dov> $$0, ctg $$1) {
+         return this.a(new dow.b($$0, $$1));
       }
 
-      return $$2;
-   }
-
-   @Override
-   public cuk b(int $$0) {
-      return bqj.a(this.j(), $$0);
-   }
-
-   @Override
-   public void a(int $$0, cuk $$1) {
-      this.j().set($$0, $$1);
-      $$1.f(this.e_($$1));
-      this.e();
-   }
-
-   @Override
-   public boolean a(cms $$0) {
-      return bqi.a(this, $$0);
-   }
-
-   @Override
-   public void a() {
-      this.j().clear();
-   }
-
-   @Nullable
-   @Override
-   public cpp createMenu(int $$0, cmr $$1, cms $$2) {
-      return this.d($$2) ? this.a($$0, $$1) : null;
-   }
-
-   protected abstract cpp a(int var1, cmr var2);
-
-   @Override
-   protected void a(dpc.b $$0) {
-      super.a($$0);
-      this.e = $$0.a(km.f);
-      this.d = $$0.a(km.ac, bqs.a);
-      $$0.a(km.Z, cxg.a).a(this.j());
-   }
-
-   @Override
-   protected void a(ki.a $$0) {
-      super.a($$0);
-      $$0.a(km.f, this.e);
-      if (!this.d.equals(bqs.a)) {
-         $$0.a(km.ac, this.d);
+      public dow.a a(dow.b $$0) {
+         this.a.add($$0);
+         return this;
       }
 
-      $$0.a(km.Z, cxg.a(this.j()));
+      public dow.a a(dow $$0) {
+         this.a.addAll($$0.d);
+         return this;
+      }
+
+      public dow a() {
+         return new dow(this.a.build());
+      }
    }
 
-   @Override
-   public void a(ur $$0) {
-      $$0.r("CustomName");
-      $$0.r("Lock");
-      $$0.r("Items");
+   public static record b(ji<dov> c, ctg d) {
+      public static final Codec<dow.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dov.c.fieldOf("pattern").forGetter(dow.b::b), ctg.q.fieldOf("color").forGetter(dow.b::c)).apply($$0, dow.b::new)
+      );
+      public static final zm<wz, dow.b> b = zm.a(dov.d, dow.b::b, ctg.r, dow.b::c, dow.b::new);
+
+      public yc a() {
+         String $$0 = this.c.a().b();
+         return xo.c($$0 + "." + this.d.b());
+      }
+
+      public ji<dov> b() {
+         return this.c;
+      }
+
+      public ctg c() {
+         return this.d;
+      }
    }
 }

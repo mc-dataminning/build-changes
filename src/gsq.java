@@ -1,36 +1,37 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
+import com.google.common.collect.ImmutableList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class gsq<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
+public class gsq<T> extends gsr<T> {
+   private final List<T> c;
+   private final Function<T, Stream<String>> d;
+   private gsu<T> e = gsu.a();
 
-   public gsq(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
+   public gsq(Function<T, Stream<String>> $$0, Function<T, Stream<ale>> $$1, List<T> $$2) {
+      super($$1, $$2);
       this.c = $$2;
+      this.d = $$0;
    }
 
-   protected T computeNext() {
-      boolean $$0 = !this.a.hasNext();
-      boolean $$1 = !this.b.hasNext();
-      if ($$0 && $$1) {
-         return (T)this.endOfData();
-      } else if ($$0) {
-         return (T)this.b.next();
-      } else if ($$1) {
-         return (T)this.a.next();
-      } else {
-         int $$2 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$2 == 0) {
-            this.b.next();
-         }
+   @Override
+   public void a() {
+      super.a();
+      this.e = gsu.a(this.c, this.d);
+   }
 
-         return (T)($$2 <= 0 ? this.a.next() : this.b.next());
-      }
+   @Override
+   protected List<T> a(String $$0) {
+      return this.e.search($$0);
+   }
+
+   @Override
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      List<T> $$4 = this.e.search($$1);
+      Iterator<T> $$5 = new gst<T>($$3.iterator(), $$4.iterator(), this.a);
+      return ImmutableList.copyOf(new gss<T>($$2.iterator(), $$5, this.a));
    }
 }

@@ -1,56 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.function.ToIntFunction;
 
-public abstract class dih extends deu {
-   protected final je a;
-   protected final boolean b;
-   protected final ewf d;
+public class dih extends djx implements dfa, dly {
+   public static final MapCodec<dih> a = b(dih::new);
+   private static final dsr c = dsq.C;
+   private final djy d = new djy(this);
 
-   protected dih(drw.d $$0, je $$1, ewf $$2, boolean $$3) {
+   @Override
+   public MapCodec<dih> a() {
+      return a;
+   }
+
+   public dih(drz.d $$0) {
       super($$0);
-      this.a = $$1;
-      this.d = $$2;
-      this.b = $$3;
+      this.k(this.o().a(c, Boolean.valueOf(false)));
+   }
+
+   public static ToIntFunction<dsa> b(int $$0) {
+      return $$1 -> djx.n($$1) ? $$0 : 0;
    }
 
    @Override
-   protected abstract MapCodec<? extends dih> a();
-
-   @Nullable
-   @Override
-   public drx a(cxv $$0) {
-      drx $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().n();
-   }
-
-   public drx a(dbu $$0) {
-      return this.n();
+   protected void a(dsb.a<dex, dsa> $$0) {
+      super.a($$0);
+      $$0.a(c);
    }
 
    @Override
-   protected boolean a(drx $$0, dbw $$1, iz $$2) {
-      iz $$3 = $$2.a(this.a.g());
-      drx $$4 = $$1.a_($$3);
-      return !this.m($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.d($$1, $$3, this.a);
-   }
-
-   @Override
-   protected void a(drx $$0, arb $$1, iz $$2, azc $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, enu.c, enu.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected boolean m(drx $$0) {
+   @Override
+   protected boolean a(dsa $$0, cxy $$1) {
+      return !$$1.n().a(cuq.fW) || super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean b(dbz $$0, iz $$1, dsa $$2) {
+      return je.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
+   }
+
+   @Override
+   public boolean a(dbw $$0, azf $$1, iz $$2, dsa $$3) {
       return true;
    }
 
    @Override
-   protected ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
-      return this.d;
+   public void a(are $$0, azf $$1, iz $$2, dsa $$3) {
+      this.d.a($$3, $$0, $$2, $$1);
    }
 
-   protected abstract dij c();
+   @Override
+   protected ent b_(dsa $$0) {
+      return $$0.c(c) ? enu.c.a(false) : super.b_($$0);
+   }
 
-   protected abstract deu b();
+   @Override
+   protected boolean a_(dsa $$0, dbc $$1, iz $$2) {
+      return $$0.u().c();
+   }
+
+   @Override
+   public djy c() {
+      return this.d;
+   }
 }

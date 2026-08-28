@@ -1,29 +1,16 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class euv implements eux<MinecraftServer> {
-   final alb a;
+public class euv {
+   private static final Codec<euu> d = lp.K.q().dispatch(euu::a, eut::a);
+   public static final Codec<euu> a = Codec.lazyInitialized(
+      () -> Codec.either(eur.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof eur $$1 ? Either.left($$1) : Either.right($$0))
+   );
+   public static final eut b = a("fixed", eus.a);
+   public static final eut c = a("context", eur.a);
 
-   public euv(alb $$0) {
-      this.a = $$0;
-   }
-
-   public void a(MinecraftServer $$0, euz<MinecraftServer> $$1, long $$2) {
-      alq $$3 = $$0.aF();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
-   }
-
-   public static class a extends eux.a<MinecraftServer, euv> {
-      public a() {
-         super(new alb("function"), euv.class);
-      }
-
-      public void a(ur $$0, euv $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
-
-      public euv a(ur $$0) {
-         alb $$1 = new alb($$0.l("Name"));
-         return new euv($$1);
-      }
+   private static eut a(String $$0, MapCodec<? extends euu> $$1) {
+      return jv.a(lp.K, new ale($$0), new eut($$1));
    }
 }

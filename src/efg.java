@@ -1,49 +1,49 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public record efg(eey b, List<efg.a> c) {
-   public static final Codec<efg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eey.a.fieldOf("fallback").forGetter(efg::a), efg.a.a.listOf().fieldOf("rules").forGetter(efg::b)).apply($$0, efg::new)
+public class efg extends efe {
+   public static final MapCodec<efg> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
+                  dsa.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
+                  Codec.list(dsa.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
+                  Codec.list(dsa.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
+               )
+            )
+            .apply($$0, efg::new)
    );
+   private final float g;
+   private final float h;
+   private final dsa i;
+   private final List<dsa> j;
+   private final List<dsa> k;
 
-   public static efg a(eey $$0) {
-      return new efg($$0, List.of());
+   public efg(long $$0, emw.a $$1, float $$2, float $$3, float $$4, dsa $$5, List<dsa> $$6, List<dsa> $$7) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
    }
 
-   public static efg a(deu $$0) {
-      return a(eey.a($$0));
+   @Override
+   protected efc<?> a() {
+      return efc.c;
    }
 
-   public drx a(dco $$0, azc $$1, iz $$2) {
-      for (efg.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
-      }
-
-      return this.b.a($$1, $$2);
-   }
-
-   public eey a() {
-      return this.b;
-   }
-
-   public List<efg.a> b() {
-      return this.c;
-   }
-
-   public static record a(dyw b, eey c) {
-      public static final Codec<efg.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dyw.b.fieldOf("if_true").forGetter(efg.a::a), eey.a.fieldOf("then").forGetter(efg.a::b)).apply($$0, efg.a::new)
-      );
-
-      public dyw a() {
-         return this.b;
-      }
-
-      public eey b() {
-         return this.c;
+   @Override
+   public dsa a(azf $$0, iz $$1) {
+      double $$2 = this.a($$1, (double)this.e);
+      if ($$2 < (double)this.g) {
+         return ac.a(this.j, $$0);
+      } else {
+         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
       }
    }
 }

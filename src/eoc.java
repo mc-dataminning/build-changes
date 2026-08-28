@@ -1,143 +1,100 @@
 import javax.annotation.Nullable;
 
-public class eoc {
-   public final int a;
-   public final int b;
-   public final int c;
-   private final int m;
-   public int d = -1;
-   public float e;
-   public float f;
-   public float g;
-   @Nullable
-   public eoc h;
-   public boolean i;
-   public float j;
-   public float k;
-   public eoh l = eoh.a;
+public class eoc extends eop {
+   private final boolean l;
+   private float m;
+   private float n;
 
-   public eoc(int $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.m = b($$0, $$1, $$2);
-   }
-
-   public eoc a(int $$0, int $$1, int $$2) {
-      eoc $$3 = new eoc($$0, $$1, $$2);
-      $$3.d = this.d;
-      $$3.e = this.e;
-      $$3.f = this.f;
-      $$3.g = this.g;
-      $$3.h = this.h;
-      $$3.i = this.i;
-      $$3.j = this.j;
-      $$3.k = this.k;
-      $$3.l = this.l;
-      return $$3;
-   }
-
-   public static int b(int $$0, int $$1, int $$2) {
-      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
-   }
-
-   public float a(eoc $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return ayu.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-   }
-
-   public float b(eoc $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.c - this.c);
-      return ayu.c($$1 * $$1 + $$2 * $$2);
-   }
-
-   public float a(iz $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return ayu.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-   }
-
-   public float c(eoc $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public float b(iz $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public float d(eoc $$0) {
-      float $$1 = (float)Math.abs($$0.a - this.a);
-      float $$2 = (float)Math.abs($$0.b - this.b);
-      float $$3 = (float)Math.abs($$0.c - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public float c(iz $$0) {
-      float $$1 = (float)Math.abs($$0.u() - this.a);
-      float $$2 = (float)Math.abs($$0.v() - this.b);
-      float $$3 = (float)Math.abs($$0.w() - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public iz a() {
-      return new iz(this.a, this.b, this.c);
-   }
-
-   public evm b() {
-      return new evm((double)this.a, (double)this.b, (double)this.c);
+   public eoc(boolean $$0) {
+      this.l = $$0;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof eoc $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
+   public void a(dcj $$0, btp $$1) {
+      super.a($$0, $$1);
+      $$1.a(eok.j, 0.0F);
+      this.m = $$1.a(eok.c);
+      $$1.a(eok.c, 6.0F);
+      this.n = $$1.a(eok.k);
+      $$1.a(eok.k, 4.0F);
    }
 
    @Override
-   public int hashCode() {
-      return this.m;
-   }
-
-   public boolean c() {
-      return this.d >= 0;
+   public void b() {
+      this.b.a(eok.c, this.m);
+      this.b.a(eok.k, this.n);
+      super.b();
    }
 
    @Override
-   public String toString() {
-      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
+   public eof a() {
+      return !this.b.be() ? super.a() : this.c(new iz(ayx.a(this.b.cK().a), ayx.a(this.b.cK().b + 0.5), ayx.a(this.b.cK().c)));
    }
 
-   public void a(wl $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
-      $$0.p(this.c);
-      $$0.a(this.j);
-      $$0.a(this.k);
-      $$0.a(this.i);
-      $$0.a(this.l);
-      $$0.a(this.g);
+   @Override
+   public eoo a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1 + 0.5, $$2);
    }
 
-   public static eoc b(wl $$0) {
-      eoc $$1 = new eoc($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
+   @Override
+   public int a(eof[] $$0, eof $$1) {
+      int $$2 = super.a($$0, $$1);
+      eok $$3 = this.b($$1.a, $$1.b + 1, $$1.c);
+      eok $$4 = this.b($$1.a, $$1.b, $$1.c);
+      int $$5;
+      if (this.b.a($$3) >= 0.0F && $$4 != eok.w) {
+         $$5 = ayx.d(Math.max(1.0F, this.b.dJ()));
+      } else {
+         $$5 = 0;
+      }
+
+      double $$7 = this.d(new iz($$1.a, $$1.b, $$1.c));
+      eof $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, je.b, $$4);
+      eof $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, je.a, $$4);
+      if (this.b($$8, $$1)) {
+         $$0[$$2++] = $$8;
+      }
+
+      if (this.b($$9, $$1) && $$4 != eok.e) {
+         $$0[$$2++] = $$9;
+      }
+
+      for (int $$10 = 0; $$10 < $$2; $$10++) {
+         eof $$11 = $$0[$$10];
+         if ($$11.l == eok.j && this.l && $$11.b < this.b.dP().z_() - 10) {
+            $$11.k++;
+         }
+      }
+
+      return $$2;
    }
 
-   protected static void a(wl $$0, eoc $$1) {
-      $$1.j = $$0.readFloat();
-      $$1.k = $$0.readFloat();
-      $$1.i = $$0.readBoolean();
-      $$1.l = $$0.b(eoh.class);
-      $$1.g = $$0.readFloat();
+   private boolean b(@Nullable eof $$0, eof $$1) {
+      return this.a($$0, $$1) && $$0.l == eok.j;
+   }
+
+   @Override
+   protected boolean c() {
+      return true;
+   }
+
+   @Override
+   public eok a(eom $$0, int $$1, int $$2, int $$3) {
+      eok $$4 = $$0.a($$1, $$2, $$3);
+      if ($$4 == eok.j) {
+         iz.a $$5 = new iz.a();
+
+         for (je $$6 : je.values()) {
+            $$5.d($$1, $$2, $$3).c($$6);
+            eok $$7 = $$0.a($$5.u(), $$5.v(), $$5.w());
+            if ($$7 == eok.a) {
+               return eok.k;
+            }
+         }
+
+         return eok.j;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
    }
 }

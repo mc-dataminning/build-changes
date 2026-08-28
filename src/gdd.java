@@ -1,168 +1,51 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public enum gdd {
+   a(new gdd.b(gdd.a.f, gdd.a.e, gdd.a.a), new gdd.b(gdd.a.f, gdd.a.e, gdd.a.d), new gdd.b(gdd.a.c, gdd.a.e, gdd.a.d), new gdd.b(gdd.a.c, gdd.a.e, gdd.a.a)),
+   b(new gdd.b(gdd.a.f, gdd.a.b, gdd.a.d), new gdd.b(gdd.a.f, gdd.a.b, gdd.a.a), new gdd.b(gdd.a.c, gdd.a.b, gdd.a.a), new gdd.b(gdd.a.c, gdd.a.b, gdd.a.d)),
+   c(new gdd.b(gdd.a.c, gdd.a.b, gdd.a.d), new gdd.b(gdd.a.c, gdd.a.e, gdd.a.d), new gdd.b(gdd.a.f, gdd.a.e, gdd.a.d), new gdd.b(gdd.a.f, gdd.a.b, gdd.a.d)),
+   d(new gdd.b(gdd.a.f, gdd.a.b, gdd.a.a), new gdd.b(gdd.a.f, gdd.a.e, gdd.a.a), new gdd.b(gdd.a.c, gdd.a.e, gdd.a.a), new gdd.b(gdd.a.c, gdd.a.b, gdd.a.a)),
+   e(new gdd.b(gdd.a.f, gdd.a.b, gdd.a.d), new gdd.b(gdd.a.f, gdd.a.e, gdd.a.d), new gdd.b(gdd.a.f, gdd.a.e, gdd.a.a), new gdd.b(gdd.a.f, gdd.a.b, gdd.a.a)),
+   f(new gdd.b(gdd.a.c, gdd.a.b, gdd.a.a), new gdd.b(gdd.a.c, gdd.a.e, gdd.a.a), new gdd.b(gdd.a.c, gdd.a.e, gdd.a.d), new gdd.b(gdd.a.c, gdd.a.b, gdd.a.d));
 
-public class gdd extends auq<gdd.a> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final alb b = new alb("gpu_warnlist.json");
-   private ImmutableMap<String, String> c = ImmutableMap.of();
-   private boolean d;
-   private boolean e;
-   private boolean f;
+   private static final gdd[] g = ac.a(new gdd[6], $$0 -> {
+      $$0[gdd.a.e] = a;
+      $$0[gdd.a.b] = b;
+      $$0[gdd.a.d] = c;
+      $$0[gdd.a.a] = d;
+      $$0[gdd.a.f] = e;
+      $$0[gdd.a.c] = f;
+   });
+   private final gdd.b[] h;
 
-   public boolean a() {
-      return !this.c.isEmpty();
+   public static gdd a(je $$0) {
+      return g[$$0.d()];
    }
 
-   public boolean b() {
-      return this.a() && !this.e;
+   private gdd(final gdd.b... $$0) {
+      this.h = $$0;
    }
 
-   public void d() {
-      this.d = true;
+   public gdd.b a(int $$0) {
+      return this.h[$$0];
    }
 
-   public void e() {
-      this.e = true;
+   public static final class a {
+      public static final int a = je.d.d();
+      public static final int b = je.b.d();
+      public static final int c = je.f.d();
+      public static final int d = je.c.d();
+      public static final int e = je.a.d();
+      public static final int f = je.e.d();
    }
 
-   public void f() {
-      this.e = true;
-      this.f = true;
-   }
+   public static class b {
+      public final int a;
+      public final int b;
+      public final int c;
 
-   public boolean g() {
-      return this.d && !this.e;
-   }
-
-   public boolean h() {
-      return this.f;
-   }
-
-   public void i() {
-      this.d = false;
-      this.e = false;
-      this.f = false;
-   }
-
-   @Nullable
-   public String j() {
-      return (String)this.c.get("renderer");
-   }
-
-   @Nullable
-   public String k() {
-      return (String)this.c.get("version");
-   }
-
-   @Nullable
-   public String l() {
-      return (String)this.c.get("vendor");
-   }
-
-   @Nullable
-   public String m() {
-      StringBuilder $$0 = new StringBuilder();
-      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
-      return $$0.length() == 0 ? null : $$0.toString();
-   }
-
-   protected gdd.a a(aul $$0, bnd $$1) {
-      List<Pattern> $$2 = Lists.newArrayList();
-      List<Pattern> $$3 = Lists.newArrayList();
-      List<Pattern> $$4 = Lists.newArrayList();
-      $$1.a();
-      JsonObject $$5 = c($$0, $$1);
-      if ($$5 != null) {
-         $$1.a("compile_regex");
-         a($$5.getAsJsonArray("renderer"), $$2);
-         a($$5.getAsJsonArray("version"), $$3);
-         a($$5.getAsJsonArray("vendor"), $$4);
-         $$1.c();
-      }
-
-      $$1.b();
-      return new gdd.a($$2, $$3, $$4);
-   }
-
-   protected void a(gdd.a $$0, aul $$1, bnd $$2) {
-      this.c = $$0.a();
-   }
-
-   private static void a(JsonArray $$0, List<Pattern> $$1) {
-      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
-   }
-
-   @Nullable
-   private static JsonObject c(aul $$0, bnd $$1) {
-      $$1.a("parse_json");
-      JsonObject $$2 = null;
-
-      try (Reader $$3 = $$0.openAsReader(b)) {
-         $$2 = JsonParser.parseReader($$3).getAsJsonObject();
-      } catch (JsonSyntaxException | IOException var8) {
-         a.warn("Failed to load GPU warnlist");
-      }
-
-      $$1.c();
-      return $$2;
-   }
-
-   protected static final class a {
-      private final List<Pattern> a;
-      private final List<Pattern> b;
-      private final List<Pattern> c;
-
-      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
+      b(int $$0, int $$1, int $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
-      }
-
-      private static String a(List<Pattern> $$0, String $$1) {
-         List<String> $$2 = Lists.newArrayList();
-
-         for (Pattern $$3 : $$0) {
-            Matcher $$4 = $$3.matcher($$1);
-
-            while ($$4.find()) {
-               $$2.add($$4.group());
-            }
-         }
-
-         return String.join(", ", $$2);
-      }
-
-      ImmutableMap<String, String> a() {
-         Builder<String, String> $$0 = new Builder();
-         String $$1 = a(this.a, eym.c());
-         if (!$$1.isEmpty()) {
-            $$0.put("renderer", $$1);
-         }
-
-         String $$2 = a(this.b, eym.d());
-         if (!$$2.isEmpty()) {
-            $$0.put("version", $$2);
-         }
-
-         String $$3 = a(this.c, eym.a());
-         if (!$$3.isEmpty()) {
-            $$0.put("vendor", $$3);
-         }
-
-         return $$0.build();
       }
    }
 }

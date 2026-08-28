@@ -1,188 +1,226 @@
-import com.mojang.logging.LogUtils;
-import io.netty.channel.ChannelFuture;
-import java.net.InetSocketAddress;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.StringUtils;
 
-public class flr extends fmy {
-   private static final AtomicInteger c = new AtomicInteger(0);
-   static final Logger d = LogUtils.getLogger();
-   private static final long r = 2000L;
-   public static final xl a = xl.c("connect.aborted");
-   public static final xl b = xl.a("disconnect.genericReason", xl.c("disconnect.unknownHost"));
-   @Nullable
-   volatile wj s;
-   @Nullable
-   ChannelFuture u;
-   volatile boolean v;
-   final fmy w;
-   private xl x = xl.c("connect.connecting");
-   private long y = -1L;
-   final xl z;
+public class flr extends fnb {
+   public static final double a = 7.0;
+   private static final xo c = xo.c("chat_screen.usage");
+   private static final int d = 210;
+   private String r = "";
+   private int s = -1;
+   protected fhl b;
+   private String u;
+   fhf v;
 
-   private flr(fmy $$0, xl $$1) {
-      super(fes.a);
-      this.w = $$0;
-      this.z = $$1;
+   public flr(String $$0) {
+      super(xo.c("chat_screen.title"));
+      this.u = $$0;
    }
 
-   public static void a(fmy $$0, ffa $$1, fzh $$2, fye $$3, boolean $$4, @Nullable fyi $$5) {
-      if ($$1.y instanceof flr) {
-         d.error("Attempt to connect while already connecting");
+   @Override
+   protected void aM_() {
+      this.s = this.m.l.d().c().size();
+      this.b = new fhl(this.m.i, 4, this.o - 12, this.n - 4, 12, xo.c("chat.editBox")) {
+         @Override
+         protected yc aK_() {
+            return super.aK_().b(flr.this.v.e());
+         }
+      };
+      this.b.f(256);
+      this.b.d(false);
+      this.b.a(this.u);
+      this.b.b(this::b);
+      this.b.f(false);
+      this.d(this.b);
+      this.v = new fhf(this.m, this, this.b, this.p, false, false, 1, 10, true, -805306368);
+      this.v.b(false);
+      this.v.d();
+   }
+
+   @Override
+   protected void aC_() {
+      this.b(this.b);
+   }
+
+   @Override
+   public void a(ffd $$0, int $$1, int $$2) {
+      String $$3 = this.b.a();
+      this.b($$0, $$1, $$2);
+      this.c($$3);
+      this.v.d();
+   }
+
+   @Override
+   public void j() {
+      this.m.l.d().d();
+   }
+
+   private void b(String $$0) {
+      String $$1 = this.b.a();
+      this.v.a(!$$1.equals(this.u));
+      this.v.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.v.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 == 256) {
+         this.m.a(null);
+         return true;
+      } else if ($$0 == 257 || $$0 == 335) {
+         this.b(this.b.a(), true);
+         this.m.a(null);
+         return true;
+      } else if ($$0 == 265) {
+         this.a(-1);
+         return true;
+      } else if ($$0 == 264) {
+         this.a(1);
+         return true;
+      } else if ($$0 == 266) {
+         this.m.l.d().a(this.m.l.d().j() - 1);
+         return true;
+      } else if ($$0 == 267) {
+         this.m.l.d().a(-this.m.l.d().j() + 1);
+         return true;
       } else {
-         xl $$6;
-         if ($$5 != null) {
-            $$6 = xk.q;
-         } else if ($$4) {
-            $$6 = gcs.a;
-         } else {
-            $$6 = xk.r;
-         }
-
-         flr $$9 = new flr($$0, $$6);
-         if ($$5 != null) {
-            $$9.a(xl.c("connect.transferring"));
-         }
-
-         $$1.y();
-         $$1.aT();
-         $$1.a(fyv.a($$3.b));
-         $$1.bb().a(gct.c.b, $$3.b, $$3.a);
-         $$1.a($$9);
-         $$9.a($$1, $$2, $$3, $$5);
+         return false;
       }
    }
 
-   private void a(final ffa $$0, final fzh $$1, final fye $$2, @Nullable final fyi $$3) {
-      d.info("Connecting to {}, {}", $$1.a(), $$1.b());
-      Thread $$4 = new Thread("Server Connector #" + c.incrementAndGet()) {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      $$3 = ayx.a($$3, -1.0, 1.0);
+      if (this.v.a($$3)) {
+         return true;
+      } else {
+         if (!s()) {
+            $$3 *= 7.0;
+         }
 
-            try {
-               if (flr.this.v) {
-                  return;
-               }
+         this.m.l.d().a((int)$$3);
+         return true;
+      }
+   }
 
-               Optional<InetSocketAddress> $$1 = fzj.a.a($$1).map(fzg::d);
-               if (flr.this.v) {
-                  return;
-               }
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.v.a((double)((int)$$0), (double)((int)$$1), $$2)) {
+         return true;
+      } else {
+         if ($$2 == 0) {
+            fhd $$3 = this.m.l.d();
+            if ($$3.a($$0, $$1)) {
+               return true;
+            }
 
-               if ($$1.isEmpty()) {
-                  $$0.execute(() -> $$0.a(new flz(flr.this.w, flr.this.z, flr.b)));
-                  return;
-               }
-
-               $$0 = $$1.get();
-               wj $$2;
-               synchronized (flr.this) {
-                  if (flr.this.v) {
-                     return;
-                  }
-
-                  $$2 = new wj(zt.b);
-                  $$2.a($$0.aP().n());
-                  flr.this.u = wj.a($$0, $$0.m.az(), $$2);
-               }
-
-               flr.this.u.syncUninterruptibly();
-               synchronized (flr.this) {
-                  if (flr.this.v) {
-                     $$2.a(flr.a);
-                     return;
-                  }
-
-                  flr.this.s = $$2;
-                  $$0.ae().a($$2, a($$2.b()));
-               }
-
-               flr.this.s
-                  .a($$0.getHostName(), $$0.getPort(), ajf.a, ajf.b, new fxp(flr.this.s, $$0, $$2, flr.this.w, false, null, flr.this::a, $$3), $$3 != null);
-               flr.this.s.a(new aji($$0.X().c(), $$0.X().b()));
-            } catch (Exception var9) {
-               if (flr.this.v) {
-                  return;
-               }
-
-               Exception $$6;
-               if (var9.getCause() instanceof Exception $$5) {
-                  $$6 = $$5;
-               } else {
-                  $$6 = var9;
-               }
-
-               flr.d.error("Couldn't connect to server", var9);
-               String $$8 = $$0 == null
-                  ? $$6.getMessage()
-                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
-               $$0.execute(() -> $$0.a(new flz(flr.this.w, flr.this.z, xl.a("disconnect.genericReason", $$8))));
+            yl $$4 = this.b($$0, $$1);
+            if ($$4 != null && this.a($$4)) {
+               this.u = this.b.a();
+               return true;
             }
          }
 
-         private static gro.c a(fye.a $$0x) {
-            return switch ($$0) {
-               case a -> gro.c.b;
-               case b -> gro.c.c;
-               case c -> gro.c.a;
-            };
-         }
-      };
-      $$4.setUncaughtExceptionHandler(new r(d));
-      $$4.start();
-   }
-
-   private void a(xl $$0) {
-      this.x = $$0;
+         return this.b.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      }
    }
 
    @Override
-   public void e() {
-      if (this.s != null) {
-         if (this.s.i()) {
-            this.s.b();
+   protected void a_(String $$0, boolean $$1) {
+      if ($$1) {
+         this.b.a($$0);
+      } else {
+         this.b.b($$0);
+      }
+   }
+
+   public void a(int $$0) {
+      int $$1 = this.s + $$0;
+      int $$2 = this.m.l.d().c().size();
+      $$1 = ayx.a($$1, 0, $$2);
+      if ($$1 != this.s) {
+         if ($$1 == $$2) {
+            this.s = $$2;
+            this.b.a(this.r);
          } else {
-            this.s.n();
+            if (this.s == $$2) {
+               this.r = this.b.a();
+            }
+
+            this.b.a(this.m.l.d().c().get($$1));
+            this.v.a(false);
+            this.s = $$1;
          }
       }
    }
 
    @Override
-   public boolean aE_() {
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
+      this.m.l.d().a($$0, this.m.l.e(), $$1, $$2, true);
+      $$0.a(2, this.o - 14, this.n - 2, this.o - 2, this.m.m.a(Integer.MIN_VALUE));
+      this.b.a($$0, $$1, $$2, $$3);
+      super.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 200.0F);
+      this.v.a($$0, $$1, $$2);
+      $$0.c().b();
+      fey $$4 = this.m.l.d().c((double)$$1, (double)$$2);
+      if ($$4 != null && $$4.g() != null) {
+         $$0.b(this.p, this.p.c($$4.g(), 210), $$1, $$2);
+      } else {
+         yl $$5 = this.b((double)$$1, (double)$$2);
+         if ($$5 != null && $$5.i() != null) {
+            $$0.a(this.p, $$5, $$1, $$2);
+         }
+      }
+   }
+
+   @Override
+   public void b(fgp $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   public boolean k() {
       return false;
    }
 
-   @Override
-   protected void aN_() {
-      this.c(fgz.a(xk.e, $$0 -> {
-         synchronized (this) {
-            this.v = true;
-            if (this.u != null) {
-               this.u.cancel(true);
-               this.u = null;
-            }
-
-            if (this.s != null) {
-               this.s.a(a);
-            }
-         }
-
-         this.m.a(this.w);
-      }).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
+   private void c(String $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = ac.c();
-      if ($$4 - this.y > 2000L) {
-         this.y = $$4;
-         this.m.aX().c(xl.c("narrator.joining"));
+   protected void a(fky $$0) {
+      $$0.a(fkx.a, this.n());
+      $$0.a(fkx.d, c);
+      String $$1 = this.b.a();
+      if (!$$1.isEmpty()) {
+         $$0.a().a(fkx.a, xo.a("chat_screen.message", $$1));
       }
+   }
 
-      $$0.a(this.p, this.x, this.n / 2, this.o / 2 - 50, 16777215);
+   @Nullable
+   private yl b(double $$0, double $$1) {
+      return this.m.l.d().b($$0, $$1);
+   }
+
+   public void b(String $$0, boolean $$1) {
+      $$0 = this.a($$0);
+      if (!$$0.isEmpty()) {
+         if ($$1) {
+            this.m.l.d().a($$0);
+         }
+
+         if ($$0.startsWith("/")) {
+            this.m.s.cz.c($$0.substring(1));
+         } else {
+            this.m.s.cz.b($$0);
+         }
+      }
+   }
+
+   public String a(String $$0) {
+      return azt.e(StringUtils.normalizeSpace($$0.trim()));
    }
 }

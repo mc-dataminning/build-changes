@@ -1,35 +1,36 @@
-public record aba(aba.a c) implements aat {
-   public static final zj<wl, aba> a = aat.a(aba::a, aba::new);
-   public static final aat.b<aba> b = aat.a("debug/hive");
+public record aba(iz c, int d, String e, int f) implements aaw {
+   public static final zm<wl, aba> a = aaw.a(aba::a, aba::new);
+   public static final aaw.b<aba> b = aaw.a("debug/game_test_add_marker");
 
    private aba(wl $$0) {
-      this(new aba.a($$0));
+      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
    }
 
    private void a(wl $$0) {
-      this.c.a($$0);
+      $$0.a(this.c);
+      $$0.p(this.d);
+      $$0.a(this.e);
+      $$0.p(this.f);
    }
 
    @Override
-   public aat.b<aba> a() {
+   public aaw.b<aba> a() {
       return b;
    }
 
-   public aba.a b() {
+   public iz b() {
       return this.c;
    }
 
-   public static record a(iz a, String b, int c, int d, boolean e) {
-      public a(wl $$0) {
-         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
-      }
+   public int c() {
+      return this.d;
+   }
 
-      public void a(wl $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-         $$0.p(this.c);
-         $$0.p(this.d);
-         $$0.a(this.e);
-      }
+   public String d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
    }
 }

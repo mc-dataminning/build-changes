@@ -1,219 +1,267 @@
-import java.util.BitSet;
+import com.mojang.serialization.Codec;
+import java.util.EnumSet;
+import java.util.List;
+import org.joml.Vector3f;
 
-public final class evp extends evv {
-   private final BitSet d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
-   private int i;
-   private int j;
+public class evp implements js {
+   public static final Codec<evp> a = Codec.DOUBLE
+      .listOf()
+      .comapFlatMap(
+         $$0 -> ac.a($$0, 3).map($$0x -> new evp((Double)$$0x.get(0), (Double)$$0x.get(1), (Double)$$0x.get(2))), $$0 -> List.of($$0.a(), $$0.b(), $$0.c())
+      );
+   public static final evp b = new evp(0.0, 0.0, 0.0);
+   public final double c;
+   public final double d;
+   public final double e;
 
-   public evp(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-      this.d = new BitSet($$0 * $$1 * $$2);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public static evp a(int $$0) {
+      double $$1 = (double)($$0 >> 16 & 0xFF) / 255.0;
+      double $$2 = (double)($$0 >> 8 & 0xFF) / 255.0;
+      double $$3 = (double)($$0 & 0xFF) / 255.0;
+      return new evp($$1, $$2, $$3);
    }
 
-   public static evp a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      evp $$9 = new evp($$0, $$1, $$2);
-      $$9.e = $$3;
-      $$9.f = $$4;
-      $$9.g = $$5;
-      $$9.h = $$6;
-      $$9.i = $$7;
-      $$9.j = $$8;
-
-      for (int $$10 = $$3; $$10 < $$6; $$10++) {
-         for (int $$11 = $$4; $$11 < $$7; $$11++) {
-            for (int $$12 = $$5; $$12 < $$8; $$12++) {
-               $$9.a($$10, $$11, $$12, false);
-            }
-         }
-      }
-
-      return $$9;
+   public static evp a(kd $$0) {
+      return new evp((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
    }
 
-   public evp(evv $$0) {
-      super($$0.a, $$0.b, $$0.c);
-      if ($$0 instanceof evp) {
-         this.d = (BitSet)((evp)$$0).d.clone();
-      } else {
-         this.d = new BitSet(this.a * this.b * this.c);
-
-         for (int $$1 = 0; $$1 < this.a; $$1++) {
-            for (int $$2 = 0; $$2 < this.b; $$2++) {
-               for (int $$3 = 0; $$3 < this.c; $$3++) {
-                  if ($$0.b($$1, $$2, $$3)) {
-                     this.d.set(this.a($$1, $$2, $$3));
-                  }
-               }
-            }
-         }
-      }
-
-      this.e = $$0.a(je.a.a);
-      this.f = $$0.a(je.a.b);
-      this.g = $$0.a(je.a.c);
-      this.h = $$0.b(je.a.a);
-      this.i = $$0.b(je.a.b);
-      this.j = $$0.b(je.a.c);
+   public static evp a(kd $$0, double $$1, double $$2, double $$3) {
+      return new evp((double)$$0.u() + $$1, (double)$$0.v() + $$2, (double)$$0.w() + $$3);
    }
 
-   protected int a(int $$0, int $$1, int $$2) {
-      return ($$0 * this.b + $$1) * this.c + $$2;
+   public static evp b(kd $$0) {
+      return a($$0, 0.5, 0.5, 0.5);
+   }
+
+   public static evp c(kd $$0) {
+      return a($$0, 0.5, 0.0, 0.5);
+   }
+
+   public static evp a(kd $$0, double $$1) {
+      return a($$0, 0.5, $$1, 0.5);
+   }
+
+   public evp(double $$0, double $$1, double $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public evp(Vector3f $$0) {
+      this((double)$$0.x(), (double)$$0.y(), (double)$$0.z());
+   }
+
+   public evp a(evp $$0) {
+      return new evp($$0.c - this.c, $$0.d - this.d, $$0.e - this.e);
+   }
+
+   public evp d() {
+      double $$0 = Math.sqrt(this.c * this.c + this.d * this.d + this.e * this.e);
+      return $$0 < 1.0E-4 ? b : new evp(this.c / $$0, this.d / $$0, this.e / $$0);
+   }
+
+   public double b(evp $$0) {
+      return this.c * $$0.c + this.d * $$0.d + this.e * $$0.e;
+   }
+
+   public evp c(evp $$0) {
+      return new evp(this.d * $$0.e - this.e * $$0.d, this.e * $$0.c - this.c * $$0.e, this.c * $$0.d - this.d * $$0.c);
+   }
+
+   public evp d(evp $$0) {
+      return this.a($$0.c, $$0.d, $$0.e);
+   }
+
+   public evp a(double $$0, double $$1, double $$2) {
+      return this.b(-$$0, -$$1, -$$2);
+   }
+
+   public evp e(evp $$0) {
+      return this.b($$0.c, $$0.d, $$0.e);
+   }
+
+   public evp b(double $$0, double $$1, double $$2) {
+      return new evp(this.c + $$0, this.d + $$1, this.e + $$2);
+   }
+
+   public boolean a(js $$0, double $$1) {
+      return this.c($$0.a(), $$0.b(), $$0.c()) < $$1 * $$1;
+   }
+
+   public double f(evp $$0) {
+      double $$1 = $$0.c - this.c;
+      double $$2 = $$0.d - this.d;
+      double $$3 = $$0.e - this.e;
+      return Math.sqrt($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+   }
+
+   public double g(evp $$0) {
+      double $$1 = $$0.c - this.c;
+      double $$2 = $$0.d - this.d;
+      double $$3 = $$0.e - this.e;
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public double c(double $$0, double $$1, double $$2) {
+      double $$3 = $$0 - this.c;
+      double $$4 = $$1 - this.d;
+      double $$5 = $$2 - this.e;
+      return $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
+   }
+
+   public boolean a(evp $$0, double $$1, double $$2) {
+      double $$3 = $$0.a() - this.c;
+      double $$4 = $$0.b() - this.d;
+      double $$5 = $$0.c() - this.e;
+      return ayx.e($$3, $$5) < ayx.k($$1) && Math.abs($$4) < $$2;
+   }
+
+   public evp a(double $$0) {
+      return this.d($$0, $$0, $$0);
+   }
+
+   public evp e() {
+      return this.a(-1.0);
+   }
+
+   public evp h(evp $$0) {
+      return this.d($$0.c, $$0.d, $$0.e);
+   }
+
+   public evp d(double $$0, double $$1, double $$2) {
+      return new evp(this.c * $$0, this.d * $$1, this.e * $$2);
+   }
+
+   public evp a(azf $$0, float $$1) {
+      return this.b((double)(($$0.i() - 0.5F) * $$1), (double)(($$0.i() - 0.5F) * $$1), (double)(($$0.i() - 0.5F) * $$1));
+   }
+
+   public double f() {
+      return Math.sqrt(this.c * this.c + this.d * this.d + this.e * this.e);
+   }
+
+   public double g() {
+      return this.c * this.c + this.d * this.d + this.e * this.e;
+   }
+
+   public double h() {
+      return Math.sqrt(this.c * this.c + this.e * this.e);
+   }
+
+   public double i() {
+      return this.c * this.c + this.e * this.e;
    }
 
    @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.get(this.a($$0, $$1, $$2));
-   }
-
-   private void a(int $$0, int $$1, int $$2, boolean $$3) {
-      this.d.set(this.a($$0, $$1, $$2));
-      if ($$3) {
-         this.e = Math.min(this.e, $$0);
-         this.f = Math.min(this.f, $$1);
-         this.g = Math.min(this.g, $$2);
-         this.h = Math.max(this.h, $$0 + 1);
-         this.i = Math.max(this.i, $$1 + 1);
-         this.j = Math.max(this.j, $$2 + 1);
-      }
-   }
-
-   @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.a($$0, $$1, $$2, true);
-   }
-
-   @Override
-   public boolean a() {
-      return this.d.isEmpty();
-   }
-
-   @Override
-   public int a(je.a $$0) {
-      return $$0.a(this.e, this.f, this.g);
-   }
-
-   @Override
-   public int b(je.a $$0) {
-      return $$0.a(this.h, this.i, this.j);
-   }
-
-   static evp a(evv $$0, evv $$1, evy $$2, evy $$3, evy $$4, evq $$5) {
-      evp $$6 = new evp($$2.size() - 1, $$3.size() - 1, $$4.size() - 1);
-      int[] $$7 = new int[]{Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE};
-      $$2.a(($$7x, $$8, $$9) -> {
-         boolean[] $$10 = new boolean[]{false};
-         $$3.a(($$10x, $$11, $$12) -> {
-            boolean[] $$13 = new boolean[]{false};
-            $$4.a(($$12x, $$13x, $$14) -> {
-               if ($$5.apply($$0.e($$7x, $$10x, $$12x), $$1.e($$8, $$11, $$13x))) {
-                  $$6.d.set($$6.a($$9, $$12, $$14));
-                  $$7[2] = Math.min($$7[2], $$14);
-                  $$7[5] = Math.max($$7[5], $$14);
-                  $$13[0] = true;
-               }
-
-               return true;
-            });
-            if ($$13[0]) {
-               $$7[1] = Math.min($$7[1], $$12);
-               $$7[4] = Math.max($$7[4], $$12);
-               $$10[0] = true;
-            }
-
-            return true;
-         });
-         if ($$10[0]) {
-            $$7[0] = Math.min($$7[0], $$9);
-            $$7[3] = Math.max($$7[3], $$9);
-         }
-
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
-      });
-      $$6.e = $$7[0];
-      $$6.f = $$7[1];
-      $$6.g = $$7[2];
-      $$6.h = $$7[3] + 1;
-      $$6.i = $$7[4] + 1;
-      $$6.j = $$7[5] + 1;
-      return $$6;
-   }
-
-   protected static void a(evv $$0, evv.b $$1, boolean $$2) {
-      evp $$3 = new evp($$0);
-
-      for (int $$4 = 0; $$4 < $$3.b; $$4++) {
-         for (int $$5 = 0; $$5 < $$3.a; $$5++) {
-            int $$6 = -1;
-
-            for (int $$7 = 0; $$7 <= $$3.c; $$7++) {
-               if ($$3.e($$5, $$4, $$7)) {
-                  if ($$2) {
-                     if ($$6 == -1) {
-                        $$6 = $$7;
-                     }
-                  } else {
-                     $$1.consume($$5, $$4, $$7, $$5 + 1, $$4 + 1, $$7 + 1);
-                  }
-               } else if ($$6 != -1) {
-                  int $$8 = $$5;
-                  int $$9 = $$4;
-                  $$3.b($$6, $$7, $$5, $$4);
-
-                  while ($$3.a($$6, $$7, $$8 + 1, $$4)) {
-                     $$3.b($$6, $$7, $$8 + 1, $$4);
-                     $$8++;
-                  }
-
-                  while ($$3.a($$5, $$8 + 1, $$6, $$7, $$9 + 1)) {
-                     for (int $$10 = $$5; $$10 <= $$8; $$10++) {
-                        $$3.b($$6, $$7, $$10, $$9 + 1);
-                     }
-
-                     $$9++;
-                  }
-
-                  $$1.consume($$5, $$4, $$6, $$8 + 1, $$9 + 1, $$7);
-                  $$6 = -1;
-               }
-            }
-         }
+      } else if (!($$0 instanceof evp $$1)) {
+         return false;
+      } else if (Double.compare($$1.c, this.c) != 0) {
+         return false;
+      } else {
+         return Double.compare($$1.d, this.d) != 0 ? false : Double.compare($$1.e, this.e) == 0;
       }
    }
 
-   private boolean a(int $$0, int $$1, int $$2, int $$3) {
-      return $$2 < this.a && $$3 < this.b ? this.d.nextClearBit(this.a($$2, $$3, $$0)) >= this.a($$2, $$3, $$1) : false;
+   @Override
+   public int hashCode() {
+      long $$0 = Double.doubleToLongBits(this.c);
+      int $$1 = (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.d);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.e);
+      return 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
    }
 
-   private boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      for (int $$5 = $$0; $$5 < $$1; $$5++) {
-         if (!this.a($$2, $$3, $$5, $$4)) {
-            return false;
-         }
-      }
-
-      return true;
+   @Override
+   public String toString() {
+      return "(" + this.c + ", " + this.d + ", " + this.e + ")";
    }
 
-   private void b(int $$0, int $$1, int $$2, int $$3) {
-      this.d.clear(this.a($$2, $$3, $$0), this.a($$2, $$3, $$1));
+   public evp a(evp $$0, double $$1) {
+      return new evp(ayx.d($$1, this.c, $$0.c), ayx.d($$1, this.d, $$0.d), ayx.d($$1, this.e, $$0.e));
    }
 
-   public boolean d(int $$0, int $$1, int $$2) {
-      boolean $$3 = $$0 > 0 && $$0 < this.a - 1 && $$1 > 0 && $$1 < this.b - 1 && $$2 > 0 && $$2 < this.c - 1;
-      return $$3
-         && this.b($$0, $$1, $$2)
-         && this.b($$0 - 1, $$1, $$2)
-         && this.b($$0 + 1, $$1, $$2)
-         && this.b($$0, $$1 - 1, $$2)
-         && this.b($$0, $$1 + 1, $$2)
-         && this.b($$0, $$1, $$2 - 1)
-         && this.b($$0, $$1, $$2 + 1);
+   public evp a(float $$0) {
+      float $$1 = ayx.b($$0);
+      float $$2 = ayx.a($$0);
+      double $$3 = this.c;
+      double $$4 = this.d * (double)$$1 + this.e * (double)$$2;
+      double $$5 = this.e * (double)$$1 - this.d * (double)$$2;
+      return new evp($$3, $$4, $$5);
+   }
+
+   public evp b(float $$0) {
+      float $$1 = ayx.b($$0);
+      float $$2 = ayx.a($$0);
+      double $$3 = this.c * (double)$$1 + this.e * (double)$$2;
+      double $$4 = this.d;
+      double $$5 = this.e * (double)$$1 - this.c * (double)$$2;
+      return new evp($$3, $$4, $$5);
+   }
+
+   public evp c(float $$0) {
+      float $$1 = ayx.b($$0);
+      float $$2 = ayx.a($$0);
+      double $$3 = this.c * (double)$$1 + this.d * (double)$$2;
+      double $$4 = this.d * (double)$$1 - this.c * (double)$$2;
+      double $$5 = this.e;
+      return new evp($$3, $$4, $$5);
+   }
+
+   public static evp a(evo $$0) {
+      return a($$0.i, $$0.j);
+   }
+
+   public static evp a(float $$0, float $$1) {
+      float $$2 = ayx.b(-$$1 * (float) (Math.PI / 180.0) - (float) Math.PI);
+      float $$3 = ayx.a(-$$1 * (float) (Math.PI / 180.0) - (float) Math.PI);
+      float $$4 = -ayx.b(-$$0 * (float) (Math.PI / 180.0));
+      float $$5 = ayx.a(-$$0 * (float) (Math.PI / 180.0));
+      return new evp((double)($$3 * $$4), (double)$$5, (double)($$2 * $$4));
+   }
+
+   public evp a(EnumSet<je.a> $$0) {
+      double $$1 = $$0.contains(je.a.a) ? (double)ayx.a(this.c) : this.c;
+      double $$2 = $$0.contains(je.a.b) ? (double)ayx.a(this.d) : this.d;
+      double $$3 = $$0.contains(je.a.c) ? (double)ayx.a(this.e) : this.e;
+      return new evp($$1, $$2, $$3);
+   }
+
+   public double a(je.a $$0) {
+      return $$0.a(this.c, this.d, this.e);
+   }
+
+   public evp a(je.a $$0, double $$1) {
+      double $$2 = $$0 == je.a.a ? $$1 : this.c;
+      double $$3 = $$0 == je.a.b ? $$1 : this.d;
+      double $$4 = $$0 == je.a.c ? $$1 : this.e;
+      return new evp($$2, $$3, $$4);
+   }
+
+   public evp a(je $$0, double $$1) {
+      kd $$2 = $$0.q();
+      return new evp(this.c + $$1 * (double)$$2.u(), this.d + $$1 * (double)$$2.v(), this.e + $$1 * (double)$$2.w());
+   }
+
+   @Override
+   public final double a() {
+      return this.c;
+   }
+
+   @Override
+   public final double b() {
+      return this.d;
+   }
+
+   @Override
+   public final double c() {
+      return this.e;
+   }
+
+   public Vector3f j() {
+      return new Vector3f((float)this.c, (float)this.d, (float)this.e);
    }
 }

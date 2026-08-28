@@ -1,58 +1,82 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fmo extends fna {
-   private static final xl a = xl.c("options.online.title");
+public class fmo {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<cqz<?>, fmo.a<?, ?>> b = Maps.newHashMap();
+
+   public static <T extends cps> void a(cqz<T> $$0, ffd $$1, int $$2, xo $$3) {
+      fmo.a<T, ?> $$4 = a($$0);
+      if ($$4 == null) {
+         a.warn("Failed to create screen for menu type: {}", lp.r.b($$0));
+      } else {
+         $$4.a($$3, $$0, $$1, $$2);
+      }
+   }
+
    @Nullable
-   private final ffd<Unit> u;
+   private static <T extends cps> fmo.a<T, ?> a(cqz<T> $$0) {
+      return (fmo.a<T, ?>)b.get($$0);
+   }
 
-   public static fmo a(ffa $$0, fmy $$1, ffe $$2) {
-      List<ffd<?>> $$3 = new ArrayList<>();
-      $$3.add($$2.T());
-      $$3.add($$2.U());
-      ffd<Unit> $$4 = x.a(
-         $$0.r,
-         $$0x -> {
-            bqm $$1x = $$0x.al();
-            return new ffd<>(
-               "options.difficulty.online",
-               ffd.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new ffd.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$4 != null) {
-         $$3.add($$4);
+   private static <M extends cps, U extends fnb & fpf<M>> void a(cqz<? extends M> $$0, fmo.a<M, U> $$1) {
+      fmo.a<?, ?> $$2 = b.put($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalStateException("Duplicate registration for " + lp.r.b($$0));
       }
-
-      return new fmo($$1, $$2, $$3.toArray(new ffd[0]), $$4);
    }
 
-   private fmo(fmy $$0, ffe $$1, ffd<?>[] $$2, @Nullable ffd<Unit> $$3) {
-      super($$0, $$1, a, $$2);
-      this.u = $$3;
-   }
+   public static boolean a() {
+      boolean $$0 = false;
 
-   @Override
-   protected void aN_() {
-      super.aN_();
-      if (this.u != null) {
-         fgx $$0 = this.s.b(this.u);
-         if ($$0 != null) {
-            $$0.j = false;
+      for (cqz<?> $$1 : lp.r) {
+         if (!b.containsKey($$1)) {
+            a.debug("Menu {} has no matching screen", lp.r.b($$1));
+            $$0 = true;
          }
       }
 
-      fgx $$1 = this.s.b(this.c.ai());
-      if ($$1 != null) {
-         $$1.j = this.m.D();
+      return $$0;
+   }
+
+   static {
+      a(cqz.a, fok::new);
+      a(cqz.b, fok::new);
+      a(cqz.c, fok::new);
+      a(cqz.d, fok::new);
+      a(cqz.e, fok::new);
+      a(cqz.f, fok::new);
+      a(cqz.g, foq::new);
+      a(cqz.h, fol::new);
+      a(cqz.i, foc::new);
+      a(cqz.j, fod::new);
+      a(cqz.k, foe::new);
+      a(cqz.l, foh::new);
+      a(cqz.m, fom::new);
+      a(cqz.n, fou::new);
+      a(cqz.o, fov::new);
+      a(cqz.p, fow::new);
+      a(cqz.q, foy::new);
+      a(cqz.r, fpd::new);
+      a(cqz.s, fpe::new);
+      a(cqz.t, fpg::new);
+      a(cqz.u, fpj::new);
+      a(cqz.v, fpl::new);
+      a(cqz.w, fpm::new);
+      a(cqz.x, foi::new);
+      a(cqz.y, fpn::new);
+   }
+
+   interface a<T extends cps, U extends fnb & fpf<T>> {
+      default void a(xo $$0, cqz<T> $$1, ffd $$2, int $$3) {
+         U $$4 = this.create($$1.a($$3, $$2.s.gc()), $$2.s.gc(), $$0);
+         $$2.s.cb = $$4.E();
+         $$2.a($$4);
       }
+
+      U create(T var1, cmu var2, xo var3);
    }
 }

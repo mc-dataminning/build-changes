@@ -1,35 +1,81 @@
-import com.mojang.serialization.MapCodec;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface cyu<T extends cyq<?>> {
-   cyu<cyx> a = a("crafting_shaped", new cyx.a());
-   cyu<cyz> b = a("crafting_shapeless", new cyz.a());
-   cyu<cya> c = a("crafting_special_armordye", new czd<>(cya::new));
-   cyu<cyd> d = a("crafting_special_bookcloning", new czd<>(cyd::new));
-   cyu<cyo> e = a("crafting_special_mapcloning", new czd<>(cyo::new));
-   cyu<cyp> f = a("crafting_special_mapextending", new czd<>(cyp::new));
-   cyu<cyk> g = a("crafting_special_firework_rocket", new czd<>(cyk::new));
-   cyu<cym> h = a("crafting_special_firework_star", new czd<>(cym::new));
-   cyu<cyl> i = a("crafting_special_firework_star_fade", new czd<>(cyl::new));
-   cyu<czm> j = a("crafting_special_tippedarrow", new czd<>(czm::new));
-   cyu<cyb> k = a("crafting_special_bannerduplicate", new czd<>(cyb::new));
-   cyu<cza> l = a("crafting_special_shielddecoration", new czd<>(cza::new));
-   cyu<czb> m = a("crafting_special_shulkerboxcoloring", new czd<>(czb::new));
-   cyu<czl> n = a("crafting_special_suspiciousstew", new czd<>(czl::new));
-   cyu<cyw> o = a("crafting_special_repairitem", new czd<>(cyw::new));
-   cyu<czf> p = a("smelting", new czc<>(czf::new, 200));
-   cyu<cyc> q = a("blasting", new czc<>(cyc::new, 100));
-   cyu<czj> r = a("smoking", new czc<>(czj::new, 100));
-   cyu<cye> s = a("campfire_cooking", new czc<>(cye::new, 100));
-   cyu<czk> t = a("stonecutting", new cze.b<>(czk::new));
-   cyu<czh> u = a("smithing_transform", new czh.a());
-   cyu<czi> v = a("smithing_trim", new czi.a());
-   cyu<cyj> w = a("crafting_decorated_pot", new czd<>(cyj::new));
+public class cyu {
+   private final cyu.a[] a;
+   private WeakReference<cyw> b = new WeakReference<>(null);
 
-   MapCodec<T> a();
+   public cyu(int $$0) {
+      this.a = new cyu.a[$$0];
+   }
 
-   zj<ww, T> b();
+   public Optional<cyv<cyk>> a(dbw $$0, cqi $$1) {
+      if ($$1.c()) {
+         return Optional.empty();
+      } else {
+         this.a($$0);
 
-   static <S extends cyu<T>, T extends cyq<?>> S a(String $$0, S $$1) {
-      return jv.a(lp.t, $$0, $$1);
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            cyu.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1.h())) {
+               this.a($$2);
+               return Optional.ofNullable($$3.b());
+            }
+         }
+
+         return this.a($$1, $$0);
+      }
+   }
+
+   private void a(dbw $$0) {
+      cyw $$1 = $$0.r();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
+      }
+   }
+
+   private Optional<cyv<cyk>> a(cqi $$0, dbw $$1) {
+      Optional<cyv<cyk>> $$2 = $$1.r().a(cyy.a, $$0, $$1);
+      this.a($$0.h(), $$2.orElse(null));
+      return $$2;
+   }
+
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         cyu.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
+   }
+
+   private void a(List<cun> $$0, @Nullable cyv<cyk> $$1) {
+      jr<cun> $$2 = jr.a($$0.size(), cun.l);
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         $$2.set($$3, $$0.get($$3).c(1));
+      }
+
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new cyu.a($$2, $$1);
+   }
+
+   static record a(jr<cun> a, @Nullable cyv<cyk> b) {
+      public boolean a(List<cun> $$0) {
+         if (this.a.size() != $$0.size()) {
+            return false;
+         } else {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!cun.c(this.a.get($$1), $$0.get($$1))) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+      }
    }
 }

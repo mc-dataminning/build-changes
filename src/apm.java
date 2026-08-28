@@ -1,47 +1,63 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.List;
 
 public class apm {
-   private static final int a = -1;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xo.c("commands.transfer.error.no_players"));
 
    public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("weather").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)eq.a("clear").executes($$0x -> a((ep)$$0x.getSource(), -1)))
-                        .then(eq.a("duration", ge.a(1)).executes($$0x -> a((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)eq.a("rain").executes($$0x -> b((ep)$$0x.getSource(), -1)))
-                     .then(eq.a("duration", ge.a(1)).executes($$0x -> b((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("transfer").requires($$0x -> $$0x.c(3)))
             .then(
-               ((LiteralArgumentBuilder)eq.a("thunder").executes($$0x -> c((ep)$$0x.getSource(), -1)))
-                  .then(eq.a("duration", ge.a(1)).executes($$0x -> c((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+               ((RequiredArgumentBuilder)eq.a("hostname", StringArgumentType.string())
+                     .executes($$0x -> a((ep)$$0x.getSource(), StringArgumentType.getString($$0x, "hostname"), 25565, List.of(((ep)$$0x.getSource()).h()))))
+                  .then(
+                     ((RequiredArgumentBuilder)eq.a("port", IntegerArgumentType.integer(1, 65535))
+                           .executes(
+                              $$0x -> a(
+                                    (ep)$$0x.getSource(),
+                                    StringArgumentType.getString($$0x, "hostname"),
+                                    IntegerArgumentType.getInteger($$0x, "port"),
+                                    List.of(((ep)$$0x.getSource()).h())
+                                 )
+                           ))
+                        .then(
+                           eq.a("players", fc.d())
+                              .executes(
+                                 $$0x -> a(
+                                       (ep)$$0x.getSource(),
+                                       StringArgumentType.getString($$0x, "hostname"),
+                                       IntegerArgumentType.getInteger($$0x, "port"),
+                                       fc.f($$0x, "players")
+                                    )
+                              )
+                        )
+                  )
             )
       );
    }
 
-   private static int a(ep $$0, int $$1, bpu $$2) {
-      return $$1 == -1 ? $$2.a($$0.l().I().E_()) : $$1;
-   }
+   private static int a(ep $$0, String $$1, int $$2, Collection<arf> $$3) throws CommandSyntaxException {
+      if ($$3.isEmpty()) {
+         throw a.create();
+      } else {
+         for (arf $$4 : $$3) {
+            $$4.c.b(new aaj($$1, $$2));
+         }
 
-   private static int a(ep $$0, int $$1) {
-      $$0.l().I().a(a($$0, $$1, arb.b), 0, false, false);
-      $$0.a(() -> xl.c("commands.weather.set.clear"), true);
-      return $$1;
-   }
+         if ($$3.size() == 1) {
+            $$0.a(() -> xo.a("commands.transfer.success.single", $$3.iterator().next().O_(), $$1, $$2), true);
+         } else {
+            $$0.a(() -> xo.a("commands.transfer.success.multiple", $$3.size(), $$1, $$2), true);
+         }
 
-   private static int b(ep $$0, int $$1) {
-      $$0.l().I().a(0, a($$0, $$1, arb.c), true, false);
-      $$0.a(() -> xl.c("commands.weather.set.rain"), true);
-      return $$1;
-   }
-
-   private static int c(ep $$0, int $$1) {
-      $$0.l().I().a(0, a($$0, $$1, arb.d), true, true);
-      $$0.a(() -> xl.c("commands.weather.set.thunder"), true);
-      return $$1;
+         return $$3.size();
+      }
    }
 }

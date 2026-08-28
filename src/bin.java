@@ -4,7 +4,7 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bin extends bid {
+public class bin extends Schema {
    public bin(int $$0, Schema $$1) {
       super($$0, $$1);
    }
@@ -13,20 +13,11 @@ public class bin extends bid {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
          false,
-         bgs.c,
-         () -> DSL.fields(
-               "Level",
-               DSL.optionalFields(
-                  "Entities",
-                  DSL.list(bgs.A.in($$0)),
-                  "TileEntities",
-                  DSL.list(DSL.or(bgs.s.in($$0), DSL.remainder())),
-                  "TileTicks",
-                  DSL.list(DSL.fields("i", bgs.C.in($$0))),
-                  "Sections",
-                  DSL.list(DSL.optionalFields("Palette", DSL.list(bgs.u.in($$0))))
-               )
+         bgv.b,
+         () -> DSL.optionalFields(
+               "RootVehicle", DSL.optionalFields("Entity", bgv.A.in($$0)), "Inventory", DSL.list(bgv.t.in($$0)), "EnderItems", DSL.list(bgv.t.in($$0))
             )
       );
+      $$0.registerType(true, bgv.A, () -> DSL.optionalFields("Passengers", DSL.list(bgv.A.in($$0)), bgv.B.in($$0)));
    }
 }

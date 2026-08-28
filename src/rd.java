@@ -1,65 +1,65 @@
 public class rd {
-   public static final ala<dzs<?>> a = a("cave");
-   public static final ala<dzs<?>> b = a("cave_extra_underground");
-   public static final ala<dzs<?>> c = a("canyon");
-   public static final ala<dzs<?>> d = a("nether_cave");
+   public static final ald<dzv<?>> a = a("cave");
+   public static final ald<dzv<?>> b = a("cave_extra_underground");
+   public static final ald<dzv<?>> c = a("canyon");
+   public static final ald<dzv<?>> d = a("nether_cave");
 
-   private static ala<dzs<?>> a(String $$0) {
-      return ala.a(lq.aB, new alb($$0));
+   private static ald<dzv<?>> a(String $$0) {
+      return ald.a(lq.aB, new ale($$0));
    }
 
-   public static void a(rc<dzs<?>> $$0) {
-      jj<deu> $$1 = $$0.a(lq.f);
+   public static void a(rc<dzv<?>> $$0) {
+      jj<dex> $$1 = $$0.a(lq.f);
       $$0.a(
          a,
-         dzu.a
+         dzx.a
             .a(
-               new dzq(
+               new dzt(
                   0.15F,
-                  egp.a(dyj.b(8), dyj.a(180)),
-                  bpz.b(0.1F, 0.9F),
-                  dyj.b(8),
-                  dzo.a(false, dew.oS.n()),
-                  $$1.b(awl.bi),
-                  bpz.b(0.7F, 1.4F),
-                  bpz.b(0.8F, 1.3F),
-                  bpz.b(-1.0F, -0.4F)
+                  egs.a(dym.b(8), dym.a(180)),
+                  bqc.b(0.1F, 0.9F),
+                  dym.b(8),
+                  dzr.a(false, dez.oS.o()),
+                  $$1.b(awo.bi),
+                  bqc.b(0.7F, 1.4F),
+                  bqc.b(0.8F, 1.3F),
+                  bqc.b(-1.0F, -0.4F)
                )
             )
       );
       $$0.a(
          b,
-         dzu.a
+         dzx.a
             .a(
-               new dzq(
+               new dzt(
                   0.07F,
-                  egp.a(dyj.b(8), dyj.a(47)),
-                  bpz.b(0.1F, 0.9F),
-                  dyj.b(8),
-                  dzo.a(false, dew.gv.n()),
-                  $$1.b(awl.bi),
-                  bpz.b(0.7F, 1.4F),
-                  bpz.b(0.8F, 1.3F),
-                  bpz.b(-1.0F, -0.4F)
+                  egs.a(dym.b(8), dym.a(47)),
+                  bqc.b(0.1F, 0.9F),
+                  dym.b(8),
+                  dzr.a(false, dez.gv.o()),
+                  $$1.b(awo.bi),
+                  bqc.b(0.7F, 1.4F),
+                  bqc.b(0.8F, 1.3F),
+                  bqc.b(-1.0F, -0.4F)
                )
             )
       );
       $$0.a(
          c,
-         dzu.c
+         dzx.c
             .a(
-               new dzl(
+               new dzo(
                   0.01F,
-                  egp.a(dyj.a(10), dyj.a(67)),
-                  bpq.a(3.0F),
-                  dyj.b(8),
-                  dzo.a(false, dew.oT.n()),
-                  $$1.b(awl.bi),
-                  bpz.b(-0.125F, 0.125F),
-                  new dzl.a(bpz.b(0.75F, 1.0F), bpy.a(0.0F, 6.0F, 2.0F), 3, bpz.b(0.75F, 1.0F), 1.0F, 0.0F)
+                  egs.a(dym.a(10), dym.a(67)),
+                  bpt.a(3.0F),
+                  dym.b(8),
+                  dzr.a(false, dez.oT.o()),
+                  $$1.b(awo.bi),
+                  bqc.b(-0.125F, 0.125F),
+                  new dzo.a(bqc.b(0.75F, 1.0F), bqb.a(0.0F, 6.0F, 2.0F), 3, bqc.b(0.75F, 1.0F), 1.0F, 0.0F)
                )
             )
       );
-      $$0.a(d, dzu.b.a(new dzq(0.2F, egp.a(dyj.a(0), dyj.c(1)), bpq.a(0.5F), dyj.b(10), $$1.b(awl.bj), bpq.a(1.0F), bpq.a(1.0F), bpq.a(-0.7F))));
+      $$0.a(d, dzx.b.a(new dzt(0.2F, egs.a(dym.a(0), dym.c(1)), bpt.a(0.5F), dym.b(10), $$1.b(awo.bj), bpt.a(1.0F), bpt.a(1.0F), bpt.a(-0.7F))));
    }
 }

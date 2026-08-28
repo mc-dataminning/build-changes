@@ -1,48 +1,44 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public interface ctm {
-   bsw m();
-
-   default ji<avv> aq_() {
-      return avw.as;
+public class ctm extends cui {
+   public ctm(cui.a $$0) {
+      super($$0);
    }
 
-   default bqq<cuk> a(cuf $$0, dbt $$1, cms $$2, bqo $$3) {
-      cuk $$4 = $$2.b($$3);
-      bsw $$5 = btm.h($$4);
-      if (!$$2.d($$5)) {
-         return bqq.c($$4);
+   @Override
+   public bqs a(cya $$0) {
+      dbw $$1 = $$0.q();
+      iz $$2 = $$0.a();
+      dsa $$3 = $$1.a_($$2);
+      if (!$$3.a(dez.co) && !$$3.a(dez.F)) {
+         return bqs.f;
       } else {
-         cuk $$6 = $$2.a($$5);
-         if ((!czw.f($$6) || $$2.f()) && !cuk.a($$4, $$6)) {
-            if (!$$1.x_()) {
-               $$2.b(awg.c.b($$0));
-            }
-
-            cuk $$7 = $$6.e() ? $$4 : $$6.f();
-            cuk $$8 = $$2.f() ? $$4.s() : $$4.f();
-            $$2.a($$5, $$8);
-            return bqq.a($$7, $$1.x_());
+         iz $$4 = $$2.c();
+         if (!$$1.u($$4)) {
+            return bqs.f;
          } else {
-            return bqq.d($$4);
-         }
-      }
-   }
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<bss> $$8 = $$1.a_(null, new evk($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return bqs.f;
+            } else {
+               if ($$1 instanceof are) {
+                  chy $$9 = new chy($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), dwt.t, $$4);
+                  dvv $$10 = ((are)$$1).D();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
 
-   @Nullable
-   static ctm c_(cuk $$0) {
-      cuf $$3 = $$0.g();
-      if ($$3 instanceof ctm) {
-         return (ctm)$$3;
-      } else {
-         if ($$0.g() instanceof csi $$2) {
-            deu var6 = $$2.d();
-            if (var6 instanceof ctm) {
-               return (ctm)var6;
+               $$0.n().h(1);
+               return bqs.a($$1.B);
             }
          }
-
-         return null;
       }
    }
 }

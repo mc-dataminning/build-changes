@@ -1,30 +1,141 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
+import java.util.function.LongSupplier;
+import javax.annotation.Nullable;
 
-public class bos {
-   private final Set<String> a = new ObjectOpenHashSet();
+public class bos implements bou {
+   public static final int a = 10;
+   @Nullable
+   private static Consumer<Path> b = null;
+   private final Map<bon, List<boz>> c = new Object2ObjectOpenHashMap();
+   private final bna d;
+   private final Executor e;
+   private final boy f;
+   private final Consumer<bnf> g;
+   private final Consumer<Path> h;
+   private final bop i;
+   private final LongSupplier j;
+   private final long k;
+   private int l;
+   private bne m;
+   private volatile boolean n;
+   private Set<bon> o = ImmutableSet.of();
 
-   public Set<bok> a(Supplier<bnb> $$0) {
-      Set<bok> $$1 = $$0.get()
-         .e()
-         .stream()
-         .filter($$0x -> !this.a.contains($$0x.getLeft()))
-         .map($$1x -> a($$0, (String)$$1x.getLeft(), (boj)$$1x.getRight()))
-         .collect(Collectors.toSet());
-
-      for (bok $$2 : $$1) {
-         this.a.add($$2.d());
-      }
-
-      return $$1;
+   private bos(bop $$0, LongSupplier $$1, Executor $$2, boy $$3, Consumer<bnf> $$4, Consumer<Path> $$5) {
+      this.i = $$0;
+      this.j = $$1;
+      this.d = new bna($$1, () -> this.l);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = b == null ? $$5 : $$5.andThen(b);
+      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
+      this.m = new bmz(this.j, () -> this.l, false);
+      this.d.c();
    }
 
-   private static bok a(Supplier<bnb> $$0, String $$1, boj $$2) {
-      return bok.a($$1, $$2, () -> {
-         bmw.a $$2x = $$0.get().c($$1);
-         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)azu.b;
+   public static bos a(bop $$0, LongSupplier $$1, Executor $$2, boy $$3, Consumer<bnf> $$4, Consumer<Path> $$5) {
+      return new bos($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public synchronized void a() {
+      if (this.e()) {
+         this.n = true;
+      }
+   }
+
+   @Override
+   public synchronized void b() {
+      if (this.e()) {
+         this.m = bnd.a;
+         this.g.accept(bnb.a);
+         this.a(this.o);
+      }
+   }
+
+   @Override
+   public void c() {
+      this.g();
+      this.o = this.i.a(() -> this.m);
+
+      for (bon $$0 : this.o) {
+         $$0.a();
+      }
+
+      this.l++;
+   }
+
+   @Override
+   public void d() {
+      this.g();
+      if (this.l != 0) {
+         for (bon $$0 : this.o) {
+            $$0.a(this.l);
+            if ($$0.g()) {
+               boz $$1 = new boz(Instant.now(), this.l, this.m.d());
+               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+            }
+         }
+
+         if (!this.n && this.j.getAsLong() <= this.k) {
+            this.m = new bmz(this.j, () -> this.l, false);
+         } else {
+            this.n = false;
+            bnf $$2 = this.d.e();
+            this.m = bnd.a;
+            this.g.accept($$2);
+            this.a($$2);
+         }
+      }
+   }
+
+   @Override
+   public boolean e() {
+      return this.d.a();
+   }
+
+   @Override
+   public bng f() {
+      return bng.a(this.d.d(), this.m);
+   }
+
+   private void g() {
+      if (!this.e()) {
+         throw new IllegalStateException("Not started!");
+      }
+   }
+
+   private void a(bnf $$0) {
+      HashSet<bon> $$1 = new HashSet<>(this.o);
+      this.e.execute(() -> {
+         Path $$2 = this.f.a($$1, this.c, $$0);
+         this.a($$1);
+         this.h.accept($$2);
       });
+   }
+
+   private void a(Collection<bon> $$0) {
+      for (bon $$1 : $$0) {
+         $$1.b();
+      }
+
+      this.c.clear();
+      this.d.b();
+   }
+
+   public static void a(Consumer<Path> $$0) {
+      b = $$0;
    }
 }

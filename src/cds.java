@@ -1,42 +1,30 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class cds extends cdu<cmf> {
-   private static final int a = 40;
-
-   public cds() {
-      super(40);
-   }
-
-   protected void a(arb $$0, cmf $$1) {
-      ala<dbt> $$2 = $$0.af();
-      iz $$3 = $$1.dp();
-      List<jh> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               iz $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gB().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(jh.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bum<?> $$10 = $$1.dS();
-      if (!$$4.isEmpty()) {
-         $$10.a(cco.f, $$4);
-      } else {
-         $$10.b(cco.f);
-      }
+public class cds extends cdx<btn> {
+   @Override
+   public Set<ccr<?>> a() {
+      return ImmutableSet.of(ccr.h, ccr.M, ccr.an);
    }
 
    @Override
-   public Set<cco<?>> a() {
-      return ImmutableSet.of(cco.f);
+   protected void a(are $$0, btn $$1) {
+      bup<?> $$2 = $$1.dS();
+      List<clk> $$3 = Lists.newArrayList();
+      cct $$4 = $$2.c(ccr.h).orElse(cct.a());
+      Optional<btp> $$5 = $$4.a($$0x -> $$0x instanceof cks || $$0x instanceof cit).map(btp.class::cast);
+
+      for (btn $$7 : $$2.c(ccr.g).orElse(ImmutableList.of())) {
+         if ($$7 instanceof clk && ((clk)$$7).gr()) {
+            $$3.add((clk)$$7);
+         }
+      }
+
+      $$2.a(ccr.M, $$5);
+      $$2.a(ccr.an, $$3);
    }
 }

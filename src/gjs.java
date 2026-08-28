@@ -1,103 +1,107 @@
-import org.joml.Matrix4f;
+public class gjs<T extends ciy> extends giu<T> {
+   private static final grf g = grf.c("item_frame", "map=false");
+   private static final grf h = grf.c("item_frame", "map=true");
+   private static final grf i = grf.c("glow_item_frame", "map=false");
+   private static final grf j = grf.c("glow_item_frame", "map=true");
+   public static final int a = 5;
+   public static final int f = 30;
+   private final gjt k;
+   private final geg l;
 
-public class gjs extends gir<btj> {
-   public gjs(gis.a $$0) {
+   public gjs(giv.a $$0) {
       super($$0);
+      this.k = $$0.b();
+      this.l = $$0.c();
    }
 
-   public void a(btj $$0, float $$1, float $$2, ezt $$3, gdj $$4, int $$5) {
-      float[] $$6 = new float[8];
-      float[] $$7 = new float[8];
-      float $$8 = 0.0F;
-      float $$9 = 0.0F;
-      azc $$10 = azc.a($$0.b);
+   protected int a(T $$0, iz $$1) {
+      return $$0.ak() == bsy.V ? Math.max(5, super.a($$0, $$1)) : super.a($$0, $$1);
+   }
 
-      for (int $$11 = 7; $$11 >= 0; $$11--) {
-         $$6[$$11] = $$8;
-         $$7[$$11] = $$9;
-         $$8 += (float)($$10.a(11) - 5);
-         $$9 += (float)($$10.a(11) - 5);
+   public void a(T $$0, float $$1, float $$2, ezw $$3, gdm $$4, int $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$3.a();
+      je $$6 = $$0.cH();
+      evp $$7 = this.a($$0, $$2);
+      $$3.a(-$$7.a(), -$$7.b(), -$$7.c());
+      double $$8 = 0.46875;
+      $$3.a((double)$$6.j() * 0.46875, (double)$$6.k() * 0.46875, (double)$$6.l() * 0.46875);
+      $$3.a(a.b.rotationDegrees($$0.dH()));
+      $$3.a(a.d.rotationDegrees(180.0F - $$0.dF()));
+      boolean $$9 = $$0.ch();
+      cun $$10 = $$0.E();
+      if (!$$9) {
+         gre $$11 = this.l.a().a();
+         grf $$12 = this.a($$0, $$10);
+         $$3.a();
+         $$3.a(-0.5F, -0.5F, -0.5F);
+         this.l.b().a($$3.c(), $$4.getBuffer(geb.h()), null, $$11.a($$12), 1.0F, 1.0F, 1.0F, $$5, goo.d);
+         $$3.b();
       }
 
-      ezx $$12 = $$4.getBuffer(gdr.s());
-      Matrix4f $$13 = $$3.c().a();
+      if (!$$10.e()) {
+         epg $$13 = $$0.G();
+         if ($$9) {
+            $$3.a(0.0F, 0.0F, 0.5F);
+         } else {
+            $$3.a(0.0F, 0.0F, 0.4375F);
+         }
 
-      for (int $$14 = 0; $$14 < 4; $$14++) {
-         azc $$15 = azc.a($$0.b);
-
-         for (int $$16 = 0; $$16 < 3; $$16++) {
-            int $$17 = 7;
-            int $$18 = 0;
-            if ($$16 > 0) {
-               $$17 = 7 - $$16;
+         int $$14 = $$13 != null ? $$0.I() % 4 * 2 : $$0.I();
+         $$3.a(a.f.rotationDegrees((float)$$14 * 360.0F / 8.0F));
+         if ($$13 != null) {
+            $$3.a(a.f.rotationDegrees(180.0F));
+            float $$15 = 0.0078125F;
+            $$3.b(0.0078125F, 0.0078125F, 0.0078125F);
+            $$3.a(-64.0F, -64.0F, 0.0F);
+            epi $$16 = cuv.a($$13, $$0.dP());
+            $$3.a(0.0F, 0.0F, -1.0F);
+            if ($$16 != null) {
+               int $$17 = this.a($$0, 15728850, $$5);
+               ffd.Q().j.i().a($$3, $$4, $$13, $$16, true, $$17);
             }
-
-            if ($$16 > 0) {
-               $$18 = $$17 - 2;
-            }
-
-            float $$19 = $$6[$$17] - $$8;
-            float $$20 = $$7[$$17] - $$9;
-
-            for (int $$21 = $$17; $$21 >= $$18; $$21--) {
-               float $$22 = $$19;
-               float $$23 = $$20;
-               if ($$16 == 0) {
-                  $$19 += (float)($$15.a(11) - 5);
-                  $$20 += (float)($$15.a(11) - 5);
-               } else {
-                  $$19 += (float)($$15.a(31) - 15);
-                  $$20 += (float)($$15.a(31) - 15);
-               }
-
-               float $$24 = 0.5F;
-               float $$25 = 0.45F;
-               float $$26 = 0.45F;
-               float $$27 = 0.5F;
-               float $$28 = 0.1F + (float)$$14 * 0.2F;
-               if ($$16 == 0) {
-                  $$28 *= (float)$$21 * 0.1F + 1.0F;
-               }
-
-               float $$29 = 0.1F + (float)$$14 * 0.2F;
-               if ($$16 == 0) {
-                  $$29 *= ((float)$$21 - 1.0F) * 0.1F + 1.0F;
-               }
-
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, false, true, false);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, false, true, true);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, true, false, true);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, true, false, false);
-            }
+         } else {
+            int $$18 = this.a($$0, 15728880, $$5);
+            $$3.b(0.5F, 0.5F, 0.5F);
+            this.k.a($$10, cuk.i, $$18, goo.d, $$3, $$4, $$0.dP(), $$0.al());
          }
       }
+
+      $$3.b();
    }
 
-   private static void a(
-      Matrix4f $$0,
-      ezx $$1,
-      float $$2,
-      float $$3,
-      int $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      boolean $$12,
-      boolean $$13,
-      boolean $$14,
-      boolean $$15
-   ) {
-      $$1.a($$0, $$2 + ($$12 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$13 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
-      $$1.a($$0, $$5 + ($$12 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$13 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
-      $$1.a($$0, $$5 + ($$14 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$15 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
-      $$1.a($$0, $$2 + ($$14 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$15 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
+   private int a(T $$0, int $$1, int $$2) {
+      return $$0.ak() == bsy.V ? $$1 : $$2;
    }
 
-   public alb a(btj $$0) {
-      return got.e;
+   private grf a(T $$0, cun $$1) {
+      boolean $$2 = $$0.ak() == bsy.V;
+      if ($$1.a(cuq.rU)) {
+         return $$2 ? j : h;
+      } else {
+         return $$2 ? i : g;
+      }
+   }
+
+   public evp a(T $$0, float $$1) {
+      return new evp((double)((float)$$0.cH().j() * 0.3F), -0.25, (double)((float)$$0.cH().l() * 0.3F));
+   }
+
+   public ale a(T $$0) {
+      return gow.e;
+   }
+
+   protected boolean b(T $$0) {
+      if (ffd.M() && !$$0.E().e() && $$0.E().b(km.f) && this.c.c == $$0) {
+         double $$1 = this.c.b($$0);
+         float $$2 = $$0.bY() ? 32.0F : 64.0F;
+         return $$1 < (double)($$2 * $$2);
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(T $$0, xo $$1, ezw $$2, gdm $$3, int $$4, float $$5) {
+      super.a($$0, $$0.E().x(), $$2, $$3, $$4, $$5);
    }
 }

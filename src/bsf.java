@@ -1,39 +1,25 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import java.util.function.ToIntFunction;
-
-class bsf extends brv {
-   private final ToIntFunction<azc> a;
-
-   protected bsf(brw $$0, int $$1, ToIntFunction<azc> $$2) {
-      super($$0, $$1, lj.V);
-      this.a = $$2;
+class bsf extends bry {
+   protected bsf(brz $$0, int $$1, lg $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public void a(btk $$0, int $$1, bsp.c $$2) {
-      if ($$2 == bsp.c.a && ($$0 instanceof cms || $$0.dP().ab().b(dbp.c))) {
-         this.a($$0.dP(), $$0.el(), $$0.aL());
-      }
+   public boolean a(int $$0, int $$1) {
+      return $$0 == 1;
    }
 
-   private void a(dbt $$0, azc $$1, iz $$2) {
-      Set<iz> $$3 = Sets.newHashSet();
-      int $$4 = this.a.applyAsInt($$1);
-
-      for (iz $$5 : iz.a($$1, 15, $$2, 1)) {
-         iz $$6 = $$5.d();
-         if (!$$3.contains($$5) && $$0.a_($$5).r() && $$0.a_($$6).d($$0, $$6, je.b)) {
-            $$3.add($$5.i());
-            if ($$3.size() >= $$4) {
-               break;
-            }
+   @Override
+   public boolean a(btn $$0, int $$1) {
+      if ($$0 instanceof arf $$2 && !$$0.N_()) {
+         are $$3 = $$2.z();
+         iz $$4 = $$2.ae();
+         if ($$4 != null) {
+            $$3.z().a($$2, $$4);
+            $$2.ad();
+            return false;
          }
       }
 
-      for (iz $$7 : $$3) {
-         $$0.a($$7, dew.bs.n(), 3);
-         $$0.c(3018, $$7, 0);
-      }
+      return true;
    }
 }

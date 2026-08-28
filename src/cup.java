@@ -1,50 +1,39 @@
-import java.util.List;
-
-public class cup extends cuf {
-   public cup(cuf.a $$0) {
-      super($$0);
+public class cup {
+   public static bqt<cun> a(dbw $$0, cmv $$1, bqr $$2) {
+      $$1.c($$2);
+      return bqt.b($$1.b($$2));
    }
 
-   @Override
-   public bqp a(cxx $$0) {
-      dbt $$1 = $$0.q();
-      iz $$2 = $$0.a();
-      drx $$3 = $$1.a_($$2);
-      if ($$3.a(awl.S)) {
-         cms $$4 = $$0.o();
-         if (!$$1.B && $$4 != null) {
-            a($$4, $$1, $$2);
+   public static cun a(cun $$0, cmv $$1, cun $$2, boolean $$3) {
+      boolean $$4 = $$1.fP();
+      if ($$3 && $$4) {
+         if (!$$1.gc().i($$2)) {
+            $$1.gc().f($$2);
          }
 
-         return bqp.a($$1.B);
+         return $$0;
       } else {
-         return bqp.e;
+         $$0.a(1, $$1);
+         if ($$0.e()) {
+            return $$2;
+         } else {
+            if (!$$1.gc().f($$2)) {
+               $$1.a($$2, false);
+            }
+
+            return $$0;
+         }
       }
    }
 
-   public static bqp a(cms $$0, dbt $$1, iz $$2) {
-      ciw $$3 = null;
-      double $$4 = 7.0;
-      int $$5 = $$2.u();
-      int $$6 = $$2.v();
-      int $$7 = $$2.w();
-      evh $$8 = new evh((double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0);
-      List<btm> $$9 = $$1.a(btm.class, $$8, $$1x -> $$1x.gf() == $$0);
+   public static cun a(cun $$0, cmv $$1, cun $$2) {
+      return a($$0, $$1, $$2, true);
+   }
 
-      for (btm $$10 : $$9) {
-         if ($$3 == null) {
-            $$3 = ciw.b($$1, $$2);
-            $$3.C();
-         }
-
-         $$10.b($$3, true);
-      }
-
-      if (!$$9.isEmpty()) {
-         $$1.a(dwq.b, $$2, dwq.a.a($$0));
-         return bqp.a;
-      } else {
-         return bqp.e;
+   public static void a(cjf $$0, Iterable<cun> $$1) {
+      dbw $$2 = $$0.dP();
+      if (!$$2.B) {
+         $$1.forEach($$2x -> $$2.b(new cjf($$2, $$0.du(), $$0.dw(), $$0.dA(), $$2x)));
       }
    }
 }

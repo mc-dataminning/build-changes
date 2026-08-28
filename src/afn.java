@@ -1,45 +1,39 @@
-public class afn implements zs<ace> {
-   public static final zj<wl, afn> a = zs.a(afn::a, afn::new);
-   private final float b;
-   private final int c;
-   private final int d;
+import javax.annotation.Nullable;
 
-   public afn(float $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public class afn implements zv<ach> {
+   public static final zm<wl, afn> a = zv.a(afn::a, afn::new);
+   private final int b;
+   private final int c;
+
+   public afn(bss $$0, @Nullable bss $$1) {
+      this.b = $$0.al();
+      this.c = $$1 != null ? $$1.al() : 0;
    }
 
    private afn(wl $$0) {
-      this.b = $$0.readFloat();
-      this.d = $$0.l();
-      this.c = $$0.l();
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
    private void a(wl $$0) {
-      $$0.a(this.b);
-      $$0.c(this.d);
-      $$0.c(this.c);
+      $$0.p(this.b);
+      $$0.p(this.c);
    }
 
    @Override
-   public zu<afn> a() {
-      return agq.aG;
+   public zx<afn> a() {
+      return agt.aD;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public int b() {
       return this.b;
    }
 
    public int e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

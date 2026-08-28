@@ -9,13 +9,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class jz {
-   public static final Set<ala<? extends jv<?>>> a = akw.c.stream().map(akw.c::a).collect(Collectors.toUnmodifiableSet());
+   public static final Set<ald<? extends jv<?>>> a = akz.c.stream().map(akz.c::a).collect(Collectors.toUnmodifiableSet());
 
-   public static void a(DynamicOps<vo> $$0, jw $$1, Set<ats> $$2, BiConsumer<ala<? extends jv<?>>, List<jz.a>> $$3) {
-      akw.c.forEach($$4 -> a($$0, (akw.c<?>)$$4, $$1, $$2, $$3));
+   public static void a(DynamicOps<vo> $$0, jw $$1, Set<atv> $$2, BiConsumer<ald<? extends jv<?>>, List<jz.a>> $$3) {
+      akz.c.forEach($$4 -> a($$0, (akz.c<?>)$$4, $$1, $$2, $$3));
    }
 
-   private static <T> void a(DynamicOps<vo> $$0, akw.c<T> $$1, jw $$2, Set<ats> $$3, BiConsumer<ala<? extends jv<?>>, List<jz.a>> $$4) {
+   private static <T> void a(DynamicOps<vo> $$0, akz.c<T> $$1, jw $$2, Set<atv> $$3, BiConsumer<ald<? extends jv<?>>, List<jz.a>> $$4) {
       $$2.c($$1.a())
          .ifPresent(
             $$4x -> {
@@ -46,20 +46,20 @@ public class jz {
       return $$0.c().filter($$0x -> a.contains($$0x.a()));
    }
 
-   public static Stream<jw.d<?>> a(jp<alk> $$0) {
-      return a($$0.c(alk.b));
+   public static Stream<jw.d<?>> a(jp<aln> $$0) {
+      return a($$0.c(aln.b));
    }
 
-   public static Stream<jw.d<?>> b(jp<alk> $$0) {
-      Stream<jw.d<?>> $$1 = $$0.a(alk.a).c();
+   public static Stream<jw.d<?>> b(jp<aln> $$0) {
+      Stream<jw.d<?>> $$1 = $$0.a(aln.a).c();
       Stream<jw.d<?>> $$2 = a($$0);
       return Stream.concat($$2, $$1);
    }
 
-   public static record a(alb b, Optional<vo> c) {
-      public static final zj<ByteBuf, jz.a> a = zj.a(alb.b, jz.a::a, zh.m.a(zh::a), jz.a::b, jz.a::new);
+   public static record a(ale b, Optional<vo> c) {
+      public static final zm<ByteBuf, jz.a> a = zm.a(ale.b, jz.a::a, zk.m.a(zk::a), jz.a::b, jz.a::new);
 
-      public alb a() {
+      public ale a() {
          return this.b;
       }
 

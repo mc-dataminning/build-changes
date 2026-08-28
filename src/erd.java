@@ -1,131 +1,145 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.Set;
-import java.util.function.Predicate;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class erd extends erp {
+public class erd extends ers {
+   private static final Map<ale, erd.c> b = Stream.of(erd.a.a, erd.d.b, erd.e.b).collect(Collectors.toMap(erd.c::a, Function.identity()));
+   private static final Codec<erd.c> c = ale.a.comapFlatMap($$0 -> {
+      erd.c $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
+   }, erd.c::a);
+   private static final MapCodec<erd.b> d = ayf.a("formula", "parameters", c, erd.b::a, erd.c::b);
    public static final MapCodec<erd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  erd.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  kl.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
-                  kl.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, erd::new)
+      $$0 -> a($$0).and($$0.group(lp.f.r().fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, erd::new)
    );
-   private final erd.b b;
-   private final Optional<List<kl<?>>> c;
-   private final Optional<List<kl<?>>> d;
-   private final Predicate<kl<?>> e;
+   private final ji<czy> e;
+   private final erd.b f;
 
-   erd(List<etn> $$0, erd.b $$1, Optional<List<kl<?>>> $$2, Optional<List<kl<?>>> $$3) {
+   private erd(List<etq> $$0, ji<czy> $$1, erd.b $$2) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2.map(List::copyOf);
-      this.d = $$3.map(List::copyOf);
-      List<Predicate<kl<?>>> $$4 = new ArrayList<>(2);
-      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
-      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
-      this.e = ac.a($$4);
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public err<erd> b() {
-      return ers.J;
+   public eru<erd> b() {
+      return erv.x;
    }
 
    @Override
-   public Set<esw<?>> a() {
-      return this.b.a();
+   public Set<esz<?>> a() {
+      return ImmutableSet.of(etc.i);
    }
 
    @Override
-   public cuk a(cuk $$0, eqd $$1) {
-      ki $$2 = this.b.a($$1);
-      $$0.b($$2.a(this.e));
+   public cun a(cun $$0, eqg $$1) {
+      cun $$2 = $$1.c(etc.i);
+      if ($$2 != null) {
+         int $$3 = czz.a(this.e.a(), $$2);
+         int $$4 = this.f.a($$1.b(), $$0.I(), $$3);
+         $$0.e($$4);
+      }
+
       return $$0;
    }
 
-   public static erd.a a(erd.b $$0) {
-      return new erd.a($$0);
+   public static ers.a<?> a(czy $$0, float $$1, int $$2) {
+      return a($$3 -> new erd($$3, $$0.m(), new erd.a($$2, $$1)));
    }
 
-   public static class a extends erp.a<erd.a> {
-      private final erd.b a;
-      private Optional<Builder<kl<?>>> b = Optional.empty();
-      private Optional<Builder<kl<?>>> c = Optional.empty();
+   public static ers.a<?> a(czy $$0) {
+      return a($$1 -> new erd($$1, $$0.m(), new erd.d()));
+   }
 
-      a(erd.b $$0) {
-         this.a = $$0;
-      }
+   public static ers.a<?> b(czy $$0) {
+      return a($$1 -> new erd($$1, $$0.m(), new erd.e(1)));
+   }
 
-      public erd.a a(kl<?> $$0) {
-         if (this.b.isEmpty()) {
-            this.b = Optional.of(ImmutableList.builder());
+   public static ers.a<?> a(czy $$0, int $$1) {
+      return a($$2 -> new erd($$2, $$0.m(), new erd.e($$1)));
+   }
+
+   static record a(int b, float c) implements erd.b {
+      private static final Codec<erd.a> d = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(erd.a::b), Codec.FLOAT.fieldOf("probability").forGetter(erd.a::c)).apply($$0, erd.a::new)
+      );
+      public static final erd.c a = new erd.c(new ale("binomial_with_bonus_count"), d);
+
+      @Override
+      public int a(azf $$0, int $$1, int $$2) {
+         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
+            if ($$0.i() < this.c) {
+               $$1++;
+            }
          }
 
-         this.b.get().add($$0);
-         return this;
-      }
-
-      public erd.a b(kl<?> $$0) {
-         if (this.c.isEmpty()) {
-            this.c = Optional.of(ImmutableList.builder());
-         }
-
-         this.c.get().add($$0);
-         return this;
-      }
-
-      protected erd.a a() {
-         return this;
+         return $$1;
       }
 
       @Override
-      public erq b() {
-         return new erd(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
+      public erd.c a() {
+         return a;
       }
    }
 
-   public static enum b implements azp {
-      a("block_entity");
+   interface b {
+      int a(azf var1, int var2, int var3);
 
-      public static final Codec<erd.b> b = azp.b(erd.b::values);
-      private final String c;
+      erd.c a();
+   }
 
-      private b(final String $$0) {
-         this.c = $$0;
-      }
+   static record c(ale a, Codec<? extends erd.b> b) {
+   }
 
-      public ki a(eqd $$0) {
-         switch (this) {
-            case a:
-               dpc $$1 = $$0.c(esz.h);
-               return $$1 != null ? $$1.s() : ki.a;
-            default:
-               throw new MatchException(null, null);
-         }
-      }
+   static record d() implements erd.b {
+      public static final Codec<erd.d> a = Codec.unit(erd.d::new);
+      public static final erd.c b = new erd.c(new ale("ore_drops"), a);
 
-      public Set<esw<?>> a() {
-         switch (this) {
-            case a:
-               return Set.of(esz.h);
-            default:
-               throw new MatchException(null, null);
+      @Override
+      public int a(azf $$0, int $$1, int $$2) {
+         if ($$2 > 0) {
+            int $$3 = $$0.a($$2 + 2) - 1;
+            if ($$3 < 0) {
+               $$3 = 0;
+            }
+
+            return $$1 * ($$3 + 1);
+         } else {
+            return $$1;
          }
       }
 
       @Override
-      public String c() {
+      public erd.c a() {
+         return b;
+      }
+   }
+
+   static record e(int c) implements erd.b {
+      public static final Codec<erd.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(erd.e::b)).apply($$0, erd.e::new)
+      );
+      public static final erd.c b = new erd.c(new ale("uniform_bonus_count"), a);
+
+      @Override
+      public int a(azf $$0, int $$1, int $$2) {
+         return $$1 + $$0.a(this.c * $$2 + 1);
+      }
+
+      @Override
+      public erd.c a() {
+         return b;
+      }
+
+      public int b() {
          return this.c;
       }
    }

@@ -1,253 +1,64 @@
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.Objects;
 import java.util.UUID;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class drc {
-   public static final String a = "spawn_data";
-   private static final String m = "next_mob_spawns_at";
-   private static final int n = 20;
-   private static final int o = 18000;
-   public static MapCodec<drc> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kc.b.lenientOptionalFieldOf("registered_players", Sets.newHashSet()).forGetter($$0x -> $$0x.c),
-               kc.b.lenientOptionalFieldOf("current_mobs", Sets.newHashSet()).forGetter($$0x -> $$0x.d),
-               Codec.LONG.lenientOptionalFieldOf("cooldown_ends_at", 0L).forGetter($$0x -> $$0x.e),
-               Codec.LONG.lenientOptionalFieldOf("next_mob_spawns_at", 0L).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, Integer.MAX_VALUE).lenientOptionalFieldOf("total_mobs_spawned", 0).forGetter($$0x -> $$0x.g),
-               dck.b.lenientOptionalFieldOf("spawn_data").forGetter($$0x -> $$0x.h),
-               ala.a(lq.aU).lenientOptionalFieldOf("ejecting_loot_table").forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, drc::new)
-   );
-   protected final Set<UUID> c = new HashSet<>();
-   protected final Set<UUID> d = new HashSet<>();
-   protected long e;
-   protected long f;
-   protected int g;
-   protected Optional<dck> h;
-   protected Optional<ala<eqi>> i;
-   @Nullable
-   protected bsp j;
-   @Nullable
-   private boz<cuk> p;
-   protected double k;
-   protected double l;
+public interface drc {
+   drc a = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dp().a($$2, $$3) && !$$2x.f() && !$$2x.N_())
+         .stream()
+         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bx()))
+         .map(bss::cz)
+         .toList();
+   drc b = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dp().a($$2, $$3) && !$$2x.N_())
+         .stream()
+         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bx()))
+         .map(bss::cz)
+         .toList();
+   drc c = ($$0, $$1, $$2, $$3, $$4) -> {
+      evk $$5 = new evk($$2).g($$3);
+      return $$1.a($$0, bsy.aJ, $$5, btn::bD).stream().filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bx())).map(bss::cz).toList();
+   };
 
-   public drc() {
-      this(Collections.emptySet(), Collections.emptySet(), 0L, 0L, 0, Optional.empty(), Optional.empty());
+   List<UUID> detect(are var1, drc.a var2, iz var3, double var4, boolean var6);
+
+   private static boolean a(dbw $$0, evp $$1, evp $$2) {
+      evl $$3 = $$0.a(new dbf($$2, $$1, dbf.a.c, dbf.b.a, evu.a()));
+      return $$3.a().equals(iz.a($$1)) || $$3.c() == evn.a.a;
    }
 
-   public drc(Set<UUID> $$0, Set<UUID> $$1, long $$2, long $$3, int $$4, Optional<dck> $$5, Optional<ala<eqi>> $$6) {
-      this.c.addAll($$0);
-      this.d.addAll($$1);
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-   }
-
-   public void a() {
-      this.c.clear();
-      this.g = 0;
-      this.f = 0L;
-      this.e = 0L;
-      this.d.clear();
-   }
-
-   public boolean a(dra $$0, azc $$1) {
-      boolean $$2 = this.b($$0, $$1).a().b("id", 8);
-      return $$2 || !$$0.b().h().d();
-   }
-
-   public boolean a(drb $$0, int $$1) {
-      return this.g >= $$0.a($$1);
-   }
-
-   public boolean b() {
-      return this.d.isEmpty();
-   }
-
-   public boolean a(arb $$0, drb $$1, int $$2) {
-      return $$0.Z() >= this.f && this.d.size() < $$1.b($$2);
-   }
-
-   public int a(iz $$0) {
-      if (this.c.isEmpty()) {
-         ac.a("Trial Spawner at " + $$0 + " has no detected players");
-      }
-
-      return Math.max(0, this.c.size() - 1);
-   }
-
-   public void a(arb $$0, iz $$1, dra $$2) {
-      boolean $$3 = ($$1.a() + $$0.Z()) % 20L != 0L;
-      if (!$$3) {
-         if (!$$2.i().equals(drd.f) || !$$2.e()) {
-            List<UUID> $$4 = $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), true);
-            cms $$5 = null;
-
-            for (UUID $$6 : $$4) {
-               cms $$7 = $$0.b($$6);
-               if ($$7 != null) {
-                  if ($$7.b(brz.E)) {
-                     this.a($$7, $$7.c(brz.E));
-                     $$5 = $$7;
-                  } else if ($$7.b(brz.H)) {
-                     $$5 = $$7;
-                  }
-               }
-            }
-
-            boolean $$8 = !$$2.e() && $$5 != null;
-            if (!$$2.i().equals(drd.f) || $$8) {
-               if ($$8) {
-                  $$0.c(3020, iz.a($$5.bx()), 0);
-                  $$2.a($$0, $$1);
-               }
-
-               boolean $$9 = $$2.f().c.isEmpty();
-               List<UUID> $$10 = $$9 ? $$4 : $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), false);
-               if (this.c.addAll($$10)) {
-                  this.f = Math.max($$0.Z() + 40L, this.f);
-                  if (!$$8) {
-                     int $$11 = $$2.e() ? 3019 : 3013;
-                     $$0.c($$11, $$1, this.c.size());
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   public void a(dra $$0, arb $$1) {
-      this.d.stream().map($$1::a).forEach($$1x -> {
-         if ($$1x != null) {
-            $$1.c(3012, $$1x.dp(), dra.a.a.a());
-            $$1x.a(bsp.c.b);
-         }
-      });
-      if (!$$0.d().h().d()) {
-         this.h = Optional.empty();
-      }
-
-      this.g = 0;
-      this.d.clear();
-      this.f = $$1.Z() + (long)$$0.d().g();
-      $$0.j();
-      this.e = $$1.Z() + $$0.d().a();
-   }
-
-   private void a(cms $$0, brx $$1) {
-      int $$2 = $$1.e() + 1;
-      int $$3 = 18000 * $$2;
-      $$0.e(brz.E);
-      $$0.b(new brx(brz.H, $$3, 0));
-   }
-
-   public boolean a(arb $$0, float $$1, int $$2) {
-      long $$3 = this.e - (long)$$2;
-      return (float)$$0.Z() >= (float)$$3 + $$1;
-   }
-
-   public boolean b(arb $$0, float $$1, int $$2) {
-      long $$3 = this.e - (long)$$2;
-      return (float)($$0.Z() - $$3) % $$1 == 0.0F;
-   }
-
-   public boolean a(arb $$0) {
-      return $$0.Z() >= this.e;
-   }
-
-   public void a(dra $$0, azc $$1, bsv<?> $$2) {
-      this.b($$0, $$1).a().a("id", lp.g.b($$2).toString());
-   }
-
-   protected dck b(dra $$0, azc $$1) {
-      if (this.h.isPresent()) {
-         return this.h.get();
-      } else {
-         boz<dck> $$2 = $$0.b().h();
-         Optional<dck> $$3 = $$2.d() ? this.h : $$2.b($$1).map(bpb.b::b);
-         this.h = Optional.of($$3.orElseGet(dck::new));
-         $$0.j();
-         return this.h.get();
-      }
-   }
-
-   @Nullable
-   public bsp a(dra $$0, dbt $$1, drd $$2) {
-      if ($$0.a($$1) && $$2.d()) {
-         if (this.j == null) {
-            ur $$3 = this.b($$0, $$1.E_()).a();
-            if ($$3.b("id", 8)) {
-               this.j = bsv.a($$3, $$1, Function.identity());
-            }
+   public interface a {
+      drc.a a = new drc.a() {
+         @Override
+         public List<arf> a(are $$0, Predicate<? super cmv> $$1) {
+            return $$0.a($$1);
          }
 
-         return this.j;
-      } else {
-         return null;
+         @Override
+         public <T extends bss> List<T> a(are $$0, dwh<bss, T> $$1, evk $$2, Predicate<? super T> $$3) {
+            return $$0.a($$1, $$2, $$3);
+         }
+      };
+
+      List<? extends cmv> a(are var1, Predicate<? super cmv> var2);
+
+      <T extends bss> List<T> a(are var1, dwh<bss, T> var2, evk var3, Predicate<? super T> var4);
+
+      static drc.a a(cmv $$0) {
+         return a(List.of($$0));
       }
-   }
 
-   public ur a(drd $$0) {
-      ur $$1 = new ur();
-      if ($$0 == drd.c) {
-         $$1.a("next_mob_spawns_at", this.f);
-      }
-
-      this.h
-         .ifPresent($$1x -> $$1.a("spawn_data", (vo)dck.b.encodeStart(vf.a, $$1x).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData"))));
-      return $$1;
-   }
-
-   public double c() {
-      return this.k;
-   }
-
-   public double d() {
-      return this.l;
-   }
-
-   boz<cuk> a(arb $$0, drb $$1, iz $$2) {
-      if (this.p != null) {
-         return this.p;
-      } else {
-         eqi $$3 = $$0.o().be().b($$1.j());
-         eqg $$4 = new eqg.a($$0).a(esy.b);
-         long $$5 = a($$0, $$2);
-         ObjectArrayList<cuk> $$6 = $$3.a($$4, $$5);
-         if ($$6.isEmpty()) {
-            return boz.b();
-         } else {
-            boz.a<cuk> $$7 = new boz.a<>();
-            ObjectListIterator var10 = $$6.iterator();
-
-            while (var10.hasNext()) {
-               cuk $$8 = (cuk)var10.next();
-               $$7.a($$8.c(1), $$8.I());
+      static drc.a a(final List<cmv> $$0) {
+         return new drc.a() {
+            @Override
+            public List<cmv> a(are $$0x, Predicate<? super cmv> $$1) {
+               return $$0.stream().filter($$1).toList();
             }
 
-            this.p = $$7.a();
-            return this.p;
-         }
+            @Override
+            public <T extends bss> List<T> a(are $$0x, dwh<bss, T> $$1, evk $$2, Predicate<? super T> $$3) {
+               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
+            }
+         };
       }
-   }
-
-   private static long a(arb $$0, iz $$1) {
-      iz $$2 = new iz(ayu.d((float)$$1.u() / 30.0F), ayu.d((float)$$1.v() / 20.0F), ayu.d((float)$$1.w() / 30.0F));
-      return $$0.C() + $$2.a();
    }
 }

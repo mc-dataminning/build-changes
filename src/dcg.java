@@ -1,112 +1,50 @@
-import com.google.common.base.Suppliers;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class dcg implements daz, dbd {
-   protected final int a;
-   protected final int b;
-   protected final dtt[][] c;
-   protected boolean d;
-   protected final dbt e;
-   private final Supplier<ji<dcs>> f;
+public class dcg {
+   private final Long2ObjectMap<List<arf>> a = new Long2ObjectOpenHashMap();
+   private final Map<arf, dcg.a> b = Maps.newHashMap();
+   private final aqn c;
 
-   public dcg(dbt $$0, iz $$1, iz $$2) {
-      this.e = $$0;
-      this.f = Suppliers.memoize(() -> $$0.H_().d(lq.az).g(dcz.b));
-      this.a = kb.a($$1.u());
-      this.b = kb.a($$1.w());
-      int $$3 = kb.a($$2.u());
-      int $$4 = kb.a($$2.w());
-      this.c = new dtt[$$3 - this.a + 1][$$4 - this.b + 1];
-      dtx $$5 = $$0.N();
-      this.d = true;
+   public dcg(aqn $$0) {
+      this.c = $$0;
+   }
 
-      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
-         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
-            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
+   private List<arf> a(dbd $$0) {
+      return (List<arf>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.d($$0));
+   }
+
+   public void a(dbd $$0, btq $$1) {
+      for (arf $$2 : this.a($$0)) {
+         this.b.computeIfAbsent($$2, $$0x -> new dcg.a()).a($$1);
+      }
+   }
+
+   public boolean a(btq $$0, dbd $$1) {
+      for (arf $$2 : this.a($$1)) {
+         dcg.a $$3 = this.b.get($$2);
+         if ($$3 == null || $$3.b($$0)) {
+            return true;
          }
       }
 
-      for (int $$8 = kb.a($$1.u()); $$8 <= kb.a($$2.u()); $$8++) {
-         for (int $$9 = kb.a($$1.w()); $$9 <= kb.a($$2.w()); $$9++) {
-            dtt $$10 = this.c[$$8 - this.a][$$9 - this.b];
-            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
-               this.d = false;
-               return;
-            }
-         }
+      return false;
+   }
+
+   static class a {
+      private final Object2IntMap<btq> a = new Object2IntOpenHashMap(btq.values().length);
+
+      public void a(btq $$0) {
+         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
       }
-   }
 
-   private dtt d(iz $$0) {
-      return this.a(kb.a($$0.u()), kb.a($$0.w()));
-   }
-
-   private dtt a(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
-         dtt $$4 = this.c[$$2][$$3];
-         return (dtt)($$4 != null ? $$4 : new dtz(this.e, new dba($$0, $$1), this.f.get()));
-      } else {
-         return new dtz(this.e, new dba($$0, $$1), this.f.get());
+      public boolean b(btq $$0) {
+         return this.a.getOrDefault($$0, 0) < $$0.b();
       }
-   }
-
-   @Override
-   public dto C_() {
-      return this.e.C_();
-   }
-
-   @Override
-   public daz c(int $$0, int $$1) {
-      return this.a($$0, $$1);
-   }
-
-   @Override
-   public List<ewf> c(@Nullable bsp $$0, evh $$1) {
-      return List.of();
-   }
-
-   @Nullable
-   @Override
-   public dpc c_(iz $$0) {
-      dtt $$1 = this.d($$0);
-      return $$1.c_($$0);
-   }
-
-   @Override
-   public drx a_(iz $$0) {
-      if (this.s($$0)) {
-         return dew.a.n();
-      } else {
-         dtt $$1 = this.d($$0);
-         return $$1.a_($$0);
-      }
-   }
-
-   @Override
-   public enq b_(iz $$0) {
-      if (this.s($$0)) {
-         return enr.a.g();
-      } else {
-         dtt $$1 = this.d($$0);
-         return $$1.b_($$0);
-      }
-   }
-
-   @Override
-   public int I_() {
-      return this.e.I_();
-   }
-
-   @Override
-   public int J_() {
-      return this.e.J_();
-   }
-
-   public bnd a() {
-      return this.e.ag();
    }
 }

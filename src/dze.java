@@ -1,22 +1,24 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dze implements dyw {
-   public static final MapCodec<dze> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dyw.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dze::new)
+public class dze extends dzk {
+   final axe<dex> a;
+   public static final MapCodec<dze> e = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(axe.a(lq.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dze::new)
    );
-   private final dyw e;
 
-   public dze(dyw $$0) {
-      this.e = $$0;
-   }
-
-   public boolean a(dco $$0, iz $$1) {
-      return !this.e.test($$0, $$1);
+   protected dze(kd $$0, axe<dex> $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
    @Override
-   public dyx<?> a() {
-      return dyx.k;
+   protected boolean a(dsa $$0) {
+      return $$0.a(this.a);
+   }
+
+   @Override
+   public dza<?> a() {
+      return dza.b;
    }
 }

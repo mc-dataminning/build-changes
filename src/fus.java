@@ -1,15 +1,37 @@
-public class fus {
-   public static float a(float $$0, float $$1, float $$2) {
-      float $$3 = $$1 - $$0;
+public class fus<T extends bss> extends fuh<T> {
+   private static final String a = "main";
+   private final fwy b;
 
-      while ($$3 < (float) -Math.PI) {
-         $$3 += (float) (Math.PI * 2);
-      }
+   public fus(fwy $$0) {
+      this.b = $$0;
+   }
 
-      while ($$3 >= (float) Math.PI) {
-         $$3 -= (float) (Math.PI * 2);
-      }
+   public static fxe b() {
+      fxg $$0 = new fxg();
+      fxh $$1 = $$0.a();
+      int $$2 = 2;
+      $$1.a(
+         "main",
+         fxd.c()
+            .a(0, 0)
+            .a(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
+         fxa.a
+      );
+      return fxe.a($$0, 64, 32);
+   }
 
-      return $$0 + $$2 * $$3;
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   @Override
+   public fwy a() {
+      return this.b;
    }
 }

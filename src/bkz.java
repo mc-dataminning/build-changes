@@ -1,39 +1,17 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bkz extends bid {
+public class bkz extends big {
    public bkz(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         true,
-         bgs.w,
-         () -> DSL.optionalFields(
-               new Pair[]{
-                  Pair.of("minecraft:bees", DSL.list(DSL.optionalFields("entity_data", bgs.A.in($$0)))),
-                  Pair.of("minecraft:block_entity_data", bgs.s.in($$0)),
-                  Pair.of("minecraft:bundle_contents", DSL.list(bgs.t.in($$0))),
-                  Pair.of(
-                     "minecraft:can_break",
-                     DSL.optionalFields("predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(bgs.C.in($$0), DSL.list(bgs.C.in($$0))))))
-                  ),
-                  Pair.of(
-                     "minecraft:can_place_on",
-                     DSL.optionalFields("predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(bgs.C.in($$0), DSL.list(bgs.C.in($$0))))))
-                  ),
-                  Pair.of("minecraft:charged_projectiles", DSL.list(bgs.t.in($$0))),
-                  Pair.of("minecraft:container", DSL.list(DSL.optionalFields("item", bgs.t.in($$0)))),
-                  Pair.of("minecraft:entity_data", bgs.A.in($$0)),
-                  Pair.of("minecraft:pot_decorations", DSL.list(bgs.D.in($$0)))
-               }
-            )
-      );
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:llama", $$1x -> DSL.optionalFields("Items", DSL.list(bgv.t.in($$0)), "SaddleItem", bgv.t.in($$0), bih.a($$0)));
+      return $$1;
    }
 }

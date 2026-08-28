@@ -1,65 +1,144 @@
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.nio.file.FileStore;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.attribute.FileStoreAttributeView;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-class ate extends FileStore {
-   private final String a;
+public class ate implements ata {
+   private static final Logger c = LogUtils.getLogger();
+   private final asz d;
+   private final ass e;
+   private final Set<String> f;
+   private final List<Path> g;
+   private final Map<atc, List<Path>> h;
 
-   public ate(String $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String name() {
-      return this.a;
-   }
-
-   @Override
-   public String type() {
-      return "index";
-   }
-
-   @Override
-   public boolean isReadOnly() {
-      return true;
-   }
-
-   @Override
-   public long getTotalSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUsableSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUnallocatedSpace() {
-      return 0L;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(Class<? extends FileAttributeView> $$0) {
-      return $$0 == BasicFileAttributeView.class;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(String $$0) {
-      return "basic".equals($$0);
+   ate(asz $$0, ass $$1, Set<String> $$2, List<Path> $$3, Map<atc, List<Path>> $$4) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
    }
 
    @Nullable
    @Override
-   public <V extends FileStoreAttributeView> V getFileStoreAttributeView(Class<V> $$0) {
+   public aug<InputStream> a(String... $$0) {
+      v.a($$0);
+      List<String> $$1 = List.of($$0);
+
+      for (Path $$2 : this.g) {
+         Path $$3 = v.a($$2, $$1);
+         if (Files.exists($$3) && atd.a($$3)) {
+            return aug.create($$3);
+         }
+      }
+
       return null;
    }
 
+   public void a(atc $$0, ale $$1, Consumer<Path> $$2) {
+      v.c($$1.a()).ifSuccess($$3 -> {
+         String $$4 = $$1.b();
+
+         for (Path $$5 : this.h.get($$0)) {
+            Path $$6 = $$5.resolve($$4);
+            $$2.accept(v.a($$6, $$3));
+         }
+      }).ifError($$1x -> c.error("Invalid path {}: {}", $$1, $$1x.message()));
+   }
+
    @Override
-   public Object getAttribute(String $$0) throws IOException {
-      throw new UnsupportedOperationException();
+   public void a(atc $$0, String $$1, String $$2, ata.a $$3) {
+      v.c($$2).ifSuccess($$3x -> {
+         List<Path> $$4 = this.h.get($$0);
+         int $$5 = $$4.size();
+         if ($$5 == 1) {
+            a($$3, $$1, $$4.get(0), $$3x);
+         } else if ($$5 > 1) {
+            Map<ale, aug<InputStream>> $$6 = new HashMap<>();
+
+            for (int $$7 = 0; $$7 < $$5 - 1; $$7++) {
+               a($$6::putIfAbsent, $$1, $$4.get($$7), $$3x);
+            }
+
+            Path $$8 = $$4.get($$5 - 1);
+            if ($$6.isEmpty()) {
+               a($$3, $$1, $$8, $$3x);
+            } else {
+               a($$6::putIfAbsent, $$1, $$8, $$3x);
+               $$6.forEach($$3);
+            }
+         }
+      }).ifError($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
+   }
+
+   private static void a(ata.a $$0, String $$1, Path $$2, List<String> $$3) {
+      Path $$4 = $$2.resolve($$1);
+      atd.a($$1, $$4, $$3, $$0);
+   }
+
+   @Nullable
+   @Override
+   public aug<InputStream> a(atc $$0, ale $$1) {
+      return (aug<InputStream>)v.c($$1.a()).mapOrElse($$2 -> {
+         String $$3 = $$1.b();
+
+         for (Path $$4 : this.h.get($$0)) {
+            Path $$5 = v.a($$4.resolve($$3), $$2);
+            if (Files.exists($$5) && atd.a($$5)) {
+               return aug.create($$5);
+            }
+         }
+
+         return null;
+      }, $$1x -> {
+         c.error("Invalid path {}: {}", $$1, $$1x.message());
+         return null;
+      });
+   }
+
+   @Override
+   public Set<String> a(atc $$0) {
+      return this.f;
+   }
+
+   @Nullable
+   @Override
+   public <T> T a(atn<T> $$0) {
+      aug<InputStream> $$1 = this.a("pack.mcmeta");
+      if ($$1 != null) {
+         try (InputStream $$2 = $$1.get()) {
+            T $$3 = asr.a($$0, $$2);
+            if ($$3 != null) {
+               return $$3;
+            }
+
+            return this.e.a($$0);
+         } catch (IOException var8) {
+         }
+      }
+
+      return this.e.a($$0);
+   }
+
+   @Override
+   public asz a() {
+      return this.d;
+   }
+
+   @Override
+   public void close() {
+   }
+
+   public aur d() {
+      return $$0 -> Optional.ofNullable(this.a(atc.a, $$0)).map($$0x -> new aum(this, $$0x));
    }
 }

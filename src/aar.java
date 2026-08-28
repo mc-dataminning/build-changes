@@ -1,21 +1,42 @@
-public record aar(String c) implements aat {
-   public static final zj<wl, aar> a = aat.a(aar::a, aar::new);
-   public static final aat.b<aar> b = aat.a("brand");
+import java.util.UUID;
+
+public record aar(UUID b, aar.a c) implements zv<aam> {
+   public static final zm<wl, aar> a = zv.a(aar::a, aar::new);
 
    private aar(wl $$0) {
-      this($$0.p());
+      this($$0.n(), $$0.b(aar.a.class));
    }
 
    private void a(wl $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
    }
 
    @Override
-   public aat.b<aar> a() {
-      return b;
+   public zx<aar> a() {
+      return aal.n;
    }
 
-   public String b() {
+   public void a(aam $$0) {
+      $$0.a(this);
+   }
+
+   public aar.a e() {
       return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
+
+      public boolean a() {
+         return this != d && this != e;
+      }
    }
 }

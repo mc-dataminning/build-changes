@@ -1,152 +1,51 @@
-public class bzl implements bzh {
-   public static final float a = 5.0E-4F;
-   public static final float b = 2.5000003E-7F;
-   protected static final int c = 90;
-   protected final btm d;
-   protected double e;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected float i;
-   protected float j;
-   protected bzl.a k = bzl.a.a;
+public class bzl extends bzo {
+   private final int l;
+   private final boolean m;
 
-   public bzl(btm $$0) {
-      this.d = $$0;
+   public bzl(btp $$0, int $$1, boolean $$2) {
+      super($$0);
+      this.l = $$1;
+      this.m = $$2;
    }
 
-   public boolean b() {
-      return this.k == bzl.a.b;
-   }
-
-   public double c() {
-      return this.h;
-   }
-
-   public void a(double $$0, double $$1, double $$2, double $$3) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      if (this.k != bzl.a.d) {
-         this.k = bzl.a.b;
-      }
-   }
-
-   public void a(float $$0, float $$1) {
-      this.k = bzl.a.c;
-      this.i = $$0;
-      this.j = $$1;
-      this.h = 0.25;
-   }
-
+   @Override
    public void a() {
-      if (this.k == bzl.a.c) {
-         float $$0 = (float)this.d.g(bus.r);
-         float $$1 = (float)this.h * $$0;
-         float $$2 = this.i;
-         float $$3 = this.j;
-         float $$4 = ayu.c($$2 * $$2 + $$3 * $$3);
-         if ($$4 < 1.0F) {
-            $$4 = 1.0F;
-         }
-
-         $$4 = $$1 / $$4;
-         $$2 *= $$4;
-         $$3 *= $$4;
-         float $$5 = ayu.a(this.d.dF() * (float) (Math.PI / 180.0));
-         float $$6 = ayu.b(this.d.dF() * (float) (Math.PI / 180.0));
-         float $$7 = $$2 * $$6 - $$3 * $$5;
-         float $$8 = $$3 * $$6 + $$2 * $$5;
-         if (!this.b($$7, $$8)) {
-            this.i = 1.0F;
-            this.j = 0.0F;
-         }
-
-         this.d.y($$1);
-         this.d.C(this.i);
-         this.d.E(this.j);
-         this.k = bzl.a.a;
-      } else if (this.k == bzl.a.b) {
-         this.k = bzl.a.a;
-         double $$9 = this.e - this.d.du();
-         double $$10 = this.g - this.d.dA();
-         double $$11 = this.f - this.d.dw();
-         double $$12 = $$9 * $$9 + $$11 * $$11 + $$10 * $$10;
-         if ($$12 < 2.5000003E-7F) {
+      if (this.k == bzo.a.b) {
+         this.k = bzo.a.a;
+         this.d.f(true);
+         double $$0 = this.e - this.d.du();
+         double $$1 = this.f - this.d.dw();
+         double $$2 = this.g - this.d.dA();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.D(0.0F);
             this.d.C(0.0F);
             return;
          }
 
-         float $$13 = (float)(ayu.d($$10, $$9) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.r(this.a(this.d.dF(), $$13, 90.0F));
-         this.d.y((float)(this.h * this.d.g(bus.r)));
-         iz $$14 = this.d.dp();
-         drx $$15 = this.d.dP().a_($$14);
-         ewf $$16 = $$15.k(this.d.dP(), $$14);
-         if ($$11 > (double)this.d.dJ() && $$9 * $$9 + $$10 * $$10 < (double)Math.max(1.0F, this.d.dj())
-            || !$$16.c() && this.d.dw() < $$16.c(je.a.b) + (double)$$14.v() && !$$15.a(awl.p) && !$$15.a(awl.S)) {
-            this.d.I().a();
-            this.k = bzl.a.d;
-         }
-      } else if (this.k == bzl.a.d) {
-         this.d.y((float)(this.h * this.d.g(bus.r)));
+         float $$4 = (float)(ayx.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+         this.d.r(this.a(this.d.dF(), $$4, 90.0F));
+         float $$5;
          if (this.d.aE()) {
-            this.k = bzl.a.a;
+            $$5 = (float)(this.h * this.d.g(buv.r));
+         } else {
+            $$5 = (float)(this.h * this.d.g(buv.j));
+         }
+
+         this.d.y($$5);
+         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
+            float $$8 = (float)(-(ayx.d($$1, $$7) * 180.0F / (float)Math.PI));
+            this.d.s(this.a(this.d.dH(), $$8, (float)this.l));
+            this.d.D($$1 > 0.0 ? $$5 : -$$5);
          }
       } else {
+         if (!this.m) {
+            this.d.f(false);
+         }
+
+         this.d.D(0.0F);
          this.d.C(0.0F);
       }
-   }
-
-   private boolean b(float $$0, float $$1) {
-      ccw $$2 = this.d.K();
-      if ($$2 != null) {
-         eod $$3 = $$2.o();
-         if ($$3 != null && $$3.a(this.d, iz.a(this.d.du() + (double)$$0, (double)this.d.dv(), this.d.dA() + (double)$$1)) != eoh.c) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   protected float a(float $$0, float $$1, float $$2) {
-      float $$3 = ayu.g($$1 - $$0);
-      if ($$3 > $$2) {
-         $$3 = $$2;
-      }
-
-      if ($$3 < -$$2) {
-         $$3 = -$$2;
-      }
-
-      float $$4 = $$0 + $$3;
-      if ($$4 < 0.0F) {
-         $$4 += 360.0F;
-      } else if ($$4 > 360.0F) {
-         $$4 -= 360.0F;
-      }
-
-      return $$4;
-   }
-
-   public double d() {
-      return this.e;
-   }
-
-   public double e() {
-      return this.f;
-   }
-
-   public double f() {
-      return this.g;
-   }
-
-   protected static enum a {
-      a,
-      b,
-      c,
-      d;
    }
 }

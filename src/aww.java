@@ -1,12 +1,9 @@
-public class aww {
-   public static final axb<cer> a = a("acquirable_job_site");
-   public static final axb<cer> b = a("village");
-   public static final axb<cer> c = a("bee_home");
+public interface aww {
+   axe<cuf> a = a("regular_goat_horns");
+   axe<cuf> b = a("screaming_goat_horns");
+   axe<cuf> c = a("goat_horns");
 
-   private aww() {
-   }
-
-   private static axb<cer> a(String $$0) {
-      return axb.a(lq.V, new alb($$0));
+   private static axe<cuf> a(String $$0) {
+      return axe.a(lq.E, new ale($$0));
    }
 }

@@ -1,25 +1,26 @@
-import org.joml.Matrix4f;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public interface fpq {
-   static fpq a(ayg $$0) {
-      return new fpp($$0);
+public class fpq implements fpu {
+   private final fli a;
+
+   public fpq(fli $$0) {
+      this.a = $$0;
    }
 
-   static fpq a(cru $$0) {
-      if ($$0 instanceof crt $$1) {
-         return new fpo($$1.a());
-      } else {
-         throw new IllegalArgumentException("Unknown TooltipComponent");
+   @Override
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i();
+      $$6.x = this.a.d() + 3;
+      $$6.y = this.a.c() + 3 + 1;
+      if ($$6.y + $$5 + 3 > $$1) {
+         $$6.y = this.a.b() - $$5 - 3 - 1;
       }
-   }
 
-   int a();
+      if ($$6.x + $$4 > $$0) {
+         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
+      }
 
-   int a(fgk var1);
-
-   default void a(fgk $$0, int $$1, int $$2, Matrix4f $$3, gdj.a $$4) {
-   }
-
-   default void a(fgk $$0, int $$1, int $$2, fgm $$3) {
+      return $$6;
    }
 }

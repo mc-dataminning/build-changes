@@ -1,42 +1,37 @@
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 
-public abstract class gpx implements auf, AutoCloseable {
-   private final got a;
-   private final alb b;
-   private final Set<atk<?>> c;
+public record gpx(ale a, @Nullable String b, @Nullable ale c, @Nullable ale d, gpx.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-   public gpx(gov $$0, alb $$1, alb $$2) {
-      this($$0, $$1, $$2, gop.a);
-   }
+      private final String c;
 
-   public gpx(gov $$0, alb $$1, alb $$2, Set<atk<?>> $$3) {
-      this.b = $$2;
-      this.a = new got($$1);
-      $$0.a(this.a.g(), this.a);
-      this.c = $$3;
-   }
+      private a(final String $$0) {
+         this.c = $$0;
+      }
 
-   protected gou a(alb $$0) {
-      return this.a.a($$0);
-   }
+      public static gpx.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
+         }
+      }
 
-   @Override
-   public final CompletableFuture<Void> a(auf.a $$0, aul $$1, bnd $$2, bnd $$3, Executor $$4, Executor $$5) {
-      return gop.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(gop.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
-   }
-
-   private void a(gop.a $$0, bnd $$1) {
-      $$1.a();
-      $$1.a("upload");
-      this.a.a($$0);
-      $$1.c();
-      $$1.b();
-   }
-
-   @Override
-   public void close() {
-      this.a.f();
+      public String a() {
+         return this.c;
+      }
    }
 }

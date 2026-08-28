@@ -1,28 +1,7 @@
-public class cvp extends cuf implements cvc {
-   public cvp(cuf.a $$0) {
-      super($$0);
-   }
+public interface cvp {
+   boolean a(dbw var1, dqp var2, boolean var3, cmv var4);
 
-   @Override
-   public bqq<cuk> a(dbt $$0, cms $$1, bqo $$2) {
-      cuk $$3 = $$1.b($$2);
-      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avw.yx, avx.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cnp $$4 = new cnp($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dH(), $$1.dF(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
-
-      $$1.b(awg.c.b(this));
-      $$3.a(1, $$1);
-      return bqq.a($$3, $$0.x_());
-   }
-
-   @Override
-   public cnk a(dbt $$0, js $$1, cuk $$2, je $$3) {
-      cnp $$4 = new cnp($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
+   default boolean a(dqq $$0, cmv $$1) {
+      return $$0.a($$1);
    }
 }

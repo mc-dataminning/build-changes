@@ -1,7 +1,8 @@
-public class aiu {
-   public static final zu<ait> a = a("intention");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private static <T extends zs<aiw>> zu<T> a(String $$0) {
-      return new zu<>(zt.a, new alb($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aiu {
 }

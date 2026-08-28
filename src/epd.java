@@ -1,15 +1,31 @@
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
 
-public record epd(int c) {
-   public static final Codec<epd> a = Codec.INT.xmap(epd::new, epd::b);
-   public static final zj<ByteBuf, epd> b = zh.g.a(epd::new, epd::b);
+public record epd(ale d, boolean e, int f, boolean g, boolean h) {
+   public static final int a = -1;
+   public static final Codec<ji<epd>> b = lp.av.r();
+   public static final zm<wz, ji<epd>> c = zk.b(lq.ay);
 
-   public String a() {
-      return "map_" + this.c;
+   public boolean a() {
+      return this.f != -1;
    }
 
-   public int b() {
-      return this.c;
+   public ale b() {
+      return this.d;
+   }
+
+   public boolean c() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.f;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public boolean f() {
+      return this.h;
    }
 }

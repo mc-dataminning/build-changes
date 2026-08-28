@@ -1,10 +1,20 @@
-public class daj extends czv {
-   protected daj(czv.b $$0) {
+public class daj extends czy {
+   public daj(czy.b $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(czv $$0) {
-      return super.a($$0) && $$0 != czy.x;
+   public boolean a() {
+      return true;
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   @Override
+   public boolean l() {
+      return false;
    }
 }

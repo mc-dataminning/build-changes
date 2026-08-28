@@ -1,214 +1,181 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class fnt extends fmy {
-   static final alb a = new alb("gamemode_switcher/slot");
-   static final alb b = new alb("gamemode_switcher/selection");
-   private static final alb c = new alb("textures/gui/container/gamemode_switcher.png");
-   private static final int d = 128;
-   private static final int r = 128;
-   private static final int s = 26;
-   private static final int u = 5;
-   private static final int v = 31;
-   private static final int w = 5;
-   private static final int x = fnt.a.values().length * 31 - 5;
-   private static final xl y = xl.a("debug.gamemodes.select_next", xl.c("debug.gamemodes.press_f4").a(n.l));
-   private final fnt.a z;
-   private fnt.a A;
-   private int B;
-   private int C;
-   private boolean D;
-   private final List<fnt.b> E = Lists.newArrayList();
+public class fnt extends fhi<fnt.b> {
+   private static final int a = 20;
+   final fnu m;
+   private int n;
 
-   public fnt() {
-      super(fes.a);
-      this.z = fnt.a.a(this.m());
-      this.A = this.z;
-   }
+   public fnt(fnu $$0, ffd $$1) {
+      super($$1, $$0.n, $$0.d.d(), $$0.d.c(), 20);
+      this.m = $$0;
+      ffb[] $$2 = (ffb[])ArrayUtils.clone($$1.m.W);
+      Arrays.sort((Object[])$$2);
+      String $$3 = null;
 
-   private dbq m() {
-      fxz $$0 = ffa.Q().q;
-      dbq $$1 = $$0.i();
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         return $$0.j() == dbq.b ? dbq.a : dbq.b;
-      }
-   }
-
-   @Override
-   protected void aN_() {
-      super.aN_();
-      this.A = this.z;
-
-      for (int $$0 = 0; $$0 < fnt.a.e.length; $$0++) {
-         fnt.a $$1 = fnt.a.e[$$0];
-         this.E.add(new fnt.b($$1, this.n / 2 - x / 2 + $$0 * 31, this.o / 2 - 31));
-      }
-   }
-
-   @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
-      if (!this.D()) {
-         $$0.c().a();
-         RenderSystem.enableBlend();
-         int $$4 = this.n / 2 - 62;
-         int $$5 = this.o / 2 - 31 - 27;
-         $$0.a(c, $$4, $$5, 0.0F, 0.0F, 125, 75, 128, 128);
-         $$0.c().b();
-         super.a($$0, $$1, $$2, $$3);
-         $$0.a(this.p, this.A.a(), this.n / 2, this.o / 2 - 31 - 20, -1);
-         $$0.a(this.p, y, this.n / 2, this.o / 2 + 5, 16777215);
-         if (!this.D) {
-            this.B = $$1;
-            this.C = $$2;
-            this.D = true;
+      for (ffb $$4 : $$2) {
+         String $$5 = $$4.f();
+         if (!$$5.equals($$3)) {
+            $$3 = $$5;
+            this.b(new fnt.a(xo.c($$5)));
          }
 
-         boolean $$6 = this.B == $$1 && this.C == $$2;
+         xo $$6 = xo.c($$4.h());
+         int $$7 = $$1.h.a($$6);
+         if ($$7 > this.n) {
+            this.n = $$7;
+         }
 
-         for (fnt.b $$7 : this.E) {
-            $$7.a($$0, $$1, $$2, $$3);
-            $$7.b(this.A == $$7.a);
-            if (!$$6 && $$7.A()) {
-               this.A = $$7.a;
+         this.b(new fnt.c($$4, $$6));
+      }
+   }
+
+   public void d() {
+      ffb.d();
+      this.I();
+   }
+
+   public void I() {
+      this.aE_().forEach(fnt.b::c);
+   }
+
+   @Override
+   public int b() {
+      return 340;
+   }
+
+   public class a extends fnt.b {
+      final xo b;
+      private final int c;
+
+      public a(final xo $$1) {
+         this.b = $$1;
+         this.c = fnt.this.c.h.a(this.b);
+      }
+
+      @Override
+      public void a(fgp $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(fnt.this.c.h, this.b, fnt.this.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, -1, false);
+      }
+
+      @Nullable
+      @Override
+      public fgm a(fle $$0) {
+         return null;
+      }
+
+      @Override
+      public List<? extends fiy> aE_() {
+         return Collections.emptyList();
+      }
+
+      @Override
+      public List<? extends fkw> b() {
+         return ImmutableList.of(new fkw() {
+            @Override
+            public fkw.a t() {
+               return fkw.a.b;
+            }
+
+            @Override
+            public void b(fky $$0) {
+               $$0.a(fkx.a, a.this.b);
+            }
+         });
+      }
+
+      @Override
+      protected void c() {
+      }
+   }
+
+   public abstract static class b extends fhi.a<fnt.b> {
+      abstract void c();
+   }
+
+   public class c extends fnt.b {
+      private static final xo b = xo.c("controls.reset");
+      private static final int c = 10;
+      private final ffb d;
+      private final xo e;
+      private final fhc f;
+      private final fhc g;
+      private boolean h = false;
+
+      c(final ffb $$1, final xo $$2) {
+         this.d = $$1;
+         this.e = $$2;
+         this.f = fhc.a($$2, $$1x -> {
+            fnt.this.m.a = $$1;
+            fnt.this.d();
+         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? xo.a("narrator.controls.unbound", $$2) : xo.a("narrator.controls.bound", $$2, $$2x.get())).a();
+         this.g = fhc.a(b, $$1x -> {
+            fnt.this.c.m.a($$1, $$1.i());
+            fnt.this.d();
+         }).a(0, 0, 50, 20).a($$1x -> xo.a("narrator.controls.reset", $$2)).a();
+         this.c();
+      }
+
+      @Override
+      public void a(fgp $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = fnt.this.p() - this.g.x() - 10;
+         int $$11 = $$2 - 2;
+         this.g.c($$10, $$11);
+         this.g.a($$0, $$6, $$7, $$9);
+         int $$12 = $$10 - 5 - this.f.x();
+         this.f.c($$12, $$11);
+         this.f.a($$0, $$6, $$7, $$9);
+         $$0.b(fnt.this.c.h, this.e, $$3, $$2 + $$5 / 2 - 9 / 2, -1);
+         if (this.h) {
+            int $$13 = 3;
+            int $$14 = this.f.C() - 6;
+            $$0.a($$14, $$2 - 1, $$14 + 3, $$2 + $$5, -65536);
+         }
+      }
+
+      @Override
+      public List<? extends fiy> aE_() {
+         return ImmutableList.of(this.f, this.g);
+      }
+
+      @Override
+      public List<? extends fkw> b() {
+         return ImmutableList.of(this.f, this.g);
+      }
+
+      @Override
+      protected void c() {
+         this.f.b(this.d.k());
+         this.g.j = !this.d.l();
+         this.h = false;
+         yc $$0 = xo.i();
+         if (!this.d.j()) {
+            for (ffb $$1 : fnt.this.c.m.W) {
+               if ($$1 != this.d && this.d.b($$1)) {
+                  if (this.h) {
+                     $$0.f(", ");
+                  }
+
+                  this.h = true;
+                  $$0.b(xo.c($$1.h()));
+               }
             }
          }
-      }
-   }
 
-   @Override
-   public void b(fgm $$0, int $$1, int $$2, float $$3) {
-   }
-
-   private void C() {
-      a(this.m, this.A);
-   }
-
-   private static void a(ffa $$0, fnt.a $$1) {
-      if ($$0.q != null && $$0.s != null) {
-         fnt.a $$2 = fnt.a.a($$0.q.j());
-         if ($$0.s.m(2) && $$1 != $$2) {
-            $$0.s.cz.d($$1.b());
+         if (this.h) {
+            this.f.b(xo.b("[ ").b(this.f.y().f().a(n.p)).f(" ]").a(n.m));
+            this.f.a(fin.a(xo.a("controls.keybinds.duplicateKeybinds", $$0)));
+         } else {
+            this.f.a(null);
          }
-      }
-   }
 
-   private boolean D() {
-      if (!eyo.a(this.m.aO().i(), 292)) {
-         this.C();
-         this.m.a(null);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 293) {
-         this.D = false;
-         this.A = this.A.c();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   static enum a {
-      a(xl.c("gameMode.creative"), "gamemode creative", new cuk(dew.i)),
-      b(xl.c("gameMode.survival"), "gamemode survival", new cuk(cun.pa)),
-      c(xl.c("gameMode.adventure"), "gamemode adventure", new cuk(cun.uj)),
-      d(xl.c("gameMode.spectator"), "gamemode spectator", new cuk(cun.ss));
-
-      protected static final fnt.a[] e = values();
-      private static final int j = 16;
-      protected static final int f = 5;
-      final xl g;
-      final String h;
-      final cuk i;
-
-      private a(final xl $$0, final String $$1, final cuk $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-      }
-
-      void a(fgm $$0, int $$1, int $$2) {
-         $$0.a(this.i, $$1, $$2);
-      }
-
-      xl a() {
-         return this.g;
-      }
-
-      String b() {
-         return this.h;
-      }
-
-      fnt.a c() {
-         return switch (this) {
-            case a -> b;
-            case b -> c;
-            case c -> d;
-            case d -> a;
-         };
-      }
-
-      static fnt.a a(dbq $$0) {
-         return switch ($$0) {
-            case d -> d;
-            case a -> b;
-            case b -> a;
-            case c -> c;
-         };
-      }
-   }
-
-   public class b extends fgx {
-      final fnt.a a;
-      private boolean b;
-
-      public b(final fnt.a $$1, final int $$2, final int $$3) {
-         super($$2, $$3, 26, 26, $$1.a());
-         this.a = $$1;
-      }
-
-      @Override
-      public void b(fgm $$0, int $$1, int $$2, float $$3) {
-         this.a($$0);
-         this.a.a($$0, this.C() + 5, this.D() + 5);
-         if (this.b) {
-            this.b($$0);
+         if (fnt.this.m.a == this.d) {
+            this.f.b(xo.b("> ").b(this.f.y().f().a(n.p, n.t)).f(" <").a(n.o));
          }
-      }
-
-      @Override
-      public void a(fkv $$0) {
-         this.c($$0);
-      }
-
-      @Override
-      public boolean A() {
-         return super.A() || this.b;
-      }
-
-      public void b(boolean $$0) {
-         this.b = $$0;
-      }
-
-      private void a(fgm $$0) {
-         $$0.a(fnt.a, this.C(), this.D(), 26, 26);
-      }
-
-      private void b(fgm $$0) {
-         $$0.a(fnt.b, this.C(), this.D(), 26, 26);
       }
    }
 }

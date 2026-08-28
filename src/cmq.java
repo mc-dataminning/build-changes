@@ -1,30 +1,8 @@
-import java.util.function.IntFunction;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public enum cmq implements ayx {
-   a(0, "options.chat.visibility.full"),
-   b(1, "options.chat.visibility.system"),
-   c(2, "options.chat.visibility.hidden");
-
-   private static final IntFunction<cmq> d = axl.a(cmq::a, values(), axl.a.b);
-   private final int e;
-   private final String f;
-
-   private cmq(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   @Override
-   public int a() {
-      return this.e;
-   }
-
-   @Override
-   public String b() {
-      return this.f;
-   }
-
-   public static cmq a(int $$0) {
-      return d.apply($$0);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cmq {
 }

@@ -1,69 +1,79 @@
-public class dpx extends dpc implements dqf {
-   private final dpk a = new dpk();
-   private final dpp b = new dpp() {
-      @Override
-      protected void a(dbt $$0, iz $$1, drx $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, avw.hZ, avx.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
+public class dpx extends dqk {
+   public static final int d = 9;
+   private jr<cun> e = jr.a(9, cun.l);
 
-      @Override
-      protected void b(dbt $$0, iz $$1, drx $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, avw.hY, avx.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
-
-      @Override
-      protected void a(dbt $$0, iz $$1, drx $$2, int $$3, int $$4) {
-         $$0.a(dpx.this.o, dew.fG, 1, $$4);
-      }
-
-      @Override
-      protected boolean a(cms $$0) {
-         return $$0.gp().b(dpx.this);
-      }
-   };
-
-   public dpx(iz $$0, drx $$1) {
-      super(dpe.d, $$0, $$1);
+   protected dpx(dph<?> $$0, iz $$1, dsa $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static void a(dbt $$0, iz $$1, drx $$2, dpx $$3) {
-      $$3.a.a();
+   public dpx(iz $$0, dsa $$1) {
+      this(dph.f, $$0, $$1);
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.a.a($$1 > 0);
-         return true;
-      } else {
-         return super.a_($$0, $$1);
+   public int b() {
+      return 9;
+   }
+
+   public int a(azf $$0) {
+      this.e_(null);
+      int $$1 = -1;
+      int $$2 = 1;
+
+      for (int $$3 = 0; $$3 < this.e.size(); $$3++) {
+         if (!this.e.get($$3).e() && $$0.a($$2++) == 0) {
+            $$1 = $$3;
+         }
       }
+
+      return $$1;
    }
 
-   public void a(cms $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.b.a($$0, this.i(), this.aA_(), this.n());
+   public int b(cun $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         if (this.e.get($$1).e()) {
+            this.a($$1, $$0);
+            return $$1;
+         }
       }
+
+      return -1;
    }
 
-   public void b(cms $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.b.b($$0, this.i(), this.aA_(), this.n());
-      }
+   @Override
+   protected xo k() {
+      return xo.c("container.dispenser");
    }
 
-   public boolean c(cms $$0) {
-      return bqi.a(this, $$0);
-   }
-
-   public void b() {
-      if (!this.p) {
-         this.b.c(this.i(), this.aA_(), this.n());
+   @Override
+   protected void a(ur $$0, jk.a $$1) {
+      super.a($$0, $$1);
+      this.e = jr.a(this.b(), cun.l);
+      if (!this.a_($$0)) {
+         bqm.b($$0, this.e, $$1);
       }
    }
 
    @Override
-   public float a(float $$0) {
-      return this.a.a($$0);
+   protected void b(ur $$0, jk.a $$1) {
+      super.b($$0, $$1);
+      if (!this.b_($$0)) {
+         bqm.a($$0, this.e, $$1);
+      }
+   }
+
+   @Override
+   protected jr<cun> j() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(jr<cun> $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   protected cps a(int $$0, cmu $$1) {
+      return new cql($$0, $$1, this);
    }
 }

@@ -1,17 +1,11 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gic extends gkb<cgu, fti<cgu>> {
+   private static final ale a = new ale("textures/entity/camel/camel.png");
 
-public class gic<T extends chd> extends ghm<T, ftj<T>> {
-   private static final Map<bsv<?>, alb> a = Maps.newHashMap(
-      ImmutableMap.of(bsv.z, new alb("textures/entity/horse/donkey.png"), bsv.at, new alb("textures/entity/horse/mule.png"))
-   );
-
-   public gic(gis.a $$0, float $$1, fwt $$2) {
-      super($$0, new ftj<>($$0.a($$2)), $$1);
+   public gic(giv.a $$0, fww $$1) {
+      super($$0, new fti<>($$0.a($$1)), 0.7F);
    }
 
-   public alb a(T $$0) {
-      return a.get($$0.ak());
+   public ale a(cgu $$0) {
+      return a;
    }
 }

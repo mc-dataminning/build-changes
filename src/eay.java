@@ -1,35 +1,43 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
 
-public class eay implements ecx {
-   public static final Codec<eay> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               alb.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
-               alb.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
-               eme.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
-               eme.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eay::new)
-   );
-   public final List<alb> b;
-   public final List<alb> c;
-   public final ji<emd> d;
-   public final ji<emd> e;
-   public final int f;
+public class eay<FC extends eda> {
+   private final Optional<eaj<?, ?>> a;
+   private final dcr b;
+   private final dtx c;
+   private final azf d;
+   private final iz e;
+   private final FC f;
 
-   public eay(List<alb> $$0, List<alb> $$1, ji<emd> $$2, ji<emd> $$3, int $$4) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
-      } else if ($$0.size() != $$1.size()) {
-         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-      }
+   public eay(Optional<eaj<?, ?>> $$0, dcr $$1, dtx $$2, azf $$3, iz $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+   }
+
+   public Optional<eaj<?, ?>> a() {
+      return this.a;
+   }
+
+   public dcr b() {
+      return this.b;
+   }
+
+   public dtx c() {
+      return this.c;
+   }
+
+   public azf d() {
+      return this.d;
+   }
+
+   public iz e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

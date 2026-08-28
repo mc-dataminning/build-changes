@@ -1,13 +1,14 @@
 import com.mojang.serialization.MapCodec;
 
-public interface elt<P extends els> {
-   elt<elr> a = a("always_true", elr.a);
-   elt<elp> b = a("linear_pos", elp.a);
-   elt<ele> c = a("axis_aligned_linear_pos", ele.a);
+public class elt extends emf {
+   public static final MapCodec<elt> a = MapCodec.unit(() -> elt.b);
+   public static final elt b = new elt();
 
-   MapCodec<P> codec();
+   private elt() {
+   }
 
-   static <P extends els> elt<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.q, $$0, () -> $$1);
+   @Override
+   protected emh<?> a() {
+      return emh.j;
    }
 }

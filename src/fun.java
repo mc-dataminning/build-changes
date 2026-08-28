@@ -1,18 +1,68 @@
-import java.util.function.Function;
+public class fun<T extends cfp> extends fuh<T> {
+   private final fwy a;
+   private final fwy b;
+   private final fwy f;
+   private final fwy g;
+   private final fwy h;
+   private final fwy i;
 
-public abstract class fun<E extends bsp> extends ftv<E> {
-   public fun() {
-      this(gdr::e);
+   public fun(fwy $$0) {
+      this.a = $$0;
+      this.b = $$0.b("head");
+      this.f = $$0.b("right_arm");
+      this.g = $$0.b("left_arm");
+      this.h = $$0.b("right_leg");
+      this.i = $$0.b("left_leg");
    }
 
-   public fun(Function<alb, gdr> $$0) {
-      super($$0);
+   public static fxe b() {
+      fxg $$0 = new fxg();
+      fxh $$1 = $$0.a();
+      $$1.a("head", fxd.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), fxa.a(0.0F, -7.0F, -2.0F));
+      $$1.a(
+         "body",
+         fxd.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new fxc(0.5F)),
+         fxa.a(0.0F, -7.0F, 0.0F)
+      );
+      $$1.a("right_arm", fxd.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), fxa.a(0.0F, -7.0F, 0.0F));
+      $$1.a("left_arm", fxd.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), fxa.a(0.0F, -7.0F, 0.0F));
+      $$1.a("right_leg", fxd.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), fxa.a(-4.0F, 11.0F, 0.0F));
+      $$1.a("left_leg", fxd.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), fxa.a(5.0F, 11.0F, 0.0F));
+      return fxe.a($$0, 128, 128);
    }
 
    @Override
-   public void a(ezt $$0, ezx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.d().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   public fwy a() {
+      return this.a;
    }
 
-   public abstract Iterable<fwv> d();
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.h.e = -1.5F * ayx.e($$1, 13.0F) * $$2;
+      this.i.e = 1.5F * ayx.e($$1, 13.0F) * $$2;
+      this.h.f = 0.0F;
+      this.i.f = 0.0F;
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      int $$4 = $$0.y();
+      if ($$4 > 0) {
+         this.f.e = -2.0F + 1.5F * ayx.e((float)$$4 - $$3, 10.0F);
+         this.g.e = -2.0F + 1.5F * ayx.e((float)$$4 - $$3, 10.0F);
+      } else {
+         int $$5 = $$0.gq();
+         if ($$5 > 0) {
+            this.f.e = -0.8F + 0.025F * ayx.e((float)$$5, 70.0F);
+            this.g.e = 0.0F;
+         } else {
+            this.f.e = (-0.2F + 1.5F * ayx.e($$1, 13.0F)) * $$2;
+            this.g.e = (-0.2F - 1.5F * ayx.e($$1, 13.0F)) * $$2;
+         }
+      }
+   }
+
+   public fwy c() {
+      return this.f;
+   }
 }

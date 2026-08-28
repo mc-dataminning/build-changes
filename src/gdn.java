@@ -1,94 +1,125 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.util.List;
-import java.util.function.IntSupplier;
-import org.joml.Matrix4f;
+import java.util.Optional;
 
-public class gdn implements AutoCloseable {
-   private final gcz c;
-   public final eyf a;
-   public final eyf b;
-   private final List<IntSupplier> d = Lists.newArrayList();
-   private final List<String> e = Lists.newArrayList();
-   private final List<Integer> f = Lists.newArrayList();
-   private final List<Integer> g = Lists.newArrayList();
-   private Matrix4f h;
-   private final int i;
+public class gdn implements gdm {
+   private final gdm.a a;
+   private final gdm.a b = gdm.a(new ezr(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   public gdn(auo $$0, String $$1, eyf $$2, eyf $$3, boolean $$4) throws IOException {
-      this.c = new gcz($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
-      this.i = $$4 ? 9729 : 9728;
+   public gdn(gdm.a $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void close() {
-      this.c.close();
-   }
-
-   public final String a() {
-      return this.c.h();
-   }
-
-   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
-      this.e.add(this.e.size(), $$0);
-      this.d.add(this.d.size(), $$1);
-      this.f.add(this.f.size(), $$2);
-      this.g.add(this.g.size(), $$3);
-   }
-
-   public void a(Matrix4f $$0) {
-      this.h = $$0;
-   }
-
-   public void a(float $$0) {
-      this.a.e();
-      float $$1 = (float)this.b.c;
-      float $$2 = (float)this.b.d;
-      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
-      this.c.a("DiffuseSampler", this.a::f);
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.c.a(this.e.get($$3), this.d.get($$3));
-         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
-      }
-
-      this.c.b("ProjMat").a(this.h);
-      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
-      this.c.b("OutSize").a($$1, $$2);
-      this.c.b("Time").a($$0);
-      ffa $$4 = ffa.Q();
-      this.c.b("ScreenSize").a((float)$$4.aO().k(), (float)$$4.aO().l());
-      this.c.g();
-      this.b.b(ffa.a);
-      this.b.a(false);
-      RenderSystem.depthFunc(519);
-      ezo $$5 = ezv.b().d();
-      $$5.a(ezy.b.h, ezr.m);
-      $$5.a(0.0, 0.0, 500.0).e();
-      $$5.a((double)$$1, 0.0, 500.0).e();
-      $$5.a((double)$$1, (double)$$2, 500.0).e();
-      $$5.a(0.0, (double)$$2, 500.0).e();
-      ezp.b($$5.d());
-      RenderSystem.depthFunc(515);
-      this.c.f();
-      this.b.e();
-      this.a.d();
-
-      for (Object $$6 : this.d) {
-         if ($$6 instanceof eyf) {
-            ((eyf)$$6).d();
+   public faa getBuffer(gdu $$0) {
+      if ($$0.M()) {
+         faa $$1 = this.b.getBuffer($$0);
+         return new gdn.a($$1, this.c, this.d, this.e, this.f);
+      } else {
+         faa $$2 = this.a.getBuffer($$0);
+         Optional<gdu> $$3 = $$0.L();
+         if ($$3.isPresent()) {
+            faa $$4 = this.b.getBuffer($$3.get());
+            gdn.a $$5 = new gdn.a($$4, this.c, this.d, this.e, this.f);
+            return fad.a($$5, $$2);
+         } else {
+            return $$2;
          }
       }
    }
 
-   public gcz b() {
-      return this.c;
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public int c() {
-      return this.i;
+   public void a() {
+      this.b.b();
+   }
+
+   static class a extends ezv {
+      private final faa f;
+      private double g;
+      private double h;
+      private double i;
+      private float j;
+      private float k;
+
+      a(faa $$0, int $$1, int $$2, int $$3, int $$4) {
+         this.f = $$0;
+         super.b($$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+      }
+
+      @Override
+      public void l() {
+      }
+
+      @Override
+      public faa a(double $$0, double $$1, double $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      @Override
+      public faa a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public faa a(float $$0, float $$1) {
+         this.j = $$0;
+         this.k = $$1;
+         return this;
+      }
+
+      @Override
+      public faa a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public faa b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public faa a(float $$0, float $$1, float $$2) {
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
+      }
+
+      @Override
+      public void e() {
+         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
+      }
    }
 }

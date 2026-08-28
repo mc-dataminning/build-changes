@@ -1,36 +1,46 @@
-class brq extends brv {
-   protected brq(brw $$0, int $$1) {
-      super($$0, $$1);
-   }
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
+public record brq(String i) {
+   public static final brq a = new brq("generic");
+   public static final brq b = new brq("ladder");
+   public static final brq c = new brq("vines");
+   public static final brq d = new brq("weeping_vines");
+   public static final brq e = new brq("twisting_vines");
+   public static final brq f = new brq("scaffolding");
+   public static final brq g = new brq("other_climbable");
+   public static final brq h = new brq("water");
 
-   @Override
-   public boolean a(btk $$0, int $$1) {
-      if ($$0 instanceof arc $$2 && !$$2.N_()) {
-         arb $$3 = $$2.z();
-         if (!$$3.J().b(cpi.c)) {
-            return this.a($$2, $$3);
-         }
-
-         if ($$3.al() != bqm.a && $$3.c($$2.dp())) {
-            cod $$4 = $$3.d($$2.dp());
-            if ($$4 == null || $$4.m() < $$4.l()) {
-               $$2.b(new brx(brz.I, 600, $$1));
-               $$2.d($$2.dp());
-               return false;
-            }
-         }
+   public static brq a(dsa $$0) {
+      if ($$0.a(dez.cO) || $$0.a(awo.P)) {
+         return b;
+      } else if ($$0.a(dez.ff)) {
+         return c;
+      } else if ($$0.a(dez.oz) || $$0.a(dez.oA)) {
+         return d;
+      } else if ($$0.a(dez.oB) || $$0.a(dez.oC)) {
+         return e;
+      } else {
+         return $$0.a(dez.nS) ? f : g;
       }
-
-      return true;
    }
 
-   private boolean a(arc $$0, arb $$1) {
-      iz $$2 = $$0.dp();
-      return $$1.al() != bqm.a && $$1.c($$2) ? $$1.z().a($$0, $$2) == null : true;
+   @Nullable
+   public static brq a(btn $$0) {
+      Optional<iz> $$1 = $$0.eM();
+      if ($$1.isPresent()) {
+         dsa $$2 = $$0.dP().a_($$1.get());
+         return a($$2);
+      } else {
+         return $$0.be() ? h : null;
+      }
+   }
+
+   public String a() {
+      return "death.fell.accident." + this.i;
+   }
+
+   public String b() {
+      return this.i;
    }
 }

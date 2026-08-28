@@ -1,84 +1,129 @@
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class fhz extends fgx {
-   private static final float a = 0.0625F;
-   private static final float b = 2.125F;
-   private static final float c = 100.0F;
-   private static final float d = 2.5F;
-   private static final float e = -5.0F;
-   private static final float f = 30.0F;
-   private static final float m = 50.0F;
-   private final fhz.a n;
-   private final Supplier<gpu> o;
-   private float p = -5.0F;
-   private float q = 30.0F;
+public class fhz extends fhi<fhz.a> {
+   private static final int a = 310;
+   private static final int m = 25;
+   private final fmt n;
 
-   public fhz(int $$0, int $$1, fwr $$2, Supplier<gpu> $$3) {
-      super(0, 0, $$0, $$1, xk.a);
-      this.n = fhz.a.a($$2);
-      this.o = $$3;
+   public fhz(ffd $$0, int $$1, int $$2, fmt $$3) {
+      super($$0, $$1, $$3.d.d(), $$3.d.c(), 25);
+      this.e = false;
+      this.n = $$3;
+   }
+
+   public void a(ffg<?> $$0) {
+      this.b(fhz.b.a(this.c.m, $$0, this.n));
+   }
+
+   public void a(ffg<?>... $$0) {
+      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
+         ffg<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
+         this.b(fhz.b.a(this.c.m, $$0[$$1], $$2, this.n));
+      }
+   }
+
+   public void a(List<fha> $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
+         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
+      }
+   }
+
+   public void a(fha $$0, @Nullable fha $$1) {
+      this.b(fhz.a.a($$0, $$1, this.n));
    }
 
    @Override
-   protected void b(fgm $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)this.C() + (float)this.x() / 2.0F, (float)(this.D() + this.v()), 100.0F);
-      float $$4 = (float)this.v() / 2.125F;
-      $$0.c().b($$4, $$4, $$4);
-      $$0.c().a(0.0F, -0.0625F, 0.0F);
-      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
-      $$0.c().a(a.d.rotationDegrees(this.q));
-      $$0.e();
-      eyp.a(a.b.rotationDegrees(this.p));
-      this.n.a($$0, this.o.get());
-      $$0.e();
-      eyp.d();
-      $$0.c().b();
-   }
-
-   @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.p = ayu.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
-      this.q += (float)$$2 * 2.5F;
-   }
-
-   @Override
-   public void a(gtq $$0) {
-   }
-
-   @Override
-   protected void a(fkv $$0) {
-   }
-
-   @Override
-   public boolean B() {
-      return false;
+   public int b() {
+      return 310;
    }
 
    @Nullable
-   @Override
-   public fgj a(flb $$0) {
+   public fha b(ffg<?> $$0) {
+      for (fhz.a $$1 : this.aE_()) {
+         if ($$1 instanceof fhz.b $$2) {
+            fha $$3 = $$2.a.get($$0);
+            if ($$3 != null) {
+               return $$3;
+            }
+         }
+      }
+
       return null;
    }
 
-   static record a(fva<?> a, fva<?> b) {
-      public static fhz.a a(fwr $$0) {
-         fva<?> $$1 = new fva($$0.a(fwu.aS), false);
-         fva<?> $$2 = new fva($$0.a(fwu.aW), true);
-         $$1.e = false;
-         $$2.e = false;
-         return new fhz.a($$1, $$2);
+   public Optional<fiy> e(double $$0, double $$1) {
+      for (fhz.a $$2 : this.aE_()) {
+         for (fiy $$3 : $$2.aE_()) {
+            if ($$3.c($$0, $$1)) {
+               return Optional.of($$3);
+            }
+         }
       }
 
-      public void a(fgm $$0, gpu $$1) {
-         $$0.c().a();
-         $$0.c().b(1.0F, 1.0F, -1.0F);
-         $$0.c().a(0.0F, -1.5F, 0.0F);
-         fva<?> $$2 = $$1.e() == gpu.a.a ? this.b : this.a;
-         gdr $$3 = $$2.a($$1.a());
-         $$2.a($$0.c(), $$0.d().getBuffer($$3), 15728880, gol.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.c().b();
+      return Optional.empty();
+   }
+
+   protected static class a extends fhi.a<fhz.a> {
+      private final List<fha> a;
+      private final fnb b;
+      private static final int c = 160;
+
+      a(List<fha> $$0, fnb $$1) {
+         this.a = ImmutableList.copyOf($$0);
+         this.b = $$1;
+      }
+
+      public static fhz.a a(List<fha> $$0, fnb $$1) {
+         return new fhz.a($$0, $$1);
+      }
+
+      public static fhz.a a(fha $$0, @Nullable fha $$1, fnb $$2) {
+         return $$1 == null ? new fhz.a(ImmutableList.of($$0), $$2) : new fhz.a(ImmutableList.of($$0, $$1), $$2);
+      }
+
+      @Override
+      public void a(fgp $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = 0;
+         int $$11 = this.b.n / 2 - 155;
+
+         for (fha $$12 : this.a) {
+            $$12.c($$11 + $$10, $$2);
+            $$12.a($$0, $$6, $$7, $$9);
+            $$10 += 160;
+         }
+      }
+
+      @Override
+      public List<? extends fiy> aE_() {
+         return this.a;
+      }
+
+      @Override
+      public List<? extends fkw> b() {
+         return this.a;
+      }
+   }
+
+   protected static class b extends fhz.a {
+      final Map<ffg<?>, fha> a;
+
+      private b(Map<ffg<?>, fha> $$0, fmt $$1) {
+         super(ImmutableList.copyOf($$0.values()), $$1);
+         this.a = $$0;
+      }
+
+      public static fhz.b a(ffh $$0, ffg<?> $$1, fmt $$2) {
+         return new fhz.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
+      }
+
+      public static fhz.b a(ffh $$0, ffg<?> $$1, @Nullable ffg<?> $$2, fmt $$3) {
+         fha $$4 = $$1.a($$0);
+         return $$2 == null ? new fhz.b(ImmutableMap.of($$1, $$4), $$3) : new fhz.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
       }
    }
 }

@@ -1,874 +1,257 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Queues;
+import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Deque;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.Objects;
+import java.util.UUID;
 import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fxq extends dbt {
-   private static final Logger a = LogUtils.getLogger();
-   private static final double b = 0.05;
-   private static final int c = 10;
-   private static final int d = 1000;
-   final dwd e = new dwd();
-   private final dwj<bsp> f = new dwj<>(bsp.class, new fxq.b());
-   private final fxr D;
-   private final gdh E;
-   private final fxq.a F;
-   private final gcy G;
-   private final bra H;
-   private final ffa I = ffa.Q();
-   final List<gci> J = Lists.newArrayList();
-   private final Map<epd, epf> K = Maps.newHashMap();
-   private static final long L = 16777215L;
-   private int M;
-   private final Object2ObjectArrayMap<dbe, fge> N = ac.a(new Object2ObjectArrayMap(3), $$0x -> {
-      $$0x.put(gcv.a, new fge($$0xx -> this.b($$0xx, gcv.a)));
-      $$0x.put(gcv.b, new fge($$0xx -> this.b($$0xx, gcv.b)));
-      $$0x.put(gcv.c, new fge($$0xx -> this.b($$0xx, gcv.c)));
-   });
-   private final fxm O;
-   private final Deque<Runnable> P = Queues.newArrayDeque();
-   private int Q;
-   private final fzc R = new fzc();
-   private static final Set<cuf> S = Set.of(cun.hB, cun.hC);
+public abstract class fxq implements aab {
+   private static final xo i = xo.c("disconnect.lost");
+   private static final Logger j = LogUtils.getLogger();
+   protected final ffd a;
+   protected final wj b;
+   @Nullable
+   protected final fyh c;
+   @Nullable
+   protected String d;
+   protected final gug e;
+   @Nullable
+   protected final fnb f;
+   protected boolean g;
+   private final List<fxq.a> k = new ArrayList<>();
+   protected final Map<ale, byte[]> h;
 
-   public void b(int $$0) {
-      this.R.a($$0, this);
-   }
-
-   public void b(iz $$0, drx $$1, int $$2) {
-      if (!this.R.a($$0, $$1)) {
-         super.a($$0, $$1, $$2, 512);
-      }
-   }
-
-   public void a(iz $$0, drx $$1, evm $$2) {
-      drx $$3 = this.a_($$0);
-      if ($$3 != $$1) {
-         this.a($$0, $$1, 19);
-         cms $$4 = this.I.s;
-         if (this == $$4.dP() && $$4.a($$0, $$1)) {
-            $$4.h($$2.c, $$2.d, $$2.e);
-         }
-      }
-   }
-
-   fzc a() {
-      return this.R;
+   protected fxq(ffd $$0, wj $$1, fxx $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2.f();
+      this.d = $$2.e();
+      this.e = $$2.b();
+      this.f = $$2.g();
+      this.h = $$2.h();
    }
 
    @Override
-   public boolean a(iz $$0, drx $$1, int $$2, int $$3) {
-      if (this.R.c()) {
-         drx $$4 = this.a_($$0);
-         boolean $$5 = super.a($$0, $$1, $$2, $$3);
-         if ($$5) {
-            this.R.a($$0, $$4, this.I.s);
-         }
+   public void a(zv $$0, Exception $$1) {
+      j.error("Failed to handle packet {}, disconnecting", $$0, $$1);
+      aab.super.a($$0, $$1);
+      this.b.a(xo.c("disconnect.packetError"));
+   }
 
-         return $$5;
+   @Override
+   public void a(aae $$0) {
+      this.a(new aap($$0.b()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
+   }
+
+   @Override
+   public void a(aaf $$0) {
+      zy.a($$0, this, this.a);
+      this.b(new aaq($$0.b()));
+   }
+
+   @Override
+   public void a(aac $$0) {
+      aaw $$1 = $$0.b();
+      if (!($$1 instanceof aax)) {
+         zy.a($$0, this, this.a);
+         if ($$1 instanceof aau $$2) {
+            this.d = $$2.b();
+            this.e.a($$2.b());
+         } else {
+            this.a($$1);
+         }
+      }
+   }
+
+   protected abstract void a(aaw var1);
+
+   @Override
+   public void a(aah $$0) {
+      zy.a($$0, this, this.a);
+      UUID $$1 = $$0.b();
+      URL $$2 = a($$0.e());
+      if ($$2 == null) {
+         this.b.a(new aar($$1, aar.a.f));
       } else {
-         return super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   public fxq(fxr $$0, fxq.a $$1, ala<dbt> $$2, ji<dvp> $$3, int $$4, int $$5, Supplier<bnd> $$6, gdh $$7, boolean $$8, long $$9) {
-      super($$1, $$2, $$0.w(), $$3, $$6, true, $$8, $$9, 1000000);
-      this.D = $$0;
-      this.O = new fxm(this, $$4);
-      this.H = new bra();
-      this.F = $$1;
-      this.E = $$7;
-      this.G = gcy.a($$3.a());
-      this.a(new iz(8, 64, 8), 0.0F);
-      this.Q = $$5;
-      this.U();
-      this.X();
-   }
-
-   public void a(Runnable $$0) {
-      this.P.add($$0);
-   }
-
-   public void b() {
-      int $$0 = this.P.size();
-      int $$1 = $$0 < 1000 ? Math.max(10, $$0 / 10) : $$0;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Runnable $$3 = this.P.poll();
-         if ($$3 == null) {
-            break;
+         String $$3 = $$0.f();
+         boolean $$4 = $$0.g();
+         fyh.a $$5 = this.c != null ? this.c.b() : fyh.a.c;
+         if ($$5 != fyh.a.c && (!$$4 || $$5 != fyh.a.b)) {
+            this.a.ae().a($$1, $$2, $$3);
+         } else {
+            this.a.a(this.a($$1, $$2, $$3, $$4, $$0.h().orElse(null)));
          }
-
-         $$3.run();
       }
-   }
-
-   public boolean c() {
-      return this.P.isEmpty();
-   }
-
-   public gcy d() {
-      return this.G;
-   }
-
-   public void a(BooleanSupplier $$0) {
-      this.C_().s();
-      if (this.s().i()) {
-         this.n();
-      }
-
-      if (this.M > 0) {
-         this.c(this.M - 1);
-      }
-
-      this.ag().a("blocks");
-      this.O.a($$0, true);
-      this.ag().c();
-   }
-
-   private void n() {
-      this.b(this.A.c() + 1L);
-      if (this.A.o().b(dbp.l)) {
-         this.c(this.A.d() + 1L);
-      }
-   }
-
-   public void b(long $$0) {
-      this.F.a($$0);
-   }
-
-   public void c(long $$0) {
-      if ($$0 < 0L) {
-         $$0 = -$$0;
-         this.ab().a(dbp.l).a(false, null);
-      } else {
-         this.ab().a(dbp.l).a(true, null);
-      }
-
-      this.F.b($$0);
-   }
-
-   public Iterable<bsp> e() {
-      return this.G().a();
-   }
-
-   public void f() {
-      bnd $$0 = this.ag();
-      $$0.a("entities");
-      this.e.a($$0x -> {
-         if (!$$0x.dK() && !$$0x.bR() && !this.H.a($$0x)) {
-            this.a(this::a, $$0x);
-         }
-      });
-      $$0.c();
-      this.T();
    }
 
    @Override
-   public boolean h(bsp $$0) {
-      return $$0.dr().a(this.I.s.dr()) <= this.Q;
+   public void a(aag $$0) {
+      zy.a($$0, this, this.a);
+      $$0.b().ifPresentOrElse($$0x -> this.a.ae().a($$0x), () -> this.a.ae().e());
    }
 
-   public void a(bsp $$0) {
-      $$0.bu();
-      $$0.ai++;
-      this.ag().a(() -> lp.g.b($$0.ak()).toString());
-      $$0.l();
-      this.ag().c();
-
-      for (bsp $$1 : $$0.cS()) {
-         this.a($$0, $$1);
-      }
-   }
-
-   private void a(bsp $$0, bsp $$1) {
-      if ($$1.dK() || $$1.dc() != $$0) {
-         $$1.ac();
-      } else if ($$1 instanceof cms || this.e.c($$1)) {
-         $$1.bu();
-         $$1.ai++;
-         $$1.t();
-
-         for (bsp $$2 : $$1.cS()) {
-            this.a($$1, $$2);
-         }
-      }
-   }
-
-   public void a(dud $$0) {
-      $$0.I();
-      this.O.p().a($$0.f(), false);
-      this.f.b($$0.f());
-   }
-
-   public void a(dba $$0) {
-      this.N.forEach(($$1, $$2) -> $$2.a($$0.e, $$0.f));
-      this.f.a($$0);
-      this.E.a($$0);
-   }
-
-   public void g() {
-      this.N.forEach(($$0, $$1) -> $$1.a());
-   }
-
-   @Override
-   public boolean b(int $$0, int $$1) {
-      return true;
-   }
-
-   public int h() {
-      return this.f.b();
-   }
-
-   public void c(bsp $$0) {
-      this.a($$0.al(), bsp.c.b);
-      this.f.a($$0);
-   }
-
-   public void a(int $$0, bsp.c $$1) {
-      bsp $$2 = this.G().a($$0);
-      if ($$2 != null) {
-         $$2.b($$1);
-         $$2.aq();
-      }
+   static xo a(xo $$0, @Nullable xo $$1) {
+      return (xo)($$1 == null ? $$0 : xo.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
    }
 
    @Nullable
+   private static URL a(String $$0) {
+      try {
+         URL $$1 = new URL($$0);
+         String $$2 = $$1.getProtocol();
+         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
+      } catch (MalformedURLException var3) {
+         return null;
+      }
+   }
+
    @Override
-   public bsp a(int $$0) {
-      return this.G().a($$0);
+   public void a(acc $$0) {
+      zy.a($$0, this, this.a);
+      this.b.a(new acf($$0.b(), this.h.get($$0.b())));
    }
 
    @Override
-   public void Y() {
-      this.D.l().a(xl.c("multiplayer.status.quitting"));
+   public void a(aai $$0) {
+      zy.a($$0, this, this.a);
+      this.h.put($$0.b(), $$0.e());
    }
 
-   public void b(int $$0, int $$1, int $$2) {
-      int $$3 = 32;
-      azc $$4 = azc.a();
-      deu $$5 = this.p();
-      iz.a $$6 = new iz.a();
-
-      for (int $$7 = 0; $$7 < 667; $$7++) {
-         this.a($$0, $$1, $$2, 16, $$4, $$5, $$6);
-         this.a($$0, $$1, $$2, 32, $$4, $$5, $$6);
-      }
-   }
-
-   @Nullable
-   private deu p() {
-      if (this.I.q.j() == dbq.b) {
-         cuk $$0 = this.I.s.eX();
-         cuf $$1 = $$0.g();
-         if (S.contains($$1) && $$1 instanceof csi $$2) {
-            return $$2.d();
-         }
-      }
-
-      return null;
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3, azc $$4, @Nullable deu $$5, iz.a $$6) {
-      int $$7 = $$0 + this.z.a($$3) - this.z.a($$3);
-      int $$8 = $$1 + this.z.a($$3) - this.z.a($$3);
-      int $$9 = $$2 + this.z.a($$3) - this.z.a($$3);
-      $$6.d($$7, $$8, $$9);
-      drx $$10 = this.a_($$6);
-      $$10.b().a($$10, this, $$6, $$4);
-      enq $$11 = this.b_($$6);
-      if (!$$11.c()) {
-         $$11.a(this, $$6, $$4);
-         lh $$12 = $$11.h();
-         if ($$12 != null && this.z.a(10) == 0) {
-            boolean $$13 = $$10.d(this, $$6, je.a);
-            iz $$14 = $$6.d();
-            this.a($$14, this.a_($$14), $$12, $$13);
-         }
-      }
-
-      if ($$5 == $$10.b()) {
-         this.a(new la(lj.c, $$10), (double)$$7 + 0.5, (double)$$8 + 0.5, (double)$$9 + 0.5, 0.0, 0.0, 0.0);
-      }
-
-      if (!$$10.r(this, $$6)) {
-         this.t($$6).a().k().ifPresent($$1x -> {
-            if ($$1x.a(this.z)) {
-               this.a($$1x.a(), (double)$$6.u() + this.z.j(), (double)$$6.v() + this.z.j(), (double)$$6.w() + this.z.j(), 0.0, 0.0, 0.0);
-            }
+   @Override
+   public void a(aaj $$0) {
+      if (this.c == null) {
+         throw new IllegalStateException("Cannot transfer to server from singleplayer");
+      } else {
+         this.g = true;
+         this.b.a(xo.c("disconnect.transfer"));
+         this.a.c(() -> {
+            this.b.m();
+            this.b.n();
+            fzk $$1 = new fzk($$0.b(), $$0.e());
+            flu.a(Objects.requireNonNullElseGet(this.f, fng::new), this.a, $$1, this.c, false, new fyl(this.h));
          });
       }
    }
 
-   private void a(iz $$0, drx $$1, lh $$2, boolean $$3) {
-      if ($$1.u().c()) {
-         ewf $$4 = $$1.k(this, $$0);
-         double $$5 = $$4.c(je.a.b);
-         if ($$5 < 1.0) {
-            if ($$3) {
-               this.a((double)$$0.u(), (double)($$0.u() + 1), (double)$$0.w(), (double)($$0.w() + 1), (double)($$0.v() + 1) - 0.05, $$2);
-            }
-         } else if (!$$1.a(awl.ao)) {
-            double $$6 = $$4.b(je.a.b);
-            if ($$6 > 0.0) {
-               this.a($$0, $$2, $$4, (double)$$0.v() + $$6 - 0.05);
-            } else {
-               iz $$7 = $$0.d();
-               drx $$8 = this.a_($$7);
-               ewf $$9 = $$8.k(this, $$7);
-               double $$10 = $$9.c(je.a.b);
-               if ($$10 < 1.0 && $$8.u().c()) {
-                  this.a($$0, $$2, $$4, (double)$$0.v() - 0.05);
-               }
-            }
+   @Override
+   public void a(aad $$0) {
+      this.b.a($$0.b());
+   }
+
+   protected void e() {
+      Iterator<fxq.a> $$0 = this.k.iterator();
+
+      while ($$0.hasNext()) {
+         fxq.a $$1 = $$0.next();
+         if ($$1.b().getAsBoolean()) {
+            this.b($$1.a);
+            $$0.remove();
+         } else if ($$1.c() <= ac.c()) {
+            $$0.remove();
          }
       }
    }
 
-   private void a(iz $$0, lh $$1, ewf $$2, double $$3) {
-      this.a((double)$$0.u() + $$2.b(je.a.a), (double)$$0.u() + $$2.c(je.a.a), (double)$$0.w() + $$2.b(je.a.c), (double)$$0.w() + $$2.c(je.a.c), $$3, $$1);
-   }
-
-   private void a(double $$0, double $$1, double $$2, double $$3, double $$4, lh $$5) {
-      this.a($$5, ayu.d(this.z.j(), $$0, $$1), $$4, ayu.d(this.z.j(), $$2, $$3), 0.0, 0.0, 0.0);
+   public void b(zv<?> $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public p a(o $$0) {
-      p $$1 = super.a($$0);
-      $$1.a("Server brand", () -> this.I.s.cz.g());
-      $$1.a("Server type", () -> this.I.V() == null ? "Non-integrated multiplayer server" : "Integrated singleplayer server");
-      $$1.a("Tracked entity count", () -> String.valueOf(this.h()));
-      return $$1;
+   public void a(xo $$0) {
+      this.e.c();
+      this.a.a(this.b($$0), this.g);
+      j.warn("Client disconnected with reason: {}", $$0.getString());
    }
 
    @Override
-   public void a(@Nullable cms $$0, double $$1, double $$2, double $$3, ji<avv> $$4, avx $$5, float $$6, float $$7, long $$8) {
-      if ($$0 == this.I.s) {
-         this.a($$1, $$2, $$3, $$4.a(), $$5, $$6, $$7, false, $$8);
-      }
+   public void a(p $$0) {
+      $$0.a("Server type", () -> this.c != null ? this.c.f().toString() : "<none>");
+      $$0.a("Server brand", () -> this.d);
    }
 
-   @Override
-   public void a(@Nullable cms $$0, bsp $$1, ji<avv> $$2, avx $$3, float $$4, float $$5, long $$6) {
-      if ($$0 == this.I.s) {
-         this.I.aj().a((gsi)(new grz($$2.a(), $$3, $$4, $$5, $$1, $$6)));
-      }
-   }
-
-   @Override
-   public void a(bsp $$0, avv $$1, avx $$2, float $$3, float $$4) {
-      this.I.aj().a((gsi)(new grz($$1, $$2, $$3, $$4, $$0, this.z.g())));
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2, avv $$3, avx $$4, float $$5, float $$6, boolean $$7) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.z.g());
-   }
-
-   private void a(double $$0, double $$1, double $$2, avv $$3, avx $$4, float $$5, float $$6, boolean $$7, long $$8) {
-      double $$9 = this.I.j.m().b().c($$0, $$1, $$2);
-      gsd $$10 = new gsd($$3, $$4, $$5, $$6, azc.a($$8), $$0, $$1, $$2);
-      if ($$7 && $$9 > 100.0) {
-         double $$11 = Math.sqrt($$9) / 40.0;
-         this.I.aj().a($$10, (int)($$11 * 20.0));
-      } else {
-         this.I.aj().a($$10);
-      }
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, List<cxd> $$6) {
-      if ($$6.isEmpty()) {
-         for (int $$7 = 0; $$7 < this.z.a(3) + 2; $$7++) {
-            this.a(lj.ab, $$0, $$1, $$2, this.z.k() * 0.05, 0.005, this.z.k() * 0.05);
-         }
-      } else {
-         this.I.g.a(new gah.e(this, $$0, $$1, $$2, $$3, $$4, $$5, this.I.g, $$6));
-      }
-   }
-
-   @Override
-   public void a(zs<?> $$0) {
-      this.D.b($$0);
-   }
-
-   @Override
-   public cyt r() {
-      return this.D.k();
-   }
-
-   @Override
-   public bra s() {
-      return this.H;
-   }
-
-   @Override
-   public ewz<deu> P() {
-      return eww.b();
-   }
-
-   @Override
-   public ewz<enp> O() {
-      return eww.b();
-   }
-
-   public fxm i() {
-      return this.O;
+   protected fnb b(xo $$0) {
+      fnb $$1 = Objects.requireNonNullElseGet(this.f, () -> new fpz(new fng()));
+      return (fnb)(this.c != null && this.c.e() ? new gva($$1, i, $$0) : new fmc($$1, i, $$0));
    }
 
    @Nullable
-   @Override
-   public epf a(epd $$0) {
-      return this.K.get($$0);
+   public String f() {
+      return this.d;
    }
 
-   public void b(epd $$0, epf $$1) {
-      this.K.put($$0, $$1);
-   }
-
-   @Override
-   public void a(epd $$0, epf $$1) {
-   }
-
-   @Override
-   public epd v() {
-      return new epd(0);
-   }
-
-   @Override
-   public ewq M() {
-      return this.D.z();
-   }
-
-   @Override
-   public void a(iz $$0, drx $$1, drx $$2, int $$3) {
-      this.E.a(this, $$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void b(iz $$0, drx $$1, drx $$2) {
-      this.E.a($$0, $$1, $$2);
-   }
-
-   public void c(int $$0, int $$1, int $$2) {
-      this.E.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(int $$0, iz $$1, int $$2) {
-      this.E.c($$0, $$1, $$2);
-   }
-
-   @Override
-   public void b(int $$0, iz $$1, int $$2) {
-      this.E.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(@Nullable cms $$0, int $$1, iz $$2, int $$3) {
-      try {
-         this.E.b($$1, $$2, $$3);
-      } catch (Throwable var8) {
-         o $$5 = o.a(var8, "Playing level event");
-         p $$6 = $$5.a("Level event being played");
-         $$6.a("Block coordinates", p.a(this, $$2));
-         $$6.a("Event source", $$0);
-         $$6.a("Event type", $$1);
-         $$6.a("Event data", $$3);
-         throw new y($$5);
-      }
-   }
-
-   @Override
-   public void a(lh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this.E.a($$0, $$0.a().b(), $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   @Override
-   public void a(lh $$0, boolean $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      this.E.a($$0, $$0.a().b() || $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   public void b(lh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this.E.a($$0, false, true, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   @Override
-   public void b(lh $$0, boolean $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      this.E.a($$0, $$0.a().b() || $$1, true, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   public List<gci> x() {
-      return this.J;
-   }
-
-   @Override
-   public ji<dcs> a(int $$0, int $$1, int $$2) {
-      return this.H_().d(lq.az).g(dcz.b);
-   }
-
-   public float g(float $$0) {
-      float $$1 = this.f($$0);
-      float $$2 = 1.0F - (ayu.b($$1 * (float) (Math.PI * 2)) * 2.0F + 0.2F);
-      $$2 = ayu.a($$2, 0.0F, 1.0F);
-      $$2 = 1.0F - $$2;
-      $$2 *= 1.0F - this.d($$0) * 5.0F / 16.0F;
-      $$2 *= 1.0F - this.b($$0) * 5.0F / 16.0F;
-      return $$2 * 0.8F + 0.2F;
-   }
-
-   public evm a(evm $$0, float $$1) {
-      float $$2 = this.f($$1);
-      evm $$3 = $$0.a(2.0, 2.0, 2.0).a(0.25);
-      dcu $$4 = this.F_();
-      evm $$5 = axv.a($$3, ($$1x, $$2x, $$3x) -> evm.a($$4.a($$1x, $$2x, $$3x).a().a()));
-      float $$6 = ayu.b($$2 * (float) (Math.PI * 2)) * 2.0F + 0.5F;
-      $$6 = ayu.a($$6, 0.0F, 1.0F);
-      float $$7 = (float)$$5.c * $$6;
-      float $$8 = (float)$$5.d * $$6;
-      float $$9 = (float)$$5.e * $$6;
-      float $$10 = this.d($$1);
-      if ($$10 > 0.0F) {
-         float $$11 = ($$7 * 0.3F + $$8 * 0.59F + $$9 * 0.11F) * 0.6F;
-         float $$12 = 1.0F - $$10 * 0.75F;
-         $$7 = $$7 * $$12 + $$11 * (1.0F - $$12);
-         $$8 = $$8 * $$12 + $$11 * (1.0F - $$12);
-         $$9 = $$9 * $$12 + $$11 * (1.0F - $$12);
-      }
-
-      float $$13 = this.b($$1);
-      if ($$13 > 0.0F) {
-         float $$14 = ($$7 * 0.3F + $$8 * 0.59F + $$9 * 0.11F) * 0.2F;
-         float $$15 = 1.0F - $$13 * 0.75F;
-         $$7 = $$7 * $$15 + $$14 * (1.0F - $$15);
-         $$8 = $$8 * $$15 + $$14 * (1.0F - $$15);
-         $$9 = $$9 * $$15 + $$14 * (1.0F - $$15);
-      }
-
-      int $$16 = this.j();
-      if ($$16 > 0) {
-         float $$17 = (float)$$16 - $$1;
-         if ($$17 > 1.0F) {
-            $$17 = 1.0F;
-         }
-
-         $$17 *= 0.45F;
-         $$7 = $$7 * (1.0F - $$17) + 0.8F * $$17;
-         $$8 = $$8 * (1.0F - $$17) + 0.8F * $$17;
-         $$9 = $$9 * (1.0F - $$17) + 1.0F * $$17;
-      }
-
-      return new evm((double)$$7, (double)$$8, (double)$$9);
-   }
-
-   public evm h(float $$0) {
-      float $$1 = this.f($$0);
-      float $$2 = ayu.b($$1 * (float) (Math.PI * 2)) * 2.0F + 0.5F;
-      $$2 = ayu.a($$2, 0.0F, 1.0F);
-      float $$3 = 1.0F;
-      float $$4 = 1.0F;
-      float $$5 = 1.0F;
-      float $$6 = this.d($$0);
-      if ($$6 > 0.0F) {
-         float $$7 = ($$3 * 0.3F + $$4 * 0.59F + $$5 * 0.11F) * 0.6F;
-         float $$8 = 1.0F - $$6 * 0.95F;
-         $$3 = $$3 * $$8 + $$7 * (1.0F - $$8);
-         $$4 = $$4 * $$8 + $$7 * (1.0F - $$8);
-         $$5 = $$5 * $$8 + $$7 * (1.0F - $$8);
-      }
-
-      $$3 *= $$2 * 0.9F + 0.1F;
-      $$4 *= $$2 * 0.9F + 0.1F;
-      $$5 *= $$2 * 0.85F + 0.15F;
-      float $$9 = this.b($$0);
-      if ($$9 > 0.0F) {
-         float $$10 = ($$3 * 0.3F + $$4 * 0.59F + $$5 * 0.11F) * 0.2F;
-         float $$11 = 1.0F - $$9 * 0.95F;
-         $$3 = $$3 * $$11 + $$10 * (1.0F - $$11);
-         $$4 = $$4 * $$11 + $$10 * (1.0F - $$11);
-         $$5 = $$5 * $$11 + $$10 * (1.0F - $$11);
-      }
-
-      return new evm((double)$$3, (double)$$4, (double)$$5);
-   }
-
-   public float i(float $$0) {
-      float $$1 = this.f($$0);
-      float $$2 = 1.0F - (ayu.b($$1 * (float) (Math.PI * 2)) * 2.0F + 0.25F);
-      $$2 = ayu.a($$2, 0.0F, 1.0F);
-      return $$2 * $$2 * 0.5F;
-   }
-
-   public int j() {
-      return this.I.m.b().c() ? 0 : this.M;
-   }
-
-   @Override
-   public void c(int $$0) {
-      this.M = $$0;
-   }
-
-   @Override
-   public float a(je $$0, boolean $$1) {
-      boolean $$2 = this.d().e();
-      if (!$$1) {
-         return $$2 ? 0.9F : 1.0F;
+   private void a(zv<? extends xa> $$0, BooleanSupplier $$1, Duration $$2) {
+      if ($$1.getAsBoolean()) {
+         this.b($$0);
       } else {
-         switch ($$0) {
-            case a:
-               return $$2 ? 0.9F : 0.5F;
-            case b:
-               return $$2 ? 0.9F : 1.0F;
-            case c:
-            case d:
-               return 0.8F;
-            case e:
-            case f:
-               return 0.6F;
-            default:
-               return 1.0F;
-         }
+         this.k.add(new fxq.a($$0, $$1, ac.c() + $$2.toMillis()));
       }
    }
 
-   @Override
-   public int a(iz $$0, dbe $$1) {
-      fge $$2 = (fge)this.N.get($$1);
-      return $$2.a($$0);
+   private fnb a(UUID $$0, URL $$1, String $$2, boolean $$3, @Nullable xo $$4) {
+      fnb $$5 = this.a.y;
+      return $$5 instanceof fxq.b $$6 ? $$6.a(this.a, $$0, $$1, $$2, $$3, $$4) : new fxq.b(this.a, $$5, List.of(new fxq.b.a($$0, $$1, $$2)), $$3, $$4);
    }
 
-   public int b(iz $$0, dbe $$1) {
-      int $$2 = ffa.Q().m.E().c();
-      if ($$2 == 0) {
-         return $$1.getColor(this.t($$0).a(), (double)$$0.u(), (double)$$0.w());
-      } else {
-         int $$3 = ($$2 * 2 + 1) * ($$2 * 2 + 1);
-         int $$4 = 0;
-         int $$5 = 0;
-         int $$6 = 0;
-         jb $$7 = new jb($$0.u() - $$2, $$0.v(), $$0.w() - $$2, $$0.u() + $$2, $$0.v(), $$0.w() + $$2);
-         iz.a $$8 = new iz.a();
-
-         while ($$7.a()) {
-            $$8.d($$7.b(), $$7.c(), $$7.d());
-            int $$9 = $$1.getColor(this.t($$8).a(), (double)$$8.u(), (double)$$8.w());
-            $$4 += ($$9 & 0xFF0000) >> 16;
-            $$5 += ($$9 & 0xFF00) >> 8;
-            $$6 += $$9 & 0xFF;
-         }
-
-         return ($$4 / $$3 & 0xFF) << 16 | ($$5 / $$3 & 0xFF) << 8 | $$6 / $$3 & 0xFF;
-      }
+   static record a(zv<? extends xa> a, BooleanSupplier b, long c) {
    }
 
-   public void a(iz $$0, float $$1) {
-      this.A.a($$0, $$1);
-   }
+   class b extends flt {
+      private final List<fxq.b.a> r;
+      @Nullable
+      private final fnb s;
 
-   @Override
-   public String toString() {
-      return "ClientLevel";
-   }
+      b(final ffd $$0, @Nullable final fnb $$1, final List<fxq.b.a> $$2, final boolean $$3, @Nullable final xo $$4) {
+         super(
+            $$5 -> {
+               $$0.a($$1);
+               grn $$6 = $$0.ae();
+               if ($$5) {
+                  if (fxq.this.c != null) {
+                     fxq.this.c.a(fyh.a.a);
+                  }
 
-   public fxq.a k() {
-      return this.F;
-   }
+                  $$6.g();
+               } else {
+                  $$6.h();
+                  if ($$3) {
+                     fxq.this.b.a(xo.c("multiplayer.requiredTexturePrompt.disconnect"));
+                  } else if (fxq.this.c != null) {
+                     fxq.this.c.a(fyh.a.b);
+                  }
+               }
 
-   @Override
-   public void a(ji<dwq> $$0, evm $$1, dwq.a $$2) {
-   }
+               for (fxq.b.a $$7 : $$2) {
+                  $$6.a($$7.a, $$7.b, $$7.c);
+               }
 
-   protected Map<epd, epf> l() {
-      return ImmutableMap.copyOf(this.K);
-   }
-
-   protected void a(Map<epd, epf> $$0) {
-      this.K.putAll($$0);
-   }
-
-   @Override
-   protected dwg<bsp> G() {
-      return this.f.a();
-   }
-
-   @Override
-   public String I() {
-      return "Chunks[C] W: " + this.O.e() + " E: " + this.f.c();
-   }
-
-   @Override
-   public void a(iz $$0, drx $$1) {
-      this.I.g.a($$0, $$1);
-   }
-
-   public void h(int $$0) {
-      this.Q = $$0;
-   }
-
-   public int m() {
-      return this.Q;
-   }
-
-   @Override
-   public cpg J() {
-      return this.D.y();
-   }
-
-   @Override
-   public cwk K() {
-      return this.D.A();
-   }
-
-   public static class a implements epy {
-      private final boolean a;
-      private final dbp b;
-      private final boolean c;
-      private iz d;
-      private float e;
-      private long f;
-      private long g;
-      private boolean h;
-      private bqm i;
-      private boolean j;
-
-      public a(bqm $$0, boolean $$1, boolean $$2) {
-         this.i = $$0;
-         this.a = $$1;
-         this.c = $$2;
-         this.b = new dbp();
+               if (fxq.this.c != null) {
+                  fyi.b(fxq.this.c);
+               }
+            },
+            $$3 ? xo.c("multiplayer.requiredTexturePrompt.line1") : xo.c("multiplayer.texturePrompt.line1"),
+            fxq.a($$3 ? xo.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : xo.c("multiplayer.texturePrompt.line2"), $$4),
+            $$3 ? xn.i : xn.f,
+            $$3 ? xn.p : xn.g
+         );
+         this.r = $$2;
+         this.s = $$1;
       }
 
-      @Override
-      public iz a() {
-         return this.d;
+      public fxq.b a(ffd $$0, UUID $$1, URL $$2, String $$3, boolean $$4, @Nullable xo $$5) {
+         List<fxq.b.a> $$6 = ImmutableList.builderWithExpectedSize(this.r.size() + 1).addAll(this.r).add(new fxq.b.a($$1, $$2, $$3)).build();
+         return fxq.this.new b($$0, this.s, $$6, $$4, $$5);
       }
 
-      @Override
-      public float b() {
-         return this.e;
-      }
-
-      @Override
-      public long c() {
-         return this.f;
-      }
-
-      @Override
-      public long d() {
-         return this.g;
-      }
-
-      public void a(long $$0) {
-         this.f = $$0;
-      }
-
-      public void b(long $$0) {
-         this.g = $$0;
-      }
-
-      @Override
-      public void a(iz $$0, float $$1) {
-         this.d = $$0.i();
-         this.e = $$1;
-      }
-
-      @Override
-      public boolean g() {
-         return false;
-      }
-
-      @Override
-      public boolean i() {
-         return this.h;
-      }
-
-      @Override
-      public void b(boolean $$0) {
-         this.h = $$0;
-      }
-
-      @Override
-      public boolean l() {
-         return this.a;
-      }
-
-      @Override
-      public dbp o() {
-         return this.b;
-      }
-
-      @Override
-      public bqm q() {
-         return this.i;
-      }
-
-      @Override
-      public boolean r() {
-         return this.j;
-      }
-
-      @Override
-      public void a(p $$0, dbv $$1) {
-         epy.super.a($$0, $$1);
-      }
-
-      public void a(bqm $$0) {
-         this.i = $$0;
-      }
-
-      public void a(boolean $$0) {
-         this.j = $$0;
-      }
-
-      public double a(dbv $$0) {
-         return this.c ? (double)$$0.I_() : 63.0;
-      }
-
-      public float e() {
-         return this.c ? 1.0F : 0.03125F;
-      }
-   }
-
-   final class b implements dwf<bsp> {
-      public void a(bsp $$0) {
-      }
-
-      public void b(bsp $$0) {
-      }
-
-      public void c(bsp $$0) {
-         fxq.this.e.a($$0);
-      }
-
-      public void d(bsp $$0) {
-         fxq.this.e.b($$0);
-      }
-
-      public void e(bsp $$0) {
-         if ($$0 instanceof gci) {
-            fxq.this.J.add((gci)$$0);
-         }
-      }
-
-      public void f(bsp $$0) {
-         $$0.ai();
-         fxq.this.J.remove($$0);
-      }
-
-      public void g(bsp $$0) {
+      static record a(UUID a, URL b, String c) {
       }
    }
 }

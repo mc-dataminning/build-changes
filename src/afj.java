@@ -1,52 +1,29 @@
-import java.util.ArrayList;
-import java.util.List;
+public class afj implements zv<ach> {
+   public static final zm<wl, afj> a = zv.a(afj::a, afj::new);
+   private final int b;
 
-public record afj(int c, List<akk.c<?>> d) implements zs<ace> {
-   public static final zj<ww, afj> a = zs.a(afj::b, afj::new);
-   public static final int b = 255;
-
-   private afj(ww $$0) {
-      this($$0.l(), a($$0));
+   public afj(int $$0) {
+      this.b = $$0;
    }
 
-   private static void a(List<akk.c<?>> $$0, ww $$1) {
-      for (akk.c<?> $$2 : $$0) {
-         $$2.a($$1);
-      }
-
-      $$1.k(255);
+   private afj(wl $$0) {
+      this.b = $$0.l();
    }
 
-   private static List<akk.c<?>> a(ww $$0) {
-      List<akk.c<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(akk.c.a($$0, $$2));
-      }
-
-      return $$1;
-   }
-
-   private void b(ww $$0) {
-      $$0.c(this.c);
-      a(this.d, $$0);
+   private void a(wl $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zu<afj> a() {
-      return agq.aC;
+   public zx<afj> a() {
+      return agt.az;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.c;
-   }
-
-   public List<akk.c<?>> e() {
-      return this.d;
+      return this.b;
    }
 }

@@ -1,42 +1,20 @@
-import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record eum(eui b, eui c) implements eui {
-   public static final MapCodec<eum> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(euj.a.fieldOf("min").forGetter(eum::c), euj.a.fieldOf("max").forGetter(eum::d)).apply($$0, eum::new)
-   );
+public class eum {
+   private static final Codec<eul> g = lp.I.q().dispatch(eul::b, euk::a);
+   public static final Codec<eul> a = Codec.lazyInitialized(() -> {
+      Codec<eul> $$0 = Codec.withAlternative(g, eup.a.codec());
+      return Codec.either(euj.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof euj $$1 ? Either.left($$1) : Either.right($$0x));
+   });
+   public static final euk b = a("constant", euj.a);
+   public static final euk c = a("uniform", eup.a);
+   public static final euk d = a("binomial", eui.a);
+   public static final euk e = a("score", eun.a);
+   public static final euk f = a("storage", euo.a);
 
-   @Override
-   public euh b() {
-      return euj.c;
-   }
-
-   public static eum a(float $$0, float $$1) {
-      return new eum(eug.a($$0), eug.a($$1));
-   }
-
-   @Override
-   public int a(eqd $$0) {
-      return ayu.a($$0.b(), this.b.a($$0), this.c.a($$0));
-   }
-
-   @Override
-   public float b(eqd $$0) {
-      return ayu.a($$0.b(), this.b.b($$0), this.c.b($$0));
-   }
-
-   @Override
-   public Set<esw<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public eui c() {
-      return this.b;
-   }
-
-   public eui d() {
-      return this.c;
+   private static euk a(String $$0, MapCodec<? extends eul> $$1) {
+      return jv.a(lp.I, new ale($$0), new euk($$1));
    }
 }

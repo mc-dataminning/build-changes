@@ -1,16 +1,12 @@
-public class gil extends gjg {
-   public static final alb a = new alb("textures/entity/guardian_elder.png");
+public class gil extends gkb<cfl, ftt<cfl>> {
+   private static final ale a = new ale("textures/entity/dolphin.png");
 
-   public gil(gis.a $$0) {
-      super($$0, 1.2F, fwu.V);
+   public gil(giv.a $$0) {
+      super($$0, new ftt<>($$0.a(fwx.M)), 0.7F);
+      this.a(new gmo(this, $$0.d()));
    }
 
-   protected void a(cju $$0, ezt $$1, float $$2) {
-      $$1.b(cjn.b, cjn.b, cjn.b);
-   }
-
-   @Override
-   public alb a(cju $$0) {
+   public ale a(cfl $$0) {
       return a;
    }
 }

@@ -1,45 +1,38 @@
-public class aho implements zs<ags> {
-   public static final zj<wl, aho> a = zs.a(aho::a, aho::new);
-   private final iz b;
-   private final int c;
-   private final boolean d;
+import java.util.List;
+import java.util.Optional;
 
-   public aho(iz $$0, int $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+public record aho(int c, List<String> d, Optional<String> e) implements zv<agv> {
+   public static final int a = 4;
+   private static final int f = 128;
+   private static final int g = 8192;
+   private static final int h = 200;
+   public static final zm<wl, aho> b = zm.a(zk.g, aho::b, zk.b(8192).a(zk.c(200)), aho::e, zk.b(128).a(zk::a), aho::f, aho::new);
 
-   private aho(wl $$0) {
-      this.b = $$0.e();
-      this.c = $$0.l();
-      this.d = $$0.readBoolean();
-   }
-
-   private void a(wl $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   public aho(int c, List<String> d, Optional<String> e) {
+      d = List.copyOf(d);
+      this.c = c;
+      this.d = d;
+      this.e = e;
    }
 
    @Override
-   public zu<aho> a() {
-      return agq.bz;
+   public zx<aho> a() {
+      return agt.bw;
    }
 
-   public void a(ags $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public iz b() {
-      return this.b;
-   }
-
-   public int e() {
+   public int b() {
       return this.c;
    }
 
-   public boolean f() {
+   public List<String> e() {
       return this.d;
+   }
+
+   public Optional<String> f() {
+      return this.e;
    }
 }

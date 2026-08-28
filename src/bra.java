@@ -1,60 +1,81 @@
-public class bra {
-   public static final float a = 1.0F;
-   protected float b = 20.0F;
-   protected long c = azu.a / 20L;
-   protected int d = 0;
-   protected boolean e = true;
-   protected boolean f = false;
+import javax.annotation.Nullable;
 
-   public void a(float $$0) {
-      this.b = Math.max($$0, 1.0F);
-      this.c = (long)((double)azu.a / (double)this.b);
+public interface bra extends bql {
+   String b = "LootTable";
+   String c = "LootTableSeed";
+
+   @Nullable
+   ald<eql> ax_();
+
+   void a(@Nullable ald<eql> var1);
+
+   default void a(ald<eql> $$0, long $$1) {
+      this.a($$0);
+      this.a($$1);
    }
 
-   public float f() {
-      return this.b;
-   }
+   long ay_();
 
-   public float g() {
-      return (float)this.c / (float)azu.b;
-   }
+   void a(long var1);
 
-   public long h() {
-      return this.c;
-   }
+   iz az_();
 
-   public boolean i() {
-      return this.e;
-   }
+   @Nullable
+   dbw i();
 
-   public boolean j() {
-      return this.d > 0;
-   }
-
-   public void c(int $$0) {
-      this.d = $$0;
-   }
-
-   public int k() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-   }
-
-   public boolean l() {
-      return this.f;
-   }
-
-   public void m() {
-      this.e = !this.f || this.d > 0;
-      if (this.d > 0) {
-         this.d--;
+   static void a(dbc $$0, azf $$1, iz $$2, ald<eql> $$3) {
+      if ($$0.c_($$2) instanceof bra $$5) {
+         $$5.a($$3, $$1.g());
       }
    }
 
-   public boolean a(bsp $$0) {
-      return !this.i() && !($$0 instanceof cms) && $$0.cX() <= 0;
+   default boolean a_(ur $$0) {
+      if ($$0.b("LootTable", 8)) {
+         this.a(ald.a(lq.aU, new ale($$0.l("LootTable"))));
+         if ($$0.b("LootTableSeed", 4)) {
+            this.a($$0.i("LootTableSeed"));
+         } else {
+            this.a(0L);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   default boolean b_(ur $$0) {
+      ald<eql> $$1 = this.ax_();
+      if ($$1 == null) {
+         return false;
+      } else {
+         $$0.a("LootTable", $$1.a().toString());
+         long $$2 = this.ay_();
+         if ($$2 != 0L) {
+            $$0.a("LootTableSeed", $$2);
+         }
+
+         return true;
+      }
+   }
+
+   default void e_(@Nullable cmv $$0) {
+      dbw $$1 = this.i();
+      iz $$2 = this.az_();
+      ald<eql> $$3 = this.ax_();
+      if ($$3 != null && $$1 != null && $$1.o() != null) {
+         eql $$4 = $$1.o().be().b($$3);
+         if ($$0 instanceof arf) {
+            am.Q.a((arf)$$0, $$3);
+         }
+
+         this.a(null);
+         eqj.a $$5 = new eqj.a((are)$$1).a(etc.f, evp.b($$2));
+         if ($$0 != null) {
+            $$5.a($$0.gy()).a(etc.a, $$0);
+         }
+
+         $$4.a(this, $$5.a(etb.c), this.ay_());
+      }
    }
 }

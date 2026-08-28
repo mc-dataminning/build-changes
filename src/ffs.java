@@ -1,49 +1,37 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.Map.Entry;
 import org.joml.Vector3f;
 
-public class ffs {
-   public static void a(fue<?> $$0, ffq $$1, long $$2, float $$3, Vector3f $$4) {
-      float $$5 = a($$1, $$2);
-
-      for (Entry<String, List<ffp>> $$6 : $$1.c().entrySet()) {
-         Optional<fwv> $$7 = $$0.a($$6.getKey());
-         List<ffp> $$8 = $$6.getValue();
-         $$7.ifPresent($$4x -> $$8.forEach($$4xx -> {
-               ffr[] $$5x = $$4xx.b();
-               int $$6x = Math.max(0, ayu.a(0, $$5x.length, $$2xxx -> $$5 <= $$5x[$$2xxx].a()) - 1);
-               int $$7x = Math.min($$5x.length - 1, $$6x + 1);
-               ffr $$8x = $$5x[$$6x];
-               ffr $$9 = $$5x[$$7x];
-               float $$10 = $$5 - $$8x.a();
-               float $$11;
-               if ($$7x != $$6x) {
-                  $$11 = ayu.a($$10 / ($$9.a() - $$8x.a()), 0.0F, 1.0F);
-               } else {
-                  $$11 = 0.0F;
-               }
-
-               $$9.c().apply($$4, $$11, $$5x, $$6x, $$7x, $$3);
-               $$4xx.a().apply($$4x, $$4);
-            }));
-      }
+public record ffs(ffs.c a, ffu... b) {
+   public interface a {
+      Vector3f apply(Vector3f var1, float var2, ffu[] var3, int var4, int var5, float var6);
    }
 
-   private static float a(ffq $$0, long $$1) {
-      float $$2 = (float)$$1 / 1000.0F;
-      return $$0.b() ? $$2 % $$0.a() : $$2;
+   public static class b {
+      public static final ffs.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[$$3].b();
+         Vector3f $$7 = $$2[$$4].b();
+         return $$6.lerp($$7, $$1, $$0).mul($$5);
+      };
+      public static final ffs.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
+         Vector3f $$7 = $$2[$$3].b();
+         Vector3f $$8 = $$2[$$4].b();
+         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
+         $$0.set(
+            ayx.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
+            ayx.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
+            ayx.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
+         );
+         return $$0;
+      };
    }
 
-   public static Vector3f a(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0, -$$1, $$2);
+   public interface c {
+      void apply(fwy var1, Vector3f var2);
    }
 
-   public static Vector3f b(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), $$2 * (float) (Math.PI / 180.0));
-   }
-
-   public static Vector3f a(double $$0, double $$1, double $$2) {
-      return new Vector3f((float)($$0 - 1.0), (float)($$1 - 1.0), (float)($$2 - 1.0));
+   public static class d {
+      public static final ffs.c a = fwy::a;
+      public static final ffs.c b = fwy::b;
+      public static final ffs.c c = fwy::c;
    }
 }

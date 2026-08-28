@@ -1,267 +1,59 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.authlib.minecraft.BanDetails;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.Reader;
-import java.util.List;
-import org.apache.commons.lang3.StringUtils;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class fng extends fmy {
+public class fng extends fnb {
    private static final Logger a = LogUtils.getLogger();
-   private static final alb b = new alb("textures/misc/credits_vignette.png");
-   private static final xl c = xl.b("============").a(n.p);
-   private static final String d = "           ";
-   private static final String r = "" + n.p + n.q + n.k + n.l;
-   private static final float s = 5.0F;
-   private static final float u = 15.0F;
-   private final boolean v;
-   private final Runnable w;
-   private float x;
-   private List<ayg> y;
-   private IntSet z;
-   private int A;
-   private boolean B;
-   private final IntSet C = new IntOpenHashSet();
-   private float D;
-   private final float E;
-   private int F;
-   private final fhq G = new fhq(false);
+   private static final xo b = xo.c("narrator.screen.title");
+   private static final xo c = xo.c("title.credits");
+   private static final String d = "Demo_World";
+   private static final float r = 2000.0F;
+   @Nullable
+   private fig s;
+   private fhc u;
+   @Nullable
+   private fcv v;
+   private float w = 1.0F;
+   private boolean x;
+   private long y;
+   @Nullable
+   private fng.a z;
+   private final fht A;
 
-   public fng(boolean $$0, Runnable $$1) {
-      super(fes.a);
-      this.v = $$0;
-      this.w = $$1;
-      if (!$$0) {
-         this.E = 0.75F;
-      } else {
-         this.E = 0.5F;
-      }
-
-      this.F = 1;
-      this.D = this.E;
+   public fng() {
+      this(false);
    }
 
-   private float m() {
-      return this.B ? this.E * (5.0F + (float)this.C.size() * 15.0F) * (float)this.F : this.E * (float)this.F;
+   public fng(boolean $$0) {
+      this($$0, null);
+   }
+
+   public fng(boolean $$0, @Nullable fht $$1) {
+      super(b);
+      this.x = $$0;
+      this.A = Objects.requireNonNullElseGet($$1, () -> new fht(false));
+   }
+
+   private boolean m() {
+      return this.v != null;
    }
 
    @Override
    public void e() {
-      this.m.s().a();
-      this.m.aj().a(false);
-      float $$0 = (float)(this.A + this.o + this.o + 24);
-      if (this.x > $$0) {
-         this.C();
+      if (this.m()) {
+         this.v.e();
       }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 265) {
-         this.F = -1;
-      } else if ($$0 == 341 || $$0 == 345) {
-         this.C.add($$0);
-      } else if ($$0 == 32) {
-         this.B = true;
-      }
-
-      this.D = this.m();
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean c(int $$0, int $$1, int $$2) {
-      if ($$0 == 265) {
-         this.F = 1;
-      }
-
-      if ($$0 == 32) {
-         this.B = false;
-      } else if ($$0 == 341 || $$0 == 345) {
-         this.C.remove($$0);
-      }
-
-      this.D = this.m();
-      return super.c($$0, $$1, $$2);
-   }
-
-   @Override
-   public void d() {
-      this.C();
-   }
-
-   private void C() {
-      this.w.run();
-   }
-
-   @Override
-   protected void aN_() {
-      if (this.y == null) {
-         this.y = Lists.newArrayList();
-         this.z = new IntOpenHashSet();
-         if (this.v) {
-            this.a("texts/end.txt", this::a);
-         }
-
-         this.a("texts/credits.json", this::b);
-         if (this.v) {
-            this.a("texts/postcredits.txt", this::a);
-         }
-
-         this.A = this.y.size() * 12;
-      }
-   }
-
-   private void a(String $$0, fng.a $$1) {
-      try (Reader $$2 = this.m.ab().openAsReader(new alb($$0))) {
-         $$1.read($$2);
-      } catch (Exception var8) {
-         a.error("Couldn't load credits", var8);
-      }
-   }
-
-   private void a(Reader $$0) throws IOException {
-      BufferedReader $$1 = new BufferedReader($$0);
-      azc $$2 = azc.a(8124371L);
-
-      String $$3;
-      while (($$3 = $$1.readLine()) != null) {
-         $$3 = $$3.replaceAll("PLAYERNAME", this.m.X().c());
-
-         int $$4;
-         while (($$4 = $$3.indexOf(r)) != -1) {
-            String $$5 = $$3.substring(0, $$4);
-            String $$6 = $$3.substring($$4 + r.length());
-            $$3 = $$5 + n.p + n.q + "XXXXXXXX".substring(0, $$2.a(4) + 3) + $$6;
-         }
-
-         this.a($$3);
-         this.D();
-      }
-
-      for (int $$7 = 0; $$7 < 8; $$7++) {
-         this.D();
-      }
-   }
-
-   private void b(Reader $$0) {
-      for (JsonElement $$2 : ayk.b($$0)) {
-         JsonObject $$3 = $$2.getAsJsonObject();
-         String $$4 = $$3.get("section").getAsString();
-         this.a(c, true);
-         this.a(xl.b($$4).a(n.o), true);
-         this.a(c, true);
-         this.D();
-         this.D();
-
-         for (JsonElement $$6 : $$3.getAsJsonArray("disciplines")) {
-            JsonObject $$7 = $$6.getAsJsonObject();
-            String $$8 = $$7.get("discipline").getAsString();
-            if (StringUtils.isNotEmpty($$8)) {
-               this.a(xl.b($$8).a(n.o), true);
-               this.D();
-               this.D();
-            }
-
-            for (JsonElement $$10 : $$7.getAsJsonArray("titles")) {
-               JsonObject $$11 = $$10.getAsJsonObject();
-               String $$12 = $$11.get("title").getAsString();
-               JsonArray $$13 = $$11.getAsJsonArray("names");
-               this.a(xl.b($$12).a(n.h), false);
-
-               for (JsonElement $$14 : $$13) {
-                  String $$15 = $$14.getAsString();
-                  this.a(xl.b("           ").f($$15).a(n.p), false);
-               }
-
-               this.D();
-               this.D();
-            }
-         }
-      }
-   }
-
-   private void D() {
-      this.y.add(ayg.a);
-   }
-
-   private void a(String $$0) {
-      this.y.addAll(this.m.h.c(xl.b($$0), 256));
-   }
-
-   private void a(xl $$0, boolean $$1) {
-      if ($$1) {
-         this.z.add(this.y.size());
-      }
-
-      this.y.add($$0.g());
-   }
-
-   @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0);
-      this.x = Math.max(0.0F, this.x + $$3 * this.D);
-      int $$4 = this.n / 2 - 128;
-      int $$5 = this.o + 50;
-      float $$6 = -this.x;
-      $$0.c().a();
-      $$0.c().a(0.0F, $$6, 0.0F);
-      this.G.a($$0, this.n, 1.0F, $$5);
-      int $$7 = $$5 + 100;
-
-      for (int $$8 = 0; $$8 < this.y.size(); $$8++) {
-         if ($$8 == this.y.size() - 1) {
-            float $$9 = (float)$$7 + $$6 - (float)(this.o / 2 - 6);
-            if ($$9 < 0.0F) {
-               $$0.c().a(0.0F, -$$9, 0.0F);
-            }
-         }
-
-         if ((float)$$7 + $$6 + 12.0F + 8.0F > 0.0F && (float)$$7 + $$6 < (float)this.o) {
-            ayg $$10 = this.y.get($$8);
-            if (this.z.contains($$8)) {
-               $$0.a(this.p, $$10, $$4 + 128, $$7, -1);
-            } else {
-               $$0.b(this.p, $$10, $$4, $$7, -1);
-            }
-         }
-
-         $$7 += 12;
-      }
-
-      $$0.c().b();
-   }
-
-   private void c(fgm $$0) {
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR);
-      $$0.a(b, 0, 0, 0, 0.0F, 0.0F, this.n, this.o, this.n, this.o);
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-   }
-
-   @Override
-   public void b(fgm $$0, int $$1, int $$2, float $$3) {
-      if (this.v) {
-         $$0.b(gdr.u(), 0, 0, this.n, this.o, 0);
-      } else {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   protected void a(fgm $$0, int $$1, int $$2, int $$3, int $$4) {
-      float $$5 = this.x * 0.5F;
-      fmy.a($$0, fmy.g, 0, 0, 0.0F, $$5, $$3, $$4);
+   public static CompletableFuture<Void> a(goy $$0, Executor $$1) {
+      return CompletableFuture.allOf($$0.a(fht.a, $$1), $$0.a(fht.c, $$1), $$0.a(gdo.a, $$1), e.a($$0, $$1));
    }
 
    @Override
@@ -270,17 +62,232 @@ public class fng extends fmy {
    }
 
    @Override
-   public void j() {
-      this.m.s().b(avu.c);
+   public boolean aD_() {
+      return false;
    }
 
    @Override
-   public avt B() {
-      return avu.c;
+   protected void aM_() {
+      if (this.s == null) {
+         this.s = this.m.aK().a();
+      }
+
+      int $$0 = this.p.a(c);
+      int $$1 = this.n - $$0 - 2;
+      int $$2 = 24;
+      int $$3 = this.o / 4 + 48;
+      if (this.m.K()) {
+         this.b($$3, 24);
+      } else {
+         this.a($$3, 24);
+      }
+
+      fih $$4 = this.c(fhg.a(20, $$0x -> this.m.a(new fmk(this, this.m.m, this.m.ag())), true));
+      $$4.c(this.n / 2 - 124, $$3 + 72 + 12);
+      this.c(fhc.a(xo.c("menu.options"), $$0x -> this.m.a(new fms(this, this.m.m))).a(this.n / 2 - 100, $$3 + 72 + 12, 98, 20).a());
+      this.c(fhc.a(xo.c("menu.quit"), $$0x -> this.m.q()).a(this.n / 2 + 2, $$3 + 72 + 12, 98, 20).a());
+      fih $$5 = this.c(fhg.b(20, $$0x -> this.m.a(new flm(this, this.m.m)), true));
+      $$5.c(this.n / 2 + 104, $$3 + 72 + 12);
+      this.c(new fia($$1, this.o - 10, $$0, 10, c, $$0x -> this.m.a(new flx(this)), this.p));
+      if (this.v == null) {
+         this.v = new fcv();
+      }
+
+      if (this.m()) {
+         this.v.b(this.m, this.n, this.o);
+      }
    }
 
-   @FunctionalInterface
-   interface a {
-      void read(Reader var1) throws IOException;
+   private void a(int $$0, int $$1) {
+      this.c(fhc.a(xo.c("menu.singleplayer"), $$0x -> this.m.a(new frw(this))).a(this.n / 2 - 100, $$0, 200, 20).a());
+      xo $$2 = this.D();
+      boolean $$3 = $$2 == null;
+      fin $$4 = $$2 != null ? fin.a($$2) : null;
+      this.c(fhc.a(xo.c("menu.multiplayer"), $$0x -> {
+         fnb $$1x = (fnb)(this.m.m.v ? new fpz(this) : new fqa(this));
+         this.m.a($$1x);
+      }).a(this.n / 2 - 100, $$0 + $$1 * 1, 200, 20).a($$4).a()).j = $$3;
+      this.c(fhc.a(xo.c("menu.online"), $$0x -> this.m.a(new fah(this))).a(this.n / 2 - 100, $$0 + $$1 * 2, 200, 20).a($$4).a()).j = $$3;
+   }
+
+   @Nullable
+   private xo D() {
+      if (this.m.F()) {
+         return null;
+      } else if (this.m.I()) {
+         return xo.c("title.multiplayer.disabled.banned.name");
+      } else {
+         BanDetails $$0 = this.m.H();
+         if ($$0 != null) {
+            return $$0.expires() != null ? xo.c("title.multiplayer.disabled.banned.temporary") : xo.c("title.multiplayer.disabled.banned.permanent");
+         } else {
+            return xo.c("title.multiplayer.disabled");
+         }
+      }
+   }
+
+   private void b(int $$0, int $$1) {
+      boolean $$2 = this.E();
+      this.c(fhc.a(xo.c("menu.playdemo"), $$1x -> {
+         if ($$2) {
+            this.m.x().a("Demo_World", () -> this.m.a(this));
+         } else {
+            this.m.x().a("Demo_World", MinecraftServer.d, dyq.b, ehy::a, this);
+         }
+      }).a(this.n / 2 - 100, $$0, 200, 20).a());
+      this.u = this.c(
+         fhc.a(
+               xo.c("menu.resetdemo"),
+               $$0x -> {
+                  epu $$1x = this.m.m();
+
+                  try (epu.c $$2x = $$1x.e("Demo_World")) {
+                     if ($$2x.m()) {
+                        this.m
+                           .a(
+                              new flt(
+                                 this::c,
+                                 xo.c("selectWorld.deleteQuestion"),
+                                 xo.a("selectWorld.deleteWarning", MinecraftServer.d.a()),
+                                 xo.c("selectWorld.deleteButton"),
+                                 xn.e
+                              )
+                           );
+                     }
+                  } catch (IOException var8) {
+                     fjk.a(this.m, "Demo_World");
+                     a.warn("Failed to access demo world", var8);
+                  }
+               }
+            )
+            .a(this.n / 2 - 100, $$0 + $$1 * 1, 200, 20)
+            .a()
+      );
+      this.u.j = $$2;
+   }
+
+   private boolean E() {
+      try {
+         boolean var2;
+         try (epu.c $$0 = this.m.m().e("Demo_World")) {
+            var2 = $$0.m();
+         }
+
+         return var2;
+      } catch (IOException var6) {
+         fjk.a(this.m, "Demo_World");
+         a.warn("Failed to read demo world data", var6);
+         return false;
+      }
+   }
+
+   @Override
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
+      if (this.y == 0L && this.x) {
+         this.y = ac.c();
+      }
+
+      float $$4 = 1.0F;
+      if (this.x) {
+         float $$5 = (float)(ac.c() - this.y) / 2000.0F;
+         if ($$5 > 1.0F) {
+            this.x = false;
+            this.w = 1.0F;
+         } else {
+            $$5 = ayx.a($$5, 0.0F, 1.0F);
+            $$4 = ayx.b($$5, 0.5F, 1.0F, 0.0F, 1.0F);
+            this.w = ayx.b($$5, 0.0F, 0.5F, 0.0F, 1.0F);
+         }
+
+         this.b($$4);
+      }
+
+      this.a($$0, $$3);
+      int $$6 = ayx.f($$4 * 255.0F) << 24;
+      if (($$6 & -67108864) != 0) {
+         super.a($$0, $$1, $$2, $$3);
+         this.A.a($$0, this.n, $$4);
+         if (this.z != null) {
+            this.z.a($$0, $$6);
+         }
+
+         if (this.s != null && !this.m.m.c().c()) {
+            this.s.a($$0, this.n, this.p, $$6);
+         }
+
+         String $$7 = "Minecraft " + aa.b().c();
+         if (this.m.K()) {
+            $$7 = $$7 + " Demo";
+         } else {
+            $$7 = $$7 + ("release".equalsIgnoreCase(this.m.j()) ? "" : "/" + this.m.j());
+         }
+
+         if (ffd.e().a()) {
+            $$7 = $$7 + gqd.a("menu.modded");
+         }
+
+         $$0.b(this.p, $$7, 2, this.o - 10, 16777215 | $$6);
+         if (this.m() && $$4 >= 1.0F) {
+            RenderSystem.enableDepthTest();
+            this.v.a($$0, $$1, $$2, $$3);
+         }
+      }
+   }
+
+   private void b(float $$0) {
+      for (fiy $$1 : this.aE_()) {
+         if ($$1 instanceof fha $$2) {
+            $$2.a($$0);
+         }
+      }
+   }
+
+   @Override
+   public void b(fgp $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   protected void a(fgp $$0, float $$1) {
+      f.a($$0, this.n, this.o, this.w, $$1);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return super.a($$0, $$1, $$2) ? true : this.m() && this.v.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void j() {
+      if (this.v != null) {
+         this.v.j();
+      }
+   }
+
+   @Override
+   public void aF_() {
+      super.aF_();
+      if (this.v != null) {
+         this.v.aF_();
+      }
+   }
+
+   private void c(boolean $$0) {
+      if ($$0) {
+         try (epu.c $$1 = this.m.m().e("Demo_World")) {
+            $$1.k();
+         } catch (IOException var7) {
+            fjk.b(this.m, "Demo_World");
+            a.warn("Failed to delete demo world", var7);
+         }
+      }
+
+      this.m.a(this);
+   }
+
+   static record a(fgn a, fhv b, int c, int d) {
+      public void a(fgp $$0, int $$1) {
+         this.b.a($$0, this.c, this.d, 9, 2, 2097152 | Math.min($$1, 1426063360));
+         this.b.a($$0, this.c, this.d, 9, 16777215 | $$1);
+      }
    }
 }

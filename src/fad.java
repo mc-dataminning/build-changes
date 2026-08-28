@@ -1,71 +1,207 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
 public class fad {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private static CompletableFuture<fad.a> b;
-
-   public static CompletableFuture<fad.a> a() {
-      if (b == null || a(b)) {
-         b = b();
-      }
-
-      return b;
+   public static faa a() {
+      throw new IllegalArgumentException();
    }
 
-   private static boolean a(CompletableFuture<fad.a> $$0) {
-      fad.a $$1 = $$0.getNow(null);
-      return $$1 != null && $$1.b() != null;
+   public static faa a(faa $$0) {
+      return $$0;
    }
 
-   private static CompletableFuture<fad.a> b() {
-      ffo $$0 = ffa.Q().X();
-      return $$0.g() != ffo.a.c ? CompletableFuture.completedFuture(new fad.a(fad.b.d)) : CompletableFuture.supplyAsync(() -> {
-         faj $$0x = faj.a();
+   public static faa a(faa $$0, faa $$1) {
+      return new fad.a($$0, $$1);
+   }
 
-         try {
-            if ($$0x.g() != faj.a.a) {
-               return new fad.a(fad.b.b);
-            } else {
-               return !$$0x.f() ? new fad.a(fad.b.c) : new fad.a(fad.b.a);
-            }
-         } catch (fbw var2) {
-            a.error("Couldn't connect to realms", var2);
-            return var2.a.a() == 401 ? new fad.a(fad.b.d) : new fad.a(var2);
+   public static faa a(faa... $$0) {
+      return new fad.b($$0);
+   }
+
+   static class a implements faa {
+      private final faa a;
+      private final faa b;
+
+      public a(faa $$0, faa $$1) {
+         if ($$0 == $$1) {
+            throw new IllegalArgumentException("Duplicate delegates");
+         } else {
+            this.a = $$0;
+            this.b = $$1;
          }
-      }, ac.h());
+      }
+
+      @Override
+      public faa a(double $$0, double $$1, double $$2) {
+         this.a.a($$0, $$1, $$2);
+         this.b.a($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public faa a(int $$0, int $$1, int $$2, int $$3) {
+         this.a.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
+         return this;
+      }
+
+      @Override
+      public faa a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public faa a(int $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public faa b(int $$0, int $$1) {
+         this.a.b($$0, $$1);
+         this.b.b($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public faa a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2);
+         this.b.a($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
+         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
+      }
+
+      @Override
+      public void e() {
+         this.a.e();
+         this.b.e();
+      }
+
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+         this.a.b($$0, $$1, $$2, $$3);
+         this.b.b($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public void l() {
+         this.a.l();
+         this.b.l();
+      }
    }
 
-   public static record a(fad.b a, @Nullable fbw b) {
-      public a(fad.b $$0) {
-         this($$0, null);
+   static class b implements faa {
+      private final faa[] a;
+
+      public b(faa[] $$0) {
+         for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+            for (int $$2 = $$1 + 1; $$2 < $$0.length; $$2++) {
+               if ($$0[$$1] == $$0[$$2]) {
+                  throw new IllegalArgumentException("Duplicate delegates");
+               }
+            }
+         }
+
+         this.a = $$0;
       }
 
-      public a(fbw $$0) {
-         this(fad.b.e, $$0);
+      private void a(Consumer<faa> $$0) {
+         for (faa $$1 : this.a) {
+            $$0.accept($$1);
+         }
       }
 
-      @Nullable
-      public fmy a(fmy $$0) {
-         return (fmy)(switch (this.a) {
-            case a -> null;
-            case b -> new fci($$0);
-            case c -> new fct($$0);
-            case d -> new fcn(xl.c("mco.error.invalid.session.title"), xl.c("mco.error.invalid.session.message"), $$0);
-            case e -> new fcn(Objects.requireNonNull(this.b), $$0);
-         });
+      @Override
+      public faa a(double $$0, double $$1, double $$2) {
+         this.a($$3 -> $$3.a($$0, $$1, $$2));
+         return this;
       }
-   }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+      @Override
+      public faa a(int $$0, int $$1, int $$2, int $$3) {
+         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
+         return this;
+      }
+
+      @Override
+      public faa a(float $$0, float $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public faa a(int $$0, int $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public faa b(int $$0, int $$1) {
+         this.a($$2 -> $$2.b($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public faa a(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.a($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.a($$14 -> $$14.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13));
+      }
+
+      @Override
+      public void e() {
+         this.a(faa::e);
+      }
+
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+         this.a($$4 -> $$4.b($$0, $$1, $$2, $$3));
+      }
+
+      @Override
+      public void l() {
+         this.a(faa::l);
+      }
    }
 }

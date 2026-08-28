@@ -1,38 +1,33 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class fer {
-   private final fxr a;
-   private int b = -1;
-   @Nullable
-   private Consumer<ur> c;
+public enum fer implements aza, azs {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
 
-   public fer(fxr $$0) {
-      this.a = $$0;
+   public static final Codec<fer> d = azs.a(fer::values);
+   private final int e;
+   private final String f;
+   private final String g;
+
+   private fer(final int $$0, final String $$1, final String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public boolean a(int $$0, @Nullable ur $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public String c() {
+      return this.f;
    }
 
-   private int a(Consumer<ur> $$0) {
-      this.c = $$0;
-      return ++this.b;
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   public void a(int $$0, Consumer<ur> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new ahm($$2, $$0));
-   }
-
-   public void a(iz $$0, Consumer<ur> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new agv($$2, $$0));
+   @Override
+   public String b() {
+      return this.g;
    }
 }

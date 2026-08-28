@@ -1,23 +1,20 @@
-import io.netty.buffer.ByteBuf;
+public record ahf(float b) implements zv<agv> {
+   public static final zm<wl, ahf> a = zv.a(ahf::a, ahf::new);
 
-public class ahf implements zs<ags> {
-   public static final ahf a = new ahf();
-   public static final zj<ByteBuf, ahf> b = zj.a(a);
+   private ahf(wl $$0) {
+      this($$0.readFloat());
+   }
 
-   private ahf() {
+   private void a(wl $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zu<ahf> a() {
-      return agq.bq;
+   public zx<ahf> a() {
+      return agt.bn;
    }
 
-   public void a(ags $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
    }
 }

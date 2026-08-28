@@ -1,37 +1,34 @@
-public class ahg implements zs<ags> {
-   public static final zj<wl, ahg> a = zs.a(ahg::a, ahg::new);
-   private final int b;
-   private final int c;
+public class ahg implements zv<agv> {
+   public static final zm<wl, ahg> a = zv.a(ahg::a, ahg::new);
+   private final ahg.a b;
 
-   public ahg(int $$0, int $$1) {
+   public ahg(ahg.a $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
    private ahg(wl $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.readByte();
+      this.b = $$0.b(ahg.a.class);
    }
 
    private void a(wl $$0) {
-      $$0.k(this.b);
-      $$0.k(this.c);
+      $$0.a(this.b);
    }
 
    @Override
-   public zu<ahg> a() {
-      return agq.br;
+   public zx<ahg> a() {
+      return agt.bo;
    }
 
-   public void a(ags $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public ahg.a b() {
       return this.b;
    }
 
-   public int e() {
-      return this.c;
+   public static enum a {
+      a,
+      b;
    }
 }

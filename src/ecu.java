@@ -1,30 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ecu(efg b, dyw c, bpu d, int e) implements ecx {
+public class ecu implements eda {
    public static final Codec<ecu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               efg.a.fieldOf("state_provider").forGetter(ecu::a),
-               dyw.b.fieldOf("target").forGetter(ecu::b),
-               bpu.b(0, 8).fieldOf("radius").forGetter(ecu::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(ecu::d)
-            )
-            .apply($$0, ecu::new)
+      $$0 -> $$0.group(bpx.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bpx.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, ecu::new)
    );
+   private final bpx b;
+   private final bpx c;
 
-   public efg a() {
+   public ecu(bpx $$0, bpx $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public bpx a() {
       return this.b;
    }
 
-   public dyw b() {
+   public bpx b() {
       return this.c;
-   }
-
-   public bpu c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

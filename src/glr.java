@@ -1,25 +1,18 @@
-public class glr extends gir<coa> {
-   private static final alb a = new alb("textures/entity/projectiles/wind_charge.png");
-   private final fwj f;
+public class glr extends gjo<ckq> {
+   private static final ale a = new ale("textures/entity/illager/vindicator.png");
 
-   public glr(gis.a $$0) {
-      super($$0);
-      this.f = new fwj($$0.a(fwu.bT));
+   public glr(giv.a $$0) {
+      super($$0, new fum<>($$0.a(fwx.bQ)), 0.5F);
+      this.a(new gna<ckq, fum<ckq>>(this, $$0.d()) {
+         public void a(ezw $$0, gdm $$1, int $$2, ckq $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gi()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   public void a(coa $$0, float $$1, float $$2, ezt $$3, gdj $$4, int $$5) {
-      float $$6 = (float)$$0.ai + $$2;
-      ezx $$7 = $$4.getBuffer(gdr.a(a, this.a($$6) % 1.0F, 0.0F));
-      this.f.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
-      this.f.a($$3, $$7, $$5, gol.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
-   }
-
-   public alb a(coa $$0) {
+   public ale a(ckq $$0) {
       return a;
    }
 }

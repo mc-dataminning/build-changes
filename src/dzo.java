@@ -1,61 +1,52 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dzo {
-   public static final dzo a = new dzo(false, dew.gz.n(), dew.pL.n(), dew.ej.n(), dew.aQ.n());
-   public static final Codec<dzo> b = RecordCodecBuilder.create(
+public class dzo extends dzq {
+   public static final Codec<dzo> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dzo::a),
-               drx.b.optionalFieldOf("air_state", a.b()).forGetter(dzo::b),
-               drx.b.optionalFieldOf("water_state", a.b()).forGetter(dzo::c),
-               drx.b.optionalFieldOf("lava_state", a.b()).forGetter(dzo::d),
-               drx.b.optionalFieldOf("barrier_state", a.b()).forGetter(dzo::e)
+               dzq.d.forGetter($$0x -> $$0x), bpv.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), dzo.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
             )
             .apply($$0, dzo::new)
    );
-   private final boolean c;
-   private final drx d;
-   private final drx e;
-   private final drx f;
-   private final drx g;
+   public final bpv b;
+   public final dzo.a c;
 
-   public static dzo a(boolean $$0, drx $$1, drx $$2, drx $$3, drx $$4) {
-      return new dzo($$0, $$1, $$2, $$3, $$4);
+   public dzo(float $$0, egp $$1, bpv $$2, dym $$3, dzr $$4, jm<dex> $$5, bpv $$6, dzo.a $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
    }
 
-   public static dzo a(drx $$0, drx $$1, drx $$2, drx $$3) {
-      return new dzo(false, $$0, $$1, $$2, $$3);
+   public dzo(dzq $$0, bpv $$1, dzo.a $$2) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
    }
 
-   public static dzo a(boolean $$0, drx $$1) {
-      return new dzo($$0, $$1, a.c(), a.d(), a.e());
-   }
+   public static class a {
+      public static final Codec<dzo.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bpv.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
+                  bpv.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
+                  ayf.k.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  bpv.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, dzo.a::new)
+      );
+      public final bpv b;
+      public final bpv c;
+      public final int d;
+      public final bpv e;
+      public final float f;
+      public final float g;
 
-   private dzo(boolean $$0, drx $$1, drx $$2, drx $$3, drx $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public boolean a() {
-      return this.c;
-   }
-
-   public drx b() {
-      return this.d;
-   }
-
-   public drx c() {
-      return this.e;
-   }
-
-   public drx d() {
-      return this.f;
-   }
-
-   public drx e() {
-      return this.g;
+      public a(bpv $$0, bpv $$1, int $$2, bpv $$3, float $$4, float $$5) {
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.b = $$0;
+         this.c = $$1;
+      }
    }
 }

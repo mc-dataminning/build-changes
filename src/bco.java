@@ -1,19 +1,21 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 
-public class bco extends bfq {
+public class bco extends DataFix {
    public bco(Schema $$0) {
-      super($$0, false, "EntityBrushableBlockFieldsRenameFix", bgs.s, "minecraft:brushable_block");
+      super($$0, false);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.renameField("loot_table", "LootTable").renameField("loot_table_seed", "LootTableSeed");
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgv.x);
+      return this.writeFixAndRead("EmptyItemInVillagerTradeFix", $$0, $$0, $$0x -> {
+         Dynamic<?> $$1 = $$0x.get("buyB").orElseEmptyMap();
+         String $$2 = $$1.get("id").asString("");
+         int $$3 = $$1.get("count").asInt(0);
+         return !$$2.equals("minecraft:air") && $$3 != 0 ? $$0x : $$0x.remove("buyB");
+      });
    }
 }

@@ -1,58 +1,59 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.concurrent.locks.LockSupport;
 
-public class gtr implements gts<gsf> {
-   private final List<gts<gsf>> a = Lists.newArrayList();
-   @Nullable
-   private final xl b;
+public class gtr extends bpi<Runnable> {
+   private Thread a = this.b();
+   private volatile boolean b;
 
-   public gtr(alb $$0, @Nullable String $$1) {
-      this.b = $$1 == null ? null : xl.c($$1);
+   public gtr() {
+      super("Sound executor");
    }
 
-   @Override
-   public int e() {
-      int $$0 = 0;
-
-      for (gts<gsf> $$1 : this.a) {
-         $$0 += $$1.e();
-      }
-
+   private Thread b() {
+      Thread $$0 = new Thread(this::c);
+      $$0.setDaemon(true);
+      $$0.setName("Sound engine");
+      $$0.start();
       return $$0;
    }
 
-   public gsf a(azc $$0) {
-      int $$1 = this.e();
-      if (!this.a.isEmpty() && $$1 != 0) {
-         int $$2 = $$0.a($$1);
-
-         for (gts<gsf> $$3 : this.a) {
-            $$2 -= $$3.e();
-            if ($$2 < 0) {
-               return $$3.b($$0);
-            }
-         }
-
-         return gtq.a;
-      } else {
-         return gtq.a;
-      }
-   }
-
-   public void a(gts<gsf> $$0) {
-      this.a.add($$0);
-   }
-
-   @Nullable
-   public xl a() {
-      return this.b;
+   @Override
+   protected Runnable f(Runnable $$0) {
+      return $$0;
    }
 
    @Override
-   public void a(gtn $$0) {
-      for (gts<gsf> $$1 : this.a) {
-         $$1.a($$0);
+   protected boolean e(Runnable $$0) {
+      return !this.b;
+   }
+
+   @Override
+   protected Thread az() {
+      return this.a;
+   }
+
+   private void c() {
+      while (!this.b) {
+         this.c(() -> this.b);
       }
+   }
+
+   @Override
+   protected void z() {
+      LockSupport.park("waiting for tasks");
+   }
+
+   public void a() {
+      this.b = true;
+      this.a.interrupt();
+
+      try {
+         this.a.join();
+      } catch (InterruptedException var2) {
+         Thread.currentThread().interrupt();
+      }
+
+      this.bz();
+      this.b = false;
+      this.a = this.b();
    }
 }

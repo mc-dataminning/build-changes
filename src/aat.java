@@ -1,51 +1,100 @@
-import io.netty.buffer.ByteBuf;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public interface aat {
-   aat.b<? extends aat> a();
+public record aat(aat.a c) implements aaw {
+   public static final zm<wl, aat> a = aaw.a(aat::a, aat::new);
+   public static final aaw.b<aat> b = aaw.a("debug/brain");
 
-   static <B extends ByteBuf, T extends aat> zj<B, T> a(zm<B, T> $$0, zk<B, T> $$1) {
-      return zj.a($$0, $$1);
+   private aat(wl $$0) {
+      this(new aat.a($$0));
    }
 
-   static <T extends aat> aat.b<T> a(String $$0) {
-      return new aat.b<>(new alb($$0));
+   private void a(wl $$0) {
+      this.c.a($$0);
    }
 
-   static <B extends wl> zj<B, aat> a(final aat.a<B> $$0, List<aat.c<? super B, ?>> $$1) {
-      final Map<alb, zj<? super B, ? extends aat>> $$2 = $$1.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a().a(), aat.c::b));
-      return new zj<B, aat>() {
-         private zj<? super B, ? extends aat> a(alb $$0x) {
-            zj<? super B, ? extends aat> $$1 = $$2.get($$0);
-            return $$1 != null ? $$1 : $$0.create($$0);
-         }
-
-         private <T extends aat> void a(B $$0x, aat.b<T> $$1, aat $$2x) {
-            $$0.a($$1.a());
-            zj<B, T> $$3 = this.a($$1.a);
-            $$3.encode($$0, (T)$$2);
-         }
-
-         public void a(B $$0x, aat $$1) {
-            this.a($$0, $$1.a(), $$1);
-         }
-
-         public aat a(B $$0x) {
-            alb $$1 = $$0.q();
-            return (aat)this.a($$1).decode($$0);
-         }
-      };
+   @Override
+   public aaw.b<aat> a() {
+      return b;
    }
 
-   public interface a<B extends wl> {
-      zj<B, ? extends aat> create(alb var1);
+   public aat.a b() {
+      return this.c;
    }
 
-   public static record b<T extends aat>(alb a) {
-   }
+   public static record a(
+      UUID a,
+      int b,
+      String c,
+      String d,
+      int e,
+      float f,
+      float g,
+      evp h,
+      String i,
+      @Nullable eoh j,
+      boolean k,
+      int l,
+      List<String> m,
+      List<String> n,
+      List<String> o,
+      List<String> p,
+      Set<iz> q,
+      Set<iz> r
+   ) {
+      public a(wl $$0) {
+         this(
+            $$0.n(),
+            $$0.readInt(),
+            $$0.p(),
+            $$0.p(),
+            $$0.readInt(),
+            $$0.readFloat(),
+            $$0.readFloat(),
+            $$0.k(),
+            $$0.p(),
+            $$0.c(eoh::b),
+            $$0.readBoolean(),
+            $$0.readInt(),
+            $$0.a(wl::p),
+            $$0.a(wl::p),
+            $$0.a(wl::p),
+            $$0.a(wl::p),
+            $$0.a(HashSet::new, iz.b),
+            $$0.a(HashSet::new, iz.b)
+         );
+      }
 
-   public static record c<B extends wl, T extends aat>(aat.b<T> a, zj<B, T> b) {
+      public void a(wl $$0) {
+         $$0.a(this.a);
+         $$0.p(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
+         $$0.p(this.e);
+         $$0.a(this.f);
+         $$0.a(this.g);
+         $$0.a(this.h);
+         $$0.a(this.i);
+         $$0.a(this.j, ($$0x, $$1) -> $$1.a($$0x));
+         $$0.a(this.k);
+         $$0.p(this.l);
+         $$0.a(this.m, wl::a);
+         $$0.a(this.n, wl::a);
+         $$0.a(this.o, wl::a);
+         $$0.a(this.p, wl::a);
+         $$0.a(this.q, iz.b);
+         $$0.a(this.r, iz.b);
+      }
+
+      public boolean a(iz $$0) {
+         return this.q.contains($$0);
+      }
+
+      public boolean b(iz $$0) {
+         return this.r.contains($$0);
+      }
    }
 }

@@ -1,43 +1,83 @@
-import org.joml.Vector3f;
-
-public class gaa extends gac<lc> {
-   private final Vector3f a;
-   private final Vector3f b;
-
-   protected gaa(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lc $$7, gbs $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.b(), $$9);
-      this.b = this.a($$7.c(), $$9);
-   }
-
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
-   }
-
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
+public class gaa extends gca {
+   gaa(fxt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.7F;
+      this.u = 0.5F;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4 * 0.4;
+      this.k += $$5 * 0.4;
+      this.l += $$6 * 0.4;
+      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.D *= 0.75F;
+      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
+      this.n = false;
+      this.a();
    }
 
    @Override
-   public void a(ezx $$0, fel $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
+   public float b(float $$0) {
+      return this.D * ayx.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   public static class a implements gba<lc> {
-      private final gbs a;
+   @Override
+   public void a() {
+      super.a();
+      this.w *= 0.96F;
+      this.x *= 0.9F;
+   }
 
-      public a(gbs $$0) {
+   @Override
+   public gbe b() {
+      return gbe.b;
+   }
+
+   public static class a implements gbd<lm> {
+      private final gbv a;
+
+      public a(gbv $$0) {
          this.a = $$0;
       }
 
-      public gax a(lc $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gaa($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gaa $$8 = new gaa($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
+         $$8.a(20);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements gbd<lm> {
+      private final gbv a;
+
+      public b(gbv $$0) {
+         this.a = $$0;
+      }
+
+      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gaa $$8 = new gaa($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.v *= 0.3F;
+         $$8.w *= 0.8F;
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class c implements gbd<lm> {
+      private final gbv a;
+
+      public c(gbv $$0) {
+         this.a = $$0;
+      }
+
+      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gaa $$8 = new gaa($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

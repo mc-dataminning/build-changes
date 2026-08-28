@@ -1,26 +1,31 @@
-public record abf(iz c, int d) implements aat {
-   public static final zj<wl, abf> a = aat.a(abf::a, abf::new);
-   public static final aat.b<abf> b = aat.a("debug/poi_ticket_count");
+public record abf(int c, eoh d, float e) implements aaw {
+   public static final zm<wl, abf> a = aaw.a(abf::a, abf::new);
+   public static final aaw.b<abf> b = aaw.a("debug/path");
 
    private abf(wl $$0) {
-      this($$0.e(), $$0.readInt());
+      this($$0.readInt(), eoh.b($$0), $$0.readFloat());
    }
 
    private void a(wl $$0) {
-      $$0.a(this.c);
-      $$0.p(this.d);
+      $$0.p(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
    }
 
    @Override
-   public aat.b<abf> a() {
+   public aaw.b<abf> a() {
       return b;
    }
 
-   public iz b() {
+   public int b() {
       return this.c;
    }
 
-   public int c() {
+   public eoh c() {
       return this.d;
+   }
+
+   public float d() {
+      return this.e;
    }
 }

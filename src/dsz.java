@@ -1,6 +1,6 @@
-public enum dsz implements azp {
-   a("normal"),
-   b("sticky");
+public enum dsz implements azs {
+   a("top"),
+   b("bottom");
 
    private final String c;
 

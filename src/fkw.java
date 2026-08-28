@@ -1,3 +1,17 @@
-public interface fkw {
-   void b(fkv var1);
+public interface fkw extends fim, fkz {
+   fkw.a t();
+
+   default boolean B() {
+      return true;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+
+      public boolean a() {
+         return this == c;
+      }
+   }
 }

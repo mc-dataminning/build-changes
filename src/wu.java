@@ -1,18 +1,27 @@
-import io.netty.channel.ChannelHandlerContext;
-
 public interface wu {
-   static void a(ChannelHandlerContext $$0, zs<?> $$1) {
-      if ($$1.d()) {
-         $$0.channel().config().setAutoRead(false);
-         $$0.pipeline().addBefore($$0.name(), "inbound_config", new xa.a());
-         $$0.pipeline().remove($$0.name());
-      }
+   zw a();
+
+   wk b();
+
+   void a(xo var1);
+
+   default void a(zv $$0, Exception $$1) throws y {
+      throw zy.a($$1, $$0, this);
    }
 
-   static void b(ChannelHandlerContext $$0, zs<?> $$1) {
-      if ($$1.d()) {
-         $$0.pipeline().addAfter($$0.name(), "outbound_config", new xa.c());
-         $$0.pipeline().remove($$0.name());
-      }
+   boolean c();
+
+   default boolean a(zv<?> $$0) {
+      return this.c();
+   }
+
+   default void a(o $$0) {
+      p $$1 = $$0.a("Connection");
+      $$1.a("Protocol", () -> this.b().a());
+      $$1.a("Flow", () -> this.a().toString());
+      this.a($$1);
+   }
+
+   default void a(p $$0) {
    }
 }

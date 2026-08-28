@@ -1,57 +1,48 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class eah extends eai {
-   public eah(Codec<ede> $$0) {
+public class eah extends eaw<edh> {
+   public eah(Codec<edh> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dbu $$0, azc $$1, iz $$2, drx $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
-         return false;
-      } else {
-         je $$4 = je.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<je> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+   public boolean a(eay<edh> $$0) {
+      azf $$1 = $$0.d();
+      dcr $$2 = $$0.b();
+      dbd $$3 = new dbd($$0.e());
+      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      iz.a $$6 = new iz.a();
+      IntListIterator var8 = $$4.iterator();
 
-         for (je $$8 : $$6.subList(0, $$5)) {
-            iz.a $$9 = $$2.j();
-            int $$10 = $$1.a(2) + 1;
-            $$9.c($$8);
-            int $$12;
-            je $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.c(je.b);
-               je[] $$13 = new je[]{$$8, je.b};
-               $$11 = ac.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
-            }
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
 
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.c($$11);
-            }
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            iz $$9 = $$2.a(dxs.a.f, $$6);
+            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
+               $$2.a($$9, dez.cv.o(), 2);
+               bra.a($$2, $$1, $$9, eqc.b);
+               dsa $$10 = dez.cp.o();
 
-            $$9.c($$11.g());
-            $$9.c(je.b);
-
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.c($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
+               for (je $$11 : je.c.a) {
+                  iz $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
                }
 
-               if ($$1.i() < 0.25F) {
-                  $$9.c(je.b);
-               }
+               return true;
             }
          }
-
-         return true;
       }
+
+      return false;
    }
 }

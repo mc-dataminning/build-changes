@@ -1,19 +1,21 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.stream.Stream;
 
-public class edl implements ecx {
+public class edl implements eda {
    public static final Codec<edl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(edf.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, edl::new)
+      $$0 -> $$0.group(ehm.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), ehm.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, edl::new)
    );
-   public final List<edf.a> b;
+   public final ji<ehm> b;
+   public final ji<ehm> c;
 
-   public edl(drx $$0, drx $$1) {
-      this(ImmutableList.of(edf.a(new elk($$0), $$1)));
+   public edl(ji<ehm> $$0, ji<ehm> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public edl(List<edf.a> $$0) {
-      this.b = $$0;
+   @Override
+   public Stream<eaj<?, ?>> e() {
+      return Stream.concat(this.b.a().a(), this.c.a().a());
    }
 }

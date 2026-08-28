@@ -1,18 +1,24 @@
-public class cuz extends csi {
-   public cuz(deu $$0, cuf.a $$1) {
-      super($$0, $$1);
+public class cuz extends cui {
+   public cuz(cui.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bqp a(cxx $$0) {
-      return bqp.e;
-   }
+   public bqs a(cun $$0, cmv $$1, btn $$2, bqr $$3) {
+      xo $$4 = $$0.a(km.f);
+      if ($$4 != null && !($$2 instanceof cmv)) {
+         if (!$$1.dP().B && $$2.bD()) {
+            $$2.b($$4);
+            if ($$2 instanceof btp $$5) {
+               $$5.fU();
+            }
 
-   @Override
-   public bqq<cuk> a(dbt $$0, cms $$1, bqo $$2) {
-      evi $$3 = a($$0, $$1, dbc.b.b);
-      evi $$4 = $$3.a($$3.a().c());
-      bqp $$5 = super.a(new cxx($$1, $$2, $$4));
-      return new bqq<>($$5, $$1.b($$2));
+            $$0.h(1);
+         }
+
+         return bqs.a($$1.dP().B);
+      } else {
+         return bqs.e;
+      }
    }
 }

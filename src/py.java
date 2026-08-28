@@ -3,32 +3,32 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 public abstract class py<T> extends qd<T> {
-   private final Function<T, ala<T>> d;
+   private final Function<T, ald<T>> d;
 
-   public py(ly $$0, ala<? extends jv<T>> $$1, CompletableFuture<jk.a> $$2, Function<T, ala<T>> $$3) {
+   public py(ly $$0, ald<? extends jv<T>> $$1, CompletableFuture<jk.a> $$2, Function<T, ald<T>> $$3) {
       super($$0, $$1, $$2);
       this.d = $$3;
    }
 
-   public py(ly $$0, ala<? extends jv<T>> $$1, CompletableFuture<jk.a> $$2, CompletableFuture<qd.c<T>> $$3, Function<T, ala<T>> $$4) {
+   public py(ly $$0, ald<? extends jv<T>> $$1, CompletableFuture<jk.a> $$2, CompletableFuture<qd.c<T>> $$3, Function<T, ald<T>> $$4) {
       super($$0, $$1, $$2, $$3);
       this.d = $$4;
    }
 
-   protected py.a<T> a(axb<T> $$0) {
-      awy $$1 = this.c($$0);
+   protected py.a<T> a(axe<T> $$0) {
+      axb $$1 = this.c($$0);
       return new py.a<>($$1, this.d);
    }
 
    protected static class a<T> extends qd.b<T> {
-      private final Function<T, ala<T>> a;
+      private final Function<T, ald<T>> a;
 
-      a(awy $$0, Function<T, ala<T>> $$1) {
+      a(axb $$0, Function<T, ald<T>> $$1) {
          super($$0);
          this.a = $$1;
       }
 
-      public py.a<T> a(axb<T> $$0) {
+      public py.a<T> a(axe<T> $$0) {
          super.b($$0);
          return this;
       }

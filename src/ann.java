@@ -1,45 +1,72 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.Collection;
 
 public class ann {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.jfr.start.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xl.b("commands.jfr.dump.failed", $$0));
+   public static final int a = 100;
 
-   private ann() {
-   }
-
-   public static void a(CommandDispatcher<ep> $$0) {
+   public static void a(CommandDispatcher<ep> $$0, el $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("jfr").requires($$0x -> $$0x.c(4)))
-               .then(eq.a("start").executes($$0x -> a((ep)$$0x.getSource()))))
-            .then(eq.a("stop").executes($$0x -> b((ep)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("give").requires($$0x -> $$0x.c(2)))
+            .then(
+               eq.a("targets", fc.d())
+                  .then(
+                     ((RequiredArgumentBuilder)eq.a("item", gy.a($$1)).executes($$0x -> a((ep)$$0x.getSource(), gy.a($$0x, "item"), fc.f($$0x, "targets"), 1)))
+                        .then(
+                           eq.a("count", IntegerArgumentType.integer(1))
+                              .executes(
+                                 $$0x -> a((ep)$$0x.getSource(), gy.a($$0x, "item"), fc.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(ep $$0) throws CommandSyntaxException {
-      bnh $$1 = bnh.a($$0.l());
-      if (!bnj.f.a($$1)) {
-         throw a.create();
+   private static int a(ep $$0, gz $$1, Collection<arf> $$2, int $$3) throws CommandSyntaxException {
+      cun $$4 = $$1.a(1, false);
+      int $$5 = $$4.j();
+      int $$6 = $$5 * 100;
+      if ($$3 > $$6) {
+         $$0.b(xo.a("commands.give.failed.toomanyitems", $$6, $$4.G()));
+         return 0;
       } else {
-         $$0.a(() -> xl.c("commands.jfr.started"), false);
-         return 1;
-      }
-   }
+         for (arf $$7 : $$2) {
+            int $$8 = $$3;
 
-   private static int b(ep $$0) throws CommandSyntaxException {
-      try {
-         Path $$1 = Paths.get(".").relativize(bnj.f.b().normalize());
-         Path $$2 = $$0.l().r() && !aa.aX ? $$1 : $$1.toAbsolutePath();
-         xl $$3 = xl.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new xj(xj.a.f, $$2.toString())).a(new xr(xr.a.a, xl.c("chat.copy.click"))));
-         $$0.a(() -> xl.a("commands.jfr.stopped", $$3), false);
-         return 1;
-      } catch (Throwable var4) {
-         throw b.create(var4.getMessage());
+            while ($$8 > 0) {
+               int $$9 = Math.min($$5, $$8);
+               $$8 -= $$9;
+               cun $$10 = $$1.a($$9, false);
+               boolean $$11 = $$7.gc().f($$10);
+               if ($$11 && $$10.e()) {
+                  cjf $$13 = $$7.a($$4, false);
+                  if ($$13 != null) {
+                     $$13.B();
+                  }
+
+                  $$7.dP().a(null, $$7.du(), $$7.dw(), $$7.dA(), avz.nC, awa.h, 0.2F, (($$7.el().i() - $$7.el().i()) * 0.7F + 1.0F) * 2.0F);
+                  $$7.cb.d();
+               } else {
+                  cjf $$12 = $$7.a($$10, false);
+                  if ($$12 != null) {
+                     $$12.w();
+                     $$12.b($$7.cz());
+                  }
+               }
+            }
+         }
+
+         if ($$2.size() == 1) {
+            $$0.a(() -> xo.a("commands.give.success.single", $$3, $$4.G(), $$2.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> xo.a("commands.give.success.single", $$3, $$4.G(), $$2.size()), true);
+         }
+
+         return $$2.size();
       }
    }
 }

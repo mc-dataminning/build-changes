@@ -1,70 +1,29 @@
-public class fss {
-   public static void a(fwv $$0, fwv $$1, fwv $$2, boolean $$3) {
-      fwv $$4 = $$3 ? $$0 : $$1;
-      fwv $$5 = $$3 ? $$1 : $$0;
-      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
-      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
-      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
-      $$5.e = -1.5F + $$2.e;
+import java.util.function.Function;
+
+public abstract class fss<E extends bss> extends fuh<E> {
+   private final float a;
+   private final float b;
+
+   public fss(float $$0, float $$1) {
+      this($$0, $$1, gdu::e);
    }
 
-   public static void a(fwv $$0, fwv $$1, btk $$2, boolean $$3) {
-      fwv $$4 = $$3 ? $$0 : $$1;
-      fwv $$5 = $$3 ? $$1 : $$0;
-      $$4.f = $$3 ? -0.8F : 0.8F;
-      $$4.e = -0.97079635F;
-      $$5.e = $$4.e;
-      float $$6 = (float)csx.l($$2.fx());
-      float $$7 = ayu.a((float)$$2.fz(), 0.0F, $$6);
-      float $$8 = $$7 / $$6;
-      $$5.f = ayu.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
-      $$5.e = ayu.i($$8, $$5.e, (float) (-Math.PI / 2));
+   public fss(float $$0, float $$1, Function<ale, gdu> $$2) {
+      super($$2);
+      this.b = $$1;
+      this.a = $$0;
    }
 
-   public static <T extends btm> void a(fwv $$0, fwv $$1, T $$2, float $$3, float $$4) {
-      float $$5 = ayu.a($$3 * (float) Math.PI);
-      float $$6 = ayu.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$0.g = 0.0F;
-      $$1.g = 0.0F;
-      $$0.f = (float) (Math.PI / 20);
-      $$1.f = (float) (-Math.PI / 20);
-      if ($$2.fu() == bte.b) {
-         $$0.e = -1.8849558F + ayu.b($$4 * 0.09F) * 0.15F;
-         $$1.e = -0.0F + ayu.b($$4 * 0.19F) * 0.5F;
-         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+   @Override
+   public void a(ezw $$0, faa $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         $$0.a();
+         $$0.b(this.a, this.a, this.a);
+         $$0.a(0.0F, this.b / 16.0F, 0.0F);
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$0.b();
       } else {
-         $$0.e = -0.0F + ayu.b($$4 * 0.19F) * 0.5F;
-         $$1.e = -1.8849558F + ayu.b($$4 * 0.09F) * 0.15F;
-         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
-
-      a($$0, $$1, $$4);
-   }
-
-   public static void a(fwv $$0, float $$1, float $$2) {
-      $$0.g = $$0.g + $$2 * (ayu.b($$1 * 0.09F) * 0.05F + 0.05F);
-      $$0.e = $$0.e + $$2 * ayu.a($$1 * 0.067F) * 0.05F;
-   }
-
-   public static void a(fwv $$0, fwv $$1, float $$2) {
-      a($$0, $$2, 1.0F);
-      a($$1, $$2, -1.0F);
-   }
-
-   public static void a(fwv $$0, fwv $$1, boolean $$2, float $$3, float $$4) {
-      float $$5 = ayu.a($$3 * (float) Math.PI);
-      float $$6 = ayu.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$1.g = 0.0F;
-      $$0.g = 0.0F;
-      $$1.f = -(0.1F - $$5 * 0.6F);
-      $$0.f = 0.1F - $$5 * 0.6F;
-      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
-      $$1.e = $$7;
-      $$0.e = $$7;
-      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-      a($$1, $$0, $$4);
    }
 }

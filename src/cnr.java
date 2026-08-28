@@ -1,47 +1,56 @@
-public abstract class cnr extends cns implements cnh {
-   private static final akg<cuk> b = akk.a(cnr.class, aki.h);
-
-   public cnr(bsv<? extends cnr> $$0, dbt $$1) {
+public class cnr extends cnh {
+   public cnr(bsy<? extends cnr> $$0, dbw $$1) {
       super($$0, $$1);
    }
 
-   public cnr(bsv<? extends cnr> $$0, double $$1, double $$2, double $$3, dbt $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public cnr(dbw $$0, btn $$1, double $$2, double $$3, double $$4) {
+      super(bsy.aQ, $$1, $$2, $$3, $$4, $$0);
    }
 
-   public cnr(bsv<? extends cnr> $$0, btk $$1, dbt $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(cuk $$0) {
-      this.ap().a(b, $$0.c(1));
-   }
-
-   protected abstract cuf u();
-
-   @Override
-   public cuk p() {
-      return this.ap().a(b);
+   public cnr(dbw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super(bsy.aQ, $$1, $$2, $$3, $$4, $$5, $$6, $$0);
    }
 
    @Override
-   protected void a(akk.a $$0) {
-      $$0.a(b, new cuk(this.u()));
-   }
-
-   @Override
-   public void b(ur $$0) {
-      super.b($$0);
-      $$0.a("Item", this.p().a(this.dR()));
-   }
-
-   @Override
-   public void a(ur $$0) {
+   protected void a(evm $$0) {
       super.a($$0);
-      if ($$0.b("Item", 10)) {
-         this.a(cuk.a(this.dR(), (vo)$$0.p("Item")).orElseGet(() -> new cuk(this.u())));
-      } else {
-         this.a(new cuk(this.u()));
+      if (!this.dP().B) {
+         bss $$1 = $$0.a();
+         bss $$2 = this.s();
+         int $$3 = $$1.aB();
+         $$1.g(5);
+         if (!$$1.a(this.dQ().a((cnh)this, $$2), 5.0F)) {
+            $$1.i($$3);
+         } else if ($$2 instanceof btn) {
+            this.a((btn)$$2, $$1);
+         }
       }
+   }
+
+   @Override
+   protected void a(evl $$0) {
+      super.a($$0);
+      if (!this.dP().B) {
+         bss $$1 = this.s();
+         if (!($$1 instanceof btp) || this.dP().ab().b(dbs.c)) {
+            iz $$2 = $$0.a().a($$0.b());
+            if (this.dP().u($$2)) {
+               this.dP().b($$2, dek.a(this.dP(), $$2));
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(evn $$0) {
+      super.a($$0);
+      if (!this.dP().B) {
+         this.ao();
+      }
+   }
+
+   @Override
+   public boolean a(brl $$0, float $$1) {
+      return false;
    }
 }

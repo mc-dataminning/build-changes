@@ -1,263 +1,65 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import io.netty.buffer.ByteBuf;
-import java.lang.reflect.Type;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.Optional;
 
-public class alb implements Comparable<alb> {
-   public static final Codec<alb> a = Codec.STRING.comapFlatMap(alb::b, alb::toString).stable();
-   public static final zj<ByteBuf, alb> b = zh.l.a(alb::new, alb::toString);
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xl.c("argument.id.invalid"));
-   public static final char d = ':';
-   public static final String e = "minecraft";
-   public static final String f = "realms";
-   private final String g;
-   private final String h;
+public final class alb<E> implements Codec<ji<E>> {
+   private final ald<? extends jv<E>> a;
 
-   protected alb(String $$0, String $$1, @Nullable alb.a $$2) {
-      this.g = $$0;
-      this.h = $$1;
+   public static <E> alb<E> a(ald<? extends jv<E>> $$0) {
+      return new alb<>($$0);
    }
 
-   public alb(String $$0, String $$1) {
-      this(c($$0, $$1), d($$0, $$1), null);
+   private alb(ald<? extends jv<E>> $$0) {
+      this.a = $$0;
    }
 
-   private alb(String[] $$0) {
-      this($$0[0], $$0[1]);
-   }
+   public <T> DataResult<T> a(ji<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof alc<?> $$3) {
+         Optional<jl<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
+            }
 
-   public alb(String $$0) {
-      this(b($$0, ':'));
-   }
-
-   public static alb a(String $$0, char $$1) {
-      return new alb(b($$0, $$1));
-   }
-
-   @Nullable
-   public static alb a(String $$0) {
-      try {
-         return new alb($$0);
-      } catch (z var2) {
-         return null;
-      }
-   }
-
-   @Nullable
-   public static alb a(String $$0, String $$1) {
-      try {
-         return new alb($$0, $$1);
-      } catch (z var3) {
-         return null;
-      }
-   }
-
-   protected static String[] b(String $$0, char $$1) {
-      String[] $$2 = new String[]{"minecraft", $$0};
-      int $$3 = $$0.indexOf($$1);
-      if ($$3 >= 0) {
-         $$2[1] = $$0.substring($$3 + 1);
-         if ($$3 >= 1) {
-            $$2[0] = $$0.substring(0, $$3);
+            return (DataResult<T>)$$0.d()
+               .map(
+                  $$2x -> ale.a.encode($$2x.a(), $$1, $$2),
+                  $$0x -> DataResult.error(() -> "Elements from registry " + this.a + " can't be serialized to a value")
+               );
          }
       }
 
-      return $$2;
+      return DataResult.error(() -> "Can't access registry " + this.a);
    }
 
-   public static DataResult<alb> b(String $$0) {
-      try {
-         return DataResult.success(new alb($$0));
-      } catch (z var2) {
-         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
+   public <T> DataResult<Pair<ji<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof alc<?> $$2) {
+         Optional<jj<E>> $$3 = $$2.b(this.a);
+         if ($$3.isPresent()) {
+            return ale.a
+               .decode($$0, $$1)
+               .flatMap(
+                  $$1x -> {
+                     ale $$2x = (ale)$$1x.getFirst();
+                     return $$3.get()
+                        .a(ald.a(this.a, $$2x))
+                        .<DataResult>map(DataResult::success)
+                        .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$2x))
+                        .map($$1xx -> Pair.of($$1xx, $$1x.getSecond()))
+                        .setLifecycle(Lifecycle.stable());
+                  }
+               );
+         }
       }
-   }
 
-   public String a() {
-      return this.h;
-   }
-
-   public String b() {
-      return this.g;
-   }
-
-   public alb c(String $$0) {
-      return new alb(this.g, d(this.g, $$0), null);
-   }
-
-   public alb a(UnaryOperator<String> $$0) {
-      return this.c($$0.apply(this.h));
-   }
-
-   public alb d(String $$0) {
-      return this.c($$0 + this.h);
-   }
-
-   public alb e(String $$0) {
-      return this.c(this.h + $$0);
+      return DataResult.error(() -> "Can't access registry " + this.a);
    }
 
    @Override
    public String toString() {
-      return this.g + ":" + this.h;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof alb $$1) ? false : this.g.equals($$1.g) && this.h.equals($$1.h);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return 31 * this.g.hashCode() + this.h.hashCode();
-   }
-
-   public int a(alb $$0) {
-      int $$1 = this.h.compareTo($$0.h);
-      if ($$1 == 0) {
-         $$1 = this.g.compareTo($$0.g);
-      }
-
-      return $$1;
-   }
-
-   public String c() {
-      return this.toString().replace('/', '_').replace(':', '_');
-   }
-
-   public String d() {
-      return this.g + "." + this.h;
-   }
-
-   public String e() {
-      return this.g.equals("minecraft") ? this.h : this.d();
-   }
-
-   public String f(String $$0) {
-      return $$0 + "." + this.d();
-   }
-
-   public String b(String $$0, String $$1) {
-      return $$0 + "." + this.d() + "." + $$1;
-   }
-
-   private static String c(StringReader $$0) {
-      int $$1 = $$0.getCursor();
-
-      while ($$0.canRead() && a($$0.peek())) {
-         $$0.skip();
-      }
-
-      return $$0.getString().substring($$1, $$0.getCursor());
-   }
-
-   public static alb a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = c($$0);
-
-      try {
-         return new alb($$2);
-      } catch (z var4) {
-         $$0.setCursor($$1);
-         throw c.createWithContext($$0);
-      }
-   }
-
-   public static alb b(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = c($$0);
-      if ($$2.isEmpty()) {
-         throw c.createWithContext($$0);
-      } else {
-         try {
-            return new alb($$2);
-         } catch (z var4) {
-            $$0.setCursor($$1);
-            throw c.createWithContext($$0);
-         }
-      }
-   }
-
-   public static boolean a(char $$0) {
-      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
-   }
-
-   public static boolean g(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!b($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static boolean h(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!c($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static String c(String $$0, String $$1) {
-      if (!h($$0)) {
-         throw new z("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$0;
-      }
-   }
-
-   public static boolean b(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
-   }
-
-   private static boolean c(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
-   }
-
-   public static boolean i(String $$0) {
-      String[] $$1 = b($$0, ':');
-      return h(StringUtils.isEmpty($$1[0]) ? "minecraft" : $$1[0]) && g($$1[1]);
-   }
-
-   private static String d(String $$0, String $$1) {
-      if (!g($$1)) {
-         throw new z("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$1;
-      }
-   }
-
-   protected interface a {
-   }
-
-   public static class b implements JsonDeserializer<alb>, JsonSerializer<alb> {
-      public alb a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new alb(ayk.a($$0, "location"));
-      }
-
-      public JsonElement a(alb $$0, Type $$1, JsonSerializationContext $$2) {
-         return new JsonPrimitive($$0.toString());
-      }
+      return "RegistryFixedCodec[" + this.a + "]";
    }
 }

@@ -1,16 +1,45 @@
-public class gps extends gpx {
-   public gps(gov $$0) {
-      super($$0, new alb("textures/atlas/mob_effects.png"), new alb("mob_effects"));
-   }
+import com.google.common.base.Splitter;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Map.Entry;
+import org.slf4j.Logger;
 
-   public gou a(ji<brv> $$0) {
-      if ($$0 == brz.E) {
-         fxq $$1 = ffa.Q().r;
-         if ($$1 != null && $$1.J().b(cpi.c)) {
-            return this.a(new alb("bad_omen_121"));
+public class gps {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Splitter a = Splitter.on('/');
+
+   public static Path a(Path $$0, String $$1) {
+      Path $$2 = $$0.resolve("objects");
+      atk.a $$3 = atk.c();
+      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
+
+      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
+         JsonObject $$6 = ayn.a($$5);
+         JsonObject $$7 = ayn.a($$6, "objects", null);
+         if ($$7 != null) {
+            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
+               JsonObject $$9 = (JsonObject)$$8.getValue();
+               String $$10 = $$8.getKey();
+               List<String> $$11 = a.splitToList($$10);
+               String $$12 = ayn.i($$9, "hash");
+               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
+               $$3.a($$11, $$13);
+            }
          }
+      } catch (JsonParseException var17) {
+         b.error("Unable to parse resource index file: {}", $$4);
+      } catch (IOException var18) {
+         b.error("Can't open the resource index file: {}", $$4);
       }
 
-      return this.a($$0.e().map(ala::a).orElseGet(gok::b));
+      return $$3.a("index-" + $$1).getPath("/");
    }
 }

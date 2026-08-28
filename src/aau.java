@@ -1,23 +1,21 @@
-public record aau(alb a) implements aat {
-   public static <T extends wl> zj<T, aau> a(alb $$0, int $$1) {
-      return aat.a(($$0x, $$1x) -> {
-      }, $$2 -> {
-         int $$3 = $$2.readableBytes();
-         if ($$3 >= 0 && $$3 <= $$1) {
-            $$2.j($$3);
-            return new aau($$0);
-         } else {
-            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
-         }
-      });
+public record aau(String c) implements aaw {
+   public static final zm<wl, aau> a = aaw.a(aau::a, aau::new);
+   public static final aaw.b<aau> b = aaw.a("brand");
+
+   private aau(wl $$0) {
+      this($$0.p());
+   }
+
+   private void a(wl $$0) {
+      $$0.a(this.c);
    }
 
    @Override
-   public aat.b<aau> a() {
-      return new aat.b<>(this.a);
+   public aaw.b<aau> a() {
+      return b;
    }
 
-   public alb b() {
-      return this.a;
+   public String b() {
+      return this.c;
    }
 }

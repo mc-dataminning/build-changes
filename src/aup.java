@@ -1,46 +1,17 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public abstract class aup extends auq<Map<alb, JsonElement>> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Gson b;
-   private final String c;
-
-   public aup(Gson $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public interface aup extends aui {
+   @Override
+   default CompletableFuture<Void> a(aui.a $$0, auo $$1, bng $$2, bng $$3, Executor $$4, Executor $$5) {
+      return $$0.a(baa.a).thenRunAsync(() -> {
+         $$3.a();
+         $$3.a("listener");
+         this.a($$1);
+         $$3.c();
+         $$3.b();
+      }, $$5);
    }
 
-   protected Map<alb, JsonElement> a(aul $$0, bnd $$1) {
-      Map<alb, JsonElement> $$2 = new HashMap<>();
-      a($$0, this.c, this.b, $$2);
-      return $$2;
-   }
-
-   public static void a(aul $$0, String $$1, Gson $$2, Map<alb, JsonElement> $$3) {
-      aku $$4 = aku.a($$1);
-
-      for (Entry<alb, auj> $$5 : $$4.a($$0).entrySet()) {
-         alb $$6 = $$5.getKey();
-         alb $$7 = $$4.b($$6);
-
-         try (Reader $$8 = $$5.getValue().e()) {
-            JsonElement $$9 = ayk.a($$2, $$8, JsonElement.class);
-            JsonElement $$10 = $$3.put($$7, $$9);
-            if ($$10 != null) {
-               throw new IllegalStateException("Duplicate data file ignored with ID " + $$7);
-            }
-         } catch (IllegalArgumentException | IOException | JsonParseException var14) {
-            a.error("Couldn't parse data file {} from {}", new Object[]{$$7, $$6, var14});
-         }
-      }
-   }
+   void a(auo var1);
 }

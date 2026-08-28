@@ -1,24 +1,64 @@
-public class gns extends gmp<ciq, fwl<ciq>> {
-   private static final alb a = new alb("textures/entity/wither/wither_armor.png");
-   private final fwl<ciq> b;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.io.IOException;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-   public gns(gko<ciq, fwl<ciq>> $$0, fwr $$1) {
+public class gns<T extends btn & cmk, M extends fty<T> & fwi> extends gnh<T, M> {
+   private static final Int2ObjectMap<ale> a = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(1, new ale("stone"));
+      $$0.put(2, new ale("iron"));
+      $$0.put(3, new ale("gold"));
+      $$0.put(4, new ale("emerald"));
+      $$0.put(5, new ale("diamond"));
+   });
+   private final Object2ObjectMap<cmn, gql.a> b = new Object2ObjectOpenHashMap();
+   private final Object2ObjectMap<cml, gql.a> c = new Object2ObjectOpenHashMap();
+   private final auo d;
+   private final String e;
+
+   public gns(gkr<T, M> $$0, auo $$1, String $$2) {
       super($$0);
-      this.b = new fwl<>($$1.a(fwu.bW));
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   @Override
-   protected float a(float $$0) {
-      return ayu.b($$0 * 0.02F) * 3.0F;
+   public void a(ezw $$0, gdm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.ch()) {
+         cmj $$10 = $$3.gB();
+         cmn $$11 = $$10.a();
+         cml $$12 = $$10.b();
+         gql.a $$13 = this.a(this.b, "type", lp.y, $$11);
+         gql.a $$14 = this.a(this.c, "profession", lp.z, $$12);
+         M $$15 = this.c();
+         $$15.a($$14 == gql.a.a || $$14 == gql.a.b && $$13 != gql.a.c);
+         ale $$16 = this.a("type", lp.y.b($$11));
+         a($$15, $$16, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+         $$15.a(true);
+         if ($$12 != cml.b && !$$3.p_()) {
+            ale $$17 = this.a("profession", lp.z.b($$12));
+            a($$15, $$17, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+            if ($$12 != cml.m) {
+               ale $$18 = this.a("profession_level", (ale)a.get(ayx.a($$10.c(), 1, a.size())));
+               a($$15, $$18, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+            }
+         }
+      }
    }
 
-   @Override
-   protected alb a() {
-      return a;
+   private ale a(String $$0, ale $$1) {
+      return $$1.a((UnaryOperator<String>)($$1x -> "textures/entity/" + this.e + "/" + $$0 + "/" + $$1x + ".png"));
    }
 
-   @Override
-   protected ftv<ciq> b() {
-      return this.b;
+   public <K> gql.a a(Object2ObjectMap<K, gql.a> $$0, String $$1, jd<K> $$2, K $$3) {
+      return (gql.a)$$0.computeIfAbsent($$3, $$3x -> this.d.getResource(this.a($$1, $$2.b($$3))).flatMap($$0xx -> {
+            try {
+               return $$0xx.f().a(gql.a).map(gql::a);
+            } catch (IOException var2x) {
+               return Optional.empty();
+            }
+         }).orElse(gql.a.a));
    }
 }

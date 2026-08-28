@@ -1,48 +1,57 @@
 import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public class das extends ArrayList<dar> {
-   public static final Codec<das> a = dar.a.listOf().fieldOf("Recipes").xmap(das::new, Function.identity()).codec();
-   public static final zj<ww, das> b = dar.b.a(zh.a(das::new));
+public record das(ji<cui> d, int e, kk f, cun g) {
+   public static final Codec<das> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cun.a.fieldOf("id").forGetter(das::a),
+               ayf.l.fieldOf("count").orElse(1).forGetter(das::b),
+               kk.a.optionalFieldOf("components", kk.c).forGetter(das::c)
+            )
+            .apply($$0, das::new)
+   );
+   public static final zm<wz, das> b = zm.a(zk.b(lq.G), das::a, zk.g, das::b, kk.b, das::c, das::new);
+   public static final zm<wz, Optional<das>> c = b.a(zk::a);
 
-   public das() {
+   public das(dbv $$0) {
+      this($$0, 1);
    }
 
-   private das(int $$0) {
-      super($$0);
+   public das(dbv $$0, int $$1) {
+      this($$0.r().o(), $$1, kk.c);
    }
 
-   private das(Collection<dar> $$0) {
-      super($$0);
+   public das(ji<cui> $$0, int $$1, kk $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
    }
 
-   @Nullable
-   public dar a(cuk $$0, cuk $$1, int $$2) {
-      if ($$2 > 0 && $$2 < this.size()) {
-         dar $$3 = this.get($$2);
-         return $$3.a($$0, $$1) ? $$3 : null;
-      } else {
-         for (int $$4 = 0; $$4 < this.size(); $$4++) {
-            dar $$5 = this.get($$4);
-            if ($$5.a($$0, $$1)) {
-               return $$5;
-            }
-         }
-
-         return null;
-      }
+   public das a(UnaryOperator<kk.a> $$0) {
+      return new das(this.d, this.e, $$0.apply(kk.a()).a());
    }
 
-   public das a() {
-      das $$0 = new das(this.size());
+   private static cun a(ji<cui> $$0, int $$1, kk $$2) {
+      return new cun($$0, $$1, $$2.c());
+   }
 
-      for (dar $$1 : this) {
-         $$0.add($$1.v());
-      }
+   public boolean a(cun $$0) {
+      return $$0.a(this.d) && this.f.a($$0);
+   }
 
-      return $$0;
+   public ji<cui> a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   public kk c() {
+      return this.f;
+   }
+
+   public cun d() {
+      return this.g;
    }
 }

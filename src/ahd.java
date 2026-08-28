@@ -1,34 +1,44 @@
-public class ahd implements zs<ags> {
-   public static final zj<wl, ahd> a = zs.a(ahd::a, ahd::new);
-   private final ahd.a b;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-   public ahd(ahd.a $$0) {
-      this.b = $$0;
-   }
+public record ahd(String b, Instant c, long d, @Nullable ya e, xv.b f) implements zv<agv> {
+   public static final zm<wl, ahd> a = zv.a(ahd::a, ahd::new);
 
    private ahd(wl $$0) {
-      this.b = $$0.b(ahd.a.class);
+      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(ya::a), new xv.b($$0));
    }
 
    private void a(wl $$0) {
-      $$0.a(this.b);
+      $$0.a(this.b, 256);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      $$0.a(this.e, ya::a);
+      this.f.a($$0);
    }
 
    @Override
-   public zu<ahd> a() {
-      return agq.bo;
+   public zx<ahd> a() {
+      return agt.bl;
    }
 
-   public void a(ags $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public ahd.a b() {
-      return this.b;
+   public Instant e() {
+      return this.c;
    }
 
-   public static enum a {
-      a,
-      b;
+   public long f() {
+      return this.d;
+   }
+
+   @Nullable
+   public ya g() {
+      return this.e;
+   }
+
+   public xv.b h() {
+      return this.f;
    }
 }

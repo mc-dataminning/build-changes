@@ -1,9 +1,22 @@
-public interface fse {
-   void a(fsc var1);
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   xl aO_();
+public class fse implements fsg {
+   private static final xo a = xo.c("spectatorMenu.root.prompt");
+   private final List<fsh> b = Lists.newArrayList();
 
-   void a(fgm var1, float var2, int var3);
+   public fse() {
+      this.b.add(new fsk());
+      this.b.add(new fsl());
+   }
 
-   boolean aP_();
+   @Override
+   public List<fsh> a() {
+      return this.b;
+   }
+
+   @Override
+   public xo b() {
+      return a;
+   }
 }

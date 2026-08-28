@@ -1,37 +1,65 @@
-import java.util.Locale;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public enum fyw {
-   a("generic"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery");
+public class fyw extends fyx {
+   private final String f;
 
-   private final String k;
-   private final xl l;
-   private final xl m;
-
-   private fyw(final String $$0) {
-      this.k = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.l = xl.c($$1);
-      this.m = xl.c($$1 + ".description");
+   fyw(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.f = $$3;
    }
 
    public String a() {
-      return this.k;
+      return this.f;
    }
 
-   public xl b() {
-      return this.l;
+   public fyw c() {
+      fyw $$0 = new fyw(this.a, this.b, this.c, this.f);
+      $$0.d = this.d;
+      return $$0;
    }
 
-   public xl c() {
-      return this.m;
+   @Override
+   public fnb a(fnb $$0, fzb $$1) {
+      return new frc($$0, $$1, this);
+   }
+
+   public static class a extends fyx.a<fyw> {
+      public a(fyw $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
+      }
+
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new fyw(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
+
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
+      }
+
+      @Nullable
+      @Override
+      public fyx.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fyx.b.d : null;
+      }
+
+      @Override
+      public Either<fyx.c, fyx.b> a(fzb $$0) {
+         fyx.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new fyx.c(this.a.a, fza.c, $$3));
+         }
+      }
    }
 }

@@ -1,30 +1,60 @@
 import com.mojang.serialization.Codec;
 
-public class eca extends eat<edp> {
-   public eca(Codec<edp> $$0) {
+public class eca extends eaw<edr> {
+   public eca(Codec<edr> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eav<edp> $$0) {
-      edp $$1 = $$0.f();
-      dco $$2 = $$0.b();
-      iz $$3 = $$0.e();
-      drx $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof dhc) {
-            if (!$$2.u($$3.c())) {
-               return false;
+   public boolean a(eay<edr> $$0) {
+      dcr $$1 = $$0.b();
+      iz $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
+         return false;
+      } else {
+         edr $$3 = $$0.f();
+         azf $$4 = $$0.d();
+         dls $$5 = dls.b();
+         int $$6 = $$3.f() + $$3.d();
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
             }
 
-            dhc.a($$2, $$4, $$3, 2);
-         } else {
-            $$2.a($$3, $$4, 2);
+            boolean $$9 = $$7 < $$3.f();
+
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
+         }
+
+         iz $$11 = $$2.d();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
+            $$1.a($$2, dez.qU.o(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            iz $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), je.b)) {
+               $$1.a($$14, dez.qV.o().a(dlr.d, Boolean.valueOf(true)), 3);
+            }
          }
 
          return true;
+      }
+   }
+
+   private boolean a(dbx $$0, iz $$1) {
+      dsa $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof dln) {
+         return true;
       } else {
-         return false;
+         return !$$2.i() && (!$$2.a(dez.G) || !$$2.u().b()) ? false : je.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
       }
    }
 }

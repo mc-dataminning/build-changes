@@ -1,22 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class ecz implements ecx {
+public class ecz implements eda {
    public static final Codec<ecz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eey.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               eey.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, ecz::new)
+      $$0 -> $$0.group(iz.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, ecz::new)
    );
-   public final eey b;
-   public final eey c;
-   public final int d;
+   private final Optional<iz> b;
+   private final boolean c;
 
-   public ecz(eey $$0, eey $$1, int $$2) {
+   private ecz(Optional<iz> $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
+   }
+
+   public static ecz a(iz $$0, boolean $$1) {
+      return new ecz(Optional.of($$0), $$1);
+   }
+
+   public static ecz a() {
+      return new ecz(Optional.empty(), false);
+   }
+
+   public Optional<iz> b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
    }
 }

@@ -1,14 +1,21 @@
-public class gni<T extends btm & ckc, M extends ftv<T>> extends gne<T, M> {
-   private final fvq<T> a;
-   private final alb b;
+public class gni<T extends bss & bud, M extends fty<T>> extends gnh<T, M> {
+   private final ale a;
+   private final M b;
 
-   public gni(gko<T, M> $$0, fwr $$1, fwt $$2, alb $$3) {
+   public gni(gkr<T, M> $$0, M $$1, ale $$2) {
       super($$0);
-      this.b = $$3;
-      this.a = new fvq<>($$1.a($$2));
+      this.b = $$1;
+      this.a = $$2;
    }
 
-   public void a(ezt $$0, gdj $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.a, this.b, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   @Override
+   public void a(ezw $$0, gdm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.i()) {
+         this.c().a(this.b);
+         this.b.a($$3, $$4, $$5, $$6);
+         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+         faa $$10 = $$1.getBuffer(gdu.e(this.a));
+         this.b.a($$0, $$10, $$2, goo.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      }
    }
 }

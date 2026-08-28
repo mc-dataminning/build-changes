@@ -1,100 +1,117 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class enz extends eom {
-   private final boolean l;
-   private float m;
-   private float n;
-
-   public enz(boolean $$0) {
-      this.l = $$0;
+public abstract class enz extends enr {
+   @Override
+   public ens d() {
+      return enu.b;
    }
 
    @Override
-   public void a(dcg $$0, btm $$1) {
-      super.a($$0, $$1);
-      $$1.a(eoh.j, 0.0F);
-      this.m = $$1.a(eoh.c);
-      $$1.a(eoh.c, 6.0F);
-      this.n = $$1.a(eoh.k);
-      $$1.a(eoh.k, 4.0F);
+   public ens e() {
+      return enu.c;
    }
 
    @Override
-   public void b() {
-      this.b.a(eoh.c, this.m);
-      this.b.a(eoh.k, this.n);
-      super.b();
+   public cui a() {
+      return cuq.qz;
    }
 
    @Override
-   public eoc a() {
-      return !this.b.be() ? super.a() : this.c(new iz(ayu.a(this.b.cK().a), ayu.a(this.b.cK().b + 0.5), ayu.a(this.b.cK().c)));
-   }
-
-   @Override
-   public eol a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1 + 0.5, $$2);
-   }
-
-   @Override
-   public int a(eoc[] $$0, eoc $$1) {
-      int $$2 = super.a($$0, $$1);
-      eoh $$3 = this.b($$1.a, $$1.b + 1, $$1.c);
-      eoh $$4 = this.b($$1.a, $$1.b, $$1.c);
-      int $$5;
-      if (this.b.a($$3) >= 0.0F && $$4 != eoh.w) {
-         $$5 = ayu.d(Math.max(1.0F, this.b.dJ()));
-      } else {
-         $$5 = 0;
-      }
-
-      double $$7 = this.d(new iz($$1.a, $$1.b, $$1.c));
-      eoc $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, je.b, $$4);
-      eoc $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, je.a, $$4);
-      if (this.b($$8, $$1)) {
-         $$0[$$2++] = $$8;
-      }
-
-      if (this.b($$9, $$1) && $$4 != eoh.e) {
-         $$0[$$2++] = $$9;
-      }
-
-      for (int $$10 = 0; $$10 < $$2; $$10++) {
-         eoc $$11 = $$0[$$10];
-         if ($$11.l == eoh.j && this.l && $$11.b < this.b.dP().z_() - 10) {
-            $$11.k++;
+   public void a(dbw $$0, iz $$1, ent $$2, azf $$3) {
+      if (!$$2.b() && !$$2.c(a)) {
+         if ($$3.a(64) == 0) {
+            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, avz.BY, awa.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
          }
+      } else if ($$3.a(10) == 0) {
+         $$0.a(li.al, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Nullable
+   @Override
+   public lg h() {
+      return li.l;
+   }
+
+   @Override
+   protected boolean a(dbw $$0) {
+      return $$0.ab().b(dbs.U);
+   }
+
+   @Override
+   protected void a(dbx $$0, iz $$1, dsa $$2) {
+      dpf $$3 = $$2.t() ? $$0.c_($$1) : null;
+      dex.a($$2, $$0, $$1, $$3);
+   }
+
+   @Override
+   public int b(dbz $$0) {
+      return 4;
+   }
+
+   @Override
+   public dsa b(ent $$0) {
+      return dez.G.o().a(djn.b, Integer.valueOf(e($$0)));
+   }
+
+   @Override
+   public boolean a(ens $$0) {
+      return $$0 == enu.c || $$0 == enu.b;
+   }
+
+   @Override
+   public int c(dbz $$0) {
+      return 1;
+   }
+
+   @Override
+   public int a(dbz $$0) {
+      return 5;
+   }
+
+   @Override
+   public boolean a(ent $$0, dbc $$1, iz $$2, ens $$3, je $$4) {
+      return $$4 == je.a && !$$3.a(awu.a);
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<avy> j() {
+      return Optional.of(avz.di);
+   }
+
+   public static class a extends enz {
+      @Override
+      protected void a(dsb.a<ens, ent> $$0) {
+         super.a($$0);
+         $$0.a(b);
       }
 
-      return $$2;
+      @Override
+      public int d(ent $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(ent $$0) {
+         return false;
+      }
    }
 
-   private boolean b(@Nullable eoc $$0, eoc $$1) {
-      return this.a($$0, $$1) && $$0.l == eoh.j;
-   }
+   public static class b extends enz {
+      @Override
+      public int d(ent $$0) {
+         return 8;
+      }
 
-   @Override
-   protected boolean c() {
-      return true;
-   }
-
-   @Override
-   public eoh a(eoj $$0, int $$1, int $$2, int $$3) {
-      eoh $$4 = $$0.a($$1, $$2, $$3);
-      if ($$4 == eoh.j) {
-         iz.a $$5 = new iz.a();
-
-         for (je $$6 : je.values()) {
-            $$5.d($$1, $$2, $$3).c($$6);
-            eoh $$7 = $$0.a($$5.u(), $$5.v(), $$5.w());
-            if ($$7 == eoh.a) {
-               return eoh.k;
-            }
-         }
-
-         return eoh.j;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
+      @Override
+      public boolean c(ent $$0) {
+         return true;
       }
    }
 }

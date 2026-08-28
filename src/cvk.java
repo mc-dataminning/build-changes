@@ -1,49 +1,60 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class cvk extends cuf implements ctm {
-   public static final int a = 5;
-   public static final float b = 3.0F;
+public class cvk extends csl {
+   public cvk(dex $$0, cui.a $$1) {
+      super($$0, $$1);
+   }
 
-   public cvk(cuf.a $$0) {
-      super($$0);
-      dgz.a(this, crz.a);
+   @Nullable
+   @Override
+   public cxy b(cxy $$0) {
+      iz $$1 = $$0.a();
+      dbw $$2 = $$0.q();
+      dsa $$3 = $$2.a_($$1);
+      dex $$4 = this.d();
+      if (!$$3.a($$4)) {
+         return dlm.a($$2, $$1) == 7 ? null : $$0;
+      } else {
+         je $$5;
+         if ($$0.h()) {
+            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
+         } else {
+            $$5 = $$0.k() == je.b ? $$0.g() : je.b;
+         }
+
+         int $$7 = 0;
+         iz.a $$8 = $$1.j().c($$5);
+
+         while ($$7 < 7) {
+            if (!$$2.B && !$$2.k($$8)) {
+               cmv $$9 = $$0.o();
+               int $$10 = $$2.am();
+               if ($$9 instanceof arf && $$8.v() >= $$10) {
+                  ((arf)$$9).b(xo.a("build.tooHigh", $$10 - 1).a(n.m), true);
+               }
+               break;
+            }
+
+            $$3 = $$2.a_($$8);
+            if (!$$3.a(this.d())) {
+               if ($$3.a($$0)) {
+                  return cxy.a($$0, $$8, $$5);
+               }
+               break;
+            }
+
+            $$8.c($$5);
+            if ($$5.o().d()) {
+               $$7++;
+            }
+         }
+
+         return null;
+      }
    }
 
    @Override
-   public String i(cuk $$0) {
-      ctd $$1 = $$0.a(km.X);
-      return $$1 != null ? this.a() + "." + $$1.b() : super.i($$0);
-   }
-
-   @Override
-   public void a(cuk $$0, cuf.b $$1, List<xl> $$2, cwd $$3) {
-      csf.a($$0, $$2);
-   }
-
-   @Override
-   public cwf c(cuk $$0) {
-      return cwf.d;
-   }
-
-   @Override
-   public int b(cuk $$0) {
-      return 72000;
-   }
-
-   @Override
-   public bqq<cuk> a(dbt $$0, cms $$1, bqo $$2) {
-      cuk $$3 = $$1.b($$2);
-      $$1.c($$2);
-      return bqq.b($$3);
-   }
-
-   @Override
-   public boolean a(cuk $$0, cuk $$1) {
-      return $$1.a(awu.b) || super.a($$0, $$1);
-   }
-
-   @Override
-   public bsw m() {
-      return bsw.b;
+   protected boolean c() {
+      return false;
    }
 }

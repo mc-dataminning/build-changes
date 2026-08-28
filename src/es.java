@@ -1,12 +1,12 @@
 public class es extends Exception {
-   private final xl a;
+   private final xo a;
 
-   public es(xl $$0) {
+   public es(xo $$0) {
       super($$0.getString());
       this.a = $$0;
    }
 
-   public xl a() {
+   public xo a() {
       return this.a;
    }
 }

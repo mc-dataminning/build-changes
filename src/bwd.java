@@ -1,33 +1,32 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bwd {
-   public static bwo<btk> a(int $$0, float $$1, int $$2) {
-      return byq.a(
-         (Function<byq.b<btk>, ? extends App<byq.c<btk>, byt<btk>>>)($$3 -> $$3.group(
-                  $$3.c(cco.m), $$3.a(cco.b), $$3.a(cco.C), $$3.a(cco.t), $$3.a(cco.n), $$3.a(cco.r), $$3.a(cco.q)
-               )
-               .apply(
-                  $$3,
-                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
-                        $$11.y()
-                           .d($$0xxxx -> $$0xxxx.a(ces.n), $$0xxxx -> true, $$12.dp(), $$2 + 1, ceo.b.c)
-                           .filter($$2xxxx -> $$2xxxx.a($$12.dn(), (double)$$2))
-                           .or(() -> $$11.y().a($$0xxxxx -> $$0xxxxx.a(ces.n), $$0xxxxx -> true, ceo.b.c, $$12.dp(), $$0, $$12.el()))
-                           .or(() -> $$3.<jh>a($$5).map(jh::b))
-                           .ifPresent($$10xx -> {
-                              $$7.b();
-                              $$8.b();
-                              $$9.b();
-                              $$10.b();
-                              $$6.a(jh.a($$11.af(), $$10xx));
-                              if (!$$10xx.a($$12.dn(), (double)$$2)) {
-                                 $$4.a(new ccr($$10xx, $$1, $$2));
-                              }
-                           });
+   public static <T extends btn> bvh<btn> a(bsy<? extends T> $$0, int $$1, ccr<T> $$2, float $$3, int $$4) {
+      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
+   }
+
+   public static <E extends btn, T extends btn> bvh<E> a(bsy<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, ccr<T> $$4, float $$5, int $$6) {
+      int $$7 = $$1 * $$1;
+      Predicate<btn> $$8 = $$2x -> $$0.equals($$2x.ak()) && $$3.test((T)$$2x);
+      return byt.a(
+         (Function<byt.b<E>, ? extends App<byt.c<E>, byw<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(ccr.n), $$6x.c(ccr.m), $$6x.b(ccr.h))
+               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
+                     cct $$13 = $$6x.b($$9);
+                     if ($$2.test((E)$$11) && $$13.d($$8)) {
+                        Optional<btn> $$14 = $$13.a($$3xxxx -> $$3xxxx.g((bss)$$11) <= (double)$$7 && $$8.test($$3xxxx));
+                        $$14.ifPresent($$5xxxx -> {
+                           $$6xx.a($$5xxxx);
+                           $$7x.a(new bvr($$5xxxx, true));
+                           $$8x.a(new ccu(new bvr($$5xxxx, false), $$5, $$6));
+                        });
                         return true;
+                     } else {
+                        return false;
                      }
-               ))
+                  }))
       );
    }
 }

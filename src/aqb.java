@@ -1,205 +1,203 @@
-import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.Writer;
-import java.nio.charset.CharacterCodingException;
-import java.nio.charset.CharsetDecoder;
-import java.nio.charset.CodingErrorAction;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Objects;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Properties;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public abstract class aqb<T extends aqb<T>> {
-   private static final Logger a = LogUtils.getLogger();
-   protected final Properties ab;
+public class aqb extends aqe<aqb> {
+   static final Logger ac = LogUtils.getLogger();
+   private static final Pattern ad = Pattern.compile("^[a-fA-F0-9]{40}$");
+   private static final Splitter ae = Splitter.on(',').trimResults();
+   public final boolean a = this.a("online-mode", true);
+   public final boolean b = this.a("prevent-proxy-connections", false);
+   public final String c = this.a("server-ip", "");
+   public final boolean d = this.a("spawn-animals", true);
+   public final boolean e = this.a("spawn-npcs", true);
+   public final boolean f = this.a("pvp", true);
+   public final boolean g = this.a("allow-flight", false);
+   public final String h = this.a("motd", "A Minecraft Server");
+   public final boolean i = this.a("force-gamemode", false);
+   public final boolean j = this.a("enforce-whitelist", false);
+   public final bqp k = this.a("difficulty", a(bqp::a, bqp::a), bqp::e, bqp.b);
+   public final dbt l = this.a("gamemode", a(dbt::a, dbt::a), dbt::b, dbt.a);
+   public final String m = this.a("level-name", "world");
+   public final int n = this.a("server-port", 25565);
+   @Nullable
+   public final Boolean o = this.b("announce-player-achievements");
+   public final boolean p = this.a("enable-query", false);
+   public final int q = this.a("query.port", 25565);
+   public final boolean r = this.a("enable-rcon", false);
+   public final int s = this.a("rcon.port", 25575);
+   public final String t = this.a("rcon.password", "");
+   public final boolean u = this.a("hardcore", false);
+   public final boolean v = this.a("allow-nether", true);
+   public final boolean w = this.a("spawn-monsters", true);
+   public final boolean x = this.a("use-native-transport", true);
+   public final boolean y = this.a("enable-command-block", false);
+   public final int z = this.a("spawn-protection", 16);
+   public final int A = this.a("op-permission-level", 4);
+   public final int B = this.a("function-permission-level", 2);
+   public final long C = this.a("max-tick-time", TimeUnit.MINUTES.toMillis(1L));
+   public final int D = this.a("max-chained-neighbor-updates", 1000000);
+   public final int E = this.a("rate-limit", 0);
+   public final int F = this.a("view-distance", 10);
+   public final int G = this.a("simulation-distance", 10);
+   public final int H = this.a("max-players", 20);
+   public final int I = this.a("network-compression-threshold", 256);
+   public final boolean J = this.a("broadcast-rcon-to-ops", true);
+   public final boolean K = this.a("broadcast-console-to-ops", true);
+   public final int L = this.a("max-world-size", $$0x -> ayx.a($$0x, 1, 29999984), 29999984);
+   public final boolean M = this.a("sync-chunk-writes", true);
+   public final String N = this.a("region-file-compression", "deflate");
+   public final boolean O = this.a("enable-jmx-monitoring", false);
+   public final boolean P = this.a("enable-status", true);
+   public final boolean Q = this.a("hide-online-players", false);
+   public final int R = this.a("entity-broadcast-range-percentage", $$0x -> ayx.a($$0x, 10, 1000), 100);
+   public final String S = this.a("text-filtering-config", "");
+   public final Optional<MinecraftServer.b> T;
+   public final dbk U;
+   public final aqe<aqb>.a<Integer> V = this.b("player-idle-timeout", 0);
+   public final aqe<aqb>.a<Boolean> W = this.b("white-list", false);
+   public final boolean X = this.a("enforce-secure-profile", true);
+   public final boolean Y = this.a("log-ips", true);
+   private final aqb.a af;
+   public final dyq Z;
+   public boolean aa = this.a("accepts-transfers", false);
 
    public aqb(Properties $$0) {
-      this.ab = $$0;
+      super($$0);
+      String $$1 = this.a("level-seed", "");
+      boolean $$2 = this.a("generate-structures", true);
+      long $$3 = dyq.a($$1).orElse(dyq.f());
+      this.Z = new dyq($$3, $$2, false);
+      this.af = new aqb.a(
+         this.a("generator-settings", $$0x -> ayn.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
+         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), ehy.a.a().toString())
+      );
+      this.T = a(
+         this.a("resource-pack-id", ""),
+         this.a("resource-pack", ""),
+         this.a("resource-pack-sha1", ""),
+         this.a("resource-pack-hash"),
+         this.a("require-resource-pack", false),
+         this.a("resource-pack-prompt", "")
+      );
+      this.U = b(this.a("initial-enabled-packs", String.join(",", dcq.c.a().a())), this.a("initial-disabled-packs", String.join(",", dcq.c.a().b())));
    }
 
-   public static Properties b(Path $$0) {
-      try {
-         try {
-            Properties var13;
-            try (InputStream $$1 = Files.newInputStream($$0)) {
-               CharsetDecoder $$2 = StandardCharsets.UTF_8
-                  .newDecoder()
-                  .onMalformedInput(CodingErrorAction.REPORT)
-                  .onUnmappableCharacter(CodingErrorAction.REPORT);
-               Properties $$3 = new Properties();
-               $$3.load(new InputStreamReader($$1, $$2));
-               var13 = $$3;
-            }
-
-            return var13;
-         } catch (CharacterCodingException var9) {
-            a.info("Failed to load properties as UTF-8 from file {}, trying ISO_8859_1", $$0);
-
-            Properties var4;
-            try (Reader $$5 = Files.newBufferedReader($$0, StandardCharsets.ISO_8859_1)) {
-               Properties $$6 = new Properties();
-               $$6.load($$5);
-               var4 = $$6;
-            }
-
-            return var4;
-         }
-      } catch (IOException var10) {
-         a.error("Failed to load properties from file: {}", $$0, var10);
-         return new Properties();
-      }
+   public static aqb a(Path $$0) {
+      return new aqb(b($$0));
    }
 
-   public void c(Path $$0) {
-      try (Writer $$1 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8)) {
-         this.ab.store($$1, "Minecraft server properties");
-      } catch (IOException var7) {
-         a.error("Failed to store properties to file: {}", $$0);
-      }
-   }
-
-   private static <V extends Number> Function<String, V> a(Function<String, V> $$0) {
-      return $$1 -> {
-         try {
-            return $$0.apply($$1);
-         } catch (NumberFormatException var3) {
-            return null;
-         }
-      };
-   }
-
-   protected static <V> Function<String, V> a(IntFunction<V> $$0, Function<String, V> $$1) {
-      return $$2 -> {
-         try {
-            return $$0.apply(Integer.parseInt($$2));
-         } catch (NumberFormatException var4) {
-            return $$1.apply($$2);
-         }
-      };
+   protected aqb a(jw $$0, Properties $$1) {
+      return new aqb($$1);
    }
 
    @Nullable
-   private String c(String $$0) {
-      return (String)this.ab.get($$0);
+   private static xo c(String $$0) {
+      if (!Strings.isNullOrEmpty($$0)) {
+         try {
+            return xo.a.a($$0, jw.b);
+         } catch (Exception var2) {
+            ac.warn("Failed to parse resource pack prompt '{}'", $$0, var2);
+         }
+      }
+
+      return null;
    }
 
-   @Nullable
-   protected <V> V a(String $$0, Function<String, V> $$1) {
-      String $$2 = this.c($$0);
-      if ($$2 == null) {
-         return null;
+   private static Optional<MinecraftServer.b> a(String $$0, String $$1, String $$2, @Nullable String $$3, boolean $$4, String $$5) {
+      if ($$1.isEmpty()) {
+         return Optional.empty();
       } else {
-         this.ab.remove($$0);
-         return $$1.apply($$2);
+         String $$6;
+         if (!$$2.isEmpty()) {
+            $$6 = $$2;
+            if (!Strings.isNullOrEmpty($$3)) {
+               ac.warn("resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored.");
+            }
+         } else if (!Strings.isNullOrEmpty($$3)) {
+            ac.warn("resource-pack-hash is deprecated. Please use resource-pack-sha1 instead.");
+            $$6 = $$3;
+         } else {
+            $$6 = "";
+         }
+
+         if ($$6.isEmpty()) {
+            ac.warn("You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack.");
+         } else if (!ad.matcher($$6).matches()) {
+            ac.warn("Invalid sha1 for resource-pack-sha1");
+         }
+
+         xo $$9 = c($$5);
+         UUID $$10;
+         if ($$0.isEmpty()) {
+            $$10 = UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8));
+            ac.warn("resource-pack-id missing, using default of {}", $$10);
+         } else {
+            try {
+               $$10 = UUID.fromString($$0);
+            } catch (IllegalArgumentException var10) {
+               ac.warn("Failed to parse '{}' into UUID", $$0);
+               return Optional.empty();
+            }
+         }
+
+         return Optional.of(new MinecraftServer.b($$10, $$1, $$6, $$4, $$9));
       }
    }
 
-   protected <V> V a(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
-      String $$4 = this.c($$0);
-      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
-      this.ab.put($$0, $$2.apply($$5));
-      return $$5;
+   private static dbk b(String $$0, String $$1) {
+      List<String> $$2 = ae.splitToList($$0);
+      List<String> $$3 = ae.splitToList($$1);
+      return new dbk($$2, $$3);
    }
 
-   protected <V> aqb<T>.a<V> b(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
-      String $$4 = this.c($$0);
-      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
-      this.ab.put($$0, $$2.apply($$5));
-      return new aqb.a<>($$0, $$5, $$2);
+   public dyn a(jw $$0) {
+      return this.af.a($$0);
    }
 
-   protected <V> V a(String $$0, Function<String, V> $$1, UnaryOperator<V> $$2, Function<V, String> $$3, V $$4) {
-      return this.a($$0, $$2x -> {
-         V $$3x = $$1.apply($$2x);
-         return $$3x != null ? $$2.apply($$3x) : null;
-      }, $$3, $$4);
-   }
+   static record a(JsonObject a, String b) {
+      private static final Map<String, ald<ehx>> c = Map.of("default", ehy.a, "largebiomes", ehy.c);
 
-   protected <V> V a(String $$0, Function<String, V> $$1, V $$2) {
-      return this.a($$0, $$1, Objects::toString, $$2);
-   }
+      public dyn a(jw $$0) {
+         jv<ehx> $$1 = $$0.d(lq.aQ);
+         ji.c<ehx> $$2 = $$1.b(ehy.a)
+            .or(() -> $$1.h().findAny())
+            .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
+         ji<ehx> $$3 = Optional.ofNullable(ale.a(this.b))
+            .map($$0x -> ald.a(lq.aQ, $$0x))
+            .or(() -> Optional.ofNullable(c.get(this.b)))
+            .flatMap($$1::b)
+            .orElseGet(() -> {
+               aqb.ac.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.h().a());
+               return $$2;
+            });
+         dyn $$4 = $$3.a().a();
+         if ($$3.a(ehy.b)) {
+            alc<JsonElement> $$5 = $$0.a(JsonOps.INSTANCE);
+            Optional<egl> $$6 = egl.a.parse(new Dynamic($$5, this.a())).resultOrPartial(aqb.ac::error);
+            if ($$6.isPresent()) {
+               return $$4.a($$0, new dxn($$6.get()));
+            }
+         }
 
-   protected <V> aqb<T>.a<V> b(String $$0, Function<String, V> $$1, V $$2) {
-      return this.b($$0, $$1, Objects::toString, $$2);
-   }
-
-   protected String a(String $$0, String $$1) {
-      return this.a($$0, Function.identity(), Function.identity(), $$1);
-   }
-
-   @Nullable
-   protected String a(String $$0) {
-      return this.a($$0, Function.identity());
-   }
-
-   protected int a(String $$0, int $$1) {
-      return this.a($$0, a(Integer::parseInt), Integer.valueOf($$1));
-   }
-
-   protected aqb<T>.a<Integer> b(String $$0, int $$1) {
-      return this.b($$0, a(Integer::parseInt), $$1);
-   }
-
-   protected int a(String $$0, UnaryOperator<Integer> $$1, int $$2) {
-      return this.a($$0, a(Integer::parseInt), $$1, Objects::toString, $$2);
-   }
-
-   protected long a(String $$0, long $$1) {
-      return this.a($$0, a(Long::parseLong), $$1);
-   }
-
-   protected boolean a(String $$0, boolean $$1) {
-      return this.a($$0, Boolean::valueOf, $$1);
-   }
-
-   protected aqb<T>.a<Boolean> b(String $$0, boolean $$1) {
-      return this.b($$0, Boolean::valueOf, $$1);
-   }
-
-   @Nullable
-   protected Boolean b(String $$0) {
-      return this.a($$0, Boolean::valueOf);
-   }
-
-   protected Properties a() {
-      Properties $$0 = new Properties();
-      $$0.putAll(this.ab);
-      return $$0;
-   }
-
-   protected abstract T b(jw var1, Properties var2);
-
-   public class a<V> implements Supplier<V> {
-      private final String b;
-      private final V c;
-      private final Function<V, String> d;
-
-      a(final String $$1, final V $$2, final Function<V, String> $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Override
-      public V get() {
-         return this.c;
-      }
-
-      public T a(jw $$0, V $$1) {
-         Properties $$2 = aqb.this.a();
-         $$2.put(this.b, this.d.apply($$1));
-         return aqb.this.b($$0, $$2);
+         return $$4;
       }
    }
 }

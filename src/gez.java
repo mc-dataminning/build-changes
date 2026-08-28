@@ -1,19 +1,9 @@
-import com.google.common.collect.Streams;
-import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class gez implements gew {
-   public static final String a = "OR";
-   private final Iterable<? extends gew> d;
+@FunctionalInterface
+public interface gez {
+   gez b = $$0 -> $$0x -> true;
+   gez c = $$0 -> $$0x -> false;
 
-   public gez(Iterable<? extends gew> $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public Predicate<drx> getPredicate(dry<deu, drx> $$0) {
-      List<Predicate<drx>> $$1 = Streams.stream(this.d).map($$1x -> $$1x.getPredicate($$0)).collect(Collectors.toList());
-      return $$1x -> $$1.stream().anyMatch($$1xx -> $$1xx.test($$1x));
-   }
+   Predicate<dsa> getPredicate(dsb<dex, dsa> var1);
 }

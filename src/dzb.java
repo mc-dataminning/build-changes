@@ -1,24 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-public class dzb extends dzh {
-   final axb<deu> a;
-   public static final MapCodec<dzb> e = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(axb.a(lq.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dzb::new)
-   );
+abstract class dzb implements dyz {
+   protected final List<dyz> e;
 
-   protected dzb(kd $$0, axb<deu> $$1) {
-      super($$0);
-      this.a = $$1;
+   protected dzb(List<dyz> $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   protected boolean a(drx $$0) {
-      return $$0.a(this.a);
-   }
-
-   @Override
-   public dyx<?> a() {
-      return dyx.b;
+   public static <T extends dzb> MapCodec<T> a(Function<List<dyz>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(dyz.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

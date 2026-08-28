@@ -1,31 +1,70 @@
-public class fvk<T extends cfw> extends fvf<T> {
-   private float j;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 
-   public fvk(fwv $$0) {
-      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
+public class fvk extends fuq<cot> {
+   private static final String a = "left_paddle";
+   private static final String b = "right_paddle";
+   private static final String f = "bottom";
+   private final fwy g;
+   private final fwy h;
+   private final ImmutableList<fwy> i;
+
+   public fvk(fwy $$0) {
+      this.g = $$0.b("left_paddle");
+      this.h = $$0.b("right_paddle");
+      this.i = this.a($$0).build();
    }
 
-   public static fxb c() {
-      fxd $$0 = new fxd();
-      fxe $$1 = $$0.a();
-      $$1.a("head", fxa.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new fwz(0.6F)), fwx.a(0.0F, 6.0F, -8.0F));
-      $$1.a("body", fxa.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new fwz(1.75F)), fwx.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      fxa $$2 = fxa.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new fwz(0.5F));
-      $$1.a("right_hind_leg", $$2, fwx.a(-3.0F, 12.0F, 7.0F));
-      $$1.a("left_hind_leg", $$2, fwx.a(3.0F, 12.0F, 7.0F));
-      $$1.a("right_front_leg", $$2, fwx.a(-3.0F, 12.0F, -5.0F));
-      $$1.a("left_front_leg", $$2, fwx.a(3.0F, 12.0F, -5.0F));
-      return fxb.a($$0, 64, 32);
+   protected Builder<fwy> a(fwy $$0) {
+      Builder<fwy> $$1 = new Builder();
+      $$1.add(new fwy[]{$$0.b("bottom"), this.g, this.h});
+      return $$1;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.c = 6.0F + $$0.G($$3) * 9.0F;
-      this.j = $$0.H($$3);
+   public static void a(fxh $$0) {
+      $$0.a(
+         "bottom",
+         fxd.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
+         fxa.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
+      );
+      int $$1 = 20;
+      int $$2 = 7;
+      int $$3 = 6;
+      float $$4 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         fxd.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fxa.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         fxd.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fxa.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.a.e = this.j;
+   public static fxe b() {
+      fxg $$0 = new fxg();
+      fxh $$1 = $$0.a();
+      a($$1);
+      return fxe.a($$0, 128, 64);
+   }
+
+   public void a(cot $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      a($$0, 0, this.g, $$1);
+      a($$0, 1, this.h, $$1);
+   }
+
+   public ImmutableList<fwy> c() {
+      return this.i;
+   }
+
+   private static void a(cot $$0, int $$1, fwy $$2, float $$3) {
+      float $$4 = $$0.a($$1, $$3);
+      $$2.e = ayx.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (ayx.a(-$$4) + 1.0F) / 2.0F);
+      $$2.f = ayx.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (ayx.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
+      }
    }
 }

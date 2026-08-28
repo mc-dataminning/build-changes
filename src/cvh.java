@@ -1,60 +1,32 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class cvh extends csi {
-   public cvh(deu $$0, cuf.a $$1) {
-      super($$0, $$1);
+public enum cvh implements azs {
+   a(0, "common", n.p),
+   b(1, "uncommon", n.o),
+   c(2, "rare", n.l),
+   d(3, "epic", n.n);
+
+   public static final Codec<cvh> e = azs.b(cvh::values);
+   public static final IntFunction<cvh> f = axo.a($$0 -> $$0.h, values(), axo.a.a);
+   public static final zm<ByteBuf, cvh> g = zk.a(f, $$0 -> $$0.h);
+   private final int h;
+   private final String i;
+   private final n j;
+
+   private cvh(final int $$0, final String $$1, final n $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
    }
 
-   @Nullable
-   @Override
-   public cxv b(cxv $$0) {
-      iz $$1 = $$0.a();
-      dbt $$2 = $$0.q();
-      drx $$3 = $$2.a_($$1);
-      deu $$4 = this.d();
-      if (!$$3.a($$4)) {
-         return dlj.a($$2, $$1) == 7 ? null : $$0;
-      } else {
-         je $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == je.b ? $$0.g() : je.b;
-         }
-
-         int $$7 = 0;
-         iz.a $$8 = $$1.j().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.B && !$$2.k($$8)) {
-               cms $$9 = $$0.o();
-               int $$10 = $$2.am();
-               if ($$9 instanceof arc && $$8.v() >= $$10) {
-                  ((arc)$$9).b(xl.a("build.tooHigh", $$10 - 1).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.d())) {
-               if ($$3.a($$0)) {
-                  return cxv.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
-         }
-
-         return null;
-      }
+   public n a() {
+      return this.j;
    }
 
    @Override
-   protected boolean c() {
-      return false;
+   public String c() {
+      return this.i;
    }
 }

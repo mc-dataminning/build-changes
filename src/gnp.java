@@ -1,64 +1,35 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.io.IOException;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+public class gnp<T extends btn> extends gnh<T, fvd<T>> {
+   public static final ale a = new ale("textures/entity/trident_riptide.png");
+   public static final String b = "box";
+   private final fwy c;
 
-public class gnp<T extends btk & cmh, M extends ftv<T> & fwf> extends gne<T, M> {
-   private static final Int2ObjectMap<alb> a = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, new alb("stone"));
-      $$0.put(2, new alb("iron"));
-      $$0.put(3, new alb("gold"));
-      $$0.put(4, new alb("emerald"));
-      $$0.put(5, new alb("diamond"));
-   });
-   private final Object2ObjectMap<cmk, gqi.a> b = new Object2ObjectOpenHashMap();
-   private final Object2ObjectMap<cmi, gqi.a> c = new Object2ObjectOpenHashMap();
-   private final aul d;
-   private final String e;
-
-   public gnp(gko<T, M> $$0, aul $$1, String $$2) {
+   public gnp(gkr<T, fvd<T>> $$0, fwu $$1) {
       super($$0);
-      this.d = $$1;
-      this.e = $$2;
+      fwy $$2 = $$1.a(fwx.aZ);
+      this.c = $$2.b("box");
    }
 
-   public void a(ezt $$0, gdj $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ch()) {
-         cmg $$10 = $$3.gB();
-         cmk $$11 = $$10.a();
-         cmi $$12 = $$10.b();
-         gqi.a $$13 = this.a(this.b, "type", lp.y, $$11);
-         gqi.a $$14 = this.a(this.c, "profession", lp.z, $$12);
-         M $$15 = this.c();
-         $$15.a($$14 == gqi.a.a || $$14 == gqi.a.b && $$13 != gqi.a.c);
-         alb $$16 = this.a("type", lp.y.b($$11));
-         a($$15, $$16, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-         $$15.a(true);
-         if ($$12 != cmi.b && !$$3.p_()) {
-            alb $$17 = this.a("profession", lp.z.b($$12));
-            a($$15, $$17, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-            if ($$12 != cmi.m) {
-               alb $$18 = this.a("profession_level", (alb)a.get(ayu.a($$10.c(), 1, a.size())));
-               a($$15, $$18, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-            }
+   public static fxe a() {
+      fxg $$0 = new fxg();
+      fxh $$1 = $$0.a();
+      $$1.a("box", fxd.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fxa.a);
+      return fxe.a($$0, 64, 64);
+   }
+
+   public void a(ezw $$0, gdm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.fr()) {
+         faa $$10 = $$1.getBuffer(gdu.e(a));
+
+         for (int $$11 = 0; $$11 < 3; $$11++) {
+            $$0.a();
+            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
+            $$0.a(a.d.rotationDegrees($$12));
+            float $$13 = 0.75F * (float)$$11;
+            $$0.b($$13, $$13, $$13);
+            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
+            this.c.a($$0, $$10, $$2, goo.d);
+            $$0.b();
          }
       }
-   }
-
-   private alb a(String $$0, alb $$1) {
-      return $$1.a((UnaryOperator<String>)($$1x -> "textures/entity/" + this.e + "/" + $$0 + "/" + $$1x + ".png"));
-   }
-
-   public <K> gqi.a a(Object2ObjectMap<K, gqi.a> $$0, String $$1, jd<K> $$2, K $$3) {
-      return (gqi.a)$$0.computeIfAbsent($$3, $$3x -> this.d.getResource(this.a($$1, $$2.b($$3))).flatMap($$0xx -> {
-            try {
-               return $$0xx.f().a(gqi.a).map(gqi::a);
-            } catch (IOException var2x) {
-               return Optional.empty();
-            }
-         }).orElse(gqi.a.a));
    }
 }

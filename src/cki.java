@@ -1,195 +1,197 @@
 import java.util.EnumSet;
-import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public abstract class cki extends cjf {
-   private static final akg<Byte> e = akk.a(cki.class, aki.a);
-   protected int b;
-   private cki.a bY = cki.a.a;
+public class cki extends ckb {
+   @Nullable
+   private cki.b b;
 
-   protected cki(bsv<? extends cki> $$0, dbt $$1) {
+   public cki(bsy<? extends cki> $$0, dbw $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void a(akk.a $$0) {
-      super.a($$0);
-      $$0.a(e, (byte)0);
+   protected void z() {
+      this.b = new cki.b(this);
+      this.bS.a(1, new caf(this));
+      this.bS.a(1, new caa(this, this.dP()));
+      this.bS.a(3, this.b);
+      this.bS.a(4, new cav(this, 1.0, false));
+      this.bS.a(5, new cki.a(this));
+      this.bT.a(1, new ccd(this).a());
+      this.bT.a(2, new cce<>(this, cmv.class, true));
+   }
+
+   public static buu.a s() {
+      return ckb.gw().a(buv.q, 8.0).a(buv.r, 0.25).a(buv.c, 1.0);
    }
 
    @Override
-   public void a(ur $$0) {
-      super.a($$0);
-      this.b = $$0.h("SpellTicks");
+   protected bss.b bb() {
+      return bss.b.c;
    }
 
    @Override
-   public void b(ur $$0) {
-      super.b($$0);
-      $$0.a("SpellTicks", this.b);
+   protected avy v() {
+      return avz.wU;
    }
 
    @Override
-   public cjf.a s() {
-      if (this.gA()) {
-         return cjf.a.c;
+   protected avy d(brl $$0) {
+      return avz.wW;
+   }
+
+   @Override
+   protected avy o_() {
+      return avz.wV;
+   }
+
+   @Override
+   protected void b(iz $$0, dsa $$1) {
+      this.a(avz.wX, 0.15F, 1.0F);
+   }
+
+   @Override
+   public boolean a(brl $$0, float $$1) {
+      if (this.b($$0)) {
+         return false;
       } else {
-         return this.gJ() ? cjf.a.g : cjf.a.a;
-      }
-   }
+         if (($$0.d() != null || $$0.a(awq.y)) && this.b != null) {
+            this.b.h();
+         }
 
-   public boolean gA() {
-      return this.dP().B ? this.ao.a(e) > 0 : this.b > 0;
-   }
-
-   public void a(cki.a $$0) {
-      this.bY = $$0;
-      this.ao.a(e, (byte)$$0.h);
-   }
-
-   protected cki.a gB() {
-      return !this.dP().B ? this.bY : cki.a.a(this.ao.a(e));
-   }
-
-   @Override
-   protected void Z() {
-      super.Z();
-      if (this.b > 0) {
-         this.b--;
+         return super.a($$0, $$1);
       }
    }
 
    @Override
    public void l() {
+      this.aY = this.dF();
       super.l();
-      if (this.dP().B && this.gA()) {
-         cki.a $$0 = this.gB();
-         float $$1 = (float)$$0.i[0];
-         float $$2 = (float)$$0.i[1];
-         float $$3 = (float)$$0.i[2];
-         float $$4 = this.aY * (float) (Math.PI / 180.0) + ayu.b((float)this.ai * 0.6662F) * 0.25F;
-         float $$5 = ayu.b($$4);
-         float $$6 = ayu.a($$4);
-         double $$7 = 0.6 * (double)this.ee();
-         double $$8 = 1.8 * (double)this.ee();
-         this.dP().a(lb.a(lj.u, $$1, $$2, $$3), this.du() + (double)$$5 * $$7, this.dw() + $$8, this.dA() + (double)$$6 * $$7, 0.0, 0.0, 0.0);
-         this.dP().a(lb.a(lj.u, $$1, $$2, $$3), this.du() - (double)$$5 * $$7, this.dw() + $$8, this.dA() - (double)$$6 * $$7, 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   public void o(float $$0) {
+      this.r($$0);
+      super.o($$0);
+   }
+
+   @Override
+   public float a(iz $$0, dbz $$1) {
+      return diw.m($$1.a_($$0.d())) ? 10.0F : super.a($$0, $$1);
+   }
+
+   public static boolean b(bsy<cki> $$0, dbx $$1, btr $$2, iz $$3, azf $$4) {
+      if (c($$0, $$1, $$2, $$3, $$4)) {
+         cmv $$5 = $$1.a((double)$$3.u() + 0.5, (double)$$3.v() + 0.5, (double)$$3.w() + 0.5, 5.0, true);
+         return $$5 == null;
+      } else {
+         return false;
       }
    }
 
-   protected int gC() {
-      return this.b;
-   }
+   static class a extends cbi {
+      @Nullable
+      private je i;
+      private boolean j;
 
-   protected abstract avv gq();
-
-   protected static enum a {
-      a(0, 0.0, 0.0, 0.0),
-      b(1, 0.7, 0.7, 0.8),
-      c(2, 0.4, 0.3, 0.35),
-      d(3, 0.7, 0.5, 0.2),
-      e(4, 0.3, 0.3, 0.8),
-      f(5, 0.1, 0.1, 0.2);
-
-      private static final IntFunction<cki.a> g = axl.a($$0 -> $$0.h, values(), axl.a.a);
-      final int h;
-      final double[] i;
-
-      private a(final int $$0, final double $$1, final double $$2, final double $$3) {
-         this.h = $$0;
-         this.i = new double[]{$$1, $$2, $$3};
-      }
-
-      public static cki.a a(int $$0) {
-         return g.apply($$0);
-      }
-   }
-
-   protected class b extends cai {
-      public b() {
-         this.a(EnumSet.of(cai.a.a, cai.a.b));
+      public a(cki $$0) {
+         super($$0, 1.0, 10);
+         this.a(EnumSet.of(cal.a.a));
       }
 
       @Override
       public boolean a() {
-         return cki.this.gC() > 0;
-      }
-
-      @Override
-      public void c() {
-         super.c();
-         cki.this.bR.n();
-      }
-
-      @Override
-      public void d() {
-         super.d();
-         cki.this.a(cki.a.a);
-      }
-
-      @Override
-      public void e() {
-         if (cki.this.p() != null) {
-            cki.this.G().a(cki.this.p(), (float)cki.this.ab(), (float)cki.this.aa());
-         }
-      }
-   }
-
-   protected abstract class c extends cai {
-      protected int b;
-      protected int c;
-
-      @Override
-      public boolean a() {
-         btk $$0 = cki.this.p();
-         if ($$0 == null || !$$0.bD()) {
+         if (this.b.p() != null) {
+            return false;
+         } else if (!this.b.K().l()) {
             return false;
          } else {
-            return cki.this.gA() ? false : cki.this.ai >= this.c;
+            azf $$0 = this.b.el();
+            if (this.b.dP().ab().b(dbs.c) && $$0.a(b(10)) == 0) {
+               this.i = je.b($$0);
+               iz $$1 = iz.a(this.b.du(), this.b.dw() + 0.5, this.b.dA()).a(this.i);
+               dsa $$2 = this.b.dP().a_($$1);
+               if (diw.m($$2)) {
+                  this.j = true;
+                  return true;
+               }
+            }
+
+            this.j = false;
+            return super.a();
          }
       }
 
       @Override
       public boolean b() {
-         btk $$0 = cki.this.p();
-         return $$0 != null && $$0.bD() && this.b > 0;
+         return this.j ? false : super.b();
       }
 
       @Override
       public void c() {
-         this.b = this.a(this.n());
-         cki.this.b = this.h();
-         this.c = cki.this.ai + this.i();
-         avv $$0 = this.l();
-         if ($$0 != null) {
-            cki.this.a($$0, 1.0F, 1.0F);
+         if (!this.j) {
+            super.c();
+         } else {
+            dbx $$0 = this.b.dP();
+            iz $$1 = iz.a(this.b.du(), this.b.dw() + 0.5, this.b.dA()).a(this.i);
+            dsa $$2 = $$0.a_($$1);
+            if (diw.m($$2)) {
+               $$0.a($$1, diw.n($$2), 3);
+               this.b.R();
+               this.b.ao();
+            }
          }
+      }
+   }
 
-         cki.this.a(this.m());
+   static class b extends cal {
+      private final cki a;
+      private int b;
+
+      public b(cki $$0) {
+         this.a = $$0;
+      }
+
+      public void h() {
+         if (this.b == 0) {
+            this.b = this.a(20);
+         }
+      }
+
+      @Override
+      public boolean a() {
+         return this.b > 0;
       }
 
       @Override
       public void e() {
          this.b--;
-         if (this.b == 0) {
-            this.k();
-            cki.this.a(cki.this.gq(), 1.0F, 1.0F);
+         if (this.b <= 0) {
+            dbw $$0 = this.a.dP();
+            azf $$1 = this.a.el();
+            iz $$2 = this.a.dp();
+
+            for (int $$3 = 0; $$3 <= 5 && $$3 >= -5; $$3 = ($$3 <= 0 ? 1 : 0) - $$3) {
+               for (int $$4 = 0; $$4 <= 10 && $$4 >= -10; $$4 = ($$4 <= 0 ? 1 : 0) - $$4) {
+                  for (int $$5 = 0; $$5 <= 10 && $$5 >= -10; $$5 = ($$5 <= 0 ? 1 : 0) - $$5) {
+                     iz $$6 = $$2.b($$4, $$3, $$5);
+                     dsa $$7 = $$0.a_($$6);
+                     dex $$8 = $$7.b();
+                     if ($$8 instanceof diw) {
+                        if ($$0.ab().b(dbs.c)) {
+                           $$0.a($$6, true, this.a);
+                        } else {
+                           $$0.a($$6, ((diw)$$8).o($$0.a_($$6)), 3);
+                        }
+
+                        if ($$1.h()) {
+                           return;
+                        }
+                     }
+                  }
+               }
+            }
          }
       }
-
-      protected abstract void k();
-
-      protected int n() {
-         return 20;
-      }
-
-      protected abstract int h();
-
-      protected abstract int i();
-
-      @Nullable
-      protected abstract avv l();
-
-      protected abstract cki.a m();
    }
 }

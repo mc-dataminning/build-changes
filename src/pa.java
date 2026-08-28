@@ -7,6 +7,6 @@ public class pa extends or {
 
    @Override
    protected void a(oq $$0) {
-      os.a(op.e, cun.qU).a('#', cun.uE).a('-', cun.ps).b("-#-").b("# #").b("###").b("has_string", a(cun.ps)).a($$0);
+      os.a(op.e, cuq.qU).a('#', cuq.uE).a('-', cuq.ps).b("-#-").b("# #").b("###").b("has_string", a(cuq.ps)).a($$0);
    }
 }

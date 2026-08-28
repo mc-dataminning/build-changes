@@ -1,15 +1,12 @@
-public class gkt extends gjy<ckf, fvp<ckf>> {
-   private static final alb a = new alb("textures/entity/silverfish.png");
+public class gkt extends gkb<cfz, fvo<cfz>> {
+   private static final ale a = new ale("textures/entity/sheep/sheep.png");
 
-   public gkt(gis.a $$0) {
-      super($$0, new fvp<>($$0.a(fwu.bm)), 0.3F);
+   public gkt(giv.a $$0) {
+      super($$0, new fvo<>($$0.a(fwx.bh)), 0.7F);
+      this.a(new gnj(this, $$0.f()));
    }
 
-   protected float a(ckf $$0) {
-      return 180.0F;
-   }
-
-   public alb b(ckf $$0) {
+   public ale a(cfz $$0) {
       return a;
    }
 }

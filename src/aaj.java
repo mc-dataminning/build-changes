@@ -1,11 +1,25 @@
-public interface aaj extends acb, agt {
-   void a(aam var1);
+public record aaj(String b, int c) implements zv<aab> {
+   public static final zm<wl, aaj> a = zv.a(aaj::a, aaj::new);
 
-   void a(aan var1);
+   private aaj(wl $$0) {
+      this($$0.p(), $$0.l());
+   }
 
-   void a(aal var1);
+   private void a(wl $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+   }
 
-   void a(aao var1);
+   @Override
+   public zx<aaj> a() {
+      return aal.h;
+   }
 
-   void a(aak var1);
+   public void a(aab $$0) {
+      $$0.a(this);
+   }
+
+   public int e() {
+      return this.c;
+   }
 }

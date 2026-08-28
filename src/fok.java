@@ -1,16 +1,27 @@
-public class fok implements cqb {
-   private final ffa a;
+public class fok extends fnz<cpz> implements fpf<cpz> {
+   private static final ale D = new ale("textures/gui/container/generic_54.png");
+   private final int E;
 
-   public fok(ffa $$0) {
-      this.a = $$0;
+   public fok(cpz $$0, cmu $$1, xo $$2) {
+      super($$0, $$1, $$2);
+      int $$3 = 222;
+      int $$4 = 114;
+      this.E = $$0.m();
+      this.d = 114 + this.E * 18;
+      this.v = this.d - 94;
    }
 
    @Override
-   public void a(cpp $$0, int $$1, cuk $$2) {
-      this.a.q.a($$2, $$1);
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(cpp $$0, int $$1, int $$2) {
+   protected void a(fgp $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.c) / 2;
+      int $$5 = (this.o - this.d) / 2;
+      $$0.a(D, $$4, $$5, 0, 0, this.c, this.E * 18 + 17);
+      $$0.a(D, $$4, $$5 + this.E * 18 + 17, 0, 126, this.c, 96);
    }
 }

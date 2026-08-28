@@ -1,57 +1,104 @@
-public class fll extends fmy {
-   private final Runnable c;
-   protected final fll.a a;
-   private final xl d;
-   private final boolean r;
-   private fhs s = fhs.a;
-   protected int b;
-   private fhb u;
+import com.mojang.text2speech.Narrator;
+import javax.annotation.Nullable;
 
-   public fll(Runnable $$0, fll.a $$1, xl $$2, xl $$3, boolean $$4) {
-      super($$2);
-      this.c = $$0;
-      this.a = $$1;
-      this.d = $$3;
-      this.r = $$4;
+public class fll extends fnb {
+   private static final xo a = xo.c("accessibility.onboarding.screen.title");
+   private static final xo b = xo.c("accessibility.onboarding.screen.narrator");
+   private static final int c = 4;
+   private static final int d = 16;
+   private final fht r;
+   private final ffh s;
+   private final boolean u;
+   private boolean v;
+   private float w;
+   private final Runnable x;
+   @Nullable
+   private fhn y;
+   @Nullable
+   private fha z;
+   private final fkp A = new fkp(this, this.m(), 33);
+
+   public fll(ffh $$0, Runnable $$1) {
+      super(a);
+      this.s = $$0;
+      this.x = $$1;
+      this.r = new fht(true);
+      this.u = ffd.Q().aX().a();
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.s = fhs.a(this.p, this.d, this.n - 50);
-      int $$0 = (this.s.a() + 1) * 9;
-      this.c(fgz.a(xl.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.u.a())).a(this.n / 2 - 155, 100 + $$0, 150, 20).a());
-      this.c(fgz.a(xl.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.u.a())).a(this.n / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.c(fgz.a(xk.e, $$0x -> this.c.run()).a(this.n / 2 - 155 + 80, 124 + $$0, 150, 20).a());
-      this.u = fhb.a(xl.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
-      if (this.r) {
-         this.c(this.u);
+   public void aM_() {
+      fkt $$0 = this.A.c(fkt.d());
+      $$0.c().b().a(4);
+      this.y = $$0.a(new fhn(this.n, this.l, this.p), $$0x -> $$0x.a(8));
+      this.z = this.s.as().a(this.s);
+      this.z.j = this.u;
+      $$0.a(this.z);
+      $$0.a(fhg.b(150, $$0x -> this.a(new flm(this, this.m.m)), false));
+      $$0.a(fhg.a(150, $$0x -> this.a(new fmk(this, this.m.m, this.m.ag())), false));
+      this.A.b(fhc.a(xn.j, $$0x -> this.d()).a());
+      this.A.a(this::c);
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      if (this.y != null) {
+         this.y.b(this.n);
       }
+
+      this.A.a();
    }
 
    @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
-      this.s.a($$0, this.n / 2, 70);
-   }
-
-   @Override
-   public boolean aE_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.run();
-         return true;
+   protected void aC_() {
+      if (this.u && this.z != null) {
+         this.b(this.z);
       } else {
-         return super.a($$0, $$1, $$2);
+         super.aC_();
       }
    }
 
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+   private int m() {
+      return 90;
+   }
+
+   @Override
+   public void d() {
+      this.a(this.x);
+   }
+
+   private void a(fnb $$0) {
+      this.a(() -> this.m.a($$0));
+   }
+
+   private void a(Runnable $$0) {
+      this.s.ad = false;
+      this.s.av();
+      Narrator.getNarrator().clear();
+      $$0.run();
+   }
+
+   @Override
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.D();
+      this.r.a($$0, this.n, 1.0F);
+   }
+
+   @Override
+   protected void a(fgp $$0, float $$1) {
+      f.a($$0, this.n, this.o, 1.0F, 0.0F);
+   }
+
+   private void D() {
+      if (!this.v && this.u) {
+         if (this.w < 40.0F) {
+            this.w++;
+         } else if (this.m.aB()) {
+            Narrator.getNarrator().say(b.getString(), true);
+            this.v = true;
+         }
+      }
    }
 }

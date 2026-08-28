@@ -1,30 +1,73 @@
-import java.util.Collections;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public interface cre {
-   void a(@Nullable cys<?> var1);
-
+public class cre extends brb {
    @Nullable
-   cys<?> d();
+   private dqa b;
 
-   default void a(cms $$0, List<cuk> $$1) {
-      cys<?> $$2 = this.d();
-      if ($$2 != null) {
-         $$0.a($$2, $$1);
-         if (!$$2.b().ao_()) {
-            $$0.a(Collections.singleton($$2));
-            this.a(null);
+   public cre() {
+      super(27);
+   }
+
+   public void a(dqa $$0) {
+      this.b = $$0;
+   }
+
+   public boolean b(dqa $$0) {
+      return this.b == $$0;
+   }
+
+   @Override
+   public void a(ux $$0, jk.a $$1) {
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         this.a($$2, cun.l);
+      }
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         ur $$4 = $$0.a($$3);
+         int $$5 = $$4.f("Slot") & 255;
+         if ($$5 >= 0 && $$5 < this.b()) {
+            this.a($$5, cun.a($$1, (vo)$$4).orElse(cun.l));
          }
       }
    }
 
-   default boolean a(dbt $$0, arc $$1, cys<?> $$2) {
-      if (!$$2.b().ao_() && $$0.ab().b(dbp.w) && !$$1.I().b($$2)) {
-         return false;
-      } else {
-         this.a($$2);
-         return true;
+   @Override
+   public ux a(jk.a $$0) {
+      ux $$1 = new ux();
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cun $$3 = this.a($$2);
+         if (!$$3.e()) {
+            ur $$4 = new ur();
+            $$4.a("Slot", (byte)$$2);
+            $$1.add($$3.b($$0, $$4));
+         }
       }
+
+      return $$1;
+   }
+
+   @Override
+   public boolean a(cmv $$0) {
+      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
+   }
+
+   @Override
+   public void d_(cmv $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+
+      super.d_($$0);
+   }
+
+   @Override
+   public void c(cmv $$0) {
+      if (this.b != null) {
+         this.b.b($$0);
+      }
+
+      super.c($$0);
+      this.b = null;
    }
 }

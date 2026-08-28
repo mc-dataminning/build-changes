@@ -1,37 +1,22 @@
-public class glv extends gir<cny> {
-   private static final alb a = new alb("textures/entity/wither/wither_invulnerable.png");
-   private static final alb f = new alb("textures/entity/wither/wither.png");
-   private final fvr g;
+public class glv extends gkb<ckr, fwn<ckr>> {
+   private static final ale a = new ale("textures/entity/witch.png");
 
-   public glv(gis.a $$0) {
-      super($$0);
-      this.g = new fvr($$0.a(fwu.cb));
+   public glv(giv.a $$0) {
+      super($$0, new fwn<>($$0.a(fwx.bU)), 0.5F);
+      this.a(new gnu<>(this, $$0.d()));
    }
 
-   public static fxb a() {
-      fxd $$0 = new fxd();
-      fxe $$1 = $$0.a();
-      $$1.a("head", fxa.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fwx.a);
-      return fxb.a($$0, 64, 64);
-   }
-
-   protected int a(cny $$0, iz $$1) {
-      return 15;
-   }
-
-   public void a(cny $$0, float $$1, float $$2, ezt $$3, gdj $$4, int $$5) {
-      $$3.a();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      float $$6 = ayu.j($$2, $$0.O, $$0.dF());
-      float $$7 = ayu.i($$2, $$0.P, $$0.dH());
-      ezx $$8 = $$4.getBuffer(this.g.a(this.a($$0)));
-      this.g.a(0.0F, $$6, $$7);
-      this.g.a($$3, $$8, $$5, gol.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
+   public void a(ckr $$0, float $$1, float $$2, ezw $$3, gdm $$4, int $$5) {
+      this.f.b(!$$0.eX().e());
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public alb a(cny $$0) {
-      return $$0.z() ? a : f;
+   public ale a(ckr $$0) {
+      return a;
+   }
+
+   protected void a(ckr $$0, ezw $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

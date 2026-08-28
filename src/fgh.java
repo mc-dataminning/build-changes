@@ -1,64 +1,164 @@
-import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.util.Arrays;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
 public class fgh {
-   private static final int a = -1;
-   private final jo<fgg> b = new jo<>(32);
+   private static final int a = 256;
+   private final ThreadLocal<fgh.b> b = ThreadLocal.withInitial(fgh.b::new);
+   private final Long2ObjectLinkedOpenHashMap<fgh.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
+   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
+   private final ToIntFunction<iz> e;
 
-   public static fgh a(fgd $$0) {
-      fgh $$1 = new fgh();
-      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : cxc.a($$0x, -6265536), cun.py, cun.pz, cun.pA, cun.pB, cun.uJ);
-      $$1.a(($$0x, $$1x) -> $$1x != 1 ? -1 : cxc.a($$0x, 0), cun.or);
-      $$1.a(($$0x, $$1x) -> dbr.a(0.5, 1.0), dew.iH, dew.iI);
-      $$1.a(($$0x, $$1x) -> {
-         if ($$1x != 1) {
-            return -1;
-         } else {
-            cxd $$2x = $$0x.a(km.S);
-            IntList $$3 = $$2x != null ? $$2x.b() : IntList.of();
-            int $$4 = $$3.size();
-            if ($$4 == 0) {
-               return -7697782;
-            } else if ($$4 == 1) {
-               return aye.b.e($$3.getInt(0));
-            } else {
-               int $$5 = 0;
-               int $$6 = 0;
-               int $$7 = 0;
+   public fgh(ToIntFunction<iz> $$0) {
+      this.e = $$0;
+   }
 
-               for (int $$8 = 0; $$8 < $$4; $$8++) {
-                  int $$9 = $$3.getInt($$8);
-                  $$5 += aye.b.b($$9);
-                  $$6 += aye.b.c($$9);
-                  $$7 += aye.b.d($$9);
-               }
-
-               return aye.b.a($$5 / $$4, $$6 / $$4, $$7 / $$4);
-            }
-         }
-      }, cun.uv);
-      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : aye.b.e($$0x.a(km.F, cwl.a).b()), cun.sk, cun.vo, cun.vr, cun.vq);
-
-      for (cvr $$2 : cvr.h()) {
-         $$1.a(($$1x, $$2x) -> aye.b.e($$2.a($$2x)), $$2);
+   public int a(iz $$0) {
+      int $$1 = kb.a($$0.u());
+      int $$2 = kb.a($$0.w());
+      fgh.b $$3 = this.b.get();
+      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
+         $$3.a = $$1;
+         $$3.b = $$2;
+         $$3.c = this.b($$1, $$2);
       }
 
-      $$1.a(($$1x, $$2x) -> {
-         drx $$3 = ((csi)$$1x.g()).d().n();
-         return $$0.a($$3, null, null, $$2x);
-      }, dew.i, dew.bt, dew.bu, dew.ff, dew.aE, dew.aF, dew.aG, dew.aH, dew.aI, dew.aK, dew.fm);
-      $$1.a(($$0x, $$1x) -> dbn.d(), dew.aL);
-      $$1.a(($$0x, $$1x) -> $$1x == 0 ? -1 : aye.b.e($$0x.a(km.z, cxk.c).a()), cun.rU);
-      return $$1;
+      int[] $$4 = $$3.c.a($$0.v());
+      int $$5 = $$0.u() & 15;
+      int $$6 = $$0.w() & 15;
+      int $$7 = $$6 << 4 | $$5;
+      int $$8 = $$4[$$7];
+      if ($$8 != -1) {
+         return $$8;
+      } else {
+         int $$9 = this.e.applyAsInt($$0);
+         $$4[$$7] = $$9;
+         return $$9;
+      }
    }
 
-   public int a(cuk $$0, int $$1) {
-      fgg $$2 = this.b.a(lp.h.a($$0.g()));
-      return $$2 == null ? -1 : $$2.getColor($$0, $$1);
+   public void a(int $$0, int $$1) {
+      try {
+         this.d.writeLock().lock();
+
+         for (int $$2 = -1; $$2 <= 1; $$2++) {
+            for (int $$3 = -1; $$3 <= 1; $$3++) {
+               long $$4 = dbd.c($$0 + $$2, $$1 + $$3);
+               fgh.a $$5 = (fgh.a)this.c.remove($$4);
+               if ($$5 != null) {
+                  $$5.b();
+               }
+            }
+         }
+      } finally {
+         this.d.writeLock().unlock();
+      }
    }
 
-   public void a(fgg $$0, dbs... $$1) {
-      for (dbs $$2 : $$1) {
-         this.b.a($$0, cuf.a($$2.r()));
+   public void a() {
+      try {
+         this.d.writeLock().lock();
+         this.c.values().forEach(fgh.a::b);
+         this.c.clear();
+      } finally {
+         this.d.writeLock().unlock();
+      }
+   }
+
+   private fgh.a b(int $$0, int $$1) {
+      long $$2 = dbd.c($$0, $$1);
+      this.d.readLock().lock();
+
+      try {
+         fgh.a $$3 = (fgh.a)this.c.get($$2);
+         if ($$3 != null) {
+            return $$3;
+         }
+      } finally {
+         this.d.readLock().unlock();
+      }
+
+      this.d.writeLock().lock();
+
+      fgh.a $$5;
+      try {
+         fgh.a $$4 = (fgh.a)this.c.get($$2);
+         if ($$4 == null) {
+            $$5 = new fgh.a();
+            if (this.c.size() >= 256) {
+               fgh.a $$6 = (fgh.a)this.c.removeFirst();
+               if ($$6 != null) {
+                  $$6.b();
+               }
+            }
+
+            this.c.put($$2, $$5);
+            return $$5;
+         }
+
+         $$5 = $$4;
+      } finally {
+         this.d.writeLock().unlock();
+      }
+
+      return $$5;
+   }
+
+   static class a {
+      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
+      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
+      private static final int c = ayx.h(16);
+      private volatile boolean d;
+
+      public int[] a(int $$0) {
+         this.b.readLock().lock();
+
+         try {
+            int[] $$1 = (int[])this.a.get($$0);
+            if ($$1 != null) {
+               return $$1;
+            }
+         } finally {
+            this.b.readLock().unlock();
+         }
+
+         this.b.writeLock().lock();
+
+         int[] var12;
+         try {
+            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
+         } finally {
+            this.b.writeLock().unlock();
+         }
+
+         return var12;
+      }
+
+      private int[] c() {
+         int[] $$0 = new int[c];
+         Arrays.fill($$0, -1);
+         return $$0;
+      }
+
+      public boolean a() {
+         return this.d;
+      }
+
+      public void b() {
+         this.d = true;
+      }
+   }
+
+   static class b {
+      public int a = Integer.MIN_VALUE;
+      public int b = Integer.MIN_VALUE;
+      @Nullable
+      fgh.a c;
+
+      private b() {
       }
    }
 }

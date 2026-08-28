@@ -1,21 +1,19 @@
-class brp extends brv {
-   protected brp(brw $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum brp implements azs {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
+
+   public static final Codec<brp> d = azs.a(brp::values);
+   private final String e;
+
+   private brp(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(btk $$0, int $$1) {
-      return $$0.fs() > 0.0F || $$0.dP().B;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public void b(btk $$0, int $$1) {
-      super.b($$0, $$1);
-      $$0.A(Math.max($$0.fs(), (float)(4 * (1 + $$1))));
+   public String c() {
+      return this.e;
    }
 }

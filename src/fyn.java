@@ -1,119 +1,67 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface fyn extends fym {
-   static fyn.a a(GameProfile $$0, yb $$1, fyl $$2) {
-      return new fyn.a($$0, $$1, $$2);
+public class fyn {
+   private final fyp[] a;
+   private int b;
+
+   public static Codec<fyn> a(int $$0) {
+      return Codec.list(fyp.a)
+         .comapFlatMap(
+            $$1 -> {
+               int $$2 = $$1.size();
+               return $$2 > $$0
+                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
+                  : DataResult.success(new fyn($$0, $$1));
+            },
+            fyn::c
+         );
    }
 
-   static fyn.b a(xl $$0, Instant $$1) {
-      return new fyn.b($$0, $$1);
+   public fyn(int $$0) {
+      this.a = new fyp[$$0];
    }
 
-   xl b();
-
-   default xl c() {
-      return this.b();
+   private fyn(int $$0, List<fyp> $$1) {
+      this.a = $$1.toArray(fyp[]::new);
+      this.b = $$1.size();
    }
 
-   boolean a(UUID var1);
+   private List<fyp> c() {
+      List<fyp> $$0 = new ArrayList<>(this.d());
 
-   public static record a(GameProfile c, yb d, fyl e) implements fyn {
-      public static final MapCodec<fyn.a> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  ayc.x.fieldOf("profile").forGetter(fyn.a::f), yb.a.forGetter(fyn.a::g), fyl.d.optionalFieldOf("trust_level", fyl.a).forGetter(fyn.a::h)
-               )
-               .apply($$0, fyn.a::new)
-      );
-      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
-
-      @Override
-      public xl b() {
-         if (!this.d.o().a()) {
-            xl $$0 = this.d.o().b(this.d.c());
-            return (xl)($$0 != null ? $$0 : xl.i());
-         } else {
-            return this.d.d();
-         }
+      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
+         $$0.add(this.b($$1));
       }
 
-      @Override
-      public xl c() {
-         xl $$0 = this.b();
-         xl $$1 = this.i();
-         return xl.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
-      }
-
-      public xl d() {
-         xl $$0 = this.i();
-         return xl.a("gui.chatSelection.heading", this.c.getName(), $$0);
-      }
-
-      private xl i() {
-         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
-         return xl.b($$0.format(f)).a(n.u, n.h);
-      }
-
-      @Override
-      public boolean a(UUID $$0) {
-         return this.d.a($$0);
-      }
-
-      public UUID e() {
-         return this.c.getId();
-      }
-
-      @Override
-      public fym.a a() {
-         return fym.a.a;
-      }
-
-      public GameProfile f() {
-         return this.c;
-      }
-
-      public yb g() {
-         return this.d;
-      }
-
-      public fyl h() {
-         return this.e;
-      }
+      return $$0;
    }
 
-   public static record b(xl c, Instant d) implements fyn {
-      public static final MapCodec<fyn.b> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(xn.a.fieldOf("message").forGetter(fyn.b::d), ayc.o.fieldOf("time_stamp").forGetter(fyn.b::e)).apply($$0, fyn.b::new)
-      );
+   public void a(fyp $$0) {
+      this.a[this.c(this.b++)] = $$0;
+   }
 
-      @Override
-      public xl b() {
-         return this.c;
-      }
+   @Nullable
+   public fyp b(int $$0) {
+      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
+   }
 
-      @Override
-      public boolean a(UUID $$0) {
-         return false;
-      }
+   private int c(int $$0) {
+      return $$0 % this.a.length;
+   }
 
-      @Override
-      public fym.a a() {
-         return fym.a.b;
-      }
+   public int a() {
+      return Math.max(this.b - this.a.length, 0);
+   }
 
-      public xl d() {
-         return this.c;
-      }
+   public int b() {
+      return this.b - 1;
+   }
 
-      public Instant e() {
-         return this.d;
-      }
+   private int d() {
+      return this.b() - this.a() + 1;
    }
 }

@@ -1,42 +1,40 @@
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import org.slf4j.Logger;
+import java.io.InputStream;
 
-public class ezi {
-   private static final Logger a = LogUtils.getLogger();
+public class ezi extends ezk {
+   private static final ezd a = new ezd() {
+      @Override
+      public String a(boolean $$0, String $$1) {
+         return "#error Import statement not supported";
+      }
+   };
+   private int b;
 
-   public static void a(int $$0) {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager._glUseProgram($$0);
+   private ezi(ezk.a $$0, int $$1, String $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static void a(ezj $$0) {
+   public void a(ezh $$0) {
       RenderSystem.assertOnRenderThread();
-      $$0.d().a();
-      $$0.c().a();
-      GlStateManager.glDeleteProgram($$0.a());
+      this.b++;
+      this.a($$0);
    }
 
-   public static int a() throws IOException {
+   @Override
+   public void a() {
       RenderSystem.assertOnRenderThread();
-      int $$0 = GlStateManager.glCreateProgram();
-      if ($$0 <= 0) {
-         throw new IOException("Could not create shader program (returned program ID " + $$0 + ")");
-      } else {
-         return $$0;
+      this.b--;
+      if (this.b <= 0) {
+         super.a();
       }
    }
 
-   public static void b(ezj $$0) {
+   public static ezi a(ezk.a $$0, String $$1, InputStream $$2, String $$3) throws IOException {
       RenderSystem.assertOnRenderThread();
-      $$0.e();
-      GlStateManager.glLinkProgram($$0.a());
-      int $$1 = GlStateManager.glGetProgrami($$0.a(), 35714);
-      if ($$1 == 0) {
-         a.warn("Error encountered when linking program containing VS {} and FS {}. Log output:", $$0.c().b(), $$0.d().b());
-         a.warn(GlStateManager.glGetProgramInfoLog($$0.a(), 32768));
-      }
+      int $$4 = b($$0, $$1, $$2, $$3, a);
+      ezi $$5 = new ezi($$0, $$4, $$1);
+      $$0.c().put($$1, $$5);
+      return $$5;
    }
 }

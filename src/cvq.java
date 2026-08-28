@@ -1,47 +1,21 @@
 import javax.annotation.Nullable;
 
-public class cvq extends csi implements ctb {
-   private final avv a;
+public class cvq extends cvy {
+   public cvq(cui.a $$0, dex $$1, dex $$2) {
+      super($$1, $$2, $$0, je.a);
+   }
 
-   public cvq(deu $$0, avv $$1, cuf.a $$2) {
-      super($$0, $$2);
-      this.a = $$1;
+   public cvq(cui.a $$0, dex $$1, dex $$2, je $$3) {
+      super($$1, $$2, $$0, $$3);
    }
 
    @Override
-   public bqp a(cxx $$0) {
-      bqp $$1 = super.a($$0);
-      cms $$2 = $$0.o();
-      if ($$1.a() && $$2 != null && !$$2.f()) {
-         bqo $$3 = $$0.p();
-         $$2.a($$3, cun.qy.w());
+   protected boolean a(iz $$0, dbw $$1, @Nullable cmv $$2, cun $$3, dsa $$4) {
+      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dqp $$6 && $$1.a_($$0).b() instanceof dlx $$7) {
+         $$7.a($$2, $$6, true);
       }
 
-      return $$1;
-   }
-
-   @Override
-   public String a() {
-      return this.t();
-   }
-
-   @Override
-   protected avv a(drx $$0) {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(@Nullable cms $$0, dbt $$1, iz $$2, @Nullable evi $$3) {
-      if ($$1.k($$2) && $$1.u($$2)) {
-         if (!$$1.B) {
-            $$1.a($$2, this.d().n(), 3);
-         }
-
-         $$1.a($$0, dwq.z, $$2);
-         $$1.a($$0, $$2, this.a, avx.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+      return $$5;
    }
 }

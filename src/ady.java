@@ -1,166 +1,85 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public abstract class ady implements zs<ace> {
-   protected final int a;
-   protected final short b;
-   protected final short c;
-   protected final short d;
-   protected final byte e;
-   protected final byte f;
-   protected final boolean g;
-   protected final boolean h;
-   protected final boolean i;
+public record ady(int b, boolean c, Set<ald<dbw>> d, int e, int f, int g, boolean h, boolean i, boolean j, agq k, boolean l) implements zv<ach> {
+   public static final zm<wz, ady> a = zv.a(ady::a, ady::new);
 
-   protected ady(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6, boolean $$7, boolean $$8) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
+   private ady(wz $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(lq.aS)),
+         $$0.l(),
+         $$0.l(),
+         $$0.l(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new agq($$0),
+         $$0.readBoolean()
+      );
+   }
+
+   private void a(wz $$0) {
+      $$0.p(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d, wl::b);
+      $$0.c(this.e);
+      $$0.c(this.f);
+      $$0.c(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
+      this.k.a($$0);
+      $$0.a(this.l);
    }
 
    @Override
-   public abstract zu<? extends ady> a();
+   public zx<ady> a() {
+      return agt.O;
+   }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public String toString() {
-      return "Entity_" + super.toString();
-   }
-
-   @Nullable
-   public bsp a(dbt $$0) {
-      return $$0.a(this.a);
-   }
-
-   public short b() {
-      return this.b;
-   }
-
-   public short e() {
+   public boolean e() {
       return this.c;
    }
 
-   public short f() {
+   public Set<ald<dbw>> f() {
       return this.d;
    }
 
-   public byte g() {
+   public int g() {
       return this.e;
    }
 
-   public byte h() {
+   public int h() {
       return this.f;
    }
 
-   public boolean i() {
-      return this.h;
-   }
-
-   public boolean j() {
-      return this.i;
-   }
-
-   public boolean k() {
+   public int i() {
       return this.g;
    }
 
-   public static class a extends ady {
-      public static final zj<wl, ady.a> j = zs.a(ady.a::b, ady.a::a);
-
-      public a(int $$0, short $$1, short $$2, short $$3, boolean $$4) {
-         super($$0, $$1, $$2, $$3, (byte)0, (byte)0, $$4, false, true);
-      }
-
-      private static ady.a a(wl $$0) {
-         int $$1 = $$0.l();
-         short $$2 = $$0.readShort();
-         short $$3 = $$0.readShort();
-         short $$4 = $$0.readShort();
-         boolean $$5 = $$0.readBoolean();
-         return new ady.a($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private void b(wl $$0) {
-         $$0.c(this.a);
-         $$0.l(this.b);
-         $$0.l(this.c);
-         $$0.l(this.d);
-         $$0.a(this.g);
-      }
-
-      @Override
-      public zu<ady.a> a() {
-         return agq.R;
-      }
+   public boolean j() {
+      return this.h;
    }
 
-   public static class b extends ady {
-      public static final zj<wl, ady.b> j = zs.a(ady.b::b, ady.b::a);
-
-      public b(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, true, true);
-      }
-
-      private static ady.b a(wl $$0) {
-         int $$1 = $$0.l();
-         short $$2 = $$0.readShort();
-         short $$3 = $$0.readShort();
-         short $$4 = $$0.readShort();
-         byte $$5 = $$0.readByte();
-         byte $$6 = $$0.readByte();
-         boolean $$7 = $$0.readBoolean();
-         return new ady.b($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      private void b(wl $$0) {
-         $$0.c(this.a);
-         $$0.l(this.b);
-         $$0.l(this.c);
-         $$0.l(this.d);
-         $$0.k(this.e);
-         $$0.k(this.f);
-         $$0.a(this.g);
-      }
-
-      @Override
-      public zu<ady.b> a() {
-         return agq.S;
-      }
+   public boolean k() {
+      return this.i;
    }
 
-   public static class c extends ady {
-      public static final zj<wl, ady.c> j = zs.a(ady.c::b, ady.c::a);
+   public boolean l() {
+      return this.j;
+   }
 
-      public c(int $$0, byte $$1, byte $$2, boolean $$3) {
-         super($$0, (short)0, (short)0, (short)0, $$1, $$2, $$3, true, false);
-      }
+   public agq m() {
+      return this.k;
+   }
 
-      private static ady.c a(wl $$0) {
-         int $$1 = $$0.l();
-         byte $$2 = $$0.readByte();
-         byte $$3 = $$0.readByte();
-         boolean $$4 = $$0.readBoolean();
-         return new ady.c($$1, $$2, $$3, $$4);
-      }
-
-      private void b(wl $$0) {
-         $$0.c(this.a);
-         $$0.k(this.e);
-         $$0.k(this.f);
-         $$0.a(this.g);
-      }
-
-      @Override
-      public zu<ady.c> a() {
-         return agq.T;
-      }
+   public boolean n() {
+      return this.l;
    }
 }

@@ -1,32 +1,22 @@
-public interface cwd {
-   cwd.a a = new cwd.a(false, false);
-   cwd.a b = new cwd.a(true, false);
+public class cwd extends cui {
+   private final cwc a;
 
-   boolean a();
+   public cwd(cwc $$0, cui.a $$1) {
+      super($$1.b($$0.a()));
+      this.a = $$0;
+   }
 
-   boolean b();
+   public cwc h() {
+      return this.a;
+   }
 
-   public static record a(boolean c, boolean d) implements cwd {
-      @Override
-      public boolean a() {
-         return this.c;
-      }
+   @Override
+   public int g() {
+      return this.a.e();
+   }
 
-      @Override
-      public boolean b() {
-         return this.d;
-      }
-
-      public cwd.a c() {
-         return new cwd.a(this.c, true);
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+   @Override
+   public boolean a(cun $$0, cun $$1) {
+      return this.a.f().a($$1) || super.a($$0, $$1);
    }
 }

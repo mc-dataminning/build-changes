@@ -1,23 +1,37 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public class efq<P extends efp> {
-   public static final efq<efr> a = a("trunk_vine", efr.a);
-   public static final efq<efo> b = a("leave_vine", efo.a);
-   public static final efq<efn> c = a("cocoa", efn.a);
-   public static final efq<efm> d = a("beehive", efm.a);
-   public static final efq<efk> e = a("alter_ground", efk.a);
-   public static final efq<efl> f = a("attached_to_leaves", efl.a);
-   private final MapCodec<P> g;
+public class efq extends efs {
+   public static final MapCodec<efq> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(efq::new, $$0 -> $$0.b);
+   private final float b;
 
-   private static <P extends efp> efq<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.Z, $$0, new efq<>($$1));
+   public efq(float $$0) {
+      this.b = $$0;
    }
 
-   private efq(MapCodec<P> $$0) {
-      this.g = $$0;
+   @Override
+   protected eft<?> a() {
+      return eft.c;
    }
 
-   public MapCodec<P> a() {
-      return this.g;
+   @Override
+   public void a(efs.a $$0) {
+      azf $$1 = $$0.b();
+      if (!($$1.i() >= this.b)) {
+         List<iz> $$2 = $$0.c();
+         int $$3 = $$2.get(0).v();
+         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+            for (je $$3x : je.c.a) {
+               if ($$1.i() <= 0.25F) {
+                  je $$4 = $$3x.g();
+                  iz $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                  if ($$0.a($$5)) {
+                     $$0.a($$5, dez.fC.o().a(dge.c, Integer.valueOf($$1.a(3))).a(dge.aE, $$3x));
+                  }
+               }
+            }
+         });
+      }
    }
 }

@@ -1,198 +1,105 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.google.common.collect.Comparators;
 import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.ChannelPipeline;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.epoll.Epoll;
-import io.netty.channel.epoll.EpollEventLoopGroup;
-import io.netty.channel.epoll.EpollServerSocketChannel;
-import io.netty.channel.local.LocalAddress;
-import io.netty.channel.local.LocalServerChannel;
-import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.ServerSocketChannel;
-import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.timeout.ReadTimeoutHandler;
-import io.netty.util.HashedWheelTimer;
-import io.netty.util.Timeout;
-import io.netty.util.Timer;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.SocketAddress;
-import java.util.Collections;
-import java.util.Iterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import java.util.Objects;
 import org.slf4j.Logger;
 
 public class asa {
-   private static final Logger d = LogUtils.getLogger();
-   public static final Supplier<NioEventLoopGroup> a = Suppliers.memoize(
-      () -> new NioEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Server IO #%d").setDaemon(true).build())
-   );
-   public static final Supplier<EpollEventLoopGroup> b = Suppliers.memoize(
-      () -> new EpollEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Epoll Server IO #%d").setDaemon(true).build())
-   );
-   final MinecraftServer e;
-   public volatile boolean c;
-   private final List<ChannelFuture> f = Collections.synchronizedList(Lists.newArrayList());
-   final List<wj> g = Collections.synchronizedList(Lists.newArrayList());
+   private static final Logger c = LogUtils.getLogger();
+   public static final float a = 0.01F;
+   public static final float b = 64.0F;
+   private static final float d = 9.0F;
+   private static final int e = 10;
+   private final LongSet f = new LongOpenHashSet();
+   private final boolean g;
+   private float h = 9.0F;
+   private float i;
+   private int j;
+   private int k = 1;
 
-   public asa(MinecraftServer $$0) {
-      this.e = $$0;
-      this.c = true;
+   public asa(boolean $$0) {
+      this.g = $$0;
    }
 
-   public void a(@Nullable InetAddress $$0, int $$1) throws IOException {
-      synchronized (this.f) {
-         Class<? extends ServerSocketChannel> $$2;
-         EventLoopGroup $$3;
-         if (Epoll.isAvailable() && this.e.p()) {
-            $$2 = EpollServerSocketChannel.class;
-            $$3 = (EventLoopGroup)b.get();
-            d.info("Using epoll channel type");
-         } else {
-            $$2 = NioServerSocketChannel.class;
-            $$3 = (EventLoopGroup)a.get();
-            d.info("Using default channel type");
-         }
+   public void a(dug $$0) {
+      this.f.add($$0.f().a());
+   }
 
-         this.f.add(((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel($$2)).childHandler(new ChannelInitializer<Channel>() {
-            protected void initChannel(Channel $$0) {
-               try {
-                  $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
-               } catch (ChannelException var5) {
-               }
-
-               ChannelPipeline $$1 = $$0.pipeline().addLast("timeout", new ReadTimeoutHandler(30));
-               if (asa.this.e.an()) {
-                  $$1.addLast("legacy_query", new arv(asa.this.d()));
-               }
-
-               wj.a($$1, zt.a, null);
-               int $$2 = asa.this.e.o();
-               wj $$3 = (wj)($$2 > 0 ? new wv($$2) : new wj(zt.a));
-               asa.this.g.add($$3);
-               $$3.a($$1);
-               $$3.a(new asc(asa.this.e, $$3));
-            }
-         }).group($$3).localAddress($$0, $$1)).bind().syncUninterruptibly());
+   public void a(arf $$0, dbd $$1) {
+      if (!this.f.remove($$1.a()) && $$0.bD()) {
+         $$0.c.b(new adn($$1));
       }
    }
 
-   public SocketAddress a() {
-      ChannelFuture $$0;
-      synchronized (this.f) {
-         $$0 = ((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel(LocalServerChannel.class)).childHandler(new ChannelInitializer<Channel>() {
-            protected void initChannel(Channel $$0) {
-               wj $$1 = new wj(zt.a);
-               $$1.a(new arw(asa.this.e, $$1));
-               asa.this.g.add($$1);
-               ChannelPipeline $$2 = $$0.pipeline();
-               wj.a($$2, zt.a);
-               $$1.a($$2);
-            }
-         }).group((EventLoopGroup)a.get()).localAddress(LocalAddress.ANY)).bind().syncUninterruptibly();
-         this.f.add($$0);
-      }
+   public void a(arf $$0) {
+      if (this.j < this.k) {
+         float $$1 = Math.max(1.0F, this.h);
+         this.i = Math.min(this.i + this.h, $$1);
+         if (!(this.i < 1.0F)) {
+            if (!this.f.isEmpty()) {
+               are $$2 = $$0.z();
+               aqn $$3 = $$2.l().a;
+               List<dug> $$4 = this.a($$3, $$0.dr());
+               if (!$$4.isEmpty()) {
+                  ase $$5 = $$0.c;
+                  this.j++;
+                  $$5.b(acw.a);
 
-      return $$0.channel().localAddress();
-   }
-
-   public void b() {
-      this.c = false;
-
-      for (ChannelFuture $$0 : this.f) {
-         try {
-            $$0.channel().close().sync();
-         } catch (InterruptedException var4) {
-            d.error("Interrupted whilst closing channel");
-         }
-      }
-   }
-
-   public void c() {
-      synchronized (this.g) {
-         Iterator<wj> $$0 = this.g.iterator();
-
-         while ($$0.hasNext()) {
-            wj $$1 = $$0.next();
-            if (!$$1.j()) {
-               if ($$1.i()) {
-                  try {
-                     $$1.b();
-                  } catch (Exception var7) {
-                     if ($$1.e()) {
-                        throw new y(o.a(var7, "Ticking memory connection"));
-                     }
-
-                     d.warn("Failed to handle packet for {}", $$1.a(this.e.bn()), var7);
-                     xl $$3 = xl.b("Internal server error");
-                     $$1.a(new aaa($$3), ws.a(() -> $$1.a($$3)));
-                     $$1.m();
+                  for (dug $$6 : $$4) {
+                     a($$5, $$2, $$6);
                   }
-               } else {
-                  $$0.remove();
-                  $$1.n();
+
+                  $$5.b(new acv($$4.size()));
+                  this.i = this.i - (float)$$4.size();
                }
             }
          }
       }
    }
 
-   public MinecraftServer d() {
-      return this.e;
+   private static void a(ase $$0, are $$1, dug $$2) {
+      $$0.b(new adt($$2, $$1.y_(), null, null));
+      dbd $$3 = $$2.f();
+      ags.a($$1, $$3);
    }
 
-   public List<wj> e() {
-      return this.g;
+   private List<dug> a(aqn $$0, dbd $$1) {
+      int $$2 = ayx.d(this.i);
+      List<dug> $$4;
+      if (!this.g && this.f.size() > $$2) {
+         $$4 = this.f
+            .stream()
+            .collect(Comparators.least($$2, Comparator.comparingInt($$1::c)))
+            .stream()
+            .mapToLong(Long::longValue)
+            .mapToObj($$0::d)
+            .filter(Objects::nonNull)
+            .toList();
+      } else {
+         $$4 = this.f.longStream().mapToObj($$0::d).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
+      }
+
+      for (dug $$5 : $$4) {
+         this.f.remove($$5.f().a());
+      }
+
+      return $$4;
    }
 
-   static class a extends ChannelInboundHandlerAdapter {
-      private static final Timer a = new HashedWheelTimer();
-      private final int b;
-      private final int c;
-      private final List<asa.a.a> d = Lists.newArrayList();
-
-      public a(int $$0, int $$1) {
-         this.b = $$0;
-         this.c = $$1;
+   public void a(float $$0) {
+      this.j--;
+      this.h = Double.isNaN((double)$$0) ? 0.01F : ayx.a($$0, 0.01F, 64.0F);
+      if (this.j == 0) {
+         this.i = 1.0F;
       }
 
-      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-         this.a($$0, $$1);
-      }
+      this.k = 10;
+   }
 
-      private void a(ChannelHandlerContext $$0, Object $$1) {
-         int $$2 = this.b + (int)(Math.random() * (double)this.c);
-         this.d.add(new asa.a.a($$0, $$1));
-         a.newTimeout(this::a, (long)$$2, TimeUnit.MILLISECONDS);
-      }
-
-      private void a(Timeout $$0) {
-         asa.a.a $$1 = this.d.remove(0);
-         $$1.a.fireChannelRead($$1.b);
-      }
-
-      static class a {
-         public final ChannelHandlerContext a;
-         public final Object b;
-
-         public a(ChannelHandlerContext $$0, Object $$1) {
-            this.a = $$0;
-            this.b = $$1;
-         }
-      }
+   public boolean a(long $$0) {
+      return this.f.contains($$0);
    }
 }

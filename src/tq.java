@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 public class tq {
    public static final int a = 8;
    private static final Logger b = LogUtils.getLogger();
-   final arb c;
+   final are c;
    private final tt d;
    private final List<tn> e;
    private ImmutableList<th> f;
@@ -26,7 +26,7 @@ public class tq {
    private final tq.c l;
    private final tq.c m;
 
-   protected tq(tq.b $$0, Collection<th> $$1, arb $$2, tt $$3, tq.c $$4, tq.c $$5) {
+   protected tq(tq.b $$0, Collection<th> $$1, are $$2, tt $$3, tq.c $$4, tq.c $$5) {
       this.c = $$2;
       this.d = $$3;
       this.i = $$0;
@@ -82,7 +82,7 @@ public class tq {
                   tq.this.k.d().accept(tq.this.c);
                   tq.this.g.forEach($$0xxx -> $$0xxx.b(tq.this.k));
                   LongSet $$0 = new LongArraySet(tq.this.c.w());
-                  $$0.forEach($$0xxx -> tq.this.c.a(dba.a($$0xxx), dba.b($$0xxx), false));
+                  $$0.forEach($$0xxx -> tq.this.c.a(dbd.a($$0xxx), dbd.b($$0xxx), false));
                   tq.this.a($$0 + 1);
                }
             }
@@ -134,28 +134,28 @@ public class tq {
       return $$0.c() == null ? this.m.spawnStructure($$0) : this.l.spawnStructure($$0);
    }
 
-   public static void a(arb $$0) {
-      agp.a($$0);
+   public static void a(are $$0) {
+      ags.a($$0);
    }
 
    public static class a {
-      private final arb a;
+      private final are a;
       private final tt b = tt.a;
       private final tq.b c = ti.a();
       private final tq.c d = tq.c.a;
       private tq.c e = tq.c.b;
       private final Collection<th> f;
 
-      private a(Collection<th> $$0, arb $$1) {
+      private a(Collection<th> $$0, are $$1) {
          this.f = $$0;
          this.a = $$1;
       }
 
-      public static tq.a a(Collection<th> $$0, arb $$1) {
+      public static tq.a a(Collection<th> $$0, are $$1) {
          return new tq.a($$0, $$1);
       }
 
-      public static tq.a b(Collection<tn> $$0, arb $$1) {
+      public static tq.a b(Collection<tn> $$0, are $$1) {
          return a(ti.a().batch($$0), $$1);
       }
 

@@ -1,38 +1,201 @@
-public enum eoh {
-   a(-1.0F),
-   b(0.0F),
-   c(0.0F),
-   d(0.0F),
-   e(0.0F),
-   f(-1.0F),
-   g(0.0F),
-   h(-1.0F),
-   i(-1.0F),
-   j(8.0F),
-   k(8.0F),
-   l(0.0F),
-   m(-1.0F),
-   n(8.0F),
-   o(16.0F),
-   p(8.0F),
-   q(-1.0F),
-   r(0.0F),
-   s(-1.0F),
-   t(-1.0F),
-   u(4.0F),
-   v(-1.0F),
-   w(8.0F),
-   x(0.0F),
-   y(0.0F),
-   z(0.0F);
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   private final float A;
+public class eoh {
+   private final List<eof> a;
+   @Nullable
+   private eoh.a b;
+   private int c;
+   private final iz d;
+   private final float e;
+   private final boolean f;
 
-   private eoh(final float $$0) {
-      this.A = $$0;
+   public eoh(List<eof> $$0, iz $$1, boolean $$2) {
+      this.a = $$0;
+      this.d = $$1;
+      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
+      this.f = $$2;
    }
 
-   public float a() {
-      return this.A;
+   public void a() {
+      this.c++;
+   }
+
+   public boolean b() {
+      return this.c <= 0;
+   }
+
+   public boolean c() {
+      return this.c >= this.a.size();
+   }
+
+   @Nullable
+   public eof d() {
+      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
+   }
+
+   public eof a(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public void b(int $$0) {
+      if (this.a.size() > $$0) {
+         this.a.subList($$0, this.a.size()).clear();
+      }
+   }
+
+   public void a(int $$0, eof $$1) {
+      this.a.set($$0, $$1);
+   }
+
+   public int e() {
+      return this.a.size();
+   }
+
+   public int f() {
+      return this.c;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public evp a(bss $$0, int $$1) {
+      eof $$2 = this.a.get($$1);
+      double $$3 = (double)$$2.a + (double)((int)($$0.dj() + 1.0F)) * 0.5;
+      double $$4 = (double)$$2.b;
+      double $$5 = (double)$$2.c + (double)((int)($$0.dj() + 1.0F)) * 0.5;
+      return new evp($$3, $$4, $$5);
+   }
+
+   public iz d(int $$0) {
+      return this.a.get($$0).a();
+   }
+
+   public evp a(bss $$0) {
+      return this.a($$0, this.c);
+   }
+
+   public iz g() {
+      return this.a.get(this.c).a();
+   }
+
+   public eof h() {
+      return this.a.get(this.c);
+   }
+
+   @Nullable
+   public eof i() {
+      return this.c > 0 ? this.a.get(this.c - 1) : null;
+   }
+
+   public boolean a(@Nullable eoh $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if ($$0.a.size() != this.a.size()) {
+         return false;
+      } else {
+         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+            eof $$2 = this.a.get($$1);
+            eof $$3 = $$0.a.get($$1);
+            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   @bab
+   void a(eof[] $$0, eof[] $$1, Set<eoo> $$2) {
+      this.b = new eoh.a($$0, $$1, $$2);
+   }
+
+   @Nullable
+   public eoh.a k() {
+      return this.b;
+   }
+
+   public void a(wl $$0) {
+      if (this.b != null && !this.b.c.isEmpty()) {
+         $$0.a(this.f);
+         $$0.p(this.c);
+         $$0.a(this.d);
+         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
+         this.b.a($$0);
+      }
+   }
+
+   public static eoh b(wl $$0) {
+      boolean $$1 = $$0.readBoolean();
+      int $$2 = $$0.readInt();
+      iz $$3 = $$0.e();
+      List<eof> $$4 = $$0.a(eof::b);
+      eoh.a $$5 = eoh.a.b($$0);
+      eoh $$6 = new eoh($$4, $$3, $$1);
+      $$6.b = $$5;
+      $$6.c = $$2;
+      return $$6;
+   }
+
+   @Override
+   public String toString() {
+      return "Path(length=" + this.a.size() + ")";
+   }
+
+   public iz l() {
+      return this.d;
+   }
+
+   public float m() {
+      return this.e;
+   }
+
+   static eof[] c(wl $$0) {
+      eof[] $$1 = new eof[$$0.l()];
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$1[$$2] = eof.b($$0);
+      }
+
+      return $$1;
+   }
+
+   static void a(wl $$0, eof[] $$1) {
+      $$0.c($$1.length);
+
+      for (eof $$2 : $$1) {
+         $$2.a($$0);
+      }
+   }
+
+   public eoh n() {
+      eoh $$0 = new eoh(this.a, this.d, this.f);
+      $$0.b = this.b;
+      $$0.c = this.c;
+      return $$0;
+   }
+
+   public static record a(eof[] a, eof[] b, Set<eoo> c) {
+
+      public void a(wl $$0) {
+         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+         eoh.a($$0, this.a);
+         eoh.a($$0, this.b);
+      }
+
+      public static eoh.a b(wl $$0) {
+         HashSet<eoo> $$1 = $$0.a(HashSet::new, eoo::c);
+         eof[] $$2 = eoh.c($$0);
+         eof[] $$3 = eoh.c($$0);
+         return new eoh.a($$2, $$3, $$1);
+      }
    }
 }

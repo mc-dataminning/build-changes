@@ -1,17 +1,19 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
 
-public class bdv extends bhd {
-   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:zombie_pigman_spawn_egg", "minecraft:zombified_piglin_spawn_egg").build();
+public class bdv extends bft {
+   public bdv(Schema $$0, boolean $$1) {
+      super($$0, $$1, "EntityWolfColorFix", bgv.B, "minecraft:wolf");
+   }
 
-   public bdv(Schema $$0) {
-      super("EntityZombifiedPiglinRenameFix", $$0, true);
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("CollarColor", $$0x -> $$0x.createByte((byte)(15 - $$0x.asInt(0))));
    }
 
    @Override
-   protected String a(String $$0) {
-      return Objects.equals("minecraft:zombie_pigman", $$0) ? "minecraft:zombified_piglin" : $$0;
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

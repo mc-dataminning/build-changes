@@ -1,16 +1,29 @@
-public record aii(int b, cuk c) implements zs<ags> {
-   public static final zj<ww, aii> a = zj.a(zh.e, aii::b, cuk.a(cuk.h), aii::e, aii::new);
+public class aii implements zv<agv> {
+   public static final zm<wl, aii> a = zv.a(aii::a, aii::new);
+   private final int b;
 
-   @Override
-   public zu<aii> a() {
-      return agq.bW;
+   public aii(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(ags $$0) {
+   private aii(wl $$0) {
+      this.b = $$0.readShort();
+   }
+
+   private void a(wl $$0) {
+      $$0.l(this.b);
+   }
+
+   @Override
+   public zx<aii> a() {
+      return agt.bT;
+   }
+
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public cuk e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

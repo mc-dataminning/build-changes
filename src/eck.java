@@ -1,43 +1,56 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class eck extends eat<ede> {
-   private static final iz a = new iz(8, 3, 8);
-   private static final dba b = new dba(a);
-   private static final int c = 16;
-   private static final int d = 1;
-
-   public eck(Codec<ede> $$0) {
+public class eck extends eaw<edy> {
+   public eck(Codec<edy> $$0) {
       super($$0);
    }
 
-   private static int a(int $$0, int $$1, int $$2, int $$3) {
-      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
+   @Override
+   public boolean a(eay<edy> $$0) {
+      dcr $$1 = $$0.b();
+      iz $$2 = $$0.e();
+      edy $$3 = $$0.f();
+      azf $$4 = $$0.d();
+      OptionalInt $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         iz $$6 = $$2.h($$5.getAsInt());
+         kd $$7 = new kd($$3.c, $$3.c, $$3.c);
+         eia $$8 = eia.a($$6.b($$7), $$6.a($$7));
+         return iz.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
+            $$1.a($$1x, dez.kJ.o(), 2);
+            return 1;
+         }).sum() > 0;
+      }
    }
 
-   @Override
-   public boolean a(eav<ede> $$0) {
-      dco $$1 = $$0.b();
-      dba $$2 = new dba($$0.e());
-      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
-         return true;
-      } else {
-         iz $$3 = a.h($$0.e().v() + a.v());
-         iz.a $$4 = new iz.a();
+   private static OptionalInt a(dcr $$0, iz $$1, edy $$2) {
+      Predicate<dsa> $$3 = $$0x -> $$0x.a(dez.G);
+      Predicate<dsa> $$4 = $$0x -> !$$0x.a(dez.G);
+      Optional<dxi> $$5 = dxi.a($$0, $$1, $$2.b, $$3, $$4);
+      return $$5.<OptionalInt>map(dxi::c).orElseGet(OptionalInt::empty);
+   }
 
-         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
-            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
-               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
-                  $$4.d($$6, $$3.v(), $$5);
-                  if ($$4.equals($$3)) {
-                     $$1.a($$4, dew.m.n(), 2);
-                  } else {
-                     $$1.a($$4, dew.b.n(), 2);
-                  }
-               }
+   private boolean b(dcr $$0, iz $$1) {
+      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
+         for (je $$2 : je.c.a) {
+            if (this.a($$0, $$1.a($$2))) {
+               return false;
             }
          }
 
          return true;
+      } else {
+         return false;
       }
+   }
+
+   private boolean a(dbx $$0, iz $$1) {
+      dsa $$2 = $$0.a_($$1);
+      return $$2.a(dez.G) || $$2.i();
    }
 }

@@ -1,41 +1,31 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public interface fdj {
-   fdj a = new fdj() {
-      @Override
-      public long a() {
-         return 1L;
+public class fdj {
+   public final int a;
+   @Nullable
+   public final String b;
+
+   fdj(int $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public static class a {
+      private int a = -1;
+      private String b;
+
+      public fdj.a a(int $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      @Override
-      public long b() {
-         return 1L;
+      public fdj.a a(@Nullable String $$0) {
+         this.b = $$0;
+         return this;
       }
-   };
 
-   long a();
-
-   long b();
-
-   static fdj a(final int $$0) {
-      return new fdj() {
-         private static final Logger c = LogUtils.getLogger();
-         private int d;
-
-         @Override
-         public long a() {
-            this.d = 0;
-            return 1L;
-         }
-
-         @Override
-         public long b() {
-            this.d++;
-            long $$0 = Math.min(1L << this.d, (long)$$0);
-            c.debug("Skipping for {} extra cycles", $$0);
-            return $$0;
-         }
-      };
+      public fdj a() {
+         return new fdj(this.a, this.b);
+      }
    }
 }

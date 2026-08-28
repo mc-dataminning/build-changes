@@ -1,51 +1,55 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 
-public interface dfv<T extends Enum<T>> {
-   int v_ = 4;
+public class dfv extends dil implements dfa, dft {
+   public static final MapCodec<dfv> c = b(dfv::new);
 
-   Optional<drx> i_(drx var1);
-
-   float av_();
-
-   default void a_(drx $$0, arb $$1, iz $$2, azc $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
-      }
+   @Override
+   public MapCodec<dfv> a() {
+      return c;
    }
 
-   T c();
+   public dfv(drz.d $$0) {
+      super($$0, je.a, q_, false);
+      this.k(this.E.b().a(r_, Boolean.valueOf(false)));
+   }
 
-   default Optional<drx> c(drx $$0, arb $$1, iz $$2, azc $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
+   @Override
+   protected dim c() {
+      return (dim)dez.sv;
+   }
 
-      for (iz $$7 : iz.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
-         }
+   @Override
+   protected dsa a(dsa $$0, dsa $$1) {
+      return $$1.a(r_, $$0.c(r_));
+   }
 
-         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof dfv<?> $$9) {
-            Enum<?> $$10 = $$9.c();
-            if (this.c().getClass() == $$10.getClass()) {
-               int $$11 = $$10.ordinal();
-               if ($$11 < $$4) {
-                  return Optional.empty();
-               }
+   @Override
+   public cun a(dbz $$0, iz $$1, dsa $$2) {
+      return new cun(cuq.ws);
+   }
 
-               if ($$11 > $$4) {
-                  $$6++;
-               } else {
-                  $$5++;
-               }
-            }
-         }
-      }
+   @Override
+   protected bqs a(dsa $$0, dbw $$1, iz $$2, cmv $$3, evl $$4) {
+      return dft.a($$3, $$0, $$1, $$2);
+   }
 
-      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.av_();
-      return $$3.i() < $$13 ? this.i_($$0) : Optional.empty();
+   @Override
+   protected void a(dsb.a<dex, dsa> $$0) {
+      $$0.a(r_);
+   }
+
+   @Override
+   public boolean b(dbz $$0, iz $$1, dsa $$2) {
+      return !$$2.c(r_);
+   }
+
+   @Override
+   public boolean a(dbw $$0, azf $$1, iz $$2, dsa $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(are $$0, azf $$1, iz $$2, dsa $$3) {
+      $$0.a($$2, $$3.a(r_, Boolean.valueOf(true)), 2);
    }
 }

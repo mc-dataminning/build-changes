@@ -1,16 +1,32 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class eus {
-   private static final Codec<eur> d = lp.K.q().dispatch(eur::a, euq::a);
-   public static final Codec<eur> a = Codec.lazyInitialized(
-      () -> Codec.either(euo.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof euo $$1 ? Either.left($$1) : Either.right($$0))
-   );
-   public static final euq b = a("fixed", eup.a);
-   public static final euq c = a("context", euo.a);
+public record eus(String b) implements euu {
+   public static final MapCodec<eus> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(eus::c)).apply($$0, eus::new));
 
-   private static euq a(String $$0, MapCodec<? extends eur> $$1) {
-      return jv.a(lp.K, new alb($$0), new euq($$1));
+   public static euu a(String $$0) {
+      return new eus($$0);
+   }
+
+   @Override
+   public eut a() {
+      return euv.b;
+   }
+
+   @Override
+   public ews a(eqg $$0) {
+      return ews.c(this.b);
+   }
+
+   @Override
+   public Set<esz<?>> b() {
+      return ImmutableSet.of();
+   }
+
+   public String c() {
+      return this.b;
    }
 }

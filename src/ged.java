@@ -1,84 +1,108 @@
-public class ged implements aum {
-   private final gec a;
-   private final gef b;
-   private final gcw c;
-   private final gee d;
-   private final azc e = azc.a();
-   private final fgd f;
+import javax.annotation.Nullable;
 
-   public ged(gec $$0, gcw $$1, fgd $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      this.f = $$2;
-      this.b = new gef(this.f);
-      this.d = new gee();
+public class ged {
+   protected final gdk a;
+   protected final dbw b;
+   protected int c;
+   protected int d;
+   protected int e;
+   private int g;
+   public ggm.b[] f;
+
+   public ged(ggm $$0, dbw $$1, int $$2, gdk $$3) {
+      this.a = $$3;
+      this.b = $$1;
+      this.a($$2);
+      this.a($$0);
    }
 
-   public gec a() {
-      return this.a;
-   }
+   protected void a(ggm $$0) {
+      if (!ffd.Q().bw()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
+      } else {
+         int $$1 = this.d * this.c * this.e;
+         this.f = new ggm.b[$$1];
 
-   public void a(drx $$0, iz $$1, daw $$2, ezt $$3, ezx $$4) {
-      if ($$0.l() == dla.c) {
-         gqv $$5 = this.a.b($$0);
-         long $$6 = $$0.a($$1);
-         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, gol.d);
-      }
-   }
-
-   public void a(drx $$0, iz $$1, daw $$2, ezt $$3, ezx $$4, boolean $$5, azc $$6) {
-      try {
-         dla $$7 = $$0.l();
-         if ($$7 == dla.c) {
-            this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.a($$1), gol.d);
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.I_() + $$3 * 16, $$4 * 16);
+               }
+            }
          }
-      } catch (Throwable var11) {
-         o $$9 = o.a(var11, "Tesselating block in world");
-         p $$10 = $$9.a("Block being tesselated");
-         p.a($$10, $$2, $$1, $$0);
-         throw new y($$9);
       }
    }
 
-   public void a(iz $$0, daw $$1, ezx $$2, drx $$3, enq $$4) {
-      try {
-         this.d.a($$1, $$0, $$2, $$3, $$4);
-      } catch (Throwable var9) {
-         o $$6 = o.a(var9, "Tesselating liquid in world");
-         p $$7 = $$6.a("Block being tesselated");
-         p.a($$7, $$1, $$0, null);
-         throw new y($$6);
+   public void a() {
+      for (ggm.b $$0 : this.f) {
+         $$0.e();
       }
    }
 
-   public gef b() {
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
+   }
+
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.an();
+      this.e = $$1;
+      this.g = $$0;
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public dby c() {
       return this.b;
    }
 
-   public gqv a(drx $$0) {
-      return this.a.b($$0);
-   }
+   public void a(double $$0, double $$1) {
+      int $$2 = ayx.c($$0);
+      int $$3 = ayx.c($$1);
 
-   public void a(drx $$0, ezt $$1, gdj $$2, int $$3, int $$4) {
-      dla $$5 = $$0.l();
-      if ($$5 != dla.a) {
-         switch ($$5) {
-            case c:
-               gqv $$6 = this.a($$0);
-               int $$7 = this.f.a($$0, null, null, 0);
-               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-               float $$10 = (float)($$7 & 0xFF) / 255.0F;
-               this.b.a($$1.c(), $$2.getBuffer(gde.a($$0, false)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
-               break;
-            case b:
-               this.c.a(new cuk($$0.b()), cuh.a, $$1, $$2, $$3, $$4);
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         int $$5 = this.d * 16;
+         int $$6 = $$2 - 8 - $$5 / 2;
+         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
+
+         for (int $$8 = 0; $$8 < this.e; $$8++) {
+            int $$9 = this.e * 16;
+            int $$10 = $$3 - 8 - $$9 / 2;
+            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
+
+            for (int $$12 = 0; $$12 < this.c; $$12++) {
+               int $$13 = this.b.I_() + $$12 * 16;
+               ggm.b $$14 = this.f[this.a($$4, $$12, $$8)];
+               iz $$15 = $$14.f();
+               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
+                  $$14.a($$7, $$13, $$11);
+               }
+            }
          }
       }
    }
 
-   @Override
-   public void a(aul $$0) {
-      this.d.a();
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = Math.floorMod($$0, this.d);
+      int $$5 = Math.floorMod($$1 - this.b.ao(), this.c);
+      int $$6 = Math.floorMod($$2, this.e);
+      ggm.b $$7 = this.f[this.a($$4, $$5, $$6)];
+      $$7.a($$3);
+   }
+
+   @Nullable
+   protected ggm.b a(iz $$0) {
+      int $$1 = ayx.a($$0.v() - this.b.I_(), 16);
+      if ($$1 >= 0 && $$1 < this.c) {
+         int $$2 = ayx.b(ayx.a($$0.u(), 16), this.d);
+         int $$3 = ayx.b(ayx.a($$0.w(), 16), this.e);
+         return this.f[this.a($$2, $$1, $$3)];
+      } else {
+         return null;
+      }
    }
 }

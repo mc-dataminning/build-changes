@@ -1,55 +1,42 @@
-public class gcc extends gbx {
-   private final gbs a;
+public class gcc extends gay {
+   private final bss a;
+   private int b;
+   private final int D;
+   private final lg E;
 
-   gcc(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbs $$7) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$7;
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-      this.b($$7);
-      this.u = 0.0F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+   public gcc(fxt $$0, bss $$1, lg $$2) {
+      this($$0, $$1, $$2, 3);
    }
 
-   @Override
-   public gbb b() {
-      return gbb.b;
+   public gcc(fxt $$0, bss $$1, lg $$2, int $$3) {
+      this($$0, $$1, $$2, $$3, $$1.ds());
+   }
+
+   private gcc(fxt $$0, bss $$1, lg $$2, int $$3, evp $$4) {
+      super($$0, $$1.du(), $$1.e(0.5), $$1.dA(), $$4.c, $$4.d, $$4.e);
+      this.a = $$1;
+      this.D = $$3;
+      this.E = $$2;
+      this.a();
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      int $$0 = 60 - this.t;
-      if (this.t-- <= 0) {
+      for (int $$0 = 0; $$0 < 16; $$0++) {
+         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
+         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
+            double $$4 = this.a.c($$1 / 4.0);
+            double $$5 = this.a.e(0.5 + $$2 / 4.0);
+            double $$6 = this.a.f($$3 / 4.0);
+            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
+         }
+      }
+
+      this.b++;
+      if (this.b >= this.D) {
          this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         float $$1 = (float)$$0 * 0.001F;
-         this.b($$1, $$1);
-         this.a(this.a.a($$0 % 4, 4));
-      }
-   }
-
-   public static class a implements gba<lm> {
-      private final gbs a;
-
-      public a(gbs $$0) {
-         this.a = $$0;
-      }
-
-      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gcc($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

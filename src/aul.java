@@ -1,52 +1,70 @@
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public interface aul extends auo {
-   Set<String> a();
+public class aul implements auo, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private aue c;
+   private final List<aui> d = Lists.newArrayList();
+   private final atc e;
 
-   List<auj> a(alb var1);
+   public aul(atc $$0) {
+      this.e = $$0;
+      this.c = new auh($$0, List.of());
+   }
 
-   Map<alb, auj> b(String var1, Predicate<alb> var2);
+   @Override
+   public void close() {
+      this.c.close();
+   }
 
-   Map<alb, List<auj>> c(String var1, Predicate<alb> var2);
+   public void a(aui $$0) {
+      this.d.add($$0);
+   }
 
-   Stream<asx> b();
+   public auk a(Executor $$0, Executor $$1, CompletableFuture<baa> $$2, List<ata> $$3) {
+      a.info("Reloading ResourceManager: {}", LogUtils.defer(() -> $$3.stream().map(ata::b).collect(Collectors.joining(", "))));
+      this.c.close();
+      this.c = new auh(this.e, $$3);
+      return auu.a(this.c, this.d, $$0, $$1, $$2, a.isDebugEnabled());
+   }
 
-   public static enum a implements aul {
-      a;
+   @Override
+   public Optional<aum> getResource(ale $$0) {
+      return this.c.getResource($$0);
+   }
 
-      @Override
-      public Set<String> a() {
-         return Set.of();
-      }
+   @Override
+   public Set<String> a() {
+      return this.c.a();
+   }
 
-      @Override
-      public Optional<auj> getResource(alb $$0) {
-         return Optional.empty();
-      }
+   @Override
+   public List<aum> a(ale $$0) {
+      return this.c.a($$0);
+   }
 
-      @Override
-      public List<auj> a(alb $$0) {
-         return List.of();
-      }
+   @Override
+   public Map<ale, aum> b(String $$0, Predicate<ale> $$1) {
+      return this.c.b($$0, $$1);
+   }
 
-      @Override
-      public Map<alb, auj> b(String $$0, Predicate<alb> $$1) {
-         return Map.of();
-      }
+   @Override
+   public Map<ale, List<aum>> c(String $$0, Predicate<ale> $$1) {
+      return this.c.c($$0, $$1);
+   }
 
-      @Override
-      public Map<alb, List<auj>> c(String $$0, Predicate<alb> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Stream<asx> b() {
-         return Stream.of();
-      }
+   @Override
+   public Stream<ata> b() {
+      return this.c.b();
    }
 }

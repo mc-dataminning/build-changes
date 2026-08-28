@@ -1,40 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class ebz extends eat<edh> {
-   public ebz(Codec<edh> $$0) {
+public class ebz extends eaw<edi> {
+   private static final int a = 7;
+
+   ebz(Codec<edi> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eav<edh> $$0) {
-      boolean $$1 = false;
-      azc $$2 = $$0.d();
-      dco $$3 = $$0.b();
+   public boolean a(eay<edi> $$0) {
+      dcr $$1 = $$0.b();
+      azf $$2 = $$0.d();
+      edi $$3 = $$0.f();
       iz $$4 = $$0.e();
-      edh $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(dxp.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      iz $$9 = new iz($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(dew.G)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         drx $$11 = $$10 ? dew.bx.n() : dew.bw.n();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               drx $$12 = $$11.a(dna.d, dst.a);
-               iz $$13 = $$9.c();
-               if ($$3.a_($$13).a(dew.G)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
-               }
-            } else {
-               $$3.a($$9, $$11, 2);
-            }
+      int $$5 = $$2.a($$3.c + 1);
+      iz.a $$6 = new iz.a();
 
-            $$1 = true;
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dsa $$8 = $$1.a_($$6);
+
+         for (edi.a $$9 : $$3.b) {
+            if (ebr.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
+            }
          }
       }
 
-      return $$1;
+      return true;
+   }
+
+   private void a(iz.a $$0, azf $$1, iz $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(azf $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

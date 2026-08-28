@@ -1,100 +1,69 @@
 import javax.annotation.Nullable;
 
-public class cii extends chz {
-   private static final int b = 200;
-   private static final int c = 4;
-   private static final int d = 10;
-   private int e;
-   private int f;
+public class cii extends cib {
    @Nullable
-   private bsl g;
+   private evp b;
 
-   public cii(chw $$0) {
+   public cii(chz $$0) {
       super($$0);
    }
 
    @Override
    public void b() {
-      this.e++;
-      if (this.e % 2 == 0 && this.e < 10) {
-         evm $$0 = this.a.F(1.0F).d();
-         $$0.b((float) (-Math.PI / 4));
-         double $$1 = this.a.e.du();
-         double $$2 = this.a.e.e(0.5);
-         double $$3 = this.a.e.dA();
+      evp $$0 = this.a.F(1.0F).d();
+      $$0.b((float) (-Math.PI / 4));
+      double $$1 = this.a.e.du();
+      double $$2 = this.a.e.e(0.5);
+      double $$3 = this.a.e.dA();
 
-         for (int $$4 = 0; $$4 < 8; $$4++) {
-            double $$5 = $$1 + this.a.el().k() / 2.0;
-            double $$6 = $$2 + this.a.el().k() / 2.0;
-            double $$7 = $$3 + this.a.el().k() / 2.0;
-
-            for (int $$8 = 0; $$8 < 6; $$8++) {
-               this.a.dP().a(lj.h, $$5, $$6, $$7, -$$0.c * 0.08F * (double)$$8, -$$0.d * 0.6F, -$$0.e * 0.08F * (double)$$8);
-            }
-
-            $$0.b((float) (Math.PI / 16));
-         }
+      for (int $$4 = 0; $$4 < 8; $$4++) {
+         azf $$5 = this.a.el();
+         double $$6 = $$1 + $$5.k() / 2.0;
+         double $$7 = $$2 + $$5.k() / 2.0;
+         double $$8 = $$3 + $$5.k() / 2.0;
+         evp $$9 = this.a.ds();
+         this.a.dP().a(li.h, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
+         $$0.b((float) (Math.PI / 16));
       }
    }
 
    @Override
    public void c() {
-      this.e++;
-      if (this.e >= 200) {
-         if (this.f >= 4) {
-            this.a.gn().a(cim.e);
-         } else {
-            this.a.gn().a(cim.g);
-         }
-      } else if (this.e == 10) {
-         evm $$0 = new evm(this.a.e.du() - this.a.du(), 0.0, this.a.e.dA() - this.a.dA()).d();
-         float $$1 = 5.0F;
-         double $$2 = this.a.e.du() + $$0.c * 5.0 / 2.0;
-         double $$3 = this.a.e.dA() + $$0.e * 5.0 / 2.0;
-         double $$4 = this.a.e.e(0.5);
-         double $$5 = $$4;
-         iz.a $$6 = new iz.a($$2, $$4, $$3);
-
-         while (this.a.dP().u($$6)) {
-            if (--$$5 < 0.0) {
-               $$5 = $$4;
-               break;
-            }
-
-            $$6.b($$2, $$5, $$3);
-         }
-
-         $$5 = (double)(ayu.a($$5) + 1);
-         this.g = new bsl(this.a.dP(), $$2, $$5, $$3);
-         this.g.a(this.a);
-         this.g.a(5.0F);
-         this.g.a(200);
-         this.g.a(lj.h);
-         this.g.a(new brx(brz.g));
-         this.a.dP().b(this.g);
+      if (this.b == null) {
+         this.b = evp.c(this.a.dP().a(dxs.a.f, eav.a(this.a.s())));
       }
+
+      if (this.b.c(this.a.du(), this.a.dw(), this.a.dA()) < 1.0) {
+         this.a.gn().b(cip.f).j();
+         this.a.gn().a(cip.g);
+      }
+   }
+
+   @Override
+   public float f() {
+      return 1.5F;
+   }
+
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.ds().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return $$1 / $$0;
    }
 
    @Override
    public void d() {
-      this.e = 0;
-      this.f++;
+      this.b = null;
+   }
+
+   @Nullable
+   @Override
+   public evp g() {
+      return this.b;
    }
 
    @Override
-   public void e() {
-      if (this.g != null) {
-         this.g.ao();
-         this.g = null;
-      }
-   }
-
-   @Override
-   public cim<cii> i() {
-      return cim.f;
-   }
-
-   public void j() {
-      this.f = 0;
+   public cip<cii> i() {
+      return cip.d;
    }
 }

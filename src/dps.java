@@ -1,175 +1,82 @@
 import java.util.List;
-import javax.annotation.Nullable;
 
-public class dps extends dpc implements bqx, ewx.a {
-   public static final String d = "sherds";
-   public static final String e = "item";
-   public static final int f = 1;
-   public long g;
-   @Nullable
-   public dps.a h;
-   private dqg k;
-   private cuk l;
-   @Nullable
-   protected ala<eqi> i;
-   protected long j;
+public abstract class dps {
+   private static final int a = 5;
+   private int b;
+   private double c;
 
-   public dps(iz $$0, drx $$1) {
-      super(dpe.O, $$0, $$1);
-      this.l = cuk.l;
-      this.k = dqg.a;
-   }
+   protected abstract void a(dbw var1, iz var2, dsa var3);
 
-   @Override
-   protected void b(ur $$0, jk.a $$1) {
-      super.b($$0, $$1);
-      this.k.a($$0);
-      if (!this.b_($$0) && !this.l.e()) {
-         $$0.a("item", this.l.a($$1));
+   protected abstract void b(dbw var1, iz var2, dsa var3);
+
+   protected abstract void a(dbw var1, iz var2, dsa var3, int var4, int var5);
+
+   protected abstract boolean a(cmv var1);
+
+   public void a(cmv $$0, dbw $$1, iz $$2, dsa $$3) {
+      int $$4 = this.b++;
+      if ($$4 == 0) {
+         this.a($$1, $$2, $$3);
+         $$1.a($$0, dwt.k, $$2);
+         d($$1, $$2, $$3);
       }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
+      this.c = Math.max($$0.gC(), this.c);
    }
 
-   @Override
-   protected void a(ur $$0, jk.a $$1) {
-      super.a($$0, $$1);
-      this.k = dqg.b($$0);
-      if (!this.a_($$0)) {
-         if ($$0.b("item", 10)) {
-            this.l = cuk.a($$1, (vo)$$0.p("item")).orElse(cuk.l);
-         } else {
-            this.l = cuk.l;
+   public void b(cmv $$0, dbw $$1, iz $$2, dsa $$3) {
+      int $$4 = this.b--;
+      if (this.b == 0) {
+         this.b($$1, $$2, $$3);
+         $$1.a($$0, dwt.j, $$2);
+         this.c = 0.0;
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
+   }
+
+   private List<cmv> a(dbw $$0, iz $$1) {
+      double $$2 = this.c + 4.0;
+      evk $$3 = new evk($$1).g($$2);
+      return $$0.a(dwh.a(cmv.class), $$3, this::a);
+   }
+
+   public void c(dbw $$0, iz $$1, dsa $$2) {
+      List<cmv> $$3 = this.a($$0, $$1);
+      this.c = 0.0;
+
+      for (cmv $$4 : $$3) {
+         this.c = Math.max($$4.gC(), this.c);
+      }
+
+      int $$5 = $$3.size();
+      int $$6 = this.b;
+      if ($$6 != $$5) {
+         boolean $$7 = $$5 != 0;
+         boolean $$8 = $$6 != 0;
+         if ($$7 && !$$8) {
+            this.a($$0, $$1, $$2);
+            $$0.a(null, dwt.k, $$1);
+         } else if (!$$7) {
+            this.b($$0, $$1, $$2);
+            $$0.a(null, dwt.j, $$1);
          }
+
+         this.b = $$5;
+      }
+
+      this.a($$0, $$1, $$2, $$6, $$5);
+      if ($$5 > 0) {
+         d($$0, $$1, $$2);
       }
    }
 
-   public acl j() {
-      return acl.a(this);
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   public ur a(jk.a $$0) {
-      return this.e($$0);
-   }
-
-   public je k() {
-      return this.n().c(dsn.R);
-   }
-
-   public dqg l() {
-      return this.k;
-   }
-
-   public void c(cuk $$0) {
-      this.a($$0);
-   }
-
-   public cuk u() {
-      cuk $$0 = cun.eC.w();
-      $$0.b(this.s());
-      return $$0;
-   }
-
-   public static cuk a(dqg $$0) {
-      cuk $$1 = cun.eC.w();
-      $$1.b(km.Y, $$0);
-      return $$1;
-   }
-
-   @Nullable
-   @Override
-   public ala<eqi> ay_() {
-      return this.i;
-   }
-
-   @Override
-   public void a(@Nullable ala<eqi> $$0) {
-      this.i = $$0;
-   }
-
-   @Override
-   public long az_() {
-      return this.j;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.j = $$0;
-   }
-
-   @Override
-   protected void a(ki.a $$0) {
-      super.a($$0);
-      $$0.a(km.Y, this.k);
-      $$0.a(km.Z, cxg.a(List.of(this.l)));
-   }
-
-   @Override
-   protected void a(dpc.b $$0) {
-      super.a($$0);
-      this.k = $$0.a(km.Y, dqg.a);
-      this.l = $$0.a(km.Z, cxg.a).a();
-   }
-
-   @Override
-   public void a(ur $$0) {
-      super.a($$0);
-      $$0.r("sherds");
-      $$0.r("item");
-   }
-
-   @Override
-   public cuk f() {
-      this.e_(null);
-      return this.l;
-   }
-
-   @Override
-   public cuk c(int $$0) {
-      this.e_(null);
-      cuk $$1 = this.l.a($$0);
-      if (this.l.e()) {
-         this.l = cuk.l;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void b(cuk $$0) {
-      this.e_(null);
-      this.l = $$0;
-   }
-
-   @Override
-   public dpc v() {
-      return this;
-   }
-
-   public void a(dps.a $$0) {
-      if (this.n != null && !this.n.x_()) {
-         this.n.a(this.aA_(), this.n().b(), 1, $$0.ordinal());
-      }
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if (this.n != null && $$0 == 1 && $$1 >= 0 && $$1 < dps.a.values().length) {
-         this.g = this.n.Z();
-         this.h = dps.a.values()[$$1];
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   public static enum a {
-      a(7),
-      b(10);
-
-      public final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
-      }
+   private static void d(dbw $$0, iz $$1, dsa $$2) {
+      $$0.a($$1, $$2.b(), 5);
    }
 }

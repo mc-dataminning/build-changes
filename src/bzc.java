@@ -1,35 +1,40 @@
 import com.google.common.collect.ImmutableMap;
 
-public class bzc<E extends clw> extends bvd<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
+public class bzc extends bvg<clz> {
+   private static final int c = 25;
+   private static final int d = 20;
 
-   public bzc(int $$0) {
-      super(ImmutableMap.of(cco.aB, ccp.a, cco.o, ccp.b, cco.m, ccp.b, cco.n, ccp.c, cco.B, ccp.c, cco.az, ccp.c, cco.aG, ccp.c), $$0);
+   public bzc() {
+      super(ImmutableMap.of(ccr.ay, ccs.a, ccr.o, ccs.b, ccr.aF, ccs.c, ccr.aD, ccs.c), cma.b);
    }
 
-   protected boolean a(arb $$0, E $$1, long $$2) {
+   protected void a(are $$0, clz $$1, long $$2) {
+      bup<clz> $$3 = $$1.dS();
+      $$3.a(ccr.aD, baa.a, 25L);
+      $$3.b(ccr.m);
+      btn $$4 = $$1.dS().c(ccr.ay).get();
+      bvi.a($$1, $$4);
+      $$1.b(btz.l);
+      $$1.a($$4, 20, false);
+   }
+
+   protected boolean b(are $$0, clz $$1, long $$2) {
       return true;
    }
 
-   protected void b(arb $$0, E $$1, long $$2) {
-      $$1.a(avw.BR, 5.0F, 1.0F);
+   protected void c(are $$0, clz $$1, long $$2) {
+      if (!$$1.dS().a(ccr.aD) && !$$1.dS().a(ccr.aF)) {
+         $$1.dS().a(ccr.aF, baa.a, (long)(cma.b - 25));
+         $$1.a(avz.BQ, 3.0F, 1.0F);
+      }
    }
 
-   protected void c(arb $$0, E $$1, long $$2) {
-      if ($$1.c(btw.m)) {
-         $$1.b(btw.a);
+   protected void d(are $$0, clz $$1, long $$2) {
+      if ($$1.c(btz.l)) {
+         $$1.b(btz.a);
       }
 
-      $$1.dS().b(cco.aB);
-      $$1.dS().c(cco.B).filter($$1::b).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.d($$1x);
-         }
-
-         if (!$$1.dS().a(cco.az)) {
-            clx.a($$1, $$1x.dp());
-         }
-      });
+      $$1.dS().c(ccr.ay).ifPresent($$1::j);
+      $$1.dS().b(ccr.ay);
    }
 }

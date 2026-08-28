@@ -8,17 +8,17 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class io {
-   private static final Map<alb, SuggestionProvider<eu>> e = Maps.newHashMap();
-   private static final alb f = new alb("ask_server");
+   private static final Map<ale, SuggestionProvider<eu>> e = Maps.newHashMap();
+   private static final ale f = new ale("ask_server");
    public static final SuggestionProvider<eu> a = a(f, ($$0, $$1) -> ((eu)$$0.getSource()).a($$0));
-   public static final SuggestionProvider<ep> b = a(new alb("all_recipes"), ($$0, $$1) -> eu.a(((eu)$$0.getSource()).t(), $$1));
-   public static final SuggestionProvider<ep> c = a(new alb("available_sounds"), ($$0, $$1) -> eu.a(((eu)$$0.getSource()).s(), $$1));
+   public static final SuggestionProvider<ep> b = a(new ale("all_recipes"), ($$0, $$1) -> eu.a(((eu)$$0.getSource()).t(), $$1));
+   public static final SuggestionProvider<ep> c = a(new ale("available_sounds"), ($$0, $$1) -> eu.a(((eu)$$0.getSource()).s(), $$1));
    public static final SuggestionProvider<ep> d = a(
-      new alb("summonable_entities"),
-      ($$0, $$1) -> eu.a(lp.g.s().filter($$1x -> $$1x.a(((eu)$$0.getSource()).w()) && $$1x.c()), $$1, bsv::a, $$0x -> xl.c(ac.a("entity", bsv.a($$0x))))
+      new ale("summonable_entities"),
+      ($$0, $$1) -> eu.a(lp.g.s().filter($$1x -> $$1x.a(((eu)$$0.getSource()).w()) && $$1x.c()), $$1, bsy::a, $$0x -> xo.c(ac.a("entity", bsy.a($$0x))))
    );
 
-   public static <S extends eu> SuggestionProvider<S> a(alb $$0, SuggestionProvider<eu> $$1) {
+   public static <S extends eu> SuggestionProvider<S> a(ale $$0, SuggestionProvider<eu> $$1) {
       if (e.containsKey($$0)) {
          throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + $$0);
       } else {
@@ -27,11 +27,11 @@ public class io {
       }
    }
 
-   public static SuggestionProvider<eu> a(alb $$0) {
+   public static SuggestionProvider<eu> a(ale $$0) {
       return e.getOrDefault($$0, a);
    }
 
-   public static alb a(SuggestionProvider<eu> $$0) {
+   public static ale a(SuggestionProvider<eu> $$0) {
       return $$0 instanceof io.a ? ((io.a)$$0).b : f;
    }
 
@@ -41,9 +41,9 @@ public class io {
 
    protected static class a implements SuggestionProvider<eu> {
       private final SuggestionProvider<eu> a;
-      final alb b;
+      final ale b;
 
-      public a(alb $$0, SuggestionProvider<eu> $$1) {
+      public a(ale $$0, SuggestionProvider<eu> $$1) {
          this.a = $$1;
          this.b = $$0;
       }

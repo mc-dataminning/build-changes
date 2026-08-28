@@ -1,21 +1,49 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cvn extends cvv {
-   public cvn(cuf.a $$0, deu $$1, deu $$2) {
-      super($$1, $$2, $$0, je.a);
-   }
+public class cvn extends cui implements ctp {
+   public static final int a = 5;
+   public static final float b = 3.0F;
 
-   public cvn(cuf.a $$0, deu $$1, deu $$2, je $$3) {
-      super($$1, $$2, $$0, $$3);
+   public cvn(cui.a $$0) {
+      super($$0);
+      dhc.a(this, csc.a);
    }
 
    @Override
-   protected boolean a(iz $$0, dbt $$1, @Nullable cms $$2, cuk $$3, drx $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dqm $$6 && $$1.a_($$0).b() instanceof dlu $$7) {
-         $$7.a($$2, $$6, true);
-      }
+   public String i(cun $$0) {
+      ctg $$1 = $$0.a(km.X);
+      return $$1 != null ? this.a() + "." + $$1.b() : super.i($$0);
+   }
 
-      return $$5;
+   @Override
+   public void a(cun $$0, cui.b $$1, List<xo> $$2, cwg $$3) {
+      csi.a($$0, $$2);
+   }
+
+   @Override
+   public cwi c(cun $$0) {
+      return cwi.d;
+   }
+
+   @Override
+   public int b(cun $$0) {
+      return 72000;
+   }
+
+   @Override
+   public bqt<cun> a(dbw $$0, cmv $$1, bqr $$2) {
+      cun $$3 = $$1.b($$2);
+      $$1.c($$2);
+      return bqt.b($$3);
+   }
+
+   @Override
+   public boolean a(cun $$0, cun $$1) {
+      return $$1.a(awx.b) || super.a($$0, $$1);
+   }
+
+   @Override
+   public bsz m() {
+      return bsz.b;
    }
 }

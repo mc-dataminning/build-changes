@@ -1,50 +1,69 @@
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
 public class bhe extends DataFix {
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("slot_0", "list")
+      .put("slot_1", "sidebar")
+      .put("slot_2", "below_name")
+      .put("slot_3", "sidebar.team.black")
+      .put("slot_4", "sidebar.team.dark_blue")
+      .put("slot_5", "sidebar.team.dark_green")
+      .put("slot_6", "sidebar.team.dark_aqua")
+      .put("slot_7", "sidebar.team.dark_red")
+      .put("slot_8", "sidebar.team.dark_purple")
+      .put("slot_9", "sidebar.team.gold")
+      .put("slot_10", "sidebar.team.gray")
+      .put("slot_11", "sidebar.team.dark_gray")
+      .put("slot_12", "sidebar.team.blue")
+      .put("slot_13", "sidebar.team.green")
+      .put("slot_14", "sidebar.team.aqua")
+      .put("slot_15", "sidebar.team.red")
+      .put("slot_16", "sidebar.team.light_purple")
+      .put("slot_17", "sidebar.team.yellow")
+      .put("slot_18", "sidebar.team.white")
+      .build();
+
    public bhe(Schema $$0) {
-      super($$0, true);
+      super($$0, false);
+   }
+
+   @Nullable
+   private static String a(String $$0) {
+      return a.get($$0);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgs.F);
-      Type<?> $$1 = this.getOutputSchema().getType(bgs.F);
-      OpticFinder<?> $$2 = $$0.findField("SpawnData");
-      Type<?> $$3 = $$1.findField("SpawnData").type();
-      OpticFinder<?> $$4 = $$0.findField("SpawnPotentials");
-      Type<?> $$5 = $$1.findField("SpawnPotentials").type();
+      Type<?> $$0 = this.getInputSchema().getType(bgv.o);
+      OpticFinder<?> $$1 = $$0.findField("data");
       return this.fixTypeEverywhereTyped(
-         "Fix mob spawner data structure",
+         "Scoreboard DisplaySlot rename",
          $$0,
-         $$1,
-         $$4x -> $$4x.updateTyped($$2, $$3, $$1xx -> this.a($$3, $$1xx)).updateTyped($$4, $$5, $$1xx -> this.b($$5, $$1xx))
+         $$1x -> $$1x.updateTyped(
+               $$1,
+               $$0xx -> $$0xx.update(
+                     DSL.remainderFinder(),
+                     $$0xxx -> $$0xxx.update(
+                           "DisplaySlots",
+                           $$0xxxx -> $$0xxxx.updateMapValues(
+                                 $$0xxxxx -> $$0xxxxx.mapFirst(
+                                       $$0xxxxxx -> (Dynamic)DataFixUtils.orElse(
+                                             $$0xxxxxx.asString().result().map(bhe::a).map($$0xxxxxx::createString), $$0xxxxxx
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
-   }
-
-   private <T> Typed<T> a(Type<T> $$0, Typed<?> $$1) {
-      DynamicOps<?> $$2 = $$1.getOps();
-      return new Typed($$0, $$2, Pair.of($$1.getValue(), new Dynamic($$2)));
-   }
-
-   private <T> Typed<T> b(Type<T> $$0, Typed<?> $$1) {
-      DynamicOps<?> $$2 = $$1.getOps();
-      List<?> $$3 = (List<?>)$$1.getValue();
-      List<?> $$4 = $$3.stream().map($$1x -> {
-         Pair<Object, Dynamic<?>> $$2x = (Pair<Object, Dynamic<?>>)$$1x;
-         int $$3x = ((Dynamic)$$2x.getSecond()).get("Weight").asNumber().result().orElse(1).intValue();
-         Dynamic<?> $$4x = new Dynamic($$2);
-         $$4x = $$4x.set("weight", $$4x.createInt($$3x));
-         Dynamic<?> $$5 = ((Dynamic)$$2x.getSecond()).remove("Weight").remove("Entity");
-         return Pair.of(Pair.of($$2x.getFirst(), $$5), $$4x);
-      }).toList();
-      return new Typed($$0, $$2, $$4);
    }
 }

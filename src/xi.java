@@ -1,88 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelHandler.Sharable;
+import io.netty.handler.codec.EncoderException;
+import io.netty.handler.codec.MessageToByteEncoder;
 
-public record xi(String b, List<xi.a> c, yi d) {
-   public static final Codec<xi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("translation_key").forGetter(xi::a),
-               xi.a.d.listOf().fieldOf("parameters").forGetter(xi::b),
-               yi.b.b.optionalFieldOf("style", yi.a).forGetter(xi::c)
-            )
-            .apply($$0, xi::new)
-   );
+@Sharable
+public class xi extends MessageToByteEncoder<ByteBuf> {
+   public static final int a = 3;
 
-   public static xi a(String $$0) {
-      return new xi($$0, List.of(xi.a.a, xi.a.c), yi.a);
-   }
-
-   public static xi b(String $$0) {
-      yi $$1 = yi.a.a(n.h).b(true);
-      return new xi($$0, List.of(xi.a.a, xi.a.c), $$1);
-   }
-
-   public static xi c(String $$0) {
-      yi $$1 = yi.a.a(n.h).b(true);
-      return new xi($$0, List.of(xi.a.b, xi.a.c), $$1);
-   }
-
-   public static xi d(String $$0) {
-      return new xi($$0, List.of(xi.a.b, xi.a.a, xi.a.c), yi.a);
-   }
-
-   public xl a(xl $$0, xh.a $$1) {
-      Object[] $$2 = this.b($$0, $$1);
-      return xl.a(this.b, $$2).c(this.d);
-   }
-
-   private xl[] b(xl $$0, xh.a $$1) {
-      xl[] $$2 = new xl[this.c.size()];
-
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         xi.a $$4 = this.c.get($$3);
-         $$2[$$3] = $$4.a($$0, $$1);
-      }
-
-      return $$2;
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public List<xi.a> b() {
-      return this.c;
-   }
-
-   public yi c() {
-      return this.d;
-   }
-
-   public static enum a implements azp {
-      a("sender", ($$0, $$1) -> $$1.b()),
-      b("target", ($$0, $$1) -> $$1.c().orElse(xk.a)),
-      c("content", ($$0, $$1) -> $$0);
-
-      public static final Codec<xi.a> d = azp.a(xi.a::values);
-      private final String e;
-      private final xi.a.a f;
-
-      private a(final String $$0, final xi.a.a $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public xl a(xl $$0, xh.a $$1) {
-         return this.f.select($$0, $$1);
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
-
-      public interface a {
-         xl select(xl var1, xh.a var2);
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
+      int $$3 = $$1.readableBytes();
+      int $$4 = xf.a($$3);
+      if ($$4 > 3) {
+         throw new EncoderException("Packet too large: size " + $$3 + " is over 8");
+      } else {
+         $$2.ensureWritable($$4 + $$3);
+         xf.a($$2, $$3);
+         $$2.writeBytes($$1, $$1.readerIndex(), $$3);
       }
    }
 }

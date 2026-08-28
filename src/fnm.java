@@ -1,38 +1,185 @@
-public enum fnm {
-   a(
-      new alb("advancements/box_obtained"),
-      new alb("advancements/task_frame_obtained"),
-      new alb("advancements/challenge_frame_obtained"),
-      new alb("advancements/goal_frame_obtained")
-   ),
-   b(
-      new alb("advancements/box_unobtained"),
-      new alb("advancements/task_frame_unobtained"),
-      new alb("advancements/challenge_frame_unobtained"),
-      new alb("advancements/goal_frame_unobtained")
-   );
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   private final alb c;
-   private final alb d;
-   private final alb e;
-   private final alb f;
+public class fnm {
+   private final ffd a;
+   private final fnq b;
+   private final fnn c;
+   private final int d;
+   private final ag e;
+   private final ar f;
+   private final cun g;
+   private final xo h;
+   private final fno i;
+   private final Map<af, fno> j = Maps.newLinkedHashMap();
+   private double k;
+   private double l;
+   private int m = Integer.MAX_VALUE;
+   private int n = Integer.MAX_VALUE;
+   private int o = Integer.MIN_VALUE;
+   private int p = Integer.MIN_VALUE;
+   private float q;
+   private boolean r;
 
-   private fnm(final alb $$0, final alb $$1, final alb $$2, final alb $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public fnm(ffd $$0, fnq $$1, fnn $$2, int $$3, ag $$4, ar $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$5.c();
+      this.h = $$5.a();
+      this.i = new fno(this, $$0, $$4, $$5);
+      this.a(this.i, $$4.b());
    }
 
-   public alb a() {
+   public fnn a() {
       return this.c;
    }
 
-   public alb a(al $$0) {
-      return switch ($$0) {
-         case a -> this.d;
-         case b -> this.e;
-         case c -> this.f;
-      };
+   public int b() {
+      return this.d;
+   }
+
+   public ag c() {
+      return this.e;
+   }
+
+   public xo d() {
+      return this.h;
+   }
+
+   public ar e() {
+      return this.f;
+   }
+
+   public void a(fgp $$0, int $$1, int $$2, boolean $$3) {
+      this.c.a($$0, $$1, $$2, $$3, this.d);
+   }
+
+   public void a(fgp $$0, int $$1, int $$2) {
+      this.c.a($$0, $$1, $$2, this.d, this.g);
+   }
+
+   public void b(fgp $$0, int $$1, int $$2) {
+      if (!this.r) {
+         this.k = (double)(117 - (this.o + this.m) / 2);
+         this.l = (double)(56 - (this.p + this.n) / 2);
+         this.r = true;
+      }
+
+      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
+      $$0.c().a();
+      $$0.c().a((float)$$1, (float)$$2, 0.0F);
+      ale $$3 = this.f.d().orElse(goy.a);
+      int $$4 = ayx.a(this.k);
+      int $$5 = ayx.a(this.l);
+      int $$6 = $$4 % 16;
+      int $$7 = $$5 % 16;
+
+      for (int $$8 = -1; $$8 <= 15; $$8++) {
+         for (int $$9 = -1; $$9 <= 8; $$9++) {
+            $$0.a($$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
+         }
+      }
+
+      this.i.a($$0, $$4, $$5, true);
+      this.i.a($$0, $$4, $$5, false);
+      this.i.a($$0, $$4, $$5);
+      $$0.c().b();
+      $$0.f();
+   }
+
+   public void a(fgp $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, -200.0F);
+      $$0.a(0, 0, 234, 113, ayx.d(this.q * 255.0F) << 24);
+      boolean $$5 = false;
+      int $$6 = ayx.a(this.k);
+      int $$7 = ayx.a(this.l);
+      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
+         for (fno $$8 : this.j.values()) {
+            if ($$8.a($$6, $$7, $$1, $$2)) {
+               $$5 = true;
+               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
+               break;
+            }
+         }
+      }
+
+      $$0.c().b();
+      if ($$5) {
+         this.q = ayx.a(this.q + 0.02F, 0.0F, 0.3F);
+      } else {
+         this.q = ayx.a(this.q - 0.04F, 0.0F, 1.0F);
+      }
+   }
+
+   public boolean a(int $$0, int $$1, double $$2, double $$3) {
+      return this.c.a($$0, $$1, this.d, $$2, $$3);
+   }
+
+   @Nullable
+   public static fnm a(ffd $$0, fnq $$1, int $$2, ag $$3) {
+      Optional<ar> $$4 = $$3.a().c();
+      if ($$4.isEmpty()) {
+         return null;
+      } else {
+         for (fnn $$5 : fnn.values()) {
+            if ($$2 < $$5.a()) {
+               return new fnm($$0, $$1, $$5, $$2, $$3, $$4.get());
+            }
+
+            $$2 -= $$5.a();
+         }
+
+         return null;
+      }
+   }
+
+   public void a(double $$0, double $$1) {
+      if (this.o - this.m > 234) {
+         this.k = ayx.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
+      }
+
+      if (this.p - this.n > 113) {
+         this.l = ayx.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
+      }
+   }
+
+   public void a(ag $$0) {
+      Optional<ar> $$1 = $$0.a().c();
+      if (!$$1.isEmpty()) {
+         fno $$2 = new fno(this, this.a, $$0, $$1.get());
+         this.a($$2, $$0.b());
+      }
+   }
+
+   private void a(fno $$0, af $$1) {
+      this.j.put($$1, $$0);
+      int $$2 = $$0.d();
+      int $$3 = $$2 + 28;
+      int $$4 = $$0.c();
+      int $$5 = $$4 + 27;
+      this.m = Math.min(this.m, $$2);
+      this.o = Math.max(this.o, $$3);
+      this.n = Math.min(this.n, $$4);
+      this.p = Math.max(this.p, $$5);
+
+      for (fno $$6 : this.j.values()) {
+         $$6.b();
+      }
+   }
+
+   @Nullable
+   public fno a(af $$0) {
+      return this.j.get($$0);
+   }
+
+   public fnq f() {
+      return this.b;
    }
 }

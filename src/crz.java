@@ -1,152 +1,117 @@
-import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
-import java.util.EnumMap;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.UUID;
-import java.util.function.Supplier;
+import java.util.Objects;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class crz extends cuf implements ctm {
-   private static final EnumMap<crz.a, UUID> j = ac.a(new EnumMap<>(crz.a.class), $$0 -> {
-      $$0.put(crz.a.d, UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"));
-      $$0.put(crz.a.c, UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"));
-      $$0.put(crz.a.b, UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"));
-      $$0.put(crz.a.a, UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150"));
-      $$0.put(crz.a.e, UUID.fromString("C1C72771-8B8E-BA4A-ACE0-81A93C8928B2"));
-   });
-   public static final kt a = new ks() {
-      @Override
-      protected cuk a(kq $$0, cuk $$1) {
-         return crz.a($$0, $$1) ? $$1 : super.a($$0, $$1);
-      }
-   };
-   protected final crz.a b;
-   protected final ji<csa> c;
-   private final Supplier<cxf> k;
+public class crz {
+   private static final Codec<crz> e = av.a.flatComapMap($$0 -> new crz(List.of($$0), true), $$0 -> DataResult.error(() -> "Cannot encode"));
+   private static final Codec<crz> f = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayf.a(av.a.listOf()).fieldOf("predicates").forGetter($$0x -> $$0x.h), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(crz::a)
+            )
+            .apply($$0, crz::new)
+   );
+   public static final Codec<crz> a = Codec.withAlternative(f, e);
+   public static final zm<wz, crz> b = zm.a(av.b.a(zk.a()), $$0 -> $$0.h, zk.b, crz::a, crz::new);
+   public static final xo c = xo.c("item.canBreak").a(n.h);
+   public static final xo d = xo.c("item.canPlace").a(n.h);
+   private static final xo g = xo.c("item.canUse.unknown").a(n.h);
+   private final List<av> h;
+   private final boolean i;
+   private final List<xo> j;
+   @Nullable
+   private dse k;
+   private boolean l;
+   private boolean m;
 
-   public static boolean a(kq $$0, cuk $$1) {
-      iz $$2 = $$0.c().a($$0.d().c(dgz.b));
-      List<btk> $$3 = $$0.b().a(btk.class, new evh($$2), bsu.f.and(new bsu.a($$1)));
-      if ($$3.isEmpty()) {
+   private crz(List<av> $$0, boolean $$1, List<xo> $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+   }
+
+   public crz(List<av> $$0, boolean $$1) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = a($$0);
+   }
+
+   private static boolean a(dse $$0, @Nullable dse $$1, boolean $$2) {
+      if ($$1 == null || $$0.a() != $$1.a()) {
          return false;
-      } else {
-         btk $$4 = $$3.get(0);
-         bsw $$5 = btm.h($$1);
-         cuk $$6 = $$1.a(1);
-         $$4.a($$5, $$6);
-         if ($$4 instanceof btm) {
-            ((btm)$$4).a($$5, 2.0F);
-            ((btm)$$4).fU();
-         }
-
+      } else if (!$$2) {
          return true;
+      } else if ($$0.b() == null && $$1.b() == null) {
+         return true;
+      } else if ($$0.b() != null && $$1.b() != null) {
+         jw $$3 = $$0.c().H_();
+         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
+      } else {
+         return false;
       }
    }
 
-   public crz(ji<csa> $$0, crz.a $$1, cuf.a $$2) {
-      super($$2);
-      this.c = $$0;
-      this.b = $$1;
-      dgz.a(this, a);
-      this.k = Suppliers.memoize(() -> {
-         int $$2x = $$0.a().a($$1);
-         float $$3 = $$0.a().f();
-         cxf.a $$4 = cxf.a();
-         bsx $$5 = bsx.a($$1.a());
-         UUID $$6 = j.get($$1);
-         $$4.a(bus.a, new buq($$6, "Armor modifier", (double)$$2x, buq.a.a), $$5);
-         $$4.a(bus.b, new buq($$6, "Armor toughness", (double)$$3, buq.a.a), $$5);
-         float $$7 = $$0.a().g();
-         if ($$7 > 0.0F) {
-            $$4.a(bus.n, new buq($$6, "Armor knockback resistance", (double)$$7, buq.a.a), $$5);
+   public boolean a(dse $$0) {
+      if (a($$0, this.k, this.m)) {
+         return this.l;
+      } else {
+         this.k = $$0;
+         this.m = false;
+
+         for (av $$1 : this.h) {
+            if ($$1.a($$0)) {
+               this.m = this.m | $$1.a();
+               this.l = true;
+               return true;
+            }
          }
 
-         return $$4.a();
-      });
+         this.l = false;
+         return false;
+      }
    }
 
-   public crz.a f() {
-      return this.b;
+   public void a(Consumer<xo> $$0) {
+      this.j.forEach($$0);
+   }
+
+   public crz a(boolean $$0) {
+      return new crz(this.h, $$0, this.j);
+   }
+
+   private static List<xo> a(List<av> $$0) {
+      for (av $$1 : $$0) {
+         if ($$1.b().isEmpty()) {
+            return List.of(g);
+         }
+      }
+
+      return $$0.stream().flatMap($$0x -> $$0x.b().orElseThrow().a()).distinct().map($$0x -> ((dex)$$0x.a()).f().a(n.i)).toList();
+   }
+
+   public boolean a() {
+      return this.i;
    }
 
    @Override
-   public int g() {
-      return this.c.a().b();
-   }
-
-   public ji<csa> h() {
-      return this.c;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof crz $$1) ? false : this.h.equals($$1.h) && this.i == $$1.i;
+      }
    }
 
    @Override
-   public boolean a(cuk $$0, cuk $$1) {
-      return this.c.a().d().get().a($$1) || super.a($$0, $$1);
+   public int hashCode() {
+      return this.h.hashCode() * 31 + (this.i ? 1 : 0);
    }
 
    @Override
-   public bqq<cuk> a(dbt $$0, cms $$1, bqo $$2) {
-      return this.a(this, $$0, $$1, $$2);
-   }
-
-   @Override
-   public cxf j() {
-      return this.k.get();
-   }
-
-   public int k() {
-      return this.c.a().a(this.b);
-   }
-
-   public float l() {
-      return this.c.a().f();
-   }
-
-   @Override
-   public bsw m() {
-      return this.b.a();
-   }
-
-   @Override
-   public ji<avv> aq_() {
-      return this.h().a().c();
-   }
-
-   public static enum a implements azp {
-      a(bsw.f, 11, "helmet"),
-      b(bsw.e, 16, "chestplate"),
-      c(bsw.d, 15, "leggings"),
-      d(bsw.c, 13, "boots"),
-      e(bsw.g, 16, "body");
-
-      public static final Codec<crz.a> f = azp.b(crz.a::values);
-      private final bsw g;
-      private final String h;
-      private final int i;
-
-      private a(final bsw $$0, final int $$1, final String $$2) {
-         this.g = $$0;
-         this.h = $$2;
-         this.i = $$1;
-      }
-
-      public int a(int $$0) {
-         return this.i * $$0;
-      }
-
-      public bsw a() {
-         return this.g;
-      }
-
-      public String b() {
-         return this.h;
-      }
-
-      public boolean d() {
-         return this == a || this == b || this == c || this == d;
-      }
-
-      @Override
-      public String c() {
-         return this.h;
-      }
+   public String toString() {
+      return "AdventureModePredicate{predicates=" + this.h + ", showInTooltip=" + this.i + "}";
    }
 }

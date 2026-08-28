@@ -1,24 +1,13 @@
-public abstract class gmp<T extends bsp & btx, M extends ftv<T>> extends gne<T, M> {
-   public gmp(gko<T, M> $$0) {
+public class gmp<T extends cjp> extends gnh<T, ftu<T>> {
+   private static final ale a = new ale("textures/entity/zombie/drowned_outer_layer.png");
+   private final ftu<T> b;
+
+   public gmp(gkr<T, ftu<T>> $$0, fwu $$1) {
       super($$0);
+      this.b = new ftu<>($$1.a(fwx.U));
    }
 
-   @Override
-   public void a(ezt $$0, gdj $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ai + $$6;
-         ftv<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         ezx $$12 = $$1.getBuffer(gdr.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, gol.d, 0.5F, 0.5F, 0.5F, 1.0F);
-      }
+   public void a(ezw $$0, gdm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
    }
-
-   protected abstract float a(float var1);
-
-   protected abstract alb a();
-
-   protected abstract ftv<T> b();
 }

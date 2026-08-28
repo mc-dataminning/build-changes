@@ -1,44 +1,130 @@
-import com.mojang.authlib.GameProfile;
-import java.time.Duration;
-import java.util.UUID;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public record yc(UUID a, cmv b) {
-   public yh a(Duration $$0) {
-      return new yh.a(this.b.a(), () -> this.b.b().a($$0));
+public class yc implements xo {
+   private final xp c;
+   private final List<xo> d;
+   private yl e;
+   private ayj f = ayj.a;
+   @Nullable
+   private um g;
+
+   yc(xp $$0, List<xo> $$1, yl $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public yf.b a(UUID $$0) {
-      return new yf($$0, this.a).a(this.b);
+   public static yc a(xp $$0) {
+      return new yc($$0, Lists.newArrayList(), yl.a);
    }
 
-   public yc.a a() {
-      return new yc.a(this.a, this.b.b());
+   @Override
+   public xp b() {
+      return this.c;
    }
 
-   public boolean b() {
-      return this.b.b().a();
+   @Override
+   public List<xo> c() {
+      return this.d;
    }
 
-   public UUID c() {
-      return this.a;
+   public yc b(yl $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   public cmv d() {
-      return this.b;
+   @Override
+   public yl a() {
+      return this.e;
    }
 
-   public static record a(UUID a, cmv.a b) {
-      public static yc.a a(wl $$0) {
-         return new yc.a($$0.n(), new cmv.a($$0));
+   public yc f(String $$0) {
+      return this.b(xo.b($$0));
+   }
+
+   public yc b(xo $$0) {
+      this.d.add($$0);
+      return this;
+   }
+
+   public yc a(UnaryOperator<yl> $$0) {
+      this.b($$0.apply(this.a()));
+      return this;
+   }
+
+   public yc c(yl $$0) {
+      this.b($$0.a(this.a()));
+      return this;
+   }
+
+   public yc a(n... $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   public yc a(n $$0) {
+      this.b(this.a().b($$0));
+      return this;
+   }
+
+   public yc b(int $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   @Override
+   public ayj g() {
+      um $$0 = um.a();
+      if (this.g != $$0) {
+         this.f = $$0.a(this);
+         this.g = $$0;
       }
 
-      public static void a(wl $$0, yc.a $$1) {
-         $$0.a($$1.a);
-         $$1.b.a($$0);
+      return this.f;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof yc $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.c, this.e, this.d);
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder(this.c.toString());
+      boolean $$1 = !this.e.g();
+      boolean $$2 = !this.d.isEmpty();
+      if ($$1 || $$2) {
+         $$0.append('[');
+         if ($$1) {
+            $$0.append("style=");
+            $$0.append(this.e);
+         }
+
+         if ($$1 && $$2) {
+            $$0.append(", ");
+         }
+
+         if ($$2) {
+            $$0.append("siblings=");
+            $$0.append(this.d);
+         }
+
+         $$0.append(']');
       }
 
-      public yc a(GameProfile $$0, azh $$1) throws cmv.b {
-         return new yc(this.a, cmv.a($$1, $$0.getId(), this.b));
-      }
+      return $$0.toString();
    }
 }

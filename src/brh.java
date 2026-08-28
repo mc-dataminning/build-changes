@@ -1,19 +1,21 @@
-import com.mojang.serialization.Codec;
+public class brh {
+   public static final float a = 20.0F;
+   public static final float b = 25.0F;
+   public static final float c = 2.0F;
+   public static final float d = 0.2F;
+   private static final int e = 4;
 
-public enum brh implements azp {
-   a("never"),
-   b("when_caused_by_living_non_player"),
-   c("always");
-
-   public static final Codec<brh> d = azp.a(brh::values);
-   private final String e;
-
-   private brh(final String $$0) {
-      this.e = $$0;
+   public static float a(float $$0, brl $$1, float $$2, float $$3) {
+      float $$4 = 2.0F + $$3 / 4.0F;
+      float $$5 = ayx.a($$2 - $$0 / $$4, $$2 * 0.2F, 20.0F);
+      float $$6 = $$5 / 25.0F;
+      float $$7 = czz.a($$1.d(), $$6);
+      float $$8 = 1.0F - $$7;
+      return $$0 * $$8;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public static float a(float $$0, float $$1) {
+      float $$2 = ayx.a($$1, 0.0F, 20.0F);
+      return $$0 * (1.0F - $$2 / 25.0F);
    }
 }

@@ -1,89 +1,244 @@
+import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class fqn extends fif {
-   private static final fim c = new fim(new alb("recipe_book/tab"), new alb("recipe_book/tab_selected"));
-   private final ffi d;
-   private static final float e = 15.0F;
-   private float f;
+public class fqn implements fif, fiy {
+   private static final ale b = new ale("recipe_book/overlay_recipe");
+   static final ale c = new ale("recipe_book/furnace_overlay_highlighted");
+   static final ale d = new ale("recipe_book/furnace_overlay");
+   static final ale e = new ale("recipe_book/crafting_overlay_highlighted");
+   static final ale f = new ale("recipe_book/crafting_overlay");
+   static final ale g = new ale("recipe_book/furnace_overlay_disabled_highlighted");
+   static final ale h = new ale("recipe_book/furnace_overlay_disabled");
+   static final ale i = new ale("recipe_book/crafting_overlay_disabled_highlighted");
+   static final ale j = new ale("recipe_book/crafting_overlay_disabled");
+   private static final int k = 4;
+   private static final int l = 5;
+   private static final float m = 0.375F;
+   public static final int a = 25;
+   private final List<fqn.a> n = Lists.newArrayList();
+   private boolean o;
+   private int p;
+   private int q;
+   private ffd r;
+   private fqs s;
+   @Nullable
+   private cyv<?> u;
+   float v;
+   boolean w;
 
-   public fqn(ffi $$0) {
-      super(0, 0, 35, 27, false);
-      this.d = $$0;
-      this.a(c);
+   public void a(ffd $$0, fqs $$1, int $$2, int $$3, int $$4, int $$5, float $$6) {
+      this.r = $$0;
+      this.s = $$1;
+      if ($$0.s.cb instanceof cpt) {
+         this.w = true;
+      }
+
+      boolean $$7 = $$0.s.m().a((crf<?>)$$0.s.cb);
+      List<cyv<?>> $$8 = $$1.b(true);
+      List<cyv<?>> $$9 = $$7 ? Collections.emptyList() : $$1.b(false);
+      int $$10 = $$8.size();
+      int $$11 = $$10 + $$9.size();
+      int $$12 = $$11 <= 16 ? 4 : 5;
+      int $$13 = (int)Math.ceil((double)((float)$$11 / (float)$$12));
+      this.p = $$2;
+      this.q = $$3;
+      float $$14 = (float)(this.p + Math.min($$11, $$12) * 25);
+      float $$15 = (float)($$4 + 50);
+      if ($$14 > $$15) {
+         this.p = (int)((float)this.p - $$6 * (float)((int)(($$14 - $$15) / $$6)));
+      }
+
+      float $$16 = (float)(this.q + $$13 * 25);
+      float $$17 = (float)($$5 + 50);
+      if ($$16 > $$17) {
+         this.q = (int)((float)this.q - $$6 * (float)ayx.f(($$16 - $$17) / $$6));
+      }
+
+      float $$18 = (float)this.q;
+      float $$19 = (float)($$5 - 100);
+      if ($$18 < $$19) {
+         this.q = (int)((float)this.q - $$6 * (float)ayx.f(($$18 - $$19) / $$6));
+      }
+
+      this.o = true;
+      this.n.clear();
+
+      for (int $$20 = 0; $$20 < $$11; $$20++) {
+         boolean $$21 = $$20 < $$10;
+         cyv<?> $$22 = $$21 ? $$8.get($$20) : $$9.get($$20 - $$10);
+         int $$23 = this.p + 4 + 25 * ($$20 % $$12);
+         int $$24 = this.q + 5 + 25 * ($$20 / $$12);
+         if (this.w) {
+            this.n.add(new fqn.b($$23, $$24, $$22, $$21));
+         } else {
+            this.n.add(new fqn.a($$23, $$24, $$22, $$21));
+         }
+      }
+
+      this.u = null;
    }
 
-   public void a(ffa $$0) {
-      fen $$1 = $$0.s.m();
-      List<fqp> $$2 = $$1.a(this.d);
-      if ($$0.s.cb instanceof crc) {
-         for (fqp $$3 : $$2) {
-            for (cys<?> $$4 : $$3.a($$1.a((crc<?>)$$0.s.cb))) {
-               if ($$1.d($$4)) {
-                  this.f = 15.0F;
-                  return;
-               }
+   public fqs a() {
+      return this.s;
+   }
+
+   @Nullable
+   public cyv<?> b() {
+      return this.u;
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 != 0) {
+         return false;
+      } else {
+         for (fqn.a $$3 : this.n) {
+            if ($$3.a($$0, $$1, $$2)) {
+               this.u = $$3.c;
+               return true;
             }
          }
+
+         return false;
       }
    }
 
    @Override
-   public void b(fgm $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         if (this.f > 0.0F) {
-            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
-            $$0.c().a();
-            $$0.c().a((float)(this.C() + 8), (float)(this.D() + 12), 0.0F);
-            $$0.c().b(1.0F, $$4, 1.0F);
-            $$0.c().a((float)(-(this.C() + 8)), (float)(-(this.D() + 12)), 0.0F);
+   public boolean c(double $$0, double $$1) {
+      return false;
+   }
+
+   @Override
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
+      if (this.o) {
+         this.v += $$3;
+         RenderSystem.enableBlend();
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1000.0F);
+         int $$4 = this.n.size() <= 16 ? 4 : 5;
+         int $$5 = Math.min(this.n.size(), $$4);
+         int $$6 = ayx.f((float)this.n.size() / (float)$$4);
+         int $$7 = 4;
+         $$0.a(b, this.p, this.q, $$5 * 25 + 8, $$6 * 25 + 8);
+         RenderSystem.disableBlend();
+
+         for (fqn.a $$8 : this.n) {
+            $$8.a($$0, $$1, $$2, $$3);
          }
 
-         ffa $$5 = ffa.Q();
-         RenderSystem.disableDepthTest();
-         alb $$6 = this.a.a(true, this.b);
-         int $$7 = this.C();
-         if (this.b) {
-            $$7 -= 2;
-         }
-
-         $$0.a($$6, $$7, this.D(), this.g, this.h);
-         RenderSystem.enableDepthTest();
-         this.a($$0, $$5.ar());
-         if (this.f > 0.0F) {
-            $$0.c().b();
-            this.f -= $$3;
-         }
+         $$0.c().b();
       }
    }
 
-   private void a(fgm $$0, gjq $$1) {
-      List<cuk> $$2 = this.d.a();
-      int $$3 = this.b ? -2 : 0;
-      if ($$2.size() == 1) {
-         $$0.b($$2.get(0), this.C() + 9 + $$3, this.D() + 5);
-      } else if ($$2.size() == 2) {
-         $$0.b($$2.get(0), this.C() + 3 + $$3, this.D() + 5);
-         $$0.b($$2.get(1), this.C() + 14 + $$3, this.D() + 5);
+   public void b(boolean $$0) {
+      this.o = $$0;
+   }
+
+   public boolean c() {
+      return this.o;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public boolean aI_() {
+      return false;
+   }
+
+   class a extends fha implements akr<cyq> {
+      final cyv<?> c;
+      private final boolean d;
+      protected final List<fqn.a.a> a = Lists.newArrayList();
+
+      public a(final int $$0, final int $$1, final cyv<?> $$2, final boolean $$3) {
+         super($$0, $$1, 200, 20, xn.a);
+         this.g = 24;
+         this.h = 24;
+         this.c = $$2;
+         this.d = $$3;
+         this.a($$2);
       }
-   }
 
-   public ffi b() {
-      return this.d;
-   }
+      protected void a(cyv<?> $$0) {
+         this.a(3, 3, -1, $$0, $$0.b().a().iterator(), 0);
+      }
 
-   public boolean a(fen $$0) {
-      List<fqp> $$1 = $$0.a(this.d);
-      this.k = false;
-      if ($$1 != null) {
-         for (fqp $$2 : $$1) {
-            if ($$2.b() && $$2.d()) {
-               this.k = true;
-               break;
+      @Override
+      public void a(fky $$0) {
+         this.c($$0);
+      }
+
+      @Override
+      public void a(Iterator<cyq> $$0, int $$1, int $$2, int $$3, int $$4) {
+         cun[] $$5 = $$0.next().a();
+         if ($$5.length != 0) {
+            this.a.add(new fqn.a.a(3 + $$4 * 7, 3 + $$3 * 7, $$5));
+         }
+      }
+
+      @Override
+      public void b(fgp $$0, int $$1, int $$2, float $$3) {
+         ale $$4;
+         if (this.d) {
+            if (fqn.this.w) {
+               $$4 = this.A() ? fqn.c : fqn.d;
+            } else {
+               $$4 = this.A() ? fqn.e : fqn.f;
             }
+         } else if (fqn.this.w) {
+            $$4 = this.A() ? fqn.g : fqn.h;
+         } else {
+            $$4 = this.A() ? fqn.i : fqn.j;
          }
+
+         $$0.a($$4, this.C(), this.D(), this.g, this.h);
+         $$0.c().a();
+         $$0.c().a((double)(this.C() + 2), (double)(this.D() + 2), 150.0);
+
+         for (fqn.a.a $$8 : this.a) {
+            $$0.c().a();
+            $$0.c().a((double)$$8.b, (double)$$8.c, 0.0);
+            $$0.c().b(0.375F, 0.375F, 1.0F);
+            $$0.c().a(-8.0, -8.0, 0.0);
+            if ($$8.a.length > 0) {
+               $$0.a($$8.a[ayx.d(fqn.this.v / 30.0F) % $$8.a.length], 0, 0);
+            }
+
+            $$0.c().b();
+         }
+
+         $$0.c().b();
       }
 
-      return this.k;
+      protected class a {
+         public final cun[] a;
+         public final int b;
+         public final int c;
+
+         public a(final int $$1, final int $$2, final cun[] $$3) {
+            this.b = $$1;
+            this.c = $$2;
+            this.a = $$3;
+         }
+      }
+   }
+
+   class b extends fqn.a {
+      public b(final int $$0, final int $$1, final cyv<?> $$2, final boolean $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      protected void a(cyv<?> $$0) {
+         cyq $$1 = $$0.b().a().get(0);
+         cun[] $$2 = $$1.a();
+         this.a.add(new fqn.a.a(10, 10, $$2));
+      }
    }
 }

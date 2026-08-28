@@ -1,51 +1,95 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Map;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class gfl {
-   private static final Map<dpe<?>, gfk<?>> a = Maps.newHashMap();
+public class gfl implements aup {
+   private Map<dph<?>, gfm<?>> d = ImmutableMap.of();
+   private final fgn e;
+   private final fwu f;
+   public dbw a;
+   public feo b;
+   public evn c;
+   private final Supplier<geg> g;
+   private final Supplier<gjt> h;
+   private final Supplier<git> i;
 
-   private static <T extends dpc> void a(dpe<? extends T> $$0, gfk<T> $$1) {
-      a.put($$0, $$1);
+   public gfl(fgn $$0, fwu $$1, Supplier<geg> $$2, Supplier<gjt> $$3, Supplier<git> $$4) {
+      this.h = $$3;
+      this.i = $$4;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public static Map<dpe<?>, gfj<?>> a(gfk.a $$0) {
-      Builder<dpe<?>, gfj<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + lp.k.b((dpe<?>)$$2), var5);
+   @Nullable
+   public <E extends dpf> gfm<E> a(E $$0) {
+      return (gfm<E>)this.d.get($$0.r());
+   }
+
+   public void a(dbw $$0, feo $$1, evn $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
+      }
+
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public <E extends dpf> void a(E $$0, float $$1, ezw $$2, gdm $$3) {
+      gfm<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.m() && $$0.r().a($$0.n())) {
+            if ($$4.a($$0, this.b.b())) {
+               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
+            }
          }
-      });
-      return $$1.build();
+      }
    }
 
-   static {
-      a(dpe.h, gfx::new);
-      a(dpe.i, gft::new);
-      a(dpe.j, gfz::new);
-      a(dpe.k, gfv::new);
-      a(dpe.b, gfp::new);
-      a(dpe.d, gfp::new);
-      a(dpe.c, gfp::new);
-      a(dpe.m, gfs::new);
-      a(dpe.D, gfu::new);
-      a(dpe.n, ggc::new);
-      a(dpe.v, ggb::new);
-      a(dpe.o, gff::new);
-      a(dpe.p, gfy::new);
-      a(dpe.t, gfe::new);
-      a(dpe.u, gga::new);
-      a(dpe.x, gfw::new);
-      a(dpe.y, gfg::new);
-      a(dpe.z, gfq::new);
-      a(dpe.E, gfh::new);
-      a(dpe.G, gfo::new);
-      a(dpe.N, gfn::new);
-      a(dpe.O, gfr::new);
-      a(dpe.Q, ggd::new);
-      a(dpe.R, gge::new);
+   private static <T extends dpf> void a(gfm<T> $$0, T $$1, float $$2, ezw $$3, gdm $$4) {
+      dbw $$5 = $$1.i();
+      int $$6;
+      if ($$5 != null) {
+         $$6 = gdk.a($$5, $$1.az_());
+      } else {
+         $$6 = 15728880;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6, goo.d);
+   }
+
+   public <E extends dpf> boolean a(E $$0, ezw $$1, gdm $$2, int $$3, int $$4) {
+      gfm<E> $$5 = this.a($$0);
+      if ($$5 == null) {
+         return true;
+      } else {
+         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
+         return false;
+      }
+   }
+
+   private static void a(dpf $$0, Runnable $$1) {
+      try {
+         $$1.run();
+      } catch (Throwable var5) {
+         o $$3 = o.a(var5, "Rendering Block Entity");
+         p $$4 = $$3.a("Block Entity Details");
+         $$0.a($$4);
+         throw new y($$3);
+      }
+   }
+
+   public void a(@Nullable dbw $$0) {
+      this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
+      }
+   }
+
+   @Override
+   public void a(auo $$0) {
+      gfn.a $$1 = new gfn.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
+      this.d = gfo.a($$1);
    }
 }

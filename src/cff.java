@@ -1,147 +1,90 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class cff extends cfa {
-   private static final bss cg = bsv.t.n().a(0.5F).b(0.2975F);
-   public float bY;
-   public float bZ;
-   public float cb;
-   public float cc;
-   public float cd = 1.0F;
-   private float ch = 1.0F;
-   public int ce = this.ah.a(6000) + 6000;
-   public boolean cf;
+public interface cff {
+   boolean u();
 
-   public cff(bsv<? extends cff> $$0, dbt $$1) {
-      super($$0, $$1);
-      this.a(eoh.j, 0.0F);
+   void w(boolean var1);
+
+   void n(cun var1);
+
+   void c(ur var1);
+
+   cun b();
+
+   avy y();
+
+   @Deprecated
+   static void a(btp $$0, cun $$1) {
+      $$1.b(km.f, $$0.ah());
+      cxc.a(km.M, $$1, $$1x -> {
+         if ($$0.gg()) {
+            $$1x.a("NoAI", $$0.gg());
+         }
+
+         if ($$0.aW()) {
+            $$1x.a("Silent", $$0.aW());
+         }
+
+         if ($$0.aX()) {
+            $$1x.a("NoGravity", $$0.aX());
+         }
+
+         if ($$0.cf()) {
+            $$1x.a("Glowing", $$0.cf());
+         }
+
+         if ($$0.cu()) {
+            $$1x.a("Invulnerable", $$0.cu());
+         }
+
+         $$1x.a("Health", $$0.eA());
+      });
    }
 
-   @Override
-   protected void z() {
-      this.bS.a(0, new cac(this));
-      this.bS.a(1, new cbb(this, 1.4));
-      this.bS.a(2, new bzu(this, 1.0));
-      this.bS.a(3, new cbq(this, 1.0, $$0 -> $$0.a(awu.ak), false));
-      this.bS.a(4, new cah(this, 1.1));
-      this.bS.a(5, new cbv(this, 1.0));
-      this.bS.a(6, new caq(this, cms.class, 6.0F));
-      this.bS.a(7, new cbd(this));
-   }
-
-   @Override
-   public bss e(btw $$0) {
-      return this.p_() ? cg : super.e($$0);
-   }
-
-   public static bur.a s() {
-      return btm.A().a(bus.q, 4.0).a(bus.r, 0.25);
-   }
-
-   @Override
-   public void n_() {
-      super.n_();
-      this.cc = this.bY;
-      this.cb = this.bZ;
-      this.bZ = this.bZ + (this.aE() ? -1.0F : 4.0F) * 0.3F;
-      this.bZ = ayu.a(this.bZ, 0.0F, 1.0F);
-      if (!this.aE() && this.cd < 1.0F) {
-         this.cd = 1.0F;
+   @Deprecated
+   static void a(btp $$0, ur $$1) {
+      if ($$1.e("NoAI")) {
+         $$0.t($$1.q("NoAI"));
       }
 
-      this.cd *= 0.9F;
-      evm $$0 = this.ds();
-      if (!this.aE() && $$0.d < 0.0) {
-         this.h($$0.d(1.0, 0.6, 1.0));
+      if ($$1.e("Silent")) {
+         $$0.e($$1.q("Silent"));
       }
 
-      this.bY = this.bY + this.cd * 2.0F;
-      if (!this.dP().B && this.bD() && !this.p_() && !this.u() && --this.ce <= 0) {
-         this.a(avw.eT, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
-         this.a(cun.qR);
-         this.a(dwq.t);
-         this.ce = this.ah.a(6000) + 6000;
+      if ($$1.e("NoGravity")) {
+         $$0.f($$1.q("NoGravity"));
       }
-   }
 
-   @Override
-   protected boolean aV() {
-      return this.ab > this.ch;
-   }
+      if ($$1.e("Glowing")) {
+         $$0.j($$1.q("Glowing"));
+      }
 
-   @Override
-   protected void aU() {
-      this.ch = this.ab + this.bZ / 2.0F;
-   }
+      if ($$1.e("Invulnerable")) {
+         $$0.n($$1.q("Invulnerable"));
+      }
 
-   @Override
-   protected avv v() {
-      return avw.eR;
-   }
-
-   @Override
-   protected avv d(bri $$0) {
-      return avw.eU;
-   }
-
-   @Override
-   protected avv o_() {
-      return avw.eS;
-   }
-
-   @Override
-   protected void b(iz $$0, drx $$1) {
-      this.a(avw.eV, 0.15F, 1.0F);
-   }
-
-   @Nullable
-   public cff b(arb $$0, bsj $$1) {
-      return bsv.t.a((dbt)$$0);
-   }
-
-   @Override
-   public boolean o(cuk $$0) {
-      return $$0.a(awu.ak);
-   }
-
-   @Override
-   public int ej() {
-      return this.u() ? 10 : super.ej();
-   }
-
-   @Override
-   public void a(ur $$0) {
-      super.a($$0);
-      this.cf = $$0.q("IsChickenJockey");
-      if ($$0.e("EggLayTime")) {
-         this.ce = $$0.h("EggLayTime");
+      if ($$1.b("Health", 99)) {
+         $$0.t($$1.j("Health"));
       }
    }
 
-   @Override
-   public void b(ur $$0) {
-      super.b($$0);
-      $$0.a("IsChickenJockey", this.cf);
-      $$0.a("EggLayTime", this.ce);
-   }
+   static <T extends btn & cff> Optional<bqs> a(cmv $$0, bqr $$1, T $$2) {
+      cun $$3 = $$0.b($$1);
+      if ($$3.g() == cuq.qz && $$2.bD()) {
+         $$2.a($$2.y(), 1.0F, 1.0F);
+         cun $$4 = $$2.b();
+         $$2.n($$4);
+         cun $$5 = cup.a($$3, $$0, $$4, false);
+         $$0.a($$1, $$5);
+         dbw $$6 = $$2.dP();
+         if (!$$6.B) {
+            am.k.a((arf)$$0, $$4);
+         }
 
-   @Override
-   public boolean h(double $$0) {
-      return this.u();
-   }
-
-   @Override
-   protected void a(bsp $$0, bsp.a $$1) {
-      super.a($$0, $$1);
-      if ($$0 instanceof btk) {
-         ((btk)$$0).aY = this.aY;
+         $$2.ao();
+         return Optional.of(bqs.a($$6.B));
+      } else {
+         return Optional.empty();
       }
-   }
-
-   public boolean u() {
-      return this.cf;
-   }
-
-   public void w(boolean $$0) {
-      this.cf = $$0;
    }
 }

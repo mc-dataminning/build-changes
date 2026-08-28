@@ -1,12 +1,30 @@
-public class epq extends RuntimeException {
-   private final xl a;
+import java.util.Locale;
 
-   public epq(xl $$0) {
-      super($$0.getString());
-      this.a = $$0;
-   }
+public interface epq {
+   iz a();
 
-   public xl a() {
-      return this.a;
+   float b();
+
+   long c();
+
+   long d();
+
+   boolean g();
+
+   boolean i();
+
+   void b(boolean var1);
+
+   boolean l();
+
+   dbs o();
+
+   bqp q();
+
+   boolean r();
+
+   default void a(p $$0, dby $$1) {
+      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
+      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
    }
 }

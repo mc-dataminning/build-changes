@@ -8,7 +8,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public interface ib<T> {
-   alb a();
+   ale a();
 
    id<T> a(@Nullable ur var1, CommandDispatcher<T> var2) throws es;
 
@@ -17,7 +17,7 @@ public interface ib<T> {
       return $$1 > 0 && $$0.charAt($$1 - 1) == '\\';
    }
 
-   static <T extends er<T>> ib<T> a(alb $$0, CommandDispatcher<T> $$1, T $$2, List<String> $$3) {
+   static <T extends er<T>> ib<T> a(ale $$0, CommandDispatcher<T> $$1, T $$2, List<String> $$3) {
       ic<T> $$4 = new ic<>();
 
       for (int $$5 = 0; $$5 < $$3.size(); $$5++) {

@@ -1,36 +1,74 @@
-import java.util.function.Function;
+public class guv implements gux {
+   private static final int a = 600;
+   private static final xo b = xo.c("tutorial.punch_tree.title");
+   private static final xo c = xo.a("tutorial.punch_tree.description", guw.a("attack"));
+   private final guw d;
+   private fjn e;
+   private int f;
+   private int g;
 
-public enum guv {
-   a("movement", guq::new),
-   b("find_tree", gup::new),
-   c("punch_tree", gus::new),
-   d("open_inventory", gur::new),
-   e("craft_planks", guo::new),
-   f("none", gun::new);
-
-   private final String g;
-   private final Function<gut, ? extends guu> h;
-
-   private <T extends guu> guv(final String $$0, final Function<gut, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public guv(guw $$0) {
+      this.d = $$0;
    }
 
-   public guu a(gut $$0) {
-      return this.h.apply($$0);
-   }
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(guy.f);
+      } else {
+         if (this.f == 1) {
+            gco $$0 = this.d.e().s;
+            if ($$0 != null) {
+               if ($$0.gc().a(awx.r)) {
+                  this.d.a(guy.e);
+                  return;
+               }
 
-   public String a() {
-      return this.g;
-   }
+               if (gus.a($$0)) {
+                  this.d.a(guy.e);
+                  return;
+               }
+            }
+         }
 
-   public static guv a(String $$0) {
-      for (guv $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
+         if ((this.f >= 600 || this.g > 3) && this.e == null) {
+            this.e = new fjn(fjn.a.c, b, c, true);
+            this.d.e().ax().a(this.e);
          }
       }
+   }
 
-      return f;
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
+      }
+   }
+
+   @Override
+   public void a(fxt $$0, iz $$1, dsa $$2, float $$3) {
+      boolean $$4 = $$2.a(awo.t);
+      if ($$4 && $$3 > 0.0F) {
+         if (this.e != null) {
+            this.e.a($$3);
+         }
+
+         if ($$3 >= 1.0F) {
+            this.d.a(guy.d);
+         }
+      } else if (this.e != null) {
+         this.e.a(0.0F);
+      } else if ($$4) {
+         this.g++;
+      }
+   }
+
+   @Override
+   public void a(cun $$0) {
+      if ($$0.a(awx.r)) {
+         this.d.a(guy.e);
+      }
    }
 }

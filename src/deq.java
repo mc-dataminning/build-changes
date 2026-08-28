@@ -1,255 +1,304 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class deq extends deg {
-   public static final MapCodec<deq> a = b(deq::new);
-   public static final dsr b = diq.aE;
-   public static final dsv<dsl> c = dsn.V;
-   public static final dso d = dsn.w;
-   private static final ewf f = deu.a(0.0, 0.0, 4.0, 16.0, 16.0, 12.0);
-   private static final ewf g = deu.a(4.0, 0.0, 0.0, 12.0, 16.0, 16.0);
-   private static final ewf h = deu.a(5.0, 6.0, 5.0, 11.0, 13.0, 11.0);
-   private static final ewf i = deu.a(4.0, 4.0, 4.0, 12.0, 6.0, 12.0);
-   private static final ewf j = ewc.a(i, h);
-   private static final ewf k = ewc.a(j, deu.a(7.0, 13.0, 0.0, 9.0, 15.0, 16.0));
-   private static final ewf l = ewc.a(j, deu.a(0.0, 13.0, 7.0, 16.0, 15.0, 9.0));
-   private static final ewf m = ewc.a(j, deu.a(0.0, 13.0, 7.0, 13.0, 15.0, 9.0));
-   private static final ewf n = ewc.a(j, deu.a(3.0, 13.0, 7.0, 16.0, 15.0, 9.0));
-   private static final ewf o = ewc.a(j, deu.a(7.0, 13.0, 0.0, 9.0, 15.0, 13.0));
-   private static final ewf F = ewc.a(j, deu.a(7.0, 13.0, 3.0, 9.0, 15.0, 16.0));
-   private static final ewf G = ewc.a(j, deu.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0));
-   public static final int e = 1;
+public class deq extends dit implements dhp {
+   public static final MapCodec<deq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ctg.q.fieldOf("color").forGetter(deq::b), u()).apply($$0, deq::new));
+   public static final dsy<dsn> b = dsq.bb;
+   public static final dsr c = dsq.t;
+   protected static final int d = 9;
+   protected static final ewi e = dex.a(0.0, 3.0, 0.0, 16.0, 9.0, 16.0);
+   private static final int n = 3;
+   protected static final ewi f = dex.a(0.0, 0.0, 0.0, 3.0, 3.0, 3.0);
+   protected static final ewi g = dex.a(0.0, 0.0, 13.0, 3.0, 3.0, 16.0);
+   protected static final ewi h = dex.a(13.0, 0.0, 0.0, 16.0, 3.0, 3.0);
+   protected static final ewi i = dex.a(13.0, 0.0, 13.0, 16.0, 3.0, 16.0);
+   protected static final ewi j = ewf.a(e, f, h);
+   protected static final ewi k = ewf.a(e, g, i);
+   protected static final ewi l = ewf.a(e, f, g);
+   protected static final ewi m = ewf.a(e, h, i);
+   private final ctg o;
 
    @Override
    public MapCodec<deq> a() {
       return a;
    }
 
-   public deq(drw.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, je.c).a(c, dsl.a).a(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(drx $$0, dbt $$1, iz $$2, deu $$3, iz $$4, boolean $$5) {
-      boolean $$6 = $$1.C($$2);
-      if ($$6 != $$0.c(d)) {
-         if ($$6) {
-            this.a($$1, $$2, null);
-         }
-
-         $$1.a($$2, $$0.a(d, Boolean.valueOf($$6)), 3);
-      }
-   }
-
-   @Override
-   protected void a(dbt $$0, drx $$1, evi $$2, cnk $$3) {
-      bsp $$4 = $$3.s();
-      cms $$5 = $$4 instanceof cms ? (cms)$$4 : null;
-      this.a($$0, $$1, $$2, $$5, true);
-   }
-
-   @Override
-   protected bqp a(drx $$0, dbt $$1, iz $$2, cms $$3, evi $$4) {
-      return this.a($$1, $$0, $$4, $$3, true) ? bqp.a($$1.B) : bqp.e;
-   }
-
-   public boolean a(dbt $$0, drx $$1, evi $$2, @Nullable cms $$3, boolean $$4) {
-      je $$5 = $$2.b();
-      iz $$6 = $$2.a();
-      boolean $$7 = !$$4 || this.a($$1, $$5, $$2.e().d - (double)$$6.v());
-      if ($$7) {
-         boolean $$8 = this.a($$3, $$0, $$6, $$5);
-         if ($$8 && $$3 != null) {
-            $$3.a(awg.az);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean a(drx $$0, je $$1, double $$2) {
-      if ($$1.o() != je.a.b && !($$2 > 0.8124F)) {
-         je $$3 = $$0.c(b);
-         dsl $$4 = $$0.c(c);
-         switch ($$4) {
-            case a:
-               return $$3.o() == $$1.o();
-            case c:
-            case d:
-               return $$3.o() != $$1.o();
-            case b:
-               return true;
-            default:
-               return false;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public boolean a(dbt $$0, iz $$1, @Nullable je $$2) {
-      return this.a(null, $$0, $$1, $$2);
-   }
-
-   public boolean a(@Nullable bsp $$0, dbt $$1, iz $$2, @Nullable je $$3) {
-      dpc $$4 = $$1.c_($$2);
-      if (!$$1.B && $$4 instanceof dpa) {
-         if ($$3 == null) {
-            $$3 = $$1.a_($$2).c(b);
-         }
-
-         ((dpa)$$4).a($$3);
-         $$1.a(null, $$2, avw.bZ, avx.e, 2.0F, 1.0F);
-         $$1.a($$0, dwq.c, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private ewf m(drx $$0) {
-      je $$1 = $$0.c(b);
-      dsl $$2 = $$0.c(c);
-      if ($$2 == dsl.a) {
-         return $$1 != je.c && $$1 != je.d ? g : f;
-      } else if ($$2 == dsl.b) {
-         return G;
-      } else if ($$2 == dsl.d) {
-         return $$1 != je.c && $$1 != je.d ? l : k;
-      } else if ($$1 == je.c) {
-         return o;
-      } else if ($$1 == je.d) {
-         return F;
-      } else {
-         return $$1 == je.f ? n : m;
-      }
-   }
-
-   @Override
-   protected ewf b(drx $$0, daz $$1, iz $$2, evr $$3) {
-      return this.m($$0);
-   }
-
-   @Override
-   protected ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
-      return this.m($$0);
-   }
-
-   @Override
-   protected dla a_(drx $$0) {
-      return dla.c;
+   public deq(ctg $$0, drz.d $$1) {
+      super($$1);
+      this.o = $$0;
+      this.k(this.E.b().a(b, dsn.b).a(c, Boolean.valueOf(false)));
    }
 
    @Nullable
-   @Override
-   public drx a(cxv $$0) {
-      je $$1 = $$0.k();
-      iz $$2 = $$0.a();
-      dbt $$3 = $$0.q();
-      je.a $$4 = $$1.o();
-      if ($$4 == je.a.b) {
-         drx $$5 = this.n().a(c, $$1 == je.a ? dsl.b : dsl.a).a(b, $$0.g());
-         if ($$5.a((dbw)$$0.q(), $$2)) {
-            return $$5;
-         }
-      } else {
-         boolean $$6 = $$4 == je.a.a && $$3.a_($$2.g()).d($$3, $$2.g(), je.f) && $$3.a_($$2.h()).d($$3, $$2.h(), je.e)
-            || $$4 == je.a.c && $$3.a_($$2.e()).d($$3, $$2.e(), je.d) && $$3.a_($$2.f()).d($$3, $$2.f(), je.c);
-         drx $$7 = this.n().a(b, $$1.g()).a(c, $$6 ? dsl.d : dsl.c);
-         if ($$7.a((dbw)$$0.q(), $$0.a())) {
-            return $$7;
-         }
-
-         boolean $$8 = $$3.a_($$2.d()).d($$3, $$2.d(), je.b);
-         $$7 = $$7.a(c, $$8 ? dsl.a : dsl.b);
-         if ($$7.a((dbw)$$0.q(), $$0.a())) {
-            return $$7;
-         }
-      }
-
-      return null;
+   public static je a(dbc $$0, iz $$1) {
+      dsa $$2 = $$0.a_($$1);
+      return $$2.b() instanceof deq ? $$2.c(aE) : null;
    }
 
    @Override
-   protected void a(drx $$0, dbt $$1, iz $$2, dbl $$3, BiConsumer<cuk, iz> $$4) {
-      if ($$3.j() == dbl.a.d && !$$1.x_()) {
-         this.a($$1, $$2, null);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
-      dsl $$6 = $$0.c(c);
-      je $$7 = n($$0).g();
-      if ($$7 == $$1 && !$$0.a($$3, $$4) && $$6 != dsl.d) {
-         return dew.a.n();
+   protected bqs a(dsa $$0, dbw $$1, iz $$2, cmv $$3, evl $$4) {
+      if ($$1.B) {
+         return bqs.c;
       } else {
-         if ($$1.o() == $$0.c(b).o()) {
-            if ($$6 == dsl.d && !$$2.d($$3, $$5, $$1)) {
-               return $$0.a(c, dsl.c).a(b, $$1.g());
-            }
-
-            if ($$6 == dsl.c && $$7.g() == $$1 && $$2.d($$3, $$5, $$0.c(b))) {
-               return $$0.a(c, dsl.d);
+         if ($$0.c(b) != dsn.a) {
+            $$2 = $$2.a($$0.c(aE));
+            $$0 = $$1.a_($$2);
+            if (!$$0.a(this)) {
+               return bqs.c;
             }
          }
 
+         if (!a($$1)) {
+            $$1.a($$2, false);
+            iz $$5 = $$2.a($$0.c(aE).g());
+            if ($$1.a_($$5).a(this)) {
+               $$1.a($$5, false);
+            }
+
+            evp $$6 = $$2.b();
+            $$1.a(null, $$1.aj().a($$6), null, $$6, 5.0F, true, dbw.a.b);
+            return bqs.a;
+         } else if ($$0.c(c)) {
+            if (!this.a($$1, $$2)) {
+               $$3.a(xo.c("block.minecraft.bed.occupied"), true);
+            }
+
+            return bqs.a;
+         } else {
+            $$3.a($$2).ifLeft($$1x -> {
+               if ($$1x.a() != null) {
+                  $$3.a($$1x.a(), true);
+               }
+            });
+            return bqs.a;
+         }
+      }
+   }
+
+   public static boolean a(dbw $$0) {
+      return $$0.D_().l();
+   }
+
+   private boolean a(dbw $$0, iz $$1) {
+      List<cmi> $$2 = $$0.a(cmi.class, new evk($$1), btn::fL);
+      if ($$2.isEmpty()) {
+         return false;
+      } else {
+         $$2.get(0).fM();
+         return true;
+      }
+   }
+
+   @Override
+   public void a(dbw $$0, dsa $$1, iz $$2, bss $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4 * 0.5F);
+   }
+
+   @Override
+   public void a(dbc $$0, bss $$1) {
+      if ($$1.bX()) {
+         super.a($$0, $$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   private void a(bss $$0) {
+      evp $$1 = $$0.ds();
+      if ($$1.d < 0.0) {
+         double $$2 = $$0 instanceof btn ? 1.0 : 0.8;
+         $$0.o($$1.c, -$$1.d * 0.66F * $$2, $$1.e);
+      }
+   }
+
+   @Override
+   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
+      if ($$1 == a($$0.c(b), $$0.c(aE))) {
+         return $$2.a(this) && $$2.c(b) != $$0.c(b) ? $$0.a(c, $$2.c(c)) : dez.a.o();
+      } else {
          return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   @Override
-   protected boolean a(drx $$0, dbw $$1, iz $$2) {
-      je $$3 = n($$0).g();
-      return $$3 == je.b ? deu.a($$1, $$2.c(), je.a) : dho.b($$1, $$2, $$3);
+   private static je a(dsn $$0, je $$1) {
+      return $$0 == dsn.b ? $$1 : $$1.g();
    }
 
-   private static je n(drx $$0) {
-      switch ((dsl)$$0.c(c)) {
-         case a:
-            return je.b;
-         case b:
-            return je.a;
+   @Override
+   public dsa a(dbw $$0, iz $$1, dsa $$2, cmv $$3) {
+      if (!$$0.B && $$3.f()) {
+         dsn $$4 = $$2.c(b);
+         if ($$4 == dsn.b) {
+            iz $$5 = $$1.a(a($$4, $$2.c(aE)));
+            dsa $$6 = $$0.a_($$5);
+            if ($$6.a(this) && $$6.c(b) == dsn.a) {
+               $$0.a($$5, dez.a.o(), 35);
+               $$0.a($$3, 2001, $$5, dex.i($$6));
+            }
+         }
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Nullable
+   @Override
+   public dsa a(cxy $$0) {
+      je $$1 = $$0.g();
+      iz $$2 = $$0.a();
+      iz $$3 = $$2.a($$1);
+      dbw $$4 = $$0.q();
+      return $$4.a_($$3).a($$0) && $$4.C_().a($$3) ? this.o().a(aE, $$1) : null;
+   }
+
+   @Override
+   protected ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
+      je $$4 = g($$0).g();
+      switch ($$4) {
+         case c:
+            return j;
+         case d:
+            return k;
+         case e:
+            return l;
          default:
-            return $$0.c(b).g();
+            return m;
       }
    }
 
-   @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      $$0.a(b, c, d);
+   public static je g(dsa $$0) {
+      je $$1 = $$0.c(aE);
+      return $$0.c(b) == dsn.a ? $$1.g() : $$1;
    }
 
-   @Nullable
-   @Override
-   public dpc a(iz $$0, drx $$1) {
-      return new dpa($$0, $$1);
+   public static dhe.a h(dsa $$0) {
+      dsn $$1 = $$0.c(b);
+      return $$1 == dsn.a ? dhe.a.b : dhe.a.c;
    }
 
-   @Nullable
-   @Override
-   public <T extends dpc> dpd<T> a(dbt $$0, drx $$1, dpe<T> $$2) {
-      return a($$2, dpe.E, $$0.B ? dpa::a : dpa::b);
+   private static boolean b(dbc $$0, iz $$1) {
+      return $$0.a_($$1.d()).b() instanceof deq;
+   }
+
+   public static Optional<evp> a(bsy<?> $$0, dbg $$1, iz $$2, je $$3, float $$4) {
+      je $$5 = $$3.h();
+      je $$6 = $$5.a($$4) ? $$5.g() : $$5;
+      if (b($$1, $$2)) {
+         return a($$0, $$1, $$2, $$3, $$6);
+      } else {
+         int[][] $$7 = a($$3, $$6);
+         Optional<evp> $$8 = a($$0, $$1, $$2, $$7, true);
+         return $$8.isPresent() ? $$8 : a($$0, $$1, $$2, $$7, false);
+      }
+   }
+
+   private static Optional<evp> a(bsy<?> $$0, dbg $$1, iz $$2, je $$3, je $$4) {
+      int[][] $$5 = b($$3, $$4);
+      Optional<evp> $$6 = a($$0, $$1, $$2, $$5, true);
+      if ($$6.isPresent()) {
+         return $$6;
+      } else {
+         iz $$7 = $$2.d();
+         Optional<evp> $$8 = a($$0, $$1, $$7, $$5, true);
+         if ($$8.isPresent()) {
+            return $$8;
+         } else {
+            int[][] $$9 = a($$3);
+            Optional<evp> $$10 = a($$0, $$1, $$2, $$9, true);
+            if ($$10.isPresent()) {
+               return $$10;
+            } else {
+               Optional<evp> $$11 = a($$0, $$1, $$2, $$5, false);
+               if ($$11.isPresent()) {
+                  return $$11;
+               } else {
+                  Optional<evp> $$12 = a($$0, $$1, $$7, $$5, false);
+                  return $$12.isPresent() ? $$12 : a($$0, $$1, $$2, $$9, false);
+               }
+            }
+         }
+      }
+   }
+
+   private static Optional<evp> a(bsy<?> $$0, dbg $$1, iz $$2, int[][] $$3, boolean $$4) {
+      iz.a $$5 = new iz.a();
+
+      for (int[] $$6 : $$3) {
+         $$5.d($$2.u() + $$6[0], $$2.v(), $$2.w() + $$6[1]);
+         evp $$7 = cow.a($$0, $$1, $$5, $$4);
+         if ($$7 != null) {
+            return Optional.of($$7);
+         }
+      }
+
+      return Optional.empty();
    }
 
    @Override
-   protected boolean a(drx $$0, eof $$1) {
+   protected dld a_(dsa $$0) {
+      return dld.b;
+   }
+
+   @Override
+   protected void a(dsb.a<dex, dsa> $$0) {
+      $$0.a(aE, b, c);
+   }
+
+   @Override
+   public dpf a(iz $$0, dsa $$1) {
+      return new dpb($$0, $$1, this.o);
+   }
+
+   @Override
+   public void a(dbw $$0, iz $$1, dsa $$2, @Nullable btn $$3, cun $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$0.B) {
+         iz $$5 = $$1.a($$2.c(aE));
+         $$0.a($$5, $$2.a(b, dsn.a), 3);
+         $$0.b($$1, dez.a);
+         $$2.a($$0, $$1, 3);
+      }
+   }
+
+   public ctg b() {
+      return this.o;
+   }
+
+   @Override
+   protected long a(dsa $$0, iz $$1) {
+      iz $$2 = $$1.a($$0.c(aE), $$0.c(b) == dsn.a ? 0 : 1);
+      return ayx.b($$2.u(), $$1.v(), $$2.w());
+   }
+
+   @Override
+   protected boolean a(dsa $$0, eoi $$1) {
       return false;
    }
 
-   @Override
-   public drx a(drx $$0, dlh $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   private static int[][] a(je $$0, je $$1) {
+      return (int[][])ArrayUtils.addAll(b($$0, $$1), a($$0));
    }
 
-   @Override
-   public drx a(drx $$0, djr $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   private static int[][] b(je $$0, je $$1) {
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$1.j() - $$0.j(), $$1.l() - $$0.l()},
+         {$$1.j() - $$0.j() * 2, $$1.l() - $$0.l() * 2},
+         {-$$0.j() * 2, -$$0.l() * 2},
+         {-$$1.j() - $$0.j() * 2, -$$1.l() - $$0.l() * 2},
+         {-$$1.j() - $$0.j(), -$$1.l() - $$0.l()},
+         {-$$1.j(), -$$1.l()},
+         {-$$1.j() + $$0.j(), -$$1.l() + $$0.l()},
+         {$$0.j(), $$0.l()},
+         {$$1.j() + $$0.j(), $$1.l() + $$0.l()}
+      };
+   }
+
+   private static int[][] a(je $$0) {
+      return new int[][]{{0, 0}, {-$$0.j(), -$$0.l()}};
    }
 }

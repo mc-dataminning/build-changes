@@ -1,23 +1,21 @@
-public enum dti implements azp {
-   a("none", true),
-   b("unstable", false),
-   c("partial", true),
-   d("full", true);
+public enum dti implements azs {
+   a("top"),
+   b("bottom"),
+   c("double");
 
-   private final String e;
-   private final boolean f;
+   private final String d;
 
-   private dti(final String $$0, final boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   private dti(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.d;
    }
 
    @Override
    public String c() {
-      return this.e;
-   }
-
-   public boolean a() {
-      return this.f;
+      return this.d;
    }
 }

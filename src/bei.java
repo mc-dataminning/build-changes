@@ -1,37 +1,25 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
 
-public class bei extends DataFix {
-   public bei(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bei extends bfu {
+   private final String a;
+
+   public bei(Schema $$0, String $$1, String $$2) {
+      super($$0, true, "Horse armor fix for " + $$1, bgv.B, $$1);
+      this.a = $$2;
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<? extends Dynamic<?>> $$1 = $$0.get("display").result();
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get(this.a).result();
       if ($$1.isPresent()) {
          Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
-         Optional<String> $$3 = $$2.get("Name").asString().result();
-         if ($$3.isPresent()) {
-            $$2 = $$2.set("Name", baa.a($$2.getOps(), $$3.get()));
-         }
-
-         return $$0.set("display", $$2);
+         Dynamic<T> $$3 = $$0.remove(this.a);
+         $$3 = $$3.set("body_armor_item", $$2);
+         return $$3.set("body_armor_drop_chance", $$0.createFloat(2.0F));
       } else {
          return $$0;
       }
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgs.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         "ItemCustomNameToComponentFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a))
-      );
    }
 }

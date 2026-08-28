@@ -1,313 +1,321 @@
-import it.unimi.dsi.fastutil.longs.LongArrayFIFOQueue;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import java.util.Arrays;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import javax.annotation.Nullable;
 
-public abstract class enh<M extends enb<M>, S extends ene<M>> implements end {
-   public static final int a = 15;
-   protected static final int b = 1;
-   protected static final long c = enh.a.a(1);
-   private static final int g = 512;
-   protected static final je[] d = je.values();
-   protected final dug e;
-   protected final S f;
-   private final LongOpenHashSet h = new LongOpenHashSet(512, 0.5F);
-   private final LongArrayFIFOQueue i = new LongArrayFIFOQueue();
-   private final LongArrayFIFOQueue j = new LongArrayFIFOQueue();
-   private final iz.a k = new iz.a();
-   private static final int l = 2;
-   private final long[] m = new long[2];
-   private final duf[] n = new duf[2];
+public abstract class enh<M extends ene<M>> {
+   private final dcf i;
+   protected final duj a;
+   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
+   private final LongSet j = new LongOpenHashSet();
+   protected volatile M c;
+   protected final M d;
+   protected final LongSet e = new LongOpenHashSet();
+   protected final LongSet f = new LongOpenHashSet();
+   protected final Long2ObjectMap<dub> g = Long2ObjectMaps.synchronize(new Long2ObjectOpenHashMap());
+   private final LongSet k = new LongOpenHashSet();
+   private final LongSet l = new LongOpenHashSet();
+   protected volatile boolean h;
 
-   protected enh(dug $$0, S $$1) {
-      this.e = $$0;
-      this.f = $$1;
-      this.c();
+   protected enh(dcf $$0, duj $$1, M $$2) {
+      this.i = $$0;
+      this.a = $$1;
+      this.d = $$2;
+      this.c = $$2.b();
+      this.c.d();
+      this.b.defaultReturnValue((byte)0);
    }
 
-   public static boolean a(daz $$0, iz $$1, drx $$2, drx $$3) {
-      return $$3 == $$2 ? false : $$3.b($$0, $$1) != $$2.b($$0, $$1) || $$3.h() != $$2.h() || $$3.g() || $$2.g();
+   protected boolean b(long $$0) {
+      return this.a($$0, true) != null;
    }
 
-   public static int a(daz $$0, drx $$1, iz $$2, drx $$3, iz $$4, je $$5, int $$6) {
-      boolean $$7 = a($$1);
-      boolean $$8 = a($$3);
-      if ($$7 && $$8) {
-         return $$6;
+   @Nullable
+   protected dub a(long $$0, boolean $$1) {
+      return this.a($$1 ? this.d : this.c, $$0);
+   }
+
+   @Nullable
+   protected dub a(M $$0, long $$1) {
+      return $$0.c($$1);
+   }
+
+   @Nullable
+   protected dub c(long $$0) {
+      dub $$1 = this.d.c($$0);
+      if ($$1 == null) {
+         return null;
       } else {
-         ewf $$9 = $$7 ? ewc.a() : $$1.c($$0, $$2);
-         ewf $$10 = $$8 ? ewc.a() : $$3.c($$0, $$4);
-         return ewc.b($$9, $$10, $$5) ? 16 : $$6;
+         if (this.e.add($$0)) {
+            $$1 = $$1.b();
+            this.d.a($$0, $$1);
+            this.d.c();
+         }
+
+         return $$1;
       }
-   }
-
-   public static ewf a(daz $$0, iz $$1, drx $$2, je $$3) {
-      return a($$2) ? ewc.a() : $$2.a($$0, $$1, $$3);
-   }
-
-   protected static boolean a(drx $$0) {
-      return !$$0.p() || !$$0.g();
-   }
-
-   protected drx c(iz $$0) {
-      int $$1 = kb.a($$0.u());
-      int $$2 = kb.a($$0.w());
-      duf $$3 = this.a($$1, $$2);
-      return $$3 == null ? dew.F.n() : $$3.a_($$0);
-   }
-
-   protected int a(drx $$0, iz $$1) {
-      return Math.max(1, $$0.b(this.e.q(), $$1));
-   }
-
-   protected boolean a(long $$0, drx $$1, long $$2, drx $$3, je $$4) {
-      ewf $$5 = this.a($$1, $$0, $$4);
-      ewf $$6 = this.a($$3, $$2, $$4.g());
-      return ewc.b($$5, $$6);
-   }
-
-   protected ewf a(drx $$0, long $$1, je $$2) {
-      return a(this.e.q(), this.k.f($$1), $$0, $$2);
    }
 
    @Nullable
-   protected duf a(int $$0, int $$1) {
-      long $$2 = dba.c($$0, $$1);
+   public dub d(long $$0) {
+      dub $$1 = (dub)this.g.get($$0);
+      return $$1 != null ? $$1 : this.a($$0, false);
+   }
 
-      for (int $$3 = 0; $$3 < 2; $$3++) {
-         if ($$2 == this.m[$$3]) {
-            return this.n[$$3];
+   protected abstract int a(long var1);
+
+   protected int e(long $$0) {
+      long $$1 = kb.e($$0);
+      dub $$2 = this.a($$1, true);
+      return $$2.a(kb.b(iz.a($$0)), kb.b(iz.b($$0)), kb.b(iz.c($$0)));
+   }
+
+   protected void a(long $$0, int $$1) {
+      long $$2 = kb.e($$0);
+      dub $$3;
+      if (this.e.add($$2)) {
+         $$3 = this.d.a($$2);
+      } else {
+         $$3 = this.a($$2, true);
+      }
+
+      $$3.a(kb.b(iz.a($$0)), kb.b(iz.b($$0)), kb.b(iz.c($$0)), $$1);
+      kb.a($$0, this.f::add);
+   }
+
+   protected void f(long $$0) {
+      int $$1 = kb.b($$0);
+      int $$2 = kb.c($$0);
+      int $$3 = kb.d($$0);
+
+      for (int $$4 = -1; $$4 <= 1; $$4++) {
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               this.f.add(kb.b($$1 + $$5, $$2 + $$6, $$3 + $$4));
+            }
+         }
+      }
+   }
+
+   protected dub g(long $$0) {
+      dub $$1 = (dub)this.g.get($$0);
+      return $$1 != null ? $$1 : new dub();
+   }
+
+   protected boolean a() {
+      return this.h;
+   }
+
+   protected void a(enk<M, ?> $$0) {
+      if (this.h) {
+         this.h = false;
+         LongIterator $$5 = this.l.iterator();
+
+         while ($$5.hasNext()) {
+            long $$1 = (Long)$$5.next();
+            dub $$2 = (dub)this.g.remove($$1);
+            dub $$3 = this.d.d($$1);
+            if (this.k.contains(kb.f($$1))) {
+               if ($$2 != null) {
+                  this.g.put($$1, $$2);
+               } else if ($$3 != null) {
+                  this.g.put($$1, $$3);
+               }
+            }
+         }
+
+         this.d.c();
+         $$5 = this.l.iterator();
+
+         while ($$5.hasNext()) {
+            long $$4 = (Long)$$5.next();
+            this.i($$4);
+            this.e.add($$4);
+         }
+
+         this.l.clear();
+         ObjectIterator<Entry<dub>> $$5x = Long2ObjectMaps.fastIterator(this.g);
+
+         while ($$5x.hasNext()) {
+            Entry<dub> $$6 = (Entry<dub>)$$5x.next();
+            long $$7 = $$6.getLongKey();
+            if (this.b($$7)) {
+               dub $$8 = (dub)$$6.getValue();
+               if (this.d.c($$7) != $$8) {
+                  this.d.a($$7, $$8);
+                  this.e.add($$7);
+               }
+
+               $$5x.remove();
+            }
+         }
+
+         this.d.c();
+      }
+   }
+
+   protected void h(long $$0) {
+   }
+
+   protected void i(long $$0) {
+   }
+
+   protected void b(long $$0, boolean $$1) {
+      if ($$1) {
+         this.j.add($$0);
+      } else {
+         this.j.remove($$0);
+      }
+   }
+
+   protected boolean j(long $$0) {
+      long $$1 = kb.f($$0);
+      return this.j.contains($$1);
+   }
+
+   public void c(long $$0, boolean $$1) {
+      if ($$1) {
+         this.k.add($$0);
+      } else {
+         this.k.remove($$0);
+      }
+   }
+
+   protected void a(long $$0, @Nullable dub $$1) {
+      if ($$1 != null) {
+         this.g.put($$0, $$1);
+         this.h = true;
+      } else {
+         this.g.remove($$0);
+      }
+   }
+
+   protected void d(long $$0, boolean $$1) {
+      byte $$2 = this.b.get($$0);
+      byte $$3 = enh.a.a($$2, !$$1);
+      if ($$2 != $$3) {
+         this.a($$0, $$3);
+         int $$4 = $$1 ? -1 : 1;
+
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               for (int $$7 = -1; $$7 <= 1; $$7++) {
+                  if ($$5 != 0 || $$6 != 0 || $$7 != 0) {
+                     long $$8 = kb.a($$0, $$5, $$6, $$7);
+                     byte $$9 = this.b.get($$8);
+                     this.a($$8, enh.a.a($$9, enh.a.b($$9) + $$4));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   protected void a(long $$0, byte $$1) {
+      if ($$1 != 0) {
+         if (this.b.put($$0, $$1) == 0) {
+            this.l($$0);
+         }
+      } else if (this.b.remove($$0) != 0) {
+         this.m($$0);
+      }
+   }
+
+   private void l(long $$0) {
+      if (!this.l.remove($$0)) {
+         this.d.a($$0, this.g($$0));
+         this.e.add($$0);
+         this.h($$0);
+         this.f($$0);
+         this.h = true;
+      }
+   }
+
+   private void m(long $$0) {
+      this.l.add($$0);
+      this.h = true;
+   }
+
+   protected void b() {
+      if (!this.e.isEmpty()) {
+         M $$0 = this.d.b();
+         $$0.d();
+         this.c = $$0;
+         this.e.clear();
+      }
+
+      if (!this.f.isEmpty()) {
+         LongIterator $$1 = this.f.iterator();
+
+         while ($$1.hasNext()) {
+            long $$2 = $$1.nextLong();
+            this.a.a(this.i, kb.a($$2));
+         }
+
+         this.f.clear();
+      }
+   }
+
+   public enh.b k(long $$0) {
+      return enh.a.c(this.b.get($$0));
+   }
+
+   protected static class a {
+      public static final byte a = 0;
+      private static final int b = 0;
+      private static final int c = 26;
+      private static final byte d = 32;
+      private static final byte e = 31;
+
+      public static byte a(byte $$0, boolean $$1) {
+         return (byte)($$1 ? $$0 | 32 : $$0 & -33);
+      }
+
+      public static byte a(byte $$0, int $$1) {
+         if ($$1 >= 0 && $$1 <= 26) {
+            return (byte)($$0 & -32 | $$1 & 31);
+         } else {
+            throw new IllegalArgumentException("Neighbor count was not within range [0; 26]");
          }
       }
 
-      duf $$4 = this.e.c($$0, $$1);
-
-      for (int $$5 = 1; $$5 > 0; $$5--) {
-         this.m[$$5] = this.m[$$5 - 1];
-         this.n[$$5] = this.n[$$5 - 1];
+      public static boolean a(byte $$0) {
+         return ($$0 & 32) != 0;
       }
 
-      this.m[0] = $$2;
-      this.n[0] = $$4;
-      return $$4;
-   }
-
-   private void c() {
-      Arrays.fill(this.m, dba.a);
-      Arrays.fill(this.n, null);
-   }
-
-   @Override
-   public void a(iz $$0) {
-      this.h.add($$0.a());
-   }
-
-   public void a(long $$0, @Nullable dty $$1) {
-      this.f.a($$0, $$1);
-   }
-
-   public void b(dba $$0, boolean $$1) {
-      this.f.c(kb.b($$0.e, $$0.f), $$1);
-   }
-
-   @Override
-   public void a(kb $$0, boolean $$1) {
-      this.f.d($$0.s(), $$1);
-   }
-
-   @Override
-   public void a(dba $$0, boolean $$1) {
-      this.f.b(kb.b($$0.e, $$0.f), $$1);
-   }
-
-   @Override
-   public int a() {
-      LongIterator $$0 = this.h.iterator();
-
-      while ($$0.hasNext()) {
-         this.a($$0.nextLong());
+      public static int b(byte $$0) {
+         return $$0 & 31;
       }
 
-      this.h.clear();
-      this.h.trim(512);
-      int $$1 = 0;
-      $$1 += this.e();
-      $$1 += this.d();
-      this.c();
-      this.f.a(this);
-      this.f.b();
-      return $$1;
-   }
-
-   private int d() {
-      int $$0;
-      for ($$0 = 0; !this.j.isEmpty(); $$0++) {
-         long $$1 = this.j.dequeueLong();
-         long $$2 = this.j.dequeueLong();
-         int $$3 = this.f.e($$1);
-         int $$4 = enh.a.a($$2);
-         if (enh.a.c($$2) && $$3 < $$4) {
-            this.f.a($$1, $$4);
-            $$3 = $$4;
-         }
-
-         if ($$3 == $$4) {
-            this.a($$1, $$2, $$3);
+      public static enh.b c(byte $$0) {
+         if ($$0 == 0) {
+            return enh.b.a;
+         } else {
+            return a($$0) ? enh.b.c : enh.b.b;
          }
       }
-
-      return $$0;
    }
 
-   private int e() {
-      int $$0;
-      for ($$0 = 0; !this.i.isEmpty(); $$0++) {
-         long $$1 = this.i.dequeueLong();
-         long $$2 = this.i.dequeueLong();
-         this.a($$1, $$2);
+   public static enum b {
+      a("2"),
+      b("1"),
+      c("0");
+
+      private final String d;
+
+      private b(final String $$0) {
+         this.d = $$0;
       }
 
-      return $$0;
-   }
-
-   protected void b(long $$0, long $$1) {
-      this.i.enqueue($$0);
-      this.i.enqueue($$1);
-   }
-
-   protected void c(long $$0, long $$1) {
-      this.j.enqueue($$0);
-      this.j.enqueue($$1);
-   }
-
-   @Override
-   public boolean K_() {
-      return this.f.a() || !this.h.isEmpty() || !this.i.isEmpty() || !this.j.isEmpty();
-   }
-
-   @Nullable
-   @Override
-   public dty a(kb $$0) {
-      return this.f.d($$0.s());
-   }
-
-   @Override
-   public int b(iz $$0) {
-      return this.f.a($$0.a());
-   }
-
-   public String b(long $$0) {
-      return this.c($$0).a();
-   }
-
-   public ene.b c(long $$0) {
-      return this.f.k($$0);
-   }
-
-   protected abstract void a(long var1);
-
-   protected abstract void a(long var1, long var3, int var5);
-
-   protected abstract void a(long var1, long var3);
-
-   public static class a {
-      private static final int a = 4;
-      private static final int b = 6;
-      private static final long c = 15L;
-      private static final long d = 1008L;
-      private static final long e = 1024L;
-      private static final long f = 2048L;
-
-      public static long a(int $$0, je $$1) {
-         long $$2 = c(1008L, $$1);
-         return a($$2, $$0);
-      }
-
-      public static long a(int $$0) {
-         return a(1008L, $$0);
-      }
-
-      public static long a(int $$0, boolean $$1) {
-         long $$2 = 1008L;
-         $$2 |= 2048L;
-         if ($$1) {
-            $$2 |= 1024L;
-         }
-
-         return a($$2, $$0);
-      }
-
-      public static long a(int $$0, boolean $$1, je $$2) {
-         long $$3 = c(1008L, $$2);
-         if ($$1) {
-            $$3 |= 1024L;
-         }
-
-         return a($$3, $$0);
-      }
-
-      public static long b(int $$0, boolean $$1, je $$2) {
-         long $$3 = 0L;
-         if ($$1) {
-            $$3 |= 1024L;
-         }
-
-         $$3 = b($$3, $$2);
-         return a($$3, $$0);
-      }
-
-      public static long a(boolean $$0, boolean $$1, boolean $$2, boolean $$3, boolean $$4) {
-         long $$5 = a(0L, 15);
-         if ($$0) {
-            $$5 = b($$5, je.a);
-         }
-
-         if ($$1) {
-            $$5 = b($$5, je.c);
-         }
-
-         if ($$2) {
-            $$5 = b($$5, je.d);
-         }
-
-         if ($$3) {
-            $$5 = b($$5, je.e);
-         }
-
-         if ($$4) {
-            $$5 = b($$5, je.f);
-         }
-
-         return $$5;
-      }
-
-      public static int a(long $$0) {
-         return (int)($$0 & 15L);
-      }
-
-      public static boolean b(long $$0) {
-         return ($$0 & 1024L) != 0L;
-      }
-
-      public static boolean c(long $$0) {
-         return ($$0 & 2048L) != 0L;
-      }
-
-      public static boolean a(long $$0, je $$1) {
-         return ($$0 & 1L << $$1.ordinal() + 4) != 0L;
-      }
-
-      private static long a(long $$0, int $$1) {
-         return $$0 & -16L | (long)$$1 & 15L;
-      }
-
-      private static long b(long $$0, je $$1) {
-         return $$0 | 1L << $$1.ordinal() + 4;
-      }
-
-      private static long c(long $$0, je $$1) {
-         return $$0 & ~(1L << $$1.ordinal() + 4);
+      public String a() {
+         return this.d;
       }
    }
 }

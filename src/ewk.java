@@ -1,46 +1,66 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Collections;
-import java.util.Map;
-import java.util.function.Consumer;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-class ewk {
-   private final Reference2ObjectOpenHashMap<ewi, ewn> a = new Reference2ObjectOpenHashMap(16, 0.5F);
+public enum ewk implements azs {
+   a(0, "list"),
+   b(1, "sidebar"),
+   c(2, "below_name"),
+   d(3, "sidebar.team.black"),
+   e(4, "sidebar.team.dark_blue"),
+   f(5, "sidebar.team.dark_green"),
+   g(6, "sidebar.team.dark_aqua"),
+   h(7, "sidebar.team.dark_red"),
+   i(8, "sidebar.team.dark_purple"),
+   j(9, "sidebar.team.gold"),
+   k(10, "sidebar.team.gray"),
+   l(11, "sidebar.team.dark_gray"),
+   m(12, "sidebar.team.blue"),
+   n(13, "sidebar.team.green"),
+   o(14, "sidebar.team.aqua"),
+   p(15, "sidebar.team.red"),
+   q(16, "sidebar.team.light_purple"),
+   r(17, "sidebar.team.yellow"),
+   s(18, "sidebar.team.white");
+
+   public static final azs.a<ewk> t = azs.a(ewk::values);
+   public static final IntFunction<ewk> u = axo.a(ewk::a, values(), axo.a.a);
+   private final int v;
+   private final String w;
+
+   private ewk(final int $$0, final String $$1) {
+      this.v = $$0;
+      this.w = $$1;
+   }
+
+   public int a() {
+      return this.v;
+   }
+
+   @Override
+   public String c() {
+      return this.w;
+   }
 
    @Nullable
-   public ewn a(ewi $$0) {
-      return (ewn)this.a.get($$0);
-   }
-
-   public ewn a(ewi $$0, Consumer<ewn> $$1) {
-      return (ewn)this.a.computeIfAbsent($$0, $$1x -> {
-         ewn $$2 = new ewn();
-         $$1.accept($$2);
-         return $$2;
-      });
-   }
-
-   public boolean b(ewi $$0) {
-      return this.a.remove($$0) != null;
-   }
-
-   public boolean a() {
-      return !this.a.isEmpty();
-   }
-
-   public Object2IntMap<ewi> b() {
-      Object2IntMap<ewi> $$0 = new Object2IntOpenHashMap();
-      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
-      return $$0;
-   }
-
-   void a(ewi $$0, ewn $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   Map<ewi, ewn> c() {
-      return Collections.unmodifiableMap(this.a);
+   public static ewk a(n $$0) {
+      return switch ($$0) {
+         case a -> d;
+         case b -> e;
+         case c -> f;
+         case d -> g;
+         case e -> h;
+         case f -> i;
+         case g -> j;
+         case h -> k;
+         case i -> l;
+         case j -> m;
+         case k -> n;
+         case l -> o;
+         case m -> p;
+         case n -> q;
+         case o -> r;
+         case p -> s;
+         case r, u, t, v, q, s -> null;
+      };
    }
 }

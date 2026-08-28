@@ -1,108 +1,88 @@
-public class fte<T extends cku> extends fue<T> {
-   private static final float a = 0.6F;
-   private static final float b = 0.8F;
-   private static final float f = 1.0F;
-   private final fwv g;
-   private final fwv h;
-   private final fwv i;
-   private final fwv j;
-   private final fwv k;
-   private final fwv l;
-   private final fwv m;
-   private final fwv n;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 
-   public fte(fwv $$0) {
-      super(gdr::i);
-      this.g = $$0;
-      this.j = $$0.b("wind_body");
-      this.m = this.j.b("wind_bottom");
-      this.l = this.m.b("wind_mid");
-      this.k = this.l.b("wind_top");
-      this.h = $$0.b("body").b("head");
-      this.i = this.h.b("eyes");
-      this.n = $$0.b("body").b("rods");
+public class fte extends fuq<cot> implements fwl {
+   private static final String a = "left_paddle";
+   private static final String b = "right_paddle";
+   private static final String f = "water_patch";
+   private static final String g = "bottom";
+   private static final String h = "back";
+   private static final String i = "front";
+   private static final String j = "right";
+   private static final String k = "left";
+   private final fwy l;
+   private final fwy m;
+   private final fwy n;
+   private final ImmutableList<fwy> o;
+
+   public fte(fwy $$0) {
+      this.l = $$0.b("left_paddle");
+      this.m = $$0.b("right_paddle");
+      this.n = $$0.b("water_patch");
+      this.o = this.a($$0).build();
    }
 
-   public static fxb a(int $$0, int $$1) {
-      fxd $$2 = new fxd();
-      fxe $$3 = $$2.a();
-      fxe $$4 = $$3.a("body", fxa.c(), fwx.a(0.0F, 0.0F, 0.0F));
-      fxe $$5 = $$4.a("rods", fxa.c(), fwx.a(0.0F, 8.0F, 0.0F));
-      $$5.a("rod_1", fxa.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fwz(0.0F)), fwx.a(2.5981F, -3.0F, 1.5F, -2.7489F, -1.0472F, 3.1416F));
-      $$5.a("rod_2", fxa.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fwz(0.0F)), fwx.a(-2.5981F, -3.0F, 1.5F, -2.7489F, 1.0472F, 3.1416F));
-      $$5.a("rod_3", fxa.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fwz(0.0F)), fwx.a(0.0F, -3.0F, -3.0F, 0.3927F, 0.0F, 0.0F));
-      fxe $$6 = $$4.a(
-         "head",
-         fxa.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new fwz(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fwz(0.0F)),
-         fwx.a(0.0F, 4.0F, 0.0F)
-      );
-      $$6.a(
-         "eyes",
-         fxa.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new fwz(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fwz(0.0F)),
-         fwx.a(0.0F, 0.0F, 0.0F)
-      );
-      fxe $$7 = $$3.a("wind_body", fxa.c(), fwx.a(0.0F, 0.0F, 0.0F));
-      fxe $$8 = $$7.a("wind_bottom", fxa.c().a(1, 83).a(-2.5F, -7.0F, -2.5F, 5.0F, 7.0F, 5.0F, new fwz(0.0F)), fwx.a(0.0F, 24.0F, 0.0F));
-      fxe $$9 = $$8.a(
-         "wind_mid",
-         fxa.c()
-            .a(74, 28)
-            .a(-6.0F, -6.0F, -6.0F, 12.0F, 6.0F, 12.0F, new fwz(0.0F))
-            .a(78, 32)
-            .a(-4.0F, -6.0F, -4.0F, 8.0F, 6.0F, 8.0F, new fwz(0.0F))
-            .a(49, 71)
-            .a(-2.5F, -6.0F, -2.5F, 5.0F, 6.0F, 5.0F, new fwz(0.0F)),
-         fwx.a(0.0F, -7.0F, 0.0F)
-      );
-      $$9.a(
-         "wind_top",
-         fxa.c()
-            .a(0, 0)
-            .a(-9.0F, -8.0F, -9.0F, 18.0F, 8.0F, 18.0F, new fwz(0.0F))
-            .a(6, 6)
-            .a(-6.0F, -8.0F, -6.0F, 12.0F, 8.0F, 12.0F, new fwz(0.0F))
-            .a(105, 57)
-            .a(-2.5F, -8.0F, -2.5F, 5.0F, 8.0F, 5.0F, new fwz(0.0F)),
-         fwx.a(0.0F, -6.0F, 0.0F)
-      );
-      return fxb.a($$2, $$0, $$1);
+   protected Builder<fwy> a(fwy $$0) {
+      Builder<fwy> $$1 = new Builder();
+      $$1.add(new fwy[]{$$0.b("bottom"), $$0.b("back"), $$0.b("front"), $$0.b("right"), $$0.b("left"), this.l, this.m});
+      return $$1;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fwv::c);
-      float $$6 = $$3 * (float) Math.PI * -0.1F;
-      this.k.b = ayu.b($$6) * 1.0F * 0.6F;
-      this.k.d = ayu.a($$6) * 1.0F * 0.6F;
-      this.l.b = ayu.a($$6) * 0.5F * 0.8F;
-      this.l.d = ayu.b($$6) * 0.8F;
-      this.m.b = ayu.b($$6) * -0.25F * 1.0F;
-      this.m.d = ayu.a($$6) * -0.25F * 1.0F;
-      this.h.c = 4.0F + ayu.b($$6) / 4.0F;
-      this.n.f = $$3 * (float) Math.PI * 0.1F;
-      this.a($$0.bY, ffv.a, $$3);
-      this.a($$0.c, ffv.c, $$3);
-      this.a($$0.d, ffv.d, $$3);
-      this.a($$0.e, ffv.b, $$3);
+   public static void a(fxh $$0) {
+      int $$1 = 32;
+      int $$2 = 6;
+      int $$3 = 20;
+      int $$4 = 4;
+      int $$5 = 28;
+      $$0.a("bottom", fxd.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fxa.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$0.a("back", fxd.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), fxa.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
+      $$0.a("front", fxd.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), fxa.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$0.a("right", fxd.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fxa.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
+      $$0.a("left", fxd.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fxa.a(0.0F, 4.0F, 9.0F));
+      int $$6 = 20;
+      int $$7 = 7;
+      int $$8 = 6;
+      float $$9 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         fxd.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fxa.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         fxd.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fxa.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
+      $$0.a("water_patch", fxd.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fxa.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+   }
+
+   public static fxe a() {
+      fxg $$0 = new fxg();
+      fxh $$1 = $$0.a();
+      a($$1);
+      return fxe.a($$0, 128, 64);
+   }
+
+   public void a(cot $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      a($$0, 0, this.l, $$1);
+      a($$0, 1, this.m, $$1);
+   }
+
+   public ImmutableList<fwy> b() {
+      return this.o;
    }
 
    @Override
-   public fwv a() {
-      return this.g;
-   }
-
-   public fwv b() {
-      return this.h;
-   }
-
-   public fwv c() {
-      return this.i;
-   }
-
-   public fwv d() {
+   public fwy c() {
       return this.n;
    }
 
-   public fwv e() {
-      return this.j;
+   private static void a(cot $$0, int $$1, fwy $$2, float $$3) {
+      float $$4 = $$0.a($$1, $$3);
+      $$2.e = ayx.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (ayx.a(-$$4) + 1.0F) / 2.0F);
+      $$2.f = ayx.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (ayx.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
+      }
    }
 }

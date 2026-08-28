@@ -1,51 +1,96 @@
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import java.lang.reflect.Array;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
-public class dsg implements Predicate<drx> {
-   public static final Predicate<drx> a = $$0 -> true;
-   private final dry<deu, drx> b;
-   private final Map<dta<?>, Predicate<Object>> c = Maps.newHashMap();
+public class dsg {
+   private static final Joiner a = Joiner.on(",");
+   private final List<String[]> b = Lists.newArrayList();
+   private final Map<Character, Predicate<dse>> c = Maps.newHashMap();
+   private int d;
+   private int e;
 
-   private dsg(dry<deu, drx> $$0) {
-      this.b = $$0;
+   private dsg() {
+      this.c.put(' ', $$0 -> true);
    }
 
-   public static dsg a(deu $$0) {
-      return new dsg($$0.l());
-   }
+   public dsg a(String... $$0) {
+      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
+         if (this.b.isEmpty()) {
+            this.d = $$0.length;
+            this.e = $$0[0].length();
+         }
 
-   public boolean a(@Nullable drx $$0) {
-      if ($$0 != null && $$0.b().equals(this.b.c())) {
-         if (this.c.isEmpty()) {
-            return true;
+         if ($$0.length != this.d) {
+            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
          } else {
-            for (Entry<dta<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
-               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
-                  return false;
+            for (String $$1 : $$0) {
+               if ($$1.length() != this.e) {
+                  throw new IllegalArgumentException(
+                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
+                  );
+               }
+
+               for (char $$2 : $$1.toCharArray()) {
+                  if (!this.c.containsKey($$2)) {
+                     this.c.put($$2, null);
+                  }
                }
             }
 
-            return true;
+            this.b.add($$0);
+            return this;
          }
       } else {
-         return false;
+         throw new IllegalArgumentException("Empty pattern for aisle");
       }
    }
 
-   protected <T extends Comparable<T>> boolean a(drx $$0, dta<T> $$1, Predicate<Object> $$2) {
-      T $$3 = $$0.c($$1);
-      return $$2.test($$3);
+   public static dsg a() {
+      return new dsg();
    }
 
-   public <V extends Comparable<V>> dsg a(dta<V> $$0, Predicate<Object> $$1) {
-      if (!this.b.d().contains($$0)) {
-         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
-      } else {
-         this.c.put($$0, $$1);
-         return this;
+   public dsg a(char $$0, Predicate<dse> $$1) {
+      this.c.put($$0, $$1);
+      return this;
+   }
+
+   public dsf b() {
+      return new dsf(this.c());
+   }
+
+   private Predicate<dse>[][][] c() {
+      this.d();
+      Predicate<dse>[][][] $$0 = (Predicate<dse>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
+
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.e; $$3++) {
+               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   private void d() {
+      List<Character> $$0 = Lists.newArrayList();
+
+      for (Entry<Character, Predicate<dse>> $$1 : this.c.entrySet()) {
+         if ($$1.getValue() == null) {
+            $$0.add($$1.getKey());
+         }
+      }
+
+      if (!$$0.isEmpty()) {
+         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
       }
    }
 }

@@ -1,76 +1,59 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class ddm extends deu {
-   public static final int a = 3;
-   public static final dso b = dsn.r;
+public class ddm extends dcz {
+   public static final MapCodec<ddm> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alc.d(ddc.ah), alc.d(ddc.ai), alc.d(ddc.aj), alc.d(ddc.ak), alc.d(ddc.al)).apply($$0, $$0.stable(ddm::new))
+   );
+   private final ji<dcv> c;
+   private final ji<dcv> d;
+   private final ji<dcv> e;
+   private final ji<dcv> f;
+   private final ji<dcv> g;
 
-   @Override
-   protected abstract MapCodec<? extends ddm> a();
-
-   protected ddm(drw.d $$0) {
-      super($$0);
+   public static ddm a(jj<dcv> $$0) {
+      return new ddm($$0.b(ddc.ah), $$0.b(ddc.ai), $$0.b(ddc.aj), $$0.b(ddc.ak), $$0.b(ddc.al));
    }
 
-   protected abstract Iterable<evm> b(drx var1);
-
-   public static boolean c(drx $$0) {
-      return $$0.b(b) && ($$0.a(awl.ae) || $$0.a(awl.bk)) && $$0.c(b);
-   }
-
-   @Override
-   protected void a(dbt $$0, drx $$1, evi $$2, cnk $$3) {
-      if (!$$0.B && $$3.bQ() && this.d($$1)) {
-         a($$0, $$1, $$2.a(), true);
-      }
-   }
-
-   protected boolean d(drx $$0) {
-      return !$$0.c(b);
+   private ddm(ji<dcv> $$0, ji<dcv> $$1, ji<dcv> $$2, ji<dcv> $$3, ji<dcv> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   public void a(drx $$0, dbt $$1, iz $$2, azc $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
-      }
+   protected Stream<ji<dcv>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
    }
 
-   private static void a(dbt $$0, evm $$1, azc $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(lj.ae, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, avw.dJ, avx.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
+   @Override
+   protected MapCodec<? extends dcz> a() {
+      return b;
+   }
+
+   @Override
+   public ji<dcv> getNoiseBiome(int $$0, int $$1, int $$2, dde.f $$3) {
+      int $$4 = jt.c($$0);
+      int $$5 = jt.c($$1);
+      int $$6 = jt.c($$2);
+      int $$7 = kb.a($$4);
+      int $$8 = kb.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
+      } else {
+         int $$9 = (kb.a($$4) * 2 + 1) * 8;
+         int $$10 = (kb.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new dxl.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
          }
       }
-
-      $$0.a(lj.aJ, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-   }
-
-   public static void a(@Nullable cms $$0, drx $$1, dbu $$2, iz $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof ddm) {
-         ((ddm)$$1.b())
-            .b($$1)
-            .forEach($$2x -> $$2.a(lj.ae, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
-      }
-
-      $$2.a(null, $$3, avw.dL, avx.e, 1.0F, 1.0F);
-      $$2.a($$0, dwq.c, $$3);
-   }
-
-   private static void a(dbu $$0, drx $$1, iz $$2, boolean $$3) {
-      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
-   }
-
-   @Override
-   protected void a(drx $$0, dbt $$1, iz $$2, dbl $$3, BiConsumer<cuk, iz> $$4) {
-      if ($$3.j() == dbl.a.d && !$$1.x_() && $$0.c(b)) {
-         a(null, $$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
    }
 }

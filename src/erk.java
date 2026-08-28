@@ -1,35 +1,64 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class erk extends erp {
+public class erk extends ers {
    public static final MapCodec<erk> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(cp.a.fieldOf("item_filter").forGetter($$0x -> $$0x.b), ers.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .and($$0.group(eum.a.fieldOf("levels").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("treasure").orElse(false).forGetter($$0x -> $$0x.c)))
             .apply($$0, erk::new)
    );
-   private final cp b;
-   private final erq c;
+   private final eul b;
+   private final boolean c;
 
-   private erk(List<etn> $$0, cp $$1, erq $$2) {
+   erk(List<etq> $$0, eul $$1, boolean $$2) {
       super($$0);
       this.b = $$1;
       this.c = $$2;
    }
 
    @Override
-   public err<erk> b() {
-      return ers.v;
+   public eru<erk> b() {
+      return erv.g;
    }
 
    @Override
-   public cuk a(cuk $$0, eqd $$1) {
-      return this.b.a($$0) ? this.c.apply($$0, $$1) : $$0;
+   public Set<esz<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public void a(eqj $$0) {
-      super.a($$0);
-      this.c.a($$0.a(".modifier"));
+   public cun a(cun $$0, eqg $$1) {
+      azf $$2 = $$1.b();
+      return czz.a($$1.d().J(), $$2, $$0, this.b.a($$1), this.c);
+   }
+
+   public static erk.a a(eul $$0) {
+      return new erk.a($$0);
+   }
+
+   public static class a extends ers.a<erk.a> {
+      private final eul a;
+      private boolean b;
+
+      public a(eul $$0) {
+         this.a = $$0;
+      }
+
+      protected erk.a a() {
+         return this;
+      }
+
+      public erk.a e() {
+         this.b = true;
+         return this;
+      }
+
+      @Override
+      public ert b() {
+         return new erk(this.g(), this.a, this.b);
+      }
    }
 }

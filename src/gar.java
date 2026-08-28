@@ -1,76 +1,53 @@
-public class gar extends gax {
-   private static final int a = 3;
-   private final gdp b;
-   private final bsp D;
-   private final bsp E;
-   private int F;
-   private final giq G;
-   private double H;
-   private double I;
-   private double J;
-   private double K;
-   private double L;
-   private double M;
-
-   public gar(giq $$0, gdp $$1, fxq $$2, bsp $$3, bsp $$4) {
-      this($$0, $$1, $$2, $$3, $$4, $$3.ds());
-   }
-
-   private gar(giq $$0, gdp $$1, fxq $$2, bsp $$3, bsp $$4, evm $$5) {
-      super($$2, $$3.du(), $$3.dw(), $$3.dA(), $$5.c, $$5.d, $$5.e);
-      this.b = $$1;
-      this.D = this.a($$3);
-      this.E = $$4;
-      this.G = $$0;
-      this.c();
-      this.d();
-   }
-
-   private bsp a(bsp $$0) {
-      return (bsp)(!($$0 instanceof cjc) ? $$0 : ((cjc)$$0).C());
+public class gar extends gca {
+   gar(fxt $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
    }
 
    @Override
-   public gbb b() {
-      return gbb.e;
+   public gbe b() {
+      return gbe.b;
    }
 
    @Override
-   public void a(ezx $$0, fel $$1, float $$2) {
-      float $$3 = ((float)this.F + $$2) / 3.0F;
-      $$3 *= $$3;
-      double $$4 = ayu.d((double)$$2, this.K, this.H);
-      double $$5 = ayu.d((double)$$2, this.L, this.I);
-      double $$6 = ayu.d((double)$$2, this.M, this.J);
-      double $$7 = ayu.d((double)$$3, this.D.du(), $$4);
-      double $$8 = ayu.d((double)$$3, this.D.dw(), $$5);
-      double $$9 = ayu.d((double)$$3, this.D.dA(), $$6);
-      gdj.a $$10 = this.b.c();
-      evm $$11 = $$1.b();
-      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dF(), $$2, new ezt(), $$10, this.G.a(this.D, $$2));
-      $$10.b();
+   public float b(float $$0) {
+      return this.D * ayx.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   @Override
-   public void a() {
-      this.F++;
-      if (this.F == 3) {
-         this.k();
+   public static class a implements gbd<lm> {
+      private final gbv a;
+
+      public a(gbv $$0) {
+         this.a = $$0;
       }
 
-      this.d();
-      this.c();
+      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gar $$8 = new gar($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
    }
 
-   private void c() {
-      this.H = this.E.du();
-      this.I = (this.E.dw() + this.E.dy()) / 2.0;
-      this.J = this.E.dA();
-   }
+   public static class b implements gbd<lm> {
+      private final gbv a;
 
-   private void d() {
-      this.K = this.H;
-      this.L = this.I;
-      this.M = this.J;
+      public b(gbv $$0) {
+         this.a = $$0;
+      }
+
+      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gar $$8 = new gar($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

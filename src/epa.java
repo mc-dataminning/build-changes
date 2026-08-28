@@ -1,31 +1,44 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.IOException;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
-public record epa(alb d, boolean e, int f, boolean g, boolean h) {
-   public static final int a = -1;
-   public static final Codec<ji<epa>> b = lp.av.r();
-   public static final zj<ww, ji<epa>> c = zh.b(lq.ay);
+public abstract class epa {
+   private static final Logger a = LogUtils.getLogger();
+   private boolean b;
 
-   public boolean a() {
-      return this.f != -1;
+   public abstract ur a(ur var1, jk.a var2);
+
+   public void c() {
+      this.a(true);
    }
 
-   public alb b() {
-      return this.d;
+   public void a(boolean $$0) {
+      this.b = $$0;
    }
 
-   public boolean c() {
-      return this.e;
+   public boolean d() {
+      return this.b;
    }
 
-   public int d() {
-      return this.f;
+   public void a(File $$0, jk.a $$1) {
+      if (this.d()) {
+         ur $$2 = new ur();
+         $$2.a("data", this.a(new ur(), $$1));
+         vg.e($$2);
+
+         try {
+            ve.a($$2, $$0.toPath());
+         } catch (IOException var5) {
+            a.error("Could not save data {}", this, var5);
+         }
+
+         this.a(false);
+      }
    }
 
-   public boolean e() {
-      return this.g;
-   }
-
-   public boolean f() {
-      return this.h;
+   public static record a<T extends epa>(Supplier<T> a, BiFunction<ur, jk.a, T> b, bae c) {
    }
 }

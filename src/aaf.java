@@ -1,33 +1,29 @@
-import io.netty.buffer.ByteBuf;
+public class aaf implements zv<aab> {
+   public static final zm<wl, aaf> a = zv.a(aaf::a, aaf::new);
+   private final int b;
 
-public record aaf(alb c, byte[] d) implements zs<zy> {
-   public static final zj<wl, aaf> a = zs.a(aaf::a, aaf::new);
-   private static final int e = 5120;
-   public static final zj<ByteBuf, byte[]> b = zh.a(5120);
+   public aaf(int $$0) {
+      this.b = $$0;
+   }
 
    private aaf(wl $$0) {
-      this($$0.q(), b.decode($$0));
+      this.b = $$0.readInt();
    }
 
    private void a(wl $$0) {
-      $$0.a(this.c);
-      b.encode($$0, this.d);
+      $$0.p(this.b);
    }
 
    @Override
-   public zu<aaf> a() {
-      return aai.g;
+   public zx<aaf> a() {
+      return aal.d;
    }
 
-   public void a(zy $$0) {
+   public void a(aab $$0) {
       $$0.a(this);
    }
 
-   public alb b() {
-      return this.c;
-   }
-
-   public byte[] e() {
-      return this.d;
+   public int b() {
+      return this.b;
    }
 }

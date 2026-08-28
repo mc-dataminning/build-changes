@@ -1,16 +1,19 @@
-public class gmg extends gne<cfd, ftg<cfd>> {
-   private static final alb a = new alb("textures/entity/cat/cat_collar.png");
-   private final ftg<cfd> b;
+public class gmg extends gnh<ckx, fth<ckx>> {
+   private static final ale a = new ale("textures/entity/breeze/breeze_wind.png");
+   private static final fth<ckx> b = new fth<>(fth.a(128, 128).a());
 
-   public gmg(gko<cfd, ftg<cfd>> $$0, fwr $$1) {
+   public gmg(gkr<ckx, fth<ckx>> $$0) {
       super($$0);
-      this.b = new ftg<>($$1.a(fwu.u));
    }
 
-   public void a(ezt $$0, gdj $$1, int $$2, cfd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.s()) {
-         float[] $$10 = $$3.gz().d();
-         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
-      }
+   public void a(ezw $$0, gdm $$1, int $$2, ckx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      float $$10 = (float)$$3.ai + $$6;
+      faa $$11 = $$1.getBuffer(gdu.a(a, this.a($$10) % 1.0F, 0.0F));
+      b.a($$3, $$4, $$5, $$7, $$8, $$9);
+      gib.a(b, b.e()).a($$0, $$11, $$2, goo.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

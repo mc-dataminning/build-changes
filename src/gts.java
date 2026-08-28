@@ -1,7 +1,3 @@
-public interface gts<T> {
-   int e();
-
-   T b(azc var1);
-
-   void a(gtn var1);
+public interface gts {
+   void a(gsl var1, gtu var2, float var3);
 }

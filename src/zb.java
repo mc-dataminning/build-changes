@@ -1,5 +1,8 @@
-public interface zb {
-   xz a(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   zc<? extends zb> a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface zb {
 }

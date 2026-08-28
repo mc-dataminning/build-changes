@@ -1,110 +1,261 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Objects;
 import javax.annotation.Nullable;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
 public class geq {
-   public static final geq a = new geq();
-   public static final float b = Float.NEGATIVE_INFINITY;
-   private final geq.a[] c;
-   private final alb[] d;
+   public static final int a = 8;
+   private static final float d = 1.0F / (float)Math.cos((float) (Math.PI / 8)) - 1.0F;
+   private static final float e = 1.0F / (float)Math.cos((float) (Math.PI / 4)) - 1.0F;
+   public static final int b = 4;
+   private static final int f = 3;
+   public static final int c = 4;
 
-   private geq() {
-      this.c = new geq.a[0];
-      this.d = new alb[0];
-   }
-
-   public geq(gqz $$0, gel $$1, List<gep> $$2) {
-      this.d = $$2.stream().flatMap(gep::b).map(gep.b::a).distinct().toArray(alb[]::new);
-      Object2IntMap<alb> $$3 = new Object2IntOpenHashMap();
-
-      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
-         $$3.put(this.d[$$4], $$4);
+   public gej a(Vector3f $$0, Vector3f $$1, gel $$2, gox $$3, je $$4, grg $$5, @Nullable gem $$6, boolean $$7, ale $$8) {
+      gen $$9 = $$2.e;
+      if ($$5.c()) {
+         $$9 = a($$2.e, $$4, $$5.b(), $$8);
       }
 
-      List<geq.a> $$5 = Lists.newArrayList();
-
-      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
-         gep $$7 = $$2.get($$6);
-         gqv $$8 = this.a($$0, $$1, $$7);
-         geq.b[] $$9 = $$7.b().map($$1x -> {
-            int $$2x = $$3.getInt($$1x.a());
-            return new geq.b($$2x, $$1x.b());
-         }).toArray(geq.b[]::new);
-         $$5.add(new geq.a($$9, $$8));
+      float[] $$10 = new float[$$9.a.length];
+      System.arraycopy($$9.a, 0, $$10, 0, $$10.length);
+      float $$11 = $$3.k();
+      float $$12 = ($$9.a[0] + $$9.a[0] + $$9.a[2] + $$9.a[2]) / 4.0F;
+      float $$13 = ($$9.a[1] + $$9.a[1] + $$9.a[3] + $$9.a[3]) / 4.0F;
+      $$9.a[0] = ayx.i($$11, $$9.a[0], $$12);
+      $$9.a[2] = ayx.i($$11, $$9.a[2], $$12);
+      $$9.a[1] = ayx.i($$11, $$9.a[1], $$13);
+      $$9.a[3] = ayx.i($$11, $$9.a[3], $$13);
+      int[] $$14 = this.a($$9, $$3, $$4, this.a($$0, $$1), $$5.b(), $$6, $$7);
+      je $$15 = a($$14);
+      System.arraycopy($$10, 0, $$9.a, 0, $$10.length);
+      if ($$6 == null) {
+         this.a($$14, $$15);
       }
 
-      this.c = $$5.toArray(new geq.a[0]);
+      return new gej($$14, $$2.c, $$15, $$3, $$7);
    }
 
-   @Nullable
-   private gqv a(gqz $$0, gel $$1, gep $$2) {
-      grg $$3 = $$0.a($$2.a());
-      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gqw.a);
+   public static gen a(gen $$0, je $$1, j $$2, ale $$3) {
+      Matrix4f $$4 = iy.a($$2, $$1, () -> "Unable to resolve UVLock for model: " + $$3).c();
+      float $$5 = $$0.a($$0.c(0));
+      float $$6 = $$0.b($$0.c(0));
+      Vector4f $$7 = $$4.transform(new Vector4f($$5 / 16.0F, $$6 / 16.0F, 0.0F, 1.0F));
+      float $$8 = 16.0F * $$7.x();
+      float $$9 = 16.0F * $$7.y();
+      float $$10 = $$0.a($$0.c(2));
+      float $$11 = $$0.b($$0.c(2));
+      Vector4f $$12 = $$4.transform(new Vector4f($$10 / 16.0F, $$11 / 16.0F, 0.0F, 1.0F));
+      float $$13 = 16.0F * $$12.x();
+      float $$14 = 16.0F * $$12.y();
+      float $$15;
+      float $$16;
+      if (Math.signum($$10 - $$5) == Math.signum($$13 - $$8)) {
+         $$15 = $$8;
+         $$16 = $$13;
+      } else {
+         $$15 = $$13;
+         $$16 = $$8;
+      }
+
+      float $$19;
+      float $$20;
+      if (Math.signum($$11 - $$6) == Math.signum($$14 - $$9)) {
+         $$19 = $$9;
+         $$20 = $$14;
+      } else {
+         $$19 = $$14;
+         $$20 = $$9;
+      }
+
+      float $$23 = (float)Math.toRadians((double)$$0.b);
+      Matrix3f $$24 = new Matrix3f($$4);
+      Vector3f $$25 = $$24.transform(new Vector3f(ayx.b($$23), ayx.a($$23), 0.0F));
+      int $$26 = Math.floorMod(-((int)Math.round(Math.toDegrees(Math.atan2((double)$$25.y(), (double)$$25.x())) / 90.0)) * 90, 360);
+      return new gen(new float[]{$$15, $$19, $$16, $$20}, $$26);
    }
 
-   @Nullable
-   public gqv a(gqv $$0, cuk $$1, @Nullable fxq $$2, @Nullable btk $$3, int $$4) {
-      if (this.c.length != 0) {
-         int $$5 = this.d.length;
-         float[] $$6 = new float[$$5];
+   private int[] a(gen $$0, gox $$1, je $$2, float[] $$3, j $$4, @Nullable gem $$5, boolean $$6) {
+      int[] $$7 = new int[32];
 
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            alb $$8 = this.d[$$7];
-            goc $$9 = gob.a($$1, $$8);
-            if ($$9 != null) {
-               $$6[$$7] = $$9.call($$1, $$2, $$3, $$4);
+      for (int $$8 = 0; $$8 < 4; $$8++) {
+         this.a($$7, $$8, $$2, $$0, $$3, $$1, $$4, $$5, $$6);
+      }
+
+      return $$7;
+   }
+
+   private float[] a(Vector3f $$0, Vector3f $$1) {
+      float[] $$2 = new float[je.values().length];
+      $$2[gdd.a.f] = $$0.x() / 16.0F;
+      $$2[gdd.a.e] = $$0.y() / 16.0F;
+      $$2[gdd.a.d] = $$0.z() / 16.0F;
+      $$2[gdd.a.c] = $$1.x() / 16.0F;
+      $$2[gdd.a.b] = $$1.y() / 16.0F;
+      $$2[gdd.a.a] = $$1.z() / 16.0F;
+      return $$2;
+   }
+
+   private void a(int[] $$0, int $$1, je $$2, gen $$3, float[] $$4, gox $$5, j $$6, @Nullable gem $$7, boolean $$8) {
+      gdd.b $$9 = gdd.a($$2).a($$1);
+      Vector3f $$10 = new Vector3f($$4[$$9.a], $$4[$$9.b], $$4[$$9.c]);
+      this.a($$10, $$7);
+      this.a($$10, $$6);
+      this.a($$0, $$1, $$10, $$5, $$3);
+   }
+
+   private void a(int[] $$0, int $$1, Vector3f $$2, gox $$3, gen $$4) {
+      int $$5 = $$1 * 8;
+      $$0[$$5] = Float.floatToRawIntBits($$2.x());
+      $$0[$$5 + 1] = Float.floatToRawIntBits($$2.y());
+      $$0[$$5 + 2] = Float.floatToRawIntBits($$2.z());
+      $$0[$$5 + 3] = -1;
+      $$0[$$5 + 4] = Float.floatToRawIntBits($$3.a($$4.a($$1) / 16.0F));
+      $$0[$$5 + 4 + 1] = Float.floatToRawIntBits($$3.c($$4.b($$1) / 16.0F));
+   }
+
+   private void a(Vector3f $$0, @Nullable gem $$1) {
+      if ($$1 != null) {
+         Vector3f $$2;
+         Vector3f $$3;
+         switch ($$1.b()) {
+            case a:
+               $$2 = new Vector3f(1.0F, 0.0F, 0.0F);
+               $$3 = new Vector3f(0.0F, 1.0F, 1.0F);
+               break;
+            case b:
+               $$2 = new Vector3f(0.0F, 1.0F, 0.0F);
+               $$3 = new Vector3f(1.0F, 0.0F, 1.0F);
+               break;
+            case c:
+               $$2 = new Vector3f(0.0F, 0.0F, 1.0F);
+               $$3 = new Vector3f(1.0F, 1.0F, 0.0F);
+               break;
+            default:
+               throw new IllegalArgumentException("There are only 3 axes");
+         }
+
+         Quaternionf $$10 = new Quaternionf().rotationAxis($$1.c() * (float) (Math.PI / 180.0), $$2);
+         if ($$1.d()) {
+            if (Math.abs($$1.c()) == 22.5F) {
+               $$3.mul(d);
             } else {
-               $$6[$$7] = Float.NEGATIVE_INFINITY;
+               $$3.mul(e);
             }
+
+            $$3.add(1.0F, 1.0F, 1.0F);
+         } else {
+            $$3.set(1.0F, 1.0F, 1.0F);
          }
 
-         for (geq.a $$10 : this.c) {
-            if ($$10.a($$6)) {
-               gqv $$11 = $$10.b;
-               if ($$11 == null) {
-                  return $$0;
-               }
-
-               return $$11;
-            }
-         }
-      }
-
-      return $$0;
-   }
-
-   static class a {
-      private final geq.b[] a;
-      @Nullable
-      final gqv b;
-
-      a(geq.b[] $$0, @Nullable gqv $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      boolean a(float[] $$0) {
-         for (geq.b $$1 : this.a) {
-            float $$2 = $$0[$$1.a];
-            if ($$2 < $$1.b) {
-               return false;
-            }
-         }
-
-         return true;
+         this.a($$0, new Vector3f($$1.a()), new Matrix4f().rotation($$10), $$3);
       }
    }
 
-   static class b {
-      public final int a;
-      public final float b;
+   public void a(Vector3f $$0, j $$1) {
+      if ($$1 != j.a()) {
+         this.a($$0, new Vector3f(0.5F, 0.5F, 0.5F), $$1.c(), new Vector3f(1.0F, 1.0F, 1.0F));
+      }
+   }
 
-      b(int $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   private void a(Vector3f $$0, Vector3f $$1, Matrix4f $$2, Vector3f $$3) {
+      Vector4f $$4 = $$2.transform(new Vector4f($$0.x() - $$1.x(), $$0.y() - $$1.y(), $$0.z() - $$1.z(), 1.0F));
+      $$4.mul(new Vector4f($$3, 1.0F));
+      $$0.set($$4.x() + $$1.x(), $$4.y() + $$1.y(), $$4.z() + $$1.z());
+   }
+
+   public static je a(int[] $$0) {
+      Vector3f $$1 = new Vector3f(Float.intBitsToFloat($$0[0]), Float.intBitsToFloat($$0[1]), Float.intBitsToFloat($$0[2]));
+      Vector3f $$2 = new Vector3f(Float.intBitsToFloat($$0[8]), Float.intBitsToFloat($$0[9]), Float.intBitsToFloat($$0[10]));
+      Vector3f $$3 = new Vector3f(Float.intBitsToFloat($$0[16]), Float.intBitsToFloat($$0[17]), Float.intBitsToFloat($$0[18]));
+      Vector3f $$4 = new Vector3f($$1).sub($$2);
+      Vector3f $$5 = new Vector3f($$3).sub($$2);
+      Vector3f $$6 = new Vector3f($$5).cross($$4).normalize();
+      if (!$$6.isFinite()) {
+         return je.b;
+      } else {
+         je $$7 = null;
+         float $$8 = 0.0F;
+
+         for (je $$9 : je.values()) {
+            kd $$10 = $$9.q();
+            Vector3f $$11 = new Vector3f((float)$$10.u(), (float)$$10.v(), (float)$$10.w());
+            float $$12 = $$6.dot($$11);
+            if ($$12 >= 0.0F && $$12 > $$8) {
+               $$8 = $$12;
+               $$7 = $$9;
+            }
+         }
+
+         return $$7 == null ? je.b : $$7;
+      }
+   }
+
+   private void a(int[] $$0, je $$1) {
+      int[] $$2 = new int[$$0.length];
+      System.arraycopy($$0, 0, $$2, 0, $$0.length);
+      float[] $$3 = new float[je.values().length];
+      $$3[gdd.a.f] = 999.0F;
+      $$3[gdd.a.e] = 999.0F;
+      $$3[gdd.a.d] = 999.0F;
+      $$3[gdd.a.c] = -999.0F;
+      $$3[gdd.a.b] = -999.0F;
+      $$3[gdd.a.a] = -999.0F;
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         int $$5 = 8 * $$4;
+         float $$6 = Float.intBitsToFloat($$2[$$5]);
+         float $$7 = Float.intBitsToFloat($$2[$$5 + 1]);
+         float $$8 = Float.intBitsToFloat($$2[$$5 + 2]);
+         if ($$6 < $$3[gdd.a.f]) {
+            $$3[gdd.a.f] = $$6;
+         }
+
+         if ($$7 < $$3[gdd.a.e]) {
+            $$3[gdd.a.e] = $$7;
+         }
+
+         if ($$8 < $$3[gdd.a.d]) {
+            $$3[gdd.a.d] = $$8;
+         }
+
+         if ($$6 > $$3[gdd.a.c]) {
+            $$3[gdd.a.c] = $$6;
+         }
+
+         if ($$7 > $$3[gdd.a.b]) {
+            $$3[gdd.a.b] = $$7;
+         }
+
+         if ($$8 > $$3[gdd.a.a]) {
+            $$3[gdd.a.a] = $$8;
+         }
+      }
+
+      gdd $$9 = gdd.a($$1);
+
+      for (int $$10 = 0; $$10 < 4; $$10++) {
+         int $$11 = 8 * $$10;
+         gdd.b $$12 = $$9.a($$10);
+         float $$13 = $$3[$$12.a];
+         float $$14 = $$3[$$12.b];
+         float $$15 = $$3[$$12.c];
+         $$0[$$11] = Float.floatToRawIntBits($$13);
+         $$0[$$11 + 1] = Float.floatToRawIntBits($$14);
+         $$0[$$11 + 2] = Float.floatToRawIntBits($$15);
+
+         for (int $$16 = 0; $$16 < 4; $$16++) {
+            int $$17 = 8 * $$16;
+            float $$18 = Float.intBitsToFloat($$2[$$17]);
+            float $$19 = Float.intBitsToFloat($$2[$$17 + 1]);
+            float $$20 = Float.intBitsToFloat($$2[$$17 + 2]);
+            if (ayx.a($$13, $$18) && ayx.a($$14, $$19) && ayx.a($$15, $$20)) {
+               $$0[$$11 + 4] = $$2[$$17 + 4];
+               $$0[$$11 + 4 + 1] = $$2[$$17 + 4 + 1];
+            }
+         }
       }
    }
 }

@@ -1,88 +1,53 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import java.util.BitSet;
-import java.util.List;
-import javax.annotation.Nullable;
+public class adu implements zv<ach> {
+   public static final zm<wl, adu> a = zv.a(adu::a, adu::new);
+   private final int b;
+   private final iz c;
+   private final int d;
+   private final boolean e;
 
-public class adu {
-   private static final zj<ByteBuf, byte[]> a = zh.a(2048);
-   private final BitSet b;
-   private final BitSet c;
-   private final BitSet d;
-   private final BitSet e;
-   private final List<byte[]> f;
-   private final List<byte[]> g;
-
-   public adu(dba $$0, enf $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = new BitSet();
-      this.c = new BitSet();
-      this.d = new BitSet();
-      this.e = new BitSet();
-      this.f = Lists.newArrayList();
-      this.g = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
-         if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, dcc.a, $$4, this.b, this.d, this.f);
-         }
-
-         if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, dcc.b, $$4, this.c, this.e, this.g);
-         }
-      }
+   public adu(int $$0, iz $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1.i();
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public adu(wl $$0, int $$1, int $$2) {
-      this.b = $$0.w();
-      this.c = $$0.w();
-      this.d = $$0.w();
-      this.e = $$0.w();
-      this.f = $$0.a(a);
-      this.g = $$0.a(a);
+   private adu(wl $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.e();
+      this.d = $$0.readInt();
+      this.e = $$0.readBoolean();
    }
 
-   public void a(wl $$0) {
-      $$0.a(this.b);
+   private void a(wl $$0) {
+      $$0.p(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
+      $$0.p(this.d);
       $$0.a(this.e);
-      $$0.a(this.f, a);
-      $$0.a(this.g, a);
    }
 
-   private void a(dba $$0, enf $$1, dcc $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      dty $$7 = $$1.a($$2).a(kb.a($$0, $$1.d() + $$3));
-      if ($$7 != null) {
-         if ($$7.d()) {
-            $$5.set($$3);
-         } else {
-            $$4.set($$3);
-            $$6.add($$7.b().a());
-         }
-      }
+   @Override
+   public zx<adu> a() {
+      return agt.L;
    }
 
-   public BitSet a() {
-      return this.b;
+   public void a(ach $$0) {
+      $$0.a(this);
    }
 
-   public BitSet b() {
-      return this.d;
-   }
-
-   public List<byte[]> c() {
-      return this.f;
-   }
-
-   public BitSet d() {
-      return this.c;
-   }
-
-   public BitSet e() {
+   public boolean b() {
       return this.e;
    }
 
-   public List<byte[]> f() {
-      return this.g;
+   public int e() {
+      return this.b;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public iz g() {
+      return this.c;
    }
 }

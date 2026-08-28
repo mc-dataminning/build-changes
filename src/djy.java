@@ -1,115 +1,160 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class djy extends deu {
-   public static final MapCodec<djy> a = b(djy::new);
-   public static final dsv<je.a> b = dsn.H;
-   protected static final int c = 2;
-   protected static final ewf d = deu.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
-   protected static final ewf e = deu.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
+public class djy {
+   public static final djy.e[] a = new djy.e[]{djy.e.a, djy.e.b, djy.e.c};
+   private final djy.b b;
 
-   @Override
-   public MapCodec<djy> a() {
-      return a;
+   public djy(djx $$0) {
+      this(new djy.a($$0));
    }
 
-   public djy(drw.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, je.a.a));
+   public djy(djy.b $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
-      switch ((je.a)$$0.c(b)) {
-         case c:
-            return e;
-         case a:
-         default:
-            return d;
-      }
+   public boolean a(dsa $$0, dbc $$1, iz $$2, je $$3) {
+      return je.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
    }
 
-   @Override
-   protected void b(drx $$0, arb $$1, iz $$2, azc $$3) {
-      if ($$1.D_().j() && $$1.ab().b(dbp.e) && $$3.a(2000) < $$1.al().a()) {
-         while ($$1.a_($$2).a(this)) {
-            $$2 = $$2.d();
-         }
+   public Optional<djy.c> a(dsa $$0, dbx $$1, iz $$2, azf $$3) {
+      return je.a($$3)
+         .stream()
+         .filter($$1x -> this.b.b($$0, $$1x))
+         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
+         .filter(Optional::isPresent)
+         .findFirst()
+         .orElse(Optional.empty());
+   }
 
-         if ($$1.a_($$2).a($$1, $$2, bsv.bx)) {
-            bsp $$4 = bsv.bx.a($$1, $$2.c(), bto.d);
-            if ($$4 != null) {
-               $$4.aw();
+   public long a(dsa $$0, dbx $$1, iz $$2, boolean $$3) {
+      return je.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
+   }
+
+   public Optional<djy.c> a(dsa $$0, dbx $$1, iz $$2, je $$3, azf $$4, boolean $$5) {
+      return je.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
+   }
+
+   private long a(dsa $$0, dbx $$1, iz $$2, je $$3, boolean $$4) {
+      return je.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
+   }
+
+   @VisibleForTesting
+   public Optional<djy.c> a(dsa $$0, dbx $$1, iz $$2, je $$3, je $$4, boolean $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
+   }
+
+   public Optional<djy.c> a(dsa $$0, dbc $$1, iz $$2, je $$3, je $$4, djy.d $$5) {
+      if ($$4.o() == $$3.o()) {
+         return Optional.empty();
+      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
+         for (djy.e $$6 : this.b.a()) {
+            djy.c $$7 = $$6.a($$2, $$4, $$3);
+            if ($$5.test($$1, $$2, $$7)) {
+               return Optional.of($$7);
             }
          }
+
+         return Optional.empty();
+      } else {
+         return Optional.empty();
       }
    }
 
-   @Override
-   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
-      je.a $$6 = $$1.o();
-      je.a $$7 = $$0.c(b);
-      boolean $$8 = $$7 != $$6 && $$6.d();
-      return !$$8 && !$$2.a(this) && !new eoq($$3, $$4, $$7).c() ? dew.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public Optional<djy.c> a(dbx $$0, djy.c $$1, boolean $$2) {
+      dsa $$3 = $$0.a_($$1.a());
+      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
    }
 
-   @Override
-   protected void a(drx $$0, dbt $$1, iz $$2, bsp $$3) {
-      if ($$3.cw()) {
-         $$3.g($$2);
+   public static class a implements djy.b {
+      protected djx a;
+
+      public a(djx $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public dsa a(dsa $$0, dbc $$1, iz $$2, je $$3) {
+         return this.a.c($$0, $$1, $$2, $$3);
+      }
+
+      protected boolean a(dbc $$0, iz $$1, iz $$2, je $$3, dsa $$4) {
+         return $$4.i() || $$4.a(this.a) || $$4.a(dez.G) && $$4.u().b();
+      }
+
+      @Override
+      public boolean a(dbc $$0, iz $$1, djy.c $$2) {
+         dsa $$3 = $$0.a_($$2.a());
+         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
       }
    }
 
-   @Override
-   public void a(drx $$0, dbt $$1, iz $$2, azc $$3) {
-      if ($$3.a(100) == 0) {
-         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, avw.uE, avx.e, 0.5F, $$3.i() * 0.4F + 0.8F, false);
+   public interface b {
+      @Nullable
+      dsa a(dsa var1, dbc var2, iz var3, je var4);
+
+      boolean a(dbc var1, iz var2, djy.c var3);
+
+      default djy.e[] a() {
+         return djy.a;
       }
 
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         double $$5 = (double)$$2.u() + $$3.j();
-         double $$6 = (double)$$2.v() + $$3.j();
-         double $$7 = (double)$$2.w() + $$3.j();
-         double $$8 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$9 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$10 = ((double)$$3.i() - 0.5) * 0.5;
-         int $$11 = $$3.a(2) * 2 - 1;
-         if (!$$1.a_($$2.g()).a(this) && !$$1.a_($$2.h()).a(this)) {
-            $$5 = (double)$$2.u() + 0.5 + 0.25 * (double)$$11;
-            $$8 = (double)($$3.i() * 2.0F * (float)$$11);
+      default boolean a(dsa $$0, je $$1) {
+         return djx.a($$0, $$1);
+      }
+
+      default boolean a(dsa $$0) {
+         return false;
+      }
+
+      default boolean b(dsa $$0, je $$1) {
+         return this.a($$0) || this.a($$0, $$1);
+      }
+
+      default boolean a(dbx $$0, djy.c $$1, dsa $$2, boolean $$3) {
+         dsa $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
+         if ($$4 != null) {
+            if ($$3) {
+               $$0.y($$1.a()).e($$1.a());
+            }
+
+            return $$0.a($$1.a(), $$4, 2);
          } else {
-            $$7 = (double)$$2.w() + 0.5 + 0.25 * (double)$$11;
-            $$10 = (double)($$3.i() * 2.0F * (float)$$11);
+            return false;
          }
-
-         $$1.a(lj.ac, $$5, $$6, $$7, $$8, $$9, $$10);
       }
    }
 
-   @Override
-   public cuk a(dbw $$0, iz $$1, drx $$2) {
-      return cuk.l;
+   public static record c(iz a, je b) {
    }
 
-   @Override
-   protected drx a(drx $$0, dlh $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((je.a)$$0.c(b)) {
-               case c:
-                  return $$0.a(b, je.a.a);
-               case a:
-                  return $$0.a(b, je.a.c);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
+   @FunctionalInterface
+   public interface d {
+      boolean test(dbc var1, iz var2, djy.c var3);
    }
 
-   @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      $$0.a(b);
+   public static enum e {
+      a {
+         @Override
+         public djy.c a(iz $$0, je $$1, je $$2) {
+            return new djy.c($$0, $$1);
+         }
+      },
+      b {
+         @Override
+         public djy.c a(iz $$0, je $$1, je $$2) {
+            return new djy.c($$0.a($$1), $$2);
+         }
+      },
+      c {
+         @Override
+         public djy.c a(iz $$0, je $$1, je $$2) {
+            return new djy.c($$0.a($$1).a($$2), $$1.g());
+         }
+      };
+
+      public abstract djy.c a(iz var1, je var2, je var3);
    }
 }

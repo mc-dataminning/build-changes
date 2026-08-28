@@ -1,3 +1,8 @@
-public interface eyd {
-   void execute();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@exq
+@exp
+interface eyd {
 }

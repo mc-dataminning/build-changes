@@ -1,42 +1,38 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehk extends dym {
-   private final dco a;
-   private final dtu b;
-   private final Optional<ehj> c;
+public class ehk extends eht {
+   public static final MapCodec<ehk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ehk::new)
+   );
+   private final int c;
+   private final double d;
+   private final double e;
 
-   public ehk(dco $$0, dtu $$1, Optional<ehj> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private ehk(int $$0, double $$1, double $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public int a(dxp.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public static ehk a(int $$0, double $$1, double $$2) {
+      return new ehk($$0, $$1, $$2);
    }
 
-   public dts a(dba $$0, dxl.a $$1) {
-      return ((dun)this.a.a($$0.e, $$0.f)).b($$1);
+   @Override
+   protected int a(azf $$0, iz $$1) {
+      double $$2 = dcv.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
    }
 
-   public drx a(iz $$0) {
-      return this.a.a_($$0);
-   }
-
-   public int c() {
-      return this.a.I_();
-   }
-
-   public dco d() {
-      return this.a;
-   }
-
-   public Optional<ehj> e() {
-      return this.c;
-   }
-
-   public dtu f() {
-      return this.b;
+   @Override
+   public ehq<?> b() {
+      return ehq.g;
    }
 }

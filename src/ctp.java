@@ -1,69 +1,48 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class ctp extends cuf implements cvc {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final double b = 0.15;
+public interface ctp {
+   bsz m();
 
-   public ctp(cuf.a $$0) {
-      super($$0);
+   default ji<avy> n() {
+      return avz.as;
    }
 
-   @Override
-   public bqp a(cxx $$0) {
-      dbt $$1 = $$0.q();
-      if (!$$1.B) {
-         cuk $$2 = $$0.n();
-         evm $$3 = $$0.l();
-         je $$4 = $$0.k();
-         cnf $$5 = new cnf($$1, $$0.o(), $$3.c + (double)$$4.j() * 0.15, $$3.d + (double)$$4.k() * 0.15, $$3.e + (double)$$4.l() * 0.15, $$2);
-         $$1.b($$5);
-         $$2.h(1);
+   default bqt<cun> a(cui $$0, dbw $$1, cmv $$2, bqr $$3) {
+      cun $$4 = $$2.b($$3);
+      bsz $$5 = btp.h($$4);
+      if (!$$2.d($$5)) {
+         return bqt.c($$4);
+      } else {
+         cun $$6 = $$2.a($$5);
+         if ((!czz.f($$6) || $$2.f()) && !cun.a($$4, $$6)) {
+            if (!$$1.x_()) {
+               $$2.b(awj.c.b($$0));
+            }
+
+            cun $$7 = $$6.e() ? $$4 : $$6.f();
+            cun $$8 = $$2.f() ? $$4.s() : $$4.f();
+            $$2.a($$5, $$8);
+            return bqt.a($$7, $$1.x_());
+         } else {
+            return bqt.d($$4);
+         }
       }
-
-      return bqp.a($$1.B);
    }
 
-   @Override
-   public bqq<cuk> a(dbt $$0, cms $$1, bqo $$2) {
-      if ($$1.fE()) {
-         cuk $$3 = $$1.b($$2);
-         if (!$$0.B) {
-            cnf $$4 = new cnf($$0, $$3, $$1);
-            $$0.b($$4);
-            $$3.a(1, $$1);
-            $$1.b(awg.c.b(this));
+   @Nullable
+   static ctp c_(cun $$0) {
+      cui $$3 = $$0.g();
+      if ($$3 instanceof ctp) {
+         return (ctp)$$3;
+      } else {
+         if ($$0.g() instanceof csl $$2) {
+            dex var6 = $$2.d();
+            if (var6 instanceof ctp) {
+               return (ctp)var6;
+            }
          }
 
-         return bqq.a($$1.b($$2), $$0.x_());
-      } else {
-         return bqq.c($$1.b($$2));
+         return null;
       }
-   }
-
-   @Override
-   public void a(cuk $$0, cuf.b $$1, List<xl> $$2, cwd $$3) {
-      cxe $$4 = $$0.a(km.T);
-      if ($$4 != null) {
-         $$4.a($$1, $$2::add, $$3);
-      }
-   }
-
-   @Override
-   public cnk a(dbt $$0, js $$1, cuk $$2, je $$3) {
-      return new cnf($$0, $$2.c(1), $$1.a(), $$1.b(), $$1.c(), true);
-   }
-
-   @Override
-   public cvc.a c() {
-      return cvc.a.a().a(ctp::a).a(0.5F).b(1.0F).a(1004).a();
-   }
-
-   private static evm a(kq $$0, je $$1) {
-      return $$0.a()
-         .b(
-            (double)$$1.j() * (0.5000099999997474 - (double)bsv.P.l() / 2.0),
-            (double)$$1.k() * (0.5000099999997474 - (double)bsv.P.m() / 2.0) - (double)bsv.P.m() / 2.0,
-            (double)$$1.l() * (0.5000099999997474 - (double)bsv.P.l() / 2.0)
-         );
    }
 }

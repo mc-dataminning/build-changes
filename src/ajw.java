@@ -1,13 +1,8 @@
-public class ajw implements zs<ajv> {
-   public static final zj<wl, ajw> a = zs.a(ajw::a, ajw::new);
-   private final long b;
-
-   public ajw(long $$0) {
-      this.b = $$0;
-   }
+public record ajw(long b) implements zv<ajv> {
+   public static final zm<wl, ajw> a = zv.a(ajw::a, ajw::new);
 
    private ajw(wl $$0) {
-      this.b = $$0.readLong();
+      this($$0.readLong());
    }
 
    private void a(wl $$0) {
@@ -15,15 +10,11 @@ public class ajw implements zs<ajv> {
    }
 
    @Override
-   public zu<ajw> a() {
-      return aju.b;
+   public zx<ajw> a() {
+      return ajx.a;
    }
 
    public void a(ajv $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

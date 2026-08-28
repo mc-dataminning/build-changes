@@ -75,7 +75,7 @@ public class wl extends ByteBuf {
    }
 
    public <T> T a(Codec<T> $$0) {
-      JsonElement $$1 = ayk.a(h, this.p(), JsonElement.class);
+      JsonElement $$1 = ayn.a(h, this.p(), JsonElement.class);
       DataResult<T> $$2 = $$0.parse(JsonOps.INSTANCE, $$1);
       return (T)$$2.getOrThrow($$0x -> new DecoderException("Failed to decode json: " + $$0x));
    }
@@ -95,7 +95,7 @@ public class wl extends ByteBuf {
       };
    }
 
-   public <T, C extends Collection<T>> C a(IntFunction<C> $$0, zk<? super wl, T> $$1) {
+   public <T, C extends Collection<T>> C a(IntFunction<C> $$0, zn<? super wl, T> $$1) {
       int $$2 = this.l();
       C $$3 = (C)$$0.apply($$2);
 
@@ -106,7 +106,7 @@ public class wl extends ByteBuf {
       return $$3;
    }
 
-   public <T> void a(Collection<T> $$0, zl<? super wl, T> $$1) {
+   public <T> void a(Collection<T> $$0, zo<? super wl, T> $$1) {
       this.c($$0.size());
 
       for (T $$2 : $$0) {
@@ -114,7 +114,7 @@ public class wl extends ByteBuf {
       }
    }
 
-   public <T> List<T> a(zk<? super wl, T> $$0) {
+   public <T> List<T> a(zn<? super wl, T> $$0) {
       return this.a(Lists::newArrayListWithCapacity, $$0);
    }
 
@@ -134,7 +134,7 @@ public class wl extends ByteBuf {
       $$0.forEach(this::c);
    }
 
-   public <K, V, M extends Map<K, V>> M a(IntFunction<M> $$0, zk<? super wl, K> $$1, zk<? super wl, V> $$2) {
+   public <K, V, M extends Map<K, V>> M a(IntFunction<M> $$0, zn<? super wl, K> $$1, zn<? super wl, V> $$2) {
       int $$3 = this.l();
       M $$4 = (M)$$0.apply($$3);
 
@@ -147,11 +147,11 @@ public class wl extends ByteBuf {
       return $$4;
    }
 
-   public <K, V> Map<K, V> a(zk<? super wl, K> $$0, zk<? super wl, V> $$1) {
+   public <K, V> Map<K, V> a(zn<? super wl, K> $$0, zn<? super wl, V> $$1) {
       return this.a(Maps::newHashMapWithExpectedSize, $$0, $$1);
    }
 
-   public <K, V> void a(Map<K, V> $$0, zl<? super wl, K> $$1, zl<? super wl, V> $$2) {
+   public <K, V> void a(Map<K, V> $$0, zo<? super wl, K> $$1, zo<? super wl, V> $$2) {
       this.c($$0.size());
       $$0.forEach(($$2x, $$3) -> {
          $$1.encode(this, (K)$$2x);
@@ -192,7 +192,7 @@ public class wl extends ByteBuf {
       return $$3;
    }
 
-   public <T> void a(Optional<T> $$0, zl<? super wl, T> $$1) {
+   public <T> void a(Optional<T> $$0, zo<? super wl, T> $$1) {
       if ($$0.isPresent()) {
          this.a(true);
          $$1.encode(this, $$0.get());
@@ -201,25 +201,25 @@ public class wl extends ByteBuf {
       }
    }
 
-   public <T> Optional<T> b(zk<? super wl, T> $$0) {
+   public <T> Optional<T> b(zn<? super wl, T> $$0) {
       return this.readBoolean() ? Optional.of($$0.decode(this)) : Optional.empty();
    }
 
    @Nullable
-   public <T> T c(zk<? super wl, T> $$0) {
+   public <T> T c(zn<? super wl, T> $$0) {
       return a(this, $$0);
    }
 
    @Nullable
-   public static <T, B extends ByteBuf> T a(B $$0, zk<? super B, T> $$1) {
+   public static <T, B extends ByteBuf> T a(B $$0, zn<? super B, T> $$1) {
       return $$0.readBoolean() ? $$1.decode($$0) : null;
    }
 
-   public <T> void a(@Nullable T $$0, zl<? super wl, T> $$1) {
+   public <T> void a(@Nullable T $$0, zo<? super wl, T> $$1) {
       a(this, $$0, $$1);
    }
 
-   public static <T, B extends ByteBuf> void a(B $$0, @Nullable T $$1, zl<? super B, T> $$2) {
+   public static <T, B extends ByteBuf> void a(B $$0, @Nullable T $$1, zo<? super B, T> $$2) {
       if ($$1 != null) {
          $$0.writeBoolean(true);
          $$2.encode($$0, $$1);
@@ -242,7 +242,7 @@ public class wl extends ByteBuf {
    }
 
    public static void a(ByteBuf $$0, byte[] $$1) {
-      xc.a($$0, $$1.length);
+      xf.a($$0, $$1.length);
       $$0.writeBytes($$1);
    }
 
@@ -251,7 +251,7 @@ public class wl extends ByteBuf {
    }
 
    public static byte[] a(ByteBuf $$0, int $$1) {
-      int $$2 = xc.a($$0);
+      int $$2 = xf.a($$0);
       if ($$2 > $$1) {
          throw new DecoderException("ByteArray with size " + $$2 + " is bigger than allowed " + $$1);
       } else {
@@ -342,11 +342,11 @@ public class wl extends ByteBuf {
       $$0.writeLong($$1.a());
    }
 
-   public dba f() {
-      return new dba(this.readLong());
+   public dbd f() {
+      return new dbd(this.readLong());
    }
 
-   public wl a(dba $$0) {
+   public wl a(dbd $$0) {
       this.b($$0.a());
       return this;
    }
@@ -361,7 +361,7 @@ public class wl extends ByteBuf {
    }
 
    public jh h() {
-      ala<dbt> $$0 = this.a(lq.aS);
+      ald<dbw> $$0 = this.a(lq.aS);
       iz $$1 = this.e();
       return jh.a($$0, $$1);
    }
@@ -408,11 +408,11 @@ public class wl extends ByteBuf {
       $$0.writeFloat($$1.w);
    }
 
-   public evm k() {
-      return new evm(this.readDouble(), this.readDouble(), this.readDouble());
+   public evp k() {
+      return new evp(this.readDouble(), this.readDouble(), this.readDouble());
    }
 
-   public void a(evm $$0) {
+   public void a(evp $$0) {
       this.a($$0.a());
       this.a($$0.b());
       this.a($$0.c());
@@ -437,11 +437,11 @@ public class wl extends ByteBuf {
    }
 
    public int l() {
-      return xc.a(this.d);
+      return xf.a(this.d);
    }
 
    public long m() {
-      return xd.a(this.d);
+      return xg.a(this.d);
    }
 
    public wl a(UUID $$0) {
@@ -463,12 +463,12 @@ public class wl extends ByteBuf {
    }
 
    public wl c(int $$0) {
-      xc.a(this.d, $$0);
+      xf.a(this.d, $$0);
       return this;
    }
 
    public wl a(long $$0) {
-      xd.a(this.d, $$0);
+      xg.a(this.d, $$0);
       return this;
    }
 
@@ -524,7 +524,7 @@ public class wl extends ByteBuf {
    }
 
    public String d(int $$0) {
-      return xb.a(this.d, $$0);
+      return xe.a(this.d, $$0);
    }
 
    public wl a(String $$0) {
@@ -532,31 +532,31 @@ public class wl extends ByteBuf {
    }
 
    public wl a(String $$0, int $$1) {
-      xb.a(this.d, $$0, $$1);
+      xe.a(this.d, $$0, $$1);
       return this;
    }
 
-   public alb q() {
-      return new alb(this.d(32767));
+   public ale q() {
+      return new ale(this.d(32767));
    }
 
-   public wl a(alb $$0) {
+   public wl a(ale $$0) {
       this.a($$0.toString());
       return this;
    }
 
-   public <T> ala<T> a(ala<? extends jv<T>> $$0) {
-      alb $$1 = this.q();
-      return ala.a($$0, $$1);
+   public <T> ald<T> a(ald<? extends jv<T>> $$0) {
+      ale $$1 = this.q();
+      return ald.a($$0, $$1);
    }
 
-   public void b(ala<?> $$0) {
+   public void b(ald<?> $$0) {
       this.a($$0.a());
    }
 
-   public <T> ala<? extends jv<T>> r() {
-      alb $$0 = this.q();
-      return ala.a($$0);
+   public <T> ald<? extends jv<T>> r() {
+      ale $$0 = this.q();
+      return ald.a($$0);
    }
 
    public Date s() {
@@ -578,8 +578,8 @@ public class wl extends ByteBuf {
 
    public PublicKey u() {
       try {
-         return axs.a(this.a(512));
-      } catch (axt var2) {
+         return axv.a(this.a(512));
+      } catch (axw var2) {
          throw new DecoderException("Malformed public key bytes", var2);
       }
    }
@@ -589,21 +589,21 @@ public class wl extends ByteBuf {
       return this;
    }
 
-   public evi v() {
+   public evl v() {
       iz $$0 = this.e();
       je $$1 = this.b(je.class);
       float $$2 = this.readFloat();
       float $$3 = this.readFloat();
       float $$4 = this.readFloat();
       boolean $$5 = this.readBoolean();
-      return new evi(new evm((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
+      return new evl(new evp((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
    }
 
-   public void a(evi $$0) {
+   public void a(evl $$0) {
       iz $$1 = $$0.a();
       this.a($$1);
       this.a($$0.b());
-      evm $$2 = $$0.e();
+      evp $$2 = $$0.e();
       this.a((float)($$2.c - (double)$$1.u()));
       this.a((float)($$2.d - (double)$$1.v()));
       this.a((float)($$2.e - (double)$$1.w()));
@@ -619,7 +619,7 @@ public class wl extends ByteBuf {
    }
 
    public BitSet e(int $$0) {
-      byte[] $$1 = new byte[ayu.e($$0, 8)];
+      byte[] $$1 = new byte[ayx.e($$0, 8)];
       this.b($$1);
       return BitSet.valueOf($$1);
    }
@@ -629,7 +629,7 @@ public class wl extends ByteBuf {
          throw new EncoderException("BitSet is larger than expected size (" + $$0.length() + ">" + $$1 + ")");
       } else {
          byte[] $$2 = $$0.toByteArray();
-         this.c(Arrays.copyOf($$2, ayu.e($$1, 8)));
+         this.c(Arrays.copyOf($$2, ayx.e($$1, 8)));
       }
    }
 

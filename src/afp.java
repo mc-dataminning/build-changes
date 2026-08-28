@@ -1,74 +1,60 @@
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 
-public class afp implements zs<ace> {
-   public static final zj<ww, afp> a = zs.a(afp::a, afp::new);
-   public static final int b = 0;
-   public static final int c = 1;
-   public static final int d = 2;
-   private final String e;
-   private final xl f;
-   private final ewt.a g;
-   private final Optional<zb> h;
-   private final int i;
+public class afp implements zv<ach> {
+   public static final zm<wz, afp> a = zv.a(afp::a, afp::new);
+   private static final byte b = -128;
+   private final int c;
+   private final List<Pair<bsz, cun>> d;
 
-   public afp(ewi $$0, int $$1) {
-      this.e = $$0.b();
-      this.f = $$0.d();
-      this.g = $$0.h();
-      this.h = Optional.ofNullable($$0.f());
-      this.i = $$1;
+   public afp(int $$0, List<Pair<bsz, cun>> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private afp(ww $$0) {
-      this.e = $$0.p();
-      this.i = $$0.readByte();
-      if (this.i != 0 && this.i != 2) {
-         this.f = xk.a;
-         this.g = ewt.a.a;
-         this.h = Optional.empty();
-      } else {
-         this.f = xn.d.decode($$0);
-         this.g = $$0.b(ewt.a.class);
-         this.h = zd.d.decode($$0);
-      }
+   private afp(wz $$0) {
+      this.c = $$0.l();
+      bsz[] $$1 = bsz.values();
+      this.d = Lists.newArrayList();
+
+      int $$2;
+      do {
+         $$2 = $$0.readByte();
+         bsz $$3 = $$1[$$2 & 127];
+         cun $$4 = cun.h.decode($$0);
+         this.d.add(Pair.of($$3, $$4));
+      } while (($$2 & -128) != 0);
    }
 
-   private void a(ww $$0) {
-      $$0.a(this.e);
-      $$0.k(this.i);
-      if (this.i == 0 || this.i == 2) {
-         xn.d.encode($$0, this.f);
-         $$0.a(this.g);
-         zd.d.encode($$0, this.h);
+   private void a(wz $$0) {
+      $$0.c(this.c);
+      int $$1 = this.d.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         Pair<bsz, cun> $$3 = this.d.get($$2);
+         bsz $$4 = (bsz)$$3.getFirst();
+         boolean $$5 = $$2 != $$1 - 1;
+         int $$6 = $$4.ordinal();
+         $$0.k($$5 ? $$6 | -128 : $$6);
+         cun.h.encode($$0, (cun)$$3.getSecond());
       }
    }
 
    @Override
-   public zu<afp> a() {
-      return agq.aI;
+   public zx<afp> a() {
+      return agt.aF;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.e;
+   public int b() {
+      return this.c;
    }
 
-   public xl e() {
-      return this.f;
-   }
-
-   public int f() {
-      return this.i;
-   }
-
-   public ewt.a g() {
-      return this.g;
-   }
-
-   public Optional<zb> h() {
-      return this.h;
+   public List<Pair<bsz, cun>> e() {
+      return this.d;
    }
 }

@@ -1,32 +1,88 @@
-public interface flb {
-   fld a();
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-   public static record a(fld a) implements flb {
-      @Override
-      public fld a() {
-         return this.a.a() == flc.b ? this.a : fld.b;
-      }
+public class flb {
+   int a;
+   final Map<flb.a, flb.b> b = Maps.newTreeMap(Comparator.<flb.a, fkx>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
 
-      public fld b() {
-         return this.a;
+   public void a(Consumer<fky> $$0) {
+      this.a++;
+      $$0.accept(new flb.c(0));
+   }
+
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean b = true;
+
+         public void a(String $$0) {
+            if (!this.b) {
+               $$1.append(". ");
+            }
+
+            this.b = false;
+            $$1.append($$0);
+         }
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
+   }
+
+   static class a {
+      final fkx a;
+      final int b;
+
+      a(fkx $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 
-   public static class b implements flb {
-      @Override
-      public fld a() {
-         return fld.b;
+   static class b {
+      fla<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = fla.a;
+         this.b = -1;
+      }
+
+      public flb.b a(int $$0, fla<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
       }
    }
 
-   public static record c(boolean a) implements flb {
-      @Override
-      public fld a() {
-         return this.a ? fld.b : fld.a;
+   class c implements fky {
+      private final int b;
+
+      c(final int $$0) {
+         this.b = $$0;
       }
 
-      public boolean b() {
-         return this.a;
+      @Override
+      public void a(fkx $$0, fla<?> $$1) {
+         flb.this.b.computeIfAbsent(new flb.a($$0, this.b), $$0x -> new flb.b()).a(flb.this.a, $$1);
+      }
+
+      @Override
+      public fky a() {
+         return flb.this.new c(this.b + 1);
       }
    }
 }

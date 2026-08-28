@@ -1,25 +1,12 @@
-public class gla<T extends cfz> extends gjy<T, fvx<T>> {
-   private static final alb a = new alb("textures/entity/squid/squid.png");
+public class gla extends gkb<cgb, fvy<cgb>> {
+   private static final ale a = new ale("textures/entity/snow_golem.png");
 
-   public gla(gis.a $$0, fvx<T> $$1) {
-      super($$0, $$1, 0.7F);
+   public gla(giv.a $$0) {
+      super($$0, new fvy<>($$0.a(fwx.bv)), 0.5F);
+      this.a(new gnn(this, $$0.c(), $$0.b()));
    }
 
-   public alb a(T $$0) {
+   public ale a(cgb $$0) {
       return a;
-   }
-
-   protected void a(T $$0, ezt $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = ayu.i($$4, $$0.c, $$0.b);
-      float $$7 = ayu.i($$4, $$0.e, $$0.d);
-      $$1.a(0.0F, 0.5F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      $$1.a(a.b.rotationDegrees($$6));
-      $$1.a(a.d.rotationDegrees($$7));
-      $$1.a(0.0F, -1.2F, 0.0F);
-   }
-
-   protected float a(T $$0, float $$1) {
-      return ayu.i($$1, $$0.cb, $$0.ca);
    }
 }

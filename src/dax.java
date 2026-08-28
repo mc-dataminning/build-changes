@@ -1,80 +1,201 @@
-import com.google.common.collect.AbstractIterator;
-import java.util.function.BiFunction;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class dax<T> extends AbstractIterator<T> {
-   private final evh a;
-   private final evr b;
-   private final jb c;
-   private final iz.a d;
-   private final ewf e;
-   private final dbd f;
-   private final boolean g;
+public abstract class dax implements eo {
+   private static final SimpleDateFormat b = new SimpleDateFormat("HH:mm:ss");
+   private static final xo c = xo.b("@");
+   private long d = -1L;
+   private boolean e = true;
+   private int f;
+   private boolean g = true;
    @Nullable
-   private daz h;
-   private long i;
-   private final BiFunction<iz.a, ewf, T> j;
+   private xo h;
+   private String i = "";
+   @Nullable
+   private xo j;
 
-   public dax(dbd $$0, @Nullable bsp $$1, evh $$2, boolean $$3, BiFunction<iz.a, ewf, T> $$4) {
-      this.b = $$1 == null ? evr.a() : evr.a($$1);
-      this.d = new iz.a();
-      this.e = ewc.a($$2);
-      this.f = $$0;
-      this.a = $$2;
-      this.g = $$3;
-      this.j = $$4;
-      int $$5 = ayu.a($$2.a - 1.0E-7) - 1;
-      int $$6 = ayu.a($$2.d + 1.0E-7) + 1;
-      int $$7 = ayu.a($$2.b - 1.0E-7) - 1;
-      int $$8 = ayu.a($$2.e + 1.0E-7) + 1;
-      int $$9 = ayu.a($$2.c - 1.0E-7) - 1;
-      int $$10 = ayu.a($$2.f + 1.0E-7) + 1;
-      this.c = new jb($$5, $$7, $$9, $$6, $$8, $$10);
+   public int k() {
+      return this.f;
    }
 
-   @Nullable
-   private daz a(int $$0, int $$1) {
-      int $$2 = kb.a($$0);
-      int $$3 = kb.a($$1);
-      long $$4 = dba.c($$2, $$3);
-      if (this.h != null && this.i == $$4) {
-         return this.h;
+   public void a(int $$0) {
+      this.f = $$0;
+   }
+
+   public xo l() {
+      return this.h == null ? xn.a : this.h;
+   }
+
+   public ur a(ur $$0, jk.a $$1) {
+      $$0.a("Command", this.i);
+      $$0.a("SuccessCount", this.f);
+      if (this.j != null) {
+         $$0.a("CustomName", xo.a.a(this.j, $$1));
+      }
+
+      $$0.a("TrackOutput", this.g);
+      if (this.h != null && this.g) {
+         $$0.a("LastOutput", xo.a.a(this.h, $$1));
+      }
+
+      $$0.a("UpdateLastExecution", this.e);
+      if (this.e && this.d > 0L) {
+         $$0.a("LastExecution", this.d);
+      }
+
+      return $$0;
+   }
+
+   public void b(ur $$0, jk.a $$1) {
+      this.i = $$0.l("Command");
+      this.f = $$0.h("SuccessCount");
+      if ($$0.b("CustomName", 8)) {
+         this.b(xo.a.a($$0.l("CustomName"), $$1));
       } else {
-         daz $$5 = this.f.c($$2, $$3);
-         this.h = $$5;
-         this.i = $$4;
-         return $$5;
+         this.b(null);
+      }
+
+      if ($$0.b("TrackOutput", 1)) {
+         this.g = $$0.q("TrackOutput");
+      }
+
+      if ($$0.b("LastOutput", 8) && this.g) {
+         try {
+            this.h = xo.a.a($$0.l("LastOutput"), $$1);
+         } catch (Throwable var4) {
+            this.h = xo.b(var4.getMessage());
+         }
+      } else {
+         this.h = null;
+      }
+
+      if ($$0.e("UpdateLastExecution")) {
+         this.e = $$0.q("UpdateLastExecution");
+      }
+
+      if (this.e && $$0.e("LastExecution")) {
+         this.d = $$0.i("LastExecution");
+      } else {
+         this.d = -1L;
       }
    }
 
-   protected T computeNext() {
-      while (this.c.a()) {
-         int $$0 = this.c.b();
-         int $$1 = this.c.c();
-         int $$2 = this.c.d();
-         int $$3 = this.c.e();
-         if ($$3 != 3) {
-            daz $$4 = this.a($$0, $$2);
-            if ($$4 != null) {
-               this.d.d($$0, $$1, $$2);
-               drx $$5 = $$4.a_(this.d);
-               if ((!this.g || $$5.o($$4, this.d)) && ($$3 != 1 || $$5.f()) && ($$3 != 2 || $$5.a(dew.bQ))) {
-                  ewf $$6 = $$5.b(this.f, this.d, this.b);
-                  if ($$6 == ewc.b()) {
-                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
-                        return this.j.apply(this.d, $$6.a((double)$$0, (double)$$1, (double)$$2));
-                     }
-                  } else {
-                     ewf $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
-                     if (!$$7.c() && ewc.c($$7, this.e, evq.i)) {
-                        return this.j.apply(this.d, $$7);
-                     }
+   public void a(String $$0) {
+      this.i = $$0;
+      this.f = 0;
+   }
+
+   public String m() {
+      return this.i;
+   }
+
+   public boolean a(dbw $$0) {
+      if ($$0.B || $$0.Z() == this.d) {
+         return false;
+      } else if ("Searge".equalsIgnoreCase(this.i)) {
+         this.h = xo.b("#itzlipofutzli");
+         this.f = 1;
+         return true;
+      } else {
+         this.f = 0;
+         MinecraftServer $$1 = this.e().o();
+         if ($$1.q() && !azt.b(this.i)) {
+            try {
+               this.h = null;
+               ep $$2 = this.i().a((em)(($$0x, $$1x) -> {
+                  if ($$0x) {
+                     this.f++;
                   }
-               }
+               }));
+               $$1.aH().a($$2, this.i);
+            } catch (Throwable var6) {
+               o $$4 = o.a(var6, "Executing command block");
+               p $$5 = $$4.a("Command to be executed");
+               $$5.a("Command", this::m);
+               $$5.a("Name", () -> this.n().getString());
+               throw new y($$4);
             }
          }
-      }
 
-      return (T)this.endOfData();
+         if (this.e) {
+            this.d = $$0.Z();
+         } else {
+            this.d = -1L;
+         }
+
+         return true;
+      }
    }
+
+   public xo n() {
+      return this.j != null ? this.j : c;
+   }
+
+   @Nullable
+   public xo o() {
+      return this.j;
+   }
+
+   public void b(@Nullable xo $$0) {
+      this.j = $$0;
+   }
+
+   @Override
+   public void a(xo $$0) {
+      if (this.g) {
+         this.h = xo.b("[" + b.format(new Date()) + "] ").b($$0);
+         this.f();
+      }
+   }
+
+   public abstract are e();
+
+   public abstract void f();
+
+   public void c(@Nullable xo $$0) {
+      this.h = $$0;
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
+   }
+
+   public boolean p() {
+      return this.g;
+   }
+
+   public bqs a(cmv $$0) {
+      if (!$$0.gz()) {
+         return bqs.e;
+      } else {
+         if ($$0.cN().B) {
+            $$0.a(this);
+         }
+
+         return bqs.a($$0.dP().B);
+      }
+   }
+
+   public abstract evp g();
+
+   public abstract ep i();
+
+   @Override
+   public boolean l_() {
+      return this.e().ab().b(dbs.p) && this.g;
+   }
+
+   @Override
+   public boolean w_() {
+      return this.g;
+   }
+
+   @Override
+   public boolean U_() {
+      return this.e().ab().b(dbs.j);
+   }
+
+   public abstract boolean j();
 }

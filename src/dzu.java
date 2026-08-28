@@ -1,174 +1,171 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
 import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public abstract class dzu<C extends dzn> {
-   public static final dzu<dzq> a = a("cave", new dzr(dzq.a));
-   public static final dzu<dzq> b = a("nether_cave", new dzt(dzq.a));
-   public static final dzu<dzl> c = a("canyon", new dzm(dzl.a));
-   protected static final drx d = dew.a.n();
-   protected static final drx e = dew.nc.n();
-   protected static final enq f = enr.c.g();
-   protected static final enq g = enr.e.g();
-   protected Set<enp> h = ImmutableSet.of(enr.c);
-   private final MapCodec<dzs<C>> i;
-
-   private static <C extends dzn, F extends dzu<C>> F a(String $$0, F $$1) {
-      return jv.a(lp.P, $$0, $$1);
+public class dzu extends dzx<dzt> {
+   public dzu(Codec<dzt> $$0) {
+      super($$0);
    }
 
-   public dzu(Codec<C> $$0) {
-      this.i = $$0.fieldOf("config").xmap(this::a, dzs::b);
+   public boolean a(dzt $$0, azf $$1) {
+      return $$1.i() <= $$0.l;
    }
 
-   public dzs<C> a(C $$0) {
-      return new dzs<>(this, $$0);
+   public boolean a(dzs $$0, dzt $$1, dtw $$2, Function<iz, ji<dcv>> $$3, azf $$4, dxe $$5, dbd $$6, dtv $$7) {
+      int $$8 = kb.c(this.d() * 2 - 1);
+      int $$9 = $$4.a($$4.a($$4.a(this.a()) + 1) + 1);
+
+      for (int $$10 = 0; $$10 < $$9; $$10++) {
+         double $$11 = (double)$$6.a($$4.a(16));
+         double $$12 = (double)$$1.e.a($$4, $$0);
+         double $$13 = (double)$$6.b($$4.a(16));
+         double $$14 = (double)$$1.b.a($$4);
+         double $$15 = (double)$$1.c.a($$4);
+         double $$16 = (double)$$1.j.a($$4);
+         dzx.a $$17 = ($$1x, $$2x, $$3x, $$4x, $$5x) -> a($$2x, $$3x, $$4x, $$16);
+         int $$18 = 1;
+         if ($$4.a(4) == 0) {
+            double $$19 = (double)$$1.f.a($$4);
+            float $$20 = 1.0F + $$4.i() * 6.0F;
+            this.a($$0, $$1, $$2, $$3, $$5, $$11, $$12, $$13, $$20, $$19, $$7, $$17);
+            $$18 += $$4.a(4);
+         }
+
+         for (int $$21 = 0; $$21 < $$18; $$21++) {
+            float $$22 = $$4.i() * (float) (Math.PI * 2);
+            float $$23 = ($$4.i() - 0.5F) / 4.0F;
+            float $$24 = this.a($$4);
+            int $$25 = $$8 - $$4.a($$8 / 4);
+            int $$26 = 0;
+            this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$11, $$12, $$13, $$14, $$15, $$24, $$22, $$23, 0, $$25, this.b(), $$7, $$17);
+         }
+      }
+
+      return true;
    }
 
-   public MapCodec<dzs<C>> c() {
-      return this.i;
+   protected int a() {
+      return 15;
    }
 
-   public int d() {
-      return 4;
+   protected float a(azf $$0) {
+      float $$1 = $$0.i() * 2.0F + $$0.i();
+      if ($$0.a(10) == 0) {
+         $$1 *= $$0.i() * $$0.i() * 3.0F + 1.0F;
+      }
+
+      return $$1;
    }
 
-   protected boolean a(
-      dzp $$0, C $$1, dtt $$2, Function<iz, ji<dcs>> $$3, dxb $$4, double $$5, double $$6, double $$7, double $$8, double $$9, dts $$10, dzu.a $$11
+   protected double b() {
+      return 1.0;
+   }
+
+   protected void a(
+      dzs $$0, dzt $$1, dtw $$2, Function<iz, ji<dcv>> $$3, dxe $$4, double $$5, double $$6, double $$7, float $$8, double $$9, dtv $$10, dzx.a $$11
    ) {
-      dba $$12 = $$2.f();
-      double $$13 = (double)$$12.b();
-      double $$14 = (double)$$12.c();
-      double $$15 = 16.0 + $$8 * 2.0;
-      if (!(Math.abs($$5 - $$13) > $$15) && !(Math.abs($$7 - $$14) > $$15)) {
-         int $$16 = $$12.d();
-         int $$17 = $$12.e();
-         int $$18 = Math.max(ayu.a($$5 - $$8) - $$16 - 1, 0);
-         int $$19 = Math.min(ayu.a($$5 + $$8) - $$16, 15);
-         int $$20 = Math.max(ayu.a($$6 - $$9) - 1, $$0.a() + 1);
-         int $$21 = $$2.y() ? 0 : 7;
-         int $$22 = Math.min(ayu.a($$6 + $$9) + 1, $$0.a() + $$0.b() - 1 - $$21);
-         int $$23 = Math.max(ayu.a($$7 - $$8) - $$17 - 1, 0);
-         int $$24 = Math.min(ayu.a($$7 + $$8) - $$17, 15);
-         boolean $$25 = false;
-         iz.a $$26 = new iz.a();
-         iz.a $$27 = new iz.a();
+      double $$12 = 1.5 + (double)(ayx.a((float) (Math.PI / 2)) * $$8);
+      double $$13 = $$12 * $$9;
+      this.a($$0, $$1, $$2, $$3, $$4, $$5 + 1.0, $$6, $$7, $$12, $$13, $$10, $$11);
+   }
 
-         for (int $$28 = $$18; $$28 <= $$19; $$28++) {
-            int $$29 = $$12.a($$28);
-            double $$30 = ((double)$$29 + 0.5 - $$5) / $$8;
+   protected void a(
+      dzs $$0,
+      dzt $$1,
+      dtw $$2,
+      Function<iz, ji<dcv>> $$3,
+      long $$4,
+      dxe $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      double $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      int $$14,
+      int $$15,
+      double $$16,
+      dtv $$17,
+      dzx.a $$18
+   ) {
+      azf $$19 = azf.a($$4);
+      int $$20 = $$19.a($$15 / 2) + $$15 / 4;
+      boolean $$21 = $$19.a(6) == 0;
+      float $$22 = 0.0F;
+      float $$23 = 0.0F;
 
-            for (int $$31 = $$23; $$31 <= $$24; $$31++) {
-               int $$32 = $$12.b($$31);
-               double $$33 = ((double)$$32 + 0.5 - $$7) / $$8;
-               if (!($$30 * $$30 + $$33 * $$33 >= 1.0)) {
-                  MutableBoolean $$34 = new MutableBoolean(false);
-
-                  for (int $$35 = $$22; $$35 > $$20; $$35--) {
-                     double $$36 = ((double)$$35 - 0.5 - $$6) / $$9;
-                     if (!$$11.shouldSkip($$0, $$30, $$36, $$33, $$35) && (!$$10.b($$28, $$35, $$31) || b($$1))) {
-                        $$10.a($$28, $$35, $$31);
-                        $$26.d($$29, $$35, $$32);
-                        $$25 |= this.a($$0, $$1, $$2, $$3, $$10, $$26, $$27, $$4, $$34);
-                     }
-                  }
-               }
-            }
+      for (int $$24 = $$14; $$24 < $$15; $$24++) {
+         double $$25 = 1.5 + (double)(ayx.a((float) Math.PI * (float)$$24 / (float)$$15) * $$11);
+         double $$26 = $$25 * $$16;
+         float $$27 = ayx.b($$13);
+         $$6 += (double)(ayx.b($$12) * $$27);
+         $$7 += (double)ayx.a($$13);
+         $$8 += (double)(ayx.a($$12) * $$27);
+         $$13 *= $$21 ? 0.92F : 0.7F;
+         $$13 += $$23 * 0.1F;
+         $$12 += $$22 * 0.1F;
+         $$23 *= 0.9F;
+         $$22 *= 0.75F;
+         $$23 += ($$19.i() - $$19.i()) * $$19.i() * 2.0F;
+         $$22 += ($$19.i() - $$19.i()) * $$19.i() * 4.0F;
+         if ($$24 == $$20 && $$11 > 1.0F) {
+            this.a(
+               $$0,
+               $$1,
+               $$2,
+               $$3,
+               $$19.g(),
+               $$5,
+               $$6,
+               $$7,
+               $$8,
+               $$9,
+               $$10,
+               $$19.i() * 0.5F + 0.5F,
+               $$12 - (float) (Math.PI / 2),
+               $$13 / 3.0F,
+               $$24,
+               $$15,
+               1.0,
+               $$17,
+               $$18
+            );
+            this.a(
+               $$0,
+               $$1,
+               $$2,
+               $$3,
+               $$19.g(),
+               $$5,
+               $$6,
+               $$7,
+               $$8,
+               $$9,
+               $$10,
+               $$19.i() * 0.5F + 0.5F,
+               $$12 + (float) (Math.PI / 2),
+               $$13 / 3.0F,
+               $$24,
+               $$15,
+               1.0,
+               $$17,
+               $$18
+            );
+            return;
          }
 
-         return $$25;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean a(dzp $$0, C $$1, dtt $$2, Function<iz, ji<dcs>> $$3, dts $$4, iz.a $$5, iz.a $$6, dxb $$7, MutableBoolean $$8) {
-      drx $$9 = $$2.a_($$5);
-      if ($$9.a(dew.i) || $$9.a(dew.fl)) {
-         $$8.setTrue();
-      }
-
-      if (!this.a($$1, $$9) && !b($$1)) {
-         return false;
-      } else {
-         drx $$10 = this.a($$0, $$1, $$5, $$7);
-         if ($$10 == null) {
-            return false;
-         } else {
-            $$2.a($$5, $$10, false);
-            if ($$7.a() && !$$10.u().c()) {
-               $$2.e($$5);
+         if ($$19.a(4) != 0) {
+            if (!a($$2.f(), $$6, $$8, $$24, $$15, $$11)) {
+               return;
             }
 
-            if ($$8.isTrue()) {
-               $$6.a($$5, je.a);
-               if ($$2.a_($$6).a(dew.j)) {
-                  $$0.a($$3, $$2, $$6, !$$10.u().c()).ifPresent($$2x -> {
-                     $$2.a($$6, $$2x, false);
-                     if (!$$2x.u().c()) {
-                        $$2.e($$6);
-                     }
-                  });
-               }
-            }
-
-            return true;
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$25 * $$9, $$26 * $$10, $$17, $$18);
          }
       }
    }
 
-   @Nullable
-   private drx a(dzp $$0, C $$1, iz $$2, dxb $$3) {
-      if ($$2.v() <= $$1.g.a($$0)) {
-         return g.g();
-      } else {
-         drx $$4 = $$3.a(new dxi.e($$2.u(), $$2.v(), $$2.w()), 0.0);
-         if ($$4 == null) {
-            return b($$1) ? $$1.h.e() : null;
-         } else {
-            return b($$1) ? b($$1, $$4) : $$4;
-         }
-      }
-   }
-
-   private static drx b(dzn $$0, drx $$1) {
-      if ($$1.a(dew.a)) {
-         return $$0.h.b();
-      } else if ($$1.a(dew.G)) {
-         drx $$2 = $$0.h.c();
-         return $$2.b(dsn.C) ? $$2.a(dsn.C, Boolean.valueOf(true)) : $$2;
-      } else {
-         return $$1.a(dew.H) ? $$0.h.d() : $$1;
-      }
-   }
-
-   public abstract boolean a(dzp var1, C var2, dtt var3, Function<iz, ji<dcs>> var4, azc var5, dxb var6, dba var7, dts var8);
-
-   public abstract boolean a(C var1, azc var2);
-
-   protected boolean a(C $$0, drx $$1) {
-      return $$1.a($$0.i);
-   }
-
-   protected static boolean a(dba $$0, double $$1, double $$2, int $$3, int $$4, float $$5) {
-      double $$6 = (double)$$0.b();
-      double $$7 = (double)$$0.c();
-      double $$8 = $$1 - $$6;
-      double $$9 = $$2 - $$7;
-      double $$10 = (double)($$4 - $$3);
-      double $$11 = (double)($$5 + 2.0F + 16.0F);
-      return $$8 * $$8 + $$9 * $$9 - $$10 * $$10 <= $$11 * $$11;
-   }
-
-   private static boolean b(dzn $$0) {
-      return $$0.h.a();
-   }
-
-   public interface a {
-      boolean shouldSkip(dzp var1, double var2, double var4, double var6, int var8);
+   private static boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return $$1 <= $$3 ? true : $$0 * $$0 + $$1 * $$1 + $$2 * $$2 >= 1.0;
    }
 }

@@ -1,111 +1,50 @@
-import com.google.common.collect.Queues;
-import java.util.Locale;
-import java.util.Queue;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Either;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
-public interface bpk<T, F> {
-   @Nullable
-   F a();
+public interface bpk<Msg> extends AutoCloseable {
+   String by();
 
-   boolean a(T var1);
+   void a(Msg var1);
 
-   boolean b();
-
-   int c();
-
-   public static final class a implements bpk<bpk.b, Runnable> {
-      private final Queue<Runnable>[] a;
-      private final AtomicInteger b = new AtomicInteger();
-
-      public a(int $$0) {
-         this.a = new Queue[$$0];
-
-         for (int $$1 = 0; $$1 < $$0; $$1++) {
-            this.a[$$1] = Queues.newConcurrentLinkedQueue();
-         }
-      }
-
-      @Nullable
-      public Runnable d() {
-         for (Queue<Runnable> $$0 : this.a) {
-            Runnable $$1 = $$0.poll();
-            if ($$1 != null) {
-               this.b.decrementAndGet();
-               return $$1;
-            }
-         }
-
-         return null;
-      }
-
-      public boolean a(bpk.b $$0) {
-         int $$1 = $$0.a;
-         if ($$1 < this.a.length && $$1 >= 0) {
-            this.a[$$1].add($$0);
-            this.b.incrementAndGet();
-            return true;
-         } else {
-            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
-         }
-      }
-
-      @Override
-      public boolean b() {
-         return this.b.get() == 0;
-      }
-
-      @Override
-      public int c() {
-         return this.b.get();
-      }
+   @Override
+   default void close() {
    }
 
-   public static final class b implements Runnable {
-      final int a;
-      private final Runnable b;
-
-      public b(int $$0, Runnable $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public void run() {
-         this.b.run();
-      }
-
-      public int a() {
-         return this.a;
-      }
+   default <Source> CompletableFuture<Source> b(Function<? super bpk<Source>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
+      this.a($$2);
+      return $$1;
    }
 
-   public static final class c<T> implements bpk<T, T> {
-      private final Queue<T> a;
+   default <Source> CompletableFuture<Source> c(Function<? super bpk<Either<Source, Exception>>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
+         $$1x.ifLeft($$1::complete);
+         $$1x.ifRight($$1::completeExceptionally);
+      }));
+      this.a($$2);
+      return $$1;
+   }
 
-      public c(Queue<T> $$0) {
-         this.a = $$0;
-      }
+   static <Msg> bpk<Msg> a(final String $$0, final Consumer<Msg> $$1) {
+      return new bpk<Msg>() {
+         @Override
+         public String by() {
+            return $$0;
+         }
 
-      @Nullable
-      @Override
-      public T a() {
-         return this.a.poll();
-      }
+         @Override
+         public void a(Msg $$0x) {
+            $$1.accept($$0);
+         }
 
-      @Override
-      public boolean a(T $$0) {
-         return this.a.add($$0);
-      }
-
-      @Override
-      public boolean b() {
-         return this.a.isEmpty();
-      }
-
-      @Override
-      public int c() {
-         return this.a.size();
-      }
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

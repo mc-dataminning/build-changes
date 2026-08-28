@@ -1,20 +1,4 @@
-public interface akh<T> {
-   zj<? super ww, T> codec();
-
-   default akg<T> a(int $$0) {
-      return new akg<>($$0, this);
-   }
-
-   T copy(T var1);
-
-   static <T> akh<T> a(zj<? super ww, T> $$0) {
-      return () -> $$0;
-   }
-
-   public interface a<T> extends akh<T> {
-      @Override
-      default T copy(T $$0) {
-         return $$0;
-      }
-   }
+public class akh {
+   public static final ww<ake> a = aaa.a(wk.c, $$0 -> $$0.a(akg.b, akf.b).a(ajx.b, ajz.a));
+   public static final ww<akb> b = aaa.b(wk.c, $$0 -> $$0.a(akg.a, akc.a).a(ajx.a, ajw.a));
 }

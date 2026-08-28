@@ -1,37 +1,70 @@
-public class fsv extends fui<cis> {
-   public fsv(fwv $$0) {
-      super($$0);
+public class fsv {
+   public static void a(fwy $$0, fwy $$1, fwy $$2, boolean $$3) {
+      fwy $$4 = $$3 ? $$0 : $$1;
+      fwy $$5 = $$3 ? $$1 : $$0;
+      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
+      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
+      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
+      $$5.e = -1.5F + $$2.e;
    }
 
-   public static fxb a(fwz $$0) {
-      fxd $$1 = fui.a($$0, 0.0F);
-      fxe $$2 = $$1.a();
-      $$2.a("head", fxa.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fwx.a(0.0F, 1.0F, 0.0F));
-      $$2.a("hat", fxa.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), fwx.a(0.0F, 1.0F, 0.0F));
-      $$2.a("right_leg", fxa.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fwx.a(-1.9F, 11.0F, 0.0F));
-      $$2.a("left_leg", fxa.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fwx.a(1.9F, 11.0F, 0.0F));
-      return fxb.a($$1, 64, 32);
+   public static void a(fwy $$0, fwy $$1, btn $$2, boolean $$3) {
+      fwy $$4 = $$3 ? $$0 : $$1;
+      fwy $$5 = $$3 ? $$1 : $$0;
+      $$4.f = $$3 ? -0.8F : 0.8F;
+      $$4.e = -0.97079635F;
+      $$5.e = $$4.e;
+      float $$6 = (float)cta.l($$2.fx());
+      float $$7 = ayx.a((float)$$2.fz(), 0.0F, $$6);
+      float $$8 = $$7 / $$6;
+      $$5.f = ayx.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
+      $$5.e = ayx.i($$8, $$5.e, (float) (-Math.PI / 2));
    }
 
-   public void a(cis $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.k.e = (float) (Math.PI / 180.0) * $$0.A().b();
-      this.k.f = (float) (Math.PI / 180.0) * $$0.A().c();
-      this.k.g = (float) (Math.PI / 180.0) * $$0.A().d();
-      this.m.e = (float) (Math.PI / 180.0) * $$0.B().b();
-      this.m.f = (float) (Math.PI / 180.0) * $$0.B().c();
-      this.m.g = (float) (Math.PI / 180.0) * $$0.B().d();
-      this.o.e = (float) (Math.PI / 180.0) * $$0.C().b();
-      this.o.f = (float) (Math.PI / 180.0) * $$0.C().c();
-      this.o.g = (float) (Math.PI / 180.0) * $$0.C().d();
-      this.n.e = (float) (Math.PI / 180.0) * $$0.D().b();
-      this.n.f = (float) (Math.PI / 180.0) * $$0.D().c();
-      this.n.g = (float) (Math.PI / 180.0) * $$0.D().d();
-      this.q.e = (float) (Math.PI / 180.0) * $$0.E().b();
-      this.q.f = (float) (Math.PI / 180.0) * $$0.E().c();
-      this.q.g = (float) (Math.PI / 180.0) * $$0.E().d();
-      this.p.e = (float) (Math.PI / 180.0) * $$0.G().b();
-      this.p.f = (float) (Math.PI / 180.0) * $$0.G().c();
-      this.p.g = (float) (Math.PI / 180.0) * $$0.G().d();
-      this.l.a(this.k);
+   public static <T extends btp> void a(fwy $$0, fwy $$1, T $$2, float $$3, float $$4) {
+      float $$5 = ayx.a($$3 * (float) Math.PI);
+      float $$6 = ayx.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$0.g = 0.0F;
+      $$1.g = 0.0F;
+      $$0.f = (float) (Math.PI / 20);
+      $$1.f = (float) (-Math.PI / 20);
+      if ($$2.fu() == bth.b) {
+         $$0.e = -1.8849558F + ayx.b($$4 * 0.09F) * 0.15F;
+         $$1.e = -0.0F + ayx.b($$4 * 0.19F) * 0.5F;
+         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      } else {
+         $$0.e = -0.0F + ayx.b($$4 * 0.19F) * 0.5F;
+         $$1.e = -1.8849558F + ayx.b($$4 * 0.09F) * 0.15F;
+         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+      }
+
+      a($$0, $$1, $$4);
+   }
+
+   public static void a(fwy $$0, float $$1, float $$2) {
+      $$0.g = $$0.g + $$2 * (ayx.b($$1 * 0.09F) * 0.05F + 0.05F);
+      $$0.e = $$0.e + $$2 * ayx.a($$1 * 0.067F) * 0.05F;
+   }
+
+   public static void a(fwy $$0, fwy $$1, float $$2) {
+      a($$0, $$2, 1.0F);
+      a($$1, $$2, -1.0F);
+   }
+
+   public static void a(fwy $$0, fwy $$1, boolean $$2, float $$3, float $$4) {
+      float $$5 = ayx.a($$3 * (float) Math.PI);
+      float $$6 = ayx.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$1.g = 0.0F;
+      $$0.g = 0.0F;
+      $$1.f = -(0.1F - $$5 * 0.6F);
+      $$0.f = 0.1F - $$5 * 0.6F;
+      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
+      $$1.e = $$7;
+      $$0.e = $$7;
+      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+      a($$1, $$0, $$4);
    }
 }

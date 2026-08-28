@@ -1,41 +1,28 @@
-public class fxy {
-   private final gcl a;
-   private final fxq b;
-   private final gdh c;
-   private fxy.a d = fxy.a.a;
+import java.util.EnumMap;
 
-   public fxy(gcl $$0, fxq $$1, gdh $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class fxy {
+   public static final int a = 5000;
+   private final fxu b;
+   private final fhk c;
+   private final EnumMap<blt, Long> d;
+
+   public fxy(fxu $$0, fhk $$1) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = new EnumMap<>(blt.class);
    }
 
    public void a() {
-      switch (this.d) {
-         case b:
-            iz $$0 = this.a.dp();
-            boolean $$1 = this.b.d($$0.v());
-            if ($$1 || this.c.a($$0) || this.a.N_() || !this.a.bD()) {
-               this.d = fxy.a.c;
-            }
-         case a:
-         case c:
+      if (this.c.g()) {
+         this.a(blt.a);
       }
    }
 
-   public boolean b() {
-      return this.d == fxy.a.c;
-   }
-
-   public void c() {
-      if (this.d == fxy.a.a) {
-         this.d = fxy.a.b;
+   private void a(blt $$0) {
+      long $$1 = ac.c();
+      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
+         this.b.b(new ahn($$0));
+         this.d.put($$0, $$1);
       }
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
    }
 }

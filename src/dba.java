@@ -1,205 +1,80 @@
-import java.util.Spliterators.AbstractSpliterator;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
+import com.google.common.collect.AbstractIterator;
+import java.util.function.BiFunction;
 import javax.annotation.Nullable;
 
-public class dba {
-   private static final int g = 1056;
-   public static final long a = c(1875066, 1875066);
-   public static final dba b = new dba(0, 0);
-   private static final long h = 32L;
-   private static final long i = 4294967295L;
-   private static final int j = 5;
-   public static final int c = 32;
-   private static final int k = 31;
-   public static final int d = 31;
-   public final int e;
-   public final int f;
-   private static final int l = 1664525;
-   private static final int m = 1013904223;
-   private static final int n = -559038737;
+public class dba<T> extends AbstractIterator<T> {
+   private final evk a;
+   private final evu b;
+   private final jb c;
+   private final iz.a d;
+   private final ewi e;
+   private final dbg f;
+   private final boolean g;
+   @Nullable
+   private dbc h;
+   private long i;
+   private final BiFunction<iz.a, ewi, T> j;
 
-   public dba(int $$0, int $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public dba(dbg $$0, @Nullable bss $$1, evk $$2, boolean $$3, BiFunction<iz.a, ewi, T> $$4) {
+      this.b = $$1 == null ? evu.a() : evu.a($$1);
+      this.d = new iz.a();
+      this.e = ewf.a($$2);
+      this.f = $$0;
+      this.a = $$2;
+      this.g = $$3;
+      this.j = $$4;
+      int $$5 = ayx.a($$2.a - 1.0E-7) - 1;
+      int $$6 = ayx.a($$2.d + 1.0E-7) + 1;
+      int $$7 = ayx.a($$2.b - 1.0E-7) - 1;
+      int $$8 = ayx.a($$2.e + 1.0E-7) + 1;
+      int $$9 = ayx.a($$2.c - 1.0E-7) - 1;
+      int $$10 = ayx.a($$2.f + 1.0E-7) + 1;
+      this.c = new jb($$5, $$7, $$9, $$6, $$8, $$10);
    }
 
-   public dba(iz $$0) {
-      this.e = kb.a($$0.u());
-      this.f = kb.a($$0.w());
-   }
-
-   public dba(long $$0) {
-      this.e = (int)$$0;
-      this.f = (int)($$0 >> 32);
-   }
-
-   public static dba a(int $$0, int $$1) {
-      return new dba($$0 << 5, $$1 << 5);
-   }
-
-   public static dba b(int $$0, int $$1) {
-      return new dba(($$0 << 5) + 31, ($$1 << 5) + 31);
-   }
-
-   public long a() {
-      return c(this.e, this.f);
-   }
-
-   public static long c(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
-   }
-
-   public static long a(iz $$0) {
-      return c(kb.a($$0.u()), kb.a($$0.w()));
-   }
-
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
-   }
-
-   @Override
-   public int hashCode() {
-      return d(this.e, this.f);
-   }
-
-   public static int d(int $$0, int $$1) {
-      int $$2 = 1664525 * $$0 + 1013904223;
-      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
-      return $$2 ^ $$3;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   @Nullable
+   private dbc a(int $$0, int $$1) {
+      int $$2 = kb.a($$0);
+      int $$3 = kb.a($$1);
+      long $$4 = dbd.c($$2, $$3);
+      if (this.h != null && this.i == $$4) {
+         return this.h;
       } else {
-         return !($$0 instanceof dba $$1) ? false : this.e == $$1.e && this.f == $$1.f;
+         dbc $$5 = this.f.c($$2, $$3);
+         this.h = $$5;
+         this.i = $$4;
+         return $$5;
       }
    }
 
-   public int b() {
-      return this.a(8);
-   }
-
-   public int c() {
-      return this.b(8);
-   }
-
-   public int d() {
-      return kb.c(this.e);
-   }
-
-   public int e() {
-      return kb.c(this.f);
-   }
-
-   public int f() {
-      return this.a(15);
-   }
-
-   public int g() {
-      return this.b(15);
-   }
-
-   public int h() {
-      return this.e >> 5;
-   }
-
-   public int i() {
-      return this.f >> 5;
-   }
-
-   public int j() {
-      return this.e & 31;
-   }
-
-   public int k() {
-      return this.f & 31;
-   }
-
-   public iz a(int $$0, int $$1, int $$2) {
-      return new iz(this.a($$0), $$1, this.b($$2));
-   }
-
-   public int a(int $$0) {
-      return kb.a(this.e, $$0);
-   }
-
-   public int b(int $$0) {
-      return kb.a(this.f, $$0);
-   }
-
-   public iz c(int $$0) {
-      return new iz(this.b(), $$0, this.c());
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.e + ", " + this.f + "]";
-   }
-
-   public iz l() {
-      return new iz(this.d(), 0, this.e());
-   }
-
-   public int a(dba $$0) {
-      return Math.max(Math.abs(this.e - $$0.e), Math.abs(this.f - $$0.f));
-   }
-
-   public int b(dba $$0) {
-      return this.e($$0.e, $$0.f);
-   }
-
-   public int c(long $$0) {
-      return this.e(a($$0), b($$0));
-   }
-
-   private int e(int $$0, int $$1) {
-      int $$2 = $$0 - this.e;
-      int $$3 = $$1 - this.f;
-      return $$2 * $$2 + $$3 * $$3;
-   }
-
-   public static Stream<dba> a(dba $$0, int $$1) {
-      return a(new dba($$0.e - $$1, $$0.f - $$1), new dba($$0.e + $$1, $$0.f + $$1));
-   }
-
-   public static Stream<dba> a(final dba $$0, final dba $$1) {
-      int $$2 = Math.abs($$0.e - $$1.e) + 1;
-      int $$3 = Math.abs($$0.f - $$1.f) + 1;
-      final int $$4 = $$0.e < $$1.e ? 1 : -1;
-      final int $$5 = $$0.f < $$1.f ? 1 : -1;
-      return StreamSupport.stream(new AbstractSpliterator<dba>((long)($$2 * $$3), 64) {
-         @Nullable
-         private dba e;
-
-         @Override
-         public boolean tryAdvance(Consumer<? super dba> $$0x) {
-            if (this.e == null) {
-               this.e = $$0;
-            } else {
-               int $$1 = this.e.e;
-               int $$2 = this.e.f;
-               if ($$1 == $$1.e) {
-                  if ($$2 == $$1.f) {
-                     return false;
+   protected T computeNext() {
+      while (this.c.a()) {
+         int $$0 = this.c.b();
+         int $$1 = this.c.c();
+         int $$2 = this.c.d();
+         int $$3 = this.c.e();
+         if ($$3 != 3) {
+            dbc $$4 = this.a($$0, $$2);
+            if ($$4 != null) {
+               this.d.d($$0, $$1, $$2);
+               dsa $$5 = $$4.a_(this.d);
+               if ((!this.g || $$5.o($$4, this.d)) && ($$3 != 1 || $$5.f()) && ($$3 != 2 || $$5.a(dez.bQ))) {
+                  ewi $$6 = $$5.b(this.f, this.d, this.b);
+                  if ($$6 == ewf.b()) {
+                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
+                        return this.j.apply(this.d, $$6.a((double)$$0, (double)$$1, (double)$$2));
+                     }
+                  } else {
+                     ewi $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
+                     if (!$$7.c() && ewf.c($$7, this.e, evt.i)) {
+                        return this.j.apply(this.d, $$7);
+                     }
                   }
-
-                  this.e = new dba($$0.e, $$2 + $$5);
-               } else {
-                  this.e = new dba($$1 + $$4, $$2);
                }
             }
-
-            $$0.accept(this.e);
-            return true;
          }
-      }, false);
+      }
+
+      return (T)this.endOfData();
    }
 }

@@ -1,245 +1,59 @@
-import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fcg extends gvb {
-   static final Logger a = LogUtils.getLogger();
-   private static final xl b = xl.c("mco.configure.world.backup");
-   static final xl c = xl.c("mco.backup.button.restore");
-   static final xl B = xl.c("mco.backup.changes.tooltip");
-   private static final xl C = xl.c("mco.backup.nobackups");
-   private static final String D = "uploaded";
-   private static final int E = 8;
-   final fcj F;
-   List<fap> G = Collections.emptyList();
-   @Nullable
-   fcg.a H;
-   final fkm I = new fkm(this);
-   private final int J;
-   @Nullable
-   fgz K;
-   final fba L;
-   boolean M = false;
+public abstract class fcg {
+   public final int a;
+   public final int b;
+   public final int c;
+   public final int d;
 
-   public fcg(fcj $$0, fba $$1, int $$2) {
-      super(b);
-      this.F = $$0;
-      this.L = $$1;
-      this.J = $$2;
+   public fcg(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public void aN_() {
-      this.I.a(b, this.p);
-      this.H = this.I.c(new fcg.a());
-      fkq $$0 = this.I.b(fkq.e().a(8));
-      this.K = $$0.a(fgz.a(xl.c("mco.backup.button.download"), $$0x -> this.D()).a());
-      this.K.j = false;
-      $$0.a(fgz.a(xk.k, $$0x -> this.d()).a());
-      this.I.a($$1 -> {
-         fgx var10000 = this.c($$1);
-      });
-      this.c();
-      this.C();
+   public void a(fgp $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$1 + this.c;
+      int $$6 = $$2 + this.d;
+      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
+      this.a($$0, $$5, $$6, $$7);
    }
 
-   @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.M && this.H != null) {
-         $$0.a(this.p, C, this.n / 2 - this.p.a(C) / 2, this.H.D() + this.H.v() / 2 - 9 / 2, -1, false);
+   protected abstract void a(fgp var1, int var2, int var3, boolean var4);
+
+   public int a() {
+      return this.c + this.a;
+   }
+
+   public int b() {
+      return this.d + this.b;
+   }
+
+   public abstract void a(int var1);
+
+   public static void a(fgp $$0, List<fcg> $$1, gvd<?> $$2, int $$3, int $$4, int $$5, int $$6) {
+      for (fcg $$7 : $$1) {
+         if ($$2.b() > $$7.a()) {
+            $$7.a($$0, $$3, $$4, $$5, $$6);
+         }
       }
    }
 
-   @Override
-   protected void c() {
-      this.I.a();
-      if (this.H != null) {
-         this.H.a(this.n, this.I);
-      }
-   }
+   public static void a(gvd<?> $$0, fhy.a<?> $$1, List<fcg> $$2, int $$3, double $$4, double $$5) {
+      int $$6 = $$0.aE_().indexOf($$1);
+      if ($$6 > -1) {
+         $$0.b($$6);
+         int $$7 = $$0.r();
+         int $$8 = $$0.g($$6);
+         int $$9 = (int)($$4 - (double)$$7);
+         int $$10 = (int)($$5 - (double)$$8);
 
-   private void C() {
-      (new Thread("Realms-fetch-backups") {
-         @Override
-         public void run() {
-            faj $$0 = faj.a();
-
-            try {
-               List<fap> $$1 = $$0.e(fcg.this.L.a).a;
-               fcg.this.m.execute(() -> {
-                  fcg.this.G = $$1;
-                  fcg.this.M = fcg.this.G.isEmpty();
-                  if (!fcg.this.M && fcg.this.K != null) {
-                     fcg.this.K.j = true;
-                  }
-
-                  if (fcg.this.H != null) {
-                     fcg.this.H.aF_().clear();
-
-                     for (fap $$1x : fcg.this.G) {
-                        fcg.this.H.a($$1x);
-                     }
-                  }
-               });
-            } catch (fbw var3) {
-               fcg.a.error("Couldn't request backups", var3);
+         for (fcg $$11 : $$2) {
+            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
+               $$11.a($$6);
             }
          }
-      }).start();
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.F);
-   }
-
-   private void D() {
-      xl $$0 = xl.c("mco.configure.world.restore.download.question.line1");
-      xl $$1 = xl.c("mco.configure.world.restore.download.question.line2");
-      this.m.a(new fcp($$0x -> {
-         if ($$0x) {
-            this.m.a(new fcq(this.F.f(), new fdy(this.L.a, this.J, this.L.c + " (" + this.L.i.get(this.L.n).a(this.L.n) + ")", this)));
-         } else {
-            this.m.a(this);
-         }
-      }, fcp.a.b, $$0, $$1, true));
-   }
-
-   class a extends fhf<fcg.b> {
-      private static final int m = 36;
-
-      public a() {
-         super(ffa.Q(), fcg.this.n, fcg.this.I.d(), fcg.this.I.c(), 36);
-      }
-
-      public void a(fap $$0) {
-         this.b(fcg.this.new b($$0));
-      }
-
-      @Override
-      public int a() {
-         return this.l() * 36 + this.f;
-      }
-
-      @Override
-      public int b() {
-         return 300;
-      }
-   }
-
-   class b extends fhf.a<fcg.b> {
-      private static final int b = 2;
-      private final fap c;
-      @Nullable
-      private fgz d;
-      @Nullable
-      private fgz e;
-      private final List<fgx> f = new ArrayList<>();
-
-      public b(final fap $$0) {
-         this.c = $$0;
-         this.a($$0);
-         if (!$$0.e.isEmpty()) {
-            this.e = fgz.a(fcg.B, $$0x -> fcg.this.m.a(new fcf(fcg.this, this.c)))
-               .a(8 + fcg.this.p.a(fcg.B))
-               .a($$0x -> xk.a(xl.a("mco.backup.narration", this.c()), (xl)$$0x.get()))
-               .a();
-            this.f.add(this.e);
-         }
-
-         if (!fcg.this.L.j) {
-            this.d = fgz.a(fcg.c, $$0x -> this.d()).a(8 + fcg.this.p.a(fcg.B)).a($$0x -> xk.a(xl.a("mco.backup.narration", this.c()), (xl)$$0x.get())).a();
-            this.f.add(this.d);
-         }
-      }
-
-      private void a(fap $$0) {
-         int $$1 = fcg.this.G.indexOf($$0);
-         if ($$1 != fcg.this.G.size() - 1) {
-            fap $$2 = fcg.this.G.get($$1 + 1);
-
-            for (String $$3 : $$0.d.keySet()) {
-               if (!$$3.contains("uploaded") && $$2.d.containsKey($$3)) {
-                  if (!$$0.d.get($$3).equals($$2.d.get($$3))) {
-                     this.a($$3);
-                  }
-               } else {
-                  this.a($$3);
-               }
-            }
-         }
-      }
-
-      private void a(String $$0) {
-         if ($$0.contains("uploaded")) {
-            String $$1 = DateFormat.getDateTimeInstance(3, 3).format(this.c.b);
-            this.c.e.put($$0, $$1);
-            this.c.a(true);
-         } else {
-            this.c.e.put($$0, this.c.d.get($$0));
-         }
-      }
-
-      private String c() {
-         return DateFormat.getDateTimeInstance(3, 3).format(this.c.b);
-      }
-
-      private void d() {
-         xl $$0 = fdq.a(this.c.b);
-         xl $$1 = xl.a("mco.configure.world.restore.question.line1", this.c(), $$0);
-         xl $$2 = xl.c("mco.configure.world.restore.question.line2");
-         fcg.this.m.a(new fcp($$0x -> {
-            if ($$0x) {
-               fcg.this.m.a(new fcq(fcg.this.F.f(), new feg(this.c, fcg.this.L.a, fcg.this.F)));
-            } else {
-               fcg.this.m.a(fcg.this);
-            }
-         }, fcp.a.a, $$1, $$2, true));
-      }
-
-      @Override
-      public List<? extends fiv> aF_() {
-         return this.f;
-      }
-
-      @Override
-      public List<? extends fkt> b() {
-         return this.f;
-      }
-
-      @Override
-      public void a(fgm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = $$2 + $$5 / 2;
-         int $$11 = $$10 - 9 - 2;
-         int $$12 = $$10 + 2;
-         int $$13 = this.c.a() ? -8388737 : -1;
-         $$0.a(fcg.this.p, xl.a("mco.backup.entry", fdq.a(this.c.b)), $$3, $$11, $$13, false);
-         $$0.a(fcg.this.p, this.a(this.c.b), $$3, $$12, 5000268, false);
-         int $$14 = 0;
-         int $$15 = $$2 + $$5 / 2 - 10;
-         if (this.d != null) {
-            $$14 += this.d.x() + 8;
-            this.d.m($$3 + $$4 - $$14);
-            this.d.n($$15);
-            this.d.a($$0, $$6, $$7, $$9);
-         }
-
-         if (this.e != null) {
-            $$14 += this.e.x() + 8;
-            this.e.m($$3 + $$4 - $$14);
-            this.e.n($$15);
-            this.e.a($$0, $$6, $$7, $$9);
-         }
-      }
-
-      private String a(Date $$0) {
-         return DateFormat.getDateTimeInstance(3, 3).format($$0);
       }
    }
 }

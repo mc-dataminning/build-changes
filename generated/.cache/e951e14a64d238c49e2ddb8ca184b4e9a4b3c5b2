@@ -1,4 +1,4 @@
-// 1.20.5 Pre-Release 1	2026-08-28T01:59:51.5381033	vanilla/Advancements
+// 1.20.5 Pre-Release 2	2026-08-28T02:02:50.9096488	vanilla/Advancements
 d42494ee70fb41f5814b3c08a477ab2ac5fe9a5a data\minecraft\advancements\husbandry\breed_an_animal.json
 e7749bff1fb78f813b06761b1744ffedc7d4ed3e data\minecraft\advancements\adventure\salvage_sherd.json
 d07f5f7faf2d59753e6e03355e0143951c5363a6 data\minecraft\advancements\husbandry\plant_any_sniffer_seed.json
@@ -11,8 +11,8 @@ d07f5f7faf2d59753e6e03355e0143951c5363a6 data\minecraft\advancements\husbandry\p
 ccfb91bf9b2f4b0959bf0f81eed420eef24e4173 data\minecraft\advancements\end\dragon_egg.json
 05a1d2669757d3b455f5f20a87a00dab7759ce27 data\minecraft\advancements\husbandry\bred_all_animals.json
 d83ee2434b89243c86b477fe50f4d2b267799b02 data\minecraft\advancements\nether\loot_bastion.json
-003a9f20a9acdc80f738e406a1646c9fb1b16393 data\minecraft\advancements\nether\create_beacon.json
 08bb40b0bb5face40dc1384bc0d315aa1b1fa4db data\minecraft\advancements\nether\create_full_beacon.json
+003a9f20a9acdc80f738e406a1646c9fb1b16393 data\minecraft\advancements\nether\create_beacon.json
 81b376199ae36a3da86787e6681ab9b658470d48 data\minecraft\advancements\story\upgrade_tools.json
 dbab6b7a2ff06242f3a569d09f3d093bc6a72e7d data\minecraft\advancements\adventure\summon_iron_golem.json
 fa445699dd6f86999f8279e8321909400188cd80 data\minecraft\advancements\husbandry\feed_snifflet.json
@@ -23,8 +23,8 @@ eb8b00790713d1cdd828fb646735597014d68f78 data\minecraft\advancements\husbandry\f
 cd1581a02fa2ec6598de8bb3232ce48af5d13028 data\minecraft\advancements\adventure\read_power_of_chiseled_bookshelf.json
 9fa291cd2297861e481ce0305145d1080832fe19 data\minecraft\advancements\husbandry\obtain_netherite_hoe.json
 58439fc75615e5797c91e32e26fe48035da42829 data\minecraft\advancements\story\enchant_item.json
-af29abce11dc88c44912c78e1fc1bce6fd87151a data\minecraft\advancements\adventure\root.json
 851057d836e1f1f66776beda178388a5a95b2fd1 data\minecraft\advancements\husbandry\repair_wolf_armor.json
+af29abce11dc88c44912c78e1fc1bce6fd87151a data\minecraft\advancements\adventure\root.json
 cbeee743c79bd8f876cf1eee987d82685816d9ff data\minecraft\advancements\nether\summon_wither.json
 9134d33488a31e83fb60723de4bf6771e48cb49a data\minecraft\advancements\adventure\two_birds_one_arrow.json
 f16c317053d7a95b66e9be51ecb96263ccf04c2d data\minecraft\advancements\adventure\sniper_duel.json

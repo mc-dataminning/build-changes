@@ -1,97 +1,89 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class czh implements czg {
-   final cyn a;
-   final cyn b;
-   final cyn c;
-   final cuk d;
+public abstract class czh implements cyt<bql> {
+   protected final cyq a;
+   protected final cun b;
+   private final cyy<?> d;
+   private final cyx<?> e;
+   protected final String c;
 
-   public czh(cyn $$0, cyn $$1, cyn $$2, cuk $$3) {
-      this.a = $$0;
-      this.b = $$1;
+   public czh(cyy<?> $$0, cyx<?> $$1, String $$2, cyq $$3, cun $$4) {
+      this.d = $$0;
+      this.e = $$1;
       this.c = $$2;
-      this.d = $$3;
+      this.a = $$3;
+      this.b = $$4;
    }
 
    @Override
-   public boolean a(bqi $$0, dbt $$1) {
-      return this.a.a($$0.a(0)) && this.b.a($$0.a(1)) && this.c.a($$0.a(2));
-   }
-
-   @Override
-   public cuk a(bqi $$0, jk.a $$1) {
-      cuk $$2 = $$0.a(1).a(this.d.g(), this.d.I());
-      $$2.b(this.d.d());
-      return $$2;
-   }
-
-   @Override
-   public cuk a(jk.a $$0) {
+   public cyy<?> e() {
       return this.d;
    }
 
    @Override
-   public boolean a(cuk $$0) {
-      return this.a.a($$0);
+   public cyx<?> ap_() {
+      return this.e;
    }
 
    @Override
-   public boolean b(cuk $$0) {
-      return this.b.a($$0);
+   public String c() {
+      return this.c;
    }
 
    @Override
-   public boolean c(cuk $$0) {
-      return this.c.a($$0);
+   public cun a(jk.a $$0) {
+      return this.b;
    }
 
    @Override
-   public cyu<?> ap_() {
-      return cyu.u;
+   public jr<cyq> a() {
+      jr<cyq> $$0 = jr.a();
+      $$0.add(this.a);
+      return $$0;
    }
 
    @Override
-   public boolean i() {
-      return Stream.of(this.a, this.b, this.c).anyMatch(cyn::c);
+   public boolean a(int $$0, int $$1) {
+      return true;
    }
 
-   public static class a implements cyu<czh> {
-      private static final MapCodec<czh> y = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  cyn.c.fieldOf("template").forGetter($$0x -> $$0x.a),
-                  cyn.c.fieldOf("base").forGetter($$0x -> $$0x.b),
-                  cyn.c.fieldOf("addition").forGetter($$0x -> $$0x.c),
-                  cuk.d.fieldOf("result").forGetter($$0x -> $$0x.d)
-               )
-               .apply($$0, czh::new)
-      );
-      public static final zj<ww, czh> x = zj.a(czh.a::a, czh.a::a);
+   @Override
+   public cun a(bql $$0, jk.a $$1) {
+      return this.b.s();
+   }
 
-      @Override
-      public MapCodec<czh> a() {
-         return y;
+   public interface a<T extends czh> {
+      T create(String var1, cyq var2, cun var3);
+   }
+
+   public static class b<T extends czh> implements cyx<T> {
+      final czh.a<T> x;
+      private final MapCodec<T> y;
+      private final zm<wz, T> z;
+
+      protected b(czh.a<T> $$0) {
+         this.x = $$0;
+         this.y = RecordCodecBuilder.mapCodec(
+            $$1 -> $$1.group(
+                     Codec.STRING.optionalFieldOf("group", "").forGetter($$0xx -> $$0xx.c),
+                     cyq.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
+                     cun.d.fieldOf("result").forGetter($$0xx -> $$0xx.b)
+                  )
+                  .apply($$1, $$0::create)
+         );
+         this.z = zm.a(zk.l, $$0x -> $$0x.c, cyq.b, $$0x -> $$0x.a, cun.i, $$0x -> $$0x.b, $$0::create);
       }
 
       @Override
-      public zj<ww, czh> b() {
-         return x;
+      public MapCodec<T> a() {
+         return this.y;
       }
 
-      private static czh a(ww $$0) {
-         cyn $$1 = cyn.b.decode($$0);
-         cyn $$2 = cyn.b.decode($$0);
-         cyn $$3 = cyn.b.decode($$0);
-         cuk $$4 = cuk.i.decode($$0);
-         return new czh($$1, $$2, $$3, $$4);
-      }
-
-      private static void a(ww $$0, czh $$1) {
-         cyn.b.encode($$0, $$1.a);
-         cyn.b.encode($$0, $$1.b);
-         cyn.b.encode($$0, $$1.c);
-         cuk.i.encode($$0, $$1.d);
+      @Override
+      public zm<wz, T> b() {
+         return this.z;
       }
    }
 }

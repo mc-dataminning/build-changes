@@ -8,20 +8,20 @@ public class dd extends dr<dd.a> {
       return dd.a.a;
    }
 
-   public void a(arc $$0, ala<eqi> $$1) {
+   public void a(arf $$0, ald<eql> $$1) {
       this.a($$0, $$1x -> $$1x.b($$1));
    }
 
-   public static record a(Optional<bf> b, ala<eqi> c) implements dr.a {
+   public static record a(Optional<bf> b, ald<eql> c) implements dr.a {
       public static final Codec<dd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(dd.a::a), ala.a(lq.aU).fieldOf("loot_table").forGetter(dd.a::b)).apply($$0, dd.a::new)
+         $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(dd.a::a), ald.a(lq.aU).fieldOf("loot_table").forGetter(dd.a::b)).apply($$0, dd.a::new)
       );
 
-      public static an<dd.a> a(ala<eqi> $$0) {
+      public static an<dd.a> a(ald<eql> $$0) {
          return am.Q.a(new dd.a(Optional.empty(), $$0));
       }
 
-      public boolean b(ala<eqi> $$0) {
+      public boolean b(ald<eql> $$0) {
          return this.c == $$0;
       }
 
@@ -30,7 +30,7 @@ public class dd extends dr<dd.a> {
          return this.b;
       }
 
-      public ala<eqi> b() {
+      public ald<eql> b() {
          return this.c;
       }
    }

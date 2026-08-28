@@ -1,8 +1,8 @@
 import com.mojang.serialization.MapCodec;
 
-public class lm extends li<lm> implements lh {
+public class lm extends lh<lm> implements lg {
    private final MapCodec<lm> a = MapCodec.unit(this::e);
-   private final zj<ww, lm> b = zj.a(this);
+   private final zm<wz, lm> b = zm.a(this);
 
    protected lm(boolean $$0) {
       super($$0);
@@ -18,7 +18,7 @@ public class lm extends li<lm> implements lh {
    }
 
    @Override
-   public zj<ww, lm> d() {
+   public zm<wz, lm> d() {
       return this.b;
    }
 }

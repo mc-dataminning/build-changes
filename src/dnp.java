@@ -1,74 +1,144 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dnp extends deg {
+public class dnp extends dex {
    public static final MapCodec<dnp> a = b(dnp::new);
-   public static final dta<drk> b = dsn.bz;
-   public static final dsr c = diq.aE;
-   public static final dso d = dsn.bA;
+   public static final int b = 2;
+   public static final int c = 1;
+   public static final int d = 4;
+   private static final ewi g = dex.a(3.0, 0.0, 3.0, 12.0, 7.0, 12.0);
+   private static final ewi h = dex.a(1.0, 0.0, 1.0, 15.0, 7.0, 15.0);
+   public static final dta e = dsq.aE;
+   public static final dta f = dsq.aD;
 
    @Override
    public MapCodec<dnp> a() {
       return a;
    }
 
-   public dnp(drw.d $$0) {
+   public dnp(drz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, je.c).a(b, drk.a).a(d, Boolean.valueOf(false)));
+      this.k(this.E.b().a(e, Integer.valueOf(0)).a(f, Integer.valueOf(1)));
    }
 
    @Override
-   public bqr a(cuk $$0, drx $$1, dbt $$2, iz $$3, cms $$4, bqo $$5, evi $$6) {
-      if ($$0.e() || $$1.c(b) != drk.b) {
-         return bqr.d;
-      } else if ($$2 instanceof arb $$7) {
-         if ($$7.c_($$3) instanceof drf $$9) {
-            drf.b.a($$7, $$3, $$1, $$9.f(), $$9.b(), $$9.c(), $$4, $$0);
-            return bqr.a;
-         } else {
-            return bqr.d;
+   public void a(dbw $$0, iz $$1, dsa $$2, bss $$3) {
+      if (!$$3.bW()) {
+         this.a($$0, $$2, $$1, $$3, 100);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(dbw $$0, dsa $$1, iz $$2, bss $$3, float $$4) {
+      if (!($$3 instanceof cku)) {
+         this.a($$0, $$1, $$2, $$3, 3);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   private void a(dbw $$0, dsa $$1, iz $$2, bss $$3, int $$4) {
+      if (this.a($$0, $$3)) {
+         if (!$$0.B && $$0.z.a($$4) == 0 && $$1.a(dez.mf)) {
+            this.a($$0, $$2, $$1);
          }
-      } else {
-         return bqr.b;
       }
    }
 
+   private void a(dbw $$0, iz $$1, dsa $$2) {
+      $$0.a(null, $$1, avz.Af, awa.e, 0.7F, 0.9F + $$0.z.i() * 0.2F);
+      int $$3 = $$2.c(f);
+      if ($$3 <= 1) {
+         $$0.b($$1, false);
+      } else {
+         $$0.a($$1, $$2.a(f, Integer.valueOf($$3 - 1)), 2);
+         $$0.a(dwt.f, $$1, dwt.a.a($$2));
+         $$0.c(2001, $$1, dex.i($$2));
+      }
+   }
+
+   @Override
+   protected void b(dsa $$0, are $$1, iz $$2, azf $$3) {
+      if (this.a($$1) && a($$1, $$2)) {
+         int $$4 = $$0.c(e);
+         if ($$4 < 2) {
+            $$1.a(null, $$2, avz.Ag, awa.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+            $$1.a($$2, $$0.a(e, Integer.valueOf($$4 + 1)), 2);
+            $$1.a(dwt.c, $$2, dwt.a.a($$0));
+         } else {
+            $$1.a(null, $$2, avz.Ah, awa.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+            $$1.a($$2, false);
+            $$1.a(dwt.f, $$2, dwt.a.a($$0));
+
+            for (int $$5 = 0; $$5 < $$0.c(f); $$5++) {
+               $$1.c(2001, $$2, dex.i($$0));
+               cge $$6 = bsy.bh.a((dbw)$$1);
+               if ($$6 != null) {
+                  $$6.c_(-24000);
+                  $$6.i($$2);
+                  $$6.b((double)$$2.u() + 0.3 + (double)$$5 * 0.2, (double)$$2.v(), (double)$$2.w() + 0.3, 0.0F, 0.0F);
+                  $$1.b($$6);
+               }
+            }
+         }
+      }
+   }
+
+   public static boolean a(dbc $$0, iz $$1) {
+      return b($$0, $$1.d());
+   }
+
+   public static boolean b(dbc $$0, iz $$1) {
+      return $$0.a_($$1).a(awo.H);
+   }
+
+   @Override
+   protected void b(dsa $$0, dbw $$1, iz $$2, dsa $$3, boolean $$4) {
+      if (a($$1, $$2) && !$$1.B) {
+         $$1.c(2012, $$2, 15);
+      }
+   }
+
+   private boolean a(dbw $$0) {
+      float $$1 = $$0.f(1.0F);
+      return (double)$$1 < 0.69 && (double)$$1 > 0.65 ? true : $$0.z.a(500) == 0;
+   }
+
+   @Override
+   public void a(dbw $$0, cmv $$1, iz $$2, dsa $$3, @Nullable dpf $$4, cun $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a($$0, $$2, $$3);
+   }
+
+   @Override
+   protected boolean a(dsa $$0, cxy $$1) {
+      return !$$1.h() && $$1.n().a(this.r()) && $$0.c(f) < 4 ? true : super.a($$0, $$1);
+   }
+
    @Nullable
    @Override
-   public dpc a(iz $$0, drx $$1) {
-      return new drf($$0, $$1);
+   public dsa a(cxy $$0) {
+      dsa $$1 = $$0.q().a_($$0.a());
+      return $$1.a(this) ? $$1.a(f, Integer.valueOf(Math.min(4, $$1.c(f) + 1))) : super.a($$0);
    }
 
    @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      $$0.a(c, b, d);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dpc> dpd<T> a(dbt $$0, drx $$1, dpe<T> $$2) {
-      return $$0 instanceof arb $$3
-         ? a($$2, dpe.R, ($$1x, $$2x, $$3x, $$4) -> drf.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
-         : a($$2, dpe.R, ($$0x, $$1x, $$2x, $$3x) -> drf.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
+   protected ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
+      return $$0.c(f) > 1 ? h : g;
    }
 
    @Override
-   public drx a(cxv $$0) {
-      return this.n().a(c, $$0.g().g());
+   protected void a(dsb.a<dex, dsa> $$0) {
+      $$0.a(e, f);
    }
 
-   @Override
-   public drx a(drx $$0, dlh $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   public drx a(drx $$0, djr $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
-
-   @Override
-   public dla a_(drx $$0) {
-      return dla.c;
+   private boolean a(dbw $$0, bss $$1) {
+      if ($$1 instanceof cge || $$1 instanceof cey) {
+         return false;
+      } else {
+         return !($$1 instanceof btn) ? false : $$1 instanceof cmv || $$0.ab().b(dbs.c);
+      }
    }
 }

@@ -1,50 +1,36 @@
-public class gfv implements gfj<drt> {
-   private final ged a;
+public class gfv implements gfm<dpz> {
+   public static final grb a = new grb(gow.e, new ale("entity/enchanting_table_book"));
+   private final ftg b;
 
-   public gfv(gfk.a $$0) {
-      this.a = $$0.b();
+   public gfv(gfn.a $$0) {
+      this.b = new ftg($$0.a(fwx.r));
    }
 
-   public void a(drt $$0, float $$1, ezt $$2, gdj $$3, int $$4, int $$5) {
-      dbt $$6 = $$0.i();
-      if ($$6 != null) {
-         iz $$7 = $$0.aA_().a($$0.f().g());
-         drx $$8 = $$0.j();
-         if (!$$8.i()) {
-            gef.a();
-            $$2.a();
-            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
-            if ($$8.a(dew.bz) && $$0.a($$1) <= 4.0F) {
-               $$8 = $$8.a(drr.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            } else if ($$0.d() && !$$0.b()) {
-               dsz $$9 = $$8.a(dew.br) ? dsz.b : dsz.a;
-               drx $$10 = dew.bz.n().a(drr.c, $$9).a(drr.a, $$8.c(drq.a));
-               $$10 = $$10.a(drr.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
-               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
-               iz $$11 = $$7.a($$0.f());
-               $$2.b();
-               $$2.a();
-               $$8 = $$8.a(drq.c, Boolean.valueOf(true));
-               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
-            } else {
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            }
+   public void a(dpz $$0, float $$1, ezw $$2, gdm $$3, int $$4, int $$5) {
+      $$2.a();
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$6 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + ayx.a($$6 * 0.1F) * 0.01F, 0.0F);
+      float $$7 = $$0.h - $$0.i;
 
-            $$2.b();
-            gef.b();
-         }
+      while ($$7 >= (float) Math.PI) {
+         $$7 -= (float) (Math.PI * 2);
       }
-   }
 
-   private void a(iz $$0, drx $$1, ezt $$2, gdj $$3, dbt $$4, boolean $$5, int $$6) {
-      gdr $$7 = gde.b($$1);
-      ezx $$8 = $$3.getBuffer($$7);
-      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, azc.a(), $$1.a($$0), $$6);
-   }
+      while ($$7 < (float) -Math.PI) {
+         $$7 += (float) (Math.PI * 2);
+      }
 
-   @Override
-   public int aQ_() {
-      return 68;
+      float $$8 = $$0.i + $$7 * $$1;
+      $$2.a(a.d.rotation(-$$8));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$9 = ayx.i($$1, $$0.c, $$0.b);
+      float $$10 = ayx.h($$9 + 0.25F) * 1.6F - 0.3F;
+      float $$11 = ayx.h($$9 + 0.75F) * 1.6F - 0.3F;
+      float $$12 = ayx.i($$1, $$0.g, $$0.f);
+      this.b.a($$6, ayx.a($$10, 0.0F, 1.0F), ayx.a($$11, 0.0F, 1.0F), $$12);
+      faa $$13 = a.a($$3, gdu::c);
+      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

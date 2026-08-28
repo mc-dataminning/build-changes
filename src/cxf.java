@@ -1,111 +1,92 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
 import java.util.Locale;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-public record cxf(List<cxf.b> e, boolean f) {
-   public static final cxf a = new cxf(List.of(), true);
-   private static final Codec<cxf> g = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cxf.b.a.listOf().fieldOf("modifiers").forGetter(cxf::b), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cxf::c))
-            .apply($$0, cxf::new)
+public record cxf(int d, boolean e) implements cxt {
+   private static final Codec<cxf> f = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.INT.fieldOf("rgb").forGetter(cxf::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cxf::b)).apply($$0, cxf::new)
    );
-   public static final Codec<cxf> b = Codec.withAlternative(g, cxf.b.a.listOf(), $$0 -> new cxf($$0, true));
-   public static final zj<ww, cxf> c = zj.a(cxf.b.b.a(zh.a()), cxf::b, zh.b, cxf::c, cxf::new);
-   public static final DecimalFormat d = ac.a(new DecimalFormat("#.##"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+   public static final Codec<cxf> a = Codec.withAlternative(f, Codec.INT, $$0 -> new cxf($$0, true));
+   public static final zm<ByteBuf, cxf> b = zm.a(zk.f, cxf::a, zk.b, cxf::b, cxf::new);
+   public static final int c = -6265536;
+
+   public static int a(cun $$0, int $$1) {
+      cxf $$2 = $$0.a(km.y);
+      return $$2 != null ? ayh.b.e($$2.a()) : $$1;
+   }
+
+   public static cun a(cun $$0, List<cth> $$1) {
+      if (!$$0.a(awx.by)) {
+         return cun.l;
+      } else {
+         cun $$2 = $$0.c(1);
+         int $$3 = 0;
+         int $$4 = 0;
+         int $$5 = 0;
+         int $$6 = 0;
+         int $$7 = 0;
+         cxf $$8 = $$2.a(km.y);
+         if ($$8 != null) {
+            int $$9 = ayh.b.b($$8.a());
+            int $$10 = ayh.b.c($$8.a());
+            int $$11 = ayh.b.d($$8.a());
+            $$6 += Math.max($$9, Math.max($$10, $$11));
+            $$3 += $$9;
+            $$4 += $$10;
+            $$5 += $$11;
+            $$7++;
+         }
+
+         for (cth $$12 : $$1) {
+            float[] $$13 = $$12.c().d();
+            int $$14 = (int)($$13[0] * 255.0F);
+            int $$15 = (int)($$13[1] * 255.0F);
+            int $$16 = (int)($$13[2] * 255.0F);
+            $$6 += Math.max($$14, Math.max($$15, $$16));
+            $$3 += $$14;
+            $$4 += $$15;
+            $$5 += $$16;
+            $$7++;
+         }
+
+         int $$17 = $$3 / $$7;
+         int $$18 = $$4 / $$7;
+         int $$19 = $$5 / $$7;
+         float $$20 = (float)$$6 / (float)$$7;
+         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
+         $$17 = (int)((float)$$17 * $$20 / $$21);
+         $$18 = (int)((float)$$18 * $$20 / $$21);
+         $$19 = (int)((float)$$19 * $$20 / $$21);
+         int $$22 = ayh.b.a(0, $$17, $$18, $$19);
+         boolean $$23 = $$8 == null || $$8.b();
+         $$2.b(km.y, new cxf($$22, $$23));
+         return $$2;
+      }
+   }
+
+   @Override
+   public void a(cui.b $$0, Consumer<xo> $$1, cwg $$2) {
+      if (this.e) {
+         if ($$2.a()) {
+            $$1.accept(xo.a("item.color", String.format(Locale.ROOT, "#%06X", this.d)).a(n.h));
+         } else {
+            $$1.accept(xo.c("item.dyed").a(n.h, n.u));
+         }
+      }
+   }
 
    public cxf a(boolean $$0) {
-      return new cxf(this.e, $$0);
+      return new cxf(this.d, $$0);
    }
 
-   public static cxf.a a() {
-      return new cxf.a();
+   public int a() {
+      return this.d;
    }
 
-   public cxf a(ji<bun> $$0, buq $$1, bsx $$2) {
-      Builder<cxf.b> $$3 = ImmutableList.builderWithExpectedSize(this.e.size() + 1);
-
-      for (cxf.b $$4 : this.e) {
-         if (!$$4.d.b().equals($$1.b())) {
-            $$3.add($$4);
-         }
-      }
-
-      $$3.add(new cxf.b($$0, $$1, $$2));
-      return new cxf($$3.build(), this.f);
-   }
-
-   public void a(bsw $$0, BiConsumer<ji<bun>, buq> $$1) {
-      for (cxf.b $$2 : this.e) {
-         if ($$2.e.b($$0)) {
-            $$1.accept($$2.c, $$2.d);
-         }
-      }
-   }
-
-   public double a(double $$0, bsw $$1) {
-      double $$2 = $$0;
-
-      for (cxf.b $$3 : this.e) {
-         if ($$3.e.b($$1)) {
-            double $$4 = $$3.d.d();
-
-            $$2 += switch ($$3.d.e()) {
-               case a -> $$4;
-               case b -> $$4 * $$0;
-               case c -> $$4 * $$2;
-            };
-         }
-      }
-
-      return $$2;
-   }
-
-   public List<cxf.b> b() {
+   public boolean b() {
       return this.e;
-   }
-
-   public boolean c() {
-      return this.f;
-   }
-
-   public static class a {
-      private final Builder<cxf.b> a = ImmutableList.builder();
-
-      a() {
-      }
-
-      public cxf.a a(ji<bun> $$0, buq $$1, bsx $$2) {
-         this.a.add(new cxf.b($$0, $$1, $$2));
-         return this;
-      }
-
-      public cxf a() {
-         return new cxf(this.a.build(), true);
-      }
-   }
-
-   public static record b(ji<bun> c, buq d, bsx e) {
-      public static final Codec<cxf.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(lp.u.r().fieldOf("type").forGetter(cxf.b::a), buq.a.forGetter(cxf.b::b), bsx.l.optionalFieldOf("slot", bsx.a).forGetter(cxf.b::c))
-               .apply($$0, cxf.b::new)
-      );
-      public static final zj<ww, cxf.b> b = zj.a(zh.b(lq.c), cxf.b::a, buq.c, cxf.b::b, bsx.m, cxf.b::c, cxf.b::new);
-
-      public ji<bun> a() {
-         return this.c;
-      }
-
-      public buq b() {
-         return this.d;
-      }
-
-      public bsx c() {
-         return this.e;
-      }
    }
 }

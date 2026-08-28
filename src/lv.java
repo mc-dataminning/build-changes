@@ -55,7 +55,7 @@ public class lv {
    }
 
    static {
-      ald.a();
+      alg.a();
    }
 
    public class a {

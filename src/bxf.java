@@ -1,20 +1,31 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bxf {
-   public static bve<btk> a(bsv<?> $$0, int $$1) {
-      int $$2 = $$1 * $$1;
-      return byq.a(
-         (Function<byq.b<btk>, ? extends App<byq.c<btk>, byt<btk>>>)($$2x -> $$2x.group($$2x.a(cco.n), $$2x.c(cco.q), $$2x.b(cco.h))
-               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<btk> $$9 = $$2x.<ccq>b($$5).a($$3xx -> $$3xx.g((bsp)$$7) <= (double)$$2 && $$0.equals($$3xx.ak()));
-                     if ($$9.isEmpty()) {
+   public static bvh<btn> a(btq $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ak().f()), $$1);
+   }
+
+   public static bwr<btn> a(bsy<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ak()), $$1);
+   }
+
+   public static bwr<btn> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static bwr<btn> a(Predicate<btn> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return byt.a(
+         (Function<byt.b<btn>, ? extends App<byt.c<btn>, byw<btn>>>)($$2x -> $$2x.group($$2x.c(ccr.n), $$2x.b(ccr.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<btn> $$8 = $$2x.<cct>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bss)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
+                     if ($$8.isEmpty()) {
                         return false;
                      } else {
-                        btk $$10 = $$9.get();
-                        $$4.a($$10);
-                        $$3.a(new bvo($$10, true));
+                        $$3.a(new bvr($$8.get(), true));
                         return true;
                      }
                   }))

@@ -1,24 +1,24 @@
-public class gmw extends gne<cfm, fuk<cfm>> {
-   private final ged a;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gmw(gko<cfm, fuk<cfm>> $$0, ged $$1) {
+public class gmw extends gnh<chj, fuj<chj>> {
+   private static final Map<chl, ale> a = ac.a(Maps.newEnumMap(chl.class), $$0 -> {
+      $$0.put(chl.a, null);
+      $$0.put(chl.b, new ale("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(chl.c, new ale("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(chl.d, new ale("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(chl.e, new ale("textures/entity/horse/horse_markings_blackdots.png"));
+   });
+
+   public gmw(gkr<chj, fuj<chj>> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(ezt $$0, gdj $$1, int $$2, cfm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.gq() != 0) {
-         $$0.a();
-         fwv $$10 = this.c().c();
-         $$10.a($$0);
-         $$0.a(-1.1875F, 1.0625F, -0.9375F);
-         $$0.a(0.5F, 0.5F, 0.5F);
-         float $$11 = 0.5F;
-         $$0.b(0.5F, 0.5F, 0.5F);
-         $$0.a(a.b.rotationDegrees(-90.0F));
-         $$0.a(-0.5F, -0.5F, -0.5F);
-         this.a.a(dew.bT.n(), $$0, $$1, $$2, gol.d);
-         $$0.b();
+   public void a(ezw $$0, gdm $$1, int $$2, chj $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ale $$10 = a.get($$3.u());
+      if ($$10 != null && !$$3.ch()) {
+         faa $$11 = $$1.getBuffer(gdu.i($$10));
+         this.c().a($$0, $$11, $$2, gjw.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
       }
    }
 }

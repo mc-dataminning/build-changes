@@ -1,83 +1,63 @@
-public class btc extends cfz {
-   private static final akg<Integer> cc = akk.a(btc.class, aki.b);
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   public btc(bsv<? extends btc> $$0, dbt $$1) {
-      super($$0, $$1);
+public interface btc {
+   void a(bsz var1, cun var2);
+
+   cun a(bsz var1);
+
+   void a(bsz var1, float var2);
+
+   default void a(btb $$0, eqj $$1) {
+      this.a($$0.a(), $$1, $$0.b());
    }
 
-   @Override
-   protected lh s() {
-      return lj.aP;
+   default void a(ald<eql> $$0, eqj $$1, Map<bsz, Float> $$2) {
+      this.a($$0, $$1, 0L, $$2);
    }
 
-   @Override
-   protected void a(akk.a $$0) {
-      super.a($$0);
-      $$0.a(cc, 0);
-   }
+   default void a(ald<eql> $$0, eqj $$1, long $$2, Map<bsz, Float> $$3) {
+      if (!$$0.equals(eqc.a)) {
+         eql $$4 = $$1.a().o().be().b($$0);
+         if ($$4 != eql.a) {
+            List<cun> $$5 = $$4.a($$1, $$2);
+            List<bsz> $$6 = new ArrayList<>();
 
-   @Override
-   protected avv u() {
-      return avw.kJ;
-   }
+            for (cun $$7 : $$5) {
+               bsz $$8 = this.a($$7, $$6);
+               if ($$8 != null) {
+                  cun $$9 = $$8.f() ? $$7.c(1) : $$7;
+                  this.a($$8, $$9);
+                  Float $$10 = $$3.get($$8);
+                  if ($$10 != null) {
+                     this.a($$8, $$10);
+                  }
 
-   @Override
-   protected avv v() {
-      return avw.kG;
-   }
-
-   @Override
-   protected avv d(bri $$0) {
-      return avw.kI;
-   }
-
-   @Override
-   protected avv o_() {
-      return avw.kH;
-   }
-
-   @Override
-   public void b(ur $$0) {
-      super.b($$0);
-      $$0.a("DarkTicksRemaining", this.y());
-   }
-
-   @Override
-   public void a(ur $$0) {
-      super.a($$0);
-      this.c($$0.h("DarkTicksRemaining"));
-   }
-
-   @Override
-   public void n_() {
-      super.n_();
-      int $$0 = this.y();
-      if ($$0 > 0) {
-         this.c($$0 - 1);
+                  $$6.add($$8);
+               }
+            }
+         }
       }
-
-      this.dP().a(lj.aQ, this.d(0.6), this.dx(), this.g(0.6), 0.0, 0.0, 0.0);
    }
 
-   @Override
-   public boolean a(bri $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if ($$2) {
-         this.c(100);
+   @Nullable
+   default bsz a(cun $$0, List<bsz> $$1) {
+      if ($$0.e()) {
+         return null;
+      } else {
+         ctp $$2 = ctp.c_($$0);
+         if ($$2 != null) {
+            bsz $$3 = $$2.m();
+            if (!$$1.contains($$3)) {
+               return $$3;
+            }
+         } else if (!$$1.contains(bsz.a)) {
+            return bsz.a;
+         }
+
+         return null;
       }
-
-      return $$2;
-   }
-
-   private void c(int $$0) {
-      this.ao.a(cc, $$0);
-   }
-
-   public int y() {
-      return this.ao.a(cc);
-   }
-
-   public static boolean a(bsv<? extends btk> $$0, dci $$1, bto $$2, iz $$3, azc $$4) {
-      return $$3.v() <= $$1.z_() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(dew.G);
    }
 }

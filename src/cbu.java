@@ -1,16 +1,40 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cbu extends cbv {
-   public cbu(btt $$0, double $$1) {
-      super($$0, $$1);
+public class cbu extends cal {
+   private final cmd a;
+
+   public cbu(cmd $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cal.a.c, cal.a.a));
    }
 
-   @Nullable
    @Override
-   protected evm h() {
-      evm $$0 = this.b.f(0.0F);
-      int $$1 = 8;
-      evm $$2 = ceh.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : ced.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
+   public boolean a() {
+      if (!this.a.bD()) {
+         return false;
+      } else if (this.a.be()) {
+         return false;
+      } else if (!this.a.aE()) {
+         return false;
+      } else if (this.a.U) {
+         return false;
+      } else {
+         cmv $$0 = this.a.gq();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.cb != null;
+         }
+      }
+   }
+
+   @Override
+   public void c() {
+      this.a.K().n();
+   }
+
+   @Override
+   public void d() {
+      this.a.f(null);
    }
 }

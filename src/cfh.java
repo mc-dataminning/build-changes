@@ -1,78 +1,39 @@
-import javax.annotation.Nullable;
+public record cfh(ale l) {
+   public static final ald<cfh> a = a("tabby");
+   public static final ald<cfh> b = a("black");
+   public static final ald<cfh> c = a("red");
+   public static final ald<cfh> d = a("siamese");
+   public static final ald<cfh> e = a("british_shorthair");
+   public static final ald<cfh> f = a("calico");
+   public static final ald<cfh> g = a("persian");
+   public static final ald<cfh> h = a("ragdoll");
+   public static final ald<cfh> i = a("white");
+   public static final ald<cfh> j = a("jellie");
+   public static final ald<cfh> k = a("all_black");
 
-public class cfh extends cfa {
-   private static final bss bY = bsv.w.n().a(0.5F).b(0.665F);
-
-   public cfh(bsv<? extends cfh> $$0, dbt $$1) {
-      super($$0, $$1);
+   private static ald<cfh> a(String $$0) {
+      return ald.a(lq.l, new ale($$0));
    }
 
-   @Override
-   protected void z() {
-      this.bS.a(0, new cac(this));
-      this.bS.a(1, new cbb(this, 2.0));
-      this.bS.a(2, new bzu(this, 1.0));
-      this.bS.a(3, new cbq(this, 1.25, $$0 -> $$0.a(awu.aa), false));
-      this.bS.a(4, new cah(this, 1.25));
-      this.bS.a(5, new cbv(this, 1.0));
-      this.bS.a(6, new caq(this, cms.class, 6.0F));
-      this.bS.a(7, new cbd(this));
+   public static cfh a(jv<cfh> $$0) {
+      a($$0, a, "textures/entity/cat/tabby.png");
+      a($$0, b, "textures/entity/cat/black.png");
+      a($$0, c, "textures/entity/cat/red.png");
+      a($$0, d, "textures/entity/cat/siamese.png");
+      a($$0, e, "textures/entity/cat/british_shorthair.png");
+      a($$0, f, "textures/entity/cat/calico.png");
+      a($$0, g, "textures/entity/cat/persian.png");
+      a($$0, h, "textures/entity/cat/ragdoll.png");
+      a($$0, i, "textures/entity/cat/white.png");
+      a($$0, j, "textures/entity/cat/jellie.png");
+      return a($$0, k, "textures/entity/cat/all_black.png");
    }
 
-   @Override
-   public boolean o(cuk $$0) {
-      return $$0.a(awu.aa);
+   private static cfh a(jv<cfh> $$0, ald<cfh> $$1, String $$2) {
+      return jv.a($$0, $$1, new cfh(new ale($$2)));
    }
 
-   public static bur.a s() {
-      return btm.A().a(bus.q, 10.0).a(bus.r, 0.2F);
-   }
-
-   @Override
-   protected avv v() {
-      return avw.gb;
-   }
-
-   @Override
-   protected avv d(bri $$0) {
-      return avw.gd;
-   }
-
-   @Override
-   protected avv o_() {
-      return avw.gc;
-   }
-
-   @Override
-   protected void b(iz $$0, drx $$1) {
-      this.a(avw.gf, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected float fe() {
-      return 0.4F;
-   }
-
-   @Override
-   public bqp b(cms $$0, bqo $$1) {
-      cuk $$2 = $$0.b($$1);
-      if ($$2.a(cun.qy) && !this.p_()) {
-         $$0.a(avw.ge, 1.0F, 1.0F);
-         cuk $$3 = cum.a($$2, $$0, cun.qE.w());
-         $$0.a($$1, $$3);
-         return bqp.a(this.dP().B);
-      } else {
-         return super.b($$0, $$1);
-      }
-   }
-
-   @Nullable
-   public cfh b(arb $$0, bsj $$1) {
-      return bsv.w.a((dbt)$$0);
-   }
-
-   @Override
-   public bss e(btw $$0) {
-      return this.p_() ? bY : super.e($$0);
+   public ale a() {
+      return this.l;
    }
 }

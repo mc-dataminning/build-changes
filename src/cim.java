@@ -1,63 +1,61 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+public class cim extends cic {
+   private static final int b = 100;
+   private static final int c = 10;
+   private static final int d = 20;
+   private static final int e = 150;
+   private static final cee f = cee.a().a(150.0);
+   private final cee g;
+   private int h;
 
-public class cim<T extends cig> {
-   private static cim<?>[] l = new cim[0];
-   public static final cim<cic> a = a(cic.class, "HoldingPattern");
-   public static final cim<cik> b = a(cik.class, "StrafePlayer");
-   public static final cim<cie> c = a(cie.class, "LandingApproach");
-   public static final cim<cif> d = a(cif.class, "Landing");
-   public static final cim<cil> e = a(cil.class, "Takeoff");
-   public static final cim<cii> f = a(cii.class, "SittingFlaming");
-   public static final cim<cij> g = a(cij.class, "SittingScanning");
-   public static final cim<cih> h = a(cih.class, "SittingAttacking");
-   public static final cim<cia> i = a(cia.class, "ChargingPlayer");
-   public static final cim<cib> j = a(cib.class, "Dying");
-   public static final cim<cid> k = a(cid.class, "Hover");
-   private final Class<? extends cig> m;
-   private final int n;
-   private final String o;
-
-   private cim(int $$0, Class<? extends cig> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
-   }
-
-   public cig a(chw $$0) {
-      try {
-         Constructor<? extends cig> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends cig> a() throws NoSuchMethodException {
-      return this.m.getConstructor(chw.class);
-   }
-
-   public int b() {
-      return this.n;
+   public cim(chz $$0) {
+      super($$0);
+      this.g = cee.a().a(20.0).a($$1 -> Math.abs($$1.dw() - $$0.dw()) <= 10.0);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   public void c() {
+      this.h++;
+      btn $$0 = this.a.dP().a(this.g, this.a, this.a.du(), this.a.dw(), this.a.dA());
+      if ($$0 != null) {
+         if (this.h > 25) {
+            this.a.gn().a(cip.h);
+         } else {
+            evp $$1 = new evp($$0.du() - this.a.du(), 0.0, $$0.dA() - this.a.dA()).d();
+            evp $$2 = new evp((double)ayx.a(this.a.dF() * (float) (Math.PI / 180.0)), 0.0, (double)(-ayx.b(this.a.dF() * (float) (Math.PI / 180.0)))).d();
+            float $$3 = (float)$$2.b($$1);
+            float $$4 = (float)(Math.acos((double)$$3) * 180.0F / (float)Math.PI) + 0.5F;
+            if ($$4 < 0.0F || $$4 > 10.0F) {
+               double $$5 = $$0.du() - this.a.e.du();
+               double $$6 = $$0.dA() - this.a.e.dA();
+               double $$7 = ayx.a(ayx.d(180.0 - ayx.d($$5, $$6) * 180.0F / (float)Math.PI - (double)this.a.dF()), -100.0, 100.0);
+               this.a.cb *= 0.8F;
+               float $$8 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6) + 1.0F;
+               float $$9 = $$8;
+               if ($$8 > 40.0F) {
+                  $$8 = 40.0F;
+               }
+
+               this.a.cb += (float)$$7 * (0.7F / $$8 / $$9);
+               this.a.r(this.a.dF() + this.a.cb);
+            }
+         }
+      } else if (this.h >= 100) {
+         $$0 = this.a.dP().a(f, this.a, this.a.du(), this.a.dw(), this.a.dA());
+         this.a.gn().a(cip.e);
+         if ($$0 != null) {
+            this.a.gn().a(cip.i);
+            this.a.gn().b(cip.i).a(new evp($$0.du(), $$0.dw(), $$0.dA()));
+         }
+      }
    }
 
-   public static cim<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   public void d() {
+      this.h = 0;
    }
 
-   public static int c() {
-      return l.length;
-   }
-
-   private static <T extends cig> cim<T> a(Class<T> $$0, String $$1) {
-      cim<T> $$2 = new cim<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   @Override
+   public cip<cim> i() {
+      return cip.g;
    }
 }

@@ -1,112 +1,159 @@
 import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
-import java.util.List;
+import java.util.Locale;
+import java.util.stream.IntStream;
 
-public class emt {
-   private static final double a = 1.0181268882175227;
-   private static final double b = 0.3333333333333333;
-   private final double c;
-   private final emu d;
-   private final emu e;
-   private final double f;
-   private final emt.a g;
+public class emt implements dxl.d {
+   private static final Codec<Double> e = Codec.doubleRange(0.001, 1000.0);
+   private static final MapCodec<emt> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               e.fieldOf("xz_scale").forGetter($$0x -> $$0x.p),
+               e.fieldOf("y_scale").forGetter($$0x -> $$0x.q),
+               e.fieldOf("xz_factor").forGetter($$0x -> $$0x.l),
+               e.fieldOf("y_factor").forGetter($$0x -> $$0x.m),
+               Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter($$0x -> $$0x.n)
+            )
+            .apply($$0, emt::a)
+   );
+   public static final ayq<emt> a = ayq.a(f);
+   private final emx g;
+   private final emx h;
+   private final emx i;
+   private final double j;
+   private final double k;
+   private final double l;
+   private final double m;
+   private final double n;
+   private final double o;
+   private final double p;
+   private final double q;
 
-   @Deprecated
-   public static emt a(azc $$0, emt.a $$1) {
-      return new emt($$0, $$1, false);
+   public static emt a(double $$0, double $$1, double $$2, double $$3, double $$4) {
+      return new emt(new dyt(0L), $$0, $$1, $$2, $$3, $$4);
    }
 
-   public static emt a(azc $$0, int $$1, double... $$2) {
-      return b($$0, new emt.a($$1, new DoubleArrayList($$2)));
+   private emt(emx $$0, emx $$1, emx $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.l = $$5;
+      this.m = $$6;
+      this.n = $$7;
+      this.j = 684.412 * this.p;
+      this.k = 684.412 * this.q;
+      this.o = $$0.a(this.k);
    }
 
-   public static emt b(azc $$0, emt.a $$1) {
-      return new emt($$0, $$1, true);
+   @VisibleForTesting
+   public emt(azf $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      this(
+         emx.a($$0, IntStream.rangeClosed(-15, 0)),
+         emx.a($$0, IntStream.rangeClosed(-15, 0)),
+         emx.a($$0, IntStream.rangeClosed(-7, 0)),
+         $$1,
+         $$2,
+         $$3,
+         $$4,
+         $$5
+      );
    }
 
-   private emt(azc $$0, emt.a $$1, boolean $$2) {
-      int $$3 = $$1.c;
-      DoubleList $$4 = $$1.d;
-      this.g = $$1;
-      if ($$2) {
-         this.d = emu.b($$0, $$3, $$4);
-         this.e = emu.b($$0, $$3, $$4);
-      } else {
-         this.d = emu.a($$0, $$3, $$4);
-         this.e = emu.a($$0, $$3, $$4);
-      }
+   public emt a(azf $$0) {
+      return new emt($$0, this.p, this.q, this.l, this.m, this.n);
+   }
 
-      int $$5 = Integer.MAX_VALUE;
-      int $$6 = Integer.MIN_VALUE;
-      DoubleListIterator $$7 = $$4.iterator();
+   @Override
+   public double a(dxl.b $$0) {
+      double $$1 = (double)$$0.a() * this.j;
+      double $$2 = (double)$$0.b() * this.k;
+      double $$3 = (double)$$0.c() * this.j;
+      double $$4 = $$1 / this.l;
+      double $$5 = $$2 / this.m;
+      double $$6 = $$3 / this.l;
+      double $$7 = this.k * this.n;
+      double $$8 = $$7 / this.m;
+      double $$9 = 0.0;
+      double $$10 = 0.0;
+      double $$11 = 0.0;
+      boolean $$12 = true;
+      double $$13 = 1.0;
 
-      while ($$7.hasNext()) {
-         int $$8 = $$7.nextIndex();
-         double $$9 = $$7.nextDouble();
-         if ($$9 != 0.0) {
-            $$5 = Math.min($$5, $$8);
-            $$6 = Math.max($$6, $$8);
+      for (int $$14 = 0; $$14 < 8; $$14++) {
+         emu $$15 = this.i.a($$14);
+         if ($$15 != null) {
+            $$11 += $$15.a(emx.b($$4 * $$13), emx.b($$5 * $$13), emx.b($$6 * $$13), $$8 * $$13, $$5 * $$13) / $$13;
          }
+
+         $$13 /= 2.0;
       }
 
-      this.c = 0.16666666666666666 / a($$6 - $$5);
-      this.f = (this.d.a() + this.e.a()) * this.c;
+      double $$16 = ($$11 / 10.0 + 1.0) / 2.0;
+      boolean $$17 = $$16 >= 1.0;
+      boolean $$18 = $$16 <= 0.0;
+      $$13 = 1.0;
+
+      for (int $$19 = 0; $$19 < 16; $$19++) {
+         double $$20 = emx.b($$1 * $$13);
+         double $$21 = emx.b($$2 * $$13);
+         double $$22 = emx.b($$3 * $$13);
+         double $$23 = $$7 * $$13;
+         if (!$$17) {
+            emu $$24 = this.g.a($$19);
+            if ($$24 != null) {
+               $$9 += $$24.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
+            }
+         }
+
+         if (!$$18) {
+            emu $$25 = this.h.a($$19);
+            if ($$25 != null) {
+               $$10 += $$25.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
+            }
+         }
+
+         $$13 /= 2.0;
+      }
+
+      return ayx.b($$9 / 512.0, $$10 / 512.0, $$16) / 128.0;
    }
 
+   @Override
    public double a() {
-      return this.f;
+      return -this.b();
    }
 
-   private static double a(int $$0) {
-      return 0.1 * (1.0 + 1.0 / (double)($$0 + 1));
-   }
-
-   public double a(double $$0, double $$1, double $$2) {
-      double $$3 = $$0 * 1.0181268882175227;
-      double $$4 = $$1 * 1.0181268882175227;
-      double $$5 = $$2 * 1.0181268882175227;
-      return (this.d.a($$0, $$1, $$2) + this.e.a($$3, $$4, $$5)) * this.c;
-   }
-
-   public emt.a b() {
-      return this.g;
+   @Override
+   public double b() {
+      return this.o;
    }
 
    @VisibleForTesting
    public void a(StringBuilder $$0) {
-      $$0.append("NormalNoise {");
-      $$0.append("first: ");
-      this.d.a($$0);
-      $$0.append(", second: ");
-      this.e.a($$0);
-      $$0.append("}");
+      $$0.append("BlendedNoise{minLimitNoise=");
+      this.g.a($$0);
+      $$0.append(", maxLimitNoise=");
+      this.h.a($$0);
+      $$0.append(", mainNoise=");
+      this.i.a($$0);
+      $$0.append(
+            String.format(
+               Locale.ROOT,
+               ", xzScale=%.3f, yScale=%.3f, xzMainScale=%.3f, yMainScale=%.3f, cellWidth=4, cellHeight=8",
+               684.412,
+               684.412,
+               8.555150000000001,
+               4.277575000000001
+            )
+         )
+         .append('}');
    }
 
-   public static record a(int c, DoubleList d) {
-      public static final Codec<emt.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("firstOctave").forGetter(emt.a::a), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(emt.a::b))
-               .apply($$0, emt.a::new)
-      );
-      public static final Codec<ji<emt.a>> b = akx.a(lq.aH, a);
-
-      public a(int $$0, List<Double> $$1) {
-         this($$0, new DoubleArrayList($$1));
-      }
-
-      public a(int $$0, double $$1, double... $$2) {
-         this($$0, ac.a(new DoubleArrayList($$2), $$1x -> $$1x.add(0, $$1)));
-      }
-
-      public int a() {
-         return this.c;
-      }
-
-      public DoubleList b() {
-         return this.d;
-      }
+   @Override
+   public ayq<? extends dxl> c() {
+      return a;
    }
 }

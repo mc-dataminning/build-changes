@@ -1,69 +1,49 @@
-public class cnt extends cnr {
-   public cnt(bsv<? extends cnt> $$0, dbt $$1) {
+public class cnt extends cnb {
+   private int f = 200;
+
+   public cnt(bsy<? extends cnt> $$0, dbw $$1) {
       super($$0, $$1);
    }
 
-   public cnt(dbt $$0, btk $$1) {
-      super(bsv.C, $$1, $$0);
+   public cnt(dbw $$0, btn $$1, cun $$2) {
+      super(bsy.aV, $$1, $$0, $$2);
    }
 
-   public cnt(dbt $$0, double $$1, double $$2, double $$3) {
-      super(bsv.C, $$1, $$2, $$3, $$0);
+   public cnt(dbw $$0, double $$1, double $$2, double $$3, cun $$4) {
+      super(bsy.aV, $$1, $$2, $$3, $$0, $$4);
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         double $$1 = 0.08;
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dP()
-               .a(
-                  new lf(lj.S, this.p()),
-                  this.du(),
-                  this.dw(),
-                  this.dA(),
-                  ((double)this.ah.i() - 0.5) * 0.08,
-                  ((double)this.ah.i() - 0.5) * 0.08,
-                  ((double)this.ah.i() - 0.5) * 0.08
-               );
-         }
+   public void l() {
+      super.l();
+      if (this.dP().B && !this.b) {
+         this.dP().a(li.R, this.du(), this.dw(), this.dA(), 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   protected void a(evj $$0) {
+   protected void a(btn $$0) {
       super.a($$0);
-      $$0.a().a(this.dQ().b(this, this.s()), 0.0F);
+      bsa $$1 = new bsa(bsc.x, this.f, 0);
+      $$0.b($$1, this.I());
    }
 
    @Override
-   protected void a(evk $$0) {
+   public void a(ur $$0) {
       super.a($$0);
-      if (!this.dP().B) {
-         if (this.ah.a(8) == 0) {
-            int $$1 = 1;
-            if (this.ah.a(32) == 0) {
-               $$1 = 4;
-            }
-
-            for (int $$2 = 0; $$2 < $$1; $$2++) {
-               cff $$3 = bsv.t.a(this.dP());
-               if ($$3 != null) {
-                  $$3.c_(-24000);
-                  $$3.b(this.du(), this.dw(), this.dA(), this.dF(), 0.0F);
-                  this.dP().b($$3);
-               }
-            }
-         }
-
-         this.dP().a(this, (byte)3);
-         this.ao();
+      if ($$0.e("Duration")) {
+         this.f = $$0.h("Duration");
       }
    }
 
    @Override
-   protected cuf u() {
-      return cun.qR;
+   public void b(ur $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.f);
+   }
+
+   @Override
+   protected cun x() {
+      return new cun(cuq.vp);
    }
 }

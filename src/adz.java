@@ -1,61 +1,42 @@
-public class adz implements zs<ace> {
-   public static final zj<wl, adz> a = zs.a(adz::a, adz::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public adz(bsp $$0) {
-      this.b = $$0.du();
-      this.c = $$0.dw();
-      this.d = $$0.dA();
-      this.e = $$0.dF();
-      this.f = $$0.dH();
-   }
+public record adz(epg b, byte c, boolean d, Optional<List<epc>> e, Optional<epi.b> f) implements zv<ach> {
+   public static final zm<wz, adz> a = zm.a(epg.b, adz::b, zk.c, adz::e, zk.b, adz::f, epc.a.a(zk.a()).a(zk::a), adz::g, epi.b.a, adz::h, adz::new);
 
-   private adz(wl $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-   }
-
-   private void a(wl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
+   public adz(epg $$0, byte $$1, boolean $$2, @Nullable Collection<epc> $$3, @Nullable epi.b $$4) {
+      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
    }
 
    @Override
-   public zu<adz> a() {
-      return agq.U;
+   public zx<adz> a() {
+      return agt.P;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
+   public void a(epi $$0) {
+      this.e.ifPresent($$0::a);
+      this.f.ifPresent($$1 -> $$1.a($$0));
    }
 
-   public double e() {
+   public byte e() {
       return this.c;
    }
 
-   public double f() {
+   public boolean f() {
       return this.d;
    }
 
-   public float g() {
+   public Optional<List<epc>> g() {
       return this.e;
    }
 
-   public float h() {
+   public Optional<epi.b> h() {
       return this.f;
    }
 }

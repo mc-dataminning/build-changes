@@ -1,97 +1,89 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 
 public class ces {
-   public static final ala<cer> a = a("armorer");
-   public static final ala<cer> b = a("butcher");
-   public static final ala<cer> c = a("cartographer");
-   public static final ala<cer> d = a("cleric");
-   public static final ala<cer> e = a("farmer");
-   public static final ala<cer> f = a("fisherman");
-   public static final ala<cer> g = a("fletcher");
-   public static final ala<cer> h = a("leatherworker");
-   public static final ala<cer> i = a("librarian");
-   public static final ala<cer> j = a("mason");
-   public static final ala<cer> k = a("shepherd");
-   public static final ala<cer> l = a("toolsmith");
-   public static final ala<cer> m = a("weaponsmith");
-   public static final ala<cer> n = a("home");
-   public static final ala<cer> o = a("meeting");
-   public static final ala<cer> p = a("beehive");
-   public static final ala<cer> q = a("bee_nest");
-   public static final ala<cer> r = a("nether_portal");
-   public static final ala<cer> s = a("lodestone");
-   public static final ala<cer> t = a("lightning_rod");
-   private static final Set<drx> u = ImmutableList.of(
-         dew.bn, dew.bo, dew.bk, dew.bl, dew.bi, dew.bg, dew.bm, dew.bc, dew.bh, dew.be, dew.bb, dew.ba, new deu[]{dew.bf, dew.bj, dew.aZ, dew.bd}
-      )
-      .stream()
-      .flatMap($$0 -> $$0.l().a().stream())
-      .filter($$0 -> $$0.c(den.b) == dsk.a)
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Set<drx> v = ImmutableList.of(dew.ft, dew.fv, dew.fu, dew.fw)
-      .stream()
-      .flatMap($$0 -> $$0.l().a().stream())
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Map<drx, ji<cer>> w = Maps.newHashMap();
+   private final iz a;
+   private final ji<ceu> b;
+   private int c;
+   private final Runnable d;
 
-   private static Set<drx> a(deu $$0) {
-      return ImmutableSet.copyOf($$0.l().a());
+   public static Codec<ces> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  iz.a.fieldOf("pos").forGetter($$0xx -> $$0xx.a),
+                  alb.a(lq.V).fieldOf("type").forGetter($$0xx -> $$0xx.b),
+                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter($$0xx -> $$0xx.c),
+                  RecordCodecBuilder.point($$0)
+               )
+               .apply($$1, ces::new)
+      );
    }
 
-   private static ala<cer> a(String $$0) {
-      return ala.a(lq.V, new alb($$0));
+   private ces(iz $$0, ji<ceu> $$1, int $$2, Runnable $$3) {
+      this.a = $$0.i();
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private static cer a(jv<cer> $$0, ala<cer> $$1, Set<drx> $$2, int $$3, int $$4) {
-      cer $$5 = new cer($$2, $$3, $$4);
-      jv.a($$0, $$1, $$5);
-      a($$0.g($$1), $$2);
-      return $$5;
+   public ces(iz $$0, ji<ceu> $$1, Runnable $$2) {
+      this($$0, $$1, $$1.a().b(), $$2);
    }
 
-   private static void a(ji<cer> $$0, Set<drx> $$1) {
-      $$1.forEach($$1x -> {
-         ji<cer> $$2 = w.put($$1x, $$0);
-         if ($$2 != null) {
-            throw (IllegalStateException)ac.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
-         }
-      });
+   @Deprecated
+   @bab
+   public int a() {
+      return this.c;
    }
 
-   public static Optional<ji<cer>> a(drx $$0) {
-      return Optional.ofNullable(w.get($$0));
+   protected boolean b() {
+      if (this.c <= 0) {
+         return false;
+      } else {
+         this.c--;
+         this.d.run();
+         return true;
+      }
    }
 
-   public static boolean b(drx $$0) {
-      return w.containsKey($$0);
+   protected boolean c() {
+      if (this.c >= this.b.a().b()) {
+         return false;
+      } else {
+         this.c++;
+         this.d.run();
+         return true;
+      }
    }
 
-   public static cer a(jv<cer> $$0) {
-      a($$0, a, a(dew.nW), 1, 1);
-      a($$0, b, a(dew.nV), 1, 1);
-      a($$0, c, a(dew.nX), 1, 1);
-      a($$0, d, a(dew.fs), 1, 1);
-      a($$0, e, a(dew.pc), 1, 1);
-      a($$0, f, a(dew.nU), 1, 1);
-      a($$0, g, a(dew.nY), 1, 1);
-      a($$0, h, v, 1, 1);
-      a($$0, i, a(dew.oa), 1, 1);
-      a($$0, j, a(dew.oc), 1, 1);
-      a($$0, k, a(dew.nT), 1, 1);
-      a($$0, l, a(dew.ob), 1, 1);
-      a($$0, m, a(dew.nZ), 1, 1);
-      a($$0, n, u, 1, 1);
-      a($$0, o, a(dew.od), 32, 6);
-      a($$0, p, a(dew.pf), 0, 1);
-      a($$0, q, a(dew.pe), 0, 1);
-      a($$0, r, a(dew.ed), 0, 1);
-      a($$0, s, a(dew.pq), 0, 1);
-      return a($$0, t, a(dew.ss), 0, 1);
+   public boolean d() {
+      return this.c > 0;
+   }
+
+   public boolean e() {
+      return this.c != this.b.a().b();
+   }
+
+   public iz f() {
+      return this.a;
+   }
+
+   public ji<ceu> g() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((ces)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

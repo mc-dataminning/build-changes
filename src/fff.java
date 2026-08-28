@@ -1,30 +1,37 @@
 import java.util.function.IntFunction;
 
-public enum fff implements ayx {
-   a(0, "options.particles.all"),
-   b(1, "options.particles.decreased"),
-   c(2, "options.particles.minimal");
+public enum fff {
+   a(0, "options.narrator.off"),
+   b(1, "options.narrator.all"),
+   c(2, "options.narrator.chat"),
+   d(3, "options.narrator.system");
 
-   private static final IntFunction<fff> d = axl.a(fff::a, values(), axl.a.b);
-   private final int e;
-   private final String f;
+   private static final IntFunction<fff> e = axo.a(fff::a, values(), axo.a.b);
+   private final int f;
+   private final xo g;
 
    private fff(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+      this.f = $$0;
+      this.g = xo.c($$1);
    }
 
-   @Override
-   public String b() {
+   public int a() {
       return this.f;
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   public xo b() {
+      return this.g;
    }
 
    public static fff a(int $$0) {
-      return d.apply($$0);
+      return e.apply($$0);
+   }
+
+   public boolean c() {
+      return this == b || this == c;
+   }
+
+   public boolean d() {
+      return this == b || this == d;
    }
 }

@@ -17,8 +17,8 @@ import java.util.stream.Stream;
 public class tp {
    private static final Collection<uh> a = Lists.newArrayList();
    private static final Set<String> b = Sets.newHashSet();
-   private static final Map<String, Consumer<arb>> c = Maps.newHashMap();
-   private static final Map<String, Consumer<arb>> d = Maps.newHashMap();
+   private static final Map<String, Consumer<are>> c = Maps.newHashMap();
+   private static final Map<String, Consumer<are>> d = Maps.newHashMap();
    private static final Set<uh> e = Sets.newHashSet();
 
    public static void a(Class<?> $$0) {
@@ -43,11 +43,11 @@ public class tp {
       a($$0, tb.class, tb::a, d);
    }
 
-   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<arb>> $$3) {
+   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<are>> $$3) {
       T $$4 = $$0.getAnnotation($$1);
       if ($$4 != null) {
          String $$5 = $$2.apply($$4);
-         Consumer<arb> $$6 = $$3.putIfAbsent($$5, (Consumer<arb>)d($$0));
+         Consumer<are> $$6 = $$3.putIfAbsent($$5, (Consumer<are>)d($$0));
          if ($$6 != null) {
             throw new RuntimeException("Hey, there should only be one " + $$1 + " method per batch. Batch '" + $$5 + "' has more than one!");
          }
@@ -70,12 +70,12 @@ public class tp {
       return b.contains($$0);
    }
 
-   public static Consumer<arb> c(String $$0) {
+   public static Consumer<are> c(String $$0) {
       return c.getOrDefault($$0, $$0x -> {
       });
    }
 
-   public static Consumer<arb> d(String $$0) {
+   public static Consumer<are> d(String $$0) {
       return d.getOrDefault($$0, $$0x -> {
       });
    }
@@ -109,7 +109,7 @@ public class tp {
       String $$4 = $$3 + "." + $$0.getName().toLowerCase();
       String $$5 = $$1.g().isEmpty() ? $$4 : $$3 + "." + $$1.g();
       String $$6 = $$1.b();
-      dlh $$7 = ud.a($$1.d());
+      dlk $$7 = ud.a($$1.d());
       return new uh($$6, $$4, $$5, $$7, $$1.a(), $$1.h(), $$1.e(), $$1.f(), $$1.j(), $$1.i(), $$1.c(), (Consumer<tm>)d($$0));
    }
 

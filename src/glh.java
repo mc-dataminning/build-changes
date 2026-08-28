@@ -1,33 +1,40 @@
-public class glh extends gjx<cpa> {
-   private final ged f;
+public class glh<T extends bss & cnk> extends giu<T> {
+   private static final float a = 12.25F;
+   private final gjt f;
+   private final float g;
+   private final boolean h;
 
-   public glh(gis.a $$0) {
-      super($$0, fwu.bG);
-      this.f = $$0.c();
+   public glh(giv.a $$0, float $$1, boolean $$2) {
+      super($$0);
+      this.f = $$0.b();
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   protected void a(cpa $$0, float $$1, drx $$2, ezt $$3, gdj $$4, int $$5) {
-      int $$6 = $$0.C();
-      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
-         $$7 = ayu.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   public glh(giv.a $$0) {
+      this($$0, 1.0F, false);
    }
 
-   public static void a(ged $$0, drx $$1, ezt $$2, gdj $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = gol.a(gol.a(1.0F), 10);
-      } else {
-         $$6 = gol.d;
-      }
+   @Override
+   protected int a(T $$0, iz $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
+   }
 
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   @Override
+   public void a(T $$0, float $$1, float $$2, ezw $$3, gdm $$4, int $$5) {
+      if ($$0.ai >= 2 || !(this.c.b.g().g($$0) < 12.25)) {
+         $$3.a();
+         $$3.b(this.g, this.g, this.g);
+         $$3.a(this.c.b());
+         $$3.a(a.d.rotationDegrees(180.0F));
+         this.f.a($$0.p(), cuk.h, $$5, goo.d, $$3, $$4, $$0.dP(), $$0.al());
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public ale a(bss $$0) {
+      return gow.e;
    }
 }

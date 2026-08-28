@@ -1,19 +1,22 @@
-public class dka {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(drx $$0) {
-      return $$0.i();
+public class dka extends dmo {
+   public static final MapCodec<dka> a = b(dka::new);
+
+   @Override
+   public MapCodec<dka> a() {
+      return a;
    }
 
-   public static int a(azc $$0) {
-      double $$1 = 1.0;
+   public dka(drz.d $$0) {
+      super($$0);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
+   @Override
+   public void a(dsa $$0, dbw $$1, iz $$2, azf $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.a(10) == 0) {
+         $$1.a(li.Z, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
       }
-
-      return $$2;
    }
 }

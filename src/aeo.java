@@ -1,69 +1,83 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class aeo implements zs<ace> {
-   public static final zj<wl, aeo> a = zs.a(aeo::a, aeo::new);
-   private final aeo.a b;
-   private final List<alb> c;
-   private final List<alb> d;
-   private final awa e;
+public class aeo implements zv<ach> {
+   public static final zm<wl, aeo> a = zv.a(aeo::a, aeo::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final int e;
+   private final fb.a f;
+   private final fb.a g;
+   private final boolean h;
 
-   public aeo(aeo.a $$0, Collection<alb> $$1, Collection<alb> $$2, awa $$3) {
-      this.b = $$0;
-      this.c = ImmutableList.copyOf($$1);
-      this.d = ImmutableList.copyOf($$2);
-      this.e = $$3;
+   public aeo(fb.a $$0, double $$1, double $$2, double $$3) {
+      this.f = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = 0;
+      this.h = false;
+      this.g = null;
+   }
+
+   public aeo(fb.a $$0, bss $$1, fb.a $$2) {
+      this.f = $$0;
+      this.e = $$1.al();
+      this.g = $$2;
+      evp $$3 = $$2.a($$1);
+      this.b = $$3.c;
+      this.c = $$3.d;
+      this.d = $$3.e;
+      this.h = true;
    }
 
    private aeo(wl $$0) {
-      this.b = $$0.b(aeo.a.class);
-      this.e = awa.a($$0);
-      this.c = $$0.a(wl::q);
-      if (this.b == aeo.a.a) {
-         this.d = $$0.a(wl::q);
+      this.f = $$0.b(fb.a.class);
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.h = $$0.readBoolean();
+      if (this.h) {
+         this.e = $$0.l();
+         this.g = $$0.b(fb.a.class);
       } else {
-         this.d = ImmutableList.of();
+         this.e = 0;
+         this.g = null;
       }
    }
 
    private void a(wl $$0) {
+      $$0.a(this.f);
       $$0.a(this.b);
-      this.e.b($$0);
-      $$0.a(this.c, wl::a);
-      if (this.b == aeo.a.a) {
-         $$0.a(this.d, wl::a);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.h);
+      if (this.h) {
+         $$0.c(this.e);
+         $$0.a(this.g);
       }
    }
 
    @Override
-   public zu<aeo> a() {
-      return agq.ai;
+   public zx<aeo> a() {
+      return agt.ag;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public List<alb> b() {
-      return this.c;
+   public fb.a b() {
+      return this.f;
    }
 
-   public List<alb> e() {
-      return this.d;
-   }
-
-   public awa f() {
-      return this.e;
-   }
-
-   public aeo.a g() {
-      return this.b;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+   @Nullable
+   public evp a(dbw $$0) {
+      if (this.h) {
+         bss $$1 = $$0.a(this.e);
+         return $$1 == null ? new evp(this.b, this.c, this.d) : this.g.a($$1);
+      } else {
+         return new evp(this.b, this.c, this.d);
+      }
    }
 }

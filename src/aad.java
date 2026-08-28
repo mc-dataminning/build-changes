@@ -1,23 +1,14 @@
-import java.util.Optional;
-import java.util.UUID;
+import io.netty.buffer.ByteBuf;
 
-public record aad(Optional<UUID> b) implements zs<zy> {
-   public static final zj<wl, aad> a = zs.a(aad::a, aad::new);
-
-   private aad(wl $$0) {
-      this($$0.b(kc.g));
-   }
-
-   private void a(wl $$0) {
-      $$0.a(this.b, kc.g);
-   }
+public record aad(xo b) implements zv<aab> {
+   public static final zm<ByteBuf, aad> a = xq.f.a(aad::new, aad::b);
 
    @Override
-   public zu<aad> a() {
-      return aai.e;
+   public zx<aad> a() {
+      return aal.b;
    }
 
-   public void a(zy $$0) {
+   public void a(aab $$0) {
       $$0.a(this);
    }
 }

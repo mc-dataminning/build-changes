@@ -11,51 +11,51 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class fp<T> implements ArgumentType<ala<T>> {
+public class fp<T> implements ArgumentType<ald<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xl.b("commands.place.feature.invalid", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xl.b("commands.place.structure.invalid", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xl.b("commands.place.jigsaw.invalid", $$0));
-   final ala<? extends jv<T>> e;
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xo.b("commands.place.feature.invalid", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xo.b("commands.place.structure.invalid", $$0));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xo.b("commands.place.jigsaw.invalid", $$0));
+   final ald<? extends jv<T>> e;
 
-   public fp(ala<? extends jv<T>> $$0) {
+   public fp(ald<? extends jv<T>> $$0) {
       this.e = $$0;
    }
 
-   public static <T> fp<T> a(ala<? extends jv<T>> $$0) {
+   public static <T> fp<T> a(ald<? extends jv<T>> $$0) {
       return new fp<>($$0);
    }
 
-   private static <T> ala<T> a(CommandContext<ep> $$0, String $$1, ala<jv<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      ala<?> $$4 = (ala<?>)$$0.getArgument($$1, ala.class);
-      Optional<ala<T>> $$5 = $$4.d($$2);
+   private static <T> ald<T> a(CommandContext<ep> $$0, String $$1, ald<jv<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      ald<?> $$4 = (ald<?>)$$0.getArgument($$1, ald.class);
+      Optional<ald<T>> $$5 = $$4.d($$2);
       return $$5.orElseThrow(() -> $$3.create($$4));
    }
 
-   private static <T> jv<T> a(CommandContext<ep> $$0, ala<? extends jv<T>> $$1) {
+   private static <T> jv<T> a(CommandContext<ep> $$0, ald<? extends jv<T>> $$1) {
       return ((ep)$$0.getSource()).l().bc().d($$1);
    }
 
-   private static <T> ji.c<T> b(CommandContext<ep> $$0, String $$1, ala<jv<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      ala<T> $$4 = a($$0, $$1, $$2, $$3);
+   private static <T> ji.c<T> b(CommandContext<ep> $$0, String $$1, ald<jv<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      ald<T> $$4 = a($$0, $$1, $$2, $$3);
       return a($$0, $$2).b($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static ji.c<eag<?, ?>> a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ji.c<eaj<?, ?>> a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, lq.aC, b);
    }
 
-   public static ji.c<eif> b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ji.c<eii> b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, lq.aJ, c);
    }
 
-   public static ji.c<ejo> c(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ji.c<ejr> c(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, lq.aM, d);
    }
 
-   public ala<T> a(StringReader $$0) throws CommandSyntaxException {
-      alb $$1 = alb.a($$0);
-      return ala.a(this.e, $$1);
+   public ald<T> a(StringReader $$0) throws CommandSyntaxException {
+      ale $$1 = ale.a($$0);
+      return ald.a(this.e, $$1);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -84,9 +84,9 @@ public class fp<T> implements ArgumentType<ala<T>> {
       }
 
       public final class a implements ik.a<fp<T>> {
-         final ala<? extends jv<T>> b;
+         final ald<? extends jv<T>> b;
 
-         a(final ala<? extends jv<T>> $$1) {
+         a(final ald<? extends jv<T>> $$1) {
             this.b = $$1;
          }
 

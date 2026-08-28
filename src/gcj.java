@@ -1,21 +1,22 @@
-public class gcj {
-   public float a;
-   public float b;
-   public boolean c;
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public boolean h;
+public class gcj extends fzs {
+   private static final int a = 12235202;
 
-   public void a(boolean $$0, float $$1) {
+   protected gcj(fxt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gbv $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
+      this.v = 0.7294118F;
+      this.w = 0.69411767F;
+      this.x = 0.7607843F;
    }
 
-   public evl a() {
-      return new evl(this.a, this.b);
-   }
+   public static class a implements gbd<lm> {
+      private final gbv a;
 
-   public boolean b() {
-      return this.b > 1.0E-5F;
+      public a(gbv $$0) {
+         this.a = $$0;
+      }
+
+      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gcj($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      }
    }
 }

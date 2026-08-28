@@ -8,20 +8,20 @@ public class dp extends dr<dp.a> {
       return dp.a.a;
    }
 
-   public void a(arc $$0, cys<?> $$1) {
+   public void a(arf $$0, cyv<?> $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static an<dp.a> a(alb $$0) {
+   public static an<dp.a> a(ale $$0) {
       return am.g.a(new dp.a(Optional.empty(), $$0));
    }
 
-   public static record a(Optional<bf> b, alb c) implements dr.a {
+   public static record a(Optional<bf> b, ale c) implements dr.a {
       public static final Codec<dp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(dp.a::a), alb.a.fieldOf("recipe").forGetter(dp.a::b)).apply($$0, dp.a::new)
+         $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(dp.a::a), ale.a.fieldOf("recipe").forGetter(dp.a::b)).apply($$0, dp.a::new)
       );
 
-      public boolean a(cys<?> $$0) {
+      public boolean a(cyv<?> $$0) {
          return this.c.equals($$0.a());
       }
 
@@ -30,7 +30,7 @@ public class dp extends dr<dp.a> {
          return this.b;
       }
 
-      public alb b() {
+      public ale b() {
          return this.c;
       }
    }

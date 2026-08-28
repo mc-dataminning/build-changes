@@ -1,108 +1,44 @@
-import com.mojang.logging.LogUtils;
-import java.time.Instant;
+import com.mojang.authlib.GameProfile;
+import java.time.Duration;
 import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class yf {
-   static final Logger a = LogUtils.getLogger();
-   @Nullable
-   yg b;
-   Instant c = Instant.EPOCH;
-
-   public yf(UUID $$0, UUID $$1) {
-      this.b = yg.a($$0, $$1);
+public record yf(UUID a, cmy b) {
+   public yk a(Duration $$0) {
+      return new yk.a(this.b.a(), () -> this.b.b().a($$0));
    }
 
-   public yf.c a(azi $$0) {
-      return $$1 -> {
-         yg $$2 = this.b;
-         if ($$2 == null) {
-            return null;
-         } else {
-            this.b = $$2.a();
-            return new xx($$0.sign($$2x -> yb.a($$2x, $$2, $$1)));
-         }
-      };
+   public yi.b a(UUID $$0) {
+      return new yi($$0, this.a).a(this.b);
    }
 
-   public yf.b a(final cmv $$0) {
-      final azh $$1 = $$0.a();
-      return new yf.b() {
-         @Override
-         public yb unpack(@Nullable xx $$0x, ye $$1x) throws yf.a {
-            if ($$0 == null) {
-               throw new yf.a(yf.a.a);
-            } else if ($$0.b().a()) {
-               throw new yf.a(yf.a.c);
-            } else {
-               yg $$2 = yf.this.b;
-               if ($$2 == null) {
-                  throw new yf.a(yf.a.b);
-               } else if ($$1.b().isBefore(yf.this.c)) {
-                  this.setChainBroken();
-                  throw new yf.a(yf.a.e);
-               } else {
-                  yf.this.c = $$1.b();
-                  yb $$3 = new yb($$2, $$0, $$1, null, xp.c);
-                  if (!$$3.a($$1)) {
-                     this.setChainBroken();
-                     throw new yf.a(yf.a.d);
-                  } else {
-                     if ($$3.a(Instant.now())) {
-                        yf.a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$1.a());
-                     }
-
-                     yf.this.b = $$2.a();
-                     return $$3;
-                  }
-               }
-            }
-         }
-
-         @Override
-         public void setChainBroken() {
-            yf.this.b = null;
-         }
-      };
+   public yf.a a() {
+      return new yf.a(this.a, this.b.b());
    }
 
-   public static class a extends yl {
-      static final xl a = xl.c("chat.disabled.missingProfileKey");
-      static final xl b = xl.c("chat.disabled.chain_broken");
-      static final xl c = xl.c("chat.disabled.expiredProfileKey");
-      static final xl d = xl.c("chat.disabled.invalid_signature");
-      static final xl e = xl.c("chat.disabled.out_of_order_chat");
-
-      public a(xl $$0) {
-         super($$0);
-      }
+   public boolean b() {
+      return this.b.b().a();
    }
 
-   @FunctionalInterface
-   public interface b {
-      static yf.b unsigned(UUID $$0, BooleanSupplier $$1) {
-         return ($$2, $$3) -> {
-            if ($$1.getAsBoolean()) {
-               throw new yf.a(yf.a.a);
-            } else {
-               return yb.a($$0, $$3.a());
-            }
-         };
+   public UUID c() {
+      return this.a;
+   }
+
+   public cmy d() {
+      return this.b;
+   }
+
+   public static record a(UUID a, cmy.a b) {
+      public static yf.a a(wl $$0) {
+         return new yf.a($$0.n(), new cmy.a($$0));
       }
 
-      yb unpack(@Nullable xx var1, ye var2) throws yf.a;
-
-      default void setChainBroken() {
+      public static void a(wl $$0, yf.a $$1) {
+         $$0.a($$1.a);
+         $$1.b.a($$0);
       }
-   }
 
-   @FunctionalInterface
-   public interface c {
-      yf.c a = $$0 -> null;
-
-      @Nullable
-      xx pack(ye var1);
+      public yf a(GameProfile $$0, azk $$1) throws cmy.b {
+         return new yf(this.a, cmy.a($$1, $$0.getId(), this.b));
+      }
    }
 }

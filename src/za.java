@@ -1,33 +1,15 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Locale;
 
-public class za implements zb {
-   public static final zc<za> a = new zc<za>() {
-      private static final MapCodec<za> a = xn.a.fieldOf("value").xmap(za::new, $$0 -> $$0.b);
-      private static final zj<ww, za> b = zj.a(xn.d, $$0 -> $$0.b, za::new);
-
-      @Override
-      public MapCodec<za> a() {
-         return a;
-      }
-
-      @Override
-      public zj<ww, za> b() {
-         return b;
-      }
-   };
-   final xl b;
-
-   public za(xl $$0) {
-      this.b = $$0;
+public class za extends IllegalArgumentException {
+   public za(yz $$0, String $$1) {
+      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
    }
 
-   @Override
-   public xz a(int $$0) {
-      return this.b.f();
+   public za(yz $$0, int $$1) {
+      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
    }
 
-   @Override
-   public zc<za> a() {
-      return a;
+   public za(yz $$0, Throwable $$1) {
+      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
    }
 }

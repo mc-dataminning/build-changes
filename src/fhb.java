@@ -1,135 +1,166 @@
+import com.google.common.collect.Maps;
 import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.UUID;
 
-public class fhb extends fgq {
-   private static final alb a = new alb("widget/checkbox_selected_highlighted");
-   private static final alb b = new alb("widget/checkbox_selected");
-   private static final alb c = new alb("widget/checkbox_highlighted");
-   private static final alb d = new alb("widget/checkbox");
-   private static final int f = 14737632;
-   private static final int m = 4;
-   private static final int n = 8;
-   private boolean o;
-   private final fhb.b p;
+public class fhb {
+   private static final int a = 182;
+   private static final int b = 5;
+   private static final ale[] c = new ale[]{
+      new ale("boss_bar/pink_background"),
+      new ale("boss_bar/blue_background"),
+      new ale("boss_bar/red_background"),
+      new ale("boss_bar/green_background"),
+      new ale("boss_bar/yellow_background"),
+      new ale("boss_bar/purple_background"),
+      new ale("boss_bar/white_background")
+   };
+   private static final ale[] d = new ale[]{
+      new ale("boss_bar/pink_progress"),
+      new ale("boss_bar/blue_progress"),
+      new ale("boss_bar/red_progress"),
+      new ale("boss_bar/green_progress"),
+      new ale("boss_bar/yellow_progress"),
+      new ale("boss_bar/purple_progress"),
+      new ale("boss_bar/white_progress")
+   };
+   private static final ale[] e = new ale[]{
+      new ale("boss_bar/notched_6_background"),
+      new ale("boss_bar/notched_10_background"),
+      new ale("boss_bar/notched_12_background"),
+      new ale("boss_bar/notched_20_background")
+   };
+   private static final ale[] f = new ale[]{
+      new ale("boss_bar/notched_6_progress"),
+      new ale("boss_bar/notched_10_progress"),
+      new ale("boss_bar/notched_12_progress"),
+      new ale("boss_bar/notched_20_progress")
+   };
+   private final ffd g;
+   final Map<UUID, fhq> h = Maps.newLinkedHashMap();
 
-   fhb(int $$0, int $$1, xl $$2, fgk $$3, boolean $$4, fhb.b $$5) {
-      super($$0, $$1, a($$3) + 4 + $$3.a($$2), a($$3), $$2);
-      this.o = $$4;
-      this.p = $$5;
+   public fhb(ffd $$0) {
+      this.g = $$0;
    }
 
-   public static fhb.a a(xl $$0, fgk $$1) {
-      return new fhb.a($$0, $$1);
+   public void a(fgp $$0) {
+      if (!this.h.isEmpty()) {
+         this.g.aI().a("bossHealth");
+         int $$1 = $$0.a();
+         int $$2 = 12;
+
+         for (fhq $$3 : this.h.values()) {
+            int $$4 = $$1 / 2 - 91;
+            this.a($$0, $$4, $$2, $$3);
+            xo $$6 = $$3.i();
+            int $$7 = this.g.h.a($$6);
+            int $$8 = $$1 / 2 - $$7 / 2;
+            int $$9 = $$2 - 9;
+            $$0.b(this.g.h, $$6, $$8, $$9, 16777215);
+            $$2 += 10 + 9;
+            if ($$2 >= $$0.b() / 3) {
+               break;
+            }
+         }
+
+         this.g.aI().c();
+      }
    }
 
-   public static int a(fgk $$0) {
-      return 9 + 8;
+   private void a(fgp $$0, int $$1, int $$2, bqi $$3) {
+      this.a($$0, $$1, $$2, $$3, 182, c, e);
+      int $$4 = ayx.b($$3.j(), 0, 182);
+      if ($$4 > 0) {
+         this.a($$0, $$1, $$2, $$3, $$4, d, f);
+      }
    }
 
-   @Override
-   public void b() {
-      this.o = !this.o;
-      this.p.onValueChange(this, this.o);
+   private void a(fgp $$0, int $$1, int $$2, bqi $$3, int $$4, ale[] $$5, ale[] $$6) {
+      RenderSystem.enableBlend();
+      $$0.a($$5[$$3.k().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      if ($$3.l() != bqi.b.a) {
+         $$0.a($$6[$$3.l().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      }
+
+      RenderSystem.disableBlend();
    }
 
-   public boolean a() {
-      return this.o;
+   public void a(acr $$0) {
+      $$0.a(new acr.b() {
+         @Override
+         public void a(UUID $$0, xo $$1, float $$2, bqi.a $$3, bqi.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+            fhb.this.h.put($$0, new fhq($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         }
+
+         @Override
+         public void a(UUID $$0) {
+            fhb.this.h.remove($$0);
+         }
+
+         @Override
+         public void a(UUID $$0, float $$1) {
+            fhb.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, xo $$1) {
+            fhb.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, bqi.a $$1, bqi.b $$2) {
+            fhq $$3 = fhb.this.h.get($$0);
+            $$3.a($$1);
+            $$3.a($$2);
+         }
+
+         @Override
+         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
+            fhq $$4 = fhb.this.h.get($$0);
+            $$4.a($$1);
+            $$4.b($$2);
+            $$4.c($$3);
+         }
+      });
    }
 
-   @Override
-   public void a(fkv $$0) {
-      $$0.a(fku.a, this.aL_());
-      if (this.j) {
-         if (this.aJ_()) {
-            $$0.a(fku.d, xl.c("narration.checkbox.usage.focused"));
-         } else {
-            $$0.a(fku.d, xl.c("narration.checkbox.usage.hovered"));
+   public void a() {
+      this.h.clear();
+   }
+
+   public boolean b() {
+      if (!this.h.isEmpty()) {
+         for (bqi $$0 : this.h.values()) {
+            if ($$0.n()) {
+               return true;
+            }
          }
       }
+
+      return false;
    }
 
-   @Override
-   public void b(fgm $$0, int $$1, int $$2, float $$3) {
-      ffa $$4 = ffa.Q();
-      RenderSystem.enableDepthTest();
-      fgk $$5 = $$4.h;
-      $$0.a(1.0F, 1.0F, 1.0F, this.l);
-      RenderSystem.enableBlend();
-      alb $$6;
-      if (this.o) {
-         $$6 = this.aJ_() ? a : b;
-      } else {
-         $$6 = this.aJ_() ? c : d;
+   public boolean c() {
+      if (!this.h.isEmpty()) {
+         for (bqi $$0 : this.h.values()) {
+            if ($$0.m()) {
+               return true;
+            }
+         }
       }
 
-      int $$8 = a($$5);
-      int $$9 = this.C() + $$8 + 4;
-      int $$10 = this.D() + (this.h >> 1) - (9 >> 1);
-      $$0.a($$6, this.C(), this.D(), $$8, $$8);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      $$0.b($$5, this.y(), $$9, $$10, 14737632 | ayu.f(this.l * 255.0F) << 24);
+      return false;
    }
 
-   public static class a {
-      private final xl a;
-      private final fgk b;
-      private int c = 0;
-      private int d = 0;
-      private fhb.b e = fhb.b.a;
-      private boolean f = false;
-      @Nullable
-      private ffd<Boolean> g = null;
-      @Nullable
-      private fik h = null;
-
-      a(xl $$0, fgk $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public boolean d() {
+      if (!this.h.isEmpty()) {
+         for (bqi $$0 : this.h.values()) {
+            if ($$0.o()) {
+               return true;
+            }
+         }
       }
 
-      public fhb.a a(int $$0, int $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         return this;
-      }
-
-      public fhb.a a(fhb.b $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fhb.a a(boolean $$0) {
-         this.f = $$0;
-         this.g = null;
-         return this;
-      }
-
-      public fhb.a a(ffd<Boolean> $$0) {
-         this.g = $$0;
-         this.f = $$0.c();
-         return this;
-      }
-
-      public fhb.a a(fik $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public fhb a() {
-         fhb.b $$0 = this.g == null ? this.e : ($$0x, $$1x) -> {
-            this.g.a($$1x);
-            this.e.onValueChange($$0x, $$1x);
-         };
-         fhb $$1 = new fhb(this.c, this.d, this.a, this.b, this.f, $$0);
-         $$1.a(this.h);
-         return $$1;
-      }
-   }
-
-   public interface b {
-      fhb.b a = ($$0, $$1) -> {
-      };
-
-      void onValueChange(fhb var1, boolean var2);
+      return false;
    }
 }

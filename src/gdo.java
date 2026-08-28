@@ -1,70 +1,30 @@
+import com.mojang.blaze3d.systems.RenderSystem;
+
 public class gdo {
-   private int a;
-   private int b;
-   private int c;
-   private int d;
+   public static final ale a = new ale("textures/gui/title/background/panorama_overlay.png");
+   private final ffd b;
+   private final gda c;
+   private float d;
+   private float e;
 
-   public gdo(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public gdo a(gdo $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      int $$3 = this.a + this.c;
-      int $$4 = this.b + this.d;
-      int $$5 = $$0.a();
-      int $$6 = $$0.b();
-      int $$7 = $$5 + $$0.c();
-      int $$8 = $$6 + $$0.d();
-      this.a = Math.max($$1, $$5);
-      this.b = Math.max($$2, $$6);
-      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
-      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
-      return this;
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      this.a = $$0;
-   }
-
-   public void b(int $$0) {
-      this.b = $$0;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   public void c(int $$0) {
+   public gdo(gda $$0) {
       this.c = $$0;
+      this.b = ffd.Q();
    }
 
-   public void d(int $$0) {
-      this.d = $$0;
+   public void a(fgp $$0, int $$1, int $$2, float $$3, float $$4) {
+      float $$5 = (float)((double)$$4 * this.b.m.s().c());
+      this.d = a(this.d + $$5 * 0.1F, 360.0F);
+      this.e = a(this.e + $$5 * 0.001F, (float) (Math.PI * 2));
+      this.c.a(this.b, 10.0F, -this.d, $$3);
+      RenderSystem.enableBlend();
+      $$0.a(1.0F, 1.0F, 1.0F, $$3);
+      $$0.a(a, 0, 0, $$1, $$2, 0.0F, 0.0F, 16, 128, 16, 128);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
    }
 
-   public void a(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
+   private static float a(float $$0, float $$1) {
+      return $$0 > $$1 ? $$0 - $$1 : $$0;
    }
 }

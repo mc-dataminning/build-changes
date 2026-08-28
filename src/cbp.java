@@ -1,48 +1,67 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cbp extends cai {
-   private final cjk a;
-   @Nullable
-   private btk b;
+public class cbp extends cal {
+   private final chh a;
+   private final double b;
+   private double c;
+   private double d;
+   private double e;
 
-   public cbp(cjk $$0) {
+   public cbp(chh $$0, double $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(cai.a.a));
+      this.b = $$1;
+      this.a(EnumSet.of(cal.a.a));
    }
 
    @Override
    public boolean a() {
-      btk $$0 = this.a.p();
-      return this.a.u() > 0 || $$0 != null && this.a.g((bsp)$$0) < 9.0;
+      if (!this.a.gF() && this.a.bS()) {
+         evp $$0 = cei.a(this.a, 5, 4);
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            return true;
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
    public void c() {
-      this.a.K().n();
-      this.b = this.a.p();
+      this.a.K().a(this.c, this.d, this.e, this.b);
    }
 
    @Override
-   public void d() {
-      this.b = null;
-   }
-
-   @Override
-   public boolean R_() {
-      return true;
+   public boolean b() {
+      return !this.a.gF() && !this.a.K().l() && this.a.bS();
    }
 
    @Override
    public void e() {
-      if (this.b == null) {
-         this.a.b(-1);
-      } else if (this.a.g((bsp)this.b) > 49.0) {
-         this.a.b(-1);
-      } else if (!this.a.M().a(this.b)) {
-         this.a.b(-1);
-      } else {
-         this.a.b(1);
+      if (!this.a.gF() && this.a.el().a(this.a(50)) == 0) {
+         bss $$0 = this.a.cT();
+         if ($$0 == null) {
+            return;
+         }
+
+         if ($$0 instanceof cmv $$1) {
+            int $$2 = this.a.gL();
+            int $$3 = this.a.gQ();
+            if ($$3 > 0 && this.a.el().a($$3) < $$2) {
+               this.a.h($$1);
+               return;
+            }
+
+            this.a.w(5);
+         }
+
+         this.a.bH();
+         this.a.gV();
+         this.a.dP().a(this.a, (byte)6);
       }
    }
 }

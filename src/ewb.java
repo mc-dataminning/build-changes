@@ -1,20 +1,13 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class ewb extends AbstractDoubleList {
-   private final DoubleList a;
-   private final double b;
+interface ewb {
+   DoubleList a();
 
-   public ewb(DoubleList $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   boolean a(ewb.a var1);
 
-   public double getDouble(int $$0) {
-      return this.a.getDouble($$0) + this.b;
-   }
+   int size();
 
-   public int size() {
-      return this.a.size();
+   public interface a {
+      boolean merge(int var1, int var2, int var3);
    }
 }

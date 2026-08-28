@@ -1,16 +1,26 @@
-public record aay() implements aat {
-   public static final zj<wl, aay> a = aat.a(aay::a, aay::new);
-   public static final aat.b<aay> b = aat.a("debug/game_test_clear");
+public record aay(ald<dwt> c, evp d) implements aaw {
+   public static final zm<wl, aay> a = aaw.a(aay::a, aay::new);
+   public static final aaw.b<aay> b = aaw.a("debug/game_event");
 
    private aay(wl $$0) {
-      this();
+      this($$0.a(lq.C), $$0.k());
    }
 
    private void a(wl $$0) {
+      $$0.b(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public aat.b<aay> a() {
+   public aaw.b<aay> a() {
       return b;
+   }
+
+   public ald<dwt> b() {
+      return this.c;
+   }
+
+   public evp c() {
+      return this.d;
    }
 }

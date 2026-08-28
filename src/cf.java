@@ -4,36 +4,36 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Predicate;
 
-public record cf(Optional<bc<cxf.b, cf.a>> c) implements ds<cxf> {
+public record cf(Optional<bc<cxi.b, cf.a>> c) implements ds<cxi> {
    public static final Codec<cf> a = RecordCodecBuilder.create($$0 -> $$0.group(bc.a(cf.a.a).optionalFieldOf("modifiers").forGetter(cf::b)).apply($$0, cf::new));
 
    @Override
-   public kl<cxf> a() {
+   public kl<cxi> a() {
       return km.m;
    }
 
-   public boolean a(cuk $$0, cxf $$1) {
+   public boolean a(cun $$0, cxi $$1) {
       return !this.c.isPresent() || this.c.get().a($$1.b());
    }
 
-   public Optional<bc<cxf.b, cf.a>> b() {
+   public Optional<bc<cxi.b, cf.a>> b() {
       return this.c;
    }
 
-   public static record a(Optional<jm<bun>> b, Optional<UUID> c, Optional<String> d, de.c e, Optional<buq.a> f, Optional<bsx> g) implements Predicate<cxf.b> {
+   public static record a(Optional<jm<buq>> b, Optional<UUID> c, Optional<String> d, de.c e, Optional<but.a> f, Optional<bta> g) implements Predicate<cxi.b> {
       public static final Codec<cf.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   jx.a(lq.c).optionalFieldOf("attribute").forGetter(cf.a::a),
                   kc.f.optionalFieldOf("uuid").forGetter(cf.a::b),
                   Codec.STRING.optionalFieldOf("name").forGetter(cf.a::c),
                   de.c.d.optionalFieldOf("amount", de.c.c).forGetter(cf.a::d),
-                  buq.a.f.optionalFieldOf("operation").forGetter(cf.a::e),
-                  bsx.l.optionalFieldOf("slot").forGetter(cf.a::f)
+                  but.a.f.optionalFieldOf("operation").forGetter(cf.a::e),
+                  bta.l.optionalFieldOf("slot").forGetter(cf.a::f)
                )
                .apply($$0, cf.a::new)
       );
 
-      public boolean a(cxf.b $$0) {
+      public boolean a(cxi.b $$0) {
          if (this.b.isPresent() && !this.b.get().a($$0.a())) {
             return false;
          } else if (this.c.isPresent() && !this.c.get().equals($$0.b().b())) {
@@ -47,7 +47,7 @@ public record cf(Optional<bc<cxf.b, cf.a>> c) implements ds<cxf> {
          }
       }
 
-      public Optional<jm<bun>> a() {
+      public Optional<jm<buq>> a() {
          return this.b;
       }
 
@@ -63,11 +63,11 @@ public record cf(Optional<bc<cxf.b, cf.a>> c) implements ds<cxf> {
          return this.e;
       }
 
-      public Optional<buq.a> e() {
+      public Optional<but.a> e() {
          return this.f;
       }
 
-      public Optional<bsx> f() {
+      public Optional<bta> f() {
          return this.g;
       }
    }

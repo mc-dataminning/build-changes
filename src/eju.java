@@ -1,25 +1,15 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
 
-record eju(boz<List<ejq>> c) implements ejq {
-   static MapCodec<eju> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(boz.b(Codec.list(ejq.b)).fieldOf("groups").forGetter(eju::c)).apply($$0, eju::new));
-
-   @Override
-   public void a(azc $$0, BiConsumer<ala<ejo>, ala<ejo>> $$1) {
-      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
+public class eju {
+   public static MapCodec<? extends ejt> a(jv<MapCodec<? extends ejt>> $$0) {
+      jv.a($$0, "random", ejw.a);
+      jv.a($$0, "random_group", ejx.a);
+      return jv.a($$0, "direct", ejs.a);
    }
 
-   @Override
-   public Stream<ala<ejo>> a() {
-      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(ejq::a);
-   }
-
-   @Override
-   public MapCodec<eju> b() {
-      return a;
+   public static void a(rc<ejr> $$0, ji<ejr> $$1, List<ejt> $$2) {
+      $$2.stream().flatMap(ejt::a).map($$0x -> $$0x.a().a()).forEach($$2x -> rj.a($$0, $$2x, new ejr($$1, List.of(Pair.of(ejp.b($$2x), 1)), ejr.a.b)));
    }
 }

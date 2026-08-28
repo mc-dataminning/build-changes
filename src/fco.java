@@ -1,99 +1,79 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fco extends gve {
+   private static final xo a = xo.c("mco.selectServer.create");
+   private static final xo b = xo.c("mco.configure.world.name");
+   private static final xo c = xo.c("mco.configure.world.description");
+   private static final int B = 10;
+   private static final int C = 210;
+   private final fah D;
+   private final fkp E = new fkp(this);
+   private fhl F;
+   private fhl G;
+   private final Runnable H;
 
-public class fco extends gvb {
-   private static final Logger a = LogUtils.getLogger();
-   private static final xl b = xl.c("mco.configure.world.buttons.invite");
-   private static final xl c = xl.c("mco.configure.world.invite.profile.name").b(-6250336);
-   private static final xl B = xl.c("mco.configure.world.players.inviting").b(-6250336);
-   private static final xl C = xl.c("mco.configure.world.players.error").b(-65536);
-   private final fkm D = new fkm(this);
-   private fhi E;
-   private fgz F;
-   private final fba G;
-   private final fcj H;
-   private final fmy I;
-   @Nullable
-   private xl J;
+   public fco(fah $$0, fbd $$1) {
+      super(a);
+      this.D = $$0;
+      this.H = () -> this.a($$1);
+   }
 
-   public fco(fcj $$0, fmy $$1, fba $$2) {
-      super(b);
-      this.H = $$0;
-      this.I = $$1;
-      this.G = $$2;
+   public fco(fah $$0, long $$1) {
+      super(a);
+      this.D = $$0;
+      this.H = () -> this.a($$1);
    }
 
    @Override
-   public void aN_() {
-      this.D.a(b, this.p);
-      fkq $$0 = this.D.c(fkq.d().a(8));
-      this.E = new fhi(this.m.h, 200, 20, xl.c("mco.configure.world.invite.profile.name"));
-      $$0.a(fki.a(this.p, this.E, c));
-      this.F = $$0.a(fgz.a(b, $$0x -> this.C()).a(200).a());
-      this.D.b(fgz.a(xk.k, $$0x -> this.d()).a(200).a());
-      this.D.a($$1 -> {
-         fgx var10000 = this.c($$1);
+   public void aM_() {
+      this.E.a(this.l, this.p);
+      fkt $$0 = this.E.c(fkt.d()).a(10);
+      fhc $$1 = fhc.a(xn.j, $$0x -> this.H.run()).a();
+      $$1.j = false;
+      this.F = new fhl(this.p, 210, 20, b);
+      this.F.b($$1x -> $$1.j = !azt.h($$1x));
+      this.G = new fhl(this.p, 210, 20, c);
+      $$0.a(fkl.a(this.p, this.F, b));
+      $$0.a(fkl.a(this.p, this.G, c));
+      fkt $$2 = this.E.b(fkt.e().a(10));
+      $$2.a($$1);
+      $$2.a(fhc.a(xn.k, $$0x -> this.d()).a());
+      this.E.a($$1x -> {
+         fha var10000 = this.c($$1x);
       });
       this.c();
    }
 
    @Override
-   protected void c() {
-      this.D.a();
+   protected void aC_() {
+      this.b(this.F);
    }
 
    @Override
-   protected void aD_() {
-      this.b(this.E);
+   protected void c() {
+      this.E.a();
    }
 
-   private void C() {
-      if (azq.h(this.E.a())) {
-         this.a(C);
-      } else {
-         long $$0 = this.G.a;
-         String $$1 = this.E.a().trim();
-         this.F.j = false;
-         this.E.e(false);
-         this.a(B);
-         CompletableFuture.<fba>supplyAsync(() -> {
-            try {
-               return faj.a().a($$0, $$1);
-            } catch (Exception var4) {
-               a.error("Couldn't invite user");
-               return null;
-            }
-         }, ac.h()).thenAcceptAsync($$0x -> {
-            if ($$0x != null) {
-               this.G.h = $$0x.h;
-               this.m.a(new fcv(this.H, this.G));
-            } else {
-               this.a(C);
-            }
-
-            this.E.e(true);
-            this.F.j = true;
-         }, this.q);
-      }
+   private void a(fbd $$0) {
+      fef $$1 = new fef($$0.a, this.F.a(), this.G.a());
+      fdb $$2 = fdb.a(this, $$0, $$1, () -> this.m.execute(() -> {
+            fah.g();
+            this.m.a(this.D);
+         }));
+      this.m.a($$2);
    }
 
-   private void a(xl $$0) {
-      this.J = $$0;
-      this.m.aX().c($$0);
+   private void a(long $$0) {
+      fnb $$1 = new fda($$1x -> {
+         if ($$1x == null) {
+            this.m.a(this);
+         } else {
+            this.m.a(new fct(this, new fea(this.D, $$0, $$1x, this.F.a(), this.G.a())));
+         }
+      }, a);
+      this.m.a($$1);
    }
 
    @Override
    public void d() {
-      this.m.a(this.I);
-   }
-
-   @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.J != null) {
-         $$0.a(this.p, this.J, this.n / 2, this.F.D() + this.F.v() + 8, -1);
-      }
+      this.m.a(this.D);
    }
 }

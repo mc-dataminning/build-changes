@@ -1,5 +1,6 @@
 import java.util.concurrent.CompletableFuture;
 
+@FunctionalInterface
 public interface duy {
-   CompletableFuture<Void> a(dba var1, vl var2);
+   CompletableFuture<dtw> apply(dtw var1);
 }

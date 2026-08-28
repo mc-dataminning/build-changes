@@ -1,18 +1,60 @@
-public class giv<T extends cki> extends gjl<T> {
-   private static final alb a = new alb("textures/entity/illager/evoker.png");
+@FunctionalInterface
+public interface giv<T extends bss> {
+   giu<T> create(giv.a var1);
 
-   public giv(gis.a $$0) {
-      super($$0, new fuj<>($$0.a(fwu.ab)), 0.5F);
-      this.a(new gmx<T, fuj<T>>(this, $$0.d()) {
-         public void a(ezt $$0, gdj $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.gA()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
-   }
+   public static class a {
+      private final git a;
+      private final gjt b;
+      private final geg c;
+      private final gdi d;
+      private final auo e;
+      private final fwu f;
+      private final fgn g;
 
-   public alb a(T $$0) {
-      return a;
+      public a(git $$0, gjt $$1, geg $$2, gdi $$3, auo $$4, fwu $$5, fgn $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
+
+      public git a() {
+         return this.a;
+      }
+
+      public gjt b() {
+         return this.b;
+      }
+
+      public geg c() {
+         return this.c;
+      }
+
+      public gdi d() {
+         return this.d;
+      }
+
+      public auo e() {
+         return this.e;
+      }
+
+      public fwu f() {
+         return this.f;
+      }
+
+      public gre g() {
+         return this.c.a().a();
+      }
+
+      public fwy a(fww $$0) {
+         return this.f.a($$0);
+      }
+
+      public fgn h() {
+         return this.g;
+      }
    }
 }

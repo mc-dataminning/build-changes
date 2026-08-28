@@ -1,29 +1,37 @@
-public class afb implements zs<ace> {
-   public static final zj<wl, afb> a = zs.a(afb::a, afb::new);
-   private final int b;
+public class afb implements zv<ach> {
+   public static final zm<wl, afb> a = zv.a(afb::a, afb::new);
+   private final double b;
+   private final double c;
 
-   public afb(dto $$0) {
-      this.b = $$0.q();
+   public afb(dtr $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
    }
 
    private afb(wl $$0) {
-      this.b = $$0.l();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
    }
 
    private void a(wl $$0) {
-      $$0.c(this.b);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zu<afb> a() {
-      return agq.au;
+   public zx<afb> a() {
+      return agt.ar;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
+      return this.c;
+   }
+
+   public double e() {
       return this.b;
    }
 }

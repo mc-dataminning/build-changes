@@ -1,44 +1,47 @@
-public class ftz<T extends bsp> extends fue<T> {
-   private final fwv a;
-   private final fwv[] b = new fwv[9];
+public class ftz<T extends bss> extends fuh<T> {
+   private static final String a = "base";
+   private static final String b = "upper_jaw";
+   private static final String f = "lower_jaw";
+   private final fwy g;
+   private final fwy h;
+   private final fwy i;
+   private final fwy j;
 
-   public ftz(fwv $$0) {
-      this.a = $$0;
-
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         this.b[$$1] = $$0.b(a($$1));
-      }
+   public ftz(fwy $$0) {
+      this.g = $$0;
+      this.h = $$0.b("base");
+      this.i = $$0.b("upper_jaw");
+      this.j = $$0.b("lower_jaw");
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
-   }
-
-   public static fxb b() {
-      fxd $$0 = new fxd();
-      fxe $$1 = $$0.a();
-      $$1.a("body", fxa.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fwx.a(0.0F, 17.6F, 0.0F));
-      azc $$2 = azc.a(1660L);
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         int $$6 = $$2.a(7) + 8;
-         $$1.a(a($$3), fxa.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), fwx.a($$4, 24.6F, $$5));
-      }
-
-      return fxb.a($$0, 64, 32);
+   public static fxe b() {
+      fxg $$0 = new fxg();
+      fxh $$1 = $$0.a();
+      $$1.a("base", fxd.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), fxa.a(-5.0F, 24.0F, -5.0F));
+      fxd $$2 = fxd.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
+      $$1.a("upper_jaw", $$2, fxa.a(1.5F, 24.0F, -4.0F));
+      $$1.a("lower_jaw", $$2, fxa.a(-1.5F, 24.0F, 4.0F, 0.0F, (float) Math.PI, 0.0F));
+      return fxe.a($$0, 64, 32);
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.b.length; $$6++) {
-         this.b[$$6].e = 0.2F * ayu.a($$3 * 0.3F + (float)$$6) + 0.4F;
+      float $$6 = $$1 * 2.0F;
+      if ($$6 > 1.0F) {
+         $$6 = 1.0F;
       }
+
+      $$6 = 1.0F - $$6 * $$6 * $$6;
+      this.i.g = (float) Math.PI - $$6 * 0.35F * (float) Math.PI;
+      this.j.g = (float) Math.PI + $$6 * 0.35F * (float) Math.PI;
+      float $$7 = ($$1 + ayx.a($$1 * 2.7F)) * 0.6F * 12.0F;
+      this.i.c = 24.0F - $$7;
+      this.j.c = this.i.c;
+      this.h.c = this.i.c;
    }
 
    @Override
-   public fwv a() {
-      return this.a;
+   public fwy a() {
+      return this.g;
    }
 }

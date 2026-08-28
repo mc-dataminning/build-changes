@@ -1,25 +1,14 @@
-import java.util.Arrays;
+import com.mojang.serialization.MapCodec;
 
-public class bpw implements bpx {
-   private final bpx[] a;
+public interface bpw<P extends bpv> {
+   bpw<bpt> a = a("constant", bpt.b);
+   bpw<bqc> b = a("uniform", bqc.a);
+   bpw<bpr> c = a("clamped_normal", bpr.a);
+   bpw<bqb> d = a("trapezoid", bqb.a);
 
-   public bpw(bpx... $$0) {
-      this.a = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public float a(azc $$0) {
-      float $$1 = 1.0F;
-
-      for (bpx $$2 : this.a) {
-         $$1 *= $$2.a($$0);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
+   static <P extends bpv> bpw<P> a(String $$0, MapCodec<P> $$1) {
+      return jv.a(lp.L, $$0, () -> $$1);
    }
 }

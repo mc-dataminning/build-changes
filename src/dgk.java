@@ -1,43 +1,71 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dgk extends dec {
-   public static final MapCodec<dgk> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dgj.a.forGetter($$0x -> $$0x.c), u()).apply($$0, dgk::new));
-   private final deu c;
+public class dgk extends dej implements dly {
+   public static final MapCodec<dgk> a = b(dgk::new);
+   public static final dsr b = dsq.C;
+   private static final int d = 3;
+   protected static final ewi c = dex.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
    @Override
    public MapCodec<dgk> a() {
-      return b;
+      return a;
    }
 
-   protected dgk(deu $$0, drw.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
-
-   @Override
-   protected void b(drx $$0, dbt $$1, iz $$2, drx $$3, boolean $$4) {
-      this.a($$0, (dbu)$$1, $$2);
+   public dgk(drz.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected void a(drx $$0, arb $$1, iz $$2, azc $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.c.n().a(d, Boolean.valueOf(false)), 2);
+   protected void a(dsb.a<dex, dsa> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public dpf a(iz $$0, dsa $$1) {
+      return new dpr($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dpf> dpg<T> a(dbw $$0, dsa $$1, dph<T> $$2) {
+      return a($$2, dph.z, $$0.B ? dpr::a : dpr::b);
+   }
+
+   @Override
+   protected dld a_(dsa $$0) {
+      return dld.b;
+   }
+
+   @Override
+   protected ent b_(dsa $$0) {
+      return $$0.c(b) ? enu.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, enu.c, enu.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
-      if ($$1 == je.a && !$$0.a($$3, $$4)) {
-         return dew.a.n();
-      } else {
-         this.a($$0, $$3, $$4);
-         if ($$0.c(d)) {
-            $$3.a($$4, enr.c, enr.c.a($$3));
-         }
+   protected ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
+      return c;
+   }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   @Nullable
+   @Override
+   public dsa a(cxy $$0) {
+      ent $$1 = $$0.q().b_($$0.a());
+      return this.o().a(b, Boolean.valueOf($$1.a(awu.a) && $$1.e() == 8));
+   }
+
+   @Override
+   protected boolean a(dsa $$0, eoi $$1) {
+      return false;
    }
 }

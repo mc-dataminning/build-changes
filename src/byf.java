@@ -1,104 +1,53 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class byf extends bvd<cmf> {
-   private static final int c = 80;
-   private long d;
-   private long e;
-   private int f;
-   private Optional<iz> g = Optional.empty();
+public class byf {
+   public static bvh<btw> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return byt.a(
+         (Function<byt.b<btw>, ? extends App<byt.c<btw>, byw<btw>>>)($$3 -> $$3.group($$3.c(ccr.o), $$3.c(ccr.m), $$3.a(ccr.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if ($$5x.b_($$6.dp()).a(awu.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 20L + 2L);
+                        return true;
+                     } else {
+                        iz $$8 = null;
+                        iz $$9 = null;
+                        iz $$10 = $$6.dp();
 
-   public byf() {
-      super(ImmutableMap.of(cco.n, ccp.b, cco.m, ccp.b));
-   }
+                        for (iz $$12 : iz.a($$10, $$0, $$0, $$0)) {
+                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
+                              dsa $$13 = $$6.dP().a_($$12.c());
+                              dsa $$14 = $$6.dP().a_($$12);
+                              if ($$14.a(dez.G)) {
+                                 if ($$13.i()) {
+                                    $$8 = $$12.i();
+                                    break;
+                                 }
 
-   protected boolean a(arb $$0, cmf $$1) {
-      if ($$1.ai % 10 == 0 && (this.e == 0L || this.e + 160L <= (long)$$1.ai)) {
-         if ($$1.y().a_(cun.ry) <= 0) {
-            return false;
-         } else {
-            this.g = this.b($$0, $$1);
-            return this.g.isPresent();
-         }
-      } else {
-         return false;
-      }
-   }
+                                 if ($$9 == null && !$$12.a($$6.dn(), 1.5)) {
+                                    $$9 = $$12.i();
+                                 }
+                              }
+                           }
+                        }
 
-   protected boolean a(arb $$0, cmf $$1, long $$2) {
-      return this.f < 80 && this.g.isPresent();
-   }
+                        if ($$8 == null) {
+                           $$8 = $$9;
+                        }
 
-   private Optional<iz> b(arb $$0, cmf $$1) {
-      iz.a $$2 = new iz.a();
-      Optional<iz> $$3 = Optional.empty();
-      int $$4 = 0;
+                        if ($$8 != null) {
+                           $$5.a(new bvj($$8));
+                           $$4.a(new ccu(new bvj($$8), $$1, 0));
+                        }
 
-      for (int $$5 = -1; $$5 <= 1; $$5++) {
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               $$2.a($$1.dp(), $$5, $$6, $$7);
-               if (this.a($$2, $$0)) {
-                  if ($$0.z.a(++$$4) == 0) {
-                     $$3 = Optional.of($$2.i());
-                  }
-               }
-            }
-         }
-      }
-
-      return $$3;
-   }
-
-   private boolean a(iz $$0, arb $$1) {
-      drx $$2 = $$1.a_($$0);
-      deu $$3 = $$2.b();
-      return $$3 instanceof dgp && !((dgp)$$3).h($$2);
-   }
-
-   protected void b(arb $$0, cmf $$1, long $$2) {
-      this.a($$1);
-      $$1.a(bsw.a, new cuk(cun.ry));
-      this.d = $$2;
-      this.f = 0;
-   }
-
-   private void a(cmf $$0) {
-      this.g.ifPresent($$1 -> {
-         bvg $$2 = new bvg($$1);
-         $$0.dS().a(cco.n, $$2);
-         $$0.dS().a(cco.m, new ccr($$2, 0.5F, 1));
-      });
-   }
-
-   protected void c(arb $$0, cmf $$1, long $$2) {
-      $$1.a(bsw.a, cuk.l);
-      this.e = (long)$$1.ai;
-   }
-
-   protected void d(arb $$0, cmf $$1, long $$2) {
-      iz $$3 = this.g.get();
-      if ($$2 >= this.d && $$3.a($$1.dn(), 1.0)) {
-         cuk $$4 = cuk.l;
-         bqy $$5 = $$1.y();
-         int $$6 = $$5.b();
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            cuk $$8 = $$5.a($$7);
-            if ($$8.a(cun.ry)) {
-               $$4 = $$8;
-               break;
-            }
-         }
-
-         if (!$$4.e() && csk.a($$4, $$0, $$3)) {
-            $$0.c(1505, $$3, 15);
-            this.g = this.b($$0, $$1);
-            this.a($$1);
-            this.d = $$2 + 40L;
-         }
-
-         this.f++;
-      }
+                        $$2.setValue($$7 + 40L);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

@@ -1,231 +1,198 @@
-import com.google.common.primitives.Ints;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.yggdrasil.ProfileResult;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.mojang.logging.LogUtils;
-import java.math.BigInteger;
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelException;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.ChannelPipeline;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.epoll.Epoll;
+import io.netty.channel.epoll.EpollEventLoopGroup;
+import io.netty.channel.epoll.EpollServerSocketChannel;
+import io.netty.channel.local.LocalAddress;
+import io.netty.channel.local.LocalServerChannel;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.ServerSocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.timeout.ReadTimeoutHandler;
+import io.netty.util.HashedWheelTimer;
+import io.netty.util.Timeout;
+import io.netty.util.Timer;
+import java.io.IOException;
 import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.net.SocketAddress;
-import java.security.PrivateKey;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
 import net.minecraft.server.MinecraftServer;
-import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 
-public class asd implements ajg, wz {
-   private static final AtomicInteger a = new AtomicInteger(0);
-   static final Logger b = LogUtils.getLogger();
-   private static final int c = 600;
-   private final byte[] d;
+public class asd {
+   private static final Logger d = LogUtils.getLogger();
+   public static final Supplier<NioEventLoopGroup> a = Suppliers.memoize(
+      () -> new NioEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Server IO #%d").setDaemon(true).build())
+   );
+   public static final Supplier<EpollEventLoopGroup> b = Suppliers.memoize(
+      () -> new EpollEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Epoll Server IO #%d").setDaemon(true).build())
+   );
    final MinecraftServer e;
-   final wj f;
-   private volatile asd.a g = asd.a.a;
-   private int h;
-   @Nullable
-   String i;
-   @Nullable
-   private GameProfile j;
-   private final String k = "";
-   private final boolean l;
+   public volatile boolean c;
+   private final List<ChannelFuture> f = Collections.synchronizedList(Lists.newArrayList());
+   final List<wj> g = Collections.synchronizedList(Lists.newArrayList());
 
-   public asd(MinecraftServer $$0, wj $$1, boolean $$2) {
+   public asd(MinecraftServer $$0) {
       this.e = $$0;
-      this.f = $$1;
-      this.d = Ints.toByteArray(azc.a().f());
-      this.l = $$2;
+      this.c = true;
    }
 
-   @Override
-   public void e() {
-      if (this.g == asd.a.e) {
-         this.c(Objects.requireNonNull(this.j));
-      }
-
-      if (this.g == asd.a.f && !this.a(Objects.requireNonNull(this.j))) {
-         this.d(this.j);
-      }
-
-      if (this.h++ == 600) {
-         this.b(xl.c("multiplayer.disconnect.slow_login"));
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return this.f.i();
-   }
-
-   public void b(xl $$0) {
-      try {
-         b.info("Disconnecting {}: {}", this.f(), $$0.getString());
-         this.f.a(new ajd($$0));
-         this.f.a($$0);
-      } catch (Exception var3) {
-         b.error("Error whilst disconnecting player", var3);
-      }
-   }
-
-   private boolean a(GameProfile $$0) {
-      return this.e.ah().a($$0.getId()) != null;
-   }
-
-   @Override
-   public void a(xl $$0) {
-      b.info("{} lost connection: {}", this.f(), $$0.getString());
-   }
-
-   @Override
-   public String f() {
-      String $$0 = this.f.a(this.e.bn());
-      return this.i != null ? this.i + " (" + $$0 + ")" : $$0;
-   }
-
-   @Override
-   public void a(aji $$0) {
-      Validate.validState(this.g == asd.a.a, "Unexpected hello packet", new Object[0]);
-      Validate.validState(azq.f($$0.b()), "Invalid characters in username", new Object[0]);
-      this.i = $$0.b();
-      GameProfile $$1 = this.e.S();
-      if ($$1 != null && this.i.equalsIgnoreCase($$1.getName())) {
-         this.b($$1);
-      } else {
-         if (this.e.Z() && !this.f.e()) {
-            this.g = asd.a.b;
-            this.f.a(new ajb("", this.e.Q().getPublic().getEncoded(), this.d, true));
+   public void a(@Nullable InetAddress $$0, int $$1) throws IOException {
+      synchronized (this.f) {
+         Class<? extends ServerSocketChannel> $$2;
+         EventLoopGroup $$3;
+         if (Epoll.isAvailable() && this.e.p()) {
+            $$2 = EpollServerSocketChannel.class;
+            $$3 = (EventLoopGroup)b.get();
+            d.info("Using epoll channel type");
          } else {
-            this.b(kc.b(this.i));
-         }
-      }
-   }
-
-   void b(GameProfile $$0) {
-      this.j = $$0;
-      this.g = asd.a.e;
-   }
-
-   private void c(GameProfile $$0) {
-      auz $$1 = this.e.ah();
-      xl $$2 = $$1.a(this.f.d(), $$0);
-      if ($$2 != null) {
-         this.b($$2);
-      } else {
-         if (this.e.aA() >= 0 && !this.f.e()) {
-            this.f.a(new ajc(this.e.aA()), ws.a(() -> this.f.a(this.e.aA(), true)));
+            $$2 = NioServerSocketChannel.class;
+            $$3 = (EventLoopGroup)a.get();
+            d.info("Using default channel type");
          }
 
-         boolean $$3 = $$1.e($$0);
-         if ($$3) {
-            this.g = asd.a.f;
-         } else {
-            this.d($$0);
-         }
-      }
-   }
-
-   private void d(GameProfile $$0) {
-      this.g = asd.a.g;
-      this.f.a(new aja($$0));
-   }
-
-   @Override
-   public void a(ajj $$0) {
-      Validate.validState(this.g == asd.a.b, "Unexpected key packet", new Object[0]);
-
-      final String $$5;
-      try {
-         PrivateKey $$1 = this.e.Q().getPrivate();
-         if (!$$0.a(this.d, $$1)) {
-            throw new IllegalStateException("Protocol error");
-         }
-
-         SecretKey $$2 = $$0.a($$1);
-         Cipher $$3 = axs.a(2, $$2);
-         Cipher $$4 = axs.a(1, $$2);
-         $$5 = new BigInteger(axs.a("", this.e.Q().getPublic(), $$2)).toString(16);
-         this.g = asd.a.c;
-         this.f.a($$3, $$4);
-      } catch (axt var7) {
-         throw new IllegalStateException("Protocol error", var7);
-      }
-
-      Thread $$8 = new Thread("User Authenticator #" + a.incrementAndGet()) {
-         @Override
-         public void run() {
-            String $$0 = Objects.requireNonNull(asd.this.i, "Player name not initialized");
-
-            try {
-               ProfileResult $$1 = asd.this.e.ar().hasJoinedServer($$0, $$5, this.a());
-               if ($$1 != null) {
-                  GameProfile $$2 = $$1.profile();
-                  asd.b.info("UUID of player {} is {}", $$2.getName(), $$2.getId());
-                  asd.this.b($$2);
-               } else if (asd.this.e.T()) {
-                  asd.b.warn("Failed to verify username but will let them in anyway!");
-                  asd.this.b(kc.b($$0));
-               } else {
-                  asd.this.b(xl.c("multiplayer.disconnect.unverified_username"));
-                  asd.b.error("Username '{}' tried to join with an invalid session", $$0);
+         this.f.add(((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel($$2)).childHandler(new ChannelInitializer<Channel>() {
+            protected void initChannel(Channel $$0) {
+               try {
+                  $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
+               } catch (ChannelException var5) {
                }
-            } catch (AuthenticationUnavailableException var4) {
-               if (asd.this.e.T()) {
-                  asd.b.warn("Authentication servers are down but will let them in anyway!");
-                  asd.this.b(kc.b($$0));
+
+               ChannelPipeline $$1 = $$0.pipeline().addLast("timeout", new ReadTimeoutHandler(30));
+               if (asd.this.e.an()) {
+                  $$1.addLast("legacy_query", new ary(asd.this.d()));
+               }
+
+               wj.a($$1, zw.a, false, null);
+               int $$2 = asd.this.e.o();
+               wj $$3 = (wj)($$2 > 0 ? new wy($$2) : new wj(zw.a));
+               asd.this.g.add($$3);
+               $$3.a($$1);
+               $$3.a(new asf(asd.this.e, $$3));
+            }
+         }).group($$3).localAddress($$0, $$1)).bind().syncUninterruptibly());
+      }
+   }
+
+   public SocketAddress a() {
+      ChannelFuture $$0;
+      synchronized (this.f) {
+         $$0 = ((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel(LocalServerChannel.class)).childHandler(new ChannelInitializer<Channel>() {
+            protected void initChannel(Channel $$0) {
+               wj $$1 = new wj(zw.a);
+               $$1.a(new arz(asd.this.e, $$1));
+               asd.this.g.add($$1);
+               ChannelPipeline $$2 = $$0.pipeline();
+               wj.a($$2, zw.a);
+               $$1.a($$2);
+            }
+         }).group((EventLoopGroup)a.get()).localAddress(LocalAddress.ANY)).bind().syncUninterruptibly();
+         this.f.add($$0);
+      }
+
+      return $$0.channel().localAddress();
+   }
+
+   public void b() {
+      this.c = false;
+
+      for (ChannelFuture $$0 : this.f) {
+         try {
+            $$0.channel().close().sync();
+         } catch (InterruptedException var4) {
+            d.error("Interrupted whilst closing channel");
+         }
+      }
+   }
+
+   public void c() {
+      synchronized (this.g) {
+         Iterator<wj> $$0 = this.g.iterator();
+
+         while ($$0.hasNext()) {
+            wj $$1 = $$0.next();
+            if (!$$1.j()) {
+               if ($$1.i()) {
+                  try {
+                     $$1.b();
+                  } catch (Exception var7) {
+                     if ($$1.e()) {
+                        throw new y(o.a(var7, "Ticking memory connection"));
+                     }
+
+                     d.warn("Failed to handle packet for {}", $$1.a(this.e.bn()), var7);
+                     xo $$3 = xo.b("Internal server error");
+                     $$1.a(new aad($$3), wv.a(() -> $$1.a($$3)));
+                     $$1.m();
+                  }
                } else {
-                  asd.this.b(xl.c("multiplayer.disconnect.authservers_down"));
-                  asd.b.error("Couldn't verify username because servers are unavailable");
+                  $$0.remove();
+                  $$1.n();
                }
             }
          }
+      }
+   }
 
-         @Nullable
-         private InetAddress a() {
-            SocketAddress $$0 = asd.this.f.d();
-            return asd.this.e.aa() && $$0 instanceof InetSocketAddress ? ((InetSocketAddress)$$0).getAddress() : null;
+   public MinecraftServer d() {
+      return this.e;
+   }
+
+   public List<wj> e() {
+      return this.g;
+   }
+
+   static class a extends ChannelInboundHandlerAdapter {
+      private static final Timer a = new HashedWheelTimer();
+      private final int b;
+      private final int c;
+      private final List<asd.a.a> d = Lists.newArrayList();
+
+      public a(int $$0, int $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+         this.a($$0, $$1);
+      }
+
+      private void a(ChannelHandlerContext $$0, Object $$1) {
+         int $$2 = this.b + (int)(Math.random() * (double)this.c);
+         this.d.add(new asd.a.a($$0, $$1));
+         a.newTimeout(this::a, (long)$$2, TimeUnit.MILLISECONDS);
+      }
+
+      private void a(Timeout $$0) {
+         asd.a.a $$1 = this.d.remove(0);
+         $$1.a.fireChannelRead($$1.b);
+      }
+
+      static class a {
+         public final ChannelHandlerContext a;
+         public final Object b;
+
+         public a(ChannelHandlerContext $$0, Object $$1) {
+            this.a = $$0;
+            this.b = $$1;
          }
-      };
-      $$8.setUncaughtExceptionHandler(new r(b));
-      $$8.start();
-   }
-
-   @Override
-   public void a(ajh $$0) {
-      this.b(ary.b);
-   }
-
-   @Override
-   public void a(ajk $$0) {
-      Validate.validState(this.g == asd.a.g, "Unexpected login acknowledgement packet", new Object[0]);
-      this.f.a(abt.b);
-      arq $$1 = arq.a(Objects.requireNonNull(this.j), this.l);
-      arz $$2 = new arz(this.e, this.f, $$1);
-      this.f.a(abt.a, $$2);
-      $$2.m();
-      this.g = asd.a.h;
-   }
-
-   @Override
-   public void a(p $$0) {
-      $$0.a("Login phase", () -> this.g.toString());
-   }
-
-   @Override
-   public void a(acc $$0) {
-      this.b(ary.b);
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
+      }
    }
 }

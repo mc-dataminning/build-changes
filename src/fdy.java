@@ -1,70 +1,53 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fdy extends fea {
+public class fdy extends fed {
    private static final Logger b = LogUtils.getLogger();
-   private static final xl c = xl.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final fmy f;
-   private final String g;
+   private static final xo c = xo.c("mco.configure.world.closing");
+   private final fbd d;
+   private final fcm e;
 
-   public fdy(long $$0, int $$1, String $$2, fmy $$3) {
+   public fdy(fbd $$0, fcm $$1) {
       this.d = $$0;
       this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
    }
 
    @Override
    public void run() {
-      faj $$0 = faj.a();
-      int $$1 = 0;
+      fam $$0 = fam.a();
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            fbq $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(new fcm(this.f, $$2, this.g, $$0x -> {
-            }));
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
             return;
-         } catch (fbx var4) {
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.b();
+               this.d.e = fbd.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (fca var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
-            $$1++;
-         } catch (fbw var5) {
+         } catch (Exception var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't download world data", var5);
-            a(new fcn(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
-            return;
+            b.error("Failed to close server", var5);
+            this.a(var5);
          }
       }
    }
 
    @Override
-   public xl a() {
+   public xo a() {
       return c;
    }
 }

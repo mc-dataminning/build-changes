@@ -1,45 +1,41 @@
-import java.util.Optional;
-import java.util.function.Function;
-import org.joml.Vector3f;
-
-public abstract class fue<E extends bsp> extends ftv<E> {
-   private static final Vector3f a = new Vector3f();
-
-   public fue() {
-      this(gdr::e);
+public class fue<T extends chd> extends fvi<T> {
+   public fue(fwy $$0) {
+      super($$0, true, 19.0F, 1.0F, 2.5F, 2.0F, 24);
    }
 
-   public fue(Function<alb, gdr> $$0) {
-      super($$0);
+   public static fxe c() {
+      fxg $$0 = new fxg();
+      fxh $$1 = $$0.a();
+      fxh $$2 = $$1.a(
+         "head",
+         fxd.c()
+            .a(2, 61)
+            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
+            .a(2, 61)
+            .a()
+            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
+            .a(23, 52)
+            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
+         fxa.a(1.0F, 14.0F, 0.0F)
+      );
+      $$2.a("left_horn", fxd.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fxa.a(0.0F, 0.0F, 0.0F));
+      $$2.a("right_horn", fxd.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fxa.a(0.0F, 0.0F, 0.0F));
+      $$2.a("nose", fxd.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), fxa.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
+      $$1.a("body", fxd.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), fxa.a(0.0F, 24.0F, 0.0F));
+      $$1.a("left_hind_leg", fxd.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fxa.a(1.0F, 14.0F, 4.0F));
+      $$1.a("right_hind_leg", fxd.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fxa.a(-3.0F, 14.0F, 4.0F));
+      $$1.a("left_front_leg", fxd.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fxa.a(1.0F, 14.0F, -6.0F));
+      $$1.a("right_front_leg", fxd.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fxa.a(-3.0F, 14.0F, -6.0F));
+      return fxe.a($$0, 64, 64);
    }
 
-   @Override
-   public void a(ezt $$0, ezx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   public abstract fwv a();
-
-   public Optional<fwv> a(String $$0) {
-      return $$0.equals("root") ? Optional.of(this.a()) : this.a().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
-   }
-
-   protected void a(bsk $$0, ffq $$1, float $$2) {
-      this.a($$0, $$1, $$2, 1.0F);
-   }
-
-   protected void a(ffq $$0, float $$1, float $$2, float $$3, float $$4) {
-      long $$5 = (long)($$1 * 50.0F * $$3);
-      float $$6 = Math.min($$2 * $$4, 1.0F);
-      ffs.a(this, $$0, $$5, $$6, a);
-   }
-
-   protected void a(bsk $$0, ffq $$1, float $$2, float $$3) {
-      $$0.a($$2, $$3);
-      $$0.a($$1x -> ffs.a(this, $$1, $$1x.b(), 1.0F, a));
-   }
-
-   protected void a(ffq $$0) {
-      ffs.a(this, $$0, 0L, 1.0F, a);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.b("left_horn").k = $$0.gq();
+      this.a.b("right_horn").k = $$0.gw();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$0.gB();
+      if ($$6 != 0.0F) {
+         this.a.e = $$6;
+      }
    }
 }

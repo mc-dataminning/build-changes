@@ -1,20 +1,10 @@
-public class dag extends czv {
-   public dag(czv.b $$0) {
+public class dag extends czy {
+   public dag(czy.b $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a() {
-      return true;
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   @Override
-   public boolean l() {
-      return false;
+   public boolean a(czy $$0) {
+      return super.a($$0) && $$0 != dab.K;
    }
 }

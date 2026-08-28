@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fwq<T extends cku> extends fsr<T> {
+   public fwq(fwy $$0) {
+      super($$0);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fwq {
+   public boolean a(T $$0) {
+      return $$0.gi();
+   }
 }

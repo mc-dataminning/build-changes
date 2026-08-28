@@ -15,22 +15,26 @@ public class wi extends MessageToByteEncoder<ByteBuf> {
 
    protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
       int $$3 = $$1.readableBytes();
-      if ($$3 < this.c) {
-         xc.a($$2, 0);
-         $$2.writeBytes($$1);
+      if ($$3 > 8388608) {
+         throw new IllegalArgumentException("Packet too big (is " + $$3 + ", should be less than 8388608)");
       } else {
-         byte[] $$4 = new byte[$$3];
-         $$1.readBytes($$4);
-         xc.a($$2, $$4.length);
-         this.b.setInput($$4, 0, $$3);
-         this.b.finish();
+         if ($$3 < this.c) {
+            xf.a($$2, 0);
+            $$2.writeBytes($$1);
+         } else {
+            byte[] $$4 = new byte[$$3];
+            $$1.readBytes($$4);
+            xf.a($$2, $$4.length);
+            this.b.setInput($$4, 0, $$3);
+            this.b.finish();
 
-         while (!this.b.finished()) {
-            int $$5 = this.b.deflate(this.a);
-            $$2.writeBytes(this.a, 0, $$5);
+            while (!this.b.finished()) {
+               int $$5 = this.b.deflate(this.a);
+               $$2.writeBytes(this.a, 0, $$5);
+            }
+
+            this.b.reset();
          }
-
-         this.b.reset();
       }
    }
 

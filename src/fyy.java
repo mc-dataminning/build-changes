@@ -1,73 +1,67 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Objects;
-import java.util.UUID;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
 import javax.annotation.Nullable;
 
-public final class fyy {
-   private static final int a = 1024;
-   private final fyp b;
-   private final fyv c;
-   private final fyk d;
+public record fyy(String a, @Nullable fyy.a b) {
+   public static fyy a() {
+      return a(null);
+   }
+
+   public static fyy a(String $$0) {
+      return a(new fyy.a.b($$0));
+   }
+
+   public static fyy a(fbd $$0) {
+      return a(new fyy.a.a($$0));
+   }
+
+   public static fyy a(@Nullable fyy.a $$0) {
+      return new fyy(g(), $$0);
+   }
+
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
    @Nullable
-   private fyu e;
-
-   public fyy(fyp $$0, fyv $$1, fyk $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof fyy.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
    }
 
-   public static fyy a(fyv $$0, UserApiService $$1) {
-      fyk $$2 = new fyk(1024);
-      fyp $$3 = fyp.a($$0, $$1);
-      return new fyy($$3, $$0, $$2);
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof fyy.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
    }
 
-   public void a(ffa $$0, fmy $$1, Runnable $$2, boolean $$3) {
-      if (this.e != null) {
-         fyu $$4 = this.e.b();
-         $$0.a(
-            new flq(
-               $$4x -> {
-                  this.a(null);
-                  if ($$4x) {
-                     $$0.a($$4.a($$1, this));
-                  } else {
-                     $$2.run();
-                  }
-               },
-               xl.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
-               xl.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
-               xl.c("gui.abuseReport.draft.edit"),
-               xl.c("gui.abuseReport.draft.discard")
-            )
-         );
-      } else {
-         $$2.run();
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("1.20.5-pre2");
+      if (ffd.e().a()) {
+         $$0.append(" (modded)");
       }
+
+      return $$0.toString();
    }
 
-   public fyp a() {
+   public String e() {
+      return this.a;
+   }
+
+   @Nullable
+   public fyy.a f() {
       return this.b;
    }
 
-   public fyk b() {
-      return this.d;
-   }
+   public interface a {
+      public static record a(long a, int b) implements fyy.a {
+         public a(fbd $$0) {
+            this($$0.a, $$0.n);
+         }
+      }
 
-   public boolean a(fyv $$0) {
-      return Objects.equals(this.c, $$0);
-   }
-
-   public void a(@Nullable fyu $$0) {
-      this.e = $$0;
-   }
-
-   public boolean c() {
-      return this.e != null;
-   }
-
-   public boolean a(UUID $$0) {
-      return this.c() && this.e.a($$0);
+      public static record b(String a) implements fyy.a {
+      }
    }
 }

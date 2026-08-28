@@ -1,18 +1,34 @@
-public interface cyv<T extends cyq<?>> {
-   cyv<cyh> a = a("crafting");
-   cyv<czf> b = a("smelting");
-   cyv<cyc> c = a("blasting");
-   cyv<czj> d = a("smoking");
-   cyv<cye> e = a("campfire_cooking");
-   cyv<czk> f = a("stonecutting");
-   cyv<czg> g = a("smithing");
+public record cyv<T extends cyt<?>>(ale b, T c) {
+   public static final zm<wz, cyv<?>> a = zm.a(ale.b, cyv::a, cyt.i, cyv::b, cyv::new);
 
-   static <T extends cyq<?>> cyv<T> a(final String $$0) {
-      return jv.a(lp.s, new alb($$0), new cyv<T>() {
-         @Override
-         public String toString() {
-            return $$0;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cyv<?> $$1 && this.b.equals($$1.b)) {
+            return true;
          }
-      });
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return this.b.toString();
+   }
+
+   public ale a() {
+      return this.b;
+   }
+
+   public T b() {
+      return this.c;
    }
 }

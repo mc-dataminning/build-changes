@@ -9,9 +9,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class fv implements ArgumentType<ewh> {
+public class fv implements ArgumentType<ewk> {
    private static final Collection<String> b = Arrays.asList("sidebar", "foo.bar");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xl.b("argument.scoreboardDisplaySlot.invalid", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xo.b("argument.scoreboardDisplaySlot.invalid", $$0));
 
    private fv() {
    }
@@ -20,13 +20,13 @@ public class fv implements ArgumentType<ewh> {
       return new fv();
    }
 
-   public static ewh a(CommandContext<ep> $$0, String $$1) {
-      return (ewh)$$0.getArgument($$1, ewh.class);
+   public static ewk a(CommandContext<ep> $$0, String $$1) {
+      return (ewk)$$0.getArgument($$1, ewk.class);
    }
 
-   public ewh a(StringReader $$0) throws CommandSyntaxException {
+   public ewk a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      ewh $$2 = ewh.t.a($$1);
+      ewk $$2 = ewk.t.a($$1);
       if ($$2 == null) {
          throw a.createWithContext($$0, $$1);
       } else {
@@ -35,7 +35,7 @@ public class fv implements ArgumentType<ewh> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return eu.b(Arrays.stream(ewh.values()).map(ewh::c), $$1);
+      return eu.b(Arrays.stream(ewk.values()).map(ewk::c), $$1);
    }
 
    public Collection<String> getExamples() {

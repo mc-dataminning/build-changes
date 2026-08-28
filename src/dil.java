@@ -1,65 +1,73 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class dil extends deu implements dlv {
-   public static final MapCodec<dil> a = b(dil::new);
-   private static final dso c = dsn.C;
-   protected static final ewf b = deu.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
-
-   @Override
-   public MapCodec<dil> a() {
-      return a;
-   }
-
-   protected dil(drw.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
+public abstract class dil extends dik implements dfa {
+   protected dil(drz.d $$0, je $$1, ewi $$2, boolean $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      $$0.a(c);
+   protected abstract MapCodec<? extends dil> a();
+
+   protected dsa a(dsa $$0, dsa $$1) {
+      return $$1;
    }
 
    @Override
-   protected enq b_(drx $$0) {
-      return $$0.c(c) ? enr.c.a(false) : super.b_($$0);
-   }
-
-   @Nullable
-   @Override
-   public drx a(cxv $$0) {
-      drx $$1 = super.a($$0);
-      if ($$1 != null) {
-         enq $$2 = $$0.q().b_($$0.a());
-         return $$1.a(c, Boolean.valueOf($$2.a() == enr.c));
-      } else {
-         return null;
+   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
-   }
 
-   @Override
-   protected boolean a(drx $$0, dbw $$1, iz $$2) {
-      iz $$3 = $$2.c();
-      drx $$4 = $$1.a_($$3);
-      return $$4.d($$1, $$3, je.a);
-   }
-
-   @Override
-   protected ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
-      return b;
-   }
-
-   @Override
-   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
-      if ($$1 == je.b && !this.a($$0, $$3, $$4)) {
-         return dew.a.n();
+      dim $$6 = this.c();
+      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
+         return this.a($$0, $$6.a($$3));
       } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, enr.c, enr.c.a($$3));
+         if (this.b) {
+            $$3.a($$4, enu.c, enu.c.a($$3));
          }
 
          return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
+   }
+
+   @Override
+   public cun a(dbz $$0, iz $$1, dsa $$2) {
+      return new cun(this.c());
+   }
+
+   @Override
+   public boolean b(dbz $$0, iz $$1, dsa $$2) {
+      Optional<iz> $$3 = this.a($$0, $$1, $$2.b());
+      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
+   }
+
+   @Override
+   public boolean a(dbw $$0, azf $$1, iz $$2, dsa $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(are $$0, azf $$1, iz $$2, dsa $$3) {
+      Optional<iz> $$4 = this.a($$0, $$2, $$3.b());
+      if ($$4.isPresent()) {
+         dsa $$5 = $$0.a_($$4.get());
+         ((dim)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+      }
+   }
+
+   private Optional<iz> a(dbc $$0, iz $$1, dex $$2) {
+      return l.a($$0, $$1, $$2, this.a, this.c());
+   }
+
+   @Override
+   protected boolean a(dsa $$0, cxy $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      return $$2 && $$1.n().a(this.c().r()) ? false : $$2;
+   }
+
+   @Override
+   protected dex b() {
+      return this;
    }
 }

@@ -1,77 +1,59 @@
 import java.util.UUID;
-import java.util.function.Supplier;
 
-public class frc extends fqv<fyz.a> {
+public class frc extends fqy<fyw.a> {
    private static final int y = 120;
-   private static final int z = 85;
-   private static final int A = 178;
-   private static final xl B = xl.c("gui.abuseReport.skin.title");
-   private final fkq C = fkq.d().a(8);
-   private fhr D;
-   private fgz E;
-   private fgz F;
+   private static final xo z = xo.c("gui.abuseReport.name.title");
+   private final fkt A = fkt.d().a(8);
+   private fhu B;
+   private fhc C;
 
-   private frc(fmy $$0, fyy $$1, fyz.a $$2) {
-      super(B, $$0, $$1, $$2);
+   private frc(fnb $$0, fzb $$1, fyw.a $$2) {
+      super(z, $$0, $$1, $$2);
    }
 
-   public frc(fmy $$0, fyy $$1, UUID $$2, Supplier<gpu> $$3) {
-      this($$0, $$1, new fyz.a($$2, $$3, $$1.a().b()));
+   public frc(fnb $$0, fzb $$1, UUID $$2, String $$3) {
+      this($$0, $$1, new fyw.a($$2, $$3, $$1.a().b()));
    }
 
-   public frc(fmy $$0, fyy $$1, fyz $$2) {
-      this($$0, $$1, new fyz.a($$2, $$1.a().b()));
+   public frc(fnb $$0, fzb $$1, fyw $$2) {
+      this($$0, $$1, new fyw.a($$2, $$1.a().b()));
    }
 
    @Override
-   protected void aN_() {
-      this.C.c().b();
-      this.C.a(new fig(this.l, this.p));
-      fkq $$0 = this.C.a(fkq.e().a(8));
-      $$0.c().e();
-      $$0.a(new fhz(85, 120, this.m.aR(), this.x.e().a()));
-      fkq $$1 = $$0.a(fkq.d().a(8));
-      this.F = fgz.a(c, $$0x -> this.m.a(new frb(this, this.x.h(), $$0xx -> {
-            this.x.a($$0xx);
-            this.C();
-         }))).a(178).a();
-      $$1.a(fki.a(this.p, this.F, b));
-      this.D = this.a(178, 9 * 8, $$0x -> {
+   protected void aM_() {
+      this.A.c().b();
+      this.A.a(new fij(this.l, this.p));
+      xo $$0 = xo.b(this.x.e().a()).a(n.o);
+      this.A.a(new fij(xo.a("gui.abuseReport.name.reporting", $$0), this.p), $$0x -> $$0x.a().a(0, 8));
+      this.B = this.a(280, 9 * 8, $$0x -> {
          this.x.a($$0x);
-         this.C();
+         this.D();
       });
-      $$1.a(fki.a(this.p, this.D, d, $$0x -> $$0x.e(12)));
-      fkq $$2 = this.C.a(fkq.e().a(8));
-      $$2.a(fgz.a(xk.k, $$0x -> this.d()).a(120).a());
-      this.E = $$2.a(fgz.a(a, $$0x -> this.m()).a(120).a());
-      this.C.a($$1x -> {
-         fgx var10000 = this.c($$1x);
+      this.A.a(fkl.a(this.p, this.B, d, $$0x -> $$0x.e(12)));
+      fkt $$1 = this.A.a(fkt.e().a(8));
+      $$1.a(fhc.a(xn.k, $$0x -> this.d()).a(120).a());
+      this.C = $$1.a(fhc.a(a, $$0x -> this.m()).a(120).a());
+      this.D();
+      this.A.a($$1x -> {
+         fha var10000 = this.c($$1x);
       });
       this.c();
-      this.C();
    }
 
    @Override
    protected void c() {
-      this.C.a();
-      fkk.a(this.C, this.G());
+      this.A.a();
+      fkn.a(this.A, this.G());
    }
 
-   private void C() {
-      fyw $$0 = this.x.h();
-      if ($$0 != null) {
-         this.F.b($$0.b());
-      } else {
-         this.F.b(c);
-      }
-
-      fyu.b $$1 = this.x.c();
-      this.E.j = $$1 == null;
-      this.E.a(x.a($$1, fyu.b::a));
+   private void D() {
+      fyx.b $$0 = this.x.c();
+      this.C.j = $$0 == null;
+      this.C.a(x.a($$0, fyx.b::a));
    }
 
    @Override
    public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.D.b($$0, $$1, $$2);
+      return super.b($$0, $$1, $$2) ? true : this.B.b($$0, $$1, $$2);
    }
 }

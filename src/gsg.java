@@ -1,28 +1,58 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class gsg {
-   private final List<gsf> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
-
-   public gsg(List<gsf> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class gsg extends grt {
+   public gsg(avy $$0, awa $$1, float $$2, float $$3, azf $$4, iz $$5) {
+      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
    }
 
-   public List<gsf> a() {
-      return this.a;
+   public static gsg a(avy $$0, float $$1) {
+      return a($$0, $$1, 0.25F);
    }
 
-   public boolean b() {
-      return this.b;
+   public static gsg a(ji<avy> $$0, float $$1) {
+      return a($$0.a(), $$1);
    }
 
-   @Nullable
-   public String c() {
-      return this.c;
+   public static gsg a(avy $$0, float $$1, float $$2) {
+      return new gsg($$0.a(), awa.a, $$2, $$1, gsl.t(), false, 0, gsl.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static gsg a(avy $$0) {
+      return new gsg($$0.a(), awa.b, 1.0F, 1.0F, gsl.t(), false, 0, gsl.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static gsg a(avy $$0, evp $$1) {
+      return new gsg($$0, awa.c, 4.0F, 1.0F, gsl.t(), false, 0, gsl.a.b, $$1.c, $$1.d, $$1.e);
+   }
+
+   public static gsg b(avy $$0, float $$1, float $$2) {
+      return new gsg($$0.a(), awa.i, $$2, $$1, gsl.t(), false, 0, gsl.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static gsg b(avy $$0) {
+      return b($$0, 1.0F, 1.0F);
+   }
+
+   public static gsg a(avy $$0, azf $$1, double $$2, double $$3, double $$4) {
+      return new gsg($$0, awa.i, 1.0F, 1.0F, $$1, false, 0, gsl.a.b, $$2, $$3, $$4);
+   }
+
+   public gsg(avy $$0, awa $$1, float $$2, float $$3, azf $$4, double $$5, double $$6, double $$7) {
+      this($$0, $$1, $$2, $$3, $$4, false, 0, gsl.a.b, $$5, $$6, $$7);
+   }
+
+   private gsg(avy $$0, awa $$1, float $$2, float $$3, azf $$4, boolean $$5, int $$6, gsl.a $$7, double $$8, double $$9, double $$10) {
+      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
+   }
+
+   public gsg(ale $$0, awa $$1, float $$2, float $$3, azf $$4, boolean $$5, int $$6, gsl.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
+      super($$0, $$1, $$4);
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$8;
+      this.g = $$9;
+      this.h = $$10;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
+      this.l = $$11;
    }
 }

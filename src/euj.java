@@ -1,20 +1,36 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class euj {
-   private static final Codec<eui> g = lp.I.q().dispatch(eui::b, euh::a);
-   public static final Codec<eui> a = Codec.lazyInitialized(() -> {
-      Codec<eui> $$0 = Codec.withAlternative(g, eum.a.codec());
-      return Codec.either(eug.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof eug $$1 ? Either.left($$1) : Either.right($$0x));
-   });
-   public static final euh b = a("constant", eug.a);
-   public static final euh c = a("uniform", eum.a);
-   public static final euh d = a("binomial", euf.a);
-   public static final euh e = a("score", euk.a);
-   public static final euh f = a("storage", eul.a);
+public record euj(float c) implements eul {
+   public static final MapCodec<euj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(euj::c)).apply($$0, euj::new));
+   public static final Codec<euj> b = Codec.FLOAT.xmap(euj::new, euj::c);
 
-   private static euh a(String $$0, MapCodec<? extends eui> $$1) {
-      return jv.a(lp.I, new alb($$0), new euh($$1));
+   @Override
+   public euk b() {
+      return eum.b;
+   }
+
+   @Override
+   public float b(eqg $$0) {
+      return this.c;
+   }
+
+   public static euj a(float $$0) {
+      return new euj($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((euj)$$0).c, this.c) == 0 : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
    }
 }

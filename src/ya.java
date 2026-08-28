@@ -1,35 +1,104 @@
-public interface ya {
-   xl a();
+import com.google.common.base.Preconditions;
+import com.mojang.serialization.Codec;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   void a(arc var1, boolean var2, xh.a var3);
+public record ya(byte[] c) {
+   public static final Codec<ya> a = ayf.p.xmap(ya::new, ya::b);
+   public static final int b = 256;
 
-   static ya a(yb $$0) {
-      return (ya)($$0.h() ? new ya.a($$0.d()) : new ya.b($$0));
+   public ya(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
    }
 
-   public static record a(xl a) implements ya {
-      @Override
-      public void a(arc $$0, boolean $$1, xh.a $$2) {
-         $$0.c.a(this.a, $$2);
+   public static ya a(wl $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new ya($$1);
+   }
+
+   public static void a(wl $$0, ya $$1) {
+      $$0.c($$1.c);
+   }
+
+   public boolean a(azk $$0, azj $$1) {
+      return $$0.validate($$1, this.c);
+   }
+
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof ya $$1 && Arrays.equals(this.c, $$1.c)) {
+            return true;
+         }
+
+         return false;
       }
    }
 
-   public static record b(yb a) implements ya {
-      @Override
-      public xl a() {
-         return this.a.d();
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
+
+   @Override
+   public String toString() {
+      return Base64.getEncoder().encodeToString(this.c);
+   }
+
+   public ya.a a(yb $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new ya.a($$1) : new ya.a(this);
+   }
+
+   public byte[] b() {
+      return this.c;
+   }
+
+   public static record a(int b, @Nullable ya c) {
+      public static final int a = -1;
+
+      public a(ya $$0) {
+         this(-1, $$0);
       }
 
-      @Override
-      public void a(arc $$0, boolean $$1, xh.a $$2) {
-         yb $$3 = this.a.a($$1);
-         if (!$$3.j()) {
-            $$0.c.a($$3, $$2);
+      public a(int $$0) {
+         this($$0, null);
+      }
+
+      public static ya.a a(wl $$0) {
+         int $$1 = $$0.l() - 1;
+         return $$1 == -1 ? new ya.a(ya.a($$0)) : new ya.a($$1);
+      }
+
+      public static void a(wl $$0, ya.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            ya.a($$0, $$1.b());
          }
       }
 
-      public yb b() {
-         return this.a;
+      public Optional<ya> a(yb $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      @Nullable
+      public ya b() {
+         return this.c;
       }
    }
 }

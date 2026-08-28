@@ -1,126 +1,104 @@
-import com.google.common.collect.Queues;
-import java.util.Deque;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public interface ezt extends faa {
+   fac j();
 
-public class ezt {
-   private final Deque<ezt.a> a = ac.a(Queues.newArrayDeque(), $$0 -> {
-      Matrix4f $$1 = new Matrix4f();
-      Matrix3f $$2 = new Matrix3f();
-      $$0.add(new ezt.a($$1, $$2));
-   });
+   void f();
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.a((float)$$0, (float)$$1, (float)$$2);
+   void a(int var1, byte var2);
+
+   void a(int var1, short var2);
+
+   void a(int var1, float var2);
+
+   @Override
+   default faa a(double $$0, double $$1, double $$2) {
+      if (this.j().b() != fac.b.a) {
+         return this;
+      } else if (this.j().a() == fac.a.a && this.j().c() == 3) {
+         this.a(0, (float)$$0);
+         this.a(4, (float)$$1);
+         this.a(8, (float)$$2);
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
+      }
    }
 
-   public void a(float $$0, float $$1, float $$2) {
-      ezt.a $$3 = this.a.getLast();
-      $$3.a.translate($$0, $$1, $$2);
+   @Override
+   default faa a(int $$0, int $$1, int $$2, int $$3) {
+      fac $$4 = this.j();
+      if ($$4.b() != fac.b.c) {
+         return this;
+      } else if ($$4.a() == fac.a.b && $$4.c() == 4) {
+         this.a(0, (byte)$$0);
+         this.a(1, (byte)$$1);
+         this.a(2, (byte)$$2);
+         this.a(3, (byte)$$3);
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
+      }
    }
 
-   public void b(float $$0, float $$1, float $$2) {
-      ezt.a $$3 = this.a.getLast();
-      $$3.a.scale($$0, $$1, $$2);
-      if (Math.abs($$0) == Math.abs($$1) && Math.abs($$1) == Math.abs($$2)) {
-         if ($$0 < 0.0F || $$1 < 0.0F || $$2 < 0.0F) {
-            $$3.b.scale(Math.signum($$0), Math.signum($$1), Math.signum($$2));
+   @Override
+   default faa a(float $$0, float $$1) {
+      fac $$2 = this.j();
+      if ($$2.b() == fac.b.d && $$2.d() == 0) {
+         if ($$2.a() == fac.a.a && $$2.c() == 2) {
+            this.a(0, $$0);
+            this.a(4, $$1);
+            this.f();
+            return this;
+         } else {
+            throw new IllegalStateException();
          }
       } else {
-         $$3.b.scale(1.0F / $$0, 1.0F / $$1, 1.0F / $$2);
-         $$3.c = false;
+         return this;
       }
    }
 
-   public void a(Quaternionf $$0) {
-      ezt.a $$1 = this.a.getLast();
-      $$1.a.rotate($$0);
-      $$1.b.rotate($$0);
+   @Override
+   default faa a(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, 1);
    }
 
-   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
-      ezt.a $$4 = this.a.getLast();
-      $$4.a.rotateAround($$0, $$1, $$2, $$3);
-      $$4.b.rotate($$0);
+   @Override
+   default faa b(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, 2);
    }
 
-   public void a() {
-      this.a.addLast(new ezt.a(this.a.getLast()));
-   }
-
-   public void b() {
-      this.a.removeLast();
-   }
-
-   public ezt.a c() {
-      return this.a.getLast();
-   }
-
-   public boolean d() {
-      return this.a.size() == 1;
-   }
-
-   public void e() {
-      ezt.a $$0 = this.a.getLast();
-      $$0.a.identity();
-      $$0.b.identity();
-      $$0.c = true;
-   }
-
-   public void a(Matrix4f $$0) {
-      ezt.a $$1 = this.a.getLast();
-      $$1.a.mul($$0);
-      if (!f.a($$0)) {
-         if (f.b($$0)) {
-            $$1.b.mul(new Matrix3f($$0));
-         } else {
-            $$1.d();
-         }
+   default faa a(short $$0, short $$1, int $$2) {
+      fac $$3 = this.j();
+      if ($$3.b() != fac.b.d || $$3.d() != $$2) {
+         return this;
+      } else if ($$3.a() == fac.a.e && $$3.c() == 2) {
+         this.a(0, $$0);
+         this.a(2, $$1);
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
       }
    }
 
-   public static final class a {
-      final Matrix4f a;
-      final Matrix3f b;
-      boolean c = true;
-
-      a(Matrix4f $$0, Matrix3f $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   default faa a(float $$0, float $$1, float $$2) {
+      fac $$3 = this.j();
+      if ($$3.b() != fac.b.b) {
+         return this;
+      } else if ($$3.a() == fac.a.c && $$3.c() == 3) {
+         this.a(0, a($$0));
+         this.a(1, a($$1));
+         this.a(2, a($$2));
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
       }
+   }
 
-      a(ezt.a $$0) {
-         this.a = new Matrix4f($$0.a);
-         this.b = new Matrix3f($$0.b);
-         this.c = $$0.c;
-      }
-
-      void d() {
-         this.b.set(this.a).invert().transpose();
-         this.c = false;
-      }
-
-      public Matrix4f a() {
-         return this.a;
-      }
-
-      public Matrix3f b() {
-         return this.b;
-      }
-
-      public Vector3f a(Vector3f $$0, Vector3f $$1) {
-         return this.a($$0.x, $$0.y, $$0.z, $$1);
-      }
-
-      public Vector3f a(float $$0, float $$1, float $$2, Vector3f $$3) {
-         Vector3f $$4 = this.b.transform($$0, $$1, $$2, $$3);
-         return this.c ? $$4 : $$4.normalize();
-      }
-
-      public ezt.a c() {
-         return new ezt.a(this);
-      }
+   static byte a(float $$0) {
+      return (byte)((int)(ayx.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
    }
 }

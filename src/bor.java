@@ -1,13 +1,8 @@
-public interface bor {
-   void a();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void b();
-
-   void c();
-
-   boolean e();
-
-   bnd f();
-
-   void d();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bor {
 }

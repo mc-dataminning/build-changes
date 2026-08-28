@@ -1,26 +1,13 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class elw extends elz {
-   public static final MapCodec<elw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lp.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, elw::new)
-   );
-   private final deu b;
-   private final float d;
+public interface elw<P extends elv> {
+   elw<elu> a = a("always_true", elu.a);
+   elw<els> b = a("linear_pos", els.a);
+   elw<elh> c = a("axis_aligned_linear_pos", elh.a);
 
-   public elw(deu $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public boolean a(drx $$0, azc $$1) {
-      return $$0.a(this.b) && $$1.i() < this.d;
-   }
-
-   @Override
-   protected ema<?> a() {
-      return ema.e;
+   static <P extends elv> elw<P> a(String $$0, MapCodec<P> $$1) {
+      return jv.a(lp.q, $$0, () -> $$1);
    }
 }

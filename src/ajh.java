@@ -1,44 +1,19 @@
-import javax.annotation.Nullable;
+public class ajh {
+   public static final zx<ajc> a = a("custom_query");
+   public static final zx<ajd> b = a("game_profile");
+   public static final zx<aje> c = a("hello");
+   public static final zx<ajf> d = a("login_compression");
+   public static final zx<ajg> e = a("login_disconnect");
+   public static final zx<ajk> f = b("custom_query_answer");
+   public static final zx<ajl> g = b("hello");
+   public static final zx<ajm> h = b("key");
+   public static final zx<ajn> i = b("login_acknowledged");
 
-public record ajh(int b, @Nullable ajl c) implements zs<ajg> {
-   public static final zj<wl, ajh> a = zs.a(ajh::c, ajh::a);
-   private static final int d = 1048576;
-
-   private static ajh a(wl $$0) {
-      int $$1 = $$0.l();
-      return new ajh($$1, a($$1, $$0));
+   private static <T extends zv<ajb>> zx<T> a(String $$0) {
+      return new zx<>(zw.b, new ale($$0));
    }
 
-   private static ajl a(int $$0, wl $$1) {
-      return b($$1);
-   }
-
-   private static ajl b(wl $$0) {
-      int $$1 = $$0.readableBytes();
-      if ($$1 >= 0 && $$1 <= 1048576) {
-         $$0.j($$1);
-         return ajn.a;
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
-   }
-
-   private void c(wl $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
-   }
-
-   @Override
-   public zu<ajh> a() {
-      return aje.f;
-   }
-
-   public void a(ajg $$0) {
-      $$0.a(this);
-   }
-
-   @Nullable
-   public ajl e() {
-      return this.c;
+   private static <T extends zv<ajj>> zx<T> b(String $$0) {
+      return new zx<>(zw.a, new ale($$0));
    }
 }

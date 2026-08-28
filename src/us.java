@@ -97,17 +97,17 @@ public class us extends vh {
 
    @Override
    public int g() {
-      return ayu.a(this.w);
+      return ayx.a(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(ayu.a(this.w) & 65535);
+      return (short)(ayx.a(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(ayu.a(this.w) & 0xFF);
+      return (byte)(ayx.a(this.w) & 0xFF);
    }
 
    @Override

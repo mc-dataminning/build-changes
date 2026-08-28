@@ -1,54 +1,16 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
 
-public class egq extends egm {
-   public static final MapCodec<egq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dyj.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dyj.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, egq::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dyj d;
-   private final dyj e;
-   private final int f;
+public interface egq<P extends egp> {
+   egq<ego> a = a("constant", ego.b);
+   egq<egs> b = a("uniform", egs.a);
+   egq<egn> c = a("biased_to_bottom", egn.a);
+   egq<egt> d = a("very_biased_to_bottom", egt.a);
+   egq<egr> e = a("trapezoid", egr.a);
+   egq<egu> f = a("weighted_list", egu.a);
 
-   private egq(dyj $$0, dyj $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
+   MapCodec<P> codec();
 
-   public static egq a(dyj $$0, dyj $$1, int $$2) {
-      return new egq($$0, $$1, $$2);
-   }
-
-   @Override
-   public int a(azc $$0, dym $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = ayu.a($$0, $$2 + this.f, $$3);
-         int $$5 = ayu.a($$0, $$2, $$4 - 1);
-         return ayu.a($$0, $$2, $$5 - 1 + this.f);
-      }
-   }
-
-   @Override
-   public egn<?> a() {
-      return egn.d;
-   }
-
-   @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+   private static <P extends egp> egq<P> a(String $$0, MapCodec<P> $$1) {
+      return jv.a(lp.N, $$0, () -> $$1);
    }
 }

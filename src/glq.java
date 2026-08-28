@@ -1,20 +1,24 @@
-public class glq extends gjy<clw, fwh<clw>> {
-   private static final alb a = new alb("textures/entity/warden/warden.png");
-   private static final alb i = new alb("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final alb j = new alb("textures/entity/warden/warden_heart.png");
-   private static final alb k = new alb("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final alb l = new alb("textures/entity/warden/warden_pulsating_spots_2.png");
+public class glq extends gkb<cmi, fwj<cmi>> {
+   private static final ale a = new ale("textures/entity/villager/villager.png");
 
-   public glq(gis.a $$0) {
-      super($$0, new fwh<>($$0.a(fwu.bR)), 0.9F);
-      this.a(new gnq<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fwh::e));
-      this.a(new gnq<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, ayu.b($$2 * 0.045F) * 0.25F), fwh::f));
-      this.a(new gnq<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, ayu.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fwh::f));
-      this.a(new gnq<>(this, a, ($$0x, $$1, $$2) -> $$0x.G($$1), fwh::c));
-      this.a(new gnq<>(this, j, ($$0x, $$1, $$2) -> $$0x.H($$1), fwh::d));
+   public glq(giv.a $$0) {
+      super($$0, new fwj<>($$0.a(fwx.bP)), 0.5F);
+      this.a(new gmm<>(this, $$0.f(), $$0.d()));
+      this.a(new gns<>(this, $$0.e(), "villager"));
+      this.a(new gml<>(this, $$0.d()));
    }
 
-   public alb a(clw $$0) {
+   public ale a(cmi $$0) {
       return a;
+   }
+
+   protected void a(cmi $$0, ezw $$1, float $$2) {
+      float $$3 = 0.9375F * $$0.ed();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected float b(cmi $$0) {
+      float $$1 = super.b($$0);
+      return $$0.p_() ? $$1 * 0.5F : $$1;
    }
 }

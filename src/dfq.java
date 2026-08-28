@@ -1,29 +1,33 @@
-import java.util.function.ToIntFunction;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface dfq {
-   ewf q_ = deu.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dso r_ = dsn.D;
+public class dfq extends dex {
+   public static final MapCodec<dfq> a = b(dfq::new);
+   private static final xo b = xo.c("container.cartography_table");
 
-   static bqp a(@Nullable bsp $$0, drx $$1, dbt $$2, iz $$3) {
-      if ($$1.c(r_)) {
-         deu.a($$2, $$3, new cuk(cun.ws, 1));
-         float $$4 = ayu.b($$2.z, 0.8F, 1.2F);
-         $$2.a(null, $$3, avw.ee, avx.e, 1.0F, $$4);
-         drx $$5 = $$1.a(r_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(dwq.c, $$3, dwq.a.a($$0, $$5));
-         return bqp.a($$2.B);
+   @Override
+   public MapCodec<dfq> a() {
+      return a;
+   }
+
+   protected dfq(drz.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected bqs a(dsa $$0, dbw $$1, iz $$2, cmv $$3, evl $$4) {
+      if ($$1.B) {
+         return bqs.a;
       } else {
-         return bqp.e;
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(awj.aw);
+         return bqs.c;
       }
    }
 
-   static boolean h_(drx $$0) {
-      return $$0.b(r_) && $$0.c(r_);
-   }
-
-   static ToIntFunction<drx> h_(int $$0) {
-      return $$1 -> $$1.c(dsn.D) ? $$0 : 0;
+   @Nullable
+   @Override
+   protected bqw b(dsa $$0, dbw $$1, iz $$2) {
+      return new brc(($$2x, $$3, $$4) -> new cpy($$2x, $$3, cqd.a($$1, $$2)), b);
    }
 }

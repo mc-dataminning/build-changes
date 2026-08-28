@@ -1,544 +1,313 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.StringUtils;
 
-public class epv implements epw, epx {
-   private static final Logger f = LogUtils.getLogger();
-   public static final String a = "LevelName";
-   protected static final String b = "Player";
-   protected static final String c = "WorldGenSettings";
-   private dbx g;
-   private final dyn h;
-   private final epv.a i;
-   private final Lifecycle j;
-   private iz k;
-   private float l;
-   private long m;
-   private long n;
+public class epv implements Comparable<epv> {
+   public static final xo a = xo.c("selectWorld.select");
+   private final dca b;
+   private final epw c;
+   private final String d;
+   private final boolean e;
+   private final boolean f;
+   private final boolean g;
+   private final Path h;
    @Nullable
-   private final ur o;
-   private final int p;
-   private int q;
-   private boolean r;
-   private int s;
-   private boolean t;
-   private int u;
-   private boolean v;
-   private boolean w;
-   private dto.c x;
-   private dvs.a y;
-   @Nullable
-   private ur z;
-   private int A;
-   private int B;
-   @Nullable
-   private UUID C;
-   private final Set<String> D;
-   private boolean E;
-   private final Set<String> F;
-   private final euz<MinecraftServer> G;
+   private xo i;
 
-   private epv(
-      @Nullable ur $$0,
-      boolean $$1,
-      iz $$2,
-      float $$3,
-      long $$4,
-      long $$5,
-      int $$6,
-      int $$7,
-      int $$8,
-      boolean $$9,
-      int $$10,
-      boolean $$11,
-      boolean $$12,
-      boolean $$13,
-      dto.c $$14,
-      int $$15,
-      int $$16,
-      @Nullable UUID $$17,
-      Set<String> $$18,
-      Set<String> $$19,
-      euz<MinecraftServer> $$20,
-      @Nullable ur $$21,
-      dvs.a $$22,
-      dbx $$23,
-      dyn $$24,
-      epv.a $$25,
-      Lifecycle $$26
-   ) {
-      this.E = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.p = $$6;
-      this.q = $$7;
-      this.s = $$8;
-      this.r = $$9;
-      this.u = $$10;
-      this.t = $$11;
-      this.v = $$12;
-      this.w = $$13;
-      this.x = $$14;
-      this.A = $$15;
-      this.B = $$16;
-      this.C = $$17;
-      this.D = $$18;
-      this.F = $$19;
-      this.o = $$0;
-      this.G = $$20;
-      this.z = $$21;
-      this.y = $$22;
-      this.g = $$23;
-      this.h = $$24;
-      this.i = $$25;
-      this.j = $$26;
+   public epv(dca $$0, epw $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.e = $$3;
    }
 
-   public epv(dbx $$0, dyn $$1, epv.a $$2, Lifecycle $$3) {
-      this(
-         null,
-         false,
-         iz.c,
-         0.0F,
-         0L,
-         0L,
-         19133,
-         0,
-         0,
-         false,
-         0,
-         false,
-         false,
-         false,
-         dto.d,
-         0,
-         0,
-         null,
-         Sets.newLinkedHashSet(),
-         new HashSet<>(),
-         new euz<>(euy.a),
-         null,
-         dvs.a.b,
-         $$0.h(),
-         $$1,
-         $$2,
-         $$3
-      );
+   public String a() {
+      return this.d;
    }
 
-   public static <T> epv a(Dynamic<T> $$0, dbx $$1, epv.a $$2, dyn $$3, Lifecycle $$4) {
-      long $$5 = $$0.get("Time").asLong(0L);
-      return new epv(
-         (ur)ur.a.parse($$0.get("Player").orElseEmptyMap()).result().orElse(null),
-         $$0.get("WasModded").asBoolean(false),
-         new iz($$0.get("SpawnX").asInt(0), $$0.get("SpawnY").asInt(0), $$0.get("SpawnZ").asInt(0)),
-         $$0.get("SpawnAngle").asFloat(0.0F),
-         $$5,
-         $$0.get("DayTime").asLong($$5),
-         ept.a($$0).a(),
-         $$0.get("clearWeatherTime").asInt(0),
-         $$0.get("rainTime").asInt(0),
-         $$0.get("raining").asBoolean(false),
-         $$0.get("thunderTime").asInt(0),
-         $$0.get("thundering").asBoolean(false),
-         $$0.get("initialized").asBoolean(true),
-         $$0.get("DifficultyLocked").asBoolean(false),
-         dto.c.a($$0, dto.d),
-         $$0.get("WanderingTraderSpawnDelay").asInt(0),
-         $$0.get("WanderingTraderSpawnChance").asInt(0),
-         (UUID)$$0.get("WanderingTraderId").read(kc.a).result().orElse(null),
-         $$0.get("ServerBrands").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toCollection(Sets::newLinkedHashSet)),
-         $$0.get("removed_features").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toSet()),
-         new euz<>(euy.a, $$0.get("ScheduledEvents").asStream()),
-         (ur)$$0.get("CustomBossEvents").orElseEmptyMap().getValue(),
-         $$0.get("DragonFight").read(dvs.a.a).resultOrPartial(f::error).orElse(dvs.a.b),
-         $$1,
-         $$3,
-         $$2,
-         $$4
-      );
+   public String b() {
+      return StringUtils.isEmpty(this.b.a()) ? this.d : this.b.a();
    }
 
-   @Override
-   public ur a(jw $$0, @Nullable ur $$1) {
-      if ($$1 == null) {
-         $$1 = this.o;
-      }
-
-      ur $$2 = new ur();
-      this.a($$0, $$2, $$1);
-      return $$2;
-   }
-
-   private void a(jw $$0, ur $$1, @Nullable ur $$2) {
-      $$1.a("ServerBrands", a(this.D));
-      $$1.a("WasModded", this.E);
-      if (!this.F.isEmpty()) {
-         $$1.a("removed_features", a(this.F));
-      }
-
-      ur $$3 = new ur();
-      $$3.a("Name", aa.b().c());
-      $$3.a("Id", aa.b().d().c());
-      $$3.a("Snapshot", !aa.b().g());
-      $$3.a("Series", aa.b().d().b());
-      $$1.a("Version", $$3);
-      vg.e($$1);
-      DynamicOps<vo> $$4 = $$0.a(vf.a);
-      dyl.a($$4, this.h, $$0).resultOrPartial(ac.a("WorldGenSettings: ", f::error)).ifPresent($$1x -> $$1.a("WorldGenSettings", $$1x));
-      $$1.a("GameType", this.g.b().a());
-      $$1.a("SpawnX", this.k.u());
-      $$1.a("SpawnY", this.k.v());
-      $$1.a("SpawnZ", this.k.w());
-      $$1.a("SpawnAngle", this.l);
-      $$1.a("Time", this.m);
-      $$1.a("DayTime", this.n);
-      $$1.a("LastPlayed", ac.e());
-      $$1.a("LevelName", this.g.a());
-      $$1.a("version", 19133);
-      $$1.a("clearWeatherTime", this.q);
-      $$1.a("rainTime", this.s);
-      $$1.a("raining", this.r);
-      $$1.a("thunderTime", this.u);
-      $$1.a("thundering", this.t);
-      $$1.a("hardcore", this.g.c());
-      $$1.a("allowCommands", this.g.e());
-      $$1.a("initialized", this.v);
-      this.x.a($$1);
-      $$1.a("Difficulty", (byte)this.g.d().a());
-      $$1.a("DifficultyLocked", this.w);
-      $$1.a("GameRules", this.g.f().a());
-      $$1.a("DragonFight", (vo)dvs.a.a.encodeStart(vf.a, this.y).getOrThrow());
-      if ($$2 != null) {
-         $$1.a("Player", $$2);
-      }
-
-      dcn.b.encodeStart(vf.a, this.g.g()).ifSuccess($$1x -> $$1.a((ur)$$1x)).ifError($$0x -> f.warn("Failed to encode configuration {}", $$0x.message()));
-      if (this.z != null) {
-         $$1.a("CustomBossEvents", this.z);
-      }
-
-      $$1.a("ScheduledEvents", this.G.b());
-      $$1.a("WanderingTraderSpawnDelay", this.A);
-      $$1.a("WanderingTraderSpawnChance", this.B);
-      if (this.C != null) {
-         $$1.a("WanderingTraderId", this.C);
-      }
-   }
-
-   private static ux a(Set<String> $$0) {
-      ux $$1 = new ux();
-      $$0.stream().map(vm::a).forEach($$1::add);
-      return $$1;
-   }
-
-   @Override
-   public iz a() {
-      return this.k;
-   }
-
-   @Override
-   public float b() {
-      return this.l;
-   }
-
-   @Override
-   public long c() {
-      return this.m;
-   }
-
-   @Override
-   public long d() {
-      return this.n;
-   }
-
-   @Nullable
-   @Override
-   public ur w() {
-      return this.o;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.m = $$0;
-   }
-
-   @Override
-   public void b(long $$0) {
-      this.n = $$0;
-   }
-
-   @Override
-   public void a(iz $$0, float $$1) {
-      this.k = $$0.i();
-      this.l = $$1;
-   }
-
-   @Override
-   public String e() {
-      return this.g.a();
-   }
-
-   @Override
-   public int x() {
-      return this.p;
-   }
-
-   @Override
-   public int f() {
-      return this.q;
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.q = $$0;
-   }
-
-   @Override
-   public boolean g() {
-      return this.t;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.t = $$0;
-   }
-
-   @Override
-   public int h() {
-      return this.u;
-   }
-
-   @Override
-   public void b(int $$0) {
-      this.u = $$0;
-   }
-
-   @Override
-   public boolean i() {
-      return this.r;
-   }
-
-   @Override
-   public void b(boolean $$0) {
-      this.r = $$0;
-   }
-
-   @Override
-   public int j() {
-      return this.s;
-   }
-
-   @Override
-   public void c(int $$0) {
-      this.s = $$0;
-   }
-
-   @Override
-   public dbq k() {
-      return this.g.b();
-   }
-
-   @Override
-   public void a(dbq $$0) {
-      this.g = this.g.a($$0);
-   }
-
-   @Override
-   public boolean l() {
-      return this.g.c();
-   }
-
-   @Override
-   public boolean m() {
-      return this.g.e();
-   }
-
-   @Override
-   public boolean n() {
-      return this.v;
-   }
-
-   @Override
-   public void c(boolean $$0) {
-      this.v = $$0;
-   }
-
-   @Override
-   public dbp o() {
-      return this.g.f();
-   }
-
-   @Override
-   public dto.c p() {
-      return this.x;
-   }
-
-   @Override
-   public void a(dto.c $$0) {
-      this.x = $$0;
-   }
-
-   @Override
-   public bqm q() {
-      return this.g.d();
-   }
-
-   @Override
-   public void a(bqm $$0) {
-      this.g = this.g.a($$0);
-   }
-
-   @Override
-   public boolean r() {
-      return this.w;
-   }
-
-   @Override
-   public void d(boolean $$0) {
-      this.w = $$0;
-   }
-
-   @Override
-   public euz<MinecraftServer> s() {
-      return this.G;
-   }
-
-   @Override
-   public void a(p $$0, dbv $$1) {
-      epw.super.a($$0, $$1);
-      epx.super.a($$0);
-   }
-
-   @Override
-   public dyn y() {
+   public Path c() {
       return this.h;
    }
 
-   @Override
-   public boolean z() {
-      return this.i == epv.a.b;
+   public boolean d() {
+      return this.e;
    }
 
-   @Override
-   public boolean A() {
-      return this.i == epv.a.c;
+   public boolean e() {
+      return this.g;
    }
 
-   @Override
-   public Lifecycle B() {
-      return this.j;
+   public long f() {
+      return this.c.b();
    }
 
-   @Override
-   public dvs.a C() {
-      return this.y;
+   public int a(epv $$0) {
+      if (this.f() < $$0.f()) {
+         return 1;
+      } else {
+         return this.f() > $$0.f() ? -1 : this.d.compareTo($$0.d);
+      }
    }
 
-   @Override
-   public void a(dvs.a $$0) {
-      this.y = $$0;
+   public dca g() {
+      return this.b;
    }
 
-   @Override
-   public dcn D() {
-      return this.g.g();
+   public dbt h() {
+      return this.b.b();
    }
 
-   @Override
-   public void a(dcn $$0) {
-      this.g = this.g.a($$0);
+   public boolean i() {
+      return this.b.c();
    }
 
-   @Nullable
-   @Override
-   public ur E() {
-      return this.z;
+   public boolean j() {
+      return this.b.e();
    }
 
-   @Override
-   public void a(@Nullable ur $$0) {
-      this.z = $$0;
+   public yc k() {
+      return azt.b(this.c.c()) ? xo.c("selectWorld.versionUnknown") : xo.b(this.c.c());
    }
 
-   @Override
-   public int t() {
-      return this.A;
+   public epw l() {
+      return this.c;
    }
 
-   @Override
-   public void d(int $$0) {
-      this.A = $$0;
+   public boolean m() {
+      return this.o().a();
    }
 
-   @Override
-   public int u() {
-      return this.B;
+   public boolean n() {
+      return this.o() == epv.a.b;
    }
 
-   @Override
-   public void e(int $$0) {
-      this.B = $$0;
+   public epv.a o() {
+      ad $$0 = aa.b();
+      int $$1 = $$0.d().c();
+      int $$2 = this.c.d().c();
+      if (!$$0.g() && $$2 < $$1) {
+         return epv.a.c;
+      } else {
+         return $$2 > $$1 ? epv.a.b : epv.a.a;
+      }
    }
 
-   @Nullable
-   @Override
-   public UUID v() {
-      return this.C;
+   public boolean p() {
+      return this.f;
    }
 
-   @Override
-   public void a(UUID $$0) {
-      this.C = $$0;
+   public boolean q() {
+      return !this.p() && !this.d() ? !this.r() : true;
    }
 
-   @Override
-   public void a(String $$0, boolean $$1) {
-      this.D.add($$0);
-      this.E |= $$1;
+   public boolean r() {
+      return aa.b().d().a(this.c.d());
    }
 
-   @Override
-   public boolean F() {
-      return this.E;
+   public xo s() {
+      if (this.i == null) {
+         this.i = this.z();
+      }
+
+      return this.i;
    }
 
-   @Override
-   public Set<String> G() {
-      return ImmutableSet.copyOf(this.D);
+   private xo z() {
+      if (this.p()) {
+         return xo.c("selectWorld.locked").a(n.m);
+      } else if (this.d()) {
+         return xo.c("selectWorld.conversion").a(n.m);
+      } else if (!this.r()) {
+         return xo.a("selectWorld.incompatible.info", this.k()).a(n.m);
+      } else {
+         yc $$0 = this.i() ? xo.i().b(xo.c("gameMode.hardcore").b(-65536)) : xo.c("gameMode." + this.h().b());
+         if (this.j()) {
+            $$0.f(", ").b(xo.c("selectWorld.commands"));
+         }
+
+         if (this.e()) {
+            $$0.f(", ").b(xo.c("selectWorld.experimental").a(n.o));
+         }
+
+         yc $$1 = this.k();
+         yc $$2 = xo.b(", ").b(xo.c("selectWorld.version")).b(xn.v);
+         if (this.m()) {
+            $$2.b($$1.a(this.n() ? n.m : n.u));
+         } else {
+            $$2.b($$1);
+         }
+
+         $$0.b($$2);
+         return $$0;
+      }
    }
 
-   @Override
-   public Set<String> H() {
-      return Set.copyOf(this.F);
+   public xo t() {
+      return a;
    }
 
-   @Override
-   public epw I() {
-      return this;
+   public boolean u() {
+      return !this.q();
    }
 
-   @Override
-   public dbx J() {
-      return this.g.h();
+   public boolean v() {
+      return !this.d() && !this.p();
    }
 
-   @Deprecated
+   public boolean w() {
+      return !this.q();
+   }
+
+   public boolean x() {
+      return !this.q();
+   }
+
+   public boolean y() {
+      return true;
+   }
+
    public static enum a {
-      a,
-      b,
-      c;
+      a(false, false, ""),
+      b(true, true, "downgrade"),
+      c(true, false, "snapshot");
+
+      private final boolean d;
+      private final boolean e;
+      private final String f;
+
+      private a(final boolean $$0, final boolean $$1, final String $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
+      }
+
+      public boolean a() {
+         return this.d;
+      }
+
+      public boolean b() {
+         return this.e;
+      }
+
+      public String c() {
+         return this.f;
+      }
+   }
+
+   public static class b extends epv {
+      private static final xo b = xo.c("recover_world.warning").a($$0 -> $$0.a(-65536));
+      private static final xo c = xo.c("recover_world.button");
+      private final long d;
+
+      public b(String $$0, Path $$1, long $$2) {
+         super(null, null, $$0, false, false, false, $$1);
+         this.d = $$2;
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public xo s() {
+         return b;
+      }
+
+      @Override
+      public long f() {
+         return this.d;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public xo t() {
+         return c;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
+      }
+   }
+
+   public static class c extends epv {
+      private static final xo b = xo.c("symlink_warning.more_info");
+      private static final xo c = xo.c("symlink_warning.title").b(-65536);
+
+      public c(String $$0, Path $$1) {
+         super(null, null, $$0, false, false, false, $$1);
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public xo s() {
+         return c;
+      }
+
+      @Override
+      public long f() {
+         return -1L;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public xo t() {
+         return b;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
+      }
    }
 }

@@ -1,11 +1,16 @@
+import javax.annotation.Nullable;
+
 public interface dhp {
-   default void a(dbt $$0, iz $$1, drx $$2, drx $$3, cjb $$4) {
+   @Nullable
+   dpf a(iz var1, dsa var2);
+
+   @Nullable
+   default <T extends dpf> dpg<T> a(dbw $$0, dsa $$1, dph<T> $$2) {
+      return null;
    }
 
-   default void a(dbt $$0, iz $$1, cjb $$2) {
-   }
-
-   default bri a(bsp $$0) {
-      return $$0.dQ().a($$0);
+   @Nullable
+   default <T extends dpf> dwv a(are $$0, T $$1) {
+      return $$1 instanceof dwv.b<?> $$2 ? $$2.c() : null;
    }
 }

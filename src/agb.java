@@ -1,68 +1,69 @@
-import javax.annotation.Nullable;
+public class agb implements zv<ach> {
+   public static final zm<wz, agb> a = zv.a(agb::a, agb::new);
+   private final ji<avy> b;
+   private final awa c;
+   private final int d;
+   private final float e;
+   private final float f;
+   private final long g;
 
-public class agb implements zs<ace> {
-   public static final zj<wl, agb> a = zs.a(agb::a, agb::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   @Nullable
-   private final alb d;
-   @Nullable
-   private final avx e;
-
-   public agb(@Nullable alb $$0, @Nullable avx $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public agb(ji<avy> $$0, awa $$1, bss $$2, float $$3, float $$4, long $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.al();
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   private agb(wl $$0) {
-      int $$1 = $$0.readByte();
-      if (($$1 & 1) > 0) {
-         this.e = $$0.b(avx.class);
-      } else {
-         this.e = null;
-      }
-
-      if (($$1 & 2) > 0) {
-         this.d = $$0.q();
-      } else {
-         this.d = null;
-      }
+   private agb(wz $$0) {
+      this.b = avy.d.decode($$0);
+      this.c = $$0.b(awa.class);
+      this.d = $$0.l();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readLong();
    }
 
-   private void a(wl $$0) {
-      if (this.e != null) {
-         if (this.d != null) {
-            $$0.k(3);
-            $$0.a(this.e);
-            $$0.a(this.d);
-         } else {
-            $$0.k(1);
-            $$0.a(this.e);
-         }
-      } else if (this.d != null) {
-         $$0.k(2);
-         $$0.a(this.d);
-      } else {
-         $$0.k(0);
-      }
+   private void a(wz $$0) {
+      avy.d.encode($$0, this.b);
+      $$0.a(this.c);
+      $$0.c(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.b(this.g);
    }
 
    @Override
-   public zu<agb> a() {
-      return agq.aU;
+   public zx<agb> a() {
+      return agt.aR;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public alb b() {
+   public ji<avy> b() {
+      return this.b;
+   }
+
+   public awa e() {
+      return this.c;
+   }
+
+   public int f() {
       return this.d;
    }
 
-   @Nullable
-   public avx e() {
+   public float g() {
       return this.e;
+   }
+
+   public float h() {
+      return this.f;
+   }
+
+   public long i() {
+      return this.g;
    }
 }

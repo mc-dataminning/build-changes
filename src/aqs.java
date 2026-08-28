@@ -1,85 +1,126 @@
-public class aqs extends ard {
-   public static final int a = 5;
-   public static final int b = 120500;
-   private boolean e;
-   private boolean f;
-   private int g;
-   private int h;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Consumer;
 
-   public aqs(arc $$0) {
-      super($$0);
+public interface aqs {
+   aqs a = new aqs() {
+      @Override
+      public boolean a(int $$0, int $$1, boolean $$2) {
+         return false;
+      }
+
+      @Override
+      public void a(Consumer<dbd> $$0) {
+      }
+   };
+
+   static aqs a(dbd $$0, int $$1) {
+      return new aqs.a($$0, $$1);
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.h++;
-      long $$0 = this.c.Z();
-      long $$1 = $$0 / 24000L + 1L;
-      if (!this.e && this.h > 20) {
-         this.e = true;
-         this.d.c.b(new adl(adl.g, 0.0F));
+   static void a(aqs $$0, aqs $$1, Consumer<dbd> $$2, Consumer<dbd> $$3) {
+      if (!$$0.equals($$1)) {
+         if ($$0 instanceof aqs.a $$4 && $$1 instanceof aqs.a $$5 && $$4.a($$5)) {
+            int $$6 = Math.min($$4.c(), $$5.c());
+            int $$7 = Math.min($$4.d(), $$5.d());
+            int $$8 = Math.max($$4.e(), $$5.e());
+            int $$9 = Math.max($$4.f(), $$5.f());
+
+            for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+               for (int $$11 = $$7; $$11 <= $$9; $$11++) {
+                  boolean $$12 = $$4.a($$10, $$11);
+                  boolean $$13 = $$5.a($$10, $$11);
+                  if ($$12 != $$13) {
+                     if ($$13) {
+                        $$2.accept(new dbd($$10, $$11));
+                     } else {
+                        $$3.accept(new dbd($$10, $$11));
+                     }
+                  }
+               }
+            }
+
+            return;
+         }
+
+         $$0.a($$3);
+         $$1.a($$2);
+      }
+   }
+
+   default boolean a(dbd $$0) {
+      return this.a($$0.e, $$0.f);
+   }
+
+   default boolean a(int $$0, int $$1) {
+      return this.a($$0, $$1, true);
+   }
+
+   boolean a(int var1, int var2, boolean var3);
+
+   void a(Consumer<dbd> var1);
+
+   default boolean b(int $$0, int $$1) {
+      return this.a($$0, $$1, false);
+   }
+
+   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      return a($$0, $$1, $$2, $$3, $$4, false);
+   }
+
+   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6 = Math.max(0, Math.abs($$3 - $$0) - 1);
+      int $$7 = Math.max(0, Math.abs($$4 - $$1) - 1);
+      long $$8 = (long)Math.max(0, Math.max($$6, $$7) - ($$5 ? 1 : 0));
+      long $$9 = (long)Math.min($$6, $$7);
+      long $$10 = $$9 * $$9 + $$8 * $$8;
+      int $$11 = $$2 * $$2;
+      return $$10 < (long)$$11;
+   }
+
+   public static record a(dbd b, int c) implements aqs {
+      int c() {
+         return this.b.e - this.c - 1;
       }
 
-      this.f = $$0 > 120500L;
-      if (this.f) {
-         this.g++;
+      int d() {
+         return this.b.f - this.c - 1;
       }
 
-      if ($$0 % 24000L == 500L) {
-         if ($$1 <= 6L) {
-            if ($$1 == 6L) {
-               this.d.c.b(new adl(adl.g, 104.0F));
-            } else {
-               this.d.a(xl.c("demo.day." + $$1));
+      int e() {
+         return this.b.e + this.c + 1;
+      }
+
+      int f() {
+         return this.b.f + this.c + 1;
+      }
+
+      @VisibleForTesting
+      protected boolean a(aqs.a $$0) {
+         return this.c() <= $$0.e() && this.e() >= $$0.c() && this.d() <= $$0.f() && this.f() >= $$0.d();
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, boolean $$2) {
+         return aqs.a(this.b.e, this.b.f, this.c, $$0, $$1, $$2);
+      }
+
+      @Override
+      public void a(Consumer<dbd> $$0) {
+         for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
+            for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
+               if (this.a($$1, $$2)) {
+                  $$0.accept(new dbd($$1, $$2));
+               }
             }
          }
-      } else if ($$1 == 1L) {
-         if ($$0 == 100L) {
-            this.d.c.b(new adl(adl.g, 101.0F));
-         } else if ($$0 == 175L) {
-            this.d.c.b(new adl(adl.g, 102.0F));
-         } else if ($$0 == 250L) {
-            this.d.c.b(new adl(adl.g, 103.0F));
-         }
-      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
-         this.d.a(xl.c("demo.day.warning"));
       }
-   }
 
-   private void f() {
-      if (this.g > 100) {
-         this.d.a(xl.c("demo.reminder"));
-         this.g = 0;
+      public dbd a() {
+         return this.b;
       }
-   }
 
-   @Override
-   public void a(iz $$0, ahw.a $$1, je $$2, int $$3, int $$4) {
-      if (this.f) {
-         this.f();
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public bqp a(arc $$0, dbt $$1, cuk $$2, bqo $$3) {
-      if (this.f) {
-         this.f();
-         return bqp.e;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public bqp a(arc $$0, dbt $$1, cuk $$2, bqo $$3, evi $$4) {
-      if (this.f) {
-         this.f();
-         return bqp.e;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
+      public int b() {
+         return this.c;
       }
    }
 }

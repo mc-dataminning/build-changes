@@ -1,403 +1,224 @@
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.RateLimiter;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.zip.GZIPOutputStream;
-import javax.annotation.Nullable;
-import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class fdf extends gvb {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ReentrantLock b = new ReentrantLock();
-   private static final int c = 200;
-   private static final int B = 80;
-   private static final int C = 95;
-   private static final int D = 1;
-   private static final String[] E = new String[]{"", ".", ". .", ". . ."};
-   private static final xl F = xl.c("mco.upload.verifying");
-   private final fcy G;
-   private final eps H;
-   @Nullable
-   private final fec I;
-   private final long J;
-   private final int K;
-   private final fan L;
-   private final RateLimiter M;
-   @Nullable
-   private volatile xl[] N;
-   private volatile xl O = xl.c("mco.upload.preparing");
-   @Nullable
-   private volatile String P;
-   private volatile boolean Q;
-   private volatile boolean R;
-   private volatile boolean S = true;
-   private volatile boolean T;
-   @Nullable
-   private fgz U;
-   @Nullable
-   private fgz V;
-   private int W;
-   @Nullable
-   private Long X;
-   @Nullable
-   private Long Y;
-   private long Z;
-   private final fkm aa = new fkm(this);
+public class fdf extends gve {
+   private static final int B = 2;
+   public static final List<bqp> a = ImmutableList.of(bqp.a, bqp.b, bqp.c, bqp.d);
+   private static final int C = 0;
+   public static final List<dbt> b = ImmutableList.of(dbt.a, dbt.b, dbt.c);
+   private static final xo D = xo.c("mco.configure.world.edit.slot.name");
+   static final xo E = xo.c("mco.configure.world.spawnProtection");
+   private static final xo F = xo.c("mco.configure.world.spawn_toggle.title").a(n.m, n.r);
+   private fhl G;
+   protected final fcm c;
+   private int H;
+   private int I;
+   private final fbk J;
+   private final fbd.d K;
+   private bqp L;
+   private dbt M;
+   private final String N;
+   private String O;
+   private boolean P;
+   private boolean Q;
+   private boolean R;
+   private boolean S;
+   int T;
+   private boolean U;
+   private boolean V;
+   fdf.a W;
 
-   public fdf(@Nullable fec $$0, long $$1, int $$2, fcy $$3, eps $$4) {
-      super(fes.a);
-      this.I = $$0;
+   public fdf(fcm $$0, fbk $$1, fbd.d $$2, int $$3) {
+      super(xo.c("mco.configure.world.buttons.options"));
+      this.c = $$0;
       this.J = $$1;
       this.K = $$2;
-      this.G = $$3;
-      this.H = $$4;
-      this.L = new fan();
-      this.M = RateLimiter.create(0.1F);
-   }
-
-   @Override
-   public void aN_() {
-      this.U = this.aa.b(fgz.a(xk.k, $$0x -> this.C()).a());
-      this.U.k = false;
-      this.V = this.aa.b(fgz.a(xk.e, $$0x -> this.D()).a());
-      if (!this.T) {
-         if (this.G.b == -1) {
-            this.T = true;
-            this.F();
-         } else {
-            List<fea> $$0 = new ArrayList<>();
-            if (this.I != null) {
-               $$0.add(this.I);
-            }
-
-            $$0.add(new fei(this.J, this.G.b, () -> {
-               if (!this.T) {
-                  this.T = true;
-                  this.m.execute(() -> {
-                     this.m.a(this);
-                     this.F();
-                  });
-               }
-            }));
-            this.m.a(new fcq(this.G, $$0.toArray(new fea[0])));
-         }
+      this.L = a(a, $$1.h, 2);
+      this.M = a(b, $$1.i, 0);
+      this.N = $$1.b($$3);
+      this.a($$1.a($$3));
+      if ($$2 == fbd.d.a) {
+         this.P = $$1.a;
+         this.T = $$1.e;
+         this.V = $$1.g;
+         this.R = $$1.b;
+         this.S = $$1.c;
+         this.Q = $$1.d;
+         this.U = $$1.f;
+      } else {
+         this.P = true;
+         this.T = 0;
+         this.V = false;
+         this.R = true;
+         this.S = true;
+         this.Q = true;
+         this.U = true;
       }
-
-      this.aa.a($$1 -> {
-         fgx var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.aa.a();
-   }
-
-   private void C() {
-      this.m.a(new fcj(new fae(new fnd()), this.J));
-   }
-
-   private void D() {
-      this.Q = true;
-      this.m.a(this.G);
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
-         if (this.S) {
-            this.D();
-         } else {
-            this.C();
-         }
-
+         this.m.a(this.c);
          return true;
       } else {
          return super.a($$0, $$1, $$2);
       }
    }
 
-   @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (!this.R && this.L.a != 0L && this.L.a == this.L.b && this.V != null) {
-         this.O = F;
-         this.V.j = false;
-      }
-
-      $$0.a(this.p, this.O, this.n / 2, 50, -1);
-      if (this.S) {
-         $$0.a(this.p, E[this.W / 10 % E.length], this.n / 2 + this.p.a(this.O) / 2 + 5, 50, -1, false);
-      }
-
-      if (this.L.a != 0L && !this.Q) {
-         this.c($$0);
-         this.d($$0);
-      }
-
-      xl[] $$4 = this.N;
-      if ($$4 != null) {
-         for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-            $$0.a(this.p, $$4[$$5], this.n / 2, 110 + 12 * $$5, -65536);
-         }
-      }
-   }
-
-   private void c(fgm $$0) {
-      double $$1 = Math.min((double)this.L.a / (double)this.L.b, 1.0);
-      this.P = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
-      int $$2 = (this.n - 200) / 2;
-      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
-      $$0.a($$2 - 1, 79, $$3 + 1, 96, -1);
-      $$0.a($$2, 80, $$3, 95, -8355712);
-      $$0.a(this.p, xl.a("mco.upload.percent", this.P), this.n / 2, 84, -1);
-   }
-
-   private void d(fgm $$0) {
-      if (this.W % 20 == 0) {
-         if (this.X != null && this.Y != null) {
-            long $$1 = ac.c() - this.Y;
-            if ($$1 == 0L) {
-               $$1 = 1L;
-            }
-
-            this.Z = 1000L * (this.L.a - this.X) / $$1;
-            this.a($$0, this.Z);
-         }
-
-         this.X = this.L.a;
-         this.Y = ac.c();
-      } else {
-         this.a($$0, this.Z);
-      }
-   }
-
-   private void a(fgm $$0, long $$1) {
-      String $$2 = this.P;
-      if ($$1 > 0L && $$2 != null) {
-         int $$3 = this.p.b($$2);
-         String $$4 = "(" + faf.b($$1) + "/s)";
-         $$0.a(this.p, $$4, this.n / 2 + $$3 / 2 + 15, 84, -1, false);
-      }
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.W++;
-      if (this.M.tryAcquire(1)) {
-         xl $$0 = this.E();
-         this.m.aX().c($$0);
-      }
-   }
-
-   private xl E() {
-      List<xl> $$0 = Lists.newArrayList();
-      $$0.add(this.O);
-      if (this.P != null) {
-         $$0.add(xl.a("mco.upload.percent", this.P));
-      }
-
-      xl[] $$1 = this.N;
-      if ($$1 != null) {
-         $$0.addAll(Arrays.asList($$1));
-      }
-
-      return xk.a($$0);
-   }
-
-   private void F() {
-      new Thread(
-            () -> {
-               File $$0 = null;
-               faj $$1 = faj.a();
-
-               try {
-                  if (!b.tryLock(1L, TimeUnit.SECONDS)) {
-                     this.O = xl.c("mco.upload.close.failure");
-                  } else {
-                     fbo $$2 = null;
-
-                     for (int $$3 = 0; $$3 < 20; $$3++) {
-                        try {
-                           if (this.Q) {
-                              this.I();
-                              return;
-                           }
-
-                           $$2 = $$1.e(this.J, fds.a(this.J));
-                           if ($$2 != null) {
-                              break;
-                           }
-                        } catch (fbx var18) {
-                           Thread.sleep((long)(var18.c * 1000));
-                        }
-                     }
-
-                     if ($$2 == null) {
-                        this.O = xl.c("mco.upload.close.failure");
-                     } else {
-                        fds.a(this.J, $$2.a());
-                        if (!$$2.c()) {
-                           this.O = xl.c("mco.upload.close.failure");
-                        } else if (this.Q) {
-                           this.I();
-                        } else {
-                           File $$5 = new File(this.m.p.getAbsolutePath(), "saves");
-                           $$0 = this.b(new File($$5, this.H.a()));
-                           if (this.Q) {
-                              this.I();
-                           } else if (this.a($$0)) {
-                              this.O = xl.a("mco.upload.uploading", this.H.b());
-                              fah $$10 = new fah($$0, this.J, this.K, $$2, this.m.X(), aa.b().c(), this.H.l().c(), this.L);
-                              $$10.a($$0x -> {
-                                 if ($$0x.a >= 200 && $$0x.a < 300) {
-                                    this.R = true;
-                                    this.O = xl.c("mco.upload.done");
-                                    if (this.U != null) {
-                                       this.U.b(xk.d);
-                                    }
-
-                                    fds.b(this.J);
-                                 } else if ($$0x.a == 400 && $$0x.b != null) {
-                                    this.a(xl.a("mco.upload.failed", $$0x.b));
-                                 } else {
-                                    this.a(xl.a("mco.upload.failed", $$0x.a));
-                                 }
-                              });
-
-                              while (!$$10.b()) {
-                                 if (this.Q) {
-                                    $$10.a();
-                                    this.I();
-                                    return;
-                                 }
-
-                                 try {
-                                    Thread.sleep(500L);
-                                 } catch (InterruptedException var17) {
-                                    a.error("Failed to check Realms file upload status");
-                                 }
-                              }
-                           } else {
-                              long $$6 = $$0.length();
-                              faf $$7 = faf.a($$6);
-                              faf $$8 = faf.a(5368709120L);
-                              if (faf.b($$6, $$7).equals(faf.b(5368709120L, $$8)) && $$7 != faf.a) {
-                                 faf $$9 = faf.values()[$$7.ordinal() - 1];
-                                 this.a(
-                                    xl.a("mco.upload.size.failure.line1", this.H.b()),
-                                    xl.a("mco.upload.size.failure.line2", faf.b($$6, $$9), faf.b(5368709120L, $$9))
-                                 );
-                              } else {
-                                 this.a(
-                                    xl.a("mco.upload.size.failure.line1", this.H.b()),
-                                    xl.a("mco.upload.size.failure.line2", faf.b($$6, $$7), faf.b(5368709120L, $$8))
-                                 );
-                              }
-                           }
-                        }
-                     }
-                  }
-               } catch (IOException var19) {
-                  this.a(xl.a("mco.upload.failed", var19.getMessage()));
-               } catch (fbw var20) {
-                  this.a(xl.a("mco.upload.failed", var20.a.b()));
-               } catch (InterruptedException var21) {
-                  a.error("Could not acquire upload lock");
-               } finally {
-                  this.R = true;
-                  if (b.isHeldByCurrentThread()) {
-                     b.unlock();
-                     this.S = false;
-                     if (this.U != null) {
-                        this.U.k = true;
-                     }
-
-                     if (this.V != null) {
-                        this.V.k = false;
-                     }
-
-                     if ($$0 != null) {
-                        a.debug("Deleting file {}", $$0.getAbsolutePath());
-                        $$0.delete();
-                     }
-                  } else {
-                     return;
-                  }
-               }
-            }
-         )
-         .start();
-   }
-
-   private void a(xl... $$0) {
-      this.N = $$0;
-   }
-
-   private void I() {
-      this.O = xl.c("mco.upload.cancelled");
-      a.debug("Upload was cancelled");
-   }
-
-   private boolean a(File $$0) {
-      return $$0.length() < 5368709120L;
-   }
-
-   private File b(File $$0) throws IOException {
-      TarArchiveOutputStream $$1 = null;
-
-      File var4;
+   private static <T> T a(List<T> $$0, int $$1, int $$2) {
       try {
-         File $$2 = File.createTempFile("realms-upload-file", ".tar.gz");
-         $$1 = new TarArchiveOutputStream(new GZIPOutputStream(new FileOutputStream($$2)));
-         $$1.setLongFileMode(3);
-         this.a($$1, $$0.getAbsolutePath(), "world", true);
-         $$1.finish();
-         var4 = $$2;
-      } finally {
-         if ($$1 != null) {
-            $$1.close();
+         return $$0.get($$1);
+      } catch (IndexOutOfBoundsException var4) {
+         return $$0.get($$2);
+      }
+   }
+
+   private static <T> int a(List<T> $$0, T $$1, int $$2) {
+      int $$3 = $$0.indexOf($$1);
+      return $$3 == -1 ? $$2 : $$3;
+   }
+
+   @Override
+   public void aM_() {
+      this.I = 170;
+      this.H = this.n / 2 - this.I;
+      int $$0 = this.n / 2 + 10;
+      if (this.K != fbd.d.a) {
+         xo $$1;
+         if (this.K == fbd.d.c) {
+            $$1 = xo.c("mco.configure.world.edit.subscreen.adventuremap");
+         } else if (this.K == fbd.d.e) {
+            $$1 = xo.c("mco.configure.world.edit.subscreen.inspiration");
+         } else {
+            $$1 = xo.c("mco.configure.world.edit.subscreen.experience");
+         }
+
+         this.a(new gvc($$1, this.n / 2, 26, 16711680));
+      }
+
+      this.G = this.d(new fhl(this.m.h, this.H, g(1), this.I, 20, null, xo.c("mco.configure.world.edit.slot.name")));
+      this.G.f(10);
+      this.G.a(this.O);
+      this.G.b(this::a);
+      fhj<Boolean> $$4 = this.c(fhj.b(this.P).a($$0, g(1), this.I, 20, xo.c("mco.configure.world.pvp"), ($$0x, $$1) -> this.P = $$1));
+      this.c(fhj.a(dbt::e).a(b).a(this.M).a(this.H, g(3), this.I, 20, xo.c("selectWorld.gameMode"), ($$0x, $$1) -> this.M = $$1));
+      xo $$5 = xo.c("mco.configure.world.spawn_toggle.message");
+      fhj<Boolean> $$6 = this.c(fhj.b(this.R).a($$0, g(3), this.I, 20, xo.c("mco.configure.world.spawnAnimals"), this.a($$5, $$0x -> this.R = $$0x)));
+      fhj<Boolean> $$7 = fhj.b(this.L != bqp.a && this.S)
+         .a($$0, g(5), this.I, 20, xo.c("mco.configure.world.spawnMonsters"), this.a($$5, $$0x -> this.S = $$0x));
+      this.c(fhj.a(bqp::b).a(a).a(this.L).a(this.H, g(5), this.I, 20, xo.c("options.difficulty"), ($$1, $$2) -> {
+         this.L = $$2;
+         if (this.K == fbd.d.a) {
+            boolean $$3 = this.L != bqp.a;
+            $$7.j = $$3;
+            $$7.a($$3 && this.S);
+         }
+      }));
+      this.c($$7);
+      this.W = this.c(new fdf.a(this.H, g(7), this.I, this.T, 0.0F, 16.0F));
+      fhj<Boolean> $$8 = this.c(
+         fhj.b(this.Q)
+            .a(
+               $$0,
+               g(7),
+               this.I,
+               20,
+               xo.c("mco.configure.world.spawnNPCs"),
+               this.a(xo.c("mco.configure.world.spawn_toggle.message.npc"), $$0x -> this.Q = $$0x)
+            )
+      );
+      fhj<Boolean> $$9 = this.c(fhj.b(this.V).a(this.H, g(9), this.I, 20, xo.c("mco.configure.world.forceGameMode"), ($$0x, $$1) -> this.V = $$1));
+      fhj<Boolean> $$10 = this.c(fhj.b(this.U).a($$0, g(9), this.I, 20, xo.c("mco.configure.world.commandBlocks"), ($$0x, $$1) -> this.U = $$1));
+      if (this.K != fbd.d.a) {
+         $$4.j = false;
+         $$6.j = false;
+         $$8.j = false;
+         $$7.j = false;
+         this.W.j = false;
+         $$10.j = false;
+         $$9.j = false;
+      }
+
+      if (this.L == bqp.a) {
+         $$7.j = false;
+      }
+
+      this.c(fhc.a(xo.c("mco.configure.world.buttons.done"), $$0x -> this.D()).a(this.H, g(13), this.I, 20).a());
+      this.c(fhc.a(xn.e, $$0x -> this.m.a(this.c)).a($$0, g(13), this.I, 20).a());
+   }
+
+   private fhj.b<Boolean> a(xo $$0, Consumer<Boolean> $$1) {
+      return ($$2, $$3) -> {
+         if ($$3) {
+            $$1.accept(true);
+         } else {
+            this.m.a(new flt($$1xx -> {
+               if ($$1xx) {
+                  $$1.accept(false);
+               }
+
+               this.m.a(this);
+            }, F, $$0, xn.i, xn.e));
+         }
+      };
+   }
+
+   @Override
+   public xo i() {
+      return xn.a(this.n(), this.m());
+   }
+
+   @Override
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      $$0.a(this.p, D, this.H + this.I / 2 - this.p.a(D) / 2, g(0) - 5, -1, false);
+      this.G.a($$0, $$1, $$2, $$3);
+   }
+
+   private void a(String $$0) {
+      if ($$0.equals(this.N)) {
+         this.O = "";
+      } else {
+         this.O = $$0;
+      }
+   }
+
+   private void D() {
+      int $$0 = a(a, this.L, 2);
+      int $$1 = a(b, this.M, 0);
+      if (this.K != fbd.d.c && this.K != fbd.d.d && this.K != fbd.d.e) {
+         boolean $$2 = this.K == fbd.d.a && this.L != bqp.a && this.S;
+         this.c.a(new fbk(this.P, this.R, $$2, this.Q, this.T, this.U, $$0, $$1, this.V, this.O, this.J.j, this.J.k));
+      } else {
+         this.c.a(new fbk(this.J.a, this.J.b, this.J.c, this.J.d, this.J.e, this.J.f, $$0, $$1, this.J.g, this.O, this.J.j, this.J.k));
+      }
+   }
+
+   class a extends fgy {
+      private final double d;
+      private final double e;
+
+      public a(final int $$0, final int $$1, final int $$2, final int $$3, final float $$4, final float $$5) {
+         super($$0, $$1, $$2, 20, xn.a, 0.0);
+         this.d = (double)$$4;
+         this.e = (double)$$5;
+         this.c = (double)((ayx.a((float)$$3, $$4, $$5) - $$4) / ($$5 - $$4));
+         this.b();
+      }
+
+      @Override
+      public void a() {
+         if (fdf.this.W.j) {
+            fdf.this.T = (int)ayx.d(ayx.a(this.c, 0.0, 1.0), this.d, this.e);
          }
       }
 
-      return var4;
-   }
-
-   private void a(TarArchiveOutputStream $$0, String $$1, String $$2, boolean $$3) throws IOException {
-      if (!this.Q) {
-         File $$4 = new File($$1);
-         String $$5 = $$3 ? $$2 : $$2 + $$4.getName();
-         TarArchiveEntry $$6 = new TarArchiveEntry($$4, $$5);
-         $$0.putArchiveEntry($$6);
-         if ($$4.isFile()) {
-            try (InputStream $$7 = new FileInputStream($$4)) {
-               $$7.transferTo($$0);
-            }
-
-            $$0.closeArchiveEntry();
-         } else {
-            $$0.closeArchiveEntry();
-            File[] $$8 = $$4.listFiles();
-            if ($$8 != null) {
-               for (File $$9 : $$8) {
-                  this.a($$0, $$9.getAbsolutePath(), $$5 + "/", false);
-               }
-            }
-         }
+      @Override
+      protected void b() {
+         this.b(xn.a(fdf.E, (xo)(fdf.this.T == 0 ? xn.c : xo.b(String.valueOf(fdf.this.T)))));
       }
    }
 }

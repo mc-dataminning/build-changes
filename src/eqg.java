@@ -1,136 +1,142 @@
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
 public class eqg {
-   private final arb a;
-   private final Map<esw<?>, Object> b;
-   private final Map<alb, eqg.b> c;
-   private final float d;
+   private final eqj a;
+   private final azf b;
+   private final jj.a c;
+   private final Set<eqg.c<?>> d = Sets.newLinkedHashSet();
 
-   public eqg(arb $$0, Map<esw<?>, Object> $$1, Map<alb, eqg.b> $$2, float $$3) {
+   eqg(eqj $$0, azf $$1, jj.a $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
-      this.d = $$3;
    }
 
-   public arb a() {
-      return this.a;
+   public boolean a(esz<?> $$0) {
+      return this.a.a($$0);
    }
 
-   public boolean a(esw<?> $$0) {
-      return this.b.containsKey($$0);
+   public <T> T b(esz<T> $$0) {
+      return this.a.b($$0);
    }
 
-   public <T> T b(esw<T> $$0) {
-      T $$1 = (T)this.b.get($$0);
-      if ($$1 == null) {
-         throw new NoSuchElementException($$0.a().toString());
-      } else {
-         return $$1;
-      }
+   public void a(ale $$0, Consumer<cun> $$1) {
+      this.a.a($$0, $$1);
    }
 
    @Nullable
-   public <T> T c(esw<T> $$0) {
-      return (T)this.b.get($$0);
+   public <T> T c(esz<T> $$0) {
+      return this.a.d($$0);
    }
 
-   @Nullable
-   public <T> T d(esw<T> $$0) {
-      return (T)this.b.get($$0);
+   public boolean a(eqg.c<?> $$0) {
+      return this.d.contains($$0);
    }
 
-   public void a(alb $$0, Consumer<cuk> $$1) {
-      eqg.b $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.add($$1);
-      }
+   public boolean b(eqg.c<?> $$0) {
+      return this.d.add($$0);
    }
 
-   public float b() {
-      return this.d;
+   public void c(eqg.c<?> $$0) {
+      this.d.remove($$0);
+   }
+
+   public jj.a a() {
+      return this.c;
+   }
+
+   public azf b() {
+      return this.b;
+   }
+
+   public float c() {
+      return this.a.b();
+   }
+
+   public are d() {
+      return this.a.a();
+   }
+
+   public static eqg.c<eql> a(eql $$0) {
+      return new eqg.c<>(eqi.c, $$0);
+   }
+
+   public static eqg.c<etq> a(etq $$0) {
+      return new eqg.c<>(eqi.a, $$0);
+   }
+
+   public static eqg.c<ert> a(ert $$0) {
+      return new eqg.c<>(eqi.b, $$0);
    }
 
    public static class a {
-      private final arb a;
-      private final Map<esw<?>, Object> b = Maps.newIdentityHashMap();
-      private final Map<alb, eqg.b> c = Maps.newHashMap();
-      private float d;
+      private final eqj a;
+      @Nullable
+      private azf b;
 
-      public a(arb $$0) {
+      public a(eqj $$0) {
          this.a = $$0;
       }
 
-      public arb a() {
-         return this.a;
-      }
-
-      public <T> eqg.a a(esw<T> $$0, T $$1) {
-         this.b.put($$0, $$1);
-         return this;
-      }
-
-      public <T> eqg.a b(esw<T> $$0, @Nullable T $$1) {
-         if ($$1 == null) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
+      public eqg.a a(long $$0) {
+         if ($$0 != 0L) {
+            this.b = azf.a($$0);
          }
 
          return this;
       }
 
-      public <T> T a(esw<T> $$0) {
-         T $$1 = (T)this.b.get($$0);
-         if ($$1 == null) {
-            throw new NoSuchElementException($$0.a().toString());
-         } else {
-            return $$1;
-         }
+      public are a() {
+         return this.a.a();
       }
 
-      @Nullable
-      public <T> T b(esw<T> $$0) {
-         return (T)this.b.get($$0);
-      }
-
-      public eqg.a a(alb $$0, eqg.b $$1) {
-         eqg.b $$2 = this.c.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
-         } else {
-            return this;
-         }
-      }
-
-      public eqg.a a(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public eqg a(esx $$0) {
-         Set<esw<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
-         if (!$$1.isEmpty()) {
-            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
-         } else {
-            Set<esw<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
-            if (!$$2.isEmpty()) {
-               throw new IllegalArgumentException("Missing required parameters: " + $$2);
-            } else {
-               return new eqg(this.a, this.b, this.c, this.d);
-            }
-         }
+      public eqg a(Optional<ale> $$0) {
+         are $$1 = this.a();
+         MinecraftServer $$2 = $$1.o();
+         azf $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::E_);
+         return new eqg(this.a, $$3, $$2.be().b());
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      void add(Consumer<cuk> var1);
+   public static enum b implements azs {
+      a("this", etc.a),
+      b("killer", etc.d),
+      c("direct_killer", etc.e),
+      d("killer_player", etc.b);
+
+      public static final azs.a<eqg.b> e = azs.a(eqg.b::values);
+      private final String f;
+      private final esz<? extends bss> g;
+
+      private b(final String $$0, final esz<? extends bss> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public esz<? extends bss> a() {
+         return this.g;
+      }
+
+      public static eqg.b a(String $$0) {
+         eqg.b $$1 = e.a($$0);
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            throw new IllegalArgumentException("Invalid entity target " + $$0);
+         }
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
+   }
+
+   public static record c<T>(eqi<T> a, T b) {
    }
 }

@@ -1,7 +1,7 @@
 import io.netty.buffer.ByteBuf;
 
 public class ka {
-   public static final zj<ByteBuf, ka> a = new zj<ByteBuf, ka>() {
+   public static final zm<ByteBuf, ka> a = new zm<ByteBuf, ka>() {
       public ka a(ByteBuf $$0) {
          return new ka($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
       }
@@ -52,14 +52,14 @@ public class ka {
    }
 
    public float e() {
-      return ayu.g(this.b);
+      return ayx.g(this.b);
    }
 
    public float f() {
-      return ayu.g(this.c);
+      return ayx.g(this.c);
    }
 
    public float g() {
-      return ayu.g(this.d);
+      return ayx.g(this.d);
    }
 }

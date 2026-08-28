@@ -1,25 +1,27 @@
-public class azl {
-   private double a;
-   private double b;
-   private double c;
+import com.mojang.logging.LogUtils;
+import java.security.PrivateKey;
+import java.security.Signature;
+import org.slf4j.Logger;
 
-   public double a(double $$0, double $$1) {
-      this.a += $$0;
-      double $$2 = this.a - this.b;
-      double $$3 = ayu.d(0.5, this.c, $$2);
-      double $$4 = Math.signum($$2);
-      if ($$4 * $$2 > $$4 * this.c) {
-         $$2 = $$3;
-      }
+public interface azl {
+   Logger a = LogUtils.getLogger();
 
-      this.c = $$3;
-      this.b += $$2 * $$1;
-      return $$2 * $$1;
+   byte[] sign(azj var1);
+
+   default byte[] a(byte[] $$0) {
+      return this.sign($$1 -> $$1.update($$0));
    }
 
-   public void a() {
-      this.a = 0.0;
-      this.b = 0.0;
-      this.c = 0.0;
+   static azl a(PrivateKey $$0, String $$1) {
+      return $$2 -> {
+         try {
+            Signature $$3 = Signature.getInstance($$1);
+            $$3.initSign($$0);
+            $$2.update($$3::update);
+            return $$3.sign();
+         } catch (Exception var4) {
+            throw new IllegalStateException("Failed to sign message", var4);
+         }
+      };
    }
 }

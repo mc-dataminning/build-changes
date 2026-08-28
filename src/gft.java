@@ -1,111 +1,103 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class gft extends gfx {
-   private static final String a = "plank";
-   private static final String b = "vChains";
-   private static final String c = "normalChains";
-   private static final String d = "chainL1";
-   private static final String e = "chainL2";
-   private static final String f = "chainR1";
-   private static final String g = "chainR2";
-   private static final String h = "board";
-   private static final float i = 1.0F;
-   private static final float j = 0.9F;
-   private static final evm k = new evm(0.0, -0.32F, 0.073F);
-   private final Map<dtk, gft.a> l;
+public class gft implements gfm<dpr> {
+   public static final grb a = new grb(gow.e, new ale("entity/conduit/base"));
+   public static final grb b = new grb(gow.e, new ale("entity/conduit/cage"));
+   public static final grb c = new grb(gow.e, new ale("entity/conduit/wind"));
+   public static final grb d = new grb(gow.e, new ale("entity/conduit/wind_vertical"));
+   public static final grb e = new grb(gow.e, new ale("entity/conduit/open_eye"));
+   public static final grb f = new grb(gow.e, new ale("entity/conduit/closed_eye"));
+   private final fwy g;
+   private final fwy h;
+   private final fwy i;
+   private final fwy j;
+   private final gfl k;
 
-   public gft(gfk.a $$0) {
-      super($$0);
-      this.l = dtk.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gft.a($$0.a(fwu.b($$1)))));
+   public gft(gfn.a $$0) {
+      this.k = $$0.a();
+      this.g = $$0.a(fwx.D);
+      this.h = $$0.a(fwx.F);
+      this.i = $$0.a(fwx.E);
+      this.j = $$0.a(fwx.C);
    }
 
-   @Override
-   public float b() {
-      return 1.0F;
+   public static fxe b() {
+      fxg $$0 = new fxg();
+      fxh $$1 = $$0.a();
+      $$1.a("eye", fxd.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new fxc(0.01F)), fxa.a);
+      return fxe.a($$0, 16, 16);
    }
 
-   @Override
-   public float c() {
-      return 0.9F;
+   public static fxe c() {
+      fxg $$0 = new fxg();
+      fxh $$1 = $$0.a();
+      $$1.a("wind", fxd.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fxa.a);
+      return fxe.a($$0, 64, 32);
    }
 
-   @Override
-   public void a(dqm $$0, float $$1, ezt $$2, gdj $$3, int $$4, int $$5) {
-      drx $$6 = $$0.n();
-      dlu $$7 = (dlu)$$6.b();
-      dtk $$8 = dlu.a($$7);
-      gft.a $$9 = this.l.get($$8);
-      $$9.a($$6);
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+   public static fxe d() {
+      fxg $$0 = new fxg();
+      fxh $$1 = $$0.a();
+      $$1.a("shell", fxd.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fxa.a);
+      return fxe.a($$0, 32, 16);
    }
 
-   @Override
-   void a(ezt $$0, float $$1, drx $$2) {
-      $$0.a(0.5, 0.9375, 0.5);
-      $$0.a(a.d.rotationDegrees($$1));
-      $$0.a(0.0F, -0.3125F, 0.0F);
+   public static fxe e() {
+      fxg $$0 = new fxg();
+      fxh $$1 = $$0.a();
+      $$1.a("shell", fxd.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fxa.a);
+      return fxe.a($$0, 32, 16);
    }
 
-   @Override
-   void a(ezt $$0, int $$1, int $$2, fur $$3, ezx $$4) {
-      gft.a $$5 = (gft.a)$$3;
-      $$5.a.a($$0, $$4, $$1, $$2);
-   }
-
-   @Override
-   gqy a(dtk $$0) {
-      return gdy.b($$0);
-   }
-
-   @Override
-   evm d() {
-      return k;
-   }
-
-   public static fxb e() {
-      fxd $$0 = new fxd();
-      fxe $$1 = $$0.a();
-      $$1.a("board", fxa.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), fwx.a);
-      $$1.a("plank", fxa.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), fwx.a);
-      fxe $$2 = $$1.a("normalChains", fxa.c(), fwx.a);
-      $$2.a("chainL1", fxa.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fwx.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainL2", fxa.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fwx.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("chainR1", fxa.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fwx.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainR2", fxa.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fwx.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("vChains", fxa.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), fwx.a);
-      return fxb.a($$0, 64, 32);
-   }
-
-   public static final class a extends fur {
-      public final fwv a;
-      public final fwv b;
-      public final fwv c;
-      public final fwv d;
-
-      public a(fwv $$0) {
-         super(gdr::e);
-         this.a = $$0;
-         this.b = $$0.b("plank");
-         this.d = $$0.b("normalChains");
-         this.c = $$0.b("vChains");
-      }
-
-      public void a(drx $$0) {
-         boolean $$1 = !($$0.b() instanceof dft);
-         this.b.k = $$1;
-         this.c.k = false;
-         this.d.k = true;
-         if (!$$1) {
-            boolean $$2 = $$0.c(dsn.a);
-            this.d.k = !$$2;
-            this.c.k = $$2;
+   public void a(dpr $$0, float $$1, ezw $$2, gdm $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      if (!$$0.c()) {
+         float $$7 = $$0.a(0.0F);
+         faa $$8 = a.a($$3, gdu::c);
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(new Quaternionf().rotationY($$7 * (float) (Math.PI / 180.0)));
+         this.i.a($$2, $$8, $$4, $$5);
+         $$2.b();
+      } else {
+         float $$9 = $$0.a($$1) * (180.0F / (float)Math.PI);
+         float $$10 = ayx.a($$6 * 0.1F) / 2.0F + 0.5F;
+         $$10 = $$10 * $$10 + $$10;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         Vector3f $$11 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
+         $$2.a(new Quaternionf().rotationAxis($$9 * (float) (Math.PI / 180.0), $$11));
+         this.j.a($$2, b.a($$3, gdu::e), $$4, $$5);
+         $$2.b();
+         int $$12 = $$0.a / 66 % 3;
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         if ($$12 == 1) {
+            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
+         } else if ($$12 == 2) {
+            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
          }
-      }
 
-      @Override
-      public void a(ezt $$0, ezx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         faa $$13 = ($$12 == 1 ? d : c).a($$3, gdu::e);
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.b(0.875F, 0.875F, 0.875F);
+         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         feo $$14 = this.k.b;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         $$2.b(0.5F, 0.5F, 0.5F);
+         float $$15 = -$$14.e();
+         $$2.a(new Quaternionf().rotationYXZ($$15 * (float) (Math.PI / 180.0), $$14.d() * (float) (Math.PI / 180.0), (float) Math.PI));
+         float $$16 = 1.3333334F;
+         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
+         this.g.a($$2, ($$0.d() ? e : f).a($$3, gdu::e), $$4, $$5);
+         $$2.b();
       }
    }
 }

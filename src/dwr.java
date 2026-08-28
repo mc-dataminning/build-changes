@@ -1,59 +1,70 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
 
-public class dwr {
-   private final arb a;
+public class dwr implements dwx {
+   public static final MapCodec<dwr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kc.a.fieldOf("source_entity").forGetter(dwr::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.f))
+            .apply($$0, ($$0x, $$1) -> new dwr(Either.right(Either.left($$0x)), $$1))
+   );
+   public static final zm<ByteBuf, dwr> b = zm.a(zk.g, dwr::c, zk.i, $$0 -> $$0.f, ($$0, $$1) -> new dwr(Either.right(Either.right($$0)), $$1));
+   private Either<bss, Either<UUID, Integer>> e;
+   private final float f;
 
-   public dwr(arb $$0) {
-      this.a = $$0;
+   public dwr(bss $$0, float $$1) {
+      this(Either.left($$0), $$1);
    }
 
-   public void a(ji<dwq> $$0, evm $$1, dwq.a $$2) {
-      int $$3 = $$0.a().a();
-      iz $$4 = iz.a($$1);
-      int $$5 = kb.a($$4.u() - $$3);
-      int $$6 = kb.a($$4.v() - $$3);
-      int $$7 = kb.a($$4.w() - $$3);
-      int $$8 = kb.a($$4.u() + $$3);
-      int $$9 = kb.a($$4.v() + $$3);
-      int $$10 = kb.a($$4.w() + $$3);
-      List<dwq.b> $$11 = new ArrayList<>();
-      dwt.a $$12 = ($$4x, $$5x) -> {
-         if ($$4x.c() == dws.a.b) {
-            $$11.add(new dwq.b($$0, $$1, $$2, $$4x, $$5x));
-         } else {
-            $$4x.a(this.a, $$0, $$2, $$1);
-         }
-      };
-      boolean $$13 = false;
-
-      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
-         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
-            dtt $$16 = this.a.l().a($$14, $$15);
-            if ($$16 != null) {
-               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
-                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
-               }
-            }
-         }
-      }
-
-      if (!$$11.isEmpty()) {
-         this.a($$11);
-      }
-
-      if ($$13) {
-         agp.a(this.a, $$0, $$1);
-      }
+   private dwr(Either<bss, Either<UUID, Integer>> $$0, float $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   private void a(List<dwq.b> $$0) {
-      Collections.sort($$0);
+   @Override
+   public Optional<evp> a(dbw $$0) {
+      if (this.e.left().isEmpty()) {
+         this.b($$0);
+      }
 
-      for (dwq.b $$1 : $$0) {
-         dws $$2 = $$1.d();
-         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
+      return this.e.left().map($$0x -> $$0x.dn().b(0.0, (double)this.f, 0.0));
+   }
+
+   private void b(dbw $$0) {
+      ((Optional)this.e.map(Optional::of, $$1 -> Optional.ofNullable((bss)$$1.map($$1x -> $$0 instanceof are $$2 ? $$2.a($$1x) : null, $$0::a))))
+         .ifPresent($$0x -> this.e = Either.left($$0x));
+   }
+
+   private UUID b() {
+      return (UUID)this.e.map(bss::cz, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
+            throw new RuntimeException("Unable to get entityId from uuid");
+         }));
+   }
+
+   private int c() {
+      return (Integer)this.e.map(bss::al, $$0 -> (Integer)$$0.map($$0x -> {
+            throw new IllegalStateException("Unable to get entityId from uuid");
+         }, Function.identity()));
+   }
+
+   @Override
+   public dwy<dwr> a() {
+      return dwy.b;
+   }
+
+   public static class a implements dwy<dwr> {
+      @Override
+      public MapCodec<dwr> a() {
+         return dwr.a;
+      }
+
+      @Override
+      public zm<ByteBuf, dwr> b() {
+         return dwr.b;
       }
    }
 }

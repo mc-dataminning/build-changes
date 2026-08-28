@@ -1,29 +1,11 @@
-public class agw implements zs<ags> {
-   public static final zj<wl, agw> a = zs.a(agw::a, agw::new);
-   private final bqm b;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public agw(bqm $$0) {
-      this.b = $$0;
-   }
-
-   private agw(wl $$0) {
-      this.b = bqm.a($$0.readUnsignedByte());
-   }
-
-   private void a(wl $$0) {
-      $$0.k(this.b.a());
-   }
+public interface agw extends xa {
+   Logger a = LogUtils.getLogger();
 
    @Override
-   public zu<agw> a() {
-      return agq.bh;
-   }
-
-   public void a(ags $$0) {
-      $$0.a(this);
-   }
-
-   public bqm b() {
-      return this.b;
+   default void a(zv $$0, Exception $$1) throws y {
+      a.error("Failed to handle packet {}, suppressing error", $$0, $$1);
    }
 }

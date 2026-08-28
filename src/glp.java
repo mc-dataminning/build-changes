@@ -1,18 +1,17 @@
-public class glp extends gjy<cml, fwg<cml>> {
-   private static final alb a = new alb("textures/entity/wandering_trader.png");
+public class glp extends gkb<ckp, fwh> {
+   private static final ale a = new ale("textures/entity/illager/vex.png");
+   private static final ale i = new ale("textures/entity/illager/vex_charging.png");
 
-   public glp(gis.a $$0) {
-      super($$0, new fwg<>($$0.a(fwu.bS)), 0.5F);
-      this.a(new gmj<>(this, $$0.f(), $$0.d()));
-      this.a(new gmi<>(this, $$0.d()));
+   public glp(giv.a $$0) {
+      super($$0, new fwh($$0.a(fwx.bO)), 0.3F);
+      this.a(new gna<>(this, $$0.d()));
    }
 
-   public alb a(cml $$0) {
-      return a;
+   protected int a(ckp $$0, iz $$1) {
+      return 15;
    }
 
-   protected void a(cml $$0, ezt $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   public ale a(ckp $$0) {
+      return $$0.gr() ? i : a;
    }
 }

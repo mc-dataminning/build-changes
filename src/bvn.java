@@ -1,41 +1,34 @@
-public class bvn implements bve<btk> {
-   private final int a;
-   private final int b;
-   private bvd.a c = bvd.a.a;
-   private long d;
+import com.google.common.collect.ImmutableMap;
 
-   public bvn(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class bvn extends bvg<cgx> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
+
+   public bvn() {
+      super(ImmutableMap.of(ccr.m, ccs.b), 100);
    }
 
-   @Override
-   public bvd.a a() {
-      return this.c;
+   protected boolean a(are $$0, cgx $$1) {
+      return $$1.ar() == btz.a;
    }
 
-   @Override
-   public final boolean e(arb $$0, btk $$1, long $$2) {
-      this.c = bvd.a.b;
-      int $$3 = this.a + $$0.E_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
+   protected boolean a(are $$0, cgx $$1, long $$2) {
+      return this.e < 60;
    }
 
-   @Override
-   public final void f(arb $$0, btk $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
+   protected void b(are $$0, cgx $$1, long $$2) {
+      if (!$$1.bi()) {
+         $$1.b(btz.i);
+         this.e = 0;
       }
    }
 
-   @Override
-   public final void g(arb $$0, btk $$1, long $$2) {
-      this.c = bvd.a.a;
+   protected void c(are $$0, cgx $$1, long $$2) {
+      $$1.b(btz.a);
    }
 
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void d(are $$0, cgx $$1, long $$2) {
+      this.e++;
    }
 }

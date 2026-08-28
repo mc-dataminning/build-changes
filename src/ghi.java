@@ -1,37 +1,84 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import org.joml.Matrix4f;
 
-public class ghi implements ggv.a {
-   private static final int a = 60;
-   private final Set<kb> b = Sets.newHashSet();
+public class ghi implements ggy.a {
+   private final ffd a;
 
-   ghi() {
+   public ghi(ffd $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a() {
-      this.b.clear();
-   }
+   public void a(ezw $$0, gdm $$1, double $$2, double $$3, double $$4) {
+      Matrix4f $$5 = $$0.c().a();
+      dbc $$6 = this.a.s.dP();
+      iz $$7 = iz.a($$2, $$3, $$4);
 
-   public void a(kb $$0) {
-      this.b.add($$0);
-   }
+      for (iz $$8 : iz.c($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
+         dsa $$9 = $$6.a_($$8);
+         if (!$$9.a(dez.a)) {
+            ewi $$10 = $$9.j($$6, $$8);
 
-   public void b(kb $$0) {
-      this.b.remove($$0);
-   }
+            for (evk $$11 : $$10.e()) {
+               evk $$12 = $$11.a($$8).g(0.002);
+               float $$13 = (float)($$12.a - $$2);
+               float $$14 = (float)($$12.b - $$3);
+               float $$15 = (float)($$12.c - $$4);
+               float $$16 = (float)($$12.d - $$2);
+               float $$17 = (float)($$12.e - $$3);
+               float $$18 = (float)($$12.f - $$4);
+               float $$19 = 1.0F;
+               float $$20 = 0.0F;
+               float $$21 = 0.0F;
+               float $$22 = 0.5F;
+               if ($$9.d($$6, $$8, je.e)) {
+                  faa $$23 = $$1.getBuffer(gdu.A());
+                  $$23.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
 
-   @Override
-   public void a(ezt $$0, gdj $$1, double $$2, double $$3, double $$4) {
-      iz $$5 = iz.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.q(), 60.0)) {
-            a($$0, $$1, $$3x);
+               if ($$9.d($$6, $$8, je.d)) {
+                  faa $$24 = $$1.getBuffer(gdu.A());
+                  $$24.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, je.f)) {
+                  faa $$25 = $$1.getBuffer(gdu.A());
+                  $$25.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, je.c)) {
+                  faa $$26 = $$1.getBuffer(gdu.A());
+                  $$26.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, je.a)) {
+                  faa $$27 = $$1.getBuffer(gdu.A());
+                  $$27.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, je.b)) {
+                  faa $$28 = $$1.getBuffer(gdu.A());
+                  $$28.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+            }
          }
-      });
-   }
-
-   private static void a(ezt $$0, gdj $$1, kb $$2) {
-      ggv.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
+      }
    }
 }

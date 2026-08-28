@@ -1,79 +1,138 @@
-import com.google.common.collect.ImmutableList;
+public class fuf extends fuh<cjx> {
+   private static final float[] a = new float[]{1.75F, 0.25F, 0.0F, 0.0F, 0.5F, 0.5F, 0.5F, 0.5F, 1.25F, 0.75F, 0.0F, 0.0F};
+   private static final float[] b = new float[]{0.0F, 0.0F, 0.0F, 0.0F, 0.25F, 1.75F, 1.25F, 0.75F, 0.0F, 0.0F, 0.0F, 0.0F};
+   private static final float[] f = new float[]{0.0F, 0.0F, 0.25F, 1.75F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.75F, 1.25F};
+   private static final float[] g = new float[]{0.0F, 0.0F, 8.0F, -8.0F, -8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F, 8.0F, -8.0F};
+   private static final float[] h = new float[]{-8.0F, -8.0F, -8.0F, -8.0F, 0.0F, 0.0F, 0.0F, 0.0F, 8.0F, 8.0F, 8.0F, 8.0F};
+   private static final float[] i = new float[]{8.0F, -8.0F, 0.0F, 0.0F, -8.0F, -8.0F, 8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F};
+   private static final String j = "eye";
+   private static final String k = "tail0";
+   private static final String l = "tail1";
+   private static final String m = "tail2";
+   private final fwy n;
+   private final fwy o;
+   private final fwy p;
+   private final fwy[] q;
+   private final fwy[] r;
 
-public class fuf<T extends btm & cle> extends fsq<T> {
-   private static final float a = 0.87266463F;
-   private static final float b = (float) (-Math.PI / 9);
-   private final fwv f;
-   private final fwv g;
-   private final fwv h;
-   private final fwv i;
-   private final fwv j;
-   private final fwv k;
-   private final fwv l;
-   private final fwv m;
-   private final fwv n;
+   public fuf(fwy $$0) {
+      this.n = $$0;
+      this.q = new fwy[12];
+      this.o = $$0.b("head");
 
-   public fuf(fwv $$0) {
-      super(true, 8.0F, 6.0F, 1.9F, 2.0F, 24.0F);
-      this.i = $$0.b("body");
-      this.n = this.i.b("mane");
-      this.f = $$0.b("head");
-      this.g = this.f.b("right_ear");
-      this.h = this.f.b("left_ear");
-      this.j = $$0.b("right_front_leg");
-      this.k = $$0.b("left_front_leg");
-      this.l = $$0.b("right_hind_leg");
-      this.m = $$0.b("left_hind_leg");
-   }
-
-   public static fxb c() {
-      fxd $$0 = new fxd();
-      fxe $$1 = $$0.a();
-      fxe $$2 = $$1.a("body", fxa.c().a(1, 1).a(-8.0F, -7.0F, -13.0F, 16.0F, 14.0F, 26.0F), fwx.a(0.0F, 7.0F, 0.0F));
-      $$2.a("mane", fxa.c().a(90, 33).a(0.0F, 0.0F, -9.0F, 0.0F, 10.0F, 19.0F, new fwz(0.001F)), fwx.a(0.0F, -14.0F, -5.0F));
-      fxe $$3 = $$1.a("head", fxa.c().a(61, 1).a(-7.0F, -3.0F, -19.0F, 14.0F, 6.0F, 19.0F), fwx.a(0.0F, 2.0F, -12.0F, 0.87266463F, 0.0F, 0.0F));
-      $$3.a("right_ear", fxa.c().a(1, 1).a(-6.0F, -1.0F, -2.0F, 6.0F, 1.0F, 4.0F), fwx.a(-6.0F, -2.0F, -3.0F, 0.0F, 0.0F, (float) (-Math.PI * 2.0 / 9.0)));
-      $$3.a("left_ear", fxa.c().a(1, 6).a(0.0F, -1.0F, -2.0F, 6.0F, 1.0F, 4.0F), fwx.a(6.0F, -2.0F, -3.0F, 0.0F, 0.0F, (float) (Math.PI * 2.0 / 9.0)));
-      $$3.a("right_horn", fxa.c().a(10, 13).a(-1.0F, -11.0F, -1.0F, 2.0F, 11.0F, 2.0F), fwx.a(-7.0F, 2.0F, -12.0F));
-      $$3.a("left_horn", fxa.c().a(1, 13).a(-1.0F, -11.0F, -1.0F, 2.0F, 11.0F, 2.0F), fwx.a(7.0F, 2.0F, -12.0F));
-      int $$4 = 14;
-      int $$5 = 11;
-      $$1.a("right_front_leg", fxa.c().a(66, 42).a(-3.0F, 0.0F, -3.0F, 6.0F, 14.0F, 6.0F), fwx.a(-4.0F, 10.0F, -8.5F));
-      $$1.a("left_front_leg", fxa.c().a(41, 42).a(-3.0F, 0.0F, -3.0F, 6.0F, 14.0F, 6.0F), fwx.a(4.0F, 10.0F, -8.5F));
-      $$1.a("right_hind_leg", fxa.c().a(21, 45).a(-2.5F, 0.0F, -2.5F, 5.0F, 11.0F, 5.0F), fwx.a(-5.0F, 13.0F, 10.0F));
-      $$1.a("left_hind_leg", fxa.c().a(0, 45).a(-2.5F, 0.0F, -2.5F, 5.0F, 11.0F, 5.0F), fwx.a(5.0F, 13.0F, 10.0F));
-      return fxb.a($$0, 128, 64);
-   }
-
-   @Override
-   protected Iterable<fwv> a() {
-      return ImmutableList.of(this.f);
-   }
-
-   @Override
-   protected Iterable<fwv> b() {
-      return ImmutableList.of(this.i, this.j, this.k, this.l, this.m);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.g.g = (float) (-Math.PI * 2.0 / 9.0) - $$2 * ayu.a($$1);
-      this.h.g = (float) (Math.PI * 2.0 / 9.0) + $$2 * ayu.a($$1);
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      int $$6 = $$0.gq();
-      float $$7 = 1.0F - (float)ayu.a(10 - 2 * $$6) / 10.0F;
-      this.f.e = ayu.i($$7, 0.87266463F, (float) (-Math.PI / 9));
-      if ($$0.p_()) {
-         this.f.c = ayu.i($$7, 2.0F, 5.0F);
-         this.n.d = -3.0F;
-      } else {
-         this.f.c = 2.0F;
-         this.n.d = -7.0F;
+      for (int $$1 = 0; $$1 < this.q.length; $$1++) {
+         this.q[$$1] = this.o.b(a($$1));
       }
 
-      float $$8 = 1.2F;
-      this.j.e = ayu.b($$1) * 1.2F * $$2;
-      this.k.e = ayu.b($$1 + (float) Math.PI) * 1.2F * $$2;
-      this.l.e = this.k.e;
-      this.m.e = this.j.e;
+      this.p = this.o.b("eye");
+      this.r = new fwy[3];
+      this.r[0] = this.o.b("tail0");
+      this.r[1] = this.r[0].b("tail1");
+      this.r[2] = this.r[1].b("tail2");
+   }
+
+   private static String a(int $$0) {
+      return "spike" + $$0;
+   }
+
+   public static fxe b() {
+      fxg $$0 = new fxg();
+      fxh $$1 = $$0.a();
+      fxh $$2 = $$1.a(
+         "head",
+         fxd.c()
+            .a(0, 0)
+            .a(-6.0F, 10.0F, -8.0F, 12.0F, 12.0F, 16.0F)
+            .a(0, 28)
+            .a(-8.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F)
+            .a(0, 28)
+            .a(6.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F, true)
+            .a(16, 40)
+            .a(-6.0F, 8.0F, -6.0F, 12.0F, 2.0F, 12.0F)
+            .a(16, 40)
+            .a(-6.0F, 22.0F, -6.0F, 12.0F, 2.0F, 12.0F),
+         fxa.a
+      );
+      fxd $$3 = fxd.c().a(0, 0).a(-1.0F, -4.5F, -1.0F, 2.0F, 9.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 12; $$4++) {
+         float $$5 = b($$4, 0.0F, 0.0F);
+         float $$6 = c($$4, 0.0F, 0.0F);
+         float $$7 = d($$4, 0.0F, 0.0F);
+         float $$8 = (float) Math.PI * a[$$4];
+         float $$9 = (float) Math.PI * b[$$4];
+         float $$10 = (float) Math.PI * f[$$4];
+         $$2.a(a($$4), $$3, fxa.a($$5, $$6, $$7, $$8, $$9, $$10));
+      }
+
+      $$2.a("eye", fxd.c().a(8, 0).a(-1.0F, 15.0F, 0.0F, 2.0F, 2.0F, 1.0F), fxa.a(0.0F, 0.0F, -8.25F));
+      fxh $$11 = $$2.a("tail0", fxd.c().a(40, 0).a(-2.0F, 14.0F, 7.0F, 4.0F, 4.0F, 8.0F), fxa.a);
+      fxh $$12 = $$11.a("tail1", fxd.c().a(0, 54).a(0.0F, 14.0F, 0.0F, 3.0F, 3.0F, 7.0F), fxa.a(-1.5F, 0.5F, 14.0F));
+      $$12.a("tail2", fxd.c().a(41, 32).a(0.0F, 14.0F, 0.0F, 2.0F, 2.0F, 6.0F).a(25, 19).a(1.0F, 10.5F, 3.0F, 1.0F, 9.0F, 9.0F), fxa.a(0.5F, 0.5F, 6.0F));
+      return fxe.a($$0, 64, 64);
+   }
+
+   @Override
+   public fwy a() {
+      return this.n;
+   }
+
+   public void a(cjx $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 - (float)$$0.ai;
+      this.o.f = $$4 * (float) (Math.PI / 180.0);
+      this.o.e = $$5 * (float) (Math.PI / 180.0);
+      float $$7 = (1.0F - $$0.H($$6)) * 0.55F;
+      this.a($$3, $$7);
+      bss $$8 = ffd.Q().an();
+      if ($$0.gs()) {
+         $$8 = $$0.gt();
+      }
+
+      if ($$8 != null) {
+         evp $$9 = $$8.j(0.0F);
+         evp $$10 = $$0.j(0.0F);
+         double $$11 = $$9.d - $$10.d;
+         if ($$11 > 0.0) {
+            this.p.c = 0.0F;
+         } else {
+            this.p.c = 1.0F;
+         }
+
+         evp $$12 = $$0.f(0.0F);
+         $$12 = new evp($$12.c, 0.0, $$12.e);
+         evp $$13 = new evp($$10.c - $$9.c, 0.0, $$10.e - $$9.e).d().b((float) (Math.PI / 2));
+         double $$14 = $$12.b($$13);
+         this.p.b = ayx.c((float)Math.abs($$14)) * 2.0F * (float)Math.signum($$14);
+      }
+
+      this.p.k = true;
+      float $$15 = $$0.G($$6);
+      this.r[0].f = ayx.a($$15) * (float) Math.PI * 0.05F;
+      this.r[1].f = ayx.a($$15) * (float) Math.PI * 0.1F;
+      this.r[2].f = ayx.a($$15) * (float) Math.PI * 0.15F;
+   }
+
+   private void a(float $$0, float $$1) {
+      for (int $$2 = 0; $$2 < 12; $$2++) {
+         this.q[$$2].b = b($$2, $$0, $$1);
+         this.q[$$2].c = c($$2, $$0, $$1);
+         this.q[$$2].d = d($$2, $$0, $$1);
+      }
+   }
+
+   private static float a(int $$0, float $$1, float $$2) {
+      return 1.0F + ayx.b($$1 * 1.5F + (float)$$0) * 0.01F - $$2;
+   }
+
+   private static float b(int $$0, float $$1, float $$2) {
+      return g[$$0] * a($$0, $$1, $$2);
+   }
+
+   private static float c(int $$0, float $$1, float $$2) {
+      return 16.0F + h[$$0] * a($$0, $$1, $$2);
+   }
+
+   private static float d(int $$0, float $$1, float $$2) {
+      return i[$$0] * a($$0, $$1, $$2);
    }
 }

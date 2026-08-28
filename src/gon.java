@@ -1,119 +1,50 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
+import com.google.common.collect.ImmutableList;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gon extends gof {
-   static final Logger f = LogUtils.getLogger();
-   protected final alb e;
+public final class gon {
+   private static final int a = 16;
+   private static final int b = 16;
+   private static final String c = "missingno";
+   private static final ale d = new ale("missingno");
+   private static final auq e = new auq.a().a(gqi.a, new gqi(ImmutableList.of(new gqh(0, -1)), 16, 16, 1, false)).a();
+   @Nullable
+   private static gok f;
 
-   public gon(alb $$0) {
-      this.e = $$0;
-   }
+   private static eyx a(int $$0, int $$1) {
+      eyx $$2 = new eyx($$0, $$1, false);
+      int $$3 = -16777216;
+      int $$4 = -524040;
 
-   @Override
-   public void a(aul $$0) throws IOException {
-      gon.a $$1 = this.b($$0);
-      $$1.c();
-      gqr $$2 = $$1.a();
-      boolean $$3;
-      boolean $$4;
-      if ($$2 != null) {
-         $$3 = $$2.a();
-         $$4 = $$2.b();
-      } else {
-         $$3 = false;
-         $$4 = false;
-      }
-
-      eyu $$7 = $$1.b();
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> this.a($$7, $$3, $$4));
-      } else {
-         this.a($$7, $$3, $$4);
-      }
-   }
-
-   private void a(eyu $$0, boolean $$1, boolean $$2) {
-      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
-   }
-
-   protected gon.a b(aul $$0) {
-      return gon.a.a($$0, this.e);
-   }
-
-   protected static class a implements Closeable {
-      @Nullable
-      private final gqr a;
-      @Nullable
-      private final eyu b;
-      @Nullable
-      private final IOException c;
-
-      public a(IOException $$0) {
-         this.c = $$0;
-         this.a = null;
-         this.b = null;
-      }
-
-      public a(@Nullable gqr $$0, eyu $$1) {
-         this.c = null;
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public static gon.a a(aul $$0, alb $$1) {
-         try {
-            auj $$2 = $$0.getResourceOrThrow($$1);
-
-            eyu $$4;
-            try (InputStream $$3 = $$2.d()) {
-               $$4 = eyu.a($$3);
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         for (int $$6 = 0; $$6 < $$0; $$6++) {
+            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
+               $$2.a($$6, $$5, -524040);
+            } else {
+               $$2.a($$6, $$5, -16777216);
             }
-
-            gqr $$6 = null;
-
-            try {
-               $$6 = $$2.f().a(gqr.a).orElse(null);
-            } catch (RuntimeException var8) {
-               gon.f.warn("Failed reading metadata of: {}", $$1, var8);
-            }
-
-            return new gon.a($$6, $$4);
-         } catch (IOException var10) {
-            return new gon.a(var10);
          }
       }
 
-      @Nullable
-      public gqr a() {
-         return this.a;
+      return $$2;
+   }
+
+   public static gor a() {
+      eyx $$0 = a(16, 16);
+      return new gor(d, new gqk(16, 16), $$0, e);
+   }
+
+   public static ale b() {
+      return d;
+   }
+
+   public static gok c() {
+      if (f == null) {
+         eyx $$0 = a(16, 16);
+         $$0.i();
+         f = new gok($$0);
+         ffd.Q().aa().a(d, f);
       }
 
-      public eyu b() throws IOException {
-         if (this.c != null) {
-            throw this.c;
-         } else {
-            return this.b;
-         }
-      }
-
-      @Override
-      public void close() {
-         if (this.b != null) {
-            this.b.close();
-         }
-      }
-
-      public void c() throws IOException {
-         if (this.c != null) {
-            throw this.c;
-         }
-      }
+      return f;
    }
 }

@@ -1,22 +1,11 @@
 import com.mojang.brigadier.StringReader;
-import java.util.Optional;
+import java.util.stream.Stream;
 
-public class bmt implements bmj<StringReader, vo> {
-   public static final bmj<StringReader, vo> a = new bmt();
-
-   private bmt() {
-   }
+public interface bmt extends bmo<StringReader> {
+   Stream<ale> a();
 
    @Override
-   public Optional<vo> a(bmi<StringReader> $$0) {
-      $$0.b().skipWhitespace();
-      int $$1 = $$0.c();
-
-      try {
-         return Optional.of(new vp($$0.b()).d());
-      } catch (Exception var4) {
-         $$0.a().a($$1, var4);
-         return Optional.empty();
-      }
+   default Stream<String> possibleValues(bml<StringReader> $$0) {
+      return this.a().map(ale::toString);
    }
 }

@@ -1,121 +1,35 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cyx implements cyh {
-   final cyy a;
-   final cuk b;
-   final String c;
-   final cyg d;
-   final boolean e;
+public interface cyx<T extends cyt<?>> {
+   cyx<cza> a = a("crafting_shaped", new cza.a());
+   cyx<czc> b = a("crafting_shapeless", new czc.a());
+   cyx<cyd> c = a("crafting_special_armordye", new czg<>(cyd::new));
+   cyx<cyg> d = a("crafting_special_bookcloning", new czg<>(cyg::new));
+   cyx<cyr> e = a("crafting_special_mapcloning", new czg<>(cyr::new));
+   cyx<cys> f = a("crafting_special_mapextending", new czg<>(cys::new));
+   cyx<cyn> g = a("crafting_special_firework_rocket", new czg<>(cyn::new));
+   cyx<cyp> h = a("crafting_special_firework_star", new czg<>(cyp::new));
+   cyx<cyo> i = a("crafting_special_firework_star_fade", new czg<>(cyo::new));
+   cyx<czp> j = a("crafting_special_tippedarrow", new czg<>(czp::new));
+   cyx<cye> k = a("crafting_special_bannerduplicate", new czg<>(cye::new));
+   cyx<czd> l = a("crafting_special_shielddecoration", new czg<>(czd::new));
+   cyx<cze> m = a("crafting_special_shulkerboxcoloring", new czg<>(cze::new));
+   cyx<czo> n = a("crafting_special_suspiciousstew", new czg<>(czo::new));
+   cyx<cyz> o = a("crafting_special_repairitem", new czg<>(cyz::new));
+   cyx<czi> p = a("smelting", new czf<>(czi::new, 200));
+   cyx<cyf> q = a("blasting", new czf<>(cyf::new, 100));
+   cyx<czm> r = a("smoking", new czf<>(czm::new, 100));
+   cyx<cyh> s = a("campfire_cooking", new czf<>(cyh::new, 100));
+   cyx<czn> t = a("stonecutting", new czh.b<>(czn::new));
+   cyx<czk> u = a("smithing_transform", new czk.a());
+   cyx<czl> v = a("smithing_trim", new czl.a());
+   cyx<cym> w = a("crafting_decorated_pot", new czg<>(cym::new));
 
-   public cyx(String $$0, cyg $$1, cyy $$2, cuk $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.e = $$4;
-   }
+   MapCodec<T> a();
 
-   public cyx(String $$0, cyg $$1, cyy $$2, cuk $$3) {
-      this($$0, $$1, $$2, $$3, true);
-   }
+   zm<wz, T> b();
 
-   @Override
-   public cyu<?> ap_() {
-      return cyu.a;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
-   }
-
-   @Override
-   public cyg d() {
-      return this.d;
-   }
-
-   @Override
-   public cuk a(jk.a $$0) {
-      return this.b;
-   }
-
-   @Override
-   public jr<cyn> a() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean h() {
-      return this.e;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= this.a.a() && $$1 >= this.a.b();
-   }
-
-   public boolean a(cqf $$0, dbt $$1) {
-      return this.a.a($$0);
-   }
-
-   public cuk a(cqf $$0, jk.a $$1) {
-      return this.a($$1).s();
-   }
-
-   public int j() {
-      return this.a.a();
-   }
-
-   public int k() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean i() {
-      jr<cyn> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
-   }
-
-   public static class a implements cyu<cyx> {
-      public static final MapCodec<cyx> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
-                  cyg.e.fieldOf("category").orElse(cyg.d).forGetter($$0x -> $$0x.d),
-                  cyy.a.forGetter($$0x -> $$0x.a),
-                  cuk.d.fieldOf("result").forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, cyx::new)
-      );
-      public static final zj<ww, cyx> y = zj.a(cyx.a::a, cyx.a::a);
-
-      @Override
-      public MapCodec<cyx> a() {
-         return x;
-      }
-
-      @Override
-      public zj<ww, cyx> b() {
-         return y;
-      }
-
-      private static cyx a(ww $$0) {
-         String $$1 = $$0.p();
-         cyg $$2 = $$0.b(cyg.class);
-         cyy $$3 = cyy.b.decode($$0);
-         cuk $$4 = cuk.i.decode($$0);
-         boolean $$5 = $$0.readBoolean();
-         return new cyx($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private static void a(ww $$0, cyx $$1) {
-         $$0.a($$1.c);
-         $$0.a($$1.d);
-         cyy.b.encode($$0, $$1.a);
-         cuk.i.encode($$0, $$1.b);
-         $$0.a($$1.e);
-      }
+   static <S extends cyx<T>, T extends cyt<?>> S a(String $$0, S $$1) {
+      return jv.a(lp.t, $$0, $$1);
    }
 }

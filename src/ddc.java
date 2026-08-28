@@ -1,108 +1,70 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
-import org.apache.commons.lang3.mutable.MutableInt;
+public abstract class ddc {
+   public static final ald<dcv> a = a("the_void");
+   public static final ald<dcv> b = a("plains");
+   public static final ald<dcv> c = a("sunflower_plains");
+   public static final ald<dcv> d = a("snowy_plains");
+   public static final ald<dcv> e = a("ice_spikes");
+   public static final ald<dcv> f = a("desert");
+   public static final ald<dcv> g = a("swamp");
+   public static final ald<dcv> h = a("mangrove_swamp");
+   public static final ald<dcv> i = a("forest");
+   public static final ald<dcv> j = a("flower_forest");
+   public static final ald<dcv> k = a("birch_forest");
+   public static final ald<dcv> l = a("dark_forest");
+   public static final ald<dcv> m = a("old_growth_birch_forest");
+   public static final ald<dcv> n = a("old_growth_pine_taiga");
+   public static final ald<dcv> o = a("old_growth_spruce_taiga");
+   public static final ald<dcv> p = a("taiga");
+   public static final ald<dcv> q = a("snowy_taiga");
+   public static final ald<dcv> r = a("savanna");
+   public static final ald<dcv> s = a("savanna_plateau");
+   public static final ald<dcv> t = a("windswept_hills");
+   public static final ald<dcv> u = a("windswept_gravelly_hills");
+   public static final ald<dcv> v = a("windswept_forest");
+   public static final ald<dcv> w = a("windswept_savanna");
+   public static final ald<dcv> x = a("jungle");
+   public static final ald<dcv> y = a("sparse_jungle");
+   public static final ald<dcv> z = a("bamboo_jungle");
+   public static final ald<dcv> A = a("badlands");
+   public static final ald<dcv> B = a("eroded_badlands");
+   public static final ald<dcv> C = a("wooded_badlands");
+   public static final ald<dcv> D = a("meadow");
+   public static final ald<dcv> E = a("cherry_grove");
+   public static final ald<dcv> F = a("grove");
+   public static final ald<dcv> G = a("snowy_slopes");
+   public static final ald<dcv> H = a("frozen_peaks");
+   public static final ald<dcv> I = a("jagged_peaks");
+   public static final ald<dcv> J = a("stony_peaks");
+   public static final ald<dcv> K = a("river");
+   public static final ald<dcv> L = a("frozen_river");
+   public static final ald<dcv> M = a("beach");
+   public static final ald<dcv> N = a("snowy_beach");
+   public static final ald<dcv> O = a("stony_shore");
+   public static final ald<dcv> P = a("warm_ocean");
+   public static final ald<dcv> Q = a("lukewarm_ocean");
+   public static final ald<dcv> R = a("deep_lukewarm_ocean");
+   public static final ald<dcv> S = a("ocean");
+   public static final ald<dcv> T = a("deep_ocean");
+   public static final ald<dcv> U = a("cold_ocean");
+   public static final ald<dcv> V = a("deep_cold_ocean");
+   public static final ald<dcv> W = a("frozen_ocean");
+   public static final ald<dcv> X = a("deep_frozen_ocean");
+   public static final ald<dcv> Y = a("mushroom_fields");
+   public static final ald<dcv> Z = a("dripstone_caves");
+   public static final ald<dcv> aa = a("lush_caves");
+   public static final ald<dcv> ab = a("deep_dark");
+   public static final ald<dcv> ac = a("nether_wastes");
+   public static final ald<dcv> ad = a("warped_forest");
+   public static final ald<dcv> ae = a("crimson_forest");
+   public static final ald<dcv> af = a("soul_sand_valley");
+   public static final ald<dcv> ag = a("basalt_deltas");
+   public static final ald<dcv> ah = a("the_end");
+   public static final ald<dcv> ai = a("end_highlands");
+   public static final ald<dcv> aj = a("end_midlands");
+   public static final ald<dcv> ak = a("small_end_islands");
+   public static final ald<dcv> al = a("end_barrens");
 
-public class ddc {
-   public static <T> List<ddc.b> a(List<T> $$0, Function<T, List<jm<ehj>>> $$1, boolean $$2) {
-      Object2IntMap<ehj> $$3 = new Object2IntOpenHashMap();
-      MutableInt $$4 = new MutableInt(0);
-
-      record a(int a, int b, ehj c) {
-      }
-
-      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
-      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
-      int $$7 = 0;
-
-      for (T $$8 : $$0) {
-         List<a> $$9 = Lists.newArrayList();
-         List<jm<ehj>> $$10 = $$1.apply($$8);
-         $$7 = Math.max($$7, $$10.size());
-
-         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
-            for (ji<ehj> $$12 : $$10.get($$11)) {
-               ehj $$13 = $$12.a();
-               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
-            }
-         }
-
-         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
-            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
-            if ($$14 < $$9.size() - 1) {
-               $$15.add($$9.get($$14 + 1));
-            }
-         }
-      }
-
-      Set<a> $$16 = new TreeSet<>($$5);
-      Set<a> $$17 = new TreeSet<>($$5);
-      List<a> $$18 = Lists.newArrayList();
-
-      for (a $$19 : $$6.keySet()) {
-         if (!$$17.isEmpty()) {
-            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
-         }
-
-         if (!$$16.contains($$19) && ayj.a($$6, $$16, $$17, $$18::add, $$19)) {
-            if (!$$2) {
-               throw new IllegalStateException("Feature order cycle found");
-            }
-
-            List<T> $$20 = new ArrayList<>($$0);
-
-            int $$21;
-            do {
-               $$21 = $$20.size();
-               ListIterator<T> $$22 = $$20.listIterator();
-
-               while ($$22.hasNext()) {
-                  T $$23 = $$22.next();
-                  $$22.remove();
-
-                  try {
-                     a($$20, $$1, false);
-                  } catch (IllegalStateException var18) {
-                     continue;
-                  }
-
-                  $$22.add($$23);
-               }
-            } while ($$21 != $$20.size());
-
-            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
-         }
-      }
-
-      Collections.reverse($$18);
-      Builder<ddc.b> $$25 = ImmutableList.builder();
-
-      for (int $$26 = 0; $$26 < $$7; $$26++) {
-         int $$27 = $$26;
-         List<ehj> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
-         $$25.add(new ddc.b($$28));
-      }
-
-      return $$25.build();
-   }
-
-   public static record b(List<ehj> a, ToIntFunction<ehj> b) {
-      b(List<ehj> $$0) {
-         this($$0, ac.h($$0));
-      }
+   private static ald<dcv> a(String $$0) {
+      return ald.a(lq.az, new ale($$0));
    }
 }

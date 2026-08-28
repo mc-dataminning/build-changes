@@ -1,63 +1,126 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class erl extends erp {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<erl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ala.a(lq.aV).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, erl::new)
+public class erl extends ers {
+   public static final axe<eii> a = axa.l;
+   public static final ji<epd> b = epe.i;
+   public static final byte c = 2;
+   public static final int d = 50;
+   public static final boolean e = true;
+   public static final MapCodec<erl> f = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  axe.a(lq.aJ).optionalFieldOf("destination", a).forGetter($$0x -> $$0x.h),
+                  epd.b.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
+                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter($$0x -> $$0x.j),
+                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter($$0x -> $$0x.k),
+                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
+               )
+            )
+            .apply($$0, erl::new)
    );
-   private final ala<erq> c;
+   private final axe<eii> h;
+   private final ji<epd> i;
+   private final byte j;
+   private final int k;
+   private final boolean l;
 
-   private erl(List<etn> $$0, ala<erq> $$1) {
+   erl(List<etq> $$0, axe<eii> $$1, ji<epd> $$2, byte $$3, int $$4, boolean $$5) {
       super($$0);
-      this.c = $$1;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = $$5;
    }
 
    @Override
-   public err<erl> b() {
-      return ers.H;
+   public eru<erl> b() {
+      return erv.q;
    }
 
    @Override
-   public void a(eqj $$0) {
-      if ($$0.a(this.c)) {
-         $$0.b("Function " + this.c.a() + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a()
-            .a(lq.aV, this.c)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
-      }
+   public Set<esz<?>> a() {
+      return ImmutableSet.of(etc.f);
    }
 
    @Override
-   protected cuk a(cuk $$0, eqd $$1) {
-      erq $$2 = $$1.a().a(lq.aV, this.c).map(ji::a).orElse(null);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c.a());
+   public cun a(cun $$0, eqg $$1) {
+      if (!$$0.a(cuq.uj)) {
          return $$0;
       } else {
-         eqd.c<?> $$3 = eqd.a($$2);
-         if ($$1.b($$3)) {
-            cuk var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
+         evp $$2 = $$1.c(etc.f);
+         if ($$2 != null) {
+            are $$3 = $$1.d();
+            iz $$4 = $$3.a(this.h, iz.a($$2), this.k, this.l);
+            if ($$4 != null) {
+               cun $$5 = cuv.a($$3, $$4.u(), $$4.w(), this.j, true, true);
+               cuv.a($$3, $$5);
+               epi.a($$5, $$4, "+", this.i);
+               return $$5;
             }
-
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
          }
+
+         return $$0;
       }
    }
 
-   public static erp.a<?> a(ala<erq> $$0) {
-      return a($$1 -> new erl($$1, $$0));
+   public static erl.a c() {
+      return new erl.a();
+   }
+
+   public static class a extends ers.a<erl.a> {
+      private axe<eii> a;
+      private ji<epd> b;
+      private byte c;
+      private int d;
+      private boolean e;
+
+      public a() {
+         this.a = erl.a;
+         this.b = erl.b;
+         this.c = 2;
+         this.d = 50;
+         this.e = true;
+      }
+
+      protected erl.a a() {
+         return this;
+      }
+
+      public erl.a a(axe<eii> $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public erl.a a(ji<epd> $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public erl.a a(byte $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public erl.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public erl.a a(boolean $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      @Override
+      public ert b() {
+         return new erl(this.g(), this.a, this.b, this.c, this.d, this.e);
+      }
    }
 }

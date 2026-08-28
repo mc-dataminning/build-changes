@@ -1,37 +1,49 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.regex.Pattern;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class azd {
-   public static final Codec<azd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayc.n.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), ayc.n.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
-            .apply($$0, azd::new)
-   );
-   private final Optional<Pattern> b;
-   private final Predicate<String> c;
-   private final Optional<Pattern> d;
-   private final Predicate<String> e;
-   private final Predicate<alb> f;
+public interface azd {
+   azd a(String var1);
 
-   private azd(Optional<Pattern> $$0, Optional<Pattern> $$1) {
-      this.b = $$0;
-      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.d = $$1;
-      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
-   }
+   void b(String var1);
 
-   public Predicate<String> a() {
-      return this.c;
-   }
+   public static class a implements azd {
+      private final Multimap<String, String> a;
+      private final Supplier<String> b;
+      @Nullable
+      private String c;
 
-   public Predicate<String> b() {
-      return this.e;
-   }
+      public a() {
+         this(HashMultimap.create(), () -> "");
+      }
 
-   public Predicate<alb> c() {
-      return this.f;
+      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      private String b() {
+         if (this.c == null) {
+            this.c = this.b.get();
+         }
+
+         return this.c;
+      }
+
+      @Override
+      public azd a(String $$0) {
+         return new azd.a(this.a, () -> this.b() + $$0);
+      }
+
+      @Override
+      public void b(String $$0) {
+         this.a.put(this.b(), $$0);
+      }
+
+      public Multimap<String, String> a() {
+         return ImmutableMultimap.copyOf(this.a);
+      }
    }
 }

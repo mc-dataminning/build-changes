@@ -1,383 +1,320 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
 public class gde {
-   private static final Map<deu, gdr> a = ac.a(Maps.newHashMap(), $$0 -> {
-      gdr $$1 = gdr.t();
-      $$0.put(dew.fI, $$1);
-      gdr $$2 = gdr.d();
-      $$0.put(dew.i, $$2);
-      $$0.put(dew.eW, $$2);
-      $$0.put(dew.eY, $$2);
-      $$0.put(dew.fH, $$2);
-      $$0.put(dew.hc, $$2);
-      $$0.put(dew.eX, $$2);
-      $$0.put(dew.aH, $$2);
-      $$0.put(dew.aE, $$2);
-      $$0.put(dew.aF, $$2);
-      $$0.put(dew.aI, $$2);
-      $$0.put(dew.aJ, $$2);
-      $$0.put(dew.aG, $$2);
-      $$0.put(dew.aK, $$2);
-      $$0.put(dew.aM, $$2);
-      $$0.put(dew.aN, $$2);
-      $$0.put(dew.ac, $$2);
-      $$0.put(dew.aL, $$2);
-      gdr $$3 = gdr.e();
-      $$0.put(dew.x, $$3);
-      $$0.put(dew.y, $$3);
-      $$0.put(dew.z, $$3);
-      $$0.put(dew.A, $$3);
-      $$0.put(dew.B, $$3);
-      $$0.put(dew.C, $$3);
-      $$0.put(dew.D, $$3);
-      $$0.put(dew.aQ, $$3);
-      $$0.put(dew.aZ, $$3);
-      $$0.put(dew.ba, $$3);
-      $$0.put(dew.bb, $$3);
-      $$0.put(dew.bc, $$3);
-      $$0.put(dew.bd, $$3);
-      $$0.put(dew.be, $$3);
-      $$0.put(dew.bf, $$3);
-      $$0.put(dew.bg, $$3);
-      $$0.put(dew.bh, $$3);
-      $$0.put(dew.bi, $$3);
-      $$0.put(dew.bj, $$3);
-      $$0.put(dew.bk, $$3);
-      $$0.put(dew.bl, $$3);
-      $$0.put(dew.bm, $$3);
-      $$0.put(dew.bn, $$3);
-      $$0.put(dew.bo, $$3);
-      $$0.put(dew.bp, $$3);
-      $$0.put(dew.bq, $$3);
-      $$0.put(dew.bs, $$3);
-      $$0.put(dew.bt, $$3);
-      $$0.put(dew.bu, $$3);
-      $$0.put(dew.bv, $$3);
-      $$0.put(dew.bw, $$3);
-      $$0.put(dew.bx, $$3);
-      $$0.put(dew.bR, $$3);
-      $$0.put(dew.bT, $$3);
-      $$0.put(dew.bU, $$3);
-      $$0.put(dew.bV, $$3);
-      $$0.put(dew.bW, $$3);
-      $$0.put(dew.bX, $$3);
-      $$0.put(dew.bY, $$3);
-      $$0.put(dew.bZ, $$3);
-      $$0.put(dew.ca, $$3);
-      $$0.put(dew.cb, $$3);
-      $$0.put(dew.cc, $$3);
-      $$0.put(dew.cd, $$3);
-      $$0.put(dew.ce, $$3);
-      $$0.put(dew.cf, $$3);
-      $$0.put(dew.cg, $$3);
-      $$0.put(dew.cp, $$3);
-      $$0.put(dew.cq, $$3);
-      $$0.put(dew.ea, $$3);
-      $$0.put(dew.eb, $$3);
-      $$0.put(dew.cr, $$3);
-      $$0.put(dew.cs, $$3);
-      $$0.put(dew.ct, $$3);
-      $$0.put(dew.tr, $$3);
-      $$0.put(dew.ts, $$3);
-      $$0.put(dew.cw, $$3);
-      $$0.put(dew.cB, $$3);
-      $$0.put(dew.cN, $$3);
-      $$0.put(dew.cO, $$3);
-      $$0.put(dew.cP, $$3);
-      $$0.put(dew.dy, $$3);
-      $$0.put(dew.dK, $$3);
-      $$0.put(dew.dL, $$3);
-      $$0.put(dew.dQ, $$3);
-      $$0.put(dew.dS, $$3);
-      $$0.put(dew.eh, $$3);
-      $$0.put(dew.ey, $$3);
-      $$0.put(dew.ez, $$3);
-      $$0.put(dew.eA, $$3);
-      $$0.put(dew.eB, $$3);
-      $$0.put(dew.eC, $$3);
-      $$0.put(dew.eD, $$3);
-      $$0.put(dew.eE, $$3);
-      $$0.put(dew.oM, $$3);
-      $$0.put(dew.oN, $$3);
-      $$0.put(dew.eF, $$3);
-      $$0.put(dew.eG, $$3);
-      $$0.put(dew.rU, $$3);
-      $$0.put(dew.rV, $$3);
-      $$0.put(dew.rX, $$3);
-      $$0.put(dew.rW, $$3);
-      $$0.put(dew.rY, $$3);
-      $$0.put(dew.rZ, $$3);
-      $$0.put(dew.sb, $$3);
-      $$0.put(dew.sa, $$3);
-      $$0.put(dew.fb, $$3);
-      $$0.put(dew.fc, $$3);
-      $$0.put(dew.fd, $$3);
-      $$0.put(dew.fe, $$3);
-      $$0.put(dew.ff, $$3);
-      $$0.put(dew.fg, $$3);
-      $$0.put(dew.fm, $$3);
-      $$0.put(dew.fq, $$3);
-      $$0.put(dew.fs, $$3);
-      $$0.put(dew.fC, $$3);
-      $$0.put(dew.fO, $$3);
-      $$0.put(dew.fR, $$3);
-      $$0.put(dew.fT, $$3);
-      $$0.put(dew.fU, $$3);
-      $$0.put(dew.fV, $$3);
-      $$0.put(dew.fW, $$3);
-      $$0.put(dew.fX, $$3);
-      $$0.put(dew.fY, $$3);
-      $$0.put(dew.fZ, $$3);
-      $$0.put(dew.ga, $$3);
-      $$0.put(dew.gb, $$3);
-      $$0.put(dew.gc, $$3);
-      $$0.put(dew.gd, $$3);
-      $$0.put(dew.ge, $$3);
-      $$0.put(dew.gf, $$3);
-      $$0.put(dew.gg, $$3);
-      $$0.put(dew.gh, $$3);
-      $$0.put(dew.gi, $$3);
-      $$0.put(dew.gj, $$3);
-      $$0.put(dew.gk, $$3);
-      $$0.put(dew.gl, $$3);
-      $$0.put(dew.gm, $$3);
-      $$0.put(dew.gn, $$3);
-      $$0.put(dew.go, $$3);
-      $$0.put(dew.gp, $$3);
-      $$0.put(dew.gq, $$3);
-      $$0.put(dew.gr, $$3);
-      $$0.put(dew.gs, $$3);
-      $$0.put(dew.ti, $$3);
-      $$0.put(dew.tj, $$3);
-      $$0.put(dew.fS, $$3);
-      $$0.put(dew.gt, $$3);
-      $$0.put(dew.gu, $$3);
-      $$0.put(dew.gY, $$3);
-      $$0.put(dew.hh, $$3);
-      $$0.put(dew.hY, $$3);
-      $$0.put(dew.iD, $$3);
-      $$0.put(dew.iE, $$3);
-      $$0.put(dew.iF, $$3);
-      $$0.put(dew.iG, $$3);
-      $$0.put(dew.iH, $$3);
-      $$0.put(dew.iI, $$3);
-      $$0.put(dew.kl, $$3);
-      $$0.put(dew.km, $$3);
-      $$0.put(dew.kn, $$3);
-      $$0.put(dew.ko, $$3);
-      $$0.put(dew.kp, $$3);
-      $$0.put(dew.kq, $$3);
-      $$0.put(dew.kr, $$3);
-      $$0.put(dew.ks, $$3);
-      $$0.put(dew.rM, $$3);
-      $$0.put(dew.rN, $$3);
-      $$0.put(dew.rP, $$3);
-      $$0.put(dew.rO, $$3);
-      $$0.put(dew.rQ, $$3);
-      $$0.put(dew.rR, $$3);
-      $$0.put(dew.rT, $$3);
-      $$0.put(dew.rS, $$3);
-      $$0.put(dew.kt, $$3);
-      $$0.put(dew.ku, $$3);
-      $$0.put(dew.kv, $$3);
-      $$0.put(dew.bS, $$3);
-      $$0.put(dew.kA, $$3);
-      $$0.put(dew.kC, $$3);
-      $$0.put(dew.kB, $$3);
-      $$0.put(dew.kD, $$3);
-      $$0.put(dew.mc, $$3);
-      $$0.put(dew.md, $$3);
-      $$0.put(dew.mf, $$3);
-      $$0.put(dew.mr, $$3);
-      $$0.put(dew.ms, $$3);
-      $$0.put(dew.mt, $$3);
-      $$0.put(dew.mu, $$3);
-      $$0.put(dew.mv, $$3);
-      $$0.put(dew.mw, $$3);
-      $$0.put(dew.mx, $$3);
-      $$0.put(dew.my, $$3);
-      $$0.put(dew.mz, $$3);
-      $$0.put(dew.mA, $$3);
-      $$0.put(dew.mB, $$3);
-      $$0.put(dew.mC, $$3);
-      $$0.put(dew.mD, $$3);
-      $$0.put(dew.mE, $$3);
-      $$0.put(dew.mF, $$3);
-      $$0.put(dew.mG, $$3);
-      $$0.put(dew.mH, $$3);
-      $$0.put(dew.mI, $$3);
-      $$0.put(dew.mJ, $$3);
-      $$0.put(dew.mK, $$3);
-      $$0.put(dew.mL, $$3);
-      $$0.put(dew.mM, $$3);
-      $$0.put(dew.mN, $$3);
-      $$0.put(dew.mO, $$3);
-      $$0.put(dew.mP, $$3);
-      $$0.put(dew.mQ, $$3);
-      $$0.put(dew.mR, $$3);
-      $$0.put(dew.mS, $$3);
-      $$0.put(dew.mT, $$3);
-      $$0.put(dew.mU, $$3);
-      $$0.put(dew.mV, $$3);
-      $$0.put(dew.mX, $$3);
-      $$0.put(dew.mY, $$3);
-      $$0.put(dew.mZ, $$3);
-      $$0.put(dew.na, $$3);
-      $$0.put(dew.nS, $$3);
-      $$0.put(dew.oc, $$3);
-      $$0.put(dew.oe, $$3);
-      $$0.put(dew.of, $$3);
-      $$0.put(dew.og, $$3);
-      $$0.put(dew.oh, $$3);
-      $$0.put(dew.oi, $$3);
-      $$0.put(dew.oz, $$3);
-      $$0.put(dew.oA, $$3);
-      $$0.put(dew.oB, $$3);
-      $$0.put(dew.oC, $$3);
-      $$0.put(dew.or, $$3);
-      $$0.put(dew.ox, $$3);
-      $$0.put(dew.oo, $$3);
-      $$0.put(dew.oD, $$3);
-      $$0.put(dew.oq, $$3);
-      $$0.put(dew.pm, $$3);
-      $$0.put(dew.pn, $$3);
-      $$0.put(dew.po, $$3);
-      $$0.put(dew.pp, $$3);
-      $$0.put(dew.oU, $$3);
-      $$0.put(dew.oV, $$3);
-      $$0.put(dew.st, $$3);
-      $$0.put(dew.qy, $$3);
-      $$0.put(dew.qx, $$3);
-      $$0.put(dew.qw, $$3);
-      $$0.put(dew.qv, $$3);
-      $$0.put(dew.ss, $$3);
-      $$0.put(dew.sv, $$3);
-      $$0.put(dew.sw, $$3);
-      $$0.put(dew.sx, $$3);
-      $$0.put(dew.sz, $$3);
-      $$0.put(dew.sy, $$3);
-      $$0.put(dew.sA, $$3);
-      $$0.put(dew.sB, $$3);
-      $$0.put(dew.sD, $$3);
-      $$0.put(dew.sE, $$3);
-      $$0.put(dew.sF, $$3);
-      $$0.put(dew.sG, $$3);
-      $$0.put(dew.qQ, $$3);
-      $$0.put(dew.qR, $$3);
-      $$0.put(dew.qT, $$3);
-      $$0.put(dew.qV, $$3);
-      $$0.put(dew.E, $$3);
-      $$0.put(dew.tn, $$3);
-      $$0.put(dew.sc, $$3);
-      $$0.put(dew.sd, $$3);
-      $$0.put(dew.se, $$3);
-      $$0.put(dew.sf, $$3);
-      $$0.put(dew.sg, $$3);
-      $$0.put(dew.sh, $$3);
-      $$0.put(dew.si, $$3);
-      $$0.put(dew.sj, $$3);
-      gdr $$4 = gdr.f();
-      $$0.put(dew.dO, $$4);
-      $$0.put(dew.ed, $$4);
-      $$0.put(dew.ei, $$4);
-      $$0.put(dew.ej, $$4);
-      $$0.put(dew.ek, $$4);
-      $$0.put(dew.el, $$4);
-      $$0.put(dew.em, $$4);
-      $$0.put(dew.en, $$4);
-      $$0.put(dew.eo, $$4);
-      $$0.put(dew.ep, $$4);
-      $$0.put(dew.eq, $$4);
-      $$0.put(dew.er, $$4);
-      $$0.put(dew.es, $$4);
-      $$0.put(dew.et, $$4);
-      $$0.put(dew.eu, $$4);
-      $$0.put(dew.ev, $$4);
-      $$0.put(dew.ew, $$4);
-      $$0.put(dew.ex, $$4);
-      $$0.put(dew.hz, $$4);
-      $$0.put(dew.hA, $$4);
-      $$0.put(dew.hB, $$4);
-      $$0.put(dew.hC, $$4);
-      $$0.put(dew.hD, $$4);
-      $$0.put(dew.hE, $$4);
-      $$0.put(dew.hF, $$4);
-      $$0.put(dew.hG, $$4);
-      $$0.put(dew.hH, $$4);
-      $$0.put(dew.hI, $$4);
-      $$0.put(dew.hJ, $$4);
-      $$0.put(dew.hK, $$4);
-      $$0.put(dew.hL, $$4);
-      $$0.put(dew.hM, $$4);
-      $$0.put(dew.hN, $$4);
-      $$0.put(dew.hO, $$4);
-      $$0.put(dew.hV, $$4);
-      $$0.put(dew.pg, $$4);
-      $$0.put(dew.kI, $$4);
-      $$0.put(dew.nd, $$4);
-      $$0.put(dew.qO, $$4);
-   });
-   private static final Map<enp, gdr> b = ac.a(Maps.newHashMap(), $$0 -> {
-      gdr $$1 = gdr.f();
-      $$0.put(enr.b, $$1);
-      $$0.put(enr.c, $$1);
-   });
-   private static boolean c;
+   private static final int b = 96;
+   private static final List<gde.e> c = Lists.newArrayList(new gde.e[]{new gde.a(), new gde.b()});
+   public static final float a = 5000.0F;
+   private static float d;
+   private static float e;
+   private static float f;
+   private static int g = -1;
+   private static int h = -1;
+   private static long i = -1L;
 
-   public static gdr a(drx $$0) {
-      deu $$1 = $$0.b();
-      if ($$1 instanceof dje) {
-         return c ? gdr.d() : gdr.c();
+   public static void a(feo $$0, float $$1, fxt $$2, int $$3, float $$4) {
+      env $$5 = $$0.k();
+      bss $$6 = $$0.g();
+      if ($$5 == env.b) {
+         long $$7 = ac.c();
+         int $$8 = $$2.t(iz.a($$0.b())).a().j();
+         if (i < 0L) {
+            g = $$8;
+            h = $$8;
+            i = $$7;
+         }
+
+         int $$9 = g >> 16 & 0xFF;
+         int $$10 = g >> 8 & 0xFF;
+         int $$11 = g & 0xFF;
+         int $$12 = h >> 16 & 0xFF;
+         int $$13 = h >> 8 & 0xFF;
+         int $$14 = h & 0xFF;
+         float $$15 = ayx.a((float)($$7 - i) / 5000.0F, 0.0F, 1.0F);
+         float $$16 = ayx.i($$15, (float)$$12, (float)$$9);
+         float $$17 = ayx.i($$15, (float)$$13, (float)$$10);
+         float $$18 = ayx.i($$15, (float)$$14, (float)$$11);
+         d = $$16 / 255.0F;
+         e = $$17 / 255.0F;
+         f = $$18 / 255.0F;
+         if (g != $$8) {
+            g = $$8;
+            h = ayx.d($$16) << 16 | ayx.d($$17) << 8 | ayx.d($$18);
+            i = $$7;
+         }
+      } else if ($$5 == env.a) {
+         d = 0.6F;
+         e = 0.1F;
+         f = 0.0F;
+         i = -1L;
+      } else if ($$5 == env.c) {
+         d = 0.623F;
+         e = 0.734F;
+         f = 0.785F;
+         i = -1L;
+         RenderSystem.clearColor(d, e, f, 0.0F);
       } else {
-         gdr $$2 = a.get($$1);
-         return $$2 != null ? $$2 : gdr.c();
+         float $$19 = 0.25F + 0.75F * (float)$$3 / 32.0F;
+         $$19 = 1.0F - (float)Math.pow((double)$$19, 0.25);
+         evp $$20 = $$2.a($$0.b(), $$1);
+         float $$21 = (float)$$20.c;
+         float $$22 = (float)$$20.d;
+         float $$23 = (float)$$20.e;
+         float $$24 = ayx.a(ayx.b($$2.f($$1) * (float) (Math.PI * 2)) * 2.0F + 0.5F, 0.0F, 1.0F);
+         dcx $$25 = $$2.F_();
+         evp $$26 = $$0.b().a(2.0, 2.0, 2.0).a(0.25);
+         evp $$27 = axy.a($$26, ($$3x, $$4x, $$5x) -> $$2.d().a(evp.a($$25.a($$3x, $$4x, $$5x).a().e()), $$24));
+         d = (float)$$27.a();
+         e = (float)$$27.b();
+         f = (float)$$27.c();
+         if ($$3 >= 4) {
+            float $$28 = ayx.a($$2.a($$1)) > 0.0F ? -1.0F : 1.0F;
+            Vector3f $$29 = new Vector3f($$28, 0.0F, 0.0F);
+            float $$30 = $$0.l().dot($$29);
+            if ($$30 < 0.0F) {
+               $$30 = 0.0F;
+            }
+
+            if ($$30 > 0.0F) {
+               float[] $$31 = $$2.d().a($$2.f($$1), $$1);
+               if ($$31 != null) {
+                  $$30 *= $$31[3];
+                  d = d * (1.0F - $$30) + $$31[0] * $$30;
+                  e = e * (1.0F - $$30) + $$31[1] * $$30;
+                  f = f * (1.0F - $$30) + $$31[2] * $$30;
+               }
+            }
+         }
+
+         d = d + ($$21 - d) * $$19;
+         e = e + ($$22 - e) * $$19;
+         f = f + ($$23 - f) * $$19;
+         float $$32 = $$2.d($$1);
+         if ($$32 > 0.0F) {
+            float $$33 = 1.0F - $$32 * 0.5F;
+            float $$34 = 1.0F - $$32 * 0.4F;
+            d *= $$33;
+            e *= $$33;
+            f *= $$34;
+         }
+
+         float $$35 = $$2.b($$1);
+         if ($$35 > 0.0F) {
+            float $$36 = 1.0F - $$35 * 0.5F;
+            d *= $$36;
+            e *= $$36;
+            f *= $$36;
+         }
+
+         i = -1L;
       }
+
+      float $$37 = ((float)$$0.b().d - (float)$$2.I_()) * $$2.k().e();
+      gde.e $$38 = a($$6, $$1);
+      if ($$38 != null) {
+         btn $$39 = (btn)$$6;
+         $$37 = $$38.a($$39, $$39.c($$38.a()), $$37, $$1);
+      }
+
+      if ($$37 < 1.0F && $$5 != env.a && $$5 != env.c) {
+         if ($$37 < 0.0F) {
+            $$37 = 0.0F;
+         }
+
+         $$37 *= $$37;
+         d *= $$37;
+         e *= $$37;
+         f *= $$37;
+      }
+
+      if ($$4 > 0.0F) {
+         d = d * (1.0F - $$4) + d * 0.7F * $$4;
+         e = e * (1.0F - $$4) + e * 0.6F * $$4;
+         f = f * (1.0F - $$4) + f * 0.6F * $$4;
+      }
+
+      float $$40;
+      if ($$5 == env.b) {
+         if ($$6 instanceof gco) {
+            $$40 = ((gco)$$6).D();
+         } else {
+            $$40 = 1.0F;
+         }
+      } else {
+         label86: {
+            if ($$6 instanceof btn $$42 && $$42.b(bsc.p) && !$$42.b(bsc.G)) {
+               $$40 = gdf.a($$42, $$1);
+               break label86;
+            }
+
+            $$40 = 0.0F;
+         }
+      }
+
+      if (d != 0.0F && e != 0.0F && f != 0.0F) {
+         float $$45 = Math.min(1.0F / d, Math.min(1.0F / e, 1.0F / f));
+         d = d * (1.0F - $$40) + d * $$45 * $$40;
+         e = e * (1.0F - $$40) + e * $$45 * $$40;
+         f = f * (1.0F - $$40) + f * $$45 * $$40;
+      }
+
+      RenderSystem.clearColor(d, e, f, 0.0F);
    }
 
-   public static gdr b(drx $$0) {
-      deu $$1 = $$0.b();
-      if ($$1 instanceof dje) {
-         return c ? gdr.d() : gdr.c();
-      } else {
-         gdr $$2 = a.get($$1);
-         if ($$2 != null) {
-            return $$2 == gdr.f() ? gdr.g() : $$2;
+   public static void a() {
+      RenderSystem.setShaderFogStart(Float.MAX_VALUE);
+   }
+
+   @Nullable
+   private static gde.e a(bss $$0, float $$1) {
+      return $$0 instanceof btn $$2 ? c.stream().filter($$2x -> $$2x.a($$2, $$1)).findFirst().orElse(null) : null;
+   }
+
+   public static void a(feo $$0, gde.d $$1, float $$2, boolean $$3, float $$4) {
+      env $$5 = $$0.k();
+      bss $$6 = $$0.g();
+      gde.c $$7 = new gde.c($$1);
+      gde.e $$8 = a($$6, $$4);
+      if ($$5 == env.a) {
+         if ($$6.N_()) {
+            $$7.b = -8.0F;
+            $$7.c = $$2 * 0.5F;
+         } else if ($$6 instanceof btn && ((btn)$$6).b(bsc.l)) {
+            $$7.b = 0.0F;
+            $$7.c = 5.0F;
          } else {
-            return gdr.c();
+            $$7.b = 0.25F;
+            $$7.c = 1.0F;
+         }
+      } else if ($$5 == env.c) {
+         if ($$6.N_()) {
+            $$7.b = -8.0F;
+            $$7.c = $$2 * 0.5F;
+         } else {
+            $$7.b = 0.0F;
+            $$7.c = 2.0F;
+         }
+      } else if ($$8 != null) {
+         btn $$9 = (btn)$$6;
+         bsa $$10 = $$9.c($$8.a());
+         if ($$10 != null) {
+            $$8.a($$7, $$9, $$10, $$2, $$4);
+         }
+      } else if ($$5 == env.b) {
+         $$7.b = -8.0F;
+         $$7.c = 96.0F;
+         if ($$6 instanceof gco $$11) {
+            $$7.c = $$7.c * Math.max(0.25F, $$11.D());
+            ji<dcv> $$12 = $$11.dP().t($$11.dp());
+            if ($$12.a(awn.aa)) {
+               $$7.c *= 0.85F;
+            }
+         }
+
+         if ($$7.c > $$2) {
+            $$7.c = $$2;
+            $$7.d = ezj.b;
+         }
+      } else if ($$3) {
+         $$7.b = $$2 * 0.05F;
+         $$7.c = Math.min($$2, 192.0F) * 0.5F;
+      } else if ($$1 == gde.d.a) {
+         $$7.b = 0.0F;
+         $$7.c = $$2;
+         $$7.d = ezj.b;
+      } else {
+         float $$13 = ayx.a($$2 / 10.0F, 4.0F, 64.0F);
+         $$7.b = $$2 - $$13;
+         $$7.c = $$2;
+         $$7.d = ezj.b;
+      }
+
+      RenderSystem.setShaderFogStart($$7.b);
+      RenderSystem.setShaderFogEnd($$7.c);
+      RenderSystem.setShaderFogShape($$7.d);
+   }
+
+   public static void b() {
+      RenderSystem.setShaderFogColor(d, e, f);
+   }
+
+   static class a implements gde.e {
+      @Override
+      public ji<bry> a() {
+         return bsc.o;
+      }
+
+      @Override
+      public void a(gde.c $$0, btn $$1, bsa $$2, float $$3, float $$4) {
+         float $$5 = $$2.b() ? 5.0F : ayx.i(Math.min(1.0F, (float)$$2.d() / 20.0F), $$3, 5.0F);
+         if ($$0.a == gde.d.a) {
+            $$0.b = 0.0F;
+            $$0.c = $$5 * 0.8F;
+         } else {
+            $$0.b = $$5 * 0.25F;
+            $$0.c = $$5;
          }
       }
    }
 
-   public static gdr a(drx $$0, boolean $$1) {
-      gdr $$2 = a($$0);
-      if ($$2 == gdr.f()) {
-         if (!ffa.O()) {
-            return gdy.k();
-         } else {
-            return $$1 ? gdy.k() : gdy.j();
+   static class b implements gde.e {
+      @Override
+      public ji<bry> a() {
+         return bsc.G;
+      }
+
+      @Override
+      public void a(gde.c $$0, btn $$1, bsa $$2, float $$3, float $$4) {
+         float $$5 = ayx.i($$2.a($$1, $$4), $$3, 15.0F);
+         $$0.b = $$0.a == gde.d.a ? 0.0F : $$5 * 0.75F;
+         $$0.c = $$5;
+      }
+
+      @Override
+      public float a(btn $$0, bsa $$1, float $$2, float $$3) {
+         return 1.0F - $$1.a($$0, $$3);
+      }
+   }
+
+   static class c {
+      public final gde.d a;
+      public float b;
+      public float c;
+      public ezj d = ezj.a;
+
+      public c(gde.d $$0) {
+         this.a = $$0;
+      }
+   }
+
+   public static enum d {
+      a,
+      b;
+   }
+
+   interface e {
+      ji<bry> a();
+
+      void a(gde.c var1, btn var2, bsa var3, float var4, float var5);
+
+      default boolean a(btn $$0, float $$1) {
+         return $$0.b(this.a());
+      }
+
+      default float a(btn $$0, bsa $$1, float $$2, float $$3) {
+         bsa $$4 = $$0.c(this.a());
+         if ($$4 != null) {
+            if ($$4.a(19)) {
+               $$2 = 1.0F - (float)$$4.d() / 20.0F;
+            } else {
+               $$2 = 0.0F;
+            }
          }
-      } else {
-         return gdy.i();
+
+         return $$2;
       }
-   }
-
-   public static gdr a(cuk $$0, boolean $$1) {
-      cuf $$2 = $$0.g();
-      if ($$2 instanceof csi) {
-         deu $$3 = ((csi)$$2).d();
-         return a($$3.n(), $$1);
-      } else {
-         return $$1 ? gdy.k() : gdy.j();
-      }
-   }
-
-   public static gdr a(enq $$0) {
-      gdr $$1 = b.get($$0.a());
-      return $$1 != null ? $$1 : gdr.c();
-   }
-
-   public static void a(boolean $$0) {
-      c = $$0;
    }
 }

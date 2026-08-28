@@ -1,12 +1,11 @@
-public class glg extends ghr<cna> {
-   public static final alb a = new alb("textures/entity/projectiles/arrow.png");
-   public static final alb f = new alb("textures/entity/projectiles/tipped_arrow.png");
+public class glg extends gkb<cha, fwc<cha>> {
+   private static final ale a = new ale("textures/entity/tadpole/tadpole.png");
 
-   public glg(gis.a $$0) {
-      super($$0);
+   public glg(giv.a $$0) {
+      super($$0, new fwc<>($$0.a(fwx.bF)), 0.14F);
    }
 
-   public alb a(cna $$0) {
-      return $$0.H() > 0 ? f : a;
+   public ale a(cha $$0) {
+      return a;
    }
 }

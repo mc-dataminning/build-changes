@@ -1,41 +1,61 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class erb extends erp {
-   public static final MapCodec<erb> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, erb::new));
+public class erb extends eqy {
+   public static final MapCodec<erb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(axe.a(lq.G).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
+            .apply($$0, erb::new)
+   );
+   private final axe<cui> j;
+   private final boolean k;
 
-   private erb(List<etn> $$0) {
-      super($$0);
+   private erb(axe<cui> $$0, boolean $$1, int $$2, int $$3, List<etq> $$4, List<ert> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public err<erb> b() {
-      return ers.z;
+   public eqx a() {
+      return equ.f;
    }
 
    @Override
-   public cuk a(cuk $$0, eqd $$1) {
-      Float $$2 = $$1.c(esz.j);
-      if ($$2 != null) {
-         azc $$3 = $$1.b();
-         float $$4 = 1.0F / $$2;
-         int $$5 = $$0.I();
-         int $$6 = 0;
+   public void a(Consumer<cun> $$0, eqg $$1) {
+      lp.h.c(this.j).forEach($$1x -> $$0.accept(new cun($$1x)));
+   }
 
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            if ($$3.i() <= $$4) {
-               $$6++;
-            }
+   private boolean a(eqg $$0, Consumer<eqv> $$1) {
+      if (!this.a($$0)) {
+         return false;
+      } else {
+         for (final ji<cui> $$2 : lp.h.c(this.j)) {
+            $$1.accept(new eqy.c() {
+               @Override
+               public void a(Consumer<cun> $$0, eqg $$1) {
+                  $$0.accept(new cun($$2));
+               }
+            });
          }
 
-         $$0.e($$6);
+         return true;
       }
-
-      return $$0;
    }
 
-   public static erp.a<?> c() {
-      return a(erb::new);
+   @Override
+   public boolean expand(eqg $$0, Consumer<eqv> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   }
+
+   public static eqy.a<?> a(axe<cui> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new erb($$0, false, $$1, $$2, $$3, $$4));
+   }
+
+   public static eqy.a<?> b(axe<cui> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new erb($$0, true, $$1, $$2, $$3, $$4));
    }
 }

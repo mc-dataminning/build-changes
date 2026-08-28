@@ -1,29 +1,20 @@
-public class ajd implements zs<aiy> {
-   public static final zj<wl, ajd> a = zs.a(ajd::a, ajd::new);
-   private final xl b;
+import com.mojang.authlib.GameProfile;
+import io.netty.buffer.ByteBuf;
 
-   public ajd(xl $$0) {
-      this.b = $$0;
-   }
-
-   private ajd(wl $$0) {
-      this.b = xl.a.b($$0.d(262144), jw.b);
-   }
-
-   private void a(wl $$0) {
-      $$0.a(xl.a.a(this.b, jw.b));
-   }
+public record ajd(GameProfile b) implements zv<ajb> {
+   public static final zm<ByteBuf, ajd> a = zk.u.a(ajd::new, ajd::b);
 
    @Override
-   public zu<ajd> a() {
-      return aje.e;
+   public zx<ajd> a() {
+      return ajh.b;
    }
 
-   public void a(aiy $$0) {
+   public void a(ajb $$0) {
       $$0.a(this);
    }
 
-   public xl b() {
-      return this.b;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

@@ -1,83 +1,464 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.AbstractList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
-import java.util.function.IntFunction;
-import java.util.function.ToIntFunction;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class axl {
-   private static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1) {
-      if ($$1.length == 0) {
-         throw new IllegalArgumentException("Empty value list");
-      } else {
-         Int2ObjectMap<T> $$2 = new Int2ObjectOpenHashMap();
+public class axl<T> extends AbstractList<T> implements ayt<T> {
+   private static final int a = 1;
+   private Object[] b;
+   private int c;
+   private int d;
 
-         for (T $$3 : $$1) {
-            int $$4 = $$0.applyAsInt($$3);
-            T $$5 = (T)$$2.put($$4, $$3);
-            if ($$5 != null) {
-               throw new IllegalArgumentException("Duplicate entry on id " + $$4 + ": current=" + $$3 + ", previous=" + $$5);
-            }
-         }
+   public axl() {
+      this(1);
+   }
 
-         return $$2;
+   public axl(int $$0) {
+      this.b = new Object[$$0];
+      this.c = 0;
+      this.d = 0;
+   }
+
+   @Override
+   public int size() {
+      return this.d;
+   }
+
+   @VisibleForTesting
+   public int a() {
+      return this.b.length;
+   }
+
+   private int a(int $$0) {
+      return ($$0 + this.c) % this.b.length;
+   }
+
+   @Override
+   public T get(int $$0) {
+      this.b($$0);
+      return this.c(this.a($$0));
+   }
+
+   private static void a(int $$0, int $$1) {
+      if ($$0 < 0 || $$0 >= $$1) {
+         throw new IndexOutOfBoundsException($$0);
       }
    }
 
-   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, T $$2) {
-      IntFunction<T> $$3 = a($$0, $$1);
-      return $$2x -> Objects.requireNonNullElse($$3.apply($$2x), $$2);
+   private void b(int $$0) {
+      a($$0, this.d);
    }
 
-   private static <T> T[] b(ToIntFunction<T> $$0, T[] $$1) {
-      int $$2 = $$1.length;
-      if ($$2 == 0) {
-         throw new IllegalArgumentException("Empty value list");
+   private T c(int $$0) {
+      return (T)this.b[$$0];
+   }
+
+   @Override
+   public T set(int $$0, T $$1) {
+      this.b($$0);
+      Objects.requireNonNull($$1);
+      int $$2 = this.a($$0);
+      T $$3 = this.c($$2);
+      this.b[$$2] = $$1;
+      return $$3;
+   }
+
+   @Override
+   public void add(int $$0, T $$1) {
+      a($$0, this.d + 1);
+      Objects.requireNonNull($$1);
+      if (this.d == this.b.length) {
+         this.c();
+      }
+
+      int $$2 = this.a($$0);
+      if ($$0 == this.d) {
+         this.b[$$2] = $$1;
+      } else if ($$0 == 0) {
+         this.c--;
+         if (this.c < 0) {
+            this.c = this.c + this.b.length;
+         }
+
+         this.b[this.a(0)] = $$1;
       } else {
-         T[] $$3 = (T[])$$1.clone();
-         Arrays.fill($$3, null);
-
-         for (T $$4 : $$1) {
-            int $$5 = $$0.applyAsInt($$4);
-            if ($$5 < 0 || $$5 >= $$2) {
-               throw new IllegalArgumentException("Values are not continous, found index " + $$5 + " for value " + $$4);
-            }
-
-            T $$6 = $$3[$$5];
-            if ($$6 != null) {
-               throw new IllegalArgumentException("Duplicate entry on id " + $$5 + ": current=" + $$4 + ", previous=" + $$6);
-            }
-
-            $$3[$$5] = $$4;
+         for (int $$3 = this.d - 1; $$3 >= $$0; $$3--) {
+            this.b[this.a($$3 + 1)] = this.b[this.a($$3)];
          }
 
-         for (int $$7 = 0; $$7 < $$2; $$7++) {
-            if ($$3[$$7] == null) {
-               throw new IllegalArgumentException("Missing value at index: " + $$7);
-            }
+         this.b[$$2] = $$1;
+      }
+
+      this.modCount++;
+      this.d++;
+   }
+
+   private void c() {
+      int $$0 = this.b.length + Math.max(this.b.length >> 1, 1);
+      Object[] $$1 = new Object[$$0];
+      this.a($$1, this.d);
+      this.c = 0;
+      this.b = $$1;
+   }
+
+   @Override
+   public T remove(int $$0) {
+      this.b($$0);
+      int $$1 = this.a($$0);
+      T $$2 = this.c($$1);
+      if ($$0 == 0) {
+         this.b[$$1] = null;
+         this.c++;
+      } else if ($$0 == this.d - 1) {
+         this.b[$$1] = null;
+      } else {
+         for (int $$3 = $$0 + 1; $$3 < this.d; $$3++) {
+            this.b[this.a($$3 - 1)] = this.get($$3);
          }
 
-         return $$3;
+         this.b[this.a(this.d - 1)] = null;
+      }
+
+      this.modCount++;
+      this.d--;
+      return $$2;
+   }
+
+   @Override
+   public boolean removeIf(Predicate<? super T> $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < this.d; $$2++) {
+         T $$3 = this.get($$2);
+         if ($$0.test($$3)) {
+            $$1++;
+         } else if ($$1 != 0) {
+            this.b[this.a($$2 - $$1)] = $$3;
+            this.b[this.a($$2)] = null;
+         }
+      }
+
+      this.modCount += $$1;
+      this.d -= $$1;
+      return $$1 != 0;
+   }
+
+   private void a(Object[] $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         $$0[$$2] = this.get($$2);
       }
    }
 
-   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, axl.a $$2) {
-      T[] $$3 = b($$0, $$1);
-      int $$4 = $$3.length;
-
-      return switch ($$2) {
-         case a -> {
-            T $$5 = $$3[0];
-            yield $$3x -> $$3x >= 0 && $$3x < $$4 ? $$3[$$3x] : $$5;
-         }
-         case b -> $$2x -> $$3[ayu.b($$2x, $$4)];
-         case c -> $$2x -> $$3[ayu.a($$2x, 0, $$4 - 1)];
-      };
+   @Override
+   public void replaceAll(UnaryOperator<T> $$0) {
+      for (int $$1 = 0; $$1 < this.d; $$1++) {
+         int $$2 = this.a($$1);
+         this.b[$$2] = Objects.requireNonNull($$0.apply(this.c($$1)));
+      }
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public void forEach(Consumer<? super T> $$0) {
+      for (int $$1 = 0; $$1 < this.d; $$1++) {
+         $$0.accept(this.get($$1));
+      }
+   }
+
+   @Override
+   public void addFirst(T $$0) {
+      this.add(0, $$0);
+   }
+
+   @Override
+   public void addLast(T $$0) {
+      this.add(this.d, $$0);
+   }
+
+   @Override
+   public boolean offerFirst(T $$0) {
+      this.addFirst($$0);
+      return true;
+   }
+
+   @Override
+   public boolean offerLast(T $$0) {
+      this.addLast($$0);
+      return true;
+   }
+
+   @Override
+   public T removeFirst() {
+      if (this.d == 0) {
+         throw new NoSuchElementException();
+      } else {
+         return this.remove(0);
+      }
+   }
+
+   @Override
+   public T removeLast() {
+      if (this.d == 0) {
+         throw new NoSuchElementException();
+      } else {
+         return this.remove(this.d - 1);
+      }
+   }
+
+   @Override
+   public ayt<T> b() {
+      return new axl.b(this);
+   }
+
+   @Nullable
+   @Override
+   public T pollFirst() {
+      return this.d == 0 ? null : this.removeFirst();
+   }
+
+   @Nullable
+   @Override
+   public T pollLast() {
+      return this.d == 0 ? null : this.removeLast();
+   }
+
+   @Override
+   public T getFirst() {
+      if (this.d == 0) {
+         throw new NoSuchElementException();
+      } else {
+         return this.get(0);
+      }
+   }
+
+   @Override
+   public T getLast() {
+      if (this.d == 0) {
+         throw new NoSuchElementException();
+      } else {
+         return this.get(this.d - 1);
+      }
+   }
+
+   @Nullable
+   @Override
+   public T peekFirst() {
+      return this.d == 0 ? null : this.getFirst();
+   }
+
+   @Nullable
+   @Override
+   public T peekLast() {
+      return this.d == 0 ? null : this.getLast();
+   }
+
+   @Override
+   public boolean removeFirstOccurrence(Object $$0) {
+      for (int $$1 = 0; $$1 < this.d; $$1++) {
+         T $$2 = this.get($$1);
+         if (Objects.equals($$0, $$2)) {
+            this.remove($$1);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   public boolean removeLastOccurrence(Object $$0) {
+      for (int $$1 = this.d - 1; $$1 >= 0; $$1--) {
+         T $$2 = this.get($$1);
+         if (Objects.equals($$0, $$2)) {
+            this.remove($$1);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   public Iterator<T> descendingIterator() {
+      return new axl.a();
+   }
+
+   class a implements Iterator<T> {
+      private int b = axl.this.size() - 1;
+
+      public a() {
+      }
+
+      @Override
+      public boolean hasNext() {
+         return this.b >= 0;
+      }
+
+      @Override
+      public T next() {
+         return axl.this.get(this.b--);
+      }
+
+      @Override
+      public void remove() {
+         axl.this.remove(this.b + 1);
+      }
+   }
+
+   class b extends AbstractList<T> implements ayt<T> {
+      private final axl<T> b;
+
+      public b(final axl<T> $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public ayt<T> b() {
+         return this.b;
+      }
+
+      @Override
+      public T getFirst() {
+         return this.b.getLast();
+      }
+
+      @Override
+      public T getLast() {
+         return this.b.getFirst();
+      }
+
+      @Override
+      public void addFirst(T $$0) {
+         this.b.addLast($$0);
+      }
+
+      @Override
+      public void addLast(T $$0) {
+         this.b.addFirst($$0);
+      }
+
+      @Override
+      public boolean offerFirst(T $$0) {
+         return this.b.offerLast($$0);
+      }
+
+      @Override
+      public boolean offerLast(T $$0) {
+         return this.b.offerFirst($$0);
+      }
+
+      @Override
+      public T pollFirst() {
+         return this.b.pollLast();
+      }
+
+      @Override
+      public T pollLast() {
+         return this.b.pollFirst();
+      }
+
+      @Override
+      public T peekFirst() {
+         return this.b.peekLast();
+      }
+
+      @Override
+      public T peekLast() {
+         return this.b.peekFirst();
+      }
+
+      @Override
+      public T removeFirst() {
+         return this.b.removeLast();
+      }
+
+      @Override
+      public T removeLast() {
+         return this.b.removeFirst();
+      }
+
+      @Override
+      public boolean removeFirstOccurrence(Object $$0) {
+         return this.b.removeLastOccurrence($$0);
+      }
+
+      @Override
+      public boolean removeLastOccurrence(Object $$0) {
+         return this.b.removeFirstOccurrence($$0);
+      }
+
+      @Override
+      public Iterator<T> descendingIterator() {
+         return this.b.iterator();
+      }
+
+      @Override
+      public int size() {
+         return this.b.size();
+      }
+
+      @Override
+      public boolean isEmpty() {
+         return this.b.isEmpty();
+      }
+
+      @Override
+      public boolean contains(Object $$0) {
+         return this.b.contains($$0);
+      }
+
+      @Override
+      public T get(int $$0) {
+         return this.b.get(this.a($$0));
+      }
+
+      @Override
+      public T set(int $$0, T $$1) {
+         return this.b.set(this.a($$0), $$1);
+      }
+
+      @Override
+      public void add(int $$0, T $$1) {
+         this.b.add(this.a($$0) + 1, $$1);
+      }
+
+      @Override
+      public T remove(int $$0) {
+         return this.b.remove(this.a($$0));
+      }
+
+      @Override
+      public int indexOf(Object $$0) {
+         return this.a(this.b.lastIndexOf($$0));
+      }
+
+      @Override
+      public int lastIndexOf(Object $$0) {
+         return this.a(this.b.indexOf($$0));
+      }
+
+      @Override
+      public List<T> subList(int $$0, int $$1) {
+         return this.b.subList(this.a($$1) + 1, this.a($$0) + 1).reversed();
+      }
+
+      @Override
+      public Iterator<T> iterator() {
+         return this.b.descendingIterator();
+      }
+
+      @Override
+      public void clear() {
+         this.b.clear();
+      }
+
+      private int a(int $$0) {
+         return $$0 == -1 ? -1 : this.b.size() - 1 - $$0;
+      }
    }
 }

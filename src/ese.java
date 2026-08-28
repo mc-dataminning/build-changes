@@ -1,88 +1,59 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-public class ese extends erp {
+public class ese extends ers {
    public static final MapCodec<ese> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  Codec.unboundedMap(lp.f.r(), euj.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
+                  ald.a(lq.aU).fieldOf("name").forGetter($$0x -> $$0x.b),
+                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
+                  lp.k.r().fieldOf("type").forGetter($$0x -> $$0x.d)
                )
             )
             .apply($$0, ese::new)
    );
-   private final Map<ji<czv>, eui> b;
-   private final boolean c;
+   private final ald<eql> b;
+   private final long c;
+   private final ji<dph<?>> d;
 
-   ese(List<etn> $$0, Map<ji<czv>, eui> $$1, boolean $$2) {
+   private ese(List<etq> $$0, ald<eql> $$1, long $$2, ji<dph<?>> $$3) {
       super($$0);
-      this.b = Map.copyOf($$1);
+      this.b = $$1;
       this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public err<ese> b() {
-      return ers.i;
+   public eru<ese> b() {
+      return erv.y;
    }
 
    @Override
-   public Set<esw<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+   public cun a(cun $$0, eqg $$1) {
+      if ($$0.e()) {
+         return $$0;
+      } else {
+         $$0.b(km.ad, new cxq(this.b, this.c));
+         return $$0;
+      }
    }
 
    @Override
-   public cuk a(cuk $$0, eqd $$1) {
-      Object2IntMap<czv> $$2 = new Object2IntOpenHashMap();
-      this.b.forEach(($$2x, $$3) -> $$2.put((czv)$$2x.a(), ayu.a($$3.a($$1), 0, 255)));
-      if ($$0.a(cun.qP)) {
-         $$0 = $$0.a(cun.uw, $$0.I());
-         $$0.b(km.x, $$0.c(km.j));
+   public void a(eqm $$0) {
+      super.a($$0);
+      if ($$0.a().a(lq.aU, this.b).isEmpty()) {
+         $$0.b("Missing loot table used for container: " + this.b.a());
       }
-
-      czw.a($$0, $$1x -> {
-         if (this.c) {
-            $$2.forEach(($$1xx, $$2x) -> $$1x.a($$1xx, $$1x.a($$1xx) + $$2x));
-         } else {
-            $$2.forEach($$1x::a);
-         }
-      });
-      return $$0;
    }
 
-   public static class a extends erp.a<ese.a> {
-      private final Builder<ji<czv>, eui> a = ImmutableMap.builder();
-      private final boolean b;
+   public static ers.a<?> a(dph<?> $$0, ald<eql> $$1) {
+      return a($$2 -> new ese($$2, $$1, 0L, $$0.a()));
+   }
 
-      public a() {
-         this(false);
-      }
-
-      public a(boolean $$0) {
-         this.b = $$0;
-      }
-
-      protected ese.a a() {
-         return this;
-      }
-
-      public ese.a a(czv $$0, eui $$1) {
-         this.a.put($$0.m(), $$1);
-         return this;
-      }
-
-      @Override
-      public erq b() {
-         return new ese(this.g(), this.a.build(), this.b);
-      }
+   public static ers.a<?> a(dph<?> $$0, ald<eql> $$1, long $$2) {
+      return a($$3 -> new ese($$3, $$1, $$2, $$0.a()));
    }
 }

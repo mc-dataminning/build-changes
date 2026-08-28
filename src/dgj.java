@@ -1,56 +1,71 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class dgj extends deu {
-   public static final MapCodec<deu> a = lp.e.q().fieldOf("dead");
-   public static final MapCodec<dgj> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), u()).apply($$0, dgj::new));
-   private final deu c;
-
-   public dgj(deu $$0, drw.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
+public class dgj extends dht {
+   public static final MapCodec<dgj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lp.e.q().fieldOf("concrete").forGetter($$0x -> $$0x.b), u()).apply($$0, dgj::new)
+   );
+   private final dex b;
 
    @Override
    public MapCodec<dgj> a() {
-      return b;
+      return a;
+   }
+
+   public dgj(dex $$0, drz.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   protected void a(drx $$0, arb $$1, iz $$2, azc $$3) {
-      if (!this.a($$1, $$2)) {
-         $$1.a($$2, this.c.n(), 2);
+   public void a(dbw $$0, iz $$1, dsa $$2, dsa $$3, cje $$4) {
+      if (a($$0, $$1, $$3)) {
+         $$0.a($$1, this.b.o(), 3);
       }
    }
 
    @Override
-   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
-      if (!this.a($$3, $$4)) {
-         $$3.a($$4, this, 60 + $$3.E_().a(40));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dsa a(cxy $$0) {
+      dbc $$1 = $$0.q();
+      iz $$2 = $$0.a();
+      dsa $$3 = $$1.a_($$2);
+      return a($$1, $$2, $$3) ? this.b.o() : super.a($$0);
    }
 
-   protected boolean a(daz $$0, iz $$1) {
-      for (je $$2 : je.values()) {
-         enq $$3 = $$0.b_($$1.a($$2));
-         if ($$3.a(awr.a)) {
-            return true;
+   private static boolean a(dbc $$0, iz $$1, dsa $$2) {
+      return n($$2) || a($$0, $$1);
+   }
+
+   private static boolean a(dbc $$0, iz $$1) {
+      boolean $$2 = false;
+      iz.a $$3 = $$1.j();
+
+      for (je $$4 : je.values()) {
+         dsa $$5 = $$0.a_($$3);
+         if ($$4 != je.a || n($$5)) {
+            $$3.a($$1, $$4);
+            $$5 = $$0.a_($$3);
+            if (n($$5) && !$$5.d($$0, $$1, $$4.g())) {
+               $$2 = true;
+               break;
+            }
          }
       }
 
-      return false;
+      return $$2;
    }
 
-   @Nullable
-   @Override
-   public drx a(cxv $$0) {
-      if (!this.a($$0.q(), $$0.a())) {
-         $$0.q().a($$0.a(), this, 60 + $$0.q().E_().a(40));
-      }
+   private static boolean n(dsa $$0) {
+      return $$0.u().a(awu.a);
+   }
 
-      return this.n();
+   @Override
+   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
+      return a($$3, $$4) ? this.b.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public int b(dsa $$0, dbc $$1, iz $$2) {
+      return $$0.d($$1, $$2).ak;
    }
 }

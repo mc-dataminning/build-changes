@@ -1,32 +1,16 @@
-public class cbx extends cas {
-   private final ckr b;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cbx(ckr $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+public class cbx extends cby {
+   public cbx(btw $$0, double $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public void c() {
-      super.c();
-      this.c = 0;
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.b.v(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
-      }
+   protected evp h() {
+      evp $$0 = this.b.f(0.0F);
+      int $$1 = 8;
+      evp $$2 = cek.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : ceg.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
    }
 }

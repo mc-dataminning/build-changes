@@ -1,218 +1,61 @@
-import com.google.common.collect.Sets;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-
-public class btj extends bsp {
-   private static final int c = 2;
-   private static final double d = 3.0;
-   private static final double e = 15.0;
-   private int f;
-   public long b;
+public class btj {
+   private static final int a = 140;
+   private static final int b = 700;
+   private final akn c;
+   private final akj<Integer> d;
+   private final akj<Boolean> e;
+   private boolean f;
    private int g;
-   private boolean h;
-   @Nullable
-   private arc i;
-   private final Set<bsp> j = Sets.newHashSet();
-   private int k;
 
-   public btj(bsv<? extends btj> $$0, dbt $$1) {
-      super($$0, $$1);
-      this.au = true;
-      this.f = 2;
-      this.b = this.ah.g();
-      this.g = this.ah.a(3) + 1;
+   public btj(akn $$0, akj<Integer> $$1, akj<Boolean> $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public void a() {
+      this.f = true;
+      this.g = 0;
+   }
+
+   public boolean a(azf $$0) {
+      if (this.f) {
+         return false;
+      } else {
+         this.f = true;
+         this.g = 0;
+         this.c.a(this.d, $$0.a(841) + 140);
+         return true;
+      }
+   }
+
+   public void b() {
+      if (this.f && this.g++ > this.e()) {
+         this.f = false;
+      }
+   }
+
+   public float c() {
+      return this.f ? 1.0F + 1.15F * ayx.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
+   }
+
+   private int e() {
+      return this.c.a(this.d);
+   }
+
+   public void a(ur $$0) {
+      $$0.a("Saddle", this.d());
+   }
+
+   public void b(ur $$0) {
+      this.a($$0.q("Saddle"));
    }
 
    public void a(boolean $$0) {
-      this.h = $$0;
+      this.c.a(this.e, $$0);
    }
 
-   @Override
-   public avx de() {
-      return avx.d;
-   }
-
-   @Nullable
-   public arc p() {
-      return this.i;
-   }
-
-   public void b(@Nullable arc $$0) {
-      this.i = $$0;
-   }
-
-   private void v() {
-      iz $$0 = this.w();
-      drx $$1 = this.dP().a_($$0);
-      if ($$1.a(dew.ss)) {
-         ((djj)$$1.b()).d($$1, this.dP(), $$0);
-      }
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.f == 2) {
-         if (this.dP().x_()) {
-            this.dP().a(this.du(), this.dw(), this.dA(), avw.nW, avx.d, 10000.0F, 0.8F + this.ah.i() * 0.2F, false);
-            this.dP().a(this.du(), this.dw(), this.dA(), avw.nV, avx.d, 2.0F, 0.5F + this.ah.i() * 0.2F, false);
-         } else {
-            bqm $$0 = this.dP().al();
-            if ($$0 == bqm.c || $$0 == bqm.d) {
-               this.b(4);
-            }
-
-            this.v();
-            b(this.dP(), this.w());
-            this.a(dwq.G);
-         }
-      }
-
-      this.f--;
-      if (this.f < 0) {
-         if (this.g == 0) {
-            if (this.dP() instanceof arb) {
-               List<bsp> $$1 = this.dP()
-                  .a(
-                     this,
-                     new evh(this.du() - 15.0, this.dw() - 15.0, this.dA() - 15.0, this.du() + 15.0, this.dw() + 6.0 + 15.0, this.dA() + 15.0),
-                     $$0 -> $$0.bD() && !this.j.contains($$0)
-                  );
-
-               for (arc $$2 : ((arb)this.dP()).a($$0 -> $$0.f(this) < 256.0F)) {
-                  am.V.a($$2, this, $$1);
-               }
-            }
-
-            this.ao();
-         } else if (this.f < -this.ah.a(10)) {
-            this.g--;
-            this.f = 1;
-            this.b = this.ah.g();
-            this.b(0);
-         }
-      }
-
-      if (this.f >= 0) {
-         if (!(this.dP() instanceof arb)) {
-            this.dP().c(2);
-         } else if (!this.h) {
-            List<bsp> $$3 = this.dP()
-               .a(this, new evh(this.du() - 3.0, this.dw() - 3.0, this.dA() - 3.0, this.du() + 3.0, this.dw() + 6.0 + 3.0, this.dA() + 3.0), bsp::bD);
-
-            for (bsp $$4 : $$3) {
-               $$4.a((arb)this.dP(), this);
-            }
-
-            this.j.addAll($$3);
-            if (this.i != null) {
-               am.F.a(this.i, $$3);
-            }
-         }
-      }
-   }
-
-   private iz w() {
-      evm $$0 = this.dn();
-      return iz.a($$0.c, $$0.d - 1.0E-6, $$0.e);
-   }
-
-   private void b(int $$0) {
-      if (!this.h && !this.dP().B && this.dP().ab().b(dbp.b)) {
-         iz $$1 = this.dp();
-         drx $$2 = deh.a(this.dP(), $$1);
-         if (this.dP().a_($$1).i() && $$2.a((dbw)this.dP(), $$1)) {
-            this.dP().b($$1, $$2);
-            this.k++;
-         }
-
-         for (int $$3 = 0; $$3 < $$0; $$3++) {
-            iz $$4 = $$1.b(this.ah.a(3) - 1, this.ah.a(3) - 1, this.ah.a(3) - 1);
-            $$2 = deh.a(this.dP(), $$4);
-            if (this.dP().a_($$4).i() && $$2.a((dbw)this.dP(), $$4)) {
-               this.dP().b($$4, $$2);
-               this.k++;
-            }
-         }
-      }
-   }
-
-   private static void b(dbt $$0, iz $$1) {
-      drx $$2 = $$0.a_($$1);
-      iz $$3;
-      drx $$4;
-      if ($$2.a(dew.ss)) {
-         $$3 = $$1.a($$2.c(djj.a).g());
-         $$4 = $$0.a_($$3);
-      } else {
-         $$3 = $$1;
-         $$4 = $$2;
-      }
-
-      if ($$4.b() instanceof dnz) {
-         $$0.b($$3, dnz.c($$0.a_($$3)));
-         iz.a $$7 = $$1.j();
-         int $$8 = $$0.z.a(3) + 3;
-
-         for (int $$9 = 0; $$9 < $$8; $$9++) {
-            int $$10 = $$0.z.a(8) + 1;
-            a($$0, $$3, $$7, $$10);
-         }
-      }
-   }
-
-   private static void a(dbt $$0, iz $$1, iz.a $$2, int $$3) {
-      $$2.g($$1);
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         Optional<iz> $$5 = c($$0, $$2);
-         if ($$5.isEmpty()) {
-            break;
-         }
-
-         $$2.g($$5.get());
-      }
-   }
-
-   private static Optional<iz> c(dbt $$0, iz $$1) {
-      for (iz $$2 : iz.a($$0.z, 10, $$1, 1)) {
-         drx $$3 = $$0.a_($$2);
-         if ($$3.b() instanceof dnz) {
-            dnz.b($$3).ifPresent($$2x -> $$0.b($$2, $$2x));
-            $$0.c(3002, $$2, -1);
-            return Optional.of($$2);
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = 64.0 * cD();
-      return $$0 < $$1 * $$1;
-   }
-
-   @Override
-   protected void a(akk.a $$0) {
-   }
-
-   @Override
-   protected void a(ur $$0) {
-   }
-
-   @Override
-   protected void b(ur $$0) {
-   }
-
-   public int s() {
-      return this.k;
-   }
-
-   public Stream<bsp> u() {
-      return this.j.stream().filter(bsp::bD);
+   public boolean d() {
+      return this.c.a(this.e);
    }
 }

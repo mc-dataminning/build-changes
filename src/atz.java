@@ -1,56 +1,120 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.nio.file.Path;
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class atz extends atq {
-   private static final atm c = new atm(xl.c("dataPack.vanilla.description"), aa.b().a(asz.b), Optional.empty());
-   private static final ast d = new ast(cpi.h);
-   private static final asp e = asp.a(atm.b, c, ast.a, d);
-   private static final asw f = new asw("vanilla", xl.c("dataPack.vanilla.name"), atx.c, Optional.of(b));
-   private static final asy g = new asy(false, att.b.b, false);
-   private static final asy h = new asy(false, att.b.a, false);
-   private static final alb i = new alb("minecraft", "datapacks");
+public class atz {
+   private final Set<aub> a;
+   private Map<String, atw> b = ImmutableMap.of();
+   private List<atw> c = ImmutableList.of();
 
-   public atz(evc $$0) {
-      super(asz.b, b(), i, $$0);
+   public atz(aub... $$0) {
+      this.a = ImmutableSet.copyOf($$0);
    }
 
-   private static asw a(String $$0, xl $$1) {
-      return new asw($$0, $$1, atx.d, Optional.of(ats.a($$0)));
+   public static String a(Collection<atw> $$0) {
+      return $$0.stream().map($$0x -> $$0x.g() + ($$0x.d().a() ? "" : " (incompatible)")).collect(Collectors.joining(", "));
    }
 
-   @VisibleForTesting
-   public static atb b() {
-      return new atc().a(e).a("minecraft").b().a().a(f);
+   public void a() {
+      List<String> $$0 = this.c.stream().map(atw::g).collect(ImmutableList.toImmutableList());
+      this.b = this.h();
+      this.c = this.c($$0);
    }
 
-   @Override
-   protected xl a(String $$0) {
-      return xl.b($$0);
+   private Map<String, atw> h() {
+      Map<String, atw> $$0 = Maps.newTreeMap();
+
+      for (aub $$1 : this.a) {
+         $$1.loadPacks($$1x -> $$0.put($$1x.g(), $$1x));
+      }
+
+      return ImmutableMap.copyOf($$0);
+   }
+
+   public void b(Collection<String> $$0) {
+      this.c = this.c($$0);
+   }
+
+   public boolean a(String $$0) {
+      atw $$1 = this.b.get($$0);
+      if ($$1 != null && !this.c.contains($$1)) {
+         List<atw> $$2 = Lists.newArrayList(this.c);
+         $$2.add($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(String $$0) {
+      atw $$1 = this.b.get($$0);
+      if ($$1 != null && this.c.contains($$1)) {
+         List<atw> $$2 = Lists.newArrayList(this.c);
+         $$2.remove($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private List<atw> c(Collection<String> $$0) {
+      List<atw> $$1 = this.d($$0).collect(ac.b());
+
+      for (atw $$2 : this.b.values()) {
+         if ($$2.i() && !$$1.contains($$2)) {
+            $$2.k().a($$1, $$2, atw::h, false);
+         }
+      }
+
+      return ImmutableList.copyOf($$1);
+   }
+
+   private Stream<atw> d(Collection<String> $$0) {
+      return $$0.stream().map(this.b::get).filter(Objects::nonNull);
+   }
+
+   public Collection<String> b() {
+      return this.b.keySet();
+   }
+
+   public Collection<atw> c() {
+      return this.b.values();
+   }
+
+   public Collection<String> d() {
+      return this.c.stream().map(atw::g).collect(ImmutableSet.toImmutableSet());
+   }
+
+   public cpj e() {
+      return this.f().stream().map(atw::e).reduce(cpj::c).orElse(cpj.a());
+   }
+
+   public Collection<atw> f() {
+      return this.c;
    }
 
    @Nullable
-   @Override
-   protected att a(asx $$0) {
-      return att.a(f, b($$0), asz.b, g);
+   public atw c(String $$0) {
+      return this.b.get($$0);
    }
 
-   @Nullable
-   @Override
-   protected att a(String $$0, att.c $$1, xl $$2) {
-      return att.a(a($$0, $$2), $$1, asz.b, h);
+   public boolean d(String $$0) {
+      return this.b.containsKey($$0);
    }
 
-   public static atw a(Path $$0, evc $$1) {
-      return new atw(new atz($$1), new atr($$0, asz.b, atx.e, $$1));
-   }
-
-   public static atw c() {
-      return new atw(new atz(new evc($$0 -> true)));
-   }
-
-   public static atw a(epr.c $$0) {
-      return a($$0.a(epp.j), $$0.d().e());
+   public List<ata> g() {
+      return this.c.stream().map(atw::f).collect(ImmutableList.toImmutableList());
    }
 }

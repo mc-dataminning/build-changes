@@ -1,30 +1,26 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum eha implements azp {
-   a(je.b, 1, "ceiling"),
-   b(je.a, -1, "floor");
+public class eha extends eho {
+   private static final eha c = new eha();
+   public static MapCodec<eha> a = MapCodec.unit(() -> c);
 
-   public static final Codec<eha> c = azp.a(eha::values);
-   private final je d;
-   private final int e;
-   private final String f;
-
-   private eha(final je $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private eha() {
    }
 
-   public je a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
+   public static eha a() {
+      return c;
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected boolean a(ehn $$0, azf $$1, iz $$2) {
+      ehm $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      ji<dcv> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
+   }
+
+   @Override
+   public ehq<?> b() {
+      return ehq.e;
    }
 }

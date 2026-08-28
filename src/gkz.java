@@ -1,20 +1,11 @@
-public class gkz<T extends ckj> extends gjy<T, fvw<T>> {
-   private static final alb a = new alb("textures/entity/spider/spider.png");
+public class gkz extends gkb<chu, fvx<chu>> {
+   private static final ale a = new ale("textures/entity/sniffer/sniffer.png");
 
-   public gkz(gis.a $$0) {
-      this($$0, fwu.bx);
+   public gkz(giv.a $$0) {
+      super($$0, new fvx<>($$0.a(fwx.bu)), 1.1F);
    }
 
-   public gkz(gis.a $$0, fwt $$1) {
-      super($$0, new fvw<>($$0.a($$1)), 0.8F);
-      this.a(new gnl<>(this));
-   }
-
-   protected float b(T $$0) {
-      return 180.0F;
-   }
-
-   public alb a(T $$0) {
+   public ale a(chu $$0) {
       return a;
    }
 }

@@ -1,22 +1,17 @@
-public abstract class cyi implements cyh {
-   private final cyg a;
+public enum cyi implements azs {
+   a("food"),
+   b("blocks"),
+   c("misc");
 
-   public cyi(cyg $$0) {
-      this.a = $$0;
+   public static final azs.a<cyi> d = azs.a(cyi::values);
+   private final String e;
+
+   private cyi(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean ao_() {
-      return true;
-   }
-
-   @Override
-   public cuk a(jk.a $$0) {
-      return cuk.l;
-   }
-
-   @Override
-   public cyg d() {
-      return this.a;
+   public String c() {
+      return this.e;
    }
 }

@@ -1,79 +1,30 @@
-import javax.annotation.Nullable;
+public class gag extends fzs {
+   private static final int a = 12235202;
 
-public class gag extends gbx {
-   private final float a;
-   private final gbs b;
-
-   gag(fxq $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gbs $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
-      this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
-   }
-
-   @Override
-   public gbb b() {
-      return gbb.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * ayu.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   protected gag(fxt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gbv $$8) {
+      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
+      float $$9 = (float)Math.random() * 0.2F;
+      this.v = (float)ayh.b.b(12235202) / 255.0F - $$9;
+      this.w = (float)ayh.b.c(12235202) / 255.0F - $$9;
+      this.x = (float)ayh.b.d(12235202) / 255.0F - $$9;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
-         }
-
-         this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
-      }
+      this.u = 0.88F * this.u;
+      this.B = 0.92F * this.B;
+      super.a();
    }
 
-   public static class a implements gba<la> {
-      private final gbs a;
+   public static class a implements gbd<lm> {
+      private final gbv a;
 
-      public a(gbs $$0) {
+      public a(gbv $$0) {
          this.a = $$0;
       }
 
-      @Nullable
-      public gax a(la $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         drx $$8 = $$0.b();
-         if (!$$8.i() && $$8.l() == dla.a) {
-            return null;
-         } else {
-            iz $$9 = iz.a($$2, $$3, $$4);
-            int $$10 = ffa.Q().av().a($$8, $$1, $$9);
-            if ($$8.b() instanceof dhq) {
-               $$10 = ((dhq)$$8.b()).b($$8, $$1, $$9);
-            }
-
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new gag($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
-         }
+      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gag($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

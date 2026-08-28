@@ -1,106 +1,103 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fxo extends fxn implements abm, wz {
-   private static final Logger j = LogUtils.getLogger();
-   private final GameProfile k;
-   private cpg l;
-   private final jw.b m;
-   private final fyd n = new fyd();
+public class fxo {
+   private static final Logger a = LogUtils.getLogger();
+   private final ffd b;
+   private final gug c;
+   private final ak d = new ak();
+   private final Map<af, ah> e = new Object2ObjectOpenHashMap();
    @Nullable
-   private fxw o;
+   private fxo.a f;
    @Nullable
-   protected fha.b i;
+   private af g;
 
-   public fxo(ffa $$0, wj $$1, fxu $$2) {
-      super($$0, $$1, $$2);
-      this.k = $$2.a();
-      this.m = $$2.c();
-      this.l = $$2.d();
-      this.i = $$2.i();
+   public fxo(ffd $$0, gug $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public boolean c() {
-      return this.b.i();
-   }
-
-   @Override
-   protected void a(aat $$0) {
-      this.b($$0);
-   }
-
-   private void b(aat $$0) {
-      j.warn("Unknown custom packet payload: {}", $$0.a().a());
-   }
-
-   @Override
-   public void a(abo $$0) {
-      zv.a($$0, this, this.a);
-      this.n.a($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(aah $$0) {
-      zv.a($$0, this, this.a);
-      this.n.a($$0.b());
-   }
-
-   @Override
-   public void a(abr $$0) {
-      this.l = cpi.e.a($$0.b());
-   }
-
-   @Override
-   public void a(abq $$0) {
-      zv.a($$0, this, this.a);
-      if (this.o == null) {
-         this.o = new fxw();
+   public void a(agm $$0) {
+      if ($$0.g()) {
+         this.d.a();
+         this.e.clear();
       }
 
-      List<ats> $$1 = this.o.a($$0.b());
-      this.b(new abw($$1));
-   }
+      this.d.a($$0.e());
+      this.d.a($$0.b());
 
-   @Override
-   public void a(abp $$0) {
-      this.i = null;
-   }
+      for (Entry<ale, ah> $$1 : $$0.f().entrySet()) {
+         ag $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            ah $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
+            }
 
-   private <T> T a(Function<auo, T> $$0) {
-      if (this.o == null) {
-         return $$0.apply(auo.b);
-      } else {
-         Object var3;
-         try (aub $$1 = this.o.a()) {
-            var3 = $$0.apply($$1);
+            if (!$$0.g() && $$3.a()) {
+               if (this.b.r != null) {
+                  this.c.a(this.b.r, $$2.b());
+               }
+
+               Optional<ar> $$4 = $$2.a().c();
+               if ($$4.isPresent() && $$4.get().h()) {
+                  this.b.ax().a(new fji($$2.b()));
+               }
+            }
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
          }
-
-         return (T)var3;
       }
    }
 
-   @Override
-   public void a(abn $$0) {
-      zv.a($$0, this, this.a);
-      jw.b $$1 = this.a($$0x -> this.n.a($$0x, this.m, this.b.e()));
-      this.b.a(agr.b.bind(ww.a($$1)), new fxr(this.a, this.b, new fxu(this.k, this.e, $$1, this.l, this.d, this.c, this.f, this.h, this.i)));
-      this.b.a(abv.a);
-      this.b.a(agr.a.bind(ww.a($$1)));
+   public ak a() {
+      return this.d;
    }
 
-   @Override
-   public void e() {
-      this.f();
+   public void a(@Nullable af $$0, boolean $$1) {
+      fxu $$2 = this.b.L();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(aif.a($$0));
+      }
+
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
+         }
+      }
    }
 
-   @Override
-   public void a(xl $$0) {
-      super.a($$0);
-      this.a.B();
+   public void a(@Nullable fxo.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            ag $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
+            }
+         });
+         $$0.a(this.g);
+      }
+   }
+
+   @Nullable
+   public af a(ale $$0) {
+      ag $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
+   }
+
+   public interface a extends ak.a {
+      void a(ag var1, ah var2);
+
+      void a(@Nullable af var1);
    }
 }

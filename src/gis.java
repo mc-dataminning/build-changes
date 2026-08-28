@@ -1,60 +1,15 @@
-@FunctionalInterface
-public interface gis<T extends bsp> {
-   gir<T> create(gis.a var1);
+public class gis extends gkb<cjs, ftx<cjs>> {
+   private static final ale a = new ale("textures/entity/endermite.png");
 
-   public static class a {
-      private final giq a;
-      private final gjq b;
-      private final ged c;
-      private final gdf d;
-      private final aul e;
-      private final fwr f;
-      private final fgk g;
+   public gis(giv.a $$0) {
+      super($$0, new ftx<>($$0.a(fwx.Y)), 0.3F);
+   }
 
-      public a(giq $$0, gjq $$1, ged $$2, gdf $$3, aul $$4, fwr $$5, fgk $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
+   protected float a(cjs $$0) {
+      return 180.0F;
+   }
 
-      public giq a() {
-         return this.a;
-      }
-
-      public gjq b() {
-         return this.b;
-      }
-
-      public ged c() {
-         return this.c;
-      }
-
-      public gdf d() {
-         return this.d;
-      }
-
-      public aul e() {
-         return this.e;
-      }
-
-      public fwr f() {
-         return this.f;
-      }
-
-      public grb g() {
-         return this.c.a().a();
-      }
-
-      public fwv a(fwt $$0) {
-         return this.f.a($$0);
-      }
-
-      public fgk h() {
-         return this.g;
-      }
+   public ale b(cjs $$0) {
+      return a;
    }
 }

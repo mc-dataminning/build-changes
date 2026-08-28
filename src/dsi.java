@@ -1,16 +1,18 @@
-public enum dsi implements azp {
-   a("floor"),
-   b("wall"),
-   c("ceiling");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String d;
+public class dsi implements Predicate<dsa> {
+   private final dex a;
 
-   private dsi(final String $$0) {
-      this.d = $$0;
+   public dsi(dex $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public static dsi a(dex $$0) {
+      return new dsi($$0);
+   }
+
+   public boolean a(@Nullable dsa $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

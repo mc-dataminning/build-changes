@@ -1,20 +1,64 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntIterator;
+import java.util.List;
+import java.util.stream.IntStream;
 
-public class elo extends emc {
-   public static final MapCodec<elo> a = MapCodec.unit(() -> elo.b);
-   public static final elo b = new elo();
+public class elo extends emf {
+   public static final MapCodec<elo> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(emh.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bpx.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, elo::new)
+   );
+   private final emf b;
+   private final bpx c;
 
-   @Nullable
-   @Override
-   public emf.c a(dbw $$0, iz $$1, iz $$2, emf.c $$3, emf.c $$4, emb $$5) {
-      iz $$6 = $$4.a();
-      boolean $$7 = $$0.a_($$6).a(dew.H);
-      return $$7 && !deu.a($$4.b().j($$0, $$6)) ? new emf.c($$6, dew.H.n(), $$4.c()) : $$4;
+   public elo(emf $$0, bpx $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected eme<?> a() {
-      return eme.m;
+   protected emh<?> a() {
+      return emh.o;
+   }
+
+   @Override
+   public final List<emi.c> a(dcl $$0, iz $$1, iz $$2, List<emi.c> $$3, List<emi.c> $$4, eme $$5) {
+      if (this.c.b() != 0 && !$$4.isEmpty()) {
+         if ($$3.size() != $$4.size()) {
+            ac.a(
+               "Original block info list not in sync with processed list, skipping processing. Original size: "
+                  + $$3.size()
+                  + ", Processed size: "
+                  + $$4.size()
+            );
+            return $$4;
+         } else {
+            azf $$6 = azf.a($$0.E().C()).e().a($$1);
+            int $$7 = Math.min(this.c.a($$6), $$4.size());
+            if ($$7 < 1) {
+               return $$4;
+            } else {
+               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
+               IntIterator $$9 = $$8.intIterator();
+               int $$10 = 0;
+
+               while ($$9.hasNext() && $$10 < $$7) {
+                  int $$11 = $$9.nextInt();
+                  emi.c $$12 = $$3.get($$11);
+                  emi.c $$13 = $$4.get($$11);
+                  emi.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
+                  if ($$14 != null && !$$13.equals($$14)) {
+                     $$10++;
+                     $$4.set($$11, $$14);
+                  }
+               }
+
+               return $$4;
+            }
+         }
+      } else {
+         return $$4;
+      }
    }
 }

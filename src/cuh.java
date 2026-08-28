@@ -1,37 +1,27 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+public interface cuh {
+   int a = 256;
+   int b = 140;
+   ald<cuf> c = a("ponder_goat_horn");
+   ald<cuf> d = a("sing_goat_horn");
+   ald<cuf> e = a("seek_goat_horn");
+   ald<cuf> f = a("feel_goat_horn");
+   ald<cuf> g = a("admire_goat_horn");
+   ald<cuf> h = a("call_goat_horn");
+   ald<cuf> i = a("yearn_goat_horn");
+   ald<cuf> j = a("dream_goat_horn");
 
-public enum cuh implements azp {
-   a(0, "none"),
-   b(1, "thirdperson_lefthand"),
-   c(2, "thirdperson_righthand"),
-   d(3, "firstperson_lefthand"),
-   e(4, "firstperson_righthand"),
-   f(5, "head"),
-   g(6, "gui"),
-   h(7, "ground"),
-   i(8, "fixed");
-
-   public static final Codec<cuh> j = azp.a(cuh::values);
-   public static final IntFunction<cuh> k = axl.a(cuh::a, values(), axl.a.a);
-   private final byte l;
-   private final String m;
-
-   private cuh(final int $$0, final String $$1) {
-      this.m = $$1;
-      this.l = (byte)$$0;
+   private static ald<cuf> a(String $$0) {
+      return ald.a(lq.E, new ale($$0));
    }
 
-   @Override
-   public String c() {
-      return this.m;
-   }
-
-   public byte a() {
-      return this.l;
-   }
-
-   public boolean b() {
-      return this == d || this == e;
+   static cuf a(jv<cuf> $$0) {
+      jv.a($$0, c, new cuf((ji<avy>)avz.mF.get(0), 140, 256.0F));
+      jv.a($$0, d, new cuf((ji<avy>)avz.mF.get(1), 140, 256.0F));
+      jv.a($$0, e, new cuf((ji<avy>)avz.mF.get(2), 140, 256.0F));
+      jv.a($$0, f, new cuf((ji<avy>)avz.mF.get(3), 140, 256.0F));
+      jv.a($$0, g, new cuf((ji<avy>)avz.mF.get(4), 140, 256.0F));
+      jv.a($$0, h, new cuf((ji<avy>)avz.mF.get(5), 140, 256.0F));
+      jv.a($$0, i, new cuf((ji<avy>)avz.mF.get(6), 140, 256.0F));
+      return jv.a($$0, j, new cuf((ji<avy>)avz.mF.get(7), 140, 256.0F));
    }
 }

@@ -1,36 +1,43 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record etw(eui b, eqc c) implements etn {
+public record etw(float b, float c) implements etq {
    public static final MapCodec<etw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(euj.a.fieldOf("value").forGetter(etw::c), eqc.a.fieldOf("range").forGetter(etw::d)).apply($$0, etw::new)
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(etw::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(etw::d)).apply($$0, etw::new)
    );
 
    @Override
-   public eto b() {
-      return etp.t;
+   public etr b() {
+      return ets.g;
    }
 
    @Override
-   public Set<esw<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public Set<esz<?>> a() {
+      return ImmutableSet.of(etc.d);
    }
 
-   public boolean a(eqd $$0) {
-      return this.c.b($$0, this.b.a($$0));
+   public boolean a(eqg $$0) {
+      bss $$1 = $$0.c(etc.d);
+      int $$2 = 0;
+      if ($$1 instanceof btn) {
+         $$2 = czz.h((btn)$$1);
+      }
+
+      return $$0.b().i() < this.b + (float)$$2 * this.c;
    }
 
-   public static etn.a a(eui $$0, eqc $$1) {
+   public static etq.a a(float $$0, float $$1) {
       return () -> new etw($$0, $$1);
    }
 
-   public eui c() {
+   public float c() {
       return this.b;
    }
 
-   public eqc d() {
+   public float d() {
       return this.c;
    }
 }

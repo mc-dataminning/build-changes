@@ -1,104 +1,101 @@
-import com.mojang.text2speech.Narrator;
 import javax.annotation.Nullable;
 
-public class fli extends fmy {
-   private static final xl a = xl.c("accessibility.onboarding.screen.title");
-   private static final xl b = xl.c("accessibility.onboarding.screen.narrator");
-   private static final int c = 4;
-   private static final int d = 16;
-   private final fhq r;
-   private final ffe s;
-   private final boolean u;
-   private boolean v;
-   private float w;
-   private final Runnable x;
+public record fli(flh a, int b, int c) {
+   private static final fli d = new fli(0, 0, 0, 0);
+
+   public fli(int $$0, int $$1, int $$2, int $$3) {
+      this(new flh($$0, $$1), $$2, $$3);
+   }
+
+   public static fli a() {
+      return d;
+   }
+
+   public static fli a(flf $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new fli($$1, $$2, $$3, $$4);
+         case b -> new fli($$2, $$1, $$4, $$3);
+      };
+   }
+
+   public fli a(flg $$0) {
+      return new fli(this.a.a($$0), this.b, this.c);
+   }
+
+   public int a(flf $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
+   }
+
+   public int b(flg $$0) {
+      flf $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
+   }
+
+   public fli c(flg $$0) {
+      int $$1 = this.b($$0);
+      flf $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
+   }
+
+   public boolean a(fli $$0) {
+      return this.a($$0, flf.a) && this.a($$0, flf.b);
+   }
+
+   public boolean a(fli $$0, flf $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
+
+   public int b(flf $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
+
    @Nullable
-   private fhk y;
-   @Nullable
-   private fgx z;
-   private final fkm A = new fkm(this, this.m(), 33);
-
-   public fli(ffe $$0, Runnable $$1) {
-      super(a);
-      this.s = $$0;
-      this.x = $$1;
-      this.r = new fhq(true);
-      this.u = ffa.Q().aX().a();
+   public fli b(fli $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new fli($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
    }
 
-   @Override
-   public void aN_() {
-      fkq $$0 = this.A.c(fkq.d());
-      $$0.c().b().a(4);
-      this.y = $$0.a(new fhk(this.n, this.l, this.p), $$0x -> $$0x.a(8));
-      this.z = this.s.as().a(this.s);
-      this.z.j = this.u;
-      $$0.a(this.z);
-      $$0.a(fhd.b(150, $$0x -> this.a(new flj(this, this.m.m)), false));
-      $$0.a(fhd.a(150, $$0x -> this.a(new fmh(this, this.m.m, this.m.ag())), false));
-      this.A.b(fgz.a(xk.j, $$0x -> this.d()).a());
-      this.A.a(this::c);
-      this.c();
+   public int b() {
+      return this.a.b();
    }
 
-   @Override
-   protected void c() {
-      if (this.y != null) {
-         this.y.b(this.n);
-      }
-
-      this.A.a();
+   public int c() {
+      return this.a.b() + this.c;
    }
 
-   @Override
-   protected void aD_() {
-      if (this.u && this.z != null) {
-         this.b(this.z);
-      } else {
-         super.aD_();
-      }
+   public int d() {
+      return this.a.a();
    }
 
-   private int m() {
-      return 90;
+   public int e() {
+      return this.a.a() + this.b;
    }
 
-   @Override
-   public void d() {
-      this.a(this.x);
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
    }
 
-   private void a(fmy $$0) {
-      this.a(() -> this.m.a($$0));
+   public flh f() {
+      return this.a;
    }
 
-   private void a(Runnable $$0) {
-      this.s.ad = false;
-      this.s.av();
-      Narrator.getNarrator().clear();
-      $$0.run();
+   public int g() {
+      return this.b;
    }
 
-   @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.C();
-      this.r.a($$0, this.n, 1.0F);
-   }
-
-   @Override
-   protected void a(fgm $$0, float $$1) {
-      f.a($$0, this.n, this.o, 1.0F, 0.0F);
-   }
-
-   private void C() {
-      if (!this.v && this.u) {
-         if (this.w < 40.0F) {
-            this.w++;
-         } else if (this.m.aB()) {
-            Narrator.getNarrator().say(b.getString(), true);
-            this.v = true;
-         }
-      }
+   public int h() {
+      return this.c;
    }
 }

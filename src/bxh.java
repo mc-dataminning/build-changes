@@ -1,48 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class bxh {
-   public static bve<btt> a(cco<iz> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, evm::c);
-   }
+   private static final int a = 300;
 
-   public static bwo<btt> b(cco<? extends bsp> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, bsp::dn);
-   }
-
-   private static <T> bwo<btt> a(cco<T> $$0, float $$1, int $$2, boolean $$3, Function<T, evm> $$4) {
-      return byq.a(
-         (Function<byq.b<btt>, ? extends App<byq.c<btt>, byt<btt>>>)($$5 -> $$5.group($$5.a(cco.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  Optional<ccr> $$10 = $$5.a($$5x);
-                  if ($$10.isPresent() && !$$3) {
-                     return false;
-                  } else {
-                     evm $$11 = $$8.dn();
-                     evm $$12 = $$4.apply($$5.b($$6));
-                     if (!$$11.a((js)$$12, (double)$$2)) {
-                        return false;
-                     } else {
-                        if ($$10.isPresent() && $$10.get().b() == $$1) {
-                           evm $$13 = $$10.get().a().a().d($$11);
-                           evm $$14 = $$12.d($$11);
-                           if ($$13.b($$14) < 0.0) {
-                              return false;
-                           }
-                        }
-
-                        for (int $$15 = 0; $$15 < 10; $$15++) {
-                           evm $$16 = cei.b($$8, 16, 7, $$12);
-                           if ($$16 != null) {
-                              $$5x.a(new ccr($$16, $$1, 0));
-                              break;
-                           }
+   public static bvh<btn> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return byt.a(
+         (Function<byt.b<btn>, ? extends App<byt.c<btn>, byw<btn>>>)($$3x -> $$3x.group($$3x.b(ccr.C), $$3x.b(ccr.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        iz $$11 = $$3x.<jh>b($$4).b();
+                        if ($$11.a($$7.dp(), (double)$$1)) {
+                           $$3.increment();
                         }
 
                         return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.dS().a($$6.aa(), $$6.Z());
+                        $$3.setValue(0);
+                        return true;
                      }
-                  }
-               }))
+                  }))
       );
    }
 }

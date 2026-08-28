@@ -1,167 +1,66 @@
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fcs extends gvb {
-   private static final alb a = new alb("icon/unseen_notification");
-   private static final alb b = new alb("icon/news");
-   private static final alb c = new alb("icon/invite");
-   private static final alb B = new alb("icon/trial_available");
-   private final CompletableFuture<Boolean> C = fad.a().thenApply($$0 -> $$0.a() == fad.b.a);
-   @Nullable
-   private fdi.c D;
-   @Nullable
-   private fcs.a E;
-   private volatile int F;
-   private static boolean G;
-   private static boolean H;
-   private static boolean I;
-   private final fcs.a J = new fcs.a() {
-      @Override
-      public fdi.c a(fbz $$0) {
-         fdi.c $$1 = $$0.a.a();
-         fcs.this.a($$0, $$1);
-         fcs.this.b($$0, $$1);
-         return $$1;
-      }
+public class fcs extends gve {
+   static final xo b = xo.c("mco.warning");
+   static final xo c = xo.c("mco.info");
+   private final fcs.a B;
+   private final xo C;
+   private final xo D;
+   protected final BooleanConsumer a;
+   private final boolean E;
 
-      @Override
-      public boolean a() {
-         return true;
-      }
-   };
-   private final fcs.a K = new fcs.a() {
-      @Override
-      public fdi.c a(fbz $$0) {
-         fdi.c $$1 = $$0.a.a();
-         fcs.this.b($$0, $$1);
-         return $$1;
-      }
-
-      @Override
-      public boolean a() {
-         return false;
-      }
-   };
-
-   public fcs() {
-      super(fes.a);
+   public fcs(BooleanConsumer $$0, fcs.a $$1, xo $$2, xo $$3, boolean $$4) {
+      super(fev.a);
+      this.a = $$0;
+      this.B = $$1;
+      this.C = $$2;
+      this.D = $$3;
+      this.E = $$4;
    }
 
    @Override
-   public void aN_() {
-      if (this.D != null) {
-         this.D.a();
-      }
-   }
-
-   @Override
-   public void aG_() {
-      super.aG_();
-      this.m.ba().b.a();
-   }
-
-   @Nullable
-   private fcs.a C() {
-      boolean $$0 = this.E() && this.C.getNow(false);
-      if (!$$0) {
-         return null;
+   public void aM_() {
+      if (this.E) {
+         this.c(fhc.a(xn.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(8), 100, 20).a());
+         this.c(fhc.a(xn.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(8), 100, 20).a());
       } else {
-         return this.D() ? this.J : this.K;
+         this.c(fhc.a(xn.h, $$0 -> this.a.accept(true)).a(this.n / 2 - 50, g(8), 100, 20).a());
       }
    }
 
    @Override
-   public void e() {
-      fcs.a $$0 = this.C();
-      if (!Objects.equals(this.E, $$0)) {
-         this.E = $$0;
-         if (this.E != null) {
-            this.D = this.E.a(this.m.ba());
-         } else {
-            this.D = null;
-         }
-      }
-
-      if (this.D != null) {
-         this.D.b();
-      }
-   }
-
-   private boolean D() {
-      return this.m.m.T().c();
-   }
-
-   private boolean E() {
-      return this.m.y instanceof fnd;
+   public xo i() {
+      return xn.b(this.B.d, this.C, this.D);
    }
 
    @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.a.accept(false);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if (this.C.getNow(false)) {
-         this.c($$0);
+      $$0.a(this.p, this.B.d, this.n / 2, g(2), this.B.c);
+      $$0.a(this.p, this.C, this.n / 2, g(4), -1);
+      $$0.a(this.p, this.D, this.n / 2, g(6), -1);
+   }
+
+   public static enum a {
+      a(fcs.b, -65536),
+      b(fcs.c, 8226750);
+
+      public final int c;
+      public final xo d;
+
+      private a(final xo $$0, final int $$1) {
+         this.d = $$0;
+         this.c = $$1;
       }
-   }
-
-   @Override
-   public void b(fgm $$0, int $$1, int $$2, float $$3) {
-   }
-
-   private void c(fgm $$0) {
-      int $$1 = this.F;
-      int $$2 = 24;
-      int $$3 = this.o / 4 + 48;
-      int $$4 = this.n / 2 + 100;
-      int $$5 = $$3 + 48 + 2;
-      int $$6 = $$4 - 3;
-      if (I) {
-         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
-         $$6 -= 16;
-      }
-
-      if (this.E != null && this.E.a()) {
-         if (H) {
-            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
-            $$6 -= 16;
-         }
-
-         if ($$1 != 0) {
-            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
-            $$6 -= 16;
-         }
-
-         if (G) {
-            $$0.a(B, $$6 - 10, $$5 + 4, 8, 8);
-         }
-      }
-   }
-
-   void a(fbz $$0, fdi.c $$1) {
-      $$1.a($$0.d, $$0x -> this.F = $$0x);
-      $$1.a($$0.e, $$0x -> G = $$0x);
-      $$1.a($$0.f, $$1x -> {
-         $$0.g.a($$1x);
-         H = $$0.g.a();
-      });
-   }
-
-   void b(fbz $$0, fdi.c $$1) {
-      $$1.a($$0.b, $$0x -> {
-         I = false;
-
-         for (faz $$1x : $$0x) {
-            if (!$$1x.a()) {
-               I = true;
-               break;
-            }
-         }
-      });
-   }
-
-   interface a {
-      fdi.c a(fbz var1);
-
-      boolean a();
    }
 }

@@ -1,70 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class eqp extends eqm {
-   public static final MapCodec<eqp> a = a(eqp::new);
+public abstract class eqp extends eqw {
+   protected final List<eqw> d;
+   private final eqo a;
 
-   eqp(List<eqt> $$0, List<etn> $$1) {
-      super($$0, $$1);
+   protected eqp(List<eqw> $$0, List<etq> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
    @Override
-   public equ a() {
-      return eqr.i;
+   public void a(eqm $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
+      }
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
    }
+
+   protected abstract eqo a(List<? extends eqo> var1);
 
    @Override
-   protected eql a(List<? extends eql> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (eql)$$0.get(0);
-         case 2 -> {
-            eql $$1 = $$0.get(0);
-            eql $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (eql $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
-
-         return true;
-      };
-      };
+   public final boolean expand(eqg $$0, Consumer<eqv> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
    }
 
-   public static eqp.a a(eqt.a<?>... $$0) {
-      return new eqp.a($$0);
+   public static <T extends eqp> MapCodec<T> a(eqp.a<T> $$0) {
+      return RecordCodecBuilder.mapCodec(
+         $$1 -> $$1.group(equ.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
    }
 
-   public static class a extends eqt.a<eqp.a> {
-      private final Builder<eqt> a = ImmutableList.builder();
-
-      public a(eqt.a<?>... $$0) {
-         for (eqt.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected eqp.a a() {
-         return this;
-      }
-
-      @Override
-      public eqp.a b(eqt.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public eqt b() {
-         return new eqp(this.a.build(), this.f());
-      }
+   @FunctionalInterface
+   public interface a<T extends eqp> {
+      T create(List<eqw> var1, List<etq> var2);
    }
 }

@@ -1,23 +1,34 @@
-public class dpk {
-   private boolean a;
-   private float b;
-   private float c;
+import javax.annotation.Nullable;
 
-   public void a() {
-      this.c = this.b;
-      float $$0 = 0.1F;
-      if (!this.a && this.b > 0.0F) {
-         this.b = Math.max(this.b - 0.1F, 0.0F);
-      } else if (this.a && this.b < 1.0F) {
-         this.b = Math.min(this.b + 0.1F, 1.0F);
+public class dpk extends dqm {
+   public dpk(iz $$0, dsa $$1) {
+      super(dph.J, $$0, $$1);
+   }
+
+   @Override
+   public dxc.d b() {
+      return new dpk.a(this.az_());
+   }
+
+   protected class a extends dqm.a {
+      public a(final iz $$1) {
+         super($$1);
       }
-   }
 
-   public float a(float $$0) {
-      return ayu.i($$0, this.c, this.b);
-   }
+      @Override
+      public int a() {
+         return 16;
+      }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
+      @Override
+      public boolean a(are $$0, iz $$1, ji<dwt> $$2, @Nullable dwt.a $$3) {
+         int $$4 = this.a($$0, this.c, dpk.this.n());
+         return $$4 != 0 && dxc.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
+      }
+
+      private int a(dbw $$0, iz $$1, dsa $$2) {
+         je $$3 = $$2.c(dfk.b).g();
+         return $$0.c($$1.a($$3), $$3);
+      }
    }
 }

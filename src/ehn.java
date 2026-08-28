@@ -1,25 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public interface ehn<P extends ehm> {
-   ehn<egy> a = a("block_predicate_filter", egy.a);
-   ehn<ehp> b = a("rarity_filter", ehp.a);
-   ehn<ehr> c = a("surface_relative_threshold_filter", ehr.a);
-   ehn<ehs> d = a("surface_water_depth_filter", ehs.a);
-   ehn<egx> e = a("biome", egx.a);
-   ehn<ehc> f = a("count", ehc.a);
-   ehn<ehh> g = a("noise_based_count", ehh.a);
-   ehn<ehi> h = a("noise_threshold_count", ehi.a);
-   ehn<ehb> i = a("count_on_every_layer", ehb.a);
-   ehn<ehd> j = a("environment_scan", ehd.a);
-   ehn<ehf> k = a("heightmap", ehf.a);
-   ehn<ehe> l = a("height_range", ehe.a);
-   ehn<ehg> m = a("in_square", ehg.a);
-   ehn<eho> n = a("random_offset", eho.a);
-   ehn<egz> o = a("carving_mask", egz.a);
+public class ehn extends dyp {
+   private final dcr a;
+   private final dtx b;
+   private final Optional<ehm> c;
 
-   MapCodec<P> codec();
+   public ehn(dcr $$0, dtx $$1, Optional<ehm> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
 
-   private static <P extends ehm> ehn<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.U, $$0, () -> $$1);
+   public int a(dxs.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   public dtv a(dbd $$0, dxo.a $$1) {
+      return ((duq)this.a.a($$0.e, $$0.f)).b($$1);
+   }
+
+   public dsa a(iz $$0) {
+      return this.a.a_($$0);
+   }
+
+   public int c() {
+      return this.a.I_();
+   }
+
+   public dcr d() {
+      return this.a;
+   }
+
+   public Optional<ehm> e() {
+      return this.c;
+   }
+
+   public dtx f() {
+      return this.b;
    }
 }

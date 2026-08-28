@@ -16,7 +16,7 @@ public class tn {
    private iz b;
    @Nullable
    private iz c;
-   private final arb d;
+   private final are d;
    private final Collection<to> e = Lists.newArrayList();
    private final int f;
    private final Collection<tr> g = Lists.newCopyOnWriteArrayList();
@@ -30,13 +30,13 @@ public class tn {
    private final ua o;
    private final Stopwatch p = Stopwatch.createUnstarted();
    private boolean q;
-   private final dlh r;
+   private final dlk r;
    @Nullable
    private Throwable s;
    @Nullable
-   private dqr t;
+   private dqu t;
 
-   public tn(uh $$0, dlh $$1, arb $$2, ua $$3) {
+   public tn(uh $$0, dlk $$1, are $$2, ua $$3) {
       this.a = $$0;
       this.d = $$2;
       this.o = $$3;
@@ -60,9 +60,9 @@ public class tn {
       } else {
          this.j = 0;
          this.k = true;
-         dqr $$0 = this.e();
+         dqu $$0 = this.e();
          $$0.c(this.d);
-         ehx $$1 = ud.b($$0);
+         eia $$1 = ud.b($$0);
          this.d.m().a($$1);
          this.d.a($$1);
          return this;
@@ -165,18 +165,18 @@ public class tn {
       return this.b;
    }
 
-   public evh d() {
-      dqr $$0 = this.e();
+   public evk d() {
+      dqu $$0 = this.e();
       return ud.a($$0);
    }
 
-   public dqr e() {
+   public dqu e() {
       if (this.t == null) {
          if (this.b == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity for this GameTestInfo");
          }
 
-         this.t = (dqr)this.d.c_(this.b);
+         this.t = (dqu)this.d.c_(this.b);
          if (this.t == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity at the given coordinate " + this.b);
          }
@@ -185,7 +185,7 @@ public class tn {
       return this.t;
    }
 
-   public arb f() {
+   public are f() {
       return this.d;
    }
 
@@ -221,9 +221,9 @@ public class tn {
    public void l() {
       if (this.s == null) {
          this.F();
-         evh $$0 = this.d();
-         List<bsp> $$1 = this.f().a(bsp.class, $$0.g(1.0), $$0x -> !($$0x instanceof cms));
-         $$1.forEach($$0x -> $$0x.a(bsp.c.b));
+         evk $$0 = this.d();
+         List<bss> $$1 = this.f().a(bss.class, $$0.g(1.0), $$0x -> !($$0x instanceof cmv));
+         $$1.forEach($$0x -> $$0x.a(bss.c.b));
       }
    }
 
@@ -249,7 +249,7 @@ public class tn {
    public tn n() {
       iz $$0 = this.G();
       this.t = ud.a(this, $$0, this.t(), this.d);
-      this.b = this.t.aA_();
+      this.b = this.t.az_();
       ud.a(this.b, new iz(1, 0, -1), this.t(), this.d);
       ud.a(this.d(), this.d, !this.a.l());
       this.e.forEach($$0x -> $$0x.a(this));
@@ -278,7 +278,7 @@ public class tn {
       return this.a.d();
    }
 
-   public dlh t() {
+   public dlk t() {
       return this.r;
    }
 
@@ -325,7 +325,7 @@ public class tn {
 
    private iz G() {
       if (this.c == null) {
-         ehx $$0 = ud.b(this.e());
+         eia $$0 = ud.b(this.e());
          this.c = new iz($$0.h(), $$0.i(), $$0.j());
       }
 

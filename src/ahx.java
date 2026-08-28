@@ -1,37 +1,33 @@
-public class ahx implements zs<ags> {
-   public static final zj<wl, ahx> a = zs.a(ahx::a, ahx::new);
+public class ahx implements zv<agv> {
+   public static final zm<wl, ahx> a = zv.a(ahx::a, ahx::new);
    private final int b;
-   private final ahx.a c;
-   private final int d;
+   private final ale c;
+   private final boolean d;
 
-   public ahx(bsp $$0, ahx.a $$1) {
-      this($$0, $$1, 0);
-   }
-
-   public ahx(bsp $$0, ahx.a $$1, int $$2) {
-      this.b = $$0.al();
-      this.c = $$1;
+   public ahx(int $$0, cyv<?> $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = $$1.a();
       this.d = $$2;
    }
 
    private ahx(wl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.b(ahx.a.class);
-      this.d = $$0.l();
+      this.b = $$0.readByte();
+      this.c = $$0.q();
+      this.d = $$0.readBoolean();
    }
 
    private void a(wl $$0) {
-      $$0.c(this.b);
+      $$0.k(this.b);
       $$0.a(this.c);
-      $$0.c(this.d);
+      $$0.a(this.d);
    }
 
    @Override
-   public zu<ahx> a() {
-      return agq.bL;
+   public zx<ahx> a() {
+      return agt.bI;
    }
 
-   public void a(ags $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
@@ -39,23 +35,11 @@ public class ahx implements zs<ags> {
       return this.b;
    }
 
-   public ahx.a e() {
+   public ale e() {
       return this.c;
    }
 
-   public int f() {
+   public boolean f() {
       return this.d;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h,
-      i;
    }
 }

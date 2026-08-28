@@ -1,37 +1,30 @@
-public enum cmt {
-   a(0, "cape"),
-   b(1, "jacket"),
-   c(2, "left_sleeve"),
-   d(3, "right_sleeve"),
-   e(4, "left_pants_leg"),
-   f(5, "right_pants_leg"),
-   g(6, "hat");
+import java.util.function.IntFunction;
 
-   private final int h;
-   private final int i;
-   private final String j;
-   private final xl k;
+public enum cmt implements aza {
+   a(0, "options.chat.visibility.full"),
+   b(1, "options.chat.visibility.system"),
+   c(2, "options.chat.visibility.hidden");
+
+   private static final IntFunction<cmt> d = axo.a(cmt::a, values(), axo.a.b);
+   private final int e;
+   private final String f;
 
    private cmt(final int $$0, final String $$1) {
-      this.h = $$0;
-      this.i = 1 << $$0;
-      this.j = $$1;
-      this.k = xl.c("options.modelPart." + $$1);
+      this.e = $$0;
+      this.f = $$1;
    }
 
+   @Override
    public int a() {
-      return this.i;
+      return this.e;
    }
 
-   public int b() {
-      return this.h;
+   @Override
+   public String b() {
+      return this.f;
    }
 
-   public String c() {
-      return this.j;
-   }
-
-   public xl d() {
-      return this.k;
+   public static cmt a(int $$0) {
+      return d.apply($$0);
    }
 }

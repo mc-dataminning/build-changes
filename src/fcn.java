@@ -1,62 +1,27 @@
-public class fcn extends gvb {
-   private final fmy a;
-   private final fcn.a b;
-   private fhs c = fhs.a;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public fcn(fbw $$0, fmy $$1) {
-      super(fes.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
+public class fcn extends gve {
+   protected BooleanConsumer a;
+   private final xo b;
+   private final xo c;
 
-   public fcn(xl $$0, fmy $$1) {
-      super(fes.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
-
-   public fcn(xl $$0, xl $$1, fmy $$2) {
-      super(fes.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
-   }
-
-   private static fcn.a a(fbw $$0) {
-      fal $$1 = $$0.a;
-      return a(xl.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
-   }
-
-   private static fcn.a a(xl $$0) {
-      return a(xl.c("mco.errorMessage.generic"), $$0);
-   }
-
-   private static fcn.a a(xl $$0, xl $$1) {
-      return new fcn.a($$0, $$1);
+   public fcn(BooleanConsumer $$0, xo $$1, xo $$2) {
+      super(fev.a);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public void aN_() {
-      this.c(fgz.a(xk.h, $$0 -> this.d()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
-      this.c = fhs.a(this.p, this.b.b, this.n * 3 / 4);
+   public void aM_() {
+      this.c(fhc.a(xn.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
+      this.c(fhc.a(xn.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
    }
 
    @Override
-   public void d() {
-      this.m.a(this.a);
-   }
-
-   @Override
-   public xl i() {
-      return xl.i().b(this.b.a).f(": ").b(this.b.b);
-   }
-
-   @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
-      this.c.a($$0, this.n / 2, 100, 9, -2142128);
-   }
-
-   static record a(xl a, xl b) {
+      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
+      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
    }
 }

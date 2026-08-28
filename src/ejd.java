@@ -1,12 +1,72 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface ejd<SP extends ejc> {
-   ejd<eja> a = a("random_spread", eja.a);
-   ejd<eiz> b = a("concentric_rings", eiz.a);
+public class ejd extends ejf {
+   public static final MapCodec<ejd> a = RecordCodecBuilder.mapCodec(
+         $$0 -> a($$0)
+               .and(
+                  $$0.group(
+                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(ejd::a),
+                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(ejd::b),
+                     eje.c.optionalFieldOf("spread_type", eje.a).forGetter(ejd::c)
+                  )
+               )
+               .apply($$0, ejd::new)
+      )
+      .validate(ejd::a);
+   private final int c;
+   private final int d;
+   private final eje e;
 
-   MapCodec<SP> codec();
+   private static DataResult<ejd> a(ejd $$0) {
+      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   }
 
-   private static <SP extends ejc> ejd<SP> a(String $$0, MapCodec<SP> $$1) {
-      return jv.a(lp.R, $$0, () -> $$1);
+   public ejd(kd $$0, ejf.c $$1, float $$2, int $$3, Optional<ejf.a> $$4, int $$5, int $$6, eje $$7) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
+   }
+
+   public ejd(int $$0, int $$1, eje $$2, int $$3) {
+      this(kd.g, ejf.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public eje c() {
+      return this.e;
+   }
+
+   public dbd a(long $$0, int $$1, int $$2) {
+      int $$3 = Math.floorDiv($$1, this.c);
+      int $$4 = Math.floorDiv($$2, this.c);
+      dyr $$5 = new dyr(new dxt(0L));
+      $$5.a($$0, $$3, $$4, this.i());
+      int $$6 = this.c - this.d;
+      int $$7 = this.e.a($$5, $$6);
+      int $$8 = this.e.a($$5, $$6);
+      return new dbd($$3 * this.c + $$7, $$4 * this.c + $$8);
+   }
+
+   @Override
+   protected boolean a(dty $$0, int $$1, int $$2) {
+      dbd $$3 = this.a($$0.d(), $$1, $$2);
+      return $$3.e == $$1 && $$3.f == $$2;
+   }
+
+   @Override
+   public ejg<?> e() {
+      return ejg.a;
    }
 }

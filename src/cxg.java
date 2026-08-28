@@ -1,148 +1,131 @@
-import com.google.common.collect.Iterables;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.stream.Stream;
+import java.util.function.Consumer;
+import java.util.function.IntFunction;
 
-public final class cxg {
-   private static final int d = -1;
-   private static final int e = 256;
-   public static final cxg a = new cxg(jr.a());
-   public static final Codec<cxg> b = cxg.a.a.sizeLimitedListOf(256).xmap(cxg::b, cxg::f);
-   public static final zj<ww, cxg> c = cuk.h.a(zh.c(256)).a(cxg::new, $$0 -> $$0.f);
-   private final jr<cuk> f;
+public record cxg(cxg.a e, IntList f, IntList g, boolean h, boolean i) implements cxt {
+   public static final cxg a = new cxg(cxg.a.a, IntList.of(), IntList.of(), false, false);
+   public static final Codec<IntList> b = Codec.INT.listOf().xmap(IntArrayList::new, ArrayList::new);
+   public static final Codec<cxg> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cxg.a.g.fieldOf("shape").forGetter(cxg::a),
+               b.optionalFieldOf("colors", IntList.of()).forGetter(cxg::b),
+               b.optionalFieldOf("fade_colors", IntList.of()).forGetter(cxg::c),
+               Codec.BOOL.optionalFieldOf("has_trail", false).forGetter(cxg::d),
+               Codec.BOOL.optionalFieldOf("has_twinkle", false).forGetter(cxg::e)
+            )
+            .apply($$0, cxg::new)
+   );
+   private static final zm<ByteBuf, IntList> j = zk.f.a(zk.a()).a(IntArrayList::new, ArrayList::new);
+   public static final zm<ByteBuf, cxg> d = zm.a(cxg.a.f, cxg::a, j, cxg::b, j, cxg::c, zk.b, cxg::d, zk.b, cxg::e, cxg::new);
+   private static final xo k = xo.c("item.minecraft.firework_star.custom_color");
 
-   private cxg(jr<cuk> $$0) {
-      if ($$0.size() > 256) {
-         throw new IllegalArgumentException("Got " + $$0.size() + " items, but maximum is 256");
-      } else {
-         this.f = $$0;
+   @Override
+   public void a(cui.b $$0, Consumer<xo> $$1, cwg $$2) {
+      this.a($$1);
+      this.b($$1);
+   }
+
+   public void a(Consumer<xo> $$0) {
+      $$0.accept(this.e.a().a(n.h));
+   }
+
+   public void b(Consumer<xo> $$0) {
+      if (!this.f.isEmpty()) {
+         $$0.accept(a(xo.i().a(n.h), this.f));
+      }
+
+      if (!this.g.isEmpty()) {
+         $$0.accept(a(xo.c("item.minecraft.firework_star.fade_to").b(xn.v).a(n.h), this.g));
+      }
+
+      if (this.h) {
+         $$0.accept(xo.c("item.minecraft.firework_star.trail").a(n.h));
+      }
+
+      if (this.i) {
+         $$0.accept(xo.c("item.minecraft.firework_star.flicker").a(n.h));
       }
    }
 
-   private cxg(int $$0) {
-      this(jr.a($$0, cuk.l));
-   }
-
-   private cxg(List<cuk> $$0) {
-      this($$0.size());
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         this.f.set($$1, $$0.get($$1));
-      }
-   }
-
-   private static cxg b(List<cxg.a> $$0) {
-      OptionalInt $$1 = $$0.stream().mapToInt(cxg.a::a).max();
-      if ($$1.isEmpty()) {
-         return a;
-      } else {
-         cxg $$2 = new cxg($$1.getAsInt() + 1);
-
-         for (cxg.a $$3 : $$0) {
-            $$2.f.set($$3.a(), $$3.b());
+   private static xo a(yc $$0, IntList $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         if ($$2 > 0) {
+            $$0.f(", ");
          }
 
-         return $$2;
-      }
-   }
-
-   public static cxg a(List<cuk> $$0) {
-      int $$1 = c($$0);
-      if ($$1 == -1) {
-         return a;
-      } else {
-         cxg $$2 = new cxg($$1 + 1);
-
-         for (int $$3 = 0; $$3 <= $$1; $$3++) {
-            $$2.f.set($$3, $$0.get($$3).s());
-         }
-
-         return $$2;
-      }
-   }
-
-   private static int c(List<cuk> $$0) {
-      for (int $$1 = $$0.size() - 1; $$1 >= 0; $$1--) {
-         if (!$$0.get($$1).e()) {
-            return $$1;
-         }
-      }
-
-      return -1;
-   }
-
-   private List<cxg.a> f() {
-      List<cxg.a> $$0 = new ArrayList<>();
-
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         cuk $$2 = this.f.get($$1);
-         if (!$$2.e()) {
-            $$0.add(new cxg.a($$1, $$2));
-         }
+         $$0.b(a($$1.getInt($$2)));
       }
 
       return $$0;
    }
 
-   public void a(jr<cuk> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         cuk $$2 = $$1 < this.f.size() ? this.f.get($$1) : cuk.l;
-         $$0.set($$1, $$2.s());
-      }
+   private static xo a(int $$0) {
+      ctg $$1 = ctg.b($$0);
+      return (xo)($$1 == null ? k : xo.c("item.minecraft.firework_star." + $$1.b()));
    }
 
-   public cuk a() {
-      return this.f.isEmpty() ? cuk.l : this.f.get(0).s();
+   public cxg a(IntList $$0) {
+      return new cxg(this.e, this.f, new IntArrayList($$0), this.h, this.i);
    }
 
-   public Stream<cuk> b() {
-      return this.f.stream().map(cuk::s);
+   public cxg.a a() {
+      return this.e;
    }
 
-   public Stream<cuk> c() {
-      return this.f.stream().filter($$0 -> !$$0.e()).map(cuk::s);
+   public IntList b() {
+      return this.f;
    }
 
-   public Iterable<cuk> d() {
-      return Iterables.filter(this.f, $$0 -> !$$0.e());
+   public IntList c() {
+      return this.g;
    }
 
-   public Iterable<cuk> e() {
-      return Iterables.transform(this.d(), cuk::s);
+   public boolean d() {
+      return this.h;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cxg $$1 && cuk.a(this.f, $$1.f)) {
-            return true;
-         }
-
-         return false;
-      }
+   public boolean e() {
+      return this.i;
    }
 
-   @Override
-   public int hashCode() {
-      return cuk.a(this.f);
-   }
+   public static enum a implements azs {
+      a(0, "small_ball"),
+      b(1, "large_ball"),
+      c(2, "star"),
+      d(3, "creeper"),
+      e(4, "burst");
 
-   static record a(int b, cuk c) {
-      public static final Codec<cxg.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(cxg.a::a), cuk.b.fieldOf("item").forGetter(cxg.a::b)).apply($$0, cxg.a::new)
-      );
+      private static final IntFunction<cxg.a> h = axo.a(cxg.a::b, values(), axo.a.a);
+      public static final zm<ByteBuf, cxg.a> f = zk.a(h, cxg.a::b);
+      public static final Codec<cxg.a> g = azs.b(cxg.a::values);
+      private final int i;
+      private final String j;
 
-      public int a() {
-         return this.b;
+      private a(final int $$0, final String $$1) {
+         this.i = $$0;
+         this.j = $$1;
       }
 
-      public cuk b() {
-         return this.c;
+      public yc a() {
+         return xo.c("item.minecraft.firework_star.shape." + this.j);
+      }
+
+      public int b() {
+         return this.i;
+      }
+
+      public static cxg.a a(int $$0) {
+         return h.apply($$0);
+      }
+
+      @Override
+      public String c() {
+         return this.j;
       }
    }
 }

@@ -1,24 +1,11 @@
-import java.util.List;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public interface duj<T> {
-   int a(T var1);
+public interface duj {
+   @Nullable
+   dui c(int var1, int var2);
 
-   boolean a(Predicate<T> var1);
-
-   T a(int var1);
-
-   void a(wl var1);
-
-   void b(wl var1);
-
-   int a();
-
-   int b();
-
-   duj<T> c();
-
-   public interface a {
-      <A> duj<A> create(int var1, jn<A> var2, duk<A> var3, List<A> var4);
+   default void a(dcf $$0, kb $$1) {
    }
+
+   dbc q();
 }

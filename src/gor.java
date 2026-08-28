@@ -1,225 +1,316 @@
 import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gor<T extends gor.a> {
-   private static final Comparator<gor.b<?>> a = Comparator.<gor.b<?>, Integer>comparing($$0 -> -$$0.c)
-      .thenComparing($$0 -> -$$0.b)
-      .thenComparing($$0 -> $$0.a.c());
-   private final int b;
-   private final List<gor.b<T>> c = new ArrayList<>();
-   private final List<gor.c<T>> d = new ArrayList<>();
-   private int e;
-   private int f;
-   private final int g;
-   private final int h;
+public class gor implements gou.a, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final ale b;
+   final int c;
+   final int d;
+   private final eyx e;
+   eyx[] f;
+   @Nullable
+   private final gor.a g;
+   private final auq h;
 
-   public gor(int $$0, int $$1, int $$2) {
-      this.b = $$2;
-      this.g = $$0;
-      this.h = $$1;
+   public gor(ale $$0, gqk $$1, eyx $$2, auq $$3) {
+      this.b = $$0;
+      this.c = $$1.a();
+      this.d = $$1.b();
+      this.h = $$3;
+      gqi $$4 = $$3.a(gqi.a).orElse(gqi.e);
+      this.g = this.a($$1, $$2.a(), $$2.b(), $$4);
+      this.e = $$2;
+      this.f = new eyx[]{this.e};
    }
 
-   public int a() {
-      return this.e;
-   }
-
-   public int b() {
-      return this.f;
-   }
-
-   public void a(T $$0) {
-      gor.b<T> $$1 = new gor.b<>($$0, this.b);
-      this.c.add($$1);
-   }
-
-   public void c() {
-      List<gor.b<T>> $$0 = new ArrayList<>(this.c);
-      $$0.sort(a);
-
-      for (gor.b<T> $$1 : $$0) {
-         if (!this.a($$1)) {
-            throw new gos($$1.a, $$0.stream().map($$0x -> $$0x.a).collect(ImmutableList.toImmutableList()));
-         }
-      }
-   }
-
-   public void a(gor.d<T> $$0) {
-      for (gor.c<T> $$1 : this.d) {
-         $$1.a($$0);
-      }
-   }
-
-   static int a(int $$0, int $$1) {
-      return ($$0 >> $$1) + (($$0 & (1 << $$1) - 1) == 0 ? 0 : 1) << $$1;
-   }
-
-   private boolean a(gor.b<T> $$0) {
-      for (gor.c<T> $$1 : this.d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
-      }
-
-      return this.b($$0);
-   }
-
-   private boolean b(gor.b<T> $$0) {
-      int $$1 = ayu.c(this.e);
-      int $$2 = ayu.c(this.f);
-      int $$3 = ayu.c(this.e + $$0.b);
-      int $$4 = ayu.c(this.f + $$0.c);
-      boolean $$5 = $$3 <= this.g;
-      boolean $$6 = $$4 <= this.h;
-      if (!$$5 && !$$6) {
-         return false;
-      } else {
-         boolean $$7 = $$5 && $$1 != $$3;
-         boolean $$8 = $$6 && $$2 != $$4;
-         boolean $$9;
-         if ($$7 ^ $$8) {
-            $$9 = $$7;
-         } else {
-            $$9 = $$5 && $$1 <= $$2;
-         }
-
-         gor.c<T> $$11;
-         if ($$9) {
-            if (this.f == 0) {
-               this.f = $$4;
+   public void a(int $$0) {
+      try {
+         this.f = gom.a(this.f, $$0);
+      } catch (Throwable var6) {
+         o $$2 = o.a(var6, "Generating mipmaps for frame");
+         p $$3 = $$2.a("Sprite being mipmapped");
+         $$3.a("First frame", () -> {
+            StringBuilder $$0x = new StringBuilder();
+            if ($$0x.length() > 0) {
+               $$0x.append(", ");
             }
 
-            $$11 = new gor.c<>(this.e, 0, $$3 - this.e, this.f);
-            this.e = $$3;
-         } else {
-            $$11 = new gor.c<>(0, this.f, this.e, $$4 - this.f);
-            this.f = $$4;
+            $$0x.append(this.e.a()).append("x").append(this.e.b());
+            return $$0x.toString();
+         });
+         p $$4 = $$2.a("Frame being iterated");
+         $$4.a("Sprite name", this.b);
+         $$4.a("Sprite size", () -> this.c + " x " + this.d);
+         $$4.a("Sprite frames", () -> this.g() + " frames");
+         $$4.a("Mipmap levels", $$0);
+         throw new y($$2);
+      }
+   }
+
+   private int g() {
+      return this.g != null ? this.g.b.size() : 1;
+   }
+
+   @Nullable
+   private gor.a a(gqk $$0, int $$1, int $$2, gqi $$3) {
+      int $$4 = $$1 / $$0.a();
+      int $$5 = $$2 / $$0.b();
+      int $$6 = $$4 * $$5;
+      List<gor.b> $$7 = new ArrayList<>();
+      $$3.a(($$1x, $$2x) -> $$7.add(new gor.b($$1x, $$2x)));
+      if ($$7.isEmpty()) {
+         for (int $$8 = 0; $$8 < $$6; $$8++) {
+            $$7.add(new gor.b($$8, $$3.a()));
+         }
+      } else {
+         int $$9 = 0;
+         IntSet $$10 = new IntOpenHashSet();
+
+         for (Iterator<gor.b> $$11 = $$7.iterator(); $$11.hasNext(); $$9++) {
+            gor.b $$12 = $$11.next();
+            boolean $$13 = true;
+            if ($$12.b <= 0) {
+               a.warn("Invalid frame duration on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.b});
+               $$13 = false;
+            }
+
+            if ($$12.a < 0 || $$12.a >= $$6) {
+               a.warn("Invalid frame index on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.a});
+               $$13 = false;
+            }
+
+            if ($$13) {
+               $$10.add($$12.a);
+            } else {
+               $$11.remove();
+            }
          }
 
-         $$11.a($$0);
-         this.d.add($$11);
-         return true;
+         int[] $$14 = IntStream.range(0, $$6).filter($$1x -> !$$10.contains($$1x)).toArray();
+         if ($$14.length > 0) {
+            a.warn("Unused frames in sprite {}: {}", this.b, Arrays.toString($$14));
+         }
+      }
+
+      return $$7.size() <= 1 ? null : new gor.a(ImmutableList.copyOf($$7), $$4, $$3.b());
+   }
+
+   void a(int $$0, int $$1, int $$2, int $$3, eyx[] $$4) {
+      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
+         $$4[$$5].a($$5, $$0 >> $$5, $$1 >> $$5, $$2 >> $$5, $$3 >> $$5, this.c >> $$5, this.d >> $$5, this.f.length > 1, false);
       }
    }
 
-   public interface a {
-      int a();
-
-      int b();
-
-      alb c();
+   @Override
+   public int a() {
+      return this.c;
    }
 
-   static record b<T extends gor.a>(T a, int b, int c) {
+   @Override
+   public int b() {
+      return this.d;
+   }
 
-      public b(T $$0, int $$1) {
-         this($$0, gor.a($$0.a(), $$1), gor.a($$0.b(), $$1));
+   @Override
+   public ale c() {
+      return this.b;
+   }
+
+   public IntStream d() {
+      return this.g != null ? this.g.b() : IntStream.of(1);
+   }
+
+   @Nullable
+   public got e() {
+      return this.g != null ? this.g.a() : null;
+   }
+
+   public auq f() {
+      return this.h;
+   }
+
+   @Override
+   public void close() {
+      for (eyx $$0 : this.f) {
+         $$0.close();
       }
    }
 
-   public static class c<T extends gor.a> {
-      private final int a;
-      private final int b;
+   @Override
+   public String toString() {
+      return "SpriteContents{name=" + this.b + ", frameCount=" + this.g() + ", height=" + this.d + ", width=" + this.c + "}";
+   }
+
+   public boolean a(int $$0, int $$1, int $$2) {
+      int $$3 = $$1;
+      int $$4 = $$2;
+      if (this.g != null) {
+         $$3 = $$1 + this.g.a($$0) * this.c;
+         $$4 = $$2 + this.g.b($$0) * this.d;
+      }
+
+      return (this.e.a($$3, $$4) >> 24 & 0xFF) == 0;
+   }
+
+   public void a(int $$0, int $$1) {
+      if (this.g != null) {
+         this.g.a($$0, $$1);
+      } else {
+         this.a($$0, $$1, 0, 0, this.f);
+      }
+   }
+
+   class a {
+      final List<gor.b> b;
       private final int c;
-      private final int d;
-      @Nullable
-      private List<gor.c<T>> e;
-      @Nullable
-      private gor.b<T> f;
+      private final boolean d;
 
-      public c(int $$0, int $$1, int $$2, int $$3) {
+      a(final List<gor.b> $$0, final int $$1, final boolean $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      int a(int $$0) {
+         return $$0 % this.c;
+      }
+
+      int b(int $$0) {
+         return $$0 / this.c;
+      }
+
+      void a(int $$0, int $$1, int $$2) {
+         int $$3 = this.a($$2) * gor.this.c;
+         int $$4 = this.b($$2) * gor.this.d;
+         gor.this.a($$0, $$1, $$3, $$4, gor.this.f);
+      }
+
+      public got a() {
+         return gor.this.new d(this, this.d ? gor.this.new c() : null);
+      }
+
+      public void a(int $$0, int $$1) {
+         this.a($$0, $$1, this.b.get(0).a);
+      }
+
+      public IntStream b() {
+         return this.b.stream().mapToInt($$0 -> $$0.a).distinct();
+      }
+   }
+
+   static class b {
+      final int a;
+      final int b;
+
+      b(int $$0, int $$1) {
          this.a = $$0;
          this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
       }
+   }
 
-      public int a() {
-         return this.a;
-      }
+   final class c implements AutoCloseable {
+      private final eyx[] b = new eyx[gor.this.f.length];
 
-      public int b() {
-         return this.b;
-      }
-
-      public boolean a(gor.b<T> $$0) {
-         if (this.f != null) {
-            return false;
-         } else {
-            int $$1 = $$0.b;
-            int $$2 = $$0.c;
-            if ($$1 <= this.c && $$2 <= this.d) {
-               if ($$1 == this.c && $$2 == this.d) {
-                  this.f = $$0;
-                  return true;
-               } else {
-                  if (this.e == null) {
-                     this.e = new ArrayList<>(1);
-                     this.e.add(new gor.c<>(this.a, this.b, $$1, $$2));
-                     int $$3 = this.c - $$1;
-                     int $$4 = this.d - $$2;
-                     if ($$4 > 0 && $$3 > 0) {
-                        int $$5 = Math.max(this.d, $$3);
-                        int $$6 = Math.max(this.c, $$4);
-                        if ($$5 >= $$6) {
-                           this.e.add(new gor.c<>(this.a, this.b + $$2, $$1, $$4));
-                           this.e.add(new gor.c<>(this.a + $$1, this.b, $$3, this.d));
-                        } else {
-                           this.e.add(new gor.c<>(this.a + $$1, this.b, $$3, $$2));
-                           this.e.add(new gor.c<>(this.a, this.b + $$2, this.c, $$4));
-                        }
-                     } else if ($$3 == 0) {
-                        this.e.add(new gor.c<>(this.a, this.b + $$2, $$1, $$4));
-                     } else if ($$4 == 0) {
-                        this.e.add(new gor.c<>(this.a + $$1, this.b, $$3, $$2));
-                     }
-                  }
-
-                  for (gor.c<T> $$7 : this.e) {
-                     if ($$7.a($$0)) {
-                        return true;
-                     }
-                  }
-
-                  return false;
-               }
-            } else {
-               return false;
-            }
+      c() {
+         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
+            int $$1 = gor.this.c >> $$0;
+            int $$2 = gor.this.d >> $$0;
+            this.b[$$0] = new eyx($$1, $$2, false);
          }
       }
 
-      public void a(gor.d<T> $$0) {
-         if (this.f != null) {
-            $$0.load(this.f.a, this.a(), this.b());
-         } else if (this.e != null) {
-            for (gor.c<T> $$1 : this.e) {
-               $$1.a($$0);
+      void a(int $$0, int $$1, gor.d $$2) {
+         gor.a $$3 = $$2.c;
+         List<gor.b> $$4 = $$3.b;
+         gor.b $$5 = $$4.get($$2.a);
+         double $$6 = 1.0 - (double)$$2.b / (double)$$5.b;
+         int $$7 = $$5.a;
+         int $$8 = $$4.get(($$2.a + 1) % $$4.size()).a;
+         if ($$7 != $$8) {
+            for (int $$9 = 0; $$9 < this.b.length; $$9++) {
+               int $$10 = gor.this.c >> $$9;
+               int $$11 = gor.this.d >> $$9;
+
+               for (int $$12 = 0; $$12 < $$11; $$12++) {
+                  for (int $$13 = 0; $$13 < $$10; $$13++) {
+                     int $$14 = this.a($$3, $$7, $$9, $$13, $$12);
+                     int $$15 = this.a($$3, $$8, $$9, $$13, $$12);
+                     int $$16 = this.a($$6, $$14 >> 16 & 0xFF, $$15 >> 16 & 0xFF);
+                     int $$17 = this.a($$6, $$14 >> 8 & 0xFF, $$15 >> 8 & 0xFF);
+                     int $$18 = this.a($$6, $$14 & 0xFF, $$15 & 0xFF);
+                     this.b[$$9].a($$13, $$12, $$14 & 0xFF000000 | $$16 << 16 | $$17 << 8 | $$18);
+                  }
+               }
+            }
+
+            gor.this.a($$0, $$1, 0, 0, this.b);
+         }
+      }
+
+      private int a(gor.a $$0, int $$1, int $$2, int $$3, int $$4) {
+         return gor.this.f[$$2].a($$3 + ($$0.a($$1) * gor.this.c >> $$2), $$4 + ($$0.b($$1) * gor.this.d >> $$2));
+      }
+
+      private int a(double $$0, int $$1, int $$2) {
+         return (int)($$0 * (double)$$1 + (1.0 - $$0) * (double)$$2);
+      }
+
+      @Override
+      public void close() {
+         for (eyx $$0 : this.b) {
+            $$0.close();
+         }
+      }
+   }
+
+   class d implements got {
+      int a;
+      int b;
+      final gor.a c;
+      @Nullable
+      private final gor.c d;
+
+      d(final gor.a $$0, @Nullable final gor.c $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      @Override
+      public void a(int $$0, int $$1) {
+         this.b++;
+         gor.b $$2 = this.c.b.get(this.a);
+         if (this.b >= $$2.b) {
+            int $$3 = $$2.a;
+            this.a = (this.a + 1) % this.c.b.size();
+            this.b = 0;
+            int $$4 = this.c.b.get(this.a).a;
+            if ($$3 != $$4) {
+               this.c.a($$0, $$1, $$4);
+            }
+         } else if (this.d != null) {
+            if (!RenderSystem.isOnRenderThread()) {
+               RenderSystem.recordRenderCall(() -> this.d.a($$0, $$1, this));
+            } else {
+               this.d.a($$0, $$1, this);
             }
          }
       }
 
       @Override
-      public String toString() {
-         return "Slot{originX="
-            + this.a
-            + ", originY="
-            + this.b
-            + ", width="
-            + this.c
-            + ", height="
-            + this.d
-            + ", texture="
-            + this.f
-            + ", subSlots="
-            + this.e
-            + "}";
+      public void close() {
+         if (this.d != null) {
+            this.d.close();
+         }
       }
-   }
-
-   public interface d<T extends gor.a> {
-      void load(T var1, int var2, int var3);
    }
 }

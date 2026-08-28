@@ -1,27 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bwl {
-   private static final int a = 1;
+public class bwl extends bvg<cmi> {
+   private final float c;
 
-   public static bve<btk> a(float $$0) {
-      return byq.a(
-         (Function<byq.b<btk>, ? extends App<byq.c<btk>, byt<btk>>>)($$1 -> $$1.group($$1.a(cco.n), $$1.c(cco.m), $$1.b(cco.s))
-               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$6.bR()) {
-                        return false;
-                     } else {
-                        bsp $$8 = $$1.b($$4);
-                        if ($$8.a($$6, 1.0)) {
-                           $$6.n($$8);
-                        } else {
-                           $$2.a(new bvo($$8, true));
-                           $$3.a(new ccr(new bvo($$8, false), $$0, 1));
-                        }
+   public bwl(float $$0) {
+      super(ImmutableMap.of(ccr.m, ccs.c, ccr.n, ccs.c), Integer.MAX_VALUE);
+      this.c = $$0;
+   }
 
-                        return true;
-                     }
-                  }))
-      );
+   protected boolean a(are $$0, cmi $$1) {
+      cmv $$2 = $$1.gq();
+      return $$1.bD() && $$2 != null && !$$1.be() && !$$1.U && $$1.g($$2) <= 16.0 && $$2.cb != null;
+   }
+
+   protected boolean a(are $$0, cmi $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(are $$0, cmi $$1, long $$2) {
+      this.a($$1);
+   }
+
+   protected void c(are $$0, cmi $$1, long $$2) {
+      bup<?> $$3 = $$1.dS();
+      $$3.b(ccr.m);
+      $$3.b(ccr.n);
+   }
+
+   protected void d(are $$0, cmi $$1, long $$2) {
+      this.a($$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   private void a(cmi $$0) {
+      bup<?> $$1 = $$0.dS();
+      $$1.a(ccr.m, new ccu(new bvr($$0.gq(), false), this.c, 2));
+      $$1.a(ccr.n, new bvr($$0.gq(), true));
    }
 }

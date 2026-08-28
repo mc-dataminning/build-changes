@@ -1,26 +1,16 @@
-public record abb(long c, iz d) implements aat {
-   public static final zj<wl, abb> a = aat.a(abb::a, abb::new);
-   public static final aat.b<abb> b = aat.a("debug/neighbors_update");
+public record abb() implements aaw {
+   public static final zm<wl, abb> a = aaw.a(abb::a, abb::new);
+   public static final aaw.b<abb> b = aaw.a("debug/game_test_clear");
 
    private abb(wl $$0) {
-      this($$0.m(), $$0.e());
+      this();
    }
 
    private void a(wl $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
    }
 
    @Override
-   public aat.b<abb> a() {
+   public aaw.b<abb> a() {
       return b;
-   }
-
-   public long b() {
-      return this.c;
-   }
-
-   public iz c() {
-      return this.d;
    }
 }

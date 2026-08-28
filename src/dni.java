@@ -1,39 +1,61 @@
 import com.mojang.serialization.MapCodec;
 
-public class dni extends dfx {
-   public static final MapCodec<dni> n = b(dni::new);
+public class dni extends dgs {
+   public static final MapCodec<dni> a = b(dni::new);
+   public static final int b = 2;
+   public static final dta c = dsq.aq;
+   private static final float g = 3.0F;
+   private static final ewi[] h = new ewi[]{dex.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), dex.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)};
+   private static final int i = 1;
 
    @Override
    public MapCodec<dni> a() {
-      return n;
+      return a;
    }
 
-   public dni(drw.d $$0) {
-      super($$0, () -> dpe.c);
-   }
-
-   @Override
-   public dpc a(iz $$0, drx $$1) {
-      return new dqv($$0, $$1);
+   public dni(drz.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected awd<alb> c() {
-      return awg.i.b(awg.ai);
+   protected void a(dsb.a<dex, dsa> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected boolean e_(drx $$0) {
-      return true;
+   public ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
+      return h[this.g($$0)];
    }
 
    @Override
-   protected int a(drx $$0, daz $$1, iz $$2, je $$3) {
-      return ayu.a(dpj.a($$1, $$2), 0, 15);
+   protected dta b() {
+      return c;
    }
 
    @Override
-   protected int b(drx $$0, daz $$1, iz $$2, je $$3) {
-      return $$3 == je.b ? $$0.b($$1, $$2, $$3) : 0;
+   public int c() {
+      return 2;
+   }
+
+   @Override
+   protected dbv d() {
+      return cuq.vi;
+   }
+
+   @Override
+   public dsa b(int $$0) {
+      return $$0 == 2 ? dez.bS.o() : super.b($$0);
+   }
+
+   @Override
+   public void b(dsa $$0, are $$1, iz $$2, azf $$3) {
+      if ($$3.a(3) != 0) {
+         super.b($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   protected int a(dbw $$0) {
+      return 1;
    }
 }

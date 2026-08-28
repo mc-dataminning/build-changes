@@ -1,48 +1,61 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.List;
 
 public class apd {
-   private static final yi a = yi.a.a(new xr(xr.a.a, xl.c("chat.type.team.hover"))).a(new xj(xj.a.d, "/teammsg "));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("commands.teammsg.failed.noteam"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xo.c("commands.summon.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xo.c("commands.summon.failed.uuid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xo.c("commands.summon.invalidPosition"));
 
-   public static void a(CommandDispatcher<ep> $$0) {
-      LiteralCommandNode<ep> $$1 = $$0.register((LiteralArgumentBuilder)eq.a("teammsg").then(eq.a("message", fg.a()).executes($$0x -> {
-         ep $$1x = (ep)$$0x.getSource();
-         bsp $$2 = $$1x.g();
-         ewl $$3 = $$2.cj();
-         if ($$3 == null) {
-            throw b.create();
-         } else {
-            List<arc> $$4 = $$1x.l().ah().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cj() == $$3).toList();
-            if (!$$4.isEmpty()) {
-               fg.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
-            }
-
-            return $$4.size();
-         }
-      })));
-      $$0.register((LiteralArgumentBuilder)eq.a("tm").redirect($$1));
+   public static void a(CommandDispatcher<ep> $$0, el $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("summon").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)eq.a("entity", fo.a($$1, lq.v))
+                     .suggests(io.d)
+                     .executes($$0x -> b((ep)$$0x.getSource(), fo.e($$0x, "entity"), ((ep)$$0x.getSource()).d(), new ur(), true)))
+                  .then(
+                     ((RequiredArgumentBuilder)eq.a("pos", gs.a())
+                           .executes($$0x -> b((ep)$$0x.getSource(), fo.e($$0x, "entity"), gs.a($$0x, "pos"), new ur(), true)))
+                        .then(eq.a("nbt", ez.a()).executes($$0x -> b((ep)$$0x.getSource(), fo.e($$0x, "entity"), gs.a($$0x, "pos"), ez.a($$0x, "nbt"), false)))
+                  )
+            )
+      );
    }
 
-   private static void a(ep $$0, bsp $$1, ewl $$2, List<arc> $$3, yb $$4) {
-      xl $$5 = $$2.d().c(a);
-      xh.a $$6 = xh.a(xh.g, $$0).c($$5);
-      xh.a $$7 = xh.a(xh.h, $$0).c($$5);
-      ya $$8 = ya.a($$4);
-      boolean $$9 = false;
+   public static bss a(ep $$0, ji.c<bsy<?>> $$1, evp $$2, ur $$3, boolean $$4) throws CommandSyntaxException {
+      iz $$5 = iz.a($$2);
+      if (!dbw.l($$5)) {
+         throw c.create();
+      } else {
+         ur $$6 = $$3.h();
+         $$6.a("id", $$1.h().a().toString());
+         are $$7 = $$0.e();
+         bss $$8 = bsy.a($$6, $$7, $$1x -> {
+            $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dF(), $$1x.dH());
+            return $$1x;
+         });
+         if ($$8 == null) {
+            throw a.create();
+         } else {
+            if ($$4 && $$8 instanceof btp) {
+               ((btp)$$8).a($$0.e(), $$0.e().d_($$8.dp()), btr.n, null);
+            }
 
-      for (arc $$10 : $$3) {
-         xh.a $$11 = $$10 == $$1 ? $$7 : $$6;
-         boolean $$12 = $$0.a($$10);
-         $$10.a($$8, $$12, $$11);
-         $$9 |= $$12 && $$4.j();
+            if (!$$7.e($$8)) {
+               throw b.create();
+            } else {
+               return $$8;
+            }
+         }
       }
+   }
 
-      if ($$9) {
-         $$0.a(auz.e);
-      }
+   private static int b(ep $$0, ji.c<bsy<?>> $$1, evp $$2, ur $$3, boolean $$4) throws CommandSyntaxException {
+      bss $$5 = a($$0, $$1, $$2, $$3, $$4);
+      $$0.a(() -> xo.a("commands.summon.success", $$5.O_()), true);
+      return 1;
    }
 }

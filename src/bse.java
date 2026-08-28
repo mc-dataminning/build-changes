@@ -1,14 +1,20 @@
-class bse extends bru {
-   protected bse(brw $$0, int $$1) {
+class bse extends bry {
+   protected bse(brz $$0, int $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public boolean a(btk $$0, int $$1) {
-      if (!$$0.dP().B && $$0 instanceof cms $$2) {
-         $$2.gm().a($$1 + 1, 1.0F);
+   public boolean a(btn $$0, int $$1) {
+      if ($$0.eA() > 1.0F) {
+         $$0.a($$0.dQ().o(), 1.0F);
       }
 
       return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      int $$2 = 25 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
    }
 }

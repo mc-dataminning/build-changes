@@ -1,84 +1,95 @@
-public class djg {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1003;
-   public static final int e = 1004;
-   public static final int f = 1009;
-   public static final int g = 1010;
-   public static final int h = 1011;
-   public static final int i = 1015;
-   public static final int j = 1016;
-   public static final int k = 1017;
-   public static final int l = 1018;
-   public static final int m = 1019;
-   public static final int n = 1020;
-   public static final int o = 1021;
-   public static final int p = 1022;
-   public static final int q = 1023;
-   public static final int r = 1024;
-   public static final int s = 1025;
-   public static final int t = 1026;
-   public static final int u = 1027;
-   public static final int v = 1028;
-   public static final int w = 1029;
-   public static final int x = 1030;
-   public static final int y = 1031;
-   public static final int z = 1032;
-   public static final int A = 1033;
-   public static final int B = 1034;
-   public static final int C = 1035;
-   public static final int D = 1038;
-   public static final int E = 1039;
-   public static final int F = 1040;
-   public static final int G = 1041;
-   public static final int H = 1042;
-   public static final int I = 1043;
-   public static final int J = 1044;
-   public static final int K = 1045;
-   public static final int L = 1046;
-   public static final int M = 1047;
-   public static final int N = 1048;
-   public static final int O = 1049;
-   public static final int P = 1050;
-   public static final int Q = 1500;
-   public static final int R = 1501;
-   public static final int S = 1502;
-   public static final int T = 1503;
-   public static final int U = 1504;
-   public static final int V = 1505;
-   public static final int W = 2000;
-   public static final int X = 2001;
-   public static final int Y = 2002;
-   public static final int Z = 2003;
-   public static final int aa = 2004;
-   public static final int ab = 2006;
-   public static final int ac = 2007;
-   public static final int ad = 2008;
-   public static final int ae = 2009;
-   public static final int af = 2010;
-   public static final int ag = 2011;
-   public static final int ah = 2012;
-   public static final int ai = 2013;
-   public static final int aj = 3000;
-   public static final int ak = 3001;
-   public static final int al = 3002;
-   public static final int am = 3003;
-   public static final int an = 3004;
-   public static final int ao = 3005;
-   public static final int ap = 3006;
-   public static final int aq = 3007;
-   public static final int ar = 3008;
-   public static final int as = 3009;
-   public static final int at = 3011;
-   public static final int au = 3012;
-   public static final int av = 3013;
-   public static final int aw = 3014;
-   public static final int ax = 3015;
-   public static final int ay = 3016;
-   public static final int az = 3017;
-   public static final int aA = 3018;
-   public static final int aB = 3019;
-   public static final int aC = 3020;
-   public static final int aD = 3021;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public class djg extends ddq {
+   public static final MapCodec<djg> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dcv.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), kf.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), u())
+            .apply($$0, djg::new)
+   );
+   public static final int e = 1;
+   public static final int f = 3;
+   public static final dta g = dsq.aK;
+   private static final int h = 6;
+   private static final double i = 3.0;
+   private final dcv.c j;
+
+   @Override
+   public MapCodec<djg> a() {
+      return d;
+   }
+
+   public djg(dcv.c $$0, kf.a $$1, drz.d $$2) {
+      super($$2, $$1);
+      this.j = $$0;
+      this.k(this.E.b().a(g, Integer.valueOf(1)));
+   }
+
+   @Override
+   public boolean d(dsa $$0) {
+      return $$0.c(g) == 3;
+   }
+
+   @Override
+   protected boolean a(ens $$0) {
+      return $$0 == enu.c && this.j == dcv.c.b;
+   }
+
+   @Override
+   protected double b(dsa $$0) {
+      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
+   }
+
+   @Override
+   protected void a(dsa $$0, dbw $$1, iz $$2, bss $$3) {
+      if (!$$1.B && $$3.bQ() && this.a($$0, $$2, $$3)) {
+         $$3.aC();
+         if ($$3.a($$1, $$2)) {
+            this.e($$0, $$1, $$2);
+         }
+      }
+   }
+
+   private void e(dsa $$0, dbw $$1, iz $$2) {
+      if (this.j == dcv.c.c) {
+         d(dez.fu.o().a(g, $$0.c(g)), $$1, $$2);
+      } else {
+         d($$0, $$1, $$2);
+      }
+   }
+
+   public static void d(dsa $$0, dbw $$1, iz $$2) {
+      int $$3 = $$0.c(g) - 1;
+      dsa $$4 = $$3 == 0 ? dez.ft.o() : $$0.a(g, Integer.valueOf($$3));
+      $$1.b($$2, $$4);
+      $$1.a(dwt.c, $$2, dwt.a.a($$4));
+   }
+
+   @Override
+   public void a(dsa $$0, dbw $$1, iz $$2, dcv.c $$3) {
+      if (dfs.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
+         dsa $$4 = $$0.a(g);
+         $$1.b($$2, $$4);
+         $$1.a(dwt.c, $$2, dwt.a.a($$4));
+      }
+   }
+
+   @Override
+   protected int a(dsa $$0, dbw $$1, iz $$2) {
+      return $$0.c(g);
+   }
+
+   @Override
+   protected void a(dsb.a<dex, dsa> $$0) {
+      $$0.a(g);
+   }
+
+   @Override
+   protected void a(dsa $$0, dbw $$1, iz $$2, ens $$3) {
+      if (!this.d($$0)) {
+         dsa $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
+         $$1.b($$2, $$4);
+         $$1.a(dwt.c, $$2, dwt.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      }
+   }
 }

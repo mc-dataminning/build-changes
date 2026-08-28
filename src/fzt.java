@@ -1,49 +1,25 @@
-public class fzt extends gbx {
-   fzt(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+public class fzt extends gca {
+   fzt(fxt $$0, double $$1, double $$2, double $$3, dsa $$4) {
       super($$0, $$1, $$2, $$3);
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.a(ffd.Q().ao().a().a($$4));
+      this.u = 0.0F;
+      this.t = 80;
+      this.n = false;
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k += 0.002;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.85F;
-         this.k *= 0.85F;
-         this.l *= 0.85F;
-         if (!this.c.b_(iz.a(this.g, this.h, this.i)).a(awr.a)) {
-            this.k();
-         }
-      }
+   public gbe b() {
+      return gbe.a;
    }
 
    @Override
-   public gbb b() {
-      return gbb.b;
+   public float b(float $$0) {
+      return 0.5F;
    }
 
-   public static class a implements gba<lm> {
-      private final gbs a;
-
-      public a(gbs $$0) {
-         this.a = $$0;
-      }
-
-      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzt $$8 = new fzt($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+   public static class a implements gbd<la> {
+      public gba a(la $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fzt($$1, $$2, $$3, $$4, $$0.b());
       }
    }
 }

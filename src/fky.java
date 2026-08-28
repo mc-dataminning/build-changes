@@ -1,88 +1,19 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
 
-public class fky {
-   int a;
-   final Map<fky.a, fky.b> b = Maps.newTreeMap(Comparator.<fky.a, fku>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
-
-   public void a(Consumer<fkv> $$0) {
-      this.a++;
-      $$0.accept(new fky.c(0));
+public interface fky {
+   default void a(fkx $$0, xo $$1) {
+      this.a($$0, fla.a($$1.getString()));
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean b = true;
-
-         public void a(String $$0) {
-            if (!this.b) {
-               $$1.append(". ");
-            }
-
-            this.b = false;
-            $$1.append($$0);
-         }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
-         }
-      });
-      return $$1.toString();
+   default void a(fkx $$0, String $$1) {
+      this.a($$0, fla.a($$1));
    }
 
-   static class a {
-      final fku a;
-      final int b;
-
-      a(fku $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   default void a(fkx $$0, xo... $$1) {
+      this.a($$0, fla.a(ImmutableList.copyOf($$1)));
    }
 
-   static class b {
-      fkx<?> a;
-      int b;
-      boolean c;
+   void a(fkx var1, fla<?> var2);
 
-      b() {
-         this.a = fkx.a;
-         this.b = -1;
-      }
-
-      public fky.b a(int $$0, fkx<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
-         }
-
-         this.b = $$0;
-         return this;
-      }
-   }
-
-   class c implements fkv {
-      private final int b;
-
-      c(final int $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(fku $$0, fkx<?> $$1) {
-         fky.this.b.computeIfAbsent(new fky.a($$0, this.b), $$0x -> new fky.b()).a(fky.this.a, $$1);
-      }
-
-      @Override
-      public fkv a() {
-         return fky.this.new c(this.b + 1);
-      }
-   }
+   fky a();
 }

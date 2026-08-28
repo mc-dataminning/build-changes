@@ -1,61 +1,140 @@
-public class enn extends enp {
-   @Override
-   public cuf a() {
-      return cun.a;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+
+public class enn extends enh<enn.a> {
+   protected enn(duj $$0) {
+      super(dcf.a, $$0, new enn.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
    }
 
    @Override
-   public boolean a(enq $$0, daz $$1, iz $$2, enp $$3, je $$4) {
-      return true;
+   protected int a(long $$0) {
+      return this.e($$0, false);
+   }
+
+   protected int e(long $$0, boolean $$1) {
+      long $$2 = kb.e($$0);
+      int $$3 = kb.c($$2);
+      enn.a $$4 = $$1 ? this.d : this.c;
+      int $$5 = $$4.c.get(kb.f($$2));
+      if ($$5 != $$4.b && $$3 < $$5) {
+         dub $$6 = this.a($$4, $$2);
+         if ($$6 == null) {
+            for ($$0 = iz.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
+               if (++$$3 >= $$5) {
+                  return 15;
+               }
+
+               $$2 = kb.a($$2, je.b);
+            }
+         }
+
+         return $$6.a(kb.b(iz.a($$0)), kb.b(iz.b($$0)), kb.b(iz.c($$0)));
+      } else {
+         return $$1 && !this.j($$2) ? 0 : 15;
+      }
    }
 
    @Override
-   public evm a(daz $$0, iz $$1, enq $$2) {
-      return evm.b;
+   protected void h(long $$0) {
+      int $$1 = kb.c($$0);
+      if (this.d.b > $$1) {
+         this.d.b = $$1;
+         this.d.c.defaultReturnValue(this.d.b);
+      }
+
+      long $$2 = kb.f($$0);
+      int $$3 = this.d.c.get($$2);
+      if ($$3 < $$1 + 1) {
+         this.d.c.put($$2, $$1 + 1);
+      }
    }
 
    @Override
-   public int a(dbw $$0) {
-      return 0;
+   protected void i(long $$0) {
+      long $$1 = kb.f($$0);
+      int $$2 = kb.c($$0);
+      if (this.d.c.get($$1) == $$2 + 1) {
+         long $$3;
+         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = kb.a($$3, je.a)) {
+            $$2--;
+         }
+
+         if (this.b($$3)) {
+            this.d.c.put($$1, $$2 + 1);
+         } else {
+            this.d.c.remove($$1);
+         }
+      }
    }
 
    @Override
-   protected boolean b() {
-      return true;
+   protected dub g(long $$0) {
+      dub $$1 = (dub)this.g.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         int $$2 = this.d.c.get(kb.f($$0));
+         if ($$2 != this.d.b && kb.c($$0) < $$2) {
+            long $$3 = kb.a($$0, je.b);
+
+            dub $$4;
+            while (($$4 = this.a($$3, true)) == null) {
+               $$3 = kb.a($$3, je.b);
+            }
+
+            return a($$4);
+         } else {
+            return this.j($$0) ? new dub(15) : new dub();
+         }
+      }
    }
 
-   @Override
-   protected float c() {
-      return 0.0F;
+   private static dub a(dub $$0) {
+      if ($$0.c()) {
+         return $$0.b();
+      } else {
+         byte[] $$1 = $$0.a();
+         byte[] $$2 = new byte[2048];
+
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+         }
+
+         return new dub($$2);
+      }
    }
 
-   @Override
-   public float a(enq $$0, daz $$1, iz $$2) {
-      return 0.0F;
+   protected boolean a(int $$0) {
+      return $$0 >= this.d.b;
    }
 
-   @Override
-   public float a(enq $$0) {
-      return 0.0F;
+   protected boolean l(long $$0) {
+      long $$1 = kb.f($$0);
+      int $$2 = this.d.c.get($$1);
+      return $$2 == this.d.b || kb.c($$0) >= $$2;
    }
 
-   @Override
-   protected drx b(enq $$0) {
-      return dew.a.n();
+   protected int m(long $$0) {
+      return this.d.c.get($$0);
    }
 
-   @Override
-   public boolean c(enq $$0) {
-      return false;
+   protected int c() {
+      return this.d.b;
    }
 
-   @Override
-   public int d(enq $$0) {
-      return 0;
-   }
+   protected static final class a extends ene<enn.a> {
+      int b;
+      final Long2IntOpenHashMap c;
 
-   @Override
-   public ewf b(enq $$0, daz $$1, iz $$2) {
-      return ewc.a();
+      public a(Long2ObjectOpenHashMap<dub> $$0, Long2IntOpenHashMap $$1, int $$2) {
+         super($$0);
+         this.c = $$1;
+         $$1.defaultReturnValue($$2);
+         this.b = $$2;
+      }
+
+      public enn.a a() {
+         return new enn.a(this.a.clone(), this.c.clone(), this.b);
+      }
    }
 }

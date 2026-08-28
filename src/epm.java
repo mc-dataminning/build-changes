@@ -1,22 +1,30 @@
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.SignStyle;
-import java.time.temporal.ChronoField;
-
 public class epm {
-   public static DateTimeFormatter a() {
-      return new DateTimeFormatterBuilder()
-         .appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
-         .appendLiteral('-')
-         .appendValue(ChronoField.MONTH_OF_YEAR, 2)
-         .appendLiteral('-')
-         .appendValue(ChronoField.DAY_OF_MONTH, 2)
-         .appendLiteral('_')
-         .appendValue(ChronoField.HOUR_OF_DAY, 2)
-         .appendLiteral('-')
-         .appendValue(ChronoField.MINUTE_OF_HOUR, 2)
-         .appendLiteral('-')
-         .appendValue(ChronoField.SECOND_OF_MINUTE, 2)
-         .toFormatter();
+   private final int b;
+   private final String c;
+   public static String a = "main";
+
+   public epm(int $$0) {
+      this($$0, a);
+   }
+
+   public epm(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public boolean a() {
+      return !this.c.equals(a);
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.b;
+   }
+
+   public boolean a(epm $$0) {
+      return this.b().equals($$0.b());
    }
 }

@@ -1,4 +1,4 @@
-// 1.20.5 Pre-Release 1	2026-08-28T01:59:51.5807019	vanilla/Tags for minecraft:block
+// 1.20.5 Pre-Release 2	2026-08-28T02:02:50.95784	vanilla/Tags for minecraft:block
 882f7161808179f92ed953b9200fdaf74eec6c36 data\minecraft\tags\blocks\infiniburn_overworld.json
 84150f9be2fa26f9202962b031c722718dd23ca0 data\minecraft\tags\blocks\stone_ore_replaceables.json
 60f661a9b26b7f6b1910e5390a40644354fe0919 data\minecraft\tags\blocks\frogs_spawnable_on.json
@@ -24,8 +24,8 @@ af12451a6897e7ada9cfb050679665ae3017838e data\minecraft\tags\blocks\corals.json
 aeaa445db335760020004d563a198676fdad5ddf data\minecraft\tags\blocks\guarded_by_piglins.json
 4bee09ae134c8c7e450e996a5b9a9bcc4d7e7420 data\minecraft\tags\blocks\moss_replaceable.json
 9d786349359c04ae72a7f261654b6b4fa33d425e data\minecraft\tags\blocks\snow_layer_cannot_survive_on.json
-d795677dfa226e3d5f7f602fd7e9d9e7a55ee61b data\minecraft\tags\blocks\small_flowers.json
 daec9f32b34c685d972f66ea58ffc7ef3fc977a5 data\minecraft\tags\blocks\wooden_fences.json
+d795677dfa226e3d5f7f602fd7e9d9e7a55ee61b data\minecraft\tags\blocks\small_flowers.json
 5b64c6e3c9cd3170bab9758491e742e0307d6617 data\minecraft\tags\blocks\deepslate_ore_replaceables.json
 71180030d3ebe73ed7aa07473fb200e0aa359909 data\minecraft\tags\blocks\candles.json
 62b3c476ebacc9707c4f2ddcc513e14294fd1988 data\minecraft\tags\blocks\needs_iron_tool.json
@@ -48,8 +48,8 @@ d89ad094b9c42adca9e4e2addfcde9c9e6b76c08 data\minecraft\tags\blocks\bamboo_plant
 31c793313c9b85d3bd3d53198d21098ea2adaf78 data\minecraft\tags\blocks\camel_sand_step_sound_blocks.json
 a5350542ad1610ab7b06a994e138612b780495e3 data\minecraft\tags\blocks\base_stone_nether.json
 51d8bf3885db56e8d2baea74147e7db3db031d51 data\minecraft\tags\blocks\maintains_farmland.json
-e85d473045cf55c6f706798af73a74b69875c186 data\minecraft\tags\blocks\smelts_to_glass.json
 45aac43b276cae0f4b4ca7dccad68ee2cf4f1ca9 data\minecraft\tags\blocks\sand.json
+e85d473045cf55c6f706798af73a74b69875c186 data\minecraft\tags\blocks\smelts_to_glass.json
 47430d117fba512dfb622420bab8681888a6f36b data\minecraft\tags\blocks\sniffer_diggable_block.json
 dcfcde0b3716705215c339c3ed7bb1fe6da2cdb2 data\minecraft\tags\blocks\vibration_resonators.json
 2f6f453e3ae95b8921ba5b843b704a77117e01a7 data\minecraft\tags\blocks\climbable.json

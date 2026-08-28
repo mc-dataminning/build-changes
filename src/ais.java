@@ -1,26 +1,37 @@
-public enum ais {
-   a,
-   b,
-   c;
+public class ais implements zv<agv> {
+   public static final zm<wl, ais> a = zv.a(ais::a, ais::new);
+   private final bqr b;
+   private final int c;
 
-   private static final int d = 1;
-   private static final int e = 2;
-   private static final int f = 3;
-
-   public static ais a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         case 3 -> c;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   public ais(bqr $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-         case c -> 3;
-      };
+   private ais(wl $$0) {
+      this.b = $$0.b(bqr.class);
+      this.c = $$0.l();
+   }
+
+   private void a(wl $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+   }
+
+   @Override
+   public zx<ais> a() {
+      return agt.cd;
+   }
+
+   public void a(agv $$0) {
+      $$0.a(this);
+   }
+
+   public bqr b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

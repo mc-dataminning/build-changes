@@ -1,29 +1,20 @@
-public record adn(int b, float c) implements zs<ace> {
-   public static final zj<wl, adn> a = zs.a(adn::a, adn::new);
-
-   public adn(btk $$0) {
-      this($$0.al(), $$0.eJ());
-   }
+public record adn(dbd b) implements zv<ach> {
+   public static final zm<wl, adn> a = zv.a(adn::a, adn::new);
 
    private adn(wl $$0) {
-      this($$0.l(), $$0.readFloat());
+      this($$0.f());
    }
 
    private void a(wl $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+      $$0.a(this.b);
    }
 
    @Override
-   public zu<adn> a() {
-      return agq.I;
+   public zx<adn> a() {
+      return agt.F;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
-   }
-
-   public float e() {
-      return this.c;
    }
 }

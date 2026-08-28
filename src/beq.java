@@ -1,34 +1,37 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.function.Function;
 
 public abstract class beq extends DataFix {
    private final String a;
-   private final String b;
-   private final String c;
 
-   public beq(Schema $$0, String $$1, String $$2) {
-      this($$0, $$1, $$2, $$2);
-   }
-
-   public beq(Schema $$0, String $$1, String $$2, String $$3) {
+   public beq(Schema $$0, String $$1) {
       super($$0, false);
       this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
    }
 
-   public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgs.t);
-      OpticFinder<?> $$1 = $$0.findField("components");
-      return this.fixTypeEverywhereTyped(
-         this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.renameAndFixField(this.b, this.c, this::a)))
-      );
+   public TypeRewriteRule makeRule() {
+      Type<Pair<String, String>> $$0 = DSL.named(bgv.D.typeName(), big.a());
+      if (!Objects.equals(this.getInputSchema().getType(bgv.D), $$0)) {
+         throw new IllegalStateException("item name type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+      }
    }
 
-   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
+   protected abstract String a(String var1);
+
+   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
+      return new beq($$0, $$1) {
+         @Override
+         protected String a(String $$0) {
+            return $$2.apply($$0);
+         }
+      };
+   }
 }

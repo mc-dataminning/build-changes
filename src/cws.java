@@ -1,54 +1,46 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
 
-public class cws {
-   public static final ala<cwr> a = a("sentry");
-   public static final ala<cwr> b = a("dune");
-   public static final ala<cwr> c = a("coast");
-   public static final ala<cwr> d = a("wild");
-   public static final ala<cwr> e = a("ward");
-   public static final ala<cwr> f = a("eye");
-   public static final ala<cwr> g = a("vex");
-   public static final ala<cwr> h = a("tide");
-   public static final ala<cwr> i = a("snout");
-   public static final ala<cwr> j = a("rib");
-   public static final ala<cwr> k = a("spire");
-   public static final ala<cwr> l = a("wayfinder");
-   public static final ala<cwr> m = a("shaper");
-   public static final ala<cwr> n = a("silence");
-   public static final ala<cwr> o = a("raiser");
-   public static final ala<cwr> p = a("host");
-   public static final ala<cwr> q = a("flow");
-   public static final ala<cwr> r = a("bolt");
+public record cws(String e, ji<cui> f, float g, Map<ji<csd>, String> h, xo i) {
+   public static final Codec<cws> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayf.A.fieldOf("asset_name").forGetter(cws::a),
+               alb.a(lq.G).fieldOf("ingredient").forGetter(cws::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(cws::c),
+               Codec.unboundedMap(csd.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cws::d),
+               xq.a.fieldOf("description").forGetter(cws::e)
+            )
+            .apply($$0, cws::new)
+   );
+   public static final zm<wz, cws> b = zm.a(
+      zk.l, cws::a, zk.b(lq.G), cws::b, zk.i, cws::c, zk.a(Object2ObjectOpenHashMap::new, zk.b(lq.au), zk.l), cws::d, xq.b, cws::e, cws::new
+   );
+   public static final Codec<ji<cws>> c = ala.a(lq.aO, a);
+   public static final zm<wz, ji<cws>> d = zk.a(lq.aO, b);
 
-   public static void a(rc<cwr> $$0) {
-      a($$0, cun.xt, a);
-      a($$0, cun.xu, b);
-      a($$0, cun.xv, c);
-      a($$0, cun.xw, d);
-      a($$0, cun.xx, e);
-      a($$0, cun.xy, f);
-      a($$0, cun.xz, g);
-      a($$0, cun.xA, h);
-      a($$0, cun.xB, i);
-      a($$0, cun.xC, j);
-      a($$0, cun.xD, k);
-      a($$0, cun.xE, l);
-      a($$0, cun.xF, m);
-      a($$0, cun.xG, n);
-      a($$0, cun.xH, o);
-      a($$0, cun.xI, p);
+   public static cws a(String $$0, cui $$1, float $$2, xo $$3, Map<ji<csd>, String> $$4) {
+      return new cws($$0, lp.h.e($$1), $$2, $$4, $$3);
    }
 
-   public static Optional<ji.c<cwr>> a(jk.a $$0, cuk $$1) {
-      return $$0.b(lq.aP).b().filter($$1x -> $$1.a(((cwr)$$1x.a()).b())).findFirst();
+   public String a() {
+      return this.e;
    }
 
-   public static void a(rc<cwr> $$0, cuf $$1, ala<cwr> $$2) {
-      cwr $$3 = new cwr($$2.a(), lp.h.e($$1), xl.c(ac.a("trim_pattern", $$2.a())), false);
-      $$0.a($$2, $$3);
+   public ji<cui> b() {
+      return this.f;
    }
 
-   private static ala<cwr> a(String $$0) {
-      return ala.a(lq.aP, new alb($$0));
+   public float c() {
+      return this.g;
+   }
+
+   public Map<ji<csd>, String> d() {
+      return this.h;
+   }
+
+   public xo e() {
+      return this.i;
    }
 }

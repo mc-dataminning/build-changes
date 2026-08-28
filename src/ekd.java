@@ -1,80 +1,52 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Set;
 
-public class ekd {
-   public static final int a = 90;
-   static final alb b = new alb("igloo/top");
-   private static final alb c = new alb("igloo/middle");
-   private static final alb d = new alb("igloo/bottom");
-   static final Map<alb, iz> e = ImmutableMap.of(b, new iz(3, 5, 5), c, new iz(1, 3, 1), d, new iz(3, 6, 7));
-   static final Map<alb, iz> f = ImmutableMap.of(b, iz.c, c, new iz(2, -3, 4), d, new iz(0, -3, -2));
+public class ekd extends eih {
+   public static final MapCodec<ekd> d = a(ekd::new);
 
-   public static void a(emg $$0, iz $$1, dlh $$2, eik $$3, azc $$4) {
-      if ($$4.j() < 0.5) {
-         int $$5 = $$4.a(8) + 4;
-         $$3.a(new ekd.a($$0, d, $$1, $$2, $$5 * 3));
-
-         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
-            $$3.a(new ekd.a($$0, c, $$1, $$2, $$6 * 3));
-         }
-      }
-
-      $$3.a(new ekd.a($$0, b, $$1, $$2, 0));
+   public ekd(eii.c $$0) {
+      super(ekc::new, 21, 21, $$0);
    }
 
-   public static class a extends eip {
-      public a(emg $$0, alb $$1, iz $$2, dlh $$3, int $$4) {
-         super(eiw.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
-      }
+   @Override
+   public void a(dcr $$0, dcp $$1, dtx $$2, azf $$3, eia $$4, dbd $$5, eix $$6) {
+      Set<iz> $$7 = azp.a(kd::i);
 
-      public a(emg $$0, ur $$1) {
-         super(eiw.I, $$1, $$0, $$1x -> a(dlh.valueOf($$1.l("Rot")), $$1x));
-      }
-
-      private static emb a(dlh $$0, alb $$1) {
-         return new emb().a($$0).a(djr.a).a(ekd.e.get($$1)).a(elh.b);
-      }
-
-      private static iz a(alb $$0, iz $$1, int $$2) {
-         return $$1.a(ekd.f.get($$0)).c($$2);
-      }
-
-      @Override
-      protected void a(eiv $$0, ur $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      @Override
-      protected void a(String $$0, iz $$1, dci $$2, azc $$3, ehx $$4) {
-         if ("chest".equals($$0)) {
-            $$2.a($$1, dew.a.n(), 3);
-            dpc $$5 = $$2.c_($$1.d());
-            if ($$5 instanceof dpj) {
-               ((dpj)$$5).a(epz.C, $$3.g());
-            }
+      for (eim $$8 : $$6.c()) {
+         if ($$8 instanceof ekc $$9) {
+            $$7.addAll($$9.b());
+            a($$4, $$0, $$9.c());
          }
       }
 
-      @Override
-      public void a(dco $$0, dcm $$1, dtu $$2, azc $$3, ehx $$4, dba $$5, iz $$6) {
-         alb $$7 = new alb(this.a);
-         emb $$8 = a(this.c.d(), $$7);
-         iz $$9 = ekd.f.get($$7);
-         iz $$10 = this.d.a((kd)emf.a($$8, new iz(3 - $$9.u(), 0, -$$9.w())));
-         int $$11 = $$0.a(dxp.a.a, $$10.u(), $$10.w());
-         iz $$12 = this.d;
-         this.d = this.d.b(0, $$11 - 90 - 1, 0);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         if ($$7.equals(ekd.b)) {
-            iz $$13 = this.d.a((kd)emf.a($$8, new iz(3, 0, 5)));
-            drx $$14 = $$0.a_($$13.d());
-            if (!$$14.i() && !$$14.a(dew.cO)) {
-               $$0.a($$13, dew.dP.n(), 3);
-            }
-         }
+      ObjectArrayList<iz> $$10 = new ObjectArrayList($$7.stream().toList());
+      azf $$11 = azf.a($$0.C()).e().a($$6.b().g());
+      ac.c($$10, $$11);
+      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
+      ObjectListIterator var12 = $$10.iterator();
 
-         this.d = $$12;
+      while (var12.hasNext()) {
+         iz $$13 = (iz)var12.next();
+         if ($$12 > 0) {
+            $$12--;
+            a($$4, $$0, $$13);
+         } else if ($$4.b($$13)) {
+            $$0.a($$13, dez.I.o(), 2);
+         }
       }
+   }
+
+   private static void a(eia $$0, dcr $$1, iz $$2) {
+      if ($$0.b($$2)) {
+         $$1.a($$2, dez.J.o(), 2);
+         $$1.a($$2, dph.N).ifPresent($$1x -> $$1x.a(eqc.be, $$2.a()));
+      }
+   }
+
+   @Override
+   public eir<?> e() {
+      return eir.b;
    }
 }

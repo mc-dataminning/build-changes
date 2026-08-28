@@ -8,23 +8,23 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 public class gw {
-   public static <T, C, P> bmn<List<T>> a(gw.b<T, C, P> $$0) {
-      bmd<List<T>> $$1 = bmd.a("top");
-      bmd<Optional<T>> $$2 = bmd.a("type");
-      bmd<azx> $$3 = bmd.a("any_type");
-      bmd<T> $$4 = bmd.a("element_type");
-      bmd<T> $$5 = bmd.a("tag_type");
-      bmd<List<T>> $$6 = bmd.a("conditions");
-      bmd<List<T>> $$7 = bmd.a("alternatives");
-      bmd<T> $$8 = bmd.a("term");
-      bmd<T> $$9 = bmd.a("negation");
-      bmd<T> $$10 = bmd.a("test");
-      bmd<C> $$11 = bmd.a("component_type");
-      bmd<P> $$12 = bmd.a("predicate_type");
-      bmd<alb> $$13 = bmd.a("id");
-      bmd<vo> $$14 = bmd.a("tag");
-      bmf<StringReader> $$15 = new bmf<>();
-      $$15.a($$1, bmm.b(bmm.a(bmm.a($$2), bms.a('['), bmm.a(), bmm.a(bmm.a($$6)), bms.a(']')), bmm.a($$2)), $$2x -> {
+   public static <T, C, P> bmq<List<T>> a(gw.b<T, C, P> $$0) {
+      bmg<List<T>> $$1 = bmg.a("top");
+      bmg<Optional<T>> $$2 = bmg.a("type");
+      bmg<baa> $$3 = bmg.a("any_type");
+      bmg<T> $$4 = bmg.a("element_type");
+      bmg<T> $$5 = bmg.a("tag_type");
+      bmg<List<T>> $$6 = bmg.a("conditions");
+      bmg<List<T>> $$7 = bmg.a("alternatives");
+      bmg<T> $$8 = bmg.a("term");
+      bmg<T> $$9 = bmg.a("negation");
+      bmg<T> $$10 = bmg.a("test");
+      bmg<C> $$11 = bmg.a("component_type");
+      bmg<P> $$12 = bmg.a("predicate_type");
+      bmg<ale> $$13 = bmg.a("id");
+      bmg<vo> $$14 = bmg.a("tag");
+      bmi<StringReader> $$15 = new bmi<>();
+      $$15.a($$1, bmp.b(bmp.a(bmp.a($$2), bmv.a('['), bmp.a(), bmp.a(bmp.a($$6)), bmv.a(']')), bmp.a($$2)), $$2x -> {
          Builder<T> $$3x = ImmutableList.builder();
          $$2x.b($$2).ifPresent($$3x::add);
          List<T> $$4x = $$2x.a($$6);
@@ -34,23 +34,23 @@ public class gw {
 
          return $$3x.build();
       });
-      $$15.a($$2, bmm.b(bmm.a($$4), bmm.a(bms.a('#'), bmm.a(), bmm.a($$5)), bmm.a($$3)), $$2x -> Optional.ofNullable($$2x.a($$4, $$5)));
-      $$15.a($$3, bms.a('*'), $$0x -> azx.a);
+      $$15.a($$2, bmp.b(bmp.a($$4), bmp.a(bmv.a('#'), bmp.a(), bmp.a($$5)), bmp.a($$3)), $$2x -> Optional.ofNullable($$2x.a($$4, $$5)));
+      $$15.a($$3, bmv.a('*'), $$0x -> baa.a);
       $$15.a($$4, new gw.c<>($$13, $$0));
       $$15.a($$5, new gw.e<>($$13, $$0));
-      $$15.a($$6, bmm.a(bmm.a($$7), bmm.a(bmm.a(bms.a(','), bmm.a($$6)))), $$3x -> {
+      $$15.a($$6, bmp.a(bmp.a($$7), bmp.a(bmp.a(bmv.a(','), bmp.a($$6)))), $$3x -> {
          T $$4x = $$0.a($$3x.b($$7));
          return Optional.ofNullable($$3x.a($$6)).map($$1xx -> ac.a($$4x, $$1xx)).orElse(List.of($$4x));
       });
-      $$15.a($$7, bmm.a(bmm.a($$8), bmm.a(bmm.a(bms.a('|'), bmm.a($$7)))), $$2x -> {
+      $$15.a($$7, bmp.a(bmp.a($$8), bmp.a(bmp.a(bmv.a('|'), bmp.a($$7)))), $$2x -> {
          T $$3x = $$2x.b($$8);
          return Optional.ofNullable($$2x.a($$7)).map($$1xx -> ac.a($$3x, $$1xx)).orElse(List.of($$3x));
       });
-      $$15.a($$8, bmm.b(bmm.a($$10), bmm.a(bms.a('!'), bmm.a($$9))), $$2x -> $$2x.b($$10, $$9));
-      $$15.a($$9, bmm.a($$10), $$2x -> $$0.a($$2x.b($$10)));
+      $$15.a($$8, bmp.b(bmp.a($$10), bmp.a(bmv.a('!'), bmp.a($$9))), $$2x -> $$2x.b($$10, $$9));
+      $$15.a($$9, bmp.a($$10), $$2x -> $$0.a($$2x.b($$10)));
       $$15.a(
          $$10,
-         bmm.b(bmm.a(bmm.a($$11), bms.a('='), bmm.a(), bmm.a($$14)), bmm.a(bmm.a($$12), bms.a('~'), bmm.a(), bmm.a($$14)), bmm.a($$11)),
+         bmp.b(bmp.a(bmp.a($$11), bmv.a('='), bmp.a(), bmp.a($$14)), bmp.a(bmp.a($$12), bmv.a('~'), bmp.a(), bmp.a($$14)), bmp.a($$11)),
          ($$4x, $$5x) -> {
             P $$6x = $$5x.a($$12);
 
@@ -71,47 +71,47 @@ public class gw {
       );
       $$15.a($$11, new gw.a<>($$13, $$0));
       $$15.a($$12, new gw.d<>($$13, $$0));
-      $$15.a($$14, bmt.a);
-      $$15.a($$13, bmo.a);
-      return new bmn<>($$15, $$1);
+      $$15.a($$14, bmw.a);
+      $$15.a($$13, bmr.a);
+      return new bmq<>($$15, $$1);
    }
 
-   static class a<T, C, P> extends bmp<gw.b<T, C, P>, C> {
-      a(bmd<alb> $$0, gw.b<T, C, P> $$1) {
+   static class a<T, C, P> extends bms<gw.b<T, C, P>, C> {
+      a(bmg<ale> $$0, gw.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 
       @Override
-      protected C a(ImmutableStringReader $$0, alb $$1) throws Exception {
+      protected C a(ImmutableStringReader $$0, ale $$1) throws Exception {
          return this.a.c($$0, $$1);
       }
 
       @Override
-      public Stream<alb> a() {
+      public Stream<ale> a() {
          return this.a.c();
       }
    }
 
    public interface b<T, C, P> {
-      T a(ImmutableStringReader var1, alb var2) throws CommandSyntaxException;
+      T a(ImmutableStringReader var1, ale var2) throws CommandSyntaxException;
 
-      Stream<alb> a();
+      Stream<ale> a();
 
-      T b(ImmutableStringReader var1, alb var2) throws CommandSyntaxException;
+      T b(ImmutableStringReader var1, ale var2) throws CommandSyntaxException;
 
-      Stream<alb> b();
+      Stream<ale> b();
 
-      C c(ImmutableStringReader var1, alb var2) throws CommandSyntaxException;
+      C c(ImmutableStringReader var1, ale var2) throws CommandSyntaxException;
 
-      Stream<alb> c();
+      Stream<ale> c();
 
       T a(ImmutableStringReader var1, C var2, vo var3) throws CommandSyntaxException;
 
       T a(ImmutableStringReader var1, C var2);
 
-      P d(ImmutableStringReader var1, alb var2) throws CommandSyntaxException;
+      P d(ImmutableStringReader var1, ale var2) throws CommandSyntaxException;
 
-      Stream<alb> d();
+      Stream<ale> d();
 
       T b(ImmutableStringReader var1, P var2, vo var3) throws CommandSyntaxException;
 
@@ -120,50 +120,50 @@ public class gw {
       T a(List<T> var1);
    }
 
-   static class c<T, C, P> extends bmp<gw.b<T, C, P>, T> {
-      c(bmd<alb> $$0, gw.b<T, C, P> $$1) {
+   static class c<T, C, P> extends bms<gw.b<T, C, P>, T> {
+      c(bmg<ale> $$0, gw.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 
       @Override
-      protected T a(ImmutableStringReader $$0, alb $$1) throws Exception {
+      protected T a(ImmutableStringReader $$0, ale $$1) throws Exception {
          return this.a.a($$0, $$1);
       }
 
       @Override
-      public Stream<alb> a() {
+      public Stream<ale> a() {
          return this.a.a();
       }
    }
 
-   static class d<T, C, P> extends bmp<gw.b<T, C, P>, P> {
-      d(bmd<alb> $$0, gw.b<T, C, P> $$1) {
+   static class d<T, C, P> extends bms<gw.b<T, C, P>, P> {
+      d(bmg<ale> $$0, gw.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 
       @Override
-      protected P a(ImmutableStringReader $$0, alb $$1) throws Exception {
+      protected P a(ImmutableStringReader $$0, ale $$1) throws Exception {
          return this.a.d($$0, $$1);
       }
 
       @Override
-      public Stream<alb> a() {
+      public Stream<ale> a() {
          return this.a.d();
       }
    }
 
-   static class e<T, C, P> extends bmp<gw.b<T, C, P>, T> {
-      e(bmd<alb> $$0, gw.b<T, C, P> $$1) {
+   static class e<T, C, P> extends bms<gw.b<T, C, P>, T> {
+      e(bmg<ale> $$0, gw.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 
       @Override
-      protected T a(ImmutableStringReader $$0, alb $$1) throws Exception {
+      protected T a(ImmutableStringReader $$0, ale $$1) throws Exception {
          return this.a.b($$0, $$1);
       }
 
       @Override
-      public Stream<alb> a() {
+      public Stream<ale> a() {
          return this.a.b();
       }
    }

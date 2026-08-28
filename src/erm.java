@@ -1,22 +1,40 @@
-import java.util.Arrays;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Set;
 
-public interface erm<T extends erm<T>> {
-   T b(erq.a var1);
+public class erm extends ers {
+   public static final MapCodec<erm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(eqg.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, erm::new)
+   );
+   private final eqg.b b;
 
-   default <E> T a(Iterable<E> $$0, Function<E, erq.a> $$1) {
-      T $$2 = this.c();
+   public erm(List<etq> $$0, eqg.b $$1) {
+      super($$0);
+      this.b = $$1;
+   }
 
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
+   @Override
+   public eru<erm> b() {
+      return erv.B;
+   }
+
+   @Override
+   public Set<esz<?>> a() {
+      return ImmutableSet.of(this.b.a());
+   }
+
+   @Override
+   public cun a(cun $$0, eqg $$1) {
+      if ($$0.a(cuq.un) && $$1.c(this.b.a()) instanceof cmv $$2) {
+         $$0.b(km.U, new cxp($$2.gb()));
       }
 
-      return $$2;
+      return $$0;
    }
 
-   default <E> T a(E[] $$0, Function<E, erq.a> $$1) {
-      return this.a(Arrays.asList($$0), $$1);
+   public static ers.a<?> a(eqg.b $$0) {
+      return a($$1 -> new erm($$1, $$0));
    }
-
-   T c();
 }

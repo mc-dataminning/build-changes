@@ -1,52 +1,54 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public record cwv(Map<String, String> d) {
-   public static final cwv a = new cwv(Map.of());
-   public static final Codec<cwv> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(cwv::new, cwv::b);
-   private static final zj<ByteBuf, Map<String, String>> e = zh.a(Object2ObjectOpenHashMap::new, zh.l, zh.l);
-   public static final zj<ByteBuf, cwv> c = e.a(cwv::new, cwv::b);
+public class cwv {
+   public static final ald<cwu> a = a("sentry");
+   public static final ald<cwu> b = a("dune");
+   public static final ald<cwu> c = a("coast");
+   public static final ald<cwu> d = a("wild");
+   public static final ald<cwu> e = a("ward");
+   public static final ald<cwu> f = a("eye");
+   public static final ald<cwu> g = a("vex");
+   public static final ald<cwu> h = a("tide");
+   public static final ald<cwu> i = a("snout");
+   public static final ald<cwu> j = a("rib");
+   public static final ald<cwu> k = a("spire");
+   public static final ald<cwu> l = a("wayfinder");
+   public static final ald<cwu> m = a("shaper");
+   public static final ald<cwu> n = a("silence");
+   public static final ald<cwu> o = a("raiser");
+   public static final ald<cwu> p = a("host");
+   public static final ald<cwu> q = a("flow");
+   public static final ald<cwu> r = a("bolt");
 
-   public <T extends Comparable<T>> cwv a(dta<T> $$0, T $$1) {
-      return new cwv(ac.a(this.d, $$0.f(), $$0.a($$1)));
+   public static void a(rc<cwu> $$0) {
+      a($$0, cuq.xt, a);
+      a($$0, cuq.xu, b);
+      a($$0, cuq.xv, c);
+      a($$0, cuq.xw, d);
+      a($$0, cuq.xx, e);
+      a($$0, cuq.xy, f);
+      a($$0, cuq.xz, g);
+      a($$0, cuq.xA, h);
+      a($$0, cuq.xB, i);
+      a($$0, cuq.xC, j);
+      a($$0, cuq.xD, k);
+      a($$0, cuq.xE, l);
+      a($$0, cuq.xF, m);
+      a($$0, cuq.xG, n);
+      a($$0, cuq.xH, o);
+      a($$0, cuq.xI, p);
    }
 
-   public <T extends Comparable<T>> cwv a(dta<T> $$0, drx $$1) {
-      return this.a($$0, $$1.c($$0));
+   public static Optional<ji.c<cwu>> a(jk.a $$0, cun $$1) {
+      return $$0.b(lq.aP).b().filter($$1x -> $$1.a(((cwu)$$1x.a()).b())).findFirst();
    }
 
-   @Nullable
-   public <T extends Comparable<T>> T a(dta<T> $$0) {
-      String $$1 = this.d.get($$0.f());
-      return $$1 == null ? null : $$0.b($$1).orElse(null);
+   public static void a(rc<cwu> $$0, cui $$1, ald<cwu> $$2) {
+      cwu $$3 = new cwu($$2.a(), lp.h.e($$1), xo.c(ac.a("trim_pattern", $$2.a())), false);
+      $$0.a($$2, $$3);
    }
 
-   public drx a(drx $$0) {
-      dry<deu, drx> $$1 = $$0.b().l();
-
-      for (Entry<String, String> $$2 : this.d.entrySet()) {
-         dta<?> $$3 = $$1.a($$2.getKey());
-         if ($$3 != null) {
-            $$0 = a($$0, $$3, $$2.getValue());
-         }
-      }
-
-      return $$0;
-   }
-
-   private static <T extends Comparable<T>> drx a(drx $$0, dta<T> $$1, String $$2) {
-      return $$1.b($$2).map($$2x -> $$0.a($$1, $$2x)).orElse($$0);
-   }
-
-   public boolean a() {
-      return this.d.isEmpty();
-   }
-
-   public Map<String, String> b() {
-      return this.d;
+   private static ald<cwu> a(String $$0) {
+      return ald.a(lq.aP, new ale($$0));
    }
 }

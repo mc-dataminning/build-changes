@@ -1,159 +1,229 @@
-public class dpj extends dqh implements dqf {
-   private static final int d = 1;
-   private jr<cuk> e = jr.a(27, cuk.l);
-   private final dpp f = new dpp() {
-      @Override
-      protected void a(dbt $$0, iz $$1, drx $$2) {
-         dpj.a($$0, $$1, $$2, avw.eQ);
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Objects;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+public class dpj extends dpf {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "LootTable";
+   private static final String c = "LootTableSeed";
+   private static final String d = "hit_direction";
+   private static final String e = "item";
+   private static final int f = 10;
+   private static final int g = 40;
+   private static final int h = 10;
+   private int i;
+   private long j;
+   private long k;
+   private cun l;
+   @Nullable
+   private je m;
+   @Nullable
+   private ald<eql> q;
+   private long r;
+
+   public dpj(iz $$0, dsa $$1) {
+      super(dph.N, $$0, $$1);
+      this.l = cun.l;
+   }
+
+   public boolean a(long $$0, cmv $$1, je $$2) {
+      if (this.m == null) {
+         this.m = $$2;
       }
 
-      @Override
-      protected void b(dbt $$0, iz $$1, drx $$2) {
-         dpj.a($$0, $$1, $$2, avw.eO);
-      }
-
-      @Override
-      protected void a(dbt $$0, iz $$1, drx $$2, int $$3, int $$4) {
-         dpj.this.a($$0, $$1, $$2, $$3, $$4);
-      }
-
-      @Override
-      protected boolean a(cms $$0) {
-         if (!($$0.cb instanceof cpw)) {
-            return false;
+      this.j = $$0 + 40L;
+      if ($$0 >= this.k && this.n instanceof are) {
+         this.k = $$0 + 10L;
+         this.a($$1);
+         int $$3 = this.j();
+         if (++this.i >= 10) {
+            this.b($$1);
+            return true;
          } else {
-            bqi $$1 = ((cpw)$$0.cb).l();
-            return $$1 == dpj.this || $$1 instanceof bqh && ((bqh)$$1).a(dpj.this);
+            this.n.a(this.az_(), this.n().b(), 2);
+            int $$4 = this.j();
+            if ($$3 != $$4) {
+               dsa $$5 = this.n();
+               dsa $$6 = $$5.a(dsq.bv, Integer.valueOf($$4));
+               this.n.a(this.az_(), $$6, 3);
+            }
+
+            return false;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   public void a(cmv $$0) {
+      if (this.q != null && this.n != null && !this.n.x_() && this.n.o() != null) {
+         eql $$1 = this.n.o().be().b(this.q);
+         if ($$0 instanceof arf $$2) {
+            am.Q.a($$2, this.q);
+         }
+
+         eqj $$3 = new eqj.a((are)this.n).a(etc.f, evp.b(this.o)).a($$0.gy()).a(etc.a, $$0).a(etb.c);
+         ObjectArrayList<cun> $$4 = $$1.a($$3, this.r);
+
+         this.l = switch ($$4.size()) {
+            case 0 -> cun.l;
+            case 1 -> (cun)$$4.get(0);
+            default -> {
+               a.warn("Expected max 1 loot from loot table {}, but got {}", this.q.a(), $$4.size());
+               yield (cun)$$4.get(0);
+            }
+         };
+         this.q = null;
+         this.e();
+      }
+   }
+
+   private void b(cmv $$0) {
+      if (this.n != null && this.n.o() != null) {
+         this.c($$0);
+         dsa $$1 = this.n();
+         this.n.c(3008, this.az_(), dex.i($$1));
+         dex $$4;
+         if (this.n().b() instanceof dfc $$3) {
+            $$4 = $$3.b();
+         } else {
+            $$4 = dez.a;
+         }
+
+         this.n.a(this.o, $$4.o(), 3);
+      }
+   }
+
+   private void c(cmv $$0) {
+      if (this.n != null && this.n.o() != null) {
+         this.a($$0);
+         if (!this.l.e()) {
+            double $$1 = (double)bsy.ag.l();
+            double $$2 = 1.0 - $$1;
+            double $$3 = $$1 / 2.0;
+            je $$4 = Objects.requireNonNullElse(this.m, je.b);
+            iz $$5 = this.o.a($$4, 1);
+            double $$6 = (double)$$5.u() + 0.5 * $$2 + $$3;
+            double $$7 = (double)$$5.v() + 0.5 + (double)(bsy.ag.m() / 2.0F);
+            double $$8 = (double)$$5.w() + 0.5 * $$2 + $$3;
+            cjf $$9 = new cjf(this.n, $$6, $$7, $$8, this.l.a(this.n.z.a(21) + 10));
+            $$9.h(evp.b);
+            this.n.b($$9);
+            this.l = cun.l;
          }
       }
-   };
-   private final dpk g = new dpk();
-
-   protected dpj(dpe<?> $$0, iz $$1, drx $$2) {
-      super($$0, $$1, $$2);
    }
 
-   public dpj(iz $$0, drx $$1) {
-      this(dpe.b, $$0, $$1);
+   public void b() {
+      if (this.n != null) {
+         if (this.i != 0 && this.n.Z() >= this.j) {
+            int $$0 = this.j();
+            this.i = Math.max(0, this.i - 2);
+            int $$1 = this.j();
+            if ($$0 != $$1) {
+               this.n.a(this.az_(), this.n().a(dsq.bv, Integer.valueOf($$1)), 3);
+            }
+
+            int $$2 = 4;
+            this.j = this.n.Z() + 4L;
+         }
+
+         if (this.i == 0) {
+            this.m = null;
+            this.j = 0L;
+            this.k = 0L;
+         } else {
+            this.n.a(this.az_(), this.n().b(), 2);
+         }
+      }
+   }
+
+   private boolean c(ur $$0) {
+      if ($$0.b("LootTable", 8)) {
+         this.q = ald.a(lq.aU, new ale($$0.l("LootTable")));
+         this.r = $$0.i("LootTableSeed");
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean d(ur $$0) {
+      if (this.q == null) {
+         return false;
+      } else {
+         $$0.a("LootTable", this.q.a().toString());
+         if (this.r != 0L) {
+            $$0.a("LootTableSeed", this.r);
+         }
+
+         return true;
+      }
    }
 
    @Override
-   public int b() {
-      return 27;
+   public ur a(jk.a $$0) {
+      ur $$1 = super.a($$0);
+      if (this.m != null) {
+         $$1.a("hit_direction", this.m.ordinal());
+      }
+
+      if (!this.l.e()) {
+         $$1.a("item", this.l.a($$0));
+      }
+
+      return $$1;
    }
 
-   @Override
-   protected xl k() {
-      return xl.c("container.chest");
+   public aco c() {
+      return aco.a(this);
    }
 
    @Override
    protected void a(ur $$0, jk.a $$1) {
       super.a($$0, $$1);
-      this.e = jr.a(this.b(), cuk.l);
-      if (!this.a_($$0)) {
-         bqj.b($$0, this.e, $$1);
+      if (!this.c($$0) && $$0.e("item")) {
+         this.l = cun.a($$1, (vo)$$0.p("item")).orElse(cun.l);
+      } else {
+         this.l = cun.l;
+      }
+
+      if ($$0.e("hit_direction")) {
+         this.m = je.values()[$$0.h("hit_direction")];
       }
    }
 
    @Override
    protected void b(ur $$0, jk.a $$1) {
       super.b($$0, $$1);
-      if (!this.b_($$0)) {
-         bqj.a($$0, this.e, $$1);
+      if (!this.d($$0) && !this.l.e()) {
+         $$0.a("item", this.l.a($$1));
       }
    }
 
-   public static void a(dbt $$0, iz $$1, drx $$2, dpj $$3) {
-      $$3.g.a();
+   public void a(ald<eql> $$0, long $$1) {
+      this.q = $$0;
+      this.r = $$1;
    }
 
-   static void a(dbt $$0, iz $$1, drx $$2, avv $$3) {
-      dsp $$4 = $$2.c(dfx.d);
-      if ($$4 != dsp.b) {
-         double $$5 = (double)$$1.u() + 0.5;
-         double $$6 = (double)$$1.v() + 0.5;
-         double $$7 = (double)$$1.w() + 0.5;
-         if ($$4 == dsp.c) {
-            je $$8 = dfx.h($$2);
-            $$5 += (double)$$8.j() * 0.5;
-            $$7 += (double)$$8.l() * 0.5;
-         }
-
-         $$0.a(null, $$5, $$6, $$7, $$3, avx.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.g.a($$1 > 0);
-         return true;
+   private int j() {
+      if (this.i == 0) {
+         return 0;
+      } else if (this.i < 3) {
+         return 1;
       } else {
-         return super.a_($$0, $$1);
+         return this.i < 6 ? 2 : 3;
       }
    }
 
-   @Override
-   public void d_(cms $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.f.a($$0, this.i(), this.aA_(), this.n());
-      }
+   @Nullable
+   public je d() {
+      return this.m;
    }
 
-   @Override
-   public void c(cms $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.f.b($$0, this.i(), this.aA_(), this.n());
-      }
-   }
-
-   @Override
-   protected jr<cuk> j() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(jr<cuk> $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public float a(float $$0) {
-      return this.g.a($$0);
-   }
-
-   public static int a(daz $$0, iz $$1) {
-      drx $$2 = $$0.a_($$1);
-      if ($$2.t()) {
-         dpc $$3 = $$0.c_($$1);
-         if ($$3 instanceof dpj) {
-            return ((dpj)$$3).f.a();
-         }
-      }
-
-      return 0;
-   }
-
-   public static void a(dpj $$0, dpj $$1) {
-      jr<cuk> $$2 = $$0.j();
-      $$0.a($$1.j());
-      $$1.a($$2);
-   }
-
-   @Override
-   protected cpp a(int $$0, cmr $$1) {
-      return cpw.a($$0, $$1, this);
-   }
-
-   public void l() {
-      if (!this.p) {
-         this.f.c(this.i(), this.aA_(), this.n());
-      }
-   }
-
-   protected void a(dbt $$0, iz $$1, drx $$2, int $$3, int $$4) {
-      deu $$5 = $$2.b();
-      $$0.a($$1, $$5, 1, $$4);
+   public cun f() {
+      return this.l;
    }
 }

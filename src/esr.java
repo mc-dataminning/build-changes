@@ -1,38 +1,28 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JavaOps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class esr extends erp {
-   public static final Codec<xl> a = xn.a.validate($$0 -> cxt.g.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
-   public static final MapCodec<esr> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(cxt.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), ero.a.forGetter($$0x -> $$0x.d))).apply($$0, esr::new)
-   );
-   private final List<ars<xl>> c;
-   private final ero d;
+public class esr extends ers {
+   public static final MapCodec<esr> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(lp.i.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, esr::new));
+   private final ji<cwm> b;
 
-   protected esr(List<etn> $$0, List<ars<xl>> $$1, ero $$2) {
+   private esr(List<etq> $$0, ji<cwm> $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
    }
 
    @Override
-   protected cuk a(cuk $$0, eqd $$1) {
-      $$0.a(km.I, cxt.a, this::a);
+   public eru<esr> b() {
+      return erv.F;
+   }
+
+   @Override
+   public cun a(cun $$0, eqg $$1) {
+      $$0.a(km.F, cwo.a, this.b, cwo::b);
       return $$0;
    }
 
-   @VisibleForTesting
-   public cxt a(cxt $$0) {
-      List<ars<xl>> $$1 = this.d.a($$0.a(), this.c);
-      return $$0.b($$1);
-   }
-
-   @Override
-   public err<esr> b() {
-      return ers.N;
+   public static ers.a<?> a(ji<cwm> $$0) {
+      return a($$1 -> new esr($$1, $$0));
    }
 }

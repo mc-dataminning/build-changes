@@ -1,44 +1,40 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
 
-public class ehu {
-   public static final Codec<ehu> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.unboundedMap(ala.a(lq.aT), dvq.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, ehu::new)
-      )
-      .validate(ehu::a);
-   public static final Codec<ji<ehu>> b = akx.a(lq.aQ, a);
-   private final Map<ala<dvq>, dvq> c;
+public class ehu extends eho {
+   public static final MapCodec<ehu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dxs.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
+               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
+               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ehu::new)
+   );
+   private final dxs.a c;
+   private final int d;
+   private final int e;
 
-   public ehu(Map<ala<dvq>, dvq> $$0) {
+   private ehu(dxs.a $$0, int $$1, int $$2) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private ImmutableMap<ala<dvq>, dvq> c() {
-      Builder<ala<dvq>, dvq> $$0 = ImmutableMap.builder();
-      dyk.a(this.c.keySet().stream()).forEach($$1 -> {
-         dvq $$2 = this.c.get($$1);
-         if ($$2 != null) {
-            $$0.put($$1, $$2);
-         }
-      });
-      return $$0.build();
+   public static ehu a(dxs.a $$0, int $$1, int $$2) {
+      return new ehu($$0, $$1, $$2);
    }
 
-   public dyk a() {
-      return new dyk(this.c());
+   @Override
+   protected boolean a(ehn $$0, azf $$1, iz $$2) {
+      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
+      long $$4 = $$3 + (long)this.d;
+      long $$5 = $$3 + (long)this.e;
+      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
    }
 
-   public Optional<dvq> b() {
-      return Optional.ofNullable(this.c.get(dvq.b));
-   }
-
-   private static DataResult<ehu> a(ehu $$0) {
-      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
+   @Override
+   public ehq<?> b() {
+      return ehq.c;
    }
 }

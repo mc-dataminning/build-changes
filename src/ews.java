@@ -1,83 +1,53 @@
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.mojang.authlib.GameProfile;
 import javax.annotation.Nullable;
 
-public abstract class ews {
-   public boolean a(@Nullable ews $$0) {
-      return $$0 == null ? false : this == $$0;
+public interface ews {
+   String a_ = "*";
+   ews cy = new ews() {
+      @Override
+      public String cB() {
+         return "*";
+      }
+   };
+
+   String cB();
+
+   @Nullable
+   default xo O_() {
+      return null;
    }
 
-   public abstract String b();
+   default xo he() {
+      xo $$0 = this.O_();
+      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xu(xu.a.a, xo.b(this.cB())))) : xo.b(this.cB());
+   }
 
-   public abstract xz d(xl var1);
+   static ews c(final String $$0) {
+      if ($$0.equals("*")) {
+         return cy;
+      } else {
+         final xo $$1 = xo.b($$0);
+         return new ews() {
+            @Override
+            public String cB() {
+               return $$0;
+            }
 
-   public abstract boolean i();
-
-   public abstract boolean h();
-
-   public abstract ews.b j();
-
-   public abstract n n();
-
-   public abstract Collection<String> g();
-
-   public abstract ews.b k();
-
-   public abstract ews.a l();
-
-   public static enum a {
-      a("always", 0),
-      b("never", 1),
-      c("pushOtherTeams", 2),
-      d("pushOwnTeam", 3);
-
-      private static final Map<String, ews.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (ews.a)$$0));
-      public final String e;
-      public final int f;
-
-      @Nullable
-      public static ews.a a(String $$0) {
-         return g.get($$0);
-      }
-
-      private a(final String $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public xl a() {
-         return xl.c("team.collision." + this.e);
+            @Override
+            public xo he() {
+               return $$1;
+            }
+         };
       }
    }
 
-   public static enum b {
-      a("always", 0),
-      b("never", 1),
-      c("hideForOtherTeams", 2),
-      d("hideForOwnTeam", 3);
-
-      private static final Map<String, ews.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (ews.b)$$0));
-      public final String e;
-      public final int f;
-
-      public static String[] a() {
-         return g.keySet().toArray(new String[0]);
-      }
-
-      @Nullable
-      public static ews.b a(String $$0) {
-         return g.get($$0);
-      }
-
-      private b(final String $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public xl b() {
-         return xl.c("team.visibility." + this.e);
-      }
+   static ews a(GameProfile $$0) {
+      final String $$1 = $$0.getName();
+      return new ews() {
+         @Override
+         public String cB() {
+            return $$1;
+         }
+      };
    }
 }

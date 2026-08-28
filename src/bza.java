@@ -1,21 +1,22 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bza {
-   public static <E extends clw> bve<E> a(Function<E, Optional<? extends btk>> $$0) {
-      return byq.a(
-         (Function<byq.b<E>, ? extends App<byq.c<E>, byt<E>>>)($$1 -> $$1.group($$1.c(cco.ay), $$1.c(cco.o), $$1.a(cco.E))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
-                     Optional<? extends btk> $$6 = $$0.apply((E)$$4);
-                     if ($$6.filter($$4::b).isEmpty()) {
-                        return false;
-                     } else {
-                        $$1x.a($$6.get());
-                        $$3.b();
-                        return true;
-                     }
-                  }))
-      );
+public class bza<E extends clz> extends bvg<E> {
+   public bza(int $$0) {
+      super(ImmutableMap.of(ccr.aC, ccs.a, ccr.m, ccs.b, ccr.n, ccs.c), $$0);
+   }
+
+   protected boolean a(are $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(are $$0, E $$1, long $$2) {
+      $$1.b(btz.n);
+      $$1.a(avz.BI, 5.0F, 1.0F);
+   }
+
+   protected void c(are $$0, E $$1, long $$2) {
+      if ($$1.c(btz.n)) {
+         $$1.b(btz.a);
+      }
    }
 }

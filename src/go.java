@@ -15,27 +15,27 @@ public class go implements gn {
    }
 
    @Override
-   public evm a(ep $$0) {
-      evl $$1 = $$0.k();
-      evm $$2 = $$0.m().a($$0);
-      float $$3 = ayu.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$4 = ayu.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$5 = ayu.b(-$$1.i * (float) (Math.PI / 180.0));
-      float $$6 = ayu.a(-$$1.i * (float) (Math.PI / 180.0));
-      float $$7 = ayu.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      float $$8 = ayu.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      evm $$9 = new evm((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      evm $$10 = new evm((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      evm $$11 = $$9.c($$10).a(-1.0);
+   public evp a(ep $$0) {
+      evo $$1 = $$0.k();
+      evp $$2 = $$0.m().a($$0);
+      float $$3 = ayx.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$4 = ayx.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$5 = ayx.b(-$$1.i * (float) (Math.PI / 180.0));
+      float $$6 = ayx.a(-$$1.i * (float) (Math.PI / 180.0));
+      float $$7 = ayx.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      float $$8 = ayx.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      evp $$9 = new evp((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      evp $$10 = new evp((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      evp $$11 = $$9.c($$10).a(-1.0);
       double $$12 = $$9.c * this.d + $$10.c * this.c + $$11.c * this.b;
       double $$13 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$14 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
-      return new evm($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
+      return new evp($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
    }
 
    @Override
-   public evl b(ep $$0) {
-      return evl.a;
+   public evo b(ep $$0) {
+      return evo.a;
    }
 
    @Override

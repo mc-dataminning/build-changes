@@ -1,17 +1,15 @@
-public enum cyf implements azp {
-   a("food"),
-   b("blocks"),
-   c("misc");
-
-   public static final azp.a<cyf> d = azp.a(cyf::values);
-   private final String e;
-
-   private cyf(final String $$0) {
-      this.e = $$0;
+public class cyf extends cyc {
+   public cyf(String $$0, cyi $$1, cyq $$2, cun $$3, float $$4, int $$5) {
+      super(cyy.c, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public cun g() {
+      return new cun(dez.nW);
+   }
+
+   @Override
+   public cyx<?> ap_() {
+      return cyx.q;
    }
 }

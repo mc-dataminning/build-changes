@@ -1,168 +1,113 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.IntSupplier;
+public class fmk extends fmt {
+   private static final xo a = xo.c("options.languageAccuracyWarning").a(n.h);
+   private static final int r = 53;
+   private fmk.a s;
+   final gqf u;
 
-public class fmk extends fms {
-   static final alb c = new alb("textures/gui/title/mojangstudios.png");
-   private static final int d = aye.b.a(255, 239, 50, 61);
-   private static final int e = aye.b.a(255, 0, 0, 0);
-   private static final IntSupplier f = () -> ffa.Q().m.a().c() ? e : d;
-   private static final int g = 240;
-   private static final float h = 60.0F;
-   private static final int i = 60;
-   private static final int j = 120;
-   private static final float k = 0.0625F;
-   private static final float l = 0.95F;
-   public static final long a = 1000L;
-   public static final long b = 500L;
-   private final ffa m;
-   private final auh n;
-   private final Consumer<Optional<Throwable>> o;
-   private final boolean p;
-   private float q;
-   private long r = -1L;
-   private long s = -1L;
-
-   public fmk(ffa $$0, auh $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-   }
-
-   public static void a(ffa $$0) {
-      $$0.aa().a(c, new fmk.a());
-   }
-
-   private static int a(int $$0, int $$1) {
-      return $$0 & 16777215 | $$1 << 24;
+   public fmk(fnb $$0, ffh $$1, gqf $$2) {
+      super($$0, $$1, xo.c("options.language.title"));
+      this.u = $$2;
    }
 
    @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
-      int $$4 = $$0.a();
-      int $$5 = $$0.b();
-      long $$6 = ac.c();
-      if (this.p && this.s == -1L) {
-         this.s = $$6;
-      }
-
-      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
-      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
-      float $$10;
-      if ($$7 >= 1.0F) {
-         if (this.m.y != null) {
-            this.m.y.a($$0, 0, 0, $$3);
-         }
-
-         int $$9 = ayu.f((1.0F - ayu.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
-         $$0.a(gdr.E(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
-         $$10 = 1.0F - ayu.a($$7 - 1.0F, 0.0F, 1.0F);
-      } else if (this.p) {
-         if (this.m.y != null && $$8 < 1.0F) {
-            this.m.y.a($$0, $$1, $$2, $$3);
-         }
-
-         int $$11 = ayu.c(ayu.a((double)$$8, 0.15, 1.0) * 255.0);
-         $$0.a(gdr.E(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
-         $$10 = ayu.a($$8, 0.0F, 1.0F);
-      } else {
-         int $$13 = f.getAsInt();
-         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
-         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
-         float $$16 = (float)($$13 & 0xFF) / 255.0F;
-         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
-         GlStateManager._clear(16384, ffa.a);
-         $$10 = 1.0F;
-      }
-
-      int $$18 = (int)((double)$$0.a() * 0.5);
-      int $$19 = (int)((double)$$0.b() * 0.5);
-      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
-      int $$21 = (int)($$20 * 0.5);
-      double $$22 = $$20 * 4.0;
-      int $$23 = (int)($$22 * 0.5);
-      RenderSystem.disableDepthTest();
-      RenderSystem.depthMask(false);
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(770, 1);
-      $$0.a(1.0F, 1.0F, 1.0F, $$10);
-      $$0.a(c, $$18 - $$23, $$19 - $$21, $$23, (int)$$20, -0.0625F, 0.0F, 120, 60, 120, 120);
-      $$0.a(c, $$18, $$19 - $$21, $$23, (int)$$20, 0.0625F, 60.0F, 120, 60, 120, 120);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.defaultBlendFunc();
-      RenderSystem.disableBlend();
-      RenderSystem.depthMask(true);
-      RenderSystem.enableDepthTest();
-      int $$24 = (int)((double)$$0.b() * 0.8325);
-      float $$25 = this.n.b();
-      this.q = ayu.a(this.q * 0.95F + $$25 * 0.050000012F, 0.0F, 1.0F);
-      if ($$7 < 1.0F) {
-         this.a($$0, $$4 / 2 - $$23, $$24 - 5, $$4 / 2 + $$23, $$24 + 5, 1.0F - ayu.a($$7, 0.0F, 1.0F));
-      }
-
-      if ($$7 >= 2.0F) {
-         this.m.a(null);
-      }
-
-      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
-         try {
-            this.n.d();
-            this.o.accept(Optional.empty());
-         } catch (Throwable var23) {
-            this.o.accept(Optional.of(var23));
-         }
-
-         this.r = ac.c();
-         if (this.m.y != null) {
-            this.m.y.b(this.m, $$0.a(), $$0.b());
-         }
-      }
-   }
-
-   private void a(fgm $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      int $$6 = ayu.f((float)($$3 - $$1 - 2) * this.q);
-      int $$7 = Math.round($$5 * 255.0F);
-      int $$8 = aye.b.a($$7, 255, 255, 255);
-      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
-      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
-      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
-      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
-      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
+   protected void aM_() {
+      this.s = this.c(new fmk.a(this.m));
+      this.d.a(53);
+      super.aM_();
    }
 
    @Override
-   public boolean a() {
-      return true;
+   protected void c() {
+      super.c();
+      this.s.a(this.n, this.d);
    }
 
-   static class a extends gon {
-      public a() {
-         super(fmk.c);
+   @Override
+   protected void h() {
+      fkt $$0 = this.d.b(fkt.d()).a(8);
+      $$0.c().b();
+      $$0.a(new fij(a, this.p));
+      fkt $$1 = $$0.a(fkt.e().a(8));
+      $$1.a(fhc.a(xo.c("options.font"), $$0x -> this.m.a(new fmg(this, this.c))).a());
+      $$1.a(fhc.a(xn.d, $$0x -> this.D()).a());
+   }
+
+   void D() {
+      fmk.a.a $$0 = this.s.h();
+      if ($$0 != null && !$$0.b.equals(this.u.a())) {
+         this.u.a($$0.b);
+         this.c.ac = $$0.b;
+         this.m.l();
+      }
+
+      this.m.a(this.b);
+   }
+
+   class a extends fhy<fmk.a.a> {
+      public a(final ffd $$0) {
+         super($$0, fmk.this.n, fmk.this.o - 33 - 53, 33, 18);
+         String $$1 = fmk.this.u.a();
+         fmk.this.u.b().forEach(($$1x, $$2) -> {
+            fmk.a.a $$3 = new fmk.a.a($$1x, $$2);
+            this.b($$3);
+            if ($$1.equals($$1x)) {
+               this.a($$3);
+            }
+         });
+         if (this.h() != null) {
+            this.e(this.h());
+         }
       }
 
       @Override
-      protected gon.a b(aul $$0) {
-         atb $$1 = ffa.Q().ad();
-         aud<InputStream> $$2 = $$1.a(asz.a, fmk.c);
-         if ($$2 == null) {
-            return new gon.a(new FileNotFoundException(fmk.c.toString()));
-         } else {
-            try {
-               gon.a var5;
-               try (InputStream $$3 = $$2.get()) {
-                  var5 = new gon.a(new gqr(true, true), eyu.a($$3));
-               }
+      public int b() {
+         return super.b() + 50;
+      }
 
-               return var5;
-            } catch (IOException var9) {
-               return new gon.a(var9);
+      public class a extends fhy.a<fmk.a.a> {
+         final String b;
+         private final xo c;
+         private long d;
+
+         public a(final String $$1, final gqe $$2) {
+            this.b = $$1;
+            this.c = $$2.a();
+         }
+
+         @Override
+         public void a(fgp $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.a(fmk.this.p, this.c, a.this.g / 2, $$2 + 1, -1);
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            if (fld.a($$0)) {
+               this.b();
+               fmk.this.D();
+               return true;
+            } else {
+               return super.a($$0, $$1, $$2);
             }
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            this.b();
+            if (ac.c() - this.d < 250L) {
+               fmk.this.D();
+            }
+
+            this.d = ac.c();
+            return super.a($$0, $$1, $$2);
+         }
+
+         private void b() {
+            a.this.a(this);
+         }
+
+         @Override
+         public xo a() {
+            return xo.a("narrator.select", this.c);
          }
       }
    }

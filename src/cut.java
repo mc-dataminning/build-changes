@@ -1,37 +1,19 @@
-public class cut extends cuf {
-   private static final int a = 32;
+import java.util.List;
 
-   public cut(cuf.a $$0) {
+public class cut extends cwb {
+   public cut(cui.a $$0) {
       super($$0);
    }
 
    @Override
-   public cuk a(cuk $$0, dbt $$1, btk $$2) {
-      if ($$2 instanceof arc $$3) {
-         am.A.a($$3, $$0);
-         $$3.b(awg.c.b(this));
-      }
-
-      $$0.a(1, $$2);
-      if (!$$1.B) {
-         $$2.ew();
-      }
-
-      return $$0.e() ? new cuk(cun.qy) : $$0;
+   public void a(cun $$0, cui.b $$1, List<xo> $$2, cwg $$3) {
+      cwo $$4 = $$0.a(km.F, cwo.a);
+      $$4.a($$2::add, 0.25F, $$1.b());
    }
 
    @Override
-   public int b(cuk $$0) {
-      return 32;
-   }
-
-   @Override
-   public cwf c(cuk $$0) {
-      return cwf.c;
-   }
-
-   @Override
-   public bqq<cuk> a(dbt $$0, cms $$1, bqo $$2) {
-      return cum.a($$0, $$1, $$2);
+   public bqt<cun> a(dbw $$0, cmv $$1, bqr $$2) {
+      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avz.nX, awa.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

@@ -1,45 +1,65 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class cok {
-   private final coj a;
-   private final List<cok.a> b = Lists.newArrayList();
+   public static final cok a = a("core");
+   public static final cok b = a("idle");
+   public static final cok c = a("work");
+   public static final cok d = a("play");
+   public static final cok e = a("rest");
+   public static final cok f = a("meet");
+   public static final cok g = a("panic");
+   public static final cok h = a("raid");
+   public static final cok i = a("pre_raid");
+   public static final cok j = a("hide");
+   public static final cok k = a("fight");
+   public static final cok l = a("celebrate");
+   public static final cok m = a("admire_item");
+   public static final cok n = a("avoid");
+   public static final cok o = a("ride");
+   public static final cok p = a("play_dead");
+   public static final cok q = a("long_jump");
+   public static final cok r = a("ram");
+   public static final cok s = a("tongue");
+   public static final cok t = a("swim");
+   public static final cok u = a("lay_spawn");
+   public static final cok v = a("sniff");
+   public static final cok w = a("investigate");
+   public static final cok x = a("roar");
+   public static final cok y = a("emerge");
+   public static final cok z = a("dig");
+   private final String A;
+   private final int B;
 
-   public cok(coj $$0) {
-      this.a = $$0;
+   private cok(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
    }
 
-   public cok a(int $$0, coh $$1) {
-      this.b.add(new cok.a($$0, $$1));
-      return this;
+   public String a() {
+      return this.A;
    }
 
-   public coj a() {
-      this.b.stream().map(cok.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         coh $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   private static cok a(String $$0) {
+      return jv.a(lp.E, $$0, new cok($$0));
    }
 
-   static class a {
-      private final int a;
-      private final coh b;
-
-      public a(int $$0, coh $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         cok $$1 = (cok)$$0;
+         return this.A.equals($$1.A);
+      } else {
+         return false;
       }
+   }
 
-      public int a() {
-         return this.a;
-      }
+   @Override
+   public int hashCode() {
+      return this.B;
+   }
 
-      public coh b() {
-         return this.b;
-      }
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

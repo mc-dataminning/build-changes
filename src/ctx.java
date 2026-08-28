@@ -1,14 +1,14 @@
-public class ctx extends cvn {
-   public ctx(deu $$0, deu $$1, cuf.a $$2) {
-      super($$2, $$0, $$1, je.b);
+import javax.annotation.Nullable;
+
+public class ctx extends csl {
+   public ctx(dex $$0, cui.a $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   protected boolean a(dbw $$0, drx $$1, iz $$2) {
-      if ($$1.b() instanceof dnt $$3 && !$$3.b($$1, $$0, $$2)) {
-         return false;
-      }
-
-      return super.a($$0, $$1, $$2);
+   protected dsa c(cxy $$0) {
+      cmv $$1 = $$0.o();
+      return $$1 != null && !$$1.gz() ? null : super.c($$0);
    }
 }

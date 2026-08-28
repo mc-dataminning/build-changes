@@ -1,43 +1,56 @@
-import java.util.Optional;
+public class eav extends eaw<edh> {
+   public static final int a = 4;
+   public static final int b = 4;
+   public static final int c = 1;
+   public static final float d = 0.5F;
+   private static final iz an = iz.c;
+   private final boolean ao;
 
-public class eav<FC extends ecx> {
-   private final Optional<eag<?, ?>> a;
-   private final dco b;
-   private final dtu c;
-   private final azc d;
-   private final iz e;
-   private final FC f;
-
-   public eav(Optional<eag<?, ?>> $$0, dco $$1, dtu $$2, azc $$3, iz $$4, FC $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   public static iz a(iz $$0) {
+      return an.a((kd)$$0);
    }
 
-   public Optional<eag<?, ?>> a() {
-      return this.a;
+   public eav(boolean $$0) {
+      super(edh.a);
+      this.ao = $$0;
    }
 
-   public dco b() {
-      return this.b;
-   }
+   @Override
+   public boolean a(eay<edh> $$0) {
+      iz $$1 = $$0.e();
+      dcr $$2 = $$0.b();
 
-   public dtu c() {
-      return this.c;
-   }
+      for (iz $$3 : iz.c(new iz($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new iz($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
+         boolean $$4 = $$3.a($$1, 2.5);
+         if ($$4 || $$3.a($$1, 3.5)) {
+            if ($$3.v() < $$1.v()) {
+               if ($$4) {
+                  this.a($$2, $$3, dez.F.o());
+               } else if ($$3.v() < $$1.v()) {
+                  this.a($$2, $$3, dez.fz.o());
+               }
+            } else if ($$3.v() > $$1.v()) {
+               this.a($$2, $$3, dez.a.o());
+            } else if (!$$4) {
+               this.a($$2, $$3, dez.F.o());
+            } else if (this.ao) {
+               this.a($$2, new iz($$3), dez.fx.o());
+            } else {
+               this.a($$2, new iz($$3), dez.a.o());
+            }
+         }
+      }
 
-   public azc d() {
-      return this.d;
-   }
+      for (int $$5 = 0; $$5 < 4; $$5++) {
+         this.a($$2, $$1.b($$5), dez.F.o());
+      }
 
-   public iz e() {
-      return this.e;
-   }
+      iz $$6 = $$1.b(2);
 
-   public FC f() {
-      return this.f;
+      for (je $$7 : je.c.a) {
+         this.a($$2, $$6.a($$7), dez.cq.o().a(dnz.g, $$7));
+      }
+
+      return true;
    }
 }

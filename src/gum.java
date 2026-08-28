@@ -1,50 +1,37 @@
-import javax.annotation.Nullable;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
 
 public class gum {
-   private final gut a;
-   private final ffe b;
-   @Nullable
-   private fjk c;
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
 
-   public gum(gut $$0, ffe $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   private void a() {
-      if (this.c != null) {
-         this.a.a(this.c);
-      }
-
-      xl $$0 = xl.c("tutorial.bundleInsert.title");
-      xl $$1 = xl.c("tutorial.bundleInsert.description");
-      this.c = new fjk(fjk.a.g, $$0, $$1, true);
-      this.a.a(this.c, 160);
-   }
-
-   private void b() {
-      if (this.c != null) {
-         this.a.a(this.c);
-         this.c = null;
-      }
-
-      if (!this.b.t) {
-         this.b.t = true;
-         this.b.av();
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
       }
    }
 
-   public void a(cuk $$0, cuk $$1, cpx $$2) {
-      if (!this.b.t) {
-         if (!$$0.e() && $$1.a(cun.qU)) {
-            if ($$2 == cpx.a) {
-               this.a();
-            } else if ($$2 == cpx.b) {
-               this.b();
-            }
-         } else if ($$0.a(cun.qU) && !$$1.e() && $$2 == cpx.b) {
-            this.b();
-         }
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
       }
+
+      this.d = $$0;
+   }
+
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
+   }
+
+   public void a(gub $$0) {
+      this.b.ifPresent($$1 -> $$0.send(guc.e, $$1x -> {
+            $$1x.a(gue.p, this.a($$1));
+            $$1x.a(gue.q, (int)this.c);
+         }));
    }
 }

@@ -1,7 +1,6 @@
-import java.util.List;
-
-public interface cww<T, C> {
-   List<ars<T>> a();
-
-   C a(List<ars<T>> var1);
+public class cww {
+   public static void a(rc<cwu> $$0) {
+      cwv.a($$0, cuq.xJ, cwv.q);
+      cwv.a($$0, cuq.xK, cwv.r);
+   }
 }

@@ -1,24 +1,37 @@
-public class cuw extends cuf {
-   public cuw(cuf.a $$0) {
+public class cuw extends cui {
+   private static final int a = 32;
+
+   public cuw(cui.a $$0) {
       super($$0);
    }
 
    @Override
-   public bqp a(cuk $$0, cms $$1, btk $$2, bqo $$3) {
-      xl $$4 = $$0.a(km.f);
-      if ($$4 != null && !($$2 instanceof cms)) {
-         if (!$$1.dP().B && $$2.bD()) {
-            $$2.b($$4);
-            if ($$2 instanceof btm $$5) {
-               $$5.fU();
-            }
-
-            $$0.h(1);
-         }
-
-         return bqp.a($$1.dP().B);
-      } else {
-         return bqp.e;
+   public cun a(cun $$0, dbw $$1, btn $$2) {
+      if ($$2 instanceof arf $$3) {
+         am.A.a($$3, $$0);
+         $$3.b(awj.c.b(this));
       }
+
+      $$0.a(1, $$2);
+      if (!$$1.B) {
+         $$2.ew();
+      }
+
+      return $$0.e() ? new cun(cuq.qy) : $$0;
+   }
+
+   @Override
+   public int b(cun $$0) {
+      return 32;
+   }
+
+   @Override
+   public cwi c(cun $$0) {
+      return cwi.c;
+   }
+
+   @Override
+   public bqt<cun> a(dbw $$0, cmv $$1, bqr $$2) {
+      return cup.a($$0, $$1, $$2);
    }
 }

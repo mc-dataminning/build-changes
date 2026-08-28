@@ -1,42 +1,46 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
 import java.util.function.Consumer;
 
-public record cxh(List<xl> e, List<xl> f) implements cxq {
-   public static final cxh a = new cxh(List.of());
-   public static final int b = 256;
-   private static final yi g = yi.a.a(n.f).b(true);
-   public static final Codec<cxh> c = xn.g.sizeLimitedListOf(256).xmap(cxh::new, cxh::a);
-   public static final zj<ww, cxh> d = xn.b.a(zh.c(256)).a(cxh::new, cxh::a);
+public record cxh(int d, List<cxg> e) implements cxt {
+   public static final int a = 256;
+   public static final Codec<cxh> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayf.j.optionalFieldOf("flight_duration", 0).forGetter(cxh::a),
+               cxg.c.sizeLimitedListOf(256).optionalFieldOf("explosions", List.of()).forGetter(cxh::b)
+            )
+            .apply($$0, cxh::new)
+   );
+   public static final zm<ByteBuf, cxh> c = zm.a(zk.g, cxh::a, cxg.d.a(zk.c(256)), cxh::b, cxh::new);
 
-   public cxh(List<xl> $$0) {
-      this($$0, Lists.transform($$0, $$0x -> xo.a($$0x.f(), g)));
-   }
-
-   public cxh(List<xl> e, List<xl> f) {
+   public cxh(int d, List<cxg> e) {
       if (e.size() > 256) {
-         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
+         throw new IllegalArgumentException("Got " + e.size() + " explosions, but maximum is 256");
       } else {
+         this.d = d;
          this.e = e;
-         this.f = f;
       }
    }
 
-   public cxh a(xl $$0) {
-      return new cxh(ac.a(this.e, $$0));
-   }
-
    @Override
-   public void a(cuf.b $$0, Consumer<xl> $$1, cwd $$2) {
-      this.f.forEach($$1);
+   public void a(cui.b $$0, Consumer<xo> $$1, cwg $$2) {
+      if (this.d > 0) {
+         $$1.accept(xo.c("item.minecraft.firework_rocket.flight").b(xn.v).f(String.valueOf(this.d)).a(n.h));
+      }
+
+      for (cxg $$3 : this.e) {
+         $$3.a($$1);
+         $$3.b($$1x -> $$1.accept(xo.b("  ").b($$1x)));
+      }
    }
 
-   public List<xl> a() {
+   public int a() {
+      return this.d;
+   }
+
+   public List<cxg> b() {
       return this.e;
-   }
-
-   public List<xl> b() {
-      return this.f;
    }
 }

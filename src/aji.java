@@ -1,27 +1,4 @@
-import java.util.UUID;
-
-public record aji(String b, UUID c) implements zs<ajg> {
-   public static final zj<wl, aji> a = zs.a(aji::a, aji::new);
-
-   private aji(wl $$0) {
-      this($$0.d(16), $$0.n());
-   }
-
-   private void a(wl $$0) {
-      $$0.a(this.b, 16);
-      $$0.a(this.c);
-   }
-
-   @Override
-   public zu<aji> a() {
-      return aje.g;
-   }
-
-   public void a(ajg $$0) {
-      $$0.a(this);
-   }
-
-   public UUID e() {
-      return this.c;
-   }
+public class aji {
+   public static final ww<ajj> a = aaa.a(wk.d, $$0 -> $$0.a(ajh.g, ajl.a).a(ajh.h, ajm.a).a(ajh.f, ajk.a).a(ajh.i, ajn.b).a(acd.b, acf.a));
+   public static final ww<ajb> b = aaa.b(wk.d, $$0 -> $$0.a(ajh.e, ajg.a).a(ajh.c, aje.a).a(ajh.b, ajd.a).a(ajh.d, ajf.a).a(ajh.a, ajc.a).a(acd.a, acc.a));
 }

@@ -1,75 +1,81 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class frt extends fmy {
-   private static final Logger d = LogUtils.getLogger();
-   public static final dyn a = new dyn((long)"test1".hashCode(), true, false);
-   protected final fmy b;
-   private fgz r;
-   private fgz s;
-   private fgz u;
-   private fgz v;
-   protected fhi c;
-   private fry w;
+public class frt extends fnb {
+   private static final xo a = xo.c("selectWorld.experiments");
+   private static final xo b = xo.c("selectWorld.experiments.info").a(n.m);
+   private static final int c = 310;
+   private final fkp d = new fkp(this);
+   private final fnb r;
+   private final atz s;
+   private final Consumer<atz> u;
+   private final Object2BooleanMap<atw> v = new Object2BooleanLinkedOpenHashMap();
 
-   public frt(fmy $$0) {
-      super(xl.c("selectWorld.title"));
-      this.b = $$0;
+   public frt(fnb $$0, atz $$1, Consumer<atz> $$2) {
+      super(a);
+      this.r = $$0;
+      this.s = $$1;
+      this.u = $$2;
+
+      for (atw $$3 : $$1.c()) {
+         if ($$3.l() == aua.d) {
+            this.v.put($$3, $$1.f().contains($$3));
+         }
+      }
    }
 
    @Override
-   protected void aN_() {
-      this.c = new fhi(this.p, this.n / 2 - 100, 22, 200, 20, this.c, xl.c("selectWorld.search"));
-      this.c.b($$0 -> this.w.a($$0));
-      this.d(this.c);
-      this.w = this.c(new fry(this, this.m, this.n, this.o - 112, 48, 36, this.c.a(), this.w));
-      this.s = this.c(fgz.a(eps.a, $$0 -> this.w.d().ifPresent(fry.c::c)).a(this.n / 2 - 154, this.o - 52, 150, 20).a());
-      this.c(fgz.a(xl.c("selectWorld.create"), $$0 -> frn.a(this.m, this)).a(this.n / 2 + 4, this.o - 52, 150, 20).a());
-      this.u = this.c(fgz.a(xl.c("selectWorld.edit"), $$0 -> this.w.d().ifPresent(fry.c::f)).a(this.n / 2 - 154, this.o - 28, 72, 20).a());
-      this.r = this.c(fgz.a(xl.c("selectWorld.delete"), $$0 -> this.w.d().ifPresent(fry.c::d)).a(this.n / 2 - 76, this.o - 28, 72, 20).a());
-      this.v = this.c(fgz.a(xl.c("selectWorld.recreate"), $$0 -> this.w.d().ifPresent(fry.c::h)).a(this.n / 2 + 4, this.o - 28, 72, 20).a());
-      this.c(fgz.a(xk.k, $$0 -> this.m.a(this.b)).a(this.n / 2 + 82, this.o - 28, 72, 20).a());
-      this.a(null);
+   protected void aM_() {
+      this.d.a(a, this.p);
+      fkt $$0 = this.d.c(fkt.d());
+      $$0.a(new fhw(b, this.p).d(310), $$0x -> $$0x.e(15));
+      frx.a $$1 = frx.a(310).a(2, true).b(4);
+      this.v.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.v.getBoolean($$1x), $$1xx -> this.v.put($$1x, $$1xx)).a($$1x.c()));
+      $$1.a($$0::a);
+      fkt $$2 = this.d.b(fkt.e().a(8));
+      $$2.a(fhc.a(xn.d, $$0x -> this.m()).a());
+      $$2.a(fhc.a(xn.e, $$0x -> this.d()).a());
+      this.d.a($$1x -> {
+         fha var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   private static xo a(atw $$0) {
+      String $$1 = "dataPack." + $$0.g() + ".name";
+      return (xo)(gqd.a($$1) ? xo.c($$1) : $$0.b());
    }
 
    @Override
-   protected void aD_() {
-      this.b(this.c);
+   protected void c() {
+      this.d.a();
+   }
+
+   @Override
+   public xo i() {
+      return xn.a(super.i(), b);
    }
 
    @Override
    public void d() {
-      this.m.a(this.b);
+      this.m.a(this.r);
    }
 
-   @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
-   }
-
-   public void a(@Nullable eps $$0) {
-      if ($$0 == null) {
-         this.s.b(eps.a);
-         this.s.j = false;
-         this.u.j = false;
-         this.v.j = false;
-         this.r.j = false;
-      } else {
-         this.s.b($$0.t());
-         this.s.j = $$0.u();
-         this.u.j = $$0.w();
-         this.v.j = $$0.x();
-         this.r.j = $$0.y();
-      }
-   }
-
-   @Override
-   public void j() {
-      if (this.w != null) {
-         this.w.aF_().forEach(fry.a::close);
-      }
+   private void m() {
+      List<atw> $$0 = new ArrayList<>(this.s.f());
+      List<atw> $$1 = new ArrayList<>();
+      this.v.forEach(($$2, $$3) -> {
+         $$0.remove($$2);
+         if ($$3) {
+            $$1.add($$2);
+         }
+      });
+      $$0.addAll(Lists.reverse($$1));
+      this.s.b($$0.stream().map(atw::g).toList());
+      this.u.accept(this.s);
    }
 }

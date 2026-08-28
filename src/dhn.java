@@ -1,19 +1,39 @@
 import com.mojang.serialization.MapCodec;
 
-public class dhn extends dfo implements ctm {
-   public static final MapCodec<dhn> c = b(dhn::new);
+public class dhn extends dlg {
+   public static final MapCodec<dhn> b = b(dhn::new);
 
    @Override
    public MapCodec<dhn> a() {
-      return c;
+      return b;
    }
 
-   protected dhn(drw.d $$0) {
+   protected dhn(drz.d $$0) {
       super($$0);
+      this.k(this.E.b().a(a, je.b));
    }
 
    @Override
-   public bsw m() {
-      return bsw.f;
+   public dsa a(cxy $$0) {
+      je $$1 = $$0.k();
+      dsa $$2 = $$0.q().a_($$0.a().a($$1.g()));
+      return $$2.a(this) && $$2.c(a) == $$1 ? this.o().a(a, $$1.g()) : this.o().a(a, $$1);
+   }
+
+   @Override
+   public void a(dsa $$0, dbw $$1, iz $$2, azf $$3) {
+      je $$4 = $$0.c(a);
+      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
+      if ($$3.a(5) == 0) {
+         $$1.a(li.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
+      }
+   }
+
+   @Override
+   protected void a(dsb.a<dex, dsa> $$0) {
+      $$0.a(a);
    }
 }

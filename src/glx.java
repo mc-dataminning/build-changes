@@ -1,11 +1,15 @@
-public class glx extends gjy<ckq, fuf<ckq>> {
-   private static final alb a = new alb("textures/entity/hoglin/zoglin.png");
+public class glx extends gkx<cks> {
+   private static final ale a = new ale("textures/entity/skeleton/wither_skeleton.png");
 
-   public glx(gis.a $$0) {
-      super($$0, new fuf<>($$0.a(fwu.ce)), 0.7F);
+   public glx(giv.a $$0) {
+      super($$0, fwx.bX, fwx.bY, fwx.bZ);
    }
 
-   public alb a(ckq $$0) {
+   public ale a(cks $$0) {
       return a;
+   }
+
+   protected void a(cks $$0, ezw $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
    }
 }

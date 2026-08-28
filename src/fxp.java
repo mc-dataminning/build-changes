@@ -1,204 +1,218 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
-import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
-import com.mojang.authlib.exceptions.InvalidCredentialsException;
-import com.mojang.authlib.exceptions.UserBannedException;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
 import com.mojang.logging.LogUtils;
-import java.math.BigInteger;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.atomic.AtomicReferenceArray;
+import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import net.minecraft.client.ClientBrandRetriever;
 import org.slf4j.Logger;
 
-public class fxp implements aiy {
-   private static final Logger a = LogUtils.getLogger();
-   private final ffa b;
-   @Nullable
-   private final fye c;
-   @Nullable
-   private final fmy d;
-   private final Consumer<xl> e;
-   private final wj f;
-   private final boolean g;
-   @Nullable
-   private final Duration h;
-   @Nullable
-   private String i;
-   private final Map<alb, byte[]> j;
-   private final boolean k;
-   private final AtomicReference<fxp.a> l = new AtomicReference<>(fxp.a.a);
+public class fxp extends dua {
+   static final Logger a = LogUtils.getLogger();
+   private final dug b;
+   private final eni c;
+   volatile fxp.a d;
+   final fxt e;
 
-   public fxp(wj $$0, ffa $$1, @Nullable fye $$2, @Nullable fmy $$3, boolean $$4, @Nullable Duration $$5, Consumer<xl> $$6, @Nullable fyi $$7) {
-      this.f = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$6;
-      this.g = $$4;
-      this.h = $$5;
-      this.j = $$7 != null ? new HashMap<>($$7.a()) : new HashMap<>();
-      this.k = $$7 != null;
+   public fxp(fxt $$0, int $$1) {
+      this.e = $$0;
+      this.b = new duc($$0, new dbd(0, 0), $$0.H_().d(lq.az).g(ddc.b));
+      this.c = new eni(this, true, $$0.D_().g());
+      this.d = new fxp.a(b($$1));
    }
 
-   private void a(fxp.a $$0) {
-      fxp.a $$1 = this.l.updateAndGet($$1x -> {
-         if (!$$0.f.contains($$1x)) {
-            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
-         } else {
-            return $$0;
+   @Override
+   public eni p() {
+      return this.c;
+   }
+
+   private static boolean a(@Nullable dug $$0, int $$1, int $$2) {
+      if ($$0 == null) {
+         return false;
+      } else {
+         dbd $$3 = $$0.f();
+         return $$3.e == $$1 && $$3.f == $$2;
+      }
+   }
+
+   public void a(dbd $$0) {
+      if (this.d.b($$0.e, $$0.f)) {
+         int $$1 = this.d.a($$0.e, $$0.f);
+         dug $$2 = this.d.a($$1);
+         if (a($$2, $$0.e, $$0.f)) {
+            this.d.a($$1, $$2, null);
          }
-      });
-      this.e.accept($$1.e);
-   }
-
-   @Override
-   public void a(ajb $$0) {
-      this.a(fxp.a.b);
-
-      Cipher $$4;
-      Cipher $$5;
-      String $$3;
-      ajj $$7;
-      try {
-         SecretKey $$1 = axs.a();
-         PublicKey $$2 = $$0.e();
-         $$3 = new BigInteger(axs.a($$0.b(), $$2, $$1)).toString(16);
-         $$4 = axs.a(2, $$1);
-         $$5 = axs.a(1, $$1);
-         byte[] $$6 = $$0.f();
-         $$7 = new ajj($$1, $$2, $$6);
-      } catch (Exception var9) {
-         throw new IllegalStateException("Protocol error", var9);
       }
-
-      if ($$0.g()) {
-         ac.h().submit(() -> {
-            xl $$4x = this.b($$3);
-            if ($$4x != null) {
-               if (this.c == null || !this.c.d()) {
-                  this.f.a($$4x);
-                  return;
-               }
-
-               a.warn($$4x.getString());
-            }
-
-            this.a($$7, $$4, $$5);
-         });
-      } else {
-         this.a($$7, $$4, $$5);
-      }
-   }
-
-   private void a(ajj $$0, Cipher $$1, Cipher $$2) {
-      this.a(fxp.a.c);
-      this.f.a($$0, ws.a(() -> this.f.a($$1, $$2)));
    }
 
    @Nullable
-   private xl b(String $$0) {
-      try {
-         this.e().joinServer(this.b.X().b(), this.b.X().d(), $$0);
-         return null;
-      } catch (AuthenticationUnavailableException var3) {
-         return xl.a("disconnect.loginFailedInfo", xl.c("disconnect.loginFailedInfo.serversUnavailable"));
-      } catch (InvalidCredentialsException var4) {
-         return xl.a("disconnect.loginFailedInfo", xl.c("disconnect.loginFailedInfo.invalidSession"));
-      } catch (InsufficientPrivilegesException var5) {
-         return xl.a("disconnect.loginFailedInfo", xl.c("disconnect.loginFailedInfo.insufficientPrivileges"));
-      } catch (ForcedUsernameChangeException | UserBannedException var6) {
-         return xl.a("disconnect.loginFailedInfo", xl.c("disconnect.loginFailedInfo.userBanned"));
-      } catch (AuthenticationException var7) {
-         return xl.a("disconnect.loginFailedInfo", var7.getMessage());
+   public dug b(int $$0, int $$1, duv $$2, boolean $$3) {
+      if (this.d.b($$0, $$1)) {
+         dug $$4 = this.d.a(this.d.a($$0, $$1));
+         if (a($$4, $$0, $$1)) {
+            return $$4;
+         }
       }
-   }
 
-   private MinecraftSessionService e() {
-      return this.b.al();
-   }
-
-   @Override
-   public void a(aja $$0) {
-      this.a(fxp.a.d);
-      GameProfile $$1 = $$0.b();
-      this.f.a(abt.b, new fxo(this.b, this.f, new fxu($$1, this.b.u().a(this.g, this.h, this.i), fxs.a().a(), cpi.h, null, this.c, this.d, this.j, null)));
-      this.f.a(ajk.a);
-      this.f.a(abt.a);
-      this.f.a(new aal(new aar(ClientBrandRetriever.getClientModName())));
-      this.f.a(new aak(this.b.m.aw()));
+      return $$3 ? this.b : null;
    }
 
    @Override
-   public void a(xl $$0) {
-      xl $$1 = this.k ? xk.q : xk.r;
-      if (this.c != null && this.c.e()) {
-         this.b.a(new gux(this.d, $$1, $$0));
+   public dbc q() {
+      return this.e;
+   }
+
+   public void a(int $$0, int $$1, wl $$2) {
+      if (!this.d.b($$0, $$1)) {
+         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
       } else {
-         this.b.a(new flz(this.d, $$1, $$0));
+         int $$3 = this.d.a($$0, $$1);
+         dug $$4 = this.d.b.get($$3);
+         if (!a($$4, $$0, $$1)) {
+            a.warn("Ignoring chunk since it's not present: {}, {}", $$0, $$1);
+         } else {
+            $$4.a($$2);
+         }
+      }
+   }
+
+   @Nullable
+   public dug a(int $$0, int $$1, wl $$2, ur $$3, Consumer<ads.b> $$4) {
+      if (!this.d.b($$0, $$1)) {
+         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
+         return null;
+      } else {
+         int $$5 = this.d.a($$0, $$1);
+         dug $$6 = this.d.b.get($$5);
+         dbd $$7 = new dbd($$0, $$1);
+         if (!a($$6, $$0, $$1)) {
+            $$6 = new dug(this.e, $$7);
+            $$6.a($$2, $$3, $$4);
+            this.d.a($$5, $$6);
+         } else {
+            $$6.a($$2, $$3, $$4);
+         }
+
+         this.e.a($$7);
+         return $$6;
       }
    }
 
    @Override
-   public boolean c() {
-      return this.f.i();
+   public void a(BooleanSupplier $$0, boolean $$1) {
    }
 
-   @Override
-   public void a(ajd $$0) {
-      this.f.a($$0.b());
+   public void d(int $$0, int $$1) {
+      this.d.e = $$0;
+      this.d.f = $$1;
    }
 
-   @Override
-   public void a(ajc $$0) {
-      if (!this.f.e()) {
-         this.f.a($$0.b(), false);
+   public void a(int $$0) {
+      int $$1 = this.d.c;
+      int $$2 = b($$0);
+      if ($$1 != $$2) {
+         fxp.a $$3 = new fxp.a($$2);
+         $$3.e = this.d.e;
+         $$3.f = this.d.f;
+
+         for (int $$4 = 0; $$4 < this.d.b.length(); $$4++) {
+            dug $$5 = this.d.b.get($$4);
+            if ($$5 != null) {
+               dbd $$6 = $$5.f();
+               if ($$3.b($$6.e, $$6.f)) {
+                  $$3.a($$3.a($$6.e, $$6.f), $$5);
+               }
+            }
+         }
+
+         this.d = $$3;
       }
    }
 
-   @Override
-   public void a(aiz $$0) {
-      this.e.accept(xl.c("connect.negotiating"));
-      this.f.a(new ajh($$0.b(), null));
-   }
-
-   public void a(@Nullable String $$0) {
-      this.i = $$0;
+   private static int b(int $$0) {
+      return Math.max(2, $$0) + 3;
    }
 
    @Override
-   public void a(abz $$0) {
-      this.f.a(new acc($$0.b(), this.j.get($$0.b())));
+   public String e() {
+      return this.d.b.length() + ", " + this.j();
    }
 
    @Override
-   public void a(p $$0) {
-      $$0.a("Server type", () -> this.c != null ? this.c.f().toString() : "<unknown>");
-      $$0.a("Login phase", () -> this.l.get().toString());
+   public int j() {
+      return this.d.g;
    }
 
-   static enum a {
-      a(xl.c("connect.connecting"), Set.of()),
-      b(xl.c("connect.authorizing"), Set.of(a)),
-      c(xl.c("connect.encrypting"), Set.of(b)),
-      d(xl.c("connect.joining"), Set.of(c, a));
+   @Override
+   public void a(dcf $$0, kb $$1) {
+      ffd.Q().f.b($$1.a(), $$1.b(), $$1.c());
+   }
 
-      final xl e;
-      final Set<fxp.a> f;
+   final class a {
+      final AtomicReferenceArray<dug> b;
+      final int c;
+      private final int d;
+      volatile int e;
+      volatile int f;
+      int g;
 
-      private a(final xl $$0, final Set<fxp.a> $$1) {
-         this.e = $$0;
-         this.f = $$1;
+      a(final int $$0) {
+         this.c = $$0;
+         this.d = $$0 * 2 + 1;
+         this.b = new AtomicReferenceArray<>(this.d * this.d);
+      }
+
+      int a(int $$0, int $$1) {
+         return Math.floorMod($$1, this.d) * this.d + Math.floorMod($$0, this.d);
+      }
+
+      protected void a(int $$0, @Nullable dug $$1) {
+         dug $$2 = this.b.getAndSet($$0, $$1);
+         if ($$2 != null) {
+            this.g--;
+            fxp.this.e.a($$2);
+         }
+
+         if ($$1 != null) {
+            this.g++;
+         }
+      }
+
+      protected dug a(int $$0, dug $$1, @Nullable dug $$2) {
+         if (this.b.compareAndSet($$0, $$1, $$2) && $$2 == null) {
+            this.g--;
+         }
+
+         fxp.this.e.a($$1);
+         return $$1;
+      }
+
+      boolean b(int $$0, int $$1) {
+         return Math.abs($$0 - this.e) <= this.c && Math.abs($$1 - this.f) <= this.c;
+      }
+
+      @Nullable
+      protected dug a(int $$0) {
+         return this.b.get($$0);
+      }
+
+      private void a(String $$0) {
+         try (FileOutputStream $$1 = new FileOutputStream($$0)) {
+            int $$2 = fxp.this.d.c;
+
+            for (int $$3 = this.f - $$2; $$3 <= this.f + $$2; $$3++) {
+               for (int $$4 = this.e - $$2; $$4 <= this.e + $$2; $$4++) {
+                  dug $$5 = fxp.this.d.b.get(fxp.this.d.a($$4, $$3));
+                  if ($$5 != null) {
+                     dbd $$6 = $$5.f();
+                     $$1.write(($$6.e + "\t" + $$6.f + "\t" + $$5.C() + "\n").getBytes(StandardCharsets.UTF_8));
+                  }
+               }
+            }
+         } catch (IOException var10) {
+            fxp.a.error("Failed to dump chunks to file {}", $$0, var10);
+         }
       }
    }
 }

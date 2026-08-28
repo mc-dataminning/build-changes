@@ -1,30 +1,94 @@
-import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public interface eqa<T> {
-   kl<T> a();
+public interface eqa {
+   int d = 19133;
+   int e = 19132;
 
-   T b();
+   dcq D();
 
-   T a(T var1, Stream<cuk> var2);
+   void a(dcq var1);
 
-   Stream<cuk> a(T var1);
+   boolean F();
 
-   default void a(cuk $$0, T $$1, Stream<cuk> $$2) {
-      T $$3 = $$0.a(this.a(), $$1);
-      T $$4 = this.a($$3, $$2);
-      $$0.b(this.a(), $$4);
+   Set<String> G();
+
+   Set<String> H();
+
+   void a(String var1, boolean var2);
+
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.G()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.x();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
+      });
    }
 
-   default void a(cuk $$0, Stream<cuk> $$1) {
-      this.a($$0, this.b(), $$1);
-   }
-
-   default void a(cuk $$0, UnaryOperator<cuk> $$1) {
-      T $$2 = $$0.a(this.a());
-      if ($$2 != null) {
-         UnaryOperator<cuk> $$3 = $$1x -> $$1x.e() ? $$1x : $$1.apply($$1x);
-         this.a($$0, this.a($$2).map($$3));
+   default String f(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
       }
+   }
+
+   @Nullable
+   ur E();
+
+   void a(@Nullable ur var1);
+
+   epz I();
+
+   dca J();
+
+   ur a(jw var1, @Nullable ur var2);
+
+   boolean l();
+
+   int x();
+
+   String e();
+
+   dbt k();
+
+   void a(dbt var1);
+
+   boolean m();
+
+   bqp q();
+
+   void a(bqp var1);
+
+   boolean r();
+
+   void d(boolean var1);
+
+   dbs o();
+
+   @Nullable
+   ur w();
+
+   dvv.a C();
+
+   void a(dvv.a var1);
+
+   dyq y();
+
+   boolean z();
+
+   boolean A();
+
+   Lifecycle B();
+
+   default cpj K() {
+      return this.D().b();
    }
 }

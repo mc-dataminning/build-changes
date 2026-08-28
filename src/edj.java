@@ -1,22 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class edj implements ecx {
+public class edj implements eda {
    public static final Codec<edj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.apply2(edj::new, ecn.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), ehj.b.fieldOf("default").forGetter($$0x -> $$0x.c))
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, edj::new)
    );
-   public final List<ecn> b;
-   public final ji<ehj> c;
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
 
-   public edj(List<ecn> $$0, ji<ehj> $$1) {
+   public edj(float $$0, float $$1, float $$2, float $$3) {
       this.b = $$0;
       this.c = $$1;
-   }
-
-   @Override
-   public Stream<eag<?, ?>> e() {
-      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
+      this.d = $$2;
+      this.e = $$3;
    }
 }

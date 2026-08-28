@@ -1,72 +1,57 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class die extends dju implements dex, dlv {
-   public static final MapCodec<die> a = b(die::new);
-   private static final dso c = dsn.C;
-   private final djv d = new djv(this);
+public class die extends dds {
+   public static final MapCodec<die> c = b(die::new);
 
    @Override
    public MapCodec<die> a() {
-      return a;
+      return c;
    }
 
-   public die(drw.d $$0) {
+   protected die(drz.d $$0) {
       super($$0);
-      this.k(this.n().a(c, Boolean.valueOf(false)));
-   }
-
-   public static ToIntFunction<drx> b(int $$0) {
-      return $$1 -> dju.n($$1) ? $$0 : 0;
    }
 
    @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      super.a($$0);
-      $$0.a(c);
+   public dpf a(iz $$0, dsa $$1) {
+      return new dqb($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dpf> dpg<T> a(dbw $$0, dsa $$1, dph<T> $$2) {
+      return a($$0, $$2, dph.a);
    }
 
    @Override
-   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, enr.c, enr.c.a($$3));
+   protected void a(dbw $$0, iz $$1, cmv $$2) {
+      dpf $$3 = $$0.c_($$1);
+      if ($$3 instanceof dqb) {
+         $$2.a((bqw)$$3);
+         $$2.a(awj.am);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(drx $$0, cxv $$1) {
-      return !$$1.n().a(cun.fW) || super.a($$0, $$1);
-   }
+   public void a(dsa $$0, dbw $$1, iz $$2, azf $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, avz.jY, awa.e, 1.0F, 1.0F, false);
+         }
 
-   @Override
-   public boolean b(dbw $$0, iz $$1, drx $$2) {
-      return je.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
-   }
-
-   @Override
-   public boolean a(dbt $$0, azc $$1, iz $$2, drx $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arb $$0, azc $$1, iz $$2, drx $$3) {
-      this.d.a($$3, $$0, $$2, $$1);
-   }
-
-   @Override
-   protected enq b_(drx $$0) {
-      return $$0.c(c) ? enr.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a_(drx $$0, daz $$1, iz $$2) {
-      return $$0.u().c();
-   }
-
-   @Override
-   public djv c() {
-      return this.d;
+         je $$7 = $$0.c(a);
+         je.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == je.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == je.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(li.ae, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(li.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

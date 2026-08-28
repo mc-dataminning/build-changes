@@ -1,56 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
 
-public class bpz extends bps {
-   public static final MapCodec<bpz> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
-               .apply($$0, bpz::new)
-      )
-      .validate(
-         $$0 -> $$0.d <= $$0.b
-               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
-               : DataResult.success($$0)
-      );
-   private final float b;
-   private final float d;
+public class bpz implements bqa {
+   private final bqa[] a;
 
-   private bpz(float $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public bpz(bqa... $$0) {
+      this.a = $$0;
    }
 
-   public static bpz b(float $$0, float $$1) {
-      if ($$1 <= $$0) {
-         throw new IllegalArgumentException("Max must exceed min");
-      } else {
-         return new bpz($$0, $$1);
+   @Override
+   public float a(azf $$0) {
+      float $$1 = 1.0F;
+
+      for (bqa $$2 : this.a) {
+         $$1 *= $$2.a($$0);
       }
-   }
 
-   @Override
-   public float a(azc $$0) {
-      return ayu.b($$0, this.b, this.d);
-   }
-
-   @Override
-   public float a() {
-      return this.b;
-   }
-
-   @Override
-   public float b() {
-      return this.d;
-   }
-
-   @Override
-   public bpt<?> c() {
-      return bpt.b;
+      return $$1;
    }
 
    @Override
    public String toString() {
-      return "[" + this.b + "-" + this.d + "]";
+      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
    }
 }

@@ -1,95 +1,62 @@
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fcq extends gve {
+   private final fnb a;
+   private final fcq.a b;
+   private fhv c = fhv.a;
 
-public class fcq extends gvb {
-   private static final Logger a = LogUtils.getLogger();
-   private static final gvc b = new gvc(Duration.ofSeconds(5L));
-   private final List<fea> c;
-   private final fmy B;
-   private final fkq C = fkq.d();
-   private volatile xl D;
-   @Nullable
-   private fho E;
+   public fcq(fbz $$0, fnb $$1) {
+      super(fev.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
 
-   public fcq(fmy $$0, fea... $$1) {
-      super(fes.a);
-      this.B = $$0;
-      this.c = List.of($$1);
-      if (this.c.isEmpty()) {
-         throw new IllegalArgumentException("No tasks added");
-      } else {
-         this.D = this.c.get(0).a();
-         Runnable $$2 = () -> {
-            for (fea $$1x : $$1) {
-               this.a($$1x.a());
-               if ($$1x.d()) {
-                  break;
-               }
+   public fcq(xo $$0, fnb $$1) {
+      super(fev.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
 
-               $$1x.run();
-               if ($$1x.d()) {
-                  return;
-               }
-            }
-         };
-         Thread $$3 = new Thread($$2, "Realms-long-running-task");
-         $$3.setUncaughtExceptionHandler(new fbu(a));
-         $$3.start();
-      }
+   public fcq(xo $$0, xo $$1, fnb $$2) {
+      super(fev.a);
+      this.a = $$2;
+      this.b = a($$0, $$1);
+   }
+
+   private static fcq.a a(fbz $$0) {
+      fao $$1 = $$0.a;
+      return a(xo.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
+   }
+
+   private static fcq.a a(xo $$0) {
+      return a(xo.c("mco.errorMessage.generic"), $$0);
+   }
+
+   private static fcq.a a(xo $$0, xo $$1) {
+      return new fcq.a($$0, $$1);
    }
 
    @Override
-   public void e() {
-      super.e();
-      if (this.E != null) {
-         b.a(this.m.aX(), this.E.y());
-      }
+   public void aM_() {
+      this.c(fhc.a(xn.h, $$0 -> this.d()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
+      this.c = fhv.a(this.p, this.b.b, this.n * 3 / 4);
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public void d() {
+      this.m.a(this.a);
    }
 
    @Override
-   public void aN_() {
-      this.C.c().b();
-      this.E = new fho(this.p, this.D);
-      this.C.a(this.E, $$0 -> $$0.e(30));
-      this.C.a(fgz.a(xk.e, $$0 -> this.f()).a());
-      this.C.a($$1 -> {
-         fgx var10000 = this.c($$1);
-      });
-      this.c();
+   public xo i() {
+      return xo.i().b(this.b.a).f(": ").b(this.b.b);
    }
 
    @Override
-   protected void c() {
-      this.C.a();
-      fkk.a(this.C, this.G());
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
+      this.c.a($$0, this.n / 2, 100, 9, -2142128);
    }
 
-   protected void f() {
-      for (fea $$0 : this.c) {
-         $$0.b();
-      }
-
-      this.m.a(this.B);
-   }
-
-   public void a(xl $$0) {
-      if (this.E != null) {
-         this.E.b($$0);
-      }
-
-      this.D = $$0;
+   static record a(xo a, xo b) {
    }
 }

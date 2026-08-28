@@ -1,59 +1,82 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class diy extends dij implements djl {
-   public static final MapCodec<diy> c = b(diy::new);
-   protected static final ewf g = deu.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double h = 0.14;
+public class diy extends dgt {
+   public static final MapCodec<diy> i = b(diy::new);
 
    @Override
-   public MapCodec<diy> a() {
-      return c;
+   public MapCodec<? extends diy> a() {
+      return i;
    }
 
-   protected diy(drw.d $$0) {
-      super($$0, je.b, g, true, 0.14);
-   }
-
-   @Override
-   protected boolean g(drx $$0) {
-      return $$0.a(dew.G);
-   }
-
-   @Override
-   protected deu b() {
-      return dew.md;
+   protected diy(drz.d $$0) {
+      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected boolean m(drx $$0) {
-      return !$$0.a(dew.kJ);
+   public dsa a(cxy $$0) {
+      dbc $$1 = $$0.q();
+      iz $$2 = $$0.a();
+      ent $$3 = $$0.q().b_($$0.a());
+      iz $$4 = $$2.e();
+      iz $$5 = $$2.f();
+      iz $$6 = $$2.g();
+      iz $$7 = $$2.h();
+      dsa $$8 = $$1.a_($$4);
+      dsa $$9 = $$1.a_($$5);
+      dsa $$10 = $$1.a_($$6);
+      dsa $$11 = $$1.a_($$7);
+      return this.o()
+         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, je.d))))
+         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, je.c))))
+         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, je.f))))
+         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, je.e))))
+         .a(e, Boolean.valueOf($$3.a() == enu.c));
    }
 
    @Override
-   public boolean a(@Nullable cms $$0, daz $$1, iz $$2, drx $$3, enp $$4) {
-      return false;
+   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, enu.c, enu.c.a($$3));
+      }
+
+      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dbu $$0, iz $$1, drx $$2, enq $$3) {
-      return false;
+   protected ewi c(dsa $$0, dbc $$1, iz $$2, evu $$3) {
+      return ewf.a();
    }
 
    @Override
-   protected int a(azc $$0) {
-      return 1;
+   protected boolean a(dsa $$0, dsa $$1, je $$2) {
+      if ($$1.a(this)) {
+         if (!$$2.o().d()) {
+            return true;
+         }
+
+         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
+            return true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
    }
 
-   @Nullable
-   @Override
-   public drx a(cxv $$0) {
-      enq $$1 = $$0.q().b_($$0.a());
-      return $$1.a(awr.a) && $$1.e() == 8 ? super.a($$0) : null;
+   public final boolean a(dsa $$0, boolean $$1) {
+      return !j($$0) && $$1 || $$0.b() instanceof diy || $$0.a(awo.L);
    }
 
    @Override
-   protected enq b_(drx $$0) {
-      return enr.c.a(false);
+   protected void a(dsb.a<dex, dsa> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

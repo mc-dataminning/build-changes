@@ -1,37 +1,19 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class bwm {
-   public static bwo<btk> a(float $$0) {
-      return byq.a((Function<byq.b<btk>, ? extends App<byq.c<btk>, byt<btk>>>)($$1 -> $$1.group($$1.c(cco.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.h($$3.dp())) {
-                  return false;
-               } else {
-                  Optional<evm> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new ccr($$2x, $$0, 0)));
-                  return true;
-               }
-            })));
+public class bwm extends bvg<btp> {
+   public bwm(int $$0, int $$1) {
+      super(ImmutableMap.of(ccr.n, ccs.a), $$0, $$1);
    }
 
-   @Nullable
-   private static evm a(arb $$0, btk $$1) {
-      azc $$2 = $$1.el();
-      iz $$3 = $$1.dp();
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         iz $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return evm.c($$5);
-         }
-      }
-
-      return null;
+   protected boolean a(are $$0, btp $$1, long $$2) {
+      return $$1.dS().c(ccr.n).filter($$1x -> $$1x.a($$1)).isPresent();
    }
 
-   public static boolean a(arb $$0, btk $$1, iz $$2) {
-      return $$0.h($$2) && (double)$$0.a(dxp.a.e, $$2).v() <= $$1.dw();
+   protected void b(are $$0, btp $$1, long $$2) {
+      $$1.dS().b(ccr.n);
+   }
+
+   protected void c(are $$0, btp $$1, long $$2) {
+      $$1.dS().c(ccr.n).ifPresent($$1x -> $$1.G().a($$1x.a()));
    }
 }

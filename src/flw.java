@@ -1,156 +1,179 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.util.List;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class flw extends fmy {
-   private static final alb a = new alb("icon/draft_report");
-   private int b;
-   private final xl c;
-   private final boolean d;
-   private xl r;
-   private final List<fgz> s = Lists.newArrayList();
-   @Nullable
-   private fgz u;
+public class flw extends fnb {
+   static final ale b = new ale("container/slot");
+   private static final int c = 18;
+   private static final int d = 20;
+   private static final int r = 1;
+   private static final int s = 1;
+   private static final int u = 2;
+   private static final int v = 2;
+   protected final frq a;
+   private final Consumer<egl> w;
+   egl x;
+   private xo y;
+   private xo z;
+   private flw.a A;
+   private fhc B;
 
-   public flw(@Nullable xl $$0, boolean $$1) {
-      super(xl.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
-      this.c = $$0;
-      this.d = $$1;
+   public flw(frq $$0, Consumer<egl> $$1, egl $$2) {
+      super(xo.c("createWorld.customize.flat.title"));
+      this.a = $$0;
+      this.w = $$1;
+      this.x = $$2;
+   }
+
+   public egl l() {
+      return this.x;
+   }
+
+   public void a(egl $$0) {
+      this.x = $$0;
    }
 
    @Override
-   protected void aN_() {
-      this.b = 0;
-      this.s.clear();
-      xl $$0 = this.d ? xl.c("deathScreen.spectate") : xl.c("deathScreen.respawn");
-      this.s.add(this.c(fgz.a($$0, $$0x -> {
-         this.m.s.ga();
-         $$0x.j = false;
-      }).a(this.n / 2 - 100, this.o / 4 + 72, 200, 20).a()));
-      this.u = this.c(
-         fgz.a(xl.c("deathScreen.titleScreen"), $$0x -> this.m.aZ().a(this.m, this, this::m, true)).a(this.n / 2 - 100, this.o / 4 + 96, 200, 20).a()
-      );
-      this.s.add(this.u);
-      this.c(false);
-      this.r = xl.a("deathScreen.score.value", xl.b(Integer.toString(this.m.s.fW())).a(n.o));
+   protected void aM_() {
+      this.y = xo.c("createWorld.customize.flat.tile");
+      this.z = xo.c("createWorld.customize.flat.height");
+      this.A = this.c(new flw.a());
+      this.B = this.c(fhc.a(xo.c("createWorld.customize.flat.removeLayer"), $$0 -> {
+         if (this.D()) {
+            List<egi> $$1 = this.x.e();
+            int $$2 = this.A.aE_().indexOf(this.A.h());
+            int $$3 = $$1.size() - $$2 - 1;
+            $$1.remove($$3);
+            this.A.a($$1.isEmpty() ? null : this.A.aE_().get(Math.min($$2, $$1.size() - 1)));
+            this.x.g();
+            this.A.d();
+            this.m();
+         }
+      }).a(this.n / 2 - 155, this.o - 52, 150, 20).a());
+      this.c(fhc.a(xo.c("createWorld.customize.presets"), $$0 -> {
+         this.m.a(new fmx(this));
+         this.x.g();
+         this.m();
+      }).a(this.n / 2 + 5, this.o - 52, 150, 20).a());
+      this.c(fhc.a(xn.d, $$0 -> {
+         this.w.accept(this.x);
+         this.m.a(this.a);
+         this.x.g();
+      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a());
+      this.c(fhc.a(xn.e, $$0 -> {
+         this.m.a(this.a);
+         this.x.g();
+      }).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
+      this.x.g();
+      this.m();
+   }
+
+   void m() {
+      this.B.j = this.D();
+   }
+
+   private boolean D() {
+      return this.A.h() != null;
    }
 
    @Override
-   public boolean aE_() {
-      return false;
-   }
-
-   private void m() {
-      if (this.d) {
-         this.C();
-      } else {
-         flq $$0 = new flw.a($$0x -> {
-            if ($$0x) {
-               this.C();
-            } else {
-               this.m.s.ga();
-               this.m.a(null);
-            }
-         }, xl.c("deathScreen.quit.confirm"), xk.a, xl.c("deathScreen.titleScreen"), xl.c("deathScreen.respawn"));
-         this.m.a($$0);
-         $$0.b(20);
-      }
-   }
-
-   private void C() {
-      if (this.m.r != null) {
-         this.m.r.Y();
-      }
-
-      this.m.b(new fme(xl.c("menu.savingLevel")));
-      this.m.a(new fnd());
+   public void d() {
+      this.m.a(this.a);
    }
 
    @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().b(2.0F, 2.0F, 2.0F);
-      $$0.a(this.p, this.l, this.n / 2 / 2, 30, 16777215);
-      $$0.c().b();
-      if (this.c != null) {
-         $$0.a(this.p, this.c, this.n / 2, 85, 16777215);
-      }
-
-      $$0.a(this.p, this.r, this.n / 2, 100, 16777215);
-      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
-         yi $$4 = this.a($$1);
-         $$0.a(this.p, $$4, $$1, $$2);
-      }
-
-      if (this.u != null && this.m.aZ().c()) {
-         $$0.a(a, this.u.C() + this.u.x() - 17, this.u.D() + 3, 15, 15);
-      }
+      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
+      int $$4 = this.n / 2 - 92 - 16;
+      $$0.b(this.p, this.y, $$4, 32, 16777215);
+      $$0.b(this.p, this.z, $$4 + 2 + 213 - this.p.a(this.z), 32, 16777215);
    }
 
-   @Override
-   public void b(fgm $$0, int $$1, int $$2, float $$3) {
-      a($$0, this.n, this.o);
-   }
+   class a extends fhy<flw.a.a> {
+      public a() {
+         super(flw.this.m, flw.this.n, flw.this.o - 103, 43, 24);
 
-   static void a(fgm $$0, int $$1, int $$2) {
-      $$0.b(0, 0, $$1, $$2, 1615855616, -1602211792);
-   }
-
-   @Nullable
-   private yi a(int $$0) {
-      if (this.c == null) {
-         return null;
-      } else {
-         int $$1 = this.m.h.a(this.c);
-         int $$2 = this.n / 2 - $$1 / 2;
-         int $$3 = this.n / 2 + $$1 / 2;
-         return $$0 >= $$2 && $$0 <= $$3 ? this.m.h.b().a(this.c, $$0 - $$2) : null;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
-         yi $$3 = this.a((int)$$0);
-         if ($$3 != null && $$3.h() != null && $$3.h().a() == xj.a.a) {
-            this.a($$3);
-            return false;
+         for (int $$0 = 0; $$0 < flw.this.x.e().size(); $$0++) {
+            this.b(new flw.a.a());
          }
       }
 
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.b++;
-      if (this.b == 20) {
-         this.c(true);
-      }
-   }
-
-   private void c(boolean $$0) {
-      for (fgz $$1 : this.s) {
-         $$1.j = $$0;
-      }
-   }
-
-   public static class a extends flq {
-      public a(BooleanConsumer $$0, xl $$1, xl $$2, xl $$3, xl $$4) {
-         super($$0, $$1, $$2, $$3, $$4);
+      public void a(@Nullable flw.a.a $$0) {
+         super.a($$0);
+         flw.this.m();
       }
 
-      @Override
-      public void b(fgm $$0, int $$1, int $$2, float $$3) {
-         flw.a($$0, this.n, this.o);
+      public void d() {
+         int $$0 = this.aE_().indexOf(this.h());
+         this.k();
+
+         for (int $$1 = 0; $$1 < flw.this.x.e().size(); $$1++) {
+            this.b(new flw.a.a());
+         }
+
+         List<flw.a.a> $$2 = this.aE_();
+         if ($$0 >= 0 && $$0 < $$2.size()) {
+            this.a($$2.get($$0));
+         }
+      }
+
+      class a extends fhy.a<flw.a.a> {
+         @Override
+         public void a(fgp $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            egi $$10 = flw.this.x.e().get(flw.this.x.e().size() - $$1 - 1);
+            dsa $$11 = $$10.b();
+            cun $$12 = this.a($$11);
+            this.a($$0, $$3, $$2, $$12);
+            $$0.a(flw.this.p, $$12.x(), $$3 + 18 + 5, $$2 + 3, 16777215, false);
+            xo $$13;
+            if ($$1 == 0) {
+               $$13 = xo.a("createWorld.customize.flat.layer.top", $$10.a());
+            } else if ($$1 == flw.this.x.e().size() - 1) {
+               $$13 = xo.a("createWorld.customize.flat.layer.bottom", $$10.a());
+            } else {
+               $$13 = xo.a("createWorld.customize.flat.layer", $$10.a());
+            }
+
+            $$0.a(flw.this.p, $$13, $$3 + 2 + 213 - flw.this.p.a($$13), $$2 + 3, 16777215, false);
+         }
+
+         private cun a(dsa $$0) {
+            cui $$1 = $$0.b().r();
+            if ($$1 == cuq.a) {
+               if ($$0.a(dez.G)) {
+                  $$1 = cuq.qz;
+               } else if ($$0.a(dez.H)) {
+                  $$1 = cuq.qA;
+               }
+            }
+
+            return new cun($$1);
+         }
+
+         @Override
+         public xo a() {
+            egi $$0 = flw.this.x.e().get(flw.this.x.e().size() - a.this.aE_().indexOf(this) - 1);
+            cun $$1 = this.a($$0.b());
+            return (xo)(!$$1.e() ? xo.a("narrator.select", $$1.x()) : xn.a);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return super.a($$0, $$1, $$2);
+         }
+
+         private void a(fgp $$0, int $$1, int $$2, cun $$3) {
+            this.a($$0, $$1 + 1, $$2 + 1);
+            if (!$$3.e()) {
+               $$0.b($$3, $$1 + 2, $$2 + 2);
+            }
+         }
+
+         private void a(fgp $$0, int $$1, int $$2) {
+            $$0.a(flw.b, $$1, $$2, 0, 18, 18);
+         }
       }
    }
 }

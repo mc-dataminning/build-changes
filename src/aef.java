@@ -1,60 +1,37 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class aef implements zv<ach> {
+   public static final zm<wl, aef> a = zv.a(aef::a, aef::new);
+   private final iz b;
+   private final boolean c;
 
-public record aef(UUID b, int c, @Nullable xx d, ye.a e, @Nullable xl f, xp g, xh.a h) implements zs<ace> {
-   public static final zj<ww, aef> a = zs.a(aef::a, aef::new);
-
-   private aef(ww $$0) {
-      this($$0.n(), $$0.l(), $$0.c(xx::a), new ye.a($$0), wl.a($$0, xn.d), xp.a($$0), xh.a.a.decode($$0));
+   public aef(iz $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(ww $$0) {
+   private aef(wl $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(wl $$0) {
       $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d, xx::a);
-      this.e.a($$0);
-      wl.a($$0, this.f, xn.d);
-      xp.a($$0, this.g);
-      xh.a.a.encode($$0, this.h);
+      $$0.a(this.c);
    }
 
    @Override
-   public zu<aef> a() {
-      return agq.aa;
+   public zx<aef> a() {
+      return agt.X;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public iz b() {
+      return this.b;
    }
 
-   public int e() {
+   public boolean e() {
       return this.c;
-   }
-
-   @Nullable
-   public xx f() {
-      return this.d;
-   }
-
-   public ye.a g() {
-      return this.e;
-   }
-
-   @Nullable
-   public xl h() {
-      return this.f;
-   }
-
-   public xp i() {
-      return this.g;
-   }
-
-   public xh.a j() {
-      return this.h;
    }
 }

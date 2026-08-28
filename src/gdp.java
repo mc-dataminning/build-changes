@@ -1,62 +1,340 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class gdp {
-   private final gdu a = new gdu();
-   private final gdv b;
-   private final gdj.a c;
-   private final gdj.a d;
-   private final gdk e;
+public class gdp implements AutoCloseable {
+   private static final String a = "minecraft:main";
+   private final eyi b;
+   private final aur c;
+   private final String d;
+   private final List<gdq> e = Lists.newArrayList();
+   private final Map<String, eyi> f = Maps.newHashMap();
+   private final List<eyi> g = Lists.newArrayList();
+   private Matrix4f h;
+   private int i;
+   private int j;
+   private float k;
+   private float l;
 
-   public gdp(int $$0) {
-      this.b = gdv.a($$0);
-      SortedMap<gdr, ezo> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(gdy.h(), this.a.a(gdr.c()));
-         $$0x.put(gdy.i(), this.a.a(gdr.e()));
-         $$0x.put(gdy.a(), this.a.a(gdr.d()));
-         $$0x.put(gdy.k(), this.a.a(gdr.f()));
-         a($$0x, gdy.b());
-         a($$0x, gdy.c());
-         a($$0x, gdy.d());
-         a($$0x, gdy.e());
-         a($$0x, gdy.f());
-         $$0x.put(gdy.g(), new ezo(786432));
-         a($$0x, gdr.j());
-         a($$0x, gdr.k());
-         a($$0x, gdr.m());
-         a($$0x, gdr.n());
-         a($$0x, gdr.l());
-         a($$0x, gdr.o());
-         a($$0x, gdr.p());
-         a($$0x, gdr.i());
-         gra.l.forEach($$1x -> a($$0x, $$1x));
-      });
-      this.d = gdj.a(new ezo(1536));
-      this.c = gdj.a($$1, new ezo(786432));
-      this.e = new gdk(this.c);
+   public gdp(goy $$0, aur $$1, eyi $$2, ale $$3) throws IOException, JsonSyntaxException {
+      this.c = $$1;
+      this.b = $$2;
+      this.k = 0.0F;
+      this.l = 0.0F;
+      this.i = $$2.e;
+      this.j = $$2.f;
+      this.d = $$3.toString();
+      this.b();
+      this.a($$0, $$3);
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<gdr, ezo> $$0, gdr $$1) {
-      $$0.put($$1, new ezo($$1.I()));
+   private void a(goy $$0, ale $$1) throws IOException, JsonSyntaxException {
+      aum $$2 = this.c.getResourceOrThrow($$1);
+
+      try {
+         try (Reader $$3 = $$2.e()) {
+            JsonObject $$4 = ayn.a($$3);
+            if (ayn.d($$4, "targets")) {
+               JsonArray $$5 = $$4.getAsJsonArray("targets");
+               int $$6 = 0;
+
+               for (JsonElement $$7 : $$5) {
+                  try {
+                     this.a($$7);
+                  } catch (Exception var14) {
+                     alh $$9 = alh.a(var14);
+                     $$9.a("targets[" + $$6 + "]");
+                     throw $$9;
+                  }
+
+                  $$6++;
+               }
+            }
+
+            if (ayn.d($$4, "passes")) {
+               JsonArray $$10 = $$4.getAsJsonArray("passes");
+               int $$11 = 0;
+
+               for (JsonElement $$12 : $$10) {
+                  try {
+                     this.a($$0, $$12);
+                  } catch (Exception var13) {
+                     alh $$14 = alh.a(var13);
+                     $$14.a("passes[" + $$11 + "]");
+                     throw $$14;
+                  }
+
+                  $$11++;
+               }
+            }
+         }
+      } catch (Exception var16) {
+         alh $$16 = alh.a(var16);
+         $$16.b($$1.a() + " (" + $$2.b() + ")");
+         throw $$16;
+      }
    }
 
-   public gdu a() {
-      return this.a;
+   private void a(JsonElement $$0) throws alh {
+      if (ayn.a($$0)) {
+         this.a($$0.getAsString(), this.i, this.j);
+      } else {
+         JsonObject $$1 = ayn.m($$0, "target");
+         String $$2 = ayn.i($$1, "name");
+         int $$3 = ayn.a($$1, "width", this.i);
+         int $$4 = ayn.a($$1, "height", this.j);
+         if (this.f.containsKey($$2)) {
+            throw new alh($$2 + " is already defined");
+         }
+
+         this.a($$2, $$3, $$4);
+      }
    }
 
-   public gdv b() {
-      return this.b;
+   private void a(goy $$0, JsonElement $$1) throws IOException {
+      JsonObject $$2 = ayn.m($$1, "pass");
+      String $$3 = ayn.i($$2, "name");
+      String $$4 = ayn.i($$2, "intarget");
+      String $$5 = ayn.i($$2, "outtarget");
+      eyi $$6 = this.b($$4);
+      eyi $$7 = this.b($$5);
+      boolean $$8 = ayn.a($$2, "use_linear_filter", false);
+      if ($$6 == null) {
+         throw new alh("Input target '" + $$4 + "' does not exist");
+      } else if ($$7 == null) {
+         throw new alh("Output target '" + $$5 + "' does not exist");
+      } else {
+         gdq $$9 = this.a($$3, $$6, $$7, $$8);
+         JsonArray $$10 = ayn.a($$2, "auxtargets", null);
+         if ($$10 != null) {
+            int $$11 = 0;
+
+            for (JsonElement $$12 : $$10) {
+               try {
+                  JsonObject $$13 = ayn.m($$12, "auxtarget");
+                  String $$14 = ayn.i($$13, "name");
+                  String $$15 = ayn.i($$13, "id");
+                  boolean $$16;
+                  String $$17;
+                  if ($$15.endsWith(":depth")) {
+                     $$16 = true;
+                     $$17 = $$15.substring(0, $$15.lastIndexOf(58));
+                  } else {
+                     $$16 = false;
+                     $$17 = $$15;
+                  }
+
+                  eyi $$20 = this.b($$17);
+                  if ($$20 == null) {
+                     if ($$16) {
+                        throw new alh("Render target '" + $$17 + "' can't be used as depth buffer");
+                     }
+
+                     ale $$21 = new ale("textures/effect/" + $$17 + ".png");
+                     this.c.getResource($$21).orElseThrow(() -> new alh("Render target or texture '" + $$17 + "' does not exist"));
+                     RenderSystem.setShaderTexture(0, $$21);
+                     $$0.a($$21);
+                     goi $$22 = $$0.b($$21);
+                     int $$23 = ayn.o($$13, "width");
+                     int $$24 = ayn.o($$13, "height");
+                     boolean $$25 = ayn.k($$13, "bilinear");
+                     if ($$25) {
+                        RenderSystem.texParameter(3553, 10241, 9729);
+                        RenderSystem.texParameter(3553, 10240, 9729);
+                     } else {
+                        RenderSystem.texParameter(3553, 10241, 9728);
+                        RenderSystem.texParameter(3553, 10240, 9728);
+                     }
+
+                     $$9.a($$14, $$22::a, $$23, $$24);
+                  } else if ($$16) {
+                     $$9.a($$14, $$20::g, $$20.c, $$20.d);
+                  } else {
+                     $$9.a($$14, $$20::f, $$20.c, $$20.d);
+                  }
+               } catch (Exception var27) {
+                  alh $$27 = alh.a(var27);
+                  $$27.a("auxtargets[" + $$11 + "]");
+                  throw $$27;
+               }
+
+               $$11++;
+            }
+         }
+
+         JsonArray $$28 = ayn.a($$2, "uniforms", null);
+         if ($$28 != null) {
+            int $$29 = 0;
+
+            for (JsonElement $$30 : $$28) {
+               try {
+                  this.b($$30);
+               } catch (Exception var26) {
+                  alh $$32 = alh.a(var26);
+                  $$32.a("uniforms[" + $$29 + "]");
+                  throw $$32;
+               }
+
+               $$29++;
+            }
+         }
+      }
    }
 
-   public gdj.a c() {
-      return this.c;
+   private void b(JsonElement $$0) throws alh {
+      JsonObject $$1 = ayn.m($$0, "uniform");
+      String $$2 = ayn.i($$1, "name");
+      ezn $$3 = this.e.get(this.e.size() - 1).b().a($$2);
+      if ($$3 == null) {
+         throw new alh("Uniform '" + $$2 + "' does not exist");
+      } else {
+         float[] $$4 = new float[4];
+         int $$5 = 0;
+
+         for (JsonElement $$7 : ayn.v($$1, "values")) {
+            try {
+               $$4[$$5] = ayn.e($$7, "value");
+            } catch (Exception var12) {
+               alh $$9 = alh.a(var12);
+               $$9.a("values[" + $$5 + "]");
+               throw $$9;
+            }
+
+            $$5++;
+         }
+
+         switch ($$5) {
+            case 0:
+            default:
+               break;
+            case 1:
+               $$3.a($$4[0]);
+               break;
+            case 2:
+               $$3.a($$4[0], $$4[1]);
+               break;
+            case 3:
+               $$3.a($$4[0], $$4[1], $$4[2]);
+               break;
+            case 4:
+               $$3.a($$4[0], $$4[1], $$4[2], $$4[3]);
+         }
+      }
    }
 
-   public gdj.a d() {
+   public eyi a(String $$0) {
+      return this.f.get($$0);
+   }
+
+   public void a(String $$0, int $$1, int $$2) {
+      eyi $$3 = new eyj($$1, $$2, true, ffd.a);
+      $$3.a(0.0F, 0.0F, 0.0F, 0.0F);
+      this.f.put($$0, $$3);
+      if ($$1 == this.i && $$2 == this.j) {
+         this.g.add($$3);
+      }
+   }
+
+   @Override
+   public void close() {
+      for (eyi $$0 : this.f.values()) {
+         $$0.a();
+      }
+
+      for (gdq $$1 : this.e) {
+         $$1.close();
+      }
+
+      this.e.clear();
+   }
+
+   public gdq a(String $$0, eyi $$1, eyi $$2, boolean $$3) throws IOException {
+      gdq $$4 = new gdq(this.c, $$0, $$1, $$2, $$3);
+      this.e.add(this.e.size(), $$4);
+      return $$4;
+   }
+
+   private void b() {
+      this.h = new Matrix4f().setOrtho(0.0F, (float)this.b.c, 0.0F, (float)this.b.d, 0.1F, 1000.0F);
+   }
+
+   public void a(int $$0, int $$1) {
+      this.i = this.b.c;
+      this.j = this.b.d;
+      this.b();
+
+      for (gdq $$2 : this.e) {
+         $$2.a(this.h);
+      }
+
+      for (eyi $$3 : this.g) {
+         $$3.a($$0, $$1, ffd.a);
+      }
+   }
+
+   private void a(int $$0) {
+      this.b.a($$0);
+
+      for (eyi $$1 : this.f.values()) {
+         $$1.a($$0);
+      }
+   }
+
+   public void a(float $$0) {
+      if ($$0 < this.l) {
+         this.k = this.k + (1.0F - this.l);
+         this.k += $$0;
+      } else {
+         this.k = this.k + ($$0 - this.l);
+      }
+
+      this.l = $$0;
+
+      while (this.k > 20.0F) {
+         this.k -= 20.0F;
+      }
+
+      int $$1 = 9728;
+
+      for (gdq $$2 : this.e) {
+         int $$3 = $$2.c();
+         if ($$1 != $$3) {
+            this.a($$3);
+            $$1 = $$3;
+         }
+
+         $$2.a(this.k / 20.0F);
+      }
+
+      this.a(9728);
+   }
+
+   public void a(String $$0, float $$1) {
+      for (gdq $$2 : this.e) {
+         $$2.b().b($$0).a($$1);
+      }
+   }
+
+   public final String a() {
       return this.d;
    }
 
-   public gdk e() {
-      return this.e;
+   @Nullable
+   private eyi b(@Nullable String $$0) {
+      if ($$0 == null) {
+         return null;
+      } else {
+         return $$0.equals("minecraft:main") ? this.b : this.f.get($$0);
+      }
    }
 }

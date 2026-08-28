@@ -35,105 +35,105 @@ public class eq {
    private final CommandDispatcher<ep> h = new CommandDispatcher();
 
    public eq(eq.a $$0, el $$1) {
-      amh.a(this.h);
-      ami.a(this.h, $$1);
-      anc.a(this.h, $$1);
-      amm.a(this.h, $$1);
-      amo.a(this.h, $$1);
-      amp.a(this.h, $$1);
-      amq.a(this.h, $$1);
-      apr.a(this.h);
-      amr.a(this.h);
-      amt.a(this.h);
-      amx.a(this.h);
-      amy.a(this.h);
-      amz.a(this.h, $$1);
-      ana.a(this.h);
-      anb.a(this.h, $$1);
-      and.a(this.h);
+      amk.a(this.h);
+      aml.a(this.h, $$1);
       anf.a(this.h, $$1);
+      amp.a(this.h, $$1);
+      amr.a(this.h, $$1);
+      ams.a(this.h, $$1);
+      amt.a(this.h, $$1);
+      apu.a(this.h);
+      amu.a(this.h);
+      amw.a(this.h);
+      ana.a(this.h);
+      anb.a(this.h);
+      anc.a(this.h, $$1);
+      and.a(this.h);
       ane.a(this.h, $$1);
       ang.a(this.h);
-      anh.a(this.h);
-      ani.a(this.h);
+      ani.a(this.h, $$1);
+      anh.a(this.h, $$1);
       anj.a(this.h);
-      ank.a(this.h, $$1);
+      ank.a(this.h);
       anl.a(this.h);
-      anm.a(this.h, $$1);
+      anm.a(this.h);
+      ann.a(this.h, $$1);
       ano.a(this.h);
-      anp.a(this.h);
-      anq.a(this.h);
-      anr.a(this.h, $$1);
-      ans.a(this.h, $$1);
+      anp.a(this.h, $$1);
+      anr.a(this.h);
+      ans.a(this.h);
       ant.a(this.h);
-      anx.a(this.h, $$1);
-      anz.a(this.h);
-      aoa.a(this.h);
+      anu.a(this.h, $$1);
+      anv.a(this.h, $$1);
+      anw.a(this.h);
+      aoa.a(this.h, $$1);
+      aoc.a(this.h);
       aod.a(this.h);
-      aof.a(this.h);
-      aoe.a(this.h);
-      aoh.a(this.h);
+      aog.a(this.h);
       aoi.a(this.h);
-      aom.a(this.h);
-      aon.a(this.h);
-      aoo.a(this.h, $$1);
-      aop.a(this.h, $$0 != eq.a.c);
+      aoh.a(this.h);
+      aok.a(this.h);
+      aol.a(this.h);
+      aop.a(this.h);
+      aoq.a(this.h);
       aor.a(this.h, $$1);
-      aot.a(this.h);
-      aou.a(this.h);
+      aos.a(this.h, $$0 != eq.a.c);
+      aou.a(this.h, $$1);
       aow.a(this.h);
       aox.a(this.h);
       aoz.a(this.h);
-      apa.a(this.h, $$1);
-      apb.a(this.h);
-      apc.a(this.h, $$1);
-      apd.a(this.h);
+      apa.a(this.h);
+      apc.a(this.h);
+      apd.a(this.h, $$1);
       ape.a(this.h);
       apf.a(this.h, $$1);
       apg.a(this.h);
       aph.a(this.h);
       api.a(this.h, $$1);
+      apj.a(this.h);
       apk.a(this.h);
-      apm.a(this.h);
-      apo.a(this.h);
-      if (bnj.f.d()) {
-         ann.a(this.h);
+      apl.a(this.h, $$1);
+      apn.a(this.h);
+      app.a(this.h);
+      apr.a(this.h);
+      if (bnm.f.d()) {
+         anq.a(this.h);
       }
 
       if (aa.aX) {
          uf.a(this.h);
-         aog.a(this.h);
-         aoc.a(this.h, $$1);
-         amw.a(this.h);
-         amv.a(this.h);
-         apl.a(this.h);
-         aov.a(this.h);
-         aoq.a(this.h);
+         aoj.a(this.h);
+         aof.a(this.h, $$1);
+         amz.a(this.h);
+         amy.a(this.h);
+         apo.a(this.h);
+         aoy.a(this.h);
+         aot.a(this.h);
          if ($$0.e) {
-            amu.a(this.h);
+            amx.a(this.h);
          }
       }
 
       if ($$0.e) {
-         amj.a(this.h);
-         amk.a(this.h);
-         aml.a(this.h);
-         ams.a(this.h);
-         anu.a(this.h);
-         anv.a(this.h);
-         anw.a(this.h);
+         amm.a(this.h);
+         amn.a(this.h);
+         amo.a(this.h);
+         amv.a(this.h);
+         anx.a(this.h);
          any.a(this.h);
-         aoj.a(this.h);
-         aok.a(this.h);
-         aol.a(this.h);
-         aos.a(this.h);
-         aoy.a(this.h);
-         apj.a(this.h);
-         apn.a(this.h);
+         anz.a(this.h);
+         aob.a(this.h);
+         aom.a(this.h);
+         aon.a(this.h);
+         aoo.a(this.h);
+         aov.a(this.h);
+         apb.a(this.h);
+         apm.a(this.h);
+         apq.a(this.h);
       }
 
       if ($$0.d) {
-         aob.a(this.h);
+         aoe.a(this.h);
       }
 
       this.h.setConsumer(er.b_());
@@ -160,7 +160,7 @@ public class eq {
             a($$2, $$3x -> ho.a($$3x, $$1, $$3, $$2, em.a));
          }
       } catch (Exception var12) {
-         xz $$5 = xl.b(var12.getMessage() == null ? var12.getClass().getName() : var12.getMessage());
+         yc $$5 = xo.b(var12.getMessage() == null ? var12.getClass().getName() : var12.getMessage());
          if (g.isDebugEnabled()) {
             g.error("Command exception: /{}", $$1, var12);
             StackTraceElement[] $$6 = var12.getStackTrace();
@@ -170,9 +170,9 @@ public class eq {
             }
          }
 
-         $$2.b(xl.c("command.failed").a($$1x -> $$1x.a(new xr(xr.a.a, $$5))));
+         $$2.b(xo.c("command.failed").a($$1x -> $$1x.a(new xu(xu.a.a, $$5))));
          if (aa.aX) {
-            $$2.b(xl.b(ac.c(var12)));
+            $$2.b(xo.b(ac.c(var12)));
             g.error("'/{}' threw an exception", $$1, var12);
          }
       } finally {
@@ -187,21 +187,21 @@ public class eq {
          return (ContextChain<ep>)ContextChain.tryFlatten($$0.getContext().build($$1))
             .orElseThrow(() -> CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext($$0.getReader()));
       } catch (CommandSyntaxException var7) {
-         $$2.b(xo.a(var7.getRawMessage()));
+         $$2.b(xr.a(var7.getRawMessage()));
          if (var7.getInput() != null && var7.getCursor() >= 0) {
             int $$4 = Math.min(var7.getInput().length(), var7.getCursor());
-            xz $$5 = xl.i().a(n.h).a($$1x -> $$1x.a(new xj(xj.a.d, "/" + $$1)));
+            yc $$5 = xo.i().a(n.h).a($$1x -> $$1x.a(new xm(xm.a.d, "/" + $$1)));
             if ($$4 > 10) {
-               $$5.b(xk.u);
+               $$5.b(xn.u);
             }
 
             $$5.f(var7.getInput().substring(Math.max(0, $$4 - 10), $$4));
             if ($$4 < var7.getInput().length()) {
-               xl $$6 = xl.b(var7.getInput().substring($$4)).a(n.m, n.t);
+               xo $$6 = xo.b(var7.getInput().substring($$4)).a(n.m, n.t);
                $$5.b($$6);
             }
 
-            $$5.b(xl.c("command.context.here").a(n.m, n.u));
+            $$5.b(xo.c("command.context.here").a(n.m, n.u));
             $$2.b($$5);
          }
 
@@ -214,8 +214,8 @@ public class eq {
       ho<ep> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aM().c(dbp.x));
-         int $$6 = $$2.aM().c(dbp.y);
+         int $$5 = Math.max(1, $$2.aM().c(dbs.x));
+         int $$6 = $$2.aM().c(dbs.y);
 
          try (ho<ep> $$7 = new ho<>($$5, $$6, $$2.aT())) {
             f.set($$7);
@@ -229,12 +229,12 @@ public class eq {
       }
    }
 
-   public void a(arc $$0) {
+   public void a(arf $$0) {
       Map<CommandNode<ep>, CommandNode<eu>> $$1 = Maps.newHashMap();
       RootCommandNode<eu> $$2 = new RootCommandNode();
       $$1.put(this.h.getRoot(), $$2);
       this.a(this.h.getRoot(), $$2, $$0.dg(), $$1);
-      $$0.c.b(new acx($$2));
+      $$0.c.b(new ada($$2));
    }
 
    private void a(CommandNode<ep> $$0, CommandNode<eu> $$1, ep $$2, Map<CommandNode<ep>, CommandNode<eu>> $$3) {
@@ -313,12 +313,12 @@ public class eq {
    public static el a(final jk.a $$0) {
       return new el() {
          @Override
-         public Stream<ala<? extends jv<?>>> a() {
+         public Stream<ald<? extends jv<?>>> a() {
             return $$0.a();
          }
 
          @Override
-         public <T> Optional<jk.b<T>> a(ala<? extends jv<? extends T>> $$0x) {
+         public <T> Optional<jk.b<T>> a(ald<? extends jv<? extends T>> $$0x) {
             return $$0.a($$0).map(this::a);
          }
 
@@ -330,12 +330,12 @@ public class eq {
                }
 
                @Override
-               public Optional<jm.c<T>> a(axb<T> $$0xx) {
+               public Optional<jm.c<T>> a(axe<T> $$0xx) {
                   return Optional.of(this.b($$0));
                }
 
                @Override
-               public jm.c<T> b(axb<T> $$0xx) {
+               public jm.c<T> b(axe<T> $$0xx) {
                   Optional<jm.c<T>> $$1 = this.a().a($$0);
                   return $$1.orElseGet(() -> jm.a(this.a(), $$0));
                }

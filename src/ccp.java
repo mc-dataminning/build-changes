@@ -1,5 +1,8 @@
-public enum ccp {
-   a,
-   b,
-   c;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ccp {
 }

@@ -1,105 +1,181 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public interface dxi {
-   Codec<dxi> b = dxj.b;
-   Codec<ji<dxi>> c = akx.a(lq.aD, b);
-   Codec<dxi> d = c.xmap(dxj.j::new, $$0 -> (ji)($$0 instanceof dxj.j $$1 ? $$1.j() : new ji.a<>($$0)));
-
-   double a(dxi.b var1);
-
-   void a(double[] var1, dxi.a var2);
-
-   dxi a(dxi.f var1);
-
-   double a();
-
-   double b();
-
-   ayn<? extends dxi> c();
-
-   default dxi a(double $$0, double $$1) {
-      return new dxj.g(this, $$0, $$1);
+public abstract class dxi {
+   public static dxi.b a(int $$0, int $$1) {
+      return new dxi.b($$0 - 1, $$1 + 1);
    }
 
-   default dxi d() {
-      return dxj.a(this, dxj.k.a.a);
+   public static dxi.b b(int $$0, int $$1) {
+      return new dxi.b($$0, $$1);
    }
 
-   default dxi e() {
-      return dxj.a(this, dxj.k.a.b);
+   public static dxi a(int $$0) {
+      return new dxi.c($$0, false);
    }
 
-   default dxi f() {
-      return dxj.a(this, dxj.k.a.c);
+   public static dxi b(int $$0) {
+      return new dxi.c($$0 + 1, false);
    }
 
-   default dxi g() {
-      return dxj.a(this, dxj.k.a.d);
+   public static dxi c(int $$0) {
+      return new dxi.c($$0, true);
    }
 
-   default dxi h() {
-      return dxj.a(this, dxj.k.a.e);
+   public static dxi d(int $$0) {
+      return new dxi.c($$0 - 1, true);
    }
 
-   default dxi i() {
-      return dxj.a(this, dxj.k.a.f);
+   public static dxi a() {
+      return dxi.a.a;
    }
 
-   public interface a {
-      dxi.b a(int var1);
-
-      void a(double[] var1, dxi var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default dyr d() {
-         return dyr.a();
+   public static dxi a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
+      } else {
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
       }
    }
 
-   public static record c(ji<emt.a> b, @Nullable emt c) {
-      public static final Codec<dxi.c> a = emt.a.b.xmap($$0 -> new dxi.c($$0, null), dxi.c::b);
+   public abstract OptionalInt b();
 
-      public c(ji<emt.a> $$0) {
-         this($$0, null);
-      }
+   public abstract OptionalInt c();
 
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
+   public abstract OptionalInt d();
 
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
+   public dxi a(OptionalInt $$0) {
+      return a($$0, this.b());
+   }
+
+   public dxi b(OptionalInt $$0) {
+      return a(this.c(), $$0);
+   }
+
+   public static Optional<dxi> a(dcc $$0, iz $$1, int $$2, Predicate<dsa> $$3, Predicate<dsa> $$4) {
+      iz.a $$5 = $$1.j();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
+      } else {
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, je.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, je.a);
+         return Optional.of(a($$8, $$7));
       }
    }
 
-   public interface d extends dxi {
-      @Override
-      default void a(double[] $$0, dxi.a $$1) {
-         $$1.a($$0, this);
+   private static OptionalInt a(dcc $$0, int $$1, Predicate<dsa> $$2, Predicate<dsa> $$3, iz.a $$4, int $$5, je $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
+   }
+
+   public static final class a extends dxi {
+      static final dxi.a a = new dxi.a();
+
+      private a() {
       }
 
       @Override
-      default dxi a(dxi.f $$0) {
-         return $$0.apply(this);
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
       }
    }
 
-   public static record e(int a, int b, int c) implements dxi.b {
+   public static final class b extends dxi {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
+         }
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
    }
 
-   public interface f {
-      dxi apply(dxi var1);
+   public static final class c extends dxi {
+      private final int a;
+      private final boolean b;
 
-      default dxi.c a(dxi.c $$0) {
-         return $$0;
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
       }
    }
 }

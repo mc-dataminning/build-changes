@@ -1,73 +1,50 @@
-public class gup implements guu {
-   private static final int a = 6000;
-   private static final xl b = xl.c("tutorial.find_tree.title");
-   private static final xl c = xl.c("tutorial.find_tree.description");
-   private final gut d;
-   private fjk e;
-   private int f;
+import javax.annotation.Nullable;
 
-   public gup(gut $$0) {
-      this.d = $$0;
+public class gup {
+   private final guw a;
+   private final ffh b;
+   @Nullable
+   private fjn c;
+
+   public gup(guw $$0, ffh $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(guv.f);
-      } else {
-         if (this.f == 1) {
-            gcl $$0 = this.d.e().s;
-            if ($$0 != null && (b($$0) || a($$0))) {
-               this.d.a(guv.e);
-               return;
+   private void a() {
+      if (this.c != null) {
+         this.a.a(this.c);
+      }
+
+      xo $$0 = xo.c("tutorial.bundleInsert.title");
+      xo $$1 = xo.c("tutorial.bundleInsert.description");
+      this.c = new fjn(fjn.a.g, $$0, $$1, true);
+      this.a.a(this.c, 160);
+   }
+
+   private void b() {
+      if (this.c != null) {
+         this.a.a(this.c);
+         this.c = null;
+      }
+
+      if (!this.b.t) {
+         this.b.t = true;
+         this.b.av();
+      }
+   }
+
+   public void a(cun $$0, cun $$1, cqa $$2) {
+      if (!this.b.t) {
+         if (!$$0.e() && $$1.a(cuq.qU)) {
+            if ($$2 == cqa.a) {
+               this.a();
+            } else if ($$2 == cqa.b) {
+               this.b();
             }
-         }
-
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new fjk(fjk.a.c, b, c, false);
-            this.d.e().ax().a(this.e);
+         } else if ($$0.a(cuq.qU) && !$$1.e() && $$2 == cqa.b) {
+            this.b();
          }
       }
-   }
-
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void a(fxq $$0, evk $$1) {
-      if ($$1.c() == evk.a.b) {
-         drx $$2 = $$0.a_(((evi)$$1).a());
-         if ($$2.a(awl.aj)) {
-            this.d.a(guv.c);
-         }
-      }
-   }
-
-   @Override
-   public void a(cuk $$0) {
-      if ($$0.a(awu.aM)) {
-         this.d.a(guv.e);
-      }
-   }
-
-   private static boolean b(gcl $$0) {
-      return $$0.gc().a_($$0x -> $$0x.a(awu.aM));
-   }
-
-   public static boolean a(gcl $$0) {
-      for (ji<deu> $$1 : lp.e.c(awl.aj)) {
-         deu $$2 = $$1.a();
-         if ($$0.j().a(awg.a.b($$2)) > 0) {
-            return true;
-         }
-      }
-
-      return false;
    }
 }

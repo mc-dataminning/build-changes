@@ -1,82 +1,103 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public class fml {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<cqw<?>, fml.a<?, ?>> b = Maps.newHashMap();
+public class fml extends fnb {
+   private static final long a = 2000L;
+   private final arr b;
+   private long c = -1L;
+   private boolean d;
+   private static final Object2IntMap<duv> r = ac.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(duv.c, 5526612);
+      $$0.put(duv.d, 10066329);
+      $$0.put(duv.e, 6250897);
+      $$0.put(duv.f, 8434258);
+      $$0.put(duv.g, 13750737);
+      $$0.put(duv.h, 7497737);
+      $$0.put(duv.i, 3159410);
+      $$0.put(duv.j, 2213376);
+      $$0.put(duv.k, 13421772);
+      $$0.put(duv.l, 16769184);
+      $$0.put(duv.m, 15884384);
+      $$0.put(duv.n, 16777215);
+   });
 
-   public static <T extends cpp> void a(cqw<T> $$0, ffa $$1, int $$2, xl $$3) {
-      fml.a<T, ?> $$4 = a($$0);
-      if ($$4 == null) {
-         a.warn("Failed to create screen for menu type: {}", lp.r.b($$0));
+   public fml(arr $$0) {
+      super(fev.a);
+      this.b = $$0;
+   }
+
+   @Override
+   public boolean aD_() {
+      return false;
+   }
+
+   @Override
+   protected boolean aL_() {
+      return false;
+   }
+
+   @Override
+   public void j() {
+      this.d = true;
+      this.d(true);
+   }
+
+   @Override
+   protected void b(fky $$0) {
+      if (this.d) {
+         $$0.a(fkx.a, xo.c("narrator.loading.done"));
       } else {
-         $$4.a($$3, $$0, $$1, $$2);
+         $$0.a(fkx.a, this.m());
       }
    }
 
-   @Nullable
-   private static <T extends cpp> fml.a<T, ?> a(cqw<T> $$0) {
-      return (fml.a<T, ?>)b.get($$0);
+   private xo m() {
+      return xo.a("loading.progress", ayx.a(this.b.f(), 0, 100));
    }
 
-   private static <M extends cpp, U extends fmy & fpc<M>> void a(cqw<? extends M> $$0, fml.a<M, U> $$1) {
-      fml.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + lp.r.b($$0));
+   @Override
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      long $$4 = ac.c();
+      if ($$4 - this.c > 2000L) {
+         this.c = $$4;
+         this.d(true);
       }
+
+      int $$5 = this.n / 2;
+      int $$6 = this.o / 2;
+      a($$0, this.b, $$5, $$6, 2, 0);
+      int $$7 = this.b.e() + 9 + 2;
+      $$0.a(this.p, this.m(), $$5, $$6 - $$7, 16777215);
    }
 
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (cqw<?> $$1 : lp.r) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", lp.r.b($$1));
-            $$0 = true;
+   public static void a(fgp $$0, arr $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$4 + $$5;
+      int $$7 = $$1.d();
+      int $$8 = $$7 * $$6 - $$5;
+      int $$9 = $$1.e();
+      int $$10 = $$9 * $$6 - $$5;
+      int $$11 = $$2 - $$10 / 2;
+      int $$12 = $$3 - $$10 / 2;
+      int $$13 = $$8 / 2 + 1;
+      int $$14 = -16772609;
+      $$0.a(() -> {
+         if ($$5 != 0) {
+            $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
+            $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
+            $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
+            $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
          }
-      }
 
-      return $$0;
-   }
-
-   static {
-      a(cqw.a, foh::new);
-      a(cqw.b, foh::new);
-      a(cqw.c, foh::new);
-      a(cqw.d, foh::new);
-      a(cqw.e, foh::new);
-      a(cqw.f, foh::new);
-      a(cqw.g, fon::new);
-      a(cqw.h, foi::new);
-      a(cqw.i, fnz::new);
-      a(cqw.j, foa::new);
-      a(cqw.k, fob::new);
-      a(cqw.l, foe::new);
-      a(cqw.m, foj::new);
-      a(cqw.n, foq::new);
-      a(cqw.o, fos::new);
-      a(cqw.p, fot::new);
-      a(cqw.q, fov::new);
-      a(cqw.r, fpa::new);
-      a(cqw.s, fpb::new);
-      a(cqw.t, fpd::new);
-      a(cqw.u, fpg::new);
-      a(cqw.v, fpi::new);
-      a(cqw.w, fpj::new);
-      a(cqw.x, fof::new);
-      a(cqw.y, fpk::new);
-   }
-
-   interface a<T extends cpp, U extends fmy & fpc<T>> {
-      default void a(xl $$0, cqw<T> $$1, ffa $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.s.gc()), $$2.s.gc(), $$0);
-         $$2.s.cb = $$4.D();
-         $$2.a($$4);
-      }
-
-      U create(T var1, cmr var2, xl var3);
+         for (int $$11x = 0; $$11x < $$9; $$11x++) {
+            for (int $$12x = 0; $$12x < $$9; $$12x++) {
+               duv $$13x = $$1.a($$11x, $$12x);
+               int $$14x = $$11 + $$11x * $$6;
+               int $$15 = $$12 + $$12x * $$6;
+               $$0.a($$14x, $$15, $$14x + $$4, $$15 + $$4, r.getInt($$13x) | 0xFF000000);
+            }
+         }
+      });
    }
 }

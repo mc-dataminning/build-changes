@@ -1,24 +1,32 @@
-public record fle(int a, int b) {
-   public static fle a(flc $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case a -> new fle($$1, $$2);
-         case b -> new fle($$2, $$1);
-      };
+public interface fle {
+   flg a();
+
+   public static record a(flg a) implements fle {
+      @Override
+      public flg a() {
+         return this.a.a() == flf.b ? this.a : flg.b;
+      }
+
+      public flg b() {
+         return this.a;
+      }
    }
 
-   public fle a(fld $$0) {
-      return switch ($$0) {
-         case b -> new fle(this.a, this.b + 1);
-         case a -> new fle(this.a, this.b - 1);
-         case c -> new fle(this.a - 1, this.b);
-         case d -> new fle(this.a + 1, this.b);
-      };
+   public static class b implements fle {
+      @Override
+      public flg a() {
+         return flg.b;
+      }
    }
 
-   public int a(flc $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
-      };
+   public static record c(boolean a) implements fle {
+      @Override
+      public flg a() {
+         return this.a ? flg.b : flg.a;
+      }
+
+      public boolean b() {
+         return this.a;
+      }
    }
 }

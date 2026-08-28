@@ -1,44 +1,44 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public abstract class eox {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
+public interface eox {
+   je[] a = new je[]{je.e, je.f, je.a, je.b, je.c, je.d};
 
-   public abstract ur a(ur var1, jk.a var2);
+   void a(je var1, dsa var2, iz var3, iz var4, int var5, int var6);
 
-   public void c() {
-      this.a(true);
-   }
+   void a(iz var1, dex var2, iz var3);
 
-   public void a(boolean $$0) {
-      this.b = $$0;
-   }
+   void a(dsa var1, iz var2, dex var3, iz var4, boolean var5);
 
-   public boolean d() {
-      return this.b;
-   }
-
-   public void a(File $$0, jk.a $$1) {
-      if (this.d()) {
-         ur $$2 = new ur();
-         $$2.a("data", this.a(new ur(), $$1));
-         vg.e($$2);
-
-         try {
-            ve.a($$2, $$0.toPath());
-         } catch (IOException var5) {
-            a.error("Could not save data {}", this, var5);
+   default void a(iz $$0, dex $$1, @Nullable je $$2) {
+      for (je $$3 : a) {
+         if ($$3 != $$2) {
+            this.a($$0.a($$3), $$1, $$0);
          }
-
-         this.a(false);
       }
    }
 
-   public static record a<T extends eox>(Supplier<T> a, BiFunction<ur, jk.a, T> b, bab c) {
+   static void a(dbx $$0, je $$1, dsa $$2, iz $$3, iz $$4, int $$5, int $$6) {
+      dsa $$7 = $$0.a_($$3);
+      dsa $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
+      dex.a($$7, $$8, $$0, $$3, $$5, $$6);
+   }
+
+   static void a(dbw $$0, dsa $$1, iz $$2, dex $$3, iz $$4, boolean $$5) {
+      try {
+         $$1.a($$0, $$2, $$3, $$4, $$5);
+      } catch (Throwable var9) {
+         o $$7 = o.a(var9, "Exception while updating neighbours");
+         p $$8 = $$7.a("Block being updated");
+         $$8.a("Source block type", () -> {
+            try {
+               return String.format(Locale.ROOT, "ID #%s (%s // %s)", lp.e.b($$3), $$3.g(), $$3.getClass().getCanonicalName());
+            } catch (Throwable var2x) {
+               return "ID #" + lp.e.b($$3);
+            }
+         });
+         p.a($$8, $$0, $$2, $$1);
+         throw new y($$7);
+      }
    }
 }

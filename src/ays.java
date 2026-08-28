@@ -1,14 +1,9 @@
-import javax.annotation.Nullable;
-
 public class ays {
-   @Nullable
-   private static byte[] a = null;
+   private static final long a = 6364136223846793005L;
+   private static final long b = 1442695040888963407L;
 
-   public static void a() {
-      a = new byte[10485760];
-   }
-
-   public static void b() {
-      a = new byte[0];
+   public static long a(long $$0, long $$1) {
+      $$0 *= $$0 * 6364136223846793005L + 1442695040888963407L;
+      return $$0 + $$1;
    }
 }

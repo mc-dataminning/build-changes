@@ -1,238 +1,277 @@
-import com.google.common.collect.Lists;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.math.DoubleMath;
+import com.google.common.math.IntMath;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
 import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Objects;
 
-public abstract class ewf {
-   protected final evv a;
-   @Nullable
-   private ewf[] b;
+public final class ewf {
+   public static final double a = 1.0E-7;
+   public static final double b = 1.0E-6;
+   private static final ewi d = ac.a(() -> {
+      evy $$0 = new evs(1, 1, 1);
+      $$0.c(0, 0, 0);
+      return new evw($$0);
+   });
+   public static final ewi c = a(
+      Double.NEGATIVE_INFINITY,
+      Double.NEGATIVE_INFINITY,
+      Double.NEGATIVE_INFINITY,
+      Double.POSITIVE_INFINITY,
+      Double.POSITIVE_INFINITY,
+      Double.POSITIVE_INFINITY
+   );
+   private static final ewi e = new evr(
+      new evs(0, 0, 0), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0})
+   );
 
-   ewf(evv $$0) {
-      this.a = $$0;
+   public static ewi a() {
+      return e;
    }
 
-   public double b(je.a $$0) {
-      int $$1 = this.a.a($$0);
-      return $$1 >= this.a.c($$0) ? Double.POSITIVE_INFINITY : this.a($$0, $$1);
+   public static ewi b() {
+      return d;
    }
 
-   public double c(je.a $$0) {
-      int $$1 = this.a.b($$0);
-      return $$1 <= 0 ? Double.NEGATIVE_INFINITY : this.a($$0, $$1);
-   }
-
-   public evh a() {
-      if (this.c()) {
-         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("No bounds for empty shape."));
+   public static ewi a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      if (!($$0 > $$3) && !($$1 > $$4) && !($$2 > $$5)) {
+         return b($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
-         return new evh(this.b(je.a.a), this.b(je.a.b), this.b(je.a.c), this.c(je.a.a), this.c(je.a.b), this.c(je.a.c));
+         throw new IllegalArgumentException("The min values need to be smaller or equals to the max values");
       }
    }
 
-   public ewf b() {
-      return this.c() ? ewc.a() : ewc.a(this.b(je.a.a), this.b(je.a.b), this.b(je.a.c), this.c(je.a.a), this.c(je.a.b), this.c(je.a.c));
-   }
-
-   protected double a(je.a $$0, int $$1) {
-      return this.a($$0).getDouble($$1);
-   }
-
-   protected abstract DoubleList a(je.a var1);
-
-   public boolean c() {
-      return this.a.a();
-   }
-
-   public ewf a(double $$0, double $$1, double $$2) {
-      return (ewf)(this.c() ? ewc.a() : new evo(this.a, new ewb(this.a(je.a.a), $$0), new ewb(this.a(je.a.b), $$1), new ewb(this.a(je.a.c), $$2)));
-   }
-
-   public ewf d() {
-      ewf[] $$0 = new ewf[]{ewc.a()};
-      this.b(($$1, $$2, $$3, $$4, $$5, $$6) -> $$0[0] = ewc.b($$0[0], ewc.a($$1, $$2, $$3, $$4, $$5, $$6), evq.o));
-      return $$0[0];
-   }
-
-   public void a(ewc.a $$0) {
-      this.a
-         .a(
-            ($$1, $$2, $$3, $$4, $$5, $$6) -> $$0.consume(
-                  this.a(je.a.a, $$1), this.a(je.a.b, $$2), this.a(je.a.c, $$3), this.a(je.a.a, $$4), this.a(je.a.b, $$5), this.a(je.a.c, $$6)
-               ),
-            true
-         );
-   }
-
-   public void b(ewc.a $$0) {
-      DoubleList $$1 = this.a(je.a.a);
-      DoubleList $$2 = this.a(je.a.b);
-      DoubleList $$3 = this.a(je.a.c);
-      this.a
-         .b(
-            ($$4, $$5, $$6, $$7, $$8, $$9) -> $$0.consume(
-                  $$1.getDouble($$4), $$2.getDouble($$5), $$3.getDouble($$6), $$1.getDouble($$7), $$2.getDouble($$8), $$3.getDouble($$9)
-               ),
-            true
-         );
-   }
-
-   public List<evh> e() {
-      List<evh> $$0 = Lists.newArrayList();
-      this.b(($$1, $$2, $$3, $$4, $$5, $$6) -> $$0.add(new evh($$1, $$2, $$3, $$4, $$5, $$6)));
-      return $$0;
-   }
-
-   public double a(je.a $$0, double $$1, double $$2) {
-      je.a $$3 = iw.b.a($$0);
-      je.a $$4 = iw.c.a($$0);
-      int $$5 = this.a($$3, $$1);
-      int $$6 = this.a($$4, $$2);
-      int $$7 = this.a.a($$0, $$5, $$6);
-      return $$7 >= this.a.c($$0) ? Double.POSITIVE_INFINITY : this.a($$0, $$7);
-   }
-
-   public double b(je.a $$0, double $$1, double $$2) {
-      je.a $$3 = iw.b.a($$0);
-      je.a $$4 = iw.c.a($$0);
-      int $$5 = this.a($$3, $$1);
-      int $$6 = this.a($$4, $$2);
-      int $$7 = this.a.b($$0, $$5, $$6);
-      return $$7 <= 0 ? Double.NEGATIVE_INFINITY : this.a($$0, $$7);
-   }
-
-   protected int a(je.a $$0, double $$1) {
-      return ayu.a(0, this.a.c($$0) + 1, $$2 -> $$1 < this.a($$0, $$2)) - 1;
-   }
-
-   @Nullable
-   public evi a(evm $$0, evm $$1, iz $$2) {
-      if (this.c()) {
-         return null;
-      } else {
-         evm $$3 = $$1.d($$0);
-         if ($$3.g() < 1.0E-7) {
-            return null;
+   public static ewi b(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      if (!($$3 - $$0 < 1.0E-7) && !($$4 - $$1 < 1.0E-7) && !($$5 - $$2 < 1.0E-7)) {
+         int $$6 = a($$0, $$3);
+         int $$7 = a($$1, $$4);
+         int $$8 = a($$2, $$5);
+         if ($$6 < 0 || $$7 < 0 || $$8 < 0) {
+            return new evr(
+               d.a, DoubleArrayList.wrap(new double[]{$$0, $$3}), DoubleArrayList.wrap(new double[]{$$1, $$4}), DoubleArrayList.wrap(new double[]{$$2, $$5})
+            );
+         } else if ($$6 == 0 && $$7 == 0 && $$8 == 0) {
+            return b();
          } else {
-            evm $$4 = $$0.e($$3.a(0.001));
-            return this.a.e(this.a(je.a.a, $$4.c - (double)$$2.u()), this.a(je.a.b, $$4.d - (double)$$2.v()), this.a(je.a.c, $$4.e - (double)$$2.w()))
-               ? new evi($$4, je.a($$3.c, $$3.d, $$3.e).g(), $$2, true)
-               : evh.a(this.e(), $$0, $$1, $$2);
+            int $$9 = 1 << $$6;
+            int $$10 = 1 << $$7;
+            int $$11 = 1 << $$8;
+            evs $$12 = evs.a(
+               $$9,
+               $$10,
+               $$11,
+               (int)Math.round($$0 * (double)$$9),
+               (int)Math.round($$1 * (double)$$10),
+               (int)Math.round($$2 * (double)$$11),
+               (int)Math.round($$3 * (double)$$9),
+               (int)Math.round($$4 * (double)$$10),
+               (int)Math.round($$5 * (double)$$11)
+            );
+            return new evw($$12);
+         }
+      } else {
+         return a();
+      }
+   }
+
+   public static ewi a(evk $$0) {
+      return b($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   }
+
+   @VisibleForTesting
+   protected static int a(double $$0, double $$1) {
+      if (!($$0 < -1.0E-7) && !($$1 > 1.0000001)) {
+         for (int $$2 = 0; $$2 <= 3; $$2++) {
+            int $$3 = 1 << $$2;
+            double $$4 = $$0 * (double)$$3;
+            double $$5 = $$1 * (double)$$3;
+            boolean $$6 = Math.abs($$4 - (double)Math.round($$4)) < 1.0E-7 * (double)$$3;
+            boolean $$7 = Math.abs($$5 - (double)Math.round($$5)) < 1.0E-7 * (double)$$3;
+            if ($$6 && $$7) {
+               return $$2;
+            }
+         }
+
+         return -1;
+      } else {
+         return -1;
+      }
+   }
+
+   protected static long a(int $$0, int $$1) {
+      return (long)$$0 * (long)($$1 / IntMath.gcd($$0, $$1));
+   }
+
+   public static ewi a(ewi $$0, ewi $$1) {
+      return a($$0, $$1, evt.o);
+   }
+
+   public static ewi a(ewi $$0, ewi... $$1) {
+      return Arrays.stream($$1).reduce($$0, ewf::a);
+   }
+
+   public static ewi a(ewi $$0, ewi $$1, evt $$2) {
+      return b($$0, $$1, $$2).d();
+   }
+
+   public static ewi b(ewi $$0, ewi $$1, evt $$2) {
+      if ($$2.apply(false, false)) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException());
+      } else if ($$0 == $$1) {
+         return $$2.apply(true, true) ? $$0 : a();
+      } else {
+         boolean $$3 = $$2.apply(true, false);
+         boolean $$4 = $$2.apply(false, true);
+         if ($$0.c()) {
+            return $$4 ? $$1 : a();
+         } else if ($$1.c()) {
+            return $$3 ? $$0 : a();
+         } else {
+            ewb $$5 = a(1, $$0.a(je.a.a), $$1.a(je.a.a), $$3, $$4);
+            ewb $$6 = a($$5.size() - 1, $$0.a(je.a.b), $$1.a(je.a.b), $$3, $$4);
+            ewb $$7 = a(($$5.size() - 1) * ($$6.size() - 1), $$0.a(je.a.c), $$1.a(je.a.c), $$3, $$4);
+            evs $$8 = evs.a($$0.a, $$1.a, $$5, $$6, $$7, $$2);
+            return (ewi)($$5 instanceof evx && $$6 instanceof evx && $$7 instanceof evx ? new evw($$8) : new evr($$8, $$5.a(), $$6.a(), $$7.a()));
          }
       }
    }
 
-   public Optional<evm> a(evm $$0) {
-      if (this.c()) {
-         return Optional.empty();
+   public static boolean c(ewi $$0, ewi $$1, evt $$2) {
+      if ($$2.apply(false, false)) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException());
       } else {
-         evm[] $$1 = new evm[1];
-         this.b(($$2, $$3, $$4, $$5, $$6, $$7) -> {
-            double $$8 = ayu.a($$0.a(), $$2, $$5);
-            double $$9 = ayu.a($$0.b(), $$3, $$6);
-            double $$10 = ayu.a($$0.c(), $$4, $$7);
-            if ($$1[0] == null || $$0.c($$8, $$9, $$10) < $$0.g($$1[0])) {
-               $$1[0] = new evm($$8, $$9, $$10);
-            }
-         });
-         return Optional.of($$1[0]);
-      }
-   }
+         boolean $$3 = $$0.c();
+         boolean $$4 = $$1.c();
+         if (!$$3 && !$$4) {
+            if ($$0 == $$1) {
+               return $$2.apply(true, true);
+            } else {
+               boolean $$5 = $$2.apply(true, false);
+               boolean $$6 = $$2.apply(false, true);
 
-   public ewf a(je $$0) {
-      if (!this.c() && this != ewc.b()) {
-         if (this.b != null) {
-            ewf $$1 = this.b[$$0.ordinal()];
-            if ($$1 != null) {
-               return $$1;
-            }
-         } else {
-            this.b = new ewf[6];
-         }
+               for (je.a $$7 : iw.d) {
+                  if ($$0.c($$7) < $$1.b($$7) - 1.0E-7) {
+                     return $$5 || $$6;
+                  }
 
-         ewf $$2 = this.b($$0);
-         this.b[$$0.ordinal()] = $$2;
-         return $$2;
-      } else {
-         return this;
-      }
-   }
-
-   private ewf b(je $$0) {
-      je.a $$1 = $$0.o();
-      DoubleList $$2 = this.a($$1);
-      if ($$2.size() == 2 && DoubleMath.fuzzyEquals($$2.getDouble(0), 0.0, 1.0E-7) && DoubleMath.fuzzyEquals($$2.getDouble(1), 1.0, 1.0E-7)) {
-         return this;
-      } else {
-         je.b $$3 = $$0.f();
-         int $$4 = this.a($$1, $$3 == je.b.a ? 0.9999999 : 1.0E-7);
-         return new ewd(this, $$1, $$4);
-      }
-   }
-
-   public double a(je.a $$0, evh $$1, double $$2) {
-      return this.a(iw.a($$0, je.a.a), $$1, $$2);
-   }
-
-   protected double a(iw $$0, evh $$1, double $$2) {
-      if (this.c()) {
-         return $$2;
-      } else if (Math.abs($$2) < 1.0E-7) {
-         return 0.0;
-      } else {
-         iw $$3 = $$0.a();
-         je.a $$4 = $$3.a(je.a.a);
-         je.a $$5 = $$3.a(je.a.b);
-         je.a $$6 = $$3.a(je.a.c);
-         double $$7 = $$1.b($$4);
-         double $$8 = $$1.a($$4);
-         int $$9 = this.a($$4, $$8 + 1.0E-7);
-         int $$10 = this.a($$4, $$7 - 1.0E-7);
-         int $$11 = Math.max(0, this.a($$5, $$1.a($$5) + 1.0E-7));
-         int $$12 = Math.min(this.a.c($$5), this.a($$5, $$1.b($$5) - 1.0E-7) + 1);
-         int $$13 = Math.max(0, this.a($$6, $$1.a($$6) + 1.0E-7));
-         int $$14 = Math.min(this.a.c($$6), this.a($$6, $$1.b($$6) - 1.0E-7) + 1);
-         int $$15 = this.a.c($$4);
-         if ($$2 > 0.0) {
-            for (int $$16 = $$10 + 1; $$16 < $$15; $$16++) {
-               for (int $$17 = $$11; $$17 < $$12; $$17++) {
-                  for (int $$18 = $$13; $$18 < $$14; $$18++) {
-                     if (this.a.a($$3, $$16, $$17, $$18)) {
-                        double $$19 = this.a($$4, $$16) - $$7;
-                        if ($$19 >= -1.0E-7) {
-                           $$2 = Math.min($$2, $$19);
-                        }
-
-                        return $$2;
-                     }
+                  if ($$1.c($$7) < $$0.b($$7) - 1.0E-7) {
+                     return $$5 || $$6;
                   }
                }
-            }
-         } else if ($$2 < 0.0) {
-            for (int $$20 = $$9 - 1; $$20 >= 0; $$20--) {
-               for (int $$21 = $$11; $$21 < $$12; $$21++) {
-                  for (int $$22 = $$13; $$22 < $$14; $$22++) {
-                     if (this.a.a($$3, $$20, $$21, $$22)) {
-                        double $$23 = this.a($$4, $$20 + 1) - $$8;
-                        if ($$23 <= 1.0E-7) {
-                           $$2 = Math.max($$2, $$23);
-                        }
 
-                        return $$2;
-                     }
-                  }
-               }
+               ewb $$8 = a(1, $$0.a(je.a.a), $$1.a(je.a.a), $$5, $$6);
+               ewb $$9 = a($$8.size() - 1, $$0.a(je.a.b), $$1.a(je.a.b), $$5, $$6);
+               ewb $$10 = a(($$8.size() - 1) * ($$9.size() - 1), $$0.a(je.a.c), $$1.a(je.a.c), $$5, $$6);
+               return a($$8, $$9, $$10, $$0.a, $$1.a, $$2);
             }
+         } else {
+            return $$2.apply(!$$3, !$$4);
          }
-
-         return $$2;
       }
    }
 
-   @Override
-   public String toString() {
-      return this.c() ? "EMPTY" : "VoxelShape[" + this.a() + "]";
+   private static boolean a(ewb $$0, ewb $$1, ewb $$2, evy $$3, evy $$4, evt $$5) {
+      return !$$0.a(($$5x, $$6, $$7) -> $$1.a(($$6x, $$7x, $$8) -> $$2.a(($$7xx, $$8x, $$9) -> !$$5.apply($$3.e($$5x, $$6x, $$7xx), $$4.e($$6, $$7x, $$8x)))));
+   }
+
+   public static double a(je.a $$0, evk $$1, Iterable<ewi> $$2, double $$3) {
+      for (ewi $$4 : $$2) {
+         if (Math.abs($$3) < 1.0E-7) {
+            return 0.0;
+         }
+
+         $$3 = $$4.a($$0, $$1, $$3);
+      }
+
+      return $$3;
+   }
+
+   public static boolean a(ewi $$0, ewi $$1, je $$2) {
+      if ($$0 == b() && $$1 == b()) {
+         return true;
+      } else if ($$1.c()) {
+         return false;
+      } else {
+         je.a $$3 = $$2.o();
+         je.b $$4 = $$2.f();
+         ewi $$5 = $$4 == je.b.a ? $$0 : $$1;
+         ewi $$6 = $$4 == je.b.a ? $$1 : $$0;
+         evt $$7 = $$4 == je.b.a ? evt.e : evt.c;
+         return DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)
+            && DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)
+            && !c(new ewg($$5, $$3, $$5.a.c($$3) - 1), new ewg($$6, $$3, 0), $$7);
+      }
+   }
+
+   public static ewi a(ewi $$0, je $$1) {
+      if ($$0 == b()) {
+         return b();
+      } else {
+         je.a $$2 = $$1.o();
+         boolean $$3;
+         int $$4;
+         if ($$1.f() == je.b.a) {
+            $$3 = DoubleMath.fuzzyEquals($$0.c($$2), 1.0, 1.0E-7);
+            $$4 = $$0.a.c($$2) - 1;
+         } else {
+            $$3 = DoubleMath.fuzzyEquals($$0.b($$2), 0.0, 1.0E-7);
+            $$4 = 0;
+         }
+
+         return (ewi)(!$$3 ? a() : new ewg($$0, $$2, $$4));
+      }
+   }
+
+   public static boolean b(ewi $$0, ewi $$1, je $$2) {
+      if ($$0 != b() && $$1 != b()) {
+         je.a $$3 = $$2.o();
+         je.b $$4 = $$2.f();
+         ewi $$5 = $$4 == je.b.a ? $$0 : $$1;
+         ewi $$6 = $$4 == je.b.a ? $$1 : $$0;
+         if (!DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)) {
+            $$5 = a();
+         }
+
+         if (!DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)) {
+            $$6 = a();
+         }
+
+         return !c(b(), b(new ewg($$5, $$3, $$5.a.c($$3) - 1), new ewg($$6, $$3, 0), evt.o), evt.e);
+      } else {
+         return true;
+      }
+   }
+
+   public static boolean b(ewi $$0, ewi $$1) {
+      if ($$0 == b() || $$1 == b()) {
+         return true;
+      } else {
+         return $$0.c() && $$1.c() ? false : !c(b(), b($$0, $$1, evt.o), evt.e);
+      }
+   }
+
+   @VisibleForTesting
+   protected static ewb a(int $$0, DoubleList $$1, DoubleList $$2, boolean $$3, boolean $$4) {
+      int $$5 = $$1.size() - 1;
+      int $$6 = $$2.size() - 1;
+      if ($$1 instanceof evv && $$2 instanceof evv) {
+         long $$7 = a($$5, $$6);
+         if ((long)$$0 * $$7 <= 256L) {
+            return new evx($$5, $$6);
+         }
+      }
+
+      if ($$1.getDouble($$5) < $$2.getDouble(0) - 1.0E-7) {
+         return new ewd($$1, $$2, false);
+      } else if ($$2.getDouble($$6) < $$1.getDouble(0) - 1.0E-7) {
+         return new ewd($$2, $$1, true);
+      } else {
+         return (ewb)($$5 == $$6 && Objects.equals($$1, $$2) ? new ewa($$1) : new ewc($$1, $$2, $$3, $$4));
+      }
+   }
+
+   public interface a {
+      void consume(double var1, double var3, double var5, double var7, double var9, double var11);
    }
 }

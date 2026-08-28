@@ -20,7 +20,7 @@ public class lz implements lw {
    @Override
    public CompletableFuture<?> a(lu $$0) {
       return this.f.thenCompose($$1 -> {
-         Set<alb> $$2 = new HashSet<>();
+         Set<ale> $$2 = new HashSet<>();
          List<CompletableFuture<?>> $$3 = new ArrayList<>();
          Consumer<af> $$4 = $$4x -> {
             if (!$$2.add($$4x.a())) {

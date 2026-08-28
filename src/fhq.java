@@ -1,39 +1,31 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.UUID;
 
-public class fhq {
-   public static final alb a = new alb("textures/gui/title/minecraft.png");
-   public static final alb b = new alb("textures/gui/title/minceraft.png");
-   public static final alb c = new alb("textures/gui/title/edition.png");
-   public static final int d = 256;
-   public static final int e = 44;
-   private static final int g = 256;
-   private static final int h = 64;
-   private static final int i = 128;
-   private static final int j = 14;
-   private static final int k = 128;
-   private static final int l = 16;
-   public static final int f = 30;
-   private static final int m = 7;
-   private final boolean n = (double)azc.a().i() < 1.0E-4;
-   private final boolean o;
+public class fhq extends bqi {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
 
-   public fhq(boolean $$0) {
-      this.o = $$0;
+   public fhq(UUID $$0, xo $$1, float $$2, bqi.a $$3, bqi.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = ac.c();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
-   public void a(fgm $$0, int $$1, float $$2) {
-      this.a($$0, $$1, $$2, 30);
+   @Override
+   public void a(float $$0) {
+      this.b = this.j();
+      this.h = $$0;
+      this.i = ac.c();
    }
 
-   public void a(fgm $$0, int $$1, float $$2, int $$3) {
-      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
-      RenderSystem.enableBlend();
-      int $$4 = $$1 / 2 - 128;
-      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
-      int $$5 = $$1 / 2 - 64;
-      int $$6 = $$3 + 44 - 7;
-      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
+   @Override
+   public float j() {
+      long $$0 = ac.c() - this.i;
+      float $$1 = ayx.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return ayx.i($$1, this.b, this.h);
    }
 }

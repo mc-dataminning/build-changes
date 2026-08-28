@@ -1,55 +1,43 @@
-import java.time.Duration;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class fin {
+public class fin implements fkz {
+   private static final int a = 170;
+   private final xo b;
    @Nullable
-   private fik a;
-   private Duration b = Duration.ZERO;
-   private long c;
-   private boolean d;
+   private List<ayj> c;
+   @Nullable
+   private final xo d;
 
-   public void a(Duration $$0) {
+   private fin(xo $$0, @Nullable xo $$1) {
       this.b = $$0;
+      this.d = $$1;
    }
 
-   public void a(@Nullable fik $$0) {
-      this.a = $$0;
+   public static fin a(xo $$0, @Nullable xo $$1) {
+      return new fin($$0, $$1);
    }
 
-   @Nullable
-   public fik a() {
-      return this.a;
+   public static fin a(xo $$0) {
+      return new fin($$0, $$0);
    }
 
-   public void a(boolean $$0, boolean $$1, flf $$2) {
-      if (this.a == null) {
-         this.d = false;
-      } else {
-         boolean $$3 = $$0 || $$1 && ffa.Q().aW().b();
-         if ($$3 != this.d) {
-            if ($$3) {
-               this.c = ac.c();
-            }
-
-            this.d = $$3;
-         }
-
-         if ($$3 && ac.c() - this.c > this.b.toMillis()) {
-            fmy $$4 = ffa.Q().y;
-            if ($$4 != null) {
-               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
-            }
-         }
+   @Override
+   public void b(fky $$0) {
+      if (this.d != null) {
+         $$0.a(fkx.c, this.d);
       }
    }
 
-   private fpr a(flf $$0, boolean $$1, boolean $$2) {
-      return (fpr)(!$$1 && $$2 && ffa.Q().aW().b() ? new fpn($$0) : new fpt($$0));
+   public List<ayj> a(ffd $$0) {
+      if (this.c == null) {
+         this.c = a($$0, this.b);
+      }
+
+      return this.c;
    }
 
-   public void a(fkv $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
+   public static List<ayj> a(ffd $$0, xo $$1) {
+      return $$0.h.c($$1, 170);
    }
 }

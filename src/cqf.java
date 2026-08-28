@@ -1,9 +1,9 @@
-import java.util.List;
+public interface cqf {
+   void a(cps var1, jr<cun> var2, cun var3, int[] var4);
 
-public interface cqf extends bqi, crp {
-   int f();
+   void a(cps var1, int var2, cun var3);
 
-   int g();
+   void a(cps var1, cun var2);
 
-   List<cuk> h();
+   void a(cps var1, int var2, int var3);
 }

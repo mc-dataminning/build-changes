@@ -1,29 +1,31 @@
-public class gkp extends gjy<cfv, fvj<cfv>> {
-   private static final alb a = new alb("textures/entity/fish/salmon.png");
+public class gkp extends gkb<cfx, fvj<cfx>> {
+   private static final ale a = new ale("textures/entity/rabbit/brown.png");
+   private static final ale i = new ale("textures/entity/rabbit/white.png");
+   private static final ale j = new ale("textures/entity/rabbit/black.png");
+   private static final ale k = new ale("textures/entity/rabbit/gold.png");
+   private static final ale l = new ale("textures/entity/rabbit/salt.png");
+   private static final ale m = new ale("textures/entity/rabbit/white_splotched.png");
+   private static final ale n = new ale("textures/entity/rabbit/toast.png");
+   private static final ale o = new ale("textures/entity/rabbit/caerbannog.png");
 
-   public gkp(gis.a $$0) {
-      super($$0, new fvj<>($$0.a(fwu.bg)), 0.4F);
+   public gkp(giv.a $$0) {
+      super($$0, new fvj<>($$0.a(fwx.be)), 0.3F);
    }
 
-   public alb a(cfv $$0) {
-      return a;
-   }
-
-   protected void a(cfv $$0, ezt $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = 1.0F;
-      float $$7 = 1.0F;
-      if (!$$0.be()) {
-         $$6 = 1.3F;
-         $$7 = 1.7F;
-      }
-
-      float $$8 = $$6 * 4.3F * ayu.a($$7 * 0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$8));
-      $$1.a(0.0F, 0.0F, -0.4F);
-      if (!$$0.be()) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
+   public ale a(cfx $$0) {
+      String $$1 = n.a($$0.af().getString());
+      if ("Toast".equals($$1)) {
+         return n;
+      } else {
+         return switch ($$0.gq()) {
+            case a -> a;
+            case b -> i;
+            case c -> j;
+            case e -> k;
+            case f -> l;
+            case d -> m;
+            case g -> o;
+         };
       }
    }
 }

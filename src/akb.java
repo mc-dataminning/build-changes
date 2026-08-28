@@ -1,4 +1,4 @@
-public interface akb extends agt, ajv {
+public interface akb extends ajv, wg {
    @Override
    default wk b() {
       return wk.c;

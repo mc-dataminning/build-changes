@@ -1,24 +1,33 @@
-public class aai {
-   public static final zu<zz> a = a("custom_payload");
-   public static final zu<aaa> b = a("disconnect");
-   public static final zu<aab> c = a("keep_alive");
-   public static final zu<aac> d = a("ping");
-   public static final zu<aad> e = a("resource_pack_pop");
-   public static final zu<aae> f = a("resource_pack_push");
-   public static final zu<aaf> g = a("store_cookie");
-   public static final zu<aag> h = a("transfer");
-   public static final zu<aah> i = a("update_tags");
-   public static final zu<aak> j = b("client_information");
-   public static final zu<aal> k = b("custom_payload");
-   public static final zu<aam> l = b("keep_alive");
-   public static final zu<aan> m = b("pong");
-   public static final zu<aao> n = b("resource_pack");
+import io.netty.buffer.ByteBuf;
 
-   private static <T extends zs<zy>> zu<T> a(String $$0) {
-      return new zu<>(zt.b, new alb($$0));
+public record aai(ale c, byte[] d) implements zv<aab> {
+   public static final zm<wl, aai> a = zv.a(aai::a, aai::new);
+   private static final int e = 5120;
+   public static final zm<ByteBuf, byte[]> b = zk.a(5120);
+
+   private aai(wl $$0) {
+      this($$0.q(), b.decode($$0));
    }
 
-   private static <T extends zs<aaj>> zu<T> b(String $$0) {
-      return new zu<>(zt.a, new alb($$0));
+   private void a(wl $$0) {
+      $$0.a(this.c);
+      b.encode($$0, this.d);
+   }
+
+   @Override
+   public zx<aai> a() {
+      return aal.g;
+   }
+
+   public void a(aab $$0) {
+      $$0.a(this);
+   }
+
+   public ale b() {
+      return this.c;
+   }
+
+   public byte[] e() {
+      return this.d;
    }
 }

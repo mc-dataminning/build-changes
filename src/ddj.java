@@ -1,59 +1,89 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class ddj extends dcw {
-   public static final MapCodec<ddj> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akz.d(dcz.ah), akz.d(dcz.ai), akz.d(dcz.aj), akz.d(dcz.ak), akz.d(dcz.al)).apply($$0, $$0.stable(ddj::new))
+public class ddj {
+   public static final Codec<ddj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ddj.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), alc.c(lq.az)).apply($$0, ddj::new)
    );
-   private final ji<dcs> c;
-   private final ji<dcs> d;
-   private final ji<dcs> e;
-   private final ji<dcs> f;
-   private final ji<dcs> g;
+   public static final Codec<ji<ddj>> b = ala.a(lq.aR, a);
+   private final ddj.a c;
+   private final dde.c<ji<dcv>> d;
 
-   public static ddj a(jj<dcs> $$0) {
-      return new ddj($$0.b(dcz.ah), $$0.b(dcz.ai), $$0.b(dcz.aj), $$0.b(dcz.ak), $$0.b(dcz.al));
-   }
-
-   private ddj(ji<dcs> $$0, ji<dcs> $$1, ji<dcs> $$2, ji<dcs> $$3, ji<dcs> $$4) {
+   public ddj(ddj.a $$0, jj<dcv> $$1) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   @Override
-   protected Stream<ji<dcs>> b() {
-      return Stream.of(this.c, this.d, this.e, this.f, this.g);
+   public dde.c<ji<dcv>> a() {
+      return this.d;
    }
 
-   @Override
-   protected MapCodec<? extends dcw> a() {
-      return b;
+   public static Map<ddj.a, dde.c<ald<dcv>>> b() {
+      return ddj.a.f.values().stream().collect(Collectors.toMap($$0 -> (ddj.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
    }
 
-   @Override
-   public ji<dcs> getNoiseBiome(int $$0, int $$1, int $$2, ddb.f $$3) {
-      int $$4 = jt.c($$0);
-      int $$5 = jt.c($$1);
-      int $$6 = jt.c($$2);
-      int $$7 = kb.a($$4);
-      int $$8 = kb.a($$6);
-      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
-         return this.c;
-      } else {
-         int $$9 = (kb.a($$4) * 2 + 1) * 8;
-         int $$10 = (kb.a($$6) * 2 + 1) * 8;
-         double $$11 = $$3.e().a(new dxi.e($$9, $$5, $$10));
-         if ($$11 > 0.25) {
-            return this.d;
-         } else if ($$11 >= -0.0625) {
-            return this.e;
-         } else {
-            return $$11 < -0.21875 ? this.f : this.g;
+   public static record a(ale d, ddj.a.a e) {
+      public static final ddj.a a = new ddj.a(
+         new ale("nether"),
+         new ddj.a.a() {
+            @Override
+            public <T> dde.c<T> apply(Function<ald<dcv>, T> $$0) {
+               return new dde.c<>(
+                  List.of(
+                     Pair.of(dde.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(ddc.ac)),
+                     Pair.of(dde.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(ddc.af)),
+                     Pair.of(dde.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(ddc.ae)),
+                     Pair.of(dde.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(ddc.ad)),
+                     Pair.of(dde.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(ddc.ag))
+                  )
+               );
+            }
          }
+      );
+      public static final ddj.a b = new ddj.a(new ale("overworld"), new ddj.a.a() {
+         @Override
+         public <T> dde.c<T> apply(Function<ald<dcv>, T> $$0) {
+            return ddj.a.a($$0);
+         }
+      });
+      static final Map<ale, ddj.a> f = Stream.of(a, b).collect(Collectors.toMap(ddj.a::b, $$0 -> (ddj.a)$$0));
+      public static final Codec<ddj.a> c = ale.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
+
+      static <T> dde.c<T> a(Function<ald<dcv>, T> $$0) {
+         Builder<Pair<dde.d, T>> $$1 = ImmutableList.builder();
+         new ddl().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new dde.c<>($$1.build());
+      }
+
+      public Stream<ald<dcv>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<ald<dcv>>map(Pair::getSecond).distinct();
+      }
+
+      public ale b() {
+         return this.d;
+      }
+
+      public ddj.a.a c() {
+         return this.e;
+      }
+
+      @FunctionalInterface
+      interface a {
+         <T> dde.c<T> apply(Function<ald<dcv>, T> var1);
       }
    }
 }

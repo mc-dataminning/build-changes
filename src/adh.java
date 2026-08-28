@@ -1,21 +1,69 @@
-public record adh(xl b, xh.a c) implements zs<ace> {
-   public static final zj<ww, adh> a = zj.a(xn.d, adh::b, xh.a.a, adh::e, adh::new);
+import java.util.Optional;
 
-   @Override
-   public zu<adh> a() {
-      return agq.C;
+public record adh(int b, ji<brn> c, int d, int e, Optional<evp> f) implements zv<ach> {
+   public static final zm<wz, adh> a = zv.a(adh::a, adh::new);
+   private static final zm<wz, ji<brn>> g = zk.b(lq.s);
+
+   public adh(bss $$0, brl $$1) {
+      this($$0.al(), $$1.k(), $$1.d() != null ? $$1.d().al() : -1, $$1.c() != null ? $$1.c().al() : -1, Optional.ofNullable($$1.i()));
    }
 
-   public void a(ace $$0) {
+   private adh(wz $$0) {
+      this($$0.l(), g.decode($$0), a((wl)$$0), a((wl)$$0), $$0.b($$0x -> new evp($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
+   }
+
+   private static void a(wl $$0, int $$1) {
+      $$0.c($$1 + 1);
+   }
+
+   private static int a(wl $$0) {
+      return $$0.l() - 1;
+   }
+
+   private void a(wz $$0) {
+      $$0.c(this.b);
+      g.encode($$0, this.c);
+      a($$0, this.d);
+      a($$0, this.e);
+      $$0.a(this.f, ($$0x, $$1) -> {
+         $$0x.a($$1.a());
+         $$0x.a($$1.b());
+         $$0x.a($$1.c());
+      });
+   }
+
+   @Override
+   public zx<adh> a() {
+      return agt.z;
+   }
+
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public brl a(dbw $$0) {
+      if (this.f.isPresent()) {
+         return new brl(this.c, this.f.get());
+      } else {
+         bss $$1 = $$0.a(this.d);
+         bss $$2 = $$0.a(this.e);
+         return new brl(this.c, $$2, $$1);
+      }
    }
 
-   public xh.a e() {
+   public ji<brn> e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
+   }
+
+   public Optional<evp> h() {
+      return this.f;
    }
 }

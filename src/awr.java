@@ -1,11 +1,7 @@
-public final class awr {
-   public static final axb<enp> a = a("water");
-   public static final axb<enp> b = a("lava");
+public interface awr {
+   axe<czy> a = a("tooltip_order");
 
-   private awr() {
-   }
-
-   private static axb<enp> a(String $$0) {
-      return axb.a(lq.z, new alb($$0));
+   private static axe<czy> a(String $$0) {
+      return axe.a(lq.u, new ale("minecraft", $$0));
    }
 }

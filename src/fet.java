@@ -1,39 +1,29 @@
-import java.util.function.IntFunction;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public enum fet implements ayx {
-   a(0, "options.graphics.fast"),
-   b(1, "options.graphics.fancy"),
-   c(2, "options.graphics.fabulous");
+public class fet {
+   private final List<xt> a = Lists.newArrayList();
 
-   private static final IntFunction<fet> d = axl.a(fet::a, values(), axl.a.b);
-   private final int e;
-   private final String f;
-
-   private fet(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public void a(xt $$0) {
+      this.a.add($$0);
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   @Nullable
+   public xt a() {
+      if (this.a.isEmpty()) {
+         return null;
+      } else {
+         return this.a.size() == 1 ? this.a.get(0) : xt.a(this.a);
+      }
    }
 
-   @Override
-   public String b() {
-      return this.f;
+   public xt b() {
+      xt $$0 = this.a();
+      return $$0 != null ? $$0 : xt.b;
    }
 
-   @Override
-   public String toString() {
-      return switch (this) {
-         case a -> "fast";
-         case b -> "fancy";
-         case c -> "fabulous";
-      };
-   }
-
-   public static fet a(int $$0) {
-      return d.apply($$0);
+   public void c() {
+      this.a.clear();
    }
 }

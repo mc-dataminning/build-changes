@@ -1,41 +1,22 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.Date;
-import java.util.UUID;
+public enum fdq {
+   a(0, ehy.a),
+   b(1, ehy.b),
+   c(2, ehy.c),
+   d(3, ehy.d);
 
-public class fdq {
-   private static final xl a = xl.c("mco.util.time.now");
-   private static final int b = 60;
-   private static final int c = 3600;
-   private static final int d = 86400;
+   private final int e;
+   private final xo f;
 
-   public static xl a(long $$0) {
-      if ($$0 < 0L) {
-         return a;
-      } else {
-         long $$1 = $$0 / 1000L;
-         if ($$1 < 60L) {
-            return xl.a("mco.time.secondsAgo", $$1);
-         } else if ($$1 < 3600L) {
-            long $$2 = $$1 / 60L;
-            return xl.a("mco.time.minutesAgo", $$2);
-         } else if ($$1 < 86400L) {
-            long $$3 = $$1 / 3600L;
-            return xl.a("mco.time.hoursAgo", $$3);
-         } else {
-            long $$4 = $$1 / 86400L;
-            return xl.a("mco.time.daysAgo", $$4);
-         }
-      }
+   private fdq(final int $$0, final ald<ehx> $$1) {
+      this.e = $$0;
+      this.f = xo.c($$1.a().f("generator"));
    }
 
-   public static xl a(Date $$0) {
-      return a(System.currentTimeMillis() - $$0.getTime());
+   public xo a() {
+      return this.f;
    }
 
-   public static void a(fgm $$0, int $$1, int $$2, int $$3, UUID $$4) {
-      ffa $$5 = ffa.Q();
-      ProfileResult $$6 = $$5.al().fetchProfile($$4, false);
-      gpu $$7 = $$6 != null ? $$5.am().b($$6.profile()) : gpm.a($$4);
-      fhy.a($$0, $$7.a(), $$1, $$2, $$3);
+   public int b() {
+      return this.e;
    }
 }

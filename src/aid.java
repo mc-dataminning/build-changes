@@ -1,29 +1,29 @@
-public class aid implements zs<ags> {
-   public static final zj<wl, aid> a = zs.a(aid::a, aid::new);
-   private final int b;
+public class aid implements zv<agv> {
+   public static final zm<wl, aid> a = zv.a(aid::a, aid::new);
+   private final ale b;
 
-   public aid(int $$0) {
-      this.b = $$0;
+   public aid(cyv<?> $$0) {
+      this.b = $$0.a();
    }
 
    private aid(wl $$0) {
-      this.b = $$0.l();
+      this.b = $$0.q();
    }
 
    private void a(wl $$0) {
-      $$0.c(this.b);
+      $$0.a(this.b);
    }
 
    @Override
-   public zu<aid> a() {
-      return agq.bR;
+   public zx<aid> a() {
+      return agt.bO;
    }
 
-   public void a(ags $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public ale b() {
       return this.b;
    }
 }

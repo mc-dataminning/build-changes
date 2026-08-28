@@ -1,12 +1,20 @@
-public record afw(xl b) implements zs<ace> {
-   public static final zj<ww, afw> a = zj.a(xn.d, afw::b, afw::new);
+public record afw(int b) implements zv<ach> {
+   public static final zm<wl, afw> a = zv.a(afw::a, afw::new);
 
-   @Override
-   public zu<afw> a() {
-      return agq.aP;
+   private afw(wl $$0) {
+      this($$0.l());
    }
 
-   public void a(ace $$0) {
+   private void a(wl $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zx<afw> a() {
+      return agt.aM;
+   }
+
+   public void a(ach $$0) {
       $$0.a(this);
    }
 }

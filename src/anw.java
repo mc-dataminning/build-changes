@@ -1,37 +1,39 @@
-import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.Collection;
 
 public class anw {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.pardonip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("commands.pardonip.failed"));
-
    public static void a(CommandDispatcher<ep> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("pardon-ip").requires($$0x -> $$0x.c(3)))
-            .then(
-               eq.a("target", StringArgumentType.word())
-                  .suggests(($$0x, $$1) -> eu.a(((ep)$$0x.getSource()).l().ah().g().a(), $$1))
-                  .executes($$0x -> a((ep)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
-            )
+      LiteralCommandNode<ep> $$1 = $$0.register(
+         (LiteralArgumentBuilder)eq.a("msg").then(eq.a("targets", fc.d()).then(eq.a("message", fg.a()).executes($$0x -> {
+            Collection<arf> $$1x = fc.f($$0x, "targets");
+            if (!$$1x.isEmpty()) {
+               fg.a($$0x, "message", $$2 -> a((ep)$$0x.getSource(), $$1x, $$2));
+            }
+
+            return $$1x.size();
+         })))
       );
+      $$0.register((LiteralArgumentBuilder)eq.a("tell").redirect($$1));
+      $$0.register((LiteralArgumentBuilder)eq.a("w").redirect($$1));
    }
 
-   private static int a(ep $$0, String $$1) throws CommandSyntaxException {
-      if (!InetAddresses.isInetAddress($$1)) {
-         throw a.create();
-      } else {
-         auv $$2 = $$0.l().ah().g();
-         if (!$$2.a($$1)) {
-            throw b.create();
-         } else {
-            $$2.c($$1);
-            $$0.a(() -> xl.a("commands.pardonip.success", $$1), true);
-            return 1;
-         }
+   private static void a(ep $$0, Collection<arf> $$1, ye $$2) {
+      xk.a $$3 = xk.a(xk.e, $$0);
+      yd $$4 = yd.a($$2);
+      boolean $$5 = false;
+
+      for (arf $$6 : $$1) {
+         xk.a $$7 = xk.a(xk.f, $$0).c($$6.O_());
+         $$0.a($$4, false, $$7);
+         boolean $$8 = $$0.a($$6);
+         $$6.a($$4, $$8, $$3);
+         $$5 |= $$8 && $$2.j();
+      }
+
+      if ($$5) {
+         $$0.a(avc.e);
       }
    }
 }

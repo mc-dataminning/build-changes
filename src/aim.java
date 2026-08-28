@@ -1,29 +1,85 @@
-public class aim implements zs<ags> {
-   public static final zj<wl, aim> a = zs.a(aim::a, aim::new);
-   private final bqo b;
+public class aim implements zv<agv> {
+   public static final zm<wl, aim> a = zv.a(aim::a, aim::new);
+   private final iz b;
+   private final ale c;
+   private final ale d;
+   private final ale e;
+   private final String f;
+   private final dqf.a g;
+   private final int h;
+   private final int i;
 
-   public aim(bqo $$0) {
+   public aim(iz $$0, ale $$1, ale $$2, ale $$3, String $$4, dqf.a $$5, int $$6, int $$7) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
    private aim(wl $$0) {
-      this.b = $$0.b(bqo.class);
+      this.b = $$0.e();
+      this.c = $$0.q();
+      this.d = $$0.q();
+      this.e = $$0.q();
+      this.f = $$0.p();
+      this.g = dqf.a.a($$0.p()).orElse(dqf.a.b);
+      this.h = $$0.l();
+      this.i = $$0.l();
    }
 
    private void a(wl $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g.c());
+      $$0.c(this.h);
+      $$0.c(this.i);
    }
 
    @Override
-   public zu<aim> a() {
-      return agq.ca;
+   public zx<aim> a() {
+      return agt.bX;
    }
 
-   public void a(ags $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public bqo b() {
+   public iz b() {
       return this.b;
+   }
+
+   public ale e() {
+      return this.c;
+   }
+
+   public ale f() {
+      return this.d;
+   }
+
+   public ale g() {
+      return this.e;
+   }
+
+   public String h() {
+      return this.f;
+   }
+
+   public dqf.a i() {
+      return this.g;
+   }
+
+   public int j() {
+      return this.h;
+   }
+
+   public int k() {
+      return this.i;
    }
 }

@@ -1,9 +1,9 @@
-public record kq(arb a, iz b, drx c, dpu d) {
-   public evm a() {
+public record kq(are a, iz b, dsa c, dpx d) {
+   public evp a() {
       return this.b.b();
    }
 
-   public arb b() {
+   public are b() {
       return this.a;
    }
 
@@ -11,11 +11,11 @@ public record kq(arb a, iz b, drx c, dpu d) {
       return this.b;
    }
 
-   public drx d() {
+   public dsa d() {
       return this.c;
    }
 
-   public dpu e() {
+   public dpx e() {
       return this.d;
    }
 }

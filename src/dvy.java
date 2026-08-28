@@ -1,15 +1,24 @@
-public interface dvy {
-   dvy a = new dvy() {
-      @Override
-      public void a() {
-      }
+import java.util.List;
+import java.util.stream.Stream;
 
-      @Override
-      public void a(bsp.c $$0) {
-      }
-   };
+public class dvy<T> {
+   private final dbd a;
+   private final List<T> b;
 
-   void a();
+   public dvy(dbd $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   void a(bsp.c var1);
+   public dbd a() {
+      return this.a;
+   }
+
+   public Stream<T> b() {
+      return this.b.stream();
+   }
+
+   public boolean c() {
+      return this.b.isEmpty();
+   }
 }

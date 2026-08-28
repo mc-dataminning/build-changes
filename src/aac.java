@@ -1,29 +1,51 @@
-public class aac implements zs<zy> {
-   public static final zj<wl, aac> a = zs.a(aac::a, aac::new);
-   private final int b;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public aac(int $$0) {
-      this.b = $$0;
-   }
-
-   private aac(wl $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(wl $$0) {
-      $$0.p(this.b);
-   }
+public record aac(aaw c) implements zv<aab> {
+   private static final int d = 1048576;
+   public static final zm<wz, aac> a = aaw.<wz>a(
+         $$0 -> aax.a($$0, 1048576),
+         ac.a(
+            Lists.newArrayList(
+               new aaw.c[]{
+                  new aaw.c<>(aau.b, aau.a),
+                  new aaw.c<>(aas.b, aas.a),
+                  new aaw.c<>(aat.b, aat.a),
+                  new aaw.c<>(aav.b, aav.a),
+                  new aaw.c<>(aay.b, aay.a),
+                  new aaw.c<>(aaz.b, aaz.a),
+                  new aaw.c<>(aba.b, aba.a),
+                  new aaw.c<>(abb.b, abb.a),
+                  new aaw.c<>(abc.b, abc.a),
+                  new aaw.c<>(abd.b, abd.a),
+                  new aaw.c<>(abe.b, abe.a),
+                  new aaw.c<>(abf.b, abf.a),
+                  new aaw.c<>(abg.b, abg.a),
+                  new aaw.c<>(abh.b, abh.a),
+                  new aaw.c<>(abi.b, abi.a),
+                  new aaw.c<>(abj.b, abj.a),
+                  new aaw.c<>(abk.b, abk.a),
+                  new aaw.c<>(abl.b, abl.a),
+                  new aaw.c<>(abm.b, abm.a)
+               }
+            ),
+            $$0 -> {
+            }
+         )
+      )
+      .a(aac::new, aac::b);
+   public static final zm<wl, aac> b = aaw.<wl>a($$0 -> aax.a($$0, 1048576), List.of(new aaw.c<>(aau.b, aau.a))).a(aac::new, aac::b);
 
    @Override
-   public zu<aac> a() {
-      return aai.d;
+   public zx<aac> a() {
+      return aal.a;
    }
 
-   public void a(zy $$0) {
+   public void a(aab $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public aaw b() {
+      return this.c;
    }
 }

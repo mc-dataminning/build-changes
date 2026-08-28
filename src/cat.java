@@ -1,27 +1,86 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cat extends cbf {
-   private static final int i = 10;
-   private static final int j = 7;
+public class cat extends cal {
+   public static final float a = 0.02F;
+   protected final btp b;
+   @Nullable
+   protected bss c;
+   protected final float d;
+   private int h;
+   protected final float e;
+   private final boolean i;
+   protected final Class<? extends btn> f;
+   protected final cee g;
 
-   public cat(btt $$0, double $$1, boolean $$2) {
-      super($$0, $$1, 10, $$2);
+   public cat(btp $$0, Class<? extends btn> $$1, float $$2) {
+      this($$0, $$1, $$2, 0.02F);
+   }
+
+   public cat(btp $$0, Class<? extends btn> $$1, float $$2, float $$3) {
+      this($$0, $$1, $$2, $$3, false);
+   }
+
+   public cat(btp $$0, Class<? extends btn> $$1, float $$2, float $$3, boolean $$4) {
+      this.b = $$0;
+      this.f = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.i = $$4;
+      this.a(EnumSet.of(cal.a.b));
+      if ($$1 == cmv.class) {
+         this.g = cee.b().a((double)$$2).a($$1x -> bsx.b($$0).test($$1x));
+      } else {
+         this.g = cee.b().a((double)$$2);
+      }
    }
 
    @Override
    public boolean a() {
-      arb $$0 = (arb)this.b.dP();
-      iz $$1 = this.b.dp();
-      return $$0.c($$1) ? false : super.a();
+      if (this.b.el().i() >= this.e) {
+         return false;
+      } else {
+         if (this.b.p() != null) {
+            this.c = this.b.p();
+         }
+
+         if (this.f == cmv.class) {
+            this.c = this.b.dP().a(this.g, this.b, this.b.du(), this.b.dy(), this.b.dA());
+         } else {
+            this.c = this.b
+               .dP()
+               .a(this.b.dP().a(this.f, this.b.cK().c((double)this.d, 3.0, (double)this.d), $$0 -> true), this.g, this.b, this.b.du(), this.b.dy(), this.b.dA());
+         }
+
+         return this.c != null;
+      }
    }
 
-   @Nullable
    @Override
-   protected evm h() {
-      arb $$0 = (arb)this.b.dP();
-      iz $$1 = this.b.dp();
-      kb $$2 = kb.a($$1);
-      kb $$3 = bvf.a($$0, $$2, 2);
-      return $$3 != $$2 ? cef.a(this.b, 10, 7, evm.c($$3.q()), (float) (Math.PI / 2)) : null;
+   public boolean b() {
+      if (!this.c.bD()) {
+         return false;
+      } else {
+         return this.b.g(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
+      }
+   }
+
+   @Override
+   public void c() {
+      this.h = this.a(40 + this.b.el().a(40));
+   }
+
+   @Override
+   public void d() {
+      this.c = null;
+   }
+
+   @Override
+   public void e() {
+      if (this.c.bD()) {
+         double $$0 = this.i ? this.b.dy() : this.c.dy();
+         this.b.G().a(this.c.du(), $$0, this.c.dA());
+         this.h--;
+      }
    }
 }

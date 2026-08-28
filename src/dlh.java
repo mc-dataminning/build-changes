@@ -1,105 +1,34 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public enum dlh implements azp {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public class dlh extends dex implements dfa {
+   public static final MapCodec<dlh> a = b(dlh::new);
 
-   public static final Codec<dlh> e = azp.a(dlh::values);
-   private final String f;
-   private final h g;
-
-   private dlh(final String $$0, final h $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   @Override
+   public MapCodec<dlh> a() {
+      return a;
    }
 
-   public dlh a(dlh $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
-         case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public je a(je $$0) {
-      if ($$0.o() == je.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public static dlh a(azc $$0) {
-      return ac.a(values(), $$0);
-   }
-
-   public static List<dlh> b(azc $$0) {
-      return ac.b(values(), $$0);
+   public dlh(drz.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public boolean b(dbz $$0, iz $$1, dsa $$2) {
+      return $$0.a_($$1.d()).i();
+   }
+
+   @Override
+   public boolean a(dbw $$0, azf $$1, iz $$2, dsa $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(are $$0, azf $$1, iz $$2, dsa $$3) {
+      $$0.b($$2.d(), dez.sG.o());
+   }
+
+   @Override
+   public iz a(iz $$0) {
+      return $$0.d();
    }
 }

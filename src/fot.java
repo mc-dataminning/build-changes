@@ -1,24 +1,96 @@
-public class fot extends fnw<cqn> {
-   private static final alb D = new alb("container/grindstone/error");
-   private static final alb E = new alb("textures/gui/container/grindstone.png");
+public class fot {
+   private static final ale a = new ale("minecraft", "alt");
+   private static final yl b = yl.a.a(a);
+   private static final fot c = new fot();
+   private final azf d = azf.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-   public fot(cqn $$0, cmr $$1, xl $$2) {
-      super($$0, $$1, $$2);
+   private fot() {
    }
 
-   @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public static fot a() {
+      return c;
    }
 
-   @Override
-   protected void a(fgm $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.c) / 2;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(E, $$4, $$5, 0, 0, this.c, this.d);
-      if ((this.w.b(0).h() || this.w.b(1).h()) && !this.w.b(2).h()) {
-         $$0.a(D, $$4 + 92, $$5 + 31, 28, 21);
+   public xt a(fgn $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
+         }
+
+         $$2.append(ac.a(this.e, this.d));
       }
+
+      return $$0.b().a(xo.b($$2.toString()).c(b), $$1, yl.a);
+   }
+
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

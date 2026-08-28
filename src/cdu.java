@@ -1,47 +1,24 @@
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public abstract class cdu<E extends btk> {
-   private static final azc a = azc.b();
-   private static final int c = 20;
-   protected static final int b = 16;
-   private static final ceb d = ceb.b().a(16.0);
-   private static final ceb e = ceb.b().a(16.0).e();
-   private static final ceb f = ceb.a().a(16.0);
-   private static final ceb g = ceb.a().a(16.0).e();
-   private static final ceb h = ceb.a().a(16.0).d();
-   private static final ceb i = ceb.a().a(16.0).d().e();
-   private final int j;
-   private long k;
-
-   public cdu(int $$0) {
-      this.j = $$0;
-      this.k = (long)a.a($$0);
+public class cdu extends cdx<btn> {
+   @Override
+   public Set<ccr<?>> a() {
+      return ImmutableSet.of(ccr.j, ccr.k, ccr.l);
    }
 
-   public cdu() {
-      this(20);
-   }
-
-   public final void b(arb $$0, E $$1) {
-      if (--this.k <= 0L) {
-         this.k = (long)this.j;
-         this.a($$0, $$1);
-      }
-   }
-
-   protected abstract void a(arb var1, E var2);
-
-   public abstract Set<cco<?>> a();
-
-   public static boolean b(btk $$0, btk $$1) {
-      return $$0.dS().b(cco.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
-   }
-
-   public static boolean c(btk $$0, btk $$1) {
-      return $$0.dS().b(cco.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
-   }
-
-   public static boolean d(btk $$0, btk $$1) {
-      return $$0.dS().b(cco.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
+   @Override
+   protected void a(are $$0, btn $$1) {
+      List<cmv> $$2 = $$0.x().stream().filter(bsx.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::g)).collect(Collectors.toList());
+      bup<?> $$3 = $$1.dS();
+      $$3.a(ccr.j, $$2);
+      List<cmv> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
+      $$3.a(ccr.k, $$4.isEmpty() ? null : $$4.get(0));
+      Optional<cmv> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
+      $$3.a(ccr.l, $$5);
    }
 }

@@ -1,109 +1,52 @@
-public class fuz<T extends btm> extends fva<T> {
-   public final fwv a = this.k.b("right_ear");
-   private final fwv A = this.k.b("left_ear");
-   private final fwx B = this.m.a();
-   private final fwx C = this.k.a();
-   private final fwx D = this.o.a();
-   private final fwx E = this.n.a();
+public class fuz<T extends ckd> extends fuh<T> {
+   private static final String a = "tail_base";
+   private static final String b = "tail_tip";
+   private final fwy f;
+   private final fwy g;
+   private final fwy h;
+   private final fwy i;
+   private final fwy j;
+   private final fwy k;
+   private final fwy l;
 
-   public fuz(fwv $$0) {
-      super($$0, false);
+   public fuz(fwy $$0) {
+      this.f = $$0;
+      fwy $$1 = $$0.b("body");
+      this.k = $$1.b("tail_base");
+      this.l = this.k.b("tail_tip");
+      this.g = $$1.b("left_wing_base");
+      this.h = this.g.b("left_wing_tip");
+      this.i = $$1.b("right_wing_base");
+      this.j = this.i.b("right_wing_tip");
    }
 
-   public static fxd a(fwz $$0) {
-      fxd $$1 = fva.a($$0, false);
-      fxe $$2 = $$1.a();
-      $$2.a("body", fxa.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fwx.a);
-      a($$0, $$1);
-      $$2.a("hat", fxa.c(), fwx.a);
-      return $$1;
+   public static fxe b() {
+      fxg $$0 = new fxg();
+      fxh $$1 = $$0.a();
+      fxh $$2 = $$1.a("body", fxd.c().a(0, 8).a(-3.0F, -2.0F, -8.0F, 5.0F, 3.0F, 9.0F), fxa.b(-0.1F, 0.0F, 0.0F));
+      fxh $$3 = $$2.a("tail_base", fxd.c().a(3, 20).a(-2.0F, 0.0F, 0.0F, 3.0F, 2.0F, 6.0F), fxa.a(0.0F, -2.0F, 1.0F));
+      $$3.a("tail_tip", fxd.c().a(4, 29).a(-1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 6.0F), fxa.a(0.0F, 0.5F, 6.0F));
+      fxh $$4 = $$2.a("left_wing_base", fxd.c().a(23, 12).a(0.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), fxa.a(2.0F, -2.0F, -8.0F, 0.0F, 0.0F, 0.1F));
+      $$4.a("left_wing_tip", fxd.c().a(16, 24).a(0.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), fxa.a(6.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.1F));
+      fxh $$5 = $$2.a("right_wing_base", fxd.c().a(23, 12).a().a(-6.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), fxa.a(-3.0F, -2.0F, -8.0F, 0.0F, 0.0F, -0.1F));
+      $$5.a("right_wing_tip", fxd.c().a(16, 24).a().a(-13.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), fxa.a(-6.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.1F));
+      $$2.a("head", fxd.c().a(0, 0).a(-4.0F, -2.0F, -5.0F, 7.0F, 3.0F, 5.0F), fxa.a(0.0F, 1.0F, -7.0F, 0.2F, 0.0F, 0.0F));
+      return fxe.a($$0, 64, 64);
    }
 
-   public static void a(fwz $$0, fxd $$1) {
-      fxe $$2 = $$1.a();
-      fxe $$3 = $$2.a(
-         "head",
-         fxa.c()
-            .a(0, 0)
-            .a(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, $$0)
-            .a(31, 1)
-            .a(-2.0F, -4.0F, -5.0F, 4.0F, 4.0F, 1.0F, $$0)
-            .a(2, 4)
-            .a(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0)
-            .a(2, 0)
-            .a(-3.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0),
-         fwx.a
-      );
-      $$3.a("left_ear", fxa.c().a(51, 6).a(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), fwx.a(4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 6)));
-      $$3.a("right_ear", fxa.c().a(39, 6).a(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), fwx.a(-4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 6)));
+   @Override
+   public fwy a() {
+      return this.f;
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.m.b(this.B);
-      this.k.b(this.C);
-      this.o.b(this.D);
-      this.n.b(this.E);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = (float) (Math.PI / 6);
-      float $$7 = $$3 * 0.1F + $$1 * 0.5F;
-      float $$8 = 0.08F + $$2 * 0.4F;
-      this.A.g = (float) (-Math.PI / 6) - ayu.b($$7 * 1.2F) * $$8;
-      this.a.g = (float) (Math.PI / 6) + ayu.b($$7) * $$8;
-      if ($$0 instanceof clh $$9) {
-         clk $$10 = $$9.gs();
-         if ($$10 == clk.e) {
-            float $$11 = $$3 / 60.0F;
-            this.a.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * ayu.a($$11 * 30.0F) * 10.0F;
-            this.A.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * ayu.b($$11 * 30.0F) * 10.0F;
-            this.k.b = ayu.a($$11 * 10.0F);
-            this.k.c = ayu.a($$11 * 40.0F) + 0.4F;
-            this.n.g = (float) (Math.PI / 180.0) * (70.0F + ayu.b($$11 * 40.0F) * 10.0F);
-            this.o.g = this.n.g * -1.0F;
-            this.n.c = ayu.a($$11 * 40.0F) * 0.5F + 1.5F;
-            this.o.c = ayu.a($$11 * 40.0F) * 0.5F + 1.5F;
-            this.m.c = ayu.a($$11 * 40.0F) * 0.35F;
-         } else if ($$10 == clk.a && this.c == 0.0F) {
-            this.a($$0);
-         } else if ($$10 == clk.b) {
-            fss.a(this.n, this.o, this.k, !$$0.gh());
-         } else if ($$10 == clk.c) {
-            fss.a(this.n, this.o, $$0, !$$0.gh());
-         } else if ($$10 == clk.d) {
-            this.k.e = 0.5F;
-            this.k.f = 0.0F;
-            if ($$0.gh()) {
-               this.n.f = -0.5F;
-               this.n.e = -0.9F;
-            } else {
-               this.o.f = 0.5F;
-               this.o.e = -0.9F;
-            }
-         }
-      } else if ($$0.ak() == bsv.bx) {
-         fss.a(this.o, this.n, $$0.gi(), this.c, $$3);
-      }
-
-      this.x.a(this.q);
-      this.y.a(this.p);
-      this.b.a(this.o);
-      this.w.a(this.n);
-      this.z.a(this.m);
-      this.l.a(this.k);
-   }
-
-   protected void a(T $$0, float $$1) {
-      if (this.c > 0.0F && $$0 instanceof cli && ((cli)$$0).gs() == clk.a) {
-         fss.a(this.n, this.o, $$0, this.c, $$1);
-      } else {
-         super.a($$0, $$1);
-      }
-   }
-
-   private void a(T $$0) {
-      if ($$0.gh()) {
-         this.o.e = -1.8F;
-      } else {
-         this.n.e = -1.8F;
-      }
+      float $$6 = ((float)$$0.u() + $$3) * 7.448451F * (float) (Math.PI / 180.0);
+      float $$7 = 16.0F;
+      this.g.g = ayx.b($$6) * 16.0F * (float) (Math.PI / 180.0);
+      this.h.g = ayx.b($$6) * 16.0F * (float) (Math.PI / 180.0);
+      this.i.g = -this.g.g;
+      this.j.g = -this.h.g;
+      this.k.e = -(5.0F + ayx.b($$6 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
+      this.l.e = -(5.0F + ayx.b($$6 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
    }
 }

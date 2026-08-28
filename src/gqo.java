@@ -1,12 +1,14 @@
 import com.mojang.serialization.Codec;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record gqo(Map<String, gqb> d) {
-   public static final Codec<String> a = Codec.string(1, 16);
-   public static final Codec<gqo> b = Codec.unboundedMap(a, gqb.a).xmap(gqo::new, gqo::a);
-   public static final atl<gqo> c = atl.a("language", b);
+public record gqo(gqp d) {
+   public static final gqo a = new gqo(gqp.b);
+   public static final Codec<gqo> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(gqp.a.optionalFieldOf("scaling", gqp.b).forGetter(gqo::a)).apply($$0, gqo::new)
+   );
+   public static final ato<gqo> c = ato.a("gui", b);
 
-   public Map<String, gqb> a() {
+   public gqp a() {
       return this.d;
    }
 }

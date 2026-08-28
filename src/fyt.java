@@ -1,65 +1,47 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class fyt extends fyu {
-   private final String f;
+public enum fyt {
+   a("generic_violation"),
+   b("false_reporting"),
+   c("hate_speech"),
+   d("hate_terrorism_notorious_figure"),
+   e("harassment_or_bullying"),
+   f("defamation_impersonation_false_information"),
+   g("drugs"),
+   h("fraud"),
+   i("spam_or_advertising"),
+   j("nudity_or_pornography"),
+   k("sexually_inappropriate"),
+   l("extreme_violence_or_gore"),
+   m("imminent_harm_to_person_or_property");
 
-   fyt(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+   private final xo n;
+
+   private fyt(final String $$0) {
+      this.n = xo.c("gui.banned.reason." + $$0);
    }
 
-   public String a() {
-      return this.f;
+   public xo a() {
+      return this.n;
    }
 
-   public fyt c() {
-      fyt $$0 = new fyt(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      return $$0;
-   }
-
-   @Override
-   public fmy a(fmy $$0, fyy $$1) {
-      return new fqz($$0, $$1, this);
-   }
-
-   public static class a extends fyu.a<fyt> {
-      public a(fyt $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new fyt(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
-      }
-
-      @Nullable
-      @Override
-      public fyu.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fyu.b.d : null;
-      }
-
-      @Override
-      public Either<fyu.c, fyu.b> a(fyy $$0) {
-         fyu.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new fyu.c(this.a.a, fyx.c, $$3));
-         }
-      }
+   @Nullable
+   public static fyt a(int $$0) {
+      return switch ($$0) {
+         case 2 -> b;
+         default -> null;
+         case 5 -> c;
+         case 16, 25 -> d;
+         case 17, 19, 23, 31 -> a;
+         case 21 -> e;
+         case 27 -> f;
+         case 28 -> g;
+         case 29 -> h;
+         case 30 -> i;
+         case 32 -> j;
+         case 33 -> k;
+         case 34 -> l;
+         case 53 -> m;
+      };
    }
 }

@@ -1,64 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.List;
-import java.util.stream.IntStream;
 
 public class ell extends emc {
-   public static final MapCodec<ell> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eme.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bpu.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, ell::new)
-   );
-   private final emc b;
-   private final bpu c;
+   public static final MapCodec<ell> a = lp.e.q().fieldOf("block").xmap(ell::new, $$0 -> $$0.b);
+   private final dex b;
 
-   public ell(emc $$0, bpu $$1) {
+   public ell(dex $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
    @Override
-   protected eme<?> a() {
-      return eme.o;
+   public boolean a(dsa $$0, azf $$1) {
+      return $$0.a(this.b);
    }
 
    @Override
-   public final List<emf.c> a(dci $$0, iz $$1, iz $$2, List<emf.c> $$3, List<emf.c> $$4, emb $$5) {
-      if (this.c.b() != 0 && !$$4.isEmpty()) {
-         if ($$3.size() != $$4.size()) {
-            ac.a(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + $$3.size()
-                  + ", Processed size: "
-                  + $$4.size()
-            );
-            return $$4;
-         } else {
-            azc $$6 = azc.a($$0.E().C()).e().a($$1);
-            int $$7 = Math.min(this.c.a($$6), $$4.size());
-            if ($$7 < 1) {
-               return $$4;
-            } else {
-               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
-               IntIterator $$9 = $$8.intIterator();
-               int $$10 = 0;
-
-               while ($$9.hasNext() && $$10 < $$7) {
-                  int $$11 = $$9.nextInt();
-                  emf.c $$12 = $$3.get($$11);
-                  emf.c $$13 = $$4.get($$11);
-                  emf.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
-                  if ($$14 != null && !$$13.equals($$14)) {
-                     $$10++;
-                     $$4.set($$11, $$14);
-                  }
-               }
-
-               return $$4;
-            }
-         }
-      } else {
-         return $$4;
-      }
+   protected emd<?> a() {
+      return emd.b;
    }
 }

@@ -1,76 +1,59 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class djb extends deu implements dlv {
-   public static final MapCodec<djb> a = b(djb::new);
-   public static final dso b = dsn.j;
-   public static final dso c = dsn.C;
-   protected static final ewf d = ewc.a(deu.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), deu.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
-   protected static final ewf e = ewc.a(deu.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), deu.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
+public class djb extends dim implements djo {
+   public static final MapCodec<djb> c = b(djb::new);
+   protected static final ewi g = dex.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final double h = 0.14;
 
    @Override
    public MapCodec<djb> a() {
-      return a;
+      return c;
    }
 
-   public djb(drw.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
+   protected djb(drz.d $$0) {
+      super($$0, je.b, g, true, 0.14);
+   }
+
+   @Override
+   protected boolean g(dsa $$0) {
+      return $$0.a(dez.G);
+   }
+
+   @Override
+   protected dex b() {
+      return dez.md;
+   }
+
+   @Override
+   protected boolean m(dsa $$0) {
+      return !$$0.a(dez.kJ);
+   }
+
+   @Override
+   public boolean a(@Nullable cmv $$0, dbc $$1, iz $$2, dsa $$3, ens $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(dbx $$0, iz $$1, dsa $$2, ent $$3) {
+      return false;
+   }
+
+   @Override
+   protected int a(azf $$0) {
+      return 1;
    }
 
    @Nullable
    @Override
-   public drx a(cxv $$0) {
-      enq $$1 = $$0.q().b_($$0.a());
-
-      for (je $$2 : $$0.f()) {
-         if ($$2.o() == je.a.b) {
-            drx $$3 = this.n().a(b, Boolean.valueOf($$2 == je.b));
-            if ($$3.a((dbw)$$0.q(), $$0.a())) {
-               return $$3.a(c, Boolean.valueOf($$1.a() == enr.c));
-            }
-         }
-      }
-
-      return null;
+   public dsa a(cxy $$0) {
+      ent $$1 = $$0.q().b_($$0.a());
+      return $$1.a(awu.a) && $$1.e() == 8 ? super.a($$0) : null;
    }
 
    @Override
-   protected ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
-      return $$0.c(b) ? e : d;
-   }
-
-   @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected boolean a(drx $$0, dbw $$1, iz $$2) {
-      je $$3 = m($$0).g();
-      return deu.a($$1, $$2.a($$3), $$3.g());
-   }
-
-   protected static je m(drx $$0) {
-      return $$0.c(b) ? je.a : je.b;
-   }
-
-   @Override
-   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, enr.c, enr.c.a($$3));
-      }
-
-      return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? dew.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected enq b_(drx $$0) {
-      return $$0.c(c) ? enr.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(drx $$0, eof $$1) {
-      return false;
+   protected ent b_(dsa $$0) {
+      return enu.c.a(false);
    }
 }

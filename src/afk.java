@@ -1,39 +1,37 @@
-import javax.annotation.Nullable;
+public class afk implements zv<ach> {
+   public static final zm<wl, afk> a = zv.a(afk::a, afk::new);
+   private final iz b;
+   private final float c;
 
-public class afk implements zs<ace> {
-   public static final zj<wl, afk> a = zs.a(afk::a, afk::new);
-   private final int b;
-   private final int c;
-
-   public afk(bsp $$0, @Nullable bsp $$1) {
-      this.b = $$0.al();
-      this.c = $$1 != null ? $$1.al() : 0;
+   public afk(iz $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    private afk(wl $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
+      this.b = $$0.e();
+      this.c = $$0.readFloat();
    }
 
    private void a(wl $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zu<afk> a() {
-      return agq.aD;
+   public zx<afk> a() {
+      return agt.aA;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public iz b() {
       return this.b;
    }
 
-   public int e() {
+   public float e() {
       return this.c;
    }
 }

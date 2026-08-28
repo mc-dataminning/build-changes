@@ -1,19 +1,13 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dvq {
+   public static final ald<dvs> a = a("overworld");
+   public static final ald<dvs> b = a("the_nether");
+   public static final ald<dvs> c = a("the_end");
+   public static final ald<dvs> d = a("overworld_caves");
+   public static final ale e = new ale("overworld");
+   public static final ale f = new ale("the_nether");
+   public static final ale g = new ale("the_end");
 
-public record dvq(ji<dvp> e, dtu f) {
-   public static final Codec<dvq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dvp.j.fieldOf("type").forGetter(dvq::a), dtu.a.fieldOf("generator").forGetter(dvq::b)).apply($$0, $$0.stable(dvq::new))
-   );
-   public static final ala<dvq> b = ala.a(lq.aT, new alb("overworld"));
-   public static final ala<dvq> c = ala.a(lq.aT, new alb("the_nether"));
-   public static final ala<dvq> d = ala.a(lq.aT, new alb("the_end"));
-
-   public ji<dvp> a() {
-      return this.e;
-   }
-
-   public dtu b() {
-      return this.f;
+   private static ald<dvs> a(String $$0) {
+      return ald.a(lq.aE, new ale($$0));
    }
 }

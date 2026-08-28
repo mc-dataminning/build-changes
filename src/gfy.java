@@ -1,73 +1,50 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class gfy implements gfm<drw> {
+   private final geg a;
 
-public class gfy implements gfj<dqo> {
-   private final Map<dlw.a, fvs> a;
-   private static final Map<dlw.a, alb> b = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dlw.b.c, new alb("textures/entity/skeleton/skeleton.png"));
-      $$0.put(dlw.b.d, new alb("textures/entity/skeleton/wither_skeleton.png"));
-      $$0.put(dlw.b.f, new alb("textures/entity/zombie/zombie.png"));
-      $$0.put(dlw.b.g, new alb("textures/entity/creeper/creeper.png"));
-      $$0.put(dlw.b.i, new alb("textures/entity/enderdragon/dragon.png"));
-      $$0.put(dlw.b.h, new alb("textures/entity/piglin/piglin.png"));
-      $$0.put(dlw.b.e, gpm.a());
-   });
-
-   public static Map<dlw.a, fvs> a(fwr $$0) {
-      Builder<dlw.a, fvs> $$1 = ImmutableMap.builder();
-      $$1.put(dlw.b.c, new fvr($$0.a(fwu.br)));
-      $$1.put(dlw.b.d, new fvr($$0.a(fwu.ca)));
-      $$1.put(dlw.b.e, new fvr($$0.a(fwu.aT)));
-      $$1.put(dlw.b.f, new fvr($$0.a(fwu.cg)));
-      $$1.put(dlw.b.g, new fvr($$0.a(fwu.J)));
-      $$1.put(dlw.b.i, new fwp($$0.a(fwu.Q)));
-      $$1.put(dlw.b.h, new fuy($$0.a(fwu.aN)));
-      return $$1.build();
+   public gfy(gfn.a $$0) {
+      this.a = $$0.b();
    }
 
-   public gfy(gfk.a $$0) {
-      this.a = a($$0.e());
-   }
+   public void a(drw $$0, float $$1, ezw $$2, gdm $$3, int $$4, int $$5) {
+      dbw $$6 = $$0.i();
+      if ($$6 != null) {
+         iz $$7 = $$0.az_().a($$0.f().g());
+         dsa $$8 = $$0.j();
+         if (!$$8.i()) {
+            gei.a();
+            $$2.a();
+            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
+            if ($$8.a(dez.bz) && $$0.a($$1) <= 4.0F) {
+               $$8 = $$8.a(dru.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            } else if ($$0.d() && !$$0.b()) {
+               dtc $$9 = $$8.a(dez.br) ? dtc.b : dtc.a;
+               dsa $$10 = dez.bz.o().a(dru.c, $$9).a(dru.a, $$8.c(drt.a));
+               $$10 = $$10.a(dru.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
+               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
+               iz $$11 = $$7.a($$0.f());
+               $$2.b();
+               $$2.a();
+               $$8 = $$8.a(drt.c, Boolean.valueOf(true));
+               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
+            } else {
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            }
 
-   public void a(dqo $$0, float $$1, ezt $$2, gdj $$3, int $$4, int $$5) {
-      float $$6 = $$0.a($$1);
-      drx $$7 = $$0.n();
-      boolean $$8 = $$7.b() instanceof dnv;
-      je $$9 = $$8 ? $$7.c(dnv.d) : null;
-      int $$10 = $$8 ? dtd.a($$9.g()) : $$7.c(dlw.e);
-      float $$11 = dtd.b($$10);
-      dlw.a $$12 = ((ddq)$$7.b()).b();
-      fvs $$13 = this.a.get($$12);
-      gdr $$14 = a($$12, $$0.c());
-      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
-   }
-
-   public static void a(@Nullable je $$0, float $$1, float $$2, ezt $$3, gdj $$4, int $$5, fvs $$6, gdr $$7) {
-      $$3.a();
-      if ($$0 == null) {
-         $$3.a(0.5F, 0.0F, 0.5F);
-      } else {
-         float $$8 = 0.25F;
-         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
+            $$2.b();
+            gei.b();
+         }
       }
-
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      ezx $$9 = $$4.getBuffer($$7);
-      $$6.a($$2, $$1, 0.0F);
-      $$6.a($$3, $$9, $$5, gol.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
    }
 
-   public static gdr a(dlw.a $$0, @Nullable cxm $$1) {
-      alb $$2 = b.get($$0);
-      if ($$0 == dlw.b.e && $$1 != null) {
-         gpv $$3 = ffa.Q().am();
-         return gdr.i($$3.b($$1.f()).a());
-      } else {
-         return gdr.f($$2);
-      }
+   private void a(iz $$0, dsa $$1, ezw $$2, gdm $$3, dbw $$4, boolean $$5, int $$6) {
+      gdu $$7 = gdh.b($$1);
+      faa $$8 = $$3.getBuffer($$7);
+      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, azf.a(), $$1.a($$0), $$6);
+   }
+
+   @Override
+   public int aP_() {
+      return 68;
    }
 }

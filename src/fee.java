@@ -1,13 +1,66 @@
-public class fee extends fef {
-   private final fbr b;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public fee(fbr $$0, long $$1, xl $$2, Runnable $$3) {
-      super($$1, $$2, $$3);
-      this.b = $$0;
+public class fee extends fed {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xo c = xo.c("mco.configure.world.opening");
+   private final fbd d;
+   private final fnb e;
+   private final boolean f;
+   private final ffd g;
+
+   public fee(fbd $$0, fnb $$1, boolean $$2, ffd $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   protected void a(faj $$0, long $$1) throws fbw {
-      $$0.d($$1, this.b.a);
+   public void run() {
+      fam $$0 = fam.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.f(this.d.a);
+            if ($$2) {
+               this.g.execute(() -> {
+                  if (this.e instanceof fcm) {
+                     ((fcm)this.e).b();
+                  }
+
+                  this.d.e = fbd.c.b;
+                  if (this.f) {
+                     fah.a(this.d, this.e);
+                  } else {
+                     this.g.a(this.e);
+                  }
+               });
+               break;
+            }
+         } catch (fca var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to open server", var5);
+            this.a(var5);
+         }
+      }
+   }
+
+   @Override
+   public xo a() {
+      return c;
    }
 }

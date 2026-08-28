@@ -1,94 +1,113 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public class alx {
-   private static final Logger a = LogUtils.getLogger();
+public class alx extends brd {
+   private long g = 0L;
+   private long h = 0L;
+   private long i = 0L;
+   private long j = 0L;
+   private boolean k = false;
+   private final MinecraftServer l;
 
-   public static <D, R> CompletableFuture<R> a(alx.c $$0, alx.f<D> $$1, alx.e<D, R> $$2, Executor $$3, Executor $$4) {
-      try {
-         Pair<dcn, aub> $$5 = $$0.a.a();
-         aub $$6 = (aub)$$5.getSecond();
-         jp<alk> $$7 = alk.a();
-         jp<alk> $$8 = b($$6, $$7, alk.b, akw.a);
-         jw.b $$9 = $$8.b(alk.c);
-         jw.b $$10 = akw.a($$6, $$9, akw.b);
-         dcn $$11 = (dcn)$$5.getFirst();
-         alx.b<D> $$12 = $$1.get(new alx.a($$6, $$11, $$9, $$10));
-         jp<alk> $$13 = $$8.a(alk.c, $$12.b);
-         return alm.a($$6, $$13, $$11.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
-            if ($$2x != null) {
-               $$6.close();
-            }
-         }).thenApplyAsync($$4x -> {
-            $$4x.g();
-            return $$2.create($$6, $$4x, $$13, $$12.a);
-         }, $$4);
-      } catch (Exception var14) {
-         return CompletableFuture.failedFuture(var14);
+   public alx(MinecraftServer $$0) {
+      this.l = $$0;
+   }
+
+   public boolean a() {
+      return this.j > 0L;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      this.n();
+   }
+
+   private void n() {
+      this.l.ah().a(agk.a(this));
+   }
+
+   private void o() {
+      this.l.ah().a(agl.a(this));
+   }
+
+   public boolean a(int $$0) {
+      if (!this.l()) {
+         return false;
+      } else {
+         this.d = $$0;
+         this.o();
+         return true;
       }
    }
 
-   private static jw.b a(aul $$0, jp<alk> $$1, alk $$2, List<akw.c<?>> $$3) {
-      jw.b $$4 = $$1.b($$2);
-      return akw.a($$0, $$4, $$3);
-   }
-
-   private static jp<alk> b(aul $$0, jp<alk> $$1, alk $$2, List<akw.c<?>> $$3) {
-      jw.b $$4 = a($$0, $$1, $$2, $$3);
-      return $$1.a($$2, $$4);
-   }
-
-   public static record a(aul a, dcn b, jw.b c, jw.b d) {
-   }
-
-   public static record b<D>(D a, jw.b b) {
-   }
-
-   public static record c(alx.d a, eq.a b, int c) {
-   }
-
-   public static record d(atw a, dcn b, boolean c, boolean d) {
-      public Pair<dcn, aub> a() {
-         cpg $$0 = this.d ? cpi.e.a() : this.b.b();
-         dcn $$1 = MinecraftServer.a(this.a, this.b.a(), this.c, $$0);
-         if (!this.d) {
-            $$1 = $$1.a(this.b.b());
-         }
-
-         List<asx> $$2 = this.a.g();
-         aub $$3 = new aue(asz.b, $$2);
-         return Pair.of($$1, $$3);
-      }
-
-      public atw b() {
-         return this.a;
-      }
-
-      public dcn c() {
-         return this.b;
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
+   public boolean b() {
+      if (this.d > 0) {
+         this.d = 0;
+         this.o();
+         return true;
+      } else {
+         return false;
       }
    }
 
-   @FunctionalInterface
-   public interface e<D, R> {
-      R create(aub var1, alm var2, jp<alk> var3, D var4);
+   public boolean c() {
+      if (this.g > 0L) {
+         this.p();
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @FunctionalInterface
-   public interface f<D> {
-      alx.b<D> get(alx.a var1);
+   public boolean b(int $$0) {
+      boolean $$1 = this.g > 0L;
+      this.i = 0L;
+      this.j = (long)$$0;
+      this.g = (long)$$0;
+      this.k = this.l();
+      this.a(false);
+      return $$1;
+   }
+
+   private void p() {
+      long $$0 = this.j - this.g;
+      double $$1 = Math.max(1.0, (double)this.i) / (double)azx.b;
+      int $$2 = (int)((double)(azx.c * $$0) / $$1);
+      String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
+      this.j = 0L;
+      this.i = 0L;
+      this.l.aI().a(() -> xo.a("commands.tick.sprint.report", $$2, $$3), true);
+      this.g = 0L;
+      this.a(this.k);
+      this.l.E();
+   }
+
+   public boolean d() {
+      if (!this.e) {
+         return false;
+      } else if (this.g > 0L) {
+         this.h = System.nanoTime();
+         this.g--;
+         return true;
+      } else {
+         this.p();
+         return false;
+      }
+   }
+
+   public void e() {
+      this.i = this.i + (System.nanoTime() - this.h);
+   }
+
+   @Override
+   public void a(float $$0) {
+      super.a($$0);
+      this.l.E();
+      this.n();
+   }
+
+   public void a(arf $$0) {
+      $$0.c.b(agk.a(this));
+      $$0.c.b(agl.a(this));
    }
 }

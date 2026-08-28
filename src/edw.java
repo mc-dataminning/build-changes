@@ -1,43 +1,97 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public class edw implements ecx {
+public class edw implements eda {
    public static final Codec<edw> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               axb.b(lq.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
-               eey.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
-               ehj.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
-               eha.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
-               bpu.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
-               bpu.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+               efb.a.fieldOf("trunk_provider").forGetter($$0x -> $$0x.b),
+               ege.c.fieldOf("trunk_placer").forGetter($$0x -> $$0x.d),
+               efb.a.fieldOf("foliage_provider").forGetter($$0x -> $$0x.e),
+               eem.d.fieldOf("foliage_placer").forGetter($$0x -> $$0x.f),
+               eey.d.optionalFieldOf("root_placer").forGetter($$0x -> $$0x.g),
+               efb.a.fieldOf("dirt_provider").forGetter($$0x -> $$0x.c),
+               eeb.a.fieldOf("minimum_size").forGetter($$0x -> $$0x.h),
+               efs.h.listOf().fieldOf("decorators").forGetter($$0x -> $$0x.i),
+               Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter($$0x -> $$0x.j),
+               Codec.BOOL.fieldOf("force_dirt").orElse(false).forGetter($$0x -> $$0x.k)
             )
             .apply($$0, edw::new)
    );
-   public final axb<deu> b;
-   public final eey c;
-   public final ji<ehj> d;
-   public final eha e;
-   public final bpu f;
-   public final float g;
-   public final int h;
-   public final float i;
-   public final bpu j;
-   public final float k;
+   public final efb b;
+   public final efb c;
+   public final ege d;
+   public final efb e;
+   public final eem f;
+   public final Optional<eey> g;
+   public final eeb h;
+   public final List<efs> i;
+   public final boolean j;
+   public final boolean k;
 
-   public edw(axb<deu> $$0, eey $$1, ji<ehj> $$2, eha $$3, bpu $$4, float $$5, int $$6, float $$7, bpu $$8, float $$9) {
+   protected edw(efb $$0, ege $$1, efb $$2, eem $$3, Optional<eey> $$4, efb $$5, eeb $$6, List<efs> $$7, boolean $$8, boolean $$9) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.c = $$5;
       this.h = $$6;
       this.i = $$7;
       this.j = $$8;
       this.k = $$9;
+   }
+
+   public static class a {
+      public final efb a;
+      private final ege c;
+      public final efb b;
+      private final eem d;
+      private final Optional<eey> e;
+      private efb f;
+      private final eeb g;
+      private List<efs> h = ImmutableList.of();
+      private boolean i;
+      private boolean j;
+
+      public a(efb $$0, ege $$1, efb $$2, eem $$3, Optional<eey> $$4, eeb $$5) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+         this.f = efb.a(dez.j);
+         this.d = $$3;
+         this.e = $$4;
+         this.g = $$5;
+      }
+
+      public a(efb $$0, ege $$1, efb $$2, eem $$3, eeb $$4) {
+         this($$0, $$1, $$2, $$3, Optional.empty(), $$4);
+      }
+
+      public edw.a a(efb $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public edw.a a(List<efs> $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public edw.a a() {
+         this.i = true;
+         return this;
+      }
+
+      public edw.a b() {
+         this.j = true;
+         return this;
+      }
+
+      public edw c() {
+         return new edw(this.a, this.c, this.b, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
+      }
    }
 }

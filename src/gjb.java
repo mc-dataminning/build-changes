@@ -1,9 +1,27 @@
-public class gjb extends gjy<cgu, fty<cgu>> {
-   public gjb(gis.a $$0) {
-      super($$0, new fty<>($$0.a(fwu.ae)), 0.3F);
+public class gjb extends giu<cni> {
+   private final gjt a;
+
+   public gjb(giv.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   public alb a(cgu $$0) {
-      return $$0.y().a().a();
+   public void a(cni $$0, float $$1, float $$2, ezw $$3, gdm $$4, int $$5) {
+      $$3.a();
+      $$3.a(this.c.b());
+      $$3.a(a.d.rotationDegrees(180.0F));
+      if ($$0.u()) {
+         $$3.a(a.f.rotationDegrees(180.0F));
+         $$3.a(a.d.rotationDegrees(180.0F));
+         $$3.a(a.b.rotationDegrees(90.0F));
+      }
+
+      this.a.a($$0.p(), cuk.h, $$5, goo.d, $$3, $$4, $$0.dP(), $$0.al());
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public ale a(cni $$0) {
+      return gow.e;
    }
 }

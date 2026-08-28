@@ -1,82 +1,246 @@
-public class fog extends fnv {
-   private final dpm s;
-   private fhg<dpm.a> u;
-   private fhg<Boolean> v;
-   private fhg<Boolean> w;
-   private dpm.a x = dpm.a.c;
-   private boolean y;
-   private boolean z;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public fog(dpm $$0) {
-      this.s = $$0;
+public class fog extends fnb {
+   public static final int a = 16;
+   public static final int b = 36;
+   public static final int c = 30;
+   public static final fog.a d = new fog.a(List.of());
+   public static final ale r = new ale("textures/gui/book.png");
+   protected static final int s = 114;
+   protected static final int u = 128;
+   protected static final int v = 192;
+   protected static final int w = 192;
+   private fog.a x;
+   private int y;
+   private List<ayj> z = Collections.emptyList();
+   private int A = -1;
+   private xo B = xn.a;
+   private fpi C;
+   private fpi D;
+   private final boolean E;
+
+   public fog(fog.a $$0) {
+      this($$0, true);
+   }
+
+   public fog() {
+      this(d, false);
+   }
+
+   private fog(fog.a $$0, boolean $$1) {
+      super(fev.a);
+      this.x = $$0;
+      this.E = $$1;
+   }
+
+   public void a(fog.a $$0) {
+      this.x = $$0;
+      this.y = ayx.a(this.y, 0, $$0.a());
+      this.K();
+      this.A = -1;
+   }
+
+   public boolean a(int $$0) {
+      int $$1 = ayx.a($$0, 0, this.x.a() - 1);
+      if ($$1 != this.y) {
+         this.y = $$1;
+         this.K();
+         this.A = -1;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean b(int $$0) {
+      return this.a($$0);
    }
 
    @Override
-   dau m() {
-      return this.s.b();
+   protected void aM_() {
+      this.m();
+      this.D();
+   }
+
+   protected void m() {
+      this.c(fhc.a(xn.d, $$0 -> this.d()).a(this.n / 2 - 100, 196, 200, 20).a());
+   }
+
+   protected void D() {
+      int $$0 = (this.n - 192) / 2;
+      int $$1 = 2;
+      this.C = this.c(new fpi($$0 + 116, 159, true, $$0x -> this.I(), this.E));
+      this.D = this.c(new fpi($$0 + 43, 159, false, $$0x -> this.F(), this.E));
+      this.K();
+   }
+
+   private int E() {
+      return this.x.a();
+   }
+
+   protected void F() {
+      if (this.y > 0) {
+         this.y--;
+      }
+
+      this.K();
+   }
+
+   protected void I() {
+      if (this.y < this.E() - 1) {
+         this.y++;
+      }
+
+      this.K();
+   }
+
+   private void K() {
+      this.C.k = this.y < this.E() - 1;
+      this.D.k = this.y > 0;
    }
 
    @Override
-   int C() {
-      return 135;
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else {
+         switch ($$0) {
+            case 266:
+               this.D.b();
+               return true;
+            case 267:
+               this.C.b();
+               return true;
+            default:
+               return false;
+         }
+      }
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.u = this.c(fhg.<dpm.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> xl.c("advMode.mode.sequence");
-            case b -> xl.c("advMode.mode.auto");
-            case c -> xl.c("advMode.mode.redstone");
-         };
-      }).a(dpm.a.values()).a().a(this.x).a(this.n / 2 - 50 - 100 - 4, 165, 100, 20, xl.c("advMode.mode"), ($$0, $$1) -> this.x = $$1));
-      this.v = this.c(
-         fhg.a(xl.c("advMode.mode.conditional"), xl.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.y)
-            .a(this.n / 2 - 50, 165, 100, 20, xl.c("advMode.type"), ($$0, $$1) -> this.y = $$1)
-      );
-      this.w = this.c(
-         fhg.a(xl.c("advMode.mode.autoexec.bat"), xl.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.z)
-            .a(this.n / 2 + 50 + 4, 165, 100, 20, xl.c("advMode.triggering"), ($$0, $$1) -> this.z = $$1)
-      );
-      this.e(false);
-   }
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 192) / 2;
+      int $$5 = 2;
+      if (this.A != this.y) {
+         xt $$6 = this.x.a(this.y);
+         this.z = this.p.c($$6, 114);
+         this.B = xo.a("book.pageIndicator", this.y + 1, Math.max(this.E(), 1));
+      }
 
-   private void e(boolean $$0) {
-      this.c.j = $$0;
-      this.r.j = $$0;
-      this.u.j = $$0;
-      this.v.j = $$0;
-      this.w.j = $$0;
-   }
+      this.A = this.y;
+      int $$7 = this.p.a(this.B);
+      $$0.a(this.p, this.B, $$4 - $$7 + 192 - 44, 18, 0, false);
+      int $$8 = Math.min(128 / 9, this.z.size());
 
-   public void E() {
-      dau $$0 = this.s.b();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.p();
-      this.x = this.s.l();
-      this.y = this.s.u();
-      this.z = this.s.d();
-      this.r.a($$1);
-      this.u.a(this.x);
-      this.v.a(this.y);
-      this.w.a(this.z);
-      this.c($$1);
-      this.e(true);
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         ayj $$10 = this.z.get($$9);
+         $$0.a(this.p, $$10, $$4 + 36, 32 + $$9 * 9, 0, false);
+      }
+
+      yl $$11 = this.b((double)$$1, (double)$$2);
+      if ($$11 != null) {
+         $$0.a(this.p, $$11, $$1, $$2);
+      }
    }
 
    @Override
-   public void a(ffa $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.e(true);
+   public void b(fgp $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+      $$0.a(r, (this.n - 192) / 2, 2, 0, 0, 192, 192);
    }
 
    @Override
-   protected void a(dau $$0) {
-      this.m.L().b(new aig(iz.a($$0.g()), this.a.a(), this.x, $$0.p(), this.y, this.z));
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 == 0) {
+         yl $$3 = this.b($$0, $$1);
+         if ($$3 != null && this.a($$3)) {
+            return true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(yl $$0) {
+      xm $$1 = $$0.h();
+      if ($$1 == null) {
+         return false;
+      } else if ($$1.a() == xm.a.e) {
+         String $$2 = $$1.b();
+
+         try {
+            int $$3 = Integer.parseInt($$2) - 1;
+            return this.b($$3);
+         } catch (Exception var5) {
+            return false;
+         }
+      } else {
+         boolean $$4 = super.a($$0);
+         if ($$4 && $$1.a() == xm.a.c) {
+            this.J();
+         }
+
+         return $$4;
+      }
+   }
+
+   protected void J() {
+      this.m.a(null);
+   }
+
+   @Nullable
+   public yl b(double $$0, double $$1) {
+      if (this.z.isEmpty()) {
+         return null;
+      } else {
+         int $$2 = ayx.a($$0 - (double)((this.n - 192) / 2) - 36.0);
+         int $$3 = ayx.a($$1 - 2.0 - 30.0);
+         if ($$2 >= 0 && $$3 >= 0) {
+            int $$4 = Math.min(128 / 9, this.z.size());
+            if ($$2 <= 114 && $$3 < 9 * $$4 + $$4) {
+               int $$5 = $$3 / 9;
+               if ($$5 >= 0 && $$5 < this.z.size()) {
+                  ayj $$6 = this.z.get($$5);
+                  return this.m.h.b().a($$6, $$2);
+               } else {
+                  return null;
+               }
+            } else {
+               return null;
+            }
+         } else {
+            return null;
+         }
+      }
+   }
+
+   public static record a(List<xo> a) {
+      public int a() {
+         return this.a.size();
+      }
+
+      public xt a(int $$0) {
+         return $$0 >= 0 && $$0 < this.a() ? this.a.get($$0) : xt.b;
+      }
+
+      @Nullable
+      public static fog.a a(cun $$0) {
+         boolean $$1 = ffd.Q().aS();
+         cxw $$2 = $$0.a(km.I);
+         if ($$2 != null) {
+            return new fog.a($$2.a($$1));
+         } else {
+            cxv $$3 = $$0.a(km.H);
+            return $$3 != null ? new fog.a($$3.a($$1).map(xo::b).toList()) : null;
+         }
+      }
+
+      public List<xo> b() {
+         return this.a;
+      }
    }
 }

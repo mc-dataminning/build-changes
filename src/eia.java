@@ -1,224 +1,263 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.google.common.base.MoreObjects;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
 public class eia {
-   private static final Map<String, String> a = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("Village", "Village");
-      $$0.put("Mineshaft", "Mineshaft");
-      $$0.put("Mansion", "Mansion");
-      $$0.put("Igloo", "Temple");
-      $$0.put("Desert_Pyramid", "Temple");
-      $$0.put("Jungle_Pyramid", "Temple");
-      $$0.put("Swamp_Hut", "Temple");
-      $$0.put("Stronghold", "Stronghold");
-      $$0.put("Monument", "Monument");
-      $$0.put("Fortress", "Fortress");
-      $$0.put("EndCity", "EndCity");
-   });
-   private static final Map<String, String> b = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("Iglu", "Igloo");
-      $$0.put("TeDP", "Desert_Pyramid");
-      $$0.put("TeJP", "Jungle_Pyramid");
-      $$0.put("TeSH", "Swamp_Hut");
-   });
-   private static final Set<String> c = Set.of(
-      "pillager_outpost",
-      "mineshaft",
-      "mansion",
-      "jungle_pyramid",
-      "desert_pyramid",
-      "igloo",
-      "ruined_portal",
-      "shipwreck",
-      "swamp_hut",
-      "stronghold",
-      "monument",
-      "ocean_ruin",
-      "fortress",
-      "endcity",
-      "buried_treasure",
-      "village",
-      "nether_fossil",
-      "bastion_remnant"
-   );
-   private final boolean d;
-   private final Map<String, Long2ObjectMap<ur>> e = Maps.newHashMap();
-   private final Map<String, eii> f = Maps.newHashMap();
-   private final List<String> g;
-   private final List<String> h;
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<eia> a = Codec.INT_STREAM
+      .comapFlatMap(
+         $$0 -> ac.a($$0, 6).map($$0x -> new eia($$0x[0], $$0x[1], $$0x[2], $$0x[3], $$0x[4], $$0x[5])),
+         $$0 -> IntStream.of($$0.c, $$0.d, $$0.e, $$0.f, $$0.g, $$0.h)
+      )
+      .stable();
+   private int c;
+   private int d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
 
-   public eia(@Nullable epl $$0, List<String> $$1, List<String> $$2) {
-      this.g = $$1;
-      this.h = $$2;
-      this.a($$0);
-      boolean $$3 = false;
-
-      for (String $$4 : this.h) {
-         $$3 |= this.e.get($$4) != null;
-      }
-
-      this.d = $$3;
+   public eia(iz $$0) {
+      this($$0.u(), $$0.v(), $$0.w(), $$0.u(), $$0.v(), $$0.w());
    }
 
-   public void a(long $$0) {
-      for (String $$1 : this.g) {
-         eii $$2 = this.f.get($$1);
-         if ($$2 != null && $$2.c($$0)) {
-            $$2.d($$0);
-            $$2.c();
+   public eia(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      if ($$3 < $$0 || $$4 < $$1 || $$5 < $$2) {
+         String $$6 = "Invalid bounding box data, inverted bounds for: " + this;
+         if (aa.aX) {
+            throw new IllegalStateException($$6);
          }
+
+         b.error($$6);
+         this.c = Math.min($$0, $$3);
+         this.d = Math.min($$1, $$4);
+         this.e = Math.min($$2, $$5);
+         this.f = Math.max($$0, $$3);
+         this.g = Math.max($$1, $$4);
+         this.h = Math.max($$2, $$5);
       }
    }
 
-   public ur a(ur $$0) {
-      ur $$1 = $$0.p("Level");
-      dba $$2 = new dba($$1.h("xPos"), $$1.h("zPos"));
-      if (this.a($$2.e, $$2.f)) {
-         $$0 = this.a($$0, $$2);
-      }
-
-      ur $$3 = $$1.p("Structures");
-      ur $$4 = $$3.p("References");
-
-      for (String $$5 : this.h) {
-         boolean $$6 = c.contains($$5.toLowerCase(Locale.ROOT));
-         if (!$$4.b($$5, 12) && $$6) {
-            int $$7 = 8;
-            LongList $$8 = new LongArrayList();
-
-            for (int $$9 = $$2.e - 8; $$9 <= $$2.e + 8; $$9++) {
-               for (int $$10 = $$2.f - 8; $$10 <= $$2.f + 8; $$10++) {
-                  if (this.a($$9, $$10, $$5)) {
-                     $$8.add(dba.c($$9, $$10));
-                  }
-               }
-            }
-
-            $$4.c($$5, $$8);
-         }
-      }
-
-      $$3.a("References", $$4);
-      $$1.a("Structures", $$3);
-      $$0.a("Level", $$1);
-      return $$0;
+   public static eia a(kd $$0, kd $$1) {
+      return new eia(
+         Math.min($$0.u(), $$1.u()),
+         Math.min($$0.v(), $$1.v()),
+         Math.min($$0.w(), $$1.w()),
+         Math.max($$0.u(), $$1.u()),
+         Math.max($$0.v(), $$1.v()),
+         Math.max($$0.w(), $$1.w())
+      );
    }
 
-   private boolean a(int $$0, int $$1, String $$2) {
-      return !this.d ? false : this.e.get($$2) != null && this.f.get(a.get($$2)).b(dba.c($$0, $$1));
+   public static eia a() {
+      return new eia(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
    }
 
-   private boolean a(int $$0, int $$1) {
-      if (!this.d) {
-         return false;
+   public static eia a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, je $$9) {
+      switch ($$9) {
+         case d:
+         default:
+            return new eia($$0 + $$3, $$1 + $$4, $$2 + $$5, $$0 + $$6 - 1 + $$3, $$1 + $$7 - 1 + $$4, $$2 + $$8 - 1 + $$5);
+         case c:
+            return new eia($$0 + $$3, $$1 + $$4, $$2 - $$8 + 1 + $$5, $$0 + $$6 - 1 + $$3, $$1 + $$7 - 1 + $$4, $$2 + $$5);
+         case e:
+            return new eia($$0 - $$8 + 1 + $$5, $$1 + $$4, $$2 + $$3, $$0 + $$5, $$1 + $$7 - 1 + $$4, $$2 + $$6 - 1 + $$3);
+         case f:
+            return new eia($$0 + $$5, $$1 + $$4, $$2 + $$3, $$0 + $$8 - 1 + $$5, $$1 + $$7 - 1 + $$4, $$2 + $$6 - 1 + $$3);
+      }
+   }
+
+   public Stream<dbd> b() {
+      int $$0 = kb.a(this.h());
+      int $$1 = kb.a(this.j());
+      int $$2 = kb.a(this.k());
+      int $$3 = kb.a(this.m());
+      return dbd.a(new dbd($$0, $$1), new dbd($$2, $$3));
+   }
+
+   public boolean a(eia $$0) {
+      return this.f >= $$0.c && this.c <= $$0.f && this.h >= $$0.e && this.e <= $$0.h && this.g >= $$0.d && this.d <= $$0.g;
+   }
+
+   public boolean a(int $$0, int $$1, int $$2, int $$3) {
+      return this.f >= $$0 && this.c <= $$2 && this.h >= $$1 && this.e <= $$3;
+   }
+
+   public static Optional<eia> a(Iterable<iz> $$0) {
+      Iterator<iz> $$1 = $$0.iterator();
+      if (!$$1.hasNext()) {
+         return Optional.empty();
       } else {
-         for (String $$2 : this.h) {
-            if (this.e.get($$2) != null && this.f.get(a.get($$2)).c(dba.c($$0, $$1))) {
-               return true;
-            }
-         }
-
-         return false;
+         eia $$2 = new eia($$1.next());
+         $$1.forEachRemaining($$2::a);
+         return Optional.of($$2);
       }
    }
 
-   private ur a(ur $$0, dba $$1) {
-      ur $$2 = $$0.p("Level");
-      ur $$3 = $$2.p("Structures");
-      ur $$4 = $$3.p("Starts");
-
-      for (String $$5 : this.h) {
-         Long2ObjectMap<ur> $$6 = this.e.get($$5);
-         if ($$6 != null) {
-            long $$7 = $$1.a();
-            if (this.f.get(a.get($$5)).c($$7)) {
-               ur $$8 = (ur)$$6.get($$7);
-               if ($$8 != null) {
-                  $$4.a($$5, $$8);
-               }
-            }
-         }
-      }
-
-      $$3.a("Starts", $$4);
-      $$2.a("Structures", $$3);
-      $$0.a("Level", $$2);
-      return $$0;
-   }
-
-   private void a(@Nullable epl $$0) {
-      if ($$0 != null) {
-         for (String $$1 : this.g) {
-            ur $$2 = new ur();
-
-            try {
-               $$2 = $$0.a($$1, bab.o, 1493).p("data").p("Features");
-               if ($$2.g()) {
-                  continue;
-               }
-            } catch (IOException var13) {
-            }
-
-            for (String $$3 : $$2.e()) {
-               ur $$4 = $$2.p($$3);
-               long $$5 = dba.c($$4.h("ChunkX"), $$4.h("ChunkZ"));
-               ux $$6 = $$4.c("Children", 10);
-               if (!$$6.isEmpty()) {
-                  String $$7 = $$6.a(0).l("id");
-                  String $$8 = b.get($$7);
-                  if ($$8 != null) {
-                     $$4.a("id", $$8);
-                  }
-               }
-
-               String $$9 = $$4.l("id");
-               this.e.computeIfAbsent($$9, $$0x -> new Long2ObjectOpenHashMap()).put($$5, $$4);
-            }
-
-            String $$10 = $$1 + "_index";
-            eii $$11 = $$0.a(eii.a(), $$10);
-            if (!$$11.b().isEmpty()) {
-               this.f.put($$1, $$11);
-            } else {
-               eii $$12 = new eii();
-               this.f.put($$1, $$12);
-
-               for (String $$13 : $$2.e()) {
-                  ur $$14 = $$2.p($$13);
-                  $$12.a(dba.c($$14.h("ChunkX"), $$14.h("ChunkZ")));
-               }
-
-               $$12.c();
-            }
-         }
-      }
-   }
-
-   public static eia a(ala<dbt> $$0, @Nullable epl $$1) {
-      if ($$0 == dbt.h) {
-         return new eia(
-            $$1,
-            ImmutableList.of("Monument", "Stronghold", "Village", "Mineshaft", "Temple", "Mansion"),
-            ImmutableList.of("Village", "Mineshaft", "Mansion", "Igloo", "Desert_Pyramid", "Jungle_Pyramid", "Swamp_Hut", "Stronghold", "Monument")
-         );
-      } else if ($$0 == dbt.i) {
-         List<String> $$2 = ImmutableList.of("Fortress");
-         return new eia($$1, $$2, $$2);
-      } else if ($$0 == dbt.j) {
-         List<String> $$3 = ImmutableList.of("EndCity");
-         return new eia($$1, $$3, $$3);
+   public static Optional<eia> b(Iterable<eia> $$0) {
+      Iterator<eia> $$1 = $$0.iterator();
+      if (!$$1.hasNext()) {
+         return Optional.empty();
       } else {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown dimension type : %s", $$0));
+         eia $$2 = $$1.next();
+         eia $$3 = new eia($$2.c, $$2.d, $$2.e, $$2.f, $$2.g, $$2.h);
+         $$1.forEachRemaining($$3::b);
+         return Optional.of($$3);
       }
+   }
+
+   @Deprecated
+   public eia b(eia $$0) {
+      this.c = Math.min(this.c, $$0.c);
+      this.d = Math.min(this.d, $$0.d);
+      this.e = Math.min(this.e, $$0.e);
+      this.f = Math.max(this.f, $$0.f);
+      this.g = Math.max(this.g, $$0.g);
+      this.h = Math.max(this.h, $$0.h);
+      return this;
+   }
+
+   @Deprecated
+   public eia a(iz $$0) {
+      this.c = Math.min(this.c, $$0.u());
+      this.d = Math.min(this.d, $$0.v());
+      this.e = Math.min(this.e, $$0.w());
+      this.f = Math.max(this.f, $$0.u());
+      this.g = Math.max(this.g, $$0.v());
+      this.h = Math.max(this.h, $$0.w());
+      return this;
+   }
+
+   @Deprecated
+   public eia a(int $$0, int $$1, int $$2) {
+      this.c += $$0;
+      this.d += $$1;
+      this.e += $$2;
+      this.f += $$0;
+      this.g += $$1;
+      this.h += $$2;
+      return this;
+   }
+
+   @Deprecated
+   public eia a(kd $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
+   }
+
+   public eia b(int $$0, int $$1, int $$2) {
+      return new eia(this.c + $$0, this.d + $$1, this.e + $$2, this.f + $$0, this.g + $$1, this.h + $$2);
+   }
+
+   public eia a(int $$0) {
+      return this.c($$0, $$0, $$0);
+   }
+
+   public eia c(int $$0, int $$1, int $$2) {
+      return new eia(this.h() - $$0, this.i() - $$1, this.j() - $$2, this.k() + $$0, this.l() + $$1, this.m() + $$2);
+   }
+
+   public boolean b(kd $$0) {
+      return this.d($$0.u(), $$0.v(), $$0.w());
+   }
+
+   public boolean d(int $$0, int $$1, int $$2) {
+      return $$0 >= this.c && $$0 <= this.f && $$2 >= this.e && $$2 <= this.h && $$1 >= this.d && $$1 <= this.g;
+   }
+
+   public kd c() {
+      return new kd(this.f - this.c, this.g - this.d, this.h - this.e);
+   }
+
+   public int d() {
+      return this.f - this.c + 1;
+   }
+
+   public int e() {
+      return this.g - this.d + 1;
+   }
+
+   public int f() {
+      return this.h - this.e + 1;
+   }
+
+   public iz g() {
+      return new iz(this.c + (this.f - this.c + 1) / 2, this.d + (this.g - this.d + 1) / 2, this.e + (this.h - this.e + 1) / 2);
+   }
+
+   public void a(Consumer<iz> $$0) {
+      iz.a $$1 = new iz.a();
+      $$0.accept($$1.d(this.f, this.g, this.h));
+      $$0.accept($$1.d(this.c, this.g, this.h));
+      $$0.accept($$1.d(this.f, this.d, this.h));
+      $$0.accept($$1.d(this.c, this.d, this.h));
+      $$0.accept($$1.d(this.f, this.g, this.e));
+      $$0.accept($$1.d(this.c, this.g, this.e));
+      $$0.accept($$1.d(this.f, this.d, this.e));
+      $$0.accept($$1.d(this.c, this.d, this.e));
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this)
+         .add("minX", this.c)
+         .add("minY", this.d)
+         .add("minZ", this.e)
+         .add("maxX", this.f)
+         .add("maxY", this.g)
+         .add("maxZ", this.h)
+         .toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof eia $$1)
+            ? false
+            : this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f && this.g == $$1.g && this.h == $$1.h;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.c, this.d, this.e, this.f, this.g, this.h);
+   }
+
+   public int h() {
+      return this.c;
+   }
+
+   public int i() {
+      return this.d;
+   }
+
+   public int j() {
+      return this.e;
+   }
+
+   public int k() {
+      return this.f;
+   }
+
+   public int l() {
+      return this.g;
+   }
+
+   public int m() {
+      return this.h;
    }
 }

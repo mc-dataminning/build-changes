@@ -1,40 +1,22 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class byl extends bvd<cmf> {
-   public byl() {
-      super(ImmutableMap.of());
-   }
+public class byl {
+   private static final int a = 36;
 
-   protected boolean a(arb $$0, cmf $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
+   public static bvh<btn> a() {
+      return byt.a(
+         (Function<byt.b<btn>, ? extends App<byt.c<btn>, byw<btn>>>)($$0 -> $$0.group($$0.a(ccr.x), $$0.a(ccr.y), $$0.a(ccr.A))
+               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
+                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<btn>a($$2).filter($$1xx -> $$1xx.g((bss)$$5) <= 36.0).isPresent();
+                     if (!$$7) {
+                        $$1.b();
+                        $$2.b();
+                        $$5.dS().a($$4.aa(), $$4.Z());
+                     }
 
-   protected void b(arb $$0, cmf $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bum<?> $$3 = $$1.dS();
-         if (!$$3.c(coh.g)) {
-            $$3.b(cco.t);
-            $$3.b(cco.m);
-            $$3.b(cco.n);
-            $$3.b(cco.r);
-            $$3.b(cco.q);
-         }
-
-         $$3.a(coh.g);
-      }
-   }
-
-   protected void c(arb $$0, cmf $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(btk $$0) {
-      return $$0.dS().a(cco.A);
-   }
-
-   public static boolean c(btk $$0) {
-      return $$0.dS().a(cco.x);
+                     return true;
+                  }))
+      );
    }
 }

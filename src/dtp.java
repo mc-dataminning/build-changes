@@ -1,8 +1,58 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface dtp {
+   void a(dtr var1, double var2);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dtp {
+   void a(dtr var1, double var2, double var4, long var6);
+
+   void a(dtr var1, double var2, double var4);
+
+   void a(dtr var1, int var2);
+
+   void b(dtr var1, int var2);
+
+   void b(dtr var1, double var2);
+
+   void c(dtr var1, double var2);
+
+   public static class a implements dtp {
+      private final dtr a;
+
+      public a(dtr $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(dtr $$0, double $$1) {
+         this.a.a($$1);
+      }
+
+      @Override
+      public void a(dtr $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
+
+      @Override
+      public void a(dtr $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
+
+      @Override
+      public void a(dtr $$0, int $$1) {
+         this.a.b($$1);
+      }
+
+      @Override
+      public void b(dtr $$0, int $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void b(dtr $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(dtr $$0, double $$1) {
+         this.a.b($$1);
+      }
+   }
 }

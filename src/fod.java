@@ -1,246 +1,286 @@
-import java.util.Collections;
+import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class fod extends fmy {
-   public static final int a = 16;
-   public static final int b = 36;
-   public static final int c = 30;
-   public static final fod.a d = new fod.a(List.of());
-   public static final alb r = new alb("textures/gui/book.png");
-   protected static final int s = 114;
-   protected static final int u = 128;
-   protected static final int v = 192;
-   protected static final int w = 192;
-   private fod.a x;
-   private int y;
-   private List<ayg> z = Collections.emptyList();
-   private int A = -1;
-   private xl B = xk.a;
-   private fpf C;
-   private fpf D;
-   private final boolean E;
-
-   public fod(fod.a $$0) {
-      this($$0, true);
-   }
-
-   public fod() {
-      this(d, false);
-   }
-
-   private fod(fod.a $$0, boolean $$1) {
-      super(fes.a);
-      this.x = $$0;
-      this.E = $$1;
-   }
-
-   public void a(fod.a $$0) {
-      this.x = $$0;
-      this.y = ayu.a(this.y, 0, $$0.a());
-      this.J();
-      this.A = -1;
-   }
-
-   public boolean a(int $$0) {
-      int $$1 = ayu.a($$0, 0, this.x.a() - 1);
-      if ($$1 != this.y) {
-         this.y = $$1;
-         this.J();
-         this.A = -1;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean b(int $$0) {
-      return this.a($$0);
-   }
-
-   @Override
-   protected void aN_() {
-      this.m();
-      this.C();
-   }
-
-   protected void m() {
-      this.c(fgz.a(xk.d, $$0 -> this.d()).a(this.n / 2 - 100, 196, 200, 20).a());
-   }
-
-   protected void C() {
-      int $$0 = (this.n - 192) / 2;
-      int $$1 = 2;
-      this.C = this.c(new fpf($$0 + 116, 159, true, $$0x -> this.F(), this.E));
-      this.D = this.c(new fpf($$0 + 43, 159, false, $$0x -> this.E(), this.E));
-      this.J();
-   }
-
-   private int D() {
-      return this.x.a();
-   }
-
-   protected void E() {
-      if (this.y > 0) {
-         this.y--;
-      }
-
-      this.J();
-   }
-
-   protected void F() {
-      if (this.y < this.D() - 1) {
-         this.y++;
-      }
-
-      this.J();
-   }
-
-   private void J() {
-      this.C.k = this.y < this.D() - 1;
-      this.D.k = this.y > 0;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else {
-         switch ($$0) {
-            case 266:
-               this.D.b();
-               return true;
-            case 267:
-               this.C.b();
-               return true;
-            default:
-               return false;
-         }
-      }
-   }
-
-   @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 192) / 2;
-      int $$5 = 2;
-      if (this.A != this.y) {
-         xq $$6 = this.x.a(this.y);
-         this.z = this.p.c($$6, 114);
-         this.B = xl.a("book.pageIndicator", this.y + 1, Math.max(this.D(), 1));
-      }
-
-      this.A = this.y;
-      int $$7 = this.p.a(this.B);
-      $$0.a(this.p, this.B, $$4 - $$7 + 192 - 44, 18, 0, false);
-      int $$8 = Math.min(128 / 9, this.z.size());
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         ayg $$10 = this.z.get($$9);
-         $$0.a(this.p, $$10, $$4 + 36, 32 + $$9 * 9, 0, false);
-      }
-
-      yi $$11 = this.b((double)$$1, (double)$$2);
-      if ($$11 != null) {
-         $$0.a(this.p, $$11, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void b(fgm $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-      $$0.a(r, (this.n - 192) / 2, 2, 0, 0, 192, 192);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         yi $$3 = this.b($$0, $$1);
-         if ($$3 != null && this.a($$3)) {
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(yi $$0) {
-      xj $$1 = $$0.h();
-      if ($$1 == null) {
-         return false;
-      } else if ($$1.a() == xj.a.e) {
-         String $$2 = $$1.b();
-
-         try {
-            int $$3 = Integer.parseInt($$2) - 1;
-            return this.b($$3);
-         } catch (Exception var5) {
-            return false;
-         }
-      } else {
-         boolean $$4 = super.a($$0);
-         if ($$4 && $$1.a() == xj.a.c) {
-            this.I();
-         }
-
-         return $$4;
-      }
-   }
-
-   protected void I() {
-      this.m.a(null);
-   }
-
+public class fod extends fnz<cpv> {
+   private static final ale D = new ale("textures/gui/container/beacon.png");
+   static final ale E = new ale("container/beacon/button_disabled");
+   static final ale F = new ale("container/beacon/button_selected");
+   static final ale G = new ale("container/beacon/button_highlighted");
+   static final ale H = new ale("container/beacon/button");
+   static final ale I = new ale("container/beacon/confirm");
+   static final ale J = new ale("container/beacon/cancel");
+   private static final xo K = xo.c("block.minecraft.beacon.primary");
+   private static final xo L = xo.c("block.minecraft.beacon.secondary");
+   private final List<fod.a> M = Lists.newArrayList();
    @Nullable
-   public yi b(double $$0, double $$1) {
-      if (this.z.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = ayu.a($$0 - (double)((this.n - 192) / 2) - 36.0);
-         int $$3 = ayu.a($$1 - 2.0 - 30.0);
-         if ($$2 >= 0 && $$3 >= 0) {
-            int $$4 = Math.min(128 / 9, this.z.size());
-            if ($$2 <= 114 && $$3 < 9 * $$4 + $$4) {
-               int $$5 = $$3 / 9;
-               if ($$5 >= 0 && $$5 < this.z.size()) {
-                  ayg $$6 = this.z.get($$5);
-                  return this.m.h.b().a($$6, $$2);
-               } else {
-                  return null;
-               }
-            } else {
-               return null;
-            }
-         } else {
-            return null;
+   ji<bry> N;
+   @Nullable
+   ji<bry> O;
+
+   public fod(final cpv $$0, cmu $$1, xo $$2) {
+      super($$0, $$1, $$2);
+      this.c = 230;
+      this.d = 219;
+      $$0.a(new cqe() {
+         @Override
+         public void a(cps $$0x, int $$1, cun $$2) {
          }
+
+         @Override
+         public void a(cps $$0x, int $$1, int $$2) {
+            fod.this.N = $$0.m();
+            fod.this.O = $$0.n();
+         }
+      });
+   }
+
+   private <T extends fha & fod.a> void a(T $$0) {
+      this.c($$0);
+      this.M.add($$0);
+   }
+
+   @Override
+   protected void aM_() {
+      super.aM_();
+      this.M.clear();
+      this.a(new fod.c(this.z + 164, this.A + 107));
+      this.a(new fod.b(this.z + 190, this.A + 107));
+
+      for (int $$0 = 0; $$0 <= 2; $$0++) {
+         int $$1 = dpa.a.get($$0).size();
+         int $$2 = $$1 * 22 + ($$1 - 1) * 2;
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            ji<bry> $$4 = dpa.a.get($$0).get($$3);
+            fod.d $$5 = new fod.d(this.z + 76 + $$3 * 24 - $$2 / 2, this.A + 22 + $$0 * 25, $$4, true, $$0);
+            $$5.j = false;
+            this.a($$5);
+         }
+      }
+
+      int $$6 = 3;
+      int $$7 = dpa.a.get(3).size() + 1;
+      int $$8 = $$7 * 22 + ($$7 - 1) * 2;
+
+      for (int $$9 = 0; $$9 < $$7 - 1; $$9++) {
+         ji<bry> $$10 = dpa.a.get(3).get($$9);
+         fod.d $$11 = new fod.d(this.z + 167 + $$9 * 24 - $$8 / 2, this.A + 47, $$10, false, 3);
+         $$11.j = false;
+         this.a($$11);
+      }
+
+      ji<bry> $$12 = dpa.a.get(0).get(0);
+      fod.d $$13 = new fod.g(this.z + 167 + ($$7 - 1) * 24 - $$8 / 2, this.A + 47, $$12);
+      $$13.k = false;
+      this.a($$13);
+   }
+
+   @Override
+   public void D() {
+      super.D();
+      this.F();
+   }
+
+   void F() {
+      int $$0 = this.w.l();
+      this.M.forEach($$1 -> $$1.a($$0));
+   }
+
+   @Override
+   protected void b(fgp $$0, int $$1, int $$2) {
+      $$0.a(this.p, K, 62, 10, 14737632);
+      $$0.a(this.p, L, 169, 10, 14737632);
+   }
+
+   @Override
+   protected void a(fgp $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.c) / 2;
+      int $$5 = (this.o - this.d) / 2;
+      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 100.0F);
+      $$0.a(new cun(cuq.oJ), $$4 + 20, $$5 + 109);
+      $$0.a(new cun(cuq.oz), $$4 + 41, $$5 + 109);
+      $$0.a(new cun(cuq.oy), $$4 + 41 + 22, $$5 + 109);
+      $$0.a(new cun(cuq.oI), $$4 + 42 + 44, $$5 + 109);
+      $$0.a(new cun(cuq.oE), $$4 + 42 + 66, $$5 + 109);
+      $$0.c().b();
+   }
+
+   @Override
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   interface a {
+      void a(int var1);
+   }
+
+   class b extends fod.f {
+      public b(final int $$0, final int $$1) {
+         super($$0, $$1, fod.J, xn.e);
+      }
+
+      @Override
+      public void b() {
+         fod.this.m.s.r();
+      }
+
+      @Override
+      public void a(int $$0) {
       }
    }
 
-   public static record a(List<xl> a) {
-      public int a() {
-         return this.a.size();
+   class c extends fod.f {
+      public c(final int $$0, final int $$1) {
+         super($$0, $$1, fod.I, xn.d);
       }
 
-      public xq a(int $$0) {
-         return $$0 >= 0 && $$0 < this.a() ? this.a.get($$0) : xq.b;
+      @Override
+      public void b() {
+         fod.this.m.L().b(new aih(Optional.ofNullable(fod.this.N), Optional.ofNullable(fod.this.O)));
+         fod.this.m.s.r();
       }
 
-      @Nullable
-      public static fod.a a(cuk $$0) {
-         boolean $$1 = ffa.Q().aS();
-         cxt $$2 = $$0.a(km.I);
-         if ($$2 != null) {
-            return new fod.a($$2.a($$1));
-         } else {
-            cxs $$3 = $$0.a(km.H);
-            return $$3 != null ? new fod.a($$3.a($$1).map(xl::b).toList()) : null;
+      @Override
+      public void a(int $$0) {
+         this.j = fod.this.w.o() && fod.this.N != null;
+      }
+   }
+
+   class d extends fod.e {
+      private final boolean c;
+      protected final int a;
+      private ji<bry> d;
+      private gox f;
+
+      public d(final int $$0, final int $$1, final ji<bry> $$2, final boolean $$3, final int $$4) {
+         super($$0, $$1);
+         this.c = $$3;
+         this.a = $$4;
+         this.a($$2);
+      }
+
+      protected void a(ji<bry> $$0) {
+         this.d = $$0;
+         this.f = ffd.Q().aF().a($$0);
+         this.a(fin.a(this.b($$0), null));
+      }
+
+      protected yc b(ji<bry> $$0) {
+         return xo.c($$0.a().d());
+      }
+
+      @Override
+      public void b() {
+         if (!this.a()) {
+            if (this.c) {
+               fod.this.N = this.d;
+            } else {
+               fod.this.O = this.d;
+            }
+
+            fod.this.F();
          }
       }
 
-      public List<xl> b() {
+      @Override
+      protected void a(fgp $$0) {
+         $$0.a(this.C() + 2, this.D() + 2, 0, 18, 18, this.f);
+      }
+
+      @Override
+      public void a(int $$0) {
+         this.j = this.a < $$0;
+         this.b(this.d.equals(this.c ? fod.this.N : fod.this.O));
+      }
+
+      @Override
+      protected yc aK_() {
+         return this.b(this.d);
+      }
+   }
+
+   abstract static class e extends fgt implements fod.a {
+      private boolean a;
+
+      protected e(int $$0, int $$1) {
+         super($$0, $$1, 22, 22, xn.a);
+      }
+
+      protected e(int $$0, int $$1, xo $$2) {
+         super($$0, $$1, 22, 22, $$2);
+      }
+
+      @Override
+      public void b(fgp $$0, int $$1, int $$2, float $$3) {
+         ale $$4;
+         if (!this.j) {
+            $$4 = fod.E;
+         } else if (this.a) {
+            $$4 = fod.F;
+         } else if (this.A()) {
+            $$4 = fod.G;
+         } else {
+            $$4 = fod.H;
+         }
+
+         $$0.a($$4, this.C(), this.D(), this.g, this.h);
+         this.a($$0);
+      }
+
+      protected abstract void a(fgp var1);
+
+      public boolean a() {
          return this.a;
+      }
+
+      public void b(boolean $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(fky $$0) {
+         this.c($$0);
+      }
+   }
+
+   abstract static class f extends fod.e {
+      private final ale a;
+
+      protected f(int $$0, int $$1, ale $$2, xo $$3) {
+         super($$0, $$1, $$3);
+         this.a = $$2;
+      }
+
+      @Override
+      protected void a(fgp $$0) {
+         $$0.a(this.a, this.C() + 2, this.D() + 2, 18, 18);
+      }
+   }
+
+   class g extends fod.d {
+      public g(final int $$0, final int $$1, final ji<bry> $$2) {
+         super($$0, $$1, $$2, false, 3);
+      }
+
+      @Override
+      protected yc b(ji<bry> $$0) {
+         return xo.c($$0.a().d()).f(" II");
+      }
+
+      @Override
+      public void a(int $$0) {
+         if (fod.this.N != null) {
+            this.k = true;
+            this.a(fod.this.N);
+            super.a($$0);
+         } else {
+            this.k = false;
+         }
       }
    }
 }

@@ -1,70 +1,71 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class cya extends cyi {
-   public cya(cyg $$0) {
-      super($$0);
+public class cya {
+   @Nullable
+   private final cmv a;
+   private final bqr b;
+   private final evl c;
+   private final dbw d;
+   private final cun e;
+
+   public cya(cmv $$0, bqr $$1, evl $$2) {
+      this($$0.dP(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean a(cqf $$0, dbt $$1) {
-      cuk $$2 = cuk.l;
-      List<cuk> $$3 = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cuk $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.a(awu.by)) {
-               if (!$$2.e()) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            } else {
-               if (!($$5.g() instanceof cte)) {
-                  return false;
-               }
-
-               $$3.add($$5);
-            }
-         }
-      }
-
-      return !$$2.e() && !$$3.isEmpty();
+   protected cya(dbw $$0, @Nullable cmv $$1, bqr $$2, cun $$3, evl $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public cuk a(cqf $$0, jk.a $$1) {
-      List<cte> $$2 = Lists.newArrayList();
-      cuk $$3 = cuk.l;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cuk $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.a(awu.by)) {
-               if (!$$3.e()) {
-                  return cuk.l;
-               }
-
-               $$3 = $$5.s();
-            } else {
-               if (!($$5.g() instanceof cte $$6)) {
-                  return cuk.l;
-               }
-
-               $$2.add($$6);
-            }
-         }
-      }
-
-      return !$$3.e() && !$$2.isEmpty() ? cxc.a($$3, $$2) : cuk.l;
+   protected final evl j() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public iz a() {
+      return this.c.a();
    }
 
-   @Override
-   public cyu<?> ap_() {
-      return cyu.c;
+   public je k() {
+      return this.c.b();
+   }
+
+   public evp l() {
+      return this.c.e();
+   }
+
+   public boolean m() {
+      return this.c.d();
+   }
+
+   public cun n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cmv o() {
+      return this.a;
+   }
+
+   public bqr p() {
+      return this.b;
+   }
+
+   public dbw q() {
+      return this.d;
+   }
+
+   public je g() {
+      return this.a == null ? je.c : this.a.cH();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fR();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dF();
    }
 }

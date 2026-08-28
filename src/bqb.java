@@ -1,49 +1,67 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class bqb extends bpu {
+public class bqb extends bpv {
    public static final MapCodec<bqb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(boz.b(bpu.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bqb::new)
-   );
-   private final boz<bpu> b;
-   private final int f;
-   private final int g;
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, bqb::new)
+      )
+      .validate(
+         $$0 -> {
+            if ($$0.d < $$0.b) {
+               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
+            } else {
+               return $$0.e > $$0.d - $$0.b
+                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
+                  : DataResult.success($$0);
+            }
+         }
+      );
+   private final float b;
+   private final float d;
+   private final float e;
 
-   public bqb(boz<bpu> $$0) {
+   public static bqb a(float $$0, float $$1, float $$2) {
+      return new bqb($$0, $$1, $$2);
+   }
+
+   private bqb(float $$0, float $$1, float $$2) {
       this.b = $$0;
-      List<bpb.b<bpu>> $$1 = $$0.e();
-      int $$2 = Integer.MAX_VALUE;
-      int $$3 = Integer.MIN_VALUE;
-
-      for (bpb.b<bpu> $$4 : $$1) {
-         int $$5 = $$4.b().a();
-         int $$6 = $$4.b().b();
-         $$2 = Math.min($$2, $$5);
-         $$3 = Math.max($$3, $$6);
-      }
-
-      this.f = $$2;
-      this.g = $$3;
+      this.d = $$1;
+      this.e = $$2;
    }
 
    @Override
-   public int a(azc $$0) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
+   public float a(azf $$0) {
+      float $$1 = this.d - this.b;
+      float $$2 = ($$1 - this.e) / 2.0F;
+      float $$3 = $$1 - $$2;
+      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
    }
 
    @Override
-   public int a() {
-      return this.f;
+   public float a() {
+      return this.b;
    }
 
    @Override
-   public int b() {
-      return this.g;
+   public float b() {
+      return this.d;
    }
 
    @Override
-   public bpv<?> c() {
-      return bpv.e;
+   public bpw<?> c() {
+      return bpw.d;
+   }
+
+   @Override
+   public String toString() {
+      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
    }
 }

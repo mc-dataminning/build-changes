@@ -1,37 +1,29 @@
-public class aip implements zs<ags> {
-   public static final zj<wl, aip> a = zs.a(aip::a, aip::new);
-   private final bqo b;
-   private final int c;
+public class aip implements zv<agv> {
+   public static final zm<wl, aip> a = zv.a(aip::a, aip::new);
+   private final bqr b;
 
-   public aip(bqo $$0, int $$1) {
+   public aip(bqr $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
    private aip(wl $$0) {
-      this.b = $$0.b(bqo.class);
-      this.c = $$0.l();
+      this.b = $$0.b(bqr.class);
    }
 
    private void a(wl $$0) {
       $$0.a(this.b);
-      $$0.c(this.c);
    }
 
    @Override
-   public zu<aip> a() {
-      return agq.cd;
+   public zx<aip> a() {
+      return agt.ca;
    }
 
-   public void a(ags $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public bqo b() {
+   public bqr b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

@@ -1,71 +1,57 @@
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.OptionalInt;
 
-public class cvf extends cuf {
-   private static final Map<avv, cvf> a = Maps.newHashMap();
-   private final int b;
-   private final avv c;
-   private final int j;
+public interface cvf {
+   cnn a(dbw var1, js var2, cun var3, je var4);
 
-   protected cvf(int $$0, avv $$1, cuf.a $$2, int $$3) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
-      this.j = $$3 * 20;
-      a.put(this.c, this);
+   default cvf.a c() {
+      return cvf.a.a;
    }
 
-   @Override
-   public bqp a(cxx $$0) {
-      dbt $$1 = $$0.q();
-      iz $$2 = $$0.a();
-      drx $$3 = $$1.a_($$2);
-      if ($$3.a(dew.dT) && !$$3.c(dix.b)) {
-         cuk $$4 = $$0.n();
-         if (!$$1.B) {
-            cms $$5 = $$0.o();
-            if ($$1.c_($$2) instanceof dqd $$6) {
-               $$6.b($$4.s());
-               $$1.a(dwq.c, $$2, dwq.a.a($$5, $$3));
-            }
+   default void a(cnn $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
+      $$0.c($$1, $$2, $$3, $$4, $$5);
+   }
 
-            $$4.h(1);
-            if ($$5 != null) {
-               $$5.a(awg.al);
-            }
+   public static record a(cvf.b b, float c, float d, OptionalInt e) {
+      public static final cvf.a a = a().a();
+
+      public static cvf.a.a a() {
+         return new cvf.a.a();
+      }
+
+      public static class a {
+         private cvf.b a = ($$0, $$1) -> dhc.a($$0, 0.7, new evp(0.0, 0.1, 0.0));
+         private float b = 6.0F;
+         private float c = 1.1F;
+         private OptionalInt d = OptionalInt.empty();
+
+         public cvf.a.a a(cvf.b $$0) {
+            this.a = $$0;
+            return this;
          }
 
-         return bqp.a($$1.B);
-      } else {
-         return bqp.e;
+         public cvf.a.a a(float $$0) {
+            this.b = $$0;
+            return this;
+         }
+
+         public cvf.a.a b(float $$0) {
+            this.c = $$0;
+            return this;
+         }
+
+         public cvf.a.a a(int $$0) {
+            this.d = OptionalInt.of($$0);
+            return this;
+         }
+
+         public cvf.a a() {
+            return new cvf.a(this.a, this.b, this.c, this.d);
+         }
       }
    }
 
-   public int h() {
-      return this.b;
-   }
-
-   @Override
-   public void a(cuk $$0, cuf.b $$1, List<xl> $$2, cwd $$3) {
-      $$2.add(this.k().a(n.h));
-   }
-
-   public xz k() {
-      return xl.c(this.a() + ".desc");
-   }
-
-   @Nullable
-   public static cvf a(avv $$0) {
-      return a.get($$0);
-   }
-
-   public avv l() {
-      return this.c;
-   }
-
-   public int m() {
-      return this.j;
+   @FunctionalInterface
+   public interface b {
+      js getDispensePosition(kq var1, je var2);
    }
 }

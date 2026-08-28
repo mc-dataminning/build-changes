@@ -1,140 +1,202 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
 import java.util.Objects;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Bitmap;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FT_GlyphSlot;
+import org.lwjgl.util.freetype.FT_Vector;
+import org.lwjgl.util.freetype.FreeType;
 
-public class eyc extends eyf {
-   public static final int a = 854;
-   public static final int b = 480;
-   static final eyc.b l = new eyc.b(854, 480);
+public class eyc implements exz {
+   @Nullable
+   private ByteBuffer b;
+   @Nullable
+   private FT_Face c;
+   final float d;
+   private final IntSet e = new IntArraySet();
 
-   public eyc(int $$0, int $$1) {
-      super(true);
-      RenderSystem.assertOnRenderThreadOrInit();
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b($$0, $$1));
+   public eyc(ByteBuffer $$0, FT_Face $$1, float $$2, float $$3, float $$4, float $$5, String $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3;
+      $$6.codePoints().forEach(this.e::add);
+      int $$7 = Math.round($$2 * $$3);
+      FreeType.FT_Set_Pixel_Sizes($$1, $$7, $$7);
+      float $$8 = $$4 * $$3;
+      float $$9 = -$$5 * $$3;
+      MemoryStack $$10 = MemoryStack.stackPush();
+
+      try {
+         FT_Vector $$11 = fkd.a(FT_Vector.malloc($$10), $$8, $$9);
+         FreeType.FT_Set_Transform($$1, null, $$11);
+      } catch (Throwable var15) {
+         if ($$10 != null) {
+            try {
+               $$10.close();
+            } catch (Throwable var14) {
+               var15.addSuppressed(var14);
+            }
+         }
+
+         throw var15;
+      }
+
+      if ($$10 != null) {
+         $$10.close();
+      }
+   }
+
+   @Nullable
+   @Override
+   public exy a(int $$0) {
+      FT_Face $$1 = this.b();
+      if (this.e.contains($$0)) {
+         return null;
       } else {
-         this.b($$0, $$1);
-      }
-   }
-
-   private void b(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      eyc.b $$2 = this.c($$0, $$1);
-      this.h = GlStateManager.glGenFramebuffers();
-      GlStateManager._glBindFramebuffer(36160, this.h);
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texParameter(3553, 34892, 0);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
-      GlStateManager._bindTexture(0);
-      this.e = $$2.a;
-      this.f = $$2.b;
-      this.c = $$2.a;
-      this.d = $$2.b;
-      this.b();
-      GlStateManager._glBindFramebuffer(36160, 0);
-   }
-
-   private eyc.b c(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.i = TextureUtil.generateTextureId();
-      this.j = TextureUtil.generateTextureId();
-      eyc.a $$2 = eyc.a.a;
-
-      for (eyc.b $$3 : eyc.b.a($$0, $$1)) {
-         $$2 = eyc.a.a;
-         if (this.a($$3)) {
-            $$2 = $$2.a(eyc.a.b);
-         }
-
-         if (this.b($$3)) {
-            $$2 = $$2.a(eyc.a.c);
-         }
-
-         if ($$2 == eyc.a.d) {
-            return $$3;
-         }
-      }
-
-      throw new RuntimeException("Unrecoverable GL_OUT_OF_MEMORY (allocated attachments = " + $$2.name() + ")");
-   }
-
-   private boolean a(eyc.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texImage2D(3553, 0, 32856, $$0.a, $$0.b, 0, 6408, 5121, null);
-      return GlStateManager._getError() != 1285;
-   }
-
-   private boolean b(eyc.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texImage2D(3553, 0, 6402, $$0.a, $$0.b, 0, 6402, 5126, null);
-      return GlStateManager._getError() != 1285;
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
-
-      private static final eyc.a[] e = values();
-
-      eyc.a a(eyc.a $$0) {
-         return e[this.ordinal() | $$0.ordinal()];
-      }
-   }
-
-   static class b {
-      public final int a;
-      public final int b;
-
-      b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      static List<eyc.b> a(int $$0, int $$1) {
-         RenderSystem.assertOnRenderThreadOrInit();
-         int $$2 = RenderSystem.maxSupportedTextureSize();
-         return $$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2 ? ImmutableList.of(new eyc.b($$0, $$1), eyc.l) : ImmutableList.of(eyc.l);
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            eyc.b $$1 = (eyc.b)$$0;
-            return this.a == $$1.a && this.b == $$1.b;
+         int $$2 = FreeType.FT_Get_Char_Index($$1, (long)$$0);
+         if ($$2 == 0) {
+            return null;
          } else {
-            return false;
+            fkd.a(FreeType.FT_Load_Glyph($$1, $$2, 4194312), "Loading glyph");
+            FT_GlyphSlot $$3 = Objects.requireNonNull($$1.glyph(), "Glyph not initialized");
+            float $$4 = fkd.a($$3.advance());
+            FT_Bitmap $$5 = $$3.bitmap();
+            int $$6 = $$3.bitmap_left();
+            int $$7 = $$3.bitmap_top();
+            int $$8 = $$5.width();
+            int $$9 = $$5.rows();
+            return (exy)($$8 > 0 && $$9 > 0 ? new eyc.a((float)$$6, (float)$$7, $$8, $$9, $$4, $$2) : () -> $$4 / this.d);
          }
       }
+   }
 
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b);
+   FT_Face b() {
+      if (this.b != null && this.c != null) {
+         return this.c;
+      } else {
+         throw new IllegalStateException("Provider already closed");
+      }
+   }
+
+   @Override
+   public void close() {
+      if (this.c != null) {
+         synchronized (fkd.a) {
+            fkd.b(FreeType.FT_Done_Face(this.c), "Deleting face");
+         }
+
+         this.c = null;
+      }
+
+      MemoryUtil.memFree(this.b);
+      this.b = null;
+   }
+
+   @Override
+   public IntSet a() {
+      FT_Face $$0 = this.b();
+      IntSet $$1 = new IntOpenHashSet();
+      MemoryStack $$2 = MemoryStack.stackPush();
+
+      try {
+         IntBuffer $$3 = $$2.mallocInt(1);
+
+         for (long $$4 = FreeType.FT_Get_First_Char($$0, $$3); $$3.get(0) != 0; $$4 = FreeType.FT_Get_Next_Char($$0, $$4, $$3)) {
+            $$1.add((int)$$4);
+         }
+      } catch (Throwable var8) {
+         if ($$2 != null) {
+            try {
+               $$2.close();
+            } catch (Throwable var7) {
+               var8.addSuppressed(var7);
+            }
+         }
+
+         throw var8;
+      }
+
+      if ($$2 != null) {
+         $$2.close();
+      }
+
+      $$1.removeAll(this.e);
+      return $$1;
+   }
+
+   class a implements exy {
+      final int b;
+      final int c;
+      final float d;
+      final float e;
+      private final float f;
+      final int g;
+
+      a(final float $$0, final float $$1, final int $$2, final int $$3, final float $$4, final int $$5) {
+         this.b = $$2;
+         this.c = $$3;
+         this.f = $$4 / eyc.this.d;
+         this.d = $$0 / eyc.this.d;
+         this.e = $$1 / eyc.this.d;
+         this.g = $$5;
       }
 
       @Override
-      public String toString() {
-         return this.a + "x" + this.b;
+      public float getAdvance() {
+         return this.f;
+      }
+
+      @Override
+      public fjx bake(Function<eya, fjx> $$0) {
+         return $$0.apply(new eya() {
+            @Override
+            public int a() {
+               return a.this.b;
+            }
+
+            @Override
+            public int b() {
+               return a.this.c;
+            }
+
+            @Override
+            public float d() {
+               return eyc.this.d;
+            }
+
+            @Override
+            public float i() {
+               return a.this.d;
+            }
+
+            @Override
+            public float j() {
+               return a.this.e;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               FT_Face $$2 = eyc.this.b();
+               eyx $$3 = new eyx(eyx.a.d, a.this.b, a.this.c, false);
+               if ($$3.a($$2, a.this.g)) {
+                  $$3.a(0, $$0, $$1, 0, 0, a.this.b, a.this.c, false, true);
+               } else {
+                  $$3.close();
+               }
+            }
+
+            @Override
+            public boolean c() {
+               return false;
+            }
+         });
       }
    }
 }

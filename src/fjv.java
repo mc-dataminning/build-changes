@@ -1,13 +1,17 @@
-import org.joml.Matrix4f;
-
-public class fjv extends fju {
-   public static final fjv a = new fjv();
-
-   public fjv() {
-      super(fjs.b(new alb("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+public record fjv(gdu a, gdu b, gdu c) {
+   public static fjv a(ale $$0) {
+      return new fjv(gdu.u($$0), gdu.y($$0), gdu.w($$0));
    }
 
-   @Override
-   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, ezx $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+   public static fjv b(ale $$0) {
+      return new fjv(gdu.t($$0), gdu.x($$0), gdu.v($$0));
+   }
+
+   public gdu a(fgn.a $$0) {
+      return switch ($$0) {
+         case a -> this.a;
+         case b -> this.b;
+         case c -> this.c;
+      };
    }
 }

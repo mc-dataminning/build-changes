@@ -1,37 +1,29 @@
-public class afh implements zs<ace> {
-   public static final zj<wl, afh> a = zs.a(afh::a, afh::new);
-   private final iz b;
-   private final float c;
+public class afh implements zv<ach> {
+   public static final zm<wl, afh> a = zv.a(afh::a, afh::new);
+   private final int b;
 
-   public afh(iz $$0, float $$1) {
+   public afh(int $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
    private afh(wl $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+      this.b = $$0.readByte();
    }
 
    private void a(wl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.k(this.b);
    }
 
    @Override
-   public zu<afh> a() {
-      return agq.aA;
+   public zx<afh> a() {
+      return agt.ax;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public iz b() {
+   public int b() {
       return this.b;
-   }
-
-   public float e() {
-      return this.c;
    }
 }

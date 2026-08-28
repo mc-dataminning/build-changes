@@ -1,102 +1,85 @@
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public class fys {
-   final int a;
-   private final List<fys.a> b = new ArrayList<>();
-
-   public fys(int $$0) {
-      this.a = $$0;
+public interface fys {
+   static fys a(fyy $$0, UserApiService $$1) {
+      return new fys.b($$0, $$1);
    }
 
-   public void a(fyk $$0, IntCollection $$1, fys.b $$2) {
-      IntSortedSet $$3 = new IntRBTreeSet($$1);
+   CompletableFuture<Unit> a(UUID var1, fza var2, AbuseReport var3);
 
-      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
-         fym $$6 = $$0.b($$4);
-         if ($$6 instanceof fyn.a) {
-            fyn.a $$5 = (fyn.a)$$6;
-            boolean $$6x = this.b($$5.g());
-            if ($$3.remove($$4)) {
-               this.a($$5.g());
-               $$2.accept($$4, $$5);
-            } else if ($$6x) {
-               $$2.accept($$4, $$5);
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
+   }
+
+   public static class a extends yo {
+      public a(xo $$0, Throwable $$1) {
+         super($$0, $$1);
+      }
+   }
+
+   public static record b(fyy a, UserApiService b) implements fys {
+      private static final xo c = xo.c("gui.abuseReport.send.service_unavailable");
+      private static final xo d = xo.c("gui.abuseReport.send.http_error");
+      private static final xo e = xo.c("gui.abuseReport.send.json_error");
+
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, fza $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
+
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               xo $$5 = this.a(var7);
+               throw new CompletionException(new fys.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               xo $$7 = this.a(var8);
+               throw new CompletionException(new fys.a($$7, var8));
             }
-         }
-      }
-   }
-
-   public void a(yb $$0) {
-      this.b.add(new fys.a($$0));
-   }
-
-   public boolean b(yb $$0) {
-      boolean $$1 = false;
-      Iterator<fys.a> $$2 = this.b.iterator();
-
-      while ($$2.hasNext()) {
-         fys.a $$3 = $$2.next();
-         if ($$3.a($$0)) {
-            $$1 = true;
-            if ($$3.a()) {
-               $$2.remove();
-            }
-         }
+         }, ac.h());
       }
 
-      return $$1;
-   }
-
-   public boolean a() {
-      return !this.b.isEmpty();
-   }
-
-   class a {
-      private final Set<xx> b;
-      private yb c;
-      private boolean d = true;
-      private int e;
-
-      a(final yb $$0) {
-         this.b = new ObjectOpenHashSet($$0.m().d().a());
-         this.c = $$0;
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
       }
 
-      boolean a(yb $$0) {
-         if ($$0.equals(this.c)) {
-            return false;
-         } else {
-            boolean $$1 = this.b.remove($$0.l());
-            if (this.d && this.c.g().equals($$0.g())) {
-               if (this.c.k().a($$0.k())) {
-                  $$1 = true;
-                  this.c = $$0;
-               } else {
-                  this.d = false;
-               }
-            }
-
-            if ($$1) {
-               this.e++;
-            }
-
-            return $$1;
-         }
+      private xo a(MinecraftClientHttpException $$0) {
+         return xo.a("gui.abuseReport.send.error_message", $$0.getMessage());
       }
 
-      boolean a() {
-         return this.e >= fys.this.a || !this.d && this.b.isEmpty();
+      private xo a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new MatchException(null, null);
+         };
       }
-   }
 
-   public interface b {
-      void accept(int var1, fyn.a var2);
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public fyy c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
+      }
    }
 }

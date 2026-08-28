@@ -1,30 +1,51 @@
-public class gfo implements gfj<dpi> {
-   private static final float a = 0.375F;
-   private final gjq b;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-   public gfo(gfk.a $$0) {
-      this.b = $$0.d();
+public class gfo {
+   private static final Map<dph<?>, gfn<?>> a = Maps.newHashMap();
+
+   private static <T extends dpf> void a(dph<? extends T> $$0, gfn<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   public void a(dpi $$0, float $$1, ezt $$2, gdj $$3, int $$4, int $$5) {
-      je $$6 = $$0.n().c(dfi.f);
-      jr<cuk> $$7 = $$0.b();
-      int $$8 = (int)$$0.aA_().a();
-
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         cuk $$10 = $$7.get($$9);
-         if ($$10 != cuk.l) {
-            $$2.a();
-            $$2.a(0.5F, 0.44921875F, 0.5F);
-            je $$11 = je.b(($$9 + $$6.e()) % 4);
-            float $$12 = -$$11.p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(a.b.rotationDegrees(90.0F));
-            $$2.a(-0.3125F, -0.3125F, 0.0F);
-            $$2.b(0.375F, 0.375F, 0.375F);
-            this.b.a($$10, cuh.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
-            $$2.b();
+   public static Map<dph<?>, gfm<?>> a(gfn.a $$0) {
+      Builder<dph<?>, gfm<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + lp.k.b((dph<?>)$$2), var5);
          }
-      }
+      });
+      return $$1.build();
+   }
+
+   static {
+      a(dph.h, gga::new);
+      a(dph.i, gfw::new);
+      a(dph.j, ggc::new);
+      a(dph.k, gfy::new);
+      a(dph.b, gfs::new);
+      a(dph.d, gfs::new);
+      a(dph.c, gfs::new);
+      a(dph.m, gfv::new);
+      a(dph.D, gfx::new);
+      a(dph.n, ggf::new);
+      a(dph.v, gge::new);
+      a(dph.o, gfi::new);
+      a(dph.p, ggb::new);
+      a(dph.t, gfh::new);
+      a(dph.u, ggd::new);
+      a(dph.x, gfz::new);
+      a(dph.y, gfj::new);
+      a(dph.z, gft::new);
+      a(dph.E, gfk::new);
+      a(dph.G, gfr::new);
+      a(dph.N, gfq::new);
+      a(dph.O, gfu::new);
+      a(dph.Q, ggg::new);
+      a(dph.R, ggh::new);
    }
 }

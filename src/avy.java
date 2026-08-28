@@ -1,8 +1,51 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface avy {
+public class avy {
+   public static final Codec<avy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ale.a.fieldOf("sound_id").forGetter(avy::a), Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(avy::b)).apply($$0, avy::a)
+   );
+   public static final Codec<ji<avy>> b = ala.a(lq.ag, a);
+   public static final zm<ByteBuf, avy> c = zm.a(ale.b, avy::a, zk.i.a(zk::a), avy::b, avy::a);
+   public static final zm<wz, ji<avy>> d = zk.a(lq.ag, c);
+   private static final float e = 16.0F;
+   private final ale f;
+   private final float g;
+   private final boolean h;
+
+   private static avy a(ale $$0, Optional<Float> $$1) {
+      return $$1.<avy>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
+   }
+
+   public static avy a(ale $$0) {
+      return new avy($$0, 16.0F, false);
+   }
+
+   public static avy a(ale $$0, float $$1) {
+      return new avy($$0, $$1, true);
+   }
+
+   private avy(ale $$0, float $$1, boolean $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+   }
+
+   public ale a() {
+      return this.f;
+   }
+
+   public float a(float $$0) {
+      if (this.h) {
+         return this.g;
+      } else {
+         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
+      }
+   }
+
+   private Optional<Float> b() {
+      return this.h ? Optional.of(this.g) : Optional.empty();
+   }
 }

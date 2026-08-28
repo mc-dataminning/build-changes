@@ -1,53 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public record eco(List<eco.a> b, je c, dyw d, boolean e) implements ecx {
-   public static final Codec<eco> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eco.a.a.listOf().fieldOf("layers").forGetter(eco::a),
-               je.g.fieldOf("direction").forGetter(eco::b),
-               dyw.b.fieldOf("allowed_placement").forGetter(eco::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(eco::d)
-            )
-            .apply($$0, eco::new)
-   );
-
-   public static eco.a a(bpu $$0, eey $$1) {
-      return new eco.a($$0, $$1);
+public class eco extends ecl {
+   public eco(Codec<edz> $$0) {
+      super($$0);
    }
 
-   public static eco b(bpu $$0, eey $$1) {
-      return new eco(List.of(a($$0, $$1)), je.b, dyw.c, false);
-   }
+   @Override
+   protected Set<iz> a(dcr $$0, edz $$1, azf $$2, iz $$3, Predicate<dsa> $$4, int $$5, int $$6) {
+      Set<iz> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<iz> $$8 = new HashSet<>();
+      iz.a $$9 = new iz.a();
 
-   public List<eco.a> a() {
-      return this.b;
-   }
-
-   public je b() {
-      return this.c;
-   }
-
-   public dyw c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bpu b, eey c) {
-      public static final Codec<eco.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bpu.d.fieldOf("height").forGetter(eco.a::a), eey.a.fieldOf("provider").forGetter(eco.a::b)).apply($$0, eco.a::new)
-      );
-
-      public bpu a() {
-         return this.b;
+      for (iz $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
       }
 
-      public eey b() {
-         return this.c;
+      for (iz $$11 : $$8) {
+         $$0.a($$11, dez.G.o(), 2);
+      }
+
+      return $$8;
+   }
+
+   private static boolean a(dcr $$0, Set<iz> $$1, iz $$2, iz.a $$3) {
+      return a($$0, $$2, $$3, je.c) || a($$0, $$2, $$3, je.f) || a($$0, $$2, $$3, je.d) || a($$0, $$2, $$3, je.e) || a($$0, $$2, $$3, je.a);
+   }
+
+   private static boolean a(dcr $$0, iz $$1, iz.a $$2, je $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).d($$0, $$2, $$3.g());
+   }
+
+   @Override
+   protected boolean a(dcr $$0, edz $$1, dtx $$2, azf $$3, iz $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
+         dsa $$5 = $$0.a_($$4);
+         if ($$5.b(dsq.C) && !$$5.c(dsq.C)) {
+            $$0.a($$4, $$5.a(dsq.C, Boolean.valueOf(true)), 2);
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 }

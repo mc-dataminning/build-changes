@@ -1,43 +1,29 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public enum dwn {
+   a(false, false),
+   b(true, false),
+   c(true, true);
 
-public class dwn<T extends dws> {
-   private final T a;
-   @Nullable
-   private kb b;
+   private final boolean d;
+   private final boolean e;
 
-   public dwn(T $$0) {
-      this.a = $$0;
+   private dwn(final boolean $$0, final boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public void a(arb $$0) {
-      this.c($$0);
+   public boolean a() {
+      return this.e;
    }
 
-   public T a() {
-      return this.a;
+   public boolean b() {
+      return this.d;
    }
 
-   public void b(arb $$0) {
-      a($$0, this.b, $$0x -> $$0x.b(this.a));
-   }
-
-   public void c(arb $$0) {
-      this.a.a().a($$0).map(kb::a).ifPresent($$1 -> {
-         if (this.b == null || !this.b.equals($$1)) {
-            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
-            this.b = $$1;
-            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
-         }
-      });
-   }
-
-   private static void a(dbw $$0, @Nullable kb $$1, Consumer<dwt> $$2) {
-      if ($$1 != null) {
-         dtt $$3 = $$0.a($$1.a(), $$1.c(), dus.n, false);
-         if ($$3 != null) {
-            $$2.accept($$3.a($$1.b()));
-         }
+   public static dwn a(aqx $$0) {
+      if ($$0.a(aqx.d)) {
+         return c;
+      } else {
+         return $$0.a(aqx.b) ? b : a;
       }
    }
 }

@@ -1,164 +1,159 @@
-public class dpm extends dpc {
-   private boolean a;
-   private boolean b;
-   private boolean c;
-   private final dau d = new dau() {
+public class dpm extends dqk implements dqi {
+   private static final int d = 1;
+   private jr<cun> e = jr.a(27, cun.l);
+   private final dps f = new dps() {
       @Override
-      public void a(String $$0) {
-         super.a($$0);
-         dpm.this.e();
+      protected void a(dbw $$0, iz $$1, dsa $$2) {
+         dpm.a($$0, $$1, $$2, avz.eQ);
       }
 
       @Override
-      public arb e() {
-         return (arb)dpm.this.n;
+      protected void b(dbw $$0, iz $$1, dsa $$2) {
+         dpm.a($$0, $$1, $$2, avz.eO);
       }
 
       @Override
-      public void f() {
-         drx $$0 = dpm.this.n.a_(dpm.this.o);
-         this.e().a(dpm.this.o, $$0, $$0, 3);
+      protected void a(dbw $$0, iz $$1, dsa $$2, int $$3, int $$4) {
+         dpm.this.a($$0, $$1, $$2, $$3, $$4);
       }
 
       @Override
-      public evm g() {
-         return evm.b(dpm.this.o);
-      }
-
-      @Override
-      public ep i() {
-         je $$0 = dpm.this.n().c(dgd.b);
-         return new ep(this, evm.b(dpm.this.o), new evl(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().o(), null);
-      }
-
-      @Override
-      public boolean j() {
-         return !dpm.this.o();
+      protected boolean a(cmv $$0) {
+         if (!($$0.cb instanceof cpz)) {
+            return false;
+         } else {
+            bql $$1 = ((cpz)$$0.cb).l();
+            return $$1 == dpm.this || $$1 instanceof bqk && ((bqk)$$1).a(dpm.this);
+         }
       }
    };
+   private final dpn g = new dpn();
 
-   public dpm(iz $$0, drx $$1) {
-      super(dpe.w, $$0, $$1);
+   protected dpm(dph<?> $$0, iz $$1, dsa $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public dpm(iz $$0, dsa $$1) {
+      this(dph.b, $$0, $$1);
    }
 
    @Override
-   protected void b(ur $$0, jk.a $$1) {
-      super.b($$0, $$1);
-      this.d.a($$0, $$1);
-      $$0.a("powered", this.c());
-      $$0.a("conditionMet", this.j());
-      $$0.a("auto", this.d());
+   public int b() {
+      return 27;
+   }
+
+   @Override
+   protected xo k() {
+      return xo.c("container.chest");
    }
 
    @Override
    protected void a(ur $$0, jk.a $$1) {
       super.a($$0, $$1);
-      this.d.b($$0, $$1);
-      this.a = $$0.q("powered");
-      this.c = $$0.q("conditionMet");
-      this.b($$0.q("auto"));
+      this.e = jr.a(this.b(), cun.l);
+      if (!this.a_($$0)) {
+         bqm.b($$0, this.e, $$1);
+      }
    }
 
    @Override
-   public boolean q() {
-      return true;
-   }
-
-   public dau b() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.a = $$0;
-   }
-
-   public boolean c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b;
-   }
-
-   public void b(boolean $$0) {
-      boolean $$1 = this.b;
-      this.b = $$0;
-      if (!$$1 && $$0 && !this.a && this.n != null && this.l() != dpm.a.a) {
-         this.v();
+   protected void b(ur $$0, jk.a $$1) {
+      super.b($$0, $$1);
+      if (!this.b_($$0)) {
+         bqm.a($$0, this.e, $$1);
       }
    }
 
-   public void f() {
-      dpm.a $$0 = this.l();
-      if ($$0 == dpm.a.b && (this.a || this.b) && this.n != null) {
-         this.v();
+   public static void a(dbw $$0, iz $$1, dsa $$2, dpm $$3) {
+      $$3.g.a();
+   }
+
+   static void a(dbw $$0, iz $$1, dsa $$2, avy $$3) {
+      dss $$4 = $$2.c(dga.d);
+      if ($$4 != dss.b) {
+         double $$5 = (double)$$1.u() + 0.5;
+         double $$6 = (double)$$1.v() + 0.5;
+         double $$7 = (double)$$1.w() + 0.5;
+         if ($$4 == dss.c) {
+            je $$8 = dga.h($$2);
+            $$5 += (double)$$8.j() * 0.5;
+            $$7 += (double)$$8.l() * 0.5;
+         }
+
+         $$0.a(null, $$5, $$6, $$7, $$3, awa.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
       }
    }
 
-   private void v() {
-      deu $$0 = this.n().b();
-      if ($$0 instanceof dgd) {
-         this.k();
-         this.n.a(this.o, $$0, 1);
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.g.a($$1 > 0);
+         return true;
+      } else {
+         return super.a_($$0, $$1);
       }
    }
 
-   public boolean j() {
-      return this.c;
+   @Override
+   public void d_(cmv $$0) {
+      if (!this.p && !$$0.N_()) {
+         this.f.a($$0, this.i(), this.az_(), this.n());
+      }
    }
 
-   public boolean k() {
-      this.c = true;
-      if (this.u()) {
-         iz $$0 = this.o.a(this.n.a_(this.o).c(dgd.b).g());
-         if (this.n.a_($$0).b() instanceof dgd) {
-            dpc $$1 = this.n.c_($$0);
-            this.c = $$1 instanceof dpm && ((dpm)$$1).b().k() > 0;
-         } else {
-            this.c = false;
+   @Override
+   public void c(cmv $$0) {
+      if (!this.p && !$$0.N_()) {
+         this.f.b($$0, this.i(), this.az_(), this.n());
+      }
+   }
+
+   @Override
+   protected jr<cun> j() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(jr<cun> $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public float a(float $$0) {
+      return this.g.a($$0);
+   }
+
+   public static int a(dbc $$0, iz $$1) {
+      dsa $$2 = $$0.a_($$1);
+      if ($$2.t()) {
+         dpf $$3 = $$0.c_($$1);
+         if ($$3 instanceof dpm) {
+            return ((dpm)$$3).f.a();
          }
       }
 
-      return this.c;
+      return 0;
    }
 
-   public dpm.a l() {
-      drx $$0 = this.n();
-      if ($$0.a(dew.fN)) {
-         return dpm.a.c;
-      } else if ($$0.a(dew.kG)) {
-         return dpm.a.b;
-      } else {
-         return $$0.a(dew.kH) ? dpm.a.a : dpm.a.c;
+   public static void a(dpm $$0, dpm $$1) {
+      jr<cun> $$2 = $$0.j();
+      $$0.a($$1.j());
+      $$1.a($$2);
+   }
+
+   @Override
+   protected cps a(int $$0, cmu $$1) {
+      return cpz.a($$0, $$1, this);
+   }
+
+   public void l() {
+      if (!this.p) {
+         this.f.c(this.i(), this.az_(), this.n());
       }
    }
 
-   public boolean u() {
-      drx $$0 = this.n.a_(this.aA_());
-      return $$0.b() instanceof dgd ? $$0.c(dgd.c) : false;
-   }
-
-   @Override
-   protected void a(dpc.b $$0) {
-      super.a($$0);
-      this.d.b($$0.a(km.f));
-   }
-
-   @Override
-   protected void a(ki.a $$0) {
-      super.a($$0);
-      $$0.a(km.f, this.d.o());
-   }
-
-   @Override
-   public void a(ur $$0) {
-      super.a($$0);
-      $$0.r("CustomName");
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+   protected void a(dbw $$0, iz $$1, dsa $$2, int $$3, int $$4) {
+      dex $$5 = $$2.b();
+      $$0.a($$1, $$5, 1, $$4);
    }
 }

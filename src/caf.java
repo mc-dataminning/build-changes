@@ -1,89 +1,28 @@
 import java.util.EnumSet;
-import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class caf extends cai {
-   private final btm a;
-   private final Predicate<btm> b;
-   @Nullable
-   private btm c;
-   private final double d;
-   private final ccw e;
-   private int f;
-   private final float g;
-   private float h;
-   private final float i;
+public class caf extends cal {
+   private final btp a;
 
-   public caf(btm $$0, double $$1, float $$2, float $$3) {
+   public caf(btp $$0) {
       this.a = $$0;
-      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
-      this.d = $$1;
-      this.e = $$0.K();
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(cai.a.a, cai.a.b));
-      if (!($$0.K() instanceof ccv) && !($$0.K() instanceof ccu)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
-      }
+      this.a(EnumSet.of(cal.a.c));
+      $$0.K().a(true);
    }
 
    @Override
    public boolean a() {
-      List<btm> $$0 = this.a.dP().a(btm.class, this.a.cK().g((double)this.i), this.b);
-      if (!$$0.isEmpty()) {
-         for (btm $$1 : $$0) {
-            if (!$$1.ch()) {
-               this.c = $$1;
-               return true;
-            }
-         }
-      }
-
-      return false;
+      return this.a.be() && this.a.b(awu.a) > this.a.di() || this.a.bs();
    }
 
    @Override
-   public boolean b() {
-      return this.c != null && !this.e.l() && this.a.g(this.c) > (double)(this.g * this.g);
-   }
-
-   @Override
-   public void c() {
-      this.f = 0;
-      this.h = this.a.a(eoh.j);
-      this.a.a(eoh.j, 0.0F);
-   }
-
-   @Override
-   public void d() {
-      this.c = null;
-      this.e.n();
-      this.a.a(eoh.j, this.h);
+   public boolean R_() {
+      return true;
    }
 
    @Override
    public void e() {
-      if (this.c != null && !this.a.gd()) {
-         this.a.G().a(this.c, 10.0F, (float)this.a.aa());
-         if (--this.f <= 0) {
-            this.f = this.a(10);
-            double $$0 = this.a.du() - this.c.du();
-            double $$1 = this.a.dw() - this.c.dw();
-            double $$2 = this.a.dA() - this.c.dA();
-            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-            if (!($$3 <= (double)(this.g * this.g))) {
-               this.e.a(this.c, this.d);
-            } else {
-               this.e.n();
-               bzk $$4 = this.c.G();
-               if ($$3 <= (double)this.g || $$4.e() == this.a.du() && $$4.f() == this.a.dw() && $$4.g() == this.a.dA()) {
-                  double $$5 = this.c.du() - this.a.du();
-                  double $$6 = this.c.dA() - this.a.dA();
-                  this.e.a(this.a.du() - $$5, this.a.dw(), this.a.dA() - $$6, this.d);
-               }
-            }
-         }
+      if (this.a.el().i() < 0.8F) {
+         this.a.I().a();
       }
    }
 }

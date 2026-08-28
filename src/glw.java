@@ -1,27 +1,28 @@
-public class glw extends gjy<cgd, fwm<cgd>> {
-   public glw(gis.a $$0) {
-      super($$0, new fwm<>($$0.a(fwu.cc)), 0.5F);
-      this.a(new gnt(this, $$0.f()));
-      this.a(new gnu(this));
+public class glw extends gkb<cit, fwo<cit>> {
+   private static final ale a = new ale("textures/entity/wither/wither_invulnerable.png");
+   private static final ale i = new ale("textures/entity/wither/wither.png");
+
+   public glw(giv.a $$0) {
+      super($$0, new fwo<>($$0.a(fwx.bV)), 1.0F);
+      this.a(new gnv(this, $$0.f()));
    }
 
-   protected float a(cgd $$0, float $$1) {
-      return $$0.gA();
+   protected int a(cit $$0, iz $$1) {
+      return 15;
    }
 
-   public void a(cgd $$0, float $$1, float $$2, ezt $$3, gdj $$4, int $$5) {
-      if ($$0.gz()) {
-         float $$6 = $$0.G($$2);
-         this.f.a($$6, $$6, $$6);
+   public ale a(cit $$0) {
+      int $$1 = $$0.y();
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   }
+
+   protected void a(cit $$0, ezw $$1, float $$2) {
+      float $$3 = 2.0F;
+      int $$4 = $$0.y();
+      if ($$4 > 0) {
+         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gz()) {
-         this.f.a(1.0F, 1.0F, 1.0F);
-      }
-   }
-
-   public alb a(cgd $$0) {
-      return $$0.gw();
+      $$1.b($$3, $$3, $$3);
    }
 }

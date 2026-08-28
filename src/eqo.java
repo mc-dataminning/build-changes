@@ -1,25 +1,20 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 
-public class eqo extends eqv {
-   public static final MapCodec<eqo> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eqo::new));
+@FunctionalInterface
+interface eqo {
+   eqo b = ($$0, $$1) -> false;
+   eqo c = ($$0, $$1) -> true;
 
-   private eqo(int $$0, int $$1, List<etn> $$2, List<erq> $$3) {
-      super($$0, $$1, $$2, $$3);
+   boolean expand(eqg var1, Consumer<eqv> var2);
+
+   default eqo and(eqo $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
    }
 
-   @Override
-   public equ a() {
-      return eqr.b;
-   }
-
-   @Override
-   public void a(Consumer<cuk> $$0, eqd $$1) {
-   }
-
-   public static eqv.a<?> b() {
-      return a(eqo::new);
+   default eqo or(eqo $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
    }
 }

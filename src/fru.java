@@ -1,173 +1,102 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import java.util.function.ToIntFunction;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-class fru {
-   private static final int a = 44;
-   private final List<fru.c> b;
+public class fru extends fnb {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ToIntFunction<ald<dbw>> b = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
+      $$0.put(dbw.h, -13408734);
+      $$0.put(dbw.i, -10075085);
+      $$0.put(dbw.j, -8943531);
+      $$0.defaultReturnValue(-2236963);
+   });
+   private final BooleanConsumer c;
+   private final bqg d;
 
-   fru(List<fru.c> $$0) {
-      this.b = $$0;
-   }
+   @Nullable
+   public static fru a(ffd $$0, BooleanConsumer $$1, DataFixer $$2, epu.c $$3, boolean $$4) {
+      try {
+         fsa $$5 = $$0.x();
+         atz $$6 = auc.a($$3);
 
-   public void a() {
-      this.b.forEach(fru.c::a);
-   }
-
-   public static fru.a a(int $$0) {
-      return new fru.a($$0);
-   }
-
-   public static class a {
-      final int a;
-      private final List<fru.d> b = new ArrayList<>();
-      int c;
-      int d = 4;
-      int e;
-      Optional<fru.b> f = Optional.empty();
-
-      public a(int $$0) {
-         this.a = $$0;
-      }
-
-      void a() {
-         this.e++;
-      }
-
-      public fru.d a(xl $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
-         fru.d $$3 = new fru.d($$0, $$1, $$2, 44);
-         this.b.add($$3);
-         return $$3;
-      }
-
-      public fru.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fru.a b(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fru a(Consumer<fko> $$0) {
-         fkl $$1 = new fkl().b(this.d);
-         $$1.a(fkr.a(this.a - 44), 0, 0);
-         $$1.a(fkr.a(44), 0, 1);
-         List<fru.c> $$2 = new ArrayList<>();
-         this.e = 0;
-
-         for (fru.d $$3 : this.b) {
-            $$2.add($$3.a(this, $$1, 0));
+         fru var10;
+         try (amb $$7 = $$5.a($$3.h(), false, $$6)) {
+            eqa $$8 = $$7.d();
+            jw.b $$9 = $$7.c().a();
+            $$3.a($$9, $$8);
+            var10 = new fru($$1, $$2, $$3, $$8.J(), $$4, $$9);
          }
 
-         $$1.a();
-         $$0.accept($$1);
-         fru $$4 = new fru($$2);
-         $$4.a();
-         return $$4;
-      }
-
-      public fru.a a(int $$0, boolean $$1) {
-         this.f = Optional.of(new fru.b($$0, $$1));
-         return this;
+         return var10;
+      } catch (Exception var13) {
+         a.warn("Failed to load datapacks, can't optimize world", var13);
+         return null;
       }
    }
 
-   static record b(int a, boolean b) {
+   private fru(BooleanConsumer $$0, DataFixer $$1, epu.c $$2, dca $$3, boolean $$4, jw $$5) {
+      super(xo.a("optimizeWorld.title", $$3.a()));
+      this.c = $$0;
+      this.d = new bqg($$2, $$1, $$5, $$4, false);
    }
 
-   static record c(fhg<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
-      public void a() {
-         this.a.a(this.b.getAsBoolean());
-         if (this.c != null) {
-            this.a.j = this.c.getAsBoolean();
-         }
-      }
+   @Override
+   protected void aM_() {
+      super.aM_();
+      this.c(fhc.a(xn.e, $$0 -> {
+         this.d.a();
+         this.c.accept(false);
+      }).a(this.n / 2 - 100, this.o / 4 + 150, 200, 20).a());
+   }
 
-      public fhg<Boolean> b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
-
-      @Nullable
-      public BooleanSupplier d() {
-         return this.c;
+   @Override
+   public void e() {
+      if (this.d.b()) {
+         this.c.accept(true);
       }
    }
 
-   public static class d {
-      private final xl a;
-      private final BooleanSupplier b;
-      private final Consumer<Boolean> c;
-      @Nullable
-      private xl d;
-      @Nullable
-      private BooleanSupplier e;
-      private final int f;
+   @Override
+   public void d() {
+      this.c.accept(false);
+   }
 
-      d(xl $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = $$3;
-      }
+   @Override
+   public void j() {
+      this.d.a();
+   }
 
-      public fru.d a(BooleanSupplier $$0) {
-         this.e = $$0;
-         return this;
-      }
+   @Override
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
+      int $$4 = this.n / 2 - 150;
+      int $$5 = this.n / 2 + 150;
+      int $$6 = this.o / 4 + 100;
+      int $$7 = $$6 + 10;
+      $$0.a(this.p, this.d.h(), this.n / 2, $$6 - 9 - 2, 10526880);
+      if (this.d.e() > 0) {
+         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
+         $$0.b(this.p, xo.a("optimizeWorld.info.converted", this.d.f()), $$4, 40, 10526880);
+         $$0.b(this.p, xo.a("optimizeWorld.info.skipped", this.d.g()), $$4, 40 + 9 + 3, 10526880);
+         $$0.b(this.p, xo.a("optimizeWorld.info.total", this.d.e()), $$4, 40 + (9 + 3) * 2, 10526880);
+         int $$8 = 0;
 
-      public fru.d a(xl $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      fru.c a(fru.a $$0, fkl $$1, int $$2) {
-         $$0.a();
-         fig $$3 = new fig(this.a, ffa.Q().h).d();
-         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
-         Optional<fru.b> $$4 = $$0.f;
-         fhg.a<Boolean> $$5 = fhg.b(this.b.getAsBoolean());
-         $$5.a();
-         boolean $$6 = this.d != null && $$4.isEmpty();
-         if ($$6) {
-            fik $$7 = fik.a(this.d);
-            $$5.a($$1x -> $$7);
+         for (ald<dbw> $$9 : this.d.c()) {
+            int $$10 = ayx.d(this.d.a($$9) * (float)($$5 - $$4));
+            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
+            $$8 += $$10;
          }
 
-         if (this.d != null && !$$6) {
-            $$5.a($$0x -> xk.a(this.a, $$0x.d(), this.d));
-         } else {
-            $$5.a($$0x -> xk.a(this.a, $$0x.d()));
-         }
-
-         fhg<Boolean> $$8 = $$5.a(0, 0, this.f, 20, xl.i(), ($$0x, $$1x) -> this.c.accept($$1x));
-         if (this.e != null) {
-            $$8.j = this.e.getAsBoolean();
-         }
-
-         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
-         if (this.d != null) {
-            $$4.ifPresent($$3x -> {
-               xl $$4x = this.d.f().a(n.h);
-               fgk $$5x = ffa.Q().h;
-               fht $$6x = new fht($$4x, $$5x);
-               $$6x.d($$0.a - $$0.c - this.f);
-               $$6x.e($$3x.a());
-               $$0.a();
-               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.v() : 0;
-               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
-            });
-         }
-
-         return new fru.c($$8, this.b, this.e);
+         int $$11 = this.d.f() + this.d.g();
+         xo $$12 = xo.a("optimizeWorld.progress.counter", $$11, this.d.e());
+         xo $$13 = xo.a("optimizeWorld.progress.percentage", ayx.d(this.d.d() * 100.0F));
+         $$0.a(this.p, $$12, this.n / 2, $$6 + 2 * 9 + 2, 10526880);
+         $$0.a(this.p, $$13, this.n / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
       }
    }
 }

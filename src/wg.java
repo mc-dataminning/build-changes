@@ -1,6 +1,6 @@
-public interface wg extends wr {
+public interface wg extends wu {
    @Override
-   default zt a() {
-      return zt.b;
+   default zw a() {
+      return zw.b;
    }
 }

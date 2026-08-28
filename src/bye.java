@@ -1,11 +1,46 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bye {
-   public static bve<btk> a() {
-      return byq.a((Function<byq.b<btk>, ? extends App<byq.c<btk>, byt<btk>>>)($$0 -> $$0.a((byt<btk>)(($$0x, $$1, $$2) -> {
-            $$1.dS().a($$0x.aa(), $$0x.Z());
-            return true;
-         }))));
+   public static bvh<btw> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return byt.a(
+         (Function<byt.b<btw>, ? extends App<byt.c<btw>, byw<btw>>>)($$3 -> $$3.group($$3.c(ccr.o), $$3.c(ccr.m), $$3.a(ccr.n))
+               .apply(
+                  $$3,
+                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                        if ($$5x.b_($$6.dp()).a(awu.a)) {
+                           return false;
+                        } else if ($$7 < $$2.getValue()) {
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        } else {
+                           evu $$8 = evu.a($$6);
+                           iz $$9 = $$6.dp();
+                           iz.a $$10 = new iz.a();
+
+                           label45:
+                           for (iz $$11 : iz.a($$9, $$0, $$0, $$0)) {
+                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
+                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
+                                 && !$$5x.a_($$10.a($$11, je.a)).b($$5x, $$11, $$8).c()) {
+                                 for (je $$12 : je.c.a) {
+                                    $$10.a($$11, $$12);
+                                    if ($$5x.a_($$10).i() && $$5x.a_($$10.c(je.a)).a(dez.G)) {
+                                       $$5.a(new bvj($$11));
+                                       $$4.a(new ccu(new bvj($$11), $$1, 0));
+                                       break label45;
+                                    }
+                                 }
+                              }
+                           }
+
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        }
+                     }
+               ))
+      );
    }
 }

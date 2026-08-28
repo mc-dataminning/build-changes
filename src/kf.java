@@ -11,30 +11,30 @@ public interface kf {
    kf.a d = a("water");
    kf.a e = a("lava");
    kf.a f = a("powder_snow");
-   kf g = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, dew.fu.n().a(djd.g, Integer.valueOf(3)), avw.dc);
-   kf h = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, dew.fv.n(), avw.df);
-   kf i = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, dew.fw.n().a(djd.g, Integer.valueOf(3)), avw.dg);
+   kf g = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, dez.fu.o().a(djg.g, Integer.valueOf(3)), avz.dc);
+   kf h = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, dez.fv.o(), avz.df);
+   kf i = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, dez.fw.o().a(djg.g, Integer.valueOf(3)), avz.dg);
    kf j = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      deu $$6 = deu.a($$5.g());
-      if (!($$6 instanceof dlt)) {
-         return bqr.d;
+      dex $$6 = dex.a($$5.g());
+      if (!($$6 instanceof dlw)) {
+         return bqu.d;
       } else {
          if (!$$1.B) {
-            $$3.a($$4, $$5.a(dew.kP, 1));
-            $$3.a(awg.Z);
-            djd.d($$0, $$1, $$2);
+            $$3.a($$4, $$5.a(dez.kP, 1));
+            $$3.a(awj.Z);
+            djg.d($$0, $$1, $$2);
          }
 
-         return bqr.a($$1.B);
+         return bqu.a($$1.B);
       }
    };
    kf k = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      dot $$6 = $$5.a(km.W, dot.a);
+      dow $$6 = $$5.a(km.W, dow.a);
       if ($$6.b().isEmpty()) {
-         return bqr.d;
+         return bqu.d;
       } else {
          if (!$$1.B) {
-            cuk $$7 = $$5.c(1);
+            cun $$7 = $$5.c(1);
             $$7.b(km.W, $$6.a());
             $$5.a(1, $$3);
             if ($$5.e()) {
@@ -45,181 +45,181 @@ public interface kf {
                $$3.a($$7, false);
             }
 
-            $$3.a(awg.Y);
-            djd.d($$0, $$1, $$2);
+            $$3.a(awj.Y);
+            djg.d($$0, $$1, $$2);
          }
 
-         return bqr.a($$1.B);
+         return bqu.a($$1.B);
       }
    };
    kf l = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      if (!$$5.a(awu.by)) {
-         return bqr.d;
+      if (!$$5.a(awx.by)) {
+         return bqu.d;
       } else if (!$$5.b(km.y)) {
-         return bqr.d;
+         return bqu.d;
       } else {
          if (!$$1.B) {
             $$5.c(km.y);
-            $$3.a(awg.X);
-            djd.d($$0, $$1, $$2);
+            $$3.a(awj.X);
+            djg.d($$0, $$1, $$2);
          }
 
-         return bqr.a($$1.B);
+         return bqu.a($$1.B);
       }
    };
 
    static kf.a a(String $$0) {
-      Object2ObjectOpenHashMap<cuf, kf> $$1 = new Object2ObjectOpenHashMap();
-      $$1.defaultReturnValue((kf)($$0x, $$1x, $$2x, $$3, $$4, $$5) -> bqr.d);
+      Object2ObjectOpenHashMap<cui, kf> $$1 = new Object2ObjectOpenHashMap();
+      $$1.defaultReturnValue((kf)($$0x, $$1x, $$2x, $$3, $$4, $$5) -> bqu.d);
       kf.a $$2 = new kf.a($$0, $$1);
       a.put($$0, $$2);
       return $$2;
    }
 
-   bqr interact(drx var1, dbt var2, iz var3, cms var4, bqo var5, cuk var6);
+   bqu interact(dsa var1, dbw var2, iz var3, cmv var4, bqr var5, cun var6);
 
    static void a() {
-      Map<cuf, kf> $$0 = c.b();
+      Map<cui, kf> $$0 = c.b();
       a($$0);
-      $$0.put(cun.sk, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
-         cwl $$6 = $$5.a(km.F);
-         if ($$6 != null && $$6.a(cwm.a)) {
+      $$0.put(cuq.sk, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
+         cwo $$6 = $$5.a(km.F);
+         if ($$6 != null && $$6.a(cwp.a)) {
             if (!$$1x.B) {
-               cuf $$7 = $$5.g();
-               $$3x.a($$4, cum.a($$5, $$3x, new cuk(cun.sl)));
-               $$3x.a(awg.W);
-               $$3x.b(awg.c.b($$7));
-               $$1x.b($$2x, dew.fu.n());
-               $$1x.a(null, $$2x, avw.cB, avx.e, 1.0F, 1.0F);
-               $$1x.a(null, dwq.z, $$2x);
+               cui $$7 = $$5.g();
+               $$3x.a($$4, cup.a($$5, $$3x, new cun(cuq.sl)));
+               $$3x.a(awj.W);
+               $$3x.b(awj.c.b($$7));
+               $$1x.b($$2x, dez.fu.o());
+               $$1x.a(null, $$2x, avz.cB, awa.e, 1.0F, 1.0F);
+               $$1x.a(null, dwt.z, $$2x);
             }
 
-            return bqr.a($$1x.B);
+            return bqu.a($$1x.B);
          } else {
-            return bqr.d;
+            return bqu.d;
          }
       });
-      Map<cuf, kf> $$1 = d.b();
+      Map<cui, kf> $$1 = d.b();
       a($$1);
-      $$1.put(cun.qy, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cuk(cun.qz), $$0xx -> $$0xx.c(djd.g) == 3, avw.di));
-      $$1.put(cun.sl, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
+      $$1.put(cuq.qy, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cun(cuq.qz), $$0xx -> $$0xx.c(djg.g) == 3, avz.di));
+      $$1.put(cuq.sl, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
          if (!$$1x.B) {
-            cuf $$6 = $$5.g();
-            $$3x.a($$4, cum.a($$5, $$3x, cwl.a(cun.sk, cwm.a)));
-            $$3x.a(awg.W);
-            $$3x.b(awg.c.b($$6));
-            djd.d($$0x, $$1x, $$2x);
-            $$1x.a(null, $$2x, avw.cC, avx.e, 1.0F, 1.0F);
-            $$1x.a(null, dwq.y, $$2x);
+            cui $$6 = $$5.g();
+            $$3x.a($$4, cup.a($$5, $$3x, cwo.a(cuq.sk, cwp.a)));
+            $$3x.a(awj.W);
+            $$3x.b(awj.c.b($$6));
+            djg.d($$0x, $$1x, $$2x);
+            $$1x.a(null, $$2x, avz.cC, awa.e, 1.0F, 1.0F);
+            $$1x.a(null, dwt.y, $$2x);
          }
 
-         return bqr.a($$1x.B);
+         return bqu.a($$1x.B);
       });
-      $$1.put(cun.sk, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
-         if ($$0x.c(djd.g) == 3) {
-            return bqr.d;
+      $$1.put(cuq.sk, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
+         if ($$0x.c(djg.g) == 3) {
+            return bqu.d;
          } else {
-            cwl $$6 = $$5.a(km.F);
-            if ($$6 != null && $$6.a(cwm.a)) {
+            cwo $$6 = $$5.a(km.F);
+            if ($$6 != null && $$6.a(cwp.a)) {
                if (!$$1x.B) {
-                  $$3x.a($$4, cum.a($$5, $$3x, new cuk(cun.sl)));
-                  $$3x.a(awg.W);
-                  $$3x.b(awg.c.b($$5.g()));
-                  $$1x.b($$2x, $$0x.a(djd.g));
-                  $$1x.a(null, $$2x, avw.cB, avx.e, 1.0F, 1.0F);
-                  $$1x.a(null, dwq.z, $$2x);
+                  $$3x.a($$4, cup.a($$5, $$3x, new cun(cuq.sl)));
+                  $$3x.a(awj.W);
+                  $$3x.b(awj.c.b($$5.g()));
+                  $$1x.b($$2x, $$0x.a(djg.g));
+                  $$1x.a(null, $$2x, avz.cB, awa.e, 1.0F, 1.0F);
+                  $$1x.a(null, dwt.z, $$2x);
                }
 
-               return bqr.a($$1x.B);
+               return bqu.a($$1x.B);
             } else {
-               return bqr.d;
+               return bqu.d;
             }
          }
       });
-      $$1.put(cun.pB, l);
-      $$1.put(cun.pA, l);
-      $$1.put(cun.pz, l);
-      $$1.put(cun.py, l);
-      $$1.put(cun.uJ, l);
-      $$1.put(cun.or, l);
-      $$1.put(cun.uP, k);
-      $$1.put(cun.uW, k);
-      $$1.put(cun.ve, k);
-      $$1.put(cun.va, k);
-      $$1.put(cun.vb, k);
-      $$1.put(cun.uY, k);
-      $$1.put(cun.vc, k);
-      $$1.put(cun.uS, k);
-      $$1.put(cun.uX, k);
-      $$1.put(cun.uU, k);
-      $$1.put(cun.uR, k);
-      $$1.put(cun.uQ, k);
-      $$1.put(cun.uV, k);
-      $$1.put(cun.uZ, k);
-      $$1.put(cun.vd, k);
-      $$1.put(cun.uT, k);
-      $$1.put(cun.jd, j);
-      $$1.put(cun.jk, j);
-      $$1.put(cun.js, j);
-      $$1.put(cun.jo, j);
-      $$1.put(cun.jp, j);
-      $$1.put(cun.jm, j);
-      $$1.put(cun.jq, j);
-      $$1.put(cun.jg, j);
-      $$1.put(cun.jl, j);
-      $$1.put(cun.ji, j);
-      $$1.put(cun.jf, j);
-      $$1.put(cun.je, j);
-      $$1.put(cun.jj, j);
-      $$1.put(cun.jn, j);
-      $$1.put(cun.jr, j);
-      $$1.put(cun.jh, j);
-      Map<cuf, kf> $$2 = e.b();
-      $$2.put(cun.qy, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cuk(cun.qA), $$0xx -> true, avw.dl));
+      $$1.put(cuq.pB, l);
+      $$1.put(cuq.pA, l);
+      $$1.put(cuq.pz, l);
+      $$1.put(cuq.py, l);
+      $$1.put(cuq.uJ, l);
+      $$1.put(cuq.or, l);
+      $$1.put(cuq.uP, k);
+      $$1.put(cuq.uW, k);
+      $$1.put(cuq.ve, k);
+      $$1.put(cuq.va, k);
+      $$1.put(cuq.vb, k);
+      $$1.put(cuq.uY, k);
+      $$1.put(cuq.vc, k);
+      $$1.put(cuq.uS, k);
+      $$1.put(cuq.uX, k);
+      $$1.put(cuq.uU, k);
+      $$1.put(cuq.uR, k);
+      $$1.put(cuq.uQ, k);
+      $$1.put(cuq.uV, k);
+      $$1.put(cuq.uZ, k);
+      $$1.put(cuq.vd, k);
+      $$1.put(cuq.uT, k);
+      $$1.put(cuq.jd, j);
+      $$1.put(cuq.jk, j);
+      $$1.put(cuq.js, j);
+      $$1.put(cuq.jo, j);
+      $$1.put(cuq.jp, j);
+      $$1.put(cuq.jm, j);
+      $$1.put(cuq.jq, j);
+      $$1.put(cuq.jg, j);
+      $$1.put(cuq.jl, j);
+      $$1.put(cuq.ji, j);
+      $$1.put(cuq.jf, j);
+      $$1.put(cuq.je, j);
+      $$1.put(cuq.jj, j);
+      $$1.put(cuq.jn, j);
+      $$1.put(cuq.jr, j);
+      $$1.put(cuq.jh, j);
+      Map<cui, kf> $$2 = e.b();
+      $$2.put(cuq.qy, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cun(cuq.qA), $$0xx -> true, avz.dl));
       a($$2);
-      Map<cuf, kf> $$3 = f.b();
-      $$3.put(cun.qy, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cuk(cun.qB), $$0xx -> $$0xx.c(djd.g) == 3, avw.dm));
+      Map<cui, kf> $$3 = f.b();
+      $$3.put(cuq.qy, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cun(cuq.qB), $$0xx -> $$0xx.c(djg.g) == 3, avz.dm));
       a($$3);
    }
 
-   static void a(Map<cuf, kf> $$0) {
-      $$0.put(cun.qA, h);
-      $$0.put(cun.qz, g);
-      $$0.put(cun.qB, i);
+   static void a(Map<cui, kf> $$0) {
+      $$0.put(cuq.qA, h);
+      $$0.put(cuq.qz, g);
+      $$0.put(cuq.qB, i);
    }
 
-   static bqr a(drx $$0, dbt $$1, iz $$2, cms $$3, bqo $$4, cuk $$5, cuk $$6, Predicate<drx> $$7, avv $$8) {
+   static bqu a(dsa $$0, dbw $$1, iz $$2, cmv $$3, bqr $$4, cun $$5, cun $$6, Predicate<dsa> $$7, avy $$8) {
       if (!$$7.test($$0)) {
-         return bqr.d;
+         return bqu.d;
       } else {
          if (!$$1.B) {
-            cuf $$9 = $$5.g();
-            $$3.a($$4, cum.a($$5, $$3, $$6));
-            $$3.a(awg.W);
-            $$3.b(awg.c.b($$9));
-            $$1.b($$2, dew.ft.n());
-            $$1.a(null, $$2, $$8, avx.e, 1.0F, 1.0F);
-            $$1.a(null, dwq.y, $$2);
+            cui $$9 = $$5.g();
+            $$3.a($$4, cup.a($$5, $$3, $$6));
+            $$3.a(awj.W);
+            $$3.b(awj.c.b($$9));
+            $$1.b($$2, dez.ft.o());
+            $$1.a(null, $$2, $$8, awa.e, 1.0F, 1.0F);
+            $$1.a(null, dwt.y, $$2);
          }
 
-         return bqr.a($$1.B);
+         return bqu.a($$1.B);
       }
    }
 
-   static bqr a(dbt $$0, iz $$1, cms $$2, bqo $$3, cuk $$4, drx $$5, avv $$6) {
+   static bqu a(dbw $$0, iz $$1, cmv $$2, bqr $$3, cun $$4, dsa $$5, avy $$6) {
       if (!$$0.B) {
-         cuf $$7 = $$4.g();
-         $$2.a($$3, cum.a($$4, $$2, new cuk(cun.qy)));
-         $$2.a(awg.V);
-         $$2.b(awg.c.b($$7));
+         cui $$7 = $$4.g();
+         $$2.a($$3, cup.a($$4, $$2, new cun(cuq.qy)));
+         $$2.a(awj.V);
+         $$2.b(awj.c.b($$7));
          $$0.b($$1, $$5);
-         $$0.a(null, $$1, $$6, avx.e, 1.0F, 1.0F);
-         $$0.a(null, dwq.z, $$1);
+         $$0.a(null, $$1, $$6, awa.e, 1.0F, 1.0F);
+         $$0.a(null, dwt.z, $$1);
       }
 
-      return bqr.a($$0.B);
+      return bqu.a($$0.B);
    }
 
-   public static record a(String a, Map<cuf, kf> b) {
+   public static record a(String a, Map<cui, kf> b) {
    }
 }

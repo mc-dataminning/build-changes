@@ -1,40 +1,169 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.Base64;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class fyh {
-   private final Map<ala<? extends jv<?>>, axe.a> a = new HashMap<>();
+   private static final Logger j = LogUtils.getLogger();
+   private static final int k = 1024;
+   public String a;
+   public String b;
+   public xo c;
+   public xo d;
+   @Nullable
+   public akd.b e;
+   public long f;
+   public int g = aa.b().e();
+   public xo h = xo.b(aa.b().c());
+   public List<xo> i = Collections.emptyList();
+   private fyh.a l = fyh.a.c;
+   @Nullable
+   private byte[] m;
+   private fyh.c n;
+   private fyh.b o = fyh.b.a;
 
-   public void a(ala<? extends jv<?>> $$0, axe.a $$1) {
-      this.a.put($$0, $$1);
+   public fyh(String $$0, String $$1, fyh.c $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.n = $$2;
    }
 
-   private static void a() {
-      csw.e().n();
-   }
-
-   private static void b() {
-      doq.f();
-      dew.a();
-   }
-
-   private void a(jw $$0, Predicate<ala<? extends jv<?>>> $$1) {
-      this.a.forEach(($$2, $$3) -> {
-         if ($$1.test((ala<? extends jv<?>>)$$2)) {
-            $$3.a($$0.d((ala<? extends jv<?>>)$$2));
-         }
-      });
-   }
-
-   public void a(jw $$0, boolean $$1) {
-      if ($$1) {
-         this.a($$0, jz.a::contains);
-      } else {
-         $$0.c().filter($$0x -> !jz.a.contains($$0x.a())).forEach($$0x -> $$0x.b().m());
-         this.a($$0, $$0x -> true);
-         b();
+   public ur a() {
+      ur $$0 = new ur();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      if (this.m != null) {
+         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
       }
 
-      a();
+      if (this.l == fyh.a.a) {
+         $$0.a("acceptTextures", true);
+      } else if (this.l == fyh.a.b) {
+         $$0.a("acceptTextures", false);
+      }
+
+      return $$0;
+   }
+
+   public fyh.a b() {
+      return this.l;
+   }
+
+   public void a(fyh.a $$0) {
+      this.l = $$0;
+   }
+
+   public static fyh a(ur $$0) {
+      fyh $$1 = new fyh($$0.l("name"), $$0.l("ip"), fyh.c.c);
+      if ($$0.b("icon", 8)) {
+         try {
+            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
+            $$1.a(b($$2));
+         } catch (IllegalArgumentException var3) {
+            j.warn("Malformed base64 server icon", var3);
+         }
+      }
+
+      if ($$0.b("acceptTextures", 1)) {
+         if ($$0.q("acceptTextures")) {
+            $$1.a(fyh.a.a);
+         } else {
+            $$1.a(fyh.a.b);
+         }
+      } else {
+         $$1.a(fyh.a.c);
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   public byte[] c() {
+      return this.m;
+   }
+
+   public void a(@Nullable byte[] $$0) {
+      this.m = $$0;
+   }
+
+   public boolean d() {
+      return this.n == fyh.c.a;
+   }
+
+   public boolean e() {
+      return this.n == fyh.c.b;
+   }
+
+   public fyh.c f() {
+      return this.n;
+   }
+
+   public void a(fyh $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.m = $$0.m;
+   }
+
+   public void b(fyh $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.n = $$0.n;
+   }
+
+   public fyh.b g() {
+      return this.o;
+   }
+
+   public void a(fyh.b $$0) {
+      this.o = $$0;
+   }
+
+   @Nullable
+   public static byte[] b(@Nullable byte[] $$0) {
+      if ($$0 != null) {
+         try {
+            azc $$1 = azc.a($$0);
+            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+               return $$0;
+            }
+         } catch (IOException var2) {
+            j.warn("Failed to decode server icon", var2);
+         }
+      }
+
+      return null;
+   }
+
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
+
+      private final xo d;
+
+      private a(final String $$0) {
+         this.d = xo.c("addServer.resourcePack." + $$0);
+      }
+
+      public xo a() {
+         return this.d;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
+   }
+
+   public static enum c {
+      a,
+      b,
+      c;
    }
 }

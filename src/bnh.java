@@ -1,20 +1,11 @@
-import net.minecraft.server.MinecraftServer;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
 
-public enum bnh {
-   a("client"),
-   b("server");
+public interface bnh {
+   long a();
 
-   private final String c;
+   long b();
 
-   private bnh(final String $$0) {
-      this.c = $$0;
-   }
+   long c();
 
-   public static bnh a(MinecraftServer $$0) {
-      return $$0.n() ? b : a;
-   }
-
-   public String a() {
-      return this.c;
-   }
+   Object2LongMap<String> d();
 }

@@ -1,5 +1,15 @@
-public interface dtq {
-   drx a(int var1);
+public enum dtq {
+   a(4259712),
+   b(16724016),
+   c(2138367);
 
-   void a(int var1, drx var2);
+   private final int d;
+
+   private dtq(final int $$0) {
+      this.d = $$0;
+   }
+
+   public int a() {
+      return this.d;
+   }
 }

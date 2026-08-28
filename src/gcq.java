@@ -1,36 +1,64 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class gcq implements bom {
-   private final gdh a;
-   private final Set<bok> b = new ObjectOpenHashSet();
-   private final bos c = new bos();
+public class gcq {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = cmu.g();
+   public static final Codec<gcq> a = Codec.PASSTHROUGH.listOf().validate($$0 -> ac.a($$0, c)).xmap(gcq::new, $$0 -> $$0.f);
+   private static final DynamicOps<vo> d = vf.a;
+   private static final Dynamic<?> e = new Dynamic(d, (vo)cun.f.encodeStart(d, cun.l).getOrThrow());
+   private List<Dynamic<?>> f;
 
-   public gcq(LongSupplier $$0, gdh $$1) {
-      this.a = $$1;
-      this.b.add(bot.a($$0));
-      this.a();
+   private gcq(List<Dynamic<?>> $$0) {
+      this.f = $$0;
    }
 
-   private void a() {
-      this.b.addAll(bot.a());
-      this.b.add(bok.a("totalChunks", boj.f, this.a, gdh::i));
-      this.b.add(bok.a("renderedChunks", boj.f, this.a, gdh::k));
-      this.b.add(bok.a("lastViewDistance", boj.f, this.a, gdh::j));
-      ggj $$0 = this.a.h();
-      this.b.add(bok.a("toUpload", boj.g, $$0, ggj::c));
-      this.b.add(bok.a("freeBufferCount", boj.g, $$0, ggj::d));
-      this.b.add(bok.a("toBatchCount", boj.g, $$0, ggj::b));
-      if (ezm.a().isPresent()) {
-         this.b.add(bok.a("gpuUtilization", boj.i, ffa.Q(), ffa::v));
+   public gcq() {
+      this(Collections.nCopies(c, e));
+   }
+
+   public List<cun> a(jk.a $$0) {
+      return this.f
+         .stream()
+         .map($$1 -> cun.f.parse(alc.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(cun.l))
+         .toList();
+   }
+
+   public void a(cmu $$0, jw $$1) {
+      alc<vo> $$2 = $$1.a(d);
+      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
+
+      for (int $$4 = 0; $$4 < c; $$4++) {
+         cun $$5 = $$0.a($$4);
+         Optional<Dynamic<?>> $$6 = cun.f
+            .encodeStart($$2, $$5)
+            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
+            .map($$0x -> new Dynamic(d, $$0x));
+         $$3.add($$6.orElse(e));
       }
+
+      this.f = $$3.build();
    }
 
-   @Override
-   public Set<bok> a(Supplier<bnb> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+   public boolean a() {
+      for (Dynamic<?> $$0 : this.f) {
+         if (!a($$0)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static boolean a(Dynamic<?> $$0) {
+      return e.equals($$0);
    }
 }

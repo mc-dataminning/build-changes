@@ -1,79 +1,127 @@
-import java.util.List;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class csn extends cvd {
-   public static final int a = 20;
-   public static final int b = 15;
+public class csn extends cui {
+   public static final int a = 3;
+   public static final int b = 1;
+   public static final int c = 3;
 
-   public csn(cuf.a $$0) {
+   public csn(cui.a $$0) {
       super($$0);
    }
 
    @Override
-   public void a(cuk $$0, dbt $$1, btk $$2, int $$3) {
-      if ($$2 instanceof cms $$4) {
-         cuk $$5 = $$4.g($$0);
-         if (!$$5.e()) {
-            int $$6 = this.b($$0) - $$3;
-            float $$7 = a($$6);
-            if (!((double)$$7 < 0.1)) {
-               List<cuk> $$8 = a($$0, $$5, $$4);
-               if (!$$1.x_() && !$$8.isEmpty()) {
-                  this.a($$1, $$4, $$4.fw(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
-               }
+   public bqs a(cya $$0) {
+      dbw $$1 = $$0.q();
+      iz $$2 = $$0.a();
+      iz $$3 = $$2.a($$0.k());
+      if (a($$0.n(), $$1, $$2)) {
+         if (!$$1.B) {
+            $$0.o().a(dwt.C);
+            $$1.c(1505, $$2, 15);
+         }
 
-               $$1.a(null, $$4.du(), $$4.dw(), $$4.dA(), avw.aG, avx.h, 1.0F, 1.0F / ($$1.E_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
-               $$4.b(awg.c.b(this));
+         return bqs.a($$1.B);
+      } else {
+         dsa $$4 = $$1.a_($$2);
+         boolean $$5 = $$4.d($$1, $$2, $$0.k());
+         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
+            if (!$$1.B) {
+               $$0.o().a(dwt.C);
+               $$1.c(1505, $$3, 15);
             }
+
+            return bqs.a($$1.B);
+         } else {
+            return bqs.e;
          }
       }
    }
 
-   @Override
-   protected void a(btk $$0, cnk $$1, int $$2, float $$3, float $$4, float $$5, @Nullable btk $$6) {
-      $$1.a($$0, $$0.dH(), $$0.dF() + $$5, 0.0F, $$3, $$4);
-   }
+   public static boolean a(cun $$0, dbw $$1, iz $$2) {
+      dsa $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof dfa $$4 && $$4.b($$1, $$2, $$3)) {
+         if ($$1 instanceof are) {
+            if ($$4.a($$1, $$1.z, $$2, $$3)) {
+               $$4.a((are)$$1, $$1.z, $$2, $$3);
+            }
 
-   public static float a(int $$0) {
-      float $$1 = (float)$$0 / 20.0F;
-      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
-      if ($$1 > 1.0F) {
-         $$1 = 1.0F;
+            $$0.h(1);
+         }
+
+         return true;
       }
 
-      return $$1;
+      return false;
    }
 
-   @Override
-   public int b(cuk $$0) {
-      return 72000;
-   }
+   public static boolean a(cun $$0, dbw $$1, iz $$2, @Nullable je $$3) {
+      if ($$1.a_($$2).a(dez.G) && $$1.b_($$2).e() == 8) {
+         if (!($$1 instanceof are)) {
+            return true;
+         } else {
+            azf $$4 = $$1.E_();
 
-   @Override
-   public cwf c(cuk $$0) {
-      return cwf.e;
-   }
+            label78:
+            for (int $$5 = 0; $$5 < 128; $$5++) {
+               iz $$6 = $$2;
+               dsa $$7 = dez.bw.o();
 
-   @Override
-   public bqq<cuk> a(dbt $$0, cms $$1, bqo $$2) {
-      cuk $$3 = $$1.b($$2);
-      boolean $$4 = !$$1.g($$3).e();
-      if (!$$1.fP() && !$$4) {
-         return bqq.d($$3);
+               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
+                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
+                  if ($$1.a_($$6).r($$1, $$6)) {
+                     continue label78;
+                  }
+               }
+
+               ji<dcv> $$9 = $$1.t($$6);
+               if ($$9.a(awn.ac)) {
+                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
+                     $$7 = lp.e.a(awo.ar, $$1.z).map($$0x -> ((dex)$$0x.a()).o()).orElse($$7);
+                     if ($$7.b(dei.c)) {
+                        $$7 = $$7.a(dei.c, $$3);
+                     }
+                  } else if ($$4.a(4) == 0) {
+                     $$7 = lp.e.a(awo.ap, $$1.z).map($$0x -> ((dex)$$0x.a()).o()).orElse($$7);
+                  }
+               }
+
+               if ($$7.a(awo.ar, $$0x -> $$0x.b(dei.c))) {
+                  for (int $$10 = 0; !$$7.a((dbz)$$1, $$6) && $$10 < 4; $$10++) {
+                     $$7 = $$7.a(dei.c, je.c.a.a($$4));
+                  }
+               }
+
+               if ($$7.a((dbz)$$1, $$6)) {
+                  dsa $$11 = $$1.a_($$6);
+                  if ($$11.a(dez.G) && $$1.b_($$6).e() == 8) {
+                     $$1.a($$6, $$7, 3);
+                  } else if ($$11.a(dez.bw) && $$4.a(10) == 0) {
+                     ((dfa)dez.bw).a((are)$$1, $$4, $$6, $$11);
+                  }
+               }
+            }
+
+            $$0.h(1);
+            return true;
+         }
       } else {
-         $$1.c($$2);
-         return bqq.b($$3);
+         return false;
       }
    }
 
-   @Override
-   public Predicate<cuk> b() {
-      return c;
-   }
-
-   @Override
-   public int c() {
-      return 15;
+   public static void a(dbx $$0, iz $$1, int $$2) {
+      dsa $$3 = $$0.a_($$1);
+      if ($$3.b() instanceof dfa $$4) {
+         iz $$5 = $$4.a($$1);
+         switch ($$4.aq_()) {
+            case a:
+               azb.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, li.O);
+               break;
+            case b:
+               azb.a($$0, $$5, $$2, li.O);
+         }
+      } else if ($$3.a(dez.G)) {
+         azb.a($$0, $$1, $$2 * 3, 3.0, 1.0, false, li.O);
+      }
    }
 }

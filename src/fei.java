@@ -1,52 +1,59 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fei extends fea {
+public abstract class fei extends fed {
    private static final Logger b = LogUtils.getLogger();
-   private static final xl c = xl.c("mco.minigame.world.slot.screen.title");
-   private final long d;
-   private final int e;
-   private final Runnable f;
+   private final long c;
+   private final xo d;
+   private final Runnable e;
 
-   public fei(long $$0, int $$1, Runnable $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public fei(long $$0, xo $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
+
+   protected abstract void a(fam var1, long var2) throws fbz;
 
    @Override
    public void run() {
-      faj $$0 = faj.a();
+      fam $$0 = fam.a();
+      int $$1 = 0;
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
+      while ($$1 < 25) {
          try {
             if (this.d()) {
                return;
             }
 
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
-               break;
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
             }
-         } catch (fbx var4) {
+
+            this.e.run();
+            return;
+         } catch (fca var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
+            $$1++;
          } catch (Exception var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't switch world!");
+            b.error("Couldn't reset world");
             this.a(var5);
+            return;
          }
       }
    }
 
    @Override
-   public xl a() {
-      return c;
+   public xo a() {
+      return this.d;
    }
 }

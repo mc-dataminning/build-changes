@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 public interface kl<T> {
    Codec<kl<?>> a = Codec.lazyInitialized(() -> lp.as.q());
-   zj<ww, kl<?>> b = zj.a($$0 -> zh.a(lq.av));
+   zm<wz, kl<?>> b = zm.a($$0 -> zk.a(lq.av));
    Codec<kl<?>> c = a.validate($$0 -> $$0.d() ? DataResult.error(() -> "Encountered transient component " + lp.as.b($$0)) : DataResult.success($$0));
    Codec<Map<kl<?>, Object>> d = Codec.dispatchedMap(c, kl::c);
 
@@ -30,35 +30,35 @@ public interface kl<T> {
       return this.b() == null;
    }
 
-   zj<? super ww, T> e();
+   zm<? super wz, T> e();
 
    public static class a<T> {
       @Nullable
       private Codec<T> a;
       @Nullable
-      private zj<? super ww, T> b;
+      private zm<? super wz, T> b;
 
       public kl.a<T> a(Codec<T> $$0) {
          this.a = $$0;
          return this;
       }
 
-      public kl.a<T> a(zj<? super ww, T> $$0) {
+      public kl.a<T> a(zm<? super wz, T> $$0) {
          this.b = $$0;
          return this;
       }
 
       public kl<T> a() {
-         zj<? super ww, T> $$0 = Objects.requireNonNullElseGet(this.b, () -> zh.d(Objects.requireNonNull(this.a, "Missing Codec for component")));
+         zm<? super wz, T> $$0 = Objects.requireNonNullElseGet(this.b, () -> zk.d(Objects.requireNonNull(this.a, "Missing Codec for component")));
          return new kl.a.a<>(this.a, $$0);
       }
 
       static class a<T> implements kl<T> {
          @Nullable
          private final Codec<T> e;
-         private final zj<? super ww, T> f;
+         private final zm<? super wz, T> f;
 
-         a(@Nullable Codec<T> $$0, zj<? super ww, T> $$1) {
+         a(@Nullable Codec<T> $$0, zm<? super wz, T> $$1) {
             this.e = $$0;
             this.f = $$1;
          }
@@ -70,7 +70,7 @@ public interface kl<T> {
          }
 
          @Override
-         public zj<? super ww, T> e() {
+         public zm<? super wz, T> e() {
             return this.f;
          }
 

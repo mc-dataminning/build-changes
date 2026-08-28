@@ -1,28 +1,20 @@
-public enum dst implements azp {
-   a(je.a),
-   b(je.b);
+public enum dst implements azs {
+   a("compare"),
+   b("subtract");
 
-   private final je c;
+   private final String c;
 
-   private dst(final je $$0) {
+   private dst(final String $$0) {
       this.c = $$0;
-   }
-
-   public je a() {
-      return this.c;
    }
 
    @Override
    public String toString() {
-      return this.c();
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this == a ? "upper" : "lower";
-   }
-
-   public dst b() {
-      return this == a ? b : a;
+      return this.c;
    }
 }

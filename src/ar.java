@@ -5,10 +5,10 @@ import java.util.Optional;
 public class ar {
    public static final Codec<ar> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cuk.d.fieldOf("icon").forGetter(ar::c),
-               xn.a.fieldOf("title").forGetter(ar::a),
-               xn.a.fieldOf("description").forGetter(ar::b),
-               alb.a.optionalFieldOf("background").forGetter(ar::d),
+               cun.d.fieldOf("icon").forGetter(ar::c),
+               xq.a.fieldOf("title").forGetter(ar::a),
+               xq.a.fieldOf("description").forGetter(ar::b),
+               ale.a.optionalFieldOf("background").forGetter(ar::d),
                al.d.optionalFieldOf("frame", al.a).forGetter(ar::e),
                Codec.BOOL.optionalFieldOf("show_toast", true).forGetter(ar::h),
                Codec.BOOL.optionalFieldOf("announce_to_chat", true).forGetter(ar::i),
@@ -16,11 +16,11 @@ public class ar {
             )
             .apply($$0, ar::new)
    );
-   public static final zj<ww, ar> b = zj.a(ar::a, ar::b);
-   private final xl c;
-   private final xl d;
-   private final cuk e;
-   private final Optional<alb> f;
+   public static final zm<wz, ar> b = zm.a(ar::a, ar::b);
+   private final xo c;
+   private final xo d;
+   private final cun e;
+   private final Optional<ale> f;
    private final al g;
    private final boolean h;
    private final boolean i;
@@ -28,7 +28,7 @@ public class ar {
    private float k;
    private float l;
 
-   public ar(cuk $$0, xl $$1, xl $$2, Optional<alb> $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public ar(cun $$0, xo $$1, xo $$2, Optional<ale> $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.c = $$1;
       this.d = $$2;
       this.e = $$0;
@@ -44,19 +44,19 @@ public class ar {
       this.l = $$1;
    }
 
-   public xl a() {
+   public xo a() {
       return this.c;
    }
 
-   public xl b() {
+   public xo b() {
       return this.d;
    }
 
-   public cuk c() {
+   public cun c() {
       return this.e;
    }
 
-   public Optional<alb> d() {
+   public Optional<ale> d() {
       return this.f;
    }
 
@@ -84,10 +84,10 @@ public class ar {
       return this.j;
    }
 
-   private void a(ww $$0) {
-      xn.d.encode($$0, this.c);
-      xn.d.encode($$0, this.d);
-      cuk.i.encode($$0, this.e);
+   private void a(wz $$0) {
+      xq.d.encode($$0, this.c);
+      xq.d.encode($$0, this.d);
+      cun.i.encode($$0, this.e);
       $$0.a(this.g);
       int $$1 = 0;
       if (this.f.isPresent()) {
@@ -108,13 +108,13 @@ public class ar {
       $$0.a(this.l);
    }
 
-   private static ar b(ww $$0) {
-      xl $$1 = xn.d.decode($$0);
-      xl $$2 = xn.d.decode($$0);
-      cuk $$3 = cuk.i.decode($$0);
+   private static ar b(wz $$0) {
+      xo $$1 = xq.d.decode($$0);
+      xo $$2 = xq.d.decode($$0);
+      cun $$3 = cun.i.decode($$0);
       al $$4 = $$0.b(al.class);
       int $$5 = $$0.readInt();
-      Optional<alb> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();
+      Optional<ale> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();
       boolean $$7 = ($$5 & 2) != 0;
       boolean $$8 = ($$5 & 4) != 0;
       ar $$9 = new ar($$3, $$1, $$2, $$6, $$4, $$7, false, $$8);

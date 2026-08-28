@@ -1,14 +1,17 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface emo<P extends emn> {
-   emo<eml> a = a("clear", eml.a);
-   emo<emm> b = a("passthrough", emm.b);
-   emo<emk> c = a("append_static", emk.a);
-   emo<emj> d = a("append_loot", emj.a);
+public class emo implements emq {
+   private static final emo b = new emo();
+   public static final MapCodec<emo> a = MapCodec.unit(b);
 
-   MapCodec<P> codec();
+   @Override
+   public ur a(azf $$0, @Nullable ur $$1) {
+      return new ur();
+   }
 
-   private static <P extends emn> emo<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.p, $$0, () -> $$1);
+   @Override
+   public emr<?> a() {
+      return emr.a;
    }
 }

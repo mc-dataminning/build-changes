@@ -2,52 +2,69 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public interface ys extends xm {
-   MapCodec<ys> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("text").forGetter(ys::b)).apply($$0, ys::a));
-   xm.a<ys> b = new xm.a<>(a, "text");
-   ys c = new ys() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
+public class ys implements xp {
+   public static final MapCodec<ys> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("keybind").forGetter($$0x -> $$0x.c)).apply($$0, ys::new)
+   );
+   public static final xp.a<ys> b = new xp.a<>(a, "keybind");
+   private final String c;
+   @Nullable
+   private Supplier<xo> d;
 
-      @Override
-      public String b() {
-         return "";
-      }
-   };
-
-   static ys a(String $$0) {
-      return (ys)($$0.isEmpty() ? c : new ys.a($$0));
+   public ys(String $$0) {
+      this.c = $$0;
    }
 
-   String b();
+   private xo c() {
+      if (this.d == null) {
+         this.d = yt.a.apply(this.c);
+      }
+
+      return this.d.get();
+   }
 
    @Override
-   default xm.a<?> a() {
-      return b;
+   public <T> Optional<T> a(xt.a<T> $$0) {
+      return this.c().a($$0);
    }
 
-   public static record a(String d) implements ys {
-      @Override
-      public <T> Optional<T> a(xq.a<T> $$0) {
-         return $$0.accept(this.d);
-      }
+   @Override
+   public <T> Optional<T> a(xt.b<T> $$0, yl $$1) {
+      return this.c().a($$0, $$1);
+   }
 
-      @Override
-      public <T> Optional<T> a(xq.b<T> $$0, yi $$1) {
-         return $$0.accept($$1, this.d);
-      }
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof ys $$1 && this.c.equals($$1.c)) {
+            return true;
+         }
 
-      @Override
-      public String toString() {
-         return "literal{" + this.d + "}";
+         return false;
       }
+   }
 
-      @Override
-      public String b() {
-         return this.d;
-      }
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "keybind{" + this.c + "}";
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   @Override
+   public xp.a<?> a() {
+      return b;
    }
 }

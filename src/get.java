@@ -1,85 +1,110 @@
 import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Collection;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class get implements grg {
-   private final List<geu> a;
+public class get {
+   public static final get a = new get();
+   public static final float b = Float.NEGATIVE_INFINITY;
+   private final get.a[] c;
+   private final ale[] d;
 
-   public get(List<geu> $$0) {
-      this.a = $$0;
+   private get() {
+      this.c = new get.a[0];
+      this.d = new ale[0];
    }
 
-   public List<geu> a() {
-      return this.a;
-   }
+   public get(grc $$0, geo $$1, List<ges> $$2) {
+      this.d = $$2.stream().flatMap(ges::b).map(ges.b::a).distinct().toArray(ale[]::new);
+      Object2IntMap<ale> $$3 = new Object2IntOpenHashMap();
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof get $$1 ? this.a.equals($$1.a) : false;
+      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
+         $$3.put(this.d[$$4], $$4);
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
-   }
+      List<get.a> $$5 = Lists.newArrayList();
 
-   @Override
-   public Collection<alb> f() {
-      return this.a().stream().map(geu::a).collect(Collectors.toSet());
-   }
+      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
+         ges $$7 = $$2.get($$6);
+         gqy $$8 = this.a($$0, $$1, $$7);
+         get.b[] $$9 = $$7.b().map($$1x -> {
+            int $$2x = $$3.getInt($$1x.a());
+            return new get.b($$2x, $$1x.b());
+         }).toArray(get.b[]::new);
+         $$5.add(new get.a($$9, $$8));
+      }
 
-   @Override
-   public void a(Function<alb, grg> $$0) {
-      this.a().stream().map(geu::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
+      this.c = $$5.toArray(new get.a[0]);
    }
 
    @Nullable
-   @Override
-   public gqv a(gqz $$0, Function<gqy, gou> $$1, grd $$2, alb $$3) {
-      if (this.a().isEmpty()) {
-         return null;
-      } else {
-         grh.a $$4 = new grh.a();
+   private gqy a(grc $$0, geo $$1, ges $$2) {
+      grj $$3 = $$0.a($$2.a());
+      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gqz.a);
+   }
 
-         for (geu $$5 : this.a()) {
-            gqv $$6 = $$0.a($$5.a(), $$5);
-            $$4.a($$6, $$5.d());
+   @Nullable
+   public gqy a(gqy $$0, cun $$1, @Nullable fxt $$2, @Nullable btn $$3, int $$4) {
+      if (this.c.length != 0) {
+         int $$5 = this.d.length;
+         float[] $$6 = new float[$$5];
+
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            ale $$8 = this.d[$$7];
+            gof $$9 = goe.a($$1, $$8);
+            if ($$9 != null) {
+               $$6[$$7] = $$9.call($$1, $$2, $$3, $$4);
+            } else {
+               $$6[$$7] = Float.NEGATIVE_INFINITY;
+            }
          }
 
-         return $$4.a();
+         for (get.a $$10 : this.c) {
+            if ($$10.a($$6)) {
+               gqy $$11 = $$10.b;
+               if ($$11 == null) {
+                  return $$0;
+               }
+
+               return $$11;
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   static class a {
+      private final get.b[] a;
+      @Nullable
+      final gqy b;
+
+      a(get.b[] $$0, @Nullable gqy $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      boolean a(float[] $$0) {
+         for (get.b $$1 : this.a) {
+            float $$2 = $$0[$$1.a];
+            if ($$2 < $$1.b) {
+               return false;
+            }
+         }
+
+         return true;
       }
    }
 
-   public static class a implements JsonDeserializer<get> {
-      public get a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         List<geu> $$3 = Lists.newArrayList();
-         if ($$0.isJsonArray()) {
-            JsonArray $$4 = $$0.getAsJsonArray();
-            if ($$4.size() == 0) {
-               throw new JsonParseException("Empty variant array");
-            }
+   static class b {
+      public final int a;
+      public final float b;
 
-            for (JsonElement $$5 : $$4) {
-               $$3.add((geu)$$2.deserialize($$5, geu.class));
-            }
-         } else {
-            $$3.add((geu)$$2.deserialize($$0, geu.class));
-         }
-
-         return new get($$3);
+      b(int $$0, float $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

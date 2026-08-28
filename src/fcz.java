@@ -1,167 +1,122 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fcz extends gvb {
-   private static final Logger b = LogUtils.getLogger();
-   public static final xl a = xl.c("mco.upload.select.world.title");
-   private static final xl c = xl.c("selectWorld.unable_to_load");
-   static final xl B = xl.c("selectWorld.world");
-   private static final xl C = xl.c("mco.upload.hardcore").b(-65536);
-   private static final xl D = xl.c("selectWorld.commands");
-   private static final DateFormat E = new SimpleDateFormat();
+public class fcz extends gve {
+   private static final xo a = xo.c("mco.selectServer.popup");
+   private static final xo b = xo.c("mco.selectServer.close");
+   private static final ale c = new ale("popup/background");
+   private static final ale B = new ale("icon/trial_available");
+   private static final fip C = new fip(new ale("widget/cross_button"), new ale("widget/cross_button_highlighted"));
+   private static final int D = 236;
+   private static final int E = 34;
+   private static final int F = 6;
+   private static final int G = 195;
+   private static final int H = 152;
+   private static final int I = 4;
+   private static final int J = 10;
+   private static final int K = 320;
+   private static final int L = 172;
+   private static final int M = 100;
+   private static final int N = 99;
+   private static final int O = 100;
+   private static List<ale> P = List.of();
+   private final fnb Q;
+   private final boolean R;
    @Nullable
-   private final fec F;
-   private final fcy G;
-   private final long H;
-   private final int I;
-   fgz J;
-   List<eps> K = Lists.newArrayList();
-   int L = -1;
-   fcz.b M;
+   private fhc S;
+   private int T;
+   private int U;
 
-   public fcz(@Nullable fec $$0, long $$1, int $$2, fcy $$3) {
+   public fcz(fnb $$0, boolean $$1) {
       super(a);
-      this.F = $$0;
-      this.G = $$3;
-      this.H = $$1;
-      this.I = $$2;
+      this.Q = $$0;
+      this.R = $$1;
    }
 
-   private void C() {
-      epr.a $$0 = this.m.m().b();
-      this.K = this.m.m().a($$0).join().stream().filter(eps::v).collect(Collectors.toList());
+   public static void a(auo $$0) {
+      Collection<ale> $$1 = $$0.b("textures/gui/images", $$0x -> $$0x.a().endsWith(".png")).keySet();
+      P = $$1.stream().filter($$0x -> $$0x.b().equals("realms")).toList();
+   }
 
-      for (eps $$1 : this.K) {
-         this.M.a($$1);
+   @Override
+   protected void aM_() {
+      this.Q.a(this.m, this.n, this.o);
+      if (this.R) {
+         this.S = this.c(
+            fhc.a(xo.c("mco.selectServer.trial"), fls.b(this, "https://aka.ms/startjavarealmstrial")).a(this.F() - 10 - 99, this.I() - 10 - 4 - 40, 99, 20).a()
+         );
+      }
+
+      this.c(fhc.a(xo.c("mco.selectServer.buy"), fls.b(this, "https://aka.ms/BuyJavaRealms")).a(this.F() - 10 - 99, this.I() - 10 - 20, 99, 20).a());
+      fho $$0 = this.c(new fho(this.D() + 4, this.E() + 4, 14, 14, C, $$0x -> this.d(), b));
+      $$0.a(fin.a(b));
+      int $$1 = 142 - (this.R ? 40 : 20);
+      fhm $$2 = new fhm(this.F() - 10 - 100, this.E() + 10, 100, $$1, a, this.p);
+      if ($$2.j()) {
+         $$2.k(100 - $$2.f());
+      }
+
+      this.c($$2);
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      if (++this.U > 100) {
+         this.U = 0;
+         this.T = (this.T + 1) % P.size();
       }
    }
 
    @Override
-   public void aN_() {
-      this.M = this.c(new fcz.b());
-
-      try {
-         this.C();
-      } catch (Exception var2) {
-         b.error("Couldn't load level list", var2);
-         this.m.a(new fcn(c, xl.a(var2.getMessage()), this.G));
-         return;
-      }
-
-      this.J = this.c(fgz.a(xl.c("mco.upload.button.name"), $$0 -> this.D()).a(this.n / 2 - 154, this.o - 32, 153, 20).a());
-      this.J.j = this.L >= 0 && this.L < this.K.size();
-      this.c(fgz.a(xk.k, $$0 -> this.m.a(this.G)).a(this.n / 2 + 6, this.o - 32, 153, 20).a());
-      this.a(new guz(xl.c("mco.upload.select.world.subtitle"), this.n / 2, g(-1), -6250336));
-      if (this.K.isEmpty()) {
-         this.a(new guz(xl.c("mco.upload.select.world.none"), this.n / 2, this.o / 2 - 20, -1));
-      }
-   }
-
-   @Override
-   public xl i() {
-      return xk.a(this.n(), this.m());
-   }
-
-   private void D() {
-      if (this.L != -1 && !this.K.get(this.L).i()) {
-         eps $$0 = this.K.get(this.L);
-         this.m.a(new fdf(this.F, this.H, this.I, this.G, $$0));
-      }
-   }
-
-   @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 13, -1);
+      if (this.S != null) {
+         a($$0, this.S);
+      }
+   }
+
+   public static void a(fgp $$0, fhc $$1) {
+      int $$2 = 8;
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 110.0F);
+      $$0.a(B, $$1.C() + $$1.x() - 8 - 4, $$1.D() + $$1.v() / 2 - 4, 8, 8);
+      $$0.c().b();
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.m.a(this.G);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   public void b(fgp $$0, int $$1, int $$2, float $$3) {
+      this.Q.a($$0, -1, -1, $$3);
+      $$0.e();
+      RenderSystem.clear(256, ffd.a);
+      this.B();
+      this.b($$0);
+      $$0.a(c, this.D(), this.E(), 320, 172);
+      if (!P.isEmpty()) {
+         $$0.a(P.get(this.T), this.D() + 10, this.E() + 10, 0, 0.0F, 0.0F, 195, 152, 195, 152);
       }
    }
 
-   static xl a(eps $$0) {
-      return $$0.h().d();
+   private int D() {
+      return (this.n - 320) / 2;
    }
 
-   static String b(eps $$0) {
-      return E.format(new Date($$0.f()));
+   private int E() {
+      return (this.o - 172) / 2;
    }
 
-   class a extends fhv.a<fcz.a> {
-      private final eps b;
-      private final String c;
-      private final xl d;
-      private final xl e;
-
-      public a(final eps $$0) {
-         this.b = $$0;
-         this.c = $$0.b();
-         this.d = xl.a("mco.upload.entry.id", $$0.a(), fcz.b($$0));
-         this.e = $$0.s();
-      }
-
-      @Override
-      public void a(fgm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$1, $$3, $$2);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         fcz.this.M.b(fcz.this.K.indexOf(this.b));
-         return super.a($$0, $$1, $$2);
-      }
-
-      protected void a(fgm $$0, int $$1, int $$2, int $$3) {
-         String $$4;
-         if (this.c.isEmpty()) {
-            $$4 = fcz.B + " " + ($$1 + 1);
-         } else {
-            $$4 = this.c;
-         }
-
-         $$0.a(fcz.this.p, $$4, $$2 + 2, $$3 + 1, 16777215, false);
-         $$0.a(fcz.this.p, this.d, $$2 + 2, $$3 + 12, -8355712, false);
-         $$0.a(fcz.this.p, this.e, $$2 + 2, $$3 + 12 + 10, -8355712, false);
-      }
-
-      @Override
-      public xl a() {
-         xl $$0 = xk.b(xl.b(this.b.b()), xl.b(fcz.b(this.b)), fcz.a(this.b));
-         return xl.a("narrator.select", $$0);
-      }
+   private int F() {
+      return this.D() + 320;
    }
 
-   class b extends gva<fcz.a> {
-      public b() {
-         super(fcz.this.n, fcz.this.o - 40 - fcz.g(0), fcz.g(0), 36);
-      }
+   private int I() {
+      return this.E() + 172;
+   }
 
-      public void a(eps $$0) {
-         this.a((fcz.a)(fcz.this.new a($$0)));
-      }
-
-      @Override
-      public int a() {
-         return fcz.this.K.size() * 36;
-      }
-
-      public void a(@Nullable fcz.a $$0) {
-         super.a($$0);
-         fcz.this.L = this.aF_().indexOf($$0);
-         fcz.this.J.j = fcz.this.L >= 0 && fcz.this.L < this.l() && !fcz.this.K.get(fcz.this.L).i();
-      }
+   @Override
+   public void d() {
+      this.m.a(this.Q);
    }
 }

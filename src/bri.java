@@ -1,120 +1,142 @@
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
 public class bri {
-   private final ji<brk> a;
-   @Nullable
-   private final bsp b;
-   @Nullable
-   private final bsp c;
-   @Nullable
-   private final evm d;
+   public static final int a = 100;
+   public static final int b = 300;
+   private static final yl c = yl.a.a(new xm(xm.a.a, "https://bugs.mojang.com/browse/MCPE-28723")).a(new xu(xu.a.a, xo.b("MCPE-28723")));
+   private final List<brg> d = Lists.newArrayList();
+   private final btn e;
+   private int f;
+   private int g;
+   private int h;
+   private boolean i;
+   private boolean j;
 
-   @Override
-   public String toString() {
-      return "DamageSource (" + this.j().a() + ")";
+   public bri(btn $$0) {
+      this.e = $$0;
    }
 
-   public float a() {
-      return this.j().c();
+   public void a(brl $$0, float $$1) {
+      this.c();
+      brq $$2 = brq.a(this.e);
+      brg $$3 = new brg($$0, $$1, $$2, this.e.ac);
+      this.d.add($$3);
+      this.f = this.e.ai;
+      this.j = true;
+      if (!this.i && this.e.bD() && a($$0)) {
+         this.i = true;
+         this.g = this.e.ai;
+         this.h = this.g;
+         this.e.f_();
+      }
    }
 
-   public boolean b() {
-      return this.b != this.c;
+   private static boolean a(brl $$0) {
+      return $$0.d() instanceof btn;
    }
 
-   private bri(ji<brk> $$0, @Nullable bsp $$1, @Nullable bsp $$2, @Nullable evm $$3) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
+   private xo a(bss $$0, xo $$1, String $$2, String $$3) {
+      cun $$5 = $$0 instanceof btn $$4 ? $$4.eX() : cun.l;
+      return !$$5.e() && $$5.b(km.f) ? xo.a($$2, this.e.O_(), $$1, $$5.G()) : xo.a($$3, this.e.O_(), $$1);
    }
 
-   public bri(ji<brk> $$0, @Nullable bsp $$1, @Nullable bsp $$2) {
-      this($$0, $$1, $$2, null);
-   }
-
-   public bri(ji<brk> $$0, evm $$1) {
-      this($$0, null, null, $$1);
-   }
-
-   public bri(ji<brk> $$0, @Nullable bsp $$1) {
-      this($$0, $$1, $$1);
-   }
-
-   public bri(ji<brk> $$0) {
-      this($$0, null, null, null);
-   }
-
-   @Nullable
-   public bsp c() {
-      return this.c;
-   }
-
-   @Nullable
-   public bsp d() {
-      return this.b;
-   }
-
-   public xl a(btk $$0) {
-      String $$1 = "death.attack." + this.j().a();
-      if (this.b == null && this.c == null) {
-         btk $$5 = $$0.eQ();
-         String $$6 = $$1 + ".player";
-         return $$5 != null ? xl.a($$6, $$0.O_(), $$5.O_()) : xl.a($$1, $$0.O_());
+   private xo a(brg $$0, @Nullable bss $$1) {
+      brl $$2 = $$0.a();
+      if (!$$2.a(awq.n) && !$$2.a(awq.t)) {
+         xo $$4 = a($$1);
+         bss $$5 = $$2.d();
+         xo $$6 = a($$5);
+         if ($$6 != null && !$$6.equals($$4)) {
+            return this.a($$5, $$6, "death.fell.assist.item", "death.fell.assist");
+         } else {
+            return (xo)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : xo.a("death.fell.killer", this.e.O_()));
+         }
       } else {
-         xl $$2 = this.b == null ? this.c.O_() : this.b.O_();
-         cuk $$4 = this.b instanceof btk $$3 ? $$3.eX() : cuk.l;
-         return !$$4.e() && $$4.b(km.f) ? xl.a($$1 + ".item", $$0.O_(), $$2, $$4.G()) : xl.a($$1, $$0.O_(), $$2);
+         brq $$3 = Objects.requireNonNullElse($$0.c(), brq.a);
+         return xo.a($$3.a(), this.e.O_());
       }
-   }
-
-   public String e() {
-      return this.j().a();
-   }
-
-   public boolean f() {
-      return switch (this.j().b()) {
-         case a -> false;
-         case b -> this.b instanceof btk && !(this.b instanceof cms);
-         case c -> true;
-      };
-   }
-
-   public boolean g() {
-      if (this.d() instanceof cms $$0 && $$0.gd().d) {
-         return true;
-      }
-
-      return false;
    }
 
    @Nullable
-   public evm h() {
-      if (this.d != null) {
-         return this.d;
+   private static xo a(@Nullable bss $$0) {
+      return $$0 == null ? null : $$0.O_();
+   }
+
+   public xo a() {
+      if (this.d.isEmpty()) {
+         return xo.a("death.attack.generic", this.e.O_());
       } else {
-         return this.c != null ? this.c.dn() : null;
+         brg $$0 = this.d.get(this.d.size() - 1);
+         brl $$1 = $$0.a();
+         brg $$2 = this.d();
+         brp $$3 = $$1.j().e();
+         if ($$3 == brp.b && $$2 != null) {
+            return this.a($$2, $$1.d());
+         } else if ($$3 == brp.c) {
+            String $$4 = "death.attack." + $$1.e();
+            xo $$5 = xr.a((xo)xo.c($$4 + ".link")).c(c);
+            return xo.a($$4 + ".message", this.e.O_(), $$5);
+         } else {
+            return $$1.a(this.e);
+         }
       }
    }
 
    @Nullable
-   public evm i() {
-      return this.d;
+   private brg d() {
+      brg $$0 = null;
+      brg $$1 = null;
+      float $$2 = 0.0F;
+      float $$3 = 0.0F;
+
+      for (int $$4 = 0; $$4 < this.d.size(); $$4++) {
+         brg $$5 = this.d.get($$4);
+         brg $$6 = $$4 > 0 ? this.d.get($$4 - 1) : null;
+         brl $$7 = $$5.a();
+         boolean $$8 = $$7.a(awq.t);
+         float $$9 = $$8 ? Float.MAX_VALUE : $$5.d();
+         if (($$7.a(awq.n) || $$8) && $$9 > 0.0F && ($$0 == null || $$9 > $$3)) {
+            if ($$4 > 0) {
+               $$0 = $$6;
+            } else {
+               $$0 = $$5;
+            }
+
+            $$3 = $$9;
+         }
+
+         if ($$5.c() != null && ($$1 == null || $$5.b() > $$2)) {
+            $$1 = $$5;
+            $$2 = $$5.b();
+         }
+      }
+
+      if ($$3 > 5.0F && $$0 != null) {
+         return $$0;
+      } else {
+         return $$2 > 5.0F && $$1 != null ? $$1 : null;
+      }
    }
 
-   public boolean a(axb<brk> $$0) {
-      return this.a.a($$0);
+   public int b() {
+      return this.i ? this.e.ai - this.g : this.h - this.g;
    }
 
-   public boolean a(ala<brk> $$0) {
-      return this.a.a($$0);
-   }
+   public void c() {
+      int $$0 = this.i ? 300 : 100;
+      if (this.j && (!this.e.bD() || this.e.ai - this.f > $$0)) {
+         boolean $$1 = this.i;
+         this.j = false;
+         this.i = false;
+         this.h = this.e.ai;
+         if ($$1) {
+            this.e.g_();
+         }
 
-   public brk j() {
-      return this.a.a();
-   }
-
-   public ji<brk> k() {
-      return this.a;
+         this.d.clear();
+      }
    }
 }

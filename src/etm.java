@@ -1,65 +1,36 @@
-import com.mojang.serialization.DataResult;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record etm(ji<deu> b, Optional<dx> c) implements etn {
-   public static final MapCodec<etm> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(lp.e.r().fieldOf("block").forGetter(etm::c), dx.a.optionalFieldOf("properties").forGetter(etm::d)).apply($$0, etm::new)
-      )
-      .validate(etm::a);
+public class etm implements etq {
+   private static final etm b = new etm();
+   public static final MapCodec<etm> a = MapCodec.unit(b);
 
-   private static DataResult<etm> a(etm $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().l()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
+   private etm() {
    }
 
    @Override
-   public eto b() {
-      return etp.k;
+   public etr b() {
+      return ets.n;
    }
 
    @Override
-   public Set<esw<?>> a() {
-      return Set.of(esz.g);
+   public Set<esz<?>> a() {
+      return ImmutableSet.of(etc.j);
    }
 
-   public boolean a(eqd $$0) {
-      drx $$1 = $$0.c(esz.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
-   }
-
-   public static etm.a a(deu $$0) {
-      return new etm.a($$0);
-   }
-
-   public ji<deu> c() {
-      return this.b;
-   }
-
-   public Optional<dx> d() {
-      return this.c;
-   }
-
-   public static class a implements etn.a {
-      private final ji<deu> a;
-      private Optional<dx> b = Optional.empty();
-
-      public a(deu $$0) {
-         this.a = $$0.q();
+   public boolean a(eqg $$0) {
+      Float $$1 = $$0.c(etc.j);
+      if ($$1 != null) {
+         azf $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
       }
+   }
 
-      public etm.a a(dx.a $$0) {
-         this.b = $$0.b();
-         return this;
-      }
-
-      @Override
-      public etn build() {
-         return new etm(this.a, this.b);
-      }
+   public static etq.a c() {
+      return () -> b;
    }
 }

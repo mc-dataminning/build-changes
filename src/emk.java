@@ -1,22 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class emk implements emn {
-   public static final MapCodec<emk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ur.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, emk::new));
-   private final ur b;
+public class emk extends emc {
+   public static final MapCodec<emk> a = axe.a(lq.f).fieldOf("tag").xmap(emk::new, $$0 -> $$0.b);
+   private final axe<dex> b;
 
-   public emk(ur $$0) {
+   public emk(axe<dex> $$0) {
       this.b = $$0;
    }
 
    @Override
-   public ur a(azc $$0, @Nullable ur $$1) {
-      return $$1 == null ? this.b.h() : $$1.a(this.b);
+   public boolean a(dsa $$0, azf $$1) {
+      return $$0.a(this.b);
    }
 
    @Override
-   public emo<?> a() {
-      return emo.c;
+   protected emd<?> a() {
+      return emd.d;
    }
 }

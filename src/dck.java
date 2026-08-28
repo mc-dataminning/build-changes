@@ -1,76 +1,41 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public record dck(ur d, Optional<dck.a> e, Optional<bsy> f) {
-   public static final String a = "entity";
-   public static final Codec<dck> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ur.a.fieldOf("entity").forGetter($$0x -> $$0x.d),
-               dck.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e),
-               bsy.b.optionalFieldOf("equipment").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dck::new)
-   );
-   public static final Codec<boz<dck>> c = boz.a(b);
+public class dck {
+   private final List<dck.a> a = Lists.newArrayList();
 
-   public dck() {
-      this(new ur(), Optional.empty(), Optional.empty());
+   public void a(iz $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new dck.a($$0, $$1));
+      }
    }
 
-   public dck(ur d, Optional<dck.a> e, Optional<bsy> f) {
-      if (d.e("id")) {
-         alb $$3 = alb.a(d.l("id"));
-         if ($$3 != null) {
-            d.a("id", $$3.toString());
-         } else {
-            d.r("id");
+   public double b(iz $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
+      } else {
+         double $$2 = 0.0;
+
+         for (dck.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
          }
-      }
 
-      this.d = d;
-      this.e = e;
-      this.f = f;
+         return $$2 * $$1;
+      }
    }
 
-   public ur a() {
-      return this.d;
-   }
+   static class a {
+      private final iz a;
+      private final double b;
 
-   public Optional<dck.a> b() {
-      return this.e;
-   }
-
-   public Optional<bsy> c() {
-      return this.f;
-   }
-
-   public static record a(aym<Integer> b, aym<Integer> c) {
-      private static final aym<Integer> d = new aym<>(0, 15);
-      public static final Codec<dck.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, dck.a::new)
-      );
-
-      private static DataResult<aym<Integer>> a(aym<Integer> $$0) {
-         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+      public a(iz $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      private static MapCodec<aym<Integer>> a(String $$0) {
-         return aym.a.lenientOptionalFieldOf($$0, d).validate(dck.a::a);
-      }
-
-      public boolean a(iz $$0, arb $$1) {
-         return this.b.a($$1.a(dcc.b, $$0)) && this.c.a($$1.a(dcc.a, $$0));
-      }
-
-      public aym<Integer> a() {
-         return this.b;
-      }
-
-      public aym<Integer> b() {
-         return this.c;
+      public double a(iz $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
       }
    }
 }

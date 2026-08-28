@@ -1,78 +1,16 @@
-public class agg implements zs<ace> {
-   public static final zj<wl, agg> a = zs.a(agg::a, agg::new);
-   private final int b;
-   private final double c;
-   private final double d;
-   private final double e;
-   private final byte f;
-   private final byte g;
-   private final boolean h;
-
-   public agg(bsp $$0) {
-      this.b = $$0.al();
-      evm $$1 = $$0.do();
-      this.c = $$1.c;
-      this.d = $$1.d;
-      this.e = $$1.e;
-      this.f = (byte)((int)($$0.dF() * 256.0F / 360.0F));
-      this.g = (byte)((int)($$0.dH() * 256.0F / 360.0F));
-      this.h = $$0.aE();
-   }
-
-   private agg(wl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readDouble();
-      this.f = $$0.readByte();
-      this.g = $$0.readByte();
-      this.h = $$0.readBoolean();
-   }
-
-   private void a(wl $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.k(this.f);
-      $$0.k(this.g);
-      $$0.a(this.h);
-   }
+public record agg(xo b, xo c) implements zv<ach> {
+   public static final zm<wz, agg> a = zm.a(xq.d, agg::b, xq.d, agg::e, agg::new);
 
    @Override
-   public zu<agg> a() {
-      return agq.aZ;
+   public zx<agg> a() {
+      return agt.aW;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public double e() {
+   public xo e() {
       return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public double g() {
-      return this.e;
-   }
-
-   public byte h() {
-      return this.f;
-   }
-
-   public byte i() {
-      return this.g;
-   }
-
-   public boolean j() {
-      return this.h;
    }
 }

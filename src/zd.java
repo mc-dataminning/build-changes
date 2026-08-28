@@ -1,16 +1,33 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
 
-public class zd {
-   public static final MapCodec<zb> a = lp.aq.q().dispatchMap(zb::a, zc::a);
-   public static final Codec<zb> b = a.codec();
-   public static final zj<ww, zb> c = zh.a(lq.at).b(zb::a, zc::b);
-   public static final zj<ww, Optional<zb>> d = c.a(zh::a);
+public class zd implements ze {
+   public static final zf<zd> a = new zf<zd>() {
+      private static final MapCodec<zd> a = xq.a.fieldOf("value").xmap(zd::new, $$0 -> $$0.b);
+      private static final zm<wz, zd> b = zm.a(xq.d, $$0 -> $$0.b, zd::new);
 
-   public static zc<?> a(jv<zc<?>> $$0) {
-      jv.a($$0, "blank", yz.b);
-      jv.a($$0, "styled", ze.a);
-      return jv.a($$0, "fixed", za.a);
+      @Override
+      public MapCodec<zd> a() {
+         return a;
+      }
+
+      @Override
+      public zm<wz, zd> b() {
+         return b;
+      }
+   };
+   final xo b;
+
+   public zd(xo $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public yc a(int $$0) {
+      return this.b.f();
+   }
+
+   @Override
+   public zf<zd> a() {
+      return a;
    }
 }

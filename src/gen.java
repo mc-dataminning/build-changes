@@ -1,259 +1,88 @@
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 import javax.annotation.Nullable;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
 
 public class gen {
-   public static final int a = 8;
-   private static final float d = 1.0F / (float)Math.cos((float) (Math.PI / 8)) - 1.0F;
-   private static final float e = 1.0F / (float)Math.cos((float) (Math.PI / 4)) - 1.0F;
-   public static final int b = 4;
-   private static final int f = 3;
-   public static final int c = 4;
+   public float[] a;
+   public final int b;
 
-   public geg a(Vector3f $$0, Vector3f $$1, gei $$2, gou $$3, je $$4, grd $$5, @Nullable gej $$6, boolean $$7, alb $$8) {
-      gek $$9 = $$2.e;
-      if ($$5.c()) {
-         $$9 = a($$2.e, $$4, $$5.b(), $$8);
-      }
-
-      float[] $$10 = new float[$$9.a.length];
-      System.arraycopy($$9.a, 0, $$10, 0, $$10.length);
-      float $$11 = $$3.k();
-      float $$12 = ($$9.a[0] + $$9.a[0] + $$9.a[2] + $$9.a[2]) / 4.0F;
-      float $$13 = ($$9.a[1] + $$9.a[1] + $$9.a[3] + $$9.a[3]) / 4.0F;
-      $$9.a[0] = ayu.i($$11, $$9.a[0], $$12);
-      $$9.a[2] = ayu.i($$11, $$9.a[2], $$12);
-      $$9.a[1] = ayu.i($$11, $$9.a[1], $$13);
-      $$9.a[3] = ayu.i($$11, $$9.a[3], $$13);
-      int[] $$14 = this.a($$9, $$3, $$4, this.a($$0, $$1), $$5.b(), $$6, $$7);
-      je $$15 = a($$14);
-      System.arraycopy($$10, 0, $$9.a, 0, $$10.length);
-      if ($$6 == null) {
-         this.a($$14, $$15);
-      }
-
-      return new geg($$14, $$2.c, $$15, $$3, $$7);
+   public gen(@Nullable float[] $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static gek a(gek $$0, je $$1, j $$2, alb $$3) {
-      Matrix4f $$4 = iy.a($$2, $$1, () -> "Unable to resolve UVLock for model: " + $$3).c();
-      float $$5 = $$0.a($$0.c(0));
-      float $$6 = $$0.b($$0.c(0));
-      Vector4f $$7 = $$4.transform(new Vector4f($$5 / 16.0F, $$6 / 16.0F, 0.0F, 1.0F));
-      float $$8 = 16.0F * $$7.x();
-      float $$9 = 16.0F * $$7.y();
-      float $$10 = $$0.a($$0.c(2));
-      float $$11 = $$0.b($$0.c(2));
-      Vector4f $$12 = $$4.transform(new Vector4f($$10 / 16.0F, $$11 / 16.0F, 0.0F, 1.0F));
-      float $$13 = 16.0F * $$12.x();
-      float $$14 = 16.0F * $$12.y();
-      float $$15;
-      float $$16;
-      if (Math.signum($$10 - $$5) == Math.signum($$13 - $$8)) {
-         $$15 = $$8;
-         $$16 = $$13;
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
       } else {
-         $$15 = $$13;
-         $$16 = $$8;
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
       }
+   }
 
-      float $$19;
-      float $$20;
-      if (Math.signum($$11 - $$6) == Math.signum($$14 - $$9)) {
-         $$19 = $$9;
-         $$20 = $$14;
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
       } else {
-         $$19 = $$14;
-         $$20 = $$9;
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
+   }
+
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
+   }
+
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
+
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
+   }
+
+   protected static class a implements JsonDeserializer<gen> {
+      private static final int a = 0;
+
+      public gen a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new gen($$4, $$5);
       }
 
-      float $$23 = (float)Math.toRadians((double)$$0.b);
-      Matrix3f $$24 = new Matrix3f($$4);
-      Vector3f $$25 = $$24.transform(new Vector3f(ayu.b($$23), ayu.a($$23), 0.0F));
-      int $$26 = Math.floorMod(-((int)Math.round(Math.toDegrees(Math.atan2((double)$$25.y(), (double)$$25.x())) / 90.0)) * 90, 360);
-      return new gek(new float[]{$$15, $$19, $$16, $$20}, $$26);
-   }
-
-   private int[] a(gek $$0, gou $$1, je $$2, float[] $$3, j $$4, @Nullable gej $$5, boolean $$6) {
-      int[] $$7 = new int[32];
-
-      for (int $$8 = 0; $$8 < 4; $$8++) {
-         this.a($$7, $$8, $$2, $$0, $$3, $$1, $$4, $$5, $$6);
-      }
-
-      return $$7;
-   }
-
-   private float[] a(Vector3f $$0, Vector3f $$1) {
-      float[] $$2 = new float[je.values().length];
-      $$2[gda.a.f] = $$0.x() / 16.0F;
-      $$2[gda.a.e] = $$0.y() / 16.0F;
-      $$2[gda.a.d] = $$0.z() / 16.0F;
-      $$2[gda.a.c] = $$1.x() / 16.0F;
-      $$2[gda.a.b] = $$1.y() / 16.0F;
-      $$2[gda.a.a] = $$1.z() / 16.0F;
-      return $$2;
-   }
-
-   private void a(int[] $$0, int $$1, je $$2, gek $$3, float[] $$4, gou $$5, j $$6, @Nullable gej $$7, boolean $$8) {
-      gda.b $$9 = gda.a($$2).a($$1);
-      Vector3f $$10 = new Vector3f($$4[$$9.a], $$4[$$9.b], $$4[$$9.c]);
-      this.a($$10, $$7);
-      this.a($$10, $$6);
-      this.a($$0, $$1, $$10, $$5, $$3);
-   }
-
-   private void a(int[] $$0, int $$1, Vector3f $$2, gou $$3, gek $$4) {
-      int $$5 = $$1 * 8;
-      $$0[$$5] = Float.floatToRawIntBits($$2.x());
-      $$0[$$5 + 1] = Float.floatToRawIntBits($$2.y());
-      $$0[$$5 + 2] = Float.floatToRawIntBits($$2.z());
-      $$0[$$5 + 3] = -1;
-      $$0[$$5 + 4] = Float.floatToRawIntBits($$3.a($$4.a($$1) / 16.0F));
-      $$0[$$5 + 4 + 1] = Float.floatToRawIntBits($$3.c($$4.b($$1) / 16.0F));
-   }
-
-   private void a(Vector3f $$0, @Nullable gej $$1) {
-      if ($$1 != null) {
-         Vector3f $$2;
-         Vector3f $$3;
-         switch ($$1.b()) {
-            case a:
-               $$2 = new Vector3f(1.0F, 0.0F, 0.0F);
-               $$3 = new Vector3f(0.0F, 1.0F, 1.0F);
-               break;
-            case b:
-               $$2 = new Vector3f(0.0F, 1.0F, 0.0F);
-               $$3 = new Vector3f(1.0F, 0.0F, 1.0F);
-               break;
-            case c:
-               $$2 = new Vector3f(0.0F, 0.0F, 1.0F);
-               $$3 = new Vector3f(1.0F, 1.0F, 0.0F);
-               break;
-            default:
-               throw new IllegalArgumentException("There are only 3 axes");
-         }
-
-         Quaternionf $$10 = new Quaternionf().rotationAxis($$1.c() * (float) (Math.PI / 180.0), $$2);
-         if ($$1.d()) {
-            if (Math.abs($$1.c()) == 22.5F) {
-               $$3.mul(d);
-            } else {
-               $$3.mul(e);
-            }
-
-            $$3.add(1.0F, 1.0F, 1.0F);
+      protected int a(JsonObject $$0) {
+         int $$1 = ayn.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
          } else {
-            $$3.set(1.0F, 1.0F, 1.0F);
-         }
-
-         this.a($$0, new Vector3f($$1.a()), new Matrix4f().rotation($$10), $$3);
-      }
-   }
-
-   public void a(Vector3f $$0, j $$1) {
-      if ($$1 != j.a()) {
-         this.a($$0, new Vector3f(0.5F, 0.5F, 0.5F), $$1.c(), new Vector3f(1.0F, 1.0F, 1.0F));
-      }
-   }
-
-   private void a(Vector3f $$0, Vector3f $$1, Matrix4f $$2, Vector3f $$3) {
-      Vector4f $$4 = $$2.transform(new Vector4f($$0.x() - $$1.x(), $$0.y() - $$1.y(), $$0.z() - $$1.z(), 1.0F));
-      $$4.mul(new Vector4f($$3, 1.0F));
-      $$0.set($$4.x() + $$1.x(), $$4.y() + $$1.y(), $$4.z() + $$1.z());
-   }
-
-   public static je a(int[] $$0) {
-      Vector3f $$1 = new Vector3f(Float.intBitsToFloat($$0[0]), Float.intBitsToFloat($$0[1]), Float.intBitsToFloat($$0[2]));
-      Vector3f $$2 = new Vector3f(Float.intBitsToFloat($$0[8]), Float.intBitsToFloat($$0[9]), Float.intBitsToFloat($$0[10]));
-      Vector3f $$3 = new Vector3f(Float.intBitsToFloat($$0[16]), Float.intBitsToFloat($$0[17]), Float.intBitsToFloat($$0[18]));
-      Vector3f $$4 = new Vector3f($$1).sub($$2);
-      Vector3f $$5 = new Vector3f($$3).sub($$2);
-      Vector3f $$6 = new Vector3f($$5).cross($$4).normalize();
-      if (!$$6.isFinite()) {
-         return je.b;
-      } else {
-         je $$7 = null;
-         float $$8 = 0.0F;
-
-         for (je $$9 : je.values()) {
-            kd $$10 = $$9.q();
-            Vector3f $$11 = new Vector3f((float)$$10.u(), (float)$$10.v(), (float)$$10.w());
-            float $$12 = $$6.dot($$11);
-            if ($$12 >= 0.0F && $$12 > $$8) {
-               $$8 = $$12;
-               $$7 = $$9;
-            }
-         }
-
-         return $$7 == null ? je.b : $$7;
-      }
-   }
-
-   private void a(int[] $$0, je $$1) {
-      int[] $$2 = new int[$$0.length];
-      System.arraycopy($$0, 0, $$2, 0, $$0.length);
-      float[] $$3 = new float[je.values().length];
-      $$3[gda.a.f] = 999.0F;
-      $$3[gda.a.e] = 999.0F;
-      $$3[gda.a.d] = 999.0F;
-      $$3[gda.a.c] = -999.0F;
-      $$3[gda.a.b] = -999.0F;
-      $$3[gda.a.a] = -999.0F;
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         int $$5 = 8 * $$4;
-         float $$6 = Float.intBitsToFloat($$2[$$5]);
-         float $$7 = Float.intBitsToFloat($$2[$$5 + 1]);
-         float $$8 = Float.intBitsToFloat($$2[$$5 + 2]);
-         if ($$6 < $$3[gda.a.f]) {
-            $$3[gda.a.f] = $$6;
-         }
-
-         if ($$7 < $$3[gda.a.e]) {
-            $$3[gda.a.e] = $$7;
-         }
-
-         if ($$8 < $$3[gda.a.d]) {
-            $$3[gda.a.d] = $$8;
-         }
-
-         if ($$6 > $$3[gda.a.c]) {
-            $$3[gda.a.c] = $$6;
-         }
-
-         if ($$7 > $$3[gda.a.b]) {
-            $$3[gda.a.b] = $$7;
-         }
-
-         if ($$8 > $$3[gda.a.a]) {
-            $$3[gda.a.a] = $$8;
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
          }
       }
 
-      gda $$9 = gda.a($$1);
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = ayn.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
 
-      for (int $$10 = 0; $$10 < 4; $$10++) {
-         int $$11 = 8 * $$10;
-         gda.b $$12 = $$9.a($$10);
-         float $$13 = $$3[$$12.a];
-         float $$14 = $$3[$$12.b];
-         float $$15 = $$3[$$12.c];
-         $$0[$$11] = Float.floatToRawIntBits($$13);
-         $$0[$$11 + 1] = Float.floatToRawIntBits($$14);
-         $$0[$$11 + 2] = Float.floatToRawIntBits($$15);
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = ayn.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
 
-         for (int $$16 = 0; $$16 < 4; $$16++) {
-            int $$17 = 8 * $$16;
-            float $$18 = Float.intBitsToFloat($$2[$$17]);
-            float $$19 = Float.intBitsToFloat($$2[$$17 + 1]);
-            float $$20 = Float.intBitsToFloat($$2[$$17 + 2]);
-            if (ayu.a($$13, $$18) && ayu.a($$14, $$19) && ayu.a($$15, $$20)) {
-               $$0[$$11 + 4] = $$2[$$17 + 4];
-               $$0[$$11 + 4 + 1] = $$2[$$17 + 4 + 1];
+               return $$2;
             }
          }
       }

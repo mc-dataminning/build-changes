@@ -1,10 +1,9 @@
-public class czx extends bpb.a {
-   public final czv a;
-   public final int b;
+public class czx extends czy {
+   protected czx(czy.b $$0) {
+      super($$0);
+   }
 
-   public czx(czv $$0, int $$1) {
-      super($$0.d());
-      this.a = $$0;
-      this.b = $$1;
+   public static boolean a(cun $$0, int $$1, azf $$2) {
+      return $$0.g() instanceof csc && $$2.i() < 0.6F ? false : $$2.a($$1 + 1) > 0;
    }
 }

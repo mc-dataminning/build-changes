@@ -24,7 +24,7 @@ public class ve {
       ur var4;
       try (
          InputStream $$2 = Files.newInputStream($$0);
-         InputStream $$3 = new ayd($$2);
+         InputStream $$3 = new ayg($$2);
       ) {
          var4 = a($$3, $$1);
       }
@@ -33,7 +33,7 @@ public class ve {
    }
 
    private static DataInputStream a(InputStream $$0) throws IOException {
-      return new DataInputStream(new ayd(new GZIPInputStream($$0)));
+      return new DataInputStream(new ayg(new GZIPInputStream($$0)));
    }
 
    private static DataOutputStream a(OutputStream $$0) throws IOException {
@@ -52,7 +52,7 @@ public class ve {
    public static void a(Path $$0, vl $$1, va $$2) throws IOException {
       try (
          InputStream $$3 = Files.newInputStream($$0);
-         InputStream $$4 = new ayd($$3);
+         InputStream $$4 = new ayg($$3);
       ) {
          a($$4, $$1, $$2);
       }
@@ -190,7 +190,7 @@ public class ve {
       }
    }
 
-   public static class a extends axy {
+   public static class a extends ayb {
       public a(DataOutput $$0) {
          super($$0);
       }

@@ -1,443 +1,179 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.longs.Long2BooleanMap;
+import it.unimi.dsi.fastutil.longs.Long2BooleanOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.HashMap;
+import java.util.Map;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public abstract class eij {
+public class eij {
    private static final Logger a = LogUtils.getLogger();
-   protected static final drx e = dew.nc.n();
-   protected ehx f;
-   @Nullable
-   private je b;
-   private djr c;
-   private dlh d;
-   protected int g;
-   private final eiw h;
-   private static final Set<deu> i = ImmutableSet.builder()
-      .add(dew.fo)
-      .add(dew.cp)
-      .add(dew.cq)
-      .add(dew.dU)
-      .add(dew.kd)
-      .add(dew.ki)
-      .add(dew.kg)
-      .add(dew.ke)
-      .add(dew.kf)
-      .add(dew.cO)
-      .add(dew.eW)
-      .build();
+   private static final int b = -1;
+   private final dvb c;
+   private final jw d;
+   private final emj e;
+   private final ald<dbw> f;
+   private final dtx g;
+   private final dyg h;
+   private final dby i;
+   private final dcz j;
+   private final long k;
+   private final DataFixer l;
+   private final Long2ObjectMap<Object2IntMap<eii>> m = new Long2ObjectOpenHashMap();
+   private final Map<eii, Long2BooleanMap> n = new HashMap<>();
 
-   protected eij(eiw $$0, int $$1, ehx $$2) {
-      this.h = $$0;
-      this.g = $$1;
-      this.f = $$2;
+   public eij(dvb $$0, jw $$1, emj $$2, ald<dbw> $$3, dtx $$4, dyg $$5, dby $$6, dcz $$7, long $$8, DataFixer $$9) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
    }
 
-   public eij(eiw $$0, ur $$1) {
-      this(
-         $$0, $$1.h("GD"), (ehx)ehx.a.parse(vf.a, $$1.c("BB")).resultOrPartial(a::error).orElseThrow(() -> new IllegalArgumentException("Invalid boundingbox"))
-      );
-      int $$2 = $$1.h("O");
-      this.a($$2 == -1 ? null : je.b($$2));
-   }
-
-   protected static ehx a(int $$0, int $$1, int $$2, je $$3, int $$4, int $$5, int $$6) {
-      return $$3.o() == je.a.c
-         ? new ehx($$0, $$1, $$2, $$0 + $$4 - 1, $$1 + $$5 - 1, $$2 + $$6 - 1)
-         : new ehx($$0, $$1, $$2, $$0 + $$6 - 1, $$1 + $$5 - 1, $$2 + $$4 - 1);
-   }
-
-   protected static je a(azc $$0) {
-      return je.c.a.a($$0);
-   }
-
-   public final ur a(eiv $$0) {
-      ur $$1 = new ur();
-      $$1.a("id", lp.S.b(this.k()).toString());
-      ehx.a.encodeStart(vf.a, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$1.a("BB", $$1x));
-      je $$2 = this.i();
-      $$1.a("O", $$2 == null ? -1 : $$2.e());
-      $$1.a("GD", this.g);
-      this.a($$0, $$1);
-      return $$1;
-   }
-
-   protected abstract void a(eiv var1, ur var2);
-
-   public void a(eij $$0, eik $$1, azc $$2) {
-   }
-
-   public abstract void a(dco var1, dcm var2, dtu var3, azc var4, ehx var5, dba var6, iz var7);
-
-   public ehx f() {
-      return this.f;
-   }
-
-   public int g() {
-      return this.g;
-   }
-
-   public void a(int $$0) {
-      this.g = $$0;
-   }
-
-   public boolean a(dba $$0, int $$1) {
-      int $$2 = $$0.d();
-      int $$3 = $$0.e();
-      return this.f.a($$2 - $$1, $$3 - $$1, $$2 + 15 + $$1, $$3 + 15 + $$1);
-   }
-
-   public iz h() {
-      return new iz(this.f.g());
-   }
-
-   protected iz.a b(int $$0, int $$1, int $$2) {
-      return new iz.a(this.a($$0, $$2), this.b($$1), this.b($$0, $$2));
-   }
-
-   protected int a(int $$0, int $$1) {
-      je $$2 = this.i();
-      if ($$2 == null) {
-         return $$0;
+   public eik a(dbd $$0, eii $$1, ejf $$2, boolean $$3) {
+      long $$4 = $$0.a();
+      Object2IntMap<eii> $$5 = (Object2IntMap<eii>)this.m.get($$4);
+      if ($$5 != null) {
+         return this.a($$5, $$1, $$3);
       } else {
-         switch ($$2) {
-            case c:
-            case d:
-               return this.f.h() + $$0;
-            case e:
-               return this.f.k() - $$1;
-            case f:
-               return this.f.h() + $$1;
-            default:
-               return $$0;
+         eik $$6 = this.a($$0, $$1, $$3, $$4);
+         if ($$6 != null) {
+            return $$6;
+         } else if (!$$2.a($$0.e, $$0.f, this.k)) {
+            return eik.b;
+         } else {
+            boolean $$7 = this.n.computeIfAbsent($$1, $$0x -> new Long2BooleanOpenHashMap()).computeIfAbsent($$4, $$2x -> this.b($$0, $$1));
+            return !$$7 ? eik.b : eik.c;
          }
       }
    }
 
-   protected int b(int $$0) {
-      return this.i() == null ? $$0 : $$0 + this.f.i();
-   }
-
-   protected int b(int $$0, int $$1) {
-      je $$2 = this.i();
-      if ($$2 == null) {
-         return $$1;
-      } else {
-         switch ($$2) {
-            case c:
-               return this.f.m() - $$1;
-            case d:
-               return this.f.j() + $$1;
-            case e:
-            case f:
-               return this.f.j() + $$0;
-            default:
-               return $$1;
-         }
-      }
-   }
-
-   protected void a(dco $$0, drx $$1, int $$2, int $$3, int $$4, ehx $$5) {
-      iz $$6 = this.b($$2, $$3, $$4);
-      if ($$5.b($$6)) {
-         if (this.a((dbw)$$0, $$2, $$3, $$4, $$5)) {
-            if (this.c != djr.a) {
-               $$1 = $$1.a(this.c);
-            }
-
-            if (this.d != dlh.a) {
-               $$1 = $$1.a(this.d);
-            }
-
-            $$0.a($$6, $$1, 2);
-            enq $$7 = $$0.b_($$6);
-            if (!$$7.c()) {
-               $$0.a($$6, $$7.a(), 0);
-            }
-
-            if (i.contains($$1.b())) {
-               $$0.y($$6).e($$6);
-            }
-         }
-      }
-   }
-
-   protected boolean a(dbw $$0, int $$1, int $$2, int $$3, ehx $$4) {
-      return true;
-   }
-
-   protected drx a(daz $$0, int $$1, int $$2, int $$3, ehx $$4) {
-      iz $$5 = this.b($$1, $$2, $$3);
-      return !$$4.b($$5) ? dew.a.n() : $$0.a_($$5);
-   }
-
-   protected boolean b(dbw $$0, int $$1, int $$2, int $$3, ehx $$4) {
-      iz $$5 = this.b($$1, $$2 + 1, $$3);
-      return !$$4.b($$5) ? false : $$5.v() < $$0.a(dxp.a.c, $$5.u(), $$5.w());
-   }
-
-   protected void a(dco $$0, ehx $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      for (int $$8 = $$3; $$8 <= $$6; $$8++) {
-         for (int $$9 = $$2; $$9 <= $$5; $$9++) {
-            for (int $$10 = $$4; $$10 <= $$7; $$10++) {
-               this.a($$0, dew.a.n(), $$9, $$8, $$10, $$1);
-            }
-         }
-      }
-   }
-
-   protected void a(dco $$0, ehx $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, drx $$8, drx $$9, boolean $$10) {
-      for (int $$11 = $$3; $$11 <= $$6; $$11++) {
-         for (int $$12 = $$2; $$12 <= $$5; $$12++) {
-            for (int $$13 = $$4; $$13 <= $$7; $$13++) {
-               if (!$$10 || !this.a((daz)$$0, $$12, $$11, $$13, $$1).i()) {
-                  if ($$11 != $$3 && $$11 != $$6 && $$12 != $$2 && $$12 != $$5 && $$13 != $$4 && $$13 != $$7) {
-                     this.a($$0, $$9, $$12, $$11, $$13, $$1);
-                  } else {
-                     this.a($$0, $$8, $$12, $$11, $$13, $$1);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   protected void a(dco $$0, ehx $$1, ehx $$2, drx $$3, drx $$4, boolean $$5) {
-      this.a($$0, $$1, $$2.h(), $$2.i(), $$2.j(), $$2.k(), $$2.l(), $$2.m(), $$3, $$4, $$5);
-   }
-
-   protected void a(dco $$0, ehx $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, azc $$9, eij.a $$10) {
-      for (int $$11 = $$3; $$11 <= $$6; $$11++) {
-         for (int $$12 = $$2; $$12 <= $$5; $$12++) {
-            for (int $$13 = $$4; $$13 <= $$7; $$13++) {
-               if (!$$8 || !this.a((daz)$$0, $$12, $$11, $$13, $$1).i()) {
-                  $$10.a($$9, $$12, $$11, $$13, $$11 == $$3 || $$11 == $$6 || $$12 == $$2 || $$12 == $$5 || $$13 == $$4 || $$13 == $$7);
-                  this.a($$0, $$10.a(), $$12, $$11, $$13, $$1);
-               }
-            }
-         }
-      }
-   }
-
-   protected void a(dco $$0, ehx $$1, ehx $$2, boolean $$3, azc $$4, eij.a $$5) {
-      this.a($$0, $$1, $$2.h(), $$2.i(), $$2.j(), $$2.k(), $$2.l(), $$2.m(), $$3, $$4, $$5);
-   }
-
-   protected void a(dco $$0, ehx $$1, azc $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9, drx $$10, drx $$11, boolean $$12, boolean $$13) {
-      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
-         for (int $$15 = $$4; $$15 <= $$7; $$15++) {
-            for (int $$16 = $$6; $$16 <= $$9; $$16++) {
-               if (!($$2.i() > $$3) && (!$$12 || !this.a((daz)$$0, $$15, $$14, $$16, $$1).i()) && (!$$13 || this.b($$0, $$15, $$14, $$16, $$1))) {
-                  if ($$14 != $$5 && $$14 != $$8 && $$15 != $$4 && $$15 != $$7 && $$16 != $$6 && $$16 != $$9) {
-                     this.a($$0, $$11, $$15, $$14, $$16, $$1);
-                  } else {
-                     this.a($$0, $$10, $$15, $$14, $$16, $$1);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   protected void a(dco $$0, ehx $$1, azc $$2, float $$3, int $$4, int $$5, int $$6, drx $$7) {
-      if ($$2.i() < $$3) {
-         this.a($$0, $$7, $$4, $$5, $$6, $$1);
-      }
-   }
-
-   protected void a(dco $$0, ehx $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, drx $$8, boolean $$9) {
-      float $$10 = (float)($$5 - $$2 + 1);
-      float $$11 = (float)($$6 - $$3 + 1);
-      float $$12 = (float)($$7 - $$4 + 1);
-      float $$13 = (float)$$2 + $$10 / 2.0F;
-      float $$14 = (float)$$4 + $$12 / 2.0F;
-
-      for (int $$15 = $$3; $$15 <= $$6; $$15++) {
-         float $$16 = (float)($$15 - $$3) / $$11;
-
-         for (int $$17 = $$2; $$17 <= $$5; $$17++) {
-            float $$18 = ((float)$$17 - $$13) / ($$10 * 0.5F);
-
-            for (int $$19 = $$4; $$19 <= $$7; $$19++) {
-               float $$20 = ((float)$$19 - $$14) / ($$12 * 0.5F);
-               if (!$$9 || !this.a((daz)$$0, $$17, $$15, $$19, $$1).i()) {
-                  float $$21 = $$18 * $$18 + $$16 * $$16 + $$20 * $$20;
-                  if ($$21 <= 1.05F) {
-                     this.a($$0, $$8, $$17, $$15, $$19, $$1);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   protected void b(dco $$0, drx $$1, int $$2, int $$3, int $$4, ehx $$5) {
-      iz.a $$6 = this.b($$2, $$3, $$4);
-      if ($$5.b($$6)) {
-         while (this.a($$0.a_($$6)) && $$6.v() > $$0.I_() + 1) {
-            $$0.a($$6, $$1, 2);
-            $$6.c(je.a);
-         }
-      }
-   }
-
-   protected boolean a(drx $$0) {
-      return $$0.i() || $$0.k() || $$0.a(dew.fg) || $$0.a(dew.bw) || $$0.a(dew.bx);
-   }
-
-   protected boolean a(dco $$0, ehx $$1, azc $$2, int $$3, int $$4, int $$5, ala<eqi> $$6) {
-      return this.a($$0, $$1, $$2, this.b($$3, $$4, $$5), $$6, null);
-   }
-
-   public static drx a(daz $$0, iz $$1, drx $$2) {
-      je $$3 = null;
-
-      for (je $$4 : je.c.a) {
-         iz $$5 = $$1.a($$4);
-         drx $$6 = $$0.a_($$5);
-         if ($$6.a(dew.cv)) {
-            return $$2;
-         }
-
-         if ($$6.i($$0, $$5)) {
-            if ($$3 != null) {
-               $$3 = null;
-               break;
-            }
-
-            $$3 = $$4;
-         }
-      }
-
-      if ($$3 != null) {
-         return $$2.a(diq.aE, $$3.g());
-      } else {
-         je $$7 = $$2.c(diq.aE);
-         iz $$8 = $$1.a($$7);
-         if ($$0.a_($$8).i($$0, $$8)) {
-            $$7 = $$7.g();
-            $$8 = $$1.a($$7);
-         }
-
-         if ($$0.a_($$8).i($$0, $$8)) {
-            $$7 = $$7.h();
-            $$8 = $$1.a($$7);
-         }
-
-         if ($$0.a_($$8).i($$0, $$8)) {
-            $$7 = $$7.g();
-            $$8 = $$1.a($$7);
-         }
-
-         return $$2.a(diq.aE, $$7);
-      }
-   }
-
-   protected boolean a(dci $$0, ehx $$1, azc $$2, iz $$3, ala<eqi> $$4, @Nullable drx $$5) {
-      if ($$1.b($$3) && !$$0.a_($$3).a(dew.cv)) {
-         if ($$5 == null) {
-            $$5 = a($$0, $$3, dew.cv.n());
-         }
-
-         $$0.a($$3, $$5, 2);
-         dpc $$6 = $$0.c_($$3);
-         if ($$6 instanceof dpj) {
-            ((dpj)$$6).a($$4, $$2.g());
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean a(dco $$0, ehx $$1, azc $$2, int $$3, int $$4, int $$5, je $$6, ala<eqi> $$7) {
-      iz $$8 = this.b($$3, $$4, $$5);
-      if ($$1.b($$8) && !$$0.a_($$8).a(dew.aU)) {
-         this.a($$0, dew.aU.n().a(dgz.b, $$6), $$3, $$4, $$5, $$1);
-         dpc $$9 = $$0.c_($$8);
-         if ($$9 instanceof dpu) {
-            ((dpu)$$9).a($$7, $$2.g());
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2) {
-      this.f.a($$0, $$1, $$2);
-   }
-
-   public static ehx a(Stream<eij> $$0) {
-      return ehx.b($$0.map(eij::f)::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox without pieces"));
+   private boolean b(dbd $$0, eii $$1) {
+      return $$1.b(new eii.a(this.d, this.g, this.j, this.h, this.e, this.k, $$0, this.i, $$1.a()::a)).isPresent();
    }
 
    @Nullable
-   public static eij a(List<eij> $$0, ehx $$1) {
-      for (eij $$2 : $$0) {
-         if ($$2.f().a($$1)) {
-            return $$2;
-         }
+   private eik a(dbd $$0, eii $$1, boolean $$2, long $$3) {
+      vv $$4 = new vv(new vx(uw.a, "DataVersion"), new vx("Level", "Structures", ur.b, "Starts"), new vx("structures", ur.b, "starts"));
+
+      try {
+         this.c.a($$0, $$4).join();
+      } catch (Exception var13) {
+         a.warn("Failed to read chunk {}", $$0, var13);
+         return eik.c;
       }
 
-      return null;
+      if (!($$4.d() instanceof ur $$7)) {
+         return null;
+      } else {
+         int $$8 = dvd.a($$7);
+         if ($$8 <= 1493) {
+            return eik.c;
+         } else {
+            dvd.a($$7, this.f, this.g.c());
+
+            ur $$9;
+            try {
+               $$9 = bae.c.a(this.l, $$7, $$8);
+            } catch (Exception var12) {
+               a.warn("Failed to partially datafix chunk {}", $$0, var12);
+               return eik.c;
+            }
+
+            Object2IntMap<eii> $$12 = this.a($$9);
+            if ($$12 == null) {
+               return null;
+            } else {
+               this.a($$3, $$12);
+               return this.a($$12, $$1, $$2);
+            }
+         }
+      }
    }
 
    @Nullable
-   public je i() {
-      return this.b;
-   }
-
-   public void a(@Nullable je $$0) {
-      this.b = $$0;
-      if ($$0 == null) {
-         this.d = dlh.a;
-         this.c = djr.a;
+   private Object2IntMap<eii> a(ur $$0) {
+      if (!$$0.b("structures", 10)) {
+         return null;
       } else {
-         switch ($$0) {
-            case d:
-               this.c = djr.b;
-               this.d = dlh.a;
-               break;
-            case e:
-               this.c = djr.b;
-               this.d = dlh.b;
-               break;
-            case f:
-               this.c = djr.a;
-               this.d = dlh.b;
-               break;
-            default:
-               this.c = djr.a;
-               this.d = dlh.a;
+         ur $$1 = $$0.p("structures");
+         if (!$$1.b("starts", 10)) {
+            return null;
+         } else {
+            ur $$2 = $$1.p("starts");
+            if ($$2.g()) {
+               return Object2IntMaps.emptyMap();
+            } else {
+               Object2IntMap<eii> $$3 = new Object2IntOpenHashMap();
+               jv<eii> $$4 = this.d.d(lq.aJ);
+
+               for (String $$5 : $$2.e()) {
+                  ale $$6 = ale.a($$5);
+                  if ($$6 != null) {
+                     eii $$7 = $$4.a($$6);
+                     if ($$7 != null) {
+                        ur $$8 = $$2.p($$5);
+                        if (!$$8.g()) {
+                           String $$9 = $$8.l("id");
+                           if (!"INVALID".equals($$9)) {
+                              int $$10 = $$8.h("references");
+                              $$3.put($$7, $$10);
+                           }
+                        }
+                     }
+                  }
+               }
+
+               return $$3;
+            }
          }
       }
    }
 
-   public dlh a() {
-      return this.d;
+   private static Object2IntMap<eii> a(Object2IntMap<eii> $$0) {
+      return $$0.isEmpty() ? Object2IntMaps.emptyMap() : $$0;
    }
 
-   public djr j() {
-      return this.c;
+   private eik a(Object2IntMap<eii> $$0, eii $$1, boolean $$2) {
+      int $$3 = $$0.getOrDefault($$1, -1);
+      return $$3 == -1 || $$2 && $$3 != 0 ? eik.b : eik.a;
    }
 
-   public eiw k() {
-      return this.h;
+   public void a(dbd $$0, Map<eii, eiq> $$1) {
+      long $$2 = $$0.a();
+      Object2IntMap<eii> $$3 = new Object2IntOpenHashMap();
+      $$1.forEach(($$1x, $$2x) -> {
+         if ($$2x.b()) {
+            $$3.put($$1x, $$2x.f());
+         }
+      });
+      this.a($$2, $$3);
    }
 
-   public abstract static class a {
-      protected drx a = dew.a.n();
+   private void a(long $$0, Object2IntMap<eii> $$1) {
+      this.m.put($$0, a($$1));
+      this.n.values().forEach($$1x -> $$1x.remove($$0));
+   }
 
-      public abstract void a(azc var1, int var2, int var3, int var4, boolean var5);
+   public void a(dbd $$0, eii $$1) {
+      this.m.compute($$0.a(), ($$1x, $$2) -> {
+         if ($$2 == null || $$2.isEmpty()) {
+            $$2 = new Object2IntOpenHashMap();
+         }
 
-      public drx a() {
-         return this.a;
-      }
+         $$2.computeInt($$1, ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1);
+         return $$2;
+      });
    }
 }

@@ -1,56 +1,23 @@
-public class fig extends fgw {
-   private float a = 0.5F;
+public class fig {
+   public static final fig a = new fig("Merry X-mas!");
+   public static final fig b = new fig("Happy new year!");
+   public static final fig c = new fig("OOoooOOOoooo! Spooky!");
+   private static final int d = 123;
+   private static final int e = 69;
+   private final String f;
 
-   public fig(xl $$0, fgk $$1) {
-      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
+   public fig(String $$0) {
+      this.f = $$0;
    }
 
-   public fig(int $$0, int $$1, xl $$2, fgk $$3) {
-      this(0, 0, $$0, $$1, $$2, $$3);
-   }
-
-   public fig(int $$0, int $$1, int $$2, int $$3, xl $$4, fgk $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.j = false;
-   }
-
-   public fig b(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   private fig b(float $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public fig d() {
-      return this.b(0.0F);
-   }
-
-   public fig e() {
-      return this.b(0.5F);
-   }
-
-   public fig f() {
-      return this.b(1.0F);
-   }
-
-   @Override
-   public void b(fgm $$0, int $$1, int $$2, float $$3) {
-      xl $$4 = this.y();
-      fgk $$5 = this.a();
-      int $$6 = this.x();
-      int $$7 = $$5.a($$4);
-      int $$8 = this.C() + Math.round(this.a * (float)($$6 - $$7));
-      int $$9 = this.D() + (this.v() - 9) / 2;
-      ayg $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
-      $$0.b($$5, $$10, $$8, $$9, this.b());
-   }
-
-   private ayg a(xl $$0, int $$1) {
-      fgk $$2 = this.a();
-      xq $$3 = $$2.a($$0, $$1 - $$2.a(xk.u));
-      return um.a().a(xq.a($$3, xk.u));
+   public void a(fgp $$0, int $$1, fgn $$2, int $$3) {
+      $$0.c().a();
+      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
+      $$0.c().a(a.f.rotationDegrees(-20.0F));
+      float $$4 = 1.8F - ayx.e(ayx.a((float)(ac.c() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
+      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
+      $$0.c().b($$4, $$4, $$4);
+      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
+      $$0.c().b();
    }
 }

@@ -1,46 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
 
-public record cxe(int d, List<cxd> e) implements cxq {
-   public static final int a = 256;
-   public static final Codec<cxe> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayc.j.optionalFieldOf("flight_duration", 0).forGetter(cxe::a),
-               cxd.c.sizeLimitedListOf(256).optionalFieldOf("explosions", List.of()).forGetter(cxe::b)
-            )
-            .apply($$0, cxe::new)
-   );
-   public static final zj<ByteBuf, cxe> c = zj.a(zh.g, cxe::a, cxd.d.a(zh.c(256)), cxe::b, cxe::new);
+public record cxe(Map<ji<dex>, dtd<?>> c) {
+   public static final cxe a = new cxe(Map.of());
+   public static final Codec<cxe> b = Codec.dispatchedMap(lp.e.r(), $$0 -> Codec.STRING.comapFlatMap($$1 -> {
+         dtd<?> $$2 = ((dex)$$0.a()).l().a($$1);
+         return $$2 != null ? DataResult.success($$2) : DataResult.error(() -> "No property on " + $$0.g() + " with name: " + $$1);
+      }, dtd::f)).xmap(cxe::new, cxe::a);
 
-   public cxe(int d, List<cxd> e) {
-      if (e.size() > 256) {
-         throw new IllegalArgumentException("Got " + e.size() + " explosions, but maximum is 256");
-      } else {
-         this.d = d;
-         this.e = e;
-      }
+   public cxe a(ji<dex> $$0, dtd<?> $$1) {
+      return new cxe(ac.a(this.c, $$0, $$1));
    }
 
-   @Override
-   public void a(cuf.b $$0, Consumer<xl> $$1, cwd $$2) {
-      if (this.d > 0) {
-         $$1.accept(xl.c("item.minecraft.firework_rocket.flight").b(xk.v).f(String.valueOf(this.d)).a(n.h));
-      }
-
-      for (cxd $$3 : this.e) {
-         $$3.a($$1);
-         $$3.b($$1x -> $$1.accept(xl.b("  ").b($$1x)));
-      }
-   }
-
-   public int a() {
-      return this.d;
-   }
-
-   public List<cxd> b() {
-      return this.e;
+   public Map<ji<dex>, dtd<?>> a() {
+      return this.c;
    }
 }

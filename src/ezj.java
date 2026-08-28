@@ -1,11 +1,14 @@
-public interface ezj {
-   int a();
+public enum ezj {
+   a(0),
+   b(1);
 
-   void b();
+   private final int c;
 
-   ezh c();
+   private ezj(final int $$0) {
+      this.c = $$0;
+   }
 
-   ezh d();
-
-   void e();
+   public int a() {
+      return this.c;
+   }
 }

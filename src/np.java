@@ -14,7 +14,7 @@ public class np implements lw {
       this.d = $$0;
    }
 
-   public <T> np a(atl<T> $$0, T $$1) {
+   public <T> np a(ato<T> $$0, T $$1) {
       this.e.put($$0.a(), () -> $$0.a($$1));
       return this;
    }
@@ -31,11 +31,11 @@ public class np implements lw {
       return "Pack Metadata";
    }
 
-   public static np a(ly $$0, xl $$1) {
-      return new np($$0).a(atm.b, new atm($$1, t.a.a(asz.b), Optional.empty()));
+   public static np a(ly $$0, xo $$1) {
+      return new np($$0).a(atp.b, new atp($$1, t.a.a(atc.b), Optional.empty()));
    }
 
-   public static np a(ly $$0, xl $$1, cpg $$2) {
-      return a($$0, $$1).a(ast.a, new ast($$2));
+   public static np a(ly $$0, xo $$1, cpj $$2) {
+      return a($$0, $$1).a(asw.a, new asw($$2));
    }
 }

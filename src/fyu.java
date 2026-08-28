@@ -1,89 +1,120 @@
+import com.google.common.collect.Lists;
 import com.mojang.authlib.minecraft.report.AbuseReport;
 import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportChatMessage;
+import com.mojang.authlib.minecraft.report.ReportEvidence;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
 import com.mojang.datafixers.util.Either;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.nio.ByteBuffer;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public abstract class fyu {
-   protected final UUID a;
-   protected final Instant b;
-   protected final UUID c;
-   protected String d = "";
-   @Nullable
-   protected fyw e;
+public class fyu extends fyx {
+   final IntSet f = new IntOpenHashSet();
 
-   public fyu(UUID $$0, Instant $$1, UUID $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   fyu(UUID $$0, Instant $$1, UUID $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public boolean a(UUID $$0) {
-      return $$0.equals(this.c);
+   public void a(int $$0, AbuseReportLimits $$1) {
+      if (this.f.contains($$0)) {
+         this.f.remove($$0);
+      } else if (this.f.size() < $$1.maxReportedMessageCount()) {
+         this.f.add($$0);
+      }
    }
 
-   public abstract fyu b();
+   public fyu a() {
+      fyu $$0 = new fyu(this.a, this.b, this.c);
+      $$0.f.addAll(this.f);
+      $$0.d = this.d;
+      $$0.e = this.e;
+      return $$0;
+   }
 
-   public abstract fmy a(fmy var1, fyy var2);
+   @Override
+   public fnb a(fnb $$0, fzb $$1) {
+      return new fqz($$0, $$1, this);
+   }
 
-   public abstract static class a<R extends fyu> {
-      protected final R a;
-      protected final AbuseReportLimits b;
-
-      protected a(R $$0, AbuseReportLimits $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public static class a extends fyx.a<fyu> {
+      public a(fyu $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      public R e() {
-         return this.a;
+      public a(UUID $$0, AbuseReportLimits $$1) {
+         super(new fyu(UUID.randomUUID(), Instant.now(), $$0), $$1);
       }
 
-      public UUID f() {
-         return this.a.c;
+      public IntSet a() {
+         return this.a.f;
       }
 
-      public String g() {
-         return this.a.d;
+      public void a(int $$0) {
+         this.a.a($$0, this.b);
       }
 
-      public void a(String $$0) {
-         this.a.d = $$0;
+      public boolean b(int $$0) {
+         return this.a.f.contains($$0);
+      }
+
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.h() != null;
       }
 
       @Nullable
-      public fyw h() {
-         return this.a.e;
+      @Override
+      public fyx.b c() {
+         if (this.a.f.isEmpty()) {
+            return fyx.b.b;
+         } else if (this.a.f.size() > this.b.maxReportedMessageCount()) {
+            return fyx.b.c;
+         } else if (this.a.e == null) {
+            return fyx.b.a;
+         } else {
+            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fyx.b.d : null;
+         }
       }
 
-      public void a(fyw $$0) {
-         this.a.e = $$0;
+      @Override
+      public Either<fyx.c, fyx.b> a(fzb $$0) {
+         fyx.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            String $$2 = Objects.requireNonNull(this.a.e).a();
+            ReportEvidence $$3 = this.b($$0);
+            ReportedEntity $$4 = new ReportedEntity(this.a.c);
+            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
+            return Either.left(new fyx.c(this.a.a, fza.a, $$5));
+         }
       }
 
-      public abstract boolean b();
-
-      @Nullable
-      public abstract fyu.b c();
-
-      public abstract Either<fyu.c, fyu.b> a(fyy var1);
-   }
-
-   public static record b(xl e) {
-      public static final fyu.b a = new fyu.b(xl.c("gui.abuseReport.send.no_reason"));
-      public static final fyu.b b = new fyu.b(xl.c("gui.chatReport.send.no_reported_messages"));
-      public static final fyu.b c = new fyu.b(xl.c("gui.chatReport.send.too_many_messages"));
-      public static final fyu.b d = new fyu.b(xl.c("gui.abuseReport.send.comment_too_long"));
-
-      public fik a() {
-         return fik.a(this.e);
+      private ReportEvidence b(fzb $$0) {
+         List<ReportChatMessage> $$1 = new ArrayList<>();
+         fyv $$2 = new fyv(this.b.leadingContextMessageCount());
+         $$2.a($$0.b(), this.a.f, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
+         return new ReportEvidence(Lists.reverse($$1));
       }
 
-      public xl b() {
-         return this.e;
+      private ReportChatMessage a(fyq.a $$0, boolean $$1) {
+         yj $$2 = $$0.g().k();
+         yh $$3 = $$0.g().m();
+         List<ByteBuffer> $$4 = $$3.d().a().stream().map(ya::a).toList();
+         ByteBuffer $$5 = x.a($$0.g().l(), ya::a);
+         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
       }
-   }
 
-   public static record c(UUID a, fyx b, AbuseReport c) {
+      public fyu.a d() {
+         return new fyu.a(this.a.a(), this.b);
+      }
    }
 }

@@ -1,436 +1,294 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.io.Files;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.GameProfileRepository;
 import com.mojang.authlib.ProfileLookupCallback;
-import com.mojang.authlib.yggdrasil.ProfileNotFoundException;
 import com.mojang.logging.LogUtils;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
 import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
 import java.text.ParseException;
-import java.util.Collection;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
 public class auy {
-   static final Logger e = LogUtils.getLogger();
-   public static final File a = new File("banned-ips.txt");
-   public static final File b = new File("banned-players.txt");
-   public static final File c = new File("ops.txt");
-   public static final File d = new File("white-list.txt");
-
-   static List<String> a(File $$0, Map<String, String[]> $$1) throws IOException {
-      List<String> $$2 = Files.readLines($$0, StandardCharsets.UTF_8);
-
-      for (String $$3 : $$2) {
-         $$3 = $$3.trim();
-         if (!$$3.startsWith("#") && $$3.length() >= 1) {
-            String[] $$4 = $$3.split("\\|");
-            $$1.put($$4[0].toLowerCase(Locale.ROOT), $$4);
-         }
-      }
-
-      return $$2;
-   }
-
-   private static void a(MinecraftServer $$0, Collection<String> $$1, ProfileLookupCallback $$2) {
-      String[] $$3 = $$1.stream().filter($$0x -> !azq.b($$0x)).toArray(String[]::new);
-      if ($$0.Z()) {
-         $$0.at().findProfilesByNames($$3, $$2);
-      } else {
-         for (String $$4 : $$3) {
-            $$2.onProfileLookupSucceeded(kc.b($$4));
-         }
-      }
-   }
-
-   public static boolean a(final MinecraftServer $$0) {
-      final avf $$1 = new avf(auz.a);
-      if (b.exists() && b.isFile()) {
-         if ($$1.b().exists()) {
-            try {
-               $$1.f();
-            } catch (IOException var6) {
-               e.warn("Could not load existing file {}", $$1.b().getName(), var6);
-            }
-         }
-
-         try {
-            final Map<String, String[]> $$3 = Maps.newHashMap();
-            a(b, $$3);
-            ProfileLookupCallback $$4 = new ProfileLookupCallback() {
-               public void onProfileLookupSucceeded(GameProfile $$0x) {
-                  $$0.au().a($$0);
-                  String[] $$1 = $$3.get($$0.getName().toLowerCase(Locale.ROOT));
-                  if ($$1 == null) {
-                     auy.e.warn("Could not convert user banlist entry for {}", $$0.getName());
-                     throw new auy.a("Profile not in the conversionlist");
-                  } else {
-                     Date $$2 = $$1.length > 1 ? auy.a($$1[1], null) : null;
-                     String $$3 = $$1.length > 2 ? $$1[2] : null;
-                     Date $$4 = $$1.length > 3 ? auy.a($$1[3], null) : null;
-                     String $$5 = $$1.length > 4 ? $$1[4] : null;
-                     $$1.a(new avg($$0, $$2, $$3, $$4, $$5));
-                  }
-               }
-
-               public void onProfileLookupFailed(String $$0x, Exception $$1x) {
-                  auy.e.warn("Could not lookup user banlist entry for {}", $$0, $$1);
-                  if (!($$1 instanceof ProfileNotFoundException)) {
-                     throw new auy.a("Could not request user " + $$0 + " from backend systems", $$1);
-                  }
-               }
-            };
-            a($$0, $$3.keySet(), $$4);
-            $$1.e();
-            b(b);
-            return true;
-         } catch (IOException var4) {
-            e.warn("Could not read old user banlist to convert it!", var4);
-            return false;
-         } catch (auy.a var5) {
-            e.error("Conversion failed, please try again later", var5);
-            return false;
-         }
-      } else {
-         return true;
-      }
-   }
-
-   public static boolean b(MinecraftServer $$0) {
-      auv $$1 = new auv(auz.b);
-      if (a.exists() && a.isFile()) {
-         if ($$1.b().exists()) {
-            try {
-               $$1.f();
-            } catch (IOException var11) {
-               e.warn("Could not load existing file {}", $$1.b().getName(), var11);
-            }
-         }
-
-         try {
-            Map<String, String[]> $$3 = Maps.newHashMap();
-            a(a, $$3);
-
-            for (String $$4 : $$3.keySet()) {
-               String[] $$5 = $$3.get($$4);
-               Date $$6 = $$5.length > 1 ? a($$5[1], null) : null;
-               String $$7 = $$5.length > 2 ? $$5[2] : null;
-               Date $$8 = $$5.length > 3 ? a($$5[3], null) : null;
-               String $$9 = $$5.length > 4 ? $$5[4] : null;
-               $$1.a(new auw($$4, $$6, $$7, $$8, $$9));
-            }
-
-            $$1.e();
-            b(a);
-            return true;
-         } catch (IOException var10) {
-            e.warn("Could not parse old ip banlist to convert it!", var10);
-            return false;
-         }
-      } else {
-         return true;
-      }
-   }
-
-   public static boolean c(final MinecraftServer $$0) {
-      final ava $$1 = new ava(auz.c);
-      if (c.exists() && c.isFile()) {
-         if ($$1.b().exists()) {
-            try {
-               $$1.f();
-            } catch (IOException var6) {
-               e.warn("Could not load existing file {}", $$1.b().getName(), var6);
-            }
-         }
-
-         try {
-            List<String> $$3 = Files.readLines(c, StandardCharsets.UTF_8);
-            ProfileLookupCallback $$4 = new ProfileLookupCallback() {
-               public void onProfileLookupSucceeded(GameProfile $$0x) {
-                  $$0.au().a($$0);
-                  $$1.a(new avb($$0, $$0.k(), false));
-               }
-
-               public void onProfileLookupFailed(String $$0x, Exception $$1x) {
-                  auy.e.warn("Could not lookup oplist entry for {}", $$0, $$1);
-                  if (!($$1 instanceof ProfileNotFoundException)) {
-                     throw new auy.a("Could not request user " + $$0 + " from backend systems", $$1);
-                  }
-               }
-            };
-            a($$0, $$3, $$4);
-            $$1.e();
-            b(c);
-            return true;
-         } catch (IOException var4) {
-            e.warn("Could not read old oplist to convert it!", var4);
-            return false;
-         } catch (auy.a var5) {
-            e.error("Conversion failed, please try again later", var5);
-            return false;
-         }
-      } else {
-         return true;
-      }
-   }
-
-   public static boolean d(final MinecraftServer $$0) {
-      final avh $$1 = new avh(auz.d);
-      if (d.exists() && d.isFile()) {
-         if ($$1.b().exists()) {
-            try {
-               $$1.f();
-            } catch (IOException var6) {
-               e.warn("Could not load existing file {}", $$1.b().getName(), var6);
-            }
-         }
-
-         try {
-            List<String> $$3 = Files.readLines(d, StandardCharsets.UTF_8);
-            ProfileLookupCallback $$4 = new ProfileLookupCallback() {
-               public void onProfileLookupSucceeded(GameProfile $$0x) {
-                  $$0.au().a($$0);
-                  $$1.a(new avi($$0));
-               }
-
-               public void onProfileLookupFailed(String $$0x, Exception $$1x) {
-                  auy.e.warn("Could not lookup user whitelist entry for {}", $$0, $$1);
-                  if (!($$1 instanceof ProfileNotFoundException)) {
-                     throw new auy.a("Could not request user " + $$0 + " from backend systems", $$1);
-                  }
-               }
-            };
-            a($$0, $$3, $$4);
-            $$1.e();
-            b(d);
-            return true;
-         } catch (IOException var4) {
-            e.warn("Could not read old whitelist to convert it!", var4);
-            return false;
-         } catch (auy.a var5) {
-            e.error("Conversion failed, please try again later", var5);
-            return false;
-         }
-      } else {
-         return true;
-      }
-   }
-
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 1000;
+   private static final int c = 1;
+   private static boolean d;
+   private final Map<String, auy.a> e = Maps.newConcurrentMap();
+   private final Map<UUID, auy.a> f = Maps.newConcurrentMap();
+   private final Map<String, CompletableFuture<Optional<GameProfile>>> g = Maps.newConcurrentMap();
+   private final GameProfileRepository h;
+   private final Gson i = new GsonBuilder().create();
+   private final File j;
+   private final AtomicLong k = new AtomicLong();
    @Nullable
-   public static UUID a(final MinecraftServer $$0, String $$1) {
-      if (!azq.b($$1) && $$1.length() <= 16) {
-         Optional<UUID> $$3 = $$0.au().a($$1).map(GameProfile::getId);
-         if ($$3.isPresent()) {
-            return $$3.get();
-         } else if (!$$0.T() && $$0.Z()) {
-            final List<GameProfile> $$4 = Lists.newArrayList();
-            ProfileLookupCallback $$5 = new ProfileLookupCallback() {
-               public void onProfileLookupSucceeded(GameProfile $$0x) {
-                  $$0.au().a($$0);
-                  $$4.add($$0);
-               }
+   private Executor l;
 
-               public void onProfileLookupFailed(String $$0x, Exception $$1) {
-                  auy.e.warn("Could not lookup user whitelist entry for {}", $$0, $$1);
-               }
-            };
-            a($$0, Lists.newArrayList(new String[]{$$1}), $$5);
-            return !$$4.isEmpty() ? $$4.get(0).getId() : null;
-         } else {
-            return kc.a($$1);
-         }
-      } else {
-         try {
-            return UUID.fromString($$1);
-         } catch (IllegalArgumentException var5) {
-            return null;
-         }
-      }
+   public auy(GameProfileRepository $$0, File $$1) {
+      this.h = $$0;
+      this.j = $$1;
+      Lists.reverse(this.b()).forEach(this::a);
    }
 
-   public static boolean a(final apx $$0) {
-      final File $$1 = g($$0);
-      final File $$2 = new File($$1.getParentFile(), "playerdata");
-      final File $$3 = new File($$1.getParentFile(), "unknownplayers");
-      if ($$1.exists() && $$1.isDirectory()) {
-         File[] $$4 = $$1.listFiles();
-         List<String> $$5 = Lists.newArrayList();
+   private void a(auy.a $$0) {
+      GameProfile $$1 = $$0.a();
+      $$0.a(this.e());
+      this.e.put($$1.getName().toLowerCase(Locale.ROOT), $$0);
+      this.f.put($$1.getId(), $$0);
+   }
 
-         for (File $$6 : $$4) {
-            String $$7 = $$6.getName();
-            if ($$7.toLowerCase(Locale.ROOT).endsWith(".dat")) {
-               String $$8 = $$7.substring(0, $$7.length() - ".dat".length());
-               if (!$$8.isEmpty()) {
-                  $$5.add($$8);
-               }
+   private static Optional<GameProfile> a(GameProfileRepository $$0, String $$1) {
+      if (!azt.f($$1)) {
+         return c($$1);
+      } else {
+         final AtomicReference<GameProfile> $$2 = new AtomicReference<>();
+         ProfileLookupCallback $$3 = new ProfileLookupCallback() {
+            public void onProfileLookupSucceeded(GameProfile $$0) {
+               $$2.set($$0);
             }
-         }
 
-         try {
-            final String[] $$9 = $$5.toArray(new String[$$5.size()]);
-            ProfileLookupCallback $$10 = new ProfileLookupCallback() {
-               public void onProfileLookupSucceeded(GameProfile $$0x) {
-                  $$0.au().a($$0);
-                  UUID $$1 = $$0.getId();
-                  this.a($$2, this.a($$0.getName()), $$1.toString());
-               }
-
-               public void onProfileLookupFailed(String $$0x, Exception $$1x) {
-                  auy.e.warn("Could not lookup user uuid for {}", $$0, $$1);
-                  if ($$1 instanceof ProfileNotFoundException) {
-                     String $$2 = this.a($$0);
-                     this.a($$3, $$2, $$2);
-                  } else {
-                     throw new auy.a("Could not request user " + $$0 + " from backend systems", $$1);
-                  }
-               }
-
-               private void a(File $$0x, String $$1x, String $$2x) {
-                  File $$3 = new File($$1, $$1 + ".dat");
-                  File $$4 = new File($$0, $$2 + ".dat");
-                  auy.a($$0);
-                  if (!$$3.renameTo($$4)) {
-                     throw new auy.a("Could not convert file for " + $$1);
-                  }
-               }
-
-               private String a(String $$0x) {
-                  String $$1 = null;
-
-                  for (String $$2 : $$9) {
-                     if ($$2 != null && $$2.equalsIgnoreCase($$0)) {
-                        $$1 = $$2;
-                        break;
-                     }
-                  }
-
-                  if ($$1 == null) {
-                     throw new auy.a("Could not find the filename for " + $$0 + " anymore");
-                  } else {
-                     return $$1;
-                  }
-               }
-            };
-            a($$0, Lists.newArrayList($$9), $$10);
-            return true;
-         } catch (auy.a var12) {
-            e.error("Conversion failed, please try again later", var12);
-            return false;
-         }
-      } else {
-         return true;
+            public void onProfileLookupFailed(String $$0, Exception $$1) {
+               $$2.set(null);
+            }
+         };
+         $$0.findProfilesByNames(new String[]{$$1}, $$3);
+         GameProfile $$4 = $$2.get();
+         return $$4 != null ? Optional.of($$4) : c($$1);
       }
    }
 
-   static void a(File $$0) {
-      if ($$0.exists()) {
-         if (!$$0.isDirectory()) {
-            throw new auy.a("Can't create directory " + $$0.getName() + " in world save directory.");
-         }
-      } else if (!$$0.mkdirs()) {
-         throw new auy.a("Can't create directory " + $$0.getName() + " in world save directory.");
-      }
+   private static Optional<GameProfile> c(String $$0) {
+      return d() ? Optional.empty() : Optional.of(kc.b($$0));
    }
 
-   public static boolean e(MinecraftServer $$0) {
-      boolean $$1 = a();
-      return $$1 && f($$0);
+   public static void a(boolean $$0) {
+      d = $$0;
    }
 
-   private static boolean a() {
-      boolean $$0 = false;
-      if (b.exists() && b.isFile()) {
-         $$0 = true;
-      }
+   private static boolean d() {
+      return d;
+   }
 
-      boolean $$1 = false;
-      if (a.exists() && a.isFile()) {
-         $$1 = true;
-      }
+   public void a(GameProfile $$0) {
+      Calendar $$1 = Calendar.getInstance();
+      $$1.setTime(new Date());
+      $$1.add(2, 1);
+      Date $$2 = $$1.getTime();
+      auy.a $$3 = new auy.a($$0, $$2);
+      this.a($$3);
+      this.c();
+   }
 
-      boolean $$2 = false;
-      if (c.exists() && c.isFile()) {
-         $$2 = true;
-      }
+   private long e() {
+      return this.k.incrementAndGet();
+   }
 
+   public Optional<GameProfile> a(String $$0) {
+      String $$1 = $$0.toLowerCase(Locale.ROOT);
+      auy.a $$2 = this.e.get($$1);
       boolean $$3 = false;
-      if (d.exists() && d.isFile()) {
+      if ($$2 != null && new Date().getTime() >= $$2.b.getTime()) {
+         this.f.remove($$2.a().getId());
+         this.e.remove($$2.a().getName().toLowerCase(Locale.ROOT));
          $$3 = true;
+         $$2 = null;
       }
 
-      if (!$$0 && !$$1 && !$$2 && !$$3) {
-         return true;
+      Optional<GameProfile> $$4;
+      if ($$2 != null) {
+         $$2.a(this.e());
+         $$4 = Optional.of($$2.a());
       } else {
-         e.warn("**** FAILED TO START THE SERVER AFTER ACCOUNT CONVERSION!");
-         e.warn("** please remove the following files and restart the server:");
-         if ($$0) {
-            e.warn("* {}", b.getName());
+         $$4 = a(this.h, $$1);
+         if ($$4.isPresent()) {
+            this.a($$4.get());
+            $$3 = false;
          }
-
-         if ($$1) {
-            e.warn("* {}", a.getName());
-         }
-
-         if ($$2) {
-            e.warn("* {}", c.getName());
-         }
-
-         if ($$3) {
-            e.warn("* {}", d.getName());
-         }
-
-         return false;
       }
+
+      if ($$3) {
+         this.c();
+      }
+
+      return $$4;
    }
 
-   private static boolean f(MinecraftServer $$0) {
-      File $$1 = g($$0);
-      if (!$$1.exists() || !$$1.isDirectory() || $$1.list().length <= 0 && $$1.delete()) {
-         return true;
+   public CompletableFuture<Optional<GameProfile>> b(String $$0) {
+      if (this.l == null) {
+         throw new IllegalStateException("No executor");
       } else {
-         e.warn("**** DETECTED OLD PLAYER DIRECTORY IN THE WORLD SAVE");
-         e.warn("**** THIS USUALLY HAPPENS WHEN THE AUTOMATIC CONVERSION FAILED IN SOME WAY");
-         e.warn("** please restart the server and if the problem persists, remove the directory '{}'", $$1.getPath());
-         return false;
+         CompletableFuture<Optional<GameProfile>> $$1 = this.g.get($$0);
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            CompletableFuture<Optional<GameProfile>> $$2 = CompletableFuture.<Optional<GameProfile>>supplyAsync(() -> this.a($$0), ac.g())
+               .whenCompleteAsync(($$1x, $$2x) -> this.g.remove($$0), this.l);
+            this.g.put($$0, $$2);
+            return $$2;
+         }
       }
    }
 
-   private static File g(MinecraftServer $$0) {
-      return $$0.a(epp.d).toFile();
+   public Optional<GameProfile> a(UUID $$0) {
+      auy.a $$1 = this.f.get($$0);
+      if ($$1 == null) {
+         return Optional.empty();
+      } else {
+         $$1.a(this.e());
+         return Optional.of($$1.a());
+      }
    }
 
-   private static void b(File $$0) {
-      File $$1 = new File($$0.getName() + ".converted");
-      $$0.renameTo($$1);
+   public void a(Executor $$0) {
+      this.l = $$0;
    }
 
-   static Date a(String $$0, Date $$1) {
-      Date $$2;
+   public void a() {
+      this.l = null;
+   }
+
+   private static DateFormat f() {
+      return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
+   }
+
+   public List<auy.a> b() {
+      List<auy.a> $$0 = Lists.newArrayList();
+
       try {
-         $$2 = aut.a.parse($$0);
-      } catch (ParseException var4) {
-         $$2 = $$1;
+         Object var9;
+         try (Reader $$1 = Files.newReader(this.j, StandardCharsets.UTF_8)) {
+            JsonArray $$2 = (JsonArray)this.i.fromJson($$1, JsonArray.class);
+            if ($$2 != null) {
+               DateFormat $$3 = f();
+               $$2.forEach($$2x -> a($$2x, $$3).ifPresent($$0::add));
+               return $$0;
+            }
+
+            var9 = $$0;
+         }
+
+         return (List<auy.a>)var9;
+      } catch (FileNotFoundException var7) {
+      } catch (JsonParseException | IOException var8) {
+         a.warn("Failed to load profile cache {}", this.j, var8);
       }
 
+      return $$0;
+   }
+
+   public void c() {
+      JsonArray $$0 = new JsonArray();
+      DateFormat $$1 = f();
+      this.a(1000).forEach($$2x -> $$0.add(a($$2x, $$1)));
+      String $$2 = this.i.toJson($$0);
+
+      try (Writer $$3 = Files.newWriter(this.j, StandardCharsets.UTF_8)) {
+         $$3.write($$2);
+      } catch (IOException var9) {
+      }
+   }
+
+   private Stream<auy.a> a(int $$0) {
+      return ImmutableList.copyOf(this.f.values()).stream().sorted(Comparator.comparing(auy.a::c).reversed()).limit((long)$$0);
+   }
+
+   private static JsonElement a(auy.a $$0, DateFormat $$1) {
+      JsonObject $$2 = new JsonObject();
+      $$2.addProperty("name", $$0.a().getName());
+      $$2.addProperty("uuid", $$0.a().getId().toString());
+      $$2.addProperty("expiresOn", $$1.format($$0.b()));
       return $$2;
    }
 
-   static class a extends RuntimeException {
-      a(String $$0, Throwable $$1) {
-         super($$0, $$1);
+   private static Optional<auy.a> a(JsonElement $$0, DateFormat $$1) {
+      if ($$0.isJsonObject()) {
+         JsonObject $$2 = $$0.getAsJsonObject();
+         JsonElement $$3 = $$2.get("name");
+         JsonElement $$4 = $$2.get("uuid");
+         JsonElement $$5 = $$2.get("expiresOn");
+         if ($$3 != null && $$4 != null) {
+            String $$6 = $$4.getAsString();
+            String $$7 = $$3.getAsString();
+            Date $$8 = null;
+            if ($$5 != null) {
+               try {
+                  $$8 = $$1.parse($$5.getAsString());
+               } catch (ParseException var12) {
+               }
+            }
+
+            if ($$7 != null && $$6 != null && $$8 != null) {
+               UUID $$9;
+               try {
+                  $$9 = UUID.fromString($$6);
+               } catch (Throwable var11) {
+                  return Optional.empty();
+               }
+
+               return Optional.of(new auy.a(new GameProfile($$9, $$7), $$8));
+            } else {
+               return Optional.empty();
+            }
+         } else {
+            return Optional.empty();
+         }
+      } else {
+         return Optional.empty();
+      }
+   }
+
+   static class a {
+      private final GameProfile a;
+      final Date b;
+      private volatile long c;
+
+      a(GameProfile $$0, Date $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      a(String $$0) {
-         super($$0);
+      public GameProfile a() {
+         return this.a;
+      }
+
+      public Date b() {
+         return this.b;
+      }
+
+      public void a(long $$0) {
+         this.c = $$0;
+      }
+
+      public long c() {
+         return this.c;
       }
    }
 }

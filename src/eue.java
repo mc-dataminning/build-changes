@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eue {
+public interface eue {
+   @Nullable
+   vo a(eqg var1);
+
+   Set<esz<?>> b();
+
+   eud a();
 }

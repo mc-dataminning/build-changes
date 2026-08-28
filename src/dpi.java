@@ -1,173 +1,216 @@
-import java.util.Optional;
+import java.util.Arrays;
 import javax.annotation.Nullable;
 
-public class dpi extends dpc implements bqg {
-   private static final int a = 2;
-   private static final int b = 4;
-   private final jr<cuk> c = jr.a(4, cuk.l);
-   private final int[] d = new int[4];
-   private final int[] e = new int[4];
-   private final cyt.a<bqi, cye> f = cyt.b(cyv.e);
+public class dpi extends doz implements bre {
+   private static final int g = 3;
+   private static final int h = 4;
+   private static final int[] i = new int[]{3};
+   private static final int[] j = new int[]{0, 1, 2, 3};
+   private static final int[] k = new int[]{0, 1, 2, 4};
+   public static final int b = 20;
+   public static final int c = 0;
+   public static final int d = 1;
+   public static final int e = 2;
+   private jr<cun> l = jr.a(5, cun.l);
+   int m;
+   private boolean[] q;
+   private cui r;
+   int s;
+   protected final cqc f = new cqc() {
+      @Override
+      public int a(int $$0) {
+         return switch ($$0) {
+            case 0 -> dpi.this.m;
+            case 1 -> dpi.this.s;
+            default -> 0;
+         };
+      }
 
-   public dpi(iz $$0, drx $$1) {
-      super(dpe.G, $$0, $$1);
-   }
-
-   public static void a(dbt $$0, iz $$1, drx $$2, dpi $$3) {
-      boolean $$4 = false;
-
-      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
-         cuk $$6 = $$3.c.get($$5);
-         if (!$$6.e()) {
-            $$4 = true;
-            $$3.d[$$5]++;
-            if ($$3.d[$$5] >= $$3.e[$$5]) {
-               bqi $$7 = new bqy($$6);
-               cuk $$8 = $$3.f.a($$7, $$0).map($$2x -> ((cye)$$2x.b()).a($$7, $$0.H_())).orElse($$6);
-               if ($$8.a($$0.J())) {
-                  bql.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$8);
-                  $$3.c.set($$5, cuk.l);
-                  $$0.a($$1, $$2, $$2, 3);
-                  $$0.a(dwq.c, $$1, dwq.a.a($$2));
-               }
-            }
+      @Override
+      public void a(int $$0, int $$1) {
+         switch ($$0) {
+            case 0:
+               dpi.this.m = $$1;
+               break;
+            case 1:
+               dpi.this.s = $$1;
          }
       }
 
-      if ($$4) {
+      @Override
+      public int a() {
+         return 2;
+      }
+   };
+
+   public dpi(iz $$0, dsa $$1) {
+      super(dph.l, $$0, $$1);
+   }
+
+   @Override
+   protected xo k() {
+      return xo.c("container.brewing");
+   }
+
+   @Override
+   public int b() {
+      return this.l.size();
+   }
+
+   @Override
+   protected jr<cun> j() {
+      return this.l;
+   }
+
+   @Override
+   protected void a(jr<cun> $$0) {
+      this.l = $$0;
+   }
+
+   public static void a(dbw $$0, iz $$1, dsa $$2, dpi $$3) {
+      cun $$4 = $$3.l.get(4);
+      if ($$3.s <= 0 && $$4.a(cuq.so)) {
+         $$3.s = 20;
+         $$4.h(1);
          a($$0, $$1, $$2);
       }
-   }
 
-   public static void b(dbt $$0, iz $$1, drx $$2, dpi $$3) {
-      boolean $$4 = false;
-
-      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
-         if ($$3.d[$$5] > 0) {
-            $$4 = true;
-            $$3.d[$$5] = ayu.a($$3.d[$$5] - 2, 0, $$3.e[$$5]);
+      boolean $$5 = a($$0.K(), $$3.l);
+      boolean $$6 = $$3.m > 0;
+      cun $$7 = $$3.l.get(3);
+      if ($$6) {
+         $$3.m--;
+         boolean $$8 = $$3.m == 0;
+         if ($$8 && $$5) {
+            a($$0, $$1, $$3.l);
+            a($$0, $$1, $$2);
+         } else if (!$$5 || !$$7.a($$3.r)) {
+            $$3.m = 0;
+            a($$0, $$1, $$2);
          }
-      }
-
-      if ($$4) {
+      } else if ($$5 && $$3.s > 0) {
+         $$3.s--;
+         $$3.m = 400;
+         $$3.r = $$7.g();
          a($$0, $$1, $$2);
       }
+
+      boolean[] $$9 = $$3.f();
+      if (!Arrays.equals($$9, $$3.q)) {
+         $$3.q = $$9;
+         dsa $$10 = $$2;
+         if (!($$2.b() instanceof dfb)) {
+            return;
+         }
+
+         for (int $$11 = 0; $$11 < dfb.b.length; $$11++) {
+            $$10 = $$10.a(dfb.b[$$11], Boolean.valueOf($$9[$$11]));
+         }
+
+         $$0.a($$1, $$10, 2);
+      }
    }
 
-   public static void c(dbt $$0, iz $$1, drx $$2, dpi $$3) {
-      azc $$4 = $$0.z;
-      if ($$4.i() < 0.11F) {
-         for (int $$5 = 0; $$5 < $$4.a(2) + 2; $$5++) {
-            dfi.a($$0, $$1, $$2.c(dfi.d), false);
+   private boolean[] f() {
+      boolean[] $$0 = new boolean[3];
+
+      for (int $$1 = 0; $$1 < 3; $$1++) {
+         if (!this.l.get($$1).e()) {
+            $$0[$$1] = true;
          }
       }
 
-      int $$6 = $$2.c(dfi.f).e();
+      return $$0;
+   }
 
-      for (int $$7 = 0; $$7 < $$3.c.size(); $$7++) {
-         if (!$$3.c.get($$7).e() && $$4.i() < 0.2F) {
-            je $$8 = je.b(Math.floorMod($$7 + $$6, 4));
-            float $$9 = 0.3125F;
-            double $$10 = (double)$$1.u() + 0.5 - (double)((float)$$8.j() * 0.3125F) + (double)((float)$$8.h().j() * 0.3125F);
-            double $$11 = (double)$$1.v() + 0.5;
-            double $$12 = (double)$$1.w() + 0.5 - (double)((float)$$8.l() * 0.3125F) + (double)((float)$$8.h().l() * 0.3125F);
-
-            for (int $$13 = 0; $$13 < 4; $$13++) {
-               $$0.a(lj.ae, $$10, $$11, $$12, 0.0, 5.0E-4, 0.0);
+   private static boolean a(cwn $$0, jr<cun> $$1) {
+      cun $$2 = $$1.get(3);
+      if ($$2.e()) {
+         return false;
+      } else if (!$$0.a($$2)) {
+         return false;
+      } else {
+         for (int $$3 = 0; $$3 < 3; $$3++) {
+            cun $$4 = $$1.get($$3);
+            if (!$$4.e() && $$0.a($$4, $$2)) {
+               return true;
             }
          }
+
+         return false;
       }
    }
 
-   public jr<cuk> b() {
-      return this.c;
+   private static void a(dbw $$0, iz $$1, jr<cun> $$2) {
+      cun $$3 = $$2.get(3);
+      cwn $$4 = $$0.K();
+
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         $$2.set($$5, $$4.d($$3, $$2.get($$5)));
+      }
+
+      $$3.h(1);
+      if ($$3.g().v()) {
+         cun $$6 = new cun($$3.g().u());
+         if ($$3.e()) {
+            $$3 = $$6;
+         } else {
+            bqo.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$6);
+         }
+      }
+
+      $$2.set(3, $$3);
+      $$0.c(1035, $$1, 0);
    }
 
    @Override
    protected void a(ur $$0, jk.a $$1) {
       super.a($$0, $$1);
-      this.c.clear();
-      bqj.b($$0, this.c, $$1);
-      if ($$0.b("CookingTimes", 11)) {
-         int[] $$2 = $$0.n("CookingTimes");
-         System.arraycopy($$2, 0, this.d, 0, Math.min(this.e.length, $$2.length));
-      }
-
-      if ($$0.b("CookingTotalTimes", 11)) {
-         int[] $$3 = $$0.n("CookingTotalTimes");
-         System.arraycopy($$3, 0, this.e, 0, Math.min(this.e.length, $$3.length));
-      }
+      this.l = jr.a(this.b(), cun.l);
+      bqm.b($$0, this.l, $$1);
+      this.m = $$0.g("BrewTime");
+      this.s = $$0.f("Fuel");
    }
 
    @Override
    protected void b(ur $$0, jk.a $$1) {
       super.b($$0, $$1);
-      bqj.a($$0, this.c, true, $$1);
-      $$0.a("CookingTimes", this.d);
-      $$0.a("CookingTotalTimes", this.e);
-   }
-
-   public acl c() {
-      return acl.a(this);
+      $$0.a("BrewTime", (short)this.m);
+      bqm.a($$0, this.l, $$1);
+      $$0.a("Fuel", (byte)this.s);
    }
 
    @Override
-   public ur a(jk.a $$0) {
-      ur $$1 = new ur();
-      bqj.a($$1, this.c, true, $$0);
-      return $$1;
-   }
-
-   public Optional<cys<cye>> b(cuk $$0) {
-      return this.c.stream().noneMatch(cuk::e) ? Optional.empty() : this.f.a(new bqy($$0), this.n);
-   }
-
-   public boolean a(@Nullable bsp $$0, cuk $$1, int $$2) {
-      for (int $$3 = 0; $$3 < this.c.size(); $$3++) {
-         cuk $$4 = this.c.get($$3);
-         if ($$4.e()) {
-            this.e[$$3] = $$2;
-            this.d[$$3] = 0;
-            this.c.set($$3, $$1.a(1));
-            this.n.a(dwq.c, this.aA_(), dwq.a.a($$0, this.n()));
-            this.f();
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private void f() {
-      this.e();
-      this.i().a(this.aA_(), this.n(), this.n(), 3);
-   }
-
-   @Override
-   public void a() {
-      this.c.clear();
-   }
-
-   public void d() {
-      if (this.n != null) {
-         this.f();
+   public boolean b(int $$0, cun $$1) {
+      if ($$0 == 3) {
+         cwn $$2 = this.n != null ? this.n.K() : cwn.b;
+         return $$2.a($$1);
+      } else {
+         return $$0 == 4 ? $$1.a(cuq.so) : ($$1.a(cuq.sk) || $$1.a(cuq.vo) || $$1.a(cuq.vr) || $$1.a(cuq.sl)) && this.a($$0).e();
       }
    }
 
    @Override
-   protected void a(dpc.b $$0) {
-      super.a($$0);
-      $$0.a(km.Z, cxg.a).a(this.b());
+   public int[] a(je $$0) {
+      if ($$0 == je.b) {
+         return i;
+      } else {
+         return $$0 == je.a ? j : k;
+      }
    }
 
    @Override
-   protected void a(ki.a $$0) {
-      super.a($$0);
-      $$0.a(km.Z, cxg.a(this.b()));
+   public boolean a(int $$0, cun $$1, @Nullable je $$2) {
+      return this.b($$0, $$1);
    }
 
    @Override
-   public void a(ur $$0) {
-      $$0.r("Items");
+   public boolean b(int $$0, cun $$1, je $$2) {
+      return $$0 == 3 ? $$1.a(cuq.sl) : true;
+   }
+
+   @Override
+   protected cps a(int $$0, cmu $$1) {
+      return new cpx($$0, $$1, this, this.f);
    }
 }

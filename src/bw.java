@@ -11,20 +11,20 @@ public class bw {
    public static final MapCodec<dk> c = a("player", dk.c);
    public static final MapCodec<du> d = a("slime", du.b);
    public static final MapCodec<dm> e = a("raider", dm.b);
-   public static final bw.b<cgm.d> f = a("axolotl", bw.b.a(cgm.d.f, $$0 -> $$0 instanceof cgm $$1 ? Optional.of($$1.gq()) : Optional.empty()));
-   public static final bw.b<coq.b> g = a("boat", bw.b.a(coq.b.j, $$0 -> $$0 instanceof coq $$1 ? Optional.of($$1.x()) : Optional.empty()));
-   public static final bw.b<cfk.v> h = a("fox", bw.b.a(cfk.v.c, $$0 -> $$0 instanceof cfk $$1 ? Optional.of($$1.u()) : Optional.empty()));
-   public static final bw.b<cfn.a> i = a("mooshroom", bw.b.a(cfn.a.c, $$0 -> $$0 instanceof cfn $$1 ? Optional.of($$1.u()) : Optional.empty()));
-   public static final bw.b<cfu.g> j = a("rabbit", bw.b.a(cfu.g.h, $$0 -> $$0 instanceof cfu $$1 ? Optional.of($$1.gq()) : Optional.empty()));
-   public static final bw.b<chn> k = a("horse", bw.b.a(chn.h, $$0 -> $$0 instanceof chg $$1 ? Optional.of($$1.s()) : Optional.empty()));
-   public static final bw.b<chh.d> l = a("llama", bw.b.a(chh.d.e, $$0 -> $$0 instanceof chh $$1 ? Optional.of($$1.gC()) : Optional.empty()));
-   public static final bw.b<cmk> m = a("villager", bw.b.a(lp.y.q(), $$0 -> $$0 instanceof cmh $$1 ? Optional.of($$1.a()) : Optional.empty()));
-   public static final bw.b<cfq.b> n = a("parrot", bw.b.a(cfq.b.f, $$0 -> $$0 instanceof cfq $$1 ? Optional.of($$1.gy()) : Optional.empty()));
-   public static final bw.b<cga.b> o = a("tropical_fish", bw.b.a(cga.b.m, $$0 -> $$0 instanceof cga $$1 ? Optional.of($$1.gB()) : Optional.empty()));
-   public static final bw.a<ciy> p = a("painting", bw.a.a(lq.S, $$0 -> $$0 instanceof cix $$1 ? Optional.of($$1.p()) : Optional.empty()));
-   public static final bw.a<cfe> q = a("cat", bw.a.a(lq.l, $$0 -> $$0 instanceof cfd $$1 ? Optional.of($$1.gx()) : Optional.empty()));
-   public static final bw.a<cfl> r = a("frog", bw.a.a(lq.B, $$0 -> $$0 instanceof cgu $$1 ? Optional.of($$1.y()) : Optional.empty()));
-   public static final bw.a<cge> s = a("wolf", bw.a.a(lq.m, $$0 -> $$0 instanceof cgd $$1 ? Optional.of($$1.gx()) : Optional.empty()));
+   public static final bw.b<cgp.d> f = a("axolotl", bw.b.a(cgp.d.f, $$0 -> $$0 instanceof cgp $$1 ? Optional.of($$1.gq()) : Optional.empty()));
+   public static final bw.b<cot.b> g = a("boat", bw.b.a(cot.b.j, $$0 -> $$0 instanceof cot $$1 ? Optional.of($$1.x()) : Optional.empty()));
+   public static final bw.b<cfn.v> h = a("fox", bw.b.a(cfn.v.c, $$0 -> $$0 instanceof cfn $$1 ? Optional.of($$1.u()) : Optional.empty()));
+   public static final bw.b<cfq.a> i = a("mooshroom", bw.b.a(cfq.a.c, $$0 -> $$0 instanceof cfq $$1 ? Optional.of($$1.u()) : Optional.empty()));
+   public static final bw.b<cfx.g> j = a("rabbit", bw.b.a(cfx.g.h, $$0 -> $$0 instanceof cfx $$1 ? Optional.of($$1.gq()) : Optional.empty()));
+   public static final bw.b<chq> k = a("horse", bw.b.a(chq.h, $$0 -> $$0 instanceof chj $$1 ? Optional.of($$1.s()) : Optional.empty()));
+   public static final bw.b<chk.d> l = a("llama", bw.b.a(chk.d.e, $$0 -> $$0 instanceof chk $$1 ? Optional.of($$1.gC()) : Optional.empty()));
+   public static final bw.b<cmn> m = a("villager", bw.b.a(lp.y.q(), $$0 -> $$0 instanceof cmk $$1 ? Optional.of($$1.a()) : Optional.empty()));
+   public static final bw.b<cft.b> n = a("parrot", bw.b.a(cft.b.f, $$0 -> $$0 instanceof cft $$1 ? Optional.of($$1.gy()) : Optional.empty()));
+   public static final bw.b<cgd.b> o = a("tropical_fish", bw.b.a(cgd.b.m, $$0 -> $$0 instanceof cgd $$1 ? Optional.of($$1.gB()) : Optional.empty()));
+   public static final bw.a<cjb> p = a("painting", bw.a.a(lq.S, $$0 -> $$0 instanceof cja $$1 ? Optional.of($$1.p()) : Optional.empty()));
+   public static final bw.a<cfh> q = a("cat", bw.a.a(lq.l, $$0 -> $$0 instanceof cfg $$1 ? Optional.of($$1.gx()) : Optional.empty()));
+   public static final bw.a<cfo> r = a("frog", bw.a.a(lq.B, $$0 -> $$0 instanceof cgx $$1 ? Optional.of($$1.y()) : Optional.empty()));
+   public static final bw.a<cgh> s = a("wolf", bw.a.a(lq.m, $$0 -> $$0 instanceof cgg $$1 ? Optional.of($$1.gx()) : Optional.empty()));
 
    private static <T extends bv> MapCodec<T> a(String $$0, MapCodec<T> $$1) {
       return jv.a(lp.at, $$0, $$1);
@@ -44,27 +44,27 @@ public class bw {
       return a;
    }
 
-   public static bv a(ji<cfe> $$0) {
+   public static bv a(ji<cfh> $$0) {
       return q.a(jm.a($$0));
    }
 
-   public static bv b(ji<cfl> $$0) {
+   public static bv b(ji<cfo> $$0) {
       return r.a(jm.a($$0));
    }
 
-   public static bv a(jm<cge> $$0) {
+   public static bv a(jm<cgh> $$0) {
       return s.a($$0);
    }
 
    public static class a<V> {
       final MapCodec<bw.a<V>.a> a;
-      final Function<bsp, Optional<ji<V>>> b;
+      final Function<bss, Optional<ji<V>>> b;
 
-      public static <V> bw.a<V> a(ala<? extends jv<V>> $$0, Function<bsp, Optional<ji<V>>> $$1) {
+      public static <V> bw.a<V> a(ald<? extends jv<V>> $$0, Function<bss, Optional<ji<V>>> $$1) {
          return new bw.a<>($$0, $$1);
       }
 
-      public a(ala<? extends jv<V>> $$0, Function<bsp, Optional<ji<V>>> $$1) {
+      public a(ald<? extends jv<V>> $$0, Function<bss, Optional<ji<V>>> $$1) {
          this.b = $$1;
          this.a = RecordCodecBuilder.mapCodec(
             $$1x -> $$1x.group(jx.a($$0).fieldOf("variant").forGetter($$0xx -> $$0xx.c)).apply($$1x, $$0xx -> new bw.a.a($$0xx))
@@ -88,7 +88,7 @@ public class bw {
          }
 
          @Override
-         public boolean a(bsp $$0, arb $$1, @Nullable evm $$2) {
+         public boolean a(bss $$0, are $$1, @Nullable evp $$2) {
             return a.this.b.apply($$0).filter(this.c::a).isPresent();
          }
       }
@@ -96,17 +96,17 @@ public class bw {
 
    public static class b<V> {
       final MapCodec<bw.b<V>.a> a;
-      final Function<bsp, Optional<V>> b;
+      final Function<bss, Optional<V>> b;
 
-      public static <V> bw.b<V> a(jv<V> $$0, Function<bsp, Optional<V>> $$1) {
+      public static <V> bw.b<V> a(jv<V> $$0, Function<bss, Optional<V>> $$1) {
          return new bw.b<>($$0.q(), $$1);
       }
 
-      public static <V> bw.b<V> a(Codec<V> $$0, Function<bsp, Optional<V>> $$1) {
+      public static <V> bw.b<V> a(Codec<V> $$0, Function<bss, Optional<V>> $$1) {
          return new bw.b<>($$0, $$1);
       }
 
-      public b(Codec<V> $$0, Function<bsp, Optional<V>> $$1) {
+      public b(Codec<V> $$0, Function<bss, Optional<V>> $$1) {
          this.b = $$1;
          this.a = RecordCodecBuilder.mapCodec($$1x -> $$1x.group($$0.fieldOf("variant").forGetter($$0xx -> $$0xx.c)).apply($$1x, $$0xx -> new bw.b.a($$0xx)));
       }
@@ -128,7 +128,7 @@ public class bw {
          }
 
          @Override
-         public boolean a(bsp $$0, arb $$1, @Nullable evm $$2) {
+         public boolean a(bss $$0, are $$1, @Nullable evp $$2) {
             return b.this.b.apply($$0).filter(this.c::equals).isPresent();
          }
       }

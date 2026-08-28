@@ -1,46 +1,36 @@
-import org.joml.Matrix4f;
+public class ggc implements gfm<dqt> {
+   private final git a;
 
-public class ggc<T extends dqt> implements gfj<T> {
-   public static final alb a = new alb("textures/environment/end_sky.png");
-   public static final alb b = new alb("textures/entity/end_portal.png");
-
-   public ggc(gfk.a $$0) {
+   public ggc(gfn.a $$0) {
+      this.a = $$0.c();
    }
 
-   public void a(T $$0, float $$1, ezt $$2, gdj $$3, int $$4, int $$5) {
-      Matrix4f $$6 = $$2.c().a();
-      this.a($$0, $$6, $$3.getBuffer(this.d()));
-   }
-
-   private void a(T $$0, Matrix4f $$1, ezx $$2) {
-      float $$3 = this.c();
-      float $$4 = this.b();
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, je.d);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, je.c);
-      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, je.f);
-      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, je.e);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, je.a);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, je.b);
-   }
-
-   private void a(T $$0, Matrix4f $$1, ezx $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, je $$11) {
-      if ($$0.a($$11)) {
-         $$2.a($$1, $$3, $$5, $$7).e();
-         $$2.a($$1, $$4, $$5, $$8).e();
-         $$2.a($$1, $$4, $$6, $$9).e();
-         $$2.a($$1, $$3, $$6, $$10).e();
+   public void a(dqt $$0, float $$1, ezw $$2, gdm $$3, int $$4, int $$5) {
+      dbw $$6 = $$0.i();
+      if ($$6 != null) {
+         day $$7 = $$0.c();
+         bss $$8 = $$7.b($$6, $$0.az_());
+         if ($$8 != null) {
+            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
+         }
       }
    }
 
-   protected float b() {
-      return 0.75F;
-   }
+   public static void a(float $$0, ezw $$1, gdm $$2, int $$3, bss $$4, git $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dj(), $$4.dk());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
+      }
 
-   protected float c() {
-      return 0.375F;
-   }
-
-   protected gdr d() {
-      return gdr.u();
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)ayx.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, 0.0F, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

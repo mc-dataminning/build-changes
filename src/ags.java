@@ -1,102 +1,145 @@
-public interface ags extends aaj, ajv {
-   @Override
-   default wk b() {
-      return wk.b;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+public class ags {
+   private static final Logger a = LogUtils.getLogger();
+
+   public static void a(are $$0, iz $$1, String $$2, int $$3, int $$4) {
+      a($$0, (aaw)(new aba($$1, $$3, $$2, $$4)));
    }
 
-   void a(aim var1);
+   public static void a(are $$0) {
+      a($$0, (aaw)(new abb()));
+   }
 
-   void a(aha var1);
+   public static void a(are $$0, dbd $$1) {
+   }
 
-   void a(agy var1);
+   public static void a(are $$0, iz $$1) {
+      d($$0, $$1);
+   }
 
-   void a(agz var1);
+   public static void b(are $$0, iz $$1) {
+      d($$0, $$1);
+   }
 
-   void a(agx var1);
+   public static void c(are $$0, iz $$1) {
+      d($$0, $$1);
+   }
 
-   void a(ahd var1);
+   private static void d(are $$0, iz $$1) {
+   }
 
-   void a(ahg var1);
+   public static void a(dbw $$0, btp $$1, @Nullable eoh $$2, float $$3) {
+   }
 
-   void a(ahh var1);
+   public static void a(dbw $$0, iz $$1) {
+   }
 
-   void a(ahu var1);
+   public static void a(dcr $$0, eiq $$1) {
+   }
 
-   void a(ahi var1);
+   public static void a(dbw $$0, btp $$1, cam $$2) {
+   }
 
-   void a(ahn var1);
+   public static void a(are $$0, Collection<cog> $$1) {
+   }
 
-   void a(ahq var1);
+   public static void a(btn $$0) {
+   }
 
-   void a(ahv var1);
+   public static void a(cfe $$0) {
+   }
 
-   void a(ahw var1);
+   public static void a(ckx $$0) {
+   }
 
-   void a(ahx var1);
+   public static void a(dbw $$0, ji<dwt> $$1, evp $$2) {
+   }
 
-   void a(ahy var1);
+   public static void a(dbw $$0, dwv $$1) {
+   }
 
-   void a(aif var1);
+   public static void a(dbw $$0, iz $$1, dsa $$2, dpc $$3) {
+   }
 
-   void a(aii var1);
+   private static List<String> a(btn $$0, long $$1) {
+      Map<ccr<?>, Optional<? extends ccq<?>>> $$2 = $$0.dS().b();
+      List<String> $$3 = Lists.newArrayList();
 
-   void a(ail var1);
+      for (Entry<ccr<?>, Optional<? extends ccq<?>>> $$4 : $$2.entrySet()) {
+         ccr<?> $$5 = $$4.getKey();
+         Optional<? extends ccq<?>> $$6 = $$4.getValue();
+         String $$10;
+         if ($$6.isPresent()) {
+            ccq<?> $$7 = (ccq<?>)$$6.get();
+            Object $$8 = $$7.c();
+            if ($$5 == ccr.D) {
+               long $$9 = $$1 - (Long)$$8;
+               $$10 = $$9 + " ticks ago";
+            } else if ($$7.e()) {
+               $$10 = a((are)$$0.dP(), $$8) + " (ttl: " + $$7.b() + ")";
+            } else {
+               $$10 = a((are)$$0.dP(), $$8);
+            }
+         } else {
+            $$10 = "-";
+         }
 
-   void a(aio var1);
+         $$3.add(lp.B.b($$5).a() + ": " + $$10);
+      }
 
-   void a(aip var1);
+      $$3.sort(String::compareTo);
+      return $$3;
+   }
 
-   void a(ain var1);
+   private static String a(are $$0, @Nullable Object $$1) {
+      if ($$1 == null) {
+         return "-";
+      } else if ($$1 instanceof UUID) {
+         return a($$0, $$0.a((UUID)$$1));
+      } else if ($$1 instanceof btn) {
+         bss $$2 = (bss)$$1;
+         return agr.a($$2);
+      } else if ($$1 instanceof bqx) {
+         return ((bqx)$$1).af().getString();
+      } else if ($$1 instanceof ccu) {
+         return a($$0, ((ccu)$$1).a());
+      } else if ($$1 instanceof bvr) {
+         return a($$0, ((bvr)$$1).c());
+      } else if ($$1 instanceof jh) {
+         return a($$0, ((jh)$$1).b());
+      } else if ($$1 instanceof bvj) {
+         return a($$0, ((bvj)$$1).b());
+      } else if ($$1 instanceof brl) {
+         bss $$3 = ((brl)$$1).d();
+         return $$3 == null ? $$1.toString() : a($$0, $$3);
+      } else if (!($$1 instanceof Collection)) {
+         return $$1.toString();
+      } else {
+         List<String> $$4 = Lists.newArrayList();
 
-   void a(ahs var1);
+         for (Object $$5 : (Iterable)$$1) {
+            $$4.add(a($$0, $$5));
+         }
 
-   void a(ahr var1);
+         return $$4.toString();
+      }
+   }
 
-   void a(agu var1);
+   private static void a(are $$0, aaw $$1) {
+      zv<?> $$2 = new aac($$1);
 
-   void a(aia var1);
-
-   void a(ahz var1);
-
-   void a(aic var1);
-
-   void a(ahe var1);
-
-   void a(aig var1);
-
-   void a(aih var1);
-
-   void a(aht var1);
-
-   void a(aib var1);
-
-   void a(aie var1);
-
-   void a(aik var1);
-
-   void a(aid var1);
-
-   void a(ahl var1);
-
-   void a(ahm var1);
-
-   void a(ahj var1);
-
-   void a(agv var1);
-
-   void a(aij var1);
-
-   void a(aho var1);
-
-   void a(agw var1);
-
-   void a(ahp var1);
-
-   void a(ahb var1);
-
-   void a(ahf var1);
-
-   void a(ahc var1);
-
-   void a(ahk var1);
+      for (arf $$3 : $$0.x()) {
+         $$3.c.b($$2);
+      }
+   }
 }

@@ -1,80 +1,49 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class fma extends fnb {
+   private static final ale a = new ale("textures/gui/demo_background.png");
+   private fhv b = fhv.a;
+   private fhv c = fhv.a;
 
-public class fma extends fmy {
-   private static final xl a = xl.c("addServer.enterName");
-   private static final xl b = xl.c("addServer.enterIp");
-   private fgz c;
-   private final BooleanConsumer d;
-   private final fye r;
-   private fhi s;
-   private fhi u;
-   private final fmy v;
-
-   public fma(fmy $$0, BooleanConsumer $$1, fye $$2) {
-      super(xl.c("addServer.title"));
-      this.v = $$0;
-      this.d = $$1;
-      this.r = $$2;
+   public fma() {
+      super(xo.c("demo.help.title"));
    }
 
    @Override
-   protected void aN_() {
-      this.u = new fhi(this.p, this.n / 2 - 100, 66, 200, 20, xl.c("addServer.enterName"));
-      this.u.a(this.r.a);
-      this.u.b($$0 -> this.C());
-      this.d(this.u);
-      this.s = new fhi(this.p, this.n / 2 - 100, 106, 200, 20, xl.c("addServer.enterIp"));
-      this.s.f(128);
-      this.s.a(this.r.b);
-      this.s.b($$0 -> this.C());
-      this.d(this.s);
-      this.c(
-         fhg.a(fye.a::a)
-            .a(fye.a.values())
-            .a(this.r.b())
-            .a(this.n / 2 - 100, this.o / 4 + 72, 200, 20, xl.c("addServer.resourcePack"), ($$0, $$1) -> this.r.a($$1))
+   protected void aM_() {
+      int $$0 = -16;
+      this.c(fhc.a(xo.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         ac.k().a("https://aka.ms/BuyMinecraftJava");
+      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
+      this.c(fhc.a(xo.c("demo.help.later"), $$0x -> {
+         this.m.a(null);
+         this.m.n.i();
+      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
+      ffh $$1 = this.m.m;
+      this.b = fhv.a(
+         this.p,
+         xo.a("demo.help.movementShort", $$1.w.k(), $$1.x.k(), $$1.y.k(), $$1.z.k()),
+         xo.c("demo.help.movementMouse"),
+         xo.a("demo.help.jump", $$1.A.k()),
+         xo.a("demo.help.inventory", $$1.D.k())
       );
-      this.c = this.c(fgz.a(xl.c("addServer.add"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 18, 200, 20).a());
-      this.c(fgz.a(xk.e, $$0 -> this.d.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 18, 200, 20).a());
-      this.C();
+      this.c = fhv.a(this.p, xo.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   protected void aD_() {
-      this.b(this.u);
+   public void b(fgp $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2;
+      int $$5 = (this.o - 166) / 2;
+      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
    }
 
    @Override
-   public void a(ffa $$0, int $$1, int $$2) {
-      String $$3 = this.s.a();
-      String $$4 = this.u.a();
-      this.b($$0, $$1, $$2);
-      this.s.a($$3);
-      this.u.a($$4);
-   }
-
-   private void m() {
-      this.r.a = this.u.a();
-      this.r.b = this.s.a();
-      this.d.accept(true);
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.v);
-   }
-
-   private void C() {
-      this.c.j = fzh.b(this.s.a()) && !this.u.a().isEmpty();
-   }
-
-   @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, 16777215);
-      $$0.b(this.p, a, this.n / 2 - 100 + 1, 53, 10526880);
-      $$0.b(this.p, b, this.n / 2 - 100 + 1, 94, 10526880);
-      this.u.a($$0, $$1, $$2, $$3);
-      this.s.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2 + 10;
+      int $$5 = (this.o - 166) / 2 + 8;
+      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
+      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

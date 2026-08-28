@@ -1,26 +1,157 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface eme<P extends emc> {
-   Codec<emc> a = lp.ah.q().dispatch("processor_type", emc::a, eme::codec);
-   Codec<emd> b = a.listOf().xmap(emd::new, emd::a);
-   Codec<emd> c = Codec.withAlternative(b.fieldOf("processors").codec(), b);
-   Codec<ji<emd>> d = akx.a(lq.aK, c);
-   eme<elh> e = a("block_ignore", elh.a);
-   eme<elj> f = a("block_rot", elj.a);
-   eme<elm> g = a("gravity", elm.a);
-   eme<eln> h = a("jigsaw_replacement", eln.a);
-   eme<ely> i = a("rule", ely.a);
-   eme<elq> j = a("nop", elq.a);
-   eme<elg> k = a("block_age", elg.a);
-   eme<elf> l = a("blackstone_replace", elf.a);
-   eme<elo> m = a("lava_submerged_block", elo.a);
-   eme<elv> n = a("protected_blocks", elv.b);
-   eme<ell> o = a("capped", ell.a);
+public class eme {
+   private dju a;
+   private dlk b;
+   private iz c;
+   private boolean d;
+   @Nullable
+   private eia e;
+   private boolean f;
+   @Nullable
+   private azf g;
+   private int h;
+   private final List<emf> i;
+   private boolean j;
+   private boolean k;
 
-   MapCodec<P> codec();
+   public eme() {
+      this.a = dju.a;
+      this.b = dlk.a;
+      this.c = iz.c;
+      this.f = true;
+      this.i = Lists.newArrayList();
+   }
 
-   static <P extends emc> eme<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.ah, $$0, () -> $$1);
+   public eme a() {
+      eme $$0 = new eme();
+      $$0.a = this.a;
+      $$0.b = this.b;
+      $$0.c = this.c;
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.g = this.g;
+      $$0.h = this.h;
+      $$0.i.addAll(this.i);
+      $$0.j = this.j;
+      $$0.k = this.k;
+      return $$0;
+   }
+
+   public eme a(dju $$0) {
+      this.a = $$0;
+      return this;
+   }
+
+   public eme a(dlk $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   public eme a(iz $$0) {
+      this.c = $$0;
+      return this;
+   }
+
+   public eme a(boolean $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public eme a(eia $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public eme a(@Nullable azf $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public eme b(boolean $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public eme c(boolean $$0) {
+      this.j = $$0;
+      return this;
+   }
+
+   public eme b() {
+      this.i.clear();
+      return this;
+   }
+
+   public eme a(emf $$0) {
+      this.i.add($$0);
+      return this;
+   }
+
+   public eme b(emf $$0) {
+      this.i.remove($$0);
+      return this;
+   }
+
+   public dju c() {
+      return this.a;
+   }
+
+   public dlk d() {
+      return this.b;
+   }
+
+   public iz e() {
+      return this.c;
+   }
+
+   public azf b(@Nullable iz $$0) {
+      if (this.g != null) {
+         return this.g;
+      } else {
+         return $$0 == null ? azf.a(ac.c()) : azf.a(ayx.a($$0));
+      }
+   }
+
+   public boolean f() {
+      return this.d;
+   }
+
+   @Nullable
+   public eia g() {
+      return this.e;
+   }
+
+   public boolean h() {
+      return this.j;
+   }
+
+   public List<emf> i() {
+      return this.i;
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   public emi.a a(List<emi.a> $$0, @Nullable iz $$1) {
+      int $$2 = $$0.size();
+      if ($$2 == 0) {
+         throw new IllegalStateException("No palettes");
+      } else {
+         return $$0.get(this.b($$1).a($$2));
+      }
+   }
+
+   public eme d(boolean $$0) {
+      this.k = $$0;
+      return this;
+   }
+
+   public boolean k() {
+      return this.k;
    }
 }

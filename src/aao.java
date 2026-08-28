@@ -1,42 +1,16 @@
-import java.util.UUID;
+import com.google.common.collect.Lists;
 
-public record aao(UUID b, aao.a c) implements zs<aaj> {
-   public static final zj<wl, aao> a = zs.a(aao::a, aao::new);
-
-   private aao(wl $$0) {
-      this($$0.n(), $$0.b(aao.a.class));
-   }
-
-   private void a(wl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
+public record aao(aaw b) implements zv<aam> {
+   private static final int c = 32767;
+   public static final zm<wl, aao> a = aaw.<wl>a($$0 -> aax.a($$0, 32767), ac.a(Lists.newArrayList(new aaw.c[]{new aaw.c<>(aau.b, aau.a)}), $$0 -> {
+   })).a(aao::new, aao::b);
 
    @Override
-   public zu<aao> a() {
-      return aai.n;
+   public zx<aao> a() {
+      return aal.k;
    }
 
-   public void a(aaj $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
-   }
-
-   public aao.a e() {
-      return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-
-      public boolean a() {
-         return this != d && this != e;
-      }
    }
 }

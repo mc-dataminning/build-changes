@@ -1,66 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.function.Consumer;
 
-public abstract class eqt implements eql {
-   protected final List<etn> e;
-   private final Predicate<eqd> a;
+public class eqt extends eqy {
+   public static final MapCodec<eqt> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lp.h.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eqt::new)
+   );
+   private final ji<cui> j;
 
-   protected eqt(List<etn> $$0) {
-      this.e = $$0;
-      this.a = ac.a($$0);
+   private eqt(ji<cui> $$0, int $$1, int $$2, List<etq> $$3, List<ert> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
-   protected static <T extends eqt> P1<Mu<T>, List<etn>> a(Instance<T> $$0) {
-      return $$0.group(etp.a.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
+   @Override
+   public eqx a() {
+      return equ.c;
    }
 
-   public void a(eqj $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
+   @Override
+   public void a(Consumer<cun> $$0, eqg $$1) {
+      $$0.accept(new cun(this.j));
    }
 
-   protected final boolean a(eqd $$0) {
-      return this.a.test($$0);
-   }
-
-   public abstract equ a();
-
-   public abstract static class a<T extends eqt.a<T>> implements etg<T> {
-      private final Builder<etn> a = ImmutableList.builder();
-
-      protected abstract T aC_();
-
-      public T a(etn.a $$0) {
-         this.a.add($$0.build());
-         return this.aC_();
-      }
-
-      public final T e() {
-         return this.aC_();
-      }
-
-      protected List<etn> f() {
-         return this.a.build();
-      }
-
-      public eqk.a a(eqt.a<?> $$0) {
-         return new eqk.a(this, $$0);
-      }
-
-      public eqp.a b(eqt.a<?> $$0) {
-         return new eqp.a(this, $$0);
-      }
-
-      public eqx.a c(eqt.a<?> $$0) {
-         return new eqx.a(this, $$0);
-      }
-
-      public abstract eqt b();
+   public static eqy.a<?> a(dbv $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eqt($$0.r().o(), $$1, $$2, $$3, $$4));
    }
 }

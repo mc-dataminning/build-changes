@@ -1,37 +1,53 @@
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
 
-public class guj {
-   private static final int a = -1;
-   private Optional<Instant> b = Optional.empty();
-   private long c;
-   private long d;
+public final class guj extends guh {
+   private static final long a = a(Runtime.getRuntime().maxMemory());
+   private final LongList b = new LongArrayList();
+   private final LongList c = new LongArrayList();
+   private final LongList d = new LongArrayList();
 
-   public void a() {
-      this.d = -1L;
-      if (this.b.isEmpty()) {
-         this.b = Optional.of(Instant.now());
+   @Override
+   public void a(gub $$0) {
+      if (ffd.Q().C()) {
+         super.a($$0);
       }
    }
 
-   public void a(long $$0) {
-      if (this.d != -1L) {
-         this.c = this.c + Math.max(0L, $$0 - this.d);
-      }
-
-      this.d = $$0;
+   private void g() {
+      this.b.clear();
+      this.c.clear();
+      this.d.clear();
    }
 
-   private int a(Instant $$0) {
-      Duration $$1 = Duration.between($$0, Instant.now());
-      return (int)$$1.toSeconds();
+   @Override
+   public void f() {
+      this.b.add((long)ffd.Q().o());
+      this.h();
+      this.c.add(ffd.Q().p());
    }
 
-   public void a(gty $$0) {
-      this.b.ifPresent($$1 -> $$0.send(gtz.e, $$1x -> {
-            $$1x.a(gub.p, this.a($$1));
-            $$1x.a(gub.q, (int)this.c);
-         }));
+   private void h() {
+      long $$0 = Runtime.getRuntime().totalMemory();
+      long $$1 = Runtime.getRuntime().freeMemory();
+      long $$2 = $$0 - $$1;
+      this.d.add(a($$2));
+   }
+
+   @Override
+   public void b(gub $$0) {
+      $$0.send(guc.c, $$0x -> {
+         $$0x.a(gue.r, new LongArrayList(this.b));
+         $$0x.a(gue.s, new LongArrayList(this.c));
+         $$0x.a(gue.t, new LongArrayList(this.d));
+         $$0x.a(gue.u, this.e());
+         $$0x.a(gue.v, ffd.Q().m.aD());
+         $$0x.a(gue.w, (int)a);
+      });
+      this.g();
+   }
+
+   private static long a(long $$0) {
+      return $$0 / 1000L;
    }
 }

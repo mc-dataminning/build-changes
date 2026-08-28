@@ -1,59 +1,64 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
+import org.joml.Vector3f;
 
-public class ghc implements ggv.a {
-   private final ffa a;
-   private final Map<Long, Map<iz, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+public class ghc implements ggy.a {
+   private final ffd a;
+   private static final int b = 2;
+   private static final float c = 0.09375F;
 
-   ghc(ffa $$0) {
+   public ghc(ffd $$0) {
       this.a = $$0;
    }
 
-   public void a(long $$0, iz $$1) {
-      Map<iz, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
-   }
-
    @Override
-   public void a(ezt $$0, gdj $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.r.Z();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<iz> $$8 = Sets.newHashSet();
-      Map<iz, Integer> $$9 = Maps.newHashMap();
-      ezx $$10 = $$1.getBuffer(gdr.y());
-      Iterator<Entry<Long, Map<iz, Integer>>> $$11 = this.b.entrySet().iterator();
+   public void a(ezw $$0, gdm $$1, double $$2, double $$3, double $$4) {
+      dbx $$5 = this.a.r;
+      faa $$6 = $$1.getBuffer(gdu.A());
+      iz $$7 = iz.a($$2, 0.0, $$4);
 
-      while ($$11.hasNext()) {
-         Entry<Long, Map<iz, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<iz, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<iz, Integer> $$16 : $$14.entrySet()) {
-               iz $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  evh $$19 = new evh(iz.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  gdh.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
+      for (int $$8 = -2; $$8 <= 2; $$8++) {
+         for (int $$9 = -2; $$9 <= 2; $$9++) {
+            dtw $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
+
+            for (Entry<dxs.a, dxs> $$11 : $$10.e()) {
+               dxs.a $$12 = $$11.getKey();
+               dbd $$13 = $$10.f();
+               Vector3f $$14 = this.a($$12);
+
+               for (int $$15 = 0; $$15 < 16; $$15++) {
+                  for (int $$16 = 0; $$16 < 16; $$16++) {
+                     int $$17 = kb.a($$13.e, $$15);
+                     int $$18 = kb.a($$13.f, $$16);
+                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
+                     gdk.b(
+                        $$0,
+                        $$6,
+                        (double)((float)$$17 + 0.25F) - $$2,
+                        (double)$$19,
+                        (double)((float)$$18 + 0.25F) - $$4,
+                        (double)((float)$$17 + 0.75F) - $$2,
+                        (double)($$19 + 0.09375F),
+                        (double)((float)$$18 + 0.75F) - $$4,
+                        $$14.x(),
+                        $$14.y(),
+                        $$14.z(),
+                        1.0F
+                     );
+                  }
                }
             }
          }
       }
+   }
 
-      for (Entry<iz, Integer> $$20 : $$9.entrySet()) {
-         iz $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         ggv.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
-      }
+   private Vector3f a(dxs.a $$0) {
+      return switch ($$0) {
+         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
+         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
+         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
+         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
+         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
+         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
+      };
    }
 }

@@ -1,60 +1,51 @@
+import java.time.Duration;
+import java.time.Instant;
 import javax.annotation.Nullable;
 
-public class guh {
-   private boolean a;
+public abstract class guh {
+   private static final int a = 60000;
+   private static final int b = 10;
+   private int c;
+   private boolean d = false;
    @Nullable
-   private gub.b b;
-   @Nullable
-   private String c;
-   @Nullable
-   private final String d;
+   private Instant e;
 
-   public guh(@Nullable String $$0) {
-      this.d = $$0;
+   public void a() {
+      this.d = true;
+      this.e = Instant.now();
+      this.c = 0;
    }
 
-   public void a(guc.a $$0) {
-      if (this.c != null) {
-         $$0.a(gub.j, !this.c.equals("vanilla"));
+   public void a(gub $$0) {
+      if (this.b()) {
+         this.f();
+         this.c++;
+         this.e = Instant.now();
       }
 
-      $$0.a(gub.k, this.a());
-   }
-
-   private gub.c a() {
-      fye $$0 = ffa.Q().S();
-      if ($$0 != null && $$0.e()) {
-         return gub.c.a;
-      } else {
-         return ffa.Q().U() ? gub.c.b : gub.c.c;
+      if (this.c()) {
+         this.b($$0);
+         this.c = 0;
       }
    }
 
-   public boolean a(gty $$0) {
-      if (!this.a && this.b != null && this.c != null) {
-         this.a = true;
-         $$0.send(gtz.b, $$0x -> {
-            $$0x.a(gub.n, this.b);
-            if (this.d != null) {
-               $$0x.a(gub.o, this.d);
-            }
-         });
-         return true;
-      } else {
-         return false;
-      }
+   public boolean b() {
+      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
    }
 
-   public void a(dbq $$0, boolean $$1) {
-      this.b = switch ($$0) {
-         case a -> $$1 ? gub.b.e : gub.b.a;
-         case b -> gub.b.b;
-         case c -> gub.b.c;
-         case d -> gub.b.d;
-      };
+   public boolean c() {
+      return this.c >= 10;
    }
 
-   public void a(String $$0) {
-      this.c = $$0;
+   public void d() {
+      this.d = false;
    }
+
+   protected int e() {
+      return this.c;
+   }
+
+   public abstract void f();
+
+   public abstract void b(gub var1);
 }

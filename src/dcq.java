@@ -1,42 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dcq {
-   public static final Codec<dcq> a = RecordCodecBuilder.create(
+public record dcq(dbk d, cpj e) {
+   public static final String a = "enabled_features";
+   public static final Codec<dcq> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               avv.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
+               dbk.b.lenientOptionalFieldOf("DataPacks", dbk.a).forGetter(dcq::a), cpl.f.lenientOptionalFieldOf("enabled_features", cpl.h).forGetter(dcq::b)
             )
             .apply($$0, dcq::new)
    );
-   public static final dcq b = new dcq(avw.h, 6000, 8, 2.0);
-   private final ji<avv> c;
-   private final int d;
-   private final int e;
-   private final double f;
+   public static final dcq c = new dcq(dbk.a, cpl.h);
 
-   public dcq(ji<avv> $$0, int $$1, int $$2, double $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public dcq a(cpj $$0) {
+      return new dcq(this.d, this.e.c($$0));
    }
 
-   public ji<avv> a() {
-      return this.c;
-   }
-
-   public int b() {
+   public dbk a() {
       return this.d;
    }
 
-   public int c() {
+   public cpj b() {
       return this.e;
-   }
-
-   public double d() {
-      return this.f;
    }
 }

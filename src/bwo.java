@@ -1,37 +1,27 @@
-public abstract class bwo<E extends btk> implements bve<E>, byt<E> {
-   private bvd.a a;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public bwo() {
-      this.a = bvd.a.a;
-   }
+public class bwo {
+   private static final int a = 1;
 
-   @Override
-   public final bvd.a a() {
-      return this.a;
-   }
+   public static bvh<btn> a(float $$0) {
+      return byt.a(
+         (Function<byt.b<btn>, ? extends App<byt.c<btn>, byw<btn>>>)($$1 -> $$1.group($$1.a(ccr.n), $$1.c(ccr.m), $$1.b(ccr.s))
+               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$6.bR()) {
+                        return false;
+                     } else {
+                        bss $$8 = $$1.b($$4);
+                        if ($$8.a($$6, 1.0)) {
+                           $$6.n($$8);
+                        } else {
+                           $$2.a(new bvr($$8, true));
+                           $$3.a(new ccu(new bvr($$8, false), $$0, 1));
+                        }
 
-   @Override
-   public final boolean e(arb $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = bvd.a.b;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public final void f(arb $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(arb $$0, E $$1, long $$2) {
-      this.a = bvd.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+                        return true;
+                     }
+                  }))
+      );
    }
 }

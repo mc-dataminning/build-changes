@@ -1,29 +1,38 @@
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public record feu(int a, xl b, @Nullable xx c, @Nullable fev d) {
+public class feu {
+   private final fxu a;
+   private int b = -1;
    @Nullable
-   public fev.a a() {
-      return this.d != null ? this.d.f() : null;
+   private Consumer<ur> c;
+
+   public feu(fxu $$0) {
+      this.a = $$0;
    }
 
-   public int b() {
-      return this.a;
+   public boolean a(int $$0, @Nullable ur $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public xl c() {
-      return this.b;
+   private int a(Consumer<ur> $$0) {
+      this.c = $$0;
+      return ++this.b;
    }
 
-   @Nullable
-   public xx d() {
-      return this.c;
+   public void a(int $$0, Consumer<ur> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new ahp($$2, $$0));
    }
 
-   @Nullable
-   public fev e() {
-      return this.d;
-   }
-
-   public static record a(int a, ayg b, @Nullable fev c, boolean d) {
+   public void a(iz $$0, Consumer<ur> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new agy($$2, $$0));
    }
 }

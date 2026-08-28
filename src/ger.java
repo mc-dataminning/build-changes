@@ -1,96 +1,255 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import org.joml.Quaternionf;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import org.joml.Vector3f;
 
 public class ger {
-   public static final ger a = new ger(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
-   public final Vector3f b;
-   public final Vector3f c;
-   public final Vector3f d;
+   public static final List<String> a = Lists.newArrayList(new String[]{"layer0", "layer1", "layer2", "layer3", "layer4"});
+   private static final float b = 7.5F;
+   private static final float c = 8.5F;
 
-   public ger(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
-      this.b = new Vector3f($$0);
-      this.c = new Vector3f($$1);
-      this.d = new Vector3f($$2);
-   }
+   public geo a(Function<grb, gox> $$0, geo $$1) {
+      Map<String, Either<grb, String>> $$2 = Maps.newHashMap();
+      List<gek> $$3 = Lists.newArrayList();
 
-   public void a(boolean $$0, ezt $$1) {
-      if (this != a) {
-         float $$2 = this.b.x();
-         float $$3 = this.b.y();
-         float $$4 = this.b.z();
-         if ($$0) {
-            $$3 = -$$3;
-            $$4 = -$$4;
+      for (int $$4 = 0; $$4 < a.size(); $$4++) {
+         String $$5 = a.get($$4);
+         if (!$$1.b($$5)) {
+            break;
          }
 
-         int $$5 = $$0 ? -1 : 1;
-         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
-         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
-         $$1.b(this.d.x(), this.d.y(), this.d.z());
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (this.getClass() != $$0.getClass()) {
-         return false;
-      } else {
-         ger $$1 = (ger)$$0;
-         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      $$0 = 31 * $$0 + this.c.hashCode();
-      return 31 * $$0 + this.d.hashCode();
-   }
-
-   protected static class a implements JsonDeserializer<ger> {
-      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
-      public static final float a = 5.0F;
-      public static final float b = 4.0F;
-
-      public ger a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Vector3f $$4 = this.a($$3, "rotation", c);
-         Vector3f $$5 = this.a($$3, "translation", d);
-         $$5.mul(0.0625F);
-         $$5.set(ayu.a($$5.x, -5.0F, 5.0F), ayu.a($$5.y, -5.0F, 5.0F), ayu.a($$5.z, -5.0F, 5.0F));
-         Vector3f $$6 = this.a($$3, "scale", e);
-         $$6.set(ayu.a($$6.x, -4.0F, 4.0F), ayu.a($$6.y, -4.0F, 4.0F), ayu.a($$6.z, -4.0F, 4.0F));
-         return new ger($$4, $$5, $$6);
+         grb $$6 = $$1.c($$5);
+         $$2.put($$5, Either.left($$6));
+         gor $$7 = $$0.apply($$6).e();
+         $$3.addAll(this.a($$4, $$5, $$7));
       }
 
-      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
-         if (!$$0.has($$1)) {
-            return $$2;
-         } else {
-            JsonArray $$3 = ayk.v($$0, $$1);
-            if ($$3.size() != 3) {
-               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
-            } else {
-               float[] $$4 = new float[3];
+      $$2.put("particle", $$1.b("particle") ? Either.left($$1.c("particle")) : $$2.get("layer0"));
+      geo $$8 = new geo(null, $$3, $$2, false, $$1.c(), $$1.h(), $$1.e());
+      $$8.c = $$1.c;
+      return $$8;
+   }
 
-               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-                  $$4[$$5] = ayk.e($$3.get($$5), $$1 + "[" + $$5 + "]");
-               }
+   private List<gek> a(int $$0, String $$1, gor $$2) {
+      Map<je, gel> $$3 = Maps.newHashMap();
+      $$3.put(je.d, new gel(null, $$0, $$1, new gen(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0)));
+      $$3.put(je.c, new gel(null, $$0, $$1, new gen(new float[]{16.0F, 0.0F, 0.0F, 16.0F}, 0)));
+      List<gek> $$4 = Lists.newArrayList();
+      $$4.add(new gek(new Vector3f(0.0F, 0.0F, 7.5F), new Vector3f(16.0F, 16.0F, 8.5F), $$3, null, true));
+      $$4.addAll(this.a($$2, $$1, $$0));
+      return $$4;
+   }
 
-               return new Vector3f($$4[0], $$4[1], $$4[2]);
+   private List<gek> a(gor $$0, String $$1, int $$2) {
+      float $$3 = (float)$$0.a();
+      float $$4 = (float)$$0.b();
+      List<gek> $$5 = Lists.newArrayList();
+
+      for (ger.a $$6 : this.a($$0)) {
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         float $$9 = 0.0F;
+         float $$10 = 0.0F;
+         float $$11 = 0.0F;
+         float $$12 = 0.0F;
+         float $$13 = 0.0F;
+         float $$14 = 0.0F;
+         float $$15 = 16.0F / $$3;
+         float $$16 = 16.0F / $$4;
+         float $$17 = (float)$$6.b();
+         float $$18 = (float)$$6.c();
+         float $$19 = (float)$$6.d();
+         ger.b $$20 = $$6.a();
+         switch ($$20) {
+            case a:
+               $$11 = $$17;
+               $$7 = $$17;
+               $$9 = $$12 = $$18 + 1.0F;
+               $$13 = $$19;
+               $$8 = $$19;
+               $$10 = $$19;
+               $$14 = $$19 + 1.0F;
+               break;
+            case b:
+               $$13 = $$19;
+               $$14 = $$19 + 1.0F;
+               $$11 = $$17;
+               $$7 = $$17;
+               $$9 = $$12 = $$18 + 1.0F;
+               $$8 = $$19 + 1.0F;
+               $$10 = $$19 + 1.0F;
+               break;
+            case c:
+               $$11 = $$19;
+               $$7 = $$19;
+               $$9 = $$19;
+               $$12 = $$19 + 1.0F;
+               $$14 = $$17;
+               $$8 = $$17;
+               $$10 = $$13 = $$18 + 1.0F;
+               break;
+            case d:
+               $$11 = $$19;
+               $$12 = $$19 + 1.0F;
+               $$7 = $$19 + 1.0F;
+               $$9 = $$19 + 1.0F;
+               $$14 = $$17;
+               $$8 = $$17;
+               $$10 = $$13 = $$18 + 1.0F;
+         }
+
+         $$7 *= $$15;
+         $$9 *= $$15;
+         $$8 *= $$16;
+         $$10 *= $$16;
+         $$8 = 16.0F - $$8;
+         $$10 = 16.0F - $$10;
+         $$11 *= $$15;
+         $$12 *= $$15;
+         $$13 *= $$16;
+         $$14 *= $$16;
+         Map<je, gel> $$21 = Maps.newHashMap();
+         $$21.put($$20.a(), new gel(null, $$2, $$1, new gen(new float[]{$$11, $$13, $$12, $$14}, 0)));
+         switch ($$20) {
+            case a:
+               $$5.add(new gek(new Vector3f($$7, $$8, 7.5F), new Vector3f($$9, $$8, 8.5F), $$21, null, true));
+               break;
+            case b:
+               $$5.add(new gek(new Vector3f($$7, $$10, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21, null, true));
+               break;
+            case c:
+               $$5.add(new gek(new Vector3f($$7, $$8, 7.5F), new Vector3f($$7, $$10, 8.5F), $$21, null, true));
+               break;
+            case d:
+               $$5.add(new gek(new Vector3f($$9, $$8, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21, null, true));
+         }
+      }
+
+      return $$5;
+   }
+
+   private List<ger.a> a(gor $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      List<ger.a> $$3 = Lists.newArrayList();
+      $$0.d().forEach($$4 -> {
+         for (int $$5 = 0; $$5 < $$2; $$5++) {
+            for (int $$6 = 0; $$6 < $$1; $$6++) {
+               boolean $$7 = !this.a($$0, $$4, $$6, $$5, $$1, $$2);
+               this.a(ger.b.a, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(ger.b.b, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(ger.b.c, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(ger.b.d, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
             }
          }
+      });
+      return $$3;
+   }
+
+   private void a(ger.b $$0, List<ger.a> $$1, gor $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8) {
+      boolean $$9 = this.a($$2, $$3, $$4 + $$0.b(), $$5 + $$0.c(), $$6, $$7) && $$8;
+      if ($$9) {
+         this.a($$1, $$0, $$4, $$5);
+      }
+   }
+
+   private void a(List<ger.a> $$0, ger.b $$1, int $$2, int $$3) {
+      ger.a $$4 = null;
+
+      for (ger.a $$5 : $$0) {
+         if ($$5.a() == $$1) {
+            int $$6 = $$1.d() ? $$3 : $$2;
+            if ($$5.d() == $$6) {
+               $$4 = $$5;
+               break;
+            }
+         }
+      }
+
+      int $$7 = $$1.d() ? $$3 : $$2;
+      int $$8 = $$1.d() ? $$2 : $$3;
+      if ($$4 == null) {
+         $$0.add(new ger.a($$1, $$8, $$7));
+      } else {
+         $$4.a($$8);
+      }
+   }
+
+   private boolean a(gor $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return $$2 >= 0 && $$3 >= 0 && $$2 < $$4 && $$3 < $$5 ? $$0.a($$1, $$2, $$3) : true;
+   }
+
+   static class a {
+      private final ger.b a;
+      private int b;
+      private int c;
+      private final int d;
+
+      public a(ger.b $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public void a(int $$0) {
+         if ($$0 < this.b) {
+            this.b = $$0;
+         } else if ($$0 > this.c) {
+            this.c = $$0;
+         }
+      }
+
+      public ger.b a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public int c() {
+         return this.c;
+      }
+
+      public int d() {
+         return this.d;
+      }
+   }
+
+   static enum b {
+      a(je.b, 0, -1),
+      b(je.a, 0, 1),
+      c(je.f, -1, 0),
+      d(je.e, 1, 0);
+
+      private final je e;
+      private final int f;
+      private final int g;
+
+      private b(final je $$0, final int $$1, final int $$2) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+      }
+
+      public je a() {
+         return this.e;
+      }
+
+      public int b() {
+         return this.f;
+      }
+
+      public int c() {
+         return this.g;
+      }
+
+      boolean d() {
+         return this == b || this == a;
       }
    }
 }

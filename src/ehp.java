@@ -1,24 +1,10 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class ehp extends ehl {
-   public static final MapCodec<ehp> a = ayc.l.fieldOf("chance").xmap(ehp::new, $$0 -> $$0.c);
-   private final int c;
+public abstract class ehp {
+   public static final Codec<ehp> b = lp.U.q().dispatch(ehp::b, ehq::codec);
 
-   private ehp(int $$0) {
-      this.c = $$0;
-   }
+   public abstract Stream<iz> a_(ehn var1, azf var2, iz var3);
 
-   public static ehp a(int $$0) {
-      return new ehp($$0);
-   }
-
-   @Override
-   protected boolean a(ehk $$0, azc $$1, iz $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
-   }
-
-   @Override
-   public ehn<?> b() {
-      return ehn.b;
-   }
+   public abstract ehq<?> b();
 }

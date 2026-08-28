@@ -1,49 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class djq extends deu implements dlv {
+public class djq extends dex {
    public static final MapCodec<djq> a = b(djq::new);
-   public static final dso b = dsn.C;
+   private static final int b = 20;
 
    @Override
    public MapCodec<djq> a() {
       return a;
    }
 
-   protected djq(drw.d $$0) {
+   public djq(drz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(drx $$0, drx $$1, je $$2) {
-      return $$1.a(dew.ac) && $$2.o() == je.a.b;
-   }
+   public void a(dbw $$0, iz $$1, dsa $$2, bss $$3) {
+      if (!$$3.bW() && $$3 instanceof btn && !czz.j((btn)$$3)) {
+         $$3.a($$0.aj().e(), 1.0F);
+      }
 
-   @Nullable
-   @Override
-   public drx a(cxv $$0) {
-      enq $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == enr.c;
-      return super.a($$0).a(b, Boolean.valueOf($$2));
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, enr.c, enr.c.a($$3));
+   protected void a(dsa $$0, are $$1, iz $$2, azf $$3) {
+      dfd.b($$1, $$2.c(), $$0);
+   }
+
+   @Override
+   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
+      if ($$1 == je.b && $$2.a(dez.G)) {
+         $$3.a($$4, this, 20);
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected enq b_(drx $$0) {
-      return $$0.c(b) ? enr.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      $$0.a(b);
+   protected void b(dsa $$0, dbw $$1, iz $$2, dsa $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 }

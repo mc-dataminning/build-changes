@@ -1,28 +1,26 @@
 import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public class ehc extends ehq {
-   public static final MapCodec<ehc> a = bpu.b(0, 256).fieldOf("count").xmap(ehc::new, $$0 -> $$0.c);
-   private final bpu c;
+public class ehc extends ehp {
+   public static final MapCodec<ehc> a = dxo.a.c.fieldOf("step").xmap(ehc::new, $$0 -> $$0.c);
+   private final dxo.a c;
 
-   private ehc(bpu $$0) {
+   private ehc(dxo.a $$0) {
       this.c = $$0;
    }
 
-   public static ehc a(bpu $$0) {
+   public static ehc a(dxo.a $$0) {
       return new ehc($$0);
    }
 
-   public static ehc a(int $$0) {
-      return a(bpr.a($$0));
+   @Override
+   public Stream<iz> a_(ehn $$0, azf $$1, iz $$2) {
+      dbd $$3 = new dbd($$2);
+      return $$0.a($$3, this.c).a($$3);
    }
 
    @Override
-   protected int a(azc $$0, iz $$1) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public ehn<?> b() {
-      return ehn.f;
+   public ehq<?> b() {
+      return ehq.o;
    }
 }

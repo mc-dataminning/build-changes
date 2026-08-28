@@ -1,30 +1,21 @@
-public class gae extends gbj {
-   gae(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbs $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.c(15916745);
-      this.b($$7);
+public class gae extends gaf<ld> {
+   protected gae(fxt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ld $$7, gbv $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.v = this.a($$7.b().x(), $$9);
+      this.w = this.a($$7.b().y(), $$9);
+      this.x = this.a($$7.b().z(), $$9);
    }
 
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
+   public static class a implements gbd<ld> {
+      private final gbv a;
 
-   public static class a implements gba<lm> {
-      private final gbs a;
-
-      public a(gbs $$0) {
+      public a(gbv $$0) {
          this.a = $$0;
       }
 
-      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gae($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public gba a(ld $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gae($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

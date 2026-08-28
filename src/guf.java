@@ -1,74 +1,109 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class guf {
-   public static final guf a = new guf(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<gub<guf.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+   final Map<gue<?>, Object> a;
 
-   protected guf(Ticker $$0) {
-      this.c = $$0;
+   guf(Map<gue<?>, Object> $$0) {
+      this.a = $$0;
    }
 
-   public synchronized void a(gub<guf.a> $$0) {
-      this.a($$0, (Function<gub<guf.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   public static guf.a a() {
+      return new guf.a();
    }
 
-   public synchronized void a(gub<guf.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<gub<guf.a>, Stopwatch>)($$1x -> $$1));
-   }
+   public static MapCodec<guf> a(final List<gue<?>> $$0) {
+      return new MapCodec<guf>() {
+         public <T> RecordBuilder<T> a(guf $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+            RecordBuilder<T> $$3 = $$2;
 
-   private synchronized void a(gub<guf.a> $$0, Function<gub<guf.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
+            for (gue<?> $$4 : $$0) {
+               $$3 = this.a($$0, $$3, $$4);
+            }
 
-   public synchronized void b(gub<guf.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
-      } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
+            return $$3;
          }
+
+         private <T, V> RecordBuilder<T> a(guf $$0x, RecordBuilder<T> $$1, gue<V> $$2) {
+            V $$3 = $$0.a($$2);
+            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
+         }
+
+         public <T> DataResult<guf> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
+            DataResult<guf.a> $$2 = DataResult.success(new guf.a());
+
+            for (gue<?> $$3 : $$0) {
+               $$2 = this.a($$2, $$0, $$1, $$3);
+            }
+
+            return $$2.map(guf.a::a);
+         }
+
+         private <T, V> DataResult<guf.a> a(DataResult<guf.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, gue<V> $$3) {
+            T $$4 = (T)$$2.get($$3.b());
+            if ($$4 != null) {
+               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
+               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
+            } else {
+               return $$0;
+            }
+         }
+
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return $$0.stream().map(gue::b).map($$0::createString);
+         }
+      };
+   }
+
+   @Nullable
+   public <T> T a(gue<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
+   }
+
+   public Set<gue<?>> b() {
+      return this.a.keySet();
+   }
+
+   public static class a {
+      private final Map<gue<?>, Object> a = new Reference2ObjectOpenHashMap();
+
+      a() {
       }
-   }
 
-   public void a(gty $$0) {
-      $$0.send(gtz.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((gub<guf.a>)$$1, new guf.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), gtz.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(gub.B, new guf.a((int)$$1)));
-            this.d.clear();
+      public <T> guf.a a(gue<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public <T> guf.a b(gue<T> $$0, @Nullable T $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
          }
-      });
-   }
 
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
-   }
+         return this;
+      }
 
-   public static record a(int b) {
-      public static final Codec<guf.a> a = Codec.INT.xmap(guf.a::new, $$0 -> $$0.b);
+      public guf.a a(guf $$0) {
+         this.a.putAll($$0.a);
+         return this;
+      }
 
-      public int a() {
-         return this.b;
+      public guf a() {
+         return new guf(this.a);
       }
    }
 }

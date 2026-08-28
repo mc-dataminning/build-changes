@@ -1,38 +1,40 @@
-public class eol extends eoc {
-   private float m = Float.MAX_VALUE;
-   private eoc n;
-   private boolean o;
+import it.unimi.dsi.fastutil.HashCommon;
+import org.jetbrains.annotations.Nullable;
 
-   public eol(eoc $$0) {
-      super($$0.a, $$0.b, $$0.c);
+public class eol {
+   private static final int a = 4096;
+   private static final int b = 4095;
+   private final long[] c = new long[4096];
+   private final eok[] d = new eok[4096];
+
+   public eok a(dbc $$0, iz $$1) {
+      long $$2 = $$1.a();
+      int $$3 = a($$2);
+      eok $$4 = this.a($$3, $$2);
+      return $$4 != null ? $$4 : this.a($$0, $$1, $$3, $$2);
    }
 
-   public eol(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Nullable
+   private eok a(int $$0, long $$1) {
+      return this.c[$$0] == $$1 ? this.d[$$0] : null;
    }
 
-   public void a(float $$0, eoc $$1) {
-      if ($$0 < this.m) {
-         this.m = $$0;
-         this.n = $$1;
+   private eok a(dbc $$0, iz $$1, int $$2, long $$3) {
+      eok $$4 = eop.b($$0, $$1);
+      this.c[$$2] = $$3;
+      this.d[$$2] = $$4;
+      return $$4;
+   }
+
+   public void a(iz $$0) {
+      long $$1 = $$0.a();
+      int $$2 = a($$1);
+      if (this.c[$$2] == $$1) {
+         this.d[$$2] = null;
       }
    }
 
-   public eoc d() {
-      return this.n;
-   }
-
-   public void e() {
-      this.o = true;
-   }
-
-   public boolean f() {
-      return this.o;
-   }
-
-   public static eol c(wl $$0) {
-      eol $$1 = new eol($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
+   private static int a(long $$0) {
+      return (int)HashCommon.mix($$0) & 4095;
    }
 }

@@ -1,66 +1,90 @@
 import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Optional;
 import javax.annotation.Nullable;
+import org.lwjgl.opengl.ARBTimerQuery;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL32C;
 
 public class ezp {
-   @Nullable
-   private static ezw a;
+   private int a;
 
-   public static void a() {
-      if (a != null) {
-         b();
-         ezw.b();
-      }
+   public static Optional<ezp> a() {
+      return ezp.b.a;
    }
 
-   public static void b() {
-      a = null;
-   }
-
-   public static void a(ezo.b $$0) {
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> c($$0));
-      } else {
-         c($$0);
-      }
-   }
-
-   private static void c(ezo.b $$0) {
-      ezw $$1 = d($$0);
-      if ($$1 != null) {
-         $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-      }
-   }
-
-   public static void b(ezo.b $$0) {
-      ezw $$1 = d($$0);
-      if ($$1 != null) {
-         $$1.c();
-      }
-   }
-
-   @Nullable
-   private static ezw d(ezo.b $$0) {
+   public void b() {
       RenderSystem.assertOnRenderThread();
-      if ($$0.d()) {
-         $$0.e();
-         return null;
+      if (this.a != 0) {
+         throw new IllegalStateException("Current profile not ended");
       } else {
-         ezw $$1 = a($$0.c().g());
-         $$1.a($$0);
-         return $$1;
+         this.a = GL32C.glGenQueries();
+         GL32C.glBeginQuery(35007, this.a);
       }
    }
 
-   private static ezw a(ezy $$0) {
-      ezw $$1 = $$0.g();
-      a($$1);
-      return $$1;
+   public ezp.a c() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a == 0) {
+         throw new IllegalStateException("endProfile called before beginProfile");
+      } else {
+         GL32C.glEndQuery(35007);
+         ezp.a $$0 = new ezp.a(this.a);
+         this.a = 0;
+         return $$0;
+      }
    }
 
-   private static void a(ezw $$0) {
-      if ($$0 != a) {
-         $$0.a();
-         a = $$0;
+   public static class a {
+      private static final long a = 0L;
+      private static final long b = -1L;
+      private final int c;
+      private long d;
+
+      a(int $$0) {
+         this.c = $$0;
+      }
+
+      public void a() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = -1L;
+            GL32C.glDeleteQueries(this.c);
+         }
+      }
+
+      public boolean b() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d != 0L) {
+            return true;
+         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+      public long c() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+         }
+
+         return this.d;
+      }
+   }
+
+   static class b {
+      static final Optional<ezp> a = Optional.ofNullable(a());
+
+      private b() {
+      }
+
+      @Nullable
+      private static ezp a() {
+         return !GL.getCapabilities().GL_ARB_timer_query ? null : new ezp();
       }
    }
 }

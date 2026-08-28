@@ -1,20 +1,12 @@
-public class gqr {
-   public static final gqs a = new gqs();
-   public static final boolean b = false;
-   public static final boolean c = false;
-   private final boolean d;
-   private final boolean e;
+import com.mojang.serialization.Codec;
+import java.util.Map;
 
-   public gqr(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
+public record gqr(Map<String, gqe> d) {
+   public static final Codec<String> a = Codec.string(1, 16);
+   public static final Codec<gqr> b = Codec.unboundedMap(a, gqe.a).xmap(gqr::new, gqr::a);
+   public static final ato<gqr> c = ato.a("language", b);
 
-   public boolean a() {
+   public Map<String, gqe> a() {
       return this.d;
-   }
-
-   public boolean b() {
-      return this.e;
    }
 }

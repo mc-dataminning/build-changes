@@ -1,16 +1,12 @@
-public class gkk extends gjy<cfs, fvb<cfs>> {
-   private static final alb a = new alb("textures/entity/bear/polarbear.png");
+public class gkk extends gkb<cfu, fva<cfu>> {
+   private static final ale a = new ale("textures/entity/pig/pig.png");
 
-   public gkk(gis.a $$0) {
-      super($$0, new fvb<>($$0.a(fwu.ba)), 0.9F);
+   public gkk(giv.a $$0) {
+      super($$0, new fva<>($$0.a(fwx.aI)), 0.7F);
+      this.a(new gni<>(this, new fva<>($$0.a(fwx.aQ)), new ale("textures/entity/pig/pig_saddle.png")));
    }
 
-   public alb a(cfs $$0) {
+   public ale a(cfu $$0) {
       return a;
-   }
-
-   protected void a(cfs $$0, ezt $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
-      super.a($$0, $$1, $$2);
    }
 }

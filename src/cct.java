@@ -1,41 +1,60 @@
-public class cct extends ccw {
-   public cct(btm $$0, dbt $$1) {
-      super($$0, $$1);
+import com.google.common.collect.Iterables;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+
+public class cct {
+   private static final cct a = new cct();
+   private final List<btn> b;
+   private final Predicate<btn> c;
+
+   private cct() {
+      this.b = List.of();
+      this.c = $$0 -> false;
    }
 
-   @Override
-   protected eog a(int $$0) {
-      this.o = new enz(false);
-      this.o.a(true);
-      return new eog(this.o, $$0);
+   public cct(btn $$0, List<btn> $$1) {
+      this.b = $$1;
+      Object2BooleanOpenHashMap<btn> $$2 = new Object2BooleanOpenHashMap($$1.size());
+      Predicate<btn> $$3 = $$1x -> cdx.b($$0, $$1x);
+      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
    }
 
-   @Override
-   protected boolean a() {
-      return true;
+   public static cct a() {
+      return a;
    }
 
-   @Override
-   protected evm b() {
-      return new evm(this.a.du(), this.a.e(0.5), this.a.dA());
+   public Optional<btn> a(Predicate<btn> $$0) {
+      for (btn $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return Optional.of($$1);
+         }
+      }
+
+      return Optional.empty();
    }
 
-   @Override
-   protected double a(evm $$0) {
-      return $$0.d;
+   public Iterable<btn> b(Predicate<btn> $$0) {
+      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
    }
 
-   @Override
-   protected boolean a(evm $$0, evm $$1) {
-      return this.a.bi() ? a(this.a, $$0, $$1, false) : false;
+   public Stream<btn> c(Predicate<btn> $$0) {
+      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
    }
 
-   @Override
-   public boolean a(iz $$0) {
-      return !this.b.a_($$0.d()).i();
+   public boolean a(btn $$0) {
+      return this.b.contains($$0) && this.c.test($$0);
    }
 
-   @Override
-   public void a(boolean $$0) {
+   public boolean d(Predicate<btn> $$0) {
+      for (btn $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

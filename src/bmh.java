@@ -1,2 +1,6 @@
-public record bmh<S>(int a, bml<S> b, Object c) {
+public interface bmh {
+   bmh a = () -> {
+   };
+
+   void cut();
 }

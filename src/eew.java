@@ -1,18 +1,40 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eew<P extends eev> {
-   public static final eew<eeu> a = a("mangrove_root_placer", eeu.c);
-   private final MapCodec<P> b;
+public record eew(jm<dex> b, jm<dex> c, efb d, int e, int f, float g) {
+   public static final Codec<eew> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jx.a(lq.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               jx.a(lq.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               efb.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eew::new)
+   );
 
-   private static <P extends eev> eew<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.Y, $$0, new eew<>($$1));
-   }
-
-   private eew(MapCodec<P> $$0) {
-      this.b = $$0;
-   }
-
-   public MapCodec<P> a() {
+   public jm<dex> a() {
       return this.b;
+   }
+
+   public jm<dex> b() {
+      return this.c;
+   }
+
+   public efb c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

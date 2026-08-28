@@ -1,132 +1,134 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
 
-public class caj {
-   private static final cbw a = new cbw(Integer.MAX_VALUE, new cai() {
-      @Override
-      public boolean a() {
+public class caj extends cal {
+   public static final int a = 12;
+   private static final int b = 2;
+   private static final int c = 3;
+   private static final int d = 1;
+   private final buk e;
+   private btn f;
+   private final dbz g;
+   private final double h;
+   private final ccz i;
+   private int j;
+   private final float k;
+   private final float l;
+   private float m;
+   private final boolean n;
+
+   public caj(buk $$0, double $$1, float $$2, float $$3, boolean $$4) {
+      this.e = $$0;
+      this.g = $$0.dP();
+      this.h = $$1;
+      this.i = $$0.K();
+      this.l = $$2;
+      this.k = $$3;
+      this.n = $$4;
+      this.a(EnumSet.of(cal.a.a, cal.a.b));
+      if (!($$0.K() instanceof ccy) && !($$0.K() instanceof ccx)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
+      }
+   }
+
+   @Override
+   public boolean a() {
+      btn $$0 = this.e.P_();
+      if ($$0 == null) {
          return false;
-      }
-   }) {
-      @Override
-      public boolean h() {
+      } else if ($$0.N_()) {
          return false;
-      }
-   };
-   private final Map<cai.a, cbw> b = new EnumMap<>(cai.a.class);
-   private final Set<cbw> c = new ObjectLinkedOpenHashSet();
-   private final Supplier<bnd> d;
-   private final EnumSet<cai.a> e = EnumSet.noneOf(cai.a.class);
-
-   public caj(Supplier<bnd> $$0) {
-      this.d = $$0;
-   }
-
-   public void a(int $$0, cai $$1) {
-      this.c.add(new cbw($$0, $$1));
-   }
-
-   @VisibleForTesting
-   public void a(Predicate<cai> $$0) {
-      this.c.removeIf($$1 -> $$0.test($$1.k()));
-   }
-
-   public void a(cai $$0) {
-      for (cbw $$1 : this.c) {
-         if ($$1.k() == $$0 && $$1.h()) {
-            $$1.d();
-         }
-      }
-
-      this.c.removeIf($$1x -> $$1x.k() == $$0);
-   }
-
-   private static boolean a(cbw $$0, EnumSet<cai.a> $$1) {
-      for (cai.a $$2 : $$0.j()) {
-         if ($$1.contains($$2)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean a(cbw $$0, Map<cai.a, cbw> $$1) {
-      for (cai.a $$2 : $$0.j()) {
-         if (!$$1.getOrDefault($$2, a).a($$0)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public void a() {
-      bnd $$0 = this.d.get();
-      $$0.a("goalCleanup");
-
-      for (cbw $$1 : this.c) {
-         if ($$1.h() && (a($$1, this.e) || !$$1.b())) {
-            $$1.d();
-         }
-      }
-
-      this.b.entrySet().removeIf($$0x -> !((cbw)$$0x.getValue()).h());
-      $$0.c();
-      $$0.a("goalUpdate");
-
-      for (cbw $$2 : this.c) {
-         if (!$$2.h() && !a($$2, this.e) && a($$2, this.b) && $$2.a()) {
-            for (cai.a $$3 : $$2.j()) {
-               cbw $$4 = this.b.getOrDefault($$3, a);
-               $$4.d();
-               this.b.put($$3, $$2);
-            }
-
-            $$2.c();
-         }
-      }
-
-      $$0.c();
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
-      bnd $$1 = this.d.get();
-      $$1.a("goalTick");
-
-      for (cbw $$2 : this.c) {
-         if ($$2.h() && ($$0 || $$2.R_())) {
-            $$2.e();
-         }
-      }
-
-      $$1.c();
-   }
-
-   public Set<cbw> b() {
-      return this.c;
-   }
-
-   public void a(cai.a $$0) {
-      this.e.add($$0);
-   }
-
-   public void b(cai.a $$0) {
-      this.e.remove($$0);
-   }
-
-   public void a(cai.a $$0, boolean $$1) {
-      if ($$1) {
-         this.b($$0);
+      } else if (this.h()) {
+         return false;
+      } else if (this.e.g((bss)$$0) < (double)(this.l * this.l)) {
+         return false;
       } else {
-         this.a($$0);
+         this.f = $$0;
+         return true;
       }
+   }
+
+   @Override
+   public boolean b() {
+      if (this.i.l()) {
+         return false;
+      } else {
+         return this.h() ? false : !(this.e.g((bss)this.f) <= (double)(this.k * this.k));
+      }
+   }
+
+   private boolean h() {
+      return this.e.gq() || this.e.bR() || this.e.ge();
+   }
+
+   @Override
+   public void c() {
+      this.j = 0;
+      this.m = this.e.a(eok.j);
+      this.e.a(eok.j, 0.0F);
+   }
+
+   @Override
+   public void d() {
+      this.f = null;
+      this.i.n();
+      this.e.a(eok.j, this.m);
+   }
+
+   @Override
+   public void e() {
+      this.e.G().a(this.f, 10.0F, (float)this.e.aa());
+      if (--this.j <= 0) {
+         this.j = this.a(10);
+         if (this.e.g((bss)this.f) >= 144.0) {
+            this.i();
+         } else {
+            this.i.a(this.f, this.h);
+         }
+      }
+   }
+
+   private void i() {
+      iz $$0 = this.f.dp();
+
+      for (int $$1 = 0; $$1 < 10; $$1++) {
+         int $$2 = this.a(-3, 3);
+         int $$3 = this.a(-1, 1);
+         int $$4 = this.a(-3, 3);
+         boolean $$5 = this.a($$0.u() + $$2, $$0.v() + $$3, $$0.w() + $$4);
+         if ($$5) {
+            return;
+         }
+      }
+   }
+
+   private boolean a(int $$0, int $$1, int $$2) {
+      if (Math.abs((double)$$0 - this.f.du()) < 2.0 && Math.abs((double)$$2 - this.f.dA()) < 2.0) {
+         return false;
+      } else if (!this.a(new iz($$0, $$1, $$2))) {
+         return false;
+      } else {
+         this.e.b((double)$$0 + 0.5, (double)$$1, (double)$$2 + 0.5, this.e.dF(), this.e.dH());
+         this.i.n();
+         return true;
+      }
+   }
+
+   private boolean a(iz $$0) {
+      eok $$1 = eop.b(this.e, $$0);
+      if ($$1 != eok.c) {
+         return false;
+      } else {
+         dsa $$2 = this.g.a_($$0.d());
+         if (!this.n && $$2.b() instanceof djh) {
+            return false;
+         } else {
+            iz $$3 = $$0.b(this.e.dp());
+            return this.g.a(this.e, this.e.cK().a($$3));
+         }
+      }
+   }
+
+   private int a(int $$0, int $$1) {
+      return this.e.el().a($$1 - $$0 + 1) + $$0;
    }
 }

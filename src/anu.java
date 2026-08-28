@@ -1,38 +1,103 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.base.Stopwatch;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import java.time.Duration;
+import java.util.Optional;
+import org.slf4j.Logger;
 
 public class anu {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.op.failed"));
+   private static final Logger a = LogUtils.getLogger();
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xo.b("commands.locate.structure.not_found", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xo.b("commands.locate.structure.invalid", $$0));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xo.b("commands.locate.biome.not_found", $$0));
+   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> xo.b("commands.locate.poi.not_found", $$0));
+   private static final int f = 100;
+   private static final int g = 6400;
+   private static final int h = 32;
+   private static final int i = 64;
+   private static final int j = 256;
 
-   public static void a(CommandDispatcher<ep> $$0) {
+   public static void a(CommandDispatcher<ep> $$0, el $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("op").requires($$0x -> $$0x.c(3))).then(eq.a("targets", fe.a()).suggests(($$0x, $$1) -> {
-            auz $$2 = ((ep)$$0x.getSource()).l().ah();
-            return eu.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.gb())).map($$0xx -> $$0xx.gb().getName()), $$1);
-         }).executes($$0x -> a((ep)$$0x.getSource(), fe.a($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("locate").requires($$0x -> $$0x.c(2)))
+                  .then(eq.a("structure").then(eq.a("structure", ft.a(lq.aJ)).executes($$0x -> a((ep)$$0x.getSource(), ft.a($$0x, "structure", lq.aJ, c))))))
+               .then(eq.a("biome").then(eq.a("biome", fs.a($$1, lq.az)).executes($$0x -> a((ep)$$0x.getSource(), fs.a($$0x, "biome", lq.az))))))
+            .then(eq.a("poi").then(eq.a("poi", fs.a($$1, lq.V)).executes($$0x -> b((ep)$$0x.getSource(), fs.a($$0x, "poi", lq.V)))))
       );
    }
 
-   private static int a(ep $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      auz $$2 = $$0.l().ah();
-      int $$3 = 0;
+   private static Optional<? extends jm.b<eii>> a(ft.c<eii> $$0, jv<eii> $$1) {
+      return (Optional<? extends jm.b<eii>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> jm.a($$0xx)), $$1::b);
+   }
 
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.f($$4)) {
-            $$2.a($$4);
-            $$3++;
-            $$0.a(() -> xl.a("commands.op.success", $$1.iterator().next().getName()), true);
-         }
-      }
-
-      if ($$3 == 0) {
-         throw a.create();
+   private static int a(ep $$0, ft.c<eii> $$1) throws CommandSyntaxException {
+      jv<eii> $$2 = $$0.e().H_().d(lq.aJ);
+      jm<eii> $$3 = (jm<eii>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
+      iz $$4 = iz.a($$0.d());
+      are $$5 = $$0.e();
+      Stopwatch $$6 = Stopwatch.createStarted(ac.d);
+      Pair<iz, ji<eii>> $$7 = $$5.l().g().a($$5, $$3, $$4, 100, false);
+      $$6.stop();
+      if ($$7 == null) {
+         throw b.create($$1.b());
       } else {
-         return $$3;
+         return a($$0, $$1, $$4, $$7, "commands.locate.structure.success", false, $$6.elapsed());
       }
+   }
+
+   private static int a(ep $$0, fs.c<dcv> $$1) throws CommandSyntaxException {
+      iz $$2 = iz.a($$0.d());
+      Stopwatch $$3 = Stopwatch.createStarted(ac.d);
+      Pair<iz, ji<dcv>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
+      $$3.stop();
+      if ($$4 == null) {
+         throw d.create($$1.b());
+      } else {
+         return a($$0, $$1, $$2, $$4, "commands.locate.biome.success", true, $$3.elapsed());
+      }
+   }
+
+   private static int b(ep $$0, fs.c<ceu> $$1) throws CommandSyntaxException {
+      iz $$2 = iz.a($$0.d());
+      are $$3 = $$0.e();
+      Stopwatch $$4 = Stopwatch.createStarted(ac.d);
+      Optional<Pair<ji<ceu>, iz>> $$5 = $$3.y().e($$1, $$2, 256, cer.b.c);
+      $$4.stop();
+      if ($$5.isEmpty()) {
+         throw e.create($$1.b());
+      } else {
+         return a($$0, $$1, $$2, $$5.get().swap(), "commands.locate.poi.success", false, $$4.elapsed());
+      }
+   }
+
+   public static int a(ep $$0, fs.c<?> $$1, iz $$2, Pair<iz, ? extends ji<?>> $$3, String $$4, boolean $$5, Duration $$6) {
+      String $$7 = (String)$$1.a().map($$1x -> $$1.b(), $$2x -> $$1.b() + " (" + ((ji)$$3.getSecond()).g() + ")");
+      return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
+   }
+
+   public static int a(ep $$0, ft.c<?> $$1, iz $$2, Pair<iz, ? extends ji<?>> $$3, String $$4, boolean $$5, Duration $$6) {
+      String $$7 = (String)$$1.a().map($$0x -> $$0x.a().toString(), $$1x -> "#" + $$1x.b() + " (" + ((ji)$$3.getSecond()).g() + ")");
+      return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
+   }
+
+   private static int a(ep $$0, iz $$1, Pair<iz, ? extends ji<?>> $$2, String $$3, boolean $$4, String $$5, Duration $$6) {
+      iz $$7 = (iz)$$2.getFirst();
+      int $$8 = $$4 ? ayx.d(ayx.c((float)$$1.j($$7))) : ayx.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
+      String $$9 = $$4 ? String.valueOf($$7.v()) : "~";
+      xo $$10 = xr.a((xo)xo.a("chat.coordinates", $$7.u(), $$9, $$7.w()))
+         .a($$2x -> $$2x.a(n.k).a(new xm(xm.a.d, "/tp @s " + $$7.u() + " " + $$9 + " " + $$7.w())).a(new xu(xu.a.a, xo.c("chat.coordinates.tooltip"))));
+      $$0.a(() -> xo.a($$3, $$5, $$10, $$8), false);
+      a.info("Locating element " + $$5 + " took " + $$6.toMillis() + " ms");
+      return $$8;
+   }
+
+   private static float a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$2 - $$0;
+      int $$5 = $$3 - $$1;
+      return ayx.c((float)($$4 * $$4 + $$5 * $$5));
    }
 }

@@ -1,35 +1,7 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
 
-public record art(String b, xp c) {
-   public static final art a = a("");
-
-   public static art a(String $$0) {
-      return new art($$0, xp.c);
-   }
-
-   public static art b(String $$0) {
-      return new art($$0, xp.b);
-   }
-
-   @Nullable
-   public String a() {
-      return this.c.a(this.b);
-   }
-
-   public String b() {
-      return Objects.requireNonNullElse(this.a(), "");
-   }
-
-   public boolean c() {
-      return !this.c.a();
-   }
-
-   public String d() {
-      return this.b;
-   }
-
-   public xp e() {
-      return this.c;
+public record art(GameProfile a, int b, aqt c, boolean d) {
+   public static art a(GameProfile $$0, boolean $$1) {
+      return new art($$0, 0, aqt.a(), $$1);
    }
 }

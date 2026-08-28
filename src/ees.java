@@ -1,20 +1,48 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ees(eey b, float c) {
-   public static final Codec<ees> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eey.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, ees::new)
+public class ees extends eem {
+   public static final MapCodec<ees> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(bpx.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, ees::new)
    );
+   private final bpx b;
 
-   public eey a() {
-      return this.b;
+   public ees(bpx $$0, bpx $$1, bpx $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public float b() {
-      return this.c;
+   @Override
+   protected een<?> a() {
+      return een.b;
+   }
+
+   @Override
+   protected void a(dcc $$0, eem.b $$1, azf $$2, edw $$3, int $$4, eem.a $$5, int $$6, int $$7, int $$8) {
+      iz $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
+
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
+         }
+      }
+   }
+
+   @Override
+   public int a(azf $$0, int $$1, edw $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
+   }
+
+   @Override
+   protected boolean a(azf $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

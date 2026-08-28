@@ -13,15 +13,15 @@ public class gu implements gn {
    }
 
    @Override
-   public evm a(ep $$0) {
-      evm $$1 = $$0.d();
-      return new evm(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
+   public evp a(ep $$0) {
+      evp $$1 = $$0.d();
+      return new evp(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
    }
 
    @Override
-   public evl b(ep $$0) {
-      evl $$1 = $$0.k();
-      return new evl((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public evo b(ep $$0) {
+      evo $$1 = $$0.k();
+      return new evo((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
    }
 
    @Override
@@ -96,7 +96,7 @@ public class gu implements gn {
       return new gu(new gt(false, $$0), new gt(false, $$1), new gt(false, $$2));
    }
 
-   public static gu a(evl $$0) {
+   public static gu a(evo $$0) {
       return new gu(new gt(false, (double)$$0.i), new gt(false, (double)$$0.j), new gt(true, 0.0));
    }
 

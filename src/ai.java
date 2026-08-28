@@ -12,7 +12,7 @@ public record ai(List<List<String>> c) {
    public static final ai b = new ai(List.of());
 
    public ai(wl $$0) {
-      this($$0.a((zk<? super wl, List<String>>)($$0x -> $$0x.a(wl::p))));
+      this($$0.a((zn<? super wl, List<String>>)($$0x -> $$0x.a(wl::p))));
    }
 
    public void a(wl $$0) {

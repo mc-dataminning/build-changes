@@ -1,102 +1,148 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class dhc extends dfd {
+public class dhc extends dej {
+   private static final Logger e = LogUtils.getLogger();
    public static final MapCodec<dhc> a = b(dhc::new);
-   public static final dsv<dst> b = dsn.ae;
+   public static final dsu b = dha.a;
+   public static final dsr c = dsq.A;
+   private static final ks f = new ks();
+   public static final Map<cui, kt> d = ac.a(new Object2ObjectOpenHashMap(), $$0 -> $$0.defaultReturnValue(f));
+   private static final int g = 4;
 
    @Override
    public MapCodec<? extends dhc> a() {
       return a;
    }
 
-   public dhc(drw.d $$0) {
+   public static void a(dbv $$0, kt $$1) {
+      d.put($$0.r(), $$1);
+   }
+
+   public static void a(dbv $$0) {
+      d.put($$0.r(), new kv($$0.r()));
+   }
+
+   protected dhc(drz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dst.b));
+      this.k(this.E.b().a(b, je.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
-      dst $$6 = $$0.c(b);
-      if ($$1.o() != je.a.b || $$6 == dst.b != ($$1 == je.b) || $$2.a(this) && $$2.c(b) != $$6) {
-         return $$6 == dst.b && $$1 == je.a && !$$0.a($$3, $$4) ? dew.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected bqs a(dsa $$0, dbw $$1, iz $$2, cmv $$3, evl $$4) {
+      if ($$1.B) {
+         return bqs.a;
       } else {
-         return dew.a.n();
+         dpf $$5 = $$1.c_($$2);
+         if ($$5 instanceof dpx) {
+            $$3.a((dpx)$$5);
+            if ($$5 instanceof dpy) {
+               $$3.a(awj.ac);
+            } else {
+               $$3.a(awj.ae);
+            }
+         }
+
+         return bqs.c;
       }
    }
 
-   @Nullable
-   @Override
-   public drx a(cxv $$0) {
-      iz $$1 = $$0.a();
-      dbt $$2 = $$0.q();
-      return $$1.v() < $$2.am() - 1 && $$2.a_($$1.c()).a($$0) ? super.a($$0) : null;
-   }
-
-   @Override
-   public void a(dbt $$0, iz $$1, drx $$2, btk $$3, cuk $$4) {
-      iz $$5 = $$1.c();
-      $$0.a($$5, c($$0, $$5, this.n().a(b, dst.a)), 3);
-   }
-
-   @Override
-   protected boolean a(drx $$0, dbw $$1, iz $$2) {
-      if ($$0.c(b) != dst.a) {
-         return super.a($$0, $$1, $$2);
+   protected void a(are $$0, dsa $$1, iz $$2) {
+      dpx $$3 = $$0.a($$2, dph.f).orElse(null);
+      if ($$3 == null) {
+         e.warn("Ignoring dispensing attempt for Dispenser without matching block entity at {}", $$2);
       } else {
-         drx $$3 = $$1.a_($$2.d());
-         return $$3.a(this) && $$3.c(b) == dst.b;
-      }
-   }
-
-   public static void a(dbu $$0, drx $$1, iz $$2, int $$3) {
-      iz $$4 = $$2.c();
-      $$0.a($$2, c($$0, $$2, $$1.a(b, dst.b)), $$3);
-      $$0.a($$4, c($$0, $$4, $$1.a(b, dst.a)), $$3);
-   }
-
-   public static drx c(dbw $$0, iz $$1, drx $$2) {
-      return $$2.b(dsn.C) ? $$2.a(dsn.C, Boolean.valueOf($$0.z($$1))) : $$2;
-   }
-
-   @Override
-   public drx a(dbt $$0, iz $$1, drx $$2, cms $$3) {
-      if (!$$0.B) {
-         if ($$3.f()) {
-            b($$0, $$1, $$2, $$3);
+         kq $$4 = new kq($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.z);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
+            $$0.a(dwt.a, $$2, dwt.a.a($$3.n()));
          } else {
-            a($$2, $$0, $$1, null, $$3, $$3.eX());
-         }
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(dbt $$0, cms $$1, iz $$2, drx $$3, @Nullable dpc $$4, cuk $$5) {
-      super.a($$0, $$1, $$2, dew.a.n(), $$4, $$5);
-   }
-
-   protected static void b(dbt $$0, iz $$1, drx $$2, cms $$3) {
-      dst $$4 = $$2.c(b);
-      if ($$4 == dst.a) {
-         iz $$5 = $$1.d();
-         drx $$6 = $$0.a_($$5);
-         if ($$6.a($$2.b()) && $$6.c(b) == dst.b) {
-            drx $$7 = $$6.u().b(enr.c) ? dew.G.n() : dew.a.n();
-            $$0.a($$5, $$7, 35);
-            $$0.a($$3, 2001, $$5, deu.i($$6));
+            cun $$6 = $$3.a($$5);
+            kt $$7 = this.a($$0, $$6);
+            if ($$7 != kt.b) {
+               $$3.a($$5, $$7.dispense($$4, $$6));
+            }
          }
       }
    }
 
-   @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      $$0.a(b);
+   protected kt a(dbw $$0, cun $$1) {
+      return (kt)(!$$1.a($$0.J()) ? f : d.get($$1.g()));
    }
 
    @Override
-   protected long a(drx $$0, iz $$1) {
-      return ayu.b($$1.u(), $$1.c($$0.c(b) == dst.b ? 0 : 1).v(), $$1.w());
+   protected void a(dsa $$0, dbw $$1, iz $$2, dex $$3, iz $$4, boolean $$5) {
+      boolean $$6 = $$1.C($$2) || $$1.C($$2.c());
+      boolean $$7 = $$0.c(c);
+      if ($$6 && !$$7) {
+         $$1.a($$2, this, 4);
+         $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
+      } else if (!$$6 && $$7) {
+         $$1.a($$2, $$0.a(c, Boolean.valueOf(false)), 2);
+      }
+   }
+
+   @Override
+   protected void a(dsa $$0, are $$1, iz $$2, azf $$3) {
+      this.a($$1, $$0, $$2);
+   }
+
+   @Override
+   public dpf a(iz $$0, dsa $$1) {
+      return new dpx($$0, $$1);
+   }
+
+   @Override
+   public dsa a(cxy $$0) {
+      return this.o().a(b, $$0.d().g());
+   }
+
+   @Override
+   protected void a(dsa $$0, dbw $$1, iz $$2, dsa $$3, boolean $$4) {
+      bqo.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static js a(kq $$0) {
+      return a($$0, 0.7, evp.b);
+   }
+
+   public static js a(kq $$0, double $$1, evp $$2) {
+      je $$3 = $$0.d().c(b);
+      return $$0.a().b($$1 * (double)$$3.j() + $$2.a(), $$1 * (double)$$3.k() + $$2.b(), $$1 * (double)$$3.l() + $$2.c());
+   }
+
+   @Override
+   protected boolean c_(dsa $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dsa $$0, dbw $$1, iz $$2) {
+      return cps.a($$1.c_($$2));
+   }
+
+   @Override
+   protected dld a_(dsa $$0) {
+      return dld.c;
+   }
+
+   @Override
+   protected dsa a(dsa $$0, dlk $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dsa a(dsa $$0, dju $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dsb.a<dex, dsa> $$0) {
+      $$0.a(b, c);
    }
 }

@@ -1,86 +1,147 @@
-import java.util.Set;
-import java.util.function.Predicate;
+import java.util.UUID;
 
-public interface bqi extends bqg {
-   float o_ = 4.0F;
+public abstract class bqi {
+   private final UUID h;
+   protected xo a;
+   protected float b;
+   protected bqi.a c;
+   protected bqi.b d;
+   protected boolean e;
+   protected boolean f;
+   protected boolean g;
 
-   int b();
-
-   boolean c();
-
-   cuk a(int var1);
-
-   cuk a(int var1, int var2);
-
-   cuk b(int var1);
-
-   void a(int var1, cuk var2);
-
-   default int ai_() {
-      return 99;
+   public bqi(UUID $$0, xo $$1, bqi.a $$2, bqi.b $$3) {
+      this.h = $$0;
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.b = 1.0F;
    }
 
-   default int e_(cuk $$0) {
-      return Math.min(this.ai_(), $$0.j());
+   public UUID h() {
+      return this.h;
    }
 
-   void e();
-
-   boolean a(cms var1);
-
-   default void d_(cms $$0) {
+   public xo i() {
+      return this.a;
    }
 
-   default void c(cms $$0) {
+   public void a(xo $$0) {
+      this.a = $$0;
    }
 
-   default boolean b(int $$0, cuk $$1) {
-      return true;
+   public float j() {
+      return this.b;
    }
 
-   default boolean a(bqi $$0, int $$1, cuk $$2) {
-      return true;
+   public void a(float $$0) {
+      this.b = $$0;
    }
 
-   default int a_(cuf $$0) {
-      int $$1 = 0;
+   public bqi.a k() {
+      return this.c;
+   }
 
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         cuk $$3 = this.a($$2);
-         if ($$3.g().equals($$0)) {
-            $$1 += $$3.I();
-         }
+   public void a(bqi.a $$0) {
+      this.c = $$0;
+   }
+
+   public bqi.b l() {
+      return this.d;
+   }
+
+   public void a(bqi.b $$0) {
+      this.d = $$0;
+   }
+
+   public boolean m() {
+      return this.e;
+   }
+
+   public bqi a(boolean $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public boolean n() {
+      return this.f;
+   }
+
+   public bqi b(boolean $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public bqi c(boolean $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean o() {
+      return this.g;
+   }
+
+   public static enum a {
+      a("pink", n.m),
+      b("blue", n.j),
+      c("red", n.e),
+      d("green", n.k),
+      e("yellow", n.o),
+      f("purple", n.b),
+      g("white", n.p);
+
+      private final String h;
+      private final n i;
+
+      private a(final String $$0, final n $$1) {
+         this.h = $$0;
+         this.i = $$1;
       }
 
-      return $$1;
-   }
-
-   default boolean a(Set<cuf> $$0) {
-      return this.a_($$1 -> !$$1.e() && $$0.contains($$1.g()));
-   }
-
-   default boolean a_(Predicate<cuk> $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cuk $$2 = this.a($$1);
-         if ($$0.test($$2)) {
-            return true;
-         }
+      public n a() {
+         return this.i;
       }
 
-      return false;
+      public String b() {
+         return this.h;
+      }
+
+      public static bqi.a a(String $$0) {
+         for (bqi.a $$1 : values()) {
+            if ($$1.h.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return g;
+      }
    }
 
-   static boolean a(dpc $$0, cms $$1) {
-      return a($$0, $$1, 4.0F);
-   }
+   public static enum b {
+      a("progress"),
+      b("notched_6"),
+      c("notched_10"),
+      d("notched_12"),
+      e("notched_20");
 
-   static boolean a(dpc $$0, cms $$1, float $$2) {
-      dbt $$3 = $$0.i();
-      iz $$4 = $$0.aA_();
-      if ($$3 == null) {
-         return false;
-      } else {
-         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
+      private final String f;
+
+      private b(final String $$0) {
+         this.f = $$0;
+      }
+
+      public String a() {
+         return this.f;
+      }
+
+      public static bqi.b a(String $$0) {
+         for (bqi.b $$1 : values()) {
+            if ($$1.f.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return a;
       }
    }
 }

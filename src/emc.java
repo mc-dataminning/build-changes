@@ -1,15 +1,9 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
 public abstract class emc {
-   @Nullable
-   public emf.c a(dbw $$0, iz $$1, iz $$2, emf.c $$3, emf.c $$4, emb $$5) {
-      return $$4;
-   }
+   public static final Codec<emc> c = lp.o.q().dispatch("predicate_type", emc::a, emd::codec);
 
-   protected abstract eme<?> a();
+   public abstract boolean a(dsa var1, azf var2);
 
-   public List<emf.c> a(dci $$0, iz $$1, iz $$2, List<emf.c> $$3, List<emf.c> $$4, emb $$5) {
-      return $$4;
-   }
+   protected abstract emd<?> a();
 }

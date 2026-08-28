@@ -1,62 +1,29 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.floats.FloatConsumer;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
-public class gtl {
-   private static final int a = 100;
-   private final azc b = azc.a();
-   private final ffa c;
-   @Nullable
-   private gsi d;
-   private int e = 100;
+public interface gtl extends gtk {
+   int a = 8192;
 
-   public gtl(ffa $$0) {
-      this.c = $$0;
-   }
+   boolean a(FloatConsumer var1) throws IOException;
 
-   public void a() {
-      avt $$0 = this.c.ak();
-      if (this.d != null) {
-         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
-            this.c.aj().b(this.d);
-            this.e = ayu.a(this.b, 0, $$0.b() / 2);
-         }
+   @Override
+   default ByteBuffer a(int $$0) throws IOException {
+      gtj $$1 = new gtj($$0 + 8192);
 
-         if (!this.c.aj().c(this.d)) {
-            this.d = null;
-            this.e = Math.min(this.e, ayu.a(this.b, $$0.b(), $$0.c()));
-         }
+      while (this.a($$1) && $$1.b() < $$0) {
       }
 
-      this.e = Math.min(this.e, $$0.c());
-      if (this.d == null && this.e-- <= 0) {
-         this.a($$0);
-      }
+      return $$1.a();
    }
 
-   public void a(avt $$0) {
-      this.d = gsd.a($$0.a().a());
-      if (this.d.b() != gtq.a) {
-         this.c.aj().a(this.d);
+   @Override
+   default ByteBuffer b() throws IOException {
+      gtj $$0 = new gtj(16384);
+
+      while (this.a($$0)) {
       }
 
-      this.e = Integer.MAX_VALUE;
-   }
-
-   public void b(avt $$0) {
-      if (this.c($$0)) {
-         this.b();
-      }
-   }
-
-   public void b() {
-      if (this.d != null) {
-         this.c.aj().b(this.d);
-         this.d = null;
-      }
-
-      this.e += 100;
-   }
-
-   public boolean c(avt $$0) {
-      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
+      return $$0.a();
    }
 }

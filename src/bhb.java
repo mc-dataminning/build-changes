@@ -1,69 +1,44 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.Optional;
 
 public class bhb extends DataFix {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("slot_0", "list")
-      .put("slot_1", "sidebar")
-      .put("slot_2", "below_name")
-      .put("slot_3", "sidebar.team.black")
-      .put("slot_4", "sidebar.team.dark_blue")
-      .put("slot_5", "sidebar.team.dark_green")
-      .put("slot_6", "sidebar.team.dark_aqua")
-      .put("slot_7", "sidebar.team.dark_red")
-      .put("slot_8", "sidebar.team.dark_purple")
-      .put("slot_9", "sidebar.team.gold")
-      .put("slot_10", "sidebar.team.gray")
-      .put("slot_11", "sidebar.team.dark_gray")
-      .put("slot_12", "sidebar.team.blue")
-      .put("slot_13", "sidebar.team.green")
-      .put("slot_14", "sidebar.team.aqua")
-      .put("slot_15", "sidebar.team.red")
-      .put("slot_16", "sidebar.team.light_purple")
-      .put("slot_17", "sidebar.team.yellow")
-      .put("slot_18", "sidebar.team.white")
-      .build();
-
-   public bhb(Schema $$0) {
-      super($$0, false);
-   }
-
-   @Nullable
-   private static String a(String $$0) {
-      return a.get($$0);
+   public bhb(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgs.o);
-      OpticFinder<?> $$1 = $$0.findField("data");
-      return this.fixTypeEverywhereTyped(
-         "Scoreboard DisplaySlot rename",
-         $$0,
-         $$1x -> $$1x.updateTyped(
-               $$1,
-               $$0xx -> $$0xx.update(
-                     DSL.remainderFinder(),
-                     $$0xxx -> $$0xxx.update(
-                           "DisplaySlots",
-                           $$0xxxx -> $$0xxxx.updateMapValues(
-                                 $$0xxxxx -> $$0xxxxx.mapFirst(
-                                       $$0xxxxxx -> (Dynamic)DataFixUtils.orElse(
-                                             $$0xxxxxx.asString().result().map(bhb::a).map($$0xxxxxx::createString), $$0xxxxxx
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bgv.q.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(bgv.q))) {
+         throw new IllegalStateException("Poi type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere("POI reorganization", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(bhb::a));
+      }
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Map<Dynamic<T>, Dynamic<T>> $$1 = Maps.newHashMap();
+
+      for (int $$2 = 0; $$2 < 16; $$2++) {
+         String $$3 = String.valueOf($$2);
+         Optional<Dynamic<T>> $$4 = $$0.get($$3).result();
+         if ($$4.isPresent()) {
+            Dynamic<T> $$5 = $$4.get();
+            Dynamic<T> $$6 = $$0.createMap(ImmutableMap.of($$0.createString("Records"), $$5));
+            $$1.put($$0.createInt($$2), $$6);
+            $$0 = $$0.remove($$3);
+         }
+      }
+
+      return $$0.set("Sections", $$0.createMap($$1));
    }
 }

@@ -1,17 +1,32 @@
-public class gid extends gjy<cff, ftk<cff>> {
-   private static final alb a = new alb("textures/entity/chicken.png");
-
-   public gid(gis.a $$0) {
-      super($$0, new ftk<>($$0.a(fwu.z)), 0.3F);
+public class gid extends gkb<cfg, ftj<cfg>> {
+   public gid(giv.a $$0) {
+      super($$0, new ftj<>($$0.a(fwx.t)), 0.4F);
+      this.a(new gmj(this, $$0.f()));
    }
 
-   public alb a(cff $$0) {
-      return a;
+   public ale a(cfg $$0) {
+      return $$0.gw();
    }
 
-   protected float a(cff $$0, float $$1) {
-      float $$2 = ayu.i($$1, $$0.cc, $$0.bY);
-      float $$3 = ayu.i($$1, $$0.cb, $$0.bZ);
-      return (ayu.a($$2) + 1.0F) * $$3;
+   protected void a(cfg $$0, ezw $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b(0.8F, 0.8F, 0.8F);
+   }
+
+   protected void a(cfg $$0, ezw $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$0.G($$4);
+      if ($$6 > 0.0F) {
+         $$1.a(0.4F * $$6, 0.15F * $$6, 0.1F * $$6);
+         $$1.a(a.f.rotationDegrees(ayx.j($$6, 0.0F, 90.0F)));
+         iz $$7 = $$0.dp();
+
+         for (cmv $$9 : $$0.dP().a(cmv.class, new evk($$7).c(2.0, 2.0, 2.0))) {
+            if ($$9.fL()) {
+               $$1.a(0.15F * $$6, 0.0F, 0.0F);
+               break;
+            }
+         }
+      }
    }
 }

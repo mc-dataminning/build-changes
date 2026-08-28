@@ -1,56 +1,111 @@
-public class eas extends eat<ede> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final iz an = iz.c;
-   private final boolean ao;
+import java.util.function.Consumer;
 
-   public static iz a(iz $$0) {
-      return an.a((kd)$$0);
+public class eas {
+   protected static double a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$0 < $$3) {
+         $$0 = $$3;
+      }
+
+      double $$4 = 0.384;
+      double $$5 = $$0 / $$1 * 0.384;
+      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
+      double $$7 = Math.pow($$5, 0.6666666666666666);
+      double $$8 = 0.3333333333333333 * Math.log($$5);
+      double $$9 = $$2 * ($$6 - $$7 - $$8);
+      $$9 = Math.max($$9, 0.0);
+      return $$9 / 0.384 * $$1;
    }
 
-   public eas(boolean $$0) {
-      super(ede.a);
-      this.ao = $$0;
-   }
+   protected static boolean a(dcr $$0, iz $$1, int $$2) {
+      if (b($$0, $$1)) {
+         return false;
+      } else {
+         float $$3 = 6.0F;
+         float $$4 = 6.0F / (float)$$2;
 
-   @Override
-   public boolean a(eav<ede> $$0) {
-      iz $$1 = $$0.e();
-      dco $$2 = $$0.b();
-
-      for (iz $$3 : iz.c(new iz($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new iz($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, dew.F.n());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, dew.fz.n());
-               }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, dew.a.n());
-            } else if (!$$4) {
-               this.a($$2, $$3, dew.F.n());
-            } else if (this.ao) {
-               this.a($$2, new iz($$3), dew.fx.n());
-            } else {
-               this.a($$2, new iz($$3), dew.a.n());
+         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
+            int $$6 = (int)(ayx.b($$5) * (float)$$2);
+            int $$7 = (int)(ayx.a($$5) * (float)$$2);
+            if (b($$0, $$1.b($$6, 0, $$7))) {
+               return false;
             }
+         }
+
+         return true;
+      }
+   }
+
+   protected static boolean a(dbx $$0, iz $$1) {
+      return $$0.a($$1, eas::c);
+   }
+
+   protected static boolean b(dbx $$0, iz $$1) {
+      return $$0.a($$1, eas::e);
+   }
+
+   protected static void a(je $$0, int $$1, boolean $$2, Consumer<dsa> $$3) {
+      if ($$1 >= 3) {
+         $$3.accept(a($$0, dsx.e));
+
+         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
+            $$3.accept(a($$0, dsx.d));
          }
       }
 
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), dew.F.n());
+      if ($$1 >= 2) {
+         $$3.accept(a($$0, dsx.c));
       }
 
-      iz $$6 = $$1.b(2);
-
-      for (je $$7 : je.c.a) {
-         this.a($$2, $$6.a($$7), dew.cq.n().a(dnw.g, $$7));
+      if ($$1 >= 1) {
+         $$3.accept(a($$0, $$2 ? dsx.a : dsx.b));
       }
+   }
 
-      return true;
+   protected static void a(dbx $$0, iz $$1, je $$2, int $$3, boolean $$4) {
+      if (b($$0.a_($$1.a($$2.g())))) {
+         iz.a $$5 = $$1.j();
+         a($$2, $$3, $$4, $$3x -> {
+            if ($$3x.a(dez.st)) {
+               $$3x = $$3x.a(dkp.d, Boolean.valueOf($$0.z($$5)));
+            }
+
+            $$0.a($$5, $$3x, 2);
+            $$5.c($$2);
+         });
+      }
+   }
+
+   protected static boolean c(dbx $$0, iz $$1) {
+      dsa $$2 = $$0.a_($$1);
+      if ($$2.a(awo.bs)) {
+         $$0.a($$1, dez.su.o(), 2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private static dsa a(je $$0, dsx $$1) {
+      return dez.st.o().a(dkp.b, $$0).a(dkp.c, $$1);
+   }
+
+   public static boolean a(dsa $$0) {
+      return b($$0) || $$0.a(dez.H);
+   }
+
+   public static boolean b(dsa $$0) {
+      return $$0.a(dez.su) || $$0.a(awo.bs);
+   }
+
+   public static boolean c(dsa $$0) {
+      return $$0.i() || $$0.a(dez.G);
+   }
+
+   public static boolean d(dsa $$0) {
+      return !$$0.i() && !$$0.a(dez.G);
+   }
+
+   public static boolean e(dsa $$0) {
+      return $$0.i() || $$0.a(dez.G) || $$0.a(dez.H);
    }
 }

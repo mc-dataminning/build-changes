@@ -21,7 +21,7 @@ public class ui implements ArgumentType<uh> {
       if ($$2.isPresent()) {
          return $$2.get();
       } else {
-         Message $$3 = xl.b("No such test: " + $$1);
+         Message $$3 = xo.b("No such test: " + $$1);
          throw new CommandSyntaxException(new SimpleCommandExceptionType($$3), $$3);
       }
    }

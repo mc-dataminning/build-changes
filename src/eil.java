@@ -1,44 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public record eil(List<eil.a> c, ejc d) {
-   public static final Codec<eil> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eil.a.a.listOf().fieldOf("structures").forGetter(eil::a), ejc.b.fieldOf("placement").forGetter(eil::b)).apply($$0, eil::new)
-   );
-   public static final Codec<ji<eil>> b = akx.a(lq.aL, a);
+public class eil extends epa {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   public eil(ji<eif> $$0, ejc $$1) {
-      this(List.of(new eil.a($$0, 1)), $$1);
+   public static epa.a<eil> a() {
+      return new epa.a<>(eil::new, eil::b, bae.o);
    }
 
-   public static eil.a a(ji<eif> $$0, int $$1) {
-      return new eil.a($$0, $$1);
+   private eil(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public static eil.a a(ji<eif> $$0) {
-      return new eil.a($$0, 1);
+   public eil() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
    }
 
-   public List<eil.a> a() {
+   public static eil b(ur $$0, jk.a $$1) {
+      return new eil(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
+   }
+
+   @Override
+   public ur a(ur $$0, jk.a $$1) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
+   }
+
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
+   }
+
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void d(long $$0) {
+      this.d.remove($$0);
+   }
+
+   public LongSet b() {
       return this.c;
-   }
-
-   public ejc b() {
-      return this.d;
-   }
-
-   public static record a(ji<eif> b, int c) {
-      public static final Codec<eil.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(eif.b.fieldOf("structure").forGetter(eil.a::a), ayc.l.fieldOf("weight").forGetter(eil.a::b)).apply($$0, eil.a::new)
-      );
-
-      public ji<eif> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
    }
 }

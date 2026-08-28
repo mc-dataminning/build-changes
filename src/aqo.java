@@ -1,69 +1,113 @@
-public abstract class aqo extends enc {
-   protected aqo(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+
+public interface aqo<T> {
+   static <T> aqo<T> a(T $$0) {
+      return new aqo.b<>($$0);
    }
 
-   @Override
-   protected boolean a(long $$0) {
-      return $$0 == dba.a;
+   static <T> aqo<T> a(String $$0) {
+      return a(() -> $$0);
    }
 
-   @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         dba $$3 = new dba($$0);
-         int $$4 = $$3.e;
-         int $$5 = $$3.f;
+   static <T> aqo<T> a(Supplier<String> $$0) {
+      return new aqo.a<>($$0);
+   }
 
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               long $$8 = dba.c($$4 + $$6, $$5 + $$7);
-               if ($$8 != $$0) {
-                  this.b($$0, $$8, $$1, $$2);
-               }
-            }
-         }
+   boolean a();
+
+   @Nullable
+   T b(@Nullable T var1);
+
+   @Nullable
+   static <R> R a(aqo<? extends R> $$0, @Nullable R $$1) {
+      R $$2 = (R)$$0.b(null);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   @Nullable
+   String b();
+
+   aqo<T> a(Consumer<T> var1);
+
+   <R> aqo<R> a(Function<T, R> var1);
+
+   <E extends Throwable> T b(Supplier<E> var1) throws E;
+
+   public static record a<T>(Supplier<String> a) implements aqo<T> {
+      @Override
+      public boolean a() {
+         return false;
+      }
+
+      @Nullable
+      @Override
+      public T b(@Nullable T $$0) {
+         return $$0;
+      }
+
+      @Override
+      public String b() {
+         return this.a.get();
+      }
+
+      @Override
+      public aqo<T> a(Consumer<T> $$0) {
+         return this;
+      }
+
+      @Override
+      public <R> aqo<R> a(Function<T, R> $$0) {
+         return new aqo.a(this.a);
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         throw $$0.get();
+      }
+
+      public Supplier<String> c() {
+         return this.a;
       }
    }
 
-   @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-      dba $$4 = new dba($$0);
-      int $$5 = $$4.e;
-      int $$6 = $$4.f;
-
-      for (int $$7 = -1; $$7 <= 1; $$7++) {
-         for (int $$8 = -1; $$8 <= 1; $$8++) {
-            long $$9 = dba.c($$5 + $$7, $$6 + $$8);
-            if ($$9 == $$0) {
-               $$9 = dba.a;
-            }
-
-            if ($$9 != $$1) {
-               int $$10 = this.b($$9, $$0, this.c($$9));
-               if ($$3 > $$10) {
-                  $$3 = $$10;
-               }
-
-               if ($$3 == 0) {
-                  return $$3;
-               }
-            }
-         }
+   public static record b<T>(T a) implements aqo<T> {
+      @Override
+      public boolean a() {
+         return true;
       }
 
-      return $$3;
-   }
+      @Override
+      public T b(@Nullable T $$0) {
+         return this.a;
+      }
 
-   @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return $$0 == dba.a ? this.b($$1) : $$2 + 1;
-   }
+      @Nullable
+      @Override
+      public String b() {
+         return null;
+      }
 
-   protected abstract int b(long var1);
+      @Override
+      public aqo<T> a(Consumer<T> $$0) {
+         $$0.accept(this.a);
+         return this;
+      }
 
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(dba.a, $$0, $$1, $$2);
+      @Override
+      public <R> aqo<R> a(Function<T, R> $$0) {
+         return new aqo.b<>($$0.apply(this.a));
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         return this.a;
+      }
+
+      public T c() {
+         return this.a;
+      }
    }
 }

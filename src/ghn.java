@@ -1,16 +1,45 @@
-public abstract class ghn<T extends ckr, M extends fwn<T>> extends gjj<T, M> {
-   private static final alb a = new alb("textures/entity/zombie/zombie.png");
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   protected ghn(gis.a $$0, M $$1, M $$2, M $$3) {
-      super($$0, $$1, 0.5F);
-      this.a(new gmu<>(this, $$2, $$3, $$0.g()));
+public class ghn implements ggy.a {
+   private final List<iz> a = Lists.newArrayList();
+   private final List<Float> b = Lists.newArrayList();
+   private final List<Float> c = Lists.newArrayList();
+   private final List<Float> d = Lists.newArrayList();
+   private final List<Float> e = Lists.newArrayList();
+   private final List<Float> f = Lists.newArrayList();
+
+   public void a(iz $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.add($$0);
+      this.b.add($$1);
+      this.c.add($$5);
+      this.d.add($$2);
+      this.e.add($$3);
+      this.f.add($$4);
    }
 
-   public alb a(ckr $$0) {
-      return a;
-   }
+   @Override
+   public void a(ezw $$0, gdm $$1, double $$2, double $$3, double $$4) {
+      faa $$5 = $$1.getBuffer(gdu.A());
 
-   protected boolean b(T $$0) {
-      return super.a($$0) || $$0.gx();
+      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
+         iz $$7 = this.a.get($$6);
+         Float $$8 = this.b.get($$6);
+         float $$9 = $$8 / 2.0F;
+         gdk.b(
+            $$0,
+            $$5,
+            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
+            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
+            this.d.get($$6),
+            this.e.get($$6),
+            this.f.get($$6),
+            this.c.get($$6)
+         );
+      }
    }
 }

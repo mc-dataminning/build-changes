@@ -16,30 +16,30 @@ import java.util.function.Predicate;
 
 public class fs<T> implements ArgumentType<fs.c<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xl.b("argument.resource_tag.not_found", $$0, $$1));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xo.b("argument.resource_tag.not_found", $$0, $$1));
    private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> xl.b("argument.resource_tag.invalid_type", $$0, $$1, $$2)
+      ($$0, $$1, $$2) -> xo.b("argument.resource_tag.invalid_type", $$0, $$1, $$2)
    );
    private final jk<T> d;
-   final ala<? extends jv<T>> e;
+   final ald<? extends jv<T>> e;
 
-   public fs(el $$0, ala<? extends jv<T>> $$1) {
+   public fs(el $$0, ald<? extends jv<T>> $$1) {
       this.e = $$1;
       this.d = $$0.b($$1);
    }
 
-   public static <T> fs<T> a(el $$0, ala<? extends jv<T>> $$1) {
+   public static <T> fs<T> a(el $$0, ald<? extends jv<T>> $$1) {
       return new fs<>($$0, $$1);
    }
 
-   public static <T> fs.c<T> a(CommandContext<ep> $$0, String $$1, ala<jv<T>> $$2) throws CommandSyntaxException {
+   public static <T> fs.c<T> a(CommandContext<ep> $$0, String $$1, ald<jv<T>> $$2) throws CommandSyntaxException {
       fs.c<?> $$3 = (fs.c<?>)$$0.getArgument($$1, fs.c.class);
       Optional<fs.c<T>> $$4 = $$3.a($$2);
       return $$4.orElseThrow(() -> (CommandSyntaxException)$$3.a().map($$1xx -> {
-            ala<?> $$2x = $$1xx.h();
+            ald<?> $$2x = $$1xx.h();
             return fo.b.create($$2x.a(), $$2x.b(), $$2.a());
          }, $$1xx -> {
-            axb<?> $$2x = $$1xx.g();
+            axe<?> $$2x = $$1xx.g();
             return c.create($$2x.b(), $$2x.a(), $$2.a());
          }));
    }
@@ -50,8 +50,8 @@ public class fs<T> implements ArgumentType<fs.c<T>> {
 
          try {
             $$0.skip();
-            alb $$2 = alb.a($$0);
-            axb<T> $$3 = axb.a(this.e, $$2);
+            ale $$2 = ale.a($$0);
+            axe<T> $$3 = axe.a(this.e, $$2);
             jm.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.createWithContext($$0, $$2, this.e.a()));
             return new fs.d<>($$4);
          } catch (CommandSyntaxException var6) {
@@ -59,16 +59,16 @@ public class fs<T> implements ArgumentType<fs.c<T>> {
             throw var6;
          }
       } else {
-         alb $$6 = alb.a($$0);
-         ala<T> $$7 = ala.a(this.e, $$6);
+         ale $$6 = ale.a($$0);
+         ald<T> $$7 = ald.a(this.e, $$6);
          ji.c<T> $$8 = this.d.a($$7).orElseThrow(() -> fo.a.createWithContext($$0, $$6, this.e.a()));
          return new fs.b<>($$8);
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      eu.a(this.d.e().map(axb::b), $$1, "#");
-      return eu.a(this.d.c().map(ala::a), $$1);
+      eu.a(this.d.e().map(axe::b), $$1, "#");
+      return eu.a(this.d.c().map(ald::a), $$1);
    }
 
    public Collection<String> getExamples() {
@@ -93,9 +93,9 @@ public class fs<T> implements ArgumentType<fs.c<T>> {
       }
 
       public final class a implements ik.a<fs<T>> {
-         final ala<? extends jv<T>> b;
+         final ald<? extends jv<T>> b;
 
-         a(final ala<? extends jv<T>> $$1) {
+         a(final ald<? extends jv<T>> $$1) {
             this.b = $$1;
          }
 
@@ -117,7 +117,7 @@ public class fs<T> implements ArgumentType<fs.c<T>> {
       }
 
       @Override
-      public <E> Optional<fs.c<E>> a(ala<? extends jv<E>> $$0) {
+      public <E> Optional<fs.c<E>> a(ald<? extends jv<E>> $$0) {
          return this.a.h().c($$0) ? Optional.of((fs.c<E>)this) : Optional.empty();
       }
 
@@ -138,7 +138,7 @@ public class fs<T> implements ArgumentType<fs.c<T>> {
    public interface c<T> extends Predicate<ji<T>> {
       Either<ji.c<T>, jm.c<T>> a();
 
-      <E> Optional<fs.c<E>> a(ala<? extends jv<E>> var1);
+      <E> Optional<fs.c<E>> a(ald<? extends jv<E>> var1);
 
       String b();
    }
@@ -150,7 +150,7 @@ public class fs<T> implements ArgumentType<fs.c<T>> {
       }
 
       @Override
-      public <E> Optional<fs.c<E>> a(ala<? extends jv<E>> $$0) {
+      public <E> Optional<fs.c<E>> a(ald<? extends jv<E>> $$0) {
          return this.a.g().c($$0) ? Optional.of((fs.c<E>)this) : Optional.empty();
       }
 

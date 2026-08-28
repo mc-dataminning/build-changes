@@ -1,231 +1,57 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Iterator;
-import java.util.List;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
 import java.util.Optional;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 
-public class eqi {
-   private static final Logger f = LogUtils.getLogger();
-   public static final eqi a = new eqi(esy.b, Optional.empty(), List.of(), List.of());
-   public static final esx b = esy.q;
-   public static final long c = 0L;
-   public static final Codec<eqi> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               esy.a.lenientOptionalFieldOf("type", b).forGetter($$0x -> $$0x.g),
-               alb.a.optionalFieldOf("random_sequence").forGetter($$0x -> $$0x.h),
-               eqh.a.listOf().optionalFieldOf("pools", List.of()).forGetter($$0x -> $$0x.i),
-               ers.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, eqi::new)
-   );
-   public static final Codec<ji<eqi>> e = akx.a(lq.aU, d);
-   private final esx g;
-   private final Optional<alb> h;
-   private final List<eqh> i;
-   private final List<erq> j;
-   private final BiFunction<cuk, eqd, cuk> k;
+public record eqi<T>(ald<jv<T>> d, Codec<T> e, String f, eqi.a<T> g) {
+   private static final Logger h = LogUtils.getLogger();
+   public static final eqi<etq> a = new eqi<>(lq.aW, ets.a, "predicates", f());
+   public static final eqi<ert> b = new eqi<>(lq.aV, erv.c, "item_modifiers", f());
+   public static final eqi<eql> c = new eqi<>(lq.aU, eql.d, "loot_tables", g());
 
-   eqi(esx $$0, Optional<alb> $$1, List<eqh> $$2, List<erq> $$3) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = ers.a($$3);
+   public void a(eqm $$0, ald<T> $$1, T $$2) {
+      this.g.run($$0, $$1, $$2);
    }
 
-   public static Consumer<cuk> a(arb $$0, Consumer<cuk> $$1) {
-      return $$2 -> {
-         if ($$2.a($$0.J())) {
-            if ($$2.I() < $$2.j()) {
-               $$1.accept($$2);
-            } else {
-               int $$3 = $$2.I();
-
-               while ($$3 > 0) {
-                  cuk $$4 = $$2.c(Math.min($$2.j(), $$3));
-                  $$3 -= $$4.I();
-                  $$1.accept($$4);
-               }
-            }
-         }
-      };
+   public <V> Optional<T> a(ale $$0, DynamicOps<V> $$1, V $$2) {
+      DataResult<T> $$3 = this.e.parse($$1, $$2);
+      $$3.error().ifPresent($$1x -> h.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
+      return $$3.result();
    }
 
-   public void a(eqg $$0, Consumer<cuk> $$1) {
-      this.a(new eqd.a($$0).a(this.h), $$1);
+   public static Stream<eqi<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   public void a(eqd $$0, Consumer<cuk> $$1) {
-      eqd.c<?> $$2 = eqd.a(this);
-      if ($$0.b($$2)) {
-         Consumer<cuk> $$3 = erq.a(this.k, $$1, $$0);
-
-         for (eqh $$4 : this.i) {
-            $$4.a($$3, $$0);
-         }
-
-         $$0.c($$2);
-      } else {
-         f.warn("Detected infinite loop in loot tables");
-      }
+   private static <T extends eqh> eqi.a<T> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public void a(eqg $$0, long $$1, Consumer<cuk> $$2) {
-      this.a(new eqd.a($$0).a($$1).a(this.h), a($$0.a(), $$2));
+   private static eqi.a<eql> g() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public void b(eqg $$0, Consumer<cuk> $$1) {
-      this.a($$0, a($$0.a(), $$1));
+   public ald<jv<T>> b() {
+      return this.d;
    }
 
-   public void b(eqd $$0, Consumer<cuk> $$1) {
-      this.a($$0, a($$0.d(), $$1));
+   public Codec<T> c() {
+      return this.e;
    }
 
-   public ObjectArrayList<cuk> a(eqg $$0, long $$1) {
-      return this.a(new eqd.a($$0).a($$1).a(this.h));
+   public String d() {
+      return this.f;
    }
 
-   public ObjectArrayList<cuk> a(eqg $$0) {
-      return this.a(new eqd.a($$0).a(this.h));
-   }
-
-   private ObjectArrayList<cuk> a(eqd $$0) {
-      ObjectArrayList<cuk> $$1 = new ObjectArrayList();
-      this.b($$0, $$1::add);
-      return $$1;
-   }
-
-   public esx a() {
+   public eqi.a<T> e() {
       return this.g;
    }
 
-   public void a(eqj $$0) {
-      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
-         this.i.get($$1).a($$0.a(".pools[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.j.size(); $$2++) {
-         this.j.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-   }
-
-   public void a(bqi $$0, eqg $$1, long $$2) {
-      eqd $$3 = new eqd.a($$1).a($$2).a(this.h);
-      ObjectArrayList<cuk> $$4 = this.a($$3);
-      azc $$5 = $$3.b();
-      List<Integer> $$6 = this.a($$0, $$5);
-      this.a($$4, $$6.size(), $$5);
-      ObjectListIterator var9 = $$4.iterator();
-
-      while (var9.hasNext()) {
-         cuk $$7 = (cuk)var9.next();
-         if ($$6.isEmpty()) {
-            f.warn("Tried to over-fill a container");
-            return;
-         }
-
-         if ($$7.e()) {
-            $$0.a($$6.remove($$6.size() - 1), cuk.l);
-         } else {
-            $$0.a($$6.remove($$6.size() - 1), $$7);
-         }
-      }
-   }
-
-   private void a(ObjectArrayList<cuk> $$0, int $$1, azc $$2) {
-      List<cuk> $$3 = Lists.newArrayList();
-      Iterator<cuk> $$4 = $$0.iterator();
-
-      while ($$4.hasNext()) {
-         cuk $$5 = $$4.next();
-         if ($$5.e()) {
-            $$4.remove();
-         } else if ($$5.I() > 1) {
-            $$3.add($$5);
-            $$4.remove();
-         }
-      }
-
-      while ($$1 - $$0.size() - $$3.size() > 0 && !$$3.isEmpty()) {
-         cuk $$6 = $$3.remove(ayu.a($$2, 0, $$3.size() - 1));
-         int $$7 = ayu.a($$2, 1, $$6.I() / 2);
-         cuk $$8 = $$6.a($$7);
-         if ($$6.I() > 1 && $$2.h()) {
-            $$3.add($$6);
-         } else {
-            $$0.add($$6);
-         }
-
-         if ($$8.I() > 1 && $$2.h()) {
-            $$3.add($$8);
-         } else {
-            $$0.add($$8);
-         }
-      }
-
-      $$0.addAll($$3);
-      ac.c($$0, $$2);
-   }
-
-   private List<Integer> a(bqi $$0, azc $$1) {
-      ObjectArrayList<Integer> $$2 = new ObjectArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         if ($$0.a($$3).e()) {
-            $$2.add($$3);
-         }
-      }
-
-      ac.c($$2, $$1);
-      return $$2;
-   }
-
-   public static eqi.a b() {
-      return new eqi.a();
-   }
-
-   public static class a implements erm<eqi.a> {
-      private final Builder<eqh> a = ImmutableList.builder();
-      private final Builder<erq> b = ImmutableList.builder();
-      private esx c = eqi.b;
-      private Optional<alb> d = Optional.empty();
-
-      public eqi.a a(eqh.a $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public eqi.a a(esx $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public eqi.a a(alb $$0) {
-         this.d = Optional.of($$0);
-         return this;
-      }
-
-      public eqi.a a(erq.a $$0) {
-         this.b.add($$0.b());
-         return this;
-      }
-
-      public eqi.a a() {
-         return this;
-      }
-
-      public eqi b() {
-         return new eqi(this.c, this.d, this.a.build(), this.b.build());
-      }
+   @FunctionalInterface
+   public interface a<T> {
+      void run(eqm var1, ald<T> var2, T var3);
    }
 }

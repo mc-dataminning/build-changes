@@ -2,43 +2,40 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.BiFunction;
 
-public class ery extends erp {
+public class ery implements ert {
    public static final MapCodec<ery> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ars.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
-                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
-                  ayc.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, ery::new)
+      $$0 -> $$0.group(erv.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, ery::new)
    );
-   private final Optional<String> b;
-   private final Optional<ars<String>> c;
-   private final Optional<Integer> d;
+   public static final Codec<ery> b = erv.b.listOf().xmap(ery::new, $$0 -> $$0.c);
+   private final List<ert> c;
+   private final BiFunction<cun, eqg, cun> d;
 
-   public ery(List<etn> $$0, Optional<ars<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
-      super($$0);
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
+   private ery(List<ert> $$0) {
+      this.c = $$0;
+      this.d = erv.a($$0);
+   }
+
+   public static ery a(List<ert> $$0) {
+      return new ery(List.copyOf($$0));
+   }
+
+   public cun a(cun $$0, eqg $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   protected cuk a(cuk $$0, eqd $$1) {
-      $$0.a(km.I, cxt.a, this::a);
-      return $$0;
-   }
+   public void a(eqm $$0) {
+      ert.super.a($$0);
 
-   private cxt a(cxt $$0) {
-      return new cxt(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+      }
    }
 
    @Override
-   public err<ery> b() {
-      return ers.M;
+   public eru<ery> b() {
+      return erv.I;
    }
 }

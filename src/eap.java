@@ -1,111 +1,99 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class eap {
-   protected static double a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$0 < $$3) {
-         $$0 = $$3;
-      }
+public class eap extends eaw<edh> {
+   private static final dsj a = dsj.a(dez.I);
+   private final dsa b = dez.I.o();
+   private final dsa c = dez.jF.o();
+   private final dsa d = dez.aV.o();
+   private final dsa an = dez.G.o();
 
-      double $$4 = 0.384;
-      double $$5 = $$0 / $$1 * 0.384;
-      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
-      double $$7 = Math.pow($$5, 0.6666666666666666);
-      double $$8 = 0.3333333333333333 * Math.log($$5);
-      double $$9 = $$2 * ($$6 - $$7 - $$8);
-      $$9 = Math.max($$9, 0.0);
-      return $$9 / 0.384 * $$1;
+   public eap(Codec<edh> $$0) {
+      super($$0);
    }
 
-   protected static boolean a(dco $$0, iz $$1, int $$2) {
-      if (b($$0, $$1)) {
+   @Override
+   public boolean a(eay<edh> $$0) {
+      dcr $$1 = $$0.b();
+      iz $$2 = $$0.e();
+      $$2 = $$2.c();
+
+      while ($$1.u($$2) && $$2.v() > $$1.I_() + 2) {
+         $$2 = $$2.d();
+      }
+
+      if (!a.a($$1.a_($$2))) {
          return false;
       } else {
-         float $$3 = 6.0F;
-         float $$4 = 6.0F / (float)$$2;
-
-         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
-            int $$6 = (int)(ayu.b($$5) * (float)$$2);
-            int $$7 = (int)(ayu.a($$5) * (float)$$2);
-            if (b($$0, $$1.b($$6, 0, $$7))) {
-               return false;
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            for (int $$4 = -2; $$4 <= 2; $$4++) {
+               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
+                  return false;
+               }
             }
          }
 
+         for (int $$5 = -2; $$5 <= 0; $$5++) {
+            for (int $$6 = -2; $$6 <= 2; $$6++) {
+               for (int $$7 = -2; $$7 <= 2; $$7++) {
+                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2, this.an, 2);
+
+         for (je $$8 : je.c.a) {
+            $$1.a($$2.a($$8), this.an, 2);
+         }
+
+         iz $$9 = $$2.d();
+         $$1.a($$9, this.b, 2);
+
+         for (je $$10 : je.c.a) {
+            $$1.a($$9.a($$10), this.b, 2);
+         }
+
+         for (int $$11 = -2; $$11 <= 2; $$11++) {
+            for (int $$12 = -2; $$12 <= 2; $$12++) {
+               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
+                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2.b(2, 1, 0), this.c, 2);
+         $$1.a($$2.b(-2, 1, 0), this.c, 2);
+         $$1.a($$2.b(0, 1, 2), this.c, 2);
+         $$1.a($$2.b(0, 1, -2), this.c, 2);
+
+         for (int $$13 = -1; $$13 <= 1; $$13++) {
+            for (int $$14 = -1; $$14 <= 1; $$14++) {
+               if ($$13 == 0 && $$14 == 0) {
+                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
+               } else {
+                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
+               }
+            }
+         }
+
+         for (int $$15 = 1; $$15 <= 3; $$15++) {
+            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
+            $$1.a($$2.b(1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(1, $$15, 1), this.d, 2);
+         }
+
+         List<iz> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
+         azf $$18 = $$0.d();
+         b($$1, ac.a($$17, $$18).c(1));
+         b($$1, ac.a($$17, $$18).c(2));
          return true;
       }
    }
 
-   protected static boolean a(dbu $$0, iz $$1) {
-      return $$0.a($$1, eap::c);
-   }
-
-   protected static boolean b(dbu $$0, iz $$1) {
-      return $$0.a($$1, eap::e);
-   }
-
-   protected static void a(je $$0, int $$1, boolean $$2, Consumer<drx> $$3) {
-      if ($$1 >= 3) {
-         $$3.accept(a($$0, dsu.e));
-
-         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
-            $$3.accept(a($$0, dsu.d));
-         }
-      }
-
-      if ($$1 >= 2) {
-         $$3.accept(a($$0, dsu.c));
-      }
-
-      if ($$1 >= 1) {
-         $$3.accept(a($$0, $$2 ? dsu.a : dsu.b));
-      }
-   }
-
-   protected static void a(dbu $$0, iz $$1, je $$2, int $$3, boolean $$4) {
-      if (b($$0.a_($$1.a($$2.g())))) {
-         iz.a $$5 = $$1.j();
-         a($$2, $$3, $$4, $$3x -> {
-            if ($$3x.a(dew.st)) {
-               $$3x = $$3x.a(dkm.d, Boolean.valueOf($$0.z($$5)));
-            }
-
-            $$0.a($$5, $$3x, 2);
-            $$5.c($$2);
-         });
-      }
-   }
-
-   protected static boolean c(dbu $$0, iz $$1) {
-      drx $$2 = $$0.a_($$1);
-      if ($$2.a(awl.bs)) {
-         $$0.a($$1, dew.su.n(), 2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static drx a(je $$0, dsu $$1) {
-      return dew.st.n().a(dkm.b, $$0).a(dkm.c, $$1);
-   }
-
-   public static boolean a(drx $$0) {
-      return b($$0) || $$0.a(dew.H);
-   }
-
-   public static boolean b(drx $$0) {
-      return $$0.a(dew.su) || $$0.a(awl.bs);
-   }
-
-   public static boolean c(drx $$0) {
-      return $$0.i() || $$0.a(dew.G);
-   }
-
-   public static boolean d(drx $$0) {
-      return !$$0.i() && !$$0.a(dew.G);
-   }
-
-   public static boolean e(drx $$0) {
-      return $$0.i() || $$0.a(dew.G) || $$0.a(dew.H);
+   private static void b(dcr $$0, iz $$1) {
+      $$0.a($$1, dez.J.o(), 3);
+      $$0.a($$1, dph.N).ifPresent($$1x -> $$1x.a(eqc.bd, $$1.a()));
    }
 }

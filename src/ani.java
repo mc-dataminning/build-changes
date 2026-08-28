@@ -1,47 +1,162 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import java.util.Collection;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collections;
+import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class ani {
-   public static final int a = 2;
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xo.b("commands.fill.toobig", $$0, $$1));
+   static final gg b = new gg(dez.a.o(), Collections.emptySet(), null);
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xo.c("commands.fill.failed"));
 
-   public static void a(CommandDispatcher<ep> $$0) {
+   public static void a(CommandDispatcher<ep> $$0, el $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("gamemode").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("fill").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)eq.a("gamemode", fd.a())
-                     .executes($$0x -> a($$0x, Collections.singleton(((ep)$$0x.getSource()).h()), fd.a($$0x, "gamemode"))))
-                  .then(eq.a("target", fc.d()).executes($$0x -> a($$0x, fc.f($$0x, "target"), fd.a($$0x, "gamemode"))))
+               eq.a("from", gl.a())
+                  .then(
+                     eq.a("to", gl.a())
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a(
+                                                "block", gi.a($$1)
+                                             )
+                                             .executes(
+                                                $$0x -> a((ep)$$0x.getSource(), eia.a(gl.a($$0x, "from"), gl.a($$0x, "to")), gi.a($$0x, "block"), ani.a.a, null)
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)eq.a("replace")
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (ep)$$0x.getSource(),
+                                                            eia.a(gl.a($$0x, "from"), gl.a($$0x, "to")),
+                                                            gi.a($$0x, "block"),
+                                                            ani.a.a,
+                                                            null
+                                                         )
+                                                   ))
+                                                .then(
+                                                   eq.a("filter", gh.a($$1))
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ep)$$0x.getSource(),
+                                                               eia.a(gl.a($$0x, "from"), gl.a($$0x, "to")),
+                                                               gi.a($$0x, "block"),
+                                                               ani.a.a,
+                                                               gh.a($$0x, "filter")
+                                                            )
+                                                      )
+                                                )
+                                          ))
+                                       .then(
+                                          eq.a("keep")
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ep)$$0x.getSource(),
+                                                      eia.a(gl.a($$0x, "from"), gl.a($$0x, "to")),
+                                                      gi.a($$0x, "block"),
+                                                      ani.a.a,
+                                                      $$0xx -> $$0xx.c().u($$0xx.d())
+                                                   )
+                                             )
+                                       ))
+                                    .then(
+                                       eq.a("outline")
+                                          .executes(
+                                             $$0x -> a((ep)$$0x.getSource(), eia.a(gl.a($$0x, "from"), gl.a($$0x, "to")), gi.a($$0x, "block"), ani.a.b, null)
+                                          )
+                                    ))
+                                 .then(
+                                    eq.a("hollow")
+                                       .executes(
+                                          $$0x -> a((ep)$$0x.getSource(), eia.a(gl.a($$0x, "from"), gl.a($$0x, "to")), gi.a($$0x, "block"), ani.a.c, null)
+                                       )
+                                 ))
+                              .then(
+                                 eq.a("destroy")
+                                    .executes($$0x -> a((ep)$$0x.getSource(), eia.a(gl.a($$0x, "from"), gl.a($$0x, "to")), gi.a($$0x, "block"), ani.a.d, null))
+                              )
+                        )
+                  )
             )
       );
    }
 
-   private static void a(ep $$0, arc $$1, dbq $$2) {
-      xl $$3 = xl.c("gameMode." + $$2.b());
-      if ($$0.f() == $$1) {
-         $$0.a(() -> xl.a("commands.gamemode.success.self", $$3), true);
+   private static int a(ep $$0, eia $$1, gg $$2, ani.a $$3, @Nullable Predicate<dse> $$4) throws CommandSyntaxException {
+      int $$5 = $$1.d() * $$1.e() * $$1.f();
+      int $$6 = $$0.e().ab().c(dbs.z);
+      if ($$5 > $$6) {
+         throw a.create($$6, $$5);
       } else {
-         if ($$0.e().ab().b(dbp.p)) {
-            $$1.a(xl.a("gameMode.changed", $$3));
+         List<iz> $$7 = Lists.newArrayList();
+         are $$8 = $$0.e();
+         int $$9 = 0;
+
+         for (iz $$10 : iz.b($$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l(), $$1.m())) {
+            if ($$4 == null || $$4.test(new dse($$8, $$10, true))) {
+               gg $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
+               if ($$11 != null) {
+                  dpf $$12 = $$8.c_($$10);
+                  bqj.a_($$12);
+                  if ($$11.a($$8, $$10, 2)) {
+                     $$7.add($$10.i());
+                     $$9++;
+                  }
+               }
+            }
          }
 
-         $$0.a(() -> xl.a("commands.gamemode.success.other", $$1.O_(), $$3), true);
+         for (iz $$13 : $$7) {
+            dex $$14 = $$8.a_($$13).b();
+            $$8.b($$13, $$14);
+         }
+
+         if ($$9 == 0) {
+            throw c.create();
+         } else {
+            int $$15 = $$9;
+            $$0.a(() -> xo.a("commands.fill.success", $$15), true);
+            return $$9;
+         }
       }
    }
 
-   private static int a(CommandContext<ep> $$0, Collection<arc> $$1, dbq $$2) {
-      int $$3 = 0;
+   static enum a {
+      a(($$0, $$1, $$2, $$3) -> $$2),
+      b(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
+                  && $$1.u() != $$0.k()
+                  && $$1.v() != $$0.i()
+                  && $$1.v() != $$0.l()
+                  && $$1.w() != $$0.j()
+                  && $$1.w() != $$0.m()
+               ? null
+               : $$2
+      ),
+      c(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
+                  && $$1.u() != $$0.k()
+                  && $$1.v() != $$0.i()
+                  && $$1.v() != $$0.l()
+                  && $$1.w() != $$0.j()
+                  && $$1.w() != $$0.m()
+               ? ani.b
+               : $$2
+      ),
+      d(($$0, $$1, $$2, $$3) -> {
+         $$3.b($$1, true);
+         return $$2;
+      });
 
-      for (arc $$4 : $$1) {
-         if ($$4.a($$2)) {
-            a((ep)$$0.getSource(), $$4, $$2);
-            $$3++;
-         }
+      public final aou.a e;
+
+      private a(final aou.a $$0) {
+         this.e = $$0;
       }
-
-      return $$3;
    }
 }

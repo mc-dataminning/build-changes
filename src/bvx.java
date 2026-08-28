@@ -1,27 +1,37 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bvx {
-   public static bve<btk> a(float $$0, boolean $$1, int $$2) {
-      return a($$0x -> true, $$0, $$1, $$2);
-   }
-
-   public static <E extends btk> bve<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
-      return byq.a((Function<byq.b<E>, ? extends App<byq.c<E>, byt<E>>>)($$4 -> {
-         byq<E, ? extends byr<? extends K1, ccr>> $$5 = $$2 ? $$4.a(cco.m) : $$4.c(cco.m);
-         return $$4.group($$4.a(cco.n), $$5, $$4.b(cco.L), $$4.a(cco.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
-               cjc $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dP().C_().a($$11.dp())) {
-                  ccr $$12 = new ccr(new bvo($$11, false), $$1, 0);
-                  $$4x.a(new bvo($$11, true));
-                  $$5x.a($$12);
-                  return true;
-               } else {
+   public static bvh<cmi> a(float $$0, int $$1) {
+      return byt.a((Function<byt.b<cmi>, ? extends App<byt.c<cmi>, byw<cmi>>>)($$2 -> $$2.group($$2.c(ccr.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.c($$4.dp())) {
                   return false;
+               } else {
+                  cer $$6 = $$3.y();
+                  int $$7 = $$6.a(kb.a($$4.dp()));
+                  evp $$8 = null;
+
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     evp $$10 = cel.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(kb.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(kb.a(iz.a($$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
+
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
+                        }
+                     }
+                  }
+
+                  if ($$8 != null) {
+                     $$2x.a(new ccu($$8, $$0, $$1));
+                  }
+
+                  return true;
                }
-            });
-      }));
+            })));
    }
 }

@@ -1,36 +1,23 @@
-public record aax(iz c, int d, String e, int f) implements aat {
-   public static final zj<wl, aax> a = aat.a(aax::a, aax::new);
-   public static final aat.b<aax> b = aat.a("debug/game_test_add_marker");
-
-   private aax(wl $$0) {
-      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
-   }
-
-   private void a(wl $$0) {
-      $$0.a(this.c);
-      $$0.p(this.d);
-      $$0.a(this.e);
-      $$0.p(this.f);
+public record aax(ale a) implements aaw {
+   public static <T extends wl> zm<T, aax> a(ale $$0, int $$1) {
+      return aaw.a(($$0x, $$1x) -> {
+      }, $$2 -> {
+         int $$3 = $$2.readableBytes();
+         if ($$3 >= 0 && $$3 <= $$1) {
+            $$2.j($$3);
+            return new aax($$0);
+         } else {
+            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
+         }
+      });
    }
 
    @Override
-   public aat.b<aax> a() {
-      return b;
+   public aaw.b<aax> a() {
+      return new aaw.b<>(this.a);
    }
 
-   public iz b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public String d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
+   public ale b() {
+      return this.a;
    }
 }

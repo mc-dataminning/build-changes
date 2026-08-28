@@ -1,48 +1,44 @@
 import com.mojang.serialization.MapCodec;
 
-public class dlg extends deu {
-   public static final MapCodec<dlg> h = b(dlg::new);
-   public static final dsv<je.a> i = dsn.I;
+public abstract class dlg extends dha {
+   protected static final float f = 6.0F;
+   protected static final float g = 10.0F;
+   protected static final ewi h = dex.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final ewi i = dex.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final ewi j = dex.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-   @Override
-   public MapCodec<? extends dlg> a() {
-      return h;
-   }
-
-   public dlg(drw.d $$0) {
+   protected dlg(drz.d $$0) {
       super($$0);
-      this.k(this.n().a(i, je.a.b));
    }
 
    @Override
-   protected drx a(drx $$0, dlh $$1) {
-      return b($$0, $$1);
-   }
+   protected abstract MapCodec<? extends dlg> a();
 
-   public static drx b(drx $$0, dlh $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((je.a)$$0.c(i)) {
-               case a:
-                  return $$0.a(i, je.a.c);
-               case c:
-                  return $$0.a(i, je.a.a);
-               default:
-                  return $$0;
-            }
+   @Override
+   protected ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
          default:
-            return $$0;
+            return j;
+         case c:
+            return i;
+         case b:
+            return h;
       }
    }
 
    @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      $$0.a(i);
+   protected dsa a(dsa $$0, dlk $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   public drx a(cxv $$0) {
-      return this.n().a(i, $$0.k().o());
+   protected dsa a(dsa $$0, dju $$1) {
+      return $$0.a(a, $$1.b($$0.c(a)));
+   }
+
+   @Override
+   protected boolean a(dsa $$0, eoi $$1) {
+      return false;
    }
 }

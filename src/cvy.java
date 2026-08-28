@@ -1,32 +1,44 @@
-public class cvy extends cvb implements cvc {
-   public cvy(cuf.a $$0) {
-      super($$0);
+import java.util.Map;
+import javax.annotation.Nullable;
+
+public class cvy extends csl {
+   protected final dex a;
+   private final je b;
+
+   public cvy(dex $$0, dex $$1, cui.a $$2, je $$3) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
    }
 
+   protected boolean a(dbz $$0, dsa $$1, iz $$2) {
+      return $$1.a($$0, $$2);
+   }
+
+   @Nullable
    @Override
-   public bqq<cuk> a(dbt $$0, cms $$1, bqo $$2) {
-      cuk $$3 = $$1.b($$2);
-      if (!$$0.B) {
-         cnw $$4 = new cnw($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dH(), $$1.dF(), -20.0F, 0.5F, 1.0F);
-         $$0.b($$4);
+   protected dsa c(cxy $$0) {
+      dsa $$1 = this.a.a($$0);
+      dsa $$2 = null;
+      dbz $$3 = $$0.q();
+      iz $$4 = $$0.a();
+
+      for (je $$5 : $$0.f()) {
+         if ($$5 != this.b.g()) {
+            dsa $$6 = $$5 == this.b ? this.d().a($$0) : $$1;
+            if ($$6 != null && this.a($$3, $$6, $$4)) {
+               $$2 = $$6;
+               break;
+            }
+         }
       }
 
-      $$1.b(awg.c.b(this));
-      $$3.a(1, $$1);
-      return bqq.a($$3, $$0.x_());
+      return $$2 != null && $$3.a($$2, $$4, evu.a()) ? $$2 : null;
    }
 
    @Override
-   public cnk a(dbt $$0, js $$1, cuk $$2, je $$3) {
-      cnw $$4 = new cnw($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
-   }
-
-   @Override
-   public cvc.a c() {
-      return cvc.a.a().a(cvc.a.a.c() * 0.5F).b(cvc.a.a.d() * 1.25F).a();
+   public void a(Map<dex, cui> $$0, cui $$1) {
+      super.a($$0, $$1);
+      $$0.put(this.a, $$1);
    }
 }

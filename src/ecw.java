@@ -1,32 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class ecw implements ecx {
+public class ecw implements eda {
    public static final Codec<ecw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(iz.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, ecw::new)
+      $$0 -> $$0.group(
+               dsa.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
+               dsa.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
+               bpx.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
+               bpx.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ecw::new)
    );
-   private final Optional<iz> b;
-   private final boolean c;
+   private final dsa b;
+   private final dsa c;
+   private final bpx d;
+   private final bpx e;
 
-   private ecw(Optional<iz> $$0, boolean $$1) {
+   public ecw(dsa $$0, dsa $$1, bpx $$2, bpx $$3) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public static ecw a(iz $$0, boolean $$1) {
-      return new ecw(Optional.of($$0), $$1);
-   }
-
-   public static ecw a() {
-      return new ecw(Optional.empty(), false);
-   }
-
-   public Optional<iz> b() {
+   public dsa a() {
       return this.b;
    }
 
-   public boolean c() {
+   public dsa b() {
       return this.c;
+   }
+
+   public bpx c() {
+      return this.d;
+   }
+
+   public bpx d() {
+      return this.e;
    }
 }

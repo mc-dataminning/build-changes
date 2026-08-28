@@ -1,4 +1,29 @@
-public class ajf {
-   public static final wt<ajg> a = zx.a(wk.d, $$0 -> $$0.a(aje.g, aji.a).a(aje.h, ajj.a).a(aje.f, ajh.a).a(aje.i, ajk.b).a(aca.b, acc.a));
-   public static final wt<aiy> b = zx.b(wk.d, $$0 -> $$0.a(aje.e, ajd.a).a(aje.c, ajb.a).a(aje.b, aja.a).a(aje.d, ajc.a).a(aje.a, aiz.a).a(aca.a, abz.a));
+public class ajf implements zv<ajb> {
+   public static final zm<wl, ajf> a = zv.a(ajf::a, ajf::new);
+   private final int b;
+
+   public ajf(int $$0) {
+      this.b = $$0;
+   }
+
+   private ajf(wl $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(wl $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zx<ajf> a() {
+      return ajh.d;
+   }
+
+   public void a(ajb $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
 }

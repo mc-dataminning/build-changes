@@ -1,42 +1,59 @@
-public class fmq extends fmy {
-   protected final fmy b;
-   protected final ffe c;
-   public final fkm d = new fkm(this);
+public class fmq extends fnb {
+   private static final xo a = xo.c("symlink_warning.title.world").a(n.r);
+   private static final xo b = xo.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
+   private static final xo c = xo.c("symlink_warning.title.pack").a(n.r);
+   private static final xo d = xo.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
+   private final xo r;
+   private final String s;
+   private final Runnable u;
+   private final fko v = new fko().b(10);
 
-   public fmq(fmy $$0, ffe $$1, xl $$2) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
+   public fmq(xo $$0, xo $$1, String $$2, Runnable $$3) {
+      super($$0);
+      this.r = $$1;
+      this.s = $$2;
+      this.u = $$3;
+   }
+
+   public static fnb a(Runnable $$0) {
+      return new fmq(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
+   }
+
+   public static fnb b(Runnable $$0) {
+      return new fmq(c, d, "https://aka.ms/MinecraftSymLinks", $$0);
    }
 
    @Override
-   protected void aN_() {
-      this.m();
-      this.h();
-      this.d.a(this::c);
+   protected void aM_() {
+      super.aM_();
+      this.v.c().b();
+      fko.b $$0 = this.v.d(1);
+      $$0.a(new fij(this.l, this.p));
+      $$0.a(new fhw(this.r, this.p).d(this.n - 50).b(true));
+      int $$1 = 120;
+      fko $$2 = new fko().a(5);
+      fko.b $$3 = $$2.d(3);
+      $$3.a(fhc.a(xn.n, $$0x -> ac.k().a(this.s)).b(120, 20).a());
+      $$3.a(fhc.a(xn.o, $$0x -> this.m.o.a(this.s)).b(120, 20).a());
+      $$3.a(fhc.a(xn.k, $$0x -> this.d()).b(120, 20).a());
+      $$0.a($$2);
       this.c();
-   }
-
-   protected void m() {
-      this.d.a(this.l, this.p);
-   }
-
-   protected void h() {
-      this.d.b(fgz.a(xk.d, $$0 -> this.d()).a(200).a());
+      this.v.a(this::c);
    }
 
    @Override
    protected void c() {
-      this.d.a();
+      this.v.a();
+      fkn.a(this.v, this.G());
    }
 
    @Override
-   public void j() {
-      this.m.m.av();
+   public xo i() {
+      return xn.a(super.i(), this.r);
    }
 
    @Override
    public void d() {
-      this.m.a(this.b);
+      this.u.run();
    }
 }

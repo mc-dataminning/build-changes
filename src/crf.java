@@ -1,68 +1,28 @@
-import javax.annotation.Nullable;
-
-public class crf implements bqi, cre {
-   private final jr<cuk> b = jr.a(1, cuk.l);
-   @Nullable
-   private cys<?> c;
-
-   @Override
-   public int b() {
-      return 1;
+public abstract class crf<C extends bql> extends cps {
+   public crf(cqz<?> $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   public boolean c() {
-      for (cuk $$0 : this.b) {
-         if (!$$0.e()) {
-            return false;
-         }
-      }
-
-      return true;
+   public void a(boolean $$0, cyv<?> $$1, arf $$2) {
+      new aks<>(this).a($$2, (cyv<? extends cyt<C>>)$$1, $$0);
    }
 
-   @Override
-   public cuk a(int $$0) {
-      return this.b.get(0);
-   }
+   public abstract void a(cmz var1);
 
    @Override
-   public cuk a(int $$0, int $$1) {
-      return bqj.a(this.b, 0);
-   }
+   public abstract void l();
 
-   @Override
-   public cuk b(int $$0) {
-      return bqj.a(this.b, 0);
-   }
+   public abstract boolean a(cyv<? extends cyt<C>> var1);
 
-   @Override
-   public void a(int $$0, cuk $$1) {
-      this.b.set(0, $$1);
-   }
+   public abstract int m();
 
-   @Override
-   public void e() {
-   }
+   public abstract int n();
 
-   @Override
-   public boolean a(cms $$0) {
-      return true;
-   }
+   public abstract int o();
 
-   @Override
-   public void a() {
-      this.b.clear();
-   }
+   public abstract int p();
 
-   @Override
-   public void a(@Nullable cys<?> $$0) {
-      this.c = $$0;
-   }
+   public abstract crg t();
 
-   @Nullable
-   @Override
-   public cys<?> d() {
-      return this.c;
-   }
+   public abstract boolean e(int var1);
 }

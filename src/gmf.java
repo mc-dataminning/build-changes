@@ -1,24 +1,13 @@
-public class gmf extends gne<cjo, ftt<cjo>> {
-   private final ged a;
+public class gmf extends gnh<ckx, fth<ckx>> {
+   private static final gdu a = gdu.q(new ale("textures/entity/breeze/breeze_eyes.png"));
 
-   public gmf(gko<cjo, ftt<cjo>> $$0, ged $$1) {
+   public gmf(gkr<ckx, fth<ckx>> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(ezt $$0, gdj $$1, int $$2, cjo $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      drx $$10 = $$3.gq();
-      if ($$10 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$11 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$10, $$0, $$1, $$2, gol.d);
-         $$0.b();
-      }
+   public void a(ezw $$0, gdm $$1, int $$2, ckx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      faa $$10 = $$1.getBuffer(a);
+      fth<ckx> $$11 = this.c();
+      gib.a($$11, $$11.b(), $$11.c()).a($$0, $$10, $$2, goo.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

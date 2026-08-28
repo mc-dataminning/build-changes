@@ -1,42 +1,117 @@
-public class gbe extends gbd {
-   gbe(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.D *= 1.5F;
-      this.t = (int)(Math.random() * 2.0) + 60;
-   }
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   @Override
-   public float b(float $$0) {
-      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
-      return this.D * $$1;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         this.g = this.g + this.j * (double)$$0;
-         this.h = this.h + this.k * (double)$$0;
-         this.i = this.i + this.l * (double)$$0;
-      }
-   }
-
-   public static class a implements gba<lm> {
-      private final gbs a;
-
-      public a(gbs $$0) {
-         this.a = $$0;
+public interface gbe {
+   gbe a = new gbe() {
+      @Override
+      public void a(ezr $$0, goy $$1) {
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gow.e);
+         $$0.a(fab.b.h, ezu.l);
       }
 
-      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbe $$8 = new gbe($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      @Override
+      public void a(ezy $$0) {
+         $$0.c();
       }
-   }
+
+      @Override
+      public String toString() {
+         return "TERRAIN_SHEET";
+      }
+   };
+   gbe b = new gbe() {
+      @Override
+      public void a(ezr $$0, goy $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(gdf::t);
+         RenderSystem.setShaderTexture(0, gow.f);
+         $$0.a(fab.b.h, ezu.l);
+      }
+
+      @Override
+      public void a(ezy $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_OPAQUE";
+      }
+   };
+   gbe c = new gbe() {
+      @Override
+      public void a(ezr $$0, goy $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gow.f);
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         $$0.a(fab.b.h, ezu.l);
+      }
+
+      @Override
+      public void a(ezy $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_TRANSLUCENT";
+      }
+   };
+   gbe d = new gbe() {
+      @Override
+      public void a(ezr $$0, goy $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gow.f);
+         $$0.a(fab.b.h, ezu.l);
+      }
+
+      @Override
+      public void a(ezy $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_LIT";
+      }
+   };
+   gbe e = new gbe() {
+      @Override
+      public void a(ezr $$0, goy $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.disableBlend();
+      }
+
+      @Override
+      public void a(ezy $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "CUSTOM";
+      }
+   };
+   gbe f = new gbe() {
+      @Override
+      public void a(ezr $$0, goy $$1) {
+      }
+
+      @Override
+      public void a(ezy $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "NO_RENDER";
+      }
+   };
+
+   void a(ezr var1, goy var2);
+
+   void a(ezy var1);
 }

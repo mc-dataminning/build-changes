@@ -1,50 +1,77 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class gok {
-   private static final int a = 16;
-   private static final int b = 16;
-   private static final String c = "missingno";
-   private static final alb d = new alb("missingno");
-   private static final aun e = new aun.a().a(gqf.a, new gqf(ImmutableList.of(new gqe(0, -1)), 16, 16, 1, false)).a();
+public class gok extends goi implements goj {
+   private static final Logger e = LogUtils.getLogger();
    @Nullable
-   private static goh f;
+   private eyx f;
 
-   private static eyu a(int $$0, int $$1) {
-      eyu $$2 = new eyu($$0, $$1, false);
-      int $$3 = -16777216;
-      int $$4 = -524040;
+   public gok(eyx $$0) {
+      this.f = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+            this.d();
+         });
+      } else {
+         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+         this.d();
+      }
+   }
 
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         for (int $$6 = 0; $$6 < $$0; $$6++) {
-            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
-               $$2.a($$6, $$5, -524040);
-            } else {
-               $$2.a($$6, $$5, -16777216);
-            }
-         }
+   public gok(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnGameThreadOrInit();
+      this.f = new eyx($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+   }
+
+   @Override
+   public void a(auo $$0) {
+   }
+
+   @Override
+   public void d() {
+      if (this.f != null) {
+         this.c();
+         this.f.a(0, 0, 0, false);
+      } else {
+         e.warn("Trying to upload disposed texture {}", this.a());
+      }
+   }
+
+   @Nullable
+   public eyx e() {
+      return this.f;
+   }
+
+   public void a(eyx $$0) {
+      if (this.f != null) {
+         this.f.close();
       }
 
-      return $$2;
+      this.f = $$0;
    }
 
-   public static goo a() {
-      eyu $$0 = a(16, 16);
-      return new goo(d, new gqh(16, 16), $$0, e);
-   }
-
-   public static alb b() {
-      return d;
-   }
-
-   public static goh c() {
-      if (f == null) {
-         eyu $$0 = a(16, 16);
-         $$0.i();
-         f = new goh($$0);
-         ffa.Q().aa().a(d, f);
+   @Override
+   public void close() {
+      if (this.f != null) {
+         this.f.close();
+         this.b();
+         this.f = null;
       }
+   }
 
-      return f;
+   @Override
+   public void a(ale $$0, Path $$1) throws IOException {
+      if (this.f != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.f.a($$3);
+      }
    }
 }

@@ -1,71 +1,160 @@
-import com.google.common.primitives.Ints;
 import com.mojang.serialization.Codec;
-import java.security.SignatureException;
-import java.util.ArrayList;
+import com.mojang.serialization.MapCodec;
 import java.util.BitSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public record xs(List<xx> d) {
-   public static final Codec<xs> a = xx.a.listOf().xmap(xs::new, xs::a);
-   public static xs b = new xs(List.of());
-   public static final int c = 20;
+public class xs {
+   public static final Codec<xs> a = azs.a(xs.a::values).dispatch(xs::c, xs.a::a);
+   public static final xs b = new xs(new BitSet(0), xs.a.b);
+   public static final xs c = new xs(new BitSet(0), xs.a.a);
+   public static final yl d = yl.a.a(n.i).a(new xu(xu.a.a, xo.c("chat.filtered")));
+   static final MapCodec<xs> e = MapCodec.unit(c);
+   static final MapCodec<xs> f = MapCodec.unit(b);
+   static final MapCodec<xs> g = ayf.u.xmap(xs::new, xs::d).fieldOf("value");
+   private static final char h = '#';
+   private final BitSet i;
+   private final xs.a j;
 
-   public void a(azg.a $$0) throws SignatureException {
-      $$0.update(Ints.toByteArray(this.d.size()));
+   private xs(BitSet $$0, xs.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
+   }
 
-      for (xx $$1 : this.d) {
-         $$0.update($$1.b());
+   private xs(BitSet $$0) {
+      this.i = $$0;
+      this.j = xs.a.c;
+   }
+
+   public xs(int $$0) {
+      this(new BitSet($$0), xs.a.c);
+   }
+
+   private xs.a c() {
+      return this.j;
+   }
+
+   private BitSet d() {
+      return this.i;
+   }
+
+   public static xs a(wl $$0) {
+      xs.a $$1 = $$0.b(xs.a.class);
+
+      return switch ($$1) {
+         case a -> c;
+         case b -> b;
+         case c -> new xs($$0.w(), xs.a.c);
+      };
+   }
+
+   public static void a(wl $$0, xs $$1) {
+      $$0.a($$1.j);
+      if ($$1.j == xs.a.c) {
+         $$0.a($$1.i);
       }
    }
 
-   public xs.a a(xy $$0) {
-      return new xs.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
+   public void a(int $$0) {
+      this.i.set($$0);
    }
 
-   public List<xx> a() {
-      return this.d;
-   }
+   @Nullable
+   public String a(String $$0) {
+      return switch (this.j) {
+         case a -> $$0;
+         case b -> null;
+         case c -> {
+            char[] $$1 = $$0.toCharArray();
 
-   public static record a(List<xx.a> b) {
-      public static final xs.a a = new xs.a(List.of());
-
-      public a(wl $$0) {
-         this($$0.a(wl.a(ArrayList::new, 20), xx.a::a));
-      }
-
-      public void a(wl $$0) {
-         $$0.a(this.b, xx.a::a);
-      }
-
-      public Optional<xs> a(xy $$0) {
-         List<xx> $$1 = new ArrayList<>(this.b.size());
-
-         for (xx.a $$2 : this.b) {
-            Optional<xx> $$3 = $$2.a($$0);
-            if ($$3.isEmpty()) {
-               return Optional.empty();
+            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
+               if (this.i.get($$2)) {
+                  $$1[$$2] = '#';
+               }
             }
 
-            $$1.add($$3.get());
+            yield new String($$1);
          }
+      };
+   }
 
-         return Optional.of(new xs($$1));
-      }
+   @Nullable
+   public xo b(String $$0) {
+      return switch (this.j) {
+         case a -> xo.b($$0);
+         case b -> null;
+         case c -> {
+            yc $$1 = xo.i();
+            int $$2 = 0;
+            boolean $$3 = this.i.get(0);
 
-      public List<xx.a> a() {
-         return this.b;
+            while (true) {
+               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
+               $$4 = $$4 < 0 ? $$0.length() : $$4;
+               if ($$4 == $$2) {
+                  yield $$1;
+               }
+
+               if ($$3) {
+                  $$1.b(xo.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
+               } else {
+                  $$1.f($$0.substring($$2, $$4));
+               }
+
+               $$3 = !$$3;
+               $$2 = $$4;
+            }
+         }
+      };
+   }
+
+   public boolean a() {
+      return this.j == xs.a.a;
+   }
+
+   public boolean b() {
+      return this.j == xs.a.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         xs $$1 = (xs)$$0;
+         return this.i.equals($$1.i) && this.j == $$1.j;
+      } else {
+         return false;
       }
    }
 
-   public static record b(int a, BitSet b) {
-      public b(wl $$0) {
-         this($$0.l(), $$0.e(20));
+   @Override
+   public int hashCode() {
+      int $$0 = this.i.hashCode();
+      return 31 * $$0 + this.j.hashCode();
+   }
+
+   static enum a implements azs {
+      a("pass_through", () -> xs.e),
+      b("fully_filtered", () -> xs.f),
+      c("partially_filtered", () -> xs.g);
+
+      private final String d;
+      private final Supplier<MapCodec<xs>> e;
+
+      private a(final String $$0, final Supplier<MapCodec<xs>> $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
-      public void a(wl $$0) {
-         $$0.c(this.a);
-         $$0.a(this.b, 20);
+      @Override
+      public String c() {
+         return this.d;
+      }
+
+      private MapCodec<xs> a() {
+         return this.e.get();
       }
    }
 }

@@ -20,31 +20,31 @@ public class ie<T extends er<T>> implements ib<T> {
    private static final int b = 8;
    private final List<String> c;
    private final Object2ObjectLinkedOpenHashMap<List<String>, id<T>> d = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
-   private final alb e;
+   private final ale e;
    private final List<ie.a<T>> f;
 
-   public ie(alb $$0, List<ie.a<T>> $$1, List<String> $$2) {
+   public ie(ale $$0, List<ie.a<T>> $$1, List<String> $$2) {
       this.e = $$0;
       this.f = $$1;
       this.c = $$2;
    }
 
    @Override
-   public alb a() {
+   public ale a() {
       return this.e;
    }
 
    @Override
    public id<T> a(@Nullable ur $$0, CommandDispatcher<T> $$1) throws es {
       if ($$0 == null) {
-         throw new es(xl.a("commands.function.error.missing_arguments", xl.a(this.a())));
+         throw new es(xo.a("commands.function.error.missing_arguments", xo.a(this.a())));
       } else {
          List<String> $$2 = new ArrayList<>(this.c.size());
 
          for (String $$3 : this.c) {
             vo $$4 = $$0.c($$3);
             if ($$4 == null) {
-               throw new es(xl.a("commands.function.error.missing_argument", xl.a(this.a()), $$3));
+               throw new es(xo.a("commands.function.error.missing_argument", xo.a(this.a()), $$3));
             }
 
             $$2.add(a($$4));
@@ -99,7 +99,7 @@ public class ie<T extends er<T>> implements ib<T> {
    interface a<T> {
       IntList a();
 
-      hs<T> a(List<String> var1, CommandDispatcher<T> var2, alb var3) throws es;
+      hs<T> a(List<String> var1, CommandDispatcher<T> var2, ale var3) throws es;
    }
 
    static class b<T extends er<T>> implements ie.a<T> {
@@ -119,13 +119,13 @@ public class ie<T extends er<T>> implements ib<T> {
       }
 
       @Override
-      public hs<T> a(List<String> $$0, CommandDispatcher<T> $$1, alb $$2) throws es {
+      public hs<T> a(List<String> $$0, CommandDispatcher<T> $$1, ale $$2) throws es {
          String $$3 = this.a.a($$0);
 
          try {
             return ib.a($$1, this.c, new StringReader($$3));
          } catch (CommandSyntaxException var6) {
-            throw new es(xl.a("commands.function.error.parse", xl.a($$2), $$3, var6.getMessage()));
+            throw new es(xo.a("commands.function.error.parse", xo.a($$2), $$3, var6.getMessage()));
          }
       }
    }
@@ -143,7 +143,7 @@ public class ie<T extends er<T>> implements ib<T> {
       }
 
       @Override
-      public hs<T> a(List<String> $$0, CommandDispatcher<T> $$1, alb $$2) {
+      public hs<T> a(List<String> $$0, CommandDispatcher<T> $$1, ale $$2) {
          return this.a;
       }
    }

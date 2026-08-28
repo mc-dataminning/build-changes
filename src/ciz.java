@@ -1,69 +1,133 @@
-public class ciz {
-   public static final ala<ciy> a = a("kebab");
-   public static final ala<ciy> b = a("aztec");
-   public static final ala<ciy> c = a("alban");
-   public static final ala<ciy> d = a("aztec2");
-   public static final ala<ciy> e = a("bomb");
-   public static final ala<ciy> f = a("plant");
-   public static final ala<ciy> g = a("wasteland");
-   public static final ala<ciy> h = a("pool");
-   public static final ala<ciy> i = a("courbet");
-   public static final ala<ciy> j = a("sea");
-   public static final ala<ciy> k = a("sunset");
-   public static final ala<ciy> l = a("creebet");
-   public static final ala<ciy> m = a("wanderer");
-   public static final ala<ciy> n = a("graham");
-   public static final ala<ciy> o = a("match");
-   public static final ala<ciy> p = a("bust");
-   public static final ala<ciy> q = a("stage");
-   public static final ala<ciy> r = a("void");
-   public static final ala<ciy> s = a("skull_and_roses");
-   public static final ala<ciy> t = a("wither");
-   public static final ala<ciy> u = a("fighters");
-   public static final ala<ciy> v = a("pointer");
-   public static final ala<ciy> w = a("pigscene");
-   public static final ala<ciy> x = a("burning_skull");
-   public static final ala<ciy> y = a("skeleton");
-   public static final ala<ciy> z = a("donkey_kong");
-   public static final ala<ciy> A = a("earth");
-   public static final ala<ciy> B = a("wind");
-   public static final ala<ciy> C = a("water");
-   public static final ala<ciy> D = a("fire");
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public static ciy a(jv<ciy> $$0) {
-      jv.a($$0, a, new ciy(16, 16));
-      jv.a($$0, b, new ciy(16, 16));
-      jv.a($$0, c, new ciy(16, 16));
-      jv.a($$0, d, new ciy(16, 16));
-      jv.a($$0, e, new ciy(16, 16));
-      jv.a($$0, f, new ciy(16, 16));
-      jv.a($$0, g, new ciy(16, 16));
-      jv.a($$0, h, new ciy(32, 16));
-      jv.a($$0, i, new ciy(32, 16));
-      jv.a($$0, j, new ciy(32, 16));
-      jv.a($$0, k, new ciy(32, 16));
-      jv.a($$0, l, new ciy(32, 16));
-      jv.a($$0, m, new ciy(16, 32));
-      jv.a($$0, n, new ciy(16, 32));
-      jv.a($$0, o, new ciy(32, 32));
-      jv.a($$0, p, new ciy(32, 32));
-      jv.a($$0, q, new ciy(32, 32));
-      jv.a($$0, r, new ciy(32, 32));
-      jv.a($$0, s, new ciy(32, 32));
-      jv.a($$0, t, new ciy(32, 32));
-      jv.a($$0, u, new ciy(64, 32));
-      jv.a($$0, v, new ciy(64, 64));
-      jv.a($$0, w, new ciy(64, 64));
-      jv.a($$0, x, new ciy(64, 64));
-      jv.a($$0, y, new ciy(64, 48));
-      jv.a($$0, A, new ciy(32, 32));
-      jv.a($$0, B, new ciy(32, 32));
-      jv.a($$0, C, new ciy(32, 32));
-      jv.a($$0, D, new ciy(32, 32));
-      return jv.a($$0, z, new ciy(64, 48));
+public class ciz extends cix {
+   public static final double e = 0.375;
+
+   public ciz(bsy<? extends ciz> $$0, dbw $$1) {
+      super($$0, $$1);
    }
 
-   private static ala<ciy> a(String $$0) {
-      return ala.a(lq.S, new alb($$0));
+   public ciz(dbw $$0, iz $$1) {
+      super(bsy.al, $$0, $$1);
+      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+   }
+
+   @Override
+   protected void y() {
+      this.p((double)this.c.u() + 0.5, (double)this.c.v() + 0.375, (double)this.c.w() + 0.5);
+      double $$0 = (double)this.ak().l() / 2.0;
+      double $$1 = (double)this.ak().m();
+      this.a(new evk(this.du() - $$0, this.dw(), this.dA() - $$0, this.du() + $$0, this.dw() + $$1, this.dA() + $$0));
+   }
+
+   @Override
+   public void a(je $$0) {
+   }
+
+   @Override
+   public int A() {
+      return 9;
+   }
+
+   @Override
+   public int B() {
+      return 9;
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return $$0 < 1024.0;
+   }
+
+   @Override
+   public void b(@Nullable bss $$0) {
+      this.a(avz.nS, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(ur $$0) {
+   }
+
+   @Override
+   public void a(ur $$0) {
+   }
+
+   @Override
+   public bqs a(cmv $$0, bqr $$1) {
+      if (this.dP().B) {
+         return bqs.a;
+      } else {
+         boolean $$2 = false;
+         double $$3 = 7.0;
+         List<btp> $$4 = this.dP().a(btp.class, new evk(this.du() - 7.0, this.dw() - 7.0, this.dA() - 7.0, this.du() + 7.0, this.dw() + 7.0, this.dA() + 7.0));
+
+         for (btp $$5 : $$4) {
+            if ($$5.gf() == $$0) {
+               $$5.b(this, true);
+               $$2 = true;
+            }
+         }
+
+         boolean $$6 = false;
+         if (!$$2) {
+            this.ao();
+            if ($$0.gd().d) {
+               for (btp $$7 : $$4) {
+                  if ($$7.gd() && $$7.gf() == this) {
+                     $$7.a(true, false);
+                     $$6 = true;
+                  }
+               }
+            }
+         }
+
+         if ($$2 || $$6) {
+            this.a(dwt.b, $$0);
+         }
+
+         return bqs.c;
+      }
+   }
+
+   @Override
+   public boolean z() {
+      return this.dP().a_(this.c).a(awo.S);
+   }
+
+   public static ciz b(dbw $$0, iz $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
+
+      for (ciz $$6 : $$0.a(ciz.class, new evk((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
+         if ($$6.D().equals($$1)) {
+            return $$6;
+         }
+      }
+
+      ciz $$7 = new ciz($$0, $$1);
+      $$0.b($$7);
+      return $$7;
+   }
+
+   @Override
+   public void C() {
+      this.a(avz.nT, 1.0F, 1.0F);
+   }
+
+   @Override
+   public zv<ach> dl() {
+      return new aci(this, 0, this.D());
+   }
+
+   @Override
+   public evp q(float $$0) {
+      return this.l($$0).b(0.0, 0.2, 0.0);
+   }
+
+   @Override
+   public cun dC() {
+      return new cun(cuq.uK);
    }
 }

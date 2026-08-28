@@ -1,61 +1,61 @@
-import java.util.Map;
-import java.util.Map.Entry;
+public class gec implements faa {
+   private final faa a;
+   private final gox b;
 
-public class gec {
-   private Map<drx, gqv> a = Map.of();
-   private final grb b;
-
-   public gec(grb $$0) {
-      this.b = $$0;
-   }
-
-   public gou a(drx $$0) {
-      return this.b($$0).e();
-   }
-
-   public gqv b(drx $$0) {
-      gqv $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         $$1 = this.b.a();
-      }
-
-      return $$1;
-   }
-
-   public grb a() {
-      return this.b;
-   }
-
-   public void a(Map<drx, gqv> $$0) {
+   public gec(faa $$0, gox $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public static grc c(drx $$0) {
-      return a(lp.e.b($$0.b()), $$0);
+   @Override
+   public faa a(double $$0, double $$1, double $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   public static grc a(alb $$0, drx $$1) {
-      return new grc($$0, b($$1.C()));
+   @Override
+   public faa a(int $$0, int $$1, int $$2, int $$3) {
+      return this.a.a($$0, $$1, $$2, $$3);
    }
 
-   public static String b(Map<dta<?>, Comparable<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (Entry<dta<?>, Comparable<?>> $$2 : $$0.entrySet()) {
-         if ($$1.length() != 0) {
-            $$1.append(',');
-         }
-
-         dta<?> $$3 = $$2.getKey();
-         $$1.append($$3.f());
-         $$1.append('=');
-         $$1.append(a($$3, $$2.getValue()));
-      }
-
-      return $$1.toString();
+   @Override
+   public faa a(float $$0, float $$1) {
+      return this.a.a(this.b.a($$0), this.b.c($$1));
    }
 
-   private static <T extends Comparable<T>> String a(dta<T> $$0, Comparable<?> $$1) {
-      return $$0.a((T)$$1);
+   @Override
+   public faa a(int $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   @Override
+   public faa b(int $$0, int $$1) {
+      return this.a.b($$0, $$1);
+   }
+
+   @Override
+   public faa a(float $$0, float $$1, float $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void e() {
+      this.a.e();
+   }
+
+   @Override
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.a.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void l() {
+      this.a.l();
+   }
+
+   @Override
+   public void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, this.b.a($$7), this.b.c($$8), $$9, $$10, $$11, $$12, $$13);
    }
 }

@@ -1,28 +1,29 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
+import java.nio.file.Path;
+import java.util.Map;
 
-public interface atl<T> extends atk<T> {
-   JsonObject a(T var1);
+interface atl {
+   atl a = new atl() {
+      @Override
+      public String toString() {
+         return "empty";
+      }
+   };
+   atl b = new atl() {
+      @Override
+      public String toString() {
+         return "relative";
+      }
+   };
 
-   static <T> atl<T> a(final String $$0, final Codec<T> $$1) {
-      return new atl<T>() {
-         @Override
-         public String a() {
-            return $$0;
-         }
+   public static record a(Map<String, ati> c) implements atl {
+      public Map<String, ati> a() {
+         return this.c;
+      }
+   }
 
-         @Override
-         public T a(JsonObject $$0x) {
-            return (T)$$1.parse(JsonOps.INSTANCE, $$0).getOrThrow(JsonParseException::new);
-         }
-
-         @Override
-         public JsonObject a(T $$0x) {
-            return ((JsonElement)$$1.encodeStart(JsonOps.INSTANCE, $$0).getOrThrow(IllegalArgumentException::new)).getAsJsonObject();
-         }
-      };
+   public static record b(Path c) implements atl {
+      public Path a() {
+         return this.c;
+      }
    }
 }

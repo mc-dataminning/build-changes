@@ -1,50 +1,99 @@
-import java.util.List;
+public class fom extends fnz<cqj> implements fqu {
+   private static final ale D = new ale("textures/gui/container/crafting_table.png");
+   private final fqo E = new fqo();
+   private boolean F;
 
-public class fom {
-   private static final int a = 30;
-   private static final int b = 16;
-   private static final int c = 4;
-   private final int d;
-   private List<alb> e = List.of();
-   private int f;
-   private int g;
-
-   public fom(int $$0) {
-      this.d = $$0;
+   public fom(cqj $$0, cmu $$1, xo $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public void a(List<alb> $$0) {
-      if (!this.e.equals($$0)) {
-         this.e = $$0;
-         this.g = 0;
+   @Override
+   protected void aM_() {
+      super.aM_();
+      this.F = this.n < 379;
+      this.E.a(this.n, this.o, this.m, this.F, this.w);
+      this.z = this.E.a(this.n, this.c);
+      this.c(new fho(this.z + 5, this.o / 2 - 49, 20, 18, fqo.a, $$0 -> {
+         this.E.e();
+         this.z = this.E.a(this.n, this.c);
+         $$0.c(this.z + 5, this.o / 2 - 49);
+      }));
+      this.d(this.E);
+      this.r = 29;
+   }
+
+   @Override
+   public void D() {
+      super.D();
+      this.E.h();
+   }
+
+   @Override
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
+      if (this.E.f() && this.F) {
+         this.b($$0, $$1, $$2, $$3);
+         this.E.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         this.E.a($$0, $$1, $$2, $$3);
+         this.E.a($$0, this.z, this.A, true, $$3);
       }
 
-      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
-         this.g = (this.g + 1) % this.e.size();
+      this.a($$0, $$1, $$2);
+      this.E.a($$0, this.z, this.A, $$1, $$2);
+   }
+
+   @Override
+   protected void a(fgp $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.z;
+      int $$5 = (this.o - this.d) / 2;
+      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.E.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.E.a($$0, $$1) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
+      return (!this.F || !this.E.f()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.E.a($$0, $$1, $$2)) {
+         this.a(this.E);
+         return true;
+      } else {
+         return this.F && this.E.f() ? true : super.a($$0, $$1, $$2);
       }
    }
 
-   public void a(cpp $$0, fgm $$1, float $$2, int $$3, int $$4) {
-      crk $$5 = $$0.b(this.d);
-      if (!this.e.isEmpty() && !$$5.h()) {
-         boolean $$6 = this.e.size() > 1 && this.f >= 30;
-         float $$7 = $$6 ? this.a($$2) : 1.0F;
-         if ($$7 < 1.0F) {
-            int $$8 = Math.floorMod(this.g - 1, this.e.size());
-            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
-         }
-
-         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
-      }
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.d);
+      return this.E.a($$0, $$1, this.z, this.A, this.c, this.d, $$4) && $$5;
    }
 
-   private void a(crk $$0, alb $$1, float $$2, fgm $$3, int $$4, int $$5) {
-      gou $$6 = ffa.Q().a(got.e).apply($$1);
-      $$3.a($$4 + $$0.e, $$5 + $$0.f, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
+   @Override
+   protected void a(crn $$0, int $$1, int $$2, cqb $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.E.a($$0);
    }
 
-   private float a(float $$0) {
-      float $$1 = (float)(this.f % 30) + $$0;
-      return Math.min($$1, 4.0F) / 4.0F;
+   @Override
+   public void F() {
+      this.E.i();
+   }
+
+   @Override
+   public fqo I() {
+      return this.E;
    }
 }

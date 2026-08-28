@@ -1,6 +1,21 @@
-import java.util.Set;
-import java.util.function.Supplier;
+public enum bom {
+   a("pathfinding"),
+   b("event-loops"),
+   c("mailboxes"),
+   d("ticking"),
+   e("jvm"),
+   f("chunk rendering"),
+   g("chunk rendering dispatching"),
+   h("cpu"),
+   i("gpu");
 
-public interface bom {
-   Set<bok> a(Supplier<bnb> var1);
+   private final String j;
+
+   private bom(final String $$0) {
+      this.j = $$0;
+   }
+
+   public String a() {
+      return this.j;
+   }
 }

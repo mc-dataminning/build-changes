@@ -1,195 +1,83 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class btf extends cgc {
+   private static final akj<Integer> cc = akn.a(btf.class, akl.b);
 
-public class btf extends bsp implements bsm, bui {
-   private static final Logger b = LogUtils.getLogger();
-   private static final akg<Float> c = akk.a(btf.class, aki.d);
-   private static final akg<Float> d = akk.a(btf.class, aki.d);
-   private static final akg<Boolean> e = akk.a(btf.class, aki.k);
-   private static final String f = "width";
-   private static final String g = "height";
-   private static final String h = "attack";
-   private static final String i = "interaction";
-   private static final String j = "response";
-   @Nullable
-   private btf.a k;
-   @Nullable
-   private btf.a l;
-
-   public btf(bsv<?> $$0, dbt $$1) {
+   public btf(bsy<? extends btf> $$0, dbw $$1) {
       super($$0, $$1);
-      this.ag = true;
    }
 
    @Override
-   protected void a(akk.a $$0) {
-      $$0.a(c, 1.0F);
-      $$0.a(d, 1.0F);
-      $$0.a(e, false);
+   protected lg s() {
+      return li.aP;
    }
 
    @Override
-   protected void a(ur $$0) {
-      if ($$0.b("width", 99)) {
-         this.a($$0.j("width"));
-      }
-
-      if ($$0.b("height", 99)) {
-         this.b($$0.j("height"));
-      }
-
-      if ($$0.e("attack")) {
-         btf.a.a.decode(vf.a, $$0.c("attack")).resultOrPartial(ac.a("Interaction entity", b::error)).ifPresent($$0x -> this.k = (btf.a)$$0x.getFirst());
-      } else {
-         this.k = null;
-      }
-
-      if ($$0.e("interaction")) {
-         btf.a.a.decode(vf.a, $$0.c("interaction")).resultOrPartial(ac.a("Interaction entity", b::error)).ifPresent($$0x -> this.l = (btf.a)$$0x.getFirst());
-      } else {
-         this.l = null;
-      }
-
-      this.a($$0.q("response"));
-      this.a(this.as());
-   }
-
-   @Override
-   protected void b(ur $$0) {
-      $$0.a("width", this.s());
-      $$0.a("height", this.u());
-      if (this.k != null) {
-         btf.a.a.encodeStart(vf.a, this.k).ifSuccess($$1 -> $$0.a("attack", $$1));
-      }
-
-      if (this.l != null) {
-         btf.a.a.encodeStart(vf.a, this.l).ifSuccess($$1 -> $$0.a("interaction", $$1));
-      }
-
-      $$0.a("response", this.v());
-   }
-
-   @Override
-   public void a(akg<?> $$0) {
+   protected void a(akn.a $$0) {
       super.a($$0);
-      if (d.equals($$0) || c.equals($$0)) {
-         this.a(this.as());
-      }
+      $$0.a(cc, 0);
    }
 
    @Override
-   public boolean by() {
-      return false;
+   protected avy u() {
+      return avz.kJ;
    }
 
    @Override
-   public boolean bz() {
-      return true;
+   protected avy v() {
+      return avz.kG;
    }
 
    @Override
-   public env k_() {
-      return env.d;
+   protected avy d(brl $$0) {
+      return avz.kI;
    }
 
    @Override
-   public boolean r_() {
-      return true;
+   protected avy o_() {
+      return avz.kH;
    }
 
    @Override
-   public boolean u(bsp $$0) {
-      if ($$0 instanceof cms $$1) {
-         this.k = new btf.a($$1.cz(), this.dP().Z());
-         if ($$1 instanceof arc $$2) {
-            am.h.a($$2, this, $$1.dQ().n(), 1.0F, 1.0F, false);
-         }
-
-         return !this.v();
-      } else {
-         return false;
-      }
+   public void b(ur $$0) {
+      super.b($$0);
+      $$0.a("DarkTicksRemaining", this.y());
    }
 
    @Override
-   public bqp a(cms $$0, bqo $$1) {
-      if (this.dP().B) {
-         return this.v() ? bqp.a : bqp.c;
-      } else {
-         this.l = new btf.a($$0.cz(), this.dP().Z());
-         return bqp.c;
-      }
+   public void a(ur $$0) {
+      super.a($$0);
+      this.c($$0.h("DarkTicksRemaining"));
    }
 
    @Override
-   public void l() {
-   }
-
-   @Nullable
-   @Override
-   public btk T_() {
-      return this.k != null ? this.dP().b(this.k.a()) : null;
-   }
-
-   @Nullable
-   @Override
-   public btk p() {
-      return this.l != null ? this.dP().b(this.l.a()) : null;
-   }
-
-   private void a(float $$0) {
-      this.ao.a(c, $$0);
-   }
-
-   private float s() {
-      return this.ao.a(c);
-   }
-
-   private void b(float $$0) {
-      this.ao.a(d, $$0);
-   }
-
-   private float u() {
-      return this.ao.a(d);
-   }
-
-   private void a(boolean $$0) {
-      this.ao.a(e, $$0);
-   }
-
-   private boolean v() {
-      return this.ao.a(e);
-   }
-
-   private bss w() {
-      return bss.b(this.s(), this.u());
-   }
-
-   @Override
-   public bss a(btw $$0) {
-      return this.w();
-   }
-
-   @Override
-   protected evh as() {
-      return this.w().a(this.dn());
-   }
-
-   static record a(UUID b, long c) {
-      public static final Codec<btf.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(kc.a.fieldOf("player").forGetter(btf.a::a), Codec.LONG.fieldOf("timestamp").forGetter(btf.a::b)).apply($$0, btf.a::new)
-      );
-
-      public UUID a() {
-         return this.b;
+   public void n_() {
+      super.n_();
+      int $$0 = this.y();
+      if ($$0 > 0) {
+         this.c($$0 - 1);
       }
 
-      public long b() {
-         return this.c;
+      this.dP().a(li.aQ, this.d(0.6), this.dx(), this.g(0.6), 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   public boolean a(brl $$0, float $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      if ($$2) {
+         this.c(100);
       }
+
+      return $$2;
+   }
+
+   private void c(int $$0) {
+      this.ao.a(cc, $$0);
+   }
+
+   public int y() {
+      return this.ao.a(cc);
+   }
+
+   public static boolean a(bsy<? extends btn> $$0, dcl $$1, btr $$2, iz $$3, azf $$4) {
+      return $$3.v() <= $$1.z_() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(dez.G);
    }
 }

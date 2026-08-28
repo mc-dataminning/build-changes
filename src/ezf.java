@@ -1,40 +1,95 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.io.InputStream;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
-public class ezf extends ezh {
-   private static final eza a = new eza() {
-      @Override
-      public String a(boolean $$0, String $$1) {
-         return "#error Import statement not supported";
-      }
-   };
-   private int b;
-
-   private ezf(ezh.a $$0, int $$1, String $$2) {
-      super($$0, $$1, $$2);
+public class ezf {
+   public void a(float $$0) {
    }
 
-   public void a(eze $$0) {
-      RenderSystem.assertOnRenderThread();
-      this.b++;
-      this.a($$0);
+   public void a(float $$0, float $$1) {
    }
 
-   @Override
-   public void a() {
-      RenderSystem.assertOnRenderThread();
-      this.b--;
-      if (this.b <= 0) {
-         super.a();
-      }
+   public void a(float $$0, float $$1, float $$2) {
    }
 
-   public static ezf a(ezh.a $$0, String $$1, InputStream $$2, String $$3) throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$4 = b($$0, $$1, $$2, $$3, a);
-      ezf $$5 = new ezf($$0, $$4, $$1);
-      $$0.c().put($$1, $$5);
-      return $$5;
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+   }
+
+   public void a(int $$0) {
+   }
+
+   public void a(int $$0, int $$1) {
+   }
+
+   public void a(int $$0, int $$1, int $$2) {
+   }
+
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+   }
+
+   public void a(float[] $$0) {
+   }
+
+   public void a(Vector3f $$0) {
+   }
+
+   public void a(Vector4f $$0) {
+   }
+
+   public void c(float $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+   }
+
+   public void a(
+      float $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+   }
+
+   public void a(Matrix4f $$0) {
+   }
+
+   public void a(Matrix3f $$0) {
    }
 }

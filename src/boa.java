@@ -1,31 +1,14 @@
-import com.mojang.datafixers.util.Pair;
 import java.time.Duration;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import jdk.jfr.consumer.RecordedEvent;
 
-public record boa(Duration a, @Nullable String b, long c) {
-   public static boa.a a(Duration $$0, List<boa> $$1) {
-      long $$2 = $$1.stream().mapToLong($$0x -> $$0x.c).sum();
-      return new boa.a(
-         $$2,
-         (double)$$2 / (double)$$0.getSeconds(),
-         (long)$$1.size(),
-         (double)$$1.size() / (double)$$0.getSeconds(),
-         $$1.stream().map(boa::a).reduce(Duration.ZERO, Duration::plus),
-         $$1.stream()
-            .filter($$0x -> $$0x.b != null)
-            .collect(Collectors.groupingBy($$0x -> $$0x.b, Collectors.summingLong($$0x -> $$0x.c)))
-            .entrySet()
-            .stream()
-            .sorted(Entry.<String, Long>comparingByValue().reversed())
-            .map($$0x -> Pair.of((String)$$0x.getKey(), (Long)$$0x.getValue()))
-            .limit(10L)
-            .toList()
+public record boa(Duration a, dbd b, aqu c, duv d, String e) implements boj {
+   public static boa a(RecordedEvent $$0) {
+      return new boa(
+         $$0.getDuration(),
+         new dbd($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
+         new aqu($$0.getInt("worldPosX"), $$0.getInt("worldPosZ")),
+         duv.a($$0.getString("status")),
+         $$0.getString("level")
       );
-   }
-
-   public static record a(long a, double b, long c, double d, Duration e, List<Pair<String, Long>> f) {
    }
 }

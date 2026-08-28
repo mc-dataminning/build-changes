@@ -8,9 +8,9 @@ import java.util.Iterator;
 import java.util.List;
 import org.slf4j.Logger;
 
-public class fbf extends fbp {
+public class fbf extends fbs {
    private static final Logger b = LogUtils.getLogger();
-   public List<fbe> a;
+   public List<fbd> a;
 
    public static fbf a(String $$0) {
       fbf $$1 = new fbf();
@@ -19,16 +19,16 @@ public class fbf extends fbp {
       try {
          JsonParser $$2 = new JsonParser();
          JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("lists").isJsonArray()) {
-            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
+         if ($$3.get("servers").isJsonArray()) {
+            JsonArray $$4 = $$3.get("servers").getAsJsonArray();
             Iterator<JsonElement> $$5 = $$4.iterator();
 
             while ($$5.hasNext()) {
-               $$1.a.add(fbe.a($$5.next().getAsJsonObject()));
+               $$1.a.add(fbd.a($$5.next().getAsJsonObject()));
             }
          }
       } catch (Exception var6) {
-         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
+         b.error("Could not parse McoServerList: {}", var6.getMessage());
       }
 
       return $$1;

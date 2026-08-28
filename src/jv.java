@@ -17,7 +17,7 @@ import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
 
 public interface jv<T> extends Keyable, jn<T> {
-   ala<? extends jv<T>> c();
+   ald<? extends jv<T>> c();
 
    default Codec<T> q() {
       return this.a().flatComapMap(ji.c::a, $$0 -> this.a(this.e((T)$$0)));
@@ -28,14 +28,14 @@ public interface jv<T> extends Keyable, jn<T> {
    }
 
    private Codec<ji.c<T>> a() {
-      Codec<ji.c<T>> $$0 = alb.a
+      Codec<ji.c<T>> $$0 = ale.a
          .comapFlatMap(
             $$0x -> this.c($$0x)
                   .<DataResult>map(DataResult::success)
                   .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
             $$0x -> $$0x.h().a()
          );
-      return ayc.a($$0, (Function<ji.c<T>, Lifecycle>)($$0x -> this.c($$0x.h()).map(ju::b).orElse(Lifecycle.experimental())));
+      return ayf.a($$0, (Function<ji.c<T>, Lifecycle>)($$0x -> this.c($$0x.h()).map(ju::b).orElse(Lifecycle.experimental())));
    }
 
    private DataResult<ji.c<T>> a(ji<T> $$0) {
@@ -47,32 +47,32 @@ public interface jv<T> extends Keyable, jn<T> {
    }
 
    @Nullable
-   alb b(T var1);
+   ale b(T var1);
 
-   Optional<ala<T>> d(T var1);
+   Optional<ald<T>> d(T var1);
 
    @Override
    int a(@Nullable T var1);
 
    @Nullable
-   T a(@Nullable ala<T> var1);
+   T a(@Nullable ald<T> var1);
 
    @Nullable
-   T a(@Nullable alb var1);
+   T a(@Nullable ale var1);
 
-   Optional<ju> c(ala<T> var1);
+   Optional<ju> c(ald<T> var1);
 
    Lifecycle d();
 
-   default Optional<T> b(@Nullable alb $$0) {
+   default Optional<T> b(@Nullable ale $$0) {
       return Optional.ofNullable(this.a($$0));
    }
 
-   default Optional<T> e(@Nullable ala<T> $$0) {
+   default Optional<T> e(@Nullable ald<T> $$0) {
       return Optional.ofNullable(this.a($$0));
    }
 
-   default T f(ala<T> $$0) {
+   default T f(ald<T> $$0) {
       T $$1 = this.a($$0);
       if ($$1 == null) {
          throw new IllegalStateException("Missing key in " + this.c() + ": " + $$0);
@@ -81,41 +81,41 @@ public interface jv<T> extends Keyable, jn<T> {
       }
    }
 
-   Set<alb> e();
+   Set<ale> e();
 
-   Set<Entry<ala<T>, T>> g();
+   Set<Entry<ald<T>, T>> g();
 
-   Set<ala<T>> f();
+   Set<ald<T>> f();
 
-   Optional<ji.c<T>> a(azc var1);
+   Optional<ji.c<T>> a(azf var1);
 
    default Stream<T> s() {
       return StreamSupport.stream(this.spliterator(), false);
    }
 
-   boolean d(alb var1);
+   boolean d(ale var1);
 
-   boolean d(ala<T> var1);
+   boolean d(ald<T> var1);
 
    static <T> T a(jv<? super T> $$0, String $$1, T $$2) {
-      return a($$0, new alb($$1), $$2);
+      return a($$0, new ale($$1), $$2);
    }
 
-   static <V, T extends V> T a(jv<V> $$0, alb $$1, T $$2) {
-      return a($$0, ala.a($$0.c(), $$1), $$2);
+   static <V, T extends V> T a(jv<V> $$0, ale $$1, T $$2) {
+      return a($$0, ald.a($$0.c(), $$1), $$2);
    }
 
-   static <V, T extends V> T a(jv<V> $$0, ala<V> $$1, T $$2) {
+   static <V, T extends V> T a(jv<V> $$0, ald<V> $$1, T $$2) {
       ((ke)$$0).a($$1, (V)$$2, ju.a);
       return $$2;
    }
 
-   static <T> ji.c<T> b(jv<T> $$0, ala<T> $$1, T $$2) {
+   static <T> ji.c<T> b(jv<T> $$0, ald<T> $$1, T $$2) {
       return ((ke)$$0).a($$1, $$2, ju.a);
    }
 
-   static <T> ji.c<T> b(jv<T> $$0, alb $$1, T $$2) {
-      return b($$0, ala.a($$0.c(), $$1), $$2);
+   static <T> ji.c<T> b(jv<T> $$0, ale $$1, T $$2) {
+      return b($$0, ald.a($$0.c(), $$1), $$2);
    }
 
    jv<T> l();
@@ -124,37 +124,37 @@ public interface jv<T> extends Keyable, jn<T> {
 
    Optional<ji.c<T>> c(int var1);
 
-   Optional<ji.c<T>> c(alb var1);
+   Optional<ji.c<T>> c(ale var1);
 
-   Optional<ji.c<T>> b(ala<T> var1);
+   Optional<ji.c<T>> b(ald<T> var1);
 
    ji<T> e(T var1);
 
-   default ji.c<T> g(ala<T> $$0) {
+   default ji.c<T> g(ald<T> $$0) {
       return this.b($$0).orElseThrow(() -> new IllegalStateException("Missing key in " + this.c() + ": " + $$0));
    }
 
    Stream<ji.c<T>> h();
 
-   Optional<jm.c<T>> b(axb<T> var1);
+   Optional<jm.c<T>> b(axe<T> var1);
 
-   default Iterable<ji<T>> c(axb<T> $$0) {
+   default Iterable<ji<T>> c(axe<T> $$0) {
       return (Iterable<ji<T>>)DataFixUtils.orElse(this.b($$0), List.of());
    }
 
-   default Optional<ji<T>> a(axb<T> $$0, azc $$1) {
+   default Optional<ji<T>> a(axe<T> $$0, azf $$1) {
       return this.b($$0).flatMap($$1x -> $$1x.a($$1));
    }
 
-   jm.c<T> a(axb<T> var1);
+   jm.c<T> a(axe<T> var1);
 
-   Stream<Pair<axb<T>, jm.c<T>>> i();
+   Stream<Pair<axe<T>, jm.c<T>>> i();
 
-   Stream<axb<T>> j();
+   Stream<axe<T>> j();
 
    void m();
 
-   void a(Map<axb<T>, List<ji<T>>> var1);
+   void a(Map<axe<T>, List<ji<T>>> var1);
 
    default jn<ji<T>> t() {
       return new jn<ji<T>>() {
@@ -191,12 +191,12 @@ public interface jv<T> extends Keyable, jn<T> {
          }
 
          @Override
-         public Optional<jm.c<T>> a(axb<T> $$0) {
+         public Optional<jm.c<T>> a(axe<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public jm.c<T> b(axb<T> $$0) {
+         public jm.c<T> b(axe<T> $$0) {
             return jv.this.a($$0);
          }
       };

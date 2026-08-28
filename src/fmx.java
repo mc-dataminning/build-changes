@@ -1,132 +1,274 @@
+import com.google.common.base.Splitter;
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.time.Instant;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fmx extends fmy {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 25;
-   private static final xl c = xl.c("recover_world.title").a(n.r);
-   private static final xl d = xl.c("recover_world.bug_tracker");
-   private static final xl r = xl.c("recover_world.restore");
-   private static final xl s = xl.c("recover_world.no_fallback");
-   private static final xl u = xl.c("recover_world.done.title");
-   private static final xl v = xl.c("recover_world.done.success");
-   private static final xl w = xl.c("recover_world.done.failed");
-   private static final xl x = xl.c("recover_world.issue.none").a(n.k);
-   private static final xl y = xl.c("recover_world.issue.missing_file").a(n.m);
-   private final BooleanConsumer z;
-   private final fkq A = fkq.d().a(8);
-   private final xl B;
-   private final fht C;
-   private final fht D;
-   private final epr.c E;
+public class fmx extends fnb {
+   static final ale b = new ale("container/slot");
+   static final Logger c = LogUtils.getLogger();
+   private static final int d = 18;
+   private static final int r = 20;
+   private static final int s = 1;
+   private static final int u = 1;
+   private static final int v = 2;
+   private static final int w = 2;
+   private static final ald<dcv> x = ddc.b;
+   public static final xo a = xo.c("flat_world_preset.unknown");
+   private final flw y;
+   private xo z;
+   private xo A;
+   private fmx.a B;
+   private fhc C;
+   fhl D;
+   egl E;
 
-   public fmx(ffa $$0, BooleanConsumer $$1, epr.c $$2) {
-      super(c);
-      this.z = $$1;
-      this.B = xl.a("recover_world.message", xl.b($$2.f()).a(n.h));
-      this.C = new fht(this.B, $$0.h);
-      this.E = $$2;
-      Exception $$3 = this.a($$2, false);
-      Exception $$4 = this.a($$2, true);
-      xl $$5 = xl.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
-      this.D = new fht($$5, $$0.h);
-      boolean $$6 = $$3 != null && $$4 == null;
-      this.A.c().b();
-      this.A.a(new fig(this.l, $$0.h));
-      this.A.a(this.C.b(true));
-      this.A.a(this.D);
-      fkq $$7 = fkq.e().a(5);
-      $$7.a(fgz.a(d, flp.b(this, "https://aka.ms/snapshotbugs?ref=game")).b(120, 20).a());
-      $$7.a(fgz.a(r, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : fik.a(s)).a()).j = $$6;
-      this.A.a($$7);
-      this.A.a(fgz.a(xk.k, $$0x -> this.d()).b(120, 20).a());
-      this.A.a(this::c);
-   }
-
-   private void a(ffa $$0) {
-      Exception $$1 = this.a(this.E, false);
-      Exception $$2 = this.a(this.E, true);
-      if ($$1 != null && $$2 == null) {
-         $$0.d(new fme(xl.c("recover_world.restoring")));
-         frp.a(this.E);
-         if (this.E.n()) {
-            $$0.a(new flq(this.z, u, v, xk.j, xk.k));
-         } else {
-            $$0.a(new flk(() -> this.z.accept(false), u, w));
-         }
-      } else {
-         a.error(
-            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
-            $$1 != null ? $$1.getMessage() : "no issues",
-            $$2 != null ? $$2.getMessage() : "no issues"
-         );
-         $$0.a(new flk(() -> this.z.accept(false), u, w));
-      }
-   }
-
-   private xl a(epr.c $$0, boolean $$1, @Nullable Exception $$2) {
-      if ($$1 && $$2 instanceof FileNotFoundException) {
-         return xl.i();
-      } else {
-         xz $$3 = xl.i();
-         Instant $$4 = $$0.a($$1);
-         xz $$5 = $$4 != null ? xl.b(fry.a.format($$4)) : xl.c("recover_world.state_entry.unknown");
-         $$3.b(xl.a("recover_world.state_entry", $$5.a(n.h)));
-         if ($$2 == null) {
-            $$3.b(x);
-         } else if ($$2 instanceof FileNotFoundException) {
-            $$3.b(y);
-         } else if ($$2 instanceof vi) {
-            $$3.b(xl.b($$2.getCause().toString()).a(n.m));
-         } else {
-            $$3.b(xl.b($$2.toString()).a(n.m));
-         }
-
-         return $$3;
-      }
+   public fmx(flw $$0) {
+      super(xo.c("createWorld.customize.presets.title"));
+      this.y = $$0;
    }
 
    @Nullable
-   private Exception a(epr.c $$0, boolean $$1) {
-      try {
-         if (!$$1) {
-            $$0.a($$0.h());
-         } else {
-            $$0.a($$0.i());
-         }
+   private static egi a(jj<dex> $$0, String $$1, int $$2) {
+      List<String> $$3 = Splitter.on('*').limit(2).splitToList($$1);
+      int $$5;
+      String $$4;
+      if ($$3.size() == 2) {
+         $$4 = $$3.get(1);
 
+         try {
+            $$5 = Math.max(Integer.parseInt($$3.get(0)), 0);
+         } catch (NumberFormatException var11) {
+            c.error("Error while parsing flat world string", var11);
+            return null;
+         }
+      } else {
+         $$4 = $$3.get(0);
+         $$5 = 1;
+      }
+
+      int $$9 = Math.min($$2 + $$5, dvs.c);
+      int $$10 = $$9 - $$2;
+
+      Optional<ji.c<dex>> $$11;
+      try {
+         $$11 = $$0.a(ald.a(lq.f, new ale($$4)));
+      } catch (Exception var10) {
+         c.error("Error while parsing flat world string", var10);
          return null;
-      } catch (vc | vi | IOException var4) {
-         return var4;
+      }
+
+      if ($$11.isEmpty()) {
+         c.error("Error while parsing flat world string => Unknown block, {}", $$4);
+         return null;
+      } else {
+         return new egi($$10, $$11.get().a());
       }
    }
 
-   @Override
-   protected void aN_() {
-      super.aN_();
-      this.c();
+   private static List<egi> a(jj<dex> $$0, String $$1) {
+      List<egi> $$2 = Lists.newArrayList();
+      String[] $$3 = $$1.split(",");
+      int $$4 = 0;
+
+      for (String $$5 : $$3) {
+         egi $$6 = a($$0, $$5, $$4);
+         if ($$6 == null) {
+            return Collections.emptyList();
+         }
+
+         $$2.add($$6);
+         $$4 += $$6.a();
+      }
+
+      return $$2;
+   }
+
+   public static egl a(jj<dex> $$0, jj<dcv> $$1, jj<eio> $$2, jj<ehm> $$3, String $$4, egl $$5) {
+      Iterator<String> $$6 = Splitter.on(';').split($$4).iterator();
+      if (!$$6.hasNext()) {
+         return egl.a($$1, $$2, $$3);
+      } else {
+         List<egi> $$7 = a($$0, $$6.next());
+         if ($$7.isEmpty()) {
+            return egl.a($$1, $$2, $$3);
+         } else {
+            ji.c<dcv> $$8 = $$1.b(x);
+            ji<dcv> $$9 = $$8;
+            if ($$6.hasNext()) {
+               String $$10 = $$6.next();
+               $$9 = Optional.ofNullable(ale.a($$10)).map($$0x -> ald.a(lq.az, $$0x)).flatMap($$1::a).orElseGet(() -> {
+                  c.warn("Invalid biome: {}", $$10);
+                  return $$8;
+               });
+            }
+
+            return $$5.a($$7, $$5.c(), $$9);
+         }
+      }
+   }
+
+   static String a(egl $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (int $$2 = 0; $$2 < $$0.e().size(); $$2++) {
+         if ($$2 > 0) {
+            $$1.append(",");
+         }
+
+         $$1.append($$0.e().get($$2));
+      }
+
+      $$1.append(";");
+      $$1.append($$0.d().e().map(ald::a).orElseThrow(() -> new IllegalStateException("Biome not registered")));
+      return $$1.toString();
    }
 
    @Override
-   protected void c() {
-      this.D.d(this.n - 50);
-      this.C.d(this.n - 50);
-      this.A.a();
-      fkk.a(this.A, this.G());
+   protected void aM_() {
+      this.z = xo.c("createWorld.customize.presets.share");
+      this.A = xo.c("createWorld.customize.presets.list");
+      this.D = new fhl(this.p, 50, 40, this.n - 100, 20, this.z);
+      this.D.f(1230);
+      fry $$0 = this.y.a.m().k();
+      jw $$1 = $$0.a();
+      cpj $$2 = $$0.g().b();
+      jj<dcv> $$3 = $$1.b(lq.az);
+      jj<eio> $$4 = $$1.b(lq.aL);
+      jj<ehm> $$5 = $$1.b(lq.aI);
+      jj<dex> $$6 = $$1.b(lq.f).a($$2);
+      this.D.a(a(this.y.l()));
+      this.E = this.y.l();
+      this.d(this.D);
+      this.B = this.c(new fmx.a($$1, $$2));
+      this.C = this.c(fhc.a(xo.c("createWorld.customize.presets.select"), $$4x -> {
+         egl $$5x = a($$6, $$3, $$4, $$5, this.D.a(), this.E);
+         this.y.a($$5x);
+         this.m.a(this.y);
+      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a());
+      this.c(fhc.a(xn.e, $$0x -> this.m.a(this.y)).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
+      this.c(this.B.h() != null);
    }
 
    @Override
-   public xl i() {
-      return xk.a(super.i(), this.B);
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.B.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(ffd $$0, int $$1, int $$2) {
+      String $$3 = this.D.a();
+      this.b($$0, $$1, $$2);
+      this.D.a($$3);
    }
 
    @Override
    public void d() {
-      this.z.accept(false);
+      this.m.a(this.y);
+   }
+
+   @Override
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 400.0F);
+      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
+      $$0.b(this.p, this.z, 51, 30, 10526880);
+      $$0.b(this.p, this.A, 51, 68, 10526880);
+      $$0.c().b();
+      this.D.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void c(boolean $$0) {
+      this.C.j = $$0 || this.D.a().length() > 1;
+   }
+
+   class a extends fhy<fmx.a.a> {
+      public a(final jw $$0, final cpj $$1) {
+         super(fmx.this.m, fmx.this.n, fmx.this.o - 117, 80, 24);
+
+         for (ji<egj> $$2 : $$0.d(lq.aF).c(awt.a)) {
+            Set<dex> $$3 = $$2.a().b().e().stream().map($$0x -> $$0x.b().b()).filter($$1x -> !$$1x.a($$1)).collect(Collectors.toSet());
+            if (!$$3.isEmpty()) {
+               fmx.c
+                  .info(
+                     "Discarding flat world preset {} since it contains experimental blocks {}",
+                     $$2.e().map($$0x -> $$0x.a().toString()).orElse("<unknown>"),
+                     $$3
+                  );
+            } else {
+               this.b(new fmx.a.a($$2));
+            }
+         }
+      }
+
+      public void a(@Nullable fmx.a.a $$0) {
+         super.a($$0);
+         fmx.this.c($$0 != null);
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, int $$2) {
+         if (super.a($$0, $$1, $$2)) {
+            return true;
+         } else {
+            if (fld.a($$0) && this.h() != null) {
+               this.h().b();
+            }
+
+            return false;
+         }
+      }
+
+      public class a extends fhy.a<fmx.a.a> {
+         private static final ale b = new ale("textures/gui/container/stats_icons.png");
+         private final egj c;
+         private final xo d;
+
+         public a(final ji<egj> $$1) {
+            this.c = $$1.a();
+            this.d = $$1.e().map($$0x -> xo.c($$0x.a().f("flat_world_preset"))).orElse(fmx.a);
+         }
+
+         @Override
+         public void a(fgp $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            this.a($$0, $$3, $$2, this.c.a().a());
+            $$0.a(fmx.this.p, this.d, $$3 + 18 + 5, $$2 + 6, 16777215, false);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            this.b();
+            return super.a($$0, $$1, $$2);
+         }
+
+         void b() {
+            a.this.a(this);
+            fmx.this.E = this.c.b();
+            fmx.this.D.a(fmx.a(fmx.this.E));
+            fmx.this.D.b(false);
+         }
+
+         private void a(fgp $$0, int $$1, int $$2, cui $$3) {
+            this.a($$0, $$1 + 1, $$2 + 1);
+            $$0.b(new cun($$3), $$1 + 2, $$2 + 2);
+         }
+
+         private void a(fgp $$0, int $$1, int $$2) {
+            $$0.a(fmx.b, $$1, $$2, 0, 18, 18);
+         }
+
+         @Override
+         public xo a() {
+            return xo.a("narrator.select", this.d);
+         }
+      }
    }
 }

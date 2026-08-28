@@ -1,26 +1,79 @@
 import com.mojang.serialization.Codec;
 
-public class ecj extends eat<ede> {
-   public ecj(Codec<ede> $$0) {
+public class ecj extends eaw<edx> {
+   public ecj(Codec<edx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eav<ede> $$0) {
-      dco $$1 = $$0.b();
+   public boolean a(eay<edx> $$0) {
+      dcr $$1 = $$0.b();
       iz $$2 = $$0.e();
-      $$0.f();
-      if (!$$1.u($$2)) {
+      if (a($$1, $$2)) {
          return false;
       } else {
-         for (je $$3 : je.values()) {
-            if ($$3 != je.a && dnq.a($$1, $$2.a($$3), $$3)) {
-               $$1.a($$2, dew.ff.n().a(dnq.a($$3), Boolean.valueOf(true)), 2);
-               return true;
+         azf $$3 = $$0.d();
+         edx $$4 = $$0.f();
+         int $$5 = $$4.a();
+         int $$6 = $$4.b();
+         int $$7 = $$4.c();
+         iz.a $$8 = new iz.a();
+
+         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
+            $$8.g($$2).e(ayx.a($$3, -$$5, $$5), ayx.a($$3, -$$6, $$6), ayx.a($$3, -$$5, $$5));
+            if (a($$1, $$8) && !a($$1, (iz)$$8)) {
+               int $$10 = ayx.a($$3, 1, $$7);
+               if ($$3.a(6) == 0) {
+                  $$10 *= 2;
+               }
+
+               if ($$3.a(5) == 0) {
+                  $$10 = 1;
+               }
+
+               int $$11 = 17;
+               int $$12 = 25;
+               a($$1, $$3, $$8, $$10, 17, 25);
             }
          }
 
-         return false;
+         return true;
+      }
+   }
+
+   private static boolean a(dbx $$0, iz.a $$1) {
+      do {
+         $$1.e(0, -1, 0);
+         if ($$0.s($$1)) {
+            return false;
+         }
+      } while ($$0.a_($$1).i());
+
+      $$1.e(0, 1, 0);
+      return true;
+   }
+
+   public static void a(dbx $$0, azf $$1, iz.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 1; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.c())) {
+               $$0.a($$2, dez.oB.o().a(dim.e, Integer.valueOf(ayx.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dez.oC.o(), 2);
+         }
+
+         $$2.c(je.b);
+      }
+   }
+
+   private static boolean a(dbx $$0, iz $$1) {
+      if (!$$0.u($$1)) {
+         return true;
+      } else {
+         dsa $$2 = $$0.a_($$1.d());
+         return !$$2.a(dez.dV) && !$$2.a(dez.on) && !$$2.a(dez.op);
       }
    }
 }

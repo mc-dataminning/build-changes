@@ -1,18 +1,10 @@
 import com.mojang.serialization.Codec;
 
-public class ecs implements ecx {
-   public static final Codec<ecs> a = bpu.b(0, 256).fieldOf("count").xmap(ecs::new, ecs::a).codec();
-   private final bpu b;
+public class ecs implements eda {
+   public static final Codec<ecs> a = efb.a.fieldOf("state_provider").xmap(ecs::new, $$0 -> $$0.b).codec();
+   public final efb b;
 
-   public ecs(int $$0) {
-      this.b = bpr.a($$0);
-   }
-
-   public ecs(bpu $$0) {
+   public ecs(efb $$0) {
       this.b = $$0;
-   }
-
-   public bpu a() {
-      return this.b;
    }
 }

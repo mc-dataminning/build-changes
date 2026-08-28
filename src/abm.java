@@ -1,16 +1,46 @@
-public interface abm extends zy {
-   @Override
-   default wk b() {
-      return wk.e;
+public record abm(iz c, float d, float e, float f, float g, float h) implements aaw {
+   public static final zm<wl, abm> a = aaw.a(abm::a, abm::new);
+   public static final aaw.b<abm> b = aaw.a("debug/worldgen_attempt");
+
+   private abm(wl $$0) {
+      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
-   void a(abn var1);
+   private void a(wl $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+   }
 
-   void a(abo var1);
+   @Override
+   public aaw.b<abm> a() {
+      return b;
+   }
 
-   void a(abr var1);
+   public iz b() {
+      return this.c;
+   }
 
-   void a(abq var1);
+   public float c() {
+      return this.d;
+   }
 
-   void a(abp var1);
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
+   }
 }

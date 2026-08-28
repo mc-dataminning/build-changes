@@ -1,69 +1,45 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class amo {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xl.b("clear.failed.single", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xl.b("clear.failed.multiple", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xo.c("commands.ban.failed"));
 
-   public static void a(CommandDispatcher<ep> $$0, el $$1) {
+   public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("clear").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ep)$$0x.getSource(), Collections.singleton(((ep)$$0x.getSource()).h()), $$0xx -> true)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("ban").requires($$0x -> $$0x.c(3)))
             .then(
-               ((RequiredArgumentBuilder)eq.a("targets", fc.d()).executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), $$0xx -> true)))
-                  .then(
-                     ((RequiredArgumentBuilder)eq.a("item", hb.a($$1)).executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), hb.a($$0x, "item"))))
-                        .then(
-                           eq.a("maxCount", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), hb.a($$0x, "item"), IntegerArgumentType.getInteger($$0x, "maxCount"))
-                              )
-                        )
-                  )
+               ((RequiredArgumentBuilder)eq.a("targets", fe.a()).executes($$0x -> a((ep)$$0x.getSource(), fe.a($$0x, "targets"), null)))
+                  .then(eq.a("reason", fg.a()).executes($$0x -> a((ep)$$0x.getSource(), fe.a($$0x, "targets"), fg.a($$0x, "reason"))))
             )
       );
    }
 
-   private static int a(ep $$0, Collection<arc> $$1, Predicate<cuk> $$2) throws CommandSyntaxException {
-      return a($$0, $$1, $$2, -1);
-   }
-
-   private static int a(ep $$0, Collection<arc> $$1, Predicate<cuk> $$2, int $$3) throws CommandSyntaxException {
+   private static int a(ep $$0, Collection<GameProfile> $$1, @Nullable xo $$2) throws CommandSyntaxException {
+      avi $$3 = $$0.l().ah().f();
       int $$4 = 0;
 
-      for (arc $$5 : $$1) {
-         $$4 += $$5.gc().a($$2, $$3, $$5.ca.q());
-         $$5.cb.d();
-         $$5.ca.a($$5.gc());
+      for (GameProfile $$5 : $$1) {
+         if (!$$3.a($$5)) {
+            avj $$6 = new avj($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+            $$3.a($$6);
+            $$4++;
+            $$0.a(() -> xo.a("commands.ban.success", xo.b($$5.getName()), $$6.d()), true);
+            arf $$7 = $$0.l().ah().a($$5.getId());
+            if ($$7 != null) {
+               $$7.c.b(xo.c("multiplayer.disconnect.banned"));
+            }
+         }
       }
 
       if ($$4 == 0) {
-         if ($$1.size() == 1) {
-            throw a.create($$1.iterator().next().af());
-         } else {
-            throw b.create($$1.size());
-         }
+         throw a.create();
       } else {
-         int $$6 = $$4;
-         if ($$3 == 0) {
-            if ($$1.size() == 1) {
-               $$0.a(() -> xl.a("commands.clear.test.single", $$6, $$1.iterator().next().O_()), true);
-            } else {
-               $$0.a(() -> xl.a("commands.clear.test.multiple", $$6, $$1.size()), true);
-            }
-         } else if ($$1.size() == 1) {
-            $$0.a(() -> xl.a("commands.clear.success.single", $$6, $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> xl.a("commands.clear.success.multiple", $$6, $$1.size()), true);
-         }
-
          return $$4;
       }
    }

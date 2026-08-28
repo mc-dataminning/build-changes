@@ -1,19 +1,24 @@
-public class gmd extends gne<cku, fte<cku>> {
-   private static final alb a = new alb("textures/entity/breeze/breeze_wind.png");
-   private static final fte<cku> b = new fte<>(fte.a(128, 128).a());
+public class gmd<T extends btn, M extends fvd<T>> extends gnq<T, M> {
+   private final git a;
 
-   public gmd(gko<cku, fte<cku>> $$0) {
-      super($$0);
+   public gmd(giv.a $$0, gjw<T, M> $$1) {
+      super($$1);
+      this.a = $$0.a();
    }
 
-   public void a(ezt $$0, gdj $$1, int $$2, cku $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      float $$10 = (float)$$3.ai + $$6;
-      ezx $$11 = $$1.getBuffer(gdr.a(a, this.a($$10) % 1.0F, 0.0F));
-      b.a($$3, $$4, $$5, $$7, $$8, $$9);
-      ghy.a(b, b.e()).a($$0, $$11, $$2, gol.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   @Override
+   protected int a(T $$0) {
+      return $$0.eT();
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   @Override
+   protected void a(ezw $$0, gdm $$1, int $$2, bss $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = ayx.c($$4 * $$4 + $$6 * $$6);
+      cnd $$9 = new cnd($$3.dP(), $$3.du(), $$3.dw(), $$3.dA(), cun.l);
+      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
+      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
+      $$9.O = $$9.dF();
+      $$9.P = $$9.dH();
+      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
    }
 }

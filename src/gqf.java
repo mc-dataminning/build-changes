@@ -1,58 +1,74 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gqf {
-   public static final gqg a = new gqg();
-   public static final String b = "animation";
-   public static final int c = 1;
-   public static final int d = -1;
-   public static final gqf e = new gqf(Lists.newArrayList(), -1, -1, 1, false) {
-      @Override
-      public gqh a(int $$0, int $$1) {
-         return new gqh($$0, $$1);
+public class gqf implements aup {
+   private static final Logger a = LogUtils.getLogger();
+   private static final gqe b = new gqe("US", "English", false);
+   private Map<String, gqe> c = ImmutableMap.of("en_us", b);
+   private String d;
+
+   public gqf(String $$0) {
+      this.d = $$0;
+   }
+
+   private static Map<String, gqe> a(Stream<ata> $$0) {
+      Map<String, gqe> $$1 = Maps.newHashMap();
+      $$0.forEach($$1x -> {
+         try {
+            gqr $$2 = $$1x.a(gqr.c);
+            if ($$2 != null) {
+               $$2.a().forEach($$1::putIfAbsent);
+            }
+         } catch (IOException | RuntimeException var3) {
+            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
+         }
+      });
+      return ImmutableMap.copyOf($$1);
+   }
+
+   @Override
+   public void a(auo $$0) {
+      this.c = a($$0.b());
+      List<String> $$1 = new ArrayList<>(2);
+      boolean $$2 = b.d();
+      $$1.add("en_us");
+      if (!this.d.equals("en_us")) {
+         gqe $$3 = this.c.get(this.d);
+         if ($$3 != null) {
+            $$1.add(this.d);
+            $$2 = $$3.d();
+         }
       }
-   };
-   private final List<gqe> f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final boolean j;
 
-   public gqf(List<gqe> $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
+      gqb $$4 = gqb.a($$0, $$1, $$2);
+      gqd.a($$4);
+      um.a($$4);
    }
 
-   public gqh a(int $$0, int $$1) {
-      if (this.g != -1) {
-         return this.h != -1 ? new gqh(this.g, this.h) : new gqh(this.g, $$1);
-      } else if (this.h != -1) {
-         return new gqh($$0, this.h);
-      } else {
-         int $$2 = Math.min($$0, $$1);
-         return new gqh($$2, $$2);
-      }
+   public void a(String $$0) {
+      this.d = $$0;
    }
 
-   public int a() {
-      return this.i;
+   public String a() {
+      return this.d;
    }
 
-   public boolean b() {
-      return this.j;
+   public SortedMap<String, gqe> b() {
+      return new TreeMap<>(this.c);
    }
 
-   public void a(gqf.a $$0) {
-      for (gqe $$1 : this.f) {
-         $$0.accept($$1.a(), $$1.a(this.i));
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void accept(int var1, int var2);
+   @Nullable
+   public gqe b(String $$0) {
+      return this.c.get($$0);
    }
 }

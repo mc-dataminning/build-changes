@@ -1,29 +1,45 @@
-public enum dwk {
-   a(false, false),
-   b(true, false),
-   c(true, true);
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   private final boolean d;
-   private final boolean e;
+public class dwk<T extends dwa> implements dwj<T> {
+   private final dwc<T> a;
+   private final dwf<T> b;
 
-   private dwk(final boolean $$0, final boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public dwk(dwc<T> $$0, dwf<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public boolean a() {
-      return this.e;
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
    }
 
-   public boolean b() {
-      return this.d;
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
    }
 
-   public static dwk a(aqu $$0) {
-      if ($$0.a(aqu.d)) {
-         return c;
-      } else {
-         return $$0.a(aqu.b) ? b : a;
-      }
+   @Override
+   public Iterable<T> a() {
+      return this.a.a();
+   }
+
+   @Override
+   public <U extends T> void a(dwh<T, U> $$0, axk<U> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   @Override
+   public void a(evk $$0, Consumer<T> $$1) {
+      this.b.b($$0, axk.forConsumer($$1));
+   }
+
+   @Override
+   public <U extends T> void a(dwh<T, U> $$0, evk $$1, axk<U> $$2) {
+      this.b.a($$0, $$1, $$2);
    }
 }

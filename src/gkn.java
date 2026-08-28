@@ -1,11 +1,16 @@
-public class gkn extends gjy<ckd, fvi> {
-   private static final alb a = new alb("textures/entity/illager/ravager.png");
+public class gkn extends gkb<cfv, fve<cfv>> {
+   private static final ale a = new ale("textures/entity/bear/polarbear.png");
 
-   public gkn(gis.a $$0) {
-      super($$0, new fvi($$0.a(fwu.bf)), 1.1F);
+   public gkn(giv.a $$0) {
+      super($$0, new fve<>($$0.a(fwx.ba)), 0.9F);
    }
 
-   public alb a(ckd $$0) {
+   public ale a(cfv $$0) {
       return a;
+   }
+
+   protected void a(cfv $$0, ezw $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
    }
 }

@@ -1,81 +1,146 @@
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class eqk extends eqm {
-   public static final MapCodec<eqk> a = a(eqk::new);
+public class eqk {
+   public static final Codec<eqk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               equ.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
+               ets.a.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
+               erv.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
+               eum.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
+               eum.a.fieldOf("bonus_rolls").orElse(euj.a(0.0F)).forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, eqk::new)
+   );
+   private final List<eqw> b;
+   private final List<etq> c;
+   private final Predicate<eqg> d;
+   private final List<ert> e;
+   private final BiFunction<cun, eqg, cun> f;
+   private final eul g;
+   private final eul h;
 
-   eqk(List<eqt> $$0, List<etn> $$1) {
-      super($$0, $$1);
+   eqk(List<eqw> $$0, List<etq> $$1, List<ert> $$2, eul $$3, eul $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = ac.a($$1);
+      this.e = $$2;
+      this.f = erv.a($$2);
+      this.g = $$3;
+      this.h = $$4;
    }
 
-   @Override
-   public equ a() {
-      return eqr.g;
-   }
+   private void b(Consumer<cun> $$0, eqg $$1) {
+      azf $$2 = $$1.b();
+      List<eqv> $$3 = Lists.newArrayList();
+      MutableInt $$4 = new MutableInt();
 
-   @Override
-   protected eql a(List<? extends eql> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> b;
-         case 1 -> (eql)$$0.get(0);
-         case 2 -> $$0.get(0).or($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (eql $$3 : $$0) {
-            if ($$3.expand($$1, $$2)) {
-               return true;
+      for (eqw $$5 : this.b) {
+         $$5.expand($$1, $$3x -> {
+            int $$4x = $$3x.a($$1.c());
+            if ($$4x > 0) {
+               $$3.add($$3x);
+               $$4.add($$4x);
+            }
+         });
+      }
+
+      int $$6 = $$3.size();
+      if ($$4.intValue() != 0 && $$6 != 0) {
+         if ($$6 == 1) {
+            $$3.get(0).a($$0, $$1);
+         } else {
+            int $$7 = $$2.a($$4.intValue());
+
+            for (eqv $$8 : $$3) {
+               $$7 -= $$8.a($$1.c());
+               if ($$7 < 0) {
+                  $$8.a($$0, $$1);
+                  return;
+               }
             }
          }
-
-         return false;
-      };
-      };
+      }
    }
 
-   @Override
-   public void a(eqj $$0) {
-      super.a($$0);
+   public void a(Consumer<cun> $$0, eqg $$1) {
+      if (this.d.test($$1)) {
+         Consumer<cun> $$2 = ert.a(this.f, $$0, $$1);
+         int $$3 = this.g.a($$1) + ayx.d(this.h.b($$1) * $$1.c());
 
-      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
-         if (this.d.get($$1).e.isEmpty()) {
-            $$0.b("Unreachable entry!");
+         for (int $$4 = 0; $$4 < $$3; $$4++) {
+            this.b($$2, $$1);
          }
       }
    }
 
-   public static eqk.a a(eqt.a<?>... $$0) {
-      return new eqk.a($$0);
-   }
-
-   public static <E> eqk.a a(Collection<E> $$0, Function<E, eqt.a<?>> $$1) {
-      return new eqk.a($$0.stream().map($$1::apply).toArray(eqt.a[]::new));
-   }
-
-   public static class a extends eqt.a<eqk.a> {
-      private final Builder<eqt> a = ImmutableList.builder();
-
-      public a(eqt.a<?>... $$0) {
-         for (eqt.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
+   public void a(eqm $$0) {
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
       }
 
-      protected eqk.a a() {
+      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
+         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
+      }
+
+      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
+         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
+      }
+
+      this.g.a($$0.a(".rolls"));
+      this.h.a($$0.a(".bonusRolls"));
+   }
+
+   public static eqk.a a() {
+      return new eqk.a();
+   }
+
+   public static class a implements erp<eqk.a>, etj<eqk.a> {
+      private final Builder<eqw> a = ImmutableList.builder();
+      private final Builder<etq> b = ImmutableList.builder();
+      private final Builder<ert> c = ImmutableList.builder();
+      private eul d = euj.a(1.0F);
+      private eul e = euj.a(0.0F);
+
+      public eqk.a a(eul $$0) {
+         this.d = $$0;
          return this;
       }
 
-      @Override
-      public eqk.a a(eqt.a<?> $$0) {
+      public eqk.a a() {
+         return this;
+      }
+
+      public eqk.a b(eul $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public eqk.a a(eqw.a<?> $$0) {
          this.a.add($$0.b());
          return this;
       }
 
-      @Override
-      public eqt b() {
-         return new eqk(this.a.build(), this.f());
+      public eqk.a a(etq.a $$0) {
+         this.b.add($$0.build());
+         return this;
+      }
+
+      public eqk.a a(ert.a $$0) {
+         this.c.add($$0.b());
+         return this;
+      }
+
+      public eqk b() {
+         return new eqk(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
       }
    }
 }

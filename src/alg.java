@@ -1,18 +1,117 @@
 import com.mojang.logging.LogUtils;
-import java.io.OutputStream;
+import java.io.PrintStream;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import org.slf4j.Logger;
 
-public class alg extends ali {
-   private static final Logger b = LogUtils.getLogger();
+public class alg {
+   public static final PrintStream a = System.out;
+   private static volatile boolean c;
+   private static final Logger d = LogUtils.getLogger();
+   public static final AtomicLong b = new AtomicLong(-1L);
 
-   public alg(String $$0, OutputStream $$1) {
-      super($$0, $$1);
+   public static void a() {
+      if (!c) {
+         c = true;
+         Instant $$0 = Instant.now();
+         if (lp.aw.e().isEmpty()) {
+            throw new IllegalStateException("Unable to load registries");
+         } else {
+            dhx.b();
+            dgi.b();
+            if (bsy.a(bsy.by) == null) {
+               throw new IllegalStateException("Failed loading EntityTypes");
+            } else {
+               hg.a();
+               kt.a();
+               kf.a();
+               lp.a();
+               csz.a();
+               d();
+               b.set(Duration.between($$0, Instant.now()).toMillis());
+            }
+         }
+      }
    }
 
-   @Override
-   protected void a(String $$0) {
-      StackTraceElement[] $$1 = Thread.currentThread().getStackTrace();
-      StackTraceElement $$2 = $$1[Math.min(3, $$1.length)];
-      b.info("[{}]@.({}:{}): {}", new Object[]{this.a, $$2.getFileName(), $$2.getLineNumber(), $$0});
+   private static <T> void a(Iterable<T> $$0, Function<T, String> $$1, Set<String> $$2) {
+      um $$3 = um.a();
+      $$0.forEach($$3x -> {
+         String $$4 = $$1.apply((T)$$3x);
+         if (!$$3.b($$4)) {
+            $$2.add($$4);
+         }
+      });
+   }
+
+   private static void a(final Set<String> $$0) {
+      final um $$1 = um.a();
+      dbs.a(new dbs.c() {
+         @Override
+         public <T extends dbs.g<T>> void a(dbs.e<T> $$0x, dbs.f<T> $$1x) {
+            if (!$$1.b($$0.b())) {
+               $$0.add($$0.a());
+            }
+         }
+      });
+   }
+
+   public static Set<String> b() {
+      Set<String> $$0 = new TreeSet<>();
+      a(lp.u, buq::c, $$0);
+      a(lp.g, bsy::g, $$0);
+      a(lp.d, bry::d, $$0);
+      a(lp.h, cui::a, $$0);
+      a(lp.f, czy::j, $$0);
+      a(lp.e, dex::g, $$0);
+      a(lp.m, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
+      a($$0);
+      return $$0;
+   }
+
+   public static void a(Supplier<String> $$0) {
+      if (!c) {
+         throw b($$0);
+      }
+   }
+
+   private static RuntimeException b(Supplier<String> $$0) {
+      try {
+         String $$1 = $$0.get();
+         return new IllegalArgumentException("Not bootstrapped (called from " + $$1 + ")");
+      } catch (Exception var3) {
+         RuntimeException $$3 = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
+         $$3.addSuppressed(var3);
+         return $$3;
+      }
+   }
+
+   public static void c() {
+      a(() -> "validate");
+      if (aa.aX) {
+         b().forEach($$0 -> d.error("Missing translations: {}", $$0));
+         eq.b();
+      }
+
+      buw.a();
+   }
+
+   private static void d() {
+      if (d.isDebugEnabled()) {
+         System.setErr(new alj("STDERR", System.err));
+         System.setOut(new alj("STDOUT", a));
+      } else {
+         System.setErr(new all("STDERR", System.err));
+         System.setOut(new all("STDOUT", a));
+      }
+   }
+
+   public static void a(String $$0) {
+      a.println($$0);
    }
 }

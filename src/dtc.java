@@ -1,25 +1,20 @@
-public enum dtc implements azp {
-   a("up"),
-   b("side"),
-   c("none");
+public enum dtc implements azs {
+   a("normal"),
+   b("sticky");
 
-   private final String d;
+   private final String c;
 
    private dtc(final String $$0) {
-      this.d = $$0;
+      this.c = $$0;
    }
 
    @Override
    public String toString() {
-      return this.c();
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.d;
-   }
-
-   public boolean a() {
-      return this != c;
+      return this.c;
    }
 }

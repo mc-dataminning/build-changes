@@ -1,15 +1,17 @@
-import io.netty.buffer.ByteBuf;
+public record akc(akd b) implements zv<akb> {
+   public static final zm<wl, akc> a = zv.a(akc::a, akc::new);
 
-public class akc implements zs<akb> {
-   public static final akc a = new akc();
-   public static final zj<ByteBuf, akc> b = zj.a(a);
+   private akc(wl $$0) {
+      this($$0.a(akd.a));
+   }
 
-   private akc() {
+   private void a(wl $$0) {
+      $$0.a(akd.a, this.b);
    }
 
    @Override
-   public zu<akc> a() {
-      return akd.b;
+   public zx<akc> a() {
+      return akg.a;
    }
 
    public void a(akb $$0) {

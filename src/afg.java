@@ -1,9 +1,11 @@
-public class afg implements zs<ace> {
-   public static final zj<wl, afg> a = zs.a(afg::a, afg::new);
+import javax.annotation.Nullable;
+
+public class afg implements zv<ach> {
+   public static final zm<wl, afg> a = zv.a(afg::a, afg::new);
    private final int b;
 
-   public afg(int $$0) {
-      this.b = $$0;
+   public afg(bss $$0) {
+      this.b = $$0.al();
    }
 
    private afg(wl $$0) {
@@ -15,15 +17,16 @@ public class afg implements zs<ace> {
    }
 
    @Override
-   public zu<afg> a() {
-      return agq.az;
+   public zx<afg> a() {
+      return agt.aw;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public bss a(dbw $$0) {
+      return $$0.a(this.b);
    }
 }

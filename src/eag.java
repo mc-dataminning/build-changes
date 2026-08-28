@@ -1,29 +1,58 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public record eag<FC extends ecx, F extends eat<FC>>(F d, FC e) {
-   public static final Codec<eag<?, ?>> a = lp.Q.q().dispatch($$0 -> $$0.d, eat::a);
-   public static final Codec<ji<eag<?, ?>>> b = akx.a(lq.aC, a);
-   public static final Codec<jm<eag<?, ?>>> c = jx.a(lq.aC, a);
-
-   public boolean a(dco $$0, dtu $$1, azc $$2, iz $$3) {
-      return this.d.a(this.e, $$0, $$1, $$2, $$3);
-   }
-
-   public Stream<eag<?, ?>> a() {
-      return Stream.concat(Stream.of(this), this.e.e());
+public class eag extends eaw<edh> {
+   public eag(Codec<edh> $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return "Configured: " + this.d + ": " + this.e;
-   }
+   public boolean a(eay<edh> $$0) {
+      iz $$1 = $$0.e();
+      dcr $$2 = $$0.b();
+      azf $$3 = $$0.d();
+      if ($$1.v() > $$2.z_() - 1) {
+         return false;
+      } else if (!$$2.a_($$1).a(dez.G) && !$$2.a_($$1.d()).a(dez.G)) {
+         return false;
+      } else {
+         boolean $$4 = false;
 
-   public F b() {
-      return this.d;
-   }
+         for (je $$5 : je.values()) {
+            if ($$5 != je.a && $$2.a_($$1.a($$5)).a(dez.iC)) {
+               $$4 = true;
+               break;
+            }
+         }
 
-   public FC c() {
-      return this.e;
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, dez.mW.o(), 2);
+
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
+
+               if ($$8 >= 1) {
+                  iz $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  dsa $$10 = $$2.a_($$9);
+                  if ($$10.i() || $$10.a(dez.G) || $$10.a(dez.iC) || $$10.a(dez.dO)) {
+                     for (je $$11 : je.values()) {
+                        dsa $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(dez.mW)) {
+                           $$2.a($$9, dez.mW.o(), 2);
+                           break;
+                        }
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      }
    }
 }

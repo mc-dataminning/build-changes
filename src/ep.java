@@ -18,43 +18,43 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
 public class ep implements er<ep>, eu {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("permissions.requires.player"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("permissions.requires.entity"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xo.c("permissions.requires.player"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xo.c("permissions.requires.entity"));
    private final eo c;
-   private final evm d;
-   private final arb e;
+   private final evp d;
+   private final are e;
    private final int f;
    private final String g;
-   private final xl h;
+   private final xo h;
    private final MinecraftServer i;
    private final boolean j;
    @Nullable
-   private final bsp k;
+   private final bss k;
    private final em l;
    private final fb.a m;
-   private final evl n;
+   private final evo n;
    private final en o;
-   private final azr p;
+   private final azu p;
 
-   public ep(eo $$0, evm $$1, evl $$2, arb $$3, int $$4, String $$5, xl $$6, MinecraftServer $$7, @Nullable bsp $$8) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, em.a, fb.a.a, en.a, azr.immediate($$7));
+   public ep(eo $$0, evp $$1, evo $$2, are $$3, int $$4, String $$5, xo $$6, MinecraftServer $$7, @Nullable bss $$8) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, em.a, fb.a.a, en.a, azu.immediate($$7));
    }
 
    protected ep(
       eo $$0,
-      evm $$1,
-      evl $$2,
-      arb $$3,
+      evp $$1,
+      evo $$2,
+      are $$3,
       int $$4,
       String $$5,
-      xl $$6,
+      xo $$6,
       MinecraftServer $$7,
-      @Nullable bsp $$8,
+      @Nullable bss $$8,
       boolean $$9,
       em $$10,
       fb.a $$11,
       en $$12,
-      azr $$13
+      azu $$13
    ) {
       this.c = $$0;
       this.d = $$1;
@@ -76,17 +76,17 @@ public class ep implements er<ep>, eu {
       return this.c == $$0 ? this : new ep($$0, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public ep a(bsp $$0) {
+   public ep a(bss $$0) {
       return this.k == $$0
          ? this
          : new ep(this.c, this.d, this.n, this.e, this.f, $$0.af().getString(), $$0.O_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public ep a(evm $$0) {
+   public ep a(evp $$0) {
       return this.d.equals($$0) ? this : new ep(this.c, $$0, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public ep a(evl $$0) {
+   public ep a(evo $$0) {
       return this.n.c($$0) ? this : new ep(this.c, this.d, $$0, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
@@ -119,38 +119,38 @@ public class ep implements er<ep>, eu {
       return $$0 == this.m ? this : new ep(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, $$0, this.o, this.p);
    }
 
-   public ep a(arb $$0) {
+   public ep a(are $$0) {
       if ($$0 == this.e) {
          return this;
       } else {
-         double $$1 = dvp.a(this.e.D_(), $$0.D_());
-         evm $$2 = new evm(this.d.c * $$1, this.d.d, this.d.e * $$1);
+         double $$1 = dvs.a(this.e.D_(), $$0.D_());
+         evp $$2 = new evp(this.d.c * $$1, this.d.d, this.d.e * $$1);
          return new ep(this.c, $$2, this.n, $$0, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
       }
    }
 
-   public ep a(bsp $$0, fb.a $$1) {
+   public ep a(bss $$0, fb.a $$1) {
       return this.b($$1.a($$0));
    }
 
-   public ep b(evm $$0) {
-      evm $$1 = this.m.a(this);
+   public ep b(evp $$0) {
+      evp $$1 = this.m.a(this);
       double $$2 = $$0.c - $$1.c;
       double $$3 = $$0.d - $$1.d;
       double $$4 = $$0.e - $$1.e;
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
-      float $$6 = ayu.g((float)(-(ayu.d($$3, $$5) * 180.0F / (float)Math.PI)));
-      float $$7 = ayu.g((float)(ayu.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new evl($$6, $$7));
+      float $$6 = ayx.g((float)(-(ayx.d($$3, $$5) * 180.0F / (float)Math.PI)));
+      float $$7 = ayx.g((float)(ayx.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
+      return this.a(new evo($$6, $$7));
    }
 
-   public ep a(en $$0, azr $$1) {
+   public ep a(en $$0, azu $$1) {
       return $$0 == this.o && $$1 == this.p
          ? this
          : new ep(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, $$0, $$1);
    }
 
-   public xl b() {
+   public xo b() {
       return this.h;
    }
 
@@ -163,20 +163,20 @@ public class ep implements er<ep>, eu {
       return this.f >= $$0;
    }
 
-   public evm d() {
+   public evp d() {
       return this.d;
    }
 
-   public arb e() {
+   public are e() {
       return this.e;
    }
 
    @Nullable
-   public bsp f() {
+   public bss f() {
       return this.k;
    }
 
-   public bsp g() throws CommandSyntaxException {
+   public bss g() throws CommandSyntaxException {
       if (this.k == null) {
          throw b.create();
       } else {
@@ -184,25 +184,25 @@ public class ep implements er<ep>, eu {
       }
    }
 
-   public arc h() throws CommandSyntaxException {
-      bsp var2 = this.k;
-      if (var2 instanceof arc) {
-         return (arc)var2;
+   public arf h() throws CommandSyntaxException {
+      bss var2 = this.k;
+      if (var2 instanceof arf) {
+         return (arf)var2;
       } else {
          throw a.create();
       }
    }
 
    @Nullable
-   public arc i() {
-      return this.k instanceof arc $$0 ? $$0 : null;
+   public arf i() {
+      return this.k instanceof arf $$0 ? $$0 : null;
    }
 
    public boolean j() {
-      return this.k instanceof arc;
+      return this.k instanceof arf;
    }
 
-   public evl k() {
+   public evo k() {
       return this.n;
    }
 
@@ -218,18 +218,18 @@ public class ep implements er<ep>, eu {
       return this.o;
    }
 
-   public azr o() {
+   public azu o() {
       return this.p;
    }
 
-   public boolean a(arc $$0) {
-      arc $$1 = this.i();
+   public boolean a(arf $$0) {
+      arf $$1 = this.i();
       return $$0 == $$1 ? false : $$1 != null && $$1.Y() || $$0.Y();
    }
 
-   public void a(ya $$0, boolean $$1, xh.a $$2) {
+   public void a(yd $$0, boolean $$1, xk.a $$2) {
       if (!this.j) {
-         arc $$3 = this.i();
+         arf $$3 = this.i();
          if ($$3 != null) {
             $$3.a($$0, $$1, $$2);
          } else {
@@ -238,9 +238,9 @@ public class ep implements er<ep>, eu {
       }
    }
 
-   public void a(xl $$0) {
+   public void a(xo $$0) {
       if (!this.j) {
-         arc $$1 = this.i();
+         arf $$1 = this.i();
          if ($$1 != null) {
             $$1.a($$0);
          } else {
@@ -249,11 +249,11 @@ public class ep implements er<ep>, eu {
       }
    }
 
-   public void a(Supplier<xl> $$0, boolean $$1) {
+   public void a(Supplier<xo> $$0, boolean $$1) {
       boolean $$2 = this.c.l_() && !this.j;
       boolean $$3 = $$1 && this.c.U_() && !this.j;
       if ($$2 || $$3) {
-         xl $$4 = $$0.get();
+         xo $$4 = $$0.get();
          if ($$2) {
             this.c.a($$4);
          }
@@ -264,24 +264,24 @@ public class ep implements er<ep>, eu {
       }
    }
 
-   private void c(xl $$0) {
-      xl $$1 = xl.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
-      if (this.i.aM().b(dbp.p)) {
-         for (arc $$2 : this.i.ah().t()) {
+   private void c(xo $$0) {
+      xo $$1 = xo.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
+      if (this.i.aM().b(dbs.p)) {
+         for (arf $$2 : this.i.ah().t()) {
             if ($$2 != this.c && this.i.ah().f($$2.gb())) {
                $$2.a($$1);
             }
          }
       }
 
-      if (this.c != this.i && this.i.aM().b(dbp.m)) {
+      if (this.c != this.i && this.i.aM().b(dbs.m)) {
          this.i.a($$1);
       }
    }
 
-   public void b(xl $$0) {
+   public void b(xo $$0) {
       if (this.c.w_() && !this.j) {
-         this.c.a(xl.i().b($$0).a(n.m));
+         this.c.a(xo.i().b($$0).a(n.m));
       }
    }
 
@@ -301,13 +301,13 @@ public class ep implements er<ep>, eu {
    }
 
    @Override
-   public Stream<alb> s() {
-      return lp.b.s().map(avv::a);
+   public Stream<ale> s() {
+      return lp.b.s().map(avy::a);
    }
 
    @Override
-   public Stream<alb> t() {
-      return this.i.aJ().d();
+   public Stream<ale> t() {
+      return this.i.aJ().e();
    }
 
    @Override
@@ -316,7 +316,7 @@ public class ep implements er<ep>, eu {
    }
 
    @Override
-   public CompletableFuture<Suggestions> a(ala<? extends jv<?>> $$0, eu.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+   public CompletableFuture<Suggestions> a(ald<? extends jv<?>> $$0, eu.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
       return this.v().c($$0).map($$2x -> {
          this.a($$2x, $$1, $$2);
          return $$2.buildFuture();
@@ -324,7 +324,7 @@ public class ep implements er<ep>, eu {
    }
 
    @Override
-   public Set<ala<dbt>> u() {
+   public Set<ald<dbw>> u() {
       return this.i.J();
    }
 
@@ -334,7 +334,7 @@ public class ep implements er<ep>, eu {
    }
 
    @Override
-   public cpg w() {
+   public cpj w() {
       return this.e.J();
    }
 
@@ -350,7 +350,7 @@ public class ep implements er<ep>, eu {
       }
 
       if (!$$2) {
-         this.b(xo.a($$1));
+         this.b(xr.a($$1));
       }
    }
 

@@ -1,67 +1,102 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public record fyv(String a, @Nullable fyv.a b) {
-   public static fyv a() {
-      return a(null);
+public class fyv {
+   final int a;
+   private final List<fyv.a> b = new ArrayList<>();
+
+   public fyv(int $$0) {
+      this.a = $$0;
    }
 
-   public static fyv a(String $$0) {
-      return a(new fyv.a.b($$0));
-   }
+   public void a(fyn $$0, IntCollection $$1, fyv.b $$2) {
+      IntSortedSet $$3 = new IntRBTreeSet($$1);
 
-   public static fyv a(fba $$0) {
-      return a(new fyv.a.a($$0));
-   }
-
-   public static fyv a(@Nullable fyv.a $$0) {
-      return new fyv(g(), $$0);
-   }
-
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
-   }
-
-   @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof fyv.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
-   }
-
-   @Nullable
-   public RealmInfo d() {
-      return this.b instanceof fyv.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
-   }
-
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("1.20.5-pre1");
-      if (ffa.e().a()) {
-         $$0.append(" (modded)");
+      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
+         fyp $$6 = $$0.b($$4);
+         if ($$6 instanceof fyq.a) {
+            fyq.a $$5 = (fyq.a)$$6;
+            boolean $$6x = this.b($$5.g());
+            if ($$3.remove($$4)) {
+               this.a($$5.g());
+               $$2.accept($$4, $$5);
+            } else if ($$6x) {
+               $$2.accept($$4, $$5);
+            }
+         }
       }
-
-      return $$0.toString();
    }
 
-   public String e() {
-      return this.a;
+   public void a(ye $$0) {
+      this.b.add(new fyv.a($$0));
    }
 
-   @Nullable
-   public fyv.a f() {
-      return this.b;
-   }
+   public boolean b(ye $$0) {
+      boolean $$1 = false;
+      Iterator<fyv.a> $$2 = this.b.iterator();
 
-   public interface a {
-      public static record a(long a, int b) implements fyv.a {
-         public a(fba $$0) {
-            this($$0.a, $$0.n);
+      while ($$2.hasNext()) {
+         fyv.a $$3 = $$2.next();
+         if ($$3.a($$0)) {
+            $$1 = true;
+            if ($$3.a()) {
+               $$2.remove();
+            }
          }
       }
 
-      public static record b(String a) implements fyv.a {
+      return $$1;
+   }
+
+   public boolean a() {
+      return !this.b.isEmpty();
+   }
+
+   class a {
+      private final Set<ya> b;
+      private ye c;
+      private boolean d = true;
+      private int e;
+
+      a(final ye $$0) {
+         this.b = new ObjectOpenHashSet($$0.m().d().a());
+         this.c = $$0;
       }
+
+      boolean a(ye $$0) {
+         if ($$0.equals(this.c)) {
+            return false;
+         } else {
+            boolean $$1 = this.b.remove($$0.l());
+            if (this.d && this.c.g().equals($$0.g())) {
+               if (this.c.k().a($$0.k())) {
+                  $$1 = true;
+                  this.c = $$0;
+               } else {
+                  this.d = false;
+               }
+            }
+
+            if ($$1) {
+               this.e++;
+            }
+
+            return $$1;
+         }
+      }
+
+      boolean a() {
+         return this.e >= fyv.this.a || !this.d && this.b.isEmpty();
+      }
+   }
+
+   public interface b {
+      void accept(int var1, fyq.a var2);
    }
 }

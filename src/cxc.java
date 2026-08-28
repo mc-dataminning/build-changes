@@ -1,92 +1,132 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapDecoder;
+import com.mojang.serialization.MapEncoder;
+import com.mojang.serialization.MapLike;
 import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Locale;
+import java.util.UUID;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-public record cxc(int d, boolean e) implements cxq {
-   private static final Codec<cxc> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.fieldOf("rgb").forGetter(cxc::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cxc::b)).apply($$0, cxc::new)
+public final class cxc {
+   public static final cxc a = new cxc(new ur());
+   public static final Codec<cxc> b = ur.a.xmap(cxc::new, $$0 -> $$0.e);
+   public static final Codec<cxc> c = b.validate(
+      $$0 -> $$0.d().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0)
    );
-   public static final Codec<cxc> a = Codec.withAlternative(f, Codec.INT, $$0 -> new cxc($$0, true));
-   public static final zj<ByteBuf, cxc> b = zj.a(zh.f, cxc::a, zh.b, cxc::b, cxc::new);
-   public static final int c = -6265536;
+   @Deprecated
+   public static final zm<ByteBuf, cxc> d = zk.o.a(cxc::new, $$0 -> $$0.e);
+   private final ur e;
 
-   public static int a(cuk $$0, int $$1) {
-      cxc $$2 = $$0.a(km.y);
-      return $$2 != null ? aye.b.e($$2.a()) : $$1;
+   private cxc(ur $$0) {
+      this.e = $$0;
    }
 
-   public static cuk a(cuk $$0, List<cte> $$1) {
-      if (!$$0.a(awu.by)) {
-         return cuk.l;
+   public static cxc a(ur $$0) {
+      return new cxc($$0.h());
+   }
+
+   public static Predicate<cun> a(kl<cxc> $$0, ur $$1) {
+      return $$2 -> {
+         cxc $$3 = $$2.a($$0, a);
+         return $$3.b($$1);
+      };
+   }
+
+   public boolean b(ur $$0) {
+      return vg.a($$0, this.e, true);
+   }
+
+   public static void a(kl<cxc> $$0, cun $$1, Consumer<ur> $$2) {
+      cxc $$3 = $$1.a($$0, a).a($$2);
+      if ($$3.e.g()) {
+         $$1.c($$0);
       } else {
-         cuk $$2 = $$0.c(1);
-         int $$3 = 0;
-         int $$4 = 0;
-         int $$5 = 0;
-         int $$6 = 0;
-         int $$7 = 0;
-         cxc $$8 = $$2.a(km.y);
-         if ($$8 != null) {
-            int $$9 = aye.b.b($$8.a());
-            int $$10 = aye.b.c($$8.a());
-            int $$11 = aye.b.d($$8.a());
-            $$6 += Math.max($$9, Math.max($$10, $$11));
-            $$3 += $$9;
-            $$4 += $$10;
-            $$5 += $$11;
-            $$7++;
-         }
+         $$1.b($$0, $$3);
+      }
+   }
 
-         for (cte $$12 : $$1) {
-            float[] $$13 = $$12.c().d();
-            int $$14 = (int)($$13[0] * 255.0F);
-            int $$15 = (int)($$13[1] * 255.0F);
-            int $$16 = (int)($$13[2] * 255.0F);
-            $$6 += Math.max($$14, Math.max($$15, $$16));
-            $$3 += $$14;
-            $$4 += $$15;
-            $$5 += $$16;
-            $$7++;
-         }
+   public static void a(kl<cxc> $$0, cun $$1, ur $$2) {
+      if (!$$2.g()) {
+         $$1.b($$0, a($$2));
+      } else {
+         $$1.c($$0);
+      }
+   }
 
-         int $$17 = $$3 / $$7;
-         int $$18 = $$4 / $$7;
-         int $$19 = $$5 / $$7;
-         float $$20 = (float)$$6 / (float)$$7;
-         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
-         $$17 = (int)((float)$$17 * $$20 / $$21);
-         $$18 = (int)((float)$$18 * $$20 / $$21);
-         $$19 = (int)((float)$$19 * $$20 / $$21);
-         int $$22 = aye.b.a(0, $$17, $$18, $$19);
-         boolean $$23 = $$8 == null || $$8.b();
-         $$2.b(km.y, new cxc($$22, $$23));
-         return $$2;
+   public cxc a(Consumer<ur> $$0) {
+      ur $$1 = this.e.h();
+      $$0.accept($$1);
+      return new cxc($$1);
+   }
+
+   public void a(bss $$0) {
+      ur $$1 = $$0.f(new ur());
+      UUID $$2 = $$0.cz();
+      $$1.a(this.e);
+      $$0.g($$1);
+      $$0.a_($$2);
+   }
+
+   public boolean a(dpf $$0, jk.a $$1) {
+      ur $$2 = $$0.e($$1);
+      ur $$3 = $$2.h();
+      $$2.a(this.e);
+      if (!$$2.equals($$3)) {
+         $$0.d($$2, $$1);
+         $$0.e();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public <T> DataResult<cxc> a(MapEncoder<T> $$0, T $$1) {
+      return $$0.encode($$1, vf.a, vf.a.mapBuilder()).build(this.e).map($$0x -> new cxc((ur)$$0x));
+   }
+
+   public <T> DataResult<T> a(MapDecoder<T> $$0) {
+      MapLike<vo> $$1 = (MapLike<vo>)vf.a.e(this.e).getOrThrow();
+      return $$0.decode(vf.a, $$1);
+   }
+
+   public int a() {
+      return this.e.f();
+   }
+
+   public boolean b() {
+      return this.e.g();
+   }
+
+   public ur c() {
+      return this.e.h();
+   }
+
+   public boolean a(String $$0) {
+      return this.e.e($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return $$0 instanceof cxc $$1 ? this.e.equals($$1.e) : false;
       }
    }
 
    @Override
-   public void a(cuf.b $$0, Consumer<xl> $$1, cwd $$2) {
-      if (this.e) {
-         if ($$2.a()) {
-            $$1.accept(xl.a("item.color", String.format(Locale.ROOT, "#%06X", this.d)).a(n.h));
-         } else {
-            $$1.accept(xl.c("item.dyed").a(n.h, n.u));
-         }
-      }
+   public int hashCode() {
+      return this.e.hashCode();
    }
 
-   public cxc a(boolean $$0) {
-      return new cxc(this.d, $$0);
+   @Override
+   public String toString() {
+      return this.e.toString();
    }
 
-   public int a() {
-      return this.d;
-   }
-
-   public boolean b() {
+   @Deprecated
+   public ur d() {
       return this.e;
    }
 }

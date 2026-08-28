@@ -12,7 +12,7 @@ public record cj(de.d c, de.d d) implements ds<Integer> {
       return km.d;
    }
 
-   public boolean a(cuk $$0, Integer $$1) {
+   public boolean a(cun $$0, Integer $$1) {
       return !this.c.d($$0.o() - $$1) ? false : this.d.d($$1);
    }
 

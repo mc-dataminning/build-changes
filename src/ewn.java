@@ -1,81 +1,46 @@
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class ewn implements ewm {
-   private static final String a = "Score";
-   private static final String b = "Locked";
-   private static final String c = "display";
-   private static final String d = "format";
-   private int e;
-   private boolean f = true;
-   @Nullable
-   private xl g;
-   @Nullable
-   private zb h;
-
-   @Override
-   public int a() {
-      return this.e;
-   }
-
-   public void a(int $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public boolean b() {
-      return this.f;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-   }
+class ewn {
+   private final Reference2ObjectOpenHashMap<ewl, ewq> a = new Reference2ObjectOpenHashMap(16, 0.5F);
 
    @Nullable
-   public xl d() {
-      return this.g;
+   public ewq a(ewl $$0) {
+      return (ewq)this.a.get($$0);
    }
 
-   public void a(@Nullable xl $$0) {
-      this.g = $$0;
+   public ewq a(ewl $$0, Consumer<ewq> $$1) {
+      return (ewq)this.a.computeIfAbsent($$0, $$1x -> {
+         ewq $$2 = new ewq();
+         $$1.accept($$2);
+         return $$2;
+      });
    }
 
-   @Nullable
-   @Override
-   public zb c() {
-      return this.h;
+   public boolean b(ewl $$0) {
+      return this.a.remove($$0) != null;
    }
 
-   public void b(@Nullable zb $$0) {
-      this.h = $$0;
+   public boolean a() {
+      return !this.a.isEmpty();
    }
 
-   public ur a(jk.a $$0) {
-      ur $$1 = new ur();
-      $$1.a("Score", this.e);
-      $$1.a("Locked", this.f);
-      if (this.g != null) {
-         $$1.a("display", xl.a.a(this.g, $$0));
-      }
-
-      if (this.h != null) {
-         zd.b.encodeStart($$0.a(vf.a), this.h).ifSuccess($$1x -> $$1.a("format", $$1x));
-      }
-
-      return $$1;
+   public Object2IntMap<ewl> b() {
+      Object2IntMap<ewl> $$0 = new Object2IntOpenHashMap();
+      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
+      return $$0;
    }
 
-   public static ewn a(ur $$0, jk.a $$1) {
-      ewn $$2 = new ewn();
-      $$2.e = $$0.h("Score");
-      $$2.f = $$0.q("Locked");
-      if ($$0.b("display", 8)) {
-         $$2.g = xl.a.a($$0.l("display"), $$1);
-      }
+   void a(ewl $$0, ewq $$1) {
+      this.a.put($$0, $$1);
+   }
 
-      if ($$0.b("format", 10)) {
-         zd.b.parse($$1.a(vf.a), $$0.c("format")).ifSuccess($$1x -> $$2.h = $$1x);
-      }
-
-      return $$2;
+   Map<ewl, ewq> c() {
+      return Collections.unmodifiableMap(this.a);
    }
 }

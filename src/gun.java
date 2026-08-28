@@ -1,4 +1,8 @@
-public class gun implements guu {
-   public gun(gut $$0) {
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gun {
 }

@@ -1,22 +1,17 @@
-public class gqe {
-   public static final int a = -1;
-   private final int b;
-   private final int c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public gqe(int $$0) {
-      this($$0, -1);
-   }
+public record gqe(String b, String c, boolean d) {
+   public static final Codec<gqe> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayf.y.fieldOf("region").forGetter(gqe::b),
+               ayf.y.fieldOf("name").forGetter(gqe::c),
+               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(gqe::d)
+            )
+            .apply($$0, gqe::new)
+   );
 
-   public gqe(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public int a(int $$0) {
-      return this.c == -1 ? $$0 : this.c;
-   }
-
-   public int a() {
-      return this.b;
+   public xo a() {
+      return xo.b(this.c + " (" + this.b + ")");
    }
 }

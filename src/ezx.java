@@ -1,132 +1,93 @@
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
+import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
-import org.lwjgl.system.MemoryStack;
 
-public interface ezx {
-   ezx a(double var1, double var3, double var5);
+public class ezx extends ezv {
+   private final faa f;
+   private final Matrix4f g;
+   private final Matrix3f h;
+   private final float i;
+   private float j;
+   private float k;
+   private float l;
+   private int m;
+   private int n;
+   private int o;
+   private float p;
+   private float q;
+   private float r;
 
-   ezx a(int var1, int var2, int var3, int var4);
-
-   ezx a(float var1, float var2);
-
-   ezx a(int var1, int var2);
-
-   ezx b(int var1, int var2);
-
-   ezx a(float var1, float var2, float var3);
-
-   void e();
-
-   default void a(
-      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
-   ) {
-      this.a((double)$$0, (double)$$1, (double)$$2);
-      this.a($$3, $$4, $$5, $$6);
-      this.a($$7, $$8);
-      this.c($$9);
-      this.b($$10);
-      this.a($$11, $$12, $$13);
-      this.e();
+   public ezx(faa $$0, ezw.a $$1, float $$2) {
+      this.f = $$0;
+      this.g = new Matrix4f($$1.a()).invert();
+      this.h = new Matrix3f($$1.b()).invert();
+      this.i = $$2;
+      this.a();
    }
 
-   void b(int var1, int var2, int var3, int var4);
-
-   void l();
-
-   default ezx a(float $$0, float $$1, float $$2, float $$3) {
-      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
+   private void a() {
+      this.j = 0.0F;
+      this.k = 0.0F;
+      this.l = 0.0F;
+      this.m = 0;
+      this.n = 10;
+      this.o = 15728880;
+      this.p = 0.0F;
+      this.q = 1.0F;
+      this.r = 0.0F;
    }
 
-   default ezx a(int $$0) {
-      return this.a(aye.b.b($$0), aye.b.c($$0), aye.b.d($$0), aye.b.a($$0));
+   @Override
+   public void e() {
+      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
+      je $$1 = je.a($$0.x(), $$0.y(), $$0.z());
+      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
+      $$2.rotateY((float) Math.PI);
+      $$2.rotateX((float) (-Math.PI / 2));
+      $$2.rotate($$1.b());
+      float $$3 = -$$2.x() * this.i;
+      float $$4 = -$$2.y() * this.i;
+      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
+      this.a();
    }
 
-   default ezx b(int $$0) {
-      return this.b($$0 & 65535, $$0 >> 16 & 65535);
+   @Override
+   public faa a(double $$0, double $$1, double $$2) {
+      this.j = (float)$$0;
+      this.k = (float)$$1;
+      this.l = (float)$$2;
+      return this;
    }
 
-   default ezx c(int $$0) {
-      return this.a($$0 & 65535, $$0 >> 16 & 65535);
+   @Override
+   public faa a(int $$0, int $$1, int $$2, int $$3) {
+      return this;
    }
 
-   default void a(ezt.a $$0, geg $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
-      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
+   @Override
+   public faa a(float $$0, float $$1) {
+      return this;
    }
 
-   default void a(ezt.a $$0, geg $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
-      float[] $$10 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
-      int[] $$11 = new int[]{$$7[0], $$7[1], $$7[2], $$7[3]};
-      int[] $$12 = $$1.b();
-      kd $$13 = $$1.e().q();
-      Matrix4f $$14 = $$0.a();
-      Vector3f $$15 = $$0.a((float)$$13.u(), (float)$$13.v(), (float)$$13.w(), new Vector3f());
-      int $$16 = 8;
-      int $$17 = $$12.length / 8;
-      MemoryStack $$18 = MemoryStack.stackPush();
-
-      try {
-         ByteBuffer $$19 = $$18.malloc(ezr.j.b());
-         IntBuffer $$20 = $$19.asIntBuffer();
-
-         for (int $$21 = 0; $$21 < $$17; $$21++) {
-            $$20.clear();
-            $$20.put($$12, $$21 * 8, 8);
-            float $$22 = $$19.getFloat(0);
-            float $$23 = $$19.getFloat(4);
-            float $$24 = $$19.getFloat(8);
-            float $$28;
-            float $$29;
-            float $$30;
-            if ($$9) {
-               float $$25 = (float)($$19.get(12) & 255) / 255.0F;
-               float $$26 = (float)($$19.get(13) & 255) / 255.0F;
-               float $$27 = (float)($$19.get(14) & 255) / 255.0F;
-               $$28 = $$25 * $$10[$$21] * $$3;
-               $$29 = $$26 * $$10[$$21] * $$4;
-               $$30 = $$27 * $$10[$$21] * $$5;
-            } else {
-               $$28 = $$10[$$21] * $$3;
-               $$29 = $$10[$$21] * $$4;
-               $$30 = $$10[$$21] * $$5;
-            }
-
-            int $$34 = $$11[$$21];
-            float $$35 = $$19.getFloat(16);
-            float $$36 = $$19.getFloat(20);
-            Vector4f $$37 = $$14.transform(new Vector4f($$22, $$23, $$24, 1.0F));
-            this.a($$37.x(), $$37.y(), $$37.z(), $$28, $$29, $$30, $$6, $$35, $$36, $$8, $$34, $$15.x(), $$15.y(), $$15.z());
-         }
-      } catch (Throwable var34) {
-         if ($$18 != null) {
-            try {
-               $$18.close();
-            } catch (Throwable var33) {
-               var34.addSuppressed(var33);
-            }
-         }
-
-         throw var34;
-      }
-
-      if ($$18 != null) {
-         $$18.close();
-      }
+   @Override
+   public faa a(int $$0, int $$1) {
+      this.m = $$0;
+      this.n = $$1;
+      return this;
    }
 
-   default ezx a(ezt.a $$0, float $$1, float $$2, float $$3) {
-      return this.a($$0.a(), $$1, $$2, $$3);
+   @Override
+   public faa b(int $$0, int $$1) {
+      this.o = $$0 | $$1 << 16;
+      return this;
    }
 
-   default ezx a(Matrix4f $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
-      return this.a((double)$$4.x(), (double)$$4.y(), (double)$$4.z());
-   }
-
-   default ezx b(ezt.a $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
-      return this.a($$4.x(), $$4.y(), $$4.z());
+   @Override
+   public faa a(float $$0, float $$1, float $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      return this;
    }
 }

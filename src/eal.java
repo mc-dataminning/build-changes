@@ -1,67 +1,52 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class eal extends eat<ect> {
-   private static final ImmutableList<deu> a = ImmutableList.of(dew.F, dew.fn, dew.fo, dew.fp, dew.fq, dew.cv, dew.ct);
-   private static final je[] b = je.values();
-   private static final double c = 0.9;
-
-   public eal(Codec<ect> $$0) {
+public abstract class eal extends eaw<edh> {
+   public eal(Codec<edh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eav<ect> $$0) {
-      boolean $$1 = false;
-      azc $$2 = $$0.d();
-      dco $$3 = $$0.b();
-      ect $$4 = $$0.f();
-      iz $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
-
-      for (iz $$13 : iz.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
-
-            iz $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
-            }
-         }
-      }
-
-      return $$1;
+   public boolean a(eay<edh> $$0) {
+      azf $$1 = $$0.d();
+      dcr $$2 = $$0.b();
+      iz $$3 = $$0.e();
+      Optional<dex> $$4 = lp.e.a(awo.aq, $$1).map(ji::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
    }
 
-   private static boolean a(dbu $$0, iz $$1, ect $$2) {
-      drx $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
-         return false;
-      } else {
-         for (je $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).i();
-            if ($$5 && $$4 != je.b || !$$5 && $$4 == je.b) {
-               return false;
+   protected abstract boolean a(dbx var1, azf var2, iz var3, dsa var4);
+
+   protected boolean b(dbx $$0, azf $$1, iz $$2, dsa $$3) {
+      iz $$4 = $$2.c();
+      dsa $$5 = $$0.a_($$2);
+      if (($$5.a(dez.G) || $$5.a(awo.at)) && $$0.a_($$4).a(dez.G)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            lp.e.a(awo.at, $$1).map(ji::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, dez.mV.o().a(dlu.c, Integer.valueOf($$1.a(4) + 1)), 2);
+         }
+
+         for (je $$6 : je.c.a) {
+            if ($$1.i() < 0.2F) {
+               iz $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(dez.G)) {
+                  lp.e.a(awo.ar, $$1).map(ji::a).ifPresent($$3x -> {
+                     dsa $$4x = $$3x.o();
+                     if ($$4x.b(dei.c)) {
+                        $$4x = $$4x.a(dei.c, $$6);
+                     }
+
+                     $$0.a($$7, $$4x, 2);
+                  });
+               }
             }
          }
 
          return true;
+      } else {
+         return false;
       }
    }
 }

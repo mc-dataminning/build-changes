@@ -1,8 +1,50 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cda {
+public class cda extends ccy {
+   @Nullable
+   private iz p;
+
+   public cda(btp $$0, dbw $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   public eoh a(iz $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public eoh a(bss $$0, int $$1) {
+      this.p = $$0.dp();
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(bss $$0, double $$1) {
+      eoh $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.dp();
+         this.d = $$1;
+         return true;
+      }
+   }
+
+   @Override
+   public void c() {
+      if (!this.l()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dn(), (double)this.a.dj())
+               && (!(this.a.dw() > (double)this.p.v()) || !iz.a((double)this.p.u(), this.a.dw(), (double)this.p.w()).a(this.a.dn(), (double)this.a.dj()))) {
+               this.a.H().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
+   }
 }

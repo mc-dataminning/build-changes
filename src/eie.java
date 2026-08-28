@@ -1,29 +1,106 @@
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
+import java.util.Locale;
+import org.slf4j.Logger;
 
-public abstract class eie extends eif {
-   private final eie.a d;
-   private final int e;
-   private final int f;
+public class eie extends eim {
+   private static final Logger d = LogUtils.getLogger();
+   protected final ejp a;
+   protected iz b;
+   private final int h;
+   protected final dlk c;
+   private final List<ejk> i = Lists.newArrayList();
+   private final emj j;
 
-   protected eie(eie.a $$0, int $$1, int $$2, eif.c $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public eie(emj $$0, ejp $$1, iz $$2, int $$3, dlk $$4, eia $$5) {
+      super(eiz.ad, 0, $$5);
+      this.j = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.h = $$3;
+      this.c = $$4;
+   }
+
+   public eie(eiy $$0, ur $$1) {
+      super(eiz.ad, $$1);
+      this.j = $$0.c();
+      this.b = new iz($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
+      this.h = $$1.h("ground_level_delta");
+      DynamicOps<vo> $$2 = $$0.b().a(vf.a);
+      this.a = (ejp)ejp.e
+         .parse($$2, $$1.p("pool_element"))
+         .resultOrPartial(d::error)
+         .orElseThrow(() -> new IllegalStateException("Invalid pool element found"));
+      this.c = dlk.valueOf($$1.l("rotation"));
+      this.f = this.a.a(this.j, this.b, this.c);
+      ux $$3 = $$1.c("junctions", 10);
+      this.i.clear();
+      $$3.forEach($$1x -> this.i.add(ejk.a(new Dynamic($$2, $$1x))));
    }
 
    @Override
-   public Optional<eif.b> a(eif.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().e() ? Optional.empty() : a($$0, dxp.a.a, $$1 -> this.a($$1, $$0));
+   protected void a(eiy $$0, ur $$1) {
+      $$1.a("PosX", this.b.u());
+      $$1.a("PosY", this.b.v());
+      $$1.a("PosZ", this.b.w());
+      $$1.a("ground_level_delta", this.h);
+      DynamicOps<vo> $$2 = $$0.b().a(vf.a);
+      ejp.e.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
+      $$1.a("rotation", this.c.name());
+      ux $$3 = new ux();
+
+      for (ejk $$4 : this.i) {
+         $$3.add((vo)$$4.a($$2).getValue());
+      }
+
+      $$1.a("junctions", $$3);
    }
 
-   private void a(eix $$0, eif.a $$1) {
-      dba $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   @Override
+   public void a(dcr $$0, dcp $$1, dtx $$2, azf $$3, eia $$4, dbd $$5, iz $$6) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
    }
 
-   @FunctionalInterface
-   protected interface a {
-      eij construct(dyo var1, int var2, int var3);
+   public void a(dcr $$0, dcp $$1, dtx $$2, azf $$3, eia $$4, iz $$5, boolean $$6) {
+      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, $$6);
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.b = this.b.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public dlk a() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
+   }
+
+   public ejp b() {
+      return this.a;
+   }
+
+   public iz c() {
+      return this.b;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public void a(ejk $$0) {
+      this.i.add($$0);
+   }
+
+   public List<ejk> e() {
+      return this.i;
    }
 }

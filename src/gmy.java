@@ -1,46 +1,27 @@
-public class gmy extends gne<chh, fuo<chh>> {
-   private static final alb[] a = new alb[]{
-      new alb("textures/entity/llama/decor/white.png"),
-      new alb("textures/entity/llama/decor/orange.png"),
-      new alb("textures/entity/llama/decor/magenta.png"),
-      new alb("textures/entity/llama/decor/light_blue.png"),
-      new alb("textures/entity/llama/decor/yellow.png"),
-      new alb("textures/entity/llama/decor/lime.png"),
-      new alb("textures/entity/llama/decor/pink.png"),
-      new alb("textures/entity/llama/decor/gray.png"),
-      new alb("textures/entity/llama/decor/light_gray.png"),
-      new alb("textures/entity/llama/decor/cyan.png"),
-      new alb("textures/entity/llama/decor/purple.png"),
-      new alb("textures/entity/llama/decor/blue.png"),
-      new alb("textures/entity/llama/decor/brown.png"),
-      new alb("textures/entity/llama/decor/green.png"),
-      new alb("textures/entity/llama/decor/red.png"),
-      new alb("textures/entity/llama/decor/black.png")
-   };
-   private static final alb b = new alb("textures/entity/llama/decor/trader_llama.png");
-   private final fuo<chh> c;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public gmy(gko<chh, fuo<chh>> $$0, fwr $$1) {
+public class gmy extends gnh<cfp, fun<cfp>> {
+   private static final Map<bsq.a, ale> a = ImmutableMap.of(
+      bsq.a.b,
+      new ale("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      bsq.a.c,
+      new ale("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      bsq.a.d,
+      new ale("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public gmy(gkr<cfp, fun<cfp>> $$0) {
       super($$0);
-      this.c = new fuo<>($$1.a(fwu.ay));
    }
 
-   public void a(ezt $$0, gdj $$1, int $$2, chh $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ctd $$10 = $$3.gD();
-      alb $$11;
-      if ($$10 != null) {
-         $$11 = a[$$10.a()];
-      } else {
-         if (!$$3.gz()) {
-            return;
+   public void a(ezw $$0, gdm $$1, int $$2, cfp $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.ch()) {
+         bsq.a $$10 = $$3.u();
+         if ($$10 != bsq.a.a) {
+            ale $$11 = a.get($$10);
+            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
          }
-
-         $$11 = b;
       }
-
-      this.c().a(this.c);
-      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
-      ezx $$14 = $$1.getBuffer(gdr.e($$11));
-      this.c.a($$0, $$14, $$2, gol.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

@@ -1,244 +1,37 @@
-import java.util.List;
-import java.util.Optional;
+public class gax extends gba {
+   private final fuu a;
+   private final gdu b = gdu.i(gio.a);
 
-public abstract class gax {
-   private static final evh a = new evh(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-   private static final double b = ayu.k(100.0);
-   protected final fxq c;
-   protected double d;
-   protected double e;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected double i;
-   protected double j;
-   protected double k;
-   protected double l;
-   private evh D = a;
-   protected boolean m;
-   protected boolean n = true;
-   private boolean E;
-   protected boolean o;
-   protected float p = 0.6F;
-   protected float q = 1.8F;
-   protected final azc r = azc.a();
-   protected int s;
-   protected int t;
-   protected float u;
-   protected float v = 1.0F;
-   protected float w = 1.0F;
-   protected float x = 1.0F;
-   protected float y = 1.0F;
-   protected float z;
-   protected float A;
-   protected float B = 0.98F;
-   protected boolean C = false;
-
-   protected gax(fxq $$0, double $$1, double $$2, double $$3) {
-      this.c = $$0;
-      this.b(0.2F, 0.2F);
-      this.c($$1, $$2, $$3);
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.t = (int)(4.0F / (this.r.i() * 0.9F + 0.1F));
+   gax(fxt $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a = new fuf(ffd.Q().aR().a(fwx.V));
+      this.u = 0.0F;
+      this.t = 30;
    }
-
-   public gax(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this($$0, $$1, $$2, $$3);
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.4F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.4F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.4F;
-      double $$7 = (Math.random() + Math.random() + 1.0) * 0.15F;
-      double $$8 = Math.sqrt(this.j * this.j + this.k * this.k + this.l * this.l);
-      this.j = this.j / $$8 * $$7 * 0.4F;
-      this.k = this.k / $$8 * $$7 * 0.4F + 0.1F;
-      this.l = this.l / $$8 * $$7 * 0.4F;
-   }
-
-   public gax c(float $$0) {
-      this.j *= (double)$$0;
-      this.k = (this.k - 0.1F) * (double)$$0 + 0.1F;
-      this.l *= (double)$$0;
-      return this;
-   }
-
-   public void b(double $$0, double $$1, double $$2) {
-      this.j = $$0;
-      this.k = $$1;
-      this.l = $$2;
-   }
-
-   public gax d(float $$0) {
-      this.b(0.2F * $$0, 0.2F * $$0);
-      return this;
-   }
-
-   public void a(float $$0, float $$1, float $$2) {
-      this.v = $$0;
-      this.w = $$1;
-      this.x = $$2;
-   }
-
-   protected void e(float $$0) {
-      this.y = $$0;
-   }
-
-   public void a(int $$0) {
-      this.t = $$0;
-   }
-
-   public int j() {
-      return this.t;
-   }
-
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.k = this.k - 0.04 * (double)this.u;
-         this.a(this.j, this.k, this.l);
-         if (this.C && this.h == this.e) {
-            this.j *= 1.1;
-            this.l *= 1.1;
-         }
-
-         this.j = this.j * (double)this.B;
-         this.k = this.k * (double)this.B;
-         this.l = this.l * (double)this.B;
-         if (this.m) {
-            this.j *= 0.7F;
-            this.l *= 0.7F;
-         }
-      }
-   }
-
-   public abstract void a(ezx var1, fel var2, float var3);
-
-   public abstract gbb b();
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName()
-         + ", Pos ("
-         + this.g
-         + ","
-         + this.h
-         + ","
-         + this.i
-         + "), RGBA ("
-         + this.v
-         + ","
-         + this.w
-         + ","
-         + this.x
-         + ","
-         + this.y
-         + "), Age "
-         + this.s;
+   public gbe b() {
+      return gbe.e;
    }
 
-   public void k() {
-      this.o = true;
+   @Override
+   public void a(faa $$0, feo $$1, float $$2) {
+      float $$3 = ((float)this.s + $$2) / (float)this.t;
+      float $$4 = 0.05F + 0.5F * ayx.a($$3 * (float) Math.PI);
+      ezw $$5 = new ezw();
+      $$5.a($$1.f());
+      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
+      $$5.b(-1.0F, -1.0F, 1.0F);
+      $$5.a(0.0F, -1.101F, 1.5F);
+      gdm.a $$6 = ffd.Q().aQ().c();
+      faa $$7 = $$6.getBuffer(this.b);
+      this.a.a($$5, $$7, 15728880, goo.d, 1.0F, 1.0F, 1.0F, $$4);
+      $$6.b();
    }
 
-   protected void b(float $$0, float $$1) {
-      if ($$0 != this.p || $$1 != this.q) {
-         this.p = $$0;
-         this.q = $$1;
-         evh $$2 = this.n();
-         double $$3 = ($$2.a + $$2.d - (double)$$0) / 2.0;
-         double $$4 = ($$2.c + $$2.f - (double)$$0) / 2.0;
-         this.a(new evh($$3, $$2.b, $$4, $$3 + (double)this.p, $$2.b + (double)this.q, $$4 + (double)this.p));
-      }
-   }
-
-   public void c(double $$0, double $$1, double $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      float $$3 = this.p / 2.0F;
-      float $$4 = this.q;
-      this.a(new evh($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3));
-   }
-
-   public void a(double $$0, double $$1, double $$2) {
-      if (!this.E) {
-         double $$3 = $$0;
-         double $$4 = $$1;
-         double $$5 = $$2;
-         if (this.n && ($$0 != 0.0 || $$1 != 0.0 || $$2 != 0.0) && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 < b) {
-            evm $$6 = bsp.a(null, new evm($$0, $$1, $$2), this.n(), this.c, List.of());
-            $$0 = $$6.c;
-            $$1 = $$6.d;
-            $$2 = $$6.e;
-         }
-
-         if ($$0 != 0.0 || $$1 != 0.0 || $$2 != 0.0) {
-            this.a(this.n().d($$0, $$1, $$2));
-            this.l();
-         }
-
-         if (Math.abs($$4) >= 1.0E-5F && Math.abs($$1) < 1.0E-5F) {
-            this.E = true;
-         }
-
-         this.m = $$4 != $$1 && $$4 < 0.0;
-         if ($$3 != $$0) {
-            this.j = 0.0;
-         }
-
-         if ($$5 != $$2) {
-            this.l = 0.0;
-         }
-      }
-   }
-
-   protected void l() {
-      evh $$0 = this.n();
-      this.g = ($$0.a + $$0.d) / 2.0;
-      this.h = $$0.b;
-      this.i = ($$0.c + $$0.f) / 2.0;
-   }
-
-   protected int a(float $$0) {
-      iz $$1 = iz.a(this.g, this.h, this.i);
-      return this.c.B($$1) ? gdh.a(this.c, $$1) : 0;
-   }
-
-   public boolean m() {
-      return !this.o;
-   }
-
-   public evh n() {
-      return this.D;
-   }
-
-   public void a(evh $$0) {
-      this.D = $$0;
-   }
-
-   public Optional<lg> o() {
-      return Optional.empty();
-   }
-
-   public static record a(float b, float c, float d, float e) {
-      public static final gax.a a = new gax.a(1.0F, 1.0F, 0.0F, 1.0F);
-
-      public boolean a() {
-         return this.b >= 1.0F && this.c >= 1.0F;
-      }
-
-      public float a(int $$0, int $$1, float $$2) {
-         if (ayu.a(this.b, this.c)) {
-            return this.b;
-         } else {
-            float $$3 = ayu.g(((float)$$0 + $$2) / (float)$$1, this.d, this.e);
-            return ayu.b(this.b, this.c, $$3);
-         }
+   public static class a implements gbd<lm> {
+      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gax($$1, $$2, $$3, $$4);
       }
    }
 }

@@ -1,42 +1,80 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface dlv extends dfb, djl {
+public class dlv extends dfg implements dfa, djo {
+   public static final MapCodec<dlv> a = b(dlv::new);
+   protected static final float b = 6.0F;
+   protected static final ewi c = dex.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+
    @Override
-   default boolean a(@Nullable cms $$0, daz $$1, iz $$2, drx $$3, enp $$4) {
-      return $$4 == enr.c;
+   public MapCodec<dlv> a() {
+      return a;
+   }
+
+   protected dlv(drz.d $$0) {
+      super($$0);
    }
 
    @Override
-   default boolean a(dbu $$0, iz $$1, drx $$2, enq $$3) {
-      if (!$$2.c(dsn.C) && $$3.a() == enr.c) {
-         if (!$$0.x_()) {
-            $$0.a($$1, $$2.a(dsn.C, Boolean.valueOf(true)), 3);
-            $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         }
+   protected ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
+      return c;
+   }
 
-         return true;
-      } else {
-         return false;
+   @Override
+   protected boolean b(dsa $$0, dbc $$1, iz $$2) {
+      return $$0.d($$1, $$2, je.b) && !$$0.a(dez.kJ);
+   }
+
+   @Nullable
+   @Override
+   public dsa a(cxy $$0) {
+      ent $$1 = $$0.q().b_($$0.a());
+      return $$1.a(awu.a) && $$1.e() == 8 ? super.a($$0) : null;
+   }
+
+   @Override
+   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
+      dsa $$6 = super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!$$6.i()) {
+         $$3.a($$4, enu.c, enu.c.a($$3));
+      }
+
+      return $$6;
+   }
+
+   @Override
+   public boolean b(dbz $$0, iz $$1, dsa $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dbw $$0, azf $$1, iz $$2, dsa $$3) {
+      return true;
+   }
+
+   @Override
+   protected ent b_(dsa $$0) {
+      return enu.c.a(false);
+   }
+
+   @Override
+   public void a(are $$0, azf $$1, iz $$2, dsa $$3) {
+      dsa $$4 = dez.bx.o();
+      dsa $$5 = $$4.a(dnd.d, dsw.a);
+      iz $$6 = $$2.c();
+      if ($$0.a_($$6).a(dez.G)) {
+         $$0.a($$2, $$4, 2);
+         $$0.a($$6, $$5, 2);
       }
    }
 
    @Override
-   default cuk a(@Nullable cms $$0, dbu $$1, iz $$2, drx $$3) {
-      if ($$3.c(dsn.C)) {
-         $$1.a($$2, $$3.a(dsn.C, Boolean.valueOf(false)), 3);
-         if (!$$3.a($$1, $$2)) {
-            $$1.b($$2, true);
-         }
-
-         return new cuk(cun.qz);
-      } else {
-         return cuk.l;
-      }
+   public boolean a(@Nullable cmv $$0, dbc $$1, iz $$2, dsa $$3, ens $$4) {
+      return false;
    }
 
    @Override
-   default Optional<avv> at_() {
-      return enr.c.j();
+   public boolean a(dbx $$0, iz $$1, dsa $$2, ent $$3) {
+      return false;
    }
 }

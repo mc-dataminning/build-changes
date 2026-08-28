@@ -1,35 +1,38 @@
-import javax.annotation.Nullable;
+public enum fnp {
+   a(
+      new ale("advancements/box_obtained"),
+      new ale("advancements/task_frame_obtained"),
+      new ale("advancements/challenge_frame_obtained"),
+      new ale("advancements/goal_frame_obtained")
+   ),
+   b(
+      new ale("advancements/box_unobtained"),
+      new ale("advancements/task_frame_unobtained"),
+      new ale("advancements/challenge_frame_unobtained"),
+      new ale("advancements/goal_frame_unobtained")
+   );
 
-public class fnp extends fmq {
-   private static final xl a = xl.c("controls.title");
-   @Nullable
-   private fhw r;
+   private final ale c;
+   private final ale d;
+   private final ale e;
+   private final ale f;
 
-   private static ffd<?>[] a(ffe $$0) {
-      return new ffd[]{$$0.ac(), $$0.ad(), $$0.H(), $$0.I()};
+   private fnp(final ale $$0, final ale $$1, final ale $$2, final ale $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public fnp(fmy $$0, ffe $$1) {
-      super($$0, $$1, a);
+   public ale a() {
+      return this.c;
    }
 
-   @Override
-   protected void aN_() {
-      this.r = this.c(new fhw(this.m, this.n, this.o, this));
-      this.r
-         .a(
-            fgz.a(xl.c("options.mouse_settings"), $$0 -> this.m.a(new fmm(this, this.c))).a(),
-            fgz.a(xl.c("controls.keybinds"), $$0 -> this.m.a(new fnr(this, this.c))).a()
-         );
-      this.r.a(a(this.c));
-      super.aN_();
-   }
-
-   @Override
-   protected void c() {
-      super.c();
-      if (this.r != null) {
-         this.r.a(this.n, this.d);
-      }
+   public ale a(al $$0) {
+      return switch ($$0) {
+         case a -> this.d;
+         case b -> this.e;
+         case c -> this.f;
+      };
    }
 }

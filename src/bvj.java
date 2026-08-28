@@ -1,37 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+public class bvj implements bwu {
+   private final iz a;
+   private final evp b;
 
-public class bvj extends bvd<btk> {
-   private final cco<Integer> c;
-
-   public bvj(cco<Integer> $$0) {
-      super(ImmutableMap.of($$0, ccp.a));
-      this.c = $$0;
+   public bvj(iz $$0) {
+      this.a = $$0.i();
+      this.b = evp.b($$0);
    }
 
-   private Optional<Integer> b(btk $$0) {
-      return $$0.dS().c(this.c);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
+   public bvj(evp $$0) {
+      this.a = iz.a($$0);
+      this.b = $$0;
    }
 
    @Override
-   protected boolean a(arb $$0, btk $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
+   public evp a() {
+      return this.b;
    }
 
    @Override
-   protected void c(arb $$0, btk $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.dS().a(this.c, $$3.get() - 1);
+   public iz b() {
+      return this.a;
    }
 
    @Override
-   protected void b(arb $$0, btk $$1, long $$2) {
-      $$1.dS().b(this.c);
+   public boolean a(btn $$0) {
+      return true;
+   }
+
+   @Override
+   public String toString() {
+      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
    }
 }

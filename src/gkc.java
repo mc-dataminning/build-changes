@@ -1,32 +1,18 @@
-public class gkc extends gir<btr> {
-   private static final float a = 40.0F;
-   private static final int f = 50;
-   private final gjq g;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   protected gkc(gis.a $$0) {
-      super($$0);
-      this.g = $$0.b();
+public class gkc extends gkb<cfq, ftr<cfq>> {
+   private static final Map<cfq.a, ale> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cfq.a.b, new ale("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(cfq.a.a, new ale("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public gkc(giv.a $$0) {
+      super($$0, new ftr<>($$0.a(fwx.aC)), 0.7F);
+      this.a(new gnc<>(this, $$0.c()));
    }
 
-   public alb a(btr $$0) {
-      return got.e;
-   }
-
-   public void a(btr $$0, float $$1, float $$2, ezt $$3, gdj $$4, int $$5) {
-      cuk $$6 = $$0.s();
-      if (!$$6.e()) {
-         $$3.a();
-         if ($$0.ai <= 50) {
-            float $$7 = Math.min((float)$$0.ai + $$2, 50.0F) / 50.0F;
-            $$3.b($$7, $$7, $$7);
-         }
-
-         dbt $$8 = $$0.dP();
-         float $$9 = ayu.g((float)($$8.Z() - 1L)) * 40.0F;
-         float $$10 = ayu.g((float)$$8.Z()) * 40.0F;
-         $$3.a(a.d.rotationDegrees(ayu.j($$2, $$9, $$10)));
-         gjo.a(this.g, $$3, $$4, 15728880, $$6, $$8.z, $$8);
-         $$3.b();
-      }
+   public ale a(cfq $$0) {
+      return a.get($$0.u());
    }
 }

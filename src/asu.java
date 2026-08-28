@@ -1,208 +1,121 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import java.io.File;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.UncheckedIOException;
+import java.nio.file.DirectoryNotEmptyException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
 import java.util.ArrayList;
-import java.util.Enumeration;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Set;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
-public class asu extends aso {
-   static final Logger c = LogUtils.getLogger();
-   private final asu.b d;
-   private final String e;
+public class asu {
+   private static final Logger a = LogUtils.getLogger();
 
-   asu(asw $$0, asu.b $$1, String $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
-   }
+   public static void a(Path $$0, int $$1) {
+      try {
+         List<asu.b> $$2 = a($$0);
+         int $$3 = $$2.size() - $$1;
+         if ($$3 <= 0) {
+            return;
+         }
 
-   private static String b(asz $$0, alb $$1) {
-      return String.format(Locale.ROOT, "%s/%s/%s", $$0.a(), $$1.b(), $$1.a());
-   }
+         $$2.sort(asu.b.a);
+         List<asu.a> $$4 = a($$2);
+         Collections.reverse($$4);
+         $$4.sort(asu.a.a);
+         Set<Path> $$5 = new HashSet<>();
 
-   @Nullable
-   @Override
-   public aud<InputStream> a(String... $$0) {
-      return this.b(String.join("/", $$0));
-   }
+         for (int $$6 = 0; $$6 < $$3; $$6++) {
+            asu.a $$7 = $$4.get($$6);
+            Path $$8 = $$7.b;
 
-   @Override
-   public aud<InputStream> a(asz $$0, alb $$1) {
-      return this.b(b($$0, $$1));
-   }
-
-   private String a(String $$0) {
-      return this.e.isEmpty() ? $$0 : this.e + "/" + $$0;
-   }
-
-   @Nullable
-   private aud<InputStream> b(String $$0) {
-      ZipFile $$1 = this.d.a();
-      if ($$1 == null) {
-         return null;
-      } else {
-         ZipEntry $$2 = $$1.getEntry(this.a($$0));
-         return $$2 == null ? null : aud.create($$1, $$2);
-      }
-   }
-
-   @Override
-   public Set<String> a(asz $$0) {
-      ZipFile $$1 = this.d.a();
-      if ($$1 == null) {
-         return Set.of();
-      } else {
-         Enumeration<? extends ZipEntry> $$2 = $$1.entries();
-         Set<String> $$3 = Sets.newHashSet();
-         String $$4 = this.a($$0.a() + "/");
-
-         while ($$2.hasMoreElements()) {
-            ZipEntry $$5 = $$2.nextElement();
-            String $$6 = $$5.getName();
-            String $$7 = a($$4, $$6);
-            if (!$$7.isEmpty()) {
-               if (alb.h($$7)) {
-                  $$3.add($$7);
-               } else {
-                  c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$7, this.d.a);
+            try {
+               Files.delete($$8);
+               if ($$7.c == 0) {
+                  $$5.add($$8.getParent());
                }
+            } catch (IOException var12) {
+               a.warn("Failed to delete cache file {}", $$8, var12);
             }
          }
 
-         return $$3;
+         $$5.remove($$0);
+
+         for (Path $$10 : $$5) {
+            try {
+               Files.delete($$10);
+            } catch (DirectoryNotEmptyException var10) {
+            } catch (IOException var11) {
+               a.warn("Failed to delete empty(?) cache directory {}", $$10, var11);
+            }
+         }
+      } catch (UncheckedIOException | IOException var13) {
+         a.error("Failed to vacuum cache dir {}", $$0, var13);
       }
    }
 
-   @VisibleForTesting
-   public static String a(String $$0, String $$1) {
-      if (!$$1.startsWith($$0)) {
-         return "";
-      } else {
-         int $$2 = $$0.length();
-         int $$3 = $$1.indexOf(47, $$2);
-         return $$3 == -1 ? $$1.substring($$2) : $$1.substring($$2, $$3);
-      }
-   }
-
-   @Override
-   public void close() {
-      this.d.close();
-   }
-
-   @Override
-   public void a(asz $$0, String $$1, String $$2, asx.a $$3) {
-      ZipFile $$4 = this.d.a();
-      if ($$4 != null) {
-         Enumeration<? extends ZipEntry> $$5 = $$4.entries();
-         String $$6 = this.a($$0.a() + "/" + $$1 + "/");
-         String $$7 = $$6 + $$2 + "/";
-
-         while ($$5.hasMoreElements()) {
-            ZipEntry $$8 = $$5.nextElement();
-            if (!$$8.isDirectory()) {
-               String $$9 = $$8.getName();
-               if ($$9.startsWith($$7)) {
-                  String $$10 = $$9.substring($$6.length());
-                  alb $$11 = alb.a($$1, $$10);
-                  if ($$11 != null) {
-                     $$3.accept($$11, aud.create($$4, $$8));
-                  } else {
-                     c.warn("Invalid path in datapack: {}:{}, ignoring", $$1, $$10);
-                  }
+   private static List<asu.b> a(final Path $$0) throws IOException {
+      try {
+         final List<asu.b> $$1 = new ArrayList<>();
+         Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
+            public FileVisitResult a(Path $$0x, BasicFileAttributes $$1) {
+               if ($$1.isRegularFile() && !$$0.getParent().equals($$0)) {
+                  FileTime $$2 = $$1.lastModifiedTime();
+                  $$1.add(new asu.b($$0, $$2));
                }
+
+               return FileVisitResult.CONTINUE;
             }
-         }
+         });
+         return $$1;
+      } catch (NoSuchFileException var2) {
+         return List.of();
       }
    }
 
-   public static class a implements att.c {
-      private final File a;
+   private static List<asu.a> a(List<asu.b> $$0) {
+      List<asu.a> $$1 = new ArrayList<>();
+      Object2IntOpenHashMap<Path> $$2 = new Object2IntOpenHashMap();
 
-      public a(Path $$0) {
-         this($$0.toFile());
+      for (asu.b $$3 : $$0) {
+         int $$4 = $$2.addTo($$3.b.getParent(), 1);
+         $$1.add(new asu.a($$3.b, $$4));
       }
 
-      public a(File $$0) {
-         this.a = $$0;
+      return $$1;
+   }
+
+   static record a(Path b, int c) {
+      public static final Comparator<asu.a> a = Comparator.comparing(asu.a::b).reversed();
+
+      public Path a() {
+         return this.b;
       }
 
-      @Override
-      public asx a(asw $$0) {
-         asu.b $$1 = new asu.b(this.a);
-         return new asu($$0, $$1, "");
-      }
-
-      @Override
-      public asx a(asw $$0, att.a $$1) {
-         asu.b $$2 = new asu.b(this.a);
-         asx $$3 = new asu($$0, $$2, "");
-         List<String> $$4 = $$1.d();
-         if ($$4.isEmpty()) {
-            return $$3;
-         } else {
-            List<asx> $$5 = new ArrayList<>($$4.size());
-
-            for (String $$6 : $$4) {
-               $$5.add(new asu($$0, $$2, $$6));
-            }
-
-            return new asq($$3, $$5);
-         }
+      public int b() {
+         return this.c;
       }
    }
 
-   static class b implements AutoCloseable {
-      final File a;
-      @Nullable
-      private ZipFile b;
-      private boolean c;
+   static record b(Path b, FileTime c) {
+      public static final Comparator<asu.b> a = Comparator.comparing(asu.b::b).reversed();
 
-      b(File $$0) {
-         this.a = $$0;
+      public Path a() {
+         return this.b;
       }
 
-      @Nullable
-      ZipFile a() {
-         if (this.c) {
-            return null;
-         } else {
-            if (this.b == null) {
-               try {
-                  this.b = new ZipFile(this.a);
-               } catch (IOException var2) {
-                  asu.c.error("Failed to open pack {}", this.a, var2);
-                  this.c = true;
-                  return null;
-               }
-            }
-
-            return this.b;
-         }
-      }
-
-      @Override
-      public void close() {
-         if (this.b != null) {
-            IOUtils.closeQuietly(this.b);
-            this.b = null;
-         }
-      }
-
-      @Override
-      protected void finalize() throws Throwable {
-         this.close();
-         super.finalize();
+      public FileTime b() {
+         return this.c;
       }
    }
 }

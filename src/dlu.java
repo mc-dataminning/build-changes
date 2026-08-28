@@ -1,146 +1,149 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Arrays;
-import java.util.UUID;
 import javax.annotation.Nullable;
 
-public abstract class dlu extends deg implements dlv {
-   public static final dso f = dsn.C;
-   protected static final float g = 4.0F;
-   protected static final ewf h = deu.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
-   private final dtk a;
-
-   protected dlu(dtk $$0, drw.d $$1) {
-      super($$1);
-      this.a = $$0;
-   }
-
-   @Override
-   protected abstract MapCodec<? extends dlu> a();
+public class dlu extends dfg implements dfa, dly {
+   public static final MapCodec<dlu> a = b(dlu::new);
+   public static final int b = 4;
+   public static final dta c = dsq.aS;
+   public static final dsr d = dsq.C;
+   protected static final ewi e = dex.a(6.0, 0.0, 6.0, 10.0, 6.0, 10.0);
+   protected static final ewi f = dex.a(3.0, 0.0, 3.0, 13.0, 6.0, 13.0);
+   protected static final ewi g = dex.a(2.0, 0.0, 2.0, 14.0, 6.0, 14.0);
+   protected static final ewi h = dex.a(2.0, 0.0, 2.0, 14.0, 7.0, 14.0);
 
    @Override
-   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
-      if ($$0.c(f)) {
-         $$3.a($$4, enr.c, enr.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public MapCodec<dlu> a() {
+      return a;
    }
 
-   @Override
-   protected ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
-      return h;
-   }
-
-   @Override
-   public boolean a(drx $$0) {
-      return true;
-   }
-
-   @Override
-   public dpc a(iz $$0, drx $$1) {
-      return new dqm($$0, $$1);
-   }
-
-   @Override
-   protected bqr a(cuk $$0, drx $$1, dbt $$2, iz $$3, cms $$4, bqo $$5, evi $$6) {
-      if ($$2.c_($$3) instanceof dqm $$7) {
-         cvm $$10 = $$0.g() instanceof cvm $$9 ? $$9 : null;
-         boolean $$11 = $$10 != null && $$4.go();
-         if (!$$2.B) {
-            if ($$11 && !$$7.v() && !this.a($$4, $$7)) {
-               boolean $$12 = $$7.a($$4);
-               if ($$10.a($$7.a($$12), $$4) && $$10.a($$2, $$7, $$12, $$4)) {
-                  $$7.a($$4, $$2, $$3, $$12);
-                  $$4.b(awg.c.b($$0.g()));
-                  $$2.a(dwq.c, $$7.aA_(), dwq.a.a($$4, $$7.n()));
-                  if (!$$4.f()) {
-                     $$0.h(1);
-                  }
-
-                  return bqr.a;
-               } else {
-                  return bqr.d;
-               }
-            } else {
-               return bqr.d;
-            }
-         } else {
-            return !$$11 && !$$7.v() ? bqr.b : bqr.a;
-         }
-      } else {
-         return bqr.e;
-      }
-   }
-
-   @Override
-   protected bqp a(drx $$0, dbt $$1, iz $$2, cms $$3, evi $$4) {
-      if ($$1.c_($$2) instanceof dqm $$5) {
-         if ($$1.B) {
-            ac.b(new IllegalStateException("Expected to only call this on server"));
-         }
-
-         boolean $$7 = $$5.a($$3);
-         boolean $$8 = $$5.a($$3, $$1, $$2, $$7);
-         if ($$5.v()) {
-            $$1.a(null, $$5.aA_(), $$5.d(), avx.e);
-            return bqp.a;
-         } else if ($$8) {
-            return bqp.a;
-         } else if (!this.a($$3, $$5) && $$3.go() && this.b($$3, $$5, $$7)) {
-            this.a($$3, $$5, $$7);
-            return bqp.a;
-         } else {
-            return bqp.e;
-         }
-      } else {
-         return bqp.e;
-      }
-   }
-
-   private boolean b(cms $$0, dqm $$1, boolean $$2) {
-      dqn $$3 = $$1.a($$2);
-      return Arrays.stream($$3.b($$0.Y())).allMatch($$0x -> $$0x.equals(xk.a) || $$0x.b() instanceof ys);
-   }
-
-   public abstract float g(drx var1);
-
-   public evm m(drx $$0) {
-      return new evm(0.5, 0.5, 0.5);
-   }
-
-   @Override
-   protected enq b_(drx $$0) {
-      return $$0.c(f) ? enr.c.a(false) : super.b_($$0);
-   }
-
-   public dtk d() {
-      return this.a;
-   }
-
-   public static dtk a(deu $$0) {
-      dtk $$1;
-      if ($$0 instanceof dlu) {
-         $$1 = ((dlu)$$0).d();
-      } else {
-         $$1 = dtk.b;
-      }
-
-      return $$1;
-   }
-
-   public void a(cms $$0, dqm $$1, boolean $$2) {
-      $$1.a($$0.cz());
-      $$0.a($$1, $$2);
-   }
-
-   private boolean a(cms $$0, dqm $$1) {
-      UUID $$2 = $$1.u();
-      return $$2 != null && !$$2.equals($$0.cz());
+   protected dlu(drz.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(1)).a(d, Boolean.valueOf(true)));
    }
 
    @Nullable
    @Override
-   public <T extends dpc> dpd<T> a(dbt $$0, drx $$1, dpe<T> $$2) {
-      return a($$2, dpe.h, dqm::a);
+   public dsa a(cxy $$0) {
+      dsa $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         return $$1.a(c, Integer.valueOf(Math.min(4, $$1.c(c) + 1)));
+      } else {
+         ent $$2 = $$0.q().b_($$0.a());
+         boolean $$3 = $$2.a() == enu.c;
+         return super.a($$0).a(d, Boolean.valueOf($$3));
+      }
+   }
+
+   public static boolean m(dsa $$0) {
+      return !$$0.c(d);
+   }
+
+   @Override
+   protected boolean b(dsa $$0, dbc $$1, iz $$2) {
+      return !$$0.k($$1, $$2).a(je.b).c() || $$0.d($$1, $$2, je.b);
+   }
+
+   @Override
+   protected boolean a(dsa $$0, dbz $$1, iz $$2) {
+      iz $$3 = $$2.d();
+      return this.b($$1.a_($$3), $$1, $$3);
+   }
+
+   @Override
+   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
+      if (!$$0.a($$3, $$4)) {
+         return dez.a.o();
+      } else {
+         if ($$0.c(d)) {
+            $$3.a($$4, enu.c, enu.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   protected boolean a(dsa $$0, cxy $$1) {
+      return !$$1.h() && $$1.n().a(this.r()) && $$0.c(c) < 4 ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   protected ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
+      switch ($$0.c(c)) {
+         case 1:
+         default:
+            return e;
+         case 2:
+            return f;
+         case 3:
+            return g;
+         case 4:
+            return h;
+      }
+   }
+
+   @Override
+   protected ent b_(dsa $$0) {
+      return $$0.c(d) ? enu.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected void a(dsb.a<dex, dsa> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   public boolean b(dbz $$0, iz $$1, dsa $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dbw $$0, azf $$1, iz $$2, dsa $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(are $$0, azf $$1, iz $$2, dsa $$3) {
+      if (!m($$3) && $$0.a_($$2.d()).a(awo.aq)) {
+         int $$4 = 5;
+         int $$5 = 1;
+         int $$6 = 2;
+         int $$7 = 0;
+         int $$8 = $$2.u() - 2;
+         int $$9 = 0;
+
+         for (int $$10 = 0; $$10 < 5; $$10++) {
+            for (int $$11 = 0; $$11 < $$5; $$11++) {
+               int $$12 = 2 + $$2.v() - 1;
+
+               for (int $$13 = $$12 - 2; $$13 < $$12; $$13++) {
+                  iz $$14 = new iz($$8 + $$10, $$13, $$2.w() - $$9 + $$11);
+                  if ($$14 != $$2 && $$1.a(6) == 0 && $$0.a_($$14).a(dez.G)) {
+                     dsa $$15 = $$0.a_($$14.d());
+                     if ($$15.a(awo.aq)) {
+                        $$0.a($$14, dez.mV.o().a(c, Integer.valueOf($$1.a(4) + 1)), 3);
+                     }
+                  }
+               }
+            }
+
+            if ($$7 < 2) {
+               $$5 += 2;
+               $$9++;
+            } else {
+               $$5 -= 2;
+               $$9--;
+            }
+
+            $$7++;
+         }
+
+         $$0.a($$2, $$3.a(c, Integer.valueOf(4)), 2);
+      }
+   }
+
+   @Override
+   protected boolean a(dsa $$0, eoi $$1) {
+      return false;
    }
 }

@@ -1,18 +1,20 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public interface evt {
+   evt a = ($$0, $$1) -> false;
+   evt b = ($$0, $$1) -> !$$0 && !$$1;
+   evt c = ($$0, $$1) -> $$1 && !$$0;
+   evt d = ($$0, $$1) -> !$$0;
+   evt e = ($$0, $$1) -> $$0 && !$$1;
+   evt f = ($$0, $$1) -> !$$1;
+   evt g = ($$0, $$1) -> $$0 != $$1;
+   evt h = ($$0, $$1) -> !$$0 || !$$1;
+   evt i = ($$0, $$1) -> $$0 && $$1;
+   evt j = ($$0, $$1) -> $$0 == $$1;
+   evt k = ($$0, $$1) -> $$1;
+   evt l = ($$0, $$1) -> !$$0 || $$1;
+   evt m = ($$0, $$1) -> $$0;
+   evt n = ($$0, $$1) -> $$0 || !$$1;
+   evt o = ($$0, $$1) -> $$0 || $$1;
+   evt p = ($$0, $$1) -> true;
 
-public final class evt extends ewf {
-   protected evt(evv $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected DoubleList a(je.a $$0) {
-      return new evs(this.a.c($$0));
-   }
-
-   @Override
-   protected int a(je.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return ayu.a(ayu.a($$1 * (double)$$2, -1.0, (double)$$2));
-   }
+   boolean apply(boolean var1, boolean var2);
 }

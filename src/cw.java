@@ -14,11 +14,11 @@ public class cw extends dr<cw.a> {
       return cw.a.a;
    }
 
-   public void a(arc $$0, Collection<bsp> $$1) {
-      List<eqd> $$2 = Lists.newArrayList();
-      Set<bsv<?>> $$3 = Sets.newHashSet();
+   public void a(arf $$0, Collection<bss> $$1) {
+      List<eqg> $$2 = Lists.newArrayList();
+      Set<bsy<?>> $$3 = Sets.newHashSet();
 
-      for (bsp $$4 : $$1) {
+      for (bss $$4 : $$1) {
          $$3.add($$4.ak());
          $$2.add(bu.b($$0, $$4));
       }
@@ -44,16 +44,16 @@ public class cw extends dr<cw.a> {
          return am.H.a(new cw.a(Optional.empty(), List.of(), $$0));
       }
 
-      public boolean a(Collection<eqd> $$0, int $$1) {
+      public boolean a(Collection<eqg> $$0, int $$1) {
          if (!this.c.isEmpty()) {
-            List<eqd> $$2 = Lists.newArrayList($$0);
+            List<eqg> $$2 = Lists.newArrayList($$0);
 
             for (bf $$3 : this.c) {
                boolean $$4 = false;
-               Iterator<eqd> $$5 = $$2.iterator();
+               Iterator<eqg> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
-                  eqd $$6 = $$5.next();
+                  eqg $$6 = $$5.next();
                   if ($$3.a($$6)) {
                      $$5.remove();
                      $$4 = true;

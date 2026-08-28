@@ -1,46 +1,22 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Set;
 
-public abstract class fgq extends fgx {
-   protected static final int e = 2;
-   private static final fim a = new fim(new alb("widget/button"), new alb("widget/button_disabled"), new alb("widget/button_highlighted"));
+public class fgq extends gqa {
+   private static final Set<atn<?>> a = Set.of(gqi.a, gqo.c);
 
-   public fgq(int $$0, int $$1, int $$2, int $$3, xl $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public abstract void b();
-
-   @Override
-   protected void b(fgm $$0, int $$1, int $$2, float $$3) {
-      ffa $$4 = ffa.Q();
-      $$0.a(1.0F, 1.0F, 1.0F, this.l);
-      RenderSystem.enableBlend();
-      RenderSystem.enableDepthTest();
-      $$0.a(a.a(this.j, this.A()), this.C(), this.D(), this.x(), this.v());
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, $$5 | ayu.f(this.l * 255.0F) << 24);
-   }
-
-   public void a(fgm $$0, fgk $$1, int $$2) {
-      this.a($$0, $$1, 2, $$2);
+   public fgq(goy $$0) {
+      super($$0, new ale("textures/atlas/gui.png"), new ale("gui"), a);
    }
 
    @Override
-   public void a(double $$0, double $$1) {
-      this.b();
+   public gox a(ale $$0) {
+      return super.a($$0);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.j || !this.k) {
-         return false;
-      } else if (fla.a($$0)) {
-         this.a(ffa.Q().aj());
-         this.b();
-         return true;
-      } else {
-         return false;
-      }
+   public gqp a(gox $$0) {
+      return this.b($$0).a();
+   }
+
+   private gqo b(gox $$0) {
+      return $$0.e().f().a(gqo.c).orElse(gqo.a);
    }
 }

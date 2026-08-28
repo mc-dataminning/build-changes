@@ -1,42 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class bxj {
-   public static bwo<cmf> a(cco<jh> $$0, float $$1, int $$2, int $$3, int $$4) {
-      return byq.a(
-         (Function<byq.b<cmf>, ? extends App<byq.c<cmf>, byt<cmf>>>)($$5 -> $$5.group($$5.a(cco.E), $$5.c(cco.m), $$5.b($$0))
-               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
-                     jh $$12 = $$5.b($$8);
-                     Optional<Long> $$13 = $$5.a($$6);
-                     if ($$12.a() == $$9.af() && (!$$13.isPresent() || $$9.Z() - $$13.get() <= (long)$$4)) {
-                        if ($$12.b().k($$10.dp()) > $$3) {
-                           evm $$14 = null;
-                           int $$15 = 0;
-                           int $$16 = 1000;
+   public static bvh<btn> a() {
+      return byt.a((Function<byt.b<btn>, ? extends App<byt.c<btn>, byw<btn>>>)($$0 -> $$0.a((byw<btn>)(($$0x, $$1, $$2) -> {
+            if ($$0x.z.a(20) != 0) {
+               return false;
+            } else {
+               bup<?> $$3 = $$1.dS();
+               cog $$4 = $$0x.d($$1.dp());
+               if ($$4 != null) {
+                  if ($$4.c() && !$$4.b()) {
+                     $$3.b(cok.h);
+                     $$3.a(cok.h);
+                  } else {
+                     $$3.b(cok.i);
+                     $$3.a(cok.i);
+                  }
+               }
 
-                           while ($$14 == null || iz.a($$14).k($$10.dp()) > $$3) {
-                              $$14 = cef.a($$10, 15, 7, evm.c($$12.b()), (float) (Math.PI / 2));
-                              if (++$$15 == 1000) {
-                                 $$10.a($$0);
-                                 $$8.b();
-                                 $$6.a($$11);
-                                 return true;
-                              }
-                           }
-
-                           $$7.a(new ccr($$14, $$1, $$2));
-                        } else if ($$12.b().k($$10.dp()) > $$2) {
-                           $$7.a(new ccr($$12.b(), $$1, $$2));
-                        }
-                     } else {
-                        $$10.a($$0);
-                        $$8.b();
-                        $$6.a($$11);
-                     }
-
-                     return true;
-                  }))
-      );
+               return true;
+            }
+         }))));
    }
 }

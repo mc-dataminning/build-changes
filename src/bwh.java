@@ -1,72 +1,34 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
 
-public final class bwh {
-   public static Optional<evm> a(btm $$0, evm $$1, float $$2, int $$3, boolean $$4) {
-      evm $$5 = $$0.dn();
-      evm $$6 = new evm($$1.c - $$5.c, 0.0, $$1.e - $$5.e).d().a(0.5);
-      evm $$7 = $$1.d($$6);
-      evm $$8 = $$7.d($$5);
-      float $$9 = (float)$$3 * (float) Math.PI / 180.0F;
-      double $$10 = Math.atan2($$8.e, $$8.c);
-      double $$11 = $$8.a(0.0, $$8.d, 0.0).g();
-      double $$12 = Math.sqrt($$11);
-      double $$13 = $$8.d;
-      double $$14 = $$0.aZ();
-      double $$15 = Math.sin((double)(2.0F * $$9));
-      double $$16 = Math.pow(Math.cos((double)$$9), 2.0);
-      double $$17 = Math.sin((double)$$9);
-      double $$18 = Math.cos((double)$$9);
-      double $$19 = Math.sin($$10);
-      double $$20 = Math.cos($$10);
-      double $$21 = $$11 * $$14 / ($$12 * $$15 - 2.0 * $$13 * $$16);
-      if ($$21 < 0.0) {
-         return Optional.empty();
-      } else {
-         double $$22 = Math.sqrt($$21);
-         if ($$22 > (double)$$2) {
-            return Optional.empty();
-         } else {
-            double $$23 = $$22 * $$18;
-            double $$24 = $$22 * $$17;
-            if ($$4) {
-               int $$25 = ayu.c($$12 / $$23) * 2;
-               double $$26 = 0.0;
-               evm $$27 = null;
-               bss $$28 = $$0.a(btw.g);
+public class bwh extends bvg<btp> {
+   public static final int c = 100;
+   private final bqd d;
+   private final avy e;
 
-               for (int $$29 = 0; $$29 < $$25 - 1; $$29++) {
-                  $$26 += $$12 / (double)$$25;
-                  double $$30 = $$17 / $$18 * $$26 - Math.pow($$26, 2.0) * $$14 / (2.0 * $$21 * Math.pow($$18, 2.0));
-                  double $$31 = $$26 * $$20;
-                  double $$32 = $$26 * $$19;
-                  evm $$33 = new evm($$5.c + $$31, $$5.d + $$30, $$5.e + $$32);
-                  if ($$27 != null && !a($$0, $$28, $$27, $$33)) {
-                     return Optional.empty();
-                  }
-
-                  $$27 = $$33;
-               }
-            }
-
-            return Optional.of(new evm($$23 * $$20, $$24, $$23 * $$19).a(0.95F));
-         }
-      }
+   public bwh(bqd $$0, avy $$1) {
+      super(ImmutableMap.of(ccr.n, ccs.c, ccr.T, ccs.a), 100);
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private static boolean a(btm $$0, bss $$1, evm $$2, evm $$3) {
-      evm $$4 = $$3.d($$2);
-      double $$5 = (double)Math.min($$1.a(), $$1.b());
-      int $$6 = ayu.c($$4.f() / $$5);
-      evm $$7 = $$4.d();
-      evm $$8 = $$2;
+   protected boolean a(are $$0, btp $$1, long $$2) {
+      return !$$1.aE();
+   }
 
-      for (int $$9 = 0; $$9 < $$6; $$9++) {
-         $$8 = $$9 == $$6 - 1 ? $$3 : $$8.e($$7.a($$5 * 0.9F));
-         if (!$$0.dP().a($$0, $$1.a($$8))) {
-            return false;
-         }
+   protected void b(are $$0, btp $$1, long $$2) {
+      $$1.q(true);
+      $$1.b(btz.g);
+   }
+
+   protected void c(are $$0, btp $$1, long $$2) {
+      if ($$1.aE()) {
+         $$1.h($$1.ds().d(0.1F, 1.0, 0.1F));
+         $$0.a(null, $$1, this.e, awa.g, 2.0F, 1.0F);
       }
 
-      return true;
+      $$1.q(false);
+      $$1.b(btz.a);
+      $$1.dS().b(ccr.T);
+      $$1.dS().a(ccr.S, this.d.a($$0.z));
    }
 }

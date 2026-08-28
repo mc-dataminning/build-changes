@@ -1,110 +1,73 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dnd extends deu {
-   public static final MapCodec<dnd> a = b(dnd::new);
-   public static final dso b = dsn.B;
+public class dnd extends dhf implements djo {
+   public static final MapCodec<dnd> c = b(dnd::new);
+   public static final dsy<dsw> d = dhf.b;
+   protected static final float e = 6.0F;
+   protected static final ewi f = dex.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dnd> a() {
-      return a;
+      return c;
    }
 
-   public dnd(drw.d $$0) {
+   public dnd(drz.d $$0) {
       super($$0);
-      this.k(this.n().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void b(drx $$0, dbt $$1, iz $$2, drx $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         if ($$1.C($$2)) {
-            a($$1, $$2);
-            $$1.a($$2, false);
+   protected ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
+      return f;
+   }
+
+   @Override
+   protected boolean b(dsa $$0, dbc $$1, iz $$2) {
+      return $$0.d($$1, $$2, je.b) && !$$0.a(dez.kJ);
+   }
+
+   @Override
+   public cun a(dbz $$0, iz $$1, dsa $$2) {
+      return new cun(dez.bw);
+   }
+
+   @Nullable
+   @Override
+   public dsa a(cxy $$0) {
+      dsa $$1 = super.a($$0);
+      if ($$1 != null) {
+         ent $$2 = $$0.q().b_($$0.a().c());
+         if ($$2.a(awu.a) && $$2.e() == 8) {
+            return $$1;
          }
       }
+
+      return null;
    }
 
    @Override
-   protected void a(drx $$0, dbt $$1, iz $$2, deu $$3, iz $$4, boolean $$5) {
-      if ($$1.C($$2)) {
-         a($$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   @Override
-   public drx a(dbt $$0, iz $$1, drx $$2, cms $$3) {
-      if (!$$0.x_() && !$$3.f() && $$2.c(b)) {
-         a($$0, $$1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(dbt $$0, iz $$1, dbl $$2) {
-      if (!$$0.B) {
-         cjd $$3 = new cjd($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2.f());
-         int $$4 = $$3.u();
-         $$3.b((short)($$0.z.a($$4 / 4) + $$4 / 8));
-         $$0.b($$3);
-      }
-   }
-
-   public static void a(dbt $$0, iz $$1) {
-      a($$0, $$1, null);
-   }
-
-   private static void a(dbt $$0, iz $$1, @Nullable btk $$2) {
-      if (!$$0.B) {
-         cjd $$3 = new cjd($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2);
-         $$0.b($$3);
-         $$0.a(null, $$3.du(), $$3.dw(), $$3.dA(), avw.zv, avx.e, 1.0F, 1.0F);
-         $$0.a($$2, dwq.I, $$1);
-      }
-   }
-
-   @Override
-   protected bqr a(cuk $$0, drx $$1, dbt $$2, iz $$3, cms $$4, bqo $$5, evi $$6) {
-      if (!$$0.a(cun.os) && !$$0.a(cun.tX)) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   protected boolean a(dsa $$0, dbz $$1, iz $$2) {
+      if ($$0.c(d) == dsw.a) {
+         dsa $$3 = $$1.a_($$2.d());
+         return $$3.a(this) && $$3.c(d) == dsw.b;
       } else {
-         a($$2, $$3, $$4);
-         $$2.a($$3, dew.a.n(), 11);
-         cuf $$7 = $$0.g();
-         if (!$$4.f()) {
-            if ($$0.a(cun.os)) {
-               $$0.a(1, $$4, btk.d($$5));
-            } else {
-               $$0.h(1);
-            }
-         }
-
-         $$4.b(awg.c.b($$7));
-         return bqr.a($$2.B);
+         ent $$4 = $$1.b_($$2);
+         return super.a($$0, $$1, $$2) && $$4.a(awu.a) && $$4.e() == 8;
       }
    }
 
    @Override
-   protected void a(dbt $$0, drx $$1, evi $$2, cnk $$3) {
-      if (!$$0.B) {
-         iz $$4 = $$2.a();
-         bsp $$5 = $$3.s();
-         if ($$3.bQ() && $$3.a($$0, $$4)) {
-            a($$0, $$4, $$5 instanceof btk ? (btk)$$5 : null);
-            $$0.a($$4, false);
-         }
-      }
+   protected ent b_(dsa $$0) {
+      return enu.c.a(false);
    }
 
    @Override
-   public boolean a(dbl $$0) {
+   public boolean a(@Nullable cmv $$0, dbc $$1, iz $$2, dsa $$3, ens $$4) {
       return false;
    }
 
    @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      $$0.a(b);
+   public boolean a(dbx $$0, iz $$1, dsa $$2, ent $$3) {
+      return false;
    }
 }

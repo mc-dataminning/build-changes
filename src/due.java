@@ -1,181 +1,111 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 
-public class due {
-   public static final int a = 16;
-   public static final int b = 16;
-   public static final int c = 4096;
-   public static final int d = 2;
-   private short e;
-   private short f;
-   private short g;
-   private final dul<drx> h;
-   private dum<ji<dcs>> i;
+public class due<T> implements dum<T> {
+   private final jn<T> a;
+   private final axu<T> b;
+   private final dun<T> c;
+   private final int d;
 
-   public due(dul<drx> $$0, dum<ji<dcs>> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.g();
+   public due(jn<T> $$0, int $$1, dun<T> $$2, List<T> $$3) {
+      this($$0, $$1, $$2);
+      $$3.forEach(this.b::d);
    }
 
-   public due(jv<dcs> $$0) {
-      this.h = new dul<>(deu.q, dew.a.n(), dul.d.d);
-      this.i = new dul<>($$0.t(), $$0.g(dcz.b), dul.d.e);
+   public due(jn<T> $$0, int $$1, dun<T> $$2) {
+      this($$0, $$1, $$2, axu.c(1 << $$1));
    }
 
-   public drx a(int $$0, int $$1, int $$2) {
-      return this.h.a($$0, $$1, $$2);
+   private due(jn<T> $$0, int $$1, dun<T> $$2, axu<T> $$3) {
+      this.a = $$0;
+      this.d = $$1;
+      this.c = $$2;
+      this.b = $$3;
    }
 
-   public enq b(int $$0, int $$1, int $$2) {
-      return this.h.a($$0, $$1, $$2).u();
+   public static <A> dum<A> a(int $$0, jn<A> $$1, dun<A> $$2, List<A> $$3) {
+      return new due<>($$1, $$0, $$2, $$3);
    }
 
-   public void a() {
-      this.h.a();
+   @Override
+   public int a(T $$0) {
+      int $$1 = this.b.a($$0);
+      if ($$1 == -1) {
+         $$1 = this.b.d($$0);
+         if ($$1 >= 1 << this.d) {
+            $$1 = this.c.onResize(this.d + 1, $$0);
+         }
+      }
+
+      return $$1;
    }
 
-   public void b() {
-      this.h.b();
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         if ($$0.test(this.b.a($$1))) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   public drx a(int $$0, int $$1, int $$2, drx $$3) {
-      return this.a($$0, $$1, $$2, $$3, true);
-   }
-
-   public drx a(int $$0, int $$1, int $$2, drx $$3, boolean $$4) {
-      drx $$5;
-      if ($$4) {
-         $$5 = this.h.a($$0, $$1, $$2, $$3);
+   @Override
+   public T a(int $$0) {
+      T $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         throw new dul($$0);
       } else {
-         $$5 = this.h.b($$0, $$1, $$2, $$3);
+         return $$1;
       }
-
-      enq $$7 = $$5.u();
-      enq $$8 = $$3.u();
-      if (!$$5.i()) {
-         this.e--;
-         if ($$5.v()) {
-            this.f--;
-         }
-      }
-
-      if (!$$7.c()) {
-         this.g--;
-      }
-
-      if (!$$3.i()) {
-         this.e++;
-         if ($$3.v()) {
-            this.f++;
-         }
-      }
-
-      if (!$$8.c()) {
-         this.g++;
-      }
-
-      return $$5;
    }
 
-   public boolean c() {
-      return this.e == 0;
-   }
-
-   public boolean d() {
-      return this.e() || this.f();
-   }
-
-   public boolean e() {
-      return this.f > 0;
-   }
-
-   public boolean f() {
-      return this.g > 0;
-   }
-
-   public void g() {
-      class a implements dul.b<drx> {
-         public int a;
-         public int b;
-         public int c;
-
-         public void a(drx $$0, int $$1) {
-            enq $$2 = $$0.u();
-            if (!$$0.i()) {
-               this.a += $$1;
-               if ($$0.v()) {
-                  this.b += $$1;
-               }
-            }
-
-            if (!$$2.c()) {
-               this.a += $$1;
-               if ($$2.f()) {
-                  this.c += $$1;
-               }
-            }
-         }
-      }
-
-      a $$0 = new a();
-      this.h.a($$0);
-      this.e = (short)$$0.a;
-      this.f = (short)$$0.b;
-      this.g = (short)$$0.c;
-   }
-
-   public dul<drx> h() {
-      return this.h;
-   }
-
-   public dum<ji<dcs>> i() {
-      return this.i;
-   }
-
+   @Override
    public void a(wl $$0) {
-      this.e = $$0.readShort();
-      this.h.a($$0);
-      dul<ji<dcs>> $$1 = this.i.e();
-      $$1.a($$0);
-      this.i = $$1;
+      this.b.a();
+      int $$1 = $$0.l();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.b.d(this.a.b($$0.l()));
+      }
    }
 
+   @Override
    public void b(wl $$0) {
-      dul<ji<dcs>> $$1 = this.i.e();
-      $$1.a($$0);
-      this.i = $$1;
+      int $$1 = this.b();
+      $$0.c($$1);
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         $$0.c(this.a.a(this.b.a($$2)));
+      }
    }
 
-   public void c(wl $$0) {
-      $$0.l(this.e);
-      this.h.b($$0);
-      this.i.b($$0);
-   }
+   @Override
+   public int a() {
+      int $$0 = xf.a(this.b());
 
-   public int j() {
-      return 2 + this.h.c() + this.i.c();
-   }
-
-   public boolean a(Predicate<drx> $$0) {
-      return this.h.a($$0);
-   }
-
-   public ji<dcs> c(int $$0, int $$1, int $$2) {
-      return this.i.a($$0, $$1, $$2);
-   }
-
-   public void a(dcv $$0, ddb.f $$1, int $$2, int $$3, int $$4) {
-      dul<ji<dcs>> $$5 = this.i.e();
-      int $$6 = 4;
-
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            for (int $$9 = 0; $$9 < 4; $$9++) {
-               $$5.b($$7, $$8, $$9, $$0.getNoiseBiome($$2 + $$7, $$3 + $$8, $$4 + $$9, $$1));
-            }
-         }
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         $$0 += xf.a(this.a.a(this.b.a($$1)));
       }
 
-      this.i = $$5;
+      return $$0;
+   }
+
+   public List<T> d() {
+      ArrayList<T> $$0 = new ArrayList<>();
+      this.b.iterator().forEachRemaining($$0::add);
+      return $$0;
+   }
+
+   @Override
+   public int b() {
+      return this.b.b();
+   }
+
+   @Override
+   public dum<T> c() {
+      return new due<>(this.a, this.d, this.c, this.b.c());
    }
 }

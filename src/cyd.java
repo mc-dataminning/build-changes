@@ -1,95 +1,70 @@
-public class cyd extends cyi {
-   public cyd(cyg $$0) {
+import com.google.common.collect.Lists;
+import java.util.List;
+
+public class cyd extends cyl {
+   public cyd(cyj $$0) {
       super($$0);
    }
 
-   public boolean a(cqf $$0, dbt $$1) {
-      int $$2 = 0;
-      cuk $$3 = cuk.l;
+   public boolean a(cqi $$0, dbw $$1) {
+      cun $$2 = cun.l;
+      List<cun> $$3 = Lists.newArrayList();
 
       for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cuk $$5 = $$0.a($$4);
+         cun $$5 = $$0.a($$4);
          if (!$$5.e()) {
-            if ($$5.a(cun.ua)) {
-               if (!$$3.e()) {
+            if ($$5.a(awx.by)) {
+               if (!$$2.e()) {
                   return false;
                }
 
-               $$3 = $$5;
+               $$2 = $$5;
             } else {
-               if (!$$5.a(cun.tZ)) {
+               if (!($$5.g() instanceof cth)) {
                   return false;
                }
 
-               $$2++;
+               $$3.add($$5);
             }
          }
       }
 
-      return !$$3.e() && $$2 > 0;
+      return !$$2.e() && !$$3.isEmpty();
    }
 
-   public cuk a(cqf $$0, jk.a $$1) {
-      int $$2 = 0;
-      cuk $$3 = cuk.l;
+   public cun a(cqi $$0, jk.a $$1) {
+      List<cth> $$2 = Lists.newArrayList();
+      cun $$3 = cun.l;
 
       for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cuk $$5 = $$0.a($$4);
+         cun $$5 = $$0.a($$4);
          if (!$$5.e()) {
-            if ($$5.a(cun.ua)) {
+            if ($$5.a(awx.by)) {
                if (!$$3.e()) {
-                  return cuk.l;
+                  return cun.l;
                }
 
-               $$3 = $$5;
+               $$3 = $$5.s();
             } else {
-               if (!$$5.a(cun.tZ)) {
-                  return cuk.l;
+               if (!($$5.g() instanceof cth $$6)) {
+                  return cun.l;
                }
 
-               $$2++;
+               $$2.add($$6);
             }
          }
       }
 
-      cxt $$6 = $$3.a(km.I);
-      if (!$$3.e() && $$2 >= 1 && $$6 != null) {
-         cxt $$7 = $$6.b();
-         if ($$7 == null) {
-            return cuk.l;
-         } else {
-            cuk $$8 = $$3.c($$2);
-            $$8.b(km.I, $$7);
-            return $$8;
-         }
-      } else {
-         return cuk.l;
-      }
-   }
-
-   public jr<cuk> a(cqf $$0) {
-      jr<cuk> $$1 = jr.a($$0.b(), cuk.l);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cuk $$3 = $$0.a($$2);
-         if ($$3.g().v()) {
-            $$1.set($$2, new cuk($$3.g().u()));
-         } else if ($$3.g() instanceof cwi) {
-            $$1.set($$2, $$3.c(1));
-            break;
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public cyu<?> ap_() {
-      return cyu.d;
+      return !$$3.e() && !$$2.isEmpty() ? cxf.a($$3, $$2) : cun.l;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+      return $$0 * $$1 >= 2;
+   }
+
+   @Override
+   public cyx<?> ap_() {
+      return cyx.c;
    }
 }

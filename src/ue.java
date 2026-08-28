@@ -18,7 +18,7 @@ public class ue implements ArgumentType<String> {
       if (tp.b($$1)) {
          return $$1;
       } else {
-         Message $$2 = xl.b("No such test class: " + $$1);
+         Message $$2 = xo.b("No such test class: " + $$1);
          throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
       }
    }

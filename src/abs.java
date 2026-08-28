@@ -1,17 +1,18 @@
-public class abs {
-   public static final zu<abn> a = a("finish_configuration");
-   public static final zu<abo> b = a("registry_data");
-   public static final zu<abr> c = a("update_enabled_features");
-   public static final zu<abq> d = a("select_known_packs");
-   public static final zu<abp> e = a("reset_chat");
-   public static final zu<abv> f = b("finish_configuration");
-   public static final zu<abw> g = b("select_known_packs");
+import io.netty.buffer.ByteBuf;
 
-   private static <T extends zs<abm>> zu<T> a(String $$0) {
-      return new zu<>(zt.b, new alb($$0));
+public class abs implements zv<abp> {
+   public static final abs a = new abs();
+   public static final zm<ByteBuf, abs> b = zm.a(a);
+
+   private abs() {
    }
 
-   private static <T extends zs<abu>> zu<T> b(String $$0) {
-      return new zu<>(zt.a, new alb($$0));
+   @Override
+   public zx<abs> a() {
+      return abv.e;
+   }
+
+   public void a(abp $$0) {
+      $$0.a(this);
    }
 }

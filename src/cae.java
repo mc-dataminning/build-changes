@@ -1,61 +1,70 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cae extends cai {
-   private static final int a = 200;
-   private final cez b;
-   private int c;
-   private int d;
+public class cae extends cal {
+   protected final btw a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final dbw f;
 
-   public cae(cez $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
-   }
-
-   protected int a(cez $$0) {
-      return b(200 + $$0.el().a(200) % 20);
+   public cae(btw $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.f = $$0.dP();
+      this.a(EnumSet.of(cal.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.b.gw()) {
+      if (this.a.p() != null) {
          return false;
-      } else if (this.b.gt()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
+      } else if (!this.f.R()) {
+         return false;
+      } else if (!this.a.bQ()) {
+         return false;
+      } else if (!this.f.h(this.a.dp())) {
          return false;
       } else {
-         this.d = this.a(this.b);
-         Predicate<cez> $$0 = $$0x -> $$0x.gv() || !$$0x.gt();
-         List<? extends cez> $$1 = this.b.dP().a((Class<? extends cez>)this.b.getClass(), this.b.cK().c(8.0, 8.0, 8.0), $$0);
-         cez $$2 = (cez)DataFixUtils.orElse($$1.stream().filter(cez::gv).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.gt()));
-         return this.b.gt();
+         return !this.a.a(bsz.f).e() ? false : this.h();
+      }
+   }
+
+   protected boolean h() {
+      evp $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.c;
+         this.c = $$0.d;
+         this.d = $$0.e;
+         return true;
       }
    }
 
    @Override
    public boolean b() {
-      return this.b.gt() && this.b.gx();
+      return !this.a.K().l();
    }
 
    @Override
    public void c() {
-      this.c = 0;
+      this.a.K().a(this.b, this.c, this.d, this.e);
    }
 
-   @Override
-   public void d() {
-      this.b.gu();
-   }
+   @Nullable
+   protected evp i() {
+      azf $$0 = this.a.el();
+      iz $$1 = this.a.dp();
 
-   @Override
-   public void e() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.gy();
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         iz $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.h($$3) && this.a.d($$3) < 0.0F) {
+            return evp.c($$3);
+         }
       }
+
+      return null;
    }
 }

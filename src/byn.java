@@ -1,80 +1,97 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
 
-public class byn extends byo {
-   private static final List<cuf> c = ImmutableList.of(cun.pv, cun.vl);
+public class byn extends bvg<cmi> {
+   private long c;
 
-   @Override
-   protected void a(arb $$0, cmf $$1) {
-      Optional<jh> $$2 = $$1.dS().c(cco.c);
-      if (!$$2.isEmpty()) {
-         jh $$3 = $$2.get();
-         drx $$4 = $$0.a_($$3.b());
-         if ($$4.a(dew.pc)) {
-            this.a($$1);
-            this.a($$0, $$1, $$3, $$4);
+   public byn() {
+      super(ImmutableMap.of(ccr.r, ccs.a, ccr.h, ccs.a), 350, 350);
+   }
+
+   protected boolean a(are $$0, cmi $$1) {
+      return this.a($$1);
+   }
+
+   protected boolean a(are $$0, cmi $$1, long $$2) {
+      return $$2 <= this.c && this.a($$1);
+   }
+
+   protected void b(are $$0, cmi $$1, long $$2) {
+      bsm $$3 = $$1.dS().c(ccr.r).get();
+      bvi.a($$1, $$3, 0.5F, 2);
+      $$0.a($$3, (byte)18);
+      $$0.a($$1, (byte)18);
+      int $$4 = 275 + $$1.el().a(50);
+      this.c = $$2 + (long)$$4;
+   }
+
+   protected void c(are $$0, cmi $$1, long $$2) {
+      cmi $$3 = (cmi)$$1.dS().c(ccr.r).get();
+      if (!($$1.g($$3) > 5.0)) {
+         bvi.a($$1, $$3, 0.5F, 2);
+         if ($$2 >= this.c) {
+            $$1.gH();
+            $$3.gH();
+            this.a($$0, $$1, $$3);
+         } else if ($$1.el().a(35) == 0) {
+            $$0.a($$3, (byte)12);
+            $$0.a($$1, (byte)12);
          }
       }
    }
 
-   private void a(arb $$0, cmf $$1, jh $$2, drx $$3) {
-      iz $$4 = $$2.b();
-      if ($$3.c(dgf.e) == 8) {
-         $$3 = dgf.a($$1, $$3, (dbt)$$0, $$4);
-      }
-
-      int $$5 = 20;
-      int $$6 = 10;
-      int[] $$7 = new int[c.size()];
-      bqy $$8 = $$1.y();
-      int $$9 = $$8.b();
-      drx $$10 = $$3;
-
-      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
-         cuk $$12 = $$8.a($$11);
-         int $$13 = c.indexOf($$12.g());
-         if ($$13 != -1) {
-            int $$14 = $$12.I();
-            int $$15 = $$7[$$13] + $$14;
-            $$7[$$13] = $$15;
-            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
-            if ($$16 > 0) {
-               $$5 -= $$16;
-
-               for (int $$17 = 0; $$17 < $$16; $$17++) {
-                  $$10 = dgf.a($$1, $$10, $$0, $$12, $$4);
-                  if ($$10.c(dgf.e) == 7) {
-                     this.a($$0, $$3, $$4, $$10);
-                     return;
-                  }
-               }
-            }
+   private void a(are $$0, cmi $$1, cmi $$2) {
+      Optional<iz> $$3 = this.b($$0, $$1);
+      if ($$3.isEmpty()) {
+         $$0.a($$2, (byte)13);
+         $$0.a($$1, (byte)13);
+      } else {
+         Optional<cmi> $$4 = this.b($$0, $$1, $$2);
+         if ($$4.isPresent()) {
+            this.a($$0, $$4.get(), $$3.get());
+         } else {
+            $$0.y().b($$3.get());
+            ags.c($$0, $$3.get());
          }
       }
-
-      this.a($$0, $$3, $$4, $$10);
    }
 
-   private void a(arb $$0, drx $$1, iz $$2, drx $$3) {
-      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
+   protected void d(are $$0, cmi $$1, long $$2) {
+      $$1.dS().b(ccr.r);
    }
 
-   private void a(cmf $$0) {
-      bqy $$1 = $$0.y();
-      if ($$1.a_(cun.px) <= 36) {
-         int $$2 = $$1.a_(cun.pw);
-         int $$3 = 3;
-         int $$4 = 3;
-         int $$5 = Math.min(3, $$2 / 3);
-         if ($$5 != 0) {
-            int $$6 = $$5 * 3;
-            $$1.a(cun.pw, $$6);
-            cuk $$7 = $$1.b(new cuk(cun.px, $$5));
-            if (!$$7.e()) {
-               $$0.a($$7, 0.5F);
-            }
-         }
+   private boolean a(cmi $$0) {
+      bup<cmi> $$1 = $$0.dS();
+      Optional<bsm> $$2 = $$1.c(ccr.r).filter($$0x -> $$0x.ak() == bsy.bj);
+      return $$2.isEmpty() ? false : bvi.a($$1, ccr.r, bsy.bj) && $$0.X_() && $$2.get().X_();
+   }
+
+   private Optional<iz> b(are $$0, cmi $$1) {
+      return $$0.y().a($$0x -> $$0x.a(cev.n), ($$1x, $$2) -> this.a($$1, $$2, $$1x), $$1.dp(), 48);
+   }
+
+   private boolean a(cmi $$0, iz $$1, ji<ceu> $$2) {
+      eoh $$3 = $$0.K().a($$1, $$2.a().c());
+      return $$3 != null && $$3.j();
+   }
+
+   private Optional<cmi> b(are $$0, cmi $$1, cmi $$2) {
+      cmi $$3 = $$1.b($$0, $$2);
+      if ($$3 == null) {
+         return Optional.empty();
+      } else {
+         $$1.c_(6000);
+         $$2.c_(6000);
+         $$3.c_(-24000);
+         $$3.b($$1.du(), $$1.dw(), $$1.dA(), 0.0F, 0.0F);
+         $$0.a_($$3);
+         $$0.a($$3, (byte)12);
+         return Optional.of($$3);
       }
+   }
+
+   private void a(are $$0, cmi $$1, iz $$2) {
+      jh $$3 = jh.a($$0.af(), $$2);
+      $$1.dS().a(ccr.b, $$3);
    }
 }

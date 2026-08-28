@@ -1,35 +1,83 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+public abstract class btw extends btp {
+   protected static final float bX = 0.0F;
 
-public enum btw {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4),
-   f(5),
-   g(6),
-   h(7),
-   i(8),
-   j(9),
-   k(10),
-   l(11),
-   m(12),
-   n(13),
-   o(14),
-   p(15),
-   q(16),
-   r(17);
-
-   public static final IntFunction<btw> s = axl.a(btw::a, values(), axl.a.a);
-   public static final zj<ByteBuf, btw> t = zh.a(s, btw::a);
-   private final int u;
-
-   private btw(final int $$0) {
-      this.u = $$0;
+   protected btw(bsy<? extends btw> $$0, dbw $$1) {
+      super($$0, $$1);
    }
 
-   public int a() {
-      return this.u;
+   public float d(iz $$0) {
+      return this.a($$0, this.dP());
+   }
+
+   public float a(iz $$0, dbz $$1) {
+      return 0.0F;
+   }
+
+   @Override
+   public boolean a(dbx $$0, btr $$1) {
+      return this.a(this.dp(), $$0) >= 0.0F;
+   }
+
+   public boolean gm() {
+      return !this.K().l();
+   }
+
+   public boolean gn() {
+      if (this.bD.a(ccr.Z)) {
+         return this.bD.c(ccr.Z).isPresent();
+      } else {
+         for (cbz $$0 : this.bS.b()) {
+            if ($$0.h() && $$0.k() instanceof cbe) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   protected void gc() {
+      super.gc();
+      bss $$0 = this.gf();
+      if ($$0 != null && $$0.dP() == this.dP()) {
+         this.a($$0.dp(), 5);
+         float $$1 = this.f($$0);
+         if (this instanceof buk && ((buk)this).y()) {
+            if ($$1 > 10.0F) {
+               this.a(true, true);
+            }
+
+            return;
+         }
+
+         this.F($$1);
+         if ($$1 > 10.0F) {
+            this.a(true, true);
+            this.bS.a(cal.a.a);
+         } else if ($$1 > 6.0F) {
+            double $$2 = ($$0.du() - this.du()) / (double)$$1;
+            double $$3 = ($$0.dw() - this.dw()) / (double)$$1;
+            double $$4 = ($$0.dA() - this.dA()) / (double)$$1;
+            this.h(this.ds().b(Math.copySign($$2 * $$2 * 0.4, $$2), Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4)));
+            this.cq();
+         } else if (this.go() && !this.gn()) {
+            this.bS.b(cal.a.a);
+            float $$5 = 2.0F;
+            evp $$6 = new evp($$0.du() - this.du(), $$0.dw() - this.dw(), $$0.dA() - this.dA()).d().a((double)Math.max($$1 - 2.0F, 0.0F));
+            this.K().a(this.du() + $$6.c, this.dw() + $$6.d, this.dA() + $$6.e, this.gp());
+         }
+      }
+   }
+
+   protected boolean go() {
+      return true;
+   }
+
+   protected double gp() {
+      return 1.0;
+   }
+
+   protected void F(float $$0) {
    }
 }

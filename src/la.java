@@ -1,30 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
-public class la implements lh {
-   private static final Codec<drx> a = Codec.withAlternative(drx.b, lp.e.q(), deu::n);
-   private final li<la> b;
-   private final drx c;
+public class la implements lg {
+   private static final Codec<dsa> a = Codec.withAlternative(dsa.b, lp.e.q(), dex::o);
+   private final lh<la> b;
+   private final dsa c;
 
-   public static MapCodec<la> a(li<la> $$0) {
+   public static MapCodec<la> a(lh<la> $$0) {
       return a.xmap($$1 -> new la($$0, $$1), $$0x -> $$0x.c).fieldOf("block_state");
    }
 
-   public static zj<? super ww, la> b(li<la> $$0) {
-      return zh.a(deu.q).a($$1 -> new la($$0, $$1), $$0x -> $$0x.c);
+   public static zm<? super wz, la> b(lh<la> $$0) {
+      return zk.a(dex.q).a($$1 -> new la($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public la(li<la> $$0, drx $$1) {
+   public la(lh<la> $$0, dsa $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    @Override
-   public li<la> a() {
+   public lh<la> a() {
       return this.b;
    }
 
-   public drx b() {
+   public dsa b() {
       return this.c;
    }
 }

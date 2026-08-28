@@ -1,23 +1,28 @@
-public class glf extends gir<cnx> {
-   public static final alb a = new alb("textures/entity/trident.png");
-   private final fwa f;
+public class glf extends gkb<cko, fwb<cko>> {
+   private static final ale a = new ale("textures/entity/strider/strider.png");
+   private static final ale i = new ale("textures/entity/strider/strider_cold.png");
+   private static final float j = 0.5F;
 
-   public glf(gis.a $$0) {
-      super($$0);
-      this.f = new fwa($$0.a(fwu.bI));
+   public glf(giv.a $$0) {
+      super($$0, new fwb<>($$0.a(fwx.bD)), 0.5F);
+      this.a(new gni<>(this, new fwb<>($$0.a(fwx.bE)), new ale("textures/entity/strider/strider_saddle.png")));
    }
 
-   public void a(cnx $$0, float $$1, float $$2, ezt $$3, gdj $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(ayu.i($$2, $$0.O, $$0.dF()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(ayu.i($$2, $$0.P, $$0.dH()) + 90.0F));
-      ezx $$6 = gjq.c($$4, this.f.a(this.a($$0)), false, $$0.H());
-      this.f.a($$3, $$6, $$5, gol.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public ale a(cko $$0) {
+      return $$0.s() ? i : a;
    }
 
-   public alb a(cnx $$0) {
-      return a;
+   protected float b(cko $$0) {
+      float $$1 = super.b($$0);
+      return $$0.p_() ? $$1 * 0.5F : $$1;
+   }
+
+   protected void a(cko $$0, ezw $$1, float $$2) {
+      float $$3 = $$0.ed();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected boolean c(cko $$0) {
+      return super.a($$0) || $$0.s();
    }
 }

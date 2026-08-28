@@ -1,13 +1,17 @@
-public class gmc extends gne<cku, fte<cku>> {
-   private static final gdr a = gdr.q(new alb("textures/entity/breeze/breeze_eyes.png"));
+public class gmc extends gjm<ckv, fwr<ckv>> {
+   private static final ale a = new ale("textures/entity/zombie_villager/zombie_villager.png");
 
-   public gmc(gko<cku, fte<cku>> $$0) {
-      super($$0);
+   public gmc(giv.a $$0) {
+      super($$0, new fwr<>($$0.a(fwx.ck)), 0.5F);
+      this.a(new gmx<>(this, new fwr($$0.a(fwx.cl)), new fwr($$0.a(fwx.cm)), $$0.g()));
+      this.a(new gns<>(this, $$0.e(), "zombie_villager"));
    }
 
-   public void a(ezt $$0, gdj $$1, int $$2, cku $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ezx $$10 = $$1.getBuffer(a);
-      fte<cku> $$11 = this.c();
-      ghy.a($$11, $$11.b(), $$11.c()).a($$0, $$10, $$2, gol.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public ale a(ckv $$0) {
+      return a;
+   }
+
+   protected boolean b(ckv $$0) {
+      return super.a($$0) || $$0.gA();
    }
 }

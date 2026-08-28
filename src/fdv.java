@@ -1,53 +1,18 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public class fdv extends fea {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xl c = xl.c("mco.configure.world.closing");
-   private final fba d;
-   private final fcj e;
+public class fdv {
+   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
 
-   public fdv(fba $$0, fcj $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public static String a(long $$0) {
+      return (String)a.get($$0);
    }
 
-   @Override
-   public void run() {
-      faj $$0 = faj.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
-         try {
-            boolean $$2 = $$0.g(this.d.a);
-            if ($$2) {
-               this.e.b();
-               this.d.e = fba.c.a;
-               a(this.e);
-               break;
-            }
-         } catch (fbx var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to close server", var5);
-            this.a(var5);
-         }
-      }
+   public static void b(long $$0) {
+      a.remove($$0);
    }
 
-   @Override
-   public xl a() {
-      return c;
+   public static void a(long $$0, String $$1) {
+      a.put($$0, $$1);
    }
 }

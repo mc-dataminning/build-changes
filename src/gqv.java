@@ -1,20 +1,14 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.gson.JsonObject;
 
-public interface gqv {
-   List<geg> a(@Nullable drx var1, @Nullable je var2, azc var3);
+public class gqv implements atn<gqu> {
+   public gqu b(JsonObject $$0) {
+      boolean $$1 = ayn.a($$0, "blur", false);
+      boolean $$2 = ayn.a($$0, "clamp", false);
+      return new gqu($$1, $$2);
+   }
 
-   boolean a();
-
-   boolean b();
-
-   boolean c();
-
-   boolean d();
-
-   gou e();
-
-   ges f();
-
-   geq g();
+   @Override
+   public String a() {
+      return "texture";
+   }
 }

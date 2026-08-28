@@ -1,45 +1,21 @@
-public class agf implements zs<ace> {
-   public static final zj<wl, agf> a = zs.a(agf::a, agf::new);
-   private final int b;
-   private final int c;
-   private final int d;
-
-   public agf(int $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   private agf(wl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = $$0.l();
-   }
-
-   private void a(wl $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.c(this.d);
-   }
+public record agf(xo b, boolean c) implements zv<ach> {
+   public static final zm<wz, agf> a = zm.a(xq.d, agf::b, zk.b, agf::e, agf::new);
 
    @Override
-   public zu<agf> a() {
-      return agq.aY;
+   public zx<agf> a() {
+      return agt.aV;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public boolean c() {
+      return true;
    }
 
-   public int e() {
+   public boolean e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

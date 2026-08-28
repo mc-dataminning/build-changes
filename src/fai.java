@@ -1,73 +1,43 @@
-import com.google.common.collect.Lists;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.Comparator;
-import java.util.List;
-import org.apache.commons.io.IOUtils;
+import java.util.Locale;
 
-public class fai {
-   public static List<fbk> a(fai.a... $$0) {
-      for (fai.a $$1 : $$0) {
-         a($$1.j);
-      }
+public enum fai {
+   a,
+   b,
+   c,
+   d;
 
-      List<fbk> $$2 = Lists.newArrayList();
+   private static final int e = 1024;
 
-      for (fai.a $$3 : $$0) {
-         $$2.add(new fbk($$3.i, a($$3.j)));
-      }
-
-      $$2.sort(Comparator.comparingInt(fbk::a));
-      return $$2;
-   }
-
-   private static int a(String $$0) {
-      int $$1 = 700;
-      long $$2 = 0L;
-      Socket $$3 = null;
-
-      for (int $$4 = 0; $$4 < 5; $$4++) {
+   public static fai a(long $$0) {
+      if ($$0 < 1024L) {
+         return a;
+      } else {
          try {
-            SocketAddress $$5 = new InetSocketAddress($$0, 80);
-            $$3 = new Socket();
-            long $$6 = b();
-            $$3.connect($$5, 700);
-            $$2 += b() - $$6;
-         } catch (Exception var12) {
-            $$2 += 700L;
-         } finally {
-            IOUtils.closeQuietly($$3);
+            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
+            return valueOf($$2 + "B");
+         } catch (Exception var4) {
+            return d;
          }
       }
-
-      return (int)((double)$$2 / 5.0);
    }
 
-   private static long b() {
-      return ac.c();
+   public static double a(long $$0, fai $$1) {
+      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
    }
 
-   public static List<fbk> a() {
-      return a(fai.a.values());
-   }
-
-   static enum a {
-      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
-      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
-      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
-      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
-      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
-      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
-      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
-      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
-
-      final String i;
-      final String j;
-
-      private a(final String $$0, final String $$1) {
-         this.i = $$0;
-         this.j = $$1;
+   public static String b(long $$0) {
+      int $$1 = 1024;
+      if ($$0 < 1024L) {
+         return $$0 + " B";
+      } else {
+         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
+         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
       }
+   }
+
+   public static String b(long $$0, fai $$1) {
+      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
    }
 }

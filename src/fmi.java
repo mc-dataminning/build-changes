@@ -1,103 +1,82 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import javax.annotation.Nullable;
 
-public class fmi extends fmy {
-   private static final long a = 2000L;
-   private final aro b;
-   private long c = -1L;
-   private boolean d;
-   private static final Object2IntMap<dus> r = ac.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.defaultReturnValue(0);
-      $$0.put(dus.c, 5526612);
-      $$0.put(dus.d, 10066329);
-      $$0.put(dus.e, 6250897);
-      $$0.put(dus.f, 8434258);
-      $$0.put(dus.g, 13750737);
-      $$0.put(dus.h, 7497737);
-      $$0.put(dus.i, 3159410);
-      $$0.put(dus.j, 2213376);
-      $$0.put(dus.k, 13421772);
-      $$0.put(dus.l, 16769184);
-      $$0.put(dus.m, 15884384);
-      $$0.put(dus.n, 16777215);
-   });
+public class fmi extends fnb {
+   private static final int a = 80;
+   private static final int b = 120;
+   private static final int c = 360;
+   @Nullable
+   private final xo d;
+   private final xo r;
+   private final Runnable s;
+   @Nullable
+   private fhv u;
+   private fhc v;
+   private int w;
 
-   public fmi(aro $$0) {
-      super(fes.a);
-      this.b = $$0;
+   public static fmi a(xo $$0, xo $$1, Runnable $$2) {
+      return new fmi($$0, null, $$1, $$2, 0);
+   }
+
+   public static fmi a(xo $$0, xo $$1, xo $$2, Runnable $$3) {
+      return new fmi($$0, $$1, $$2, $$3, 20);
+   }
+
+   protected fmi(xo $$0, @Nullable xo $$1, xo $$2, Runnable $$3, int $$4) {
+      super($$0);
+      this.d = $$1;
+      this.r = $$2;
+      this.s = $$3;
+      this.w = $$4;
    }
 
    @Override
-   public boolean aE_() {
-      return false;
-   }
-
-   @Override
-   protected boolean aM_() {
-      return false;
-   }
-
-   @Override
-   public void j() {
-      this.d = true;
-      this.d(true);
-   }
-
-   @Override
-   protected void b(fkv $$0) {
-      if (this.d) {
-         $$0.a(fku.a, xl.c("narrator.loading.done"));
-      } else {
-         $$0.a(fku.a, this.m());
+   protected void aM_() {
+      super.aM_();
+      if (this.d != null) {
+         this.u = fhv.a(this.p, this.d, 360);
       }
-   }
 
-   private xl m() {
-      return xl.a("loading.progress", ayu.a(this.b.f(), 0, 100));
+      int $$0 = 150;
+      int $$1 = 20;
+      int $$2 = this.u != null ? this.u.a() : 1;
+      int $$3 = Math.max($$2, 5) * 9;
+      int $$4 = Math.min(120 + $$3, this.o - 40);
+      this.v = this.c(fhc.a(this.r, $$0x -> this.d()).a((this.n - 150) / 2, $$4, 150, 20).a());
    }
 
    @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
+   public void e() {
+      if (this.w > 0) {
+         this.w--;
+      }
+
+      this.v.j = this.w == 0;
+   }
+
+   @Override
+   public void a(fgp $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      long $$4 = ac.c();
-      if ($$4 - this.c > 2000L) {
-         this.c = $$4;
-         this.d(true);
+      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
+      if (this.u == null) {
+         String $$4 = fmm.a(ac.c());
+         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
+      } else {
+         this.u.a($$0, this.n / 2, 120);
       }
-
-      int $$5 = this.n / 2;
-      int $$6 = this.o / 2;
-      a($$0, this.b, $$5, $$6, 2, 0);
-      int $$7 = this.b.e() + 9 + 2;
-      $$0.a(this.p, this.m(), $$5, $$6 - $$7, 16777215);
    }
 
-   public static void a(fgm $$0, aro $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$4 + $$5;
-      int $$7 = $$1.d();
-      int $$8 = $$7 * $$6 - $$5;
-      int $$9 = $$1.e();
-      int $$10 = $$9 * $$6 - $$5;
-      int $$11 = $$2 - $$10 / 2;
-      int $$12 = $$3 - $$10 / 2;
-      int $$13 = $$8 / 2 + 1;
-      int $$14 = -16772609;
-      $$0.a(() -> {
-         if ($$5 != 0) {
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
-            $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
-            $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
-         }
+   @Override
+   public boolean aD_() {
+      return this.u != null && this.v.j;
+   }
 
-         for (int $$11x = 0; $$11x < $$9; $$11x++) {
-            for (int $$12x = 0; $$12x < $$9; $$12x++) {
-               dus $$13x = $$1.a($$11x, $$12x);
-               int $$14x = $$11 + $$11x * $$6;
-               int $$15 = $$12 + $$12x * $$6;
-               $$0.a($$14x, $$15, $$14x + $$4, $$15 + $$4, r.getInt($$13x) | 0xFF000000);
-            }
-         }
-      });
+   @Override
+   public void d() {
+      this.s.run();
+   }
+
+   @Override
+   public xo i() {
+      return xn.a(this.l, this.d != null ? this.d : xn.a);
    }
 }

@@ -1,18 +1,15 @@
-public class gjk extends gly {
-   private static final alb a = new alb("textures/entity/zombie/husk.png");
+public class gjk extends gkb<clf, fui<clf>> {
+   private static final ale a = new ale("textures/entity/hoglin/hoglin.png");
 
-   public gjk(gis.a $$0) {
-      super($$0, fwu.ar, fwu.as, fwu.at);
+   public gjk(giv.a $$0) {
+      super($$0, new fui<>($$0.a(fwx.an)), 0.7F);
    }
 
-   protected void a(ckr $$0, ezt $$1, float $$2) {
-      float $$3 = 1.0625F;
-      $$1.b(1.0625F, 1.0625F, 1.0625F);
-      super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public alb a(ckr $$0) {
+   public ale a(clf $$0) {
       return a;
+   }
+
+   protected boolean b(clf $$0) {
+      return super.a($$0) || $$0.y();
    }
 }

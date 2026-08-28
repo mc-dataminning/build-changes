@@ -1,32 +1,5 @@
-public class bun {
-   public static final int a = 64;
-   private final double b;
-   private boolean c;
-   private final String d;
+public interface bun<T> {
+   void a(T var1);
 
-   protected bun(String $$0, double $$1) {
-      this.b = $$1;
-      this.d = $$0;
-   }
-
-   public double a() {
-      return this.b;
-   }
-
-   public boolean b() {
-      return this.c;
-   }
-
-   public bun a(boolean $$0) {
-      this.c = $$0;
-      return this;
-   }
-
-   public double a(double $$0) {
-      return $$0;
-   }
-
-   public String c() {
-      return this.d;
-   }
+   T d();
 }

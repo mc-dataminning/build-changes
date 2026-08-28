@@ -1,30 +1,43 @@
-public class gad extends fzp {
-   private static final int a = 12235202;
+import org.joml.Vector3f;
 
-   protected gad(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gbs $$8) {
-      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
-      float $$9 = (float)Math.random() * 0.2F;
-      this.v = (float)aye.b.b(12235202) / 255.0F - $$9;
-      this.w = (float)aye.b.c(12235202) / 255.0F - $$9;
-      this.x = (float)aye.b.d(12235202) / 255.0F - $$9;
+public class gad extends gaf<lc> {
+   private final Vector3f a;
+   private final Vector3f b;
+
+   protected gad(fxt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lc $$7, gbv $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.a = this.a($$7.b(), $$9);
+      this.b = this.a($$7.c(), $$9);
+   }
+
+   private Vector3f a(Vector3f $$0, float $$1) {
+      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   }
+
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
    }
 
    @Override
-   public void a() {
-      this.u = 0.88F * this.u;
-      this.B = 0.92F * this.B;
-      super.a();
+   public void a(faa $$0, feo $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
    }
 
-   public static class a implements gba<lm> {
-      private final gbs a;
+   public static class a implements gbd<lc> {
+      private final gbv a;
 
-      public a(gbs $$0) {
+      public a(gbv $$0) {
          this.a = $$0;
       }
 
-      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gad($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      public gba a(lc $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gad($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

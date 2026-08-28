@@ -1,15 +1,17 @@
-public class gru extends grv {
-   public gru(cfb $$0) {
-      super($$0, avw.bR, avx.g);
+public abstract class gru extends grt implements gsm {
+   private boolean n;
+
+   protected gru(avy $$0, awa $$1, azf $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected grr o() {
-      return new grt(this.n);
+   public boolean m() {
+      return this.n;
    }
 
-   @Override
-   protected boolean p() {
-      return this.n.Z_();
+   protected final void n() {
+      this.n = true;
+      this.i = false;
    }
 }

@@ -1,12 +1,11 @@
-public class gkq extends gjy<cfw, fvl<cfw>> {
-   private static final alb a = new alb("textures/entity/sheep/sheep.png");
+public class gkq extends gkb<ckg, fvl> {
+   private static final ale a = new ale("textures/entity/illager/ravager.png");
 
-   public gkq(gis.a $$0) {
-      super($$0, new fvl<>($$0.a(fwu.bh)), 0.7F);
-      this.a(new gng(this, $$0.f()));
+   public gkq(giv.a $$0) {
+      super($$0, new fvl($$0.a(fwx.bf)), 1.1F);
    }
 
-   public alb a(cfw $$0) {
+   public ale a(ckg $$0) {
       return a;
    }
 }

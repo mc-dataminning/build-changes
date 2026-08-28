@@ -1,70 +1,142 @@
-public abstract class dcz {
-   public static final ala<dcs> a = a("the_void");
-   public static final ala<dcs> b = a("plains");
-   public static final ala<dcs> c = a("sunflower_plains");
-   public static final ala<dcs> d = a("snowy_plains");
-   public static final ala<dcs> e = a("ice_spikes");
-   public static final ala<dcs> f = a("desert");
-   public static final ala<dcs> g = a("swamp");
-   public static final ala<dcs> h = a("mangrove_swamp");
-   public static final ala<dcs> i = a("forest");
-   public static final ala<dcs> j = a("flower_forest");
-   public static final ala<dcs> k = a("birch_forest");
-   public static final ala<dcs> l = a("dark_forest");
-   public static final ala<dcs> m = a("old_growth_birch_forest");
-   public static final ala<dcs> n = a("old_growth_pine_taiga");
-   public static final ala<dcs> o = a("old_growth_spruce_taiga");
-   public static final ala<dcs> p = a("taiga");
-   public static final ala<dcs> q = a("snowy_taiga");
-   public static final ala<dcs> r = a("savanna");
-   public static final ala<dcs> s = a("savanna_plateau");
-   public static final ala<dcs> t = a("windswept_hills");
-   public static final ala<dcs> u = a("windswept_gravelly_hills");
-   public static final ala<dcs> v = a("windswept_forest");
-   public static final ala<dcs> w = a("windswept_savanna");
-   public static final ala<dcs> x = a("jungle");
-   public static final ala<dcs> y = a("sparse_jungle");
-   public static final ala<dcs> z = a("bamboo_jungle");
-   public static final ala<dcs> A = a("badlands");
-   public static final ala<dcs> B = a("eroded_badlands");
-   public static final ala<dcs> C = a("wooded_badlands");
-   public static final ala<dcs> D = a("meadow");
-   public static final ala<dcs> E = a("cherry_grove");
-   public static final ala<dcs> F = a("grove");
-   public static final ala<dcs> G = a("snowy_slopes");
-   public static final ala<dcs> H = a("frozen_peaks");
-   public static final ala<dcs> I = a("jagged_peaks");
-   public static final ala<dcs> J = a("stony_peaks");
-   public static final ala<dcs> K = a("river");
-   public static final ala<dcs> L = a("frozen_river");
-   public static final ala<dcs> M = a("beach");
-   public static final ala<dcs> N = a("snowy_beach");
-   public static final ala<dcs> O = a("stony_shore");
-   public static final ala<dcs> P = a("warm_ocean");
-   public static final ala<dcs> Q = a("lukewarm_ocean");
-   public static final ala<dcs> R = a("deep_lukewarm_ocean");
-   public static final ala<dcs> S = a("ocean");
-   public static final ala<dcs> T = a("deep_ocean");
-   public static final ala<dcs> U = a("cold_ocean");
-   public static final ala<dcs> V = a("deep_cold_ocean");
-   public static final ala<dcs> W = a("frozen_ocean");
-   public static final ala<dcs> X = a("deep_frozen_ocean");
-   public static final ala<dcs> Y = a("mushroom_fields");
-   public static final ala<dcs> Z = a("dripstone_caves");
-   public static final ala<dcs> aa = a("lush_caves");
-   public static final ala<dcs> ab = a("deep_dark");
-   public static final ala<dcs> ac = a("nether_wastes");
-   public static final ala<dcs> ad = a("warped_forest");
-   public static final ala<dcs> ae = a("crimson_forest");
-   public static final ala<dcs> af = a("soul_sand_valley");
-   public static final ala<dcs> ag = a("basalt_deltas");
-   public static final ala<dcs> ah = a("the_end");
-   public static final ala<dcs> ai = a("end_highlands");
-   public static final ala<dcs> aj = a("end_midlands");
-   public static final ala<dcs> ak = a("small_end_islands");
-   public static final ala<dcs> al = a("end_barrens");
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-   private static ala<dcs> a(String $$0) {
-      return ala.a(lq.az, new alb($$0));
+public abstract class dcz implements dcy {
+   public static final Codec<dcz> a = lp.ab.q().dispatchStable(dcz::a, Function.identity());
+   private final Supplier<Set<ji<dcv>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
+
+   protected dcz() {
+   }
+
+   protected abstract MapCodec<? extends dcz> a();
+
+   protected abstract Stream<ji<dcv>> b();
+
+   public Set<ji<dcv>> c() {
+      return this.b.get();
+   }
+
+   public Set<ji<dcv>> a(int $$0, int $$1, int $$2, int $$3, dde.f $$4) {
+      int $$5 = jt.a($$0 - $$3);
+      int $$6 = jt.a($$1 - $$3);
+      int $$7 = jt.a($$2 - $$3);
+      int $$8 = jt.a($$0 + $$3);
+      int $$9 = jt.a($$1 + $$3);
+      int $$10 = jt.a($$2 + $$3);
+      int $$11 = $$8 - $$5 + 1;
+      int $$12 = $$9 - $$6 + 1;
+      int $$13 = $$10 - $$7 + 1;
+      Set<ji<dcv>> $$14 = Sets.newHashSet();
+
+      for (int $$15 = 0; $$15 < $$13; $$15++) {
+         for (int $$16 = 0; $$16 < $$11; $$16++) {
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               int $$18 = $$5 + $$16;
+               int $$19 = $$6 + $$17;
+               int $$20 = $$7 + $$15;
+               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
+            }
+         }
+      }
+
+      return $$14;
+   }
+
+   @Nullable
+   public Pair<iz, ji<dcv>> a(int $$0, int $$1, int $$2, int $$3, Predicate<ji<dcv>> $$4, azf $$5, dde.f $$6) {
+      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
+   }
+
+   @Nullable
+   public Pair<iz, ji<dcv>> a(iz $$0, int $$1, int $$2, int $$3, Predicate<ji<dcv>> $$4, dde.f $$5, dbz $$6) {
+      Set<ji<dcv>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
+      if ($$7.isEmpty()) {
+         return null;
+      } else {
+         int $$8 = Math.floorDiv($$1, $$2);
+         int[] $$9 = ayx.a($$0.v(), $$6.I_() + 1, $$6.am(), $$3).toArray();
+
+         for (iz.a $$10 : iz.a(iz.c, $$8, je.f, je.d)) {
+            int $$11 = $$0.u() + $$10.u() * $$2;
+            int $$12 = $$0.w() + $$10.w() * $$2;
+            int $$13 = jt.a($$11);
+            int $$14 = jt.a($$12);
+
+            for (int $$15 : $$9) {
+               int $$16 = jt.a($$15);
+               ji<dcv> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
+               if ($$7.contains($$17)) {
+                  return Pair.of(new iz($$11, $$15, $$12), $$17);
+               }
+            }
+         }
+
+         return null;
+      }
+   }
+
+   @Nullable
+   public Pair<iz, ji<dcv>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<ji<dcv>> $$5, azf $$6, boolean $$7, dde.f $$8) {
+      int $$9 = jt.a($$0);
+      int $$10 = jt.a($$2);
+      int $$11 = jt.a($$3);
+      int $$12 = jt.a($$1);
+      Pair<iz, ji<dcv>> $$13 = null;
+      int $$14 = 0;
+      int $$15 = $$7 ? 0 : $$11;
+      int $$16 = $$15;
+
+      while ($$16 <= $$11) {
+         for (int $$17 = aa.as ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
+            boolean $$18 = Math.abs($$17) == $$16;
+
+            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
+               if ($$7) {
+                  boolean $$20 = Math.abs($$19) == $$16;
+                  if (!$$20 && !$$18) {
+                     continue;
+                  }
+               }
+
+               int $$21 = $$9 + $$19;
+               int $$22 = $$10 + $$17;
+               ji<dcv> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
+               if ($$5.test($$23)) {
+                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
+                     iz $$24 = new iz(jt.c($$21), $$1, jt.c($$22));
+                     if ($$7) {
+                        return Pair.of($$24, $$23);
+                     }
+
+                     $$13 = Pair.of($$24, $$23);
+                  }
+
+                  $$14++;
+               }
+            }
+         }
+
+         $$16 += $$4;
+      }
+
+      return $$13;
+   }
+
+   @Override
+   public abstract ji<dcv> getNoiseBiome(int var1, int var2, int var3, dde.f var4);
+
+   public void a(List<String> $$0, iz $$1, dde.f $$2) {
    }
 }

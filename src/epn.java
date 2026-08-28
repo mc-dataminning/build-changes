@@ -1,30 +1,184 @@
-import java.util.Locale;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public interface epn {
-   iz a();
+public class epn implements epz {
+   private final eqa a;
+   private final epz b;
 
-   float b();
+   public epn(eqa $$0, epz $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   long c();
+   @Override
+   public iz a() {
+      return this.b.a();
+   }
 
-   long d();
+   @Override
+   public float b() {
+      return this.b.b();
+   }
 
-   boolean g();
+   @Override
+   public long c() {
+      return this.b.c();
+   }
 
-   boolean i();
+   @Override
+   public long d() {
+      return this.b.d();
+   }
 
-   void b(boolean var1);
+   @Override
+   public String e() {
+      return this.a.e();
+   }
 
-   boolean l();
+   @Override
+   public int f() {
+      return this.b.f();
+   }
 
-   dbp o();
+   @Override
+   public void a(int $$0) {
+   }
 
-   bqm q();
+   @Override
+   public boolean g() {
+      return this.b.g();
+   }
 
-   boolean r();
+   @Override
+   public int h() {
+      return this.b.h();
+   }
 
-   default void a(p $$0, dbv $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+   @Override
+   public boolean i() {
+      return this.b.i();
+   }
+
+   @Override
+   public int j() {
+      return this.b.j();
+   }
+
+   @Override
+   public dbt k() {
+      return this.a.k();
+   }
+
+   @Override
+   public void a(long $$0) {
+   }
+
+   @Override
+   public void b(long $$0) {
+   }
+
+   @Override
+   public void a(iz $$0, float $$1) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public void b(int $$0) {
+   }
+
+   @Override
+   public void b(boolean $$0) {
+   }
+
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void a(dbt $$0) {
+   }
+
+   @Override
+   public boolean l() {
+      return this.a.l();
+   }
+
+   @Override
+   public boolean m() {
+      return this.a.m();
+   }
+
+   @Override
+   public boolean n() {
+      return this.b.n();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public dbs o() {
+      return this.a.o();
+   }
+
+   @Override
+   public dtr.c p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void a(dtr.c $$0) {
+   }
+
+   @Override
+   public bqp q() {
+      return this.a.q();
+   }
+
+   @Override
+   public boolean r() {
+      return this.a.r();
+   }
+
+   @Override
+   public evc<MinecraftServer> s() {
+      return this.b.s();
+   }
+
+   @Override
+   public int t() {
+      return 0;
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public int u() {
+      return 0;
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public UUID v() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, dby $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
    }
 }

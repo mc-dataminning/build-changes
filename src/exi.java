@@ -1,29 +1,7 @@
-import java.util.function.Function;
+public interface exi<T> {
+   void a(exg<T> var1);
 
-public class exi<T> implements ewz<T> {
-   private final Function<iz, exg<T>> a;
+   boolean a(iz var1, T var2);
 
-   public exi(Function<iz, exg<T>> $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public boolean a(iz $$0, T $$1) {
-      return this.a.apply($$0).a($$0, $$1);
-   }
-
-   @Override
-   public void a(exd<T> $$0) {
-      this.a.apply($$0.b()).a($$0);
-   }
-
-   @Override
-   public boolean b(iz $$0, T $$1) {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 0;
-   }
+   int a();
 }

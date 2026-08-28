@@ -1,20 +1,8 @@
-public interface evq {
-   evq a = ($$0, $$1) -> false;
-   evq b = ($$0, $$1) -> !$$0 && !$$1;
-   evq c = ($$0, $$1) -> $$1 && !$$0;
-   evq d = ($$0, $$1) -> !$$0;
-   evq e = ($$0, $$1) -> $$0 && !$$1;
-   evq f = ($$0, $$1) -> !$$1;
-   evq g = ($$0, $$1) -> $$0 != $$1;
-   evq h = ($$0, $$1) -> !$$0 || !$$1;
-   evq i = ($$0, $$1) -> $$0 && $$1;
-   evq j = ($$0, $$1) -> $$0 == $$1;
-   evq k = ($$0, $$1) -> $$1;
-   evq l = ($$0, $$1) -> !$$0 || $$1;
-   evq m = ($$0, $$1) -> $$0;
-   evq n = ($$0, $$1) -> $$0 || !$$1;
-   evq o = ($$0, $$1) -> $$0 || $$1;
-   evq p = ($$0, $$1) -> true;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   boolean apply(boolean var1, boolean var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface evq {
 }

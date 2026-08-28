@@ -1,212 +1,153 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.List;
+import java.util.function.Function;
 
-public abstract class cma extends bsj implements cmd, cme, daq {
-   private static final akg<Integer> ca = akk.a(cma.class, aki.b);
-   private static final Logger cb = LogUtils.getLogger();
-   public static final int bY = 300;
-   private static final int cc = 8;
-   @Nullable
-   private cms cd;
-   @Nullable
-   protected das bZ;
-   private final bqy ce = new bqy(8);
+public class cma {
+   private static final float d = 0.5F;
+   private static final float e = 0.7F;
+   private static final float f = 1.2F;
+   private static final int g = 18;
+   private static final int h = ayx.f(100.0F);
+   public static final int a = ayx.f(133.59999F);
+   public static final int b = ayx.f(84.0F);
+   private static final int i = ayx.f(83.2F);
+   public static final int c = 1200;
+   private static final int j = 100;
+   private static final List<cdy<? extends cdx<? super clz>>> k = List.of(cdy.d, cdy.x);
+   private static final List<ccr<?>> l = List.of(
+      ccr.g,
+      ccr.h,
+      ccr.k,
+      ccr.l,
+      ccr.M,
+      ccr.n,
+      ccr.m,
+      ccr.E,
+      ccr.t,
+      ccr.o,
+      ccr.p,
+      ccr.B,
+      ccr.ay,
+      ccr.az,
+      ccr.aA,
+      ccr.aB,
+      ccr.aC,
+      ccr.aD,
+      ccr.aE,
+      ccr.aF,
+      ccr.aG,
+      ccr.aH,
+      ccr.aI,
+      ccr.aJ,
+      ccr.aK,
+      ccr.aL
+   );
+   private static final bvh<clz> m = byt.a(
+      (Function<byt.b<clz>, ? extends App<byt.c<clz>, byw<clz>>>)($$0 -> $$0.group($$0.a(ccr.aE)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$0.a($$1).isPresent()) {
+                  $$1.a(baa.a, 1200L);
+               }
 
-   public cma(bsv<? extends cma> $$0, dbt $$1) {
-      super($$0, $$1);
-      this.a(eoh.n, 16.0F);
-      this.a(eoh.o, -1.0F);
+               return true;
+            }))
+   );
+
+   public static void a(clz $$0) {
+      $$0.dS().a(ImmutableList.of(cok.y, cok.z, cok.x, cok.k, cok.w, cok.v, cok.b));
    }
 
-   @Override
-   public bud a(dci $$0, bqn $$1, bto $$2, @Nullable bud $$3) {
-      if ($$3 == null) {
-         $$3 = new bsj.a(false);
+   protected static bup<?> a(clz $$0, Dynamic<?> $$1) {
+      bup.b<clz> $$2 = bup.a(l, k);
+      bup<clz> $$3 = $$2.a($$1);
+      a($$3);
+      b($$3);
+      c($$3);
+      d($$3);
+      g($$3);
+      a($$0, $$3);
+      e($$3);
+      f($$3);
+      $$3.a(ImmutableSet.of(cok.a));
+      $$3.b(cok.b);
+      $$3.f();
+      return $$3;
+   }
+
+   private static void a(bup<clz> $$0) {
+      $$0.a(cok.a, 0, ImmutableList.of(new bya(0.8F), bze.a(), new bwm(45, 90), new bwq()));
+   }
+
+   private static void b(bup<clz> $$0) {
+      $$0.a(cok.y, 5, ImmutableList.of(new bza(a)), ccr.aC);
+   }
+
+   private static void c(bup<clz> $$0) {
+      $$0.a(cok.z, ImmutableList.of(Pair.of(0, new bzb()), Pair.of(1, new byz(h))), ImmutableSet.of(Pair.of(ccr.ay, ccs.b), Pair.of(ccr.aE, ccs.b)));
+   }
+
+   private static void d(bup<clz> $$0) {
+      $$0.a(
+         cok.b,
+         10,
+         ImmutableList.of(
+            bzd.a(clz::gq), bzh.a(), new bxd(ImmutableMap.of(ccr.aB, ccs.b), ImmutableList.of(Pair.of(bwy.a(0.5F), 2), Pair.of(new bvq(30, 60), 1)))
+         )
+      );
+   }
+
+   private static void e(bup<clz> $$0) {
+      $$0.a(cok.w, 5, ImmutableList.of(bzd.a(clz::gq), bvz.a(ccr.az, 2, 0.7F)), ccr.az);
+   }
+
+   private static void f(bup<clz> $$0) {
+      $$0.a(cok.v, 5, ImmutableList.of(bzd.a(clz::gq), new bzf(i)), ccr.aB);
+   }
+
+   private static void g(bup<clz> $$0) {
+      $$0.a(cok.x, 10, ImmutableList.of(new bzc()), ccr.ay);
+   }
+
+   private static void a(clz $$0, bup<clz> $$1) {
+      $$1.a(
+         cok.k,
+         10,
+         ImmutableList.of(
+            m, bxv.a($$1x -> !$$0.y().d() || !$$0.b($$1x), cma::b, false), bxf.a($$1x -> a($$0, $$1x), (float)$$0.g(buv.k)), bxl.a(1.2F), new bzg(), bwn.a(18)
+         ),
+         ccr.o
+      );
+   }
+
+   private static boolean a(clz $$0, btn $$1) {
+      return $$0.dS().c(ccr.o).filter($$1x -> $$1x == $$1).isPresent();
+   }
+
+   private static void b(clz $$0, btn $$1) {
+      if (!$$0.b($$1)) {
+         $$0.c($$1);
       }
 
-      return super.a($$0, $$1, $$2, $$3);
+      a((btn)$$0);
    }
 
-   public int s() {
-      return this.ao.a(ca);
-   }
-
-   public void t(int $$0) {
-      this.ao.a(ca, $$0);
-   }
-
-   @Override
-   public int u() {
-      return 0;
-   }
-
-   @Override
-   protected void a(akk.a $$0) {
-      super.a($$0);
-      $$0.a(ca, 0);
-   }
-
-   @Override
-   public void f(@Nullable cms $$0) {
-      this.cd = $$0;
-   }
-
-   @Nullable
-   @Override
-   public cms gq() {
-      return this.cd;
-   }
-
-   public boolean gr() {
-      return this.cd != null;
-   }
-
-   @Override
-   public das gs() {
-      if (this.bZ == null) {
-         this.bZ = new das();
-         this.gx();
-      }
-
-      return this.bZ;
-   }
-
-   @Override
-   public void a(@Nullable das $$0) {
-   }
-
-   @Override
-   public void u(int $$0) {
-   }
-
-   @Override
-   public void a(dar $$0) {
-      $$0.l();
-      this.bM = -this.P();
-      this.b($$0);
-      if (this.cd instanceof arc) {
-         am.t.a((arc)this.cd, this, $$0.f());
-      }
-   }
-
-   protected abstract void b(dar var1);
-
-   @Override
-   public boolean gt() {
-      return true;
-   }
-
-   @Override
-   public void n(cuk $$0) {
-      if (!this.dP().B && this.bM > -this.P() + 20) {
-         this.bM = -this.P();
-         this.b(this.w(!$$0.e()));
-      }
-   }
-
-   @Override
-   public avv gu() {
-      return avw.AU;
-   }
-
-   protected avv w(boolean $$0) {
-      return $$0 ? avw.AU : avw.AS;
-   }
-
-   public void gv() {
-      this.b(avw.AP);
-   }
-
-   @Override
-   public void b(ur $$0) {
-      super.b($$0);
-      das $$1 = this.gs();
-      if (!$$1.isEmpty()) {
-         $$0.a("Offers", (vo)das.a.encodeStart(this.dR().a(vf.a), $$1).getOrThrow());
-      }
-
-      this.b($$0, this.dR());
-   }
-
-   @Override
-   public void a(ur $$0) {
-      super.a($$0);
-      if ($$0.e("Offers")) {
-         das.a.parse(this.dR().a(vf.a), $$0.c("Offers")).resultOrPartial(ac.a("Failed to load offers: ", cb::warn)).ifPresent($$0x -> this.bZ = $$0x);
-      }
-
-      this.a($$0, this.dR());
-   }
-
-   @Nullable
-   @Override
-   public bsp b(arb $$0) {
-      this.gw();
-      return super.b($$0);
-   }
-
-   protected void gw() {
-      this.f(null);
-   }
-
-   @Override
-   public void a(bri $$0) {
-      super.a($$0);
-      this.gw();
-   }
-
-   protected void a(lh $$0) {
-      for (int $$1 = 0; $$1 < 5; $$1++) {
-         double $$2 = this.ah.k() * 0.02;
-         double $$3 = this.ah.k() * 0.02;
-         double $$4 = this.ah.k() * 0.02;
-         this.dP().a($$0, this.d(1.0), this.dx() + 1.0, this.g(1.0), $$2, $$3, $$4);
+   public static void a(btn $$0) {
+      if ($$0.dS().a(ccr.aE)) {
+         $$0.dS().a(ccr.aE, baa.a, 1200L);
       }
    }
 
-   @Override
-   public boolean a(cms $$0) {
-      return false;
-   }
-
-   @Override
-   public bqy y() {
-      return this.ce;
-   }
-
-   @Override
-   public buc a_(int $$0) {
-      int $$1 = $$0 - 300;
-      return $$1 >= 0 && $$1 < this.ce.b() ? buc.a(this.ce, $$1) : super.a_($$0);
-   }
-
-   protected abstract void gx();
-
-   protected void a(das $$0, cmj.g[] $$1, int $$2) {
-      ArrayList<cmj.g> $$3 = Lists.newArrayList($$1);
-      int $$4 = 0;
-
-      while ($$4 < $$2 && !$$3.isEmpty()) {
-         dar $$5 = $$3.remove(this.ah.a($$3.size())).a(this, this.ah);
-         if ($$5 != null) {
-            $$0.add($$5);
-            $$4++;
-         }
+   public static void a(clz $$0, iz $$1) {
+      if ($$0.dP().C_().a($$1) && !$$0.gq().isPresent() && !$$0.dS().c(ccr.o).isPresent()) {
+         a((btn)$$0);
+         $$0.dS().a(ccr.aG, baa.a, 100L);
+         $$0.dS().a(ccr.n, new bvj($$1), 100L);
+         $$0.dS().a(ccr.az, $$1, 100L);
+         $$0.dS().b(ccr.m);
       }
-   }
-
-   @Override
-   public evm q(float $$0) {
-      float $$1 = ayu.i($$0, this.aZ, this.aY) * (float) (Math.PI / 180.0);
-      evm $$2 = new evm(0.0, this.cK().c() - 1.0, 0.2);
-      return this.l($$0).e($$2.b(-$$1));
-   }
-
-   @Override
-   public boolean gy() {
-      return this.dP().B;
    }
 }

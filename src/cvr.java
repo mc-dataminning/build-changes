@@ -1,143 +1,106 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cvr extends cuf {
-   private static final Map<bsv<? extends btm>, cvr> a = Maps.newIdentityHashMap();
-   private static final MapCodec<bsv<?>> b = lp.g.q().fieldOf("id");
-   private final int c;
-   private final int j;
-   private final bsv<?> k;
+public class cvr extends cui {
+   private static final n a = n.h;
+   private static final n b = n.j;
+   private static final xo c = xo.c(ac.a("item", new ale("smithing_template.ingredients"))).a(a);
+   private static final xo j = xo.c(ac.a("item", new ale("smithing_template.applies_to"))).a(a);
+   private static final xo k = xo.c(ac.a("upgrade", new ale("netherite_upgrade"))).a(a);
+   private static final xo l = xo.c(ac.a("item", new ale("smithing_template.armor_trim.applies_to"))).a(b);
+   private static final xo m = xo.c(ac.a("item", new ale("smithing_template.armor_trim.ingredients"))).a(b);
+   private static final xo n = xo.c(ac.a("item", new ale("smithing_template.armor_trim.base_slot_description")));
+   private static final xo o = xo.c(ac.a("item", new ale("smithing_template.armor_trim.additions_slot_description")));
+   private static final xo p = xo.c(ac.a("item", new ale("smithing_template.netherite_upgrade.applies_to"))).a(b);
+   private static final xo q = xo.c(ac.a("item", new ale("smithing_template.netherite_upgrade.ingredients"))).a(b);
+   private static final xo r = xo.c(ac.a("item", new ale("smithing_template.netherite_upgrade.base_slot_description")));
+   private static final xo s = xo.c(ac.a("item", new ale("smithing_template.netherite_upgrade.additions_slot_description")));
+   private static final ale t = new ale("item/empty_armor_slot_helmet");
+   private static final ale u = new ale("item/empty_armor_slot_chestplate");
+   private static final ale v = new ale("item/empty_armor_slot_leggings");
+   private static final ale w = new ale("item/empty_armor_slot_boots");
+   private static final ale x = new ale("item/empty_slot_hoe");
+   private static final ale y = new ale("item/empty_slot_axe");
+   private static final ale z = new ale("item/empty_slot_sword");
+   private static final ale A = new ale("item/empty_slot_shovel");
+   private static final ale B = new ale("item/empty_slot_pickaxe");
+   private static final ale C = new ale("item/empty_slot_ingot");
+   private static final ale D = new ale("item/empty_slot_redstone_dust");
+   private static final ale E = new ale("item/empty_slot_quartz");
+   private static final ale F = new ale("item/empty_slot_emerald");
+   private static final ale G = new ale("item/empty_slot_diamond");
+   private static final ale H = new ale("item/empty_slot_lapis_lazuli");
+   private static final ale I = new ale("item/empty_slot_amethyst_shard");
+   private final xo J;
+   private final xo K;
+   private final xo L;
+   private final xo M;
+   private final xo N;
+   private final List<ale> O;
+   private final List<ale> P;
 
-   public cvr(bsv<? extends btm> $$0, int $$1, int $$2, cuf.a $$3) {
-      super($$3);
-      this.k = $$0;
-      this.c = $$1;
-      this.j = $$2;
-      a.put($$0, this);
+   public cvr(xo $$0, xo $$1, xo $$2, xo $$3, xo $$4, List<ale> $$5, List<ale> $$6, cph... $$7) {
+      super(new cui.a().a($$7));
+      this.J = $$0;
+      this.K = $$1;
+      this.L = $$2;
+      this.M = $$3;
+      this.N = $$4;
+      this.O = $$5;
+      this.P = $$6;
+   }
+
+   public static cvr a(ald<cwu> $$0, cph... $$1) {
+      return a($$0.a(), $$1);
+   }
+
+   public static cvr a(ale $$0, cph... $$1) {
+      return new cvr(l, m, xo.c(ac.a("trim_pattern", $$0)).a(a), n, o, x(), y(), $$1);
+   }
+
+   public static cvr h() {
+      return new cvr(p, q, k, r, s, z(), A());
+   }
+
+   private static List<ale> x() {
+      return List.of(t, u, v, w);
+   }
+
+   private static List<ale> y() {
+      return List.of(C, D, H, E, G, F, I);
+   }
+
+   private static List<ale> z() {
+      return List.of(t, z, u, B, v, y, w, x, A);
+   }
+
+   private static List<ale> A() {
+      return List.of(C);
    }
 
    @Override
-   public bqp a(cxx $$0) {
-      dbt $$1 = $$0.q();
-      if (!($$1 instanceof arb)) {
-         return bqp.a;
-      } else {
-         cuk $$2 = $$0.n();
-         iz $$3 = $$0.a();
-         je $$4 = $$0.k();
-         drx $$5 = $$1.a_($$3);
-         if ($$1.c_($$3) instanceof dcl $$6) {
-            bsv<?> $$7 = this.j($$2);
-            $$6.a($$7, $$1.E_());
-            $$1.a($$3, $$5, $$5, 3);
-            $$1.a($$0.o(), dwq.c, $$3);
-            $$2.h(1);
-            return bqp.c;
-         } else {
-            iz $$8;
-            if ($$5.k($$1, $$3).c()) {
-               $$8 = $$3;
-            } else {
-               $$8 = $$3.a($$4);
-            }
-
-            bsv<?> $$10 = this.j($$2);
-            if ($$10.a((arb)$$1, $$2, $$0.o(), $$8, bto.m, true, !Objects.equals($$3, $$8) && $$4 == je.b) != null) {
-               $$2.h(1);
-               $$1.a($$0.o(), dwq.t, $$3);
-            }
-
-            return bqp.c;
-         }
-      }
+   public void a(cun $$0, cui.b $$1, List<xo> $$2, cwg $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$2.add(this.L);
+      $$2.add(xn.a);
+      $$2.add(j);
+      $$2.add(xn.a().b(this.J));
+      $$2.add(c);
+      $$2.add(xn.a().b(this.K));
    }
 
-   @Override
-   public bqq<cuk> a(dbt $$0, cms $$1, bqo $$2) {
-      cuk $$3 = $$1.b($$2);
-      evi $$4 = a($$0, $$1, dbc.b.b);
-      if ($$4.c() != evk.a.b) {
-         return bqq.c($$3);
-      } else if (!($$0 instanceof arb)) {
-         return bqq.a($$3);
-      } else {
-         iz $$6 = $$4.a();
-         if (!($$0.a_($$6).b() instanceof djk)) {
-            return bqq.c($$3);
-         } else if ($$0.a($$1, $$6) && $$1.a($$6, $$4.b(), $$3)) {
-            bsv<?> $$7 = this.j($$3);
-            bsp $$8 = $$7.a((arb)$$0, $$3, $$1, $$6, bto.m, false, false);
-            if ($$8 == null) {
-               return bqq.c($$3);
-            } else {
-               $$3.a(1, $$1);
-               $$1.b(awg.c.b(this));
-               $$0.a($$1, dwq.t, $$8.dn());
-               return bqq.b($$3);
-            }
-         } else {
-            return bqq.d($$3);
-         }
-      }
+   public xo k() {
+      return this.M;
    }
 
-   public boolean a(cuk $$0, bsv<?> $$1) {
-      return Objects.equals(this.j($$0), $$1);
+   public xo l() {
+      return this.N;
    }
 
-   public int a(int $$0) {
-      return $$0 == 0 ? this.c : this.j;
+   public List<ale> m() {
+      return this.O;
    }
 
-   @Nullable
-   public static cvr a(@Nullable bsv<?> $$0) {
-      return a.get($$0);
-   }
-
-   public static Iterable<cvr> h() {
-      return Iterables.unmodifiableIterable(a.values());
-   }
-
-   public bsv<?> j(cuk $$0) {
-      cwz $$1 = $$0.a(km.L, cwz.a);
-      return !$$1.b() ? $$1.a(b).result().orElse(this.k) : this.k;
-   }
-
-   @Override
-   public cpg i() {
-      return this.k.i();
-   }
-
-   public Optional<btm> a(cms $$0, btm $$1, bsv<? extends btm> $$2, arb $$3, evm $$4, cuk $$5) {
-      if (!this.a($$5, $$2)) {
-         return Optional.empty();
-      } else {
-         btm $$6;
-         if ($$1 instanceof bsj) {
-            $$6 = ((bsj)$$1).a($$3, (bsj)$$1);
-         } else {
-            $$6 = $$2.a((dbt)$$3);
-         }
-
-         if ($$6 == null) {
-            return Optional.empty();
-         } else {
-            $$6.a(true);
-            if (!$$6.p_()) {
-               return Optional.empty();
-            } else {
-               $$6.b($$4.a(), $$4.b(), $$4.c(), 0.0F, 0.0F);
-               $$3.a_($$6);
-               $$6.b($$5.a(km.f));
-               $$5.a(1, $$0);
-               return Optional.of($$6);
-            }
-         }
-      }
+   public List<ale> n() {
+      return this.P;
    }
 }

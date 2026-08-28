@@ -1,60 +1,47 @@
-public class evl {
-   public static final evl a = new evl(0.0F, 0.0F);
-   public static final evl b = new evl(1.0F, 1.0F);
-   public static final evl c = new evl(1.0F, 0.0F);
-   public static final evl d = new evl(-1.0F, 0.0F);
-   public static final evl e = new evl(0.0F, 1.0F);
-   public static final evl f = new evl(0.0F, -1.0F);
-   public static final evl g = new evl(Float.MAX_VALUE, Float.MAX_VALUE);
-   public static final evl h = new evl(Float.MIN_VALUE, Float.MIN_VALUE);
-   public final float i;
-   public final float j;
+public class evl extends evn {
+   private final je b;
+   private final iz c;
+   private final boolean d;
+   private final boolean e;
 
-   public evl(float $$0, float $$1) {
-      this.i = $$0;
-      this.j = $$1;
+   public static evl a(evp $$0, je $$1, iz $$2) {
+      return new evl(true, $$0, $$1, $$2, false);
    }
 
-   public evl a(float $$0) {
-      return new evl(this.i * $$0, this.j * $$0);
+   public evl(evp $$0, je $$1, iz $$2, boolean $$3) {
+      this(false, $$0, $$1, $$2, $$3);
    }
 
-   public float a(evl $$0) {
-      return this.i * $$0.i + this.j * $$0.j;
+   private evl(boolean $$0, evp $$1, je $$2, iz $$3, boolean $$4) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$4;
    }
 
-   public evl b(evl $$0) {
-      return new evl(this.i + $$0.i, this.j + $$0.j);
+   public evl a(je $$0) {
+      return new evl(this.d, this.a, $$0, this.c, this.e);
    }
 
-   public evl b(float $$0) {
-      return new evl(this.i + $$0, this.j + $$0);
+   public evl a(iz $$0) {
+      return new evl(this.d, this.a, this.b, $$0, this.e);
    }
 
-   public boolean c(evl $$0) {
-      return this.i == $$0.i && this.j == $$0.j;
+   public iz a() {
+      return this.c;
    }
 
-   public evl a() {
-      float $$0 = ayu.c(this.i * this.i + this.j * this.j);
-      return $$0 < 1.0E-4F ? a : new evl(this.i / $$0, this.j / $$0);
+   public je b() {
+      return this.b;
    }
 
-   public float b() {
-      return ayu.c(this.i * this.i + this.j * this.j);
+   @Override
+   public evn.a c() {
+      return this.d ? evn.a.a : evn.a.b;
    }
 
-   public float c() {
-      return this.i * this.i + this.j * this.j;
-   }
-
-   public float d(evl $$0) {
-      float $$1 = $$0.i - this.i;
-      float $$2 = $$0.j - this.j;
-      return $$1 * $$1 + $$2 * $$2;
-   }
-
-   public evl d() {
-      return new evl(-this.i, -this.j);
+   public boolean d() {
+      return this.e;
    }
 }

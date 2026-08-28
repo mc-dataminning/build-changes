@@ -1,24 +1,61 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-public record agn(ji<dvp> a, ala<dbt> b, long c, dbq d, @Nullable dbq e, boolean f, boolean g, Optional<jh> h, int i) {
-   private static final zj<ww, ji<dvp>> j = zh.b(lq.aE);
+public class agn implements zv<ach> {
+   public static final zm<wz, agn> a = zm.a(zk.g, agn::b, agn.a.b.a(zk.a()), agn::e, agn::new);
+   private final int b;
+   private final List<agn.a> c;
 
-   public agn(ww $$0) {
-      this(
-         j.decode($$0), $$0.a(lq.aS), $$0.readLong(), dbq.a($$0.readByte()), dbq.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(wl::h), $$0.l()
-      );
+   public agn(int $$0, Collection<bur> $$1) {
+      this.b = $$0;
+      this.c = Lists.newArrayList();
+
+      for (bur $$2 : $$1) {
+         this.c.add(new agn.a($$2.a(), $$2.b(), $$2.c()));
+      }
    }
 
-   public void a(ww $$0) {
-      j.encode($$0, this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.k(this.d.a());
-      $$0.k(dbq.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, wl::a);
-      $$0.c(this.i);
+   private agn(int $$0, List<agn.a> $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   @Override
+   public zx<agn> a() {
+      return agt.bb;
+   }
+
+   public void a(ach $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public List<agn.a> e() {
+      return this.c;
+   }
+
+   public static record a(ji<buq> c, double d, Collection<but> e) {
+      public static final zm<ByteBuf, but> a = zm.a(
+         kc.g, but::b, zk.j, but::d, but.a.e, but::e, ($$0, $$1, $$2) -> new but($$0, "Unknown synced attribute modifier", $$1, $$2)
+      );
+      public static final zm<wz, agn.a> b = zm.a(zk.b(lq.c), agn.a::a, zk.j, agn.a::b, a.a(zk.a(ArrayList::new)), agn.a::c, agn.a::new);
+
+      public ji<buq> a() {
+         return this.c;
+      }
+
+      public double b() {
+         return this.d;
+      }
+
+      public Collection<but> c() {
+         return this.e;
+      }
    }
 }

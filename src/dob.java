@@ -1,35 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dob extends dha implements dnz {
-   public static final MapCodec<dob> l = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dsm.a.fieldOf("block_set_type").forGetter(dha::b), dnz.a.e.fieldOf("weathering_state").forGetter(dob::m), u()).apply($$0, dob::new)
-   );
-   private final dnz.a m;
+public class dob extends dnj implements dly {
+   public static final MapCodec<dob> a = b(dob::new);
+   public static final dsr c = dsq.C;
 
    @Override
-   public MapCodec<dob> a() {
-      return l;
+   protected MapCodec<? extends dob> a() {
+      return a;
    }
 
-   protected dob(dsm $$0, dnz.a $$1, drw.d $$2) {
-      super($$0, $$2);
-      this.m = $$1;
+   protected dob(drz.d $$0) {
+      super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dsa a(cxy $$0) {
+      ent $$1 = $$0.q().b_($$0.a());
+      return super.a($$0).a(c, Boolean.valueOf($$1.b(enu.c)));
    }
 
    @Override
-   protected void b(drx $$0, arb $$1, iz $$2, azc $$3) {
-      if ($$0.c(dha.f) == dst.b) {
-         this.a_($$0, $$1, $$2, $$3);
+   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, enu.c, enu.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean d_(drx $$0) {
-      return dnz.c($$0.b()).isPresent();
+   protected ent b_(dsa $$0) {
+      return $$0.c(c) ? enu.c.a(true) : super.b_($$0);
    }
 
-   public dnz.a m() {
-      return this.m;
+   @Override
+   protected void a(dsb.a<dex, dsa> $$0) {
+      $$0.a(c);
    }
 }

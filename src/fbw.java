@@ -1,12 +1,7 @@
-public class fbw extends Exception {
-   public final fal a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public fbw(fal $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String getMessage() {
-      return this.a.c();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+interface fbw {
 }

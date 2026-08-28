@@ -1,45 +1,62 @@
-public class bzw extends cav {
-   private final cfd g;
+import java.util.EnumSet;
 
-   public bzw(cfd $$0, double $$1) {
-      super($$0, $$1, 8);
-      this.g = $$0;
+public class bzw extends cal {
+   private final btw a;
+
+   public bzw(btw $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cal.a.a, cal.a.b));
    }
 
    @Override
    public boolean a() {
-      return this.g.s() && !this.g.gq() && super.a();
+      return this.a.cl() < 140;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a();
+   }
+
+   @Override
+   public boolean Q_() {
+      return false;
    }
 
    @Override
    public void c() {
-      super.c();
-      this.g.x(false);
+      this.h();
    }
 
-   @Override
-   public void d() {
-      super.d();
-      this.g.x(false);
+   private void h() {
+      Iterable<iz> $$0 = iz.b(
+         ayx.a(this.a.du() - 1.0), this.a.dv(), ayx.a(this.a.dA() - 1.0), ayx.a(this.a.du() + 1.0), ayx.a(this.a.dw() + 8.0), ayx.a(this.a.dA() + 1.0)
+      );
+      iz $$1 = null;
+
+      for (iz $$2 : $$0) {
+         if (this.a(this.a.dP(), $$2)) {
+            $$1 = $$2;
+            break;
+         }
+      }
+
+      if ($$1 == null) {
+         $$1 = iz.a(this.a.du(), this.a.dw() + 8.0, this.a.dA());
+      }
+
+      this.a.K().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
    }
 
    @Override
    public void e() {
-      super.e();
-      this.g.x(this.m());
+      this.h();
+      this.a.a(0.02F, new evp((double)this.a.bo, (double)this.a.bp, (double)this.a.bq));
+      this.a.a(bts.a, this.a.ds());
    }
 
-   @Override
-   protected boolean a(dbw $$0, iz $$1) {
-      if (!$$0.u($$1.c())) {
-         return false;
-      } else {
-         drx $$2 = $$0.a_($$1);
-         if ($$2.a(dew.cv)) {
-            return dpj.a($$0, $$1) < 1;
-         } else {
-            return $$2.a(dew.cD) && $$2.c(dib.b) ? true : $$2.a(awl.R, $$0x -> $$0x.d(den.b).map($$0xx -> $$0xx != dsk.a).orElse(true));
-         }
-      }
+   private boolean a(dbz $$0, iz $$1) {
+      dsa $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(dez.nd)) && $$2.a(eoi.a);
    }
 }

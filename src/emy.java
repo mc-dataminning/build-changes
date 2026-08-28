@@ -1,113 +1,74 @@
-import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.List;
 
-public final class emy extends enh<emz.a, emz> {
-   private final iz.a g = new iz.a();
+public class emy {
+   private final emz[] a;
+   private final double b;
+   private final double c;
 
-   public emy(dug $$0) {
-      this($$0, new emz($$0));
+   public emy(azf $$0, List<Integer> $$1) {
+      this($$0, new IntRBTreeSet($$1));
    }
 
-   @VisibleForTesting
-   public emy(dug $$0, emz $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected void a(long $$0) {
-      long $$1 = kb.e($$0);
-      if (this.f.b($$1)) {
-         drx $$2 = this.c(this.g.f($$0));
-         int $$3 = this.a($$0, $$2);
-         int $$4 = this.f.e($$0);
-         if ($$3 < $$4) {
-            this.f.a($$0, 0);
-            this.b($$0, enh.a.a($$4));
+   private emy(azf $$0, IntSortedSet $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
+      } else {
+         int $$2 = -$$1.firstInt();
+         int $$3 = $$1.lastInt();
+         int $$4 = $$2 + $$3 + 1;
+         if ($$4 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
          } else {
-            this.b($$0, c);
-         }
+            emz $$5 = new emz($$0);
+            int $$6 = $$3;
+            this.a = new emz[$$4];
+            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
+               this.a[$$3] = $$5;
+            }
 
-         if ($$3 > 0) {
-            this.c($$0, enh.a.a($$3, a($$2)));
-         }
-      }
-   }
-
-   @Override
-   protected void a(long $$0, long $$1, int $$2) {
-      drx $$3 = null;
-
-      for (je $$4 : d) {
-         if (enh.a.a($$1, $$4)) {
-            long $$5 = iz.a($$0, $$4);
-            if (this.f.b(kb.e($$5))) {
-               int $$6 = this.f.e($$5);
-               int $$7 = $$2 - 1;
-               if ($$7 > $$6) {
-                  this.g.f($$5);
-                  drx $$8 = this.c(this.g);
-                  int $$9 = $$2 - this.a($$8, this.g);
-                  if ($$9 > $$6) {
-                     if ($$3 == null) {
-                        $$3 = enh.a.b($$1) ? dew.a.n() : this.c(this.g.f($$0));
-                     }
-
-                     if (!this.a($$0, $$3, $$5, $$8, $$4)) {
-                        this.f.a($$5, $$9);
-                        if ($$9 > 1) {
-                           this.c($$5, enh.a.a($$9, a($$8), $$4.g()));
-                        }
-                     }
-                  }
+            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
+               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
+                  this.a[$$7] = new emz($$0);
+               } else {
+                  $$0.b(262);
                }
             }
-         }
-      }
-   }
 
-   @Override
-   protected void a(long $$0, long $$1) {
-      int $$2 = enh.a.a($$1);
+            if ($$3 > 0) {
+               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
+               azf $$9 = new dyr(new dxt($$8));
 
-      for (je $$3 : d) {
-         if (enh.a.a($$1, $$3)) {
-            long $$4 = iz.a($$0, $$3);
-            if (this.f.b(kb.e($$4))) {
-               int $$5 = this.f.e($$4);
-               if ($$5 != 0) {
-                  if ($$5 <= $$2 - 1) {
-                     drx $$6 = this.c(this.g.f($$4));
-                     int $$7 = this.a($$4, $$6);
-                     this.f.a($$4, 0);
-                     if ($$7 < $$5) {
-                        this.b($$4, enh.a.a($$5, $$3.g()));
-                     }
-
-                     if ($$7 > 0) {
-                        this.c($$4, enh.a.a($$7, a($$6)));
-                     }
+               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
+                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
+                     this.a[$$10] = new emz($$9);
                   } else {
-                     this.c($$4, enh.a.b($$5, false, $$3.g()));
+                     $$9.b(262);
                   }
                }
             }
+
+            this.c = Math.pow(2.0, (double)$$3);
+            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
          }
       }
    }
 
-   private int a(long $$0, drx $$1) {
-      int $$2 = $$1.h();
-      return $$2 > 0 && this.f.j(kb.e($$0)) ? $$2 : 0;
-   }
+   public double a(double $$0, double $$1, boolean $$2) {
+      double $$3 = 0.0;
+      double $$4 = this.c;
+      double $$5 = this.b;
 
-   @Override
-   public void b(dba $$0) {
-      this.a($$0, true);
-      duf $$1 = this.e.c($$0.e, $$0.f);
-      if ($$1 != null) {
-         $$1.a(($$0x, $$1x) -> {
-            int $$2 = $$1x.h();
-            this.c($$0x.a(), enh.a.a($$2, a($$1x)));
-         });
+      for (emz $$6 : this.a) {
+         if ($$6 != null) {
+            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
+         }
+
+         $$4 /= 2.0;
+         $$5 *= 2.0;
       }
+
+      return $$3;
    }
 }

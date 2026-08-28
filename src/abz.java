@@ -1,20 +1,15 @@
-public record abz(alb b) implements zs<aby> {
-   public static final zj<wl, abz> a = zs.a(abz::a, abz::new);
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-   private abz(wl $$0) {
-      this($$0.q());
-   }
-
-   private void a(wl $$0) {
-      $$0.a(this.b);
-   }
+public record abz(List<atv> b) implements zv<abx> {
+   public static final zm<ByteBuf, abz> a = zm.a(atv.a.a(zk.c(64)), abz::b, abz::new);
 
    @Override
-   public zu<abz> a() {
-      return aca.a;
+   public zx<abz> a() {
+      return abv.g;
    }
 
-   public void a(aby $$0) {
+   public void a(abx $$0) {
       $$0.a(this);
    }
 }

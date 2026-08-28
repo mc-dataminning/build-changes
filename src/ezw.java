@@ -1,208 +1,126 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.nio.ByteBuffer;
-import javax.annotation.Nullable;
+import com.google.common.collect.Queues;
+import java.util.Deque;
+import org.joml.Matrix3f;
 import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class ezw implements AutoCloseable {
-   private final ezw.a a;
-   private int b;
-   private int c;
-   private int d;
-   @Nullable
-   private ezy e;
-   @Nullable
-   private RenderSystem.a f;
-   private ezy.a g;
-   private int h;
-   private ezy.b i;
+public class ezw {
+   private final Deque<ezw.a> a = ac.a(Queues.newArrayDeque(), $$0 -> {
+      Matrix4f $$1 = new Matrix4f();
+      Matrix3f $$2 = new Matrix3f();
+      $$0.add(new ezw.a($$1, $$2));
+   });
 
-   public ezw(ezw.a $$0) {
-      this.a = $$0;
-      RenderSystem.assertOnRenderThread();
-      this.b = GlStateManager._glGenBuffers();
-      this.c = GlStateManager._glGenBuffers();
-      this.d = GlStateManager._glGenVertexArrays();
+   public void a(double $$0, double $$1, double $$2) {
+      this.a((float)$$0, (float)$$1, (float)$$2);
    }
 
-   public void a(ezo.b $$0) {
-      try {
-         if (!this.e()) {
-            RenderSystem.assertOnRenderThread();
-            ezo.a $$1 = $$0.c();
-            this.e = this.a($$1, $$0.a());
-            this.f = this.b($$1, $$0.b());
-            this.h = $$1.i();
-            this.g = $$1.k();
-            this.i = $$1.j();
-            return;
-         }
-      } finally {
-         $$0.e();
-      }
+   public void a(float $$0, float $$1, float $$2) {
+      ezw.a $$3 = this.a.getLast();
+      $$3.a.translate($$0, $$1, $$2);
    }
 
-   private ezy a(ezo.a $$0, @Nullable ByteBuffer $$1) {
-      boolean $$2 = false;
-      if (!$$0.g().equals(this.e)) {
-         if (this.e != null) {
-            this.e.f();
+   public void b(float $$0, float $$1, float $$2) {
+      ezw.a $$3 = this.a.getLast();
+      $$3.a.scale($$0, $$1, $$2);
+      if (Math.abs($$0) == Math.abs($$1) && Math.abs($$1) == Math.abs($$2)) {
+         if ($$0 < 0.0F || $$1 < 0.0F || $$2 < 0.0F) {
+            $$3.b.scale(Math.signum($$0), Math.signum($$1), Math.signum($$2));
          }
-
-         GlStateManager._glBindBuffer(34962, this.b);
-         $$0.g().e();
-         $$2 = true;
-      }
-
-      if ($$1 != null) {
-         if (!$$2) {
-            GlStateManager._glBindBuffer(34962, this.b);
-         }
-
-         RenderSystem.glBufferData(34962, $$1, this.a.c);
-      }
-
-      return $$0.g();
-   }
-
-   @Nullable
-   private RenderSystem.a b(ezo.a $$0, @Nullable ByteBuffer $$1) {
-      if ($$1 != null) {
-         GlStateManager._glBindBuffer(34963, this.c);
-         RenderSystem.glBufferData(34963, $$1, this.a.c);
-         return null;
       } else {
-         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.j());
-         if ($$2 != this.f || !$$2.a($$0.i())) {
-            $$2.b($$0.i());
-         }
-
-         return $$2;
+         $$3.b.scale(1.0F / $$0, 1.0F / $$1, 1.0F / $$2);
+         $$3.c = false;
       }
+   }
+
+   public void a(Quaternionf $$0) {
+      ezw.a $$1 = this.a.getLast();
+      $$1.a.rotate($$0);
+      $$1.b.rotate($$0);
+   }
+
+   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
+      ezw.a $$4 = this.a.getLast();
+      $$4.a.rotateAround($$0, $$1, $$2, $$3);
+      $$4.b.rotate($$0);
    }
 
    public void a() {
-      ezp.b();
-      GlStateManager._glBindVertexArray(this.d);
+      this.a.addLast(new ezw.a(this.a.getLast()));
    }
 
-   public static void b() {
-      ezp.b();
-      GlStateManager._glBindVertexArray(0);
+   public void b() {
+      this.a.removeLast();
    }
 
-   public void c() {
-      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
+   public ezw.a c() {
+      return this.a.getLast();
    }
 
-   private ezy.a f() {
-      RenderSystem.a $$0 = this.f;
-      return $$0 != null ? $$0.a() : this.g;
+   public boolean d() {
+      return this.a.size() == 1;
    }
 
-   public void a(Matrix4f $$0, Matrix4f $$1, gdx $$2) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b(new Matrix4f($$0), new Matrix4f($$1), $$2));
-      } else {
-         this.b($$0, $$1, $$2);
-      }
+   public void e() {
+      ezw.a $$0 = this.a.getLast();
+      $$0.a.identity();
+      $$0.b.identity();
+      $$0.c = true;
    }
 
-   private void b(Matrix4f $$0, Matrix4f $$1, gdx $$2) {
-      for (int $$3 = 0; $$3 < 12; $$3++) {
-         int $$4 = RenderSystem.getShaderTexture($$3);
-         $$2.a("Sampler" + $$3, $$4);
-      }
-
-      if ($$2.b != null) {
-         $$2.b.a($$0);
-      }
-
-      if ($$2.c != null) {
-         $$2.c.a($$1);
-      }
-
-      if ($$2.f != null) {
-         $$2.f.a(RenderSystem.getShaderColor());
-      }
-
-      if ($$2.i != null) {
-         $$2.i.a(RenderSystem.getShaderGlintAlpha());
-      }
-
-      if ($$2.j != null) {
-         $$2.j.a(RenderSystem.getShaderFogStart());
-      }
-
-      if ($$2.k != null) {
-         $$2.k.a(RenderSystem.getShaderFogEnd());
-      }
-
-      if ($$2.l != null) {
-         $$2.l.a(RenderSystem.getShaderFogColor());
-      }
-
-      if ($$2.m != null) {
-         $$2.m.a(RenderSystem.getShaderFogShape().a());
-      }
-
-      if ($$2.d != null) {
-         $$2.d.a(RenderSystem.getTextureMatrix());
-      }
-
-      if ($$2.o != null) {
-         $$2.o.a(RenderSystem.getShaderGameTime());
-      }
-
-      if ($$2.e != null) {
-         eyx $$5 = ffa.Q().aO();
-         $$2.e.a((float)$$5.k(), (float)$$5.l());
-      }
-
-      if ($$2.n != null && (this.i == ezy.b.a || this.i == ezy.b.b)) {
-         $$2.n.a(RenderSystem.getShaderLineWidth());
-      }
-
-      RenderSystem.setupShaderLights($$2);
-      $$2.g();
-      this.c();
-      $$2.f();
-   }
-
-   @Override
-   public void close() {
-      if (this.b >= 0) {
-         RenderSystem.glDeleteBuffers(this.b);
-         this.b = -1;
-      }
-
-      if (this.c >= 0) {
-         RenderSystem.glDeleteBuffers(this.c);
-         this.c = -1;
-      }
-
-      if (this.d >= 0) {
-         RenderSystem.glDeleteVertexArrays(this.d);
-         this.d = -1;
+   public void a(Matrix4f $$0) {
+      ezw.a $$1 = this.a.getLast();
+      $$1.a.mul($$0);
+      if (!f.a($$0)) {
+         if (f.b($$0)) {
+            $$1.b.mul(new Matrix3f($$0));
+         } else {
+            $$1.d();
+         }
       }
    }
 
-   public ezy d() {
-      return this.e;
-   }
+   public static final class a {
+      final Matrix4f a;
+      final Matrix3f b;
+      boolean c = true;
 
-   public boolean e() {
-      return this.d == -1;
-   }
+      a(Matrix4f $$0, Matrix3f $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   public static enum a {
-      a(35044),
-      b(35048);
+      a(ezw.a $$0) {
+         this.a = new Matrix4f($$0.a);
+         this.b = new Matrix3f($$0.b);
+         this.c = $$0.c;
+      }
 
-      final int c;
+      void d() {
+         this.b.set(this.a).invert().transpose();
+         this.c = false;
+      }
 
-      private a(final int $$0) {
-         this.c = $$0;
+      public Matrix4f a() {
+         return this.a;
+      }
+
+      public Matrix3f b() {
+         return this.b;
+      }
+
+      public Vector3f a(Vector3f $$0, Vector3f $$1) {
+         return this.a($$0.x, $$0.y, $$0.z, $$1);
+      }
+
+      public Vector3f a(float $$0, float $$1, float $$2, Vector3f $$3) {
+         Vector3f $$4 = this.b.transform($$0, $$1, $$2, $$3);
+         return this.c ? $$4 : $$4.normalize();
+      }
+
+      public ezw.a c() {
+         return new ezw.a(this);
       }
    }
 }

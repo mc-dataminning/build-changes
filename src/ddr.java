@@ -1,24 +1,16 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.Supplier;
 
-public class ddr extends deu {
-   public static final MapCodec<ddr> a = b(ddr::new);
+public abstract class ddr<E extends dpf> extends dej {
+   protected final Supplier<dph<? extends E>> a;
 
-   @Override
-   public MapCodec<ddr> a() {
-      return a;
-   }
-
-   public ddr(drw.d $$0) {
+   protected ddr(drz.d $$0, Supplier<dph<? extends E>> $$1) {
       super($$0);
+      this.a = $$1;
    }
 
    @Override
-   protected dla a_(drx $$0) {
-      return dla.a;
-   }
+   protected abstract MapCodec<? extends ddr<E>> a();
 
-   @Override
-   protected ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
-      return ewc.a();
-   }
+   public abstract dhe.c<? extends dpm> a(dsa var1, dbw var2, iz var3, boolean var4);
 }

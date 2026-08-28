@@ -1,28 +1,22 @@
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.SignStyle;
+import java.time.temporal.ChronoField;
+
 public class epp {
-   public static final epp a = new epp("advancements");
-   public static final epp b = new epp("stats");
-   public static final epp c = new epp("playerdata");
-   public static final epp d = new epp("players");
-   public static final epp e = new epp("level.dat");
-   public static final epp f = new epp("level.dat_old");
-   public static final epp g = new epp("icon.png");
-   public static final epp h = new epp("session.lock");
-   public static final epp i = new epp("generated");
-   public static final epp j = new epp("datapacks");
-   public static final epp k = new epp("resources.zip");
-   public static final epp l = new epp(".");
-   private final String m;
-
-   private epp(String $$0) {
-      this.m = $$0;
-   }
-
-   public String a() {
-      return this.m;
-   }
-
-   @Override
-   public String toString() {
-      return "/" + this.m;
+   public static DateTimeFormatter a() {
+      return new DateTimeFormatterBuilder()
+         .appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
+         .appendLiteral('-')
+         .appendValue(ChronoField.MONTH_OF_YEAR, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.DAY_OF_MONTH, 2)
+         .appendLiteral('_')
+         .appendValue(ChronoField.HOUR_OF_DAY, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.MINUTE_OF_HOUR, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.SECOND_OF_MINUTE, 2)
+         .toFormatter();
    }
 }

@@ -1,85 +1,37 @@
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.kinds.App;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Map.Entry;
 import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class bwp {
-   private static final int a = 20;
-   private static final int b = 8;
-   private static final float c = 0.6F;
-   private static final float d = 0.6F;
-   private static final int e = 5;
-   private static final int f = 10;
-
-   public static bve<btt> a() {
-      return byq.a(
-         (Function<byq.b<btt>, ? extends App<byq.c<btt>, byt<btt>>>)($$0 -> $$0.group($$0.b(cco.i), $$0.c(cco.m), $$0.a(cco.n), $$0.a(cco.q))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$5.E_().a(10) != 0) {
-                        return false;
-                     } else {
-                        List<btk> $$8 = $$0.b($$1);
-                        Optional<btk> $$9 = $$8.stream().filter($$1xx -> a((btk)$$6, $$1xx)).findAny();
-                        if (!$$9.isPresent()) {
-                           Optional<btk> $$12 = a($$8);
-                           if ($$12.isPresent()) {
-                              a($$4, $$3, $$2, $$12.get());
-                              return true;
-                           } else {
-                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
-                              return true;
-                           }
-                        } else {
-                           for (int $$10 = 0; $$10 < 10; $$10++) {
-                              evm $$11 = cei.a($$6, 20, 8);
-                              if ($$11 != null && $$5.c(iz.a($$11))) {
-                                 $$2.a(new ccr($$11, 0.6F, 0));
-                                 break;
-                              }
-                           }
-
-                           return true;
-                        }
-                     }
-                  }))
-      );
+   public static bwr<btn> a(float $$0) {
+      return byt.a((Function<byt.b<btn>, ? extends App<byt.c<btn>, byw<btn>>>)($$1 -> $$1.group($$1.c(ccr.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
+               if ($$2.h($$3.dp())) {
+                  return false;
+               } else {
+                  Optional<evp> $$5 = Optional.ofNullable(a($$2, $$3));
+                  $$5.ifPresent($$2x -> $$1x.a(new ccu($$2x, $$0, 0)));
+                  return true;
+               }
+            })));
    }
 
-   private static void a(byr<?, btk> $$0, byr<?, bwr> $$1, byr<?, ccr> $$2, btk $$3) {
-      $$0.a($$3);
-      $$1.a(new bvo($$3, true));
-      $$2.a(new ccr(new bvo($$3, false), 0.6F, 1));
+   @Nullable
+   private static evp a(are $$0, btn $$1) {
+      azf $$2 = $$1.el();
+      iz $$3 = $$1.dp();
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         iz $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
+         if (a($$0, $$1, $$5)) {
+            return evp.c($$5);
+         }
+      }
+
+      return null;
    }
 
-   private static Optional<btk> a(List<btk> $$0) {
-      Map<btk, Integer> $$1 = b($$0);
-      return $$1.entrySet()
-         .stream()
-         .sorted(Comparator.comparingInt(Entry::getValue))
-         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
-         .map(Entry::getKey)
-         .findFirst();
-   }
-
-   private static Map<btk, Integer> b(List<btk> $$0) {
-      Map<btk, Integer> $$1 = Maps.newHashMap();
-      $$0.stream().filter(bwp::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
-      return $$1;
-   }
-
-   private static btk a(btk $$0) {
-      return $$0.dS().c(cco.q).get();
-   }
-
-   private static boolean b(btk $$0) {
-      return $$0.dS().c(cco.q).isPresent();
-   }
-
-   private static boolean a(btk $$0, btk $$1) {
-      return $$1.dS().c(cco.q).filter($$1x -> $$1x == $$0).isPresent();
+   public static boolean a(are $$0, btn $$1, iz $$2) {
+      return $$0.h($$2) && (double)$$0.a(dxs.a.e, $$2).v() <= $$1.dw();
    }
 }

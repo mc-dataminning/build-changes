@@ -1,37 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class bqv {
-   public static final Codec<bqv> a = RecordCodecBuilder.create($$0 -> $$0.group(dyq.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, bqv::new));
-   private final dyq b;
+public record bqv(String d) {
+   public static final bqv a = new bqv("");
+   public static final Codec<bqv> b = Codec.STRING.xmap(bqv::new, bqv::a);
+   public static final String c = "Lock";
 
-   public bqv(dyq $$0) {
-      this.b = $$0;
-   }
-
-   public bqv(long $$0, alb $$1) {
-      this(a($$0, Optional.of($$1)));
-   }
-
-   public bqv(long $$0, Optional<alb> $$1) {
-      this(a($$0, $$1));
-   }
-
-   private static dyq a(long $$0, Optional<alb> $$1) {
-      dye.a $$2 = dye.b($$0);
-      if ($$1.isPresent()) {
-         $$2 = $$2.a(a($$1.get()));
+   public boolean a(cun $$0) {
+      if (this.d.isEmpty()) {
+         return true;
+      } else {
+         xo $$1 = $$0.a(km.f);
+         return $$1 != null && this.d.equals($$1.getString());
       }
-
-      return new dyq($$2.a());
    }
 
-   public static dye.a a(alb $$0) {
-      return dye.a($$0.toString());
+   public void a(ur $$0) {
+      if (!this.d.isEmpty()) {
+         $$0.a("Lock", this.d);
+      }
    }
 
-   public azc a() {
-      return this.b;
+   public static bqv b(ur $$0) {
+      return $$0.b("Lock", 8) ? new bqv($$0.l("Lock")) : a;
+   }
+
+   public String a() {
+      return this.d;
    }
 }

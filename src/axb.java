@@ -1,43 +1,35 @@
-import com.google.common.collect.Interner;
-import com.google.common.collect.Interners;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
-public record axb<T>(ala<? extends jv<T>> a, alb b) {
-   private static final Interner<axb<?>> c = Interners.newWeakInterner();
+public class axb {
+   private final List<axc> a = new ArrayList<>();
 
-   @Deprecated
-   public axb(ala<? extends jv<T>> a, alb b) {
-      this.a = a;
-      this.b = b;
+   public static axb a() {
+      return new axb();
    }
 
-   public static <T> Codec<axb<T>> a(ala<? extends jv<T>> $$0) {
-      return alb.a.xmap($$1 -> a($$0, $$1), axb::b);
+   public List<axc> b() {
+      return List.copyOf(this.a);
    }
 
-   public static <T> Codec<axb<T>> b(ala<? extends jv<T>> $$0) {
-      return Codec.STRING
-         .comapFlatMap(
-            $$1 -> $$1.startsWith("#") ? alb.b($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
-         );
+   public axb a(axc $$0) {
+      this.a.add($$0);
+      return this;
    }
 
-   public static <T> axb<T> a(ala<? extends jv<T>> $$0, alb $$1) {
-      return (axb<T>)c.intern(new axb<>($$0, $$1));
+   public axb a(ale $$0) {
+      return this.a(axc.a($$0));
    }
 
-   public boolean c(ala<? extends jv<?>> $$0) {
-      return this.a == $$0;
+   public axb b(ale $$0) {
+      return this.a(axc.b($$0));
    }
 
-   public <E> Optional<axb<E>> d(ala<? extends jv<E>> $$0) {
-      return this.c($$0) ? Optional.of((axb<E>)this) : Optional.empty();
+   public axb c(ale $$0) {
+      return this.a(axc.c($$0));
    }
 
-   @Override
-   public String toString() {
-      return "TagKey[" + this.a.a() + " / " + this.b + "]";
+   public axb d(ale $$0) {
+      return this.a(axc.d($$0));
    }
 }

@@ -1,147 +1,151 @@
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public interface cos extends bqi, bqt {
-   evm dn();
-
-   evh cK();
-
+public abstract class cos extends cor implements cov {
+   private jr<cun> c = jr.a(36, cun.l);
    @Nullable
-   ala<eqi> B();
+   private ald<eql> d;
+   private long e;
 
-   void a(@Nullable ala<eqi> var1);
+   protected cos(bsy<?> $$0, dbw $$1) {
+      super($$0, $$1);
+   }
 
-   long C();
-
-   void a(long var1);
-
-   jr<cuk> D();
-
-   void E();
-
-   dbt dP();
-
-   boolean dK();
+   protected cos(bsy<?> $$0, double $$1, double $$2, double $$3, dbw $$4) {
+      super($$0, $$4, $$1, $$2, $$3);
+   }
 
    @Override
-   default boolean c() {
-      return this.g();
+   public void a(brl $$0) {
+      super.a($$0);
+      this.a($$0, this.dP(), this);
    }
 
-   default void a(ur $$0, jk.a $$1) {
-      if (this.B() != null) {
-         $$0.a("LootTable", this.B().a().toString());
-         if (this.C() != 0L) {
-            $$0.a("LootTableSeed", this.C());
-         }
+   @Override
+   public cun a(int $$0) {
+      return this.f_($$0);
+   }
+
+   @Override
+   public cun a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public cun b(int $$0) {
+      return this.e_($$0);
+   }
+
+   @Override
+   public void a(int $$0, cun $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public buf a_(int $$0) {
+      return this.g_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cmv $$0) {
+      return this.g($$0);
+   }
+
+   @Override
+   public void a(bss.c $$0) {
+      if (!this.dP().B && $$0.a()) {
+         bqo.a(this.dP(), this, this);
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   protected void b(ur $$0) {
+      super.b($$0);
+      this.a($$0, this.dR());
+   }
+
+   @Override
+   protected void a(ur $$0) {
+      super.a($$0);
+      this.b($$0, this.dR());
+   }
+
+   @Override
+   public bqs a(cmv $$0, bqr $$1) {
+      return this.c_($$0);
+   }
+
+   @Override
+   protected void u() {
+      float $$0 = 0.98F;
+      if (this.d == null) {
+         int $$1 = 15 - cps.b(this);
+         $$0 += (float)$$1 * 0.001F;
+      }
+
+      if (this.be()) {
+         $$0 *= 0.95F;
+      }
+
+      this.h(this.ds().d((double)$$0, 0.0, (double)$$0));
+   }
+
+   @Override
+   public void a() {
+      this.f();
+   }
+
+   public void a(ald<eql> $$0, long $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   @Nullable
+   @Override
+   public cps createMenu(int $$0, cmu $$1, cmv $$2) {
+      if (this.d != null && $$2.N_()) {
+         return null;
       } else {
-         bqj.a($$0, this.D(), $$1);
+         this.f($$1.l);
+         return this.a($$0, $$1);
       }
    }
 
-   default void b(ur $$0, jk.a $$1) {
-      this.E();
-      if ($$0.b("LootTable", 8)) {
-         this.a(ala.a(lq.aU, new alb($$0.l("LootTable"))));
-         this.a($$0.i("LootTableSeed"));
-      } else {
-         bqj.b($$0, this.D(), $$1);
-      }
+   protected abstract cps a(int var1, cmu var2);
+
+   @Nullable
+   @Override
+   public ald<eql> B() {
+      return this.d;
    }
 
-   default void a(bri $$0, dbt $$1, bsp $$2) {
-      if ($$1.ab().b(dbp.i)) {
-         bql.a($$1, $$2, this);
-         if (!$$1.B) {
-            bsp $$3 = $$0.c();
-            if ($$3 != null && $$3.ak() == bsv.by) {
-               clj.a((cms)$$3, true);
-            }
-         }
-      }
+   @Override
+   public void a(@Nullable ald<eql> $$0) {
+      this.d = $$0;
    }
 
-   default bqp c_(cms $$0) {
-      $$0.a(this);
-      return !$$0.dP().B ? bqp.c : bqp.a;
+   @Override
+   public long C() {
+      return this.e;
    }
 
-   default void f(@Nullable cms $$0) {
-      MinecraftServer $$1 = this.dP().o();
-      if (this.B() != null && $$1 != null) {
-         eqi $$2 = $$1.be().b(this.B());
-         if ($$0 != null) {
-            am.Q.a((arc)$$0, this.B());
-         }
-
-         this.a(null);
-         eqg.a $$3 = new eqg.a((arb)this.dP()).a(esz.f, this.dn());
-         if ($$0 != null) {
-            $$3.a($$0.gy()).a(esz.a, $$0);
-         }
-
-         $$2.a(this, $$3.a(esy.c), this.C());
-      }
+   @Override
+   public void a(long $$0) {
+      this.e = $$0;
    }
 
-   default void f() {
-      this.f(null);
-      this.D().clear();
+   @Override
+   public jr<cun> D() {
+      return this.c;
    }
 
-   default boolean g() {
-      for (cuk $$0 : this.D()) {
-         if (!$$0.e()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   default cuk e_(int $$0) {
-      this.f(null);
-      cuk $$1 = this.D().get($$0);
-      if ($$1.e()) {
-         return cuk.l;
-      } else {
-         this.D().set($$0, cuk.l);
-         return $$1;
-      }
-   }
-
-   default cuk f_(int $$0) {
-      this.f(null);
-      return this.D().get($$0);
-   }
-
-   default cuk b(int $$0, int $$1) {
-      this.f(null);
-      return bqj.a(this.D(), $$0, $$1);
-   }
-
-   default void c(int $$0, cuk $$1) {
-      this.f(null);
-      this.D().set($$0, $$1);
-      $$1.f(this.e_($$1));
-   }
-
-   default buc g_(final int $$0) {
-      return $$0 >= 0 && $$0 < this.b() ? new buc() {
-         @Override
-         public cuk a() {
-            return cos.this.f_($$0);
-         }
-
-         @Override
-         public boolean a(cuk $$0x) {
-            cos.this.c($$0, $$0);
-            return true;
-         }
-      } : buc.a;
-   }
-
-   default boolean g(cms $$0) {
-      return !this.dK() && $$0.a(this.cK(), 4.0);
+   @Override
+   public void E() {
+      this.c = jr.a(this.b(), cun.l);
    }
 }

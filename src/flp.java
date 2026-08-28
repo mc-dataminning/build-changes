@@ -1,69 +1,91 @@
+import com.mojang.authlib.minecraft.BanDetails;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.time.Duration;
+import java.time.Instant;
+import org.apache.commons.lang3.StringUtils;
 
-public class flp extends flq {
-   private static final xl d = xl.c("chat.copy");
-   private static final xl r = xl.c("chat.link.warning");
-   private final String s;
-   private final boolean u;
+public class flp {
+   private static final xo b = xo.c("gui.banned.title.temporary").a(n.r);
+   private static final xo c = xo.c("gui.banned.title.permanent").a(n.r);
+   public static final xo a = xo.c("gui.banned.name.title").a(n.r);
+   private static final xo d = xo.c("gui.banned.skin.title").a(n.r);
+   private static final xo e = xo.a("gui.banned.skin.description", xo.b("https://aka.ms/mcjavamoderation"));
 
-   public flp(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), xl.b($$1), $$1, $$2 ? xk.e : xk.g, $$2);
+   public static fls a(BooleanConsumer $$0, BanDetails $$1) {
+      return new fls($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", xn.m, true);
    }
 
-   public flp(BooleanConsumer $$0, xl $$1, String $$2, boolean $$3) {
-      this($$0, $$1, a($$3, $$2), $$2, $$3 ? xk.e : xk.g, $$3);
+   public static fls a(Runnable $$0) {
+      String $$1 = "https://aka.ms/mcjavamoderation";
+      return new fls($$1x -> {
+         if ($$1x) {
+            ac.k().a("https://aka.ms/mcjavamoderation");
+         }
+
+         $$0.run();
+      }, d, e, "https://aka.ms/mcjavamoderation", xn.m, true);
    }
 
-   public flp(BooleanConsumer $$0, xl $$1, xl $$2, String $$3, xl $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (xl)($$5 ? xl.c("chat.link.open") : xk.f);
-      this.b = $$4;
-      this.u = !$$5;
-      this.s = $$3;
+   public static fls a(String $$0, Runnable $$1) {
+      String $$2 = "https://aka.ms/mcjavamoderation";
+      return new fls($$1x -> {
+         if ($$1x) {
+            ac.k().a("https://aka.ms/mcjavamoderation");
+         }
+
+         $$1.run();
+      }, a, xo.a("gui.banned.name.description", xo.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", xn.m, true);
    }
 
-   protected static xz a(boolean $$0, String $$1) {
-      return c($$0).b(xk.v).b(xl.b($$1));
+   private static xo a(BanDetails $$0) {
+      return f($$0) ? b : c;
    }
 
-   protected static xz c(boolean $$0) {
-      return xl.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
+   private static xo b(BanDetails $$0) {
+      return xo.a("gui.banned.description", c($$0), d($$0), xo.b("https://aka.ms/mcjavamoderation"));
    }
 
-   @Override
-   protected void a(int $$0) {
-      this.c(fgz.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
-      this.c(fgz.a(d, $$0x -> {
-         this.l();
-         this.c.accept(false);
-      }).a(this.n / 2 - 50, $$0, 100, 20).a());
-      this.c(fgz.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
-   }
+   private static xo c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         fyt $$4 = fyt.a($$3);
+         xo $$5;
+         if ($$4 != null) {
+            $$5 = xr.a($$4.a().f(), yl.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = xo.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
+         } else {
+            $$5 = xo.a("gui.banned.description.reason_id", $$3).a(n.r);
+         }
 
-   public void l() {
-      this.m.o.a(this.s);
-   }
-
-   @Override
-   public void a(fgm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.u) {
-         $$0.a(this.p, r, this.n / 2, 110, 16764108);
+         return xo.a("gui.banned.description.reason", $$5);
+      } else {
+         return xo.c("gui.banned.description.unknownreason");
       }
    }
 
-   public static void a(fmy $$0, String $$1) {
-      ffa $$2 = ffa.Q();
-      $$2.a(new flp($$3 -> {
-         if ($$3) {
-            ac.k().a($$1);
-         }
-
-         $$2.a($$0);
-      }, $$1, true));
+   private static xo d(BanDetails $$0) {
+      if (f($$0)) {
+         xo $$1 = e($$0);
+         return xo.a("gui.banned.description.temporary", xo.a("gui.banned.description.temporary.duration", $$1).a(n.r));
+      } else {
+         return xo.c("gui.banned.description.permanent").a(n.r);
+      }
    }
 
-   public static fgz.c b(fmy $$0, String $$1) {
-      return $$2 -> a($$0, $$1);
+   private static xo e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return xn.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? xn.c($$1.toMinutes()) : xn.b($$1.toHours());
+      }
+   }
+
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

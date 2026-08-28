@@ -1,69 +1,39 @@
-import java.util.OptionalInt;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class fht extends fgw {
-   private OptionalInt a = OptionalInt.empty();
-   private OptionalInt b = OptionalInt.empty();
-   private final azk<fht.a, fhs> c;
-   private boolean d = false;
+public class fht {
+   public static final ale a = new ale("textures/gui/title/minecraft.png");
+   public static final ale b = new ale("textures/gui/title/minceraft.png");
+   public static final ale c = new ale("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)azf.a().i() < 1.0E-4;
+   private final boolean o;
 
-   public fht(xl $$0, fgk $$1) {
-      this(0, 0, $$0, $$1);
+   public fht(boolean $$0) {
+      this.o = $$0;
    }
 
-   public fht(int $$0, int $$1, xl $$2, fgk $$3) {
-      super($$0, $$1, 0, 0, $$2, $$3);
-      this.c = ac.a($$1x -> $$1x.c.isPresent() ? fhs.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : fhs.a($$3, $$1x.a, $$1x.b));
-      this.j = false;
+   public void a(fgp $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   public fht c(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   public fht d(int $$0) {
-      this.a = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fht e(int $$0) {
-      this.b = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fht b(boolean $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   @Override
-   public int x() {
-      return this.c.a(this.d()).b();
-   }
-
-   @Override
-   public int v() {
-      return this.c.a(this.d()).a() * 9;
-   }
-
-   @Override
-   public void b(fgm $$0, int $$1, int $$2, float $$3) {
-      fhs $$4 = this.c.a(this.d());
-      int $$5 = this.C();
-      int $$6 = this.D();
-      int $$7 = 9;
-      int $$8 = this.b();
-      if (this.d) {
-         $$4.a($$0, $$5 + this.x() / 2, $$6, $$7, $$8);
-      } else {
-         $$4.b($$0, $$5, $$6, $$7, $$8);
-      }
-   }
-
-   private fht.a d() {
-      return new fht.a(this.y(), this.a.orElse(Integer.MAX_VALUE), this.b);
-   }
-
-   static record a(xl a, int b, OptionalInt c) {
+   public void a(fgp $$0, int $$1, float $$2, int $$3) {
+      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
+      RenderSystem.enableBlend();
+      int $$4 = $$1 / 2 - 128;
+      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
+      int $$5 = $$1 / 2 - 64;
+      int $$6 = $$3 + 44 - 7;
+      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
    }
 }

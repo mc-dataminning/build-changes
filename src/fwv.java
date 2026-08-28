@@ -1,351 +1,232 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.stream.Stream;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import java.util.stream.Collectors;
 
-public final class fwv {
-   public static final float a = 1.0F;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h = 1.0F;
-   public float i = 1.0F;
-   public float j = 1.0F;
-   public boolean k = true;
-   public boolean l;
-   private final List<fwv.a> m;
-   private final Map<String, fwv> n;
-   private fwx o = fwx.a;
+public class fwv {
+   private static final fxc a = new fxc(0.008F);
+   private static final fxc b = new fxc(1.0F);
+   private static final fxc c = new fxc(0.5F);
 
-   public fwv(List<fwv.a> $$0, Map<String, fwv> $$1) {
-      this.m = $$0;
-      this.n = $$1;
-   }
+   public static Map<fww, fxe> a() {
+      Builder<fww, fxe> $$0 = ImmutableMap.builder();
+      fxe $$1 = fxe.a(ful.a(fxc.a, 0.0F), 64, 64);
+      fxe $$2 = fxe.a(fuk.a(b), 64, 32);
+      fxe $$3 = fxe.a(fuk.a(new fxc(1.02F)), 64, 32);
+      fxe $$4 = fxe.a(fuk.a(c), 64, 32);
+      fxe $$5 = fut.b();
+      fxe $$6 = fvu.c();
+      fxe $$7 = fxe.a(fuj.a(fxc.a), 64, 64);
+      fxe $$8 = fum.b();
+      fxe $$9 = ftr.c();
+      fxe $$10 = fxe.a(fuw.a(fxc.a), 64, 32);
+      fxe $$11 = fxe.a(fvc.a(fxc.a), 64, 64);
+      fxe $$12 = fxe.a(fvb.a(), 64, 64);
+      fxe $$13 = fvu.b();
+      fxe $$14 = fur.a(fxc.a);
+      fxe $$15 = fwb.b();
+      fxe $$16 = fui.c();
+      fxe $$17 = fvt.e();
+      fxe $$18 = fxe.a(fwj.b(), 64, 64);
+      fxe $$19 = fvz.b();
+      $$0.put(fwx.a, fsu.b());
+      $$0.put(fwx.b, fsw.b());
+      $$0.put(fwx.c, fsz.c());
+      $$0.put(fwx.d, fsy.a(c));
+      $$0.put(fwx.e, fsy.a(b));
+      $$0.put(fwx.f, fta.c());
+      $$0.put(fwx.g, gfh.a());
+      $$0.put(fwx.h, ftb.b());
+      $$0.put(fwx.i, gfj.c());
+      $$0.put(fwx.j, gfj.b());
+      $$0.put(fwx.k, ftc.c());
+      $$0.put(fwx.l, gfk.b());
+      $$0.put(fwx.m, ftd.b());
+      $$0.put(fwx.n, ftf.c());
+      $$0.put(fwx.o, $$4);
+      $$0.put(fwx.p, $$2);
+      $$0.put(fwx.q, fxe.a(ful.a(new fxc(0.2F), 0.0F), 64, 32));
+      $$0.put(fwx.r, ftg.a());
+      $$0.put(fwx.s, fth.a(32, 32));
+      $$0.put(fwx.t, $$10);
+      $$0.put(fwx.u, fxe.a(fuw.a(new fxc(0.01F)), 64, 32));
+      $$0.put(fwx.v, fti.b());
+      $$0.put(fwx.w, $$19);
+      $$0.put(fwx.x, gfs.b());
+      $$0.put(fwx.y, $$5);
+      $$0.put(fwx.z, ftn.c());
+      $$0.put(fwx.A, fto.b());
+      $$0.put(fwx.B, $$5);
+      $$0.put(fwx.D, gft.b());
+      $$0.put(fwx.F, gft.c());
+      $$0.put(fwx.E, gft.d());
+      $$0.put(fwx.C, gft.e());
+      $$0.put(fwx.G, $$9);
+      $$0.put(fwx.H, fts.a(fxc.a));
+      $$0.put(fwx.I, fts.a(new fxc(2.0F)));
+      $$0.put(fwx.J, $$6);
+      $$0.put(fwx.K, gfu.b());
+      $$0.put(fwx.L, gfu.c());
+      $$0.put(fwx.M, ftt.b());
+      $$0.put(fwx.N, ftm.c());
+      $$0.put(fwx.O, gfs.d());
+      $$0.put(fwx.P, gfs.c());
+      $$0.put(fwx.Q, fws.a());
+      $$0.put(fwx.R, ftu.a(fxc.a));
+      $$0.put(fwx.S, $$4);
+      $$0.put(fwx.T, $$4);
+      $$0.put(fwx.U, ftu.a(new fxc(0.25F)));
+      $$0.put(fwx.V, fuf.b());
+      $$0.put(fwx.W, ftv.c());
+      $$0.put(fwx.X, ftw.c());
+      $$0.put(fwx.Y, ftx.b());
+      $$0.put(fwx.Z, giq.a());
+      $$0.put(fwx.aa, gip.a());
+      $$0.put(fwx.ab, $$8);
+      $$0.put(fwx.ac, ftz.b());
+      $$0.put(fwx.ad, fua.c());
+      $$0.put(fwx.ae, fub.b());
+      $$0.put(fwx.af, $$5);
+      $$0.put(fwx.ag, fuc.b());
+      $$0.put(fwx.ah, $$1);
+      $$0.put(fwx.ai, $$4);
+      $$0.put(fwx.aj, $$2);
+      $$0.put(fwx.ak, fwa.b());
+      $$0.put(fwx.al, fue.c());
+      $$0.put(fwx.am, fuf.b());
+      $$0.put(fwx.an, $$16);
+      $$0.put(fwx.ao, $$5);
+      $$0.put(fwx.ap, $$7);
+      $$0.put(fwx.aq, fxe.a(fuj.a(new fxc(0.1F)), 64, 64));
+      $$0.put(fwx.ar, $$1);
+      $$0.put(fwx.as, $$4);
+      $$0.put(fwx.at, $$2);
+      $$0.put(fwx.au, $$8);
+      $$0.put(fwx.av, fun.b());
+      $$0.put(fwx.aw, fup.b());
+      $$0.put(fwx.ax, $$14);
+      $$0.put(fwx.ay, fur.a(new fxc(0.5F)));
+      $$0.put(fwx.az, fus.b());
+      $$0.put(fwx.aA, fuo.b());
+      $$0.put(fwx.aB, $$5);
+      $$0.put(fwx.aC, $$9);
+      $$0.put(fwx.aD, ftm.c());
+      $$0.put(fwx.aE, $$10);
+      $$0.put(fwx.aF, fux.c());
+      $$0.put(fwx.aG, fuy.b());
+      $$0.put(fwx.aH, fuz.b());
+      $$0.put(fwx.aI, fva.a(fxc.a));
+      $$0.put(fwx.aQ, fva.a(new fxc(0.5F)));
+      $$0.put(fwx.aJ, $$11);
+      $$0.put(fwx.aO, $$4);
+      $$0.put(fwx.aP, $$3);
+      $$0.put(fwx.aK, $$11);
+      $$0.put(fwx.aL, $$4);
+      $$0.put(fwx.aM, $$3);
+      $$0.put(fwx.aN, $$12);
+      $$0.put(fwx.aR, $$8);
+      $$0.put(fwx.aS, fxe.a(fvd.a(fxc.a, false), 64, 64));
+      $$0.put(fwx.aT, $$13);
+      $$0.put(fwx.aU, $$4);
+      $$0.put(fwx.aV, $$2);
+      $$0.put(fwx.aW, fxe.a(fvd.a(fxc.a, true), 64, 64));
+      $$0.put(fwx.aX, $$4);
+      $$0.put(fwx.aY, $$2);
+      $$0.put(fwx.aZ, gnp.a());
+      $$0.put(fwx.ba, fve.c());
+      $$0.put(fwx.bb, fvf.b());
+      $$0.put(fwx.bc, fvg.b());
+      $$0.put(fwx.bd, fvh.b());
+      $$0.put(fwx.be, fvj.a());
+      $$0.put(fwx.bf, fvl.b());
+      $$0.put(fwx.bg, fvm.b());
+      $$0.put(fwx.bh, fvo.c());
+      $$0.put(fwx.bi, fvn.c());
+      $$0.put(fwx.bj, fvp.a());
+      $$0.put(fwx.bk, fvr.a());
+      $$0.put(fwx.bl, fvq.b());
+      $$0.put(fwx.bm, fvs.b());
+      $$0.put(fwx.bn, $$17);
+      $$0.put(fwx.bp, $$4);
+      $$0.put(fwx.bq, $$2);
+      $$0.put(fwx.bo, $$7);
+      $$0.put(fwx.br, $$6);
+      $$0.put(fwx.bs, fvw.c());
+      $$0.put(fwx.bt, fvw.b());
+      $$0.put(fwx.bu, fvx.b());
+      $$0.put(fwx.bv, fvy.b());
+      $$0.put(fwx.bw, $$5);
+      $$0.put(fwx.bx, $$19);
+      $$0.put(fwx.by, fwa.b());
+      $$0.put(fwx.bz, $$17);
+      $$0.put(fwx.bA, $$4);
+      $$0.put(fwx.bB, $$2);
+      $$0.put(fwx.bC, fxe.a(ful.a(new fxc(0.25F), 0.0F), 64, 32));
+      $$0.put(fwx.bD, $$15);
+      $$0.put(fwx.bE, $$15);
+      $$0.put(fwx.bF, fwc.c());
+      $$0.put(fwx.bG, $$5);
+      $$0.put(fwx.bH, $$14);
+      $$0.put(fwx.bI, fwd.a());
+      $$0.put(fwx.bJ, fwf.a(fxc.a));
+      $$0.put(fwx.bK, fwf.a(a));
+      $$0.put(fwx.bL, fwe.a(fxc.a));
+      $$0.put(fwx.bM, fwe.a(a));
+      $$0.put(fwx.bN, fwg.c());
+      $$0.put(fwx.bO, fwh.b());
+      $$0.put(fwx.bP, $$18);
+      $$0.put(fwx.bQ, $$8);
+      $$0.put(fwx.bR, fwk.b());
+      $$0.put(fwx.bS, $$18);
+      $$0.put(fwx.bT, fwm.b());
+      $$0.put(fwx.bU, fwn.c());
+      $$0.put(fwx.bV, fwo.a(fxc.a));
+      $$0.put(fwx.bW, fwo.a(c));
+      $$0.put(fwx.cb, gly.a());
+      $$0.put(fwx.bX, $$17);
+      $$0.put(fwx.bY, $$4);
+      $$0.put(fwx.bZ, $$2);
+      $$0.put(fwx.ca, $$6);
+      $$0.put(fwx.cc, fxe.a(fwp.a(fxc.a), 64, 32));
+      $$0.put(fwx.cd, fxe.a(fwp.a(new fxc(0.2F)), 64, 32));
+      $$0.put(fwx.ce, $$16);
+      $$0.put(fwx.cf, $$1);
+      $$0.put(fwx.ci, $$4);
+      $$0.put(fwx.cj, $$2);
+      $$0.put(fwx.cg, $$13);
+      $$0.put(fwx.ch, $$7);
+      $$0.put(fwx.ck, fwr.c());
+      $$0.put(fwx.cl, fwr.a(c));
+      $$0.put(fwx.cm, fwr.a(b));
+      $$0.put(fwx.cn, $$11);
+      $$0.put(fwx.co, $$4);
+      $$0.put(fwx.cp, $$3);
+      fxe $$20 = fte.a();
+      fxe $$21 = ftk.e();
+      fxe $$22 = fvk.b();
+      fxe $$23 = ftl.a();
 
-   public fwx a() {
-      return fwx.a(this.b, this.c, this.d, this.e, this.f, this.g);
-   }
+      for (cot.b $$24 : cot.b.values()) {
+         if ($$24 == cot.b.i) {
+            $$0.put(fwx.c($$24), $$22);
+            $$0.put(fwx.d($$24), $$23);
+         } else {
+            $$0.put(fwx.c($$24), $$20);
+            $$0.put(fwx.d($$24), $$21);
+         }
+      }
 
-   public fwx b() {
-      return this.o;
-   }
-
-   public void a(fwx $$0) {
-      this.o = $$0;
-   }
-
-   public void c() {
-      this.b(this.o);
-   }
-
-   public void b(fwx $$0) {
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = 1.0F;
-      this.i = 1.0F;
-      this.j = 1.0F;
-   }
-
-   public void a(fwv $$0) {
-      this.h = $$0.h;
-      this.i = $$0.i;
-      this.j = $$0.j;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-   }
-
-   public boolean a(String $$0) {
-      return this.n.containsKey($$0);
-   }
-
-   public fwv b(String $$0) {
-      fwv $$1 = this.n.get($$0);
-      if ($$1 == null) {
-         throw new NoSuchElementException("Can't find part " + $$0);
+      fxe $$25 = gga.f();
+      dtn.a().forEach($$2x -> $$0.put(fwx.a($$2x), $$25));
+      fxe $$26 = gfw.e();
+      dtn.a().forEach($$2x -> $$0.put(fwx.b($$2x), $$26));
+      ImmutableMap<fww, fxe> $$27 = $$0.build();
+      List<fww> $$28 = fwx.a().filter($$1x -> !$$27.containsKey($$1x)).collect(Collectors.toList());
+      if (!$$28.isEmpty()) {
+         throw new IllegalStateException("Missing layer definitions: " + $$28);
       } else {
-         return $$1;
+         return $$27;
       }
-   }
-
-   public void a(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   public void b(float $$0, float $$1, float $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   public void a(ezt $$0, ezx $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   public void a(ezt $$0, ezx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.k) {
-         if (!this.m.isEmpty() || !this.n.isEmpty()) {
-            $$0.a();
-            this.a($$0);
-            if (!this.l) {
-               this.a($$0.c(), $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-            }
-
-            for (fwv $$8 : this.n.values()) {
-               $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-            }
-
-            $$0.b();
-         }
-      }
-   }
-
-   public void a(ezt $$0, fwv.d $$1) {
-      this.a($$0, $$1, "");
-   }
-
-   private void a(ezt $$0, fwv.d $$1, String $$2) {
-      if (!this.m.isEmpty() || !this.n.isEmpty()) {
-         $$0.a();
-         this.a($$0);
-         ezt.a $$3 = $$0.c();
-
-         for (int $$4 = 0; $$4 < this.m.size(); $$4++) {
-            $$1.visit($$3, $$2, $$4, this.m.get($$4));
-         }
-
-         String $$5 = $$2 + "/";
-         this.n.forEach(($$3x, $$4) -> $$4.a($$0, $$1, $$5 + $$3x));
-         $$0.b();
-      }
-   }
-
-   public void a(ezt $$0) {
-      $$0.a(this.b / 16.0F, this.c / 16.0F, this.d / 16.0F);
-      if (this.e != 0.0F || this.f != 0.0F || this.g != 0.0F) {
-         $$0.a(new Quaternionf().rotationZYX(this.g, this.f, this.e));
-      }
-
-      if (this.h != 1.0F || this.i != 1.0F || this.j != 1.0F) {
-         $$0.b(this.h, this.i, this.j);
-      }
-   }
-
-   private void a(ezt.a $$0, ezx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      for (fwv.a $$8 : this.m) {
-         $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-   }
-
-   public fwv.a a(azc $$0) {
-      return this.m.get($$0.a(this.m.size()));
-   }
-
-   public boolean d() {
-      return this.m.isEmpty();
-   }
-
-   public void a(Vector3f $$0) {
-      this.b = this.b + $$0.x();
-      this.c = this.c + $$0.y();
-      this.d = this.d + $$0.z();
-   }
-
-   public void b(Vector3f $$0) {
-      this.e = this.e + $$0.x();
-      this.f = this.f + $$0.y();
-      this.g = this.g + $$0.z();
-   }
-
-   public void c(Vector3f $$0) {
-      this.h = this.h + $$0.x();
-      this.i = this.i + $$0.y();
-      this.j = this.j + $$0.z();
-   }
-
-   public Stream<fwv> e() {
-      return Stream.concat(Stream.of(this), this.n.values().stream().flatMap(fwv::e));
-   }
-
-   public static class a {
-      private final fwv.b[] g;
-      public final float a;
-      public final float b;
-      public final float c;
-      public final float d;
-      public final float e;
-      public final float f;
-
-      public a(
-         int $$0,
-         int $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         float $$9,
-         float $$10,
-         boolean $$11,
-         float $$12,
-         float $$13,
-         Set<je> $$14
-      ) {
-         this.a = $$2;
-         this.b = $$3;
-         this.c = $$4;
-         this.d = $$2 + $$5;
-         this.e = $$3 + $$6;
-         this.f = $$4 + $$7;
-         this.g = new fwv.b[$$14.size()];
-         float $$15 = $$2 + $$5;
-         float $$16 = $$3 + $$6;
-         float $$17 = $$4 + $$7;
-         $$2 -= $$8;
-         $$3 -= $$9;
-         $$4 -= $$10;
-         $$15 += $$8;
-         $$16 += $$9;
-         $$17 += $$10;
-         if ($$11) {
-            float $$18 = $$15;
-            $$15 = $$2;
-            $$2 = $$18;
-         }
-
-         fwv.c $$19 = new fwv.c($$2, $$3, $$4, 0.0F, 0.0F);
-         fwv.c $$20 = new fwv.c($$15, $$3, $$4, 0.0F, 8.0F);
-         fwv.c $$21 = new fwv.c($$15, $$16, $$4, 8.0F, 8.0F);
-         fwv.c $$22 = new fwv.c($$2, $$16, $$4, 8.0F, 0.0F);
-         fwv.c $$23 = new fwv.c($$2, $$3, $$17, 0.0F, 0.0F);
-         fwv.c $$24 = new fwv.c($$15, $$3, $$17, 0.0F, 8.0F);
-         fwv.c $$25 = new fwv.c($$15, $$16, $$17, 8.0F, 8.0F);
-         fwv.c $$26 = new fwv.c($$2, $$16, $$17, 8.0F, 0.0F);
-         float $$27 = (float)$$0;
-         float $$28 = (float)$$0 + $$7;
-         float $$29 = (float)$$0 + $$7 + $$5;
-         float $$30 = (float)$$0 + $$7 + $$5 + $$5;
-         float $$31 = (float)$$0 + $$7 + $$5 + $$7;
-         float $$32 = (float)$$0 + $$7 + $$5 + $$7 + $$5;
-         float $$33 = (float)$$1;
-         float $$34 = (float)$$1 + $$7;
-         float $$35 = (float)$$1 + $$7 + $$6;
-         int $$36 = 0;
-         if ($$14.contains(je.a)) {
-            this.g[$$36++] = new fwv.b(new fwv.c[]{$$24, $$23, $$19, $$20}, $$28, $$33, $$29, $$34, $$12, $$13, $$11, je.a);
-         }
-
-         if ($$14.contains(je.b)) {
-            this.g[$$36++] = new fwv.b(new fwv.c[]{$$21, $$22, $$26, $$25}, $$29, $$34, $$30, $$33, $$12, $$13, $$11, je.b);
-         }
-
-         if ($$14.contains(je.e)) {
-            this.g[$$36++] = new fwv.b(new fwv.c[]{$$19, $$23, $$26, $$22}, $$27, $$34, $$28, $$35, $$12, $$13, $$11, je.e);
-         }
-
-         if ($$14.contains(je.c)) {
-            this.g[$$36++] = new fwv.b(new fwv.c[]{$$20, $$19, $$22, $$21}, $$28, $$34, $$29, $$35, $$12, $$13, $$11, je.c);
-         }
-
-         if ($$14.contains(je.f)) {
-            this.g[$$36++] = new fwv.b(new fwv.c[]{$$24, $$20, $$21, $$25}, $$29, $$34, $$31, $$35, $$12, $$13, $$11, je.f);
-         }
-
-         if ($$14.contains(je.d)) {
-            this.g[$$36] = new fwv.b(new fwv.c[]{$$23, $$24, $$25, $$26}, $$31, $$34, $$32, $$35, $$12, $$13, $$11, je.d);
-         }
-      }
-
-      public void a(ezt.a $$0, ezx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         Matrix4f $$8 = $$0.a();
-         Vector3f $$9 = new Vector3f();
-
-         for (fwv.b $$10 : this.g) {
-            Vector3f $$11 = $$0.a($$10.b, $$9);
-            float $$12 = $$11.x();
-            float $$13 = $$11.y();
-            float $$14 = $$11.z();
-
-            for (fwv.c $$15 : $$10.a) {
-               float $$16 = $$15.a.x() / 16.0F;
-               float $$17 = $$15.a.y() / 16.0F;
-               float $$18 = $$15.a.z() / 16.0F;
-               Vector3f $$19 = $$8.transformPosition($$16, $$17, $$18, $$9);
-               $$1.a($$19.x(), $$19.y(), $$19.z(), $$4, $$5, $$6, $$7, $$15.b, $$15.c, $$3, $$2, $$12, $$13, $$14);
-            }
-         }
-      }
-   }
-
-   static class b {
-      public final fwv.c[] a;
-      public final Vector3f b;
-
-      public b(fwv.c[] $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, boolean $$7, je $$8) {
-         this.a = $$0;
-         float $$9 = 0.0F / $$5;
-         float $$10 = 0.0F / $$6;
-         $$0[0] = $$0[0].a($$3 / $$5 - $$9, $$2 / $$6 + $$10);
-         $$0[1] = $$0[1].a($$1 / $$5 + $$9, $$2 / $$6 + $$10);
-         $$0[2] = $$0[2].a($$1 / $$5 + $$9, $$4 / $$6 - $$10);
-         $$0[3] = $$0[3].a($$3 / $$5 - $$9, $$4 / $$6 - $$10);
-         if ($$7) {
-            int $$11 = $$0.length;
-
-            for (int $$12 = 0; $$12 < $$11 / 2; $$12++) {
-               fwv.c $$13 = $$0[$$12];
-               $$0[$$12] = $$0[$$11 - 1 - $$12];
-               $$0[$$11 - 1 - $$12] = $$13;
-            }
-         }
-
-         this.b = $$8.m();
-         if ($$7) {
-            this.b.mul(-1.0F, 1.0F, 1.0F);
-         }
-      }
-   }
-
-   static class c {
-      public final Vector3f a;
-      public final float b;
-      public final float c;
-
-      public c(float $$0, float $$1, float $$2, float $$3, float $$4) {
-         this(new Vector3f($$0, $$1, $$2), $$3, $$4);
-      }
-
-      public fwv.c a(float $$0, float $$1) {
-         return new fwv.c(this.a, $$0, $$1);
-      }
-
-      public c(Vector3f $$0, float $$1, float $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-   }
-
-   @FunctionalInterface
-   public interface d {
-      void visit(ezt.a var1, String var2, int var3, fwv.a var4);
    }
 }

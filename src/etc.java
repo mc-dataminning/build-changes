@@ -1,36 +1,16 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+public class etc {
+   public static final esz<bss> a = a("this_entity");
+   public static final esz<cmv> b = a("last_damage_player");
+   public static final esz<brl> c = a("damage_source");
+   public static final esz<bss> d = a("killer_entity");
+   public static final esz<bss> e = a("direct_killer_entity");
+   public static final esz<evp> f = a("origin");
+   public static final esz<dsa> g = a("block_state");
+   public static final esz<dpf> h = a("block_entity");
+   public static final esz<cun> i = a("tool");
+   public static final esz<Float> j = a("explosion_radius");
 
-public class etc extends ete {
-   public static final MapCodec<etc> a = a(etc::new);
-
-   etc(List<etn> $$0) {
-      super($$0, ac.b($$0));
-   }
-
-   @Override
-   public eto b() {
-      return etp.d;
-   }
-
-   public static etc.a a(etn.a... $$0) {
-      return new etc.a($$0);
-   }
-
-   public static class a extends ete.a {
-      public a(etn.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public etc.a or(etn.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected etn a(List<etn> $$0) {
-         return new etc($$0);
-      }
+   private static <T> esz<T> a(String $$0) {
+      return new esz<>(new ale($$0));
    }
 }

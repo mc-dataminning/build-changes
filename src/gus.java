@@ -1,13 +1,12 @@
-public class gus implements guu {
-   private static final int a = 600;
-   private static final xl b = xl.c("tutorial.punch_tree.title");
-   private static final xl c = xl.a("tutorial.punch_tree.description", gut.a("attack"));
-   private final gut d;
-   private fjk e;
+public class gus implements gux {
+   private static final int a = 6000;
+   private static final xo b = xo.c("tutorial.find_tree.title");
+   private static final xo c = xo.c("tutorial.find_tree.description");
+   private final guw d;
+   private fjn e;
    private int f;
-   private int g;
 
-   public gus(gut $$0) {
+   public gus(guw $$0) {
       this.d = $$0;
    }
 
@@ -15,25 +14,18 @@ public class gus implements guu {
    public void a() {
       this.f++;
       if (!this.d.f()) {
-         this.d.a(guv.f);
+         this.d.a(guy.f);
       } else {
          if (this.f == 1) {
-            gcl $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.gc().a(awu.r)) {
-                  this.d.a(guv.e);
-                  return;
-               }
-
-               if (gup.a($$0)) {
-                  this.d.a(guv.e);
-                  return;
-               }
+            gco $$0 = this.d.e().s;
+            if ($$0 != null && (b($$0) || a($$0))) {
+               this.d.a(guy.e);
+               return;
             }
          }
 
-         if ((this.f >= 600 || this.g > 3) && this.e == null) {
-            this.e = new fjk(fjk.a.c, b, c, true);
+         if (this.f >= 6000 && this.e == null) {
+            this.e = new fjn(fjn.a.c, b, c, false);
             this.d.e().ax().a(this.e);
          }
       }
@@ -48,27 +40,34 @@ public class gus implements guu {
    }
 
    @Override
-   public void a(fxq $$0, iz $$1, drx $$2, float $$3) {
-      boolean $$4 = $$2.a(awl.t);
-      if ($$4 && $$3 > 0.0F) {
-         if (this.e != null) {
-            this.e.a($$3);
+   public void a(fxt $$0, evn $$1) {
+      if ($$1.c() == evn.a.b) {
+         dsa $$2 = $$0.a_(((evl)$$1).a());
+         if ($$2.a(awo.aj)) {
+            this.d.a(guy.c);
          }
-
-         if ($$3 >= 1.0F) {
-            this.d.a(guv.d);
-         }
-      } else if (this.e != null) {
-         this.e.a(0.0F);
-      } else if ($$4) {
-         this.g++;
       }
    }
 
    @Override
-   public void a(cuk $$0) {
-      if ($$0.a(awu.r)) {
-         this.d.a(guv.e);
+   public void a(cun $$0) {
+      if ($$0.a(awx.aM)) {
+         this.d.a(guy.e);
       }
+   }
+
+   private static boolean b(gco $$0) {
+      return $$0.gc().a_($$0x -> $$0x.a(awx.aM));
+   }
+
+   public static boolean a(gco $$0) {
+      for (ji<dex> $$1 : lp.e.c(awo.aj)) {
+         dex $$2 = $$1.a();
+         if ($$0.j().a(awj.a.b($$2)) > 0) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

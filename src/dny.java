@@ -1,43 +1,78 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dny extends dng implements dlv {
-   public static final MapCodec<dny> a = b(dny::new);
-   public static final dso c = dsn.C;
-
-   @Override
-   protected MapCodec<? extends dny> a() {
-      return a;
-   }
-
-   protected dny(drw.d $$0) {
-      super($$0);
-      this.k(this.n().a(c, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public drx a(cxv $$0) {
-      enq $$1 = $$0.q().b_($$0.a());
-      return super.a($$0).a(c, Boolean.valueOf($$1.b(enr.c)));
-   }
+public class dny extends ddt {
+   public static final MapCodec<dny> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dlz.a.b.fieldOf("kind").forGetter(ddt::b), u()).apply($$0, dny::new));
+   public static final dsu d = dit.aE;
+   private static final Map<je, ewi> b = Maps.newEnumMap(
+      ImmutableMap.of(
+         je.c,
+         dex.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
+         je.d,
+         dex.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
+         je.f,
+         dex.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
+         je.e,
+         dex.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
+      )
+   );
 
    @Override
-   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, enr.c, enr.c.a($$3));
+   public MapCodec<? extends dny> a() {
+      return c;
+   }
+
+   protected dny(dlz.a $$0, drz.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(d, je.c));
+   }
+
+   @Override
+   public String g() {
+      return this.r().a();
+   }
+
+   @Override
+   protected ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
+      return b.get($$0.c(d));
+   }
+
+   @Override
+   public dsa a(cxy $$0) {
+      dsa $$1 = super.a($$0);
+      dbc $$2 = $$0.q();
+      iz $$3 = $$0.a();
+      je[] $$4 = $$0.f();
+
+      for (je $$5 : $$4) {
+         if ($$5.o().d()) {
+            je $$6 = $$5.g();
+            $$1 = $$1.a(d, $$6);
+            if (!$$2.a_($$3.a($$5)).a($$0)) {
+               return $$1;
+            }
+         }
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return null;
    }
 
    @Override
-   protected enq b_(drx $$0) {
-      return $$0.c(c) ? enr.c.a(true) : super.b_($$0);
+   protected dsa a(dsa $$0, dlk $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      $$0.a(c);
+   protected dsa a(dsa $$0, dju $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected void a(dsb.a<dex, dsa> $$0) {
+      super.a($$0);
+      $$0.a(d);
    }
 }

@@ -1,31 +1,50 @@
-import java.util.UUID;
+public class fhn extends fhw {
+   private static final int a = 4;
+   private final boolean b;
+   private final int c;
 
-public class fhn extends bqf {
-   private static final long j = 100L;
-   protected float h;
-   protected long i;
+   public fhn(int $$0, xo $$1, fgn $$2) {
+      this($$0, $$1, $$2, 4);
+   }
 
-   public fhn(UUID $$0, xl $$1, float $$2, bqf.a $$3, bqf.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      super($$0, $$1, $$3, $$4);
-      this.h = $$2;
-      this.b = $$2;
-      this.i = ac.c();
-      this.a($$5);
-      this.b($$6);
-      this.c($$7);
+   public fhn(int $$0, xo $$1, fgn $$2, int $$3) {
+      this($$0, $$1, $$2, true, $$3);
+   }
+
+   public fhn(int $$0, xo $$1, fgn $$2, boolean $$3, int $$4) {
+      super($$1, $$2);
+      this.d($$0);
+      this.b(true);
+      this.j = true;
+      this.b = $$3;
+      this.c = $$4;
+   }
+
+   public void b(int $$0) {
+      this.d($$0 - this.c * 4);
    }
 
    @Override
-   public void a(float $$0) {
-      this.b = this.j();
-      this.h = $$0;
-      this.i = ac.c();
+   protected void a(fky $$0) {
+      $$0.a(fkx.a, this.y());
    }
 
    @Override
-   public float j() {
-      long $$0 = ac.c() - this.i;
-      float $$1 = ayu.a((float)$$0 / 100.0F, 0.0F, 1.0F);
-      return ayu.i($$1, this.b, this.h);
+   public void b(fgp $$0, int $$1, int $$2, float $$3) {
+      if (this.aI_() || this.b) {
+         int $$4 = this.C() - this.c;
+         int $$5 = this.D() - this.c;
+         int $$6 = this.x() + this.c * 2;
+         int $$7 = this.v() + this.c * 2;
+         int $$8 = this.b ? (this.aI_() ? -1 : -6250336) : -1;
+         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
+         $$0.b($$4, $$5, $$6, $$7, $$8);
+      }
+
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(gtt $$0) {
    }
 }

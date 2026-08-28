@@ -1,117 +1,61 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dqj extends dpc implements dws.b<dwz.b>, dwz {
-   private static final Logger b = LogUtils.getLogger();
-   private dwz.a c;
-   private final dwz.b d;
-   private final dwz.d e = this.b();
-   private int h;
+public record dqj(Optional<cui> d, Optional<cui> e, Optional<cui> f, Optional<cui> g) {
+   public static final dqj a = new dqj(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+   public static final Codec<dqj> b = lp.h.q().sizeLimitedListOf(4).xmap(dqj::new, dqj::a);
+   public static final zm<wz, dqj> c = zk.a(lq.G).a(zk.c(4)).a(dqj::new, dqj::a);
 
-   protected dqj(dpe<?> $$0, iz $$1, drx $$2) {
-      super($$0, $$1, $$2);
-      this.c = new dwz.a();
-      this.d = new dwz.b(this);
+   private dqj(List<cui> $$0) {
+      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
    }
 
-   public dqj(iz $$0, drx $$1) {
-      this(dpe.I, $$0, $$1);
+   public dqj(cui $$0, cui $$1, cui $$2, cui $$3) {
+      this(List.of($$0, $$1, $$2, $$3));
    }
 
-   public dwz.d b() {
-      return new dqj.a(this.aA_());
-   }
-
-   @Override
-   protected void a(ur $$0, jk.a $$1) {
-      super.a($$0, $$1);
-      this.h = $$0.h("last_vibration_frequency");
-      if ($$0.b("listener", 10)) {
-         dwz.a.a.parse(new Dynamic(vf.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
+   private static Optional<cui> a(List<cui> $$0, int $$1) {
+      if ($$1 >= $$0.size()) {
+         return Optional.empty();
+      } else {
+         cui $$2 = $$0.get($$1);
+         return $$2 == cuq.qL ? Optional.empty() : Optional.of($$2);
       }
    }
 
-   @Override
-   protected void b(ur $$0, jk.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("last_vibration_frequency", this.h);
-      dwz.a.a.encodeStart(vf.a, this.c).resultOrPartial(b::error).ifPresent($$1x -> $$0.a("listener", $$1x));
+   public ur a(ur $$0) {
+      if (this.equals(a)) {
+         return $$0;
+      } else {
+         $$0.a("sherds", (vo)b.encodeStart(vf.a, this).getOrThrow());
+         return $$0;
+      }
    }
 
-   @Override
-   public dwz.a gs() {
-      return this.c;
+   public List<cui> a() {
+      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(cuq.qL)).toList();
    }
 
-   @Override
-   public dwz.d gt() {
-      return this.e;
+   public static dqj b(@Nullable ur $$0) {
+      return $$0 != null && $$0.e("sherds") ? b.parse(vf.a, $$0.c("sherds")).result().orElse(a) : a;
    }
 
-   public int d() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public dwz.b f() {
+   public Optional<cui> b() {
       return this.d;
    }
 
-   protected class a implements dwz.d {
-      public static final int b = 8;
-      protected final iz c;
-      private final dwu a;
+   public Optional<cui> c() {
+      return this.e;
+   }
 
-      public a(final iz $$1) {
-         this.c = $$1;
-         this.a = new dwm($$1);
-      }
+   public Optional<cui> d() {
+      return this.f;
+   }
 
-      @Override
-      public int a() {
-         return 8;
-      }
-
-      @Override
-      public dwu b() {
-         return this.a;
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-
-      @Override
-      public boolean a(arb $$0, iz $$1, ji<dwq> $$2, @Nullable dwq.a $$3) {
-         return !$$1.equals(this.c) || !$$2.a(dwq.f) && !$$2.a(dwq.i) ? dln.n(dqj.this.n()) : false;
-      }
-
-      @Override
-      public void a(arb $$0, iz $$1, ji<dwq> $$2, @Nullable bsp $$3, @Nullable bsp $$4, float $$5) {
-         drx $$6 = dqj.this.n();
-         if (dln.n($$6)) {
-            dqj.this.a(dwz.a_($$2));
-            int $$7 = dwz.a_($$5, this.a());
-            if ($$6.b() instanceof dln $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dqj.this.d());
-            }
-         }
-      }
-
-      @Override
-      public void e() {
-         dqj.this.e();
-      }
-
-      @Override
-      public boolean f() {
-         return true;
-      }
+   public Optional<cui> e() {
+      return this.g;
    }
 }

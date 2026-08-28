@@ -1,7 +1,7 @@
-public enum dtf implements azp {
-   a("top"),
-   b("bottom"),
-   c("double");
+public enum dtf implements azs {
+   a("up"),
+   b("side"),
+   c("none");
 
    private final String d;
 
@@ -11,11 +11,15 @@ public enum dtf implements azp {
 
    @Override
    public String toString() {
-      return this.d;
+      return this.c();
    }
 
    @Override
    public String c() {
       return this.d;
+   }
+
+   public boolean a() {
+      return this != c;
    }
 }

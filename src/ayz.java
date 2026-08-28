@@ -1,45 +1,192 @@
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.RecordBuilder.AbstractUniversalBuilder;
 import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-public record ayz(int a, int b) {
-   private static final long c = -8552249625308161526L;
-   private static final int d = 1229472850;
-   private static final int e = 13;
+public class ayz implements DynamicOps<baa> {
+   public static final ayz a = new ayz();
 
-   public static ayz a(InputStream $$0) throws IOException {
-      DataInputStream $$1 = new DataInputStream($$0);
-      if ($$1.readLong() != -8552249625308161526L) {
-         throw new IOException("Bad PNG Signature");
-      } else if ($$1.readInt() != 13) {
-         throw new IOException("Bad length for IHDR chunk!");
-      } else if ($$1.readInt() != 1229472850) {
-         throw new IOException("Bad type for IHDR chunk!");
-      } else {
-         int $$2 = $$1.readInt();
-         int $$3 = $$1.readInt();
-         return new ayz($$2, $$3);
+   private ayz() {
+   }
+
+   public <U> U a(DynamicOps<U> $$0, baa $$1) {
+      return (U)$$0.empty();
+   }
+
+   public baa a() {
+      return baa.a;
+   }
+
+   public baa b() {
+      return baa.a;
+   }
+
+   public baa c() {
+      return baa.a;
+   }
+
+   public baa a(Number $$0) {
+      return baa.a;
+   }
+
+   public baa a(byte $$0) {
+      return baa.a;
+   }
+
+   public baa a(short $$0) {
+      return baa.a;
+   }
+
+   public baa a(int $$0) {
+      return baa.a;
+   }
+
+   public baa a(long $$0) {
+      return baa.a;
+   }
+
+   public baa a(float $$0) {
+      return baa.a;
+   }
+
+   public baa a(double $$0) {
+      return baa.a;
+   }
+
+   public baa a(boolean $$0) {
+      return baa.a;
+   }
+
+   public baa a(String $$0) {
+      return baa.a;
+   }
+
+   public DataResult<Number> a(baa $$0) {
+      return DataResult.error(() -> "Not a number");
+   }
+
+   public DataResult<Boolean> b(baa $$0) {
+      return DataResult.error(() -> "Not a boolean");
+   }
+
+   public DataResult<String> c(baa $$0) {
+      return DataResult.error(() -> "Not a string");
+   }
+
+   public DataResult<baa> a(baa $$0, baa $$1) {
+      return DataResult.success(baa.a);
+   }
+
+   public DataResult<baa> a(baa $$0, List<baa> $$1) {
+      return DataResult.success(baa.a);
+   }
+
+   public DataResult<baa> a(baa $$0, baa $$1, baa $$2) {
+      return DataResult.success(baa.a);
+   }
+
+   public DataResult<baa> a(baa $$0, Map<baa, baa> $$1) {
+      return DataResult.success(baa.a);
+   }
+
+   public DataResult<baa> a(baa $$0, MapLike<baa> $$1) {
+      return DataResult.success(baa.a);
+   }
+
+   public DataResult<Stream<Pair<baa, baa>>> d(baa $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<Consumer<BiConsumer<baa, baa>>> e(baa $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<MapLike<baa>> f(baa $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<Stream<baa>> g(baa $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<Consumer<Consumer<baa>>> h(baa $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<ByteBuffer> i(baa $$0) {
+      return DataResult.error(() -> "Not a byte list");
+   }
+
+   public DataResult<IntStream> j(baa $$0) {
+      return DataResult.error(() -> "Not an int list");
+   }
+
+   public DataResult<LongStream> k(baa $$0) {
+      return DataResult.error(() -> "Not a long list");
+   }
+
+   public baa a(Stream<Pair<baa, baa>> $$0) {
+      return baa.a;
+   }
+
+   public baa a(Map<baa, baa> $$0) {
+      return baa.a;
+   }
+
+   public baa b(Stream<baa> $$0) {
+      return baa.a;
+   }
+
+   public baa a(ByteBuffer $$0) {
+      return baa.a;
+   }
+
+   public baa a(IntStream $$0) {
+      return baa.a;
+   }
+
+   public baa a(LongStream $$0) {
+      return baa.a;
+   }
+
+   public baa a(baa $$0, String $$1) {
+      return $$0;
+   }
+
+   public RecordBuilder<baa> mapBuilder() {
+      return new ayz.a(this);
+   }
+
+   @Override
+   public String toString() {
+      return "Null";
+   }
+
+   static final class a extends AbstractUniversalBuilder<baa, baa> {
+      public a(DynamicOps<baa> $$0) {
+         super($$0);
       }
-   }
 
-   public static ayz a(byte[] $$0) throws IOException {
-      return a(new ByteArrayInputStream($$0));
-   }
+      protected baa a() {
+         return baa.a;
+      }
 
-   public static void a(ByteBuffer $$0) throws IOException {
-      ByteOrder $$1 = $$0.order();
-      $$0.order(ByteOrder.BIG_ENDIAN);
-      if ($$0.getLong(0) != -8552249625308161526L) {
-         throw new IOException("Bad PNG Signature");
-      } else if ($$0.getInt(8) != 13) {
-         throw new IOException("Bad length for IHDR chunk!");
-      } else if ($$0.getInt(12) != 1229472850) {
-         throw new IOException("Bad type for IHDR chunk!");
-      } else {
-         $$0.order($$1);
+      protected baa a(baa $$0, baa $$1, baa $$2) {
+         return $$2;
+      }
+
+      protected DataResult<baa> a(baa $$0, baa $$1) {
+         return DataResult.success($$1);
       }
    }
 }

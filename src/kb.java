@@ -35,11 +35,11 @@ public class kb extends kd {
       return new kb(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   public static kb a(dba $$0, int $$1) {
+   public static kb a(dbd $$0, int $$1) {
       return new kb($$0.e, $$1, $$0.f);
    }
 
-   public static kb a(dvx $$0) {
+   public static kb a(dwa $$0) {
       return a($$0.dp());
    }
 
@@ -51,7 +51,7 @@ public class kb extends kd {
       return new kb(b($$0), c($$0), d($$0));
    }
 
-   public static kb a(dtt $$0) {
+   public static kb a(dtw $$0) {
       return a($$0.f(), $$0.ao());
    }
 
@@ -64,7 +64,7 @@ public class kb extends kd {
    }
 
    public static int a(double $$0) {
-      return a(ayu.a($$0));
+      return a(ayx.a($$0));
    }
 
    public static int a(int $$0) {
@@ -72,7 +72,7 @@ public class kb extends kd {
    }
 
    public static int b(double $$0) {
-      return ayu.a($$0) >> 4;
+      return ayx.a($$0) >> 4;
    }
 
    public static int b(int $$0) {
@@ -191,8 +191,8 @@ public class kb extends kd {
       return this.j().b(8, 8, 8);
    }
 
-   public dba r() {
-      return new dba(this.a(), this.c());
+   public dbd r() {
+      return new dbd(this.a(), this.c());
    }
 
    public static long c(iz $$0) {
@@ -225,7 +225,7 @@ public class kb extends kd {
       return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
    }
 
-   public static Stream<kb> a(dba $$0, int $$1, int $$2, int $$3) {
+   public static Stream<kb> a(dbd $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$0.e;
       int $$5 = $$0.f;
       return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3 - 1, $$5 + $$1);

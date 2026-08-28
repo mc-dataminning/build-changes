@@ -10,7 +10,7 @@ import javax.annotation.Nullable;
 
 public record eg(@Nullable Float c, @Nullable Float d) {
    public static final eg a = new eg(null, null);
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("argument.range.ints"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xo.c("argument.range.ints"));
 
    public static eg a(float $$0) {
       return new eg($$0, $$0);
@@ -66,13 +66,13 @@ public record eg(@Nullable Float c, @Nullable Float d) {
    public static eg a(@Nullable JsonElement $$0) {
       if ($$0 == null || $$0.isJsonNull()) {
          return a;
-      } else if (ayk.b($$0)) {
-         float $$1 = ayk.e($$0, "value");
+      } else if (ayn.b($$0)) {
+         float $$1 = ayn.e($$0, "value");
          return new eg($$1, $$1);
       } else {
-         JsonObject $$2 = ayk.m($$0, "value");
-         Float $$3 = $$2.has("min") ? ayk.m($$2, "min") : null;
-         Float $$4 = $$2.has("max") ? ayk.m($$2, "max") : null;
+         JsonObject $$2 = ayn.m($$0, "value");
+         Float $$3 = $$2.has("min") ? ayn.m($$2, "min") : null;
+         Float $$4 = $$2.has("max") ? ayn.m($$2, "max") : null;
          return new eg($$3, $$4);
       }
    }

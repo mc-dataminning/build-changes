@@ -1,79 +1,119 @@
-import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
+import com.google.common.primitives.UnsignedLong;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class evc {
-   private final PathMatcher a;
+public class evc<T> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "Callback";
+   private static final String c = "Name";
+   private static final String d = "TriggerTime";
+   private final evb<T> e;
+   private final Queue<evc.a<T>> f = new PriorityQueue<>(c());
+   private UnsignedLong g = UnsignedLong.ZERO;
+   private final Table<String, Long, evc.a<T>> h = HashBasedTable.create();
 
-   public evc(PathMatcher $$0) {
-      this.a = $$0;
+   private static <T> Comparator<evc.a<T>> c() {
+      return Comparator.<evc.a<T>>comparingLong($$0 -> $$0.a).thenComparing($$0 -> $$0.b);
    }
 
-   public void a(Path $$0, List<evd> $$1) throws IOException {
-      Path $$2 = Files.readSymbolicLink($$0);
-      if (!this.a.matches($$2)) {
-         $$1.add(new evd($$0, $$2));
+   public evc(evb<T> $$0, Stream<? extends Dynamic<?>> $$1) {
+      this($$0);
+      this.f.clear();
+      this.h.clear();
+      this.g = UnsignedLong.ZERO;
+      $$1.forEach($$0x -> {
+         vo $$1x = (vo)$$0x.convert(vf.a).getValue();
+         if ($$1x instanceof ur $$2) {
+            this.a($$2);
+         } else {
+            a.warn("Invalid format of events: {}", $$1x);
+         }
+      });
+   }
+
+   public evc(evb<T> $$0) {
+      this.e = $$0;
+   }
+
+   public void a(T $$0, long $$1) {
+      while (true) {
+         evc.a<T> $$2 = this.f.peek();
+         if ($$2 == null || $$2.a > $$1) {
+            return;
+         }
+
+         this.f.remove();
+         this.h.remove($$2.c, $$1);
+         $$2.d.handle($$0, this, $$1);
       }
    }
 
-   public List<evd> a(Path $$0) throws IOException {
-      List<evd> $$1 = new ArrayList<>();
-      this.a($$0, $$1);
+   public void a(String $$0, long $$1, eva<T> $$2) {
+      if (!this.h.contains($$0, $$1)) {
+         this.g = this.g.plus(UnsignedLong.ONE);
+         evc.a<T> $$3 = new evc.a<>($$1, this.g, $$0, $$2);
+         this.h.put($$0, $$1, $$3);
+         this.f.add($$3);
+      }
+   }
+
+   public int a(String $$0) {
+      Collection<evc.a<T>> $$1 = this.h.row($$0).values();
+      $$1.forEach(this.f::remove);
+      int $$2 = $$1.size();
+      $$1.clear();
+      return $$2;
+   }
+
+   public Set<String> a() {
+      return Collections.unmodifiableSet(this.h.rowKeySet());
+   }
+
+   private void a(ur $$0) {
+      ur $$1 = $$0.p("Callback");
+      eva<T> $$2 = this.e.a($$1);
+      if ($$2 != null) {
+         String $$3 = $$0.l("Name");
+         long $$4 = $$0.i("TriggerTime");
+         this.a($$3, $$4, $$2);
+      }
+   }
+
+   private ur a(evc.a<T> $$0) {
+      ur $$1 = new ur();
+      $$1.a("Name", $$0.c);
+      $$1.a("TriggerTime", $$0.a);
+      $$1.a("Callback", this.e.a($$0.d));
       return $$1;
    }
 
-   public List<evd> a(Path $$0, boolean $$1) throws IOException {
-      List<evd> $$2 = new ArrayList<>();
-
-      BasicFileAttributes $$3;
-      try {
-         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
-         return $$2;
-      }
-
-      if ($$3.isRegularFile()) {
-         throw new IOException("Path " + $$0 + " is not a directory");
-      } else {
-         if ($$3.isSymbolicLink()) {
-            if (!$$1) {
-               this.a($$0, $$2);
-               return $$2;
-            }
-
-            $$0 = Files.readSymbolicLink($$0);
-         }
-
-         this.b($$0, $$2);
-         return $$2;
-      }
+   public ux b() {
+      ux $$0 = new ux();
+      this.f.stream().sorted(c()).map(this::a).forEach($$0::add);
+      return $$0;
    }
 
-   public void b(Path $$0, final List<evd> $$1) throws IOException {
-      Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
-         private void c(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            if ($$1.isSymbolicLink()) {
-               evc.this.a($$0, $$1);
-            }
-         }
+   public static class a<T> {
+      public final long a;
+      public final UnsignedLong b;
+      public final String c;
+      public final eva<T> d;
 
-         public FileVisitResult a(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.preVisitDirectory($$0, $$1);
-         }
-
-         public FileVisitResult b(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.visitFile($$0, $$1);
-         }
-      });
+      a(long $$0, UnsignedLong $$1, String $$2, eva<T> $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
    }
 }

@@ -8,38 +8,38 @@ import javax.annotation.Nullable;
 
 public class os implements oo {
    private final op b;
-   private final cuf c;
+   private final cui c;
    private final int d;
    private final List<String> e = Lists.newArrayList();
-   private final Map<Character, cyn> f = Maps.newLinkedHashMap();
+   private final Map<Character, cyq> f = Maps.newLinkedHashMap();
    private final Map<String, an<?>> g = new LinkedHashMap<>();
    @Nullable
    private String h;
    private boolean i = true;
 
-   public os(op $$0, dbs $$1, int $$2) {
+   public os(op $$0, dbv $$1, int $$2) {
       this.b = $$0;
       this.c = $$1.r();
       this.d = $$2;
    }
 
-   public static os a(op $$0, dbs $$1) {
+   public static os a(op $$0, dbv $$1) {
       return a($$0, $$1, 1);
    }
 
-   public static os a(op $$0, dbs $$1, int $$2) {
+   public static os a(op $$0, dbv $$1, int $$2) {
       return new os($$0, $$1, $$2);
    }
 
-   public os a(Character $$0, axb<cuf> $$1) {
-      return this.a($$0, cyn.a($$1));
+   public os a(Character $$0, axe<cui> $$1) {
+      return this.a($$0, cyq.a($$1));
    }
 
-   public os a(Character $$0, dbs $$1) {
-      return this.a($$0, cyn.a($$1));
+   public os a(Character $$0, dbv $$1) {
+      return this.a($$0, cyq.a($$1));
    }
 
-   public os a(Character $$0, cyn $$1) {
+   public os a(Character $$0, cyq $$1) {
       if (this.f.containsKey($$0)) {
          throw new IllegalArgumentException("Symbol '" + $$0 + "' is already defined!");
       } else if ($$0 == ' ') {
@@ -75,24 +75,24 @@ public class os implements oo {
    }
 
    @Override
-   public cuf a() {
+   public cui a() {
       return this.c;
    }
 
    @Override
-   public void a(oq $$0, alb $$1) {
-      cyy $$2 = this.a($$1);
+   public void a(oq $$0, ale $$1) {
+      czb $$2 = this.a($$1);
       ae.a $$3 = $$0.a().a("has_the_recipe", dp.a($$1)).a(aj.a.a($$1)).a(ai.a.b);
       this.g.forEach($$3::a);
-      cyx $$4 = new cyx(Objects.requireNonNullElse(this.h, ""), oo.a(this.b), $$2, new cuk(this.c, this.d), this.i);
+      cza $$4 = new cza(Objects.requireNonNullElse(this.h, ""), oo.a(this.b), $$2, new cun(this.c, this.d), this.i);
       $$0.a($$1, $$4, $$3.b($$1.d("recipes/" + this.b.a() + "/")));
    }
 
-   private cyy a(alb $$0) {
+   private czb a(ale $$0) {
       if (this.g.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       } else {
-         return cyy.a(this.f, this.e);
+         return czb.a(this.f, this.e);
       }
    }
 }

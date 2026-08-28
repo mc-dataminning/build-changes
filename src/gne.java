@@ -1,48 +1,25 @@
-public abstract class gne<T extends bsp, M extends ftv<T>> {
-   private final gko<T, M> a;
+public class gne<T extends cmv> extends gnh<T, fvd<T>> {
+   private final fuy a;
 
-   public gne(gko<T, M> $$0) {
-      this.a = $$0;
+   public gne(gkr<T, fvd<T>> $$0, fwu $$1) {
+      super($$0);
+      this.a = new fuy($$1.a(fwx.aG));
    }
 
-   protected static <T extends btk> void a(
-      ftv<T> $$0,
-      ftv<T> $$1,
-      alb $$2,
-      ezt $$3,
-      gdj $$4,
-      int $$5,
-      T $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-      if (!$$6.ch()) {
-         $$0.a($$1);
-         $$1.a($$6, $$7, $$8, $$12);
-         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
-         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
-      }
+   public void a(ezw $$0, gdm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
    }
 
-   protected static <T extends btk> void a(ftv<T> $$0, alb $$1, ezt $$2, gdj $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
-      ezx $$9 = $$3.getBuffer(gdr.e($$1));
-      $$0.a($$2, $$9, $$4, gjt.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
+   private void a(ezw $$0, gdm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
+      ur $$9 = $$8 ? $$3.gt() : $$3.gu();
+      bsy.a($$9.l("id")).filter($$0x -> $$0x == bsy.ax).ifPresent($$10 -> {
+         $$0.a();
+         $$0.a($$8 ? 0.4F : -0.4F, $$3.ca() ? -1.3F : -1.5F, 0.0F);
+         cft.b $$11 = cft.b.a($$9.h("Variant"));
+         faa $$12 = $$1.getBuffer(this.a.a(gki.a($$11)));
+         this.a.a($$0, $$12, $$2, goo.d, $$4, $$5, $$6, $$7, $$3.ai);
+         $$0.b();
+      });
    }
-
-   public M c() {
-      return this.a.a();
-   }
-
-   protected alb a(T $$0) {
-      return this.a.a($$0);
-   }
-
-   public abstract void a(ezt var1, gdj var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

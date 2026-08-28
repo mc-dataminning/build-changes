@@ -1,19 +1,20 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class elr extends els {
+public class elr extends emf {
    public static final MapCodec<elr> a = MapCodec.unit(() -> elr.b);
    public static final elr b = new elr();
 
-   private elr() {
+   @Nullable
+   @Override
+   public emi.c a(dbz $$0, iz $$1, iz $$2, emi.c $$3, emi.c $$4, eme $$5) {
+      iz $$6 = $$4.a();
+      boolean $$7 = $$0.a_($$6).a(dez.H);
+      return $$7 && !dex.a($$4.b().j($$0, $$6)) ? new emi.c($$6, dez.H.o(), $$4.c()) : $$4;
    }
 
    @Override
-   public boolean a(iz $$0, iz $$1, iz $$2, azc $$3) {
-      return true;
-   }
-
-   @Override
-   protected elt<?> a() {
-      return elt.a;
+   protected emh<?> a() {
+      return emh.m;
    }
 }

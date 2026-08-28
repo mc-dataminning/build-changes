@@ -1,99 +1,44 @@
-import javax.annotation.Nullable;
+public class gsf extends gru {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final cmv p;
+   private final cor q;
+   private final boolean r;
 
-public class gsf implements gts<gsf> {
-   public static final aku a = new aku("sounds", ".ogg");
-   private final alb b;
-   private final bpx c;
-   private final bpx d;
-   private final int e;
-   private final gsf.a f;
-   private final boolean g;
-   private final boolean h;
-   private final int i;
-
-   public gsf(String $$0, bpx $$1, bpx $$2, int $$3, gsf.a $$4, boolean $$5, boolean $$6, int $$7) {
-      this.b = new alb($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-   }
-
-   public alb a() {
-      return this.b;
-   }
-
-   public alb b() {
-      return a.a(this.b);
-   }
-
-   public bpx c() {
-      return this.c;
-   }
-
-   public bpx d() {
-      return this.d;
+   public gsf(cmv $$0, cor $$1, boolean $$2) {
+      super($$2 ? avz.oL : avz.oM, awa.g, gsl.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = gsl.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
    @Override
-   public int e() {
-      return this.e;
-   }
-
-   public gsf a(azc $$0) {
-      return this;
+   public boolean s() {
+      return !this.q.aW();
    }
 
    @Override
-   public void a(gtn $$0) {
-      if (this.h) {
-         $$0.a(this);
-      }
-   }
-
-   public gsf.a f() {
-      return this.f;
-   }
-
-   public boolean g() {
-      return this.g;
-   }
-
-   public boolean h() {
-      return this.h;
-   }
-
-   public int i() {
-      return this.i;
+   public boolean r() {
+      return true;
    }
 
    @Override
-   public String toString() {
-      return "Sound[" + this.b + "]";
-   }
-
-   public static enum a {
-      a("file"),
-      b("event");
-
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      @Nullable
-      public static gsf.a a(String $$0) {
-         for (gsf.a $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
+   public void q() {
+      if (this.q.dK() || !this.p.bR() || this.p.dc() != this.q) {
+         this.n();
+      } else if (this.r != this.p.bj()) {
+         this.d = 0.0F;
+      } else {
+         float $$0 = (float)this.q.ds().h();
+         if ($$0 >= 0.01F) {
+            this.d = ayx.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
          }
-
-         return null;
       }
    }
 }

@@ -1,132 +1,149 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.DoubleConsumer;
 import javax.annotation.Nullable;
 
-public class frm extends fmy {
-   private static final xl a = xl.c("selectWorld.experimental.title");
-   private static final xl b = xl.c("selectWorld.experimental.message");
-   private static final xl c = xl.c("selectWorld.experimental.details");
-   private static final int d = 10;
-   private static final int r = 100;
-   private final BooleanConsumer s;
-   final Collection<att> u;
-   private final fkl v = new fkl().a(10).b(20);
+public class frm extends fgw {
+   private static final int a = 32;
+   private static final String b = "telemetry.event.required";
+   private static final String c = "telemetry.event.optional";
+   private static final String d = "telemetry.event.optional.disabled";
+   private static final xo e = xo.c("telemetry_info.property_title").a(n.t);
+   private final fgn f;
+   private frm.a m;
+   @Nullable
+   private DoubleConsumer n;
 
-   public frm(Collection<att> $$0, BooleanConsumer $$1) {
-      super(a);
-      this.u = $$0;
-      this.s = $$1;
+   public frm(int $$0, int $$1, int $$2, int $$3, fgn $$4) {
+      super($$0, $$1, $$2, $$3, xo.i());
+      this.f = $$4;
+      this.m = this.c(ffd.Q().C());
+   }
+
+   public void b(boolean $$0) {
+      this.m = this.c($$0);
+      this.a(this.c());
+   }
+
+   public void j() {
+      this.m = this.c(ffd.Q().C());
+      this.a(this.c());
+   }
+
+   private frm.a c(boolean $$0) {
+      frm.b $$1 = new frm.b(this.k());
+      List<guc> $$2 = new ArrayList<>(guc.g());
+      $$2.sort(Comparator.comparing(guc::d));
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         guc $$4 = $$2.get($$3);
+         boolean $$5 = $$4.d() && !$$0;
+         this.a($$1, $$4, $$5);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
+         }
+      }
+
+      return $$1.a();
+   }
+
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.n = $$0;
    }
 
    @Override
-   public xl i() {
-      return xk.a(super.i(), b);
+   protected void a(double $$0) {
+      super.a($$0);
+      if (this.n != null) {
+         this.n.accept(this.c());
+      }
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      fkl.b $$0 = this.v.d(2);
-      fkp $$1 = $$0.b().b();
-      $$0.a(new fig(this.l, this.p), 2, $$1);
-      fht $$2 = $$0.a(new fht(b, this.p).b(true), 2, $$1);
-      $$2.d(310);
-      $$0.a(fgz.a(c, $$0x -> this.m.a(new frm.a())).a(100).a(), 2, $$1);
-      $$0.a(fgz.a(xk.i, $$0x -> this.s.accept(true)).a());
-      $$0.a(fgz.a(xk.k, $$0x -> this.s.accept(false)).a());
-      this.v.a($$1x -> {
-         fgx var10000 = this.c($$1x);
-      });
-      this.v.a();
-      this.c();
+   protected int h() {
+      return this.m.a().v();
    }
 
    @Override
-   protected void c() {
-      fkk.a(this.v, 0, 0, this.n, this.o, 0.5F, 0.5F);
+   protected double i() {
+      return 9.0;
    }
 
    @Override
-   public void d() {
-      this.s.accept(false);
+   protected void c(fgp $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.D() + this.a();
+      int $$5 = this.C() + this.a();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
+      $$0.c().b();
    }
 
-   class a extends fmy {
-      private static final xl b = xl.c("selectWorld.experimental.details.title");
-      final fkm c = new fkm(this);
-      @Nullable
-      private frm.a.a d;
+   @Override
+   protected void a(fky $$0) {
+      $$0.a(fkx.a, this.m.b());
+   }
 
-      a() {
-         super(b);
+   private xo a(xo $$0, boolean $$1) {
+      return (xo)($$1 ? $$0.f().a(n.h) : $$0);
+   }
+
+   private void a(frm.b $$0, guc $$1, boolean $$2) {
+      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
+      $$0.b(this.f, this.a(xo.a($$3, $$1.e()), $$2));
+      $$0.b(this.f, $$1.f().a(n.h));
+      $$0.a(9 / 2);
+      $$0.a(this.f, this.a(e, $$2), 2);
+      this.a($$1, $$0, $$2);
+   }
+
+   private void a(guc $$0, frm.b $$1, boolean $$2) {
+      for (gue<?> $$3 : $$0.b()) {
+         $$1.a(this.f, this.a($$3.a(), $$2));
+      }
+   }
+
+   private int k() {
+      return this.g - this.b();
+   }
+
+   static record a(fkq a, xo b) {
+   }
+
+   static class b {
+      private final int a;
+      private final fkt b;
+      private final yc c = xo.i();
+
+      public b(int $$0) {
+         this.a = $$0;
+         this.b = fkt.d();
+         this.b.c().a();
+         this.b.a(fku.a($$0));
       }
 
-      @Override
-      protected void aN_() {
-         this.c.a(b, this.p);
-         this.d = this.c.c(new frm.a.a(this.m, frm.this.u));
-         this.c.b(fgz.a(xk.k, $$0 -> this.d()).a());
-         this.c.a($$1 -> {
-            fgx var10000 = this.c($$1);
-         });
-         this.c();
+      public void a(fgn $$0, xo $$1) {
+         this.a($$0, $$1, 0);
       }
 
-      @Override
-      protected void c() {
-         if (this.d != null) {
-            this.d.a(this.n, this.c);
-         }
-
-         this.c.a();
+      public void a(fgn $$0, xo $$1, int $$2) {
+         this.b.a(new fhw($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
       }
 
-      @Override
-      public void d() {
-         this.m.a(frm.this);
+      public void b(fgn $$0, xo $$1) {
+         this.b.a(new fhw($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
       }
 
-      class a extends fhv<frm.a.b> {
-         public a(final ffa $$0, final Collection<att> $$1) {
-            super($$0, a.this.n, a.this.c.d(), a.this.c.c(), (9 + 2) * 3);
-
-            for (att $$2 : $$1) {
-               String $$3 = cpi.a(cpi.g, $$2.e());
-               if (!$$3.isEmpty()) {
-                  xl $$4 = xo.a($$2.b().f(), yi.a.a(true));
-                  xl $$5 = xl.a("selectWorld.experimental.details.entry", $$3);
-                  this.b(a.this.new b($$4, $$5, fhs.a(a.this.p, $$5, this.b())));
-               }
-            }
-         }
-
-         @Override
-         public int b() {
-            return this.g * 3 / 4;
-         }
+      public void a(int $$0) {
+         this.b.a(fku.b($$0));
       }
 
-      class b extends fhv.a<frm.a.b> {
-         private final xl b;
-         private final xl c;
-         private final fhs d;
-
-         b(final xl $$0, final xl $$1, final fhs $$2) {
-            this.b = $$0;
-            this.c = $$1;
-            this.d = $$2;
-         }
-
-         @Override
-         public void a(fgm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(a.this.m.h, this.b, $$3, $$2, -1);
-            this.d.b($$0, $$3, $$2 + 12, 9, -1);
-         }
-
-         @Override
-         public xl a() {
-            return xl.a("narrator.select", xk.a(this.b, this.c));
-         }
+      public frm.a a() {
+         this.b.a();
+         return new frm.a(this.b, this.c);
       }
    }
 }

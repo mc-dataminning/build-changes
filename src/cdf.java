@@ -1,22 +1,25 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
-public class cdf extends cdo {
-   public static final float a = 10.0F;
+public class cdf extends cdr {
+   public static final float a = 8.0F;
 
    @Override
-   protected boolean a(btk $$0, btk $$1) {
-      return !$$0.dS().a(cco.U) && cdu.c($$0, $$1) && cgu.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   protected boolean a(btn $$0, btn $$1) {
+      return this.f($$0, $$1) && $$1.bh() && (this.b($$1) || this.e($$0, $$1)) && cdx.c($$0, $$1);
    }
 
-   private boolean e(btk $$0, btk $$1) {
-      List<UUID> $$2 = $$0.dS().c(cco.aa).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cz());
+   private boolean e(btn $$0, btn $$1) {
+      return !$$0.dS().a(ccr.U) && $$1.ak().a(aws.j);
+   }
+
+   private boolean b(btn $$0) {
+      return $$0.ak().a(aws.i);
+   }
+
+   private boolean f(btn $$0, btn $$1) {
+      return $$1.g((bss)$$0) <= 64.0;
    }
 
    @Override
-   protected cco<btk> b() {
-      return cco.B;
+   protected ccr<btn> b() {
+      return ccr.B;
    }
 }

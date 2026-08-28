@@ -1,34 +1,23 @@
-public class gli extends gir<cjd> {
-   private final ged a;
+public class gli extends giu<coa> {
+   public static final ale a = new ale("textures/entity/trident.png");
+   private final fwd f;
 
-   public gli(gis.a $$0) {
+   public gli(giv.a $$0) {
       super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+      this.f = new fwd($$0.a(fwx.bI));
    }
 
-   public void a(cjd $$0, float $$1, float $$2, ezt $$3, gdj $$4, int $$5) {
+   public void a(coa $$0, float $$1, float $$2, ezw $$3, gdm $$4, int $$5) {
       $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.u();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = ayu.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      glh.a(this.a, $$0.v(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
+      $$3.a(a.d.rotationDegrees(ayx.i($$2, $$0.O, $$0.dF()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(ayx.i($$2, $$0.P, $$0.dH()) + 90.0F));
+      faa $$6 = gjt.c($$4, this.f.a(this.a($$0)), false, $$0.H());
+      this.f.a($$3, $$6, $$5, goo.d, 1.0F, 1.0F, 1.0F, 1.0F);
       $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public alb a(cjd $$0) {
-      return got.e;
+   public ale a(coa $$0) {
+      return a;
    }
 }

@@ -1,27 +1,18 @@
-public interface wr {
-   zt a();
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToMessageEncoder;
+import java.util.List;
 
-   wk b();
+public class wr extends MessageToMessageEncoder<zv<?>> {
+   private final zu a;
 
-   void a(xl var1);
-
-   boolean c();
-
-   default boolean a(zs<?> $$0) {
-      return this.c();
+   public wr(zu $$0) {
+      this.a = $$0;
    }
 
-   default boolean d() {
-      return true;
-   }
-
-   default void a(o $$0) {
-      p $$1 = $$0.a("Connection");
-      $$1.a("Protocol", () -> this.b().a());
-      $$1.a("Flow", () -> this.a().toString());
-      this.a($$1);
-   }
-
-   default void a(p $$0) {
+   protected void a(ChannelHandlerContext $$0, zv<?> $$1, List<Object> $$2) throws Exception {
+      this.a.a($$1, $$2::add);
+      if ($$1.d()) {
+         $$0.pipeline().remove($$0.name());
+      }
    }
 }

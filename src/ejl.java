@@ -1,129 +1,302 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
+import com.mojang.logging.LogUtils;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Function;
+import java.util.function.Consumer;
+import org.apache.commons.lang3.mutable.MutableObject;
+import org.slf4j.Logger;
 
-public class ejl extends ejm {
-   private static final Codec<Either<alb, emf>> a = Codec.of(ejl::a, alb.a.map(Either::left));
-   public static final MapCodec<ejl> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c(), b(), d()).apply($$0, ejl::new));
-   protected final Either<alb, emf> c;
-   protected final ji<emd> d;
+public class ejl {
+   static final Logger a = LogUtils.getLogger();
 
-   private static <T> DataResult<T> a(Either<alb, emf> $$0, DynamicOps<T> $$1, T $$2) {
-      Optional<alb> $$3 = $$0.left();
-      return $$3.isEmpty() ? DataResult.error(() -> "Can not serialize a runtime pool element") : alb.a.encode($$3.get(), $$1, $$2);
+   public static Optional<eii.b> a(eii.a $$0, ji<ejr> $$1, Optional<ale> $$2, int $$3, iz $$4, boolean $$5, Optional<dxs.a> $$6, int $$7, ejv $$8) {
+      jw $$9 = $$0.a();
+      dtx $$10 = $$0.b();
+      emj $$11 = $$0.e();
+      dby $$12 = $$0.i();
+      dyr $$13 = $$0.f();
+      jv<ejr> $$14 = $$9.d(lq.aM);
+      dlk $$15 = dlk.a($$13);
+      ejr $$16 = $$1.e().flatMap($$2x -> $$14.e($$8.lookup($$2x))).orElse($$1.a());
+      ejp $$17 = $$16.a($$13);
+      if ($$17 == eji.b) {
+         return Optional.empty();
+      } else {
+         iz $$20;
+         if ($$2.isPresent()) {
+            ale $$18 = $$2.get();
+            Optional<iz> $$19 = a($$17, $$18, $$4, $$15, $$11, $$13);
+            if ($$19.isEmpty()) {
+               a.error("No starting jigsaw {} found in start pool {}", $$18, $$1.e().map($$0x -> $$0x.a().toString()).orElse("<unregistered>"));
+               return Optional.empty();
+            }
+
+            $$20 = $$19.get();
+         } else {
+            $$20 = $$4;
+         }
+
+         kd $$22 = $$20.b($$4);
+         iz $$23 = $$4.b($$22);
+         eie $$24 = new eie($$11, $$17, $$23, $$17.f(), $$15, $$17.a($$11, $$23, $$15));
+         eia $$25 = $$24.f();
+         int $$26 = ($$25.k() + $$25.h()) / 2;
+         int $$27 = ($$25.m() + $$25.j()) / 2;
+         int $$28;
+         if ($$6.isPresent()) {
+            $$28 = $$4.v() + $$10.b($$26, $$27, $$6.get(), $$12, $$0.d());
+         } else {
+            $$28 = $$23.v();
+         }
+
+         int $$30 = $$25.i() + $$24.d();
+         $$24.a(0, $$28 - $$30, 0);
+         int $$31 = $$28 + $$22.v();
+         return Optional.of(
+            new eii.b(
+               new iz($$26, $$31, $$27),
+               (Consumer<eja>)($$15x -> {
+                  List<eie> $$16x = Lists.newArrayList();
+                  $$16x.add($$24);
+                  if ($$3 > 0) {
+                     evk $$17x = new evk(
+                        (double)($$26 - $$7),
+                        (double)($$31 - $$7),
+                        (double)($$27 - $$7),
+                        (double)($$26 + $$7 + 1),
+                        (double)($$31 + $$7 + 1),
+                        (double)($$27 + $$7 + 1)
+                     );
+                     ewi $$18 = ewf.a(ewf.a($$17x), ewf.a(evk.a($$25)), evt.e);
+                     a($$0.d(), $$3, $$5, $$10, $$11, $$12, $$13, $$14, $$24, $$16x, $$18, $$8);
+                     $$16x.forEach($$15x::a);
+                  }
+               })
+            )
+         );
+      }
    }
 
-   protected static <E extends ejl> RecordCodecBuilder<E, ji<emd>> b() {
-      return eme.d.fieldOf("processors").forGetter($$0 -> $$0.d);
+   private static Optional<iz> a(ejp $$0, ale $$1, iz $$2, dlk $$3, emj $$4, dyr $$5) {
+      List<emi.c> $$6 = $$0.a($$4, $$2, $$3, $$5);
+      Optional<iz> $$7 = Optional.empty();
+
+      for (emi.c $$8 : $$6) {
+         ale $$9 = ale.a(Objects.requireNonNull($$8.c(), () -> $$8 + " nbt was null").l("name"));
+         if ($$1.equals($$9)) {
+            $$7 = Optional.of($$8.a());
+            break;
+         }
+      }
+
+      return $$7;
    }
 
-   protected static <E extends ejl> RecordCodecBuilder<E, Either<alb, emf>> c() {
-      return a.fieldOf("location").forGetter($$0 -> $$0.c);
+   private static void a(dyg $$0, int $$1, boolean $$2, dtx $$3, emj $$4, dby $$5, azf $$6, jv<ejr> $$7, eie $$8, List<eie> $$9, ewi $$10, ejv $$11) {
+      ejl.b $$12 = new ejl.b($$7, $$1, $$3, $$4, $$9, $$6);
+      $$12.a($$8, new MutableObject($$10), 0, $$2, $$5, $$0, $$11);
+
+      while ($$12.g.hasNext()) {
+         ejl.a $$13 = (ejl.a)$$12.g.next();
+         $$12.a($$13.a, $$13.b, $$13.c, $$2, $$5, $$0, $$11);
+      }
    }
 
-   protected ejl(Either<alb, emf> $$0, ji<emd> $$1, ejo.a $$2) {
-      super($$2);
-      this.c = $$0;
-      this.d = $$1;
+   public static boolean a(are $$0, ji<ejr> $$1, ale $$2, int $$3, iz $$4, boolean $$5) {
+      dtx $$6 = $$0.l().g();
+      emj $$7 = $$0.q();
+      dcp $$8 = $$0.a();
+      azf $$9 = $$0.E_();
+      eii.a $$10 = new eii.a($$0.H_(), $$6, $$6.d(), $$0.l().i(), $$7, $$0.C(), new dbd($$4), $$0, $$0x -> true);
+      Optional<eii.b> $$11 = a($$10, $$1, Optional.of($$2), $$3, $$4, false, Optional.empty(), 128, ejv.a);
+      if ($$11.isPresent()) {
+         eja $$12 = $$11.get().a();
+
+         for (eim $$13 : $$12.a().c()) {
+            if ($$13 instanceof eie $$14) {
+               $$14.a($$0, $$8, $$6, $$9, eia.a(), $$4, $$5);
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   public kd a(emg $$0, dlh $$1) {
-      emf $$2 = this.a($$0);
-      return $$2.a($$1);
+   static record a(eie a, MutableObject<ewi> b, int c) {
    }
 
-   private emf a(emg $$0) {
-      return (emf)this.c.map($$0::a, Function.identity());
-   }
+   static final class b {
+      private final jv<ejr> a;
+      private final int b;
+      private final dtx c;
+      private final emj d;
+      private final List<? super eie> e;
+      private final azf f;
+      final azi<ejl.a> g = new azi<>();
 
-   public List<emf.c> a(emg $$0, iz $$1, dlh $$2, boolean $$3) {
-      emf $$4 = this.a($$0);
-      List<emf.c> $$5 = $$4.a($$1, new emb().a($$2), dew.pa, $$3);
-      List<emf.c> $$6 = Lists.newArrayList();
+      b(jv<ejr> $$0, int $$1, dtx $$2, emj $$3, List<? super eie> $$4, azf $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+      }
 
-      for (emf.c $$7 : $$5) {
-         ur $$8 = $$7.c();
-         if ($$8 != null) {
-            dth $$9 = dth.valueOf($$8.l("mode"));
-            if ($$9 == dth.d) {
-               $$6.add($$7);
+      void a(eie $$0, MutableObject<ewi> $$1, int $$2, boolean $$3, dby $$4, dyg $$5, ejv $$6) {
+         ejp $$7 = $$0.b();
+         iz $$8 = $$0.c();
+         dlk $$9 = $$0.a();
+         ejr.a $$10 = $$7.e();
+         boolean $$11 = $$10 == ejr.a.b;
+         MutableObject<ewi> $$12 = new MutableObject();
+         eia $$13 = $$0.f();
+         int $$14 = $$13.i();
+
+         label134:
+         for (emi.c $$15 : $$7.a(this.d, $$8, $$9, this.f)) {
+            je $$16 = diz.m($$15.b());
+            iz $$17 = $$15.a();
+            iz $$18 = $$17.a($$16);
+            int $$19 = $$17.v() - $$14;
+            int $$20 = -1;
+            ald<ejr> $$21 = a($$15, $$6);
+            Optional<? extends ji<ejr>> $$22 = this.a.b($$21);
+            if ($$22.isEmpty()) {
+               ejl.a.warn("Empty or non-existent pool: {}", $$21.a());
+            } else {
+               ji<ejr> $$23 = (ji<ejr>)$$22.get();
+               if ($$23.a().b() == 0 && !$$23.a(rj.a)) {
+                  ejl.a.warn("Empty or non-existent pool: {}", $$21.a());
+               } else {
+                  ji<ejr> $$24 = $$23.a().a();
+                  if ($$24.a().b() == 0 && !$$24.a(rj.a)) {
+                     ejl.a.warn("Empty or non-existent fallback pool: {}", $$24.e().map($$0x -> $$0x.a().toString()).orElse("<unregistered>"));
+                  } else {
+                     boolean $$25 = $$13.b($$18);
+                     MutableObject<ewi> $$26;
+                     if ($$25) {
+                        $$26 = $$12;
+                        if ($$12.getValue() == null) {
+                           $$12.setValue(ewf.a(evk.a($$13)));
+                        }
+                     } else {
+                        $$26 = $$1;
+                     }
+
+                     List<ejp> $$28 = Lists.newArrayList();
+                     if ($$2 != this.b) {
+                        $$28.addAll($$23.a().b(this.f));
+                     }
+
+                     $$28.addAll($$24.a().b(this.f));
+                     int $$29 = $$15.c() != null ? $$15.c().h("placement_priority") : 0;
+
+                     for (ejp $$30 : $$28) {
+                        if ($$30 == eji.b) {
+                           break;
+                        }
+
+                        for (dlk $$31 : dlk.b(this.f)) {
+                           List<emi.c> $$32 = $$30.a(this.d, iz.c, $$31, this.f);
+                           eia $$33 = $$30.a(this.d, iz.c, $$31);
+                           int $$35;
+                           if ($$3 && $$33.e() <= 16) {
+                              $$35 = $$32.stream().mapToInt($$2x -> {
+                                 if (!$$33.b($$2x.a().a(diz.m($$2x.b())))) {
+                                    return 0;
+                                 } else {
+                                    ald<ejr> $$3x = a($$2x, $$6);
+                                    Optional<? extends ji<ejr>> $$4x = this.a.b($$3x);
+                                    Optional<ji<ejr>> $$5x = $$4x.map($$0xx -> ((ejr)$$0xx.a()).a());
+                                    int $$6x = $$4x.<Integer>map($$0xx -> ((ejr)$$0xx.a()).a(this.d)).orElse(0);
+                                    int $$7x = $$5x.<Integer>map($$0xx -> ((ejr)$$0xx.a()).a(this.d)).orElse(0);
+                                    return Math.max($$6x, $$7x);
+                                 }
+                              }).max().orElse(0);
+                           } else {
+                              $$35 = 0;
+                           }
+
+                           for (emi.c $$36 : $$32) {
+                              if (diz.a($$15, $$36)) {
+                                 iz $$37 = $$36.a();
+                                 iz $$38 = $$18.b($$37);
+                                 eia $$39 = $$30.a(this.d, $$38, $$31);
+                                 int $$40 = $$39.i();
+                                 ejr.a $$41 = $$30.e();
+                                 boolean $$42 = $$41 == ejr.a.b;
+                                 int $$43 = $$37.v();
+                                 int $$44 = $$19 - $$43 + diz.m($$15.b()).k();
+                                 int $$45;
+                                 if ($$11 && $$42) {
+                                    $$45 = $$14 + $$44;
+                                 } else {
+                                    if ($$20 == -1) {
+                                       $$20 = this.c.b($$17.u(), $$17.w(), dxs.a.a, $$4, $$5);
+                                    }
+
+                                    $$45 = $$20 - $$43;
+                                 }
+
+                                 int $$47 = $$45 - $$40;
+                                 eia $$48 = $$39.b(0, $$47, 0);
+                                 iz $$49 = $$38.b(0, $$47, 0);
+                                 if ($$35 > 0) {
+                                    int $$50 = Math.max($$35 + 1, $$48.l() - $$48.i());
+                                    $$48.a(new iz($$48.h(), $$48.i() + $$50, $$48.j()));
+                                 }
+
+                                 if (!ewf.c((ewi)$$26.getValue(), ewf.a(evk.a($$48).h(0.25)), evt.c)) {
+                                    $$26.setValue(ewf.b((ewi)$$26.getValue(), ewf.a(evk.a($$48)), evt.e));
+                                    int $$51 = $$0.d();
+                                    int $$52;
+                                    if ($$42) {
+                                       $$52 = $$51 - $$44;
+                                    } else {
+                                       $$52 = $$30.f();
+                                    }
+
+                                    eie $$54 = new eie(this.d, $$30, $$49, $$52, $$31, $$48);
+                                    int $$55;
+                                    if ($$11) {
+                                       $$55 = $$14 + $$19;
+                                    } else if ($$42) {
+                                       $$55 = $$45 + $$43;
+                                    } else {
+                                       if ($$20 == -1) {
+                                          $$20 = this.c.b($$17.u(), $$17.w(), dxs.a.a, $$4, $$5);
+                                       }
+
+                                       $$55 = $$20 + $$44 / 2;
+                                    }
+
+                                    $$0.a(new ejk($$18.u(), $$55 - $$19 + $$51, $$18.w(), $$44, $$41));
+                                    $$54.a(new ejk($$17.u(), $$55 - $$43 + $$52, $$17.w(), -$$44, $$10));
+                                    this.e.add($$54);
+                                    if ($$2 + 1 <= this.b) {
+                                       ejl.a $$58 = new ejl.a($$54, $$26, $$2 + 1);
+                                       this.g.a($$58, $$29);
+                                    }
+                                    continue label134;
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
             }
          }
       }
 
-      return $$6;
-   }
-
-   @Override
-   public List<emf.c> a(emg $$0, iz $$1, dlh $$2, azc $$3) {
-      emf $$4 = this.a($$0);
-      ObjectArrayList<emf.c> $$5 = $$4.a($$1, new emb().a($$2), dew.pb, true);
-      ac.c($$5, $$3);
-      a($$5);
-      return $$5;
-   }
-
-   @VisibleForTesting
-   static void a(List<emf.c> $$0) {
-      $$0.sort(Comparator.<emf.c>comparingInt($$0x -> x.a($$0x.c(), $$0xx -> $$0xx.h("selection_priority"), 0)).reversed());
-   }
-
-   @Override
-   public ehx a(emg $$0, iz $$1, dlh $$2) {
-      emf $$3 = this.a($$0);
-      return $$3.b(new emb().a($$2), $$1);
-   }
-
-   @Override
-   public boolean a(emg $$0, dco $$1, dcm $$2, dtu $$3, iz $$4, iz $$5, dlh $$6, ehx $$7, azc $$8, boolean $$9) {
-      emf $$10 = this.a($$0);
-      emb $$11 = this.a($$6, $$7, $$9);
-      if (!$$10.a($$1, $$4, $$5, $$11, $$8, 18)) {
-         return false;
-      } else {
-         for (emf.c $$13 : emf.a($$1, $$4, $$5, $$11, this.a($$0, $$4, $$6, false))) {
-            this.a($$1, $$13, $$4, $$6, $$8, $$7);
-         }
-
-         return true;
+      private static ald<ejr> a(emi.c $$0, ejv $$1) {
+         ur $$2 = Objects.requireNonNull($$0.c(), () -> $$0 + " nbt was null");
+         ald<ejr> $$3 = rj.a($$2.l("pool"));
+         return $$1.lookup($$3);
       }
-   }
-
-   protected emb a(dlh $$0, ehx $$1, boolean $$2) {
-      emb $$3 = new emb();
-      $$3.a($$1);
-      $$3.a($$0);
-      $$3.c(true);
-      $$3.a(false);
-      $$3.a(elh.b);
-      $$3.d(true);
-      if (!$$2) {
-         $$3.a(eln.b);
-      }
-
-      this.d.a().a().forEach($$3::a);
-      this.e().b().forEach($$3::a);
-      return $$3;
-   }
-
-   @Override
-   public ejn<?> a() {
-      return ejn.a;
-   }
-
-   @Override
-   public String toString() {
-      return "Single[" + this.c + "]";
    }
 }

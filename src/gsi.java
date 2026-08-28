@@ -1,47 +1,99 @@
 import javax.annotation.Nullable;
 
-public interface gsi {
-   alb a();
+public class gsi implements gtv<gsi> {
+   public static final akx a = new akx("sounds", ".ogg");
+   private final ale b;
+   private final bqa c;
+   private final bqa d;
+   private final int e;
+   private final gsi.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
 
-   @Nullable
-   gtr a(gtq var1);
-
-   gsf b();
-
-   avx c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   gsi.a k();
-
-   default boolean r() {
-      return false;
+   public gsi(String $$0, bqa $$1, bqa $$2, int $$3, gsi.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = new ale($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   default boolean s() {
-      return true;
+   public ale a() {
+      return this.b;
    }
 
-   static azc t() {
-      return azc.a();
+   public ale b() {
+      return a.a(this.b);
+   }
+
+   public bqa c() {
+      return this.c;
+   }
+
+   public bqa d() {
+      return this.d;
+   }
+
+   @Override
+   public int e() {
+      return this.e;
+   }
+
+   public gsi a(azf $$0) {
+      return this;
+   }
+
+   @Override
+   public void a(gtq $$0) {
+      if (this.h) {
+         $$0.a(this);
+      }
+   }
+
+   public gsi.a f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
+   }
+
+   @Override
+   public String toString() {
+      return "Sound[" + this.b + "]";
    }
 
    public static enum a {
-      a,
-      b;
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
+      }
+
+      @Nullable
+      public static gsi.a a(String $$0) {
+         for (gsi.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return null;
+      }
    }
 }

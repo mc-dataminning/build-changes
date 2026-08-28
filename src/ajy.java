@@ -1,8 +1,3 @@
-public interface ajy extends ajs, wg {
-   @Override
-   default wk b() {
-      return wk.c;
-   }
-
+public interface ajy extends wu {
    void a(ajz var1);
 }

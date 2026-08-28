@@ -1,43 +1,42 @@
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Set;
 
-public class cdv<U extends cdu<?>> {
-   public static final cdv<cde> a = a("dummy", cde::new);
-   public static final cdv<cdm> b = a("nearest_items", cdm::new);
-   public static final cdv<cdn<btk>> c = a("nearest_living_entities", cdn::new);
-   public static final cdv<cdr> d = a("nearest_players", cdr::new);
-   public static final cdv<cdl> e = a("nearest_bed", cdl::new);
-   public static final cdv<cdi> f = a("hurt_by", cdi::new);
-   public static final cdv<cdy> g = a("villager_hostiles", cdy::new);
-   public static final cdv<cdx> h = a("villager_babies", cdx::new);
-   public static final cdv<cds> i = a("secondary_pois", cds::new);
-   public static final cdv<cdg> j = a("golem_detected", cdg::new);
-   public static final cdv<cdk<cgj>> k = a("armadillo_scare_detected", () -> new cdk<>(5, cgj::j, cgj::gB, cco.G, 80));
-   public static final cdv<cdq> l = a("piglin_specific_sensor", cdq::new);
-   public static final cdv<cdp> m = a("piglin_brute_specific_sensor", cdp::new);
-   public static final cdv<cdh> n = a("hoglin_specific_sensor", cdh::new);
-   public static final cdv<cdb> o = a("nearest_adult", cdb::new);
-   public static final cdv<cdc> p = a("axolotl_attackables", cdc::new);
-   public static final cdv<cdw> q = a("axolotl_temptations", () -> new cdw(cgn.a()));
-   public static final cdv<cdw> r = a("goat_temptations", () -> new cdw(chb.a()));
-   public static final cdv<cdw> s = a("frog_temptations", () -> new cdw(cgv.a()));
-   public static final cdv<cdw> t = a("camel_temptations", () -> new cdw(cgs.b()));
-   public static final cdv<cdw> u = a("armadillo_temptations", () -> new cdw(cgk.b()));
-   public static final cdv<cdf> v = a("frog_attackables", cdf::new);
-   public static final cdv<cdj> w = a("is_in_water", cdj::new);
-   public static final cdv<cdz> x = a("warden_entity_sensor", cdz::new);
-   public static final cdv<cdw> y = a("sniffer_temptations", () -> new cdw(chs.a()));
-   public static final cdv<cdd> z = a("breeze_attack_entity_sensor", cdd::new);
-   private final Supplier<U> A;
+public class cdv extends cdx<cmi> {
+   private static final int a = 40;
 
-   private cdv(Supplier<U> $$0) {
-      this.A = $$0;
+   public cdv() {
+      super(40);
    }
 
-   public U a() {
-      return this.A.get();
+   protected void a(are $$0, cmi $$1) {
+      ald<dbw> $$2 = $$0.af();
+      iz $$3 = $$1.dp();
+      List<jh> $$4 = Lists.newArrayList();
+      int $$5 = 4;
+
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               iz $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gB().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(jh.a($$2, $$9));
+               }
+            }
+         }
+      }
+
+      bup<?> $$10 = $$1.dS();
+      if (!$$4.isEmpty()) {
+         $$10.a(ccr.f, $$4);
+      } else {
+         $$10.b(ccr.f);
+      }
    }
 
-   private static <U extends cdu<?>> cdv<U> a(String $$0, Supplier<U> $$1) {
-      return jv.a(lp.C, new alb($$0), new cdv<>($$1));
+   @Override
+   public Set<ccr<?>> a() {
+      return ImmutableSet.of(ccr.f);
    }
 }

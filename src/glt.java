@@ -1,28 +1,20 @@
-public class glt extends gjy<ciq, fwl<ciq>> {
-   private static final alb a = new alb("textures/entity/wither/wither_invulnerable.png");
-   private static final alb i = new alb("textures/entity/wither/wither.png");
+public class glt extends gkb<clz, fwk<clz>> {
+   private static final ale a = new ale("textures/entity/warden/warden.png");
+   private static final ale i = new ale("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final ale j = new ale("textures/entity/warden/warden_heart.png");
+   private static final ale k = new ale("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final ale l = new ale("textures/entity/warden/warden_pulsating_spots_2.png");
 
-   public glt(gis.a $$0) {
-      super($$0, new fwl<>($$0.a(fwu.bV)), 1.0F);
-      this.a(new gns(this, $$0.f()));
+   public glt(giv.a $$0) {
+      super($$0, new fwk<>($$0.a(fwx.bR)), 0.9F);
+      this.a(new gnt<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fwk::e));
+      this.a(new gnt<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, ayx.b($$2 * 0.045F) * 0.25F), fwk::f));
+      this.a(new gnt<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, ayx.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fwk::f));
+      this.a(new gnt<>(this, a, ($$0x, $$1, $$2) -> $$0x.G($$1), fwk::c));
+      this.a(new gnt<>(this, j, ($$0x, $$1, $$2) -> $$0x.H($$1), fwk::d));
    }
 
-   protected int a(ciq $$0, iz $$1) {
-      return 15;
-   }
-
-   public alb a(ciq $$0) {
-      int $$1 = $$0.y();
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
-   }
-
-   protected void a(ciq $$0, ezt $$1, float $$2) {
-      float $$3 = 2.0F;
-      int $$4 = $$0.y();
-      if ($$4 > 0) {
-         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
-      }
-
-      $$1.b($$3, $$3, $$3);
+   public ale a(clz $$0) {
+      return a;
    }
 }

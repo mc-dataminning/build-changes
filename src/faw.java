@@ -1,55 +1,30 @@
-import com.google.gson.annotations.SerializedName;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import java.util.Date;
 import java.util.UUID;
+import org.slf4j.Logger;
 
-public class faw extends fbp implements fbj {
-   @SerializedName("name")
-   private String a;
-   @SerializedName("uuid")
-   private UUID b;
-   @SerializedName("operator")
-   private boolean c;
-   @SerializedName("accepted")
-   private boolean d;
-   @SerializedName("online")
-   private boolean e;
+public class faw extends fbs {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
+   public UUID d;
+   public Date e;
 
-   public String a() {
-      return this.a;
-   }
+   public static faw a(JsonObject $$0) {
+      faw $$1 = new faw();
 
-   public void a(String $$0) {
-      this.a = $$0;
-   }
+      try {
+         $$1.a = fdp.b("invitationId", $$0, "");
+         $$1.b = fdp.b("worldName", $$0, "");
+         $$1.c = fdp.b("worldOwnerName", $$0, "");
+         $$1.d = fdp.a("worldOwnerUuid", $$0, ac.e);
+         $$1.e = fdp.b("date", $$0);
+      } catch (Exception var3) {
+         f.error("Could not parse PendingInvite: {}", var3.getMessage());
+      }
 
-   public UUID b() {
-      return this.b;
-   }
-
-   public void a(UUID $$0) {
-      this.b = $$0;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   public void a(boolean $$0) {
-      this.c = $$0;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public void b(boolean $$0) {
-      this.d = $$0;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public void c(boolean $$0) {
-      this.e = $$0;
+      return $$1;
    }
 }

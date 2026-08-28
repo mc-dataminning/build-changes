@@ -1,182 +1,208 @@
 import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.nio.ByteBuffer;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class ezz {
+public class ezz implements AutoCloseable {
    private final ezz.a a;
-   private final ezz.b b;
-   private final int c;
-   private final int d;
-   private final int e;
+   private int b;
+   private int c;
+   private int d;
+   @Nullable
+   private fab e;
+   @Nullable
+   private RenderSystem.a f;
+   private fab.a g;
+   private int h;
+   private fab.b i;
 
-   public ezz(int $$0, ezz.a $$1, ezz.b $$2, int $$3) {
-      if (this.a($$0, $$2)) {
-         this.b = $$2;
-         this.a = $$1;
-         this.c = $$0;
-         this.d = $$3;
-         this.e = $$1.a() * this.d;
-      } else {
-         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
+   public ezz(ezz.a $$0) {
+      this.a = $$0;
+      RenderSystem.assertOnRenderThread();
+      this.b = GlStateManager._glGenBuffers();
+      this.c = GlStateManager._glGenBuffers();
+      this.d = GlStateManager._glGenVertexArrays();
+   }
+
+   public void a(ezr.b $$0) {
+      try {
+         if (!this.e()) {
+            RenderSystem.assertOnRenderThread();
+            ezr.a $$1 = $$0.c();
+            this.e = this.a($$1, $$0.a());
+            this.f = this.b($$1, $$0.b());
+            this.h = $$1.i();
+            this.g = $$1.k();
+            this.i = $$1.j();
+            return;
+         }
+      } finally {
+         $$0.e();
       }
    }
 
-   private boolean a(int $$0, ezz.b $$1) {
-      return $$0 == 0 || $$1 == ezz.b.d;
+   private fab a(ezr.a $$0, @Nullable ByteBuffer $$1) {
+      boolean $$2 = false;
+      if (!$$0.g().equals(this.e)) {
+         if (this.e != null) {
+            this.e.f();
+         }
+
+         GlStateManager._glBindBuffer(34962, this.b);
+         $$0.g().e();
+         $$2 = true;
+      }
+
+      if ($$1 != null) {
+         if (!$$2) {
+            GlStateManager._glBindBuffer(34962, this.b);
+         }
+
+         RenderSystem.glBufferData(34962, $$1, this.a.c);
+      }
+
+      return $$0.g();
    }
 
-   public final ezz.a a() {
-      return this.a;
+   @Nullable
+   private RenderSystem.a b(ezr.a $$0, @Nullable ByteBuffer $$1) {
+      if ($$1 != null) {
+         GlStateManager._glBindBuffer(34963, this.c);
+         RenderSystem.glBufferData(34963, $$1, this.a.c);
+         return null;
+      } else {
+         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.j());
+         if ($$2 != this.f || !$$2.a($$0.i())) {
+            $$2.b($$0.i());
+         }
+
+         return $$2;
+      }
    }
 
-   public final ezz.b b() {
-      return this.b;
+   public void a() {
+      ezs.b();
+      GlStateManager._glBindVertexArray(this.d);
    }
 
-   public final int c() {
-      return this.d;
+   public static void b() {
+      ezs.b();
+      GlStateManager._glBindVertexArray(0);
    }
 
-   public final int d() {
-      return this.c;
+   public void c() {
+      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
+   }
+
+   private fab.a f() {
+      RenderSystem.a $$0 = this.f;
+      return $$0 != null ? $$0.a() : this.g;
+   }
+
+   public void a(Matrix4f $$0, Matrix4f $$1, gea $$2) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.b(new Matrix4f($$0), new Matrix4f($$1), $$2));
+      } else {
+         this.b($$0, $$1, $$2);
+      }
+   }
+
+   private void b(Matrix4f $$0, Matrix4f $$1, gea $$2) {
+      for (int $$3 = 0; $$3 < 12; $$3++) {
+         int $$4 = RenderSystem.getShaderTexture($$3);
+         $$2.a("Sampler" + $$3, $$4);
+      }
+
+      if ($$2.b != null) {
+         $$2.b.a($$0);
+      }
+
+      if ($$2.c != null) {
+         $$2.c.a($$1);
+      }
+
+      if ($$2.f != null) {
+         $$2.f.a(RenderSystem.getShaderColor());
+      }
+
+      if ($$2.i != null) {
+         $$2.i.a(RenderSystem.getShaderGlintAlpha());
+      }
+
+      if ($$2.j != null) {
+         $$2.j.a(RenderSystem.getShaderFogStart());
+      }
+
+      if ($$2.k != null) {
+         $$2.k.a(RenderSystem.getShaderFogEnd());
+      }
+
+      if ($$2.l != null) {
+         $$2.l.a(RenderSystem.getShaderFogColor());
+      }
+
+      if ($$2.m != null) {
+         $$2.m.a(RenderSystem.getShaderFogShape().a());
+      }
+
+      if ($$2.d != null) {
+         $$2.d.a(RenderSystem.getTextureMatrix());
+      }
+
+      if ($$2.o != null) {
+         $$2.o.a(RenderSystem.getShaderGameTime());
+      }
+
+      if ($$2.e != null) {
+         eza $$5 = ffd.Q().aO();
+         $$2.e.a((float)$$5.k(), (float)$$5.l());
+      }
+
+      if ($$2.n != null && (this.i == fab.b.a || this.i == fab.b.b)) {
+         $$2.n.a(RenderSystem.getShaderLineWidth());
+      }
+
+      RenderSystem.setupShaderLights($$2);
+      $$2.g();
+      this.c();
+      $$2.f();
    }
 
    @Override
-   public String toString() {
-      return this.d + "," + this.b.a() + "," + this.a.b();
+   public void close() {
+      if (this.b >= 0) {
+         RenderSystem.glDeleteBuffers(this.b);
+         this.b = -1;
+      }
+
+      if (this.c >= 0) {
+         RenderSystem.glDeleteBuffers(this.c);
+         this.c = -1;
+      }
+
+      if (this.d >= 0) {
+         RenderSystem.glDeleteVertexArrays(this.d);
+         this.d = -1;
+      }
    }
 
-   public final int e() {
+   public fab d() {
       return this.e;
    }
 
-   public final boolean f() {
-      return this.b == ezz.b.a;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         ezz $$1 = (ezz)$$0;
-         if (this.d != $$1.d) {
-            return false;
-         } else if (this.c != $$1.c) {
-            return false;
-         } else {
-            return this.a != $$1.a ? false : this.b == $$1.b;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + this.c;
-      return 31 * $$0 + this.d;
-   }
-
-   public void a(int $$0, long $$1, int $$2) {
-      this.b.a(this.d, this.a.c(), $$2, $$1, this.c, $$0);
-   }
-
-   public void a(int $$0) {
-      this.b.a(this.c, $$0);
+   public boolean e() {
+      return this.d == -1;
    }
 
    public static enum a {
-      a(4, "Float", 5126),
-      b(1, "Unsigned Byte", 5121),
-      c(1, "Byte", 5120),
-      d(2, "Unsigned Short", 5123),
-      e(2, "Short", 5122),
-      f(4, "Unsigned Int", 5125),
-      g(4, "Int", 5124);
+      a(35044),
+      b(35048);
 
-      private final int h;
-      private final String i;
-      private final int j;
+      final int c;
 
-      private a(final int $$0, final String $$1, final int $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
-      }
-
-      public int a() {
-         return this.h;
-      }
-
-      public String b() {
-         return this.i;
-      }
-
-      public int c() {
-         return this.j;
-      }
-   }
-
-   public static enum b {
-      a("Position", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      b("Normal", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      d("UV", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         if ($$1 == 5126) {
-            GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-         } else {
-            GlStateManager._vertexAttribIPointer($$5, $$0, $$1, $$2, $$3);
-         }
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      e("Padding", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      }, ($$0, $$1) -> {
-      }),
-      f("Generic", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1));
-
-      private final String g;
-      private final ezz.b.b h;
-      private final ezz.b.a i;
-
-      private b(final String $$0, final ezz.b.b $$1, final ezz.b.a $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-      }
-
-      void a(int $$0, int $$1, int $$2, long $$3, int $$4, int $$5) {
-         this.h.setupBufferState($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-
-      public void a(int $$0, int $$1) {
-         this.i.clearBufferState($$0, $$1);
-      }
-
-      public String a() {
-         return this.g;
-      }
-
-      @FunctionalInterface
-      interface a {
-         void clearBufferState(int var1, int var2);
-      }
-
-      @FunctionalInterface
-      interface b {
-         void setupBufferState(int var1, int var2, int var3, long var4, int var6, int var7);
+      private a(final int $$0) {
+         this.c = $$0;
       }
    }
 }

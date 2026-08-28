@@ -1,41 +1,34 @@
-import java.util.List;
-
-public class gnq<T extends clw, M extends fwh<T>> extends gne<T, M> {
-   private final alb a;
-   private final gnq.a<T> b;
-   private final gnq.b<T, M> c;
-
-   public gnq(gko<T, M> $$0, alb $$1, gnq.a<T> $$2, gnq.b<T, M> $$3) {
+public abstract class gnq<T extends btn, M extends fvd<T>> extends gnh<T, M> {
+   public gnq(gjw<T, M> $$0) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
    }
 
-   public void a(ezt $$0, gdj $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ch()) {
-         this.a();
-         ezx $$10 = $$1.getBuffer(gdr.j(this.a));
-         this.c().a($$0, $$10, $$2, gjt.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
-         this.b();
+   protected abstract int a(T var1);
+
+   protected abstract void a(ezw var1, gdm var2, int var3, bss var4, float var5, float var6, float var7, float var8);
+
+   public void a(ezw $$0, gdm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      int $$10 = this.a($$3);
+      azf $$11 = azf.a((long)$$3.al());
+      if ($$10 > 0) {
+         for (int $$12 = 0; $$12 < $$10; $$12++) {
+            $$0.a();
+            fwy $$13 = this.c().a($$11);
+            fwy.a $$14 = $$13.a($$11);
+            $$13.a($$0);
+            float $$15 = $$11.i();
+            float $$16 = $$11.i();
+            float $$17 = $$11.i();
+            float $$18 = ayx.i($$15, $$14.a, $$14.d) / 16.0F;
+            float $$19 = ayx.i($$16, $$14.b, $$14.e) / 16.0F;
+            float $$20 = ayx.i($$17, $$14.c, $$14.f) / 16.0F;
+            $$0.a($$18, $$19, $$20);
+            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
+            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
+            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
+            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
+            $$0.b();
+         }
       }
-   }
-
-   private void a() {
-      List<fwv> $$0 = this.c.getPartsToDraw(this.c());
-      this.c().a().e().forEach($$0x -> $$0x.l = true);
-      $$0.forEach($$0x -> $$0x.l = false);
-   }
-
-   private void b() {
-      this.c().a().e().forEach($$0 -> $$0.l = false);
-   }
-
-   public interface a<T extends clw> {
-      float apply(T var1, float var2, float var3);
-   }
-
-   public interface b<T extends clw, M extends ftv<T>> {
-      List<fwv> getPartsToDraw(M var1);
    }
 }

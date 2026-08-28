@@ -1,58 +1,66 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-public class eqw extends eqv {
-   public static final MapCodec<eqw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.either(ala.a(lq.aU), eqi.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eqw::new)
-   );
-   private final Either<ala<eqi>, eqi> j;
+public abstract class eqw implements eqo {
+   protected final List<etq> e;
+   private final Predicate<eqg> a;
 
-   private eqw(Either<ala<eqi>, eqi> $$0, int $$1, int $$2, List<etn> $$3, List<erq> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   protected eqw(List<etq> $$0) {
+      this.e = $$0;
+      this.a = ac.a($$0);
    }
 
-   @Override
-   public equ a() {
-      return eqr.d;
+   protected static <T extends eqw> P1<Mu<T>, List<etq>> a(Instance<T> $$0) {
+      return $$0.group(ets.a.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   public void a(Consumer<cuk> $$0, eqd $$1) {
-      ((eqi)this.j.map($$1x -> $$1.a().a(lq.aU, $$1x).map(ji::a).orElse(eqi.a), $$0x -> $$0x)).a($$1, $$0);
+   public void a(eqm $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public void a(eqj $$0) {
-      Optional<ala<eqi>> $$1 = this.j.left();
-      if ($$1.isPresent()) {
-         ala<eqi> $$2 = $$1.get();
-         if ($$0.a($$2)) {
-            $$0.b("Table " + $$2.a() + " is recursively called");
-            return;
-         }
+   protected final boolean a(eqg $$0) {
+      return this.a.test($$0);
+   }
+
+   public abstract eqx a();
+
+   public abstract static class a<T extends eqw.a<T>> implements etj<T> {
+      private final Builder<etq> a = ImmutableList.builder();
+
+      protected abstract T aB_();
+
+      public T a(etq.a $$0) {
+         this.a.add($$0.build());
+         return this.aB_();
       }
 
-      super.a($$0);
-      this.j
-         .ifLeft(
-            $$1x -> $$0.a()
-                  .a(lq.aU, $$1x)
-                  .ifPresentOrElse($$2x -> ((eqi)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
-         )
-         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
-   }
+      public final T e() {
+         return this.aB_();
+      }
 
-   public static eqv.a<?> a(ala<eqi> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eqw(Either.left($$0), $$1, $$2, $$3, $$4));
-   }
+      protected List<etq> f() {
+         return this.a.build();
+      }
 
-   public static eqv.a<?> a(eqi $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eqw(Either.right($$0), $$1, $$2, $$3, $$4));
+      public eqn.a a(eqw.a<?> $$0) {
+         return new eqn.a(this, $$0);
+      }
+
+      public eqs.a b(eqw.a<?> $$0) {
+         return new eqs.a(this, $$0);
+      }
+
+      public era.a c(eqw.a<?> $$0) {
+         return new era.a(this, $$0);
+      }
+
+      public abstract eqw b();
    }
 }

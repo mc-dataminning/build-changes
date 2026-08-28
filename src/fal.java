@@ -1,178 +1,73 @@
-import com.google.common.base.Strings;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Locale;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.util.Comparator;
+import java.util.List;
+import org.apache.commons.io.IOUtils;
 
-public interface fal {
-   xl a = xl.c("mco.errorMessage.noDetails");
-   Logger b = LogUtils.getLogger();
+public class fal {
+   public static List<fbn> a(fal.a... $$0) {
+      for (fal.a $$1 : $$0) {
+         a($$1.j);
+      }
 
-   int a();
+      List<fbn> $$2 = Lists.newArrayList();
 
-   xl b();
+      for (fal.a $$3 : $$0) {
+         $$2.add(new fbn($$3.i, a($$3.j)));
+      }
 
-   String c();
+      $$2.sort(Comparator.comparingInt(fbn::a));
+      return $$2;
+   }
 
-   static fal a(int $$0, String $$1) {
-      if ($$0 == 429) {
-         return fal.b.c;
-      } else if (Strings.isNullOrEmpty($$1)) {
-         return fal.b.b($$0);
-      } else {
+   private static int a(String $$0) {
+      int $$1 = 700;
+      long $$2 = 0L;
+      Socket $$3 = null;
+
+      for (int $$4 = 0; $$4 < 5; $$4++) {
          try {
-            JsonObject $$2 = JsonParser.parseString($$1).getAsJsonObject();
-            String $$3 = ayk.a($$2, "reason", null);
-            String $$4 = ayk.a($$2, "errorMsg", null);
-            int $$5 = ayk.a($$2, "errorCode", -1);
-            if ($$4 != null || $$3 != null || $$5 != -1) {
-               return new fal.c($$0, $$5 != -1 ? $$5 : $$0, $$3, $$4);
-            }
-         } catch (Exception var6) {
-            b.error("Could not parse RealmsError", var6);
-         }
-
-         return new fal.d($$0, $$1);
-      }
-   }
-
-   public static record a(String d) implements fal {
-      public static final int c = 401;
-
-      @Override
-      public int a() {
-         return 401;
-      }
-
-      @Override
-      public xl b() {
-         return xl.b(this.d);
-      }
-
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms authentication error with message '%s'", this.d);
-      }
-   }
-
-   public static record b(int e, @Nullable xl f) implements fal {
-      public static final fal.b c = new fal.b(429, xl.c("mco.errorMessage.serviceBusy"));
-      public static final xl d = xl.c("mco.errorMessage.retry");
-
-      public static fal.b a(String $$0) {
-         return new fal.b(500, xl.a("mco.errorMessage.realmsService.unknownCompatibility", $$0));
-      }
-
-      public static fal.b a(fbv $$0) {
-         return new fal.b(500, xl.a("mco.errorMessage.realmsService.connectivity", $$0.getMessage()));
-      }
-
-      public static fal.b a(int $$0) {
-         return new fal.b($$0, d);
-      }
-
-      public static fal.b b(int $$0) {
-         return new fal.b($$0, null);
-      }
-
-      @Override
-      public int a() {
-         return this.e;
-      }
-
-      @Override
-      public xl b() {
-         return this.f != null ? this.f : a;
-      }
-
-      @Override
-      public String c() {
-         return this.f != null
-            ? String.format(Locale.ROOT, "Realms service error (%d) with message '%s'", this.e, this.f.getString())
-            : String.format(Locale.ROOT, "Realms service error (%d) with no payload", this.e);
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      @Nullable
-      public xl e() {
-         return this.f;
-      }
-   }
-
-   public static record c(int c, int d, @Nullable String e, @Nullable String f) implements fal {
-      @Override
-      public int a() {
-         return this.d;
-      }
-
-      @Override
-      public xl b() {
-         String $$0 = "mco.errorMessage." + this.d;
-         if (gqa.a($$0)) {
-            return xl.c($$0);
-         } else {
-            if (this.e != null) {
-               String $$1 = "mco.errorReason." + this.e;
-               if (gqa.a($$1)) {
-                  return xl.c($$1);
-               }
-            }
-
-            return (xl)(this.f != null ? xl.b(this.f) : a);
+            SocketAddress $$5 = new InetSocketAddress($$0, 80);
+            $$3 = new Socket();
+            long $$6 = b();
+            $$3.connect($$5, 700);
+            $$2 += b() - $$6;
+         } catch (Exception var12) {
+            $$2 += 700L;
+         } finally {
+            IOUtils.closeQuietly($$3);
          }
       }
 
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms service error (%d/%d/%s) with message '%s'", this.c, this.d, this.e, this.f);
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public int e() {
-         return this.d;
-      }
-
-      @Nullable
-      public String f() {
-         return this.e;
-      }
-
-      @Nullable
-      public String g() {
-         return this.f;
-      }
+      return (int)((double)$$2 / 5.0);
    }
 
-   public static record d(int c, String d) implements fal {
-      @Override
-      public int a() {
-         return this.c;
-      }
+   private static long b() {
+      return ac.c();
+   }
 
-      @Override
-      public xl b() {
-         return xl.b(this.d);
-      }
+   public static List<fbn> a() {
+      return a(fal.a.values());
+   }
 
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms service error (%d) with raw payload '%s'", this.c, this.d);
-      }
+   static enum a {
+      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
+      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
+      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
+      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
+      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
+      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
+      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
+      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
 
-      public int d() {
-         return this.c;
-      }
+      final String i;
+      final String j;
 
-      public String e() {
-         return this.d;
+      private a(final String $$0, final String $$1) {
+         this.i = $$0;
+         this.j = $$1;
       }
    }
 }

@@ -1,36 +1,40 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class djc extends ddn {
-   public static final MapCodec<djc> d = b(djc::new);
+public class djc extends dil implements djo {
+   public static final MapCodec<djc> c = b(djc::new);
 
    @Override
    public MapCodec<djc> a() {
-      return d;
+      return c;
    }
 
-   public djc(drw.d $$0) {
-      super($$0, kf.e);
-   }
-
-   @Override
-   protected double b(drx $$0) {
-      return 0.9375;
+   protected djc(drz.d $$0) {
+      super($$0, je.b, ewf.b(), true);
    }
 
    @Override
-   public boolean d(drx $$0) {
-      return true;
+   protected dim c() {
+      return (dim)dez.mc;
    }
 
    @Override
-   protected void a(drx $$0, dbt $$1, iz $$2, bsp $$3) {
-      if (this.a($$0, $$2, $$3)) {
-         $$3.aA();
-      }
+   protected ent b_(dsa $$0) {
+      return enu.c.a(false);
    }
 
    @Override
-   protected int a(drx $$0, dbt $$1, iz $$2) {
-      return 3;
+   protected boolean m(dsa $$0) {
+      return this.c().m($$0);
+   }
+
+   @Override
+   public boolean a(@Nullable cmv $$0, dbc $$1, iz $$2, dsa $$3, ens $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(dbx $$0, iz $$1, dsa $$2, ent $$3) {
+      return false;
    }
 }

@@ -1,88 +1,54 @@
-import javax.annotation.Nullable;
-
-public class gbw extends gbx {
-   private final iz a;
-   private final float b;
-   private final float F;
-
-   public gbw(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, drx $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, iz.a($$1, $$2, $$3));
-   }
-
-   public gbw(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, drx $$7, iz $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.a = $$8;
-      this.a(ffa.Q().ao().a().a($$7));
-      this.u = 1.0F;
-      this.v = 0.6F;
-      this.w = 0.6F;
-      this.x = 0.6F;
-      if (!$$7.a(dew.i)) {
-         int $$9 = ffa.Q().av().a($$7, $$0, $$8, 0);
-         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
-         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
-         this.x *= (float)($$9 & 0xFF) / 255.0F;
-      }
-
-      this.D /= 2.0F;
-      this.b = this.r.i() * 3.0F;
-      this.F = this.r.i() * 3.0F;
+public class gbw extends gbm {
+   gbw(fxt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, gbv $$8) {
+      super($$0, $$1, $$2, $$3, $$8, 0.0F);
+      this.B = 0.92F;
+      this.D = 0.5F;
+      this.e(1.0F);
+      this.a((float)ayh.b.b($$7), (float)ayh.b.c($$7), (float)ayh.b.d($$7));
+      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
+      this.b($$8);
+      this.n = false;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    @Override
-   public gbb b() {
-      return gbb.a;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.b + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.b / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.F / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.F + 1.0F) / 4.0F);
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == 0 && this.c.B(this.a) ? gdh.a(this.c, this.a) : $$1;
-   }
-
-   @Nullable
-   static gbw a(la $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      drx $$8 = $$0.b();
-      return !$$8.i() && !$$8.a(dew.bQ) && $$8.z() ? new gbw($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
-   }
-
-   public static class a implements gba<la> {
-      @Nullable
-      public gax a(la $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gax $$8 = gbw.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         if ($$8 != null) {
-            $$8.b($$1.z.k() / 30.0, $$6 + $$1.z.k() / 2.0, $$1.z.k() / 30.0);
-            $$8.a($$1.z.a(20) + 20);
+   public void a() {
+      super.a();
+      if (!this.o) {
+         this.b(this.a);
+         if (this.s > this.t / 2) {
+            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
          }
 
-         return $$8;
+         if (this.c.a_(iz.a(this.g, this.h, this.i)).i()) {
+            this.k -= 0.0074F;
+         }
       }
    }
 
-   public static class b implements gba<la> {
-      @Nullable
-      public gax a(la $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return gbw.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public static class a implements gbd<lm> {
+      private final gbv a;
+
+      public a(gbv $$0) {
+         this.a = $$0;
+      }
+
+      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbw($$1, $$2, $$3, $$4, $$5, $$6, $$7, ayh.b.a(255, 204, 31, 102), this.a);
+      }
+   }
+
+   public static class b implements gbd<lm> {
+      private final gbv a;
+
+      public b(gbv $$0) {
+         this.a = $$0;
+      }
+
+      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbw($$1, $$2, $$3, $$4, $$5, $$6, $$7, ayh.b.a(255, 255, 255, 255), this.a);
       }
    }
 }

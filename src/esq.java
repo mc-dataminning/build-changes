@@ -1,33 +1,38 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class esq extends erp {
-   public static final MapCodec<esq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(cxs.d.fieldOf("pages").forGetter($$0x -> $$0x.b), ero.a(100).forGetter($$0x -> $$0x.c))).apply($$0, esq::new)
-   );
-   private final List<ars<String>> b;
-   private final ero c;
+public class esq extends ers {
+   static final MapCodec<esq> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(eum.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, esq::new));
+   private final eul b;
 
-   protected esq(List<etn> $$0, List<ars<String>> $$1, ero $$2) {
+   private esq(List<etq> $$0, eul $$1) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
    }
 
    @Override
-   protected cuk a(cuk $$0, eqd $$1) {
-      $$0.a(km.H, cxs.a, this::a);
+   public Set<esz<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public eru<esq> b() {
+      return erv.Q;
+   }
+
+   @Override
+   public cun a(cun $$0, eqg $$1) {
+      $$0.b(km.P, Integer.valueOf(this.b.a($$1)));
       return $$0;
    }
 
-   public cxs a(cxs $$0) {
-      List<ars<String>> $$1 = this.c.a($$0.a(), this.b, 100);
-      return $$0.b($$1);
+   public eul c() {
+      return this.b;
    }
 
-   @Override
-   public err<esq> b() {
-      return ers.O;
+   public static ers.a<?> a(eul $$0) {
+      return a($$1 -> new esq($$1, $$0));
    }
 }

@@ -1,32 +1,40 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class byd {
-   public static bve<btk> a(deu $$0) {
-      return byq.a(
-         (Function<byq.b<btk>, ? extends App<byq.c<btk>, byt<btk>>>)($$1 -> $$1.group($$1.c(cco.o), $$1.b(cco.m), $$1.b(cco.Y))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
-                     if (!$$3x.be() && $$3x.aE()) {
-                        iz $$5 = $$3x.dp().d();
+   private static final int a = 60;
 
-                        for (je $$6 : je.c.a) {
-                           iz $$7 = $$5.a($$6);
-                           if ($$2x.a_($$7).k($$2x, $$7).a(je.b).c() && $$2x.b_($$7).b(enr.c)) {
-                              iz $$8 = $$7.c();
-                              if ($$2x.a_($$8).i()) {
-                                 drx $$9 = $$0.n();
-                                 $$2x.a($$8, $$9, 3);
-                                 $$2x.a(dwq.i, $$8, dwq.a.a($$3x, $$9));
-                                 $$2x.a(null, $$3x, avw.jP, avx.e, 1.0F, 1.0F);
-                                 $$3.b();
-                                 return true;
+   public static bvh<btw> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return byt.a(
+         (Function<byt.b<btw>, ? extends App<byt.c<btw>, byw<btw>>>)($$3 -> $$3.group($$3.c(ccr.o), $$3.c(ccr.m), $$3.a(ccr.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if (!$$5x.b_($$6.dp()).a(awu.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     } else {
+                        iz $$8 = $$6.dp();
+                        iz.a $$9 = new iz.a();
+                        evu $$10 = evu.a($$6);
+
+                        for (iz $$11 : iz.a($$8, $$0, $$0, $$0)) {
+                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
+                              dsa $$12 = $$5x.a_($$11);
+                              dsa $$13 = $$5x.a_($$9.a($$11, je.a));
+                              if (!$$12.a(dez.G) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.d($$5x, $$9, je.b)) {
+                                 iz $$14 = $$11.i();
+                                 $$5.a(new bvj($$14));
+                                 $$4.a(new ccu(new bvj($$14), $$1, 1));
+                                 break;
                               }
                            }
                         }
 
+                        $$2.setValue($$7 + 60L);
                         return true;
-                     } else {
-                        return false;
                      }
                   }))
       );

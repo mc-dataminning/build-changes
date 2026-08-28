@@ -1,33 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dof extends dmo implements dnz {
-   public static final MapCodec<dof> I = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dnz.a.e.fieldOf("weathering_state").forGetter(dfv::c), drx.b.fieldOf("base_state").forGetter($$0x -> $$0x.H), u()).apply($$0, dof::new)
+public class dof extends dex implements doc {
+   public static final MapCodec<dof> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(doc.a.e.fieldOf("weathering_state").forGetter(dfy::c), u()).apply($$0, dof::new)
    );
-   private final dnz.a J;
+   private final doc.a e;
 
    @Override
    public MapCodec<dof> a() {
-      return I;
+      return d;
    }
 
-   public dof(dnz.a $$0, drx $$1, drw.d $$2) {
-      super($$1, $$2);
-      this.J = $$0;
+   public dof(doc.a $$0, drz.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected void b(drx $$0, arb $$1, iz $$2, azc $$3) {
+   protected void b(dsa $$0, are $$1, iz $$2, azf $$3) {
       this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean d_(drx $$0) {
-      return dnz.c($$0.b()).isPresent();
+   protected boolean d_(dsa $$0) {
+      return doc.c($$0.b()).isPresent();
    }
 
-   public dnz.a m() {
-      return this.J;
+   public doc.a m() {
+      return this.e;
    }
 }

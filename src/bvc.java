@@ -1,15 +1,38 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
+import net.minecraft.server.MinecraftServer;
 
 public class bvc {
-   public static bve<btk> a(cco<?> $$0, int $$1) {
-      return byq.a(
-         (Function<byq.b<btk>, ? extends App<byq.c<btk>, byt<btk>>>)($$2 -> $$2.group($$2.a(cco.o), $$2.c(cco.ax), $$2.b($$0))
-               .apply($$2, $$2.a(() -> "[BecomePassive if " + $$0 + " present]", ($$1xx, $$2x, $$3) -> ($$3x, $$4, $$5) -> {
-                     $$2x.a(true, (long)$$1);
-                     $$1xx.b();
-                     return true;
-                  })))
+   public static bvh<cmi> a() {
+      return byt.a(
+         (Function<byt.b<cmi>, ? extends App<byt.c<cmi>, byw<cmi>>>)($$0 -> $$0.group($$0.b(ccr.d), $$0.a(ccr.c))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        jh $$6 = $$0.b($$1);
+                        if (!$$6.b().a($$4.dn(), 2.0) && !$$4.gA()) {
+                           return false;
+                        } else {
+                           $$1.b();
+                           $$2.a($$6);
+                           $$3.a($$4, (byte)14);
+                           if ($$4.gB().b() != cml.b) {
+                              return true;
+                           } else {
+                              MinecraftServer $$7 = $$3.o();
+                              Optional.ofNullable($$7.a($$6.a()))
+                                 .flatMap($$1xx -> $$1xx.y().c($$6.b()))
+                                 .flatMap($$0xxx -> lp.z.s().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
+                                 .ifPresent($$2xx -> {
+                                    $$4.a($$4.gB().a($$2xx));
+                                    $$4.c($$3);
+                                 });
+                              return true;
+                           }
+                        }
+                     }
+               ))
       );
    }
 }

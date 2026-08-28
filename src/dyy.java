@@ -1,16 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
 
-abstract class dyy implements dyw {
-   protected final List<dyw> e;
+class dyy extends dzb {
+   public static final MapCodec<dyy> a = a(dyy::new);
 
-   protected dyy(List<dyw> $$0) {
-      this.e = $$0;
+   public dyy(List<dyz> $$0) {
+      super($$0);
    }
 
-   public static <T extends dyy> MapCodec<T> a(Function<List<dyw>, T> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(dyw.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
+   public boolean a(dcr $$0, iz $$1) {
+      for (dyz $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   public dza<?> a() {
+      return dza.i;
    }
 }

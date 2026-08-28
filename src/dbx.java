@@ -1,78 +1,98 @@
-import com.mojang.serialization.Dynamic;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public final class dbx {
-   private final String a;
-   private final dbq b;
-   private final boolean c;
-   private final bqm d;
-   private final boolean e;
-   private final dbp f;
-   private final dcn g;
-
-   public dbx(String $$0, dbq $$1, boolean $$2, bqm $$3, boolean $$4, dbp $$5, dcn $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+public interface dbx extends dbi, dcd {
+   @Override
+   default long ak() {
+      return this.A_().d();
    }
 
-   public static dbx a(Dynamic<?> $$0, dcn $$1) {
-      dbq $$2 = dbq.a($$0.get("GameType").asInt(0));
-      return new dbx(
-         $$0.get("LevelName").asString(""),
-         $$2,
-         $$0.get("hardcore").asBoolean(false),
-         $$0.get("Difficulty").asNumber().map($$0x -> bqm.a($$0x.byteValue())).result().orElse(bqm.c),
-         $$0.get("allowCommands").asBoolean($$2 == dbq.b),
-         new dbp($$0.get("GameRules")),
-         $$1
-      );
+   long G_();
+
+   exc<dex> P();
+
+   private <T> exg<T> a(iz $$0, T $$1, int $$2, exk $$3) {
+      return new exg<>($$1, $$0, this.A_().c() + (long)$$2, $$3, this.G_());
    }
 
-   public String a() {
-      return this.a;
+   private <T> exg<T> a(iz $$0, T $$1, int $$2) {
+      return new exg<>($$1, $$0, this.A_().c() + (long)$$2, this.G_());
    }
 
-   public dbq b() {
-      return this.b;
+   default void a(iz $$0, dex $$1, int $$2, exk $$3) {
+      this.P().a(this.a($$0, $$1, $$2, $$3));
    }
 
-   public boolean c() {
-      return this.c;
+   default void a(iz $$0, dex $$1, int $$2) {
+      this.P().a(this.a($$0, $$1, $$2));
    }
 
-   public bqm d() {
-      return this.d;
+   exc<ens> O();
+
+   default void a(iz $$0, ens $$1, int $$2, exk $$3) {
+      this.O().a(this.a($$0, $$1, $$2, $$3));
    }
 
-   public boolean e() {
-      return this.e;
+   default void a(iz $$0, ens $$1, int $$2) {
+      this.O().a(this.a($$0, $$1, $$2));
    }
 
-   public dbp f() {
-      return this.f;
+   epq A_();
+
+   bqq d_(iz var1);
+
+   @Nullable
+   MinecraftServer o();
+
+   default bqp al() {
+      return this.A_().q();
    }
 
-   public dcn g() {
-      return this.g;
+   dua N();
+
+   @Override
+   default boolean b(int $$0, int $$1) {
+      return this.N().b($$0, $$1);
    }
 
-   public dbx a(dbq $$0) {
-      return new dbx(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
+   azf E_();
+
+   default void b(iz $$0, dex $$1) {
    }
 
-   public dbx a(bqm $$0) {
-      return new dbx(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
+   default void a(je $$0, dsa $$1, iz $$2, iz $$3, int $$4, int $$5) {
+      eox.a(this, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
    }
 
-   public dbx a(dcn $$0) {
-      return new dbx(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   default void a(@Nullable cmv $$0, iz $$1, avy $$2, awa $$3) {
+      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F);
    }
 
-   public dbx h() {
-      return new dbx(this.a, this.b, this.c, this.d, this.e, this.f.b(), this.g);
+   void a(@Nullable cmv var1, iz var2, avy var3, awa var4, float var5, float var6);
+
+   void a(lg var1, double var2, double var4, double var6, double var8, double var10, double var12);
+
+   void a(@Nullable cmv var1, int var2, iz var3, int var4);
+
+   default void c(int $$0, iz $$1, int $$2) {
+      this.a(null, $$0, $$1, $$2);
+   }
+
+   void a(ji<dwt> var1, evp var2, dwt.a var3);
+
+   default void a(@Nullable bss $$0, ji<dwt> $$1, evp $$2) {
+      this.a($$1, $$2, new dwt.a($$0, null));
+   }
+
+   default void a(@Nullable bss $$0, ji<dwt> $$1, iz $$2) {
+      this.a($$1, $$2, new dwt.a($$0, null));
+   }
+
+   default void a(ji<dwt> $$0, iz $$1, dwt.a $$2) {
+      this.a($$0, evp.b($$1), $$2);
+   }
+
+   default void a(ald<dwt> $$0, iz $$1, dwt.a $$2) {
+      this.a(this.H_().d(lq.C).g($$0), $$1, $$2);
    }
 }

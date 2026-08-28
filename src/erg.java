@@ -1,88 +1,132 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class erg extends erp {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Codec<jm<czv>> c = lp.f.r().listOf().xmap(jm::a, $$0 -> $$0.a().toList());
+public class erg extends ers {
    public static final MapCodec<erg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(c.optionalFieldOf("enchantments").forGetter($$0x -> $$0x.d)).apply($$0, erg::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  erg.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
+                  kl.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
+                  kl.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, erg::new)
    );
-   private final Optional<jm<czv>> d;
+   private final erg.b b;
+   private final Optional<List<kl<?>>> c;
+   private final Optional<List<kl<?>>> d;
+   private final Predicate<kl<?>> e;
 
-   erg(List<etn> $$0, Optional<jm<czv>> $$1) {
+   erg(List<etq> $$0, erg.b $$1, Optional<List<kl<?>>> $$2, Optional<List<kl<?>>> $$3) {
       super($$0);
-      this.d = $$1;
+      this.b = $$1;
+      this.c = $$2.map(List::copyOf);
+      this.d = $$3.map(List::copyOf);
+      List<Predicate<kl<?>>> $$4 = new ArrayList<>(2);
+      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
+      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
+      this.e = ac.a($$4);
    }
 
    @Override
-   public err<erg> b() {
-      return ers.h;
+   public eru<erg> b() {
+      return erv.J;
    }
 
    @Override
-   public cuk a(cuk $$0, eqd $$1) {
-      azc $$2 = $$1.b();
-      Optional<ji<czv>> $$3 = this.d
-         .<ji<czv>>flatMap($$1x -> $$1x.a($$2))
-         .or(
-            () -> {
-               boolean $$3x = $$0.a(cun.qP);
-               List<ji.c<czv>> $$4 = lp.f
-                  .h()
-                  .filter($$1xx -> ((czv)$$1xx.a()).a($$1.d().J()))
-                  .filter($$0xx -> ((czv)$$0xx.a()).l())
-                  .filter($$2xx -> $$3x || ((czv)$$2xx.a()).b($$0))
-                  .toList();
-               return ac.b($$4, $$2);
-            }
-         );
-      if ($$3.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
-      } else {
-         return a($$0, $$3.get().a(), $$2);
-      }
+   public Set<esz<?>> a() {
+      return this.b.a();
    }
 
-   private static cuk a(cuk $$0, czv $$1, azc $$2) {
-      int $$3 = ayu.a($$2, $$1.f(), $$1.g());
-      if ($$0.a(cun.qP)) {
-         $$0 = new cuk(cun.uw);
-      }
-
-      $$0.a($$1, $$3);
+   @Override
+   public cun a(cun $$0, eqg $$1) {
+      ki $$2 = this.b.a($$1);
+      $$0.b($$2.a(this.e));
       return $$0;
    }
 
-   public static erg.a c() {
-      return new erg.a();
+   public static erg.a a(erg.b $$0) {
+      return new erg.a($$0);
    }
 
-   public static erp.a<?> d() {
-      return a($$0 -> new erg($$0, Optional.empty()));
-   }
+   public static class a extends ers.a<erg.a> {
+      private final erg.b a;
+      private Optional<Builder<kl<?>>> b = Optional.empty();
+      private Optional<Builder<kl<?>>> c = Optional.empty();
 
-   public static class a extends erp.a<erg.a> {
-      private final List<ji<czv>> a = new ArrayList<>();
+      a(erg.b $$0) {
+         this.a = $$0;
+      }
+
+      public erg.a a(kl<?> $$0) {
+         if (this.b.isEmpty()) {
+            this.b = Optional.of(ImmutableList.builder());
+         }
+
+         this.b.get().add($$0);
+         return this;
+      }
+
+      public erg.a b(kl<?> $$0) {
+         if (this.c.isEmpty()) {
+            this.c = Optional.of(ImmutableList.builder());
+         }
+
+         this.c.get().add($$0);
+         return this;
+      }
 
       protected erg.a a() {
          return this;
       }
 
-      public erg.a a(czv $$0) {
-         this.a.add($$0.m());
-         return this;
+      @Override
+      public ert b() {
+         return new erg(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
+      }
+   }
+
+   public static enum b implements azs {
+      a("block_entity");
+
+      public static final Codec<erg.b> b = azs.b(erg.b::values);
+      private final String c;
+
+      private b(final String $$0) {
+         this.c = $$0;
+      }
+
+      public ki a(eqg $$0) {
+         switch (this) {
+            case a:
+               dpf $$1 = $$0.c(etc.h);
+               return $$1 != null ? $$1.s() : ki.a;
+            default:
+               throw new MatchException(null, null);
+         }
+      }
+
+      public Set<esz<?>> a() {
+         switch (this) {
+            case a:
+               return Set.of(etc.h);
+            default:
+               throw new MatchException(null, null);
+         }
       }
 
       @Override
-      public erq b() {
-         return new erg(this.g(), this.a.isEmpty() ? Optional.empty() : Optional.of(jm.a(this.a)));
+      public String c() {
+         return this.c;
       }
    }
 }

@@ -47,8 +47,8 @@ public abstract class um {
          }
 
          @Override
-         public ayg a(xq $$0) {
-            return $$1 -> $$0.a(($$1x, $$2xxx) -> azo.c($$2xxx, $$1x, $$1) ? Optional.empty() : xq.a, yi.a).isPresent();
+         public ayj a(xt $$0) {
+            return $$1 -> $$0.a(($$1x, $$2xxx) -> azr.c($$2xxx, $$1x, $$1) ? Optional.empty() : xt.a, yl.a).isPresent();
          }
       };
    }
@@ -65,7 +65,7 @@ public abstract class um {
       JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
 
       for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-         String $$4 = d.matcher(ayk.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
+         String $$4 = d.matcher(ayn.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
          $$1.accept($$3.getKey(), $$4);
       }
    }
@@ -88,9 +88,9 @@ public abstract class um {
 
    public abstract boolean b();
 
-   public abstract ayg a(xq var1);
+   public abstract ayj a(xt var1);
 
-   public List<ayg> a(List<xq> $$0) {
+   public List<ayj> a(List<xt> $$0) {
       return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
    }
 }

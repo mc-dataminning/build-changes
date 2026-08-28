@@ -1,29 +1,37 @@
-public class aeg implements zs<ace> {
-   public static final zj<wl, aeg> a = zs.a(aeg::a, aeg::new);
+public class aeg implements zv<ach> {
+   public static final zm<wl, aeg> a = zv.a(aeg::a, aeg::new);
    private final int b;
+   private final ale c;
 
-   public aeg(brf $$0) {
-      this($$0.b());
-   }
-
-   public aeg(int $$0) {
+   public aeg(int $$0, cyv<?> $$1) {
       this.b = $$0;
+      this.c = $$1.a();
    }
 
    private aeg(wl $$0) {
-      this.b = $$0.l();
+      this.b = $$0.readByte();
+      this.c = $$0.q();
    }
 
    private void a(wl $$0) {
-      $$0.c(this.b);
+      $$0.k(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zu<aeg> a() {
-      return agq.ab;
+   public zx<aeg> a() {
+      return agt.Y;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
+   }
+
+   public ale b() {
+      return this.c;
+   }
+
+   public int e() {
+      return this.b;
    }
 }

@@ -1,216 +1,275 @@
-import java.util.Arrays;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashSet;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dpf extends dow implements brb {
-   private static final int g = 3;
-   private static final int h = 4;
-   private static final int[] i = new int[]{3};
-   private static final int[] j = new int[]{0, 1, 2, 3};
-   private static final int[] k = new int[]{0, 1, 2, 4};
-   public static final int b = 20;
-   public static final int c = 0;
-   public static final int d = 1;
-   public static final int e = 2;
-   private jr<cuk> l = jr.a(5, cuk.l);
-   int m;
-   private boolean[] q;
-   private cuf r;
-   int s;
-   protected final cpz f = new cpz() {
-      @Override
-      public int a(int $$0) {
-         return switch ($$0) {
-            case 0 -> dpf.this.m;
-            case 1 -> dpf.this.s;
-            default -> 0;
-         };
-      }
+public abstract class dpf {
+   private static final Logger d = LogUtils.getLogger();
+   private final dph<?> e;
+   @Nullable
+   protected dbw n;
+   protected final iz o;
+   protected boolean p;
+   private dsa f;
+   private ki g = ki.a;
 
-      @Override
-      public void a(int $$0, int $$1) {
-         switch ($$0) {
-            case 0:
-               dpf.this.m = $$1;
-               break;
-            case 1:
-               dpf.this.s = $$1;
-         }
-      }
-
-      @Override
-      public int a() {
-         return 2;
-      }
-   };
-
-   public dpf(iz $$0, drx $$1) {
-      super(dpe.l, $$0, $$1);
+   public dpf(dph<?> $$0, iz $$1, dsa $$2) {
+      this.e = $$0;
+      this.o = $$1.i();
+      this.f = $$2;
    }
 
-   @Override
-   protected xl k() {
-      return xl.c("container.brewing");
+   public static iz b(ur $$0) {
+      return new iz($$0.h("x"), $$0.h("y"), $$0.h("z"));
    }
 
-   @Override
-   public int b() {
-      return this.l.size();
+   @Nullable
+   public dbw i() {
+      return this.n;
    }
 
-   @Override
-   protected jr<cuk> j() {
-      return this.l;
+   public void a(dbw $$0) {
+      this.n = $$0;
    }
 
-   @Override
-   protected void a(jr<cuk> $$0) {
-      this.l = $$0;
+   public boolean m() {
+      return this.n != null;
    }
 
-   public static void a(dbt $$0, iz $$1, drx $$2, dpf $$3) {
-      cuk $$4 = $$3.l.get(4);
-      if ($$3.s <= 0 && $$4.a(cun.so)) {
-         $$3.s = 20;
-         $$4.h(1);
-         a($$0, $$1, $$2);
-      }
-
-      boolean $$5 = a($$0.K(), $$3.l);
-      boolean $$6 = $$3.m > 0;
-      cuk $$7 = $$3.l.get(3);
-      if ($$6) {
-         $$3.m--;
-         boolean $$8 = $$3.m == 0;
-         if ($$8 && $$5) {
-            a($$0, $$1, $$3.l);
-            a($$0, $$1, $$2);
-         } else if (!$$5 || !$$7.a($$3.r)) {
-            $$3.m = 0;
-            a($$0, $$1, $$2);
-         }
-      } else if ($$5 && $$3.s > 0) {
-         $$3.s--;
-         $$3.m = 400;
-         $$3.r = $$7.g();
-         a($$0, $$1, $$2);
-      }
-
-      boolean[] $$9 = $$3.f();
-      if (!Arrays.equals($$9, $$3.q)) {
-         $$3.q = $$9;
-         drx $$10 = $$2;
-         if (!($$2.b() instanceof dey)) {
-            return;
-         }
-
-         for (int $$11 = 0; $$11 < dey.b.length; $$11++) {
-            $$10 = $$10.a(dey.b[$$11], Boolean.valueOf($$9[$$11]));
-         }
-
-         $$0.a($$1, $$10, 2);
-      }
-   }
-
-   private boolean[] f() {
-      boolean[] $$0 = new boolean[3];
-
-      for (int $$1 = 0; $$1 < 3; $$1++) {
-         if (!this.l.get($$1).e()) {
-            $$0[$$1] = true;
-         }
-      }
-
-      return $$0;
-   }
-
-   private static boolean a(cwk $$0, jr<cuk> $$1) {
-      cuk $$2 = $$1.get(3);
-      if ($$2.e()) {
-         return false;
-      } else if (!$$0.a($$2)) {
-         return false;
-      } else {
-         for (int $$3 = 0; $$3 < 3; $$3++) {
-            cuk $$4 = $$1.get($$3);
-            if (!$$4.e() && $$0.a($$4, $$2)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   private static void a(dbt $$0, iz $$1, jr<cuk> $$2) {
-      cuk $$3 = $$2.get(3);
-      cwk $$4 = $$0.K();
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         $$2.set($$5, $$4.d($$3, $$2.get($$5)));
-      }
-
-      $$3.h(1);
-      if ($$3.g().v()) {
-         cuk $$6 = new cuk($$3.g().u());
-         if ($$3.e()) {
-            $$3 = $$6;
-         } else {
-            bql.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$6);
-         }
-      }
-
-      $$2.set(3, $$3);
-      $$0.c(1035, $$1, 0);
-   }
-
-   @Override
    protected void a(ur $$0, jk.a $$1) {
-      super.a($$0, $$1);
-      this.l = jr.a(this.b(), cuk.l);
-      bqj.b($$0, this.l, $$1);
-      this.m = $$0.g("BrewTime");
-      this.s = $$0.f("Fuel");
    }
 
-   @Override
+   public final void c(ur $$0, jk.a $$1) {
+      this.a($$0, $$1);
+      dpf.a.a.parse($$1.a(vf.a), $$0).resultOrPartial($$0x -> d.warn("Failed to load components: {}", $$0x)).ifPresent($$0x -> this.g = $$0x);
+   }
+
+   public final void d(ur $$0, jk.a $$1) {
+      this.a($$0, $$1);
+   }
+
    protected void b(ur $$0, jk.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("BrewTime", (short)this.m);
-      bqj.a($$0, this.l, $$1);
-      $$0.a("Fuel", (byte)this.s);
    }
 
-   @Override
-   public boolean b(int $$0, cuk $$1) {
-      if ($$0 == 3) {
-         cwk $$2 = this.n != null ? this.n.K() : cwk.b;
-         return $$2.a($$1);
+   public final ur b(jk.a $$0) {
+      ur $$1 = this.d($$0);
+      this.d($$1);
+      return $$1;
+   }
+
+   public final ur c(jk.a $$0) {
+      ur $$1 = this.d($$0);
+      this.c($$1);
+      return $$1;
+   }
+
+   public final ur d(jk.a $$0) {
+      ur $$1 = new ur();
+      this.b($$1, $$0);
+      dpf.a.a.encodeStart($$0.a(vf.a), this.g).resultOrPartial($$0x -> d.warn("Failed to save components: {}", $$0x)).ifPresent($$1x -> $$1.a((ur)$$1x));
+      return $$1;
+   }
+
+   public final ur e(jk.a $$0) {
+      ur $$1 = new ur();
+      this.b($$1, $$0);
+      return $$1;
+   }
+
+   public final ur f(jk.a $$0) {
+      ur $$1 = this.e($$0);
+      this.d($$1);
+      return $$1;
+   }
+
+   private void c(ur $$0) {
+      ale $$1 = dph.a(this.r());
+      if ($$1 == null) {
+         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
       } else {
-         return $$0 == 4 ? $$1.a(cun.so) : ($$1.a(cun.sk) || $$1.a(cun.vo) || $$1.a(cun.vr) || $$1.a(cun.sl)) && this.a($$0).e();
+         $$0.a("id", $$1.toString());
       }
    }
 
-   @Override
-   public int[] a(je $$0) {
-      if ($$0 == je.b) {
-         return i;
+   public static void a(ur $$0, dph<?> $$1) {
+      $$0.a("id", dph.a($$1).toString());
+   }
+
+   public void a(cun $$0, jk.a $$1) {
+      ur $$2 = this.e($$1);
+      this.a($$2);
+      csl.a($$0, this.r(), $$2);
+      $$0.b(this.s());
+   }
+
+   private void d(ur $$0) {
+      this.c($$0);
+      $$0.a("x", this.o.u());
+      $$0.a("y", this.o.v());
+      $$0.a("z", this.o.w());
+   }
+
+   @Nullable
+   public static dpf a(iz $$0, dsa $$1, ur $$2, jk.a $$3) {
+      String $$4 = $$2.l("id");
+      ale $$5 = ale.a($$4);
+      if ($$5 == null) {
+         d.error("Block entity has invalid type: {}", $$4);
+         return null;
       } else {
-         return $$0 == je.a ? j : k;
+         return lp.k.b($$5).map($$3x -> {
+            try {
+               return $$3x.a($$0, $$1);
+            } catch (Throwable var5x) {
+               d.error("Failed to create block entity {}", $$4, var5x);
+               return null;
+            }
+         }).map($$3x -> {
+            try {
+               $$3x.c($$2, $$3);
+               return $$3x;
+            } catch (Throwable var5x) {
+               d.error("Failed to load data for block entity {}", $$4, var5x);
+               return null;
+            }
+         }).orElseGet(() -> {
+            d.warn("Skipping BlockEntity with id {}", $$4);
+            return null;
+         });
       }
    }
 
-   @Override
-   public boolean a(int $$0, cuk $$1, @Nullable je $$2) {
-      return this.b($$0, $$1);
+   public void e() {
+      if (this.n != null) {
+         a(this.n, this.o, this.f);
+      }
    }
 
-   @Override
-   public boolean b(int $$0, cuk $$1, je $$2) {
-      return $$0 == 3 ? $$1.a(cun.sl) : true;
+   protected static void a(dbw $$0, iz $$1, dsa $$2) {
+      $$0.q($$1);
+      if (!$$2.i()) {
+         $$0.c($$1, $$2.b());
+      }
    }
 
-   @Override
-   protected cpp a(int $$0, cmr $$1) {
-      return new cpu($$0, $$1, this, this.f);
+   public iz az_() {
+      return this.o;
+   }
+
+   public dsa n() {
+      return this.f;
+   }
+
+   @Nullable
+   public zv<ach> av_() {
+      return null;
+   }
+
+   public ur a(jk.a $$0) {
+      return new ur();
+   }
+
+   public boolean o() {
+      return this.p;
+   }
+
+   public void aw_() {
+      this.p = true;
+   }
+
+   public void p() {
+      this.p = false;
+   }
+
+   public boolean a_(int $$0, int $$1) {
+      return false;
+   }
+
+   public void a(p $$0) {
+      $$0.a("Name", () -> lp.k.b(this.r()) + " // " + this.getClass().getCanonicalName());
+      if (this.n != null) {
+         p.a($$0, this.n, this.o, this.n());
+         p.a($$0, this.n, this.o, this.n.a_(this.o));
+      }
+   }
+
+   public boolean q() {
+      return false;
+   }
+
+   public dph<?> r() {
+      return this.e;
+   }
+
+   @Deprecated
+   public void b(dsa $$0) {
+      this.f = $$0;
+   }
+
+   protected void a(dpf.b $$0) {
+   }
+
+   public final void a(cun $$0) {
+      this.a($$0.c(), $$0.d());
+   }
+
+   public final void a(ki $$0, kj $$1) {
+      final Set<kl<?>> $$2 = new HashSet<>();
+      $$2.add(km.N);
+      final ki $$3 = kn.a($$0, $$1);
+      this.a(new dpf.b() {
+         @Nullable
+         @Override
+         public <T> T a(kl<T> $$0) {
+            $$2.add($$0);
+            return $$3.a($$0);
+         }
+
+         @Override
+         public <T> T a(kl<? extends T> $$0, T $$1) {
+            $$2.add($$0);
+            return $$3.a($$0, $$1);
+         }
+      });
+      kj $$4 = $$1.a($$2::contains);
+      this.g = $$4.e().a();
+   }
+
+   protected void a(ki.a $$0) {
+   }
+
+   @Deprecated
+   public void a(ur $$0) {
+   }
+
+   public final ki s() {
+      ki.a $$0 = ki.a();
+      $$0.a(this.g);
+      this.a($$0);
+      return $$0.a();
+   }
+
+   public ki t() {
+      return this.g;
+   }
+
+   public void a(ki $$0) {
+      this.g = $$0;
+   }
+
+   static class a {
+      public static final Codec<ki> a = ki.b.optionalFieldOf("components", ki.a).codec();
+
+      private a() {
+      }
+   }
+
+   protected interface b {
+      @Nullable
+      <T> T a(kl<T> var1);
+
+      <T> T a(kl<? extends T> var1, T var2);
    }
 }

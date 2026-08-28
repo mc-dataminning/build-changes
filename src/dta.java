@@ -1,68 +1,36 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import java.util.Collection;
 import java.util.Optional;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public abstract class dta<T extends Comparable<T>> {
-   private final Class<T> a;
-   private final String b;
-   @Nullable
-   private Integer c;
-   private final Codec<T> d = Codec.STRING
-      .comapFlatMap(
-         $$0x -> this.b($$0x)
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
-         this::a
-      );
-   private final Codec<dta.a<T>> e = this.d.xmap(this::b, dta.a::b);
+public class dta extends dtd<Integer> {
+   private final ImmutableSet<Integer> a;
+   private final int b;
+   private final int c;
 
-   protected dta(String $$0, Class<T> $$1) {
-      this.a = $$1;
-      this.b = $$0;
+   protected dta(String $$0, int $$1, int $$2) {
+      super($$0, Integer.class);
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
+      } else if ($$2 <= $$1) {
+         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
+      } else {
+         this.b = $$1;
+         this.c = $$2;
+         Set<Integer> $$3 = Sets.newHashSet();
+
+         for (int $$4 = $$1; $$4 <= $$2; $$4++) {
+            $$3.add($$4);
+         }
+
+         this.a = ImmutableSet.copyOf($$3);
+      }
    }
-
-   public dta.a<T> b(T $$0) {
-      return new dta.a<>(this, $$0);
-   }
-
-   public dta.a<T> a(drz<?, ?> $$0) {
-      return new dta.a<>(this, $$0.c(this));
-   }
-
-   public Stream<dta.a<T>> c() {
-      return this.a().stream().map(this::b);
-   }
-
-   public Codec<T> d() {
-      return this.d;
-   }
-
-   public Codec<dta.a<T>> e() {
-      return this.e;
-   }
-
-   public String f() {
-      return this.b;
-   }
-
-   public Class<T> g() {
-      return this.a;
-   }
-
-   public abstract Collection<T> a();
-
-   public abstract String a(T var1);
-
-   public abstract Optional<T> b(String var1);
 
    @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
+   public Collection<Integer> a() {
+      return this.a;
    }
 
    @Override
@@ -70,41 +38,34 @@ public abstract class dta<T extends Comparable<T>> {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof dta<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+         if ($$0 instanceof dta $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
       }
    }
 
    @Override
-   public final int hashCode() {
-      if (this.c == null) {
-         this.c = this.b();
-      }
-
-      return this.c;
-   }
-
    public int b() {
-      return 31 * this.a.hashCode() + this.b.hashCode();
+      return 31 * super.b() + this.a.hashCode();
    }
 
-   public <U, S extends drz<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
-      DataResult<T> $$3 = this.d.parse($$0, $$2);
-      return $$3.map($$1x -> $$1.a(this, $$1x)).setPartial($$1);
+   public static dta a(String $$0, int $$1, int $$2) {
+      return new dta($$0, $$1, $$2);
    }
 
-   public static record a<T extends Comparable<T>>(dta<T> a, T b) {
-      public a(dta<T> a, T b) {
-         if (!a.a().contains(b)) {
-            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
-         } else {
-            this.a = a;
-            this.b = b;
-         }
+   @Override
+   public Optional<Integer> b(String $$0) {
+      try {
+         Integer $$1 = Integer.valueOf($$0);
+         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
+      } catch (NumberFormatException var3) {
+         return Optional.empty();
       }
+   }
 
-      @Override
-      public String toString() {
-         return this.a.f() + "=" + this.a.a(this.b);
-      }
+   public String a(Integer $$0) {
+      return $$0.toString();
    }
 }

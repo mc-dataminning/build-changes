@@ -1,38 +1,34 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class ehh extends ehq {
-   public static final MapCodec<ehh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ehh::new)
-   );
-   private final int c;
-   private final double d;
-   private final double e;
+public class ehh extends ehp {
+   public static final MapCodec<ehh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(egp.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, ehh::new));
+   private final egp c;
 
-   private ehh(int $$0, double $$1, double $$2) {
+   private ehh(egp $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
    }
 
-   public static ehh a(int $$0, double $$1, double $$2) {
-      return new ehh($$0, $$1, $$2);
+   public static ehh a(egp $$0) {
+      return new ehh($$0);
+   }
+
+   public static ehh a(dym $$0, dym $$1) {
+      return a(egs.a($$0, $$1));
+   }
+
+   public static ehh b(dym $$0, dym $$1) {
+      return a(egr.a($$0, $$1));
    }
 
    @Override
-   protected int a(azc $$0, iz $$1) {
-      double $$2 = dcs.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   public Stream<iz> a_(ehn $$0, azf $$1, iz $$2) {
+      return Stream.of($$2.h(this.c.a($$1, $$0)));
    }
 
    @Override
-   public ehn<?> b() {
-      return ehn.g;
+   public ehq<?> b() {
+      return ehq.l;
    }
 }

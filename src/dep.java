@@ -1,59 +1,50 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dep extends dgp {
+public class dep extends dej implements deo {
    public static final MapCodec<dep> a = b(dep::new);
-   public static final int b = 3;
-   public static final dsx c = dsn.as;
-   private static final ewf[] g = new ewf[]{
-      deu.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      deu.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      deu.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      deu.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0)
-   };
 
    @Override
    public MapCodec<dep> a() {
       return a;
    }
 
-   public dep(drw.d $$0) {
+   public dep(drz.d $$0) {
       super($$0);
    }
 
    @Override
-   protected dsx b() {
-      return c;
+   public ctg b() {
+      return ctg.a;
    }
 
    @Override
-   public int c() {
-      return 3;
+   public dpf a(iz $$0, dsa $$1) {
+      return new dpa($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dpf> dpg<T> a(dbw $$0, dsa $$1, dph<T> $$2) {
+      return a($$2, dph.o, dpa::a);
    }
 
    @Override
-   protected dbs d() {
-      return cun.vl;
-   }
+   protected bqs a(dsa $$0, dbw $$1, iz $$2, cmv $$3, evl $$4) {
+      if ($$1.B) {
+         return bqs.a;
+      } else {
+         if ($$1.c_($$2) instanceof dpa $$5) {
+            $$3.a($$5);
+            $$3.a(awj.ab);
+         }
 
-   @Override
-   protected void b(drx $$0, arb $$1, iz $$2, azc $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
+         return bqs.c;
       }
    }
 
    @Override
-   protected int a(dbt $$0) {
-      return super.a($$0) / 3;
-   }
-
-   @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   protected ewf a(drx $$0, daz $$1, iz $$2, evr $$3) {
-      return g[this.g($$0)];
+   protected dld a_(dsa $$0) {
+      return dld.c;
    }
 }

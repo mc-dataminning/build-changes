@@ -1,21 +1,29 @@
-import java.util.concurrent.ConcurrentLinkedQueue;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.system.MemoryUtil;
+public enum exk {
+   a(-3),
+   b(-2),
+   c(-1),
+   d(0),
+   e(1),
+   f(2),
+   g(3);
 
-public class exk {
-   public static void a(eye $$0, float $$1) {
-      ConcurrentLinkedQueue<eyd> $$2 = $$0.i();
+   private final int h;
+
+   private exk(final int $$0) {
+      this.h = $$0;
    }
 
-   public static void b(eye $$0, float $$1) {
-      ConcurrentLinkedQueue<eyd> $$2 = $$0.j();
+   public static exk a(int $$0) {
+      for (exk $$1 : values()) {
+         if ($$1.h == $$0) {
+            return $$1;
+         }
+      }
+
+      return $$0 < a.h ? a : g;
    }
 
-   public static void a() {
-      MemoryUtil.memSet(0L, 0, 1L);
-   }
-
-   public static double b() {
-      return GLFW.glfwGetTime();
+   public int a() {
+      return this.h;
    }
 }

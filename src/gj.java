@@ -17,16 +17,16 @@ import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class gj {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("argument.block.tag.disallowed"));
-   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xl.b("argument.block.id.invalid", $$0));
-   public static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> xl.b("argument.block.property.unknown", $$0, $$1));
-   public static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> xl.b("argument.block.property.duplicate", $$1, $$0));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xo.c("argument.block.tag.disallowed"));
+   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xo.b("argument.block.id.invalid", $$0));
+   public static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> xo.b("argument.block.property.unknown", $$0, $$1));
+   public static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> xo.b("argument.block.property.duplicate", $$1, $$0));
    public static final Dynamic3CommandExceptionType e = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> xl.b("argument.block.property.invalid", $$0, $$2, $$1)
+      ($$0, $$1, $$2) -> xo.b("argument.block.property.invalid", $$0, $$2, $$1)
    );
-   public static final Dynamic2CommandExceptionType f = new Dynamic2CommandExceptionType(($$0, $$1) -> xl.b("argument.block.property.novalue", $$0, $$1));
-   public static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(xl.c("argument.block.property.unclosed"));
-   public static final DynamicCommandExceptionType h = new DynamicCommandExceptionType($$0 -> xl.b("arguments.block.tag.unknown", $$0));
+   public static final Dynamic2CommandExceptionType f = new Dynamic2CommandExceptionType(($$0, $$1) -> xo.b("argument.block.property.novalue", $$0, $$1));
+   public static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(xo.c("argument.block.property.unclosed"));
+   public static final DynamicCommandExceptionType h = new DynamicCommandExceptionType($$0 -> xo.b("arguments.block.tag.unknown", $$0));
    private static final char i = '[';
    private static final char j = '{';
    private static final char k = ']';
@@ -34,35 +34,35 @@ public class gj {
    private static final char m = ',';
    private static final char n = '#';
    private static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> o = SuggestionsBuilder::buildFuture;
-   private final jk<deu> p;
+   private final jk<dex> p;
    private final StringReader q;
    private final boolean r;
    private final boolean s;
-   private final Map<dta<?>, Comparable<?>> t = Maps.newHashMap();
+   private final Map<dtd<?>, Comparable<?>> t = Maps.newHashMap();
    private final Map<String, String> u = Maps.newHashMap();
-   private alb v = new alb("");
+   private ale v = new ale("");
    @Nullable
-   private dry<deu, drx> w;
+   private dsb<dex, dsa> w;
    @Nullable
-   private drx x;
+   private dsa x;
    @Nullable
    private ur y;
    @Nullable
-   private jm<deu> z;
+   private jm<dex> z;
    private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> A = o;
 
-   private gj(jk<deu> $$0, StringReader $$1, boolean $$2, boolean $$3) {
+   private gj(jk<dex> $$0, StringReader $$1, boolean $$2, boolean $$3) {
       this.p = $$0;
       this.q = $$1;
       this.r = $$2;
       this.s = $$3;
    }
 
-   public static gj.a a(jk<deu> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+   public static gj.a a(jk<dex> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
       return a($$0, new StringReader($$1), $$2);
    }
 
-   public static gj.a a(jk<deu> $$0, StringReader $$1, boolean $$2) throws CommandSyntaxException {
+   public static gj.a a(jk<dex> $$0, StringReader $$1, boolean $$2) throws CommandSyntaxException {
       int $$3 = $$1.getCursor();
 
       try {
@@ -75,11 +75,11 @@ public class gj {
       }
    }
 
-   public static Either<gj.a, gj.b> b(jk<deu> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+   public static Either<gj.a, gj.b> b(jk<dex> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
       return b($$0, new StringReader($$1), $$2);
    }
 
-   public static Either<gj.a, gj.b> b(jk<deu> $$0, StringReader $$1, boolean $$2) throws CommandSyntaxException {
+   public static Either<gj.a, gj.b> b(jk<dex> $$0, StringReader $$1, boolean $$2) throws CommandSyntaxException {
       int $$3 = $$1.getCursor();
 
       try {
@@ -92,7 +92,7 @@ public class gj {
       }
    }
 
-   public static CompletableFuture<Suggestions> a(jk<deu> $$0, SuggestionsBuilder $$1, boolean $$2, boolean $$3) {
+   public static CompletableFuture<Suggestions> a(jk<dex> $$0, SuggestionsBuilder $$1, boolean $$2, boolean $$3) {
       StringReader $$4 = new StringReader($$1.getInput());
       $$4.setCursor($$1.getStart());
       gj $$5 = new gj($$0, $$4, $$2, $$3);
@@ -153,7 +153,7 @@ public class gj {
    private CompletableFuture<Suggestions> c(SuggestionsBuilder $$0) {
       String $$1 = $$0.getRemaining().toLowerCase(Locale.ROOT);
 
-      for (dta<?> $$2 : this.x.B()) {
+      for (dtd<?> $$2 : this.x.B()) {
          if (!this.t.containsKey($$2) && $$2.f().startsWith($$1)) {
             $$0.suggest($$2.f() + "=");
          }
@@ -165,8 +165,8 @@ public class gj {
    private CompletableFuture<Suggestions> d(SuggestionsBuilder $$0) {
       String $$1 = $$0.getRemaining().toLowerCase(Locale.ROOT);
       if (this.z != null) {
-         for (ji<deu> $$2 : this.z) {
-            for (dta<?> $$3 : $$2.a().l().d()) {
+         for (ji<dex> $$2 : this.z) {
+            for (dtd<?> $$3 : $$2.a().l().d()) {
                if (!this.u.containsKey($$3.f()) && $$3.f().startsWith($$1)) {
                   $$0.suggest($$3.f() + "=");
                }
@@ -190,8 +190,8 @@ public class gj {
          return this.x.t();
       } else {
          if (this.z != null) {
-            for (ji<deu> $$0 : this.z) {
-               if ($$0.a().n().t()) {
+            for (ji<dex> $$0 : this.z) {
+               if ($$0.a().o().t()) {
                   return true;
                }
             }
@@ -221,7 +221,7 @@ public class gj {
       return $$0.buildFuture();
    }
 
-   private static <T extends Comparable<T>> SuggestionsBuilder a(SuggestionsBuilder $$0, dta<T> $$1) {
+   private static <T extends Comparable<T>> SuggestionsBuilder a(SuggestionsBuilder $$0, dtd<T> $$1) {
       for (T $$2 : $$1.a()) {
          if ($$2 instanceof Integer $$3) {
             $$0.suggest($$3);
@@ -236,15 +236,15 @@ public class gj {
    private CompletableFuture<Suggestions> a(SuggestionsBuilder $$0, String $$1) {
       boolean $$2 = false;
       if (this.z != null) {
-         for (ji<deu> $$3 : this.z) {
-            deu $$4 = $$3.a();
-            dta<?> $$5 = $$4.l().a($$1);
+         for (ji<dex> $$3 : this.z) {
+            dex $$4 = $$3.a();
+            dtd<?> $$5 = $$4.l().a($$1);
             if ($$5 != null) {
                a($$0, $$5);
             }
 
             if (!$$2) {
-               for (dta<?> $$6 : $$4.l().d()) {
+               for (dtd<?> $$6 : $$4.l().d()) {
                   if (!this.u.containsKey($$6.f())) {
                      $$2 = true;
                      break;
@@ -267,10 +267,10 @@ public class gj {
          boolean $$1 = false;
          boolean $$2 = false;
 
-         for (ji<deu> $$3 : this.z) {
-            deu $$4 = $$3.a();
+         for (ji<dex> $$3 : this.z) {
+            dex $$4 = $$3.a();
             $$1 |= !$$4.l().d().isEmpty();
-            $$2 |= $$4.n().t();
+            $$2 |= $$4.o().t();
             if ($$1 && $$2) {
                break;
             }
@@ -303,11 +303,11 @@ public class gj {
    }
 
    private CompletableFuture<Suggestions> j(SuggestionsBuilder $$0) {
-      return eu.a(this.p.e().map(axb::b), $$0, String.valueOf('#'));
+      return eu.a(this.p.e().map(axe::b), $$0, String.valueOf('#'));
    }
 
    private CompletableFuture<Suggestions> k(SuggestionsBuilder $$0) {
-      return eu.a(this.p.c().map(ala::a), $$0);
+      return eu.a(this.p.c().map(ald::a), $$0);
    }
 
    private CompletableFuture<Suggestions> l(SuggestionsBuilder $$0) {
@@ -318,13 +318,13 @@ public class gj {
 
    private void c() throws CommandSyntaxException {
       int $$0 = this.q.getCursor();
-      this.v = alb.a(this.q);
-      deu $$1 = this.p.a(ala.a(lq.f, this.v)).orElseThrow(() -> {
+      this.v = ale.a(this.q);
+      dex $$1 = this.p.a(ald.a(lq.f, this.v)).orElseThrow(() -> {
          this.q.setCursor($$0);
          return b.createWithContext(this.q, this.v.toString());
       }).a();
       this.w = $$1.l();
-      this.x = $$1.n();
+      this.x = $$1.o();
    }
 
    private void d() throws CommandSyntaxException {
@@ -334,8 +334,8 @@ public class gj {
          int $$0 = this.q.getCursor();
          this.q.expect('#');
          this.A = this::j;
-         alb $$1 = alb.a(this.q);
-         this.z = this.p.a(axb.a(lq.f, $$1)).orElseThrow(() -> {
+         ale $$1 = ale.a(this.q);
+         this.z = this.p.a(axe.a(lq.f, $$1)).orElseThrow(() -> {
             this.q.setCursor($$0);
             return h.createWithContext(this.q, $$1.toString());
          });
@@ -351,7 +351,7 @@ public class gj {
          this.q.skipWhitespace();
          int $$0 = this.q.getCursor();
          String $$1 = this.q.readString();
-         dta<?> $$2 = this.w.a($$1);
+         dtd<?> $$2 = this.w.a($$1);
          if ($$2 == null) {
             this.q.setCursor($$0);
             throw c.createWithContext(this.q, this.v.toString(), $$1);
@@ -452,7 +452,7 @@ public class gj {
       this.y = new vp(this.q).f();
    }
 
-   private <T extends Comparable<T>> void a(dta<T> $$0, String $$1, int $$2) throws CommandSyntaxException {
+   private <T extends Comparable<T>> void a(dtd<T> $$0, String $$1, int $$2) throws CommandSyntaxException {
       Optional<T> $$3 = $$0.b($$1);
       if ($$3.isPresent()) {
          this.x = this.x.a($$0, $$3.get());
@@ -463,13 +463,13 @@ public class gj {
       }
    }
 
-   public static String a(drx $$0) {
+   public static String a(dsa $$0) {
       StringBuilder $$1 = new StringBuilder($$0.c().e().map($$0x -> $$0x.a().toString()).orElse("air"));
       if (!$$0.B().isEmpty()) {
          $$1.append('[');
          boolean $$2 = false;
 
-         for (Entry<dta<?>, Comparable<?>> $$3 : $$0.C().entrySet()) {
+         for (Entry<dtd<?>, Comparable<?>> $$3 : $$0.C().entrySet()) {
             if ($$2) {
                $$1.append(',');
             }
@@ -484,15 +484,15 @@ public class gj {
       return $$1.toString();
    }
 
-   private static <T extends Comparable<T>> void a(StringBuilder $$0, dta<T> $$1, Comparable<?> $$2) {
+   private static <T extends Comparable<T>> void a(StringBuilder $$0, dtd<T> $$1, Comparable<?> $$2) {
       $$0.append($$1.f());
       $$0.append('=');
       $$0.append($$1.a((T)$$2));
    }
 
-   public static record a(drx a, Map<dta<?>, Comparable<?>> b, @Nullable ur c) {
+   public static record a(dsa a, Map<dtd<?>, Comparable<?>> b, @Nullable ur c) {
    }
 
-   public static record b(jm<deu> a, Map<String, String> b, @Nullable ur c) {
+   public static record b(jm<dex> a, Map<String, String> b, @Nullable ur c) {
    }
 }

@@ -1,18 +1,16 @@
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public class emd {
-   private final List<emc> a;
+public interface emd<P extends emc> {
+   emd<elg> a = a("always_true", elg.a);
+   emd<ell> b = a("block_match", ell.a);
+   emd<eln> c = a("blockstate_match", eln.a);
+   emd<emk> d = a("tag_match", emk.a);
+   emd<elz> e = a("random_block_match", elz.a);
+   emd<ema> f = a("random_blockstate_match", ema.a);
 
-   public emd(List<emc> $$0) {
-      this.a = $$0;
-   }
+   MapCodec<P> codec();
 
-   public List<emc> a() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "ProcessorList[" + this.a + "]";
+   static <P extends emc> emd<P> a(String $$0, MapCodec<P> $$1) {
+      return jv.a(lp.o, $$0, () -> $$1);
    }
 }

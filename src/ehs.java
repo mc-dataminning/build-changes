@@ -1,11 +1,7 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehs extends ehl {
-   public static final MapCodec<ehs> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, ehs::new)
-   );
+public class ehs extends eho {
+   public static final MapCodec<ehs> a = ayf.l.fieldOf("chance").xmap(ehs::new, $$0 -> $$0.c);
    private final int c;
 
    private ehs(int $$0) {
@@ -17,14 +13,12 @@ public class ehs extends ehl {
    }
 
    @Override
-   protected boolean a(ehk $$0, azc $$1, iz $$2) {
-      int $$3 = $$0.a(dxp.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(dxp.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
+   protected boolean a(ehn $$0, azf $$1, iz $$2) {
+      return $$1.i() < 1.0F / (float)this.c;
    }
 
    @Override
-   public ehn<?> b() {
-      return ehn.d;
+   public ehq<?> b() {
+      return ehq.b;
    }
 }

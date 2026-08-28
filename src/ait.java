@@ -1,49 +1,51 @@
-public record ait(int b, String c, int d, ais e) implements zs<aiw> {
-   public static final zj<wl, ait> a = zs.a(ait::a, ait::new);
-   private static final int f = 255;
+import org.jetbrains.annotations.VisibleForTesting;
 
-   @Deprecated
-   public ait(int b, String c, int d, ais e) {
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
+public class ait {
+   private static final double a = 4096.0;
+   private evp b;
+
+   public ait() {
+      this.b = evp.b;
    }
 
-   private ait(wl $$0) {
-      this($$0.l(), $$0.d(255), $$0.readUnsignedShort(), ais.a($$0.l()));
+   @VisibleForTesting
+   static long a(double $$0) {
+      return Math.round($$0 * 4096.0);
    }
 
-   private void a(wl $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.l(this.d);
-      $$0.c(this.e.a());
+   @VisibleForTesting
+   static double a(long $$0) {
+      return (double)$$0 / 4096.0;
    }
 
-   @Override
-   public zu<ait> a() {
-      return aiu.a;
+   public evp a(long $$0, long $$1, long $$2) {
+      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
+         return this.b;
+      } else {
+         double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
+         double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
+         double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
+         return new evp($$3, $$4, $$5);
+      }
    }
 
-   public void a(aiw $$0) {
-      $$0.a(this);
+   public long a(evp $$0) {
+      return a($$0.c) - a(this.b.c);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public long b(evp $$0) {
+      return a($$0.d) - a(this.b.d);
    }
 
-   public String e() {
-      return this.c;
+   public long c(evp $$0) {
+      return a($$0.e) - a(this.b.e);
    }
 
-   public int f() {
-      return this.d;
+   public evp d(evp $$0) {
+      return $$0.d(this.b);
    }
 
-   public ais g() {
-      return this.e;
+   public void e(evp $$0) {
+      this.b = $$0;
    }
 }

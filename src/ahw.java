@@ -1,67 +1,29 @@
-public class ahw implements zs<ags> {
-   public static final zj<wl, ahw> a = zs.a(ahw::a, ahw::new);
-   private final iz b;
-   private final je c;
-   private final ahw.a d;
-   private final int e;
+public class ahw implements zv<agv> {
+   public static final zm<wl, ahw> a = zv.a(ahw::a, ahw::new);
+   private final int b;
 
-   public ahw(ahw.a $$0, iz $$1, je $$2, int $$3) {
-      this.d = $$0;
-      this.b = $$1.i();
-      this.c = $$2;
-      this.e = $$3;
-   }
-
-   public ahw(ahw.a $$0, iz $$1, je $$2) {
-      this($$0, $$1, $$2, 0);
+   public ahw(int $$0) {
+      this.b = $$0;
    }
 
    private ahw(wl $$0) {
-      this.d = $$0.b(ahw.a.class);
-      this.b = $$0.e();
-      this.c = je.a($$0.readUnsignedByte());
-      this.e = $$0.l();
+      this.b = $$0.l();
    }
 
    private void a(wl $$0) {
-      $$0.a(this.d);
-      $$0.a(this.b);
-      $$0.k(this.c.d());
-      $$0.c(this.e);
+      $$0.c(this.b);
    }
 
    @Override
-   public zu<ahw> a() {
-      return agq.bK;
+   public zx<ahw> a() {
+      return agt.bH;
    }
 
-   public void a(ags $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public iz b() {
+   public int b() {
       return this.b;
-   }
-
-   public je e() {
-      return this.c;
-   }
-
-   public ahw.a f() {
-      return this.d;
-   }
-
-   public int g() {
-      return this.e;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g;
    }
 }

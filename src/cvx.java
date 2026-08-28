@@ -1,29 +1,40 @@
-import java.util.List;
+public class cvx extends cui {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-public class cvx extends cwa {
-   public cvx(cvz $$0, cuf.a $$1) {
-      super($$0, $$1.a(km.w, k()));
-   }
-
-   private static cxp k() {
-      return new cxp(List.of(cxp.a.a(List.of(dew.bs), 15.0F), cxp.a.b(awl.bE, 1.5F)), 1.0F, 2);
-   }
-
-   public static cxf a(cvz $$0, int $$1, float $$2) {
-      return cxf.a()
-         .a(bus.c, new buq(e, "Weapon modifier", (double)((float)$$1 + $$0.c()), buq.a.a), bsx.b)
-         .a(bus.e, new buq(f, "Weapon modifier", (double)$$2, buq.a.a), bsx.b)
-         .a();
+   public cvx(cui.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(drx $$0, dbt $$1, iz $$2, cms $$3) {
-      return !$$3.f();
+   public int b(cun $$0) {
+      return 1200;
    }
 
    @Override
-   public boolean a(cuk $$0, btk $$1, btk $$2) {
-      $$0.a(1, $$2, bsw.a);
-      return true;
+   public cwi c(cun $$0) {
+      return cwi.h;
+   }
+
+   @Override
+   public bqt<cun> a(dbw $$0, cmv $$1, bqr $$2) {
+      $$1.a(avz.yU, 1.0F, 1.0F);
+      $$1.b(awj.c.b(this));
+      return cup.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public cun a(cun $$0, dbw $$1, btn $$2) {
+      this.a($$2);
+      return $$0;
+   }
+
+   @Override
+   public void a(cun $$0, dbw $$1, btn $$2, int $$3) {
+      this.a($$2);
+   }
+
+   private void a(btn $$0) {
+      $$0.a(avz.yV, 1.0F, 1.0F);
    }
 }

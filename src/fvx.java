@@ -1,49 +1,70 @@
-import java.util.Arrays;
+public class fvx<T extends chu> extends fss<T> {
+   private static final float a = 9.0F;
+   private static final float b = 100.0F;
+   private final fwy f;
+   private final fwy g;
 
-public class fvx<T extends bsp> extends fue<T> {
-   private final fwv[] a = new fwv[8];
-   private final fwv b;
-
-   public fvx(fwv $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
+   public fvx(fwy $$0) {
+      super(0.5F, 24.0F);
+      this.f = $$0.b("root");
+      this.g = this.f.b("bone").b("body").b("head");
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
+   public static fxe b() {
+      fxg $$0 = new fxg();
+      fxh $$1 = $$0.a().a("root", fxd.c(), fxa.a(0.0F, 5.0F, 0.0F));
+      fxh $$2 = $$1.a("bone", fxd.c(), fxa.a(0.0F, 0.0F, 0.0F));
+      fxh $$3 = $$2.a(
+         "body",
+         fxd.c()
+            .a(62, 68)
+            .a(-12.5F, -14.0F, -20.0F, 25.0F, 29.0F, 40.0F, new fxc(0.0F))
+            .a(62, 0)
+            .a(-12.5F, -14.0F, -20.0F, 25.0F, 24.0F, 40.0F, new fxc(0.5F))
+            .a(87, 68)
+            .a(-12.5F, 12.0F, -20.0F, 25.0F, 0.0F, 40.0F, new fxc(0.0F)),
+         fxa.a(0.0F, 0.0F, 0.0F)
+      );
+      $$2.a("right_front_leg", fxd.c().a(32, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fxc(0.0F)), fxa.a(-7.5F, 10.0F, -15.0F));
+      $$2.a("right_mid_leg", fxd.c().a(32, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fxc(0.0F)), fxa.a(-7.5F, 10.0F, 0.0F));
+      $$2.a("right_hind_leg", fxd.c().a(32, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fxc(0.0F)), fxa.a(-7.5F, 10.0F, 15.0F));
+      $$2.a("left_front_leg", fxd.c().a(0, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fxc(0.0F)), fxa.a(7.5F, 10.0F, -15.0F));
+      $$2.a("left_mid_leg", fxd.c().a(0, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fxc(0.0F)), fxa.a(7.5F, 10.0F, 0.0F));
+      $$2.a("left_hind_leg", fxd.c().a(0, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fxc(0.0F)), fxa.a(7.5F, 10.0F, 15.0F));
+      fxh $$4 = $$3.a(
+         "head",
+         fxd.c().a(8, 15).a(-6.5F, -7.5F, -11.5F, 13.0F, 18.0F, 11.0F, new fxc(0.0F)).a(8, 4).a(-6.5F, 7.5F, -11.5F, 13.0F, 0.0F, 11.0F, new fxc(0.0F)),
+         fxa.a(0.0F, 6.5F, -19.48F)
+      );
+      $$4.a("left_ear", fxd.c().a(2, 0).a(0.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fxc(0.0F)), fxa.a(6.51F, -7.5F, -4.51F));
+      $$4.a("right_ear", fxd.c().a(48, 0).a(-1.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fxc(0.0F)), fxa.a(-6.51F, -7.5F, -4.51F));
+      $$4.a("nose", fxd.c().a(10, 45).a(-6.5F, -2.0F, -9.0F, 13.0F, 2.0F, 9.0F, new fxc(0.0F)), fxa.a(0.0F, -4.5F, -11.5F));
+      $$4.a("lower_beak", fxd.c().a(10, 57).a(-6.5F, -7.0F, -8.0F, 13.0F, 12.0F, 9.0F, new fxc(0.0F)), fxa.a(0.0F, 2.5F, -12.5F));
+      return fxe.a($$0, 192, 192);
    }
 
-   public static fxb b() {
-      fxd $$0 = new fxd();
-      fxe $$1 = $$0.a();
-      fwz $$2 = new fwz(0.02F);
-      int $$3 = -16;
-      $$1.a("body", fxa.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), fwx.a(0.0F, 8.0F, 0.0F));
-      int $$4 = 8;
-      fxa $$5 = fxa.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
-
-      for (int $$6 = 0; $$6 < 8; $$6++) {
-         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
-         float $$8 = (float)Math.cos($$7) * 5.0F;
-         float $$9 = 15.0F;
-         float $$10 = (float)Math.sin($$7) * 5.0F;
-         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
-         float $$11 = (float)$$7;
-         $$1.a(a($$6), $$5, fwx.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
-      }
-
-      return fxb.a($$0, 64, 32);
-   }
-
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (fwv $$6 : this.a) {
-         $$6.e = $$3;
+      this.a().e().forEach(fwy::c);
+      this.g.e = $$5 * (float) (Math.PI / 180.0);
+      this.g.f = $$4 * (float) (Math.PI / 180.0);
+      if ($$0.u()) {
+         this.a(fgb.e, $$1, $$2, 9.0F, 100.0F);
+      } else {
+         this.a(fgb.d, $$1, $$2, 9.0F, 100.0F);
+      }
+
+      this.a($$0.cc, fgb.f, $$3);
+      this.a($$0.cb, fgb.c, $$3);
+      this.a($$0.cd, fgb.g, $$3);
+      this.a($$0.bY, fgb.i, $$3);
+      this.a($$0.bZ, fgb.b, $$3);
+      if (this.e) {
+         this.a(fgb.a);
       }
    }
 
    @Override
-   public fwv a() {
-      return this.b;
+   public fwy a() {
+      return this.f;
    }
 }

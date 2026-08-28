@@ -1,30 +1,80 @@
-public class cih extends chz {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cih(chw $$0) {
+public class cih extends cib {
+   private static final cee b = cee.a().d();
+   @Nullable
+   private eoh c;
+   @Nullable
+   private evp d;
+
+   public cih(chz $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      this.a.dP().a(this.a.du(), this.a.dw(), this.a.dA(), avw.ie, this.a.de(), 2.5F, 0.8F + this.a.el().i() * 0.3F, false);
-   }
-
-   @Override
-   public void c() {
-      if (this.c++ >= 40) {
-         this.a.gn().a(cim.f);
-      }
+   public cip<cih> i() {
+      return cip.c;
    }
 
    @Override
    public void d() {
-      this.c = 0;
+      this.c = null;
+      this.d = null;
    }
 
    @Override
-   public cim<cih> i() {
-      return cim.h;
+   public void c() {
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.du(), this.a.dw(), this.a.dA());
+      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
+         this.j();
+      }
+   }
+
+   @Nullable
+   @Override
+   public evp g() {
+      return this.d;
+   }
+
+   private void j() {
+      if (this.c == null || this.c.c()) {
+         int $$0 = this.a.y();
+         iz $$1 = this.a.dP().a(dxs.a.f, eav.a(this.a.s()));
+         cmv $$2 = this.a.dP().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+         int $$4;
+         if ($$2 != null) {
+            evp $$3 = new evp($$2.du(), 0.0, $$2.dA()).d();
+            $$4 = this.a.r(-$$3.c * 40.0, 105.0, -$$3.e * 40.0);
+         } else {
+            $$4 = this.a.r(40.0, (double)$$1.v(), 0.0);
+         }
+
+         eof $$6 = new eof($$1.u(), $$1.v(), $$1.w());
+         this.c = this.a.a($$0, $$4, $$6);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.k();
+      if (this.c != null && this.c.c()) {
+         this.a.gn().a(cip.d);
+      }
+   }
+
+   private void k() {
+      if (this.c != null && !this.c.c()) {
+         kd $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.el().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new evp($$1, $$3, $$2);
+      }
    }
 }

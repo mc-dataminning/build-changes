@@ -8,7 +8,7 @@ public class ef extends dr<ef.a> {
       return ef.a.a;
    }
 
-   public void a(arc $$0, cuk $$1) {
+   public void a(arf $$0, cun $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class ef extends dr<ef.a> {
          return am.W.a(new ef.a(Optional.of(bu.a($$0)), Optional.of($$1.b())));
       }
 
-      public boolean a(cuk $$0) {
+      public boolean a(cun $$0) {
          return !this.c.isPresent() || this.c.get().a($$0);
       }
 

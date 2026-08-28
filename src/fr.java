@@ -12,13 +12,13 @@ import javax.annotation.Nullable;
 
 public class fr<T> implements ArgumentType<ji<T>> {
    private static final Collection<String> b = List.of("foo", "foo:bar", "012", "{}", "true");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xl.b("argument.resource_or_id.failed_to_parse", $$0));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xl.c("argument.resource_or_id.invalid"));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xo.b("argument.resource_or_id.failed_to_parse", $$0));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xo.c("argument.resource_or_id.invalid"));
    private final jk.a d;
    private final boolean e;
    private final Codec<ji<T>> f;
 
-   protected fr(el $$0, ala<jv<T>> $$1, Codec<ji<T>> $$2) {
+   protected fr(el $$0, ald<jv<T>> $$1, Codec<ji<T>> $$2) {
       this.d = $$0;
       this.e = $$0.a($$1).isPresent();
       this.f = $$2;
@@ -28,7 +28,7 @@ public class fr<T> implements ArgumentType<ji<T>> {
       return new fr.c($$0);
    }
 
-   public static ji<eqi> a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ji<eql> a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return d($$0, $$1);
    }
 
@@ -36,7 +36,7 @@ public class fr<T> implements ArgumentType<ji<T>> {
       return new fr.a($$0);
    }
 
-   public static ji<erq> b(CommandContext<ep> $$0, String $$1) {
+   public static ji<ert> b(CommandContext<ep> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -44,7 +44,7 @@ public class fr<T> implements ArgumentType<ji<T>> {
       return new fr.b($$0);
    }
 
-   public static ji<etn> c(CommandContext<ep> $$0, String $$1) {
+   public static ji<etq> c(CommandContext<ep> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -58,7 +58,7 @@ public class fr<T> implements ArgumentType<ji<T>> {
       if (!this.e) {
          return null;
       } else {
-         akz<vo> $$2 = this.d.a(vf.a);
+         alc<vo> $$2 = this.d.a(vf.a);
          return (ji<T>)this.f.parse($$2, $$1).getOrThrow($$1x -> a.createWithContext($$0, $$1x));
       }
    }
@@ -71,7 +71,7 @@ public class fr<T> implements ArgumentType<ji<T>> {
          return $$2;
       } else {
          $$0.setCursor($$1);
-         alb $$3 = alb.a($$0);
+         ale $$3 = ale.a($$0);
          if (c($$0)) {
             return vm.a($$3.toString());
          } else {
@@ -89,21 +89,21 @@ public class fr<T> implements ArgumentType<ji<T>> {
       return b;
    }
 
-   public static class a extends fr<erq> {
+   public static class a extends fr<ert> {
       protected a(el $$0) {
-         super($$0, lq.aV, ers.d);
+         super($$0, lq.aV, erv.d);
       }
    }
 
-   public static class b extends fr<etn> {
+   public static class b extends fr<etq> {
       protected b(el $$0) {
-         super($$0, lq.aW, etp.b);
+         super($$0, lq.aW, ets.b);
       }
    }
 
-   public static class c extends fr<eqi> {
+   public static class c extends fr<eql> {
       protected c(el $$0) {
-         super($$0, lq.aU, eqi.e);
+         super($$0, lq.aU, eql.e);
       }
    }
 }

@@ -1,58 +1,34 @@
-public class gsd extends grq {
-   public gsd(avv $$0, avx $$1, float $$2, float $$3, azc $$4, iz $$5) {
-      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
+public class gsd extends gru {
+   private static final float n = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final cjx r;
+
+   public gsd(cjx $$0) {
+      super(avz.ls, awa.f, gsl.t());
+      this.r = $$0;
+      this.k = gsl.a.a;
+      this.i = true;
+      this.j = 0;
    }
 
-   public static gsd a(avv $$0, float $$1) {
-      return a($$0, $$1, 0.25F);
+   @Override
+   public boolean s() {
+      return !this.r.aW();
    }
 
-   public static gsd a(ji<avv> $$0, float $$1) {
-      return a($$0.a(), $$1);
-   }
-
-   public static gsd a(avv $$0, float $$1, float $$2) {
-      return new gsd($$0.a(), avx.a, $$2, $$1, gsi.t(), false, 0, gsi.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static gsd a(avv $$0) {
-      return new gsd($$0.a(), avx.b, 1.0F, 1.0F, gsi.t(), false, 0, gsi.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static gsd a(avv $$0, evm $$1) {
-      return new gsd($$0, avx.c, 4.0F, 1.0F, gsi.t(), false, 0, gsi.a.b, $$1.c, $$1.d, $$1.e);
-   }
-
-   public static gsd b(avv $$0, float $$1, float $$2) {
-      return new gsd($$0.a(), avx.i, $$2, $$1, gsi.t(), false, 0, gsi.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static gsd b(avv $$0) {
-      return b($$0, 1.0F, 1.0F);
-   }
-
-   public static gsd a(avv $$0, azc $$1, double $$2, double $$3, double $$4) {
-      return new gsd($$0, avx.i, 1.0F, 1.0F, $$1, false, 0, gsi.a.b, $$2, $$3, $$4);
-   }
-
-   public gsd(avv $$0, avx $$1, float $$2, float $$3, azc $$4, double $$5, double $$6, double $$7) {
-      this($$0, $$1, $$2, $$3, $$4, false, 0, gsi.a.b, $$5, $$6, $$7);
-   }
-
-   private gsd(avv $$0, avx $$1, float $$2, float $$3, azc $$4, boolean $$5, int $$6, gsi.a $$7, double $$8, double $$9, double $$10) {
-      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
-   }
-
-   public gsd(alb $$0, avx $$1, float $$2, float $$3, azc $$4, boolean $$5, int $$6, gsi.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
-      super($$0, $$1, $$4);
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$8;
-      this.g = $$9;
-      this.h = $$10;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-      this.l = $$11;
+   @Override
+   public void q() {
+      if (!this.r.dK() && this.r.p() == null) {
+         this.f = (double)((float)this.r.du());
+         this.g = (double)((float)this.r.dw());
+         this.h = (double)((float)this.r.dA());
+         float $$0 = this.r.I(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
+      } else {
+         this.n();
+      }
    }
 }

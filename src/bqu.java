@@ -1,18 +1,26 @@
-import javax.annotation.Nullable;
+public enum bqu {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f;
 
-public interface bqu {
-   xl af();
-
-   default boolean ag() {
-      return this.ah() != null;
+   public boolean a() {
+      return this.b().a();
    }
 
-   default xl O_() {
-      return this.af();
+   public static bqu a(boolean $$0) {
+      return $$0 ? a : b;
    }
 
-   @Nullable
-   default xl ah() {
-      return null;
+   public bqs b() {
+      return switch (this) {
+         case a -> bqs.a;
+         case b -> bqs.c;
+         case c -> bqs.d;
+         case d, e -> bqs.e;
+         case f -> bqs.f;
+      };
    }
 }

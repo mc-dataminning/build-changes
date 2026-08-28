@@ -1,29 +1,52 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
-public class cdn<T extends btk> extends cdu<T> {
-   @Override
-   protected void a(arb $$0, T $$1) {
-      evh $$2 = $$1.cK().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<btk> $$3 = $$0.a(btk.class, $$2, $$1x -> $$1x != $$1 && $$1x.bD());
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      bum<?> $$4 = $$1.dS();
-      $$4.a(cco.g, $$3);
-      $$4.a(cco.h, new ccq($$1, $$3));
-   }
+public class cdn<T extends btn> extends cdx<T> {
+   private final BiPredicate<T, btn> a;
+   private final Predicate<T> c;
+   private final ccr<Boolean> d;
+   private final int e;
 
-   protected int b() {
-      return 16;
-   }
-
-   protected int c() {
-      return 16;
+   public cdn(int $$0, BiPredicate<T, btn> $$1, Predicate<T> $$2, ccr<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
    @Override
-   public Set<cco<?>> a() {
-      return ImmutableSet.of(cco.g, cco.h);
+   protected void a(are $$0, T $$1) {
+      if (!this.c.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   @Override
+   public Set<ccr<?>> a() {
+      return Set.of(ccr.g);
+   }
+
+   public void a(T $$0) {
+      Optional<List<btn>> $$1 = $$0.dS().c(ccr.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public void b(T $$0) {
+      $$0.dS().a(this.d, true, (long)this.e);
+   }
+
+   public void c(T $$0) {
+      $$0.dS().b(this.d);
    }
 }

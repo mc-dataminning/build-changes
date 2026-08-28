@@ -1,67 +1,54 @@
-import java.util.Locale;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-public interface epw extends epy {
-   @Override
-   String e();
+public class epw {
+   private final int a;
+   private final long b;
+   private final String c;
+   private final epm d;
+   private final boolean e;
 
-   void a(boolean var1);
-
-   int j();
-
-   void c(int var1);
-
-   void b(int var1);
-
-   int h();
-
-   @Override
-   default void a(p $$0, dbv $$1) {
-      epy.super.a($$0, $$1);
-      $$0.a("Level name", this::e);
-      $$0.a(
-         "Level game mode",
-         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
+   private epw(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = new epm($$3, $$4);
+      this.e = $$5;
    }
 
-   int f();
+   public static epw a(Dynamic<?> $$0) {
+      int $$1 = $$0.get("version").asInt(0);
+      long $$2 = $$0.get("LastPlayed").asLong(0L);
+      OptionalDynamic<?> $$3 = $$0.get("Version");
+      return $$3.result().isPresent()
+         ? new epw(
+            $$1,
+            $$2,
+            $$3.get("Name").asString(aa.b().c()),
+            $$3.get("Id").asInt(aa.b().d().c()),
+            $$3.get("Series").asString(epm.a),
+            $$3.get("Snapshot").asBoolean(!aa.b().g())
+         )
+         : new epw($$1, $$2, "", 0, epm.a, false);
+   }
 
-   void a(int var1);
+   public int a() {
+      return this.a;
+   }
 
-   int t();
+   public long b() {
+      return this.b;
+   }
 
-   void d(int var1);
+   public String c() {
+      return this.c;
+   }
 
-   int u();
+   public epm d() {
+      return this.d;
+   }
 
-   void e(int var1);
-
-   @Nullable
-   UUID v();
-
-   void a(UUID var1);
-
-   dbq k();
-
-   void a(dto.c var1);
-
-   dto.c p();
-
-   boolean n();
-
-   void c(boolean var1);
-
-   boolean m();
-
-   void a(dbq var1);
-
-   euz<MinecraftServer> s();
-
-   void a(long var1);
-
-   void b(long var1);
+   public boolean e() {
+      return this.e;
+   }
 }

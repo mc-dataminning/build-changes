@@ -1,19 +1,9 @@
-import io.netty.buffer.ByteBuf;
-
-public interface zs<T extends wr> {
-   zu<? extends zs<T>> a();
-
-   void a(T var1);
-
-   default boolean c() {
-      return false;
+public abstract class zs<T extends wu> implements zv<T> {
+   @Override
+   public final void a(T $$0) {
+      throw new AssertionError("This packet should be handled by pipeline");
    }
 
-   default boolean d() {
-      return false;
-   }
-
-   static <B extends ByteBuf, T extends zs<?>> zj<B, T> a(zm<B, T> $$0, zk<B, T> $$1) {
-      return zj.a($$0, $$1);
-   }
+   @Override
+   public abstract zx<? extends zs<T>> a();
 }

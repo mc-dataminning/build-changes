@@ -1,18 +1,31 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.serialization.DataResult;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
 
-public interface dup {
-   @Nullable
-   ein a(eif var1);
+public interface dup<T> {
+   T a(int var1, int var2, int var3);
 
-   void a(eif var1, ein var2);
+   void a(Consumer<T> var1);
 
-   LongSet b(eif var1);
+   void b(wl var1);
 
-   void a(eif var1, long var2);
+   int c();
 
-   Map<eif, LongSet> h();
+   boolean a(Predicate<T> var1);
 
-   void b(Map<eif, LongSet> var1);
+   void a(duo.b<T> var1);
+
+   duo<T> e();
+
+   dup.a<T> a(jn<T> var1, duo.d var2);
+
+   public static record a<T>(List<T> a, Optional<LongStream> b) {
+   }
+
+   public interface b<T, C extends dup<T>> {
+      DataResult<C> read(jn<T> var1, duo.d var2, dup.a<T> var3);
+   }
 }

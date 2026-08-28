@@ -1,155 +1,62 @@
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
-import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
-import java.util.BitSet;
-import java.util.EnumSet;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class ggk {
-   private static final int a = 4;
-   private static final int b = 16;
-   private static final int c = 15;
-   private static final int d = 4096;
-   private static final int e = 0;
-   private static final int f = 4;
-   private static final int g = 8;
-   private static final int h = (int)Math.pow(16.0, 0.0);
-   private static final int i = (int)Math.pow(16.0, 1.0);
-   private static final int j = (int)Math.pow(16.0, 2.0);
-   private static final int k = -1;
-   private static final je[] l = je.values();
-   private final BitSet m = new BitSet(4096);
-   private static final int[] n = ac.a(new int[1352], $$0 -> {
-      int $$1 = 0;
-      int $$2 = 15;
-      int $$3 = 0;
+public class ggk implements daz {
+   private final int c;
+   private final int d;
+   protected final ggj[][] a;
+   protected final dbw b;
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
-                  $$0[$$3++] = a($$4, $$5, $$6);
-               }
-            }
-         }
-      }
-   });
-   private int o = 4096;
-
-   public void a(iz $$0) {
-      this.m.set(b($$0), true);
-      this.o--;
+   ggk(dbw $$0, int $$1, int $$2, ggj[][] $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.a = $$3;
    }
 
-   private static int b(iz $$0) {
-      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
+   @Override
+   public dsa a_(iz $$0) {
+      int $$1 = kb.a($$0.u()) - this.c;
+      int $$2 = kb.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0);
    }
 
-   private static int a(int $$0, int $$1, int $$2) {
-      return $$0 << 0 | $$1 << 8 | $$2 << 4;
+   @Override
+   public ent b_(iz $$0) {
+      int $$1 = kb.a($$0.u()) - this.c;
+      int $$2 = kb.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0).u();
    }
 
-   public ggl a() {
-      ggl $$0 = new ggl();
-      if (4096 - this.o < 256) {
-         $$0.a(true);
-      } else if (this.o == 0) {
-         $$0.a(false);
-      } else {
-         for (int $$1 : n) {
-            if (!this.m.get($$1)) {
-               $$0.a(this.a($$1));
-            }
-         }
-      }
-
-      return $$0;
+   @Override
+   public float a(je $$0, boolean $$1) {
+      return this.b.a($$0, $$1);
    }
 
-   private Set<je> a(int $$0) {
-      Set<je> $$1 = EnumSet.noneOf(je.class);
-      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
-      $$2.enqueue($$0);
-      this.m.set($$0, true);
-
-      while (!$$2.isEmpty()) {
-         int $$3 = $$2.dequeueInt();
-         this.a($$3, $$1);
-
-         for (je $$4 : l) {
-            int $$5 = this.a($$3, $$4);
-            if ($$5 >= 0 && !this.m.get($$5)) {
-               this.m.set($$5, true);
-               $$2.enqueue($$5);
-            }
-         }
-      }
-
-      return $$1;
+   @Override
+   public eni y_() {
+      return this.b.y_();
    }
 
-   private void a(int $$0, Set<je> $$1) {
-      int $$2 = $$0 >> 0 & 15;
-      if ($$2 == 0) {
-         $$1.add(je.e);
-      } else if ($$2 == 15) {
-         $$1.add(je.f);
-      }
-
-      int $$3 = $$0 >> 8 & 15;
-      if ($$3 == 0) {
-         $$1.add(je.a);
-      } else if ($$3 == 15) {
-         $$1.add(je.b);
-      }
-
-      int $$4 = $$0 >> 4 & 15;
-      if ($$4 == 0) {
-         $$1.add(je.c);
-      } else if ($$4 == 15) {
-         $$1.add(je.d);
-      }
+   @Nullable
+   @Override
+   public dpf c_(iz $$0) {
+      int $$1 = kb.a($$0.u()) - this.c;
+      int $$2 = kb.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].a($$0);
    }
 
-   private int a(int $$0, je $$1) {
-      switch ($$1) {
-         case a:
-            if (($$0 >> 8 & 15) == 0) {
-               return -1;
-            }
+   @Override
+   public int a(iz $$0, dbh $$1) {
+      return this.b.a($$0, $$1);
+   }
 
-            return $$0 - j;
-         case b:
-            if (($$0 >> 8 & 15) == 15) {
-               return -1;
-            }
+   @Override
+   public int I_() {
+      return this.b.I_();
+   }
 
-            return $$0 + j;
-         case c:
-            if (($$0 >> 4 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - i;
-         case d:
-            if (($$0 >> 4 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + i;
-         case e:
-            if (($$0 >> 0 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - h;
-         case f:
-            if (($$0 >> 0 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + h;
-         default:
-            return -1;
-      }
+   @Override
+   public int J_() {
+      return this.b.J_();
    }
 }

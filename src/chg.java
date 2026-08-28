@@ -1,111 +1,135 @@
-import javax.annotation.Nullable;
+public abstract class chg extends chh {
+   private static final akj<Boolean> bZ = akn.a(chg.class, akl.k);
+   public static final int bY = 15;
+   private final bsv cb;
 
-public class chg extends che implements buk<chn> {
-   private static final akg<Integer> bY = akk.a(chg.class, aki.b);
-   private static final bss bZ = bsv.ab.n().a(bsr.a().a(bsq.a, 0.0F, bsv.ab.m() + 0.125F, 0.0F)).a(0.5F);
-
-   public chg(bsv<? extends chg> $$0, dbt $$1) {
+   protected chg(bsy<? extends chg> $$0, dbw $$1) {
       super($$0, $$1);
+      this.cw = false;
+      this.cb = $$0.n().a(bsu.a().a(bst.a, 0.0F, $$0.m() - 0.15625F, 0.0F)).a(0.5F);
    }
 
    @Override
-   protected void a(azc $$0) {
-      this.f(bus.q).a((double)a($$0::a));
-      this.f(bus.r).a(b($$0::j));
-      this.f(bus.m).a(a($$0::j));
+   protected void a(azf $$0) {
+      this.f(buv.q).a((double)a($$0::a));
    }
 
    @Override
-   protected void a(akk.a $$0) {
+   protected void a(akn.a $$0) {
       super.a($$0);
-      $$0.a(bY, 0);
+      $$0.a(bZ, false);
+   }
+
+   public static buu.a s() {
+      return gP().a(buv.r, 0.175F).a(buv.m, 0.5);
+   }
+
+   public boolean u() {
+      return this.ao.a(bZ);
+   }
+
+   public void w(boolean $$0) {
+      this.ao.a(bZ, $$0);
+   }
+
+   @Override
+   protected int ab_() {
+      return this.u() ? 16 : super.ab_();
+   }
+
+   @Override
+   public bsv e(btz $$0) {
+      return this.p_() ? this.cb : super.e($$0);
+   }
+
+   @Override
+   protected void eD() {
+      super.eD();
+      if (this.u()) {
+         if (!this.dP().B) {
+            this.a(dez.cv);
+         }
+
+         this.w(false);
+      }
    }
 
    @Override
    public void b(ur $$0) {
       super.b($$0);
-      $$0.a("Variant", this.gq());
+      $$0.a("ChestedHorse", this.u());
+      if (this.u()) {
+         ux $$1 = new ux();
+
+         for (int $$2 = 1; $$2 < this.cs.b(); $$2++) {
+            cun $$3 = this.cs.a($$2);
+            if (!$$3.e()) {
+               ur $$4 = new ur();
+               $$4.a("Slot", (byte)($$2 - 1));
+               $$1.add($$3.b(this.dR(), $$4));
+            }
+         }
+
+         $$0.a("Items", $$1);
+      }
    }
 
    @Override
    public void a(ur $$0) {
       super.a($$0);
-      this.x($$0.h("Variant"));
-   }
+      this.w($$0.q("ChestedHorse"));
+      this.gM();
+      if (this.u()) {
+         ux $$1 = $$0.c("Items", 10);
 
-   private void x(int $$0) {
-      this.ao.a(bY, $$0);
-   }
-
-   private int gq() {
-      return this.ao.a(bY);
-   }
-
-   private void a(chn $$0, chi $$1) {
-      this.x($$0.a() & 0xFF | $$1.a() << 8 & 0xFF00);
-   }
-
-   public chn s() {
-      return chn.a(this.gq() & 0xFF);
-   }
-
-   public void a(chn $$0) {
-      this.x($$0.a() & 0xFF | this.gq() & -256);
-   }
-
-   public chi u() {
-      return chi.a((this.gq() & 0xFF00) >> 8);
-   }
-
-   @Override
-   public void a(bqi $$0) {
-      cuk $$1 = this.fR();
-      super.a($$0);
-      cuk $$2 = this.fR();
-      if (this.ai > 20 && this.l($$2) && $$1 != $$2) {
-         this.a(avw.mI, 0.5F, 1.0F);
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            ur $$3 = $$1.a($$2);
+            int $$4 = $$3.f("Slot") & 255;
+            if ($$4 < this.cs.b() - 1) {
+               this.cs.a($$4 + 1, cun.a(this.dR(), (vo)$$3).orElse(cun.l));
+            }
+         }
       }
+
+      this.gN();
    }
 
    @Override
-   protected void a(dmh $$0) {
-      super.a($$0);
-      if (this.ah.a(10) == 0) {
-         this.a(avw.mJ, $$0.a() * 0.6F, $$0.b());
-      }
+   public buf a_(int $$0) {
+      return $$0 == 499 ? new buf() {
+         @Override
+         public cun a() {
+            return chg.this.u() ? new cun(cuq.eN) : cun.l;
+         }
+
+         @Override
+         public boolean a(cun $$0) {
+            if ($$0.e()) {
+               if (chg.this.u()) {
+                  chg.this.w(false);
+                  chg.this.gM();
+               }
+
+               return true;
+            } else if ($$0.a(cuq.eN)) {
+               if (!chg.this.u()) {
+                  chg.this.w(true);
+                  chg.this.gM();
+               }
+
+               return true;
+            } else {
+               return false;
+            }
+         }
+      } : super.a_($$0);
    }
 
    @Override
-   protected avv v() {
-      return avw.mG;
-   }
-
-   @Override
-   protected avv o_() {
-      return avw.mK;
-   }
-
-   @Nullable
-   @Override
-   protected avv gx() {
-      return avw.mL;
-   }
-
-   @Override
-   protected avv d(bri $$0) {
-      return avw.mN;
-   }
-
-   @Override
-   protected avv gO() {
-      return avw.mH;
-   }
-
-   @Override
-   public bqp b(cms $$0, bqo $$1) {
+   public bqs b(cmv $$0, bqr $$1) {
       boolean $$2 = !this.p_() && this.gF() && $$0.fR();
       if (!this.bS() && !$$2) {
-         cuk $$3 = $$0.b($$1);
+         cun $$3 = $$0.b($$1);
          if (!$$3.e()) {
             if (this.o($$3)) {
                return this.c($$0, $$3);
@@ -113,7 +137,12 @@ public class chg extends che implements buk<chn> {
 
             if (!this.gF()) {
                this.gV();
-               return bqp.a(this.dP().B);
+               return bqs.a(this.dP().B);
+            }
+
+            if (!this.u() && $$3.a(cuq.eN)) {
+               this.d($$0, $$3);
+               return bqs.a(this.dP().B);
             }
          }
 
@@ -123,98 +152,19 @@ public class chg extends che implements buk<chn> {
       }
    }
 
-   @Override
-   public boolean a(cfa $$0) {
-      if ($$0 == this) {
-         return false;
-      } else {
-         return !($$0 instanceof chf) && !($$0 instanceof chg) ? false : this.gX() && ((che)$$0).gX();
-      }
-   }
-
-   @Nullable
-   @Override
-   public bsj a(arb $$0, bsj $$1) {
-      if ($$1 instanceof chf) {
-         chj $$2 = bsv.at.a((dbt)$$0);
-         if ($$2 != null) {
-            this.a($$1, $$2);
-         }
-
-         return $$2;
-      } else {
-         chg $$3 = (chg)$$1;
-         chg $$4 = bsv.ab.a((dbt)$$0);
-         if ($$4 != null) {
-            int $$5 = this.ah.a(9);
-            chn $$6;
-            if ($$5 < 4) {
-               $$6 = this.s();
-            } else if ($$5 < 8) {
-               $$6 = $$3.s();
-            } else {
-               $$6 = ac.a(chn.values(), this.ah);
-            }
-
-            int $$9 = this.ah.a(5);
-            chi $$10;
-            if ($$9 < 2) {
-               $$10 = this.u();
-            } else if ($$9 < 4) {
-               $$10 = $$3.u();
-            } else {
-               $$10 = ac.a(chi.values(), this.ah);
-            }
-
-            $$4.a($$6, $$10);
-            this.a($$1, $$4);
-         }
-
-         return $$4;
-      }
+   private void d(cmv $$0, cun $$1) {
+      this.w(true);
+      this.gq();
+      $$1.a(1, $$0);
+      this.gM();
    }
 
    @Override
-   public boolean fS() {
-      return true;
+   protected void gq() {
+      this.a(avz.hh, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
    }
 
-   @Override
-   public boolean l(cuk $$0) {
-      if ($$0.g() instanceof cry $$1 && $$1.d() == cry.a.a) {
-         return true;
-      }
-
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public bud a(dci $$0, bqn $$1, bto $$2, @Nullable bud $$3) {
-      azc $$4 = $$0.E_();
-      chn $$5;
-      if ($$3 instanceof chg.a) {
-         $$5 = ((chg.a)$$3).a;
-      } else {
-         $$5 = ac.a(chn.values(), $$4);
-         $$3 = new chg.a($$5);
-      }
-
-      this.a($$5, ac.a(chi.values(), $$4));
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public bss e(btw $$0) {
-      return this.p_() ? bZ : super.e($$0);
-   }
-
-   public static class a extends bsj.a {
-      public final chn a;
-
-      public a(chn $$0) {
-         super(true);
-         this.a = $$0;
-      }
+   public int gy() {
+      return 5;
    }
 }

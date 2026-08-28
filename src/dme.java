@@ -1,36 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dme extends deu {
-   public static final MapCodec<dme> b = b(dme::new);
-   public static final dso c = dsn.z;
+public class dme extends dds {
+   public static final MapCodec<dme> c = b(dme::new);
 
    @Override
-   protected MapCodec<? extends dme> a() {
-      return b;
+   public MapCodec<dme> a() {
+      return c;
    }
 
-   protected dme(drw.d $$0) {
+   protected dme(drz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected drx a(drx $$0, je $$1, drx $$2, dbu $$3, iz $$4, iz $$5) {
-      return $$1 == je.b ? $$0.a(c, Boolean.valueOf(m($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dpf a(iz $$0, dsa $$1) {
+      return new dqs($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dpf> dpg<T> a(dbw $$0, dsa $$1, dph<T> $$2) {
+      return a($$0, $$2, dph.B);
    }
 
    @Override
-   public drx a(cxv $$0) {
-      drx $$1 = $$0.q().a_($$0.a().c());
-      return this.n().a(c, Boolean.valueOf(m($$1)));
-   }
-
-   private static boolean m(drx $$0) {
-      return $$0.a(awl.bz);
+   protected void a(dbw $$0, iz $$1, cmv $$2) {
+      dpf $$3 = $$0.c_($$1);
+      if ($$3 instanceof dqs) {
+         $$2.a((bqw)$$3);
+         $$2.a(awj.at);
+      }
    }
 
    @Override
-   protected void a(dry.a<deu, drx> $$0) {
-      $$0.a(c);
+   public void a(dsa $$0, dbw $$1, iz $$2, azf $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, avz.yh, awa.e, 1.0F, 1.0F, false);
+         }
+
+         $$1.a(li.ae, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+      }
    }
 }

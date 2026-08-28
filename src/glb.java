@@ -1,13 +1,11 @@
-public class glb extends gku<ckk> {
-   private static final alb a = new alb("textures/entity/skeleton/stray.png");
-   private static final alb i = new alb("textures/entity/skeleton/stray_overlay.png");
+public class glb extends ghu<cnt> {
+   public static final ale a = new ale("textures/entity/projectiles/spectral_arrow.png");
 
-   public glb(gis.a $$0) {
-      super($$0, fwu.bz, fwu.bA, fwu.bB);
-      this.a(new gni<>(this, $$0.f(), fwu.bC, i));
+   public glb(giv.a $$0) {
+      super($$0);
    }
 
-   public alb a(ckk $$0) {
+   public ale a(cnt $$0) {
       return a;
    }
 }

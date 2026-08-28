@@ -1,39 +1,29 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
 public class ant {
    public static void a(CommandDispatcher<ep> $$0) {
-      LiteralCommandNode<ep> $$1 = $$0.register(
-         (LiteralArgumentBuilder)eq.a("msg").then(eq.a("targets", fc.d()).then(eq.a("message", fg.a()).executes($$0x -> {
-            Collection<arc> $$1x = fc.f($$0x, "targets");
-            if (!$$1x.isEmpty()) {
-               fg.a($$0x, "message", $$2 -> a((ep)$$0x.getSource(), $$1x, $$2));
-            }
-
-            return $$1x.size();
-         })))
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("list").executes($$0x -> a((ep)$$0x.getSource())))
+            .then(eq.a("uuids").executes($$0x -> b((ep)$$0x.getSource())))
       );
-      $$0.register((LiteralArgumentBuilder)eq.a("tell").redirect($$1));
-      $$0.register((LiteralArgumentBuilder)eq.a("w").redirect($$1));
    }
 
-   private static void a(ep $$0, Collection<arc> $$1, yb $$2) {
-      xh.a $$3 = xh.a(xh.e, $$0);
-      ya $$4 = ya.a($$2);
-      boolean $$5 = false;
+   private static int a(ep $$0) {
+      return a($$0, cmv::O_);
+   }
 
-      for (arc $$6 : $$1) {
-         xh.a $$7 = xh.a(xh.f, $$0).c($$6.O_());
-         $$0.a($$4, false, $$7);
-         boolean $$8 = $$0.a($$6);
-         $$6.a($$4, $$8, $$3);
-         $$5 |= $$8 && $$2.j();
-      }
+   private static int b(ep $$0) {
+      return a($$0, $$0x -> xo.a("commands.list.nameAndId", $$0x.af(), xo.a($$0x.gb().getId())));
+   }
 
-      if ($$5) {
-         $$0.a(auz.e);
-      }
+   private static int a(ep $$0, Function<arf, xo> $$1) {
+      avc $$2 = $$0.l().ah();
+      List<arf> $$3 = $$2.t();
+      xo $$4 = xr.b($$3, $$1);
+      $$0.a(() -> xo.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
+      return $$3.size();
    }
 }

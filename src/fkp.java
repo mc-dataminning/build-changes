@@ -1,143 +1,130 @@
-public interface fkp {
-   fkp a(int var1);
+import java.util.function.Consumer;
 
-   fkp a(int var1, int var2);
+public class fkp implements fkq {
+   public static final int a = 33;
+   private static final int b = 30;
+   private final fkn c = new fkn();
+   private final fkn d = new fkn();
+   private final fkn e = new fkn();
+   private final fnb f;
+   private int g;
+   private int h;
 
-   fkp a(int var1, int var2, int var3, int var4);
-
-   fkp b(int var1);
-
-   fkp c(int var1);
-
-   fkp d(int var1);
-
-   fkp e(int var1);
-
-   fkp f(int var1);
-
-   fkp g(int var1);
-
-   fkp a(float var1, float var2);
-
-   fkp a(float var1);
-
-   fkp b(float var1);
-
-   default fkp a() {
-      return this.a(0.0F);
+   public fkp(fnb $$0) {
+      this($$0, 33);
    }
 
-   default fkp b() {
-      return this.a(0.5F);
+   public fkp(fnb $$0, int $$1) {
+      this($$0, $$1, $$1);
    }
 
-   default fkp c() {
-      return this.a(1.0F);
+   public fkp(fnb $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.c.c().a(0.5F, 0.5F);
+      this.d.c().a(0.5F, 0.5F);
    }
 
-   default fkp d() {
-      return this.b(0.0F);
+   @Override
+   public void m(int $$0) {
    }
 
-   default fkp e() {
-      return this.b(0.5F);
+   @Override
+   public void n(int $$0) {
    }
 
-   default fkp f() {
-      return this.b(1.0F);
+   @Override
+   public int C() {
+      return 0;
    }
 
-   fkp g();
-
-   fkp.a h();
-
-   static fkp i() {
-      return new fkp.a();
+   @Override
+   public int D() {
+      return 0;
    }
 
-   public static class a implements fkp {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
+   @Override
+   public int x() {
+      return this.f.n;
+   }
 
-      public a() {
-      }
+   @Override
+   public int v() {
+      return this.f.o;
+   }
 
-      public a(fkp.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
-      }
+   public int b() {
+      return this.h;
+   }
 
-      public fkp.a h(int $$0) {
-         return this.b($$0, $$0);
-      }
+   public void a(int $$0) {
+      this.h = $$0;
+   }
 
-      public fkp.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
-      }
+   public void b(int $$0) {
+      this.g = $$0;
+   }
 
-      public fkp.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
-      }
+   public int c() {
+      return this.g;
+   }
 
-      public fkp.a i(int $$0) {
-         this.a = $$0;
-         return this;
-      }
+   public int d() {
+      return this.f.o - this.c() - this.b();
+   }
 
-      public fkp.a j(int $$0) {
-         this.b = $$0;
-         return this;
-      }
+   @Override
+   public void b(Consumer<fkr> $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+      this.d.b($$0);
+   }
 
-      public fkp.a k(int $$0) {
-         this.c = $$0;
-         return this;
-      }
+   @Override
+   public void a() {
+      int $$0 = this.c();
+      int $$1 = this.b();
+      this.c.b(this.f.n);
+      this.c.a($$0);
+      this.c.c(0, 0);
+      this.c.a();
+      this.d.b(this.f.n);
+      this.d.a($$1);
+      this.d.a();
+      this.d.n(this.f.o - $$1);
+      this.e.b(this.f.n);
+      this.e.a();
+      int $$2 = $$0 + 30;
+      int $$3 = this.f.o - $$1 - this.e.v();
+      this.e.c(0, Math.min($$2, $$3));
+   }
 
-      public fkp.a l(int $$0) {
-         this.d = $$0;
-         return this;
-      }
+   public <T extends fkr> T a(T $$0) {
+      return this.c.a($$0);
+   }
 
-      public fkp.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
+   public <T extends fkr> T a(T $$0, Consumer<fks> $$1) {
+      return this.c.a($$0, $$1);
+   }
 
-      public fkp.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
+   public void a(xo $$0, fgn $$1) {
+      this.c.a(new fij($$0, $$1));
+   }
 
-      public fkp.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
+   public <T extends fkr> T b(T $$0) {
+      return this.d.a($$0);
+   }
 
-      public fkp.a c(float $$0) {
-         this.e = $$0;
-         return this;
-      }
+   public <T extends fkr> T b(T $$0, Consumer<fks> $$1) {
+      return this.d.a($$0, $$1);
+   }
 
-      public fkp.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
+   public <T extends fkr> T c(T $$0) {
+      return this.e.a($$0);
+   }
 
-      public fkp.a j() {
-         return new fkp.a(this);
-      }
-
-      @Override
-      public fkp.a h() {
-         return this;
-      }
+   public <T extends fkr> T c(T $$0, Consumer<fks> $$1) {
+      return this.e.a($$0, $$1);
    }
 }

@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Collection;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface grj {
+public interface grj {
+   Collection<ale> f();
+
+   void a(Function<ale, grj> var1);
+
+   @Nullable
+   gqy a(grc var1, Function<grb, gox> var2, grg var3, ale var4);
 }

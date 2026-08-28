@@ -1,118 +1,89 @@
-public class cow extends coo {
-   static final akg<String> c = akk.a(cow.class, aki.e);
-   static final akg<xl> d = akk.a(cow.class, aki.f);
-   private final dau e = new cow.a();
-   private static final int i = 4;
-   private int j;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public cow(bsv<? extends cow> $$0, dbt $$1) {
-      super($$0, $$1);
+public class cow {
+   public static int[][] a(je $$0) {
+      je $$1 = $$0.h();
+      je $$2 = $$1.g();
+      je $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   public cow(dbt $$0, double $$1, double $$2, double $$3) {
-      super(bsv.v, $$0, $$1, $$2, $$3);
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
    }
 
-   @Override
-   protected cuf ah_() {
-      return cun.nM;
-   }
-
-   @Override
-   protected void a(akk.a $$0) {
-      super.a($$0);
-      $$0.a(c, "");
-      $$0.a(d, xk.a);
-   }
-
-   @Override
-   protected void a(ur $$0) {
-      super.a($$0);
-      this.e.b($$0, this.dR());
-      this.ap().a(c, this.B().m());
-      this.ap().a(d, this.B().l());
-   }
-
-   @Override
-   protected void b(ur $$0) {
-      super.b($$0);
-      this.e.a($$0, this.dR());
-   }
-
-   @Override
-   public coo.a v() {
-      return coo.a.g;
-   }
-
-   @Override
-   public drx x() {
-      return dew.fN.n();
-   }
-
-   public dau B() {
-      return this.e;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.ai - this.j >= 4) {
-         this.B().a(this.dP());
-         this.j = this.ai;
-      }
-   }
-
-   @Override
-   public bqp a(cms $$0, bqo $$1) {
-      return this.e.a($$0);
-   }
-
-   @Override
-   public void a(akg<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0)) {
-         try {
-            this.e.c(this.ap().a(d));
-         } catch (Throwable var3) {
+   public static boolean a(dbg $$0, btn $$1, evk $$2) {
+      for (ewi $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
          }
-      } else if (c.equals($$0)) {
-         this.e.a(this.ap().a(c));
       }
+
+      return $$0.C_().a($$2);
    }
 
-   @Override
-   public boolean cP() {
-      return true;
+   public static boolean a(dbg $$0, evp $$1, btn $$2, btz $$3) {
+      return a($$0, $$2, $$2.f($$3).c($$1));
    }
 
-   public class a extends dau {
-      @Override
-      public arb e() {
-         return (arb)cow.this.dP();
+   public static ewi a(dbc $$0, iz $$1) {
+      dsa $$2 = $$0.a_($$1);
+      return !$$2.a(awo.aP) && (!($$2.b() instanceof dnk) || !$$2.c(dnk.b)) ? $$2.k($$0, $$1) : ewf.a();
+   }
+
+   public static double a(iz $$0, int $$1, Function<iz, ewi> $$2) {
+      iz.a $$3 = $$0.j();
+      int $$4 = 0;
+
+      while ($$4 < $$1) {
+         ewi $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(je.a.b);
+         }
+
+         $$4++;
+         $$3.c(je.b);
       }
 
-      @Override
-      public void f() {
-         cow.this.ap().a(cow.c, this.m());
-         cow.this.ap().a(cow.d, this.l());
-      }
+      return Double.POSITIVE_INFINITY;
+   }
 
-      @Override
-      public evm g() {
-         return cow.this.dn();
-      }
+   @Nullable
+   public static evp a(bsy<?> $$0, dbg $$1, iz $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
+      } else {
+         double $$4 = $$1.a(a((dbc)$$1, $$2), () -> a((dbc)$$1, $$2.d()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
+            return null;
+         } else {
+            evp $$5 = evp.a($$2, $$4);
+            evk $$6 = $$0.n().a($$5);
 
-      public cow h() {
-         return cow.this;
-      }
+            for (ewi $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
 
-      @Override
-      public ep i() {
-         return new ep(this, cow.this.dn(), cow.this.bM(), this.e(), 2, this.n().getString(), cow.this.O_(), this.e().o(), cow.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !cow.this.dK();
+            if ($$0 != bsy.by || !$$1.a_($$2).a(awo.cq) && !$$1.a_($$2.c()).a(awo.cq)) {
+               return !$$1.C_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
       }
    }
 }

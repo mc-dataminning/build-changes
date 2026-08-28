@@ -1,25 +1,31 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dmw {
-   cxo b();
+public class dmw extends dex {
+   public static final MapCodec<dmw> a = b(dmw::new);
+   private static final double b = 5.0;
+   private static final ewi c = dex.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
-   static List<dmw> c() {
-      return lp.h.s().map(dmw::a).filter(Objects::nonNull).collect(Collectors.toList());
+   @Override
+   public MapCodec<dmw> a() {
+      return a;
    }
 
-   @Nullable
-   static dmw a(dbs $$0) {
-      if ($$0.r() instanceof csi $$1) {
-         deu var6 = $$1.d();
-         if (var6 instanceof dmw) {
-            return (dmw)var6;
-         }
-      }
+   protected dmw(drz.d $$0) {
+      super($$0);
+   }
 
-      cuf $$2 = $$0.r();
-      return $$2 instanceof dmw ? (dmw)$$2 : null;
+   @Override
+   protected dld a_(dsa $$0) {
+      return dld.a;
+   }
+
+   @Override
+   protected ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
+      return c;
+   }
+
+   @Override
+   protected float d(dsa $$0, dbc $$1, iz $$2) {
+      return 1.0F;
    }
 }

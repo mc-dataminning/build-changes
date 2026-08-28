@@ -1,31 +1,25 @@
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public enum dbi implements daz {
-   a;
-
-   @Nullable
+public interface dbi extends dbn, dbz, dcb {
    @Override
-   public dpc c_(iz $$0) {
-      return null;
+   default <T extends dpf> Optional<T> a(iz $$0, dph<T> $$1) {
+      return dbz.super.a($$0, $$1);
    }
 
    @Override
-   public drx a_(iz $$0) {
-      return dew.a.n();
+   default List<ewi> c(@Nullable bss $$0, evk $$1) {
+      return dbn.super.c($$0, $$1);
    }
 
    @Override
-   public enq b_(iz $$0) {
-      return enr.a.g();
+   default boolean a(@Nullable bss $$0, ewi $$1) {
+      return dbn.super.a($$0, $$1);
    }
 
    @Override
-   public int I_() {
-      return 0;
-   }
-
-   @Override
-   public int J_() {
-      return 0;
+   default iz a(dxs.a $$0, iz $$1) {
+      return dbz.super.a($$0, $$1);
    }
 }

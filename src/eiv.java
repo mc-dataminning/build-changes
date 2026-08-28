@@ -1,8 +1,7 @@
-import net.minecraft.server.MinecraftServer;
+@FunctionalInterface
+public interface eiv<C extends eda> {
+   void generatePieces(eja var1, eiv.a<C> var2);
 
-public record eiv(aul a, jw b, emg c) {
-   public static eiv a(arb $$0) {
-      MinecraftServer $$1 = $$0.o();
-      return new eiv($$1.bg(), $$1.bc(), $$1.ba());
+   public static record a<C extends eda>(C a, dtx b, emj c, dbd d, dby e, dyr f, long g) {
    }
 }

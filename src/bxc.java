@@ -1,34 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bxc {
-   public static bve<btk> a(btn $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ak().f()), $$1);
-   }
+   private static final float b = 0.95F;
+   public static final int a = 3;
 
-   public static bwo<btk> a(bsv<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ak()), $$1);
-   }
-
-   public static bwo<btk> a(float $$0) {
-      return a($$0x -> true, $$0);
-   }
-
-   public static bwo<btk> a(Predicate<btk> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return byq.a(
-         (Function<byq.b<btk>, ? extends App<byq.c<btk>, byt<btk>>>)($$2x -> $$2x.group($$2x.c(cco.n), $$2x.b(cco.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<btk> $$8 = $$2x.<ccq>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bsp)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
-                     if ($$8.isEmpty()) {
-                        return false;
-                     } else {
-                        $$3.a(new bvo($$8.get(), true));
-                        return true;
+   public static bvh<btn> a() {
+      return byt.a((Function<byt.b<btn>, ? extends App<byt.c<btn>, byw<btn>>>)($$0 -> $$0.group($$0.b(ccr.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$2.z.i() <= 0.95F) {
+                  return false;
+               } else {
+                  iz $$5 = $$0.<jh>b($$1).b();
+                  if ($$5.a($$3.dp(), 3.0)) {
+                     dsa $$6 = $$2.a_($$5);
+                     if ($$6.a(dez.od)) {
+                        det $$7 = (det)$$6.b();
+                        $$7.a($$3, $$2, $$5, null);
                      }
-                  }))
-      );
+                  }
+
+                  return true;
+               }
+            })));
    }
 }

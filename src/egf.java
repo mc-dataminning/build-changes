@@ -1,29 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public class egf {
-   public static final Codec<egf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, dvp.c).fieldOf("height").forGetter(egf::a), lp.e.q().fieldOf("block").orElse(dew.a).forGetter($$0x -> $$0x.b().b()))
-            .apply($$0, egf::new)
-   );
-   private final deu b;
-   private final int c;
+public class egf<P extends ege> {
+   public static final egf<egd> a = a("straight_trunk_placer", egd.a);
+   public static final egf<ega> b = a("forking_trunk_placer", ega.a);
+   public static final egf<egb> c = a("giant_trunk_placer", egb.a);
+   public static final egf<egc> d = a("mega_jungle_trunk_placer", egc.b);
+   public static final egf<efy> e = a("dark_oak_trunk_placer", efy.a);
+   public static final egf<efz> f = a("fancy_trunk_placer", efz.a);
+   public static final egf<efw> g = a("bending_trunk_placer", efw.a);
+   public static final egf<egg> h = a("upwards_branching_trunk_placer", egg.a);
+   public static final egf<efx> i = a("cherry_trunk_placer", efx.a);
+   private final MapCodec<P> j;
 
-   public egf(int $$0, deu $$1) {
-      this.c = $$0;
-      this.b = $$1;
+   private static <P extends ege> egf<P> a(String $$0, MapCodec<P> $$1) {
+      return jv.a(lp.X, $$0, new egf<>($$1));
    }
 
-   public int a() {
-      return this.c;
+   private egf(MapCodec<P> $$0) {
+      this.j = $$0;
    }
 
-   public drx b() {
-      return this.b.n();
-   }
-
-   @Override
-   public String toString() {
-      return (this.c != 1 ? this.c + "*" : "") + lp.e.b(this.b);
+   public MapCodec<P> a() {
+      return this.j;
    }
 }

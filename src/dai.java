@@ -1,10 +1,20 @@
-public class dai extends czv {
-   public dai(czv.b $$0) {
+public class dai extends czy {
+   public dai(czy.b $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(czv $$0) {
-      return super.a($$0) && $$0 != czy.E && $$0 != czy.H;
+   public boolean a() {
+      return true;
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   @Override
+   public boolean l() {
+      return false;
    }
 }

@@ -10,40 +10,40 @@ import java.util.stream.Collectors;
 
 public abstract class ms implements mu {
    protected static final bu.a a = bu.a.a().a(bs.a.a().a(true));
-   private static final Set<bsv<?>> b = ImmutableSet.of(bsv.by, bsv.d, bsv.af, bsv.aS, bsv.bj);
-   private final cpg c;
-   private final cpg d;
-   private final Map<bsv<?>, Map<ala<eqi>, eqi.a>> e = Maps.newHashMap();
+   private static final Set<bsy<?>> b = ImmutableSet.of(bsy.by, bsy.d, bsy.af, bsy.aS, bsy.bj);
+   private final cpj c;
+   private final cpj d;
+   private final Map<bsy<?>, Map<ald<eql>, eql.a>> e = Maps.newHashMap();
 
-   protected ms(cpg $$0) {
+   protected ms(cpj $$0) {
       this($$0, $$0);
    }
 
-   protected ms(cpg $$0, cpg $$1) {
+   protected ms(cpj $$0, cpj $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
-   protected static eqi.a a(dbs $$0) {
-      return eqi.b().a(eqh.a().a(eug.a(1.0F)).a(eqq.a($$0))).a(eqh.a().a(eug.a(1.0F)).a(eqw.a(bsv.aJ.k())));
+   protected static eql.a a(dbv $$0) {
+      return eql.b().a(eqk.a().a(euj.a(1.0F)).a(eqt.a($$0))).a(eqk.a().a(euj.a(1.0F)).a(eqz.a(bsy.aJ.k())));
    }
 
    public abstract void a();
 
    @Override
-   public void generate(jk.a $$0, BiConsumer<ala<eqi>, eqi.a> $$1) {
+   public void generate(jk.a $$0, BiConsumer<ald<eql>, eql.a> $$1) {
       this.a();
-      Set<ala<eqi>> $$2 = new HashSet<>();
+      Set<ald<eql>> $$2 = new HashSet<>();
       lp.g
          .h()
          .forEach(
             $$2x -> {
-               bsv<?> $$3 = (bsv<?>)$$2x.a();
+               bsy<?> $$3 = (bsy<?>)$$2x.a();
                if ($$3.a(this.c)) {
                   if (a($$3)) {
-                     Map<ala<eqi>, eqi.a> $$4 = this.e.remove($$3);
-                     ala<eqi> $$5 = $$3.k();
-                     if ($$5 != epz.a && $$3.a(this.d) && ($$4 == null || !$$4.containsKey($$5))) {
+                     Map<ald<eql>, eql.a> $$4 = this.e.remove($$3);
+                     ald<eql> $$5 = $$3.k();
+                     if ($$5 != eqc.a && $$3.a(this.d) && ($$4 == null || !$$4.containsKey($$5))) {
                         throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$5, $$2x.h().a()));
                      }
 
@@ -57,7 +57,7 @@ public abstract class ms implements mu {
                         });
                      }
                   } else {
-                     Map<ala<eqi>, eqi.a> $$6 = this.e.remove($$3);
+                     Map<ald<eql>, eql.a> $$6 = this.e.remove($$3);
                      if ($$6 != null) {
                         throw new IllegalStateException(
                            String.format(
@@ -77,23 +77,23 @@ public abstract class ms implements mu {
       }
    }
 
-   private static boolean a(bsv<?> $$0) {
-      return b.contains($$0) || $$0.f() != btn.h;
+   private static boolean a(bsy<?> $$0) {
+      return b.contains($$0) || $$0.f() != btq.h;
    }
 
-   protected etn.a b() {
-      return eth.a(bj.a.a().b(bu.a.a().a(bsv.R)));
+   protected etq.a b() {
+      return etk.a(bj.a.a().b(bu.a.a().a(bsy.R)));
    }
 
-   protected etn.a a(ala<cfl> $$0) {
-      return eth.a(bj.a.a().b(bu.a.a().a(bsv.R).a(bw.b(lp.al.g($$0)))));
+   protected etq.a a(ald<cfo> $$0) {
+      return etk.a(bj.a.a().b(bu.a.a().a(bsy.R).a(bw.b(lp.al.g($$0)))));
    }
 
-   protected void a(bsv<?> $$0, eqi.a $$1) {
+   protected void a(bsy<?> $$0, eql.a $$1) {
       this.a($$0, $$0.k(), $$1);
    }
 
-   protected void a(bsv<?> $$0, ala<eqi> $$1, eqi.a $$2) {
+   protected void a(bsy<?> $$0, ald<eql> $$1, eql.a $$2) {
       this.e.computeIfAbsent($$0, $$0x -> new HashMap<>()).put($$1, $$2);
    }
 }

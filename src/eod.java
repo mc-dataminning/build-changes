@@ -1,91 +1,145 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Arrays;
 
-public abstract class eod {
-   protected eoj a;
-   protected btm b;
-   protected final Int2ObjectMap<eoc> c = new Int2ObjectOpenHashMap();
-   protected int d;
-   protected int e;
-   protected int f;
-   protected boolean g;
-   protected boolean h;
-   protected boolean i;
-   protected boolean j;
+public class eod {
+   private eof[] a = new eof[128];
+   private int b;
 
-   public void a(dcg $$0, btm $$1) {
-      this.a = new eoj($$0, $$1);
-      this.b = $$1;
-      this.c.clear();
-      this.d = ayu.d($$1.dj() + 1.0F);
-      this.e = ayu.d($$1.dk() + 1.0F);
-      this.f = ayu.d($$1.dj() + 1.0F);
+   public eof a(eof $$0) {
+      if ($$0.d >= 0) {
+         throw new IllegalStateException("OW KNOWS!");
+      } else {
+         if (this.b == this.a.length) {
+            eof[] $$1 = new eof[this.b << 1];
+            System.arraycopy(this.a, 0, $$1, 0, this.b);
+            this.a = $$1;
+         }
+
+         this.a[this.b] = $$0;
+         $$0.d = this.b;
+         this.a(this.b++);
+         return $$0;
+      }
    }
 
-   public void b() {
-      this.a = null;
-      this.b = null;
+   public void a() {
+      this.b = 0;
    }
 
-   protected eoc b(iz $$0) {
-      return this.c($$0.u(), $$0.v(), $$0.w());
+   public eof b() {
+      return this.a[0];
    }
 
-   protected eoc c(int $$0, int $$1, int $$2) {
-      return (eoc)this.c.computeIfAbsent(eoc.b($$0, $$1, $$2), $$3 -> new eoc($$0, $$1, $$2));
+   public eof c() {
+      eof $$0 = this.a[0];
+      this.a[0] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > 0) {
+         this.b(0);
+      }
+
+      $$0.d = -1;
+      return $$0;
    }
 
-   public abstract eoc a();
+   public void b(eof $$0) {
+      this.a[$$0.d] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > $$0.d) {
+         if (this.a[$$0.d].g < $$0.g) {
+            this.a($$0.d);
+         } else {
+            this.b($$0.d);
+         }
+      }
 
-   public abstract eol a(double var1, double var3, double var5);
-
-   protected eol b(double $$0, double $$1, double $$2) {
-      return new eol(this.c(ayu.a($$0), ayu.a($$1), ayu.a($$2)));
+      $$0.d = -1;
    }
 
-   public abstract int a(eoc[] var1, eoc var2);
-
-   public abstract eoh a(eoj var1, int var2, int var3, int var4, btm var5);
-
-   public abstract eoh a(eoj var1, int var2, int var3, int var4);
-
-   public eoh a(btm $$0, iz $$1) {
-      return this.a(new eoj($$0.dP(), $$0), $$1.u(), $$1.v(), $$1.w());
+   public void a(eof $$0, float $$1) {
+      float $$2 = $$0.g;
+      $$0.g = $$1;
+      if ($$1 < $$2) {
+         this.a($$0.d);
+      } else {
+         this.b($$0.d);
+      }
    }
 
-   public void a(boolean $$0) {
-      this.g = $$0;
+   public int d() {
+      return this.b;
    }
 
-   public void b(boolean $$0) {
-      this.h = $$0;
+   private void a(int $$0) {
+      eof $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while ($$0 > 0) {
+         int $$3 = $$0 - 1 >> 1;
+         eof $$4 = this.a[$$3];
+         if (!($$2 < $$4.g)) {
+            break;
+         }
+
+         this.a[$$0] = $$4;
+         $$4.d = $$0;
+         $$0 = $$3;
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
    }
 
-   public void c(boolean $$0) {
-      this.i = $$0;
-   }
+   private void b(int $$0) {
+      eof $$1 = this.a[$$0];
+      float $$2 = $$1.g;
 
-   public void d(boolean $$0) {
-      this.j = $$0;
-   }
+      while (true) {
+         int $$3 = 1 + ($$0 << 1);
+         int $$4 = $$3 + 1;
+         if ($$3 >= this.b) {
+            break;
+         }
 
-   public boolean d() {
-      return this.g;
+         eof $$5 = this.a[$$3];
+         float $$6 = $$5.g;
+         eof $$7;
+         float $$8;
+         if ($$4 >= this.b) {
+            $$7 = null;
+            $$8 = Float.POSITIVE_INFINITY;
+         } else {
+            $$7 = this.a[$$4];
+            $$8 = $$7.g;
+         }
+
+         if ($$6 < $$8) {
+            if (!($$6 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$5;
+            $$5.d = $$0;
+            $$0 = $$3;
+         } else {
+            if (!($$8 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$7;
+            $$7.d = $$0;
+            $$0 = $$4;
+         }
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
    }
 
    public boolean e() {
-      return this.h;
+      return this.b == 0;
    }
 
-   public boolean f() {
-      return this.i;
-   }
-
-   public boolean g() {
-      return this.j;
-   }
-
-   public static boolean a(drx $$0) {
-      return $$0.a(awl.aK) || $$0.a(dew.H) || $$0.a(dew.kJ) || dfi.g($$0) || $$0.a(dew.fv);
+   public eof[] f() {
+      return Arrays.copyOf(this.a, this.b);
    }
 }

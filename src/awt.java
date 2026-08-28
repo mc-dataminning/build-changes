@@ -1,9 +1,10 @@
-public interface awt {
-   axb<cuc> a = a("regular_goat_horns");
-   axb<cuc> b = a("screaming_goat_horns");
-   axb<cuc> c = a("goat_horns");
+public class awt {
+   public static final axe<egj> a = a("visible");
 
-   private static axb<cuc> a(String $$0) {
-      return axb.a(lq.E, new alb($$0));
+   private awt() {
+   }
+
+   private static axe<egj> a(String $$0) {
+      return axe.a(lq.aF, new ale($$0));
    }
 }

@@ -1,9 +1,11 @@
-import com.mojang.brigadier.arguments.StringArgumentType;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record asw(String a, xl b, atx c, Optional<ats> d) {
-   public xl a(boolean $$0, xl $$1) {
-      return xo.a(this.c.a(xl.b(this.a)))
-         .a($$2 -> $$2.a($$0 ? n.k : n.m).a(StringArgumentType.escapeIfRequired(this.a)).a(new xr(xr.a.a, xl.i().b(this.b).f("\n").b($$1))));
+public record asw(cpj b) {
+   private static final Codec<asw> c = RecordCodecBuilder.create($$0 -> $$0.group(cpl.f.fieldOf("enabled").forGetter(asw::a)).apply($$0, asw::new));
+   public static final ato<asw> a = ato.a("features", c);
+
+   public cpj a() {
+      return this.b;
    }
 }

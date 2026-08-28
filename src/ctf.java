@@ -1,28 +1,14 @@
-public class ctf extends cuf implements cvc {
-   public ctf(cuf.a $$0) {
-      super($$0);
+public class ctf extends csl {
+   public ctf(dex $$0, cui.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public bqq<cuk> a(dbt $$0, cms $$1, bqo $$2) {
-      cuk $$3 = $$1.b($$2);
-      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avw.hN, avx.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cnt $$4 = new cnt($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dH(), $$1.dF(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
-
-      $$1.b(awg.c.b(this));
-      $$3.a(1, $$1);
-      return bqq.a($$3, $$0.x_());
-   }
-
-   @Override
-   public cnk a(dbt $$0, js $$1, cuk $$2, je $$3) {
-      cnt $$4 = new cnt($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
+   protected boolean a(cxy $$0, dsa $$1) {
+      dbw $$2 = $$0.q();
+      iz $$3 = $$0.a().c();
+      dsa $$4 = $$2.z($$3) ? dez.G.o() : dez.a.o();
+      $$2.a($$3, $$4, 27);
+      return super.a($$0, $$1);
    }
 }

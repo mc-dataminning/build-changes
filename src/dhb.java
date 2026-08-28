@@ -1,88 +1,55 @@
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
 
-public class dhb {
-   public static <S extends dpc> dhb.c<S> a(
-      dpe<S> $$0, Function<drx, dhb.a> $$1, Function<drx, je> $$2, dsr $$3, drx $$4, dbu $$5, iz $$6, BiPredicate<dbu, iz> $$7
-   ) {
-      S $$8 = $$0.a($$5, $$6);
-      if ($$8 == null) {
-         return dhb.b::b;
-      } else if ($$7.test($$5, $$6)) {
-         return dhb.b::b;
-      } else {
-         dhb.a $$9 = $$1.apply($$4);
-         boolean $$10 = $$9 == dhb.a.a;
-         boolean $$11 = $$9 == dhb.a.b;
-         if ($$10) {
-            return new dhb.c.b<>($$8);
-         } else {
-            iz $$12 = $$6.a($$2.apply($$4));
-            drx $$13 = $$5.a_($$12);
-            if ($$13.a($$4.b())) {
-               dhb.a $$14 = $$1.apply($$13);
-               if ($$14 != dhb.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
-                  if ($$7.test($$5, $$12)) {
-                     return dhb.b::b;
-                  }
+public class dhb extends dex {
+   public static final MapCodec<dhb> a = b(dhb::new);
+   protected static final ewi b = dhu.c;
 
-                  S $$15 = $$0.a($$5, $$12);
-                  if ($$15 != null) {
-                     S $$16 = $$11 ? $$8 : $$15;
-                     S $$17 = $$11 ? $$15 : $$8;
-                     return new dhb.c.a<>($$16, $$17);
-                  }
-               }
-            }
-
-            return new dhb.c.b<>($$8);
-         }
-      }
+   @Override
+   public MapCodec<dhb> a() {
+      return a;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   protected dhb(drz.d $$0) {
+      super($$0);
    }
 
-   public interface b<S, T> {
-      T a(S var1, S var2);
-
-      T a(S var1);
-
-      T b();
+   @Override
+   protected boolean f_(dsa $$0) {
+      return true;
    }
 
-   public interface c<S> {
-      <T> T apply(dhb.b<? super S, T> var1);
+   @Override
+   public dsa a(cxy $$0) {
+      return !this.o().a((dbz)$$0.q(), $$0.a()) ? dex.a(this.o(), dez.j.o(), $$0.q(), $$0.a()) : super.a($$0);
+   }
 
-      public static final class a<S> implements dhb.c<S> {
-         private final S a;
-         private final S b;
-
-         public a(S $$0, S $$1) {
-            this.a = $$0;
-            this.b = $$1;
-         }
-
-         @Override
-         public <T> T apply(dhb.b<? super S, T> $$0) {
-            return $$0.a(this.a, this.b);
-         }
+   @Override
+   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
+      if ($$1 == je.b && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
 
-      public static final class b<S> implements dhb.c<S> {
-         private final S a;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-         public b(S $$0) {
-            this.a = $$0;
-         }
+   @Override
+   protected void a(dsa $$0, are $$1, iz $$2, azf $$3) {
+      dhu.a(null, $$0, $$1, $$2);
+   }
 
-         @Override
-         public <T> T apply(dhb.b<? super S, T> $$0) {
-            return $$0.a(this.a);
-         }
-      }
+   @Override
+   protected boolean a(dsa $$0, dbz $$1, iz $$2) {
+      dsa $$3 = $$1.a_($$2.c());
+      return !$$3.e() || $$3.b() instanceof dhw;
+   }
+
+   @Override
+   protected ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
+      return b;
+   }
+
+   @Override
+   protected boolean a(dsa $$0, eoi $$1) {
+      return false;
    }
 }

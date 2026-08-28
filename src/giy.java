@@ -1,27 +1,18 @@
-public class giy extends gir<cnf> {
-   private final gjq a;
+public class giy<T extends ckl> extends gjo<T> {
+   private static final ale a = new ale("textures/entity/illager/evoker.png");
 
-   public giy(gis.a $$0) {
-      super($$0);
-      this.a = $$0.b();
+   public giy(giv.a $$0) {
+      super($$0, new fum<>($$0.a(fwx.ab)), 0.5F);
+      this.a(new gna<T, fum<T>>(this, $$0.d()) {
+         public void a(ezw $$0, gdm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gA()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   public void a(cnf $$0, float $$1, float $$2, ezt $$3, gdj $$4, int $$5) {
-      $$3.a();
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      if ($$0.u()) {
-         $$3.a(a.f.rotationDegrees(180.0F));
-         $$3.a(a.d.rotationDegrees(180.0F));
-         $$3.a(a.b.rotationDegrees(90.0F));
-      }
-
-      this.a.a($$0.p(), cuh.h, $$5, gol.d, $$3, $$4, $$0.dP(), $$0.al());
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public alb a(cnf $$0) {
-      return got.e;
+   public ale a(T $$0) {
+      return a;
    }
 }

@@ -1,62 +1,30 @@
-import javax.annotation.Nullable;
+public class ggh implements gfm<dri> {
+   private final gjt a;
+   private final azf b = azf.a();
 
-public class ggh implements daw {
-   private final int c;
-   private final int d;
-   protected final ggg[][] a;
-   protected final dbt b;
-
-   ggh(dbt $$0, int $$1, int $$2, ggg[][] $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.a = $$3;
+   public ggh(gfn.a $$0) {
+      this.a = $$0.d();
    }
 
-   @Override
-   public drx a_(iz $$0) {
-      int $$1 = kb.a($$0.u()) - this.c;
-      int $$2 = kb.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].b($$0);
+   public void a(dri $$0, float $$1, ezw $$2, gdm $$3, int $$4, int $$5) {
+      if (dri.a.a($$0.c())) {
+         dbw $$6 = $$0.i();
+         if ($$6 != null) {
+            cun $$7 = $$0.c().a();
+            if (!$$7.e()) {
+               this.b.b((long)gjr.a($$7));
+               drj $$8 = $$0.d();
+               a($$1, $$6, $$2, $$3, $$4, $$7, this.a, $$8.b(), $$8.a(), this.b);
+            }
+         }
+      }
    }
 
-   @Override
-   public enq b_(iz $$0) {
-      int $$1 = kb.a($$0.u()) - this.c;
-      int $$2 = kb.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].b($$0).u();
-   }
-
-   @Override
-   public float a(je $$0, boolean $$1) {
-      return this.b.a($$0, $$1);
-   }
-
-   @Override
-   public enf y_() {
-      return this.b.y_();
-   }
-
-   @Nullable
-   @Override
-   public dpc c_(iz $$0) {
-      int $$1 = kb.a($$0.u()) - this.c;
-      int $$2 = kb.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].a($$0);
-   }
-
-   @Override
-   public int a(iz $$0, dbe $$1) {
-      return this.b.a($$0, $$1);
-   }
-
-   @Override
-   public int I_() {
-      return this.b.I_();
-   }
-
-   @Override
-   public int J_() {
-      return this.b.J_();
+   public static void a(float $$0, dbw $$1, ezw $$2, gdm $$3, int $$4, cun $$5, gjt $$6, float $$7, float $$8, azf $$9) {
+      $$2.a();
+      $$2.a(0.5F, 0.4F, 0.5F);
+      $$2.a(a.d.rotationDegrees(ayx.j($$0, $$7, $$8)));
+      gjr.a($$6, $$2, $$3, $$4, $$5, $$9, $$1);
+      $$2.b();
    }
 }

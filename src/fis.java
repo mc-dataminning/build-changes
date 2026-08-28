@@ -1,61 +1,62 @@
 import java.util.Locale;
-import java.util.function.Supplier;
 
-public class fis extends fio {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private static final int i = -6745839;
-   private static final int j = -4548257;
-   private static final int k = -10547572;
-   private final Supplier<Float> l;
+public class fis extends fir {
+   private static final int f = -16711681;
+   private static final int g = -6250241;
+   private static final int h = -65536;
+   private static final int i = 1024;
+   private static final int j = 1048576;
+   private static final int k = 1048576;
 
-   public fis(fgk $$0, blt $$1, Supplier<Float> $$2) {
+   public fis(fgn $$0, blw $$1) {
       super($$0, $$1);
-      this.l = $$2;
    }
 
    @Override
-   protected void d(fgm $$0, int $$1, int $$2, int $$3) {
-      float $$4 = (float)azu.c / this.l.get();
-      this.a($$0, String.format("%.1f TPS", $$4), $$1 + 1, $$3 - 60 + 1);
+   protected void d(fgp $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, $$1, $$2, $$3, 64);
+      this.a($$0, $$1, $$2, $$3, 1024);
+      this.a($$0, $$1, $$2, $$3, 16384);
+      this.a($$0, c(1048576.0), $$1 + 1, $$3 - d(1048576.0) + 1);
    }
 
-   @Override
-   protected void c(fgm $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.e.a($$3, blu.b.ordinal());
-      int $$5 = this.b((double)$$4);
-      $$0.a(gdr.E(), $$2, $$1 - $$5, $$2 + 1, $$1, -6745839);
-      long $$6 = this.e.a($$3, blu.c.ordinal());
-      int $$7 = this.b((double)$$6);
-      $$0.a(gdr.E(), $$2, $$1 - $$5 - $$7, $$2 + 1, $$1 - $$5, -4548257);
-      long $$8 = this.e.a($$3) - this.e.a($$3, blu.d.ordinal()) - $$4 - $$6;
-      int $$9 = this.b((double)$$8);
-      $$0.a(gdr.E(), $$2, $$1 - $$9 - $$7 - $$5, $$2 + 1, $$1 - $$7 - $$5, -10547572);
+   private void a(fgp $$0, int $$1, int $$2, int $$3, int $$4) {
+      this.a($$0, $$1, $$2, $$3 - d((double)$$4), c((double)$$4));
    }
 
-   @Override
-   protected long b(int $$0) {
-      return this.e.a($$0) - this.e.a($$0, blu.d.ordinal());
+   private void a(fgp $$0, int $$1, int $$2, int $$3, String $$4) {
+      this.a($$0, $$4, $$1 + 1, $$3 + 1);
+      $$0.a(gdu.E(), $$1, $$1 + $$2 - 1, $$3, -1);
    }
 
    @Override
    protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+      return c(e($$0));
+   }
+
+   private static String c(double $$0) {
+      if ($$0 >= 1048576.0) {
+         return String.format(Locale.ROOT, "%.1f MiB/s", $$0 / 1048576.0);
+      } else {
+         return $$0 >= 1024.0 ? String.format(Locale.ROOT, "%.1f KiB/s", $$0 / 1024.0) : String.format(Locale.ROOT, "%d B/s", ayx.a($$0));
+      }
    }
 
    @Override
    protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / (double)this.l.get().floatValue());
+      return d(e($$0));
+   }
+
+   private static int d(double $$0) {
+      return (int)Math.round(Math.log($$0 + 1.0) * 60.0 / Math.log(1048576.0));
    }
 
    @Override
    protected int a(long $$0) {
-      float $$1 = this.l.get();
-      return this.a(c((double)$$0), (double)$$1, -16711936, (double)$$1 * 1.125, -256, (double)$$1 * 1.25, -65536);
+      return this.a(e((double)$$0), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
    }
 
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+   private static double e(double $$0) {
+      return $$0 * 20.0;
    }
 }

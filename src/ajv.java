@@ -1,3 +1,3 @@
-public interface ajv extends wr {
+public interface ajv extends wu {
    void a(ajw var1);
 }

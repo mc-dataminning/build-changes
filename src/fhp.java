@@ -1,49 +1,66 @@
-public class fhp extends fgz {
-   private boolean a;
+import javax.annotation.Nullable;
 
-   public fhp(int $$0, int $$1, fgz.c $$2) {
-      super($$0, $$1, 20, 20, xl.c("narrator.button.difficulty_lock"), $$2, q);
+public abstract class fhp extends fha {
+   fhp(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3, xn.a);
+   }
+
+   public static fhp a(int $$0, int $$1, ale $$2, int $$3, int $$4) {
+      return new fhp.b(0, 0, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static fhp a(int $$0, int $$1, ale $$2) {
+      return new fhp.a(0, 0, $$0, $$1, $$2);
    }
 
    @Override
-   protected xz aL_() {
-      return xk.a(super.aL_(), this.a() ? xl.c("narrator.button.difficulty_lock.locked") : xl.c("narrator.button.difficulty_lock.unlocked"));
-   }
-
-   public boolean a() {
-      return this.a;
-   }
-
-   public void b(boolean $$0) {
-      this.a = $$0;
+   protected void a(fky $$0) {
    }
 
    @Override
-   public void b(fgm $$0, int $$1, int $$2, float $$3) {
-      fhp.a $$4;
-      if (!this.j) {
-         $$4 = this.a ? fhp.a.c : fhp.a.f;
-      } else if (this.A()) {
-         $$4 = this.a ? fhp.a.b : fhp.a.e;
-      } else {
-         $$4 = this.a ? fhp.a.a : fhp.a.d;
+   public void a(gtt $$0) {
+   }
+
+   @Override
+   public boolean B() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public fgm a(fle $$0) {
+      return null;
+   }
+
+   static class a extends fhp {
+      private final ale a;
+
+      public a(int $$0, int $$1, int $$2, int $$3, ale $$4) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
       }
 
-      $$0.a($$4.g, this.C(), this.D(), this.g, this.h);
+      @Override
+      public void b(fgp $$0, int $$1, int $$2, float $$3) {
+         $$0.a(this.a, this.C(), this.D(), this.x(), this.v());
+      }
    }
 
-   static enum a {
-      a(new alb("widget/locked_button")),
-      b(new alb("widget/locked_button_highlighted")),
-      c(new alb("widget/locked_button_disabled")),
-      d(new alb("widget/unlocked_button")),
-      e(new alb("widget/unlocked_button_highlighted")),
-      f(new alb("widget/unlocked_button_disabled"));
+   static class b extends fhp {
+      private final ale a;
+      private final int b;
+      private final int c;
 
-      final alb g;
+      public b(int $$0, int $$1, int $$2, int $$3, ale $$4, int $$5, int $$6) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
+         this.b = $$5;
+         this.c = $$6;
+      }
 
-      private a(final alb $$0) {
-         this.g = $$0;
+      @Override
+      protected void b(fgp $$0, int $$1, int $$2, float $$3) {
+         $$0.a(this.a, this.C(), this.D(), this.x(), this.v(), 0.0F, 0.0F, this.x(), this.v(), this.b, this.c);
       }
    }
 }

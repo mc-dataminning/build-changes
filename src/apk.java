@@ -1,107 +1,54 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 public class apk {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.trigger.failed.unprimed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("commands.trigger.failed.invalid"));
-
    public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)eq.a("trigger")
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a("objective", fj.a())
-                        .suggests(($$0x, $$1) -> a((ep)$$0x.getSource(), $$1))
-                        .executes($$0x -> a((ep)$$0x.getSource(), ((ep)$$0x.getSource()).h(), fj.a($$0x, "objective"))))
-                     .then(
-                        eq.a("add")
-                           .then(
-                              eq.a("value", IntegerArgumentType.integer())
-                                 .executes(
-                                    $$0x -> a(
-                                          (ep)$$0x.getSource(),
-                                          ((ep)$$0x.getSource()).h(),
-                                          fj.a($$0x, "objective"),
-                                          IntegerArgumentType.getInteger($$0x, "value")
-                                       )
-                                 )
-                           )
-                     ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("time").requires($$0x -> $$0x.c(2)))
                   .then(
-                     eq.a("set")
-                        .then(
-                           eq.a("value", IntegerArgumentType.integer())
-                              .executes(
-                                 $$0x -> b(
-                                       (ep)$$0x.getSource(), ((ep)$$0x.getSource()).h(), fj.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
-                                    )
-                              )
-                        )
-                  )
+                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("set")
+                                    .then(eq.a("day").executes($$0x -> a((ep)$$0x.getSource(), 1000))))
+                                 .then(eq.a("noon").executes($$0x -> a((ep)$$0x.getSource(), 6000))))
+                              .then(eq.a("night").executes($$0x -> a((ep)$$0x.getSource(), 13000))))
+                           .then(eq.a("midnight").executes($$0x -> a((ep)$$0x.getSource(), 18000))))
+                        .then(eq.a("time", ge.a()).executes($$0x -> a((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
+                  ))
+               .then(eq.a("add").then(eq.a("time", ge.a()).executes($$0x -> b((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+            .then(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("query")
+                        .then(eq.a("daytime").executes($$0x -> c((ep)$$0x.getSource(), a(((ep)$$0x.getSource()).e())))))
+                     .then(eq.a("gametime").executes($$0x -> c((ep)$$0x.getSource(), (int)(((ep)$$0x.getSource()).e().Z() % 2147483647L)))))
+                  .then(eq.a("day").executes($$0x -> c((ep)$$0x.getSource(), (int)(((ep)$$0x.getSource()).e().aa() / 24000L % 2147483647L))))
             )
       );
    }
 
-   public static CompletableFuture<Suggestions> a(ep $$0, SuggestionsBuilder $$1) {
-      ewp $$2 = $$0.f();
-      List<String> $$3 = Lists.newArrayList();
-      if ($$2 != null) {
-         ewq $$4 = $$0.l().aK();
+   private static int a(are $$0) {
+      return (int)($$0.aa() % 24000L);
+   }
 
-         for (ewi $$5 : $$4.c()) {
-            if ($$5.c() == ewt.c) {
-               ewm $$6 = $$4.d($$2, $$5);
-               if ($$6 != null && !$$6.b()) {
-                  $$3.add($$5.b());
-               }
-            }
-         }
+   private static int c(ep $$0, int $$1) {
+      $$0.a(() -> xo.a("commands.time.query", $$1), false);
+      return $$1;
+   }
+
+   public static int a(ep $$0, int $$1) {
+      for (are $$2 : $$0.l().K()) {
+         $$2.b((long)$$1);
       }
 
-      return eu.b($$3, $$1);
+      $$0.a(() -> xo.a("commands.time.set", $$1), true);
+      return a($$0.e());
    }
 
-   private static int a(ep $$0, arc $$1, ewi $$2, int $$3) throws CommandSyntaxException {
-      ewo $$4 = a($$0.l().aK(), $$1, $$2);
-      int $$5 = $$4.b($$3);
-      $$0.a(() -> xl.a("commands.trigger.add.success", $$2.g(), $$3), true);
-      return $$5;
-   }
+   public static int b(ep $$0, int $$1) {
+      for (are $$2 : $$0.l().K()) {
+         $$2.b($$2.aa() + (long)$$1);
+      }
 
-   private static int b(ep $$0, arc $$1, ewi $$2, int $$3) throws CommandSyntaxException {
-      ewo $$4 = a($$0.l().aK(), $$1, $$2);
-      $$4.a($$3);
-      $$0.a(() -> xl.a("commands.trigger.set.success", $$2.g(), $$3), true);
+      int $$3 = a($$0.e());
+      $$0.a(() -> xo.a("commands.time.set", $$3), true);
       return $$3;
-   }
-
-   private static int a(ep $$0, arc $$1, ewi $$2) throws CommandSyntaxException {
-      ewo $$3 = a($$0.l().aK(), $$1, $$2);
-      int $$4 = $$3.b(1);
-      $$0.a(() -> xl.a("commands.trigger.simple.success", $$2.g()), true);
-      return $$4;
-   }
-
-   private static ewo a(ewq $$0, ewp $$1, ewi $$2) throws CommandSyntaxException {
-      if ($$2.c() != ewt.c) {
-         throw b.create();
-      } else {
-         ewm $$3 = $$0.d($$1, $$2);
-         if ($$3 != null && !$$3.b()) {
-            ewo $$4 = $$0.c($$1, $$2);
-            $$4.f();
-            return $$4;
-         } else {
-            throw a.create();
-         }
-      }
    }
 }

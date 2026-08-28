@@ -1,181 +1,307 @@
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2IntMap;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntAVLTreeSet;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntIterator;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.BitSet;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public abstract class cmz extends cnk {
-   public static final double b = 0.05;
-   public double c;
-   public double d;
-   public double e;
+public class cmz {
+   private static final int b = 0;
+   public final Int2IntMap a = new Int2IntOpenHashMap();
 
-   protected cmz(bsv<? extends cmz> $$0, dbt $$1) {
-      super($$0, $$1);
+   public void a(cun $$0) {
+      if (!$$0.m() && !$$0.B() && !$$0.b(km.f)) {
+         this.b($$0);
+      }
    }
 
-   protected cmz(bsv<? extends cmz> $$0, double $$1, double $$2, double $$3, dbt $$4) {
-      this($$0, $$4);
-      this.a_($$1, $$2, $$3);
+   public void b(cun $$0) {
+      this.a($$0, $$0.j());
    }
 
-   public cmz(bsv<? extends cmz> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dbt $$7) {
-      this($$0, $$7);
-      this.b($$1, $$2, $$3, this.dF(), this.dH());
-      this.at();
-      this.q($$4, $$5, $$6);
+   public void a(cun $$0, int $$1) {
+      if (!$$0.e()) {
+         int $$2 = c($$0);
+         int $$3 = Math.min($$1, $$0.I());
+         this.b($$2, $$3);
+      }
    }
 
-   public cmz(bsv<? extends cmz> $$0, btk $$1, double $$2, double $$3, double $$4, dbt $$5) {
-      this($$0, $$1.du(), $$1.dw(), $$1.dA(), $$2, $$3, $$4, $$5);
-      this.c($$1);
-      this.a($$1.dF(), $$1.dH());
+   public static int c(cun $$0) {
+      return lp.h.a($$0.g());
    }
 
-   @Override
-   protected void a(akk.a $$0) {
+   boolean b(int $$0) {
+      return this.a.get($$0) > 0;
    }
 
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cK().a() * 4.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 4.0;
+   int a(int $$0, int $$1) {
+      int $$2 = this.a.get($$0);
+      if ($$2 >= $$1) {
+         this.a.put($$0, $$2 - $$1);
+         return $$0;
+      } else {
+         return 0;
+      }
+   }
+
+   void b(int $$0, int $$1) {
+      this.a.put($$0, this.a.get($$0) + $$1);
+   }
+
+   public boolean a(cyt<?> $$0, @Nullable IntList $$1) {
+      return this.a($$0, $$1, 1);
+   }
+
+   public boolean a(cyt<?> $$0, @Nullable IntList $$1, int $$2) {
+      return new cmz.a($$0).a($$2, $$1);
+   }
+
+   public int a(cyv<?> $$0, @Nullable IntList $$1) {
+      return this.a($$0, Integer.MAX_VALUE, $$1);
+   }
+
+   public int a(cyv<?> $$0, int $$1, @Nullable IntList $$2) {
+      return new cmz.a($$0.b()).b($$1, $$2);
+   }
+
+   public static cun a(int $$0) {
+      return $$0 == 0 ? cun.l : new cun(cui.b($$0));
+   }
+
+   public void a() {
+      this.a.clear();
+   }
+
+   class a {
+      private final cyt<?> b;
+      private final List<cyq> c = Lists.newArrayList();
+      private final int d;
+      private final int[] e;
+      private final int f;
+      private final BitSet g;
+      private final IntList h = new IntArrayList();
+
+      public a(final cyt<?> $$0) {
+         this.b = $$0;
+         this.c.addAll($$0.a());
+         this.c.removeIf(cyq::c);
+         this.d = this.c.size();
+         this.e = this.a();
+         this.f = this.e.length;
+         this.g = new BitSet(this.d + this.f + this.d + this.d * this.f);
+
+         for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+            IntList $$2 = this.c.get($$1).b();
+
+            for (int $$3 = 0; $$3 < this.f; $$3++) {
+               if ($$2.contains(this.e[$$3])) {
+                  this.g.set(this.d(true, $$3, $$1));
+               }
+            }
+         }
       }
 
-      $$1 *= 64.0;
-      return $$0 < $$1 * $$1;
-   }
+      public boolean a(int $$0, @Nullable IntList $$1) {
+         if ($$0 <= 0) {
+            return true;
+         } else {
+            int $$2;
+            for ($$2 = 0; this.a($$0); $$2++) {
+               cmz.this.a(this.e[this.h.getInt(0)], $$0);
+               int $$3 = this.h.size() - 1;
+               this.c(this.h.getInt($$3));
 
-   protected dbc.a ag_() {
-      return dbc.a.a;
-   }
+               for (int $$4 = 0; $$4 < $$3; $$4++) {
+                  this.c(($$4 & 1) == 0, this.h.get($$4), this.h.get($$4 + 1));
+               }
 
-   @Override
-   public void l() {
-      bsp $$0 = this.s();
-      if (this.dP().B || ($$0 == null || !$$0.dK()) && this.dP().B(this.dp())) {
-         super.l();
-         if (this.u()) {
-            this.g(1);
-         }
-
-         evk $$1 = cnm.a(this, this::b, this.ag_());
-         if ($$1.c() != evk.a.a) {
-            this.b($$1);
-         }
-
-         this.aS();
-         evm $$2 = this.ds();
-         double $$3 = this.du() + $$2.c;
-         double $$4 = this.dw() + $$2.d;
-         double $$5 = this.dA() + $$2.e;
-         cnm.a(this, 0.2F);
-         float $$8;
-         if (this.be()) {
-            for (int $$6 = 0; $$6 < 4; $$6++) {
-               float $$7 = 0.25F;
-               this.dP().a(lj.d, $$3 - $$2.c * 0.25, $$4 - $$2.d * 0.25, $$5 - $$2.e * 0.25, $$2.c, $$2.d, $$2.e);
+               this.h.clear();
+               this.g.clear(0, this.d + this.f);
             }
 
-            $$8 = this.x();
-         } else {
-            $$8 = this.w();
-         }
+            boolean $$5 = $$2 == this.d;
+            boolean $$6 = $$5 && $$1 != null;
+            if ($$6) {
+               $$1.clear();
+            }
 
-         this.h($$2.b(this.c, this.d, this.e).a((double)$$8));
-         lh $$10 = this.v();
-         if ($$10 != null) {
-            this.dP().a($$10, $$3, $$4 + 0.5, $$5, 0.0, 0.0, 0.0);
-         }
+            this.g.clear(0, this.d + this.f + this.d);
+            int $$7 = 0;
 
-         this.a_($$3, $$4, $$5);
-      } else {
-         this.ao();
-      }
-   }
+            for (cyq $$9 : this.b.a()) {
+               if ($$6 && $$9.c()) {
+                  $$1.add(0);
+               } else {
+                  for (int $$10 = 0; $$10 < this.f; $$10++) {
+                     if (this.b(false, $$7, $$10)) {
+                        this.c(true, $$10, $$7);
+                        cmz.this.b(this.e[$$10], $$0);
+                        if ($$6) {
+                           $$1.add(this.e[$$10]);
+                        }
+                     }
+                  }
 
-   @Override
-   protected boolean b(bsp $$0) {
-      return super.b($$0) && !$$0.ag;
-   }
+                  $$7++;
+               }
+            }
 
-   @Override
-   protected boolean u() {
-      return true;
-   }
-
-   @Nullable
-   protected lh v() {
-      return lj.ae;
-   }
-
-   protected float w() {
-      return 0.95F;
-   }
-
-   protected float x() {
-      return 0.8F;
-   }
-
-   @Override
-   public void b(ur $$0) {
-      super.b($$0);
-      $$0.a("power", this.a(new double[]{this.c, this.d, this.e}));
-   }
-
-   @Override
-   public void a(ur $$0) {
-      super.a($$0);
-      if ($$0.b("power", 9)) {
-         ux $$1 = $$0.c("power", 6);
-         if ($$1.size() == 3) {
-            this.c = $$1.h(0);
-            this.d = $$1.h(1);
-            this.e = $$1.h(2);
+            return $$5;
          }
       }
-   }
 
-   @Override
-   protected void d(bsp $$0) {
-      evm $$1 = $$0.bL();
-      this.h($$1);
-      this.c = $$1.c * 0.1;
-      this.d = $$1.d * 0.1;
-      this.e = $$1.e * 0.1;
-   }
+      private int[] a() {
+         IntCollection $$0 = new IntAVLTreeSet();
 
-   @Override
-   public float bt() {
-      return 1.0F;
-   }
+         for (cyq $$1 : this.c) {
+            $$0.addAll($$1.b());
+         }
 
-   @Override
-   public zs<ace> dl() {
-      bsp $$0 = this.s();
-      int $$1 = $$0 == null ? 0 : $$0.al();
-      return new acf(this.al(), this.cz(), this.du(), this.dw(), this.dA(), this.dH(), this.dF(), this.ak(), $$1, new evm(this.c, this.d, this.e), 0.0);
-   }
+         IntIterator $$2 = $$0.iterator();
 
-   @Override
-   public void a(acf $$0) {
-      super.a($$0);
-      double $$1 = $$0.j();
-      double $$2 = $$0.k();
-      double $$3 = $$0.l();
-      this.q($$1, $$2, $$3);
-   }
+         while ($$2.hasNext()) {
+            if (!cmz.this.b($$2.nextInt())) {
+               $$2.remove();
+            }
+         }
 
-   private void q(double $$0, double $$1, double $$2) {
-      double $$3 = Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2);
-      if ($$3 != 0.0) {
-         this.c = $$0 / $$3 * 0.1;
-         this.d = $$1 / $$3 * 0.1;
-         this.e = $$2 / $$3 * 0.1;
+         return $$0.toIntArray();
       }
-   }
 
-   @Override
-   public void af_() {
-      this.c = this.ds().c * 0.05;
-      this.d = this.ds().d * 0.05;
-      this.e = this.ds().e * 0.05;
+      private boolean a(int $$0) {
+         int $$1 = this.f;
+
+         for (int $$2 = 0; $$2 < $$1; $$2++) {
+            if (cmz.this.a.get(this.e[$$2]) >= $$0) {
+               this.a(false, $$2);
+
+               while (!this.h.isEmpty()) {
+                  int $$3 = this.h.size();
+                  boolean $$4 = ($$3 & 1) == 1;
+                  int $$5 = this.h.getInt($$3 - 1);
+                  if (!$$4 && !this.b($$5)) {
+                     break;
+                  }
+
+                  int $$6 = $$4 ? this.d : $$1;
+                  int $$7 = 0;
+
+                  while (true) {
+                     if ($$7 < $$6) {
+                        if (this.b($$4, $$7) || !this.a($$4, $$5, $$7) || !this.b($$4, $$5, $$7)) {
+                           $$7++;
+                           continue;
+                        }
+
+                        this.a($$4, $$7);
+                     }
+
+                     $$7 = this.h.size();
+                     if ($$7 == $$3) {
+                        this.h.removeInt($$7 - 1);
+                     }
+                     break;
+                  }
+               }
+
+               if (!this.h.isEmpty()) {
+                  return true;
+               }
+            }
+         }
+
+         return false;
+      }
+
+      private boolean b(int $$0) {
+         return this.g.get(this.d($$0));
+      }
+
+      private void c(int $$0) {
+         this.g.set(this.d($$0));
+      }
+
+      private int d(int $$0) {
+         return this.d + this.f + $$0;
+      }
+
+      private boolean a(boolean $$0, int $$1, int $$2) {
+         return this.g.get(this.d($$0, $$1, $$2));
+      }
+
+      private boolean b(boolean $$0, int $$1, int $$2) {
+         return $$0 != this.g.get(1 + this.d($$0, $$1, $$2));
+      }
+
+      private void c(boolean $$0, int $$1, int $$2) {
+         this.g.flip(1 + this.d($$0, $$1, $$2));
+      }
+
+      private int d(boolean $$0, int $$1, int $$2) {
+         int $$3 = $$0 ? $$1 * this.d + $$2 : $$2 * this.d + $$1;
+         return this.d + this.f + this.d + 2 * $$3;
+      }
+
+      private void a(boolean $$0, int $$1) {
+         this.g.set(this.c($$0, $$1));
+         this.h.add($$1);
+      }
+
+      private boolean b(boolean $$0, int $$1) {
+         return this.g.get(this.c($$0, $$1));
+      }
+
+      private int c(boolean $$0, int $$1) {
+         return ($$0 ? 0 : this.d) + $$1;
+      }
+
+      public int b(int $$0, @Nullable IntList $$1) {
+         int $$2 = 0;
+         int $$3 = Math.min($$0, this.b()) + 1;
+
+         while (true) {
+            int $$4 = ($$2 + $$3) / 2;
+            if (this.a($$4, null)) {
+               if ($$3 - $$2 <= 1) {
+                  if ($$4 > 0) {
+                     this.a($$4, $$1);
+                  }
+
+                  return $$4;
+               }
+
+               $$2 = $$4;
+            } else {
+               $$3 = $$4;
+            }
+         }
+      }
+
+      private int b() {
+         int $$0 = Integer.MAX_VALUE;
+
+         for (cyq $$1 : this.c) {
+            int $$2 = 0;
+            IntListIterator var5 = $$1.b().iterator();
+
+            while (var5.hasNext()) {
+               int $$3 = (Integer)var5.next();
+               $$2 = Math.max($$2, cmz.this.a.get($$3));
+            }
+
+            if ($$0 > 0) {
+               $$0 = Math.min($$0, $$2);
+            }
+         }
+
+         return $$0;
+      }
    }
 }

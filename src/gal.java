@@ -1,26 +1,29 @@
-public class gal extends gbx {
-   static final azc a = azc.a();
-   private final gbs b;
-
-   gal(fxq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbs $$7) {
+public class gal extends gbi {
+   gal(fxt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.b = $$7;
-      this.D *= 0.75F;
-      this.n = false;
-      this.b($$7);
    }
 
    @Override
-   public gbb b() {
-      return gbb.c;
+   public gbe b() {
+      return gbe.b;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1 * 0.5F);
    }
 
    @Override
    public int a(float $$0) {
       float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = ayu.a($$1, 0.0F, 1.0F);
+      $$1 = ayx.a($$1, 0.0F, 1.0F);
       int $$2 = super.a($$0);
       int $$3 = $$2 & 0xFF;
       int $$4 = $$2 >> 16 & 0xFF;
@@ -32,115 +35,31 @@ public class gal extends gbx {
       return $$3 | $$4 << 16;
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.b);
-   }
+   public static class a implements gbd<lm> {
+      private final gbv a;
 
-   public static class a implements gba<lm> {
-      private final double a = 0.25;
-      private final gbs b;
-
-      public a(gbs $$0) {
-         this.b = $$0;
-      }
-
-      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gal $$8 = new gal($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
-         int $$9 = 2;
-         int $$10 = 4;
-         $$8.a($$1.z.a(2) + 2);
-         return $$8;
-      }
-   }
-
-   public static class b implements gba<lm> {
-      private final gbs a;
-
-      public b(gbs $$0) {
+      public a(gbv $$0) {
          this.a = $$0;
       }
 
-      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gal $$8 = new gal($$1, $$2, $$3, $$4, 0.5 - gal.a.j(), $$6, 0.5 - gal.a.j(), this.a);
-         if ($$1.z.h()) {
-            $$8.a(0.6F, 1.0F, 0.8F);
-         } else {
-            $$8.a(0.08F, 0.4F, 0.4F);
-         }
-
-         $$8.k *= 0.2F;
-         if ($$5 == 0.0 && $$7 == 0.0) {
-            $$8.j *= 0.1F;
-            $$8.l *= 0.1F;
-         }
-
-         $$8.a((int)(8.0 / ($$1.z.j() * 0.8 + 0.2)));
+      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gal $$8 = new gal($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
          return $$8;
       }
    }
 
-   public static class c implements gba<lm> {
-      private final double a = 0.01;
-      private final gbs b;
+   public static class b implements gbd<lm> {
+      private final gbv a;
 
-      public c(gbs $$0) {
-         this.b = $$0;
+      public b(gbv $$0) {
+         this.a = $$0;
       }
 
-      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gal $$8 = new gal($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         if ($$1.z.h()) {
-            $$8.a(0.29F, 0.58F, 0.51F);
-         } else {
-            $$8.a(0.43F, 0.77F, 0.62F);
-         }
-
-         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
-         return $$8;
-      }
-   }
-
-   public static class d implements gba<lm> {
-      private final double a = 0.01;
-      private final gbs b;
-
-      public d(gbs $$0) {
-         this.b = $$0;
-      }
-
-      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gal $$8 = new gal($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
-         return $$8;
-      }
-   }
-
-   public static class e implements gba<lm> {
-      private final double a = 0.01;
-      private final gbs b;
-
-      public e(gbs $$0) {
-         this.b = $$0;
-      }
-
-      public gax a(lm $$0, fxq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gal $$8 = new gal($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(0.91F, 0.55F, 0.08F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
+      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gal $$8 = new gal($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.d(0.5F);
          return $$8;
       }
    }

@@ -2,48 +2,48 @@ import com.google.common.annotations.VisibleForTesting;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class pw extends qd<dwq> {
+public class pw extends qd<dwt> {
    @VisibleForTesting
-   static final List<ala<dwq>> d = List.of(
-      dwq.b.h(),
-      dwq.c.h(),
-      dwq.d.h(),
-      dwq.f.h(),
-      dwq.g.h(),
-      dwq.h.h(),
-      dwq.i.h(),
-      dwq.a.h(),
-      dwq.e.h(),
-      dwq.j.h(),
-      dwq.k.h(),
-      dwq.l.h(),
-      dwq.m.h(),
-      dwq.n.h(),
-      dwq.o.h(),
-      dwq.p.h(),
-      dwq.q.h(),
-      dwq.r.h(),
-      dwq.s.h(),
-      dwq.t.h(),
-      dwq.u.h(),
-      dwq.v.h(),
-      dwq.w.h(),
-      dwq.y.h(),
-      dwq.z.h(),
-      dwq.A.h(),
-      dwq.B.h(),
-      dwq.C.h(),
-      dwq.G.h(),
-      dwq.H.h(),
-      dwq.I.h(),
-      dwq.J.h(),
-      dwq.K.h(),
-      dwq.M.h(),
-      dwq.O.h(),
-      dwq.P.h(),
-      dwq.Q.h(),
-      dwq.R.h(),
-      dwq.S.h()
+   static final List<ald<dwt>> d = List.of(
+      dwt.b.h(),
+      dwt.c.h(),
+      dwt.d.h(),
+      dwt.f.h(),
+      dwt.g.h(),
+      dwt.h.h(),
+      dwt.i.h(),
+      dwt.a.h(),
+      dwt.e.h(),
+      dwt.j.h(),
+      dwt.k.h(),
+      dwt.l.h(),
+      dwt.m.h(),
+      dwt.n.h(),
+      dwt.o.h(),
+      dwt.p.h(),
+      dwt.q.h(),
+      dwt.r.h(),
+      dwt.s.h(),
+      dwt.t.h(),
+      dwt.u.h(),
+      dwt.v.h(),
+      dwt.w.h(),
+      dwt.y.h(),
+      dwt.z.h(),
+      dwt.A.h(),
+      dwt.B.h(),
+      dwt.C.h(),
+      dwt.G.h(),
+      dwt.H.h(),
+      dwt.I.h(),
+      dwt.J.h(),
+      dwt.K.h(),
+      dwt.M.h(),
+      dwt.O.h(),
+      dwt.P.h(),
+      dwt.Q.h(),
+      dwt.R.h(),
+      dwt.S.h()
    );
 
    public pw(ly $$0, CompletableFuture<jk.a> $$1) {
@@ -52,10 +52,10 @@ public class pw extends qd<dwq> {
 
    @Override
    protected void a(jk.a $$0) {
-      this.b(aws.a).a(d).a(dwz.e_).a(dwq.x.h());
-      this.b(aws.c).a(dwq.L.h());
-      this.b(aws.b).a(d).a(dwz.e_).a(dwq.N.h()).b(aws.c);
-      this.b(aws.d).a(dwq.A.h(), dwq.K.h(), dwq.P.h(), dwq.Q.h(), dwq.D.h(), dwq.C.h());
-      this.b(aws.e).a(dwq.H.h());
+      this.b(awv.a).a(d).a(dxc.e_).a(dwt.x.h());
+      this.b(awv.c).a(dwt.L.h());
+      this.b(awv.b).a(d).a(dxc.e_).a(dwt.N.h()).b(awv.c);
+      this.b(awv.d).a(dwt.A.h(), dwt.K.h(), dwt.P.h(), dwt.Q.h(), dwt.D.h(), dwt.C.h());
+      this.b(awv.e).a(dwt.H.h());
    }
 }

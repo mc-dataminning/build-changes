@@ -1,29 +1,52 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-@FunctionalInterface
-public interface auo {
-   auo b = $$0 -> Optional.empty();
+public interface auo extends aur {
+   Set<String> a();
 
-   Optional<auj> getResource(alb var1);
+   List<aum> a(ale var1);
 
-   default auj getResourceOrThrow(alb $$0) throws FileNotFoundException {
-      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
-   }
+   Map<ale, aum> b(String var1, Predicate<ale> var2);
 
-   default InputStream open(alb $$0) throws IOException {
-      return this.getResourceOrThrow($$0).d();
-   }
+   Map<ale, List<aum>> c(String var1, Predicate<ale> var2);
 
-   default BufferedReader openAsReader(alb $$0) throws IOException {
-      return this.getResourceOrThrow($$0).e();
-   }
+   Stream<ata> b();
 
-   static auo fromMap(Map<alb, auj> $$0) {
-      return $$1 -> Optional.ofNullable($$0.get($$1));
+   public static enum a implements auo {
+      a;
+
+      @Override
+      public Set<String> a() {
+         return Set.of();
+      }
+
+      @Override
+      public Optional<aum> getResource(ale $$0) {
+         return Optional.empty();
+      }
+
+      @Override
+      public List<aum> a(ale $$0) {
+         return List.of();
+      }
+
+      @Override
+      public Map<ale, aum> b(String $$0, Predicate<ale> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Map<ale, List<aum>> c(String $$0, Predicate<ale> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Stream<ata> b() {
+         return Stream.of();
+      }
    }
 }

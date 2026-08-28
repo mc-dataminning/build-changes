@@ -1,65 +1,135 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cra extends crk {
-   public cra(bqi $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
+public class cra implements bql {
+   private final dat b;
+   private final jr<cun> c = jr.a(3, cun.l);
+   @Nullable
+   private dau d;
+   private int e;
+   private int f;
+
+   public cra(dat $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void b(cuk $$0, cuk $$1) {
+   public int b() {
+      return this.c.size();
    }
 
    @Override
-   public boolean a(cms $$0) {
-      return false;
-   }
+   public boolean c() {
+      for (cun $$0 : this.c) {
+         if (!$$0.e()) {
+            return false;
+         }
+      }
 
-   @Override
-   public Optional<cuk> a(int $$0, int $$1, cms $$2) {
-      return Optional.empty();
-   }
-
-   @Override
-   public cuk b(int $$0, int $$1, cms $$2) {
-      return cuk.l;
-   }
-
-   @Override
-   public cuk d(cuk $$0) {
-      return $$0;
-   }
-
-   @Override
-   public cuk b(cuk $$0, int $$1) {
-      return this.d($$0);
-   }
-
-   @Override
-   public boolean b(cms $$0) {
-      return false;
-   }
-
-   @Override
-   public boolean a(cuk $$0) {
-      return false;
-   }
-
-   @Override
-   public cuk a(int $$0) {
-      return cuk.l;
-   }
-
-   @Override
-   public void a(cms $$0, cuk $$1) {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public boolean f() {
       return true;
+   }
+
+   @Override
+   public cun a(int $$0) {
+      return this.c.get($$0);
+   }
+
+   @Override
+   public cun a(int $$0, int $$1) {
+      cun $$2 = this.c.get($$0);
+      if ($$0 == 2 && !$$2.e()) {
+         return bqm.a(this.c, $$0, $$2.I());
+      } else {
+         cun $$3 = bqm.a(this.c, $$0, $$1);
+         if (!$$3.e() && this.d($$0)) {
+            this.f();
+         }
+
+         return $$3;
+      }
+   }
+
+   private boolean d(int $$0) {
+      return $$0 == 0 || $$0 == 1;
+   }
+
+   @Override
+   public cun b(int $$0) {
+      return bqm.a(this.c, $$0);
+   }
+
+   @Override
+   public void a(int $$0, cun $$1) {
+      this.c.set($$0, $$1);
+      $$1.f(this.e_($$1));
+      if (this.d($$0)) {
+         this.f();
+      }
+   }
+
+   @Override
+   public boolean a(cmv $$0) {
+      return this.b.gq() == $$0;
+   }
+
+   @Override
+   public void e() {
+      this.f();
+   }
+
+   public void f() {
+      this.d = null;
+      cun $$0;
+      cun $$1;
+      if (this.c.get(0).e()) {
+         $$0 = this.c.get(1);
+         $$1 = cun.l;
+      } else {
+         $$0 = this.c.get(0);
+         $$1 = this.c.get(1);
+      }
+
+      if ($$0.e()) {
+         this.a(2, cun.l);
+         this.f = 0;
+      } else {
+         dav $$4 = this.b.gs();
+         if (!$$4.isEmpty()) {
+            dau $$5 = $$4.a($$0, $$1, this.e);
+            if ($$5 == null || $$5.r()) {
+               this.d = $$5;
+               $$5 = $$4.a($$1, $$0, this.e);
+            }
+
+            if ($$5 != null && !$$5.r()) {
+               this.d = $$5;
+               this.a(2, $$5.h());
+               this.f = $$5.q();
+            } else {
+               this.a(2, cun.l);
+               this.f = 0;
+            }
+         }
+
+         this.b.n(this.a(2));
+      }
+   }
+
+   @Nullable
+   public dau g() {
+      return this.d;
+   }
+
+   public void c(int $$0) {
+      this.e = $$0;
+      this.f();
+   }
+
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public int h() {
+      return this.f;
    }
 }

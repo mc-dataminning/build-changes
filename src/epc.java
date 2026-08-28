@@ -1,54 +1,42 @@
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class epc {
-   private final iz a;
-   private final int b;
-   private final int c;
+public record epc(ji<epd> b, byte c, byte d, byte e, Optional<xo> f) {
+   public static final zm<wz, epc> a = zm.a(epd.c, epc::c, zk.c, epc::d, zk.c, epc::e, zk.c, epc::f, xq.c, epc::g, epc::new);
 
-   public epc(iz $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public epc(ji<epd> b, byte c, byte d, byte e, Optional<xo> f) {
+      e = (byte)(e & 15);
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
+      this.f = f;
    }
 
-   @Nullable
-   public static epc a(ur $$0) {
-      Optional<iz> $$1 = vg.a($$0, "pos");
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = $$0.h("rotation");
-         int $$3 = $$0.h("entity_id");
-         return new epc($$1.get(), $$2, $$3);
-      }
+   public ale a() {
+      return this.b.a().b();
    }
 
-   public ur a() {
-      ur $$0 = new ur();
-      $$0.a("pos", vg.a(this.a));
-      $$0.a("rotation", this.b);
-      $$0.a("entity_id", this.c);
-      return $$0;
+   public boolean b() {
+      return this.b.a().c();
    }
 
-   public iz b() {
-      return this.a;
-   }
-
-   public int c() {
+   public ji<epd> c() {
       return this.b;
    }
 
-   public int d() {
+   public byte d() {
       return this.c;
    }
 
-   public String e() {
-      return a(this.a);
+   public byte e() {
+      return this.d;
    }
 
-   public static String a(iz $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   public byte f() {
+      return this.e;
+   }
+
+   public Optional<xo> g() {
+      return this.f;
    }
 }

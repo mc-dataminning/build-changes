@@ -4,22 +4,23 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bjk extends bid {
+public class bjk extends big {
    public bjk(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   private static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
       $$0.register(
-         $$1, $$2, () -> DSL.optionalFields("Items", DSL.list(bgs.t.in($$0)), "RecipesUsed", DSL.compoundList(bgs.J.in($$0), DSL.constType(DSL.intType())))
+         $$1,
+         "minecraft:wandering_trader",
+         $$1x -> DSL.optionalFields("Inventory", DSL.list(bgv.t.in($$0)), "Offers", DSL.optionalFields("Recipes", DSL.list(bgv.x.in($$0))), bih.a($$0))
       );
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      a($$0, $$1, "minecraft:furnace");
-      a($$0, $$1, "minecraft:smoker");
-      a($$0, $$1, "minecraft:blast_furnace");
+      $$0.register(
+         $$1,
+         "minecraft:trader_llama",
+         $$1x -> DSL.optionalFields("Items", DSL.list(bgv.t.in($$0)), "SaddleItem", bgv.t.in($$0), "DecorItem", bgv.t.in($$0), bih.a($$0))
+      );
       return $$1;
    }
 }

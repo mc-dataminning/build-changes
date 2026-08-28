@@ -11,8 +11,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class fl implements ArgumentType<fl.a> {
    private static final Collection<String> a = Arrays.asList("=", ">", "<");
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("arguments.operation.invalid"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xl.c("arguments.operation.div0"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xo.c("arguments.operation.invalid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xo.c("arguments.operation.div0"));
 
    public static fl a() {
       return new fl();
@@ -62,14 +62,14 @@ public class fl implements ArgumentType<fl.a> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return ayu.a($$0x, $$1);
+            return ayx.a($$0x, $$1);
          }
       };
          case "%=" -> ($$0x, $$1) -> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return ayu.b($$0x, $$1);
+            return ayx.b($$0x, $$1);
          }
       };
          case "<" -> Math::min;
@@ -80,7 +80,7 @@ public class fl implements ArgumentType<fl.a> {
 
    @FunctionalInterface
    public interface a {
-      void apply(ewo var1, ewo var2) throws CommandSyntaxException;
+      void apply(ewr var1, ewr var2) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
@@ -88,7 +88,7 @@ public class fl implements ArgumentType<fl.a> {
       int apply(int var1, int var2) throws CommandSyntaxException;
 
       @Override
-      default void apply(ewo $$0, ewo $$1) throws CommandSyntaxException {
+      default void apply(ewr $$0, ewr $$1) throws CommandSyntaxException {
          $$0.a(this.apply($$0.a(), $$1.a()));
       }
    }

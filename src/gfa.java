@@ -1,82 +1,61 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
 import java.util.List;
-import java.util.Set;
-import java.util.Map.Entry;
+import java.util.Locale;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class gfa {
-   private final gew a;
-   private final get b;
+public class gfa implements gez {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
 
-   public gfa(gew $$0, get $$1) {
-      if ($$0 == null) {
-         throw new IllegalArgumentException("Missing condition for selector");
-      } else if ($$1 == null) {
-         throw new IllegalArgumentException("Missing variant for selector");
+   public gfa(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   @Override
+   public Predicate<dsa> getPredicate(dsb<dex, dsa> $$0) {
+      dtd<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
       } else {
-         this.a = $$0;
-         this.b = $$1;
-      }
-   }
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
+         }
 
-   public get a() {
-      return this.b;
-   }
-
-   public Predicate<drx> a(dry<deu, drx> $$0) {
-      return this.a.getPredicate($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0;
-   }
-
-   @Override
-   public int hashCode() {
-      return System.identityHashCode(this);
-   }
-
-   public static class a implements JsonDeserializer<gfa> {
-      public gfa a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         return new gfa(this.b($$3), (get)$$2.deserialize($$3.get("apply"), get.class));
-      }
-
-      private gew b(JsonObject $$0) {
-         return $$0.has("when") ? a(ayk.u($$0, "when")) : gew.b;
-      }
-
-      @VisibleForTesting
-      static gew a(JsonObject $$0) {
-         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
-         if ($$1.isEmpty()) {
-            throw new JsonParseException("No elements found in selector");
-         } else if ($$1.size() == 1) {
-            if ($$0.has("OR")) {
-               List<gew> $$2 = Streams.stream(ayk.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new gez($$2);
-            } else if ($$0.has("AND")) {
-               List<gew> $$3 = Streams.stream(ayk.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new gev($$3);
-            } else {
-               return a($$1.iterator().next());
-            }
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
          } else {
-            return new gev($$1.stream().map(gfa.a::a).collect(Collectors.toList()));
+            Predicate<dsa> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               List<Predicate<dsa>> $$6 = $$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).collect(Collectors.toList());
+               $$5 = $$1x -> $$6.stream().anyMatch($$1xx -> $$1xx.test($$1x));
+            }
+
+            return $$3 ? $$5.negate() : $$5;
          }
       }
+   }
 
-      private static gew a(Entry<String, JsonElement> $$0) {
-         return new gex($$0.getKey(), $$0.getValue().getAsString());
+   private Predicate<dsa> a(dsb<dex, dsa> $$0, dtd<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if ($$3.isEmpty()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      } else {
+         return $$2x -> $$2x.c($$1).equals($$3.get());
       }
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }
