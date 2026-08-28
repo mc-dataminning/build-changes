@@ -1,4 +1,4 @@
-// 1.21.4 Release Candidate 3	2026-08-28T03:21:45.336565282	vanilla/Vanilla Recipes
+// 1.21.4	2026-08-28T03:23:59.813171861	vanilla/Vanilla Recipes
 1dfb3c36e1c906b6c46dc3654b03e3a860c8031b data/minecraft/recipe/light_blue_dye_from_blue_orchid.json
 55fdd06a2d3d7b3ebb1853e2881148daa78101d8 data/minecraft/recipe/spruce_planks.json
 ab191fdde225331704efc69ad0cde47b421cff84 data/minecraft/recipe/dye_magenta_bed.json
@@ -1193,8 +1193,8 @@ fe54daa41331eec276ef1f9dbf150c8a5b6a817f data/minecraft/advancement/recipes/buil
 2e1a915d7b77755f615d8df06da1f6bc54c8ad91 data/minecraft/advancement/recipes/food/cooked_mutton_from_smoking.json
 31e1f531d04d0b04d682603dc3554129f3a647ce data/minecraft/advancement/recipes/redstone/dark_oak_door.json
 7f732fa26953c868d7caff6ee03e588ca691eb07 data/minecraft/advancement/recipes/redstone/pale_oak_pressure_plate.json
-08d9d2d880822169ce47319f50494e8335c42b90 data/minecraft/recipe/diamond_axe.json
 4ac097af164bf193f06283398a91461a2d2c11a3 data/minecraft/recipe/waxed_weathered_copper_grate_from_honeycomb.json
+08d9d2d880822169ce47319f50494e8335c42b90 data/minecraft/recipe/diamond_axe.json
 be247fa6dddb5686edd4c27097a0a20979a62ab2 data/minecraft/advancement/recipes/building_blocks/waxed_oxidized_copper_grate_from_honeycomb.json
 c11b0e7fe2291e7ae56d0f6c3c2ed9052435c56b data/minecraft/advancement/recipes/building_blocks/prismarine.json
 3c33bf9c911d3436e4d334b8dd5647baf82e14ac data/minecraft/recipe/coast_armor_trim_smithing_template_smithing_trim.json

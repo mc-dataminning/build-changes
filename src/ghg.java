@@ -37,7 +37,7 @@ public record ghg(String a, @Nullable ghg.a b) {
 
    private static String g() {
       StringBuilder $$0 = new StringBuilder();
-      $$0.append("1.21.4-rc3");
+      $$0.append("1.21.4");
       if (flk.e().a()) {
          $$0.append(" (modded)");
       }

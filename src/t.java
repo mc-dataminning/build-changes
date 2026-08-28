@@ -23,9 +23,9 @@ public class t implements ag {
 
    private t() {
       this.c = UUID.randomUUID().toString().replaceAll("-", "");
-      this.d = "1.21.4-rc3";
-      this.e = false;
-      this.f = new euy(4188, "main");
+      this.d = "1.21.4";
+      this.e = true;
+      this.f = new euy(4189, "main");
       this.g = ab.c();
       this.h = 46;
       this.i = 61;

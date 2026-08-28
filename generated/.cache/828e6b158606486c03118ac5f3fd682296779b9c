@@ -1,4 +1,4 @@
-// 1.21.4 Release Candidate 3	2026-08-28T03:21:45.355161892	vanilla/Loot Tables
+// 1.21.4	2026-08-28T03:23:59.835918342	vanilla/Loot Tables
 6a9c523b197b53b50ee100e38af9bba416c8381d data/minecraft/loot_table/gameplay/chicken_lay.json
 0f905afcf3733f9f7ce32d8b48e4a2041b7aefdd data/minecraft/loot_table/blocks/waxed_oxidized_copper.json
 c4dbb75007d3c56c0793952d0e1581a79319e798 data/minecraft/loot_table/blocks/birch_wood.json
@@ -467,8 +467,8 @@ ccb7cdbc2d43103453d43ad875f05a8a27fbc9b0 data/minecraft/loot_table/entities/pigl
 a096526fba4af1670a604b0a7ef95085275a6c5b data/minecraft/loot_table/blocks/bee_nest.json
 d67a4307448ebd6107013d5892bd8c538754538a data/minecraft/loot_table/chests/village/village_weaponsmith.json
 0c09561924e922b23757bf5bd91dfdf406b60b1c data/minecraft/loot_table/blocks/dead_tube_coral.json
-4fb5e782099469a44e1dcea62e57ed0b3a9545dd data/minecraft/loot_table/blocks/tnt.json
 8db57518ab51c41628f94519f9819e93b023c9aa data/minecraft/loot_table/shearing/sheep/pink.json
+4fb5e782099469a44e1dcea62e57ed0b3a9545dd data/minecraft/loot_table/blocks/tnt.json
 9a96161e7d13ef47fced403543ddede3666681ac data/minecraft/loot_table/blocks/potted_crimson_fungus.json
 bc992ff8f52b3f70813779ed7eaef2a987f5b0d0 data/minecraft/loot_table/blocks/spruce_leaves.json
 cc18457cbc5378414f607225494c30011b507ac3 data/minecraft/loot_table/blocks/mycelium.json
@@ -1043,8 +1043,8 @@ a2a914987a78bc1a6b97a53ab047177c374148a6 data/minecraft/loot_table/blocks/bamboo
 9f05cc0d560515835a7c8fef640e9994850b8c6b data/minecraft/loot_table/blocks/tuff_brick_slab.json
 b420cb1816d45da1cf8c64ea4f9a562fea6c3416 data/minecraft/loot_table/blocks/potted_torchflower.json
 37864a05c49621cb59b72e1cebd506f8f08553cf data/minecraft/loot_table/gameplay/hero_of_the_village/cartographer_gift.json
-99543fed0f100e89c4b5a6bd6ed5a4fddbce72c3 data/minecraft/loot_table/blocks/polished_blackstone_stairs.json
 ed230b71d3a627c59849fd62623a3583e7920f8e data/minecraft/loot_table/gameplay/panda_sneeze.json
+99543fed0f100e89c4b5a6bd6ed5a4fddbce72c3 data/minecraft/loot_table/blocks/polished_blackstone_stairs.json
 d346f35e3c33bb2da7f52d2006d2e13089fea09c data/minecraft/loot_table/blocks/cherry_slab.json
 b1f6ad6e81f5d40a39c07bb15a6b13b6598e6e35 data/minecraft/loot_table/blocks/polished_granite.json
 5739afc783969df738c5bf22f8b73c06e4b73a90 data/minecraft/loot_table/blocks/waxed_weathered_copper_door.json

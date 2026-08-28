@@ -1,4 +1,4 @@
-// 1.21.4 Release Candidate 3	2026-08-28T03:21:45.36234955	vanilla/Tags for minecraft:block
+// 1.21.4	2026-08-28T03:23:59.84263182	vanilla/Tags for minecraft:block
 5c92e6e6d0a21918a0d7f6652b7b230a122e2fd5 data/minecraft/tags/block/bee_attractive.json
 1b34690c952fb0cae947d85b752e19a7a83a453b data/minecraft/tags/block/oak_logs.json
 e58f5fa3c4fe3090b27304fa8f3c92e23594f085 data/minecraft/tags/block/flower_pots.json
@@ -84,10 +84,10 @@ e096b0c31004c577be60ad20cf513bd59bbaed94 data/minecraft/tags/block/wall_signs.js
 1babc3647a545dddb5fe13e06599fb605cf5ca16 data/minecraft/tags/block/all_signs.json
 80ca0014239f0046a5e01ce25e5f173990cdb610 data/minecraft/tags/block/sculk_replaceable_world_gen.json
 882f7161808179f92ed953b9200fdaf74eec6c36 data/minecraft/tags/block/infiniburn_overworld.json
-a249c46329a41538f49a564e1f14338aaf1be5a0 data/minecraft/tags/block/incorrect_for_iron_tool.json
 ef8b53a5070a43fe7b9c6aa14d13e5b64c516aae data/minecraft/tags/block/incorrect_for_stone_tool.json
-3c4ac3776003f4217a20f6ed7a55765569f41a87 data/minecraft/tags/block/beacon_base_blocks.json
+a249c46329a41538f49a564e1f14338aaf1be5a0 data/minecraft/tags/block/incorrect_for_iron_tool.json
 63155bd2e062478d6c9822ed300f20263356b435 data/minecraft/tags/block/piglin_repellents.json
+3c4ac3776003f4217a20f6ed7a55765569f41a87 data/minecraft/tags/block/beacon_base_blocks.json
 556915eeb5e4d0b1b58a27c2bc8d920443253d36 data/minecraft/tags/block/replaceable.json
 53c57757f5ee96d1a6d3e90d92e8914db0ad1d8c data/minecraft/tags/block/cauldrons.json
 45bb9869c8765a149d367b37f30de3aa7b649c59 data/minecraft/tags/block/dirt.json
