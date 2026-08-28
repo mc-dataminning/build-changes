@@ -235,7 +235,7 @@ public class ebj<R, P> implements AutoCloseable {
    }
 
    private static long a(dgn $$0, int $$1) {
-      return kj.b($$0.g, $$1, $$0.h);
+      return kj.b($$0.h, $$1, $$0.i);
    }
 
    protected void b(long $$0) {

@@ -140,7 +140,7 @@ public abstract class dzq {
          jh.a $$9 = new jh.a();
 
          for (dgn $$10 : $$6) {
-            $$9.d(kj.a($$10.g, 8), 32, kj.a($$10.h, 8));
+            $$9.d(kj.a($$10.h, 8), 32, kj.a($$10.i, 8));
             double $$11 = $$9.j($$3);
             boolean $$12 = $$7 == null || $$11 < $$8;
             if ($$12) {
@@ -189,7 +189,7 @@ public abstract class dzq {
                return Pair.of($$4.a($$5), $$6);
             }
 
-            dzp $$8 = $$1.a($$5.g, $$5.h, eaq.d);
+            dzp $$8 = $$1.a($$5.h, $$5.i, eaq.d);
             eor $$9 = $$2.a(kj.a($$8), $$6.a(), $$8);
             if ($$9 != null && $$9.b() && (!$$3 || a($$2, $$9))) {
                return Pair.of($$4.a($$9.c()), $$6);
@@ -221,7 +221,7 @@ public abstract class dzq {
          long $$10 = $$9.a($$0.D(), $$5.u(), $$5.w());
          Set<jq<dij>> $$11 = new ObjectArraySet();
          dgn.a($$4.r(), 1).forEach($$2x -> {
-            dzp $$3x = $$0.a($$2x.g, $$2x.h);
+            dzp $$3x = $$0.a($$2x.h, $$2x.i);
 
             for (eaa $$4x : $$3x.d()) {
                $$4x.i().a($$11::add);
@@ -292,7 +292,7 @@ public abstract class dzq {
             $$0.a(null);
          } catch (Exception var31) {
             o $$37 = o.a(var31, "Biome decoration");
-            $$37.a("Generation").a("CenterX", $$3.g).a("CenterZ", $$3.h).a("Decoration Seed", $$10);
+            $$37.a("Generation").a("CenterX", $$3.h).a("CenterZ", $$3.i).a("Decoration Seed", $$10);
             throw new z($$37);
          }
       }
@@ -360,14 +360,14 @@ public abstract class dzq {
             }
          }
 
-         if ($$9.b($$1, $$5.g, $$5.h)) {
+         if ($$9.b($$1, $$5.h, $$5.i)) {
             if ($$10.size() == 1) {
                this.a($$10.get(0), $$2, $$0, $$7, $$4, $$1.d(), $$3, $$5, $$6);
             } else {
                ArrayList<eop.a> $$13 = new ArrayList<>($$10.size());
                $$13.addAll($$10);
                eeo $$14 = new eeo(new edq(0L));
-               $$14.c($$1.d(), $$5.g, $$5.h);
+               $$14.c($$1.d(), $$5.h, $$5.i);
                int $$15 = 0;
 
                for (eop.a $$16 : $$13) {
@@ -422,8 +422,8 @@ public abstract class dzq {
    public void a(dif $$0, did $$1, dzp $$2) {
       int $$3 = 8;
       dgn $$4 = $$2.f();
-      int $$5 = $$4.g;
-      int $$6 = $$4.h;
+      int $$5 = $$4.h;
+      int $$6 = $$4.i;
       int $$7 = $$4.d();
       int $$8 = $$4.e();
       kj $$9 = kj.a($$2);

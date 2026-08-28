@@ -140,7 +140,7 @@ public abstract class eoj {
 
       private static eeo a(long $$0, dgn $$1) {
          eeo $$2 = new eeo(new edq(0L));
-         $$2.c($$0, $$1.g, $$1.h);
+         $$2.c($$0, $$1.h, $$1.i);
          return $$2;
       }
    }

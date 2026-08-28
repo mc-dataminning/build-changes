@@ -16,23 +16,27 @@ public abstract class cfr {
    protected int e;
    protected int f;
    protected fbx g = fbx.c;
-   protected kl h = kl.g;
+   protected kl h;
    protected long i;
    protected long j;
    protected double k;
-   protected float l = 0.5F;
+   protected float l;
    protected boolean m;
    protected long n;
    protected euj o;
    @Nullable
    private jh s;
    private int t;
-   private float u = 1.0F;
+   private float u;
    private final eum v;
    private boolean w;
-   private float x = 16.0F;
+   private float x;
 
    public cfr(bwh $$0, dhh $$1) {
+      this.h = kl.h;
+      this.l = 0.5F;
+      this.u = 1.0F;
+      this.x = 16.0F;
       this.a = $$0;
       this.b = $$1;
       this.v = this.a(bae.a($$0.i(bxn.m) * 16.0));
@@ -304,7 +308,7 @@ public abstract class cfr {
    }
 
    private void t() {
-      this.h = kl.g;
+      this.h = kl.h;
       this.i = 0L;
       this.k = 0.0;
       this.w = false;

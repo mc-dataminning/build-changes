@@ -23,7 +23,7 @@ public class arj {
 
    public static arj a(arx $$0, eaq $$1, dgn $$2) {
       int $$3 = eap.a.a($$1).a(eaq.c);
-      bay<ary> $$4 = bay.a($$2.g, $$2.h, $$3, ($$1x, $$2x) -> $$0.d(dgn.c($$1x, $$2x)));
+      bay<ary> $$4 = bay.a($$2.h, $$2.i, $$3, ($$1x, $$2x) -> $$0.d(dgn.c($$1x, $$2x)));
       return new arj($$0, $$1, $$2, $$4);
    }
 
@@ -64,7 +64,7 @@ public class arj {
    }
 
    private void e() {
-      ary $$0 = this.g.a(this.c.g, this.c.h);
+      ary $$0 = this.g.a(this.c.h, this.c.i);
       $$0.a(this);
       this.g.a(this.b::a);
    }
@@ -73,13 +73,13 @@ public class arj {
       if (this.a == eaq.c) {
          return true;
       } else {
-         eaq $$0 = this.g.a(this.c.g, this.c.h).p();
+         eaq $$0 = this.g.a(this.c.h, this.c.i).p();
          if ($$0 != null && !$$0.d(this.a)) {
             eao $$1 = eap.b.a(this.a).c();
             int $$2 = $$1.c();
 
-            for (int $$3 = this.c.g - $$2; $$3 <= this.c.g + $$2; $$3++) {
-               for (int $$4 = this.c.h - $$2; $$4 <= this.c.h + $$2; $$4++) {
+            for (int $$3 = this.c.h - $$2; $$3 <= this.c.h + $$2; $$3++) {
+               for (int $$4 = this.c.i - $$2; $$4 <= this.c.i + $$2; $$4++) {
                   int $$5 = this.c.e($$3, $$4);
                   eaq $$6 = $$1.a($$5);
                   eaq $$7 = this.g.a($$3, $$4).p();
@@ -97,7 +97,7 @@ public class arj {
    }
 
    public ary c() {
-      return this.g.a(this.c.g, this.c.h);
+      return this.g.a(this.c.h, this.c.i);
    }
 
    private void a(eaq $$0, boolean $$1) {
@@ -105,8 +105,8 @@ public class arj {
          $$2.a($$0::f);
          int $$3 = this.b($$0, $$1);
 
-         for (int $$4 = this.c.g - $$3; $$4 <= this.c.g + $$3; $$4++) {
-            for (int $$5 = this.c.h - $$3; $$5 <= this.c.h + $$3; $$5++) {
+         for (int $$4 = this.c.h - $$3; $$4 <= this.c.h + $$3; $$4++) {
+            for (int $$5 = this.c.i - $$3; $$5 <= this.c.i + $$3; $$5++) {
                ary $$6 = this.g.a($$4, $$5);
                if (this.e || !this.a($$0, $$1, $$6)) {
                   return;

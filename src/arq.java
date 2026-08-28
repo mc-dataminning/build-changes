@@ -12,8 +12,8 @@ public abstract class arq extends eti {
    protected void a(long $$0, int $$1, boolean $$2) {
       if (!$$2 || $$1 < this.f - 2) {
          dgn $$3 = new dgn($$0);
-         int $$4 = $$3.g;
-         int $$5 = $$3.h;
+         int $$4 = $$3.h;
+         int $$5 = $$3.i;
 
          for (int $$6 = -1; $$6 <= 1; $$6++) {
             for (int $$7 = -1; $$7 <= 1; $$7++) {
@@ -30,8 +30,8 @@ public abstract class arq extends eti {
    protected int a(long $$0, long $$1, int $$2) {
       int $$3 = $$2;
       dgn $$4 = new dgn($$0);
-      int $$5 = $$4.g;
-      int $$6 = $$4.h;
+      int $$5 = $$4.h;
+      int $$6 = $$4.i;
 
       for (int $$7 = -1; $$7 <= 1; $$7++) {
          for (int $$8 = -1; $$8 <= 1; $$8++) {

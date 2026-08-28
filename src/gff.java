@@ -33,15 +33,15 @@ public class gff extends dzt {
          return false;
       } else {
          dgn $$3 = $$0.f();
-         return $$3.g == $$1 && $$3.h == $$2;
+         return $$3.h == $$1 && $$3.i == $$2;
       }
    }
 
    public void a(dgn $$0) {
-      if (this.d.b($$0.g, $$0.h)) {
-         int $$1 = this.d.a($$0.g, $$0.h);
+      if (this.d.b($$0.h, $$0.i)) {
+         int $$1 = this.d.a($$0.h, $$0.i);
          dzz $$2 = this.d.a($$1);
-         if (a($$2, $$0.g, $$0.h)) {
+         if (a($$2, $$0.h, $$0.i)) {
             this.d.b($$1, $$2);
          }
       }
@@ -121,8 +121,8 @@ public class gff extends dzt {
             dzz $$5 = this.d.b.get($$4);
             if ($$5 != null) {
                dgn $$6 = $$5.f();
-               if ($$3.b($$6.g, $$6.h)) {
-                  $$3.a($$3.a($$6.g, $$6.h), $$5);
+               if ($$3.b($$6.h, $$6.i)) {
+                  $$3.a($$3.a($$6.h, $$6.i), $$5);
                }
             }
          }
@@ -217,7 +217,7 @@ public class gff extends dzt {
 
          for (int $$2 = 0; $$2 < $$1.length; $$2++) {
             dgn $$3 = $$0.f();
-            this.c.remove(kj.b($$3.g, $$0.h($$2), $$3.h));
+            this.c.remove(kj.b($$3.h, $$0.h($$2), $$3.i));
          }
       }
 
@@ -228,7 +228,7 @@ public class gff extends dzt {
             eaa $$3 = $$1[$$2];
             if ($$3.c()) {
                dgn $$4 = $$0.f();
-               this.c.add(kj.b($$4.g, $$0.h($$2), $$4.h));
+               this.c.add(kj.b($$4.h, $$0.h($$2), $$4.i));
             }
          }
       }
@@ -251,7 +251,7 @@ public class gff extends dzt {
                   dzz $$5 = gff.this.d.b.get(gff.this.d.a($$4, $$3));
                   if ($$5 != null) {
                      dgn $$6 = $$5.f();
-                     $$1.write(($$6.g + "\t" + $$6.h + "\t" + $$5.E() + "\n").getBytes(StandardCharsets.UTF_8));
+                     $$1.write(($$6.h + "\t" + $$6.i + "\t" + $$5.E() + "\n").getBytes(StandardCharsets.UTF_8));
                   }
                }
             }

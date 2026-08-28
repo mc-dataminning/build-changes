@@ -295,8 +295,8 @@ public interface ecz {
       private static boolean a(dhh $$0, jh $$1) {
          dgn $$2 = new dgn($$1);
 
-         for (int $$3 = $$2.g - 1; $$3 <= $$2.g + 1; $$3++) {
-            for (int $$4 = $$2.h - 1; $$4 <= $$2.h + 1; $$4++) {
+         for (int $$3 = $$2.h - 1; $$3 <= $$2.h + 1; $$3++) {
+            for (int $$4 = $$2.i - 1; $$4 <= $$2.i + 1; $$4++) {
                if (!$$0.a(dgn.c($$3, $$4)) || $$0.R().a($$3, $$4) == null) {
                   return false;
                }

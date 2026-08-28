@@ -19,6 +19,10 @@ public record jp(aly<dhh> d, jh e) {
       return this.d + " " + this.e;
    }
 
+   public boolean a(aly<dhh> $$0, jh $$1, int $$2) {
+      return this.d.equals($$0) && this.e.l($$1) <= $$2;
+   }
+
    public aly<dhh> a() {
       return this.d;
    }

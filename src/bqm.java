@@ -83,8 +83,8 @@ public class bqm {
             JsonObject $$1x = new JsonObject();
             $$1x.addProperty("durationNanos", $$0x.a().toNanos());
             $$1x.addProperty("level", $$0x.e());
-            $$1x.addProperty("chunkPosX", $$0x.b().g);
-            $$1x.addProperty("chunkPosZ", $$0x.b().h);
+            $$1x.addProperty("chunkPosX", $$0x.b().h);
+            $$1x.addProperty("chunkPosZ", $$0x.b().i);
             $$1x.addProperty("worldPosX", $$0x.c().c());
             $$1x.addProperty("worldPosZ", $$0x.c().d());
             return $$1x;

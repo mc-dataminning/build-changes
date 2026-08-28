@@ -40,8 +40,8 @@ public class ChunkGenerationEvent extends Event {
    public ChunkGenerationEvent(dgn $$0, aly<dhh> $$1, String $$2) {
       this.targetStatus = $$2;
       this.level = $$1.a().toString();
-      this.chunkPosX = $$0.g;
-      this.chunkPosZ = $$0.h;
+      this.chunkPosX = $$0.h;
+      this.chunkPosZ = $$0.i;
       this.worldPosX = $$0.d();
       this.worldPosZ = $$0.e();
    }

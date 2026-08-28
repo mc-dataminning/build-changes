@@ -80,6 +80,6 @@ public class asv implements asr {
 
    @Nullable
    public eaq a(int $$0, int $$1) {
-      return (eaq)this.b.get(dgn.c($$0 + this.c.g - this.e, $$1 + this.c.h - this.e));
+      return (eaq)this.b.get(dgn.c($$0 + this.c.h - this.e, $$1 + this.c.i - this.e));
    }
 }

@@ -1,4 +1,4 @@
-// 1.21.2 Pre-Release 4	2026-08-28T02:46:29.742765331	vanilla/Tags for minecraft:item
+// 1.21.2 Pre-Release 5	2026-08-28T02:48:51.083869343	vanilla/Tags for minecraft:item
 6afbc8d2f12d963bba5d64cd6a63eb9a77c8a7b3 data/minecraft/tags/item/wolf_food.json
 c573efc219c198638b6916e5de42b196f8267a1e data/minecraft/tags/item/horse_tempt_items.json
 a91a14b0d844c2e8beb882a51072178e0667620c data/minecraft/tags/item/jungle_logs.json
@@ -119,8 +119,8 @@ a72c613d8786fc7756573ffec9c22f7ed2973d9e data/minecraft/tags/item/bee_food.json
 f28dc9f2c7d071fef84fb760a59427d564938731 data/minecraft/tags/item/diamond_ores.json
 3bd2eeaac98c81e18bfb56e9bd09c764e71d4cf5 data/minecraft/tags/item/spruce_logs.json
 736f4ef35696340b932cdb679c5a32e7b28db783 data/minecraft/tags/item/iron_tool_materials.json
-74f68e22bf93a751191e1ec35390adcf191a2880 data/minecraft/tags/item/fences.json
 c23b5aceb0db24e7df8b571f876f733a24bde29d data/minecraft/tags/item/turtle_food.json
+74f68e22bf93a751191e1ec35390adcf191a2880 data/minecraft/tags/item/fences.json
 346d148ecd7ee4de6292cd18efdaf6fdf1a7b522 data/minecraft/tags/item/skulls.json
 76ac0bd2e48021aef9ecffd104321ebc03c694eb data/minecraft/tags/item/signs.json
 e70ae23a62e7115f4464da721e870e8809abffb9 data/minecraft/tags/item/creeper_drop_music_discs.json

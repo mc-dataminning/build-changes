@@ -83,8 +83,8 @@ public final class eor {
       ux $$2 = new ux();
       if (this.b()) {
          $$2.a("id", $$0.b().e(mb.aU).b(this.d).toString());
-         $$2.a("ChunkX", $$1.g);
-         $$2.a("ChunkZ", $$1.h);
+         $$2.a("ChunkX", $$1.h);
+         $$2.a("ChunkZ", $$1.i);
          $$2.a("references", this.g);
          $$2.a("Children", this.e.a($$0));
          return $$2;

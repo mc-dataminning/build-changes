@@ -10,7 +10,7 @@ public class kj extends kl {
    public static final int c = 15;
    public static final int d = 8;
    public static final int e = 15;
-   private static final int h = 22;
+   private static final int f = 22;
    private static final int i = 20;
    private static final int j = 22;
    private static final long k = 4194303L;
@@ -36,7 +36,7 @@ public class kj extends kl {
    }
 
    public static kj a(dgn $$0, int $$1) {
-      return new kj($$0.g, $$1, $$0.h);
+      return new kj($$0.h, $$1, $$0.i);
    }
 
    public static kj a(ebx $$0) {
@@ -226,8 +226,8 @@ public class kj extends kl {
    }
 
    public static Stream<kj> a(dgn $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$0.g;
-      int $$5 = $$0.h;
+      int $$4 = $$0.h;
+      int $$5 = $$0.i;
       return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3, $$5 + $$1);
    }
 

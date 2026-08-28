@@ -9,49 +9,50 @@ import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class cjc extends bwn implements cpg, ecz {
-   private static final Logger d = LogUtils.getLogger();
-   private static final kl bZ = new kl(1, 1, 1);
-   private static final int ca = 5;
-   private static final float cb = 55.0F;
-   private static final float cc = 15.0F;
-   private static final int cd = 6000;
-   private static final int ce = 3;
-   private static final alc<Boolean> cf = alg.a(cjc.class, ale.k);
+   private static final Logger bZ = LogUtils.getLogger();
+   private static final kl ca = new kl(1, 1, 1);
+   private static final int cb = 5;
+   private static final float cc = 55.0F;
+   private static final float cd = 15.0F;
+   private static final int ce = 6000;
+   private static final int cf = 3;
+   public static final int a = 1024;
    private static final alc<Boolean> cg = alg.a(cjc.class, ale.k);
-   protected static final ImmutableList<cgq<? extends cgp<? super cjc>>> a = ImmutableList.of(cgq.c, cgq.d, cgq.f, cgq.b);
-   protected static final ImmutableList<cfj<?>> b = ImmutableList.of(
+   private static final alc<Boolean> ch = alg.a(cjc.class, ale.k);
+   protected static final ImmutableList<cgq<? extends cgp<? super cjc>>> b = ImmutableList.of(cgq.c, cgq.d, cgq.f, cgq.b);
+   protected static final ImmutableList<cfj<?>> c = ImmutableList.of(
       cfj.t, cfj.n, cfj.h, cfj.m, cfj.E, cfj.x, cfj.L, cfj.aM, cfj.aN, cfj.aO, cfj.aP, cfj.Z, new cfj[0]
    );
-   public static final ImmutableList<Float> c = ImmutableList.of(
+   public static final ImmutableList<Float> d = ImmutableList.of(
       0.5625F, 0.625F, 0.75F, 0.9375F, 1.0F, 1.0F, 1.125F, 1.25F, 1.5F, 1.875F, 2.0F, 2.25F, new Float[]{2.5F, 3.0F, 3.75F, 4.0F}
    );
-   private final ecn<ecz.b> ch;
-   private ecz.a ci;
-   private final ecz.d cj;
-   private final ecn<cjc.a> ck;
-   private final btp cl = new btp(1);
+   private final ecn<ecz.b> ci;
+   private ecz.a cj;
+   private final ecz.d ck;
+   private final ecn<cjc.a> cl;
+   private final btp cm = new btp(1);
    @Nullable
-   private jh cm;
-   private long cn;
-   private float co;
+   private jh cn;
+   private long co;
    private float cp;
    private float cq;
    private float cr;
    private float cs;
+   private float ct;
 
    public cjc(bvq<? extends cjc> $$0, dhh $$1) {
       super($$0, $$1);
       this.bQ = new ccd(this, 20, true);
       this.a_(this.fN());
-      this.cj = new cjc.b();
-      this.ci = new ecz.a();
-      this.ch = new ecn<>(new ecz.b(this));
-      this.ck = new ecn<>(new cjc.a(this.cj.b(), ecq.E.a().a()));
+      this.ck = new cjc.b();
+      this.cj = new ecz.a();
+      this.ci = new ecn<>(new ecz.b(this));
+      this.cl = new ecn<>(new cjc.a(this.ck.b(), ecq.E.a().a()));
    }
 
    @Override
    protected bxh.b<cjc> ed() {
-      return bxh.a(b, a);
+      return bxh.a(c, b);
    }
 
    @Override
@@ -81,8 +82,8 @@ public class cjc extends bwn implements cpg, ecz {
    @Override
    protected void a(alg.a $$0) {
       super.a($$0);
-      $$0.a(cf, false);
-      $$0.a(cg, true);
+      $$0.a(cg, false);
+      $$0.a(ch, true);
    }
 
    @Override
@@ -165,7 +166,7 @@ public class cjc extends bwn implements cpg, ecz {
 
       if (this.x() && this.gs() && this.af % 20 == 0) {
          this.x(false);
-         this.cm = null;
+         this.cn = null;
       }
 
       this.gt();
@@ -175,30 +176,30 @@ public class cjc extends bwn implements cpg, ecz {
    public void h() {
       super.h();
       if (this.dW().C) {
-         this.cp = this.co;
+         this.cq = this.cp;
          if (this.p()) {
-            this.co = bae.a(this.co + 1.0F, 0.0F, 5.0F);
+            this.cp = bae.a(this.cp + 1.0F, 0.0F, 5.0F);
          } else {
-            this.co = bae.a(this.co - 1.0F, 0.0F, 5.0F);
+            this.cp = bae.a(this.cp - 1.0F, 0.0F, 5.0F);
          }
 
          if (this.x()) {
-            this.cq++;
-            this.cs = this.cr;
+            this.cr++;
+            this.ct = this.cs;
             if (this.go()) {
-               this.cr++;
+               this.cs++;
             } else {
-               this.cr--;
+               this.cs--;
             }
 
-            this.cr = bae.a(this.cr, 0.0F, 15.0F);
+            this.cs = bae.a(this.cs, 0.0F, 15.0F);
          } else {
-            this.cq = 0.0F;
             this.cr = 0.0F;
             this.cs = 0.0F;
+            this.ct = 0.0F;
          }
       } else {
-         ecz.c.a(this.dW(), this.ci, this.cj);
+         ecz.c.a(this.dW(), this.cj, this.ck);
          if (this.gl()) {
             this.x(false);
          }
@@ -260,29 +261,29 @@ public class cjc extends bwn implements cpg, ecz {
    public void b(jh $$0, boolean $$1) {
       if ($$1) {
          if (!this.x()) {
-            this.cm = $$0;
+            this.cn = $$0;
             this.x(true);
          }
-      } else if ($$0.equals(this.cm) || this.cm == null) {
-         this.cm = null;
+      } else if ($$0.equals(this.cn) || this.cn == null) {
+         this.cn = null;
          this.x(false);
       }
    }
 
    @Override
    public btp t() {
-      return this.cl;
+      return this.cm;
    }
 
    @Override
    protected kl V() {
-      return bZ;
+      return ca;
    }
 
    @Override
    public boolean c(ash $$0, cxo $$1) {
       cxo $$2 = this.b(bth.a);
-      return !$$2.f() && $$0.N().b(dhd.c) && this.cl.c($$1) && this.c($$2, $$1);
+      return !$$2.f() && $$0.N().b(dhd.c) && this.cm.c($$1) && this.c($$2, $$1);
    }
 
    private boolean c(cxo $$0, cxo $$1) {
@@ -314,36 +315,36 @@ public class cjc extends bwn implements cpg, ecz {
    @Override
    public void a(BiConsumer<ecn<?>, ash> $$0) {
       if (this.dW() instanceof ash $$1) {
-         $$0.accept(this.ch, $$1);
-         $$0.accept(this.ck, $$1);
+         $$0.accept(this.ci, $$1);
+         $$0.accept(this.cl, $$1);
       }
    }
 
    public boolean x() {
-      return this.al.a(cf);
+      return this.al.a(cg);
    }
 
    public void x(boolean $$0) {
       if (!this.dW().C && this.dk() && (!$$0 || !this.gl())) {
-         this.al.a(cf, $$0);
+         this.al.a(cg, $$0);
       }
    }
 
    private boolean gs() {
-      return this.cm == null || !this.cm.a(this.du(), (double)ecq.E.a().a()) || !this.dW().a_(this.cm).a(dkn.eg);
+      return this.cn == null || !this.cn.a(this.du(), (double)ecq.E.a().a()) || !this.dW().a_(this.cn).a(dkn.eg);
    }
 
    public float J(float $$0) {
-      return bae.h($$0, this.cp, this.co) / 5.0F;
+      return bae.h($$0, this.cq, this.cp) / 5.0F;
    }
 
    public boolean go() {
-      float $$0 = this.cq % 55.0F;
+      float $$0 = this.cr % 55.0F;
       return $$0 < 15.0F;
    }
 
    public float K(float $$0) {
-      return bae.h($$0, this.cs, this.cr) / 15.0F;
+      return bae.h($$0, this.ct, this.cs) / 15.0F;
    }
 
    @Override
@@ -354,7 +355,7 @@ public class cjc extends bwn implements cpg, ecz {
    @Override
    protected void f(ash $$0) {
       super.f($$0);
-      this.cl.f().forEach($$1x -> this.a($$0, $$1x));
+      this.cm.f().forEach($$1x -> this.a($$0, $$1x));
       cxo $$1 = this.a(bvr.a);
       if (!$$1.f() && !dea.a($$1, ddz.D)) {
          this.a($$0, $$1);
@@ -373,10 +374,10 @@ public class cjc extends bwn implements cpg, ecz {
       this.b($$0, this.dY());
       alx<vu> $$1 = this.dY().a(vl.a);
       ecz.a.a
-         .encodeStart($$1, this.ci)
-         .resultOrPartial($$0x -> d.error("Failed to encode vibration listener for Allay: '{}'", $$0x))
+         .encodeStart($$1, this.cj)
+         .resultOrPartial($$0x -> bZ.error("Failed to encode vibration listener for Allay: '{}'", $$0x))
          .ifPresent($$1x -> $$0.a("listener", $$1x));
-      $$0.a("DuplicationCooldown", this.cn);
+      $$0.a("DuplicationCooldown", this.co);
       $$0.a("CanDuplicate", this.gw());
    }
 
@@ -388,12 +389,12 @@ public class cjc extends bwn implements cpg, ecz {
       if ($$0.b("listener", 10)) {
          ecz.a.a
             .parse($$1, $$0.p("listener"))
-            .resultOrPartial($$0x -> d.error("Failed to parse vibration listener for Allay: '{}'", $$0x))
-            .ifPresent($$0x -> this.ci = $$0x);
+            .resultOrPartial($$0x -> bZ.error("Failed to parse vibration listener for Allay: '{}'", $$0x))
+            .ifPresent($$0x -> this.cj = $$0x);
       }
 
-      this.cn = (long)$$0.h("DuplicationCooldown");
-      this.al.a(cg, $$0.q("CanDuplicate"));
+      this.co = (long)$$0.h("DuplicationCooldown");
+      this.al.a(ch, $$0.q("CanDuplicate"));
    }
 
    @Override
@@ -402,12 +403,12 @@ public class cjc extends bwn implements cpg, ecz {
    }
 
    private void gt() {
-      if (this.cn > 0L) {
-         this.cn--;
+      if (this.co > 0L) {
+         this.co--;
       }
 
-      if (!this.dW().B_() && this.cn == 0L && !this.gw()) {
-         this.al.a(cg, true);
+      if (!this.dW().B_() && this.co == 0L && !this.gw()) {
+         this.al.a(ch, true);
       }
    }
 
@@ -423,12 +424,12 @@ public class cjc extends bwn implements cpg, ecz {
    }
 
    private void gv() {
-      this.cn = 6000L;
-      this.al.a(cg, false);
+      this.co = 6000L;
+      this.al.a(ch, false);
    }
 
    private boolean gw() {
-      return this.al.a(cg);
+      return this.al.a(ch);
    }
 
    private void a(cpw $$0, cxo $$1) {
@@ -460,12 +461,12 @@ public class cjc extends bwn implements cpg, ecz {
 
    @Override
    public ecz.a gp() {
-      return this.ci;
+      return this.cj;
    }
 
    @Override
    public ecz.d gq() {
-      return this.cj;
+      return this.ck;
    }
 
    class a implements ecs {
@@ -525,7 +526,7 @@ public class cjc extends bwn implements cpg, ecz {
                return true;
             } else {
                jp $$5 = $$4.get();
-               return $$5.a().equals($$0.ah()) && $$5.b().equals($$1);
+               return $$5.a($$0.ah(), cjc.this.dw(), 1024) && $$5.b().equals($$1);
             }
          }
       }

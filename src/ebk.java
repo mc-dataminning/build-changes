@@ -253,7 +253,7 @@ public record ebk(
    }
 
    private static void a(dgn $$0, int $$1, String $$2) {
-      A.error("Recoverable errors when loading section [{}, {}, {}]: {}", new Object[]{$$0.g, $$1, $$0.h, $$2});
+      A.error("Recoverable errors when loading section [{}, {}, {}]: {}", new Object[]{$$0.h, $$1, $$0.i, $$2});
    }
 
    private static Codec<eai<jq<dij>>> a(kd<dij> $$0) {
@@ -339,9 +339,9 @@ public record ebk(
 
    public ux a() {
       ux $$0 = vm.e(new ux());
-      $$0.a("xPos", this.i.g);
+      $$0.a("xPos", this.i.h);
       $$0.a("yPos", this.j);
-      $$0.a("zPos", this.i.h);
+      $$0.a("zPos", this.i.i);
       $$0.a("LastUpdate", this.k);
       $$0.a("InhabitedTime", this.l);
       $$0.a("Status", ma.l.b(this.m).toString());

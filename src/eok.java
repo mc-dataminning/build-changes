@@ -50,7 +50,7 @@ public class eok {
          eol $$6 = this.a($$0, $$1, $$3, $$4);
          if ($$6 != null) {
             return $$6;
-         } else if (!$$2.a($$0.g, $$0.h, this.k)) {
+         } else if (!$$2.a($$0.h, $$0.i, this.k)) {
             return eol.b;
          } else {
             boolean $$7 = this.n.computeIfAbsent($$1, $$0x -> new Long2BooleanOpenHashMap()).computeIfAbsent($$4, $$2x -> this.b($$0, $$1));

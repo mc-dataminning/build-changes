@@ -48,8 +48,8 @@ public abstract class bqf extends Event {
       this.regionPosZ = $$1.i();
       this.localChunkPosX = $$1.j();
       this.localChunkPosZ = $$1.k();
-      this.chunkPosX = $$1.g;
-      this.chunkPosZ = $$1.h;
+      this.chunkPosX = $$1.h;
+      this.chunkPosZ = $$1.i;
       this.levelId = $$0.a();
       this.dimension = $$0.b().a().toString();
       this.type = $$0.c();

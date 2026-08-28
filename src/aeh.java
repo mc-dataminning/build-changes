@@ -8,8 +8,8 @@ public class aeh implements aac<acr> {
    private final aei d;
 
    public aeh(dgn $$0, etl $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = $$0.g;
-      this.c = $$0.h;
+      this.b = $$0.h;
+      this.c = $$0.i;
       this.d = new aei($$0, $$1, $$2, $$3);
    }
 

@@ -152,8 +152,8 @@ public class arm extends eaz implements ark.b, arx {
    }
 
    private static double a(dgn $$0, bvj $$1) {
-      double $$2 = (double)kj.a($$0.g, 8);
-      double $$3 = (double)kj.a($$0.h, 8);
+      double $$2 = (double)kj.a($$0.h, 8);
+      double $$3 = (double)kj.a($$0.i, 8);
       double $$4 = $$2 - $$1.dB();
       double $$5 = $$3 - $$1.dH();
       return $$4 * $$4 + $$5 * $$5;
@@ -234,7 +234,7 @@ public class arm extends eaz implements ark.b, arx {
          for (int $$7 = -$$1; $$7 <= $$1; $$7++) {
             for (int $$8 = -$$1; $$8 <= $$1; $$8++) {
                int $$9 = Math.max(Math.abs($$8), Math.abs($$7));
-               long $$10 = dgn.c($$6.g + $$8, $$6.h + $$7);
+               long $$10 = dgn.c($$6.h + $$8, $$6.i + $$7);
                ark $$11 = this.a($$10);
                if ($$11 == null) {
                   return g;
@@ -544,7 +544,7 @@ public class arm extends eaz implements ark.b, arx {
          return this.g($$3);
       } else {
          try {
-            ary $$4 = $$2.a($$3.g, $$3.h);
+            ary $$4 = $$2.a($$3.h, $$3.i);
             dzp $$5 = $$4.a($$1.a().c());
             if ($$5 == null) {
                throw new IllegalStateException("Parent chunk missing");
@@ -558,8 +558,8 @@ public class arm extends eaz implements ark.b, arx {
             o $$8 = o.a(var8, "Exception generating new chunk");
             p $$9 = $$8.a("Chunk to be generated");
             $$9.a("Status being generated", () -> $$1.a().f());
-            $$9.a("Location", String.format(Locale.ROOT, "%d,%d", $$3.g, $$3.h));
-            $$9.a("Position hash", dgn.c($$3.g, $$3.h));
+            $$9.a("Location", String.format(Locale.ROOT, "%d,%d", $$3.h, $$3.i));
+            $$9.a("Position hash", dgn.c($$3.h, $$3.i));
             $$9.a("Generator", this.a());
             this.v.execute(() -> {
                throw new z($$8);
@@ -801,8 +801,8 @@ public class arm extends eaz implements ark.b, arx {
          Optional<dzp> $$7 = Optional.ofNullable($$6.o());
          Optional<dzz> $$8 = $$7.flatMap($$0x -> $$0x instanceof dzz ? Optional.of((dzz)$$0x) : Optional.empty());
          $$1.a(
-            $$5.g,
             $$5.h,
+            $$5.i,
             $$6.i(),
             $$7.isPresent(),
             $$7.map(dzp::n).orElse(null),
@@ -981,7 +981,7 @@ public class arm extends eaz implements ark.b, arx {
       if ($$0.dW() == this.t) {
          arr $$2 = $$0.Y();
          if ($$1 instanceof arr.a $$3 && (!($$2 instanceof arr.a $$4) || !$$4.a().equals($$3.a()))) {
-            $$0.f.b(new afw($$3.a().g, $$3.a().h));
+            $$0.f.b(new afw($$3.a().h, $$3.a().i));
          }
 
          arr.a($$2, $$1, $$1x -> this.a($$0, $$1x), $$1x -> b($$0, $$1x));
@@ -995,7 +995,7 @@ public class arm extends eaz implements ark.b, arx {
       Builder<asi> $$3 = ImmutableList.builder();
 
       for (asi $$4 : $$2) {
-         if ($$1 && this.b($$4, $$0.g, $$0.h) || !$$1 && this.a($$4, $$0.g, $$0.h)) {
+         if ($$1 && this.b($$4, $$0.h, $$0.i) || !$$1 && this.a($$4, $$0.h, $$0.i)) {
             $$3.add($$4);
          }
       }
@@ -1110,7 +1110,7 @@ public class arm extends eaz implements ark.b, arx {
          if ($$2 instanceof dzz $$4) {
             $$5 = $$4;
          } else {
-            $$5 = this.t.d($$3.g, $$3.h);
+            $$5 = this.t.d($$3.h, $$3.i);
          }
 
          for (asi $$7 : this.a($$3, false)) {
@@ -1138,7 +1138,7 @@ public class arm extends eaz implements ark.b, arx {
       dgn.a($$0, $$2).forEach($$0x -> {
          ark $$1x = this.b($$0x.a());
          if ($$1x != null) {
-            $$1x.a(this.u.a($$0x.g, $$0x.h));
+            $$1x.a(this.u.a($$0x.h, $$0x.i));
          }
       });
    }
@@ -1222,7 +1222,7 @@ public class arm extends eaz implements ark.b, arx {
             double $$3 = (double)Math.min(this.b(), $$2 * 16);
             double $$4 = $$1.d * $$1.d + $$1.f * $$1.f;
             double $$5 = $$3 * $$3;
-            boolean $$6 = $$4 <= $$5 && this.c.a($$0) && arm.this.a($$0, this.c.dy().g, this.c.dy().h);
+            boolean $$6 = $$4 <= $$5 && this.c.a($$0) && arm.this.a($$0, this.c.dy().h, this.c.dy().i);
             if ($$6) {
                if (this.f.add($$0.f)) {
                   this.b.b($$0);

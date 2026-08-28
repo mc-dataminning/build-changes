@@ -7,7 +7,7 @@ public record dey(def d, def e, kl f, Optional<eew> g, ela h, Optional<jq<ecq>> 
       $$0 -> $$0.group(
                def.b.fieldOf("radius").forGetter(dey::b),
                def.b.fieldOf("height").forGetter(dey::c),
-               kl.f.optionalFieldOf("offset", kl.g).forGetter(dey::d),
+               kl.g.optionalFieldOf("offset", kl.h).forGetter(dey::d),
                eew.b.optionalFieldOf("predicate").forGetter(dey::e),
                ela.a.fieldOf("block_state").forGetter(dey::f),
                ecq.aj.optionalFieldOf("trigger_game_event").forGetter(dey::g)

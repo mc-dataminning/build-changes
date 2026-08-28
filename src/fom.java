@@ -253,7 +253,7 @@ public class fom {
          $$25.add("");
          $$25.add(String.format(Locale.ROOT, "XYZ: %.3f / %.5f / %.3f", this.f.ao().dB(), this.f.ao().dD(), this.f.ao().dH()));
          $$25.add(String.format(Locale.ROOT, "Block: %d %d %d [%d %d %d]", $$14.u(), $$14.v(), $$14.w(), $$14.u() & 15, $$14.v() & 15, $$14.w() & 15));
-         $$25.add(String.format(Locale.ROOT, "Chunk: %d %d %d [%d %d in r.%d.%d.mca]", $$22.g, kj.a($$14.v()), $$22.h, $$22.j(), $$22.k(), $$22.h(), $$22.i()));
+         $$25.add(String.format(Locale.ROOT, "Chunk: %d %d %d [%d %d in r.%d.%d.mca]", $$22.h, kj.a($$14.v()), $$22.i, $$22.j(), $$22.k(), $$22.h(), $$22.i()));
          $$25.add(String.format(Locale.ROOT, "Facing: %s (%s) (%.1f / %.1f)", $$16, $$21, bae.h($$15.dM()), bae.h($$15.dO())));
          dzz $$27 = this.u();
          if ($$27.E()) {
@@ -369,7 +369,7 @@ public class fom {
             return null;
          }
 
-         this.m = $$0.m().b(this.k.g, this.k.h, eaq.n, false).thenApply($$0x -> (dzz)$$0x.b(null));
+         this.m = $$0.m().b(this.k.h, this.k.i, eaq.n, false).thenApply($$0x -> (dzz)$$0x.b(null));
       }
 
       return this.m.getNow(null);
@@ -377,7 +377,7 @@ public class fom {
 
    private dzz u() {
       if (this.l == null) {
-         this.l = this.f.s.d(this.k.g, this.k.h);
+         this.l = this.f.s.d(this.k.h, this.k.i);
       }
 
       return this.l;

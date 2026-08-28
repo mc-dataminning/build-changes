@@ -33,8 +33,8 @@ public class edg extends dzq {
    public void a(dif $$0, dzp $$1, did $$2) {
       jh.a $$3 = new jh.a();
       dgn $$4 = $$1.f();
-      int $$5 = $$4.g;
-      int $$6 = $$4.h;
+      int $$5 = $$4.h;
+      int $$6 = $$4.i;
 
       for (int $$7 = 0; $$7 < 16; $$7++) {
          for (int $$8 = 0; $$8 < 16; $$8++) {

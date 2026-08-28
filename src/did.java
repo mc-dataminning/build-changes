@@ -29,7 +29,7 @@ public class did {
    }
 
    public List<eor> a(dgn $$0, Predicate<eoj> $$1) {
-      Map<eoj, LongSet> $$2 = this.a.a($$0.g, $$0.h, eaq.e).h();
+      Map<eoj, LongSet> $$2 = this.a.a($$0.h, $$0.i, eaq.e).h();
       Builder<eor> $$3 = ImmutableList.builder();
 
       for (Entry<eoj, LongSet> $$4 : $$2.entrySet()) {

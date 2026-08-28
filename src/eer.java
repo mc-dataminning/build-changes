@@ -53,8 +53,8 @@ public class eer {
             for (int $$5 = -d; $$5 <= d; $$5++) {
                for (int $$6 = -d; $$6 <= d; $$6++) {
                   if ($$5 * $$5 + $$6 * $$6 <= $$4) {
-                     int $$7 = $$1.g + $$5;
-                     int $$8 = $$1.h + $$6;
+                     int $$7 = $$1.h + $$5;
+                     int $$8 = $$1.i + $$6;
                      ees $$9 = ees.a($$0, $$7, $$8);
                      if ($$9 != null) {
                         $$2.put(dgn.c($$7, $$8), $$9);
@@ -229,7 +229,7 @@ public class eer {
          }
 
          for (jm $$11 : jm.c.a) {
-            if ($$0.a($$2.g + $$11.j(), $$2.h + $$11.l()).u() != $$3) {
+            if ($$0.a($$2.h + $$11.j(), $$2.i + $$11.l()).u() != $$3) {
                int $$12 = $$11 == jm.f ? 15 : 0;
                int $$13 = $$11 == jm.e ? 0 : 15;
                int $$14 = $$11 == jm.d ? 15 : 0;
@@ -266,8 +266,8 @@ public class eer {
       Builder<jn, ees> $$3 = ImmutableMap.builder();
 
       for (jn $$4 : jn.values()) {
-         int $$5 = $$2.g + $$4.b();
-         int $$6 = $$2.h + $$4.c();
+         int $$5 = $$2.h + $$4.b();
+         int $$6 = $$2.i + $$4.c();
          ees $$7 = $$0.a($$5, $$6).v();
          if ($$7 != null) {
             $$3.put($$4, $$7);

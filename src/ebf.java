@@ -99,7 +99,7 @@ public class ebf implements AutoCloseable {
    }
 
    private Path f(dgn $$0) {
-      String $$1 = "c." + $$0.g + "." + $$0.h + ".mcc";
+      String $$1 = "c." + $$0.h + "." + $$0.i + ".mcc";
       return this.o.resolve($$1);
    }
 

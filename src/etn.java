@@ -103,7 +103,7 @@ public abstract class etn<M extends eth<M>, S extends etk<M>> implements etj {
    }
 
    public void b(dgn $$0, boolean $$1) {
-      this.f.c(kj.b($$0.g, $$0.h), $$1);
+      this.f.c(kj.b($$0.h, $$0.i), $$1);
    }
 
    @Override
@@ -113,7 +113,7 @@ public abstract class etn<M extends eth<M>, S extends etk<M>> implements etj {
 
    @Override
    public void a(dgn $$0, boolean $$1) {
-      this.f.b(kj.b($$0.g, $$0.h), $$1);
+      this.f.b(kj.b($$0.h, $$0.i), $$1);
    }
 
    @Override

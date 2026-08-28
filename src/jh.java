@@ -32,17 +32,17 @@ public class jh extends kl {
          ws.a($$0, $$1);
       }
    };
-   private static final Logger e = LogUtils.getLogger();
+   private static final Logger i = LogUtils.getLogger();
    public static final jh c = new jh(0, 0, 0);
-   private static final int h = 1 + bae.f(bae.c(30000000));
-   private static final int i = h;
-   public static final int d = 64 - h - i;
-   private static final long j = (1L << h) - 1L;
-   private static final long k = (1L << d) - 1L;
-   private static final long l = (1L << i) - 1L;
+   public static final int d = 1 + bae.f(bae.c(30000000));
+   public static final int e = 64 - 2 * d;
+   private static final long j = (1L << d) - 1L;
+   private static final long k = (1L << e) - 1L;
+   private static final long l = (1L << d) - 1L;
    private static final int m = 0;
-   private static final int n = d;
-   private static final int o = d + i;
+   private static final int n = e;
+   private static final int o = e + d;
+   public static final int f = (1 << d) / 2 - 1;
 
    public jh(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
@@ -61,15 +61,15 @@ public class jh extends kl {
    }
 
    public static int a(long $$0) {
-      return (int)($$0 << 64 - o - h >> 64 - h);
+      return (int)($$0 << 64 - o - d >> 64 - d);
    }
 
    public static int b(long $$0) {
-      return (int)($$0 << 64 - d >> 64 - d);
+      return (int)($$0 << 64 - e >> 64 - e);
    }
 
    public static int c(long $$0) {
-      return (int)($$0 << 64 - n - i >> 64 - i);
+      return (int)($$0 << 64 - n - d >> 64 - d);
    }
 
    public static jh d(long $$0) {

@@ -63,7 +63,7 @@ public class eba implements eca<bvj> {
    }
 
    private static void a(ux $$0, dgn $$1) {
-      $$0.a("Position", new vb(new int[]{$$1.g, $$1.h}));
+      $$0.a("Position", new vb(new int[]{$$1.h, $$1.i}));
    }
 
    private static ebv<bvj> b(dgn $$0) {

@@ -203,9 +203,9 @@ public class eaj extends dzp {
    }
 
    public static jh a(short $$0, int $$1, dgn $$2) {
-      int $$3 = kj.a($$2.g, $$0 & 15);
+      int $$3 = kj.a($$2.h, $$0 & 15);
       int $$4 = kj.a($$1, $$0 >>> 4 & 15);
-      int $$5 = kj.a($$2.h, $$0 >>> 8 & 15);
+      int $$5 = kj.a($$2.i, $$0 >>> 8 & 15);
       return new jh($$3, $$4, $$5);
    }
 

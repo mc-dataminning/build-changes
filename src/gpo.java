@@ -27,8 +27,8 @@ public class gpo implements gpk.a {
 
                for (int $$15 = 0; $$15 < 16; $$15++) {
                   for (int $$16 = 0; $$16 < 16; $$16++) {
-                     int $$17 = kj.a($$13.g, $$15);
-                     int $$18 = kj.a($$13.h, $$16);
+                     int $$17 = kj.a($$13.h, $$15);
+                     int $$18 = kj.a($$13.i, $$16);
                      float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
                      gme.b(
                         $$0,

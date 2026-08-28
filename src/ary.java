@@ -25,6 +25,9 @@ public abstract class ary {
 
    public ary(dgn $$0) {
       this.d = $$0;
+      if ($$0.a(dgn.e) > dgn.d) {
+         throw new IllegalStateException("Trying to create chunk out of reasonable bounds: " + $$0);
+      }
    }
 
    public CompletableFuture<arn<dzp>> a(eaq $$0, arm $$1) {

@@ -85,7 +85,7 @@ public class cjd {
    private static boolean a(bwf $$0, bxh<?> $$1, jp $$2) {
       Optional<Integer> $$3 = $$1.c(cfj.aO);
       dhh $$4 = $$0.dW();
-      return $$4.ah() == $$2.a() && $$4.a_($$2.b()).a(dkn.bf) && $$3.isPresent();
+      return $$2.a($$4.ah(), $$0.dw(), 1024) && $$4.a_($$2.b()).a(dkn.bf) && $$3.isPresent();
    }
 
    private static Optional<bzm> d(bwf $$0) {

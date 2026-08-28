@@ -43,7 +43,7 @@ public class ask extends etl implements AutoCloseable {
    }
 
    protected void a(dgn $$0) {
-      this.a($$0.g, $$0.h, () -> 0, ask.a.a, ae.a((Runnable)(() -> {
+      this.a($$0.h, $$0.i, () -> 0, ask.a.a, ae.a((Runnable)(() -> {
          super.b($$0, false);
          super.a($$0, false);
 
@@ -65,12 +65,12 @@ public class ask extends etl implements AutoCloseable {
 
    @Override
    public void b(dgn $$0) {
-      this.a($$0.g, $$0.h, ask.a.a, ae.a((Runnable)(() -> super.b($$0)), (Supplier<String>)(() -> "propagateLight " + $$0)));
+      this.a($$0.h, $$0.i, ask.a.a, ae.a((Runnable)(() -> super.b($$0)), (Supplier<String>)(() -> "propagateLight " + $$0)));
    }
 
    @Override
    public void a(dgn $$0, boolean $$1) {
-      this.a($$0.g, $$0.h, ask.a.a, ae.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "enableLight " + $$0 + " " + $$1)));
+      this.a($$0.h, $$0.i, ask.a.a, ae.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "enableLight " + $$0 + " " + $$1)));
    }
 
    @Override
@@ -93,12 +93,12 @@ public class ask extends etl implements AutoCloseable {
 
    @Override
    public void b(dgn $$0, boolean $$1) {
-      this.a($$0.g, $$0.h, () -> 0, ask.a.a, ae.a((Runnable)(() -> super.b($$0, $$1)), (Supplier<String>)(() -> "retainData " + $$0)));
+      this.a($$0.h, $$0.i, () -> 0, ask.a.a, ae.a((Runnable)(() -> super.b($$0, $$1)), (Supplier<String>)(() -> "retainData " + $$0)));
    }
 
    public CompletableFuture<dzp> a(dzp $$0, boolean $$1) {
       dgn $$2 = $$0.f();
-      this.a($$2.g, $$2.h, ask.a.a, ae.a((Runnable)(() -> {
+      this.a($$2.h, $$2.i, ask.a.a, ae.a((Runnable)(() -> {
          eaa[] $$2x = $$0.d();
 
          for (int $$3 = 0; $$3 < $$0.an(); $$3++) {
@@ -113,13 +113,13 @@ public class ask extends etl implements AutoCloseable {
          super.a($$2, $$1);
          super.b($$2, false);
          return $$0;
-      }, $$1x -> this.a($$2.g, $$2.h, ask.a.b, $$1x));
+      }, $$1x -> this.a($$2.h, $$2.i, ask.a.b, $$1x));
    }
 
    public CompletableFuture<dzp> b(dzp $$0, boolean $$1) {
       dgn $$2 = $$0.f();
       $$0.a(false);
-      this.a($$2.g, $$2.h, ask.a.a, ae.a((Runnable)(() -> {
+      this.a($$2.h, $$2.i, ask.a.a, ae.a((Runnable)(() -> {
          if (!$$1) {
             super.b($$2);
          }
@@ -127,7 +127,7 @@ public class ask extends etl implements AutoCloseable {
       return CompletableFuture.supplyAsync(() -> {
          $$0.a(true);
          return $$0;
-      }, $$1x -> this.a($$2.g, $$2.h, ask.a.b, $$1x));
+      }, $$1x -> this.a($$2.h, $$2.i, ask.a.b, $$1x));
    }
 
    public void b() {

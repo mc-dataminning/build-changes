@@ -271,7 +271,7 @@ public class chx extends chw implements bwk, cif {
 
    private void gJ() {
       this.cG = this.cF;
-      if (this.gP()) {
+      if (this.gQ()) {
          this.cF = Math.min(1.0F, this.cF + 0.2F);
       } else {
          this.cF = Math.max(0.0F, this.cF - 0.24F);
@@ -310,12 +310,8 @@ public class chx extends chw implements bwk, cif {
    }
 
    private boolean gK() {
-      if (this.cS == null) {
-         return false;
-      } else {
-         duw $$0 = this.dW().c_(this.cS);
-         return $$0 instanceof dut && ((dut)$$0).b();
-      }
+      dut $$0 = this.gO();
+      return $$0 != null && $$0.b();
    }
 
    @Override
@@ -401,21 +397,23 @@ public class chx extends chw implements bwk, cif {
 
          boolean $$0 = this.ad_() && !this.gB() && this.O_() != null && this.O_().g(this) < 4.0;
          this.z($$0);
-         if (this.af % 20 == 0 && !this.gO()) {
+         if (this.af % 20 == 0 && !this.gP()) {
             this.cS = null;
          }
       }
    }
 
-   boolean gO() {
-      if (!this.gq()) {
-         return false;
-      } else if (this.l(this.cS)) {
-         return false;
+   @Nullable
+   dut gO() {
+      if (this.cS == null) {
+         return null;
       } else {
-         duw $$0 = this.dW().c_(this.cS);
-         return $$0 != null && $$0.q() == duy.I;
+         return this.l(this.cS) ? null : this.dW().a(this.cS, duy.I).orElse(null);
       }
+   }
+
+   boolean gP() {
+      return this.gO() != null;
    }
 
    public boolean gA() {
@@ -438,7 +436,7 @@ public class chx extends chw implements bwk, cif {
       this.d(4, $$0);
    }
 
-   private boolean gP() {
+   private boolean gQ() {
       return this.t(2);
    }
 
@@ -631,12 +629,15 @@ public class chx extends chw implements bwk, cif {
    class d extends chx.a {
       @Override
       public boolean h() {
-         if (chx.this.gq() && chx.this.gI() && chx.this.cS.a(chx.this.du(), 2.0) && chx.this.dW().c_(chx.this.cS) instanceof dut $$1) {
-            if (!$$1.d()) {
-               return true;
-            }
+         if (chx.this.cS != null && chx.this.gI() && chx.this.cS.a(chx.this.du(), 2.0)) {
+            dut $$0 = chx.this.gO();
+            if ($$0 != null) {
+               if (!$$0.d()) {
+                  return true;
+               }
 
-            chx.this.cS = null;
+               chx.this.cS = null;
+            }
          }
 
          return false;
@@ -649,8 +650,9 @@ public class chx extends chw implements bwk, cif {
 
       @Override
       public void d() {
-         if (chx.this.dW().c_(chx.this.cS) instanceof dut $$1) {
-            $$1.a(chx.this);
+         dut $$0 = chx.this.gO();
+         if ($$0 != null) {
+            $$0.a(chx.this);
          }
       }
    }
@@ -672,7 +674,12 @@ public class chx extends chw implements bwk, cif {
 
       @Override
       public boolean h() {
-         return chx.this.cS != null && !chx.this.ga() && chx.this.gI() && !this.d(chx.this.cS) && chx.this.dW().a_(chx.this.cS).a(axu.aJ);
+         return chx.this.cS != null
+            && !chx.this.l(chx.this.cS)
+            && !chx.this.ga()
+            && chx.this.gI()
+            && !this.d(chx.this.cS)
+            && chx.this.dW().a_(chx.this.cS).a(axu.aJ);
       }
 
       @Override
@@ -727,7 +734,7 @@ public class chx extends chw implements bwk, cif {
       }
 
       private boolean a(jh $$0) {
-         int $$1 = chx.this.b(chx.this.cS, 3) ? 1 : 2;
+         int $$1 = chx.this.b($$0, 3) ? 1 : 2;
          chx.this.bS.b(10.0F);
          chx.this.bS.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), $$1, 1.0);
          return chx.this.bS.k() != null && chx.this.bS.k().j();
@@ -827,7 +834,7 @@ public class chx extends chw implements bwk, cif {
          if (chx.this.gL() >= 10) {
             return false;
          } else {
-            return chx.this.ae.i() < 0.3F ? false : chx.this.gA() && chx.this.gO();
+            return chx.this.ae.i() < 0.3F ? false : chx.this.gA() && chx.this.gP();
          }
       }
 
@@ -1159,7 +1166,7 @@ public class chx extends chw implements bwk, cif {
       @Nullable
       private fbx h() {
          fbx $$1;
-         if (chx.this.gO() && !chx.this.b(chx.this.cS, this.i())) {
+         if (chx.this.gP() && !chx.this.b(chx.this.cS, this.i())) {
             fbx $$0 = fbx.b(chx.this.cS);
             $$1 = $$0.d(chx.this.du()).d();
          } else {
@@ -1211,7 +1218,7 @@ public class chx extends chw implements bwk, cif {
 
       @Override
       public void d() {
-         if (chx.this.cS != null && chx.this.dW().p(chx.this.cS) && !chx.this.gO()) {
+         if (chx.this.cS != null && chx.this.dW().p(chx.this.cS) && !chx.this.gP()) {
             chx.this.gG();
          }
 

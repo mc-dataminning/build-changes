@@ -82,7 +82,7 @@ public class eoe {
    public ux a(ux $$0) {
       ux $$1 = $$0.p("Level");
       dgn $$2 = new dgn($$1.h("xPos"), $$1.h("zPos"));
-      if (this.a($$2.g, $$2.h)) {
+      if (this.a($$2.h, $$2.i)) {
          $$0 = this.a($$0, $$2);
       }
 
@@ -95,8 +95,8 @@ public class eoe {
             int $$7 = 8;
             LongList $$8 = new LongArrayList();
 
-            for (int $$9 = $$2.g - 8; $$9 <= $$2.g + 8; $$9++) {
-               for (int $$10 = $$2.h - 8; $$10 <= $$2.h + 8; $$10++) {
+            for (int $$9 = $$2.h - 8; $$9 <= $$2.h + 8; $$9++) {
+               for (int $$10 = $$2.i - 8; $$10 <= $$2.i + 8; $$10++) {
                   if (this.a($$9, $$10, $$5)) {
                      $$8.add(dgn.c($$9, $$10));
                   }

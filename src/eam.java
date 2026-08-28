@@ -157,7 +157,7 @@ public class eam {
 
                for (jm $$18 : $$8) {
                   $$2.a($$1, $$18);
-                  if (kj.a($$1.u()) == $$3.g && kj.a($$1.w()) == $$3.h) {
+                  if (kj.a($$1.u()) == $$3.h && kj.a($$1.w()) == $$3.i) {
                      $$17 = a($$17, $$18, $$4, $$1, $$2);
                   }
                }
@@ -169,7 +169,7 @@ public class eam {
 
       for (int $$19 = 0; $$19 < this.h.length; $$19++) {
          if (this.h[$$19] != null) {
-            b.warn("Discarding update data for section {} for chunk ({} {})", new Object[]{$$4.h($$19), $$3.g, $$3.h});
+            b.warn("Discarding update data for section {} for chunk ({} {})", new Object[]{$$4.h($$19), $$3.h, $$3.i});
          }
 
          this.h[$$19] = null;

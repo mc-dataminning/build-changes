@@ -239,7 +239,7 @@ public class cnf extends bwh implements cmo {
          }
 
          dgn $$5 = new dgn($$3);
-         boolean $$6 = eeo.a($$5.g, $$5.h, ((dif)$$1).D(), 987234911L).a(10) == 0;
+         boolean $$6 = eeo.a($$5.h, $$5.i, ((dif)$$1).D(), 987234911L).a(10) == 0;
          if ($$4.a(10) == 0 && $$6 && $$3.v() < 40) {
             return a($$0, $$1, $$2, $$3, $$4);
          }

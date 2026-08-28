@@ -301,7 +301,7 @@ public class aoc {
 
    private static boolean a(ash $$0, jh $$1) {
       dgn $$2 = new dgn($$1);
-      dzz $$3 = $$0.m().a($$2.g, $$2.h);
+      dzz $$3 = $$0.m().a($$2.h, $$2.i);
       return $$3 == null ? false : $$3.F() == arw.d && $$0.c($$2.a());
    }
 

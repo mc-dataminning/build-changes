@@ -24,24 +24,25 @@ public class drj {
    public static final int a = 24;
    public static final int b = 1000;
    public static final float c = 0.5F;
-   private static final int e = 32;
+   private static final int f = 32;
    public static final int d = 11;
-   final boolean f;
-   private final ayk<dkl> g;
-   private final int h;
+   public static final int e = 1024;
+   final boolean g;
+   private final ayk<dkl> h;
    private final int i;
    private final int j;
    private final int k;
-   private List<drj.a> l = new ArrayList<>();
-   private static final Logger m = LogUtils.getLogger();
+   private final int l;
+   private List<drj.a> m = new ArrayList<>();
+   private static final Logger n = LogUtils.getLogger();
 
    public drj(boolean $$0, ayk<dkl> $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-      this.k = $$5;
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = $$5;
    }
 
    public static drj a() {
@@ -53,42 +54,42 @@ public class drj {
    }
 
    public ayk<dkl> c() {
-      return this.g;
-   }
-
-   public int d() {
       return this.h;
    }
 
-   public int e() {
+   public int d() {
       return this.i;
    }
 
-   public int f() {
+   public int e() {
       return this.j;
    }
 
-   public int g() {
+   public int f() {
       return this.k;
    }
 
+   public int g() {
+      return this.l;
+   }
+
    public boolean h() {
-      return this.f;
+      return this.g;
    }
 
    @VisibleForTesting
    public List<drj.a> i() {
-      return this.l;
+      return this.m;
    }
 
    public void j() {
-      this.l.clear();
+      this.m.clear();
    }
 
    public void a(ux $$0) {
       if ($$0.b("cursors", 9)) {
-         this.l.clear();
-         List<drj.a> $$1 = (List<drj.a>)drj.a.b.listOf().parse(new Dynamic(vl.a, $$0.c("cursors", 10))).resultOrPartial(m::error).orElseGet(ArrayList::new);
+         this.m.clear();
+         List<drj.a> $$1 = (List<drj.a>)drj.a.b.listOf().parse(new Dynamic(vl.a, $$0.c("cursors", 10))).resultOrPartial(n::error).orElseGet(ArrayList::new);
          int $$2 = Math.min($$1.size(), 32);
 
          for (int $$3 = 0; $$3 < $$2; $$3++) {
@@ -98,7 +99,7 @@ public class drj {
    }
 
    public void b(ux $$0) {
-      drj.a.b.listOf().encodeStart(vl.a, this.l).resultOrPartial(m::error).ifPresent($$1 -> $$0.a("cursors", $$1));
+      drj.a.b.listOf().encodeStart(vl.a, this.m).resultOrPartial(n::error).ifPresent($$1 -> $$0.a("cursors", $$1));
    }
 
    public void a(jh $$0, int $$1) {
@@ -110,34 +111,36 @@ public class drj {
    }
 
    private void a(drj.a $$0) {
-      if (this.l.size() < 32) {
-         this.l.add($$0);
+      if (this.m.size() < 32) {
+         this.m.add($$0);
       }
    }
 
    public void a(dhi $$0, jh $$1, bam $$2, boolean $$3) {
-      if (!this.l.isEmpty()) {
+      if (!this.m.isEmpty()) {
          List<drj.a> $$4 = new ArrayList<>();
          Map<jh, drj.a> $$5 = new HashMap<>();
          Object2IntMap<jh> $$6 = new Object2IntOpenHashMap();
 
-         for (drj.a $$7 : this.l) {
-            $$7.a($$0, $$1, $$2, this, $$3);
-            if ($$7.e <= 0) {
-               $$0.c(3006, $$7.a(), 0);
-            } else {
-               jh $$8 = $$7.a();
-               $$6.computeInt($$8, ($$1x, $$2x) -> ($$2x == null ? 0 : $$2x) + $$7.e);
-               drj.a $$9 = $$5.get($$8);
-               if ($$9 == null) {
-                  $$5.put($$8, $$7);
-                  $$4.add($$7);
-               } else if (!this.h() && $$7.e + $$9.e <= 1000) {
-                  $$9.a($$7);
+         for (drj.a $$7 : this.m) {
+            if (!$$7.a($$1)) {
+               $$7.a($$0, $$1, $$2, this, $$3);
+               if ($$7.e <= 0) {
+                  $$0.c(3006, $$7.a(), 0);
                } else {
-                  $$4.add($$7);
-                  if ($$7.e < $$9.e) {
+                  jh $$8 = $$7.a();
+                  $$6.computeInt($$8, ($$1x, $$2x) -> ($$2x == null ? 0 : $$2x) + $$7.e);
+                  drj.a $$9 = $$5.get($$8);
+                  if ($$9 == null) {
                      $$5.put($$8, $$7);
+                     $$4.add($$7);
+                  } else if (!this.h() && $$7.e + $$9.e <= 1000) {
+                     $$9.a($$7);
+                  } else {
+                     $$4.add($$7);
+                     if ($$7.e < $$9.e) {
+                        $$5.put($$8, $$7);
+                     }
                   }
                }
             }
@@ -158,7 +161,7 @@ public class drj {
             }
          }
 
-         this.l = $$4;
+         this.m = $$4;
       }
    }
 
@@ -205,6 +208,10 @@ public class drj {
          return this.d;
       }
 
+      boolean a(jh $$0) {
+         return this.d.l($$0) > 1024;
+      }
+
       public int b() {
          return this.e;
       }
@@ -229,7 +236,7 @@ public class drj {
       }
 
       public void a(dhi $$0, jh $$1, bam $$2, drj $$3, boolean $$4) {
-         if (this.a($$0, $$1, $$3.f)) {
+         if (this.a($$0, $$1, $$3.g)) {
             if (this.f > 0) {
                this.f--;
             } else {

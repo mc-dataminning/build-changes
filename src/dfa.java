@@ -6,14 +6,14 @@ public record dfa(czq d, kl e, Optional<jq<ecq>> f) implements dep {
    public static final MapCodec<dfa> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
                czq.b.fieldOf("properties").forGetter(dfa::b),
-               kl.f.optionalFieldOf("offset", kl.g).forGetter(dfa::c),
+               kl.g.optionalFieldOf("offset", kl.h).forGetter(dfa::c),
                ecq.aj.optionalFieldOf("trigger_game_event").forGetter(dfa::d)
             )
             .apply($$0, dfa::new)
    );
 
    public dfa(czq $$0) {
-      this($$0, kl.g, Optional.of(ecq.c));
+      this($$0, kl.h, Optional.of(ecq.c));
    }
 
    @Override

@@ -3,7 +3,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class efk implements eew {
    public static final MapCodec<efk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kl.v(16).optionalFieldOf("offset", kl.g).forGetter($$0x -> $$0x.e), dxu.a.fieldOf("state").forGetter($$0x -> $$0x.f))
+      $$0 -> $$0.group(kl.v(16).optionalFieldOf("offset", kl.h).forGetter($$0x -> $$0x.e), dxu.a.fieldOf("state").forGetter($$0x -> $$0x.f))
             .apply($$0, efk::new)
    );
    private final kl e;

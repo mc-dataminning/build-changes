@@ -38,7 +38,7 @@ public interface eew extends BiPredicate<dif, jh> {
    }
 
    static eew c(List<dkl> $$0) {
-      return a(kl.g, $$0);
+      return a(kl.h, $$0);
    }
 
    static eew a(kl $$0, dkl... $$1) {
@@ -46,7 +46,7 @@ public interface eew extends BiPredicate<dif, jh> {
    }
 
    static eew a(dkl... $$0) {
-      return a(kl.g, $$0);
+      return a(kl.h, $$0);
    }
 
    static eew a(kl $$0, ayk<dkl> $$1) {
@@ -54,7 +54,7 @@ public interface eew extends BiPredicate<dif, jh> {
    }
 
    static eew a(ayk<dkl> $$0) {
-      return a(kl.g, $$0);
+      return a(kl.h, $$0);
    }
 
    static eew b(kl $$0, List<etv> $$1) {
@@ -66,7 +66,7 @@ public interface eew extends BiPredicate<dif, jh> {
    }
 
    static eew a(etv... $$0) {
-      return a(kl.g, $$0);
+      return a(kl.h, $$0);
    }
 
    static eew a(eew $$0) {
@@ -78,7 +78,7 @@ public interface eew extends BiPredicate<dif, jh> {
    }
 
    static eew b() {
-      return a(kl.g);
+      return a(kl.h);
    }
 
    static eew a(dxu $$0, kl $$1) {
@@ -90,7 +90,7 @@ public interface eew extends BiPredicate<dif, jh> {
    }
 
    static eew a(jm $$0) {
-      return a(kl.g, $$0);
+      return a(kl.h, $$0);
    }
 
    static eew b(kl $$0) {
@@ -98,11 +98,11 @@ public interface eew extends BiPredicate<dif, jh> {
    }
 
    static eew c() {
-      return b(kl.g);
+      return b(kl.h);
    }
 
    static eew d() {
-      return c(kl.g);
+      return c(kl.h);
    }
 
    static eew c(kl $$0) {
@@ -122,6 +122,6 @@ public interface eew extends BiPredicate<dif, jh> {
    }
 
    static eew f() {
-      return e(kl.g);
+      return e(kl.h);
    }
 }

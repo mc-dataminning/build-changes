@@ -259,15 +259,15 @@ public final class etp extends etn<etq.a, etq> {
    public void a(dgn $$0, boolean $$1) {
       super.a($$0, $$1);
       if ($$1) {
-         etg $$2 = Objects.requireNonNullElse(this.b($$0.g, $$0.h), this.k);
+         etg $$2 = Objects.requireNonNullElse(this.b($$0.h, $$0.i), this.k);
          int $$3 = $$2.a() - 1;
          int $$4 = kj.a($$3) + 1;
-         long $$5 = kj.b($$0.g, $$0.h);
+         long $$5 = kj.b($$0.h, $$0.i);
          int $$6 = this.f.n($$5);
          int $$7 = Math.max(this.f.c(), $$4);
 
          for (int $$8 = $$6 - 1; $$8 >= $$7; $$8--) {
-            dzu $$9 = this.f.c(kj.b($$0.g, $$8, $$0.h));
+            dzu $$9 = this.f.c(kj.b($$0.h, $$8, $$0.i));
             if ($$9 != null && $$9.d()) {
                $$9.a(15);
             }
@@ -277,20 +277,20 @@ public final class etp extends etn<etq.a, etq> {
 
    @Override
    public void b(dgn $$0) {
-      long $$1 = kj.b($$0.g, $$0.h);
+      long $$1 = kj.b($$0.h, $$0.i);
       this.f.b($$1, true);
-      etg $$2 = Objects.requireNonNullElse(this.b($$0.g, $$0.h), this.k);
-      etg $$3 = Objects.requireNonNullElse(this.b($$0.g, $$0.h - 1), this.k);
-      etg $$4 = Objects.requireNonNullElse(this.b($$0.g, $$0.h + 1), this.k);
-      etg $$5 = Objects.requireNonNullElse(this.b($$0.g - 1, $$0.h), this.k);
-      etg $$6 = Objects.requireNonNullElse(this.b($$0.g + 1, $$0.h), this.k);
+      etg $$2 = Objects.requireNonNullElse(this.b($$0.h, $$0.i), this.k);
+      etg $$3 = Objects.requireNonNullElse(this.b($$0.h, $$0.i - 1), this.k);
+      etg $$4 = Objects.requireNonNullElse(this.b($$0.h, $$0.i + 1), this.k);
+      etg $$5 = Objects.requireNonNullElse(this.b($$0.h - 1, $$0.i), this.k);
+      etg $$6 = Objects.requireNonNullElse(this.b($$0.h + 1, $$0.i), this.k);
       int $$7 = this.f.n($$1);
       int $$8 = this.f.c();
-      int $$9 = kj.c($$0.g);
-      int $$10 = kj.c($$0.h);
+      int $$9 = kj.c($$0.h);
+      int $$10 = kj.c($$0.i);
 
       for (int $$11 = $$7 - 1; $$11 >= $$8; $$11--) {
-         long $$12 = kj.b($$0.g, $$11, $$0.h);
+         long $$12 = kj.b($$0.h, $$11, $$0.i);
          dzu $$13 = this.f.c($$12);
          if ($$13 != null) {
             int $$14 = kj.c($$11);

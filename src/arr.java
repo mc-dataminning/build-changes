@@ -48,7 +48,7 @@ public interface arr {
    }
 
    default boolean a(dgn $$0) {
-      return this.a($$0.g, $$0.h);
+      return this.a($$0.h, $$0.i);
    }
 
    default boolean a(int $$0, int $$1) {
@@ -79,19 +79,19 @@ public interface arr {
 
    public static record a(dgn b, int c) implements arr {
       int c() {
-         return this.b.g - this.c - 1;
-      }
-
-      int d() {
          return this.b.h - this.c - 1;
       }
 
+      int d() {
+         return this.b.i - this.c - 1;
+      }
+
       int e() {
-         return this.b.g + this.c + 1;
+         return this.b.h + this.c + 1;
       }
 
       int f() {
-         return this.b.h + this.c + 1;
+         return this.b.i + this.c + 1;
       }
 
       @VisibleForTesting
@@ -101,7 +101,7 @@ public interface arr {
 
       @Override
       public boolean a(int $$0, int $$1, boolean $$2) {
-         return arr.a(this.b.g, this.b.h, this.c, $$0, $$1, $$2);
+         return arr.a(this.b.h, this.b.i, this.c, $$0, $$1, $$2);
       }
 
       @Override

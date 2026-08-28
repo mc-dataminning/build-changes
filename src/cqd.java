@@ -96,7 +96,7 @@ public abstract class cqd extends cqp {
 
    @Override
    public void l(double $$0, double $$1, double $$2) {
-      super.l($$0, $$1, $$2);
+      this.n($$0, $$1, $$2);
       this.l = 0;
       if (this.l() && bae.f($$0, $$1, $$2) > 0.0) {
          this.a(false);
@@ -115,23 +115,15 @@ public abstract class cqd extends cqp {
    public void h() {
       boolean $$0 = !this.B();
       fbx $$1 = this.dz();
-      if (this.O == 0.0F && this.N == 0.0F) {
-         double $$2 = $$1.i();
-         this.v((float)(bae.d($$1.d, $$1.f) * 180.0F / (float)Math.PI));
-         this.w((float)(bae.d($$1.e, $$2) * 180.0F / (float)Math.PI));
-         this.N = this.dM();
-         this.O = this.dO();
-      }
+      jh $$2 = this.dw();
+      dxu $$3 = this.dW().a_($$2);
+      if (!$$3.l() && $$0) {
+         fcr $$4 = $$3.g(this.dW(), $$2);
+         if (!$$4.c()) {
+            fbx $$5 = this.du();
 
-      jh $$3 = this.dw();
-      dxu $$4 = this.dW().a_($$3);
-      if (!$$4.l() && $$0) {
-         fcr $$5 = $$4.g(this.dW(), $$3);
-         if (!$$5.c()) {
-            fbx $$6 = this.du();
-
-            for (fbs $$7 : $$5.e()) {
-               if ($$7.a($$3).d($$6)) {
+            for (fbs $$6 : $$4.e()) {
+               if ($$6.a($$2).d($$5)) {
                   this.a(true);
                   break;
                }
@@ -143,13 +135,13 @@ public abstract class cqd extends cqp {
          this.d--;
       }
 
-      if (this.bk() || $$4.a(dkn.rk)) {
+      if (this.bk() || $$3.a(dkn.rk)) {
          this.aH();
       }
 
       if (this.l() && $$0) {
          if (!this.dW().B_()) {
-            if (this.k != $$4 && this.G()) {
+            if (this.k != $$3 && this.G()) {
                this.H();
             } else {
                this.m();
@@ -162,19 +154,19 @@ public abstract class cqd extends cqp {
          }
       } else {
          this.b = 0;
-         fbx $$8 = this.du();
+         fbx $$7 = this.du();
          if (this.bj()) {
-            this.a($$8);
+            this.a($$7);
          }
 
          if (this.y()) {
-            for (int $$9 = 0; $$9 < 4; $$9++) {
+            for (int $$8 = 0; $$8 < 4; $$8++) {
                this.dW()
                   .a(
                      ls.f,
-                     $$8.d + $$1.d * (double)$$9 / 4.0,
-                     $$8.e + $$1.e * (double)$$9 / 4.0,
-                     $$8.f + $$1.f * (double)$$9 / 4.0,
+                     $$7.d + $$1.d * (double)$$8 / 4.0,
+                     $$7.e + $$1.e * (double)$$8 / 4.0,
+                     $$7.f + $$1.f * (double)$$8 / 4.0,
                      -$$1.d,
                      -$$1.e + 0.2,
                      -$$1.f
@@ -182,21 +174,21 @@ public abstract class cqd extends cqp {
             }
          }
 
-         float $$10;
+         float $$9;
          if (!$$0) {
-            $$10 = (float)(bae.d(-$$1.d, -$$1.f) * 180.0F / (float)Math.PI);
+            $$9 = (float)(bae.d(-$$1.d, -$$1.f) * 180.0F / (float)Math.PI);
          } else {
-            $$10 = (float)(bae.d($$1.d, $$1.f) * 180.0F / (float)Math.PI);
+            $$9 = (float)(bae.d($$1.d, $$1.f) * 180.0F / (float)Math.PI);
          }
 
-         float $$12 = (float)(bae.d($$1.e, $$1.i()) * 180.0F / (float)Math.PI);
-         this.w(f(this.dO(), $$12));
-         this.v(f(this.dM(), $$10));
+         float $$11 = (float)(bae.d($$1.e, $$1.i()) * 180.0F / (float)Math.PI);
+         this.w(f(this.dO(), $$11));
+         this.v(f(this.dM(), $$9));
          if ($$0) {
-            fbt $$13 = this.dW().b(new dgp($$8, $$8.e($$1), dgp.a.a, dgp.b.a, this));
-            this.b($$13);
+            fbt $$12 = this.dW().b(new dgp($$7, $$7.e($$1), dgp.a.a, dgp.b.a, this));
+            this.b($$12);
          } else {
-            this.b($$8.e($$1));
+            this.b($$7.e($$1));
             this.aK();
          }
 

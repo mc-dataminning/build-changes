@@ -16,7 +16,7 @@ public abstract class epg {
 
    protected static <S extends epg> P5<Mu<S>, kl, epg.c, Float, Integer, Optional<epg.a>> a(Instance<S> $$0) {
       return $$0.group(
-         kl.v(16).optionalFieldOf("locate_offset", kl.g).forGetter(epg::f),
+         kl.v(16).optionalFieldOf("locate_offset", kl.h).forGetter(epg::f),
          epg.c.e.optionalFieldOf("frequency_reduction_method", epg.c.a).forGetter(epg::g),
          Codec.floatRange(0.0F, 1.0F).optionalFieldOf("frequency", 1.0F).forGetter(epg::h),
          azn.l.fieldOf("salt").forGetter(epg::i),

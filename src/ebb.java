@@ -29,18 +29,18 @@ public class ebb implements eay, AutoCloseable {
    }
 
    public boolean a(dgn $$0, int $$1) {
-      dgn $$2 = new dgn($$0.g - $$1, $$0.h - $$1);
-      dgn $$3 = new dgn($$0.g + $$1, $$0.h + $$1);
+      dgn $$2 = new dgn($$0.h - $$1, $$0.i - $$1);
+      dgn $$3 = new dgn($$0.h + $$1, $$0.i + $$1);
 
       for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
          for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
             BitSet $$6 = this.a($$4, $$5).join();
             if (!$$6.isEmpty()) {
                dgn $$7 = dgn.a($$4, $$5);
-               int $$8 = Math.max($$2.g - $$7.g, 0);
-               int $$9 = Math.max($$2.h - $$7.h, 0);
-               int $$10 = Math.min($$3.g - $$7.g, 31);
-               int $$11 = Math.min($$3.h - $$7.h, 31);
+               int $$8 = Math.max($$2.h - $$7.h, 0);
+               int $$9 = Math.max($$2.i - $$7.i, 0);
+               int $$10 = Math.min($$3.h - $$7.h, 31);
+               int $$11 = Math.min($$3.i - $$7.i, 31);
 
                for (int $$12 = $$8; $$12 <= $$10; $$12++) {
                   for (int $$13 = $$9; $$13 <= $$11; $$13++) {

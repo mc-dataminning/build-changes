@@ -72,7 +72,7 @@ public class byo<E extends bwf & cpg> extends bxy<E> {
       bya.a($$0, $$1, $$2, $$3, 0.2F);
       dhh $$4 = $$0.dW();
       if ($$4.ac() % 7L == 0L && $$4.A.j() < 0.9) {
-         float $$5 = ae.<Float>a(cjc.c, $$4.H_());
+         float $$5 = ae.<Float>a(cjc.d, $$4.H_());
          $$4.a(null, $$0, axf.g, axg.g, 1.0F, $$5);
       }
    }

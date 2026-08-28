@@ -133,7 +133,7 @@ public class ui {
    }
 
    private static void b(eob $$0, ash $$1) {
-      $$0.b().forEach($$1x -> $$1.a($$1x.g, $$1x.h, true));
+      $$0.b().forEach($$1x -> $$1.a($$1x.h, $$1x.i, true));
    }
 
    public static void a(eob $$0, ash $$1) {

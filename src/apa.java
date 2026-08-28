@@ -140,7 +140,7 @@ public class apa {
       ash $$3 = $$0.e();
       egh<?, ?> $$4 = $$1.a();
       dgn $$5 = new dgn($$2);
-      a($$3, new dgn($$5.g - 1, $$5.h - 1), new dgn($$5.g + 1, $$5.h + 1));
+      a($$3, new dgn($$5.h - 1, $$5.i - 1), new dgn($$5.h + 1, $$5.i + 1));
       if (!$$4.a($$3, $$3.m().g(), $$3.H_(), $$2)) {
          throw a.create();
       } else {

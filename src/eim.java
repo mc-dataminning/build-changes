@@ -18,7 +18,7 @@ public class eim extends egv<ejg> {
    public boolean a(egx<ejg> $$0) {
       dif $$1 = $$0.b();
       dgn $$2 = new dgn($$0.e());
-      if (a($$2.g, $$2.h, b.g, b.h) > 1) {
+      if (a($$2.h, $$2.i, b.h, b.i) > 1) {
          return true;
       } else {
          jh $$3 = a.h($$0.e().v() + a.v());

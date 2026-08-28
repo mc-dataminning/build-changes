@@ -458,18 +458,18 @@ public class gfk extends gfg implements acr, xj {
       aaf.a($$0, this, this.a);
 
       for (adh.a $$1 : $$0.b()) {
-         this.s.h().a($$1.b().g, $$1.b().h, $$1.a());
+         this.s.h().a($$1.b().h, $$1.b().i, $$1.a());
       }
 
       for (adh.a $$2 : $$0.b()) {
-         this.s.a(new dgn($$2.b().g, $$2.b().h));
+         this.s.a(new dgn($$2.b().h, $$2.b().i));
       }
 
       for (adh.a $$3 : $$0.b()) {
          for (int $$4 = -1; $$4 <= 1; $$4++) {
             for (int $$5 = -1; $$5 <= 1; $$5++) {
                for (int $$6 = this.s.ao(); $$6 <= this.s.ap(); $$6++) {
-                  this.a.f.b($$3.b().g + $$4, $$6, $$3.b().h + $$5);
+                  this.a.f.b($$3.b().h + $$4, $$6, $$3.b().i + $$5);
                }
             }
          }

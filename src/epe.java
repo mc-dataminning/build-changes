@@ -33,7 +33,7 @@ public class epe extends epg {
    }
 
    public epe(int $$0, int $$1, epf $$2, int $$3) {
-      this(kl.g, epg.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+      this(kl.h, epg.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
    }
 
    public int a() {
@@ -62,7 +62,7 @@ public class epe extends epg {
    @Override
    protected boolean a(dzr $$0, int $$1, int $$2) {
       dgn $$3 = this.a($$0.d(), $$1, $$2);
-      return $$3.g == $$1 && $$3.h == $$2;
+      return $$3.h == $$1 && $$3.i == $$2;
    }
 
    @Override

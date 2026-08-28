@@ -308,7 +308,7 @@ public abstract class MinecraftServer extends bsb<amw> implements amp, eax, ev {
 
          for (int $$12 = 0; $$12 < bae.h(11); $$12++) {
             if ($$8 >= -5 && $$8 <= 5 && $$9 >= -5 && $$9 <= 5) {
-               jh $$13 = asb.a($$0, new dgn($$5.g + $$8, $$5.h + $$9));
+               jh $$13 = asb.a($$0, new dgn($$5.h + $$8, $$5.i + $$9));
                if ($$13 != null) {
                   $$1.a($$13, 0.0F);
                   break;
@@ -1812,14 +1812,14 @@ public abstract class MinecraftServer extends bsb<amw> implements amp, eax, ev {
 
    @Override
    public void a(Throwable $$0, ebi $$1, dgn $$2) {
-      l.error("Failed to load chunk {},{}", new Object[]{$$2.g, $$2.h, $$0});
+      l.error("Failed to load chunk {},{}", new Object[]{$$2.h, $$2.i, $$0});
       this.aI.a("chunk/load", $$0);
       this.a(o.a($$0, "Chunk load failure"), $$2, $$1);
    }
 
    @Override
    public void b(Throwable $$0, ebi $$1, dgn $$2) {
-      l.error("Failed to save chunk {},{}", new Object[]{$$2.g, $$2.h, $$0});
+      l.error("Failed to save chunk {},{}", new Object[]{$$2.h, $$2.i, $$0});
       this.aI.a("chunk/save", $$0);
       this.a(o.a($$0, "Chunk save failure"), $$2, $$1);
    }

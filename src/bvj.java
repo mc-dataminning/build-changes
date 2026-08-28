@@ -152,7 +152,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       this.bb = $$0.n();
       this.t = fbx.c;
       this.u = jh.c;
-      this.ay = dgn.d;
+      this.ay = dgn.e;
       alg.a $$2 = new alg.a(this);
       $$2.a(am, (byte)0);
       $$2.a(aN, this.cs());
@@ -3291,7 +3291,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
          if ($$3 != this.u.u() || $$4 != this.u.v() || $$5 != this.u.w()) {
             this.u = new jh($$3, $$4, $$5);
             this.bh = null;
-            if (kj.a($$3) != this.ay.g || kj.a($$5) != this.ay.h) {
+            if (kj.a($$3) != this.ay.h || kj.a($$5) != this.ay.i) {
                this.ay = new dgn(this.u);
             }
          }

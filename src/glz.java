@@ -163,10 +163,10 @@ public class glz {
    }
 
    private void a(glz.a $$0, dgn $$1) {
-      $$0.a.add(dgn.c($$1.g - 1, $$1.h));
-      $$0.a.add(dgn.c($$1.g, $$1.h - 1));
-      $$0.a.add(dgn.c($$1.g + 1, $$1.h));
-      $$0.a.add(dgn.c($$1.g, $$1.h + 1));
+      $$0.a.add(dgn.c($$1.h - 1, $$1.i));
+      $$0.a.add(dgn.c($$1.h, $$1.i - 1));
+      $$0.a.add(dgn.c($$1.h + 1, $$1.i));
+      $$0.a.add(dgn.c($$1.h, $$1.i + 1));
    }
 
    private void a(flo $$0, Queue<glz.d> $$1) {

@@ -208,7 +208,7 @@ public class gfj extends dhh {
    }
 
    public void a(dgn $$0) {
-      this.P.forEach(($$1, $$2) -> $$2.a($$0.g, $$0.h));
+      this.P.forEach(($$1, $$2) -> $$2.a($$0.h, $$0.i));
       this.f.a($$0);
       this.F.a($$0);
    }

@@ -217,8 +217,8 @@ public class ebs {
    private dxz.b m() {
       dgn $$0 = new dgn(this.m);
 
-      for (int $$1 = -8 + $$0.g; $$1 <= 8 + $$0.g; $$1++) {
-         for (int $$2 = -8 + $$0.h; $$2 <= 8 + $$0.h; $$2++) {
+      for (int $$1 = -8 + $$0.h; $$1 <= 8 + $$0.h; $$1++) {
+         for (int $$2 = -8 + $$0.i; $$2 <= 8 + $$0.i; $$2++) {
             dzz $$3 = this.l.d($$1, $$2);
 
             for (duw $$4 : $$3.I().values()) {
@@ -260,8 +260,8 @@ public class ebs {
       } else {
          dgn $$0 = new dgn(this.m);
 
-         for (int $$1 = -8 + $$0.g; $$1 <= 8 + $$0.g; $$1++) {
-            for (int $$2 = 8 + $$0.h; $$2 <= 8 + $$0.h; $$2++) {
+         for (int $$1 = -8 + $$0.h; $$1 <= 8 + $$0.h; $$1++) {
+            for (int $$2 = 8 + $$0.i; $$2 <= 8 + $$0.i; $$2++) {
                dzp $$3 = this.l.a($$1, $$2, eaq.n, false);
                if (!($$3 instanceof dzz)) {
                   return false;

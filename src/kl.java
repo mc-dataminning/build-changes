@@ -6,15 +6,15 @@ import javax.annotation.concurrent.Immutable;
 
 @Immutable
 public class kl implements Comparable<kl> {
-   public static final Codec<kl> f = Codec.INT_STREAM
+   public static final Codec<kl> g = Codec.INT_STREAM
       .comapFlatMap($$0 -> ae.a($$0, 3).map($$0x -> new kl($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()));
-   public static final kl g = new kl(0, 0, 0);
+   public static final kl h = new kl(0, 0, 0);
    private int a;
    private int b;
    private int c;
 
    public static Codec<kl> v(int $$0) {
-      return f.validate(
+      return g.validate(
          $$1 -> Math.abs($$1.u()) < $$0 && Math.abs($$1.v()) < $$0 && Math.abs($$1.w()) < $$0
                ? DataResult.success($$1)
                : DataResult.error(() -> "Position out of range, expected at most " + $$0 + ": " + $$1)
@@ -96,7 +96,7 @@ public class kl implements Comparable<kl> {
       if ($$0 == 1) {
          return this;
       } else {
-         return $$0 == 0 ? g : new kl(this.u() * $$0, this.v() * $$0, this.w() * $$0);
+         return $$0 == 0 ? h : new kl(this.u() * $$0, this.v() * $$0, this.w() * $$0);
       }
    }
 
@@ -206,6 +206,13 @@ public class kl implements Comparable<kl> {
       float $$2 = (float)Math.abs($$0.v() - this.v());
       float $$3 = (float)Math.abs($$0.w() - this.w());
       return (int)($$1 + $$2 + $$3);
+   }
+
+   public int l(kl $$0) {
+      int $$1 = Math.abs(this.u() - $$0.u());
+      int $$2 = Math.abs(this.v() - $$0.v());
+      int $$3 = Math.abs(this.w() - $$0.w());
+      return Math.max(Math.max($$1, $$2), $$3);
    }
 
    public int a(jm.a $$0) {

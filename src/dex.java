@@ -5,7 +5,7 @@ import java.util.Optional;
 public record dex(kl d, Optional<eew> e, ela f, Optional<jq<ecq>> g) implements dep {
    public static final MapCodec<dex> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               kl.f.optionalFieldOf("offset", kl.g).forGetter(dex::b),
+               kl.g.optionalFieldOf("offset", kl.h).forGetter(dex::b),
                eew.b.optionalFieldOf("predicate").forGetter(dex::c),
                ela.a.fieldOf("block_state").forGetter(dex::d),
                ecq.aj.optionalFieldOf("trigger_game_event").forGetter(dex::e)

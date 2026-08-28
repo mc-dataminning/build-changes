@@ -274,7 +274,7 @@ public abstract class arv {
             dgn $$3 = new dgn($$2.getLongKey());
 
             for (asm<?> $$4 : (baw)$$2.getValue()) {
-               $$1.write(($$3.g + "\t" + $$3.h + "\t" + $$4.a() + "\t" + $$4.b() + "\t\n").getBytes(StandardCharsets.UTF_8));
+               $$1.write(($$3.h + "\t" + $$3.i + "\t" + $$4.a() + "\t" + $$4.b() + "\t\n").getBytes(StandardCharsets.UTF_8));
             }
          }
       } catch (IOException var10) {
@@ -421,7 +421,7 @@ public abstract class arv {
                it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$2 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var3.next();
                dgn $$3 = new dgn($$2.getLongKey());
                String $$4 = Byte.toString($$2.getByteValue());
-               $$1.write(($$3.g + "\t" + $$3.h + "\t" + $$4 + "\n").getBytes(StandardCharsets.UTF_8));
+               $$1.write(($$3.h + "\t" + $$3.i + "\t" + $$4 + "\n").getBytes(StandardCharsets.UTF_8));
             }
          } catch (IOException var9) {
             arv.a.error("Failed to dump chunks to {}", $$0, var9);

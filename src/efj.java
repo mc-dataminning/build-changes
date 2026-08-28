@@ -2,7 +2,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 record efj(kl e) implements eew {
-   public static MapCodec<efj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kl.f.optionalFieldOf("offset", kl.g).forGetter(efj::g)).apply($$0, efj::new));
+   public static MapCodec<efj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kl.g.optionalFieldOf("offset", kl.h).forGetter(efj::g)).apply($$0, efj::new));
 
    @Override
    public eex<?> a() {

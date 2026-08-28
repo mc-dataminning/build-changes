@@ -44,7 +44,7 @@ public class gpi implements gpk.a {
             int $$13 = 0;
 
             for (String $$14 : $$12) {
-               gpk.a($$0, $$1, $$14, (double)kj.a($$10.g, 8), $$8 + (double)$$13, (double)kj.a($$10.h, 8), -1, 0.15F, true, 0.0F, true);
+               gpk.a($$0, $$1, $$14, (double)kj.a($$10.h, 8), $$8 + (double)$$13, (double)kj.a($$10.i, 8), -1, 0.15F, true, 0.0F, true);
                $$13 -= 2;
             }
          }

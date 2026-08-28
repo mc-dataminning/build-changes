@@ -6,7 +6,7 @@ public abstract class efh implements eew {
    protected final kl f;
 
    protected static <P extends efh> P1<Mu<P>, kl> a(Instance<P> $$0) {
-      return $$0.group(kl.v(16).optionalFieldOf("offset", kl.g).forGetter($$0x -> $$0x.f));
+      return $$0.group(kl.v(16).optionalFieldOf("offset", kl.h).forGetter($$0x -> $$0x.f));
    }
 
    protected efh(kl $$0) {

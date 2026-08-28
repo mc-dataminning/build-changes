@@ -9,7 +9,7 @@ import javax.annotation.Nullable;
 
 public class dgn {
    public static final Codec<dgn> a = Codec.INT_STREAM
-      .comapFlatMap($$0 -> ae.a($$0, 2).map($$0x -> new dgn($$0x[0], $$0x[1])), $$0 -> IntStream.of($$0.g, $$0.h))
+      .comapFlatMap($$0 -> ae.a($$0, 2).map($$0x -> new dgn($$0x[0], $$0x[1])), $$0 -> IntStream.of($$0.h, $$0.i))
       .stable();
    public static final zt<ByteBuf, dgn> b = new zt<ByteBuf, dgn>() {
       public dgn a(ByteBuf $$0) {
@@ -20,34 +20,36 @@ public class dgn {
          ws.a($$0, $$1);
       }
    };
-   private static final int i = 1056;
+   private static final int j = 1056;
    public static final long c = c(1875066, 1875066);
-   public static final dgn d = new dgn(0, 0);
-   private static final long j = 32L;
-   private static final long k = 4294967295L;
-   private static final int l = 5;
-   public static final int e = 32;
-   private static final int m = 31;
-   public static final int f = 31;
-   public final int g;
+   private static final int k = (32 + eap.a.a(eaq.n).c().b() + 1) * 2;
+   public static final int d = kj.a(jh.f) - k;
+   public static final dgn e = new dgn(0, 0);
+   private static final long l = 32L;
+   private static final long m = 4294967295L;
+   private static final int n = 5;
+   public static final int f = 32;
+   private static final int o = 31;
+   public static final int g = 31;
    public final int h;
-   private static final int n = 1664525;
-   private static final int o = 1013904223;
-   private static final int p = -559038737;
+   public final int i;
+   private static final int p = 1664525;
+   private static final int q = 1013904223;
+   private static final int r = -559038737;
 
    public dgn(int $$0, int $$1) {
-      this.g = $$0;
-      this.h = $$1;
+      this.h = $$0;
+      this.i = $$1;
    }
 
    public dgn(jh $$0) {
-      this.g = kj.a($$0.u());
-      this.h = kj.a($$0.w());
+      this.h = kj.a($$0.u());
+      this.i = kj.a($$0.w());
    }
 
    public dgn(long $$0) {
-      this.g = (int)$$0;
-      this.h = (int)($$0 >> 32);
+      this.h = (int)$$0;
+      this.i = (int)($$0 >> 32);
    }
 
    public static dgn a(int $$0, int $$1) {
@@ -59,7 +61,7 @@ public class dgn {
    }
 
    public long a() {
-      return c(this.g, this.h);
+      return c(this.h, this.i);
    }
 
    public static long c(int $$0, int $$1) {
@@ -80,7 +82,7 @@ public class dgn {
 
    @Override
    public int hashCode() {
-      return d(this.g, this.h);
+      return d(this.h, this.i);
    }
 
    public static int d(int $$0, int $$1) {
@@ -94,7 +96,7 @@ public class dgn {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof dgn $$1) ? false : this.g == $$1.g && this.h == $$1.h;
+         return !($$0 instanceof dgn $$1) ? false : this.h == $$1.h && this.i == $$1.i;
       }
    }
 
@@ -107,11 +109,11 @@ public class dgn {
    }
 
    public int d() {
-      return kj.c(this.g);
+      return kj.c(this.h);
    }
 
    public int e() {
-      return kj.c(this.h);
+      return kj.c(this.i);
    }
 
    public int f() {
@@ -123,19 +125,19 @@ public class dgn {
    }
 
    public int h() {
-      return this.g >> 5;
-   }
-
-   public int i() {
       return this.h >> 5;
    }
 
+   public int i() {
+      return this.i >> 5;
+   }
+
    public int j() {
-      return this.g & 31;
+      return this.h & 31;
    }
 
    public int k() {
-      return this.h & 31;
+      return this.i & 31;
    }
 
    public jh a(int $$0, int $$1, int $$2) {
@@ -143,11 +145,11 @@ public class dgn {
    }
 
    public int a(int $$0) {
-      return kj.a(this.g, $$0);
+      return kj.a(this.h, $$0);
    }
 
    public int b(int $$0) {
-      return kj.a(this.h, $$0);
+      return kj.a(this.i, $$0);
    }
 
    public jh c(int $$0) {
@@ -156,7 +158,7 @@ public class dgn {
 
    @Override
    public String toString() {
-      return "[" + this.g + ", " + this.h + "]";
+      return "[" + this.h + ", " + this.i + "]";
    }
 
    public jh l() {
@@ -164,15 +166,15 @@ public class dgn {
    }
 
    public int a(dgn $$0) {
-      return this.e($$0.g, $$0.h);
+      return this.e($$0.h, $$0.i);
    }
 
    public int e(int $$0, int $$1) {
-      return Math.max(Math.abs(this.g - $$0), Math.abs(this.h - $$1));
+      return Math.max(Math.abs(this.h - $$0), Math.abs(this.i - $$1));
    }
 
    public int b(dgn $$0) {
-      return this.f($$0.g, $$0.h);
+      return this.f($$0.h, $$0.i);
    }
 
    public int c(long $$0) {
@@ -180,20 +182,20 @@ public class dgn {
    }
 
    private int f(int $$0, int $$1) {
-      int $$2 = $$0 - this.g;
-      int $$3 = $$1 - this.h;
+      int $$2 = $$0 - this.h;
+      int $$3 = $$1 - this.i;
       return $$2 * $$2 + $$3 * $$3;
    }
 
    public static Stream<dgn> a(dgn $$0, int $$1) {
-      return a(new dgn($$0.g - $$1, $$0.h - $$1), new dgn($$0.g + $$1, $$0.h + $$1));
+      return a(new dgn($$0.h - $$1, $$0.i - $$1), new dgn($$0.h + $$1, $$0.i + $$1));
    }
 
    public static Stream<dgn> a(final dgn $$0, final dgn $$1) {
-      int $$2 = Math.abs($$0.g - $$1.g) + 1;
-      int $$3 = Math.abs($$0.h - $$1.h) + 1;
-      final int $$4 = $$0.g < $$1.g ? 1 : -1;
-      final int $$5 = $$0.h < $$1.h ? 1 : -1;
+      int $$2 = Math.abs($$0.h - $$1.h) + 1;
+      int $$3 = Math.abs($$0.i - $$1.i) + 1;
+      final int $$4 = $$0.h < $$1.h ? 1 : -1;
+      final int $$5 = $$0.i < $$1.i ? 1 : -1;
       return StreamSupport.stream(new AbstractSpliterator<dgn>((long)($$2 * $$3), 64) {
          @Nullable
          private dgn e;
@@ -203,14 +205,14 @@ public class dgn {
             if (this.e == null) {
                this.e = $$0;
             } else {
-               int $$1 = this.e.g;
-               int $$2 = this.e.h;
-               if ($$1 == $$1.g) {
-                  if ($$2 == $$1.h) {
+               int $$1 = this.e.h;
+               int $$2 = this.e.i;
+               if ($$1 == $$1.h) {
+                  if ($$2 == $$1.i) {
                      return false;
                   }
 
-                  this.e = new dgn($$0.g, $$2 + $$5);
+                  this.e = new dgn($$0.h, $$2 + $$5);
                } else {
                   this.e = new dgn($$1 + $$4, $$2);
                }
