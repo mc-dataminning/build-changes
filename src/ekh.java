@@ -1,49 +1,40 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
 
-public class ekh extends ekf {
-   public static final MapCodec<ekh> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  dww.a.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  ayi.b(dww.a.listOf()).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  ayi.b(dww.a.listOf()).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
-            )
-            .apply($$0, ekh::new)
-   );
-   private final float g;
-   private final float h;
-   private final dww i;
-   private final List<dww> j;
-   private final List<dww> k;
+public class ekh extends ekg {
+   public static final MapCodec<ekh> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ekh::new));
+   protected final List<dwx> h;
 
-   public ekh(long $$0, esb.a $$1, float $$2, float $$3, float $$4, dww $$5, List<dww> $$6, List<dww> $$7) {
+   protected static <P extends ekh> P4<Mu<P>, Long, esc.a, Float, List<dwx>> b(Instance<P> $$0) {
+      return a($$0).and(ayi.b(dwx.a.listOf()).fieldOf("states").forGetter($$0x -> $$0x.h));
+   }
+
+   public ekh(long $$0, esc.a $$1, float $$2, List<dwx> $$3) {
       super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
+      this.h = $$3;
    }
 
    @Override
-   protected ekd<?> a() {
-      return ekd.c;
+   protected eke<?> a() {
+      return eke.d;
    }
 
    @Override
-   public dww a(azh $$0, ji $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return af.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? af.a(this.k, $$0) : this.i;
-      }
+   public dwx a(azh $$0, ji $$1) {
+      return this.a(this.h, $$1, (double)this.e);
+   }
+
+   protected dwx a(List<dwx> $$0, ji $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
+   }
+
+   protected dwx a(List<dwx> $$0, double $$1) {
+      double $$2 = ayz.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

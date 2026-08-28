@@ -1,33 +1,15 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record cwh(jr<avz> e, float f, float g, wp h) {
-   public static final Codec<cwh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avz.b.fieldOf("sound_event").forGetter(cwh::a),
-               ayi.o.fieldOf("use_duration").forGetter(cwh::b),
-               ayi.o.fieldOf("range").forGetter(cwh::c),
-               wr.a.fieldOf("description").forGetter(cwh::d)
-            )
-            .apply($$0, cwh::new)
-   );
-   public static final yn<wa, cwh> b = yn.a(avz.d, cwh::a, yl.l, cwh::b, yl.l, cwh::c, wr.b, cwh::d, cwh::new);
-   public static final Codec<jr<cwh>> c = akr.a(mc.I, a);
-   public static final yn<wa, jr<cwh>> d = yl.a(mc.I, b);
-
-   public jr<avz> a() {
-      return this.e;
+public class cwh extends cwl implements cxt {
+   public cwh(cwl.a $$0) {
+      super($$0);
    }
 
-   public float b() {
-      return this.f;
-   }
-
-   public float c() {
-      return this.g;
-   }
-
-   public wp d() {
-      return this.h;
+   @Override
+   public boolean a(dgi $$0, dvm $$1, boolean $$2, cox $$3) {
+      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
+         $$0.a(null, $$1.aA_(), awa.nJ, awb.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

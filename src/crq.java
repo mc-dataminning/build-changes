@@ -1,9 +1,11 @@
-public class crq {
-   final crt a;
-   final long b;
+import java.util.Set;
 
-   crq(crt $$0, int $$1) {
-      this.a = $$0;
-      this.b = 1L << $$1;
+public interface crq {
+   Set<aku<? extends ke<? extends crq>>> bT = Set.of(mc.K, mc.f, mc.z, mc.V, mc.ad, mc.W);
+
+   crt i();
+
+   default boolean a(crt $$0) {
+      return this.i().a($$0);
    }
 }

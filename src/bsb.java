@@ -1,86 +1,11 @@
-public class bsb implements bsc {
-   private final bsc b;
-   private final bsc c;
+import javax.annotation.Nullable;
 
-   public bsb(bsc $$0, bsc $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public interface bsb {
+   void a();
 
-   @Override
-   public int b() {
-      return this.b.b() + this.c.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.b.c() && this.c.c();
-   }
-
-   public boolean a(bsc $$0) {
-      return this.b == $$0 || this.c == $$0;
-   }
-
-   @Override
-   public cwo a(int $$0) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
-   }
-
-   @Override
-   public cwo a(int $$0, int $$1) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
-   }
-
-   @Override
-   public cwo b(int $$0) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cwo $$1) {
-      if ($$0 >= this.b.b()) {
-         this.c.a($$0 - this.b.b(), $$1);
-      } else {
-         this.b.a($$0, $$1);
+   static void a(@Nullable Object $$0) {
+      if ($$0 instanceof bsb) {
+         ((bsb)$$0).a();
       }
-   }
-
-   @Override
-   public int an_() {
-      return this.b.an_();
-   }
-
-   @Override
-   public void e() {
-      this.b.e();
-      this.c.e();
-   }
-
-   @Override
-   public boolean a(cow $$0) {
-      return this.b.a($$0) && this.c.a($$0);
-   }
-
-   @Override
-   public void c_(cow $$0) {
-      this.b.c_($$0);
-      this.c.c_($$0);
-   }
-
-   @Override
-   public void c(cow $$0) {
-      this.b.c($$0);
-      this.c.c($$0);
-   }
-
-   @Override
-   public boolean b(int $$0, cwo $$1) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.b.a();
-      this.c.a();
    }
 }

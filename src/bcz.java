@@ -3,39 +3,21 @@ import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public abstract class bcz extends DataFix {
-   private final String a;
-   private final String b;
-   private final String c;
-
-   public bcz(Schema $$0, String $$1, String $$2) {
-      this($$0, $$1, $$2, $$2);
-   }
-
-   public bcz(Schema $$0, String $$1, String $$2, String $$3) {
+public class bcz extends DataFix {
+   public bcz(Schema $$0) {
       super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
    }
 
-   public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhw.w);
-      return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
-            Optional<? extends Dynamic<?>> $$1 = $$0xx.get(this.b).result();
-            if ($$1.isEmpty()) {
-               return $$0xx;
-            } else {
-               Dynamic<?> $$2 = this.a($$1.get());
-               return $$0xx.remove(this.b).setFieldIfPresent(this.c, Optional.ofNullable($$2));
-            }
-         }));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhx.w);
+      return this.fixTypeEverywhereTyped(
+         "Custom Model Data expansion", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.update("minecraft:custom_model_data", $$0xxx -> {
+                  float $$1 = $$0xxx.asNumber(0.0F).floatValue();
+                  return $$0xxx.createMap(Map.of($$0xxx.createString("floats"), $$0xxx.createList(Stream.of($$0xxx.createFloat($$1)))));
+               }))
+      );
    }
-
-   @Nullable
-   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

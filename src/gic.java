@@ -1,46 +1,37 @@
-public class gic extends gkg {
-   gic(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+public class gic extends gkh {
+   gic(gfz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3);
+      this.u = -0.125F;
+      this.B = 0.85F;
       this.b(0.02F, 0.02F);
       this.D = this.D * (this.r.i() * 0.6F + 0.2F);
       this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
       this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
       this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
+      super.a();
+      if (!this.o && !this.c.b_(ji.a(this.g, this.h, this.i)).a(awv.a)) {
          this.k();
-      } else {
-         this.k += 0.002;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.85F;
-         this.k *= 0.85F;
-         this.l *= 0.85F;
-         if (!this.c.b_(ji.a(this.g, this.h, this.i)).a(awv.a)) {
-            this.k();
-         }
       }
    }
 
    @Override
-   public gjk b() {
-      return gjk.b;
+   public gjl b() {
+      return gjl.b;
    }
 
-   public static class a implements gjj<lx> {
-      private final gkb a;
+   public static class a implements gjk<lx> {
+      private final gkc a;
 
-      public a(gkb $$0) {
+      public a(gkc $$0) {
          this.a = $$0;
       }
 
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public gjh a(lx $$0, gfz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          gic $$8 = new gic($$1, $$2, $$3, $$4, $$5, $$6, $$7);
          $$8.a(this.a);
          return $$8;

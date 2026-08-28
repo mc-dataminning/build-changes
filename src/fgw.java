@@ -1,96 +1,84 @@
-import com.mojang.logging.LogUtils;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.BooleanSupplier;
+import java.util.zip.GZIPOutputStream;
+import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
+import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
 
 public class fgw {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 20;
-   private final fgj c = fgj.a();
+   private static final long a = 5368709120L;
+   private static final String b = "world";
+   private final BooleanSupplier c;
    private final Path d;
-   private final fhq e;
-   private final flu f;
-   private final long g;
-   private final int h;
-   private final fgx i;
-   private volatile boolean j;
-   @Nullable
-   private fgh k;
 
-   public fgw(Path $$0, fhq $$1, flu $$2, long $$3, int $$4, fgx $$5) {
+   public static File a(Path $$0, BooleanSupplier $$1) throws IOException {
+      return new fgw($$0, $$1).a();
+   }
+
+   private fgw(Path $$0, BooleanSupplier $$1) {
+      this.c = $$1;
       this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
    }
 
-   public CompletableFuture<?> a() {
-      return CompletableFuture.runAsync(() -> {
-         File $$0 = null;
+   private File a() throws IOException {
+      TarArchiveOutputStream $$0 = null;
 
-         try {
-            fhx $$1 = this.c();
-            $$0 = fgv.a(this.d, () -> this.j);
-            this.i.d();
-            fgh $$2 = new fgh($$0, this.g, this.h, $$1, this.f, ab.b().c(), this.e.i, this.i.b());
-            this.k = $$2;
-            fjo $$3 = $$2.a();
-            String $$4 = $$3.a();
-            if ($$4 != null) {
-               throw new fgs($$4);
-            }
-
-            fka.b(this.g);
-            this.c.a(this.g, this.h, this.e);
-         } catch (IOException var11) {
-            throw new fgs(var11.getMessage());
-         } catch (fif var12) {
-            throw new fgs(var12.a.b());
-         } catch (CancellationException | InterruptedException var13) {
-            throw new fgq();
-         } finally {
-            if ($$0 != null) {
-               b.debug("Deleting file {}", $$0.getAbsolutePath());
-               $$0.delete();
-            }
+      File var3;
+      try {
+         File $$1 = File.createTempFile("realms-upload-file", ".tar.gz");
+         $$0 = new TarArchiveOutputStream(new GZIPOutputStream(new FileOutputStream($$1)));
+         $$0.setLongFileMode(3);
+         this.a($$0, this.d, "world", true);
+         if (this.c.getAsBoolean()) {
+            throw new fgr();
          }
-      }, af.g());
-   }
 
-   public void b() {
-      this.j = true;
-      if (this.k != null) {
-         this.k.b();
-         this.k = null;
+         $$0.finish();
+         this.a($$1.length());
+         var3 = $$1;
+      } finally {
+         if ($$0 != null) {
+            $$0.close();
+         }
       }
+
+      return var3;
    }
 
-   private fhx c() throws fif, InterruptedException {
-      for (int $$0 = 0; $$0 < 20; $$0++) {
-         try {
-            fhx $$1 = this.c.i(this.g);
-            if (this.j) {
-               throw new fgq();
+   private void a(TarArchiveOutputStream $$0, Path $$1, String $$2, boolean $$3) throws IOException {
+      if (this.c.getAsBoolean()) {
+         throw new fgr();
+      } else {
+         this.a($$0.getBytesWritten());
+         File $$4 = $$1.toFile();
+         String $$5 = $$3 ? $$2 : $$2 + $$4.getName();
+         TarArchiveEntry $$6 = new TarArchiveEntry($$4, $$5);
+         $$0.putArchiveEntry($$6);
+         if ($$4.isFile()) {
+            try (InputStream $$7 = new FileInputStream($$4)) {
+               $$7.transferTo($$0);
             }
 
-            if ($$1 != null) {
-               if (!$$1.c()) {
-                  throw new fgu();
+            $$0.closeArchiveEntry();
+         } else {
+            $$0.closeArchiveEntry();
+            File[] $$8 = $$4.listFiles();
+            if ($$8 != null) {
+               for (File $$9 : $$8) {
+                  this.a($$0, $$9.toPath(), $$5 + "/", false);
                }
-
-               return $$1;
             }
-         } catch (fig var3) {
-            Thread.sleep((long)var3.c * 1000L);
          }
       }
+   }
 
-      throw new fgu();
+   private void a(long $$0) {
+      if ($$0 > 5368709120L) {
+         throw new fgu(5368709120L);
+      }
    }
 }

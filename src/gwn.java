@@ -1,51 +1,28 @@
-public class gwn extends gws<gzo, gbq> {
-   private final gnb a;
+public class gwn extends gwt<gzl, gct> {
+   private final gct a;
+   private final gct b;
+   private final gwd c;
 
-   public gwn(gua<gzo, gbq> $$0, gnb $$1) {
+   public gwn(gub<gzl, gct> $$0, gez $$1, gwd $$2) {
       super($$0);
-      this.a = $$1;
+      this.c = $$2;
+      this.a = new gct($$1.a(gfc.bv));
+      this.b = new gct($$1.a(gfc.bu));
    }
 
-   public void a(fft $$0, glx $$1, int $$2, gzo $$3, float $$4, float $$5) {
-      if (!$$3.aj) {
-         boolean $$6 = $$3.ao && $$3.z;
-         if (!$$3.z || $$6) {
-            dww $$7 = $$3.a.a();
-            int $$8 = gte.a($$3, 0.0F);
-            hgr $$9 = this.a.a($$7);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-            $$0.a();
-            this.d().b().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-         }
+   public void a(ffu $$0, gly $$1, int $$2, gzl $$3, float $$4, float $$5) {
+      cwp $$6 = $$3.c;
+      deu $$7 = $$6.a(kv.D);
+      if ($$7 != null && $$7.c().isPresent()) {
+         this.a($$0, $$1, $$3, $$6, $$7.c().get(), $$2);
+      } else if ($$3.d) {
+         this.a($$0, $$1, $$3, cwp.j, det.l, $$2);
       }
    }
 
-   private void a(fft $$0, glx $$1, int $$2, boolean $$3, dww $$4, int $$5, hgr $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(gmh.s(heq.d)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
-      } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
-      }
+   private void a(ffu $$0, gly $$1, gzl $$2, cwp $$3, aku<des> $$4, int $$5) {
+      gct $$6 = $$2.aj ? this.b : this.a;
+      $$6.a($$2);
+      this.c.a(hgy.d.f, $$4, $$6, $$3, $$0, $$1, $$5);
    }
 }

@@ -1,38 +1,29 @@
-import java.util.function.Consumer;
+import com.google.common.collect.Lists;
+import java.util.List;
 import javax.annotation.Nullable;
 
 public class fkx {
-   private final gfz a;
-   private int b = -1;
-   @Nullable
-   private Consumer<tq> c;
+   private final List<wu> a = Lists.newArrayList();
 
-   public fkx(gfz $$0) {
-      this.a = $$0;
+   public void a(wu $$0) {
+      this.a.add($$0);
    }
 
-   public boolean a(int $$0, @Nullable tq $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
+   @Nullable
+   public wu a() {
+      if (this.a.isEmpty()) {
+         return null;
       } else {
-         return false;
+         return this.a.size() == 1 ? this.a.get(0) : wu.a(this.a);
       }
    }
 
-   private int a(Consumer<tq> $$0) {
-      this.c = $$0;
-      return ++this.b;
+   public wu b() {
+      wu $$0 = this.a();
+      return $$0 != null ? $$0 : wu.b;
    }
 
-   public void a(int $$0, Consumer<tq> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new ahb($$2, $$0));
-   }
-
-   public void a(ji $$0, Consumer<tq> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new agj($$2, $$0));
+   public void c() {
+      this.a.clear();
    }
 }

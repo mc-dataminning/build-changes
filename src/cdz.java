@@ -1,36 +1,18 @@
 import javax.annotation.Nullable;
 
-public class cdz<T extends bvg> extends cdx<T> {
-   private static final int i = 200;
-   private int j = 0;
+public class cdz<T extends bvh> extends cdy<T> {
+   private boolean i = true;
 
-   public cdz(cqk $$0, Class<T> $$1, boolean $$2, @Nullable cfx.a $$3) {
-      super($$0, $$1, 500, $$2, false, $$3);
+   public cdz(cql $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable cfy.a $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public int i() {
-      return this.j;
-   }
-
-   public void k() {
-      this.j--;
+   public void a(boolean $$0) {
+      this.i = $$0;
    }
 
    @Override
    public boolean b() {
-      if (this.j > 0 || !this.e.dY().h()) {
-         return false;
-      } else if (!((cqk)this.e).gI()) {
-         return false;
-      } else {
-         this.h();
-         return this.c != null;
-      }
-   }
-
-   @Override
-   public void d() {
-      this.j = b(200);
-      super.d();
+      return this.i && super.b();
    }
 }

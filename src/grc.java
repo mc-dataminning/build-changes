@@ -1,32 +1,28 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
+public abstract class grc<T extends cpe, S extends gxr> extends gsd<T, S> {
+   private final gay a;
 
-public class grc extends gqx<cij, gxr, gay> {
-   private static final Map<cij.e, akv> a = af.a(Maps.newHashMap(), $$0 -> {
-      for (cij.e $$1 : cij.e.values()) {
-         $$0.put($$1, akv.b(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
-      }
-   });
-
-   public grc(gsd.a $$0) {
-      super($$0, new gay($$0.a(gfb.m)), new gay($$0.a(gfb.n)), 0.5F);
+   public grc(gse.a $$0) {
+      super($$0);
+      this.a = new gay($$0.a(gfc.l));
    }
 
-   public akv a(gxr $$0) {
-      return a.get($$0.a);
+   public void a(S $$0, ffu $$1, gly $$2, int $$3) {
+      $$1.a();
+      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.a));
+      ffy $$4 = $$2.getBuffer(gmi.f(this.a($$0)));
+      this.a.a($$0);
+      this.a.a($$1, $$4, $$3, hei.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public gxr a() {
-      return new gxr();
-   }
+   protected abstract akv a(S var1);
 
-   public void a(cij $$0, gxr $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gs();
-      $$1.b = $$0.cf.a($$2);
-      $$1.d = $$0.cg.a($$2);
-      $$1.e = $$0.ch.a($$2);
-      $$1.c = $$0.ci.a($$2);
+      $$1.a = $$0.j($$2);
+      $$1.b = $$0.k($$2);
+      $$1.c = (float)$$0.c - $$2;
    }
 }

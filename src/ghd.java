@@ -1,101 +1,66 @@
 import com.mojang.authlib.minecraft.report.AbuseReport;
 import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
 import com.mojang.datafixers.util.Either;
 import java.time.Instant;
 import java.util.UUID;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public abstract class ghd {
-   protected final UUID a;
-   protected final Instant b;
-   protected final UUID c;
-   protected String d = "";
-   @Nullable
-   protected ghf e;
-   protected boolean f;
+public class ghd extends ghe {
+   private final String g;
 
-   public ghd(UUID $$0, Instant $$1, UUID $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   ghd(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
    }
 
-   public boolean a(UUID $$0) {
-      return $$0.equals(this.c);
+   public String a() {
+      return this.g;
    }
 
-   public abstract ghd b();
+   public ghd c() {
+      ghd $$0 = new ghd(this.a, this.b, this.c, this.g);
+      $$0.d = this.d;
+      $$0.f = this.f;
+      return $$0;
+   }
 
-   public abstract fuk a(fuk var1, ghh var2);
+   @Override
+   public ful a(ful $$0, ghi $$1) {
+      return new fyv($$0, $$1, this);
+   }
 
-   public abstract static class a<R extends ghd> {
-      protected final R a;
-      protected final AbuseReportLimits b;
-
-      protected a(R $$0, AbuseReportLimits $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public static class a extends ghe.a<ghd> {
+      public a(ghd $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      public R e() {
-         return this.a;
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new ghd(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
       }
 
-      public UUID f() {
-         return this.a.c;
-      }
-
-      public String g() {
-         return this.a.d;
-      }
-
-      public boolean h() {
-         return this.e().f;
-      }
-
-      public void a(String $$0) {
-         this.a.d = $$0;
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
       }
 
       @Nullable
-      public ghf i() {
-         return this.a.e;
+      @Override
+      public ghe.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? ghe.b.d : super.c();
       }
 
-      public void a(ghf $$0) {
-         this.a.e = $$0;
+      @Override
+      public Either<ghe.c, ghe.b> a(ghi $$0) {
+         ghe.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new ghe.c(this.a.a, ghh.c, $$3));
+         }
       }
-
-      public void a(boolean $$0) {
-         this.a.f = $$0;
-      }
-
-      public abstract boolean b();
-
-      @Nullable
-      public ghd.b c() {
-         return !this.e().f ? ghd.b.e : null;
-      }
-
-      public abstract Either<ghd.c, ghd.b> a(ghh var1);
-   }
-
-   public static record b(wp f) {
-      public static final ghd.b a = new ghd.b(wp.c("gui.abuseReport.send.no_reason"));
-      public static final ghd.b b = new ghd.b(wp.c("gui.chatReport.send.no_reported_messages"));
-      public static final ghd.b c = new ghd.b(wp.c("gui.chatReport.send.too_many_messages"));
-      public static final ghd.b d = new ghd.b(wp.c("gui.abuseReport.send.comment_too_long"));
-      public static final ghd.b e = new ghd.b(wp.c("gui.abuseReport.send.not_attested"));
-
-      public fqd a() {
-         return fqd.a(this.f);
-      }
-
-      public wp b() {
-         return this.f;
-      }
-   }
-
-   public static record c(UUID a, ghg b, AbuseReport c) {
    }
 }

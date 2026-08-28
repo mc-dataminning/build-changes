@@ -1,54 +1,24 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class egx extends efx<eiq> {
-   public egx(Codec<eiq> $$0) {
+public class egx extends efy<eio> {
+   public egx(Codec<eio> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(efz<eiq> $$0) {
-      eiq $$1 = $$0.f();
-      dhf $$2 = $$0.b();
-      azh $$3 = $$0.d();
-      djl $$4 = $$1.b.b();
-      ji $$5 = a($$2, $$0.e().k().a(jn.a.b, $$2.L_() + 1, $$2.an()), $$4);
-      if ($$5 == null) {
-         return false;
-      } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
+   public boolean a(ega<eio> $$0) {
+      eio $$1 = $$0.f();
+      azh $$2 = $$0.d();
+      dhg $$3 = $$0.b();
+      dyt $$4 = $$0.c();
+      ji $$5 = $$0.e();
 
-         for (ji $$11 : ji.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
-            }
-
-            dww $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
-            }
+      for (ehs $$6 : $$1.b) {
+         if ($$2.i() < $$6.c) {
+            return $$6.a($$3, $$4, $$2, $$5);
          }
-
-         return $$10;
-      }
-   }
-
-   @Nullable
-   private static ji a(dgi $$0, ji.a $$1, djl $$2) {
-      while ($$1.v() > $$0.L_() + 1) {
-         dww $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
-
-         $$1.c(jn.a);
       }
 
-      return null;
+      return $$1.c.a().a($$3, $$4, $$2, $$5);
    }
 }

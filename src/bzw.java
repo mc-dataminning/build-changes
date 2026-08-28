@@ -1,42 +1,28 @@
 import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bzw {
-   private static final int a = 60;
+   public static <E extends bvh> byl<E> a(List<Pair<? extends caq<? super E>, Integer>> $$0) {
+      return a($$0, bxo.a.b, bxo.b.a);
+   }
 
-   public static bxa<bvo> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return cam.a(
-         (Function<cam.b<bvo>, ? extends App<cam.c<bvo>, cap<bvo>>>)($$3 -> $$3.group($$3.c(cek.o), $$3.c(cek.m), $$3.a(cek.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if (!$$5x.b_($$6.dv()).a(awv.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 60L);
-                        return true;
-                     } else {
-                        ji $$8 = $$6.dv();
-                        ji.a $$9 = new ji.a();
-                        fbe $$10 = fbe.a($$6);
+   public static <E extends bvh> byl<E> a(List<Pair<? extends caq<? super E>, Integer>> $$0, bxo.a $$1, bxo.b $$2) {
+      bzj<caq<? super E>> $$3 = new bzj<>();
+      $$0.forEach($$1x -> $$3.a((caq<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
+      return can.a((Function<can.b<E>, ? extends App<can.c<E>, caq<E>>>)($$3x -> $$3x.a((caq<E>)(($$3xx, $$4, $$5) -> {
+            if ($$1 == bxo.a.b) {
+               $$3.a();
+            }
 
-                        for (ji $$11 : ji.a($$8, $$0, $$0, $$0)) {
-                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
-                              dww $$12 = $$5x.a_($$11);
-                              dww $$13 = $$5x.a_($$9.a($$11, jn.a));
-                              if (!$$12.a(djn.J) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.c($$5x, $$9, jn.b)) {
-                                 ji $$14 = $$11.j();
-                                 $$5.a(new bxc($$14));
-                                 $$4.a(new cen(new bxc($$14), $$1, 1));
-                                 break;
-                              }
-                           }
-                        }
+            for (caq<? super E> $$6 : $$3) {
+               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bxo.b.a) {
+                  break;
+               }
+            }
 
-                        $$2.setValue($$7 + 60L);
-                        return true;
-                     }
-                  }))
-      );
+            return true;
+         }))));
    }
 }

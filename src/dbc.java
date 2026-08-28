@@ -1,72 +1,54 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
-public class dbc {
-   public static final int a = -1;
-   public static final dbc b = new dbc(List.of(), IntList.of());
-   private final List<daz> c;
-   private final IntList d;
-
-   private dbc(List<daz> $$0, IntList $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public class dbc extends dbs {
+   public dbc(dar $$0) {
+      super("", $$0, dbt.a(Map.of('#', dba.a(cwt.rv), 'x', dba.a(cwt.sR)), "###", "#x#", "###"), new cwp(cwt.vi));
    }
 
-   public static dbc a(daz $$0) {
-      return $$0.b() ? b : new dbc(List.of($$0), IntList.of(0));
-   }
-
-   public static dbc a(List<Optional<daz>> $$0) {
-      int $$1 = $$0.size();
-      List<daz> $$2 = new ArrayList<>($$1);
-      IntList $$3 = new IntArrayList($$1);
-      int $$4 = 0;
-
-      for (Optional<daz> $$5 : $$0) {
-         if ($$5.isPresent()) {
-            daz $$6 = $$5.get();
-            if ($$6.b()) {
-               return b;
-            }
-
-            $$2.add($$6);
-            $$3.add($$4++);
+   @Override
+   public boolean a(das $$0, dgi $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cwp $$2 = c($$0);
+         if ($$2.f()) {
+            return false;
          } else {
-            $$3.add(-1);
+            eut $$3 = cxc.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.g() ? false : $$3.f < 4;
+            }
+         }
+      }
+   }
+
+   @Override
+   public cwp a(das $$0, jt.a $$1) {
+      cwp $$2 = c($$0).c(1);
+      $$2.b(kv.N, czm.b);
+      return $$2;
+   }
+
+   private static cwp c(das $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         cwp $$2 = $$0.a($$1);
+         if ($$2.b(kv.L)) {
+            return $$2;
          }
       }
 
-      return new dbc($$2, $$3);
+      return cwp.j;
    }
 
-   public static dbc b(List<daz> $$0) {
-      int $$1 = $$0.size();
-      IntList $$2 = new IntArrayList($$1);
-
-      for (int $$3 = 0; $$3 < $$1; $$3++) {
-         daz $$4 = $$0.get($$3);
-         if ($$4.b()) {
-            return b;
-         }
-
-         $$2.add($$3);
-      }
-
-      return new dbc($$0, $$2);
+   @Override
+   public boolean ap_() {
+      return true;
    }
 
-   public IntList a() {
-      return this.d;
-   }
-
-   public List<daz> b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      return this.d.isEmpty();
+   @Override
+   public dbo<dbc> a() {
+      return dbo.f;
    }
 }

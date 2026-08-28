@@ -1,25 +1,71 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 
-public class ekw<P extends ekv> {
-   public static final ekw<ekx> a = a("trunk_vine", ekx.a);
-   public static final ekw<ekt> b = a("leave_vine", ekt.a);
-   public static final ekw<eku> c = a("pale_moss", eku.a);
-   public static final ekw<eks> d = a("creaking_heart", eks.a);
-   public static final ekw<ekr> e = a("cocoa", ekr.a);
-   public static final ekw<ekq> f = a("beehive", ekq.a);
-   public static final ekw<eko> g = a("alter_ground", eko.a);
-   public static final ekw<ekp> h = a("attached_to_leaves", ekp.a);
-   private final MapCodec<P> i;
+public abstract class ekw {
+   public static final Codec<ekw> h = mb.X.q().dispatch(ekw::a, ekx::a);
 
-   private static <P extends ekv> ekw<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.X, $$0, new ekw<>($$1));
-   }
+   protected abstract ekx<?> a();
 
-   private ekw(MapCodec<P> $$0) {
-      this.i = $$0;
-   }
+   public abstract void a(ekw.a var1);
 
-   public MapCodec<P> a() {
-      return this.i;
+   public static final class a {
+      private final dgo a;
+      private final BiConsumer<ji, dwx> b;
+      private final azh c;
+      private final ObjectArrayList<ji> d;
+      private final ObjectArrayList<ji> e;
+      private final ObjectArrayList<ji> f;
+
+      public a(dgo $$0, BiConsumer<ji, dwx> $$1, azh $$2, Set<ji> $$3, Set<ji> $$4, Set<ji> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(km::v));
+         this.e.sort(Comparator.comparingInt(km::v));
+         this.f.sort(Comparator.comparingInt(km::v));
+      }
+
+      public void a(ji $$0, dxo $$1) {
+         this.a($$0, djo.ft.m().b($$1, Boolean.valueOf(true)));
+      }
+
+      public void a(ji $$0, dwx $$1) {
+         this.b.accept($$0, $$1);
+      }
+
+      public boolean a(ji $$0) {
+         return this.a.a($$0, dww.a::l);
+      }
+
+      public boolean a(ji $$0, Predicate<dwx> $$1) {
+         return this.a.a($$0, $$1);
+      }
+
+      public dgo a() {
+         return this.a;
+      }
+
+      public azh b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<ji> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<ji> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<ji> e() {
+         return this.f;
+      }
    }
 }

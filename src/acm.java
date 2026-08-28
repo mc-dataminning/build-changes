@@ -1,8 +1,8 @@
-public record acm(long[] b, bnd c) implements yw<abl> {
+public record acm(long[] b, bne c) implements yw<abl> {
    public static final yn<vl, acm> a = yw.a(acm::a, acm::new);
 
    private acm(vl $$0) {
-      this($$0.d(), $$0.b(bnd.class));
+      this($$0.d(), $$0.b(bne.class));
    }
 
    private void a(vl $$0) {
@@ -19,7 +19,7 @@ public record acm(long[] b, bnd c) implements yw<abl> {
       $$0.a(this);
    }
 
-   public bnd e() {
+   public bne e() {
       return this.c;
    }
 }

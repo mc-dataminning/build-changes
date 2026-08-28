@@ -1,24 +1,13 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
 
-public class fhi extends fhy {
-   private static final Logger b = LogUtils.getLogger();
-   @Nullable
+public class fhi extends fhz implements fht {
+   @SerializedName("name")
    public String a;
+   @SerializedName("description")
+   public String b;
 
-   public static fhi a(String $$0) {
-      fhi $$1 = new fhi();
-
-      try {
-         JsonObject $$2 = JsonParser.parseString($$0).getAsJsonObject();
-         $$1.a = fju.b("newsLink", $$2, null);
-      } catch (Exception var3) {
-         b.error("Could not parse RealmsNews: {}", var3.getMessage());
-      }
-
-      return $$1;
+   public fhi(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 }

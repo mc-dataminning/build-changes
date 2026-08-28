@@ -1,20 +1,31 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.slf4j.Logger;
 
-public class brb extends bqx<brd.c> {
-   public brb(int $$0, Executor $$1, String $$2) {
-      super(new brd.a($$0), $$1, $$2);
-      bqd.a.a(this);
+public class brb implements ThreadFactory {
+   private static final Logger a = LogUtils.getLogger();
+   private final ThreadGroup b;
+   private final AtomicInteger c = new AtomicInteger(1);
+   private final String d;
+
+   public brb(String $$0) {
+      SecurityManager $$1 = System.getSecurityManager();
+      this.b = $$1 != null ? $$1.getThreadGroup() : Thread.currentThread().getThreadGroup();
+      this.d = $$0 + "-";
    }
 
-   public brd.c b(Runnable $$0) {
-      return new brd.c(0, $$0);
-   }
+   @Override
+   public Thread newThread(Runnable $$0) {
+      Thread $$1 = new Thread(this.b, $$0, this.d + this.c.getAndIncrement(), 0L);
+      $$1.setUncaughtExceptionHandler(($$1x, $$2) -> {
+         a.error("Caught exception in thread {} from {}", $$1x, $$0);
+         a.error("", $$2);
+      });
+      if ($$1.getPriority() != 5) {
+         $$1.setPriority(5);
+      }
 
-   public <Source> CompletableFuture<Source> a(int $$0, Consumer<CompletableFuture<Source>> $$1) {
-      CompletableFuture<Source> $$2 = new CompletableFuture<>();
-      this.a_(new brd.c($$0, () -> $$1.accept($$2)));
-      return $$2;
+      return $$1;
    }
 }

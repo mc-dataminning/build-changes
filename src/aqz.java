@@ -6,12 +6,12 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.function.Function;
 
-public class aqz extends brz {
+public class aqz extends bsa {
    private final Set<are> h = Sets.newHashSet();
    private final Set<are> i = Collections.unmodifiableSet(this.h);
    private boolean j = true;
 
-   public aqz(wp $$0, brz.a $$1, brz.b $$2) {
+   public aqz(wp $$0, bsa.a $$1, bsa.b $$2) {
       super(ayz.a(), $$0, $$1, $$2);
    }
 
@@ -24,7 +24,7 @@ public class aqz extends brz {
    }
 
    @Override
-   public void a(brz.a $$0) {
+   public void a(bsa.a $$0) {
       if ($$0 != this.c) {
          super.a($$0);
          this.a(abv::d);
@@ -32,7 +32,7 @@ public class aqz extends brz {
    }
 
    @Override
-   public void a(brz.b $$0) {
+   public void a(bsa.b $$0) {
       if ($$0 != this.d) {
          super.a($$0);
          this.a(abv::d);
@@ -40,7 +40,7 @@ public class aqz extends brz {
    }
 
    @Override
-   public brz a(boolean $$0) {
+   public bsa a(boolean $$0) {
       if ($$0 != this.e) {
          super.a($$0);
          this.a(abv::e);
@@ -50,7 +50,7 @@ public class aqz extends brz {
    }
 
    @Override
-   public brz b(boolean $$0) {
+   public bsa b(boolean $$0) {
       if ($$0 != this.f) {
          super.b($$0);
          this.a(abv::e);
@@ -60,7 +60,7 @@ public class aqz extends brz {
    }
 
    @Override
-   public brz c(boolean $$0) {
+   public bsa c(boolean $$0) {
       if ($$0 != this.g) {
          super.c($$0);
          this.a(abv::e);
@@ -77,7 +77,7 @@ public class aqz extends brz {
       }
    }
 
-   private void a(Function<brz, abv> $$0) {
+   private void a(Function<bsa, abv> $$0) {
       if (this.j) {
          abv $$1 = $$0.apply(this);
 

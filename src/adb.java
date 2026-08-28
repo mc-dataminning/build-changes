@@ -7,7 +7,7 @@ public class adb implements yw<abl> {
    private final int c;
    private final adc d;
 
-   public adb(dfn $$0, esn $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public adb(dfo $$0, eso $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.b = $$0.h;
       this.c = $$0.i;
       this.d = new adc($$0, $$1, $$2, $$3);

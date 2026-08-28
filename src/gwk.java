@@ -1,23 +1,24 @@
-public class gwk<S extends gxo, M extends gca<S> & gau> extends gws<S, M> {
-   public gwk(gua<S, M> $$0) {
+public class gwk extends gwt<gze, gcq> {
+   private final gnc a;
+
+   public gwk(gub<gze, gcq> $$0, gnc $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   public void a(fft $$0, glx $$1, int $$2, S $$3, float $$4, float $$5) {
-      this.a($$3, $$3.g, bva.b, $$0, $$1, $$2);
-      this.a($$3, $$3.i, bva.a, $$0, $$1, $$2);
-   }
-
-   protected void a(S $$0, hbn $$1, bva $$2, fft $$3, glx $$4, int $$5) {
-      if (!$$1.c()) {
-         $$3.a();
-         this.d().a($$2, $$3);
-         $$3.a(a.b.rotationDegrees(-90.0F));
-         $$3.a(a.d.rotationDegrees(180.0F));
-         boolean $$6 = $$2 == bva.a;
-         $$3.a((float)($$6 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         $$1.a($$3, $$4, $$5, heh.d);
-         $$3.b();
+   public void a(ffu $$0, gly $$1, int $$2, gze $$3, float $$4, float $$5) {
+      if ($$3.b != 0) {
+         $$0.a();
+         gfd $$6 = this.d().b();
+         $$6.a($$0);
+         $$0.a(-1.1875F, 1.0625F, -0.9375F);
+         $$0.a(0.5F, 0.5F, 0.5F);
+         float $$7 = 0.5F;
+         $$0.b(0.5F, 0.5F, 0.5F);
+         $$0.a(a.b.rotationDegrees(-90.0F));
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         this.a.a(djo.ca.m(), $$0, $$1, $$2, hei.d);
+         $$0.b();
       }
    }
 }

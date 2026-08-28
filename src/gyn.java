@@ -1,3 +1,3 @@
-public class gyn extends gyj {
-   public int a;
+public class gyn extends gzc {
+   public boolean a;
 }

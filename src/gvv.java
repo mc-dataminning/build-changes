@@ -1,23 +1,27 @@
-public class gvv<S extends gyy, M extends gca<S> & gel> extends gws<S, M> {
-   public gvv(gua<S, M> $$0) {
+public class gvv extends gwc<gyd, gbt> {
+   private static final akv a = akv.b("textures/entity/creeper/creeper_armor.png");
+   private final gbt b;
+
+   public gvv(gub<gyd, gbt> $$0, gez $$1) {
       super($$0);
+      this.b = new gbt($$1.a(gfc.aj));
    }
 
-   public void a(fft $$0, glx $$1, int $$2, S $$3, float $$4, float $$5) {
-      hbn $$6 = $$3.i;
-      if (!$$6.c()) {
-         $$0.a();
-         this.a($$3, $$0);
-         $$6.a($$0, $$1, $$2, heh.d);
-         $$0.b();
-      }
+   protected boolean a(gyd $$0) {
+      return $$0.b;
    }
 
-   protected void a(S $$0, fft $$1) {
-      this.d().a($$1);
-      $$1.a(a.b.rotation(0.75F));
-      $$1.b(1.07F, 1.07F, 1.07F);
-      $$1.a(0.0F, 0.13F, -0.34F);
-      $$1.a(a.b.rotation((float) Math.PI));
+   @Override
+   protected float a(float $$0) {
+      return $$0 * 0.01F;
+   }
+
+   @Override
+   protected akv a() {
+      return a;
+   }
+
+   protected gbt b() {
+      return this.b;
    }
 }

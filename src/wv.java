@@ -126,17 +126,17 @@ public class wv {
                )
                .apply($$0, wv.b::new)
       );
-      public final bur<?> b;
+      public final bus<?> b;
       public final UUID c;
       public final Optional<wp> d;
       @Nullable
       private List<wp> e;
 
-      public b(bur<?> $$0, UUID $$1, @Nullable wp $$2) {
+      public b(bus<?> $$0, UUID $$1, @Nullable wp $$2) {
          this($$0, $$1, Optional.ofNullable($$2));
       }
 
-      public b(bur<?> $$0, UUID $$1, Optional<wp> $$2) {
+      public b(bus<?> $$0, UUID $$1, Optional<wp> $$2) {
          this.b = $$0;
          this.c = $$1;
          this.d = $$2;
@@ -147,7 +147,7 @@ public class wv {
             tq $$2 = uo.a($$0.getString());
             DynamicOps<JsonElement> $$3 = (DynamicOps<JsonElement>)($$1 != null ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
             DataResult<wp> $$4 = wr.a.parse($$3, JsonParser.parseString($$2.l("name")));
-            bur<?> $$5 = mb.f.a(akv.a($$2.l("type")));
+            bus<?> $$5 = mb.f.a(akv.a($$2.l("type")));
             UUID $$6 = UUID.fromString($$2.l("id"));
             return $$4.map($$2x -> new wv.b($$5, $$6, $$2x));
          } catch (Exception var7) {
@@ -187,22 +187,22 @@ public class wv {
    }
 
    public static class c {
-      public static final Codec<wv.c> a = cwo.a.xmap(wv.c::new, wv.c::a);
-      private static final Codec<wv.c> c = cwo.f.xmap(wv.c::new, wv.c::a);
+      public static final Codec<wv.c> a = cwp.a.xmap(wv.c::new, wv.c::a);
+      private static final Codec<wv.c> c = cwp.f.xmap(wv.c::new, wv.c::a);
       public static final Codec<wv.c> b = Codec.withAlternative(a, c);
-      private final jr<cwk> d;
+      private final jr<cwl> d;
       private final int e;
       private final ks f;
       @Nullable
-      private cwo g;
+      private cwp g;
 
-      c(jr<cwk> $$0, int $$1, ks $$2) {
+      c(jr<cwl> $$0, int $$1, ks $$2) {
          this.d = $$0;
          this.e = $$1;
          this.f = $$2;
       }
 
-      public c(cwo $$0) {
+      public c(cwp $$0) {
          this($$0.i(), $$0.M(), $$0.d());
       }
 
@@ -225,9 +225,9 @@ public class wv {
          return 31 * $$0 + this.f.hashCode();
       }
 
-      public cwo a() {
+      public cwp a() {
          if (this.g == null) {
-            this.g = new cwo(this.d, this.e, this.f);
+            this.g = new cwp(this.d, this.e, this.f);
          }
 
          return this.g;
@@ -237,7 +237,7 @@ public class wv {
          try {
             tq $$2 = uo.a($$0.getString());
             DynamicOps<un> $$3 = (DynamicOps<un>)($$1 != null ? $$1.a(ue.a) : ue.a);
-            return cwo.a.parse($$3, $$2).map(wv.c::new);
+            return cwp.a.parse($$3, $$2).map(wv.c::new);
          } catch (CommandSyntaxException var4) {
             return DataResult.error(() -> "Failed to parse item tag: " + var4.getMessage());
          }

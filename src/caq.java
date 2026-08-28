@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface caq {
+public interface caq<E extends bvh> {
+   boolean trigger(ard var1, E var2, long var3);
 }

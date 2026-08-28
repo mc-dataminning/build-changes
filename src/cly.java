@@ -1,180 +1,114 @@
-import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public abstract class cly extends clx {
-   @Nullable
-   private ji a;
-   private boolean b;
-   private boolean c;
-
-   protected cly(bur<? extends cly> $$0, dgh $$1) {
+public abstract class cly extends bvp implements clq {
+   protected cly(bus<? extends cly> $$0, dgi $$1) {
       super($$0, $$1);
+      this.bN = 5;
    }
 
    @Override
-   protected void E() {
-      super.E();
-      this.bS.a(4, new cly.a<>(this, 0.7, 0.595));
+   public awb dm() {
+      return awb.f;
    }
 
    @Override
-   public void b(tq $$0) {
-      super.b($$0);
-      if (this.a != null) {
-         $$0.a("patrol_target", uf.a(this.a));
+   public void d_() {
+      this.eX();
+      this.gw();
+      super.d_();
+   }
+
+   protected void gw() {
+      float $$0 = this.by();
+      if ($$0 > 0.5F) {
+         this.bf += 2;
       }
-
-      $$0.a("PatrolLeader", this.b);
-      $$0.a("Patrolling", this.c);
    }
 
    @Override
-   public void a(tq $$0) {
-      super.a($$0);
-      uf.a($$0, "patrol_target").ifPresent($$0x -> this.a = $$0x);
-      this.b = $$0.q("PatrolLeader");
-      this.c = $$0.q("Patrolling");
-   }
-
-   public boolean gs() {
+   protected boolean ab() {
       return true;
    }
 
-   @Nullable
    @Override
-   public bvz a(dgy $$0, bsh $$1, buq $$2, @Nullable bvz $$3) {
-      if ($$2 != buq.p && $$2 != buq.h && $$2 != buq.d && $$0.H_().i() < 0.06F && this.gs()) {
-         this.b = true;
-      }
-
-      if (this.gv()) {
-         this.a(bus.f, cqj.a(this.dX().e(mc.d)));
-         this.a(bus.f, 2.0F);
-      }
-
-      if ($$2 == buq.p) {
-         this.c = true;
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   public static boolean b(bur<? extends cly> $$0, dgi $$1, buq $$2, ji $$3, azh $$4) {
-      return $$1.a(dgq.b, $$3) > 8 ? false : c($$0, $$1, $$2, $$3, $$4);
+   protected avz aV() {
+      return awa.nw;
    }
 
    @Override
-   public boolean h(double $$0) {
-      return !this.c || $$0 > 16384.0;
+   protected avz aW() {
+      return awa.nv;
    }
 
-   public void h(ji $$0) {
-      this.a = $$0;
-      this.c = true;
+   @Override
+   protected avz e(btb $$0) {
+      return awa.nt;
    }
 
-   public ji gt() {
-      return this.a;
+   @Override
+   protected avz o_() {
+      return awa.ns;
    }
 
-   public boolean gu() {
-      return this.a != null;
+   @Override
+   public bvh.a eM() {
+      return new bvh.a(awa.nu, awa.nr);
    }
 
-   public void x(boolean $$0) {
-      this.b = $$0;
-      this.c = true;
+   @Override
+   public float a(ji $$0, dgl $$1) {
+      return -$$1.w($$0);
    }
 
-   public boolean gv() {
-      return this.b;
-   }
-
-   public boolean gy() {
-      return true;
-   }
-
-   public void gz() {
-      this.a = this.dv().b(-500 + this.ae.a(1000), 0, -500 + this.ae.a(1000));
-      this.c = true;
-   }
-
-   protected boolean gA() {
-      return this.c;
-   }
-
-   protected void y(boolean $$0) {
-      this.c = $$0;
-   }
-
-   public static class a<T extends cly> extends cce {
-      private static final int a = 200;
-      private final T b;
-      private final double c;
-      private final double d;
-      private long e;
-
-      public a(T $$0, double $$1, double $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = -1L;
-         this.a(EnumSet.of(cce.a.a));
-      }
-
-      @Override
-      public boolean b() {
-         boolean $$0 = this.b.dV().ad() < this.e;
-         return this.b.gA() && this.b.O_() == null && !this.b.cX() && this.b.gu() && !$$0;
-      }
-
-      @Override
-      public void d() {
-      }
-
-      @Override
-      public void e() {
-      }
-
-      @Override
-      public void a() {
-         boolean $$0 = this.b.gv();
-         ces $$1 = this.b.P();
-         if ($$1.k()) {
-            List<cly> $$2 = this.h();
-            if (this.b.gA() && $$2.isEmpty()) {
-               this.b.y(false);
-            } else if ($$0 && this.b.gt().a(this.b.dt(), 10.0)) {
-               this.b.gz();
-            } else {
-               faz $$3 = faz.c(this.b.gt());
-               faz $$4 = this.b.dt();
-               faz $$5 = $$4.d($$3);
-               $$3 = $$5.b(90.0F).c(0.4).e($$3);
-               faz $$6 = $$3.d($$4).d().c(10.0).e($$4);
-               ji $$7 = ji.a((kb)$$6);
-               $$7 = this.b.dV().a(ecr.a.f, $$7);
-               if (!$$1.a((double)$$7.u(), (double)$$7.v(), (double)$$7.w(), $$0 ? this.d : this.c)) {
-                  this.i();
-                  this.e = this.b.dV().ad() + 200L;
-               } else if ($$0) {
-                  for (cly $$8 : $$2) {
-                     $$8.h($$7);
-                  }
-               }
-            }
+   public static boolean a(dgz $$0, ji $$1, azh $$2) {
+      if ($$0.a(dgr.a, $$1) > $$2.a(32)) {
+         return false;
+      } else {
+         eas $$3 = $$0.G_();
+         int $$4 = $$3.e();
+         if ($$4 < 15 && $$0.a(dgr.b, $$1) > $$4) {
+            return false;
+         } else {
+            int $$5 = $$0.a().af() ? $$0.c($$1, 10) : $$0.A($$1);
+            return $$5 <= $$3.d().a($$2);
          }
       }
+   }
 
-      private List<cly> h() {
-         return this.b.dV().a(cly.class, this.b.cR().g(16.0), $$0 -> $$0.gy() && !$$0.u(this.b));
-      }
+   public static boolean b(bus<? extends cly> $$0, dgz $$1, bur $$2, ji $$3, azh $$4) {
+      return $$1.am() != bsh.a && (bur.b($$2) || a($$1, $$3, $$4)) && a($$0, $$1, $$2, $$3, $$4);
+   }
 
-      private boolean i() {
-         azh $$0 = this.b.dY();
-         ji $$1 = this.b.dV().a(ecr.a.f, this.b.dv().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
-         return this.b.P().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), this.c);
+   public static boolean c(bus<? extends cly> $$0, dgj $$1, bur $$2, ji $$3, azh $$4) {
+      return $$1.am() != bsh.a && a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static bwo.a gx() {
+      return bvj.F().a(bwp.c);
+   }
+
+   @Override
+   public boolean em() {
+      return true;
+   }
+
+   @Override
+   protected boolean en() {
+      return true;
+   }
+
+   public boolean a(ard $$0, cox $$1) {
+      return true;
+   }
+
+   @Override
+   public cwp d(cwp $$0) {
+      if ($$0.h() instanceof cxl) {
+         Predicate<cwp> $$1 = ((cxl)$$0.h()).d();
+         cwp $$2 = cxl.a(this, $$1);
+         return $$2.f() ? new cwp(cwt.pb) : $$2;
+      } else {
+         return cwp.j;
       }
    }
 }

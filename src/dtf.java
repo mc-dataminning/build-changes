@@ -1,20 +1,30 @@
 import com.mojang.serialization.MapCodec;
 
-public class dtf extends dna {
+public class dtf extends dnc {
    public static final MapCodec<dtf> c = b(dtf::new);
-   public static final fbt e = djl.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   protected static final fbu g = djm.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<dtf> a() {
       return c;
    }
 
-   public dtf(dwv.d $$0) {
-      super($$0, jn.a, e, false);
+   public dtf(dww.d $$0) {
+      super($$0, jn.a, g, false, 0.1);
    }
 
    @Override
-   protected dnb c() {
-      return (dnb)djn.pb;
+   protected int a(azh $$0) {
+      return dov.a($$0);
+   }
+
+   @Override
+   protected djm b() {
+      return djo.pc;
+   }
+
+   @Override
+   protected boolean h(dwx $$0) {
+      return dov.a($$0);
    }
 }

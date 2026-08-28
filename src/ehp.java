@@ -1,52 +1,43 @@
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public class ehp extends ehm {
-   public ehp(Codec<eja> $$0) {
+public class ehp extends efy<eij> {
+   private static final ji a = new ji(8, 3, 8);
+   private static final dfo b = new dfo(a);
+   private static final int c = 16;
+   private static final int d = 1;
+
+   public ehp(Codec<eij> $$0) {
       super($$0);
    }
 
-   @Override
-   protected Set<ji> a(dhf $$0, eja $$1, azh $$2, ji $$3, Predicate<dww> $$4, int $$5, int $$6) {
-      Set<ji> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      Set<ji> $$8 = new HashSet<>();
-      ji.a $$9 = new ji.a();
-
-      for (ji $$10 : $$7) {
-         if (!a($$0, $$7, $$10, $$9)) {
-            $$8.add($$10);
-         }
-      }
-
-      for (ji $$11 : $$8) {
-         $$0.a($$11, djn.J.m(), 2);
-      }
-
-      return $$8;
-   }
-
-   private static boolean a(dhf $$0, Set<ji> $$1, ji $$2, ji.a $$3) {
-      return a($$0, $$2, $$3, jn.c) || a($$0, $$2, $$3, jn.f) || a($$0, $$2, $$3, jn.d) || a($$0, $$2, $$3, jn.e) || a($$0, $$2, $$3, jn.a);
-   }
-
-   private static boolean a(dhf $$0, ji $$1, ji.a $$2, jn $$3) {
-      $$2.a($$1, $$3);
-      return !$$0.a_($$2).c($$0, $$2, $$3.g());
+   private static int a(int $$0, int $$1, int $$2, int $$3) {
+      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
    }
 
    @Override
-   protected boolean a(dhf $$0, eja $$1, dys $$2, azh $$3, ji $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4.e())) {
-         dww $$5 = $$0.a_($$4);
-         if ($$5.b(dxm.J) && !$$5.c(dxm.J)) {
-            $$0.a($$4, $$5.b(dxm.J, Boolean.valueOf(true)), 2);
+   public boolean a(ega<eij> $$0) {
+      dhg $$1 = $$0.b();
+      dfo $$2 = new dfo($$0.e());
+      if (a($$2.h, $$2.i, b.h, b.i) > 1) {
+         return true;
+      } else {
+         ji $$3 = a.h($$0.e().v() + a.v());
+         ji.a $$4 = new ji.a();
+
+         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
+            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
+               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
+                  $$4.d($$6, $$3.v(), $$5);
+                  if ($$4.equals($$3)) {
+                     $$1.a($$4, djo.m.m(), 2);
+                  } else {
+                     $$1.a($$4, djo.b.m(), 2);
+                  }
+               }
+            }
          }
 
          return true;
-      } else {
-         return false;
       }
    }
 }

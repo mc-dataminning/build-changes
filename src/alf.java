@@ -20,12 +20,12 @@ public class alf {
       List<jt.b<?>> $$4 = axg.a($$0.b(ale.d), $$1);
       jt.a $$5 = jt.a.a($$4.stream());
       akt<JsonElement> $$6 = $$5.a(JsonOps.INSTANCE);
-      List<CompletableFuture<kn<?>>> $$7 = evs.a().map($$3x -> a($$3x, $$6, $$2, $$3)).toList();
+      List<CompletableFuture<kn<?>>> $$7 = evt.a().map($$3x -> a($$3x, $$6, $$2, $$3)).toList();
       CompletableFuture<List<kn<?>>> $$8 = af.d($$7);
       return $$8.thenApplyAsync($$2x -> a($$0, $$5, $$2x), $$3);
    }
 
-   private static <T> CompletableFuture<kn<?>> a(evs<T> $$0, akt<JsonElement> $$1, aup $$2, Executor $$3) {
+   private static <T> CompletableFuture<kn<?>> a(evt<T> $$0, akt<JsonElement> $$1, aup $$2, Executor $$3) {
       return CompletableFuture.supplyAsync(() -> {
          kn<T> $$3x = new jz<>($$0.b(), Lifecycle.experimental());
          Map<akv, T> $$4 = new HashMap<>();
@@ -49,8 +49,8 @@ public class alf {
 
    private static void a(jt.a $$0) {
       azf.a $$1 = new azf.a();
-      evw $$2 = new evw($$1, eyj.q, $$0);
-      evs.a().forEach($$2x -> a($$2, $$2x, $$0));
+      evx $$2 = new evx($$1, eyk.q, $$0);
+      evt.a().forEach($$2x -> a($$2, $$2x, $$0));
       $$1.a().forEach(($$0x, $$1x) -> a.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
    }
 
@@ -58,7 +58,7 @@ public class alf {
       return $$0.a(ale.d, new kf.c($$1).e());
    }
 
-   private static <T> void a(evw $$0, evs<T> $$1, jt.a $$2) {
+   private static <T> void a(evx $$0, evt<T> $$1, jt.a $$2) {
       jt<T> $$3 = $$2.d($$1.b());
       $$3.c().forEach($$2x -> $$1.a($$0, $$2x.h(), (T)$$2x.a()));
    }
@@ -78,8 +78,8 @@ public class alf {
          return this.a.d($$0).c_().map(aku::a).toList();
       }
 
-      public evv b(aku<evv> $$0) {
-         return this.a.a(mc.bg).flatMap($$1 -> $$1.a($$0)).map(jr::a).orElse(evv.a);
+      public evw b(aku<evw> $$0) {
+         return this.a.a(mc.bg).flatMap($$1 -> $$1.a($$0)).map(jr::a).orElse(evw.a);
       }
    }
 

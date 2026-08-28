@@ -1,7 +1,7 @@
 import java.util.UUID;
 
-public record xa(UUID a, coy b) {
-   public static xa a(coy $$0) {
+public record xa(UUID a, coz b) {
+   public static xa a(coz $$0) {
       return new xa(UUID.randomUUID(), $$0);
    }
 
@@ -17,7 +17,7 @@ public record xa(UUID a, coy b) {
       return this.a;
    }
 
-   public coy c() {
+   public coz c() {
       return this.b;
    }
 }

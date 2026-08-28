@@ -1,23 +1,42 @@
 import org.joml.Vector3f;
 
-public class gij extends gik<lo> {
-   protected gij(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lo $$7, gkb $$8) {
+public class gij extends gil<ln> {
+   private final Vector3f a;
+   private final Vector3f b;
+
+   protected gij(gfz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ln $$7, gkc $$8) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
       float $$9 = this.r.i() * 0.4F + 0.6F;
-      Vector3f $$10 = $$7.b();
-      this.v = this.a($$10.x(), $$9);
-      this.w = this.a($$10.y(), $$9);
-      this.x = this.a($$10.z(), $$9);
+      this.a = this.a($$7.b(), $$9);
+      this.b = this.a($$7.c(), $$9);
    }
 
-   public static class a implements gjj<lo> {
-      private final gkb a;
+   private Vector3f a(Vector3f $$0, float $$1) {
+      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   }
 
-      public a(gkb $$0) {
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
+   }
+
+   @Override
+   public void a(ffy $$0, fkr $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
+   }
+
+   public static class a implements gjk<ln> {
+      private final gkc a;
+
+      public a(gkc $$0) {
          this.a = $$0;
       }
 
-      public gjg a(lo $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public gjh a(ln $$0, gfz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new gij($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }

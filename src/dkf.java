@@ -1,32 +1,34 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dkf extends djl {
+public class dkf extends dli {
    public static final MapCodec<dkf> a = b(dkf::new);
-   private static final wp b = wp.c("container.cartography_table");
+   private static final fbu[] b = new fbu[]{
+      djm.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      djm.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      djm.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      djm.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      djm.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      djm.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      djm.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      djm.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
 
    @Override
    public MapCodec<dkf> a() {
       return a;
    }
 
-   protected dkf(dwv.d $$0) {
+   public dkf(dww.d $$0) {
       super($$0);
    }
 
    @Override
-   protected bsj a(dww $$0, dgh $$1, ji $$2, cow $$3, fav $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(awk.aw);
-      }
-
-      return bsj.a;
+   protected dgh d() {
+      return cwt.ve;
    }
 
-   @Nullable
    @Override
-   protected bsl b(dww $$0, dgh $$1, ji $$2) {
-      return new bsr(($$2x, $$3, $$4) -> new csj($$2x, $$3, cso.a($$1, $$2)), b);
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return b[this.h($$0)];
    }
 }

@@ -19,12 +19,12 @@ public class ane {
       );
    }
 
-   private static void a(ex $$0, are $$1, dge $$2) {
+   private static void a(ex $$0, are $$1, dgf $$2) {
       wp $$3 = wp.c("gameMode." + $$2.b());
       if ($$0.f() == $$1) {
          $$0.a(() -> wp.a("commands.gamemode.success.self", $$3), true);
       } else {
-         if ($$0.e().O().b(dgd.p)) {
+         if ($$0.e().O().b(dge.p)) {
             $$1.a(wp.a("gameMode.changed", $$3));
          }
 
@@ -32,7 +32,7 @@ public class ane {
       }
    }
 
-   private static int a(CommandContext<ex> $$0, Collection<are> $$1, dge $$2) {
+   private static int a(CommandContext<ex> $$0, Collection<are> $$1, dgf $$2) {
       int $$3 = 0;
 
       for (are $$4 : $$1) {

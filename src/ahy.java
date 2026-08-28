@@ -8,9 +8,9 @@ public class ahy implements yw<agg> {
    private final boolean g;
    private final boolean h;
    private final boolean i;
-   private final dui.a j;
+   private final duj.a j;
 
-   public ahy(ji $$0, String $$1, dui.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+   public ahy(ji $$0, String $$1, duj.a $$2, boolean $$3, boolean $$4, boolean $$5) {
       this.e = $$0;
       this.f = $$1;
       this.g = $$3;
@@ -22,7 +22,7 @@ public class ahy implements yw<agg> {
    private ahy(vl $$0) {
       this.e = $$0.e();
       this.f = $$0.p();
-      this.j = $$0.b(dui.a.class);
+      this.j = $$0.b(duj.a.class);
       int $$1 = $$0.readByte();
       this.g = ($$1 & 1) != 0;
       this.h = ($$1 & 2) != 0;
@@ -78,7 +78,7 @@ public class ahy implements yw<agg> {
       return this.i;
    }
 
-   public dui.a i() {
+   public duj.a i() {
       return this.j;
    }
 }

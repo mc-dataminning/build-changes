@@ -1,25 +1,19 @@
-public class cey extends cfk {
-   public static final float a = 8.0F;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
+public class cey extends cfr<buc> {
    @Override
-   protected boolean a(ard $$0, bvg $$1, bvg $$2) {
-      return this.b($$1, $$2) && $$2.bm() && (this.b($$2) || this.a($$1, $$2)) && cfq.c($$0, $$1, $$2);
+   public Set<cel<?>> a() {
+      return ImmutableSet.of(cel.K, cel.h);
    }
 
-   private boolean a(bvg $$0, bvg $$1) {
-      return !$$0.eb().a(cek.U) && $$1.aq().a(awt.j);
+   protected void a(ard $$0, buc $$1) {
+      $$1.eb().c(cel.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   private boolean b(bvg $$0) {
-      return $$0.aq().a(awt.i);
-   }
-
-   private boolean b(bvg $$0, bvg $$1) {
-      return $$1.g((buk)$$0) <= 64.0;
-   }
-
-   @Override
-   protected cek<bvg> b() {
-      return cek.B;
+   private void a(buc $$0, cen $$1) {
+      Optional<buc> $$2 = $$1.a($$1x -> $$1x.aq() == $$0.aq() && !$$1x.e_()).map(buc.class::cast);
+      $$0.eb().a(cel.K, $$2);
    }
 }

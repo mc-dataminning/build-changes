@@ -1,5 +1,5 @@
-public record kz(ard a, ji b, dww c, dus d) {
-   public faz a() {
+public record kz(ard a, ji b, dwx c, dut d) {
+   public fba a() {
       return this.b.b();
    }
 
@@ -11,11 +11,11 @@ public record kz(ard a, ji b, dww c, dus d) {
       return this.b;
    }
 
-   public dww d() {
+   public dwx d() {
       return this.c;
    }
 
-   public dus e() {
+   public dut e() {
       return this.d;
    }
 }

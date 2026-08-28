@@ -1,21 +1,36 @@
-public class gde extends gcn<gzv> {
-   public gde(gfc $$0) {
+import org.joml.Quaternionf;
+
+public class gde<T extends gzw> extends gco<T> {
+   private static final String a = "cape";
+   private final gfd b = this.q.b("cape");
+
+   public gde(gfd $$0) {
       super($$0);
    }
 
-   public static gfi a() {
-      gfk $$0 = gcn.a(gfg.a, 0.0F);
-      gfm $$1 = $$0.a();
-      gfm $$2 = $$1.a("head");
+   public static gfj a() {
+      gfl $$0 = gco.a(gfh.a, 0.0F);
+      gfn $$1 = $$0.a();
+      gfn $$2 = $$1.a("head");
       $$2.a("hat");
-      $$1.a("body");
+      gfn $$3 = $$1.a("body");
       $$1.a("left_arm");
       $$1.a("right_arm");
       $$1.a("left_leg");
       $$1.a("right_leg");
-      gfh $$3 = gfh.c().a(24, 0).a(-3.0F, -6.0F, -1.0F, 6.0F, 6.0F, 1.0F, new gfg(1.0F));
-      $$2.a("left_ear", $$3, gfe.a(-6.0F, -6.0F, 0.0F));
-      $$2.a("right_ear", $$3, gfe.a(6.0F, -6.0F, 0.0F));
-      return gfi.a($$0, 64, 64);
+      $$3.a("cape", gfi.c().a(0, 0).a(-5.0F, 0.0F, -1.0F, 10.0F, 16.0F, 1.0F, gfh.a, 1.0F, 0.5F), gff.a(0.0F, 0.0F, 2.0F, 0.0F, (float) Math.PI, 0.0F));
+      return gfj.a($$0, 64, 64);
+   }
+
+   public void a(T $$0) {
+      super.a($$0);
+      this.b
+         .a(
+            new Quaternionf()
+               .rotateY((float) -Math.PI)
+               .rotateX((6.0F + $$0.c / 2.0F + $$0.b) * (float) (Math.PI / 180.0))
+               .rotateZ($$0.d / 2.0F * (float) (Math.PI / 180.0))
+               .rotateY((180.0F - $$0.d / 2.0F) * (float) (Math.PI / 180.0))
+         );
    }
 }

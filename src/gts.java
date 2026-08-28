@@ -1,9 +1,9 @@
-public class gts extends gqx<cho, gzt, gda> {
-   private static final akv a = akv.b("textures/entity/pig/pig.png");
+public class gts extends gtk<cma, gzt, gda> {
+   private static final akv a = akv.b("textures/entity/phantom.png");
 
-   public gts(gsd.a $$0) {
-      super($$0, new gda($$0.a(gfb.bP)), new gda($$0.a(gfb.ca)), 0.7F);
-      this.a(new gwt<>(this, new gda($$0.a(gfb.cc)), new gda($$0.a(gfb.cb)), akv.b("textures/entity/pig/pig_saddle.png")));
+   public gts(gse.a $$0) {
+      super($$0, new gda($$0.a(gfc.bO)), 0.75F);
+      this.a(new gwr(this));
    }
 
    public akv a(gzt $$0) {
@@ -14,8 +14,20 @@ public class gts extends gqx<cho, gzt, gda> {
       return new gzt();
    }
 
-   public void a(cho $$0, gzt $$1, float $$2) {
+   public void a(cma $$0, gzt $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.j();
+      $$1.a = (float)$$0.p() + $$1.u;
+      $$1.b = $$0.m();
+   }
+
+   protected void a(gzt $$0, ffu $$1) {
+      float $$2 = 1.0F + 0.15F * (float)$$0.b;
+      $$1.b($$2, $$2, $$2);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(gzt $$0, ffu $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$1.a(a.b.rotationDegrees($$0.ab));
    }
 }

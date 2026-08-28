@@ -1,75 +1,65 @@
-public class gis extends gkg {
-   private final double a;
-   private final double b;
-   private final double F;
-   private final int G;
-   private final int H;
-
-   gis(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, int $$8) {
-      super($$0, $$1, $$2, $$3);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      this.n = false;
-      this.t = (int)(Math.random() * 5.0) + 25;
-      this.G = $$7;
-      this.H = $$8;
+public class gis extends gjp {
+   gis(gfz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    @Override
-   public gjk b() {
-      return gjk.b;
+   public gjl b() {
+      return gjl.b;
    }
 
    @Override
    public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1 * 0.5F);
    }
 
    @Override
    public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         float $$1 = 1.0F - $$0;
-         this.g = this.a + this.j * (double)$$1;
-         this.h = this.b + this.k * (double)$$1;
-         this.i = this.F + this.l * (double)$$1;
-         int $$2 = axk.a($$0, this.G, this.H);
-         this.a((float)axk.b($$2) / 255.0F, (float)axk.c($$2) / 255.0F, (float)axk.d($$2) / 255.0F);
-         this.e((float)axk.a($$2) / 255.0F);
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = ayz.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
       }
+
+      return $$3 | $$4 << 16;
    }
 
-   public static class a implements gjj<lx> {
-      private final gkb a;
+   public static class a implements gjk<lx> {
+      private final gkc a;
 
-      public a(gkb $$0) {
+      public a(gkc $$0) {
          this.a = $$0;
       }
 
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gis $$8 = new gis($$1, $$2, $$3, $$4, $$5, $$6, $$7, -12210434, -1);
-         $$8.d(ayz.b($$1.H_(), 3.0F, 5.0F));
+      public gjh a(lx $$0, gfz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gis $$8 = new gis($$1, $$2, $$3, $$4, $$5, $$6, $$7);
          $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements gjk<lx> {
+      private final gkc a;
+
+      public b(gkc $$0) {
+         this.a = $$0;
+      }
+
+      public gjh a(lx $$0, gfz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gis $$8 = new gis($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.d(0.5F);
          return $$8;
       }
    }

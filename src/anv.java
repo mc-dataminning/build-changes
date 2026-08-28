@@ -30,7 +30,7 @@ public class anv {
       if ($$1.aT()) {
          throw c.create();
       } else {
-         Consumer<boq> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<bor> $$2 = $$1x -> a($$0, $$1x);
          Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
          $$1.a($$2, $$3);
          $$0.a(() -> wp.c("commands.perf.started"), false);
@@ -53,14 +53,14 @@ public class anv {
 
       String $$4;
       try {
-         $$4 = v.a(bqn.a, $$3, ".zip");
+         $$4 = v.a(bqo.a, $$3, ".zip");
       } catch (IOException var11) {
          $$0.b(wp.c("commands.perf.reportFailed"));
          a.error("Failed to create report name", var11);
          return;
       }
 
-      try (ayk $$7 = new ayk(bqn.a.resolve($$4))) {
+      try (ayk $$7 = new ayk(bqo.a.resolve($$4))) {
          $$7.a(Paths.get("system.txt"), $$2.b(new ad()).a());
          $$7.a($$1);
       }
@@ -74,8 +74,8 @@ public class anv {
       $$0.a(() -> wp.a("commands.perf.reportSaved", $$4), false);
    }
 
-   private static void a(ex $$0, boq $$1) {
-      if ($$1 != bom.a) {
+   private static void a(ex $$0, bor $$1) {
+      if ($$1 != bon.a) {
          int $$2 = $$1.f();
          double $$3 = (double)$$1.g() / (double)bab.a;
          $$0.a(() -> wp.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);

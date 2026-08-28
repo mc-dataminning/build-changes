@@ -1,209 +1,106 @@
 import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
-import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
-import com.mojang.authlib.exceptions.InvalidCredentialsException;
-import com.mojang.authlib.exceptions.UserBannedException;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
 import com.mojang.logging.LogUtils;
-import java.math.BigInteger;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
+import java.util.List;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import net.minecraft.client.ClientBrandRetriever;
 import org.slf4j.Logger;
 
-public class gfx implements aiq {
-   private static final Logger a = LogUtils.getLogger();
-   private final fli b;
+public class gfx extends gfw implements aat, wd {
+   private static final Logger l = LogUtils.getLogger();
+   private final GameProfile m;
+   private crt n;
+   private final kf.b o;
+   private final ggn p = new ggn();
    @Nullable
-   private final ggn c;
+   private ggg q;
    @Nullable
-   private final fuk d;
-   private final Consumer<wp> e;
-   private final vi f;
-   private final boolean g;
-   @Nullable
-   private final Duration h;
-   @Nullable
-   private String i;
-   private final Map<akv, byte[]> j;
-   private final boolean k;
-   private final AtomicReference<gfx.a> l = new AtomicReference<>(gfx.a.a);
+   protected fou.b k;
 
-   public gfx(vi $$0, fli $$1, @Nullable ggn $$2, @Nullable fuk $$3, boolean $$4, @Nullable Duration $$5, Consumer<wp> $$6, @Nullable ggr $$7) {
-      this.f = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$6;
-      this.g = $$4;
-      this.h = $$5;
-      this.j = $$7 != null ? new HashMap<>($$7.a()) : new HashMap<>();
-      this.k = $$7 != null;
-   }
-
-   private void a(gfx.a $$0) {
-      gfx.a $$1 = this.l.updateAndGet($$1x -> {
-         if (!$$0.f.contains($$1x)) {
-            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
-         } else {
-            return $$0;
-         }
-      });
-      this.e.accept($$1.e);
-   }
-
-   @Override
-   public void a(ais $$0) {
-      this.a(gfx.a.b);
-
-      Cipher $$4;
-      Cipher $$5;
-      String $$3;
-      ajb $$7;
-      try {
-         SecretKey $$1 = axx.a();
-         PublicKey $$2 = $$0.e();
-         $$3 = new BigInteger(axx.a($$0.b(), $$2, $$1)).toString(16);
-         $$4 = axx.a(2, $$1);
-         $$5 = axx.a(1, $$1);
-         byte[] $$6 = $$0.f();
-         $$7 = new ajb($$1, $$2, $$6);
-      } catch (Exception var9) {
-         throw new IllegalStateException("Protocol error", var9);
-      }
-
-      if ($$0.g()) {
-         af.h().execute(() -> {
-            wp $$4x = this.b($$3);
-            if ($$4x != null) {
-               if (this.c == null || !this.c.d()) {
-                  this.f.a($$4x);
-                  return;
-               }
-
-               a.warn($$4x.getString());
-            }
-
-            this.a($$7, $$4, $$5);
-         });
-      } else {
-         this.a($$7, $$4, $$5);
-      }
-   }
-
-   private void a(ajb $$0, Cipher $$1, Cipher $$2) {
-      this.a(gfx.a.c);
-      this.f.a($$0, vw.a(() -> this.f.a($$1, $$2)));
-   }
-
-   @Nullable
-   private wp b(String $$0) {
-      try {
-         this.d().joinServer(this.b.X().b(), this.b.X().d(), $$0);
-         return null;
-      } catch (AuthenticationUnavailableException var3) {
-         return wp.a("disconnect.loginFailedInfo", wp.c("disconnect.loginFailedInfo.serversUnavailable"));
-      } catch (InvalidCredentialsException var4) {
-         return wp.a("disconnect.loginFailedInfo", wp.c("disconnect.loginFailedInfo.invalidSession"));
-      } catch (InsufficientPrivilegesException var5) {
-         return wp.a("disconnect.loginFailedInfo", wp.c("disconnect.loginFailedInfo.insufficientPrivileges"));
-      } catch (ForcedUsernameChangeException | UserBannedException var6) {
-         return wp.a("disconnect.loginFailedInfo", wp.c("disconnect.loginFailedInfo.userBanned"));
-      } catch (AuthenticationException var7) {
-         return wp.a("disconnect.loginFailedInfo", var7.getMessage());
-      }
-   }
-
-   private MinecraftSessionService d() {
-      return this.b.am();
-   }
-
-   @Override
-   public void a(aiv $$0) {
-      this.a(gfx.a.d);
-      GameProfile $$1 = $$0.b();
-      this.f
-         .a(
-            aba.d,
-            new gfw(this.b, this.f, new ggd($$1, this.b.u().a(this.g, this.h, this.i), ggb.a().a(), cru.h, null, this.c, this.d, this.j, null, Map.of(), aln.a))
-         );
-      this.f.a(ajc.a);
-      this.f.a(aba.b);
-      this.f.a(new zr(new zx(ClientBrandRetriever.getClientModName())));
-      this.f.a(new zq(this.b.n.aA()));
-   }
-
-   @Override
-   public void a(vk $$0) {
-      wp $$1 = this.k ? wo.q : wo.r;
-      if (this.c != null && this.c.e()) {
-         this.b.a(new hla(this.d, $$1, $$0.a()));
-      } else {
-         this.b.a(new ftr(this.d, $$1, $$0));
-      }
+   public gfx(flj $$0, vi $$1, gge $$2) {
+      super($$0, $$1, $$2);
+      this.m = $$2.a();
+      this.o = $$2.c();
+      this.n = $$2.d();
+      this.k = $$2.i();
    }
 
    @Override
    public boolean c() {
-      return this.f.i();
+      return this.b.i();
    }
 
    @Override
-   public void a(aiu $$0) {
-      this.f.a($$0.b());
+   protected void a(zz $$0) {
+      this.b($$0);
+   }
+
+   private void b(zz $$0) {
+      l.warn("Unknown custom packet payload: {}", $$0.a().a());
    }
 
    @Override
-   public void a(ait $$0) {
-      if (!this.f.e()) {
-         this.f.a($$0.b(), false);
+   public void a(aav $$0) {
+      yz.a($$0, this, this.a);
+      this.p.a($$0.b(), $$0.e());
+   }
+
+   @Override
+   public void a(zn $$0) {
+      yz.a($$0, this, this.a);
+      this.p.a($$0.b());
+   }
+
+   @Override
+   public void a(aay $$0) {
+      this.n = crv.e.a($$0.b());
+   }
+
+   @Override
+   public void a(aax $$0) {
+      yz.a($$0, this, this.a);
+      if (this.q == null) {
+         this.q = new ggg();
+      }
+
+      List<atw> $$1 = this.q.a($$0.b());
+      this.b(new abd($$1));
+   }
+
+   @Override
+   public void a(aaw $$0) {
+      this.k = null;
+   }
+
+   private <T> T a(Function<aus, T> $$0) {
+      if (this.q == null) {
+         return $$0.apply(aus.b);
+      } else {
+         Object var3;
+         try (auf $$1 = this.q.a()) {
+            var3 = $$0.apply($$1);
+         }
+
+         return (T)var3;
       }
    }
 
    @Override
-   public void a(air $$0) {
-      this.e.accept(wp.c("connect.negotiating"));
-      this.f.a(new aiz($$0.b(), null));
-   }
-
-   public void a(@Nullable String $$0) {
-      this.i = $$0;
-   }
-
-   @Override
-   public void a(abg $$0) {
-      this.f.a(new abj($$0.b(), this.j.get($$0.b())));
+   public void a(aau $$0) {
+      yz.a($$0, this, this.a);
+      kf.b $$1 = this.a($$0x -> this.p.a($$0x, this.o, this.b.e()));
+      this.b.a(agf.b.a(wa.a($$1)), new gga(this.a, this.b, new gge(this.m, this.e, $$1, this.n, this.d, this.c, this.f, this.h, this.k, this.i, this.j)));
+      this.b.a(abc.a);
+      this.b.a(agf.a.a(wa.a($$1)));
    }
 
    @Override
-   public void a(o $$0, p $$1) {
-      $$1.a("Server type", () -> this.c != null ? this.c.f().toString() : "<unknown>");
-      $$1.a("Login phase", () -> this.l.get().toString());
-      $$1.a("Is Local", () -> String.valueOf(this.f.e()));
+   public void d() {
+      this.e();
    }
 
-   static enum a {
-      a(wp.c("connect.connecting"), Set.of()),
-      b(wp.c("connect.authorizing"), Set.of(a)),
-      c(wp.c("connect.encrypting"), Set.of(b)),
-      d(wp.c("connect.joining"), Set.of(c, a));
-
-      final wp e;
-      final Set<gfx.a> f;
-
-      private a(final wp $$0, final Set<gfx.a> $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
+   @Override
+   public void a(vk $$0) {
+      super.a($$0);
+      this.a.z();
    }
 }

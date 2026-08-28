@@ -2,7 +2,7 @@ public class aem implements yw<abl> {
    public static final yn<vl, aem> a = yw.a(aem::a, aem::new);
    private final double b;
 
-   public aem(dym $$0) {
+   public aem(dyn $$0) {
       this.b = $$0.k();
    }
 

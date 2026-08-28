@@ -1,78 +1,26 @@
-public interface del {
-   aku<deg> a = dem.a("trades/desert_armorer_boots_4");
-   aku<deg> b = dem.a("trades/desert_armorer_leggings_4");
-   aku<deg> c = dem.a("trades/desert_armorer_chestplate_4");
-   aku<deg> d = dem.a("trades/desert_armorer_helmet_4");
-   aku<deg> e = dem.a("trades/desert_armorer_leggings_5");
-   aku<deg> f = dem.a("trades/desert_armorer_chestplate_5");
-   aku<deg> g = dem.a("trades/plains_armorer_boots_4");
-   aku<deg> h = dem.a("trades/plains_armorer_leggings_4");
-   aku<deg> i = dem.a("trades/plains_armorer_chestplate_4");
-   aku<deg> j = dem.a("trades/plains_armorer_helmet_4");
-   aku<deg> k = dem.a("trades/plains_armorer_boots_5");
-   aku<deg> l = dem.a("trades/plains_armorer_leggings_5");
-   aku<deg> m = dem.a("trades/savanna_armorer_boots_4");
-   aku<deg> n = dem.a("trades/savanna_armorer_leggings_4");
-   aku<deg> o = dem.a("trades/savanna_armorer_chestplate_4");
-   aku<deg> p = dem.a("trades/savanna_armorer_helmet_4");
-   aku<deg> q = dem.a("trades/savanna_armorer_chestplate_5");
-   aku<deg> r = dem.a("trades/savanna_armorer_helmet_5");
-   aku<deg> s = dem.a("trades/snow_armorer_boots_4");
-   aku<deg> t = dem.a("trades/snow_armorer_helmet_4");
-   aku<deg> u = dem.a("trades/snow_armorer_boots_5");
-   aku<deg> v = dem.a("trades/snow_armorer_helmet_5");
-   aku<deg> w = dem.a("trades/jungle_armorer_boots_4");
-   aku<deg> x = dem.a("trades/jungle_armorer_leggings_4");
-   aku<deg> y = dem.a("trades/jungle_armorer_chestplate_4");
-   aku<deg> z = dem.a("trades/jungle_armorer_helmet_4");
-   aku<deg> A = dem.a("trades/jungle_armorer_boots_5");
-   aku<deg> B = dem.a("trades/jungle_armorer_helmet_5");
-   aku<deg> C = dem.a("trades/swamp_armorer_boots_4");
-   aku<deg> D = dem.a("trades/swamp_armorer_leggings_4");
-   aku<deg> E = dem.a("trades/swamp_armorer_chestplate_4");
-   aku<deg> F = dem.a("trades/swamp_armorer_helmet_4");
-   aku<deg> G = dem.a("trades/swamp_armorer_boots_5");
-   aku<deg> H = dem.a("trades/swamp_armorer_helmet_5");
-   aku<deg> I = dem.a("trades/taiga_armorer_leggings_5");
-   aku<deg> J = dem.a("trades/taiga_armorer_chestplate_5");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(qe<deg> $$0) {
-      js<dcy> $$1 = $$0.a(mc.aO);
-      $$0.a(a, new dek($$1.b(ddd.h), brl.a(1)));
-      $$0.a(b, new dek($$1.b(ddd.h), brl.a(1)));
-      $$0.a(c, new dek($$1.b(ddd.h), brl.a(1)));
-      $$0.a(d, new dek($$1.b(ddd.h), brl.a(1)));
-      $$0.a(e, new dek($$1.b(ddd.h), brl.a(1)));
-      $$0.a(f, new dek($$1.b(ddd.h), brl.a(1)));
-      $$0.a(g, new dek($$1.b(ddd.a), brl.a(1)));
-      $$0.a(h, new dek($$1.b(ddd.a), brl.a(1)));
-      $$0.a(i, new dek($$1.b(ddd.a), brl.a(1)));
-      $$0.a(j, new dek($$1.b(ddd.a), brl.a(1)));
-      $$0.a(k, new dek($$1.b(ddd.a), brl.a(1)));
-      $$0.a(l, new dek($$1.b(ddd.a), brl.a(1)));
-      $$0.a(m, new dek($$1.b(ddd.k), brl.a(1)));
-      $$0.a(n, new dek($$1.b(ddd.k), brl.a(1)));
-      $$0.a(o, new dek($$1.b(ddd.k), brl.a(1)));
-      $$0.a(p, new dek($$1.b(ddd.k), brl.a(1)));
-      $$0.a(q, new dek($$1.b(ddd.k), brl.a(1)));
-      $$0.a(r, new dek($$1.b(ddd.k), brl.a(1)));
-      $$0.a(s, new dek($$1.b(ddd.j), brl.a(1)));
-      $$0.a(t, new dek($$1.b(ddd.g), brl.a(1)));
-      $$0.a(u, new dek($$1.b(ddd.j), brl.a(1)));
-      $$0.a(v, new dek($$1.b(ddd.g), brl.a(1)));
-      $$0.a(w, new dek($$1.b(ddd.w), brl.a(1)));
-      $$0.a(x, new dek($$1.b(ddd.w), brl.a(1)));
-      $$0.a(y, new dek($$1.b(ddd.w), brl.a(1)));
-      $$0.a(z, new dek($$1.b(ddd.w), brl.a(1)));
-      $$0.a(A, new dek($$1.b(ddd.c), brl.a(1)));
-      $$0.a(B, new dek($$1.b(ddd.e), brl.a(1)));
-      $$0.a(C, new dek($$1.b(ddd.O), brl.a(1)));
-      $$0.a(D, new dek($$1.b(ddd.O), brl.a(1)));
-      $$0.a(E, new dek($$1.b(ddd.O), brl.a(1)));
-      $$0.a(F, new dek($$1.b(ddd.O), brl.a(1)));
-      $$0.a(G, new dek($$1.b(ddd.i), brl.a(1)));
-      $$0.a(H, new dek($$1.b(ddd.f), brl.a(1)));
-      $$0.a(I, new dek($$1.b(ddd.d), brl.a(1)));
-      $$0.a(J, new dek($$1.b(ddd.d), brl.a(1)));
+public record del(jr<dcz> c, brp d) implements deh {
+   public static final MapCodec<del> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dcz.c.fieldOf("enchantment").forGetter(del::b), brp.c.fieldOf("level").forGetter(del::c)).apply($$0, del::new)
+   );
+
+   @Override
+   public void a(cwp $$0, ddf.a $$1, azh $$2, bsi $$3) {
+      $$1.b(this.c, ayz.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
+   }
+
+   @Override
+   public MapCodec<del> a() {
+      return b;
+   }
+
+   public jr<dcz> b() {
+      return this.c;
+   }
+
+   public brp c() {
+      return this.d;
    }
 }

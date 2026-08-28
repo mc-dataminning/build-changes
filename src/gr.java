@@ -34,35 +34,35 @@ public class gr {
    private static final char m = ',';
    private static final char n = '#';
    private static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> o = SuggestionsBuilder::buildFuture;
-   private final jt<djl> p;
+   private final jt<djm> p;
    private final StringReader q;
    private final boolean r;
    private final boolean s;
-   private final Map<dxy<?>, Comparable<?>> t = Maps.newHashMap();
+   private final Map<dxz<?>, Comparable<?>> t = Maps.newHashMap();
    private final Map<String, String> u = Maps.newHashMap();
    private akv v = akv.b("");
    @Nullable
-   private dwx<djl, dww> w;
+   private dwy<djm, dwx> w;
    @Nullable
-   private dww x;
+   private dwx x;
    @Nullable
    private tq y;
    @Nullable
-   private jv<djl> z;
+   private jv<djm> z;
    private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> A = o;
 
-   private gr(jt<djl> $$0, StringReader $$1, boolean $$2, boolean $$3) {
+   private gr(jt<djm> $$0, StringReader $$1, boolean $$2, boolean $$3) {
       this.p = $$0;
       this.q = $$1;
       this.r = $$2;
       this.s = $$3;
    }
 
-   public static gr.a a(jt<djl> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+   public static gr.a a(jt<djm> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
       return a($$0, new StringReader($$1), $$2);
    }
 
-   public static gr.a a(jt<djl> $$0, StringReader $$1, boolean $$2) throws CommandSyntaxException {
+   public static gr.a a(jt<djm> $$0, StringReader $$1, boolean $$2) throws CommandSyntaxException {
       int $$3 = $$1.getCursor();
 
       try {
@@ -75,11 +75,11 @@ public class gr {
       }
    }
 
-   public static Either<gr.a, gr.b> b(jt<djl> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+   public static Either<gr.a, gr.b> b(jt<djm> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
       return b($$0, new StringReader($$1), $$2);
    }
 
-   public static Either<gr.a, gr.b> b(jt<djl> $$0, StringReader $$1, boolean $$2) throws CommandSyntaxException {
+   public static Either<gr.a, gr.b> b(jt<djm> $$0, StringReader $$1, boolean $$2) throws CommandSyntaxException {
       int $$3 = $$1.getCursor();
 
       try {
@@ -92,7 +92,7 @@ public class gr {
       }
    }
 
-   public static CompletableFuture<Suggestions> a(jt<djl> $$0, SuggestionsBuilder $$1, boolean $$2, boolean $$3) {
+   public static CompletableFuture<Suggestions> a(jt<djm> $$0, SuggestionsBuilder $$1, boolean $$2, boolean $$3) {
       StringReader $$4 = new StringReader($$1.getInput());
       $$4.setCursor($$1.getStart());
       gr $$5 = new gr($$0, $$4, $$2, $$3);
@@ -153,7 +153,7 @@ public class gr {
    private CompletableFuture<Suggestions> c(SuggestionsBuilder $$0) {
       String $$1 = $$0.getRemaining().toLowerCase(Locale.ROOT);
 
-      for (dxy<?> $$2 : this.x.F()) {
+      for (dxz<?> $$2 : this.x.F()) {
          if (!this.t.containsKey($$2) && $$2.f().startsWith($$1)) {
             $$0.suggest($$2.f() + "=");
          }
@@ -165,8 +165,8 @@ public class gr {
    private CompletableFuture<Suggestions> d(SuggestionsBuilder $$0) {
       String $$1 = $$0.getRemaining().toLowerCase(Locale.ROOT);
       if (this.z != null) {
-         for (jr<djl> $$2 : this.z) {
-            for (dxy<?> $$3 : $$2.a().l().d()) {
+         for (jr<djm> $$2 : this.z) {
+            for (dxz<?> $$3 : $$2.a().l().d()) {
                if (!this.u.containsKey($$3.f()) && $$3.f().startsWith($$1)) {
                   $$0.suggest($$3.f() + "=");
                }
@@ -190,7 +190,7 @@ public class gr {
          return this.x.x();
       } else {
          if (this.z != null) {
-            for (jr<djl> $$0 : this.z) {
+            for (jr<djm> $$0 : this.z) {
                if ($$0.a().m().x()) {
                   return true;
                }
@@ -221,7 +221,7 @@ public class gr {
       return $$0.buildFuture();
    }
 
-   private static <T extends Comparable<T>> SuggestionsBuilder a(SuggestionsBuilder $$0, dxy<T> $$1) {
+   private static <T extends Comparable<T>> SuggestionsBuilder a(SuggestionsBuilder $$0, dxz<T> $$1) {
       for (T $$2 : $$1.a()) {
          if ($$2 instanceof Integer $$3) {
             $$0.suggest($$3);
@@ -236,15 +236,15 @@ public class gr {
    private CompletableFuture<Suggestions> a(SuggestionsBuilder $$0, String $$1) {
       boolean $$2 = false;
       if (this.z != null) {
-         for (jr<djl> $$3 : this.z) {
-            djl $$4 = $$3.a();
-            dxy<?> $$5 = $$4.l().a($$1);
+         for (jr<djm> $$3 : this.z) {
+            djm $$4 = $$3.a();
+            dxz<?> $$5 = $$4.l().a($$1);
             if ($$5 != null) {
                a($$0, $$5);
             }
 
             if (!$$2) {
-               for (dxy<?> $$6 : $$4.l().d()) {
+               for (dxz<?> $$6 : $$4.l().d()) {
                   if (!this.u.containsKey($$6.f())) {
                      $$2 = true;
                      break;
@@ -267,8 +267,8 @@ public class gr {
          boolean $$1 = false;
          boolean $$2 = false;
 
-         for (jr<djl> $$3 : this.z) {
-            djl $$4 = $$3.a();
+         for (jr<djm> $$3 : this.z) {
+            djm $$4 = $$3.a();
             $$1 |= !$$4.l().d().isEmpty();
             $$2 |= $$4.m().x();
             if ($$1 && $$2) {
@@ -319,7 +319,7 @@ public class gr {
    private void c() throws CommandSyntaxException {
       int $$0 = this.q.getCursor();
       this.v = akv.a(this.q);
-      djl $$1 = this.p.a(aku.a(mc.f, this.v)).orElseThrow(() -> {
+      djm $$1 = this.p.a(aku.a(mc.f, this.v)).orElseThrow(() -> {
          this.q.setCursor($$0);
          return b.createWithContext(this.q, this.v.toString());
       }).a();
@@ -351,7 +351,7 @@ public class gr {
          this.q.skipWhitespace();
          int $$0 = this.q.getCursor();
          String $$1 = this.q.readString();
-         dxy<?> $$2 = this.w.a($$1);
+         dxz<?> $$2 = this.w.a($$1);
          if ($$2 == null) {
             this.q.setCursor($$0);
             throw c.createWithContext(this.q, this.v.toString(), $$1);
@@ -452,7 +452,7 @@ public class gr {
       this.y = new uo(this.q).f();
    }
 
-   private <T extends Comparable<T>> void a(dxy<T> $$0, String $$1, int $$2) throws CommandSyntaxException {
+   private <T extends Comparable<T>> void a(dxz<T> $$0, String $$1, int $$2) throws CommandSyntaxException {
       Optional<T> $$3 = $$0.b($$1);
       if ($$3.isPresent()) {
          this.x = this.x.b($$0, $$3.get());
@@ -463,13 +463,13 @@ public class gr {
       }
    }
 
-   public static String a(dww $$0) {
+   public static String a(dwx $$0) {
       StringBuilder $$1 = new StringBuilder($$0.c().e().map($$0x -> $$0x.a().toString()).orElse("air"));
       if (!$$0.F().isEmpty()) {
          $$1.append('[');
          boolean $$2 = false;
 
-         for (Entry<dxy<?>, Comparable<?>> $$3 : $$0.G().entrySet()) {
+         for (Entry<dxz<?>, Comparable<?>> $$3 : $$0.G().entrySet()) {
             if ($$2) {
                $$1.append(',');
             }
@@ -484,15 +484,15 @@ public class gr {
       return $$1.toString();
    }
 
-   private static <T extends Comparable<T>> void a(StringBuilder $$0, dxy<T> $$1, Comparable<?> $$2) {
+   private static <T extends Comparable<T>> void a(StringBuilder $$0, dxz<T> $$1, Comparable<?> $$2) {
       $$0.append($$1.f());
       $$0.append('=');
       $$0.append($$1.b((T)$$2));
    }
 
-   public static record a(dww a, Map<dxy<?>, Comparable<?>> b, @Nullable tq c) {
+   public static record a(dwx a, Map<dxz<?>, Comparable<?>> b, @Nullable tq c) {
    }
 
-   public static record b(jv<djl> a, Map<String, String> b, @Nullable tq c) {
+   public static record b(jv<djm> a, Map<String, String> b, @Nullable tq c) {
    }
 }

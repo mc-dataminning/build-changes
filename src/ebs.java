@@ -1,133 +1,104 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public record ebs(int ak) {
-   public static final jr.c<ebs> a = a("block_activate");
-   public static final jr.c<ebs> b = a("block_attach");
-   public static final jr.c<ebs> c = a("block_change");
-   public static final jr.c<ebs> d = a("block_close");
-   public static final jr.c<ebs> e = a("block_deactivate");
-   public static final jr.c<ebs> f = a("block_destroy");
-   public static final jr.c<ebs> g = a("block_detach");
-   public static final jr.c<ebs> h = a("block_open");
-   public static final jr.c<ebs> i = a("block_place");
-   public static final jr.c<ebs> j = a("container_close");
-   public static final jr.c<ebs> k = a("container_open");
-   public static final jr.c<ebs> l = a("drink");
-   public static final jr.c<ebs> m = a("eat");
-   public static final jr.c<ebs> n = a("elytra_glide");
-   public static final jr.c<ebs> o = a("entity_damage");
-   public static final jr.c<ebs> p = a("entity_die");
-   public static final jr.c<ebs> q = a("entity_dismount");
-   public static final jr.c<ebs> r = a("entity_interact");
-   public static final jr.c<ebs> s = a("entity_mount");
-   public static final jr.c<ebs> t = a("entity_place");
-   public static final jr.c<ebs> u = a("entity_action");
-   public static final jr.c<ebs> v = a("equip");
-   public static final jr.c<ebs> w = a("explode");
-   public static final jr.c<ebs> x = a("flap");
-   public static final jr.c<ebs> y = a("fluid_pickup");
-   public static final jr.c<ebs> z = a("fluid_place");
-   public static final jr.c<ebs> A = a("hit_ground");
-   public static final jr.c<ebs> B = a("instrument_play");
-   public static final jr.c<ebs> C = a("item_interact_finish");
-   public static final jr.c<ebs> D = a("item_interact_start");
-   public static final jr.c<ebs> E = a("jukebox_play", 10);
-   public static final jr.c<ebs> F = a("jukebox_stop_play", 10);
-   public static final jr.c<ebs> G = a("lightning_strike");
-   public static final jr.c<ebs> H = a("note_block_play");
-   public static final jr.c<ebs> I = a("prime_fuse");
-   public static final jr.c<ebs> J = a("projectile_land");
-   public static final jr.c<ebs> K = a("projectile_shoot");
-   public static final jr.c<ebs> L = a("sculk_sensor_tendrils_clicking");
-   public static final jr.c<ebs> M = a("shear");
-   public static final jr.c<ebs> N = a("shriek", 32);
-   public static final jr.c<ebs> O = a("splash");
-   public static final jr.c<ebs> P = a("step");
-   public static final jr.c<ebs> Q = a("swim");
-   public static final jr.c<ebs> R = a("teleport");
-   public static final jr.c<ebs> S = a("unequip");
-   public static final jr.c<ebs> T = a("resonate_1");
-   public static final jr.c<ebs> U = a("resonate_2");
-   public static final jr.c<ebs> V = a("resonate_3");
-   public static final jr.c<ebs> W = a("resonate_4");
-   public static final jr.c<ebs> X = a("resonate_5");
-   public static final jr.c<ebs> Y = a("resonate_6");
-   public static final jr.c<ebs> Z = a("resonate_7");
-   public static final jr.c<ebs> aa = a("resonate_8");
-   public static final jr.c<ebs> ab = a("resonate_9");
-   public static final jr.c<ebs> ac = a("resonate_10");
-   public static final jr.c<ebs> ad = a("resonate_11");
-   public static final jr.c<ebs> ae = a("resonate_12");
-   public static final jr.c<ebs> af = a("resonate_13");
-   public static final jr.c<ebs> ag = a("resonate_14");
-   public static final jr.c<ebs> ah = a("resonate_15");
-   public static final int ai = 16;
-   public static final Codec<jr<ebs>> aj = aks.a(mc.G);
+public class ebs implements ebw {
+   private final List<ebv> b = Lists.newArrayList();
+   private final Set<ebv> c = Sets.newHashSet();
+   private final List<ebv> d = Lists.newArrayList();
+   private boolean e;
+   private final ard f;
+   private final int g;
+   private final ebs.a h;
 
-   public static jr<ebs> a(ke<ebs> $$0) {
-      return a;
+   public ebs(ard $$0, int $$1, ebs.a $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   public int a() {
-      return this.ak;
+   @Override
+   public boolean a() {
+      return this.b.isEmpty();
    }
 
-   private static jr.c<ebs> a(String $$0) {
-      return a($$0, 16);
-   }
-
-   private static jr.c<ebs> a(String $$0, int $$1) {
-      return ke.b(mb.a, akv.b($$0), new ebs($$1));
-   }
-
-   public static record a(@Nullable buk a, @Nullable dww b) {
-      public static ebs.a a(@Nullable buk $$0) {
-         return new ebs.a($$0, null);
+   @Override
+   public void a(ebv $$0) {
+      if (this.e) {
+         this.d.add($$0);
+      } else {
+         this.b.add($$0);
       }
 
-      public static ebs.a a(@Nullable dww $$0) {
-         return new ebs.a(null, $$0);
+      agd.a(this.f, $$0);
+   }
+
+   @Override
+   public void b(ebv $$0) {
+      if (this.e) {
+         this.c.add($$0);
+      } else {
+         this.b.remove($$0);
       }
 
-      public static ebs.a a(@Nullable buk $$0, @Nullable dww $$1) {
-         return new ebs.a($$0, $$1);
+      if (this.b.isEmpty()) {
+         this.h.apply(this.g);
       }
    }
 
-   public static final class b implements Comparable<ebs.b> {
-      private final jr<ebs> a;
-      private final faz b;
-      private final ebs.a c;
-      private final ebu d;
-      private final double e;
+   @Override
+   public boolean a(jr<ebt> $$0, fba $$1, ebt.a $$2, ebw.a $$3) {
+      this.e = true;
+      boolean $$4 = false;
 
-      public b(jr<ebs> $$0, faz $$1, ebs.a $$2, ebu $$3, faz $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$1.g($$4);
+      try {
+         Iterator<ebv> $$5 = this.b.iterator();
+
+         while ($$5.hasNext()) {
+            ebv $$6 = $$5.next();
+            if (this.c.remove($$6)) {
+               $$5.remove();
+            } else {
+               Optional<fba> $$7 = a(this.f, $$1, $$6);
+               if ($$7.isPresent()) {
+                  $$3.visit($$6, $$7.get());
+                  $$4 = true;
+               }
+            }
+         }
+      } finally {
+         this.e = false;
       }
 
-      public int a(ebs.b $$0) {
-         return Double.compare(this.e, $$0.e);
+      if (!this.d.isEmpty()) {
+         this.b.addAll(this.d);
+         this.d.clear();
       }
 
-      public jr<ebs> a() {
-         return this.a;
+      if (!this.c.isEmpty()) {
+         this.b.removeAll(this.c);
+         this.c.clear();
       }
 
-      public faz b() {
-         return this.b;
-      }
+      return $$4;
+   }
 
-      public ebs.a c() {
-         return this.c;
+   private static Optional<fba> a(ard $$0, fba $$1, ebv $$2) {
+      Optional<fba> $$3 = $$2.a().a($$0);
+      if ($$3.isEmpty()) {
+         return Optional.empty();
+      } else {
+         double $$4 = ji.a($$3.get()).j(ji.a((kb)$$1));
+         int $$5 = $$2.b() * $$2.b();
+         return $$4 > (double)$$5 ? Optional.empty() : $$3;
       }
+   }
 
-      public ebu d() {
-         return this.d;
-      }
+   @FunctionalInterface
+   public interface a {
+      void apply(int var1);
    }
 }

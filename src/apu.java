@@ -36,12 +36,12 @@ public class apu extends MinecraftServer implements alm {
    @Nullable
    private final asl u;
    @Nullable
-   private bne v;
+   private bnf v;
    @Nullable
-   private bnb w;
+   private bnc w;
    private final aln x;
 
-   public apu(Thread $$0, eve.c $$1, aua $$2, alu $$3, apw $$4, DataFixer $$5, alq $$6, aro $$7) {
+   public apu(Thread $$0, evf.c $$1, aua $$2, alu $$3, apw $$4, DataFixer $$5, alq $$6, aro $$7) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, $$5, $$6, $$7);
       this.s = $$4;
       this.q = new avq(this);
@@ -129,10 +129,10 @@ public class apu extends MinecraftServer implements alm {
          return false;
       } else {
          this.a(new apt(this, this.bb(), this.g));
-         this.w = new bnb(this.bs());
-         this.v = new bne(bnh.values().length, this.w, bnd.a);
+         this.w = new bnc(this.bs());
+         this.v = new bnf(bni.values().length, this.w, bne.a);
          long $$4 = af.d();
-         dvn.a(this.i, this);
+         dvo.a(this.i, this);
          auz.a(this.aa());
          l.info("Preparing level \"{}\"", this.j());
          this.v_();
@@ -140,7 +140,7 @@ public class apu extends MinecraftServer implements alm {
          String $$6 = String.format(Locale.ROOT, "%.3fs", (double)$$5 / 1.0E9);
          l.info("Done ({})! For help, type \"help\"", $$6);
          if ($$1.n != null) {
-            this.aL().a(dgd.B).a($$1.n, this);
+            this.aL().a(dge.B).a($$1.n, this);
          }
 
          if ($$1.o) {
@@ -162,7 +162,7 @@ public class apu extends MinecraftServer implements alm {
          }
 
          if ($$1.N) {
-            bnn.a(this);
+            bno.a(this);
             l.info("JMX monitoring enabled");
          }
 
@@ -236,8 +236,8 @@ public class apu extends MinecraftServer implements alm {
    }
 
    @Override
-   public boolean a(dgh $$0) {
-      return $$0.ai() == dgh.j ? this.a().u : true;
+   public boolean a(dgi $$0) {
+      return $$0.ai() == dgi.j ? this.a().u : true;
    }
 
    public void a(String $$0, ex $$1) {
@@ -314,8 +314,8 @@ public class apu extends MinecraftServer implements alm {
    }
 
    @Override
-   public boolean a(ard $$0, ji $$1, cow $$2) {
-      if ($$0.ai() != dgh.i) {
+   public boolean a(ard $$0, ji $$1, cox $$2) {
+      if ($$0.ai() != dgi.i) {
          return false;
       } else if (this.bs().k().c()) {
          return false;
@@ -485,7 +485,7 @@ public class apu extends MinecraftServer implements alm {
    public void v() {
       super.v();
       af.j();
-      dvn.b();
+      dvo.b();
    }
 
    @Override
@@ -515,7 +515,7 @@ public class apu extends MinecraftServer implements alm {
 
    @Nullable
    @Override
-   public dge bd() {
+   public dgf bd() {
       return this.s.a().h ? this.j.k() : null;
    }
 
@@ -531,17 +531,17 @@ public class apu extends MinecraftServer implements alm {
    }
 
    @Override
-   public bnf f() {
+   public bng f() {
       return this.v;
    }
 
    @Override
    public boolean g() {
-      return this.w.a(bnd.a);
+      return this.w.a(bne.a);
    }
 
    @Override
-   public void a(are $$0, bnd $$1) {
+   public void a(are $$0, bne $$1) {
       this.w.a($$0, $$1);
    }
 

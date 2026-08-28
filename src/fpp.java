@@ -1,143 +1,71 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class fpp extends foy<fpp.a> {
-   private static final int a = 310;
-   private static final int m = 25;
-   private final fxo n;
+public abstract class fpp<E extends fpp.a<E>> extends fom<E> {
+   private static final wp a = wp.c("narration.selection.usage");
 
-   public fpp(fli $$0, int $$1, fxo $$2) {
-      super($$0, $$1, $$2.s.d(), $$2.s.c(), 25);
-      this.e = false;
-      this.n = $$2;
+   public fpp(flj $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public void a(fll<?> $$0) {
-      this.b(fpp.b.a(this.c.n, $$0, this.n));
-   }
-
-   public void a(fll<?>... $$0) {
-      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
-         fll<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
-         this.b(fpp.b.a(this.c.n, $$0[$$1], $$2, this.n));
-      }
-   }
-
-   public void a(List<fop> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
-         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
-      }
-   }
-
-   public void a(fop $$0, @Nullable fop $$1) {
-      this.b(fpp.a.a($$0, $$1, this.n));
-   }
-
-   @Override
-   public int a() {
-      return 310;
+   public fpp(flj $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Nullable
-   public fop b(fll<?> $$0) {
-      for (fpp.a $$1 : this.aH_()) {
-         if ($$1 instanceof fpp.b $$2) {
-            fop $$3 = $$2.a.get($$0);
-            if ($$3 != null) {
-               return $$3;
-            }
+   @Override
+   public fob a(fsw $$0) {
+      if (this.t() == 0) {
+         return null;
+      } else if (this.aM_() && $$0 instanceof fsw.a $$1) {
+         E $$2 = this.a($$1.b());
+         if ($$2 != null) {
+            return fob.a(this, fob.a($$2));
+         } else {
+            this.a(null);
+            return null;
          }
-      }
-
-      return null;
-   }
-
-   public void b() {
-      for (fpp.a $$0 : this.aH_()) {
-         if ($$0 instanceof fpp.b) {
-            fpp.b $$1 = (fpp.b)$$0;
-
-            for (fop $$2 : $$1.a.values()) {
-               if ($$2 instanceof fll.i<?> $$3) {
-                  $$3.c();
-               }
-            }
+      } else if (!this.aM_()) {
+         E $$3 = this.p();
+         if ($$3 == null) {
+            $$3 = this.a($$0.a());
          }
+
+         return $$3 == null ? null : fob.a(this, fob.a($$3));
+      } else {
+         return null;
       }
    }
 
-   public Optional<fqp> e(double $$0, double $$1) {
-      for (fpp.a $$2 : this.aH_()) {
-         for (fqp $$3 : $$2.aH_()) {
-            if ($$3.a_($$0, $$1)) {
-               return Optional.of($$3);
-            }
+   @Override
+   public void a(fsq $$0) {
+      E $$1 = this.x();
+      if ($$1 != null) {
+         this.a($$0.a(), $$1);
+         $$1.b($$0);
+      } else {
+         E $$2 = this.p();
+         if ($$2 != null) {
+            this.a($$0.a(), $$2);
+            $$2.b($$0);
          }
       }
 
-      return Optional.empty();
+      if (this.aM_()) {
+         $$0.a(fsp.d, a);
+      }
    }
 
-   protected static class a extends foy.a<fpp.a> {
-      private final List<fop> a;
-      private final fuk b;
-      private static final int c = 160;
+   public abstract static class a<E extends fpp.a<E>> extends fom.a<E> implements fsr {
+      public abstract wp a();
 
-      a(List<fop> $$0, fuk $$1) {
-         this.a = ImmutableList.copyOf($$0);
-         this.b = $$1;
-      }
-
-      public static fpp.a a(List<fop> $$0, fuk $$1) {
-         return new fpp.a($$0, $$1);
-      }
-
-      public static fpp.a a(fop $$0, @Nullable fop $$1, fuk $$2) {
-         return $$1 == null ? new fpp.a(ImmutableList.of($$0), $$2) : new fpp.a(ImmutableList.of($$0, $$1), $$2);
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return true;
       }
 
       @Override
-      public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = 0;
-         int $$11 = this.b.n / 2 - 155;
-
-         for (fop $$12 : this.a) {
-            $$12.c($$11 + $$10, $$2);
-            $$12.a($$0, $$6, $$7, $$9);
-            $$10 += 160;
-         }
-      }
-
-      @Override
-      public List<? extends fqp> aH_() {
-         return this.a;
-      }
-
-      @Override
-      public List<? extends fsn> b() {
-         return this.a;
-      }
-   }
-
-   protected static class b extends fpp.a {
-      final Map<fll<?>, fop> a;
-
-      private b(Map<fll<?>, fop> $$0, fxo $$1) {
-         super(ImmutableList.copyOf($$0.values()), $$1);
-         this.a = $$0;
-      }
-
-      public static fpp.b a(flm $$0, fll<?> $$1, fxo $$2) {
-         return new fpp.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
-      }
-
-      public static fpp.b a(flm $$0, fll<?> $$1, @Nullable fll<?> $$2, fxo $$3) {
-         fop $$4 = $$1.a($$0);
-         return $$2 == null ? new fpp.b(ImmutableMap.of($$1, $$4), $$3) : new fpp.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
+      public void b(fsq $$0) {
+         $$0.a(fsp.a, this.a());
       }
    }
 }

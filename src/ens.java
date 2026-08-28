@@ -1,33 +1,44 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record ens(ens.a b, bqv<dhv.c> c) {
+public record ens(List<ens.a> c, eoj d) {
    public static final Codec<ens> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ens.a.c.fieldOf("bounding_box").forGetter(ens::a), bqv.c(dhv.c.a).fieldOf("spawns").forGetter(ens::b)).apply($$0, ens::new)
+      $$0 -> $$0.group(ens.a.a.listOf().fieldOf("structures").forGetter(ens::a), eoj.b.fieldOf("placement").forGetter(ens::b)).apply($$0, ens::new)
    );
+   public static final Codec<jr<ens>> b = akr.a(mc.aW, a);
 
-   public ens.a a() {
-      return this.b;
+   public ens(jr<enm> $$0, eoj $$1) {
+      this(List.of(new ens.a($$0, 1)), $$1);
    }
 
-   public bqv<dhv.c> b() {
+   public static ens.a a(jr<enm> $$0, int $$1) {
+      return new ens.a($$0, $$1);
+   }
+
+   public static ens.a a(jr<enm> $$0) {
+      return new ens.a($$0, 1);
+   }
+
+   public List<ens.a> a() {
       return this.c;
    }
 
-   public static enum a implements azv {
-      a("piece"),
-      b("full");
+   public eoj b() {
+      return this.d;
+   }
 
-      public static final Codec<ens.a> c = azv.a(ens.a::values);
-      private final String d;
+   public static record a(jr<enm> b, int c) {
+      public static final Codec<ens.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(enm.b.fieldOf("structure").forGetter(ens.a::a), ayi.m.fieldOf("weight").forGetter(ens.a::b)).apply($$0, ens.a::new)
+      );
 
-      private a(final String $$0) {
-         this.d = $$0;
+      public jr<enm> a() {
+         return this.b;
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      public int b() {
+         return this.c;
       }
    }
 }

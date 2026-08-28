@@ -1,16 +1,41 @@
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cdq extends cdr {
-   public cdq(bvo $$0, double $$1) {
-      super($$0, $$1);
+public class cdq<T extends bvj> extends ccf {
+   private final T a;
+   private final cwp b;
+   private final Predicate<? super T> c;
+   @Nullable
+   private final avz d;
+
+   public cdq(T $$0, cwp $$1, @Nullable avz $$2, Predicate<? super T> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = $$3;
    }
 
-   @Nullable
    @Override
-   protected faz h() {
-      faz $$0 = this.b.g(0.0F);
-      int $$1 = 8;
-      faz $$2 = cgd.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : cfz.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
+   public boolean b() {
+      return this.c.test(this.a);
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.fz();
+   }
+
+   @Override
+   public void d() {
+      this.a.a(but.a, this.b.v());
+      this.a.c(bsj.a);
+   }
+
+   @Override
+   public void e() {
+      this.a.a(but.a, cwp.j);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.dY().i() * 0.2F + 0.9F);
+      }
    }
 }

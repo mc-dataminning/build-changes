@@ -1,31 +1,46 @@
 import javax.annotation.Nullable;
 
-public enum dfw implements dfm {
+public enum dfw implements dfk {
    a;
+
+   @Override
+   public float a(jn $$0, boolean $$1) {
+      return 1.0F;
+   }
+
+   @Override
+   public eso C_() {
+      return eso.c;
+   }
+
+   @Override
+   public int a(ji $$0, dfs $$1) {
+      return -1;
+   }
 
    @Nullable
    @Override
-   public dty c_(ji $$0) {
+   public dtz c_(ji $$0) {
       return null;
    }
 
    @Override
-   public dww a_(ji $$0) {
-      return djn.a.m();
+   public dwx a_(ji $$0) {
+      return djo.a.m();
    }
 
    @Override
-   public esy b_(ji $$0) {
-      return esz.a.g();
-   }
-
-   @Override
-   public int L_() {
-      return 0;
+   public esz b_(ji $$0) {
+      return eta.a.g();
    }
 
    @Override
    public int M_() {
+      return 0;
+   }
+
+   @Override
+   public int L_() {
       return 0;
    }
 }

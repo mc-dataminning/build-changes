@@ -1,21 +1,19 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hco(int b) implements hcs {
-   public static final MapCodec<hco> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayi.l.optionalFieldOf("index", 0).forGetter(hco::b)).apply($$0, hco::new));
+public class hco implements hct {
+   public static final MapCodec<hco> a = MapCodec.unit(new hco());
 
    @Override
-   public float a(cwo $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3) {
-      cyy $$4 = $$0.a(kv.p);
-      if ($$4 != null) {
-         Float $$5 = $$4.a(this.b);
-         if ($$5 != null) {
-            return $$5;
-         }
+   public float a(cwp $$0, @Nullable gfz $$1, @Nullable bvh $$2, int $$3) {
+      if ($$2 == null) {
+         return 0.0F;
+      } else if (cvg.g($$0)) {
+         return 0.0F;
+      } else {
+         int $$4 = cvg.b($$0, $$2);
+         return (float)hcw.a($$0, $$2) / (float)$$4;
       }
-
-      return 0.0F;
    }
 
    @Override

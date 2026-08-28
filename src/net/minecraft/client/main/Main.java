@@ -76,20 +76,20 @@ public class Main {
       String $$35 = "Pre-bootstrap";
 
       Logger $$39;
-      gak $$71;
+      gal $$71;
       try {
          if ($$32.has($$2)) {
-            bpa.f.a(boy.a);
+            bpb.f.a(boz.a);
          }
 
          if ($$32.has($$3)) {
-            fdd.a();
+            fde.a();
          }
 
          Stopwatch $$36 = Stopwatch.createStarted(Ticker.systemTicker());
          Stopwatch $$37 = Stopwatch.createStarted(Ticker.systemTicker());
-         hkj.a.a(hkf.z, $$36);
-         hkj.a.a(hkf.A, $$37);
+         hkk.a.a(hkg.z, $$36);
+         hkk.a.a(hkg.A, $$37);
          ab.a();
          TracyClient.reportAppInfo("Minecraft Java Edition " + ab.b().c());
          CompletableFuture<?> $$38 = bao.a(ban.t);
@@ -97,8 +97,8 @@ public class Main {
          $$39 = LogUtils.getLogger();
          $$35 = "Bootstrap";
          akx.a();
-         fks.a();
-         hkj.a.a(akx.b.get());
+         fkt.a();
+         hkk.a.a(akx.b.get());
          akx.c();
          $$35 = "Argument parsing";
          List<String> $$40 = $$32.valuesOf($$31);
@@ -107,7 +107,7 @@ public class Main {
          }
 
          String $$41 = (String)$$29.value($$32);
-         flu.a $$42 = flu.a.a($$41);
+         flv.a $$42 = flv.a.a($$41);
          if ($$42 == null) {
             $$39.warn("Unrecognized user type: {}", $$41);
          }
@@ -155,13 +155,13 @@ public class Main {
          String $$67 = a(a($$32, $$6));
          String $$68 = a(a($$32, $$7));
          String $$69 = a(a($$32, $$8));
-         flu $$70 = new flu((String)$$16.value($$32), $$62, (String)$$20.value($$32), b($$64), b($$65), $$42);
-         $$71 = new gak(
-            new gak.d($$70, $$57, $$58, $$44),
-            new fej($$47, $$48, $$49, $$50, $$51),
-            new gak.a($$33, $$61, $$60, $$63),
-            new gak.b($$52, $$34, $$59, $$53, $$54, $$55),
-            new gak.c($$66, $$67, $$68, $$69)
+         flv $$70 = new flv((String)$$16.value($$32), $$62, (String)$$20.value($$32), b($$64), b($$65), $$42);
+         $$71 = new gal(
+            new gal.d($$70, $$57, $$58, $$44),
+            new fek($$47, $$48, $$49, $$50, $$51),
+            new gal.a($$33, $$61, $$60, $$63),
+            new gal.b($$52, $$34, $$59, $$53, $$54, $$55),
+            new gal.c($$66, $$67, $$68, $$69)
          );
          af.o();
          $$38.join();
@@ -169,17 +169,17 @@ public class Main {
          o $$73 = o.a(var82, $$35);
          p $$74 = $$73.a("Initialization");
          aza.a($$74);
-         fli.a(null, null, $$34, null, $$73);
-         fli.a(null, $$33, $$73);
+         flj.a(null, null, $$34, null, $$73);
+         flj.a(null, $$33, $$73);
          return;
       }
 
       Thread $$77 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            fli $$0 = fli.Q();
+            flj $$0 = flj.Q();
             if ($$0 != null) {
-               hjc $$1 = $$0.V();
+               hjd $$1 = $$0.V();
                if ($$1 != null) {
                   $$1.a(true);
                }
@@ -188,15 +188,15 @@ public class Main {
       };
       $$77.setUncaughtExceptionHandler(new r($$39));
       Runtime.getRuntime().addShutdownHook($$77);
-      fli $$78 = null;
+      flj $$78 = null;
 
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          RenderSystem.beginInitialization();
-         $$78 = new fli($$71);
+         $$78 = new flj($$71);
          RenderSystem.finishInitialization();
-      } catch (gal var79) {
+      } catch (gam var79) {
          af.j();
          $$39.warn("Failed to create window: ", var79);
          return;
@@ -204,14 +204,14 @@ public class Main {
          o $$81 = o.a(var80, "Initializing game");
          p $$82 = $$81.a("Initialization");
          aza.a($$82);
-         fli.a($$78, null, $$71.d.b, null, $$81);
-         fli.a($$78, $$71.c.a, $$81);
+         flj.a($$78, null, $$71.d.b, null, $$81);
+         flj.a($$78, $$71.c.a, $$81);
          return;
       }
 
-      fli $$83 = $$78;
+      flj $$83 = $$78;
       $$78.f();
-      ffp.a();
+      ffq.a();
 
       try {
          $$83.q();

@@ -1,121 +1,89 @@
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntLists;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class cub extends ctf {
-   public static final int m = 0;
-   public static final int n = 1;
-   public static final int o = 2;
-   public static final int p = 3;
-   public static final int u = 8;
-   public static final int v = 26;
-   public static final int w = 44;
-   private static final int y = 98;
-   public static final int x = 48;
-   private final dgh z;
-   private final dbm A;
-   private final dbm B;
-   private final dbm C;
-   private final csv D = csv.a();
+public class cub {
+   private static final List<cua> b = af.a(new ArrayList<>(), $$0 -> {
+      a($$0, "contents", 0);
+      a($$0, "container.", 0, 54);
+      a($$0, "hotbar.", 0, 9);
+      a($$0, "inventory.", 9, 27);
+      a($$0, "enderchest.", 200, 27);
+      a($$0, "villager.", 300, 8);
+      a($$0, "horse.", 500, 15);
+      int $$1 = but.a.a(98);
+      int $$2 = but.b.a(98);
+      a($$0, "weapon", $$1);
+      a($$0, "weapon.mainhand", $$1);
+      a($$0, "weapon.offhand", $$2);
+      a($$0, "weapon.*", $$1, $$2);
+      $$1 = but.f.a(100);
+      $$2 = but.e.a(100);
+      int $$5 = but.d.a(100);
+      int $$6 = but.c.a(100);
+      int $$7 = but.g.a(105);
+      a($$0, "armor.head", $$1);
+      a($$0, "armor.chest", $$2);
+      a($$0, "armor.legs", $$5);
+      a($$0, "armor.feet", $$6);
+      a($$0, "armor.body", $$7);
+      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
+      a($$0, "horse.saddle", 400);
+      a($$0, "horse.chest", 499);
+      a($$0, "player.cursor", 499);
+      a($$0, "player.crafting.", 500, 4);
+   });
+   public static final Codec<cua> a = azv.b(() -> b.toArray(new cua[0]));
+   private static final Function<String, cua> c = azv.a(b.toArray(new cua[0]), $$0 -> $$0);
 
-   public cub(int $$0, cov $$1) {
-      this($$0, $$1, cso.a);
+   private static cua a(String $$0, int $$1) {
+      return cua.a($$0, IntLists.singleton($$1));
    }
 
-   public cub(int $$0, cov $$1, cso $$2) {
-      this($$0, $$1, $$2, $$1.k.dV());
+   private static cua a(String $$0, IntList $$1) {
+      return cua.a($$0, IntLists.unmodifiable($$1));
    }
 
-   private cub(int $$0, cov $$1, cso $$2, dgh $$3) {
-      super(ctk.v, $$0, $$1, $$2, a($$3.Q()));
-      this.z = $$3;
-      this.A = $$3.Q().a(dbm.b);
-      this.B = $$3.Q().a(dbm.c);
-      this.C = $$3.Q().a(dbm.d);
-      this.a(this.D).a(0);
+   private static cua a(String $$0, int... $$1) {
+      return cua.a($$0, IntList.of($$1));
    }
 
-   private static ctg a(dbe $$0) {
-      dbm $$1 = $$0.a(dbm.b);
-      dbm $$2 = $$0.a(dbm.c);
-      dbm $$3 = $$0.a(dbm.d);
-      return ctg.a().a(0, 8, 48, $$2::a).a(1, 26, 48, $$1::a).a(2, 44, 48, $$3::a).a(3, 98, 48).a();
+   private static void a(List<cua> $$0, String $$1, int $$2) {
+      $$0.add(a($$1, $$2));
    }
 
-   @Override
-   protected boolean a(dww $$0) {
-      return $$0.a(djn.oD);
-   }
+   private static void a(List<cua> $$0, String $$1, int $$2, int $$3) {
+      IntList $$4 = new IntArrayList($$3);
 
-   @Override
-   protected void a(cow $$0, cwo $$1) {
-      $$1.a($$0.dV(), $$0, $$1.M());
-      this.t.a($$0, this.o());
-      this.e(0);
-      this.e(1);
-      this.e(2);
-      this.q.a(($$0x, $$1x) -> $$0x.c(1044, $$1x, 0));
-   }
-
-   private List<cwo> o() {
-      return List.of(this.s.a(0), this.s.a(1), this.s.a(2));
-   }
-
-   private dbz p() {
-      return new dbz(this.s.a(0), this.s.a(1), this.s.a(2));
-   }
-
-   private void e(int $$0) {
-      cwo $$1 = this.s.a($$0);
-      if (!$$1.f()) {
-         $$1.h(1);
-         this.s.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void a(bsc $$0) {
-      super.a($$0);
-      if (this.z instanceof ard) {
-         boolean $$1 = this.b(0).h() && this.b(1).h() && this.b(2).h() && !this.b(this.n()).h();
-         this.D.a($$1 ? 1 : 0);
-      }
-   }
-
-   @Override
-   public void l() {
-      dbz $$0 = this.p();
-      Optional<dbi<dby>> $$2;
-      if (this.z instanceof ard $$1) {
-         $$2 = $$1.t().a(dbo.g, $$0, $$1);
-      } else {
-         $$2 = Optional.empty();
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         int $$6 = $$2 + $$5;
+         $$0.add(a($$1 + $$5, $$6));
+         $$4.add($$6);
       }
 
-      $$2.ifPresentOrElse($$1x -> {
-         cwo $$2x = ((dby)$$1x.b()).a($$0, this.z.K_());
-         this.t.a($$1x);
-         this.t.a(0, $$2x);
-      }, () -> {
-         this.t.a(null);
-         this.t.a(0, cwo.j);
-      });
+      $$0.add(a($$1 + "*", $$4));
    }
 
-   @Override
-   public boolean a(cwo $$0, cty $$1) {
-      return $$1.c != this.t && super.a($$0, $$1);
+   private static void a(List<cua> $$0, String $$1, int... $$2) {
+      $$0.add(a($$1, $$2));
    }
 
-   @Override
-   public boolean c(cwo $$0) {
-      if (this.B.a($$0) && !this.b(0).h()) {
-         return true;
-      } else {
-         return this.A.a($$0) && !this.b(1).h() ? true : this.C.a($$0) && !this.b(2).h();
-      }
+   @Nullable
+   public static cua a(String $$0) {
+      return c.apply($$0);
    }
 
-   public boolean m() {
-      return this.D.b() > 0;
+   public static Stream<String> a() {
+      return b.stream().map(azv::c);
+   }
+
+   public static Stream<String> b() {
+      return b.stream().filter($$0 -> $$0.b() == 1).map(azv::c);
    }
 }

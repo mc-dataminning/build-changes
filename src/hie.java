@@ -1,44 +1,31 @@
-public class hie extends hhx {
-   public static final int n = 20;
-   private final gkv o;
-   private int p;
+public class hie implements hhz {
+   private final gkw a;
+   private boolean b;
+   private boolean c = true;
 
-   public hie(gkv $$0) {
-      super(awa.ir, awb.h, hio.t());
-      this.o = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.1F;
+   public hie(gkw $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void q() {
-      this.p++;
-      if (!this.o.dQ() && (this.p <= 20 || this.o.fJ())) {
-         this.f = (double)((float)this.o.dA());
-         this.g = (double)((float)this.o.dC());
-         this.h = (double)((float)this.o.dG());
-         float $$0 = (float)this.o.dy().h();
-         if ((double)$$0 >= 1.0E-7) {
-            this.d = ayz.a($$0 / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.d = 0.0F;
+   public void a() {
+      dgi $$0 = this.a.dV();
+      dwx $$1 = $$0.c(this.a.cR().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(djo.nF)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(djo.nF) && !this.a.Z_()) {
+            boolean $$2 = $$1.c(djt.b);
+            if ($$2) {
+               this.a.a(awa.db, 1.0F, 1.0F);
+            } else {
+               this.a.a(awa.cZ, 1.0F, 1.0F);
+            }
          }
 
-         if (this.p < 20) {
-            this.d = 0.0F;
-         } else if (this.p < 40) {
-            this.d = this.d * ((float)(this.p - 20) / 20.0F);
-         }
-
-         float $$1 = 0.8F;
-         if (this.d > 0.8F) {
-            this.e = 1.0F + (this.d - 0.8F);
-         } else {
-            this.e = 1.0F;
-         }
+         this.b = true;
       } else {
-         this.n();
+         this.b = false;
       }
+
+      this.c = false;
    }
 }

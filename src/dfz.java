@@ -1,52 +1,114 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public interface dfz {
-   static bta a(dgh $$0, @Nullable buk $$1) {
-      return $$0.ak().d($$1, a($$1));
+   List<bul> a(@Nullable bul var1, fav var2, Predicate<? super bul> var3);
+
+   <T extends bul> List<T> a(ebh<bul, T> var1, fav var2, Predicate<? super T> var3);
+
+   default <T extends bul> List<T> a(Class<T> $$0, fav $$1, Predicate<? super T> $$2) {
+      return this.a(ebh.a($$0), $$1, $$2);
+   }
+
+   List<? extends cox> z();
+
+   default List<bul> a_(@Nullable bul $$0, fav $$1) {
+      return this.a($$0, $$1, buq.f);
+   }
+
+   default boolean a(@Nullable bul $$0, fbu $$1) {
+      if ($$1.c()) {
+         return true;
+      } else {
+         for (bul $$2 : this.a_($$0, $$1.a())) {
+            if (!$$2.dQ() && $$2.I && ($$0 == null || !$$2.z($$0)) && fbr.c($$1, fbr.a($$2.cR()), fbe.i)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   default <T extends bul> List<T> a(Class<T> $$0, fav $$1) {
+      return this.a($$0, $$1, buq.f);
+   }
+
+   default List<fbu> c(@Nullable bul $$0, fav $$1) {
+      if ($$1.a() < 1.0E-7) {
+         return List.of();
+      } else {
+         Predicate<bul> $$2 = $$0 == null ? buq.g : buq.f.and($$0::i);
+         List<bul> $$3 = this.a($$0, $$1.g(1.0E-7), $$2);
+         if ($$3.isEmpty()) {
+            return List.of();
+         } else {
+            Builder<fbu> $$4 = ImmutableList.builderWithExpectedSize($$3.size());
+
+            for (bul $$5 : $$3) {
+               $$4.add(fbr.a($$5.cR()));
+            }
+
+            return $$4.build();
+         }
+      }
    }
 
    @Nullable
-   static bvg a(@Nullable buk $$0) {
-      return switch ($$0) {
-         case null, default -> null;
-         case clc $$1 -> $$1.l();
-         case bvg $$2 -> $$2;
-         case cpp $$3 when $$3.p() instanceof bvg $$4 -> $$4;
-      };
+   default cox a(double $$0, double $$1, double $$2, double $$3, @Nullable Predicate<bul> $$4) {
+      double $$5 = -1.0;
+      cox $$6 = null;
+
+      for (cox $$7 : this.z()) {
+         if ($$4 == null || $$4.test($$7)) {
+            double $$8 = $$7.i($$0, $$1, $$2);
+            if (($$3 < 0.0 || $$8 < $$3 * $$3) && ($$5 == -1.0 || $$8 < $$5)) {
+               $$5 = $$8;
+               $$6 = $$7;
+            }
+         }
+      }
+
+      return $$6;
    }
 
-   ard a();
-
-   dfz.a b();
+   @Nullable
+   default cox a(bul $$0, double $$1) {
+      return this.a($$0.dA(), $$0.dC(), $$0.dG(), $$1, false);
+   }
 
    @Nullable
-   bvg c();
+   default cox a(double $$0, double $$1, double $$2, double $$3, boolean $$4) {
+      Predicate<bul> $$5 = $$4 ? buq.e : buq.f;
+      return this.a($$0, $$1, $$2, $$3, $$5);
+   }
+
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      for (cox $$4 : this.z()) {
+         if (buq.f.test($$4) && buq.b.test($$4)) {
+            double $$5 = $$4.i($$0, $$1, $$2);
+            if ($$3 < 0.0 || $$5 < $$3 * $$3) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
 
    @Nullable
-   buk d();
-
-   float e();
-
-   faz f();
-
-   boolean g();
-
-   boolean h();
-
-   public static enum a {
-      a(false),
-      b(true),
-      c(true),
-      d(false);
-
-      private final boolean e;
-
-      private a(final boolean $$0) {
-         this.e = $$0;
+   default cox b(UUID $$0) {
+      for (int $$1 = 0; $$1 < this.z().size(); $$1++) {
+         cox $$2 = this.z().get($$1);
+         if ($$0.equals($$2.cG())) {
+            return $$2;
+         }
       }
 
-      public boolean a() {
-         return this.e;
-      }
+      return null;
    }
 }

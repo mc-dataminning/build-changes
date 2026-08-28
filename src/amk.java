@@ -31,11 +31,11 @@ public class amk {
       );
    }
 
-   private static int a(ex $$0, Collection<are> $$1, Predicate<cwo> $$2) throws CommandSyntaxException {
+   private static int a(ex $$0, Collection<are> $$1, Predicate<cwp> $$2) throws CommandSyntaxException {
       return a($$0, $$1, $$2, -1);
    }
 
-   private static int a(ex $$0, Collection<are> $$1, Predicate<cwo> $$2, int $$3) throws CommandSyntaxException {
+   private static int a(ex $$0, Collection<are> $$1, Predicate<cwp> $$2, int $$3) throws CommandSyntaxException {
       int $$4 = 0;
 
       for (are $$5 : $$1) {

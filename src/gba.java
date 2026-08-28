@@ -1,19 +1,30 @@
-public class gba extends gcv {
-   private final gfc a;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
 
-   public gba(gfc $$0) {
-      super($$0, gmh::d);
-      this.a = $$0.b("flag");
+public record gba(boolean a, float b, float c, float d, float e, float f, Set<String> g) implements gfm {
+   public gba(Set<String> $$0) {
+      this(false, 5.0F, 2.0F, $$0);
    }
 
-   public static gfi a(boolean $$0) {
-      gfk $$1 = new gfk();
-      gfm $$2 = $$1.a();
-      $$2.a("flag", gfh.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), gfe.a(0.0F, $$0 ? -44.0F : -20.5F, $$0 ? 0.0F : 10.5F));
-      return gfi.a($$1, 64, 64);
+   public gba(boolean $$0, float $$1, float $$2, Set<String> $$3) {
+      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F, $$3);
    }
 
-   public void a(float $$0) {
-      this.a.e = (-0.0125F + 0.01F * ayz.b((float) (Math.PI * 2) * $$0)) * (float) Math.PI;
+   @Override
+   public gfl apply(gfl $$0) {
+      float $$1 = this.a ? 1.5F / this.d : 1.0F;
+      float $$2 = 1.0F / this.e;
+      UnaryOperator<gff> $$3 = $$1x -> $$1x.c(0.0F, this.b, this.c).b($$1);
+      UnaryOperator<gff> $$4 = $$1x -> $$1x.c(0.0F, this.f, 0.0F).b($$2);
+      gfl $$5 = new gfl();
+
+      for (Entry<String, gfn> $$6 : $$0.a().a()) {
+         String $$7 = $$6.getKey();
+         gfn $$8 = $$6.getValue();
+         $$5.a().a($$7, $$8.a(this.g.contains($$7) ? $$3 : $$4));
+      }
+
+      return $$5;
    }
 }

@@ -8,25 +8,25 @@ import com.mojang.serialization.DynamicOps;
 import java.util.Set;
 
 public enum ban {
-   a(bhw.a),
-   b(bhw.b),
-   c(bhw.c),
-   d(bhw.d),
-   e(bhw.e),
-   f(bhw.f),
-   g(bhw.g),
-   h(bhw.h),
-   i(bhw.i),
-   j(bhw.j),
-   k(bhw.k),
-   l(bhw.l),
-   m(bhw.m),
-   n(bhw.o),
-   o(bhw.n),
-   p(bhw.p),
-   q(bhw.q),
-   r(bhw.M),
-   s(bhw.r);
+   a(bhx.a),
+   b(bhx.b),
+   c(bhx.c),
+   d(bhx.d),
+   e(bhx.e),
+   f(bhx.f),
+   g(bhx.g),
+   h(bhx.h),
+   i(bhx.i),
+   j(bhx.j),
+   k(bhx.k),
+   l(bhx.l),
+   m(bhx.m),
+   n(bhx.o),
+   o(bhx.n),
+   p(bhx.p),
+   q(bhx.q),
+   r(bhx.M),
+   s(bhx.r);
 
    public static final Set<TypeReference> t;
    private final TypeReference u;

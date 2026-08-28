@@ -1,21 +1,21 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
-record epb(bqr<List<eox>> c) implements eox {
-   static MapCodec<epb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bqr.b(Codec.list(eox.b)).fieldOf("groups").forGetter(epb::c)).apply($$0, epb::new));
+record epb(aku<eow> c, bqs<aku<eow>> d) implements eoy {
+   static MapCodec<epb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aku.a(mc.aX).fieldOf("alias").forGetter(epb::c), bqs.b(aku.a(mc.aX)).fieldOf("targets").forGetter(epb::d)).apply($$0, epb::new)
+   );
 
    @Override
-   public void a(azh $$0, BiConsumer<aku<eov>, aku<eov>> $$1) {
-      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
+   public void a(azh $$0, BiConsumer<aku<eow>, aku<eow>> $$1) {
+      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (aku<eow>)$$1x.b()));
    }
 
    @Override
-   public Stream<aku<eov>> a() {
-      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(eox::a);
+   public Stream<aku<eow>> a() {
+      return this.d.e().stream().map(bqu.b::b);
    }
 
    @Override

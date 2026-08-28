@@ -1,3 +1,5 @@
-public class hao extends gxq {
-   public boolean d;
+public class hao extends gyk {
+   public float a;
+   public float b;
+   public boolean c;
 }

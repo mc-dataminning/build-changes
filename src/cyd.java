@@ -1,29 +1,20 @@
-public class cyd extends cxi implements cxj {
-   public static float a = 0.5F;
-
-   public cyd(cwk.a $$0) {
-      super($$0);
+public class cyd extends cwl {
+   public cyd(cyg $$0, float $$1, float $$2, cwl.a $$3) {
+      super($$0.a($$3, $$1, $$2));
    }
 
    @Override
-   public bsj a(dgh $$0, cow $$1, bsi $$2) {
-      cwo $$3 = $$1.b($$2);
-      if ($$0 instanceof ard $$4) {
-         cpp.a(cqb::new, $$4, $$3, $$1, -20.0F, a, 1.0F);
-      }
-
-      $$1.b(awk.c.b(this));
-      $$3.a(1, $$1);
-      return bsj.a;
+   public boolean a(dwx $$0, dgi $$1, ji $$2, cox $$3) {
+      return !$$3.b();
    }
 
    @Override
-   public cpp a(dgh $$0, kb $$1, cwo $$2, jn $$3) {
-      return new cqb($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   public boolean a(cwp $$0, bvh $$1, bvh $$2) {
+      return true;
    }
 
    @Override
-   public cxj.a b() {
-      return cxj.a.a().a(cxj.a.a.c() * 0.5F).b(cxj.a.a.d() * 1.25F).a();
+   public void b(cwp $$0, bvh $$1, bvh $$2) {
+      $$0.a(1, $$2, but.a);
    }
 }

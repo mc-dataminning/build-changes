@@ -7,9 +7,9 @@ public class arf {
    private static final Logger a = LogUtils.getLogger();
    protected ard c;
    protected final are d;
-   private dge b;
+   private dgf b;
    @Nullable
-   private dge e;
+   private dgf e;
    private boolean f;
    private int g;
    private ji h;
@@ -20,7 +20,7 @@ public class arf {
    private int m;
 
    public arf(are $$0) {
-      this.b = dge.e;
+      this.b = dgf.e;
       this.h = ji.c;
       this.k = ji.c;
       this.m = -1;
@@ -28,7 +28,7 @@ public class arf {
       this.c = $$0.y();
    }
 
-   public boolean a(dge $$0) {
+   public boolean a(dgf $$0) {
       if ($$0 == this.b) {
          return false;
       } else {
@@ -36,7 +36,7 @@ public class arf {
          this.d.x();
          this.d.g.ag().a(new adt(adt.a.c, this.d));
          this.c.f();
-         if ($$0 == dge.b) {
+         if ($$0 == dgf.b) {
             this.d.gP();
          }
 
@@ -44,18 +44,18 @@ public class arf {
       }
    }
 
-   protected void a(dge $$0, @Nullable dge $$1) {
+   protected void a(dgf $$0, @Nullable dgf $$1) {
       this.e = $$1;
       this.b = $$0;
       $$0.a(this.d.gj());
    }
 
-   public dge b() {
+   public dgf b() {
       return this.b;
    }
 
    @Nullable
-   public dge c() {
+   public dgf c() {
       return this.e;
    }
 
@@ -70,7 +70,7 @@ public class arf {
    public void a() {
       this.i++;
       if (this.j) {
-         dww $$0 = this.c.a_(this.k);
+         dwx $$0 = this.c.a_(this.k);
          if ($$0.l()) {
             this.j = false;
          } else {
@@ -81,7 +81,7 @@ public class arf {
             }
          }
       } else if (this.f) {
-         dww $$2 = this.c.a_(this.h);
+         dwx $$2 = this.c.a_(this.h);
          if ($$2.l()) {
             this.c.a(this.d.ar(), this.h, -1);
             this.m = -1;
@@ -92,7 +92,7 @@ public class arf {
       }
    }
 
-   private float a(dww $$0, ji $$1, int $$2) {
+   private float a(dwx $$0, ji $$1, int $$2) {
       int $$3 = this.i - $$2;
       float $$4 = $$0.a(this.d, this.d.dV(), $$1) * (float)($$3 + 1);
       int $$5 = (int)($$4 * 10.0F);
@@ -134,9 +134,9 @@ public class arf {
 
             this.g = this.i;
             float $$5 = 1.0F;
-            dww $$6 = this.c.a_($$0);
+            dwx $$6 = this.c.a_($$0);
             if (!$$6.l()) {
-               dda.a(this.c, this.d.eZ(), this.d, this.d, bus.a, faz.b($$0), $$6, $$0x -> this.d.a($$0x, bus.a));
+               ddb.a(this.c, this.d.eZ(), this.d, this.d, but.a, fba.b($$0), $$6, $$0x -> this.d.a($$0x, but.a));
                $$6.a(this.c, $$0, this.d);
                $$5 = $$6.a(this.d, this.d.dV(), $$0);
             }
@@ -159,7 +159,7 @@ public class arf {
          } else if ($$1 == ahm.a.c) {
             if ($$0.equals(this.h)) {
                int $$8 = this.i - this.g;
-               dww $$9 = this.c.a_($$0);
+               dwx $$9 = this.c.a_($$0);
                if (!$$9.l()) {
                   float $$10 = $$9.a(this.d, this.d.dV(), $$0) * (float)($$8 + 1);
                   if ($$10 >= 0.7F) {
@@ -203,19 +203,19 @@ public class arf {
    }
 
    public boolean a(ji $$0) {
-      dww $$1 = this.c.a_($$0);
+      dwx $$1 = this.c.a_($$0);
       if (!this.d.eZ().h().a($$1, this.c, $$0, this.d)) {
          return false;
       } else {
-         dty $$2 = this.c.c_($$0);
-         djl $$3 = $$1.b();
-         if ($$3 instanceof dmu && !this.d.gG()) {
+         dtz $$2 = this.c.c_($$0);
+         djm $$3 = $$1.b();
+         if ($$3 instanceof dmv && !this.d.gG()) {
             this.c.a($$0, $$1, $$1, 3);
             return false;
          } else if (this.d.a(this.c, $$0, this.b)) {
             return false;
          } else {
-            dww $$4 = $$3.a(this.c, $$0, $$1, (cow)this.d);
+            dwx $$4 = $$3.a(this.c, $$0, $$1, (cox)this.d);
             boolean $$5 = this.c.a($$0, false);
             if ($$5) {
                $$3.a(this.c, $$0, $$4);
@@ -224,8 +224,8 @@ public class arf {
             if (this.e()) {
                return true;
             } else {
-               cwo $$6 = this.d.eZ();
-               cwo $$7 = $$6.v();
+               cwp $$6 = this.d.eZ();
+               cwp $$7 = $$6.v();
                boolean $$8 = this.d.d($$4);
                $$6.a(this.c, $$4, $$0, this.d);
                if ($$5 && $$8) {
@@ -238,25 +238,25 @@ public class arf {
       }
    }
 
-   public bsj a(are $$0, dgh $$1, cwo $$2, bsi $$3) {
-      if (this.b == dge.d) {
-         return bsj.e;
+   public bsk a(are $$0, dgi $$1, cwp $$2, bsj $$3) {
+      if (this.b == dgf.d) {
+         return bsk.e;
       } else if ($$0.gE().a($$2)) {
-         return bsj.e;
+         return bsk.e;
       } else {
          int $$4 = $$2.M();
          int $$5 = $$2.o();
-         bsj $$6 = $$2.a($$1, $$0, $$3);
-         cwo $$8;
-         if ($$6 instanceof bsj.d $$7) {
+         bsk $$6 = $$2.a($$1, $$0, $$3);
+         cwp $$8;
+         if ($$6 instanceof bsk.d $$7) {
             $$8 = Objects.requireNonNullElse($$7.d(), $$0.b($$3));
          } else {
             $$8 = $$0.b($$3);
          }
 
-         if ($$8 == $$2 && $$8.M() == $$4 && $$8.a((bvg)$$0) <= 0 && $$8.o() == $$5) {
+         if ($$8 == $$2 && $$8.M() == $$4 && $$8.a((bvh)$$0) <= 0 && $$8.o() == $$5) {
             return $$6;
-         } else if ($$6 instanceof bsj.a && $$8.a((bvg)$$0) > 0 && !$$0.fz()) {
+         } else if ($$6 instanceof bsk.a && $$8.a((bvh)$$0) > 0 && !$$0.fz()) {
             return $$6;
          } else {
             if ($$2 != $$8) {
@@ -264,7 +264,7 @@ public class arf {
             }
 
             if ($$8.f()) {
-               $$0.a($$3, cwo.j);
+               $$0.a($$3, cwp.j);
             }
 
             if (!$$0.fz()) {
@@ -276,32 +276,32 @@ public class arf {
       }
    }
 
-   public bsj a(are $$0, dgh $$1, cwo $$2, bsi $$3, fav $$4) {
+   public bsk a(are $$0, dgi $$1, cwp $$2, bsj $$3, faw $$4) {
       ji $$5 = $$4.b();
-      dww $$6 = $$1.a_($$5);
+      dwx $$6 = $$1.a_($$5);
       if (!$$6.b().a($$1.K())) {
-         return bsj.d;
-      } else if (this.b == dge.d) {
-         bsl $$7 = $$6.c($$1, $$5);
+         return bsk.d;
+      } else if (this.b == dgf.d) {
+         bsm $$7 = $$6.c($$1, $$5);
          if ($$7 != null) {
             $$0.a($$7);
-            return bsj.c;
+            return bsk.c;
          } else {
-            return bsj.e;
+            return bsk.e;
          }
       } else {
          boolean $$8 = !$$0.eZ().f() || !$$0.fa().f();
          boolean $$9 = $$0.fY() && $$8;
-         cwo $$10 = $$2.v();
+         cwp $$10 = $$2.v();
          if (!$$9) {
-            bsj $$11 = $$6.a($$0.b($$3), $$1, $$0, $$3, $$4);
+            bsk $$11 = $$6.a($$0.b($$3), $$1, $$0, $$3, $$4);
             if ($$11.a()) {
                ap.N.a($$0, $$5, $$10);
                return $$11;
             }
 
-            if ($$11 instanceof bsj.f && $$3 == bsi.a) {
-               bsj $$12 = $$6.a($$1, $$0, $$4);
+            if ($$11 instanceof bsk.f && $$3 == bsj.a) {
+               bsk $$12 = $$6.a($$1, $$0, $$4);
                if ($$12.a()) {
                   ap.O.a($$0, $$5);
                   return $$12;
@@ -310,8 +310,8 @@ public class arf {
          }
 
          if (!$$2.f() && !$$0.gE().a($$2)) {
-            dah $$13 = new dah($$0, $$3, $$4);
-            bsj $$15;
+            dai $$13 = new dai($$0, $$3, $$4);
+            bsk $$15;
             if (this.e()) {
                int $$14 = $$2.M();
                $$15 = $$2.a($$13);
@@ -326,7 +326,7 @@ public class arf {
 
             return $$15;
          } else {
-            return bsj.e;
+            return bsk.e;
          }
       }
    }

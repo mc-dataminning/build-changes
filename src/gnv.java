@@ -1,9 +1,16 @@
+import com.google.common.collect.Streams;
 import java.util.function.Predicate;
 
-@FunctionalInterface
-public interface gnv {
-   gnv b = $$0 -> $$0x -> true;
-   gnv c = $$0 -> $$0x -> false;
+public class gnv implements gnw {
+   public static final String a = "AND";
+   private final Iterable<? extends gnw> d;
 
-   Predicate<dww> getPredicate(dwx<djl, dww> var1);
+   public gnv(Iterable<? extends gnw> $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public Predicate<dwx> getPredicate(dwy<djm, dwx> $$0) {
+      return af.a(Streams.stream(this.d).map($$1 -> $$1.getPredicate($$0)).toList());
+   }
 }

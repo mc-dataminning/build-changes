@@ -1,9 +1,13 @@
-public interface dvt {
-   void a();
+public class dvt extends dtz {
+   protected dvt(dub<?> $$0, ji $$1, dwx $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   boolean b();
+   public dvt(ji $$0, dwx $$1) {
+      this(dub.o, $$0, $$1);
+   }
 
-   ji c();
-
-   String d();
+   public boolean a(jn $$0) {
+      return $$0.o() == jn.a.b;
+   }
 }

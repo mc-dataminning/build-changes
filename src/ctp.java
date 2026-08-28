@@ -1,73 +1,65 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class ctp extends bsq {
-   @Nullable
-   private duv b;
-
-   public ctp() {
-      super(27);
-   }
-
-   public void a(duv $$0) {
-      this.b = $$0;
-   }
-
-   public boolean b(duv $$0) {
-      return this.b == $$0;
+public class ctp extends ctz {
+   public ctp(bsd $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(tw $$0, jt.a $$1) {
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         this.a($$2, cwo.j);
-      }
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         tq $$4 = $$0.a($$3);
-         int $$5 = $$4.f("Slot") & 255;
-         if ($$5 >= 0 && $$5 < this.b()) {
-            this.a($$5, cwo.a($$1, (un)$$4).orElse(cwo.j));
-         }
-      }
+   public void b(cwp $$0, cwp $$1) {
    }
 
    @Override
-   public tw a(jt.a $$0) {
-      tw $$1 = new tw();
-
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         cwo $$3 = this.a($$2);
-         if (!$$3.f()) {
-            tq $$4 = new tq();
-            $$4.a("Slot", (byte)$$2);
-            $$1.add($$3.b($$0, $$4));
-         }
-      }
-
-      return $$1;
+   public boolean a(cox $$0) {
+      return false;
    }
 
    @Override
-   public boolean a(cow $$0) {
-      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
+   public Optional<cwp> a(int $$0, int $$1, cox $$2) {
+      return Optional.empty();
    }
 
    @Override
-   public void c_(cow $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      super.c_($$0);
+   public cwp b(int $$0, int $$1, cox $$2) {
+      return cwp.j;
    }
 
    @Override
-   public void c(cow $$0) {
-      if (this.b != null) {
-         this.b.b($$0);
-      }
+   public cwp d(cwp $$0) {
+      return $$0;
+   }
 
-      super.c($$0);
-      this.b = null;
+   @Override
+   public cwp b(cwp $$0, int $$1) {
+      return this.d($$0);
+   }
+
+   @Override
+   public boolean b(cox $$0) {
+      return false;
+   }
+
+   @Override
+   public boolean a(cwp $$0) {
+      return false;
+   }
+
+   @Override
+   public cwp a(int $$0) {
+      return cwp.j;
+   }
+
+   @Override
+   public void a(cox $$0, cwp $$1) {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public boolean f() {
+      return true;
    }
 }

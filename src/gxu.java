@@ -1,11 +1,7 @@
-import javax.annotation.Nullable;
-
-public class gxu extends gyd {
-   @Nullable
-   public bui.b.a a;
-
-   @Override
-   public boolean a() {
-      return this.a != null;
-   }
+public class gxu extends gzk {
+   public float a;
+   public boolean b = true;
+   public boolean c;
+   public boolean d;
+   public boolean e;
 }

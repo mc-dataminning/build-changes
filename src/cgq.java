@@ -1,10 +1,8 @@
-public abstract class cgq extends bvi {
-   protected cgq(bur<? extends cgq> $$0, dgh $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public boolean y() {
-      return false;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cgq {
 }

@@ -1,29 +1,32 @@
-public enum fsw {
-   a,
-   b;
+public interface fsw {
+   fsy a();
 
-   public fsw a() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-      };
+   public static record a(fsy a) implements fsw {
+      @Override
+      public fsy a() {
+         return this.a.a() == fsx.b ? this.a : fsy.b;
+      }
+
+      public fsy b() {
+         return this.a;
+      }
    }
 
-   public fsx b() {
-      return switch (this) {
-         case a -> fsx.d;
-         case b -> fsx.b;
-      };
+   public static class b implements fsw {
+      @Override
+      public fsy a() {
+         return fsy.b;
+      }
    }
 
-   public fsx c() {
-      return switch (this) {
-         case a -> fsx.c;
-         case b -> fsx.a;
-      };
-   }
+   public static record c(boolean a) implements fsw {
+      @Override
+      public fsy a() {
+         return this.a ? fsy.b : fsy.a;
+      }
 
-   public fsx a(boolean $$0) {
-      return $$0 ? this.b() : this.c();
+      public boolean b() {
+         return this.a;
+      }
    }
 }

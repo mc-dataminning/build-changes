@@ -1,5 +1,5 @@
-public class har extends gzj {
-   public boolean a;
-   public boolean b;
-   public boolean c;
+public class har extends gzk {
+   public chy.b a = chy.b.g;
+   public int b = -1;
+   public int c = -1;
 }

@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fgy {
+   fgo b();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fgy {
+   void d();
+
+   static fgy f() {
+      return new fgy() {
+         private final fgo a = new fgo();
+
+         @Override
+         public fgo b() {
+            return this.a;
+         }
+
+         @Override
+         public void d() {
+         }
+      };
+   }
 }

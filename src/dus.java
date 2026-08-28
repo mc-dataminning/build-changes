@@ -1,93 +1,95 @@
-public class dus extends dvg {
-   public static final int d = 9;
-   private ka<cwo> e = ka.a(9, cwo.j);
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   protected dus(dua<?> $$0, ji $$1, dww $$2) {
-      super($$0, $$1, $$2);
+public class dus {
+   public static final aku<dur> a = a("blank");
+   public static final aku<dur> b = a("angler");
+   public static final aku<dur> c = a("archer");
+   public static final aku<dur> d = a("arms_up");
+   public static final aku<dur> e = a("blade");
+   public static final aku<dur> f = a("brewer");
+   public static final aku<dur> g = a("burn");
+   public static final aku<dur> h = a("danger");
+   public static final aku<dur> i = a("explorer");
+   public static final aku<dur> j = a("flow");
+   public static final aku<dur> k = a("friend");
+   public static final aku<dur> l = a("guster");
+   public static final aku<dur> m = a("heart");
+   public static final aku<dur> n = a("heartbreak");
+   public static final aku<dur> o = a("howl");
+   public static final aku<dur> p = a("miner");
+   public static final aku<dur> q = a("mourner");
+   public static final aku<dur> r = a("plenty");
+   public static final aku<dur> s = a("prize");
+   public static final aku<dur> t = a("scrape");
+   public static final aku<dur> u = a("sheaf");
+   public static final aku<dur> v = a("shelter");
+   public static final aku<dur> w = a("skull");
+   public static final aku<dur> x = a("snort");
+   private static final Map<cwl, aku<dur>> y = Map.ofEntries(
+      Map.entry(cwt.rs, a),
+      Map.entry(cwt.yP, b),
+      Map.entry(cwt.yQ, c),
+      Map.entry(cwt.yR, d),
+      Map.entry(cwt.yS, e),
+      Map.entry(cwt.yT, f),
+      Map.entry(cwt.yU, g),
+      Map.entry(cwt.yV, h),
+      Map.entry(cwt.yW, i),
+      Map.entry(cwt.yX, j),
+      Map.entry(cwt.yY, k),
+      Map.entry(cwt.yZ, l),
+      Map.entry(cwt.za, m),
+      Map.entry(cwt.zb, n),
+      Map.entry(cwt.zc, o),
+      Map.entry(cwt.zd, p),
+      Map.entry(cwt.ze, q),
+      Map.entry(cwt.zf, r),
+      Map.entry(cwt.zg, s),
+      Map.entry(cwt.zh, t),
+      Map.entry(cwt.zi, u),
+      Map.entry(cwt.zj, v),
+      Map.entry(cwt.zk, w),
+      Map.entry(cwt.zl, x)
+   );
+
+   @Nullable
+   public static aku<dur> a(cwl $$0) {
+      return y.get($$0);
    }
 
-   public dus(ji $$0, dww $$1) {
-      this(dua.f, $$0, $$1);
+   private static aku<dur> a(String $$0) {
+      return aku.a(mc.ax, akv.b($$0));
    }
 
-   @Override
-   public int b() {
-      return 9;
+   public static dur a(ke<dur> $$0) {
+      a($$0, b, "angler_pottery_pattern");
+      a($$0, c, "archer_pottery_pattern");
+      a($$0, d, "arms_up_pottery_pattern");
+      a($$0, e, "blade_pottery_pattern");
+      a($$0, f, "brewer_pottery_pattern");
+      a($$0, g, "burn_pottery_pattern");
+      a($$0, h, "danger_pottery_pattern");
+      a($$0, i, "explorer_pottery_pattern");
+      a($$0, j, "flow_pottery_pattern");
+      a($$0, k, "friend_pottery_pattern");
+      a($$0, l, "guster_pottery_pattern");
+      a($$0, m, "heart_pottery_pattern");
+      a($$0, n, "heartbreak_pottery_pattern");
+      a($$0, o, "howl_pottery_pattern");
+      a($$0, p, "miner_pottery_pattern");
+      a($$0, q, "mourner_pottery_pattern");
+      a($$0, r, "plenty_pottery_pattern");
+      a($$0, s, "prize_pottery_pattern");
+      a($$0, t, "scrape_pottery_pattern");
+      a($$0, u, "sheaf_pottery_pattern");
+      a($$0, v, "shelter_pottery_pattern");
+      a($$0, w, "skull_pottery_pattern");
+      a($$0, x, "snort_pottery_pattern");
+      return a($$0, a, "decorated_pot_side");
    }
 
-   public int a(azh $$0) {
-      this.d_(null);
-      int $$1 = -1;
-      int $$2 = 1;
-
-      for (int $$3 = 0; $$3 < this.e.size(); $$3++) {
-         if (!this.e.get($$3).f() && $$0.a($$2++) == 0) {
-            $$1 = $$3;
-         }
-      }
-
-      return $$1;
-   }
-
-   public cwo b(cwo $$0) {
-      int $$1 = this.e_($$0);
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         cwo $$3 = this.e.get($$2);
-         if ($$3.f() || cwo.c($$0, $$3)) {
-            int $$4 = Math.min($$0.M(), $$1 - $$3.M());
-            if ($$4 > 0) {
-               if ($$3.f()) {
-                  this.a($$2, $$0.a($$4));
-               } else {
-                  $$0.h($$4);
-                  $$3.g($$4);
-               }
-            }
-
-            if ($$0.f()) {
-               break;
-            }
-         }
-      }
-
-      return $$0;
-   }
-
-   @Override
-   protected wp j() {
-      return wp.c("container.dispenser");
-   }
-
-   @Override
-   protected void a(tq $$0, jt.a $$1) {
-      super.a($$0, $$1);
-      this.e = ka.a(this.b(), cwo.j);
-      if (!this.b_($$0)) {
-         bsd.b($$0, this.e, $$1);
-      }
-   }
-
-   @Override
-   protected void b(tq $$0, jt.a $$1) {
-      super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         bsd.a($$0, this.e, $$1);
-      }
-   }
-
-   @Override
-   protected ka<cwo> f() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(ka<cwo> $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   protected csb a(int $$0, cov $$1) {
-      return new csw($$0, $$1, this);
+   private static dur a(ke<dur> $$0, aku<dur> $$1, String $$2) {
+      return ke.a($$0, $$1, new dur(akv.b($$2)));
    }
 }

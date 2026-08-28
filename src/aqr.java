@@ -45,7 +45,7 @@ public abstract class aqr {
    private int o = 10;
 
    protected aqr(Executor $$0, Executor $$1) {
-      bre<Runnable> $$2 = bre.a("player ticket throttler", $$1);
+      brf<Runnable> $$2 = brf.a("player ticket throttler", $$1);
       this.k = new arh($$2, $$0, 4);
       this.m = $$1;
    }
@@ -122,7 +122,7 @@ public abstract class aqr {
                      throw new IllegalStateException();
                   }
 
-                  CompletableFuture<aqj<dzb>> $$8 = $$7.b();
+                  CompletableFuture<aqj<dzc>> $$8 = $$7.b();
                   $$8.thenAccept($$1x -> this.m.execute(() -> this.k.a($$6, () -> {
                         }, false)));
                }
@@ -157,23 +157,23 @@ public abstract class aqr {
       this.f.b($$0, a($$2), false);
    }
 
-   public <T> void a(arj<T> $$0, dfn $$1, int $$2, T $$3) {
+   public <T> void a(arj<T> $$0, dfo $$1, int $$2, T $$3) {
       this.a($$1.a(), new ari<>($$0, $$2, $$3));
    }
 
-   public <T> void b(arj<T> $$0, dfn $$1, int $$2, T $$3) {
+   public <T> void b(arj<T> $$0, dfo $$1, int $$2, T $$3) {
       ari<T> $$4 = new ari<>($$0, $$2, $$3);
       this.b($$1.a(), $$4);
    }
 
-   public <T> void c(arj<T> $$0, dfn $$1, int $$2, T $$3) {
+   public <T> void c(arj<T> $$0, dfo $$1, int $$2, T $$3) {
       ari<T> $$4 = new ari<>($$0, aqh.a(aqs.b) - $$2, $$3);
       long $$5 = $$1.a();
       this.a($$5, $$4);
       this.h.a($$5, $$4);
    }
 
-   public <T> void d(arj<T> $$0, dfn $$1, int $$2, T $$3) {
+   public <T> void d(arj<T> $$0, dfo $$1, int $$2, T $$3) {
       ari<T> $$4 = new ari<>($$0, aqh.a(aqs.b) - $$2, $$3);
       long $$5 = $$1.a();
       this.b($$5, $$4);
@@ -184,8 +184,8 @@ public abstract class aqr {
       return (azr<ari<?>>)this.e.computeIfAbsent($$0, $$0x -> azr.a(4));
    }
 
-   protected void a(dfn $$0, boolean $$1) {
-      ari<dfn> $$2 = new ari<>(arj.d, aqi.c, $$0);
+   protected void a(dfo $$0, boolean $$1) {
+      ari<dfo> $$2 = new ari<>(arj.d, aqi.c, $$0);
       long $$3 = $$0.a();
       if ($$1) {
          this.a($$3, $$2);
@@ -197,7 +197,7 @@ public abstract class aqr {
    }
 
    public void a(kk $$0, are $$1) {
-      dfn $$2 = $$0.r();
+      dfo $$2 = $$0.r();
       long $$3 = $$2.a();
       ((ObjectSet)this.d.computeIfAbsent($$3, $$0x -> new ObjectOpenHashSet())).add($$1);
       this.g.b($$3, 0, true);
@@ -206,7 +206,7 @@ public abstract class aqr {
    }
 
    public void b(kk $$0, are $$1) {
-      dfn $$2 = $$0.r();
+      dfo $$2 = $$0.r();
       long $$3 = $$2.a();
       ObjectSet<are> $$4 = (ObjectSet<are>)this.d.get($$3);
       $$4.remove($$1);
@@ -271,7 +271,7 @@ public abstract class aqr {
 
          while (var3.hasNext()) {
             Entry<azr<ari<?>>> $$2 = (Entry<azr<ari<?>>>)var3.next();
-            dfn $$3 = new dfn($$2.getLongKey());
+            dfo $$3 = new dfo($$2.getLongKey());
 
             for (ari<?> $$4 : (azr)$$2.getValue()) {
                $$1.write(($$3.h + "\t" + $$3.i + "\t" + $$4.a() + "\t" + $$4.b() + "\t\n").getBytes(StandardCharsets.UTF_8));
@@ -419,7 +419,7 @@ public abstract class aqr {
 
             while (var3.hasNext()) {
                it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$2 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var3.next();
-               dfn $$3 = new dfn($$2.getLongKey());
+               dfo $$3 = new dfo($$2.getLongKey());
                String $$4 = Byte.toString($$2.getByteValue());
                $$1.write(($$3.h + "\t" + $$3.i + "\t" + $$4 + "\n").getBytes(StandardCharsets.UTF_8));
             }
@@ -460,7 +460,7 @@ public abstract class aqr {
 
       private void a(long $$0, int $$1, boolean $$2, boolean $$3) {
          if ($$2 != $$3) {
-            ari<?> $$4 = new ari<>(arj.c, aqr.b, new dfn($$0));
+            ari<?> $$4 = new ari<>(arj.c, aqr.b, new dfo($$0));
             if ($$3) {
                aqr.this.k.a(() -> aqr.this.m.execute(() -> {
                      if (this.c(this.c($$0))) {
@@ -488,7 +488,7 @@ public abstract class aqr {
                int $$2 = this.h.get($$1);
                int $$3 = this.c($$1);
                if ($$2 != $$3) {
-                  aqr.this.k.onLevelChange(new dfn($$1), () -> this.h.get($$1), $$3, $$1x -> {
+                  aqr.this.k.onLevelChange(new dfo($$1), () -> this.h.get($$1), $$3, $$1x -> {
                      if ($$1x >= this.h.defaultReturnValue()) {
                         this.h.remove($$1);
                      } else {

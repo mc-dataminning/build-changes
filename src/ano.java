@@ -1,10 +1,10 @@
 @FunctionalInterface
 public interface ano {
-   void perform(ex var1, buk var2);
+   void perform(ex var1, bul var2);
 
-   public static record a(buk a, fj.a b) implements ano {
+   public static record a(bul a, fj.a b) implements ano {
       @Override
-      public void perform(ex $$0, buk $$1) {
+      public void perform(ex $$0, bul $$1) {
          if ($$1 instanceof are $$2) {
             $$2.a($$0.m(), this.a, this.b);
          } else {
@@ -13,9 +13,9 @@ public interface ano {
       }
    }
 
-   public static record b(faz a) implements ano {
+   public static record b(fba a) implements ano {
       @Override
-      public void perform(ex $$0, buk $$1) {
+      public void perform(ex $$0, bul $$1) {
          $$1.a($$0.m(), this.a);
       }
    }

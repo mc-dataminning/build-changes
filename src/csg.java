@@ -1,161 +1,43 @@
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class csg extends csb {
-   private static final int m = 0;
-   private static final int n = 1;
-   private static final int o = 3;
-   private static final int p = 1;
-   private static final int q = 28;
-   private static final int r = 28;
-   private static final int s = 37;
-   private static final int t = 0;
-   private final bsc u = new bsq(1) {
-      @Override
-      public boolean b(int $$0, cwo $$1) {
-         return $$1.a(awy.ba);
-      }
+class csg extends ctz {
+   private final bvh a;
+   private final but b;
+   @Nullable
+   private final akv g;
 
-      @Override
-      public int an_() {
-         return 1;
-      }
-   };
-   private final csg.a v;
-   private final cso w;
-   private final csn x;
-
-   public csg(int $$0, bsc $$1) {
-      this($$0, $$1, new ctx(3), cso.a);
-   }
-
-   public csg(int $$0, bsc $$1, csn $$2, cso $$3) {
-      super(ctk.j, $$0);
-      a($$2, 3);
-      this.x = $$2;
-      this.w = $$3;
-      this.v = new csg.a(this.u, 0, 136, 110);
-      this.a(this.v);
-      this.a($$2);
-      this.c($$1, 36, 137);
+   public csg(bsd $$0, bvh $$1, but $$2, int $$3, int $$4, int $$5, @Nullable akv $$6) {
+      super($$0, $$3, $$4, $$5);
+      this.a = $$1;
+      this.b = $$2;
+      this.g = $$6;
    }
 
    @Override
-   public void a(cow $$0) {
-      super.a($$0);
-      if (!$$0.dV().C) {
-         cwo $$1 = this.v.a(this.v.a());
-         if (!$$1.f()) {
-            $$0.a($$1, false);
-         }
-      }
+   public void a(cwp $$0, cwp $$1) {
+      this.a.a(this.b, $$1, $$0);
+      super.a($$0, $$1);
    }
 
    @Override
-   public boolean b(cow $$0) {
-      return a(this.w, $$0, djn.gj);
+   public int a() {
+      return 1;
    }
 
    @Override
-   public void b(int $$0, int $$1) {
-      super.b($$0, $$1);
-      this.d();
+   public boolean a(cwp $$0) {
+      return this.b == this.a.f($$0);
    }
 
    @Override
-   public cwo b(cow $$0, int $$1) {
-      cwo $$2 = cwo.j;
-      cty $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cwo $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 == 0) {
-            if (!this.a($$4, 1, 37, true)) {
-               return cwo.j;
-            }
-
-            $$3.b($$4, $$2);
-         } else if (!this.v.h() && this.v.a($$4) && $$4.M() == 1) {
-            if (!this.a($$4, 0, 1, false)) {
-               return cwo.j;
-            }
-         } else if ($$1 >= 1 && $$1 < 28) {
-            if (!this.a($$4, 28, 37, false)) {
-               return cwo.j;
-            }
-         } else if ($$1 >= 28 && $$1 < 37) {
-            if (!this.a($$4, 1, 28, false)) {
-               return cwo.j;
-            }
-         } else if (!this.a($$4, 1, 37, false)) {
-            return cwo.j;
-         }
-
-         if ($$4.f()) {
-            $$3.e(cwo.j);
-         } else {
-            $$3.c();
-         }
-
-         if ($$4.M() == $$2.M()) {
-            return cwo.j;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
-   }
-
-   public int l() {
-      return this.x.a(0);
-   }
-
-   public static int a(@Nullable jr<btn> $$0) {
-      return $$0 == null ? 0 : mb.d.t().a($$0) + 1;
+   public boolean a(cox $$0) {
+      cwp $$1 = this.g();
+      return !$$1.f() && !$$0.b() && ddb.a($$1, dda.E) ? false : super.a($$0);
    }
 
    @Nullable
-   public static jr<btn> e(int $$0) {
-      return $$0 == 0 ? null : mb.d.t().a($$0 - 1);
-   }
-
-   @Nullable
-   public jr<btn> m() {
-      return e(this.x.a(1));
-   }
-
-   @Nullable
-   public jr<btn> n() {
-      return e(this.x.a(2));
-   }
-
-   public void a(Optional<jr<btn>> $$0, Optional<jr<btn>> $$1) {
-      if (this.v.h()) {
-         this.x.a(1, a($$0.orElse(null)));
-         this.x.a(2, a($$1.orElse(null)));
-         this.v.a(1);
-         this.w.a(dgh::q);
-      }
-   }
-
-   public boolean o() {
-      return !this.u.a(0).f();
-   }
-
-   static class a extends cty {
-      public a(bsc $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public boolean a(cwo $$0) {
-         return $$0.a(awy.ba);
-      }
-
-      @Override
-      public int a() {
-         return 1;
-      }
+   @Override
+   public akv b() {
+      return this.g;
    }
 }

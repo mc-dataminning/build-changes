@@ -1,80 +1,65 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class fts extends ful {
+   private static final wp a = wp.c("gui.toMenu");
+   private static final wp b = wp.c("gui.toTitle");
+   private static final wp c = wp.c("gui.report_to_server");
+   private static final wp d = wp.c("gui.open_report_dir");
+   private final ful s;
+   private final vk u;
+   private final wp v;
+   private final fsl w = fsl.d();
 
-public class fts extends fuk {
-   private static final wp a = wp.c("addServer.enterName");
-   private static final wp b = wp.c("addServer.enterIp");
-   private fos c;
-   private final BooleanConsumer d;
-   private final ggn s;
-   private fpb u;
-   private fpb v;
-   private final fuk w;
+   public fts(ful $$0, wp $$1, wp $$2) {
+      this($$0, $$1, new vk($$2));
+   }
 
-   public fts(fuk $$0, BooleanConsumer $$1, ggn $$2) {
-      super(wp.c("addServer.title"));
-      this.w = $$0;
-      this.d = $$1;
-      this.s = $$2;
+   public fts(ful $$0, wp $$1, wp $$2, wp $$3) {
+      this($$0, $$1, new vk($$2), $$3);
+   }
+
+   public fts(ful $$0, wp $$1, vk $$2) {
+      this($$0, $$1, $$2, a);
+   }
+
+   public fts(ful $$0, wp $$1, vk $$2, wp $$3) {
+      super($$1);
+      this.s = $$0;
+      this.u = $$2;
+      this.v = $$3;
    }
 
    @Override
    protected void aR_() {
-      this.v = new fpb(this.p, this.n / 2 - 100, 66, 200, 20, wp.c("addServer.enterName"));
-      this.v.a(this.s.a);
-      this.v.b($$0 -> this.E());
-      this.d(this.v);
-      this.u = new fpb(this.p, this.n / 2 - 100, 106, 200, 20, wp.c("addServer.enterIp"));
-      this.u.f(128);
-      this.u.a(this.s.b);
-      this.u.b($$0 -> this.E());
-      this.d(this.u);
-      this.c(
-         foz.a(ggn.a::a)
-            .a(ggn.a.values())
-            .a(this.s.b())
-            .a(this.n / 2 - 100, this.o / 4 + 72, 200, 20, wp.c("addServer.resourcePack"), ($$0, $$1) -> this.s.a($$1))
-      );
-      this.c = this.c(fos.a(wp.c("addServer.add"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 18, 200, 20).a());
-      this.c(fos.a(wo.e, $$0 -> this.d.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 18, 200, 20).a());
-      this.E();
+      this.w.c().b().a(10);
+      this.w.a(new fqa(this.l, this.p));
+      this.w.a(new fpn(this.u.a(), this.p).d(this.n - 50).b(true));
+      this.w.c().a(2);
+      this.u.c().ifPresent($$0 -> this.w.a(fot.a(c, fti.b(this, $$0, false)).a(200).a()));
+      this.u.b().ifPresent($$0 -> this.w.a(fot.a(d, $$1x -> af.m().a($$0.getParent())).a(200).a()));
+      fot $$0;
+      if (this.m.F()) {
+         $$0 = fot.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
+      } else {
+         $$0 = fot.a(b, $$0x -> this.m.a(new fun())).a(200).a();
+      }
+
+      this.w.a($$0);
+      this.w.a();
+      this.w.a(this::c);
+      this.c();
    }
 
    @Override
-   protected void aF_() {
-      this.b(this.v);
+   protected void c() {
+      fsf.a(this.w, this.J());
    }
 
    @Override
-   public void a(fli $$0, int $$1, int $$2) {
-      String $$3 = this.u.a();
-      String $$4 = this.v.a();
-      this.b($$0, $$1, $$2);
-      this.u.a($$3);
-      this.v.a($$4);
-   }
-
-   private void m() {
-      this.s.a = this.v.a();
-      this.s.b = this.u.a();
-      this.d.accept(true);
+   public wp i() {
+      return wo.a(this.l, this.u.a());
    }
 
    @Override
-   public void aO_() {
-      this.m.a(this.w);
-   }
-
-   private void E() {
-      this.c.j = ghq.b(this.u.a()) && !this.v.a().isEmpty();
-   }
-
-   @Override
-   public void a(fod $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, 16777215);
-      $$0.b(this.p, a, this.n / 2 - 100 + 1, 53, 10526880);
-      $$0.b(this.p, b, this.n / 2 - 100 + 1, 94, 10526880);
-      this.v.a($$0, $$1, $$2, $$3);
-      this.u.a($$0, $$1, $$2, $$3);
+   public boolean aG_() {
+      return false;
    }
 }

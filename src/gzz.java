@@ -1,5 +1,5 @@
-public class gzz extends gzj {
+public class gzz extends gzk {
    public float a;
-   public float b;
-   public float c;
+   public boolean b;
+   public chs.g c = chs.g.a;
 }

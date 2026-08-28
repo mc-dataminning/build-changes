@@ -1,59 +1,41 @@
-public class fyv extends fuk {
-   private static final wp a = wp.c("gui.abuseReport.title");
-   private static final wp b = wp.c("gui.abuseReport.message");
-   private static final wp c = wp.c("gui.abuseReport.type.chat");
-   private static final wp d = wp.c("gui.abuseReport.type.skin");
-   private static final wp s = wp.c("gui.abuseReport.type.name");
-   private static final int u = 6;
-   private final fuk v;
-   private final ghh w;
-   private final fyz x;
-   private final fsk y = fsk.d().a(6);
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public fyv(fuk $$0, ghh $$1, fyz $$2) {
-      super(a);
-      this.v = $$0;
-      this.w = $$1;
-      this.x = $$2;
+public class fyv extends fyr<ghd.a> {
+   private static final wp C = wp.c("gui.abuseReport.name.title");
+   private static final wp D = wp.c("gui.abuseReport.name.comment_box_label");
+   @Nullable
+   private fpl E;
+
+   private fyv(ful $$0, ghi $$1, ghd.a $$2) {
+      super(C, $$0, $$1, $$2);
+   }
+
+   public fyv(ful $$0, ghi $$1, UUID $$2, String $$3) {
+      this($$0, $$1, new ghd.a($$2, $$3, $$1.a().b()));
+   }
+
+   public fyv(ful $$0, ghi $$1, ghd $$2) {
+      this($$0, $$1, new ghd.a($$2, $$1.a().b()));
    }
 
    @Override
-   public wp i() {
-      return wo.a(super.i(), b);
-   }
-
-   @Override
-   protected void aR_() {
-      this.y.c().b();
-      this.y.a(new fpz(this.l, this.p), this.y.b().e(6));
-      this.y.a(new fpm(b, this.p).b(true), this.y.b().e(6));
-      fos $$0 = this.y.a(fos.a(c, $$0x -> this.m.a(new fyr(this.v, this.w, this.x.g()))).a());
-      if (!this.x.l()) {
-         $$0.j = false;
-         $$0.a(fqd.a(wp.c("gui.socialInteractions.tooltip.report.not_reportable")));
-      } else if (!this.x.k()) {
-         $$0.j = false;
-         $$0.a(fqd.a(wp.a("gui.socialInteractions.tooltip.report.no_messages", this.x.c())));
-      }
-
-      this.y.a(fos.a(d, $$0x -> this.m.a(new fyx(this.v, this.w, this.x.g(), this.x.h()))).a());
-      this.y.a(fos.a(s, $$0x -> this.m.a(new fyu(this.v, this.w, this.x.g(), this.x.c()))).a());
-      this.y.a(fsl.b(20));
-      this.y.a(fos.a(wo.e, $$0x -> this.aO_()).a());
-      this.y.a($$1 -> {
-         fop var10000 = this.c($$1);
+   protected void E() {
+      wp $$0 = wp.b(this.A.e().a()).a(n.o);
+      this.z.a(new fqa(wp.a("gui.abuseReport.name.reporting", $$0), this.p), $$0x -> $$0x.b().a(0, 8));
+      this.E = this.a(280, 9 * 8, $$0x -> {
+         this.A.a($$0x);
+         this.G();
       });
-      this.c();
+      this.z.a(fsd.a(this.p, this.E, D, $$0x -> $$0x.e(12)));
    }
 
    @Override
-   protected void c() {
-      this.y.a();
-      fse.a(this.y, this.J());
-   }
-
-   @Override
-   public void aO_() {
-      this.m.a(this.v);
+   public boolean b(double $$0, double $$1, int $$2) {
+      if (super.b($$0, $$1, $$2)) {
+         return true;
+      } else {
+         return this.E != null ? this.E.b($$0, $$1, $$2) : false;
+      }
    }
 }

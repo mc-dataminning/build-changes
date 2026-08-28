@@ -1,8 +1,8 @@
 import io.netty.buffer.ByteBuf;
 import java.util.List;
 
-public record adz(List<dck> b) implements yw<abl> {
-   public static final yn<ByteBuf, adz> a = yn.a(dck.a.a(yl.a()), adz::b, adz::new);
+public record adz(List<dcl> b) implements yw<abl> {
+   public static final yn<ByteBuf, adz> a = yn.a(dcl.a.a(yl.a()), adz::b, adz::new);
 
    @Override
    public yy<adz> a() {

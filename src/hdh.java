@@ -1,51 +1,18 @@
-import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Multiset;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public interface hdh<T> {
-   @Nullable
-   T b(cwo var1, @Nullable gfy var2, @Nullable bvg var3, int var4, cwm var5);
+public class hdh {
+   private static final ayi.b<akv, hdi.a<?, ?>> b = new ayi.b<>();
+   public static final Codec<hdi.a<?, ?>> a = b.a(akv.a);
 
-   hdh.a<? extends hdh<T>, T> a();
-
-   public static record a<P extends hdh<T>, T>(MapCodec<hbq.c<P, T>> a) {
-      public static <P extends hdh<T>, T> hdh.a<P, T> a(MapCodec<P> $$0, Codec<T> $$1) {
-         Codec<List<hbq.a<T>>> $$2 = hbq.a.a($$1)
-            .listOf()
-            .validate(
-               $$0x -> {
-                  if ($$0x.isEmpty()) {
-                     return DataResult.error(() -> "Empty case list");
-                  } else {
-                     Multiset<T> $$1x = HashMultiset.create();
-
-                     for (hbq.a<T> $$2x : $$0x) {
-                        $$1x.addAll($$2x.a());
-                     }
-
-                     return $$1x.size() != $$1x.entrySet().size()
-                        ? DataResult.error(
-                           () -> "Duplicate case conditions: "
-                                 + $$1x.entrySet()
-                                    .stream()
-                                    .filter($$0xxx -> $$0xxx.getCount() > 1)
-                                    .map($$0xxx -> $$0xxx.getElement().toString())
-                                    .collect(Collectors.joining(", "))
-                        )
-                        : DataResult.success($$0x);
-                  }
-               }
-            );
-         MapCodec<hbq.c<P, T>> $$3 = RecordCodecBuilder.mapCodec(
-            $$2x -> $$2x.group($$0.forGetter(hbq.c::a), $$2.fieldOf("cases").forGetter(hbq.c::b)).apply($$2x, hbq.c::new)
-         );
-         return new hdh.a<>($$3);
-      }
+   public static void a() {
+      b.a(akv.b("custom_model_data"), hdc.a);
+      b.a(akv.b("main_hand"), hdg.a);
+      b.a(akv.b("charge_type"), hcz.a);
+      b.a(akv.b("trim_material"), hdj.a);
+      b.a(akv.b("block_state"), hde.a);
+      b.a(akv.b("display_context"), hdd.a);
+      b.a(akv.b("local_time"), hdf.b);
+      b.a(akv.b("context_entity_type"), hdb.a);
+      b.a(akv.b("context_dimension"), hda.a);
    }
 }

@@ -1,15 +1,14 @@
-public abstract class gqt<T extends cjb, S extends gyk, M extends gca<? super S>> extends gqx<T, S, M> {
-   public gqt(gsd.a $$0, M $$1, M $$2) {
-      super($$0, $$1, $$2, 0.75F);
+public abstract class gqt<T extends bvj & cnh> extends gqy<T, gyy, gcl> {
+   public gqt(gse.a $$0, gfb $$1, gfb $$2, float $$3) {
+      super($$0, new gcl($$0.a($$1)), new gcl($$0.a($$2)), $$3);
    }
 
-   public void a(T $$0, S $$1, float $$2) {
+   public gyy a() {
+      return new gyy();
+   }
+
+   public void a(T $$0, gyy $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.j();
-      $$1.c = $$0.ca();
-      $$1.e = $$0.J($$2);
-      $$1.f = $$0.K($$2);
-      $$1.g = $$0.L($$2);
-      $$1.d = $$0.cq > 0;
+      $$1.a = $$0.x();
    }
 }

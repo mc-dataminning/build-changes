@@ -1,66 +1,31 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public final class bny {
-   private final Object2ObjectMap<bnr<?>, Object> a = new Object2ObjectArrayMap();
+public interface bny<S, T> {
+   Optional<T> a(bnx<S> var1);
 
-   public <T> void a(bnr<T> $$0, @Nullable T $$1) {
-      this.a.put($$0, $$1);
+   static <S, T> bny<S, T> a(bob<S> $$0, bny.a<S, T> $$1) {
+      return new bny.c<>($$1, $$0);
    }
 
-   @Nullable
-   public <T> T a(bnr<T> $$0) {
-      return (T)this.a.get($$0);
+   static <S, T> bny<S, T> a(bob<S> $$0, bny.b<T> $$1) {
+      return new bny.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
    }
 
-   public <T> T b(bnr<T> $$0) {
-      return Objects.requireNonNull(this.a($$0));
+   @FunctionalInterface
+   public interface a<S, T> {
+      Optional<T> run(bnx<S> var1, bnz var2);
    }
 
-   public <T> T b(bnr<T> $$0, T $$1) {
-      return Objects.requireNonNullElse(this.a($$0), $$1);
+   @FunctionalInterface
+   public interface b<T> {
+      T run(bnz var1);
    }
 
-   @Nullable
-   @SafeVarargs
-   public final <T> T a(bnr<T>... $$0) {
-      for (bnr<T> $$1 : $$0) {
-         T $$2 = this.a($$1);
-         if ($$2 != null) {
-            return $$2;
-         }
+   public static record c<S, T>(bny.a<S, T> a, bob<S> b) implements bny<S, T> {
+      @Override
+      public Optional<T> a(bnx<S> $$0) {
+         bnz $$1 = new bnz();
+         return this.b.a($$0, $$1, bnt.a) ? this.a.run($$0, $$1) : Optional.empty();
       }
-
-      return null;
-   }
-
-   @SafeVarargs
-   public final <T> T b(bnr<T>... $$0) {
-      return Objects.requireNonNull(this.a($$0));
-   }
-
-   @Override
-   public String toString() {
-      return this.a.toString();
-   }
-
-   public void a(bny $$0) {
-      this.a.putAll($$0.a);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof bny $$1 ? this.a.equals($$1.a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
    }
 }

@@ -1,41 +1,49 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
+import java.util.function.Consumer;
 
-public record dew(String e, jr<cwk> f, Map<aku<der>, String> g, wp h) {
+public record dew(jr<dex> c, jr<dez> d, boolean e) implements czs {
    public static final Codec<dew> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ayi.C.fieldOf("asset_name").forGetter(dew::a),
-               cwk.e.fieldOf("ingredient").forGetter(dew::b),
-               Codec.unboundedMap(aku.a(des.a), Codec.STRING).optionalFieldOf("override_armor_assets", Map.of()).forGetter(dew::c),
-               wr.a.fieldOf("description").forGetter(dew::d)
+               dex.c.fieldOf("material").forGetter(dew::a),
+               dez.c.fieldOf("pattern").forGetter(dew::b),
+               Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.e)
             )
             .apply($$0, dew::new)
    );
-   public static final yn<wa, dew> b = yn.a(
-      yl.o, dew::a, yl.b(mc.K), dew::b, yl.a(Object2ObjectOpenHashMap::new, aku.b(des.a), yl.o), dew::c, wr.b, dew::d, dew::new
-   );
-   public static final Codec<jr<dew>> c = akr.a(mc.aZ, a);
-   public static final yn<wa, jr<dew>> d = yl.a(mc.aZ, b);
+   public static final yn<wa, dew> b = yn.a(dex.d, dew::a, dez.d, dew::b, yl.b, $$0 -> $$0.e, dew::new);
+   private static final wp f = wp.c(af.a("item", akv.b("smithing_template.upgrade"))).a(n.h);
 
-   public static dew a(String $$0, cwk $$1, wp $$2, Map<aku<der>, String> $$3) {
-      return new dew($$0, mb.g.e($$1), $$3, $$2);
+   public dew(jr<dex> $$0, jr<dez> $$1) {
+      this($$0, $$1, true);
    }
 
-   public String a() {
+   public boolean a(jr<dez> $$0, jr<dex> $$1) {
+      return $$0.equals(this.d) && $$1.equals(this.c);
+   }
+
+   @Override
+   public void a(cwl.b $$0, Consumer<wp> $$1, cyh $$2) {
+      if (this.e) {
+         $$1.accept(f);
+         $$1.accept(wo.a().b(this.d.a().a(this.c)));
+         $$1.accept(wo.a().b(this.c.a().d()));
+      }
+   }
+
+   public dew a(boolean $$0) {
+      return new dew(this.c, this.d, $$0);
+   }
+
+   public jr<dex> a() {
+      return this.c;
+   }
+
+   public jr<dez> b() {
+      return this.d;
+   }
+
+   public boolean c() {
       return this.e;
-   }
-
-   public jr<cwk> b() {
-      return this.f;
-   }
-
-   public Map<aku<der>, String> c() {
-      return this.g;
-   }
-
-   public wp d() {
-      return this.h;
    }
 }

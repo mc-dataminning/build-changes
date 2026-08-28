@@ -1,25 +1,26 @@
-public class gve extends gtj<cmn, haw, gep> {
-   private static final akv a = akv.b("textures/entity/witch.png");
+public class gve extends gsd<cqg, gyk> {
+   private static final akv a = akv.b("textures/entity/projectiles/wind_charge.png");
+   private final gep b;
 
-   public gve(gsd.a $$0) {
-      super($$0, new gep($$0.a(gfb.dz)), 0.5F);
-      this.a(new gxe(this));
+   public gve(gse.a $$0) {
+      super($$0);
+      this.b = new gep($$0.a(gfc.dy));
    }
 
-   public akv a(haw $$0) {
-      return a;
+   @Override
+   public void a(gyk $$0, ffu $$1, gly $$2, int $$3) {
+      ffy $$4 = $$2.getBuffer(gmi.a(a, this.a($$0.u) % 1.0F, 0.0F));
+      this.b.a($$0);
+      this.b.a($$1, $$4, $$3, hei.d);
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public haw b() {
-      return new haw();
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
    }
 
-   public void a(cmn $$0, haw $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      gyy.a($$0, $$1, this.i);
-      $$1.a = $$0.ar();
-      cwo $$3 = $$0.eZ();
-      $$1.b = !$$3.f();
-      $$1.c = $$3.a(cws.ti);
+   @Override
+   public gyk d() {
+      return new gyk();
    }
 }

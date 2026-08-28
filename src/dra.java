@@ -1,36 +1,124 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dra extends djl {
-   public static final MapCodec<dra> b = b(dra::new);
-   public static final dxn c = dxm.F;
+public class dra extends djm {
+   public static final MapCodec<dra> a = b(dra::new);
+   public static final int b = 8;
+   public static final dxw c = dxn.aI;
+   protected static final fbu[] d = new fbu[]{
+      fbr.a(),
+      djm.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      djm.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      djm.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      djm.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      djm.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
+      djm.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
+      djm.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
+      djm.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
+   };
+   public static final int e = 5;
 
    @Override
-   protected MapCodec<? extends dra> a() {
-      return b;
+   public MapCodec<dra> a() {
+      return a;
    }
 
-   protected dra(dwv.d $$0) {
+   protected dra(dww.d $$0) {
       super($$0);
-      this.l(this.F.b().b(c, Boolean.valueOf(false)));
+      this.l(this.F.b().b(c, Integer.valueOf(1)));
    }
 
    @Override
-   protected dww a(dww $$0, dgk $$1, dgw $$2, ji $$3, jn $$4, ji $$5, dww $$6, azh $$7) {
-      return $$4 == jn.b ? $$0.b(c, Boolean.valueOf(o($$6))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected boolean a(dwx $$0, eto $$1) {
+      switch ($$1) {
+         case a:
+            return $$0.c(c) < 5;
+         case b:
+            return false;
+         case c:
+            return false;
+         default:
+            return false;
+      }
    }
 
    @Override
-   public dww a(daf $$0) {
-      dww $$1 = $$0.q().a_($$0.a().d());
-      return this.m().b(c, Boolean.valueOf(o($$1)));
-   }
-
-   protected static boolean o(dww $$0) {
-      return $$0.a(awp.bB);
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return d[$$0.c(c)];
    }
 
    @Override
-   protected void a(dwx.a<djl, dww> $$0) {
+   protected fbu b(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return d[$$0.c(c) - 1];
+   }
+
+   @Override
+   protected fbu b_(dwx $$0, dfn $$1, ji $$2) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected fbu c(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected boolean g_(dwx $$0) {
+      return true;
+   }
+
+   @Override
+   protected float c(dwx $$0, dfn $$1, ji $$2) {
+      return $$0.c(c) == 8 ? 0.2F : 1.0F;
+   }
+
+   @Override
+   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
+      dwx $$3 = $$1.a_($$2.e());
+      if ($$3.a(awp.cr)) {
+         return false;
+      } else {
+         return $$3.a(awp.cs) ? true : djm.a($$3.g($$1, $$2.e()), jn.b) || $$3.a(this) && $$3.c(c) == 8;
+      }
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      return !$$0.a($$1, $$3) ? djo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void b(dwx $$0, ard $$1, ji $$2, azh $$3) {
+      if ($$1.a(dgr.b, $$2) > 11) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   @Override
+   protected boolean a(dwx $$0, dag $$1) {
+      int $$2 = $$0.c(c);
+      if (!$$1.n().a(this.j()) || $$2 >= 8) {
+         return $$2 == 1;
+      } else {
+         return $$1.c() ? $$1.k() == jn.b : true;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dwx a(dag $$0) {
+      dwx $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         int $$2 = $$1.c(c);
+         return $$1.b(c, Integer.valueOf(Math.min(8, $$2 + 1)));
+      } else {
+         return super.a($$0);
+      }
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
       $$0.a(c);
    }
 }

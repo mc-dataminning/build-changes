@@ -1,56 +1,45 @@
-import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 
-public class bhw {
-   public static final TypeReference a = a("level");
-   public static final TypeReference b = a("player");
-   public static final TypeReference c = a("chunk");
-   public static final TypeReference d = a("hotbar");
-   public static final TypeReference e = a("options");
-   public static final TypeReference f = a("structure");
-   public static final TypeReference g = a("stats");
-   public static final TypeReference h = a("saved_data/command_storage");
-   public static final TypeReference i = a("saved_data/chunks");
-   public static final TypeReference j = a("saved_data/map_data");
-   public static final TypeReference k = a("saved_data/idcounts");
-   public static final TypeReference l = a("saved_data/raids");
-   public static final TypeReference m = a("saved_data/random_sequences");
-   public static final TypeReference n = a("saved_data/structure_feature_indices");
-   public static final TypeReference o = a("saved_data/scoreboard");
-   public static final TypeReference p = a("advancements");
-   public static final TypeReference q = a("poi_chunk");
-   public static final TypeReference r = a("entity_chunk");
-   public static final TypeReference s = a("block_entity");
-   public static final TypeReference t = a("item_stack");
-   public static final TypeReference u = a("block_state");
-   public static final TypeReference v = a("flat_block_state");
-   public static final TypeReference w = a("data_components");
-   public static final TypeReference x = a("villager_trade");
-   public static final TypeReference y = a("particle");
-   public static final TypeReference z = a("entity_name");
-   public static final TypeReference A = a("entity_tree");
-   public static final TypeReference B = a("entity");
-   public static final TypeReference C = a("block_name");
-   public static final TypeReference D = a("item_name");
-   public static final TypeReference E = a("game_event_name");
-   public static final TypeReference F = a("untagged_spawner");
-   public static final TypeReference G = a("structure_feature");
-   public static final TypeReference H = a("objective");
-   public static final TypeReference I = a("team");
-   public static final TypeReference J = a("recipe");
-   public static final TypeReference K = a("biome");
-   public static final TypeReference L = a("multi_noise_biome_source_parameter_list");
-   public static final TypeReference M = a("world_gen_settings");
+public class bhw extends DataFix {
+   public bhw(Schema $$0) {
+      super($$0, false);
+   }
 
-   public static TypeReference a(final String $$0) {
-      return new TypeReference() {
-         public String typeName() {
-            return $$0;
-         }
+   protected TypeRewriteRule makeRule() {
+      Schema $$0 = this.getInputSchema();
+      return this.fixTypeEverywhereTyped("RedstoneConnectionsFix", $$0.getType(bhx.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a));
+   }
 
-         @Override
-         public String toString() {
-            return "@" + $$0;
-         }
-      };
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("Name").asString().result().filter("minecraft:redstone_wire"::equals).isPresent();
+      return !$$1
+         ? $$0
+         : $$0.update(
+            "Properties",
+            $$0x -> {
+               String $$1x = $$0x.get("east").asString("none");
+               String $$2 = $$0x.get("west").asString("none");
+               String $$3 = $$0x.get("north").asString("none");
+               String $$4 = $$0x.get("south").asString("none");
+               boolean $$5 = a($$1x) || a($$2);
+               boolean $$6 = a($$3) || a($$4);
+               String $$7 = !a($$1x) && !$$6 ? "side" : $$1x;
+               String $$8 = !a($$2) && !$$6 ? "side" : $$2;
+               String $$9 = !a($$3) && !$$5 ? "side" : $$3;
+               String $$10 = !a($$4) && !$$5 ? "side" : $$4;
+               return $$0x.update("east", $$1xx -> $$1xx.createString($$7))
+                  .update("west", $$1xx -> $$1xx.createString($$8))
+                  .update("north", $$1xx -> $$1xx.createString($$9))
+                  .update("south", $$1xx -> $$1xx.createString($$10));
+            }
+         );
+   }
+
+   private static boolean a(String $$0) {
+      return !"none".equals($$0);
    }
 }

@@ -19,15 +19,15 @@ public class app implements apn {
             return $$0.then(ey.a("entity").then($$1.apply(ey.a($$0, fk.a()))));
          }
       };
-   private final buk c;
+   private final bul c;
 
-   public app(buk $$0) {
+   public app(bul $$0) {
       this.c = $$0;
    }
 
    @Override
    public void a(tq $$0) throws CommandSyntaxException {
-      if (this.c instanceof cow) {
+      if (this.c instanceof cox) {
          throw b.create();
       } else {
          UUID $$1 = this.c.cG();

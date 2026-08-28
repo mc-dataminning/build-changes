@@ -1,6 +1,6 @@
-public class gxn extends gzj {
+public class gxn extends gxp {
    public boolean a;
-   public final buc b = new buc();
-   public final buc c = new buc();
-   public final buc d = new buc();
+   public boolean b;
+   public float c;
+   public float d;
 }

@@ -1,28 +1,147 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.Products.P2;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class ejo<P extends ejn> {
-   public static final ejo<eji> a = a("blob_foliage_placer", eji.a);
-   public static final ejo<ejt> b = a("spruce_foliage_placer", ejt.a);
-   public static final ejo<ejr> c = a("pine_foliage_placer", ejr.a);
-   public static final ejo<ejh> d = a("acacia_foliage_placer", ejh.a);
-   public static final ejo<ejj> e = a("bush_foliage_placer", ejj.c);
-   public static final ejo<ejm> f = a("fancy_foliage_placer", ejm.c);
-   public static final ejo<ejp> g = a("jungle_foliage_placer", ejp.a);
-   public static final ejo<ejq> h = a("mega_pine_foliage_placer", ejq.a);
-   public static final ejo<ejl> i = a("dark_oak_foliage_placer", ejl.a);
-   public static final ejo<ejs> j = a("random_spread_foliage_placer", ejs.a);
-   public static final ejo<ejk> k = a("cherry_foliage_placer", ejk.a);
-   private final MapCodec<P> l;
+public abstract class ejo {
+   public static final Codec<ejo> d = mb.U.q().dispatch(ejo::a, ejp::a);
+   protected final brp e;
+   protected final brp f;
 
-   private static <P extends ejn> ejo<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.U, $$0, new ejo<>($$1));
+   protected static <P extends ejo> P2<Mu<P>, brp, brp> b(Instance<P> $$0) {
+      return $$0.group(brp.b(0, 16).fieldOf("radius").forGetter($$0x -> $$0x.e), brp.b(0, 16).fieldOf("offset").forGetter($$0x -> $$0x.f));
    }
 
-   private ejo(MapCodec<P> $$0) {
-      this.l = $$0;
+   public ejo(brp $$0, brp $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public MapCodec<P> a() {
-      return this.l;
+   protected abstract ejp<?> a();
+
+   public void a(dgo $$0, ejo.b $$1, azh $$2, eiy $$3, int $$4, ejo.a $$5, int $$6, int $$7) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$2));
+   }
+
+   protected abstract void a(dgo var1, ejo.b var2, azh var3, eiy var4, int var5, ejo.a var6, int var7, int var8, int var9);
+
+   public abstract int a(azh var1, int var2, eiy var3);
+
+   public int a(azh $$0, int $$1) {
+      return this.e.a($$0);
+   }
+
+   private int a(azh $$0) {
+      return this.f.a($$0);
+   }
+
+   protected abstract boolean a(azh var1, int var2, int var3, int var4, int var5, boolean var6);
+
+   protected boolean b(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6;
+      int $$7;
+      if ($$5) {
+         $$6 = Math.min(Math.abs($$1), Math.abs($$1 - 1));
+         $$7 = Math.min(Math.abs($$3), Math.abs($$3 - 1));
+      } else {
+         $$6 = Math.abs($$1);
+         $$7 = Math.abs($$3);
+      }
+
+      return this.a($$0, $$6, $$2, $$7, $$4, $$5);
+   }
+
+   protected void a(dgo $$0, ejo.b $$1, azh $$2, eiy $$3, ji $$4, int $$5, int $$6, boolean $$7) {
+      int $$8 = $$7 ? 1 : 0;
+      ji.a $$9 = new ji.a();
+
+      for (int $$10 = -$$5; $$10 <= $$5 + $$8; $$10++) {
+         for (int $$11 = -$$5; $$11 <= $$5 + $$8; $$11++) {
+            if (!this.b($$2, $$10, $$6, $$11, $$5, $$7)) {
+               $$9.a($$4, $$10, $$6, $$11);
+               a($$0, $$1, $$2, $$3, $$9);
+            }
+         }
+      }
+   }
+
+   protected final void a(dgo $$0, ejo.b $$1, azh $$2, eiy $$3, ji $$4, int $$5, int $$6, boolean $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      int $$10 = $$7 ? 1 : 0;
+      ji $$11 = $$4.e();
+      ji.a $$12 = new ji.a();
+
+      for (jn $$13 : jn.c.a) {
+         jn $$14 = $$13.h();
+         int $$15 = $$14.f() == jn.b.a ? $$5 + $$10 : $$5;
+         $$12.a($$4, 0, $$6 - 1, 0).c($$14, $$15).c($$13, -$$5);
+         int $$16 = -$$5;
+
+         while ($$16 < $$5 + $$10) {
+            boolean $$17 = $$1.a($$12.c(jn.b));
+            $$12.c(jn.a);
+            if ($$17 && a($$0, $$1, $$2, $$3, $$8, $$11, $$12)) {
+               $$12.c(jn.a);
+               a($$0, $$1, $$2, $$3, $$9, $$11, $$12);
+               $$12.c(jn.b);
+            }
+
+            $$16++;
+            $$12.c($$13);
+         }
+      }
+   }
+
+   private static boolean a(dgo $$0, ejo.b $$1, azh $$2, eiy $$3, float $$4, ji $$5, ji.a $$6) {
+      if ($$6.k($$5) >= 7) {
+         return false;
+      } else {
+         return $$2.i() > $$4 ? false : a($$0, $$1, $$2, $$3, $$6);
+      }
+   }
+
+   protected static boolean a(dgo $$0, ejo.b $$1, azh $$2, eiy $$3, ji $$4) {
+      boolean $$5 = $$0.a($$4, $$0x -> $$0x.a(dxn.A, Boolean.valueOf(false)));
+      if (!$$5 && ehk.c($$0, $$4)) {
+         dwx $$6 = $$3.e.a($$2, $$4);
+         if ($$6.b(dxn.J)) {
+            $$6 = $$6.b(dxn.J, Boolean.valueOf($$0.b($$4, $$0x -> $$0x.a(eta.c))));
+         }
+
+         $$1.a($$4, $$6);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public static final class a {
+      private final ji a;
+      private final int b;
+      private final boolean c;
+
+      public a(ji $$0, int $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public ji a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public boolean c() {
+         return this.c;
+      }
+   }
+
+   public interface b {
+      void a(ji var1, dwx var2);
+
+      boolean a(ji var1);
    }
 }

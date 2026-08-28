@@ -1,104 +1,154 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
-public class gpw implements gpy.a {
-   final fli a;
-   private double b = Double.MIN_VALUE;
-   private final int c = 12;
-   @Nullable
-   private gpw.a d;
+public class gpw implements gpz.a {
+   public static final jn[] a = jn.values();
+   private final flj b;
 
-   public gpw(fli $$0) {
-      this.a = $$0;
+   public gpw(flj $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(fft $$0, glx $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)af.d();
-      if ($$5 - this.b > 3.0E9) {
-         this.b = $$5;
-         hjc $$6 = this.a.V();
-         if ($$6 != null) {
-            this.d = new gpw.a($$6, $$2, $$4);
-         } else {
-            this.d = null;
-         }
-      }
+   public void a(ffu $$0, gly $$1, double $$2, double $$3, double $$4) {
+      glu $$5 = this.b.f;
+      if (this.b.C || this.b.D) {
+         gmn $$6 = $$5.x();
+         ObjectListIterator $$27 = $$5.w().iterator();
 
-      if (this.d != null) {
-         Map<dfn, String> $$7 = this.d.b.getNow(null);
-         double $$8 = this.a.j.k().b().e * 0.85;
+         while ($$27.hasNext()) {
+            gpm.b $$7 = (gpm.b)$$27.next();
+            gmn.d $$8 = $$6.b($$7);
+            if ($$8 != null) {
+               ji $$9 = $$7.f();
+               $$0.a();
+               $$0.a((double)$$9.u() - $$2, (double)$$9.v() - $$3, (double)$$9.w() - $$4);
+               Matrix4f $$10 = $$0.c().a();
+               if (this.b.C) {
+                  ffy $$11 = $$1.getBuffer(gmi.y());
+                  int $$12 = $$8.b == 0 ? 0 : ayz.g((float)$$8.b / 50.0F, 0.9F, 0.9F);
+                  int $$13 = $$12 >> 16 & 0xFF;
+                  int $$14 = $$12 >> 8 & 0xFF;
+                  int $$15 = $$12 & 0xFF;
 
-         for (Entry<dfn, String> $$9 : this.d.a.entrySet()) {
-            dfn $$10 = $$9.getKey();
-            String $$11 = $$9.getValue();
-            if ($$7 != null) {
-               $$11 = $$11 + $$7.get($$10);
-            }
-
-            String[] $$12 = $$11.split("\n");
-            int $$13 = 0;
-
-            for (String $$14 : $$12) {
-               gpy.a($$0, $$1, $$14, (double)kk.a($$10.h, 8), $$8 + (double)$$13, (double)kk.a($$10.i, 8), -1, 0.15F, true, 0.0F, true);
-               $$13 -= 2;
-            }
-         }
-      }
-   }
-
-   final class a {
-      final Map<dfn, String> a;
-      final CompletableFuture<Map<dfn, String>> b;
-
-      a(final hjc $$0, final double $$1, final double $$2) {
-         gfy $$3 = gpw.this.a.s;
-         aku<dgh> $$4 = $$3.ai();
-         int $$5 = kk.a($$1);
-         int $$6 = kk.a($$2);
-         Builder<dfn, String> $$7 = ImmutableMap.builder();
-         gfu $$8 = $$3.h();
-
-         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
-            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
-               dfn $$11 = new dfn($$9, $$10);
-               String $$12 = "";
-               dzb $$13 = $$8.a($$9, $$10, false);
-               $$12 = $$12 + "Client: ";
-               if ($$13 == null) {
-                  $$12 = $$12 + "0n/a\n";
-               } else {
-                  $$12 = $$12 + ($$13.E() ? " E" : "");
-                  $$12 = $$12 + "\n";
-               }
-
-               $$7.put($$11, $$12);
-            }
-         }
-
-         this.a = $$7.build();
-         this.b = $$0.a(() -> {
-            ard $$4x = $$0.a($$4);
-            if ($$4x == null) {
-               return ImmutableMap.of();
-            } else {
-               Builder<dfn, String> $$5x = ImmutableMap.builder();
-               ara $$6x = $$4x.m();
-
-               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
-                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
-                     dfn $$9x = new dfn($$7x, $$8x);
-                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
+                  for (int $$16 = 0; $$16 < a.length; $$16++) {
+                     if ($$8.a($$16)) {
+                        jn $$17 = a[$$16];
+                        $$11.a($$10, 8.0F, 8.0F, 8.0F).a($$13, $$14, $$15, 255).b((float)$$17.j(), (float)$$17.k(), (float)$$17.l());
+                        $$11.a($$10, (float)(8 - 16 * $$17.j()), (float)(8 - 16 * $$17.k()), (float)(8 - 16 * $$17.l()))
+                           .a($$13, $$14, $$15, 255)
+                           .b((float)$$17.j(), (float)$$17.k(), (float)$$17.l());
+                     }
                   }
                }
 
-               return $$5x.build();
+               if (this.b.D && $$7.d().a()) {
+                  ffy $$18 = $$1.getBuffer(gmi.y());
+                  int $$19 = 0;
+
+                  for (jn $$20 : a) {
+                     for (jn $$21 : a) {
+                        boolean $$22 = $$7.d().a($$20, $$21);
+                        if (!$$22) {
+                           $$19++;
+                           $$18.a($$10, (float)(8 + 8 * $$20.j()), (float)(8 + 8 * $$20.k()), (float)(8 + 8 * $$20.l()))
+                              .a(255, 0, 0, 255)
+                              .b((float)$$20.j(), (float)$$20.k(), (float)$$20.l());
+                           $$18.a($$10, (float)(8 + 8 * $$21.j()), (float)(8 + 8 * $$21.k()), (float)(8 + 8 * $$21.l()))
+                              .a(255, 0, 0, 255)
+                              .b((float)$$21.j(), (float)$$21.k(), (float)$$21.l());
+                        }
+                     }
+                  }
+
+                  if ($$19 > 0) {
+                     ffy $$23 = $$1.getBuffer(gmi.C());
+                     float $$24 = 0.5F;
+                     float $$25 = 0.2F;
+                     $$23.a($$10, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                  }
+               }
+
+               $$0.b();
             }
-         });
+         }
       }
+
+      gpq $$26 = $$5.y();
+      if ($$26 != null) {
+         $$0.a();
+         $$0.a((float)($$26.b() - $$2), (float)($$26.c() - $$3), (float)($$26.d() - $$4));
+         Matrix4f $$27 = $$0.c().a();
+         Vector4f[] $$28 = $$26.a();
+         ffy $$29 = $$1.getBuffer(gmi.C());
+         this.a($$29, $$27, $$28, 0, 1, 2, 3, 0, 1, 1);
+         this.a($$29, $$27, $$28, 4, 5, 6, 7, 1, 0, 0);
+         this.a($$29, $$27, $$28, 0, 1, 5, 4, 1, 1, 0);
+         this.a($$29, $$27, $$28, 2, 3, 7, 6, 0, 0, 1);
+         this.a($$29, $$27, $$28, 0, 4, 7, 3, 0, 1, 0);
+         this.a($$29, $$27, $$28, 1, 5, 6, 2, 1, 0, 1);
+         ffy $$30 = $$1.getBuffer(gmi.y());
+         this.a($$30, $$27, $$28[0]);
+         this.a($$30, $$27, $$28[1]);
+         this.a($$30, $$27, $$28[1]);
+         this.a($$30, $$27, $$28[2]);
+         this.a($$30, $$27, $$28[2]);
+         this.a($$30, $$27, $$28[3]);
+         this.a($$30, $$27, $$28[3]);
+         this.a($$30, $$27, $$28[0]);
+         this.a($$30, $$27, $$28[4]);
+         this.a($$30, $$27, $$28[5]);
+         this.a($$30, $$27, $$28[5]);
+         this.a($$30, $$27, $$28[6]);
+         this.a($$30, $$27, $$28[6]);
+         this.a($$30, $$27, $$28[7]);
+         this.a($$30, $$27, $$28[7]);
+         this.a($$30, $$27, $$28[4]);
+         this.a($$30, $$27, $$28[0]);
+         this.a($$30, $$27, $$28[4]);
+         this.a($$30, $$27, $$28[1]);
+         this.a($$30, $$27, $$28[5]);
+         this.a($$30, $$27, $$28[2]);
+         this.a($$30, $$27, $$28[6]);
+         this.a($$30, $$27, $$28[3]);
+         this.a($$30, $$27, $$28[7]);
+         $$0.b();
+      }
+   }
+
+   private void a(ffy $$0, Matrix4f $$1, Vector4f $$2) {
+      $$0.a($$1, $$2.x(), $$2.y(), $$2.z()).a(-16777216).b(0.0F, 0.0F, -1.0F);
+   }
+
+   private void a(ffy $$0, Matrix4f $$1, Vector4f[] $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9) {
+      float $$10 = 0.25F;
+      $$0.a($$1, $$2[$$3].x(), $$2[$$3].y(), $$2[$$3].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
+      $$0.a($$1, $$2[$$4].x(), $$2[$$4].y(), $$2[$$4].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
+      $$0.a($$1, $$2[$$5].x(), $$2[$$5].y(), $$2[$$5].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
+      $$0.a($$1, $$2[$$6].x(), $$2[$$6].y(), $$2[$$6].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
    }
 }

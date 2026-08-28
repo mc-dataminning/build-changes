@@ -46,17 +46,17 @@ public class ark extends aqm {
       this.b($$0, this.a($$2), false);
    }
 
-   public <T> void a(arj<T> $$0, dfn $$1, int $$2, T $$3) {
+   public <T> void a(arj<T> $$0, dfo $$1, int $$2, T $$3) {
       this.a($$1.a(), new ari<>($$0, $$2, $$3));
    }
 
-   public <T> void b(arj<T> $$0, dfn $$1, int $$2, T $$3) {
+   public <T> void b(arj<T> $$0, dfo $$1, int $$2, T $$3) {
       ari<T> $$4 = new ari<>($$0, $$2, $$3);
       this.b($$1.a(), $$4);
    }
 
    public void a(int $$0) {
-      List<Pair<ari<dfn>, Long>> $$1 = new ArrayList<>();
+      List<Pair<ari<dfo>, Long>> $$1 = new ArrayList<>();
       ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
 
       while (var3.hasNext()) {
@@ -69,12 +69,12 @@ public class ark extends aqm {
          }
       }
 
-      for (Pair<ari<dfn>, Long> $$4 : $$1) {
+      for (Pair<ari<dfo>, Long> $$4 : $$1) {
          Long $$5 = (Long)$$4.getSecond();
-         ari<dfn> $$6 = (ari<dfn>)$$4.getFirst();
+         ari<dfo> $$6 = (ari<dfo>)$$4.getFirst();
          this.b($$5, $$6);
-         dfn $$7 = new dfn($$5);
-         arj<dfn> $$8 = $$6.a();
+         dfo $$7 = new dfo($$5);
+         arj<dfo> $$8 = $$6.a();
          this.a($$8, $$7, $$0, $$7);
       }
    }
@@ -85,7 +85,7 @@ public class ark extends aqm {
       return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
    }
 
-   public int a(dfn $$0) {
+   public int a(dfo $$0) {
       return this.c($$0.a());
    }
 

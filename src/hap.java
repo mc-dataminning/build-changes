@@ -1,7 +1,3 @@
-import javax.annotation.Nullable;
-
-public class hap extends gyj {
-   public float a;
-   @Nullable
-   public dww b;
+public class hap extends gxr {
+   public boolean d;
 }

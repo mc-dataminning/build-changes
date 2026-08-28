@@ -1,46 +1,27 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public enum dfv implements dfj {
-   a;
+public class dfv {
+   public static final dfv a = new dfv(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<dfv> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, dfv::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
 
-   @Override
-   public float a(jn $$0, boolean $$1) {
-      return 1.0F;
+   public dfv(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   @Override
-   public esn C_() {
-      return esn.c;
+   public List<String> a() {
+      return this.c;
    }
 
-   @Override
-   public int a(ji $$0, dfr $$1) {
-      return -1;
-   }
-
-   @Nullable
-   @Override
-   public dty c_(ji $$0) {
-      return null;
-   }
-
-   @Override
-   public dww a_(ji $$0) {
-      return djn.a.m();
-   }
-
-   @Override
-   public esy b_(ji $$0) {
-      return esz.a.g();
-   }
-
-   @Override
-   public int M_() {
-      return 0;
-   }
-
-   @Override
-   public int L_() {
-      return 0;
+   public List<String> b() {
+      return this.d;
    }
 }

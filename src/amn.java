@@ -26,7 +26,7 @@ public class amn {
    private static final SuggestionProvider<ex> g = ($$0, $$1) -> {
       aua $$2 = ((ex)$$0.getSource()).l().aF();
       Collection<String> $$3 = $$2.e();
-      crs $$4 = ((ex)$$0.getSource()).v();
+      crt $$4 = ((ex)$$0.getSource()).v();
       return fc.b(
          $$2.d().stream().filter($$1x -> $$1x.e().a($$4)).map(atx::g).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
       );
@@ -115,7 +115,7 @@ public class amn {
       $$1.a();
       Collection<atx> $$2 = $$1.g();
       Collection<atx> $$3 = $$1.d();
-      crs $$4 = $$0.v();
+      crt $$4 = $$0.v();
       List<atx> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.e().a($$4)).toList();
       if ($$5.isEmpty()) {
          $$0.a(() -> wp.c("commands.datapack.list.available.none"), false);
@@ -152,12 +152,12 @@ public class amn {
          } else if (!$$2 && !$$6) {
             throw c.create($$3);
          } else {
-            crs $$7 = ((ex)$$0.getSource()).v();
-            crs $$8 = $$5.e();
+            crt $$7 = ((ex)$$0.getSource()).v();
+            crt $$8 = $$5.e();
             if (!$$2 && !$$8.b() && $$5.l() == aub.d) {
                throw d.create($$3);
             } else if (!$$8.a($$7)) {
-               throw e.create($$3, cru.a($$7, $$8));
+               throw e.create($$3, crv.a($$7, $$8));
             } else {
                return $$5;
             }

@@ -1,20 +1,44 @@
-public class gxe extends gvv<haw, gep> {
-   public gxe(gua<haw, gep> $$0) {
+import javax.annotation.Nullable;
+
+public class gxe<S extends gzb, M extends gcb<S>> extends gwt<S, M> {
+   private final gbx a;
+   private final gbx b;
+   private final gwd c;
+
+   public gxe(gub<S, M> $$0, gez $$1, gwd $$2) {
       super($$0);
+      this.a = new gbx($$1.a(gfc.aF));
+      this.b = new gbx($$1.a(gfc.aG));
+      this.c = $$2;
    }
 
-   protected void a(haw $$0, fft $$1) {
-      if ($$0.c) {
-         this.d().e().a($$1);
-         this.d().b().a($$1);
-         this.d().c().a($$1);
-         $$1.a(0.0625F, 0.25F, 0.0F);
-         $$1.a(a.f.rotationDegrees(180.0F));
-         $$1.a(a.b.rotationDegrees(140.0F));
-         $$1.a(a.f.rotationDegrees(10.0F));
-         $$1.a(a.b.rotationDegrees(180.0F));
-      } else {
-         super.a($$0, $$1);
+   public void a(ffu $$0, gly $$1, int $$2, S $$3, float $$4, float $$5) {
+      cwp $$6 = $$3.W;
+      deu $$7 = $$6.a(kv.D);
+      if ($$7 != null && !$$7.c().isEmpty()) {
+         akv $$8 = a($$3);
+         gbx $$9 = $$3.aj ? this.b : this.a;
+         $$0.a();
+         $$0.a(0.0F, 0.0F, 0.125F);
+         $$9.a($$3);
+         this.c.a(hgy.d.c, $$7.c().get(), $$9, $$6, $$0, $$1, $$2, $$8);
+         $$0.b();
       }
+   }
+
+   @Nullable
+   private static akv a(gzb $$0) {
+      if ($$0 instanceof gzw $$1) {
+         hfu $$2 = $$1.a;
+         if ($$2.d() != null) {
+            return $$2.d();
+         }
+
+         if ($$2.c() != null && $$1.ay) {
+            return $$2.c();
+         }
+      }
+
+      return null;
    }
 }

@@ -1,43 +1,38 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JavaOps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public class eyf extends exd {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<eyf> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eyf::new));
+public class eyf extends exe {
+   public static final Codec<wp> a = wr.a.validate($$0 -> czx.g.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
+   public static final MapCodec<eyf> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(czx.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), exd.a.forGetter($$0x -> $$0x.d))).apply($$0, eyf::new)
+   );
+   private final List<arv<wp>> c;
+   private final exd d;
 
-   private eyf(List<eyz> $$0) {
+   protected eyf(List<eza> $$0, List<arv<wp>> $$1, exd $$2) {
       super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public exf<eyf> b() {
-      return exg.l;
+   protected cwp a(cwp $$0, evr $$1) {
+      $$0.a(kv.T, czx.a, this::a);
+      return $$0;
+   }
+
+   @VisibleForTesting
+   public czx a(czx $$0) {
+      List<arv<wp>> $$1 = this.d.a($$0.a(), this.c);
+      return $$0.b($$1);
    }
 
    @Override
-   public cwo a(cwo $$0, evq $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         dbw $$2 = new dbw($$0);
-         Optional<dbi<dbx>> $$3 = $$1.d().t().a(dbo.b, $$2, $$1.d());
-         if ($$3.isPresent()) {
-            cwo $$4 = $$3.get().b().a($$2, $$1.d().K_());
-            if (!$$4.f()) {
-               return $$4.c($$0.M());
-            }
-         }
-
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
-      }
-   }
-
-   public static exd.a<?> c() {
-      return a(eyf::new);
+   public exg<eyf> b() {
+      return exh.N;
    }
 }

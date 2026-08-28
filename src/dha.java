@@ -1,50 +1,92 @@
-import java.util.Optional;
+public interface dha extends dfn {
+   jn[] D = jn.values();
 
-public class dha extends dga {
-   private final boolean a;
-   private final boolean b;
-   private final Optional<Float> c;
-   private final Optional<jv<djl>> d;
-
-   public dha(boolean $$0, boolean $$1, Optional<Float> $$2, Optional<jv<djl>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   default int a(ji $$0, jn $$1) {
+      return this.a_($$0).b(this, $$0, $$1);
    }
 
-   @Override
-   public Optional<Float> a(dfz $$0, dfm $$1, ji $$2, dww $$3, esy $$4) {
-      if (this.d.isPresent()) {
-         return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
+   default int e_(ji $$0) {
+      int $$1 = 0;
+      $$1 = Math.max($$1, this.a($$0.e(), jn.a));
+      if ($$1 >= 15) {
+         return $$1;
       } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
+         $$1 = Math.max($$1, this.a($$0.d(), jn.b));
+         if ($$1 >= 15) {
+            return $$1;
+         } else {
+            $$1 = Math.max($$1, this.a($$0.f(), jn.c));
+            if ($$1 >= 15) {
+               return $$1;
+            } else {
+               $$1 = Math.max($$1, this.a($$0.g(), jn.d));
+               if ($$1 >= 15) {
+                  return $$1;
+               } else {
+                  $$1 = Math.max($$1, this.a($$0.h(), jn.e));
+                  if ($$1 >= 15) {
+                     return $$1;
+                  } else {
+                     $$1 = Math.max($$1, this.a($$0.i(), jn.f));
+                     return $$1 >= 15 ? $$1 : $$1;
+                  }
+               }
+            }
+         }
       }
    }
 
-   @Override
-   public boolean a(dfz $$0, dfm $$1, ji $$2, dww $$3, float $$4) {
-      return this.a;
+   default int a(ji $$0, jn $$1, boolean $$2) {
+      dwx $$3 = this.a_($$0);
+      if ($$2) {
+         return dlp.n($$3) ? this.a($$0, $$1) : 0;
+      } else if ($$3.a(djo.hx)) {
+         return 15;
+      } else if ($$3.a(djo.cE)) {
+         return $$3.c(dpt.f);
+      } else {
+         return $$3.p() ? this.a($$0, $$1) : 0;
+      }
    }
 
-   @Override
-   public boolean a(dfz $$0, buk $$1) {
-      return this.b;
+   default boolean b(ji $$0, jn $$1) {
+      return this.c($$0, $$1) > 0;
    }
 
-   @Override
-   public float a(buk $$0) {
-      boolean var10000;
-      label17: {
-         if ($$0 instanceof cow $$1 && $$1.gj().b) {
-            var10000 = true;
-            break label17;
+   default int c(ji $$0, jn $$1) {
+      dwx $$2 = this.a_($$0);
+      int $$3 = $$2.a(this, $$0, $$1);
+      return $$2.d(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
+   }
+
+   default boolean C(ji $$0) {
+      if (this.c($$0.e(), jn.a) > 0) {
+         return true;
+      } else if (this.c($$0.d(), jn.b) > 0) {
+         return true;
+      } else if (this.c($$0.f(), jn.c) > 0) {
+         return true;
+      } else if (this.c($$0.g(), jn.d) > 0) {
+         return true;
+      } else {
+         return this.c($$0.h(), jn.e) > 0 ? true : this.c($$0.i(), jn.f) > 0;
+      }
+   }
+
+   default int D(ji $$0) {
+      int $$1 = 0;
+
+      for (jn $$2 : D) {
+         int $$3 = this.c($$0.a($$2), $$2);
+         if ($$3 >= 15) {
+            return 15;
          }
 
-         var10000 = false;
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
       }
 
-      boolean $$2 = var10000;
-      return $$2 ? 0.0F : this.c.orElseGet(() -> super.a($$0));
+      return $$1;
    }
 }

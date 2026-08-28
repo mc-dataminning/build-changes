@@ -1,67 +1,184 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cmx extends bwz<cmt> {
-   private static final int c = 256;
-   private static final int d = 5;
-   private static final int e = 4;
-   private static final float f = 0.7F;
-   private static final int g = Math.round(15.0F);
-   private static final int h = Math.round(4.0F);
-   private static final int i = Math.round(10.0F);
+public class cmx extends bxa<cmu> {
+   private static final int c = 4;
+   private static final int d = 10;
+   private static final int e = 2;
+   private static final int f = Math.round(10.0F);
+   private static final float g = 24.0F;
+   private static final float h = 1.4F;
+   private static final float i = 0.058333334F;
+   private static final ObjectArrayList<Integer> j = new ObjectArrayList(Lists.newArrayList(new Integer[]{40, 55, 60, 75, 80}));
 
    @VisibleForTesting
    public cmx() {
-      super(ImmutableMap.of(cek.o, cel.a, cek.aY, cel.b, cek.aW, cel.b, cek.aX, cel.b, cek.aV, cel.a, cek.m, cel.b, cek.ba, cel.b), g + 1 + h);
+      super(Map.of(cel.o, cem.a, cel.aU, cem.b, cel.aZ, cem.c, cel.ba, cem.c, cel.aV, cem.b, cel.m, cem.b, cel.bb, cem.c), 200);
    }
 
-   protected boolean a(ard $$0, cmt $$1) {
-      return $$1.aw() != bvs.a ? false : $$1.eb().c(cek.o).map($$1x -> a($$1, $$1x)).map($$1x -> {
-         if (!$$1x) {
-            $$1.eb().b(cek.aV);
-         }
-
-         return $$1x;
-      }).orElse(false);
-   }
-
-   protected boolean a(ard $$0, cmt $$1, long $$2) {
-      return $$1.eb().a(cek.o) && $$1.eb().a(cek.aV);
-   }
-
-   protected void b(ard $$0, cmt $$1, long $$2) {
-      $$1.eb().c(cek.o).ifPresent($$1x -> $$1.b(bvs.q));
-      $$1.eb().a(cek.aW, baf.a, (long)g);
-      $$1.a(awa.cG, 1.0F, 1.0F);
-   }
-
-   protected void c(ard $$0, cmt $$1, long $$2) {
-      if ($$1.aw() == bvs.q) {
-         $$1.b(bvs.a);
-      }
-
-      $$1.eb().a(cek.aY, baf.a, (long)i);
-      $$1.eb().b(cek.aV);
-   }
-
-   protected void d(ard $$0, cmt $$1, long $$2) {
-      bwi<cmt> $$3 = $$1.eb();
-      bvg $$4 = $$3.c(cek.o).orElse(null);
-      if ($$4 != null) {
-         $$1.a(fj.a.b, $$4.dt());
-         if (!$$3.c(cek.aW).isPresent() && !$$3.c(cek.aX).isPresent()) {
-            $$3.a(cek.aX, baf.a, (long)h);
-            double $$5 = $$4.dA() - $$1.dA();
-            double $$6 = $$4.e($$4.bZ() ? 0.8 : 0.3) - $$1.gt();
-            double $$7 = $$4.dG() - $$1.dG();
-            cpp.a(new cqg($$1, $$0), $$0, cwo.j, $$5, $$6, $$7, 0.7F, (float)(5 - $$0.am().a() * 4));
-            $$1.a(awa.cJ, 1.5F, 1.0F);
+   public static boolean a(ard $$0, cmu $$1) {
+      if (!$$1.aJ() && !$$1.bj()) {
+         return false;
+      } else if (bzu.a($$1)) {
+         return false;
+      } else if ($$1.eb().a(cel.ba, cem.a)) {
+         return true;
+      } else {
+         bvh $$2 = $$1.eb().c(cel.o).orElse(null);
+         if ($$2 == null) {
+            return false;
+         } else if (a($$1, $$2)) {
+            $$1.eb().b(cel.o);
+            return false;
+         } else if (b($$1, $$2)) {
+            return false;
+         } else if (!c($$0, $$1)) {
+            return false;
+         } else {
+            ji $$3 = a($$1, cmw.a($$2, $$1.dY()));
+            if ($$3 == null) {
+               return false;
+            } else {
+               dwx $$4 = $$0.a_($$3.e());
+               if ($$1.aq().a($$4)) {
+                  return false;
+               } else if (!cmw.a($$1, $$3.b()) && !cmw.a($$1, $$3.b(4).b())) {
+                  return false;
+               } else {
+                  $$1.eb().a(cel.ba, $$3);
+                  return true;
+               }
+            }
          }
       }
    }
 
-   private static boolean a(cmt $$0, bvg $$1) {
-      double $$2 = $$0.dt().g($$1.dt());
-      return $$2 < 256.0;
+   protected boolean b(ard $$0, cmu $$1) {
+      return a($$0, $$1);
+   }
+
+   protected boolean a(ard $$0, cmu $$1, long $$2) {
+      return $$1.aw() != bvt.a && !$$1.eb().a(cel.aU);
+   }
+
+   protected void b(ard $$0, cmu $$1, long $$2) {
+      if ($$1.eb().a(cel.aZ, cem.b)) {
+         $$1.eb().a(cel.aZ, baf.a, (long)f);
+      }
+
+      $$1.b(bvt.r);
+      $$0.a(null, $$1, awa.cE, awb.f, 1.0F, 1.0F);
+      $$1.eb().c(cel.ba).ifPresent($$1x -> $$1.a(fj.a.b, $$1x.b()));
+   }
+
+   protected void c(ard $$0, cmu $$1, long $$2) {
+      boolean $$3 = $$1.bj();
+      if (!$$3 && $$1.eb().a(cel.bb, cem.a)) {
+         $$1.eb().b(cel.bb);
+      }
+
+      if (a($$1)) {
+         fba $$4 = $$1.eb().c(cel.ba).flatMap($$1x -> a($$1, $$1.dY(), fba.c($$1x))).orElse(null);
+         if ($$4 == null) {
+            $$1.b(bvt.a);
+            return;
+         }
+
+         if ($$3) {
+            $$1.eb().a(cel.bb, baf.a);
+         }
+
+         $$1.a(awa.cK, 1.0F, 1.0F);
+         $$1.b(bvt.g);
+         $$1.v($$1.aX);
+         $$1.r(true);
+         $$1.i($$4);
+      } else if (b($$1)) {
+         $$1.a(awa.cL, 1.0F, 1.0F);
+         $$1.b(bvt.a);
+         $$1.r(false);
+         boolean $$5 = $$1.eb().a(cel.x);
+         $$1.eb().a(cel.aU, baf.a, $$5 ? 2L : 10L);
+         $$1.eb().a(cel.aV, baf.a, 100L);
+      }
+   }
+
+   protected void d(ard $$0, cmu $$1, long $$2) {
+      if ($$1.aw() == bvt.g || $$1.aw() == bvt.r) {
+         $$1.b(bvt.a);
+      }
+
+      $$1.eb().b(cel.ba);
+      $$1.eb().b(cel.aZ);
+      $$1.eb().b(cel.bb);
+   }
+
+   private static boolean a(cmu $$0) {
+      return $$0.eb().c(cel.aZ).isEmpty() && $$0.aw() == bvt.r;
+   }
+
+   private static boolean b(cmu $$0) {
+      boolean $$1 = $$0.aw() == bvt.g;
+      boolean $$2 = $$0.aJ();
+      boolean $$3 = $$0.bj() && $$0.eb().a(cel.bb, cem.b);
+      return $$1 && ($$2 || $$3);
+   }
+
+   @Nullable
+   private static ji a(bvh $$0, fba $$1) {
+      dfq $$2 = new dfq($$1, $$1.a(jn.a, 10.0), dfq.a.a, dfq.b.a, $$0);
+      fay $$3 = $$0.dV().a($$2);
+      if ($$3.d() == fay.a.b) {
+         return ji.a((kb)$$3.g()).d();
+      } else {
+         dfq $$4 = new dfq($$1, $$1.a(jn.b, 10.0), dfq.a.a, dfq.b.a, $$0);
+         fay $$5 = $$0.dV().a($$4);
+         return $$5.d() == fay.a.b ? ji.a((kb)$$5.g()).d() : null;
+      }
+   }
+
+   private static boolean a(cmu $$0, bvh $$1) {
+      return !$$1.a($$0, $$0.h(bwp.m));
+   }
+
+   private static boolean b(cmu $$0, bvh $$1) {
+      return $$1.f($$0) - 4.0F <= 0.0F;
+   }
+
+   private static boolean c(ard $$0, cmu $$1) {
+      ji $$2 = $$1.dv();
+      if ($$0.a_($$2).a(djo.pI)) {
+         return false;
+      } else {
+         for (int $$3 = 1; $$3 <= 4; $$3++) {
+            ji $$4 = $$2.a(jn.b, $$3);
+            if (!$$0.a_($$4).l() && !$$0.b_($$4).a(awv.a)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private static Optional<fba> a(cmu $$0, azh $$1, fba $$2) {
+      for (int $$4 : af.a(j, $$1)) {
+         float $$5 = 0.058333334F * (float)$$0.h(bwp.m);
+         Optional<fba> $$6 = bye.a($$0, $$2, $$5, $$4, false);
+         if ($$6.isPresent()) {
+            if ($$0.b(bts.h)) {
+               double $$7 = $$6.get().d().e * (double)$$0.fk();
+               return $$6.map($$1x -> $$1x.b(0.0, $$7, 0.0));
+            }
+
+            return $$6;
+         }
+      }
+
+      return Optional.empty();
    }
 }

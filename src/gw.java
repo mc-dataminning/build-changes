@@ -15,27 +15,27 @@ public class gw implements gv {
    }
 
    @Override
-   public faz a(ex $$0) {
-      fay $$1 = $$0.k();
-      faz $$2 = $$0.m().a($$0);
+   public fba a(ex $$0) {
+      faz $$1 = $$0.k();
+      fba $$2 = $$0.m().a($$0);
       float $$3 = ayz.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
       float $$4 = ayz.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
       float $$5 = ayz.b(-$$1.i * (float) (Math.PI / 180.0));
       float $$6 = ayz.a(-$$1.i * (float) (Math.PI / 180.0));
       float $$7 = ayz.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
       float $$8 = ayz.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      faz $$9 = new faz((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      faz $$10 = new faz((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      faz $$11 = $$9.c($$10).c(-1.0);
+      fba $$9 = new fba((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      fba $$10 = new fba((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      fba $$11 = $$9.c($$10).c(-1.0);
       double $$12 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$13 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
       double $$14 = $$9.f * this.d + $$10.f * this.c + $$11.f * this.b;
-      return new faz($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
+      return new fba($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
    }
 
    @Override
-   public fay b(ex $$0) {
-      return fay.a;
+   public faz b(ex $$0) {
+      return faz.a;
    }
 
    @Override

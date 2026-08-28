@@ -1,24 +1,25 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+public class cez extends cfl {
+   public static final float a = 8.0F;
 
-public class cez extends cfj<cmt> {
    @Override
-   public Set<cek<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cek.B)));
+   protected boolean a(ard $$0, bvh $$1, bvh $$2) {
+      return this.b($$1, $$2) && $$2.bm() && (this.b($$2) || this.a($$1, $$2)) && cfr.c($$0, $$1, $$2);
    }
 
-   protected void a(ard $$0, cmt $$1) {
-      super.a($$0, $$1);
-      $$1.eb()
-         .c(cek.g)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(bup.e)
-         .filter($$2 -> cfq.c($$0, $$1, $$2))
-         .findFirst()
-         .ifPresentOrElse($$1x -> $$1.eb().a(cek.B, $$1x), () -> $$1.eb().b(cek.B));
+   private boolean a(bvh $$0, bvh $$1) {
+      return !$$0.eb().a(cel.U) && $$1.aq().a(awt.j);
+   }
+
+   private boolean b(bvh $$0) {
+      return $$0.aq().a(awt.i);
+   }
+
+   private boolean b(bvh $$0, bvh $$1) {
+      return $$1.g((bul)$$0) <= 64.0;
+   }
+
+   @Override
+   protected cel<bvh> b() {
+      return cel.B;
    }
 }

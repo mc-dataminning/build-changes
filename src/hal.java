@@ -1,13 +1,10 @@
-import javax.annotation.Nullable;
-
-public class hal extends gyd {
-   @Nullable
-   public bui.l.e a;
-   @Nullable
-   public bui.l.b f;
+public class hal extends gzk implements hab {
+   public boolean a;
+   public boolean b;
+   public boolean c;
 
    @Override
    public boolean a() {
-      return this.a != null;
+      return this.a;
    }
 }

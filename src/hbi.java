@@ -1,27 +1,27 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class hbi implements hbk {
-   private final hbw a;
-   private final hbk b;
-   private final hbk c;
+public class hbi implements hbl {
+   private final List<hbl> a;
 
-   public hbi(hbw $$0, hbk $$1, hbk $$2) {
+   public hbi(List<hbl> $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
    @Override
-   public void a(hbn $$0, cwo $$1, hbl $$2, cwm $$3, @Nullable gfy $$4, @Nullable bvg $$5, int $$6) {
-      (this.a.a($$1, $$4, $$5, $$6, $$3) ? this.b : this.c).a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   public void a(hbo $$0, cwp $$1, hbm $$2, cwn $$3, @Nullable gfz $$4, @Nullable bvh $$5, int $$6) {
+      $$0.a(this.a.size());
+
+      for (hbl $$7 : this.a) {
+         $$7.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
    }
 
-   public static record a(hbw b, hbk.b c, hbk.b d) implements hbk.b {
+   public static record a(List<hbl.b> b) implements hbl.b {
       public static final MapCodec<hbi.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(hbv.a.forGetter(hbi.a::b), hbm.a.fieldOf("on_true").forGetter(hbi.a::c), hbm.a.fieldOf("on_false").forGetter(hbi.a::d))
-               .apply($$0, hbi.a::new)
+         $$0 -> $$0.group(hbn.a.listOf().fieldOf("models").forGetter(hbi.a::b)).apply($$0, hbi.a::new)
       );
 
       @Override
@@ -30,14 +30,15 @@ public class hbi implements hbk {
       }
 
       @Override
-      public hbk a(hbk.a $$0) {
-         return new hbi(this.b, this.c.a($$0), this.d.a($$0));
+      public void a(hhk.a $$0) {
+         for (hbl.b $$1 : this.b) {
+            $$1.a($$0);
+         }
       }
 
       @Override
-      public void a(hhj.a $$0) {
-         this.c.a($$0);
-         this.d.a($$0);
+      public hbl a(hbl.a $$0) {
+         return new hbi(this.b.stream().map($$1 -> $$1.a($$0)).toList());
       }
    }
 }

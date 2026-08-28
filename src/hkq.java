@@ -1,4 +1,8 @@
-public class hkq implements hkx {
-   public hkq(hkw $$0) {
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hkq {
 }

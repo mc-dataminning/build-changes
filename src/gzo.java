@@ -1,7 +1,3 @@
-public class gzo extends gzj {
-   public chk.a a;
-
-   public gzo() {
-      this.a = chk.a.a;
-   }
+public class gzo extends gzn {
+   public float n = -1.0F;
 }

@@ -1,45 +1,91 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-public class din extends djv implements djo {
-   public static final MapCodec<din> a = b(din::new);
-   private static final fbt b = fbq.a(djl.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), djl.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
+public class din extends djw {
+   public static final MapCodec<din> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               aku.a(mc.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
+               aku.a(mc.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
+               aku.a(mc.K).fieldOf("seed").forGetter($$0x -> $$0x.g),
+               t()
+            )
+            .apply($$0, din::new)
+   );
+   public static final dxu<jn> b = dnk.aF;
+   protected static final float c = 2.0F;
+   private static final Map<jn, fbu> d = Maps.newEnumMap(
+      ImmutableMap.of(
+         jn.d,
+         djm.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
+         jn.e,
+         djm.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
+         jn.c,
+         djm.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
+         jn.f,
+         djm.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
+      )
+   );
+   private final aku<djm> e;
+   private final aku<djm> f;
+   private final aku<cwl> g;
 
    @Override
    public MapCodec<din> a() {
       return a;
    }
 
-   protected din(dwv.d $$0) {
-      super($$0);
+   protected din(aku<djm> $$0, aku<djm> $$1, aku<cwl> $$2, dww.d $$3) {
+      super($$3);
+      this.l(this.F.b().b(b, jn.c));
+      this.f = $$0;
+      this.e = $$1;
+      this.g = $$2;
    }
 
    @Override
-   protected fbt a(dww $$0, dfm $$1, ji $$2, fbe $$3) {
-      return b;
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return d.get($$0.c(b));
    }
 
    @Override
-   protected boolean b(dww $$0, dfm $$1, ji $$2) {
-      return $$0.a(djn.ee) || super.b($$0, $$1, $$2);
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      if (!$$6.a(this.e) && $$4 == $$0.c(b)) {
+         Optional<djm> $$8 = $$1.K_().e(mc.f).f(this.f);
+         if ($$8.isPresent()) {
+            return $$8.get().m().c(drn.c, Integer.valueOf(7));
+         }
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public boolean a(dgk $$0, ji $$1, dww $$2) {
-      return $$0.b_($$1.d()).c();
+   protected boolean b(dwx $$0, dfn $$1, ji $$2) {
+      return $$0.a(djo.cK);
    }
 
    @Override
-   public boolean a(dgh $$0, azh $$1, ji $$2, dww $$3) {
-      return (double)$$0.A.i() < 0.45;
+   protected cwp a(dgl $$0, ji $$1, dwx $$2, boolean $$3) {
+      return new cwp((dgh)DataFixUtils.orElse($$0.K_().e(mc.K).f(this.g), this));
    }
 
    @Override
-   public void a(ard $$0, azh $$1, ji $$2, dww $$3) {
-      dwl.e.a($$0, $$0.m().g(), $$2, $$3, $$1);
+   protected dwx a(dwx $$0, dqe $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected boolean a(dww $$0, etn $$1) {
-      return false;
+   protected dwx a(dwx $$0, dol $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(b);
    }
 }

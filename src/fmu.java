@@ -1,22 +1,18 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public record fmu(int b) implements fms {
-   public static final MapCodec<fmu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayi.i.fieldOf("default").forGetter(fmu::b)).apply($$0, fmu::new));
+public class fmu {
+   private static final ayi.b<akv, MapCodec<? extends fmt>> b = new ayi.b<>();
+   public static final Codec<fmt> a = b.a(akv.a).dispatch(fmt::a, $$0 -> $$0);
 
-   public fmu() {
-      this(czk.c.a());
-   }
-
-   @Override
-   public int a(cwo $$0, @Nullable gfy $$1, @Nullable bvg $$2) {
-      czk $$3 = $$0.a(kv.K);
-      return $$3 != null ? axk.f($$3.a()) : axk.f(this.b);
-   }
-
-   @Override
-   public MapCodec<fmu> a() {
-      return a;
+   public static void a() {
+      b.a(akv.b("custom_model_data"), fmp.a);
+      b.a(akv.b("constant"), fmo.a);
+      b.a(akv.b("dye"), fmq.a);
+      b.a(akv.b("grass"), fms.a);
+      b.a(akv.b("firework"), fmr.a);
+      b.a(akv.b("potion"), fmw.a);
+      b.a(akv.b("map_color"), fmv.a);
+      b.a(akv.b("team"), fmx.a);
    }
 }

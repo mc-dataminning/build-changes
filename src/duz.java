@@ -1,15 +1,23 @@
-public interface duz extends bsc {
-   fau y_ = djl.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
+public class duz extends dvm {
+   private static final int a = 60;
+   private static final int b = 9;
 
-   default fau al_() {
-      return y_;
+   public duz(ji $$0, dwx $$1) {
+      super(dub.i, $$0, $$1);
    }
 
-   double G();
+   @Override
+   public int b() {
+      return 9;
+   }
 
-   double H();
+   @Override
+   public int c() {
+      return 60;
+   }
 
-   double I();
-
-   boolean J();
+   @Override
+   public avz d() {
+      return awa.CO;
+   }
 }

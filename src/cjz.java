@@ -1,44 +1,41 @@
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cjz extends cjw {
+public class cjz extends cjx {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
    @Nullable
-   private faz b;
-   private int c;
+   private fba d;
+   private int e;
 
-   public cjz(cju $$0) {
+   public cjz(cjv $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      if (this.c++ % 10 == 0) {
-         float $$0 = (this.a.dY().i() - 0.5F) * 8.0F;
-         float $$1 = (this.a.dY().i() - 0.5F) * 4.0F;
-         float $$2 = (this.a.dY().i() - 0.5F) * 8.0F;
-         this.a.dV().a(lt.v, this.a.dA() + (double)$$0, this.a.dC() + 2.0 + (double)$$1, this.a.dG() + (double)$$2, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
    public void a(ard $$0) {
-      this.c++;
-      if (this.b == null) {
-         ji $$1 = $$0.a(ecr.a.e, efw.a(this.a.m()));
-         this.b = faz.c($$1);
-      }
-
-      double $$2 = this.b.c(this.a.dA(), this.a.dC(), this.a.dG());
-      if (!($$2 < 100.0) && !($$2 > 22500.0) && !this.a.P && !this.a.Q) {
-         this.a.x(1.0F);
+      if (this.d == null) {
+         b.warn("Aborting charge player as no target was set.");
+         this.a.go().a(ckl.a);
+      } else if (this.e > 0 && this.e++ >= 10) {
+         this.a.go().a(ckl.a);
       } else {
-         this.a.x(0.0F);
+         double $$1 = this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
+         if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
+            this.e++;
+         }
       }
    }
 
    @Override
    public void c() {
-      this.b = null;
-      this.c = 0;
+      this.d = null;
+      this.e = 0;
+   }
+
+   public void a(fba $$0) {
+      this.d = $$0;
    }
 
    @Override
@@ -48,12 +45,12 @@ public class cjz extends cjw {
 
    @Nullable
    @Override
-   public faz f() {
-      return this.b;
+   public fba f() {
+      return this.d;
    }
 
    @Override
-   public ckk<cjz> h() {
-      return ckk.j;
+   public ckl<cjz> h() {
+      return ckl.i;
    }
 }

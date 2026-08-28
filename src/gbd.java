@@ -1,82 +1,49 @@
-public class gbd extends gca<gxt> {
-   public static final gfl a = gfl.scaling(0.5F);
-   private static final String b = "bone";
-   private static final String c = "stinger";
-   private static final String d = "left_antenna";
-   private static final String e = "right_antenna";
-   private static final String f = "front_legs";
-   private static final String g = "middle_legs";
-   private static final String i = "back_legs";
-   private final gfc j;
-   private final gfc k;
-   private final gfc l;
-   private final gfc m;
-   private final gfc n;
-   private final gfc o;
-   private final gfc p;
-   private final gfc q;
-   private final gfc r;
-   private float s;
+public class gbd extends gcb<gxt> {
+   private final gfd a;
+   private final gfd b;
+   private final gfd c;
+   private final gfd d;
+   private final gfd e;
+   private final gfd f;
+   private final gfd g;
 
-   public gbd(gfc $$0) {
-      super($$0);
-      this.j = $$0.b("bone");
-      gfc $$1 = this.j.b("body");
-      this.p = $$1.b("stinger");
-      this.q = $$1.b("left_antenna");
-      this.r = $$1.b("right_antenna");
-      this.k = this.j.b("right_wing");
-      this.l = this.j.b("left_wing");
-      this.m = this.j.b("front_legs");
-      this.n = this.j.b("middle_legs");
-      this.o = this.j.b("back_legs");
+   public gbd(gfd $$0) {
+      super($$0, gmi::f);
+      this.b = $$0.b("body");
+      this.a = $$0.b("head");
+      this.c = this.b.b("right_wing");
+      this.e = this.c.b("right_wing_tip");
+      this.d = this.b.b("left_wing");
+      this.f = this.d.b("left_wing_tip");
+      this.g = this.b.b("feet");
    }
 
-   public static gfi a() {
-      gfk $$0 = new gfk();
-      gfm $$1 = $$0.a();
-      gfm $$2 = $$1.a("bone", gfh.c(), gfe.a(0.0F, 19.0F, 0.0F));
-      gfm $$3 = $$2.a("body", gfh.c().a(0, 0).a(-3.5F, -4.0F, -5.0F, 7.0F, 7.0F, 10.0F), gfe.a);
-      $$3.a("stinger", gfh.c().a(26, 7).a(0.0F, -1.0F, 5.0F, 0.0F, 1.0F, 2.0F), gfe.a);
-      $$3.a("left_antenna", gfh.c().a(2, 0).a(1.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), gfe.a(0.0F, -2.0F, -5.0F));
-      $$3.a("right_antenna", gfh.c().a(2, 3).a(-2.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), gfe.a(0.0F, -2.0F, -5.0F));
-      gfg $$4 = new gfg(0.001F);
-      $$2.a("right_wing", gfh.c().a(0, 18).a(-9.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$4), gfe.a(-1.5F, -4.0F, -3.0F, 0.0F, -0.2618F, 0.0F));
-      $$2.a("left_wing", gfh.c().a(0, 18).a().a(0.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$4), gfe.a(1.5F, -4.0F, -3.0F, 0.0F, 0.2618F, 0.0F));
-      $$2.a("front_legs", gfh.c().a("front_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 1), gfe.a(1.5F, 3.0F, -2.0F));
-      $$2.a("middle_legs", gfh.c().a("middle_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 3), gfe.a(1.5F, 3.0F, 0.0F));
-      $$2.a("back_legs", gfh.c().a("back_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 5), gfe.a(1.5F, 3.0F, 2.0F));
-      return gfi.a($$0, 64, 64);
+   public static gfj a() {
+      gfl $$0 = new gfl();
+      gfn $$1 = $$0.a();
+      gfn $$2 = $$1.a("body", gfi.c().a(0, 0).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F), gff.a(0.0F, 17.0F, 0.0F));
+      gfn $$3 = $$1.a("head", gfi.c().a(0, 7).a(-2.0F, -3.0F, -1.0F, 4.0F, 3.0F, 2.0F), gff.a(0.0F, 17.0F, 0.0F));
+      $$3.a("right_ear", gfi.c().a(1, 15).a(-2.5F, -4.0F, 0.0F, 3.0F, 5.0F, 0.0F), gff.a(-1.5F, -2.0F, 0.0F));
+      $$3.a("left_ear", gfi.c().a(8, 15).a(-0.1F, -3.0F, 0.0F, 3.0F, 5.0F, 0.0F), gff.a(1.1F, -3.0F, 0.0F));
+      gfn $$4 = $$2.a("right_wing", gfi.c().a(12, 0).a(-2.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), gff.a(-1.5F, 0.0F, 0.0F));
+      $$4.a("right_wing_tip", gfi.c().a(16, 0).a(-6.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), gff.a(-2.0F, 0.0F, 0.0F));
+      gfn $$5 = $$2.a("left_wing", gfi.c().a(12, 7).a(0.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), gff.a(1.5F, 0.0F, 0.0F));
+      $$5.a("left_wing_tip", gfi.c().a(16, 8).a(0.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), gff.a(2.0F, 0.0F, 0.0F));
+      $$2.a("feet", gfi.c().a(16, 16).a(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 0.0F), gff.a(0.0F, 5.0F, 0.0F));
+      return gfj.a($$0, 32, 32);
    }
 
    public void a(gxt $$0) {
       super.a($$0);
-      this.s = $$0.a;
-      this.p.k = $$0.b;
-      if (!$$0.c) {
-         float $$1 = $$0.u * 120.32113F * (float) (Math.PI / 180.0);
-         this.k.f = 0.0F;
-         this.k.g = ayz.b($$1) * (float) Math.PI * 0.15F;
-         this.l.e = this.k.e;
-         this.l.f = this.k.f;
-         this.l.g = -this.k.g;
-         this.m.e = (float) (Math.PI / 4);
-         this.n.e = (float) (Math.PI / 4);
-         this.o.e = (float) (Math.PI / 4);
+      if ($$0.a) {
+         this.a($$0.aa);
       }
 
-      if (!$$0.d && !$$0.c) {
-         float $$2 = ayz.b($$0.u * 0.18F);
-         this.j.e = 0.1F + $$2 * (float) Math.PI * 0.025F;
-         this.q.e = $$2 * (float) Math.PI * 0.03F;
-         this.r.e = $$2 * (float) Math.PI * 0.03F;
-         this.m.e = -$$2 * (float) Math.PI * 0.1F + (float) (Math.PI / 8);
-         this.o.e = -$$2 * (float) Math.PI * 0.05F + (float) (Math.PI / 4);
-         this.j.c = this.j.c - ayz.b($$0.u * 0.18F) * 0.9F;
-      }
+      this.a($$0.b, fmb.b, $$0.u, 1.0F);
+      this.a($$0.c, fmb.a, $$0.u, 1.0F);
+   }
 
-      if (this.s > 0.0F) {
-         this.j.e = ayz.j(this.s, this.j.e, 3.0915928F);
-      }
+   private void a(float $$0) {
+      this.a.f = $$0 * (float) (Math.PI / 180.0);
    }
 }

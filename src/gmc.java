@@ -1,189 +1,296 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.function.Function;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public record gmc(Map<akv, gmc.d> b, List<gmc.e> c) {
-   public static final Codec<gmc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.unboundedMap(akv.a, gmc.d.b).optionalFieldOf("targets", Map.of()).forGetter(gmc::a),
-               gmc.e.a.listOf().optionalFieldOf("passes", List.of()).forGetter(gmc::b)
-            )
-            .apply($$0, gmc::new)
-   );
+public class gmc {
+   public static final akv a = akv.b("main");
+   private final List<gme> b;
+   private final Map<akv, gmd.d> c;
+   private final Set<akv> d;
 
-   public Map<akv, gmc.d> a() {
-      return this.b;
+   private gmc(List<gme> $$0, Map<akv, gmd.d> $$1, Set<akv> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public List<gmc.e> b() {
-      return this.c;
-   }
+   public static gmc a(gmd $$0, heu $$1, gmp $$2, Set<akv> $$3) throws gmp.b {
+      Stream<akv> $$4 = $$0.b().stream().flatMap($$0x -> $$0x.c().stream()).flatMap($$0x -> $$0x.b().stream());
+      Set<akv> $$5 = $$4.filter($$1x -> !$$0.a().containsKey($$1x)).collect(Collectors.toSet());
+      Set<akv> $$6 = Sets.difference($$5, $$3);
+      if (!$$6.isEmpty()) {
+         throw new gmp.b("Referenced external targets are not available in this context: " + $$6);
+      } else {
+         Builder<gme> $$7 = ImmutableList.builder();
 
-   public static record a(int c, int d) implements gmc.d {
-      public static final Codec<gmc.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ayi.m.fieldOf("width").forGetter(gmc.a::a), ayi.m.fieldOf("height").forGetter(gmc.a::b)).apply($$0, gmc.a::new)
-      );
-
-      public int a() {
-         return this.c;
-      }
-
-      public int b() {
-         return this.d;
-      }
-   }
-
-   public static record b() implements gmc.d {
-      public static final Codec<gmc.b> a = Codec.unit(gmc.b::new);
-   }
-
-   public sealed interface c permits gmc.g, gmc.f {
-      Codec<gmc.c> a = Codec.xor(gmc.g.b, gmc.f.b).xmap($$0 -> (gmc.c)$$0.map(Function.identity(), Function.identity()), $$0 -> {
-         Objects.requireNonNull($$0);
-
-         return switch ($$0) {
-            case gmc.g $$3 -> Either.left($$3);
-            case gmc.f $$4 -> Either.right($$4);
-            default -> throw new MatchException(null, null);
-         };
-      });
-
-      String a();
-
-      Set<akv> b();
-   }
-
-   public sealed interface d permits gmc.b, gmc.a {
-      Codec<gmc.d> b = Codec.either(gmc.a.a, gmc.b.a).xmap($$0 -> (gmc.d)$$0.map(Function.identity(), Function.identity()), $$0 -> {
-         Objects.requireNonNull($$0);
-
-         return switch ($$0) {
-            case gmc.a $$3 -> Either.left($$3);
-            case gmc.b $$4 -> Either.right($$4);
-            default -> throw new MatchException(null, null);
-         };
-      });
-   }
-
-   public static record e(akv b, List<gmc.c> c, akv d, List<gmc.h> e) {
-      private static final Codec<List<gmc.c>> f = gmc.c.a.listOf().validate($$0 -> {
-         Set<String> $$1 = new ObjectArraySet($$0.size());
-
-         for (gmc.c $$2 : $$0) {
-            if (!$$1.add($$2.a())) {
-               return DataResult.error(() -> "Encountered repeated sampler name: " + $$2.a());
-            }
+         for (gmd.e $$8 : $$0.b()) {
+            $$7.add(a($$1, $$2, $$8));
          }
 
-         return DataResult.success($$0);
-      });
-      public static final Codec<gmc.e> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  akv.a.fieldOf("program").forGetter(gmc.e::b),
-                  f.optionalFieldOf("inputs", List.of()).forGetter(gmc.e::c),
-                  akv.a.fieldOf("output").forGetter(gmc.e::d),
-                  gmc.h.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(gmc.e::e)
-               )
-               .apply($$0, gmc.e::new)
-      );
-
-      public gmp a() {
-         return new gmp(this.b, ffr.e, gmn.a);
+         return new gmc($$7.build(), $$0.a(), $$5);
       }
    }
 
-   public static record f(String c, akv d, boolean e, boolean f) implements gmc.c {
-      public static final Codec<gmc.f> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.STRING.fieldOf("sampler_name").forGetter(gmc.f::a),
-                  akv.a.fieldOf("target").forGetter(gmc.f::c),
-                  Codec.BOOL.optionalFieldOf("use_depth_buffer", false).forGetter(gmc.f::d),
-                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(gmc.f::e)
-               )
-               .apply($$0, gmc.f::new)
-      );
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   private static gme a(heu $$0, gmp $$1, gmd.e $$2) throws gmp.b {
+      gli $$3 = $$1.b($$2.a());
 
-      @Override
-      public Set<akv> b() {
-         return Set.of(this.d);
+      for (gmd.h $$4 : $$2.e()) {
+         String $$5 = $$4.a();
+         if ($$3.a($$5) == null) {
+            throw new gmp.b("Uniform '" + $$5 + "' does not exist for " + $$2.b());
+         }
       }
 
-      @Override
-      public String a() {
-         return this.c;
+      String $$6 = $$2.b().toString();
+      gme $$7 = new gme($$6, $$3, $$2.d(), $$2.e());
+
+      for (gmd.c $$8 : $$2.c()) {
+         Objects.requireNonNull($$8);
+         Throwable var44;
+         switch ($$8) {
+            case gmd.g var10:
+               gmd.g var52 = var10;
+
+               try {
+                  var53 = var52.a();
+               } catch (Throwable var30) {
+                  var44 = var30;
+                  boolean var65 = false;
+                  break;
+               }
+
+               String var35 = var53;
+               gmd.g var54 = var10;
+
+               try {
+                  var55 = var54.c();
+               } catch (Throwable var29) {
+                  var44 = var29;
+                  boolean var66 = false;
+                  break;
+               }
+
+               akv var36 = var55;
+               gmd.g var56 = var10;
+
+               try {
+                  var57 = var56.d();
+               } catch (Throwable var28) {
+                  var44 = var28;
+                  boolean var67 = false;
+                  break;
+               }
+
+               int var37 = var57;
+               gmd.g var58 = var10;
+
+               try {
+                  var59 = var58.e();
+               } catch (Throwable var27) {
+                  var44 = var27;
+                  boolean var68 = false;
+                  break;
+               }
+
+               int var38 = var59;
+               gmd.g var60 = var10;
+
+               try {
+                  var61 = var60.f();
+               } catch (Throwable var26) {
+                  var44 = var26;
+                  boolean var69 = false;
+                  break;
+               }
+
+               boolean var39 = var61;
+               hed $$14x = $$0.b(var36.a((UnaryOperator<String>)($$0x -> "textures/effect/" + $$0x + ".png")));
+               $$14x.a(var39, false);
+               $$7.a(new gme.c(var35, $$14x, var37, var38));
+               continue;
+            case gmd.f $$14:
+               gmd.f var10000 = $$14;
+
+               try {
+                  var45 = var10000.a();
+               } catch (Throwable var25) {
+                  var44 = var25;
+                  boolean var10001 = false;
+                  break;
+               }
+
+               String var21 = var45;
+               gmd.f var46 = $$14;
+
+               try {
+                  var47 = var46.c();
+               } catch (Throwable var24) {
+                  var44 = var24;
+                  boolean var62 = false;
+                  break;
+               }
+
+               akv var41 = var47;
+               gmd.f var48 = $$14;
+
+               try {
+                  var49 = var48.d();
+               } catch (Throwable var23) {
+                  var44 = var23;
+                  boolean var63 = false;
+                  break;
+               }
+
+               boolean var42 = var49;
+               gmd.f var50 = $$14;
+
+               try {
+                  var51 = var50.e();
+               } catch (Throwable var22) {
+                  var44 = var22;
+                  boolean var64 = false;
+                  break;
+               }
+
+               boolean var43 = var51;
+               $$7.a(new gme.b(var21, var41, var42, var43));
+               continue;
+            default:
+               throw new MatchException(null, null);
+         }
+
+         Throwable var34 = var44;
+         throw new MatchException(var34.toString(), var34);
       }
 
-      public akv c() {
-         return this.d;
+      return $$7;
+   }
+
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   public void a(fdy $$0, int $$1, int $$2, gmc.a $$3) {
+      Matrix4f $$4 = new Matrix4f().setOrtho(0.0F, (float)$$1, 0.0F, (float)$$2, 0.1F, 1000.0F);
+      Map<akv, ffg<fee>> $$5 = new HashMap<>(this.c.size() + this.d.size());
+
+      for (akv $$6 : this.d) {
+         $$5.put($$6, $$3.b($$6));
       }
 
-      public boolean d() {
-         return this.e;
+      for (Entry<akv, gmd.d> $$7 : this.c.entrySet()) {
+         akv $$8 = $$7.getKey();
+         gmd.d var35;
+         Objects.requireNonNull(var35);
+         Object var11 = var35;
+
+         var35 = $$7.getValue();
+         ffe $$11 = switch (var11) {
+            case gmd.a var13 -> {
+               gmd.a var29 = var13;
+
+               int var26;
+               label56: {
+                  label76: {
+                     try {
+                        var31 = var29.a();
+                     } catch (Throwable var18) {
+                        var30 = var18;
+                        boolean var10001 = false;
+                        break label76;
+                     }
+
+                     var26 = var31;
+                     gmd.a var32 = var13;
+
+                     try {
+                        var33 = var32.b();
+                        break label56;
+                     } catch (Throwable var17) {
+                        var30 = var17;
+                        boolean var34 = false;
+                     }
+                  }
+
+                  Throwable var20 = var30;
+                  throw new MatchException(var20.toString(), var20);
+               }
+
+               int var27 = var33;
+               yield new ffe(var26, var27, true);
+            }
+            case gmd.b var16 -> new ffe($$1, $$2, true);
+            default -> throw new MatchException(null, null);
+         };
+         $$5.put($$8, $$0.a($$8.toString(), $$11));
       }
 
-      public boolean e() {
-         return this.f;
+      for (gme $$12 : this.b) {
+         $$12.a($$0, $$5, $$4);
+      }
+
+      for (akv $$13 : this.d) {
+         $$3.a($$13, $$5.get($$13));
       }
    }
 
-   public static record g(String c, akv d, int e, int f, boolean g) implements gmc.c {
-      public static final Codec<gmc.g> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.STRING.fieldOf("sampler_name").forGetter(gmc.g::a),
-                  akv.a.fieldOf("location").forGetter(gmc.g::c),
-                  ayi.m.fieldOf("width").forGetter(gmc.g::d),
-                  ayi.m.fieldOf("height").forGetter(gmc.g::e),
-                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(gmc.g::f)
-               )
-               .apply($$0, gmc.g::new)
-      );
+   @Deprecated
+   public void a(fee $$0, ffd $$1) {
+      fdy $$2 = new fdy();
+      gmc.a $$3 = gmc.a.b(a, $$2.a("main", $$0));
+      this.a($$2, $$0.c, $$0.d, $$3);
+      $$2.a($$1);
+   }
 
-      @Override
-      public Set<akv> b() {
-         return Set.of();
-      }
-
-      @Override
-      public String a() {
-         return this.c;
-      }
-
-      public akv c() {
-         return this.d;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public int e() {
-         return this.f;
-      }
-
-      public boolean f() {
-         return this.g;
+   public void a(String $$0, float $$1) {
+      for (gme $$2 : this.b) {
+         $$2.a().c($$0).a($$1);
       }
    }
 
-   public static record h(String b, List<Float> c) {
-      public static final Codec<gmc.h> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(gmc.h::a), Codec.FLOAT.sizeLimitedListOf(4).fieldOf("values").forGetter(gmc.h::b))
-               .apply($$0, gmc.h::new)
-      );
+   public interface a {
+      static gmc.a b(final akv $$0, final ffg<fee> $$1) {
+         return new gmc.a() {
+            private ffg<fee> c = $$1;
 
-      public String a() {
-         return this.b;
+            @Override
+            public void a(akv $$0x, ffg<fee> $$1x) {
+               if ($$0.equals($$0)) {
+                  this.c = $$1;
+               } else {
+                  throw new IllegalArgumentException("No target with id " + $$0);
+               }
+            }
+
+            @Nullable
+            @Override
+            public ffg<fee> a(akv $$0x) {
+               return $$0.equals($$0) ? this.c : null;
+            }
+         };
       }
 
-      public List<Float> b() {
-         return this.c;
+      void a(akv var1, ffg<fee> var2);
+
+      @Nullable
+      ffg<fee> a(akv var1);
+
+      default ffg<fee> b(akv $$0) {
+         ffg<fee> $$1 = this.a($$0);
+         if ($$1 == null) {
+            throw new IllegalArgumentException("Missing target with id " + $$0);
+         } else {
+            return $$1;
+         }
       }
    }
 }

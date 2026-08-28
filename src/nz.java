@@ -7,9 +7,9 @@ public interface nz {
 
    nz a(@Nullable String var1);
 
-   cwk a();
+   cwl a();
 
-   void a(ob var1, aku<dbd<?>> var2);
+   void a(ob var1, aku<dbe<?>> var2);
 
    default void a(ob $$0) {
       this.a($$0, aku.a(mc.bk, a(this.a())));
@@ -25,16 +25,16 @@ public interface nz {
       }
    }
 
-   static akv a(dgg $$0) {
+   static akv a(dgh $$0) {
       return mb.g.b($$0.j());
    }
 
-   static daq a(oa $$0) {
+   static dar a(oa $$0) {
       return switch ($$0) {
-         case a -> daq.a;
-         case e, f -> daq.c;
-         case c -> daq.b;
-         default -> daq.d;
+         case a -> dar.a;
+         case e, f -> dar.c;
+         case c -> dar.b;
+         default -> dar.d;
       };
    }
 }

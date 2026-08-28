@@ -1,31 +1,25 @@
-import java.util.List;
-
-public class dcd extends dbv {
-   public dcd(String $$0, daz $$1, cwo $$2) {
-      super($$0, $$1, $$2);
+public class dcd extends dak {
+   public dcd(String $$0, daq $$1, dba $$2, cwp $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dbo<dcd> b() {
-      return dbo.f;
+   protected cwl f() {
+      return cwt.xl;
    }
 
    @Override
-   public dbn<dcd> a() {
-      return dbn.s;
+   public dbp<dcd> b() {
+      return dbp.d;
    }
 
    @Override
-   public List<dci> g() {
-      return List.of(new dcs(this.k().c(), this.c(), new dco.d(cws.xr)));
-   }
-
-   public dco c() {
-      return new dco.f(this.l());
+   public dbo<dcd> a() {
+      return dbo.q;
    }
 
    @Override
-   public dbg h() {
-      return dbf.k;
+   public dbh h() {
+      return dbg.j;
    }
 }

@@ -1,41 +1,41 @@
-import com.mojang.serialization.Codec;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class cyl implements crp {
-   public static final Codec<jr<cyl>> a = mb.h.r();
-   public static final yn<wa, jr<cyl>> b = yl.b(mc.ad);
-   private final String c;
-   private final List<btp> d;
-   private crs e = cru.g;
-
-   public cyl(String $$0, btp... $$1) {
-      this.c = $$0;
-      this.d = List.of($$1);
-   }
-
-   public cyl a(crq... $$0) {
-      this.e = cru.e.a($$0);
-      return this;
+public class cyl extends cwl {
+   public cyl(cwl.a $$0) {
+      super($$0);
    }
 
    @Override
-   public crs i() {
-      return this.e;
+   public void a(cwp $$0, cwl.b $$1, List<wp> $$2, cyh $$3) {
+      czx $$4 = $$0.a(kv.T);
+      if ($$4 != null) {
+         if (!azw.h($$4.e())) {
+            $$2.add(wp.a("book.byAuthor", $$4.e()).a(n.h));
+         }
+
+         $$2.add(wp.c("book.generation." + $$4.f()).a(n.h));
+      }
    }
 
-   public List<btp> a() {
-      return this.d;
+   @Override
+   public bsk a(dgi $$0, cox $$1, bsj $$2) {
+      cwp $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(awk.c.b(this));
+      return bsk.a;
    }
 
-   public String b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      for (btp $$0 : this.d) {
-         if ($$0.c().a().a()) {
+   public static boolean a(cwp $$0, ex $$1, @Nullable cox $$2) {
+      czx $$3 = $$0.a(kv.T);
+      if ($$3 != null && !$$3.g()) {
+         czx $$4 = $$3.a($$1, $$2);
+         if ($$4 != null) {
+            $$0.b(kv.T, $$4);
             return true;
          }
+
+         $$0.b(kv.T, $$3.c());
       }
 
       return false;

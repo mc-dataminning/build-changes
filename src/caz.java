@@ -1,63 +1,35 @@
 import com.google.common.collect.ImmutableMap;
 
-public class caz extends bwz<cny> {
-   private static final int d = 15;
-   private static final int e = 20;
-   private static final double f = 0.5;
-   private static final double g = 2.5;
-   public static final int c = 40;
-   private static final int h = ayz.c(34.0);
-   private static final int i = ayz.f(60.0F);
+public class caz<E extends cnz> extends bxa<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
 
-   public caz() {
-      super(ImmutableMap.of(cek.o, cel.a, cek.aJ, cel.b, cek.aK, cel.c, cek.aL, cel.c), i);
+   public caz(int $$0) {
+      super(ImmutableMap.of(cel.aB, cem.a, cel.o, cem.b, cel.m, cem.b, cel.n, cem.c, cel.B, cem.c, cel.az, cem.c, cel.aG, cem.c), $$0);
    }
 
-   protected boolean a(ard $$0, cny $$1) {
-      return $$1.a($$1.eb().c(cek.o).get(), 15.0, 20.0);
-   }
-
-   protected boolean a(ard $$0, cny $$1, long $$2) {
+   protected boolean a(ard $$0, E $$1, long $$2) {
       return true;
    }
 
-   protected void b(ard $$0, cny $$1, long $$2) {
-      $$1.eb().a(cek.p, true, (long)i);
-      $$1.eb().a(cek.aL, baf.a, (long)h);
-      $$0.a($$1, (byte)62);
-      $$1.a(awa.CL, 3.0F, 1.0F);
+   protected void b(ard $$0, E $$1, long $$2) {
+      $$1.a(awa.CJ, 5.0F, 1.0F);
    }
 
-   protected void c(ard $$0, cny $$1, long $$2) {
-      $$1.eb().c(cek.o).ifPresent($$1x -> $$1.L().a($$1x.dt()));
-      if (!$$1.eb().a(cek.aL) && !$$1.eb().a(cek.aK)) {
-         $$1.eb().a(cek.aK, baf.a, (long)(i - h));
-         $$1.eb().c(cek.o).filter($$1::b).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
-            faz $$3 = $$1.dt().e($$1.ds().b(bul.d, 0, $$1.dL()));
-            faz $$4 = $$2x.bF().d($$3);
-            faz $$5 = $$4.d();
-            int $$6 = ayz.a($$4.g()) + 7;
-
-            for (int $$7 = 1; $$7 < $$6; $$7++) {
-               faz $$8 = $$3.e($$5.c((double)$$7));
-               $$0.a(lt.B, $$8.d, $$8.e, $$8.f, 1, 0.0, 0.0, 0.0, 0.0);
-            }
-
-            $$1.a(awa.CK, 3.0F, 1.0F);
-            if ($$2x.a($$0, $$0.ak().e($$1), 10.0F)) {
-               double $$9 = 0.5 * (1.0 - $$2x.h(bwo.p));
-               double $$10 = 2.5 * (1.0 - $$2x.h(bwo.p));
-               $$2x.j($$5.a() * $$10, $$5.b() * $$9, $$5.c() * $$10);
-            }
-         });
+   protected void c(ard $$0, E $$1, long $$2) {
+      if ($$1.c(bvt.m)) {
+         $$1.b(bvt.a);
       }
-   }
 
-   protected void d(ard $$0, cny $$1, long $$2) {
-      a($$1, 40);
-   }
+      $$1.eb().b(cel.aB);
+      $$1.eb().c(cel.B).filter($$1::b).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.d($$1x);
+         }
 
-   public static void a(bvg $$0, int $$1) {
-      $$0.eb().a(cek.aJ, baf.a, (long)$$1);
+         if (!$$1.eb().a(cel.az)) {
+            coa.a($$1, $$1x.dv());
+         }
+      });
    }
 }

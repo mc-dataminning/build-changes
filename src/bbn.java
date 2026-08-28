@@ -6,14 +6,14 @@ import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 
-public class bbn extends bgr {
+public class bbn extends bgs {
    public bbn(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityBlockStateFix", bhw.s, "minecraft:piston");
+      super($$0, $$1, "BlockEntityBlockStateFix", bhx.s, "minecraft:piston");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(bhw.s, "minecraft:piston");
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(bhx.s, "minecraft:piston");
       Type<?> $$2 = $$1.findFieldType("blockState");
       OpticFinder<?> $$3 = DSL.fieldFinder("blockState", $$2);
       Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
@@ -21,7 +21,7 @@ public class bbn extends bgr {
       $$4 = $$4.remove("blockId");
       int $$6 = $$4.get("blockData").asInt(0) & 15;
       $$4 = $$4.remove("blockData");
-      Dynamic<?> $$7 = bca.b($$5 << 4 | $$6);
+      Dynamic<?> $$7 = bcb.b($$5 << 4 | $$6);
       Typed<?> $$8 = (Typed<?>)$$1.pointTyped($$0.getOps()).orElseThrow(() -> new IllegalStateException("Could not create new piston block entity."));
       return $$8.set(DSL.remainderFinder(), $$4)
          .set(

@@ -1,15 +1,15 @@
 public class aby implements yw<abl> {
    public static final yn<vl, aby> a = yw.a(aby::a, aby::new);
-   private final bsg b;
+   private final bsh b;
    private final boolean c;
 
-   public aby(bsg $$0, boolean $$1) {
+   public aby(bsh $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    private aby(vl $$0) {
-      this.b = bsg.a($$0.readUnsignedByte());
+      this.b = bsh.a($$0.readUnsignedByte());
       this.c = $$0.readBoolean();
    }
 
@@ -31,7 +31,7 @@ public class aby implements yw<abl> {
       return this.c;
    }
 
-   public bsg e() {
+   public bsh e() {
       return this.b;
    }
 }

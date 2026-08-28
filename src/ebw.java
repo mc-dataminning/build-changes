@@ -1,11 +1,34 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-
 public interface ebw {
-   Codec<ebw> c = mb.t.q().dispatch(ebw::a, ebx::a);
-   yn<wa, ebw> d = yl.a(mc.ab).b(ebw::a, ebx::b);
+   ebw a = new ebw() {
+      @Override
+      public boolean a() {
+         return true;
+      }
 
-   Optional<faz> a(dgh var1);
+      @Override
+      public void a(ebv $$0) {
+      }
 
-   ebx<? extends ebw> a();
+      @Override
+      public void b(ebv $$0) {
+      }
+
+      @Override
+      public boolean a(jr<ebt> $$0, fba $$1, ebt.a $$2, ebw.a $$3) {
+         return false;
+      }
+   };
+
+   boolean a();
+
+   void a(ebv var1);
+
+   void b(ebv var1);
+
+   boolean a(jr<ebt> var1, fba var2, ebt.a var3, ebw.a var4);
+
+   @FunctionalInterface
+   public interface a {
+      void visit(ebv var1, fba var2);
+   }
 }

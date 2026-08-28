@@ -1,102 +1,43 @@
 import java.util.EnumSet;
-import java.util.Iterator;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class cdw extends cee {
-   private static final cfx a = cfx.a().d().e();
-   private static final int b = 10;
-   private boolean c;
-   private int d;
-   private final Class<?>[] i;
+public class cdw extends cef {
+   private final chk a;
    @Nullable
-   private Class<?>[] j;
+   private bvh b;
+   private final cfy c = cfy.a().a(64.0);
 
-   public cdw(bvo $$0, Class<?>... $$1) {
-      super($$0, true);
-      this.i = $$1;
-      this.a(EnumSet.of(cce.a.d));
+   public cdw(chk $$0) {
+      super($$0, false, true);
+      this.a = $$0;
+      this.a(EnumSet.of(ccf.a.d));
    }
 
    @Override
    public boolean b() {
-      int $$0 = this.e.eq();
-      bvg $$1 = this.e.ep();
-      if ($$0 != this.d && $$1 != null) {
-         if ($$1.aq() == bur.bR && a(this.e).O().b(dgd.P)) {
-            return false;
-         } else {
-            for (Class<?> $$2 : this.i) {
-               if ($$2.isAssignableFrom($$1.getClass())) {
-                  return false;
-               }
+      fav $$0 = this.a.cR().c(10.0, 8.0, 10.0);
+      ard $$1 = a(this.a);
+      List<? extends bvh> $$2 = $$1.a(coi.class, this.c, this.a, $$0);
+      List<cox> $$3 = $$1.a(this.c, this.a, $$0);
+
+      for (bvh $$4 : $$2) {
+         coi $$5 = (coi)$$4;
+
+         for (cox $$6 : $$3) {
+            int $$7 = $$5.g($$6);
+            if ($$7 <= -100) {
+               this.b = $$6;
             }
-
-            return this.a($$1, a);
          }
-      } else {
-         return false;
       }
-   }
 
-   public cdw a(Class<?>... $$0) {
-      this.c = true;
-      this.j = $$0;
-      return this;
+      return this.b == null ? false : !(this.b instanceof cox) || !this.b.Z_() && !((cox)this.b).b();
    }
 
    @Override
    public void d() {
-      this.e.h(this.e.ep());
-      this.g = this.e.O_();
-      this.d = this.e.eq();
-      this.h = 300;
-      if (this.c) {
-         this.h();
-      }
-
+      this.a.h(this.b);
       super.d();
-   }
-
-   protected void h() {
-      double $$0 = this.l();
-      fau $$1 = fau.a(this.e.dt()).c($$0, 10.0, $$0);
-      List<? extends bvi> $$2 = this.e.dV().a((Class<? extends bvi>)this.e.getClass(), $$1, bup.f);
-      Iterator var5 = $$2.iterator();
-
-      while (true) {
-         bvi $$3;
-         while (true) {
-            if (!var5.hasNext()) {
-               return;
-            }
-
-            $$3 = (bvi)var5.next();
-            if (this.e != $$3 && $$3.O_() == null && (!(this.e instanceof bwd) || ((bwd)this.e).ag_() == ((bwd)$$3).ag_()) && !$$3.s(this.e.ep())) {
-               if (this.j == null) {
-                  break;
-               }
-
-               boolean $$4 = false;
-
-               for (Class<?> $$5 : this.j) {
-                  if ($$3.getClass() == $$5) {
-                     $$4 = true;
-                     break;
-                  }
-               }
-
-               if (!$$4) {
-                  break;
-               }
-            }
-         }
-
-         this.a($$3, this.e.ep());
-      }
-   }
-
-   protected void a(bvi $$0, bvg $$1) {
-      $$0.h($$1);
    }
 }

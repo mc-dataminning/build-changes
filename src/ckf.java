@@ -1,30 +1,26 @@
-public class ckf extends cjx {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public ckf(cju $$0) {
-      super($$0);
-   }
+public interface ckf {
+   boolean a();
 
-   @Override
-   public void b() {
-      this.a.dV().a(this.a.dA(), this.a.dC(), this.a.dG(), awa.iz, this.a.dm(), 2.5F, 0.8F + this.a.dY().i() * 0.3F, false);
-   }
+   void b();
 
-   @Override
-   public void a(ard $$0) {
-      if (this.c++ >= 40) {
-         this.a.go().a(ckk.f);
-      }
-   }
+   void a(ard var1);
 
-   @Override
-   public void c() {
-      this.c = 0;
-   }
+   void a(cju var1, ji var2, btb var3, @Nullable cox var4);
 
-   @Override
-   public ckk<ckf> h() {
-      return ckk.h;
-   }
+   void c();
+
+   void d();
+
+   float e();
+
+   float g();
+
+   ckl<? extends ckf> h();
+
+   @Nullable
+   fba f();
+
+   float a(btb var1, float var2);
 }

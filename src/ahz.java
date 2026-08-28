@@ -34,9 +34,9 @@ public class ahz implements yw<agg> {
    }
 
    @Nullable
-   public dfh a(dgh $$0) {
-      buk $$1 = $$0.a(this.b);
-      return $$1 instanceof crf ? ((crf)$$1).v() : null;
+   public dfi a(dgi $$0) {
+      bul $$1 = $$0.a(this.b);
+      return $$1 instanceof crg ? ((crg)$$1).v() : null;
    }
 
    public String b() {

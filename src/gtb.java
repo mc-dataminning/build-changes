@@ -1,107 +1,121 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class gtb<T extends ckv> extends gsd<T, gzi> {
+   public static final int a = 5;
+   public static final int b = 30;
+   private final hbm h;
+   private final glx i;
+   private final gnc j;
 
-public class gtb {
-   public static final akv a = akv.b("textures/misc/enchanted_glint_entity.png");
-   public static final akv b = akv.b("textures/misc/enchanted_glint_item.png");
-   public static final int c = 8;
-   public static final int d = 8;
-   public static final int e = 200;
-   public static final float f = 0.5F;
-   public static final float g = 0.75F;
-   public static final float h = 0.0078125F;
-   public static final int i = -1;
-   private final hbl j;
-   private final hbn k = new hbn();
-
-   public gtb(hbl $$0) {
-      this.j = $$0;
+   public gtb(gse.a $$0) {
+      super($$0);
+      this.h = $$0.b();
+      this.i = $$0.c();
+      this.j = $$0.d();
    }
 
-   private static void a(hgr $$0, int[] $$1, int $$2, int $$3, fft $$4, ffx $$5) {
-      azh $$6 = azh.a();
-      long $$7 = 42L;
-
-      for (jn $$8 : jn.values()) {
-         $$6.b(42L);
-         a($$4, $$5, $$0.a(null, $$8, $$6), $$1, $$2, $$3);
-      }
-
-      $$6.b(42L);
-      a($$4, $$5, $$0.a(null, null, $$6), $$1, $$2, $$3);
+   protected int a(T $$0, ji $$1) {
+      return $$0.aq() == bus.af ? Math.max(5, super.a($$0, $$1)) : super.a($$0, $$1);
    }
 
-   public static void a(cwm $$0, fft $$1, glx $$2, int $$3, int $$4, int[] $$5, hgr $$6, gmh $$7, hbn.a $$8) {
-      ffx $$10;
-      if ($$8 == hbn.a.c) {
-         fft.a $$9 = $$1.c().c();
-         if ($$0 == cwm.g) {
-            f.a($$9.a(), 0.5F);
-         } else if ($$0.b()) {
-            f.a($$9.a(), 0.75F);
-         }
-
-         $$10 = a($$2, $$7, $$9);
+   public void a(gzi $$0, ffu $$1, gly $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$1.a();
+      jn $$4 = $$0.a;
+      fba $$5 = this.a($$0);
+      $$1.a(-$$5.a(), -$$5.b(), -$$5.c());
+      double $$6 = 0.46875;
+      $$1.a((double)$$4.j() * 0.46875, (double)$$4.k() * 0.46875, (double)$$4.l() * 0.46875);
+      float $$7;
+      float $$8;
+      if ($$4.o().d()) {
+         $$7 = 0.0F;
+         $$8 = 180.0F - $$4.p();
       } else {
-         $$10 = a($$2, $$7, true, $$8 != hbn.a.a);
+         $$7 = (float)(-90 * $$4.f().a());
+         $$8 = 180.0F;
       }
 
-      a($$6, $$5, $$3, $$4, $$1, $$10);
-   }
+      $$1.a(a.b.rotationDegrees($$7));
+      $$1.a(a.d.rotationDegrees($$8));
+      if (!$$0.z) {
+         hhg $$11 = this.j.a().a();
+         hhh $$12 = b($$0);
+         $$1.a();
+         $$1.a(-0.5F, -0.5F, -0.5F);
+         this.j.b().a($$1.c(), $$2.getBuffer(gmi.e(her.d)), null, $$11.a($$12), 1.0F, 1.0F, 1.0F, $$3, hei.d);
+         $$1.b();
+      }
 
-   public static ffx a(glx $$0, gmh $$1, boolean $$2) {
-      return $$2 ? fga.a($$0.getBuffer(gmh.j()), $$0.getBuffer($$1)) : $$0.getBuffer($$1);
-   }
-
-   private static ffx a(glx $$0, gmh $$1, fft.a $$2) {
-      return fga.a(new ffu($$0.getBuffer(gmh.l()), $$2, 0.0078125F), $$0.getBuffer($$1));
-   }
-
-   public static ffx a(glx $$0, gmh $$1, boolean $$2, boolean $$3) {
-      if ($$3) {
-         return fli.O() && $$1 == gms.j()
-            ? fga.a($$0.getBuffer(gmh.k()), $$0.getBuffer($$1))
-            : fga.a($$0.getBuffer($$2 ? gmh.l() : gmh.m()), $$0.getBuffer($$1));
+      if ($$0.z) {
+         $$1.a(0.0F, 0.0F, 0.5F);
       } else {
-         return $$0.getBuffer($$1);
+         $$1.a(0.0F, 0.0F, 0.4375F);
+      }
+
+      if ($$0.e != null) {
+         int $$13 = $$0.c % 4 * 2;
+         $$1.a(a.f.rotationDegrees((float)$$13 * 360.0F / 8.0F));
+         $$1.a(a.f.rotationDegrees(180.0F));
+         float $$14 = 0.0078125F;
+         $$1.b(0.0078125F, 0.0078125F, 0.0078125F);
+         $$1.a(-64.0F, -64.0F, 0.0F);
+         $$1.a(0.0F, 0.0F, -1.0F);
+         int $$15 = this.a($$0.d, 15728850, $$3);
+         this.i.a($$0.f, $$1, $$2, true, $$15);
+      } else if (!$$0.b.c()) {
+         $$1.a(a.f.rotationDegrees((float)$$0.c * 360.0F / 8.0F));
+         int $$16 = this.a($$0.d, 15728880, $$3);
+         $$1.b(0.5F, 0.5F, 0.5F);
+         $$0.b.a($$1, $$2, $$16, hei.d);
+      }
+
+      $$1.b();
+   }
+
+   private int a(boolean $$0, int $$1, int $$2) {
+      return $$0 ? $$1 : $$2;
+   }
+
+   private static hhh b(gzi $$0) {
+      if ($$0.e != null) {
+         return $$0.d ? hgu.a : hgu.c;
+      } else {
+         return $$0.d ? hgu.b : hgu.d;
       }
    }
 
-   private static int a(int[] $$0, int $$1) {
-      return $$1 >= $$0.length ? -1 : $$0[$$1];
+   public fba a(gzi $$0) {
+      return new fba((double)((float)$$0.a.j() * 0.3F), -0.25, (double)((float)$$0.a.l() * 0.3F));
    }
 
-   private static void a(fft $$0, ffx $$1, List<gne> $$2, int[] $$3, int $$4, int $$5) {
-      fft.a $$6 = $$0.c();
+   protected boolean a(T $$0, double $$1) {
+      return flj.M() && this.e.c == $$0 && $$0.A().z() != null;
+   }
 
-      for (gne $$7 : $$2) {
-         float $$9;
-         float $$10;
-         float $$11;
-         float $$12;
-         if ($$7.c()) {
-            int $$8 = a($$3, $$7.d());
-            $$9 = (float)axk.a($$8) / 255.0F;
-            $$10 = (float)axk.b($$8) / 255.0F;
-            $$11 = (float)axk.c($$8) / 255.0F;
-            $$12 = (float)axk.d($$8) / 255.0F;
-         } else {
-            $$9 = 1.0F;
-            $$10 = 1.0F;
-            $$11 = 1.0F;
-            $$12 = 1.0F;
+   protected wp a(T $$0) {
+      return $$0.A().y();
+   }
+
+   public gzi a() {
+      return new gzi();
+   }
+
+   public void a(T $$0, gzi $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.cO();
+      cwp $$3 = $$0.A();
+      this.h.a($$1.b, $$3, cwn.i, $$0);
+      $$1.c = $$0.C();
+      $$1.d = $$0.aq() == bus.af;
+      $$1.e = null;
+      if (!$$3.f()) {
+         eur $$4 = $$0.a($$3);
+         if ($$4 != null) {
+            eut $$5 = $$0.dV().a($$4);
+            if ($$5 != null) {
+               this.i.a($$4, $$5, $$1.f);
+               $$1.e = $$4;
+            }
          }
-
-         $$1.a($$6, $$7, $$10, $$11, $$12, $$9, $$4, $$5);
       }
-   }
-
-   public void a(cwo $$0, cwm $$1, int $$2, int $$3, fft $$4, glx $$5, @Nullable dgh $$6, int $$7) {
-      this.a(null, $$0, $$1, false, $$4, $$5, $$6, $$2, $$3, $$7);
-   }
-
-   public void a(@Nullable bvg $$0, cwo $$1, cwm $$2, boolean $$3, fft $$4, glx $$5, @Nullable dgh $$6, int $$7, int $$8, int $$9) {
-      this.j.a(this.k, $$1, $$2, $$3, $$6, $$0, $$9);
-      this.k.a($$4, $$5, $$7, $$8);
    }
 }

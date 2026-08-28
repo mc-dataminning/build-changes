@@ -1,45 +1,45 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
-public class brl extends bro {
-   public static final brl a = new brl(0);
-   public static final MapCodec<brl> b = Codec.INT.fieldOf("value").xmap(brl::a, brl::d);
-   private final int f;
+public class brl extends brn {
+   public static final brl a = new brl(0.0F);
+   public static final MapCodec<brl> b = Codec.FLOAT.fieldOf("value").xmap(brl::a, brl::d);
+   private final float d;
 
-   public static brl a(int $$0) {
-      return $$0 == 0 ? a : new brl($$0);
+   public static brl a(float $$0) {
+      return $$0 == 0.0F ? a : new brl($$0);
    }
 
-   private brl(int $$0) {
-      this.f = $$0;
+   private brl(float $$0) {
+      this.d = $$0;
    }
 
-   public int d() {
-      return this.f;
-   }
-
-   @Override
-   public int a(azh $$0) {
-      return this.f;
+   public float d() {
+      return this.d;
    }
 
    @Override
-   public int a() {
-      return this.f;
+   public float a(azh $$0) {
+      return this.d;
    }
 
    @Override
-   public int b() {
-      return this.f;
+   public float a() {
+      return this.d;
    }
 
    @Override
-   public brp<?> c() {
-      return brp.a;
+   public float b() {
+      return this.d;
+   }
+
+   @Override
+   public bro<?> c() {
+      return bro.a;
    }
 
    @Override
    public String toString() {
-      return Integer.toString(this.f);
+      return Float.toString(this.d);
    }
 }

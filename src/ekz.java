@@ -1,69 +1,8 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class ekz extends elh {
-   public static final MapCodec<ekz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ayi.m.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bro.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, ekz::new)
-   );
-   private final int b;
-   private final bro h;
-
-   public ekz(int $$0, int $$1, int $$2, int $$3, bro $$4) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
-   }
-
-   @Override
-   protected eli<?> a() {
-      return eli.g;
-   }
-
-   @Override
-   public List<ejn.a> a(dgn $$0, BiConsumer<ji, dww> $$1, azh $$2, int $$3, ji $$4, eix $$5) {
-      jn $$6 = jn.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      ji.a $$8 = $$4.k();
-      ji $$9 = $$8.e();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<ejn.a> $$10 = Lists.newArrayList();
-
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
-         }
-
-         if (ehj.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         if ($$11 >= this.b) {
-            $$10.add(new ejn.a($$8.j(), 0, false));
-         }
-
-         $$8.c(jn.b);
-      }
-
-      int $$12 = this.h.a($$2);
-
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (ehj.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         $$10.add(new ejn.a($$8.j(), 0, false));
-         $$8.c($$6);
-      }
-
-      return $$10;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ekz {
 }

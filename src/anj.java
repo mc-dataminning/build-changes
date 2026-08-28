@@ -22,8 +22,8 @@ public class anj {
    }
 
    private static int a(ex $$0) throws CommandSyntaxException {
-      boy $$1 = boy.a($$0.l());
-      if (!bpa.f.a($$1)) {
+      boz $$1 = boz.a($$0.l());
+      if (!bpb.f.a($$1)) {
          throw a.create();
       } else {
          $$0.a(() -> wp.c("commands.jfr.started"), false);
@@ -33,7 +33,7 @@ public class anj {
 
    private static int b(ex $$0) throws CommandSyntaxException {
       try {
-         Path $$1 = Paths.get(".").relativize(bpa.f.b().normalize());
+         Path $$1 = Paths.get(".").relativize(bpb.f.b().normalize());
          Path $$2 = $$0.l().r() && !ab.aU ? $$1 : $$1.toAbsolutePath();
          wp $$3 = wp.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new wn(wn.a.f, $$2.toString())).a(new wv(wv.a.a, wp.c("chat.copy.click"))));
          $$0.a(() -> wp.a("commands.jfr.stopped", $$3), false);

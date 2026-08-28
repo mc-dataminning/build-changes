@@ -1,158 +1,89 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import java.io.Reader;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class gnj implements hhm {
-   @VisibleForTesting
-   static final Gson a = new GsonBuilder()
-      .registerTypeAdapter(gnj.class, new gnj.a())
-      .registerTypeAdapter(gnf.class, new gnf.a())
-      .registerTypeAdapter(gng.class, new gng.a())
-      .registerTypeAdapter(gni.class, new gni.a())
-      .registerTypeAdapter(gnn.class, new gnn.a())
-      .registerTypeAdapter(gno.class, new gno.a())
-      .create();
-   private final List<gnf> b;
-   @Nullable
-   private final hhm.a e;
-   @Nullable
-   private final Boolean f;
-   @Nullable
-   private final gno g;
-   @VisibleForTesting
-   private final gnq.a h;
-   @Nullable
-   private hhm i;
-   @Nullable
-   private final akv j;
+public class gnj {
+   public float[] a;
+   public final int b;
 
-   public static gnj a(Reader $$0) {
-      return ayp.a(a, $$0, gnj.class);
-   }
-
-   public gnj(@Nullable akv $$0, List<gnf> $$1, gnq.a $$2, @Nullable Boolean $$3, @Nullable hhm.a $$4, @Nullable gno $$5) {
+   public gnj(@Nullable float[] $$0, int $$1) {
+      this.a = $$0;
       this.b = $$1;
-      this.f = $$3;
-      this.e = $$4;
-      this.h = $$2;
-      this.j = $$0;
-      this.g = $$5;
    }
 
-   @Nullable
-   @Override
-   public Boolean a() {
-      return this.f;
-   }
-
-   @Nullable
-   @Override
-   public hhm.a b() {
-      return this.e;
-   }
-
-   @Override
-   public void a(hhj.a $$0) {
-      if (this.j != null) {
-         this.i = $$0.a(this.j);
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
       }
    }
 
-   @Nullable
-   @Override
-   public hhm c() {
-      return this.i;
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
    }
 
-   @Override
-   public gnq.a d() {
-      return this.h;
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
    }
 
-   @Nullable
-   @Override
-   public gno e() {
-      return this.g;
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
    }
 
-   @Override
-   public hgr a(gnq $$0, hha $$1, hhh $$2, boolean $$3, boolean $$4, gno $$5) {
-      return this.b.isEmpty() && this.i != null ? this.i.a($$0, $$1, $$2, $$3, $$4, $$5) : hhk.a(this.b, $$0, $$1.a(), $$2, $$3, $$4, true, $$5);
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
    }
 
-   @Nullable
-   @VisibleForTesting
-   List<gnf> f() {
-      return this.b;
-   }
+   protected static class a implements JsonDeserializer<gnj> {
+      private static final int a = 0;
 
-   @Nullable
-   @VisibleForTesting
-   akv g() {
-      return this.j;
-   }
-
-   public static class a implements JsonDeserializer<gnj> {
       public gnj a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         List<gnf> $$4 = this.a($$2, $$3);
-         String $$5 = this.c($$3);
-         gnq.a $$6 = this.b($$3);
-         Boolean $$7 = this.a($$3);
-         gno $$8 = null;
-         if ($$3.has("display")) {
-            JsonObject $$9 = ayp.u($$3, "display");
-            $$8 = (gno)$$2.deserialize($$9, gno.class);
-         }
-
-         hhm.a $$10 = null;
-         if ($$3.has("gui_light")) {
-            $$10 = hhm.a.a(ayp.i($$3, "gui_light"));
-         }
-
-         akv $$11 = $$5.isEmpty() ? null : akv.a($$5);
-         return new gnj($$11, $$4, $$6, $$7, $$10, $$8);
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new gnj($$4, $$5);
       }
 
-      private gnq.a b(JsonObject $$0) {
-         if ($$0.has("textures")) {
-            JsonObject $$1 = ayp.u($$0, "textures");
-            return gnq.a($$1, heq.d);
+      protected int a(JsonObject $$0) {
+         int $$1 = ayp.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
          } else {
-            return gnq.a.a;
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
          }
-      }
-
-      private String c(JsonObject $$0) {
-         return ayp.a($$0, "parent", "");
       }
 
       @Nullable
-      protected Boolean a(JsonObject $$0) {
-         return $$0.has("ambientocclusion") ? ayp.k($$0, "ambientocclusion") : null;
-      }
-
-      protected List<gnf> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         if (!$$1.has("elements")) {
-            return List.of();
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
          } else {
-            List<gnf> $$2 = new ArrayList<>();
+            JsonArray $$1 = ayp.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
 
-            for (JsonElement $$3 : ayp.v($$1, "elements")) {
-               $$2.add((gnf)$$0.deserialize($$3, gnf.class));
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = ayp.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
+
+               return $$2;
             }
-
-            return $$2;
          }
       }
    }

@@ -1,19 +1,30 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class eip implements eib {
+public record eip(int b, int c, int d, jr<emq> e) implements eic {
    public static final Codec<eip> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(eij.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, eip::new)
+      $$0 -> $$0.group(
+               ayi.m.fieldOf("tries").orElse(128).forGetter(eip::a),
+               ayi.l.fieldOf("xz_spread").orElse(7).forGetter(eip::b),
+               ayi.l.fieldOf("y_spread").orElse(3).forGetter(eip::c),
+               emq.b.fieldOf("feature").forGetter(eip::d)
+            )
+            .apply($$0, eip::new)
    );
-   public final List<eij.a> b;
 
-   public eip(dww $$0, dww $$1) {
-      this(ImmutableList.of(eij.a(new eqr($$0), $$1)));
+   public int a() {
+      return this.b;
    }
 
-   public eip(List<eij.a> $$0) {
-      this.b = $$0;
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public jr<emq> d() {
+      return this.e;
    }
 }

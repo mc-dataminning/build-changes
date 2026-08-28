@@ -1,127 +1,39 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public abstract class cee extends cce {
-   private static final int a = 0;
-   private static final int b = 1;
-   private static final int c = 2;
-   protected final bvi e;
-   protected final boolean f;
-   private final boolean d;
-   private int i;
-   private int j;
-   private int k;
-   @Nullable
-   protected bvg g;
-   protected int h = 60;
+public class cee<T extends bvj & bvm> extends ccf {
+   private static final int a = 10;
+   private final T b;
+   private final boolean c;
+   private int d;
 
-   public cee(bvi $$0, boolean $$1) {
-      this($$0, $$1, false);
-   }
-
-   public cee(bvi $$0, boolean $$1, boolean $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.d = $$2;
+   public cee(T $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public boolean c() {
-      bvg $$0 = this.e.O_();
-      if ($$0 == null) {
-         $$0 = this.g;
-      }
-
-      if ($$0 == null) {
-         return false;
-      } else if (!this.e.c($$0)) {
-         return false;
-      } else {
-         fcg $$1 = this.e.cr();
-         fcg $$2 = $$0.cr();
-         if ($$1 != null && $$2 == $$1) {
-            return false;
-         } else {
-            double $$3 = this.l();
-            if (this.e.g($$0) > $$3 * $$3) {
-               return false;
-            } else {
-               if (this.f) {
-                  if (this.e.Q().a($$0)) {
-                     this.k = 0;
-                  } else if (++this.k > b(this.h)) {
-                     return false;
-                  }
-               }
-
-               this.e.h($$0);
-               return true;
-            }
-         }
-      }
+   public boolean b() {
+      return a(this.b).O().b(dge.P) && this.h();
    }
 
-   protected double l() {
-      return this.e.h(bwo.m);
+   private boolean h() {
+      return this.b.ep() != null && this.b.ep().aq() == bus.bR && this.b.eq() > this.d;
    }
 
    @Override
    public void d() {
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
-   }
-
-   @Override
-   public void e() {
-      this.e.h(null);
-      this.g = null;
-   }
-
-   protected boolean a(@Nullable bvg $$0, cfx $$1) {
-      if ($$0 == null) {
-         return false;
-      } else if (!$$1.a(a(this.e), this.e, $$0)) {
-         return false;
-      } else if (!this.e.a($$0.dv())) {
-         return false;
-      } else {
-         if (this.d) {
-            if (--this.j <= 0) {
-               this.i = 0;
-            }
-
-            if (this.i == 0) {
-               this.i = this.a($$0) ? 1 : 2;
-            }
-
-            if (this.i == 2) {
-               return false;
-            }
-         }
-
-         return true;
+      this.d = this.b.eq();
+      this.b.ad_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bvm)$$0).forEach(bvm::ad_);
       }
+
+      super.d();
    }
 
-   private boolean a(bvg $$0) {
-      this.j = b(10 + this.e.dY().a(5));
-      etm $$1 = this.e.P().a($$0, 0);
-      if ($$1 == null) {
-         return false;
-      } else {
-         etk $$2 = $$1.d();
-         if ($$2 == null) {
-            return false;
-         } else {
-            int $$3 = $$2.a - $$0.dz();
-            int $$4 = $$2.c - $$0.dF();
-            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
-         }
-      }
-   }
-
-   public cee c(int $$0) {
-      this.h = $$0;
-      return this;
+   private List<? extends bvj> i() {
+      double $$0 = this.b.h(bwp.m);
+      fav $$1 = fav.a(this.b.dt()).c($$0, 10.0, $$0);
+      return this.b.dV().a((Class<? extends bvj>)this.b.getClass(), $$1, buq.f);
    }
 }

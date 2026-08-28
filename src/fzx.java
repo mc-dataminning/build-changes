@@ -1,529 +1,317 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.Lifecycle;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.CancellationException;
+import java.util.Set;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 
-public class fzx extends fpo<fzx.a> {
-   public static final DateTimeFormatter a = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withZone(ZoneId.systemDefault());
-   static final akv m = akv.b("world_list/error_highlighted");
-   static final akv n = akv.b("world_list/error");
-   static final akv o = akv.b("world_list/marked_join_highlighted");
-   static final akv p = akv.b("world_list/marked_join");
-   static final akv q = akv.b("world_list/warning_highlighted");
-   static final akv r = akv.b("world_list/warning");
-   static final akv s = akv.b("world_list/join_highlighted");
-   static final akv u = akv.b("world_list/join");
-   static final Logger v = LogUtils.getLogger();
-   static final wp w = wp.c("selectWorld.tooltip.fromNewerVersion1").a(n.m);
-   static final wp x = wp.c("selectWorld.tooltip.fromNewerVersion2").a(n.m);
-   static final wp y = wp.c("selectWorld.tooltip.snapshot1").a(n.g);
-   static final wp z = wp.c("selectWorld.tooltip.snapshot2").a(n.g);
-   static final wp A = wp.c("selectWorld.locked").a(n.m);
-   static final wp B = wp.c("selectWorld.conversion.tooltip").a(n.m);
-   static final wp C = wp.c("selectWorld.incompatible.tooltip").a(n.m);
-   static final wp D = wp.c("selectWorld.experimental");
-   private final fzr E;
-   private CompletableFuture<List<evf>> F;
-   @Nullable
-   private List<evf> G;
-   private String H;
-   private final fzx.b I;
+public class fzx {
+   private static final Logger a = LogUtils.getLogger();
+   private static final UUID b = UUID.fromString("640a6a92-b6cb-48a0-b391-831586500359");
+   private final flj c;
+   private final evf d;
 
-   public fzx(fzr $$0, fli $$1, int $$2, int $$3, int $$4, int $$5, String $$6, @Nullable fzx $$7) {
-      super($$1, $$2, $$3, $$4, $$5);
-      this.E = $$0;
-      this.I = new fzx.b($$1);
-      this.H = $$6;
-      if ($$7 != null) {
-         this.F = $$7.F;
-      } else {
-         this.F = this.O();
+   public fzx(flj $$0, evf $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public void a(String $$0, dgm $$1, edq $$2, Function<jt.a, edn> $$3, ful $$4) {
+      this.c.d(new ftw(wp.c("selectWorld.data_read")));
+      evf.c $$5 = this.a($$0);
+      if ($$5 != null) {
+         aua $$6 = aud.a($$5);
+         dhf $$7 = $$1.g();
+
+         try {
+            alt.d $$8 = new alt.d($$6, $$7, false, false);
+            alu $$9 = this.a($$8, $$3x -> {
+               edn.b $$4x = $$3.apply($$3x.c()).a($$3x.d().e(mc.bf));
+               return new alt.b<>(new evj($$1, $$2, $$4x.d(), $$4x.a()), $$4x.b());
+            }, alu::new);
+            this.c.a($$5, $$6, $$9, true);
+         } catch (Exception var11) {
+            a.warn("Failed to load datapacks, can't proceed with server load", var11);
+            $$5.c();
+            this.c.a($$4);
+         }
       }
-
-      this.a(this.M());
-   }
-
-   @Override
-   protected void s() {
-      this.aH_().forEach(fzx.a::close);
-      super.s();
    }
 
    @Nullable
-   private List<evf> M() {
+   private evf.c a(String $$0) {
       try {
-         return this.F.getNow(null);
-      } catch (CancellationException | CompletionException var2) {
+         return this.d.d($$0);
+      } catch (IOException var3) {
+         a.warn("Failed to read level {} data", $$0, var3);
+         frc.a(this.c, $$0);
+         this.c.a(null);
+         return null;
+      } catch (fap var4) {
+         a.warn("{}", var4.getMessage());
+         this.c.a(fud.a(() -> this.c.a(null)));
          return null;
       }
    }
 
-   void N() {
-      this.F = this.O();
+   public void a(evf.c $$0, alg $$1, jy<ale> $$2, evl $$3) {
+      aua $$4 = aud.a($$0);
+      auf $$5 = (auf)new alt.d($$4, $$3.D(), false, false).a().getSecond();
+      this.c.a($$0, $$4, new alu($$5, $$1, $$2, $$3), true);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (fsu.a($$0)) {
-         Optional<fzx.c> $$3 = this.b();
-         if ($$3.isPresent()) {
-            if ($$3.get().b()) {
-               this.c.ak().a(hij.a(awa.Bf, 1.0F));
-               $$3.get().c();
+   public alu a(Dynamic<?> $$0, boolean $$1, aua $$2) throws Exception {
+      alt.d $$3 = evf.a($$0, $$2, $$1);
+      return this.a($$3, $$1x -> {
+         ke<eat> $$2x = $$1x.d().e(mc.bf);
+         evc $$3x = evf.a($$0, $$1x.b(), $$2x, $$1x.c());
+         return new alt.b<>($$3x.a(), $$3x.b().b());
+      }, alu::new);
+   }
+
+   public Pair<dgm, fzu> a(evf.c $$0) throws Exception {
+      aua $$1 = aud.a($$0);
+      Dynamic<?> $$2 = $$0.h();
+      alt.d $$3 = evf.a($$2, $$1, false);
+
+      record a(dgm a, edq b, ke<eat> c) {
+      }
+
+      return this.a($$3, $$1x -> {
+         ke<eat> $$2x = new jz<>(mc.bf, Lifecycle.stable()).n();
+         evc $$3x = evf.a($$2, $$1x.b(), $$2x, $$1x.c());
+         return new alt.b<>(new a($$3x.a().J(), $$3x.a().y(), $$3x.b().c()), $$1x.d());
+      }, ($$0x, $$1x, $$2x, $$3x) -> {
+         $$0x.close();
+         fzp $$4 = new fzp(fzw.a.a, Set.of(), null);
+         return Pair.of($$3x.a, new fzu($$3x.b, new edn($$3x.c), $$2x, $$1x, $$3x.a.g(), $$4));
+      });
+   }
+
+   private <D, R> R a(alt.d $$0, alt.f<D> $$1, alt.e<D, R> $$2) throws Exception {
+      alt.c $$3 = new alt.c($$0, ey.a.c, 2);
+      CompletableFuture<R> $$4 = alt.a($$3, $$1, $$2, af.g(), this.c);
+      this.c.b($$4::isDone);
+      return $$4.get();
+   }
+
+   private void a(evf.c $$0, boolean $$1, Runnable $$2, Runnable $$3) {
+      wp $$4;
+      wp $$5;
+      if ($$1) {
+         $$4 = wp.c("selectWorld.backupQuestion.customized");
+         $$5 = wp.c("selectWorld.backupWarning.customized");
+      } else {
+         $$4 = wp.c("selectWorld.backupQuestion.experimental");
+         $$5 = wp.c("selectWorld.backupWarning.experimental");
+      }
+
+      this.c.a(new ftf($$3, ($$2x, $$3x) -> {
+         if ($$2x) {
+            fzn.a($$0);
+         }
+
+         $$2.run();
+      }, $$4, $$5, false));
+   }
+
+   public static void a(flj $$0, fzk $$1, Lifecycle $$2, Runnable $$3, boolean $$4) {
+      BooleanConsumer $$5 = $$3x -> {
+         if ($$3x) {
+            $$3.run();
+         } else {
+            $$0.a($$1);
+         }
+      };
+      if ($$4 || $$2 == Lifecycle.stable()) {
+         $$3.run();
+      } else if ($$2 == Lifecycle.experimental()) {
+         $$0.a(new ftj($$5, wp.c("selectWorld.warning.experimental.title"), wp.c("selectWorld.warning.experimental.question")));
+      } else {
+         $$0.a(new ftj($$5, wp.c("selectWorld.warning.deprecated.title"), wp.c("selectWorld.warning.deprecated.question")));
+      }
+   }
+
+   public void a(String $$0, Runnable $$1) {
+      this.c.d(new ftw(wp.c("selectWorld.data_read")));
+      evf.c $$2 = this.a($$0);
+      if ($$2 != null) {
+         this.a($$2, $$1);
+      }
+   }
+
+   private void a(evf.c $$0, Runnable $$1) {
+      this.c.d(new ftw(wp.c("selectWorld.data_read")));
+
+      Dynamic<?> $$2;
+      evg $$3;
+      try {
+         $$2 = $$0.h();
+         $$3 = $$0.a($$2);
+      } catch (ub | uh | IOException var10) {
+         this.c.a(new fuk(this.c, $$2x -> {
+            if ($$2x) {
+               this.a($$0, $$1);
+            } else {
+               $$0.c();
+               $$1.run();
+            }
+         }, $$0));
+         return;
+      } catch (OutOfMemoryError var11) {
+         ayx.b();
+         String $$6 = "Ran out of memory trying to read level data of world folder \"" + $$0.f() + "\"";
+         a.error(LogUtils.FATAL_MARKER, $$6);
+         OutOfMemoryError $$7 = new OutOfMemoryError("Ran out of memory reading level data");
+         $$7.initCause(var11);
+         o $$8 = o.a($$7, $$6);
+         p $$9 = $$8.a("World details");
+         $$9.a("World folder", $$0.f());
+         throw new z($$8);
+      }
+
+      this.a($$0, $$3, $$2, $$1);
+   }
+
+   private void a(evf.c $$0, evg $$1, Dynamic<?> $$2, Runnable $$3) {
+      if (!$$1.r()) {
+         $$0.c();
+         this.c.a(new fte($$3, wp.c("selectWorld.incompatible.title").b(-65536), wp.a("selectWorld.incompatible.description", $$1.k())));
+      } else {
+         evg.a $$4 = $$1.o();
+         if ($$4.a()) {
+            String $$5 = "selectWorld.backupQuestion." + $$4.c();
+            String $$6 = "selectWorld.backupWarning." + $$4.c();
+            xd $$7 = wp.c($$5);
+            if ($$4.b()) {
+               $$7.b(-2142128);
             }
 
-            return true;
+            wp $$8 = wp.a($$6, $$1.k(), ab.b().c());
+            this.c.a(new ftf(() -> {
+               $$0.c();
+               $$3.run();
+            }, ($$3x, $$4x) -> {
+               if ($$3x) {
+                  fzn.a($$0);
+               }
+
+               this.a($$0, $$2, false, $$3);
+            }, $$7, $$8, false));
+         } else {
+            this.a($$0, $$2, false, $$3);
          }
       }
-
-      return super.a($$0, $$1, $$2);
    }
 
-   @Override
-   public void b(fod $$0, int $$1, int $$2, float $$3) {
-      List<evf> $$4 = this.M();
-      if ($$4 != this.G) {
-         this.a($$4);
-      }
+   private void a(evf.c $$0, Dynamic<?> $$1, boolean $$2, Runnable $$3) {
+      this.c.d(new ftw(wp.c("selectWorld.resource_load")));
+      aua $$4 = aud.a($$0);
 
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   private void a(@Nullable List<evf> $$0) {
-      if ($$0 == null) {
-         this.P();
-      } else {
-         this.a(this.H, $$0);
-      }
-
-      this.G = $$0;
-   }
-
-   public void a(String $$0) {
-      if (this.G != null && !$$0.equals(this.H)) {
-         this.a($$0, this.G);
-      }
-
-      this.H = $$0;
-   }
-
-   private CompletableFuture<List<evf>> O() {
-      eve.a $$0;
+      alu $$5;
       try {
-         $$0 = this.c.m().b();
-      } catch (evd var3) {
-         v.error("Couldn't load level list", var3);
-         this.c(var3.a());
-         return CompletableFuture.completedFuture(List.of());
+         $$5 = this.a($$1, $$2, $$4);
+
+         for (eat $$6 : $$5.c().a().e(mc.bf)) {
+            $$6.b().a();
+         }
+      } catch (Exception var9) {
+         a.warn("Failed to load level data or datapacks, can't proceed with server load", var9);
+         if (!$$2) {
+            this.c.a(new fto(() -> {
+               $$0.c();
+               $$3.run();
+            }, () -> this.a($$0, $$1, true, $$3)));
+         } else {
+            $$0.c();
+            this.c.a(new fte($$3, wp.c("datapackFailure.safeMode.failed.title"), wp.c("datapackFailure.safeMode.failed.description"), wo.k, true));
+         }
+
+         return;
       }
 
-      if ($$0.a()) {
-         fzj.a(this.c, null);
-         return CompletableFuture.completedFuture(List.of());
+      this.a($$0, $$5, $$4, $$3);
+   }
+
+   private void a(evf.c $$0, alu $$1, aua $$2, Runnable $$3) {
+      evl $$4 = $$1.d();
+      boolean $$5 = $$4.y().f();
+      boolean $$6 = $$4.B() != Lifecycle.stable();
+      if (!$$5 && !$$6) {
+         this.b($$0, $$1, $$2, $$3);
       } else {
-         return this.c.m().a($$0).exceptionally($$0x -> {
-            this.c.a(o.a($$0x, "Couldn't load level list"));
-            return List.of();
+         this.a($$0, $$5, () -> this.b($$0, $$1, $$2, $$3), () -> {
+            $$1.close();
+            $$0.c();
+            $$3.run();
          });
       }
    }
 
-   private void a(String $$0, List<evf> $$1) {
-      this.s();
-      $$0 = $$0.toLowerCase(Locale.ROOT);
-
-      for (evf $$2 : $$1) {
-         if (this.a($$0, $$2)) {
-            this.b(new fzx.c(this, $$2));
+   private void b(evf.c $$0, alu $$1, aua $$2, Runnable $$3) {
+      hhr $$4 = this.c.af();
+      this.a($$4, $$0).thenApply($$0x -> true).exceptionallyComposeAsync($$0x -> {
+         a.warn("Failed to load pack: ", $$0x);
+         return this.a();
+      }, this.c).thenAcceptAsync($$5 -> {
+         if ($$5) {
+            this.a($$0, $$1, $$4, $$2, $$3);
+         } else {
+            $$4.e();
+            $$1.close();
+            $$0.c();
+            $$3.run();
          }
-      }
-
-      this.Q();
+      }, this.c).exceptionally($$0x -> {
+         this.c.a(o.a($$0x, "Load world"));
+         return null;
+      });
    }
 
-   private boolean a(String $$0, evf $$1) {
-      return $$1.b().toLowerCase(Locale.ROOT).contains($$0) || $$1.a().toLowerCase(Locale.ROOT).contains($$0);
-   }
-
-   private void P() {
-      this.s();
-      this.b(this.I);
-      this.Q();
-   }
-
-   private void Q() {
-      this.h();
-      this.E.d(true);
-   }
-
-   private void c(wp $$0) {
-      this.c.a(new ftt(wp.c("selectWorld.unable_to_load"), $$0));
-   }
-
-   @Override
-   public int a() {
-      return 270;
-   }
-
-   public void a(@Nullable fzx.a $$0) {
-      super.a($$0);
-      this.E.a($$0 instanceof fzx.c $$1 ? $$1.f : null);
-   }
-
-   public Optional<fzx.c> b() {
-      fzx.a $$0 = this.p();
-      return $$0 instanceof fzx.c $$1 ? Optional.of($$1) : Optional.empty();
-   }
-
-   public fzr c() {
-      return this.E;
-   }
-
-   @Override
-   public void a(fsp $$0) {
-      if (this.aH_().contains(this.I)) {
-         this.I.b($$0);
+   private void a(evf.c $$0, alu $$1, hhr $$2, aua $$3, Runnable $$4) {
+      if ($$0.b()) {
+         this.c.a(new ftj($$5 -> {
+            if ($$5) {
+               this.a($$0, $$1, $$3);
+            } else {
+               $$2.e();
+               $$1.close();
+               $$0.c();
+               $$4.run();
+            }
+         }, wp.c("selectWorld.warning.lowDiskSpace.title").a(n.m), wp.c("selectWorld.warning.lowDiskSpace.description"), wo.j, wo.k));
       } else {
-         super.a($$0);
+         this.a($$0, $$1, $$3);
       }
    }
 
-   public abstract static class a extends fpo.a<fzx.a> implements AutoCloseable {
-      @Override
-      public void close() {
+   private void a(evf.c $$0, alu $$1, aua $$2) {
+      this.c.a($$0, $$2, $$1, false);
+   }
+
+   private CompletableFuture<Void> a(hhr $$0, evf.c $$1) {
+      Path $$2 = $$1.a(evd.k);
+      if (Files.exists($$2) && !Files.isDirectory($$2)) {
+         $$0.f();
+         CompletableFuture<Void> $$3 = $$0.b(b);
+         $$0.a(b, $$2);
+         return $$3;
+      } else {
+         return CompletableFuture.completedFuture(null);
       }
    }
 
-   public static class b extends fzx.a {
-      private static final wp a = wp.c("selectWorld.loading_list");
-      private final fli b;
-
-      public b(fli $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = (this.b.z.n - this.b.h.a(a)) / 2;
-         int $$11 = $$2 + ($$5 - 9) / 2;
-         $$0.b(this.b.h, a, $$10, $$11, -1);
-         String $$12 = ftz.a(af.c());
-         int $$13 = (this.b.z.n - this.b.h.b($$12)) / 2;
-         int $$14 = $$11 + 9;
-         $$0.b(this.b.h, $$12, $$13, $$14, -8355712);
-      }
-
-      @Override
-      public wp a() {
-         return a;
-      }
-   }
-
-   public final class c extends fzx.a {
-      private static final int b = 32;
-      private static final int c = 32;
-      private final fli d;
-      private final fzr e;
-      final evf f;
-      private final ftu g;
-      @Nullable
-      private Path h;
-      private long i;
-
-      public c(final fzx $$1, final evf $$2) {
-         this.d = $$1.c;
-         this.e = $$1.c();
-         this.f = $$2;
-         this.g = ftu.a(this.d.aa(), $$2.a());
-         this.h = $$2.c();
-         this.k();
-         this.m();
-      }
-
-      private void k() {
-         if (this.h != null) {
-            try {
-               BasicFileAttributes $$0 = Files.readAttributes(this.h, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-               if ($$0.isSymbolicLink()) {
-                  List<faq> $$1 = this.d.be().a(this.h);
-                  if (!$$1.isEmpty()) {
-                     fzx.v.warn("{}", fao.a(this.h, $$1));
-                     this.h = null;
-                  } else {
-                     $$0 = Files.readAttributes(this.h, BasicFileAttributes.class);
-                  }
-               }
-
-               if (!$$0.isRegularFile()) {
-                  this.h = null;
-               }
-            } catch (NoSuchFileException var3) {
-               this.h = null;
-            } catch (IOException var4) {
-               fzx.v.error("could not validate symlink", var4);
-               this.h = null;
-            }
-         }
-      }
-
-      @Override
-      public wp a() {
-         wp $$0 = wp.a("narrator.select.world_info", this.f.b(), wp.a(new Date(this.f.f())), this.f.s());
-         if (this.f.p()) {
-            $$0 = wo.a($$0, fzx.A);
-         }
-
-         if (this.f.e()) {
-            $$0 = wo.a($$0, fzx.D);
-         }
-
-         return wp.a("narrator.select", $$0);
-      }
-
-      @Override
-      public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         String $$10 = this.f.b();
-         String $$11 = this.f.a();
-         long $$12 = this.f.f();
-         if ($$12 != -1L) {
-            $$11 = $$11 + " (" + fzx.a.format(Instant.ofEpochMilli($$12)) + ")";
-         }
-
-         if (StringUtils.isEmpty($$10)) {
-            $$10 = hfz.a("selectWorld.world") + " " + ($$1 + 1);
-         }
-
-         wp $$13 = this.f.s();
-         $$0.b(this.d.h, $$10, $$3 + 32 + 3, $$2 + 1, -1);
-         $$0.b(this.d.h, $$11, $$3 + 32 + 3, $$2 + 9 + 3, -8355712);
-         $$0.b(this.d.h, $$13, $$3 + 32 + 3, $$2 + 9 + 9 + 3, -8355712);
-         $$0.a(gmh::H, this.g.b(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         if (this.d.n.ac().c() || $$8) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$14 = $$6 - $$3;
-            boolean $$15 = $$14 < 32;
-            akv $$16 = $$15 ? fzx.s : fzx.u;
-            akv $$17 = $$15 ? fzx.q : fzx.r;
-            akv $$18 = $$15 ? fzx.m : fzx.n;
-            akv $$19 = $$15 ? fzx.o : fzx.p;
-            if (this.f instanceof evf.c || this.f instanceof evf.b) {
-               $$0.a(gmh::H, $$18, $$3, $$2, 32, 32);
-               $$0.a(gmh::H, $$19, $$3, $$2, 32, 32);
-               return;
-            }
-
-            if (this.f.p()) {
-               $$0.a(gmh::H, $$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(fzx.A, 175));
-               }
-            } else if (this.f.d()) {
-               $$0.a(gmh::H, $$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(fzx.B, 175));
-               }
-            } else if (!this.f.r()) {
-               $$0.a(gmh::H, $$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(fzx.C, 175));
-               }
-            } else if (this.f.m()) {
-               $$0.a(gmh::H, $$19, $$3, $$2, 32, 32);
-               if (this.f.n()) {
-                  $$0.a(gmh::H, $$18, $$3, $$2, 32, 32);
-                  if ($$15) {
-                     this.e.b(ImmutableList.of(fzx.w.g(), fzx.x.g()));
-                  }
-               } else if (!ab.b().g()) {
-                  $$0.a(gmh::H, $$17, $$3, $$2, 32, 32);
-                  if ($$15) {
-                     this.e.b(ImmutableList.of(fzx.y.g(), fzx.z.g()));
-                  }
-               }
-            } else {
-               $$0.a(gmh::H, $$16, $$3, $$2, 32, 32);
-            }
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         if (!this.f.u()) {
-            return true;
-         } else {
-            fzx.this.a((fzx.a)this);
-            if (!($$0 - (double)fzx.this.u() <= 32.0) && af.c() - this.i >= 250L) {
-               this.i = af.c();
-               return super.a($$0, $$1, $$2);
-            } else {
-               if (this.b()) {
-                  this.d.ak().a(hij.a(awa.Bf, 1.0F));
-                  this.c();
-               }
-
-               return true;
-            }
-         }
-      }
-
-      public boolean b() {
-         return this.f.u();
-      }
-
-      public void c() {
-         if (this.f.u()) {
-            if (this.f instanceof evf.c) {
-               this.d.a(fuc.a(() -> this.d.a(this.e)));
-            } else {
-               this.d.x().a(this.f.a(), () -> {
-                  fzx.this.N();
-                  this.d.a(this.e);
-               });
-            }
-         }
-      }
-
-      public void d() {
-         this.d.a(new fti($$0 -> {
-            if ($$0) {
-               this.d.a(new fuh(true));
-               this.e();
-            }
-
-            this.d.a(this.e);
-         }, wp.c("selectWorld.deleteQuestion"), wp.a("selectWorld.deleteWarning", this.f.b()), wp.c("selectWorld.deleteButton"), wo.e));
-      }
-
-      public void e() {
-         eve $$0 = this.d.m();
-         String $$1 = this.f.a();
-
-         try (eve.c $$2 = $$0.e($$1)) {
-            $$2.k();
-         } catch (IOException var8) {
-            frb.b(this.d, $$1);
-            fzx.v.error("Failed to delete world {}", $$1, var8);
-         }
-
-         fzx.this.N();
-      }
-
-      public void g() {
-         this.l();
-         String $$0 = this.f.a();
-
-         eve.c $$1;
-         try {
-            $$1 = this.d.m().d($$0);
-         } catch (IOException var6) {
-            frb.a(this.d, $$0);
-            fzx.v.error("Failed to access level {}", $$0, var6);
-            fzx.this.N();
-            return;
-         } catch (fao var7) {
-            fzx.v.warn("{}", var7.getMessage());
-            this.d.a(fuc.a(() -> this.d.a(this.e)));
-            return;
-         }
-
-         fzm $$5;
-         try {
-            $$5 = fzm.a(this.d, $$1, $$1x -> {
-               $$1.c();
-               if ($$1x) {
-                  fzx.this.N();
-               }
-
-               this.d.a(this.e);
-            });
-         } catch (ub | uh | IOException var5) {
-            $$1.c();
-            frb.a(this.d, $$0);
-            fzx.v.error("Failed to load world data {}", $$0, var5);
-            fzx.this.N();
-            return;
-         }
-
-         this.d.a($$5);
-      }
-
-      public void h() {
-         this.l();
-
-         try (eve.c $$0 = this.d.m().d(this.f.a())) {
-            Pair<dgl, fzt> $$1 = this.d.x().a($$0);
-            dgl $$2 = (dgl)$$1.getFirst();
-            fzt $$3 = (fzt)$$1.getSecond();
-            Path $$4 = fzj.a($$0.a(evc.j), this.d);
-            $$3.b();
-            if ($$3.c().f()) {
-               this.d
-                  .a(
-                     new fti(
-                        $$3x -> this.d.a((fuk)($$3x ? fzj.a(this.d, this.e, $$2, $$3, $$4) : this.e)),
-                        wp.c("selectWorld.recreate.customized.title"),
-                        wp.c("selectWorld.recreate.customized.text"),
-                        wo.i,
-                        wo.e
-                     )
-                  );
-            } else {
-               this.d.a(fzj.a(this.d, this.e, $$2, $$3, $$4));
-            }
-         } catch (fao var8) {
-            fzx.v.warn("{}", var8.getMessage());
-            this.d.a(fuc.a(() -> this.d.a(this.e)));
-         } catch (Exception var9) {
-            fzx.v.error("Unable to recreate world", var9);
-            this.d.a(new ftd(() -> this.d.a(this.e), wp.c("selectWorld.recreate.error.title"), wp.c("selectWorld.recreate.error.text")));
-         }
-      }
-
-      private void l() {
-         this.d.d(new ftv(wp.c("selectWorld.data_read")));
-      }
-
-      private void m() {
-         boolean $$0 = this.h != null && Files.isRegularFile(this.h);
-         if ($$0) {
-            try (InputStream $$1 = Files.newInputStream(this.h)) {
-               this.g.a(fet.a($$1));
-            } catch (Throwable var7) {
-               fzx.v.error("Invalid icon for world {}", this.f.a(), var7);
-               this.h = null;
-            }
-         } else {
-            this.g.a();
-         }
-      }
-
-      @Override
-      public void close() {
-         this.g.close();
-      }
-
-      public String i() {
-         return this.f.b();
-      }
+   private CompletableFuture<Boolean> a() {
+      CompletableFuture<Boolean> $$0 = new CompletableFuture<>();
+      this.c.a(new ftj($$0::complete, wp.c("multiplayer.texturePrompt.failure.line1"), wp.c("multiplayer.texturePrompt.failure.line2"), wo.i, wo.e));
+      return $$0;
    }
 }

@@ -1,12 +1,12 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ddu(ddf c) implements ddr {
-   public static final MapCodec<ddu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ddf.b.fieldOf("factor").forGetter(ddu::b)).apply($$0, ddu::new));
+public record ddu(ddg d) implements ddq {
+   public static final MapCodec<ddu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ddg.b.fieldOf("duration").forGetter($$0x -> $$0x.d)).apply($$0, ddu::new));
 
    @Override
-   public float a(int $$0, azh $$1, float $$2) {
-      return $$2 * this.c.a($$0);
+   public void a(ard $$0, int $$1, dcy $$2, bul $$3, fba $$4) {
+      $$3.d(this.d.a($$1));
    }
 
    @Override
@@ -14,7 +14,7 @@ public record ddu(ddf c) implements ddr {
       return a;
    }
 
-   public ddf b() {
-      return this.c;
+   public ddg b() {
+      return this.d;
    }
 }

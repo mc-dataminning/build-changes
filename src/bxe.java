@@ -1,18 +1,48 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class bxe {
-   public static <E extends bvg, T> bxa<E> a(Predicate<E> $$0, cek<? extends T> $$1, cek<T> $$2, bru $$3) {
-      return cam.a(
-         (Function<cam.b<E>, ? extends App<cam.c<E>, cap<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
-                  if (!$$0.test((E)$$6)) {
-                     return false;
-                  } else {
-                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.A));
-                     return true;
-                  }
-               }))
-      );
+public class bxe extends bxa<coi> {
+   @Nullable
+   private cqk c;
+
+   public bxe(int $$0, int $$1) {
+      super(ImmutableMap.of(), $$0, $$1);
+   }
+
+   protected boolean a(ard $$0, coi $$1) {
+      ji $$2 = $$1.dv();
+      this.c = $$0.d($$2);
+      return this.c != null && this.c.e() && byj.a($$0, $$1, $$2);
+   }
+
+   protected boolean a(ard $$0, coi $$1, long $$2) {
+      return this.c != null && !this.c.d();
+   }
+
+   protected void b(ard $$0, coi $$1, long $$2) {
+      this.c = null;
+      $$1.eb().a($$0.ae(), $$0.ad());
+   }
+
+   protected void c(ard $$0, coi $$1, long $$2) {
+      azh $$3 = $$1.dY();
+      if ($$3.a(100) == 0) {
+         $$1.gx();
+      }
+
+      if ($$3.a(200) == 0 && byj.a($$0, $$1, $$1.dv())) {
+         cvm $$4 = af.a(cvm.values(), $$3);
+         int $$5 = $$3.a(3);
+         cwp $$6 = this.a($$4, $$5);
+         cpq.a(new cpl($$1.dV(), $$1, $$1.dA(), $$1.dE(), $$1.dG(), $$6), $$0, $$6);
+      }
+   }
+
+   private cwp a(cvm $$0, int $$1) {
+      cwp $$2 = new cwp(cwt.vt);
+      $$2.b(kv.af, new czf((byte)$$1, List.of(new cze(cze.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
+      return $$2;
    }
 }

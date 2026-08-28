@@ -1,107 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import org.slf4j.Logger;
-
 public class bwp {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<bur<? extends bvg>, bwn> b = ImmutableMap.builder()
-      .put(bur.c, cid.m().a())
-      .put(bur.e, cig.p().a())
-      .put(bur.f, ckq.m().a())
-      .put(bur.h, cij.gu().a())
-      .put(bur.k, cgr.m().a())
-      .put(bur.l, cgy.gG().a())
-      .put(bur.o, clg.m().a())
-      .put(bur.q, clh.gu().a())
-      .put(bur.u, cha.gI().a())
-      .put(bur.t, cio.p().a())
-      .put(bur.v, cli.m().a())
-      .put(bur.z, chc.p().a())
-      .put(bur.A, cgt.m().a())
-      .put(bur.C, che.p().a())
-      .put(bur.D, cnb.p().a())
-      .put(bur.E, clj.m().a())
-      .put(bur.H, chf.gs().a())
-      .put(bur.I, cja.p().a())
-      .put(bur.K, cll.m().a())
-      .put(bur.M, clm.m().a())
-      .put(bur.N, cln.m().a())
-      .put(bur.O, clo.m().a())
-      .put(bur.P, cju.p().a())
-      .put(bur.S, clq.p().a())
-      .put(bur.r, cmt.m().a())
-      .put(bur.aa, chh.p().a())
-      .put(bur.ab, cir.gs().a())
-      .put(bur.ad, clr.t().a())
-      .put(bur.ae, cls.m().a())
-      .put(bur.ag, buy.gs().a())
-      .put(bur.ah, cix.t().a())
-      .put(bur.ai, clt.x().a())
-      .put(bur.aj, cne.p().a())
-      .put(bur.al, cjb.gU().a())
-      .put(bur.am, cmq.gv().a())
-      .put(bur.an, clv.p().a())
-      .put(bur.ap, chj.m().a())
-      .put(bur.ax, cje.gE().a())
-      .put(bur.az, clw.m().a())
-      .put(bur.aE, che.p().a())
-      .put(bur.aF, cja.p().a())
-      .put(bur.aI, chl.p().a())
-      .put(bur.aN, chm.gF().a())
-      .put(bur.aO, chn.gE().a())
-      .put(bur.aP, clx.gx().a())
-      .put(bur.aQ, cho.p().a())
-      .put(bur.aR, cnk.gy().a())
-      .put(bur.aS, cnn.t().a())
-      .put(bur.aT, cma.p().a())
-      .put(bur.bR, cow.fX().a())
-      .put(bur.aU, chp.p().a())
-      .put(bur.aW, cgt.m().a())
-      .put(bur.aX, chr.t().a())
-      .put(bur.aY, cmc.m().a())
-      .put(bur.aZ, cgt.m().a())
-      .put(bur.ba, cht.p().a())
-      .put(bur.bb, cmd.m().a())
-      .put(bur.bd, cme.m().a())
-      .put(bur.be, clf.m().a())
-      .put(bur.bf, cjh.p().a())
-      .put(bur.bg, clx.gx().a())
-      .put(bur.bi, cjo.p().a())
-      .put(bur.bk, chv.m().a())
-      .put(bur.bn, cmi.p().a())
-      .put(bur.bq, chw.gs().a())
-      .put(bur.br, clf.m().a())
-      .put(bur.bs, cmk.t().a())
-      .put(bur.bt, ciu.gt().a())
-      .put(bur.bx, cje.gE().a())
-      .put(bur.bz, cgt.m().a())
-      .put(bur.bA, chy.x().a())
-      .put(bur.bB, cml.m().a())
-      .put(bur.bC, coh.gB().a())
-      .put(bur.bD, cmm.p().a())
-      .put(bur.bF, cny.m().a())
-      .put(bur.bE, bvi.F().a())
-      .put(bur.bH, cmn.p().a())
-      .put(bur.bI, cko.p().a())
-      .put(bur.bJ, clf.m().a())
-      .put(bur.bL, cia.gG().a())
-      .put(bur.bM, cmp.m().a())
-      .put(bur.bN, cmq.gv().a())
-      .put(bur.bO, cjl.p().a())
-      .put(bur.bP, cmq.gv().a())
-      .put(bur.bQ, cms.gB().a())
-      .build();
+   public static final jr<bwk> a = a("armor", new bwr("attribute.name.armor", 0.0, 0.0, 30.0).a(true));
+   public static final jr<bwk> b = a("armor_toughness", new bwr("attribute.name.armor_toughness", 0.0, 0.0, 20.0).a(true));
+   public static final jr<bwk> c = a("attack_damage", new bwr("attribute.name.attack_damage", 2.0, 0.0, 2048.0));
+   public static final jr<bwk> d = a("attack_knockback", new bwr("attribute.name.attack_knockback", 0.0, 0.0, 5.0));
+   public static final jr<bwk> e = a("attack_speed", new bwr("attribute.name.attack_speed", 4.0, 0.0, 1024.0).a(true));
+   public static final jr<bwk> f = a("block_break_speed", new bwr("attribute.name.block_break_speed", 1.0, 0.0, 1024.0).a(true));
+   public static final jr<bwk> g = a("block_interaction_range", new bwr("attribute.name.block_interaction_range", 4.5, 0.0, 64.0).a(true));
+   public static final jr<bwk> h = a("burning_time", new bwr("attribute.name.burning_time", 1.0, 0.0, 1024.0).a(true).a(bwk.a.c));
+   public static final jr<bwk> i = a("explosion_knockback_resistance", new bwr("attribute.name.explosion_knockback_resistance", 0.0, 0.0, 1.0).a(true));
+   public static final jr<bwk> j = a("entity_interaction_range", new bwr("attribute.name.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
+   public static final jr<bwk> k = a("fall_damage_multiplier", new bwr("attribute.name.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true).a(bwk.a.c));
+   public static final jr<bwk> l = a("flying_speed", new bwr("attribute.name.flying_speed", 0.4, 0.0, 1024.0).a(true));
+   public static final jr<bwk> m = a("follow_range", new bwr("attribute.name.follow_range", 32.0, 0.0, 2048.0));
+   public static final jr<bwk> n = a("gravity", new bwr("attribute.name.gravity", 0.08, -1.0, 1.0).a(true).a(bwk.a.b));
+   public static final jr<bwk> o = a("jump_strength", new bwr("attribute.name.jump_strength", 0.42F, 0.0, 32.0).a(true));
+   public static final jr<bwk> p = a("knockback_resistance", new bwr("attribute.name.knockback_resistance", 0.0, 0.0, 1.0));
+   public static final jr<bwk> q = a("luck", new bwr("attribute.name.luck", 0.0, -1024.0, 1024.0).a(true));
+   public static final jr<bwk> r = a("max_absorption", new bwr("attribute.name.max_absorption", 0.0, 0.0, 2048.0).a(true));
+   public static final jr<bwk> s = a("max_health", new bwr("attribute.name.max_health", 20.0, 1.0, 1024.0).a(true));
+   public static final jr<bwk> t = a("mining_efficiency", new bwr("attribute.name.mining_efficiency", 0.0, 0.0, 1024.0).a(true));
+   public static final jr<bwk> u = a("movement_efficiency", new bwr("attribute.name.movement_efficiency", 0.0, 0.0, 1.0).a(true));
+   public static final jr<bwk> v = a("movement_speed", new bwr("attribute.name.movement_speed", 0.7, 0.0, 1024.0).a(true));
+   public static final jr<bwk> w = a("oxygen_bonus", new bwr("attribute.name.oxygen_bonus", 0.0, 0.0, 1024.0).a(true));
+   public static final jr<bwk> x = a("safe_fall_distance", new bwr("attribute.name.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
+   public static final jr<bwk> y = a("scale", new bwr("attribute.name.scale", 1.0, 0.0625, 16.0).a(true).a(bwk.a.b));
+   public static final jr<bwk> z = a("sneaking_speed", new bwr("attribute.name.sneaking_speed", 0.3, 0.0, 1.0).a(true));
+   public static final jr<bwk> A = a("spawn_reinforcements", new bwr("attribute.name.spawn_reinforcements", 0.0, 0.0, 1.0));
+   public static final jr<bwk> B = a("step_height", new bwr("attribute.name.step_height", 0.6, 0.0, 10.0).a(true));
+   public static final jr<bwk> C = a("submerged_mining_speed", new bwr("attribute.name.submerged_mining_speed", 0.2, 0.0, 20.0).a(true));
+   public static final jr<bwk> D = a("sweeping_damage_ratio", new bwr("attribute.name.sweeping_damage_ratio", 0.0, 0.0, 1.0).a(true));
+   public static final jr<bwk> E = a("tempt_range", new bwr("attribute.name.tempt_range", 10.0, 0.0, 2048.0));
+   public static final jr<bwk> F = a("water_movement_efficiency", new bwr("attribute.name.water_movement_efficiency", 0.0, 0.0, 1.0).a(true));
 
-   public static bwn a(bur<? extends bvg> $$0) {
-      return b.get($$0);
+   private static jr<bwk> a(String $$0, bwk $$1) {
+      return ke.b(mb.s, akv.b($$0), $$1);
    }
 
-   public static boolean b(bur<?> $$0) {
-      return b.containsKey($$0);
-   }
-
-   public static void a() {
-      mb.f.s().filter($$0 -> $$0.f() != bvj.h).filter($$0 -> !b((bur<?>)$$0)).map(mb.f::b).forEach($$0 -> af.b("Entity " + $$0 + " has no attributes"));
+   public static jr<bwk> a(ke<bwk> $$0) {
+      return s;
    }
 }

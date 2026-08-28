@@ -1,37 +1,24 @@
-public class gik<T extends lu> extends gkg {
-   private final gkb a;
+import org.joml.Vector3f;
 
-   protected gik(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, gkb $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.a = $$8;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.D = this.D * 0.75F * $$7.d();
-      int $$9 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * $$7.d(), 1.0F);
-      this.b($$8);
+public class gik extends gil<lo> {
+   protected gik(gfz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lo $$7, gkc $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      Vector3f $$10 = $$7.b();
+      this.v = this.a($$10.x(), $$9);
+      this.w = this.a($$10.y(), $$9);
+      this.x = this.a($$10.z(), $$9);
    }
 
-   protected float a(float $$0, float $$1) {
-      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
-   }
+   public static class a implements gjk<lo> {
+      private final gkc a;
 
-   @Override
-   public gjk b() {
-      return gjk.b;
-   }
+      public a(gkc $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+      public gjh a(lo $$0, gfz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gik($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      }
    }
 }

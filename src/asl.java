@@ -233,7 +233,7 @@ public abstract class asl implements AutoCloseable {
 
       protected c(final GameProfile $$1) {
          this.b = $$1;
-         bqz $$2 = new bqz(asl.this.g, "chat stream for " + $$1.getName());
+         bra $$2 = new bra(asl.this.g, "chat stream for " + $$1.getName());
          this.c = $$2::a_;
       }
 

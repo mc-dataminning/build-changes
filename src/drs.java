@@ -1,25 +1,28 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-
-public interface drs {
-   czp c();
-
-   static List<drs> d() {
-      return mb.g.s().map(drs::a).filter(Objects::nonNull).collect(Collectors.toList());
-   }
-
-   @Nullable
-   static drs a(dgg $$0) {
-      if ($$0.j() instanceof cuu $$1) {
-         djl var6 = $$1.d();
-         if (var6 instanceof drs) {
-            return (drs)var6;
-         }
+public enum drs {
+   a {
+      @Override
+      public boolean a(dwx $$0, dfn $$1, ji $$2, jn $$3) {
+         return djm.a($$0.h($$1, $$2), $$3);
       }
+   },
+   b {
+      private final int d = 1;
+      private final fbu e = djm.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
 
-      cwk $$2 = $$0.j();
-      return $$2 instanceof drs ? (drs)$$2 : null;
-   }
+      @Override
+      public boolean a(dwx $$0, dfn $$1, ji $$2, jn $$3) {
+         return !fbr.c($$0.h($$1, $$2).a($$3), this.e, fbe.c);
+      }
+   },
+   c {
+      private final int d = 2;
+      private final fbu e = fbr.a(fbr.b(), djm.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), fbe.e);
+
+      @Override
+      public boolean a(dwx $$0, dfn $$1, ji $$2, jn $$3) {
+         return !fbr.c($$0.h($$1, $$2).a($$3), this.e, fbe.c);
+      }
+   };
+
+   public abstract boolean a(dwx var1, dfn var2, ji var3, jn var4);
 }

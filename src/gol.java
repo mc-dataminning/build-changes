@@ -1,51 +1,56 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+@FunctionalInterface
+public interface gol<T extends dtz> {
+   gok<T> create(gol.a var1);
 
-public class gol {
-   private static final Map<dua<?>, gok<?>> a = Maps.newHashMap();
+   public static class a {
+      private final goj a;
+      private final gnc b;
+      private final hbm c;
+      private final gtc d;
+      private final gsc e;
+      private final gez f;
+      private final foc g;
 
-   private static <T extends dty> void a(dua<? extends T> $$0, gok<T> $$1) {
-      a.put($$0, $$1);
-   }
+      public a(goj $$0, gnc $$1, hbm $$2, gtc $$3, gsc $$4, gez $$5, foc $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
 
-   public static Map<dua<?>, goj<?>> a(gok.a $$0) {
-      Builder<dua<?>, goj<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + mb.j.b((dua<?>)$$2), var5);
-         }
-      });
-      return $$1.build();
-   }
+      public goj a() {
+         return this.a;
+      }
 
-   static {
-      a(dua.h, gox::new);
-      a(dua.i, got::new);
-      a(dua.j, goz::new);
-      a(dua.l, gov::new);
-      a(dua.b, gop::new);
-      a(dua.d, gop::new);
-      a(dua.c, gop::new);
-      a(dua.n, gos::new);
-      a(dua.E, gou::new);
-      a(dua.o, gpc::new);
-      a(dua.w, gpb::new);
-      a(dua.p, gof::new);
-      a(dua.q, goy::new);
-      a(dua.u, goe::new);
-      a(dua.v, gpa::new);
-      a(dua.y, gow::new);
-      a(dua.z, gog::new);
-      a(dua.A, goq::new);
-      a(dua.F, goh::new);
-      a(dua.H, goo::new);
-      a(dua.O, gon::new);
-      a(dua.P, gor::new);
-      a(dua.R, gpd::new);
-      a(dua.S, gpe::new);
+      public gnc b() {
+         return this.b;
+      }
+
+      public gsc c() {
+         return this.e;
+      }
+
+      public hbm d() {
+         return this.c;
+      }
+
+      public gtc e() {
+         return this.d;
+      }
+
+      public gez f() {
+         return this.f;
+      }
+
+      public gfd a(gfb $$0) {
+         return this.f.a($$0);
+      }
+
+      public foc g() {
+         return this.g;
+      }
    }
 }

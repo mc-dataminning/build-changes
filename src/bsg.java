@@ -1,49 +1,44 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
-
-public enum bsg implements azv {
-   a(0, "peaceful"),
-   b(1, "easy"),
-   c(2, "normal"),
-   d(3, "hard");
-
-   public static final azv.a<bsg> e = azv.a(bsg::values);
-   private static final IntFunction<bsg> f = axq.a(bsg::a, values(), axq.a.b);
-   private final int g;
-   private final String h;
-
-   private bsg(final int $$0, final String $$1) {
-      this.g = $$0;
-      this.h = $$1;
+public class bsg {
+   public static void a(dgi $$0, ji $$1, bsd $$2) {
+      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
    }
 
-   public int a() {
-      return this.g;
+   public static void a(dgi $$0, bul $$1, bsd $$2) {
+      a($$0, $$1.dA(), $$1.dC(), $$1.dG(), $$2);
    }
 
-   public wp b() {
-      return wp.c("options.difficulty." + this.h);
+   private static void a(dgi $$0, double $$1, double $$2, double $$3, bsd $$4) {
+      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
+         a($$0, $$1, $$2, $$3, $$4.a($$5));
+      }
    }
 
-   public wp d() {
-      return wp.c("options.difficulty." + this.h + ".info");
+   public static void a(dgi $$0, ji $$1, ka<cwp> $$2) {
+      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
    }
 
-   public static bsg a(int $$0) {
-      return f.apply($$0);
+   public static void a(dgi $$0, double $$1, double $$2, double $$3, cwp $$4) {
+      double $$5 = (double)bus.aq.l();
+      double $$6 = 1.0 - $$5;
+      double $$7 = $$5 / 2.0;
+      double $$8 = Math.floor($$1) + $$0.A.j() * $$6 + $$7;
+      double $$9 = Math.floor($$2) + $$0.A.j() * $$6;
+      double $$10 = Math.floor($$3) + $$0.A.j() * $$6 + $$7;
+
+      while (!$$4.f()) {
+         clc $$11 = new clc($$0, $$8, $$9, $$10, $$4.a($$0.A.a(21) + 10));
+         float $$12 = 0.05F;
+         $$11.n($$0.A.a(0.0, 0.11485000171139836), $$0.A.a(0.2, 0.11485000171139836), $$0.A.a(0.0, 0.11485000171139836));
+         $$0.b($$11);
+      }
    }
 
-   @Nullable
-   public static bsg a(String $$0) {
-      return e.a($$0);
-   }
-
-   public String e() {
-      return this.h;
-   }
-
-   @Override
-   public String c() {
-      return this.h;
+   public static void a(dwx $$0, dwx $$1, dgi $$2, ji $$3) {
+      if (!$$0.a($$1.b())) {
+         if ($$2.c_($$3) instanceof bsd $$5) {
+            a($$2, $$3, $$5);
+            $$2.c($$3, $$0.b());
+         }
+      }
    }
 }

@@ -1,44 +1,41 @@
-import java.util.Optional;
+public class bxk implements bxb<bvh> {
+   private final int a;
+   private final int b;
+   private bxa.a c = bxa.a.a;
+   private long d;
 
-public class bxk implements byn {
-   private final buk a;
-   private final boolean b;
-
-   public bxk(buk $$0, boolean $$1) {
+   public bxk(int $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    @Override
-   public faz a() {
-      return this.b ? this.a.dt().b(0.0, (double)this.a.cS(), 0.0) : this.a.dt();
+   public bxa.a a() {
+      return this.c;
    }
 
    @Override
-   public ji b() {
-      return this.a.dv();
+   public final boolean e(ard $$0, bvh $$1, long $$2) {
+      this.c = bxa.a.b;
+      int $$3 = this.a + $$0.H_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
    }
 
    @Override
-   public boolean a(bvg $$0) {
-      if (this.a instanceof bvg $$1) {
-         if (!$$1.bL()) {
-            return false;
-         } else {
-            Optional<cem> $$3 = $$0.eb().c(cek.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
+   public final void f(ard $$0, bvh $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
       }
    }
 
-   public buk c() {
-      return this.a;
+   @Override
+   public final void g(ard $$0, bvh $$1, long $$2) {
+      this.c = bxa.a.a;
    }
 
    @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

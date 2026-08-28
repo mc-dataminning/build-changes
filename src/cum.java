@@ -1,31 +1,21 @@
-public class cum extends cwk {
-   private final cum.a a;
+import java.util.List;
 
-   public cum(deo $$0, cum.a $$1, cwk.a $$2) {
-      super($$0.a($$2, $$1.d));
-      this.a = $$1;
-   }
+public class cum extends cwl {
+   private final djm a;
 
-   public cum(deo $$0, cum.a $$1, jr<avz> $$2, boolean $$3, cwk.a $$4) {
-      super($$0.a($$4, $$2, $$3, $$1.d));
-      this.a = $$1;
+   public cum(djm $$0, cwl.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public avz a() {
-      return this.a.c;
+   public void a(cwp $$0, cwl.b $$1, List<wp> $$2, cyh $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, $$1, $$2, $$3);
    }
 
-   public static enum a {
-      a(awa.nZ, bur.al),
-      b(awa.Dw, bur.bL);
-
-      final avz c;
-      final jv<bur<?>> d;
-
-      private a(final avz $$0, final bur<?>... $$1) {
-         this.c = $$0;
-         this.d = jv.a(bur::r, $$1);
-      }
+   @Override
+   public wp a(cwp $$0) {
+      return this.m();
    }
 }

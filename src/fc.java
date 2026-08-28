@@ -43,11 +43,11 @@ public interface fc {
       return Collections.singleton(fc.b.b);
    }
 
-   Set<aku<dgh>> t();
+   Set<aku<dgi>> t();
 
    kf u();
 
-   crs v();
+   crt v();
 
    default void a(ke<?> $$0, fc.a $$1, SuggestionsBuilder $$2) {
       if ($$1.a()) {

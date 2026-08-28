@@ -1,46 +1,27 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
 
-public record ezc(Optional<bx> b, evq.b c) implements eyz {
-   public static final MapCodec<ezc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bx.a.optionalFieldOf("predicate").forGetter(ezc::c), evq.b.e.fieldOf("entity").forGetter(ezc::d)).apply($$0, ezc::new)
-   );
+public class ezc {
+   public static final ezb a = a("inverted", eyx.a);
+   public static final ezb b = a("any_of", eyo.a);
+   public static final ezb c = a("all_of", eyn.a);
+   public static final ezb d = a("random_chance", ezf.a);
+   public static final ezb e = a("random_chance_with_enchanted_bonus", ezg.a);
+   public static final ezb f = a("entity_properties", ezd.a);
+   public static final ezb g = a("killed_by_player", eze.a);
+   public static final ezb h = a("entity_scores", eyv.a);
+   public static final ezb i = a("block_state_property", eyz.a);
+   public static final ezb j = a("match_tool", ezh.a);
+   public static final ezb k = a("table_bonus", eyp.a);
+   public static final ezb l = a("survives_explosion", eyw.a);
+   public static final ezb m = a("damage_source_properties", eyt.a);
+   public static final ezb n = a("location_check", eyy.a);
+   public static final ezb o = a("weather_check", ezk.a);
+   public static final ezb p = a("reference", eyr.a);
+   public static final ezb q = a("time_check", ezi.a);
+   public static final ezb r = a("value_check", ezj.a);
+   public static final ezb s = a("enchantment_active_check", eyu.a);
 
-   @Override
-   public eza b() {
-      return ezb.f;
-   }
-
-   @Override
-   public Set<bai<?>> a() {
-      return Set.of(eyk.f, this.c.a());
-   }
-
-   public boolean a(evq $$0) {
-      buk $$1 = $$0.c(this.c.a());
-      faz $$2 = $$0.c(eyk.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
-   }
-
-   public static eyz.a a(evq.b $$0) {
-      return a($$0, bx.a.a());
-   }
-
-   public static eyz.a a(evq.b $$0, bx.a $$1) {
-      return () -> new ezc(Optional.of($$1.b()), $$0);
-   }
-
-   public static eyz.a a(evq.b $$0, bx $$1) {
-      return () -> new ezc(Optional.of($$1), $$0);
-   }
-
-   public Optional<bx> c() {
-      return this.b;
-   }
-
-   public evq.b d() {
-      return this.c;
+   private static ezb a(String $$0, MapCodec<? extends eza> $$1) {
+      return ke.a(mb.F, akv.b($$0), new ezb($$1));
    }
 }

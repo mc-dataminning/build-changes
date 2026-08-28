@@ -1,21 +1,61 @@
-public class faw extends fax {
-   private final buk b;
+public class faw extends fay {
+   private final jn b;
+   private final ji c;
+   private final boolean d;
+   private final boolean e;
+   private final boolean f;
 
-   public faw(buk $$0) {
-      this($$0, $$0.dt());
+   public static faw a(fba $$0, jn $$1, ji $$2) {
+      return new faw(true, $$0, $$1, $$2, false, false);
    }
 
-   public faw(buk $$0, faz $$1) {
+   public faw(fba $$0, jn $$1, ji $$2, boolean $$3) {
+      this(false, $$0, $$1, $$2, $$3, false);
+   }
+
+   public faw(fba $$0, jn $$1, ji $$2, boolean $$3, boolean $$4) {
+      this(false, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   private faw(boolean $$0, fba $$1, jn $$2, ji $$3, boolean $$4, boolean $$5) {
       super($$1);
-      this.b = $$0;
+      this.d = $$0;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   public buk a() {
+   public faw a(jn $$0) {
+      return new faw(this.d, this.a, $$0, this.c, this.e, this.f);
+   }
+
+   public faw a(ji $$0) {
+      return new faw(this.d, this.a, this.b, $$0, this.e, this.f);
+   }
+
+   public faw a() {
+      return new faw(this.d, this.a, this.b, this.c, this.e, true);
+   }
+
+   public ji b() {
+      return this.c;
+   }
+
+   public jn c() {
       return this.b;
    }
 
    @Override
-   public fax.a d() {
-      return fax.a.c;
+   public fay.a d() {
+      return this.d ? fay.a.a : fay.a.b;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public boolean f() {
+      return this.f;
    }
 }

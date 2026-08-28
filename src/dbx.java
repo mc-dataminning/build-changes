@@ -1,29 +1,19 @@
-public class dbx extends daj {
-   public dbx(String $$0, dap $$1, daz $$2, cwo $$3, float $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+public record dbx(cwp a) implements dbk {
+   @Override
+   public cwp a(int $$0) {
+      if ($$0 != 0) {
+         throw new IllegalArgumentException("No item for index " + $$0);
+      } else {
+         return this.a;
+      }
    }
 
    @Override
-   protected cwk f() {
-      return cws.fe;
+   public int a() {
+      return 1;
    }
 
-   @Override
-   public dbn<dbx> a() {
-      return dbn.o;
-   }
-
-   @Override
-   public dbo<dbx> b() {
-      return dbo.b;
-   }
-
-   @Override
-   public dbg h() {
-      return switch (this.e()) {
-         case b -> dbf.f;
-         case a -> dbf.e;
-         case c -> dbf.g;
-      };
+   public cwp c() {
+      return this.a;
    }
 }

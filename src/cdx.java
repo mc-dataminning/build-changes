@@ -1,68 +1,102 @@
 import java.util.EnumSet;
+import java.util.Iterator;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cdx<T extends bvg> extends cee {
-   private static final int i = 10;
-   protected final Class<T> a;
-   protected final int b;
+public class cdx extends cef {
+   private static final cfy a = cfy.a().d().e();
+   private static final int b = 10;
+   private boolean c;
+   private int d;
+   private final Class<?>[] i;
    @Nullable
-   protected bvg c;
-   protected cfx d;
+   private Class<?>[] j;
 
-   public cdx(bvi $$0, Class<T> $$1, boolean $$2) {
-      this($$0, $$1, 10, $$2, false, null);
-   }
-
-   public cdx(bvi $$0, Class<T> $$1, boolean $$2, cfx.a $$3) {
-      this($$0, $$1, 10, $$2, false, $$3);
-   }
-
-   public cdx(bvi $$0, Class<T> $$1, boolean $$2, boolean $$3) {
-      this($$0, $$1, 10, $$2, $$3, null);
-   }
-
-   public cdx(bvi $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable cfx.a $$5) {
-      super($$0, $$3, $$4);
-      this.a = $$1;
-      this.b = b($$2);
-      this.a(EnumSet.of(cce.a.d));
-      this.d = cfx.a().a(this.l()).a($$5);
+   public cdx(bvp $$0, Class<?>... $$1) {
+      super($$0, true);
+      this.i = $$1;
+      this.a(EnumSet.of(ccf.a.d));
    }
 
    @Override
    public boolean b() {
-      if (this.b > 0 && this.e.dY().a(this.b) != 0) {
+      int $$0 = this.e.eq();
+      bvh $$1 = this.e.ep();
+      if ($$0 != this.d && $$1 != null) {
+         if ($$1.aq() == bus.bR && a(this.e).O().b(dge.P)) {
+            return false;
+         } else {
+            for (Class<?> $$2 : this.i) {
+               if ($$2.isAssignableFrom($$1.getClass())) {
+                  return false;
+               }
+            }
+
+            return this.a($$1, a);
+         }
+      } else {
          return false;
-      } else {
-         this.h();
-         return this.c != null;
       }
    }
 
-   protected fau a(double $$0) {
-      return this.e.cR().c($$0, $$0, $$0);
-   }
-
-   protected void h() {
-      ard $$0 = a(this.e);
-      if (this.a != cow.class && this.a != are.class) {
-         this.c = $$0.a(this.e.dV().a(this.a, this.a(this.l()), $$0x -> true), this.i(), this.e, this.e.dA(), this.e.dE(), this.e.dG());
-      } else {
-         this.c = $$0.a(this.i(), this.e, this.e.dA(), this.e.dE(), this.e.dG());
-      }
+   public cdx a(Class<?>... $$0) {
+      this.c = true;
+      this.j = $$0;
+      return this;
    }
 
    @Override
    public void d() {
-      this.e.h(this.c);
+      this.e.h(this.e.ep());
+      this.g = this.e.O_();
+      this.d = this.e.eq();
+      this.h = 300;
+      if (this.c) {
+         this.h();
+      }
+
       super.d();
    }
 
-   public void a(@Nullable bvg $$0) {
-      this.c = $$0;
+   protected void h() {
+      double $$0 = this.l();
+      fav $$1 = fav.a(this.e.dt()).c($$0, 10.0, $$0);
+      List<? extends bvj> $$2 = this.e.dV().a((Class<? extends bvj>)this.e.getClass(), $$1, buq.f);
+      Iterator var5 = $$2.iterator();
+
+      while (true) {
+         bvj $$3;
+         while (true) {
+            if (!var5.hasNext()) {
+               return;
+            }
+
+            $$3 = (bvj)var5.next();
+            if (this.e != $$3 && $$3.O_() == null && (!(this.e instanceof bwe) || ((bwe)this.e).ag_() == ((bwe)$$3).ag_()) && !$$3.s(this.e.ep())) {
+               if (this.j == null) {
+                  break;
+               }
+
+               boolean $$4 = false;
+
+               for (Class<?> $$5 : this.j) {
+                  if ($$3.getClass() == $$5) {
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  break;
+               }
+            }
+         }
+
+         this.a($$3, this.e.ep());
+      }
    }
 
-   private cfx i() {
-      return this.d.a(this.l());
+   protected void a(bvj $$0, bvh $$1) {
+      $$0.h($$1);
    }
 }

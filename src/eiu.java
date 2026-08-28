@@ -1,16 +1,21 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eiu implements eib {
-   public static final Codec<eiu> a = ayi.c(emp.c).fieldOf("features").xmap(eiu::new, $$0 -> $$0.b).codec();
-   public final jv<emp> b;
+public record eiu(ekd b, boolean c) implements eic {
+   public static final Codec<eiu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ekd.a.fieldOf("to_place").forGetter($$0x -> $$0x.b), Codec.BOOL.optionalFieldOf("schedule_tick", false).forGetter($$0x -> $$0x.c))
+            .apply($$0, eiu::new)
+   );
 
-   public eiu(jv<emp> $$0) {
-      this.b = $$0;
+   public eiu(ekd $$0) {
+      this($$0, false);
    }
 
-   @Override
-   public Stream<efj<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public ekd a() {
+      return this.b;
+   }
+
+   public boolean b() {
+      return this.c;
    }
 }

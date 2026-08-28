@@ -1,88 +1,49 @@
-public abstract class cpx extends cpp {
-   private static final float a = 12.25F;
+public abstract class cpx extends cpy implements cpn {
+   private static final ajy<cwp> a = akc.a(cpx.class, aka.h);
 
-   protected cpx(bur<? extends cpx> $$0, dgh $$1) {
+   public cpx(bus<? extends cpx> $$0, dgi $$1) {
       super($$0, $$1);
    }
 
-   protected cpx(bur<? extends cpx> $$0, double $$1, double $$2, double $$3, dgh $$4) {
-      this($$0, $$4);
-      this.a_($$1, $$2, $$3);
+   public cpx(bus<? extends cpx> $$0, double $$1, double $$2, double $$3, dgi $$4, cwp $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a($$5);
+   }
+
+   public cpx(bus<? extends cpx> $$0, bvh $$1, dgi $$2, cwp $$3) {
+      this($$0, $$1.dA(), $$1.dE() - 0.1F, $$1.dG(), $$2, $$3);
+      this.c($$1);
+   }
+
+   public void a(cwp $$0) {
+      this.au().a(a, $$0.c(1));
+   }
+
+   protected abstract cwl m();
+
+   @Override
+   public cwp l() {
+      return this.au().a(a);
    }
 
    @Override
-   public boolean a(double $$0) {
-      if (this.af < 2 && $$0 < 12.25) {
-         return false;
+   protected void a(akc.a $$0) {
+      $$0.a(a, new cwp(this.m()));
+   }
+
+   @Override
+   public void b(tq $$0) {
+      super.b($$0);
+      $$0.a("Item", this.l().a(this.dX()));
+   }
+
+   @Override
+   public void a(tq $$0) {
+      super.a($$0);
+      if ($$0.b("Item", 10)) {
+         this.a(cwp.a(this.dX(), (un)$$0.p("Item")).orElseGet(() -> new cwp(this.m())));
       } else {
-         double $$1 = this.cR().a() * 4.0;
-         if (Double.isNaN($$1)) {
-            $$1 = 4.0;
-         }
-
-         $$1 *= 64.0;
-         return $$0 < $$1 * $$1;
+         this.a(new cwp(this.m()));
       }
-   }
-
-   @Override
-   public boolean o(boolean $$0) {
-      return true;
-   }
-
-   @Override
-   public void h() {
-      this.s();
-      this.bf();
-      this.m();
-      fax $$0 = cpr.a(this, this::b);
-      faz $$1;
-      if ($$0.d() != fax.a.a) {
-         $$1 = $$0.g();
-      } else {
-         $$1 = this.dt().e(this.dy());
-      }
-
-      this.b($$1);
-      this.F();
-      this.aK();
-      super.h();
-      if ($$0.d() != fax.a.a && this.bL()) {
-         this.b($$0);
-      }
-   }
-
-   private void m() {
-      faz $$0 = this.dy();
-      faz $$1 = this.dt();
-      float $$4;
-      if (this.bj()) {
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            float $$3 = 0.25F;
-            this.dV().a(lt.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
-         }
-
-         $$4 = 0.8F;
-      } else {
-         $$4 = 0.99F;
-      }
-
-      this.i($$0.c((double)$$4));
-   }
-
-   private void s() {
-      if (this.ak) {
-         for (ji $$0 : ji.a(this.cR())) {
-            dww $$1 = this.dV().a_($$0);
-            if ($$1.a(djn.nF)) {
-               $$1.a(this.dV(), $$0, this);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected double bd() {
-      return 0.03;
    }
 }

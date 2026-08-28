@@ -1,35 +1,49 @@
-public class fpj {
-   public static final akv a = akv.b("textures/gui/title/minecraft.png");
-   public static final akv b = akv.b("textures/gui/title/minceraft.png");
-   public static final akv c = akv.b("textures/gui/title/edition.png");
-   public static final int d = 256;
-   public static final int e = 44;
-   private static final int g = 256;
-   private static final int h = 64;
-   private static final int i = 128;
-   private static final int j = 14;
-   private static final int k = 128;
-   private static final int l = 16;
-   public static final int f = 30;
-   private static final int m = 7;
-   private final boolean n = (double)azh.a().i() < 1.0E-4;
-   private final boolean o;
+public class fpj extends fot {
+   private boolean a;
 
-   public fpj(boolean $$0) {
-      this.o = $$0;
+   public fpj(int $$0, int $$1, fot.c $$2) {
+      super($$0, $$1, 20, 20, wp.c("narrator.button.difficulty_lock"), $$2, q);
    }
 
-   public void a(fod $$0, int $$1, float $$2) {
-      this.a($$0, $$1, $$2, 30);
+   @Override
+   protected xd d() {
+      return wo.a(super.d(), this.a() ? wp.c("narrator.button.difficulty_lock.locked") : wp.c("narrator.button.difficulty_lock.unlocked"));
    }
 
-   public void a(fod $$0, int $$1, float $$2, int $$3) {
-      int $$4 = $$1 / 2 - 128;
-      float $$5 = this.o ? 1.0F : $$2;
-      int $$6 = axk.a($$5);
-      $$0.a(gmh::H, this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64, $$6);
-      int $$7 = $$1 / 2 - 64;
-      int $$8 = $$3 + 44 - 7;
-      $$0.a(gmh::H, c, $$7, $$8, 0.0F, 0.0F, 128, 14, 128, 16, $$6);
+   public boolean a() {
+      return this.a;
+   }
+
+   public void b(boolean $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void b(foe $$0, int $$1, int $$2, float $$3) {
+      fpj.a $$4;
+      if (!this.j) {
+         $$4 = this.a ? fpj.a.c : fpj.a.f;
+      } else if (this.D()) {
+         $$4 = this.a ? fpj.a.b : fpj.a.e;
+      } else {
+         $$4 = this.a ? fpj.a.a : fpj.a.d;
+      }
+
+      $$0.a(gmi::H, $$4.g, this.F(), this.G(), this.g, this.h);
+   }
+
+   static enum a {
+      a(akv.b("widget/locked_button")),
+      b(akv.b("widget/locked_button_highlighted")),
+      c(akv.b("widget/locked_button_disabled")),
+      d(akv.b("widget/unlocked_button")),
+      e(akv.b("widget/unlocked_button_highlighted")),
+      f(akv.b("widget/unlocked_button_disabled"));
+
+      final akv g;
+
+      private a(final akv $$0) {
+         this.g = $$0;
+      }
    }
 }

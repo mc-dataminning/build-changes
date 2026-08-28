@@ -1,26 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqb extends djv {
+public class dqb extends djm implements djp {
    public static final MapCodec<dqb> a = b(dqb::new);
-   protected static final float b = 6.0F;
-   protected static final fbt c = djl.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dqb> a() {
       return a;
    }
 
-   protected dqb(dwv.d $$0) {
+   public dqb(dww.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fbt a(dww $$0, dfm $$1, ji $$2, fbe $$3) {
-      return c;
+   public boolean a(dgl $$0, ji $$1, dwx $$2) {
+      return $$0.a_($$1.e()).l();
    }
 
    @Override
-   protected boolean b(dww $$0, dfm $$1, ji $$2) {
-      return $$0.a(awp.aO) || $$0.a(djn.ek) || super.b($$0, $$1, $$2);
+   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ard $$0, azh $$1, ji $$2, dwx $$3) {
+      $$0.b($$2.e(), djo.ti.m());
+   }
+
+   @Override
+   public ji a(ji $$0) {
+      return $$0.e();
    }
 }

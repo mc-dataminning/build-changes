@@ -1,30 +1,20 @@
-import java.util.Objects;
-
 public interface fbe {
-   static fbe a() {
-      return fbj.a;
-   }
+   fbe a = ($$0, $$1) -> false;
+   fbe b = ($$0, $$1) -> !$$0 && !$$1;
+   fbe c = ($$0, $$1) -> $$1 && !$$0;
+   fbe d = ($$0, $$1) -> !$$0;
+   fbe e = ($$0, $$1) -> $$0 && !$$1;
+   fbe f = ($$0, $$1) -> !$$1;
+   fbe g = ($$0, $$1) -> $$0 != $$1;
+   fbe h = ($$0, $$1) -> !$$0 || !$$1;
+   fbe i = ($$0, $$1) -> $$0 && $$1;
+   fbe j = ($$0, $$1) -> $$0 == $$1;
+   fbe k = ($$0, $$1) -> $$1;
+   fbe l = ($$0, $$1) -> !$$0 || $$1;
+   fbe m = ($$0, $$1) -> $$0;
+   fbe n = ($$0, $$1) -> $$0 || !$$1;
+   fbe o = ($$0, $$1) -> $$0 || $$1;
+   fbe p = ($$0, $$1) -> true;
 
-   static fbe a(buk $$0) {
-      Objects.requireNonNull($$0);
-
-      return (fbe)(switch ($$0) {
-         case cqv $$1 -> cqv.b($$1.dV()) ? new fbn($$1, false) : new fbj($$0, false);
-         default -> new fbj($$0, false);
-      });
-   }
-
-   static fbe a(buk $$0, boolean $$1) {
-      return new fbj($$0, $$1);
-   }
-
-   boolean b();
-
-   boolean a(fbt var1, ji var2, boolean var3);
-
-   boolean a(cwk var1);
-
-   boolean a(esy var1, esy var2);
-
-   fbt a(dww var1, dfq var2, ji var3);
+   boolean apply(boolean var1, boolean var2);
 }

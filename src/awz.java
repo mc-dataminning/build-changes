@@ -1,10 +1,10 @@
 public class awz {
-   public static final axf<ckx> a = a("placeable");
+   public static final axf<cky> a = a("placeable");
 
    private awz() {
    }
 
-   private static axf<ckx> a(String $$0) {
+   private static axf<cky> a(String $$0) {
       return axf.a(mc.X, akv.b($$0));
    }
 }

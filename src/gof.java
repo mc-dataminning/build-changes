@@ -1,110 +1,75 @@
-import java.util.List;
+public class gof implements gok<dto> {
+   private static final int a = 16;
+   private static final float b = 0.6666667F;
+   private final gbc c;
+   private final gbc d;
+   private final gbb e;
+   private final gbb f;
 
-public class gof implements goj<dtt> {
-   public static final akv a = akv.b("textures/entity/beacon_beam.png");
-   public static final int b = 1024;
-
-   public gof(gok.a $$0) {
+   public gof(gol.a $$0) {
+      this($$0.f());
    }
 
-   public void a(dtt $$0, float $$1, fft $$2, glx $$3, int $$4, int $$5) {
-      long $$6 = $$0.i().ad();
-      List<dtt.a> $$7 = $$0.b();
-      int $$8 = 0;
+   public gof(gez $$0) {
+      this.c = new gbc($$0.a(gfc.q));
+      this.d = new gbc($$0.a(gfc.s));
+      this.e = new gbb($$0.a(gfc.r));
+      this.f = new gbb($$0.a(gfc.t));
+   }
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         dtt.a $$10 = $$7.get($$9);
-         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
-         $$8 += $$10.c();
+   public void a(dto $$0, float $$1, ffu $$2, gly $$3, int $$4, int $$5) {
+      dwx $$6 = $$0.m();
+      gbc $$8;
+      gbb $$9;
+      float $$7;
+      if ($$6.b() instanceof dir) {
+         $$7 = -dyc.b($$6.c(dir.b));
+         $$8 = this.c;
+         $$9 = this.e;
+      } else {
+         $$7 = -$$6.c(dso.b).p();
+         $$8 = this.d;
+         $$9 = this.f;
+      }
+
+      long $$13 = $$0.i().ad();
+      ji $$14 = $$0.aA_();
+      float $$15 = ((float)Math.floorMod((long)($$14.u() * 7 + $$14.v() * 9 + $$14.w() * 13) + $$13, 100L) + $$1) / 100.0F;
+      a($$2, $$3, $$4, $$5, $$7, $$8, $$9, $$15, $$0.f(), $$0.b());
+   }
+
+   public void a(ffu $$0, gly $$1, int $$2, int $$3, cvm $$4, dtq $$5) {
+      a($$0, $$1, $$2, $$3, 0.0F, this.c, this.e, 0.0F, $$4, $$5);
+   }
+
+   private static void a(ffu $$0, gly $$1, int $$2, int $$3, float $$4, gbc $$5, gbb $$6, float $$7, cvm $$8, dtq $$9) {
+      $$0.a();
+      $$0.a(0.5F, 0.0F, 0.5F);
+      $$0.a(a.d.rotationDegrees($$4));
+      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
+      $$5.a($$0, hhc.f.a($$1, gmi::d), $$2, $$3);
+      $$6.a($$7);
+      a($$0, $$1, $$2, $$3, $$6.e(), hhc.f, true, $$8, $$9);
+      $$0.b();
+   }
+
+   public static void a(ffu $$0, gly $$1, int $$2, int $$3, gfd $$4, hgz $$5, boolean $$6, cvm $$7, dtq $$8) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, true);
+   }
+
+   public static void a(ffu $$0, gly $$1, int $$2, int $$3, gfd $$4, hgz $$5, boolean $$6, cvm $$7, dtq $$8, boolean $$9, boolean $$10) {
+      $$4.a($$0, $$5.a($$1, gmi::d, $$10, $$9), $$2, $$3);
+      a($$0, $$1, $$2, $$3, $$4, $$6 ? gmt.m : gmt.n, $$7);
+
+      for (int $$11 = 0; $$11 < 16 && $$11 < $$8.b().size(); $$11++) {
+         dtq.b $$12 = $$8.b().get($$11);
+         hgz $$13 = $$6 ? gmt.a($$12.b()) : gmt.b($$12.b());
+         a($$0, $$1, $$2, $$3, $$4, $$13, $$12.c());
       }
    }
 
-   private static void a(fft $$0, glx $$1, float $$2, long $$3, int $$4, int $$5, int $$6) {
-      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
-   }
-
-   public static void a(fft $$0, glx $$1, akv $$2, float $$3, float $$4, long $$5, int $$6, int $$7, int $$8, float $$9, float $$10) {
-      int $$11 = $$6 + $$7;
-      $$0.a();
-      $$0.a(0.5, 0.0, 0.5);
-      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
-      float $$13 = $$7 < 0 ? $$12 : -$$12;
-      float $$14 = ayz.i($$13 * 0.2F - (float)ayz.d($$13 * 0.1F));
-      $$0.a();
-      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
-      float $$15 = 0.0F;
-      float $$18 = 0.0F;
-      float $$19 = -$$9;
-      float $$20 = 0.0F;
-      float $$21 = 0.0F;
-      float $$22 = -$$9;
-      float $$23 = 0.0F;
-      float $$24 = 1.0F;
-      float $$25 = -1.0F + $$14;
-      float $$26 = (float)$$7 * $$4 * (0.5F / $$9) + $$25;
-      a($$0, $$1.getBuffer(gmh.e($$2, false)), $$8, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$19, 0.0F, 0.0F, $$22, 0.0F, 1.0F, $$26, $$25);
-      $$0.b();
-      $$15 = -$$10;
-      float $$28 = -$$10;
-      $$18 = -$$10;
-      $$19 = -$$10;
-      $$23 = 0.0F;
-      $$24 = 1.0F;
-      $$25 = -1.0F + $$14;
-      $$26 = (float)$$7 * $$4 + $$25;
-      a($$0, $$1.getBuffer(gmh.e($$2, true)), axk.c(32, $$8), $$6, $$11, $$15, $$28, $$10, $$18, $$19, $$10, $$10, $$10, 0.0F, 1.0F, $$26, $$25);
-      $$0.b();
-   }
-
-   private static void a(
-      fft $$0,
-      ffx $$1,
-      int $$2,
-      int $$3,
-      int $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15,
-      float $$16
-   ) {
-      fft.a $$17 = $$0.c();
-      a($$17, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$11, $$12, $$9, $$10, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$7, $$8, $$11, $$12, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$9, $$10, $$5, $$6, $$13, $$14, $$15, $$16);
-   }
-
-   private static void a(
-      fft.a $$0, ffx $$1, int $$2, int $$3, int $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
-   ) {
-      a($$0, $$1, $$2, $$4, $$5, $$6, $$10, $$11);
-      a($$0, $$1, $$2, $$3, $$5, $$6, $$10, $$12);
-      a($$0, $$1, $$2, $$3, $$7, $$8, $$9, $$12);
-      a($$0, $$1, $$2, $$4, $$7, $$8, $$9, $$11);
-   }
-
-   private static void a(fft.a $$0, ffx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      $$1.a($$0, $$4, (float)$$3, $$5).a($$2).a($$6, $$7).b(heh.d).c(15728880).b($$0, 0.0F, 1.0F, 0.0F);
-   }
-
-   public boolean a(dtt $$0) {
-      return true;
-   }
-
-   @Override
-   public int aU_() {
-      return 256;
-   }
-
-   public boolean a(dtt $$0, faz $$1) {
-      return faz.b($$0.aA_()).d(1.0, 0.0, 1.0).a((kb)$$1.d(1.0, 0.0, 1.0), (double)this.aU_());
+   private static void a(ffu $$0, gly $$1, int $$2, int $$3, gfd $$4, hgz $$5, cvm $$6) {
+      int $$7 = $$6.d();
+      $$4.a($$0, $$5.a($$1, gmi::n), $$2, $$3, $$7);
    }
 }

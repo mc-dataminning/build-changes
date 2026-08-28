@@ -2,25 +2,25 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record cy(Optional<jv<dew>> c, Optional<jv<dey>> d) implements ea<dev> {
+public record cy(Optional<jv<dex>> c, Optional<jv<dez>> d) implements ea<dew> {
    public static final Codec<cy> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(kg.a(mc.aZ).optionalFieldOf("material").forGetter(cy::b), kg.a(mc.ba).optionalFieldOf("pattern").forGetter(cy::c)).apply($$0, cy::new)
    );
 
    @Override
-   public ku<dev> a() {
+   public ku<dew> a() {
       return kv.U;
    }
 
-   public boolean a(cwo $$0, dev $$1) {
+   public boolean a(cwp $$0, dew $$1) {
       return this.c.isPresent() && !this.c.get().a($$1.a()) ? false : !this.d.isPresent() || this.d.get().a($$1.b());
    }
 
-   public Optional<jv<dew>> b() {
+   public Optional<jv<dex>> b() {
       return this.c;
    }
 
-   public Optional<jv<dey>> c() {
+   public Optional<jv<dez>> c() {
       return this.d;
    }
 }

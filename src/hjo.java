@@ -1,11 +1,58 @@
-import javax.annotation.Nullable;
+import java.io.BufferedInputStream;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public record hjo(@Nullable avx a, float b) {
-   public hjo(avx $$0) {
-      this($$0, 1.0F);
+public class hjo implements hji {
+   private final hjo.a a;
+   private hji b;
+   private final BufferedInputStream c;
+
+   public hjo(hjo.a $$0, InputStream $$1) throws IOException {
+      this.a = $$0;
+      this.c = new BufferedInputStream($$1);
+      this.c.mark(Integer.MAX_VALUE);
+      this.b = $$0.create(new hjo.b(this.c));
    }
 
-   public boolean a(hio $$0) {
-      return this.a == null ? false : this.a.d() && !this.a.a().a().a().equals($$0.a());
+   @Override
+   public AudioFormat a() {
+      return this.b.a();
+   }
+
+   @Override
+   public ByteBuffer a(int $$0) throws IOException {
+      ByteBuffer $$1 = this.b.a($$0);
+      if (!$$1.hasRemaining()) {
+         this.b.close();
+         this.c.reset();
+         this.b = this.a.create(new hjo.b(this.c));
+         $$1 = this.b.a($$0);
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+      this.c.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      hji create(InputStream var1) throws IOException;
+   }
+
+   static class b extends FilterInputStream {
+      b(InputStream $$0) {
+         super($$0);
+      }
+
+      @Override
+      public void close() {
+      }
    }
 }

@@ -1,38 +1,59 @@
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class gqg {
-   private final fli a;
+public class gqg implements gpz.a {
+   private final flj a;
+   private final Map<Long, Map<ji, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
 
-   public gqg(fli $$0) {
+   gqg(flj $$0) {
       this.a = $$0;
    }
 
-   public void a(fft $$0, gpp $$1, glx $$2, double $$3, double $$4, double $$5) {
-      gly $$6 = this.a.f.x().c();
-      MutableInt $$7 = new MutableInt(0);
-      $$6.a(($$6x, $$7x, $$8, $$9) -> this.a($$6x, $$0, $$2, $$3, $$4, $$5, $$8, $$7x, $$7, $$9), $$1, 32);
+   public void a(long $$0, ji $$1) {
+      Map<ji, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
    }
 
-   private void a(gly.d $$0, fft $$1, glx $$2, double $$3, double $$4, double $$5, int $$6, boolean $$7, MutableInt $$8, boolean $$9) {
-      fau $$10 = $$0.b();
-      double $$11 = $$10.b();
-      long $$12 = Math.round($$11 / 16.0);
-      if ($$12 == 1L) {
-         $$8.add(1);
-         double $$13 = $$10.f().d;
-         double $$14 = $$10.f().e;
-         double $$15 = $$10.f().f;
-         int $$16 = $$9 ? -16711936 : -1;
-         gpy.a($$1, $$2, String.valueOf($$8.getValue()), $$13, $$14, $$15, $$16, 0.3F);
+   @Override
+   public void a(ffu $$0, gly $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.s.ad();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<ji> $$8 = Sets.newHashSet();
+      Map<ji, Integer> $$9 = Maps.newHashMap();
+      ffy $$10 = $$1.getBuffer(gmi.y());
+      Iterator<Entry<Long, Map<ji, Integer>>> $$11 = this.b.entrySet().iterator();
+
+      while ($$11.hasNext()) {
+         Entry<Long, Map<ji, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<ji, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<ji, Integer> $$16 : $$14.entrySet()) {
+               ji $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  fav $$19 = new fav(ji.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  gms.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
+            }
+         }
       }
 
-      ffx $$17 = $$2.getBuffer(gmh.y());
-      long $$18 = $$12 + 5L;
-      gmr.a($$1, $$17, $$10.h(0.1 * (double)$$6).d(-$$3, -$$4, -$$5), a($$18, 0.3F), a($$18, 0.8F), a($$18, 0.5F), $$7 ? 0.4F : 1.0F);
-   }
-
-   private static float a(long $$0, float $$1) {
-      float $$2 = 0.1F;
-      return ayz.i($$1 * (float)$$0) * 0.9F + 0.1F;
+      for (Entry<ji, Integer> $$20 : $$9.entrySet()) {
+         ji $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         gpz.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      }
    }
 }

@@ -3,14 +3,14 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
 
-public record jq(aku<dgh> d, ji e) {
+public record jq(aku<dgi> d, ji e) {
    public static final MapCodec<jq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dgh.h.fieldOf("dimension").forGetter(jq::a), ji.a.fieldOf("pos").forGetter(jq::b)).apply($$0, jq::a)
+      $$0 -> $$0.group(dgi.h.fieldOf("dimension").forGetter(jq::a), ji.a.fieldOf("pos").forGetter(jq::b)).apply($$0, jq::a)
    );
    public static final Codec<jq> b = a.codec();
    public static final yn<ByteBuf, jq> c = yn.a(aku.b(mc.be), jq::a, ji.b, jq::b, jq::a);
 
-   public static jq a(aku<dgh> $$0, ji $$1) {
+   public static jq a(aku<dgi> $$0, ji $$1) {
       return new jq($$0, $$1);
    }
 
@@ -19,11 +19,11 @@ public record jq(aku<dgh> d, ji e) {
       return this.d + " " + this.e;
    }
 
-   public boolean a(aku<dgh> $$0, ji $$1, int $$2) {
+   public boolean a(aku<dgi> $$0, ji $$1, int $$2) {
       return this.d.equals($$0) && this.e.l($$1) <= $$2;
    }
 
-   public aku<dgh> a() {
+   public aku<dgi> a() {
       return this.d;
    }
 

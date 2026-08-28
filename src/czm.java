@@ -1,26 +1,19 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Consumer;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public record czm(int f) implements cyv, czr {
-   public static final int a = 120000;
-   public static final int b = 0;
-   public static final int c = 4;
-   public static final Codec<czm> d = ayi.a(0, 4).xmap(czm::new, czm::a);
-   public static final yn<wa, czm> e = yn.a(yl.h, czm::a, czm::new);
+public enum czm {
+   a(0),
+   b(1);
 
-   @Override
-   public void a(dgh $$0, bvg $$1, cwo $$2, cyu $$3) {
-      $$1.a(new btp(btr.E, 120000, this.f, false, false, true));
-   }
+   public static final IntFunction<czm> c = axq.a(czm::a, values(), axq.a.a);
+   public static final yn<ByteBuf, czm> d = yl.a(c, czm::a);
+   private final int e;
 
-   @Override
-   public void a(cwk.b $$0, Consumer<wp> $$1, cyg $$2) {
-      List<btp> $$3 = List.of(new btp(btr.E, 120000, this.f, false, false, true));
-      cyn.a($$3, $$1, 1.0F, $$0.b());
+   private czm(final int $$0) {
+      this.e = $$0;
    }
 
    public int a() {
-      return this.f;
+      return this.e;
    }
 }

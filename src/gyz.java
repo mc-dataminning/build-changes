@@ -1,11 +1,7 @@
-public class gyz extends gyk {
-   public cjk a;
-   public cjf h;
-   public cwo i;
+public class gyz extends gzk {
+   public final hbo i = new hbo();
 
-   public gyz() {
-      this.a = cjk.a;
-      this.h = cjf.a;
-      this.i = cwo.j;
+   public static void a(bvh $$0, gyz $$1, hbm $$2) {
+      $$2.a($$1.i, $$0.eZ(), cwn.h, false, $$0);
    }
 }

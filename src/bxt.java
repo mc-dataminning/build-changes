@@ -1,27 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bxt {
-   public static bxa<bvg> a(float $$0, boolean $$1, int $$2) {
-      return a($$0x -> true, $$0, $$1, $$2);
+   private static ji a(bvj $$0, ji $$1) {
+      azh $$2 = $$0.dV().A;
+      return $$1.b(a($$2), 0, a($$2));
    }
 
-   public static <E extends bvg> bxa<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
-      return cam.a((Function<cam.b<E>, ? extends App<cam.c<E>, cap<E>>>)($$4 -> {
-         cam<E, ? extends can<? extends K1, cen>> $$5 = $$2 ? $$4.a(cek.m) : $$4.c(cek.m);
-         return $$4.group($$4.a(cek.n), $$5, $$4.b(cek.L), $$4.a(cek.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
-               clb $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dV().F_().a($$11.dv()) && $$9.fN()) {
-                  cen $$12 = new cen(new bxk($$11, false), $$1, 0);
-                  $$4x.a(new bxk($$11, true));
-                  $$5x.a($$12);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-      }));
+   private static int a(azh $$0) {
+      return $$0.a(3) - 1;
+   }
+
+   public static <E extends bvj> byl<E> a(cel<ji> $$0, int $$1, float $$2) {
+      return can.a(
+         (Function<can.b<E>, ? extends App<can.c<E>, caq<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(cel.o), $$3.c(cel.m), $$3.a(cel.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     ji $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dv(), (double)$$1);
+                     if (!$$8) {
+                        bxc.a($$5x, a($$5x, $$7), $$2, $$1);
+                     }
+
+                     return true;
+                  }))
+      );
    }
 }

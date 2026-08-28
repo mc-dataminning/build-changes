@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-@fcz
+@fda
 public class TextureUtil {
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final int MIN_MIPMAP_LEVEL = 0;
@@ -40,18 +40,18 @@ public class TextureUtil {
    }
 
    public static void prepareImage(int $$0, int $$1, int $$2) {
-      prepareImage(fet.b.a, $$0, 0, $$1, $$2);
+      prepareImage(feu.b.a, $$0, 0, $$1, $$2);
    }
 
-   public static void prepareImage(fet.b $$0, int $$1, int $$2, int $$3) {
+   public static void prepareImage(feu.b $$0, int $$1, int $$2, int $$3) {
       prepareImage($$0, $$1, 0, $$2, $$3);
    }
 
    public static void prepareImage(int $$0, int $$1, int $$2, int $$3) {
-      prepareImage(fet.b.a, $$0, $$1, $$2, $$3);
+      prepareImage(feu.b.a, $$0, $$1, $$2, $$3);
    }
 
-   public static void prepareImage(fet.b $$0, int $$1, int $$2, int $$3, int $$4) {
+   public static void prepareImage(feu.b $$0, int $$1, int $$2, int $$3, int $$4) {
       RenderSystem.assertOnRenderThreadOrInit();
       bind($$1);
       if ($$2 >= 0) {
@@ -105,7 +105,7 @@ public class TextureUtil {
          int $$8 = $$4 >> $$7;
          int $$9 = $$5 >> $$7;
 
-         try (fet $$10 = new fet($$8, $$9, false)) {
+         try (feu $$10 = new feu($$8, $$9, false)) {
             $$10.a($$7, false);
             if ($$6 != null) {
                $$10.b($$6);

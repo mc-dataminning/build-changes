@@ -1,32 +1,31 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bxw {
-   public static <T extends bvg> bxa<bvg> a(bur<? extends T> $$0, int $$1, cek<T> $$2, float $$3, int $$4) {
-      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
-   }
-
-   public static <E extends bvg, T extends bvg> bxa<E> a(bur<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, cek<T> $$4, float $$5, int $$6) {
-      int $$7 = $$1 * $$1;
-      Predicate<bvg> $$8 = $$2x -> $$0.equals($$2x.aq()) && $$3.test((T)$$2x);
-      return cam.a(
-         (Function<cam.b<E>, ? extends App<cam.c<E>, cap<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(cek.n), $$6x.c(cek.m), $$6x.b(cek.h))
-               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
-                     cem $$13 = $$6x.b($$9);
-                     if ($$2.test((E)$$11) && $$13.d($$8)) {
-                        Optional<bvg> $$14 = $$13.a($$3xxxx -> $$3xxxx.g((buk)$$11) <= (double)$$7 && $$8.test($$3xxxx));
-                        $$14.ifPresent($$5xxxx -> {
-                           $$6xx.a($$5xxxx);
-                           $$7x.a(new bxk($$5xxxx, true));
-                           $$8x.a(new cen(new bxk($$5xxxx, false), $$5, $$6));
-                        });
-                        return true;
-                     } else {
-                        return false;
+   public static bxb<bvp> a(float $$0) {
+      return can.a(
+         (Function<can.b<bvp>, ? extends App<can.c<bvp>, caq<bvp>>>)($$1 -> $$1.group($$1.c(cel.m))
+               .apply(
+                  $$1,
+                  $$1x -> ($$2, $$3, $$4) -> {
+                        if ($$2.h($$3.dv())) {
+                           return false;
+                        } else {
+                           ji $$5 = $$3.dv();
+                           List<ji> $$6 = ji.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(ji::j).collect(af.b());
+                           Collections.shuffle($$6);
+                           $$6.stream()
+                              .filter($$1xxx -> !$$2.h($$1xxx))
+                              .filter($$2x -> $$2.a($$2x, $$3))
+                              .filter($$2x -> $$2.g($$3))
+                              .findFirst()
+                              .ifPresent($$2x -> $$1x.a(new ceo($$2x, $$0, 0)));
+                           return true;
+                        }
                      }
-                  }))
+               ))
       );
    }
 }

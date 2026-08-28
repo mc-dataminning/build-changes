@@ -1,106 +1,79 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.ToIntFunction;
 
-public class doc extends dpz implements dqr {
-   public static final MapCodec<doc> b = b(doc::new);
-   public static final dxn c = dxm.J;
-   public static final dxn d = dxm.B;
-   private static final int k = 8;
-   public static final int e = 128;
-   private static final int l = 200;
+public class doc extends djm implements dqs {
+   public static final MapCodec<doc> a = b(doc::new);
+   public static final int b = 15;
+   public static final dxw c = dxn.aS;
+   public static final dxo d = dxn.J;
+   public static final ToIntFunction<dwx> e = $$0 -> $$0.c(c);
 
    @Override
    public MapCodec<doc> a() {
-      return b;
+      return a;
    }
 
-   public doc(dwv.d $$0) {
+   public doc(dww.d $$0) {
       super($$0);
-      this.l(this.F.b().b(a, jn.b).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
+      this.l(this.F.b().b(c, Integer.valueOf(15)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public dww a(daf $$0) {
-      esy $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == esz.c;
-      return this.m().b(a, $$0.k()).b(c, Boolean.valueOf($$2));
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(c, d);
    }
 
    @Override
-   protected dww a(dww $$0, dgk $$1, dgw $$2, ji $$3, jn $$4, ji $$5, dww $$6, azh $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, esz.c, esz.c.a($$1));
+   protected bsk a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
+      if (!$$1.C && $$3.gG()) {
+         $$1.a($$2, $$0.a(c), 2);
+         return bsk.b;
+      } else {
+         return bsk.c;
+      }
+   }
+
+   @Override
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return $$3.a(cwt.hZ) ? fbr.b() : fbr.a();
+   }
+
+   @Override
+   protected boolean e_(dwx $$0) {
+      return $$0.y().c();
+   }
+
+   @Override
+   protected dpx a_(dwx $$0) {
+      return dpx.a;
+   }
+
+   @Override
+   protected float c(dwx $$0, dfn $$1, ji $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      if ($$0.c(d)) {
+         $$2.a($$3, eta.c, eta.c.a($$1));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected esy b_(dww $$0) {
-      return $$0.c(c) ? esz.c.a(false) : super.b_($$0);
+   protected esz b_(dwx $$0) {
+      return $$0.c(d) ? eta.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected int a(dww $$0, dfm $$1, ji $$2, jn $$3) {
-      return $$0.c(d) ? 15 : 0;
+   protected cwp a(dgl $$0, ji $$1, dwx $$2, boolean $$3) {
+      return a(super.a($$0, $$1, $$2, $$3), $$2.c(c));
    }
 
-   @Override
-   protected int b(dww $$0, dfm $$1, ji $$2, jn $$3) {
-      return $$0.c(d) && $$0.c(a) == $$3 ? 15 : 0;
-   }
-
-   public void e(dww $$0, dgh $$1, ji $$2) {
-      $$1.a($$2, $$0.b(d, Boolean.valueOf(true)), 3);
-      this.f($$0, $$1, $$2);
-      $$1.a($$2, this, 8);
-      $$1.c(3002, $$2, $$0.c(a).o().ordinal());
-   }
-
-   private void f(dww $$0, dgh $$1, ji $$2) {
-      jn $$3 = $$0.c(a).g();
-      $$1.a($$2.a($$3), this, euc.a($$1, $$3, null));
-   }
-
-   @Override
-   protected void a(dww $$0, ard $$1, ji $$2, azh $$3) {
-      $$1.a($$2, $$0.b(d, Boolean.valueOf(false)), 3);
-      this.f($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(dww $$0, dgh $$1, ji $$2, azh $$3) {
-      if ($$1.af() && (long)$$1.A.a(200) <= $$1.ad() % 200L && $$2.v() == $$1.a(ecr.a.b, $$2.u(), $$2.w()) - 1) {
-         azd.a($$0.c(a).o(), $$1, $$2, 0.125, lt.aV, bru.a(1, 2));
-      }
-   }
-
-   @Override
-   protected void a(dww $$0, dgh $$1, ji $$2, dww $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$0.c(d)) {
-            this.f($$0, $$1, $$2);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected void b(dww $$0, dgh $$1, ji $$2, dww $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$0.c(d) && !$$1.U().a($$2, this)) {
-            $$1.a($$2, $$0.b(d, Boolean.valueOf(false)), 18);
-         }
-      }
-   }
-
-   @Override
-   protected void a(dwx.a<djl, dww> $$0) {
-      $$0.a(a, d, c);
-   }
-
-   @Override
-   protected boolean f_(dww $$0) {
-      return true;
+   public static cwp a(cwp $$0, int $$1) {
+      $$0.b(kv.am, cyr.a.a(c, $$1));
+      return $$0;
    }
 }

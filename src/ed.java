@@ -3,11 +3,11 @@ import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public record ed(Map<ctz, cv> b) {
-   public static final Codec<ed> a = Codec.unboundedMap(cua.a, cv.a).xmap(ed::new, ed::a);
+public record ed(Map<cua, cv> b) {
+   public static final Codec<ed> a = Codec.unboundedMap(cub.a, cv.a).xmap(ed::new, ed::a);
 
-   public boolean a(buk $$0) {
-      for (Entry<ctz, cv> $$1 : this.b.entrySet()) {
+   public boolean a(bul $$0) {
+      for (Entry<cua, cv> $$1 : this.b.entrySet()) {
          if (!a($$0, $$1.getValue(), $$1.getKey().a())) {
             return false;
          }
@@ -16,10 +16,10 @@ public record ed(Map<ctz, cv> b) {
       return true;
    }
 
-   private static boolean a(buk $$0, cv $$1, IntList $$2) {
+   private static boolean a(bul $$0, cv $$1, IntList $$2) {
       for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
          int $$4 = $$2.getInt($$3);
-         bvy $$5 = $$0.a_($$4);
+         bvz $$5 = $$0.a_($$4);
          if ($$1.a($$5.a())) {
             return true;
          }
@@ -28,7 +28,7 @@ public record ed(Map<ctz, cv> b) {
       return false;
    }
 
-   public Map<ctz, cv> a() {
+   public Map<cua, cv> a() {
       return this.b;
    }
 }

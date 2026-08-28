@@ -1,76 +1,80 @@
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap;
 import java.util.Map;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class goy implements goj<dvn> {
-   private final Function<dqs.a, gdx> a;
-   private static final Map<dqs.a, akv> b = af.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dqs.b.c, akv.b("textures/entity/skeleton/skeleton.png"));
-      $$0.put(dqs.b.d, akv.b("textures/entity/skeleton/wither_skeleton.png"));
-      $$0.put(dqs.b.f, akv.b("textures/entity/zombie/zombie.png"));
-      $$0.put(dqs.b.g, akv.b("textures/entity/creeper/creeper.png"));
-      $$0.put(dqs.b.i, akv.b("textures/entity/enderdragon/dragon.png"));
-      $$0.put(dqs.b.h, akv.b("textures/entity/piglin/piglin.png"));
-      $$0.put(dqs.b.e, hfk.a());
-   });
+public class goy extends goe {
+   private static final float a = 0.6666667F;
+   private static final fba b = new fba(0.0, 0.33333334F, 0.046666667F);
+   private final Map<dyj, goy.a> c;
 
-   @Nullable
-   public static gdx a(gey $$0, dqs.a $$1) {
-      if ($$1 instanceof dqs.b $$2) {
-         return (gdx)(switch ($$2) {
-            case c -> new gdw($$0.a(gfb.cN));
-            case d -> new gdw($$0.a(gfb.dF));
-            case e -> new gdw($$0.a(gfb.ch));
-            case f -> new gdw($$0.a(gfb.dR));
-            case g -> new gdw($$0.a(gfb.ak));
-            case i -> new gev($$0.a(gfb.av));
-            case h -> new gdb($$0.a(gfb.bX));
-         });
-      } else {
-         return null;
+   public goy(gol.a $$0) {
+      super($$0);
+      this.c = dyj.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new goy.a(a($$0.f(), $$1, true), a($$0.f(), $$1, false))));
+   }
+
+   @Override
+   protected gcw a(dwx $$0, dyj $$1) {
+      goy.a $$2 = this.c.get($$1);
+      return $$0.b() instanceof drm ? $$2.a() : $$2.b();
+   }
+
+   @Override
+   protected hgz a(dyj $$0) {
+      return gmt.a($$0);
+   }
+
+   @Override
+   protected float a() {
+      return 0.6666667F;
+   }
+
+   @Override
+   protected float b() {
+      return 0.6666667F;
+   }
+
+   private static void a(ffu $$0, float $$1) {
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.d.rotationDegrees($$1));
+   }
+
+   @Override
+   protected void a(ffu $$0, float $$1, dwx $$2) {
+      a($$0, $$1);
+      if (!($$2.b() instanceof drm)) {
+         $$0.a(0.0F, -0.3125F, -0.4375F);
       }
    }
 
-   public goy(gok.a $$0) {
-      gey $$1 = $$0.f();
-      this.a = af.b($$1x -> a($$1, $$1x));
+   @Override
+   protected fba c() {
+      return b;
    }
 
-   public void a(dvn $$0, float $$1, fft $$2, glx $$3, int $$4, int $$5) {
-      float $$6 = $$0.a($$1);
-      dww $$7 = $$0.m();
-      boolean $$8 = $$7.b() instanceof dsr;
-      jn $$9 = $$8 ? $$7.c(dsr.d) : null;
-      int $$10 = $$8 ? dyb.a($$9.g()) : $$7.c(dqs.e);
-      float $$11 = dyb.b($$10);
-      dqs.a $$12 = ((dih)$$7.b()).b();
-      gdx $$13 = this.a.apply($$12);
-      gmh $$14 = a($$12, $$0.c());
-      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
+   public static void a(ffu $$0, gly $$1, int $$2, int $$3, gcw $$4, hgz $$5) {
+      $$0.a();
+      a($$0, 0.0F);
+      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
+      ffy $$6 = $$5.a($$1, $$4::a);
+      $$4.a($$0, $$6, $$2, $$3);
+      $$0.b();
    }
 
-   public static void a(@Nullable jn $$0, float $$1, float $$2, fft $$3, glx $$4, int $$5, gdx $$6, gmh $$7) {
-      $$3.a();
-      if ($$0 == null) {
-         $$3.a(0.5F, 0.0F, 0.5F);
-      } else {
-         float $$8 = 0.25F;
-         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
+   public static gcw a(gez $$0, dyj $$1, boolean $$2) {
+      gfb $$3 = $$2 ? gfc.a($$1) : gfc.b($$1);
+      return new gcw.a($$0.a($$3), gmi::g);
+   }
+
+   public static gfj a(boolean $$0) {
+      gfl $$1 = new gfl();
+      gfn $$2 = $$1.a();
+      $$2.a("sign", gfi.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), gff.a);
+      if ($$0) {
+         $$2.a("stick", gfi.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), gff.a);
       }
 
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      ffx $$9 = $$4.getBuffer($$7);
-      $$6.a($$2, $$1, 0.0F);
-      $$6.a($$3, $$9, $$5, heh.d);
-      $$3.b();
+      return gfj.a($$1, 64, 32);
    }
 
-   public static gmh a(dqs.a $$0, @Nullable czn $$1) {
-      return a($$0, $$1, null);
-   }
-
-   public static gmh a(dqs.a $$0, @Nullable czn $$1, @Nullable akv $$2) {
-      return $$0 == dqs.b.e && $$1 != null ? gmh.j($$2 != null ? $$2 : fli.Q().an().b($$1.f()).a()) : gmh.h($$2 != null ? $$2 : b.get($$0));
+   static record a(gcw a, gcw b) {
    }
 }

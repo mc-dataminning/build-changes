@@ -1,33 +1,60 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.HashMultimap;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface ddp extends ddq {
-   Codec<ddp> b = mb.au.q().dispatch(ddp::a, Function.identity());
+public record ddp(akv b, jr<bwk> d, ddg e, bwn.a f) implements ddr {
+   public static final MapCodec<ddp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               akv.a.fieldOf("id").forGetter(ddp::b),
+               bwk.a.fieldOf("attribute").forGetter(ddp::c),
+               ddg.b.fieldOf("amount").forGetter(ddp::d),
+               bwn.a.f.fieldOf("operation").forGetter(ddp::e)
+            )
+            .apply($$0, ddp::new)
+   );
 
-   static MapCodec<? extends ddp> a(ke<MapCodec<? extends ddp>> $$0) {
-      ke.a($$0, "all_of", ddj.a.a);
-      ke.a($$0, "apply_mob_effect", ddk.a);
-      ke.a($$0, "change_item_damage", ddl.a);
-      ke.a($$0, "damage_entity", ddm.a);
-      ke.a($$0, "explode", dds.a);
-      ke.a($$0, "ignite", ddt.a);
-      ke.a($$0, "play_sound", ddv.a);
-      ke.a($$0, "replace_block", ddx.a);
-      ke.a($$0, "replace_disk", ddy.a);
-      ke.a($$0, "run_function", ddz.a);
-      ke.a($$0, "set_block_properties", dea.a);
-      ke.a($$0, "spawn_particles", dec.a);
-      return ke.a($$0, "summon_entity", ded.a);
+   private akv a(azv $$0) {
+      return this.b.g("/" + $$0.c());
    }
 
-   void a(ard var1, int var2, dcx var3, buk var4, faz var5);
-
-   @Override
-   default void a(ard $$0, int $$1, dcx $$2, buk $$3, faz $$4, boolean $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4);
+   public bwn a(int $$0, azv $$1) {
+      return new bwn(this.a($$1), (double)this.d().a($$0), this.e());
    }
 
    @Override
-   MapCodec<? extends ddp> a();
+   public void a(ard $$0, int $$1, dcy $$2, bul $$3, fba $$4, boolean $$5) {
+      if ($$5 && $$3 instanceof bvh $$6) {
+         $$6.eY().a(this.a($$1, $$2.b()));
+      }
+   }
+
+   @Override
+   public void a(dcy $$0, bul $$1, fba $$2, int $$3) {
+      if ($$1 instanceof bvh $$4) {
+         $$4.eY().b(this.a($$3, $$0.b()));
+      }
+   }
+
+   private HashMultimap<jr<bwk>, bwn> a(int $$0, but $$1) {
+      HashMultimap<jr<bwk>, bwn> $$2 = HashMultimap.create();
+      $$2.put(this.d, this.a($$0, (azv)$$1));
+      return $$2;
+   }
+
+   @Override
+   public MapCodec<ddp> a() {
+      return a;
+   }
+
+   public jr<bwk> c() {
+      return this.d;
+   }
+
+   public ddg d() {
+      return this.e;
+   }
+
+   public bwn.a e() {
+      return this.f;
+   }
 }

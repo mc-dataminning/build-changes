@@ -1,44 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public record czj(Map<String, czj.a> c) {
-   public static final czj a = new czj(Map.of());
-   public static final Codec<czj> b = Codec.unboundedMap(Codec.STRING, czj.a.a).xmap(czj::new, czj::a);
+public record czj(Optional<jq> c, boolean d) {
+   public static final Codec<czj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jq.b.optionalFieldOf("target").forGetter(czj::a), Codec.BOOL.optionalFieldOf("tracked", true).forGetter(czj::b)).apply($$0, czj::new)
+   );
+   public static final yn<ByteBuf, czj> b = yn.a(jq.c.a(yl::a), czj::a, yl.b, czj::b, czj::new);
 
-   public czj a(String $$0, czj.a $$1) {
-      return new czj(af.a(this.c, $$0, $$1));
+   public czj a(ard $$0) {
+      if (this.d && !this.c.isEmpty()) {
+         if (this.c.get().a() != $$0.ai()) {
+            return this;
+         } else {
+            ji $$1 = this.c.get().b();
+            return $$0.k($$1) && $$0.A().a(cgp.s, $$1) ? this : new czj(Optional.empty(), true);
+         }
+      } else {
+         return this;
+      }
    }
 
-   public Map<String, czj.a> a() {
+   public Optional<jq> a() {
       return this.c;
    }
 
-   public static record a(jr<eun> b, double c, double d, float e) {
-      public static final Codec<czj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  eun.b.fieldOf("type").forGetter(czj.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(czj.a::b),
-                  Codec.DOUBLE.fieldOf("z").forGetter(czj.a::c),
-                  Codec.FLOAT.fieldOf("rotation").forGetter(czj.a::d)
-               )
-               .apply($$0, czj.a::new)
-      );
-
-      public jr<eun> a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public float d() {
-         return this.e;
-      }
+   public boolean b() {
+      return this.d;
    }
 }

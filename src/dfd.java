@@ -1,43 +1,57 @@
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public interface dfd {
-   void a(@Nullable cow var1);
+public record dfd(jr<cwl> d, int e, kt f, cwp g) {
+   public static final Codec<dfd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cwl.e.fieldOf("id").forGetter(dfd::a),
+               ayi.m.fieldOf("count").orElse(1).forGetter(dfd::b),
+               kt.a.optionalFieldOf("components", kt.c).forGetter(dfd::c)
+            )
+            .apply($$0, dfd::new)
+   );
+   public static final yn<wa, dfd> b = yn.a(yl.b(mc.K), dfd::a, yl.h, dfd::b, kt.b, dfd::c, dfd::new);
+   public static final yn<wa, Optional<dfd>> c = b.a(yl::a);
 
-   @Nullable
-   cow gs();
-
-   dff gu();
-
-   void a(dff var1);
-
-   void a(dfe var1);
-
-   void i(cwo var1);
-
-   int x();
-
-   void s(int var1);
-
-   boolean gv();
-
-   avz gw();
-
-   default boolean gE() {
-      return false;
+   public dfd(dgh $$0) {
+      this($$0, 1);
    }
 
-   default void a(cow $$0, wp $$1, int $$2) {
-      OptionalInt $$3 = $$0.a(new bsr(($$0x, $$1x, $$2x) -> new ctm($$0x, $$1x, this), $$1));
-      if ($$3.isPresent()) {
-         dff $$4 = this.gu();
-         if (!$$4.isEmpty()) {
-            $$0.a($$3.getAsInt(), $$4, $$2, this.x(), this.gv(), this.gE());
-         }
-      }
+   public dfd(dgh $$0, int $$1) {
+      this($$0.j().f(), $$1, kt.c);
    }
 
-   boolean gA();
+   public dfd(jr<cwl> $$0, int $$1, kt $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
+   }
 
-   boolean f(cow var1);
+   public dfd a(UnaryOperator<kt.a> $$0) {
+      return new dfd(this.d, this.e, $$0.apply(kt.a()).a());
+   }
+
+   private static cwp a(jr<cwl> $$0, int $$1, kt $$2) {
+      return new cwp($$0, $$1, $$2.c());
+   }
+
+   public boolean a(cwp $$0) {
+      return $$0.a(this.d) && this.f.a($$0);
+   }
+
+   public jr<cwl> a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   public kt c() {
+      return this.f;
+   }
+
+   public cwp d() {
+      return this.g;
+   }
 }

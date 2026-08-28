@@ -1,39 +1,137 @@
-public class cks extends cku {
-   public cks(bur<? extends cku> $$0, dgh $$1) {
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+public abstract class cks extends bul {
+   private static final Logger b = LogUtils.getLogger();
+   private int c;
+   protected ji a;
+
+   protected cks(bus<? extends cks> $$0, dgi $$1) {
       super($$0, $$1);
    }
 
-   public cks(dgh $$0, ji $$1, jn $$2) {
-      super(bur.af, $$0, $$1, $$2);
+   protected cks(bus<? extends cks> $$0, dgi $$1, ji $$2) {
+      this($$0, $$1);
+      this.a = $$2;
+   }
+
+   protected abstract void l();
+
+   @Override
+   public void h() {
+      if (this.dV() instanceof ard $$0) {
+         this.aA();
+         if (this.c++ == 100) {
+            this.c = 0;
+            if (!this.dQ() && !this.m()) {
+               this.at();
+               this.a($$0, null);
+            }
+         }
+      }
+   }
+
+   public abstract boolean m();
+
+   @Override
+   public boolean bH() {
+      return true;
    }
 
    @Override
-   public avz s() {
-      return awa.le;
+   public boolean v(bul $$0) {
+      if ($$0 instanceof cox $$1) {
+         return !this.dV().a($$1, this.a) ? true : this.b(this.dW().a($$1), 0.0F);
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public avz t() {
-      return awa.lc;
+   public boolean b(btb $$0) {
+      return !this.d($$0);
    }
 
    @Override
-   public avz u() {
-      return awa.ld;
+   public boolean a(ard $$0, btb $$1, float $$2) {
+      if (this.d($$1)) {
+         return false;
+      } else if (!$$0.O().b(dge.c) && $$1.d() instanceof bvj) {
+         return false;
+      } else {
+         if (!this.dQ()) {
+            this.c($$0);
+            this.bD();
+            this.a($$0, $$1.d());
+         }
+
+         return true;
+      }
    }
 
    @Override
-   public avz v() {
-      return awa.lb;
+   public boolean a(dga $$0) {
+      return $$0.h() ? super.a($$0) : true;
    }
 
    @Override
-   public avz w() {
-      return awa.lf;
+   public void a(bvl $$0, fba $$1) {
+      if (this.dV() instanceof ard $$2 && !this.dQ() && $$1.h() > 0.0) {
+         this.c($$2);
+         this.a($$2, null);
+      }
    }
 
    @Override
-   protected cwo x() {
-      return new cwo(cws.vc);
+   public void j(double $$0, double $$1, double $$2) {
+      if (this.dV() instanceof ard $$3 && !this.dQ() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
+         this.c($$3);
+         this.a($$3, null);
+      }
+   }
+
+   @Override
+   public void b(tq $$0) {
+      ji $$1 = this.p();
+      $$0.a("TileX", $$1.u());
+      $$0.a("TileY", $$1.v());
+      $$0.a("TileZ", $$1.w());
+   }
+
+   @Override
+   public void a(tq $$0) {
+      ji $$1 = new ji($$0.h("TileX"), $$0.h("TileY"), $$0.h("TileZ"));
+      if (!$$1.a(this.dv(), 16.0)) {
+         b.error("Block-attached entity at invalid position: {}", $$1);
+      } else {
+         this.a = $$1;
+      }
+   }
+
+   public abstract void a(ard var1, @Nullable bul var2);
+
+   @Override
+   protected boolean bJ() {
+      return false;
+   }
+
+   @Override
+   public void a_(double $$0, double $$1, double $$2) {
+      this.a = ji.a($$0, $$1, $$2);
+      this.l();
+      this.ar = true;
+   }
+
+   public ji p() {
+      return this.a;
+   }
+
+   @Override
+   public void a(ard $$0, bvg $$1) {
+   }
+
+   @Override
+   public void m_() {
    }
 }

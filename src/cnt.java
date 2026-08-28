@@ -2,29 +2,21 @@ import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class cnt {
-   public static bxa<bvg> a(int $$0, int $$1) {
-      return cam.a(
-         (Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$2 -> $$2.group($$2.b(cek.ad), $$2.b(cek.L), $$2.a(cek.ae), $$2.a(cek.af))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                     if (!$$7.fa().f()) {
+public class cnt<E extends cnl> {
+   public static bxb<bvh> a(int $$0) {
+      return can.a(
+         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$1 -> $$1.group($$1.b(cel.ad), $$1.a(cel.L))
+               .apply($$1, ($$2, $$3) -> ($$4, $$5, $$6) -> {
+                     if (!$$5.fa().f()) {
                         return false;
                      } else {
-                        Optional<Integer> $$9 = $$2.a($$5);
-                        if ($$9.isEmpty()) {
-                           $$5.a(0);
+                        Optional<clc> $$7 = $$1.a($$3);
+                        if ($$7.isPresent() && $$7.get().a($$5, (double)$$0)) {
+                           return false;
                         } else {
-                           int $$10 = $$9.get();
-                           if ($$10 > $$0) {
-                              $$3.b();
-                              $$5.b();
-                              $$6.a(true, (long)$$1);
-                           } else {
-                              $$5.a($$10 + 1);
-                           }
+                           $$2.b();
+                           return true;
                         }
-
-                        return true;
                      }
                   }))
       );

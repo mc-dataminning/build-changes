@@ -10,9 +10,9 @@ public class dh extends dz<dh.a> {
       return dh.a.a;
    }
 
-   public void a(are $$0, bvf $$1, List<buk> $$2) {
-      List<evq> $$3 = $$2.stream().map($$1x -> bx.b($$0, $$1x)).collect(Collectors.toList());
-      evq $$4 = bx.b($$0, $$1);
+   public void a(are $$0, bvg $$1, List<bul> $$2) {
+      List<evr> $$3 = $$2.stream().map($$1x -> bx.b($$0, $$1x)).collect(Collectors.toList());
+      evr $$4 = bx.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$4, $$3));
    }
 
@@ -30,7 +30,7 @@ public class dh extends dz<dh.a> {
          return ap.V.a(new dh.a(Optional.empty(), bx.a($$0), bx.a($$1)));
       }
 
-      public boolean a(evq $$0, List<evq> $$1) {
+      public boolean a(evr $$0, List<evr> $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || !$$1.stream().noneMatch(this.d.get()::a);
       }
 

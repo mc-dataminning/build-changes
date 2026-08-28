@@ -1,6 +1,7 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -11,6 +12,22 @@ public class bjo extends Schema {
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(true, bhw.F, () -> DSL.optionalFields("SpawnPotentials", DSL.list(DSL.fields("Entity", bhw.A.in($$0))), "SpawnData", bhw.A.in($$0)));
+      $$0.registerType(false, bhx.J, () -> DSL.constType(bjl.a()));
+      $$0.registerType(
+         false,
+         bhx.b,
+         () -> DSL.optionalFields(
+               new Pair[]{
+                  Pair.of("RootVehicle", DSL.optionalFields("Entity", bhx.A.in($$0))),
+                  Pair.of("ender_pearls", DSL.list(bhx.A.in($$0))),
+                  Pair.of("Inventory", DSL.list(bhx.t.in($$0))),
+                  Pair.of("EnderItems", DSL.list(bhx.t.in($$0))),
+                  Pair.of("ShoulderEntityLeft", bhx.A.in($$0)),
+                  Pair.of("ShoulderEntityRight", bhx.A.in($$0)),
+                  Pair.of("recipeBook", DSL.optionalFields("recipes", DSL.list(bhx.J.in($$0)), "toBeDisplayed", DSL.list(bhx.J.in($$0))))
+               }
+            )
+      );
+      $$0.registerType(false, bhx.d, () -> DSL.compoundList(DSL.list(bhx.t.in($$0))));
    }
 }

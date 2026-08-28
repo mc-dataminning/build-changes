@@ -5,7 +5,7 @@ public class acp implements yw<abl> {
    private final int b;
    private final byte c;
 
-   public acp(buk $$0, byte $$1) {
+   public acp(bul $$0, byte $$1) {
       this.b = $$0.ar();
       this.c = $$1;
    }
@@ -30,7 +30,7 @@ public class acp implements yw<abl> {
    }
 
    @Nullable
-   public buk a(dgh $$0) {
+   public bul a(dgi $$0) {
       return $$0.a(this.b);
    }
 

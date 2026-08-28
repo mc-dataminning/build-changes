@@ -1,86 +1,141 @@
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.shorts.ShortArrayList;
-import it.unimi.dsi.fastutil.shorts.ShortList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class bcu extends DataFix {
-   private static final int a = 16;
+   private static final ImmutableMap<String, Pair<String, ImmutableMap<String, String>>> a = ImmutableMap.builder()
+      .put(
+         "EndCity",
+         Pair.of(
+            "ECP",
+            ImmutableMap.builder().put("second_floor", "second_floor_1").put("third_floor", "third_floor_1").put("third_floor_c", "third_floor_2").build()
+         )
+      )
+      .put(
+         "Mansion",
+         Pair.of(
+            "WMP",
+            ImmutableMap.builder()
+               .put("carpet_south", "carpet_south_1")
+               .put("carpet_west", "carpet_west_1")
+               .put("indoors_door", "indoors_door_1")
+               .put("indoors_wall", "indoors_wall_1")
+               .build()
+         )
+      )
+      .put(
+         "Igloo",
+         Pair.of(
+            "Iglu",
+            ImmutableMap.builder()
+               .put("minecraft:igloo/igloo_bottom", "minecraft:igloo/bottom")
+               .put("minecraft:igloo/igloo_middle", "minecraft:igloo/middle")
+               .put("minecraft:igloo/igloo_top", "minecraft:igloo/top")
+               .build()
+         )
+      )
+      .put(
+         "Ocean_Ruin",
+         Pair.of(
+            "ORP",
+            ImmutableMap.builder()
+               .put("minecraft:ruin/big_ruin1_brick", "minecraft:underwater_ruin/big_brick_1")
+               .put("minecraft:ruin/big_ruin2_brick", "minecraft:underwater_ruin/big_brick_2")
+               .put("minecraft:ruin/big_ruin3_brick", "minecraft:underwater_ruin/big_brick_3")
+               .put("minecraft:ruin/big_ruin8_brick", "minecraft:underwater_ruin/big_brick_8")
+               .put("minecraft:ruin/big_ruin1_cracked", "minecraft:underwater_ruin/big_cracked_1")
+               .put("minecraft:ruin/big_ruin2_cracked", "minecraft:underwater_ruin/big_cracked_2")
+               .put("minecraft:ruin/big_ruin3_cracked", "minecraft:underwater_ruin/big_cracked_3")
+               .put("minecraft:ruin/big_ruin8_cracked", "minecraft:underwater_ruin/big_cracked_8")
+               .put("minecraft:ruin/big_ruin1_mossy", "minecraft:underwater_ruin/big_mossy_1")
+               .put("minecraft:ruin/big_ruin2_mossy", "minecraft:underwater_ruin/big_mossy_2")
+               .put("minecraft:ruin/big_ruin3_mossy", "minecraft:underwater_ruin/big_mossy_3")
+               .put("minecraft:ruin/big_ruin8_mossy", "minecraft:underwater_ruin/big_mossy_8")
+               .put("minecraft:ruin/big_ruin_warm4", "minecraft:underwater_ruin/big_warm_4")
+               .put("minecraft:ruin/big_ruin_warm5", "minecraft:underwater_ruin/big_warm_5")
+               .put("minecraft:ruin/big_ruin_warm6", "minecraft:underwater_ruin/big_warm_6")
+               .put("minecraft:ruin/big_ruin_warm7", "minecraft:underwater_ruin/big_warm_7")
+               .put("minecraft:ruin/ruin1_brick", "minecraft:underwater_ruin/brick_1")
+               .put("minecraft:ruin/ruin2_brick", "minecraft:underwater_ruin/brick_2")
+               .put("minecraft:ruin/ruin3_brick", "minecraft:underwater_ruin/brick_3")
+               .put("minecraft:ruin/ruin4_brick", "minecraft:underwater_ruin/brick_4")
+               .put("minecraft:ruin/ruin5_brick", "minecraft:underwater_ruin/brick_5")
+               .put("minecraft:ruin/ruin6_brick", "minecraft:underwater_ruin/brick_6")
+               .put("minecraft:ruin/ruin7_brick", "minecraft:underwater_ruin/brick_7")
+               .put("minecraft:ruin/ruin8_brick", "minecraft:underwater_ruin/brick_8")
+               .put("minecraft:ruin/ruin1_cracked", "minecraft:underwater_ruin/cracked_1")
+               .put("minecraft:ruin/ruin2_cracked", "minecraft:underwater_ruin/cracked_2")
+               .put("minecraft:ruin/ruin3_cracked", "minecraft:underwater_ruin/cracked_3")
+               .put("minecraft:ruin/ruin4_cracked", "minecraft:underwater_ruin/cracked_4")
+               .put("minecraft:ruin/ruin5_cracked", "minecraft:underwater_ruin/cracked_5")
+               .put("minecraft:ruin/ruin6_cracked", "minecraft:underwater_ruin/cracked_6")
+               .put("minecraft:ruin/ruin7_cracked", "minecraft:underwater_ruin/cracked_7")
+               .put("minecraft:ruin/ruin8_cracked", "minecraft:underwater_ruin/cracked_8")
+               .put("minecraft:ruin/ruin1_mossy", "minecraft:underwater_ruin/mossy_1")
+               .put("minecraft:ruin/ruin2_mossy", "minecraft:underwater_ruin/mossy_2")
+               .put("minecraft:ruin/ruin3_mossy", "minecraft:underwater_ruin/mossy_3")
+               .put("minecraft:ruin/ruin4_mossy", "minecraft:underwater_ruin/mossy_4")
+               .put("minecraft:ruin/ruin5_mossy", "minecraft:underwater_ruin/mossy_5")
+               .put("minecraft:ruin/ruin6_mossy", "minecraft:underwater_ruin/mossy_6")
+               .put("minecraft:ruin/ruin7_mossy", "minecraft:underwater_ruin/mossy_7")
+               .put("minecraft:ruin/ruin8_mossy", "minecraft:underwater_ruin/mossy_8")
+               .put("minecraft:ruin/ruin_warm1", "minecraft:underwater_ruin/warm_1")
+               .put("minecraft:ruin/ruin_warm2", "minecraft:underwater_ruin/warm_2")
+               .put("minecraft:ruin/ruin_warm3", "minecraft:underwater_ruin/warm_3")
+               .put("minecraft:ruin/ruin_warm4", "minecraft:underwater_ruin/warm_4")
+               .put("minecraft:ruin/ruin_warm5", "minecraft:underwater_ruin/warm_5")
+               .put("minecraft:ruin/ruin_warm6", "minecraft:underwater_ruin/warm_6")
+               .put("minecraft:ruin/ruin_warm7", "minecraft:underwater_ruin/warm_7")
+               .put("minecraft:ruin/ruin_warm8", "minecraft:underwater_ruin/warm_8")
+               .put("minecraft:ruin/big_brick_1", "minecraft:underwater_ruin/big_brick_1")
+               .put("minecraft:ruin/big_brick_2", "minecraft:underwater_ruin/big_brick_2")
+               .put("minecraft:ruin/big_brick_3", "minecraft:underwater_ruin/big_brick_3")
+               .put("minecraft:ruin/big_brick_8", "minecraft:underwater_ruin/big_brick_8")
+               .put("minecraft:ruin/big_mossy_1", "minecraft:underwater_ruin/big_mossy_1")
+               .put("minecraft:ruin/big_mossy_2", "minecraft:underwater_ruin/big_mossy_2")
+               .put("minecraft:ruin/big_mossy_3", "minecraft:underwater_ruin/big_mossy_3")
+               .put("minecraft:ruin/big_mossy_8", "minecraft:underwater_ruin/big_mossy_8")
+               .put("minecraft:ruin/big_cracked_1", "minecraft:underwater_ruin/big_cracked_1")
+               .put("minecraft:ruin/big_cracked_2", "minecraft:underwater_ruin/big_cracked_2")
+               .put("minecraft:ruin/big_cracked_3", "minecraft:underwater_ruin/big_cracked_3")
+               .put("minecraft:ruin/big_cracked_8", "minecraft:underwater_ruin/big_cracked_8")
+               .put("minecraft:ruin/big_warm_4", "minecraft:underwater_ruin/big_warm_4")
+               .put("minecraft:ruin/big_warm_5", "minecraft:underwater_ruin/big_warm_5")
+               .put("minecraft:ruin/big_warm_6", "minecraft:underwater_ruin/big_warm_6")
+               .put("minecraft:ruin/big_warm_7", "minecraft:underwater_ruin/big_warm_7")
+               .build()
+         )
+      )
+      .build();
 
    public bcu(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
    public TypeRewriteRule makeRule() {
-      return this.writeFixAndRead(
-         "ChunkToProtoChunkFix", this.getInputSchema().getType(bhw.c), this.getOutputSchema().getType(bhw.c), $$0 -> $$0.update("Level", bcu::a)
-      );
+      Type<?> $$0 = this.getInputSchema().getType(bhx.G);
+      return this.fixTypeEverywhereTyped("ChunkStructuresTemplateRenameFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), this::a));
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("TerrainPopulated").asBoolean(false);
-      boolean $$2 = $$0.get("LightPopulated").asNumber().result().isEmpty() || $$0.get("LightPopulated").asBoolean(false);
-      String $$3;
-      if ($$1) {
-         if ($$2) {
-            $$3 = "mobs_spawned";
-         } else {
-            $$3 = "decorated";
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("Children", $$1 -> $$0.createList($$1.asStream().map($$1x -> this.a($$0, $$1x))));
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0, Dynamic<?> $$1) {
+      String $$2 = $$0.get("id").asString("");
+      if (a.containsKey($$2)) {
+         Pair<String, ImmutableMap<String, String>> $$3 = (Pair<String, ImmutableMap<String, String>>)a.get($$2);
+         if (((String)$$3.getFirst()).equals($$1.get("id").asString(""))) {
+            String $$4 = $$1.get("Template").asString("");
+            $$1 = $$1.set("Template", $$1.createString((String)((ImmutableMap)$$3.getSecond()).getOrDefault($$4, $$4)));
          }
-      } else {
-         $$3 = "carved";
       }
 
-      return c(b($$0)).set("Status", $$0.createString($$3)).set("hasLegacyStructureData", $$0.createBoolean(true));
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return $$0.update("Biomes", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asByteBufferOpt().result().map($$1x -> {
-            int[] $$2 = new int[256];
-
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               if ($$3 < $$1x.capacity()) {
-                  $$2[$$3] = $$1x.get($$3) & 255;
-               }
-            }
-
-            return $$0.createIntList(Arrays.stream($$2));
-         }), $$1));
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse(
-         $$0.get("TileTicks")
-            .asStreamOpt()
-            .result()
-            .map(
-               $$1 -> {
-                  List<ShortList> $$2 = IntStream.range(0, 16).mapToObj($$0xx -> new ShortArrayList()).collect(Collectors.toList());
-                  $$1.forEach($$1x -> {
-                     int $$2x = $$1x.get("x").asInt(0);
-                     int $$3 = $$1x.get("y").asInt(0);
-                     int $$4 = $$1x.get("z").asInt(0);
-                     short $$5 = a($$2x, $$3, $$4);
-                     $$2.get($$3 >> 4).add($$5);
-                  });
-                  return $$0.remove("TileTicks")
-                     .set(
-                        "ToBeTicked",
-                        $$0.createList($$2.stream().map($$1x -> $$0.createList($$1x.intStream().mapToObj($$1xx -> $$0.createShort((short)$$1xx)))))
-                     );
-               }
-            ),
-         $$0
-      );
-   }
-
-   private static short a(int $$0, int $$1, int $$2) {
-      return (short)($$0 & 15 | ($$1 & 15) << 4 | ($$2 & 15) << 8);
+      return $$1;
    }
 }

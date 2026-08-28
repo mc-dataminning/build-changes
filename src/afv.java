@@ -5,7 +5,7 @@ public record afv(float b, boolean c) implements yw<abl> {
       this($$0.readFloat(), $$0.readBoolean());
    }
 
-   public static afv a(bss $$0) {
+   public static afv a(bst $$0) {
       return new afv($$0.f(), $$0.l());
    }
 

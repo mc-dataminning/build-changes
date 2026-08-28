@@ -1,21 +1,40 @@
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class hgw extends aut<hgx> {
-   public static final hgx a = new hgx(Map.of());
-   private static final ako b = ako.a("equipment");
-   private Map<aku<der>, hgx> c = Map.of();
+public abstract class hgw implements hgs {
+   protected final hgs a;
 
-   public hgw() {
-      super(hgx.a, b);
+   public hgw(hgs $$0) {
+      this.a = $$0;
    }
 
-   protected void a(Map<akv, hgx> $$0, aup $$1, bos $$2) {
-      this.c = $$0.entrySet().stream().collect(Collectors.toUnmodifiableMap($$0x -> aku.a(des.a, (akv)$$0x.getKey()), Entry::getValue));
+   @Override
+   public List<gnf> a(@Nullable dwx $$0, @Nullable jn $$1, azh $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   public hgx a(aku<der> $$0) {
-      return this.c.getOrDefault($$0, a);
+   @Override
+   public boolean a() {
+      return this.a.a();
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.b();
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.c();
+   }
+
+   @Override
+   public hes d() {
+      return this.a.d();
+   }
+
+   @Override
+   public gnp e() {
+      return this.a.e();
    }
 }

@@ -1,20 +1,80 @@
-public class gkt {
-   public cou a = cou.b;
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
+
+public abstract class gkt extends cox {
+   @Nullable
+   private ggl h;
+   protected fba a = fba.c;
    public float b;
    public float c;
+   public float d;
+   public final gfz e;
+   public float f;
+   public float g;
 
-   public void a() {
+   public gkt(gfz $$0, GameProfile $$1) {
+      super($$0, $$0.Z(), $$0.aa(), $$1);
+      this.e = $$0;
    }
 
-   public fay b() {
-      return new fay(this.b, this.c);
+   @Override
+   public boolean Z_() {
+      ggl $$0 = this.a();
+      return $$0 != null && $$0.e() == dgf.d;
    }
 
-   public boolean c() {
-      return this.c > 1.0E-5F;
+   @Override
+   public boolean b() {
+      ggl $$0 = this.a();
+      return $$0 != null && $$0.e() == dgf.b;
    }
 
-   public void d() {
-      this.a = new cou(this.a.a(), this.a.b(), this.a.c(), this.a.d(), true, this.a.f(), this.a.g());
+   @Nullable
+   protected ggl a() {
+      if (this.h == null) {
+         this.h = flj.Q().L().a(this.cG());
+      }
+
+      return this.h;
+   }
+
+   @Override
+   public void h() {
+      this.f = this.g;
+      this.a = this.dy();
+      super.h();
+   }
+
+   public fba I(float $$0) {
+      return this.a.a(this.dy(), (double)$$0);
+   }
+
+   public hfu d() {
+      ggl $$0 = this.a();
+      return $$0 == null ? hfl.a(this.cG()) : $$0.g();
+   }
+
+   public float a(boolean $$0, float $$1) {
+      float $$2 = 1.0F;
+      if (this.gj().b) {
+         $$2 *= 1.1F;
+      }
+
+      float $$3 = this.gj().b();
+      if ($$3 != 0.0F) {
+         float $$4 = (float)this.h(bwp.v) / $$3;
+         $$2 *= ($$4 + 1.0F) / 2.0F;
+      }
+
+      if (this.fz()) {
+         if (this.fB().a(cwt.pa)) {
+            float $$5 = Math.min((float)this.fD() / 20.0F, 1.0F);
+            $$2 *= 1.0F - ayz.l($$5) * 0.15F;
+         } else if ($$0 && this.gH()) {
+            return 0.1F;
+         }
+      }
+
+      return ayz.h($$1, 1.0F, $$2);
    }
 }

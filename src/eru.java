@@ -1,18 +1,17 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class eru implements erv {
-   public static final eru a = new eru();
-   public static final MapCodec<eru> b = MapCodec.unit(a);
+public class eru implements erw {
+   private static final eru b = new eru();
+   public static final MapCodec<eru> a = MapCodec.unit(b);
 
-   @Nullable
    @Override
    public tq a(azh $$0, @Nullable tq $$1) {
-      return $$1;
+      return new tq();
    }
 
    @Override
-   public erw<?> a() {
-      return erw.b;
+   public erx<?> a() {
+      return erx.a;
    }
 }

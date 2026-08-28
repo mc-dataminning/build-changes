@@ -1,64 +1,63 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class ewk extends evz {
-   public static final MapCodec<ewk> a = a(ewk::new);
+public class ewk extends ewj {
+   public static final MapCodec<ewk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.either(aku.a(mc.bg), evw.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ewk::new)
+   );
+   private final Either<aku<evw>, evw> j;
 
-   ewk(List<ewg> $$0, List<eyz> $$1) {
-      super($$0, $$1);
+   private ewk(Either<aku<evw>, evw> $$0, int $$1, int $$2, List<eza> $$3, List<exf> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public ewh a() {
-      return ewe.h;
+   public ewi a() {
+      return ewf.d;
    }
 
    @Override
-   protected evy a(List<? extends evy> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (evy)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (evy $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
+   public void a(Consumer<cwp> $$0, evr $$1) {
+      ((evw)this.j.map($$1x -> $$1.a().c($$1x).map(jr::a).orElse(evw.a), $$0x -> $$0x)).a($$1, $$0);
+   }
+
+   @Override
+   public void a(evx $$0) {
+      Optional<aku<evw>> $$1 = this.j.left();
+      if ($$1.isPresent()) {
+         aku<evw> $$2 = $$1.get();
+         if (!$$0.b()) {
+            $$0.b("Uses reference to " + $$2.a() + ", but references are not allowed");
+            return;
          }
 
-         return true;
-      };
-      };
-   }
-
-   public static ewk.a a(ewg.a<?>... $$0) {
-      return new ewk.a($$0);
-   }
-
-   public static class a extends ewg.a<ewk.a> {
-      private final Builder<ewg> a = ImmutableList.builder();
-
-      public a(ewg.a<?>... $$0) {
-         for (ewg.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
+         if ($$0.a($$2)) {
+            $$0.b("Table " + $$2.a() + " is recursively called");
+            return;
          }
       }
 
-      protected ewk.a a() {
-         return this;
-      }
+      super.a($$0);
+      this.j
+         .ifLeft(
+            $$1x -> $$0.a()
+                  .c($$1x)
+                  .ifPresentOrElse($$2x -> ((evw)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
+         )
+         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
+   }
 
-      @Override
-      public ewk.a c(ewg.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+   public static ewj.a<?> a(aku<evw> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ewk(Either.left($$0), $$1, $$2, $$3, $$4));
+   }
 
-      @Override
-      public ewg b() {
-         return new ewk(this.a.build(), this.f());
-      }
+   public static ewj.a<?> a(evw $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ewk(Either.right($$0), $$1, $$2, $$3, $$4));
    }
 }

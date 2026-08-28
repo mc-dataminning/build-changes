@@ -1,65 +1,160 @@
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import javax.annotation.Nullable;
 
-public class eso {
-   private final int a;
-   private final LongLinkedOpenHashSet[] b;
-   private int c;
+public class eso implements esr {
+   public static final int b = 1;
+   public static final eso c = new eso();
+   protected final dgk d;
+   @Nullable
+   private final esq<?, ?> a;
+   @Nullable
+   private final esq<?, ?> e;
 
-   public eso(int $$0, final int $$1) {
-      this.a = $$0;
-      this.b = new LongLinkedOpenHashSet[$$0];
+   public eso(dzf $$0, boolean $$1, boolean $$2) {
+      this.d = $$0.q();
+      this.a = $$1 ? new esh($$0) : null;
+      this.e = $$2 ? new ess($$0) : null;
+   }
 
-      for (int $$2 = 0; $$2 < $$0; $$2++) {
-         this.b[$$2] = new LongLinkedOpenHashSet($$1, 0.5F) {
-            protected void rehash(int $$0) {
-               if ($$0 > $$1) {
-                  super.rehash($$0);
-               }
-            }
-         };
+   private eso() {
+      this.d = dgk.e(0, 0);
+      this.a = null;
+      this.e = null;
+   }
+
+   @Override
+   public void a(ji $$0) {
+      if (this.a != null) {
+         this.a.a($$0);
       }
 
-      this.c = $$0;
-   }
-
-   public long a() {
-      LongLinkedOpenHashSet $$0 = this.b[this.c];
-      long $$1 = $$0.removeFirstLong();
-      if ($$0.isEmpty()) {
-         this.a(this.a);
-      }
-
-      return $$1;
-   }
-
-   public boolean b() {
-      return this.c >= this.a;
-   }
-
-   public void a(long $$0, int $$1, int $$2) {
-      LongLinkedOpenHashSet $$3 = this.b[$$1];
-      $$3.remove($$0);
-      if ($$3.isEmpty() && this.c == $$1) {
-         this.a($$2);
+      if (this.e != null) {
+         this.e.a($$0);
       }
    }
 
-   public void a(long $$0, int $$1) {
-      this.b[$$1].add($$0);
-      if (this.c > $$1) {
-         this.c = $$1;
+   @Override
+   public boolean N_() {
+      return this.e != null && this.e.N_() ? true : this.a != null && this.a.N_();
+   }
+
+   @Override
+   public int a() {
+      int $$0 = 0;
+      if (this.a != null) {
+         $$0 += this.a.a();
+      }
+
+      if (this.e != null) {
+         $$0 += this.e.a();
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public void a(kk $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0, $$1);
       }
    }
 
-   private void a(int $$0) {
-      int $$1 = this.c;
-      this.c = $$0;
+   @Override
+   public void a(dfo $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
 
-      for (int $$2 = $$1 + 1; $$2 < $$0; $$2++) {
-         if (!this.b[$$2].isEmpty()) {
-            this.c = $$2;
-            break;
+      if (this.e != null) {
+         this.e.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void b(dfo $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
+
+      if (this.e != null) {
+         this.e.b($$0);
+      }
+   }
+
+   public esm a(dgr $$0) {
+      if ($$0 == dgr.b) {
+         return (esm)(this.a == null ? esm.a.a : this.a);
+      } else {
+         return (esm)(this.e == null ? esm.a.a : this.e);
+      }
+   }
+
+   public String a(dgr $$0, kk $$1) {
+      if ($$0 == dgr.b) {
+         if (this.a != null) {
+            return this.a.b($$1.s());
          }
+      } else if (this.e != null) {
+         return this.e.b($$1.s());
       }
+
+      return "n/a";
+   }
+
+   public esn.b b(dgr $$0, kk $$1) {
+      if ($$0 == dgr.b) {
+         if (this.a != null) {
+            return this.a.c($$1.s());
+         }
+      } else if (this.e != null) {
+         return this.e.c($$1.s());
+      }
+
+      return esn.b.a;
+   }
+
+   public void a(dgr $$0, kk $$1, @Nullable dyx $$2) {
+      if ($$0 == dgr.b) {
+         if (this.a != null) {
+            this.a.a($$1.s(), $$2);
+         }
+      } else if (this.e != null) {
+         this.e.a($$1.s(), $$2);
+      }
+   }
+
+   public void b(dfo $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.b($$0, $$1);
+      }
+
+      if (this.e != null) {
+         this.e.b($$0, $$1);
+      }
+   }
+
+   public int a(ji $$0, int $$1) {
+      int $$2 = this.e == null ? 0 : this.e.b($$0) - $$1;
+      int $$3 = this.a == null ? 0 : this.a.b($$0);
+      return Math.max($$3, $$2);
+   }
+
+   public boolean a(long $$0) {
+      return this.a == null || this.a.f.k($$0) && (this.e == null || this.e.f.k($$0));
+   }
+
+   public int c() {
+      return this.d.ao() + 2;
+   }
+
+   public int d() {
+      return this.d.ap() - 1;
+   }
+
+   public int e() {
+      return this.d() + this.c();
    }
 }

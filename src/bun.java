@@ -1,43 +1,98 @@
-public record bun(float a, float b, float c, bum d, boolean e) {
-   private bun(float $$0, float $$1, boolean $$2) {
-      this($$0, $$1, c($$1), bum.a($$0, $$1), $$2);
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+
+public class bun {
+   private final Map<bum, List<fba>> a;
+
+   bun(Map<bum, List<fba>> $$0) {
+      this.a = $$0;
    }
 
-   private static float c(float $$0) {
-      return $$0 * 0.85F;
+   public static bun a(float $$0, float $$1) {
+      return a().a($$0, $$1);
    }
 
-   public fau a(faz $$0) {
-      return this.a($$0.d, $$0.e, $$0.f);
+   public static bun.a a() {
+      return new bun.a();
    }
 
-   public fau a(double $$0, double $$1, double $$2) {
-      float $$3 = this.a / 2.0F;
-      float $$4 = this.b;
-      return new fau($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
+   public bun a(float $$0, float $$1, float $$2) {
+      Map<bum, List<fba>> $$3 = new EnumMap<>(bum.class);
+
+      for (Entry<bum, List<fba>> $$4 : this.a.entrySet()) {
+         $$3.put($$4.getKey(), a($$4.getValue(), $$0, $$1, $$2));
+      }
+
+      return new bun($$3);
    }
 
-   public bun a(float $$0) {
-      return this.a($$0, $$0);
+   private static List<fba> a(List<fba> $$0, float $$1, float $$2, float $$3) {
+      List<fba> $$4 = new ArrayList<>($$0.size());
+
+      for (fba $$5 : $$0) {
+         $$4.add($$5.d((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      return $$4;
    }
 
-   public bun a(float $$0, float $$1) {
-      return !this.e && ($$0 != 1.0F || $$1 != 1.0F) ? new bun(this.a * $$0, this.b * $$1, this.c * $$1, this.d.a($$0, $$1, $$0), false) : this;
+   @Nullable
+   public fba a(bum $$0, int $$1, float $$2) {
+      List<fba> $$3 = this.a.get($$0);
+      return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
    }
 
-   public static bun b(float $$0, float $$1) {
-      return new bun($$0, $$1, false);
+   public fba b(bum $$0, int $$1, float $$2) {
+      fba $$3 = this.a($$0, $$1, $$2);
+      if ($$3 == null) {
+         throw new IllegalStateException("Had no attachment point of type: " + $$0 + " for index: " + $$1);
+      } else {
+         return $$3;
+      }
    }
 
-   public static bun c(float $$0, float $$1) {
-      return new bun($$0, $$1, true);
+   public fba c(bum $$0, int $$1, float $$2) {
+      List<fba> $$3 = this.a.get($$0);
+      if ($$3.isEmpty()) {
+         throw new IllegalStateException("Had no attachment points of type: " + $$0);
+      } else {
+         fba $$4 = $$3.get(ayz.a($$1, 0, $$3.size() - 1));
+         return a($$4, $$2);
+      }
    }
 
-   public bun b(float $$0) {
-      return new bun(this.a, this.b, $$0, this.d, this.e);
+   private static fba a(fba $$0, float $$1) {
+      return $$0.b(-$$1 * (float) (Math.PI / 180.0));
    }
 
-   public bun a(bum.a $$0) {
-      return new bun(this.a, this.b, this.c, $$0.a(this.a, this.b), this.e);
+   public static class a {
+      private final Map<bum, List<fba>> a = new EnumMap<>(bum.class);
+
+      a() {
+      }
+
+      public bun.a a(bum $$0, float $$1, float $$2, float $$3) {
+         return this.a($$0, new fba((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      public bun.a a(bum $$0, fba $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>(1)).add($$1);
+         return this;
+      }
+
+      public bun a(float $$0, float $$1) {
+         Map<bum, List<fba>> $$2 = new EnumMap<>(bum.class);
+
+         for (bum $$3 : bum.values()) {
+            List<fba> $$4 = this.a.get($$3);
+            $$2.put($$3, $$4 != null ? List.copyOf($$4) : $$3.a($$0, $$1));
+         }
+
+         return new bun($$2);
+      }
    }
 }

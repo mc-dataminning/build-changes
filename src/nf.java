@@ -14,11 +14,11 @@ import org.slf4j.Logger;
 public class nf implements mi {
    private static final Logger d = LogUtils.getLogger();
    private final mk.a e;
-   private final Set<aku<evv>> f;
+   private final Set<aku<evw>> f;
    private final List<nf.a> g;
    private final CompletableFuture<jt.a> h;
 
-   public nf(mk $$0, Set<aku<evv>> $$1, List<nf.a> $$2, CompletableFuture<jt.a> $$3) {
+   public nf(mk $$0, Set<aku<evw>> $$1, List<nf.a> $$2, CompletableFuture<jt.a> $$3) {
       this.e = $$0.a(mc.bg);
       this.g = $$2;
       this.f = $$1;
@@ -31,44 +31,44 @@ public class nf implements mi {
    }
 
    private CompletableFuture<?> a(mg $$0, jt.a $$1) {
-      kn<evv> $$2 = new jz<>(mc.bg, Lifecycle.experimental());
-      Map<edg.a, akv> $$3 = new Object2ObjectOpenHashMap();
+      kn<evw> $$2 = new jz<>(mc.bg, Lifecycle.experimental());
+      Map<edh.a, akv> $$3 = new Object2ObjectOpenHashMap();
       this.g.forEach($$3x -> $$3x.a().apply($$1).generate(($$3xx, $$4x) -> {
             akv $$5x = a($$3xx);
-            akv $$6x = $$3.put(bsn.a($$5x), $$5x);
+            akv $$6x = $$3.put(bso.a($$5x), $$5x);
             if ($$6x != null) {
                af.b("Loot table random sequence seed collision on " + $$6x + " and " + $$3xx.a());
             }
 
             $$4x.a($$5x);
-            evv $$7 = $$4x.a($$3x.b).b();
+            evw $$7 = $$4x.a($$3x.b).b();
             $$2.a($$3xx, $$7, kd.a);
          }));
       $$2.n();
       azf.a $$4 = new azf.a();
       js.a $$5 = new kf.c(List.of($$2)).e();
-      evw $$6 = new evw($$4, eyj.q, $$5);
+      evx $$6 = new evx($$4, eyk.q, $$5);
 
-      for (aku<evv> $$8 : Sets.difference(this.f, $$2.j())) {
+      for (aku<evw> $$8 : Sets.difference(this.f, $$2.j())) {
          $$4.b("Missing built-in table: " + $$8.a());
       }
 
-      $$2.c().forEach($$1x -> ((evv)$$1x.a()).a($$6.a(((evv)$$1x.a()).a()).a("{" + $$1x.h().a() + "}", $$1x.h())));
+      $$2.c().forEach($$1x -> ((evw)$$1x.a()).a($$6.a(((evw)$$1x.a()).a()).a("{" + $$1x.h().a() + "}", $$1x.h())));
       Multimap<String, String> $$9 = $$4.a();
       if (!$$9.isEmpty()) {
          $$9.forEach(($$0x, $$1x) -> d.warn("Found validation problem in {}: {}", $$0x, $$1x));
          throw new IllegalStateException("Failed to validate loot tables, see logs");
       } else {
          return CompletableFuture.allOf($$2.k().stream().map($$2x -> {
-            aku<evv> $$3x = (aku<evv>)$$2x.getKey();
-            evv $$4x = (evv)$$2x.getValue();
+            aku<evw> $$3x = (aku<evw>)$$2x.getKey();
+            evw $$4x = (evw)$$2x.getValue();
             Path $$5x = this.e.a($$3x.a());
-            return mi.a($$0, $$1, evv.d, $$4x, $$5x);
+            return mi.a($$0, $$1, evw.d, $$4x, $$5x);
          }).toArray(CompletableFuture[]::new));
       }
    }
 
-   private static akv a(aku<evv> $$0) {
+   private static akv a(aku<evw> $$0) {
       return $$0.a();
    }
 

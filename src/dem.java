@@ -1,24 +1,78 @@
 public interface dem {
-   aku<deg> a = a("mob_spawn_equipment");
-   aku<deg> b = a("pillager_spawn_crossbow");
-   aku<deg> c = a("raid/pillager_post_wave_3");
-   aku<deg> d = a("raid/pillager_post_wave_5");
-   aku<deg> e = a("raid/vindicator");
-   aku<deg> f = a("raid/vindicator_post_wave_5");
-   aku<deg> g = a("enderman_loot_drop");
+   aku<deh> a = den.a("trades/desert_armorer_boots_4");
+   aku<deh> b = den.a("trades/desert_armorer_leggings_4");
+   aku<deh> c = den.a("trades/desert_armorer_chestplate_4");
+   aku<deh> d = den.a("trades/desert_armorer_helmet_4");
+   aku<deh> e = den.a("trades/desert_armorer_leggings_5");
+   aku<deh> f = den.a("trades/desert_armorer_chestplate_5");
+   aku<deh> g = den.a("trades/plains_armorer_boots_4");
+   aku<deh> h = den.a("trades/plains_armorer_leggings_4");
+   aku<deh> i = den.a("trades/plains_armorer_chestplate_4");
+   aku<deh> j = den.a("trades/plains_armorer_helmet_4");
+   aku<deh> k = den.a("trades/plains_armorer_boots_5");
+   aku<deh> l = den.a("trades/plains_armorer_leggings_5");
+   aku<deh> m = den.a("trades/savanna_armorer_boots_4");
+   aku<deh> n = den.a("trades/savanna_armorer_leggings_4");
+   aku<deh> o = den.a("trades/savanna_armorer_chestplate_4");
+   aku<deh> p = den.a("trades/savanna_armorer_helmet_4");
+   aku<deh> q = den.a("trades/savanna_armorer_chestplate_5");
+   aku<deh> r = den.a("trades/savanna_armorer_helmet_5");
+   aku<deh> s = den.a("trades/snow_armorer_boots_4");
+   aku<deh> t = den.a("trades/snow_armorer_helmet_4");
+   aku<deh> u = den.a("trades/snow_armorer_boots_5");
+   aku<deh> v = den.a("trades/snow_armorer_helmet_5");
+   aku<deh> w = den.a("trades/jungle_armorer_boots_4");
+   aku<deh> x = den.a("trades/jungle_armorer_leggings_4");
+   aku<deh> y = den.a("trades/jungle_armorer_chestplate_4");
+   aku<deh> z = den.a("trades/jungle_armorer_helmet_4");
+   aku<deh> A = den.a("trades/jungle_armorer_boots_5");
+   aku<deh> B = den.a("trades/jungle_armorer_helmet_5");
+   aku<deh> C = den.a("trades/swamp_armorer_boots_4");
+   aku<deh> D = den.a("trades/swamp_armorer_leggings_4");
+   aku<deh> E = den.a("trades/swamp_armorer_chestplate_4");
+   aku<deh> F = den.a("trades/swamp_armorer_helmet_4");
+   aku<deh> G = den.a("trades/swamp_armorer_boots_5");
+   aku<deh> H = den.a("trades/swamp_armorer_helmet_5");
+   aku<deh> I = den.a("trades/taiga_armorer_leggings_5");
+   aku<deh> J = den.a("trades/taiga_armorer_chestplate_5");
 
-   static void a(qe<deg> $$0) {
-      js<dcy> $$1 = $$0.a(mc.aO);
-      $$0.a(a, new dej($$1.b(aws.l), 5, 17));
-      $$0.a(b, new dek($$1.b(ddd.K), brl.a(1)));
-      $$0.a(c, new dek($$1.b(ddd.J), brl.a(1)));
-      $$0.a(d, new dek($$1.b(ddd.J), brl.a(2)));
-      $$0.a(e, new dek($$1.b(ddd.n), brl.a(1)));
-      $$0.a(f, new dek($$1.b(ddd.n), brl.a(2)));
-      $$0.a(g, new dek($$1.b(ddd.v), brl.a(1)));
-   }
-
-   static aku<deg> a(String $$0) {
-      return aku.a(mc.aP, akv.b($$0));
+   static void a(qe<deh> $$0) {
+      js<dcz> $$1 = $$0.a(mc.aO);
+      $$0.a(a, new del($$1.b(dde.h), brm.a(1)));
+      $$0.a(b, new del($$1.b(dde.h), brm.a(1)));
+      $$0.a(c, new del($$1.b(dde.h), brm.a(1)));
+      $$0.a(d, new del($$1.b(dde.h), brm.a(1)));
+      $$0.a(e, new del($$1.b(dde.h), brm.a(1)));
+      $$0.a(f, new del($$1.b(dde.h), brm.a(1)));
+      $$0.a(g, new del($$1.b(dde.a), brm.a(1)));
+      $$0.a(h, new del($$1.b(dde.a), brm.a(1)));
+      $$0.a(i, new del($$1.b(dde.a), brm.a(1)));
+      $$0.a(j, new del($$1.b(dde.a), brm.a(1)));
+      $$0.a(k, new del($$1.b(dde.a), brm.a(1)));
+      $$0.a(l, new del($$1.b(dde.a), brm.a(1)));
+      $$0.a(m, new del($$1.b(dde.k), brm.a(1)));
+      $$0.a(n, new del($$1.b(dde.k), brm.a(1)));
+      $$0.a(o, new del($$1.b(dde.k), brm.a(1)));
+      $$0.a(p, new del($$1.b(dde.k), brm.a(1)));
+      $$0.a(q, new del($$1.b(dde.k), brm.a(1)));
+      $$0.a(r, new del($$1.b(dde.k), brm.a(1)));
+      $$0.a(s, new del($$1.b(dde.j), brm.a(1)));
+      $$0.a(t, new del($$1.b(dde.g), brm.a(1)));
+      $$0.a(u, new del($$1.b(dde.j), brm.a(1)));
+      $$0.a(v, new del($$1.b(dde.g), brm.a(1)));
+      $$0.a(w, new del($$1.b(dde.w), brm.a(1)));
+      $$0.a(x, new del($$1.b(dde.w), brm.a(1)));
+      $$0.a(y, new del($$1.b(dde.w), brm.a(1)));
+      $$0.a(z, new del($$1.b(dde.w), brm.a(1)));
+      $$0.a(A, new del($$1.b(dde.c), brm.a(1)));
+      $$0.a(B, new del($$1.b(dde.e), brm.a(1)));
+      $$0.a(C, new del($$1.b(dde.O), brm.a(1)));
+      $$0.a(D, new del($$1.b(dde.O), brm.a(1)));
+      $$0.a(E, new del($$1.b(dde.O), brm.a(1)));
+      $$0.a(F, new del($$1.b(dde.O), brm.a(1)));
+      $$0.a(G, new del($$1.b(dde.i), brm.a(1)));
+      $$0.a(H, new del($$1.b(dde.f), brm.a(1)));
+      $$0.a(I, new del($$1.b(dde.d), brm.a(1)));
+      $$0.a(J, new del($$1.b(dde.d), brm.a(1)));
    }
 }

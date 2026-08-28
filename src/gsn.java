@@ -1,21 +1,23 @@
-public class gsn extends gtj<clr, gyu, gcf> {
-   private static final akv a = akv.b("textures/entity/ghast/ghast.png");
-   private static final akv b = akv.b("textures/entity/ghast/ghast_shooting.png");
-
-   public gsn(gsd.a $$0) {
-      super($$0, new gcf($$0.a(gfb.aR)), 1.5F);
+public class gsn extends gtk<cis, gyu, gcf> {
+   public gsn(gse.a $$0) {
+      super($$0, new gcf($$0.a(gfc.aP)), 0.3F);
    }
 
    public akv a(gyu $$0) {
-      return $$0.a ? b : a;
+      return $$0.f;
    }
 
    public gyu b() {
       return new gyu();
    }
 
-   public void a(clr $$0, gyu $$1, float $$2) {
+   public void a(cis $$0, gyu $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.m();
+      $$1.a = $$0.bm();
+      $$1.b.a($$0.cc);
+      $$1.c.a($$0.cd);
+      $$1.d.a($$0.ce);
+      $$1.e.a($$0.cf);
+      $$1.f = $$0.x().a().a();
    }
 }

@@ -1,112 +1,107 @@
-import it.unimi.dsi.fastutil.HashCommon;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.Arrays;
-import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public final class crs {
-   private static final crs b = new crs(null, 0L);
-   public static final int a = 64;
-   @Nullable
-   private final crt c;
-   private final long d;
+public class crs {
+   private static final Logger a = LogUtils.getLogger();
+   private final cru b;
+   private final Map<akv, crr> c;
+   private final crt d;
 
-   private crs(@Nullable crt $$0, long $$1) {
-      this.c = $$0;
+   crs(cru $$0, crt $$1, Map<akv, crr> $$2) {
+      this.b = $$0;
+      this.c = $$2;
       this.d = $$1;
    }
 
-   static crs a(crt $$0, Collection<crq> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
-      } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new crs($$0, $$2);
-      }
+   public boolean a(crt $$0) {
+      return $$0.a(this.d);
    }
 
-   public static crs a() {
-      return b;
+   public crt a() {
+      return this.d;
    }
 
-   public static crs a(crq $$0) {
-      return new crs($$0.a, $$0.b);
+   public crt a(Iterable<akv> $$0) {
+      return this.a($$0, $$0x -> a.warn("Unknown feature flag: {}", $$0x));
    }
 
-   public static crs a(crq $$0, crq... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new crs($$0.a, $$2);
+   public crt a(crr... $$0) {
+      return crt.a(this.b, Arrays.asList($$0));
    }
 
-   private static long a(crt $$0, long $$1, Iterable<crq> $$2) {
-      for (crq $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
+   public crt a(Iterable<akv> $$0, Consumer<akv> $$1) {
+      Set<crr> $$2 = Sets.newIdentityHashSet();
+
+      for (akv $$3 : $$0) {
+         crr $$4 = this.c.get($$3);
+         if ($$4 == null) {
+            $$1.accept($$3);
+         } else {
+            $$2.add($$4);
          }
-
-         $$1 |= $$3.b;
       }
 
+      return crt.a(this.b, $$2);
+   }
+
+   public Set<akv> b(crt $$0) {
+      Set<akv> $$1 = new HashSet<>();
+      this.c.forEach(($$2, $$3) -> {
+         if ($$0.b($$3)) {
+            $$1.add($$2);
+         }
+      });
       return $$1;
    }
 
-   public boolean b(crq $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
+   public Codec<crt> b() {
+      return akv.a.listOf().comapFlatMap($$0 -> {
+         Set<akv> $$1 = new HashSet<>();
+         crt $$2 = this.a($$0, $$1::add);
+         return !$$1.isEmpty() ? DataResult.error(() -> "Unknown feature ids: " + $$1, $$2) : DataResult.success($$2);
+      }, $$0 -> List.copyOf(this.b($$0)));
    }
 
-   public boolean b() {
-      return this.equals(b);
-   }
+   public static class a {
+      private final cru a;
+      private int b;
+      private final Map<akv, crr> c = new LinkedHashMap<>();
 
-   public boolean a(crs $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
+      public a(String $$0) {
+         this.a = new cru($$0);
       }
-   }
 
-   public boolean b(crs $$0) {
-      return this.c != null && $$0.c != null && this.c == $$0.c ? (this.d & $$0.d) != 0L : false;
-   }
-
-   public crs c(crs $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new crs(this.c, this.d | $$0.d);
+      public crr a(String $$0) {
+         return this.a(akv.b($$0));
       }
-   }
 
-   public crs d(crs $$0) {
-      if (this.c == null || $$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         long $$1 = this.d & ~$$0.d;
-         return $$1 == 0L ? b : new crs(this.c, $$1);
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof crs $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
+      public crr a(akv $$0) {
+         if (this.b >= 64) {
+            throw new IllegalStateException("Too many feature flags");
+         } else {
+            crr $$1 = new crr(this.a, this.b++);
+            crr $$2 = this.c.put($$0, $$1);
+            if ($$2 != null) {
+               throw new IllegalStateException("Duplicate feature flag " + $$0);
+            } else {
+               return $$1;
+            }
          }
-
-         return false;
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.d);
+      public crs a() {
+         crt $$0 = crt.a(this.a, this.c.values());
+         return new crs(this.a, $$0, Map.copyOf(this.c));
+      }
    }
 }

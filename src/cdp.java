@@ -1,41 +1,30 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class cdp extends ccf {
+   private final bvp a;
 
-public class cdp<T extends bvi> extends cce {
-   private final T a;
-   private final cwo b;
-   private final Predicate<? super T> c;
-   @Nullable
-   private final avz d;
-
-   public cdp(T $$0, cwo $$1, @Nullable avz $$2, Predicate<? super T> $$3) {
+   public cdp(bvp $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
    }
 
    @Override
    public boolean b() {
-      return this.c.test(this.a);
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.fz();
+      return this.a.aJ() && !this.a.dV().b_(this.a.dv()).a(awv.a);
    }
 
    @Override
    public void d() {
-      this.a.a(bus.a, this.b.v());
-      this.a.c(bsi.a);
-   }
+      ji $$0 = null;
 
-   @Override
-   public void e() {
-      this.a.a(bus.a, cwo.j);
-      if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.dY().i() * 0.2F + 0.9F);
+      for (ji $$2 : ji.b(
+         ayz.a(this.a.dA() - 2.0), ayz.a(this.a.dC() - 2.0), ayz.a(this.a.dG() - 2.0), ayz.a(this.a.dA() + 2.0), this.a.dB(), ayz.a(this.a.dG() + 2.0)
+      )) {
+         if (this.a.dV().b_($$2).a(awv.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.N().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

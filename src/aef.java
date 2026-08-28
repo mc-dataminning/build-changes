@@ -3,7 +3,7 @@ public class aef implements yw<abl> {
    private final int b;
    private final byte c;
 
-   public aef(buk $$0, byte $$1) {
+   public aef(bul $$0, byte $$1) {
       this.b = $$0.ar();
       this.c = $$1;
    }
@@ -27,7 +27,7 @@ public class aef implements yw<abl> {
       $$0.a(this);
    }
 
-   public buk a(dgh $$0) {
+   public bul a(dgi $$0) {
       return $$0.a(this.b);
    }
 

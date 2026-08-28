@@ -1,251 +1,202 @@
-import java.util.function.Predicate;
+import java.util.Optional;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class chl extends cgx {
-   public static final double bY = 0.6;
-   public static final double bZ = 0.8;
-   public static final double ca = 1.33;
-   private static final ajy<Boolean> cc = akc.a(chl.class, aka.k);
+public class chl extends chf implements bvy, bwh<chl.a> {
+   private static final ajy<String> bY = akc.a(chl.class, aka.e);
+   private static final int bZ = 1024;
+   private static final String ca = "stew_effects";
    @Nullable
-   private chl.a<cow> cd;
+   private czq cc;
    @Nullable
-   private chl.b ce;
+   private UUID cd;
 
-   public chl(bur<? extends chl> $$0, dgh $$1) {
+   public chl(bus<? extends chl> $$0, dgi $$1) {
       super($$0, $$1);
-      this.t();
-   }
-
-   boolean x() {
-      return this.al.a(cc);
-   }
-
-   private void x(boolean $$0) {
-      this.al.a(cc, $$0);
-      this.t();
    }
 
    @Override
-   public void b(tq $$0) {
-      super.b($$0);
-      $$0.a("Trusting", this.x());
+   public float a(ji $$0, dgl $$1) {
+      return $$1.a_($$0.e()).a(djo.fA) ? 10.0F : $$1.w($$0);
+   }
+
+   public static boolean c(bus<chl> $$0, dgj $$1, bur $$2, ji $$3, azh $$4) {
+      return $$1.a_($$3.e()).a(awp.cc) && a($$1, $$3);
    }
 
    @Override
-   public void a(tq $$0) {
-      super.a($$0);
-      this.x($$0.q("Trusting"));
+   public void a(ard $$0, bvg $$1) {
+      UUID $$2 = $$1.cG();
+      if (!$$2.equals(this.cd)) {
+         this.a(this.t() == chl.a.a ? chl.a.b : chl.a.a);
+         this.cd = $$2;
+         this.a(awa.pm, 2.0F, 1.0F);
+      }
    }
 
    @Override
    protected void a(akc.a $$0) {
       super.a($$0);
-      $$0.a(cc, false);
+      $$0.a(bY, chl.a.a.d);
    }
 
    @Override
-   protected void E() {
-      this.ce = new chl.b(this, 0.6, $$0 -> $$0.a(awy.as), true);
-      this.bS.a(1, new cby(this));
-      this.bS.a(3, this.ce);
-      this.bS.a(7, new cck(this, 0.3F));
-      this.bS.a(8, new ccu(this));
-      this.bS.a(9, new cbq(this, 0.8));
-      this.bS.a(10, new cdr(this, 0.8, 1.0000001E-5F));
-      this.bS.a(11, new ccm(this, cow.class, 10.0F));
-      this.bT.a(1, new cdx<>(this, chc.class, false));
-      this.bT.a(1, new cdx<>(this, chy.class, 10, false, false, chy.bY));
-   }
-
-   @Override
-   public void a(ard $$0) {
-      if (this.N().b()) {
-         double $$1 = this.N().c();
-         if ($$1 == 0.6) {
-            this.b(bvs.f);
-            this.h(false);
-         } else if ($$1 == 1.33) {
-            this.b(bvs.a);
-            this.h(true);
+   public bsk b(cox $$0, bsj $$1) {
+      cwp $$2 = $$0.b($$1);
+      if ($$2.a(cwt.oY) && !this.e_()) {
+         boolean $$3 = false;
+         cwp $$4;
+         if (this.cc != null) {
+            $$3 = true;
+            $$4 = new cwp(cwt.wW);
+            $$4.b(kv.R, this.cc);
+            this.cc = null;
          } else {
-            this.b(bvs.a);
-            this.h(false);
+            $$4 = new cwp(cwt.pW);
          }
-      } else {
-         this.b(bvs.a);
-         this.h(false);
-      }
-   }
 
-   @Override
-   public boolean h(double $$0) {
-      return !this.x() && this.af > 2400;
-   }
+         cwp $$6 = cws.a($$2, $$0, $$4, false);
+         $$0.a($$1, $$6);
+         avz $$7;
+         if ($$3) {
+            $$7 = awa.pp;
+         } else {
+            $$7 = awa.po;
+         }
 
-   public static bwn.a p() {
-      return cgx.gx().a(bwo.s, 10.0).a(bwo.v, 0.3F).a(bwo.c, 3.0);
-   }
+         this.a($$7, 1.0F, 1.0F);
+         return bsk.a;
+      } else if ($$2.a(cwt.sS) && this.a()) {
+         if (this.dV() instanceof ard $$9) {
+            this.a($$9, awb.h, $$2);
+            this.a(ebt.M, $$0);
+            $$2.a(1, $$0, d($$1));
+         }
 
-   @Nullable
-   @Override
-   protected avz u() {
-      return awa.sN;
-   }
-
-   @Override
-   public int T() {
-      return 900;
-   }
-
-   @Override
-   protected avz e(bta $$0) {
-      return awa.sM;
-   }
-
-   @Override
-   protected avz o_() {
-      return awa.sO;
-   }
-
-   @Override
-   public bsj b(cow $$0, bsi $$1) {
-      cwo $$2 = $$0.b($$1);
-      if ((this.ce == null || this.ce.i()) && !this.x() && this.j($$2) && $$0.g(this) < 9.0) {
-         this.a($$0, $$1, $$2);
-         if (!this.dV().C) {
-            if (this.ae.a(3) == 0) {
-               this.x(true);
-               this.y(true);
-               this.dV().a(this, (byte)41);
+         return bsk.a;
+      } else if (this.t() == chl.a.b) {
+         Optional<czq> $$10 = this.i($$2);
+         if ($$10.isEmpty()) {
+            return super.b($$0, $$1);
+         } else {
+            if (this.cc != null) {
+               for (int $$11 = 0; $$11 < 2; $$11++) {
+                  this.dV().a(lt.ag, this.dA() + this.ae.j() / 2.0, this.e(0.5), this.dG() + this.ae.j() / 2.0, 0.0, this.ae.j() / 5.0, 0.0);
+               }
             } else {
-               this.y(false);
-               this.dV().a(this, (byte)40);
-            }
-         }
+               $$2.a(1, $$0);
 
-         return bsj.a;
+               for (int $$12 = 0; $$12 < 4; $$12++) {
+                  this.dV().a(lt.p, this.dA() + this.ae.j() / 2.0, this.e(0.5), this.dG() + this.ae.j() / 2.0, 0.0, this.ae.j() / 5.0, 0.0);
+               }
+
+               this.cc = $$10.get();
+               this.a(awa.pn, 2.0F, 1.0F);
+            }
+
+            return bsk.a;
+         }
       } else {
          return super.b($$0, $$1);
       }
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 41) {
-         this.y(true);
-      } else if ($$0 == 40) {
-         this.y(false);
+   public void a(ard $$0, awb $$1, cwp $$2) {
+      $$0.a(null, this, awa.pq, $$1, 1.0F, 1.0F);
+      this.a(bus.C, bug.a(this, false, false), $$2x -> {
+         $$0.a(lt.w, this.dA(), this.e(0.5), this.dG(), 1, 0.0, 0.0, 0.0, 0.0);
+         this.a($$0, evn.aR, $$2, ($$0xx, $$1xx) -> {
+            for (int $$2xx = 0; $$2xx < $$1xx.M(); $$2xx++) {
+               $$0xx.b(new clc(this.dV(), this.dA(), this.e(1.0), this.dG(), $$1xx.c(1)));
+            }
+         });
+      });
+   }
+
+   @Override
+   public boolean a() {
+      return this.bL() && !this.e_();
+   }
+
+   @Override
+   public void b(tq $$0) {
+      super.b($$0);
+      $$0.a("Type", this.t().c());
+      if (this.cc != null) {
+         czq.c.encodeStart(ue.a, this.cc).ifSuccess($$1 -> $$0.a("stew_effects", $$1));
+      }
+   }
+
+   @Override
+   public void a(tq $$0) {
+      super.a($$0);
+      this.a(chl.a.a($$0.l("Type")));
+      if ($$0.b("stew_effects", 9)) {
+         czq.c.parse(ue.a, $$0.c("stew_effects")).ifSuccess($$0x -> this.cc = $$0x);
+      }
+   }
+
+   private Optional<czq> i(cwp $$0) {
+      drt $$1 = drt.a($$0.h());
+      return $$1 != null ? Optional.of($$1.c()) : Optional.empty();
+   }
+
+   public void a(chl.a $$0) {
+      this.al.a(bY, $$0.d);
+   }
+
+   public chl.a t() {
+      return chl.a.a(this.al.a(bY));
+   }
+
+   @Nullable
+   public chl c(ard $$0, buc $$1) {
+      chl $$2 = bus.aE.a($$0, bur.e);
+      if ($$2 != null) {
+         $$2.a(this.a((chl)$$1));
+      }
+
+      return $$2;
+   }
+
+   private chl.a a(chl $$0) {
+      chl.a $$1 = this.t();
+      chl.a $$2 = $$0.t();
+      chl.a $$3;
+      if ($$1 == $$2 && this.ae.a(1024) == 0) {
+         $$3 = $$1 == chl.a.b ? chl.a.a : chl.a.b;
       } else {
-         super.b($$0);
-      }
-   }
-
-   private void y(boolean $$0) {
-      lr $$1 = lt.R;
-      if (!$$0) {
-         $$1 = lt.ag;
+         $$3 = this.ae.h() ? $$1 : $$2;
       }
 
-      for (int $$2 = 0; $$2 < 7; $$2++) {
-         double $$3 = this.ae.k() * 0.02;
-         double $$4 = this.ae.k() * 0.02;
-         double $$5 = this.ae.k() * 0.02;
-         this.dV().a($$1, this.d(1.0), this.dD() + 0.5, this.g(1.0), $$3, $$4, $$5);
-      }
+      return $$3;
    }
 
-   protected void t() {
-      if (this.cd == null) {
-         this.cd = new chl.a<>(this, cow.class, 16.0F, 0.8, 1.33);
-      }
+   public static enum a implements azv {
+      a("red", djo.cn.m()),
+      b("brown", djo.cm.m());
 
-      this.bS.a(this.cd);
-      if (!this.x()) {
-         this.bS.a(4, this.cd);
-      }
-   }
+      public static final azv.a<chl.a> c = azv.a(chl.a::values);
+      final String d;
+      private final dwx e;
 
-   @Nullable
-   public chl b(ard $$0, bub $$1) {
-      return bur.aI.a($$0, buq.e);
-   }
-
-   @Override
-   public boolean j(cwo $$0) {
-      return $$0.a(awy.as);
-   }
-
-   public static boolean c(bur<chl> $$0, dgi $$1, buq $$2, ji $$3, azh $$4) {
-      return $$4.a(3) != 0;
-   }
-
-   @Override
-   public boolean a(dgk $$0) {
-      if ($$0.f(this) && !$$0.d(this.cR())) {
-         ji $$1 = this.dv();
-         if ($$1.v() < $$0.P()) {
-            return false;
-         }
-
-         dww $$2 = $$0.a_($$1.e());
-         if ($$2.a(djn.i) || $$2.a(awp.Q)) {
-            return true;
-         }
+      private a(final String $$0, final dwx $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public bvz a(dgy $$0, bsh $$1, buq $$2, @Nullable bvz $$3) {
-      if ($$3 == null) {
-         $$3 = new bub.a(1.0F);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public faz cT() {
-      return new faz(0.0, (double)(0.5F * this.cS()), (double)(this.dq() * 0.4F));
-   }
-
-   @Override
-   public boolean ce() {
-      return this.ci() || super.ce();
-   }
-
-   static class a<T extends bvg> extends cbl<T> {
-      private final chl i;
-
-      public a(chl $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
-         super($$0, $$1, $$2, $$3, $$4, bup.e::test);
-         this.i = $$0;
+      public dwx a() {
+         return this.e;
       }
 
       @Override
-      public boolean b() {
-         return !this.i.x() && super.b();
+      public String c() {
+         return this.d;
       }
 
-      @Override
-      public boolean c() {
-         return !this.i.x() && super.c();
-      }
-   }
-
-   static class b extends cdm {
-      private final chl c;
-
-      public b(chl $$0, double $$1, Predicate<cwo> $$2, boolean $$3) {
-         super($$0, $$1, $$2, $$3);
-         this.c = $$0;
-      }
-
-      @Override
-      protected boolean h() {
-         return super.h() && !this.c.x();
+      static chl.a a(String $$0) {
+         return c.a($$0, a);
       }
    }
 }

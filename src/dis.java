@@ -1,67 +1,79 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dis extends djl implements dqr {
+public class dis extends diy {
    public static final MapCodec<dis> a = b(dis::new);
-   public static final dxn b = dxm.J;
+   public static final dxu<jn> b = dxn.S;
+   public static final dxo c = dxn.z;
 
    @Override
    public MapCodec<dis> a() {
       return a;
    }
 
-   protected dis(dwv.d $$0) {
+   public dis(dww.d $$0) {
       super($$0);
-      this.l(this.m().b(b, Boolean.valueOf(false)));
+      this.l(this.F.b().b(b, jn.c).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean e_(dww $$0) {
-      return $$0.y().c();
-   }
-
-   @Override
-   protected dpw a_(dww $$0) {
-      return dpw.a;
-   }
-
-   @Override
-   protected float c(dww $$0, dfm $$1, ji $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   protected dww a(dww $$0, dgk $$1, dgw $$2, ji $$3, jn $$4, ji $$5, dww $$6, azh $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, esz.c, esz.c.a($$1));
+   protected bsk a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
+      if ($$1 instanceof ard $$5 && $$1.c_($$2) instanceof dts $$6) {
+         $$3.a($$6);
+         $$3.a(awk.ar);
+         cnm.a($$5, $$3, true);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return bsk.a;
    }
 
    @Override
-   protected esy b_(dww $$0) {
-      return $$0.c(b) ? esz.c.a(false) : super.b_($$0);
+   protected void a(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      bsg.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected void a(dwx $$0, ard $$1, ji $$2, azh $$3) {
+      dtz $$4 = $$1.c_($$2);
+      if ($$4 instanceof dts) {
+         ((dts)$$4).k();
+      }
    }
 
    @Nullable
    @Override
-   public dww a(daf $$0) {
-      return this.m().b(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == esz.c));
+   public dtz a(ji $$0, dwx $$1) {
+      return new dts($$0, $$1);
    }
 
    @Override
-   protected void a(dwx.a<djl, dww> $$0) {
-      $$0.a(b);
+   protected boolean c_(dwx $$0) {
+      return true;
    }
 
    @Override
-   public cwo a(@Nullable cow $$0, dgi $$1, ji $$2, dww $$3) {
-      return $$0 != null && $$0.b() ? dqr.super.a($$0, $$1, $$2, $$3) : cwo.j;
+   protected int a(dwx $$0, dgi $$1, ji $$2) {
+      return csc.a($$1.c_($$2));
    }
 
    @Override
-   public boolean a(@Nullable cow $$0, dfm $$1, ji $$2, dww $$3, esx $$4) {
-      return $$0 != null && $$0.b() ? dqr.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   protected dwx a(dwx $$0, dqe $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dol $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public dwx a(dag $$0) {
+      return this.m().b(b, $$0.d().g());
    }
 }

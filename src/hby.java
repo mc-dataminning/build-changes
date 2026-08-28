@@ -1,12 +1,14 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hby() implements hbw {
-   public static final MapCodec<hby> a = MapCodec.unit(new hby());
+public record hby(int b) implements hbx {
+   public static final MapCodec<hby> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayi.l.optionalFieldOf("index", 0).forGetter(hby::b)).apply($$0, hby::new));
 
    @Override
-   public boolean a(cwo $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3, cwm $$4) {
-      return $$0.n();
+   public boolean a(cwp $$0, @Nullable gfz $$1, @Nullable bvh $$2, int $$3, cwn $$4) {
+      cyz $$5 = $$0.a(kv.p);
+      return $$5 != null ? $$5.b(this.b) == Boolean.TRUE : false;
    }
 
    @Override

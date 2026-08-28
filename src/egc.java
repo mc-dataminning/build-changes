@@ -1,35 +1,58 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class egc implements eib {
-   public static final Codec<egc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               akv.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
-               akv.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
-               erm.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
-               erm.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, egc::new)
-   );
-   public final List<akv> b;
-   public final List<akv> c;
-   public final jr<erl> d;
-   public final jr<erl> e;
-   public final int f;
+public class egc extends efy<egd> {
+   public egc(Codec<egd> $$0) {
+      super($$0);
+   }
 
-   public egc(List<akv> $$0, List<akv> $$1, jr<erl> $$2, jr<erl> $$3, int $$4) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
-      } else if ($$0.size() != $$1.size()) {
-         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
+   @Override
+   public boolean a(ega<egd> $$0) {
+      azh $$1 = $$0.d();
+      dhg $$2 = $$0.b();
+      ji $$3 = $$0.e();
+      dqe $$4 = dqe.a($$1);
+      egd $$5 = $$0.f();
+      int $$6 = $$1.a($$5.b.size());
+      erp $$7 = $$2.a().p().aY();
+      ero $$8 = $$7.a($$5.b.get($$6));
+      ero $$9 = $$7.a($$5.c.get($$6));
+      dfo $$10 = new dfo($$3);
+      ene $$11 = new ene($$10.d() - 16, $$2.L_(), $$10.e() - 16, $$10.f() + 16, $$2.an(), $$10.g() + 16);
+      erk $$12 = new erk().a($$4).a($$11).a($$1);
+      km $$13 = $$8.a($$4);
+      ji $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
+      int $$15 = $$3.v();
+
+      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
+         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
+            $$15 = Math.min($$15, $$2.a(ecs.a.c, $$14.u() + $$16, $$14.w() + $$17));
+         }
       }
+
+      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.L_() + 10);
+      ji $$19 = $$8.a($$14.h($$18), dol.a, $$4);
+      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
+         return false;
+      } else {
+         $$12.b();
+         $$5.d.a().a().forEach($$12::a);
+         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
+         $$12.b();
+         $$5.e.a().a().forEach($$12::a);
+         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
+         return true;
+      }
+   }
+
+   private static int a(dhg $$0, ene $$1) {
+      MutableInt $$2 = new MutableInt(0);
+      $$1.a($$2x -> {
+         dwx $$3 = $$0.a_($$2x);
+         if ($$3.l() || $$3.a(djo.K) || $$3.a(djo.J)) {
+            $$2.add(1);
+         }
+      });
+      return $$2.getValue();
    }
 }

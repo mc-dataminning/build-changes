@@ -1,69 +1,72 @@
-public class geq extends gca<hax> {
-   private static final String a = "ribcage";
-   private static final String b = "center_head";
-   private static final String c = "right_head";
-   private static final String d = "left_head";
-   private static final float e = 0.065F;
-   private static final float f = 0.265F;
-   private final gfc g;
-   private final gfc i;
-   private final gfc j;
-   private final gfc k;
-   private final gfc l;
+public class geq extends gcb<hax> implements gck, gem {
+   protected final gfd a;
+   private final gfd b;
+   private final gfd c;
+   private final gfd d;
+   private final gfd e;
+   private final gfd f;
+   private final gfd g;
 
-   public geq(gfc $$0) {
+   public geq(gfd $$0) {
       super($$0);
-      this.k = $$0.b("ribcage");
-      this.l = $$0.b("tail");
-      this.g = $$0.b("center_head");
-      this.i = $$0.b("right_head");
-      this.j = $$0.b("left_head");
+      this.b = $$0.b("head");
+      this.c = this.b.b("hat");
+      this.d = this.c.b("hat_rim");
+      this.a = this.b.b("nose");
+      this.e = $$0.b("right_leg");
+      this.f = $$0.b("left_leg");
+      this.g = $$0.b("arms");
    }
 
-   public static gfi a(gfg $$0) {
-      gfk $$1 = new gfk();
-      gfm $$2 = $$1.a();
-      $$2.a("shoulders", gfh.c().a(0, 16).a(-10.0F, 3.9F, -0.5F, 20.0F, 3.0F, 3.0F, $$0), gfe.a);
-      float $$3 = 0.20420352F;
-      $$2.a(
-         "ribcage",
-         gfh.c()
-            .a(0, 22)
-            .a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 1.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 4.0F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 6.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0),
-         gfe.a(-2.0F, 6.9F, -0.5F, 0.20420352F, 0.0F, 0.0F)
+   public static gfj a() {
+      gfl $$0 = gen.a();
+      gfn $$1 = $$0.a();
+      gfn $$2 = $$1.a("head", gfi.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), gff.a);
+      gfn $$3 = $$2.a("hat", gfi.c().a(0, 64).a(0.0F, 0.0F, 0.0F, 10.0F, 2.0F, 10.0F), gff.a(-5.0F, -10.03125F, -5.0F));
+      gfn $$4 = $$3.a("hat2", gfi.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 7.0F, 4.0F, 7.0F), gff.a(1.75F, -4.0F, 2.0F, -0.05235988F, 0.0F, 0.02617994F));
+      gfn $$5 = $$4.a("hat3", gfi.c().a(0, 87).a(0.0F, 0.0F, 0.0F, 4.0F, 4.0F, 4.0F), gff.a(1.75F, -4.0F, 2.0F, -0.10471976F, 0.0F, 0.05235988F));
+      $$5.a(
+         "hat4", gfi.c().a(0, 95).a(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new gfh(0.25F)), gff.a(1.75F, -2.0F, 2.0F, (float) (-Math.PI / 15), 0.0F, 0.10471976F)
       );
-      $$2.a(
-         "tail",
-         gfh.c().a(12, 22).a(0.0F, 0.0F, 0.0F, 3.0F, 6.0F, 3.0F, $$0),
-         gfe.a(-2.0F, 6.9F + ayz.b(0.20420352F) * 10.0F, -0.5F + ayz.a(0.20420352F) * 10.0F, 0.83252203F, 0.0F, 0.0F)
-      );
-      $$2.a("center_head", gfh.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gfe.a);
-      gfh $$4 = gfh.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, $$0);
-      $$2.a("right_head", $$4, gfe.a(-8.0F, 4.0F, 0.0F));
-      $$2.a("left_head", $$4, gfe.a(10.0F, 4.0F, 0.0F));
-      return gfi.a($$1, 64, 64);
+      gfn $$6 = $$2.b("nose");
+      $$6.a("mole", gfi.c().a(0, 0).a(0.0F, 3.0F, -6.75F, 1.0F, 1.0F, 1.0F, new gfh(-0.25F)), gff.a(0.0F, -2.0F, 0.0F));
+      return gfj.a($$0, 64, 128);
    }
 
    public void a(hax $$0) {
       super.a($$0);
-      a($$0, this.i, 0);
-      a($$0, this.j, 1);
-      float $$1 = ayz.b($$0.u * 0.1F);
-      this.k.e = (0.065F + 0.05F * $$1) * (float) Math.PI;
-      this.l.a(-2.0F, 6.9F + ayz.b(this.k.e) * 10.0F, -0.5F + ayz.a(this.k.e) * 10.0F);
-      this.l.e = (0.265F + 0.1F * $$1) * (float) Math.PI;
-      this.g.f = $$0.aa * (float) (Math.PI / 180.0);
-      this.g.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.e.e = ayz.b($$0.ad * 0.6662F) * 1.4F * $$0.ae * 0.5F;
+      this.f.e = ayz.b($$0.ad * 0.6662F + (float) Math.PI) * 1.4F * $$0.ae * 0.5F;
+      float $$1 = 0.01F * (float)($$0.a % 10);
+      this.a.e = ayz.a($$0.u * $$1) * 4.5F * (float) (Math.PI / 180.0);
+      this.a.g = ayz.b($$0.u * $$1) * 2.5F * (float) (Math.PI / 180.0);
+      if ($$0.b) {
+         this.a.a(0.0F, 1.0F, -1.5F);
+         this.a.e = -0.9F;
+      }
    }
 
-   private static void a(hax $$0, gfc $$1, int $$2) {
-      $$1.f = ($$0.b[$$2] - $$0.Z) * (float) (Math.PI / 180.0);
-      $$1.e = $$0.a[$$2] * (float) (Math.PI / 180.0);
+   public gfd c() {
+      return this.a;
+   }
+
+   @Override
+   public gfd b() {
+      return this.b;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+   }
+
+   @Override
+   public void a(ffu $$0) {
+      this.v.a($$0);
+      this.g.a($$0);
    }
 }

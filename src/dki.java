@@ -1,29 +1,62 @@
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dki {
-   fbt s_ = djl.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dxn t_ = dxm.c;
+public class dki extends dif {
+   public static final MapCodec<dki> d = b(dki::new);
+   private static final float e = 0.05F;
+   private static final float f = 0.1F;
 
-   static bsj a(@Nullable buk $$0, dww $$1, dgh $$2, ji $$3) {
-      if ($$1.c(t_)) {
-         djl.a($$2, $$3, new cwo(cws.xw, 1));
-         float $$4 = ayz.b($$2.A, 0.8F, 1.2F);
-         $$2.a(null, $$3, awa.eg, awb.e, 1.0F, $$4);
-         dww $$5 = $$1.b(t_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(ebs.c, $$3, ebs.a.a($$0, $$5));
-         return bsj.a;
+   @Override
+   public MapCodec<dki> a() {
+      return d;
+   }
+
+   public dki(dww.d $$0) {
+      super($$0, ko.c);
+   }
+
+   @Override
+   public boolean d(dwx $$0) {
+      return false;
+   }
+
+   protected static boolean a(dgi $$0, dhk.c $$1) {
+      if ($$1 == dhk.c.b) {
+         return $$0.H_().i() < 0.05F;
       } else {
-         return bsj.e;
+         return $$1 == dhk.c.c ? $$0.H_().i() < 0.1F : false;
       }
    }
 
-   static boolean j_(dww $$0) {
-      return $$0.b(t_) && $$0.c(t_);
+   @Override
+   public void a(dwx $$0, dgi $$1, ji $$2, dhk.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == dhk.c.b) {
+            $$1.b($$2, djo.fP.m());
+            $$1.a(null, ebt.c, $$2);
+         } else if ($$3 == dhk.c.c) {
+            $$1.b($$2, djo.fR.m());
+            $$1.a(null, ebt.c, $$2);
+         }
+      }
    }
 
-   static ToIntFunction<dww> i_(int $$0) {
-      return $$1 -> $$1.c(dxm.c) ? $$0 : 0;
+   @Override
+   protected boolean a(esy $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dwx $$0, dgi $$1, ji $$2, esy $$3) {
+      if ($$3 == eta.c) {
+         dwx $$4 = djo.fP.m();
+         $$1.b($$2, $$4);
+         $$1.a(ebt.c, $$2, ebt.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == eta.e) {
+         dwx $$5 = djo.fQ.m();
+         $$1.b($$2, $$5);
+         $$1.a(ebt.c, $$2, ebt.a.a($$5));
+         $$1.c(1046, $$2, 0);
+      }
    }
 }

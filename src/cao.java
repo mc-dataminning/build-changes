@@ -1,53 +1,35 @@
-import com.mojang.datafixers.kinds.Const;
-import com.mojang.datafixers.kinds.IdF;
+import com.mojang.datafixers.kinds.App;
 import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.Const.Mu;
-import com.mojang.datafixers.util.Unit;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public interface cao<F extends K1, Value> {
-   cek<Value> a();
+public final class cao<F extends K1, Value> {
+   private final bwj<?> a;
+   private final cel<Value> b;
+   private final App<F, Value> c;
 
-   cel b();
-
-   @Nullable
-   can<F, Value> a(bwi<?> var1, Optional<Value> var2);
-
-   public static record a<Value>(cek<Value> a) implements cao<Mu<Unit>, Value> {
-      @Override
-      public cel b() {
-         return cel.b;
-      }
-
-      @Override
-      public can<Mu<Unit>, Value> a(bwi<?> $$0, Optional<Value> $$1) {
-         return $$1.isPresent() ? null : new can<>($$0, this.a, Const.create(Unit.INSTANCE));
-      }
+   public cao(bwj<?> $$0, cel<Value> $$1, App<F, Value> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static record b<Value>(cek<Value> a) implements cao<com.mojang.datafixers.kinds.IdF.Mu, Value> {
-      @Override
-      public cel b() {
-         return cel.a;
-      }
-
-      @Override
-      public can<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bwi<?> $$0, Optional<Value> $$1) {
-         return $$1.isEmpty() ? null : new can<>($$0, this.a, IdF.create($$1.get()));
-      }
+   public App<F, Value> a() {
+      return this.c;
    }
 
-   public static record c<Value>(cek<Value> a) implements cao<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
-      @Override
-      public cel b() {
-         return cel.c;
-      }
+   public void a(Value $$0) {
+      this.a.a(this.b, Optional.of($$0));
+   }
 
-      @Override
-      public can<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bwi<?> $$0, Optional<Value> $$1) {
-         return new can<>($$0, this.a, OptionalBox.create($$1));
-      }
+   public void a(Optional<Value> $$0) {
+      this.a.a(this.b, $$0);
+   }
+
+   public void a(Value $$0, long $$1) {
+      this.a.a(this.b, $$0, $$1);
+   }
+
+   public void b() {
+      this.a.b(this.b);
    }
 }

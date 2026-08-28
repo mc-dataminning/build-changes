@@ -1,25 +1,41 @@
-public interface dgw {
-   <T> fcr<T> a(ji var1, T var2, int var3, fcv var4);
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   <T> fcr<T> a(ji var1, T var2, int var3);
+public class dgw {
+   private final List<dgw.a> a = Lists.newArrayList();
 
-   fcn<djl> U();
-
-   default void a(ji $$0, djl $$1, int $$2, fcv $$3) {
-      this.U().a(this.a($$0, $$1, $$2, $$3));
+   public void a(ji $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new dgw.a($$0, $$1));
+      }
    }
 
-   default void a(ji $$0, djl $$1, int $$2) {
-      this.U().a(this.a($$0, $$1, $$2));
+   public double b(ji $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
+      } else {
+         double $$2 = 0.0;
+
+         for (dgw.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
+         }
+
+         return $$2 * $$1;
+      }
    }
 
-   fcn<esx> T();
+   static class a {
+      private final ji a;
+      private final double b;
 
-   default void a(ji $$0, esx $$1, int $$2, fcv $$3) {
-      this.T().a(this.a($$0, $$1, $$2, $$3));
-   }
+      public a(ji $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   default void a(ji $$0, esx $$1, int $$2) {
-      this.T().a(this.a($$0, $$1, $$2));
+      public double a(ji $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
+      }
    }
 }

@@ -1,40 +1,31 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class fhw extends fhy {
-   private static final Logger d = LogUtils.getLogger();
+public class fhw extends fhz {
    public long a;
-   public int b;
-   public fhw.a c = fhw.a.a;
+   public List<fhv> b = Lists.newArrayList();
 
    public static fhw a(String $$0) {
       fhw $$1 = new fhw();
+      JsonParser $$2 = new JsonParser();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = fju.a("startDate", $$3, 0L);
-         $$1.b = fju.a("daysLeft", $$3, 0);
-         $$1.c = b(fju.b("subscriptionType", $$3, fhw.a.a.name()));
-      } catch (Exception var4) {
-         d.error("Could not parse Subscription: {}", var4.getMessage());
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         $$1.a = fjv.a("periodInMillis", $$4, -1L);
+         JsonElement $$5 = $$4.get("playerActivityDto");
+         if ($$5 != null && $$5.isJsonArray()) {
+            for (JsonElement $$7 : $$5.getAsJsonArray()) {
+               fhv $$8 = fhv.a($$7.getAsJsonObject());
+               $$1.b.add($$8);
+            }
+         }
+      } catch (Exception var10) {
       }
 
       return $$1;
-   }
-
-   private static fhw.a b(String $$0) {
-      try {
-         return fhw.a.valueOf($$0);
-      } catch (Exception var2) {
-         return fhw.a.a;
-      }
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

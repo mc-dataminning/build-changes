@@ -1,86 +1,95 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
-public class ffi implements AutoCloseable {
-   private static final int a = -1;
-   private final akv b;
-   private int c;
-
-   private ffi(int $$0, akv $$1) {
-      this.b = $$1;
-      this.c = $$0;
+public class ffi {
+   public void a(float $$0) {
    }
 
-   public static ffi a(akv $$0, ffi.a $$1, String $$2) throws gmo.b {
-      RenderSystem.assertOnRenderThread();
-      int $$3 = GlStateManager.glCreateShader($$1.b());
-      GlStateManager.glShaderSource($$3, $$2);
-      GlStateManager.glCompileShader($$3);
-      if (GlStateManager.glGetShaderi($$3, 35713) == 0) {
-         String $$4 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$3, 32768));
-         throw new gmo.b("Couldn't compile " + $$1.a() + " shader (" + $$0 + ") : " + $$4);
-      } else {
-         return new ffi($$3, $$0);
-      }
+   public void a(float $$0, float $$1) {
    }
 
-   @Override
-   public void close() {
-      if (this.c == -1) {
-         throw new IllegalStateException("Already closed");
-      } else {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager.glDeleteShader(this.c);
-         this.c = -1;
-      }
+   public void a(float $$0, float $$1, float $$2) {
    }
 
-   public akv a() {
-      return this.b;
+   public void a(float $$0, float $$1, float $$2, float $$3) {
    }
 
-   public int b() {
-      return this.c;
+   public void b(float $$0, float $$1, float $$2, float $$3) {
    }
 
-   public static enum a {
-      a("vertex", ".vsh", 35633),
-      b("fragment", ".fsh", 35632);
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+   }
 
-      private static final ffi.a[] c = values();
-      private final String d;
-      private final String e;
-      private final int f;
+   public void a(int $$0) {
+   }
 
-      private a(final String $$0, final String $$1, final int $$2) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
-      }
+   public void a(int $$0, int $$1) {
+   }
 
-      @Nullable
-      public static ffi.a a(akv $$0) {
-         for (ffi.a $$1 : c) {
-            if ($$0.a().endsWith($$1.e)) {
-               return $$1;
-            }
-         }
+   public void a(int $$0, int $$1, int $$2) {
+   }
 
-         return null;
-      }
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+   }
 
-      public String a() {
-         return this.d;
-      }
+   public void a(float[] $$0) {
+   }
 
-      public int b() {
-         return this.f;
-      }
+   public void a(Vector3f $$0) {
+   }
 
-      public ako c() {
-         return new ako("shaders", this.e);
-      }
+   public void a(Vector4f $$0) {
+   }
+
+   public void c(float $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+   }
+
+   public void a(
+      float $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+   }
+
+   public void a(Matrix4f $$0) {
+   }
+
+   public void a(Matrix3f $$0) {
    }
 }

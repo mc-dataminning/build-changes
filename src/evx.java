@@ -1,81 +1,67 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Optional;
+import java.util.Set;
 
-public class evx extends evz {
-   public static final MapCodec<evx> a = a(evx::new);
+public class evx {
+   private final azf a;
+   private final baj b;
+   private final Optional<js.a> c;
+   private final Set<aku<?>> d;
 
-   evx(List<ewg> $$0, List<eyz> $$1) {
-      super($$0, $$1);
+   public evx(azf $$0, baj $$1, js.a $$2) {
+      this($$0, $$1, Optional.of($$2), Set.of());
    }
 
-   @Override
-   public ewh a() {
-      return ewe.g;
+   public evx(azf $$0, baj $$1) {
+      this($$0, $$1, Optional.empty(), Set.of());
    }
 
-   @Override
-   protected evy a(List<? extends evy> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> b;
-         case 1 -> (evy)$$0.get(0);
-         case 2 -> $$0.get(0).or($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (evy $$3 : $$0) {
-            if ($$3.expand($$1, $$2)) {
-               return true;
-            }
-         }
-
-         return false;
-      };
-      };
+   private evx(azf $$0, baj $$1, Optional<js.a> $$2, Set<aku<?>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public void a(evw $$0) {
-      super.a($$0);
+   public evx a(String $$0) {
+      return new evx(this.a.a($$0), this.b, this.c, this.d);
+   }
 
-      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
-         if (this.d.get($$1).e.isEmpty()) {
-            $$0.b("Unreachable entry!");
-         }
+   public evx a(String $$0, aku<?> $$1) {
+      Set<aku<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new evx(this.a.a($$0), this.b, this.c, $$2);
+   }
+
+   public boolean a(aku<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
+
+   public void a(evs $$0) {
+      Set<bai<?>> $$1 = $$0.a();
+      Set<bai<?>> $$2 = Sets.difference($$1, this.b.b());
+      if (!$$2.isEmpty()) {
+         this.a.b("Parameters " + $$2 + " are not provided in this context");
       }
    }
 
-   public static evx.a a(ewg.a<?>... $$0) {
-      return new evx.a($$0);
+   public js.a a() {
+      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
    }
 
-   public static <E> evx.a a(Collection<E> $$0, Function<E, ewg.a<?>> $$1) {
-      return new evx.a($$0.stream().map($$1::apply).toArray(ewg.a[]::new));
+   public boolean b() {
+      return this.c.isPresent();
    }
 
-   public static class a extends ewg.a<evx.a> {
-      private final Builder<ewg> a = ImmutableList.builder();
+   public evx a(baj $$0) {
+      return new evx(this.a, $$0, this.c, this.d);
+   }
 
-      public a(ewg.a<?>... $$0) {
-         for (ewg.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected evx.a a() {
-         return this;
-      }
-
-      @Override
-      public evx.a a(ewg.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public ewg b() {
-         return new evx(this.a.build(), this.f());
-      }
+   public azf c() {
+      return this.a;
    }
 }

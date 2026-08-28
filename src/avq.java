@@ -20,7 +20,7 @@ public class avq implements ew {
 
    public ex g() {
       ard $$0 = this.e.J();
-      return new ex(this, faz.a($$0.Z()), fay.a, $$0, 4, "Rcon", c, this.e, null);
+      return new ex(this, fba.a($$0.Z()), faz.a, $$0, 4, "Rcon", c, this.e, null);
    }
 
    @Override

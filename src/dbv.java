@@ -1,86 +1,73 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+public class dbv extends dau {
+   public dbv(dar $$0) {
+      super($$0);
+   }
 
-public abstract class dbv implements dbd<dbw> {
-   private final daz c;
-   private final cwo d;
-   private final String e;
-   @Nullable
-   private dbc f;
+   public boolean a(das $$0, dgi $$1) {
+      if ($$0.e() != 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
 
-   public dbv(String $$0, daz $$1, cwo $$2) {
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cwp $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.h() instanceof cus) {
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               } else {
+                  if (!$$5.a(cwt.ws)) {
+                     return false;
+                  }
+
+                  if ($$2) {
+                     return false;
+                  }
+
+                  dtq $$6 = $$5.a(kv.ai, dtq.a);
+                  if (!$$6.b().isEmpty()) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               }
+            }
+         }
+
+         return $$2 && $$3;
+      }
+   }
+
+   public cwp a(das $$0, jt.a $$1) {
+      cwp $$2 = cwp.j;
+      cwp $$3 = cwp.j;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwp $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.h() instanceof cus) {
+               $$2 = $$5;
+            } else if ($$5.a(cwt.ws)) {
+               $$3 = $$5.v();
+            }
+         }
+      }
+
+      if ($$3.f()) {
+         return $$3;
+      } else {
+         $$3.b(kv.ai, $$2.a(kv.ai));
+         $$3.b(kv.aj, ((cus)$$2.h()).b());
+         return $$3;
+      }
    }
 
    @Override
-   public abstract dbn<? extends dbv> a();
-
-   @Override
-   public abstract dbo<? extends dbv> b();
-
-   public boolean a(dbw $$0, dgh $$1) {
-      return this.c.a($$0.c());
-   }
-
-   @Override
-   public String j() {
-      return this.e;
-   }
-
-   public daz k() {
-      return this.c;
-   }
-
-   protected cwo l() {
-      return this.d;
-   }
-
-   @Override
-   public dbc ao_() {
-      if (this.f == null) {
-         this.f = dbc.a(this.c);
-      }
-
-      return this.f;
-   }
-
-   public cwo a(dbw $$0, jt.a $$1) {
-      return this.d.v();
-   }
-
-   @FunctionalInterface
-   public interface a<T extends dbv> {
-      T create(String var1, daz var2, cwo var3);
-   }
-
-   public static class b<T extends dbv> implements dbn<T> {
-      private final MapCodec<T> w;
-      private final yn<wa, T> x;
-
-      protected b(dbv.a<T> $$0) {
-         this.w = RecordCodecBuilder.mapCodec(
-            $$1 -> $$1.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter(dbv::j),
-                     daz.d.fieldOf("ingredient").forGetter(dbv::k),
-                     cwo.c.fieldOf("result").forGetter(dbv::l)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.x = yn.a(yl.o, dbv::j, daz.a, dbv::k, cwo.h, dbv::l, $$0::create);
-      }
-
-      @Override
-      public MapCodec<T> a() {
-         return this.w;
-      }
-
-      @Override
-      public yn<wa, T> b() {
-         return this.x;
-      }
+   public dbo<dbv> a() {
+      return dbo.l;
    }
 }

@@ -1,46 +1,45 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class equ extends erk {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<equ> a = MapCodec.unit(() -> equ.b);
-   public static final equ b = new equ();
+public class equ extends erl {
+   public static final MapCodec<equ> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ecs.a.g.fieldOf("heightmap").orElse(ecs.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
+            .apply($$0, equ::new)
+   );
+   private final ecs.a b;
+   private final int c;
 
-   private equ() {
+   public equ(ecs.a $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Nullable
    @Override
-   public ern.d a(dgk $$0, ji $$1, ji $$2, ern.d $$3, ern.d $$4, erj $$5) {
-      dww $$6 = $$4.b();
-      if ($$6.a(djn.pD)) {
-         if ($$4.c() == null) {
-            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
-            return $$4;
+   public ero.d a(dgl $$0, ji $$1, ji $$2, ero.d $$3, ero.d $$4, erk $$5) {
+      ecs.a $$6;
+      if ($$0 instanceof ard) {
+         if (this.b == ecs.a.a) {
+            $$6 = ecs.a.b;
+         } else if (this.b == ecs.a.c) {
+            $$6 = ecs.a.d;
          } else {
-            String $$7 = $$4.c().l("final_state");
-
-            dww $$9;
-            try {
-               gr.a $$8 = gr.a($$0.a(mc.f), $$7, true);
-               $$9 = $$8.a();
-            } catch (CommandSyntaxException var11) {
-               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
-               return null;
-            }
-
-            return $$9.a(djn.lp) ? null : new ern.d($$4.a(), $$9, null);
+            $$6 = this.b;
          }
       } else {
-         return $$4;
+         $$6 = this.b;
       }
+
+      ji $$10 = $$4.a();
+      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
+      int $$12 = $$3.a().v();
+      return new ero.d(new ji($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
    }
 
    @Override
-   protected erm<?> a() {
-      return erm.h;
+   protected ern<?> a() {
+      return ern.g;
    }
 }

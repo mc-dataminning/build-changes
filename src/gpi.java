@@ -1,66 +1,71 @@
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class gpi implements dfj {
-   public static final int a = 1;
-   public static final int b = 3;
-   private final int e;
-   private final int f;
-   protected final gph[] c;
-   protected final dgh d;
+class gpi {
+   private final Map<ji, dtz> a;
+   @Nullable
+   private final List<dzk<dwx>> b;
+   private final boolean c;
+   private final dzc d;
 
-   gpi(dgh $$0, int $$1, int $$2, gph[] $$3) {
+   gpi(dzc $$0) {
       this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.c = $$3;
-   }
+      this.c = $$0.H().aj();
+      this.a = ImmutableMap.copyOf($$0.I());
+      if ($$0 instanceof dyy) {
+         this.b = null;
+      } else {
+         dzd[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
 
-   @Override
-   public dww a_(ji $$0) {
-      return this.a(kk.a($$0.u()), kk.a($$0.w())).b($$0);
-   }
-
-   @Override
-   public esy b_(ji $$0) {
-      return this.a(kk.a($$0.u()), kk.a($$0.w())).b($$0).y();
-   }
-
-   @Override
-   public float a(jn $$0, boolean $$1) {
-      return this.d.a($$0, $$1);
-   }
-
-   @Override
-   public esn C_() {
-      return this.d.C_();
+         for (dzd $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
+         }
+      }
    }
 
    @Nullable
-   @Override
-   public dty c_(ji $$0) {
-      return this.a(kk.a($$0.u()), kk.a($$0.w())).a($$0);
+   public dtz a(ji $$0) {
+      return this.a.get($$0);
    }
 
-   private gph a(int $$0, int $$1) {
-      return this.c[a(this.e, this.f, $$0, $$1)];
-   }
+   public dwx b(ji $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         dwx $$4 = null;
+         if ($$2 == 60) {
+            $$4 = djo.iu.m();
+         }
 
-   @Override
-   public int a(ji $$0, dfr $$1) {
-      return this.d.a($$0, $$1);
-   }
+         if ($$2 == 70) {
+            $$4 = ecj.a($$1, $$3);
+         }
 
-   @Override
-   public int L_() {
-      return this.d.L_();
-   }
+         return $$4 == null ? djo.a.m() : $$4;
+      } else if (this.b == null) {
+         return djo.a.m();
+      } else {
+         try {
+            int $$5 = this.d.f($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               dzk<dwx> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+               }
+            }
 
-   @Override
-   public int M_() {
-      return this.d.M_();
-   }
-
-   public static int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$2 - $$0 + ($$3 - $$1) * 3;
+            return djo.a.m();
+         } catch (Throwable var8) {
+            o $$8 = o.a(var8, "Getting block state");
+            p $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
+            throw new z($$8);
+         }
+      }
    }
 }

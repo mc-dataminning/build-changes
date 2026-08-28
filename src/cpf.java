@@ -1,121 +1,167 @@
 import javax.annotation.Nullable;
 
-public class cpf extends cpd {
-   private static final int d = 600;
-   private static final int e = -1;
-   private static final ajy<Integer> f = akc.a(cpf.class, aka.b);
-   private static final byte g = 0;
+public abstract class cpf extends cpq {
+   public static final double a = 0.1;
+   public static final double b = 0.5;
+   public double c = 0.1;
 
-   public cpf(bur<? extends cpf> $$0, dgh $$1) {
+   protected cpf(bus<? extends cpf> $$0, dgi $$1) {
       super($$0, $$1);
    }
 
-   public cpf(dgh $$0, double $$1, double $$2, double $$3, cwo $$4, @Nullable cwo $$5) {
-      super(bur.g, $$1, $$2, $$3, $$0, $$4, $$5);
-      this.H();
+   protected cpf(bus<? extends cpf> $$0, double $$1, double $$2, double $$3, dgi $$4) {
+      this($$0, $$4);
+      this.a_($$1, $$2, $$3);
    }
 
-   public cpf(dgh $$0, bvg $$1, cwo $$2, @Nullable cwo $$3) {
-      super(bur.g, $$1, $$0, $$2, $$3);
-      this.H();
+   public cpf(bus<? extends cpf> $$0, double $$1, double $$2, double $$3, fba $$4, dgi $$5) {
+      this($$0, $$5);
+      this.b($$1, $$2, $$3, this.dL(), this.dN());
+      this.ay();
+      this.a($$4, this.c);
    }
 
-   private cyn G() {
-      return this.w().a(kv.Q, cyn.a);
-   }
-
-   private void a(cyn $$0) {
-      this.w().b(kv.Q, $$0);
-      this.H();
-   }
-
-   @Override
-   protected void a(cwo $$0) {
-      super.a($$0);
-      this.H();
-   }
-
-   private void H() {
-      cyn $$0 = this.G();
-      this.al.a(f, $$0.equals(cyn.a) ? -1 : $$0.b());
-   }
-
-   public void a(btp $$0) {
-      this.a(this.G().a($$0));
+   public cpf(bus<? extends cpf> $$0, bvh $$1, fba $$2, dgi $$3) {
+      this($$0, $$1.dA(), $$1.dC(), $$1.dG(), $$2, $$3);
+      this.c($$1);
+      this.b($$1.dL(), $$1.dN());
    }
 
    @Override
    protected void a(akc.a $$0) {
-      super.a($$0);
-      $$0.a(f, -1);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cR().a() * 4.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 4.0;
+      }
+
+      $$1 *= 64.0;
+      return $$0 < $$1 * $$1;
+   }
+
+   protected dfq.a ak_() {
+      return dfq.a.a;
    }
 
    @Override
    public void h() {
-      super.h();
-      if (this.dV().C) {
-         if (this.l()) {
-            if (this.a % 5 == 0) {
-               this.b(1);
-            }
+      bul $$0 = this.p();
+      this.v();
+      if (this.dV().C || ($$0 == null || !$$0.dQ()) && this.dV().B(this.dv())) {
+         fay $$1 = cps.a(this, this::b, this.ak_());
+         fba $$2;
+         if ($$1.d() != fay.a.a) {
+            $$2 = $$1.g();
          } else {
-            this.b(2);
+            $$2 = this.dt().e(this.dy());
          }
-      } else if (this.l() && this.a != 0 && !this.G().equals(cyn.a) && this.a >= 600) {
-         this.dV().a(this, (byte)0);
-         this.a(new cwo(cws.pb));
-      }
-   }
 
-   private void b(int $$0) {
-      int $$1 = this.D();
-      if ($$1 != -1 && $$0 > 0) {
-         for (int $$2 = 0; $$2 < $$0; $$2++) {
-            this.dV().a(lm.a(lt.u, $$1), this.d(0.5), this.dD(), this.g(0.5), 0.0, 0.0, 0.0);
+         cps.a(this, 0.2F);
+         this.b($$2);
+         this.aK();
+         super.h();
+         if (this.m()) {
+            this.d(1.0F);
          }
-      }
-   }
 
-   public int D() {
-      return this.al.a(f);
-   }
-
-   @Override
-   protected void a(bvg $$0) {
-      super.a($$0);
-      buk $$1 = this.E();
-      cyn $$2 = this.G();
-      if ($$2.e().isPresent()) {
-         for (btp $$3 : $$2.e().get().a().a()) {
-            $$0.b(new btp($$3.c(), Math.max($$3.a($$0x -> $$0x / 8), 1), $$3.e(), $$3.f(), $$3.g()), $$1);
+         if ($$1.d() != fay.a.a && this.bL()) {
+            this.b($$1);
          }
-      }
 
-      for (btp $$4 : $$2.d()) {
-         $$0.b($$4, $$1);
-      }
-   }
-
-   @Override
-   protected cwo v() {
-      return new cwo(cws.pb);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 0) {
-         int $$1 = this.D();
-         if ($$1 != -1) {
-            float $$2 = (float)($$1 >> 16 & 0xFF) / 255.0F;
-            float $$3 = (float)($$1 >> 8 & 0xFF) / 255.0F;
-            float $$4 = (float)($$1 >> 0 & 0xFF) / 255.0F;
-
-            for (int $$5 = 0; $$5 < 20; $$5++) {
-               this.dV().a(lm.a(lt.u, $$2, $$3, $$4), this.d(0.5), this.dD(), this.g(0.5), 0.0, 0.0, 0.0);
-            }
-         }
+         this.w();
       } else {
-         super.b($$0);
+         this.at();
+      }
+   }
+
+   private void v() {
+      fba $$0 = this.dy();
+      fba $$1 = this.dt();
+      float $$4;
+      if (this.bj()) {
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            float $$3 = 0.25F;
+            this.dV().a(lt.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
+         }
+
+         $$4 = this.u();
+      } else {
+         $$4 = this.t();
+      }
+
+      this.i($$0.e($$0.d().c(this.c)).c((double)$$4));
+   }
+
+   private void w() {
+      lr $$0 = this.s();
+      fba $$1 = this.dt();
+      if ($$0 != null) {
+         this.dV().a($$0, $$1.d, $$1.e + 0.5, $$1.f, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   public boolean a(ard $$0, btb $$1, float $$2) {
+      return false;
+   }
+
+   @Override
+   protected boolean b(bul $$0) {
+      return super.b($$0) && !$$0.ad;
+   }
+
+   @Override
+   protected boolean m() {
+      return true;
+   }
+
+   @Nullable
+   protected lr s() {
+      return lt.ag;
+   }
+
+   protected float t() {
+      return 0.95F;
+   }
+
+   protected float u() {
+      return 0.8F;
+   }
+
+   @Override
+   public void b(tq $$0) {
+      super.b($$0);
+      $$0.a("acceleration_power", this.c);
+   }
+
+   @Override
+   public void a(tq $$0) {
+      super.a($$0);
+      if ($$0.b("acceleration_power", 6)) {
+         this.c = $$0.k("acceleration_power");
+      }
+   }
+
+   @Override
+   public float by() {
+      return 1.0F;
+   }
+
+   private void a(fba $$0, double $$1) {
+      this.i($$0.d().c($$1));
+      this.ar = true;
+   }
+
+   @Override
+   protected void b(@Nullable bul $$0, boolean $$1) {
+      super.b($$0, $$1);
+      if ($$1) {
+         this.c = 0.1;
+      } else {
+         this.c *= 0.5;
       }
    }
 }

@@ -18,14 +18,14 @@ public record aan(long c, List<aan.a> d) implements zz {
       return this.d;
    }
 
-   public static record a(ji b, eug c) {
-      public static final yn<ByteBuf, aan.a> a = yn.a(ji.b, aan.a::a, eug.a, aan.a::b, aan.a::new);
+   public static record a(ji b, euh c) {
+      public static final yn<ByteBuf, aan.a> a = yn.a(ji.b, aan.a::a, euh.a, aan.a::b, aan.a::new);
 
       public ji a() {
          return this.b;
       }
 
-      public eug b() {
+      public euh b() {
          return this.c;
       }
    }

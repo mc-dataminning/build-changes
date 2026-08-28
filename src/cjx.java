@@ -1,20 +1,57 @@
-public abstract class cjx extends cjw {
-   public cjx(cju $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public abstract class cjx implements ckf {
+   protected final cjv a;
+
+   public cjx(cjv $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean a() {
-      return true;
+      return false;
    }
 
    @Override
-   public float a(bta $$0, float $$1) {
-      if (!($$0.c() instanceof cpd) && !($$0.c() instanceof cqh)) {
-         return super.a($$0, $$1);
-      } else {
-         $$0.c().d(1.0F);
-         return 0.0F;
-      }
+   public void b() {
+   }
+
+   @Override
+   public void a(ard $$0) {
+   }
+
+   @Override
+   public void a(cju $$0, ji $$1, btb $$2, @Nullable cox $$3) {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public void d() {
+   }
+
+   @Override
+   public float e() {
+      return 0.6F;
+   }
+
+   @Nullable
+   @Override
+   public fba f() {
+      return null;
+   }
+
+   @Override
+   public float a(btb $$0, float $$1) {
+      return $$1;
+   }
+
+   @Override
+   public float g() {
+      float $$0 = (float)this.a.dy().i() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
    }
 }

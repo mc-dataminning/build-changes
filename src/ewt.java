@@ -1,102 +1,61 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class ewt extends exd {
-   private static final Logger b = LogUtils.getLogger();
+public class ewt extends exe {
    public static final MapCodec<ewt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  kg.a(mc.aO).optionalFieldOf("options").forGetter($$0x -> $$0x.c),
-                  Codec.BOOL.optionalFieldOf("only_compatible", true).forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, ewt::new)
+      $$0 -> a($$0).and(ewt.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, ewt::new)
    );
-   private final Optional<jv<dcy>> c;
-   private final boolean d;
+   private final ewt.a b;
 
-   ewt(List<eyz> $$0, Optional<jv<dcy>> $$1, boolean $$2) {
+   private ewt(List<eza> $$0, ewt.a $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
    }
 
    @Override
-   public exf<ewt> b() {
-      return exg.h;
+   public exg<ewt> b() {
+      return exh.s;
    }
 
    @Override
-   public cwo a(cwo $$0, evq $$1) {
-      azh $$2 = $$1.b();
-      boolean $$3 = $$0.a(cws.rw);
-      boolean $$4 = !$$3 && this.d;
-      Stream<jr<dcy>> $$5 = this.c
-         .<Stream<jr<dcy>>>map(jv::a)
-         .orElseGet(() -> $$1.d().K_().e(mc.aO).c().map(Function.identity()))
-         .filter($$2x -> !$$4 || ((dcy)$$2x.a()).c($$0));
-      List<jr<dcy>> $$6 = $$5.toList();
-      Optional<jr<dcy>> $$7 = af.b($$6, $$2);
-      if ($$7.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
-      } else {
-         return a($$0, $$7.get(), $$2);
-      }
+   public Set<bai<?>> a() {
+      return Set.of(this.b.g);
    }
 
-   private static cwo a(cwo $$0, jr<dcy> $$1, azh $$2) {
-      int $$3 = ayz.a($$2, $$1.a().d(), $$1.a().e());
-      if ($$0.a(cws.rw)) {
-         $$0 = new cwo(cws.vv);
+   @Override
+   public cwp a(cwp $$0, evr $$1) {
+      if ($$1.c(this.b.g) instanceof bsn $$3) {
+         $$0.b(kv.g, $$3.an());
       }
 
-      $$0.a($$1, $$3);
       return $$0;
    }
 
-   public static ewt.a c() {
-      return new ewt.a();
+   public static exe.a<?> a(ewt.a $$0) {
+      return a($$1 -> new ewt($$1, $$0));
    }
 
-   public static ewt.a a(jt.a $$0) {
-      return c().a($$0.d(mc.aO).b(aws.n));
-   }
+   public static enum a implements azv {
+      a("this", eyl.a),
+      b("attacking_entity", eyl.d),
+      c("last_damage_player", eyl.b),
+      d("block_entity", eyl.h);
 
-   public static class a extends exd.a<ewt.a> {
-      private Optional<jv<dcy>> a = Optional.empty();
-      private boolean b = true;
+      public static final Codec<ewt.a> e = azv.a(ewt.a::values);
+      private final String f;
+      final bai<?> g;
 
-      protected ewt.a a() {
-         return this;
-      }
-
-      public ewt.a a(jr<dcy> $$0) {
-         this.a = Optional.of(jv.a($$0));
-         return this;
-      }
-
-      public ewt.a a(jv<dcy> $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public ewt.a e() {
-         this.b = false;
-         return this;
+      private a(final String $$0, final bai<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
       @Override
-      public exe b() {
-         return new ewt(this.g(), this.a, this.b);
+      public String c() {
+         return this.f;
       }
    }
 }

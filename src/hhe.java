@@ -1,63 +1,84 @@
 import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
 public class hhe {
-   static final int a = -1;
-   private static final int b = 0;
+   static final Logger a = LogUtils.getLogger();
+   private final Map<akv, hhn> b;
+   final hhn c;
+   private final List<hhk> d = new ArrayList<>();
+   private final Map<akv, hhn> e = new HashMap<>();
 
-   public static Object2IntMap<dww> a(fmk $$0, hgt.c $$1) {
-      Map<djl, List<dxy<?>>> $$2 = new HashMap<>();
-      Map<hhe.a, Set<dww>> $$3 = new HashMap<>();
-      $$1.c().forEach(($$3x, $$4x) -> {
-         List<dxy<?>> $$5x = $$2.computeIfAbsent($$4x.a().b(), $$1xx -> List.copyOf($$0.a($$1xx)));
-         hhe.a $$6x = hhe.a.a($$4x.a(), $$4x.b(), $$5x);
-         $$3.computeIfAbsent($$6x, $$0xx -> Sets.newIdentityHashSet()).add($$4x.a());
-      });
-      int $$4 = 1;
-      Object2IntMap<dww> $$5 = new Object2IntOpenHashMap();
-      $$5.defaultReturnValue(-1);
-
-      for (Set<dww> $$6 : $$3.values()) {
-         Iterator<dww> $$7 = $$6.iterator();
-
-         while ($$7.hasNext()) {
-            dww $$8 = $$7.next();
-            if ($$8.o() != dpw.b) {
-               $$7.remove();
-               $$5.put($$8, 0);
-            }
-         }
-
-         if ($$6.size() > 1) {
-            int $$9 = $$4++;
-            $$6.forEach($$2x -> $$5.put($$2x, $$9));
-         }
-      }
-
-      return $$5;
+   public hhe(Map<akv, hhn> $$0, hhn $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      this.e.put(hha.a, $$1);
    }
 
-   static record a(Object a, List<Object> b) {
-      public static hhe.a a(dww $$0, gnr $$1, List<dxy<?>> $$2) {
-         List<Object> $$3 = a($$0, $$2);
-         Object $$4 = $$1.a($$0);
-         return new hhe.a($$4, $$3);
+   public void a() {
+      this.e.put(gnn.a, new gnn());
+   }
+
+   public void a(hhk $$0) {
+      this.d.add($$0);
+   }
+
+   public void b() {
+      this.d.forEach($$0 -> $$0.a(new hhe.a()));
+   }
+
+   public Map<akv, hhn> c() {
+      return this.e;
+   }
+
+   public Set<akv> d() {
+      return Sets.difference(this.b.keySet(), this.e.keySet());
+   }
+
+   hhn a(akv $$0) {
+      return this.e.computeIfAbsent($$0, this::b);
+   }
+
+   private hhn b(akv $$0) {
+      hhn $$1 = this.b.get($$0);
+      if ($$1 == null) {
+         a.warn("Missing block model: '{}'", $$0);
+         return this.c;
+      } else {
+         return $$1;
+      }
+   }
+
+   class a implements hhk.a {
+      private final List<akv> b = new ArrayList<>();
+      private final Set<akv> c = new HashSet<>();
+
+      @Override
+      public hhn a(akv $$0) {
+         if (this.b.contains($$0)) {
+            hhe.a.warn("Detected model loading loop: {}->{}", this.a(), $$0);
+            return hhe.this.c;
+         } else {
+            hhn $$1 = hhe.this.a($$0);
+            if (this.c.add($$0)) {
+               this.b.add($$0);
+               $$1.a(this);
+               this.b.remove($$0);
+            }
+
+            return $$1;
+         }
       }
 
-      private static List<Object> a(dww $$0, List<dxy<?>> $$1) {
-         Object[] $$2 = new Object[$$1.size()];
-
-         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-            $$2[$$3] = $$0.c($$1.get($$3));
-         }
-
-         return List.of($$2);
+      private String a() {
+         return this.b.stream().map(akv::toString).collect(Collectors.joining("->"));
       }
    }
 }

@@ -3,12 +3,12 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class baq extends bgr {
+public class baq extends bgs {
    private static final String a = "minecraft:wolf";
    private static final String b = "minecraft:generic.max_health";
 
    public baq(Schema $$0) {
-      super($$0, false, "FixWolfHealth", bhw.B, "minecraft:wolf");
+      super($$0, false, "FixWolfHealth", bhx.B, "minecraft:wolf");
    }
 
    @Override
@@ -21,7 +21,7 @@ public class baq extends bgr {
                "Attributes",
                $$1x -> $$1x.createList(
                      $$1x.asStream()
-                        .map($$1xx -> "minecraft:generic.max_health".equals(bjk.a($$1xx.get("Name").asString(""))) ? $$1xx.update("Base", $$1xxx -> {
+                        .map($$1xx -> "minecraft:generic.max_health".equals(bjl.a($$1xx.get("Name").asString(""))) ? $$1xx.update("Base", $$1xxx -> {
                               if ($$1xxx.asDouble(0.0) == 20.0) {
                                  $$1.setTrue();
                                  return $$1xxx.createDouble(40.0);

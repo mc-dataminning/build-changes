@@ -1,11 +1,19 @@
-public class cxz extends cyd {
-   public cxz(cwk.a $$0) {
+import javax.annotation.Nullable;
+
+public class cxz extends cuq {
+   public cxz(cwl.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsj a(dgh $$0, cow $$1, bsi $$2) {
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awa.zE, awb.h, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public cpe a(dgi $$0, cwp $$1, bvh $$2, @Nullable cwp $$3) {
+      return new cpw($$0, $$2, $$1.c(1), $$3);
+   }
+
+   @Override
+   public cpq a(dgi $$0, kb $$1, cwp $$2, jn $$3) {
+      cpw $$4 = new cpw($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
+      $$4.b = cpe.a.b;
+      return $$4;
    }
 }

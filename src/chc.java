@@ -1,149 +1,40 @@
-import javax.annotation.Nullable;
+public record chc(akv m) {
+   public static final yn<wa, jr<chc>> a = yl.b(mc.l);
+   public static final aku<chc> b = a("tabby");
+   public static final aku<chc> c = a("black");
+   public static final aku<chc> d = a("red");
+   public static final aku<chc> e = a("siamese");
+   public static final aku<chc> f = a("british_shorthair");
+   public static final aku<chc> g = a("calico");
+   public static final aku<chc> h = a("persian");
+   public static final aku<chc> i = a("ragdoll");
+   public static final aku<chc> j = a("white");
+   public static final aku<chc> k = a("jellie");
+   public static final aku<chc> l = a("all_black");
 
-public class chc extends cgx {
-   private static final bun cg = bur.z.n().a(0.5F).b(0.2975F);
-   public float bY;
-   public float bZ;
-   public float ca;
-   public float cc;
-   public float cd = 1.0F;
-   private float ch = 1.0F;
-   public int ce = this.ae.a(6000) + 6000;
-   public boolean cf;
-
-   public chc(bur<? extends chc> $$0, dgh $$1) {
-      super($$0, $$1);
-      this.a(etp.j, 0.0F);
+   private static aku<chc> a(String $$0) {
+      return aku.a(mc.l, akv.b($$0));
    }
 
-   @Override
-   protected void E() {
-      this.bS.a(0, new cby(this));
-      this.bS.a(1, new ccx(this, 1.4));
-      this.bS.a(2, new cbq(this, 1.0));
-      this.bS.a(3, new cdm(this, 1.0, $$0 -> $$0.a(awy.an), false));
-      this.bS.a(4, new ccd(this, 1.1));
-      this.bS.a(5, new cdr(this, 1.0));
-      this.bS.a(6, new ccm(this, cow.class, 6.0F));
-      this.bS.a(7, new ccz(this));
+   public static chc a(ke<chc> $$0) {
+      a($$0, b, "textures/entity/cat/tabby.png");
+      a($$0, c, "textures/entity/cat/black.png");
+      a($$0, d, "textures/entity/cat/red.png");
+      a($$0, e, "textures/entity/cat/siamese.png");
+      a($$0, f, "textures/entity/cat/british_shorthair.png");
+      a($$0, g, "textures/entity/cat/calico.png");
+      a($$0, h, "textures/entity/cat/persian.png");
+      a($$0, i, "textures/entity/cat/ragdoll.png");
+      a($$0, j, "textures/entity/cat/white.png");
+      a($$0, k, "textures/entity/cat/jellie.png");
+      return a($$0, l, "textures/entity/cat/all_black.png");
    }
 
-   @Override
-   public bun e(bvs $$0) {
-      return this.e_() ? cg : super.e($$0);
+   private static chc a(ke<chc> $$0, aku<chc> $$1, String $$2) {
+      return ke.a($$0, $$1, new chc(akv.b($$2)));
    }
 
-   public static bwn.a p() {
-      return cgx.gx().a(bwo.s, 4.0).a(bwo.v, 0.25);
-   }
-
-   @Override
-   public void d_() {
-      super.d_();
-      this.cc = this.bY;
-      this.ca = this.bZ;
-      this.bZ = this.bZ + (this.aJ() ? -1.0F : 4.0F) * 0.3F;
-      this.bZ = ayz.a(this.bZ, 0.0F, 1.0F);
-      if (!this.aJ() && this.cd < 1.0F) {
-         this.cd = 1.0F;
-      }
-
-      this.cd *= 0.9F;
-      faz $$0 = this.dy();
-      if (!this.aJ() && $$0.e < 0.0) {
-         this.i($$0.d(1.0, 0.6, 1.0));
-      }
-
-      this.bY = this.bY + this.cd * 2.0F;
-      if (this.dV() instanceof ard $$1 && this.bL() && !this.e_() && !this.t() && --this.ce <= 0) {
-         if (this.a($$1, evm.aI, this::a)) {
-            this.a(awa.eV, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
-            this.a(ebs.t);
-         }
-
-         this.ce = this.ae.a(6000) + 6000;
-      }
-   }
-
-   @Override
-   protected boolean ba() {
-      return this.Y > this.ch;
-   }
-
-   @Override
-   protected void aZ() {
-      this.ch = this.Y + this.bZ / 2.0F;
-   }
-
-   @Override
-   protected avz u() {
-      return awa.eT;
-   }
-
-   @Override
-   protected avz e(bta $$0) {
-      return awa.eW;
-   }
-
-   @Override
-   protected avz o_() {
-      return awa.eU;
-   }
-
-   @Override
-   protected void b(ji $$0, dww $$1) {
-      this.a(awa.eX, 0.15F, 1.0F);
-   }
-
-   @Nullable
-   public chc b(ard $$0, bub $$1) {
-      return bur.z.a($$0, buq.e);
-   }
-
-   @Override
-   public boolean j(cwo $$0) {
-      return $$0.a(awy.an);
-   }
-
-   @Override
-   protected int e(ard $$0) {
-      return this.t() ? 10 : super.e($$0);
-   }
-
-   @Override
-   public void a(tq $$0) {
-      super.a($$0);
-      this.cf = $$0.q("IsChickenJockey");
-      if ($$0.e("EggLayTime")) {
-         this.ce = $$0.h("EggLayTime");
-      }
-   }
-
-   @Override
-   public void b(tq $$0) {
-      super.b($$0);
-      $$0.a("IsChickenJockey", this.cf);
-      $$0.a("EggLayTime", this.ce);
-   }
-
-   @Override
-   public boolean h(double $$0) {
-      return this.t();
-   }
-
-   @Override
-   protected void a(buk $$0, buk.a $$1) {
-      super.a($$0, $$1);
-      if ($$0 instanceof bvg) {
-         ((bvg)$$0).aX = this.aX;
-      }
-   }
-
-   public boolean t() {
-      return this.cf;
-   }
-
-   public void x(boolean $$0) {
-      this.cf = $$0;
+   public akv a() {
+      return this.m;
    }
 }

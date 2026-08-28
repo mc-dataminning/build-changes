@@ -1,4 +1,4 @@
-public record acs(dfn b) implements yw<abl> {
+public record acs(dfo b) implements yw<abl> {
    public static final yn<vl, acs> a = yw.a(acs::a, acs::new);
 
    private acs(vl $$0) {

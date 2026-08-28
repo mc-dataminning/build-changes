@@ -12,7 +12,7 @@ public class alt {
 
    public static <D, R> CompletableFuture<R> a(alt.c $$0, alt.f<D> $$1, alt.e<D, R> $$2, Executor $$3, Executor $$4) {
       try {
-         Pair<dhe, auf> $$5 = $$0.a.a();
+         Pair<dhf, auf> $$5 = $$0.a.a();
          auf $$6 = (auf)$$5.getSecond();
          jy<ale> $$7 = ale.a();
          List<ke.a<?>> $$8 = axg.a($$6, $$7.a(ale.a));
@@ -21,7 +21,7 @@ public class alt {
          kf.b $$11 = akq.a($$6, $$10, akq.a);
          List<jt.b<?>> $$12 = Stream.concat($$10.stream(), $$11.c()).toList();
          kf.b $$13 = akq.a($$6, $$12, akq.b);
-         dhe $$14 = (dhe)$$5.getFirst();
+         dhf $$14 = (dhf)$$5.getFirst();
          jt.a $$15 = jt.a.a($$12.stream());
          alt.b<D> $$16 = $$1.get(new alt.a($$6, $$14, $$15, $$13));
          jy<ale> $$17 = $$7.a(ale.b, $$11, $$16.b);
@@ -38,7 +38,7 @@ public class alt {
       }
    }
 
-   public static record a(aup a, dhe b, jt.a c, kf.b d) {
+   public static record a(aup a, dhf b, jt.a c, kf.b d) {
    }
 
    public static record b<D>(D a, kf.b b) {
@@ -47,9 +47,9 @@ public class alt {
    public static record c(alt.d a, ey.a b, int c) {
    }
 
-   public static record d(aua a, dhe b, boolean c, boolean d) {
-      public Pair<dhe, auf> a() {
-         dhe $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
+   public static record d(aua a, dhf b, boolean c, boolean d) {
+      public Pair<dhf, auf> a() {
+         dhf $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
          List<atc> $$1 = this.a.h();
          auf $$2 = new aui(ate.b, $$1);
          return Pair.of($$0, $$2);
@@ -59,7 +59,7 @@ public class alt {
          return this.a;
       }
 
-      public dhe c() {
+      public dhf c() {
          return this.b;
       }
 

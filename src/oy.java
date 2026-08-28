@@ -1,6 +1,6 @@
 import java.util.concurrent.CompletableFuture;
 
-public class oy extends pn<dto> {
+public class oy extends pn<dtp> {
    public oy(mk $$0, CompletableFuture<jt.a> $$1) {
       super($$0, mc.d, $$1);
    }
@@ -9,48 +9,48 @@ public class oy extends pn<dto> {
    protected void a(jt.a $$0) {
       this.b(awn.a)
          .a(
-            dtq.b,
-            dtq.c,
-            dtq.d,
-            dtq.e,
-            dtq.f,
-            dtq.g,
-            dtq.h,
-            dtq.i,
-            dtq.j,
-            dtq.k,
-            dtq.l,
-            dtq.m,
-            dtq.n,
-            dtq.o,
-            dtq.p,
-            dtq.q,
-            dtq.r,
-            dtq.s,
-            dtq.t,
-            dtq.u,
-            dtq.v,
-            dtq.w,
-            dtq.x,
-            dtq.y,
-            dtq.z,
-            dtq.A,
-            dtq.B,
-            dtq.C,
-            dtq.D,
-            dtq.E,
-            dtq.G,
-            dtq.H
+            dtr.b,
+            dtr.c,
+            dtr.d,
+            dtr.e,
+            dtr.f,
+            dtr.g,
+            dtr.h,
+            dtr.i,
+            dtr.j,
+            dtr.k,
+            dtr.l,
+            dtr.m,
+            dtr.n,
+            dtr.o,
+            dtr.p,
+            dtr.q,
+            dtr.r,
+            dtr.s,
+            dtr.t,
+            dtr.u,
+            dtr.v,
+            dtr.w,
+            dtr.x,
+            dtr.y,
+            dtr.z,
+            dtr.A,
+            dtr.B,
+            dtr.C,
+            dtr.D,
+            dtr.E,
+            dtr.G,
+            dtr.H
          );
-      this.b(awn.b).a(dtq.M);
-      this.b(awn.c).a(dtq.K);
-      this.b(awn.d).a(dtq.L);
-      this.b(awn.e).a(dtq.N);
-      this.b(awn.f).a(dtq.J);
-      this.b(awn.g).a(dtq.O);
-      this.b(awn.h).a(dtq.P);
-      this.b(awn.i).a(dtq.Q);
-      this.b(awn.j).a(dtq.I);
-      this.b(awn.k).a(dtq.F);
+      this.b(awn.b).a(dtr.M);
+      this.b(awn.c).a(dtr.K);
+      this.b(awn.d).a(dtr.L);
+      this.b(awn.e).a(dtr.N);
+      this.b(awn.f).a(dtr.J);
+      this.b(awn.g).a(dtr.O);
+      this.b(awn.h).a(dtr.P);
+      this.b(awn.i).a(dtr.Q);
+      this.b(awn.j).a(dtr.I);
+      this.b(awn.k).a(dtr.F);
    }
 }

@@ -4,11 +4,11 @@ public class ahn implements yw<agg> {
    private final ahn.a c;
    private final int d;
 
-   public ahn(buk $$0, ahn.a $$1) {
+   public ahn(bul $$0, ahn.a $$1) {
       this($$0, $$1, 0);
    }
 
-   public ahn(buk $$0, ahn.a $$1, int $$2) {
+   public ahn(bul $$0, ahn.a $$1, int $$2) {
       this.b = $$0.ar();
       this.c = $$1;
       this.d = $$2;

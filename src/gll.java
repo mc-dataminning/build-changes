@@ -1,51 +1,132 @@
-public enum gll {
-   a(new gll.b(gll.a.f, gll.a.e, gll.a.a), new gll.b(gll.a.f, gll.a.e, gll.a.d), new gll.b(gll.a.c, gll.a.e, gll.a.d), new gll.b(gll.a.c, gll.a.e, gll.a.a)),
-   b(new gll.b(gll.a.f, gll.a.b, gll.a.d), new gll.b(gll.a.f, gll.a.b, gll.a.a), new gll.b(gll.a.c, gll.a.b, gll.a.a), new gll.b(gll.a.c, gll.a.b, gll.a.d)),
-   c(new gll.b(gll.a.c, gll.a.b, gll.a.d), new gll.b(gll.a.c, gll.a.e, gll.a.d), new gll.b(gll.a.f, gll.a.e, gll.a.d), new gll.b(gll.a.f, gll.a.b, gll.a.d)),
-   d(new gll.b(gll.a.f, gll.a.b, gll.a.a), new gll.b(gll.a.f, gll.a.e, gll.a.a), new gll.b(gll.a.c, gll.a.e, gll.a.a), new gll.b(gll.a.c, gll.a.b, gll.a.a)),
-   e(new gll.b(gll.a.f, gll.a.b, gll.a.d), new gll.b(gll.a.f, gll.a.e, gll.a.d), new gll.b(gll.a.f, gll.a.e, gll.a.a), new gll.b(gll.a.f, gll.a.b, gll.a.a)),
-   f(new gll.b(gll.a.c, gll.a.b, gll.a.a), new gll.b(gll.a.c, gll.a.e, gll.a.a), new gll.b(gll.a.c, gll.a.e, gll.a.d), new gll.b(gll.a.c, gll.a.b, gll.a.d));
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 
-   private static final gll[] g = af.a(new gll[6], $$0 -> {
-      $$0[gll.a.e] = a;
-      $$0[gll.a.b] = b;
-      $$0[gll.a.d] = c;
-      $$0[gll.a.a] = d;
-      $$0[gll.a.f] = e;
-      $$0[gll.a.c] = f;
+public abstract class gll {
+   private static final Object2ObjectMap<akv, gll> a = af.a(new Object2ObjectArrayMap(), $$0 -> {
+      gll.c $$1 = new gll.c();
+      $$0.defaultReturnValue($$1);
+      $$0.put(eaq.e, $$1);
+      $$0.put(eaq.f, new gll.b());
+      $$0.put(eaq.g, new gll.a());
    });
-   private final gll.b[] h;
+   private final float b;
+   private final boolean c;
+   private final gll.d d;
+   private final boolean e;
+   private final boolean f;
 
-   public static gll a(jn $$0) {
-      return g[$$0.d()];
+   public gll(float $$0, boolean $$1, gll.d $$2, boolean $$3, boolean $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 
-   private gll(final gll.b... $$0) {
-      this.h = $$0;
+   public static gll a(eas $$0) {
+      return (gll)a.get($$0.r());
    }
 
-   public gll.b a(int $$0) {
-      return this.h[$$0];
+   public boolean a(float $$0) {
+      return false;
    }
 
-   public static final class a {
-      public static final int a = jn.d.d();
-      public static final int b = jn.b.d();
-      public static final int c = jn.f.d();
-      public static final int d = jn.c.d();
-      public static final int e = jn.a.d();
-      public static final int f = jn.e.d();
+   public int b(float $$0) {
+      return 0;
    }
 
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
+   public float a() {
+      return this.b;
+   }
 
-      b(int $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   public boolean b() {
+      return this.c;
+   }
+
+   public abstract fba a(fba var1, float var2);
+
+   public abstract boolean a(int var1, int var2);
+
+   public gll.d c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.f;
+   }
+
+   public static class a extends gll {
+      public a() {
+         super(Float.NaN, false, gll.d.c, true, false);
       }
+
+      @Override
+      public fba a(fba $$0, float $$1) {
+         return $$0.c(0.15F);
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+   }
+
+   public static class b extends gll {
+      public b() {
+         super(Float.NaN, true, gll.d.a, false, true);
+      }
+
+      @Override
+      public fba a(fba $$0, float $$1) {
+         return $$0;
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return true;
+      }
+   }
+
+   public static class c extends gll {
+      public static final int a = 192;
+      private static final float b = 0.4F;
+
+      public c() {
+         super(192.0F, true, gll.d.b, false, false);
+      }
+
+      @Override
+      public boolean a(float $$0) {
+         float $$1 = ayz.b($$0 * (float) (Math.PI * 2));
+         return $$1 >= -0.4F && $$1 <= 0.4F;
+      }
+
+      @Override
+      public int b(float $$0) {
+         float $$1 = ayz.b($$0 * (float) (Math.PI * 2));
+         float $$2 = $$1 / 0.4F * 0.5F + 0.5F;
+         float $$3 = ayz.l(1.0F - (1.0F - ayz.a($$2 * (float) Math.PI)) * 0.99F);
+         return axk.a($$3, $$2 * 0.3F + 0.7F, $$2 * $$2 * 0.7F + 0.2F, 0.2F);
+      }
+
+      @Override
+      public fba a(fba $$0, float $$1) {
+         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+   }
+
+   public static enum d {
+      a,
+      b,
+      c;
    }
 }

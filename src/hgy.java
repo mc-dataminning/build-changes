@@ -1,67 +1,127 @@
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
 
-public class hgy {
-   public static final Comparator<hgy> a = Comparator.<hgy, akv>comparing(hgy::a).thenComparing(hgy::b);
-   private final akv b;
-   private final akv c;
-   @Nullable
-   private gmh d;
+public record hgy(Map<hgy.d, List<hgy.c>> b) {
+   private static final Codec<List<hgy.c>> c = ayi.b(hgy.c.a.listOf());
+   public static final Codec<hgy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayi.d(Codec.unboundedMap(hgy.d.g, c)).fieldOf("layers").forGetter(hgy::b)).apply($$0, hgy::new)
+   );
 
-   public hgy(akv $$0, akv $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static hgy.a a() {
+      return new hgy.a();
    }
 
-   public akv a() {
-      return this.b;
+   public List<hgy.c> a(hgy.d $$0) {
+      return this.b.getOrDefault($$0, List.of());
    }
 
-   public akv b() {
-      return this.c;
-   }
+   public static class a {
+      private final Map<hgy.d, List<hgy.c>> a = new EnumMap<>(hgy.d.class);
 
-   public her c() {
-      return fli.Q().a(this.a()).apply(this.b());
-   }
-
-   public gmh a(Function<akv, gmh> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this.b);
+      a() {
       }
 
-      return this.d;
-   }
+      public hgy.a a(akv $$0) {
+         return this.a($$0, false);
+      }
 
-   public ffx a(glx $$0, Function<akv, gmh> $$1) {
-      return this.c().a($$0.getBuffer(this.a($$1)));
-   }
+      public hgy.a a(akv $$0, boolean $$1) {
+         this.a(hgy.d.b, hgy.c.a($$0, $$1));
+         this.b($$0, $$1);
+         return this;
+      }
 
-   public ffx a(glx $$0, Function<akv, gmh> $$1, boolean $$2, boolean $$3) {
-      return this.c().a(gtb.a($$0, this.a($$1), $$2, $$3));
-   }
+      public hgy.a b(akv $$0, boolean $$1) {
+         return this.a(hgy.d.a, hgy.c.a($$0, $$1));
+      }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         hgy $$1 = (hgy)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
+      public hgy.a a(hgy.d $$0, hgy.c... $$1) {
+         Collections.addAll(this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()), $$1);
+         return this;
+      }
+
+      public hgy a() {
+         return new hgy(this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> List.copyOf((Collection)$$0.getValue()))));
       }
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c);
+   public static record b(Optional<Integer> b) {
+      public static final Codec<hgy.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ayi.i.optionalFieldOf("color_when_undyed").forGetter(hgy.b::a)).apply($$0, hgy.b::new)
+      );
+
+      public Optional<Integer> a() {
+         return this.b;
+      }
    }
 
-   @Override
-   public String toString() {
-      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
+   public static record c(akv b, Optional<hgy.b> c, boolean d) {
+      public static final Codec<hgy.c> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  akv.a.fieldOf("texture").forGetter(hgy.c::a),
+                  hgy.b.a.optionalFieldOf("dyeable").forGetter(hgy.c::b),
+                  Codec.BOOL.optionalFieldOf("use_player_texture", false).forGetter(hgy.c::c)
+               )
+               .apply($$0, hgy.c::new)
+      );
+
+      public c(akv $$0) {
+         this($$0, Optional.empty(), false);
+      }
+
+      public static hgy.c a(akv $$0, boolean $$1) {
+         return new hgy.c($$0, $$1 ? Optional.of(new hgy.b(Optional.of(-6265536))) : Optional.empty(), false);
+      }
+
+      public static hgy.c b(akv $$0, boolean $$1) {
+         return new hgy.c($$0, $$1 ? Optional.of(new hgy.b(Optional.empty())) : Optional.empty(), false);
+      }
+
+      public akv a(hgy.d $$0) {
+         return this.b.a((UnaryOperator<String>)($$1 -> "textures/entity/equipment/" + $$0.c() + "/" + $$1 + ".png"));
+      }
+
+      public akv a() {
+         return this.b;
+      }
+
+      public Optional<hgy.b> b() {
+         return this.c;
+      }
+
+      public boolean c() {
+         return this.d;
+      }
+   }
+
+   public static enum d implements azv {
+      a("humanoid"),
+      b("humanoid_leggings"),
+      c("wings"),
+      d("wolf_body"),
+      e("horse_body"),
+      f("llama_body");
+
+      public static final Codec<hgy.d> g = azv.a(hgy.d::values);
+      private final String h;
+
+      private d(final String $$0) {
+         this.h = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
    }
 }

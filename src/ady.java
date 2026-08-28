@@ -16,12 +16,12 @@ public record ady(List<ady.a> b, boolean c) implements yw<abl> {
       return this.c;
    }
 
-   public static record a(dcj d, byte e) {
+   public static record a(dck d, byte e) {
       public static final byte a = 1;
       public static final byte b = 2;
-      public static final yn<wa, ady.a> c = yn.a(dcj.a, ady.a::c, yl.c, ady.a::d, ady.a::new);
+      public static final yn<wa, ady.a> c = yn.a(dck.a, ady.a::c, yl.c, ady.a::d, ady.a::new);
 
-      public a(dcj $$0, boolean $$1, boolean $$2) {
+      public a(dck $$0, boolean $$1, boolean $$2) {
          this($$0, (byte)(($$1 ? 1 : 0) | ($$2 ? 2 : 0)));
       }
 
@@ -33,7 +33,7 @@ public record ady(List<ady.a> b, boolean c) implements yw<abl> {
          return (this.e & 2) != 0;
       }
 
-      public dcj c() {
+      public dck c() {
          return this.d;
       }
 

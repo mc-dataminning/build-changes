@@ -1,37 +1,22 @@
 import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
 public class hkn {
-   private static final int a = -1;
-   private Optional<Instant> b = Optional.empty();
-   private long c;
-   private long d;
+   private final boolean a;
+   @Nullable
+   private final Duration b;
 
-   public void a() {
-      this.d = -1L;
-      if (this.b.isEmpty()) {
-         this.b = Optional.of(Instant.now());
+   public hkn(boolean $$0, @Nullable Duration $$1) {
+      this.b = $$1;
+      this.a = $$0;
+   }
+
+   public void a(hkd $$0) {
+      if (this.b != null) {
+         $$0.send(hke.d, $$0x -> {
+            $$0x.a(hkg.x, (int)this.b.toMillis());
+            $$0x.a(hkg.y, this.a);
+         });
       }
-   }
-
-   public void a(long $$0) {
-      if (this.d != -1L) {
-         this.c = this.c + Math.max(0L, $$0 - this.d);
-      }
-
-      this.d = $$0;
-   }
-
-   private int a(Instant $$0) {
-      Duration $$1 = Duration.between($$0, Instant.now());
-      return (int)$$1.toSeconds();
-   }
-
-   public void a(hkc $$0) {
-      this.b.ifPresent($$1 -> $$0.send(hkd.e, $$1x -> {
-            $$1x.a(hkf.p, this.a($$1));
-            $$1x.a(hkf.q, (int)this.c);
-         }));
    }
 }

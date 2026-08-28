@@ -1,78 +1,157 @@
+import com.google.common.collect.Multimap;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.DataResult.Error;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public record bwm(akv d, double e, bwm.a f) {
-   private static final Logger g = LogUtils.getLogger();
-   public static final MapCodec<bwm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akv.a.fieldOf("id").forGetter(bwm::b), Codec.DOUBLE.fieldOf("amount").forGetter(bwm::c), bwm.a.f.fieldOf("operation").forGetter(bwm::d))
-            .apply($$0, bwm::new)
-   );
-   public static final Codec<bwm> b = a.codec();
-   public static final yn<ByteBuf, bwm> c = yn.a(akv.b, bwm::b, yl.m, bwm::c, bwm.a.e, bwm::d, bwm::new);
+public class bwm {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<jr<bwk>, bwl> b = new Object2ObjectOpenHashMap();
+   private final Set<bwl> c = new ObjectOpenHashSet();
+   private final Set<bwl> d = new ObjectOpenHashSet();
+   private final bwo e;
 
-   public tq a() {
-      DataResult<un> $$0 = b.encode(this, ue.a, new tq());
-      return (tq)$$0.getOrThrow();
+   public bwm(bwo $$0) {
+      this.e = $$0;
    }
 
-   @Nullable
-   public static bwm a(tq $$0) {
-      DataResult<bwm> $$1 = b.parse(ue.a, $$0);
-      if ($$1.isSuccess()) {
-         return (bwm)$$1.getOrThrow();
-      } else {
-         g.warn("Unable to create attribute: {}", ((Error)$$1.error().get()).message());
-         return null;
+   private void a(bwl $$0) {
+      this.d.add($$0);
+      if ($$0.a().a().b()) {
+         this.c.add($$0);
       }
    }
 
-   public boolean a(akv $$0) {
-      return $$0.equals(this.d);
+   public Set<bwl> a() {
+      return this.c;
    }
 
-   public akv b() {
+   public Set<bwl> b() {
       return this.d;
    }
 
-   public double c() {
-      return this.e;
+   public Collection<bwl> c() {
+      return this.b.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
    }
 
-   public bwm.a d() {
-      return this.f;
+   @Nullable
+   public bwl a(jr<bwk> $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> this.e.a(this::a, $$0x));
    }
 
-   public static enum a implements azv {
-      a("add_value", 0),
-      b("add_multiplied_base", 1),
-      c("add_multiplied_total", 2);
+   public boolean b(jr<bwk> $$0) {
+      return this.b.get($$0) != null || this.e.c($$0);
+   }
 
-      public static final IntFunction<bwm.a> d = axq.a(bwm.a::a, values(), axq.a.a);
-      public static final yn<ByteBuf, bwm.a> e = yl.a(d, bwm.a::a);
-      public static final Codec<bwm.a> f = azv.a(bwm.a::values);
-      private final String g;
-      private final int h;
+   public boolean a(jr<bwk> $$0, akv $$1) {
+      bwl $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1) != null : this.e.b($$0, $$1);
+   }
 
-      private a(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
+   public double c(jr<bwk> $$0) {
+      bwl $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.g() : this.e.a($$0);
+   }
+
+   public double d(jr<bwk> $$0) {
+      bwl $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.b() : this.e.b($$0);
+   }
+
+   public double b(jr<bwk> $$0, akv $$1) {
+      bwl $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1).c() : this.e.a($$0, $$1);
+   }
+
+   public void a(Multimap<jr<bwk>, bwn> $$0) {
+      $$0.forEach(($$0x, $$1) -> {
+         bwl $$2 = this.a($$0x);
+         if ($$2 != null) {
+            $$2.c($$1.b());
+            $$2.b($$1);
+         }
+      });
+   }
+
+   public void b(Multimap<jr<bwk>, bwn> $$0) {
+      $$0.asMap().forEach(($$0x, $$1) -> {
+         bwl $$2 = this.b.get($$0x);
+         if ($$2 != null) {
+            $$1.forEach($$1x -> $$2.c($$1x.b()));
+         }
+      });
+   }
+
+   public void a(bwm $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bwl $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x);
+         }
+      });
+   }
+
+   public void b(bwm $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bwl $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.b());
+         }
+      });
+   }
+
+   public void c(bwm $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bwl $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.d());
+         }
+      });
+   }
+
+   public boolean e(jr<bwk> $$0) {
+      if (!this.e.c($$0)) {
+         return false;
+      } else {
+         bwl $$1 = this.b.get($$0);
+         if ($$1 != null) {
+            $$1.a(this.e.b($$0));
+         }
+
+         return true;
+      }
+   }
+
+   public tw d() {
+      tw $$0 = new tw();
+
+      for (bwl $$1 : this.b.values()) {
+         $$0.add($$1.h());
       }
 
-      public int a() {
-         return this.h;
-      }
+      return $$0;
+   }
 
-      @Override
-      public String c() {
-         return this.g;
+   public void a(tw $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         tq $$2 = $$0.a($$1);
+         String $$3 = $$2.l("id");
+         akv $$4 = akv.c($$3);
+         if ($$4 != null) {
+            af.a(mb.s.c($$4), $$1x -> {
+               bwl $$2x = this.a($$1x);
+               if ($$2x != null) {
+                  $$2x.a($$2);
+               }
+            }, () -> a.warn("Ignoring unknown attribute '{}'", $$4));
+         } else {
+            a.warn("Ignoring malformed attribute '{}'", $$3);
+         }
       }
    }
 }

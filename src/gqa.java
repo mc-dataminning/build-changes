@@ -1,61 +1,151 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-public class gqa implements gpy.a {
-   private static final float a = 0.02F;
-   private final Map<ji, gqa.a> b = Maps.newHashMap();
+public class gqa implements gpz.a {
+   private final flj a;
+   private static final int b = 32;
+   private static final float c = 1.0F;
+   private final List<gqa.a> d = Lists.newArrayList();
+   private final List<gqa.b> e = Lists.newArrayList();
 
-   public void a(ji $$0, int $$1, String $$2, int $$3) {
-      this.b.put($$0, new gqa.a($$1, $$2, af.c() + (long)$$3));
+   public gqa(flj $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a() {
-      this.b.clear();
-   }
+   public void a(ffu $$0, gly $$1, double $$2, double $$3, double $$4) {
+      dgi $$5 = this.a.s;
+      if ($$5 == null) {
+         this.d.clear();
+         this.e.clear();
+      } else {
+         fba $$6 = new fba($$2, 0.0, $$4);
+         this.d.removeIf(gqa.a::a);
+         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
+         ffy $$7 = $$1.getBuffer(gmi.y());
 
-   @Override
-   public void a(fft $$0, glx $$1, double $$2, double $$3, double $$4) {
-      long $$5 = af.c();
-      this.b.entrySet().removeIf($$1x -> $$5 > ((gqa.a)$$1x.getValue()).c);
-      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
-   }
+         for (gqa.b $$8 : this.e) {
+            $$8.a($$5).ifPresent($$6x -> {
+               double $$7x = $$6x.a() - (double)$$8.b();
+               double $$8x = $$6x.b() - (double)$$8.b();
+               double $$9 = $$6x.c() - (double)$$8.b();
+               double $$10 = $$6x.a() + (double)$$8.b();
+               double $$11 = $$6x.b() + (double)$$8.b();
+               double $$12x = $$6x.c() + (double)$$8.b();
+               gpz.a($$0, $$7, fbr.a(new fav($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
+            });
+         }
 
-   private void a(fft $$0, glx $$1, ji $$2, gqa.a $$3) {
-      gpy.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
-      if (!$$3.b.isEmpty()) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v() + 1.2;
-         double $$6 = (double)$$2.w() + 0.5;
-         gpy.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
+         ffy $$9 = $$1.getBuffer(gmi.B());
+
+         for (gqa.b $$10 : this.e) {
+            $$10.a($$5)
+               .ifPresent(
+                  $$5x -> gms.b(
+                        $$0,
+                        $$9,
+                        $$5x.a() - 0.25 - $$2,
+                        $$5x.b() - $$3,
+                        $$5x.c() - 0.25 - $$4,
+                        $$5x.a() + 0.25 - $$2,
+                        $$5x.b() - $$3 + 1.0,
+                        $$5x.c() + 0.25 - $$4,
+                        1.0F,
+                        1.0F,
+                        0.0F,
+                        0.35F
+                     )
+               );
+         }
+
+         for (gqa.b $$11 : this.e) {
+            $$11.a($$5).ifPresent($$2x -> {
+               gpz.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
+               gpz.a($$0, $$1, ji.a((kb)$$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
+            });
+         }
+
+         for (gqa.a $$12 : this.d) {
+            fba $$13 = $$12.c;
+            double $$14 = 0.2F;
+            double $$15 = $$13.d - 0.2F;
+            double $$16 = $$13.e - 0.2F;
+            double $$17 = $$13.f - 0.2F;
+            double $$18 = $$13.d + 0.2F;
+            double $$19 = $$13.e + 0.2F + 0.5;
+            double $$20 = $$13.f + 0.2F;
+            a($$0, $$1, new fav($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
+            gpz.a($$0, $$1, $$12.b.a().toString(), $$13.d, $$13.e + 0.85F, $$13.f, -7564911, 0.0075F);
+         }
       }
    }
 
-   static class a {
-      public int a;
-      public String b;
-      public long c;
+   private static void a(ffu $$0, gly $$1, fav $$2, float $$3, float $$4, float $$5, float $$6) {
+      fkr $$7 = flj.Q().j.k();
+      if ($$7.h()) {
+         fba $$8 = $$7.b().e();
+         gpz.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
+      }
+   }
 
-      public a(int $$0, String $$1, long $$2) {
+   public void a(aku<ebt> $$0, fba $$1) {
+      this.d.add(new gqa.a(af.c(), $$0, $$1));
+   }
+
+   public void a(ebx $$0, int $$1) {
+      this.e.add(new gqa.b($$0, $$1));
+   }
+
+   static record a(long a, aku<ebt> b, fba c) {
+
+      public boolean a() {
+         return af.c() - this.a > 3000L;
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public aku<ebt> c() {
+         return this.b;
+      }
+
+      public fba d() {
+         return this.c;
+      }
+   }
+
+   static class b implements ebv {
+      public final ebx a;
+      public final int b;
+
+      public b(ebx $$0, int $$1) {
          this.a = $$0;
          this.b = $$1;
-         this.c = $$2;
       }
 
-      public float a() {
-         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      public boolean a(dgi $$0, fba $$1) {
+         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
       }
 
-      public float b() {
-         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      public Optional<fba> a(dgi $$0) {
+         return this.a.a($$0);
       }
 
-      public float c() {
-         return (float)(this.a & 0xFF) / 255.0F;
+      @Override
+      public ebx a() {
+         return this.a;
       }
 
-      public float d() {
-         return (float)(this.a >> 24 & 0xFF) / 255.0F;
+      @Override
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public boolean a(ard $$0, jr<ebt> $$1, ebt.a $$2, fba $$3) {
+         return false;
       }
    }
 }

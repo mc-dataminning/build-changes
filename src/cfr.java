@@ -1,43 +1,76 @@
-import java.util.function.Supplier;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.BiPredicate;
 
-public class cfr<U extends cfq<?>> {
-   public static final cfr<cfa> a = a("dummy", cfa::new);
-   public static final cfr<cfi> b = a("nearest_items", cfi::new);
-   public static final cfr<cfj<bvg>> c = a("nearest_living_entities", cfj::new);
-   public static final cfr<cfn> d = a("nearest_players", cfn::new);
-   public static final cfr<cfh> e = a("nearest_bed", cfh::new);
-   public static final cfr<cfe> f = a("hurt_by", cfe::new);
-   public static final cfr<cfu> g = a("villager_hostiles", cfu::new);
-   public static final cfr<cft> h = a("villager_babies", cft::new);
-   public static final cfr<cfo> i = a("secondary_pois", cfo::new);
-   public static final cfr<cfc> j = a("golem_detected", cfc::new);
-   public static final cfr<cfg<cig>> k = a("armadillo_scare_detected", () -> new cfg<>(5, cig::j, cig::gE, cek.G, 80));
-   public static final cfr<cfm> l = a("piglin_specific_sensor", cfm::new);
-   public static final cfr<cfl> m = a("piglin_brute_specific_sensor", cfl::new);
-   public static final cfr<cfd> n = a("hoglin_specific_sensor", cfd::new);
-   public static final cfr<cex> o = a("nearest_adult", cex::new);
-   public static final cfr<cey> p = a("axolotl_attackables", cey::new);
-   public static final cfr<cfs> q = a("axolotl_temptations", () -> new cfs(cik.a()));
-   public static final cfr<cfs> r = a("goat_temptations", () -> new cfs(ciy.a()));
-   public static final cfr<cfs> s = a("frog_temptations", () -> new cfs(cis.a()));
-   public static final cfr<cfs> t = a("camel_temptations", () -> new cfs(cip.b()));
-   public static final cfr<cfs> u = a("armadillo_temptations", () -> new cfs(cih.b()));
-   public static final cfr<cfb> v = a("frog_attackables", cfb::new);
-   public static final cfr<cff> w = a("is_in_water", cff::new);
-   public static final cfr<cfv> x = a("warden_entity_sensor", cfv::new);
-   public static final cfr<cfs> y = a("sniffer_temptations", () -> new cfs(cjp.a()));
-   public static final cfr<cez> z = a("breeze_attack_entity_sensor", cez::new);
-   private final Supplier<U> A;
+public abstract class cfr<E extends bvh> {
+   private static final azh a = azh.b();
+   private static final int b = 20;
+   private static final int c = 16;
+   private static final cfy d = cfy.b().a(16.0);
+   private static final cfy e = cfy.b().a(16.0).e();
+   private static final cfy f = cfy.a().a(16.0);
+   private static final cfy g = cfy.a().a(16.0).e();
+   private static final cfy h = cfy.a().a(16.0).d();
+   private static final cfy i = cfy.a().a(16.0).d().e();
+   private final int j;
+   private long k;
 
-   private cfr(Supplier<U> $$0) {
-      this.A = $$0;
+   public cfr(int $$0) {
+      this.j = $$0;
+      this.k = (long)a.a($$0);
    }
 
-   public U a() {
-      return this.A.get();
+   public cfr() {
+      this(20);
    }
 
-   private static <U extends cfq<?>> cfr<U> a(String $$0, Supplier<U> $$1) {
-      return ke.a(mb.A, akv.b($$0), new cfr<>($$1));
+   public final void b(ard $$0, E $$1) {
+      if (--this.k <= 0L) {
+         this.k = (long)this.j;
+         this.a($$1);
+         this.a($$0, $$1);
+      }
+   }
+
+   private void a(E $$0) {
+      double $$1 = $$0.h(bwp.m);
+      d.a($$1);
+      e.a($$1);
+      f.a($$1);
+      g.a($$1);
+      h.a($$1);
+      i.a($$1);
+   }
+
+   protected abstract void a(ard var1, E var2);
+
+   public abstract Set<cel<?>> a();
+
+   public static boolean b(ard $$0, bvh $$1, bvh $$2) {
+      return $$1.eb().b(cel.o, $$2) ? e.a($$0, $$1, $$2) : d.a($$0, $$1, $$2);
+   }
+
+   public static boolean c(ard $$0, bvh $$1, bvh $$2) {
+      return $$1.eb().b(cel.o, $$2) ? g.a($$0, $$1, $$2) : f.a($$0, $$1, $$2);
+   }
+
+   public static BiPredicate<ard, bvh> a(bvh $$0, int $$1) {
+      return a($$1, ($$1x, $$2) -> c($$1x, $$0, $$2));
+   }
+
+   public static boolean d(ard $$0, bvh $$1, bvh $$2) {
+      return $$1.eb().b(cel.o, $$2) ? i.a($$0, $$1, $$2) : h.a($$0, $$1, $$2);
+   }
+
+   static <T, U> BiPredicate<T, U> a(int $$0, BiPredicate<T, U> $$1) {
+      AtomicInteger $$2 = new AtomicInteger(0);
+      return ($$3, $$4) -> {
+         if ($$1.test($$3, $$4)) {
+            $$2.set($$0);
+            return true;
+         } else {
+            return $$2.decrementAndGet() >= 0;
+         }
+      };
    }
 }

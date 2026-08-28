@@ -1,49 +1,17 @@
-public class ghx extends gkg {
-   private final gkb a;
-
-   ghx(gfy $$0, double $$1, double $$2, double $$3, double $$4, gkb $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
+public class ghx extends ghz {
+   protected ghx(gfz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gkc $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
+   public static class a implements gjk<lx> {
+      private final gkc a;
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
-      }
-   }
-
-   @Override
-   public gjk b() {
-      return gjk.b;
-   }
-
-   public static class a implements gjj<lx> {
-      private final gkb a;
-
-      public a(gkb $$0) {
+      public a(gkc $$0) {
          this.a = $$0;
       }
 
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghx($$1, $$2, $$3, $$4, $$5, this.a);
+      public gjh a(lx $$0, gfz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ghx($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
       }
    }
 }

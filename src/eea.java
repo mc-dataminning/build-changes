@@ -1,16 +1,23 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
 
-abstract class eea implements edy {
-   protected final List<edy> e;
+public interface eea<P extends edz> {
+   eea<eef> a = a("matching_blocks", eef.a);
+   eea<eee> b = a("matching_block_tag", eee.e);
+   eea<eeg> c = a("matching_fluids", eeg.a);
+   eea<eec> d = a("has_sturdy_face", eec.a);
+   eea<eej> e = a("solid", eej.a);
+   eea<eei> f = a("replaceable", eei.a);
+   eea<een> g = a("would_survive", een.a);
+   eea<eed> h = a("inside_world_bounds", eed.a);
+   eea<edy> i = a("any_of", edy.a);
+   eea<edx> j = a("all_of", edx.a);
+   eea<eeh> k = a("not", eeh.a);
+   eea<eel> l = a("true", eel.e);
+   eea<eem> m = a("unobstructed", eem.a);
 
-   protected eea(List<edy> $$0) {
-      this.e = $$0;
-   }
+   MapCodec<P> codec();
 
-   public static <T extends eea> MapCodec<T> a(Function<List<edy>, T> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(edy.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
+   private static <P extends edz> eea<P> a(String $$0, MapCodec<P> $$1) {
+      return ke.a(mb.M, $$0, () -> $$1);
    }
 }

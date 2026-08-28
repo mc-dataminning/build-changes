@@ -85,7 +85,7 @@ public class anx {
       return $$0 != null ? List.of($$0) : List.of();
    }
 
-   private static int a(ex $$0, Collection<are> $$1, akv $$2, awb $$3, faz $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+   private static int a(ex $$0, Collection<are> $$1, akv $$2, awb $$3, fba $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
       jr<avz> $$8 = jr.a(avz.a($$2));
       double $$9 = (double)ayz.l($$8.a().a($$5));
       int $$10 = 0;
@@ -96,7 +96,7 @@ public class anx {
          double $$14 = $$4.e - $$12.dC();
          double $$15 = $$4.f - $$12.dG();
          double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         faz $$17 = $$4;
+         fba $$17 = $$4;
          float $$18 = $$5;
          if ($$16 > $$9) {
             if ($$7 <= 0.0F) {
@@ -104,7 +104,7 @@ public class anx {
             }
 
             double $$19 = Math.sqrt($$16);
-            $$17 = new faz($$12.dA() + $$13 / $$19 * 2.0, $$12.dC() + $$14 / $$19 * 2.0, $$12.dG() + $$15 / $$19 * 2.0);
+            $$17 = new fba($$12.dA() + $$13 / $$19 * 2.0, $$12.dC() + $$14 / $$19 * 2.0, $$12.dG() + $$15 / $$19 * 2.0);
             $$18 = $$7;
          }
 

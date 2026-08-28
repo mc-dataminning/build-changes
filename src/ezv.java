@@ -1,9 +1,4 @@
-public interface ezv extends evr {
-   float b(evq var1);
+import com.mojang.serialization.MapCodec;
 
-   default int a(evq $$0) {
-      return Math.round(this.b($$0));
-   }
-
-   ezu b();
+public record ezv(MapCodec<? extends ezw> a) {
 }

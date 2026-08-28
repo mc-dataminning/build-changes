@@ -1,19 +1,13 @@
-public class gvq extends gws<gxx, gbk> {
-   private static final akv a = akv.b("textures/entity/breeze/breeze_wind.png");
-   private final gbk b;
+public class gvq extends gwt<gxy, gbl> {
+   private static final gmi a = gmi.r(akv.b("textures/entity/breeze/breeze_eyes.png"));
 
-   public gvq(gsd.a $$0, gua<gxx, gbk> $$1) {
-      super($$1);
-      this.b = new gbk($$0.a(gfb.L));
+   public gvq(gub<gxy, gbl> $$0) {
+      super($$0);
    }
 
-   public void a(fft $$0, glx $$1, int $$2, gxx $$3, float $$4, float $$5) {
-      ffx $$6 = $$1.getBuffer(gmh.a(a, this.a($$3.u) % 1.0F, 0.0F));
-      this.b.a($$3);
-      gri.a(this.b, this.b.d()).a($$0, $$6, $$2, heh.d);
-   }
-
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public void a(ffu $$0, gly $$1, int $$2, gxy $$3, float $$4, float $$5) {
+      ffy $$6 = $$1.getBuffer(a);
+      gbl $$7 = this.d();
+      grj.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hei.d);
    }
 }

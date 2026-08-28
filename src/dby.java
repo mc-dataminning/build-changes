@@ -1,26 +1,29 @@
-import java.util.Optional;
-
-public interface dby extends dbd<dbz> {
-   @Override
-   default dbo<dby> b() {
-      return dbo.g;
+public class dby extends dak {
+   public dby(String $$0, daq $$1, dba $$2, cwp $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   dbn<? extends dby> a();
-
-   default boolean a(dbz $$0, dgh $$1) {
-      return daz.a(this.c(), $$0.c()) && daz.a(this.f(), $$0.d()) && daz.a(this.k(), $$0.e());
+   protected cwl f() {
+      return cwt.fe;
    }
 
-   Optional<daz> c();
-
-   Optional<daz> f();
-
-   Optional<daz> k();
+   @Override
+   public dbo<dby> a() {
+      return dbo.o;
+   }
 
    @Override
-   default dbg h() {
-      return dbf.l;
+   public dbp<dby> b() {
+      return dbp.b;
+   }
+
+   @Override
+   public dbh h() {
+      return switch (this.e()) {
+         case b -> dbg.f;
+         case a -> dbg.e;
+         case c -> dbg.g;
+      };
    }
 }

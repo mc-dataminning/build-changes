@@ -32,7 +32,7 @@ public abstract class aut<T> extends auu<Map<akv, T>> {
       this.d = $$2;
    }
 
-   protected Map<akv, T> a(aup $$0, bos $$1) {
+   protected Map<akv, T> a(aup $$0, bot $$1) {
       Map<akv, T> $$2 = new HashMap<>();
       a($$0, this.d, this.b, this.c, $$2);
       return $$2;

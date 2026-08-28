@@ -1,83 +1,197 @@
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public abstract class fcg {
-   public boolean a(@Nullable fcg $$0) {
-      return $$0 == null ? false : this == $$0;
+public class fcg extends eul {
+   private static final Logger b = LogUtils.getLogger();
+   public static final String a = "scoreboard";
+   private final fcf c;
+
+   public fcg(fcf $$0) {
+      this.c = $$0;
    }
 
-   public abstract String b();
-
-   public abstract xd d(wp var1);
-
-   public abstract boolean i();
-
-   public abstract boolean h();
-
-   public abstract fcg.b j();
-
-   public abstract n n();
-
-   public abstract Collection<String> g();
-
-   public abstract fcg.b k();
-
-   public abstract fcg.a l();
-
-   public static enum a {
-      a("always", 0),
-      b("never", 1),
-      c("pushOtherTeams", 2),
-      d("pushOwnTeam", 3);
-
-      private static final Map<String, fcg.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (fcg.a)$$0));
-      public final String e;
-      public final int f;
-
-      @Nullable
-      public static fcg.a a(String $$0) {
-         return g.get($$0);
+   public fcg b(tq $$0, jt.a $$1) {
+      this.b($$0.c("Objectives", 10), $$1);
+      this.c.a($$0.c("PlayerScores", 10), $$1);
+      if ($$0.b("DisplaySlots", 10)) {
+         this.a($$0.p("DisplaySlots"));
       }
 
-      private a(final String $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
+      if ($$0.b("Teams", 9)) {
+         this.a($$0.c("Teams", 10), $$1);
       }
 
-      public wp a() {
-         return wp.c("team.collision." + this.e);
+      return this;
+   }
+
+   private void a(tw $$0, jt.a $$1) {
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         tq $$3 = $$0.a($$2);
+         String $$4 = $$3.l("Name");
+         fca $$5 = this.c.c($$4);
+         wp $$6 = wp.a.a($$3.l("DisplayName"), $$1);
+         if ($$6 != null) {
+            $$5.a($$6);
+         }
+
+         if ($$3.b("TeamColor", 8)) {
+            $$5.a(n.b($$3.l("TeamColor")));
+         }
+
+         if ($$3.b("AllowFriendlyFire", 99)) {
+            $$5.a($$3.q("AllowFriendlyFire"));
+         }
+
+         if ($$3.b("SeeFriendlyInvisibles", 99)) {
+            $$5.b($$3.q("SeeFriendlyInvisibles"));
+         }
+
+         if ($$3.b("MemberNamePrefix", 8)) {
+            wp $$7 = wp.a.a($$3.l("MemberNamePrefix"), $$1);
+            if ($$7 != null) {
+               $$5.b($$7);
+            }
+         }
+
+         if ($$3.b("MemberNameSuffix", 8)) {
+            wp $$8 = wp.a.a($$3.l("MemberNameSuffix"), $$1);
+            if ($$8 != null) {
+               $$5.c($$8);
+            }
+         }
+
+         if ($$3.b("NameTagVisibility", 8)) {
+            fch.b $$9 = fch.b.a($$3.l("NameTagVisibility"));
+            if ($$9 != null) {
+               $$5.a($$9);
+            }
+         }
+
+         if ($$3.b("DeathMessageVisibility", 8)) {
+            fch.b $$10 = fch.b.a($$3.l("DeathMessageVisibility"));
+            if ($$10 != null) {
+               $$5.b($$10);
+            }
+         }
+
+         if ($$3.b("CollisionRule", 8)) {
+            fch.a $$11 = fch.a.a($$3.l("CollisionRule"));
+            if ($$11 != null) {
+               $$5.a($$11);
+            }
+         }
+
+         this.a($$5, $$3.c("Players", 8));
       }
    }
 
-   public static enum b {
-      a("always", 0),
-      b("never", 1),
-      c("hideForOtherTeams", 2),
-      d("hideForOwnTeam", 3);
+   private void a(fca $$0, tw $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         this.c.a($$1.j($$2), $$0);
+      }
+   }
 
-      private static final Map<String, fcg.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (fcg.b)$$0));
-      public final String e;
-      public final int f;
+   private void a(tq $$0) {
+      for (String $$1 : $$0.e()) {
+         fbw $$2 = fbw.t.a($$1);
+         if ($$2 != null) {
+            String $$3 = $$0.l($$1);
+            fbx $$4 = this.c.a($$3);
+            this.c.a($$2, $$4);
+         }
+      }
+   }
 
-      public static String[] a() {
-         return g.keySet().toArray(new String[0]);
+   private void b(tw $$0, jt.a $$1) {
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         tq $$3 = $$0.a($$2);
+         String $$4 = $$3.l("CriteriaName");
+         fci $$5 = fci.a($$4).orElseGet(() -> {
+            b.warn("Unknown scoreboard criteria {}, replacing with {}", $$4, fci.b.d());
+            return fci.b;
+         });
+         String $$6 = $$3.l("Name");
+         wp $$7 = wp.a.a($$3.l("DisplayName"), $$1);
+         fci.a $$8 = fci.a.a($$3.l("RenderType"));
+         boolean $$9 = $$3.q("display_auto_update");
+         yf $$10 = (yf)yh.b.parse($$1.a(ue.a), $$3.c("format")).result().orElse(null);
+         this.c.a($$6, $$5, $$7, $$8, $$9, $$10);
+      }
+   }
+
+   @Override
+   public tq a(tq $$0, jt.a $$1) {
+      $$0.a("Objectives", this.c($$1));
+      $$0.a("PlayerScores", this.c.a($$1));
+      $$0.a("Teams", this.b($$1));
+      this.b($$0);
+      return $$0;
+   }
+
+   private tw b(jt.a $$0) {
+      tw $$1 = new tw();
+
+      for (fca $$3 : this.c.g()) {
+         tq $$4 = new tq();
+         $$4.a("Name", $$3.b());
+         $$4.a("DisplayName", wp.a.a($$3.c(), $$0));
+         if ($$3.n().b() >= 0) {
+            $$4.a("TeamColor", $$3.n().g());
+         }
+
+         $$4.a("AllowFriendlyFire", $$3.h());
+         $$4.a("SeeFriendlyInvisibles", $$3.i());
+         $$4.a("MemberNamePrefix", wp.a.a($$3.e(), $$0));
+         $$4.a("MemberNameSuffix", wp.a.a($$3.f(), $$0));
+         $$4.a("NameTagVisibility", $$3.j().e);
+         $$4.a("DeathMessageVisibility", $$3.k().e);
+         $$4.a("CollisionRule", $$3.l().e);
+         tw $$5 = new tw();
+
+         for (String $$6 : $$3.g()) {
+            $$5.add(ul.a($$6));
+         }
+
+         $$4.a("Players", $$5);
+         $$1.add($$4);
       }
 
-      @Nullable
-      public static fcg.b a(String $$0) {
-         return g.get($$0);
+      return $$1;
+   }
+
+   private void b(tq $$0) {
+      tq $$1 = new tq();
+
+      for (fbw $$2 : fbw.values()) {
+         fbx $$3 = this.c.a($$2);
+         if ($$3 != null) {
+            $$1.a($$2.c(), $$3.b());
+         }
       }
 
-      private b(final String $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
+      if (!$$1.g()) {
+         $$0.a("DisplaySlots", $$1);
+      }
+   }
+
+   private tw c(jt.a $$0) {
+      tw $$1 = new tw();
+
+      for (fbx $$3 : this.c.c()) {
+         tq $$4 = new tq();
+         $$4.a("Name", $$3.b());
+         $$4.a("CriteriaName", $$3.c().d());
+         $$4.a("DisplayName", wp.a.a($$3.d(), $$0));
+         $$4.a("RenderType", $$3.h().a());
+         $$4.a("display_auto_update", $$3.e());
+         yf $$5 = $$3.f();
+         if ($$5 != null) {
+            yh.b.encodeStart($$0.a(ue.a), $$5).ifSuccess($$1x -> $$4.a("format", $$1x));
+         }
+
+         $$1.add($$4);
       }
 
-      public wp b() {
-         return wp.c("team.visibility." + this.e);
-      }
+      return $$1;
    }
 }

@@ -1,49 +1,24 @@
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public class cjg extends cja {
-   public cjg(bur<? extends cjg> $$0, dgh $$1) {
-      super($$0, $$1);
+public enum cjg {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
+
+   private static final IntFunction<cjg> f = axq.a(cjg::a, values(), axq.a.b);
+   private final int g;
+
+   private cjg(final int $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   protected avz u() {
-      return awa.pV;
+   public int a() {
+      return this.g;
    }
 
-   @Override
-   protected avz gT() {
-      return awa.pW;
-   }
-
-   @Override
-   protected avz o_() {
-      return awa.pY;
-   }
-
-   @Nullable
-   @Override
-   protected avz gu() {
-      return awa.pZ;
-   }
-
-   @Override
-   protected avz e(bta $$0) {
-      return awa.qa;
-   }
-
-   @Override
-   protected void ha() {
-      this.a(awa.qb, 0.4F, 1.0F);
-   }
-
-   @Override
-   protected void x() {
-      this.a(awa.pX, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
-   }
-
-   @Nullable
-   @Override
-   public bub a(ard $$0, bub $$1) {
-      return bur.aF.a($$0, buq.e);
+   public static cjg a(int $$0) {
+      return f.apply($$0);
    }
 }

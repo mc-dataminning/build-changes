@@ -1,32 +1,27 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
+import java.util.function.Consumer;
 
-public record czt(float c, Optional<akv> d) {
+public record czt(boolean c) implements czs {
    public static final Codec<czt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayi.o.fieldOf("seconds").forGetter(czt::b), akv.a.optionalFieldOf("cooldown_group").forGetter(czt::c)).apply($$0, czt::new)
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(czt::a)).apply($$0, czt::new)
    );
-   public static final yn<wa, czt> b = yn.a(yl.l, czt::b, akv.b.a(yl::a), czt::c, czt::new);
+   public static final yn<ByteBuf, czt> b = yl.b.a(czt::new, czt::a);
+   private static final wp d = wp.c("item.unbreakable").a(n.j);
 
-   public czt(float $$0) {
-      this($$0, Optional.empty());
-   }
-
-   public int a() {
-      return (int)(this.c * 20.0F);
-   }
-
-   public void a(cwo $$0, bvg $$1) {
-      if ($$1 instanceof cow $$2) {
-         $$2.gE().a($$0, this.a());
+   @Override
+   public void a(cwl.b $$0, Consumer<wp> $$1, cyh $$2) {
+      if (this.c) {
+         $$1.accept(d);
       }
    }
 
-   public float b() {
-      return this.c;
+   public czt a(boolean $$0) {
+      return new czt($$0);
    }
 
-   public Optional<akv> c() {
-      return this.d;
+   public boolean a() {
+      return this.c;
    }
 }

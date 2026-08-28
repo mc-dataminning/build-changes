@@ -1,14 +1,18 @@
-public class cbs extends ccr {
-   private final cha g;
+import java.util.EnumSet;
 
-   public cbs(cha $$0, double $$1) {
-      super($$0, $$1, 8);
+public class cbs extends ccs {
+   private final chb g;
+
+   public cbs(chb $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2, 6);
       this.g = $$0;
+      this.f = -2;
+      this.a(EnumSet.of(ccf.a.c, ccf.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.g.p() && !this.g.gs() && super.b();
+      return this.g.p() && !this.g.gs() && !this.g.gF() && super.b();
    }
 
    @Override
@@ -18,28 +22,29 @@ public class cbs extends ccr {
    }
 
    @Override
+   protected int a(bvp $$0) {
+      return 40;
+   }
+
+   @Override
    public void e() {
       super.e();
-      this.g.y(false);
+      this.g.A(false);
    }
 
    @Override
    public void a() {
       super.a();
-      this.g.y(this.m());
+      this.g.y(false);
+      if (!this.m()) {
+         this.g.A(false);
+      } else if (!this.g.gF()) {
+         this.g.A(true);
+      }
    }
 
    @Override
-   protected boolean a(dgk $$0, ji $$1) {
-      if (!$$0.u($$1.d())) {
-         return false;
-      } else {
-         dww $$2 = $$0.a_($$1);
-         if ($$2.a(djn.cD)) {
-            return duf.a($$0, $$1) < 1;
-         } else {
-            return $$2.a(djn.cL) && $$2.c(dmt.b) ? true : $$2.a(awp.T, $$0x -> $$0x.d(dje.b).map($$0xx -> $$0xx != dxj.a).orElse(true));
-         }
-      }
+   protected boolean a(dgl $$0, ji $$1) {
+      return $$0.u($$1.d()) && $$0.a_($$1).a(awp.T);
    }
 }

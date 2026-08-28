@@ -40,7 +40,7 @@ public abstract class avd {
    private final avl q = new avl(d);
    private final Map<UUID, awg> r = Maps.newHashMap();
    private final Map<UUID, ald> s = Maps.newHashMap();
-   private final evh t;
+   private final evi t;
    private boolean u;
    private final jy<ale> v;
    protected final int g;
@@ -50,7 +50,7 @@ public abstract class avd {
    private static final boolean z = false;
    private int A;
 
-   public avd(MinecraftServer $$0, jy<ale> $$1, evh $$2, int $$3) {
+   public avd(MinecraftServer $$0, jy<ale> $$1, evi $$2, int $$3) {
       this.k = $$0;
       this.v = $$1;
       this.g = $$3;
@@ -70,7 +70,7 @@ public abstract class avd {
       }
 
       Optional<tq> $$8 = this.a($$1);
-      aku<dgh> $$9 = $$8.<aku<dgh>>flatMap($$0x -> ear.a(new Dynamic(ue.a, $$0x.c("Dimension"))).resultOrPartial(h::error)).orElse(dgh.i);
+      aku<dgi> $$9 = $$8.<aku<dgi>>flatMap($$0x -> eas.a(new Dynamic(ue.a, $$0x.c("Dimension"))).resultOrPartial(h::error)).orElse(dgi.i);
       ard $$10 = this.k.a($$9);
       ard $$11;
       if ($$10 == null) {
@@ -83,19 +83,19 @@ public abstract class avd {
       $$1.a($$11);
       String $$13 = $$0.a(this.k.bl());
       h.info("{}[{}] logged in with entity id {} at ({}, {}, {})", new Object[]{$$1.al().getString(), $$13, $$1.ar(), $$1.dA(), $$1.dC(), $$1.dG()});
-      eva $$14 = $$11.D_();
+      evb $$14 = $$11.D_();
       $$1.c($$8.orElse(null));
       asg $$15 = new asg(this.k, $$0, $$1, $$2);
       $$0.a(agf.a.a(wa.a(this.k.ba())), $$15);
-      dgd $$16 = $$11.O();
-      boolean $$17 = $$16.b(dgd.E);
-      boolean $$18 = $$16.b(dgd.q);
-      boolean $$19 = $$16.b(dgd.x);
+      dge $$16 = $$11.O();
+      boolean $$17 = $$16.b(dge.E);
+      boolean $$18 = $$16.b(dge.q);
+      boolean $$19 = $$16.b(dge.x);
       $$15.b(new add($$1.ar(), $$14.l(), this.k.K(), this.n(), this.w, this.x, $$18, !$$17, $$19, $$1.b($$11), this.k.aA()));
       $$15.b(new aby($$14.q(), $$14.r()));
       $$15.b(new adn($$1.gj()));
       $$15.b(new afb($$1.gi().j));
-      dbk $$20 = this.k.aI();
+      dbl $$20 = this.k.aI();
       $$15.b(new aga($$20.b(), $$20.d()));
       this.e($$1);
       $$1.I().c();
@@ -130,14 +130,14 @@ public abstract class avd {
    }
 
    protected void a(alo $$0, are $$1) {
-      Set<fbw> $$2 = Sets.newHashSet();
+      Set<fbx> $$2 = Sets.newHashSet();
 
-      for (fbz $$3 : $$0.g()) {
+      for (fca $$3 : $$0.g()) {
          $$1.f.b(aff.a($$3, true));
       }
 
-      for (fbv $$4 : fbv.values()) {
-         fbw $$5 = $$0.a($$4);
+      for (fbw $$4 : fbw.values()) {
+         fbx $$5 = $$0.a($$4);
          if ($$5 != null && !$$2.contains($$5)) {
             for (yw<?> $$7 : $$0.d($$5)) {
                $$1.f.b($$7);
@@ -149,38 +149,38 @@ public abstract class avd {
    }
 
    public void a(ard $$0) {
-      $$0.F_().a(new dyk() {
+      $$0.F_().a(new dyl() {
          @Override
-         public void a(dym $$0, double $$1) {
+         public void a(dyn $$0, double $$1) {
             avd.this.a(new aem($$0));
          }
 
          @Override
-         public void a(dym $$0, double $$1, double $$2, long $$3) {
+         public void a(dyn $$0, double $$1, double $$2, long $$3) {
             avd.this.a(new ael($$0));
          }
 
          @Override
-         public void a(dym $$0, double $$1, double $$2) {
+         public void a(dyn $$0, double $$1, double $$2) {
             avd.this.a(new aek($$0));
          }
 
          @Override
-         public void a(dym $$0, int $$1) {
+         public void a(dyn $$0, int $$1) {
             avd.this.a(new aen($$0));
          }
 
          @Override
-         public void b(dym $$0, int $$1) {
+         public void b(dyn $$0, int $$1) {
             avd.this.a(new aeo($$0));
          }
 
          @Override
-         public void b(dym $$0, double $$1) {
+         public void b(dyn $$0, double $$1) {
          }
 
          @Override
-         public void c(dym $$0, double $$1) {
+         public void c(dyn $$0, double $$1) {
          }
       });
    }
@@ -217,21 +217,21 @@ public abstract class avd {
       $$0.a(awk.j);
       this.b($$0);
       if ($$0.bZ()) {
-         buk $$2 = $$0.df();
+         bul $$2 = $$0.df();
          if ($$2.de()) {
             h.debug("Removing player mount");
             $$0.ae();
-            $$2.db().forEach($$0x -> $$0x.c(buk.d.d));
+            $$2.db().forEach($$0x -> $$0x.c(bul.d.d));
          }
       }
 
       $$0.ao();
 
-      for (cpz $$3 : $$0.ak()) {
-         $$3.c(buk.d.d);
+      for (cqa $$3 : $$0.ak()) {
+         $$3.c(bul.d.d);
       }
 
-      $$1.a($$0, buk.d.d);
+      $$1.a($$0, bul.d.d);
       $$0.S().a();
       this.l.remove($$0);
       this.k.aM().b($$0);
@@ -297,10 +297,10 @@ public abstract class avd {
       return !$$2.isEmpty();
    }
 
-   public are a(are $$0, boolean $$1, buk.d $$2) {
+   public are a(are $$0, boolean $$1, bul.d $$2) {
       this.l.remove($$0);
       $$0.y().a($$0, $$2);
-      ety $$3 = $$0.a(!$$1, ety.a);
+      etz $$3 = $$0.a(!$$1, etz.a);
       ard $$4 = $$3.b();
       are $$5 = new are(this.k, $$4, $$0.gh(), $$0.C());
       $$5.f = $$0.f;
@@ -315,7 +315,7 @@ public abstract class avd {
          $$5.a($$6);
       }
 
-      faz $$7 = $$3.c();
+      fba $$7 = $$3.c();
       $$5.b($$7.d, $$7.e, $$7.f, $$3.e(), $$3.f());
       if ($$3.g()) {
          $$5.f.b(new act(act.b, 0.0F));
@@ -323,7 +323,7 @@ public abstract class avd {
 
       byte $$8 = (byte)($$1 ? 1 : 0);
       ard $$9 = $$5.y();
-      eva $$10 = $$9.D_();
+      evb $$10 = $$9.D_();
       $$5.f.b(new aee($$5.b($$9), $$8));
       $$5.f.a($$5.dA(), $$5.dC(), $$5.dG(), $$5.dL(), $$5.dN());
       $$5.f.b(new aet($$4.Z(), $$4.aa()));
@@ -340,8 +340,8 @@ public abstract class avd {
       ji $$11 = $$5.T();
       ard $$12 = this.k.a($$5.V());
       if (!$$1 && $$11 != null && $$12 != null) {
-         dww $$13 = $$12.a_($$11);
-         if ($$13.a(djn.pN)) {
+         dwx $$13 = $$12.a_($$11);
+         if ($$13.a(djo.pN)) {
             $$5.f.b(new afn(awa.vY, awb.e, (double)$$11.u(), (double)$$11.v(), (double)$$11.w(), 1.0F, 1.0F, $$4.H_().g()));
          }
       }
@@ -353,8 +353,8 @@ public abstract class avd {
       this.a($$0, $$0.f);
    }
 
-   public void a(bvg $$0, asg $$1) {
-      for (btp $$2 : $$0.eA()) {
+   public void a(bvh $$0, asg $$1) {
+      for (btq $$2 : $$0.eA()) {
          $$1.b(new afz($$0.ar(), $$2, false));
       }
    }
@@ -378,7 +378,7 @@ public abstract class avd {
       }
    }
 
-   public void a(yw<?> $$0, aku<dgh> $$1) {
+   public void a(yw<?> $$0, aku<dgi> $$1) {
       for (are $$2 : this.l) {
          if ($$2.dV().ai() == $$1) {
             $$2.f.b($$0);
@@ -386,8 +386,8 @@ public abstract class avd {
       }
    }
 
-   public void a(cow $$0, wp $$1) {
-      fcg $$2 = $$0.cr();
+   public void a(cox $$0, wp $$1) {
+      fch $$2 = $$0.cr();
       if ($$2 != null) {
          for (String $$4 : $$2.g()) {
             are $$5 = this.a($$4);
@@ -398,8 +398,8 @@ public abstract class avd {
       }
    }
 
-   public void b(cow $$0, wp $$1) {
-      fcg $$2 = $$0.cr();
+   public void b(cox $$0, wp $$1) {
+      fch $$2 = $$0.cr();
       if ($$2 == null) {
          this.a($$1, false);
       } else {
@@ -485,7 +485,7 @@ public abstract class avd {
       return null;
    }
 
-   public void a(@Nullable cow $$0, double $$1, double $$2, double $$3, double $$4, aku<dgh> $$5, yw<?> $$6) {
+   public void a(@Nullable cox $$0, double $$1, double $$2, double $$3, double $$4, aku<dgi> $$5, yw<?> $$6) {
       for (int $$7 = 0; $$7 < this.l.size(); $$7++) {
          are $$8 = this.l.get($$7);
          if ($$8 != $$0 && $$8.dV().ai() == $$5) {
@@ -525,9 +525,9 @@ public abstract class avd {
    }
 
    public void a(are $$0, ard $$1) {
-      dym $$2 = this.k.J().F_();
+      dyn $$2 = this.k.J().F_();
       $$0.f.b(new acw($$2));
-      $$0.f.b(new afj($$1.ad(), $$1.ae(), $$1.O().b(dgd.l)));
+      $$0.f.b(new afj($$1.ad(), $$1.ae(), $$1.O().b(dge.l)));
       $$0.f.b(new aet($$1.Z(), $$1.aa()));
       if ($$1.ag()) {
          $$0.f.b(new act(act.c, 0.0F));
@@ -644,11 +644,11 @@ public abstract class avd {
       return $$0.i() && !$$0.a(Instant.now());
    }
 
-   public awg a(cow $$0) {
+   public awg a(cox $$0) {
       UUID $$1 = $$0.cG();
       awg $$2 = this.r.get($$1);
       if ($$2 == null) {
-         File $$3 = this.k.a(evc.b).toFile();
+         File $$3 = this.k.a(evd.b).toFile();
          File $$4 = new File($$3, $$1 + ".json");
          if (!$$4.exists()) {
             File $$5 = new File($$3, $$0.al().getString() + ".json");
@@ -669,7 +669,7 @@ public abstract class avd {
       UUID $$1 = $$0.cG();
       ald $$2 = this.s.get($$1);
       if ($$2 == null) {
-         Path $$3 = this.k.a(evc.a).resolve($$1 + ".json");
+         Path $$3 = this.k.a(evd.a).resolve($$1 + ".json");
          $$2 = new ald(this.k.aC(), this, this.k.aD(), $$3, $$0);
          this.s.put($$1, $$2);
       }
@@ -719,7 +719,7 @@ public abstract class avd {
       }
 
       this.a(new zn(axh.a(this.v)));
-      dbk $$1 = this.k.aI();
+      dbl $$1 = this.k.aI();
       aga $$2 = new aga($$1.b(), $$1.d());
 
       for (are $$3 : this.l) {

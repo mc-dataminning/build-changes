@@ -2,48 +2,48 @@ import com.google.common.annotations.VisibleForTesting;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class pg extends pn<ebs> {
+public class pg extends pn<ebt> {
    @VisibleForTesting
-   static final List<aku<ebs>> d = List.of(
-      ebs.b.h(),
-      ebs.c.h(),
-      ebs.d.h(),
-      ebs.f.h(),
-      ebs.g.h(),
-      ebs.h.h(),
-      ebs.i.h(),
-      ebs.a.h(),
-      ebs.e.h(),
-      ebs.j.h(),
-      ebs.k.h(),
-      ebs.l.h(),
-      ebs.m.h(),
-      ebs.n.h(),
-      ebs.o.h(),
-      ebs.p.h(),
-      ebs.q.h(),
-      ebs.r.h(),
-      ebs.s.h(),
-      ebs.t.h(),
-      ebs.u.h(),
-      ebs.v.h(),
-      ebs.w.h(),
-      ebs.y.h(),
-      ebs.z.h(),
-      ebs.A.h(),
-      ebs.B.h(),
-      ebs.C.h(),
-      ebs.G.h(),
-      ebs.H.h(),
-      ebs.I.h(),
-      ebs.J.h(),
-      ebs.K.h(),
-      ebs.M.h(),
-      ebs.O.h(),
-      ebs.P.h(),
-      ebs.Q.h(),
-      ebs.R.h(),
-      ebs.S.h()
+   static final List<aku<ebt>> d = List.of(
+      ebt.b.h(),
+      ebt.c.h(),
+      ebt.d.h(),
+      ebt.f.h(),
+      ebt.g.h(),
+      ebt.h.h(),
+      ebt.i.h(),
+      ebt.a.h(),
+      ebt.e.h(),
+      ebt.j.h(),
+      ebt.k.h(),
+      ebt.l.h(),
+      ebt.m.h(),
+      ebt.n.h(),
+      ebt.o.h(),
+      ebt.p.h(),
+      ebt.q.h(),
+      ebt.r.h(),
+      ebt.s.h(),
+      ebt.t.h(),
+      ebt.u.h(),
+      ebt.v.h(),
+      ebt.w.h(),
+      ebt.y.h(),
+      ebt.z.h(),
+      ebt.A.h(),
+      ebt.B.h(),
+      ebt.C.h(),
+      ebt.G.h(),
+      ebt.H.h(),
+      ebt.I.h(),
+      ebt.J.h(),
+      ebt.K.h(),
+      ebt.M.h(),
+      ebt.O.h(),
+      ebt.P.h(),
+      ebt.Q.h(),
+      ebt.R.h(),
+      ebt.S.h()
    );
 
    public pg(mk $$0, CompletableFuture<jt.a> $$1) {
@@ -52,10 +52,10 @@ public class pg extends pn<ebs> {
 
    @Override
    protected void a(jt.a $$0) {
-      this.b(aww.a).a(d).a(ecb.d_).a(ebs.x.h());
-      this.b(aww.c).a(ebs.L.h());
-      this.b(aww.b).a(d).a(ecb.d_).a(ebs.N.h()).b(aww.c);
-      this.b(aww.d).a(ebs.A.h(), ebs.K.h(), ebs.P.h(), ebs.Q.h(), ebs.D.h(), ebs.C.h());
-      this.b(aww.e).a(ebs.H.h());
+      this.b(aww.a).a(d).a(ecc.d_).a(ebt.x.h());
+      this.b(aww.c).a(ebt.L.h());
+      this.b(aww.b).a(d).a(ecc.d_).a(ebt.N.h()).b(aww.c);
+      this.b(aww.d).a(ebt.A.h(), ebt.K.h(), ebt.P.h(), ebt.Q.h(), ebt.D.h(), ebt.C.h());
+      this.b(aww.e).a(ebt.H.h());
    }
 }

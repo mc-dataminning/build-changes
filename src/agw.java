@@ -5,16 +5,16 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 public class agw implements yw<agg> {
    public static final yn<wa, agw> a = yw.a(agw::a, agw::new);
    private static final int b = 128;
-   private static final yn<wa, Int2ObjectMap<cwo>> c = yl.a(Int2ObjectOpenHashMap::new, yl.e.a(Short::intValue, Integer::shortValue), cwo.g, 128);
+   private static final yn<wa, Int2ObjectMap<cwp>> c = yl.a(Int2ObjectOpenHashMap::new, yl.e.a(Short::intValue, Integer::shortValue), cwp.g, 128);
    private final int d;
    private final int e;
    private final int f;
    private final int g;
-   private final csm h;
-   private final cwo i;
-   private final Int2ObjectMap<cwo> j;
+   private final csn h;
+   private final cwp i;
+   private final Int2ObjectMap<cwp> j;
 
-   public agw(int $$0, int $$1, int $$2, int $$3, csm $$4, cwo $$5, Int2ObjectMap<cwo> $$6) {
+   public agw(int $$0, int $$1, int $$2, int $$3, csn $$4, cwp $$5, Int2ObjectMap<cwp> $$6) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -29,9 +29,9 @@ public class agw implements yw<agg> {
       this.e = $$0.l();
       this.f = $$0.readShort();
       this.g = $$0.readByte();
-      this.h = $$0.b(csm.class);
+      this.h = $$0.b(csn.class);
       this.j = Int2ObjectMaps.unmodifiable(c.decode($$0));
-      this.i = cwo.g.decode($$0);
+      this.i = cwp.g.decode($$0);
    }
 
    private void a(wa $$0) {
@@ -41,7 +41,7 @@ public class agw implements yw<agg> {
       $$0.l(this.g);
       $$0.a(this.h);
       c.encode($$0, this.j);
-      cwo.g.encode($$0, this.i);
+      cwp.g.encode($$0, this.i);
    }
 
    @Override
@@ -65,15 +65,15 @@ public class agw implements yw<agg> {
       return this.g;
    }
 
-   public cwo g() {
+   public cwp g() {
       return this.i;
    }
 
-   public Int2ObjectMap<cwo> h() {
+   public Int2ObjectMap<cwp> h() {
       return this.j;
    }
 
-   public csm i() {
+   public csn i() {
       return this.h;
    }
 

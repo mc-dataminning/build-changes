@@ -1,54 +1,85 @@
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.kinds.App;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Map.Entry;
 import java.util.function.Function;
 
 public class bym {
-   public static bxa<coh> a() {
-      return cam.a(
-         (Function<cam.b<coh>, ? extends App<cam.c<coh>, cap<coh>>>)($$0 -> $$0.group($$0.b(cek.c), $$0.b(cek.g))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        jq $$6 = $$0.b($$1);
-                        $$3.A()
-                           .c($$6.b())
-                           .ifPresent(
-                              $$4x -> $$0.<List<bvg>>b($$2)
-                                    .stream()
-                                    .filter($$1xxx -> $$1xxx instanceof coh && $$1xxx != $$4)
-                                    .map($$0xxxx -> (coh)$$0xxxx)
-                                    .filter(bvg::bL)
-                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
-                                    .reduce($$4, bym::a)
-                           );
-                        return true;
+   private static final int a = 20;
+   private static final int b = 8;
+   private static final float c = 0.6F;
+   private static final float d = 0.6F;
+   private static final int e = 5;
+   private static final int f = 10;
+
+   public static bxb<bvp> a() {
+      return can.a(
+         (Function<can.b<bvp>, ? extends App<can.c<bvp>, caq<bvp>>>)($$0 -> $$0.group($$0.b(cel.i), $$0.c(cel.m), $$0.a(cel.n), $$0.a(cel.q))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$5.H_().a(10) != 0) {
+                        return false;
+                     } else {
+                        List<bvh> $$8 = $$0.b($$1);
+                        Optional<bvh> $$9 = $$8.stream().filter($$1xx -> a((bvh)$$6, $$1xx)).findAny();
+                        if (!$$9.isPresent()) {
+                           Optional<bvh> $$12 = a($$8);
+                           if ($$12.isPresent()) {
+                              a($$4, $$3, $$2, $$12.get());
+                              return true;
+                           } else {
+                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
+                              return true;
+                           }
+                        } else {
+                           for (int $$10 = 0; $$10 < 10; $$10++) {
+                              fba $$11 = cgf.a($$6, 20, 8);
+                              if ($$11 != null && $$5.c(ji.a((kb)$$11))) {
+                                 $$2.a(new ceo($$11, 0.6F, 0));
+                                 break;
+                              }
+                           }
+
+                           return true;
+                        }
                      }
-               ))
+                  }))
       );
    }
 
-   private static coh a(coh $$0, coh $$1) {
-      coh $$2;
-      coh $$3;
-      if ($$0.x() > $$1.x()) {
-         $$2 = $$0;
-         $$3 = $$1;
-      } else {
-         $$2 = $$1;
-         $$3 = $$0;
-      }
-
-      $$3.eb().b(cek.c);
-      return $$2;
+   private static void a(cao<?, bvh> $$0, cao<?, byo> $$1, cao<?, ceo> $$2, bvh $$3) {
+      $$0.a($$3);
+      $$1.a(new bxl($$3, true));
+      $$2.a(new ceo(new bxl($$3, false), 0.6F, 1));
    }
 
-   private static boolean a(jq $$0, jr<cgn> $$1, coh $$2) {
-      Optional<jq> $$3 = $$2.eb().c(cek.c);
-      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gC().b());
+   private static Optional<bvh> a(List<bvh> $$0) {
+      Map<bvh, Integer> $$1 = b($$0);
+      return $$1.entrySet()
+         .stream()
+         .sorted(Comparator.comparingInt(Entry::getValue))
+         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
+         .map(Entry::getKey)
+         .findFirst();
    }
 
-   private static boolean a(jr<cgn> $$0, cok $$1) {
-      return $$1.b().test($$0);
+   private static Map<bvh, Integer> b(List<bvh> $$0) {
+      Map<bvh, Integer> $$1 = Maps.newHashMap();
+      $$0.stream().filter(bym::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
+      return $$1;
+   }
+
+   private static bvh a(bvh $$0) {
+      return $$0.eb().c(cel.q).get();
+   }
+
+   private static boolean b(bvh $$0) {
+      return $$0.eb().c(cel.q).isPresent();
+   }
+
+   private static boolean a(bvh $$0, bvh $$1) {
+      return $$1.eb().c(cel.q).filter($$1x -> $$1x == $$0).isPresent();
    }
 }

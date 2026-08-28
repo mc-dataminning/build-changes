@@ -27,7 +27,7 @@ public class aif implements yw<agg> {
    }
 
    @Nullable
-   public buk a(ard $$0) {
+   public bul a(ard $$0) {
       return $$0.a(this.b);
    }
 }

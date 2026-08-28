@@ -6,11 +6,11 @@ public class arj<T> {
    private final long j;
    public static final arj<baf> a = a("start", ($$0, $$1) -> 0);
    public static final arj<baf> b = a("dragon", ($$0, $$1) -> 0);
-   public static final arj<dfn> c = a("player", Comparator.comparingLong(dfn::a));
-   public static final arj<dfn> d = a("forced", Comparator.comparingLong(dfn::a));
+   public static final arj<dfo> c = a("player", Comparator.comparingLong(dfo::a));
+   public static final arj<dfo> d = a("forced", Comparator.comparingLong(dfo::a));
    public static final arj<ji> e = a("portal", km::i, 300);
-   public static final arj<dfn> f = a("ender_pearl", Comparator.comparingLong(dfn::a), 40);
-   public static final arj<dfn> g = a("unknown", Comparator.comparingLong(dfn::a), 1);
+   public static final arj<dfo> f = a("ender_pearl", Comparator.comparingLong(dfo::a), 40);
+   public static final arj<dfo> g = a("unknown", Comparator.comparingLong(dfo::a), 1);
 
    public static <T> arj<T> a(String $$0, Comparator<T> $$1) {
       return new arj<>($$0, $$1, 0L);

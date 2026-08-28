@@ -1,40 +1,39 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+public class fik {
+   private final fjx a;
+   private boolean b;
+   private String c;
 
-public class fik implements Iterable<fhk> {
-   private final fli a;
-   private final Set<fhk> b = new HashSet<>();
-   private List<fhk> c = List.of();
-
-   public fik(fli $$0) {
+   public fik(fjx $$0) {
       this.a = $$0;
-   }
-
-   public void a(List<fhk> $$0) {
-      List<fhk> $$1 = new ArrayList<>($$0);
-      $$1.sort(new fhk.b(this.a.X().c()));
-      boolean $$2 = $$1.removeAll(this.b);
-      if (!$$2) {
-         this.b.clear();
-      }
-
-      this.c = $$1;
-   }
-
-   public void a(fhk $$0) {
-      this.c.remove($$0);
-      this.b.add($$0);
-   }
-
-   @Override
-   public Iterator<fhk> iterator() {
-      return this.c.iterator();
+      fjx.a $$1 = $$0.a();
+      this.b = $$1.b;
+      this.c = $$1.a;
    }
 
    public boolean a() {
-      return this.c.isEmpty();
+      return this.b;
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public void a(fhj $$0) {
+      fjx.a $$1 = this.b($$0);
+      this.b = $$1.b;
+      this.c = $$1.a;
+   }
+
+   private fjx.a b(fhj $$0) {
+      fjx.a $$1 = this.a.a();
+      if ($$0.a != null && !$$0.a.equals($$1.a)) {
+         fjx.a $$2 = new fjx.a();
+         $$2.a = $$0.a;
+         $$2.b = true;
+         this.a.a($$2);
+         return $$2;
+      } else {
+         return $$1;
+      }
    }
 }

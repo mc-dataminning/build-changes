@@ -1,80 +1,199 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public abstract class exd implements exe {
-   protected final List<eyz> g;
-   private final Predicate<evq> a;
+public interface exd {
+   MapCodec<exd> a = a(Integer.MAX_VALUE);
 
-   protected exd(List<eyz> $$0) {
-      this.g = $$0;
-      this.a = af.a($$0);
+   static MapCodec<exd> a(int $$0) {
+      return exd.f.e.dispatchMap("mode", exd::a, $$0x -> $$0x.g).validate($$1 -> {
+         if ($$1 instanceof exd.d $$2 && $$2.c().isPresent()) {
+            int $$3 = $$2.c().get();
+            if ($$3 > $$0) {
+               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
+            }
+         }
+
+         return DataResult.success($$1);
+      });
    }
 
-   @Override
-   public abstract exf<? extends exd> b();
+   exd.f a();
 
-   protected static <T extends exd> P1<Mu<T>, List<eyz>> a(Instance<T> $$0) {
-      return $$0.group(eyz.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
+   default <T> List<T> a(List<T> $$0, List<T> $$1) {
+      return this.a($$0, $$1, Integer.MAX_VALUE);
    }
 
-   public final cwo b(cwo $$0, evq $$1) {
-      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
-   }
+   <T> List<T> a(List<T> var1, List<T> var2, int var3);
 
-   protected abstract cwo a(cwo var1, evq var2);
+   public static class a implements exd {
+      private static final Logger d = LogUtils.getLogger();
+      public static final exd.a b = new exd.a();
+      public static final MapCodec<exd.a> c = MapCodec.unit(() -> b);
 
-   @Override
-   public void a(evw $$0) {
-      exe.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
-      }
-   }
-
-   protected static exd.a<?> a(Function<List<eyz>, exe> $$0) {
-      return new exd.b($$0);
-   }
-
-   public abstract static class a<T extends exd.a<T>> implements exe.a, eyr<T> {
-      private final Builder<eyz> a = ImmutableList.builder();
-
-      public T a(eyz.a $$0) {
-         this.a.add($$0.build());
-         return this.c();
-      }
-
-      public final T f() {
-         return this.c();
-      }
-
-      protected abstract T c();
-
-      protected List<eyz> g() {
-         return this.a.build();
-      }
-   }
-
-   static final class b extends exd.a<exd.b> {
-      private final Function<List<eyz>, exe> a;
-
-      public b(Function<List<eyz>, exe> $$0) {
-         this.a = $$0;
-      }
-
-      protected exd.b a() {
-         return this;
+      private a() {
       }
 
       @Override
-      public exe b() {
-         return this.a.apply(this.g());
+      public exd.f a() {
+         return exd.f.d;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         if ($$0.size() + $$1.size() > $$2) {
+            d.error("Contents overflow in section append");
+            return $$0;
+         } else {
+            return Stream.concat($$0.stream(), $$1.stream()).toList();
+         }
+      }
+   }
+
+   public static record b(int c) implements exd {
+      private static final Logger d = LogUtils.getLogger();
+      public static final MapCodec<exd.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ayi.l.optionalFieldOf("offset", 0).forGetter(exd.b::b)).apply($$0, exd.b::new)
+      );
+
+      @Override
+      public exd.f a() {
+         return exd.f.c;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            d.error("Cannot insert when offset is out of bounds");
+            return $$0;
+         } else if ($$3 + $$1.size() > $$2) {
+            d.error("Contents overflow in section insertion");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            $$4.addAll($$0.subList(this.c, $$3));
+            return $$4.build();
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   public static class c implements exd {
+      public static final exd.c b = new exd.c();
+      public static final MapCodec<exd.c> c = MapCodec.unit(() -> b);
+
+      private c() {
+      }
+
+      @Override
+      public exd.f a() {
+         return exd.f.a;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         return $$1;
+      }
+   }
+
+   public static record d(int c, Optional<Integer> d) implements exd {
+      private static final Logger e = LogUtils.getLogger();
+      public static final MapCodec<exd.d> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ayi.l.optionalFieldOf("offset", 0).forGetter(exd.d::b), ayi.l.optionalFieldOf("size").forGetter(exd.d::c)).apply($$0, exd.d::new)
+      );
+
+      public d(int $$0) {
+         this($$0, Optional.empty());
+      }
+
+      @Override
+      public exd.f a() {
+         return exd.f.b;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            e.error("Cannot replace when offset is out of bounds");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            int $$5 = this.c + this.d.orElse($$1.size());
+            if ($$5 < $$3) {
+               $$4.addAll($$0.subList($$5, $$3));
+            }
+
+            List<T> $$6 = $$4.build();
+            if ($$6.size() > $$2) {
+               e.error("Contents overflow in section replacement");
+               return $$0;
+            } else {
+               return $$6;
+            }
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public Optional<Integer> c() {
+         return this.d;
+      }
+   }
+
+   public static record e<T>(List<T> a, exd b) {
+      public static <T> Codec<exd.e<T>> a(Codec<T> $$0, int $$1) {
+         return RecordCodecBuilder.create(
+            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), exd.a($$1).forGetter($$0xx -> $$0xx.b))
+                  .apply($$2, exd.e::new)
+         );
+      }
+
+      public List<T> a(List<T> $$0) {
+         return this.b.a($$0, this.a);
+      }
+   }
+
+   public static enum f implements azv {
+      a("replace_all", exd.c.c),
+      b("replace_section", exd.d.b),
+      c("insert", exd.b.b),
+      d("append", exd.a.c);
+
+      public static final Codec<exd.f> e = azv.a(exd.f::values);
+      private final String f;
+      final MapCodec<? extends exd> g;
+
+      private f(final String $$0, final MapCodec<? extends exd> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public MapCodec<? extends exd> a() {
+         return this.g;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 }

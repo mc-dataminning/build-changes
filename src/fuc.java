@@ -1,61 +1,82 @@
-import java.net.URI;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fuc extends fuk {
-   private static final wp a = wp.c("symlink_warning.title.world").a(n.r);
-   private static final wp b = wp.a("symlink_warning.message.world", wp.a(axv.p));
-   private static final wp c = wp.c("symlink_warning.title.pack").a(n.r);
-   private static final wp d = wp.a("symlink_warning.message.pack", wp.a(axv.p));
-   private final wp s;
-   private final URI u;
-   private final Runnable v;
-   private final fsf w = new fsf().b(10);
+public class fuc {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<ctl<?>, fuc.a<?, ?>> b = Maps.newHashMap();
 
-   public fuc(wp $$0, wp $$1, URI $$2, Runnable $$3) {
-      super($$0);
-      this.s = $$1;
-      this.u = $$2;
-      this.v = $$3;
+   public static <T extends csc> void a(ctl<T> $$0, flj $$1, int $$2, wp $$3) {
+      fuc.a<T, ?> $$4 = a($$0);
+      if ($$4 == null) {
+         a.warn("Failed to create screen for menu type: {}", mb.p.b($$0));
+      } else {
+         $$4.a($$3, $$0, $$1, $$2);
+      }
    }
 
-   public static fuk a(Runnable $$0) {
-      return new fuc(a, b, axv.p, $$0);
+   @Nullable
+   private static <T extends csc> fuc.a<T, ?> a(ctl<T> $$0) {
+      return (fuc.a<T, ?>)b.get($$0);
    }
 
-   public static fuk b(Runnable $$0) {
-      return new fuc(c, d, axv.p, $$0);
+   private static <M extends csc, U extends ful & fwg<M>> void a(ctl<? extends M> $$0, fuc.a<M, U> $$1) {
+      fuc.a<?, ?> $$2 = b.put($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalStateException("Duplicate registration for " + mb.p.b($$0));
+      }
    }
 
-   @Override
-   protected void aR_() {
-      super.aR_();
-      this.w.c().b();
-      fsf.b $$0 = this.w.d(1);
-      $$0.a(new fpz(this.l, this.p));
-      $$0.a(new fpm(this.s, this.p).d(this.n - 50).b(true));
-      int $$1 = 120;
-      fsf $$2 = new fsf().a(5);
-      fsf.b $$3 = $$2.d(3);
-      $$3.a(fos.a(wo.n, $$0x -> af.m().a(this.u)).b(120, 20).a());
-      $$3.a(fos.a(wo.o, $$0x -> this.m.p.a(this.u.toString())).b(120, 20).a());
-      $$3.a(fos.a(wo.k, $$0x -> this.aO_()).b(120, 20).a());
-      $$0.a($$2);
-      this.c();
-      this.w.a(this::c);
+   public static boolean a() {
+      boolean $$0 = false;
+
+      for (ctl<?> $$1 : mb.p) {
+         if (!b.containsKey($$1)) {
+            a.debug("Menu {} has no matching screen", mb.p.b($$1));
+            $$0 = true;
+         }
+      }
+
+      return $$0;
    }
 
-   @Override
-   protected void c() {
-      this.w.a();
-      fse.a(this.w, this.J());
+   static {
+      a(ctl.a, fvm::new);
+      a(ctl.b, fvm::new);
+      a(ctl.c, fvm::new);
+      a(ctl.d, fvm::new);
+      a(ctl.e, fvm::new);
+      a(ctl.f, fvm::new);
+      a(ctl.g, fvs::new);
+      a(ctl.h, fvn::new);
+      a(ctl.i, fve::new);
+      a(ctl.j, fvf::new);
+      a(ctl.k, fvg::new);
+      a(ctl.l, fvj::new);
+      a(ctl.m, fvo::new);
+      a(ctl.n, fvv::new);
+      a(ctl.o, fvw::new);
+      a(ctl.p, fvx::new);
+      a(ctl.q, fvz::new);
+      a(ctl.r, fwe::new);
+      a(ctl.s, fwf::new);
+      a(ctl.t, fwh::new);
+      a(ctl.u, fwk::new);
+      a(ctl.v, fwm::new);
+      a(ctl.w, fwn::new);
+      a(ctl.x, fvk::new);
+      a(ctl.y, fwo::new);
    }
 
-   @Override
-   public wp i() {
-      return wo.a(super.i(), this.s);
-   }
+   interface a<T extends csc, U extends ful & fwg<T>> {
+      default void a(wp $$0, ctl<T> $$1, flj $$2, int $$3) {
+         U $$4 = this.create($$1.a($$3, $$2.t.gi()), $$2.t.gi(), $$0);
+         $$2.t.cd = $$4.F();
+         $$2.a($$4);
+      }
 
-   @Override
-   public void aO_() {
-      this.v.run();
+      U create(T var1, cow var2, wp var3);
    }
 }

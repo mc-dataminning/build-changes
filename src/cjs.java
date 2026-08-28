@@ -1,43 +1,63 @@
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class cjs {
-   public static final int a = 64;
-   private static final int b = 63;
-   private final cjs.a[] c = new cjs.a[64];
-   private int d = -1;
+public class cjs extends bul {
+   public final cjv a;
+   public final String b;
+   private final buo c;
 
-   public cjs() {
-      Arrays.fill(this.c, new cjs.a(0.0, 0.0F));
+   public cjs(cjv $$0, String $$1, float $$2, float $$3) {
+      super($$0.aq(), $$0.dV());
+      this.c = buo.b($$2, $$3);
+      this.m_();
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(cjs $$0) {
-      System.arraycopy($$0.c, 0, this.c, 0, 64);
-      this.d = $$0.d;
+   @Override
+   protected void a(akc.a $$0) {
    }
 
-   public void a(double $$0, float $$1) {
-      cjs.a $$2 = new cjs.a($$0, $$1);
-      if (this.d < 0) {
-         Arrays.fill(this.c, $$2);
-      }
-
-      if (++this.d == 64) {
-         this.d = 0;
-      }
-
-      this.c[this.d] = $$2;
+   @Override
+   protected void a(tq $$0) {
    }
 
-   public cjs.a a(int $$0) {
-      return this.c[this.d - $$0 & 63];
+   @Override
+   protected void b(tq $$0) {
    }
 
-   public cjs.a a(int $$0, float $$1) {
-      cjs.a $$2 = this.a($$0);
-      cjs.a $$3 = this.a($$0 + 1);
-      return new cjs.a(ayz.d((double)$$1, $$3.a, $$2.a), ayz.i($$1, $$3.b, $$2.b));
+   @Override
+   public boolean bH() {
+      return true;
    }
 
-   public static record a(double a, float b) {
+   @Nullable
+   @Override
+   public cwp dI() {
+      return this.a.dI();
+   }
+
+   @Override
+   public final boolean a(ard $$0, btb $$1, float $$2) {
+      return this.d($$1) ? false : this.a.a($$0, this, $$1, $$2);
+   }
+
+   @Override
+   public boolean u(bul $$0) {
+      return this == $$0 || this.a == $$0;
+   }
+
+   @Override
+   public yw<abl> a(arb $$0) {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public buo a(bvt $$0) {
+      return this.c;
+   }
+
+   @Override
+   public boolean dT() {
+      return false;
    }
 }

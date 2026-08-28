@@ -1,14 +1,18 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class eqy extends erk {
-   public static final MapCodec<eqy> a = MapCodec.unit(() -> eqy.b);
-   public static final eqy b = new eqy();
+public enum eqy implements azv {
+   a("ignore_waterlogging"),
+   b("apply_waterlogging");
 
-   private eqy() {
+   public static Codec<eqy> c = azv.b(eqy::values);
+   private final String d;
+
+   private eqy(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   protected erm<?> a() {
-      return erm.j;
+   public String c() {
+      return this.d;
    }
 }

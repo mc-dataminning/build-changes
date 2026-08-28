@@ -1,20 +1,51 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public enum boy {
-   a("client"),
-   b("server");
+public class boy implements AutoCloseable {
+   public static final boy a = new boy(null);
+   @Nullable
+   private final bot b;
 
-   private final String c;
-
-   private boy(final String $$0) {
-      this.c = $$0;
+   boy(@Nullable bot $$0) {
+      this.b = $$0;
    }
 
-   public static boy a(MinecraftServer $$0) {
-      return $$0.n() ? b : a;
+   public boy a(String $$0) {
+      if (this.b != null) {
+         this.b.e($$0);
+      }
+
+      return this;
    }
 
-   public String a() {
-      return this.c;
+   public boy a(Supplier<String> $$0) {
+      if (this.b != null) {
+         this.b.e($$0.get());
+      }
+
+      return this;
+   }
+
+   public boy a(long $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+
+      return this;
+   }
+
+   public boy a(int $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+
+      return this;
+   }
+
+   @Override
+   public void close() {
+      if (this.b != null) {
+         this.b.c();
+      }
    }
 }

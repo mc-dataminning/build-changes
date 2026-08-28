@@ -1,16 +1,26 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bkp extends bjk {
+public class bkp extends bjl {
    public bkp(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:fox", () -> bjl.a($$0));
+      $$0.register(
+         $$1,
+         "minecraft:wandering_trader",
+         $$1x -> DSL.optionalFields("Inventory", DSL.list(bhx.t.in($$0)), "Offers", DSL.optionalFields("Recipes", DSL.list(bhx.x.in($$0))), bjm.a($$0))
+      );
+      $$0.register(
+         $$1,
+         "minecraft:trader_llama",
+         $$1x -> DSL.optionalFields("Items", DSL.list(bhx.t.in($$0)), "SaddleItem", bhx.t.in($$0), "DecorItem", bhx.t.in($$0), bjm.a($$0))
+      );
       return $$1;
    }
 }

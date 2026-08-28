@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class ara extends dyv {
+public class ara extends dyw {
    private static final Logger b = LogUtils.getLogger();
    private final aqr c;
    private final ard d;
@@ -25,21 +25,21 @@ public class ara extends dyv {
    final arg f;
    private final ara.b g;
    public final aqi a;
-   private final euy h;
+   private final euz h;
    private long i;
    private boolean j = true;
    private boolean k = true;
    private static final int l = 4;
    private final long[] m = new long[4];
-   private final dzs[] n = new dzs[4];
-   private final dyr[] o = new dyr[4];
-   private final List<dzb> p = new ArrayList<>();
+   private final dzt[] n = new dzt[4];
+   private final dys[] o = new dys[4];
+   private final List<dzc> p = new ArrayList<>();
    private final Set<aqg> q = new ReferenceOpenHashSet();
    @Nullable
    @bag
-   private dgs.d r;
+   private dgt.d r;
 
-   public ara(ard $$0, eve.c $$1, DataFixer $$2, ero $$3, Executor $$4, dys $$5, int $$6, int $$7, boolean $$8, arn $$9, eay $$10, Supplier<euy> $$11) {
+   public ara(ard $$0, evf.c $$1, DataFixer $$2, erp $$3, Executor $$4, dyt $$5, int $$6, int $$7, boolean $$8, arn $$9, eaz $$10, Supplier<euz> $$11) {
       this.d = $$0;
       this.g = new ara.b($$0);
       this.e = Thread.currentThread();
@@ -51,7 +51,7 @@ public class ara extends dyv {
          b.error("Failed to create dimension data storage directory", var15);
       }
 
-      this.h = new euy($$12, $$2, $$0.K_());
+      this.h = new euz($$12, $$2, $$0.K_());
       this.a = new aqi($$0, $$1, $$2, $$3, $$4, this.g, this, $$5, $$9, $$10, $$11, $$6, $$8);
       this.f = this.a.d();
       this.c = this.a.j();
@@ -72,7 +72,7 @@ public class ara extends dyv {
       return this.a.h();
    }
 
-   private void a(long $$0, @Nullable dyr $$1, dzs $$2) {
+   private void a(long $$0, @Nullable dys $$1, dzt $$2) {
       for (int $$3 = 3; $$3 > 0; $$3--) {
          this.m[$$3] = this.m[$$3 - 1];
          this.n[$$3] = this.n[$$3 - 1];
@@ -86,17 +86,17 @@ public class ara extends dyv {
 
    @Nullable
    @Override
-   public dyr a(int $$0, int $$1, dzs $$2, boolean $$3) {
+   public dys a(int $$0, int $$1, dzt $$2, boolean $$3) {
       if (Thread.currentThread() != this.e) {
-         return CompletableFuture.<dyr>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
+         return CompletableFuture.<dys>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
       } else {
-         bos $$4 = bor.a();
+         bot $$4 = bos.a();
          $$4.f("getChunk");
-         long $$5 = dfn.c($$0, $$1);
+         long $$5 = dfo.c($$0, $$1);
 
          for (int $$6 = 0; $$6 < 4; $$6++) {
             if ($$5 == this.m[$$6] && $$2 == this.n[$$6]) {
-               dyr $$7 = this.o[$$6];
+               dys $$7 = this.o[$$6];
                if ($$7 != null || !$$3) {
                   return $$7;
                }
@@ -104,10 +104,10 @@ public class ara extends dyv {
          }
 
          $$4.f("getChunkCacheMiss");
-         CompletableFuture<aqj<dyr>> $$8 = this.c($$0, $$1, $$2, $$3);
+         CompletableFuture<aqj<dys>> $$8 = this.c($$0, $$1, $$2, $$3);
          this.g.b($$8::isDone);
-         aqj<dyr> $$9 = $$8.join();
-         dyr $$10 = $$9.b(null);
+         aqj<dys> $$9 = $$8.join();
+         dys $$10 = $$9.b(null);
          if ($$10 == null && $$3) {
             throw (IllegalStateException)af.b(new IllegalStateException("Chunk not there when requested: " + $$9.b()));
          } else {
@@ -119,17 +119,17 @@ public class ara extends dyv {
 
    @Nullable
    @Override
-   public dzb a(int $$0, int $$1) {
+   public dzc a(int $$0, int $$1) {
       if (Thread.currentThread() != this.e) {
          return null;
       } else {
-         bor.a().f("getChunkNow");
-         long $$2 = dfn.c($$0, $$1);
+         bos.a().f("getChunkNow");
+         long $$2 = dfo.c($$0, $$1);
 
          for (int $$3 = 0; $$3 < 4; $$3++) {
-            if ($$2 == this.m[$$3] && this.n[$$3] == dzs.n) {
-               dyr $$4 = this.o[$$3];
-               return $$4 instanceof dzb ? (dzb)$$4 : null;
+            if ($$2 == this.m[$$3] && this.n[$$3] == dzt.n) {
+               dys $$4 = this.o[$$3];
+               return $$4 instanceof dzc ? (dzc)$$4 : null;
             }
          }
 
@@ -137,11 +137,11 @@ public class ara extends dyv {
          if ($$5 == null) {
             return null;
          } else {
-            dyr $$6 = $$5.b(dzs.n);
+            dys $$6 = $$5.b(dzt.n);
             if ($$6 != null) {
-               this.a($$2, $$6, dzs.n);
-               if ($$6 instanceof dzb) {
-                  return (dzb)$$6;
+               this.a($$2, $$6, dzt.n);
+               if ($$6 instanceof dzc) {
+                  return (dzc)$$6;
                }
             }
 
@@ -151,33 +151,33 @@ public class ara extends dyv {
    }
 
    private void r() {
-      Arrays.fill(this.m, dfn.c);
+      Arrays.fill(this.m, dfo.c);
       Arrays.fill(this.n, null);
       Arrays.fill(this.o, null);
    }
 
-   public CompletableFuture<aqj<dyr>> b(int $$0, int $$1, dzs $$2, boolean $$3) {
+   public CompletableFuture<aqj<dys>> b(int $$0, int $$1, dzt $$2, boolean $$3) {
       boolean $$4 = Thread.currentThread() == this.e;
-      CompletableFuture<aqj<dyr>> $$5;
+      CompletableFuture<aqj<dys>> $$5;
       if ($$4) {
          $$5 = this.c($$0, $$1, $$2, $$3);
          this.g.b($$5::isDone);
       } else {
-         $$5 = CompletableFuture.<CompletableFuture<aqj<dyr>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
+         $$5 = CompletableFuture.<CompletableFuture<aqj<dys>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
       }
 
       return $$5;
    }
 
-   private CompletableFuture<aqj<dyr>> c(int $$0, int $$1, dzs $$2, boolean $$3) {
-      dfn $$4 = new dfn($$0, $$1);
+   private CompletableFuture<aqj<dys>> c(int $$0, int $$1, dzt $$2, boolean $$3) {
+      dfo $$4 = new dfo($$0, $$1);
       long $$5 = $$4.a();
       int $$6 = aqh.a($$2);
       aqg $$7 = this.b($$5);
       if ($$3) {
          this.c.a(arj.g, $$4, $$6, $$4);
          if (this.a($$7, $$6)) {
-            bos $$8 = bor.a();
+            bot $$8 = bos.a();
             $$8.a("chunkLoad");
             this.s();
             $$7 = this.b($$5);
@@ -197,20 +197,20 @@ public class ara extends dyv {
 
    @Override
    public boolean b(int $$0, int $$1) {
-      aqg $$2 = this.b(new dfn($$0, $$1).a());
-      int $$3 = aqh.a(dzs.n);
+      aqg $$2 = this.b(new dfo($$0, $$1).a());
+      int $$3 = aqh.a(dzt.n);
       return !this.a($$2, $$3);
    }
 
    @Nullable
    @Override
-   public dzd c(int $$0, int $$1) {
-      long $$2 = dfn.c($$0, $$1);
+   public dze c(int $$0, int $$1) {
+      long $$2 = dfo.c($$0, $$1);
       aqg $$3 = this.b($$2);
-      return $$3 == null ? null : $$3.a(dzs.k.c());
+      return $$3 == null ? null : $$3.a(dzt.k.c());
    }
 
-   public dgh c() {
+   public dgi c() {
       return this.d;
    }
 
@@ -254,7 +254,7 @@ public class ara extends dyv {
 
    @Override
    public void a(BooleanSupplier $$0, boolean $$1) {
-      bos $$2 = bor.a();
+      bot $$2 = bos.a();
       $$2.a("purge");
       if (this.d.u().i() || !$$1) {
          this.c.a();
@@ -278,10 +278,10 @@ public class ara extends dyv {
       long $$1 = $$0 - this.i;
       this.i = $$0;
       if (!this.d.aj()) {
-         bos $$2 = bor.a();
+         bot $$2 = bos.a();
          $$2.a("pollingChunks");
          if (this.d.u().i()) {
-            List<dzb> $$3 = this.p;
+            List<dzc> $$3 = this.p;
 
             try {
                $$2.a("filteringTickingChunks");
@@ -300,11 +300,11 @@ public class ara extends dyv {
       }
    }
 
-   private void a(bos $$0) {
+   private void a(bot $$0) {
       $$0.a("broadcast");
 
       for (aqg $$1 : this.q) {
-         dzb $$2 = $$1.d();
+         dzc $$2 = $$1.d();
          if ($$2 != null) {
             $$1.a($$2);
          }
@@ -314,36 +314,36 @@ public class ara extends dyv {
       $$0.c();
    }
 
-   private void a(List<dzb> $$0) {
+   private void a(List<dzc> $$0) {
       this.a.a($$1 -> {
-         dzb $$2 = $$1.d();
+         dzc $$2 = $$1.d();
          if ($$2 != null && this.d.a($$1.r())) {
             $$0.add($$2);
          }
       });
    }
 
-   private void a(bos $$0, long $$1, List<dzb> $$2) {
+   private void a(bot $$0, long $$1, List<dzc> $$2) {
       $$0.b("naturalSpawnCount");
       int $$3 = this.c.b();
-      dgs.d $$4 = dgs.a($$3, this.d.C(), this::a, new dgr(this.a));
+      dgt.d $$4 = dgt.a($$3, this.d.C(), this::a, new dgs(this.a));
       this.r = $$4;
       $$0.b("spawnAndTick");
-      boolean $$5 = this.d.O().b(dgd.e);
-      int $$6 = this.d.O().c(dgd.o);
-      List<bvj> $$8;
+      boolean $$5 = this.d.O().b(dge.e);
+      int $$6 = this.d.O().c(dge.o);
+      List<bvk> $$8;
       if ($$5 && (this.j || this.k)) {
          boolean $$7 = this.d.D_().c() % 400L == 0L;
-         $$8 = dgs.a($$4, this.k, this.j, $$7);
+         $$8 = dgt.a($$4, this.k, this.j, $$7);
       } else {
          $$8 = List.of();
       }
 
-      for (dzb $$10 : $$2) {
-         dfn $$11 = $$10.f();
+      for (dzc $$10 : $$2) {
+         dfo $$11 = $$10.f();
          $$10.b($$1);
          if (!$$8.isEmpty() && this.d.F_().a($$11)) {
-            dgs.a(this.d, $$10, $$4, $$8);
+            dgt.a(this.d, $$10, $$4, $$8);
          }
 
          if (this.d.a($$11.a())) {
@@ -357,7 +357,7 @@ public class ara extends dyv {
       }
    }
 
-   private void a(long $$0, Consumer<dzb> $$1) {
+   private void a(long $$0, Consumer<dzc> $$1) {
       aqg $$2 = this.b($$0);
       if ($$2 != null) {
          $$2.c().getNow(aqg.a).a($$1);
@@ -374,15 +374,15 @@ public class ara extends dyv {
       return this.g.by();
    }
 
-   public dys g() {
+   public dyt g() {
       return this.a.a();
    }
 
-   public dyt h() {
+   public dyu h() {
       return this.a.b();
    }
 
-   public edf i() {
+   public edg i() {
       return this.a.c();
    }
 
@@ -394,14 +394,14 @@ public class ara extends dyv {
    public void a(ji $$0) {
       int $$1 = kk.a($$0.u());
       int $$2 = kk.a($$0.w());
-      aqg $$3 = this.b(dfn.c($$1, $$2));
+      aqg $$3 = this.b(dfo.c($$1, $$2));
       if ($$3 != null && $$3.a($$0)) {
          this.q.add($$3);
       }
    }
 
    @Override
-   public void a(dgq $$0, kk $$1) {
+   public void a(dgr $$0, kk $$1) {
       this.g.execute(() -> {
          aqg $$2 = this.b($$1.r().a());
          if ($$2 != null && $$2.a($$0, $$1.b())) {
@@ -410,16 +410,16 @@ public class ara extends dyv {
       });
    }
 
-   public <T> void a(arj<T> $$0, dfn $$1, int $$2, T $$3) {
+   public <T> void a(arj<T> $$0, dfo $$1, int $$2, T $$3) {
       this.c.c($$0, $$1, $$2, $$3);
    }
 
-   public <T> void b(arj<T> $$0, dfn $$1, int $$2, T $$3) {
+   public <T> void b(arj<T> $$0, dfo $$1, int $$2, T $$3) {
       this.c.d($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(dfn $$0, boolean $$1) {
+   public void a(dfo $$0, boolean $$1) {
       this.c.a($$0, $$1);
    }
 
@@ -429,19 +429,19 @@ public class ara extends dyv {
       }
    }
 
-   public void a(buk $$0) {
+   public void a(bul $$0) {
       this.a.b($$0);
    }
 
-   public void b(buk $$0) {
+   public void b(bul $$0) {
       this.a.a($$0);
    }
 
-   public void a(buk $$0, yw<?> $$1) {
+   public void a(bul $$0, yw<?> $$1) {
       this.a.b($$0, $$1);
    }
 
-   public void b(buk $$0, yw<?> $$1) {
+   public void b(bul $$0, yw<?> $$1) {
       this.a.a($$0, $$1);
    }
 
@@ -459,25 +459,25 @@ public class ara extends dyv {
       this.k = this.k;
    }
 
-   public String a(dfn $$0) {
+   public String a(dfo $$0) {
       return this.a.a($$0);
    }
 
-   public euy k() {
+   public euz k() {
       return this.h;
    }
 
-   public cgk l() {
+   public cgl l() {
       return this.a.m();
    }
 
-   public eaa m() {
+   public eab m() {
       return this.a.p();
    }
 
    @Nullable
    @bag
-   public dgs.d n() {
+   public dgt.d n() {
       return this.r;
    }
 
@@ -491,11 +491,11 @@ public class ara extends dyv {
       }
    }
 
-   static record a(dzb a, aqg b) {
+   static record a(dzc a, aqg b) {
    }
 
-   final class b extends bqy<Runnable> {
-      b(final dgh $$0) {
+   final class b extends bqz<Runnable> {
+      b(final dgi $$0) {
          super("Chunk source main thread executor for " + $$0.ai().a());
       }
 
@@ -526,7 +526,7 @@ public class ara extends dyv {
 
       @Override
       protected void d(Runnable $$0) {
-         bor.a().f("runTask");
+         bos.a().f("runTask");
          super.d($$0);
       }
 

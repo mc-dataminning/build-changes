@@ -1,5 +1,5 @@
-public record aho(cou b) implements yw<agg> {
-   public static final yn<vl, aho> a = yn.a(cou.a, aho::b, aho::new);
+public record aho(cov b) implements yw<agg> {
+   public static final yn<vl, aho> a = yn.a(cov.a, aho::b, aho::new);
 
    @Override
    public yy<aho> a() {

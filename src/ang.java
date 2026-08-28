@@ -27,7 +27,7 @@ public class ang {
    }
 
    private static int a(ex $$0, hh $$1, Collection<are> $$2, int $$3) throws CommandSyntaxException {
-      cwo $$4 = $$1.a(1, false);
+      cwp $$4 = $$1.a(1, false);
       int $$5 = $$4.k();
       int $$6 = $$5 * 100;
       if ($$3 > $$6) {
@@ -40,10 +40,10 @@ public class ang {
             while ($$8 > 0) {
                int $$9 = Math.min($$5, $$8);
                $$8 -= $$9;
-               cwo $$10 = $$1.a($$9, false);
+               cwp $$10 = $$1.a($$9, false);
                boolean $$11 = $$7.gi().f($$10);
                if ($$11 && $$10.f()) {
-                  clb $$13 = $$7.a($$4, false);
+                  clc $$13 = $$7.a($$4, false);
                   if ($$13 != null) {
                      $$13.y();
                   }
@@ -51,7 +51,7 @@ public class ang {
                   $$7.dV().a(null, $$7.dA(), $$7.dC(), $$7.dG(), awa.oa, awb.h, 0.2F, (($$7.dY().i() - $$7.dY().i()) * 0.7F + 1.0F) * 2.0F);
                   $$7.cd.d();
                } else {
-                  clb $$12 = $$7.a($$10, false);
+                  clc $$12 = $$7.a($$10, false);
                   if ($$12 != null) {
                      $$12.t();
                      $$12.b($$7.cG());

@@ -1,27 +1,34 @@
-public class gsg<T extends cmh> extends gsw<T, gym> {
-   private static final akv a = akv.b("textures/entity/illager/evoker.png");
+public class gsg extends gsd<cpi, gym> {
+   private static final akv a = akv.b("textures/entity/illager/evoker_fangs.png");
+   private final gcc b;
 
-   public gsg(gsd.a $$0) {
-      super($$0, new gco<>($$0.a(gfb.aL)), 0.5F);
-      this.a(new gwk<gym, gco<gym>>(this) {
-         public void a(fft $$0, glx $$1, int $$2, gym $$3, float $$4, float $$5) {
-            if ($$3.a) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            }
-         }
-      });
+   public gsg(gse.a $$0) {
+      super($$0);
+      this.b = new gcc($$0.a(gfc.aM));
    }
 
-   public akv a(gym $$0) {
-      return a;
+   public void a(gym $$0, ffu $$1, gly $$2, int $$3) {
+      float $$4 = $$0.b;
+      if ($$4 != 0.0F) {
+         $$1.a();
+         $$1.a(a.d.rotationDegrees(90.0F - $$0.a));
+         $$1.b(-1.0F, -1.0F, 1.0F);
+         $$1.a(0.0F, -1.501F, 0.0F);
+         this.b.a($$0);
+         ffy $$5 = $$2.getBuffer(this.b.a(a));
+         this.b.a($$1, $$5, $$3, hei.d);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
-   public gym b() {
+   public gym a() {
       return new gym();
    }
 
-   public void a(T $$0, gym $$1, float $$2) {
+   public void a(cpi $$0, gym $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gB();
+      $$1.a = $$0.dL();
+      $$1.b = $$0.a($$2);
    }
 }

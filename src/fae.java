@@ -1,11 +1,4 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface fae {
-   @Nullable
-   fcd a(evq var1);
-
-   fad a();
-
-   Set<bai<?>> b();
+public record fae(MapCodec<? extends faf> a) {
 }

@@ -1,9 +1,9 @@
 import javax.annotation.Nullable;
 
 public interface arn {
-   void a(dfn var1);
+   void a(dfo var1);
 
-   void a(dfn var1, @Nullable dzs var2);
+   void a(dfo var1, @Nullable dzt var2);
 
    void a();
 

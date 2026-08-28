@@ -17,14 +17,14 @@ public class apq implements apn {
             return $$0.then(ey.a("storage").then($$1.apply(ey.a($$0, fy.a()).suggests(apq.b))));
          }
       };
-   private final euv c;
+   private final euw c;
    private final akv d;
 
-   static euv a(CommandContext<ex> $$0) {
+   static euw a(CommandContext<ex> $$0) {
       return ((ex)$$0.getSource()).l().aK();
    }
 
-   apq(euv $$0, akv $$1) {
+   apq(euw $$0, akv $$1) {
       this.c = $$0;
       this.d = $$1;
    }

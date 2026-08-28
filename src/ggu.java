@@ -1,60 +1,67 @@
 import com.mojang.serialization.Codec;
-import java.time.Instant;
-import java.util.Optional;
+import com.mojang.serialization.DataResult;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public enum ggu implements azv {
-   a("secure"),
-   b("modified"),
-   c("not_secure");
+public class ggu {
+   private final ggw[] a;
+   private int b;
 
-   public static final Codec<ggu> d = azv.a(ggu::values);
-   private final String e;
-
-   private ggu(final String $$0) {
-      this.e = $$0;
+   public static Codec<ggu> a(int $$0) {
+      return Codec.list(ggw.a)
+         .comapFlatMap(
+            $$1 -> {
+               int $$2 = $$1.size();
+               return $$2 > $$0
+                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
+                  : DataResult.success(new ggu($$0, $$1));
+            },
+            ggu::c
+         );
    }
 
-   public static ggu a(xf $$0, wp $$1, Instant $$2) {
-      if (!$$0.i() || $$0.b($$2)) {
-         return c;
-      } else {
-         return a($$0, $$1) ? b : a;
+   public ggu(int $$0) {
+      this.a = new ggw[$$0];
+   }
+
+   private ggu(int $$0, List<ggw> $$1) {
+      this.a = $$1.toArray(ggw[]::new);
+      this.b = $$1.size();
+   }
+
+   private List<ggw> c() {
+      List<ggw> $$0 = new ArrayList<>(this.d());
+
+      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
+         $$0.add(this.b($$1));
       }
+
+      return $$0;
    }
 
-   private static boolean a(xf $$0, wp $$1) {
-      if (!$$1.getString().contains($$0.c())) {
-         return true;
-      } else {
-         wp $$2 = $$0.n();
-         return $$2 == null ? false : a($$2);
-      }
-   }
-
-   private static boolean a(wp $$0) {
-      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), xm.a).orElse(false);
-   }
-
-   private static boolean a(xm $$0) {
-      return !$$0.l().equals(xm.b);
-   }
-
-   public boolean a() {
-      return this == c;
+   public void a(ggw $$0) {
+      this.a[this.c(this.b++)] = $$0;
    }
 
    @Nullable
-   public flc a(xf $$0) {
-      return switch (this) {
-         case b -> flc.a($$0.c());
-         case c -> flc.c();
-         default -> null;
-      };
+   public ggw b(int $$0) {
+      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   private int c(int $$0) {
+      return $$0 % this.a.length;
+   }
+
+   public int a() {
+      return Math.max(this.b - this.a.length, 0);
+   }
+
+   public int b() {
+      return this.b - 1;
+   }
+
+   private int d() {
+      return this.b() - this.a() + 1;
    }
 }

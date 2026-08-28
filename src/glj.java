@@ -1,104 +1,76 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
 
 public class glj {
-   private static final int a = 6;
-   private final List<akv> b;
+   private static final List<gmq> ae = new ArrayList<>();
+   public static final gmq a = a("blit_screen", ffs.a);
+   public static final gmq b = a("lightmap", ffs.a);
+   public static final gmq c = a("particle", ffs.d);
+   public static final gmq d = a("position", ffs.e);
+   public static final gmq e = a("position_color", ffs.f);
+   public static final gmq f = a("position_color_lightmap", ffs.h);
+   public static final gmq g = a("position_color_tex_lightmap", ffs.k);
+   public static final gmq h = a("position_tex", ffs.i);
+   public static final gmq i = a("position_tex_color", ffs.j);
+   public static final gmq j = a("rendertype_solid", ffs.b);
+   public static final gmq k = a("rendertype_cutout_mipped", ffs.b);
+   public static final gmq l = a("rendertype_cutout", ffs.b);
+   public static final gmq m = a("rendertype_translucent", ffs.b);
+   public static final gmq n = a("rendertype_translucent_moving_block", ffs.b);
+   public static final gmq o = a("rendertype_armor_cutout_no_cull", ffs.c);
+   public static final gmq p = a("rendertype_armor_translucent", ffs.c);
+   public static final gmq q = a("rendertype_entity_solid", ffs.c);
+   public static final gmq r = a("rendertype_entity_cutout", ffs.c);
+   public static final gmq s = a("rendertype_entity_cutout_no_cull", ffs.c);
+   public static final gmq t = a("rendertype_entity_cutout_no_cull_z_offset", ffs.c);
+   public static final gmq u = a("rendertype_item_entity_translucent_cull", ffs.c);
+   public static final gmq v = a("rendertype_entity_translucent", ffs.c);
+   public static final gmq w = a("rendertype_entity_translucent_emissive", ffs.c);
+   public static final gmq x = a("rendertype_entity_smooth_cutout", ffs.c);
+   public static final gmq y = a("rendertype_beacon_beam", ffs.b);
+   public static final gmq z = a("rendertype_entity_decal", ffs.c);
+   public static final gmq A = a("rendertype_entity_no_outline", ffs.c);
+   public static final gmq B = a("rendertype_entity_shadow", ffs.c);
+   public static final gmq C = a("rendertype_entity_alpha", ffs.c);
+   public static final gmq D = a("rendertype_eyes", ffs.c);
+   public static final gmq E = a("rendertype_energy_swirl", ffs.c);
+   public static final gmq F = a("rendertype_leash", ffs.h);
+   public static final gmq G = a("rendertype_water_mask", ffs.e);
+   public static final gmq H = a("rendertype_outline", ffs.j);
+   public static final gmq I = a("rendertype_armor_entity_glint", ffs.i);
+   public static final gmq J = a("rendertype_glint_translucent", ffs.i);
+   public static final gmq K = a("rendertype_glint", ffs.i);
+   public static final gmq L = a("rendertype_entity_glint", ffs.i);
+   public static final gmq M = a("rendertype_text", ffs.k);
+   public static final gmq N = a("rendertype_text_background", ffs.h);
+   public static final gmq O = a("rendertype_text_intensity", ffs.k);
+   public static final gmq P = a("rendertype_text_see_through", ffs.k);
+   public static final gmq Q = a("rendertype_text_background_see_through", ffs.h);
+   public static final gmq R = a("rendertype_text_intensity_see_through", ffs.k);
+   public static final gmq S = a("rendertype_lightning", ffs.f);
+   public static final gmq T = a("rendertype_tripwire", ffs.b);
+   public static final gmq U = a("rendertype_end_portal", ffs.e);
+   public static final gmq V = a("rendertype_end_gateway", ffs.e);
+   public static final gmq W = a("rendertype_clouds", ffs.f);
+   public static final gmq X = a("rendertype_lines", ffs.g);
+   public static final gmq Y = a("rendertype_crumbling", ffs.b);
+   public static final gmq Z = a("rendertype_gui", ffs.f);
+   public static final gmq aa = a("rendertype_gui_overlay", ffs.f);
+   public static final gmq ab = a("rendertype_gui_text_highlight", ffs.f);
+   public static final gmq ac = a("rendertype_gui_ghost_recipe_overlay", ffs.f);
+   public static final gmq ad = a("rendertype_breeze_wind", ffs.c);
 
-   public glj(akv $$0) {
-      this.b = IntStream.range(0, 6).mapToObj($$1 -> $$0.e($$0.a() + "_" + $$1 + ".png")).toList();
+   private static gmq a(String $$0, ffz $$1) {
+      return a($$0, $$1, gmo.a);
    }
 
-   public void a(fli $$0, float $$1, float $$2, float $$3) {
-      ffv $$4 = ffv.b();
-      Matrix4f $$5 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aO().k() / (float)$$0.aO().l(), 0.05F, 10.0F);
-      RenderSystem.backupProjectionMatrix();
-      RenderSystem.setProjectionMatrix($$5, fdc.a);
-      Matrix4fStack $$6 = RenderSystem.getModelViewStack();
-      $$6.pushMatrix();
-      $$6.rotationX((float) Math.PI);
-      RenderSystem.setShader(gli.i);
-      RenderSystem.enableBlend();
-      RenderSystem.disableCull();
-      RenderSystem.depthMask(false);
-      int $$7 = 2;
-
-      for (int $$8 = 0; $$8 < 4; $$8++) {
-         $$6.pushMatrix();
-         float $$9 = ((float)($$8 % 2) / 2.0F - 0.5F) / 256.0F;
-         float $$10 = ((float)($$8 / 2) / 2.0F - 0.5F) / 256.0F;
-         float $$11 = 0.0F;
-         $$6.translate($$9, $$10, 0.0F);
-         $$6.rotateX($$1 * (float) (Math.PI / 180.0));
-         $$6.rotateY($$2 * (float) (Math.PI / 180.0));
-
-         for (int $$12 = 0; $$12 < 6; $$12++) {
-            RenderSystem.setShaderTexture(0, this.b.get($$12));
-            ffo $$13 = $$4.a(ffy.c.h, ffr.j);
-            int $$14 = Math.round(255.0F * $$3) / ($$8 + 1);
-            if ($$12 == 0) {
-               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 1) {
-               $$13.a(1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 2) {
-               $$13.a(1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 3) {
-               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 4) {
-               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 5) {
-               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            ffp.a($$13.b());
-         }
-
-         $$6.popMatrix();
-         RenderSystem.colorMask(true, true, true, false);
-      }
-
-      RenderSystem.colorMask(true, true, true, true);
-      RenderSystem.restoreProjectionMatrix();
-      $$6.popMatrix();
-      RenderSystem.depthMask(true);
-      RenderSystem.enableCull();
-      RenderSystem.enableDepthTest();
+   private static gmq a(String $$0, ffz $$1, gmo $$2) {
+      gmq $$3 = new gmq(akv.b("core/" + $$0), $$1, $$2);
+      ae.add($$3);
+      return $$3;
    }
 
-   public void a(het $$0) {
-      for (akv $$1 : this.b) {
-         $$0.a($$1);
-      }
+   public static List<gmq> a() {
+      return ae;
    }
 }

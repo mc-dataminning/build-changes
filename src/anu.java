@@ -17,13 +17,13 @@ public class anu {
                ((RequiredArgumentBuilder)ey.a("name", fu.a($$1))
                      .executes(
                         $$0x -> a(
-                              (ex)$$0x.getSource(), fu.a($$0x, "name"), ((ex)$$0x.getSource()).d(), faz.c, 0.0F, 0, false, ((ex)$$0x.getSource()).l().ag().t()
+                              (ex)$$0x.getSource(), fu.a($$0x, "name"), ((ex)$$0x.getSource()).d(), fba.c, 0.0F, 0, false, ((ex)$$0x.getSource()).l().ag().t()
                            )
                      ))
                   .then(
                      ((RequiredArgumentBuilder)ey.a("pos", ha.a())
                            .executes(
-                              $$0x -> a((ex)$$0x.getSource(), fu.a($$0x, "name"), ha.a($$0x, "pos"), faz.c, 0.0F, 0, false, ((ex)$$0x.getSource()).l().ag().t())
+                              $$0x -> a((ex)$$0x.getSource(), fu.a($$0x, "name"), ha.a($$0x, "pos"), fba.c, 0.0F, 0, false, ((ex)$$0x.getSource()).l().ag().t())
                            ))
                         .then(
                            ey.a("delta", ha.a(false))
@@ -111,7 +111,7 @@ public class anu {
       );
    }
 
-   private static int a(ex $$0, lr $$1, faz $$2, faz $$3, float $$4, int $$5, boolean $$6, Collection<are> $$7) throws CommandSyntaxException {
+   private static int a(ex $$0, lr $$1, fba $$2, fba $$3, float $$4, int $$5, boolean $$6, Collection<are> $$7) throws CommandSyntaxException {
       int $$8 = 0;
 
       for (are $$9 : $$7) {

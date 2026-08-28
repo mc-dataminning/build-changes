@@ -1,65 +1,55 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class ccu extends cce {
-   private final bvi a;
-   private bvg b;
-   private int c;
+public class ccu extends ccf {
+   private final bvp a;
+   @Nullable
+   private bvh b;
+   private double c;
+   private double d;
+   private double e;
+   private final double f;
+   private final float g;
 
-   public ccu(bvi $$0) {
+   public ccu(bvp $$0, double $$1, float $$2) {
       this.a = $$0;
-      this.a(EnumSet.of(cce.a.a, cce.a.b));
+      this.f = $$1;
+      this.g = $$2;
+      this.a(EnumSet.of(ccf.a.a));
    }
 
    @Override
    public boolean b() {
-      bvg $$0 = this.a.O_();
-      if ($$0 == null) {
+      this.b = this.a.O_();
+      if (this.b == null) {
+         return false;
+      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
          return false;
       } else {
-         this.b = $$0;
-         return true;
+         fba $$0 = cgc.a(this.a, 16, 7, this.b.dt(), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            return true;
+         }
       }
    }
 
    @Override
    public boolean c() {
-      if (!this.b.bL()) {
-         return false;
-      } else {
-         return this.a.g(this.b) > 225.0 ? false : !this.a.P().k() || this.b();
-      }
+      return !this.a.P().k() && this.b.bL() && this.b.g(this.a) < (double)(this.g * this.g);
    }
 
    @Override
    public void e() {
       this.b = null;
-      this.a.P().m();
    }
 
    @Override
-   public boolean V_() {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.a.L().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.dq() * 2.0F * this.a.dq() * 2.0F);
-      double $$1 = this.a.i(this.b.dA(), this.b.dC(), this.b.dG());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
-      }
-
-      this.a.P().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.c(a(this.a), this.b);
-         }
-      }
+   public void d() {
+      this.a.P().a(this.c, this.d, this.e, this.f);
    }
 }

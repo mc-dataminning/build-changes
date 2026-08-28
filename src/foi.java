@@ -1,74 +1,40 @@
-import javax.annotation.Nullable;
-
-public abstract class foi extends fok implements fqo {
-   @Nullable
-   private fqp a;
-   private boolean c;
+public abstract class foi extends foq {
+   protected static final int e = 2;
+   private static final fqg a = new fqg(akv.b("widget/button"), akv.b("widget/button_disabled"), akv.b("widget/button_highlighted"));
 
    public foi(int $$0, int $$1, int $$2, int $$3, wp $$4) {
       super($$0, $$1, $$2, $$3, $$4);
    }
 
+   public abstract void b();
+
    @Override
-   public final boolean aK_() {
-      return this.c;
+   protected void b(foe $$0, int $$1, int $$2, float $$3) {
+      flj $$4 = flj.Q();
+      $$0.a(gmi::H, a.a(this.j, this.D()), this.F(), this.G(), this.A(), this.y(), axk.a(this.l));
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, $$5 | ayz.f(this.l * 255.0F) << 24);
+   }
+
+   public void a(foe $$0, foc $$1, int $$2) {
+      this.a($$0, $$1, 2, $$2);
    }
 
    @Override
-   public final void b_(boolean $$0) {
-      this.c = $$0;
-   }
-
-   @Nullable
-   @Override
-   public fqp aL_() {
-      return this.a;
+   public void a(double $$0, double $$1) {
+      this.b();
    }
 
    @Override
-   public void a(@Nullable fqp $$0) {
-      if (this.a != null) {
-         this.a.a(false);
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.j || !this.k) {
+         return false;
+      } else if (fsv.a($$0)) {
+         this.a(flj.Q().ak());
+         this.b();
+         return true;
+      } else {
+         return false;
       }
-
-      if ($$0 != null) {
-         $$0.a(true);
-      }
-
-      this.a = $$0;
-   }
-
-   @Nullable
-   @Override
-   public foa a(fsv $$0) {
-      return fqo.super.a($$0);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      boolean $$3 = this.c($$0, $$1, $$2);
-      return fqo.super.a($$0, $$1, $$2) || $$3;
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      super.b($$0, $$1, $$2);
-      return fqo.super.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      return fqo.super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public boolean aM_() {
-      return fqo.super.aM_();
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      fqo.super.a($$0);
    }
 }

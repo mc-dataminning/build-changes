@@ -1,7 +1,7 @@
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class awh<T> extends fch {
+public class awh<T> extends fci {
    public static final yn<wa, awh<?>> a = yl.a(mc.am).b(awh::a, awj::a);
    private final awi o;
    private final T p;

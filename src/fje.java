@@ -1,227 +1,211 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
+import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fje extends hld {
-   static final Logger a = LogUtils.getLogger();
-   private static final wp b = wp.c("mco.configure.world.players.title");
-   static final wp c = wp.c("mco.question");
-   private static final int C = 8;
-   final fsg D = new fsg(this);
-   private final fit E;
-   final fhk F;
+public class fje extends hle {
+   static final akv a = akv.b("pending_invite/accept_highlighted");
+   static final akv b = akv.b("pending_invite/accept");
+   static final akv c = akv.b("pending_invite/reject_highlighted");
+   static final akv C = akv.b("pending_invite/reject");
+   private static final Logger D = LogUtils.getLogger();
+   private static final wp E = wp.c("mco.invites.nopending");
+   static final wp F = wp.c("mco.invites.button.accept");
+   static final wp G = wp.c("mco.invites.button.reject");
+   private final ful H;
+   private final CompletableFuture<List<fhe>> I = CompletableFuture.supplyAsync(() -> {
+      try {
+         return fgk.a().i().a;
+      } catch (fig var1x) {
+         D.error("Couldn't list invites", var1x);
+         return List.of();
+      }
+   }, af.h());
    @Nullable
-   private fje.b G;
-   boolean H;
+   wp J;
+   fje.b K;
+   private fot L;
+   private fot M;
 
-   public fje(fit $$0, fhk $$1) {
-      super(b);
-      this.E = $$0;
-      this.F = $$1;
+   public fje(ful $$0, wp $$1) {
+      super($$1);
+      this.H = $$0;
    }
 
    @Override
    public void aR_() {
-      this.D.a(b, this.p);
-      this.G = this.D.c(new fje.b());
-      this.E();
-      fsk $$0 = this.D.b(fsk.e().a(8));
-      $$0.a(fos.a(wp.c("mco.configure.world.buttons.invite"), $$0x -> this.m.a(new fiy(this.E, this, this.F))).a());
-      $$0.a(fos.a(wo.k, $$0x -> this.aO_()).a());
-      this.D.a($$1 -> {
-         fop var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.D.a();
-      if (this.G != null) {
-         this.G.a(this.n, this.D);
-      }
-   }
-
-   void E() {
-      if (this.G != null) {
-         this.G.aH_().clear();
-
-         for (fhg $$0 : this.F.h) {
-            this.G.aH_().add(new fje.a($$0));
+      fgf.f();
+      this.K = new fje.b();
+      this.I.thenAcceptAsync($$0 -> {
+         List<fje.a> $$1 = $$0.stream().map($$0x -> new fje.a($$0x)).toList();
+         this.K.a($$1);
+         if ($$1.isEmpty()) {
+            this.m.aY().b(E);
          }
-      }
+      }, this.r);
+      this.c(this.K);
+      this.L = this.c((fot)fot.a(F, $$0 -> this.c(true)).a(this.n / 2 - 174, this.o - 32, 100, 20).a());
+      this.c((fot)fot.a(wo.d, $$0 -> this.aO_()).a(this.n / 2 - 50, this.o - 32, 100, 20).a());
+      this.M = this.c((fot)fot.a(G, $$0 -> this.c(false)).a(this.n / 2 + 74, this.o - 32, 100, 20).a());
+      this.E();
    }
 
    @Override
    public void aO_() {
-      this.F();
+      this.m.a(this.H);
    }
 
-   private void F() {
-      if (this.H) {
-         this.m.a(this.E.g());
-      } else {
-         this.m.a(this.E);
-      }
-   }
-
-   class a extends foy.a<fje.a> {
-      private static final wp b = wp.c("mco.configure.world.invites.normal.tooltip");
-      private static final wp c = wp.c("mco.configure.world.invites.ops.tooltip");
-      private static final wp d = wp.c("mco.configure.world.invites.remove.tooltip");
-      private static final akv e = akv.b("player_list/make_operator");
-      private static final akv f = akv.b("player_list/remove_operator");
-      private static final akv g = akv.b("player_list/remove_player");
-      private static final int h = 8;
-      private static final int i = 7;
-      private final fhg j;
-      private final fos k;
-      private final fos l;
-      private final fos m;
-
-      public a(final fhg $$0) {
-         this.j = $$0;
-         int $$1 = fje.this.F.h.indexOf(this.j);
-         this.l = fpx.a(b, $$1x -> this.a($$1), false)
-            .a(e, 8, 7)
-            .a(16 + fje.this.p.a(b))
-            .a($$1x -> wo.a(wp.a("mco.invited.player.narration", $$0.a()), (wp)$$1x.get(), wp.a("narration.cycle_button.usage.focused", c)))
-            .a();
-         this.m = fpx.a(c, $$1x -> this.b($$1), false)
-            .a(f, 8, 7)
-            .a(16 + fje.this.p.a(c))
-            .a($$1x -> wo.a(wp.a("mco.invited.player.narration", $$0.a()), (wp)$$1x.get(), wp.a("narration.cycle_button.usage.focused", b)))
-            .a();
-         this.k = fpx.a(d, $$1x -> this.c($$1), false)
-            .a(g, 8, 7)
-            .a(16 + fje.this.p.a(d))
-            .a($$1x -> wo.a(wp.a("mco.invited.player.narration", $$0.a()), (wp)$$1x.get()))
-            .a();
-         this.c();
-      }
-
-      private void a(int $$0) {
-         fgj $$1 = fgj.a();
-         UUID $$2 = fje.this.F.h.get($$0).b();
-
-         try {
-            this.a($$1.b(fje.this.F.a, $$2));
-         } catch (fif var5) {
-            fje.a.error("Couldn't op the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void b(int $$0) {
-         fgj $$1 = fgj.a();
-         UUID $$2 = fje.this.F.h.get($$0).b();
-
-         try {
-            this.a($$1.c(fje.this.F.a, $$2));
-         } catch (fif var5) {
-            fje.a.error("Couldn't deop the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void c(int $$0) {
-         if ($$0 >= 0 && $$0 < fje.this.F.h.size()) {
-            fhg $$1 = fje.this.F.h.get($$0);
-            fiu $$2 = new fiu($$2x -> {
-               if ($$2x) {
-                  fgj $$3 = fgj.a();
-
-                  try {
-                     $$3.a(fje.this.F.a, $$1.b());
-                  } catch (fif var6) {
-                     fje.a.error("Couldn't uninvite user", var6);
-                  }
-
-                  fje.this.F.h.remove($$0);
-                  fje.this.E();
+   @Override
+   void c(boolean $$0) {
+      if (this.K.p() instanceof fje.a $$1) {
+         String $$2 = $$1.c.a;
+         CompletableFuture.<Boolean>supplyAsync(() -> {
+            try {
+               fgk $$2x = fgk.a();
+               if ($$0) {
+                  $$2x.a($$2);
+               } else {
+                  $$2x.b($$2);
                }
 
-               fje.this.H = true;
-               fje.this.m.a(fje.this);
-            }, fje.c, wp.a("mco.configure.world.uninvite.player", $$1.a()));
-            fje.this.m.a($$2);
-         }
-      }
+               return true;
+            } catch (fig var3) {
+               D.error("Couldn't handle invite", var3);
+               return false;
+            }
+         }, af.h()).thenAcceptAsync($$2x -> {
+            if ($$2x) {
+               this.K.a($$1);
+               this.E();
+               fij $$3 = this.m.bb();
+               if ($$0) {
+                  $$3.c.a();
+               }
 
-      private void a(fhc $$0) {
-         for (fhg $$1 : fje.this.F.h) {
-            $$1.a($$0.a.contains($$1.a()));
-         }
-      }
-
-      private void c() {
-         this.l.k = !this.j.c();
-         this.m.k = !this.l.k;
-      }
-
-      private fos g() {
-         return this.l.k ? this.l : this.m;
-      }
-
-      @Override
-      public List<? extends fqp> aH_() {
-         return ImmutableList.of(this.g(), this.k);
-      }
-
-      @Override
-      public List<? extends fsn> b() {
-         return ImmutableList.of(this.g(), this.k);
-      }
-
-      @Override
-      public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10;
-         if (!this.j.d()) {
-            $$10 = -6250336;
-         } else if (this.j.e()) {
-            $$10 = 8388479;
-         } else {
-            $$10 = -1;
-         }
-
-         int $$13 = $$2 + $$5 / 2 - 16;
-         fjy.a($$0, $$3, $$13, 32, this.j.b());
-         int $$14 = $$2 + $$5 / 2 - 9 / 2;
-         $$0.b(fje.this.p, this.j.a(), $$3 + 8 + 32, $$14, $$10);
-         int $$15 = $$2 + $$5 / 2 - 10;
-         int $$16 = $$3 + $$4 - this.k.A();
-         this.k.c($$16, $$15);
-         this.k.a($$0, $$6, $$7, $$9);
-         int $$17 = $$16 - this.g().A() - 8;
-         this.l.c($$17, $$15);
-         this.l.a($$0, $$6, $$7, $$9);
-         this.m.c($$17, $$15);
-         this.m.a($$0, $$6, $$7, $$9);
+               $$3.d.a();
+            }
+         }, this.r);
       }
    }
 
-   class b extends foy<fje.a> {
-      private static final int m = 36;
+   @Override
+   public void a(foe $$0, int $$1, int $$2, float $$3) {
+      this.J = null;
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 12, -1);
+      if (this.J != null) {
+         $$0.a(this.p, this.J, $$1, $$2);
+      }
 
-      public b() {
-         super(fli.Q(), fje.this.n, fje.this.D.d(), fje.this.D.c(), 36, (int)(9.0F * 1.5F));
+      if (this.I.isDone() && this.K.b()) {
+         $$0.a(this.p, E, this.n / 2, this.o / 2 - 20, -1);
+      }
+   }
+
+   void E() {
+      fje.a $$0 = this.K.p();
+      this.L.k = $$0 != null;
+      this.M.k = $$0 != null;
+   }
+
+   class a extends fpp.a<fje.a> {
+      private static final int b = 38;
+      final fhe c;
+      private final List<fin> d;
+
+      a(final fhe $$0) {
+         this.c = $$0;
+         this.d = Arrays.asList(new fje.a.a(), new fje.a.b());
       }
 
       @Override
-      protected void a(fod $$0, int $$1, int $$2) {
-         String $$3 = fje.this.F.h != null ? Integer.toString(fje.this.F.h.size()) : "0";
-         wp $$4 = wp.a("mco.configure.world.invited.number", $$3).a(n.t);
-         $$0.b(fje.this.p, $$4, $$1 + this.a() / 2 - fje.this.p.a($$4) / 2, $$2, -1);
+      public void a(foe $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, this.c, $$3, $$2, $$6, $$7);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         fin.a(fje.this.K, this, this.d, $$2, $$0, $$1);
+         return super.a($$0, $$1, $$2);
+      }
+
+      private void a(foe $$0, fhe $$1, int $$2, int $$3, int $$4, int $$5) {
+         $$0.b(fje.this.p, $$1.b, $$2 + 38, $$3 + 1, -1);
+         $$0.b(fje.this.p, $$1.c, $$2 + 38, $$3 + 12, 7105644);
+         $$0.b(fje.this.p, fjz.a($$1.e), $$2 + 38, $$3 + 24, 7105644);
+         fin.a($$0, this.d, fje.this.K, $$2, $$3, $$4, $$5);
+         fjz.a($$0, $$2, $$3, 32, $$1.d);
+      }
+
+      @Override
+      public wp a() {
+         wp $$0 = wo.b(wp.b(this.c.b), wp.b(this.c.c), fjz.a(this.c.e));
+         return wp.a("narrator.select", $$0);
+      }
+
+      class a extends fin {
+         a() {
+            super(15, 15, 215, 5);
+         }
+
+         @Override
+         protected void a(foe $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a(gmi::H, $$3 ? fje.a : fje.b, $$1, $$2, 18, 18);
+            if ($$3) {
+               fje.this.J = fje.F;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            fje.this.c(true);
+         }
+      }
+
+      class b extends fin {
+         b() {
+            super(15, 15, 235, 5);
+         }
+
+         @Override
+         protected void a(foe $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a(gmi::H, $$3 ? fje.c : fje.C, $$1, $$2, 18, 18);
+            if ($$3) {
+               fje.this.J = fje.G;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            fje.this.c(false);
+         }
+      }
+   }
+
+   class b extends fpp<fje.a> {
+      public b() {
+         super(flj.Q(), fje.this.n, fje.this.o - 72, 32, 36);
       }
 
       @Override
       public int a() {
-         return 300;
+         return 260;
+      }
+
+      @Override
+      public void a(int $$0) {
+         super.a($$0);
+         fje.this.E();
+      }
+
+      public boolean b() {
+         return this.t() == 0;
+      }
+
+      public void a(fje.a $$0) {
+         this.g($$0);
       }
    }
 }

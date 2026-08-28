@@ -1,49 +1,51 @@
-public abstract class cpw extends cpx implements cpm {
-   private static final ajy<cwo> a = akc.a(cpw.class, aka.h);
+import javax.annotation.Nullable;
 
-   public cpw(bur<? extends cpw> $$0, dgh $$1) {
+public class cpw extends cpe {
+   private int d = 200;
+
+   public cpw(bus<? extends cpw> $$0, dgi $$1) {
       super($$0, $$1);
    }
 
-   public cpw(bur<? extends cpw> $$0, double $$1, double $$2, double $$3, dgh $$4, cwo $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a($$5);
+   public cpw(dgi $$0, bvh $$1, cwp $$2, @Nullable cwp $$3) {
+      super(bus.bm, $$1, $$0, $$2, $$3);
    }
 
-   public cpw(bur<? extends cpw> $$0, bvg $$1, dgh $$2, cwo $$3) {
-      this($$0, $$1.dA(), $$1.dE() - 0.1F, $$1.dG(), $$2, $$3);
-      this.c($$1);
-   }
-
-   public void a(cwo $$0) {
-      this.au().a(a, $$0.c(1));
-   }
-
-   protected abstract cwk m();
-
-   @Override
-   public cwo l() {
-      return this.au().a(a);
+   public cpw(dgi $$0, double $$1, double $$2, double $$3, cwp $$4, @Nullable cwp $$5) {
+      super(bus.bm, $$1, $$2, $$3, $$0, $$4, $$5);
    }
 
    @Override
-   protected void a(akc.a $$0) {
-      $$0.a(a, new cwo(this.m()));
+   public void h() {
+      super.h();
+      if (this.dV().C && !this.l()) {
+         this.dV().a(lt.S, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
+      }
    }
 
    @Override
-   public void b(tq $$0) {
-      super.b($$0);
-      $$0.a("Item", this.l().a(this.dX()));
+   protected void a(bvh $$0) {
+      super.a($$0);
+      btq $$1 = new btq(bts.x, this.d, 0);
+      $$0.b($$1, this.E());
    }
 
    @Override
    public void a(tq $$0) {
       super.a($$0);
-      if ($$0.b("Item", 10)) {
-         this.a(cwo.a(this.dX(), (un)$$0.p("Item")).orElseGet(() -> new cwo(this.m())));
-      } else {
-         this.a(new cwo(this.m()));
+      if ($$0.e("Duration")) {
+         this.d = $$0.h("Duration");
       }
+   }
+
+   @Override
+   public void b(tq $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.d);
+   }
+
+   @Override
+   protected cwp v() {
+      return new cwp(cwt.wp);
    }
 }

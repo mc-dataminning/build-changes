@@ -1,86 +1,126 @@
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.EnumMap;
+import java.util.EnumSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class ccg extends cdb {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
+public class ccg {
+   private static final cdt a = new cdt(Integer.MAX_VALUE, new ccf() {
+      @Override
+      public boolean b() {
+         return false;
+      }
+   }) {
+      @Override
+      public boolean h() {
+         return false;
+      }
+   };
+   private final Map<ccf.a, cdt> b = new EnumMap<>(ccf.a.class);
+   private final Set<cdt> c = new ObjectLinkedOpenHashSet();
+   private final EnumSet<ccf.a> d = EnumSet.noneOf(ccf.a.class);
 
-   public ccg(bvo $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public void a(int $$0, ccf $$1) {
+      this.c.add(new cdt($$0, $$1));
    }
 
-   @Nullable
-   @Override
-   protected faz h() {
-      float $$0 = this.b.dV().A.i();
-      if (this.b.dV().A.i() < 0.3F) {
-         return this.k();
-      } else {
-         faz $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
-         } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
-            }
+   @VisibleForTesting
+   public void a(Predicate<ccf> $$0) {
+      this.c.removeIf($$1 -> $$0.test($$1.k()));
+   }
+
+   public void a(ccf $$0) {
+      for (cdt $$1 : this.c) {
+         if ($$1.k() == $$0 && $$1.h()) {
+            $$1.e();
          }
-
-         return $$1 == null ? this.k() : $$1;
       }
+
+      this.c.removeIf($$1x -> $$1x.k() == $$0);
    }
 
-   @Nullable
-   private faz k() {
-      return cge.a(this.b, 10, 7);
+   private static boolean a(cdt $$0, EnumSet<ccf.a> $$1) {
+      for (ccf.a $$2 : $$0.j()) {
+         if ($$1.contains($$2)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Nullable
-   private faz l() {
-      ard $$0 = (ard)this.b.dV();
-      List<coh> $$1 = $$0.a(bur.bC, this.b.cR().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
+   private static boolean a(cdt $$0, Map<ccf.a, cdt> $$1) {
+      for (ccf.a $$2 : $$0.j()) {
+         if (!$$1.getOrDefault($$2, a).a($$0)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public void a() {
+      bot $$0 = bos.a();
+      $$0.a("goalCleanup");
+
+      for (cdt $$1 : this.c) {
+         if ($$1.h() && (a($$1, this.d) || !$$1.c())) {
+            $$1.e();
+         }
+      }
+
+      this.b.entrySet().removeIf($$0x -> !((cdt)$$0x.getValue()).h());
+      $$0.c();
+      $$0.a("goalUpdate");
+
+      for (cdt $$2 : this.c) {
+         if (!$$2.h() && !a($$2, this.d) && a($$2, this.b) && $$2.b()) {
+            for (ccf.a $$3 : $$2.j()) {
+               cdt $$4 = this.b.getOrDefault($$3, a);
+               $$4.e();
+               this.b.put($$3, $$2);
+            }
+
+            $$2.d();
+         }
+      }
+
+      $$0.c();
+      this.a(true);
+   }
+
+   public void a(boolean $$0) {
+      bot $$1 = bos.a();
+      $$1.a("goalTick");
+
+      for (cdt $$2 : this.c) {
+         if ($$2.h() && ($$0 || $$2.V_())) {
+            $$2.a();
+         }
+      }
+
+      $$1.c();
+   }
+
+   public Set<cdt> b() {
+      return this.c;
+   }
+
+   public void a(ccf.a $$0) {
+      this.d.add($$0);
+   }
+
+   public void b(ccf.a $$0) {
+      this.d.remove($$0);
+   }
+
+   public void a(ccf.a $$0, boolean $$1) {
+      if ($$1) {
+         this.b($$0);
       } else {
-         coh $$2 = $$1.get(this.b.dV().A.a($$1.size()));
-         faz $$3 = $$2.dt();
-         return cge.a(this.b, 10, 7, $$3);
+         this.a($$0);
       }
-   }
-
-   @Nullable
-   private faz m() {
-      kk $$0 = this.n();
-      if ($$0 == null) {
-         return null;
-      } else {
-         ji $$1 = this.a($$0);
-         return $$1 == null ? null : cge.a(this.b, 10, 7, faz.c($$1));
-      }
-   }
-
-   @Nullable
-   private kk n() {
-      ard $$0 = (ard)this.b.dV();
-      List<kk> $$1 = kk.a(kk.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.A.a($$1.size()));
-   }
-
-   @Nullable
-   private ji a(kk $$0) {
-      ard $$1 = (ard)this.b.dV();
-      cgk $$2 = $$1.A();
-      List<ji> $$3 = $$2.c($$0x -> true, $$0.k(), 8, cgk.b.b).map(cgl::g).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.A.a($$3.size()));
-   }
-
-   private boolean a(coh $$0) {
-      return $$0.a(this.b.dV().ad());
    }
 }

@@ -1,28 +1,23 @@
-public class gwx extends gws<hai, gea> {
-   private final gnb a;
+public class gwx extends gwt<hah, gdz> {
+   private final gdz a;
 
-   public gwx(gua<hai, gea> $$0, gnb $$1) {
+   public gwx(gub<hah, gdz> $$0, gez $$1) {
       super($$0);
-      this.a = $$1;
+      this.a = new gdz($$1.a(gfc.cP));
    }
 
-   public void a(fft $$0, glx $$1, int $$2, hai $$3, float $$4, float $$5) {
-      if ($$3.a) {
-         if (!$$3.z || $$3.ao) {
-            $$0.a();
-            this.d().b().a($$0);
-            float $$6 = 0.625F;
-            $$0.a(0.0F, -0.34375F, 0.0F);
-            $$0.a(a.d.rotationDegrees(180.0F));
-            $$0.b(0.625F, -0.625F, -0.625F);
-            dww $$7 = djn.er.m();
-            hgr $$8 = this.a.a($$7);
-            int $$9 = gte.a($$3, 0.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            ffx $$10 = $$3.ao && $$3.z ? $$1.getBuffer(gmh.s(heq.d)) : $$1.getBuffer(glq.c($$7));
-            this.a.b().a($$0.c(), $$10, $$7, $$8, 0.0F, 0.0F, 0.0F, $$2, $$9);
-            $$0.b();
+   public void a(ffu $$0, gly $$1, int $$2, hah $$3, float $$4, float $$5) {
+      boolean $$6 = $$3.ao && $$3.z;
+      if (!$$3.z || $$6) {
+         ffy $$7;
+         if ($$6) {
+            $$7 = $$1.getBuffer(gmi.s(gui.a));
+         } else {
+            $$7 = $$1.getBuffer(gmi.j(gui.a));
          }
+
+         this.a.a($$3);
+         this.a.a($$0, $$7, $$2, gtf.a($$3, 0.0F));
       }
    }
 }

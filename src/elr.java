@@ -1,34 +1,53 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class elr extends els {
-   public static final elr a = new elr(edl.a(0));
-   public static final MapCodec<elr> b = edl.a.fieldOf("value").xmap(elr::new, elr::b);
-   private final edl d;
+public class elr extends elt {
+   public static final MapCodec<elr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               edm.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               edm.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, elr::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final edm d;
+   private final edm e;
+   private final int f;
 
-   public static elr a(edl $$0) {
-      return new elr($$0);
-   }
-
-   private elr(edl $$0) {
+   private elr(edm $$0, edm $$1, int $$2) {
       this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public edl b() {
-      return this.d;
-   }
-
-   @Override
-   public int a(azh $$0, edo $$1) {
-      return this.d.a($$1);
+   public static elr a(edm $$0, edm $$1, int $$2) {
+      return new elr($$0, $$1, $$2);
    }
 
    @Override
-   public elt<?> a() {
-      return elt.a;
+   public int a(azh $$0, edp $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
+         return $$0.a($$4 + this.f) + $$2;
+      }
+   }
+
+   @Override
+   public elu<?> a() {
+      return elu.c;
    }
 
    @Override
    public String toString() {
-      return this.d.toString();
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

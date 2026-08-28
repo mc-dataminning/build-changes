@@ -1,38 +1,53 @@
-public class fkd extends fkg {
-   private static final wp b = wp.c("mco.connect.connecting");
-   private final hlb c;
-   private final fhk d;
-   private final fhl e;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public fkd(fuk $$0, fhk $$1, fhl $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new hlb($$0);
+public class fkd extends fkh {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wp c = wp.c("mco.configure.world.closing");
+   private final fhl d;
+   private final fiu e;
+
+   public fkd(fhl $$0, fiu $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
    public void run() {
-      if (this.e.a != null) {
-         this.c.a(this.d, ghq.a(this.e.a));
-      } else {
-         this.b();
+      fgk $$0 = fgk.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.f();
+               this.d.e = fhl.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (fih var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
       }
    }
 
    @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      fli.Q().af().i();
-   }
-
-   @Override
-   public void c() {
-      this.c.b();
-   }
-
-   @Override
    public wp a() {
-      return b;
+      return c;
    }
 }

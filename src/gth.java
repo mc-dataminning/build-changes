@@ -1,36 +1,31 @@
-public class gth extends gtj<clw, hag, gcq> {
-   private static final akv a = akv.b("textures/entity/slime/magmacube.png");
+public class gth extends gsd<cpp, gzm> {
+   private static final akv a = akv.b("textures/entity/llama/spit.png");
+   private final gcu b;
 
-   public gth(gsd.a $$0) {
-      super($$0, new gcq($$0.a(gfb.bx)), 0.25F);
+   public gth(gse.a $$0) {
+      super($$0);
+      this.b = new gcu($$0.a(gfc.bw));
    }
 
-   protected int a(clw $$0, ji $$1) {
-      return 15;
+   public void a(gzm $$0, ffu $$1, gly $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.15F, 0.0F);
+      $$1.a(a.d.rotationDegrees($$0.a - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.b));
+      this.b.a($$0);
+      ffy $$4 = $$2.getBuffer(this.b.a(a));
+      this.b.a($$1, $$4, $$3, hei.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public akv a(hag $$0) {
-      return a;
+   public gzm a() {
+      return new gzm();
    }
 
-   public hag b() {
-      return new hag();
-   }
-
-   public void a(clw $$0, hag $$1, float $$2) {
+   public void a(cpp $$0, gzm $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = ayz.h($$2, $$0.bY, $$0.bX);
-      $$1.b = $$0.gs();
-   }
-
-   protected float b(hag $$0) {
-      return (float)$$0.b * 0.25F;
-   }
-
-   protected void a(hag $$0, fft $$1) {
-      int $$2 = $$0.b;
-      float $$3 = $$0.a / ((float)$$2 * 0.5F + 1.0F);
-      float $$4 = 1.0F / ($$3 + 1.0F);
-      $$1.b($$4 * (float)$$2, 1.0F / $$4 * (float)$$2, $$4 * (float)$$2);
+      $$1.b = $$0.j($$2);
+      $$1.a = $$0.k($$2);
    }
 }

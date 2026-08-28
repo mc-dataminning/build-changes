@@ -7,7 +7,7 @@ public class afm implements yw<abl> {
    private final float f;
    private final long g;
 
-   public afm(jr<avz> $$0, awb $$1, buk $$2, float $$3, float $$4, long $$5) {
+   public afm(jr<avz> $$0, awb $$1, bul $$2, float $$3, float $$4, long $$5) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2.ar();

@@ -1,51 +1,67 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface dkn<T extends Enum<T>> {
-   int x_ = 4;
+public class dkn extends dqd implements dqs {
+   public static final MapCodec<dkn> a = b(dkn::new);
+   public static final dxo b = dxn.J;
+   protected static final float c = 6.5F;
+   protected static final float d = 9.5F;
+   protected static final fbu e = djm.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
+   protected static final fbu f = djm.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
+   protected static final fbu g = djm.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
 
-   Optional<dww> k_(dww var1);
+   @Override
+   public MapCodec<dkn> a() {
+      return a;
+   }
 
-   float au_();
+   public dkn(dww.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, Boolean.valueOf(false)).b(i, jn.a.b));
+   }
 
-   default void a_(dww $$0, ard $$1, ji $$2, azh $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
+   @Override
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      switch ((jn.a)$$0.c(i)) {
+         case a:
+         default:
+            return g;
+         case c:
+            return f;
+         case b:
+            return e;
       }
    }
 
-   T c();
+   @Nullable
+   @Override
+   public dwx a(dag $$0) {
+      esz $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == eta.c;
+      return super.a($$0).b(b, Boolean.valueOf($$2));
+   }
 
-   default Optional<dww> c(dww $$0, ard $$1, ji $$2, azh $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
-
-      for (ji $$7 : ji.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
-         }
-
-         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof dkn<?> $$9) {
-            Enum<?> $$10 = $$9.c();
-            if (this.c().getClass() == $$10.getClass()) {
-               int $$11 = $$10.ordinal();
-               if ($$11 < $$4) {
-                  return Optional.empty();
-               }
-
-               if ($$11 > $$4) {
-                  $$6++;
-               } else {
-                  $$5++;
-               }
-            }
-         }
+   @Override
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      if ($$0.c(b)) {
+         $$2.a($$3, eta.c, eta.c.a($$1));
       }
 
-      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.au_();
-      return $$3.i() < $$13 ? this.k_($$0) : Optional.empty();
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(b).a(i);
+   }
+
+   @Override
+   protected esz b_(dwx $$0) {
+      return $$0.c(b) ? eta.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dwx $$0, eto $$1) {
+      return false;
    }
 }

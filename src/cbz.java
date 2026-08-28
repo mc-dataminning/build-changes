@@ -1,86 +1,28 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cbz extends cce {
-   private int a;
-   private final bvo b;
-   @Nullable
-   private cow c;
-   private cbn d;
+public class cbz extends ccf {
+   private final bvj a;
 
-   public cbz(bvo $$0) {
-      this.b = $$0;
+   public cbz(bvj $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(ccf.a.c));
+      $$0.P().a(true);
    }
 
    @Override
    public boolean b() {
-      List<cqt> $$0 = this.b.dV().a(cqt.class, this.b.cR().g(5.0));
-      boolean $$1 = false;
-
-      for (cqt $$2 : $$0) {
-         buk $$3 = $$2.cW();
-         if ($$3 instanceof cow && (ayz.e(((cow)$$3).bn) > 0.0F || ayz.e(((cow)$$3).bp) > 0.0F)) {
-            $$1 = true;
-            break;
-         }
-      }
-
-      return this.c != null && (ayz.e(this.c.bn) > 0.0F || ayz.e(this.c.bp) > 0.0F) || $$1;
+      return this.a.bj() && this.a.b(awv.a) > this.a.dp() || this.a.bx();
    }
 
    @Override
-   public boolean U_() {
+   public boolean V_() {
       return true;
    }
 
    @Override
-   public boolean c() {
-      return this.c != null && this.c.bZ() && (ayz.e(this.c.bn) > 0.0F || ayz.e(this.c.bp) > 0.0F);
-   }
-
-   @Override
-   public void d() {
-      for (cqt $$1 : this.b.dV().a(cqt.class, this.b.cR().g(5.0))) {
-         if ($$1.cW() instanceof cow $$2) {
-            this.c = $$2;
-            break;
-         }
-      }
-
-      this.a = 0;
-      this.d = cbn.a;
-   }
-
-   @Override
-   public void e() {
-      this.c = null;
-   }
-
-   @Override
    public void a() {
-      boolean $$0 = ayz.e(this.c.bn) > 0.0F || ayz.e(this.c.bp) > 0.0F;
-      float $$1 = this.d == cbn.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
-      this.b.a($$1, new faz((double)this.b.bn, (double)this.b.bo, (double)this.b.bp));
-      this.b.a(bvk.a, this.b.dy());
-      if (--this.a <= 0) {
-         this.a = this.a(10);
-         if (this.d == cbn.a) {
-            ji $$2 = this.c.dv().a(this.c.cO().g());
-            $$2 = $$2.b(0, -1, 0);
-            this.b.P().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
-            if (this.b.f(this.c) < 4.0F) {
-               this.a = 0;
-               this.d = cbn.b;
-            }
-         } else if (this.d == cbn.b) {
-            jn $$3 = this.c.cP();
-            ji $$4 = this.c.dv().a($$3, 10);
-            this.b.P().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
-            if (this.b.f(this.c) > 12.0F) {
-               this.a = 0;
-               this.d = cbn.a;
-            }
-         }
+      if (this.a.dY().i() < 0.8F) {
+         this.a.O().a();
       }
    }
 }

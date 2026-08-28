@@ -1,5 +1,4 @@
-public class gzd extends gzj {
-   public float a;
-   public int b;
-   public buh.a c = buh.a.a;
+public class gzd extends gzc {
+   public fba[] a = new fba[0];
+   public boolean n;
 }

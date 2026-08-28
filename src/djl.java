@@ -1,424 +1,56 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class djl extends dwv implements dgg {
-   public static final MapCodec<djl> p = b(djl::new);
-   private static final Logger a = LogUtils.getLogger();
-   private final jr.c<djl> b = mb.e.f(this);
-   public static final jx<dww> q = new jx<>();
-   private static final LoadingCache<fbt, Boolean> c = CacheBuilder.newBuilder().maximumSize(512L).weakKeys().build(new CacheLoader<fbt, Boolean>() {
-      public Boolean a(fbt $$0) {
-         return !fbq.c(fbq.b(), $$0, fbd.g);
-      }
-   });
-   public static final int r = 1;
-   public static final int s = 2;
-   public static final int t = 4;
-   public static final int u = 8;
-   public static final int v = 16;
-   public static final int w = 32;
-   public static final int x = 64;
-   public static final int y = 128;
-   public static final int z = 4;
-   public static final int A = 3;
-   public static final int B = 11;
-   public static final float C = -1.0F;
-   public static final float D = 0.0F;
-   public static final int E = 512;
-   protected final dwx<djl, dww> F;
-   private dww d;
-   @Nullable
-   private cwk e;
-   private static final int f = 256;
-   private static final ThreadLocal<Object2ByteLinkedOpenHashMap<djl.a>> g = ThreadLocal.withInitial(() -> {
-      Object2ByteLinkedOpenHashMap<djl.a> $$0 = new Object2ByteLinkedOpenHashMap<djl.a>(256, 0.25F) {
-         protected void rehash(int $$0) {
-         }
-      };
-      $$0.defaultReturnValue((byte)127);
-      return $$0;
-   });
+public class djl extends dih {
+   public static final MapCodec<djl> c = b(djl::new);
 
    @Override
-   protected MapCodec<? extends djl> a() {
-      return p;
+   public MapCodec<djl> a() {
+      return c;
    }
 
-   public static int j(@Nullable dww $$0) {
-      if ($$0 == null) {
-         return 0;
-      } else {
-         int $$1 = q.a($$0);
-         return $$1 == -1 ? 0 : $$1;
-      }
-   }
-
-   public static dww a(int $$0) {
-      dww $$1 = q.a($$0);
-      return $$1 == null ? djn.a.m() : $$1;
-   }
-
-   public static djl a(@Nullable cwk $$0) {
-      return $$0 instanceof cuu ? ((cuu)$$0).d() : djn.a;
-   }
-
-   public static dww a(dww $$0, dww $$1, dgi $$2, ji $$3) {
-      fbt $$4 = fbq.b($$0.g($$2, $$3), $$1.g($$2, $$3), fbd.c).a((double)$$3.u(), (double)$$3.v(), (double)$$3.w());
-      if ($$4.c()) {
-         return $$1;
-      } else {
-         for (buk $$6 : $$2.a_(null, $$4.a())) {
-            double $$7 = fbq.a(jn.a.b, $$6.cR().d(0.0, 1.0, 0.0), List.of($$4), -1.0);
-            $$6.d(0.0, 1.0 + $$7, 0.0);
-         }
-
-         return $$1;
-      }
-   }
-
-   public static fbt a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      return fbq.a($$0 / 16.0, $$1 / 16.0, $$2 / 16.0, $$3 / 16.0, $$4 / 16.0, $$5 / 16.0);
-   }
-
-   public static dww b(dww $$0, dgi $$1, ji $$2) {
-      dww $$3 = $$0;
-      ji.a $$4 = new ji.a();
-
-      for (jn $$5 : aG) {
-         $$4.a($$2, $$5);
-         $$3 = $$3.a($$1, $$1, $$2, $$5, $$4, $$1.a_($$4), $$1.H_());
-      }
-
-      return $$3;
-   }
-
-   public static void a(dww $$0, dww $$1, dgi $$2, ji $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, 512);
-   }
-
-   public static void a(dww $$0, dww $$1, dgi $$2, ji $$3, int $$4, int $$5) {
-      if ($$1 != $$0) {
-         if ($$1.l()) {
-            if (!$$2.B_()) {
-               $$2.a($$3, ($$4 & 32) == 0, null, $$5);
-            }
-         } else {
-            $$2.a($$3, $$1, $$4 & -33, $$5);
-         }
-      }
-   }
-
-   public djl(dwv.d $$0) {
+   protected djl(dww.d $$0) {
       super($$0);
-      dwx.a<djl, dww> $$1 = new dwx.a<>(this);
-      this.a($$1);
-      this.F = $$1.a(djl::m, dww::new);
-      this.l(this.F.b());
-      if (ab.aU) {
-         String $$2 = this.getClass().getSimpleName();
-         if (!$$2.endsWith("Block")) {
-            a.error("Block classes should end with Block and {} doesn't.", $$2);
-         }
-      }
    }
 
-   public static boolean k(dww $$0) {
-      return $$0.b() instanceof dnx || $$0.a(djn.iu) || $$0.a(djn.er) || $$0.a(djn.es) || $$0.a(djn.fo) || $$0.a(djn.fn) || $$0.a(awp.am);
-   }
-
-   public static boolean a(dww $$0, dww $$1, jn $$2) {
-      fbt $$3 = $$1.a($$2.g());
-      if ($$3 == fbq.b()) {
-         return false;
-      } else if ($$0.a($$1, $$2)) {
-         return false;
-      } else if ($$3 == fbq.a()) {
-         return true;
-      } else {
-         fbt $$4 = $$0.a($$2);
-         if ($$4 == fbq.a()) {
-            return true;
-         } else {
-            djl.a $$5 = new djl.a($$4, $$3);
-            Object2ByteLinkedOpenHashMap<djl.a> $$6 = g.get();
-            byte $$7 = $$6.getAndMoveToFirst($$5);
-            if ($$7 != 127) {
-               return $$7 != 0;
-            } else {
-               boolean $$8 = fbq.c($$4, $$3, fbd.e);
-               if ($$6.size() == 256) {
-                  $$6.removeLastByte();
-               }
-
-               $$6.putAndMoveToFirst($$5, (byte)($$8 ? 1 : 0));
-               return $$8;
-            }
-         }
-      }
-   }
-
-   public static boolean c(dfm $$0, ji $$1) {
-      return $$0.a_($$1).a($$0, $$1, jn.b, drr.c);
-   }
-
-   public static boolean a(dgk $$0, ji $$1, jn $$2) {
-      dww $$3 = $$0.a_($$1);
-      return $$2 == jn.a && $$3.a(awp.bb) ? false : $$3.a($$0, $$1, $$2, drr.b);
-   }
-
-   public static boolean a(fbt $$0, jn $$1) {
-      fbt $$2 = $$0.a($$1);
-      return a($$2);
-   }
-
-   public static boolean a(fbt $$0) {
-      return (Boolean)c.getUnchecked($$0);
-   }
-
-   public void a(dww $$0, dgh $$1, ji $$2, azh $$3) {
-   }
-
-   public void a(dgi $$0, ji $$1, dww $$2) {
-   }
-
-   public static List<cwo> a(dww $$0, ard $$1, ji $$2, @Nullable dty $$3) {
-      evt.a $$4 = new evt.a($$1).a(eyk.f, faz.b($$2)).a(eyk.i, cwo.j).b(eyk.h, $$3);
-      return $$0.a($$4);
-   }
-
-   public static List<cwo> a(dww $$0, ard $$1, ji $$2, @Nullable dty $$3, @Nullable buk $$4, cwo $$5) {
-      evt.a $$6 = new evt.a($$1).a(eyk.f, faz.b($$2)).a(eyk.i, $$5).b(eyk.a, $$4).b(eyk.h, $$3);
-      return $$0.a($$6);
-   }
-
-   public static void c(dww $$0, dgh $$1, ji $$2) {
-      if ($$1 instanceof ard) {
-         a($$0, (ard)$$1, $$2, null).forEach($$2x -> a($$1, $$2, $$2x));
-         $$0.a((ard)$$1, $$2, cwo.j, true);
-      }
-   }
-
-   public static void a(dww $$0, dgi $$1, ji $$2, @Nullable dty $$3) {
-      if ($$1 instanceof ard) {
-         a($$0, (ard)$$1, $$2, $$3).forEach($$2x -> a((dgh)((ard)$$1), $$2, $$2x));
-         $$0.a((ard)$$1, $$2, cwo.j, true);
-      }
-   }
-
-   public static void a(dww $$0, dgh $$1, ji $$2, @Nullable dty $$3, @Nullable buk $$4, cwo $$5) {
-      if ($$1 instanceof ard) {
-         a($$0, (ard)$$1, $$2, $$3, $$4, $$5).forEach($$2x -> a($$1, $$2, $$2x));
-         $$0.a((ard)$$1, $$2, $$5, true);
-      }
-   }
-
-   public static void a(dgh $$0, ji $$1, cwo $$2) {
-      double $$3 = (double)bur.aq.m() / 2.0;
-      double $$4 = (double)$$1.u() + 0.5 + ayz.a($$0.A, -0.25, 0.25);
-      double $$5 = (double)$$1.v() + 0.5 + ayz.a($$0.A, -0.25, 0.25) - $$3;
-      double $$6 = (double)$$1.w() + 0.5 + ayz.a($$0.A, -0.25, 0.25);
-      a($$0, () -> new clb($$0, $$4, $$5, $$6, $$2), $$2);
-   }
-
-   public static void a(dgh $$0, ji $$1, jn $$2, cwo $$3) {
-      int $$4 = $$2.j();
-      int $$5 = $$2.k();
-      int $$6 = $$2.l();
-      double $$7 = (double)bur.aq.l() / 2.0;
-      double $$8 = (double)bur.aq.m() / 2.0;
-      double $$9 = (double)$$1.u() + 0.5 + ($$4 == 0 ? ayz.a($$0.A, -0.25, 0.25) : (double)$$4 * (0.5 + $$7));
-      double $$10 = (double)$$1.v() + 0.5 + ($$5 == 0 ? ayz.a($$0.A, -0.25, 0.25) : (double)$$5 * (0.5 + $$8)) - $$8;
-      double $$11 = (double)$$1.w() + 0.5 + ($$6 == 0 ? ayz.a($$0.A, -0.25, 0.25) : (double)$$6 * (0.5 + $$7));
-      double $$12 = $$4 == 0 ? ayz.a($$0.A, -0.1, 0.1) : (double)$$4 * 0.1;
-      double $$13 = $$5 == 0 ? ayz.a($$0.A, 0.0, 0.1) : (double)$$5 * 0.1 + 0.1;
-      double $$14 = $$6 == 0 ? ayz.a($$0.A, -0.1, 0.1) : (double)$$6 * 0.1;
-      a($$0, () -> new clb($$0, $$9, $$10, $$11, $$3, $$12, $$13, $$14), $$3);
-   }
-
-   private static void a(dgh $$0, Supplier<clb> $$1, cwo $$2) {
-      if ($$0 instanceof ard $$3 && !$$2.f() && $$3.O().b(dgd.h)) {
-         clb $$5 = $$1.get();
-         $$5.s();
-         $$0.b($$5);
-         return;
-      }
-   }
-
-   protected void a(ard $$0, ji $$1, int $$2) {
-      if ($$0.O().b(dgd.h)) {
-         buw.a($$0, faz.b($$1), $$2);
-      }
-   }
-
-   public float e() {
-      return this.aI;
-   }
-
-   public void a(ard $$0, ji $$1, dfz $$2) {
-   }
-
-   public void a(dgh $$0, ji $$1, dww $$2, buk $$3) {
+   @Override
+   public dtz a(ji $$0, dwx $$1) {
+      return new dty($$0, $$1);
    }
 
    @Nullable
-   public dww a(daf $$0) {
-      return this.m();
-   }
-
-   public void a(dgh $$0, cow $$1, ji $$2, dww $$3, @Nullable dty $$4, cwo $$5) {
-      $$1.b(awk.a.b(this));
-      $$1.G(0.005F);
-      a($$3, $$0, $$2, $$4, $$1, $$5);
-   }
-
-   public void a(dgh $$0, ji $$1, dww $$2, @Nullable bvg $$3, cwo $$4) {
-   }
-
-   public boolean a(dww $$0) {
-      return !$$0.e() && !$$0.n();
-   }
-
-   public xd f() {
-      return wp.c(this.v());
-   }
-
-   public void a(dgh $$0, dww $$1, ji $$2, buk $$3, float $$4) {
-      $$3.a($$4, 1.0F, $$3.dW().l());
-   }
-
-   public void a(dfm $$0, buk $$1) {
-      $$1.i($$1.dy().d(1.0, 0.0, 1.0));
-   }
-
-   public float g() {
-      return this.aL;
-   }
-
-   public float h() {
-      return this.aM;
-   }
-
-   public float k() {
-      return this.aN;
-   }
-
-   protected void a(dgh $$0, cow $$1, ji $$2, dww $$3) {
-      $$0.a($$1, 2001, $$2, j($$3));
-   }
-
-   public dww a(dgh $$0, ji $$1, dww $$2, cow $$3) {
-      this.a($$0, $$3, $$1, $$2);
-      if ($$2.a(awp.aY) && $$0 instanceof ard $$4) {
-         cnl.a($$4, $$3, false);
-      }
-
-      $$0.a(ebs.f, $$1, ebs.a.a($$3, $$2));
-      return $$2;
-   }
-
-   public void a(dww $$0, dgh $$1, ji $$2, dhj.c $$3) {
-   }
-
-   public boolean a(dfz $$0) {
-      return true;
-   }
-
-   protected void a(dwx.a<djl, dww> $$0) {
-   }
-
-   public dwx<djl, dww> l() {
-      return this.F;
-   }
-
-   protected final void l(dww $$0) {
-      this.d = $$0;
-   }
-
-   public final dww m() {
-      return this.d;
-   }
-
-   public final dww m(dww $$0) {
-      dww $$1 = this.m();
-
-      for (dxy<?> $$2 : $$0.b().l().d()) {
-         if ($$1.b($$2)) {
-            $$1 = a($$0, $$1, $$2);
-         }
-      }
-
-      return $$1;
-   }
-
-   private static <T extends Comparable<T>> dww a(dww $$0, dww $$1, dxy<T> $$2) {
-      return $$1.b($$2, $$0.c($$2));
+   @Override
+   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
+      return a($$0, $$2, dub.D);
    }
 
    @Override
-   public cwk j() {
-      if (this.e == null) {
-         this.e = cwk.a(this);
-      }
-
-      return this.e;
-   }
-
-   public boolean n() {
-      return this.aO;
-   }
-
-   @Override
-   public String toString() {
-      return "Block{" + mb.e.e(this).g() + "}";
-   }
-
-   public void a(cwo $$0, cwk.b $$1, List<wp> $$2, cyg $$3) {
-   }
-
-   @Override
-   protected djl o() {
-      return this;
-   }
-
-   protected ImmutableMap<dww, fbt> a(Function<dww, fbt> $$0) {
-      return this.F.a().stream().collect(ImmutableMap.toImmutableMap(Function.identity(), $$0));
-   }
-
-   @Deprecated
-   public jr.c<djl> p() {
-      return this.b;
-   }
-
-   protected void a(ard $$0, ji $$1, cwo $$2, bro $$3) {
-      int $$4 = dda.b($$0, $$2, $$3.a($$0.H_()));
-      if ($$4 > 0) {
-         this.a($$0, $$1, $$4);
+   protected void a(dgi $$0, ji $$1, cox $$2) {
+      dtz $$3 = $$0.c_($$1);
+      if ($$3 instanceof dty) {
+         $$2.a((bsm)$$3);
+         $$2.a(awk.as);
       }
    }
 
-   static record a(fbt a, fbt b) {
-      @Override
-      public boolean equals(Object $$0) {
-         if ($$0 instanceof djl.a $$1 && this.a == $$1.a && this.b == $$1.b) {
-            return true;
+   @Override
+   public void a(dwx $$0, dgi $$1, ji $$2, azh $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awa.cA, awb.e, 1.0F, 1.0F, false);
          }
 
-         return false;
-      }
-
-      @Override
-      public int hashCode() {
-         return System.identityHashCode(this.a) * 31 + System.identityHashCode(this.b);
+         jn $$7 = $$0.c(a);
+         jn.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == jn.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 9.0 / 16.0;
+         double $$13 = $$8 == jn.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(lt.ag, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
    }
 }

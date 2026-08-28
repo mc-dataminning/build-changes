@@ -1,19 +1,28 @@
 import com.mojang.serialization.Codec;
 
 public enum bsz implements azv {
-   a("never"),
-   b("when_caused_by_living_non_player"),
-   c("always");
+   a("hurt", awa.uL),
+   b("thorns", awa.Al),
+   c("drowning", awa.uM),
+   d("burning", awa.uO),
+   e("poking", awa.uP),
+   f("freezing", awa.uN);
 
-   public static final Codec<bsz> d = azv.a(bsz::values);
-   private final String e;
+   public static final Codec<bsz> g = azv.a(bsz::values);
+   private final String h;
+   private final avz i;
 
-   private bsz(final String $$0) {
-      this.e = $$0;
+   private bsz(final String $$0, final avz $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
    public String c() {
-      return this.e;
+      return this.h;
+   }
+
+   public avz a() {
+      return this.i;
    }
 }

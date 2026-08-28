@@ -1,26 +1,31 @@
-import java.util.IllegalFormatException;
+import com.google.common.collect.Lists;
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.Bidi;
+import com.ibm.icu.text.BidiRun;
+import java.util.List;
 
 public class hfz {
-   private static volatile tl a = tl.a();
+   public static ayl a(wu $$0, boolean $$1) {
+      xn $$2 = xn.a($$0, UCharacter::getMirror, hfz::a);
+      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
+      $$3.setReorderingMode(0);
+      List<ayl> $$4 = Lists.newArrayList();
+      int $$5 = $$3.countRuns();
 
-   private hfz() {
-   }
-
-   static void a(tl $$0) {
-      a = $$0;
-   }
-
-   public static String a(String $$0, Object... $$1) {
-      String $$2 = a.a($$0);
-
-      try {
-         return String.format($$2, $$1);
-      } catch (IllegalFormatException var4) {
-         return "Format error: " + $$2;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         BidiRun $$7 = $$3.getVisualRun($$6);
+         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
       }
+
+      return ayl.composite($$4);
    }
 
-   public static boolean a(String $$0) {
-      return a.b($$0);
+   private static String a(String $$0) {
+      try {
+         return new ArabicShaping(8).shape($$0);
+      } catch (Exception var2) {
+         return $$0;
+      }
    }
 }

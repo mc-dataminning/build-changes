@@ -1,17 +1,21 @@
-public class gko extends gkg {
-   protected gko(gfy $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.u = 0.06F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+public class gko extends gkh {
+   private float a;
+
+   gko(gfz $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.t = (int)(Math.random() * 60.0) + 30;
+      this.n = false;
+      this.j = 0.0;
+      this.k = -0.05;
+      this.l = 0.0;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.u = 0.002F;
    }
 
    @Override
-   public gjk b() {
-      return gjk.b;
+   public gjl b() {
+      return gjl.b;
    }
 
    @Override
@@ -19,41 +23,31 @@ public class gko extends gkg {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.t-- <= 0) {
+      if (this.s++ >= this.t) {
          this.k();
       } else {
-         this.k = this.k - (double)this.u;
+         float $$0 = 0.6F;
+         this.j = this.j + (double)(0.6F * ayz.b(this.a));
+         this.l = this.l + (double)(0.6F * ayz.a(this.a));
+         this.j *= 0.07;
+         this.l *= 0.07;
          this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         if (this.m) {
-            if (Math.random() < 0.5) {
-               this.k();
-            }
-
-            this.j *= 0.7F;
-            this.l *= 0.7F;
-         }
-
-         ji $$0 = ji.a(this.g, this.h, this.i);
-         double $$1 = Math.max(
-            this.c.a_($$0).g(this.c, $$0).b(jn.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a(this.c, $$0)
-         );
-         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
+         if (!this.c.b_(ji.a(this.g, this.h, this.i)).a(awv.a) || this.m) {
             this.k();
          }
+
+         this.a += 0.08F;
       }
    }
 
-   public static class a implements gjj<lx> {
-      private final gkb a;
+   public static class a implements gjk<lx> {
+      private final gkc a;
 
-      public a(gkb $$0) {
+      public a(gkc $$0) {
          this.a = $$0;
       }
 
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public gjh a(lx $$0, gfz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          gko $$8 = new gko($$1, $$2, $$3, $$4);
          $$8.a(this.a);
          return $$8;

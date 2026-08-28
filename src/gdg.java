@@ -1,60 +1,95 @@
-import java.util.Set;
+import java.util.List;
 
-public class gdg extends gdk<gzw> {
-   private static final float i = 2.25F;
-   public static final gfl a = new gaz(true, 16.0F, 4.0F, 2.25F, 2.0F, 24.0F, Set.of("head"));
+public class gdg extends gco<gzw> {
+   private static final String f = "left_sleeve";
+   private static final String g = "right_sleeve";
+   private static final String x = "left_pants";
+   private static final String y = "right_pants";
+   private final List<gfd> z;
+   public final gfd a;
+   public final gfd b;
+   public final gfd c;
+   public final gfd d;
+   public final gfd e;
+   private final boolean A;
 
-   public gdg(gfc $$0) {
-      super($$0);
+   public gdg(gfd $$0, boolean $$1) {
+      super($$0, gmi::j);
+      this.A = $$1;
+      this.a = this.s.b("left_sleeve");
+      this.b = this.r.b("right_sleeve");
+      this.c = this.u.b("left_pants");
+      this.d = this.t.b("right_pants");
+      this.e = this.q.b("jacket");
+      this.z = List.of(this.o, this.q, this.s, this.r, this.u, this.t);
    }
 
-   public static gfi a() {
-      gfk $$0 = new gfk();
-      gfm $$1 = $$0.a();
-      $$1.a(
-         "head",
-         gfh.c()
-            .a(0, 0)
-            .a(-3.5F, -3.0F, -3.0F, 7.0F, 7.0F, 7.0F)
-            .a(0, 44)
-            .a("mouth", -2.5F, 1.0F, -6.0F, 5.0F, 3.0F, 3.0F)
-            .a(26, 0)
-            .a("right_ear", -4.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F)
-            .a(26, 0)
-            .a()
-            .a("left_ear", 2.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F),
-         gfe.a(0.0F, 10.0F, -16.0F)
-      );
-      $$1.a(
-         "body",
-         gfh.c().a(0, 19).a(-5.0F, -13.0F, -7.0F, 14.0F, 14.0F, 11.0F).a(39, 0).a(-4.0F, -25.0F, -7.0F, 12.0F, 12.0F, 10.0F),
-         gfe.a(-2.0F, 9.0F, 12.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      int $$2 = 10;
-      gfh $$3 = gfh.c().a(50, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 8.0F);
-      $$1.a("right_hind_leg", $$3, gfe.a(-4.5F, 14.0F, 6.0F));
-      $$1.a("left_hind_leg", $$3, gfe.a(4.5F, 14.0F, 6.0F));
-      gfh $$4 = gfh.c().a(50, 40).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 6.0F);
-      $$1.a("right_front_leg", $$4, gfe.a(-3.5F, 14.0F, -8.0F));
-      $$1.a("left_front_leg", $$4, gfe.a(3.5F, 14.0F, -8.0F));
-      return gfi.a($$0, 128, 64).a(gfl.scaling(1.2F));
+   public static gfl a(gfh $$0, boolean $$1) {
+      gfl $$2 = gco.a($$0, 0.0F);
+      gfn $$3 = $$2.a();
+      float $$4 = 0.25F;
+      if ($$1) {
+         gfn $$5 = $$3.a("left_arm", gfi.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), gff.a(5.0F, 2.0F, 0.0F));
+         gfn $$6 = $$3.a("right_arm", gfi.c().a(40, 16).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), gff.a(-5.0F, 2.0F, 0.0F));
+         $$5.a("left_sleeve", gfi.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), gff.a);
+         $$6.a("right_sleeve", gfi.c().a(40, 32).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), gff.a);
+      } else {
+         gfn $$7 = $$3.a("left_arm", gfi.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gff.a(5.0F, 2.0F, 0.0F));
+         gfn $$8 = $$3.b("right_arm");
+         $$7.a("left_sleeve", gfi.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), gff.a);
+         $$8.a("right_sleeve", gfi.c().a(40, 32).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), gff.a);
+      }
+
+      gfn $$9 = $$3.a("left_leg", gfi.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gff.a(1.9F, 12.0F, 0.0F));
+      gfn $$10 = $$3.b("right_leg");
+      $$9.a("left_pants", gfi.c().a(0, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), gff.a);
+      $$10.a("right_pants", gfi.c().a(0, 32).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), gff.a);
+      gfn $$11 = $$3.b("body");
+      $$11.a("jacket", gfi.c().a(16, 32).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.25F)), gff.a);
+      return $$2;
    }
 
    public void a(gzw $$0) {
+      boolean $$1 = !$$0.m;
+      this.q.k = $$1;
+      this.r.k = $$1;
+      this.s.k = $$1;
+      this.t.k = $$1;
+      this.u.k = $$1;
+      this.p.k = $$0.n;
+      this.e.k = $$0.o;
+      this.c.k = $$0.p;
+      this.d.k = $$0.q;
+      this.a.k = $$0.aw;
+      this.b.k = $$0.ax;
       super.a($$0);
-      float $$1 = $$0.a * $$0.a;
-      float $$2 = $$0.ag;
-      float $$3 = $$0.aj ? 0.44444445F : 1.0F;
-      this.c.e -= $$1 * (float) Math.PI * 0.35F;
-      this.c.c += $$1 * $$2 * 2.0F;
-      this.f.c -= $$1 * $$2 * 20.0F;
-      this.f.d += $$1 * $$2 * 4.0F;
-      this.f.e -= $$1 * (float) Math.PI * 0.45F;
-      this.g.c = this.f.c;
-      this.g.d = this.f.d;
-      this.g.e -= $$1 * (float) Math.PI * 0.45F;
-      this.b.c -= $$1 * $$3 * 24.0F;
-      this.b.d += $$1 * $$3 * 13.0F;
-      this.b.e += $$1 * (float) Math.PI * 0.15F;
+   }
+
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
+   }
+
+   @Override
+   public void a(bvb $$0, ffu $$1) {
+      this.e().a($$1);
+      gfd $$2 = this.a($$0);
+      if (this.A) {
+         float $$3 = 0.5F * (float)($$0 == bvb.b ? 1 : -1);
+         $$2.b += $$3;
+         $$2.a($$1);
+         $$2.b -= $$3;
+      } else {
+         $$2.a($$1);
+      }
+   }
+
+   public gfd a(azh $$0) {
+      return af.a(this.z, $$0);
    }
 }

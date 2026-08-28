@@ -1,40 +1,30 @@
-import com.mojang.datafixers.Products.P4;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
 
-public class ekg extends ekf {
-   public static final MapCodec<ekg> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ekg::new));
-   protected final List<dww> h;
+public abstract class ekg extends ekd {
+   protected final long c;
+   protected final esc.a d;
+   protected final float e;
+   protected final esc f;
 
-   protected static <P extends ekg> P4<Mu<P>, Long, esb.a, Float, List<dww>> b(Instance<P> $$0) {
-      return a($$0).and(ayi.b(dww.a.listOf()).fieldOf("states").forGetter($$0x -> $$0x.h));
+   protected static <P extends ekg> P3<Mu<P>, Long, esc.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         esc.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         ayi.o.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   public ekg(long $$0, esb.a $$1, float $$2, List<dww> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   protected ekg(long $$0, esc.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = esc.b(new edr(new ect($$0)), $$1);
    }
 
-   @Override
-   protected ekd<?> a() {
-      return ekd.d;
-   }
-
-   @Override
-   public dww a(azh $$0, ji $$1) {
-      return this.a(this.h, $$1, (double)this.e);
-   }
-
-   protected dww a(List<dww> $$0, ji $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
-   }
-
-   protected dww a(List<dww> $$0, double $$1) {
-      double $$2 = ayz.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   protected double a(ji $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

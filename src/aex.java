@@ -5,11 +5,11 @@ public class aex implements yw<abl> {
    private final int d;
    private final int e;
 
-   public aex(buk $$0) {
+   public aex(bul $$0) {
       this($$0.ar(), $$0.dy());
    }
 
-   public aex(int $$0, faz $$1) {
+   public aex(int $$0, fba $$1) {
       this.b = $$0;
       double $$2 = 3.9;
       double $$3 = ayz.a($$1.d, -3.9, 3.9);

@@ -1,73 +1,115 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class egp extends efx<eig> {
-   public egp(Codec<eig> $$0) {
+public class egp extends efy<eij> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bus<?>[] b = new bus[]{bus.be, bus.bN, bus.bN, bus.bn};
+   private static final dwx c = djo.nE.m();
+
+   public egp(Codec<eij> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(efz<eig> $$0) {
-      dhf $$1 = $$0.b();
+   public boolean a(ega<eij> $$0) {
+      Predicate<dwx> $$1 = efy.a(awp.bQ);
       ji $$2 = $$0.e();
       azh $$3 = $$0.d();
-      eig $$4 = $$0.f();
-      if (!c($$1.a_($$2))) {
-         return false;
-      } else {
-         List<jn> $$5 = $$4.a($$3);
-         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
-            return true;
-         } else {
-            ji.a $$6 = $$2.k();
+      dhg $$4 = $$0.b();
+      int $$5 = 3;
+      int $$6 = $$3.a(2) + 2;
+      int $$7 = -$$6 - 1;
+      int $$8 = $$6 + 1;
+      int $$9 = -1;
+      int $$10 = 4;
+      int $$11 = $$3.a(2) + 2;
+      int $$12 = -$$11 - 1;
+      int $$13 = $$11 + 1;
+      int $$14 = 0;
 
-            for (jn $$7 : $$5) {
-               $$6.g($$2);
-               List<jn> $$8 = $$4.a($$3, $$7.g());
+      for (int $$15 = $$7; $$15 <= $$8; $$15++) {
+         for (int $$16 = -1; $$16 <= 4; $$16++) {
+            for (int $$17 = $$12; $$17 <= $$13; $$17++) {
+               ji $$18 = $$2.b($$15, $$16, $$17);
+               boolean $$19 = $$4.a_($$18).e();
+               if ($$16 == -1 && !$$19) {
+                  return false;
+               }
 
-               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
-                  $$6.a($$2, $$7);
-                  dww $$10 = $$1.a_($$6);
-                  if (!c($$10) && !$$10.a($$4.b)) {
-                     break;
-                  }
+               if ($$16 == 4 && !$$19) {
+                  return false;
+               }
 
-                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
-                     return true;
+               if (($$15 == $$7 || $$15 == $$8 || $$17 == $$12 || $$17 == $$13) && $$16 == 0 && $$4.u($$18) && $$4.u($$18.d())) {
+                  $$14++;
+               }
+            }
+         }
+      }
+
+      if ($$14 >= 1 && $$14 <= 5) {
+         for (int $$20 = $$7; $$20 <= $$8; $$20++) {
+            for (int $$21 = 3; $$21 >= -1; $$21--) {
+               for (int $$22 = $$12; $$22 <= $$13; $$22++) {
+                  ji $$23 = $$2.b($$20, $$21, $$22);
+                  dwx $$24 = $$4.a_($$23);
+                  if ($$20 == $$7 || $$21 == -1 || $$22 == $$12 || $$20 == $$8 || $$21 == 4 || $$22 == $$13) {
+                     if ($$23.v() >= $$4.L_() && !$$4.a_($$23.e()).e()) {
+                        $$4.a($$23, c, 2);
+                     } else if ($$24.e() && !$$24.a(djo.cD)) {
+                        if ($$21 == -1 && $$3.a(4) != 0) {
+                           this.a($$4, $$23, djo.cu.m(), $$1);
+                        } else {
+                           this.a($$4, $$23, djo.m.m(), $$1);
+                        }
+                     }
+                  } else if (!$$24.a(djo.cD) && !$$24.a(djo.cA)) {
+                     this.a($$4, $$23, c, $$1);
                   }
                }
             }
-
-            return false;
          }
+
+         for (int $$25 = 0; $$25 < 2; $$25++) {
+            for (int $$26 = 0; $$26 < 3; $$26++) {
+               int $$27 = $$2.u() + $$3.a($$6 * 2 + 1) - $$6;
+               int $$28 = $$2.v();
+               int $$29 = $$2.w() + $$3.a($$11 * 2 + 1) - $$11;
+               ji $$30 = new ji($$27, $$28, $$29);
+               if ($$4.u($$30)) {
+                  int $$31 = 0;
+
+                  for (jn $$32 : jn.c.a) {
+                     if ($$4.a_($$30.a($$32)).e()) {
+                        $$31++;
+                     }
+                  }
+
+                  if ($$31 == 1) {
+                     this.a($$4, $$30, enq.a($$4, $$30, djo.cD.m()), $$1);
+                     bsq.a($$4, $$3, $$30, evn.c);
+                     break;
+                  }
+               }
+            }
+         }
+
+         this.a($$4, $$2, djo.cA.m(), $$1);
+         if ($$4.c_($$2) instanceof dvq $$34) {
+            $$34.a(this.a($$3), $$3);
+         } else {
+            a.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{$$2.u(), $$2.v(), $$2.w()});
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public static boolean a(dhf $$0, ji $$1, dww $$2, eig $$3, azh $$4, List<jn> $$5) {
-      ji.a $$6 = $$1.k();
-
-      for (jn $$7 : $$5) {
-         dww $$8 = $$0.a_($$6.a($$1, $$7));
-         if ($$8.a($$3.h)) {
-            dww $$9 = $$3.b.c($$2, $$0, $$1, $$7);
-            if ($$9 == null) {
-               return false;
-            }
-
-            $$0.a($$1, $$9, 3);
-            $$0.y($$1).e($$1);
-            if ($$4.i() < $$3.g) {
-               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
-            }
-
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean c(dww $$0) {
-      return $$0.l() || $$0.a(djn.J);
+   private bus<?> a(azh $$0) {
+      return af.a(b, $$0);
    }
 }

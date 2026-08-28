@@ -1,158 +1,211 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.blaze3d.platform.GlStateManager;
-import java.util.ArrayList;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public record ffz(int i, int j, ffz.a k, ffz.b l, int m) {
-   public static final int a = 32;
-   private static final ffz[] n = new ffz[32];
-   private static final List<ffz> o = new ArrayList<>(32);
-   public static final ffz b = a(0, 0, ffz.a.a, ffz.b.a, 3);
-   public static final ffz c = a(1, 0, ffz.a.b, ffz.b.c, 4);
-   public static final ffz d = a(2, 0, ffz.a.a, ffz.b.d, 2);
-   public static final ffz e = d;
-   public static final ffz f = a(3, 1, ffz.a.e, ffz.b.d, 2);
-   public static final ffz g = a(4, 2, ffz.a.e, ffz.b.d, 2);
-   public static final ffz h = a(5, 0, ffz.a.c, ffz.b.b, 3);
+public class ffz {
+   public static final int a = -1;
+   private final List<fga> b;
+   private final List<String> c;
+   private final int d;
+   private final int e;
+   private final int[] f = new int[32];
+   @Nullable
+   private ffx g;
 
-   public ffz(int i, int j, ffz.a k, ffz.b l, int m) {
-      if (i < 0 || i >= n.length) {
-         throw new IllegalArgumentException("Element ID must be in range [0; " + n.length + ")");
-      } else if (!this.a(j, l)) {
-         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
-      } else {
-         this.i = i;
-         this.j = j;
-         this.k = k;
-         this.l = l;
-         this.m = m;
+   ffz(List<fga> $$0, List<String> $$1, IntList $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3;
+      this.e = $$0.stream().mapToInt(fga::a).reduce(0, ($$0x, $$1x) -> $$0x | $$1x);
+
+      for (int $$4 = 0; $$4 < this.f.length; $$4++) {
+         fga $$5 = fga.a($$4);
+         int $$6 = $$5 != null ? $$0.indexOf($$5) : -1;
+         this.f[$$4] = $$6 != -1 ? $$2.getInt($$6) : -1;
       }
    }
 
-   public static ffz a(int $$0, int $$1, ffz.a $$2, ffz.b $$3, int $$4) {
-      ffz $$5 = new ffz($$0, $$1, $$2, $$3, $$4);
-      if (n[$$0] != null) {
-         throw new IllegalArgumentException("Duplicate element registration for: " + $$0);
-      } else {
-         n[$$0] = $$5;
-         o.add($$5);
-         return $$5;
-      }
+   public static ffz.a a() {
+      return new ffz.a();
    }
 
-   private boolean a(int $$0, ffz.b $$1) {
-      return $$0 == 0 || $$1 == ffz.b.d;
+   public void a(int $$0) {
+      int $$1 = 0;
+
+      for (String $$2 : this.d()) {
+         GlStateManager._glBindAttribLocation($$0, $$1, $$2);
+         $$1++;
+      }
    }
 
    @Override
    public String toString() {
-      return this.m + "," + this.l + "," + this.k + " (" + this.i + ")";
-   }
-
-   public int a() {
-      return 1 << this.i;
+      return "VertexFormat" + this.c;
    }
 
    public int b() {
-      return this.k.a() * this.m;
+      return this.d;
    }
 
-   public void a(int $$0, long $$1, int $$2) {
-      this.l.g.setupBufferState(this.m, this.k.b(), $$2, $$1, $$0);
+   public List<fga> c() {
+      return this.b;
    }
 
-   @Nullable
-   public static ffz a(int $$0) {
-      return n[$$0];
+   public List<String> d() {
+      return this.c;
    }
 
-   public static Stream<ffz> b(int $$0) {
-      return o.stream().filter($$1 -> $$1 != null && ($$0 & $$1.a()) != 0);
+   public int[] e() {
+      return this.f;
    }
 
-   public int c() {
-      return this.i;
+   public int a(fga $$0) {
+      return this.f[$$0.c()];
    }
 
-   public int d() {
-      return this.j;
+   public boolean b(fga $$0) {
+      return (this.e & $$0.a()) != 0;
    }
 
-   public ffz.a e() {
-      return this.k;
+   public int f() {
+      return this.e;
    }
 
-   public ffz.b f() {
-      return this.l;
+   public String c(fga $$0) {
+      int $$1 = this.b.indexOf($$0);
+      if ($$1 == -1) {
+         throw new IllegalArgumentException($$0 + " is not contained in format");
+      } else {
+         return this.c.get($$1);
+      }
    }
 
-   public int g() {
-      return this.m;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof ffz $$1 && this.e == $$1.e && this.d == $$1.d && this.c.equals($$1.c) && Arrays.equals(this.f, $$1.f)) {
+            return true;
+         }
+
+         return false;
+      }
    }
 
-   public static enum a {
-      a(4, "Float", 5126),
-      b(1, "Unsigned Byte", 5121),
-      c(1, "Byte", 5120),
-      d(2, "Unsigned Short", 5123),
-      e(2, "Short", 5122),
-      f(4, "Unsigned Int", 5125),
-      g(4, "Int", 5124);
+   @Override
+   public int hashCode() {
+      return this.e * 31 + Arrays.hashCode(this.f);
+   }
 
-      private final int h;
-      private final String i;
-      private final int j;
+   public void g() {
+      RenderSystem.assertOnRenderThread();
+      int $$0 = this.b();
 
-      private a(final int $$0, final String $$1, final int $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         GlStateManager._enableVertexAttribArray($$1);
+         fga $$2 = this.b.get($$1);
+         $$2.a($$1, (long)this.a($$2), $$0);
+      }
+   }
+
+   public void h() {
+      RenderSystem.assertOnRenderThread();
+
+      for (int $$0 = 0; $$0 < this.b.size(); $$0++) {
+         GlStateManager._disableVertexAttribArray($$0);
+      }
+   }
+
+   public ffx i() {
+      ffx $$0 = this.g;
+      if ($$0 == null) {
+         this.g = $$0 = new ffx(fdo.a);
       }
 
-      public int a() {
-         return this.h;
+      return $$0;
+   }
+
+   public static class a {
+      private final Builder<String, fga> a = ImmutableMap.builder();
+      private final IntList b = new IntArrayList();
+      private int c;
+
+      a() {
       }
 
-      public int b() {
-         return this.j;
+      public ffz.a a(String $$0, fga $$1) {
+         this.a.put($$0, $$1);
+         this.b.add(this.c);
+         this.c = this.c + $$1.b();
+         return this;
       }
 
-      @Override
-      public String toString() {
-         return this.i;
+      public ffz.a a(int $$0) {
+         this.c += $$0;
+         return this;
+      }
+
+      public ffz a() {
+         ImmutableMap<String, fga> $$0 = this.a.buildOrThrow();
+         ImmutableList<fga> $$1 = $$0.values().asList();
+         ImmutableList<String> $$2 = $$0.keySet().asList();
+         return new ffz($$1, $$2, this.b, this.c);
       }
    }
 
    public static enum b {
-      a("Position", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3)),
-      b("Normal", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
-      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
-      d("UV", ($$0, $$1, $$2, $$3, $$4) -> {
-         if ($$1 == 5126) {
-            GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3);
-         } else {
-            GlStateManager._vertexAttribIPointer($$4, $$0, $$1, $$2, $$3);
-         }
-      }),
-      e("Generic", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3));
+      a(5123, 2),
+      b(5125, 4);
 
-      private final String f;
-      final ffz.b.a g;
+      public final int c;
+      public final int d;
 
-      private b(final String $$0, final ffz.b.a $$1) {
-         this.f = $$0;
-         this.g = $$1;
+      private b(final int $$0, final int $$1) {
+         this.c = $$0;
+         this.d = $$1;
       }
 
-      @Override
-      public String toString() {
-         return this.f;
+      public static ffz.b a(int $$0) {
+         return ($$0 & -65536) != 0 ? b : a;
+      }
+   }
+
+   public static enum c {
+      a(4, 2, 2, false),
+      b(5, 2, 1, true),
+      c(1, 2, 2, false),
+      d(3, 2, 1, true),
+      e(4, 3, 3, false),
+      f(5, 3, 1, true),
+      g(6, 3, 1, true),
+      h(4, 4, 4, false);
+
+      public final int i;
+      public final int j;
+      public final int k;
+      public final boolean l;
+
+      private c(final int $$0, final int $$1, final int $$2, final boolean $$3) {
+         this.i = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
       }
 
-      @FunctionalInterface
-      interface a {
-         void setupBufferState(int var1, int var2, int var3, long var4, int var6);
+      public int a(int $$0) {
+         return switch (this) {
+            case a, h -> $$0 / 4 * 6;
+            case b, c, d, e, f, g -> $$0;
+            default -> 0;
+         };
       }
    }
 }

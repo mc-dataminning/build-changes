@@ -1,28 +1,34 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 
-public enum frw implements azv {
-   a("bitmap", frt.a.a),
-   b("ttf", fry.a),
-   c("space", fdu.a.a),
-   d("unihex", frz.b.a),
-   e("reference", frx.a);
+public interface frw {
+   MapCodec<frw> b = frx.f.dispatchMap(frw::a, frx::a);
 
-   public static final Codec<frw> f = azv.a(frw::values);
-   private final String g;
-   private final MapCodec<? extends frv> h;
+   frx a();
 
-   private frw(final String $$0, final MapCodec<? extends frv> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   Either<frw.b, frw.c> b();
+
+   public static record a(frw b, frk.a c) {
+      public static final Codec<frw.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(frw.b.forGetter(frw.a::a), frk.a.a.optionalFieldOf("filter", frk.a.b).forGetter(frw.a::b)).apply($$0, frw.a::new)
+      );
+
+      public frw a() {
+         return this.b;
+      }
+
+      public frk.a b() {
+         return this.c;
+      }
    }
 
-   @Override
-   public String c() {
-      return this.g;
+   public interface b {
+      fdt load(aup var1) throws IOException;
    }
 
-   public MapCodec<? extends frv> a() {
-      return this.h;
+   public static record c(akv a) {
    }
 }

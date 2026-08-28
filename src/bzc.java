@@ -1,26 +1,23 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class bzc {
-   public static bxa<bvg> a() {
-      return cam.a((Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$0 -> $$0.a((cap<bvg>)(($$0x, $$1, $$2) -> {
-            if ($$0x.A.a(20) != 0) {
-               return false;
-            } else {
-               bwi<?> $$3 = $$1.eb();
-               cqj $$4 = $$0x.d($$1.dv());
-               if ($$4 != null) {
-                  if ($$4.c() && !$$4.b()) {
-                     $$3.b(cqn.h);
-                     $$3.a(cqn.h);
-                  } else {
-                     $$3.b(cqn.i);
-                     $$3.a(cqn.i);
-                  }
-               }
-
-               return true;
-            }
-         }))));
+   public static bxb<bvh> a(bus<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return can.a(
+         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$2x -> $$2x.group($$2x.a(cel.n), $$2x.c(cel.q), $$2x.b(cel.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bvh> $$9 = $$2x.<cen>b($$5).a($$3xx -> $$3xx.g((bul)$$7) <= (double)$$2 && $$0.equals($$3xx.aq()));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else {
+                        bvh $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new bxl($$10, true));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

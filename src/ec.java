@@ -12,8 +12,8 @@ public record ec(dk.d c) implements by {
    }
 
    @Override
-   public boolean a(buk $$0, ard $$1, @Nullable faz $$2) {
-      return $$0 instanceof cmg $$3 ? this.c.d($$3.gs()) : false;
+   public boolean a(bul $$0, ard $$1, @Nullable fba $$2) {
+      return $$0 instanceof cmh $$3 ? this.c.d($$3.gs()) : false;
    }
 
    @Override

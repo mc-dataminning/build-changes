@@ -1,16 +1,21 @@
-public class guk extends grb<cpv, gxq> {
-   public static final akv a = akv.b("textures/entity/projectiles/spectral_arrow.png");
+public class guk extends gtk<chw, haj, geb> {
+   private static final akv a = akv.b("textures/entity/snow_golem.png");
 
-   public guk(gsd.a $$0) {
-      super($$0);
+   public guk(gse.a $$0) {
+      super($$0, new geb($$0.a(gfc.cS)), 0.5F);
+      this.a(new gwy(this, $$0.d()));
    }
 
-   @Override
-   protected akv a(gxq $$0) {
+   public akv a(haj $$0) {
       return a;
    }
 
-   public gxq a() {
-      return new gxq();
+   public haj b() {
+      return new haj();
+   }
+
+   public void a(chw $$0, haj $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.p();
    }
 }

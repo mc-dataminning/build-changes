@@ -1,91 +1,88 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.function.Predicate;
 
-public class ewr extends exd {
+public class ewr extends exe {
    public static final MapCodec<ewr> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(ezo.a.fieldOf("source").forGetter($$0x -> $$0x.b), ewr.b.a.listOf().fieldOf("ops").forGetter($$0x -> $$0x.c)))
+            .and(
+               $$0.group(
+                  ewr.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
+                  ku.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
+                  ku.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
+               )
+            )
             .apply($$0, ewr::new)
    );
-   private final ezn b;
-   private final List<ewr.b> c;
+   private final ewr.b b;
+   private final Optional<List<ku<?>>> c;
+   private final Optional<List<ku<?>>> d;
+   private final Predicate<ku<?>> e;
 
-   ewr(List<eyz> $$0, ezn $$1, List<ewr.b> $$2) {
+   ewr(List<eza> $$0, ewr.b $$1, Optional<List<ku<?>>> $$2, Optional<List<ku<?>>> $$3) {
       super($$0);
       this.b = $$1;
-      this.c = List.copyOf($$2);
+      this.c = $$2.map(List::copyOf);
+      this.d = $$3.map(List::copyOf);
+      List<Predicate<ku<?>>> $$4 = new ArrayList<>(2);
+      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
+      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
+      this.e = af.a($$4);
    }
 
    @Override
-   public exf<ewr> b() {
-      return exg.C;
+   public exg<ewr> b() {
+      return exh.J;
    }
 
    @Override
    public Set<bai<?>> a() {
-      return this.b.b();
+      return this.b.a();
    }
 
    @Override
-   public cwo a(cwo $$0, evq $$1) {
-      un $$2 = this.b.a($$1);
-      if ($$2 == null) {
-         return $$0;
-      } else {
-         MutableObject<tq> $$3 = new MutableObject();
-         Supplier<un> $$4 = () -> {
-            if ($$3.getValue() == null) {
-               $$3.setValue($$0.a(kv.b, cyx.a).d());
-            }
-
-            return (un)$$3.getValue();
-         };
-         this.c.forEach($$2x -> $$2x.a($$4, $$2));
-         tq $$5 = (tq)$$3.getValue();
-         if ($$5 != null) {
-            cyx.a(kv.b, $$0, $$5);
-         }
-
-         return $$0;
-      }
+   public cwp a(cwp $$0, evr $$1) {
+      kr $$2 = this.b.a($$1);
+      $$0.b($$2.a(this.e));
+      return $$0;
    }
 
-   @Deprecated
-   public static ewr.a a(ezn $$0) {
+   public static ewr.a a(ewr.b $$0) {
       return new ewr.a($$0);
    }
 
-   public static ewr.a a(evq.b $$0) {
-      return new ewr.a(ezl.a($$0));
-   }
+   public static class a extends exe.a<ewr.a> {
+      private final ewr.b a;
+      private Optional<Builder<ku<?>>> b = Optional.empty();
+      private Optional<Builder<ku<?>>> c = Optional.empty();
 
-   public static class a extends exd.a<ewr.a> {
-      private final ezn a;
-      private final List<ewr.b> b = Lists.newArrayList();
-
-      a(ezn $$0) {
+      a(ewr.b $$0) {
          this.a = $$0;
       }
 
-      public ewr.a a(String $$0, String $$1, ewr.c $$2) {
-         try {
-            this.b.add(new ewr.b(fp.g.a($$0), fp.g.a($$1), $$2));
-            return this;
-         } catch (CommandSyntaxException var5) {
-            throw new IllegalArgumentException(var5);
+      public ewr.a a(ku<?> $$0) {
+         if (this.b.isEmpty()) {
+            this.b = Optional.of(ImmutableList.builder());
          }
+
+         this.b.get().add($$0);
+         return this;
       }
 
-      public ewr.a a(String $$0, String $$1) {
-         return this.a($$0, $$1, ewr.c.a);
+      public ewr.a b(ku<?> $$0) {
+         if (this.c.isEmpty()) {
+            this.c = Optional.of(ImmutableList.builder());
+         }
+
+         this.c.get().add($$0);
+         return this;
       }
 
       protected ewr.a a() {
@@ -93,86 +90,43 @@ public class ewr extends exd {
       }
 
       @Override
-      public exe b() {
-         return new ewr(this.g(), this.a, this.b);
+      public exf b() {
+         return new ewr(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
       }
    }
 
-   static record b(fp.g b, fp.g c, ewr.c d) {
-      public static final Codec<ewr.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fp.g.a.fieldOf("source").forGetter(ewr.b::a), fp.g.a.fieldOf("target").forGetter(ewr.b::b), ewr.c.d.fieldOf("op").forGetter(ewr.b::c))
-               .apply($$0, ewr.b::new)
-      );
+   public static enum b implements azv {
+      a("block_entity");
 
-      public void a(Supplier<un> $$0, un $$1) {
-         try {
-            List<un> $$2 = this.b.a($$1);
-            if (!$$2.isEmpty()) {
-               this.d.a($$0.get(), this.c, $$2);
-            }
-         } catch (CommandSyntaxException var4) {
+      public static final Codec<ewr.b> b = azv.b(ewr.b::values);
+      private final String c;
+
+      private b(final String $$0) {
+         this.c = $$0;
+      }
+
+      public kr a(evr $$0) {
+         switch (this) {
+            case a:
+               dtz $$1 = $$0.c(eyl.h);
+               return $$1 != null ? $$1.q() : kr.a;
+            default:
+               throw new MatchException(null, null);
          }
       }
 
-      public fp.g a() {
-         return this.b;
-      }
-
-      public fp.g b() {
-         return this.c;
-      }
-
-      public ewr.c c() {
-         return this.d;
-      }
-   }
-
-   public static enum c implements azv {
-      a("replace") {
-         @Override
-         public void a(un $$0, fp.g $$1, List<un> $$2) throws CommandSyntaxException {
-            $$1.a($$0, (un)Iterables.getLast($$2));
+      public Set<bai<?>> a() {
+         switch (this) {
+            case a:
+               return Set.of(eyl.h);
+            default:
+               throw new MatchException(null, null);
          }
-      },
-      b("append") {
-         @Override
-         public void a(un $$0, fp.g $$1, List<un> $$2) throws CommandSyntaxException {
-            List<un> $$3 = $$1.a($$0, tw::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof tw) {
-                  $$2.forEach($$1xx -> ((tw)$$1x).add($$1xx.d()));
-               }
-            });
-         }
-      },
-      c("merge") {
-         @Override
-         public void a(un $$0, fp.g $$1, List<un> $$2) throws CommandSyntaxException {
-            List<un> $$3 = $$1.a($$0, tq::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof tq) {
-                  $$2.forEach($$1xx -> {
-                     if ($$1xx instanceof tq) {
-                        ((tq)$$1x).a((tq)$$1xx);
-                     }
-                  });
-               }
-            });
-         }
-      };
-
-      public static final Codec<ewr.c> d = azv.a(ewr.c::values);
-      private final String e;
-
-      public abstract void a(un var1, fp.g var2, List<un> var3) throws CommandSyntaxException;
-
-      c(final String $$0) {
-         this.e = $$0;
       }
 
       @Override
       public String c() {
-         return this.e;
+         return this.c;
       }
    }
 }

@@ -1,42 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class emu extends ems {
-   public static final MapCodec<emu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bro.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bro.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
-            .apply($$0, emu::new)
-   );
-   private final bro c;
-   private final bro d;
+public interface emu<P extends emt> {
+   emu<emf> a = a("block_predicate_filter", emf.a);
+   emu<emw> b = a("rarity_filter", emw.a);
+   emu<emy> c = a("surface_relative_threshold_filter", emy.a);
+   emu<emz> d = a("surface_water_depth_filter", emz.a);
+   emu<eme> e = a("biome", eme.a);
+   emu<emi> f = a("count", emi.a);
+   emu<emo> g = a("noise_based_count", emo.a);
+   emu<emp> h = a("noise_threshold_count", emp.a);
+   emu<emh> i = a("count_on_every_layer", emh.a);
+   emu<emj> j = a("environment_scan", emj.a);
+   emu<emm> k = a("heightmap", emm.a);
+   emu<eml> l = a("height_range", eml.a);
+   emu<emn> m = a("in_square", emn.a);
+   emu<emv> n = a("random_offset", emv.a);
+   emu<emk> o = a("fixed_placement", emk.a);
 
-   public static emu a(bro $$0, bro $$1) {
-      return new emu($$0, $$1);
-   }
+   MapCodec<P> codec();
 
-   public static emu a(bro $$0) {
-      return new emu(brl.a(0), $$0);
-   }
-
-   public static emu b(bro $$0) {
-      return new emu($$0, brl.a(0));
-   }
-
-   private emu(bro $$0, bro $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   public Stream<ji> a_(emq $$0, azh $$1, ji $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new ji($$3, $$4, $$5));
-   }
-
-   @Override
-   public emt<?> b() {
-      return emt.n;
+   private static <P extends emt> emu<P> a(String $$0, MapCodec<P> $$1) {
+      return ke.a(mb.S, $$0, () -> $$1);
    }
 }

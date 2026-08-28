@@ -1,42 +1,24 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class eew extends eeu {
-   public eew(Codec<eet> $$0) {
-      super($$0);
-      this.h = ImmutableSet.of(esz.e, esz.c);
+public record eew<WC extends eer>(eey<WC> d, WC e) {
+   public static final Codec<eew<?>> a = mb.N.q().dispatch($$0 -> $$0.d, eey::c);
+   public static final Codec<jr<eew<?>>> b = akr.a(mc.aK, a);
+   public static final Codec<jv<eew<?>>> c = kg.a(mc.aK, a);
+
+   public boolean a(azh $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   @Override
-   protected int a() {
-      return 10;
+   public boolean a(eet $$0, dys $$1, Function<ji, jr<dhk>> $$2, azh $$3, ece $$4, dfo $$5, dyr $$6) {
+      return ab.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   @Override
-   protected float a(azh $$0) {
-      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
+   public eey<WC> a() {
+      return this.d;
    }
 
-   @Override
-   protected double b() {
-      return 5.0;
-   }
-
-   protected boolean a(ees $$0, eet $$1, dyr $$2, Function<ji, jr<dhj>> $$3, dyq $$4, ji.a $$5, ji.a $$6, ecd $$7, MutableBoolean $$8) {
-      if (this.a($$1, $$2.a_($$5))) {
-         dww $$9;
-         if ($$5.v() <= $$0.a() + 31) {
-            $$9 = g.g();
-         } else {
-            $$9 = e;
-         }
-
-         $$2.a($$5, $$9, false);
-         return true;
-      } else {
-         return false;
-      }
+   public WC b() {
+      return this.e;
    }
 }

@@ -1,75 +1,25 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import org.slf4j.Logger;
 
-public class hex {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ako b = new ako("atlases", ".json");
-   private final List<hew> c;
+public interface hex {
+   ako a = new ako("textures", ".png");
 
-   private hex(List<hew> $$0) {
-      this.c = $$0;
-   }
+   void a(aup var1, hex.a var2);
 
-   public List<Function<hev, hel>> a(aup $$0) {
-      final Map<akv, hew.b> $$1 = new HashMap<>();
-      hew.a $$2 = new hew.a() {
-         @Override
-         public void a(akv $$0, hew.b $$1x) {
-            hew.b $$2 = $$1.put($$0, $$1);
-            if ($$2 != null) {
-               $$2.a();
-            }
-         }
+   hez a();
 
-         @Override
-         public void a(Predicate<akv> $$0) {
-            Iterator<Entry<akv, hew.b>> $$1 = $$1.entrySet().iterator();
-
-            while ($$1.hasNext()) {
-               Entry<akv, hew.b> $$2 = $$1.next();
-               if ($$0.test($$2.getKey())) {
-                  $$2.getValue().a();
-                  $$1.remove();
-               }
-            }
-         }
-      };
-      this.c.forEach($$2x -> $$2x.a($$0, $$2));
-      Builder<Function<hev, hel>> $$3 = ImmutableList.builder();
-      $$3.add((Function<hev, hel>)$$0x -> heg.b());
-      $$3.addAll($$1.values());
-      return $$3.build();
-   }
-
-   public static hex a(aup $$0, akv $$1) {
-      akv $$2 = b.a($$1);
-      List<hew> $$3 = new ArrayList<>();
-
-      for (aun $$4 : $$0.a($$2)) {
-         try (BufferedReader $$5 = $$4.e()) {
-            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
-            $$3.addAll((Collection<? extends hew>)hez.h.parse($$6).getOrThrow());
-         } catch (Exception var11) {
-            a.error("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
-         }
+   public interface a {
+      default void a(akv $$0, aun $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
       }
 
-      return new hex($$3);
+      void a(akv var1, hex.b var2);
+
+      void a(Predicate<akv> var1);
+   }
+
+   public interface b extends Function<hew, hem> {
+      default void a() {
+      }
    }
 }

@@ -42,9 +42,9 @@ public class anc {
    }
 
    private static int a(ex $$0, aqp $$1) throws CommandSyntaxException {
-      dfn $$2 = $$1.a();
+      dfo $$2 = $$1.a();
       ard $$3 = $$0.e();
-      aku<dgh> $$4 = $$3.ai();
+      aku<dgi> $$4 = $$3.ai();
       boolean $$5 = $$3.y().contains($$2.a());
       if ($$5) {
          $$0.a(() -> wp.a("commands.forceload.query.success", wp.a($$2), wp.a($$4.a())), false);
@@ -56,11 +56,11 @@ public class anc {
 
    private static int a(ex $$0) {
       ard $$1 = $$0.e();
-      aku<dgh> $$2 = $$1.ai();
+      aku<dgi> $$2 = $$1.ai();
       LongSet $$3 = $$1.y();
       int $$4 = $$3.size();
       if ($$4 > 0) {
-         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dfn::new).map(dfn::toString).iterator());
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dfo::new).map(dfo::toString).iterator());
          if ($$4 == 1) {
             $$0.a(() -> wp.a("commands.forceload.list.single", wp.a($$2.a()), $$5), false);
          } else {
@@ -75,9 +75,9 @@ public class anc {
 
    private static int b(ex $$0) {
       ard $$1 = $$0.e();
-      aku<dgh> $$2 = $$1.ai();
+      aku<dgi> $$2 = $$1.ai();
       LongSet $$3 = $$1.y();
-      $$3.forEach($$1x -> $$1.a(dfn.a($$1x), dfn.b($$1x), false));
+      $$3.forEach($$1x -> $$1.a(dfo.a($$1x), dfo.b($$1x), false));
       $$0.a(() -> wp.a("commands.forceload.removed.all", wp.a($$2.a())), true);
       return 0;
    }
@@ -97,8 +97,8 @@ public class anc {
             throw b.create(256, $$12);
          } else {
             ard $$13 = $$0.e();
-            aku<dgh> $$14 = $$13.ai();
-            dfn $$15 = null;
+            aku<dgi> $$14 = $$13.ai();
+            dfo $$15 = null;
             int $$16 = 0;
 
             for (int $$17 = $$8; $$17 <= $$10; $$17++) {
@@ -107,13 +107,13 @@ public class anc {
                   if ($$19) {
                      $$16++;
                      if ($$15 == null) {
-                        $$15 = new dfn($$17, $$18);
+                        $$15 = new dfo($$17, $$18);
                      }
                   }
                }
             }
 
-            dfn $$20 = $$15;
+            dfo $$20 = $$15;
             int $$21 = $$16;
             if ($$21 == 0) {
                throw ($$3 ? d : e).create();
@@ -121,8 +121,8 @@ public class anc {
                if ($$21 == 1) {
                   $$0.a(() -> wp.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", wp.a($$20), wp.a($$14.a())), true);
                } else {
-                  dfn $$22 = new dfn($$8, $$9);
-                  dfn $$23 = new dfn($$10, $$11);
+                  dfo $$22 = new dfo($$8, $$9);
+                  dfo $$23 = new dfo($$10, $$11);
                   $$0.a(() -> wp.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$21, wp.a($$14.a()), wp.a($$22), wp.a($$23)), true);
                }
 

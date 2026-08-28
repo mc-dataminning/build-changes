@@ -1,30 +1,27 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum emf implements azv {
-   a(jn.b, 1, "ceiling"),
-   b(jn.a, -1, "floor");
+public class emf extends ems {
+   public static final MapCodec<emf> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(edz.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, emf::new)
+   );
+   private final edz c;
 
-   public static final Codec<emf> c = azv.a(emf::values);
-   private final jn d;
-   private final int e;
-   private final String f;
-
-   private emf(final jn $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private emf(edz $$0) {
+      this.c = $$0;
    }
 
-   public jn a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
+   public static emf a(edz $$0) {
+      return new emf($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected boolean a(emr $$0, azh $$1, ji $$2) {
+      return this.c.test($$0.d(), $$2);
+   }
+
+   @Override
+   public emu<?> b() {
+      return emu.a;
    }
 }

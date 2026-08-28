@@ -9,10 +9,10 @@ public class bba extends bbc {
    }
 
    private static String a(String $$0) {
-      String $$1 = bjk.a($$0);
+      String $$1 = bjl.a($$0);
 
       for (String $$2 : a) {
-         String $$3 = bjk.a($$2);
+         String $$3 = bjl.a($$2);
          if ($$1.startsWith($$3)) {
             return "minecraft:" + $$1.substring($$3.length());
          }

@@ -1,6 +1,6 @@
 import net.minecraft.server.MinecraftServer;
 
-public class alp extends bss {
+public class alp extends bst {
    private long g = 0L;
    private long h = 0L;
    private long i = 0L;

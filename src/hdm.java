@@ -1,26 +1,28 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class hdm implements hdr {
-   private final gog a;
-   private final hgy b;
+public class hdm implements hdw<dtq> {
+   private final gof a;
+   private final cvm b;
 
-   public hdm(gog $$0, hgy $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public hdm(cvm $$0, gof $$1) {
+      this.a = $$1;
+      this.b = $$0;
    }
 
-   @Override
-   public void a(cwm $$0, fft $$1, glx $$2, int $$3, int $$4, boolean $$5) {
-      this.a.a($$1, $$2, $$3, $$4, this.b);
+   @Nullable
+   public dtq a(cwp $$0) {
+      return $$0.a(kv.ai);
    }
 
-   public static record a(akv b) implements hdv.a {
-      public static final MapCodec<hdm.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akv.a.fieldOf("texture").forGetter(hdm.a::b)).apply($$0, hdm.a::new));
+   public void a(@Nullable dtq $$0, cwn $$1, ffu $$2, gly $$3, int $$4, int $$5, boolean $$6) {
+      this.a.a($$2, $$3, $$4, $$5, this.b, Objects.requireNonNullElse($$0, dtq.a));
+   }
 
-      public a(cvl $$0) {
-         this(gms.b($$0));
-      }
+   public static record a(cvm b) implements hdw.a {
+      public static final MapCodec<hdm.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvm.q.fieldOf("color").forGetter(hdm.a::b)).apply($$0, hdm.a::new));
 
       @Override
       public MapCodec<hdm.a> a() {
@@ -28,8 +30,8 @@ public class hdm implements hdr {
       }
 
       @Override
-      public hdv<?> a(gey $$0) {
-         return new hdm(new gog($$0), gms.a(this.b));
+      public hdw<?> a(gez $$0) {
+         return new hdm(this.b, new gof($$0));
       }
    }
 }

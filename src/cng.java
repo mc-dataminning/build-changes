@@ -1,43 +1,210 @@
-public interface cng {
-   int m_ = 10;
-   float n_ = 0.2F;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Optional;
 
-   int x();
+public class cng {
+   public static final int a = 8;
+   public static final int b = 4;
+   private static final brv c = bab.a(5, 20);
+   private static final int d = 200;
+   private static final int e = 8;
+   private static final int f = 15;
+   private static final int g = 40;
+   private static final int h = 15;
+   private static final int i = 200;
+   private static final brv j = brv.a(5, 16);
+   private static final float k = 1.0F;
+   private static final float l = 1.3F;
+   private static final float m = 0.6F;
+   private static final float n = 0.4F;
+   private static final float o = 0.6F;
 
-   static boolean a(ard $$0, bvg $$1, bvg $$2) {
-      float $$3 = (float)$$1.h(bwo.c);
-      float $$4;
-      if (!$$1.e_() && (int)$$3 > 0) {
-         $$4 = $$3 / 2.0F + (float)$$0.A.a((int)$$3);
-      } else {
-         $$4 = $$3;
-      }
-
-      bta $$6 = $$1.dW().b($$1);
-      boolean $$7 = $$2.a($$0, $$6, $$4);
-      if ($$7) {
-         dda.a($$0, (buk)$$2, $$6);
-         if (!$$1.e_()) {
-            a($$1, $$2);
-         }
-      }
-
-      return $$7;
+   protected static bwj<?> a(bwj<cnf> $$0) {
+      b($$0);
+      c($$0);
+      d($$0);
+      e($$0);
+      $$0.a(ImmutableSet.of(cqo.a));
+      $$0.b(cqo.b);
+      $$0.f();
+      return $$0;
    }
 
-   static void a(bvg $$0, bvg $$1) {
-      double $$2 = $$0.h(bwo.d);
-      double $$3 = $$1.h(bwo.p);
-      double $$4 = $$2 - $$3;
-      if (!($$4 <= 0.0)) {
-         double $$5 = $$1.dA() - $$0.dA();
-         double $$6 = $$1.dG() - $$0.dG();
-         float $$7 = (float)($$0.dV().A.a(21) - 10);
-         double $$8 = $$4 * (double)($$0.dV().A.i() * 0.5F + 0.2F);
-         faz $$9 = new faz($$5, 0.0, $$6).d().c($$8).b($$7);
-         double $$10 = $$4 * (double)$$0.dV().A.i() * 0.5;
-         $$1.j($$9.d, $$10, $$9.f);
-         $$1.T = true;
+   private static void b(bwj<cnf> $$0) {
+      $$0.a(cqo.a, 0, ImmutableList.of(new byg(45, 90), new byk()));
+   }
+
+   private static void c(bwj<cnf> $$0) {
+      $$0.a(
+         cqo.b,
+         10,
+         ImmutableList.of(
+            bwz.a(cel.aw, 200),
+            new bwu(bus.aj, 0.6F, 2),
+            bze.a(cel.aw, 1.0F, 8, true),
+            bzm.a(cng::a),
+            can.a(cnf::t, bze.b(cel.aq, 0.4F, 8, false)),
+            bza.a(8.0F, brv.a(30, 60)),
+            bwx.a(j, 0.6F),
+            a()
+         )
+      );
+   }
+
+   private static void d(bwj<cnf> $$0) {
+      $$0.a(
+         cqo.k,
+         10,
+         ImmutableList.of(
+            bwz.a(cel.aw, 200), new bwu(bus.aj, 0.6F, 2), bzf.a(1.0F), can.a(cnf::t, byh.a(40)), can.a(buc::e_, byh.a(15)), bzp.a(), bxm.a(cng::h, cel.o)
+         ),
+         cel.o
+      );
+   }
+
+   private static void e(bwj<cnf> $$0) {
+      $$0.a(cqo.n, 10, ImmutableList.of(bze.b(cel.z, 1.3F, 15, false), a(), bza.a(8.0F, brv.a(30, 60)), bxm.a(cng::d, cel.z)), cel.z);
+   }
+
+   private static byx<cnf> a() {
+      return new byx<>(ImmutableList.of(Pair.of(bys.a(0.4F), 2), Pair.of(bzh.a(0.4F, 3), 2), Pair.of(new bxk(30, 60), 1)));
+   }
+
+   protected static void a(cnf $$0) {
+      bwj<cnf> $$1 = $$0.eb();
+      cqo $$2 = $$1.g().orElse(null);
+      $$1.a(ImmutableList.of(cqo.k, cqo.n, cqo.b));
+      cqo $$3 = $$1.g().orElse(null);
+      if ($$2 != $$3) {
+         b($$0).ifPresent($$0::b);
       }
+
+      $$0.w($$1.a(cel.o));
+   }
+
+   protected static void a(cnf $$0, bvh $$1) {
+      if (!$$0.e_()) {
+         if ($$1.aq() == bus.aR && e($$0)) {
+            d($$0, $$1);
+            b($$0, $$1);
+         } else {
+            f($$0, $$1);
+         }
+      }
+   }
+
+   private static void b(cnf $$0, bvh $$1) {
+      f($$0).forEach($$1x -> c($$1x, $$1));
+   }
+
+   private static void c(cnf $$0, bvh $$1) {
+      bwj<cnf> $$3 = $$0.eb();
+      bvh $$2 = bxc.a($$0, $$3.c(cel.z), $$1);
+      $$2 = bxc.a($$0, $$3.c(cel.o), $$2);
+      d($$0, $$2);
+   }
+
+   private static void d(cnf $$0, bvh $$1) {
+      $$0.eb().b(cel.o);
+      $$0.eb().b(cel.m);
+      $$0.eb().a(cel.z, $$1, (long)c.a($$0.dV().A));
+   }
+
+   private static Optional<? extends bvh> a(ard $$0, cnf $$1) {
+      return !c($$1) && !h($$1) ? $$1.eb().c(cel.l) : Optional.empty();
+   }
+
+   static boolean a(cnf $$0, ji $$1) {
+      Optional<ji> $$2 = $$0.eb().c(cel.aw);
+      return $$2.isPresent() && $$2.get().a($$1, 8.0);
+   }
+
+   private static boolean d(cnf $$0) {
+      return $$0.t() && !e($$0);
+   }
+
+   private static boolean e(cnf $$0) {
+      if ($$0.e_()) {
+         return false;
+      } else {
+         int $$1 = $$0.eb().c(cel.as).orElse(0);
+         int $$2 = $$0.eb().c(cel.at).orElse(0) + 1;
+         return $$1 > $$2;
+      }
+   }
+
+   protected static void a(ard $$0, cnf $$1, bvh $$2) {
+      bwj<cnf> $$3 = $$1.eb();
+      $$3.b(cel.ax);
+      $$3.b(cel.r);
+      if ($$1.e_()) {
+         c($$1, $$2);
+      } else {
+         b($$0, $$1, $$2);
+      }
+   }
+
+   private static void b(ard $$0, cnf $$1, bvh $$2) {
+      if (!$$1.eb().c(cqo.n) || $$2.aq() != bus.aR) {
+         if ($$2.aq() != bus.aj) {
+            if (!bxc.a($$1, $$2, 4.0)) {
+               if (cfr.c($$0, $$1, $$2)) {
+                  e($$1, $$2);
+                  f($$1, $$2);
+               }
+            }
+         }
+      }
+   }
+
+   private static void e(cnf $$0, bvh $$1) {
+      bwj<cnf> $$2 = $$0.eb();
+      $$2.b(cel.E);
+      $$2.b(cel.r);
+      $$2.a(cel.o, $$1, 200L);
+   }
+
+   private static void f(cnf $$0, bvh $$1) {
+      f($$0).forEach($$1x -> g($$1x, $$1));
+   }
+
+   private static void g(cnf $$0, bvh $$1) {
+      if (!c($$0)) {
+         Optional<bvh> $$2 = $$0.eb().c(cel.o);
+         bvh $$3 = bxc.a($$0, $$2, $$1);
+         e($$0, $$3);
+      }
+   }
+
+   public static Optional<avz> b(cnf $$0) {
+      return $$0.eb().g().map($$1 -> a($$0, $$1));
+   }
+
+   private static avz a(cnf $$0, cqo $$1) {
+      if ($$1 == cqo.n || $$0.gs()) {
+         return awa.mS;
+      } else if ($$1 == cqo.k) {
+         return awa.mN;
+      } else {
+         return g($$0) ? awa.mS : awa.mM;
+      }
+   }
+
+   private static List<cnf> f(cnf $$0) {
+      return $$0.eb().c(cel.ap).orElse(ImmutableList.of());
+   }
+
+   private static boolean g(cnf $$0) {
+      return $$0.eb().a(cel.aw);
+   }
+
+   private static boolean h(cnf $$0) {
+      return $$0.eb().a(cel.r);
+   }
+
+   protected static boolean c(cnf $$0) {
+      return $$0.eb().a(cel.ax);
    }
 }

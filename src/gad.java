@@ -1,9 +1,7 @@
+import java.util.List;
+
 public interface gad {
-   void a(gab var1);
+   List<gae> a();
 
-   wp aS_();
-
-   void a(fod var1, float var2, float var3);
-
-   boolean aT_();
+   wp b();
 }

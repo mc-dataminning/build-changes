@@ -1,13 +1,13 @@
 public class adf implements yw<abl> {
    public static final yn<wa, adf> a = yw.a(adf::a, adf::new);
    private final int b;
-   private final dff c;
+   private final dfg c;
    private final int d;
    private final int e;
    private final boolean f;
    private final boolean g;
 
-   public adf(int $$0, dff $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+   public adf(int $$0, dfg $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
       this.b = $$0;
       this.c = $$1.a();
       this.d = $$2;
@@ -18,7 +18,7 @@ public class adf implements yw<abl> {
 
    private adf(wa $$0) {
       this.b = $$0.x();
-      this.c = dff.b.decode($$0);
+      this.c = dfg.b.decode($$0);
       this.d = $$0.l();
       this.e = $$0.l();
       this.f = $$0.readBoolean();
@@ -27,7 +27,7 @@ public class adf implements yw<abl> {
 
    private void a(wa $$0) {
       $$0.f(this.b);
-      dff.b.encode($$0, this.c);
+      dfg.b.encode($$0, this.c);
       $$0.c(this.d);
       $$0.c(this.e);
       $$0.a(this.f);
@@ -47,7 +47,7 @@ public class adf implements yw<abl> {
       return this.b;
    }
 
-   public dff e() {
+   public dfg e() {
       return this.c;
    }
 

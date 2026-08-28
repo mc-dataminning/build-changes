@@ -81,7 +81,7 @@ public class aou {
       );
    }
 
-   private static int a(ex $$0, fay $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends buk> $$6) throws CommandSyntaxException {
+   private static int a(ex $$0, faz $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bul> $$6) throws CommandSyntaxException {
       ard $$7 = $$0.e();
       int $$8 = $$7.L_();
       if ($$4 < $$8) {
@@ -103,11 +103,11 @@ public class aou {
       }
    }
 
-   private static int a(Collection<? extends buk> $$0) {
-      Set<fcg> $$1 = Sets.newHashSet();
+   private static int a(Collection<? extends bul> $$0) {
+      Set<fch> $$1 = Sets.newHashSet();
 
-      for (buk $$2 : $$0) {
-         if ($$2 instanceof cow) {
+      for (bul $$2 : $$0) {
+         if ($$2 instanceof cox) {
             $$1.add($$2.cr());
          } else {
             $$1.add(null);
@@ -117,7 +117,7 @@ public class aou {
       return $$1.size();
    }
 
-   private static void a(fay $$0, double $$1, ard $$2, azh $$3, double $$4, double $$5, double $$6, double $$7, int $$8, aou.a[] $$9, boolean $$10) throws CommandSyntaxException {
+   private static void a(faz $$0, double $$1, ard $$2, azh $$3, double $$4, double $$5, double $$6, double $$7, int $$8, aou.a[] $$9, boolean $$10) throws CommandSyntaxException {
       boolean $$11 = true;
       double $$12 = Float.MAX_VALUE;
 
@@ -186,15 +186,15 @@ public class aou {
       }
    }
 
-   private static double a(Collection<? extends buk> $$0, ard $$1, aou.a[] $$2, int $$3, boolean $$4) {
+   private static double a(Collection<? extends bul> $$0, ard $$1, aou.a[] $$2, int $$3, boolean $$4) {
       double $$5 = 0.0;
       int $$6 = 0;
-      Map<fcg, aou.a> $$7 = Maps.newHashMap();
+      Map<fch, aou.a> $$7 = Maps.newHashMap();
 
-      for (buk $$8 : $$0) {
+      for (bul $$8 : $$0) {
          aou.a $$10;
          if ($$4) {
-            fcg $$9 = $$8 instanceof cow ? $$8.cr() : null;
+            fch $$9 = $$8 instanceof cox ? $$8.cr() : null;
             if (!$$7.containsKey($$9)) {
                $$7.put($$9, $$2[$$6++]);
             }
@@ -278,7 +278,7 @@ public class aou {
          return $$4;
       }
 
-      public int a(dfm $$0, int $$1) {
+      public int a(dfn $$0, int $$1) {
          ji.a $$2 = new ji.a(this.a, (double)($$1 + 1), this.b);
          boolean $$3 = $$0.a_($$2).l();
          $$2.c(jn.a);
@@ -298,9 +298,9 @@ public class aou {
          return $$1 + 1;
       }
 
-      public boolean b(dfm $$0, int $$1) {
+      public boolean b(dfn $$0, int $$1) {
          ji $$2 = ji.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
-         dww $$3 = $$0.a_($$2);
+         dwx $$3 = $$0.a_($$2);
          return $$2.v() < $$1 && !$$3.n() && !$$3.a(awp.aN);
       }
 

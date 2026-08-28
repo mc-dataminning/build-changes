@@ -1,157 +1,184 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PushbackInputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.BiFunction;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public class euy implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<String, Optional<euk>> b = new HashMap<>();
-   private final DataFixer c;
-   private final jt.a d;
-   private final Path e;
-   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
+public class euy implements evk {
+   private final evl a;
+   private final evk b;
 
-   public euy(Path $$0, DataFixer $$1, jt.a $$2) {
-      this.c = $$1;
-      this.e = $$0;
-      this.d = $$2;
-   }
-
-   private Path a(String $$0) {
-      return this.e.resolve($$0 + ".dat");
-   }
-
-   public <T extends euk> T a(euk.a<T> $$0, String $$1) {
-      T $$2 = this.b($$0, $$1);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         T $$3 = (T)$$0.a().get();
-         this.a($$1, $$3);
-         return $$3;
-      }
-   }
-
-   @Nullable
-   public <T extends euk> T b(euk.a<T> $$0, String $$1) {
-      Optional<euk> $$2 = this.b.get($$1);
-      if ($$2 == null) {
-         $$2 = Optional.ofNullable(this.a($$0.b(), $$0.c(), $$1));
-         this.b.put($$1, $$2);
-      }
-
-      return (T)$$2.orElse(null);
-   }
-
-   @Nullable
-   private <T extends euk> T a(BiFunction<tq, jt.a, T> $$0, ban $$1, String $$2) {
-      try {
-         Path $$3 = this.a($$2);
-         if (Files.exists($$3)) {
-            tq $$4 = this.a($$2, $$1, ab.b().d().c());
-            return $$0.apply($$4.p("data"), this.d);
-         }
-      } catch (Exception var6) {
-         a.error("Error loading saved data: {}", $$2, var6);
-      }
-
-      return null;
-   }
-
-   public void a(String $$0, euk $$1) {
-      this.b.put($$0, Optional.of($$1));
-      $$1.c();
-   }
-
-   public tq a(String $$0, ban $$1, int $$2) throws IOException {
-      tq var8;
-      try (
-         InputStream $$3 = Files.newInputStream(this.a($$0));
-         PushbackInputStream $$4 = new PushbackInputStream(new ayj($$3), 2);
-      ) {
-         tq $$5;
-         if (this.a($$4)) {
-            $$5 = ud.a($$4, tz.a());
-         } else {
-            try (DataInputStream $$6 = new DataInputStream($$4)) {
-               $$5 = ud.a($$6);
-            }
-         }
-
-         int $$9 = uf.b($$5, 1343);
-         var8 = $$1.a(this.c, $$5, $$9, $$2);
-      }
-
-      return var8;
-   }
-
-   private boolean a(PushbackInputStream $$0) throws IOException {
-      byte[] $$1 = new byte[2];
-      boolean $$2 = false;
-      int $$3 = $$0.read($$1, 0, 2);
-      if ($$3 == 2) {
-         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
-         if ($$4 == 35615) {
-            $$2 = true;
-         }
-      }
-
-      if ($$3 != 0) {
-         $$0.unread($$1, 0, $$3);
-      }
-
-      return $$2;
-   }
-
-   public CompletableFuture<?> a() {
-      Map<Path, tq> $$0 = this.c();
-      if ($$0.isEmpty()) {
-         return CompletableFuture.completedFuture(null);
-      } else {
-         this.f = this.f
-            .thenCompose(
-               $$1 -> CompletableFuture.allOf(
-                     $$0.entrySet().stream().map($$0xx -> a((Path)$$0xx.getKey(), (tq)$$0xx.getValue())).toArray(CompletableFuture[]::new)
-                  )
-            );
-         return this.f;
-      }
-   }
-
-   private Map<Path, tq> c() {
-      Map<Path, tq> $$0 = new Object2ObjectArrayMap();
-      this.b.forEach(($$1, $$2) -> $$2.filter(euk::d).ifPresent($$2x -> $$0.put(this.a($$1), $$2x.a(this.d))));
-      return $$0;
-   }
-
-   private static CompletableFuture<Void> a(Path $$0, tq $$1) {
-      return CompletableFuture.runAsync(() -> {
-         try {
-            ud.a($$1, $$0);
-         } catch (IOException var3) {
-            a.error("Could not save data to {}", $$0.getFileName(), var3);
-         }
-      }, af.h());
-   }
-
-   public void b() {
-      this.a().join();
+   public euy(evl $$0, evk $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public void close() {
-      this.b();
+   public ji a() {
+      return this.b.a();
+   }
+
+   @Override
+   public float b() {
+      return this.b.b();
+   }
+
+   @Override
+   public long c() {
+      return this.b.c();
+   }
+
+   @Override
+   public long d() {
+      return this.b.d();
+   }
+
+   @Override
+   public String e() {
+      return this.a.e();
+   }
+
+   @Override
+   public int f() {
+      return this.b.f();
+   }
+
+   @Override
+   public void a(int $$0) {
+   }
+
+   @Override
+   public boolean g() {
+      return this.b.g();
+   }
+
+   @Override
+   public int h() {
+      return this.b.h();
+   }
+
+   @Override
+   public boolean i() {
+      return this.b.i();
+   }
+
+   @Override
+   public int j() {
+      return this.b.j();
+   }
+
+   @Override
+   public dgf k() {
+      return this.a.k();
+   }
+
+   @Override
+   public void a(long $$0) {
+   }
+
+   @Override
+   public void b(long $$0) {
+   }
+
+   @Override
+   public void a(ji $$0, float $$1) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public void b(int $$0) {
+   }
+
+   @Override
+   public void b(boolean $$0) {
+   }
+
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void a(dgf $$0) {
+   }
+
+   @Override
+   public boolean l() {
+      return this.a.l();
+   }
+
+   @Override
+   public boolean m() {
+      return this.a.m();
+   }
+
+   @Override
+   public boolean n() {
+      return this.b.n();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public dge o() {
+      return this.a.o();
+   }
+
+   @Override
+   public dyn.c p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void a(dyn.c $$0) {
+   }
+
+   @Override
+   public bsh q() {
+      return this.a.q();
+   }
+
+   @Override
+   public boolean r() {
+      return this.a.r();
+   }
+
+   @Override
+   public fan<MinecraftServer> s() {
+      return this.b.s();
+   }
+
+   @Override
+   public int t() {
+      return 0;
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public int u() {
+      return 0;
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public UUID v() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, dgk $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
    }
 }

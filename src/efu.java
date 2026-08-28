@@ -1,27 +1,38 @@
 import com.mojang.serialization.Codec;
 
-public class efu extends efx<eii> {
-   public efu(Codec<eii> $$0) {
+public class efu extends efy<eib> {
+   public efu(Codec<eib> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(efz<eii> $$0) {
-      dhf $$1 = $$0.b();
-      azh $$2 = $$0.d();
-      ji $$3 = $$0.e();
-      float $$4 = (float)$$2.a(3) + 4.0F;
+   public boolean a(ega<eib> $$0) {
+      ji $$1 = $$0.e();
+      dhg $$2 = $$0.b();
+      eib $$3 = $$0.f();
 
-      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
-         for (int $$6 = ayz.d(-$$4); $$6 <= ayz.f($$4); $$6++) {
-            for (int $$7 = ayz.d(-$$4); $$7 <= ayz.f($$4); $$7++) {
-               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
-                  this.a($$1, $$3.b($$6, $$5, $$7), djn.fU.m());
+      for (ji $$4 : ji.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
+         boolean $$5 = $$4.u() == $$1.u();
+         boolean $$6 = $$4.v() == $$1.v();
+         boolean $$7 = $$4.w() == $$1.w();
+         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
+         if ($$5 && $$6 && $$7) {
+            ji $$9 = $$4.j();
+            this.a($$2, $$9, djo.lh.m());
+            $$3.b().ifPresent($$3x -> {
+               if ($$2.c_($$9) instanceof dvs $$5x) {
+                  $$5x.a($$3x, $$3.c());
                }
-            }
+            });
+         } else if ($$6) {
+            this.a($$2, $$4, djo.a.m());
+         } else if ($$8 && $$5 && $$7) {
+            this.a($$2, $$4, djo.I.m());
+         } else if (($$5 || $$7) && !$$8) {
+            this.a($$2, $$4, djo.I.m());
+         } else {
+            this.a($$2, $$4, djo.a.m());
          }
-
-         $$4 -= (float)$$2.a(2) + 0.5F;
       }
 
       return true;

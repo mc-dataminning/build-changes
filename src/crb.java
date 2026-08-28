@@ -1,89 +1,145 @@
-import java.util.function.Function;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class crb {
-   public static int[][] a(jn $$0) {
-      jn $$1 = $$0.h();
-      jn $$2 = $$1.g();
-      jn $$3 = $$0.g();
-      return new int[][]{
-         {$$1.j(), $$1.l()},
-         {$$2.j(), $$2.l()},
-         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
-         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
-         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
-         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
-         {$$3.j(), $$3.l()},
-         {$$0.j(), $$0.l()}
-      };
+public interface crb extends bsd, bsm {
+   fba dt();
+
+   fav cR();
+
+   @Nullable
+   aku<evw> v();
+
+   void a(@Nullable aku<evw> var1);
+
+   long x();
+
+   void a(long var1);
+
+   ka<cwp> E();
+
+   void F();
+
+   dgi dV();
+
+   boolean dQ();
+
+   @Override
+   default boolean c() {
+      return this.g();
    }
 
-   public static boolean a(double $$0) {
-      return !Double.isInfinite($$0) && $$0 < 1.0;
+   default void a(tq $$0, jt.a $$1) {
+      if (this.v() != null) {
+         $$0.a("LootTable", this.v().a().toString());
+         if (this.x() != 0L) {
+            $$0.a("LootTableSeed", this.x());
+         }
+      } else {
+         bse.a($$0, this.E(), $$1);
+      }
    }
 
-   public static boolean a(dfq $$0, bvg $$1, fau $$2) {
-      for (fbt $$4 : $$0.e($$1, $$2)) {
-         if (!$$4.c()) {
+   default void b(tq $$0, jt.a $$1) {
+      this.F();
+      if ($$0.b("LootTable", 8)) {
+         this.a(aku.a(mc.bg, akv.a($$0.l("LootTable"))));
+         this.a($$0.i("LootTableSeed"));
+      } else {
+         bse.b($$0, this.E(), $$1);
+      }
+   }
+
+   default void a(btb $$0, ard $$1, bul $$2) {
+      if ($$1.O().b(dge.i)) {
+         bsg.a($$1, $$2, this);
+         bul $$3 = $$0.c();
+         if ($$3 != null && $$3.aq() == bus.bR) {
+            cnm.a($$1, (cox)$$3, true);
+         }
+      }
+   }
+
+   default bsk b_(cox $$0) {
+      $$0.a(this);
+      return bsk.a;
+   }
+
+   default void f(@Nullable cox $$0) {
+      MinecraftServer $$1 = this.dV().p();
+      if (this.v() != null && $$1 != null) {
+         evw $$2 = $$1.bc().b(this.v());
+         if ($$0 != null) {
+            ap.Q.a((are)$$0, this.v());
+         }
+
+         this.a(null);
+         evu.a $$3 = new evu.a((ard)this.dV()).a(eyl.f, this.dt());
+         if ($$0 != null) {
+            $$3.a($$0.gF()).a(eyl.a, $$0);
+         }
+
+         $$2.a(this, $$3.a(eyk.c), this.x());
+      }
+   }
+
+   default void f() {
+      this.f(null);
+      this.E().clear();
+   }
+
+   default boolean g() {
+      for (cwp $$0 : this.E()) {
+         if (!$$0.f()) {
             return false;
          }
       }
 
-      return $$0.F_().a($$2);
+      return true;
    }
 
-   public static boolean a(dfq $$0, faz $$1, bvg $$2, bvs $$3) {
-      return a($$0, $$2, $$2.f($$3).c($$1));
-   }
-
-   public static fbt a(dfm $$0, ji $$1) {
-      dww $$2 = $$0.a_($$1);
-      return !$$2.a(awp.aS) && (!($$2.b() instanceof dsd) || !$$2.c(dsd.b)) ? $$2.g($$0, $$1) : fbq.a();
-   }
-
-   public static double a(ji $$0, int $$1, Function<ji, fbt> $$2) {
-      ji.a $$3 = $$0.k();
-      int $$4 = 0;
-
-      while ($$4 < $$1) {
-         fbt $$5 = $$2.apply($$3);
-         if (!$$5.c()) {
-            return (double)($$0.v() + $$4) + $$5.b(jn.a.b);
-         }
-
-         $$4++;
-         $$3.c(jn.b);
-      }
-
-      return Double.POSITIVE_INFINITY;
-   }
-
-   @Nullable
-   public static faz a(bur<?> $$0, dfq $$1, ji $$2, boolean $$3) {
-      if ($$3 && $$0.a($$1.a_($$2))) {
-         return null;
+   default cwp f_(int $$0) {
+      this.f(null);
+      cwp $$1 = this.E().get($$0);
+      if ($$1.f()) {
+         return cwp.j;
       } else {
-         double $$4 = $$1.a(a((dfm)$$1, $$2), () -> a((dfm)$$1, $$2.e()));
-         if (!a($$4)) {
-            return null;
-         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.e()))) {
-            return null;
-         } else {
-            faz $$5 = faz.a($$2, $$4);
-            fau $$6 = $$0.n().a($$5);
-
-            for (fbt $$8 : $$1.e(null, $$6)) {
-               if (!$$8.c()) {
-                  return null;
-               }
-            }
-
-            if ($$0 != bur.bR || !$$1.a_($$2).a(awp.ct) && !$$1.a_($$2.d()).a(awp.ct)) {
-               return !$$1.F_().a($$6) ? null : $$5;
-            } else {
-               return null;
-            }
-         }
+         this.E().set($$0, cwp.j);
+         return $$1;
       }
+   }
+
+   default cwp g_(int $$0) {
+      this.f(null);
+      return this.E().get($$0);
+   }
+
+   default cwp b(int $$0, int $$1) {
+      this.f(null);
+      return bse.a(this.E(), $$0, $$1);
+   }
+
+   default void c(int $$0, cwp $$1) {
+      this.f(null);
+      this.E().set($$0, $$1);
+      $$1.f(this.e_($$1));
+   }
+
+   default bvz h_(final int $$0) {
+      return $$0 >= 0 && $$0 < this.b() ? new bvz() {
+         @Override
+         public cwp a() {
+            return crb.this.g_($$0);
+         }
+
+         @Override
+         public boolean a(cwp $$0x) {
+            crb.this.c($$0, $$0);
+            return true;
+         }
+      } : bvz.a;
+   }
+
+   default boolean g(cox $$0) {
+      return !this.dQ() && $$0.a(this.cR(), 4.0);
    }
 }

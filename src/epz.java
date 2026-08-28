@@ -1,270 +1,63 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class epz extends env {
-   private static final Logger h = LogUtils.getLogger();
-   private static final float i = 0.3F;
-   private static final float j = 0.07F;
-   private static final float k = 0.2F;
-   private final epz.b l;
-   private final epz.a m;
+public class epz extends enm {
+   public static final MapCodec<epz> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               a($$0),
+               epz.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, epz::new)
+   );
+   public final epz.a e;
+   public final float f;
+   public final float g;
 
-   public epz(ero $$0, ji $$1, epz.b $$2, epz.a $$3, akv $$4, ern $$5, dqd $$6, dok $$7, ji $$8) {
-      super(eoc.J, 0, $$0, $$4, $$4.toString(), a($$7, $$6, $$2, $$8, $$3), $$1);
-      this.l = $$2;
-      this.m = $$3;
-   }
-
-   public epz(ero $$0, tq $$1) {
-      super(eoc.J, $$1, $$0, $$2 -> a($$0, $$1, $$2));
-      this.l = epz.b.a($$1.l("VerticalPlacement"));
-      this.m = (epz.a)epz.a.a.parse(new Dynamic(ue.a, $$1.c("Properties"))).getPartialOrThrow();
-   }
-
-   @Override
-   protected void a(eob $$0, tq $$1) {
-      super.a($$0, $$1);
-      $$1.a("Rotation", this.c.d().name());
-      $$1.a("Mirror", this.c.c().name());
-      $$1.a("VerticalPlacement", this.l.a());
-      epz.a.a.encodeStart(ue.a, this.m).resultOrPartial(h::error).ifPresent($$1x -> $$1.a("Properties", $$1x));
-   }
-
-   private static erj a(ero $$0, tq $$1, akv $$2) {
-      ern $$3 = $$0.a($$2);
-      ji $$4 = new ji($$3.a().u() / 2, 0, $$3.a().w() / 2);
-      return a(
-         dok.valueOf($$1.l("Mirror")),
-         dqd.valueOf($$1.l("Rotation")),
-         epz.b.a($$1.l("VerticalPlacement")),
-         $$4,
-         (epz.a)epz.a.a.parse(new Dynamic(ue.a, $$1.c("Properties"))).getPartialOrThrow()
-      );
-   }
-
-   private static erj a(dok $$0, dqd $$1, epz.b $$2, ji $$3, epz.a $$4) {
-      eqo $$5 = $$4.d ? eqo.b : eqo.d;
-      List<erc> $$6 = Lists.newArrayList();
-      $$6.add(a(djn.co, 0.3F, djn.a));
-      $$6.add(a($$2, $$4));
-      if (!$$4.b) {
-         $$6.add(a(djn.ei, 0.07F, djn.ll));
-      }
-
-      erj $$7 = new erj().a($$1).a($$0).a($$3).a($$5).a(new erg($$6)).a(new eqn($$4.c)).a(new erd(awp.bQ)).a(new eqv());
-      if ($$4.g) {
-         $$7.a(eqm.b);
-      }
-
-      return $$7;
-   }
-
-   private static erc a(epz.b $$0, epz.a $$1) {
-      if ($$0 == epz.b.c) {
-         return a(djn.K, djn.ll);
-      } else {
-         return $$1.b ? a(djn.K, djn.ei) : a(djn.K, 0.2F, djn.ll);
-      }
+   public epz(enm.c $$0, epz.a $$1, float $$2, float $$3) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public void a(dhf $$0, dhd $$1, dys $$2, azh $$3, end $$4, dfn $$5, ji $$6) {
-      end $$7 = this.b.b(this.c, this.d);
-      if ($$4.b($$7.g())) {
-         $$4.b($$7);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         this.b($$3, $$0);
-         this.a($$3, $$0);
-         if (this.m.f || this.m.e) {
-            ji.a(this.f()).forEach($$2x -> {
-               if (this.m.f) {
-                  this.a($$3, (dgi)$$0, $$2x);
-               }
+   public Optional<enm.b> a(enm.a $$0) {
+      return a($$0, ecs.a.c, $$1 -> this.a($$1, $$0));
+   }
 
-               if (this.m.e) {
-                  this.b($$3, $$0, $$2x);
-               }
-            });
-         }
-      }
+   private void a(eoe $$0, enm.a $$1) {
+      ji $$2 = new ji($$1.h().d(), 90, $$1.h().e());
+      dqe $$3 = dqe.a($$1.f());
+      epy.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
    }
 
    @Override
-   protected void a(String $$0, ji $$1, dgy $$2, azh $$3, end $$4) {
+   public env<?> e() {
+      return env.k;
    }
 
-   private void a(azh $$0, dgi $$1, ji $$2) {
-      dww $$3 = $$1.a_($$2);
-      if (!$$3.l() && !$$3.a(djn.ft)) {
-         jn $$4 = a($$0);
-         ji $$5 = $$2.a($$4);
-         dww $$6 = $$1.a_($$5);
-         if ($$6.l()) {
-            if (djl.a($$3.g($$1, $$2), $$4)) {
-               dxn $$7 = dsm.a($$4.g());
-               $$1.a($$5, djn.ft.m().b($$7, Boolean.valueOf(true)), 3);
-            }
-         }
-      }
-   }
+   public static enum a implements azv {
+      a("warm"),
+      b("cold");
 
-   private void b(azh $$0, dgi $$1, ji $$2) {
-      if ($$0.i() < 0.5F && $$1.a_($$2).a(djn.ei) && $$1.a_($$2.d()).l()) {
-         $$1.a($$2.d(), djn.aN.m().b(dnx.d, Boolean.valueOf(true)), 3);
-      }
-   }
+      public static final Codec<epz.a> c = azv.a(epz.a::values);
+      private final String d;
 
-   private void a(azh $$0, dgi $$1) {
-      for (int $$2 = this.f.h() + 1; $$2 < this.f.k(); $$2++) {
-         for (int $$3 = this.f.j() + 1; $$3 < this.f.m(); $$3++) {
-            ji $$4 = new ji($$2, this.f.i(), $$3);
-            if ($$1.a_($$4).a(djn.ei)) {
-               this.c($$0, $$1, $$4.e());
-            }
-         }
-      }
-   }
-
-   private void c(azh $$0, dgi $$1, ji $$2) {
-      ji.a $$3 = $$2.k();
-      this.d($$0, $$1, $$3);
-      int $$4 = 8;
-
-      while ($$4 > 0 && $$0.i() < 0.5F) {
-         $$3.c(jn.a);
-         $$4--;
-         this.d($$0, $$1, $$3);
-      }
-   }
-
-   private void b(azh $$0, dgi $$1) {
-      boolean $$2 = this.l == epz.b.a || this.l == epz.b.c;
-      ji $$3 = this.f.g();
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      float[] $$6 = new float[]{1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.9F, 0.9F, 0.8F, 0.7F, 0.6F, 0.4F, 0.2F};
-      int $$7 = $$6.length;
-      int $$8 = (this.f.d() + this.f.f()) / 2;
-      int $$9 = $$0.a(Math.max(1, 8 - $$8 / 2));
-      int $$10 = 3;
-      ji.a $$11 = ji.c.k();
-
-      for (int $$12 = $$4 - $$7; $$12 <= $$4 + $$7; $$12++) {
-         for (int $$13 = $$5 - $$7; $$13 <= $$5 + $$7; $$13++) {
-            int $$14 = Math.abs($$12 - $$4) + Math.abs($$13 - $$5);
-            int $$15 = Math.max(0, $$14 + $$9);
-            if ($$15 < $$7) {
-               float $$16 = $$6[$$15];
-               if ($$0.j() < (double)$$16) {
-                  int $$17 = a($$1, $$12, $$13, this.l);
-                  int $$18 = $$2 ? $$17 : Math.min(this.f.i(), $$17);
-                  $$11.d($$12, $$18, $$13);
-                  if (Math.abs($$18 - this.f.i()) <= 3 && this.a($$1, $$11)) {
-                     this.d($$0, $$1, $$11);
-                     if (this.m.e) {
-                        this.b($$0, $$1, $$11);
-                     }
-
-                     this.c($$0, $$1, $$11.e());
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private boolean a(dgi $$0, ji $$1) {
-      dww $$2 = $$0.a_($$1);
-      return !$$2.a(djn.a) && !$$2.a(djn.cv) && !$$2.a(awp.bQ) && (this.l == epz.b.f || !$$2.a(djn.K));
-   }
-
-   private void d(azh $$0, dgi $$1, ji $$2) {
-      if (!this.m.b && $$0.i() < 0.07F) {
-         $$1.a($$2, djn.ll.m(), 3);
-      } else {
-         $$1.a($$2, djn.ei.m(), 3);
-      }
-   }
-
-   private static int a(dgi $$0, int $$1, int $$2, epz.b $$3) {
-      return $$0.a(a($$3), $$1, $$2) - 1;
-   }
-
-   public static ecr.a a(epz.b $$0) {
-      return $$0 == epz.b.c ? ecr.a.c : ecr.a.a;
-   }
-
-   private static erc a(djl $$0, float $$1, djl $$2) {
-      return new erc(new ere($$0, $$1), eqk.b, $$2.m());
-   }
-
-   private static erc a(djl $$0, djl $$1) {
-      return new erc(new eqp($$0), eqk.b, $$1.m());
-   }
-
-   public static class a {
-      public static final Codec<epz.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("cold").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("mossiness").forGetter($$0x -> $$0x.c),
-                  Codec.BOOL.fieldOf("air_pocket").forGetter($$0x -> $$0x.d),
-                  Codec.BOOL.fieldOf("overgrown").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.fieldOf("vines").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.fieldOf("replace_with_blackstone").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, epz.a::new)
-      );
-      public boolean b;
-      public float c;
-      public boolean d;
-      public boolean e;
-      public boolean f;
-      public boolean g;
-
-      public a() {
-      }
-
-      public a(boolean $$0, float $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = $$5;
-      }
-   }
-
-   public static enum b implements azv {
-      a("on_land_surface"),
-      b("partly_buried"),
-      c("on_ocean_floor"),
-      d("in_mountain"),
-      e("underground"),
-      f("in_nether");
-
-      public static final azv.a<epz.b> g = azv.a(epz.b::values);
-      private final String h;
-
-      private b(final String $$0) {
-         this.h = $$0;
+      private a(final String $$0) {
+         this.d = $$0;
       }
 
       public String a() {
-         return this.h;
-      }
-
-      public static epz.b a(String $$0) {
-         return g.a($$0);
+         return this.d;
       }
 
       @Override
       public String c() {
-         return this.h;
+         return this.d;
       }
    }
 }

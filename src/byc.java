@@ -1,165 +1,48 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public class byc<E extends bvi> extends bwz<E> {
-   protected static final int c = 20;
-   private static final int m = 40;
-   protected static final int d = 8;
-   private static final int n = 200;
-   private static final List<Integer> o = Lists.newArrayList(new Integer[]{65, 70, 75, 80});
-   private final bru p;
-   protected final int e;
-   protected final int f;
-   protected final float g;
-   protected List<byc.a> h = Lists.newArrayList();
-   protected Optional<faz> i = Optional.empty();
-   @Nullable
-   protected faz j;
-   protected int k;
-   protected long l;
-   private final Function<E, avz> q;
-   private final BiPredicate<E, ji> r;
+public class byc<E extends bvj> extends byd<E> {
+   private final axf<djm> m;
+   private final float n;
+   private final List<byd.a> o = new ArrayList<>();
+   private boolean p;
 
-   public byc(bru $$0, int $$1, int $$2, float $$3, Function<E, avz> $$4) {
-      this($$0, $$1, $$2, $$3, $$4, byc::a);
+   public byc(brv $$0, int $$1, int $$2, float $$3, Function<E, avz> $$4, axf<djm> $$5, float $$6, BiPredicate<E, ji> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
    }
 
-   public static <E extends bvi> boolean a(E $$0, ji $$1) {
-      dgh $$2 = $$0.dV();
-      ji $$3 = $$1.e();
-      return $$2.a_($$3).s() && $$0.a(etu.b($$0, $$1)) == 0.0F;
-   }
-
-   public byc(bru $$0, int $$1, int $$2, float $$3, Function<E, avz> $$4, BiPredicate<E, ji> $$5) {
-      super(ImmutableMap.of(cek.n, cel.c, cek.S, cel.b, cek.T, cel.b), 200);
-      this.p = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.q = $$4;
-      this.r = $$5;
-   }
-
-   protected boolean a(ard $$0, bvi $$1) {
-      boolean $$2 = $$1.aJ() && !$$1.bj() && !$$1.bx() && !$$0.a_($$1.dv()).a(djn.pI);
-      if (!$$2) {
-         $$1.eb().a(cek.S, this.p.a($$0.A) / 2);
-      }
-
-      return $$2;
-   }
-
-   protected boolean b(ard $$0, bvi $$1, long $$2) {
-      boolean $$3 = this.i.isPresent() && this.i.get().equals($$1.dt()) && this.k > 0 && !$$1.bm() && (this.j != null || !this.h.isEmpty());
-      if (!$$3 && $$1.eb().c(cek.T).isEmpty()) {
-         $$1.eb().a(cek.S, this.p.a($$0.A) / 2);
-         $$1.eb().b(cek.n);
-      }
-
-      return $$3;
-   }
-
+   @Override
    protected void a(ard $$0, E $$1, long $$2) {
-      this.j = null;
-      this.k = 20;
-      this.i = Optional.of($$1.dt());
-      ji $$3 = $$1.dv();
-      int $$4 = $$3.u();
-      int $$5 = $$3.v();
-      int $$6 = $$3.w();
-      this.h = ji.a($$4 - this.f, $$5 - this.e, $$6 - this.f, $$4 + this.f, $$5 + this.e, $$6 + this.f)
-         .filter($$1x -> !$$1x.equals($$3))
-         .map($$1x -> new byc.a($$1x.j(), ayz.c($$3.j($$1x))))
-         .collect(Collectors.toCollection(Lists::newArrayList));
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.dY().i() < this.n;
    }
 
-   protected void c(ard $$0, E $$1, long $$2) {
-      if (this.j != null) {
-         if ($$2 - this.l >= 40L) {
-            $$1.v($$1.aX);
-            $$1.r(true);
-            double $$3 = this.j.g();
-            double $$4 = $$3 + (double)$$1.fk();
-            $$1.i(this.j.c($$4 / $$3));
-            $$1.eb().a(cek.T, true);
-            $$0.a(null, $$1, this.q.apply($$1), awb.g, 1.0F, 1.0F);
-         }
+   @Override
+   protected Optional<byd.a> a(ard $$0) {
+      if (!this.p) {
+         return super.a($$0);
       } else {
-         this.k--;
-         this.d($$0, $$1, $$2);
-      }
-   }
+         ji.a $$1 = new ji.a();
 
-   protected void d(ard $$0, E $$1, long $$2) {
-      while (!this.h.isEmpty()) {
-         Optional<byc.a> $$3 = this.a($$0);
-         if (!$$3.isEmpty()) {
-            byc.a $$4 = $$3.get();
-            ji $$5 = $$4.b();
-            if (this.a($$0, $$1, $$5)) {
-               faz $$6 = faz.b($$5);
-               faz $$7 = this.a($$1, $$6);
-               if ($$7 != null) {
-                  $$1.eb().a(cek.n, new bxc($$5));
-                  ces $$8 = $$1.P();
-                  etm $$9 = $$8.a($$5, 0, 8);
-                  if ($$9 == null || !$$9.j()) {
-                     this.j = $$7;
-                     this.l = $$2;
-                     return;
-                  }
+         while (!this.h.isEmpty()) {
+            Optional<byd.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               byd.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.b(), jn.a)).a(this.m)) {
+                  return $$2;
                }
+
+               this.o.add($$3);
             }
          }
-      }
-   }
 
-   protected Optional<byc.a> a(ard $$0) {
-      Optional<byc.a> $$1 = bqu.a($$0.A, this.h);
-      $$1.ifPresent(this.h::remove);
-      return $$1;
-   }
-
-   private boolean a(ard $$0, E $$1, ji $$2) {
-      ji $$3 = $$1.dv();
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      return $$4 == $$2.u() && $$5 == $$2.w() ? false : this.r.test($$1, $$2);
-   }
-
-   @Nullable
-   protected faz a(bvi $$0, faz $$1) {
-      List<Integer> $$2 = Lists.newArrayList(o);
-      Collections.shuffle($$2);
-      float $$3 = (float)($$0.h(bwo.o) * (double)this.g);
-
-      for (int $$4 : $$2) {
-         Optional<faz> $$5 = byd.a($$0, $$1, $$3, $$4, true);
-         if ($$5.isPresent()) {
-            return $$5.get();
-         }
-      }
-
-      return null;
-   }
-
-   public static class a extends bqt.a {
-      private final ji a;
-
-      public a(ji $$0, int $$1) {
-         super($$1);
-         this.a = $$0;
-      }
-
-      public ji b() {
-         return this.a;
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
       }
    }
 }

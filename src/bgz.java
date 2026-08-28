@@ -1,27 +1,52 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.datafixers.util.Pair;
 
-public class bgz extends bfv {
+public class bgz extends DataFix {
    public bgz(Schema $$0) {
-      super($$0, "OminousBannerRenameFix", $$0x -> $$0x.equals("minecraft:white_banner"));
+      super($$0, false);
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<? extends Dynamic<?>> $$1 = $$0.get("display").result();
-      if ($$1.isPresent()) {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
-         Optional<String> $$3 = $$2.get("Name").asString().result();
-         if ($$3.isPresent()) {
-            String $$4 = $$3.get();
-            $$4 = $$4.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"");
-            $$2 = $$2.set("Name", $$2.createString($$4));
-         }
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhx.s);
+      Type<?> $$1 = this.getInputSchema().getType(bhx.t);
+      TaggedChoiceType<?> $$2 = this.getInputSchema().findChoiceType(bhx.s);
+      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bhx.D.typeName(), bjl.a()));
+      OpticFinder<?> $$4 = $$0.findField("components");
+      OpticFinder<?> $$5 = $$1.findField("components");
+      return TypeRewriteRule.seq(this.fixTypeEverywhereTyped("Ominous Banner block entity common rarity to uncommon rarity fix", $$0, $$2x -> {
+         Object $$3x = ((Pair)$$2x.get($$2.finder())).getFirst();
+         return $$3x.equals("minecraft:banner") ? this.a($$2x, $$4) : $$2x;
+      }), this.fixTypeEverywhereTyped("Ominous Banner item stack common rarity to uncommon rarity fix", $$1, $$2x -> {
+         String $$3x = $$2x.getOptional($$3).<String>map(Pair::getSecond).orElse("");
+         return $$3x.equals("minecraft:white_banner") ? this.a($$2x, $$5) : $$2x;
+      }));
+   }
 
-         return $$0.set("display", $$2);
-      } else {
-         return $$0;
-      }
+   private Typed<?> a(Typed<?> $$0, OpticFinder<?> $$1) {
+      return $$0.updateTyped(
+         $$1,
+         $$0x -> $$0x.update(
+               DSL.remainderFinder(),
+               $$0xx -> {
+                  boolean $$1x = $$0xx.get("minecraft:item_name")
+                     .asString()
+                     .result()
+                     .flatMap(bam::a)
+                     .filter($$0xxx -> $$0xxx.equals("block.minecraft.ominous_banner"))
+                     .isPresent();
+                  return $$1x
+                     ? $$0xx.set("minecraft:rarity", $$0xx.createString("uncommon"))
+                        .set("minecraft:item_name", bam.b($$0xx.getOps(), "block.minecraft.ominous_banner"))
+                     : $$0xx;
+               }
+            )
+      );
    }
 }

@@ -2,7 +2,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record cf(Optional<jv<esx>> b, Optional<ef> c) {
+public record cf(Optional<jv<esy>> b, Optional<ef> c) {
    public static final Codec<cf> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(kg.a(mc.D).optionalFieldOf("fluids").forGetter(cf::a), ef.a.optionalFieldOf("state").forGetter(cf::b)).apply($$0, cf::new)
    );
@@ -11,12 +11,12 @@ public record cf(Optional<jv<esx>> b, Optional<ef> c) {
       if (!$$0.p($$1)) {
          return false;
       } else {
-         esy $$2 = $$0.b_($$1);
+         esz $$2 = $$0.b_($$1);
          return this.b.isPresent() && !$$2.a(this.b.get()) ? false : !this.c.isPresent() || this.c.get().a($$2);
       }
    }
 
-   public Optional<jv<esx>> a() {
+   public Optional<jv<esy>> a() {
       return this.b;
    }
 
@@ -25,7 +25,7 @@ public record cf(Optional<jv<esx>> b, Optional<ef> c) {
    }
 
    public static class a {
-      private Optional<jv<esx>> a = Optional.empty();
+      private Optional<jv<esy>> a = Optional.empty();
       private Optional<ef> b = Optional.empty();
 
       private a() {
@@ -35,12 +35,12 @@ public record cf(Optional<jv<esx>> b, Optional<ef> c) {
          return new cf.a();
       }
 
-      public cf.a a(esx $$0) {
+      public cf.a a(esy $$0) {
          this.a = Optional.of(jv.a($$0.k()));
          return this;
       }
 
-      public cf.a a(jv<esx> $$0) {
+      public cf.a a(jv<esy> $$0) {
          this.a = Optional.of($$0);
          return this;
       }

@@ -25,7 +25,7 @@ public class axk {
       return a(255, $$0, $$1, $$2);
    }
 
-   public static int a(faz $$0) {
+   public static int a(fba $$0) {
       return a(b((float)$$0.a()), b((float)$$0.b()), b((float)$$0.c()));
    }
 

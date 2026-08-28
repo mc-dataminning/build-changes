@@ -1,14 +1,14 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fkn extends fkg {
+public class fkn extends fkh {
    private static final Logger b = LogUtils.getLogger();
-   private static final wp c = wp.c("mco.minigame.world.slot.screen.title");
+   private static final wp c = wp.c("mco.minigame.world.starting.screen.title");
    private final long d;
-   private final int e;
-   private final Runnable f;
+   private final fib e;
+   private final fiu f;
 
-   public fkn(long $$0, int $$1, Runnable $$2) {
+   public fkn(long $$0, fib $$1, fiu $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -16,7 +16,7 @@ public class fkn extends fkg {
 
    @Override
    public void run() {
-      fgj $$0 = fgj.a();
+      fgk $$0 = fgk.a();
 
       for (int $$1 = 0; $$1 < 25; $$1++) {
          try {
@@ -24,11 +24,11 @@ public class fkn extends fkg {
                return;
             }
 
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
+            if ($$0.c(this.d, this.e.a)) {
+               a(this.f);
                break;
             }
-         } catch (fig var4) {
+         } catch (fih var4) {
             if (this.d()) {
                return;
             }
@@ -39,7 +39,7 @@ public class fkn extends fkg {
                return;
             }
 
-            b.error("Couldn't switch world!");
+            b.error("Couldn't start mini game!");
             this.a(var5);
          }
       }

@@ -1,7 +1,7 @@
 public enum dyd implements azv {
-   a("top"),
-   b("bottom"),
-   c("double");
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
    private final String d;
 

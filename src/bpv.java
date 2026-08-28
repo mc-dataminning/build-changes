@@ -1,14 +1,7 @@
-import java.time.Duration;
 import jdk.jfr.consumer.RecordedEvent;
 
-public record bpv(Duration a, dfn b, String c, String d, boolean e) implements bpy {
+public record bpv(String a, String b, String c) {
    public static bpv a(RecordedEvent $$0) {
-      return new bpv(
-         $$0.getDuration(),
-         new dfn($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
-         $$0.getString("structure"),
-         $$0.getString("level"),
-         $$0.getBoolean("success")
-      );
+      return new bpv($$0.getString("packetDirection"), $$0.getString("protocolId"), $$0.getString("packetId"));
    }
 }

@@ -1,140 +1,137 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+public class dvc extends dtz {
+   public static final String a = "target";
+   public static final String b = "pool";
+   public static final String c = "joint";
+   public static final String d = "placement_priority";
+   public static final String e = "selection_priority";
+   public static final String f = "name";
+   public static final String g = "final_state";
+   private akv h = akv.b("empty");
+   private akv i = akv.b("empty");
+   private aku<eow> j = aku.a(mc.aX, akv.b("empty"));
+   private dvc.a k = dvc.a.a;
+   private String l = "minecraft:air";
+   private int m;
+   private int q;
 
-public class dvc extends dty implements fcl.a {
-   public static final String b = "RecordItem";
-   public static final String c = "ticks_since_song_started";
-   private cwo d = cwo.j;
-   private final cwv e = new cwv(this::k, this.aA_());
-
-   public dvc(ji $$0, dww $$1) {
-      super(dua.e, $$0, $$1);
+   public dvc(ji $$0, dwx $$1) {
+      super(dub.G, $$0, $$1);
    }
 
-   public cwv j() {
-      return this.e;
+   public akv b() {
+      return this.h;
    }
 
-   public void k() {
-      this.o.a(this.aA_(), this.m().b());
-      this.e();
+   public akv c() {
+      return this.i;
    }
 
-   private void a(boolean $$0) {
-      if (this.o != null && this.o.a_(this.aA_()) == this.m()) {
-         this.o.a(this.aA_(), this.m().b(dnq.b, Boolean.valueOf($$0)), 2);
-         this.o.a(ebs.c, this.aA_(), ebs.a.a(this.m()));
-      }
+   public aku<eow> d() {
+      return this.j;
    }
 
-   public void s() {
-      if (this.o != null && !this.o.C) {
-         ji $$0 = this.aA_();
-         cwo $$1 = this.f();
-         if (!$$1.f()) {
-            this.h();
-            faz $$2 = faz.a($$0, 0.5, 1.01, 0.5).a(this.o.A, 0.7F);
-            cwo $$3 = $$1.v();
-            clb $$4 = new clb(this.o, $$2.a(), $$2.b(), $$2.c(), $$3);
-            $$4.s();
-            this.o.b($$4);
-         }
-      }
+   public String f() {
+      return this.l;
    }
 
-   public static void a(dgh $$0, ji $$1, dww $$2, dvc $$3) {
-      $$3.e.b($$0, $$2);
+   public dvc.a j() {
+      return this.k;
    }
 
-   public int u() {
-      return cwu.a(this.o.K_(), this.d).map(jr::a).map(cwu::e).orElse(0);
+   public int k() {
+      return this.m;
    }
 
-   @Override
-   protected void a(tq $$0, jt.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("RecordItem", 10)) {
-         this.d = cwo.a($$1, (un)$$0.p("RecordItem")).orElse(cwo.j);
-      } else {
-         if (!this.d.f()) {
-            this.e.a(this.o, this.m());
-         }
+   public int s() {
+      return this.q;
+   }
 
-         this.d = cwo.j;
-      }
+   public void a(akv $$0) {
+      this.h = $$0;
+   }
 
-      if ($$0.b("ticks_since_song_started", 4)) {
-         cwu.a($$1, this.d).ifPresent($$1x -> this.e.a($$1x, $$0.i("ticks_since_song_started")));
-      }
+   public void b(akv $$0) {
+      this.i = $$0;
+   }
+
+   public void a(aku<eow> $$0) {
+      this.j = $$0;
+   }
+
+   public void a(String $$0) {
+      this.l = $$0;
+   }
+
+   public void a(dvc.a $$0) {
+      this.k = $$0;
+   }
+
+   public void a(int $$0) {
+      this.m = $$0;
+   }
+
+   public void b(int $$0) {
+      this.q = $$0;
    }
 
    @Override
    protected void b(tq $$0, jt.a $$1) {
       super.b($$0, $$1);
-      if (!this.f().f()) {
-         $$0.a("RecordItem", this.f().a($$1));
+      $$0.a("name", this.h.toString());
+      $$0.a("target", this.i.toString());
+      $$0.a("pool", this.j.a().toString());
+      $$0.a("final_state", this.l);
+      $$0.a("joint", this.k.c());
+      $$0.a("placement_priority", this.m);
+      $$0.a("selection_priority", this.q);
+   }
+
+   @Override
+   protected void a(tq $$0, jt.a $$1) {
+      super.a($$0, $$1);
+      this.h = akv.a($$0.l("name"));
+      this.i = akv.a($$0.l("target"));
+      this.j = aku.a(mc.aX, akv.a($$0.l("pool")));
+      this.l = $$0.l("final_state");
+      this.k = ero.a($$0, this.m());
+      this.m = $$0.h("placement_priority");
+      this.q = $$0.h("selection_priority");
+   }
+
+   public abs t() {
+      return abs.a(this);
+   }
+
+   @Override
+   public tq a(jt.a $$0) {
+      return this.e($$0);
+   }
+
+   public void a(ard $$0, int $$1, boolean $$2) {
+      ji $$3 = this.aA_().a(this.m().c(dnq.b).a());
+      ke<eow> $$4 = $$0.K_().e(mc.aX);
+      jr<eow> $$5 = $$4.b(this.j);
+      eoq.a($$0, $$5, this.i, $$1, $$3, $$2);
+   }
+
+   public static enum a implements azv {
+      a("rollable"),
+      b("aligned");
+
+      public static final azv.a<dvc.a> c = azv.a(dvc.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
       }
 
-      if (this.e.b() != null) {
-         $$0.a("ticks_since_song_started", this.e.c());
+      @Override
+      public String c() {
+         return this.d;
       }
-   }
 
-   @Override
-   public cwo f() {
-      return this.d;
-   }
-
-   @Override
-   public cwo c(int $$0) {
-      cwo $$1 = this.d;
-      this.b(cwo.j);
-      return $$1;
-   }
-
-   @Override
-   public void b(cwo $$0) {
-      this.d = $$0;
-      boolean $$1 = !this.d.f();
-      Optional<jr<cwu>> $$2 = cwu.a(this.o.K_(), this.d);
-      this.a($$1);
-      if ($$1 && $$2.isPresent()) {
-         this.e.a(this.o, $$2.get());
-      } else {
-         this.e.a(this.o, this.m());
+      public wp a() {
+         return wp.c("jigsaw_block.joint." + this.d);
       }
-   }
-
-   @Override
-   public int an_() {
-      return 1;
-   }
-
-   @Override
-   public dty t() {
-      return this;
-   }
-
-   @Override
-   public boolean b(int $$0, cwo $$1) {
-      return $$1.b(kv.ab) && this.a($$0).f();
-   }
-
-   @Override
-   public boolean a(bsc $$0, int $$1, cwo $$2) {
-      return $$0.a_(cwo::f);
-   }
-
-   @VisibleForTesting
-   public void c(cwo $$0) {
-      this.d = $$0;
-      cwu.a(this.o.K_(), $$0).ifPresent($$0x -> this.e.a($$0x, 0L));
-      this.o.a(this.aA_(), this.m().b());
-      this.e();
-   }
-
-   @VisibleForTesting
-   public void v() {
-      cwu.a(this.o.K_(), this.f()).ifPresent($$0 -> this.e.a(this.o, (jr<cwu>)$$0));
    }
 }

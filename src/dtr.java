@@ -1,108 +1,99 @@
-public class dtr extends dvg {
-   private ka<cwo> d = ka.a(27, cwo.j);
-   private final dul e = new dul() {
-      @Override
-      protected void a(dgh $$0, ji $$1, dww $$2) {
-         dtr.this.a($$2, awa.bz);
-         dtr.this.a($$2, true);
-      }
+public class dtr {
+   public static final aku<dtp> a = a("base");
+   public static final aku<dtp> b = a("square_bottom_left");
+   public static final aku<dtp> c = a("square_bottom_right");
+   public static final aku<dtp> d = a("square_top_left");
+   public static final aku<dtp> e = a("square_top_right");
+   public static final aku<dtp> f = a("stripe_bottom");
+   public static final aku<dtp> g = a("stripe_top");
+   public static final aku<dtp> h = a("stripe_left");
+   public static final aku<dtp> i = a("stripe_right");
+   public static final aku<dtp> j = a("stripe_center");
+   public static final aku<dtp> k = a("stripe_middle");
+   public static final aku<dtp> l = a("stripe_downright");
+   public static final aku<dtp> m = a("stripe_downleft");
+   public static final aku<dtp> n = a("small_stripes");
+   public static final aku<dtp> o = a("cross");
+   public static final aku<dtp> p = a("straight_cross");
+   public static final aku<dtp> q = a("triangle_bottom");
+   public static final aku<dtp> r = a("triangle_top");
+   public static final aku<dtp> s = a("triangles_bottom");
+   public static final aku<dtp> t = a("triangles_top");
+   public static final aku<dtp> u = a("diagonal_left");
+   public static final aku<dtp> v = a("diagonal_up_right");
+   public static final aku<dtp> w = a("diagonal_up_left");
+   public static final aku<dtp> x = a("diagonal_right");
+   public static final aku<dtp> y = a("circle");
+   public static final aku<dtp> z = a("rhombus");
+   public static final aku<dtp> A = a("half_vertical");
+   public static final aku<dtp> B = a("half_horizontal");
+   public static final aku<dtp> C = a("half_vertical_right");
+   public static final aku<dtp> D = a("half_horizontal_bottom");
+   public static final aku<dtp> E = a("border");
+   public static final aku<dtp> F = a("curly_border");
+   public static final aku<dtp> G = a("gradient");
+   public static final aku<dtp> H = a("gradient_up");
+   public static final aku<dtp> I = a("bricks");
+   public static final aku<dtp> J = a("globe");
+   public static final aku<dtp> K = a("creeper");
+   public static final aku<dtp> L = a("skull");
+   public static final aku<dtp> M = a("flower");
+   public static final aku<dtp> N = a("mojang");
+   public static final aku<dtp> O = a("piglin");
+   public static final aku<dtp> P = a("flow");
+   public static final aku<dtp> Q = a("guster");
 
-      @Override
-      protected void b(dgh $$0, ji $$1, dww $$2) {
-         dtr.this.a($$2, awa.by);
-         dtr.this.a($$2, false);
-      }
-
-      @Override
-      protected void a(dgh $$0, ji $$1, dww $$2, int $$3, int $$4) {
-      }
-
-      @Override
-      protected boolean a(cow $$0) {
-         if ($$0.cd instanceof csk) {
-            bsc $$1 = ((csk)$$0.cd).l();
-            return $$1 == dtr.this;
-         } else {
-            return false;
-         }
-      }
-   };
-
-   public dtr(ji $$0, dww $$1) {
-      super(dua.B, $$0, $$1);
+   private static aku<dtp> a(String $$0) {
+      return aku.a(mc.d, akv.b($$0));
    }
 
-   @Override
-   protected void b(tq $$0, jt.a $$1) {
-      super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         bsd.a($$0, this.d, $$1);
-      }
+   public static void a(qe<dtp> $$0) {
+      a($$0, a);
+      a($$0, b);
+      a($$0, c);
+      a($$0, d);
+      a($$0, e);
+      a($$0, f);
+      a($$0, g);
+      a($$0, h);
+      a($$0, i);
+      a($$0, j);
+      a($$0, k);
+      a($$0, l);
+      a($$0, m);
+      a($$0, n);
+      a($$0, o);
+      a($$0, p);
+      a($$0, q);
+      a($$0, r);
+      a($$0, s);
+      a($$0, t);
+      a($$0, u);
+      a($$0, v);
+      a($$0, w);
+      a($$0, x);
+      a($$0, y);
+      a($$0, z);
+      a($$0, A);
+      a($$0, B);
+      a($$0, C);
+      a($$0, D);
+      a($$0, E);
+      a($$0, G);
+      a($$0, H);
+      a($$0, I);
+      a($$0, F);
+      a($$0, J);
+      a($$0, K);
+      a($$0, L);
+      a($$0, M);
+      a($$0, N);
+      a($$0, O);
+      a($$0, P);
+      a($$0, Q);
    }
 
-   @Override
-   protected void a(tq $$0, jt.a $$1) {
-      super.a($$0, $$1);
-      this.d = ka.a(this.b(), cwo.j);
-      if (!this.b_($$0)) {
-         bsd.b($$0, this.d, $$1);
-      }
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected ka<cwo> f() {
-      return this.d;
-   }
-
-   @Override
-   protected void a(ka<cwo> $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   protected wp j() {
-      return wp.c("container.barrel");
-   }
-
-   @Override
-   protected csb a(int $$0, cov $$1) {
-      return csk.a($$0, $$1, this);
-   }
-
-   @Override
-   public void c_(cow $$0) {
-      if (!this.q && !$$0.Z_()) {
-         this.e.a($$0, this.i(), this.aA_(), this.m());
-      }
-   }
-
-   @Override
-   public void c(cow $$0) {
-      if (!this.q && !$$0.Z_()) {
-         this.e.b($$0, this.i(), this.aA_(), this.m());
-      }
-   }
-
-   public void k() {
-      if (!this.q) {
-         this.e.c(this.i(), this.aA_(), this.m());
-      }
-   }
-
-   void a(dww $$0, boolean $$1) {
-      this.o.a(this.aA_(), $$0.b(dir.c, Boolean.valueOf($$1)), 3);
-   }
-
-   void a(dww $$0, avz $$1) {
-      km $$2 = $$0.c(dir.b).q();
-      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.o.a(null, $$3, $$4, $$5, $$1, awb.e, 0.5F, this.o.A.i() * 0.1F + 0.9F);
+   public static void a(qe<dtp> $$0, aku<dtp> $$1) {
+      $$0.a($$1, new dtp($$1.a(), "block.minecraft.banner." + $$1.a().e()));
    }
 }

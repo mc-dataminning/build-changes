@@ -20,11 +20,11 @@ public class adu implements yw<abl> {
       this.g = null;
    }
 
-   public adu(fj.a $$0, buk $$1, fj.a $$2) {
+   public adu(fj.a $$0, bul $$1, fj.a $$2) {
       this.f = $$0;
       this.e = $$1.ar();
       this.g = $$2;
-      faz $$3 = $$2.a($$1);
+      fba $$3 = $$2.a($$1);
       this.b = $$3.d;
       this.c = $$3.e;
       this.d = $$3.f;
@@ -72,12 +72,12 @@ public class adu implements yw<abl> {
    }
 
    @Nullable
-   public faz a(dgh $$0) {
+   public fba a(dgi $$0) {
       if (this.h) {
-         buk $$1 = $$0.a(this.e);
-         return $$1 == null ? new faz(this.b, this.c, this.d) : this.g.a($$1);
+         bul $$1 = $$0.a(this.e);
+         return $$1 == null ? new fba(this.b, this.c, this.d) : this.g.a($$1);
       } else {
-         return new faz(this.b, this.c, this.d);
+         return new fba(this.b, this.c, this.d);
       }
    }
 }

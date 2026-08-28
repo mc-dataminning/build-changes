@@ -7,11 +7,11 @@ public class afc implements yw<abl> {
    public static final int d = 2;
    private final String e;
    private final wp f;
-   private final fch.a g;
+   private final fci.a g;
    private final Optional<yf> h;
    private final int i;
 
-   public afc(fbw $$0, int $$1) {
+   public afc(fbx $$0, int $$1) {
       this.e = $$0.b();
       this.f = $$0.d();
       this.g = $$0.h();
@@ -24,11 +24,11 @@ public class afc implements yw<abl> {
       this.i = $$0.readByte();
       if (this.i != 0 && this.i != 2) {
          this.f = wo.a;
-         this.g = fch.a.a;
+         this.g = fci.a.a;
          this.h = Optional.empty();
       } else {
          this.f = wr.d.decode($$0);
-         this.g = $$0.b(fch.a.class);
+         this.g = $$0.b(fci.a.class);
          this.h = yh.d.decode($$0);
       }
    }
@@ -64,7 +64,7 @@ public class afc implements yw<abl> {
       return this.i;
    }
 
-   public fch.a g() {
+   public fci.a g() {
       return this.g;
    }
 

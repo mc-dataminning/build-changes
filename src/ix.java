@@ -14,7 +14,7 @@ public class ix {
    public static final SuggestionProvider<ex> b = a(akv.b("available_sounds"), ($$0, $$1) -> fc.a(((fc)$$0.getSource()).s(), $$1));
    public static final SuggestionProvider<ex> c = a(
       akv.b("summonable_entities"),
-      ($$0, $$1) -> fc.a(mb.f.s().filter($$1x -> $$1x.a(((fc)$$0.getSource()).v()) && $$1x.c()), $$1, bur::a, $$0x -> wp.c(af.a("entity", bur.a($$0x))))
+      ($$0, $$1) -> fc.a(mb.f.s().filter($$1x -> $$1x.a(((fc)$$0.getSource()).v()) && $$1x.c()), $$1, bus::a, $$0x -> wp.c(af.a("entity", bus.a($$0x))))
    );
 
    public static <S extends fc> SuggestionProvider<S> a(akv $$0, SuggestionProvider<fc> $$1) {

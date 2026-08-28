@@ -1,60 +1,70 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import org.apache.commons.lang3.tuple.Pair;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class eca {
+public record eca(jr<ebt> b, float c, fba d, @Nullable UUID e, @Nullable UUID f, @Nullable bul g) {
    public static final Codec<eca> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ebz.a.lenientOptionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
-               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
+               ebt.aj.fieldOf("game_event").forGetter(eca::a),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(eca::b),
+               fba.a.fieldOf("pos").forGetter(eca::c),
+               kl.a.lenientOptionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
+               kl.a.lenientOptionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
             )
-            .apply($$0, eca::new)
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new eca($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
    );
-   private Optional<Pair<ebz, Long>> b;
 
-   public eca(Optional<ebz> $$0, long $$1) {
-      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
+   public eca(jr<ebt> $$0, float $$1, fba $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+      this($$0, $$1, $$2, $$3, $$4, null);
    }
 
-   public eca() {
-      this.b = Optional.empty();
+   public eca(jr<ebt> $$0, float $$1, fba $$2, @Nullable bul $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cG(), a($$3), $$3);
    }
 
-   public void a(ebz $$0, long $$1) {
-      if (this.b($$0, $$1)) {
-         this.b = Optional.of(Pair.of($$0, $$1));
+   @Nullable
+   private static UUID a(@Nullable bul $$0) {
+      if ($$0 instanceof cpq $$1 && $$1.p() != null) {
+         return $$1.p().cG();
       }
+
+      return null;
    }
 
-   private boolean b(ebz $$0, long $$1) {
-      if (this.b.isEmpty()) {
-         return true;
-      } else {
-         Pair<ebz, Long> $$2 = this.b.get();
-         long $$3 = (Long)$$2.getRight();
-         if ($$1 != $$3) {
-            return false;
-         } else {
-            ebz $$4 = (ebz)$$2.getLeft();
-            if ($$0.b() < $$4.b()) {
-               return true;
-            } else {
-               return $$0.b() > $$4.b() ? false : ecb.a_($$0.a()) > ecb.a_($$4.a());
-            }
-         }
-      }
+   public Optional<bul> a(ard $$0) {
+      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
    }
 
-   public Optional<ebz> a(long $$0) {
-      if (this.b.isEmpty()) {
-         return Optional.empty();
-      } else {
-         return this.b.get().getRight() < $$0 ? Optional.of((ebz)this.b.get().getLeft()) : Optional.empty();
-      }
+   public Optional<bul> b(ard $$0) {
+      return this.a($$0).filter($$0x -> $$0x instanceof cpq).map($$0x -> (cpq)$$0x).map(cpq::p).or(() -> Optional.ofNullable(this.f).map($$0::a));
    }
 
-   public void a() {
-      this.b = Optional.empty();
+   public jr<ebt> a() {
+      return this.b;
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public fba c() {
+      return this.d;
+   }
+
+   @Nullable
+   public UUID d() {
+      return this.e;
+   }
+
+   @Nullable
+   public UUID e() {
+      return this.f;
+   }
+
+   @Nullable
+   public bul f() {
+      return this.g;
    }
 }

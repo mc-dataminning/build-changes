@@ -1,39 +1,19 @@
 import com.mojang.serialization.Codec;
 
-public class ehg extends efx<eii> {
-   public ehg(Codec<eii> $$0) {
+public class ehg extends efy<eiv> {
+   public ehg(Codec<eiv> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(efz<eii> $$0) {
-      dhf $$1 = $$0.b();
-      ji $$2 = $$0.e();
-      ji.a $$3 = new ji.a();
-      ji.a $$4 = new ji.a();
-
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$2.u() + $$5;
-            int $$8 = $$2.w() + $$6;
-            int $$9 = $$1.a(ecr.a.e, $$7, $$8);
-            $$3.d($$7, $$9, $$8);
-            $$4.g($$3).c(jn.a, 1);
-            dhj $$10 = $$1.t($$3).a();
-            if ($$10.a($$1, $$4, false)) {
-               $$1.a($$4, djn.eb.m(), 2);
-            }
-
-            if ($$10.b($$1, $$3)) {
-               $$1.a($$3, djn.ea.m(), 2);
-               dww $$11 = $$1.a_($$4);
-               if ($$11.b(dra.c)) {
-                  $$1.a($$4, $$11.b(dra.c, Boolean.valueOf(true)), 2);
-               }
-            }
-         }
-      }
-
-      return true;
+   public boolean a(ega<eiv> $$0) {
+      azh $$1 = $$0.d();
+      eiv $$2 = $$0.f();
+      dhg $$3 = $$0.b();
+      ji $$4 = $$0.e();
+      dyt $$5 = $$0.c();
+      int $$6 = $$1.a($$2.b.b());
+      emq $$7 = $$2.b.a($$6).a();
+      return $$7.a($$3, $$5, $$1, $$4);
    }
 }

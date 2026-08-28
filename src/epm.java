@@ -1,84 +1,28 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Optional;
 
-public final class epm extends enl {
-   public static final eol d = eol.b;
-   public static final eqx e = eqx.b;
-   public static final int f = 128;
-   public static final int g = 0;
-   public static final int h = 20;
-   public static final MapCodec<epm> i = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  a($$0),
-                  eov.b.fieldOf("start_pool").forGetter($$0x -> $$0x.j),
-                  akv.a.optionalFieldOf("start_jigsaw_name").forGetter($$0x -> $$0x.k),
-                  Codec.intRange(0, 20).fieldOf("size").forGetter($$0x -> $$0x.l),
-                  els.c.fieldOf("start_height").forGetter($$0x -> $$0x.m),
-                  Codec.BOOL.fieldOf("use_expansion_hack").forGetter($$0x -> $$0x.n),
-                  ecr.a.g.optionalFieldOf("project_start_to_heightmap").forGetter($$0x -> $$0x.o),
-                  Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter($$0x -> $$0x.p),
-                  Codec.list(eox.b).optionalFieldOf("pool_aliases", List.of()).forGetter($$0x -> $$0x.q),
-                  eol.a.optionalFieldOf("dimension_padding", d).forGetter($$0x -> $$0x.r),
-                  eqx.c.optionalFieldOf("liquid_settings", e).forGetter($$0x -> $$0x.s)
-               )
-               .apply($$0, epm::new)
-      )
-      .validate(epm::a);
-   private final jr<eov> j;
-   private final Optional<akv> k;
-   private final int l;
-   private final els m;
-   private final boolean n;
-   private final Optional<ecr.a> o;
-   private final int p;
-   private final List<eox> q;
-   private final eol r;
-   private final eqx s;
+public class epm extends enm {
+   public static final MapCodec<epm> d = a(epm::new);
 
-   private static DataResult<epm> a(epm $$0) {
-      int $$1 = switch ($$0.d()) {
-         case a -> 0;
-         case b, c, d, e -> 12;
-      };
-      return $$0.p + $$1 > 128 ? DataResult.error(() -> "Structure size including terrain adaptation must not exceed 128") : DataResult.success($$0);
-   }
-
-   public epm(enl.c $$0, jr<eov> $$1, Optional<akv> $$2, int $$3, els $$4, boolean $$5, Optional<ecr.a> $$6, int $$7, List<eox> $$8, eol $$9, eqx $$10) {
+   public epm(enm.c $$0) {
       super($$0);
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.o = $$6;
-      this.p = $$7;
-      this.q = $$8;
-      this.r = $$9;
-      this.s = $$10;
-   }
-
-   public epm(enl.c $$0, jr<eov> $$1, int $$2, els $$3, boolean $$4, ecr.a $$5) {
-      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.of($$5), 80, List.of(), d, e);
-   }
-
-   public epm(enl.c $$0, jr<eov> $$1, int $$2, els $$3, boolean $$4) {
-      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.empty(), 80, List.of(), d, e);
    }
 
    @Override
-   public Optional<enl.b> a(enl.a $$0) {
-      dfn $$1 = $$0.h();
-      int $$2 = this.m.a($$0.f(), new edo($$0.b(), $$0.i()));
-      ji $$3 = new ji($$1.d(), $$2, $$1.e());
-      return eop.a($$0, this.j, this.k, this.l, $$3, this.n, this.o, this.p, eoz.create(this.q, $$3, $$0.g()), this.r, this.s);
+   public Optional<enm.b> a(enm.a $$0) {
+      return a($$0, ecs.a.a, $$1 -> this.a($$1, $$0));
+   }
+
+   private void a(eoe $$0, enm.a $$1) {
+      dfo $$2 = $$1.h();
+      edr $$3 = $$1.f();
+      ji $$4 = new ji($$2.d(), 90, $$2.e());
+      dqe $$5 = dqe.a($$3);
+      epl.a($$1.e(), $$4, $$5, $$0, $$3);
    }
 
    @Override
-   public enu<?> e() {
-      return enu.f;
+   public env<?> e() {
+      return env.e;
    }
 }

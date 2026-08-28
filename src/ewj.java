@@ -1,63 +1,117 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
-public class ewj extends ewi {
-   public static final MapCodec<ewj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.either(aku.a(mc.bg), evv.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ewj::new)
-   );
-   private final Either<aku<evv>, evv> j;
+public abstract class ewj extends ewh {
+   public static final int d = 1;
+   public static final int f = 0;
+   protected final int g;
+   protected final int h;
+   protected final List<exf> i;
+   final BiFunction<cwp, evr, cwp> a;
+   private final ewg j = new ewj.c() {
+      @Override
+      public void a(Consumer<cwp> $$0, evr $$1) {
+         ewj.this.a(exf.a(ewj.this.a, $$0, $$1), $$1);
+      }
+   };
 
-   private ewj(Either<aku<evv>, evv> $$0, int $$1, int $$2, List<eyz> $$3, List<exe> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   protected ewj(int $$0, int $$1, List<eza> $$2, List<exf> $$3) {
+      super($$2);
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$3;
+      this.a = exh.a($$3);
+   }
+
+   protected static <T extends ewj> P4<Mu<T>, Integer, Integer, List<eza>, List<exf>> b(Instance<T> $$0) {
+      return $$0.group(Codec.INT.optionalFieldOf("weight", 1).forGetter($$0x -> $$0x.g), Codec.INT.optionalFieldOf("quality", 0).forGetter($$0x -> $$0x.h))
+         .and(a($$0).t1())
+         .and(exh.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.i));
    }
 
    @Override
-   public ewh a() {
-      return ewe.d;
+   public void a(evx $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
+         this.i.get($$1).a($$0.a(".functions[" + $$1 + "]"));
+      }
    }
 
+   protected abstract void a(Consumer<cwp> var1, evr var2);
+
    @Override
-   public void a(Consumer<cwo> $$0, evq $$1) {
-      ((evv)this.j.map($$1x -> $$1.a().c($$1x).map(jr::a).orElse(evv.a), $$0x -> $$0x)).a($$1, $$0);
+   public boolean expand(evr $$0, Consumer<ewg> $$1) {
+      if (this.a($$0)) {
+         $$1.accept(this.j);
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   public void a(evw $$0) {
-      Optional<aku<evv>> $$1 = this.j.left();
-      if ($$1.isPresent()) {
-         aku<evv> $$2 = $$1.get();
-         if (!$$0.b()) {
-            $$0.b("Uses reference to " + $$2.a() + ", but references are not allowed");
-            return;
-         }
+   public static ewj.a<?> a(ewj.d $$0) {
+      return new ewj.b($$0);
+   }
 
-         if ($$0.a($$2)) {
-            $$0.b("Table " + $$2.a() + " is recursively called");
-            return;
-         }
+   public abstract static class a<T extends ewj.a<T>> extends ewh.a<T> implements exb<T> {
+      protected int a = 1;
+      protected int b = 0;
+      private final Builder<exf> c = ImmutableList.builder();
+
+      public T a(exf.a $$0) {
+         this.c.add($$0.b());
+         return this.aE_();
       }
 
-      super.a($$0);
-      this.j
-         .ifLeft(
-            $$1x -> $$0.a()
-                  .c($$1x)
-                  .ifPresentOrElse($$2x -> ((evv)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
-         )
-         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
+      protected List<exf> a() {
+         return this.c.build();
+      }
+
+      public T a(int $$0) {
+         this.a = $$0;
+         return this.aE_();
+      }
+
+      public T b(int $$0) {
+         this.b = $$0;
+         return this.aE_();
+      }
    }
 
-   public static ewi.a<?> a(aku<evv> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ewj(Either.left($$0), $$1, $$2, $$3, $$4));
+   static class b extends ewj.a<ewj.b> {
+      private final ewj.d c;
+
+      public b(ewj.d $$0) {
+         this.c = $$0;
+      }
+
+      protected ewj.b g() {
+         return this;
+      }
+
+      @Override
+      public ewh b() {
+         return this.c.build(this.a, this.b, this.f(), this.a());
+      }
    }
 
-   public static ewi.a<?> a(evv $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ewj(Either.right($$0), $$1, $$2, $$3, $$4));
+   protected abstract class c implements ewg {
+      @Override
+      public int a(float $$0) {
+         return Math.max(ayz.d((float)ewj.this.g + (float)ewj.this.h * $$0), 0);
+      }
+   }
+
+   @FunctionalInterface
+   protected interface d {
+      ewj build(int var1, int var2, List<eza> var3, List<exf> var4);
    }
 }

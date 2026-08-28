@@ -4,7 +4,7 @@ import java.util.Map;
 public interface cw {
    Codec<Map<cw.a<?>, cw>> b = Codec.dispatchedMap(mb.aq.q(), cw.a::a);
 
-   boolean a(cwo var1);
+   boolean a(cwp var1);
 
    public static record a<T extends cw>(Codec<T> a) {
    }

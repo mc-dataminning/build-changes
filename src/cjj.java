@@ -1,137 +1,87 @@
-import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cjj extends cje {
-   private int bY = 47999;
+public class cjj extends ccf {
+   private final cji a;
 
-   public cjj(bur<? extends cjj> $$0, dgh $$1) {
-      super($$0, $$1);
+   public cjj(cji $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public boolean gv() {
-      return true;
+   public boolean b() {
+      return this.a.dV().a(this.a.dA(), this.a.dC(), this.a.dG(), 10.0);
+   }
+
+   @Override
+   public void a() {
+      ard $$0 = (ard)this.a.dV();
+      bsi $$1 = $$0.d_(this.a.dv());
+      this.a.x(false);
+      this.a.y(true);
+      this.a.c_(0);
+      bvg $$2 = bus.aw.a($$0, bur.k);
+      if ($$2 != null) {
+         $$2.e(this.a.dA(), this.a.dC(), this.a.dG());
+         $$2.a(true);
+         $$0.b($$2);
+         cmg $$3 = this.a($$1, this.a);
+         if ($$3 != null) {
+            $$3.n(this.a);
+            $$0.a_($$3);
+
+            for (int $$4 = 0; $$4 < 3; $$4++) {
+               cjc $$5 = this.a($$1);
+               if ($$5 != null) {
+                  cmg $$6 = this.a($$1, $$5);
+                  if ($$6 != null) {
+                     $$6.n($$5);
+                     $$5.j(this.a.dY().a(0.0, 1.1485), 0.0, this.a.dY().a(0.0, 1.1485));
+                     $$0.a_($$5);
+                  }
+               }
+            }
+         }
+      }
    }
 
    @Nullable
-   @Override
-   protected cje gG() {
-      return bur.bx.a(this.dV(), buq.e);
-   }
-
-   @Override
-   public void b(tq $$0) {
-      super.b($$0);
-      $$0.a("DespawnDelay", this.bY);
-   }
-
-   @Override
-   public void a(tq $$0) {
-      super.a($$0);
-      if ($$0.b("DespawnDelay", 99)) {
-         this.bY = $$0.h("DespawnDelay");
+   private cjc a(bsi $$0) {
+      cji $$1 = bus.bf.a(this.a.dV(), bur.k);
+      if ($$1 != null) {
+         $$1.a((ard)this.a.dV(), $$0, bur.k, null);
+         $$1.a_(this.a.dA(), this.a.dC(), this.a.dG());
+         $$1.aj = 60;
+         $$1.fY();
+         $$1.y(true);
+         $$1.c_(0);
       }
-   }
 
-   @Override
-   protected void E() {
-      super.E();
-      this.bS.a(1, new ccx(this, 2.0));
-      this.bT.a(1, new cjj.a(this));
-      this.bT.a(2, new cdx<>(this, cmq.class, true, ($$0, $$1) -> $$0.aq() != bur.bQ));
-      this.bT.a(2, new cdx<>(this, cle.class, true));
-   }
-
-   @Override
-   public void w(int $$0) {
-      this.bY = $$0;
-   }
-
-   @Override
-   protected void a(cow $$0) {
-      buk $$1 = this.D();
-      if (!($$1 instanceof coo)) {
-         super.a($$0);
-      }
-   }
-
-   @Override
-   public void d_() {
-      super.d_();
-      if (!this.dV().C) {
-         this.hh();
-      }
-   }
-
-   private void hh() {
-      if (this.hi()) {
-         this.bY = this.hj() ? ((coo)this.D()).gB() - 1 : this.bY - 1;
-         if (this.bY <= 0) {
-            this.A();
-            this.at();
-         }
-      }
-   }
-
-   private boolean hi() {
-      return !this.gJ() && !this.hk() && !this.de();
-   }
-
-   private boolean hj() {
-      return this.D() instanceof coo;
-   }
-
-   private boolean hk() {
-      return this.P_() && !this.hj();
+      return $$1;
    }
 
    @Nullable
-   @Override
-   public bvz a(dgy $$0, bsh $$1, buq $$2, @Nullable bvz $$3) {
-      if ($$2 == buq.h) {
-         this.c_(0);
+   private cmg a(bsi $$0, cjc $$1) {
+      cmg $$2 = bus.be.a($$1.dV(), bur.k);
+      if ($$2 != null) {
+         $$2.a((ard)$$1.dV(), $$0, bur.k, null);
+         $$2.a_($$1.dA(), $$1.dC(), $$1.dG());
+         $$2.aj = 60;
+         $$2.fY();
+         if ($$2.a(but.f).f()) {
+            $$2.a(but.f, new cwp(cwt.ql));
+         }
+
+         this.a($$2, but.a, $$0);
+         this.a($$2, but.f, $$0);
       }
 
-      if ($$3 == null) {
-         $$3 = new bub.a(false);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
+      return $$2;
    }
 
-   protected static class a extends cee {
-      private final cje a;
-      private bvg b;
-      private int c;
-
-      public a(cje $$0) {
-         super($$0, false);
-         this.a = $$0;
-         this.a(EnumSet.of(cce.a.d));
-      }
-
-      @Override
-      public boolean b() {
-         if (!this.a.P_()) {
-            return false;
-         } else if (!(this.a.D() instanceof coo $$1)) {
-            return false;
-         } else {
-            this.b = $$1.ep();
-            int $$2 = $$1.eq();
-            return $$2 != this.c && this.a(this.b, cfx.a);
-         }
-      }
-
-      @Override
-      public void d() {
-         this.e.h(this.b);
-         buk $$0 = this.a.D();
-         if ($$0 instanceof coo) {
-            this.c = ((coo)$$0).eq();
-         }
-
-         super.d();
-      }
+   private void a(cmg $$0, but $$1, bsi $$2) {
+      cwp $$3 = $$0.a($$1);
+      $$3.b(kv.l, ddf.a);
+      ddb.a($$3, $$0.dV().K_(), den.a, $$2, $$0.dY());
+      $$0.a($$1, $$3);
    }
 }

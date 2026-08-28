@@ -106,8 +106,8 @@ public class amv {
       );
    }
 
-   private static int a(ex $$0, Collection<? extends buk> $$1, jr<btn> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
-      btn $$6 = $$2.a();
+   private static int a(ex $$0, Collection<? extends bul> $$1, jr<bto> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
+      bto $$6 = $$2.a();
       int $$7 = 0;
       int $$8;
       if ($$3 != null) {
@@ -124,10 +124,10 @@ public class amv {
          $$8 = 600;
       }
 
-      for (buk $$13 : $$1) {
-         if ($$13 instanceof bvg) {
-            btp $$14 = new btp($$2, $$8, $$4, false, $$5);
-            if (((bvg)$$13).b($$14, $$0.f())) {
+      for (bul $$13 : $$1) {
+         if ($$13 instanceof bvh) {
+            btq $$14 = new btq($$2, $$8, $$4, false, $$5);
+            if (((bvh)$$13).b($$14, $$0.f())) {
                $$7++;
             }
          }
@@ -146,11 +146,11 @@ public class amv {
       }
    }
 
-   private static int a(ex $$0, Collection<? extends buk> $$1) throws CommandSyntaxException {
+   private static int a(ex $$0, Collection<? extends bul> $$1) throws CommandSyntaxException {
       int $$2 = 0;
 
-      for (buk $$3 : $$1) {
-         if ($$3 instanceof bvg && ((bvg)$$3).ez()) {
+      for (bul $$3 : $$1) {
+         if ($$3 instanceof bvh && ((bvh)$$3).ez()) {
             $$2++;
          }
       }
@@ -168,12 +168,12 @@ public class amv {
       }
    }
 
-   private static int a(ex $$0, Collection<? extends buk> $$1, jr<btn> $$2) throws CommandSyntaxException {
-      btn $$3 = $$2.a();
+   private static int a(ex $$0, Collection<? extends bul> $$1, jr<bto> $$2) throws CommandSyntaxException {
+      bto $$3 = $$2.a();
       int $$4 = 0;
 
-      for (buk $$5 : $$1) {
-         if ($$5 instanceof bvg && ((bvg)$$5).e($$2)) {
+      for (bul $$5 : $$1) {
+         if ($$5 instanceof bvh && ((bvh)$$5).e($$2)) {
             $$4++;
          }
       }

@@ -1,5 +1,7 @@
-public class haq extends gzj {
-   public chx.b a = chx.b.g;
-   public int b = -1;
-   public int c = -1;
+import javax.annotation.Nullable;
+
+public class haq extends gyk {
+   public float a;
+   @Nullable
+   public dwx b;
 }

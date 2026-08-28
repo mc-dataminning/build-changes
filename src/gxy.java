@@ -1,10 +1,8 @@
-public class gxy extends gzj {
-   public boolean a;
-   public boolean b;
-   public float c;
-   public final buc d = new buc();
-   public final buc e = new buc();
-   public final buc f = new buc();
-   public final buc g = new buc();
-   public final buc h = new buc();
+public class gxy extends gzk {
+   public final bud a = new bud();
+   public final bud b = new bud();
+   public final bud c = new bud();
+   public final bud d = new bud();
+   public final bud e = new bud();
+   public final bud f = new bud();
 }

@@ -1,3 +1,3 @@
-public interface hat {
-   coi a();
+public class hat extends gxp {
+   public boolean a;
 }

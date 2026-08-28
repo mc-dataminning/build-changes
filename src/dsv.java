@@ -1,96 +1,43 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface dsv extends dkn<dsv.a> {
-   Supplier<BiMap<djl, djl>> v_ = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(djn.ry, djn.rz)
-            .put(djn.rz, djn.rA)
-            .put(djn.rA, djn.rB)
-            .put(djn.rH, djn.rG)
-            .put(djn.rG, djn.rF)
-            .put(djn.rF, djn.rE)
-            .put(djn.rL, djn.rK)
-            .put(djn.rK, djn.rJ)
-            .put(djn.rJ, djn.rI)
-            .put(djn.rX, djn.rW)
-            .put(djn.rW, djn.rV)
-            .put(djn.rV, djn.rU)
-            .put(djn.rT, djn.rS)
-            .put(djn.rS, djn.rR)
-            .put(djn.rR, djn.rQ)
-            .put(djn.so, djn.sp)
-            .put(djn.sp, djn.sr)
-            .put(djn.sr, djn.sq)
-            .put(djn.sw, djn.sx)
-            .put(djn.sx, djn.sz)
-            .put(djn.sz, djn.sy)
-            .put(djn.sE, djn.sF)
-            .put(djn.sF, djn.sG)
-            .put(djn.sG, djn.sH)
-            .put(djn.sM, djn.sN)
-            .put(djn.sN, djn.sO)
-            .put(djn.sO, djn.sP)
-            .build()
-   );
-   Supplier<BiMap<djl, djl>> w_ = Suppliers.memoize(() -> v_.get().inverse());
+public class dsv extends dsd implements dqs {
+   public static final MapCodec<dsv> a = b(dsv::new);
+   public static final dxo c = dxn.J;
 
-   static Optional<djl> a(djl $$0) {
-      return Optional.ofNullable((djl)w_.get().get($$0));
+   @Override
+   protected MapCodec<? extends dsv> a() {
+      return a;
    }
 
-   static djl b(djl $$0) {
-      djl $$1 = $$0;
-
-      for (djl $$2 = (djl)w_.get().get($$0); $$2 != null; $$2 = (djl)w_.get().get($$2)) {
-         $$1 = $$2;
-      }
-
-      return $$1;
+   protected dsv(dww.d $$0) {
+      super($$0);
+      this.l(this.m().b(c, Boolean.valueOf(false)));
    }
 
-   static Optional<dww> b(dww $$0) {
-      return a($$0.b()).map($$1 -> $$1.m($$0));
-   }
-
-   static Optional<djl> c(djl $$0) {
-      return Optional.ofNullable((djl)v_.get().get($$0));
-   }
-
-   static dww c(dww $$0) {
-      return b($$0.b()).m($$0);
+   @Nullable
+   @Override
+   public dwx a(dag $$0) {
+      esz $$1 = $$0.q().b_($$0.a());
+      return super.a($$0).b(c, Boolean.valueOf($$1.b(eta.c)));
    }
 
    @Override
-   default Optional<dww> k_(dww $$0) {
-      return c($$0.b()).map($$1 -> $$1.m($$0));
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      if ($$0.c(c)) {
+         $$2.a($$3, eta.c, eta.c.a($$1));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   default float au_() {
-      return this.c() == dsv.a.a ? 0.75F : 1.0F;
+   protected esz b_(dwx $$0) {
+      return $$0.c(c) ? eta.c.a(true) : super.b_($$0);
    }
 
-   public static enum a implements azv {
-      a("unaffected"),
-      b("exposed"),
-      c("weathered"),
-      d("oxidized");
-
-      public static final Codec<dsv.a> e = azv.a(dsv.a::values);
-      private final String f;
-
-      private a(final String $$0) {
-         this.f = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(c);
    }
 }

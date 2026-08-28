@@ -1,15 +1,12 @@
-public interface dgo extends dgk {
-   long al();
+import java.util.Optional;
+import java.util.function.Predicate;
 
-   default float ar() {
-      return ear.k[this.G_().b(this.al())];
-   }
+public interface dgo {
+   boolean a(ji var1, Predicate<dwx> var2);
 
-   default float f(float $$0) {
-      return this.G_().a(this.al());
-   }
+   boolean b(ji var1, Predicate<esz> var2);
 
-   default int as() {
-      return this.G_().b(this.al());
-   }
+   <T extends dtz> Optional<T> a(ji var1, dub<T> var2);
+
+   ji a(ecs.a var1, ji var2);
 }

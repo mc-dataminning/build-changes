@@ -1,71 +1,69 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.ListIterator;
 import javax.annotation.Nullable;
 
-class gph {
-   private final Map<ji, dty> a;
-   @Nullable
-   private final List<dzj<dww>> b;
-   private final boolean c;
-   private final dzb d;
+public class gph {
+   private static final int a = 2;
+   private int b = 2;
+   private final List<gpm.b.a> c = new ObjectArrayList();
 
-   gph(dzb $$0) {
-      this.d = $$0;
-      this.c = $$0.H().aj();
-      this.a = ImmutableMap.copyOf($$0.I());
-      if ($$0 instanceof dyx) {
-         this.b = null;
-      } else {
-         dzc[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dzc $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
-      }
+   public synchronized void a(gpm.b.a $$0) {
+      this.c.add($$0);
    }
 
    @Nullable
-   public dty a(ji $$0) {
-      return this.a.get($$0);
-   }
+   public synchronized gpm.b.a a(fba $$0) {
+      int $$1 = -1;
+      int $$2 = -1;
+      double $$3 = Double.MAX_VALUE;
+      double $$4 = Double.MAX_VALUE;
+      ListIterator<gpm.b.a> $$5 = this.c.listIterator();
 
-   public dww b(ji $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dww $$4 = null;
-         if ($$2 == 60) {
-            $$4 = djn.iu.m();
-         }
-
-         if ($$2 == 70) {
-            $$4 = eci.a($$1, $$3);
-         }
-
-         return $$4 == null ? djn.a.m() : $$4;
-      } else if (this.b == null) {
-         return djn.a.m();
-      } else {
-         try {
-            int $$5 = this.d.f($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               dzj<dww> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
+      while ($$5.hasNext()) {
+         int $$6 = $$5.nextIndex();
+         gpm.b.a $$7 = $$5.next();
+         if ($$7.a.get()) {
+            $$5.remove();
+         } else {
+            double $$8 = $$7.d().b($$0);
+            if (!$$7.c() && $$8 < $$3) {
+               $$3 = $$8;
+               $$1 = $$6;
             }
 
-            return djn.a.m();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new z($$8);
+            if ($$7.c() && $$8 < $$4) {
+               $$4 = $$8;
+               $$2 = $$6;
+            }
          }
       }
+
+      boolean $$9 = $$2 >= 0;
+      boolean $$10 = $$1 >= 0;
+      if (!$$9 || $$10 && (this.b <= 0 || !($$4 < $$3))) {
+         this.b = 2;
+         return this.a($$1);
+      } else {
+         this.b--;
+         return this.a($$2);
+      }
+   }
+
+   public int a() {
+      return this.c.size();
+   }
+
+   @Nullable
+   private gpm.b.a a(int $$0) {
+      return $$0 >= 0 ? this.c.remove($$0) : null;
+   }
+
+   public synchronized void b() {
+      for (gpm.b.a $$0 : this.c) {
+         $$0.a();
+      }
+
+      this.c.clear();
    }
 }

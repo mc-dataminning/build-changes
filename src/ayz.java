@@ -317,7 +317,7 @@ public class ayz {
       return ($$0 - $$1) / ($$2 - $$1);
    }
 
-   public static boolean a(faz $$0, faz $$1, fau $$2) {
+   public static boolean a(fba $$0, fba $$1, fav $$2) {
       double $$3 = ($$2.a + $$2.d) * 0.5;
       double $$4 = ($$2.d - $$2.a) * 0.5;
       double $$5 = $$0.d - $$3;
@@ -519,8 +519,8 @@ public class ayz {
       return $$1 + $$0 * ($$2 - $$1);
    }
 
-   public static faz a(double $$0, faz $$1, faz $$2) {
-      return new faz(d($$0, $$1.d, $$2.d), d($$0, $$1.e, $$2.e), d($$0, $$1.f, $$2.f));
+   public static fba a(double $$0, fba $$1, fba $$2) {
+      return new fba(d($$0, $$1.d, $$2.d), d($$0, $$1.e, $$2.e), d($$0, $$1.f, $$2.f));
    }
 
    public static double d(double $$0, double $$1, double $$2) {

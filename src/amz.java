@@ -115,7 +115,7 @@ public class amz {
    }
 
    static enum a {
-      a("points", cow::d, ($$0, $$1) -> {
+      a("points", cox::d, ($$0, $$1) -> {
          if ($$1 >= $$0.gs()) {
             return false;
          } else {

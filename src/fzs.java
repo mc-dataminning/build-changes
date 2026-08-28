@@ -1,178 +1,75 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-class fzs {
-   private static final int a = 44;
-   private final List<fzs.c> b;
-   private final fsh c;
+public class fzs extends ful {
+   private static final Logger d = LogUtils.getLogger();
+   public static final edq a = new edq((long)"test1".hashCode(), true, false);
+   protected final ful b;
+   private fot s;
+   private fot u;
+   private fot v;
+   private fot w;
+   protected fpc c;
+   private fzy x;
 
-   fzs(List<fzs.c> $$0, fsh $$1) {
+   public fzs(ful $$0) {
+      super(wp.c("selectWorld.title"));
       this.b = $$0;
-      this.c = $$1;
    }
 
-   public fsh a() {
-      return this.c;
+   @Override
+   protected void aR_() {
+      this.c = new fpc(this.p, this.n / 2 - 100, 22, 200, 20, this.c, wp.c("selectWorld.search"));
+      this.c.b($$0 -> this.x.a($$0));
+      this.d(this.c);
+      this.x = this.c(new fzy(this, this.m, this.n, this.o - 112, 48, 36, this.c.a(), this.x));
+      this.u = this.c(fot.a(evg.a, $$0 -> this.x.b().ifPresent(fzy.c::c)).a(this.n / 2 - 154, this.o - 52, 150, 20).a());
+      this.c(fot.a(wp.c("selectWorld.create"), $$0 -> fzk.a(this.m, this)).a(this.n / 2 + 4, this.o - 52, 150, 20).a());
+      this.v = this.c(fot.a(wp.c("selectWorld.edit"), $$0 -> this.x.b().ifPresent(fzy.c::g)).a(this.n / 2 - 154, this.o - 28, 72, 20).a());
+      this.s = this.c(fot.a(wp.c("selectWorld.delete"), $$0 -> this.x.b().ifPresent(fzy.c::d)).a(this.n / 2 - 76, this.o - 28, 72, 20).a());
+      this.w = this.c(fot.a(wp.c("selectWorld.recreate"), $$0 -> this.x.b().ifPresent(fzy.c::h)).a(this.n / 2 + 4, this.o - 28, 72, 20).a());
+      this.c(fot.a(wo.k, $$0 -> this.m.a(this.b)).a(this.n / 2 + 82, this.o - 28, 72, 20).a());
+      this.a(null);
    }
 
-   public void b() {
-      this.b.forEach(fzs.c::a);
+   @Override
+   protected void aF_() {
+      this.b(this.c);
    }
 
-   public static fzs.a a(int $$0) {
-      return new fzs.a($$0);
+   @Override
+   public void aO_() {
+      this.m.a(this.b);
    }
 
-   public static class a {
-      final int a;
-      private final List<fzs.d> b = new ArrayList<>();
-      int c;
-      int d = 4;
-      int e;
-      Optional<fzs.b> f = Optional.empty();
+   @Override
+   public void a(foe $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
+   }
 
-      public a(int $$0) {
-         this.a = $$0;
-      }
-
-      void b() {
-         this.e++;
-      }
-
-      public fzs.d a(wp $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
-         fzs.d $$3 = new fzs.d($$0, $$1, $$2, 44);
-         this.b.add($$3);
-         return $$3;
-      }
-
-      public fzs.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fzs.a b(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fzs a() {
-         fsf $$0 = new fsf().b(this.d);
-         $$0.a(fsl.a(this.a - 44), 0, 0);
-         $$0.a(fsl.a(44), 0, 1);
-         List<fzs.c> $$1 = new ArrayList<>();
-         this.e = 0;
-
-         for (fzs.d $$2 : this.b) {
-            $$1.add($$2.a(this, $$0, 0));
-         }
-
-         $$0.a();
-         fzs $$3 = new fzs($$1, $$0);
-         $$3.b();
-         return $$3;
-      }
-
-      public fzs.a a(int $$0, boolean $$1) {
-         this.f = Optional.of(new fzs.b($$0, $$1));
-         return this;
+   public void a(@Nullable evg $$0) {
+      if ($$0 == null) {
+         this.u.b(evg.a);
+         this.u.j = false;
+         this.v.j = false;
+         this.w.j = false;
+         this.s.j = false;
+      } else {
+         this.u.b($$0.t());
+         this.u.j = $$0.u();
+         this.v.j = $$0.w();
+         this.w.j = $$0.x();
+         this.s.j = $$0.y();
       }
    }
 
-   static record b(int a, boolean b) {
-   }
-
-   static record c(foz<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
-      public void a() {
-         this.a.a(this.b.getAsBoolean());
-         if (this.c != null) {
-            this.a.j = this.c.getAsBoolean();
-         }
-      }
-
-      public foz<Boolean> b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
-
-      @Nullable
-      public BooleanSupplier d() {
-         return this.c;
-      }
-   }
-
-   public static class d {
-      private final wp a;
-      private final BooleanSupplier b;
-      private final Consumer<Boolean> c;
-      @Nullable
-      private wp d;
-      @Nullable
-      private BooleanSupplier e;
-      private final int f;
-
-      d(wp $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = $$3;
-      }
-
-      public fzs.d a(BooleanSupplier $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fzs.d a(wp $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      fzs.c a(fzs.a $$0, fsf $$1, int $$2) {
-         $$0.b();
-         fpz $$3 = new fpz(this.a, fli.Q().h).c();
-         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
-         Optional<fzs.b> $$4 = $$0.f;
-         foz.a<Boolean> $$5 = foz.b(this.b.getAsBoolean());
-         $$5.a();
-         boolean $$6 = this.d != null && $$4.isEmpty();
-         if ($$6) {
-            fqd $$7 = fqd.a(this.d);
-            $$5.a($$1x -> $$7);
-         }
-
-         if (this.d != null && !$$6) {
-            $$5.a($$0x -> wo.a(this.a, $$0x.c(), this.d));
-         } else {
-            $$5.a($$0x -> wo.a(this.a, $$0x.c()));
-         }
-
-         foz<Boolean> $$8 = $$5.a(0, 0, this.f, 20, wp.i(), ($$0x, $$1x) -> this.c.accept($$1x));
-         if (this.e != null) {
-            $$8.j = this.e.getAsBoolean();
-         }
-
-         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
-         if (this.d != null) {
-            $$4.ifPresent($$3x -> {
-               wp $$4x = this.d.f().a(n.h);
-               fob $$5x = fli.Q().h;
-               fpm $$6x = new fpm($$4x, $$5x);
-               $$6x.d($$0.a - $$0.c - this.f);
-               $$6x.e($$3x.a());
-               $$0.b();
-               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.y() : 0;
-               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
-            });
-         }
-
-         return new fzs.c($$8, this.b, this.e);
+   @Override
+   public void aI_() {
+      if (this.x != null) {
+         this.x.aH_().forEach(fzy.a::close);
       }
    }
 }

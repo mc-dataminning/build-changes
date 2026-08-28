@@ -1,6 +1,5 @@
-public class hax extends gzj {
-   public float[] a = new float[2];
-   public float[] b = new float[2];
-   public float c;
-   public boolean d;
+public class hax extends gyz {
+   public int a;
+   public boolean b;
+   public boolean c;
 }

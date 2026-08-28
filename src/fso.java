@@ -1,6 +1,24 @@
-public enum fso {
-   a,
-   b,
-   c,
-   d;
+import java.util.Collection;
+import java.util.List;
+
+public interface fso extends fqd, fsr {
+   fso.a w();
+
+   default boolean E() {
+      return true;
+   }
+
+   default Collection<? extends fso> L() {
+      return List.of(this);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+
+      public boolean a() {
+         return this == c;
+      }
+   }
 }

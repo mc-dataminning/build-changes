@@ -1,1762 +1,274 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Collection;
 import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 public class cve {
-   private static final akv a = cvd.a("inventory");
-   private static final akv b = cvd.a("item_search");
-   private static final aku<cvd> c = a("building_blocks");
-   private static final aku<cvd> d = a("colored_blocks");
-   private static final aku<cvd> e = a("natural_blocks");
-   private static final aku<cvd> f = a("functional_blocks");
-   private static final aku<cvd> g = a("redstone_blocks");
-   private static final aku<cvd> h = a("hotbar");
-   private static final aku<cvd> i = a("search");
-   private static final aku<cvd> j = a("tools_and_utilities");
-   private static final aku<cvd> k = a("combat");
-   private static final aku<cvd> l = a("food_and_drinks");
-   private static final aku<cvd> m = a("ingredients");
-   private static final aku<cvd> n = a("spawn_eggs");
-   private static final aku<cvd> o = a("op_blocks");
-   private static final aku<cvd> p = a("inventory");
-   private static final Comparator<jr<ckx>> q = Comparator.comparing(jr::a, Comparator.<ckx>comparingInt(ckx::a).thenComparing(ckx::b));
+   static final akv a = a("items");
+   private final wp b;
+   akv c = a;
+   boolean d = true;
+   boolean e = true;
+   boolean f = false;
+   private final cve.f g;
+   private final int h;
+   private final cve.h i;
    @Nullable
-   private static cvd.d r;
+   private cwp j;
+   private Collection<cwp> k = cwq.a();
+   private Set<cwp> l = cwq.a();
+   private final Supplier<cwp> m;
+   private final cve.b n;
 
-   private static aku<cvd> a(String $$0) {
-      return aku.a(mc.q, akv.b($$0));
+   cve(cve.f $$0, int $$1, cve.h $$2, wp $$3, Supplier<cwp> $$4, cve.b $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.b = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.i = $$2;
    }
 
-   public static cvd a(ke<cvd> $$0) {
-      ke.a($$0, c, cvd.a(cvd.f.a, 0).a(wp.c("itemGroup.buildingBlocks")).a(() -> new cwo(djn.cq)).a(($$0x, $$1) -> {
-         $$1.a(cws.bE);
-         $$1.a(cws.cp);
-         $$1.a(cws.bS);
-         $$1.a(cws.cd);
-         $$1.a(cws.K);
-         $$1.a(cws.gP);
-         $$1.a(cws.ee);
-         $$1.a(cws.fn);
-         $$1.a(cws.nX);
-         $$1.a(cws.ni);
-         $$1.a(cws.nD);
-         $$1.a(cws.mV);
-         $$1.a(cws.mF);
-         $$1.a(cws.bF);
-         $$1.a(cws.cq);
-         $$1.a(cws.bT);
-         $$1.a(cws.ce);
-         $$1.a(cws.L);
-         $$1.a(cws.gQ);
-         $$1.a(cws.ef);
-         $$1.a(cws.fo);
-         $$1.a(cws.nY);
-         $$1.a(cws.nj);
-         $$1.a(cws.nE);
-         $$1.a(cws.mW);
-         $$1.a(cws.mG);
-         $$1.a(cws.bG);
-         $$1.a(cws.cr);
-         $$1.a(cws.bU);
-         $$1.a(cws.cf);
-         $$1.a(cws.M);
-         $$1.a(cws.gR);
-         $$1.a(cws.eg);
-         $$1.a(cws.fp);
-         $$1.a(cws.nZ);
-         $$1.a(cws.nk);
-         $$1.a(cws.nF);
-         $$1.a(cws.mX);
-         $$1.a(cws.mH);
-         $$1.a(cws.bH);
-         $$1.a(cws.cs);
-         $$1.a(cws.bV);
-         $$1.a(cws.cg);
-         $$1.a(cws.N);
-         $$1.a(cws.gS);
-         $$1.a(cws.eh);
-         $$1.a(cws.fq);
-         $$1.a(cws.oa);
-         $$1.a(cws.nl);
-         $$1.a(cws.nG);
-         $$1.a(cws.mY);
-         $$1.a(cws.mI);
-         $$1.a(cws.bI);
-         $$1.a(cws.ct);
-         $$1.a(cws.bW);
-         $$1.a(cws.ch);
-         $$1.a(cws.O);
-         $$1.a(cws.gT);
-         $$1.a(cws.ei);
-         $$1.a(cws.fr);
-         $$1.a(cws.ob);
-         $$1.a(cws.nm);
-         $$1.a(cws.nH);
-         $$1.a(cws.mZ);
-         $$1.a(cws.mJ);
-         $$1.a(cws.bL);
-         $$1.a(cws.cw);
-         $$1.a(cws.bY);
-         $$1.a(cws.cj);
-         $$1.a(cws.Q);
-         $$1.a(cws.gV);
-         $$1.a(cws.ek);
-         $$1.a(cws.ft);
-         $$1.a(cws.od);
-         $$1.a(cws.no);
-         $$1.a(cws.nJ);
-         $$1.a(cws.nb);
-         $$1.a(cws.mL);
-         $$1.a(cws.bM);
-         $$1.a(cws.cx);
-         $$1.a(cws.ca);
-         $$1.a(cws.cl);
-         $$1.a(cws.S);
-         $$1.a(cws.gX);
-         $$1.a(cws.em);
-         $$1.a(cws.fv);
-         $$1.a(cws.of);
-         $$1.a(cws.nq);
-         $$1.a(cws.nL);
-         $$1.a(cws.nd);
-         $$1.a(cws.mN);
-         $$1.a(cws.bJ);
-         $$1.a(cws.cu);
-         $$1.a(cws.bX);
-         $$1.a(cws.ci);
-         $$1.a(cws.P);
-         $$1.a(cws.gU);
-         $$1.a(cws.ej);
-         $$1.a(cws.fs);
-         $$1.a(cws.oc);
-         $$1.a(cws.nn);
-         $$1.a(cws.nI);
-         $$1.a(cws.na);
-         $$1.a(cws.mK);
-         $$1.a(cws.bK);
-         $$1.a(cws.cv);
-         $$1.a(cws.bZ);
-         $$1.a(cws.ck);
-         $$1.a(cws.R);
-         $$1.a(cws.gW);
-         $$1.a(cws.el);
-         $$1.a(cws.fu);
-         $$1.a(cws.oe);
-         $$1.a(cws.np);
-         $$1.a(cws.nK);
-         $$1.a(cws.nc);
-         $$1.a(cws.mM);
-         $$1.a(cws.bR);
-         $$1.a(cws.co);
-         $$1.a(cws.T);
-         $$1.a(cws.W);
-         $$1.a(cws.gY);
-         $$1.a(cws.gZ);
-         $$1.a(cws.en);
-         $$1.a(cws.eo);
-         $$1.a(cws.fw);
-         $$1.a(cws.og);
-         $$1.a(cws.nr);
-         $$1.a(cws.nM);
-         $$1.a(cws.ne);
-         $$1.a(cws.mO);
-         $$1.a(cws.bP);
-         $$1.a(cws.cy);
-         $$1.a(cws.cb);
-         $$1.a(cws.cm);
-         $$1.a(cws.U);
-         $$1.a(cws.ha);
-         $$1.a(cws.ep);
-         $$1.a(cws.fx);
-         $$1.a(cws.oh);
-         $$1.a(cws.ns);
-         $$1.a(cws.nN);
-         $$1.a(cws.nf);
-         $$1.a(cws.mP);
-         $$1.a(cws.bQ);
-         $$1.a(cws.cz);
-         $$1.a(cws.cc);
-         $$1.a(cws.cn);
-         $$1.a(cws.V);
-         $$1.a(cws.hb);
-         $$1.a(cws.eq);
-         $$1.a(cws.fy);
-         $$1.a(cws.oi);
-         $$1.a(cws.nt);
-         $$1.a(cws.nO);
-         $$1.a(cws.ng);
-         $$1.a(cws.mQ);
-         $$1.a(cws.b);
-         $$1.a(cws.lA);
-         $$1.a(cws.er);
-         $$1.a(cws.mR);
-         $$1.a(cws.mD);
-         $$1.a(cws.J);
-         $$1.a(cws.fg);
-         $$1.a(cws.ew);
-         $$1.a(cws.he);
-         $$1.a(cws.eQ);
-         $$1.a(cws.ly);
-         $$1.a(cws.lQ);
-         $$1.a(cws.hf);
-         $$1.a(cws.eL);
-         $$1.a(cws.es);
-         $$1.a(cws.fR);
-         $$1.a(cws.fT);
-         $$1.a(cws.gu);
-         $$1.a(cws.ey);
-         $$1.a(cws.hl);
-         $$1.a(cws.fU);
-         $$1.a(cws.fS);
-         $$1.a(cws.lw);
-         $$1.a(cws.lO);
-         $$1.a(cws.hj);
-         $$1.a(cws.c);
-         $$1.a(cws.lD);
-         $$1.a(cws.lU);
-         $$1.a(cws.hk);
-         $$1.a(cws.d);
-         $$1.a(cws.lu);
-         $$1.a(cws.lM);
-         $$1.a(cws.e);
-         $$1.a(cws.lH);
-         $$1.a(cws.lY);
-         $$1.a(cws.hs);
-         $$1.a(cws.f);
-         $$1.a(cws.lx);
-         $$1.a(cws.lP);
-         $$1.a(cws.g);
-         $$1.a(cws.lE);
-         $$1.a(cws.lV);
-         $$1.a(cws.ho);
-         $$1.a(cws.h);
-         $$1.a(cws.lG);
-         $$1.a(cws.lX);
-         $$1.a(cws.i);
-         $$1.a(cws.j);
-         $$1.a(cws.lI);
-         $$1.a(cws.lZ);
-         $$1.a(cws.hw);
-         $$1.a(cws.gb);
-         $$1.a(cws.k);
-         $$1.a(cws.lJ);
-         $$1.a(cws.ma);
-         $$1.a(cws.hx);
-         $$1.a(cws.fX);
-         $$1.a(cws.fY);
-         $$1.a(cws.lK);
-         $$1.a(cws.mb);
-         $$1.a(cws.hy);
-         $$1.a(cws.fZ);
-         $$1.a(cws.ga);
-         $$1.a(cws.lL);
-         $$1.a(cws.mc);
-         $$1.a(cws.hz);
-         $$1.a(cws.gc);
-         $$1.a(cws.m);
-         $$1.a(cws.o);
-         $$1.a(cws.n);
-         $$1.a(cws.p);
-         $$1.a(cws.q);
-         $$1.a(cws.r);
-         $$1.a(cws.t);
-         $$1.a(cws.s);
-         $$1.a(cws.u);
-         $$1.a(cws.v);
-         $$1.a(cws.x);
-         $$1.a(cws.w);
-         $$1.a(cws.y);
-         $$1.a(cws.z);
-         $$1.a(cws.eM);
-         $$1.a(cws.gt);
-         $$1.a(cws.ex);
-         $$1.a(cws.hg);
-         $$1.a(cws.fV);
-         $$1.a(cws.fW);
-         $$1.a(cws.gv);
-         $$1.a(cws.ez);
-         $$1.a(cws.hm);
-         $$1.a(cws.go);
-         $$1.a(cws.gp);
-         $$1.a(cws.gq);
-         $$1.a(cws.gr);
-         $$1.a(cws.gs);
-         $$1.a(cws.cQ);
-         $$1.a(cws.gM);
-         $$1.a(cws.et);
-         $$1.a(cws.hq);
-         $$1.a(cws.cR);
-         $$1.a(cws.eK);
-         $$1.a(cws.lB);
-         $$1.a(cws.lS);
-         $$1.a(cws.cS);
-         $$1.a(cws.eu);
-         $$1.a(cws.jn);
-         $$1.a(cws.jq);
-         $$1.a(cws.eC);
-         $$1.a(cws.hi);
-         $$1.a(cws.jo);
-         $$1.a(cws.eJ);
-         $$1.a(cws.lv);
-         $$1.a(cws.lN);
-         $$1.a(cws.jp);
-         $$1.a(cws.eD);
-         $$1.a(cws.jm);
-         $$1.a(cws.jg);
-         $$1.a(cws.jj);
-         $$1.a(cws.eF);
-         $$1.a(cws.hh);
-         $$1.a(cws.jh);
-         $$1.a(cws.jk);
-         $$1.a(cws.eG);
-         $$1.a(cws.ji);
-         $$1.a(cws.jl);
-         $$1.a(cws.eH);
-         $$1.a(cws.fC);
-         $$1.a(cws.gy);
-         $$1.a(cws.gz);
-         $$1.a(cws.gC);
-         $$1.a(cws.eA);
-         $$1.a(cws.hn);
-         $$1.a(cws.gB);
-         $$1.a(cws.gA);
-         $$1.a(cws.jw);
-         $$1.a(cws.lF);
-         $$1.a(cws.lW);
-         $$1.a(cws.hp);
-         $$1.a(cws.fF);
-         $$1.a(cws.fH);
-         $$1.a(cws.fG);
-         $$1.a(cws.xH);
-         $$1.a(cws.xK);
-         $$1.a(cws.xJ);
-         $$1.a(cws.xI);
-         $$1.a(cws.ht);
-         $$1.a(cws.xO);
-         $$1.a(cws.xL);
-         $$1.a(cws.xN);
-         $$1.a(cws.xM);
-         $$1.a(cws.hu);
-         $$1.a(cws.mS);
-         $$1.a(cws.mE);
-         $$1.a(cws.xP);
-         $$1.a(cws.xS);
-         $$1.a(cws.xR);
-         $$1.a(cws.xQ);
-         $$1.a(cws.hv);
-         $$1.a(cws.gJ);
-         $$1.a(cws.gK);
-         $$1.a(cws.lz);
-         $$1.a(cws.lR);
-         $$1.a(cws.hr);
-         $$1.a(cws.eW);
-         $$1.a(cws.eX);
-         $$1.a(cws.eY);
-         $$1.a(cws.eE);
-         $$1.a(cws.aF);
-         $$1.a(cws.aM);
-         $$1.a(cws.gg);
-         $$1.a(cws.nh);
-         $$1.a(cws.nC);
-         $$1.a(cws.mU);
-         $$1.a(cws.gh);
-         $$1.a(cws.aO);
-         $$1.a(cws.mT);
-         $$1.a(cws.mg);
-         $$1.a(cws.gO);
-         $$1.a(cws.cP);
-         $$1.a(cws.aP);
-         $$1.a(cws.aQ);
-         $$1.a(cws.hE);
-         $$1.a(cws.hH);
-         $$1.a(cws.eB);
-         $$1.a(cws.hD);
-         $$1.a(cws.hF);
-         $$1.a(cws.hG);
-         $$1.a(cws.eI);
-         $$1.a(cws.lC);
-         $$1.a(cws.lT);
-         $$1.a(cws.aK);
-         $$1.a(cws.aN);
-         $$1.a(cws.aU);
-         $$1.a(cws.zm);
-         $$1.a(cws.aY);
-         $$1.a(cws.bc);
-         $$1.a(cws.bg);
-         $$1.a(cws.nu);
-         $$1.a(cws.nP);
-         $$1.a(cws.zu);
-         $$1.a(cws.aR);
-         $$1.a(cws.aV);
-         $$1.a(cws.zn);
-         $$1.a(cws.aZ);
-         $$1.a(cws.bd);
-         $$1.a(cws.bh);
-         $$1.a(cws.nv);
-         $$1.a(cws.nQ);
-         $$1.a(cws.zv);
-         $$1.a(cws.aS);
-         $$1.a(cws.aW);
-         $$1.a(cws.zo);
-         $$1.a(cws.ba);
-         $$1.a(cws.be);
-         $$1.a(cws.bi);
-         $$1.a(cws.nw);
-         $$1.a(cws.nR);
-         $$1.a(cws.zw);
-         $$1.a(cws.aT);
-         $$1.a(cws.aX);
-         $$1.a(cws.zp);
-         $$1.a(cws.bb);
-         $$1.a(cws.bf);
-         $$1.a(cws.bj);
-         $$1.a(cws.nx);
-         $$1.a(cws.nS);
-         $$1.a(cws.zx);
-         $$1.a(cws.bk);
-         $$1.a(cws.bo);
-         $$1.a(cws.zq);
-         $$1.a(cws.bs);
-         $$1.a(cws.bw);
-         $$1.a(cws.bA);
-         $$1.a(cws.ny);
-         $$1.a(cws.nT);
-         $$1.a(cws.zy);
-         $$1.a(cws.bl);
-         $$1.a(cws.bp);
-         $$1.a(cws.zr);
-         $$1.a(cws.bt);
-         $$1.a(cws.bx);
-         $$1.a(cws.bB);
-         $$1.a(cws.nz);
-         $$1.a(cws.nU);
-         $$1.a(cws.zz);
-         $$1.a(cws.bm);
-         $$1.a(cws.bq);
-         $$1.a(cws.zs);
-         $$1.a(cws.bu);
-         $$1.a(cws.by);
-         $$1.a(cws.bC);
-         $$1.a(cws.nA);
-         $$1.a(cws.nV);
-         $$1.a(cws.zA);
-         $$1.a(cws.bn);
-         $$1.a(cws.br);
-         $$1.a(cws.zt);
-         $$1.a(cws.bv);
-         $$1.a(cws.bz);
-         $$1.a(cws.bD);
-         $$1.a(cws.nB);
-         $$1.a(cws.nW);
-         $$1.a(cws.zB);
-      }).d());
-      ke.a($$0, d, cvd.a(cvd.f.a, 1).a(wp.c("itemGroup.coloredBlocks")).a(() -> new cwo(djn.bQ)).a(($$0x, $$1) -> {
-         $$1.a(cws.db);
-         $$1.a(cws.dj);
-         $$1.a(cws.di);
-         $$1.a(cws.dq);
-         $$1.a(cws.dn);
-         $$1.a(cws.dp);
-         $$1.a(cws.dc);
-         $$1.a(cws.df);
-         $$1.a(cws.dg);
-         $$1.a(cws.do);
-         $$1.a(cws.dk);
-         $$1.a(cws.de);
-         $$1.a(cws.dm);
-         $$1.a(cws.dl);
-         $$1.a(cws.dd);
-         $$1.a(cws.dh);
-         $$1.a(cws.ib);
-         $$1.a(cws.ij);
-         $$1.a(cws.ii);
-         $$1.a(cws.iq);
-         $$1.a(cws.in);
-         $$1.a(cws.ip);
-         $$1.a(cws.ic);
-         $$1.a(cws.if);
-         $$1.a(cws.ig);
-         $$1.a(cws.io);
-         $$1.a(cws.ik);
-         $$1.a(cws.ie);
-         $$1.a(cws.im);
-         $$1.a(cws.il);
-         $$1.a(cws.id);
-         $$1.a(cws.ih);
-         $$1.a(cws.ir);
-         $$1.a(cws.hI);
-         $$1.a(cws.hQ);
-         $$1.a(cws.hP);
-         $$1.a(cws.hX);
-         $$1.a(cws.hU);
-         $$1.a(cws.hW);
-         $$1.a(cws.hJ);
-         $$1.a(cws.hM);
-         $$1.a(cws.hN);
-         $$1.a(cws.hV);
-         $$1.a(cws.hR);
-         $$1.a(cws.hL);
-         $$1.a(cws.hT);
-         $$1.a(cws.hS);
-         $$1.a(cws.hK);
-         $$1.a(cws.hO);
-         $$1.a(cws.kg);
-         $$1.a(cws.ko);
-         $$1.a(cws.kn);
-         $$1.a(cws.kv);
-         $$1.a(cws.ks);
-         $$1.a(cws.ku);
-         $$1.a(cws.kh);
-         $$1.a(cws.kk);
-         $$1.a(cws.kl);
-         $$1.a(cws.kt);
-         $$1.a(cws.kp);
-         $$1.a(cws.kj);
-         $$1.a(cws.kr);
-         $$1.a(cws.kq);
-         $$1.a(cws.ki);
-         $$1.a(cws.km);
-         $$1.a(cws.kw);
-         $$1.a(cws.kE);
-         $$1.a(cws.kD);
-         $$1.a(cws.kL);
-         $$1.a(cws.kI);
-         $$1.a(cws.kK);
-         $$1.a(cws.kx);
-         $$1.a(cws.kA);
-         $$1.a(cws.kB);
-         $$1.a(cws.kJ);
-         $$1.a(cws.kF);
-         $$1.a(cws.kz);
-         $$1.a(cws.kH);
-         $$1.a(cws.kG);
-         $$1.a(cws.ky);
-         $$1.a(cws.kC);
-         $$1.a(cws.jQ);
-         $$1.a(cws.jY);
-         $$1.a(cws.jX);
-         $$1.a(cws.kf);
-         $$1.a(cws.kc);
-         $$1.a(cws.ke);
-         $$1.a(cws.jR);
-         $$1.a(cws.jU);
-         $$1.a(cws.jV);
-         $$1.a(cws.kd);
-         $$1.a(cws.jZ);
-         $$1.a(cws.jT);
-         $$1.a(cws.kb);
-         $$1.a(cws.ka);
-         $$1.a(cws.jS);
-         $$1.a(cws.jW);
-         $$1.a(cws.cN);
-         $$1.a(cws.cO);
-         $$1.a(cws.iA);
-         $$1.a(cws.iI);
-         $$1.a(cws.iH);
-         $$1.a(cws.iP);
-         $$1.a(cws.iM);
-         $$1.a(cws.iO);
-         $$1.a(cws.iB);
-         $$1.a(cws.iE);
-         $$1.a(cws.iF);
-         $$1.a(cws.iN);
-         $$1.a(cws.iJ);
-         $$1.a(cws.iD);
-         $$1.a(cws.iL);
-         $$1.a(cws.iK);
-         $$1.a(cws.iC);
-         $$1.a(cws.iG);
-         $$1.a(cws.gi);
-         $$1.a(cws.iQ);
-         $$1.a(cws.iY);
-         $$1.a(cws.iX);
-         $$1.a(cws.jf);
-         $$1.a(cws.jc);
-         $$1.a(cws.je);
-         $$1.a(cws.iR);
-         $$1.a(cws.iU);
-         $$1.a(cws.iV);
-         $$1.a(cws.jd);
-         $$1.a(cws.iZ);
-         $$1.a(cws.iT);
-         $$1.a(cws.jb);
-         $$1.a(cws.ja);
-         $$1.a(cws.iS);
-         $$1.a(cws.iW);
-         $$1.a(cws.jz);
-         $$1.a(cws.jA);
-         $$1.a(cws.jI);
-         $$1.a(cws.jH);
-         $$1.a(cws.jP);
-         $$1.a(cws.jM);
-         $$1.a(cws.jO);
-         $$1.a(cws.jB);
-         $$1.a(cws.jE);
-         $$1.a(cws.jF);
-         $$1.a(cws.jN);
-         $$1.a(cws.jJ);
-         $$1.a(cws.jD);
-         $$1.a(cws.jL);
-         $$1.a(cws.jK);
-         $$1.a(cws.jC);
-         $$1.a(cws.jG);
-         $$1.a(cws.sz);
-         $$1.a(cws.sH);
-         $$1.a(cws.sG);
-         $$1.a(cws.sO);
-         $$1.a(cws.sL);
-         $$1.a(cws.sN);
-         $$1.a(cws.sA);
-         $$1.a(cws.sD);
-         $$1.a(cws.sE);
-         $$1.a(cws.sM);
-         $$1.a(cws.sI);
-         $$1.a(cws.sC);
-         $$1.a(cws.sK);
-         $$1.a(cws.sJ);
-         $$1.a(cws.sB);
-         $$1.a(cws.sF);
-         $$1.a(cws.xU);
-         $$1.a(cws.xV);
-         $$1.a(cws.yd);
-         $$1.a(cws.yc);
-         $$1.a(cws.yk);
-         $$1.a(cws.yh);
-         $$1.a(cws.yj);
-         $$1.a(cws.xW);
-         $$1.a(cws.xZ);
-         $$1.a(cws.ya);
-         $$1.a(cws.yi);
-         $$1.a(cws.ye);
-         $$1.a(cws.xY);
-         $$1.a(cws.yg);
-         $$1.a(cws.yf);
-         $$1.a(cws.xX);
-         $$1.a(cws.yb);
-         $$1.a(cws.vP);
-         $$1.a(cws.vX);
-         $$1.a(cws.vW);
-         $$1.a(cws.we);
-         $$1.a(cws.wb);
-         $$1.a(cws.wd);
-         $$1.a(cws.vQ);
-         $$1.a(cws.vT);
-         $$1.a(cws.vU);
-         $$1.a(cws.wc);
-         $$1.a(cws.vY);
-         $$1.a(cws.vS);
-         $$1.a(cws.wa);
-         $$1.a(cws.vZ);
-         $$1.a(cws.vR);
-         $$1.a(cws.vV);
-      }).d());
-      ke.a($$0, e, cvd.a(cvd.f.a, 2).a(wp.c("itemGroup.natural")).a(() -> new cwo(djn.i)).a(($$0x, $$1) -> {
-         $$1.a(cws.B);
-         $$1.a(cws.E);
-         $$1.a(cws.gw);
-         $$1.a(cws.it);
-         $$1.a(cws.C);
-         $$1.a(cws.D);
-         $$1.a(cws.F);
-         $$1.a(cws.fd);
-         $$1.a(cws.G);
-         $$1.a(cws.fl);
-         $$1.a(cws.al);
-         $$1.a(cws.ah);
-         $$1.a(cws.cQ);
-         $$1.a(cws.ak);
-         $$1.a(cws.jn);
-         $$1.a(cws.fi);
-         $$1.a(cws.is);
-         $$1.a(cws.ls);
-         $$1.a(cws.fj);
-         $$1.a(cws.fh);
-         $$1.a(cws.dW);
-         $$1.a(cws.dV);
-         $$1.a(cws.dZ);
-         $$1.a(cws.dX);
-         $$1.a(cws.dY);
-         $$1.a(cws.b);
-         $$1.a(cws.i);
-         $$1.a(cws.c);
-         $$1.a(cws.e);
-         $$1.a(cws.g);
-         $$1.a(cws.l);
-         $$1.a(cws.m);
-         $$1.a(cws.A);
-         $$1.a(cws.yp);
-         $$1.a(cws.jg);
-         $$1.a(cws.jt);
-         $$1.a(cws.eR);
-         $$1.a(cws.xG);
-         $$1.a(cws.fC);
-         $$1.a(cws.H);
-         $$1.a(cws.I);
-         $$1.a(cws.fD);
-         $$1.a(cws.fE);
-         $$1.a(cws.jx);
-         $$1.a(cws.xH);
-         $$1.a(cws.fF);
-         $$1.a(cws.fH);
-         $$1.a(cws.gJ);
-         $$1.a(cws.am);
-         $$1.a(cws.an);
-         $$1.a(cws.ao);
-         $$1.a(cws.ap);
-         $$1.a(cws.aq);
-         $$1.a(cws.ar);
-         $$1.a(cws.as);
-         $$1.a(cws.at);
-         $$1.a(cws.au);
-         $$1.a(cws.av);
-         $$1.a(cws.aw);
-         $$1.a(cws.ax);
-         $$1.a(cws.ay);
-         $$1.a(cws.az);
-         $$1.a(cws.aA);
-         $$1.a(cws.aB);
-         $$1.a(cws.aC);
-         $$1.a(cws.aD);
-         $$1.a(cws.aE);
-         $$1.a(cws.aG);
-         $$1.a(cws.aH);
-         $$1.a(cws.aI);
-         $$1.a(cws.fJ);
-         $$1.a(cws.aK);
-         $$1.a(cws.aL);
-         $$1.a(cws.yl);
-         $$1.a(cws.ym);
-         $$1.a(cws.yn);
-         $$1.a(cws.yo);
-         $$1.a(cws.bE);
-         $$1.a(cws.bF);
-         $$1.a(cws.bG);
-         $$1.a(cws.bH);
-         $$1.a(cws.bI);
-         $$1.a(cws.bL);
-         $$1.a(cws.bM);
-         $$1.a(cws.bN);
-         $$1.a(cws.bO);
-         $$1.a(cws.bJ);
-         $$1.a(cws.bK);
-         $$1.a(cws.gf);
-         $$1.a(cws.bP);
-         $$1.a(cws.bQ);
-         $$1.a(cws.cA);
-         $$1.a(cws.cB);
-         $$1.a(cws.cC);
-         $$1.a(cws.cD);
-         $$1.a(cws.cE);
-         $$1.a(cws.cG);
-         $$1.a(cws.cI);
-         $$1.a(cws.cF);
-         $$1.a(cws.cH);
-         $$1.a(cws.cJ);
-         $$1.a(cws.cK);
-         $$1.a(cws.gd);
-         $$1.a(cws.ge);
-         $$1.a(cws.ju);
-         $$1.a(cws.jv);
-         $$1.a(cws.xz);
-         $$1.a(cws.X);
-         $$1.a(cws.Y);
-         $$1.a(cws.Z);
-         $$1.a(cws.aa);
-         $$1.a(cws.ab);
-         $$1.a(cws.ad);
-         $$1.a(cws.af);
-         $$1.a(cws.ac);
-         $$1.a(cws.ae);
-         $$1.a(cws.cW);
-         $$1.a(cws.cX);
-         $$1.a(cws.dJ);
-         $$1.a(cws.dK);
-         $$1.a(cws.dL);
-         $$1.a(cws.dM);
-         $$1.a(cws.cU);
-         $$1.a(cws.cV);
-         $$1.a(cws.cY);
-         $$1.a(cws.dr);
-         $$1.a(cws.du);
-         $$1.a(cws.dv);
-         $$1.a(cws.dw);
-         $$1.a(cws.dx);
-         $$1.a(cws.dy);
-         $$1.a(cws.dz);
-         $$1.a(cws.dA);
-         $$1.a(cws.dB);
-         $$1.a(cws.dC);
-         $$1.a(cws.dD);
-         $$1.a(cws.dE);
-         $$1.a(cws.dG);
-         $$1.a(cws.dt);
-         $$1.a(cws.ds);
-         $$1.a(cws.dF);
-         $$1.a(cws.dU);
-         $$1.a(cws.dI);
-         $$1.a(cws.ed);
-         $$1.a(cws.dS);
-         $$1.a(cws.fk);
-         $$1.a(cws.dN);
-         $$1.a(cws.dO);
-         $$1.a(cws.dP);
-         $$1.a(cws.dQ);
-         $$1.a(cws.dR);
-         $$1.a(cws.gk);
-         $$1.a(cws.iy);
-         $$1.a(cws.iz);
-         $$1.a(cws.iu);
-         $$1.a(cws.iv);
-         $$1.a(cws.iw);
-         $$1.a(cws.ix);
-         $$1.a(cws.dH);
-         $$1.a(cws.eb);
-         $$1.a(cws.ec);
-         $$1.a(cws.eU);
-         $$1.a(cws.eV);
-         $$1.a(cws.gl);
-         $$1.a(cws.ea);
-         $$1.a(cws.yt);
-         $$1.a(cws.kM);
-         $$1.a(cws.kN);
-         $$1.a(cws.qa);
-         $$1.a(cws.se);
-         $$1.a(cws.sV);
-         $$1.a(cws.sW);
-         $$1.a(cws.wl);
-         $$1.a(cws.wi);
-         $$1.a(cws.wj);
-         $$1.a(cws.xw);
-         $$1.a(cws.xv);
-         $$1.a(cws.tg);
-         $$1.a(cws.gx);
-         $$1.a(cws.cZ);
-         $$1.a(cws.da);
-         $$1.a(cws.dT);
-         $$1.a(cws.ru);
-         $$1.a(cws.kT);
-         $$1.a(cws.kU);
-         $$1.a(cws.kV);
-         $$1.a(cws.kW);
-         $$1.a(cws.kX);
-         $$1.a(cws.kO);
-         $$1.a(cws.kP);
-         $$1.a(cws.kQ);
-         $$1.a(cws.kR);
-         $$1.a(cws.kS);
-         $$1.a(cws.kY);
-         $$1.a(cws.kZ);
-         $$1.a(cws.la);
-         $$1.a(cws.lb);
-         $$1.a(cws.lc);
-         $$1.a(cws.lh);
-         $$1.a(cws.ld);
-         $$1.a(cws.le);
-         $$1.a(cws.lf);
-         $$1.a(cws.lg);
-         $$1.a(cws.li);
-         $$1.a(cws.lj);
-         $$1.a(cws.lk);
-         $$1.a(cws.ll);
-         $$1.a(cws.lm);
-         $$1.a(cws.ln);
-         $$1.a(cws.lo);
-         $$1.a(cws.lp);
-         $$1.a(cws.lq);
-         $$1.a(cws.lr);
-         $$1.a(cws.cL);
-         $$1.a(cws.cM);
-         $$1.a(cws.gj);
-         $$1.a(cws.fz);
-         $$1.a(cws.fA);
-         $$1.a(cws.fB);
-         $$1.a(cws.ia);
-         $$1.a(cws.xB);
-         $$1.a(cws.xE);
-         $$1.a(cws.ml);
-         $$1.a(cws.mm);
-         $$1.a(cws.gn);
-         $$1.a(cws.yq);
-         $$1.a(cws.yr);
-         $$1.a(cws.ys);
-         $$1.a(cws.gD);
-         $$1.a(cws.gE);
-         $$1.a(cws.gF);
-         $$1.a(cws.gG);
-         $$1.a(cws.mw);
-         $$1.a(cws.cT);
-         $$1.a(cws.ag);
-      }).d());
-      ke.a($$0, f, cvd.a(cvd.f.a, 3).a(wp.c("itemGroup.functional")).a(() -> new cwo(cws.qH)).a(($$0x, $$1) -> {
-         $$1.a(cws.eS);
-         $$1.a(cws.fI);
-         $$1.a(cws.mf);
-         $$1.a(cws.xt);
-         $$1.a(cws.xu);
-         $$1.a(cws.gh);
-         $$1.a(cws.eT);
-         $$1.a(cws.jm);
-         $$1.a(cws.mB);
-         $$1.a(cws.zu);
-         $$1.a(cws.zv);
-         $$1.a(cws.zw);
-         $$1.a(cws.zx);
-         $$1.a(cws.zy);
-         $$1.a(cws.zz);
-         $$1.a(cws.zA);
-         $$1.a(cws.zB);
-         $$1.a(cws.fJ);
-         $$1.a(cws.xz);
-         $$1.a(cws.yq);
-         $$1.a(cws.yr);
-         $$1.a(cws.ys);
-         $$1.a(cws.xG);
-         $$1.a(cws.gl);
-         $$1.a(cws.jt);
-         $$1.a(cws.fc);
-         $$1.a(cws.xr);
-         $$1.a(cws.xn);
-         $$1.a(cws.xo);
-         $$1.a(cws.xq);
-         $$1.a(cws.xp);
-         $$1.a(cws.wX);
-         $$1.a(cws.fe);
-         $$1.a(cws.xl);
-         $$1.a(cws.xm);
-         $$1.a(cws.xx);
-         $$1.a(cws.xy);
-         $$1.a(cws.hA);
-         $$1.a(cws.hB);
-         $$1.a(cws.hC);
-         $$1.a(cws.xj);
-         $$1.a(cws.mC);
-         $$1.a(cws.fm);
-         $$1.a(cws.gH);
-         $$1.a(cws.wf);
-         $$1.a(cws.tn);
-         $$1.a(cws.to);
-         $$1.a(cws.xs);
-         $$1.a(cws.hd);
-         $$1.a(cws.lt);
-         $$1.a(cws.xF);
-         $$1.a(cws.ff);
-         $$1.a(cws.md);
-         $$1.a(cws.xB);
-         $$1.a(cws.xC);
-         $$1.a(cws.ai);
-         $$1.a(cws.aj);
-         $$1.a(cws.mu);
-         $$1.a(cws.vd);
-         $$1.a(cws.eP);
-         $$1.a(cws.vF);
-         $$1.a(cws.vb);
-         $$1.a(cws.vc);
-         $$1.a(cws.qE);
-         $$0x.c().a(mc.X).ifPresent($$2 -> a($$1, $$0x.c(), (jt.b<ckx>)$$2, $$0xxx -> $$0xxx.a(awz.a), cvd.g.a));
-         $$1.a(cws.eN);
-         $$1.a(cws.eO);
-         $$1.a(cws.mr);
-         $$1.a(cws.cO);
-         $$1.a(cws.qH);
-         $$1.a(cws.qT);
-         $$1.a(cws.qI);
-         $$1.a(cws.qU);
-         $$1.a(cws.qJ);
-         $$1.a(cws.qV);
-         $$1.a(cws.qK);
-         $$1.a(cws.qW);
-         $$1.a(cws.qL);
-         $$1.a(cws.qX);
-         $$1.a(cws.qN);
-         $$1.a(cws.qZ);
-         $$1.a(cws.qP);
-         $$1.a(cws.rb);
-         $$1.a(cws.qM);
-         $$1.a(cws.qY);
-         $$1.a(cws.qO);
-         $$1.a(cws.ra);
-         $$1.a(cws.qQ);
-         $$1.a(cws.rc);
-         $$1.a(cws.qR);
-         $$1.a(cws.rd);
-         $$1.a(cws.qS);
-         $$1.a(cws.re);
-         $$1.a(cws.fb);
-         $$1.a(cws.xk);
-         $$1.a(cws.gN);
-         $$1.a(cws.jz);
-         $$1.a(cws.jA);
-         $$1.a(cws.jI);
-         $$1.a(cws.jH);
-         $$1.a(cws.jP);
-         $$1.a(cws.jM);
-         $$1.a(cws.jO);
-         $$1.a(cws.jB);
-         $$1.a(cws.jE);
-         $$1.a(cws.jF);
-         $$1.a(cws.jN);
-         $$1.a(cws.jJ);
-         $$1.a(cws.jD);
-         $$1.a(cws.jL);
-         $$1.a(cws.jK);
-         $$1.a(cws.jC);
-         $$1.a(cws.jG);
-         $$1.a(cws.xT);
-         $$1.a(cws.sz);
-         $$1.a(cws.sH);
-         $$1.a(cws.sG);
-         $$1.a(cws.sO);
-         $$1.a(cws.sL);
-         $$1.a(cws.sN);
-         $$1.a(cws.sA);
-         $$1.a(cws.sD);
-         $$1.a(cws.sE);
-         $$1.a(cws.sM);
-         $$1.a(cws.sI);
-         $$1.a(cws.sC);
-         $$1.a(cws.sK);
-         $$1.a(cws.sJ);
-         $$1.a(cws.sB);
-         $$1.a(cws.sF);
-         $$1.a(cws.xU);
-         $$1.a(cws.xV);
-         $$1.a(cws.yd);
-         $$1.a(cws.yc);
-         $$1.a(cws.yk);
-         $$1.a(cws.yh);
-         $$1.a(cws.yj);
-         $$1.a(cws.xW);
-         $$1.a(cws.xZ);
-         $$1.a(cws.ya);
-         $$1.a(cws.yi);
-         $$1.a(cws.ye);
-         $$1.a(cws.xY);
-         $$1.a(cws.yg);
-         $$1.a(cws.yf);
-         $$1.a(cws.xX);
-         $$1.a(cws.yb);
-         $$1.a(cws.vP);
-         $$1.a(cws.vX);
-         $$1.a(cws.vW);
-         $$1.a(cws.we);
-         $$1.a(cws.wb);
-         $$1.a(cws.wd);
-         $$1.a(cws.vQ);
-         $$1.a(cws.vT);
-         $$1.a(cws.vU);
-         $$1.a(cws.wc);
-         $$1.a(cws.vY);
-         $$1.a(cws.vS);
-         $$1.a(cws.wa);
-         $$1.a(cws.vZ);
-         $$1.a(cws.vR);
-         $$1.a(cws.vV);
-         $$1.a(cqj.a($$0x.c().d(mc.d)));
-         $$1.a(cws.vk);
-         $$1.a(cws.vl);
-         $$1.a(cws.vm);
-         $$1.a(cws.vn);
-         $$1.a(cws.vo);
-         $$1.a(cws.vq);
-         $$1.a(cws.vp);
-         $$1.a(cws.gL);
-         $$1.a(cws.gI);
-         $$1.a(cws.tp);
-         $$1.a(cws.zF);
-         $$1.a(cws.fK);
-         $$1.a(cws.fL);
-         $$1.a(cws.fM);
-         $$1.a(cws.fN);
-         $$1.a(cws.fO);
-         $$1.a(cws.fP);
-         $$1.a(cws.fQ);
-      }).d());
-      ke.a($$0, g, cvd.a(cvd.f.a, 4).a(wp.c("itemGroup.redstone")).a(() -> new cwo(cws.me)).a(($$0x, $$1) -> {
-         $$1.a(cws.me);
-         $$1.a(cws.mf);
-         $$1.a(cws.mg);
-         $$1.a(cws.mh);
-         $$1.a(cws.mi);
-         $$1.a(cws.ms);
-         $$1.a(cws.zy);
-         $$1.a(cws.zz);
-         $$1.a(cws.zA);
-         $$1.a(cws.zB);
-         $$1.a(cws.mt);
-         $$1.a(cws.mF);
-         $$1.a(cws.mD);
-         $$1.a(cws.mV);
-         $$1.a(cws.mR);
-         $$1.a(cws.mT);
-         $$1.a(cws.mU);
-         $$1.a(cws.mw);
-         $$1.a(cws.mx);
-         $$1.a(cws.gG);
-         $$1.a(cws.aK);
-         $$1.a(cws.db);
-         $$1.a(cws.my);
-         $$1.a(cws.pX);
-         $$1.a(cws.mr);
-         $$1.a(cws.mv);
-         $$1.a(cws.mu);
-         $$1.a(cws.mj);
-         $$1.a(cws.mk);
-         $$1.a(cws.ml);
-         $$1.a(cws.mm);
-         $$1.a(cws.mp);
-         $$1.a(cws.mq);
-         $$1.a(cws.sQ);
-         $$1.a(cws.mo);
-         $$1.a(cws.fb);
-         $$1.a(cws.xk);
-         $$1.a(cws.eO);
-         $$1.a(cws.fe);
-         $$1.a(cws.mz);
-         $$1.a(cws.fm);
-         $$1.a(cws.eP);
-         $$1.a(cws.mn);
-         $$1.a(cws.mC);
-         $$1.a(cws.xj);
-         $$1.a(cws.to);
-         $$1.a(cws.ol);
-         $$1.a(cws.oj);
-         $$1.a(cws.ok);
-         $$1.a(cws.om);
-         $$1.a(cws.oo);
-         $$1.a(cws.os);
-         $$1.a(cws.op);
-         $$1.a(cws.oq);
-         $$1.a(cws.or);
-         $$1.a(cws.oy);
-         $$1.a(cws.oQ);
-         $$1.a(cws.ni);
-         $$1.a(cws.nh);
-         $$1.a(cws.nX);
-         $$1.a(cws.nD);
-         $$1.a(cws.nC);
-         $$1.a(cws.mA);
-         $$1.a(cws.mB);
-         $$1.a(cws.xs);
-         $$1.a(cws.eb);
-         $$1.a(cws.vF);
-         $$1.a(cws.au);
-      }).d());
-      ke.a($$0, h, cvd.a(cvd.f.a, 5).a(wp.c("itemGroup.hotbar")).a(() -> new cwo(djn.cs)).a().a(cvd.h.c).d());
-      ke.a($$0, i, cvd.a(cvd.f.a, 6).a(wp.c("itemGroup.search")).a(() -> new cwo(cws.rz)).a(($$1, $$2) -> {
-         Set<cwo> $$3 = cwp.a();
+   public static akv a(String $$0) {
+      return akv.b("textures/gui/container/creative_inventory/tab_" + $$0 + ".png");
+   }
 
-         for (cvd $$4 : $$0) {
-            if ($$4.k() != cvd.h.d) {
-               $$3.addAll($$4.m());
+   public static cve.a a(cve.f $$0, int $$1) {
+      return new cve.a($$0, $$1);
+   }
+
+   public wp a() {
+      return this.b;
+   }
+
+   public cwp b() {
+      if (this.j == null) {
+         this.j = this.m.get();
+      }
+
+      return this.j;
+   }
+
+   public akv c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.d;
+   }
+
+   public int f() {
+      return this.h;
+   }
+
+   public cve.f g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return !this.k.isEmpty();
+   }
+
+   public boolean i() {
+      return this.i != cve.h.a || this.h();
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   public cve.h k() {
+      return this.i;
+   }
+
+   public void a(cve.d $$0) {
+      cve.c $$1 = new cve.c(this, $$0.a);
+      aku<cve> $$2 = mb.al.d(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
+      this.n.accept($$0, $$1);
+      this.k = $$1.a;
+      this.l = $$1.b;
+   }
+
+   public Collection<cwp> l() {
+      return this.k;
+   }
+
+   public Collection<cwp> m() {
+      return this.l;
+   }
+
+   public boolean a(cwp $$0) {
+      return this.l.contains($$0);
+   }
+
+   public static class a {
+      private static final cve.b a = ($$0, $$1) -> {
+      };
+      private final cve.f b;
+      private final int c;
+      private wp d = wp.i();
+      private Supplier<cwp> e = () -> cwp.j;
+      private cve.b f = a;
+      private boolean g = true;
+      private boolean h = true;
+      private boolean i = false;
+      private cve.h j = cve.h.a;
+      private akv k = cve.a;
+
+      public a(cve.f $$0, int $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public cve.a a(wp $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public cve.a a(Supplier<cwp> $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public cve.a a(cve.b $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public cve.a a() {
+         this.i = true;
+         return this;
+      }
+
+      public cve.a b() {
+         this.h = false;
+         return this;
+      }
+
+      public cve.a c() {
+         this.g = false;
+         return this;
+      }
+
+      protected cve.a a(cve.h $$0) {
+         this.j = $$0;
+         return this;
+      }
+
+      public cve.a a(akv $$0) {
+         this.k = $$0;
+         return this;
+      }
+
+      public cve d() {
+         if ((this.j == cve.h.c || this.j == cve.h.b) && this.f != a) {
+            throw new IllegalStateException("Special tabs can't have display items");
+         } else {
+            cve $$0 = new cve(this.b, this.c, this.j, this.d, this.e, this.f);
+            $$0.f = this.i;
+            $$0.e = this.h;
+            $$0.d = this.g;
+            $$0.c = this.k;
+            return $$0;
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void accept(cve.d var1, cve.e var2);
+   }
+
+   static class c implements cve.e {
+      public final Collection<cwp> a = cwq.a();
+      public final Set<cwp> b = cwq.a();
+      private final cve c;
+      private final crt d;
+
+      public c(cve $$0, crt $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      @Override
+      public void a(cwp $$0, cve.g $$1) {
+         if ($$0.M() != 1) {
+            throw new IllegalArgumentException("Stack size must be exactly 1");
+         } else {
+            boolean $$2 = this.a.contains($$0) && $$1 != cve.g.c;
+            if ($$2) {
+               throw new IllegalStateException(
+                  "Accidentally adding the same item stack twice " + $$0.K().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
+               );
+            } else {
+               if ($$0.h().a(this.d)) {
+                  switch ($$1) {
+                     case a:
+                        this.a.add($$0);
+                        this.b.add($$0);
+                        break;
+                     case b:
+                        this.a.add($$0);
+                        break;
+                     case c:
+                        this.b.add($$0);
+                  }
+               }
             }
          }
-
-         $$2.a($$3);
-      }).a(b).a().a(cvd.h.d).d());
-      ke.a($$0, j, cvd.a(cvd.f.b, 0).a(wp.c("itemGroup.tools")).a(() -> new cwo(cws.pN)).a(($$0x, $$1) -> {
-         $$1.a(cws.ps);
-         $$1.a(cws.pt);
-         $$1.a(cws.pu);
-         $$1.a(cws.pv);
-         $$1.a(cws.px);
-         $$1.a(cws.py);
-         $$1.a(cws.pz);
-         $$1.a(cws.pA);
-         $$1.a(cws.pH);
-         $$1.a(cws.pI);
-         $$1.a(cws.pJ);
-         $$1.a(cws.pK);
-         $$1.a(cws.pC);
-         $$1.a(cws.pD);
-         $$1.a(cws.pE);
-         $$1.a(cws.pF);
-         $$1.a(cws.pM);
-         $$1.a(cws.pN);
-         $$1.a(cws.pO);
-         $$1.a(cws.pP);
-         $$1.a(cws.pR);
-         $$1.a(cws.pS);
-         $$1.a(cws.pT);
-         $$1.a(cws.pU);
-         $$1.a(cws.rf);
-         $$1.a(cws.rg);
-         $$1.a(cws.ro);
-         $$1.a(cws.rn);
-         $$1.a(cws.rp);
-         $$1.a(cws.rm);
-         $$1.a(cws.rq);
-         $$1.a(cws.rr);
-         $$1.a(cws.rh);
-         $$1.a(cws.ri);
-         $$1.a(cws.rl);
-         $$1.a(cws.rS);
-         $$1.a(cws.oX);
-         $$1.a(cws.uV);
-         $$1.a(cws.sv);
-         $$1.a(cws.sS);
-         $$1.a(cws.yv);
-         $$1.a(cws.vL);
-         $$1.a(cws.vK);
-         $$1.a(cws.rB);
-         $$1.a(cws.rC);
-         $$1.a(cws.rK);
-         $$1.a(cws.rJ);
-         $$1.a(cws.rR);
-         $$1.a(cws.rO);
-         $$1.a(cws.rQ);
-         $$1.a(cws.rD);
-         $$1.a(cws.rG);
-         $$1.a(cws.rH);
-         $$1.a(cws.rP);
-         $$1.a(cws.rL);
-         $$1.a(cws.rF);
-         $$1.a(cws.rN);
-         $$1.a(cws.rM);
-         $$1.a(cws.rE);
-         $$1.a(cws.rI);
-         $$1.a(cws.rz);
-         $$1.a(cws.rA);
-         $$1.a(cws.rT);
-         $$1.a(cws.rU);
-         $$1.a(cws.vi);
-         $$1.a(cws.uX);
-         $$1.a(cws.uW);
-         $$1.a(cws.tc);
-         $$1.a(cws.tp);
-         $$1.a(cws.ow);
-         c($$1, cvd.g.a);
-         $$1.a(cws.on);
-         $$1.a(cws.ot);
-         $$1.a(cws.ou);
-         $$1.a(cws.ox);
-         $$1.a(cws.oy);
-         $$1.a(cws.oz);
-         $$1.a(cws.oA);
-         $$1.a(cws.oB);
-         $$1.a(cws.oC);
-         $$1.a(cws.oD);
-         $$1.a(cws.oE);
-         $$1.a(cws.oF);
-         $$1.a(cws.oG);
-         $$1.a(cws.oJ);
-         $$1.a(cws.oK);
-         $$1.a(cws.oN);
-         $$1.a(cws.oO);
-         $$1.a(cws.oH);
-         $$1.a(cws.oI);
-         $$1.a(cws.oL);
-         $$1.a(cws.oM);
-         $$1.a(cws.oP);
-         $$1.a(cws.oQ);
-         $$1.a(cws.ol);
-         $$1.a(cws.oj);
-         $$1.a(cws.ok);
-         $$1.a(cws.om);
-         $$1.a(cws.oo);
-         $$1.a(cws.os);
-         $$1.a(cws.op);
-         $$1.a(cws.oq);
-         $$1.a(cws.or);
-         $$0x.c().a(mc.I).ifPresent($$1x -> a($$1, $$1x, cws.xi, awx.c, cvd.g.a));
-         $$1.a(cws.wy);
-         $$1.a(cws.wz);
-         $$1.a(cws.wA);
-         $$1.a(cws.wB);
-         $$1.a(cws.wE);
-         $$1.a(cws.wF);
-         $$1.a(cws.wG);
-         $$1.a(cws.wH);
-         $$1.a(cws.wI);
-         $$1.a(cws.wJ);
-         $$1.a(cws.wK);
-         $$1.a(cws.wD);
-         $$1.a(cws.wL);
-         $$1.a(cws.wC);
-         $$1.a(cws.wQ);
-         $$1.a(cws.wM);
-         $$1.a(cws.wN);
-         $$1.a(cws.wO);
-         $$1.a(cws.wP);
-      }).d());
-      ke.a($$0, k, cvd.a(cvd.f.b, 1).a(wp.c("itemGroup.combat")).a(() -> new cwo(cws.pQ)).a(($$0x, $$1) -> {
-         $$1.a(cws.pr);
-         $$1.a(cws.pw);
-         $$1.a(cws.pG);
-         $$1.a(cws.pB);
-         $$1.a(cws.pL);
-         $$1.a(cws.pQ);
-         $$1.a(cws.pu);
-         $$1.a(cws.pz);
-         $$1.a(cws.pJ);
-         $$1.a(cws.pE);
-         $$1.a(cws.pO);
-         $$1.a(cws.pT);
-         $$1.a(cws.wS);
-         $$1.a(cws.va);
-         $$1.a(cws.ws);
-         $$1.a(cws.qd);
-         $$1.a(cws.qe);
-         $$1.a(cws.qf);
-         $$1.a(cws.qg);
-         $$1.a(cws.qh);
-         $$1.a(cws.qi);
-         $$1.a(cws.qj);
-         $$1.a(cws.qk);
-         $$1.a(cws.ql);
-         $$1.a(cws.qm);
-         $$1.a(cws.qn);
-         $$1.a(cws.qo);
-         $$1.a(cws.qt);
-         $$1.a(cws.qu);
-         $$1.a(cws.qv);
-         $$1.a(cws.qw);
-         $$1.a(cws.qp);
-         $$1.a(cws.qq);
-         $$1.a(cws.qr);
-         $$1.a(cws.qs);
-         $$1.a(cws.qx);
-         $$1.a(cws.qy);
-         $$1.a(cws.qz);
-         $$1.a(cws.qA);
-         $$1.a(cws.oT);
-         $$1.a(cws.vJ);
-         $$1.a(cws.vG);
-         $$1.a(cws.vH);
-         $$1.a(cws.vI);
-         $$1.a(cws.oW);
-         $$1.a(cws.wt);
-         $$1.a(cws.mA);
-         $$1.a(cws.wf);
-         $$1.a(cws.rj);
-         $$1.a(cws.ry);
-         $$1.a(cws.uW);
-         $$1.a(cws.pa);
-         $$1.a(cws.wV);
-         c($$1, cvd.g.a);
-         $$1.a(cws.pb);
-         $$1.a(cws.wp);
-         $$0x.c().a(mc.ad).ifPresent($$2 -> a($$1, $$2, cws.wq, cvd.g.a, $$0x.a()));
-      }).d());
-      ke.a($$0, l, cvd.a(cvd.f.b, 2).a(wp.c("itemGroup.foodAndDrink")).a(() -> new cwo(cws.qF)).a(($$0x, $$1) -> {
-         $$1.a(cws.oZ);
-         $$1.a(cws.qF);
-         $$1.a(cws.qG);
-         $$1.a(cws.sT);
-         $$1.a(cws.xv);
-         $$1.a(cws.xw);
-         $$1.a(cws.wg);
-         $$1.a(cws.ve);
-         $$1.a(cws.vj);
-         $$1.a(cws.vf);
-         $$1.a(cws.vg);
-         $$1.a(cws.vh);
-         $$1.a(cws.wk);
-         $$1.a(cws.sU);
-         $$1.a(cws.sX);
-         $$1.a(cws.sY);
-         $$1.a(cws.qC);
-         $$1.a(cws.qD);
-         $$1.a(cws.vN);
-         $$1.a(cws.vO);
-         $$1.a(cws.sZ);
-         $$1.a(cws.ta);
-         $$1.a(cws.vA);
-         $$1.a(cws.vB);
-         $$1.a(cws.rW);
-         $$1.a(cws.sa);
-         $$1.a(cws.rX);
-         $$1.a(cws.sb);
-         $$1.a(cws.rY);
-         $$1.a(cws.rZ);
-         $$1.a(cws.qc);
-         $$1.a(cws.sP);
-         $$1.a(cws.sy);
-         $$1.a(cws.vs);
-         $$1.a(cws.tb);
-         $$1.a(cws.tj);
-         $$1.a(cws.pW);
-         $$1.a(cws.wm);
-         $$1.a(cws.vC);
-         a($$1, cvd.g.a);
-         $$1.a(cws.rl);
-         $$1.a(cws.xD);
-         b($$1, cvd.g.a);
-         $$0x.c().a(mc.ad).ifPresent($$2 -> {
-            a($$1, $$2, cws.ti, cvd.g.a, $$0x.a());
-            a($$1, $$2, cws.wo, cvd.g.a, $$0x.a());
-            a($$1, $$2, cws.wr, cvd.g.a, $$0x.a());
-         });
-      }).d());
-      ke.a($$0, m, cvd.a(cvd.f.b, 3).a(wp.c("itemGroup.ingredients")).a(() -> new cwo(cws.pk)).a(($$0x, $$1) -> {
-         $$1.a(cws.pc);
-         $$1.a(cws.pd);
-         $$1.a(cws.pj);
-         $$1.a(cws.pl);
-         $$1.a(cws.pn);
-         $$1.a(cws.pf);
-         $$1.a(cws.pg);
-         $$1.a(cws.pe);
-         $$1.a(cws.aE);
-         $$1.a(cws.ph);
-         $$1.a(cws.pi);
-         $$1.a(cws.wv);
-         $$1.a(cws.tf);
-         $$1.a(cws.pk);
-         $$1.a(cws.pm);
-         $$1.a(cws.po);
-         $$1.a(cws.pq);
-         $$1.a(cws.pp);
-         $$1.a(cws.pV);
-         $$1.a(cws.qB);
-         $$1.a(cws.qb);
-         $$1.a(cws.sw);
-         $$1.a(cws.sv);
-         $$1.a(cws.pX);
-         $$1.a(cws.pY);
-         $$1.a(cws.rj);
-         $$1.a(cws.ry);
-         $$1.a(cws.rk);
-         $$1.a(cws.vE);
-         $$1.a(cws.xA);
-         $$1.a(cws.gm);
-         $$1.a(cws.sc);
-         $$1.a(cws.sd);
-         $$1.a(cws.oU);
-         $$1.a(cws.oV);
-         $$1.a(cws.rx);
-         $$1.a(cws.rt);
-         $$1.a(cws.vy);
-         $$1.a(cws.vz);
-         $$1.a(cws.wT);
-         $$1.a(cws.wU);
-         $$1.a(cws.uV);
-         $$1.a(cws.td);
-         $$1.a(cws.uZ);
-         $$1.a(cws.aJ);
-         $$1.a(cws.vr);
-         $$1.a(cws.tc);
-         $$1.a(cws.tp);
-         $$1.a(cws.wu);
-         $$1.a(cws.wh);
-         $$1.a(cws.yu);
-         $$1.a(cws.wR);
-         $$1.a(cws.sf);
-         $$1.a(cws.sn);
-         $$1.a(cws.sm);
-         $$1.a(cws.su);
-         $$1.a(cws.sr);
-         $$1.a(cws.st);
-         $$1.a(cws.sg);
-         $$1.a(cws.sj);
-         $$1.a(cws.sk);
-         $$1.a(cws.ss);
-         $$1.a(cws.so);
-         $$1.a(cws.si);
-         $$1.a(cws.sq);
-         $$1.a(cws.sp);
-         $$1.a(cws.sh);
-         $$1.a(cws.sl);
-         $$1.a(cws.oY);
-         $$1.a(cws.rs);
-         $$1.a(cws.vw);
-         $$1.a(cws.vx);
-         $$1.a(cws.rv);
-         $$1.a(cws.rw);
-         $$1.a(cws.vu);
-         $$1.a(cws.th);
-         $$1.a(cws.tg);
-         $$1.a(cws.me);
-         $$1.a(cws.rV);
-         $$1.a(cws.pZ);
-         $$1.a(cws.wn);
-         $$1.a(cws.tk);
-         $$1.a(cws.tl);
-         $$1.a(cws.sx);
-         $$1.a(cws.vD);
-         $$1.a(cws.tq);
-         $$1.a(cws.tj);
-         $$1.a(cws.rZ);
-         $$1.a(cws.tm);
-         $$1.a(cws.vj);
-         $$1.a(cws.te);
-         $$1.a(cws.oT);
-         $$1.a(cws.ov);
-         $$1.a(cws.xg);
-         $$1.a(cws.xh);
-         $$1.a(cws.wY);
-         $$1.a(cws.wZ);
-         $$1.a(cws.xa);
-         $$1.a(cws.xb);
-         $$1.a(cws.xc);
-         $$1.a(cws.xd);
-         $$1.a(cws.xe);
-         $$1.a(cws.xf);
-         $$1.a(cws.yP);
-         $$1.a(cws.yQ);
-         $$1.a(cws.yR);
-         $$1.a(cws.yS);
-         $$1.a(cws.yT);
-         $$1.a(cws.yU);
-         $$1.a(cws.yV);
-         $$1.a(cws.yX);
-         $$1.a(cws.yW);
-         $$1.a(cws.yY);
-         $$1.a(cws.yZ);
-         $$1.a(cws.za);
-         $$1.a(cws.zb);
-         $$1.a(cws.zc);
-         $$1.a(cws.zd);
-         $$1.a(cws.ze);
-         $$1.a(cws.zf);
-         $$1.a(cws.zg);
-         $$1.a(cws.zh);
-         $$1.a(cws.zi);
-         $$1.a(cws.zj);
-         $$1.a(cws.zk);
-         $$1.a(cws.zl);
-         $$1.a(cws.yw);
-         $$1.a(cws.yx);
-         $$1.a(cws.yD);
-         $$1.a(cws.yA);
-         $$1.a(cws.yz);
-         $$1.a(cws.yy);
-         $$1.a(cws.yI);
-         $$1.a(cws.yL);
-         $$1.a(cws.yJ);
-         $$1.a(cws.yM);
-         $$1.a(cws.yB);
-         $$1.a(cws.yK);
-         $$1.a(cws.yE);
-         $$1.a(cws.yF);
-         $$1.a(cws.yG);
-         $$1.a(cws.yC);
-         $$1.a(cws.yH);
-         $$1.a(cws.yN);
-         $$1.a(cws.yO);
-         $$1.a(cws.uU);
-         $$1.a(cws.zD);
-         $$1.a(cws.zE);
-         $$0x.c().a(mc.aO).ifPresent($$1x -> {
-            a($$1, $$1x, cvd.g.b);
-            b($$1, $$1x, cvd.g.c);
-         });
-      }).d());
-      ke.a($$0, n, cvd.a(cvd.f.b, 4).a(wp.c("itemGroup.spawnEggs")).a(() -> new cwo(cws.ug)).a(($$0x, $$1) -> {
-         $$1.a(cws.eZ);
-         $$1.a(cws.zC);
-         $$1.a(cws.fa);
-         $$1.a(cws.ts);
-         $$1.a(cws.tr);
-         $$1.a(cws.tt);
-         $$1.a(cws.tu);
-         $$1.a(cws.tv);
-         $$1.a(cws.tw);
-         $$1.a(cws.tx);
-         $$1.a(cws.ty);
-         $$1.a(cws.tA);
-         $$1.a(cws.tz);
-         $$1.a(cws.tB);
-         $$1.a(cws.tC);
-         $$1.a(cws.tD);
-         $$1.a(cws.tE);
-         $$1.a(cws.uP);
-         $$1.a(cws.tF);
-         $$1.a(cws.tG);
-         $$1.a(cws.tH);
-         $$1.a(cws.tI);
-         $$1.a(cws.tJ);
-         $$1.a(cws.tL);
-         $$1.a(cws.tM);
-         $$1.a(cws.tN);
-         $$1.a(cws.tO);
-         $$1.a(cws.tP);
-         $$1.a(cws.tQ);
-         $$1.a(cws.tR);
-         $$1.a(cws.tS);
-         $$1.a(cws.tT);
-         $$1.a(cws.tU);
-         $$1.a(cws.tV);
-         $$1.a(cws.tW);
-         $$1.a(cws.tX);
-         $$1.a(cws.tY);
-         $$1.a(cws.tZ);
-         $$1.a(cws.ua);
-         $$1.a(cws.ub);
-         $$1.a(cws.uc);
-         $$1.a(cws.ud);
-         $$1.a(cws.ue);
-         $$1.a(cws.uf);
-         $$1.a(cws.ug);
-         $$1.a(cws.uh);
-         $$1.a(cws.ui);
-         $$1.a(cws.uj);
-         $$1.a(cws.uk);
-         $$1.a(cws.ul);
-         $$1.a(cws.um);
-         $$1.a(cws.un);
-         $$1.a(cws.uo);
-         $$1.a(cws.up);
-         $$1.a(cws.uq);
-         $$1.a(cws.ur);
-         $$1.a(cws.us);
-         $$1.a(cws.ut);
-         $$1.a(cws.uu);
-         $$1.a(cws.uv);
-         $$1.a(cws.uw);
-         $$1.a(cws.ux);
-         $$1.a(cws.uy);
-         $$1.a(cws.uz);
-         $$1.a(cws.uA);
-         $$1.a(cws.uB);
-         $$1.a(cws.uC);
-         $$1.a(cws.uD);
-         $$1.a(cws.uE);
-         $$1.a(cws.uF);
-         $$1.a(cws.uG);
-         $$1.a(cws.uH);
-         $$1.a(cws.uI);
-         $$1.a(cws.uJ);
-         $$1.a(cws.uK);
-         $$1.a(cws.uM);
-         $$1.a(cws.uN);
-         $$1.a(cws.uO);
-         $$1.a(cws.uQ);
-         $$1.a(cws.uR);
-         $$1.a(cws.uS);
-         $$1.a(cws.uT);
-      }).d());
-      ke.a($$0, o, cvd.a(cvd.f.b, 5).a(wp.c("itemGroup.op")).a(() -> new cwo(cws.hc)).a().a(($$0x, $$1) -> {
-         if ($$0x.b()) {
-            $$1.a(cws.hc);
-            $$1.a(cws.js);
-            $$1.a(cws.jr);
-            $$1.a(cws.vM);
-            $$1.a(cws.oS);
-            $$1.a(cws.oR);
-            $$1.a(cws.jy);
-            $$1.a(cws.hY);
-            $$1.a(cws.wx);
-
-            for (int $$2 = 15; $$2 >= 0; $$2--) {
-               $$1.a(dob.a(new cwo(cws.hZ), $$2));
-            }
-
-            $$0x.c().a(mc.X).ifPresent($$2x -> a($$1, $$0x.c(), $$2x, $$0xxx -> !$$0xxx.a(awz.a), cvd.g.a));
-         }
-      }).d());
-      return ke.a($$0, p, cvd.a(cvd.f.b, 6).a(wp.c("itemGroup.inventory")).a(() -> new cwo(djn.cD)).a(a).b().a().a(cvd.h.b).c().d());
-   }
-
-   public static void a() {
-      Map<Pair<cvd.f, Integer>, String> $$0 = new HashMap<>();
-
-      for (aku<cvd> $$1 : mb.al.j()) {
-         cvd $$2 = mb.al.g($$1);
-         String $$3 = $$2.a().getString();
-         String $$4 = $$0.put(Pair.of($$2.g(), $$2.f()), $$3);
-         if ($$4 != null) {
-            throw new IllegalArgumentException("Duplicate position: " + $$3 + " vs. " + $$4);
-         }
       }
    }
 
-   public static cvd b() {
-      return mb.al.g(c);
-   }
+   public static record d(crt a, boolean b, jt.a c) {
 
-   private static void a(cvd.e $$0, jt<cyl> $$1, cwk $$2, cvd.g $$3, crs $$4) {
-      $$1.c().filter($$1x -> ((cyl)$$1x.a()).a($$4)).map($$1x -> cyn.a($$2, $$1x)).forEach($$2x -> $$0.a($$2x, $$3));
-   }
-
-   private static void a(cvd.e $$0, jt<dcy> $$1, cvd.g $$2) {
-      $$1.c().map($$0x -> dda.a(new ddb($$0x, ((dcy)$$0x.a()).e()))).forEach($$2x -> $$0.a($$2x, $$2));
-   }
-
-   private static void b(cvd.e $$0, jt<dcy> $$1, cvd.g $$2) {
-      $$1.c()
-         .flatMap($$0x -> IntStream.rangeClosed(((dcy)$$0x.a()).d(), ((dcy)$$0x.a()).e()).mapToObj($$1x -> dda.a(new ddb($$0x, $$1x))))
-         .forEach($$2x -> $$0.a($$2x, $$2));
-   }
-
-   private static void a(cvd.e $$0, jt<cwh> $$1, cwk $$2, axf<cwh> $$3, cvd.g $$4) {
-      $$1.a($$3).ifPresent($$3x -> $$3x.a().map($$1xx -> cwi.a($$2, $$1xx)).forEach($$2xx -> $$0.a($$2xx, $$4)));
-   }
-
-   private static void a(cvd.e $$0, cvd.g $$1) {
-      List<drs> $$2 = drs.d();
-      Set<cwo> $$3 = cwp.a();
-
-      for (drs $$4 : $$2) {
-         cwo $$5 = new cwo(cws.wW);
-         $$5.b(kv.R, $$4.c());
-         $$3.add($$5);
-      }
-
-      $$0.a($$3, $$1);
-   }
-
-   private static void b(cvd.e $$0, cvd.g $$1) {
-      for (int $$2 = 0; $$2 <= 4; $$2++) {
-         cwo $$3 = new cwo(cws.zG);
-         $$3.b(kv.aa, new czm($$2));
-         $$0.a($$3, $$1);
+      public boolean a(crt $$0, boolean $$1, jt.a $$2) {
+         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
       }
    }
 
-   private static void c(cvd.e $$0, cvd.g $$1) {
-      for (byte $$2 : cvv.a) {
-         cwo $$3 = new cwo(cws.vt);
-         $$3.b(kv.af, new cze($$2, List.of()));
-         $$0.a($$3, $$1);
+   public interface e {
+      void a(cwp var1, cve.g var2);
+
+      default void a(cwp $$0) {
+         this.a($$0, cve.g.a);
+      }
+
+      default void a(dgh $$0, cve.g $$1) {
+         this.a(new cwp($$0), $$1);
+      }
+
+      default void a(dgh $$0) {
+         this.a(new cwp($$0), cve.g.a);
+      }
+
+      default void a(Collection<cwp> $$0, cve.g $$1) {
+         $$0.forEach($$1x -> this.a($$1x, $$1));
+      }
+
+      default void a(Collection<cwp> $$0) {
+         this.a($$0, cve.g.a);
       }
    }
 
-   private static void a(cvd.e $$0, jt.a $$1, jt.b<ckx> $$2, Predicate<jr<ckx>> $$3, cvd.g $$4) {
-      akt<un> $$5 = $$1.a(ue.a);
-      $$2.c().filter($$3).sorted(q).forEach($$3x -> {
-         cyx $$4x = ((cyx)cyx.a.a($$5, ckw.d, $$3x).getOrThrow()).a((Consumer<tq>)($$0xx -> $$0xx.a("id", "minecraft:painting")));
-         cwo $$5x = new cwo(cws.qE);
-         $$5x.b(kv.W, $$4x);
-         $$0.a($$5x, $$4);
-      });
+   public static enum f {
+      a,
+      b;
    }
 
-   public static List<cvd> c() {
-      return f().filter(cvd::i).toList();
+   protected static enum g {
+      a,
+      b,
+      c;
    }
 
-   public static List<cvd> d() {
-      return f().toList();
-   }
-
-   private static Stream<cvd> f() {
-      return mb.al.s();
-   }
-
-   public static cvd e() {
-      return mb.al.g(i);
-   }
-
-   private static void a(cvd.d $$0) {
-      f().filter($$0x -> $$0x.k() == cvd.h.a).forEach($$1 -> $$1.a($$0));
-      f().filter($$0x -> $$0x.k() != cvd.h.a).forEach($$1 -> $$1.a($$0));
-   }
-
-   public static boolean a(crs $$0, boolean $$1, jt.a $$2) {
-      if (r != null && !r.a($$0, $$1, $$2)) {
-         return false;
-      } else {
-         r = new cvd.d($$0, $$1, $$2);
-         a(r);
-         return true;
-      }
+   public static enum h {
+      a,
+      b,
+      c,
+      d;
    }
 }

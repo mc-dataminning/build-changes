@@ -1,7 +1,7 @@
-public record aia(short b, cwo c) implements yw<agg> {
-   public static final yn<wa, aia> a = yn.a(yl.e, aia::b, cwo.a(cwo.g), aia::e, aia::new);
+public record aia(short b, cwp c) implements yw<agg> {
+   public static final yn<wa, aia> a = yn.a(yl.e, aia::b, cwp.a(cwp.g), aia::e, aia::new);
 
-   public aia(int $$0, cwo $$1) {
+   public aia(int $$0, cwp $$1) {
       this((short)$$0, $$1);
    }
 
@@ -14,7 +14,7 @@ public record aia(short b, cwo c) implements yw<agg> {
       $$0.a(this);
    }
 
-   public cwo e() {
+   public cwp e() {
       return this.c;
    }
 }

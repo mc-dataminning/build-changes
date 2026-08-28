@@ -3,8 +3,8 @@ import javax.annotation.Nullable;
 
 public class arr implements arn {
    private final arp a;
-   private final Long2ObjectOpenHashMap<dzs> b = new Long2ObjectOpenHashMap();
-   private dfn c = new dfn(0, 0);
+   private final Long2ObjectOpenHashMap<dzt> b = new Long2ObjectOpenHashMap();
+   private dfo c = new dfo(0, 0);
    private final int d;
    private final int e;
    private final int f;
@@ -34,7 +34,7 @@ public class arr implements arn {
    }
 
    @Override
-   public void a(dfn $$0) {
+   public void a(dfo $$0) {
       if (this.g) {
          this.a.a($$0);
          this.c = $$0;
@@ -42,7 +42,7 @@ public class arr implements arn {
    }
 
    @Override
-   public void a(dfn $$0, @Nullable dzs $$1) {
+   public void a(dfo $$0, @Nullable dzt $$1) {
       if (this.g) {
          this.a.a($$0, $$1);
          if ($$1 == null) {
@@ -79,7 +79,7 @@ public class arr implements arn {
    }
 
    @Nullable
-   public dzs a(int $$0, int $$1) {
-      return (dzs)this.b.get(dfn.c($$0 + this.c.h - this.e, $$1 + this.c.i - this.e));
+   public dzt a(int $$0, int $$1) {
+      return (dzt)this.b.get(dfo.c($$0 + this.c.h - this.e, $$1 + this.c.i - this.e));
    }
 }

@@ -1,38 +1,25 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 import java.util.stream.Stream;
 
-public interface eox {
-   Codec<eox> b = mb.ah.q().dispatch(eox::b, Function.identity());
+record eox(aku<eow> c, aku<eow> d) implements eoy {
+   static MapCodec<eox> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aku.a(mc.aX).fieldOf("alias").forGetter(eox::c), aku.a(mc.aX).fieldOf("target").forGetter(eox::d)).apply($$0, eox::new)
+   );
 
-   void a(azh var1, BiConsumer<aku<eov>, aku<eov>> var2);
-
-   Stream<aku<eov>> a();
-
-   static eow a(String $$0, String $$1) {
-      return a(ql.a($$0), ql.a($$1));
+   @Override
+   public void a(azh $$0, BiConsumer<aku<eow>, aku<eow>> $$1) {
+      $$1.accept(this.c, this.d);
    }
 
-   static eow a(aku<eov> $$0, aku<eov> $$1) {
-      return new eow($$0, $$1);
+   @Override
+   public Stream<aku<eow>> a() {
+      return Stream.of(this.d);
    }
 
-   static epa a(String $$0, bqr<String> $$1) {
-      bqr.a<aku<eov>> $$2 = bqr.a();
-      $$1.e().forEach($$1x -> $$2.a(ql.a((String)$$1x.b()), $$1x.a().a()));
-      return a(ql.a($$0), $$2.a());
+   @Override
+   public MapCodec<eox> b() {
+      return a;
    }
-
-   static epa a(aku<eov> $$0, bqr<aku<eov>> $$1) {
-      return new epa($$0, $$1);
-   }
-
-   static epb a(bqr<List<eox>> $$0) {
-      return new epb($$0);
-   }
-
-   MapCodec<? extends eox> b();
 }

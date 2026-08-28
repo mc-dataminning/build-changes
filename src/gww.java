@@ -1,23 +1,14 @@
-public class gww extends gws<hag, gdy> {
-   private final gdy a;
+public class gww<S extends hag, M extends gcb<S>> extends gwt<S, M> {
+   private final gdw<S> a;
+   private final akv b;
 
-   public gww(gua<hag, gdy> $$0, gey $$1) {
+   public gww(gub<S, M> $$0, gez $$1, gfb $$2, akv $$3) {
       super($$0);
-      this.a = new gdy($$1.a(gfb.cP));
+      this.b = $$3;
+      this.a = new gdw<>($$1.a($$2));
    }
 
-   public void a(fft $$0, glx $$1, int $$2, hag $$3, float $$4, float $$5) {
-      boolean $$6 = $$3.ao && $$3.z;
-      if (!$$3.z || $$6) {
-         ffx $$7;
-         if ($$6) {
-            $$7 = $$1.getBuffer(gmh.s(guh.a));
-         } else {
-            $$7 = $$1.getBuffer(gmh.j(guh.a));
-         }
-
-         this.a.a($$3);
-         this.a.a($$0, $$7, $$2, gte.a($$3, 0.0F));
-      }
+   public void a(ffu $$0, gly $$1, int $$2, S $$3, float $$4, float $$5) {
+      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
    }
 }

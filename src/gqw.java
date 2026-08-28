@@ -1,22 +1,25 @@
-public abstract class gqw<T extends cmq, S extends hba, M extends ges<S>> extends gsu<T, S, M> {
-   private static final akv a = akv.b("textures/entity/zombie/zombie.png");
-
-   protected gqw(gsd.a $$0, M $$1, M $$2, M $$3, M $$4, M $$5, M $$6) {
-      super($$0, $$1, $$2, 0.5F);
-      this.a(new gwh<>(this, $$3, $$4, $$5, $$6, $$0.h()));
+public abstract class gqw<T extends clg, S extends hag> extends gsv<T, S, gdw<S>> {
+   public gqw(gse.a $$0, gfb $$1, gfb $$2, gfb $$3) {
+      this($$0, $$2, $$3, new gdw<>($$0.a($$1)));
    }
 
-   public akv a(S $$0) {
-      return a;
+   public gqw(gse.a $$0, gfb $$1, gfb $$2, gdw<S> $$3) {
+      super($$0, $$3, 0.5F);
+      this.a(new gwi<>(this, new gdw($$0.a($$1)), new gdw($$0.a($$2)), $$0.h()));
    }
 
    public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gh();
-      $$1.b = $$0.gy();
+      $$1.b = $$0.gh();
+      $$1.c = $$0.gt();
+      $$1.d = $$0.eZ().a(cwt.pa);
    }
 
-   protected boolean b(S $$0) {
-      return super.a($$0) || $$0.b;
+   protected boolean a(S $$0) {
+      return $$0.c;
+   }
+
+   protected gco.a a(clg $$0, bvb $$1) {
+      return $$0.fy() == $$1 && $$0.gh() && $$0.eZ().a(cwt.pa) ? gco.a.d : gco.a.a;
    }
 }

@@ -1,274 +1,168 @@
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.net.URI;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fug extends fuk {
-   static final akv b = akv.b("container/slot");
-   static final Logger c = LogUtils.getLogger();
-   private static final int d = 18;
-   private static final int s = 20;
-   private static final int u = 1;
-   private static final int v = 1;
-   private static final int w = 2;
-   private static final int x = 2;
-   private static final aku<dhj> y = dhq.b;
-   public static final wp a = wp.c("flat_world_preset.unknown");
-   private final ftl z;
-   private wp A;
-   private wp B;
-   private fug.a C;
-   private fos D;
-   fpb E;
-   elo F;
-
-   public fug(ftl $$0) {
-      super(wp.c("createWorld.customize.presets.title"));
-      this.z = $$0;
-   }
-
+public class fug extends ful {
+   private static final akv a = akv.b("icon/draft_report");
+   private static final int b = 2;
+   private static final int c = 50;
+   private static final int d = 4;
+   private static final int s = 204;
+   private static final int u = 98;
+   private static final wp v = wp.c("menu.returnToGame");
+   private static final wp w = wp.c("gui.advancements");
+   private static final wp x = wp.c("gui.stats");
+   private static final wp y = wp.c("menu.sendFeedback");
+   private static final wp z = wp.c("menu.reportBugs");
+   private static final wp A = wp.c("menu.feedback");
+   private static final wp B = wp.c("menu.server_links");
+   private static final wp C = wp.c("menu.options");
+   private static final wp D = wp.c("menu.shareToLan");
+   private static final wp E = wp.c("menu.playerReporting");
+   private static final wp F = wp.c("menu.returnToMenu");
+   private static final wp G = wp.c("menu.savingLevel");
+   private static final wp H = wp.c("menu.game");
+   private static final wp I = wp.c("menu.paused");
+   private final boolean J;
    @Nullable
-   private static ell a(js<djl> $$0, String $$1, int $$2) {
-      List<String> $$3 = Splitter.on('*').limit(2).splitToList($$1);
-      int $$5;
-      String $$4;
-      if ($$3.size() == 2) {
-         $$4 = $$3.get(1);
+   private fot K;
 
-         try {
-            $$5 = Math.max(Integer.parseInt($$3.get(0)), 0);
-         } catch (NumberFormatException var11) {
-            c.error("Error while parsing flat world string", var11);
-            return null;
-         }
-      } else {
-         $$4 = $$3.get(0);
-         $$5 = 1;
-      }
-
-      int $$9 = Math.min($$2 + $$5, ear.c);
-      int $$10 = $$9 - $$2;
-
-      Optional<jr.c<djl>> $$11;
-      try {
-         $$11 = $$0.a(aku.a(mc.f, akv.a($$4)));
-      } catch (Exception var10) {
-         c.error("Error while parsing flat world string", var10);
-         return null;
-      }
-
-      if ($$11.isEmpty()) {
-         c.error("Error while parsing flat world string => Unknown block, {}", $$4);
-         return null;
-      } else {
-         return new ell($$10, $$11.get().a());
-      }
+   public fug(boolean $$0) {
+      super($$0 ? H : I);
+      this.J = $$0;
    }
 
-   private static List<ell> a(js<djl> $$0, String $$1) {
-      List<ell> $$2 = Lists.newArrayList();
-      String[] $$3 = $$1.split(",");
-      int $$4 = 0;
-
-      for (String $$5 : $$3) {
-         ell $$6 = a($$0, $$5, $$4);
-         if ($$6 == null) {
-            return Collections.emptyList();
-         }
-
-         $$2.add($$6);
-         $$4 += $$6.a();
-      }
-
-      return $$2;
-   }
-
-   public static elo a(js<djl> $$0, js<dhj> $$1, js<enr> $$2, js<emp> $$3, String $$4, elo $$5) {
-      Iterator<String> $$6 = Splitter.on(';').split($$4).iterator();
-      if (!$$6.hasNext()) {
-         return elo.a($$1, $$2, $$3);
-      } else {
-         List<ell> $$7 = a($$0, $$6.next());
-         if ($$7.isEmpty()) {
-            return elo.a($$1, $$2, $$3);
-         } else {
-            jr.c<dhj> $$8 = $$1.b(y);
-            jr<dhj> $$9 = $$8;
-            if ($$6.hasNext()) {
-               String $$10 = $$6.next();
-               $$9 = Optional.ofNullable(akv.c($$10)).map($$0x -> aku.a(mc.aI, $$0x)).flatMap($$1::a).orElseGet(() -> {
-                  c.warn("Invalid biome: {}", $$10);
-                  return $$8;
-               });
-            }
-
-            return $$5.a($$7, $$5.c(), $$9);
-         }
-      }
-   }
-
-   static String a(elo $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (int $$2 = 0; $$2 < $$0.e().size(); $$2++) {
-         if ($$2 > 0) {
-            $$1.append(",");
-         }
-
-         $$1.append($$0.e().get($$2));
-      }
-
-      $$1.append(";");
-      $$1.append($$0.d().e().map(aku::a).orElseThrow(() -> new IllegalStateException("Biome not registered")));
-      return $$1.toString();
+   public boolean m() {
+      return this.J;
    }
 
    @Override
    protected void aR_() {
-      this.A = wp.c("createWorld.customize.presets.share");
-      this.B = wp.c("createWorld.customize.presets.list");
-      this.E = new fpb(this.p, 50, 40, this.n - 100, 20, this.A);
-      this.E.f(1230);
-      fzt $$0 = this.z.a.m().k();
-      kf $$1 = $$0.a();
-      crs $$2 = $$0.h().b();
-      js<dhj> $$3 = $$1.e(mc.aI);
-      js<enr> $$4 = $$1.e(mc.aW);
-      js<emp> $$5 = $$1.e(mc.aT);
-      js<djl> $$6 = $$1.e(mc.f).a($$2);
-      this.E.a(a(this.z.l()));
-      this.F = this.z.l();
-      this.d(this.E);
-      this.C = this.c(new fug.a($$1, $$2));
-      this.D = this.c(fos.a(wp.c("createWorld.customize.presets.select"), $$4x -> {
-         elo $$5x = a($$6, $$3, $$4, $$5, this.E.a(), this.F);
-         this.z.a($$5x);
-         this.m.a(this.z);
-      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a());
-      this.c(fos.a(wo.e, $$0x -> this.m.a(this.z)).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
-      this.c(this.C.p() != null);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.C.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(fli $$0, int $$1, int $$2) {
-      String $$3 = this.E.a();
-      this.b($$0, $$1, $$2);
-      this.E.a($$3);
-   }
-
-   @Override
-   public void aO_() {
-      this.m.a(this.z);
-   }
-
-   @Override
-   public void a(fod $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 400.0F);
-      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
-      $$0.b(this.p, this.A, 51, 30, 10526880);
-      $$0.b(this.p, this.B, 51, 68, 10526880);
-      $$0.c().b();
-      this.E.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void c(boolean $$0) {
-      this.D.j = $$0 || this.E.a().length() > 1;
-   }
-
-   class a extends fpo<fug.a.a> {
-      public a(final kf $$0, final crs $$1) {
-         super(fug.this.m, fug.this.n, fug.this.o - 117, 80, 24);
-
-         for (jr<elm> $$2 : $$0.e(mc.aQ).c(awu.a)) {
-            Set<djl> $$3 = $$2.a().b().e().stream().map($$0x -> $$0x.b().b()).filter($$1x -> !$$1x.a($$1)).collect(Collectors.toSet());
-            if (!$$3.isEmpty()) {
-               fug.c
-                  .info(
-                     "Discarding flat world preset {} since it contains experimental blocks {}",
-                     $$2.e().map($$0x -> $$0x.a().toString()).orElse("<unknown>"),
-                     $$3
-                  );
-            } else {
-               this.b(new fug.a.a($$2));
-            }
-         }
+      if (this.J) {
+         this.E();
       }
 
-      public void a(@Nullable fug.a.a $$0) {
-         super.a($$0);
-         fug.this.c($$0 != null);
+      this.c(new fqa(0, this.J ? 40 : 10, this.n, 9, this.l, this.p));
+   }
+
+   private void E() {
+      fsg $$0 = new fsg();
+      $$0.c().a(4, 4, 4, 0);
+      fsg.b $$1 = $$0.d(2);
+      $$1.a(fot.a(v, $$0x -> {
+         this.m.a(null);
+         this.m.o.i();
+      }).a(204).a(), 2, $$0.b().c(50));
+      $$1.a(this.a(w, () -> new fuv(this.m.t.j.p(), this)));
+      $$1.a(this.a(x, () -> new fup(this, this.m.t.m())));
+      aln $$2 = this.m.t.j.E();
+      if ($$2.a()) {
+         a(this, $$1);
+      } else {
+         $$1.a(this.a(A, () -> new fug.a(this)));
+         $$1.a(this.a(B, () -> new fxd(this, $$2)));
+      }
+
+      $$1.a(this.a(C, () -> new fxo(this, this.m.n)));
+      if (this.m.U() && !this.m.V().r()) {
+         $$1.a(this.a(D, () -> new fum(this)));
+      } else {
+         $$1.a(this.a(E, () -> new fzd(this)));
+      }
+
+      wp $$3 = this.m.T() ? F : wo.p;
+      this.K = $$1.a(fot.a($$3, $$0x -> {
+         $$0x.j = false;
+         this.m.ba().a(this.m, this, this::F, true);
+      }).a(204).a(), 2);
+      $$0.a();
+      fsf.a($$0, 0, 0, this.n, this.o, 0.5F, 0.25F);
+      $$0.a(this::c);
+   }
+
+   static void a(ful $$0, fsg.b $$1) {
+      $$1.a(a($$0, y, ab.b().g() ? axv.i : axv.h));
+      $$1.a(a($$0, z, axv.j)).j = !ab.b().d().a();
+   }
+
+   private void F() {
+      boolean $$0 = this.m.T();
+      ggo $$1 = this.m.S();
+      this.m.s.ac();
+      if ($$0) {
+         this.m.b(new ftw(G));
+      } else {
+         this.m.y();
+      }
+
+      fun $$2 = new fun();
+      if ($$0) {
+         this.m.a($$2);
+      } else if ($$1 != null && $$1.e()) {
+         this.m.a(new fgf($$2));
+      } else {
+         this.m.a(new fxb($$2));
+      }
+   }
+
+   @Override
+   public void e() {
+      super.e();
+   }
+
+   @Override
+   public void a(foe $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.J && this.m != null && this.m.ba().c() && this.K != null) {
+         $$0.a(gmi::H, a, this.K.F() + this.K.A() - 17, this.K.G() + 3, 15, 15);
+      }
+   }
+
+   @Override
+   public void b(foe $$0, int $$1, int $$2, float $$3) {
+      if (this.J) {
+         super.b($$0, $$1, $$2, $$3);
+      }
+   }
+
+   private fot a(wp $$0, Supplier<ful> $$1) {
+      return fot.a($$0, $$1x -> this.m.a($$1.get())).a(98).a();
+   }
+
+   private static fot a(ful $$0, wp $$1, URI $$2) {
+      return fot.a($$1, fti.b($$0, $$2)).a(98).a();
+   }
+
+   static class a extends ful {
+      private static final wp b = wp.c("menu.feedback.title");
+      public final ful a;
+      private final fsh c = new fsh(this);
+
+      protected a(ful $$0) {
+         super(b);
+         this.a = $$0;
       }
 
       @Override
-      public boolean a(int $$0, int $$1, int $$2) {
-         if (super.a($$0, $$1, $$2)) {
-            return true;
-         } else {
-            if (fsu.a($$0) && this.p() != null) {
-               this.p().b();
-            }
-
-            return false;
-         }
+      protected void aR_() {
+         this.c.a(b, this.p);
+         fsg $$0 = this.c.c(new fsg());
+         $$0.c().a(4, 4, 4, 0);
+         fsg.b $$1 = $$0.d(2);
+         fug.a(this, $$1);
+         this.c.b(fot.a(wo.k, $$0x -> this.aO_()).a(200).a());
+         this.c.a(this::c);
+         this.c();
       }
 
-      public class a extends fpo.a<fug.a.a> {
-         private static final akv b = akv.b("textures/gui/container/stats_icons.png");
-         private final elm c;
-         private final wp d;
+      @Override
+      protected void c() {
+         this.c.a();
+      }
 
-         public a(final jr<elm> $$1) {
-            this.c = $$1.a();
-            this.d = $$1.e().map($$0x -> wp.c($$0x.a().h("flat_world_preset"))).orElse(fug.a);
-         }
-
-         @Override
-         public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            this.a($$0, $$3, $$2, this.c.a().a());
-            $$0.b(fug.this.p, this.d, $$3 + 18 + 5, $$2 + 6, -1);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            return super.a($$0, $$1, $$2);
-         }
-
-         void b() {
-            a.this.a(this);
-            fug.this.F = this.c.b();
-            fug.this.E.a(fug.a(fug.this.F));
-            fug.this.E.b(false);
-         }
-
-         private void a(fod $$0, int $$1, int $$2, cwk $$3) {
-            this.a($$0, $$1 + 1, $$2 + 1);
-            $$0.b(new cwo($$3), $$1 + 2, $$2 + 2);
-         }
-
-         private void a(fod $$0, int $$1, int $$2) {
-            $$0.a(gmh::H, fug.b, $$1, $$2, 18, 18);
-         }
-
-         @Override
-         public wp a() {
-            return wp.a("narrator.select", this.d);
-         }
+      @Override
+      public void aO_() {
+         this.m.a(this.a);
       }
    }
 }

@@ -1,127 +1,246 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicOps;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.UUID;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dvm {
-   private static final Codec<wp[]> c = wr.g
-      .listOf()
-      .comapFlatMap(
-         $$0 -> af.a($$0, 4).map($$0x -> new wp[]{(wp)$$0x.get(0), (wp)$$0x.get(1), (wp)$$0x.get(2), (wp)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<dvm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.lenientOptionalFieldOf("filtered_messages").forGetter(dvm::d),
-               cvl.q.fieldOf("color").orElse(cvl.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dvm::a)
-   );
-   public static final int b = 4;
-   private final wp[] d;
-   private final wp[] e;
-   private final cvl f;
-   private final boolean g;
+public class dvm extends dtz {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 90;
+   private static final int c = 10;
    @Nullable
-   private ayl[] h;
-   private boolean i;
+   private UUID d;
+   private dvn e = this.f();
+   private dvn f = this.f();
+   private boolean g;
 
-   public dvm() {
-      this(c(), c(), cvl.p, false);
+   public dvm(ji $$0, dwx $$1) {
+      this(dub.h, $$0, $$1);
    }
 
-   public dvm(wp[] $$0, wp[] $$1, cvl $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public dvm(dub $$0, ji $$1, dwx $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private static wp[] c() {
-      return new wp[]{wo.a, wo.a, wo.a, wo.a};
+   protected dvn f() {
+      return new dvn();
    }
 
-   private static dvm a(wp[] $$0, Optional<wp[]> $$1, cvl $$2, boolean $$3) {
-      return new dvm($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
+   public boolean a(cox $$0) {
+      if (this.m().b() instanceof dqr $$1) {
+         fba $$2 = $$1.o(this.m());
+         double $$3 = $$0.dA() - ((double)this.aA_().u() + $$2.d);
+         double $$4 = $$0.dG() - ((double)this.aA_().w() + $$2.f);
+         float $$5 = $$1.h(this.m());
+         float $$6 = (float)(ayz.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
+         return ayz.d($$5, $$6) <= 90.0F;
+      } else {
+         return false;
+      }
    }
 
-   public boolean a() {
-      return this.g;
+   public dvn a(boolean $$0) {
+      return $$0 ? this.e : this.f;
    }
 
-   public dvm a(boolean $$0) {
-      return $$0 == this.g ? this : new dvm(this.d, this.e, this.f, $$0);
+   public dvn j() {
+      return this.e;
    }
 
-   public cvl b() {
+   public dvn k() {
       return this.f;
    }
 
-   public dvm a(cvl $$0) {
-      return $$0 == this.b() ? this : new dvm(this.d, this.e, $$0, this.g);
+   public int b() {
+      return 10;
    }
 
-   public wp a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
+   public int c() {
+      return 90;
    }
 
-   public dvm a(int $$0, wp $$1) {
-      return this.a($$0, $$1, $$1);
+   @Override
+   protected void b(tq $$0, jt.a $$1) {
+      super.b($$0, $$1);
+      DynamicOps<un> $$2 = $$1.a(ue.a);
+      dvn.a.encodeStart($$2, this.e).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("front_text", $$1x));
+      dvn.a.encodeStart($$2, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("back_text", $$1x));
+      $$0.a("is_waxed", this.g);
    }
 
-   public dvm a(int $$0, wp $$1, wp $$2) {
-      wp[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      wp[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new dvm($$3, $$4, this.f, this.g);
+   @Override
+   protected void a(tq $$0, jt.a $$1) {
+      super.a($$0, $$1);
+      DynamicOps<un> $$2 = $$1.a(ue.a);
+      if ($$0.e("front_text")) {
+         dvn.a.parse($$2, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
+      }
+
+      if ($$0.e("back_text")) {
+         dvn.a.parse($$2, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
+      }
+
+      this.g = $$0.q("is_waxed");
    }
 
-   public boolean a(cow $$0) {
-      return Arrays.stream(this.b($$0.aa())).anyMatch($$0x -> !$$0x.getString().isEmpty());
+   private dvn a(dvn $$0) {
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         wp $$2 = this.a($$0.a($$1, false));
+         wp $$3 = this.a($$0.a($$1, true));
+         $$0 = $$0.a($$1, $$2, $$3);
+      }
+
+      return $$0;
    }
 
-   public wp[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public ayl[] a(boolean $$0, Function<wp, ayl> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new ayl[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
+   private wp a(wp $$0) {
+      if (this.n instanceof ard $$1) {
+         try {
+            return ws.a(a(null, $$1, this.o), $$0, null, 0);
+         } catch (CommandSyntaxException var4) {
          }
       }
 
-      return this.h;
+      return $$0;
    }
 
-   private Optional<wp[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
+   public void a(cox $$0, boolean $$1, List<arw> $$2) {
+      if (!this.u() && $$0.cG().equals(this.t()) && this.n != null) {
+         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
+         this.a(null);
+         this.n.a(this.aA_(), this.m(), this.m(), 3);
+      } else {
+         a.warn("Player {} just tried to change non-editable sign", $$0.al().getString());
+      }
+   }
+
+   public boolean a(UnaryOperator<dvn> $$0, boolean $$1) {
+      dvn $$2 = this.a($$1);
+      return this.a($$0.apply($$2), $$1);
+   }
+
+   private dvn a(cox $$0, List<arw> $$1, dvn $$2) {
+      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+         arw $$4 = $$1.get($$3);
+         xm $$5 = $$2.a($$3, $$0.aa()).a();
+         if ($$0.aa()) {
+            $$2 = $$2.a($$3, wp.b($$4.b()).b($$5));
+         } else {
+            $$2 = $$2.a($$3, wp.b($$4.d()).b($$5), wp.b($$4.b()).b($$5));
          }
       }
 
-      return Optional.empty();
+      return $$2;
    }
 
-   public boolean b(cow $$0) {
-      for (wp $$1 : this.b($$0.aa())) {
-         xm $$2 = $$1.a();
-         wn $$3 = $$2.i();
-         if ($$3 != null && $$3.a() == wn.a.c) {
-            return true;
+   public boolean a(dvn $$0, boolean $$1) {
+      return $$1 ? this.c($$0) : this.b($$0);
+   }
+
+   private boolean b(dvn $$0) {
+      if ($$0 != this.f) {
+         this.f = $$0;
+         this.v();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean c(dvn $$0) {
+      if ($$0 != this.e) {
+         this.e = $$0;
+         this.v();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean a(boolean $$0, cox $$1) {
+      return this.u() && this.a($$0).b($$1);
+   }
+
+   public boolean a(cox $$0, dgi $$1, ji $$2, boolean $$3) {
+      boolean $$4 = false;
+
+      for (wp $$5 : this.a($$3).b($$0.aa())) {
+         xm $$6 = $$5.a();
+         wn $$7 = $$6.i();
+         if ($$7 != null && $$7.a() == wn.a.c) {
+            $$0.cV().aG().a(a($$0, $$1, $$2), $$7.b());
+            $$4 = true;
          }
       }
 
-      return false;
+      return $$4;
+   }
+
+   private static ex a(@Nullable cox $$0, dgi $$1, ji $$2) {
+      String $$3 = $$0 == null ? "Sign" : $$0.al().getString();
+      wp $$4 = (wp)($$0 == null ? wp.b("Sign") : $$0.p_());
+      return new ex(ew.a, fba.b($$2), faz.a, (ard)$$1, 2, $$3, $$4, $$1.p(), $$0);
+   }
+
+   public abs s() {
+      return abs.a(this);
+   }
+
+   @Override
+   public tq a(jt.a $$0) {
+      return this.e($$0);
+   }
+
+   public void a(@Nullable UUID $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   public UUID t() {
+      return this.d;
+   }
+
+   private void v() {
+      this.e();
+      this.n.a(this.aA_(), this.m(), this.m(), 3);
+   }
+
+   public boolean u() {
+      return this.g;
+   }
+
+   public boolean b(boolean $$0) {
+      if (this.g != $$0) {
+         this.g = $$0;
+         this.v();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(UUID $$0) {
+      cox $$1 = this.n.b($$0);
+      return $$1 == null || !$$1.a(this.aA_(), 4.0);
+   }
+
+   public static void a(dgi $$0, ji $$1, dwx $$2, dvm $$3) {
+      UUID $$4 = $$3.t();
+      if ($$4 != null) {
+         $$3.a($$3, $$0, $$4);
+      }
+   }
+
+   private void a(dvm $$0, dgi $$1, UUID $$2) {
+      if ($$0.b($$2)) {
+         $$0.a(null);
+      }
+   }
+
+   public avz d() {
+      return awa.CP;
    }
 }

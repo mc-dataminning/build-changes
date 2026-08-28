@@ -1,24 +1,8 @@
-import java.util.Collection;
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface fsn extends fqc, fsq {
-   fsn.a w();
-
-   default boolean E() {
-      return true;
-   }
-
-   default Collection<? extends fsn> L() {
-      return List.of(this);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-
-      public boolean a() {
-         return this == c;
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fsn {
 }

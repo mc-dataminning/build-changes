@@ -1,278 +1,199 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
 import java.util.List;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class foz<T> extends foh {
-   public static final BooleanSupplier a = fuk::u;
-   private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
-   private final wp c;
-   private int d;
-   private T f;
-   private final foz.c<T> m;
-   private final Function<T, wp> n;
-   private final Function<foz<T>, xd> o;
-   private final foz.b<T> p;
-   private final boolean q;
-   private final fll.l<T> r;
-
-   foz(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      wp $$4,
-      wp $$5,
-      int $$6,
-      T $$7,
-      foz.c<T> $$8,
-      Function<T, wp> $$9,
-      Function<foz<T>, xd> $$10,
-      foz.b<T> $$11,
-      fll.l<T> $$12,
-      boolean $$13
-   ) {
+public abstract class foz<E extends foz.a<E>> extends fom<E> {
+   public foz(flj $$0, int $$1, int $$2, int $$3, int $$4) {
       super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.f = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.o = $$10;
-      this.p = $$11;
-      this.q = $$13;
-      this.r = $$12;
-      this.g();
    }
 
-   private void g() {
-      this.a(this.r.apply(this.f));
+   public foz(flj $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
+   @Nullable
    @Override
-   public void b() {
-      if (fuk.t()) {
-         this.a(-1);
+   public fob a(fsw $$0) {
+      if (this.t() == 0) {
+         return null;
+      } else if (!($$0 instanceof fsw.a $$1)) {
+         return super.a($$0);
       } else {
-         this.a(1);
-      }
-   }
-
-   private void a(int $$0) {
-      List<T> $$1 = this.m.a();
-      this.d = ayz.b(this.d + $$0, $$1.size());
-      T $$2 = $$1.get(this.d);
-      this.b($$2);
-      this.p.onValueChange(this, $$2);
-   }
-
-   private T b(int $$0) {
-      List<T> $$1 = this.m.a();
-      return $$1.get(ayz.b(this.d + $$0, $$1.size()));
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$3 > 0.0) {
-         this.a(-1);
-      } else if ($$3 < 0.0) {
-         this.a(1);
-      }
-
-      return true;
-   }
-
-   public void a(T $$0) {
-      List<T> $$1 = this.m.a();
-      int $$2 = $$1.indexOf($$0);
-      if ($$2 != -1) {
-         this.d = $$2;
-      }
-
-      this.b($$0);
-   }
-
-   private void b(T $$0) {
-      wp $$1 = this.c($$0);
-      this.b($$1);
-      this.f = $$0;
-      this.g();
-   }
-
-   private wp c(T $$0) {
-      return (wp)(this.q ? this.n.apply($$0) : this.d($$0));
-   }
-
-   private xd d(T $$0) {
-      return wo.a(this.c, this.n.apply($$0));
-   }
-
-   public T a() {
-      return this.f;
-   }
-
-   @Override
-   protected xd d() {
-      return this.o.apply(this);
-   }
-
-   @Override
-   public void a(fsp $$0) {
-      $$0.a(fso.a, this.d());
-      if (this.j) {
-         T $$1 = this.b(1);
-         wp $$2 = this.c($$1);
-         if (this.aM_()) {
-            $$0.a(fso.d, wp.a("narration.cycle_button.usage.focused", $$2));
+         E $$2 = this.r();
+         if ($$1.b().a() == fsx.a && $$2 != null) {
+            return fob.a(this, $$2.a($$0));
          } else {
-            $$0.a(fso.d, wp.a("narration.cycle_button.usage.hovered", $$2));
+            int $$3 = -1;
+            fsy $$4 = $$1.b();
+            if ($$2 != null) {
+               $$3 = $$2.aH_().indexOf($$2.aL_());
+            }
+
+            if ($$3 == -1) {
+               switch ($$4) {
+                  case c:
+                     $$3 = Integer.MAX_VALUE;
+                     $$4 = fsy.b;
+                     break;
+                  case d:
+                     $$3 = 0;
+                     $$4 = fsy.b;
+                     break;
+                  default:
+                     $$3 = 0;
+               }
+            }
+
+            E $$5 = $$2;
+
+            fob $$6;
+            do {
+               $$5 = this.a($$4, $$0x -> !$$0x.aH_().isEmpty(), $$5);
+               if ($$5 == null) {
+                  return null;
+               }
+
+               $$6 = $$5.a($$1, $$3);
+            } while ($$6 == null);
+
+            return fob.a(this, $$6);
          }
       }
    }
 
-   public xd c() {
-      return a_((wp)(this.q ? this.d(this.f) : this.B()));
+   @Override
+   public void a(@Nullable fqq $$0) {
+      if (this.r() != $$0) {
+         super.a($$0);
+         if ($$0 == null) {
+            this.a(null);
+         }
+      }
    }
 
-   public static <T> foz.a<T> a(Function<T, wp> $$0) {
-      return new foz.a<>($$0);
+   @Override
+   public fso.a w() {
+      return this.aM_() ? fso.a.c : super.w();
    }
 
-   public static foz.a<Boolean> a(wp $$0, wp $$1) {
-      return new foz.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
+   @Override
+   protected boolean c(int $$0) {
+      return false;
    }
 
-   public static foz.a<Boolean> e() {
-      return new foz.a<Boolean>($$0 -> $$0 ? wo.b : wo.c).a(b);
+   @Override
+   public void a(fsq $$0) {
+      E $$1 = this.x();
+      if ($$1 != null) {
+         $$1.a($$0.a());
+         this.a($$0, $$1);
+      } else {
+         E $$2 = this.r();
+         if ($$2 != null) {
+            $$2.a($$0.a());
+            this.a($$0, $$2);
+         }
+      }
+
+      $$0.a(fsp.d, wp.c("narration.component_list.usage"));
    }
 
-   public static foz.a<Boolean> b(boolean $$0) {
-      return e().a($$0);
-   }
-
-   public static class a<T> {
-      private int a;
+   public abstract static class a<E extends foz.a<E>> extends fom.a<E> implements fqp {
       @Nullable
-      private T b;
-      private final Function<T, wp> c;
-      private fll.l<T> d = $$0x -> null;
-      private Function<foz<T>, xd> e = foz::c;
-      private foz.c<T> f = foz.c.a(ImmutableList.of());
-      private boolean g;
+      private fqq a;
+      @Nullable
+      private fso b;
+      private boolean c;
 
-      public a(Function<T, wp> $$0) {
+      @Override
+      public boolean aK_() {
+         return this.c;
+      }
+
+      @Override
+      public void b_(boolean $$0) {
          this.c = $$0;
       }
 
-      public foz.a<T> a(Collection<T> $$0) {
-         return this.a(foz.c.a($$0));
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return fqp.super.a($$0, $$1, $$2);
       }
 
-      @SafeVarargs
-      public final foz.a<T> a(T... $$0) {
-         return this.a(ImmutableList.copyOf($$0));
-      }
-
-      public foz.a<T> a(List<T> $$0, List<T> $$1) {
-         return this.a(foz.c.a(foz.a, $$0, $$1));
-      }
-
-      public foz.a<T> a(BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         return this.a(foz.c.a($$0, $$1, $$2));
-      }
-
-      public foz.a<T> a(foz.c<T> $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public foz.a<T> a(fll.l<T> $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public foz.a<T> a(T $$0) {
-         this.b = $$0;
-         int $$1 = this.f.b().indexOf($$0);
-         if ($$1 != -1) {
-            this.a = $$1;
+      @Override
+      public void a(@Nullable fqq $$0) {
+         if (this.a != null) {
+            this.a.a(false);
          }
 
-         return this;
+         if ($$0 != null) {
+            $$0.a(true);
+         }
+
+         this.a = $$0;
       }
 
-      public foz.a<T> a(Function<foz<T>, xd> $$0) {
-         this.e = $$0;
-         return this;
+      @Nullable
+      @Override
+      public fqq aL_() {
+         return this.a;
       }
 
-      public foz.a<T> a() {
-         this.g = true;
-         return this;
-      }
-
-      public foz<T> a(wp $$0, foz.b<T> $$1) {
-         return this.a(0, 0, 150, 20, $$0, $$1);
-      }
-
-      public foz<T> a(int $$0, int $$1, int $$2, int $$3, wp $$4) {
-         return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
-         });
-      }
-
-      public foz<T> a(int $$0, int $$1, int $$2, int $$3, wp $$4, foz.b<T> $$5) {
-         List<T> $$6 = this.f.b();
-         if ($$6.isEmpty()) {
-            throw new IllegalStateException("No values for cycle button");
+      @Nullable
+      public fob a(fsw $$0, int $$1) {
+         if (this.aH_().isEmpty()) {
+            return null;
          } else {
-            T $$7 = this.b != null ? this.b : $$6.get(this.a);
-            wp $$8 = this.c.apply($$7);
-            wp $$9 = (wp)(this.g ? $$8 : wo.a($$4, $$8));
-            return new foz<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
+            fob $$2 = this.aH_().get(Math.min($$1, this.aH_().size() - 1)).a($$0);
+            return fob.a(this, $$2);
          }
       }
-   }
 
-   public interface b<T> {
-      void onValueChange(foz<T> var1, T var2);
-   }
-
-   public interface c<T> {
-      List<T> a();
-
-      List<T> b();
-
-      static <T> foz.c<T> a(Collection<T> $$0) {
-         final List<T> $$1 = ImmutableList.copyOf($$0);
-         return new foz.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$1;
+      @Nullable
+      @Override
+      public fob a(fsw $$0) {
+         if ($$0 instanceof fsw.a $$1) {
+            int $$2 = switch ($$1.b()) {
+               case c -> -1;
+               case d -> 1;
+               case a, b -> 0;
+            };
+            if ($$2 == 0) {
+               return null;
             }
 
-            @Override
-            public List<T> b() {
-               return $$1;
+            int $$3 = ayz.a($$2 + this.aH_().indexOf(this.aL_()), 0, this.aH_().size() - 1);
+
+            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.aH_().size(); $$4 += $$2) {
+               fqq $$5 = this.aH_().get($$4);
+               fob $$6 = $$5.a($$0);
+               if ($$6 != null) {
+                  return fob.a(this, $$6);
+               }
             }
-         };
+         }
+
+         return fqp.super.a($$0);
       }
 
-      static <T> foz.c<T> a(final BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         final List<T> $$3 = ImmutableList.copyOf($$1);
-         final List<T> $$4 = ImmutableList.copyOf($$2);
-         return new foz.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$0.getAsBoolean() ? $$4 : $$3;
+      public abstract List<? extends fso> b();
+
+      void a(fsq $$0) {
+         List<? extends fso> $$1 = this.b();
+         ful.b $$2 = ful.a($$1, this.b);
+         if ($$2 != null) {
+            if ($$2.c.a()) {
+               this.b = $$2.a;
             }
 
-            @Override
-            public List<T> b() {
-               return $$3;
+            if ($$1.size() > 1) {
+               $$0.a(fsp.b, wp.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
+               if ($$2.c == fso.a.c) {
+                  $$0.a(fsp.d, wp.c("narration.component_list.usage"));
+               }
             }
-         };
+
+            $$2.a.b($$0.a());
+         }
       }
    }
 }

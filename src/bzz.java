@@ -1,32 +1,51 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bzz {
-   public static bxa<bvg> a(djl $$0) {
-      return cam.a(
-         (Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$1 -> $$1.group($$1.c(cek.o), $$1.b(cek.m), $$1.b(cek.Y))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
-                     if (!$$3x.bj() && $$3x.aJ()) {
-                        ji $$5 = $$3x.dv().e();
+   public static bxb<bvp> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return can.a(
+         (Function<can.b<bvp>, ? extends App<can.c<bvp>, caq<bvp>>>)($$3 -> $$3.group($$3.c(cel.o), $$3.c(cel.m), $$3.a(cel.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if ($$5x.b_($$6.dv()).a(awv.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 20L + 2L);
+                        return true;
+                     } else {
+                        ji $$8 = null;
+                        ji $$9 = null;
+                        ji $$10 = $$6.dv();
 
-                        for (jn $$6 : jn.c.a) {
-                           ji $$7 = $$5.a($$6);
-                           if ($$2x.a_($$7).g($$2x, $$7).a(jn.b).c() && $$2x.b_($$7).b(esz.c)) {
-                              ji $$8 = $$7.d();
-                              if ($$2x.a_($$8).l()) {
-                                 dww $$9 = $$0.m();
-                                 $$2x.a($$8, $$9, 3);
-                                 $$2x.a(ebs.i, $$8, ebs.a.a($$3x, $$9));
-                                 $$2x.a(null, $$3x, awa.kp, awb.e, 1.0F, 1.0F);
-                                 $$3.b();
-                                 return true;
+                        for (ji $$12 : ji.a($$10, $$0, $$0, $$0)) {
+                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
+                              dwx $$13 = $$6.dV().a_($$12.d());
+                              dwx $$14 = $$6.dV().a_($$12);
+                              if ($$14.a(djo.J)) {
+                                 if ($$13.l()) {
+                                    $$8 = $$12.j();
+                                    break;
+                                 }
+
+                                 if ($$9 == null && !$$12.a($$6.dt(), 1.5)) {
+                                    $$9 = $$12.j();
+                                 }
                               }
                            }
                         }
 
+                        if ($$8 == null) {
+                           $$8 = $$9;
+                        }
+
+                        if ($$8 != null) {
+                           $$5.a(new bxd($$8));
+                           $$4.a(new ceo(new bxd($$8), $$1, 0));
+                        }
+
+                        $$2.setValue($$7 + 40L);
                         return true;
-                     } else {
-                        return false;
                      }
                   }))
       );

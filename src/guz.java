@@ -1,31 +1,27 @@
-public class guz extends gqx<coh, hau, gem> {
-   private static final akv b = akv.b("textures/entity/villager/villager.png");
-   public static final gvw.a a = new gvw.a(-0.1171875F, -0.07421875F, 1.0F);
+public class guz extends gtk<cmm, hat, gel> {
+   private static final akv a = akv.b("textures/entity/illager/vex.png");
+   private static final akv b = akv.b("textures/entity/illager/vex_charging.png");
 
-   public guz(gsd.a $$0) {
-      super($$0, new gem($$0.a(gfb.dt)), new gem($$0.a(gfb.du)), 0.5F);
-      this.a(new gvw<>(this, $$0.f(), a));
-      this.a(new gxc<>(this, $$0.e(), "villager"));
-      this.a(new gvv<>(this));
+   public guz(gse.a $$0) {
+      super($$0, new gel($$0.a(gfc.ds)), 0.3F);
+      this.a(new gwl<>(this));
    }
 
-   public akv a(hau $$0) {
-      return b;
+   protected int a(cmm $$0, ji $$1) {
+      return 15;
    }
 
-   protected float b(hau $$0) {
-      float $$1 = super.g($$0);
-      return $$0.aj ? $$1 * 0.5F : $$1;
+   public akv a(hat $$0) {
+      return $$0.a ? b : a;
    }
 
-   public hau b() {
-      return new hau();
+   public hat b() {
+      return new hat();
    }
 
-   public void a(coh $$0, hau $$1, float $$2) {
+   public void a(cmm $$0, hat $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      gyy.a($$0, $$1, this.i);
-      $$1.a = $$0.p() > 0;
-      $$1.b = $$0.gC();
+      gxp.a($$0, $$1, this.i);
+      $$1.a = $$0.gs();
    }
 }

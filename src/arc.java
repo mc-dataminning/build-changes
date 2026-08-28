@@ -2,31 +2,31 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public interface arc extends dfy {
+public interface arc extends dfz {
    ard a();
 
    @Nullable
-   default cow a(cfx $$0, bvg $$1) {
+   default cox a(cfy $$0, bvh $$1) {
       return this.a(this.z(), $$0, $$1, $$1.dA(), $$1.dC(), $$1.dG());
    }
 
    @Nullable
-   default cow a(cfx $$0, bvg $$1, double $$2, double $$3, double $$4) {
+   default cox a(cfy $$0, bvh $$1, double $$2, double $$3, double $$4) {
       return this.a(this.z(), $$0, $$1, $$2, $$3, $$4);
    }
 
    @Nullable
-   default cow a(cfx $$0, double $$1, double $$2, double $$3) {
+   default cox a(cfy $$0, double $$1, double $$2, double $$3) {
       return this.a(this.z(), $$0, null, $$1, $$2, $$3);
    }
 
    @Nullable
-   default <T extends bvg> T a(Class<? extends T> $$0, cfx $$1, @Nullable bvg $$2, double $$3, double $$4, double $$5, fau $$6) {
+   default <T extends bvh> T a(Class<? extends T> $$0, cfy $$1, @Nullable bvh $$2, double $$3, double $$4, double $$5, fav $$6) {
       return this.a(this.a($$0, $$6, $$0x -> true), $$1, $$2, $$3, $$4, $$5);
    }
 
    @Nullable
-   default <T extends bvg> T a(List<? extends T> $$0, cfx $$1, @Nullable bvg $$2, double $$3, double $$4, double $$5) {
+   default <T extends bvh> T a(List<? extends T> $$0, cfy $$1, @Nullable bvh $$2, double $$3, double $$4, double $$5) {
       double $$6 = -1.0;
       T $$7 = null;
 
@@ -43,10 +43,10 @@ public interface arc extends dfy {
       return $$7;
    }
 
-   default List<cow> a(cfx $$0, bvg $$1, fau $$2) {
-      List<cow> $$3 = new ArrayList<>();
+   default List<cox> a(cfy $$0, bvh $$1, fav $$2) {
+      List<cox> $$3 = new ArrayList<>();
 
-      for (cow $$4 : this.z()) {
+      for (cox $$4 : this.z()) {
          if ($$2.e($$4.dA(), $$4.dC(), $$4.dG()) && $$0.a(this.a(), $$1, $$4)) {
             $$3.add($$4);
          }
@@ -55,7 +55,7 @@ public interface arc extends dfy {
       return $$3;
    }
 
-   default <T extends bvg> List<T> a(Class<T> $$0, cfx $$1, bvg $$2, fau $$3) {
+   default <T extends bvh> List<T> a(Class<T> $$0, cfy $$1, bvh $$2, fav $$3) {
       List<T> $$4 = this.a($$0, $$3, $$0x -> true);
       List<T> $$5 = new ArrayList<>();
 

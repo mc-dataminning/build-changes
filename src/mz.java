@@ -29,7 +29,7 @@ public class mz implements mi {
                         $$3x.add(
                            "components",
                            (JsonElement)kr.b
-                              .encodeStart($$4, ((cwk)$$2x.a()).g())
+                              .encodeStart($$4, ((cwl)$$2x.a()).g())
                               .getOrThrow($$0xxx -> new IllegalStateException("Failed to encode components: " + $$0xxx))
                         );
                         $$3.add($$2x.g(), $$3x);

@@ -1,61 +1,36 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public final class heh {
+   private static final int a = 16;
+   private static final int b = 16;
+   private static final String c = "missingno";
+   private static final akv d = akv.b("missingno");
 
-public class heh implements AutoCloseable {
-   private static final int e = 16;
-   public static final int a = 0;
-   public static final int b = 3;
-   public static final int c = 10;
-   public static final int d = a(0, 10);
-   private final hee f = new hee(16, 16, false);
+   public static feu a() {
+      return a(16, 16);
+   }
 
-   public heh() {
-      fet $$0 = this.f.e();
+   public static feu a(int $$0, int $$1) {
+      feu $$2 = new feu($$0, $$1, false);
+      int $$3 = -524040;
 
-      for (int $$1 = 0; $$1 < 16; $$1++) {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            if ($$1 < 8) {
-               $$0.a($$2, $$1, -1291911168);
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            if ($$4 < $$1 / 2 ^ $$5 < $$0 / 2) {
+               $$2.a($$5, $$4, -524040);
             } else {
-               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
-               $$0.a($$2, $$1, axk.c($$3, -1));
+               $$2.a($$5, $$4, -16777216);
             }
          }
       }
 
-      RenderSystem.activeTexture(33985);
-      this.f.c();
-      this.f.a(false, false);
-      this.f.a(true);
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false);
-      RenderSystem.activeTexture(33984);
+      return $$2;
    }
 
-   @Override
-   public void close() {
-      this.f.close();
+   public static hem b() {
+      feu $$0 = a(16, 16);
+      return new hem(d, new hgg(16, 16), $$0, aur.a);
    }
 
-   public void a() {
-      RenderSystem.setupOverlayColor(this.f.a(), 16);
-   }
-
-   public static int a(float $$0) {
-      return (int)($$0 * 15.0F);
-   }
-
-   public static int a(boolean $$0) {
-      return $$0 ? 3 : 10;
-   }
-
-   public static int a(int $$0, int $$1) {
-      return $$0 | $$1 << 16;
-   }
-
-   public static int a(float $$0, boolean $$1) {
-      return a(a($$0), a($$1));
-   }
-
-   public void b() {
-      RenderSystem.teardownOverlayColor();
+   public static akv c() {
+      return d;
    }
 }

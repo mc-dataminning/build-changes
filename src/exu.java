@@ -3,34 +3,39 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 
-public class exu extends exd {
+public class exu extends exe {
    public static final MapCodec<exu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(axf.b(mc.I).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, exu::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  exd.e.a(cze.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
+                  ayi.k.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, exu::new)
    );
-   private final axf<cwh> b;
+   public static final czf b = new czf(0, List.of());
+   private final Optional<exd.e<cze>> c;
+   private final Optional<Integer> d;
 
-   private exu(List<eyz> $$0, axf<cwh> $$1) {
+   protected exu(List<eza> $$0, Optional<exd.e<cze>> $$1, Optional<Integer> $$2) {
       super($$0);
-      this.b = $$1;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public exf<exu> b() {
-      return exg.G;
-   }
-
-   @Override
-   public cwo a(cwo $$0, evq $$1) {
-      ke<cwh> $$2 = $$1.d().K_().e(mc.I);
-      Optional<jr<cwh>> $$3 = $$2.a(this.b, $$1.b());
-      if ($$3.isPresent()) {
-         $$0.b(kv.Z, $$3.get());
-      }
-
+   protected cwp a(cwp $$0, evr $$1) {
+      $$0.a(kv.af, b, this::a);
       return $$0;
    }
 
-   public static exd.a<?> a(axf<cwh> $$0) {
-      return a($$1 -> new exu($$1, $$0));
+   private czf a(czf $$0) {
+      return new czf(this.d.orElseGet($$0::a), this.c.<List<cze>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
+   }
+
+   @Override
+   public exg<exu> b() {
+      return exh.K;
    }
 }

@@ -2,8 +2,8 @@ public record aqp(int a, int b) {
    private static final long c = 32L;
    private static final long d = 4294967295L;
 
-   public dfn a() {
-      return new dfn(kk.a(this.a), kk.a(this.b));
+   public dfo a() {
+      return new dfo(kk.a(this.a), kk.a(this.b));
    }
 
    public long b() {
@@ -29,7 +29,7 @@ public record aqp(int a, int b) {
 
    @Override
    public int hashCode() {
-      return dfn.d(this.a, this.b);
+      return dfo.d(this.a, this.b);
    }
 
    public int c() {

@@ -1,18 +1,30 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class ewe {
-   public static final Codec<ewg> a = mb.D.q().dispatch(ewg::a, ewh::a);
-   public static final ewh b = a("empty", ewb.a);
-   public static final ewh c = a("item", ewd.a);
-   public static final ewh d = a("loot_table", ewj.a);
-   public static final ewh e = a("dynamic", ewa.a);
-   public static final ewh f = a("tag", ewl.a);
-   public static final ewh g = a("alternatives", evx.a);
-   public static final ewh h = a("sequence", ewk.a);
-   public static final ewh i = a("group", ewc.a);
+public class ewe extends ewj {
+   public static final MapCodec<ewe> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(cwl.e.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ewe::new)
+   );
+   private final jr<cwl> j;
 
-   private static ewh a(String $$0, MapCodec<? extends ewg> $$1) {
-      return ke.a(mb.D, akv.b($$0), new ewh($$1));
+   private ewe(jr<cwl> $$0, int $$1, int $$2, List<eza> $$3, List<exf> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
+   }
+
+   @Override
+   public ewi a() {
+      return ewf.c;
+   }
+
+   @Override
+   public void a(Consumer<cwp> $$0, evr $$1) {
+      $$0.accept(new cwp(this.j));
+   }
+
+   public static ewj.a<?> a(dgh $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ewe($$0.j().f(), $$1, $$2, $$3, $$4));
    }
 }

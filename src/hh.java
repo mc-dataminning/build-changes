@@ -7,20 +7,20 @@ import java.util.stream.Stream;
 
 public class hh {
    private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wp.b("arguments.item.overstacked", $$0, $$1));
-   private final jr<cwk> b;
+   private final jr<cwl> b;
    private final ks c;
 
-   public hh(jr<cwk> $$0, ks $$1) {
+   public hh(jr<cwl> $$0, ks $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public cwk a() {
+   public cwl a() {
       return this.b.a();
    }
 
-   public cwo a(int $$0, boolean $$1) throws CommandSyntaxException {
-      cwo $$2 = new cwo(this.b, $$0);
+   public cwp a(int $$0, boolean $$1) throws CommandSyntaxException {
+      cwp $$2 = new cwp(this.b, $$0);
       $$2.b(this.c);
       if ($$1 && $$0 > $$2.k()) {
          throw a.create(this.b(), $$2.k());

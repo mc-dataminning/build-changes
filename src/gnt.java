@@ -1,51 +1,83 @@
-import com.google.common.base.Splitter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
-public class gnt {
-   private static final Splitter a = Splitter.on(',');
-   private static final Splitter b = Splitter.on('=').limit(2);
+public record gnt(akv a, j b, boolean c, int d) implements hhi {
+   @Override
+   public j a() {
+      return this.b;
+   }
 
-   public static <O, S extends dwy<O, S>> Predicate<dwy<O, S>> a(dwx<O, S> $$0, String $$1) {
-      Map<dxy<?>, Comparable<?>> $$2 = new HashMap<>();
+   @Override
+   public boolean b() {
+      return this.c;
+   }
 
-      for (String $$3 : a.split($$1)) {
-         Iterator<String> $$4 = b.split($$3).iterator();
-         if ($$4.hasNext()) {
-            String $$5 = $$4.next();
-            dxy<?> $$6 = $$0.a($$5);
-            if ($$6 != null && $$4.hasNext()) {
-               String $$7 = $$4.next();
-               Comparable<?> $$8 = a((dxy<Comparable<?>>)$$6, $$7);
-               if ($$8 == null) {
-                  throw new RuntimeException("Unknown value: '" + $$7 + "' for blockstate property: '" + $$5 + "' " + $$6.a());
-               }
+   public akv c() {
+      return this.a;
+   }
 
-               $$2.put($$6, $$8);
-            } else if (!$$5.isEmpty()) {
-               throw new RuntimeException("Unknown blockstate property: '" + $$5 + "'");
-            }
+   public j d() {
+      return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public static class a implements JsonDeserializer<gnt> {
+      @VisibleForTesting
+      static final boolean a = false;
+      @VisibleForTesting
+      static final int b = 1;
+      @VisibleForTesting
+      static final int c = 0;
+      @VisibleForTesting
+      static final int d = 0;
+
+      public gnt a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         akv $$4 = this.b($$3);
+         hgt $$5 = this.a($$3);
+         boolean $$6 = this.d($$3);
+         int $$7 = this.c($$3);
+         return new gnt($$4, $$5.a(), $$6, $$7);
+      }
+
+      private boolean d(JsonObject $$0) {
+         return ayp.a($$0, "uvlock", false);
+      }
+
+      protected hgt a(JsonObject $$0) {
+         int $$1 = ayp.a($$0, "x", 0);
+         int $$2 = ayp.a($$0, "y", 0);
+         hgt $$3 = hgt.a($$1, $$2);
+         if ($$3 == null) {
+            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+         } else {
+            return $$3;
          }
       }
 
-      return $$1x -> {
-         for (Entry<dxy<?>, Comparable<?>> $$2x : $$2.entrySet()) {
-            if (!Objects.equals($$1x.c($$2x.getKey()), $$2x.getValue())) {
-               return false;
-            }
+      protected akv b(JsonObject $$0) {
+         return akv.a(ayp.i($$0, "model"));
+      }
+
+      protected int c(JsonObject $$0) {
+         int $$1 = ayp.a($$0, "weight", 1);
+         if ($$1 < 1) {
+            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
+         } else {
+            return $$1;
          }
-
-         return true;
-      };
-   }
-
-   @Nullable
-   private static <T extends Comparable<T>> T a(dxy<T> $$0, String $$1) {
-      return $$0.b($$1).orElse(null);
+      }
    }
 }

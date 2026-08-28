@@ -1,30 +1,70 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Consumer;
 
-public class ewd extends ewi {
-   public static final MapCodec<ewd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(cwk.e.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ewd::new)
-   );
-   private final jr<cwk> j;
+public class ewd extends ewa {
+   public static final MapCodec<ewd> a = a(ewd::new);
 
-   private ewd(jr<cwk> $$0, int $$1, int $$2, List<eyz> $$3, List<exe> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   ewd(List<ewh> $$0, List<eza> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public ewh a() {
-      return ewe.c;
+   public ewi a() {
+      return ewf.i;
    }
 
    @Override
-   public void a(Consumer<cwo> $$0, evq $$1) {
-      $$0.accept(new cwo(this.j));
+   protected evz a(List<? extends evz> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (evz)$$0.get(0);
+         case 2 -> {
+            evz $$1 = $$0.get(0);
+            evz $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (evz $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
+         }
+
+         return true;
+      };
+      };
    }
 
-   public static ewi.a<?> a(dgg $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ewd($$0.j().f(), $$1, $$2, $$3, $$4));
+   public static ewd.a a(ewh.a<?>... $$0) {
+      return new ewd.a($$0);
+   }
+
+   public static class a extends ewh.a<ewd.a> {
+      private final Builder<ewh> a = ImmutableList.builder();
+
+      public a(ewh.a<?>... $$0) {
+         for (ewh.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected ewd.a a() {
+         return this;
+      }
+
+      @Override
+      public ewd.a b(ewh.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public ewh b() {
+         return new ewd(this.a.build(), this.f());
+      }
    }
 }

@@ -2,17 +2,17 @@ import java.util.function.BiConsumer;
 
 public record nu(jt.a a) implements ng {
    @Override
-   public void generate(BiConsumer<aku<evv>, evv.a> $$0) {
-      $$0.accept(evm.aQ, evv.b().a(evu.a().a(ezs.a(2.0F)).a(ewd.a(cws.dJ).a(exv.a(ezs.a(1.0F)))).a(ewd.a(cws.dK).a(exv.a(ezs.a(1.0F))))));
-      ni.a.forEach(($$1, $$2) -> $$0.accept(evm.aW.get($$1), evv.b().a(evu.a().a(ezz.a(1.0F, 3.0F)).a(ewd.a($$2)))));
-      $$0.accept(evm.aV, evv.b().a(ne.a(evm.aW)));
+   public void generate(BiConsumer<aku<evw>, evw.a> $$0) {
+      $$0.accept(evn.aQ, evw.b().a(evv.a().a(ezt.a(2.0F)).a(ewe.a(cwt.dJ).a(exw.a(ezt.a(1.0F)))).a(ewe.a(cwt.dK).a(exw.a(ezt.a(1.0F))))));
+      ni.a.forEach(($$1, $$2) -> $$0.accept(evn.aW.get($$1), evw.b().a(evv.a().a(faa.a(1.0F, 3.0F)).a(ewe.a($$2)))));
+      $$0.accept(evn.aV, evw.b().a(ne.a(evn.aW)));
       $$0.accept(
-         evm.aR,
-         evv.b()
-            .a(evu.a().a(evx.a(ewj.a(evm.aS).a(ezc.a(evq.b.a, bx.a.a().a(bz.i.a(chk.a.a)))), ewj.a(evm.aT).a(ezc.a(evq.b.a, bx.a.a().a(bz.i.a(chk.a.b)))))))
+         evn.aR,
+         evw.b()
+            .a(evv.a().a(evy.a(ewk.a(evn.aS).a(ezd.a(evr.b.a, bx.a.a().a(bz.i.a(chl.a.a)))), ewk.a(evn.aT).a(ezd.a(evr.b.a, bx.a.a().a(bz.i.a(chl.a.b)))))))
       );
-      $$0.accept(evm.aS, evv.b().a(evu.a().a(ezs.a(5.0F)).a(ewd.a(cws.dK))));
-      $$0.accept(evm.aT, evv.b().a(evu.a().a(ezs.a(5.0F)).a(ewd.a(cws.dJ))));
-      $$0.accept(evm.aU, evv.b().a(evu.a().a(ezs.a(1.0F)).a(ewd.a(cws.fA))));
+      $$0.accept(evn.aS, evw.b().a(evv.a().a(ezt.a(5.0F)).a(ewe.a(cwt.dK))));
+      $$0.accept(evn.aT, evw.b().a(evv.a().a(ezt.a(5.0F)).a(ewe.a(cwt.dJ))));
+      $$0.accept(evn.aU, evw.b().a(evv.a().a(ezt.a(1.0F)).a(ewe.a(cwt.fA))));
    }
 }

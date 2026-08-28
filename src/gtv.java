@@ -1,20 +1,16 @@
-public class gtv extends gqx<chp, gzw, gdg> {
-   private static final akv a = akv.b("textures/entity/bear/polarbear.png");
+public class gtv extends gsx<cmb, gzc> {
+   private static final akv a = akv.b("textures/entity/illager/pillager.png");
 
-   public gtv(gsd.a $$0) {
-      super($$0, new gdg($$0.a(gfb.co)), new gdg($$0.a(gfb.cp)), 0.9F);
+   public gtv(gse.a $$0) {
+      super($$0, new gcp<>($$0.a(gfc.cd)), 0.5F);
+      this.a(new gwl<>(this));
    }
 
-   public akv a(gzw $$0) {
+   public akv a(gzc $$0) {
       return a;
    }
 
-   public gzw b() {
-      return new gzw();
-   }
-
-   public void a(chp $$0, gzw $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
+   public gzc b() {
+      return new gzc();
    }
 }

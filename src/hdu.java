@@ -1,46 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
 
-public class hdu implements hdv<czn> {
-   private final dqs.a a;
-   private final gdx b;
-   @Nullable
-   private final akv c;
-   private final float d;
+public class hdu implements hds {
+   private final gox a;
+   private final float b;
+   private final jn c;
+   private final hgz d;
 
-   public hdu(dqs.a $$0, gdx $$1, @Nullable akv $$2, float $$3) {
+   public hdu(gox $$0, float $$1, jn $$2, hgz $$3) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
       this.d = $$3;
    }
 
-   @Nullable
-   public czn a(cwo $$0) {
-      return $$0.a(kv.ag);
+   @Override
+   public void a(cwn $$0, ffu $$1, gly $$2, int $$3, int $$4, boolean $$5) {
+      this.a.a($$1, $$2, $$3, $$4, this.c, this.b, this.d);
    }
 
-   public void a(@Nullable czn $$0, cwm $$1, fft $$2, glx $$3, int $$4, int $$5, boolean $$6) {
-      gmh $$7 = goy.a(this.a, $$0, this.c);
-      goy.a(null, 180.0F, this.d, $$2, $$3, $$4, this.b, $$7);
-   }
-
-   public static record a(dqs.a b, Optional<akv> c, float d) implements hdv.a {
+   public static record a(akv b, float c, jn d) implements hdw.a {
       public static final MapCodec<hdu.a> a = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  dqs.a.b.fieldOf("kind").forGetter(hdu.a::b),
-                  akv.a.optionalFieldOf("texture").forGetter(hdu.a::c),
-                  Codec.FLOAT.optionalFieldOf("animation", 0.0F).forGetter(hdu.a::d)
+                  akv.a.fieldOf("texture").forGetter(hdu.a::b),
+                  Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(hdu.a::c),
+                  jn.g.optionalFieldOf("orientation", jn.b).forGetter(hdu.a::d)
                )
                .apply($$0, hdu.a::new)
       );
 
-      public a(dqs.a $$0) {
-         this($$0, Optional.empty(), 0.0F);
+      public a() {
+         this(akv.b("shulker"), 0.0F, jn.b);
+      }
+
+      public a(cvm $$0) {
+         this(gmt.e($$0), 0.0F, jn.b);
       }
 
       @Override
@@ -48,12 +43,9 @@ public class hdu implements hdv<czn> {
          return a;
       }
 
-      @Nullable
       @Override
-      public hdv<?> a(gey $$0) {
-         gdx $$1 = goy.a($$0, this.b);
-         akv $$2 = this.c.<akv>map($$0x -> $$0x.a((UnaryOperator<String>)($$0xx -> "textures/entity/" + $$0xx + ".png"))).orElse(null);
-         return $$1 != null ? new hdu(this.b, $$1, $$2, this.d) : null;
+      public hdw<?> a(gez $$0) {
+         return new hdu(new gox($$0), this.c, this.d, gmt.b(this.b));
       }
    }
 }

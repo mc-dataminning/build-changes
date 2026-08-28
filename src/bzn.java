@@ -1,26 +1,27 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bzn {
-   public static bxa<bvg> a(Function<bvg, Optional<byn>> $$0, Predicate<bvg> $$1, int $$2, int $$3, float $$4) {
-      return cam.a(
-         (Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$5 -> $$5.group($$5.a(cek.n), $$5.a(cek.m))
-               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                     Optional<byn> $$10 = $$0.apply($$8);
-                     if (!$$10.isEmpty() && $$1.test($$8)) {
-                        byn $$11 = $$10.get();
-                        if ($$8.dt().a((kb)$$11.a(), (double)$$3)) {
-                           return false;
-                        } else {
-                           byn $$12 = $$10.get();
-                           $$5x.a($$12);
-                           $$6.a(new cen($$12, $$4, $$2));
-                           return true;
-                        }
-                     } else {
+   public static bxb<bvh> a(int $$0, BiPredicate<bvh, bvh> $$1) {
+      return can.a(
+         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$2 -> $$2.group($$2.b(cel.o), $$2.a(cel.ab), $$2.c(cel.ai), $$2.a(cel.aj))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     bvh $$10 = $$2.b($$3);
+                     if (!$$10.eE()) {
                         return false;
+                     } else {
+                        if ($$1.test($$8, $$10)) {
+                           $$6.a(true, (long)$$0);
+                        }
+
+                        $$5.a($$10.dv(), (long)$$0);
+                        if ($$10.aq() != bus.bR || $$7.O().b(dge.O)) {
+                           $$3.b();
+                           $$4.b();
+                        }
+
+                        return true;
                      }
                   }))
       );

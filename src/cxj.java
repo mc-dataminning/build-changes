@@ -1,57 +1,57 @@
-import java.util.OptionalInt;
+import java.util.List;
 
-public interface cxj {
-   cpp a(dgh var1, kb var2, cwo var3, jn var4);
-
-   default cxj.a b() {
-      return cxj.a.a;
+public class cxj extends cwl {
+   public cxj(cwl.a $$0) {
+      super($$0);
    }
 
-   default void a(cpp $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-      $$0.c($$1, $$2, $$3, $$4, $$5);
+   @Override
+   public cwp n() {
+      cwp $$0 = super.n();
+      $$0.b(kv.Q, new cyo(cyp.a));
+      return $$0;
    }
 
-   public static record a(cxj.b b, float c, float d, OptionalInt e) {
-      public static final cxj.a a = a().a();
+   @Override
+   public bsk a(dai $$0) {
+      dgi $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      cox $$3 = $$0.o();
+      cwp $$4 = $$0.n();
+      cyo $$5 = $$4.a(kv.Q, cyo.a);
+      dwx $$6 = $$1.a_($$2);
+      if ($$0.k() != jn.a && $$6.a(awp.cl) && $$5.a(cyp.a)) {
+         $$1.a(null, $$2, awa.kI, awb.e, 1.0F, 1.0F);
+         $$3.a($$0.p(), cws.a($$4, $$3, new cwp(cwt.th)));
+         $$3.b(awk.c.b($$4.h()));
+         if (!$$1.C) {
+            ard $$7 = (ard)$$1;
 
-      public static cxj.a.a a() {
-         return new cxj.a.a();
-      }
-
-      public static class a {
-         private cxj.b a = ($$0, $$1) -> dlr.a($$0, 0.7, new faz(0.0, 0.1, 0.0));
-         private float b = 6.0F;
-         private float c = 1.1F;
-         private OptionalInt d = OptionalInt.empty();
-
-         public cxj.a.a a(cxj.b $$0) {
-            this.a = $$0;
-            return this;
+            for (int $$8 = 0; $$8 < 5; $$8++) {
+               $$7.a(lt.ao, (double)$$2.u() + $$1.A.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.A.j(), 1, 0.0, 0.0, 0.0, 1.0);
+            }
          }
 
-         public cxj.a.a a(float $$0) {
-            this.b = $$0;
-            return this;
-         }
-
-         public cxj.a.a b(float $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public cxj.a.a a(int $$0) {
-            this.d = OptionalInt.of($$0);
-            return this;
-         }
-
-         public cxj.a a() {
-            return new cxj.a(this.a, this.b, this.c, this.d);
-         }
+         $$1.a(null, $$2, awa.cB, awb.e, 1.0F, 1.0F);
+         $$1.a(null, ebt.z, $$2);
+         $$1.b($$2, djo.tk.m());
+         return bsk.a;
+      } else {
+         return bsk.e;
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      kb getDispensePosition(kz var1, jn var2);
+   @Override
+   public wp a(cwp $$0) {
+      cyo $$1 = $$0.a(kv.Q);
+      return $$1 != null ? $$1.a(this.l + ".effect.") : super.a($$0);
+   }
+
+   @Override
+   public void a(cwp $$0, cwl.b $$1, List<wp> $$2, cyh $$3) {
+      cyo $$4 = $$0.a(kv.Q);
+      if ($$4 != null) {
+         $$4.a($$2::add, 1.0F, $$1.b());
+      }
    }
 }

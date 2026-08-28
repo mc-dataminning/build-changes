@@ -1,25 +1,25 @@
-public class gwt<S extends gzj & haa, M extends gca<? super S>> extends gws<S, M> {
-   private final akv a;
-   private final M b;
-   private final M c;
+public abstract class gwt<S extends gyk, M extends gcb<? super S>> {
+   private final gub<S, M> a;
 
-   public gwt(gua<S, M> $$0, M $$1, M $$2, akv $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.a = $$3;
+   public gwt(gub<S, M> $$0) {
+      this.a = $$0;
    }
 
-   public gwt(gua<S, M> $$0, M $$1, akv $$2) {
-      this($$0, $$1, $$1, $$2);
-   }
-
-   public void a(fft $$0, glx $$1, int $$2, S $$3, float $$4, float $$5) {
-      if ($$3.a()) {
-         M $$6 = $$3.aj ? this.c : this.b;
-         $$6.a($$3);
-         ffx $$7 = $$1.getBuffer(gmh.g(this.a));
-         $$6.a($$0, $$7, $$2, heh.d);
+   protected static <S extends gzk> void a(gcb<S> $$0, akv $$1, ffu $$2, gly $$3, int $$4, S $$5, int $$6) {
+      if (!$$5.z) {
+         $$0.a($$5);
+         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
+
+   protected static void b(gcb<?> $$0, akv $$1, ffu $$2, gly $$3, int $$4, gzk $$5, int $$6) {
+      ffy $$7 = $$3.getBuffer(gmi.g($$1));
+      $$0.a($$2, $$7, $$4, gtf.a($$5, 0.0F), $$6);
+   }
+
+   public M d() {
+      return this.a.c();
+   }
+
+   public abstract void a(ffu var1, gly var2, int var3, S var4, float var5, float var6);
 }

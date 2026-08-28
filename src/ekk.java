@@ -1,49 +1,21 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public record ekk(ekc b, List<ekk.a> c) {
-   public static final Codec<ekk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ekc.a.fieldOf("fallback").forGetter(ekk::a), ekk.a.a.listOf().fieldOf("rules").forGetter(ekk::b)).apply($$0, ekk::new)
-   );
+public class ekk extends ekd {
+   public static final MapCodec<ekk> b = dwx.a.fieldOf("state").xmap(dww.a::b, djm::m).xmap(ekk::new, $$0 -> $$0.c);
+   private final djm c;
 
-   public static ekk a(ekc $$0) {
-      return new ekk($$0, List.of());
+   public ekk(djm $$0) {
+      this.c = $$0;
    }
 
-   public static ekk a(djl $$0) {
-      return a(ekc.a($$0));
+   @Override
+   protected eke<?> a() {
+      return eke.f;
    }
 
-   public dww a(dhf $$0, azh $$1, ji $$2) {
-      for (ekk.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
-      }
-
-      return this.b.a($$1, $$2);
-   }
-
-   public ekc a() {
-      return this.b;
-   }
-
-   public List<ekk.a> b() {
-      return this.c;
-   }
-
-   public static record a(edy b, ekc c) {
-      public static final Codec<ekk.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(edy.b.fieldOf("if_true").forGetter(ekk.a::a), ekc.a.fieldOf("then").forGetter(ekk.a::b)).apply($$0, ekk.a::new)
-      );
-
-      public edy a() {
-         return this.b;
-      }
-
-      public ekc b() {
-         return this.c;
-      }
+   @Override
+   public dwx a(azh $$0, ji $$1) {
+      jn.a $$2 = jn.a.a($$0);
+      return this.c.m().c(dqd.i, $$2);
    }
 }

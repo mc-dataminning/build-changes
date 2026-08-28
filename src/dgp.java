@@ -1,25 +1,15 @@
-import javax.annotation.Nullable;
+public interface dgp extends dgl {
+   long al();
 
-public interface dgp {
-   boolean a(ji var1, dww var2, int var3, int var4);
-
-   default boolean a(ji $$0, dww $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   default float ar() {
+      return eas.k[this.G_().b(this.al())];
    }
 
-   boolean a(ji var1, boolean var2);
-
-   default boolean b(ji $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
+   default float f(float $$0) {
+      return this.G_().a(this.al());
    }
 
-   default boolean a(ji $$0, boolean $$1, @Nullable buk $$2) {
-      return this.a($$0, $$1, $$2, 512);
-   }
-
-   boolean a(ji var1, boolean var2, @Nullable buk var3, int var4);
-
-   default boolean b(buk $$0) {
-      return false;
+   default int as() {
+      return this.G_().b(this.al());
    }
 }

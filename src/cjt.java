@@ -1,131 +1,43 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
-public class cjt extends buk {
-   private static final ajy<Optional<ji>> b = akc.a(cjt.class, aka.p);
-   private static final ajy<Boolean> c = akc.a(cjt.class, aka.k);
-   public int a;
+public class cjt {
+   public static final int a = 64;
+   private static final int b = 63;
+   private final cjt.a[] c = new cjt.a[64];
+   private int d = -1;
 
-   public cjt(bur<? extends cjt> $$0, dgh $$1) {
-      super($$0, $$1);
-      this.I = true;
-      this.a = this.ae.a(100000);
+   public cjt() {
+      Arrays.fill(this.c, new cjt.a(0.0, 0.0F));
    }
 
-   public cjt(dgh $$0, double $$1, double $$2, double $$3) {
-      this(bur.R, $$0);
-      this.a_($$1, $$2, $$3);
+   public void a(cjt $$0) {
+      System.arraycopy($$0.c, 0, this.c, 0, 64);
+      this.d = $$0.d;
    }
 
-   @Override
-   protected buk.c bg() {
-      return buk.c.a;
-   }
-
-   @Override
-   protected void a(akc.a $$0) {
-      $$0.a(b, Optional.empty());
-      $$0.a(c, true);
-   }
-
-   @Override
-   public void h() {
-      this.a++;
-      this.aK();
-      this.bW();
-      if (this.dV() instanceof ard) {
-         ji $$0 = this.dv();
-         if (((ard)this.dV()).F() != null && this.dV().a_($$0).l()) {
-            this.dV().b($$0, diy.a(this.dV(), $$0));
-         }
-      }
-   }
-
-   @Override
-   protected void b(tq $$0) {
-      if (this.l() != null) {
-         $$0.a("beam_target", uf.a(this.l()));
+   public void a(double $$0, float $$1) {
+      cjt.a $$2 = new cjt.a($$0, $$1);
+      if (this.d < 0) {
+         Arrays.fill(this.c, $$2);
       }
 
-      $$0.a("ShowBottom", this.m());
-   }
-
-   @Override
-   protected void a(tq $$0) {
-      uf.a($$0, "beam_target").ifPresent(this::a);
-      if ($$0.b("ShowBottom", 1)) {
-         this.a($$0.q("ShowBottom"));
+      if (++this.d == 64) {
+         this.d = 0;
       }
+
+      this.c[this.d] = $$2;
    }
 
-   @Override
-   public boolean bH() {
-      return true;
+   public cjt.a a(int $$0) {
+      return this.c[this.d - $$0 & 63];
    }
 
-   @Override
-   public final boolean b(bta $$0) {
-      return this.d($$0) ? false : !($$0.d() instanceof cju);
+   public cjt.a a(int $$0, float $$1) {
+      cjt.a $$2 = this.a($$0);
+      cjt.a $$3 = this.a($$0 + 1);
+      return new cjt.a(ayz.d((double)$$1, $$3.a, $$2.a), ayz.i($$1, $$3.b, $$2.b));
    }
 
-   @Override
-   public final boolean a(ard $$0, bta $$1, float $$2) {
-      if (this.d($$1)) {
-         return false;
-      } else if ($$1.d() instanceof cju) {
-         return false;
-      } else {
-         if (!this.dQ()) {
-            this.a(buk.d.a);
-            if (!$$1.a(awr.l)) {
-               bta $$3 = $$1.d() != null ? this.dW().d(this, $$1.d()) : null;
-               $$0.a(this, $$3, null, this.dA(), this.dC(), this.dG(), 6.0F, false, dgh.a.b);
-            }
-
-            this.a($$0, $$1);
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   public void c(ard $$0) {
-      this.a($$0, this.dW().p());
-      super.c($$0);
-   }
-
-   private void a(ard $$0, bta $$1) {
-      eau $$2 = $$0.F();
-      if ($$2 != null) {
-         $$2.a(this, $$1);
-      }
-   }
-
-   public void a(@Nullable ji $$0) {
-      this.au().a(b, Optional.ofNullable($$0));
-   }
-
-   @Nullable
-   public ji l() {
-      return this.au().a(b).orElse(null);
-   }
-
-   public void a(boolean $$0) {
-      this.au().a(c, $$0);
-   }
-
-   public boolean m() {
-      return this.au().a(c);
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      return super.a($$0) || this.l() != null;
-   }
-
-   @Override
-   public cwo dI() {
-      return new cwo(cws.wf);
+   public static record a(double a, float b) {
    }
 }

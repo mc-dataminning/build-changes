@@ -1,98 +1,200 @@
-import java.util.Set;
+import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public record ety(ard d, faz e, faz f, float g, float h, boolean i, boolean j, Set<bvu> k, ety.a l) {
-   public static final ety.a a = $$0 -> {
-   };
-   public static final ety.a b = ety::a;
-   public static final ety.a c = ety::b;
+public class ety {
+   private static final int c = 2;
+   public static final int a = 21;
+   private static final int d = 3;
+   public static final int b = 21;
+   private static final dww.f e = ($$0, $$1, $$2) -> $$0.a(djo.cv);
+   private static final float f = 4.0F;
+   private static final double g = 1.0;
+   private final jn.a h;
+   private final jn i;
+   private final int j;
+   private final ji k;
+   private final int l;
+   private final int m;
 
-   public ety(ard $$0, faz $$1, faz $$2, float $$3, float $$4, ety.a $$5) {
-      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
+   private ety(jn.a $$0, int $$1, jn $$2, ji $$3, int $$4, int $$5) {
+      this.h = $$0;
+      this.j = $$1;
+      this.i = $$2;
+      this.k = $$3;
+      this.m = $$4;
+      this.l = $$5;
    }
 
-   public ety(ard $$0, faz $$1, faz $$2, float $$3, float $$4, Set<bvu> $$5, ety.a $$6) {
-      this($$0, $$1, $$2, $$3, $$4, false, false, $$5, $$6);
+   public static Optional<ety> a(dgj $$0, ji $$1, jn.a $$2) {
+      return a($$0, $$1, $$0x -> $$0x.a() && $$0x.j == 0, $$2);
    }
 
-   public ety(ard $$0, buk $$1, ety.a $$2) {
-      this($$0, a($$0, $$1), faz.c, 0.0F, 0.0F, false, false, Set.of(), $$2);
-   }
-
-   private static void a(buk $$0) {
-      if ($$0 instanceof are $$1) {
-         $$1.f.b(new acz(1032, ji.c, 0, false));
+   public static Optional<ety> a(dgj $$0, ji $$1, Predicate<ety> $$2, jn.a $$3) {
+      Optional<ety> $$4 = Optional.of(a((dfn)$$0, $$1, $$3)).filter($$2);
+      if ($$4.isPresent()) {
+         return $$4;
+      } else {
+         jn.a $$5 = $$3 == jn.a.a ? jn.a.c : jn.a.a;
+         return Optional.of(a((dfn)$$0, $$1, $$5)).filter($$2);
       }
    }
 
-   private static void b(buk $$0) {
-      $$0.f(ji.a((kb)$$0.dt()));
+   public static ety a(dfn $$0, ji $$1, jn.a $$2) {
+      jn $$3 = $$2 == jn.a.a ? jn.e : jn.d;
+      ji $$4 = a($$0, $$3, $$1);
+      if ($$4 == null) {
+         return new ety($$2, 0, $$3, $$1, 0, 0);
+      } else {
+         int $$5 = a($$0, $$4, $$3);
+         if ($$5 == 0) {
+            return new ety($$2, 0, $$3, $$4, 0, 0);
+         } else {
+            MutableInt $$6 = new MutableInt();
+            int $$7 = a($$0, $$4, $$3, $$5, $$6);
+            return new ety($$2, $$6.getValue(), $$3, $$4, $$5, $$7);
+         }
+      }
    }
 
-   public static ety a(ard $$0, buk $$1, ety.a $$2) {
-      return new ety($$0, a($$0, $$1), faz.c, 0.0F, 0.0F, true, false, Set.of(), $$2);
+   @Nullable
+   private static ji a(dfn $$0, jn $$1, ji $$2) {
+      int $$3 = Math.max($$0.L_(), $$2.v() - 21);
+
+      while ($$2.v() > $$3 && a($$0.a_($$2.e()))) {
+         $$2 = $$2.e();
+      }
+
+      jn $$4 = $$1.g();
+      int $$5 = b($$0, $$2, $$4) - 1;
+      return $$5 < 0 ? null : $$2.a($$4, $$5);
    }
 
-   private static faz a(ard $$0, buk $$1) {
-      return $$1.a($$0, $$0.Z()).c();
+   private static int a(dfn $$0, ji $$1, jn $$2) {
+      int $$3 = b($$0, $$1, $$2);
+      return $$3 >= 2 && $$3 <= 21 ? $$3 : 0;
    }
 
-   public ety a(float $$0, float $$1) {
-      return new ety(this.b(), this.c(), this.d(), $$0, $$1, this.g(), this.h(), this.i(), this.j());
+   private static int b(dfn $$0, ji $$1, jn $$2) {
+      ji.a $$3 = new ji.a();
+
+      for (int $$4 = 0; $$4 <= 21; $$4++) {
+         $$3.g($$1).c($$2, $$4);
+         dwx $$5 = $$0.a_($$3);
+         if (!a($$5)) {
+            if (e.test($$5, $$0, $$3)) {
+               return $$4;
+            }
+            break;
+         }
+
+         dwx $$6 = $$0.a_($$3.c(jn.a));
+         if (!e.test($$6, $$0, $$3)) {
+            break;
+         }
+      }
+
+      return 0;
    }
 
-   public ety a(faz $$0) {
-      return new ety(this.b(), $$0, this.d(), this.e(), this.f(), this.g(), this.h(), this.i(), this.j());
+   private static int a(dfn $$0, ji $$1, jn $$2, int $$3, MutableInt $$4) {
+      ji.a $$5 = new ji.a();
+      int $$6 = a($$0, $$1, $$2, $$5, $$3, $$4);
+      return $$6 >= 3 && $$6 <= 21 && a($$0, $$1, $$2, $$5, $$3, $$6) ? $$6 : 0;
    }
 
-   public ety a() {
-      return new ety(this.b(), this.c(), this.d(), this.e(), this.f(), this.g(), true, this.i(), this.j());
+   private static boolean a(dfn $$0, ji $$1, jn $$2, ji.a $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         ji.a $$7 = $$3.g($$1).c(jn.b, $$5).c($$2, $$6);
+         if (!e.test($$0.a_($$7), $$0, $$7)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public ard b() {
-      return this.d;
+   private static int a(dfn $$0, ji $$1, jn $$2, ji.a $$3, int $$4, MutableInt $$5) {
+      for (int $$6 = 0; $$6 < 21; $$6++) {
+         $$3.g($$1).c(jn.b, $$6).c($$2, -1);
+         if (!e.test($$0.a_($$3), $$0, $$3)) {
+            return $$6;
+         }
+
+         $$3.g($$1).c(jn.b, $$6).c($$2, $$4);
+         if (!e.test($$0.a_($$3), $$0, $$3)) {
+            return $$6;
+         }
+
+         for (int $$7 = 0; $$7 < $$4; $$7++) {
+            $$3.g($$1).c(jn.b, $$6).c($$2, $$7);
+            dwx $$8 = $$0.a_($$3);
+            if (!a($$8)) {
+               return $$6;
+            }
+
+            if ($$8.a(djo.eq)) {
+               $$5.increment();
+            }
+         }
+      }
+
+      return 21;
    }
 
-   public faz c() {
-      return this.e;
+   private static boolean a(dwx $$0) {
+      return $$0.l() || $$0.a(awp.aN) || $$0.a(djo.eq);
    }
 
-   public faz d() {
-      return this.f;
+   public boolean a() {
+      return this.m >= 2 && this.m <= 21 && this.l >= 3 && this.l <= 21;
    }
 
-   public float e() {
-      return this.g;
+   public void a(dgj $$0) {
+      dwx $$1 = djo.eq.m().b(dot.b, this.h);
+      ji.c(this.k, this.k.a(jn.b, this.l - 1).a(this.i, this.m - 1)).forEach($$2 -> $$0.a($$2, $$1, 18));
    }
 
-   public float f() {
-      return this.h;
+   public boolean b() {
+      return this.a() && this.j == this.m * this.l;
    }
 
-   public boolean g() {
-      return this.i;
+   public static fba a(l.a $$0, jn.a $$1, fba $$2, buo $$3) {
+      double $$4 = (double)$$0.b - (double)$$3.a();
+      double $$5 = (double)$$0.c - (double)$$3.b();
+      ji $$6 = $$0.a;
+      double $$8;
+      if ($$4 > 0.0) {
+         double $$7 = (double)$$6.a($$1) + (double)$$3.a() / 2.0;
+         $$8 = ayz.a(ayz.c($$2.a($$1) - $$7, 0.0, $$4), 0.0, 1.0);
+      } else {
+         $$8 = 0.5;
+      }
+
+      double $$11;
+      if ($$5 > 0.0) {
+         jn.a $$10 = jn.a.b;
+         $$11 = ayz.a(ayz.c($$2.a($$10) - (double)$$6.a($$10), 0.0, $$5), 0.0, 1.0);
+      } else {
+         $$11 = 0.0;
+      }
+
+      jn.a $$13 = $$1 == jn.a.a ? jn.a.c : jn.a.a;
+      double $$14 = $$2.a($$13) - ((double)$$6.a($$13) + 0.5);
+      return new fba($$8, $$11, $$14);
    }
 
-   public boolean h() {
-      return this.j;
-   }
-
-   public Set<bvu> i() {
-      return this.k;
-   }
-
-   public ety.a j() {
-      return this.l;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void onTransition(buk var1);
-
-      default ety.a then(ety.a $$0) {
-         return $$1 -> {
-            this.onTransition($$1);
-            $$0.onTransition($$1);
-         };
+   public static fba a(fba $$0, ard $$1, bul $$2, buo $$3) {
+      if (!($$3.a() > 4.0F) && !($$3.b() > 4.0F)) {
+         double $$4 = (double)$$3.b() / 2.0;
+         fba $$5 = $$0.b(0.0, $$4, 0.0);
+         fbu $$6 = fbr.a(fav.a($$5, (double)$$3.a(), 0.0, (double)$$3.a()).b(0.0, 1.0, 0.0).g(1.0E-6));
+         Optional<fba> $$7 = $$1.a($$2, $$6, $$5, (double)$$3.a(), (double)$$3.b(), (double)$$3.a());
+         Optional<fba> $$8 = $$7.map($$1x -> $$1x.a(0.0, $$4, 0.0));
+         return $$8.orElse($$0);
+      } else {
+         return $$0;
       }
    }
 }

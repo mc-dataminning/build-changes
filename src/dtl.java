@@ -1,21 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dtl extends dkd {
-   public static final MapCodec<dtl> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvl.q.fieldOf("color").forGetter(dtl::b), t()).apply($$0, dtl::new));
-   private final cvl d;
+public class dtl extends dss {
+   public static final MapCodec<dtl> b = b(dtl::new);
 
    @Override
    public MapCodec<dtl> a() {
-      return c;
+      return b;
    }
 
-   protected dtl(cvl $$0, dwv.d $$1) {
-      super($$1);
-      this.d = $$0;
+   protected dtl(dww.d $$0) {
+      super(dqt.b.d, $$0);
    }
 
-   public cvl b() {
-      return this.d;
+   @Override
+   public void a(dgi $$0, ji $$1, dwx $$2, @Nullable bvh $$3, cwp $$4) {
+      dtk.a($$0, $$1);
    }
 }

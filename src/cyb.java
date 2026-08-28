@@ -1,44 +1,41 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+public class cyb extends cwl {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-public class cyb extends cuu {
-   protected final djl a;
-   private final jn b;
-
-   public cyb(djl $$0, djl $$1, jn $$2, cwk.a $$3) {
-      super($$0, $$3);
-      this.a = $$1;
-      this.b = $$2;
-   }
-
-   protected boolean a(dgk $$0, dww $$1, ji $$2) {
-      return $$1.a($$0, $$2);
-   }
-
-   @Nullable
-   @Override
-   protected dww c(daf $$0) {
-      dww $$1 = this.a.a($$0);
-      dww $$2 = null;
-      dgk $$3 = $$0.q();
-      ji $$4 = $$0.a();
-
-      for (jn $$5 : $$0.f()) {
-         if ($$5 != this.b.g()) {
-            dww $$6 = $$5 == this.b ? this.d().a($$0) : $$1;
-            if ($$6 != null && this.a($$3, $$6, $$4)) {
-               $$2 = $$6;
-               break;
-            }
-         }
-      }
-
-      return $$2 != null && $$3.a($$2, $$4, fbe.a()) ? $$2 : null;
+   public cyb(cwl.a $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(Map<djl, cwk> $$0, cwk $$1) {
-      super.a($$0, $$1);
-      $$0.put(this.a, $$1);
+   public int a(cwp $$0, bvh $$1) {
+      return 1200;
+   }
+
+   @Override
+   public cwr b(cwp $$0) {
+      return cwr.h;
+   }
+
+   @Override
+   public bsk a(dgi $$0, cox $$1, bsj $$2) {
+      $$1.a(awa.zL, 1.0F, 1.0F);
+      $$1.b(awk.c.b(this));
+      return cws.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public cwp a(cwp $$0, dgi $$1, bvh $$2) {
+      this.b($$2);
+      return $$0;
+   }
+
+   @Override
+   public boolean a(cwp $$0, dgi $$1, bvh $$2, int $$3) {
+      this.b($$2);
+      return true;
+   }
+
+   private void b(bvh $$0) {
+      $$0.a(awa.zM, 1.0F, 1.0F);
    }
 }

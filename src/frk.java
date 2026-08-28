@@ -1,185 +1,48 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
-import java.util.function.IntFunction;
-import org.slf4j.Logger;
+import java.util.Map.Entry;
 
-public class frk implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final azh b = azh.a();
-   private static final float c = 32.0F;
-   private final het d;
-   private final akv e;
-   private fro f;
-   private fro g;
-   private List<fds.a> h = List.of();
-   private List<fds> i = List.of();
-   private final frh<fro> j = new frh<>(fro[]::new, fro[][]::new);
-   private final frh<frk.a> k = new frh<>(frk.a[]::new, frk.a[][]::new);
-   private final Int2ObjectMap<IntList> l = new Int2ObjectOpenHashMap();
-   private final List<frl> m = Lists.newArrayList();
-   private final IntFunction<frk.a> n = this::b;
-   private final IntFunction<fro> o = this::c;
+public enum frk implements azv {
+   a("uniform"),
+   b("jp");
 
-   public frk(het $$0, akv $$1) {
+   public static final Codec<frk> c = azv.a(frk::values);
+   private final String d;
+
+   private frk(final String $$0) {
       this.d = $$0;
-      this.e = $$1;
-   }
-
-   public void a(List<fds.a> $$0, Set<frj> $$1) {
-      this.h = $$0;
-      this.a($$1);
-   }
-
-   public void a(Set<frj> $$0) {
-      this.i = List.of();
-      this.c();
-      this.i = this.b(this.h, $$0);
-   }
-
-   private void c() {
-      this.d();
-      this.j.a();
-      this.k.a();
-      this.l.clear();
-      this.f = frq.b.bake(this::a);
-      this.g = frq.a.bake(this::a);
-   }
-
-   private List<fds> b(List<fds.a> $$0, Set<frj> $$1) {
-      IntSet $$2 = new IntOpenHashSet();
-      List<fds> $$3 = new ArrayList<>();
-
-      for (fds.a $$4 : $$0) {
-         if ($$4.b().a($$1)) {
-            $$3.add($$4.a());
-            $$2.addAll($$4.a().a());
-         }
-      }
-
-      Set<fds> $$5 = Sets.newHashSet();
-      $$2.forEach($$2x -> {
-         for (fds $$3x : $$3) {
-            fdr $$4x = $$3x.a($$2x);
-            if ($$4x != null) {
-               $$5.add($$3x);
-               if ($$4x != frq.b) {
-                  ((IntList)this.l.computeIfAbsent(ayz.f($$4x.a(false)), $$0xx -> new IntArrayList())).add($$2x);
-               }
-               break;
-            }
-         }
-      });
-      return $$3.stream().filter($$5::contains).toList();
    }
 
    @Override
-   public void close() {
-      this.d();
+   public String c() {
+      return this.d;
    }
 
-   private void d() {
-      for (frl $$0 : this.m) {
-         $$0.close();
+   public static class a {
+      private final Map<frk, Boolean> c;
+      public static final Codec<frk.a> a = Codec.unboundedMap(frk.c, Codec.BOOL).xmap(frk.a::new, $$0 -> $$0.c);
+      public static final frk.a b = new frk.a(Map.of());
+
+      public a(Map<frk, Boolean> $$0) {
+         this.c = $$0;
       }
 
-      this.m.clear();
-   }
+      public boolean a(Set<frk> $$0) {
+         for (Entry<frk, Boolean> $$1 : this.c.entrySet()) {
+            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
+               return false;
+            }
+         }
 
-   private static boolean b(fdr $$0) {
-      float $$1 = $$0.a(false);
-      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
-         float $$2 = $$0.a(true);
-         return $$2 < 0.0F || $$2 > 32.0F;
-      } else {
          return true;
       }
-   }
 
-   private frk.a b(int $$0) {
-      fdr $$1 = null;
-
-      for (fds $$2 : this.i) {
-         fdr $$3 = $$2.a($$0);
-         if ($$3 != null) {
-            if ($$1 == null) {
-               $$1 = $$3;
-            }
-
-            if (!b($$3)) {
-               return new frk.a($$1, $$3);
-            }
-         }
-      }
-
-      return $$1 != null ? new frk.a($$1, frq.b) : frk.a.c;
-   }
-
-   public fdr a(int $$0, boolean $$1) {
-      return this.k.a($$0, this.n).a($$1);
-   }
-
-   private fro c(int $$0) {
-      for (fds $$1 : this.i) {
-         fdr $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2.bake(this::a);
-         }
-      }
-
-      a.warn("Couldn't find glyph for character {} (\\u{})", Character.toString($$0), String.format("%04x", $$0));
-      return this.f;
-   }
-
-   public fro a(int $$0) {
-      return this.j.a($$0, this.o);
-   }
-
-   private fro a(fdt $$0) {
-      for (frl $$1 : this.m) {
-         fro $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
-
-      akv $$3 = this.e.g("/" + this.m.size());
-      boolean $$4 = $$0.c();
-      frm $$5 = $$4 ? frm.b($$3) : frm.a($$3);
-      frl $$6 = new frl($$5, $$4);
-      this.m.add($$6);
-      this.d.a($$3, $$6);
-      fro $$7 = $$6.a($$0);
-      return $$7 == null ? this.f : $$7;
-   }
-
-   public fro a(fdr $$0) {
-      IntList $$1 = (IntList)this.l.get(ayz.f($$0.a(false)));
-      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(b.a($$1.size()))) : this.f;
-   }
-
-   public akv a() {
-      return this.e;
-   }
-
-   public fro b() {
-      return this.g;
-   }
-
-   static record a(fdr a, fdr b) {
-      static final frk.a c = new frk.a(frq.b, frq.b);
-
-      fdr a(boolean $$0) {
-         return $$0 ? this.b : this.a;
+      public frk.a a(frk.a $$0) {
+         Map<frk, Boolean> $$1 = new HashMap<>($$0.c);
+         $$1.putAll(this.c);
+         return new frk.a(Map.copyOf($$1));
       }
    }
 }

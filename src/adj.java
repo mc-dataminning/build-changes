@@ -1,13 +1,13 @@
 public class adj implements yw<abl> {
    public static final yn<vl, adj> a = yw.a(adj::a, adj::new);
-   private final bsi b;
+   private final bsj b;
 
-   public adj(bsi $$0) {
+   public adj(bsj $$0) {
       this.b = $$0;
    }
 
    private adj(vl $$0) {
-      this.b = $$0.b(bsi.class);
+      this.b = $$0.b(bsj.class);
    }
 
    private void a(vl $$0) {
@@ -23,7 +23,7 @@ public class adj implements yw<abl> {
       $$0.a(this);
    }
 
-   public bsi b() {
+   public bsj b() {
       return this.b;
    }
 }

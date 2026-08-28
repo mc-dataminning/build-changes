@@ -1,15 +1,24 @@
+import java.util.UUID;
+import java.util.stream.Stream;
+
 public interface eba {
-   eba a = new eba() {
-      @Override
-      public void a() {
-      }
+   int ar();
 
-      @Override
-      public void a(buk.d $$0) {
-      }
-   };
+   UUID cG();
 
-   void a();
+   ji dv();
 
-   void a(buk.d var1);
+   fav cR();
+
+   void a(ebb var1);
+
+   Stream<? extends eba> da();
+
+   Stream<? extends eba> db();
+
+   void c(bul.d var1);
+
+   boolean dT();
+
+   boolean dU();
 }

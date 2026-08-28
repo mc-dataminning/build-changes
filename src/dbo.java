@@ -1,18 +1,35 @@
-public interface dbo<T extends dbd<?>> {
-   dbo<das> a = a("crafting");
-   dbo<dbx> b = a("smelting");
-   dbo<dam> c = a("blasting");
-   dbo<dcc> d = a("smoking");
-   dbo<dao> e = a("campfire_cooking");
-   dbo<dcd> f = a("stonecutting");
-   dbo<dby> g = a("smithing");
+import com.mojang.serialization.MapCodec;
 
-   static <T extends dbd<?>> dbo<T> a(final String $$0) {
-      return ke.a(mb.q, akv.b($$0), new dbo<T>() {
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      });
+public interface dbo<T extends dbe<?>> {
+   dbo<dbs> a = a("crafting_shaped", new dbs.a());
+   dbo<dbu> b = a("crafting_shapeless", new dbu.a());
+   dbo<dal> c = a("crafting_special_armordye", new dau.a<>(dal::new));
+   dbo<dao> d = a("crafting_special_bookcloning", new dau.a<>(dao::new));
+   dbo<dbb> e = a("crafting_special_mapcloning", new dau.a<>(dbb::new));
+   dbo<dbc> f = a("crafting_special_mapextending", new dau.a<>(dbc::new));
+   dbo<dax> g = a("crafting_special_firework_rocket", new dau.a<>(dax::new));
+   dbo<daz> h = a("crafting_special_firework_star", new dau.a<>(daz::new));
+   dbo<day> i = a("crafting_special_firework_star_fade", new dau.a<>(day::new));
+   dbo<dcf> j = a("crafting_special_tippedarrow", new dau.a<>(dcf::new));
+   dbo<dam> k = a("crafting_special_bannerduplicate", new dau.a<>(dam::new));
+   dbo<dbv> l = a("crafting_special_shielddecoration", new dau.a<>(dbv::new));
+   dbo<dcg> m = a("crafting_transmute", new dcg.a());
+   dbo<dbq> n = a("crafting_special_repairitem", new dau.a<>(dbq::new));
+   dbo<dby> o = a("smelting", new dak.b<>(dby::new, 200));
+   dbo<dan> p = a("blasting", new dak.b<>(dan::new, 100));
+   dbo<dcd> q = a("smoking", new dak.b<>(dcd::new, 100));
+   dbo<dap> r = a("campfire_cooking", new dak.b<>(dap::new, 100));
+   dbo<dce> s = a("stonecutting", new dbw.b<>(dce::new));
+   dbo<dcb> t = a("smithing_transform", new dcb.a());
+   dbo<dcc> u = a("smithing_trim", new dcc.a());
+   dbo<dav> v = a("crafting_decorated_pot", new dau.a<>(dav::new));
+
+   MapCodec<T> a();
+
+   @Deprecated
+   yn<wa, T> b();
+
+   static <S extends dbo<T>, T extends dbe<?>> S a(String $$0, S $$1) {
+      return ke.a(mb.r, $$0, $$1);
    }
 }

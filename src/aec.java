@@ -1,7 +1,7 @@
 import javax.annotation.Nullable;
 
-public record aec(int b, jr<btn> c) implements yw<abl> {
-   public static final yn<wa, aec> a = yn.a(yl.h, aec::b, btn.b, aec::e, aec::new);
+public record aec(int b, jr<bto> c) implements yw<abl> {
+   public static final yn<wa, aec> a = yn.a(yl.h, aec::b, bto.b, aec::e, aec::new);
 
    @Override
    public yy<aec> a() {
@@ -13,11 +13,11 @@ public record aec(int b, jr<btn> c) implements yw<abl> {
    }
 
    @Nullable
-   public buk a(dgh $$0) {
+   public bul a(dgi $$0) {
       return $$0.a(this.b);
    }
 
-   public jr<btn> e() {
+   public jr<bto> e() {
       return this.c;
    }
 }

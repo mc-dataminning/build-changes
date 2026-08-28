@@ -60,7 +60,7 @@ public class aok {
       } else {
          long $$4 = $$0.e().ad() + (long)$$2;
          akv $$5 = (akv)$$1.getFirst();
-         fam<MinecraftServer> $$6 = $$0.l().aZ().I().s();
+         fan<MinecraftServer> $$6 = $$0.l().aZ().I().s();
          Optional<il<ex>> $$7 = ((Either)$$1.getSecond()).left();
          if ($$7.isPresent()) {
             if ($$7.get() instanceof io) {
@@ -72,7 +72,7 @@ public class aok {
                $$6.a($$8);
             }
 
-            $$6.a($$8, $$4, new fai($$5));
+            $$6.a($$8, $$4, new faj($$5));
             $$0.a(() -> wp.a("commands.schedule.created.function", wp.a($$5), $$2, $$4), true);
          } else {
             String $$9 = "#" + $$5;
@@ -80,7 +80,7 @@ public class aok {
                $$6.a($$9);
             }
 
-            $$6.a($$9, $$4, new faj($$5));
+            $$6.a($$9, $$4, new fak($$5));
             $$0.a(() -> wp.a("commands.schedule.created.tag", wp.a($$5), $$2, $$4), true);
          }
 

@@ -1,51 +1,51 @@
-import javax.annotation.Nullable;
-
-public class cpv extends cpd {
-   private int d = 200;
-
-   public cpv(bur<? extends cpv> $$0, dgh $$1) {
+public class cpv extends cpx {
+   public cpv(bus<? extends cpv> $$0, dgi $$1) {
       super($$0, $$1);
    }
 
-   public cpv(dgh $$0, bvg $$1, cwo $$2, @Nullable cwo $$3) {
-      super(bur.bm, $$1, $$0, $$2, $$3);
+   public cpv(dgi $$0, bvh $$1, cwp $$2) {
+      super(bus.bj, $$1, $$0, $$2);
    }
 
-   public cpv(dgh $$0, double $$1, double $$2, double $$3, cwo $$4, @Nullable cwo $$5) {
-      super(bur.bm, $$1, $$2, $$3, $$0, $$4, $$5);
+   public cpv(dgi $$0, double $$1, double $$2, double $$3, cwp $$4) {
+      super(bus.bj, $$1, $$2, $$3, $$0, $$4);
    }
 
    @Override
-   public void h() {
-      super.h();
-      if (this.dV().C && !this.l()) {
-         this.dV().a(lt.S, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
+   protected cwl m() {
+      return cwt.rj;
+   }
+
+   private lr s() {
+      cwp $$0 = this.l();
+      return (lr)($$0.f() ? lt.Y : new lp(lt.T, $$0));
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         lr $$1 = this.s();
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dV().a($$1, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
+         }
       }
    }
 
    @Override
-   protected void a(bvg $$0) {
+   protected void a(fax $$0) {
       super.a($$0);
-      btp $$1 = new btp(btr.x, this.d, 0);
-      $$0.b($$1, this.E());
+      bul $$1 = $$0.a();
+      int $$2 = $$1 instanceof clh ? 3 : 0;
+      $$1.a(this.dW().b(this, this.p()), (float)$$2);
    }
 
    @Override
-   public void a(tq $$0) {
+   protected void a(fay $$0) {
       super.a($$0);
-      if ($$0.e("Duration")) {
-         this.d = $$0.h("Duration");
+      if (!this.dV().C) {
+         this.dV().a(this, (byte)3);
+         this.at();
       }
-   }
-
-   @Override
-   public void b(tq $$0) {
-      super.b($$0);
-      $$0.a("Duration", this.d);
-   }
-
-   @Override
-   protected cwo v() {
-      return new cwo(cws.wp);
    }
 }

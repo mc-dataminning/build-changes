@@ -3,9 +3,9 @@ public class abt implements yw<abl> {
    private final ji b;
    private final int c;
    private final int d;
-   private final djl e;
+   private final djm e;
 
-   public abt(ji $$0, djl $$1, int $$2, int $$3) {
+   public abt(ji $$0, djm $$1, int $$2, int $$3) {
       this.b = $$0;
       this.e = $$1;
       this.c = $$2;
@@ -47,7 +47,7 @@ public class abt implements yw<abl> {
       return this.d;
    }
 
-   public djl g() {
+   public djm g() {
       return this.e;
    }
 }

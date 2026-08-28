@@ -1,48 +1,32 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record czu(cwo c) {
-   public static final Codec<czu> a = cwo.a.xmap(czu::new, czu::a);
-   public static final yn<wa, czu> b = yn.a(cwo.h, czu::a, czu::new);
+public record czu(float c, Optional<akv> d) {
+   public static final Codec<czu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayi.o.fieldOf("seconds").forGetter(czu::b), akv.a.optionalFieldOf("cooldown_group").forGetter(czu::c)).apply($$0, czu::new)
+   );
+   public static final yn<wa, czu> b = yn.a(yl.l, czu::b, akv.b.a(yl::a), czu::c, czu::new);
 
-   public cwo a(cwo $$0, int $$1, boolean $$2, czu.a $$3) {
-      if ($$2) {
-         return $$0;
-      } else if ($$0.M() >= $$1) {
-         return $$0;
-      } else {
-         cwo $$4 = this.c.v();
-         if ($$0.f()) {
-            return $$4;
-         } else {
-            $$3.apply($$4);
-            return $$0;
-         }
+   public czu(float $$0) {
+      this($$0, Optional.empty());
+   }
+
+   public int a() {
+      return (int)(this.c * 20.0F);
+   }
+
+   public void a(cwp $$0, bvh $$1) {
+      if ($$1 instanceof cox $$2) {
+         $$2.gE().a($$0, this.a());
       }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         czu $$1 = (czu)$$0;
-         return cwo.a(this.c, $$1.c);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return cwo.a(this.c);
-   }
-
-   public cwo a() {
+   public float b() {
       return this.c;
    }
 
-   @FunctionalInterface
-   public interface a {
-      void apply(cwo var1);
+   public Optional<akv> c() {
+      return this.d;
    }
 }

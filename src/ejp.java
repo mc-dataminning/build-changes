@@ -1,40 +1,28 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejp extends ejn {
-   public static final MapCodec<ejp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, ejp::new)
-   );
-   protected final int b;
+public class ejp<P extends ejo> {
+   public static final ejp<ejj> a = a("blob_foliage_placer", ejj.a);
+   public static final ejp<eju> b = a("spruce_foliage_placer", eju.a);
+   public static final ejp<ejs> c = a("pine_foliage_placer", ejs.a);
+   public static final ejp<eji> d = a("acacia_foliage_placer", eji.a);
+   public static final ejp<ejk> e = a("bush_foliage_placer", ejk.c);
+   public static final ejp<ejn> f = a("fancy_foliage_placer", ejn.c);
+   public static final ejp<ejq> g = a("jungle_foliage_placer", ejq.a);
+   public static final ejp<ejr> h = a("mega_pine_foliage_placer", ejr.a);
+   public static final ejp<ejm> i = a("dark_oak_foliage_placer", ejm.a);
+   public static final ejp<ejt> j = a("random_spread_foliage_placer", ejt.a);
+   public static final ejp<ejl> k = a("cherry_foliage_placer", ejl.a);
+   private final MapCodec<P> l;
 
-   public ejp(bro $$0, bro $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   private static <P extends ejo> ejp<P> a(String $$0, MapCodec<P> $$1) {
+      return ke.a(mb.U, $$0, new ejp<>($$1));
    }
 
-   @Override
-   protected ejo<?> a() {
-      return ejo.g;
+   private ejp(MapCodec<P> $$0) {
+      this.l = $$0;
    }
 
-   @Override
-   protected void a(dgn $$0, ejn.b $$1, azh $$2, eix $$3, int $$4, ejn.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
-         int $$11 = $$7 + $$5.b() + 1 - $$10;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
-      }
-   }
-
-   @Override
-   public int a(azh $$0, int $$1, eix $$2) {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   public MapCodec<P> a() {
+      return this.l;
    }
 }

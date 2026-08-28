@@ -1,63 +1,79 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class dih extends dix {
-   public static final dxn a = dxm.B;
-   private final dqs.a b;
+public abstract class dih extends diy {
+   public static final dxu<jn> a = dnk.aF;
+   public static final dxo b = dxn.v;
 
-   public dih(dqs.a $$0, dwv.d $$1) {
-      super($$1);
-      this.b = $$0;
-      this.l(this.F.b().b(a, Boolean.valueOf(false)));
+   protected dih(dww.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(a, jn.c).b(b, Boolean.valueOf(false)));
    }
 
    @Override
    protected abstract MapCodec<? extends dih> a();
 
    @Override
-   public dty a(ji $$0, dww $$1) {
-      return new dvn($$0, $$1);
+   protected bsk a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
+      if (!$$1.C) {
+         this.a($$1, $$2, $$3);
+      }
+
+      return bsk.a;
+   }
+
+   protected abstract void a(dgi var1, ji var2, cox var3);
+
+   @Override
+   public dwx a(dag $$0) {
+      return this.m().b(a, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dtz $$5 = $$1.c_($$2);
+         if ($$5 instanceof dtn) {
+            if ($$1 instanceof ard) {
+               bsg.a($$1, $$2, (dtn)$$5);
+               ((dtn)$$5).a((ard)$$1, fba.b($$2));
+            }
+
+            super.a($$0, $$1, $$2, $$3, $$4);
+            $$1.c($$2, this);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
+   }
+
+   @Override
+   protected boolean c_(dwx $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dwx $$0, dgi $$1, ji $$2) {
+      return csc.a($$1.c_($$2));
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dqe $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dol $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(a, b);
    }
 
    @Nullable
-   @Override
-   public <T extends dty> dtz<T> a(dgh $$0, dww $$1, dua<T> $$2) {
-      if ($$0.C) {
-         boolean $$3 = $$1.a(djn.hl) || $$1.a(djn.hm) || $$1.a(djn.hn) || $$1.a(djn.ho);
-         if ($$3) {
-            return a($$2, dua.q, dvn::a);
-         }
-      }
-
-      return null;
-   }
-
-   public dqs.a b() {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(dww $$0, etn $$1) {
-      return false;
-   }
-
-   @Override
-   protected void a(dwx.a<djl, dww> $$0) {
-      $$0.a(a);
-   }
-
-   @Override
-   public dww a(daf $$0) {
-      return this.m().b(a, Boolean.valueOf($$0.q().C($$0.a())));
-   }
-
-   @Override
-   protected void a(dww $$0, dgh $$1, ji $$2, djl $$3, @Nullable eug $$4, boolean $$5) {
-      if (!$$1.C) {
-         boolean $$6 = $$1.C($$2);
-         if ($$6 != $$0.c(a)) {
-            $$1.a($$2, $$0.b(a, Boolean.valueOf($$6)), 2);
-         }
-      }
+   protected static <T extends dtz> dua<T> a(dgi $$0, dub<T> $$1, dub<? extends dtn> $$2) {
+      return $$0 instanceof ard $$3 ? a($$1, $$2, ($$1x, $$2x, $$3x, $$4) -> dtn.a($$3, $$2x, $$3x, $$4)) : null;
    }
 }

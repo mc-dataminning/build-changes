@@ -1,13 +1,9 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public interface erb<P extends era> {
-   erb<eqz> a = a("always_true", eqz.a);
-   erb<eqw> b = a("linear_pos", eqw.a);
-   erb<eql> c = a("axis_aligned_linear_pos", eql.a);
+public abstract class erb {
+   public static final Codec<erb> c = mb.o.q().dispatch("predicate_type", erb::a, erc::codec);
 
-   MapCodec<P> codec();
+   public abstract boolean a(ji var1, ji var2, ji var3, azh var4);
 
-   static <P extends era> erb<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.o, $$0, () -> $$1);
-   }
+   protected abstract erc<?> a();
 }

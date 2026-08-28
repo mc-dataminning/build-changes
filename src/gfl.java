@@ -1,9 +1,22 @@
-@FunctionalInterface
-public interface gfl {
-   static gfl scaling(float $$0) {
-      float $$1 = 24.016F * (1.0F - $$0);
-      return $$2 -> $$2.a($$2x -> $$2x.b($$0).c(0.0F, $$1, 0.0F));
+import com.google.common.collect.ImmutableList;
+import java.util.function.UnaryOperator;
+
+public class gfl {
+   private final gfn a;
+
+   public gfl() {
+      this(new gfn(ImmutableList.of(), gff.a));
    }
 
-   gfk apply(gfk var1);
+   private gfl(gfn $$0) {
+      this.a = $$0;
+   }
+
+   public gfn a() {
+      return this.a;
+   }
+
+   public gfl a(UnaryOperator<gff> $$0) {
+      return new gfl(this.a.a($$0));
+   }
 }

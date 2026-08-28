@@ -1,10 +1,10 @@
 import com.mojang.serialization.Codec;
 
-public class ehu implements eib {
-   public static final Codec<ehu> a = dww.a.fieldOf("state").xmap(ehu::new, $$0 -> $$0.b).codec();
-   public final dww b;
+public class ehu implements eic {
+   public static final Codec<ehu> a = ekd.a.fieldOf("state_provider").xmap(ehu::new, $$0 -> $$0.b).codec();
+   public final ekd b;
 
-   public ehu(dww $$0) {
+   public ehu(ekd $$0) {
       this.b = $$0;
    }
 }

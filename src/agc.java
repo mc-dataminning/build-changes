@@ -69,8 +69,8 @@ public class agc {
       "Fist"
    };
 
-   public static String a(buk $$0) {
-      if ($$0 instanceof cow) {
+   public static String a(bul $$0) {
+      if ($$0 instanceof cox) {
          return $$0.al().getString();
       } else {
          wp $$1 = $$0.an();

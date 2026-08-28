@@ -1,61 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eer {
-   public static final eer a = new eer(false, djn.gV.m(), djn.qn.m(), djn.ew.m(), djn.aX.m());
-   public static final Codec<eer> b = RecordCodecBuilder.create(
+public class eer extends eim {
+   public static final MapCodec<eer> d = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(eer::a),
-               dww.a.optionalFieldOf("air_state", a.b()).forGetter(eer::b),
-               dww.a.optionalFieldOf("water_state", a.b()).forGetter(eer::c),
-               dww.a.optionalFieldOf("lava_state", a.b()).forGetter(eer::d),
-               dww.a.optionalFieldOf("barrier_state", a.b()).forGetter(eer::e)
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               elt.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               brn.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               edm.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               ees.b.optionalFieldOf("debug_settings", ees.a).forGetter($$0x -> $$0x.h),
+               kg.a(mc.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
             )
             .apply($$0, eer::new)
    );
-   private final boolean c;
-   private final dww d;
-   private final dww e;
-   private final dww f;
-   private final dww g;
+   public final elt e;
+   public final brn f;
+   public final edm g;
+   public final ees h;
+   public final jv<djm> i;
 
-   public static eer a(boolean $$0, dww $$1, dww $$2, dww $$3, dww $$4) {
-      return new eer($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static eer a(dww $$0, dww $$1, dww $$2, dww $$3) {
-      return new eer(false, $$0, $$1, $$2, $$3);
-   }
-
-   public static eer a(boolean $$0, dww $$1) {
-      return new eer($$0, $$1, a.c(), a.d(), a.e());
-   }
-
-   private eer(boolean $$0, dww $$1, dww $$2, dww $$3, dww $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public boolean a() {
-      return this.c;
-   }
-
-   public dww b() {
-      return this.d;
-   }
-
-   public dww c() {
-      return this.e;
-   }
-
-   public dww d() {
-      return this.f;
-   }
-
-   public dww e() {
-      return this.g;
+   public eer(float $$0, elt $$1, brn $$2, edm $$3, ees $$4, jv<djm> $$5) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 }

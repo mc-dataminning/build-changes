@@ -1,63 +1,75 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
-public class exo extends exd {
+public class exo extends exe {
    public static final MapCodec<exo> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  aku.a(mc.bg).fieldOf("name").forGetter($$0x -> $$0x.b),
-                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
-                  mb.j.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(evp.e.fieldOf("component").forGetter($$0x -> $$0x.b), ewf.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
             .apply($$0, exo::new)
    );
-   private final aku<evv> b;
-   private final long c;
-   private final jr<dua<?>> d;
+   private final evo<?> b;
+   private final List<ewh> c;
 
-   private exo(List<eyz> $$0, aku<evv> $$1, long $$2, jr<dua<?>> $$3) {
+   exo(List<eza> $$0, evo<?> $$1, List<ewh> $$2) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public exf<exo> b() {
-      return exg.y;
+   public exg<exo> b() {
+      return exh.t;
    }
 
    @Override
-   public cwo a(cwo $$0, evq $$1) {
+   public cwp a(cwp $$0, evr $$1) {
       if ($$0.f()) {
          return $$0;
       } else {
-         $$0.b(kv.ap, new czo(this.b, this.c));
+         Builder<cwp> $$2 = Stream.builder();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(evw.a($$1.d(), $$2::add), $$1)));
+         this.b.a($$0, $$2.build());
          return $$0;
       }
    }
 
    @Override
-   public void a(evw $$0) {
+   public void a(evx $$0) {
       super.a($$0);
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else {
-         if ($$0.a().c(this.b).isEmpty()) {
-            $$0.b("Missing loot table used for container: " + this.b.a());
-         }
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
       }
    }
 
-   public static exd.a<?> a(dua<?> $$0, aku<evv> $$1) {
-      return a($$2 -> new exo($$2, $$1, 0L, $$0.a()));
+   public static exo.a a(evo<?> $$0) {
+      return new exo.a($$0);
    }
 
-   public static exd.a<?> a(dua<?> $$0, aku<evv> $$1, long $$2) {
-      return a($$3 -> new exo($$3, $$1, $$2, $$0.a()));
+   public static class a extends exe.a<exo.a> {
+      private final com.google.common.collect.ImmutableList.Builder<ewh> a = ImmutableList.builder();
+      private final evo<?> b;
+
+      public a(evo<?> $$0) {
+         this.b = $$0;
+      }
+
+      protected exo.a a() {
+         return this;
+      }
+
+      public exo.a a(ewh.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public exf b() {
+         return new exo(this.g(), this.b, this.a.build());
+      }
    }
 }

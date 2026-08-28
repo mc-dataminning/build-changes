@@ -1,19 +1,31 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dfx extends dga {
-   private final buk a;
+public enum dfx implements dfn {
+   a;
 
-   public dfx(buk $$0) {
-      this.a = $$0;
+   @Nullable
+   @Override
+   public dtz c_(ji $$0) {
+      return null;
    }
 
    @Override
-   public Optional<Float> a(dfz $$0, dfm $$1, ji $$2, dww $$3, esy $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   public dwx a_(ji $$0) {
+      return djo.a.m();
    }
 
    @Override
-   public boolean a(dfz $$0, dfm $$1, ji $$2, dww $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
+   public esz b_(ji $$0) {
+      return eta.a.g();
+   }
+
+   @Override
+   public int L_() {
+      return 0;
+   }
+
+   @Override
+   public int M_() {
+      return 0;
    }
 }

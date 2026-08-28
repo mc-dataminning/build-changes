@@ -1,280 +1,1762 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.util.Pair;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
-public class cvf extends cxk {
-   private static final float m = 1.25F;
-   public static final int a = 8;
-   private boolean n = false;
-   private boolean o = false;
-   private static final float p = 0.2F;
-   private static final float q = 0.5F;
-   private static final float r = 3.15F;
-   private static final float s = 1.6F;
-   public static final float b = 1.6F;
-   private static final cvf.b t = new cvf.b(Optional.of(awa.gL), Optional.of(awa.gK), Optional.of(awa.gJ));
+public class cvf {
+   private static final akv a = cve.a("inventory");
+   private static final akv b = cve.a("item_search");
+   private static final aku<cve> c = a("building_blocks");
+   private static final aku<cve> d = a("colored_blocks");
+   private static final aku<cve> e = a("natural_blocks");
+   private static final aku<cve> f = a("functional_blocks");
+   private static final aku<cve> g = a("redstone_blocks");
+   private static final aku<cve> h = a("hotbar");
+   private static final aku<cve> i = a("search");
+   private static final aku<cve> j = a("tools_and_utilities");
+   private static final aku<cve> k = a("combat");
+   private static final aku<cve> l = a("food_and_drinks");
+   private static final aku<cve> m = a("ingredients");
+   private static final aku<cve> n = a("spawn_eggs");
+   private static final aku<cve> o = a("op_blocks");
+   private static final aku<cve> p = a("inventory");
+   private static final Comparator<jr<cky>> q = Comparator.comparing(jr::a, Comparator.<cky>comparingInt(cky::a).thenComparing(cky::b));
+   @Nullable
+   private static cve.d r;
 
-   public cvf(cwk.a $$0) {
-      super($$0);
+   private static aku<cve> a(String $$0) {
+      return aku.a(mc.q, akv.b($$0));
    }
 
-   @Override
-   public Predicate<cwo> d() {
-      return d;
-   }
+   public static cve a(ke<cve> $$0) {
+      ke.a($$0, c, cve.a(cve.f.a, 0).a(wp.c("itemGroup.buildingBlocks")).a(() -> new cwp(djo.cq)).a(($$0x, $$1) -> {
+         $$1.a(cwt.bE);
+         $$1.a(cwt.cp);
+         $$1.a(cwt.bS);
+         $$1.a(cwt.cd);
+         $$1.a(cwt.K);
+         $$1.a(cwt.gP);
+         $$1.a(cwt.ee);
+         $$1.a(cwt.fn);
+         $$1.a(cwt.nX);
+         $$1.a(cwt.ni);
+         $$1.a(cwt.nD);
+         $$1.a(cwt.mV);
+         $$1.a(cwt.mF);
+         $$1.a(cwt.bF);
+         $$1.a(cwt.cq);
+         $$1.a(cwt.bT);
+         $$1.a(cwt.ce);
+         $$1.a(cwt.L);
+         $$1.a(cwt.gQ);
+         $$1.a(cwt.ef);
+         $$1.a(cwt.fo);
+         $$1.a(cwt.nY);
+         $$1.a(cwt.nj);
+         $$1.a(cwt.nE);
+         $$1.a(cwt.mW);
+         $$1.a(cwt.mG);
+         $$1.a(cwt.bG);
+         $$1.a(cwt.cr);
+         $$1.a(cwt.bU);
+         $$1.a(cwt.cf);
+         $$1.a(cwt.M);
+         $$1.a(cwt.gR);
+         $$1.a(cwt.eg);
+         $$1.a(cwt.fp);
+         $$1.a(cwt.nZ);
+         $$1.a(cwt.nk);
+         $$1.a(cwt.nF);
+         $$1.a(cwt.mX);
+         $$1.a(cwt.mH);
+         $$1.a(cwt.bH);
+         $$1.a(cwt.cs);
+         $$1.a(cwt.bV);
+         $$1.a(cwt.cg);
+         $$1.a(cwt.N);
+         $$1.a(cwt.gS);
+         $$1.a(cwt.eh);
+         $$1.a(cwt.fq);
+         $$1.a(cwt.oa);
+         $$1.a(cwt.nl);
+         $$1.a(cwt.nG);
+         $$1.a(cwt.mY);
+         $$1.a(cwt.mI);
+         $$1.a(cwt.bI);
+         $$1.a(cwt.ct);
+         $$1.a(cwt.bW);
+         $$1.a(cwt.ch);
+         $$1.a(cwt.O);
+         $$1.a(cwt.gT);
+         $$1.a(cwt.ei);
+         $$1.a(cwt.fr);
+         $$1.a(cwt.ob);
+         $$1.a(cwt.nm);
+         $$1.a(cwt.nH);
+         $$1.a(cwt.mZ);
+         $$1.a(cwt.mJ);
+         $$1.a(cwt.bL);
+         $$1.a(cwt.cw);
+         $$1.a(cwt.bY);
+         $$1.a(cwt.cj);
+         $$1.a(cwt.Q);
+         $$1.a(cwt.gV);
+         $$1.a(cwt.ek);
+         $$1.a(cwt.ft);
+         $$1.a(cwt.od);
+         $$1.a(cwt.no);
+         $$1.a(cwt.nJ);
+         $$1.a(cwt.nb);
+         $$1.a(cwt.mL);
+         $$1.a(cwt.bM);
+         $$1.a(cwt.cx);
+         $$1.a(cwt.ca);
+         $$1.a(cwt.cl);
+         $$1.a(cwt.S);
+         $$1.a(cwt.gX);
+         $$1.a(cwt.em);
+         $$1.a(cwt.fv);
+         $$1.a(cwt.of);
+         $$1.a(cwt.nq);
+         $$1.a(cwt.nL);
+         $$1.a(cwt.nd);
+         $$1.a(cwt.mN);
+         $$1.a(cwt.bJ);
+         $$1.a(cwt.cu);
+         $$1.a(cwt.bX);
+         $$1.a(cwt.ci);
+         $$1.a(cwt.P);
+         $$1.a(cwt.gU);
+         $$1.a(cwt.ej);
+         $$1.a(cwt.fs);
+         $$1.a(cwt.oc);
+         $$1.a(cwt.nn);
+         $$1.a(cwt.nI);
+         $$1.a(cwt.na);
+         $$1.a(cwt.mK);
+         $$1.a(cwt.bK);
+         $$1.a(cwt.cv);
+         $$1.a(cwt.bZ);
+         $$1.a(cwt.ck);
+         $$1.a(cwt.R);
+         $$1.a(cwt.gW);
+         $$1.a(cwt.el);
+         $$1.a(cwt.fu);
+         $$1.a(cwt.oe);
+         $$1.a(cwt.np);
+         $$1.a(cwt.nK);
+         $$1.a(cwt.nc);
+         $$1.a(cwt.mM);
+         $$1.a(cwt.bR);
+         $$1.a(cwt.co);
+         $$1.a(cwt.T);
+         $$1.a(cwt.W);
+         $$1.a(cwt.gY);
+         $$1.a(cwt.gZ);
+         $$1.a(cwt.en);
+         $$1.a(cwt.eo);
+         $$1.a(cwt.fw);
+         $$1.a(cwt.og);
+         $$1.a(cwt.nr);
+         $$1.a(cwt.nM);
+         $$1.a(cwt.ne);
+         $$1.a(cwt.mO);
+         $$1.a(cwt.bP);
+         $$1.a(cwt.cy);
+         $$1.a(cwt.cb);
+         $$1.a(cwt.cm);
+         $$1.a(cwt.U);
+         $$1.a(cwt.ha);
+         $$1.a(cwt.ep);
+         $$1.a(cwt.fx);
+         $$1.a(cwt.oh);
+         $$1.a(cwt.ns);
+         $$1.a(cwt.nN);
+         $$1.a(cwt.nf);
+         $$1.a(cwt.mP);
+         $$1.a(cwt.bQ);
+         $$1.a(cwt.cz);
+         $$1.a(cwt.cc);
+         $$1.a(cwt.cn);
+         $$1.a(cwt.V);
+         $$1.a(cwt.hb);
+         $$1.a(cwt.eq);
+         $$1.a(cwt.fy);
+         $$1.a(cwt.oi);
+         $$1.a(cwt.nt);
+         $$1.a(cwt.nO);
+         $$1.a(cwt.ng);
+         $$1.a(cwt.mQ);
+         $$1.a(cwt.b);
+         $$1.a(cwt.lA);
+         $$1.a(cwt.er);
+         $$1.a(cwt.mR);
+         $$1.a(cwt.mD);
+         $$1.a(cwt.J);
+         $$1.a(cwt.fg);
+         $$1.a(cwt.ew);
+         $$1.a(cwt.he);
+         $$1.a(cwt.eQ);
+         $$1.a(cwt.ly);
+         $$1.a(cwt.lQ);
+         $$1.a(cwt.hf);
+         $$1.a(cwt.eL);
+         $$1.a(cwt.es);
+         $$1.a(cwt.fR);
+         $$1.a(cwt.fT);
+         $$1.a(cwt.gu);
+         $$1.a(cwt.ey);
+         $$1.a(cwt.hl);
+         $$1.a(cwt.fU);
+         $$1.a(cwt.fS);
+         $$1.a(cwt.lw);
+         $$1.a(cwt.lO);
+         $$1.a(cwt.hj);
+         $$1.a(cwt.c);
+         $$1.a(cwt.lD);
+         $$1.a(cwt.lU);
+         $$1.a(cwt.hk);
+         $$1.a(cwt.d);
+         $$1.a(cwt.lu);
+         $$1.a(cwt.lM);
+         $$1.a(cwt.e);
+         $$1.a(cwt.lH);
+         $$1.a(cwt.lY);
+         $$1.a(cwt.hs);
+         $$1.a(cwt.f);
+         $$1.a(cwt.lx);
+         $$1.a(cwt.lP);
+         $$1.a(cwt.g);
+         $$1.a(cwt.lE);
+         $$1.a(cwt.lV);
+         $$1.a(cwt.ho);
+         $$1.a(cwt.h);
+         $$1.a(cwt.lG);
+         $$1.a(cwt.lX);
+         $$1.a(cwt.i);
+         $$1.a(cwt.j);
+         $$1.a(cwt.lI);
+         $$1.a(cwt.lZ);
+         $$1.a(cwt.hw);
+         $$1.a(cwt.gb);
+         $$1.a(cwt.k);
+         $$1.a(cwt.lJ);
+         $$1.a(cwt.ma);
+         $$1.a(cwt.hx);
+         $$1.a(cwt.fX);
+         $$1.a(cwt.fY);
+         $$1.a(cwt.lK);
+         $$1.a(cwt.mb);
+         $$1.a(cwt.hy);
+         $$1.a(cwt.fZ);
+         $$1.a(cwt.ga);
+         $$1.a(cwt.lL);
+         $$1.a(cwt.mc);
+         $$1.a(cwt.hz);
+         $$1.a(cwt.gc);
+         $$1.a(cwt.m);
+         $$1.a(cwt.o);
+         $$1.a(cwt.n);
+         $$1.a(cwt.p);
+         $$1.a(cwt.q);
+         $$1.a(cwt.r);
+         $$1.a(cwt.t);
+         $$1.a(cwt.s);
+         $$1.a(cwt.u);
+         $$1.a(cwt.v);
+         $$1.a(cwt.x);
+         $$1.a(cwt.w);
+         $$1.a(cwt.y);
+         $$1.a(cwt.z);
+         $$1.a(cwt.eM);
+         $$1.a(cwt.gt);
+         $$1.a(cwt.ex);
+         $$1.a(cwt.hg);
+         $$1.a(cwt.fV);
+         $$1.a(cwt.fW);
+         $$1.a(cwt.gv);
+         $$1.a(cwt.ez);
+         $$1.a(cwt.hm);
+         $$1.a(cwt.go);
+         $$1.a(cwt.gp);
+         $$1.a(cwt.gq);
+         $$1.a(cwt.gr);
+         $$1.a(cwt.gs);
+         $$1.a(cwt.cQ);
+         $$1.a(cwt.gM);
+         $$1.a(cwt.et);
+         $$1.a(cwt.hq);
+         $$1.a(cwt.cR);
+         $$1.a(cwt.eK);
+         $$1.a(cwt.lB);
+         $$1.a(cwt.lS);
+         $$1.a(cwt.cS);
+         $$1.a(cwt.eu);
+         $$1.a(cwt.jn);
+         $$1.a(cwt.jq);
+         $$1.a(cwt.eC);
+         $$1.a(cwt.hi);
+         $$1.a(cwt.jo);
+         $$1.a(cwt.eJ);
+         $$1.a(cwt.lv);
+         $$1.a(cwt.lN);
+         $$1.a(cwt.jp);
+         $$1.a(cwt.eD);
+         $$1.a(cwt.jm);
+         $$1.a(cwt.jg);
+         $$1.a(cwt.jj);
+         $$1.a(cwt.eF);
+         $$1.a(cwt.hh);
+         $$1.a(cwt.jh);
+         $$1.a(cwt.jk);
+         $$1.a(cwt.eG);
+         $$1.a(cwt.ji);
+         $$1.a(cwt.jl);
+         $$1.a(cwt.eH);
+         $$1.a(cwt.fC);
+         $$1.a(cwt.gy);
+         $$1.a(cwt.gz);
+         $$1.a(cwt.gC);
+         $$1.a(cwt.eA);
+         $$1.a(cwt.hn);
+         $$1.a(cwt.gB);
+         $$1.a(cwt.gA);
+         $$1.a(cwt.jw);
+         $$1.a(cwt.lF);
+         $$1.a(cwt.lW);
+         $$1.a(cwt.hp);
+         $$1.a(cwt.fF);
+         $$1.a(cwt.fH);
+         $$1.a(cwt.fG);
+         $$1.a(cwt.xH);
+         $$1.a(cwt.xK);
+         $$1.a(cwt.xJ);
+         $$1.a(cwt.xI);
+         $$1.a(cwt.ht);
+         $$1.a(cwt.xO);
+         $$1.a(cwt.xL);
+         $$1.a(cwt.xN);
+         $$1.a(cwt.xM);
+         $$1.a(cwt.hu);
+         $$1.a(cwt.mS);
+         $$1.a(cwt.mE);
+         $$1.a(cwt.xP);
+         $$1.a(cwt.xS);
+         $$1.a(cwt.xR);
+         $$1.a(cwt.xQ);
+         $$1.a(cwt.hv);
+         $$1.a(cwt.gJ);
+         $$1.a(cwt.gK);
+         $$1.a(cwt.lz);
+         $$1.a(cwt.lR);
+         $$1.a(cwt.hr);
+         $$1.a(cwt.eW);
+         $$1.a(cwt.eX);
+         $$1.a(cwt.eY);
+         $$1.a(cwt.eE);
+         $$1.a(cwt.aF);
+         $$1.a(cwt.aM);
+         $$1.a(cwt.gg);
+         $$1.a(cwt.nh);
+         $$1.a(cwt.nC);
+         $$1.a(cwt.mU);
+         $$1.a(cwt.gh);
+         $$1.a(cwt.aO);
+         $$1.a(cwt.mT);
+         $$1.a(cwt.mg);
+         $$1.a(cwt.gO);
+         $$1.a(cwt.cP);
+         $$1.a(cwt.aP);
+         $$1.a(cwt.aQ);
+         $$1.a(cwt.hE);
+         $$1.a(cwt.hH);
+         $$1.a(cwt.eB);
+         $$1.a(cwt.hD);
+         $$1.a(cwt.hF);
+         $$1.a(cwt.hG);
+         $$1.a(cwt.eI);
+         $$1.a(cwt.lC);
+         $$1.a(cwt.lT);
+         $$1.a(cwt.aK);
+         $$1.a(cwt.aN);
+         $$1.a(cwt.aU);
+         $$1.a(cwt.zm);
+         $$1.a(cwt.aY);
+         $$1.a(cwt.bc);
+         $$1.a(cwt.bg);
+         $$1.a(cwt.nu);
+         $$1.a(cwt.nP);
+         $$1.a(cwt.zu);
+         $$1.a(cwt.aR);
+         $$1.a(cwt.aV);
+         $$1.a(cwt.zn);
+         $$1.a(cwt.aZ);
+         $$1.a(cwt.bd);
+         $$1.a(cwt.bh);
+         $$1.a(cwt.nv);
+         $$1.a(cwt.nQ);
+         $$1.a(cwt.zv);
+         $$1.a(cwt.aS);
+         $$1.a(cwt.aW);
+         $$1.a(cwt.zo);
+         $$1.a(cwt.ba);
+         $$1.a(cwt.be);
+         $$1.a(cwt.bi);
+         $$1.a(cwt.nw);
+         $$1.a(cwt.nR);
+         $$1.a(cwt.zw);
+         $$1.a(cwt.aT);
+         $$1.a(cwt.aX);
+         $$1.a(cwt.zp);
+         $$1.a(cwt.bb);
+         $$1.a(cwt.bf);
+         $$1.a(cwt.bj);
+         $$1.a(cwt.nx);
+         $$1.a(cwt.nS);
+         $$1.a(cwt.zx);
+         $$1.a(cwt.bk);
+         $$1.a(cwt.bo);
+         $$1.a(cwt.zq);
+         $$1.a(cwt.bs);
+         $$1.a(cwt.bw);
+         $$1.a(cwt.bA);
+         $$1.a(cwt.ny);
+         $$1.a(cwt.nT);
+         $$1.a(cwt.zy);
+         $$1.a(cwt.bl);
+         $$1.a(cwt.bp);
+         $$1.a(cwt.zr);
+         $$1.a(cwt.bt);
+         $$1.a(cwt.bx);
+         $$1.a(cwt.bB);
+         $$1.a(cwt.nz);
+         $$1.a(cwt.nU);
+         $$1.a(cwt.zz);
+         $$1.a(cwt.bm);
+         $$1.a(cwt.bq);
+         $$1.a(cwt.zs);
+         $$1.a(cwt.bu);
+         $$1.a(cwt.by);
+         $$1.a(cwt.bC);
+         $$1.a(cwt.nA);
+         $$1.a(cwt.nV);
+         $$1.a(cwt.zA);
+         $$1.a(cwt.bn);
+         $$1.a(cwt.br);
+         $$1.a(cwt.zt);
+         $$1.a(cwt.bv);
+         $$1.a(cwt.bz);
+         $$1.a(cwt.bD);
+         $$1.a(cwt.nB);
+         $$1.a(cwt.nW);
+         $$1.a(cwt.zB);
+      }).d());
+      ke.a($$0, d, cve.a(cve.f.a, 1).a(wp.c("itemGroup.coloredBlocks")).a(() -> new cwp(djo.bQ)).a(($$0x, $$1) -> {
+         $$1.a(cwt.db);
+         $$1.a(cwt.dj);
+         $$1.a(cwt.di);
+         $$1.a(cwt.dq);
+         $$1.a(cwt.dn);
+         $$1.a(cwt.dp);
+         $$1.a(cwt.dc);
+         $$1.a(cwt.df);
+         $$1.a(cwt.dg);
+         $$1.a(cwt.do);
+         $$1.a(cwt.dk);
+         $$1.a(cwt.de);
+         $$1.a(cwt.dm);
+         $$1.a(cwt.dl);
+         $$1.a(cwt.dd);
+         $$1.a(cwt.dh);
+         $$1.a(cwt.ib);
+         $$1.a(cwt.ij);
+         $$1.a(cwt.ii);
+         $$1.a(cwt.iq);
+         $$1.a(cwt.in);
+         $$1.a(cwt.ip);
+         $$1.a(cwt.ic);
+         $$1.a(cwt.if);
+         $$1.a(cwt.ig);
+         $$1.a(cwt.io);
+         $$1.a(cwt.ik);
+         $$1.a(cwt.ie);
+         $$1.a(cwt.im);
+         $$1.a(cwt.il);
+         $$1.a(cwt.id);
+         $$1.a(cwt.ih);
+         $$1.a(cwt.ir);
+         $$1.a(cwt.hI);
+         $$1.a(cwt.hQ);
+         $$1.a(cwt.hP);
+         $$1.a(cwt.hX);
+         $$1.a(cwt.hU);
+         $$1.a(cwt.hW);
+         $$1.a(cwt.hJ);
+         $$1.a(cwt.hM);
+         $$1.a(cwt.hN);
+         $$1.a(cwt.hV);
+         $$1.a(cwt.hR);
+         $$1.a(cwt.hL);
+         $$1.a(cwt.hT);
+         $$1.a(cwt.hS);
+         $$1.a(cwt.hK);
+         $$1.a(cwt.hO);
+         $$1.a(cwt.kg);
+         $$1.a(cwt.ko);
+         $$1.a(cwt.kn);
+         $$1.a(cwt.kv);
+         $$1.a(cwt.ks);
+         $$1.a(cwt.ku);
+         $$1.a(cwt.kh);
+         $$1.a(cwt.kk);
+         $$1.a(cwt.kl);
+         $$1.a(cwt.kt);
+         $$1.a(cwt.kp);
+         $$1.a(cwt.kj);
+         $$1.a(cwt.kr);
+         $$1.a(cwt.kq);
+         $$1.a(cwt.ki);
+         $$1.a(cwt.km);
+         $$1.a(cwt.kw);
+         $$1.a(cwt.kE);
+         $$1.a(cwt.kD);
+         $$1.a(cwt.kL);
+         $$1.a(cwt.kI);
+         $$1.a(cwt.kK);
+         $$1.a(cwt.kx);
+         $$1.a(cwt.kA);
+         $$1.a(cwt.kB);
+         $$1.a(cwt.kJ);
+         $$1.a(cwt.kF);
+         $$1.a(cwt.kz);
+         $$1.a(cwt.kH);
+         $$1.a(cwt.kG);
+         $$1.a(cwt.ky);
+         $$1.a(cwt.kC);
+         $$1.a(cwt.jQ);
+         $$1.a(cwt.jY);
+         $$1.a(cwt.jX);
+         $$1.a(cwt.kf);
+         $$1.a(cwt.kc);
+         $$1.a(cwt.ke);
+         $$1.a(cwt.jR);
+         $$1.a(cwt.jU);
+         $$1.a(cwt.jV);
+         $$1.a(cwt.kd);
+         $$1.a(cwt.jZ);
+         $$1.a(cwt.jT);
+         $$1.a(cwt.kb);
+         $$1.a(cwt.ka);
+         $$1.a(cwt.jS);
+         $$1.a(cwt.jW);
+         $$1.a(cwt.cN);
+         $$1.a(cwt.cO);
+         $$1.a(cwt.iA);
+         $$1.a(cwt.iI);
+         $$1.a(cwt.iH);
+         $$1.a(cwt.iP);
+         $$1.a(cwt.iM);
+         $$1.a(cwt.iO);
+         $$1.a(cwt.iB);
+         $$1.a(cwt.iE);
+         $$1.a(cwt.iF);
+         $$1.a(cwt.iN);
+         $$1.a(cwt.iJ);
+         $$1.a(cwt.iD);
+         $$1.a(cwt.iL);
+         $$1.a(cwt.iK);
+         $$1.a(cwt.iC);
+         $$1.a(cwt.iG);
+         $$1.a(cwt.gi);
+         $$1.a(cwt.iQ);
+         $$1.a(cwt.iY);
+         $$1.a(cwt.iX);
+         $$1.a(cwt.jf);
+         $$1.a(cwt.jc);
+         $$1.a(cwt.je);
+         $$1.a(cwt.iR);
+         $$1.a(cwt.iU);
+         $$1.a(cwt.iV);
+         $$1.a(cwt.jd);
+         $$1.a(cwt.iZ);
+         $$1.a(cwt.iT);
+         $$1.a(cwt.jb);
+         $$1.a(cwt.ja);
+         $$1.a(cwt.iS);
+         $$1.a(cwt.iW);
+         $$1.a(cwt.jz);
+         $$1.a(cwt.jA);
+         $$1.a(cwt.jI);
+         $$1.a(cwt.jH);
+         $$1.a(cwt.jP);
+         $$1.a(cwt.jM);
+         $$1.a(cwt.jO);
+         $$1.a(cwt.jB);
+         $$1.a(cwt.jE);
+         $$1.a(cwt.jF);
+         $$1.a(cwt.jN);
+         $$1.a(cwt.jJ);
+         $$1.a(cwt.jD);
+         $$1.a(cwt.jL);
+         $$1.a(cwt.jK);
+         $$1.a(cwt.jC);
+         $$1.a(cwt.jG);
+         $$1.a(cwt.sz);
+         $$1.a(cwt.sH);
+         $$1.a(cwt.sG);
+         $$1.a(cwt.sO);
+         $$1.a(cwt.sL);
+         $$1.a(cwt.sN);
+         $$1.a(cwt.sA);
+         $$1.a(cwt.sD);
+         $$1.a(cwt.sE);
+         $$1.a(cwt.sM);
+         $$1.a(cwt.sI);
+         $$1.a(cwt.sC);
+         $$1.a(cwt.sK);
+         $$1.a(cwt.sJ);
+         $$1.a(cwt.sB);
+         $$1.a(cwt.sF);
+         $$1.a(cwt.xU);
+         $$1.a(cwt.xV);
+         $$1.a(cwt.yd);
+         $$1.a(cwt.yc);
+         $$1.a(cwt.yk);
+         $$1.a(cwt.yh);
+         $$1.a(cwt.yj);
+         $$1.a(cwt.xW);
+         $$1.a(cwt.xZ);
+         $$1.a(cwt.ya);
+         $$1.a(cwt.yi);
+         $$1.a(cwt.ye);
+         $$1.a(cwt.xY);
+         $$1.a(cwt.yg);
+         $$1.a(cwt.yf);
+         $$1.a(cwt.xX);
+         $$1.a(cwt.yb);
+         $$1.a(cwt.vP);
+         $$1.a(cwt.vX);
+         $$1.a(cwt.vW);
+         $$1.a(cwt.we);
+         $$1.a(cwt.wb);
+         $$1.a(cwt.wd);
+         $$1.a(cwt.vQ);
+         $$1.a(cwt.vT);
+         $$1.a(cwt.vU);
+         $$1.a(cwt.wc);
+         $$1.a(cwt.vY);
+         $$1.a(cwt.vS);
+         $$1.a(cwt.wa);
+         $$1.a(cwt.vZ);
+         $$1.a(cwt.vR);
+         $$1.a(cwt.vV);
+      }).d());
+      ke.a($$0, e, cve.a(cve.f.a, 2).a(wp.c("itemGroup.natural")).a(() -> new cwp(djo.i)).a(($$0x, $$1) -> {
+         $$1.a(cwt.B);
+         $$1.a(cwt.E);
+         $$1.a(cwt.gw);
+         $$1.a(cwt.it);
+         $$1.a(cwt.C);
+         $$1.a(cwt.D);
+         $$1.a(cwt.F);
+         $$1.a(cwt.fd);
+         $$1.a(cwt.G);
+         $$1.a(cwt.fl);
+         $$1.a(cwt.al);
+         $$1.a(cwt.ah);
+         $$1.a(cwt.cQ);
+         $$1.a(cwt.ak);
+         $$1.a(cwt.jn);
+         $$1.a(cwt.fi);
+         $$1.a(cwt.is);
+         $$1.a(cwt.ls);
+         $$1.a(cwt.fj);
+         $$1.a(cwt.fh);
+         $$1.a(cwt.dW);
+         $$1.a(cwt.dV);
+         $$1.a(cwt.dZ);
+         $$1.a(cwt.dX);
+         $$1.a(cwt.dY);
+         $$1.a(cwt.b);
+         $$1.a(cwt.i);
+         $$1.a(cwt.c);
+         $$1.a(cwt.e);
+         $$1.a(cwt.g);
+         $$1.a(cwt.l);
+         $$1.a(cwt.m);
+         $$1.a(cwt.A);
+         $$1.a(cwt.yp);
+         $$1.a(cwt.jg);
+         $$1.a(cwt.jt);
+         $$1.a(cwt.eR);
+         $$1.a(cwt.xG);
+         $$1.a(cwt.fC);
+         $$1.a(cwt.H);
+         $$1.a(cwt.I);
+         $$1.a(cwt.fD);
+         $$1.a(cwt.fE);
+         $$1.a(cwt.jx);
+         $$1.a(cwt.xH);
+         $$1.a(cwt.fF);
+         $$1.a(cwt.fH);
+         $$1.a(cwt.gJ);
+         $$1.a(cwt.am);
+         $$1.a(cwt.an);
+         $$1.a(cwt.ao);
+         $$1.a(cwt.ap);
+         $$1.a(cwt.aq);
+         $$1.a(cwt.ar);
+         $$1.a(cwt.as);
+         $$1.a(cwt.at);
+         $$1.a(cwt.au);
+         $$1.a(cwt.av);
+         $$1.a(cwt.aw);
+         $$1.a(cwt.ax);
+         $$1.a(cwt.ay);
+         $$1.a(cwt.az);
+         $$1.a(cwt.aA);
+         $$1.a(cwt.aB);
+         $$1.a(cwt.aC);
+         $$1.a(cwt.aD);
+         $$1.a(cwt.aE);
+         $$1.a(cwt.aG);
+         $$1.a(cwt.aH);
+         $$1.a(cwt.aI);
+         $$1.a(cwt.fJ);
+         $$1.a(cwt.aK);
+         $$1.a(cwt.aL);
+         $$1.a(cwt.yl);
+         $$1.a(cwt.ym);
+         $$1.a(cwt.yn);
+         $$1.a(cwt.yo);
+         $$1.a(cwt.bE);
+         $$1.a(cwt.bF);
+         $$1.a(cwt.bG);
+         $$1.a(cwt.bH);
+         $$1.a(cwt.bI);
+         $$1.a(cwt.bL);
+         $$1.a(cwt.bM);
+         $$1.a(cwt.bN);
+         $$1.a(cwt.bO);
+         $$1.a(cwt.bJ);
+         $$1.a(cwt.bK);
+         $$1.a(cwt.gf);
+         $$1.a(cwt.bP);
+         $$1.a(cwt.bQ);
+         $$1.a(cwt.cA);
+         $$1.a(cwt.cB);
+         $$1.a(cwt.cC);
+         $$1.a(cwt.cD);
+         $$1.a(cwt.cE);
+         $$1.a(cwt.cG);
+         $$1.a(cwt.cI);
+         $$1.a(cwt.cF);
+         $$1.a(cwt.cH);
+         $$1.a(cwt.cJ);
+         $$1.a(cwt.cK);
+         $$1.a(cwt.gd);
+         $$1.a(cwt.ge);
+         $$1.a(cwt.ju);
+         $$1.a(cwt.jv);
+         $$1.a(cwt.xz);
+         $$1.a(cwt.X);
+         $$1.a(cwt.Y);
+         $$1.a(cwt.Z);
+         $$1.a(cwt.aa);
+         $$1.a(cwt.ab);
+         $$1.a(cwt.ad);
+         $$1.a(cwt.af);
+         $$1.a(cwt.ac);
+         $$1.a(cwt.ae);
+         $$1.a(cwt.cW);
+         $$1.a(cwt.cX);
+         $$1.a(cwt.dJ);
+         $$1.a(cwt.dK);
+         $$1.a(cwt.dL);
+         $$1.a(cwt.dM);
+         $$1.a(cwt.cU);
+         $$1.a(cwt.cV);
+         $$1.a(cwt.cY);
+         $$1.a(cwt.dr);
+         $$1.a(cwt.du);
+         $$1.a(cwt.dv);
+         $$1.a(cwt.dw);
+         $$1.a(cwt.dx);
+         $$1.a(cwt.dy);
+         $$1.a(cwt.dz);
+         $$1.a(cwt.dA);
+         $$1.a(cwt.dB);
+         $$1.a(cwt.dC);
+         $$1.a(cwt.dD);
+         $$1.a(cwt.dE);
+         $$1.a(cwt.dG);
+         $$1.a(cwt.dt);
+         $$1.a(cwt.ds);
+         $$1.a(cwt.dF);
+         $$1.a(cwt.dU);
+         $$1.a(cwt.dI);
+         $$1.a(cwt.ed);
+         $$1.a(cwt.dS);
+         $$1.a(cwt.fk);
+         $$1.a(cwt.dN);
+         $$1.a(cwt.dO);
+         $$1.a(cwt.dP);
+         $$1.a(cwt.dQ);
+         $$1.a(cwt.dR);
+         $$1.a(cwt.gk);
+         $$1.a(cwt.iy);
+         $$1.a(cwt.iz);
+         $$1.a(cwt.iu);
+         $$1.a(cwt.iv);
+         $$1.a(cwt.iw);
+         $$1.a(cwt.ix);
+         $$1.a(cwt.dH);
+         $$1.a(cwt.eb);
+         $$1.a(cwt.ec);
+         $$1.a(cwt.eU);
+         $$1.a(cwt.eV);
+         $$1.a(cwt.gl);
+         $$1.a(cwt.ea);
+         $$1.a(cwt.yt);
+         $$1.a(cwt.kM);
+         $$1.a(cwt.kN);
+         $$1.a(cwt.qa);
+         $$1.a(cwt.se);
+         $$1.a(cwt.sV);
+         $$1.a(cwt.sW);
+         $$1.a(cwt.wl);
+         $$1.a(cwt.wi);
+         $$1.a(cwt.wj);
+         $$1.a(cwt.xw);
+         $$1.a(cwt.xv);
+         $$1.a(cwt.tg);
+         $$1.a(cwt.gx);
+         $$1.a(cwt.cZ);
+         $$1.a(cwt.da);
+         $$1.a(cwt.dT);
+         $$1.a(cwt.ru);
+         $$1.a(cwt.kT);
+         $$1.a(cwt.kU);
+         $$1.a(cwt.kV);
+         $$1.a(cwt.kW);
+         $$1.a(cwt.kX);
+         $$1.a(cwt.kO);
+         $$1.a(cwt.kP);
+         $$1.a(cwt.kQ);
+         $$1.a(cwt.kR);
+         $$1.a(cwt.kS);
+         $$1.a(cwt.kY);
+         $$1.a(cwt.kZ);
+         $$1.a(cwt.la);
+         $$1.a(cwt.lb);
+         $$1.a(cwt.lc);
+         $$1.a(cwt.lh);
+         $$1.a(cwt.ld);
+         $$1.a(cwt.le);
+         $$1.a(cwt.lf);
+         $$1.a(cwt.lg);
+         $$1.a(cwt.li);
+         $$1.a(cwt.lj);
+         $$1.a(cwt.lk);
+         $$1.a(cwt.ll);
+         $$1.a(cwt.lm);
+         $$1.a(cwt.ln);
+         $$1.a(cwt.lo);
+         $$1.a(cwt.lp);
+         $$1.a(cwt.lq);
+         $$1.a(cwt.lr);
+         $$1.a(cwt.cL);
+         $$1.a(cwt.cM);
+         $$1.a(cwt.gj);
+         $$1.a(cwt.fz);
+         $$1.a(cwt.fA);
+         $$1.a(cwt.fB);
+         $$1.a(cwt.ia);
+         $$1.a(cwt.xB);
+         $$1.a(cwt.xE);
+         $$1.a(cwt.ml);
+         $$1.a(cwt.mm);
+         $$1.a(cwt.gn);
+         $$1.a(cwt.yq);
+         $$1.a(cwt.yr);
+         $$1.a(cwt.ys);
+         $$1.a(cwt.gD);
+         $$1.a(cwt.gE);
+         $$1.a(cwt.gF);
+         $$1.a(cwt.gG);
+         $$1.a(cwt.mw);
+         $$1.a(cwt.cT);
+         $$1.a(cwt.ag);
+      }).d());
+      ke.a($$0, f, cve.a(cve.f.a, 3).a(wp.c("itemGroup.functional")).a(() -> new cwp(cwt.qH)).a(($$0x, $$1) -> {
+         $$1.a(cwt.eS);
+         $$1.a(cwt.fI);
+         $$1.a(cwt.mf);
+         $$1.a(cwt.xt);
+         $$1.a(cwt.xu);
+         $$1.a(cwt.gh);
+         $$1.a(cwt.eT);
+         $$1.a(cwt.jm);
+         $$1.a(cwt.mB);
+         $$1.a(cwt.zu);
+         $$1.a(cwt.zv);
+         $$1.a(cwt.zw);
+         $$1.a(cwt.zx);
+         $$1.a(cwt.zy);
+         $$1.a(cwt.zz);
+         $$1.a(cwt.zA);
+         $$1.a(cwt.zB);
+         $$1.a(cwt.fJ);
+         $$1.a(cwt.xz);
+         $$1.a(cwt.yq);
+         $$1.a(cwt.yr);
+         $$1.a(cwt.ys);
+         $$1.a(cwt.xG);
+         $$1.a(cwt.gl);
+         $$1.a(cwt.jt);
+         $$1.a(cwt.fc);
+         $$1.a(cwt.xr);
+         $$1.a(cwt.xn);
+         $$1.a(cwt.xo);
+         $$1.a(cwt.xq);
+         $$1.a(cwt.xp);
+         $$1.a(cwt.wX);
+         $$1.a(cwt.fe);
+         $$1.a(cwt.xl);
+         $$1.a(cwt.xm);
+         $$1.a(cwt.xx);
+         $$1.a(cwt.xy);
+         $$1.a(cwt.hA);
+         $$1.a(cwt.hB);
+         $$1.a(cwt.hC);
+         $$1.a(cwt.xj);
+         $$1.a(cwt.mC);
+         $$1.a(cwt.fm);
+         $$1.a(cwt.gH);
+         $$1.a(cwt.wf);
+         $$1.a(cwt.tn);
+         $$1.a(cwt.to);
+         $$1.a(cwt.xs);
+         $$1.a(cwt.hd);
+         $$1.a(cwt.lt);
+         $$1.a(cwt.xF);
+         $$1.a(cwt.ff);
+         $$1.a(cwt.md);
+         $$1.a(cwt.xB);
+         $$1.a(cwt.xC);
+         $$1.a(cwt.ai);
+         $$1.a(cwt.aj);
+         $$1.a(cwt.mu);
+         $$1.a(cwt.vd);
+         $$1.a(cwt.eP);
+         $$1.a(cwt.vF);
+         $$1.a(cwt.vb);
+         $$1.a(cwt.vc);
+         $$1.a(cwt.qE);
+         $$0x.c().a(mc.X).ifPresent($$2 -> a($$1, $$0x.c(), (jt.b<cky>)$$2, $$0xxx -> $$0xxx.a(awz.a), cve.g.a));
+         $$1.a(cwt.eN);
+         $$1.a(cwt.eO);
+         $$1.a(cwt.mr);
+         $$1.a(cwt.cO);
+         $$1.a(cwt.qH);
+         $$1.a(cwt.qT);
+         $$1.a(cwt.qI);
+         $$1.a(cwt.qU);
+         $$1.a(cwt.qJ);
+         $$1.a(cwt.qV);
+         $$1.a(cwt.qK);
+         $$1.a(cwt.qW);
+         $$1.a(cwt.qL);
+         $$1.a(cwt.qX);
+         $$1.a(cwt.qN);
+         $$1.a(cwt.qZ);
+         $$1.a(cwt.qP);
+         $$1.a(cwt.rb);
+         $$1.a(cwt.qM);
+         $$1.a(cwt.qY);
+         $$1.a(cwt.qO);
+         $$1.a(cwt.ra);
+         $$1.a(cwt.qQ);
+         $$1.a(cwt.rc);
+         $$1.a(cwt.qR);
+         $$1.a(cwt.rd);
+         $$1.a(cwt.qS);
+         $$1.a(cwt.re);
+         $$1.a(cwt.fb);
+         $$1.a(cwt.xk);
+         $$1.a(cwt.gN);
+         $$1.a(cwt.jz);
+         $$1.a(cwt.jA);
+         $$1.a(cwt.jI);
+         $$1.a(cwt.jH);
+         $$1.a(cwt.jP);
+         $$1.a(cwt.jM);
+         $$1.a(cwt.jO);
+         $$1.a(cwt.jB);
+         $$1.a(cwt.jE);
+         $$1.a(cwt.jF);
+         $$1.a(cwt.jN);
+         $$1.a(cwt.jJ);
+         $$1.a(cwt.jD);
+         $$1.a(cwt.jL);
+         $$1.a(cwt.jK);
+         $$1.a(cwt.jC);
+         $$1.a(cwt.jG);
+         $$1.a(cwt.xT);
+         $$1.a(cwt.sz);
+         $$1.a(cwt.sH);
+         $$1.a(cwt.sG);
+         $$1.a(cwt.sO);
+         $$1.a(cwt.sL);
+         $$1.a(cwt.sN);
+         $$1.a(cwt.sA);
+         $$1.a(cwt.sD);
+         $$1.a(cwt.sE);
+         $$1.a(cwt.sM);
+         $$1.a(cwt.sI);
+         $$1.a(cwt.sC);
+         $$1.a(cwt.sK);
+         $$1.a(cwt.sJ);
+         $$1.a(cwt.sB);
+         $$1.a(cwt.sF);
+         $$1.a(cwt.xU);
+         $$1.a(cwt.xV);
+         $$1.a(cwt.yd);
+         $$1.a(cwt.yc);
+         $$1.a(cwt.yk);
+         $$1.a(cwt.yh);
+         $$1.a(cwt.yj);
+         $$1.a(cwt.xW);
+         $$1.a(cwt.xZ);
+         $$1.a(cwt.ya);
+         $$1.a(cwt.yi);
+         $$1.a(cwt.ye);
+         $$1.a(cwt.xY);
+         $$1.a(cwt.yg);
+         $$1.a(cwt.yf);
+         $$1.a(cwt.xX);
+         $$1.a(cwt.yb);
+         $$1.a(cwt.vP);
+         $$1.a(cwt.vX);
+         $$1.a(cwt.vW);
+         $$1.a(cwt.we);
+         $$1.a(cwt.wb);
+         $$1.a(cwt.wd);
+         $$1.a(cwt.vQ);
+         $$1.a(cwt.vT);
+         $$1.a(cwt.vU);
+         $$1.a(cwt.wc);
+         $$1.a(cwt.vY);
+         $$1.a(cwt.vS);
+         $$1.a(cwt.wa);
+         $$1.a(cwt.vZ);
+         $$1.a(cwt.vR);
+         $$1.a(cwt.vV);
+         $$1.a(cqk.a($$0x.c().d(mc.d)));
+         $$1.a(cwt.vk);
+         $$1.a(cwt.vl);
+         $$1.a(cwt.vm);
+         $$1.a(cwt.vn);
+         $$1.a(cwt.vo);
+         $$1.a(cwt.vq);
+         $$1.a(cwt.vp);
+         $$1.a(cwt.gL);
+         $$1.a(cwt.gI);
+         $$1.a(cwt.tp);
+         $$1.a(cwt.zF);
+         $$1.a(cwt.fK);
+         $$1.a(cwt.fL);
+         $$1.a(cwt.fM);
+         $$1.a(cwt.fN);
+         $$1.a(cwt.fO);
+         $$1.a(cwt.fP);
+         $$1.a(cwt.fQ);
+      }).d());
+      ke.a($$0, g, cve.a(cve.f.a, 4).a(wp.c("itemGroup.redstone")).a(() -> new cwp(cwt.me)).a(($$0x, $$1) -> {
+         $$1.a(cwt.me);
+         $$1.a(cwt.mf);
+         $$1.a(cwt.mg);
+         $$1.a(cwt.mh);
+         $$1.a(cwt.mi);
+         $$1.a(cwt.ms);
+         $$1.a(cwt.zy);
+         $$1.a(cwt.zz);
+         $$1.a(cwt.zA);
+         $$1.a(cwt.zB);
+         $$1.a(cwt.mt);
+         $$1.a(cwt.mF);
+         $$1.a(cwt.mD);
+         $$1.a(cwt.mV);
+         $$1.a(cwt.mR);
+         $$1.a(cwt.mT);
+         $$1.a(cwt.mU);
+         $$1.a(cwt.mw);
+         $$1.a(cwt.mx);
+         $$1.a(cwt.gG);
+         $$1.a(cwt.aK);
+         $$1.a(cwt.db);
+         $$1.a(cwt.my);
+         $$1.a(cwt.pX);
+         $$1.a(cwt.mr);
+         $$1.a(cwt.mv);
+         $$1.a(cwt.mu);
+         $$1.a(cwt.mj);
+         $$1.a(cwt.mk);
+         $$1.a(cwt.ml);
+         $$1.a(cwt.mm);
+         $$1.a(cwt.mp);
+         $$1.a(cwt.mq);
+         $$1.a(cwt.sQ);
+         $$1.a(cwt.mo);
+         $$1.a(cwt.fb);
+         $$1.a(cwt.xk);
+         $$1.a(cwt.eO);
+         $$1.a(cwt.fe);
+         $$1.a(cwt.mz);
+         $$1.a(cwt.fm);
+         $$1.a(cwt.eP);
+         $$1.a(cwt.mn);
+         $$1.a(cwt.mC);
+         $$1.a(cwt.xj);
+         $$1.a(cwt.to);
+         $$1.a(cwt.ol);
+         $$1.a(cwt.oj);
+         $$1.a(cwt.ok);
+         $$1.a(cwt.om);
+         $$1.a(cwt.oo);
+         $$1.a(cwt.os);
+         $$1.a(cwt.op);
+         $$1.a(cwt.oq);
+         $$1.a(cwt.or);
+         $$1.a(cwt.oy);
+         $$1.a(cwt.oQ);
+         $$1.a(cwt.ni);
+         $$1.a(cwt.nh);
+         $$1.a(cwt.nX);
+         $$1.a(cwt.nD);
+         $$1.a(cwt.nC);
+         $$1.a(cwt.mA);
+         $$1.a(cwt.mB);
+         $$1.a(cwt.xs);
+         $$1.a(cwt.eb);
+         $$1.a(cwt.vF);
+         $$1.a(cwt.au);
+      }).d());
+      ke.a($$0, h, cve.a(cve.f.a, 5).a(wp.c("itemGroup.hotbar")).a(() -> new cwp(djo.cs)).a().a(cve.h.c).d());
+      ke.a($$0, i, cve.a(cve.f.a, 6).a(wp.c("itemGroup.search")).a(() -> new cwp(cwt.rz)).a(($$1, $$2) -> {
+         Set<cwp> $$3 = cwq.a();
 
-   @Override
-   public Predicate<cwo> b() {
-      return c;
-   }
-
-   @Override
-   public bsj a(dgh $$0, cow $$1, bsi $$2) {
-      cwo $$3 = $$1.b($$2);
-      cyt $$4 = $$3.a(kv.O);
-      if ($$4 != null && !$$4.b()) {
-         this.a($$0, $$1, $$2, $$3, a($$4), 1.0F, null);
-         return bsj.c;
-      } else if (!$$1.d($$3).f()) {
-         this.n = false;
-         this.o = false;
-         $$1.c($$2);
-         return bsj.c;
-      } else {
-         return bsj.d;
-      }
-   }
-
-   private static float a(cyt $$0) {
-      return $$0.a(cws.vt) ? 1.6F : 3.15F;
-   }
-
-   @Override
-   public boolean a(cwo $$0, dgh $$1, bvg $$2, int $$3) {
-      int $$4 = this.a($$0, $$2) - $$3;
-      float $$5 = a($$4, $$0, $$2);
-      if ($$5 >= 1.0F && !g($$0) && a($$2, $$0)) {
-         cvf.b $$6 = this.i($$0);
-         $$6.c().ifPresent($$2x -> $$1.a(null, $$2.dA(), $$2.dC(), $$2.dG(), (avz)$$2x.a(), $$2.dm(), 1.0F, 1.0F / ($$1.H_().i() * 0.5F + 1.0F) + 0.2F));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static boolean a(bvg $$0, cwo $$1) {
-      List<cwo> $$2 = a($$1, $$0.d($$1), $$0);
-      if (!$$2.isEmpty()) {
-         $$1.b(kv.O, cyt.a($$2));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public static boolean g(cwo $$0) {
-      cyt $$1 = $$0.a(kv.O, cyt.a);
-      return !$$1.b();
-   }
-
-   @Override
-   protected void a(bvg $$0, cpp $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bvg $$6) {
-      Vector3f $$11;
-      if ($$6 != null) {
-         double $$7 = $$6.dA() - $$0.dA();
-         double $$8 = $$6.dG() - $$0.dG();
-         double $$9 = Math.sqrt($$7 * $$7 + $$8 * $$8);
-         double $$10 = $$6.e(0.3333333333333333) - $$1.dC() + $$9 * 0.2F;
-         $$11 = a($$0, new faz($$7, $$10, $$8), $$5);
-      } else {
-         faz $$12 = $$0.l(1.0F);
-         Quaternionf $$13 = new Quaternionf().setAngleAxis((double)($$5 * (float) (Math.PI / 180.0)), $$12.d, $$12.e, $$12.f);
-         faz $$14 = $$0.g(1.0F);
-         $$11 = $$14.k().rotate($$13);
-      }
-
-      $$1.c((double)$$11.x(), (double)$$11.y(), (double)$$11.z(), $$3, $$4);
-      float $$16 = a($$0.dY(), $$2);
-      $$0.dV().a(null, $$0.dA(), $$0.dC(), $$0.dG(), awa.gP, $$0.dm(), 1.0F, $$16);
-   }
-
-   private static Vector3f a(bvg $$0, faz $$1, float $$2) {
-      Vector3f $$3 = $$1.k().normalize();
-      Vector3f $$4 = new Vector3f($$3).cross(new Vector3f(0.0F, 1.0F, 0.0F));
-      if ((double)$$4.lengthSquared() <= 1.0E-7) {
-         faz $$5 = $$0.l(1.0F);
-         $$4 = new Vector3f($$3).cross($$5.k());
-      }
-
-      Vector3f $$6 = new Vector3f($$3).rotateAxis((float) (Math.PI / 2), $$4.x, $$4.y, $$4.z);
-      return new Vector3f($$3).rotateAxis($$2 * (float) (Math.PI / 180.0), $$6.x, $$6.y, $$6.z);
-   }
-
-   @Override
-   protected cpp a(dgh $$0, bvg $$1, cwo $$2, cwo $$3, boolean $$4) {
-      if ($$3.a(cws.vt)) {
-         return new cpk($$0, $$3, $$1, $$1.dA(), $$1.dE() - 0.15F, $$1.dG(), true);
-      } else {
-         cpp $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-         if ($$5 instanceof cpd $$6) {
-            $$6.b(awa.gI);
-         }
-
-         return $$5;
-      }
-   }
-
-   @Override
-   protected int h(cwo $$0) {
-      return $$0.a(cws.vt) ? 3 : 1;
-   }
-
-   public void a(dgh $$0, bvg $$1, bsi $$2, cwo $$3, float $$4, float $$5, @Nullable bvg $$6) {
-      if ($$0 instanceof ard $$7) {
-         cyt $$9 = $$3.b(kv.O, cyt.a);
-         if ($$9 != null && !$$9.b()) {
-            this.a($$7, $$1, $$2, $$3, $$9.a(), $$4, $$5, $$1 instanceof cow, $$6);
-            if ($$1 instanceof are $$10) {
-               ap.G.a($$10, $$3);
-               $$10.b(awk.c.b($$3.h()));
+         for (cve $$4 : $$0) {
+            if ($$4.k() != cve.h.d) {
+               $$3.addAll($$4.m());
             }
          }
-      }
-   }
 
-   private static float a(azh $$0, int $$1) {
-      return $$1 == 0 ? 1.0F : a(($$1 & 1) == 1, $$0);
-   }
+         $$2.a($$3);
+      }).a(b).a().a(cve.h.d).d());
+      ke.a($$0, j, cve.a(cve.f.b, 0).a(wp.c("itemGroup.tools")).a(() -> new cwp(cwt.pN)).a(($$0x, $$1) -> {
+         $$1.a(cwt.ps);
+         $$1.a(cwt.pt);
+         $$1.a(cwt.pu);
+         $$1.a(cwt.pv);
+         $$1.a(cwt.px);
+         $$1.a(cwt.py);
+         $$1.a(cwt.pz);
+         $$1.a(cwt.pA);
+         $$1.a(cwt.pH);
+         $$1.a(cwt.pI);
+         $$1.a(cwt.pJ);
+         $$1.a(cwt.pK);
+         $$1.a(cwt.pC);
+         $$1.a(cwt.pD);
+         $$1.a(cwt.pE);
+         $$1.a(cwt.pF);
+         $$1.a(cwt.pM);
+         $$1.a(cwt.pN);
+         $$1.a(cwt.pO);
+         $$1.a(cwt.pP);
+         $$1.a(cwt.pR);
+         $$1.a(cwt.pS);
+         $$1.a(cwt.pT);
+         $$1.a(cwt.pU);
+         $$1.a(cwt.rf);
+         $$1.a(cwt.rg);
+         $$1.a(cwt.ro);
+         $$1.a(cwt.rn);
+         $$1.a(cwt.rp);
+         $$1.a(cwt.rm);
+         $$1.a(cwt.rq);
+         $$1.a(cwt.rr);
+         $$1.a(cwt.rh);
+         $$1.a(cwt.ri);
+         $$1.a(cwt.rl);
+         $$1.a(cwt.rS);
+         $$1.a(cwt.oX);
+         $$1.a(cwt.uV);
+         $$1.a(cwt.sv);
+         $$1.a(cwt.sS);
+         $$1.a(cwt.yv);
+         $$1.a(cwt.vL);
+         $$1.a(cwt.vK);
+         $$1.a(cwt.rB);
+         $$1.a(cwt.rC);
+         $$1.a(cwt.rK);
+         $$1.a(cwt.rJ);
+         $$1.a(cwt.rR);
+         $$1.a(cwt.rO);
+         $$1.a(cwt.rQ);
+         $$1.a(cwt.rD);
+         $$1.a(cwt.rG);
+         $$1.a(cwt.rH);
+         $$1.a(cwt.rP);
+         $$1.a(cwt.rL);
+         $$1.a(cwt.rF);
+         $$1.a(cwt.rN);
+         $$1.a(cwt.rM);
+         $$1.a(cwt.rE);
+         $$1.a(cwt.rI);
+         $$1.a(cwt.rz);
+         $$1.a(cwt.rA);
+         $$1.a(cwt.rT);
+         $$1.a(cwt.rU);
+         $$1.a(cwt.vi);
+         $$1.a(cwt.uX);
+         $$1.a(cwt.uW);
+         $$1.a(cwt.tc);
+         $$1.a(cwt.tp);
+         $$1.a(cwt.ow);
+         c($$1, cve.g.a);
+         $$1.a(cwt.on);
+         $$1.a(cwt.ot);
+         $$1.a(cwt.ou);
+         $$1.a(cwt.ox);
+         $$1.a(cwt.oy);
+         $$1.a(cwt.oz);
+         $$1.a(cwt.oA);
+         $$1.a(cwt.oB);
+         $$1.a(cwt.oC);
+         $$1.a(cwt.oD);
+         $$1.a(cwt.oE);
+         $$1.a(cwt.oF);
+         $$1.a(cwt.oG);
+         $$1.a(cwt.oJ);
+         $$1.a(cwt.oK);
+         $$1.a(cwt.oN);
+         $$1.a(cwt.oO);
+         $$1.a(cwt.oH);
+         $$1.a(cwt.oI);
+         $$1.a(cwt.oL);
+         $$1.a(cwt.oM);
+         $$1.a(cwt.oP);
+         $$1.a(cwt.oQ);
+         $$1.a(cwt.ol);
+         $$1.a(cwt.oj);
+         $$1.a(cwt.ok);
+         $$1.a(cwt.om);
+         $$1.a(cwt.oo);
+         $$1.a(cwt.os);
+         $$1.a(cwt.op);
+         $$1.a(cwt.oq);
+         $$1.a(cwt.or);
+         $$0x.c().a(mc.I).ifPresent($$1x -> a($$1, $$1x, cwt.xi, awx.c, cve.g.a));
+         $$1.a(cwt.wy);
+         $$1.a(cwt.wz);
+         $$1.a(cwt.wA);
+         $$1.a(cwt.wB);
+         $$1.a(cwt.wE);
+         $$1.a(cwt.wF);
+         $$1.a(cwt.wG);
+         $$1.a(cwt.wH);
+         $$1.a(cwt.wI);
+         $$1.a(cwt.wJ);
+         $$1.a(cwt.wK);
+         $$1.a(cwt.wD);
+         $$1.a(cwt.wL);
+         $$1.a(cwt.wC);
+         $$1.a(cwt.wQ);
+         $$1.a(cwt.wM);
+         $$1.a(cwt.wN);
+         $$1.a(cwt.wO);
+         $$1.a(cwt.wP);
+      }).d());
+      ke.a($$0, k, cve.a(cve.f.b, 1).a(wp.c("itemGroup.combat")).a(() -> new cwp(cwt.pQ)).a(($$0x, $$1) -> {
+         $$1.a(cwt.pr);
+         $$1.a(cwt.pw);
+         $$1.a(cwt.pG);
+         $$1.a(cwt.pB);
+         $$1.a(cwt.pL);
+         $$1.a(cwt.pQ);
+         $$1.a(cwt.pu);
+         $$1.a(cwt.pz);
+         $$1.a(cwt.pJ);
+         $$1.a(cwt.pE);
+         $$1.a(cwt.pO);
+         $$1.a(cwt.pT);
+         $$1.a(cwt.wS);
+         $$1.a(cwt.va);
+         $$1.a(cwt.ws);
+         $$1.a(cwt.qd);
+         $$1.a(cwt.qe);
+         $$1.a(cwt.qf);
+         $$1.a(cwt.qg);
+         $$1.a(cwt.qh);
+         $$1.a(cwt.qi);
+         $$1.a(cwt.qj);
+         $$1.a(cwt.qk);
+         $$1.a(cwt.ql);
+         $$1.a(cwt.qm);
+         $$1.a(cwt.qn);
+         $$1.a(cwt.qo);
+         $$1.a(cwt.qt);
+         $$1.a(cwt.qu);
+         $$1.a(cwt.qv);
+         $$1.a(cwt.qw);
+         $$1.a(cwt.qp);
+         $$1.a(cwt.qq);
+         $$1.a(cwt.qr);
+         $$1.a(cwt.qs);
+         $$1.a(cwt.qx);
+         $$1.a(cwt.qy);
+         $$1.a(cwt.qz);
+         $$1.a(cwt.qA);
+         $$1.a(cwt.oT);
+         $$1.a(cwt.vJ);
+         $$1.a(cwt.vG);
+         $$1.a(cwt.vH);
+         $$1.a(cwt.vI);
+         $$1.a(cwt.oW);
+         $$1.a(cwt.wt);
+         $$1.a(cwt.mA);
+         $$1.a(cwt.wf);
+         $$1.a(cwt.rj);
+         $$1.a(cwt.ry);
+         $$1.a(cwt.uW);
+         $$1.a(cwt.pa);
+         $$1.a(cwt.wV);
+         c($$1, cve.g.a);
+         $$1.a(cwt.pb);
+         $$1.a(cwt.wp);
+         $$0x.c().a(mc.ad).ifPresent($$2 -> a($$1, $$2, cwt.wq, cve.g.a, $$0x.a()));
+      }).d());
+      ke.a($$0, l, cve.a(cve.f.b, 2).a(wp.c("itemGroup.foodAndDrink")).a(() -> new cwp(cwt.qF)).a(($$0x, $$1) -> {
+         $$1.a(cwt.oZ);
+         $$1.a(cwt.qF);
+         $$1.a(cwt.qG);
+         $$1.a(cwt.sT);
+         $$1.a(cwt.xv);
+         $$1.a(cwt.xw);
+         $$1.a(cwt.wg);
+         $$1.a(cwt.ve);
+         $$1.a(cwt.vj);
+         $$1.a(cwt.vf);
+         $$1.a(cwt.vg);
+         $$1.a(cwt.vh);
+         $$1.a(cwt.wk);
+         $$1.a(cwt.sU);
+         $$1.a(cwt.sX);
+         $$1.a(cwt.sY);
+         $$1.a(cwt.qC);
+         $$1.a(cwt.qD);
+         $$1.a(cwt.vN);
+         $$1.a(cwt.vO);
+         $$1.a(cwt.sZ);
+         $$1.a(cwt.ta);
+         $$1.a(cwt.vA);
+         $$1.a(cwt.vB);
+         $$1.a(cwt.rW);
+         $$1.a(cwt.sa);
+         $$1.a(cwt.rX);
+         $$1.a(cwt.sb);
+         $$1.a(cwt.rY);
+         $$1.a(cwt.rZ);
+         $$1.a(cwt.qc);
+         $$1.a(cwt.sP);
+         $$1.a(cwt.sy);
+         $$1.a(cwt.vs);
+         $$1.a(cwt.tb);
+         $$1.a(cwt.tj);
+         $$1.a(cwt.pW);
+         $$1.a(cwt.wm);
+         $$1.a(cwt.vC);
+         a($$1, cve.g.a);
+         $$1.a(cwt.rl);
+         $$1.a(cwt.xD);
+         b($$1, cve.g.a);
+         $$0x.c().a(mc.ad).ifPresent($$2 -> {
+            a($$1, $$2, cwt.ti, cve.g.a, $$0x.a());
+            a($$1, $$2, cwt.wo, cve.g.a, $$0x.a());
+            a($$1, $$2, cwt.wr, cve.g.a, $$0x.a());
+         });
+      }).d());
+      ke.a($$0, m, cve.a(cve.f.b, 3).a(wp.c("itemGroup.ingredients")).a(() -> new cwp(cwt.pk)).a(($$0x, $$1) -> {
+         $$1.a(cwt.pc);
+         $$1.a(cwt.pd);
+         $$1.a(cwt.pj);
+         $$1.a(cwt.pl);
+         $$1.a(cwt.pn);
+         $$1.a(cwt.pf);
+         $$1.a(cwt.pg);
+         $$1.a(cwt.pe);
+         $$1.a(cwt.aE);
+         $$1.a(cwt.ph);
+         $$1.a(cwt.pi);
+         $$1.a(cwt.wv);
+         $$1.a(cwt.tf);
+         $$1.a(cwt.pk);
+         $$1.a(cwt.pm);
+         $$1.a(cwt.po);
+         $$1.a(cwt.pq);
+         $$1.a(cwt.pp);
+         $$1.a(cwt.pV);
+         $$1.a(cwt.qB);
+         $$1.a(cwt.qb);
+         $$1.a(cwt.sw);
+         $$1.a(cwt.sv);
+         $$1.a(cwt.pX);
+         $$1.a(cwt.pY);
+         $$1.a(cwt.rj);
+         $$1.a(cwt.ry);
+         $$1.a(cwt.rk);
+         $$1.a(cwt.vE);
+         $$1.a(cwt.xA);
+         $$1.a(cwt.gm);
+         $$1.a(cwt.sc);
+         $$1.a(cwt.sd);
+         $$1.a(cwt.oU);
+         $$1.a(cwt.oV);
+         $$1.a(cwt.rx);
+         $$1.a(cwt.rt);
+         $$1.a(cwt.vy);
+         $$1.a(cwt.vz);
+         $$1.a(cwt.wT);
+         $$1.a(cwt.wU);
+         $$1.a(cwt.uV);
+         $$1.a(cwt.td);
+         $$1.a(cwt.uZ);
+         $$1.a(cwt.aJ);
+         $$1.a(cwt.vr);
+         $$1.a(cwt.tc);
+         $$1.a(cwt.tp);
+         $$1.a(cwt.wu);
+         $$1.a(cwt.wh);
+         $$1.a(cwt.yu);
+         $$1.a(cwt.wR);
+         $$1.a(cwt.sf);
+         $$1.a(cwt.sn);
+         $$1.a(cwt.sm);
+         $$1.a(cwt.su);
+         $$1.a(cwt.sr);
+         $$1.a(cwt.st);
+         $$1.a(cwt.sg);
+         $$1.a(cwt.sj);
+         $$1.a(cwt.sk);
+         $$1.a(cwt.ss);
+         $$1.a(cwt.so);
+         $$1.a(cwt.si);
+         $$1.a(cwt.sq);
+         $$1.a(cwt.sp);
+         $$1.a(cwt.sh);
+         $$1.a(cwt.sl);
+         $$1.a(cwt.oY);
+         $$1.a(cwt.rs);
+         $$1.a(cwt.vw);
+         $$1.a(cwt.vx);
+         $$1.a(cwt.rv);
+         $$1.a(cwt.rw);
+         $$1.a(cwt.vu);
+         $$1.a(cwt.th);
+         $$1.a(cwt.tg);
+         $$1.a(cwt.me);
+         $$1.a(cwt.rV);
+         $$1.a(cwt.pZ);
+         $$1.a(cwt.wn);
+         $$1.a(cwt.tk);
+         $$1.a(cwt.tl);
+         $$1.a(cwt.sx);
+         $$1.a(cwt.vD);
+         $$1.a(cwt.tq);
+         $$1.a(cwt.tj);
+         $$1.a(cwt.rZ);
+         $$1.a(cwt.tm);
+         $$1.a(cwt.vj);
+         $$1.a(cwt.te);
+         $$1.a(cwt.oT);
+         $$1.a(cwt.ov);
+         $$1.a(cwt.xg);
+         $$1.a(cwt.xh);
+         $$1.a(cwt.wY);
+         $$1.a(cwt.wZ);
+         $$1.a(cwt.xa);
+         $$1.a(cwt.xb);
+         $$1.a(cwt.xc);
+         $$1.a(cwt.xd);
+         $$1.a(cwt.xe);
+         $$1.a(cwt.xf);
+         $$1.a(cwt.yP);
+         $$1.a(cwt.yQ);
+         $$1.a(cwt.yR);
+         $$1.a(cwt.yS);
+         $$1.a(cwt.yT);
+         $$1.a(cwt.yU);
+         $$1.a(cwt.yV);
+         $$1.a(cwt.yX);
+         $$1.a(cwt.yW);
+         $$1.a(cwt.yY);
+         $$1.a(cwt.yZ);
+         $$1.a(cwt.za);
+         $$1.a(cwt.zb);
+         $$1.a(cwt.zc);
+         $$1.a(cwt.zd);
+         $$1.a(cwt.ze);
+         $$1.a(cwt.zf);
+         $$1.a(cwt.zg);
+         $$1.a(cwt.zh);
+         $$1.a(cwt.zi);
+         $$1.a(cwt.zj);
+         $$1.a(cwt.zk);
+         $$1.a(cwt.zl);
+         $$1.a(cwt.yw);
+         $$1.a(cwt.yx);
+         $$1.a(cwt.yD);
+         $$1.a(cwt.yA);
+         $$1.a(cwt.yz);
+         $$1.a(cwt.yy);
+         $$1.a(cwt.yI);
+         $$1.a(cwt.yL);
+         $$1.a(cwt.yJ);
+         $$1.a(cwt.yM);
+         $$1.a(cwt.yB);
+         $$1.a(cwt.yK);
+         $$1.a(cwt.yE);
+         $$1.a(cwt.yF);
+         $$1.a(cwt.yG);
+         $$1.a(cwt.yC);
+         $$1.a(cwt.yH);
+         $$1.a(cwt.yN);
+         $$1.a(cwt.yO);
+         $$1.a(cwt.uU);
+         $$1.a(cwt.zD);
+         $$1.a(cwt.zE);
+         $$0x.c().a(mc.aO).ifPresent($$1x -> {
+            a($$1, $$1x, cve.g.b);
+            b($$1, $$1x, cve.g.c);
+         });
+      }).d());
+      ke.a($$0, n, cve.a(cve.f.b, 4).a(wp.c("itemGroup.spawnEggs")).a(() -> new cwp(cwt.ug)).a(($$0x, $$1) -> {
+         $$1.a(cwt.eZ);
+         $$1.a(cwt.zC);
+         $$1.a(cwt.fa);
+         $$1.a(cwt.ts);
+         $$1.a(cwt.tr);
+         $$1.a(cwt.tt);
+         $$1.a(cwt.tu);
+         $$1.a(cwt.tv);
+         $$1.a(cwt.tw);
+         $$1.a(cwt.tx);
+         $$1.a(cwt.ty);
+         $$1.a(cwt.tA);
+         $$1.a(cwt.tz);
+         $$1.a(cwt.tB);
+         $$1.a(cwt.tC);
+         $$1.a(cwt.tD);
+         $$1.a(cwt.tE);
+         $$1.a(cwt.uP);
+         $$1.a(cwt.tF);
+         $$1.a(cwt.tG);
+         $$1.a(cwt.tH);
+         $$1.a(cwt.tI);
+         $$1.a(cwt.tJ);
+         $$1.a(cwt.tL);
+         $$1.a(cwt.tM);
+         $$1.a(cwt.tN);
+         $$1.a(cwt.tO);
+         $$1.a(cwt.tP);
+         $$1.a(cwt.tQ);
+         $$1.a(cwt.tR);
+         $$1.a(cwt.tS);
+         $$1.a(cwt.tT);
+         $$1.a(cwt.tU);
+         $$1.a(cwt.tV);
+         $$1.a(cwt.tW);
+         $$1.a(cwt.tX);
+         $$1.a(cwt.tY);
+         $$1.a(cwt.tZ);
+         $$1.a(cwt.ua);
+         $$1.a(cwt.ub);
+         $$1.a(cwt.uc);
+         $$1.a(cwt.ud);
+         $$1.a(cwt.ue);
+         $$1.a(cwt.uf);
+         $$1.a(cwt.ug);
+         $$1.a(cwt.uh);
+         $$1.a(cwt.ui);
+         $$1.a(cwt.uj);
+         $$1.a(cwt.uk);
+         $$1.a(cwt.ul);
+         $$1.a(cwt.um);
+         $$1.a(cwt.un);
+         $$1.a(cwt.uo);
+         $$1.a(cwt.up);
+         $$1.a(cwt.uq);
+         $$1.a(cwt.ur);
+         $$1.a(cwt.us);
+         $$1.a(cwt.ut);
+         $$1.a(cwt.uu);
+         $$1.a(cwt.uv);
+         $$1.a(cwt.uw);
+         $$1.a(cwt.ux);
+         $$1.a(cwt.uy);
+         $$1.a(cwt.uz);
+         $$1.a(cwt.uA);
+         $$1.a(cwt.uB);
+         $$1.a(cwt.uC);
+         $$1.a(cwt.uD);
+         $$1.a(cwt.uE);
+         $$1.a(cwt.uF);
+         $$1.a(cwt.uG);
+         $$1.a(cwt.uH);
+         $$1.a(cwt.uI);
+         $$1.a(cwt.uJ);
+         $$1.a(cwt.uK);
+         $$1.a(cwt.uM);
+         $$1.a(cwt.uN);
+         $$1.a(cwt.uO);
+         $$1.a(cwt.uQ);
+         $$1.a(cwt.uR);
+         $$1.a(cwt.uS);
+         $$1.a(cwt.uT);
+      }).d());
+      ke.a($$0, o, cve.a(cve.f.b, 5).a(wp.c("itemGroup.op")).a(() -> new cwp(cwt.hc)).a().a(($$0x, $$1) -> {
+         if ($$0x.b()) {
+            $$1.a(cwt.hc);
+            $$1.a(cwt.js);
+            $$1.a(cwt.jr);
+            $$1.a(cwt.vM);
+            $$1.a(cwt.oS);
+            $$1.a(cwt.oR);
+            $$1.a(cwt.jy);
+            $$1.a(cwt.hY);
+            $$1.a(cwt.wx);
 
-   private static float a(boolean $$0, azh $$1) {
-      float $$2 = $$0 ? 0.63F : 0.43F;
-      return 1.0F / ($$1.i() * 0.5F + 1.8F) + $$2;
-   }
-
-   @Override
-   public void a(dgh $$0, bvg $$1, cwo $$2, int $$3) {
-      if (!$$0.C) {
-         cvf.b $$4 = this.i($$2);
-         float $$5 = (float)($$2.a($$1) - $$3) / (float)b($$2, $$1);
-         if ($$5 < 0.2F) {
-            this.n = false;
-            this.o = false;
-         }
-
-         if ($$5 >= 0.2F && !this.n) {
-            this.n = true;
-            $$4.a().ifPresent($$2x -> $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), (avz)$$2x.a(), awb.h, 0.5F, 1.0F));
-         }
-
-         if ($$5 >= 0.5F && !this.o) {
-            this.o = true;
-            $$4.b().ifPresent($$2x -> $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), (avz)$$2x.a(), awb.h, 0.5F, 1.0F));
-         }
-      }
-   }
-
-   @Override
-   public int a(cwo $$0, bvg $$1) {
-      return b($$0, $$1) + 3;
-   }
-
-   public static int b(cwo $$0, bvg $$1) {
-      float $$2 = dda.a($$0, $$1, 1.25F);
-      return ayz.d($$2 * 20.0F);
-   }
-
-   @Override
-   public cwq b(cwo $$0) {
-      return cwq.g;
-   }
-
-   cvf.b i(cwo $$0) {
-      return dda.b($$0, dcz.B).orElse(t);
-   }
-
-   private static float a(int $$0, cwo $$1, bvg $$2) {
-      float $$3 = (float)$$0 / (float)b($$1, $$2);
-      if ($$3 > 1.0F) {
-         $$3 = 1.0F;
-      }
-
-      return $$3;
-   }
-
-   @Override
-   public void a(cwo $$0, cwk.b $$1, List<wp> $$2, cyg $$3) {
-      cyt $$4 = $$0.a(kv.O);
-      if ($$4 != null && !$$4.b()) {
-         cwo $$5 = $$4.a().get(0);
-         $$2.add(wp.c("item.minecraft.crossbow.projectile").b(wo.v).b($$5.K()));
-         if ($$3.a() && $$5.a(cws.vt)) {
-            List<wp> $$6 = Lists.newArrayList();
-            cws.vt.a($$5, $$1, $$6, $$3);
-            if (!$$6.isEmpty()) {
-               for (int $$7 = 0; $$7 < $$6.size(); $$7++) {
-                  $$6.set($$7, wp.b("  ").b($$6.get($$7)).a(n.h));
-               }
-
-               $$2.addAll($$6);
+            for (int $$2 = 15; $$2 >= 0; $$2--) {
+               $$1.a(doc.a(new cwp(cwt.hZ), $$2));
             }
+
+            $$0x.c().a(mc.X).ifPresent($$2x -> a($$1, $$0x.c(), $$2x, $$0xxx -> !$$0xxx.a(awz.a), cve.g.a));
+         }
+      }).d());
+      return ke.a($$0, p, cve.a(cve.f.b, 6).a(wp.c("itemGroup.inventory")).a(() -> new cwp(djo.cD)).a(a).b().a().a(cve.h.b).c().d());
+   }
+
+   public static void a() {
+      Map<Pair<cve.f, Integer>, String> $$0 = new HashMap<>();
+
+      for (aku<cve> $$1 : mb.al.j()) {
+         cve $$2 = mb.al.g($$1);
+         String $$3 = $$2.a().getString();
+         String $$4 = $$0.put(Pair.of($$2.g(), $$2.f()), $$3);
+         if ($$4 != null) {
+            throw new IllegalArgumentException("Duplicate position: " + $$3 + " vs. " + $$4);
          }
       }
    }
 
-   @Override
-   public boolean d_(cwo $$0) {
-      return $$0.a((cwk)this);
+   public static cve b() {
+      return mb.al.g(c);
    }
 
-   @Override
-   public int c() {
-      return 8;
+   private static void a(cve.e $$0, jt<cym> $$1, cwl $$2, cve.g $$3, crt $$4) {
+      $$1.c().filter($$1x -> ((cym)$$1x.a()).a($$4)).map($$1x -> cyo.a($$2, $$1x)).forEach($$2x -> $$0.a($$2x, $$3));
    }
 
-   public static enum a implements azv {
-      a("none"),
-      b("arrow"),
-      c("rocket");
+   private static void a(cve.e $$0, jt<dcz> $$1, cve.g $$2) {
+      $$1.c().map($$0x -> ddb.a(new ddc($$0x, ((dcz)$$0x.a()).e()))).forEach($$2x -> $$0.a($$2x, $$2));
+   }
 
-      public static final Codec<cvf.a> d = azv.a(cvf.a::values);
-      private final String e;
+   private static void b(cve.e $$0, jt<dcz> $$1, cve.g $$2) {
+      $$1.c()
+         .flatMap($$0x -> IntStream.rangeClosed(((dcz)$$0x.a()).d(), ((dcz)$$0x.a()).e()).mapToObj($$1x -> ddb.a(new ddc($$0x, $$1x))))
+         .forEach($$2x -> $$0.a($$2x, $$2));
+   }
 
-      private a(final String $$0) {
-         this.e = $$0;
+   private static void a(cve.e $$0, jt<cwi> $$1, cwl $$2, axf<cwi> $$3, cve.g $$4) {
+      $$1.a($$3).ifPresent($$3x -> $$3x.a().map($$1xx -> cwj.a($$2, $$1xx)).forEach($$2xx -> $$0.a($$2xx, $$4)));
+   }
+
+   private static void a(cve.e $$0, cve.g $$1) {
+      List<drt> $$2 = drt.d();
+      Set<cwp> $$3 = cwq.a();
+
+      for (drt $$4 : $$2) {
+         cwp $$5 = new cwp(cwt.wW);
+         $$5.b(kv.R, $$4.c());
+         $$3.add($$5);
       }
 
-      @Override
-      public String c() {
-         return this.e;
+      $$0.a($$3, $$1);
+   }
+
+   private static void b(cve.e $$0, cve.g $$1) {
+      for (int $$2 = 0; $$2 <= 4; $$2++) {
+         cwp $$3 = new cwp(cwt.zG);
+         $$3.b(kv.aa, new czn($$2));
+         $$0.a($$3, $$1);
       }
    }
 
-   public static record b(Optional<jr<avz>> b, Optional<jr<avz>> c, Optional<jr<avz>> d) {
-      public static final Codec<cvf.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  avz.b.optionalFieldOf("start").forGetter(cvf.b::a),
-                  avz.b.optionalFieldOf("mid").forGetter(cvf.b::b),
-                  avz.b.optionalFieldOf("end").forGetter(cvf.b::c)
-               )
-               .apply($$0, cvf.b::new)
-      );
-
-      public Optional<jr<avz>> a() {
-         return this.b;
+   private static void c(cve.e $$0, cve.g $$1) {
+      for (byte $$2 : cvw.a) {
+         cwp $$3 = new cwp(cwt.vt);
+         $$3.b(kv.af, new czf($$2, List.of()));
+         $$0.a($$3, $$1);
       }
+   }
 
-      public Optional<jr<avz>> b() {
-         return this.c;
-      }
+   private static void a(cve.e $$0, jt.a $$1, jt.b<cky> $$2, Predicate<jr<cky>> $$3, cve.g $$4) {
+      akt<un> $$5 = $$1.a(ue.a);
+      $$2.c().filter($$3).sorted(q).forEach($$3x -> {
+         cyy $$4x = ((cyy)cyy.a.a($$5, ckx.d, $$3x).getOrThrow()).a((Consumer<tq>)($$0xx -> $$0xx.a("id", "minecraft:painting")));
+         cwp $$5x = new cwp(cwt.qE);
+         $$5x.b(kv.W, $$4x);
+         $$0.a($$5x, $$4);
+      });
+   }
 
-      public Optional<jr<avz>> c() {
-         return this.d;
+   public static List<cve> c() {
+      return f().filter(cve::i).toList();
+   }
+
+   public static List<cve> d() {
+      return f().toList();
+   }
+
+   private static Stream<cve> f() {
+      return mb.al.s();
+   }
+
+   public static cve e() {
+      return mb.al.g(i);
+   }
+
+   private static void a(cve.d $$0) {
+      f().filter($$0x -> $$0x.k() == cve.h.a).forEach($$1 -> $$1.a($$0));
+      f().filter($$0x -> $$0x.k() != cve.h.a).forEach($$1 -> $$1.a($$0));
+   }
+
+   public static boolean a(crt $$0, boolean $$1, jt.a $$2) {
+      if (r != null && !r.a($$0, $$1, $$2)) {
+         return false;
+      } else {
+         r = new cve.d($$0, $$1, $$2);
+         a(r);
+         return true;
       }
    }
 }

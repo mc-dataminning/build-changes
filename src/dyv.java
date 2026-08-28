@@ -1,49 +1,9 @@
-import java.io.IOException;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public abstract class dyv implements dze, AutoCloseable {
-   @Nullable
-   public dzb a(int $$0, int $$1, boolean $$2) {
-      return (dzb)this.a($$0, $$1, dzs.n, $$2);
-   }
-
-   @Nullable
-   public dzb a(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
-   }
-
-   @Nullable
-   @Override
-   public dzd c(int $$0, int $$1) {
-      return this.a($$0, $$1, dzs.c, false);
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, dzs.n, false) != null;
-   }
-
-   @Nullable
-   public abstract dyr a(int var1, int var2, dzs var3, boolean var4);
-
-   public abstract void a(BooleanSupplier var1, boolean var2);
-
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-   }
-
-   public abstract String e();
-
-   public abstract int j();
-
-   @Override
-   public void close() throws IOException {
-   }
-
-   public abstract esn p();
-
-   public void b(boolean $$0) {
-   }
-
-   public void a(dfn $$0, boolean $$1) {
+public class dyv {
+   public static MapCodec<? extends dyt> a(ke<MapCodec<? extends dyt>> $$0) {
+      ke.a($$0, "noise", ecv.c);
+      ke.a($$0, "flat", ecn.c);
+      return ke.a($$0, "debug", ecj.c);
    }
 }

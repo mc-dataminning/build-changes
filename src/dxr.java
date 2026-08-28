@@ -1,16 +1,6 @@
 public enum dxr implements azv {
-   a(jn.a),
-   b(jn.b);
-
-   private final jn c;
-
-   private dxr(final jn $$0) {
-      this.c = $$0;
-   }
-
-   public jn a() {
-      return this.c;
-   }
+   a,
+   b;
 
    @Override
    public String toString() {
@@ -19,10 +9,6 @@ public enum dxr implements azv {
 
    @Override
    public String c() {
-      return this == a ? "upper" : "lower";
-   }
-
-   public dxr b() {
-      return this == a ? b : a;
+      return this == a ? "left" : "right";
    }
 }

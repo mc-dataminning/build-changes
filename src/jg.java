@@ -38,8 +38,8 @@ public record jg(ji b, ji c) implements Iterable<ji> {
       return $$0.u() >= this.b.u() && $$0.v() >= this.b.v() && $$0.w() >= this.b.w() && $$0.u() <= this.c.u() && $$0.v() <= this.c.v() && $$0.w() <= this.c.w();
    }
 
-   public fau b() {
-      return fau.a(this.b, this.c);
+   public fav b() {
+      return fav.a(this.b, this.c);
    }
 
    @Override

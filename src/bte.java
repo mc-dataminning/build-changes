@@ -1,19 +1,103 @@
-import com.mojang.serialization.Codec;
+public interface bte {
+   aku<btd> a = aku.a(mc.s, akv.b("in_fire"));
+   aku<btd> b = aku.a(mc.s, akv.b("campfire"));
+   aku<btd> c = aku.a(mc.s, akv.b("lightning_bolt"));
+   aku<btd> d = aku.a(mc.s, akv.b("on_fire"));
+   aku<btd> e = aku.a(mc.s, akv.b("lava"));
+   aku<btd> f = aku.a(mc.s, akv.b("hot_floor"));
+   aku<btd> g = aku.a(mc.s, akv.b("in_wall"));
+   aku<btd> h = aku.a(mc.s, akv.b("cramming"));
+   aku<btd> i = aku.a(mc.s, akv.b("drown"));
+   aku<btd> j = aku.a(mc.s, akv.b("starve"));
+   aku<btd> k = aku.a(mc.s, akv.b("cactus"));
+   aku<btd> l = aku.a(mc.s, akv.b("fall"));
+   aku<btd> m = aku.a(mc.s, akv.b("ender_pearl"));
+   aku<btd> n = aku.a(mc.s, akv.b("fly_into_wall"));
+   aku<btd> o = aku.a(mc.s, akv.b("out_of_world"));
+   aku<btd> p = aku.a(mc.s, akv.b("generic"));
+   aku<btd> q = aku.a(mc.s, akv.b("magic"));
+   aku<btd> r = aku.a(mc.s, akv.b("wither"));
+   aku<btd> s = aku.a(mc.s, akv.b("dragon_breath"));
+   aku<btd> t = aku.a(mc.s, akv.b("dry_out"));
+   aku<btd> u = aku.a(mc.s, akv.b("sweet_berry_bush"));
+   aku<btd> v = aku.a(mc.s, akv.b("freeze"));
+   aku<btd> w = aku.a(mc.s, akv.b("stalagmite"));
+   aku<btd> x = aku.a(mc.s, akv.b("falling_block"));
+   aku<btd> y = aku.a(mc.s, akv.b("falling_anvil"));
+   aku<btd> z = aku.a(mc.s, akv.b("falling_stalactite"));
+   aku<btd> A = aku.a(mc.s, akv.b("sting"));
+   aku<btd> B = aku.a(mc.s, akv.b("mob_attack"));
+   aku<btd> C = aku.a(mc.s, akv.b("mob_attack_no_aggro"));
+   aku<btd> D = aku.a(mc.s, akv.b("player_attack"));
+   aku<btd> E = aku.a(mc.s, akv.b("arrow"));
+   aku<btd> F = aku.a(mc.s, akv.b("trident"));
+   aku<btd> G = aku.a(mc.s, akv.b("mob_projectile"));
+   aku<btd> H = aku.a(mc.s, akv.b("spit"));
+   aku<btd> I = aku.a(mc.s, akv.b("wind_charge"));
+   aku<btd> J = aku.a(mc.s, akv.b("fireworks"));
+   aku<btd> K = aku.a(mc.s, akv.b("fireball"));
+   aku<btd> L = aku.a(mc.s, akv.b("unattributed_fireball"));
+   aku<btd> M = aku.a(mc.s, akv.b("wither_skull"));
+   aku<btd> N = aku.a(mc.s, akv.b("thrown"));
+   aku<btd> O = aku.a(mc.s, akv.b("indirect_magic"));
+   aku<btd> P = aku.a(mc.s, akv.b("thorns"));
+   aku<btd> Q = aku.a(mc.s, akv.b("explosion"));
+   aku<btd> R = aku.a(mc.s, akv.b("player_explosion"));
+   aku<btd> S = aku.a(mc.s, akv.b("sonic_boom"));
+   aku<btd> T = aku.a(mc.s, akv.b("bad_respawn_point"));
+   aku<btd> U = aku.a(mc.s, akv.b("outside_border"));
+   aku<btd> V = aku.a(mc.s, akv.b("generic_kill"));
+   aku<btd> W = aku.a(mc.s, akv.b("mace_smash"));
 
-public enum bte implements azv {
-   a("default"),
-   b("fall_variants"),
-   c("intentional_game_design");
-
-   public static final Codec<bte> d = azv.a(bte::values);
-   private final String e;
-
-   private bte(final String $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
+   static void a(qe<btd> $$0) {
+      $$0.a(a, new btd("inFire", 0.1F, bsz.d));
+      $$0.a(b, new btd("inFire", 0.1F, bsz.d));
+      $$0.a(c, new btd("lightningBolt", 0.1F));
+      $$0.a(d, new btd("onFire", 0.0F, bsz.d));
+      $$0.a(e, new btd("lava", 0.1F, bsz.d));
+      $$0.a(f, new btd("hotFloor", 0.1F, bsz.d));
+      $$0.a(g, new btd("inWall", 0.0F));
+      $$0.a(h, new btd("cramming", 0.0F));
+      $$0.a(i, new btd("drown", 0.0F, bsz.c));
+      $$0.a(j, new btd("starve", 0.0F));
+      $$0.a(k, new btd("cactus", 0.1F));
+      $$0.a(l, new btd("fall", bta.b, 0.0F, bsz.a, btf.b));
+      $$0.a(m, new btd("fall", bta.b, 0.0F, bsz.a, btf.b));
+      $$0.a(n, new btd("flyIntoWall", 0.0F));
+      $$0.a(o, new btd("outOfWorld", 0.0F));
+      $$0.a(p, new btd("generic", 0.0F));
+      $$0.a(q, new btd("magic", 0.0F));
+      $$0.a(r, new btd("wither", 0.0F));
+      $$0.a(s, new btd("dragonBreath", 0.0F));
+      $$0.a(t, new btd("dryout", 0.1F));
+      $$0.a(u, new btd("sweetBerryBush", 0.1F, bsz.e));
+      $$0.a(v, new btd("freeze", 0.0F, bsz.f));
+      $$0.a(w, new btd("stalagmite", 0.0F));
+      $$0.a(x, new btd("fallingBlock", 0.1F));
+      $$0.a(y, new btd("anvil", 0.1F));
+      $$0.a(z, new btd("fallingStalactite", 0.1F));
+      $$0.a(A, new btd("sting", 0.1F));
+      $$0.a(B, new btd("mob", 0.1F));
+      $$0.a(C, new btd("mob", 0.1F));
+      $$0.a(D, new btd("player", 0.1F));
+      $$0.a(E, new btd("arrow", 0.1F));
+      $$0.a(F, new btd("trident", 0.1F));
+      $$0.a(G, new btd("mob", 0.1F));
+      $$0.a(H, new btd("mob", 0.1F));
+      $$0.a(J, new btd("fireworks", 0.1F));
+      $$0.a(L, new btd("onFire", 0.1F, bsz.d));
+      $$0.a(K, new btd("fireball", 0.1F, bsz.d));
+      $$0.a(M, new btd("witherSkull", 0.1F));
+      $$0.a(N, new btd("thrown", 0.1F));
+      $$0.a(O, new btd("indirectMagic", 0.0F));
+      $$0.a(P, new btd("thorns", 0.1F, bsz.b));
+      $$0.a(Q, new btd("explosion", bta.c, 0.1F));
+      $$0.a(R, new btd("explosion.player", bta.c, 0.1F));
+      $$0.a(S, new btd("sonic_boom", bta.c, 0.0F));
+      $$0.a(T, new btd("badRespawnPoint", bta.c, 0.1F, bsz.a, btf.c));
+      $$0.a(U, new btd("outsideBorder", 0.0F));
+      $$0.a(V, new btd("genericKill", 0.0F));
+      $$0.a(I, new btd("mob", 0.1F));
+      $$0.a(W, new btd("mace_smash", 0.1F));
    }
 }

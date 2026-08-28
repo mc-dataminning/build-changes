@@ -1,27 +1,20 @@
-public class gxf extends gwb<hax, geq> {
-   private static final akv a = akv.b("textures/entity/wither/wither_armor.png");
-   private final geq b;
-
-   public gxf(gua<hax, geq> $$0, gey $$1) {
+public class gxf extends gvw<hax, geq> {
+   public gxf(gub<hax, geq> $$0) {
       super($$0);
-      this.b = new geq($$1.a(gfb.dB));
    }
 
-   protected boolean a(hax $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected float a(float $$0) {
-      return ayz.b($$0 * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected akv a() {
-      return a;
-   }
-
-   protected geq b() {
-      return this.b;
+   protected void a(hax $$0, ffu $$1) {
+      if ($$0.c) {
+         this.d().e().a($$1);
+         this.d().b().a($$1);
+         this.d().c().a($$1);
+         $$1.a(0.0625F, 0.25F, 0.0F);
+         $$1.a(a.f.rotationDegrees(180.0F));
+         $$1.a(a.b.rotationDegrees(140.0F));
+         $$1.a(a.f.rotationDegrees(10.0F));
+         $$1.a(a.b.rotationDegrees(180.0F));
+      } else {
+         super.a($$0, $$1);
+      }
    }
 }

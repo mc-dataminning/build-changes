@@ -1,97 +1,28 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
 
-public class eix implements eib {
+public class eix implements eic {
    public static final Codec<eix> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ekc.a.fieldOf("trunk_provider").forGetter($$0x -> $$0x.b),
-               elh.c.fieldOf("trunk_placer").forGetter($$0x -> $$0x.d),
-               ekc.a.fieldOf("foliage_provider").forGetter($$0x -> $$0x.e),
-               ejn.d.fieldOf("foliage_placer").forGetter($$0x -> $$0x.f),
-               ejz.d.optionalFieldOf("root_placer").forGetter($$0x -> $$0x.g),
-               ekc.a.fieldOf("dirt_provider").forGetter($$0x -> $$0x.c),
-               ejc.a.fieldOf("minimum_size").forGetter($$0x -> $$0x.h),
-               ekv.h.listOf().fieldOf("decorators").forGetter($$0x -> $$0x.i),
-               Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter($$0x -> $$0x.j),
-               Codec.BOOL.fieldOf("force_dirt").orElse(false).forGetter($$0x -> $$0x.k)
+               esz.a.fieldOf("state").forGetter($$0x -> $$0x.b),
+               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
+               kg.a(mc.f).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
             )
             .apply($$0, eix::new)
    );
-   public final ekc b;
-   public final ekc c;
-   public final elh d;
-   public final ekc e;
-   public final ejn f;
-   public final Optional<ejz> g;
-   public final ejc h;
-   public final List<ekv> i;
-   public final boolean j;
-   public final boolean k;
+   public final esz b;
+   public final boolean c;
+   public final int d;
+   public final int e;
+   public final jv<djm> f;
 
-   protected eix(ekc $$0, elh $$1, ekc $$2, ejn $$3, Optional<ejz> $$4, ekc $$5, ejc $$6, List<ekv> $$7, boolean $$8, boolean $$9) {
+   public eix(esz $$0, boolean $$1, int $$2, int $$3, jv<djm> $$4) {
       this.b = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.c = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-   }
-
-   public static class a {
-      public final ekc a;
-      private final elh c;
-      public final ekc b;
-      private final ejn d;
-      private final Optional<ejz> e;
-      private ekc f;
-      private final ejc g;
-      private List<ekv> h = ImmutableList.of();
-      private boolean i;
-      private boolean j;
-
-      public a(ekc $$0, elh $$1, ekc $$2, ejn $$3, Optional<ejz> $$4, ejc $$5) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$2;
-         this.f = ekc.a(djn.j);
-         this.d = $$3;
-         this.e = $$4;
-         this.g = $$5;
-      }
-
-      public a(ekc $$0, elh $$1, ekc $$2, ejn $$3, ejc $$4) {
-         this($$0, $$1, $$2, $$3, Optional.empty(), $$4);
-      }
-
-      public eix.a a(ekc $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public eix.a a(List<ekv> $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public eix.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public eix.a b() {
-         this.j = true;
-         return this;
-      }
-
-      public eix c() {
-         return new eix(this.a, this.c, this.b, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
-      }
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 }

@@ -19,10 +19,10 @@ public class bbc extends DataFix {
 
    protected TypeRewriteRule makeRule() {
       return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped(this.a + " (Components)", this.getInputSchema().getType(bhw.w), this::a),
+         this.fixTypeEverywhereTyped(this.a + " (Components)", this.getInputSchema().getType(bhx.w), this::a),
          new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped(this.a + " (Entity)", this.getInputSchema().getType(bhw.B), this::b),
-            this.fixTypeEverywhereTyped(this.a + " (Player)", this.getInputSchema().getType(bhw.b), this::b)
+            this.fixTypeEverywhereTyped(this.a + " (Entity)", this.getInputSchema().getType(bhx.B), this::b),
+            this.fixTypeEverywhereTyped(this.a + " (Player)", this.getInputSchema().getType(bhx.b), this::b)
          }
       );
    }

@@ -1,57 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dmt extends dig {
-   public static final MapCodec<dmt> c = b(dmt::new);
+public class dmt extends djw implements djp {
+   public static final MapCodec<dmt> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aku.a(mc.aL).fieldOf("feature").forGetter($$0x -> $$0x.e), mb.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), t())
+            .apply($$0, dmt::new)
+   );
+   protected static final fbu b = djm.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double c = 0.4;
+   private final djm d;
+   private final aku<efk<?, ?>> e;
 
    @Override
    public MapCodec<dmt> a() {
-      return c;
+      return a;
    }
 
-   protected dmt(dwv.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dty a(ji $$0, dww $$1) {
-      return new dux($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dty> dtz<T> a(dgh $$0, dww $$1, dua<T> $$2) {
-      return a($$0, $$2, dua.a);
+   protected dmt(aku<efk<?, ?>> $$0, djm $$1, dww.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected void a(dgh $$0, ji $$1, cow $$2) {
-      dty $$3 = $$0.c_($$1);
-      if ($$3 instanceof dux) {
-         $$2.a((bsl)$$3);
-         $$2.a(awk.am);
-      }
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return b;
    }
 
    @Override
-   public void a(dww $$0, dgh $$1, ji $$2, azh $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awa.ky, awb.e, 1.0F, 1.0F, false);
-         }
+   protected boolean b(dwx $$0, dfn $$1, ji $$2) {
+      return $$0.a(awp.aO) || $$0.a(djo.fA) || $$0.a(djo.ek) || super.b($$0, $$1, $$2);
+   }
 
-         jn $$7 = $$0.c(a);
-         jn.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == jn.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 6.0 / 16.0;
-         double $$13 = $$8 == jn.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(lt.ag, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-         $$1.a(lt.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-      }
+   private Optional<? extends jr<efk<?, ?>>> a(dgl $$0) {
+      return $$0.K_().e(mc.aL).a(this.e);
+   }
+
+   @Override
+   public boolean a(dgl $$0, ji $$1, dwx $$2) {
+      dwx $$3 = $$0.a_($$1.e());
+      return $$3.a(this.d);
+   }
+
+   @Override
+   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
+      return (double)$$1.i() < 0.4;
+   }
+
+   @Override
+   public void a(ard $$0, azh $$1, ji $$2, dwx $$3) {
+      this.a($$0).ifPresent($$3x -> ((efk)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2));
    }
 }

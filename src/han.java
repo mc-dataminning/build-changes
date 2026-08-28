@@ -1,5 +1,3 @@
-public class han extends gyj {
-   public float a;
-   public float b;
-   public boolean c;
+public class han extends gyk {
+   public final hbo a = new hbo();
 }

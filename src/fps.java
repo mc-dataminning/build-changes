@@ -1,82 +1,35 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public class fps {
+   public static final int a = 8;
+   public static final int b = 8;
+   public static final int c = 8;
+   public static final int d = 8;
+   public static final int e = 40;
+   public static final int f = 8;
+   public static final int g = 8;
+   public static final int h = 8;
+   public static final int i = 64;
+   public static final int j = 64;
 
-public class fps extends fop {
-   private static final float a = 0.0625F;
-   private static final float b = 2.125F;
-   private static final float c = 100.0F;
-   private static final float d = 2.5F;
-   private static final float e = -5.0F;
-   private static final float f = 30.0F;
-   private static final float m = 50.0F;
-   private final fps.a n;
-   private final Supplier<hft> o;
-   private float p = -5.0F;
-   private float q = 30.0F;
-
-   public fps(int $$0, int $$1, gey $$2, Supplier<hft> $$3) {
-      super(0, 0, $$0, $$1, wo.a);
-      this.n = fps.a.a($$2);
-      this.o = $$3;
+   public static void a(foe $$0, hfu $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, -1);
    }
 
-   @Override
-   protected void b(fod $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)this.F() + (float)this.A() / 2.0F, (float)(this.G() + this.y()), 100.0F);
-      float $$4 = (float)this.y() / 2.125F;
-      $$0.c().b($$4, $$4, $$4);
-      $$0.c().a(0.0F, -0.0625F, 0.0F);
-      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
-      $$0.c().a(a.d.rotationDegrees(this.q));
-      $$0.d();
-      fep.a(a.b.rotationDegrees(this.p));
-      this.n.a($$0, this.o.get());
-      $$0.d();
-      fep.d();
-      $$0.c().b();
+   public static void a(foe $$0, hfu $$1, int $$2, int $$3, int $$4, int $$5) {
+      a($$0, $$1.a(), $$2, $$3, $$4, true, false, $$5);
    }
 
-   @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.p = ayz.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
-      this.q += (float)$$2 * 2.5F;
-   }
-
-   @Override
-   public void a(hju $$0) {
-   }
-
-   @Override
-   protected void a(fsp $$0) {
-   }
-
-   @Override
-   public boolean E() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public foa a(fsv $$0) {
-      return null;
-   }
-
-   static record a(gdf a, gdf b) {
-      public static fps.a a(gey $$0) {
-         gdf $$1 = new gdf($$0.a(gfb.ce), false);
-         gdf $$2 = new gdf($$0.a(gfb.ck), true);
-         return new fps.a($$1, $$2);
+   public static void a(foe $$0, akv $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6, int $$7) {
+      int $$8 = 8 + ($$6 ? 8 : 0);
+      int $$9 = 8 * ($$6 ? -1 : 1);
+      $$0.a(gmi::H, $$1, $$2, $$3, 8.0F, (float)$$8, $$4, $$4, 8, $$9, 64, 64, $$7);
+      if ($$5) {
+         a($$0, $$1, $$2, $$3, $$4, $$6, $$7);
       }
+   }
 
-      public void a(fod $$0, hft $$1) {
-         $$0.c().a();
-         $$0.c().b(1.0F, 1.0F, -1.0F);
-         $$0.c().a(0.0F, -1.501F, 0.0F);
-         gdf $$2 = $$1.e() == hft.a.a ? this.b : this.a;
-         gmh $$3 = $$2.a($$1.a());
-         $$0.a($$3x -> $$2.a($$0.c(), $$3x.getBuffer($$3), 15728880, heh.d));
-         $$0.c().b();
-      }
+   private static void a(foe $$0, akv $$1, int $$2, int $$3, int $$4, boolean $$5, int $$6) {
+      int $$7 = 8 + ($$5 ? 8 : 0);
+      int $$8 = 8 * ($$5 ? -1 : 1);
+      $$0.a(gmi::H, $$1, $$2, $$3, 40.0F, (float)$$7, $$4, $$4, 8, $$8, 64, 64, $$6);
    }
 }

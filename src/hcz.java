@@ -1,16 +1,20 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hcz() implements hdh<aku<dgh>> {
-   public static final hdh.a<hcz, aku<dgh>> a = hdh.a.a(MapCodec.unit(new hcz()), aku.a(mc.be));
+public record hcz() implements hdi<cvg.a> {
+   public static final hdi.a<hcz, cvg.a> a = hdi.a.a(MapCodec.unit(new hcz()), cvg.a.d);
 
-   @Nullable
-   public aku<dgh> a(cwo $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3, cwm $$4) {
-      return $$1 != null ? $$1.ai() : null;
+   public cvg.a a(cwp $$0, @Nullable gfz $$1, @Nullable bvh $$2, int $$3, cwn $$4) {
+      cyu $$5 = $$0.a(kv.O);
+      if ($$5 == null || $$5.b()) {
+         return cvg.a.a;
+      } else {
+         return $$5.a(cwt.vt) ? cvg.a.c : cvg.a.b;
+      }
    }
 
    @Override
-   public hdh.a<hcz, aku<dgh>> a() {
+   public hdi.a<hcz, cvg.a> a() {
       return a;
    }
 }

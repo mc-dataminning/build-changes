@@ -1,32 +1,30 @@
-public class gds extends gca<had> {
-   private static final String a = "main";
-   private final gfc b;
+public class gds extends gcw {
+   private static final String a = "plate";
+   private static final String b = "handle";
+   private static final int c = 10;
+   private static final int d = 20;
+   private final gfd e;
+   private final gfd f;
 
-   public gds(gfc $$0) {
-      super($$0);
-      this.b = $$0.b("main");
+   public gds(gfd $$0) {
+      super($$0, gmi::d);
+      this.e = $$0.b("plate");
+      this.f = $$0.b("handle");
    }
 
-   public static gfi a() {
-      gfk $$0 = new gfk();
-      gfm $$1 = $$0.a();
-      $$1.a(
-         "main",
-         gfh.c()
-            .a(0, 0)
-            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
-            .a(0, 10)
-            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
-            .a(20, 0)
-            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
-         gfe.a
-      );
-      return gfi.a($$0, 64, 32);
+   public static gfj a() {
+      gfl $$0 = new gfl();
+      gfn $$1 = $$0.a();
+      $$1.a("plate", gfi.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), gff.a);
+      $$1.a("handle", gfi.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), gff.a);
+      return gfj.a($$0, 64, 64);
    }
 
-   public void a(had $$0) {
-      super.a($$0);
-      this.b.f = $$0.b * (float) (Math.PI / 180.0);
-      this.b.e = $$0.a * (float) (Math.PI / 180.0);
+   public gfd b() {
+      return this.e;
+   }
+
+   public gfd c() {
+      return this.f;
    }
 }

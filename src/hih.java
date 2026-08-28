@@ -1,50 +1,34 @@
-public class hih extends hhx {
+public class hih extends hhy {
    private static final float n = 0.0F;
-   private static final float o = 0.7F;
-   private static final float p = 0.0F;
-   private static final float q = 1.0F;
-   private static final float r = 0.0025F;
-   private final cqv s;
-   private float t = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final clu r;
 
-   public hih(cqv $$0) {
-      super(awa.pl, awb.g, hio.t());
-      this.s = $$0;
+   public hih(clu $$0) {
+      super(awa.lQ, awb.f, hip.t());
+      this.r = $$0;
+      this.k = hip.a.a;
       this.i = true;
       this.j = 0;
-      this.d = 0.0F;
-      this.f = (double)((float)$$0.dA());
-      this.g = (double)((float)$$0.dC());
-      this.h = (double)((float)$$0.dG());
    }
 
    @Override
    public boolean s() {
-      return !this.s.bb();
-   }
-
-   @Override
-   public boolean r() {
-      return true;
+      return !this.r.bb();
    }
 
    @Override
    public void q() {
-      if (this.s.dQ()) {
-         this.n();
+      if (!this.r.dQ() && this.r.O_() == null) {
+         this.f = (double)((float)this.r.dA());
+         this.g = (double)((float)this.r.dC());
+         this.h = (double)((float)this.r.dG());
+         float $$0 = this.r.L(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
       } else {
-         this.f = (double)((float)this.s.dA());
-         this.g = (double)((float)this.s.dC());
-         this.h = (double)((float)this.s.dG());
-         float $$0 = (float)this.s.dy().i();
-         boolean $$1 = !this.s.cq() && this.s.l() instanceof crk;
-         if ($$0 >= 0.01F && this.s.dV().u().i() && !$$1) {
-            this.t = ayz.a(this.t + 0.0025F, 0.0F, 1.0F);
-            this.d = ayz.h(ayz.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
-         } else {
-            this.t = 0.0F;
-            this.d = 0.0F;
-         }
+         this.n();
       }
    }
 }

@@ -1,138 +1,304 @@
 import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.HashMap;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class hem {
-   public static final Set<atp<?>> a = Set.of(hge.b);
-   private static final Logger b = LogUtils.getLogger();
-   private final akv c;
-   private final int d;
-   private final int e;
-   private final int f;
+public class hem implements hep.a, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final akv b;
+   final int c;
+   final int d;
+   private final feu e;
+   feu[] f;
+   @Nullable
+   private final hem.a g;
+   private final aur h;
 
-   public hem(akv $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
+   public hem(akv $$0, hgg $$1, feu $$2, aur $$3) {
+      this.b = $$0;
+      this.c = $$1.a();
+      this.d = $$1.b();
+      this.h = $$3;
+      this.g = $$3.a(hgf.b).map($$2x -> this.a($$1, $$2.a(), $$2.b(), $$2x)).orElse(null);
       this.e = $$2;
-      this.f = $$3;
+      this.f = new feu[]{this.e};
    }
 
-   public static hem a(heq $$0) {
-      return new hem($$0.g(), $$0.h(), $$0.i(), $$0.j());
+   public void a(int $$0) {
+      try {
+         this.f = heg.a(this.f, $$0);
+      } catch (Throwable var6) {
+         o $$2 = o.a(var6, "Generating mipmaps for frame");
+         p $$3 = $$2.a("Sprite being mipmapped");
+         $$3.a("First frame", () -> {
+            StringBuilder $$0x = new StringBuilder();
+            if ($$0x.length() > 0) {
+               $$0x.append(", ");
+            }
+
+            $$0x.append(this.e.a()).append("x").append(this.e.b());
+            return $$0x.toString();
+         });
+         p $$4 = $$2.a("Frame being iterated");
+         $$4.a("Sprite name", this.b);
+         $$4.a("Sprite size", () -> this.c + " x " + this.d);
+         $$4.a("Sprite frames", () -> this.g() + " frames");
+         $$4.a("Mipmap levels", $$0);
+         throw new z($$2);
+      }
    }
 
-   public hem.a a(List<hel> $$0, int $$1, Executor $$2) {
-      int $$3 = this.d;
-      heo<hel> $$4 = new heo<>($$3, $$3, $$1);
-      int $$5 = Integer.MAX_VALUE;
-      int $$6 = 1 << $$1;
+   private int g() {
+      return this.g != null ? this.g.b.size() : 1;
+   }
 
-      for (hel $$7 : $$0) {
-         $$5 = Math.min($$5, Math.min($$7.a(), $$7.b()));
-         int $$8 = Math.min(Integer.lowestOneBit($$7.a()), Integer.lowestOneBit($$7.b()));
-         if ($$8 < $$6) {
-            b.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[]{$$7.c(), $$7.a(), $$7.b(), ayz.f($$6), ayz.f($$8)});
-            $$6 = $$8;
+   @Nullable
+   private hem.a a(hgg $$0, int $$1, int $$2, hgf $$3) {
+      int $$4 = $$1 / $$0.a();
+      int $$5 = $$2 / $$0.b();
+      int $$6 = $$4 * $$5;
+      int $$7 = $$3.d();
+      List<hem.b> $$8;
+      if ($$3.a().isEmpty()) {
+         $$8 = new ArrayList<>($$6);
+
+         for (int $$9 = 0; $$9 < $$6; $$9++) {
+            $$8.add(new hem.b($$9, $$7));
+         }
+      } else {
+         List<hge> $$10 = $$3.a().get();
+         $$8 = new ArrayList<>($$10.size());
+
+         for (hge $$12 : $$10) {
+            $$8.add(new hem.b($$12.a(), $$12.a($$7)));
          }
 
-         $$4.a($$7);
+         int $$13 = 0;
+         IntSet $$14 = new IntOpenHashSet();
+
+         for (Iterator<hem.b> $$15 = $$8.iterator(); $$15.hasNext(); $$13++) {
+            hem.b $$16 = $$15.next();
+            boolean $$17 = true;
+            if ($$16.b <= 0) {
+               a.warn("Invalid frame duration on sprite {} frame {}: {}", new Object[]{this.b, $$13, $$16.b});
+               $$17 = false;
+            }
+
+            if ($$16.a < 0 || $$16.a >= $$6) {
+               a.warn("Invalid frame index on sprite {} frame {}: {}", new Object[]{this.b, $$13, $$16.a});
+               $$17 = false;
+            }
+
+            if ($$17) {
+               $$14.add($$16.a);
+            } else {
+               $$15.remove();
+            }
+         }
+
+         int[] $$18 = IntStream.range(0, $$6).filter($$1x -> !$$14.contains($$1x)).toArray();
+         if ($$18.length > 0) {
+            a.warn("Unused frames in sprite {}: {}", this.b, Arrays.toString($$18));
+         }
       }
 
-      int $$9 = Math.min($$5, $$6);
-      int $$10 = ayz.f($$9);
-      int $$11;
-      if ($$10 < $$1) {
-         b.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[]{this.c, $$1, $$10, $$9});
-         $$11 = $$10;
+      return $$8.size() <= 1 ? null : new hem.a(List.copyOf($$8), $$4, $$3.e());
+   }
+
+   void a(int $$0, int $$1, int $$2, int $$3, feu[] $$4) {
+      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
+         $$4[$$5].a($$5, $$0 >> $$5, $$1 >> $$5, $$2 >> $$5, $$3 >> $$5, this.c >> $$5, this.d >> $$5, false);
+      }
+   }
+
+   @Override
+   public int a() {
+      return this.c;
+   }
+
+   @Override
+   public int b() {
+      return this.d;
+   }
+
+   @Override
+   public akv c() {
+      return this.b;
+   }
+
+   public IntStream d() {
+      return this.g != null ? this.g.b() : IntStream.of(1);
+   }
+
+   @Nullable
+   public heo e() {
+      return this.g != null ? this.g.a() : null;
+   }
+
+   public aur f() {
+      return this.h;
+   }
+
+   @Override
+   public void close() {
+      for (feu $$0 : this.f) {
+         $$0.close();
+      }
+   }
+
+   @Override
+   public String toString() {
+      return "SpriteContents{name=" + this.b + ", frameCount=" + this.g() + ", height=" + this.d + ", width=" + this.c + "}";
+   }
+
+   public boolean a(int $$0, int $$1, int $$2) {
+      int $$3 = $$1;
+      int $$4 = $$2;
+      if (this.g != null) {
+         $$3 = $$1 + this.g.a($$0) * this.c;
+         $$4 = $$2 + this.g.b($$0) * this.d;
+      }
+
+      return axk.a(this.e.a($$3, $$4)) == 0;
+   }
+
+   public void a(int $$0, int $$1) {
+      if (this.g != null) {
+         this.g.a($$0, $$1);
       } else {
-         $$11 = $$1;
+         this.a($$0, $$1, 0, 0, this.f);
       }
-
-      try {
-         $$4.c();
-      } catch (hep var16) {
-         o $$14 = o.a(var16, "Stitching");
-         p $$15 = $$14.a("Stitcher");
-         $$15.a(
-            "Sprites", var16.a().stream().map($$0x -> String.format(Locale.ROOT, "%s[%dx%d]", $$0x.c(), $$0x.a(), $$0x.b())).collect(Collectors.joining(","))
-         );
-         $$15.a("Max Texture Size", $$3);
-         throw new z($$14);
-      }
-
-      int $$16 = Math.max($$4.a(), this.e);
-      int $$17 = Math.max($$4.b(), this.f);
-      Map<akv, her> $$18 = this.a($$4, $$16, $$17);
-      her $$19 = $$18.get(heg.c());
-      CompletableFuture<Void> $$20;
-      if ($$11 > 0) {
-         $$20 = CompletableFuture.runAsync(() -> $$18.values().forEach($$1xx -> $$1xx.e().a($$11)), $$2);
-      } else {
-         $$20 = CompletableFuture.completedFuture(null);
-      }
-
-      return new hem.a($$16, $$17, $$11, $$19, $$18, $$20);
    }
 
-   public static CompletableFuture<List<hel>> a(hev $$0, List<Function<hev, hel>> $$1, Executor $$2) {
-      List<CompletableFuture<hel>> $$3 = $$1.stream().map($$2x -> CompletableFuture.supplyAsync(() -> (hel)$$2x.apply($$0), $$2)).toList();
-      return af.d($$3).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).toList());
+   class a {
+      final List<hem.b> b;
+      private final int c;
+      private final boolean d;
+
+      a(final List<hem.b> $$0, final int $$1, final boolean $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      int a(int $$0) {
+         return $$0 % this.c;
+      }
+
+      int b(int $$0) {
+         return $$0 / this.c;
+      }
+
+      void a(int $$0, int $$1, int $$2) {
+         int $$3 = this.a($$2) * hem.this.c;
+         int $$4 = this.b($$2) * hem.this.d;
+         hem.this.a($$0, $$1, $$3, $$4, hem.this.f);
+      }
+
+      public heo a() {
+         return hem.this.new d(this, this.d ? hem.this.new c() : null);
+      }
+
+      public void a(int $$0, int $$1) {
+         this.a($$0, $$1, this.b.get(0).a);
+      }
+
+      public IntStream b() {
+         return this.b.stream().mapToInt($$0 -> $$0.a).distinct();
+      }
    }
 
-   public CompletableFuture<hem.a> a(aup $$0, akv $$1, int $$2, Executor $$3) {
-      return this.a($$0, $$1, $$2, $$3, a);
+   static record b(int a, int b) {
    }
 
-   public CompletableFuture<hem.a> a(aup $$0, akv $$1, int $$2, Executor $$3, Collection<atp<?>> $$4) {
-      hev $$5 = hev.create($$4);
-      return CompletableFuture.<List<Function<hev, hel>>>supplyAsync(() -> hex.a($$0, $$1).a($$0), $$3)
-         .thenCompose($$2x -> a($$5, $$2x, $$3))
-         .thenApply($$2x -> this.a($$2x, $$2, $$3));
+   final class c implements AutoCloseable {
+      private final feu[] b = new feu[hem.this.f.length];
+
+      c() {
+         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
+            int $$1 = hem.this.c >> $$0;
+            int $$2 = hem.this.d >> $$0;
+            this.b[$$0] = new feu($$1, $$2, false);
+         }
+      }
+
+      void a(int $$0, int $$1, hem.d $$2) {
+         hem.a $$3 = $$2.c;
+         List<hem.b> $$4 = $$3.b;
+         hem.b $$5 = $$4.get($$2.a);
+         float $$6 = (float)$$2.b / (float)$$5.b;
+         int $$7 = $$5.a;
+         int $$8 = $$4.get(($$2.a + 1) % $$4.size()).a;
+         if ($$7 != $$8) {
+            for (int $$9 = 0; $$9 < this.b.length; $$9++) {
+               int $$10 = hem.this.c >> $$9;
+               int $$11 = hem.this.d >> $$9;
+
+               for (int $$12 = 0; $$12 < $$11; $$12++) {
+                  for (int $$13 = 0; $$13 < $$10; $$13++) {
+                     int $$14 = this.a($$3, $$7, $$9, $$13, $$12);
+                     int $$15 = this.a($$3, $$8, $$9, $$13, $$12);
+                     this.b[$$9].a($$13, $$12, axk.a($$6, $$14, $$15));
+                  }
+               }
+            }
+
+            hem.this.a($$0, $$1, 0, 0, this.b);
+         }
+      }
+
+      private int a(hem.a $$0, int $$1, int $$2, int $$3, int $$4) {
+         return hem.this.f[$$2].a($$3 + ($$0.a($$1) * hem.this.c >> $$2), $$4 + ($$0.b($$1) * hem.this.d >> $$2));
+      }
+
+      @Override
+      public void close() {
+         for (feu $$0 : this.b) {
+            $$0.close();
+         }
+      }
    }
 
-   private Map<akv, her> a(heo<hel> $$0, int $$1, int $$2) {
-      Map<akv, her> $$3 = new HashMap<>();
-      $$0.a(($$3x, $$4, $$5) -> $$3.put($$3x.c(), new her(this.c, $$3x, $$1, $$2, $$4, $$5)));
-      return $$3;
-   }
+   class d implements heo {
+      int a;
+      int b;
+      final hem.a c;
+      @Nullable
+      private final hem.c d;
 
-   public static record a(int a, int b, int c, her d, Map<akv, her> e, CompletableFuture<Void> f) {
-      public CompletableFuture<hem.a> a() {
-         return this.f.thenApply($$0 -> this);
+      d(final hem.a $$0, @Nullable final hem.c $$1) {
+         this.c = $$0;
+         this.d = $$1;
       }
 
-      public int b() {
-         return this.a;
+      @Override
+      public void a(int $$0, int $$1) {
+         this.b++;
+         hem.b $$2 = this.c.b.get(this.a);
+         if (this.b >= $$2.b) {
+            int $$3 = $$2.a;
+            this.a = (this.a + 1) % this.c.b.size();
+            this.b = 0;
+            int $$4 = this.c.b.get(this.a).a;
+            if ($$3 != $$4) {
+               this.c.a($$0, $$1, $$4);
+            }
+         } else if (this.d != null) {
+            this.d.a($$0, $$1, this);
+         }
       }
 
-      public int c() {
-         return this.b;
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public her e() {
-         return this.d;
-      }
-
-      public Map<akv, her> f() {
-         return this.e;
-      }
-
-      public CompletableFuture<Void> g() {
-         return this.f;
+      @Override
+      public void close() {
+         if (this.d != null) {
+            this.d.close();
+         }
       }
    }
 }

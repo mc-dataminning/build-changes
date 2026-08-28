@@ -1,22 +1,13 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 
-public class cfb extends cfk {
-   public static final float a = 10.0F;
-
+public class cfb extends cfr<bvh> {
    @Override
-   protected boolean a(ard $$0, bvg $$1, bvg $$2) {
-      return !$$1.eb().a(cek.U) && cfq.c($$0, $$1, $$2) && cir.j($$2) && !this.a($$1, $$2) ? $$2.a($$1, 10.0) : false;
-   }
-
-   private boolean a(bvg $$0, bvg $$1) {
-      List<UUID> $$2 = $$0.eb().c(cek.aa).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cG());
+   protected void a(ard $$0, bvh $$1) {
    }
 
    @Override
-   protected cek<bvg> b() {
-      return cek.B;
+   public Set<cel<?>> a() {
+      return ImmutableSet.of();
    }
 }

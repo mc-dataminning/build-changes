@@ -9,10 +9,10 @@ public class az extends dz<az.a> {
       return az.a.a;
    }
 
-   public void a(are $$0, cgx $$1, cgx $$2, @Nullable bub $$3) {
-      evq $$4 = bx.b($$0, $$1);
-      evq $$5 = bx.b($$0, $$2);
-      evq $$6 = $$3 != null ? bx.b($$0, $$3) : null;
+   public void a(are $$0, cgy $$1, cgy $$2, @Nullable buc $$3) {
+      evr $$4 = bx.b($$0, $$1);
+      evr $$5 = bx.b($$0, $$2);
+      evr $$6 = $$3 != null ? bx.b($$0, $$3) : null;
       this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
@@ -39,11 +39,11 @@ public class az extends dz<az.a> {
          return ap.p.a(new az.a(Optional.empty(), bx.a($$0), bx.a($$1), bx.a($$2)));
       }
 
-      public boolean a(evq $$0, evq $$1, @Nullable evq $$2) {
+      public boolean a(evr $$0, evr $$1, @Nullable evr $$2) {
          return !this.e.isPresent() || $$2 != null && this.e.get().a($$2) ? a(this.c, $$0) && a(this.d, $$1) || a(this.c, $$1) && a(this.d, $$0) : false;
       }
 
-      private static boolean a(Optional<bi> $$0, evq $$1) {
+      private static boolean a(Optional<bi> $$0, evr $$1) {
          return $$0.isEmpty() || $$0.get().a($$1);
       }
 

@@ -1,150 +1,108 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.Objects;
 
 public class cgm {
-   private static final Logger a = LogUtils.getLogger();
-   private final Short2ObjectMap<cgl> b = new Short2ObjectOpenHashMap();
-   private final Map<jr<cgn>, Set<cgl>> c = Maps.newHashMap();
+   private final ji a;
+   private final jr<cgo> b;
+   private int c;
    private final Runnable d;
-   private boolean e;
 
-   public cgm(Runnable $$0) {
-      this($$0, true, ImmutableList.of());
+   cgm(ji $$0, jr<cgo> $$1, int $$2, Runnable $$3) {
+      this.a = $$0.j();
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   cgm(Runnable $$0, boolean $$1, List<cgl> $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      $$2.forEach(this::a);
+   public cgm(ji $$0, jr<cgo> $$1, Runnable $$2) {
+      this($$0, $$1, $$1.a().b(), $$2);
    }
 
    public cgm.a a() {
-      return new cgm.a(this.e, this.b.values().stream().map(cgl::a).toList());
-   }
-
-   public Stream<cgl> a(Predicate<jr<cgn>> $$0, cgk.b $$1) {
-      return this.c.entrySet().stream().filter($$1x -> $$0.test((jr<cgn>)$$1x.getKey())).flatMap($$0x -> ((Set)$$0x.getValue()).stream()).filter($$1.a());
-   }
-
-   public void a(ji $$0, jr<cgn> $$1) {
-      if (this.a(new cgl($$0, $$1, this.d))) {
-         a.debug("Added POI of type {} @ {}", $$1.g(), $$0);
-         this.d.run();
-      }
-   }
-
-   private boolean a(cgl $$0) {
-      ji $$1 = $$0.g();
-      jr<cgn> $$2 = $$0.h();
-      short $$3 = kk.b($$1);
-      cgl $$4 = (cgl)this.b.get($$3);
-      if ($$4 != null) {
-         if ($$2.equals($$4.h())) {
-            return false;
-         }
-
-         af.b("POI data mismatch: already registered at " + $$1);
-      }
-
-      this.b.put($$3, $$0);
-      this.c.computeIfAbsent($$2, $$0x -> Sets.newHashSet()).add($$0);
-      return true;
-   }
-
-   public void a(ji $$0) {
-      cgl $$1 = (cgl)this.b.remove(kk.b($$0));
-      if ($$1 == null) {
-         a.error("POI data mismatch: never registered at {}", $$0);
-      } else {
-         this.c.get($$1.h()).remove($$1);
-         a.debug("Removed POI of type {} @ {}", LogUtils.defer($$1::h), LogUtils.defer($$1::g));
-         this.d.run();
-      }
+      return new cgm.a(this.a, this.b, this.c);
    }
 
    @Deprecated
    @bag
-   public int b(ji $$0) {
-      return this.e($$0).map(cgl::b).orElse(0);
+   public int b() {
+      return this.c;
    }
 
-   public boolean c(ji $$0) {
-      cgl $$1 = (cgl)this.b.get(kk.b($$0));
-      if ($$1 == null) {
-         throw (IllegalStateException)af.b(new IllegalStateException("POI never registered at " + $$0));
+   protected boolean c() {
+      if (this.c <= 0) {
+         return false;
       } else {
-         boolean $$2 = $$1.d();
+         this.c--;
          this.d.run();
-         return $$2;
+         return true;
       }
    }
 
-   public boolean a(ji $$0, Predicate<jr<cgn>> $$1) {
-      return this.d($$0).filter($$1).isPresent();
-   }
-
-   public Optional<jr<cgn>> d(ji $$0) {
-      return this.e($$0).map(cgl::h);
-   }
-
-   private Optional<cgl> e(ji $$0) {
-      return Optional.ofNullable((cgl)this.b.get(kk.b($$0)));
-   }
-
-   public void a(Consumer<BiConsumer<ji, jr<cgn>>> $$0) {
-      if (!this.e) {
-         Short2ObjectMap<cgl> $$1 = new Short2ObjectOpenHashMap(this.b);
-         this.c();
-         $$0.accept(($$1x, $$2) -> {
-            short $$3 = kk.b($$1x);
-            cgl $$4 = (cgl)$$1.computeIfAbsent($$3, $$2x -> new cgl($$1x, $$2, this.d));
-            this.a($$4);
-         });
-         this.e = true;
+   protected boolean d() {
+      if (this.c >= this.b.a().b()) {
+         return false;
+      } else {
+         this.c++;
          this.d.run();
+         return true;
       }
    }
 
-   private void c() {
-      this.b.clear();
-      this.c.clear();
+   public boolean e() {
+      return this.c > 0;
    }
 
-   boolean b() {
-      return this.e;
+   public boolean f() {
+      return this.c != this.b.a().b();
    }
 
-   public static record a(boolean b, List<cgl.a> c) {
+   public ji g() {
+      return this.a;
+   }
+
+   public jr<cgo> h() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((cgm)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
+   }
+
+   public static record a(ji b, jr<cgo> c, int d) {
       public static final Codec<cgm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.BOOL.lenientOptionalFieldOf("Valid", false).forGetter(cgm.a::a), cgl.a.a.listOf().fieldOf("Records").forGetter(cgm.a::b))
+         $$0 -> $$0.group(
+                  ji.a.fieldOf("pos").forGetter(cgm.a::a),
+                  aks.a(mc.aa).fieldOf("type").forGetter(cgm.a::b),
+                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter(cgm.a::c)
+               )
                .apply($$0, cgm.a::new)
       );
 
       public cgm a(Runnable $$0) {
-         return new cgm($$0, this.b, this.c.stream().map($$1 -> $$1.a($$0)).toList());
+         return new cgm(this.b, this.c, this.d, $$0);
       }
 
-      public boolean a() {
+      public ji a() {
          return this.b;
       }
 
-      public List<cgl.a> b() {
+      public jr<cgo> b() {
          return this.c;
+      }
+
+      public int c() {
+         return this.d;
       }
    }
 }

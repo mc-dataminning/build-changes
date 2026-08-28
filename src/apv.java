@@ -32,8 +32,8 @@ public class apv extends apy<apv> {
    public final String g = this.a("bug-report-link", "");
    public final boolean h = this.a("force-gamemode", false);
    public final boolean i = this.a("enforce-whitelist", false);
-   public final bsg j = this.a("difficulty", a(bsg::a, bsg::a), bsg::e, bsg.b);
-   public final dge k = this.a("gamemode", a(dge::a, dge::a), dge::b, dge.a);
+   public final bsh j = this.a("difficulty", a(bsh::a, bsh::a), bsh::e, bsh.b);
+   public final dgf k = this.a("gamemode", a(dgf::a, dgf::a), dgf::b, dgf.a);
    public final String l = this.a("level-name", "world");
    public final int m = this.a("server-port", 25565);
    @Nullable
@@ -70,25 +70,25 @@ public class apv extends apy<apv> {
    public final String R = this.a("text-filtering-config", "");
    public final int S = this.a("text-filtering-version", 0);
    public final Optional<MinecraftServer.b> T;
-   public final dfu U;
+   public final dfv U;
    public final apy<apv>.a<Integer> V = this.b("player-idle-timeout", 0);
    public final apy<apv>.a<Boolean> W = this.b("white-list", false);
    public final boolean X = this.a("enforce-secure-profile", true);
    public final boolean Y = this.a("log-ips", true);
    public final int Z = this.a("pause-when-empty-seconds", 60);
    private final apv.a ag;
-   public final edp aa;
+   public final edq aa;
    public boolean ab = this.a("accepts-transfers", false);
 
    public apv(Properties $$0) {
       super($$0);
       String $$1 = this.a("level-seed", "");
       boolean $$2 = this.a("generate-structures", true);
-      long $$3 = edp.a($$1).orElse(edp.g());
-      this.aa = new edp($$3, $$2, false);
+      long $$3 = edq.a($$1).orElse(edq.g());
+      this.aa = new edq($$3, $$2, false);
       this.ag = new apv.a(
          this.a("generator-settings", $$0x -> ayp.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
-         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), enb.a.a().toString())
+         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), enc.a.a().toString())
       );
       this.T = a(
          this.a("resource-pack-id", ""),
@@ -98,7 +98,7 @@ public class apv extends apy<apv> {
          this.a("require-resource-pack", false),
          this.a("resource-pack-prompt", "")
       );
-      this.U = b(this.a("initial-enabled-packs", String.join(",", dhe.c.a().a())), this.a("initial-disabled-packs", String.join(",", dhe.c.a().b())));
+      this.U = b(this.a("initial-enabled-packs", String.join(",", dhf.c.a().a())), this.a("initial-disabled-packs", String.join(",", dhf.c.a().b())));
    }
 
    public static apv a(Path $$0) {
@@ -163,25 +163,25 @@ public class apv extends apy<apv> {
       }
    }
 
-   private static dfu b(String $$0, String $$1) {
+   private static dfv b(String $$0, String $$1) {
       List<String> $$2 = af.splitToList($$0);
       List<String> $$3 = af.splitToList($$1);
-      return new dfu($$2, $$3);
+      return new dfv($$2, $$3);
    }
 
-   public edm a(jt.a $$0) {
+   public edn a(jt.a $$0) {
       return this.ag.a($$0);
    }
 
    static record a(JsonObject a, String b) {
-      private static final Map<String, aku<ena>> c = Map.of("default", enb.a, "largebiomes", enb.c);
+      private static final Map<String, aku<enb>> c = Map.of("default", enc.a, "largebiomes", enc.c);
 
-      public edm a(jt.a $$0) {
-         jt<ena> $$1 = $$0.d(mc.bb);
-         jr.c<ena> $$2 = $$1.a(enb.a)
+      public edn a(jt.a $$0) {
+         jt<enb> $$1 = $$0.d(mc.bb);
+         jr.c<enb> $$2 = $$1.a(enc.a)
             .or(() -> $$1.c().findAny())
             .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
-         jr<ena> $$3 = Optional.ofNullable(akv.c(this.b))
+         jr<enb> $$3 = Optional.ofNullable(akv.c(this.b))
             .map($$0x -> aku.a(mc.bb, $$0x))
             .or(() -> Optional.ofNullable(c.get(this.b)))
             .flatMap($$1::a)
@@ -189,12 +189,12 @@ public class apv extends apy<apv> {
                apv.ad.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.h().a());
                return $$2;
             });
-         edm $$4 = $$3.a().a();
-         if ($$3.a(enb.b)) {
+         edn $$4 = $$3.a().a();
+         if ($$3.a(enc.b)) {
             akt<JsonElement> $$5 = $$0.a(JsonOps.INSTANCE);
-            Optional<elo> $$6 = elo.a.parse(new Dynamic($$5, this.a())).resultOrPartial(apv.ad::error);
+            Optional<elp> $$6 = elp.a.parse(new Dynamic($$5, this.a())).resultOrPartial(apv.ad::error);
             if ($$6.isPresent()) {
-               return $$4.a($$0, new ecm($$6.get()));
+               return $$4.a($$0, new ecn($$6.get()));
             }
          }
 

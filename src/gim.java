@@ -1,30 +1,30 @@
-public class gim extends gjs {
-   gim(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gkb $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.c(15916745);
-      this.b($$7);
+public class gim extends ghz {
+   private static final int a = 12235202;
+
+   protected gim(gfz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gkc $$8) {
+      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
+      float $$9 = (float)Math.random() * 0.2F;
+      this.v = (float)axk.b(12235202) / 255.0F - $$9;
+      this.w = (float)axk.c(12235202) / 255.0F - $$9;
+      this.x = (float)axk.d(12235202) / 255.0F - $$9;
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public void a() {
+      this.u = 0.88F * this.u;
+      this.B = 0.92F * this.B;
+      super.a();
    }
 
-   public static class a implements gjj<lx> {
-      private final gkb a;
+   public static class a implements gjk<lx> {
+      private final gkc a;
 
-      public a(gkb $$0) {
+      public a(gkc $$0) {
          this.a = $$0;
       }
 
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gim($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public gjh a(lx $$0, gfz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gim($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

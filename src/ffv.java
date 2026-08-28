@@ -1,40 +1,67 @@
-import javax.annotation.Nullable;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public class ffv {
-   private static final int a = 786432;
-   private final ffq b;
-   @Nullable
-   private static ffv c;
+public class ffv implements ffy {
+   private final ffy a;
+   private final Matrix4f b;
+   private final Matrix3f c;
+   private final float d;
+   private final Vector3f e = new Vector3f();
+   private final Vector3f f = new Vector3f();
+   private float g;
+   private float h;
+   private float i;
 
-   public static void a() {
-      if (c != null) {
-         throw new IllegalStateException("Tesselator has already been initialized");
-      } else {
-         c = new ffv();
-      }
+   public ffv(ffy $$0, ffu.a $$1, float $$2) {
+      this.a = $$0;
+      this.b = new Matrix4f($$1.a()).invert();
+      this.c = new Matrix3f($$1.b()).invert();
+      this.d = $$2;
    }
 
-   public static ffv b() {
-      if (c == null) {
-         throw new IllegalStateException("Tesselator has not been initialized");
-      } else {
-         return c;
-      }
+   @Override
+   public ffy a(float $$0, float $$1, float $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.a.a($$0, $$1, $$2);
+      return this;
    }
 
-   public ffv(int $$0) {
-      this.b = new ffq($$0);
+   @Override
+   public ffy a(int $$0, int $$1, int $$2, int $$3) {
+      this.a.a(-1);
+      return this;
    }
 
-   public ffv() {
-      this(786432);
+   @Override
+   public ffy a(float $$0, float $$1) {
+      return this;
    }
 
-   public ffo a(ffy.c $$0, ffy $$1) {
-      return new ffo(this.b, $$0, $$1);
+   @Override
+   public ffy a(int $$0, int $$1) {
+      this.a.a($$0, $$1);
+      return this;
    }
 
-   public void c() {
-      this.b.b();
+   @Override
+   public ffy b(int $$0, int $$1) {
+      this.a.b($$0, $$1);
+      return this;
+   }
+
+   @Override
+   public ffy b(float $$0, float $$1, float $$2) {
+      this.a.b($$0, $$1, $$2);
+      Vector3f $$3 = this.c.transform($$0, $$1, $$2, this.f);
+      jn $$4 = jn.a($$3.x(), $$3.y(), $$3.z());
+      Vector3f $$5 = this.b.transformPosition(this.g, this.h, this.i, this.e);
+      $$5.rotateY((float) Math.PI);
+      $$5.rotateX((float) (-Math.PI / 2));
+      $$5.rotate($$4.b());
+      this.a.a(-$$5.x() * this.d, -$$5.y() * this.d);
+      return this;
    }
 }

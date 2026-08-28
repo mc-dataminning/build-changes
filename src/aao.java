@@ -1,6 +1,6 @@
 import java.util.List;
 
-public record aao(aku<dgh> c, end d, List<aao.a> e) implements zz {
+public record aao(aku<dgi> c, ene d, List<aao.a> e) implements zz {
    public static final yn<vl, aao> a = zz.a(aao::a, aao::new);
    public static final zz.b<aao> b = zz.a("debug/structures");
 
@@ -19,11 +19,11 @@ public record aao(aku<dgh> c, end d, List<aao.a> e) implements zz {
       return b;
    }
 
-   static end b(vl $$0) {
-      return new end($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   static ene b(vl $$0) {
+      return new ene($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
    }
 
-   static void a(vl $$0, end $$1) {
+   static void a(vl $$0, ene $$1) {
       $$0.q($$1.h());
       $$0.q($$1.i());
       $$0.q($$1.j());
@@ -32,11 +32,11 @@ public record aao(aku<dgh> c, end d, List<aao.a> e) implements zz {
       $$0.q($$1.m());
    }
 
-   public aku<dgh> b() {
+   public aku<dgi> b() {
       return this.c;
    }
 
-   public end c() {
+   public ene c() {
       return this.d;
    }
 
@@ -44,7 +44,7 @@ public record aao(aku<dgh> c, end d, List<aao.a> e) implements zz {
       return this.e;
    }
 
-   public static record a(end a, boolean b) {
+   public static record a(ene a, boolean b) {
       public a(vl $$0) {
          this(aao.b($$0), $$0.readBoolean());
       }

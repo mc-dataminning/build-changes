@@ -1,10 +1,12 @@
-public class cut extends cuu {
-   public cut(djl $$0, cwk.a $$1) {
-      super($$0, $$1);
+public class cut extends cwl {
+   private final axf<dtp> a;
+
+   public cut(axf<dtp> $$0, cwl.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
-   @Override
-   protected boolean a(daf $$0, dww $$1) {
-      return $$0.q().a($$0.a(), $$1, 26);
+   public axf<dtp> b() {
+      return this.a;
    }
 }

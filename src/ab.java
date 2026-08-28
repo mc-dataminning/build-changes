@@ -8,22 +8,22 @@ public class ab {
    @Deprecated
    public static final boolean a = true;
    @Deprecated
-   public static final int b = 4179;
+   public static final int b = 4182;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "1.21.4-pre1";
+   public static final String d = "1.21.4-pre2";
    @Deprecated
    public static final int e = 769;
    @Deprecated
-   public static final int f = 223;
+   public static final int f = 224;
    public static final int g = 4173;
    private static final int bl = 30;
    public static final boolean h = true;
    @Deprecated
    public static final int i = 46;
    @Deprecated
-   public static final int j = 60;
+   public static final int j = 61;
    @Deprecated
    public static final int k = 1;
    public static final int l = 1;
@@ -156,10 +156,10 @@ public class ab {
    }
 
    public static int c() {
-      return 1073742047;
+      return 1073742048;
    }
 
-   public static boolean a(dfn $$0) {
+   public static boolean a(dfo $$0) {
       int $$1 = $$0.d();
       int $$2 = $$0.e();
       return !ar ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;

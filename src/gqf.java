@@ -1,59 +1,107 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import java.time.Duration;
+import java.time.Instant;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
-public class gqf implements gpy.a {
-   private final fli a;
-   private final Map<Long, Map<ji, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+public class gqf implements gpz.a {
+   private static final Duration a = Duration.ofMillis(500L);
+   private static final int b = 10;
+   private static final Vector4f c = new Vector4f(1.0F, 1.0F, 0.0F, 0.25F);
+   private static final Vector4f d = new Vector4f(0.25F, 0.125F, 0.0F, 0.125F);
+   private final flj e;
+   private final dgr f;
+   private Instant g = Instant.now();
+   @Nullable
+   private gqf.a h;
 
-   gqf(fli $$0) {
-      this.a = $$0;
-   }
-
-   public void a(long $$0, ji $$1) {
-      Map<ji, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
+   public gqf(flj $$0, dgr $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public void a(fft $$0, glx $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.s.ad();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<ji> $$8 = Sets.newHashSet();
-      Map<ji, Integer> $$9 = Maps.newHashMap();
-      ffx $$10 = $$1.getBuffer(gmh.y());
-      Iterator<Entry<Long, Map<ji, Integer>>> $$11 = this.b.entrySet().iterator();
+   public void a(ffu $$0, gly $$1, double $$2, double $$3, double $$4) {
+      Instant $$5 = Instant.now();
+      if (this.h == null || Duration.between(this.g, $$5).compareTo(a) > 0) {
+         this.g = $$5;
+         this.h = new gqf.a(this.e.s.C_(), kk.a(this.e.t.dv()), 10, this.f);
+      }
 
-      while ($$11.hasNext()) {
-         Entry<Long, Map<ji, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<ji, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<ji, Integer> $$16 : $$14.entrySet()) {
-               ji $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  fau $$19 = new fau(ji.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  gmr.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
+      a($$0, this.h.a, this.h.c, $$1, $$2, $$3, $$4, c);
+      a($$0, this.h.b, this.h.c, $$1, $$2, $$3, $$4, d);
+      ffy $$6 = $$1.getBuffer(gmi.F());
+      a($$0, this.h.a, this.h.c, $$6, $$2, $$3, $$4, c);
+      a($$0, this.h.b, this.h.c, $$6, $$2, $$3, $$4, d);
+   }
+
+   private static void a(ffu $$0, fbj $$1, kk $$2, ffy $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
+      $$1.a(($$7x, $$8, $$9, $$10) -> {
+         int $$11 = $$8 + $$2.u();
+         int $$12 = $$9 + $$2.v();
+         int $$13 = $$10 + $$2.w();
+         a($$0, $$3, $$7x, $$4, $$5, $$6, $$11, $$12, $$13, $$7);
+      });
+   }
+
+   private static void a(ffu $$0, fbj $$1, kk $$2, gly $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
+      $$1.a(($$7x, $$8, $$9, $$10, $$11, $$12) -> {
+         int $$13 = $$7x + $$2.u();
+         int $$14 = $$8 + $$2.v();
+         int $$15 = $$9 + $$2.w();
+         int $$16 = $$10 + $$2.u();
+         int $$17 = $$11 + $$2.v();
+         int $$18 = $$12 + $$2.w();
+         ffy $$19 = $$3.getBuffer(gmi.a(1.0));
+         a($$0, $$19, $$4, $$5, $$6, $$13, $$14, $$15, $$16, $$17, $$18, $$7);
+      }, true);
+   }
+
+   private static void a(ffu $$0, ffy $$1, jn $$2, double $$3, double $$4, double $$5, int $$6, int $$7, int $$8, Vector4f $$9) {
+      float $$10 = (float)((double)kk.c($$6) - $$3);
+      float $$11 = (float)((double)kk.c($$7) - $$4);
+      float $$12 = (float)((double)kk.c($$8) - $$5);
+      gms.a($$0, $$1, $$2, $$10, $$11, $$12, $$10 + 16.0F, $$11 + 16.0F, $$12 + 16.0F, $$9.x(), $$9.y(), $$9.z(), $$9.w());
+   }
+
+   private static void a(ffu $$0, ffy $$1, double $$2, double $$3, double $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, Vector4f $$11) {
+      float $$12 = (float)((double)kk.c($$5) - $$2);
+      float $$13 = (float)((double)kk.c($$6) - $$3);
+      float $$14 = (float)((double)kk.c($$7) - $$4);
+      float $$15 = (float)((double)kk.c($$8) - $$2);
+      float $$16 = (float)((double)kk.c($$9) - $$3);
+      float $$17 = (float)((double)kk.c($$10) - $$4);
+      Matrix4f $$18 = $$0.c().a();
+      $$1.a($$18, $$12, $$13, $$14).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
+      $$1.a($$18, $$15, $$16, $$17).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
+   }
+
+   static final class a {
+      final fbj a;
+      final fbj b;
+      final kk c;
+
+      a(eso $$0, kk $$1, int $$2, dgr $$3) {
+         int $$4 = $$2 * 2 + 1;
+         this.a = new fbd($$4, $$4, $$4);
+         this.b = new fbd($$4, $$4, $$4);
+
+         for (int $$5 = 0; $$5 < $$4; $$5++) {
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               for (int $$7 = 0; $$7 < $$4; $$7++) {
+                  kk $$8 = kk.a($$1.a() + $$7 - $$2, $$1.b() + $$6 - $$2, $$1.c() + $$5 - $$2);
+                  esn.b $$9 = $$0.b($$3, $$8);
+                  if ($$9 == esn.b.c) {
+                     this.a.c($$7, $$6, $$5);
+                     this.b.c($$7, $$6, $$5);
+                  } else if ($$9 == esn.b.b) {
+                     this.b.c($$7, $$6, $$5);
+                  }
                }
             }
          }
-      }
 
-      for (Entry<ji, Integer> $$20 : $$9.entrySet()) {
-         ji $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         gpy.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+         this.c = kk.a($$1.a() - $$2, $$1.b() - $$2, $$1.c() - $$2);
       }
    }
 }

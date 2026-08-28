@@ -1,4 +1,5 @@
-public class hag extends gzj {
-   public float a;
-   public int b = 1;
+public class hag extends gzb {
+   public boolean b;
+   public boolean c;
+   public boolean d;
 }

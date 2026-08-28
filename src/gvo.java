@@ -1,12 +1,10 @@
-public class gvo<M extends gdf> extends gxa<M> {
-   private static final akv a = akv.b("textures/entity/bee/bee_stinger.png");
-
-   public gvo(gte<?, gzv, M> $$0, gsd.a $$1) {
-      super($$0, new gbe($$1.a(gfb.z)), a, gxa.a.b);
+public class gvo<M extends gdg> extends gxb<M> {
+   public gvo(gtf<?, gzw, M> $$0, gse.a $$1) {
+      super($$0, new gay($$1.a(gfc.l)), gut.a, gxb.a.a);
    }
 
    @Override
-   protected int a(gzv $$0) {
-      return $$0.k;
+   protected int a(gzw $$0) {
+      return $$0.j;
    }
 }

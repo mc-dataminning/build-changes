@@ -1,85 +1,77 @@
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class fnv {
-   public static final fnv.a a = a(fnt::a, fns.c);
-   public static final fnv.a b = a(fnt::a, fns.d);
-   public static final fnv.a c = a(fnt::a, fns.e);
-   public static final fnv.a d = a(fnt::n, fns.j);
-   public static final fnv.a e = a(fnt::n, fns.k);
-   public static final fnv.a f = a(fnt::t, fns.n);
-   public static final fnv.a g = a(fnt::o, fns.m);
-   public static final fnv.a h = a(fnt::E, fns.p);
-   public static final fnv.a i = a(fnt::D, fns.q);
-   public static final fnv.a j = a(fnt::i, fns.ay);
-   public static final fnv.a k = a(fnt::d, fns.az);
-   public static final fnv.a l = a(fnt::j, fns.aA);
-   public static final fnv.a m = a(fnt::j, fns.aB);
-   public static final fnv.a n = a(fnt::j, fns.aC);
-   public static final fnv.a o = a(fnt::j, fns.aD);
-   public static final fnv.a p = a(fnt::l, fns.aG);
-   public static final fnv.a q = a(fnt::m, fns.aE);
-   public static final fnv.a r = a(fnt::G, fns.aV);
-   public static final fnv.a s = a(fnt::a, fns.ad);
-   public static final fnv.a t = a(fnt::A, fns.bg);
-   public static final fnv.a u = a(fnt::A, fns.bh);
-   public static final fnv.a v = a(fnt::b, fns.br);
-   public static final fnv.a w = a(fnt::q, fns.j);
-   public static final fnv.a x = a(fnt::q, fns.k);
-   public static final fnv.a y = a(fnt::u, fns.n);
-   public static final fnv.a z = a(fnt::v, fns.j);
-   private final fnt A;
-   private final fnr B;
+public final class fnv {
+   public static final fnv a = a("all");
+   public static final fnv b = a("texture", a);
+   public static final fnv c = a("particle", b);
+   public static final fnv d = a("end", a);
+   public static final fnv e = a("bottom", d);
+   public static final fnv f = a("top", d);
+   public static final fnv g = a("front", a);
+   public static final fnv h = a("back", a);
+   public static final fnv i = a("side", a);
+   public static final fnv j = a("north", i);
+   public static final fnv k = a("south", i);
+   public static final fnv l = a("east", i);
+   public static final fnv m = a("west", i);
+   public static final fnv n = a("up");
+   public static final fnv o = a("down");
+   public static final fnv p = a("cross");
+   public static final fnv q = a("cross_emissive");
+   public static final fnv r = a("plant");
+   public static final fnv s = a("wall", a);
+   public static final fnv t = a("rail");
+   public static final fnv u = a("wool");
+   public static final fnv v = a("pattern");
+   public static final fnv w = a("pane");
+   public static final fnv x = a("edge");
+   public static final fnv y = a("fan");
+   public static final fnv z = a("stem");
+   public static final fnv A = a("upperstem");
+   public static final fnv B = a("crop");
+   public static final fnv C = a("dirt");
+   public static final fnv D = a("fire");
+   public static final fnv E = a("lantern");
+   public static final fnv F = a("platform");
+   public static final fnv G = a("unsticky");
+   public static final fnv H = a("torch");
+   public static final fnv I = a("layer0");
+   public static final fnv J = a("layer1");
+   public static final fnv K = a("layer2");
+   public static final fnv L = a("lit_log");
+   public static final fnv M = a("candle");
+   public static final fnv N = a("inside");
+   public static final fnv O = a("content");
+   public static final fnv P = a("inner_top");
+   public static final fnv Q = a("flowerbed");
+   private final String R;
+   @Nullable
+   private final fnv S;
 
-   private fnv(fnt $$0, fnr $$1) {
-      this.A = $$0;
-      this.B = $$1;
+   private static fnv a(String $$0) {
+      return new fnv($$0, null);
    }
 
-   public fnr a() {
-      return this.B;
+   private static fnv a(String $$0, fnv $$1) {
+      return new fnv($$0, $$1);
    }
 
-   public fnt b() {
-      return this.A;
+   private fnv(String $$0, @Nullable fnv $$1) {
+      this.R = $$0;
+      this.S = $$1;
    }
 
-   public fnv a(Consumer<fnt> $$0) {
-      $$0.accept(this.A);
-      return this;
+   public String a() {
+      return this.R;
    }
 
-   public akv a(djl $$0, BiConsumer<akv, fnp> $$1) {
-      return this.B.a($$0, this.A, $$1);
+   @Nullable
+   public fnv b() {
+      return this.S;
    }
 
-   public akv a(djl $$0, String $$1, BiConsumer<akv, fnp> $$2) {
-      return this.B.a($$0, $$1, this.A, $$2);
-   }
-
-   private static fnv.a a(Function<djl, fnt> $$0, fnr $$1) {
-      return $$2 -> new fnv($$0.apply($$2), $$1);
-   }
-
-   public static fnv a(akv $$0) {
-      return new fnv(fnt.b($$0), fns.c);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      fnv get(djl var1);
-
-      default akv create(djl $$0, BiConsumer<akv, fnp> $$1) {
-         return this.get($$0).a($$0, $$1);
-      }
-
-      default akv createWithSuffix(djl $$0, String $$1, BiConsumer<akv, fnp> $$2) {
-         return this.get($$0).a($$0, $$1, $$2);
-      }
-
-      default fnv.a updateTexture(Consumer<fnt> $$0) {
-         return $$1 -> this.get($$1).a($$0);
-      }
+   @Override
+   public String toString() {
+      return "#" + this.R;
    }
 }

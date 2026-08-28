@@ -1,26 +1,128 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface enu<S extends enl> {
-   enu<epf> a = a("buried_treasure", epf.d);
-   enu<eph> b = a("desert_pyramid", eph.d);
-   enu<epj> c = a("end_city", epj.d);
-   enu<eps> d = a("fortress", eps.e);
-   enu<epl> e = a("igloo", epl.d);
-   enu<epm> f = a("jigsaw", epm.i);
-   enu<epo> g = a("jungle_temple", epo.d);
-   enu<epq> h = a("mineshaft", epq.d);
-   enu<epu> i = a("nether_fossil", epu.d);
-   enu<epw> j = a("ocean_monument", epw.d);
-   enu<epy> k = a("ocean_ruin", epy.d);
-   enu<eqa> l = a("ruined_portal", eqa.d);
-   enu<eqc> m = a("shipwreck", eqc.d);
-   enu<eqe> n = a("stronghold", eqe.d);
-   enu<eqg> o = a("swamp_hut", eqg.d);
-   enu<eqi> p = a("woodland_mansion", eqi.d);
+public final class enu {
+   public static final String a = "INVALID";
+   public static final enu b = new enu(null, new dfo(0, 0), 0, new eob(List.of()));
+   private static final Logger c = LogUtils.getLogger();
+   private final enm d;
+   private final eob e;
+   private final dfo f;
+   private int g;
+   @Nullable
+   private volatile ene h;
 
-   MapCodec<S> codec();
+   public enu(enm $$0, dfo $$1, int $$2, eob $$3) {
+      this.d = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.e = $$3;
+   }
 
-   private static <S extends enl> enu<S> a(String $$0, MapCodec<S> $$1) {
-      return ke.a(mb.R, $$0, () -> $$1);
+   @Nullable
+   public static enu a(eoc $$0, tq $$1, long $$2) {
+      String $$3 = $$1.l("id");
+      if ("INVALID".equals($$3)) {
+         return b;
+      } else {
+         ke<enm> $$4 = $$0.b().e(mc.aU);
+         enm $$5 = $$4.a(akv.a($$3));
+         if ($$5 == null) {
+            c.error("Unknown stucture id: {}", $$3);
+            return null;
+         } else {
+            dfo $$6 = new dfo($$1.h("ChunkX"), $$1.h("ChunkZ"));
+            int $$7 = $$1.h("references");
+            tw $$8 = $$1.c("Children", 10);
+
+            try {
+               eob $$9 = eob.a($$8, $$0);
+               if ($$5 instanceof epx) {
+                  $$9 = epx.a($$6, $$2, $$9);
+               }
+
+               return new enu($$5, $$6, $$7, $$9);
+            } catch (Exception var11) {
+               c.error("Failed Start with id {}", $$3, var11);
+               return null;
+            }
+         }
+      }
+   }
+
+   public ene a() {
+      ene $$0 = this.h;
+      if ($$0 == null) {
+         $$0 = this.d.a(this.e.b());
+         this.h = $$0;
+      }
+
+      return $$0;
+   }
+
+   public void a(dhg $$0, dhe $$1, dyt $$2, azh $$3, ene $$4, dfo $$5) {
+      List<enq> $$6 = this.e.c();
+      if (!$$6.isEmpty()) {
+         ene $$7 = $$6.get(0).f;
+         ji $$8 = $$7.g();
+         ji $$9 = new ji($$8.u(), $$7.i(), $$8.w());
+
+         for (enq $$10 : $$6) {
+            if ($$10.f().a($$4)) {
+               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
+            }
+         }
+
+         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
+      }
+   }
+
+   public tq a(eoc $$0, dfo $$1) {
+      tq $$2 = new tq();
+      if (this.b()) {
+         $$2.a("id", $$0.b().e(mc.aU).b(this.d).toString());
+         $$2.a("ChunkX", $$1.h);
+         $$2.a("ChunkZ", $$1.i);
+         $$2.a("references", this.g);
+         $$2.a("Children", this.e.a($$0));
+         return $$2;
+      } else {
+         $$2.a("id", "INVALID");
+         return $$2;
+      }
+   }
+
+   public boolean b() {
+      return !this.e.a();
+   }
+
+   public dfo c() {
+      return this.f;
+   }
+
+   public boolean d() {
+      return this.g < this.g();
+   }
+
+   public void e() {
+      this.g++;
+   }
+
+   public int f() {
+      return this.g;
+   }
+
+   protected int g() {
+      return 1;
+   }
+
+   public enm h() {
+      return this.d;
+   }
+
+   public List<enq> i() {
+      return this.e.c();
    }
 }

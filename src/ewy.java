@@ -1,35 +1,39 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class ewy extends exd {
+public class ewy extends exe {
    public static final MapCodec<ewy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(cv.a.fieldOf("item_filter").forGetter($$0x -> $$0x.b), exg.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
-            .apply($$0, ewy::new)
+      $$0 -> a($$0).and(evr.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, ewy::new)
    );
-   private final cv b;
-   private final exe c;
+   private final evr.b b;
 
-   private ewy(List<eyz> $$0, cv $$1, exe $$2) {
+   public ewy(List<eza> $$0, evr.b $$1) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
    }
 
    @Override
-   public exf<ewy> b() {
-      return exg.v;
+   public exg<ewy> b() {
+      return exh.B;
    }
 
    @Override
-   public cwo a(cwo $$0, evq $$1) {
-      return this.b.a($$0) ? this.c.apply($$0, $$1) : $$0;
+   public Set<bai<?>> a() {
+      return Set.of(this.b.a());
    }
 
    @Override
-   public void a(evw $$0) {
-      super.a($$0);
-      this.c.a($$0.a(".modifier"));
+   public cwp a(cwp $$0, evr $$1) {
+      if ($$0.a(cwt.vm) && $$1.c(this.b.a()) instanceof cox $$2) {
+         $$0.b(kv.ag, new czo($$2.gh()));
+      }
+
+      return $$0;
+   }
+
+   public static exe.a<?> a(evr.b $$0) {
+      return a($$1 -> new ewy($$1, $$0));
    }
 }

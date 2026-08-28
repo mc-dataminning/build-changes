@@ -19,9 +19,9 @@ public class atv implements auc {
    private final Path c;
    private final ate d;
    private final aub e;
-   private final fap f;
+   private final faq f;
 
-   public atv(Path $$0, ate $$1, aub $$2, fap $$3) {
+   public atv(Path $$0, ate $$1, aub $$2, faq $$3) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
@@ -53,16 +53,16 @@ public class atv implements auc {
       return new atb("file/" + $$1, wp.b($$1), this.e, Optional.empty());
    }
 
-   public static void a(Path $$0, fap $$1, BiConsumer<Path, atx.c> $$2) throws IOException {
+   public static void a(Path $$0, faq $$1, BiConsumer<Path, atx.c> $$2) throws IOException {
       atv.a $$3 = new atv.a($$1);
 
       try (DirectoryStream<Path> $$4 = Files.newDirectoryStream($$0)) {
          for (Path $$5 : $$4) {
             try {
-               List<faq> $$6 = new ArrayList<>();
+               List<far> $$6 = new ArrayList<>();
                atx.c $$7 = $$3.a($$5, $$6);
                if (!$$6.isEmpty()) {
-                  a.warn("Ignoring potential pack entry: {}", fao.a($$5, $$6));
+                  a.warn("Ignoring potential pack entry: {}", fap.a($$5, $$6));
                } else if ($$7 != null) {
                   $$2.accept($$5, $$7);
                } else {
@@ -76,7 +76,7 @@ public class atv implements auc {
    }
 
    static class a extends atz<atx.c> {
-      protected a(fap $$0) {
+      protected a(faq $$0) {
          super($$0);
       }
 

@@ -1,62 +1,60 @@
-import java.util.List;
-
-public class cvv extends cwk implements cxj {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final double b = 0.15;
-
-   public cvv(cwk.a $$0) {
+public class cvv extends cwl implements cxk {
+   public cvv(cwl.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsj a(dah $$0) {
-      dgh $$1 = $$0.q();
-      if ($$1 instanceof ard $$2) {
-         cwo $$3 = $$0.n();
-         faz $$4 = $$0.l();
-         jn $$5 = $$0.k();
-         cpp.a(new cpk($$1, $$0.o(), $$4.d + (double)$$5.j() * 0.15, $$4.e + (double)$$5.k() * 0.15, $$4.f + (double)$$5.l() * 0.15, $$3), $$2, $$3);
-         $$3.h(1);
-      }
-
-      return bsj.a;
-   }
-
-   @Override
-   public bsj a(dgh $$0, cow $$1, bsi $$2) {
-      if ($$1.fJ()) {
-         cwo $$3 = $$1.b($$2);
-         if ($$0 instanceof ard $$4) {
-            cpp.a(new cpk($$0, $$3, $$1), $$4, $$3);
-            $$3.a(1, $$1);
-            $$1.b(awk.c.b(this));
+   public bsk a(dai $$0) {
+      dgi $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      dwx $$3 = $$1.a_($$2);
+      boolean $$4 = false;
+      if (!dkb.i($$3) && !dkc.h($$3) && !dkd.h($$3)) {
+         $$2 = $$2.a($$0.k());
+         if (diz.a($$1, $$2, $$0.g())) {
+            this.a($$1, $$2);
+            $$1.b($$2, diz.a($$1, $$2));
+            $$1.a($$0.o(), ebt.i, $$2);
+            $$4 = true;
          }
-
-         return bsj.a;
       } else {
-         return bsj.e;
+         this.a($$1, $$2);
+         $$1.b($$2, $$3.b(dxn.v, Boolean.valueOf(true)));
+         $$1.a($$0.o(), ebt.c, $$2);
+         $$4 = true;
+      }
+
+      if ($$4) {
+         $$0.n().h(1);
+         return bsk.a;
+      } else {
+         return bsk.d;
       }
    }
 
-   @Override
-   public void a(cwo $$0, cwk.b $$1, List<wp> $$2, cyg $$3) {
-      cze $$4 = $$0.a(kv.af);
-      if ($$4 != null) {
-         $$4.a($$1, $$2::add, $$3);
-      }
+   private void a(dgi $$0, ji $$1) {
+      azh $$2 = $$0.H_();
+      $$0.a(null, $$1, awa.jk, awb.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
    }
 
    @Override
-   public cpp a(dgh $$0, kb $$1, cwo $$2, jn $$3) {
-      return new cpk($$0, $$2.c(1), $$1.a(), $$1.b(), $$1.c(), true);
+   public cpq a(dgi $$0, kb $$1, cwp $$2, jn $$3) {
+      azh $$4 = $$0.H_();
+      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
+      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
+      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
+      fba $$8 = new fba($$5, $$6, $$7);
+      cpu $$9 = new cpu($$0, $$1.a(), $$1.b(), $$1.c(), $$8.d());
+      $$9.a($$2);
+      return $$9;
    }
 
    @Override
-   public cxj.a b() {
-      return cxj.a.a().a(cvv::a).a(1.0F).b(0.5F).a(1004).a();
+   public void a(cpq $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
    }
 
-   private static faz a(kz $$0, jn $$1) {
-      return $$0.a().b((double)$$1.j() * 0.5000099999997474, (double)$$1.k() * 0.5000099999997474, (double)$$1.l() * 0.5000099999997474);
+   @Override
+   public cxk.a b() {
+      return cxk.a.a().a(($$0, $$1) -> dls.a($$0, 1.0, fba.c)).a(6.6666665F).b(1.0F).a(1018).a();
    }
 }

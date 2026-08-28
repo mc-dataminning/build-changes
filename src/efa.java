@@ -1,59 +1,73 @@
 import com.mojang.serialization.Codec;
 
-public class efa extends efx<eil> {
-   private static final dww a = djn.nB.m().b(dip.h, Integer.valueOf(1)).b(dip.i, dxi.a).b(dip.j, Integer.valueOf(0));
-   private static final dww b = a.b(dip.i, dxi.c).b(dip.j, Integer.valueOf(1));
-   private static final dww c = a.b(dip.i, dxi.c);
-   private static final dww d = a.b(dip.i, dxi.b);
-
-   public efa(Codec<eil> $$0) {
+public abstract class efa extends efy<eie> {
+   public efa(Codec<eie> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(efz<eil> $$0) {
-      int $$1 = 0;
-      ji $$2 = $$0.e();
-      dhf $$3 = $$0.b();
-      azh $$4 = $$0.d();
-      eil $$5 = $$0.f();
-      ji.a $$6 = $$2.k();
-      ji.a $$7 = $$2.k();
-      if ($$3.u($$6)) {
-         if (djn.nB.m().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   protected void a(dgj $$0, azh $$1, ji $$2, eie $$3, int $$4, ji.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(jn.b, $$6);
+         if (!$$0.a_($$5).s()) {
+            this.a($$0, $$5, $$3.c.a($$1, $$2));
+         }
+      }
+   }
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(ecr.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, djn.l.m(), 2);
-                        }
+   protected int a(azh $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(dgj $$0, ji $$1, int $$2, ji.a $$3, eie $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.L_() + 1 && $$5 + $$2 + 1 <= $$0.an()) {
+         dwx $$6 = $$0.a_($$1.e());
+         if (!b($$6) && !$$6.a(awp.bc)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     dwx $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.l() && !$$11.a(awp.Q)) {
+                        return false;
                      }
                   }
                }
             }
 
-            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(jn.b, 1);
-            }
-
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(jn.a, 1), c, 2);
-               $$3.a($$6.c(jn.a, 1), d, 2);
-            }
+            return true;
          }
-
-         $$1++;
+      } else {
+         return false;
       }
-
-      return $$1 > 0;
    }
+
+   @Override
+   public boolean a(ega<eie> $$0) {
+      dhg $$1 = $$0.b();
+      ji $$2 = $$0.e();
+      azh $$3 = $$0.d();
+      eie $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      ji.a $$6 = new ji.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
+         return false;
+      } else {
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
+      }
+   }
+
+   protected abstract int a(int var1, int var2, int var3, int var4);
+
+   protected abstract void a(dgj var1, azh var2, ji var3, int var4, ji.a var5, eie var6);
 }

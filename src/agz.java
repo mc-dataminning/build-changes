@@ -1,8 +1,8 @@
-public record agz(bnd b) implements yw<agg> {
+public record agz(bne b) implements yw<agg> {
    public static final yn<vl, agz> a = yw.a(agz::a, agz::new);
 
    private agz(vl $$0) {
-      this($$0.b(bnd.class));
+      this($$0.b(bne.class));
    }
 
    private void a(vl $$0) {

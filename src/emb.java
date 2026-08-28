@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface emb {
+public interface emb {
+   @Nullable
+   dwx a(ecw var1, int var2, int var3, int var4);
 }

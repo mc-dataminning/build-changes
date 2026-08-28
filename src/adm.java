@@ -1,5 +1,5 @@
-public record adm(int b, dci c) implements yw<abl> {
-   public static final yn<wa, adm> a = yn.a(yl.w, adm::b, dci.e, adm::e, adm::new);
+public record adm(int b, dcj c) implements yw<abl> {
+   public static final yn<wa, adm> a = yn.a(yl.w, adm::b, dcj.e, adm::e, adm::new);
 
    @Override
    public yy<adm> a() {
@@ -10,7 +10,7 @@ public record adm(int b, dci c) implements yw<abl> {
       $$0.a(this);
    }
 
-   public dci e() {
+   public dcj e() {
       return this.c;
    }
 }

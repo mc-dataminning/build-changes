@@ -1,34 +1,32 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record eyt(boolean b) implements eyz {
-   public static final MapCodec<eyt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(eyt::e)).apply($$0, eyt::new));
-
-   public boolean a(evq $$0) {
-      return $$0.b(eyk.l) == this.b;
-   }
+public record eyt(Optional<bm> b) implements eza {
+   public static final MapCodec<eyt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bm.a.optionalFieldOf("predicate").forGetter(eyt::c)).apply($$0, eyt::new));
 
    @Override
-   public eza b() {
-      return ezb.s;
+   public ezb b() {
+      return ezc.m;
    }
 
    @Override
    public Set<bai<?>> a() {
-      return Set.of(eyk.l);
+      return Set.of(eyl.f, eyl.c);
    }
 
-   public static eyz.a c() {
-      return () -> new eyt(true);
+   public boolean a(evr $$0) {
+      btb $$1 = $$0.c(eyl.c);
+      fba $$2 = $$0.c(eyl.f);
+      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
    }
 
-   public static eyz.a d() {
-      return () -> new eyt(false);
+   public static eza.a a(bm.a $$0) {
+      return () -> new eyt(Optional.of($$0.b()));
    }
 
-   public boolean e() {
+   public Optional<bm> c() {
       return this.b;
    }
 }

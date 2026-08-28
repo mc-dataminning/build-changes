@@ -1,7 +1,7 @@
 import java.util.Optional;
 
-public record ahw(Optional<jr<btn>> b, Optional<jr<btn>> c) implements yw<agg> {
-   public static final yn<wa, ahw> a = yn.a(btn.b.a(yl::a), ahw::b, btn.b.a(yl::a), ahw::e, ahw::new);
+public record ahw(Optional<jr<bto>> b, Optional<jr<bto>> c) implements yw<agg> {
+   public static final yn<wa, ahw> a = yn.a(bto.b.a(yl::a), ahw::b, bto.b.a(yl::a), ahw::e, ahw::new);
 
    @Override
    public yy<ahw> a() {
@@ -12,7 +12,7 @@ public record ahw(Optional<jr<btn>> b, Optional<jr<btn>> c) implements yw<agg> {
       $$0.a(this);
    }
 
-   public Optional<jr<btn>> e() {
+   public Optional<jr<bto>> e() {
       return this.c;
    }
 }

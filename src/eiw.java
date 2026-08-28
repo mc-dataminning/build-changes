@@ -1,28 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class eiw implements eib {
+public class eiw implements eic {
    public static final Codec<eiw> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               esy.a.fieldOf("state").forGetter($$0x -> $$0x.b),
-               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
-               kg.a(mc.f).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               ehi.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               ji.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
             )
             .apply($$0, eiw::new)
    );
-   public final esy b;
-   public final boolean c;
-   public final int d;
-   public final int e;
-   public final jv<djl> f;
+   private final boolean b;
+   private final List<ehi.a> c;
+   @Nullable
+   private final ji d;
 
-   public eiw(esy $$0, boolean $$1, int $$2, int $$3, jv<djl> $$4) {
+   public eiw(boolean $$0, List<ehi.a> $$1, @Nullable ji $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
+   }
+
+   private eiw(boolean $$0, List<ehi.a> $$1, Optional<ji> $$2) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+      this.d = $$2.orElse(null);
+   }
+
+   public boolean a() {
+      return this.b;
+   }
+
+   public List<ehi.a> b() {
+      return this.c;
+   }
+
+   @Nullable
+   public ji c() {
+      return this.d;
    }
 }

@@ -1,20 +1,46 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eqv extends erk {
+public class eqv extends erl {
+   private static final Logger c = LogUtils.getLogger();
    public static final MapCodec<eqv> a = MapCodec.unit(() -> eqv.b);
    public static final eqv b = new eqv();
 
+   private eqv() {
+   }
+
    @Nullable
    @Override
-   public ern.d a(dgk $$0, ji $$1, ji $$2, ern.d $$3, ern.d $$4, erj $$5) {
-      ji $$6 = $$4.a();
-      boolean $$7 = $$0.a_($$6).a(djn.K);
-      return $$7 && !djl.a($$4.b().f($$0, $$6)) ? new ern.d($$6, djn.K.m(), $$4.c()) : $$4;
+   public ero.d a(dgl $$0, ji $$1, ji $$2, ero.d $$3, ero.d $$4, erk $$5) {
+      dwx $$6 = $$4.b();
+      if ($$6.a(djo.pD)) {
+         if ($$4.c() == null) {
+            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
+            return $$4;
+         } else {
+            String $$7 = $$4.c().l("final_state");
+
+            dwx $$9;
+            try {
+               gr.a $$8 = gr.a($$0.a(mc.f), $$7, true);
+               $$9 = $$8.a();
+            } catch (CommandSyntaxException var11) {
+               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
+               return null;
+            }
+
+            return $$9.a(djo.lp) ? null : new ero.d($$4.a(), $$9, null);
+         }
+      } else {
+         return $$4;
+      }
    }
 
    @Override
-   protected erm<?> a() {
-      return erm.m;
+   protected ern<?> a() {
+      return ern.h;
    }
 }

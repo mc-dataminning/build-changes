@@ -1,36 +1,69 @@
-public interface cof {
-   String c_ = "Inventory";
+import javax.annotation.Nullable;
 
-   bsq t();
+public class cof implements dfe {
+   private final cox a;
+   private dfg b = new dfg();
+   private int c;
 
-   static void a(ard $$0, bvi $$1, cof $$2, clb $$3) {
-      cwo $$4 = $$3.l();
-      if ($$1.c($$0, $$4)) {
-         bsq $$5 = $$2.t();
-         boolean $$6 = $$5.c($$4);
-         if (!$$6) {
-            return;
-         }
-
-         $$1.a($$3);
-         int $$7 = $$4.M();
-         cwo $$8 = $$5.b($$4);
-         $$1.a($$3, $$7 - $$8.M());
-         if ($$8.f()) {
-            $$3.at();
-         } else {
-            $$4.e($$8.M());
-         }
-      }
+   public cof(cox $$0) {
+      this.a = $$0;
    }
 
-   default void a(tq $$0, jt.a $$1) {
-      if ($$0.b("Inventory", 9)) {
-         this.t().a($$0.c("Inventory", 10), $$1);
-      }
+   @Override
+   public cox gs() {
+      return this.a;
    }
 
-   default void b(tq $$0, jt.a $$1) {
-      $$0.a("Inventory", this.t().a($$1));
+   @Override
+   public void a(@Nullable cox $$0) {
+   }
+
+   @Override
+   public dfg gu() {
+      return this.b;
+   }
+
+   @Override
+   public void a(dfg $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(dff $$0) {
+      $$0.l();
+   }
+
+   @Override
+   public void i(cwp $$0) {
+   }
+
+   @Override
+   public boolean gA() {
+      return this.a.dV().C;
+   }
+
+   @Override
+   public boolean f(cox $$0) {
+      return this.a == $$0;
+   }
+
+   @Override
+   public int x() {
+      return this.c;
+   }
+
+   @Override
+   public void s(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public boolean gv() {
+      return true;
+   }
+
+   @Override
+   public avz gw() {
+      return awa.BM;
    }
 }

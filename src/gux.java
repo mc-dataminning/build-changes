@@ -1,18 +1,27 @@
-public class gux extends gqt<cjb, gyk, gao<gyk>> {
-   private static final akv a = akv.b("textures/entity/horse/horse_zombie.png");
-   private static final akv b = akv.b("textures/entity/horse/horse_skeleton.png");
-   private final akv k;
+public class gux extends gqy<chz, has, gek> {
+   private static final akv a = akv.b("textures/entity/turtle/big_sea_turtle.png");
 
-   public gux(gsd.a $$0, gfa $$1, gfa $$2, boolean $$3) {
-      super($$0, new gcl($$0.a($$1)), new gcl($$0.a($$2)));
-      this.k = $$3 ? b : a;
+   public gux(gse.a $$0) {
+      super($$0, new gek($$0.a(gfc.dq)), new gek($$0.a(gfc.dr)), 0.7F);
    }
 
-   public akv a(gyk $$0) {
-      return this.k;
+   protected float a(has $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.83F : $$1;
    }
 
-   public gyk b() {
-      return new gyk();
+   public has b() {
+      return new has();
+   }
+
+   public void a(chz $$0, has $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = !$$0.bj() && $$0.aJ();
+      $$1.b = $$0.t();
+      $$1.c = !$$0.e_() && $$0.p();
+   }
+
+   public akv b(has $$0) {
+      return a;
    }
 }

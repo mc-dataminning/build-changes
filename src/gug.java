@@ -1,15 +1,21 @@
-public class gug extends gqv<cmf, haf> {
-   private static final akv a = akv.b("textures/entity/skeleton/skeleton.png");
+public class gug extends gtk<cmf, gzk, gdv> {
+   private static final akv a = akv.b("textures/entity/silverfish.png");
 
-   public gug(gsd.a $$0) {
-      super($$0, gfb.cI, gfb.cL, gfb.cM);
+   public gug(gse.a $$0) {
+      super($$0, new gdv($$0.a(gfc.cH)), 0.3F);
    }
 
-   public akv b(haf $$0) {
+   @Override
+   protected float aV_() {
+      return 180.0F;
+   }
+
+   @Override
+   public akv b(gzk $$0) {
       return a;
    }
 
-   public haf b() {
-      return new haf();
+   public gzk b() {
+      return new gzk();
    }
 }

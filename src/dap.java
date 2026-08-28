@@ -1,25 +1,25 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-
-public enum dap implements azv {
-   a(0, "food"),
-   b(1, "blocks"),
-   c(2, "misc");
-
-   private static final IntFunction<dap> f = axq.a($$0 -> $$0.g, values(), axq.a.a);
-   public static final Codec<dap> d = azv.a(dap::values);
-   public static final yn<ByteBuf, dap> e = yl.a(f, $$0 -> $$0.g);
-   private final int g;
-   private final String h;
-
-   private dap(final int $$0, final String $$1) {
-      this.g = $$0;
-      this.h = $$1;
+public class dap extends dak {
+   public dap(String $$0, daq $$1, dba $$2, cwp $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public String c() {
-      return this.h;
+   protected cwl f() {
+      return cwt.xx;
+   }
+
+   @Override
+   public dbo<dap> a() {
+      return dbo.r;
+   }
+
+   @Override
+   public dbp<dap> b() {
+      return dbp.e;
+   }
+
+   @Override
+   public dbh h() {
+      return dbg.m;
    }
 }

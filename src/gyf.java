@@ -1,3 +1,3 @@
-public class gyf extends gyk {
+public class gyf extends gyz {
    public boolean a;
 }

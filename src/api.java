@@ -21,8 +21,8 @@ public class api {
       );
    }
 
-   private static int a(ex $$0, Collection<? extends cow> $$1, int $$2) {
-      for (cow $$3 : $$1) {
+   private static int a(ex $$0, Collection<? extends cox> $$1, int $$2) {
+      for (cox $$3 : $$1) {
          $$3.ac().ifPresent($$1x -> $$1x.a($$2));
       }
 
@@ -35,9 +35,9 @@ public class api {
       return $$1.size();
    }
 
-   private static int a(ex $$0, Collection<? extends cow> $$1) {
-      for (cow $$2 : $$1) {
-         $$2.ac().ifPresent(coa::b);
+   private static int a(ex $$0, Collection<? extends cox> $$1) {
+      for (cox $$2 : $$1) {
+         $$2.ac().ifPresent(cob::b);
       }
 
       if ($$1.size() == 1) {

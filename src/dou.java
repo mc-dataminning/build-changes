@@ -1,19 +1,25 @@
-public class dou {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(dww $$0) {
-      return $$0.l();
+public class dou extends djw {
+   public static final MapCodec<dou> a = b(dou::new);
+   protected static final fbu b = djm.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
+
+   @Override
+   public MapCodec<dou> a() {
+      return a;
    }
 
-   public static int a(azh $$0) {
-      double $$1 = 1.0;
+   public dou(dww.d $$0) {
+      super($$0);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
-      }
+   @Override
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return b;
+   }
 
-      return $$2;
+   @Override
+   protected boolean b(dwx $$0, dfn $$1, ji $$2) {
+      return $$0.a(awp.aO) || $$0.a(djo.ek) || super.b($$0, $$1, $$2);
    }
 }

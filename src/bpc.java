@@ -1,58 +1,27 @@
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
+import com.google.common.math.Quantiles;
+import com.google.common.math.Quantiles.ScaleAndIndexes;
+import it.unimi.dsi.fastutil.ints.Int2DoubleRBTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMap;
+import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMaps;
+import java.util.Comparator;
+import java.util.Map;
 
 public class bpc {
-   private static final Logger a = LogUtils.getLogger();
-   private final Runnable b;
+   public static final ScaleAndIndexes a = Quantiles.scale(100).indexes(new int[]{50, 75, 90, 99});
 
-   protected bpc(Runnable $$0) {
-      this.b = $$0;
+   private bpc() {
    }
 
-   public void a(@Nullable Path $$0) {
-      if ($$0 != null) {
-         this.b.run();
-         a(() -> "Dumped flight recorder profiling to " + $$0);
-
-         bpk $$1;
-         try {
-            $$1 = bpj.a($$0);
-         } catch (Throwable var5) {
-            a(() -> "Failed to parse JFR recording", var5);
-            return;
-         }
-
-         try {
-            a($$1::b);
-            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
-            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
-            a(() -> "Dumped recording summary to " + $$4);
-         } catch (Throwable var4) {
-            a(() -> "Failed to output JFR report", var4);
-         }
-      }
+   public static Map<Integer, Double> a(long[] $$0) {
+      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
    }
 
-   private static void a(Supplier<String> $$0) {
-      if (LogUtils.isLoggerActive()) {
-         a.info($$0.get());
-      } else {
-         akx.a($$0.get());
-      }
+   public static Map<Integer, Double> a(double[] $$0) {
+      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
    }
 
-   private static void a(Supplier<String> $$0, Throwable $$1) {
-      if (LogUtils.isLoggerActive()) {
-         a.warn($$0.get(), $$1);
-      } else {
-         akx.a($$0.get());
-         $$1.printStackTrace(akx.a);
-      }
+   private static Map<Integer, Double> a(Map<Integer, Double> $$0) {
+      Int2DoubleSortedMap $$1 = af.a(new Int2DoubleRBTreeMap(Comparator.reverseOrder()), $$1x -> $$1x.putAll($$0));
+      return Int2DoubleSortedMaps.unmodifiable($$1);
    }
 }

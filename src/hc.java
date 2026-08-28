@@ -13,15 +13,15 @@ public class hc implements gv {
    }
 
    @Override
-   public faz a(ex $$0) {
-      faz $$1 = $$0.d();
-      return new faz(this.a.a($$1.d), this.b.a($$1.e), this.c.a($$1.f));
+   public fba a(ex $$0) {
+      fba $$1 = $$0.d();
+      return new fba(this.a.a($$1.d), this.b.a($$1.e), this.c.a($$1.f));
    }
 
    @Override
-   public fay b(ex $$0) {
-      fay $$1 = $$0.k();
-      return new fay((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public faz b(ex $$0) {
+      faz $$1 = $$0.k();
+      return new faz((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
    }
 
    @Override
@@ -96,7 +96,7 @@ public class hc implements gv {
       return new hc(new hb(false, $$0), new hb(false, $$1), new hb(false, $$2));
    }
 
-   public static hc a(fay $$0) {
+   public static hc a(faz $$0) {
       return new hc(new hb(false, (double)$$0.i), new hb(false, (double)$$0.j), new hb(true, 0.0));
    }
 

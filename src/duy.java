@@ -1,23 +1,15 @@
-public class duy extends dvl {
-   private static final int a = 60;
-   private static final int b = 9;
-
-   public duy(ji $$0, dww $$1) {
-      super(dua.i, $$0, $$1);
+public class duy extends dtn {
+   public duy(ji $$0, dwx $$1) {
+      super(dub.a, $$0, $$1, dbp.b);
    }
 
    @Override
-   public int b() {
-      return 9;
+   protected wp j() {
+      return wp.c("container.furnace");
    }
 
    @Override
-   public int c() {
-      return 60;
-   }
-
-   @Override
-   public avz d() {
-      return awa.CO;
+   protected csc a(int $$0, cow $$1) {
+      return new cta($$0, $$1, this, this.m);
    }
 }

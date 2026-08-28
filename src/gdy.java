@@ -1,22 +1,7 @@
-public class gdy extends gca<gyj> {
-   public gdy(gfc $$0) {
-      super($$0);
+public abstract class gdy extends gcw {
+   public gdy(gfd $$0) {
+      super($$0, gmi::j);
    }
 
-   public static gfi a() {
-      gfk $$0 = new gfk();
-      gfm $$1 = $$0.a();
-      $$1.a("cube", gfh.c().a(0, 0).a(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F), gfe.a);
-      return gfi.a($$0, 64, 32);
-   }
-
-   public static gfi b() {
-      gfk $$0 = new gfk();
-      gfm $$1 = $$0.a();
-      $$1.a("cube", gfh.c().a(0, 16).a(-3.0F, 17.0F, -3.0F, 6.0F, 6.0F, 6.0F), gfe.a);
-      $$1.a("right_eye", gfh.c().a(32, 0).a(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), gfe.a);
-      $$1.a("left_eye", gfh.c().a(32, 4).a(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), gfe.a);
-      $$1.a("mouth", gfh.c().a(32, 8).a(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F), gfe.a);
-      return gfi.a($$0, 64, 32);
-   }
+   public abstract void a(float var1, float var2, float var3);
 }

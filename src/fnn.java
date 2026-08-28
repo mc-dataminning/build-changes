@@ -1,16 +1,8 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class fnn implements fnp {
-   private final akv a;
-
-   public fnn(akv $$0) {
-      this.a = $$0;
-   }
-
-   public JsonElement a() {
-      JsonObject $$0 = new JsonObject();
-      $$0.addProperty("parent", this.a.toString());
-      return $$0;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fnn {
 }

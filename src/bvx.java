@@ -1,5 +1,13 @@
-public interface bvx {
-   void a(ard var1, awb var2, cwo var3);
+import javax.annotation.Nullable;
 
-   boolean a();
+public interface bvx {
+   boolean f();
+
+   void a(cwp var1, @Nullable awb var2);
+
+   default avz ab_() {
+      return awa.no;
+   }
+
+   boolean j();
 }

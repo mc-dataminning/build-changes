@@ -1,9 +1,22 @@
-public interface fof {
-   boolean a(cty var1);
+import java.util.Set;
 
-   boolean a(double var1, double var3, int var5, cwo var6);
+public class fof extends hfx {
+   private static final Set<atp<?>> a = Set.of(hgf.b, hgj.c);
 
-   void b(cty var1);
+   public fof(heu $$0) {
+      super($$0, akv.b("textures/atlas/gui.png"), akv.b("gui"), a);
+   }
 
-   void a(cty var1, csm var2);
+   @Override
+   public hes a(akv $$0) {
+      return super.a($$0);
+   }
+
+   public hgk a(hes $$0) {
+      return this.b($$0).a();
+   }
+
+   private hgj b(hes $$0) {
+      return $$0.e().f().a(hgj.c).orElse(hgj.a);
+   }
 }

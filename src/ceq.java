@@ -1,65 +1,40 @@
-public class ceq extends ces {
-   public ceq(bvi $$0, dgh $$1) {
+public class ceq extends cet {
+   public ceq(bvj $$0, dgi $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected eto a(int $$0) {
-      this.o = new etj();
-      return new eto(this.o, $$0);
-   }
-
-   @Override
-   protected boolean a(faz $$0, faz $$1) {
-      return a(this.a, $$0, $$1, true);
+   protected etp a(int $$0) {
+      this.o = new eti(false);
+      return new etp(this.o, $$0);
    }
 
    @Override
    protected boolean a() {
-      return this.o() && this.a.bn() || !this.a.bZ();
+      return true;
    }
 
    @Override
-   protected faz b() {
-      return this.a.dt();
+   protected fba b() {
+      return new fba(this.a.dA(), this.a.e(0.5), this.a.dG());
    }
 
    @Override
-   public etm a(buk $$0, int $$1) {
-      return this.a($$0.dv(), $$1);
+   protected double a(fba $$0) {
+      return $$0.e;
    }
 
    @Override
-   public void c() {
-      this.e++;
-      if (this.m) {
-         this.h();
-      }
-
-      if (!this.k()) {
-         if (this.a()) {
-            this.j();
-         } else if (this.c != null && !this.c.c()) {
-            faz $$0 = this.c.a(this.a);
-            if (this.a.dz() == ayz.a($$0.d) && this.a.dB() == ayz.a($$0.e) && this.a.dF() == ayz.a($$0.f)) {
-               this.c.a();
-            }
-         }
-
-         agd.a(this.b, this.a, this.c, this.l);
-         if (!this.k()) {
-            faz $$1 = this.c.a(this.a);
-            this.a.N().a($$1.d, $$1.e, $$1.f, this.d);
-         }
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.o.b($$0);
+   protected boolean a(fba $$0, fba $$1) {
+      return this.a.bn() ? a(this.a, $$0, $$1, false) : false;
    }
 
    @Override
    public boolean a(ji $$0) {
-      return this.b.a_($$0).a(this.b, $$0, this.a);
+      return !this.b.a_($$0.e()).l();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

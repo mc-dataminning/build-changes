@@ -168,7 +168,7 @@ public class ald {
          if (!$$4 && $$3.a()) {
             $$0.b().d().a(this.j);
             $$0.b().c().ifPresent($$1x -> {
-               if ($$1x.i() && this.j.y().O().b(dgd.B)) {
+               if ($$1x.i() && this.j.y().O().b(dge.B)) {
                   this.c.a($$1x.e().a($$0, this.j), false);
                }
             });

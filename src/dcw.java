@@ -1,20 +1,30 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public record dcw(int c) {
-   public static final Codec<dcw> a = RecordCodecBuilder.create($$0 -> $$0.group(ayi.m.fieldOf("value").forGetter(dcw::a)).apply($$0, dcw::new));
-   public static final yn<ByteBuf, dcw> b = yn.a(yl.h, dcw::a, dcw::new);
-
-   public dcw(int c) {
-      if (c <= 0) {
-         throw new IllegalArgumentException("Enchantment value must be positive, but was " + c);
-      } else {
-         this.c = c;
-      }
+public record dcw<T>(T a, Optional<eza> b) {
+   public static Codec<eza> a(baj $$0) {
+      return eza.e
+         .validate(
+            $$1 -> {
+               azf.a $$2 = new azf.a();
+               evx $$3 = new evx($$2, $$0);
+               $$1.a($$3);
+               return $$2.b()
+                  .map($$0xx -> DataResult.error(() -> "Validation error in enchantment effect condition: " + $$0xx))
+                  .orElseGet(() -> DataResult.success($$1));
+            }
+         );
    }
 
-   public int a() {
-      return this.c;
+   public static <T> Codec<dcw<T>> a(Codec<T> $$0, baj $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group($$0.fieldOf("effect").forGetter(dcw::a), a($$1).optionalFieldOf("requirements").forGetter(dcw::b)).apply($$2, dcw::new)
+      );
+   }
+
+   public boolean a(evr $$0) {
+      return this.b.isEmpty() ? true : this.b.get().test($$0);
    }
 }

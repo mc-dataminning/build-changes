@@ -1,149 +1,120 @@
-public class bvm extends buk {
-   private static final int b = 60;
-   private static final int c = 120;
-   private static final String d = "spawn_item_after_ticks";
-   private static final String e = "item";
-   private static final ajy<cwo> f = akc.a(bvm.class, aka.h);
-   public static final int a = 36;
-   private long g;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public bvm(bur<? extends bvm> $$0, dgh $$1) {
-      super($$0, $$1);
-      this.ad = true;
-   }
+public interface bvm {
+   String a_ = "AngerTime";
+   String b_ = "AngryAt";
 
-   public static bvm a(dgh $$0, cwo $$1) {
-      bvm $$2 = new bvm(bur.aJ, $$0);
-      $$2.g = (long)$$0.A.a(60, 120);
-      $$2.a($$1);
-      return $$2;
-   }
+   int a();
 
-   @Override
-   public void h() {
-      super.h();
-      if (this.dV() instanceof ard $$0) {
-         this.a($$0);
-      } else {
-         this.p();
+   void a(int var1);
+
+   @Nullable
+   UUID b();
+
+   void a(@Nullable UUID var1);
+
+   void c();
+
+   default void a_(tq $$0) {
+      $$0.a("AngerTime", this.a());
+      if (this.b() != null) {
+         $$0.a("AngryAt", this.b());
       }
    }
 
-   private void a(ard $$0) {
-      if ((long)this.af == this.g - 36L) {
-         $$0.a(null, this.dv(), awa.mB, awb.g);
-      }
+   default void a(dgi $$0, tq $$1) {
+      this.a($$1.h("AngerTime"));
+      if ($$0 instanceof ard) {
+         if (!$$1.b("AngryAt")) {
+            this.a(null);
+         } else {
+            UUID $$2 = $$1.a("AngryAt");
+            this.a($$2);
+            bul $$3 = ((ard)$$0).a($$2);
+            if ($$3 != null) {
+               if ($$3 instanceof bvj $$4) {
+                  this.h($$4);
+                  this.a($$4);
+               }
 
-      if ((long)this.af >= this.g) {
-         this.s();
-         this.c($$0);
-      }
-   }
-
-   private void p() {
-      if (this.dV().ad() % 5L == 0L) {
-         this.l();
-      }
-   }
-
-   private void s() {
-      if (this.dV() instanceof ard $$0) {
-         cwo $$2 = this.m();
-         if (!$$2.f()) {
-            buk $$4;
-            if ($$2.h() instanceof cxj $$3) {
-               $$4 = this.a($$0, $$3, $$2);
-            } else {
-               $$4 = new clb($$0, this.dA(), this.dC(), this.dG(), $$2);
-               $$0.b($$4);
+               if ($$3 instanceof cox $$5) {
+                  this.h($$5);
+                  this.c($$5);
+               }
             }
-
-            $$0.c(3021, this.dv(), 1);
-            $$0.a($$4, ebs.t, this.dt());
-            this.a(cwo.j);
          }
       }
    }
 
-   private buk a(ard $$0, cxj $$1, cwo $$2) {
-      cxj.a $$3 = $$1.b();
-      $$3.e().ifPresent($$1x -> $$0.c($$1x, this.dv(), 0));
-      jn $$4 = jn.a;
-      cpp $$5 = cpp.a($$1.a($$0, this.dt(), $$2, $$4), $$0, $$2, (double)$$4.j(), (double)$$4.k(), (double)$$4.l(), $$3.d(), $$3.c());
-      $$5.c(this);
-      return $$5;
-   }
+   default void a(ard $$0, boolean $$1) {
+      bvh $$2 = this.O_();
+      UUID $$3 = this.b();
+      if (($$2 == null || $$2.eE()) && $$3 != null && $$0.a($$3) instanceof bvj) {
+         this.ae_();
+      } else {
+         if ($$2 != null && !Objects.equals($$3, $$2.cG())) {
+            this.a($$2.cG());
+            this.c();
+         }
 
-   @Override
-   protected void a(akc.a $$0) {
-      $$0.a(f, cwo.j);
-   }
-
-   @Override
-   protected void a(tq $$0) {
-      cwo $$1 = $$0.b("item", 10) ? cwo.a(this.dX(), (un)$$0.p("item")).orElse(cwo.j) : cwo.j;
-      this.a($$1);
-      this.g = $$0.i("spawn_item_after_ticks");
-   }
-
-   @Override
-   protected void b(tq $$0) {
-      if (!this.m().f()) {
-         $$0.a("item", this.m().a(this.dX()).d());
-      }
-
-      $$0.a("spawn_item_after_ticks", this.g);
-   }
-
-   @Override
-   protected boolean r(buk $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean bR() {
-      return false;
-   }
-
-   @Override
-   protected void p(buk $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-   }
-
-   @Override
-   public etd n_() {
-      return etd.d;
-   }
-
-   @Override
-   public boolean s_() {
-      return true;
-   }
-
-   public void l() {
-      faz $$0 = this.dt();
-      int $$1 = this.ae.a(1, 3);
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         double $$3 = 0.4;
-         faz $$4 = new faz(
-            this.dA() + 0.4 * (this.ae.k() - this.ae.k()), this.dC() + 0.4 * (this.ae.k() - this.ae.k()), this.dG() + 0.4 * (this.ae.k() - this.ae.k())
-         );
-         faz $$5 = $$0.a($$4);
-         this.dV().a(lt.be, $$0.a(), $$0.b(), $$0.c(), $$5.a(), $$5.b(), $$5.c());
+         if (this.a() > 0 && ($$2 == null || $$2.aq() != bus.bR || !$$1)) {
+            this.a(this.a() - 1);
+            if (this.a() == 0) {
+               this.ae_();
+            }
+         }
       }
    }
 
-   public cwo m() {
-      return this.au().a(f);
+   default boolean a(bvh $$0, ard $$1) {
+      if (!this.c($$0)) {
+         return false;
+      } else {
+         return $$0.aq() == bus.bR && this.a_($$1) ? true : $$0.cG().equals(this.b());
+      }
    }
 
-   private void a(cwo $$0) {
-      this.au().a(f, $$0);
+   default boolean a_(ard $$0) {
+      return $$0.O().b(dge.P) && this.ac_() && this.b() == null;
    }
 
-   @Override
-   public final boolean a(ard $$0, bta $$1, float $$2) {
-      return false;
+   default boolean ac_() {
+      return this.a() > 0;
    }
+
+   default void a_(ard $$0, cox $$1) {
+      if ($$0.O().b(dge.O)) {
+         if ($$1.cG().equals(this.b())) {
+            this.ae_();
+         }
+      }
+   }
+
+   default void ad_() {
+      this.ae_();
+      this.c();
+   }
+
+   default void ae_() {
+      this.a(null);
+      this.a(null);
+      this.h(null);
+      this.a(0);
+   }
+
+   @Nullable
+   bvh ep();
+
+   void a(@Nullable bvh var1);
+
+   void c(@Nullable cox var1);
+
+   void h(@Nullable bvh var1);
+
+   boolean c(bvh var1);
+
+   @Nullable
+   bvh O_();
 }

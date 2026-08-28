@@ -1,9 +1,15 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import javax.annotation.meta.TypeQualifierDefault;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.system.MemoryUtil;
 
-@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.CLASS)
-public @interface fcz {
+public class fcz {
+   public static void a() {
+      MemoryUtil.memSet(0L, 0, 1L);
+   }
+
+   public static double b() {
+      return GLFW.glfwGetTime();
+   }
+
+   private fcz() {
+   }
 }

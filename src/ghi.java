@@ -1,76 +1,73 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
+import com.mojang.authlib.minecraft.UserApiService;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class ghi extends ghd {
-   final Supplier<hft> g;
+public final class ghi {
+   private static final int a = 1024;
+   private final ggz b;
+   private final ghf c;
+   private final ggu d;
+   @Nullable
+   private ghe e;
 
-   ghi(UUID $$0, Instant $$1, UUID $$2, Supplier<hft> $$3) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
+   public ghi(ggz $$0, ghf $$1, ggu $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public Supplier<hft> a() {
-      return this.g;
+   public static ghi a(ghf $$0, UserApiService $$1) {
+      ggu $$2 = new ggu(1024);
+      ggz $$3 = ggz.a($$0, $$1);
+      return new ghi($$3, $$0, $$2);
    }
 
-   public ghi c() {
-      ghi $$0 = new ghi(this.a, this.b, this.c, this.g);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      return $$0;
+   public void a(flj $$0, ful $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         ghe $$4 = this.e.b();
+         $$0.a(
+            new ftj(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               wp.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               wp.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               wp.c("gui.abuseReport.draft.edit"),
+               wp.c("gui.abuseReport.draft.discard")
+            )
+         );
+      } else {
+         $$2.run();
+      }
    }
 
-   @Override
-   public fuk a(fuk $$0, ghh $$1) {
-      return new fyx($$0, $$1, this);
+   public ggz a() {
+      return this.b;
    }
 
-   public static class a extends ghd.a<ghi> {
-      public a(ghi $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
+   public ggu b() {
+      return this.d;
+   }
 
-      public a(UUID $$0, Supplier<hft> $$1, AbuseReportLimits $$2) {
-         super(new ghi(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
+   public boolean a(ghf $$0) {
+      return Objects.equals(this.c, $$0);
+   }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.i() != null;
-      }
+   public void a(@Nullable ghe $$0) {
+      this.e = $$0;
+   }
 
-      @Nullable
-      @Override
-      public ghd.b c() {
-         if (this.a.e == null) {
-            return ghd.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? ghd.b.d : super.c();
-         }
-      }
+   public boolean c() {
+      return this.e != null;
+   }
 
-      @Override
-      public Either<ghd.c, ghd.b> a(ghh $$0) {
-         ghd.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            hft $$4 = this.a.g.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new ghd.c(this.a.a, ghg.b, $$6));
-         }
-      }
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

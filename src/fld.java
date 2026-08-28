@@ -1,66 +1,74 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
-import java.nio.file.Path;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class fld {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 9;
-   private final Path c;
-   private final DataFixer d;
-   private final gkx[] e = new gkx[9];
-   private boolean f;
+public record fld(int a, @Nullable fld.a b, @Nullable wp c, @Nullable String d) {
+   private static final wp e = wp.c("chat.tag.system");
+   private static final wp f = wp.c("chat.tag.system_single_player");
+   private static final wp g = wp.c("chat.tag.not_secure");
+   private static final wp h = wp.c("chat.tag.modified");
+   private static final wp i = wp.c("chat.tag.error");
+   private static final int j = 13684944;
+   private static final int k = 6316128;
+   private static final fld l = new fld(13684944, null, e, "System");
+   private static final fld m = new fld(13684944, null, f, "System");
+   private static final fld n = new fld(13684944, null, g, "Not Secure");
+   private static final fld o = new fld(16733525, null, i, "Chat Error");
 
-   public fld(Path $$0, DataFixer $$1) {
-      this.c = $$0.resolve("hotbar.nbt");
-      this.d = $$1;
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new gkx();
-      }
+   public static fld a() {
+      return l;
    }
 
-   private void b() {
-      try {
-         tq $$0 = ud.a(this.c);
-         if ($$0 == null) {
-            return;
-         }
-
-         int $$1 = uf.b($$0, 1343);
-         $$0 = ban.d.a(this.d, $$0, $$1);
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.e[$$2] = gkx.a.parse(ue.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(gkx::new);
-         }
-      } catch (Exception var4) {
-         b.error("Failed to load creative mode options", var4);
-      }
+   public static fld b() {
+      return m;
    }
 
-   public void a() {
-      try {
-         tq $$0 = uf.e(new tq());
-
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            gkx $$2 = this.a($$1);
-            DataResult<un> $$3 = gkx.a.encodeStart(ue.a, $$2);
-            $$0.a(String.valueOf($$1), (un)$$3.getOrThrow());
-         }
-
-         ud.b($$0, this.c);
-      } catch (Exception var5) {
-         b.error("Failed to save creative mode options", var5);
-      }
+   public static fld c() {
+      return n;
    }
 
-   public gkx a(int $$0) {
-      if (!this.f) {
-         this.b();
-         this.f = true;
+   public static fld a(String $$0) {
+      wp $$1 = wp.b($$0).a(n.h);
+      wp $$2 = wp.i().b(h).b(wo.s).b($$1);
+      return new fld(6316128, fld.a.a, $$2, "Modified");
+   }
+
+   public static fld d() {
+      return o;
+   }
+
+   public int e() {
+      return this.a;
+   }
+
+   @Nullable
+   public fld.a f() {
+      return this.b;
+   }
+
+   @Nullable
+   public wp g() {
+      return this.c;
+   }
+
+   @Nullable
+   public String h() {
+      return this.d;
+   }
+
+   public static enum a {
+      a(akv.b("icon/chat_modified"), 9, 9);
+
+      public final akv b;
+      public final int c;
+      public final int d;
+
+      private a(final akv $$0, final int $$1, final int $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
       }
 
-      return this.e[$$0];
+      public void a(foe $$0, int $$1, int $$2) {
+         $$0.a(gmi::H, this.b, $$1, $$2, this.c, this.d);
+      }
    }
 }

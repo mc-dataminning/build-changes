@@ -1,45 +1,25 @@
 import com.mojang.serialization.MapCodec;
 
-public class ekx extends ekv {
-   public static final MapCodec<ekx> a = MapCodec.unit(() -> ekx.b);
-   public static final ekx b = new ekx();
+public class ekx<P extends ekw> {
+   public static final ekx<eky> a = a("trunk_vine", eky.a);
+   public static final ekx<eku> b = a("leave_vine", eku.a);
+   public static final ekx<ekv> c = a("pale_moss", ekv.a);
+   public static final ekx<ekt> d = a("creaking_heart", ekt.a);
+   public static final ekx<eks> e = a("cocoa", eks.a);
+   public static final ekx<ekr> f = a("beehive", ekr.a);
+   public static final ekx<ekp> g = a("alter_ground", ekp.a);
+   public static final ekx<ekq> h = a("attached_to_leaves", ekq.a);
+   private final MapCodec<P> i;
 
-   @Override
-   protected ekw<?> a() {
-      return ekw.a;
+   private static <P extends ekw> ekx<P> a(String $$0, MapCodec<P> $$1) {
+      return ke.a(mb.X, $$0, new ekx<>($$1));
    }
 
-   @Override
-   public void a(ekv.a $$0) {
-      azh $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            ji $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dsm.d);
-            }
-         }
+   private ekx(MapCodec<P> $$0) {
+      this.i = $$0;
+   }
 
-         if ($$1.a(3) > 0) {
-            ji $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dsm.f);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            ji $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dsm.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            ji $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dsm.c);
-            }
-         }
-      });
+   public MapCodec<P> a() {
+      return this.i;
    }
 }

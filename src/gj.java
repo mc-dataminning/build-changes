@@ -17,10 +17,10 @@ public class gj implements ArgumentType<String> {
       return new gj();
    }
 
-   public static fbz a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static fca a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      fce $$3 = ((ex)$$0.getSource()).l().aJ();
-      fbz $$4 = $$3.b($$2);
+      fcf $$3 = ((ex)$$0.getSource()).l().aJ();
+      fca $$4 = $$3.b($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {

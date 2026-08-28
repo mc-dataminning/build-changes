@@ -1,41 +1,43 @@
-public class gtx extends gqx<chr, gzy, gdl> {
-   private static final akv a = akv.b("textures/entity/rabbit/brown.png");
-   private static final akv b = akv.b("textures/entity/rabbit/white.png");
-   private static final akv k = akv.b("textures/entity/rabbit/black.png");
-   private static final akv l = akv.b("textures/entity/rabbit/gold.png");
-   private static final akv m = akv.b("textures/entity/rabbit/salt.png");
-   private static final akv n = akv.b("textures/entity/rabbit/white_splotched.png");
-   private static final akv o = akv.b("textures/entity/rabbit/toast.png");
-   private static final akv p = akv.b("textures/entity/rabbit/caerbannog.png");
+public class gtx extends gtk<chr, gzy, gcb<gyk>> {
+   private static final akv a = akv.b("textures/entity/fish/pufferfish.png");
+   private final gcb<gyk> b;
+   private final gcb<gyk> k;
+   private final gcb<gyk> l = this.c();
 
-   public gtx(gsd.a $$0) {
-      super($$0, new gdl($$0.a(gfb.ct)), new gdl($$0.a(gfb.cu)), 0.3F);
+   public gtx(gse.a $$0) {
+      super($$0, new gdi($$0.a(gfc.cq)), 0.2F);
+      this.k = new gdj($$0.a(gfc.cr));
+      this.b = new gdk($$0.a(gfc.cs));
    }
 
    public akv a(gzy $$0) {
-      if ($$0.b) {
-         return o;
-      } else {
-         return switch ($$0.c) {
-            case a -> a;
-            case b -> b;
-            case c -> k;
-            case e -> l;
-            case f -> m;
-            case d -> n;
-            case g -> p;
-         };
-      }
+      return a;
    }
 
    public gzy b() {
       return new gzy();
    }
 
+   protected float b(gzy $$0) {
+      return 0.1F + 0.1F * (float)$$0.a;
+   }
+
+   public void a(gzy $$0, ffu $$1, gly $$2, int $$3) {
+      this.h = switch ($$0.a) {
+         case 0 -> this.b;
+         case 1 -> this.k;
+         default -> this.l;
+      };
+      super.a($$0, $$1, $$2, $$3);
+   }
+
    public void a(chr $$0, gzy $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = "Toast".equals(n.a($$0.al().getString()));
-      $$1.c = $$0.gs();
+      $$1.a = $$0.gt();
+   }
+
+   protected void a(gzy $$0, ffu $$1, float $$2, float $$3) {
+      $$1.a(0.0F, ayz.b($$0.u * 0.05F) * 0.08F, 0.0F);
+      super.a($$0, $$1, $$2, $$3);
    }
 }

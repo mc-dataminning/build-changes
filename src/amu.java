@@ -10,18 +10,18 @@ public class amu {
    public static void a(CommandDispatcher<ex> $$0) {
       LiteralArgumentBuilder<ex> $$1 = ey.a("difficulty");
 
-      for (bsg $$2 : bsg.values()) {
+      for (bsh $$2 : bsh.values()) {
          $$1.then(ey.a($$2.e()).executes($$1x -> a((ex)$$1x.getSource(), $$2)));
       }
 
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         bsg $$1x = ((ex)$$0x.getSource()).e().am();
+         bsh $$1x = ((ex)$$0x.getSource()).e().am();
          ((ex)$$0x.getSource()).a(() -> wp.a("commands.difficulty.query", $$1x.b()), false);
          return $$1x.a();
       }));
    }
 
-   public static int a(ex $$0, bsg $$1) throws CommandSyntaxException {
+   public static int a(ex $$0, bsh $$1) throws CommandSyntaxException {
       MinecraftServer $$2 = $$0.l();
       if ($$2.aZ().q() == $$1) {
          throw a.create($$1.e());

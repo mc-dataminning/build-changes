@@ -3,27 +3,46 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bze {
-   private static final int a = 1;
-
-   public static bxa<bvi> a(float $$0) {
-      return a($$1 -> $$0);
+   public static bxb<bvp> a(cel<ji> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, fba::c);
    }
 
-   public static bxa<bvi> a(Function<bvg, Float> $$0) {
-      return cam.a(
-         (Function<cam.b<bvi>, ? extends App<cam.c<bvi>, cap<bvi>>>)($$1 -> $$1.group($$1.a(cek.m), $$1.a(cek.n), $$1.b(cek.o), $$1.a(cek.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bvg $$9 = $$1.b($$4);
-                     Optional<cem> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bxb.a($$7, $$9, 1)) {
-                        $$2.b();
-                     } else {
-                        $$3.a(new bxk($$9, true));
-                        $$2.a(new cen(new bxk($$9, false), $$0.apply($$7), 0));
-                     }
+   public static byl<bvp> b(cel<? extends bul> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, bul::dt);
+   }
 
-                     return true;
-                  }))
+   private static <T> byl<bvp> a(cel<T> $$0, float $$1, int $$2, boolean $$3, Function<T, fba> $$4) {
+      return can.a(
+         (Function<can.b<bvp>, ? extends App<can.c<bvp>, caq<bvp>>>)($$5 -> $$5.group($$5.a(cel.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  Optional<ceo> $$10 = $$5.a($$5x);
+                  if ($$10.isPresent() && !$$3) {
+                     return false;
+                  } else {
+                     fba $$11 = $$8.dt();
+                     fba $$12 = $$4.apply($$5.b($$6));
+                     if (!$$11.a((kb)$$12, (double)$$2)) {
+                        return false;
+                     } else {
+                        if ($$10.isPresent() && $$10.get().b() == $$1) {
+                           fba $$13 = $$10.get().a().a().d($$11);
+                           fba $$14 = $$12.d($$11);
+                           if ($$13.b($$14) < 0.0) {
+                              return false;
+                           }
+                        }
+
+                        for (int $$15 = 0; $$15 < 10; $$15++) {
+                           fba $$16 = cgf.b($$8, 16, 7, $$12);
+                           if ($$16 != null) {
+                              $$5x.a(new ceo($$16, $$1, 0));
+                              break;
+                           }
+                        }
+
+                        return true;
+                     }
+                  }
+               }))
       );
    }
 }

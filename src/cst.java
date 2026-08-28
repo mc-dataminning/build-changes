@@ -1,17 +1,19 @@
-import java.util.List;
+public class cst extends ctz {
+   private final css a;
 
-public interface cst extends bsc, cud {
-   int ay_();
-
-   int g();
-
-   List<cwo> h();
-
-   default dar aB_() {
-      return this.aC_().a();
+   public cst(bsd $$0, int $$1, int $$2, int $$3, css $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
    }
 
-   default dar.a aC_() {
-      return dar.b(this.ay_(), this.g(), this.h());
+   @Override
+   public boolean a(cwp $$0) {
+      return !this.a.e(this.d) && super.a($$0);
+   }
+
+   @Override
+   public void c() {
+      super.c();
+      this.a.a(this.c);
    }
 }

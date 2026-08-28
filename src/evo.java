@@ -1,69 +1,38 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
 
-public interface evo {
-   evn<czg> a = new evn<czg>() {
-      @Override
-      public ku<czg> a() {
-         return kv.al;
-      }
+public interface evo<T> {
+   ku<T> a();
 
-      public Stream<cwo> a(czg $$0) {
-         return $$0.b();
-      }
+   T b();
 
-      public czg c() {
-         return czg.a;
-      }
+   T a(T var1, Stream<cwp> var2);
 
-      public czg a(czg $$0, Stream<cwo> $$1) {
-         return czg.a($$1.toList());
-      }
-   };
-   evn<cys> b = new evn<cys>() {
-      @Override
-      public ku<cys> a() {
-         return kv.P;
-      }
+   Stream<cwp> a(T var1);
 
-      public cys c() {
-         return cys.a;
-      }
+   default void a(cwp $$0, T $$1, Stream<cwp> $$2) {
+      T $$3 = $$0.a(this.a(), $$1);
+      T $$4 = this.a($$3, $$2);
+      $$0.b(this.a(), $$4);
+   }
 
-      public Stream<cwo> a(cys $$0) {
-         return $$0.b();
-      }
+   default void a(cwp $$0, Stream<cwp> $$1) {
+      this.a($$0, this.b(), $$1);
+   }
 
-      public cys a(cys $$0, Stream<cwo> $$1) {
-         cys.a $$2 = new cys.a($$0).a();
-         $$1.forEach($$2::a);
-         return $$2.d();
+   default void a(cwp $$0, UnaryOperator<cwp> $$1) {
+      T $$2 = $$0.a(this.a());
+      if ($$2 != null) {
+         UnaryOperator<cwp> $$3 = $$1x -> {
+            if ($$1x.f()) {
+               return $$1x;
+            } else {
+               cwp $$2x = $$1.apply($$1x);
+               $$2x.f($$2x.k());
+               return $$2x;
+            }
+         };
+         this.a($$0, this.a($$2).map($$3));
       }
-   };
-   evn<cyt> c = new evn<cyt>() {
-      @Override
-      public ku<cyt> a() {
-         return kv.O;
-      }
-
-      public cyt c() {
-         return cyt.a;
-      }
-
-      public Stream<cwo> a(cyt $$0) {
-         return $$0.a().stream();
-      }
-
-      public cyt a(cyt $$0, Stream<cwo> $$1) {
-         return cyt.a($$1.toList());
-      }
-   };
-   Map<ku<?>, evn<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(evn::a, $$0 -> (evn<?>)$$0));
-   Codec<evn<?>> e = mb.ao.q().comapFlatMap($$0 -> {
-      evn<?> $$1 = d.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
-   }, evn::a);
+   }
 }

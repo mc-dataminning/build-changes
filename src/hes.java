@@ -1,44 +1,121 @@
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
 import javax.annotation.Nullable;
 
-public record hes(fet a, @Nullable hgo b) implements Closeable {
-   public static hes a(aup $$0, akv $$1) throws IOException {
-      aun $$2 = $$0.getResourceOrThrow($$1);
+public class hes {
+   private final akv a;
+   private final hem b;
+   final int c;
+   final int d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
 
-      fet $$4;
-      try (InputStream $$3 = $$2.d()) {
-         $$4 = fet.a($$3);
-      }
-
-      hgo $$6 = $$2.f().a(hgo.d).orElse(null);
-      return new hes($$4, $$6);
+   protected hes(akv $$0, hem $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$4;
+      this.d = $$5;
+      this.e = (float)$$4 / (float)$$2;
+      this.f = (float)($$4 + $$1.a()) / (float)$$2;
+      this.g = (float)$$5 / (float)$$3;
+      this.h = (float)($$5 + $$1.b()) / (float)$$3;
    }
 
-   public static hes a() {
-      return new hes(heg.a(), null);
+   public int a() {
+      return this.c;
    }
 
-   public boolean b() {
-      return this.b != null ? this.b.a() : false;
+   public int b() {
+      return this.d;
    }
 
-   public boolean c() {
-      return this.b != null ? this.b.b() : false;
+   public float c() {
+      return this.e;
    }
 
-   @Override
-   public void close() {
-      this.a.close();
+   public float d() {
+      return this.f;
    }
 
-   public fet d() {
-      return this.a;
+   public hem e() {
+      return this.b;
    }
 
    @Nullable
-   public hgo e() {
-      return this.b;
+   public hes.a f() {
+      final heo $$0 = this.b.e();
+      return $$0 != null ? new hes.a() {
+         @Override
+         public void a() {
+            $$0.a(hes.this.c, hes.this.d);
+         }
+
+         @Override
+         public void close() {
+            $$0.close();
+         }
+      } : null;
+   }
+
+   public float a(float $$0) {
+      float $$1 = this.f - this.e;
+      return this.e + $$1 * $$0;
+   }
+
+   public float b(float $$0) {
+      float $$1 = this.f - this.e;
+      return ($$0 - this.e) / $$1;
+   }
+
+   public float g() {
+      return this.g;
+   }
+
+   public float h() {
+      return this.h;
+   }
+
+   public float c(float $$0) {
+      float $$1 = this.h - this.g;
+      return this.g + $$1 * $$0;
+   }
+
+   public float d(float $$0) {
+      float $$1 = this.h - this.g;
+      return ($$0 - this.g) / $$1;
+   }
+
+   public akv i() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
+   }
+
+   public void j() {
+      this.b.a(this.c, this.d);
+   }
+
+   private float l() {
+      float $$0 = (float)this.b.a() / (this.f - this.e);
+      float $$1 = (float)this.b.b() / (this.h - this.g);
+      return Math.max($$1, $$0);
+   }
+
+   public float k() {
+      return 4.0F / this.l();
+   }
+
+   public ffy a(ffy $$0) {
+      return new gmw($$0, this);
+   }
+
+   public interface a extends AutoCloseable {
+      void a();
+
+      @Override
+      void close();
    }
 }

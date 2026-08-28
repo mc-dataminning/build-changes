@@ -1,15 +1,16 @@
-public class hia extends hib {
-   public hia(cgy $$0) {
-      super($$0, awa.bR, awb.g);
+public class hia extends hic {
+   public hia(cgz $$0) {
+      super($$0, awa.bQ, awb.g);
+      this.j = 0;
    }
 
    @Override
-   protected hhx o() {
-      return new hhz(this.n);
+   protected hhy o() {
+      return new hib(this.n);
    }
 
    @Override
    protected boolean p() {
-      return this.n.ac_();
+      return !this.n.ac_();
    }
 }

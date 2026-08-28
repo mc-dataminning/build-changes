@@ -1,31 +1,123 @@
-public class hid implements hhy {
-   private final gkv a;
-   private boolean b;
-   private boolean c = true;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public hid(gkv $$0) {
-      this.a = $$0;
+public class hid implements hhz {
+   private static final int a = 40;
+   private static final float b = 0.001F;
+   private final gkw c;
+   private final hjv d;
+   private final dhm e;
+   private final azh f;
+   private final Object2ObjectArrayMap<dhk, hid.a> g = new Object2ObjectArrayMap();
+   private Optional<dhi> h = Optional.empty();
+   private Optional<dhh> i = Optional.empty();
+   private float j;
+   @Nullable
+   private dhk k;
+
+   public hid(gkw $$0, hjv $$1, dhm $$2) {
+      this.f = $$0.dV().H_();
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public float b() {
+      return this.j;
    }
 
    @Override
    public void a() {
-      dgh $$0 = this.a.dV();
-      dww $$1 = $$0.c(this.a.cR().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(djn.nF)).findFirst().orElse(null);
-      if ($$1 != null) {
-         if (!this.b && !this.c && $$1.a(djn.nF) && !this.a.Z_()) {
-            boolean $$2 = $$1.c(djs.b);
-            if ($$2) {
-               this.a.a(awa.db, 1.0F, 1.0F);
-            } else {
-               this.a.a(awa.cZ, 1.0F, 1.0F);
-            }
-         }
+      this.g.values().removeIf(hhy::m);
+      dhk $$0 = this.e.a(this.c.dA(), this.c.dC(), this.c.dG()).a();
+      if ($$0 != this.k) {
+         this.k = $$0;
+         this.h = $$0.m();
+         this.i = $$0.n();
+         this.g.values().forEach(hid.a::o);
+         $$0.l().ifPresent($$1 -> this.g.compute($$0, ($$1x, $$2) -> {
+               if ($$2 == null) {
+                  $$2 = new hid.a((avz)$$1.a());
+                  this.d.a((hip)$$2);
+               }
 
-         this.b = true;
-      } else {
-         this.b = false;
+               $$2.p();
+               return $$2;
+            }));
       }
 
-      this.c = false;
+      this.i.ifPresent($$0x -> {
+         if (this.f.j() < $$0x.b()) {
+            this.d.a(hik.b($$0x.a().a()));
+         }
+      });
+      this.h
+         .ifPresent(
+            $$0x -> {
+               dgi $$1 = this.c.dV();
+               int $$2 = $$0x.c() * 2 + 1;
+               ji $$3 = ji.a(
+                  this.c.dA() + (double)this.f.a($$2) - (double)$$0x.c(),
+                  this.c.dE() + (double)this.f.a($$2) - (double)$$0x.c(),
+                  this.c.dG() + (double)this.f.a($$2) - (double)$$0x.c()
+               );
+               int $$4 = $$1.a(dgr.a, $$3);
+               if ($$4 > 0) {
+                  this.j -= (float)$$4 / 15.0F * 0.001F;
+               } else {
+                  this.j = this.j - (float)($$1.a(dgr.b, $$3) - 1) / (float)$$0x.b();
+               }
+
+               if (this.j >= 1.0F) {
+                  double $$5 = (double)$$3.u() + 0.5;
+                  double $$6 = (double)$$3.v() + 0.5;
+                  double $$7 = (double)$$3.w() + 0.5;
+                  double $$8 = $$5 - this.c.dA();
+                  double $$9 = $$6 - this.c.dE();
+                  double $$10 = $$7 - this.c.dG();
+                  double $$11 = Math.sqrt($$8 * $$8 + $$9 * $$9 + $$10 * $$10);
+                  double $$12 = $$11 + $$0x.d();
+                  hik $$13 = hik.a($$0x.a().a(), this.f, this.c.dA() + $$8 / $$11 * $$12, this.c.dE() + $$9 / $$11 * $$12, this.c.dG() + $$10 / $$11 * $$12);
+                  this.d.a($$13);
+                  this.j = 0.0F;
+               } else {
+                  this.j = Math.max(this.j, 0.0F);
+               }
+            }
+         );
+   }
+
+   public static class a extends hhy {
+      private int n;
+      private int o;
+
+      public a(avz $$0) {
+         super($$0, awb.i, hip.t());
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
+
+      @Override
+      public void q() {
+         if (this.o < 0) {
+            this.n();
+         }
+
+         this.o = this.o + this.n;
+         this.d = ayz.a((float)this.o / 40.0F, 0.0F, 1.0F);
+      }
+
+      public void o() {
+         this.o = Math.min(this.o, 40);
+         this.n = -1;
+      }
+
+      public void p() {
+         this.o = Math.max(0, this.o);
+         this.n = 1;
+      }
    }
 }

@@ -1,3 +1,4 @@
-public class gym extends gzb {
-   public boolean a;
+public class gym extends gyk {
+   public float a;
+   public float b;
 }

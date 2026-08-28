@@ -1,33 +1,29 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
 
-public class hka implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final bnk<hjz> b;
-   private final bqz c;
+public record hka(hke b, hkh c) {
+   public static final Codec<hka> a = hke.a.dispatchStable(hka::a, hke::c);
 
-   public hka(FileChannel $$0, Executor $$1) {
-      this.b = new bnk<>(hjz.a, $$0);
-      this.c = new bqz($$1, "telemetry-event-log");
+   public hka(hke b, hkh c) {
+      c.b().forEach($$1x -> {
+         if (!$$0.a($$1x)) {
+            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
+         }
+      });
+      this.b = b;
+      this.c = c;
    }
 
-   public hkb a() {
-      return $$0 -> this.c.a_(() -> {
-            try {
-               this.b.a($$0);
-            } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
-            }
-         });
+   public TelemetryEvent a(TelemetrySession $$0) {
+      return this.b.a($$0, this.c);
    }
 
-   @Override
-   public void close() {
-      this.c.a_(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
+   public hke a() {
+      return this.b;
+   }
+
+   public hkh b() {
+      return this.c;
    }
 }

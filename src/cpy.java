@@ -1,75 +1,88 @@
-public class cpy extends cpw {
-   private static final bun a = bun.c(0.0F, 0.0F);
+public abstract class cpy extends cpq {
+   private static final float a = 12.25F;
 
-   public cpy(bur<? extends cpy> $$0, dgh $$1) {
+   protected cpy(bus<? extends cpy> $$0, dgi $$1) {
       super($$0, $$1);
    }
 
-   public cpy(dgh $$0, bvg $$1, cwo $$2) {
-      super(bur.L, $$1, $$0, $$2);
-   }
-
-   public cpy(dgh $$0, double $$1, double $$2, double $$3, cwo $$4) {
-      super(bur.L, $$1, $$2, $$3, $$0, $$4);
+   protected cpy(bus<? extends cpy> $$0, double $$1, double $$2, double $$3, dgi $$4) {
+      this($$0, $$4);
+      this.a_($$1, $$2, $$3);
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         double $$1 = 0.08;
+   public boolean a(double $$0) {
+      if (this.af < 2 && $$0 < 12.25) {
+         return false;
+      } else {
+         double $$1 = this.cR().a() * 4.0;
+         if (Double.isNaN($$1)) {
+            $$1 = 4.0;
+         }
 
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dV()
-               .a(
-                  new lp(lt.T, this.l()),
-                  this.dA(),
-                  this.dC(),
-                  this.dG(),
-                  ((double)this.ae.i() - 0.5) * 0.08,
-                  ((double)this.ae.i() - 0.5) * 0.08,
-                  ((double)this.ae.i() - 0.5) * 0.08
-               );
+         $$1 *= 64.0;
+         return $$0 < $$1 * $$1;
+      }
+   }
+
+   @Override
+   public boolean o(boolean $$0) {
+      return true;
+   }
+
+   @Override
+   public void h() {
+      this.s();
+      this.bf();
+      this.m();
+      fay $$0 = cps.a(this, this::b);
+      fba $$1;
+      if ($$0.d() != fay.a.a) {
+         $$1 = $$0.g();
+      } else {
+         $$1 = this.dt().e(this.dy());
+      }
+
+      this.b($$1);
+      this.F();
+      this.aK();
+      super.h();
+      if ($$0.d() != fay.a.a && this.bL()) {
+         this.b($$0);
+      }
+   }
+
+   private void m() {
+      fba $$0 = this.dy();
+      fba $$1 = this.dt();
+      float $$4;
+      if (this.bj()) {
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            float $$3 = 0.25F;
+            this.dV().a(lt.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
+         }
+
+         $$4 = 0.8F;
+      } else {
+         $$4 = 0.99F;
+      }
+
+      this.i($$0.c((double)$$4));
+   }
+
+   private void s() {
+      if (this.ak) {
+         for (ji $$0 : ji.a(this.cR())) {
+            dwx $$1 = this.dV().a_($$0);
+            if ($$1.a(djo.nF)) {
+               $$1.a(this.dV(), $$0, this);
+            }
          }
       }
    }
 
    @Override
-   protected void a(faw $$0) {
-      super.a($$0);
-      $$0.a().a(this.dW().b(this, this.p()), 0.0F);
-   }
-
-   @Override
-   protected void a(fax $$0) {
-      super.a($$0);
-      if (!this.dV().C) {
-         if (this.ae.a(8) == 0) {
-            int $$1 = 1;
-            if (this.ae.a(32) == 0) {
-               $$1 = 4;
-            }
-
-            for (int $$2 = 0; $$2 < $$1; $$2++) {
-               chc $$3 = bur.z.a(this.dV(), buq.k);
-               if ($$3 != null) {
-                  $$3.c_(-24000);
-                  $$3.b(this.dA(), this.dC(), this.dG(), this.dL(), 0.0F);
-                  if (!$$3.a(a)) {
-                     break;
-                  }
-
-                  this.dV().b($$3);
-               }
-            }
-         }
-
-         this.dV().a(this, (byte)3);
-         this.at();
-      }
-   }
-
-   @Override
-   protected cwk m() {
-      return cws.ry;
+   protected double bd() {
+      return 0.03;
    }
 }

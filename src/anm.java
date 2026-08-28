@@ -12,7 +12,7 @@ public class anm {
    }
 
    private static int a(ex $$0) {
-      return a($$0, cow::p_);
+      return a($$0, cox::p_);
    }
 
    private static int b(ex $$0) {

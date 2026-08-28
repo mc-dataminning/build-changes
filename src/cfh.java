@@ -1,56 +1,53 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiPredicate;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class cfh extends cfq<bvi> {
-   private static final int a = 40;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final Long2LongMap d = new Long2LongOpenHashMap();
-   private int e;
-   private long f;
+public class cfh<T extends bvh> extends cfr<T> {
+   private final BiPredicate<T, bvh> a;
+   private final Predicate<T> b;
+   private final cel<Boolean> c;
+   private final int d;
 
-   public cfh() {
-      super(20);
+   public cfh(int $$0, BiPredicate<T, bvh> $$1, Predicate<T> $$2, cel<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
    }
 
    @Override
-   public Set<cek<?>> a() {
-      return ImmutableSet.of(cek.w);
+   protected void a(ard $$0, T $$1) {
+      if (!this.b.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
    }
 
-   protected void a(ard $$0, bvi $$1) {
-      if ($$1.e_()) {
-         this.e = 0;
-         this.f = $$0.ad() + (long)$$0.H_().a(20);
-         cgk $$2 = $$0.A();
-         Predicate<ji> $$3 = $$0x -> {
-            long $$1x = $$0x.a();
-            if (this.d.containsKey($$1x)) {
-               return false;
-            } else if (++this.e >= 5) {
-               return false;
-            } else {
-               this.d.put($$1x, this.f + 40L);
-               return true;
-            }
-         };
-         Set<Pair<jr<cgn>, ji>> $$4 = $$2.b($$0x -> $$0x.a(cgo.n), $$3, $$1.dv(), 48, cgk.b.c).collect(Collectors.toSet());
-         etm $$5 = bws.a($$1, $$4);
-         if ($$5 != null && $$5.j()) {
-            ji $$6 = $$5.l();
-            Optional<jr<cgn>> $$7 = $$2.c($$6);
-            if ($$7.isPresent()) {
-               $$1.eb().a(cek.w, $$6);
-            }
-         } else if (this.e < 5) {
-            this.d.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.f);
+   @Override
+   public Set<cel<?>> a() {
+      return Set.of(cel.g);
+   }
+
+   @Override
+   public void a(T $$0) {
+      Optional<List<bvh>> $$1 = $$0.eb().c(cel.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
          }
       }
+   }
+
+   public void b(T $$0) {
+      $$0.eb().a(this.c, true, (long)this.d);
+   }
+
+   public void c(T $$0) {
+      $$0.eb().b(this.c);
    }
 }

@@ -1,33 +1,41 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import java.util.List;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class cad {
-   private static final int a = 10;
-   private static final int b = 7;
+   private static final int a = 16;
 
-   public static byk<bvo> a(float $$0) {
-      return a($$0, 10, 7);
+   public static bxb<bvh> a(Predicate<jr<cgo>> $$0, cel<jq> $$1) {
+      return can.a((Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               jq $$6 = $$2.b($$2x);
+               ji $$7 = $$6.b();
+               if ($$3.ai() == $$6.a() && $$7.a($$4.dt(), 16.0)) {
+                  ard $$8 = $$3.p().a($$6.a());
+                  if ($$8 == null || !$$8.A().a($$7, $$0)) {
+                     $$2x.b();
+                  } else if (a($$8, $$7, $$4)) {
+                     $$2x.b();
+                     if (!a($$8, $$7)) {
+                        $$3.A().b($$7);
+                        agd.c($$3, $$7);
+                     }
+                  }
+
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 
-   public static byk<bvo> a(float $$0, int $$1, int $$2) {
-      return cam.a((Function<cam.b<bvo>, ? extends App<cam.c<bvo>, cap<bvo>>>)($$3 -> $$3.group($$3.c(cek.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               ji $$7 = $$5.dv();
-               faz $$8;
-               if ($$4.c($$7)) {
-                  $$8 = cge.a($$5, $$1, $$2);
-               } else {
-                  kk $$9 = kk.a($$7);
-                  kk $$10 = bxb.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = cgb.a($$5, $$1, $$2, faz.c($$10.k()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = cge.a($$5, $$1, $$2);
-                  }
-               }
+   private static boolean a(ard $$0, ji $$1, bvh $$2) {
+      dwx $$3 = $$0.a_($$1);
+      return $$3.a(awp.T) && $$3.c(djf.c) && !$$2.fR();
+   }
 
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new cen($$1xxxx, $$0, 0)));
-               return true;
-            })));
+   private static boolean a(ard $$0, ji $$1) {
+      List<coi> $$2 = $$0.a(coi.class, new fav($$1), bvh::fR);
+      return !$$2.isEmpty();
    }
 }

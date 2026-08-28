@@ -1,48 +1,52 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public interface bqt {
-   bqs a();
+public class bqt {
+   public static final Codec<bqt> a = Codec.INT.xmap(bqt::a, bqt::a);
+   private static final bqt b = new bqt(1);
+   private static final Logger c = LogUtils.getLogger();
+   private final int d;
 
-   static <T> bqt.b<T> a(T $$0, int $$1) {
-      return new bqt.b<>($$0, bqs.a($$1));
+   private bqt(int $$0) {
+      this.d = $$0;
    }
 
-   public static class a implements bqt {
-      private final bqs a;
-
-      public a(int $$0) {
-         this.a = bqs.a($$0);
-      }
-
-      public a(bqs $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public bqs a() {
-         return this.a;
+   public static bqt a(int $$0) {
+      if ($$0 == 1) {
+         return b;
+      } else {
+         b($$0);
+         return new bqt($$0);
       }
    }
 
-   public static record b<T>(T a, bqs b) implements bqt {
-      @Override
-      public bqs a() {
-         return this.b;
-      }
+   public int a() {
+      return this.d;
+   }
 
-      public static <E> Codec<bqt.b<E>> a(Codec<E> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bqt.b::b), bqs.a.fieldOf("weight").forGetter(bqt.b::c)).apply($$1, bqt.b::new)
-         );
+   private static void b(int $$0) {
+      if ($$0 < 0) {
+         throw (IllegalArgumentException)af.b(new IllegalArgumentException("Weight should be >= 0"));
+      } else {
+         if ($$0 == 0 && ab.aU) {
+            c.warn("Found 0 weight, make sure this is intentional!");
+         }
       }
+   }
 
-      public T b() {
-         return this.a;
-      }
+   @Override
+   public String toString() {
+      return Integer.toString(this.d);
+   }
 
-      public bqs c() {
-         return this.b;
-      }
+   @Override
+   public int hashCode() {
+      return Integer.hashCode(this.d);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof bqt && this.d == ((bqt)$$0).d;
    }
 }

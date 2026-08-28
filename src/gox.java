@@ -1,80 +1,53 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class gox implements gok<dvl> {
+   private final gox.a a;
 
-public class gox extends god {
-   private static final float a = 0.6666667F;
-   private static final faz b = new faz(0.0, 0.33333334F, 0.046666667F);
-   private final Map<dyi, gox.a> c;
-
-   public gox(gok.a $$0) {
-      super($$0);
-      this.c = dyi.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gox.a(a($$0.f(), $$1, true), a($$0.f(), $$1, false))));
+   public gox(gol.a $$0) {
+      this($$0.f());
    }
 
-   @Override
-   protected gcv a(dww $$0, dyi $$1) {
-      gox.a $$2 = this.c.get($$1);
-      return $$0.b() instanceof drl ? $$2.a() : $$2.b();
+   public gox(gez $$0) {
+      this.a = new gox.a($$0.a(gfc.cF));
    }
 
-   @Override
-   protected hgy a(dyi $$0) {
-      return gms.a($$0);
-   }
-
-   @Override
-   protected float a() {
-      return 0.6666667F;
-   }
-
-   @Override
-   protected float b() {
-      return 0.6666667F;
-   }
-
-   private static void a(fft $$0, float $$1) {
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.d.rotationDegrees($$1));
-   }
-
-   @Override
-   protected void a(fft $$0, float $$1, dww $$2) {
-      a($$0, $$1);
-      if (!($$2.b() instanceof drl)) {
-         $$0.a(0.0F, -0.3125F, -0.4375F);
+   public void a(dvl $$0, float $$1, ffu $$2, gly $$3, int $$4, int $$5) {
+      jn $$6 = $$0.m().a(dqq.b, jn.b);
+      cvm $$7 = $$0.s();
+      hgz $$8;
+      if ($$7 == null) {
+         $$8 = gmt.i;
+      } else {
+         $$8 = gmt.d($$7);
       }
+
+      float $$10 = $$0.a($$1);
+      this.a($$2, $$3, $$4, $$5, $$6, $$10, $$8);
    }
 
-   @Override
-   protected faz c() {
-      return b;
-   }
-
-   public static void a(fft $$0, glx $$1, int $$2, int $$3, gcv $$4, hgy $$5) {
+   public void a(ffu $$0, gly $$1, int $$2, int $$3, jn $$4, float $$5, hgz $$6) {
       $$0.a();
-      a($$0, 0.0F);
-      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
-      ffx $$6 = $$5.a($$1, $$4::a);
-      $$4.a($$0, $$6, $$2, $$3);
+      $$0.a(0.5F, 0.5F, 0.5F);
+      float $$7 = 0.9995F;
+      $$0.b(0.9995F, 0.9995F, 0.9995F);
+      $$0.a($$4.b());
+      $$0.b(1.0F, -1.0F, -1.0F);
+      $$0.a(0.0F, -1.0F, 0.0F);
+      this.a.a($$5);
+      ffy $$8 = $$6.a($$1, this.a::a);
+      this.a.a($$0, $$8, $$2, $$3);
       $$0.b();
    }
 
-   public static gcv a(gey $$0, dyi $$1, boolean $$2) {
-      gfa $$3 = $$2 ? gfb.a($$1) : gfb.b($$1);
-      return new gcv.a($$0.a($$3), gmh::g);
-   }
+   static class a extends gcw {
+      private final gfd a;
 
-   public static gfi a(boolean $$0) {
-      gfk $$1 = new gfk();
-      gfm $$2 = $$1.a();
-      $$2.a("sign", gfh.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), gfe.a);
-      if ($$0) {
-         $$2.a("stick", gfh.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), gfe.a);
+      public a(gfd $$0) {
+         super($$0, gmi::g);
+         this.a = $$0.b("lid");
       }
 
-      return gfi.a($$1, 64, 32);
-   }
-
-   static record a(gcv a, gcv b) {
+      public void a(float $$0) {
+         this.a.a(0.0F, 24.0F - $$0 * 0.5F * 16.0F, 0.0F);
+         this.a.f = 270.0F * $$0 * (float) (Math.PI / 180.0);
+      }
    }
 }

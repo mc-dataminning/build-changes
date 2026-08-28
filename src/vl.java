@@ -342,20 +342,20 @@ public class vl extends ByteBuf {
       $$0.writeLong($$1.a());
    }
 
-   public dfn f() {
-      return new dfn(this.readLong());
+   public dfo f() {
+      return new dfo(this.readLong());
    }
 
-   public vl a(dfn $$0) {
+   public vl a(dfo $$0) {
       this.b($$0.a());
       return this;
    }
 
-   public static dfn c(ByteBuf $$0) {
-      return new dfn($$0.readLong());
+   public static dfo c(ByteBuf $$0) {
+      return new dfo($$0.readLong());
    }
 
-   public static void a(ByteBuf $$0, dfn $$1) {
+   public static void a(ByteBuf $$0, dfo $$1) {
       $$0.writeLong($$1.a());
    }
 
@@ -369,7 +369,7 @@ public class vl extends ByteBuf {
    }
 
    public jq h() {
-      aku<dgh> $$0 = this.a(mc.be);
+      aku<dgi> $$0 = this.a(mc.be);
       ji $$1 = this.e();
       return jq.a($$0, $$1);
    }
@@ -416,21 +416,21 @@ public class vl extends ByteBuf {
       $$0.writeFloat($$1.w);
    }
 
-   public static faz f(ByteBuf $$0) {
-      return new faz($$0.readDouble(), $$0.readDouble(), $$0.readDouble());
+   public static fba f(ByteBuf $$0) {
+      return new fba($$0.readDouble(), $$0.readDouble(), $$0.readDouble());
    }
 
-   public faz k() {
+   public fba k() {
       return f(this);
    }
 
-   public static void a(ByteBuf $$0, faz $$1) {
+   public static void a(ByteBuf $$0, fba $$1) {
       $$0.writeDouble($$1.a());
       $$0.writeDouble($$1.b());
       $$0.writeDouble($$1.c());
    }
 
-   public void a(faz $$0) {
+   public void a(fba $$0) {
       a(this, $$0);
    }
 
@@ -605,7 +605,7 @@ public class vl extends ByteBuf {
       return this;
    }
 
-   public fav v() {
+   public faw v() {
       ji $$0 = this.e();
       jn $$1 = this.b(jn.class);
       float $$2 = this.readFloat();
@@ -613,14 +613,14 @@ public class vl extends ByteBuf {
       float $$4 = this.readFloat();
       boolean $$5 = this.readBoolean();
       boolean $$6 = this.readBoolean();
-      return new fav(new faz((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5, $$6);
+      return new faw(new fba((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5, $$6);
    }
 
-   public void a(fav $$0) {
+   public void a(faw $$0) {
       ji $$1 = $$0.b();
       this.a($$1);
       this.a($$0.c());
-      faz $$2 = $$0.g();
+      fba $$2 = $$0.g();
       this.a((float)($$2.d - (double)$$1.u()));
       this.a((float)($$2.e - (double)$$1.v()));
       this.a((float)($$2.f - (double)$$1.w()));

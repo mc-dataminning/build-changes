@@ -1,13 +1,39 @@
-public class grl extends gul<cli> {
-   private static final akv a = akv.b("textures/entity/spider/cave_spider.png");
-
-   public grl(gsd.a $$0) {
-      super($$0, gfb.S);
-      this.f = 0.56F;
+public class grl extends gqy<chb, gya, gbn> {
+   public grl(gse.a $$0) {
+      super($$0, new gbn($$0.a(gfc.O)), new gbn($$0.a(gfc.P)), 0.4F);
+      this.a(new gvu(this, $$0.f()));
    }
 
-   @Override
-   public akv b(gzj $$0) {
-      return a;
+   public akv a(gya $$0) {
+      return $$0.a;
+   }
+
+   public gya a() {
+      return new gya();
+   }
+
+   public void a(chb $$0, gya $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gE().a().a();
+      $$1.d = $$0.ci();
+      $$1.e = $$0.cj();
+      $$1.f = $$0.x();
+      $$1.g = $$0.J($$2);
+      $$1.h = $$0.K($$2);
+      $$1.i = $$0.L($$2);
+      $$1.b = $$0.gJ();
+      $$1.c = $$0.p() ? $$0.gG() : null;
+   }
+
+   protected void a(gya $$0, ffu $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = $$0.g;
+      if ($$4 > 0.0F) {
+         $$1.a(0.4F * $$4, 0.15F * $$4, 0.1F * $$4);
+         $$1.a(a.f.rotationDegrees(ayz.i($$4, 0.0F, 90.0F)));
+         if ($$0.b) {
+            $$1.a(0.15F * $$4, 0.0F, 0.0F);
+         }
+      }
    }
 }

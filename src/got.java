@@ -1,126 +1,36 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Stream;
+public class got implements gok<duv> {
+   public static final hgz a = new hgz(her.d, akv.b("entity/enchanting_table_book"));
+   private final gbk b;
 
-public class got extends god {
-   private static final String a = "plank";
-   private static final String b = "vChains";
-   private static final String c = "normalChains";
-   private static final String d = "chainL1";
-   private static final String e = "chainL2";
-   private static final String f = "chainR1";
-   private static final String g = "chainR2";
-   private static final String h = "board";
-   private static final float i = 1.0F;
-   private static final float j = 0.9F;
-   private static final faz k = new faz(0.0, -0.32F, 0.073F);
-   private final Map<got.b, gcv> l;
-
-   public got(gok.a $$0) {
-      super($$0);
-      Stream<got.b> $$1 = dyi.a().flatMap($$0x -> Arrays.stream(got.a.values()).map($$1x -> new got.b($$0x, $$1x)));
-      this.l = $$1.collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1x -> a($$0.f(), $$1x.a, $$1x.b)));
+   public got(gol.a $$0) {
+      this.b = new gbk($$0.a(gfc.J));
    }
 
-   public static gcv a(gey $$0, dyi $$1, got.a $$2) {
-      return new gcv.a($$0.a(gfb.a($$1, $$2)), gmh::g);
-   }
+   public void a(duv $$0, float $$1, ffu $$2, gly $$3, int $$4, int $$5) {
+      $$2.a();
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$6 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + ayz.a($$6 * 0.1F) * 0.01F, 0.0F);
+      float $$7 = $$0.h - $$0.i;
 
-   @Override
-   protected float a() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float b() {
-      return 0.9F;
-   }
-
-   private static void a(fft $$0, float $$1) {
-      $$0.a(0.5, 0.9375, 0.5);
-      $$0.a(a.d.rotationDegrees($$1));
-      $$0.a(0.0F, -0.3125F, 0.0F);
-   }
-
-   @Override
-   protected void a(fft $$0, float $$1, dww $$2) {
-      a($$0, $$1);
-   }
-
-   @Override
-   protected gcv a(dww $$0, dyi $$1) {
-      got.a $$2 = got.a.a($$0);
-      return this.l.get(new got.b($$1, $$2));
-   }
-
-   @Override
-   protected hgy a(dyi $$0) {
-      return gms.b($$0);
-   }
-
-   @Override
-   protected faz c() {
-      return k;
-   }
-
-   public static void a(fft $$0, glx $$1, int $$2, int $$3, gcv $$4, hgy $$5) {
-      $$0.a();
-      a($$0, 0.0F);
-      $$0.b(1.0F, -1.0F, -1.0F);
-      ffx $$6 = $$5.a($$1, $$4::a);
-      $$4.a($$0, $$6, $$2, $$3);
-      $$0.b();
-   }
-
-   public static gfi a(got.a $$0) {
-      gfk $$1 = new gfk();
-      gfm $$2 = $$1.a();
-      $$2.a("board", gfh.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), gfe.a);
-      if ($$0 == got.a.a) {
-         $$2.a("plank", gfh.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), gfe.a);
+      while ($$7 >= (float) Math.PI) {
+         $$7 -= (float) (Math.PI * 2);
       }
 
-      if ($$0 == got.a.a || $$0 == got.a.b) {
-         gfm $$3 = $$2.a("normalChains", gfh.c(), gfe.a);
-         $$3.a("chainL1", gfh.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gfe.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-         $$3.a("chainL2", gfh.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gfe.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-         $$3.a("chainR1", gfh.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gfe.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-         $$3.a("chainR2", gfh.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gfe.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      while ($$7 < (float) -Math.PI) {
+         $$7 += (float) (Math.PI * 2);
       }
 
-      if ($$0 == got.a.c) {
-         $$2.a("vChains", gfh.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), gfe.a);
-      }
-
-      return gfi.a($$1, 64, 32);
-   }
-
-   public static enum a implements azv {
-      a("wall"),
-      b("ceiling"),
-      c("ceiling_middle");
-
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      public static got.a a(dww $$0) {
-         if ($$0.b() instanceof dkl) {
-            return $$0.c(dxm.b) ? c : b;
-         } else {
-            return a;
-         }
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-   }
-
-   public static record b(dyi a, got.a b) {
+      float $$8 = $$0.i + $$7 * $$1;
+      $$2.a(a.d.rotation(-$$8));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$9 = ayz.h($$1, $$0.c, $$0.b);
+      float $$10 = ayz.i($$9 + 0.25F) * 1.6F - 0.3F;
+      float $$11 = ayz.i($$9 + 0.75F) * 1.6F - 0.3F;
+      float $$12 = ayz.h($$1, $$0.g, $$0.f);
+      this.b.a($$6, ayz.a($$10, 0.0F, 1.0F), ayz.a($$11, 0.0F, 1.0F), $$12);
+      ffy $$13 = a.a($$3, gmi::d);
+      this.b.a($$2, $$13, $$4, $$5);
+      $$2.b();
    }
 }

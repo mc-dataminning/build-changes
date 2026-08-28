@@ -1,13 +1,29 @@
-public interface bqj {
-   void a();
+public class bqj implements bqk {
+   public static final bqk a = new bqj();
 
-   void b();
+   @Override
+   public void a() {
+   }
 
-   void c();
+   @Override
+   public void b() {
+   }
 
-   boolean e();
+   @Override
+   public void c() {
+   }
 
-   bos f();
+   @Override
+   public boolean e() {
+      return false;
+   }
 
-   void d();
+   @Override
+   public bot f() {
+      return bop.a;
+   }
+
+   @Override
+   public void d() {
+   }
 }

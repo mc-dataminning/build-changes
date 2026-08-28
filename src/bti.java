@@ -1,6 +1,11 @@
-class bti extends btn {
-   protected bti(bto $$0, int $$1) {
+class bti extends bto {
+   protected bti(btp $$0, int $$1) {
       super($$0, $$1);
+   }
+
+   @Override
+   public boolean a(ard $$0, bvh $$1, int $$2) {
+      return $$1.fw() > 0.0F;
    }
 
    @Override
@@ -9,16 +14,8 @@ class bti extends btn {
    }
 
    @Override
-   public boolean a(ard $$0, bvg $$1, int $$2) {
-      if ($$1 instanceof are $$3 && !$$3.Z_() && $$0.am() != bsg.a && $$0.c($$3.dv())) {
-         cqj $$4 = $$0.d($$3.dv());
-         if ($$4 == null || $$4.m() < $$4.l()) {
-            $$3.a(new btp(btr.I, 600, $$2));
-            $$3.c($$3.dv());
-            return false;
-         }
-      }
-
-      return true;
+   public void a(bvh $$0, int $$1) {
+      super.a($$0, $$1);
+      $$0.E(Math.max($$0.fw(), (float)(4 * (1 + $$1))));
    }
 }

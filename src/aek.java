@@ -3,7 +3,7 @@ public class aek implements yw<abl> {
    private final double b;
    private final double c;
 
-   public aek(dym $$0) {
+   public aek(dyn $$0) {
       this.b = $$0.a();
       this.c = $$0.b();
    }

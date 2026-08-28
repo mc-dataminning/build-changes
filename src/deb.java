@@ -1,12 +1,29 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record deb(ddf c) implements ddr {
-   public static final MapCodec<deb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ddf.b.fieldOf("value").forGetter(deb::b)).apply($$0, deb::new));
+public record deb(cyr d, km e, Optional<jr<ebt>> f) implements ddq {
+   public static final MapCodec<deb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               cyr.b.fieldOf("properties").forGetter(deb::b),
+               km.g.optionalFieldOf("offset", km.h).forGetter(deb::c),
+               ebt.aj.optionalFieldOf("trigger_game_event").forGetter(deb::d)
+            )
+            .apply($$0, deb::new)
+   );
+
+   public deb(cyr $$0) {
+      this($$0, km.h, Optional.of(ebt.c));
+   }
 
    @Override
-   public float a(int $$0, azh $$1, float $$2) {
-      return this.c.a($$0);
+   public void a(ard $$0, int $$1, dcy $$2, bul $$3, fba $$4) {
+      ji $$5 = ji.a((kb)$$4).a(this.e);
+      dwx $$6 = $$3.dV().a_($$5);
+      dwx $$7 = this.d.a($$6);
+      if (!$$6.equals($$7) && $$3.dV().a($$5, $$7, 3)) {
+         this.f.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
+      }
    }
 
    @Override
@@ -14,7 +31,15 @@ public record deb(ddf c) implements ddr {
       return a;
    }
 
-   public ddf b() {
-      return this.c;
+   public cyr b() {
+      return this.d;
+   }
+
+   public km c() {
+      return this.e;
+   }
+
+   public Optional<jr<ebt>> d() {
+      return this.f;
    }
 }

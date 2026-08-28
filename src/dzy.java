@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.concurrent.Executor;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dzy {
+public record dzy(ard a, dyt b, erp c, arg d, Executor e, dzc.e f) {
 }

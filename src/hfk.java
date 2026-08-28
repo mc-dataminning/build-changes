@@ -1,45 +1,75 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class hfk {
-   private static final hft[] a = new hft[]{
-      a("textures/entity/player/slim/alex.png", hft.a.a),
-      a("textures/entity/player/slim/ari.png", hft.a.a),
-      a("textures/entity/player/slim/efe.png", hft.a.a),
-      a("textures/entity/player/slim/kai.png", hft.a.a),
-      a("textures/entity/player/slim/makena.png", hft.a.a),
-      a("textures/entity/player/slim/noor.png", hft.a.a),
-      a("textures/entity/player/slim/steve.png", hft.a.a),
-      a("textures/entity/player/slim/sunny.png", hft.a.a),
-      a("textures/entity/player/slim/zuri.png", hft.a.a),
-      a("textures/entity/player/wide/alex.png", hft.a.b),
-      a("textures/entity/player/wide/ari.png", hft.a.b),
-      a("textures/entity/player/wide/efe.png", hft.a.b),
-      a("textures/entity/player/wide/kai.png", hft.a.b),
-      a("textures/entity/player/wide/makena.png", hft.a.b),
-      a("textures/entity/player/wide/noor.png", hft.a.b),
-      a("textures/entity/player/wide/steve.png", hft.a.b),
-      a("textures/entity/player/wide/sunny.png", hft.a.b),
-      a("textures/entity/player/wide/zuri.png", hft.a.b)
-   };
+public class hfk extends atu {
+   private static final atq d = new atq(wp.c("resourcePack.vanilla.description"), ab.b().a(ate.a), Optional.empty());
+   private static final asu e = asu.a(atq.b, d);
+   public static final String c = "high_contrast";
+   private static final Map<String, wp> f = Map.of(
+      "programmer_art", wp.c("resourcePack.programmer_art.name"), "high_contrast", wp.c("resourcePack.high_contrast.name")
+   );
+   private static final atb g = new atb("vanilla", wp.c("resourcePack.vanilla.name"), aub.c, Optional.of(b));
+   private static final atd h = new atd(true, atx.b.b, false);
+   private static final atd i = new atd(false, atx.b.a, false);
+   private static final akv j = akv.b("resourcepacks");
+   @Nullable
+   private final Path k;
 
-   public static akv a() {
-      return b().a();
+   public hfk(Path $$0, faq $$1) {
+      super(ate.a, b($$0), j, $$1);
+      this.k = this.a($$0);
    }
 
-   public static hft b() {
-      return a[6];
+   private static atb a(String $$0, wp $$1) {
+      return new atb($$0, $$1, aub.c, Optional.of(atw.a($$0)));
    }
 
-   public static hft a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
+   @Nullable
+   private Path a(Path $$0) {
+      if (ab.aU && $$0.getFileSystem() == FileSystems.getDefault()) {
+         Path $$1 = $$0.getParent().resolve("resourcepacks");
+         if (Files.isDirectory($$1)) {
+            return $$1;
+         }
+      }
+
+      return null;
    }
 
-   public static hft a(GameProfile $$0) {
-      return a($$0.getId());
+   private static atg b(Path $$0) {
+      ath $$1 = new ath().a(e).a("minecraft", "realms");
+      return $$1.b().a().a(ate.a, $$0).a(g);
    }
 
-   private static hft a(String $$0, hft.a $$1) {
-      return new hft(akv.b($$0), null, null, null, $$1, true);
+   @Override
+   protected wp a(String $$0) {
+      wp $$1 = f.get($$0);
+      return (wp)($$1 != null ? $$1 : wp.b($$0));
+   }
+
+   @Nullable
+   @Override
+   protected atx a(atc $$0) {
+      return atx.a(g, b($$0), ate.a, h);
+   }
+
+   @Nullable
+   @Override
+   protected atx a(String $$0, atx.c $$1, wp $$2) {
+      return atx.a(a($$0, $$2), $$1, ate.a, i);
+   }
+
+   @Override
+   protected void a(BiConsumer<String, Function<String, atx>> $$0) {
+      super.a($$0);
+      if (this.k != null) {
+         this.a(this.k, $$0);
+      }
    }
 }

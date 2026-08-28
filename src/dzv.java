@@ -1,127 +1,137 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
+import java.util.EnumSet;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
 
-public record dzv(dzs a, dzq b, dzq c, int d, dzt e) {
-
-   public int a(dzs $$0) {
-      return $$0 == this.a ? 0 : this.c.a($$0);
+public class dzv {
+   private static boolean a(dys $$0) {
+      return $$0.n().a(dzt.l) && $$0.x();
    }
 
-   public CompletableFuture<dyr> a(dzx $$0, azt<aqu> $$1, dyr $$2) {
-      if ($$2.n().d(this.a)) {
-         bpd $$3 = bpa.f.a($$2.f(), $$0.a().ai(), this.a.f());
-         return this.e.doWork($$0, this, $$1, $$2).thenApply($$1x -> this.a($$1x, $$3));
-      } else {
-         return this.e.doWork($$0, this, $$1, $$2);
-      }
+   static CompletableFuture<dys> a(dzy $$0, dzw $$1, azt<aqu> $$2, dys $$3) {
+      return CompletableFuture.completedFuture($$3);
    }
 
-   private dyr a(dyr $$0, @Nullable bpd $$1) {
-      if ($$0 instanceof dzl $$2 && $$2.n().d(this.a)) {
-         $$2.a(this.a);
+   static CompletableFuture<dys> b(dzy $$0, dzw $$1, azt<aqu> $$2, dys $$3) {
+      ard $$4 = $$0.a();
+      if ($$4.p().aZ().y().d()) {
+         $$0.b().a($$4.K_(), $$4.m().h(), $$4.b(), $$3, $$0.c(), $$4.ai());
       }
 
-      if ($$1 != null) {
-         $$1.finish(true);
-      }
-
-      return $$0;
+      $$4.a($$3);
+      return CompletableFuture.completedFuture($$3);
    }
 
-   public static class a {
-      private final dzs a;
-      @Nullable
-      private final dzv b;
-      private dzs[] c;
-      private int d = -1;
-      private dzt e = dzu::a;
+   static CompletableFuture<dys> c(dzy $$0, dzw $$1, azt<aqu> $$2, dys $$3) {
+      $$0.a().a($$3);
+      return CompletableFuture.completedFuture($$3);
+   }
 
-      protected a(dzs $$0) {
-         if ($$0.c() != $$0) {
-            throw new IllegalArgumentException("Not starting with the first status: " + $$0);
-         } else {
-            this.a = $$0;
-            this.b = null;
-            this.c = new dzs[0];
-         }
-      }
+   static CompletableFuture<dys> d(dzy $$0, dzw $$1, azt<aqu> $$2, dys $$3) {
+      ard $$4 = $$0.a();
+      arl $$5 = new arl($$4, $$2, $$1, $$3);
+      $$0.b().a($$5, $$4.b().a($$5), $$3);
+      return CompletableFuture.completedFuture($$3);
+   }
 
-      protected a(dzs $$0, dzv $$1) {
-         if ($$1.a.b() != $$0.b() - 1) {
-            throw new IllegalArgumentException("Out of order status: " + $$0);
-         } else {
-            this.a = $$0;
-            this.b = $$1;
-            this.c = new dzs[]{$$1.a};
-         }
-      }
+   static CompletableFuture<dys> e(dzy $$0, dzw $$1, azt<aqu> $$2, dys $$3) {
+      ard $$4 = $$0.a();
+      arl $$5 = new arl($$4, $$2, $$1, $$3);
+      return $$0.b().a($$4.m().i(), edu.a($$5), $$4.b().a($$5), $$3);
+   }
 
-      public dzv.a a(dzs $$0, int $$1) {
-         if ($$0.a(this.a)) {
-            throw new IllegalArgumentException("Status " + $$0 + " can not be required by " + this.a);
-         } else {
-            dzs[] $$2 = this.c;
-            int $$3 = $$1 + 1;
-            if ($$3 > $$2.length) {
-               this.c = new dzs[$$3];
-               Arrays.fill(this.c, $$0);
-            }
-
-            for (int $$4 = 0; $$4 < Math.min($$3, $$2.length); $$4++) {
-               this.c[$$4] = dzs.a($$2[$$4], $$0);
-            }
-
-            return this;
-         }
-      }
-
-      public dzv.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public dzv.a a(dzt $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public dzv a() {
-         return new dzv(this.a, new dzq(ImmutableList.copyOf(this.c)), new dzq(ImmutableList.copyOf(this.b())), this.d, this.e);
-      }
-
-      private dzs[] b() {
-         if (this.b == null) {
-            return this.c;
-         } else {
-            int $$0 = this.a(this.b.a);
-            dzq $$1 = this.b.c;
-            dzs[] $$2 = new dzs[Math.max($$0 + $$1.b(), this.c.length)];
-
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               int $$4 = $$3 - $$0;
-               if ($$4 < 0 || $$4 >= $$1.b()) {
-                  $$2[$$3] = this.c[$$3];
-               } else if ($$3 >= this.c.length) {
-                  $$2[$$3] = $$1.a($$4);
-               } else {
-                  $$2[$$3] = dzs.a(this.c[$$3], $$1.a($$4));
+   static CompletableFuture<dys> f(dzy $$0, dzw $$1, azt<aqu> $$2, dys $$3) {
+      ard $$4 = $$0.a();
+      arl $$5 = new arl($$4, $$2, $$1, $$3);
+      return $$0.b().a(edu.a($$5), $$4.m().i(), $$4.b().a($$5), $$3).thenApply($$0x -> {
+         if ($$0x instanceof dzm $$1x) {
+            ecg $$2x = $$1x.z();
+            if ($$2x != null) {
+               ecg.a($$1x);
+               if ($$2x.b()) {
+                  $$2x.b($$1x);
                }
             }
-
-            return $$2;
          }
+
+         return $$0x;
+      });
+   }
+
+   static CompletableFuture<dys> g(dzy $$0, dzw $$1, azt<aqu> $$2, dys $$3) {
+      ard $$4 = $$0.a();
+      arl $$5 = new arl($$4, $$2, $$1, $$3);
+      $$0.b().a($$5, $$4.b().a($$5), $$4.m().i(), $$3);
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<dys> h(dzy $$0, dzw $$1, azt<aqu> $$2, dys $$3) {
+      ard $$4 = $$0.a();
+      arl $$5 = new arl($$4, $$2, $$1, $$3);
+      if ($$3 instanceof dzm $$6) {
+         edu.a($$5, $$6);
       }
 
-      private int a(dzs $$0) {
-         for (int $$1 = this.c.length - 1; $$1 >= 0; $$1--) {
-            if (this.c[$$1].a($$0)) {
-               return $$1;
-            }
+      $$0.b().a($$5, $$4.E(), $$4.m().i(), $$4.I_(), $$4.b().a($$5), $$3);
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<dys> i(dzy $$0, dzw $$1, azt<aqu> $$2, dys $$3) {
+      ard $$4 = $$0.a();
+      ecs.a($$3, EnumSet.of(ecs.a.e, ecs.a.f, ecs.a.d, ecs.a.b));
+      arl $$5 = new arl($$4, $$2, $$1, $$3);
+      $$0.b().a($$5, $$3, $$4.b().a($$5));
+      edu.a($$5, $$3);
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<dys> j(dzy $$0, dzw $$1, azt<aqu> $$2, dys $$3) {
+      arg $$4 = $$0.d();
+      $$3.C();
+      ((dzm)$$3).a($$4);
+      boolean $$5 = a($$3);
+      return $$4.a($$3, $$5);
+   }
+
+   static CompletableFuture<dys> k(dzy $$0, dzw $$1, azt<aqu> $$2, dys $$3) {
+      boolean $$4 = a($$3);
+      return $$0.d().b($$3, $$4);
+   }
+
+   static CompletableFuture<dys> l(dzy $$0, dzw $$1, azt<aqu> $$2, dys $$3) {
+      if (!$$3.A()) {
+         $$0.b().a(new arl($$0.a(), $$2, $$1, $$3));
+      }
+
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<dys> m(dzy $$0, dzw $$1, azt<aqu> $$2, dys $$3) {
+      dfo $$4 = $$3.f();
+      aqu $$5 = $$2.a($$4.h, $$4.i);
+      return CompletableFuture.supplyAsync(() -> {
+         dzm $$3x = (dzm)$$3;
+         ard $$4x = $$0.a();
+         dzc $$6;
+         if ($$3x instanceof dzb $$5x) {
+            $$6 = $$5x.G();
+         } else {
+            $$6 = new dzc($$4x, $$3x, $$2xx -> a($$4x, $$3x.I()));
+            $$5.a(new dzb($$6, false));
          }
 
-         return 0;
+         $$6.b($$5::s);
+         $$6.G();
+         $$6.b(true);
+         $$6.K();
+         $$6.b($$4x);
+         $$6.a($$0.f());
+         return $$6;
+      }, $$0.e());
+   }
+
+   private static void a(ard $$0, List<tq> $$1) {
+      if (!$$1.isEmpty()) {
+         $$0.b(bus.a($$1, $$0, bur.r));
       }
    }
 }

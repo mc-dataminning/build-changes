@@ -1,92 +1,66 @@
-import com.mojang.authlib.minecraft.BanDetails;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URI;
-import java.time.Duration;
-import java.time.Instant;
-import org.apache.commons.lang3.StringUtils;
+public class ftf extends ful {
+   private static final wp s = wp.c("selectWorld.backupJoinSkipButton");
+   public static final wp a = wp.c("selectWorld.backupJoinConfirmButton");
+   private final Runnable u;
+   protected final ftf.a b;
+   private final wp v;
+   private final boolean w;
+   private fpm x = fpm.a;
+   final wp c;
+   protected int d;
+   private fov y;
 
-public class ftf {
-   private static final wp b = wp.c("gui.banned.title.temporary").a(n.r);
-   private static final wp c = wp.c("gui.banned.title.permanent").a(n.r);
-   public static final wp a = wp.c("gui.banned.name.title").a(n.r);
-   private static final wp d = wp.c("gui.banned.skin.title").a(n.r);
-   private static final wp e = wp.a("gui.banned.skin.description", wp.a(axv.n));
-
-   public static fth a(BooleanConsumer $$0, BanDetails $$1) {
-      return new fth($$0, a($$1), b($$1), axv.n, wo.m, true);
+   public ftf(Runnable $$0, ftf.a $$1, wp $$2, wp $$3, boolean $$4) {
+      this($$0, $$1, $$2, $$3, a, $$4);
    }
 
-   public static fth a(Runnable $$0) {
-      URI $$1 = axv.n;
-      return new fth($$2 -> {
-         if ($$2) {
-            af.m().a($$1);
-         }
-
-         $$0.run();
-      }, d, e, $$1, wo.m, true);
+   public ftf(Runnable $$0, ftf.a $$1, wp $$2, wp $$3, wp $$4, boolean $$5) {
+      super($$2);
+      this.u = $$0;
+      this.b = $$1;
+      this.v = $$3;
+      this.w = $$5;
+      this.c = $$4;
    }
 
-   public static fth a(String $$0, Runnable $$1) {
-      URI $$2 = axv.n;
-      return new fth($$2x -> {
-         if ($$2x) {
-            af.m().a($$2);
-         }
+   @Override
+   protected void aR_() {
+      super.aR_();
+      this.x = fpm.a(this.p, this.v, this.n - 50);
+      int $$0 = (this.x.a() + 1) * 9;
+      this.y = fov.a(wp.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
+      if (this.w) {
+         this.c(this.y);
+      }
 
-         $$1.run();
-      }, a, wp.a("gui.banned.name.description", wp.b($$0).a(n.o), wp.a(axv.n)), $$2, wo.m, true);
+      this.c(fot.a(this.c, $$0x -> this.b.proceed(true, this.y.a())).a(this.n / 2 - 155, 100 + $$0, 150, 20).a());
+      this.c(fot.a(s, $$0x -> this.b.proceed(false, this.y.a())).a(this.n / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+      this.c(fot.a(wo.e, $$0x -> this.u.run()).a(this.n / 2 - 155 + 80, 124 + $$0, 150, 20).a());
    }
 
-   private static wp a(BanDetails $$0) {
-      return f($$0) ? b : c;
+   @Override
+   public void a(foe $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
+      this.x.a($$0, this.n / 2, 70);
    }
 
-   private static wp b(BanDetails $$0) {
-      return wp.a("gui.banned.description", c($$0), d($$0), wp.a(axv.n));
+   @Override
+   public boolean aG_() {
+      return false;
    }
 
-   private static wp c(BanDetails $$0) {
-      String $$1 = $$0.reason();
-      String $$2 = $$0.reasonMessage();
-      if (StringUtils.isNumeric($$1)) {
-         int $$3 = Integer.parseInt($$1);
-         ggz $$4 = ggz.a($$3);
-         wp $$5;
-         if ($$4 != null) {
-            $$5 = ws.a($$4.a().f(), xm.a.a(true));
-         } else if ($$2 != null) {
-            $$5 = wp.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
-         } else {
-            $$5 = wp.a("gui.banned.description.reason_id", $$3).a(n.r);
-         }
-
-         return wp.a("gui.banned.description.reason", $$5);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.u.run();
+         return true;
       } else {
-         return wp.c("gui.banned.description.unknownreason");
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   private static wp d(BanDetails $$0) {
-      if (f($$0)) {
-         wp $$1 = e($$0);
-         return wp.a("gui.banned.description.temporary", wp.a("gui.banned.description.temporary.duration", $$1).a(n.r));
-      } else {
-         return wp.c("gui.banned.description.permanent").a(n.r);
-      }
-   }
-
-   private static wp e(BanDetails $$0) {
-      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
-      long $$2 = $$1.toHours();
-      if ($$2 > 72L) {
-         return wo.a($$1.toDays());
-      } else {
-         return $$2 < 1L ? wo.c($$1.toMinutes()) : wo.b($$1.toHours());
-      }
-   }
-
-   private static boolean f(BanDetails $$0) {
-      return $$0.expires() != null;
+   public interface a {
+      void proceed(boolean var1, boolean var2);
    }
 }

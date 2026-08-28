@@ -1,12 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hcf() implements hbw {
+public record hcf() implements hbx {
    public static final MapCodec<hcf> a = MapCodec.unit(new hcf());
 
    @Override
-   public boolean a(cwo $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3, cwm $$4) {
-      return $$2 == null ? false : $$2.fz() && $$2.fB() == $$0;
+   public boolean a(cwp $$0, @Nullable gfz $$1, @Nullable bvh $$2, int $$3, cwn $$4) {
+      if ($$2 instanceof gkw $$5 && $$5.gi().f() == $$0) {
+         return true;
+      }
+
+      return false;
    }
 
    @Override

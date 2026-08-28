@@ -1,78 +1,81 @@
-import java.util.List;
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class ccd extends cce {
-   public static final int a = 8;
-   public static final int b = 4;
-   public static final int c = 3;
-   private final cgx d;
+public class ccd extends ccf {
+   private final bwe a;
    @Nullable
-   private cgx e;
-   private final double f;
-   private int g;
+   private bvh b;
+   private final double c;
+   private final cet d;
+   private int e;
+   private final float f;
+   private final float g;
+   private float h;
 
-   public ccd(cgx $$0, double $$1) {
-      this.d = $$0;
-      this.f = $$1;
+   public ccd(bwe $$0, double $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.c = $$1;
+      this.d = $$0.P();
+      this.g = $$2;
+      this.f = $$3;
+      this.a(EnumSet.of(ccf.a.a, ccf.a.b));
+      if (!($$0.P() instanceof ces) && !($$0.P() instanceof cer)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
+      }
    }
 
    @Override
    public boolean b() {
-      if (this.d.Y_() >= 0) {
+      bvh $$0 = this.a.ag_();
+      if ($$0 == null) {
+         return false;
+      } else if (this.a.gv()) {
+         return false;
+      } else if (this.a.g((bul)$$0) < (double)(this.g * this.g)) {
          return false;
       } else {
-         List<? extends cgx> $$0 = this.d.dV().a((Class<? extends cgx>)this.d.getClass(), this.d.cR().c(8.0, 4.0, 8.0));
-         cgx $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (cgx $$3 : $$0) {
-            if ($$3.Y_() >= 0) {
-               double $$4 = this.d.g($$3);
-               if (!($$4 > $$2)) {
-                  $$2 = $$4;
-                  $$1 = $$3;
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 9.0) {
-            return false;
-         } else {
-            this.e = $$1;
-            return true;
-         }
+         this.b = $$0;
+         return true;
       }
    }
 
    @Override
    public boolean c() {
-      if (this.d.Y_() >= 0) {
-         return false;
-      } else if (!this.e.bL()) {
+      if (this.d.k()) {
          return false;
       } else {
-         double $$0 = this.d.g(this.e);
-         return !($$0 < 9.0) && !($$0 > 256.0);
+         return this.a.gv() ? false : !(this.a.g((bul)this.b) <= (double)(this.f * this.f));
       }
    }
 
    @Override
    public void d() {
-      this.g = 0;
+      this.e = 0;
+      this.h = this.a.a(etq.j);
+      this.a.a(etq.j, 0.0F);
    }
 
    @Override
    public void e() {
-      this.e = null;
+      this.b = null;
+      this.d.m();
+      this.a.a(etq.j, this.h);
    }
 
    @Override
    public void a() {
-      if (--this.g <= 0) {
-         this.g = this.a(10);
-         this.d.P().a(this.e, this.f);
+      boolean $$0 = this.a.gu();
+      if (!$$0) {
+         this.a.L().a(this.b, 10.0F, (float)this.a.ad());
+      }
+
+      if (--this.e <= 0) {
+         this.e = this.a(10);
+         if ($$0) {
+            this.a.gt();
+         } else {
+            this.d.a(this.b, this.c);
+         }
       }
    }
 }

@@ -1,26 +1,21 @@
-public abstract class fax {
-   protected final faz a;
+public class fax extends fay {
+   private final bul b;
 
-   protected fax(faz $$0) {
-      this.a = $$0;
+   public fax(bul $$0) {
+      this($$0, $$0.dt());
    }
 
-   public double a(buk $$0) {
-      double $$1 = this.a.d - $$0.dA();
-      double $$2 = this.a.e - $$0.dC();
-      double $$3 = this.a.f - $$0.dG();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   public fax(bul $$0, fba $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
-   public abstract fax.a d();
-
-   public faz g() {
-      return this.a;
+   public bul a() {
+      return this.b;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public fay.a d() {
+      return fay.a.c;
    }
 }

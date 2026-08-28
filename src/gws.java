@@ -1,25 +1,33 @@
-public abstract class gws<S extends gyj, M extends gca<? super S>> {
-   private final gua<S, M> a;
+public class gws<S extends gzw, M extends gcb<S> & gav & gck> extends gwl<S, M> {
+   private static final float a = (float) (-Math.PI / 6);
+   private static final float b = (float) (Math.PI / 2);
 
-   public gws(gua<S, M> $$0) {
-      this.a = $$0;
+   public gws(gub<S, M> $$0) {
+      super($$0);
    }
 
-   protected static <S extends gzj> void a(gca<S> $$0, akv $$1, fft $$2, glx $$3, int $$4, S $$5, int $$6) {
-      if (!$$5.z) {
-         $$0.a($$5);
-         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   protected void a(S $$0, hbo $$1, bvb $$2, ffu $$3, gly $$4, int $$5) {
+      if (!$$1.c()) {
+         if ($$0.H < 1.0E-5F && $$0.e == $$2 && !$$0.aI.c()) {
+            this.a($$0.aI, $$2, $$3, $$4, $$5);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
       }
    }
 
-   protected static void b(gca<?> $$0, akv $$1, fft $$2, glx $$3, int $$4, gzj $$5, int $$6) {
-      ffx $$7 = $$3.getBuffer(gmh.g($$1));
-      $$0.a($$2, $$7, $$4, gte.a($$5, 0.0F), $$6);
+   private void a(hbo $$0, bvb $$1, ffu $$2, gly $$3, int $$4) {
+      $$2.a();
+      this.d().e().a($$2);
+      gfd $$5 = this.d().b();
+      float $$6 = $$5.e;
+      $$5.e = ayz.a($$5.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
+      $$5.a($$2);
+      $$5.e = $$6;
+      gvx.a($$2, gvx.a.a);
+      boolean $$7 = $$1 == bvb.a;
+      $$2.a(($$7 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
+      $$0.a($$2, $$3, $$4, hei.d);
+      $$2.b();
    }
-
-   public M d() {
-      return this.a.c();
-   }
-
-   public abstract void a(fft var1, glx var2, int var3, S var4, float var5, float var6);
 }

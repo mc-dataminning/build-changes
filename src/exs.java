@@ -1,52 +1,83 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Set;
 
-public class exs extends exd {
+public class exs extends exe {
    public static final MapCodec<exs> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  czd.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  czd.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  czd.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+                  Codec.unboundedMap(dcz.c, ezx.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
                )
             )
             .apply($$0, exs::new)
    );
-   public static final czd b = new czd(czd.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<czd.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+   private final Map<jr<dcz>, ezw> b;
+   private final boolean c;
 
-   public exs(List<eyz> $$0, Optional<czd.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+   exs(List<eza> $$0, Map<jr<dcz>, ezw> $$1, boolean $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
+      this.b = Map.copyOf($$1);
+      this.c = $$2;
    }
 
    @Override
-   protected cwo a(cwo $$0, evq $$1) {
-      $$0.a(kv.ae, b, this::a);
+   public exg<exs> b() {
+      return exh.i;
+   }
+
+   @Override
+   public Set<bai<?>> a() {
+      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+   }
+
+   @Override
+   public cwp a(cwp $$0, evr $$1) {
+      if ($$0.a(cwt.rw)) {
+         $$0 = $$0.a((dgh)cwt.vv);
+      }
+
+      ddb.a($$0, $$1x -> {
+         if (this.c) {
+            this.b.forEach(($$2, $$3) -> $$1x.a((jr<dcz>)$$2, ayz.a($$1x.a((jr<dcz>)$$2) + $$3.a($$1), 0, 255)));
+         } else {
+            this.b.forEach(($$2, $$3) -> $$1x.a((jr<dcz>)$$2, ayz.a($$3.a($$1), 0, 255)));
+         }
+      });
       return $$0;
    }
 
-   private czd a(czd $$0) {
-      return new czd(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
-   }
+   public static class a extends exe.a<exs.a> {
+      private final Builder<jr<dcz>, ezw> a = ImmutableMap.builder();
+      private final boolean b;
 
-   @Override
-   public exf<exs> b() {
-      return exg.L;
+      public a() {
+         this(false);
+      }
+
+      public a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected exs.a a() {
+         return this;
+      }
+
+      public exs.a a(jr<dcz> $$0, ezw $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public exf b() {
+         return new exs(this.g(), this.a.build(), this.b);
+      }
    }
 }

@@ -1,27 +1,68 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlw extends djl {
-   public static final MapCodec<dlw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bro.b(0, 10).fieldOf("experience").forGetter($$0x -> $$0x.b), t()).apply($$0, dlw::new)
-   );
-   private final bro b;
+public class dlw extends dmj {
+   public static final MapCodec<dlw> a = b(dlw::new);
+   protected static final fbu b = djm.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
-   public MapCodec<? extends dlw> a() {
+   public MapCodec<dlw> a() {
       return a;
    }
 
-   public dlw(bro $$0, dwv.d $$1) {
-      super($$1);
-      this.b = $$0;
+   public dlw(dww.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(dww $$0, ard $$1, ji $$2, cwo $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.b);
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return b;
+   }
+
+   @Override
+   protected bsk a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
+      this.e($$0, $$1, $$2);
+      return bsk.a;
+   }
+
+   @Override
+   protected void a_(dwx $$0, dgi $$1, ji $$2, cox $$3) {
+      this.e($$0, $$1, $$2);
+   }
+
+   private void e(dwx $$0, dgi $$1, ji $$2) {
+      dyn $$3 = $$1.F_();
+
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         ji $$5 = $$2.b($$1.A.a(16) - $$1.A.a(16), $$1.A.a(8) - $$1.A.a(8), $$1.A.a(16) - $$1.A.a(16));
+         if ($$1.a_($$5).l() && $$3.a($$5)) {
+            if ($$1.C) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.A.j();
+                  float $$8 = ($$1.A.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.A.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.A.i() - 0.5F) * 0.2F;
+                  double $$11 = ayz.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.A.j() - 0.5) + 0.5;
+                  double $$12 = ayz.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.A.j() - 0.5;
+                  double $$13 = ayz.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.A.j() - 0.5) + 0.5;
+                  $$1.a(lt.ae, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
+            }
+
+            return;
+         }
       }
+   }
+
+   @Override
+   protected int b() {
+      return 5;
+   }
+
+   @Override
+   protected boolean a(dwx $$0, eto $$1) {
+      return false;
    }
 }

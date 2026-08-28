@@ -1,32 +1,32 @@
 import java.util.List;
 
 public class ro {
-   public static final aku<emp> a = ru.a("seagrass_warm");
-   public static final aku<emp> b = ru.a("seagrass_normal");
-   public static final aku<emp> c = ru.a("seagrass_cold");
-   public static final aku<emp> d = ru.a("seagrass_river");
-   public static final aku<emp> e = ru.a("seagrass_swamp");
-   public static final aku<emp> f = ru.a("seagrass_deep_warm");
-   public static final aku<emp> g = ru.a("seagrass_deep");
-   public static final aku<emp> h = ru.a("seagrass_deep_cold");
-   public static final aku<emp> i = ru.a("sea_pickle");
-   public static final aku<emp> j = ru.a("kelp_cold");
-   public static final aku<emp> k = ru.a("kelp_warm");
-   public static final aku<emp> l = ru.a("warm_ocean_vegetation");
+   public static final aku<emq> a = ru.a("seagrass_warm");
+   public static final aku<emq> b = ru.a("seagrass_normal");
+   public static final aku<emq> c = ru.a("seagrass_cold");
+   public static final aku<emq> d = ru.a("seagrass_river");
+   public static final aku<emq> e = ru.a("seagrass_swamp");
+   public static final aku<emq> f = ru.a("seagrass_deep_warm");
+   public static final aku<emq> g = ru.a("seagrass_deep");
+   public static final aku<emq> h = ru.a("seagrass_deep_cold");
+   public static final aku<emq> i = ru.a("sea_pickle");
+   public static final aku<emq> j = ru.a("kelp_cold");
+   public static final aku<emq> k = ru.a("kelp_warm");
+   public static final aku<emq> l = ru.a("warm_ocean_vegetation");
 
-   private static List<ems> a(int $$0) {
-      return List.of(emm.a(), ru.c, emh.a($$0), emd.a());
+   private static List<emt> a(int $$0) {
+      return List.of(emn.a(), ru.c, emi.a($$0), eme.a());
    }
 
-   public static void a(qe<emp> $$0) {
-      js<efj<?, ?>> $$1 = $$0.a(mc.aL);
-      jr.c<efj<?, ?>> $$2 = $$1.b(rc.a);
-      jr.c<efj<?, ?>> $$3 = $$1.b(rc.b);
-      jr.c<efj<?, ?>> $$4 = $$1.b(rc.c);
-      jr.c<efj<?, ?>> $$5 = $$1.b(rc.d);
-      jr.c<efj<?, ?>> $$6 = $$1.b(rc.e);
-      jr.c<efj<?, ?>> $$7 = $$1.b(rc.f);
-      jr.c<efj<?, ?>> $$8 = $$1.b(rc.g);
+   public static void a(qe<emq> $$0) {
+      js<efk<?, ?>> $$1 = $$0.a(mc.aL);
+      jr.c<efk<?, ?>> $$2 = $$1.b(rc.a);
+      jr.c<efk<?, ?>> $$3 = $$1.b(rc.b);
+      jr.c<efk<?, ?>> $$4 = $$1.b(rc.c);
+      jr.c<efk<?, ?>> $$5 = $$1.b(rc.d);
+      jr.c<efk<?, ?>> $$6 = $$1.b(rc.e);
+      jr.c<efk<?, ?>> $$7 = $$1.b(rc.f);
+      jr.c<efk<?, ?>> $$8 = $$1.b(rc.g);
       ru.a($$0, a, $$2, a(80));
       ru.a($$0, b, $$2, a(48));
       ru.a($$0, c, $$2, a(32));
@@ -35,9 +35,9 @@ public class ro {
       ru.a($$0, f, $$5, a(80));
       ru.a($$0, g, $$5, a(48));
       ru.a($$0, h, $$5, a(40));
-      ru.a($$0, i, $$6, emv.a(16), emm.a(), ru.c, emd.a());
-      ru.a($$0, j, $$7, emn.a(120, 80.0, 0.0), emm.a(), ru.c, emd.a());
-      ru.a($$0, k, $$7, emn.a(80, 80.0, 0.0), emm.a(), ru.c, emd.a());
-      ru.a($$0, l, $$8, emn.a(20, 400.0, 0.0), emm.a(), ru.c, emd.a());
+      ru.a($$0, i, $$6, emw.a(16), emn.a(), ru.c, eme.a());
+      ru.a($$0, j, $$7, emo.a(120, 80.0, 0.0), emn.a(), ru.c, eme.a());
+      ru.a($$0, k, $$7, emo.a(80, 80.0, 0.0), emn.a(), ru.c, eme.a());
+      ru.a($$0, l, $$8, emo.a(20, 400.0, 0.0), emn.a(), ru.c, eme.a());
    }
 }

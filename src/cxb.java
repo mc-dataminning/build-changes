@@ -1,334 +1,158 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.LinkedHashMultiset;
-import com.google.common.collect.Multiset;
-import com.google.common.collect.Multisets;
 import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cxb extends cwk {
-   public static final int a = 128;
-   public static final int b = 128;
+public class cxb extends cwl {
+   private static final int c = 5;
+   private static final float d = -3.4F;
+   public static final float a = 1.5F;
+   private static final float m = 5.0F;
+   public static final float b = 3.5F;
+   private static final float n = 0.7F;
 
-   public cxb(cwk.a $$0) {
+   public cxb(cwl.a $$0) {
       super($$0);
    }
 
-   public static cwo a(dgh $$0, int $$1, int $$2, byte $$3, boolean $$4, boolean $$5) {
-      cwo $$6 = new cwo(cws.sR);
-      euq $$7 = a($$0, $$1, $$2, $$3, $$4, $$5, $$0.ai());
-      $$6.b(kv.L, $$7);
-      return $$6;
+   public static czg b() {
+      return czg.a().a(bwp.c, new bwn(g, 5.0, bwn.a.a), buu.b).a(bwp.e, new bwn(h, -3.4F, bwn.a.a), buu.b).a();
    }
 
-   @Nullable
-   public static eus a(@Nullable euq $$0, dgh $$1) {
-      return $$0 == null ? null : $$1.a($$0);
-   }
-
-   @Nullable
-   public static eus b(cwo $$0, dgh $$1) {
-      euq $$2 = $$0.a(kv.L);
-      return a($$2, $$1);
-   }
-
-   private static euq a(dgh $$0, int $$1, int $$2, int $$3, boolean $$4, boolean $$5, aku<dgh> $$6) {
-      eus $$7 = eus.a((double)$$1, (double)$$2, (byte)$$3, $$4, $$5, $$6);
-      euq $$8 = $$0.x();
-      $$0.a($$8, $$7);
-      return $$8;
-   }
-
-   public void a(dgh $$0, buk $$1, eus $$2) {
-      if ($$0.ai() == $$2.e && $$1 instanceof cow) {
-         int $$3 = 1 << $$2.f;
-         int $$4 = $$2.c;
-         int $$5 = $$2.d;
-         int $$6 = ayz.a($$1.dA() - (double)$$4) / $$3 + 64;
-         int $$7 = ayz.a($$1.dG() - (double)$$5) / $$3 + 64;
-         int $$8 = 128 / $$3;
-         if ($$0.G_().h()) {
-            $$8 /= 2;
-         }
-
-         eus.a $$9 = $$2.a((cow)$$1);
-         $$9.b++;
-         ji.a $$10 = new ji.a();
-         ji.a $$11 = new ji.a();
-         boolean $$12 = false;
-
-         for (int $$13 = $$6 - $$8 + 1; $$13 < $$6 + $$8; $$13++) {
-            if (($$13 & 15) == ($$9.b & 15) || $$12) {
-               $$12 = false;
-               double $$14 = 0.0;
-
-               for (int $$15 = $$7 - $$8 - 1; $$15 < $$7 + $$8; $$15++) {
-                  if ($$13 >= 0 && $$15 >= -1 && $$13 < 128 && $$15 < 128) {
-                     int $$16 = ayz.h($$13 - $$6) + ayz.h($$15 - $$7);
-                     boolean $$17 = $$16 > ($$8 - 2) * ($$8 - 2);
-                     int $$18 = ($$4 / $$3 + $$13 - 64) * $$3;
-                     int $$19 = ($$5 / $$3 + $$15 - 64) * $$3;
-                     Multiset<etc> $$20 = LinkedHashMultiset.create();
-                     dzb $$21 = $$0.d(kk.a($$18), kk.a($$19));
-                     if (!$$21.E()) {
-                        int $$22 = 0;
-                        double $$23 = 0.0;
-                        if ($$0.G_().h()) {
-                           int $$24 = $$18 + $$19 * 231871;
-                           $$24 = $$24 * $$24 * 31287121 + $$24 * 11;
-                           if (($$24 >> 20 & 1) == 0) {
-                              $$20.add(djn.j.m().a((dfm)$$0, ji.c), 10);
-                           } else {
-                              $$20.add(djn.b.m().a((dfm)$$0, ji.c), 100);
-                           }
-
-                           $$23 = 100.0;
-                        } else {
-                           for (int $$25 = 0; $$25 < $$3; $$25++) {
-                              for (int $$26 = 0; $$26 < $$3; $$26++) {
-                                 $$10.d($$18 + $$25, 0, $$19 + $$26);
-                                 int $$27 = $$21.a(ecr.a.b, $$10.u(), $$10.w()) + 1;
-                                 dww $$31;
-                                 if ($$27 <= $$0.L_()) {
-                                    $$31 = djn.I.m();
-                                 } else {
-                                    do {
-                                       $$10.q(--$$27);
-                                       $$31 = $$21.a_($$10);
-                                    } while ($$31.a($$0, $$10) == etc.a && $$27 > $$0.L_());
-
-                                    if ($$27 > $$0.L_() && !$$31.y().c()) {
-                                       int $$29 = $$27 - 1;
-                                       $$11.g($$10);
-
-                                       dww $$30;
-                                       do {
-                                          $$11.q($$29--);
-                                          $$30 = $$21.a_($$11);
-                                          $$22++;
-                                       } while ($$29 > $$0.L_() && !$$30.y().c());
-
-                                       $$31 = this.a($$0, $$31, $$10);
-                                    }
-                                 }
-
-                                 $$2.a($$0, $$10.u(), $$10.w());
-                                 $$23 += (double)$$27 / (double)($$3 * $$3);
-                                 $$20.add($$31.a($$0, $$10));
-                              }
-                           }
-                        }
-
-                        $$22 /= $$3 * $$3;
-                        etc $$32 = (etc)Iterables.getFirst(Multisets.copyHighestCountFirst($$20), etc.a);
-                        etc.a $$34;
-                        if ($$32 == etc.m) {
-                           double $$33 = (double)$$22 * 0.1 + (double)($$13 + $$15 & 1) * 0.2;
-                           if ($$33 < 0.5) {
-                              $$34 = etc.a.c;
-                           } else if ($$33 > 0.9) {
-                              $$34 = etc.a.a;
-                           } else {
-                              $$34 = etc.a.b;
-                           }
-                        } else {
-                           double $$37 = ($$23 - $$14) * 4.0 / (double)($$3 + 4) + ((double)($$13 + $$15 & 1) - 0.5) * 0.4;
-                           if ($$37 > 0.6) {
-                              $$34 = etc.a.c;
-                           } else if ($$37 < -0.6) {
-                              $$34 = etc.a.a;
-                           } else {
-                              $$34 = etc.a.b;
-                           }
-                        }
-
-                        $$14 = $$23;
-                        if ($$15 >= 0 && $$16 < $$8 * $$8 && (!$$17 || ($$13 + $$15 & 1) != 0)) {
-                           $$12 |= $$2.a($$13, $$15, $$32.b($$34));
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private dww a(dgh $$0, dww $$1, ji $$2) {
-      esy $$3 = $$1.y();
-      return !$$3.c() && !$$1.c($$0, $$2, jn.b) ? $$3.g() : $$1;
-   }
-
-   private static boolean a(boolean[] $$0, int $$1, int $$2) {
-      return $$0[$$2 * 128 + $$1];
-   }
-
-   public static void a(ard $$0, cwo $$1) {
-      eus $$2 = b($$1, $$0);
-      if ($$2 != null) {
-         if ($$0.ai() == $$2.e) {
-            int $$3 = 1 << $$2.f;
-            int $$4 = $$2.c;
-            int $$5 = $$2.d;
-            boolean[] $$6 = new boolean[16384];
-            int $$7 = $$4 / $$3 - 64;
-            int $$8 = $$5 / $$3 - 64;
-            ji.a $$9 = new ji.a();
-
-            for (int $$10 = 0; $$10 < 128; $$10++) {
-               for (int $$11 = 0; $$11 < 128; $$11++) {
-                  jr<dhj> $$12 = $$0.t($$9.d(($$7 + $$11) * $$3, 0, ($$8 + $$10) * $$3));
-                  $$6[$$10 * 128 + $$11] = $$12.a(awo.ab);
-               }
-            }
-
-            for (int $$13 = 1; $$13 < 127; $$13++) {
-               for (int $$14 = 1; $$14 < 127; $$14++) {
-                  int $$15 = 0;
-
-                  for (int $$16 = -1; $$16 < 2; $$16++) {
-                     for (int $$17 = -1; $$17 < 2; $$17++) {
-                        if (($$16 != 0 || $$17 != 0) && a($$6, $$13 + $$16, $$14 + $$17)) {
-                           $$15++;
-                        }
-                     }
-                  }
-
-                  etc.a $$18 = etc.a.d;
-                  etc $$19 = etc.a;
-                  if (a($$6, $$13, $$14)) {
-                     $$19 = etc.p;
-                     if ($$15 > 7 && $$14 % 2 == 0) {
-                        switch (($$13 + (int)(ayz.a((float)$$14 + 0.0F) * 7.0F)) / 8 % 5) {
-                           case 0:
-                           case 4:
-                              $$18 = etc.a.a;
-                              break;
-                           case 1:
-                           case 3:
-                              $$18 = etc.a.b;
-                              break;
-                           case 2:
-                              $$18 = etc.a.c;
-                        }
-                     } else if ($$15 > 7) {
-                        $$19 = etc.a;
-                     } else if ($$15 > 5) {
-                        $$18 = etc.a.b;
-                     } else if ($$15 > 3) {
-                        $$18 = etc.a.a;
-                     } else if ($$15 > 1) {
-                        $$18 = etc.a.a;
-                     }
-                  } else if ($$15 > 0) {
-                     $$19 = etc.A;
-                     if ($$15 > 3) {
-                        $$18 = etc.a.b;
-                     } else {
-                        $$18 = etc.a.d;
-                     }
-                  }
-
-                  if ($$19 != etc.a) {
-                     $$2.b($$13, $$14, $$19.b($$18));
-                  }
-               }
-            }
-         }
-      }
+   public static czr c() {
+      return new czr(List.of(), 1.0F, 2);
    }
 
    @Override
-   public void a(cwo $$0, dgh $$1, buk $$2, int $$3, boolean $$4) {
-      if (!$$1.C) {
-         eus $$5 = b($$0, $$1);
-         if ($$5 != null) {
-            if ($$2 instanceof cow $$6) {
-               $$5.a($$6, $$0);
-            }
-
-            if (!$$5.h && ($$4 || $$2 instanceof cow && ((cow)$$2).fa() == $$0)) {
-               this.a($$1, $$2, $$5);
-            }
-         }
-      }
+   public boolean a(dwx $$0, dgi $$1, ji $$2, cox $$3) {
+      return !$$3.b();
    }
 
    @Override
-   public void a(cwo $$0, dgh $$1) {
-      czl $$2 = $$0.d(kv.N);
-      if ($$2 != null) {
-         switch ($$2) {
-            case a:
-               a($$1, $$0);
-               break;
-            case b:
-               c($$0, $$1);
+   public boolean a(cwp $$0, bvh $$1, bvh $$2) {
+      if (b($$2)) {
+         ard $$3 = (ard)$$2.dV();
+         $$2.i($$2.dy().a(jn.a.b, 0.01F));
+         if ($$2 instanceof are $$4) {
+            $$4.cy = this.a($$4);
+            $$4.x(true);
+            $$4.f.b(new aex($$4));
          }
-      }
-   }
 
-   private static void c(cwo $$0, dgh $$1) {
-      eus $$2 = b($$0, $$1);
-      if ($$2 != null) {
-         euq $$3 = $$1.x();
-         $$1.a($$3, $$2.e());
-         $$0.b(kv.L, $$3);
-      }
-   }
-
-   public static void a(dgh $$0, cwo $$1) {
-      eus $$2 = b($$1, $$0);
-      if ($$2 != null) {
-         euq $$3 = $$0.x();
-         eus $$4 = $$2.b();
-         $$0.a($$3, $$4);
-         $$1.b(kv.L, $$3);
-      }
-   }
-
-   @Override
-   public void a(cwo $$0, cwk.b $$1, List<wp> $$2, cyg $$3) {
-      euq $$4 = $$0.a(kv.L);
-      eus $$5 = $$4 != null ? $$1.a($$4) : null;
-      czl $$6 = $$0.a(kv.N);
-      if ($$5 != null && ($$5.h || $$6 == czl.a)) {
-         $$2.add(wp.a("filled_map.locked", $$4.b()).a(n.h));
-      }
-
-      if ($$3.a()) {
-         if ($$5 != null) {
-            if ($$6 == null) {
-               $$2.add(a($$4));
+         if ($$1.aJ()) {
+            if ($$2 instanceof are $$5) {
+               $$5.b(true);
             }
 
-            int $$7 = $$6 == czl.b ? 1 : 0;
-            int $$8 = Math.min($$5.f + $$7, 4);
-            $$2.add(wp.a("filled_map.scale", 1 << $$8).a(n.h));
-            $$2.add(wp.a("filled_map.level", $$8, 4).a(n.h));
+            avz $$6 = $$2.Z > 5.0F ? awa.oO : awa.oN;
+            $$3.a(null, $$2.dA(), $$2.dC(), $$2.dG(), $$6, $$2.dm(), 1.0F, 1.0F);
          } else {
-            $$2.add(wp.c("filled_map.unknown").a(n.h));
+            $$3.a(null, $$2.dA(), $$2.dC(), $$2.dG(), awa.oM, $$2.dm(), 1.0F, 1.0F);
          }
+
+         a($$3, $$2, $$1);
       }
+
+      return true;
    }
 
-   public static wp a(euq $$0) {
-      return wp.a("filled_map.id", $$0.b()).a(n.h);
+   private fba a(are $$0) {
+      return $$0.gN() && $$0.cy != null && $$0.cy.e <= $$0.dt().e ? $$0.cy : $$0.dt();
    }
 
    @Override
-   public bsj a(dah $$0) {
-      dww $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(awp.I)) {
-         if (!$$0.q().C) {
-            eus $$2 = b($$0.n(), $$0.q());
-            if ($$2 != null && !$$2.a($$0.q(), $$0.a())) {
-               return bsj.d;
+   public void b(cwp $$0, bvh $$1, bvh $$2) {
+      $$0.a(1, $$2, but.a);
+      if (b($$2)) {
+         $$2.k();
+      }
+   }
+
+   @Override
+   public float a(bul $$0, float $$1, btb $$2) {
+      if ($$2.c() instanceof bvh $$3) {
+         if (!b($$3)) {
+            return 0.0F;
+         } else {
+            float $$5 = 3.0F;
+            float $$6 = 8.0F;
+            float $$7 = $$3.Z;
+            float $$8;
+            if ($$7 <= 3.0F) {
+               $$8 = 4.0F * $$7;
+            } else if ($$7 <= 8.0F) {
+               $$8 = 12.0F + 2.0F * ($$7 - 3.0F);
+            } else {
+               $$8 = 22.0F + $$7 - 8.0F;
+            }
+
+            return $$3.dV() instanceof ard $$11 ? $$8 + ddb.b($$11, $$3.dZ(), $$0, $$2, 0.0F) * $$7 : $$8;
+         }
+      } else {
+         return 0.0F;
+      }
+   }
+
+   private static void a(dgi $$0, bul $$1, bul $$2) {
+      $$0.c(2013, $$2.aR(), 750);
+      $$0.a(bvh.class, $$2.cR().g(3.5), a($$1, $$2)).forEach($$2x -> {
+         fba $$3 = $$2x.dt().d($$2.dt());
+         double $$4 = a($$1, $$2x, $$3);
+         fba $$5 = $$3.d().c($$4);
+         if ($$4 > 0.0) {
+            $$2x.j($$5.d, 0.7F, $$5.f);
+            if ($$2x instanceof are $$6) {
+               $$6.f.b(new aex($$6));
             }
          }
+      });
+   }
 
-         return bsj.a;
-      } else {
-         return super.a($$0);
-      }
+   private static Predicate<bvh> a(bul $$0, bul $$1) {
+      return $$2 -> {
+         boolean $$3;
+         boolean $$4;
+         boolean $$5;
+         boolean var10000;
+         label62: {
+            $$3 = !$$2.Z_();
+            $$4 = $$2 != $$0 && $$2 != $$1;
+            $$5 = !$$0.s($$2);
+            if ($$2 instanceof bwe $$6 && $$6.p() && $$0.cG().equals($$6.aa_())) {
+               var10000 = true;
+               break label62;
+            }
+
+            var10000 = false;
+         }
+
+         boolean $$7;
+         label55: {
+            $$7 = !var10000;
+            if ($$2 instanceof ckr $$8 && $$8.x()) {
+               var10000 = false;
+               break label55;
+            }
+
+            var10000 = true;
+         }
+
+         boolean $$10 = var10000;
+         boolean $$11 = $$1.g($$2) <= Math.pow(3.5, 2.0);
+         return $$3 && $$4 && $$5 && $$7 && $$10 && $$11;
+      };
+   }
+
+   private static double a(bul $$0, bvh $$1, fba $$2) {
+      return (3.5 - $$2.g()) * 0.7F * (double)($$0.Z > 5.0F ? 2 : 1) * (1.0 - $$1.h(bwp.p));
+   }
+
+   public static boolean b(bvh $$0) {
+      return $$0.Z > 1.5F && !$$0.fJ();
+   }
+
+   @Nullable
+   @Override
+   public btb a(bvh $$0) {
+      return b($$0) ? $$0.dW().f($$0) : super.a($$0);
    }
 }

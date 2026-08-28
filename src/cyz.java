@@ -1,15 +1,60 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public record cyz(axf<btc> c) {
-   public static final Codec<cyz> a = RecordCodecBuilder.create($$0 -> $$0.group(axf.b(mc.s).fieldOf("types").forGetter(cyz::a)).apply($$0, cyz::new));
-   public static final yn<wa, cyz> b = yn.a(axf.c(mc.s), cyz::a, cyz::new);
+public record cyz(List<Float> d, List<Boolean> e, List<String> f, List<Integer> g) {
+   public static final cyz a = new cyz(List.of(), List.of(), List.of(), List.of());
+   public static final Codec<cyz> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.FLOAT.listOf().optionalFieldOf("floats", List.of()).forGetter(cyz::a),
+               Codec.BOOL.listOf().optionalFieldOf("flags", List.of()).forGetter(cyz::b),
+               Codec.STRING.listOf().optionalFieldOf("strings", List.of()).forGetter(cyz::c),
+               ayi.i.listOf().optionalFieldOf("colors", List.of()).forGetter(cyz::d)
+            )
+            .apply($$0, cyz::new)
+   );
+   public static final yn<ByteBuf, cyz> c = yn.a(yl.l.a(yl.a()), cyz::a, yl.b.a(yl.a()), cyz::b, yl.o.a(yl.a()), cyz::c, yl.g.a(yl.a()), cyz::d, cyz::new);
 
-   public boolean a(bta $$0) {
-      return $$0.a(this.c);
+   @Nullable
+   private static <T> T a(List<T> $$0, int $$1) {
+      return $$1 >= 0 && $$1 < $$0.size() ? $$0.get($$1) : null;
    }
 
-   public axf<btc> a() {
-      return this.c;
+   @Nullable
+   public Float a(int $$0) {
+      return a(this.d, $$0);
+   }
+
+   @Nullable
+   public Boolean b(int $$0) {
+      return a(this.e, $$0);
+   }
+
+   @Nullable
+   public String c(int $$0) {
+      return a(this.f, $$0);
+   }
+
+   @Nullable
+   public Integer d(int $$0) {
+      return a(this.g, $$0);
+   }
+
+   public List<Float> a() {
+      return this.d;
+   }
+
+   public List<Boolean> b() {
+      return this.e;
+   }
+
+   public List<String> c() {
+      return this.f;
+   }
+
+   public List<Integer> d() {
+      return this.g;
    }
 }

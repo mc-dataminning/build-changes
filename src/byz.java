@@ -3,54 +3,32 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-@Deprecated
 public class byz {
-   public static bxa<bvg> a(float $$0, bru $$1) {
-      return a($$0, $$1, $$0x -> true);
+   public static bxb<bvh> a(bvk $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.aq().f()), $$1);
    }
 
-   public static bxa<bvg> a(bur<?> $$0, float $$1, bru $$2) {
-      return a($$1, $$2, $$1x -> $$0.equals($$1x.aq()));
+   public static byl<bvh> a(bus<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.aq()), $$1);
    }
 
-   private static bxa<bvg> a(float $$0, bru $$1, Predicate<bvg> $$2) {
-      float $$3 = $$0 * $$0;
-      byz.a $$4 = new byz.a($$1);
-      return cam.a(
-         (Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$3x -> $$3x.group($$3x.c(cek.n), $$3x.b(cek.h))
-               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<bvg> $$9 = $$3x.<cem>b($$5).a($$2.and($$2xxxx -> $$2xxxx.g((buk)$$7) <= (double)$$3));
-                     if ($$9.isEmpty()) {
-                        return false;
-                     } else if (!$$4.a($$6.A)) {
+   public static byl<bvh> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static byl<bvh> a(Predicate<bvh> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return can.a(
+         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$2x -> $$2x.group($$2x.c(cel.n), $$2x.b(cel.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<bvh> $$8 = $$2x.<cen>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bul)$$6) <= (double)$$2 && !$$6.y($$2xxxx)));
+                     if ($$8.isEmpty()) {
                         return false;
                      } else {
-                        $$4x.a(new bxk($$9.get(), true));
+                        $$3.a(new bxl($$8.get(), true));
                         return true;
                      }
                   }))
       );
-   }
-
-   public static final class a {
-      private final bru a;
-      private int b;
-
-      public a(bru $$0) {
-         if ($$0.a() <= 1) {
-            throw new IllegalArgumentException();
-         } else {
-            this.a = $$0;
-         }
-      }
-
-      public boolean a(azh $$0) {
-         if (this.b == 0) {
-            this.b = this.a.a($$0) - 1;
-            return false;
-         } else {
-            return --this.b == 0;
-         }
-      }
    }
 }

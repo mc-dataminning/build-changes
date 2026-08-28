@@ -1,43 +1,26 @@
-import java.util.List;
-
-public class cvq extends cwk {
-   public cvq(cwk.a $$0) {
+public class cvq extends cwl {
+   public cvq(cwl.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsj a(dah $$0) {
-      dgh $$1 = $$0.q();
-      ji $$2 = $$0.a();
-      dww $$3 = $$1.a_($$2);
-      if (!$$3.a(djn.cv) && !$$3.a(djn.I)) {
-         return bsj.d;
+   public bsk a(dgi $$0, cox $$1, bsj $$2) {
+      cwp $$3 = $$1.b($$2);
+      if ($$0.C) {
+         return bsk.a;
       } else {
-         ji $$4 = $$2.d();
-         if (!$$1.u($$4)) {
-            return bsj.d;
+         $$3.a(1, $$1);
+         $$1.b(awk.c.b(this));
+         $$1.dV().a(null, $$1, awa.Bi, $$1.dm(), 1.0F, 1.0F);
+         cwp $$4 = cxc.a($$0, $$1.dz(), $$1.dF(), (byte)0, true, false);
+         if ($$3.f()) {
+            return bsk.a.a($$4);
          } else {
-            double $$5 = (double)$$4.u();
-            double $$6 = (double)$$4.v();
-            double $$7 = (double)$$4.w();
-            List<buk> $$8 = $$1.a_(null, new fau($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
-            if (!$$8.isEmpty()) {
-               return bsj.d;
-            } else {
-               if ($$1 instanceof ard) {
-                  cjt $$9 = new cjt($$1, $$5 + 0.5, $$6, $$7 + 0.5);
-                  $$9.a(false);
-                  $$1.b($$9);
-                  $$1.a($$0.o(), ebs.t, $$4);
-                  eau $$10 = ((ard)$$1).F();
-                  if ($$10 != null) {
-                     $$10.g();
-                  }
-               }
-
-               $$0.n().h(1);
-               return bsj.a;
+            if (!$$1.gi().f($$4.v())) {
+               $$1.a($$4, false);
             }
+
+            return bsk.a;
          }
       }
    }

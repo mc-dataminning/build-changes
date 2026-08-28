@@ -1,40 +1,59 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dns extends dna implements doe {
+public class dns extends dnc implements dof {
    public static final MapCodec<dns> c = b(dns::new);
+   protected static final fbu g = djm.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final double h = 0.14;
 
    @Override
    public MapCodec<dns> a() {
       return c;
    }
 
-   protected dns(dwv.d $$0) {
-      super($$0, jn.b, fbq.b(), true);
+   protected dns(dww.d $$0) {
+      super($$0, jn.b, g, true, 0.14);
    }
 
    @Override
-   protected dnb c() {
-      return (dnb)djn.mE;
+   protected boolean h(dwx $$0) {
+      return $$0.a(djo.J);
    }
 
    @Override
-   protected esy b_(dww $$0) {
-      return esz.c.a(false);
+   protected djm b() {
+      return djo.mF;
    }
 
    @Override
-   protected boolean o(dww $$0) {
-      return this.c().o($$0);
+   protected boolean o(dwx $$0) {
+      return !$$0.a(djo.ll);
    }
 
    @Override
-   public boolean a(@Nullable cow $$0, dfm $$1, ji $$2, dww $$3, esx $$4) {
+   public boolean a(@Nullable cox $$0, dfn $$1, ji $$2, dwx $$3, esy $$4) {
       return false;
    }
 
    @Override
-   public boolean a(dgi $$0, ji $$1, dww $$2, esy $$3) {
+   public boolean a(dgj $$0, ji $$1, dwx $$2, esz $$3) {
       return false;
+   }
+
+   @Override
+   protected int a(azh $$0) {
+      return 1;
+   }
+
+   @Nullable
+   @Override
+   public dwx a(dag $$0) {
+      esz $$1 = $$0.q().b_($$0.a());
+      return $$1.a(awv.a) && $$1.e() == 8 ? super.a($$0) : null;
+   }
+
+   @Override
+   protected esz b_(dwx $$0) {
+      return eta.c.a(false);
    }
 }

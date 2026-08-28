@@ -1,48 +1,76 @@
-public class cic {
-   public static final aku<cib> a = a("pale");
-   public static final aku<cib> b = a("spotted");
-   public static final aku<cib> c = a("snowy");
-   public static final aku<cib> d = a("black");
-   public static final aku<cib> e = a("ashen");
-   public static final aku<cib> f = a("rusty");
-   public static final aku<cib> g = a("woods");
-   public static final aku<cib> h = a("chestnut");
-   public static final aku<cib> i = a("striped");
-   public static final aku<cib> j = a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
-   private static aku<cib> a(String $$0) {
-      return aku.a(mc.m, akv.b($$0));
+public final class cic {
+   public static final Codec<cic> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               akv.a.fieldOf("wild_texture").forGetter($$0x -> $$0x.e),
+               akv.a.fieldOf("tame_texture").forGetter($$0x -> $$0x.f),
+               akv.a.fieldOf("angry_texture").forGetter($$0x -> $$0x.g),
+               kg.a(mc.aI).fieldOf("biomes").forGetter(cic::d)
+            )
+            .apply($$0, cic::new)
+   );
+   public static final yn<wa, cic> b = yn.a(akv.b, cic::a, akv.b, cic::b, akv.b, cic::c, yl.c(mc.aI), cic::d, cic::new);
+   public static final Codec<jr<cic>> c = akr.a(mc.m, a);
+   public static final yn<wa, jr<cic>> d = yl.a(mc.m, b);
+   private final akv e;
+   private final akv f;
+   private final akv g;
+   private final akv h;
+   private final akv i;
+   private final akv j;
+   private final jv<dhk> k;
+
+   public cic(akv $$0, akv $$1, akv $$2, jv<dhk> $$3) {
+      this.e = $$0;
+      this.h = a($$0);
+      this.f = $$1;
+      this.i = a($$1);
+      this.g = $$2;
+      this.j = a($$2);
+      this.k = $$3;
    }
 
-   static void a(qe<cib> $$0, aku<cib> $$1, String $$2, aku<dhj> $$3) {
-      a($$0, $$1, $$2, jv.a($$0.a(mc.aI).b($$3)));
+   private static akv a(akv $$0) {
+      return $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"));
    }
 
-   static void a(qe<cib> $$0, aku<cib> $$1, String $$2, axf<dhj> $$3) {
-      a($$0, $$1, $$2, $$0.a(mc.aI).b($$3));
+   public akv a() {
+      return this.h;
    }
 
-   static void a(qe<cib> $$0, aku<cib> $$1, String $$2, jv<dhj> $$3) {
-      akv $$4 = akv.b("entity/wolf/" + $$2);
-      akv $$5 = akv.b("entity/wolf/" + $$2 + "_tame");
-      akv $$6 = akv.b("entity/wolf/" + $$2 + "_angry");
-      $$0.a($$1, new cib($$4, $$5, $$6, $$3));
+   public akv b() {
+      return this.i;
    }
 
-   public static jr<cib> a(kf $$0, jr<dhj> $$1) {
-      ke<cib> $$2 = $$0.e(mc.m);
-      return $$2.c().filter($$1x -> ((cib)$$1x.a()).d().a($$1)).findFirst().or(() -> $$2.a(j)).or($$2::a).orElseThrow();
+   public akv c() {
+      return this.j;
    }
 
-   public static void a(qe<cib> $$0) {
-      a($$0, a, "wolf", dhq.q);
-      a($$0, b, "wolf_spotted", awo.k);
-      a($$0, c, "wolf_snowy", dhq.G);
-      a($$0, d, "wolf_black", dhq.o);
-      a($$0, e, "wolf_ashen", dhq.r);
-      a($$0, f, "wolf_rusty", awo.i);
-      a($$0, g, "wolf_woods", dhq.i);
-      a($$0, h, "wolf_chestnut", dhq.p);
-      a($$0, i, "wolf_striped", awo.f);
+   public jv<dhk> d() {
+      return this.k;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return !($$0 instanceof cic $$1)
+            ? false
+            : Objects.equals(this.e, $$1.e) && Objects.equals(this.f, $$1.f) && Objects.equals(this.g, $$1.g) && Objects.equals(this.k, $$1.k);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = 1;
+      $$0 = 31 * $$0 + this.e.hashCode();
+      $$0 = 31 * $$0 + this.f.hashCode();
+      $$0 = 31 * $$0 + this.g.hashCode();
+      return 31 * $$0 + this.k.hashCode();
    }
 }

@@ -1,62 +1,21 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record ezx(fae b, String c, float d) implements ezv {
-   public static final MapCodec<ezx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               faf.a.fieldOf("target").forGetter(ezx::c),
-               Codec.STRING.fieldOf("score").forGetter(ezx::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(ezx::e)
-            )
-            .apply($$0, ezx::new)
-   );
+public class ezx {
+   private static final Codec<ezw> h = mb.G.q().dispatch(ezw::b, ezv::a);
+   public static final Codec<ezw> a = Codec.lazyInitialized(() -> {
+      Codec<ezw> $$0 = Codec.withAlternative(h, faa.a.codec());
+      return Codec.either(ezt.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof ezt $$1 ? Either.left($$1) : Either.right($$0x));
+   });
+   public static final ezv b = a("constant", ezt.a);
+   public static final ezv c = a("uniform", faa.a);
+   public static final ezv d = a("binomial", ezs.a);
+   public static final ezv e = a("score", ezy.a);
+   public static final ezv f = a("storage", ezz.a);
+   public static final ezv g = a("enchantment_level", ezu.a);
 
-   @Override
-   public ezu b() {
-      return ezw.e;
-   }
-
-   @Override
-   public Set<bai<?>> a() {
-      return this.b.b();
-   }
-
-   public static ezx a(evq.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
-   }
-
-   public static ezx a(evq.b $$0, String $$1, float $$2) {
-      return new ezx(fab.a($$0), $$1, $$2);
-   }
-
-   @Override
-   public float b(evq $$0) {
-      fcd $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         return 0.0F;
-      } else {
-         fce $$2 = $$0.d().g();
-         fbw $$3 = $$2.a(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            fca $$4 = $$2.d($$1, $$3);
-            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
-         }
-      }
-   }
-
-   public fae c() {
-      return this.b;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public float e() {
-      return this.d;
+   private static ezv a(String $$0, MapCodec<? extends ezw> $$1) {
+      return ke.a(mb.G, akv.b($$0), new ezv($$1));
    }
 }

@@ -1,135 +1,81 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class eos extends eot {
-   private static final Comparator<ern.a> a = Comparator.comparingInt(ern.a::g).reversed();
-   private static final Codec<Either<akv, ern>> g = Codec.of(eos::a, akv.a.map(Either::left));
-   public static final MapCodec<eos> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), e(), c()).apply($$0, eos::new));
-   protected final Either<akv, ern> c;
-   protected final jr<erl> d;
-   protected final Optional<eqx> e;
+public class eos extends eou {
+   public static final MapCodec<eos> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eou.f.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), e()).apply($$0, eos::new)
+   );
+   private final List<eou> b;
 
-   private static <T> DataResult<T> a(Either<akv, ern> $$0, DynamicOps<T> $$1, T $$2) {
-      Optional<akv> $$3 = $$0.left();
-      return $$3.isEmpty() ? DataResult.error(() -> "Can not serialize a runtime pool element") : akv.a.encode($$3.get(), $$1, $$2);
-   }
-
-   protected static <E extends eos> RecordCodecBuilder<E, jr<erl>> b() {
-      return erm.d.fieldOf("processors").forGetter($$0 -> $$0.d);
-   }
-
-   protected static <E extends eos> RecordCodecBuilder<E, Optional<eqx>> c() {
-      return eqx.c.optionalFieldOf("override_liquid_settings").forGetter($$0 -> $$0.e);
-   }
-
-   protected static <E extends eos> RecordCodecBuilder<E, Either<akv, ern>> d() {
-      return g.fieldOf("location").forGetter($$0 -> $$0.c);
-   }
-
-   protected eos(Either<akv, ern> $$0, jr<erl> $$1, eov.a $$2, Optional<eqx> $$3) {
-      super($$2);
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$3;
-   }
-
-   @Override
-   public km a(ero $$0, dqd $$1) {
-      ern $$2 = this.a($$0);
-      return $$2.a($$1);
-   }
-
-   private ern a(ero $$0) {
-      return (ern)this.c.map($$0::a, Function.identity());
-   }
-
-   public List<ern.d> a(ero $$0, ji $$1, dqd $$2, boolean $$3) {
-      ern $$4 = this.a($$0);
-      List<ern.d> $$5 = $$4.a($$1, new erj().a($$2), djn.pC, $$3);
-      List<ern.d> $$6 = Lists.newArrayList();
-
-      for (ern.d $$7 : $$5) {
-         tq $$8 = $$7.c();
-         if ($$8 != null) {
-            dyf $$9 = dyf.valueOf($$8.l("mode"));
-            if ($$9 == dyf.d) {
-               $$6.add($$7);
-            }
-         }
-      }
-
-      return $$6;
-   }
-
-   @Override
-   public List<ern.a> a(ero $$0, ji $$1, dqd $$2, azh $$3) {
-      List<ern.a> $$4 = this.a($$0).a($$1, $$2);
-      af.c($$4, $$3);
-      a($$4);
-      return $$4;
-   }
-
-   @VisibleForTesting
-   static void a(List<ern.a> $$0) {
-      $$0.sort(a);
-   }
-
-   @Override
-   public end a(ero $$0, ji $$1, dqd $$2) {
-      ern $$3 = this.a($$0);
-      return $$3.b(new erj().a($$2), $$1);
-   }
-
-   @Override
-   public boolean a(ero $$0, dhf $$1, dhd $$2, dys $$3, ji $$4, ji $$5, dqd $$6, end $$7, azh $$8, eqx $$9, boolean $$10) {
-      ern $$11 = this.a($$0);
-      erj $$12 = this.a($$6, $$7, $$9, $$10);
-      if (!$$11.a($$1, $$4, $$5, $$12, $$8, 18)) {
-         return false;
+   public eos(List<eou> $$0, eow.a $$1) {
+      super($$1);
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Elements are empty");
       } else {
-         for (ern.d $$14 : ern.a($$1, $$4, $$5, $$12, this.a($$0, $$4, $$6, false))) {
-            this.a($$1, $$14, $$4, $$6, $$8, $$7);
-         }
-
-         return true;
+         this.b = $$0;
+         this.b($$1);
       }
-   }
-
-   protected erj a(dqd $$0, end $$1, eqx $$2, boolean $$3) {
-      erj $$4 = new erj();
-      $$4.a($$1);
-      $$4.a($$0);
-      $$4.b(true);
-      $$4.a(false);
-      $$4.a(eqo.b);
-      $$4.c(true);
-      $$4.a(this.e.orElse($$2));
-      if (!$$3) {
-         $$4.a(equ.b);
-      }
-
-      this.d.a().a().forEach($$4::a);
-      this.f().b().forEach($$4::a);
-      return $$4;
    }
 
    @Override
-   public eou<?> a() {
-      return eou.a;
+   public km a(erp $$0, dqe $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (eou $$5 : this.b) {
+         km $$6 = $$5.a($$0, $$1);
+         $$2 = Math.max($$2, $$6.u());
+         $$3 = Math.max($$3, $$6.v());
+         $$4 = Math.max($$4, $$6.w());
+      }
+
+      return new km($$2, $$3, $$4);
+   }
+
+   @Override
+   public List<ero.a> a(erp $$0, ji $$1, dqe $$2, azh $$3) {
+      return this.b.get(0).a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public ene a(erp $$0, ji $$1, dqe $$2) {
+      Stream<ene> $$3 = this.b.stream().filter($$0x -> $$0x != eon.b).map($$3x -> $$3x.a($$0, $$1, $$2));
+      return ene.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
+   }
+
+   @Override
+   public boolean a(erp $$0, dhg $$1, dhe $$2, dyt $$3, ji $$4, ji $$5, dqe $$6, ene $$7, azh $$8, eqy $$9, boolean $$10) {
+      for (eou $$11 : this.b) {
+         if (!$$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public eov<?> a() {
+      return eov.b;
+   }
+
+   @Override
+   public eou a(eow.a $$0) {
+      super.a($$0);
+      this.b($$0);
+      return this;
    }
 
    @Override
    public String toString() {
-      return "Single[" + this.c + "]";
+      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
+   }
+
+   private void b(eow.a $$0) {
+      this.b.forEach($$1 -> $$1.a($$0));
    }
 }

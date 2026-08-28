@@ -1,33 +1,26 @@
-public record dbz(cwo a, cwo b, cwo c) implements dbj {
+import java.util.Optional;
+
+public interface dbz extends dbe<dca> {
    @Override
-   public cwo a(int $$0) {
-      return switch ($$0) {
-         case 0 -> this.a;
-         case 1 -> this.b;
-         case 2 -> this.c;
-         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
-      };
+   default dbp<dbz> b() {
+      return dbp.g;
    }
 
    @Override
-   public int a() {
-      return 3;
+   dbo<? extends dbz> a();
+
+   default boolean a(dca $$0, dgi $$1) {
+      return dba.a(this.c(), $$0.c()) && dba.a(this.f(), $$0.d()) && dba.a(this.k(), $$0.e());
    }
+
+   Optional<dba> c();
+
+   Optional<dba> f();
+
+   Optional<dba> k();
 
    @Override
-   public boolean b() {
-      return this.a.f() && this.b.f() && this.c.f();
-   }
-
-   public cwo c() {
-      return this.a;
-   }
-
-   public cwo d() {
-      return this.b;
-   }
-
-   public cwo e() {
-      return this.c;
+   default dbh h() {
+      return dbg.l;
    }
 }

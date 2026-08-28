@@ -1,28 +1,32 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record hbg(hbk.b b, hbg.a c) {
-   public static final Codec<hbg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(hbm.a.fieldOf("model").forGetter(hbg::a), hbg.a.b.forGetter(hbg::b)).apply($$0, hbg::new)
-   );
+public class hbg implements hbl {
+   static final hbl a = new hbg();
 
-   public hbk.b a() {
-      return this.b;
+   @Override
+   public void a(hbo $$0, cwp $$1, hbm $$2, cwn $$3, @Nullable gfz $$4, @Nullable bvh $$5, int $$6) {
+      cwp $$7 = cvc.i($$1);
+      if (!$$7.f()) {
+         $$2.a($$0, $$7, $$3, $$4, $$5, $$6);
+      }
    }
 
-   public hbg.a b() {
-      return this.c;
-   }
+   public static record a() implements hbl.b {
+      public static final MapCodec<hbg.a> a = MapCodec.unit(new hbg.a());
 
-   public static record a(boolean c) {
-      public static final hbg.a a = new hbg.a(true);
-      public static final MapCodec<hbg.a> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("hand_animation_on_swap", true).forGetter(hbg.a::a)).apply($$0, hbg.a::new)
-      );
+      @Override
+      public MapCodec<hbg.a> a() {
+         return a;
+      }
 
-      public boolean a() {
-         return this.c;
+      @Override
+      public hbl a(hbl.a $$0) {
+         return hbg.a;
+      }
+
+      @Override
+      public void a(hhk.a $$0) {
       }
    }
 }

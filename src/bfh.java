@@ -1,60 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
+import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bfh extends DataFix {
-   public bfh(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bfh extends bda {
+   private static final Optional<String> a = Optional.of("\"\"");
+
+   public bfh(Schema $$0) {
+      super($$0, "InvalidLockComponentPredicateFix", "minecraft:lock");
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhw.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bhw.D.typeName(), bjk.a()));
-      OpticFinder<?> $$2 = $$0.findField("tag");
-      OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
-      return this.fixTypeEverywhereTyped("ItemBannerColorFix", $$0, $$3x -> {
-         Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
-         if ($$4.isPresent() && Objects.equals($$4.get().getSecond(), "minecraft:banner")) {
-            Dynamic<?> $$5 = (Dynamic<?>)$$3x.get(DSL.remainderFinder());
-            Optional<? extends Typed<?>> $$6 = $$3x.getOptionalTyped($$2);
-            if ($$6.isPresent()) {
-               Typed<?> $$7 = (Typed<?>)$$6.get();
-               Optional<? extends Typed<?>> $$8 = $$7.getOptionalTyped($$3);
-               if ($$8.isPresent()) {
-                  Typed<?> $$9 = (Typed<?>)$$8.get();
-                  Dynamic<?> $$10 = (Dynamic<?>)$$7.get(DSL.remainderFinder());
-                  Dynamic<?> $$11 = (Dynamic<?>)$$9.getOrCreate(DSL.remainderFinder());
-                  if ($$11.get("Base").asNumber().result().isPresent()) {
-                     $$5 = $$5.set("Damage", $$5.createShort((short)($$11.get("Base").asInt(0) & 15)));
-                     Optional<? extends Dynamic<?>> $$12 = $$10.get("display").result();
-                     if ($$12.isPresent()) {
-                        Dynamic<?> $$13 = (Dynamic<?>)$$12.get();
-                        Dynamic<?> $$14 = $$13.createMap(ImmutableMap.of($$13.createString("Lore"), $$13.createList(Stream.of($$13.createString("(+NBT")))));
-                        if (Objects.equals($$13, $$14)) {
-                           return $$3x.set(DSL.remainderFinder(), $$5);
-                        }
-                     }
+   @Nullable
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b($$0);
+   }
 
-                     $$11.remove("Base");
-                     return $$3x.set(DSL.remainderFinder(), $$5).set($$2, $$7.set($$3, $$9.set(DSL.remainderFinder(), $$11)));
-                  }
-               }
-            }
+   @Nullable
+   public static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      return c($$0) ? null : $$0;
+   }
 
-            return $$3x.set(DSL.remainderFinder(), $$5);
-         } else {
-            return $$3x;
-         }
-      });
+   private static <T> boolean c(Dynamic<T> $$0) {
+      return a($$0, "components", $$0x -> a($$0x, "minecraft:custom_name", $$0xx -> $$0xx.asString().result().equals(a)));
+   }
+
+   private static <T> boolean a(Dynamic<T> $$0, String $$1, Predicate<Dynamic<T>> $$2) {
+      Optional<Map<Dynamic<T>, Dynamic<T>>> $$3 = $$0.getMapValues().result();
+      return !$$3.isEmpty() && $$3.get().size() == 1 ? $$0.get($$1).result().filter($$2).isPresent() : false;
    }
 }

@@ -1,11 +1,11 @@
 import java.util.function.Consumer;
 
-public record tf(String a, String b, String c, dqd d, int e, long f, boolean g, boolean h, int i, int j, boolean k, Consumer<sk> l) {
+public record tf(String a, String b, String c, dqe d, int e, long f, boolean g, boolean h, int i, int j, boolean k, Consumer<sk> l) {
    public tf(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<sk> $$6) {
-      this($$0, $$1, $$2, dqd.a, $$3, $$4, $$5, false, 1, 1, false, $$6);
+      this($$0, $$1, $$2, dqe.a, $$3, $$4, $$5, false, 1, 1, false, $$6);
    }
 
-   public tf(String $$0, String $$1, String $$2, dqd $$3, int $$4, long $$5, boolean $$6, Consumer<sk> $$7) {
+   public tf(String $$0, String $$1, String $$2, dqe $$3, int $$4, long $$5, boolean $$6, Consumer<sk> $$7) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, 1, 1, false, $$7);
    }
 
@@ -34,7 +34,7 @@ public record tf(String a, String b, String c, dqd d, int e, long f, boolean g, 
       return this.c;
    }
 
-   public dqd e() {
+   public dqe e() {
       return this.d;
    }
 

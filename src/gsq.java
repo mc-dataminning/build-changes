@@ -1,22 +1,17 @@
-public class gsq extends gqx<cix, gyv, gch> {
-   private static final akv a = akv.b("textures/entity/goat/goat.png");
+public class gsq extends gun<buz> {
+   private static final akv a = akv.b("textures/entity/squid/glow_squid.png");
 
-   public gsq(gsd.a $$0) {
-      super($$0, new gch($$0.a(gfb.aX)), new gch($$0.a(gfb.aY)), 0.7F);
+   public gsq(gse.a $$0, gee $$1, gee $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public akv a(gyv $$0) {
+   @Override
+   public akv a(hak $$0) {
       return a;
    }
 
-   public gyv b() {
-      return new gyv();
-   }
-
-   public void a(cix $$0, gyv $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gs();
-      $$1.b = $$0.gt();
-      $$1.c = $$0.gF();
+   protected int a(buz $$0, ji $$1) {
+      int $$2 = (int)ayz.b(0.0F, 15.0F, 1.0F - (float)$$0.x() / 10.0F);
+      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

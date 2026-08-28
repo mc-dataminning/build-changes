@@ -1,36 +1,61 @@
-import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
 
-public abstract class hei extends hec {
-   private final akv d;
+public class hei implements AutoCloseable {
+   private static final int e = 16;
+   public static final int a = 0;
+   public static final int b = 3;
+   public static final int c = 10;
+   public static final int d = a(0, 10);
+   private final hef f = new hef(16, 16, false);
 
-   public hei(akv $$0) {
-      this.d = $$0;
-   }
+   public hei() {
+      feu $$0 = this.f.e();
 
-   public akv d() {
-      return this.d;
-   }
-
-   public void a(hes $$0) {
-      boolean $$1 = $$0.c();
-      boolean $$2 = $$0.b();
-      this.c = $$2;
-      fet $$3 = $$0.d();
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> this.a($$3, $$2, $$1));
-      } else {
-         this.a($$3, $$2, $$1);
+      for (int $$1 = 0; $$1 < 16; $$1++) {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            if ($$1 < 8) {
+               $$0.a($$2, $$1, -1291911168);
+            } else {
+               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
+               $$0.a($$2, $$1, axk.c($$3, -1));
+            }
+         }
       }
+
+      RenderSystem.activeTexture(33985);
+      this.f.c();
+      this.f.a(false, false);
+      this.f.a(true);
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false);
+      RenderSystem.activeTexture(33984);
    }
 
-   private void a(fet $$0, boolean $$1, boolean $$2) {
-      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
-      this.a($$1, false);
-      this.a($$2);
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), true);
+   @Override
+   public void close() {
+      this.f.close();
    }
 
-   public abstract hes a(aup var1) throws IOException;
+   public void a() {
+      RenderSystem.setupOverlayColor(this.f.a(), 16);
+   }
+
+   public static int a(float $$0) {
+      return (int)($$0 * 15.0F);
+   }
+
+   public static int a(boolean $$0) {
+      return $$0 ? 3 : 10;
+   }
+
+   public static int a(int $$0, int $$1) {
+      return $$0 | $$1 << 16;
+   }
+
+   public static int a(float $$0, boolean $$1) {
+      return a(a($$0), a($$1));
+   }
+
+   public void b() {
+      RenderSystem.teardownOverlayColor();
+   }
 }

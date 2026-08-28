@@ -1,39 +1,82 @@
+import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
 
-public class dmc extends dpz {
-   public static final MapCodec<dmc> b = b(dmc::new);
+public class dmc extends djm {
+   public static final MapCodec<dmc> a = b(dmc::new);
+   public static final dxu<jn> b = dnk.aF;
+   public static final dxo c = dxn.l;
+   protected static final fbu d = djm.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
+   protected static final fbu e = djm.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
+   protected static final fbu f = fbr.a(d, e);
+   private static dxc g;
 
    @Override
    public MapCodec<dmc> a() {
-      return b;
+      return a;
    }
 
-   protected dmc(dwv.d $$0) {
+   public dmc(dww.d $$0) {
       super($$0);
-      this.l(this.F.b().b(a, jn.b));
+      this.l(this.F.b().b(b, jn.c).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public dww a(daf $$0) {
-      jn $$1 = $$0.k();
-      dww $$2 = $$0.q().a_($$0.a().a($$1.g()));
-      return $$2.a(this) && $$2.c(a) == $$1 ? this.m().b(a, $$1.g()) : this.m().b(a, $$1);
+   protected boolean g_(dwx $$0) {
+      return true;
    }
 
    @Override
-   public void a(dww $$0, dgh $$1, ji $$2, azh $$3) {
-      jn $$4 = $$0.c(a);
-      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
-      if ($$3.a(5) == 0) {
-         $$1.a(lt.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return $$0.c(c) ? f : d;
+   }
+
+   @Override
+   public dwx a(dag $$0) {
+      return this.m().b(b, $$0.g().g()).b(c, Boolean.valueOf(false));
+   }
+
+   @Override
+   protected boolean c_(dwx $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dwx $$0, dgi $$1, ji $$2) {
+      return $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dqe $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dol $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(b, c);
+   }
+
+   public static dxc b() {
+      if (g == null) {
+         g = dxd.a()
+            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
+            .a('?', dxb.a(dxg.a))
+            .a('^', dxb.a(dxg.a(djo.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.d))))
+            .a('>', dxb.a(dxg.a(djo.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.e))))
+            .a('v', dxb.a(dxg.a(djo.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.c))))
+            .a('<', dxb.a(dxg.a(djo.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.f))))
+            .b();
       }
+
+      return g;
    }
 
    @Override
-   protected void a(dwx.a<djl, dww> $$0) {
-      $$0.a(a);
+   protected boolean a(dwx $$0, eto $$1) {
+      return false;
    }
 }

@@ -1,35 +1,20 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public record dcj(dck b, dci c, OptionalInt d, dbg e, Optional<List<daz>> f) {
-   public static final yn<wa, dcj> a = yn.a(dck.a, dcj::a, dci.e, dcj::b, yl.i, dcj::c, yl.a(mc.aH), dcj::d, daz.a.a(yl.a()).a(yl::a), dcj::e, dcj::new);
+public interface dcj {
+   Codec<dcj> d = mb.az.q().dispatch(dcj::a, dcj.a::a);
+   yn<wa, dcj> e = yl.a(mc.aF).b(dcj::a, dcj.a::b);
 
-   public List<cwo> a(bak $$0) {
-      return this.c.d().a($$0);
+   dcp d();
+
+   dcp e();
+
+   dcj.a<? extends dcj> a();
+
+   default boolean a(crt $$0) {
+      return this.d().a($$0) && this.e().a($$0);
    }
 
-   public boolean a(cpb $$0) {
-      return this.f.isEmpty() ? false : $$0.a(this.f.get(), null);
-   }
-
-   public dck a() {
-      return this.b;
-   }
-
-   public dci b() {
-      return this.c;
-   }
-
-   public OptionalInt c() {
-      return this.d;
-   }
-
-   public dbg d() {
-      return this.e;
-   }
-
-   public Optional<List<daz>> e() {
-      return this.f;
+   public static record a<T extends dcj>(MapCodec<T> a, yn<wa, T> b) {
    }
 }

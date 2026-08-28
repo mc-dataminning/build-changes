@@ -1,72 +1,66 @@
-import java.util.ArrayList;
 import java.util.List;
 
-public class fra implements frc {
-   private static final akv a = akv.b("toast/recipe");
-   private static final long e = 5000L;
-   private static final wp f = wp.c("recipe.toast.title");
-   private static final wp g = wp.c("recipe.toast.description");
-   private final List<fra.a> h = new ArrayList<>();
-   private long i;
-   private boolean j;
-   private frc.a k = frc.a.b;
-   private int l;
+public class fra implements frd {
+   private static final akv e = akv.b("toast/advancement");
+   public static final int a = 5000;
+   private final ai f;
+   private boolean g;
+   private frd.a h = frd.a.b;
 
-   private fra() {
+   public fra(ai $$0) {
+      this.f = $$0;
    }
 
    @Override
-   public frc.a a() {
-      return this.k;
+   public frd.a a() {
+      return this.h;
    }
 
    @Override
-   public void a(frd $$0, long $$1) {
-      if (this.j) {
-         this.i = $$1;
-         this.j = false;
-      }
-
-      if (this.h.isEmpty()) {
-         this.k = frc.a.b;
-      } else {
-         this.k = (double)($$1 - this.i) >= 5000.0 * $$0.d() ? frc.a.b : frc.a.a;
-      }
-
-      this.l = (int)((double)$$1 / Math.max(1.0, 5000.0 * $$0.d() / (double)this.h.size()) % (double)this.h.size());
-   }
-
-   @Override
-   public void a(fod $$0, fob $$1, long $$2) {
-      $$0.a(gmh::H, a, 0, 0, this.b(), this.c());
-      $$0.a($$1, f, 30, 7, -11534256, false);
-      $$0.a($$1, g, 30, 18, -16777216, false);
-      fra.a $$3 = this.h.get(this.l);
-      $$0.c().a();
-      $$0.c().b(0.6F, 0.6F, 1.0F);
-      $$0.b($$3.a(), 3, 3);
-      $$0.c().b();
-      $$0.b($$3.b(), 8, 8);
-   }
-
-   private void a(cwo $$0, cwo $$1) {
-      this.h.add(new fra.a($$0, $$1));
-      this.j = true;
-   }
-
-   public static void a(frd $$0, dci $$1) {
-      fra $$2 = $$0.a(fra.class, b);
+   public void a(fre $$0, long $$1) {
+      au $$2 = this.f.b().c().orElse(null);
       if ($$2 == null) {
-         $$2 = new fra();
-         $$0.a($$2);
-      }
+         this.h = frd.a.b;
+      } else {
+         if (!this.g && $$1 > 0L) {
+            this.g = true;
+            if ($$2.e() == ao.b) {
+               $$0.c().ak().a(hik.a(awa.Bl, 1.0F, 1.0F));
+            }
+         }
 
-      bak $$3 = dcp.a($$0.c().s);
-      cwo $$4 = $$1.e().b($$3);
-      cwo $$5 = $$1.d().b($$3);
-      $$2.a($$4, $$5);
+         this.h = (double)$$1 >= 5000.0 * $$0.d() ? frd.a.b : frd.a.a;
+      }
    }
 
-   static record a(cwo a, cwo b) {
+   @Override
+   public void a(foe $$0, foc $$1, long $$2) {
+      au $$3 = this.f.b().c().orElse(null);
+      $$0.a(gmi::H, e, 0, 0, this.b(), this.c());
+      if ($$3 != null) {
+         List<ayl> $$4 = $$1.c($$3.a(), 125);
+         int $$5 = $$3.e() == ao.b ? -30465 : -256;
+         if ($$4.size() == 1) {
+            $$0.a($$1, $$3.e().b(), 30, 7, $$5, false);
+            $$0.a($$1, $$4.get(0), 30, 18, -1, false);
+         } else {
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = ayz.d(ayz.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1, $$3.e().b(), 30, 11, $$5 | $$8, false);
+            } else {
+               int $$9 = ayz.d(ayz.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.c() / 2 - $$4.size() * 9 / 2;
+
+               for (ayl $$11 : $$4) {
+                  $$0.a($$1, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
+               }
+            }
+         }
+
+         $$0.b($$3.c(), 8, 8);
+      }
    }
 }

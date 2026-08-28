@@ -12,11 +12,11 @@ public class bbo extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      OpticFinder<String> $$0 = DSL.fieldFinder("id", bjk.a());
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", bjl.a());
       return this.fixTypeEverywhereTyped(
-         "BlockEntityCustomNameToComponentFix", this.getInputSchema().getType(bhw.s), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
+         "BlockEntityCustomNameToComponentFix", this.getInputSchema().getType(bhx.s), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
                Optional<String> $$3 = $$1.getOptional($$0);
-               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:command_block") ? $$2 : bdl.a($$2);
+               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:command_block") ? $$2 : bdm.a($$2);
             })
       );
    }

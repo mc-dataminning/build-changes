@@ -1,61 +1,67 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public record gff(float b, float c, float d, float e, float f, float g, float h, float i, float j) {
+   public static final gff a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
 
-public final class gff {
-   @Nullable
-   private final String a;
-   private final Vector3f b;
-   private final Vector3f c;
-   private final gfg d;
-   private final boolean e;
-   private final gfn f;
-   private final gfn g;
-   private final Set<jn> h;
-
-   protected gff(
-      @Nullable String $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      gfg $$9,
-      boolean $$10,
-      float $$11,
-      float $$12,
-      Set<jn> $$13
-   ) {
-      this.a = $$0;
-      this.f = new gfn($$1, $$2);
-      this.b = new Vector3f($$3, $$4, $$5);
-      this.c = new Vector3f($$6, $$7, $$8);
-      this.d = $$9;
-      this.e = $$10;
-      this.g = new gfn($$11, $$12);
-      this.h = $$13;
+   public static gff a(float $$0, float $$1, float $$2) {
+      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
    }
 
-   public gfc.a a(int $$0, int $$1) {
-      return new gfc.a(
-         (int)this.f.a(),
-         (int)this.f.b(),
-         this.b.x(),
-         this.b.y(),
-         this.b.z(),
-         this.c.x(),
-         this.c.y(),
-         this.c.z(),
-         this.d.b,
-         this.d.c,
-         this.d.d,
-         this.e,
-         (float)$$0 * this.g.a(),
-         (float)$$1 * this.g.b(),
-         this.h
-      );
+   public static gff b(float $$0, float $$1, float $$2) {
+      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
+   }
+
+   public static gff a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new gff($$0, $$1, $$2, $$3, $$4, $$5, 1.0F, 1.0F, 1.0F);
+   }
+
+   public gff c(float $$0, float $$1, float $$2) {
+      return new gff(this.b + $$0, this.c + $$1, this.d + $$2, this.e, this.f, this.g, this.h, this.i, this.j);
+   }
+
+   public gff a(float $$0) {
+      return new gff(this.b, this.c, this.d, this.e, this.f, this.g, $$0, $$0, $$0);
+   }
+
+   public gff b(float $$0) {
+      return $$0 == 1.0F ? this : this.d($$0, $$0, $$0);
+   }
+
+   public gff d(float $$0, float $$1, float $$2) {
+      return new gff(this.b * $$0, this.c * $$1, this.d * $$2, this.e, this.f, this.g, this.h * $$0, this.i * $$1, this.j * $$2);
+   }
+
+   public float a() {
+      return this.b;
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
+   }
+
+   public float h() {
+      return this.i;
+   }
+
+   public float i() {
+      return this.j;
    }
 }

@@ -1,41 +1,22 @@
-import com.google.common.collect.ImmutableSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.UUID;
 
-public class cfc extends cfq<bvg> {
-   private static final int a = 200;
-   private static final int b = 599;
+public class cfc extends cfl {
+   public static final float a = 10.0F;
 
-   public cfc() {
-      this(200);
+   @Override
+   protected boolean a(ard $$0, bvh $$1, bvh $$2) {
+      return !$$1.eb().a(cel.U) && cfr.c($$0, $$1, $$2) && cis.j($$2) && !this.a($$1, $$2) ? $$2.a($$1, 10.0) : false;
    }
 
-   public cfc(int $$0) {
-      super($$0);
+   private boolean a(bvh $$0, bvh $$1) {
+      List<UUID> $$2 = $$0.eb().c(cel.aa).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cG());
    }
 
    @Override
-   protected void a(ard $$0, bvg $$1) {
-      a($$1);
-   }
-
-   @Override
-   public Set<cek<?>> a() {
-      return ImmutableSet.of(cek.g);
-   }
-
-   public static void a(bvg $$0) {
-      Optional<List<bvg>> $$1 = $$0.eb().c(cek.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.aq().equals(bur.ap));
-         if ($$2) {
-            b($$0);
-         }
-      }
-   }
-
-   public static void b(bvg $$0) {
-      $$0.eb().a(cek.F, true, 599L);
+   protected cel<bvh> b() {
+      return cel.B;
    }
 }

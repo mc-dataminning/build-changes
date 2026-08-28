@@ -1,14 +1,159 @@
+import java.util.Arrays;
 import javax.annotation.Nullable;
 
-public class hbo implements hbk {
-   private final hgr a;
+public class hbo {
+   cwn a;
+   boolean b;
+   private int c;
+   private hbo.b[] d;
 
-   public hbo(hgr $$0) {
-      this.a = $$0;
+   public hbo() {
+      this.a = cwn.a;
+      this.d = new hbo.b[]{new hbo.b()};
    }
 
-   @Override
-   public void a(hbn $$0, cwo $$1, hbl $$2, cwm $$3, @Nullable gfy $$4, @Nullable bvg $$5, int $$6) {
-      $$0.a().a(this.a, gms.i());
+   public void a(int $$0) {
+      int $$1 = this.d.length;
+      int $$2 = this.c + $$0;
+      if ($$2 > $$1) {
+         this.d = Arrays.copyOf(this.d, $$2);
+
+         for (int $$3 = $$1; $$3 < $$2; $$3++) {
+            this.d[$$3] = new hbo.b();
+         }
+      }
+   }
+
+   public hbo.b a() {
+      this.a(1);
+      return this.d[this.c++];
+   }
+
+   public void b() {
+      this.a = cwn.a;
+      this.b = false;
+
+      for (int $$0 = 0; $$0 < this.c; $$0++) {
+         this.d[$$0].a();
+      }
+
+      this.c = 0;
+   }
+
+   private hbo.b g() {
+      return this.d[0];
+   }
+
+   public boolean c() {
+      return this.c == 0;
+   }
+
+   public boolean d() {
+      return this.g().c();
+   }
+
+   public boolean e() {
+      return this.g().d();
+   }
+
+   @Nullable
+   public hes a(azh $$0) {
+      if (this.c == 0) {
+         return null;
+      } else {
+         hgs $$1 = this.d[$$0.a(this.c)].b;
+         return $$1 == null ? null : $$1.d();
+      }
+   }
+
+   public gno f() {
+      return this.g().b();
+   }
+
+   public void a(ffu $$0, gly $$1, int $$2, int $$3) {
+      for (int $$4 = 0; $$4 < this.c; $$4++) {
+         this.d[$$4].a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   public class b {
+      @Nullable
+      hgs b;
+      @Nullable
+      private gmi c;
+      private hbo.a d = hbo.a.a;
+      private int[] e = new int[0];
+      @Nullable
+      private hdw<Object> f;
+      @Nullable
+      private Object g;
+
+      public void a() {
+         this.b = null;
+         this.c = null;
+         this.d = hbo.a.a;
+         this.f = null;
+         this.g = null;
+         Arrays.fill(this.e, -1);
+      }
+
+      public void a(hgs $$0, gmi $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public <T> void a(hdw<T> $$0, @Nullable T $$1, hgs $$2) {
+         this.b = $$2;
+         this.f = a($$0);
+         this.g = $$1;
+      }
+
+      private static hdw<Object> a(hdw<?> $$0) {
+         return (hdw<Object>)$$0;
+      }
+
+      public void a(hbo.a $$0) {
+         this.d = $$0;
+      }
+
+      public int[] a(int $$0) {
+         if ($$0 > this.e.length) {
+            this.e = new int[$$0];
+            Arrays.fill(this.e, -1);
+         }
+
+         return this.e;
+      }
+
+      gno b() {
+         return this.b != null ? this.b.e().a(hbo.this.a) : gno.a;
+      }
+
+      void a(ffu $$0, gly $$1, int $$2, int $$3) {
+         $$0.a();
+         this.b().a(hbo.this.b, $$0);
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         if (this.f != null) {
+            this.f.a(this.g, hbo.this.a, $$0, $$1, $$2, $$3, this.d != hbo.a.a);
+         } else if (this.b != null) {
+            gtc.a(hbo.this.a, $$0, $$1, $$2, $$3, this.e, this.b, this.c, this.d);
+         }
+
+         $$0.b();
+      }
+
+      boolean c() {
+         return this.b != null && this.b.b();
+      }
+
+      boolean d() {
+         return this.b != null && this.b.c();
+      }
    }
 }

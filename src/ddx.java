@@ -1,24 +1,21 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public record ddx(km d, Optional<edy> e, ekc f, Optional<jr<ebs>> g) implements ddp {
-   public static final MapCodec<ddx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               km.g.optionalFieldOf("offset", km.h).forGetter(ddx::b),
-               edy.b.optionalFieldOf("predicate").forGetter(ddx::c),
-               ekc.a.fieldOf("block_state").forGetter(ddx::d),
-               ebs.aj.optionalFieldOf("trigger_game_event").forGetter(ddx::e)
-            )
-            .apply($$0, ddx::new)
-   );
+public record ddx(ddg c) implements dds {
+   public static final MapCodec<ddx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ddg.b.fieldOf("chance").forGetter(ddx::b)).apply($$0, ddx::new));
 
    @Override
-   public void a(ard $$0, int $$1, dcx $$2, buk $$3, faz $$4) {
-      ji $$5 = ji.a((kb)$$4).a(this.d);
-      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dY(), $$5))) {
-         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
+   public float a(int $$0, azh $$1, float $$2) {
+      float $$3 = this.c.a($$0);
+      int $$4 = 0;
+
+      for (int $$5 = 0; (float)$$5 < $$2; $$5++) {
+         if ($$1.i() < $$3) {
+            $$4++;
+         }
       }
+
+      return $$2 - (float)$$4;
    }
 
    @Override
@@ -26,19 +23,7 @@ public record ddx(km d, Optional<edy> e, ekc f, Optional<jr<ebs>> g) implements 
       return a;
    }
 
-   public km b() {
-      return this.d;
-   }
-
-   public Optional<edy> c() {
-      return this.e;
-   }
-
-   public ekc d() {
-      return this.f;
-   }
-
-   public Optional<jr<ebs>> e() {
-      return this.g;
+   public ddg b() {
+      return this.c;
    }
 }

@@ -1,45 +1,63 @@
-import java.util.Arrays;
+public class gcq extends gcb<gze> {
+   private final gfd a;
+   private final gfd b;
+   private final gfd c;
+   private final gfd d;
+   private final gfd e;
 
-public class gcq extends gca<hag> {
-   private static final int a = 8;
-   private final gfc[] b = new gfc[8];
-
-   public gcq(gfc $$0) {
+   public gcq(gfd $$0) {
       super($$0);
-      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
+      this.a = $$0.b("head");
+      this.b = $$0.b("right_arm");
+      this.c = $$0.b("left_arm");
+      this.d = $$0.b("right_leg");
+      this.e = $$0.b("left_leg");
    }
 
-   private static String a(int $$0) {
-      return "cube" + $$0;
+   public static gfj a() {
+      gfl $$0 = new gfl();
+      gfn $$1 = $$0.a();
+      $$1.a("head", gfi.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), gff.a(0.0F, -7.0F, -2.0F));
+      $$1.a(
+         "body",
+         gfi.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new gfh(0.5F)),
+         gff.a(0.0F, -7.0F, 0.0F)
+      );
+      $$1.a("right_arm", gfi.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), gff.a(0.0F, -7.0F, 0.0F));
+      $$1.a("left_arm", gfi.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), gff.a(0.0F, -7.0F, 0.0F));
+      $$1.a("right_leg", gfi.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), gff.a(-4.0F, 11.0F, 0.0F));
+      $$1.a("left_leg", gfi.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), gff.a(5.0F, 11.0F, 0.0F));
+      return gfj.a($$0, 128, 128);
    }
 
-   public static gfi a() {
-      gfk $$0 = new gfk();
-      gfm $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         int $$3 = 0;
-         int $$4 = 0;
-         if ($$2 > 0 && $$2 < 4) {
-            $$4 += 9 * $$2;
-         } else if ($$2 > 3) {
-            $$3 = 32;
-            $$4 += 9 * $$2 - 36;
-         }
-
-         $$1.a(a($$2), gfh.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), gfe.a);
-      }
-
-      $$1.a("inside_cube", gfh.c().a(24, 40).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), gfe.a);
-      return gfi.a($$0, 64, 64);
-   }
-
-   public void a(hag $$0) {
+   public void a(gze $$0) {
       super.a($$0);
-      float $$1 = Math.max(0.0F, $$0.a);
-
-      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
-         this.b[$$2].c = (float)(-(4 - $$2)) * $$1 * 1.7F;
+      float $$1 = $$0.a;
+      float $$2 = $$0.ae;
+      float $$3 = $$0.ad;
+      if ($$1 > 0.0F) {
+         this.b.e = -2.0F + 1.5F * ayz.e($$1, 10.0F);
+         this.c.e = -2.0F + 1.5F * ayz.e($$1, 10.0F);
+      } else {
+         int $$4 = $$0.b;
+         if ($$4 > 0) {
+            this.b.e = -0.8F + 0.025F * ayz.e((float)$$4, 70.0F);
+            this.c.e = 0.0F;
+         } else {
+            this.b.e = (-0.2F + 1.5F * ayz.e($$3, 13.0F)) * $$2;
+            this.c.e = (-0.2F - 1.5F * ayz.e($$3, 13.0F)) * $$2;
+         }
       }
+
+      this.a.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.a.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.d.e = -1.5F * ayz.e($$3, 13.0F) * $$2;
+      this.e.e = 1.5F * ayz.e($$3, 13.0F) * $$2;
+      this.d.f = 0.0F;
+      this.e.f = 0.0F;
+   }
+
+   public gfd b() {
+      return this.b;
    }
 }

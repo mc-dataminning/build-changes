@@ -2,43 +2,62 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 
-public class exl extends exd {
+public class exl extends exe {
    public static final MapCodec<exl> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  arv.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
-                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
-                  ayi.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(dtq.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
             .apply($$0, exl::new)
    );
-   private final Optional<String> b;
-   private final Optional<arv<String>> c;
-   private final Optional<Integer> d;
+   private final dtq b;
+   private final boolean c;
 
-   public exl(List<eyz> $$0, Optional<arv<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
+   exl(List<eza> $$0, dtq $$1, boolean $$2) {
       super($$0);
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   protected cwo a(cwo $$0, evq $$1) {
-      $$0.a(kv.T, czw.a, this::a);
+   protected cwp a(cwp $$0, evr $$1) {
+      if (this.c) {
+         $$0.a(kv.ai, dtq.a, this.b, ($$0x, $$1x) -> new dtq.a().a($$0x).a($$1x).a());
+      } else {
+         $$0.b(kv.ai, this.b);
+      }
+
       return $$0;
    }
 
-   private czw a(czw $$0) {
-      return new czw(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
+   @Override
+   public exg<exl> b() {
+      return exh.E;
    }
 
-   @Override
-   public exf<exl> b() {
-      return exg.M;
+   public static exl.a a(boolean $$0) {
+      return new exl.a($$0);
+   }
+
+   public static class a extends exe.a<exl.a> {
+      private final dtq.a a = new dtq.a();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected exl.a a() {
+         return this;
+      }
+
+      @Override
+      public exf b() {
+         return new exl(this.g(), this.a.a(), this.b);
+      }
+
+      public exl.a a(jr<dtp> $$0, cvm $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
    }
 }

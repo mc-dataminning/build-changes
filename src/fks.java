@@ -1,15 +1,26 @@
-public class fks {
-   private static volatile boolean a;
+public enum fks {
+   a(true, false),
+   b(false, false),
+   c(false, true);
 
-   public static void a() {
-      if (!a) {
-         a = true;
-         hbm.a();
-         hdw.a();
-         fmt.a();
-         hdg.a();
-         hbv.a();
-         hcr.a();
-      }
+   private static final fks[] d = values();
+   private final boolean e;
+   private final boolean f;
+
+   private fks(final boolean $$0, final boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public boolean a() {
+      return this.e;
+   }
+
+   public boolean b() {
+      return this.f;
+   }
+
+   public fks c() {
+      return d[(this.ordinal() + 1) % d.length];
    }
 }

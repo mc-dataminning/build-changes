@@ -3,51 +3,62 @@ import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dsr extends dih {
-   public static final MapCodec<dsr> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dqs.a.b.fieldOf("kind").forGetter(dih::b), t()).apply($$0, dsr::new));
-   public static final dxt<jn> d = dnj.aF;
-   private static final Map<jn, fbt> b = Maps.newEnumMap(
+public class dsr extends dqr {
+   public static final MapCodec<dsr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dyj.a.fieldOf("wood_type").forGetter(dqr::d), t()).apply($$0, dsr::new));
+   public static final dxu<jn> b = dnk.aF;
+   protected static final float c = 2.0F;
+   protected static final float d = 4.5F;
+   protected static final float e = 12.5F;
+   private static final Map<jn, fbu> i = Maps.newEnumMap(
       ImmutableMap.of(
          jn.c,
-         djl.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
+         djm.a(0.0, 4.5, 14.0, 16.0, 12.5, 16.0),
          jn.d,
-         djl.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
+         djm.a(0.0, 4.5, 0.0, 16.0, 12.5, 2.0),
          jn.f,
-         djl.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
+         djm.a(0.0, 4.5, 0.0, 2.0, 12.5, 16.0),
          jn.e,
-         djl.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
+         djm.a(14.0, 4.5, 0.0, 16.0, 12.5, 16.0)
       )
    );
 
    @Override
-   public MapCodec<? extends dsr> a() {
-      return c;
+   public MapCodec<dsr> a() {
+      return a;
    }
 
-   protected dsr(dqs.a $$0, dwv.d $$1) {
-      super($$0, $$1);
-      this.l(this.m().b(d, jn.c));
-   }
-
-   @Override
-   protected fbt a(dww $$0, dfm $$1, ji $$2, fbe $$3) {
-      return b.get($$0.c(d));
+   public dsr(dyj $$0, dww.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.l(this.F.b().b(b, jn.c).b(f, Boolean.valueOf(false)));
    }
 
    @Override
-   public dww a(daf $$0) {
-      dww $$1 = super.a($$0);
-      dfm $$2 = $$0.q();
-      ji $$3 = $$0.a();
-      jn[] $$4 = $$0.f();
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return i.get($$0.c(b));
+   }
 
-      for (jn $$5 : $$4) {
-         if ($$5.o().d()) {
-            jn $$6 = $$5.g();
-            $$1 = $$1.b(d, $$6);
-            if (!$$2.a_($$3.a($$5)).a($$0)) {
-               return $$1;
+   @Override
+   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
+   }
+
+   @Nullable
+   @Override
+   public dwx a(dag $$0) {
+      dwx $$1 = this.m();
+      esz $$2 = $$0.q().b_($$0.a());
+      dgl $$3 = $$0.q();
+      ji $$4 = $$0.a();
+      jn[] $$5 = $$0.f();
+
+      for (jn $$6 : $$5) {
+         if ($$6.o().d()) {
+            jn $$7 = $$6.g();
+            $$1 = $$1.b(b, $$7);
+            if ($$1.a($$3, $$4)) {
+               return $$1.b(f, Boolean.valueOf($$2.a() == eta.c));
             }
          }
       }
@@ -56,18 +67,33 @@ public class dsr extends dih {
    }
 
    @Override
-   protected dww a(dww $$0, dqd $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      return $$4.g() == $$0.c(b) && !$$0.a($$1, $$3) ? djo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected dww a(dww $$0, dok $$1) {
-      return $$0.a($$1.a($$0.c(d)));
+   public float h(dwx $$0) {
+      return $$0.c(b).p();
    }
 
    @Override
-   protected void a(dwx.a<djl, dww> $$0) {
-      super.a($$0);
-      $$0.a(d);
+   public fba o(dwx $$0) {
+      fbu $$1 = i.get($$0.c(b));
+      return $$1.a().f();
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dqe $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dol $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(b, f);
    }
 }

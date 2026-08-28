@@ -5,12 +5,12 @@ public class afz implements yw<abl> {
    private static final int d = 4;
    private static final int e = 8;
    private final int f;
-   private final jr<btn> g;
+   private final jr<bto> g;
    private final int h;
    private final int i;
    private final byte j;
 
-   public afz(int $$0, btp $$1, boolean $$2) {
+   public afz(int $$0, btq $$1, boolean $$2) {
       this.f = $$0;
       this.g = $$1.c();
       this.h = $$1.e();
@@ -37,7 +37,7 @@ public class afz implements yw<abl> {
 
    private afz(wa $$0) {
       this.f = $$0.l();
-      this.g = btn.b.decode($$0);
+      this.g = bto.b.decode($$0);
       this.h = $$0.l();
       this.i = $$0.l();
       this.j = $$0.readByte();
@@ -45,7 +45,7 @@ public class afz implements yw<abl> {
 
    private void a(wa $$0) {
       $$0.c(this.f);
-      btn.b.encode($$0, this.g);
+      bto.b.encode($$0, this.g);
       $$0.c(this.h);
       $$0.c(this.i);
       $$0.l(this.j);
@@ -64,7 +64,7 @@ public class afz implements yw<abl> {
       return this.f;
    }
 
-   public jr<btn> e() {
+   public jr<bto> e() {
       return this.g;
    }
 

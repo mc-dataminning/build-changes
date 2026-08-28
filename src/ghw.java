@@ -1,17 +1,8 @@
-public class ghw extends ghy {
-   protected ghw(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gkb $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public static class a implements gjj<lx> {
-      private final gkb a;
-
-      public a(gkb $$0) {
-         this.a = $$0;
-      }
-
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghw($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ghw {
 }

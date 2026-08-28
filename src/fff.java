@@ -1,11 +1,5 @@
 public interface fff<T> {
-   fff<?> a = () -> {
-      throw new IllegalStateException("Cannot dereference handle with no underlying resource");
-   };
+   T e();
 
-   static <T> fff<T> a() {
-      return (fff<T>)a;
-   }
-
-   T get();
+   void a(T var1);
 }

@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class gl extends gh<dqd> {
+public class gl extends gh<dqe> {
    private gl() {
-      super(dqd.e, dqd::values);
+      super(dqe.e, dqe::values);
    }
 
    public static gl a() {
       return new gl();
    }
 
-   public static dqd a(CommandContext<ex> $$0, String $$1) {
-      return (dqd)$$0.getArgument($$1, dqd.class);
+   public static dqe a(CommandContext<ex> $$0, String $$1) {
+      return (dqe)$$0.getArgument($$1, dqe.class);
    }
 }

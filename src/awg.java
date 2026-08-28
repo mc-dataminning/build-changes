@@ -52,7 +52,7 @@ public class awg extends awl {
    }
 
    @Override
-   public void a(cow $$0, awh<?> $$1, int $$2) {
+   public void a(cox $$0, awh<?> $$1, int $$2) {
       super.a($$0, $$1, $$2);
       this.e.add($$1);
    }

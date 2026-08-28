@@ -1,22 +1,19 @@
-public class gbb extends gcv {
-   public static final int a = 20;
-   public static final int b = 40;
-   public static final String c = "flag";
-   private static final String d = "pole";
-   private static final String e = "bar";
+public class gbb extends gcw {
+   private final gfd a;
 
-   public gbb(gfc $$0) {
-      super($$0, gmh::d);
+   public gbb(gfd $$0) {
+      super($$0, gmi::d);
+      this.a = $$0.b("flag");
    }
 
-   public static gfi a(boolean $$0) {
-      gfk $$1 = new gfk();
-      gfm $$2 = $$1.a();
-      if ($$0) {
-         $$2.a("pole", gfh.c().a(44, 0).a(-1.0F, -42.0F, -1.0F, 2.0F, 42.0F, 2.0F), gfe.a);
-      }
+   public static gfj a(boolean $$0) {
+      gfl $$1 = new gfl();
+      gfn $$2 = $$1.a();
+      $$2.a("flag", gfi.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), gff.a(0.0F, $$0 ? -44.0F : -20.5F, $$0 ? 0.0F : 10.5F));
+      return gfj.a($$1, 64, 64);
+   }
 
-      $$2.a("bar", gfh.c().a(0, 42).a(-10.0F, $$0 ? -44.0F : -20.5F, $$0 ? -1.0F : 9.5F, 20.0F, 2.0F, 2.0F), gfe.a);
-      return gfi.a($$1, 64, 64);
+   public void a(float $$0) {
+      this.a.e = (-0.0125F + 0.01F * ayz.b((float) (Math.PI * 2) * $$0)) * (float) Math.PI;
    }
 }

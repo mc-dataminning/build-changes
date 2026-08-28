@@ -1,49 +1,39 @@
-public class fpi extends fos {
-   private boolean a;
+import javax.annotation.Nullable;
 
-   public fpi(int $$0, int $$1, fos.c $$2) {
-      super($$0, $$1, 20, 20, wp.c("narrator.button.difficulty_lock"), $$2, q);
-   }
+public class fpi extends foq {
+   private final foc a;
 
-   @Override
-   protected xd d() {
-      return wo.a(super.d(), this.a() ? wp.c("narrator.button.difficulty_lock.locked") : wp.c("narrator.button.difficulty_lock.unlocked"));
-   }
-
-   public boolean a() {
-      return this.a;
-   }
-
-   public void b(boolean $$0) {
+   public fpi(foc $$0, wp $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
       this.a = $$0;
    }
 
    @Override
-   public void b(fod $$0, int $$1, int $$2, float $$3) {
-      fpi.a $$4;
-      if (!this.j) {
-         $$4 = this.a ? fpi.a.c : fpi.a.f;
-      } else if (this.D()) {
-         $$4 = this.a ? fpi.a.b : fpi.a.e;
-      } else {
-         $$4 = this.a ? fpi.a.a : fpi.a.d;
-      }
-
-      $$0.a(gmh::H, $$4.g, this.F(), this.G(), this.g, this.h);
+   protected void b(foe $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.F() + this.A() / 2;
+      int $$5 = this.G() + this.y() / 2;
+      wp $$6 = this.B();
+      $$0.b(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1);
+      String $$7 = fua.a(af.c());
+      $$0.b(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712);
    }
 
-   static enum a {
-      a(akv.b("widget/locked_button")),
-      b(akv.b("widget/locked_button_highlighted")),
-      c(akv.b("widget/locked_button_disabled")),
-      d(akv.b("widget/unlocked_button")),
-      e(akv.b("widget/unlocked_button_highlighted")),
-      f(akv.b("widget/unlocked_button_disabled"));
+   @Override
+   protected void a(fsq $$0) {
+   }
 
-      final akv g;
+   @Override
+   public void a(hjv $$0) {
+   }
 
-      private a(final akv $$0) {
-         this.g = $$0;
-      }
+   @Override
+   public boolean E() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public fob a(fsw $$0) {
+      return null;
    }
 }

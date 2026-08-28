@@ -30,13 +30,13 @@ public class sl {
    private final sy o;
    private final Stopwatch p = Stopwatch.createUnstarted();
    private boolean q;
-   private final dqd r;
+   private final dqe r;
    @Nullable
    private Throwable s;
    @Nullable
-   private dvq t;
+   private dvr t;
 
-   public sl(tf $$0, dqd $$1, ard $$2, sy $$3) {
+   public sl(tf $$0, dqe $$1, ard $$2, sy $$3) {
       this.a = $$0;
       this.d = $$2;
       this.o = $$3;
@@ -60,9 +60,9 @@ public class sl {
       } else {
          this.j = 0;
          this.k = true;
-         dvq $$0 = this.f();
+         dvr $$0 = this.f();
          $$0.c(this.d);
-         end $$1 = tb.b($$0);
+         ene $$1 = tb.b($$0);
          this.d.n().a($$1);
          this.d.a($$1);
          return this;
@@ -169,18 +169,18 @@ public class sl {
       return tb.c(this.t);
    }
 
-   public fau e() {
-      dvq $$0 = this.f();
+   public fav e() {
+      dvr $$0 = this.f();
       return tb.a($$0);
    }
 
-   public dvq f() {
+   public dvr f() {
       if (this.t == null) {
          if (this.b == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity for this GameTestInfo");
          }
 
-         this.t = (dvq)this.d.c_(this.b);
+         this.t = (dvr)this.d.c_(this.b);
          if (this.t == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity at the given coordinate " + this.b);
          }
@@ -225,9 +225,9 @@ public class sl {
    public void m() {
       if (this.s == null) {
          this.H();
-         fau $$0 = this.e();
-         List<buk> $$1 = this.g().a(buk.class, $$0.g(1.0), $$0x -> !($$0x instanceof cow));
-         $$1.forEach($$0x -> $$0x.a(buk.d.b));
+         fav $$0 = this.e();
+         List<bul> $$1 = this.g().a(bul.class, $$0.g(1.0), $$0x -> !($$0x instanceof cox));
+         $$1.forEach($$0x -> $$0x.a(bul.d.b));
       }
    }
 
@@ -282,7 +282,7 @@ public class sl {
       return this.a.d();
    }
 
-   public dqd u() {
+   public dqe u() {
       return this.r;
    }
 
@@ -329,7 +329,7 @@ public class sl {
 
    public ji D() {
       if (this.c == null) {
-         end $$0 = tb.b(this.f());
+         ene $$0 = tb.b(this.f());
          this.c = new ji($$0.h(), $$0.i(), $$0.j());
       }
 

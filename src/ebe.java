@@ -1,122 +1,72 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.LongSortedSet;
-import java.util.Objects;
-import java.util.Spliterators;
-import java.util.PrimitiveIterator.OfLong;
-import java.util.stream.LongStream;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ebe<T extends eaz> {
-   public static final int a = 2;
-   public static final int b = 4;
-   private final Class<T> c;
-   private final Long2ObjectFunction<ebm> d;
-   private final Long2ObjectMap<ebd<T>> e = new Long2ObjectOpenHashMap();
-   private final LongSortedSet f = new LongAVLTreeSet();
+public class ebe<T extends eba> {
+   private static final Logger a = LogUtils.getLogger();
+   private final axr<T> b;
+   private ebn c;
 
-   public ebe(Class<T> $$0, Long2ObjectFunction<ebm> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public ebe(Class<T> $$0, ebn $$1) {
+      this.c = $$1;
+      this.b = new axr<>($$0);
    }
 
-   public void a(fau $$0, axl<ebd<T>> $$1) {
-      int $$2 = kk.a($$0.a - 2.0);
-      int $$3 = kk.a($$0.b - 4.0);
-      int $$4 = kk.a($$0.c - 2.0);
-      int $$5 = kk.a($$0.d + 2.0);
-      int $$6 = kk.a($$0.e + 0.0);
-      int $$7 = kk.a($$0.f + 2.0);
+   public void a(T $$0) {
+      this.b.add($$0);
+   }
 
-      for (int $$8 = $$2; $$8 <= $$5; $$8++) {
-         long $$9 = kk.b($$8, 0, 0);
-         long $$10 = kk.b($$8, -1, -1);
-         LongIterator $$11 = this.f.subSet($$9, $$10 + 1L).iterator();
+   public boolean b(T $$0) {
+      return this.b.remove($$0);
+   }
 
-         while ($$11.hasNext()) {
-            long $$12 = $$11.nextLong();
-            int $$13 = kk.c($$12);
-            int $$14 = kk.d($$12);
-            if ($$13 >= $$3 && $$13 <= $$6 && $$14 >= $$4 && $$14 <= $$7) {
-               ebd<T> $$15 = (ebd<T>)this.e.get($$12);
-               if ($$15 != null && !$$15.a() && $$15.c().b() && $$1.accept($$15).a()) {
-                  return;
-               }
-            }
+   public axl.a a(fav $$0, axl<T> $$1) {
+      for (T $$2 : this.b) {
+         if ($$2.cR().c($$0) && $$1.accept($$2).a()) {
+            return axl.a.b;
          }
       }
+
+      return axl.a.a;
    }
 
-   public LongStream a(long $$0) {
-      int $$1 = dfn.a($$0);
-      int $$2 = dfn.b($$0);
-      LongSortedSet $$3 = this.a($$1, $$2);
+   public <U extends T> axl.a a(ebh<T, U> $$0, fav $$1, axl<? super U> $$2) {
+      Collection<? extends T> $$3 = this.b.a($$0.a());
       if ($$3.isEmpty()) {
-         return LongStream.empty();
+         return axl.a.a;
       } else {
-         OfLong $$4 = $$3.iterator();
-         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
+         for (T $$4 : $$3) {
+            U $$5 = (U)$$0.a($$4);
+            if ($$5 != null && $$4.cR().c($$1) && $$2.accept($$5).a()) {
+               return axl.a.b;
+            }
+         }
+
+         return axl.a.a;
       }
    }
 
-   private LongSortedSet a(int $$0, int $$1) {
-      long $$2 = kk.b($$0, 0, $$1);
-      long $$3 = kk.b($$0, -1, $$1);
-      return this.f.subSet($$2, $$3 + 1L);
+   public boolean a() {
+      return this.b.isEmpty();
    }
 
-   public Stream<ebd<T>> b(long $$0) {
-      return this.a($$0).<ebd<T>>mapToObj(this.e::get).filter(Objects::nonNull);
+   public Stream<T> b() {
+      return this.b.stream();
    }
 
-   private static long f(long $$0) {
-      return dfn.c(kk.b($$0), kk.d($$0));
+   public ebn c() {
+      return this.c;
    }
 
-   public ebd<T> c(long $$0) {
-      return (ebd<T>)this.e.computeIfAbsent($$0, this::g);
-   }
-
-   @Nullable
-   public ebd<T> d(long $$0) {
-      return (ebd<T>)this.e.get($$0);
-   }
-
-   private ebd<T> g(long $$0) {
-      long $$1 = f($$0);
-      ebm $$2 = (ebm)this.d.get($$1);
-      this.f.add($$0);
-      return new ebd<>(this.c, $$2);
-   }
-
-   public LongSet a() {
-      LongSet $$0 = new LongOpenHashSet();
-      this.e.keySet().forEach($$1 -> $$0.add(f($$1)));
-      return $$0;
-   }
-
-   public void b(fau $$0, axl<T> $$1) {
-      this.a($$0, $$2 -> $$2.a($$0, $$1));
-   }
-
-   public <U extends T> void a(ebg<T, U> $$0, fau $$1, axl<U> $$2) {
-      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
-   }
-
-   public void e(long $$0) {
-      this.e.remove($$0);
-      this.f.remove($$0);
+   public ebn a(ebn $$0) {
+      ebn $$1 = this.c;
+      this.c = $$0;
+      return $$1;
    }
 
    @bag
-   public int b() {
-      return this.f.size();
+   public int d() {
+      return this.b.size();
    }
 }

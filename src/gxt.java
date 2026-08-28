@@ -1,7 +1,5 @@
-public class gxt extends gzj {
-   public float a;
-   public boolean b = true;
-   public boolean c;
-   public boolean d;
-   public boolean e;
+public class gxt extends gzk {
+   public boolean a;
+   public final bud b = new bud();
+   public final bud c = new bud();
 }

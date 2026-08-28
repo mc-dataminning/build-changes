@@ -27,14 +27,14 @@ public class arp implements arn {
    }
 
    @Override
-   public void a(dfn $$0) {
+   public void a(dfo $$0) {
       this.e = af.c();
       this.d = this.e;
    }
 
    @Override
-   public void a(dfn $$0, @Nullable dzs $$1) {
-      if ($$1 == dzs.n) {
+   public void a(dfo $$0, @Nullable dzt $$1) {
+      if ($$1 == dzt.n) {
          this.c++;
       }
 

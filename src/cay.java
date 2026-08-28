@@ -1,35 +1,20 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class cay<E extends cny> extends bwz<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
-
-   public cay(int $$0) {
-      super(ImmutableMap.of(cek.aB, cel.a, cek.o, cel.b, cek.m, cel.b, cek.n, cel.c, cek.B, cel.c, cek.az, cel.c, cek.aG, cel.c), $$0);
-   }
-
-   protected boolean a(ard $$0, E $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(ard $$0, E $$1, long $$2) {
-      $$1.a(awa.CJ, 5.0F, 1.0F);
-   }
-
-   protected void c(ard $$0, E $$1, long $$2) {
-      if ($$1.c(bvs.m)) {
-         $$1.b(bvs.a);
-      }
-
-      $$1.eb().b(cek.aB);
-      $$1.eb().c(cek.B).filter($$1::b).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.d($$1x);
-         }
-
-         if (!$$1.eb().a(cek.az)) {
-            cnz.a($$1, $$1x.dv());
-         }
-      });
+public class cay {
+   public static bxb<bvh> a() {
+      return can.a(
+         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$0 -> $$0.group($$0.a(cel.n), $$0.a(cel.az), $$0.a(cel.ay), $$0.c(cel.o))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
+                     Optional<ji> $$7 = $$0.<bvh>a($$3).map(bul::dv).or(() -> $$0.a($$2));
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        $$1.a(new bxd($$7.get()));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

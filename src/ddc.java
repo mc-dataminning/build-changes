@@ -1,19 +1,10 @@
-import com.mojang.serialization.Codec;
+public class ddc extends bqu.a {
+   public final jr<dcz> a;
+   public final int b;
 
-public enum ddc implements azv {
-   a("attacker"),
-   b("damaging_entity"),
-   c("victim");
-
-   public static final Codec<ddc> d = azv.a(ddc::values);
-   private final String e;
-
-   private ddc(final String $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
+   public ddc(jr<dcz> $$0, int $$1) {
+      super($$0.a().b());
+      this.a = $$0;
+      this.b = $$1;
    }
 }

@@ -1,9 +1,9 @@
-public class dcl {
-   public static dci.a<?> a(ke<dci.a<?>> $$0) {
-      ke.a($$0, "crafting_shapeless", dcn.c);
-      ke.a($$0, "crafting_shaped", dcm.c);
-      ke.a($$0, "furnace", dch.c);
-      ke.a($$0, "stonecutter", dcs.c);
-      return ke.a($$0, "smithing", dcr.c);
+import io.netty.buffer.ByteBuf;
+
+public record dcl(int b) {
+   public static final yn<ByteBuf, dcl> a = yn.a(yl.h, dcl::a, dcl::new);
+
+   public int a() {
+      return this.b;
    }
 }

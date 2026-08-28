@@ -6,7 +6,7 @@ public class aya {
    private aya() {
    }
 
-   public static faz a(faz $$0, aya.a $$1) {
+   public static fba a(fba $$0, aya.a $$1) {
       int $$2 = ayz.a($$0.a());
       int $$3 = ayz.a($$0.b());
       int $$4 = ayz.a($$0.c());
@@ -14,7 +14,7 @@ public class aya {
       double $$6 = $$0.b() - (double)$$3;
       double $$7 = $$0.c() - (double)$$4;
       double $$8 = 0.0;
-      faz $$9 = faz.c;
+      fba $$9 = fba.c;
 
       for (int $$10 = 0; $$10 < 6; $$10++) {
          double $$11 = ayz.d($$5, c[$$10 + 1], c[$$10]);
@@ -39,6 +39,6 @@ public class aya {
 
    @FunctionalInterface
    public interface a {
-      faz fetch(int var1, int var2, int var3);
+      fba fetch(int var1, int var2, int var3);
    }
 }
