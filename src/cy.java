@@ -33,11 +33,11 @@ public record cy(cw.c b, cw.c c, cw.c d, cw.c e, cw.c f, cw.c g, cw.c h) {
 
    public boolean a(double $$0, double $$1, double $$2, double $$3) {
       if (this.b.d($$0) && this.c.d($$1) && this.d.d($$2)) {
-         double $$4 = azm.f($$0, $$1, $$2);
+         double $$4 = azo.f($$0, $$1, $$2);
          if (!this.e.e($$4)) {
             return false;
          } else {
-            double $$5 = azm.e($$0, $$2);
+            double $$5 = azo.e($$0, $$2);
             if (!this.f.e($$5)) {
                return false;
             } else {

@@ -1,301 +1,131 @@
-import java.time.Duration;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonElement;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
-public abstract class fsy implements fud, fux, fwq, fwv {
-   private static final double a = 0.5;
-   private static final double b = 3.0;
-   protected int g;
-   protected int h;
-   private int c;
-   private int d;
-   private wy e;
-   protected boolean i;
-   public boolean j = true;
-   public boolean k = true;
-   protected float l = 1.0F;
-   private int f;
-   private boolean m;
-   private final fuo n = new fuo();
+public class fsy implements mn {
+   private final mp.a d;
+   private final mp.a e;
+   private final mp.a f;
 
-   public fsy(int $$0, int $$1, int $$2, int $$3, wy $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.e = $$4;
+   public fsy(mp $$0) {
+      this.d = $$0.a(mp.b.b, "blockstates");
+      this.e = $$0.a(mp.b.b, "items");
+      this.f = $$0.a(mp.b.b, "models");
    }
 
    @Override
-   public int y() {
-      return this.h;
+   public CompletableFuture<?> a(ml $$0) {
+      fsy.b $$1 = new fsy.b();
+      fsy.a $$2 = new fsy.a();
+      fsy.c $$3 = new fsy.c();
+      new fsu($$2, $$1, $$3).a();
+      new fsw($$1, $$3).a();
+      $$2.a();
+      $$1.a();
+      return CompletableFuture.allOf($$2.a($$0, this.d), $$3.a($$0, this.f), $$1.a($$0, this.e));
    }
 
    @Override
-   public final void a(fsm $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         this.i = $$0.a($$1, $$2) && $$1 >= this.F() && $$2 >= this.G() && $$1 < this.F() + this.g && $$2 < this.G() + this.h;
-         this.b($$0, $$1, $$2, $$3);
-         this.n.a(this.C(), this.aJ_(), this.J());
+   public final String a() {
+      return "Model Definitions";
+   }
+
+   static class a implements Consumer<fta> {
+      private final Map<dnc, fta> a = new HashMap<>();
+
+      public void a(fta $$0) {
+         dnc $$1 = $$0.a();
+         fta $$2 = this.a.put($$1, $$0);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicate blockstate definition for " + $$1);
+         }
+      }
+
+      public void a() {
+         Stream<jf.c<dnc>> $$0 = mg.e.c().filter($$0x -> true);
+         List<ali> $$1 = $$0.filter($$0x -> !this.a.containsKey($$0x.a())).map($$0x -> $$0x.h().a()).toList();
+         if (!$$1.isEmpty()) {
+            throw new IllegalStateException("Missing blockstate definitions for: " + $$1);
+         }
+      }
+
+      public CompletableFuture<?> a(ml $$0, mp.a $$1) {
+         Map<dnc, gtl> $$2 = Maps.transformValues(this.a, fta::b);
+         Function<dnc, Path> $$3 = $$1x -> $$1.a($$1x.p().h().a());
+         return mn.a($$0, gtl.a, $$3, $$2);
       }
    }
 
-   public void a(@Nullable ful $$0) {
-      this.n.a($$0);
-   }
+   static class b implements fsx {
+      private final Map<czu, hhl> a = new HashMap<>();
+      private final Map<czu, czu> b = new HashMap<>();
 
-   @Nullable
-   public ful z() {
-      return this.n.a();
-   }
-
-   public void a(Duration $$0) {
-      this.n.a($$0);
-   }
-
-   protected xm d() {
-      return a_(this.B());
-   }
-
-   public static xm a_(wy $$0) {
-      return wy.a("gui.narrate.button", $$0);
-   }
-
-   protected abstract void b(fsm var1, int var2, int var3, float var4);
-
-   protected static void a(fsm $$0, fsk $$1, wy $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      a($$0, $$1, $$2, ($$3 + $$5) / 2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   protected static void a(fsm $$0, fsk $$1, wy $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      int $$9 = $$1.a($$2);
-      int $$10 = ($$5 + $$7 - 9) / 2 + 1;
-      int $$11 = $$6 - $$4;
-      if ($$9 > $$11) {
-         int $$12 = $$9 - $$11;
-         double $$13 = (double)ag.c() / 1000.0;
-         double $$14 = Math.max((double)$$12 * 0.5, 3.0);
-         double $$15 = Math.sin((Math.PI / 2) * Math.cos((Math.PI * 2) * $$13 / $$14)) / 2.0 + 0.5;
-         double $$16 = azm.d($$15, 0.0, (double)$$12);
-         $$0.c($$4, $$5, $$6, $$7);
-         $$0.b($$1, $$2, $$4 - (int)$$16, $$10, $$8);
-         $$0.e();
-      } else {
-         int $$17 = azm.a($$3, $$4 + $$9 / 2, $$6 - $$9 / 2);
-         $$0.a($$1, $$2, $$17, $$10, $$8);
+      @Override
+      public void a(czu $$0, hhp.b $$1) {
+         this.a($$0, new hhl($$1, hhl.a.a));
       }
-   }
 
-   protected void a(fsm $$0, fsk $$1, int $$2, int $$3) {
-      int $$4 = this.F() + $$2;
-      int $$5 = this.F() + this.A() - $$2;
-      a($$0, $$1, this.B(), $$4, this.G(), $$5, this.G() + this.y(), $$3);
-   }
+      private void a(czu $$0, hhl $$1) {
+         hhl $$2 = this.a.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicate item model definition for " + $$0);
+         }
+      }
 
-   public void a(double $$0, double $$1) {
-   }
+      @Override
+      public void a(czu $$0, czu $$1) {
+         this.b.put($$1, $$0);
+      }
 
-   public void b(double $$0, double $$1) {
-   }
-
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.j && this.k) {
-         if (this.g($$2)) {
-            boolean $$3 = this.a_($$0, $$1);
-            if ($$3) {
-               this.a(fpt.Q().ak());
-               this.a($$0, $$1);
-               return true;
+      public void a() {
+         mg.g.forEach($$0x -> {
+            if (!this.b.containsKey($$0x)) {
+               if ($$0x instanceof cyg $$1 && !this.a.containsKey($$1)) {
+                  ali $$2 = ftk.a($$1.c());
+                  this.a($$1, fti.a($$2));
+               }
             }
-         }
-
-         return false;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if (this.g($$2)) {
-         this.b($$0, $$1);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean g(int $$0) {
-      return $$0 == 0;
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.g($$2)) {
-         this.b($$0, $$1, $$3, $$4);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Nullable
-   @Override
-   public fsj a(fxd $$0) {
-      if (!this.j || !this.k) {
-         return null;
-      } else {
-         return !this.aJ_() ? fsj.a(this) : null;
-      }
-   }
-
-   @Override
-   public boolean a_(double $$0, double $$1) {
-      return this.j && this.k && $$0 >= (double)this.F() && $$1 >= (double)this.G() && $$0 < (double)this.H() && $$1 < (double)this.I();
-   }
-
-   public void a(hou $$0) {
-      b($$0);
-   }
-
-   public static void b(hou $$0) {
-      $$0.a(hnj.a(awn.Bv, 1.0F));
-   }
-
-   @Override
-   public int A() {
-      return this.g;
-   }
-
-   public void h(int $$0) {
-      this.g = $$0;
-   }
-
-   public void i(int $$0) {
-      this.h = $$0;
-   }
-
-   public void a(float $$0) {
-      this.l = $$0;
-   }
-
-   public void b(wy $$0) {
-      this.e = $$0;
-   }
-
-   public wy B() {
-      return this.e;
-   }
-
-   @Override
-   public boolean aJ_() {
-      return this.m;
-   }
-
-   public boolean C() {
-      return this.i;
-   }
-
-   public boolean D() {
-      return this.C() || this.aJ_();
-   }
-
-   @Override
-   public boolean E() {
-      return this.k && this.j;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.m = $$0;
-   }
-
-   @Override
-   public fwv.a w() {
-      if (this.aJ_()) {
-         return fwv.a.c;
-      } else {
-         return this.i ? fwv.a.b : fwv.a.a;
-      }
-   }
-
-   @Override
-   public final void b(fwx $$0) {
-      this.a($$0);
-      this.n.a($$0);
-   }
-
-   protected abstract void a(fwx var1);
-
-   protected void c(fwx $$0) {
-      $$0.a(fww.a, this.d());
-      if (this.j) {
-         if (this.aJ_()) {
-            $$0.a(fww.d, wy.c("narration.button.usage.focused"));
-         } else {
-            $$0.a(fww.d, wy.c("narration.button.usage.hovered"));
+         });
+         this.b.forEach(($$0x, $$1) -> {
+            hhl $$2 = this.a.get($$1);
+            if ($$2 == null) {
+               throw new IllegalStateException("Missing donor: " + $$1 + " -> " + $$0x);
+            } else {
+               this.a($$0x, $$2);
+            }
+         });
+         List<ali> $$0 = mg.g.c().filter($$0x -> !this.a.containsKey($$0x.a())).map($$0x -> $$0x.h().a()).toList();
+         if (!$$0.isEmpty()) {
+            throw new IllegalStateException("Missing item model definitions for: " + $$0);
          }
       }
+
+      public CompletableFuture<?> a(ml $$0, mp.a $$1) {
+         return mn.a($$0, hhl.a, $$1x -> $$1.a($$1x.e().h().a()), this.a);
+      }
    }
 
-   @Override
-   public int F() {
-      return this.c;
-   }
+   static class c implements BiConsumer<ali, ftj> {
+      private final Map<ali, ftj> a = new HashMap<>();
 
-   @Override
-   public void j(int $$0) {
-      this.c = $$0;
-   }
+      public void a(ali $$0, ftj $$1) {
+         Supplier<JsonElement> $$2 = this.a.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicate model definition for " + $$0);
+         }
+      }
 
-   @Override
-   public int G() {
-      return this.d;
-   }
-
-   @Override
-   public void k(int $$0) {
-      this.d = $$0;
-   }
-
-   public int H() {
-      return this.F() + this.A();
-   }
-
-   public int I() {
-      return this.G() + this.y();
-   }
-
-   @Override
-   public void a(Consumer<fsy> $$0) {
-      $$0.accept(this);
-   }
-
-   public void b(int $$0, int $$1) {
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   @Override
-   public fxh J() {
-      return fwq.super.J();
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.b($$0, $$1);
-      this.c($$2, $$3);
-   }
-
-   @Override
-   public int K() {
-      return this.f;
-   }
-
-   public void l(int $$0) {
-      this.f = $$0;
+      public CompletableFuture<?> a(ml $$0, mp.a $$1) {
+         return mn.a($$0, Supplier::get, $$1::a, this.a);
+      }
    }
 }

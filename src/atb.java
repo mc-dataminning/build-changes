@@ -1,22 +1,27 @@
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class atb implements ash {
-   public static final ash.a a = new ash.a("server_resource_pack");
-   private final MinecraftServer.b b;
+public interface atb {
+   atb e = new atb() {
+      @Override
+      public CompletableFuture<asl> a(String $$0) {
+         return CompletableFuture.completedFuture(asl.a($$0));
+      }
 
-   public atb(MinecraftServer.b $$0) {
-      this.b = $$0;
+      @Override
+      public CompletableFuture<List<asl>> a(List<String> $$0) {
+         return CompletableFuture.completedFuture($$0.stream().map(asl::a).collect(ImmutableList.toImmutableList()));
+      }
+   };
+
+   default void a() {
    }
 
-   @Override
-   public void a(Consumer<zf<?>> $$0) {
-      $$0.accept(new zs(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
+   default void b() {
    }
 
-   @Override
-   public ash.a a() {
-      return a;
-   }
+   CompletableFuture<asl> a(String var1);
+
+   CompletableFuture<List<asl>> a(List<String> var1);
 }

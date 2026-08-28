@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 public class oz {
    public static void a(String[] $$0) throws IOException {
       ac.a(u.a);
-      ali.a();
+      alk.a();
 
       for (String $$1 : $$0) {
          a($$1);

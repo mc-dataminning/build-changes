@@ -1,5 +1,8 @@
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface edz {
-   CompletableFuture<Void> a(dir var1, ut var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface edz {
 }

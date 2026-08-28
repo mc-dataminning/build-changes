@@ -5,15 +5,15 @@ import javax.annotation.Nullable;
 
 public class ol implements oe {
    private final of b;
-   private final czj c;
-   private final dea d;
+   private final czu c;
+   private final del d;
    private final int e;
    private final Map<String, ar<?>> f = new LinkedHashMap<>();
    @Nullable
    private String g;
-   private final dew.a<?> h;
+   private final dfh.a<?> h;
 
-   public ol(of $$0, dew.a<?> $$1, dea $$2, djl $$3, int $$4) {
+   public ol(of $$0, dfh.a<?> $$1, del $$2, djw $$3, int $$4) {
       this.b = $$0;
       this.h = $$1;
       this.c = $$3.h();
@@ -21,12 +21,12 @@ public class ol implements oe {
       this.e = $$4;
    }
 
-   public static ol a(dea $$0, of $$1, djl $$2) {
-      return new ol($$1, dfe::new, $$0, $$2, 1);
+   public static ol a(del $$0, of $$1, djw $$2) {
+      return new ol($$1, dfp::new, $$0, $$2, 1);
    }
 
-   public static ol a(dea $$0, of $$1, djl $$2, int $$3) {
-      return new ol($$1, dfe::new, $$0, $$2, $$3);
+   public static ol a(del $$0, of $$1, djw $$2, int $$3) {
+      return new ol($$1, dfp::new, $$0, $$2, $$3);
    }
 
    public ol b(String $$0, ar<?> $$1) {
@@ -40,20 +40,20 @@ public class ol implements oe {
    }
 
    @Override
-   public czj a() {
+   public czu a() {
       return this.c;
    }
 
    @Override
-   public void a(og $$0, alf<dee<?>> $$1) {
+   public void a(og $$0, alh<dep<?>> $$1) {
       this.a($$1);
       ai.a $$2 = $$0.a().a("has_the_recipe", dh.a($$1)).a(an.a.c($$1)).a(am.a.b);
       this.f.forEach($$2::a);
-      dew $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new czn(this.c, this.e));
+      dfh $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new czy(this.c, this.e));
       $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.b.a() + "/")));
    }
 
-   private void a(alf<dee<?>> $$0) {
+   private void a(alh<dep<?>> $$0) {
       if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
       }

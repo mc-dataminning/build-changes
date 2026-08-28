@@ -1,24 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eoe<P extends eod> {
-   public static final eoe<eom> a = a("simple_state_provider", eom.b);
-   public static final eoe<eon> b = a("weighted_state_provider", eon.b);
-   public static final eoe<eoi> c = a("noise_threshold_provider", eoi.b);
-   public static final eoe<eoh> d = a("noise_provider", eoh.g);
-   public static final eoe<eof> e = a("dual_noise_provider", eof.b);
-   public static final eoe<eok> f = a("rotated_block_provider", eok.b);
-   public static final eoe<eoj> g = a("randomized_int_state_provider", eoj.b);
-   private final MapCodec<P> h;
+public class eoe extends eob {
+   public static final MapCodec<eoe> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(btw.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, eoe::new)
+   );
+   private final btw b;
 
-   private static <P extends eod> eoe<P> a(String $$0, MapCodec<P> $$1) {
-      return js.a(mg.T, $$0, new eoe<>($$1));
+   public eoe(btw $$0, btw $$1, btw $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   private eoe(MapCodec<P> $$0) {
-      this.h = $$0;
+   @Override
+   protected eoc<?> a() {
+      return eoc.h;
    }
 
-   public MapCodec<P> a() {
-      return this.h;
+   @Override
+   protected void a(dkd $$0, eob.b $$1, azx $$2, enl $$3, int $$4, eob.a $$5, int $$6, int $$7, int $$8) {
+      iv $$9 = $$5.a();
+      int $$10 = 0;
+
+      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
+         int $$12 = $$9.v() - $$11;
+         int $$13 = $$7 + $$5.b() + azo.d((float)$$12 / (float)$$6 * 3.5F);
+         int $$14;
+         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
+            $$14 = $$13 + 1;
+         } else {
+            $$14 = $$13;
+         }
+
+         this.a($$0, $$1, $$2, $$3, new iv($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
+         $$10 = $$13;
+      }
+   }
+
+   @Override
+   public int a(azx $$0, int $$1, enl $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azx $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

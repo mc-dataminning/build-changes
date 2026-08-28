@@ -1,63 +1,50 @@
-public class ghf extends ggp<hdz> {
-   private final gjt a;
-   private final gjt b;
-   private final gjt c;
-   private final gjt d;
-   private final gjt e;
+public class ghf extends giw {
+   private static final String a = "left_pages";
+   private static final String b = "right_pages";
+   private static final String c = "flip_page1";
+   private static final String d = "flip_page2";
+   private final gle e;
+   private final gle f;
+   private final gle g;
+   private final gle h;
+   private final gle i;
+   private final gle j;
 
-   public ghf(gjt $$0) {
-      super($$0);
-      this.a = $$0.b("head");
-      this.b = $$0.b("right_arm");
-      this.c = $$0.b("left_arm");
-      this.d = $$0.b("right_leg");
-      this.e = $$0.b("left_leg");
+   public ghf(gle $$0) {
+      super($$0, gsl::d);
+      this.e = $$0.b("left_lid");
+      this.f = $$0.b("right_lid");
+      this.g = $$0.b("left_pages");
+      this.h = $$0.b("right_pages");
+      this.i = $$0.b("flip_page1");
+      this.j = $$0.b("flip_page2");
    }
 
-   public static gjz a() {
-      gkb $$0 = new gkb();
-      gkd $$1 = $$0.a();
-      $$1.a("head", gjy.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), gjv.a(0.0F, -7.0F, -2.0F));
-      $$1.a(
-         "body",
-         gjy.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new gjx(0.5F)),
-         gjv.a(0.0F, -7.0F, 0.0F)
-      );
-      $$1.a("right_arm", gjy.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), gjv.a(0.0F, -7.0F, 0.0F));
-      $$1.a("left_arm", gjy.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), gjv.a(0.0F, -7.0F, 0.0F));
-      $$1.a("right_leg", gjy.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), gjv.a(-4.0F, 11.0F, 0.0F));
-      $$1.a("left_leg", gjy.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), gjv.a(5.0F, 11.0F, 0.0F));
-      return gjz.a($$0, 128, 128);
+   public static glk a() {
+      glm $$0 = new glm();
+      glo $$1 = $$0.a();
+      $$1.a("left_lid", glj.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), glg.a(0.0F, 0.0F, -1.0F));
+      $$1.a("right_lid", glj.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), glg.a(0.0F, 0.0F, 1.0F));
+      $$1.a("seam", glj.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), glg.b(0.0F, (float) (Math.PI / 2), 0.0F));
+      $$1.a("left_pages", glj.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), glg.a);
+      $$1.a("right_pages", glj.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), glg.a);
+      glj $$2 = glj.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
+      $$1.a("flip_page1", $$2, glg.a);
+      $$1.a("flip_page2", $$2, glg.a);
+      return glk.a($$0, 64, 32);
    }
 
-   public void a(hdz $$0) {
-      super.a($$0);
-      float $$1 = $$0.a;
-      float $$2 = $$0.ae;
-      float $$3 = $$0.ad;
-      if ($$1 > 0.0F) {
-         this.b.e = -2.0F + 1.5F * azm.e($$1, 10.0F);
-         this.c.e = -2.0F + 1.5F * azm.e($$1, 10.0F);
-      } else {
-         int $$4 = $$0.b;
-         if ($$4 > 0) {
-            this.b.e = -0.8F + 0.025F * azm.e((float)$$4, 70.0F);
-            this.c.e = 0.0F;
-         } else {
-            this.b.e = (-0.2F + 1.5F * azm.e($$3, 13.0F)) * $$2;
-            this.c.e = (-0.2F - 1.5F * azm.e($$3, 13.0F)) * $$2;
-         }
-      }
-
-      this.a.f = $$0.aa * (float) (Math.PI / 180.0);
-      this.a.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.d.e = -1.5F * azm.e($$3, 13.0F) * $$2;
-      this.e.e = 1.5F * azm.e($$3, 13.0F) * $$2;
-      this.d.f = 0.0F;
-      this.e.f = 0.0F;
-   }
-
-   public gjt b() {
-      return this.b;
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+      float $$4 = (azo.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
+      this.e.f = (float) Math.PI + $$4;
+      this.f.f = -$$4;
+      this.g.f = $$4;
+      this.h.f = -$$4;
+      this.i.f = $$4 - $$4 * 2.0F * $$1;
+      this.j.f = $$4 - $$4 * 2.0F * $$2;
+      this.g.b = azo.a($$4);
+      this.h.b = azo.a($$4);
+      this.i.b = azo.a($$4);
+      this.j.b = azo.a($$4);
    }
 }

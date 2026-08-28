@@ -1,44 +1,39 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
-public class fbo extends fbg {
+public class fbo extends fbu {
    public static final MapCodec<fbo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  asi.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
-                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
-                  ayu.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, fbo::new)
+      $$0 -> a($$0).and(fah.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, fbo::new)
    );
-   private final Optional<String> b;
-   private final Optional<asi<String>> c;
-   private final Optional<Integer> d;
+   private final fah.b b;
 
-   public fbo(List<fdc> $$0, Optional<asi<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
+   public fbo(List<fdq> $$0, fah.b $$1) {
       super($$0);
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
+      this.b = $$1;
    }
 
    @Override
-   protected czn a(czn $$0, ezt $$1) {
-      $$0.a(kk.V, dcx.a, this::a);
+   public fbw<fbo> b() {
+      return fbx.B;
+   }
+
+   @Override
+   public Set<baz<?>> a() {
+      return Set.of(this.b.a());
+   }
+
+   @Override
+   public czy a(czy $$0, fah $$1) {
+      if ($$0.a(dac.vx) && $$1.c(this.b.a()) instanceof crx $$2) {
+         $$0.b(kk.ak, new dcy($$2.gi()));
+      }
+
       return $$0;
    }
 
-   private dcx a(dcx $$0) {
-      return new dcx(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
-   }
-
-   @Override
-   public fbi<fbo> b() {
-      return fbj.M;
+   public static fbu.a<?> a(fah.b $$0) {
+      return a($$1 -> new fbo($$1, $$0));
    }
 }

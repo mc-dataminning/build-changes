@@ -1,18 +1,42 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
-public class vk {
-   private final AtomicInteger a = new AtomicInteger();
-   private final bpa b;
+public class vk extends vg {
+   private final Deque<vi> a = new ArrayDeque<>();
 
-   public vk(bpa $$0) {
-      this.b = $$0;
+   public vk(vh... $$0) {
+      vi $$1 = vi.a();
+
+      for (vh $$2 : $$0) {
+         $$1.a($$2);
+      }
+
+      this.a.push($$1);
    }
 
-   public void a(int $$0) {
-      this.a.getAndAdd($$0);
+   @Override
+   public uv.a a(va<?> $$0, String $$1) {
+      vi $$2 = this.a.element();
+      if ($$2.a($$0, $$1)) {
+         return uv.a.b;
+      } else {
+         if ($$0 == tz.b) {
+            vi $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.a.push($$3);
+            }
+         }
+
+         return super.a($$0, $$1);
+      }
    }
 
-   public void a() {
-      this.b.a((long)this.a.getAndSet(0));
+   @Override
+   public uv.b b() {
+      if (this.e() == this.a.element().b()) {
+         this.a.pop();
+      }
+
+      return super.b();
    }
 }

@@ -3,65 +3,51 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class btp extends btj {
+public class btp extends btw {
    public static final MapCodec<btp> a = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
-                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
+                  btw.c.fieldOf("source").forGetter($$0x -> $$0x.b),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
                )
                .apply($$0, btp::new)
       )
       .validate(
-         $$0 -> {
-            if ($$0.d < $$0.b) {
-               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
-            } else {
-               return $$0.e > $$0.d - $$0.b
-                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
-                  : DataResult.success($$0);
-            }
-         }
+         $$0 -> $$0.g < $$0.f
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
+               : DataResult.success($$0)
       );
-   private final float b;
-   private final float d;
-   private final float e;
+   private final btw b;
+   private final int f;
+   private final int g;
 
-   public static btp a(float $$0, float $$1, float $$2) {
+   public static btp a(btw $$0, int $$1, int $$2) {
       return new btp($$0, $$1, $$2);
    }
 
-   private btp(float $$0, float $$1, float $$2) {
+   public btp(btw $$0, int $$1, int $$2) {
       this.b = $$0;
-      this.d = $$1;
-      this.e = $$2;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
-   public float a(azv $$0) {
-      float $$1 = this.d - this.b;
-      float $$2 = ($$1 - this.e) / 2.0F;
-      float $$3 = $$1 - $$2;
-      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
+   public int a(azx $$0) {
+      return azo.a(this.b.a($$0), this.f, this.g);
    }
 
    @Override
-   public float a() {
-      return this.b;
+   public int a() {
+      return Math.max(this.f, this.b.a());
    }
 
    @Override
-   public float b() {
-      return this.d;
+   public int b() {
+      return Math.min(this.g, this.b.b());
    }
 
    @Override
-   public btk<?> c() {
-      return btk.d;
-   }
-
-   @Override
-   public String toString() {
-      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
+   public btx<?> c() {
+      return btx.d;
    }
 }

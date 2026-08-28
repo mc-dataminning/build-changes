@@ -1,26 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface hjv {
-   akz a = new akz("textures", ".png");
+public class hjv implements hka {
+   private final guk a;
+   private final hnh b;
 
-   void a(avd var1, hjv.a var2);
-
-   MapCodec<? extends hjv> a();
-
-   public interface a {
-      default void a(alg $$0, avb $$1) {
-         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
-      }
-
-      void a(alg var1, hjv.b var2);
-
-      void a(Predicate<alg> var1);
+   public hjv(guk $$0, hnh $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public interface b extends Function<hju, hjk> {
-      default void a() {
+   @Override
+   public void a(czw $$0, flo $$1, gsa $$2, int $$3, int $$4, boolean $$5) {
+      this.a.a($$1, $$2, $$3, $$4, this.b);
+   }
+
+   public static record a(ali b) implements hke.a {
+      public static final MapCodec<hjv.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ali.a.fieldOf("texture").forGetter(hjv.a::b)).apply($$0, hjv.a::new));
+
+      public a(cyw $$0) {
+         this(gsu.b($$0));
+      }
+
+      @Override
+      public MapCodec<hjv.a> a() {
+         return a;
+      }
+
+      @Override
+      public hke<?> a(gla $$0) {
+         return new hjv(new guk($$0), gsu.o.a(this.b));
       }
    }
 }

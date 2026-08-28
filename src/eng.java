@@ -1,40 +1,33 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
 
-public class eng extends end {
-   public static final MapCodec<eng> d = RecordCodecBuilder.mapCodec(
+public record eng(int b, int c, int d, int e, int f, btw g, float h) implements emp {
+   public static final Codec<eng> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
-               a()
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(eng::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(eng::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(eng::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(eng::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(eng::f),
+               btw.c.fieldOf("extra_rare_growths").forGetter(eng::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(eng::h)
             )
             .apply($$0, eng::new)
    );
-   private final int e;
-   private final int f;
-   private final int g;
 
-   public eng(int $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, OptionalInt.empty());
+   public int a() {
+      return this.b;
    }
 
-   public eng(int $$0, int $$1, int $$2, OptionalInt $$3) {
-      super($$3);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected ene<?> b() {
-      return ene.a;
+   public int c() {
+      return this.d;
    }
 
-   @Override
-   public int a(int $$0, int $$1) {
-      return $$1 < this.e ? this.f : this.g;
+   public int d() {
+      return this.e;
    }
 }

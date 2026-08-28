@@ -15,23 +15,24 @@ import javax.annotation.Nullable;
 
 public class fl<T> implements ArgumentType<jf<T>> {
    private static final Collection<String> b = List.of("foo", "foo:bar", "012", "{}", "true");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wy.b("argument.resource_or_id.failed_to_parse", $$0));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wy.c("argument.resource_or_id.invalid"));
-   private final jh.a d;
-   private final boolean e;
-   private final Codec<jf<T>> f;
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xa.b("argument.resource_or_id.failed_to_parse", $$0));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xa.c("argument.resource_or_id.invalid"));
+   private static final uz<Object> d = uz.a(JavaOps.INSTANCE);
+   private final jh.a e;
+   private final boolean f;
+   private final Codec<jf<T>> g;
 
-   protected fl(ef $$0, alf<js<T>> $$1, Codec<jf<T>> $$2) {
-      this.d = $$0;
-      this.e = $$0.a($$1).isPresent();
-      this.f = $$2;
+   protected fl(ef $$0, alh<js<T>> $$1, Codec<jf<T>> $$2) {
+      this.e = $$0;
+      this.f = $$0.a($$1).isPresent();
+      this.g = $$2;
    }
 
    public static fl.c a(ef $$0) {
       return new fl.c($$0);
    }
 
-   public static jf<ezy> a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
+   public static jf<fam> a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
       return d($$0, $$1);
    }
 
@@ -39,7 +40,7 @@ public class fl<T> implements ArgumentType<jf<T>> {
       return new fl.a($$0);
    }
 
-   public static jf<fbh> b(CommandContext<ej> $$0, String $$1) {
+   public static jf<fbv> b(CommandContext<ej> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -47,7 +48,7 @@ public class fl<T> implements ArgumentType<jf<T>> {
       return new fl.b($$0);
    }
 
-   public static jf<fdc> c(CommandContext<ej> $$0, String $$1) {
+   public static jf<fdq> c(CommandContext<ej> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -57,25 +58,25 @@ public class fl<T> implements ArgumentType<jf<T>> {
 
    @Nullable
    public jf<T> a(StringReader $$0) throws CommandSyntaxException {
-      ale<?> $$1 = this.d.a(JavaOps.INSTANCE);
-      Dynamic<?> $$2 = a((DynamicOps<T>)$$1, $$0);
-      return !this.e ? null : (jf)this.f.parse($$2).getOrThrow($$1x -> a.createWithContext($$0, $$1x));
+      alg<Object> $$1 = this.e.a(JavaOps.INSTANCE);
+      Dynamic<?> $$2 = a($$1, d, $$0);
+      return !this.f ? null : (jf)this.g.parse($$2).getOrThrow($$1x -> a.createWithContext($$0, $$1x));
    }
 
    @VisibleForTesting
-   static <T> Dynamic<T> a(DynamicOps<T> $$0, StringReader $$1) throws CommandSyntaxException {
-      int $$2 = $$1.getCursor();
-      T $$3 = ux.b($$0, $$1);
-      if (b($$1)) {
-         return new Dynamic($$0, $$3);
+   static <T> Dynamic<T> a(DynamicOps<T> $$0, uz<T> $$1, StringReader $$2) throws CommandSyntaxException {
+      int $$3 = $$2.getCursor();
+      T $$4 = $$1.b($$2);
+      if (b($$2)) {
+         return new Dynamic($$0, $$4);
       } else {
-         $$1.setCursor($$2);
-         alg $$4 = alg.a($$1);
-         if (b($$1)) {
-            return new Dynamic($$0, $$0.createString($$4.toString()));
+         $$2.setCursor($$3);
+         ali $$5 = ali.a($$2);
+         if (b($$2)) {
+            return new Dynamic($$0, $$0.createString($$5.toString()));
          } else {
-            $$1.setCursor($$2);
-            throw c.createWithContext($$1);
+            $$2.setCursor($$3);
+            throw c.createWithContext($$2);
          }
       }
    }
@@ -88,21 +89,21 @@ public class fl<T> implements ArgumentType<jf<T>> {
       return b;
    }
 
-   public static class a extends fl<fbh> {
+   public static class a extends fl<fbv> {
       protected a(ef $$0) {
-         super($$0, mh.bs, fbj.d);
+         super($$0, mh.bs, fbx.d);
       }
    }
 
-   public static class b extends fl<fdc> {
+   public static class b extends fl<fdq> {
       protected b(ef $$0) {
-         super($$0, mh.bt, fdc.f);
+         super($$0, mh.bt, fdq.f);
       }
    }
 
-   public static class c extends fl<ezy> {
+   public static class c extends fl<fam> {
       protected c(ef $$0) {
-         super($$0, mh.br, ezy.e);
+         super($$0, mh.br, fam.e);
       }
    }
 }

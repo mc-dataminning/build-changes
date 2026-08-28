@@ -1,8 +1,21 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum ecm implements bam {
+   a("top"),
+   b("bottom"),
+   c("double");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface ecm {
+   private final String d;
+
+   private ecm(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.d;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

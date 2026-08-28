@@ -1,60 +1,59 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.SequencedMap;
 
-public record gsi(List<gsm> b) implements gsd.a {
-   public static final Codec<gsi> a = ayu.b(ayu.a(gsm.a)).xmap(gsi::new, gsi::a);
+public class gsi {
+   private final gso a = new gso();
+   private final gsp b;
+   private final gsa.a c;
+   private final gsa.a d;
+   private final gsc e;
 
-   public gsi(List<gsm> b) {
-      if (b.isEmpty()) {
-         throw new IllegalArgumentException("Variant list must contain at least one element");
-      } else {
-         this.b = b;
-      }
+   public gsi(int $$0) {
+      this.b = gsp.a($$0);
+      SequencedMap<gsl, fll> $$1 = ag.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
+         $$0x.put(gsu.h(), this.a.a(gsl.d()));
+         $$0x.put(gsu.i(), this.a.a(gsl.f()));
+         $$0x.put(gsu.a(), this.a.a(gsl.e()));
+         $$0x.put(gsu.j(), this.a.a(gsl.g()));
+         a($$0x, gsu.b());
+         a($$0x, gsu.c());
+         a($$0x, gsu.d());
+         a($$0x, gsu.e());
+         a($$0x, gsu.f());
+         $$0x.put(gsu.g(), new fll(786432));
+         a($$0x, gsl.k());
+         a($$0x, gsl.m());
+         a($$0x, gsl.l());
+         a($$0x, gsl.n());
+         a($$0x, gsl.j());
+      });
+      this.c = gsa.a($$1, new fll(786432));
+      this.e = new gsc(this.c);
+      SequencedMap<gsl, fll> $$2 = ag.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> hnk.l.forEach($$1x -> a($$0x, $$1x)));
+      this.d = gsa.a($$2, new fll(0));
    }
 
-   @Override
-   public Object a(eat $$0) {
-      return this;
+   private static void a(Object2ObjectLinkedOpenHashMap<gsl, fll> $$0, gsl $$1) {
+      $$0.put($$1, new fll($$1.O()));
    }
 
-   @Override
-   public void a(hmi.a $$0) {
-      this.b.forEach($$1 -> $$0.markDependency($$1.a()));
+   public gso a() {
+      return this.a;
    }
 
-   private static gsd a(hlz $$0, gsm $$1) {
-      return gsj.a($$0, $$1.a(), $$1.b().a());
-   }
-
-   @Override
-   public gsd a(hlz $$0) {
-      if (this.b.size() == 1) {
-         gsm $$1 = this.b.getFirst();
-         return a($$0, $$1);
-      } else {
-         bsq.a<gsd> $$2 = bsq.b();
-
-         for (gsm $$3 : this.b) {
-            $$2.a(a($$0, $$3), $$3.c());
-         }
-
-         return new hmn($$2.a());
-      }
-   }
-
-   public gsi a(gsn $$0) {
-      List<gsm> $$1;
-      if (this.b.size() == 1) {
-         $$1 = List.of($$0.apply(this.b.getFirst()));
-      } else {
-         $$1 = List.copyOf(Lists.transform(this.b, $$0::apply));
-      }
-
-      return new gsi($$1);
-   }
-
-   public List<gsm> a() {
+   public gsp b() {
       return this.b;
+   }
+
+   public gsa.a c() {
+      return this.c;
+   }
+
+   public gsa.a d() {
+      return this.d;
+   }
+
+   public gsc e() {
+      return this.e;
    }
 }

@@ -1,17 +1,27 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bok extends bku {
+public class bok extends bkw {
    public bok(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.registerSimple($$1, "minecraft:test_block");
-      $$0.registerSimple($$1, "minecraft:test_instance_block");
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:llama", $$1x -> a($$0));
+      $$0.register($$1, "minecraft:trader_llama", $$1x -> a($$0));
+      $$0.register($$1, "minecraft:donkey", $$1x -> a($$0));
+      $$0.register($$1, "minecraft:mule", $$1x -> a($$0));
+      $$0.registerSimple($$1, "minecraft:horse");
+      $$0.registerSimple($$1, "minecraft:skeleton_horse");
+      $$0.registerSimple($$1, "minecraft:zombie_horse");
       return $$1;
+   }
+
+   private static TypeTemplate a(Schema $$0) {
+      return DSL.optionalFields("Items", DSL.list(bjb.t.in($$0)));
    }
 }

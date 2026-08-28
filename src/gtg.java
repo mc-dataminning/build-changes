@@ -1,111 +1,29 @@
-public class gtg<T extends dxr & dxu> implements gtd<T> {
-   public gtg(gte.a $$0) {
+public record gtg(int[] a, int b, jb c, hla d, boolean e, int f) {
+   public boolean a() {
+      return this.b != -1;
    }
 
-   @Override
-   public void a(T $$0, float $$1, fkd $$2, gqr $$3, int $$4, int $$5, ffc $$6) {
-      if (fpt.Q().t.gF() || fpt.Q().t.V_()) {
-         dxu.a $$7 = $$0.b();
-         if ($$7 != dxu.a.a) {
-            dxu.b $$8 = $$0.c();
-            iv $$9 = $$8.a();
-            ka $$10 = $$8.b();
-            if ($$10.u() >= 1 && $$10.v() >= 1 && $$10.w() >= 1) {
-               float $$11 = 1.0F;
-               float $$12 = 0.9F;
-               float $$13 = 0.5F;
-               fkh $$14 = $$3.getBuffer(grc.y());
-               iv $$15 = $$9.a($$10);
-               grk.a(
-                  $$2,
-                  $$14,
-                  (double)$$9.u(),
-                  (double)$$9.v(),
-                  (double)$$9.w(),
-                  (double)$$15.u(),
-                  (double)$$15.v(),
-                  (double)$$15.w(),
-                  0.9F,
-                  0.9F,
-                  0.9F,
-                  1.0F,
-                  0.5F,
-                  0.5F,
-                  0.5F
-               );
-               if ($$7 == dxu.a.c && $$0.i() != null) {
-                  this.a($$0, $$0.i(), $$9, $$10, $$3, $$2);
-               }
-            }
-         }
-      }
+   public int[] b() {
+      return this.a;
    }
 
-   private void a(T $$0, diq $$1, iv $$2, ka $$3, gqr $$4, fkd $$5) {
-      fkh $$6 = $$4.getBuffer(grc.y());
-      iv $$7 = $$0.ax_();
-      iv $$8 = $$7.a((ka)$$2);
-
-      for (iv $$9 : iv.c($$8, $$8.a($$3).b(-1, -1, -1))) {
-         eat $$10 = $$1.a_($$9);
-         boolean $$11 = $$10.l();
-         boolean $$12 = $$10.a(dmt.lt);
-         boolean $$13 = $$10.a(dmt.iy);
-         boolean $$14 = $$10.a(dmt.iz);
-         boolean $$15 = $$12 || $$13 || $$14;
-         if ($$11 || $$15) {
-            float $$16 = $$11 ? 0.05F : 0.0F;
-            double $$17 = (double)((float)($$9.u() - $$7.u()) + 0.45F - $$16);
-            double $$18 = (double)((float)($$9.v() - $$7.v()) + 0.45F - $$16);
-            double $$19 = (double)((float)($$9.w() - $$7.w()) + 0.45F - $$16);
-            double $$20 = (double)((float)($$9.u() - $$7.u()) + 0.55F + $$16);
-            double $$21 = (double)((float)($$9.v() - $$7.v()) + 0.55F + $$16);
-            double $$22 = (double)((float)($$9.w() - $$7.w()) + 0.55F + $$16);
-            if ($$11) {
-               grk.a($$5, $$6, $$17, $$18, $$19, $$20, $$21, $$22, 0.5F, 0.5F, 1.0F, 1.0F, 0.5F, 0.5F, 1.0F);
-            } else if ($$12) {
-               grk.a($$5, $$6, $$17, $$18, $$19, $$20, $$21, $$22, 1.0F, 0.75F, 0.75F, 1.0F, 1.0F, 0.75F, 0.75F);
-            } else if ($$13) {
-               grk.a($$5, $$6, $$17, $$18, $$19, $$20, $$21, $$22, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F);
-            } else if ($$14) {
-               grk.a($$5, $$6, $$17, $$18, $$19, $$20, $$21, $$22, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F);
-            }
-         }
-      }
+   public int c() {
+      return this.b;
    }
 
-   private void a(T $$0, iv $$1, ka $$2, fkh $$3, fkd $$4) {
-      diq $$5 = $$0.i();
-      if ($$5 != null) {
-         iv $$6 = $$0.ax_();
-         ffl $$7 = new fff($$2.u(), $$2.v(), $$2.w());
-
-         for (iv $$8 : iv.c($$1, $$1.a($$2).b(-1, -1, -1))) {
-            if ($$5.a_($$8).a(dmt.lt)) {
-               $$7.c($$8.u() - $$1.u(), $$8.v() - $$1.v(), $$8.w() - $$1.w());
-            }
-         }
-
-         $$7.a(($$4x, $$5x, $$6x, $$7x) -> {
-            float $$8x = 0.48F;
-            float $$9 = (float)($$5x + $$1.u() - $$6.u()) + 0.5F - 0.48F;
-            float $$10 = (float)($$6x + $$1.v() - $$6.v()) + 0.5F - 0.48F;
-            float $$11 = (float)($$7x + $$1.w() - $$6.w()) + 0.5F - 0.48F;
-            float $$12 = (float)($$5x + $$1.u() - $$6.u()) + 0.5F + 0.48F;
-            float $$13 = (float)($$6x + $$1.v() - $$6.v()) + 0.5F + 0.48F;
-            float $$14 = (float)($$7x + $$1.w() - $$6.w()) + 0.5F + 0.48F;
-            grk.a($$4, $$3, $$4x, $$9, $$10, $$11, $$12, $$13, $$14, 0.75F, 0.75F, 1.0F, 0.2F);
-         });
-      }
+   public jb d() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(T $$0) {
-      return true;
+   public hla e() {
+      return this.d;
    }
 
-   @Override
-   public int aR_() {
-      return 96;
+   public boolean f() {
+      return this.e;
+   }
+
+   public int g() {
+      return this.f;
    }
 }

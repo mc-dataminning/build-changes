@@ -1,110 +1,108 @@
-import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 
-public abstract class cix extends civ {
-   @Nullable
-   private cix a;
-   private int b = 1;
+public class cix {
+   private final iv a;
+   private final jf<ciz> b;
+   private int c;
+   private final Runnable d;
 
-   public cix(bwr<? extends cix> $$0, djm $$1) {
-      super($$0, $$1);
+   cix(iv $$0, jf<ciz> $$1, int $$2, Runnable $$3) {
+      this.a = $$0.j();
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   protected void D() {
-      super.D();
-      this.bD.a(5, new ceb(this));
+   public cix(iv $$0, jf<ciz> $$1, Runnable $$2) {
+      this($$0, $$1, $$1.a().b(), $$2);
    }
 
-   @Override
-   public int fW() {
-      return this.x();
+   public cix.a a() {
+      return new cix.a(this.a, this.b, this.c);
    }
 
-   public int x() {
-      return super.fW();
+   @Deprecated
+   @bax
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected boolean q() {
-      return !this.gt();
-   }
-
-   public boolean gt() {
-      return this.a != null && this.a.bI();
-   }
-
-   public cix a(cix $$0) {
-      this.a = $$0;
-      $$0.gz();
-      return $$0;
-   }
-
-   public void gu() {
-      this.a.gA();
-      this.a = null;
-   }
-
-   private void gz() {
-      this.b++;
-   }
-
-   private void gA() {
-      this.b--;
-   }
-
-   public boolean gv() {
-      return this.gw() && this.b < this.x();
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      if (this.gw() && this.dU().A.a(200) == 1) {
-         List<? extends civ> $$0 = this.dU().a((Class<? extends civ>)this.getClass(), this.cQ().c(8.0, 8.0, 8.0));
-         if ($$0.size() <= 1) {
-            this.b = 1;
-         }
-      }
-   }
-
-   public boolean gw() {
-      return this.b > 1;
-   }
-
-   public boolean gx() {
-      return this.g(this.a) <= 121.0;
-   }
-
-   public void gy() {
-      if (this.gt()) {
-         this.O().a(this.a, 1.0);
-      }
-   }
-
-   public void a(Stream<? extends cix> $$0) {
-      $$0.limit((long)(this.x() - this.b)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
-   }
-
-   @Nullable
-   @Override
-   public byb a(dkd $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3 == null) {
-         $$3 = new cix.a(this);
+   protected boolean c() {
+      if (this.c <= 0) {
+         return false;
       } else {
-         this.a(((cix.a)$$3).a);
+         this.c--;
+         this.d.run();
+         return true;
       }
-
-      return $$3;
    }
 
-   public static class a implements byb {
-      public final cix a;
+   protected boolean d() {
+      if (this.c >= this.b.a().b()) {
+         return false;
+      } else {
+         this.c++;
+         this.d.run();
+         return true;
+      }
+   }
 
-      public a(cix $$0) {
-         this.a = $$0;
+   public boolean e() {
+      return this.c > 0;
+   }
+
+   public boolean f() {
+      return this.c != this.b.a().b();
+   }
+
+   public iv g() {
+      return this.a;
+   }
+
+   public jf<ciz> h() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((cix)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
+   }
+
+   public static record a(iv b, jf<ciz> c, int d) {
+      public static final Codec<cix.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  iv.a.fieldOf("pos").forGetter(cix.a::a),
+                  alf.a(mh.aa).fieldOf("type").forGetter(cix.a::b),
+                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter(cix.a::c)
+               )
+               .apply($$0, cix.a::new)
+      );
+
+      public cix a(Runnable $$0) {
+         return new cix(this.b, this.c, this.d, $$0);
+      }
+
+      public iv a() {
+         return this.b;
+      }
+
+      public jf<ciz> b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
       }
    }
 }

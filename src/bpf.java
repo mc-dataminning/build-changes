@@ -1,6 +1,7 @@
-public enum bpf {
-   a,
-   b,
-   c,
-   d;
+public interface bpf {
+   void a(long[] var1);
+
+   void a(long var1);
+
+   void a(long var1, int var3);
 }

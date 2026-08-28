@@ -1,44 +1,31 @@
-public class gro implements fkh {
-   private final fkh a;
-   private final hjq b;
+public record gro(float b, float c, fkv d, float e, float f, float g, float h) {
+   public static final gro a = new gro(Float.MAX_VALUE, 0.0F, fkv.a, 0.0F, 0.0F, 0.0F, 0.0F);
 
-   public gro(fkh $$0, hjq $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public float a() {
+      return this.b;
    }
 
-   @Override
-   public fkh a(float $$0, float $$1, float $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public float b() {
+      return this.c;
    }
 
-   @Override
-   public fkh a(int $$0, int $$1, int $$2, int $$3) {
-      return this.a.a($$0, $$1, $$2, $$3);
+   public fkv c() {
+      return this.d;
    }
 
-   @Override
-   public fkh a(float $$0, float $$1) {
-      return this.a.a(this.b.a($$0), this.b.c($$1));
+   public float d() {
+      return this.e;
    }
 
-   @Override
-   public fkh a(int $$0, int $$1) {
-      return this.a.a($$0, $$1);
+   public float e() {
+      return this.f;
    }
 
-   @Override
-   public fkh b(int $$0, int $$1) {
-      return this.a.b($$0, $$1);
+   public float f() {
+      return this.g;
    }
 
-   @Override
-   public fkh b(float $$0, float $$1, float $$2) {
-      return this.a.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      this.a.a($$0, $$1, $$2, $$3, this.b.a($$4), this.b.c($$5), $$6, $$7, $$8, $$9, $$10);
+   public float g() {
+      return this.h;
    }
 }

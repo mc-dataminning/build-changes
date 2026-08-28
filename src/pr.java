@@ -15,14 +15,14 @@ public abstract class pr<T> implements mn {
    private final CompletableFuture<jh.a> d;
    private final CompletableFuture<Void> g = new CompletableFuture<>();
    private final CompletableFuture<pr.c<T>> h;
-   protected final alf<? extends js<T>> f;
-   private final Map<alg, axo> i = Maps.newLinkedHashMap();
+   protected final alh<? extends js<T>> f;
+   private final Map<ali, axq> i = Maps.newLinkedHashMap();
 
-   protected pr(mp $$0, alf<? extends js<T>> $$1, CompletableFuture<jh.a> $$2) {
+   protected pr(mp $$0, alh<? extends js<T>> $$1, CompletableFuture<jh.a> $$2) {
       this($$0, $$1, $$2, CompletableFuture.completedFuture(pr.c.empty()));
    }
 
-   protected pr(mp $$0, alf<? extends js<T>> $$1, CompletableFuture<jh.a> $$2, CompletableFuture<pr.c<T>> $$3) {
+   protected pr(mp $$0, alh<? extends js<T>> $$1, CompletableFuture<jh.a> $$2, CompletableFuture<pr.c<T>> $$3) {
       this.e = $$0.b($$1);
       this.f = $$1;
       this.h = $$3;
@@ -50,18 +50,18 @@ public abstract class pr<T> implements mn {
          .thenCompose(
             $$1 -> {
                jh.b<T> $$2 = $$1.a.e(this.f);
-               Predicate<alg> $$3 = $$1x -> $$2.a(alf.a(this.f, $$1x)).isPresent();
-               Predicate<alg> $$4 = $$1x -> this.i.containsKey($$1x) || $$1.b.contains(axr.a(this.f, $$1x));
+               Predicate<ali> $$3 = $$1x -> $$2.a(alh.a(this.f, $$1x)).isPresent();
+               Predicate<ali> $$4 = $$1x -> this.i.containsKey($$1x) || $$1.b.contains(axt.a(this.f, $$1x));
                return CompletableFuture.allOf(
                   this.i
                      .entrySet()
                      .stream()
                      .map(
                         $$4x -> {
-                           alg $$5 = (alg)$$4x.getKey();
-                           axo $$6 = (axo)$$4x.getValue();
-                           List<axp> $$7 = $$6.b();
-                           List<axp> $$8 = $$7.stream().filter($$2xx -> !$$2xx.a($$3, $$4)).toList();
+                           ali $$5 = (ali)$$4x.getKey();
+                           axq $$6 = (axq)$$4x.getValue();
+                           List<axr> $$7 = $$6.b();
+                           List<axr> $$8 = $$7.stream().filter($$2xx -> !$$2xx.a($$3, $$4)).toList();
                            if (!$$8.isEmpty()) {
                               throw new IllegalArgumentException(
                                  String.format(
@@ -73,7 +73,7 @@ public abstract class pr<T> implements mn {
                               );
                            } else {
                               Path $$9 = this.e.a($$5);
-                              return mn.a($$0, $$1.a, axq.a, new axq($$7, false), $$9);
+                              return mn.a($$0, $$1.a, axs.a, new axs($$7, false), $$9);
                            }
                         }
                      )
@@ -83,13 +83,13 @@ public abstract class pr<T> implements mn {
          );
    }
 
-   protected pr.b<T> b(axr<T> $$0) {
-      axo $$1 = this.c($$0);
+   protected pr.b<T> b(axt<T> $$0) {
+      axq $$1 = this.c($$0);
       return new pr.b<>($$1);
    }
 
-   protected axo c(axr<T> $$0) {
-      return this.i.computeIfAbsent($$0.b(), $$0x -> axo.a());
+   protected axq c(axt<T> $$0) {
+      return this.i.computeIfAbsent($$0.b(), $$0x -> axq.a());
    }
 
    public CompletableFuture<pr.c<T>> c() {
@@ -105,57 +105,57 @@ public abstract class pr<T> implements mn {
    }
 
    protected static class b<T> {
-      private final axo a;
+      private final axq a;
 
-      protected b(axo $$0) {
+      protected b(axq $$0) {
          this.a = $$0;
       }
 
-      public final pr.b<T> a(alf<T> $$0) {
+      public final pr.b<T> a(alh<T> $$0) {
          this.a.a($$0.a());
          return this;
       }
 
       @SafeVarargs
-      public final pr.b<T> a(alf<T>... $$0) {
-         for (alf<T> $$1 : $$0) {
+      public final pr.b<T> a(alh<T>... $$0) {
+         for (alh<T> $$1 : $$0) {
             this.a.a($$1.a());
          }
 
          return this;
       }
 
-      public final pr.b<T> a(List<alf<T>> $$0) {
-         for (alf<T> $$1 : $$0) {
+      public final pr.b<T> a(List<alh<T>> $$0) {
+         for (alh<T> $$1 : $$0) {
             this.a.a($$1.a());
          }
 
          return this;
       }
 
-      public pr.b<T> a(alg $$0) {
+      public pr.b<T> a(ali $$0) {
          this.a.b($$0);
          return this;
       }
 
-      public pr.b<T> b(axr<T> $$0) {
+      public pr.b<T> b(axt<T> $$0) {
          this.a.c($$0.b());
          return this;
       }
 
-      public pr.b<T> b(alg $$0) {
+      public pr.b<T> b(ali $$0) {
          this.a.d($$0);
          return this;
       }
    }
 
    @FunctionalInterface
-   public interface c<T> extends Function<axr<T>, Optional<axo>> {
+   public interface c<T> extends Function<axt<T>, Optional<axq>> {
       static <T> pr.c<T> empty() {
          return $$0 -> Optional.empty();
       }
 
-      default boolean contains(axr<T> $$0) {
+      default boolean contains(axt<T> $$0) {
          return this.apply($$0).isPresent();
       }
    }

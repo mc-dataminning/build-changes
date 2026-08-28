@@ -1,51 +1,44 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongCollection;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Map;
+import java.util.Optional;
 
-public class erq extends eym {
-   private final LongSet b;
-   private final LongSet c;
-   private static final Codec<LongSet> d = Codec.LONG_STREAM.xmap(LongOpenHashSet::toSet, LongCollection::longStream);
+public class erq {
    public static final Codec<erq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(d.fieldOf("All").forGetter($$0x -> $$0x.b), d.fieldOf("Remaining").forGetter($$0x -> $$0x.c)).apply($$0, erq::new)
-   );
+         $$0 -> $$0.group(Codec.unboundedMap(alh.a(mh.bq), efc.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, erq::new)
+      )
+      .validate(erq::a);
+   public static final Codec<jf<erq>> b = ale.a(mh.bo, a);
+   private final Map<alh<efc>, efc> c;
 
-   public static eyn<erq> a(String $$0) {
-      return new eyn<>($$0, erq::new, a, bbb.o);
+   public erq(Map<alh<efc>, efc> $$0) {
+      this.c = $$0;
    }
 
-   private erq(LongSet $$0, LongSet $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private ImmutableMap<alh<efc>, efc> c() {
+      Builder<alh<efc>, efc> $$0 = ImmutableMap.builder();
+      ehy.a(this.c.keySet().stream()).forEach($$1 -> {
+         efc $$2 = this.c.get($$1);
+         if ($$2 != null) {
+            $$0.put($$1, $$2);
+         }
+      });
+      return $$0.build();
    }
 
-   public erq() {
-      this(new LongOpenHashSet(), new LongOpenHashSet());
+   public ehy a() {
+      return new ehy(this.c());
    }
 
-   public void a(long $$0) {
-      this.b.add($$0);
-      this.c.add($$0);
-      this.f();
+   public Optional<efc> b() {
+      return Optional.ofNullable(this.c.get(efc.b));
    }
 
-   public boolean b(long $$0) {
-      return this.b.contains($$0);
-   }
-
-   public boolean c(long $$0) {
-      return this.c.contains($$0);
-   }
-
-   public void d(long $$0) {
-      if (this.c.remove($$0)) {
-         this.f();
-      }
-   }
-
-   public LongSet a() {
-      return this.b;
+   private static DataResult<erq> a(erq $$0) {
+      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
    }
 }

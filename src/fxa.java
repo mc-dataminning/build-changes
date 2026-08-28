@@ -1,88 +1,110 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Arrays;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public class fxa {
-   int a;
-   final Map<fxa.a, fxa.b> b = Maps.newTreeMap(Comparator.<fxa.a, fww>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+public class fxa<T> {
+   private static final int a = 8;
+   private static final int b = 256;
+   private static final int c = 255;
+   private static final int d = 4351;
+   private static final int e = 4352;
+   private final T[] f;
+   private final T[][] g;
+   private final IntFunction<T[]> h;
 
-   public void a(Consumer<fwx> $$0) {
-      this.a++;
-      $$0.accept(new fxa.c(0));
+   public fxa(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
+      this.f = (T[])((Object[])$$0.apply(256));
+      this.g = (T[][])((Object[][])$$1.apply(4352));
+      Arrays.fill(this.g, this.f);
+      this.h = $$0;
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean b = true;
+   public void a() {
+      Arrays.fill(this.g, this.f);
+   }
 
-         public void a(String $$0) {
-            if (!this.b) {
-               $$1.append(". ");
+   @Nullable
+   public T a(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      return this.g[$$1][$$2];
+   }
+
+   @Nullable
+   public T a(int $$0, T $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      if ($$4 == this.f) {
+         $$4 = (T[])((Object[])this.h.apply(256));
+         this.g[$$2] = $$4;
+         $$4[$$3] = $$1;
+         return null;
+      } else {
+         T $$5 = $$4[$$3];
+         $$4[$$3] = $$1;
+         return $$5;
+      }
+   }
+
+   public T a(int $$0, IntFunction<T> $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      T $$5 = $$4[$$3];
+      if ($$5 != null) {
+         return $$5;
+      } else {
+         if ($$4 == this.f) {
+            $$4 = (T[])((Object[])this.h.apply(256));
+            this.g[$$2] = $$4;
+         }
+
+         T $$6 = $$1.apply($$0);
+         $$4[$$3] = $$6;
+         return $$6;
+      }
+   }
+
+   @Nullable
+   public T b(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      T[] $$3 = this.g[$$1];
+      if ($$3 == this.f) {
+         return null;
+      } else {
+         T $$4 = $$3[$$2];
+         $$3[$$2] = null;
+         return $$4;
+      }
+   }
+
+   public void a(fxa.a<T> $$0) {
+      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
+         T[] $$2 = this.g[$$1];
+         if ($$2 != this.f) {
+            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+               T $$4 = $$2[$$3];
+               if ($$4 != null) {
+                  int $$5 = $$1 << 8 | $$3;
+                  $$0.accept($$5, $$4);
+               }
             }
-
-            this.b = false;
-            $$1.append($$0);
          }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
-         }
-      });
-      return $$1.toString();
-   }
-
-   static class a {
-      final fww a;
-      final int b;
-
-      a(fww $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
       }
    }
 
-   static class b {
-      fwz<?> a;
-      int b;
-      boolean c;
-
-      b() {
-         this.a = fwz.a;
-         this.b = -1;
-      }
-
-      public fxa.b a(int $$0, fwz<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
-         }
-
-         this.b = $$0;
-         return this;
-      }
+   public IntSet b() {
+      IntOpenHashSet $$0 = new IntOpenHashSet();
+      this.a(($$1, $$2) -> $$0.add($$1));
+      return $$0;
    }
 
-   class c implements fwx {
-      private final int b;
-
-      c(final int $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(fww $$0, fwz<?> $$1) {
-         fxa.this.b.computeIfAbsent(new fxa.a($$0, this.b), $$0x -> new fxa.b()).a(fxa.this.a, $$1);
-      }
-
-      @Override
-      public fwx a() {
-         return fxa.this.new c(this.b + 1);
-      }
+   @FunctionalInterface
+   public interface a<T> {
+      void accept(int var1, T var2);
    }
 }

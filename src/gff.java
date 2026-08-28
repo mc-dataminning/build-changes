@@ -1,3 +1,2 @@
-public interface gff {
-   void a(bxa var1, fkd var2);
+public record gff(ehz a, dkv b) {
 }

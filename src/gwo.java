@@ -1,43 +1,41 @@
-public class gwo<T extends clh> extends gvo<T, hdb, ggj> {
-   private final alg a;
+import com.google.common.collect.Lists;
+import java.util.Iterator;
+import java.util.List;
+import org.joml.Vector3f;
 
-   public gwo(gwy.a $$0, gwo.a $$1) {
-      super($$0, new ggj($$0.a($$1.d)), new ggj($$0.a($$1.e)));
-      this.a = $$1.c;
-      this.a(new hbp<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new ggq($$0.a($$1.g)), new ggq($$0.a($$1.h))));
+public class gwo implements gwd.a {
+   public static final int a = 200;
+   private final frd b;
+   private final List<aay> c = Lists.newArrayList();
+
+   gwo(frd $$0) {
+      this.b = $$0;
    }
 
-   public alg a(hdb $$0) {
-      return this.a;
+   public void a(aay $$0) {
+      this.c.add($$0);
    }
 
-   public hdb a() {
-      return new hdb();
-   }
+   @Override
+   public void a(flo $$0, gsa $$1, double $$2, double $$3, double $$4) {
+      flr $$5 = $$1.getBuffer(gsl.w());
+      long $$6 = this.b.s.ae();
+      Iterator<aay> $$7 = this.c.iterator();
 
-   public void a(T $$0, hdb $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-   }
-
-   public static enum a {
-      a(alg.b("textures/entity/horse/donkey.png"), gjs.az, gjs.aA, hlw.d.k, gjs.aB, gjs.aC),
-      b(alg.b("textures/entity/horse/mule.png"), gjs.bP, gjs.bQ, hlw.d.l, gjs.bR, gjs.bS);
-
-      final alg c;
-      final gjr d;
-      final gjr e;
-      final hlw.d f;
-      final gjr g;
-      final gjr h;
-
-      private a(final alg $$0, final gjr $$1, final gjr $$2, final hlw.d $$3, final gjr $$4, final gjr $$5) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
-         this.h = $$5;
+      while ($$7.hasNext()) {
+         aay $$8 = $$7.next();
+         long $$9 = $$6 - $$8.b();
+         if ($$9 > 200L) {
+            $$7.remove();
+         } else {
+            for (aay.a $$10 : $$8.c()) {
+               Vector3f $$11 = $$10.a().c().a($$2, $$3 - 0.1, $$4).k();
+               eyw $$12 = $$10.b();
+               gst.a($$0, $$5, $$11, $$12.b().r().c(0.5), -16776961);
+               gst.a($$0, $$5, $$11, $$12.c().r().c(0.4), -65536);
+               gst.a($$0, $$5, $$11, $$12.d().r().c(0.3), -256);
+            }
+         }
       }
    }
 }

@@ -21,7 +21,7 @@ public class ng implements mn {
    private static <T> JsonElement a(js<T> $$0) {
       JsonObject $$1 = new JsonObject();
       if ($$0 instanceof ja) {
-         alg $$2 = ((ja)$$0).b();
+         ali $$2 = ((ja)$$0).b();
          $$1.addProperty("default", $$2.toString());
       }
 

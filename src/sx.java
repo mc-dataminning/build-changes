@@ -21,35 +21,35 @@ public class sx extends MinecraftServer {
    private static final Logger l = LogUtils.getLogger();
    private static final int m = 20;
    private static final int n = 14999992;
-   private static final amb o = new amb(null, ServicesKeySet.EMPTY, null, null);
-   private static final cuw p = cuy.e.a().d(cuw.a(cuy.c, cuy.d));
-   private final bpa q = new bpa(4);
+   private static final amd o = new amd(null, ServicesKeySet.EMPTY, null, null);
+   private static final cvh p = cvj.e.a().d(cvh.a(cvj.c, cvj.d));
+   private final bpc q = new bpc(4);
    private final Optional<String> r;
    private final boolean s;
    private List<sj> t = new ArrayList<>();
    private final Stopwatch u = Stopwatch.createUnstarted();
-   private static final ehq v = new ehq(0L, false, false);
+   private static final eib v = new eib(0L, false, false);
    @Nullable
    private te w;
 
-   public static sx a(Thread $$0, ezh.c $$1, aun $$2, Optional<String> $$3, boolean $$4) {
+   public static sx a(Thread $$0, ezv.c $$1, aup $$2, Optional<String> $$3, boolean $$4) {
       $$2.a();
       ArrayList<String> $$5 = new ArrayList<>($$2.c());
       $$5.remove("vanilla");
       $$5.addFirst("vanilla");
-      dkk $$6 = new dkk(new diz($$5, List.of()), p);
-      djq $$7 = new djq("Test Level", djj.b, false, bud.c, true, new dji(p), $$6);
-      ame.d $$8 = new ame.d($$2, $$6, false, true);
-      ame.c $$9 = new ame.c($$8, ek.a.b, 4);
+      dkv $$6 = new dkv(new djk($$5, List.of()), p);
+      dkb $$7 = new dkb("Test Level", dju.b, false, buo.c, true, new djt(p), $$6);
+      amg.d $$8 = new amg.d($$2, $$6, false, true);
+      amg.c $$9 = new amg.c($$8, ek.a.b, 4);
 
       try {
          l.debug("Starting resource loading");
          Stopwatch $$10 = Stopwatch.createStarted();
-         amf $$11 = ag.<amf>c($$2x -> ame.a($$9, $$1xx -> {
-               js<eer> $$2xx = new jn<>(mh.bq, Lifecycle.stable()).n();
-               ehn.b $$3x = $$1xx.c().e(mh.bo).b(erd.b).a().a().a($$2xx);
-               return new ame.b<>(new ezl($$7, v, $$3x.d(), $$3x.a()), $$3x.b());
-            }, amf::new, ag.h(), $$2x)).get();
+         amh $$11 = ag.<amh>c($$2x -> amg.a($$9, $$1xx -> {
+               js<efc> $$2xx = new jn<>(mh.bq, Lifecycle.stable()).n();
+               ehy.b $$3x = $$1xx.c().e(mh.bo).b(err.b).a().a().a($$2xx);
+               return new amg.b<>(new ezz($$7, v, $$3x.d(), $$3x.a()), $$3x.b());
+            }, amh::new, ag.h(), $$2x)).get();
          $$10.stop();
          l.debug("Finished resource loading after {} ms", $$10.elapsed(TimeUnit.MILLISECONDS));
          return new sx($$0, $$1, $$2, $$11, $$3, $$4);
@@ -60,32 +60,32 @@ public class sx extends MinecraftServer {
       }
    }
 
-   private sx(Thread $$0, ezh.c $$1, aun $$2, amf $$3, Optional<String> $$4, boolean $$5) {
-      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, bbc.a(), o, asc::b);
+   private sx(Thread $$0, ezv.c $$1, aup $$2, amh $$3, Optional<String> $$4, boolean $$5) {
+      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, bbe.a(), o, ase::b);
       this.r = $$4;
       this.s = $$5;
    }
 
    @Override
    public boolean e() {
-      this.a(new avq(this, this.bb(), this.g, 1) {
+      this.a(new avs(this, this.bb(), this.g, 1) {
       });
-      this.q_();
-      arq $$0 = this.J();
+      this.u_();
+      ars $$0 = this.J();
       this.t = this.b($$0);
       l.info("Started game test server");
       return true;
    }
 
-   private List<sj> b(arq $$0) {
-      js<sr> $$1 = $$0.F_().f(mh.bh);
+   private List<sj> b(ars $$0) {
+      js<sr> $$1 = $$0.J_().f(mh.bh);
       Collection<jf.c<sr>> $$2;
       sk.a $$3;
       if (this.r.isPresent()) {
-         $$2 = a($$0.F_(), this.r.get()).filter($$0x -> !((sr)$$0x.a()).i()).toList();
+         $$2 = a($$0.J_(), this.r.get()).filter($$0x -> !((sr)$$0x.a()).i()).toList();
          if (this.s) {
             $$3 = sx::a;
-            l.info("Verify requested. Will run each test that matches {} {} times", this.r.get(), 100 * dtl.values().length);
+            l.info("Verify requested. Will run each test that matches {} {} times", this.r.get(), 100 * dtw.values().length);
          } else {
             $$3 = sk.a;
             l.info("Will run tests matching {} ({} tests)", this.r.get(), $$2.size());
@@ -98,10 +98,10 @@ public class sx extends MinecraftServer {
       return sk.a($$2, $$3, $$0);
    }
 
-   private static Stream<sq> a(jf.c<sr> $$0, arq $$1) {
+   private static Stream<sq> a(jf.c<sr> $$0, ars $$1) {
       Builder<sq> $$2 = Stream.builder();
 
-      for (dtl $$3 : dtl.values()) {
+      for (dtw $$3 : dtw.values()) {
          for (int $$4 = 0; $$4 < 100; $$4++) {
             $$2.add(new sq($$0, $$3, $$1, tg.a()));
          }
@@ -117,7 +117,7 @@ public class sx extends MinecraftServer {
    @Override
    public void a(BooleanSupplier $$0) {
       super.a($$0);
-      arq $$1 = this.J();
+      ars $$1 = this.J();
       if (!this.br()) {
          this.c($$1);
       }
@@ -148,7 +148,7 @@ public class sx extends MinecraftServer {
    }
 
    private static void a(sq $$0) {
-      if ($$0.u() != dtl.a) {
+      if ($$0.u() != dtw.a) {
          l.info("   - {} with rotation {}: {}", new Object[]{$$0.b(), $$0.u().c(), $$0.n().a().getString()});
       } else {
          l.info("   - {}: {}", $$0.b(), $$0.n().a().getString());
@@ -156,7 +156,7 @@ public class sx extends MinecraftServer {
    }
 
    @Override
-   public bpd f() {
+   public bpf f() {
       return this.q;
    }
 
@@ -166,7 +166,7 @@ public class sx extends MinecraftServer {
    }
 
    @Override
-   public void s_() {
+   public void w_() {
       this.bA();
    }
 
@@ -190,7 +190,7 @@ public class sx extends MinecraftServer {
       System.exit(1);
    }
 
-   private void c(arq $$0) {
+   private void c(ars $$0) {
       iv $$1 = new iv($$0.A.a(-14999992, 14999992), -59, $$0.A.a(-14999992, 14999992));
       $$0.a($$1, 0.0F);
       sv $$2 = sv.a.a(this.t, $$0).a((sv.c)(new th($$1, 8, false))).a();
@@ -207,7 +207,7 @@ public class sx extends MinecraftServer {
    }
 
    @Override
-   public boolean r_() {
+   public boolean v_() {
       return false;
    }
 

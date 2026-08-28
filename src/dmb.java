@@ -1,72 +1,79 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public abstract class dmb extends dmr implements duc {
-   public static final ebk b = ebj.I;
-   private static final ffw a = dmr.b(12.0, 0.0, 4.0);
+public class dmb extends dma implements dun {
+   public static final MapCodec<dmb> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("height").forGetter($$0x -> $$0x.e), Codec.FLOAT.fieldOf("width").forGetter($$0x -> $$0x.f), t())
+            .apply($$0, dmb::new)
+   );
+   public static final ebv c = ebu.I;
+   public static final ecc<jb> d = ebu.R;
+   private final float e;
+   private final float f;
+   private final Map<jb, fgk> g;
 
-   protected dmb(eas.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(true)));
+   @Override
+   public MapCodec<dmb> a() {
+      return b;
+   }
+
+   public dmb(float $$0, float $$1, ebd.d $$2) {
+      super($$2);
+      this.l(this.m().b(c, Boolean.valueOf(false)).b(d, jb.b));
+      this.g = fgh.d(dnc.c((double)$$1, (double)(16.0F - $$0), 16.0));
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   protected abstract MapCodec<? extends dmb> a();
-
-   protected void a(eat $$0, diq $$1, dkb $$2, azv $$3, iv $$4) {
-      if (!d($$0, $$1, $$4)) {
-         $$2.a($$4, this, 60 + $$3.a(40));
-      }
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return this.g.get($$0.c(d));
    }
 
-   protected static boolean d(eat $$0, diq $$1, iv $$2) {
-      if ($$0.c(b)) {
-         return true;
-      } else {
-         for (jb $$3 : jb.values()) {
-            if ($$1.b_($$2.a($$3)).a(axh.a)) {
-               return true;
-            }
-         }
+   @Override
+   protected boolean a(ebe $$0, dka $$1, iv $$2) {
+      jb $$3 = $$0.c(d);
+      iv $$4 = $$2.a($$3.g());
+      return $$1.a_($$4).c($$1, $$4, $$3);
+   }
 
-         return false;
+   @Override
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      if ($$0.c(c)) {
+         $$2.a($$3, exp.c, exp.c.a($$1));
       }
+
+      return $$4 == $$0.c(d).g() && !$$0.a($$1, $$3) ? dne.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Nullable
    @Override
-   public eat a(ddg $$0) {
-      exa $$1 = $$0.q().b_($$0.a());
-      return this.m().b(b, Boolean.valueOf($$1.a(axh.a) && $$1.e() == 8));
+   public ebe a(ddr $$0) {
+      djy $$1 = $$0.q();
+      iv $$2 = $$0.a();
+      return this.m().b(c, Boolean.valueOf($$1.b_($$2).a() == exp.c)).b(d, $$0.k());
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return a;
+   protected ebe a(ebe $$0, dtw $$1) {
+      return $$0.b(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, exb.c, exb.c.a($$1));
-      }
-
-      return $$4 == jb.a && !this.a($$0, $$1, $$3) ? dmt.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected ebe a(ebe $$0, dsf $$1) {
+      return $$0.a($$1.a($$0.c(d)));
    }
 
    @Override
-   protected boolean a(eat $$0, djp $$1, iv $$2) {
-      iv $$3 = $$2.e();
-      return $$1.a_($$3).c($$1, $$3, jb.b);
+   protected exo b_(ebe $$0) {
+      return $$0.c(c) ? exp.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected exa b_(eat $$0) {
-      return $$0.c(b) ? exb.c.a(false) : super.b_($$0);
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(c, d);
    }
 }

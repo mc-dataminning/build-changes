@@ -1,2 +1,16 @@
-public record bpt<S>(int a, bpx<S> b, Object c) {
+public interface bpt {
+   bpt a = new bpt() {
+      @Override
+      public void a() {
+      }
+
+      @Override
+      public boolean b() {
+         return false;
+      }
+   };
+
+   void a();
+
+   boolean b();
 }

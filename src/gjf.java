@@ -1,33 +1,21 @@
-public class gjf extends ggp<hdf> {
-   private static final int a = 16;
-   private final gjt b;
-   private final gjt c;
-   private final gjt d;
-
-   public gjf(gjt $$0) {
-      super($$0, grc::j);
-      this.b = $$0.b("bone");
-      this.d = this.b.b("wind");
-      this.c = this.b.b("wind_charge");
+public class gjf extends gio<hgb> {
+   public gjf(gle $$0) {
+      super($$0);
    }
 
-   public static gjz a() {
-      gkb $$0 = new gkb();
-      gkd $$1 = $$0.a();
-      gkd $$2 = $$1.a("bone", gjy.c(), gjv.a(0.0F, 0.0F, 0.0F));
-      $$2.a(
-         "wind",
-         gjy.c().a(15, 20).a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F, new gjx(0.0F)).a(0, 9).a(-3.0F, -2.0F, -3.0F, 6.0F, 4.0F, 6.0F, new gjx(0.0F)),
-         gjv.a(0.0F, 0.0F, 0.0F, 0.0F, -0.7854F, 0.0F)
-      );
-      $$2.a("wind_charge", gjy.c().a(0, 0).a(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, new gjx(0.0F)), gjv.a(0.0F, 0.0F, 0.0F));
-      return gjz.a($$0, 64, 32);
-   }
-
-   @Override
-   public void a(hdf $$0) {
-      super.a($$0);
-      this.c.f = -$$0.u * 16.0F * (float) (Math.PI / 180.0);
-      this.d.f = $$0.u * 16.0F * (float) (Math.PI / 180.0);
+   public static glk a() {
+      glm $$0 = gio.a(gli.a, 0.0F);
+      glo $$1 = $$0.a();
+      glo $$2 = $$1.a("head");
+      $$2.a("hat");
+      $$1.a("body");
+      $$1.a("left_arm");
+      $$1.a("right_arm");
+      $$1.a("left_leg");
+      $$1.a("right_leg");
+      glj $$3 = glj.c().a(24, 0).a(-3.0F, -6.0F, -1.0F, 6.0F, 6.0F, 1.0F, new gli(1.0F));
+      $$2.a("left_ear", $$3, glg.a(-6.0F, -6.0F, 0.0F));
+      $$2.a("right_ear", $$3, glg.a(6.0F, -6.0F, 0.0F));
+      return glk.a($$0, 64, 64);
    }
 }

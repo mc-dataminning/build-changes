@@ -1,52 +1,31 @@
-import java.util.Optional;
-
-public class czh extends czj {
-   public czh(czj.a $$0) {
+public class czh extends czu {
+   public czh(czu.a $$0) {
       super($$0);
    }
 
-   public static czn a(czj $$0, jf<czg> $$1) {
-      czn $$2 = new czn($$0);
-      $$2.b(kk.ab, new dcd($$1));
-      return $$2;
-   }
-
    @Override
-   public bug a(djm $$0, crm $$1, buf $$2) {
-      czn $$3 = $$1.b($$2);
-      Optional<? extends jf<czg>> $$4 = this.a($$3, $$1.dW());
-      if ($$4.isPresent()) {
-         czg $$5 = $$4.get().a();
-         $$1.c($$2);
-         a($$0, $$1, $$5);
-         $$1.gE().a($$3, azm.d($$5.b() * 20.0F));
-         $$1.b(awx.c.b(this));
-         return bug.c;
+   public bur a(djx $$0, crx $$1, buq $$2) {
+      czy $$3 = $$1.b($$2);
+      if ($$1.ck != null) {
+         if (!$$0.C) {
+            int $$4 = $$1.ck.a($$3);
+            $$3.a($$4, $$1, bxu.d($$2));
+         }
+
+         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awp.jA, awq.g, 1.0F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
+         $$1.a(ege.C);
       } else {
-         return bug.d;
+         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awp.jC, awq.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
+         if ($$0 instanceof ars $$5) {
+            int $$6 = (int)(dgn.b($$5, $$3, $$1) * 20.0F);
+            int $$7 = dgn.a($$5, $$3, $$1);
+            css.a(new cso($$1, $$0, $$7, $$6), $$5, $$3);
+         }
+
+         $$1.b(awz.c.b(this));
+         $$1.a(ege.D);
       }
-   }
 
-   @Override
-   public int a(czn $$0, bxj $$1) {
-      Optional<jf<czg>> $$2 = this.a($$0, $$1.dW());
-      return $$2.<Integer>map($$0x -> azm.d(((czg)$$0x.a()).b() * 20.0F)).orElse(0);
-   }
-
-   private Optional<jf<czg>> a(czn $$0, jh.a $$1) {
-      dcd $$2 = $$0.a(kk.ab);
-      return $$2 != null ? $$2.a($$1) : Optional.empty();
-   }
-
-   @Override
-   public czp b(czn $$0) {
-      return czp.i;
-   }
-
-   private static void a(djm $$0, crm $$1, czg $$2) {
-      awm $$3 = $$2.a().a();
-      float $$4 = $$2.c() / 16.0F;
-      $$0.a($$1, $$1, $$3, awo.c, $$4, 1.0F);
-      $$0.a(eft.B, $$1.ds(), eft.a.a($$1));
+      return bur.a;
    }
 }

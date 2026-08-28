@@ -1,86 +1,100 @@
+import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Objects;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class cxz extends dai {
-   public static final int a = 20;
-   public static final int b = 15;
+public class cxz {
+   public static final Codec<cxz> a = ayw.c(az.a, ayw.b(az.a.listOf())).xmap(cxz::new, $$0 -> $$0.f);
+   public static final yy<wl, cxz> b = yy.a(az.b.a(yw.a()), $$0 -> $$0.f, cxz::new);
+   public static final xa c = xa.c("item.canBreak").a(o.h);
+   public static final xa d = xa.c("item.canPlace").a(o.h);
+   private static final xa e = xa.c("item.canUse.unknown").a(o.h);
+   private final List<az> f;
+   @Nullable
+   private List<xa> g;
+   @Nullable
+   private ebi h;
+   private boolean i;
+   private boolean j;
 
-   public cxz(czj.a $$0) {
-      super($$0);
+   public cxz(List<az> $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   public boolean a(czn $$0, djm $$1, bxj $$2, int $$3) {
-      if (!($$2 instanceof crm $$4)) {
+   private static boolean a(ebi $$0, @Nullable ebi $$1, boolean $$2) {
+      if ($$1 == null || $$0.a() != $$1.a()) {
          return false;
+      } else if (!$$2) {
+         return true;
+      } else if ($$0.b() == null && $$1.b() == null) {
+         return true;
+      } else if ($$0.b() != null && $$1.b() != null) {
+         jt $$3 = $$0.c().J_();
+         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
       } else {
-         czn $$5 = $$4.d($$0);
-         if ($$5.f()) {
-            return false;
-         } else {
-            int $$6 = this.a($$0, $$2) - $$3;
-            float $$7 = a($$6);
-            if ((double)$$7 < 0.1) {
-               return false;
-            } else {
-               List<czn> $$8 = a($$0, $$5, $$4);
-               if ($$1 instanceof arq $$9 && !$$8.isEmpty()) {
-                  this.a($$9, $$4, $$4.fz(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
-               }
+         return false;
+      }
+   }
 
-               $$1.a(null, $$4.dz(), $$4.dB(), $$4.dF(), awn.aG, awo.h, 1.0F, 1.0F / ($$1.C_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
-               $$4.b(awx.c.b(this));
+   public boolean a(ebi $$0) {
+      if (a($$0, this.h, this.j)) {
+         return this.i;
+      } else {
+         this.h = $$0;
+         this.j = false;
+
+         for (az $$1 : this.f) {
+            if ($$1.a($$0)) {
+               this.j = this.j | $$1.a();
+               this.i = true;
                return true;
             }
          }
+
+         this.i = false;
+         return false;
       }
    }
 
-   @Override
-   protected void a(bxj $$0, csh $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bxj $$6) {
-      $$1.a($$0, $$0.dM(), $$0.dK() + $$5, 0.0F, $$3, $$4);
-   }
-
-   public static float a(int $$0) {
-      float $$1 = (float)$$0 / 20.0F;
-      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
-      if ($$1 > 1.0F) {
-         $$1 = 1.0F;
+   private List<xa> a() {
+      if (this.g == null) {
+         this.g = a(this.f);
       }
 
-      return $$1;
+      return this.g;
+   }
+
+   public void a(Consumer<xa> $$0) {
+      this.a().forEach($$0);
+   }
+
+   private static List<xa> a(List<az> $$0) {
+      for (az $$1 : $$0) {
+         if ($$1.b().isEmpty()) {
+            return List.of(e);
+         }
+      }
+
+      return $$0.stream().flatMap($$0x -> $$0x.b().orElseThrow().a()).distinct().map($$0x -> ((dnc)$$0x.a()).f().a(o.i)).toList();
    }
 
    @Override
-   public int a(czn $$0, bxj $$1) {
-      return 72000;
-   }
-
-   @Override
-   public czp b(czn $$0) {
-      return czp.e;
-   }
-
-   @Override
-   public bug a(djm $$0, crm $$1, buf $$2) {
-      czn $$3 = $$1.b($$2);
-      boolean $$4 = !$$1.d($$3).f();
-      if (!$$1.fU() && !$$4) {
-         return bug.d;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         $$1.c($$2);
-         return bug.c;
+         return $$0 instanceof cxz $$1 ? this.f.equals($$1.f) : false;
       }
    }
 
    @Override
-   public Predicate<czn> a() {
-      return c;
+   public int hashCode() {
+      return this.f.hashCode();
    }
 
    @Override
-   public int b() {
-      return 15;
+   public String toString() {
+      return "AdventureModePredicate{predicates=" + this.f + "}";
    }
 }

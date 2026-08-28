@@ -1,66 +1,28 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-
-public class ddy extends ddu {
-   private static final dea d = dea.a(czr.vF);
-
-   public ddy(ddr $$0) {
-      super($$0);
-   }
-
-   public boolean a(dds $$0, djm $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            czn $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.h() instanceof cym) {
-                  $$2 = true;
-               } else {
-                  if (!d.a($$5)) {
-                     return false;
-                  }
-
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               }
-            }
-         }
-
-         return $$3 && $$2;
-      }
-   }
-
-   public czn a(dds $$0, jh.a $$1) {
-      IntList $$2 = new IntArrayList();
-      czn $$3 = null;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         czn $$5 = $$0.a($$4);
-         if ($$5.h() instanceof cym $$7) {
-            $$2.add($$7.a().f());
-         } else if (d.a($$5)) {
-            $$3 = $$5.c(1);
-         }
-      }
-
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a(kk.ai, dcb.a, $$2, dcb::a);
-         return $$3;
-      } else {
-         return czn.k;
-      }
+public class ddy extends ddv {
+   public ddy(String $$0, deb $$1, del $$2, czy $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public deo<ddy> a() {
-      return deo.i;
+   protected czu f() {
+      return dac.xx;
+   }
+
+   @Override
+   public dez<ddy> a() {
+      return dez.p;
+   }
+
+   @Override
+   public dfa<ddy> b() {
+      return dfa.c;
+   }
+
+   @Override
+   public des h() {
+      return switch (this.e()) {
+         case b -> der.h;
+         case a, c -> der.i;
+      };
    }
 }

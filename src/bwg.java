@@ -1,45 +1,16 @@
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-
-public record bwg(Map<bws, Float> f) {
-   public static final float a = 0.085F;
-   public static final float b = 1.0F;
-   public static final int c = 2;
-   public static final bwg d = new bwg(ag.a(bws.class, $$0 -> 0.085F));
-   public static final Codec<bwg> e = Codec.unboundedMap(bws.l, ayu.n).xmap(bwg::b, bwg::a).xmap(bwg::new, bwg::a);
-
-   private static Map<bws, Float> a(Map<bws, Float> $$0) {
-      Map<bws, Float> $$1 = new HashMap<>($$0);
-      $$1.values().removeIf($$0x -> $$0x == 0.085F);
-      return $$1;
+class bwg extends bvv {
+   protected bwg(bvw $$0, int $$1) {
+      super($$0, $$1, ly.y);
    }
 
-   private static Map<bws, Float> b(Map<bws, Float> $$0) {
-      return ag.a(bws.class, $$1 -> $$0.getOrDefault($$1, 0.085F));
-   }
-
-   public bwg a(bws $$0) {
-      return this.a($$0, 2.0F);
-   }
-
-   public bwg a(bws $$0, float $$1) {
-      if ($$1 < 0.0F) {
-         throw new IllegalArgumentException("Tried to set invalid equipment chance " + $$1 + " for " + $$0);
-      } else {
-         return this.b($$0) == $$1 ? this : new bwg(ag.a(bws.class, $$2 -> $$2 == $$0 ? $$1 : this.b($$2)));
+   @Override
+   public void a(ars $$0, bxu $$1, int $$2, bwt.d $$3) {
+      if ($$3 == bwt.d.a) {
+         double $$4 = $$1.dA();
+         double $$5 = $$1.dC() + (double)($$1.dr() / 2.0F);
+         double $$6 = $$1.dG();
+         float $$7 = 3.0F + $$1.dY().i() * 2.0F;
+         $$0.a($$1, null, ctj.d, $$4, $$5, $$6, $$7, false, djx.a.e, ly.A, ly.z, awp.cQ);
       }
-   }
-
-   public float b(bws $$0) {
-      return this.f.getOrDefault($$0, 0.085F);
-   }
-
-   public boolean c(bws $$0) {
-      return this.b($$0) > 1.0F;
-   }
-
-   public Map<bws, Float> a() {
-      return this.f;
    }
 }

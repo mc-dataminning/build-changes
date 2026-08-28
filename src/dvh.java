@@ -1,39 +1,53 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvh extends dwd implements dmu {
-   public static final MapCodec<dvh> a = b(dvh::new);
-   private static final ffw b = dmr.b(12.0, 0.0, 13.0);
+public class dvh extends dum {
+   public static final MapCodec<dvh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ecs.a.fieldOf("wood_type").forGetter(dum::d), t()).apply($$0, dvh::new));
+   public static final ece b = ebu.bd;
 
    @Override
    public MapCodec<dvh> a() {
       return a;
    }
 
-   protected dvh(eas.d $$0) {
-      super($$0);
+   public dvh(ecs $$0, ebd.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.l(this.C.b().b(b, Integer.valueOf(0)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return b;
+   protected boolean a(ebe $$0, dka $$1, iv $$2) {
+      return $$1.a_($$2.e()).e();
    }
 
    @Override
-   public boolean a(djp $$0, iv $$1, eat $$2) {
-      return o($$2).m().a($$0, $$1) && $$0.v($$1.d());
+   public ebe a(ddr $$0) {
+      exo $$1 = $$0.q().b_($$0.a());
+      return this.m().b(b, Integer.valueOf(eck.a($$0.i() + 180.0F))).b(d, Boolean.valueOf($$1.a() == exp.c));
    }
 
    @Override
-   public boolean a(djm $$0, azv $$1, iv $$2, eat $$3) {
-      return true;
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      return $$4 == jb.a && !this.a($$0, $$1, $$3) ? dne.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public void a(arq $$0, azv $$1, iv $$2, eat $$3) {
-      dpa.a($$0, o($$3).m(), $$2, 2);
+   public float h(ebe $$0) {
+      return eck.b($$0.c(b));
    }
 
-   private static dpa o(eat $$0) {
-      return (dpa)($$0.a(dmt.bB) ? dmt.jk : dmt.jj);
+   @Override
+   protected ebe a(ebe $$0, dtw $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected ebe a(ebe $$0, dsf $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(b, d);
    }
 }

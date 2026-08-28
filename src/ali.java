@@ -1,120 +1,252 @@
-import com.mojang.logging.LogUtils;
-import java.io.PrintStream;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import io.netty.buffer.ByteBuf;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-@ad(
-   a = "System.out setup"
-)
-public class ali {
-   public static final PrintStream a = System.out;
-   private static volatile boolean c;
-   private static final Logger d = LogUtils.getLogger();
-   public static final AtomicLong b = new AtomicLong(-1L);
+public final class ali implements Comparable<ali> {
+   public static final Codec<ali> a = Codec.STRING.comapFlatMap(ali::d, ali::toString).stable();
+   public static final yy<ByteBuf, ali> b = yw.p.a(ali::a, ali::toString);
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xa.c("argument.id.invalid"));
+   public static final char d = ':';
+   public static final String e = "minecraft";
+   public static final String f = "realms";
+   private final String h;
+   private final String i;
 
-   public static void a() {
-      if (!c) {
-         c = true;
-         Instant $$0 = Instant.now();
-         if (mg.aF.i().isEmpty()) {
-            throw new IllegalStateException("Unable to load registries");
+   private ali(String $$0, String $$1) {
+      assert j($$0);
+
+      assert i($$1);
+
+      this.h = $$0;
+      this.i = $$1;
+   }
+
+   private static ali d(String $$0, String $$1) {
+      return new ali(e($$0, $$1), f($$0, $$1));
+   }
+
+   public static ali a(String $$0, String $$1) {
+      return d($$0, $$1);
+   }
+
+   public static ali a(String $$0) {
+      return a($$0, ':');
+   }
+
+   public static ali b(String $$0) {
+      return new ali("minecraft", f("minecraft", $$0));
+   }
+
+   @Nullable
+   public static ali c(String $$0) {
+      return b($$0, ':');
+   }
+
+   @Nullable
+   public static ali b(String $$0, String $$1) {
+      return j($$0) && i($$1) ? new ali($$0, $$1) : null;
+   }
+
+   public static ali a(String $$0, char $$1) {
+      int $$2 = $$0.indexOf($$1);
+      if ($$2 >= 0) {
+         String $$3 = $$0.substring($$2 + 1);
+         if ($$2 != 0) {
+            String $$4 = $$0.substring(0, $$2);
+            return d($$4, $$3);
          } else {
-            dpt.b();
-            dod.b();
-            if (bwr.a(bwr.bS) == null) {
-               throw new IllegalStateException("Failed loading EntityTypes");
-            } else {
-               hc.a();
-               lh.a();
-               kc.a();
-               mg.a();
-               cyf.a();
-               d();
-               b.set(Duration.between($$0, Instant.now()).toMillis());
-            }
+            return b($$3);
          }
-      }
-   }
-
-   private static <T> void a(Iterable<T> $$0, Function<T, String> $$1, Set<String> $$2) {
-      tu $$3 = tu.a();
-      $$0.forEach($$3x -> {
-         String $$4 = $$1.apply((T)$$3x);
-         if (!$$3.b($$4)) {
-            $$2.add($$4);
-         }
-      });
-   }
-
-   private static void a(final Set<String> $$0) {
-      final tu $$1 = tu.a();
-      dji $$2 = new dji(cuy.e.a());
-      $$2.a(new dji.c() {
-         @Override
-         public <T extends dji.g<T>> void a(dji.e<T> $$0x, dji.f<T> $$1x) {
-            if (!$$1.b($$0.b())) {
-               $$0.add($$0.a());
-            }
-         }
-      });
-   }
-
-   public static Set<String> b() {
-      Set<String> $$0 = new TreeSet<>();
-      a(mg.s, byk::c, $$0);
-      a(mg.f, bwr::g, $$0);
-      a(mg.d, bvk::f, $$0);
-      a(mg.g, czj::j, $$0);
-      a(mg.e, eas::v, $$0);
-      a(mg.k, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
-      a($$0);
-      return $$0;
-   }
-
-   public static void a(Supplier<String> $$0) {
-      if (!c) {
-         throw b($$0);
-      }
-   }
-
-   private static RuntimeException b(Supplier<String> $$0) {
-      try {
-         String $$1 = $$0.get();
-         return new IllegalArgumentException("Not bootstrapped (called from " + $$1 + ")");
-      } catch (Exception var3) {
-         RuntimeException $$3 = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
-         $$3.addSuppressed(var3);
-         return $$3;
-      }
-   }
-
-   public static void c() {
-      a(() -> "validate");
-      if (ac.aV) {
-         b().forEach($$0 -> d.error("Missing translations: {}", $$0));
-         ek.b();
-      }
-
-      byq.a();
-   }
-
-   private static void d() {
-      if (d.isDebugEnabled()) {
-         System.setErr(new all("STDERR", System.err));
-         System.setOut(new all("STDOUT", a));
       } else {
-         System.setErr(new aln("STDERR", System.err));
-         System.setOut(new aln("STDOUT", a));
+         return b($$0);
       }
    }
 
-   public static void a(String $$0) {
-      a.println($$0);
+   @Nullable
+   public static ali b(String $$0, char $$1) {
+      int $$2 = $$0.indexOf($$1);
+      if ($$2 >= 0) {
+         String $$3 = $$0.substring($$2 + 1);
+         if (!i($$3)) {
+            return null;
+         } else if ($$2 != 0) {
+            String $$4 = $$0.substring(0, $$2);
+            return j($$4) ? new ali($$4, $$3) : null;
+         } else {
+            return new ali("minecraft", $$3);
+         }
+      } else {
+         return i($$0) ? new ali("minecraft", $$0) : null;
+      }
+   }
+
+   public static DataResult<ali> d(String $$0) {
+      try {
+         return DataResult.success(a($$0));
+      } catch (ab var2) {
+         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
+      }
+   }
+
+   public String a() {
+      return this.i;
+   }
+
+   public String b() {
+      return this.h;
+   }
+
+   public ali e(String $$0) {
+      return new ali(this.h, f(this.h, $$0));
+   }
+
+   public ali a(UnaryOperator<String> $$0) {
+      return this.e($$0.apply(this.i));
+   }
+
+   public ali f(String $$0) {
+      return this.e($$0 + this.i);
+   }
+
+   public ali g(String $$0) {
+      return this.e(this.i + $$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.h + ":" + this.i;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof ali $$1) ? false : this.h.equals($$1.h) && this.i.equals($$1.i);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return 31 * this.h.hashCode() + this.i.hashCode();
+   }
+
+   public int a(ali $$0) {
+      int $$1 = this.i.compareTo($$0.i);
+      if ($$1 == 0) {
+         $$1 = this.h.compareTo($$0.h);
+      }
+
+      return $$1;
+   }
+
+   public String c() {
+      return this.toString().replace('/', '_').replace(':', '_');
+   }
+
+   public String d() {
+      return this.h + "." + this.i;
+   }
+
+   public String e() {
+      return this.h.equals("minecraft") ? this.i : this.d();
+   }
+
+   public String h(String $$0) {
+      return $$0 + "." + this.d();
+   }
+
+   public String c(String $$0, String $$1) {
+      return $$0 + "." + this.d() + "." + $$1;
+   }
+
+   private static String c(StringReader $$0) {
+      int $$1 = $$0.getCursor();
+
+      while ($$0.canRead() && a($$0.peek())) {
+         $$0.skip();
+      }
+
+      return $$0.getString().substring($$1, $$0.getCursor());
+   }
+
+   public static ali a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      String $$2 = c($$0);
+
+      try {
+         return a($$2);
+      } catch (ab var4) {
+         $$0.setCursor($$1);
+         throw c.createWithContext($$0);
+      }
+   }
+
+   public static ali b(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      String $$2 = c($$0);
+      if ($$2.isEmpty()) {
+         throw c.createWithContext($$0);
+      } else {
+         try {
+            return a($$2);
+         } catch (ab var4) {
+            $$0.setCursor($$1);
+            throw c.createWithContext($$0);
+         }
+      }
+   }
+
+   public static boolean a(char $$0) {
+      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
+   }
+
+   public static boolean i(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!b($$0.charAt($$1))) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static boolean j(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!c($$0.charAt($$1))) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static String e(String $$0, String $$1) {
+      if (!j($$0)) {
+         throw new ab("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$0;
+      }
+   }
+
+   public static boolean b(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
+   }
+
+   private static boolean c(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
+   }
+
+   private static String f(String $$0, String $$1) {
+      if (!i($$1)) {
+         throw new ab("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$1;
+      }
    }
 }

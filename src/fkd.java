@@ -1,159 +1,53 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Quaternionfc;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
+import ca.weblite.objc.Client;
+import ca.weblite.objc.NSObject;
+import com.sun.jna.Pointer;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
+import java.util.Locale;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFWNativeCocoa;
 
 public class fkd {
-   private final List<fkd.a> a = new ArrayList<>(16);
-   private int b;
+   public static final boolean a = System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("mac");
+   private static final int b = 8;
+   private static final int c = 16384;
 
-   public fkd() {
-      this.a.add(new fkd.a());
+   public static void a(long $$0) {
+      c($$0).filter(fkd::a).ifPresent(fkd::c);
    }
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.a((float)$$0, (float)$$1, (float)$$2);
+   public static void b(long $$0) {
+      c($$0).ifPresent($$0x -> {
+         long $$1 = b($$0x);
+         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
+      });
    }
 
-   public void a(float $$0, float $$1, float $$2) {
-      this.c().a($$0, $$1, $$2);
+   private static Optional<NSObject> c(long $$0) {
+      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
+      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
    }
 
-   public void a(ffc $$0) {
-      this.a($$0.d, $$0.e, $$0.f);
+   private static boolean a(NSObject $$0) {
+      return (b($$0) & 16384L) != 0L;
    }
 
-   public void b(float $$0, float $$1, float $$2) {
-      this.c().b($$0, $$1, $$2);
+   private static long b(NSObject $$0) {
+      return (Long)$$0.sendRaw("styleMask", new Object[0]);
    }
 
-   public void a(Quaternionfc $$0) {
-      this.c().a($$0);
+   private static void c(NSObject $$0) {
+      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
    }
 
-   public void a(Quaternionfc $$0, float $$1, float $$2, float $$3) {
-      this.c().a($$0, $$1, $$2, $$3);
-   }
-
-   public void a() {
-      fkd.a $$0 = this.c();
-      this.b++;
-      if (this.b >= this.a.size()) {
-         this.a.add($$0.d());
-      } else {
-         this.a.get(this.b).a($$0);
-      }
-   }
-
-   public void b() {
-      if (this.b == 0) {
-         throw new NoSuchElementException();
-      } else {
-         this.b--;
-      }
-   }
-
-   public fkd.a c() {
-      return this.a.get(this.b);
-   }
-
-   public boolean d() {
-      return this.b == 0;
-   }
-
-   public void e() {
-      this.c().c();
-   }
-
-   public void a(Matrix4fc $$0) {
-      this.c().a($$0);
-   }
-
-   public static final class a {
-      private final Matrix4f a = new Matrix4f();
-      private final Matrix3f b = new Matrix3f();
-      private boolean c = true;
-
-      private void e() {
-         this.b.set(this.a).invert().transpose();
-         this.c = false;
-      }
-
-      void a(fkd.a $$0) {
-         this.a.set($$0.a);
-         this.b.set($$0.b);
-         this.c = $$0.c;
-      }
-
-      public Matrix4f a() {
-         return this.a;
-      }
-
-      public Matrix3f b() {
-         return this.b;
-      }
-
-      public Vector3f a(Vector3fc $$0, Vector3f $$1) {
-         return this.a($$0.x(), $$0.y(), $$0.z(), $$1);
-      }
-
-      public Vector3f a(float $$0, float $$1, float $$2, Vector3f $$3) {
-         Vector3f $$4 = this.b.transform($$0, $$1, $$2, $$3);
-         return this.c ? $$4 : $$4.normalize();
-      }
-
-      public Matrix4f a(float $$0, float $$1, float $$2) {
-         return this.a.translate($$0, $$1, $$2);
-      }
-
-      public void b(float $$0, float $$1, float $$2) {
-         this.a.scale($$0, $$1, $$2);
-         if (Math.abs($$0) == Math.abs($$1) && Math.abs($$1) == Math.abs($$2)) {
-            if ($$0 < 0.0F || $$1 < 0.0F || $$2 < 0.0F) {
-               this.b.scale(Math.signum($$0), Math.signum($$1), Math.signum($$2));
-            }
-         } else {
-            this.b.scale(1.0F / $$0, 1.0F / $$1, 1.0F / $$2);
-            this.c = false;
-         }
-      }
-
-      public void a(Quaternionfc $$0) {
-         this.a.rotate($$0);
-         this.b.rotate($$0);
-      }
-
-      public void a(Quaternionfc $$0, float $$1, float $$2, float $$3) {
-         this.a.rotateAround($$0, $$1, $$2, $$3);
-         this.b.rotate($$0);
-      }
-
-      public void c() {
-         this.a.identity();
-         this.b.identity();
-         this.c = true;
-      }
-
-      public void a(Matrix4fc $$0) {
-         this.a.mul($$0);
-         if (!f.b($$0)) {
-            if (f.c($$0)) {
-               this.b.mul(new Matrix3f($$0));
-            } else {
-               this.e();
-            }
-         }
-      }
-
-      public fkd.a d() {
-         fkd.a $$0 = new fkd.a();
-         $$0.a(this);
-         return $$0;
+   public static void a(auw<InputStream> $$0) throws IOException {
+      try (InputStream $$1 = $$0.get()) {
+         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
+         Client $$3 = Client.getInstance();
+         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
+         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
+         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
       }
    }
 }

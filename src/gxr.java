@@ -1,18 +1,39 @@
-public abstract class gxr<T extends cnu, S extends hdx> extends gye<T, S, ghe<S>> {
-   protected gxr(gwy.a $$0, ghe<S> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(new har<>(this, $$0.f()));
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public class gxr extends gzo<cjq, hef, ghl> {
+   private final Map<cjr.a, ggm<ghl>> a;
+
+   public gxr(gyi.a $$0) {
+      super($$0, new ghl($$0.a(gld.Z)), 0.3F);
+      this.a = a($$0);
    }
 
-   public void a(T $$0, S $$1, float $$2) {
+   private static Map<cjr.a, ggm<ghl>> a(gyi.a $$0) {
+      return Maps.newEnumMap(
+         Map.of(cjr.a.a, new ggm<>(new ghl($$0.a(gld.Z)), new ghl($$0.a(gld.aa))), cjr.a.b, new ggm<>(new ghn($$0.a(gld.ac)), new ghn($$0.a(gld.ad))))
+      );
+   }
+
+   public void a(hef $$0, flo $$1, gsa $$2, int $$3) {
+      if ($$0.c != null) {
+         this.g = this.a.get($$0.c.b().a()).a($$0.aj);
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   public ali a(hef $$0) {
+      return $$0.c == null ? hkp.c() : $$0.c.b().b().b();
+   }
+
+   public hef a() {
+      return new hef();
+   }
+
+   public void a(cjq $$0, hef $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      hcj.a($$0, $$1, this.h);
-      $$1.b = $$0.bX();
-      $$1.d = $$0.fx();
-      $$1.j = $$0.j();
-      $$1.k = $$1.j == cnu.a.f ? cyg.b($$0.fA(), $$0) : 0;
-      $$1.l = $$0.fC();
-      $$1.m = $$0.D($$2);
-      $$1.c = $$0.gk();
+      $$1.a = azo.h($$2, $$0.bM, $$0.bI);
+      $$1.b = azo.h($$2, $$0.bK, $$0.bJ);
+      $$1.c = $$0.t().a();
    }
 }

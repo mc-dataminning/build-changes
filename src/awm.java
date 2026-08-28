@@ -1,37 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
 
-public record awm(alg e, Optional<Float> f) {
+public class awm {
    public static final Codec<awm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(alg.a.fieldOf("sound_id").forGetter(awm::a), Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(awm::b)).apply($$0, awm::a)
+      $$0 -> $$0.group(
+               awo.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, awm::new)
    );
-   public static final Codec<jf<awm>> b = alc.a(mh.ap, a);
-   public static final yw<ByteBuf, awm> c = yw.a(alg.b, awm::a, yu.l.a(yu::a), awm::b, awm::a);
-   public static final yw<wj, jf<awm>> d = yu.a(mh.ap, c);
+   private final jf<awo> b;
+   private final int c;
+   private final int d;
+   private final boolean e;
 
-   private static awm a(alg $$0, Optional<Float> $$1) {
-      return $$1.<awm>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
+   public awm(jf<awo> $$0, int $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public static awm a(alg $$0) {
-      return new awm($$0, Optional.empty());
+   public jf<awo> a() {
+      return this.b;
    }
 
-   public static awm a(alg $$0, float $$1) {
-      return new awm($$0, Optional.of($$1));
+   public int b() {
+      return this.c;
    }
 
-   public float a(float $$0) {
-      return this.f.orElse($$0 > 1.0F ? 16.0F * $$0 : 16.0F);
+   public int c() {
+      return this.d;
    }
 
-   public alg a() {
+   public boolean d() {
       return this.e;
-   }
-
-   public Optional<Float> b() {
-      return this.f;
    }
 }

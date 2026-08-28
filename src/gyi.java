@@ -1,36 +1,72 @@
-public class gyi extends gwx<bxp, hea> {
-   private static final float a = 40.0F;
-   private static final int g = 50;
-   private final hgg h;
-   private final azv i = azv.a();
+@FunctionalInterface
+public interface gyi<T extends bwt> {
+   gyh<T, ?> create(gyi.a var1);
 
-   protected gyi(gwy.a $$0) {
-      super($$0);
-      this.h = $$0.b();
-   }
+   public static class a {
+      private final gyg a;
+      private final hhq b;
+      private final gry c;
+      private final gtd d;
+      private final avf e;
+      private final gla f;
+      private final hnf g;
+      private final ftv h;
+      private final hch i;
 
-   public hea a() {
-      return new hea();
-   }
+      public a(gyg $$0, hhq $$1, gry $$2, gtd $$3, avf $$4, gla $$5, hnf $$6, ftv $$7) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = new hch($$6, this.i().c(gsu.g));
+      }
 
-   public void a(bxp $$0, hea $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      czn $$3 = $$0.g();
-      $$1.a($$0, $$3, this.h);
-   }
+      public gyg a() {
+         return this.a;
+      }
 
-   public void a(hea $$0, fkd $$1, gqr $$2, int $$3) {
-      if (!$$0.a.c()) {
-         $$1.a();
-         if ($$0.u <= 50.0F) {
-            float $$4 = Math.min($$0.u, 50.0F) / 50.0F;
-            $$1.b($$4, $$4, $$4);
-         }
+      public hhq b() {
+         return this.b;
+      }
 
-         float $$5 = azm.h($$0.u * 40.0F);
-         $$1.a(a.d.rotationDegrees($$5));
-         gxu.a($$1, $$2, 15728880, $$0, this.i);
-         $$1.b();
+      public gry c() {
+         return this.c;
+      }
+
+      public gtd d() {
+         return this.d;
+      }
+
+      public avf e() {
+         return this.e;
+      }
+
+      public gla f() {
+         return this.f;
+      }
+
+      public hnf g() {
+         return this.g;
+      }
+
+      public hch h() {
+         return this.i;
+      }
+
+      public hno i() {
+         return this.d.a().a();
+      }
+
+      public gle a(glc $$0) {
+         return this.f.a($$0);
+      }
+
+      public ftv j() {
+         return this.h;
       }
    }
 }

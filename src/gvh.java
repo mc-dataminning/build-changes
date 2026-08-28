@@ -1,62 +1,46 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.DoubleSupplier;
+import org.joml.Matrix4f;
 
-public class gvh implements gut.a {
-   private final fpt a;
-   private double b = Double.MIN_VALUE;
-   private List<bwi> c = Collections.emptyList();
+public class gvh<T extends dzz> implements gun<T> {
+   public static final ali a = ali.b("textures/environment/end_sky.png");
+   public static final ali b = ali.b("textures/entity/end_portal.png");
 
-   public gvh(fpt $$0) {
-      this.a = $$0;
+   public gvh(guo.a $$0) {
    }
 
-   @Override
-   public void a(fkd $$0, gqr $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ag.d();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bwi $$6 = this.a.j.k().g();
-         this.c = ImmutableList.copyOf($$6.dU().a_($$6, $$6.cQ().g(16.0)));
+   public void a(T $$0, float $$1, flo $$2, gsa $$3, int $$4, int $$5, ffq $$6) {
+      Matrix4f $$7 = $$2.c().a();
+      this.a($$0, $$7, $$3.getBuffer(this.d()));
+   }
+
+   private void a(T $$0, Matrix4f $$1, flr $$2) {
+      float $$3 = this.c();
+      float $$4 = this.b();
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, jb.d);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, jb.c);
+      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, jb.f);
+      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, jb.e);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, jb.a);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, jb.b);
+   }
+
+   private void a(T $$0, Matrix4f $$1, flr $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, jb $$11) {
+      if ($$0.a($$11)) {
+         $$2.a($$1, $$3, $$5, $$7);
+         $$2.a($$1, $$4, $$5, $$8);
+         $$2.a($$1, $$4, $$6, $$9);
+         $$2.a($$1, $$3, $$6, $$10);
       }
-
-      crm $$7 = this.a.t;
-      if ($$7 != null && $$7.ax.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
-      }
-
-      for (bwi $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
-         }
-      }
    }
 
-   private void a(fkd $$0, gqr $$1, double $$2, double $$3, double $$4, bwi $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.ax.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         iv $$12 = $$5.aP();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         iv $$13 = $$5.aN();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
-         }
-      });
+   protected float b() {
+      return 0.75F;
    }
 
-   private double a(bwi $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.ao() + 0.132453657).hashCode() % 1000) / 1000.0;
+   protected float c() {
+      return 0.375F;
    }
 
-   private void a(iv $$0, fkd $$1, double $$2, double $$3, double $$4, gqr $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      grk.a($$1, $$5.getBuffer(grc.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      gut.a($$1, $$5.getBuffer(grc.y()), this.a.s.a_($$0).b(this.a.s, $$0, ffh.a()).a($$0), -$$2, -$$3, -$$4, $$7, $$8, $$9, 1.0F, false);
+   protected gsl d() {
+      return gsl.u();
    }
 }

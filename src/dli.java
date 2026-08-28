@@ -1,32 +1,35 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class dli extends dmd {
-   private final cyl a;
+public class dli extends dle {
+   public static final MapCodec<dli> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dla.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
+            .apply($$0, dli::new)
+   );
+   private final jj<dla> c;
+   private final int d;
+   private final int e;
 
-   protected dli(cyl $$0, eas.d $$1) {
-      super($$1);
-      this.a = $$0;
+   public dli(jj<dla> $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1 + 2;
+      this.e = $$1;
    }
 
    @Override
-   protected abstract MapCodec<? extends dli> a();
-
-   @Override
-   public boolean a(eat $$0) {
-      return true;
+   protected Stream<jf<dla>> b() {
+      return this.c.a();
    }
 
    @Override
-   public dxr a(iv $$0, eat $$1) {
-      return new dxf($$0, $$1, this.a);
+   protected MapCodec<? extends dle> a() {
+      return b;
    }
 
    @Override
-   protected czn a(djp $$0, iv $$1, eat $$2, boolean $$3) {
-      return $$0.c_($$1) instanceof dxf $$4 ? $$4.c() : super.a($$0, $$1, $$2, $$3);
-   }
-
-   public cyl b() {
-      return this.a;
+   public jf<dla> getNoiseBiome(int $$0, int $$1, int $$2, dlj.f $$3) {
+      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
    }
 }

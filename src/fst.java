@@ -1,97 +1,101 @@
-public abstract class fst extends fsy {
-   public static final int b = 6;
-   private double a;
-   private static final alg c = alg.b("widget/scroller");
-   private static final alg d = alg.b("widget/scroller_background");
-   private boolean e;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-   public fst(int $$0, int $$1, int $$2, int $$3, wy $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+public class fst implements mn {
+   private static final ali d = ali.b("trims/color_palettes/trim_palette");
+   private static final Map<String, ali> e = c().collect(Collectors.toMap(dik.a::a, $$0 -> ali.b("trims/color_palettes/" + $$0.a())));
+   private static final List<alh<din>> f = List.of(
+      dio.a, dio.b, dio.c, dio.d, dio.e, dio.f, dio.g, dio.h, dio.i, dio.j, dio.k, dio.l, dio.m, dio.n, dio.o, dio.p, dio.q, dio.r
+   );
+   private static final List<hng.d> g = List.of(hng.d.a, hng.d.b);
+   private final mp.a h;
+
+   public fst(mp $$0) {
+      this.h = $$0.a(mp.b.b, "atlases");
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (!this.k) {
-         return false;
-      } else {
-         this.a(this.g() - $$3 * this.o());
-         return true;
-      }
-   }
+   private static List<ali> b() {
+      List<ali> $$0 = new ArrayList<>(f.size() * g.size());
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.e) {
-         if ($$1 < (double)this.G()) {
-            this.a(0.0);
-         } else if ($$1 > (double)this.I()) {
-            this.a((double)this.i());
-         } else {
-            double $$5 = (double)Math.max(1, this.i());
-            int $$6 = this.k();
-            double $$7 = Math.max(1.0, $$5 / (double)(this.h - $$6));
-            this.a(this.g() + $$4 * $$7);
+      for (alh<din> $$1 : f) {
+         ali $$2 = dio.a($$1);
+
+         for (hng.d $$3 : g) {
+            $$0.add($$2.a((UnaryOperator<String>)($$1x -> $$3.a() + "/" + $$1x)));
          }
-
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
       }
+
+      return $$0;
+   }
+
+   private static hlf a(hnh $$0) {
+      return new hlm($$0.b());
+   }
+
+   private static hlf a(grz $$0) {
+      return new hlj($$0.b(), $$0.b() + "/");
+   }
+
+   private static List<hlf> b(grz $$0) {
+      return List.of(a($$0));
+   }
+
+   private static List<hlf> a(String $$0) {
+      return List.of(new hlj($$0, ""));
+   }
+
+   private static Stream<dik.a> c() {
+      return fsw.e.stream().map(fsw.a::a).flatMap($$0 -> Stream.concat(Stream.of($$0.a()), $$0.b().values().stream())).sorted(Comparator.comparing(dik.a::a));
+   }
+
+   private static List<hlf> d() {
+      return List.of(new hll(b(), d, e));
+   }
+
+   private static List<hlf> e() {
+      return List.of(a(gsu.j), a(gsu.i), a(guv.a), a(gul.a), a(gsu.A), a(gux.a), new hll(List.of(fsw.a, fsw.b, fsw.c, fsw.d), d, e));
+   }
+
+   private static List<hlf> f() {
+      return List.of(a(hnk.f), a(gsu.k));
+   }
+
+   private static List<hlf> g() {
+      return List.of(a(hnk.g), a(hnk.h), a(gsu.l));
    }
 
    @Override
-   public void b(double $$0, double $$1) {
-      this.e = false;
+   public CompletableFuture<?> a(ml $$0) {
+      return CompletableFuture.allOf(
+         this.a($$0, hmz.a, d()),
+         this.a($$0, hmz.b, f()),
+         this.a($$0, hmz.c, b(gsu.o)),
+         this.a($$0, hmz.d, e()),
+         this.a($$0, hmz.e, b(gsu.m)),
+         this.a($$0, hmz.f, b(gsu.n)),
+         this.a($$0, hmz.g, a("gui/sprites")),
+         this.a($$0, hmz.h, a("map/decorations")),
+         this.a($$0, hmz.i, a("mob_effect")),
+         this.a($$0, hmz.j, a("painting")),
+         this.a($$0, hmz.k, a("particle")),
+         this.a($$0, hmz.l, g()),
+         this.a($$0, hmz.m, b(gsu.p)),
+         this.a($$0, hmz.n, b(gsu.q))
+      );
    }
 
-   public double g() {
-      return this.a;
+   private CompletableFuture<?> a(ml $$0, ali $$1, List<hlf> $$2) {
+      return mn.a($$0, hlh.b, $$2, this.h.a($$1));
    }
 
-   public void a(double $$0) {
-      this.a = azm.a($$0, 0.0, (double)this.i());
+   @Override
+   public String a() {
+      return "Atlas Definitions";
    }
-
-   public boolean c(double $$0, double $$1, int $$2) {
-      this.e = this.j() && this.g($$2) && $$0 >= (double)this.l() && $$0 <= (double)(this.l() + 6) && $$1 >= (double)this.G() && $$1 < (double)this.I();
-      return this.e;
-   }
-
-   public void h() {
-      this.a(this.a);
-   }
-
-   public int i() {
-      return Math.max(0, this.n() - this.h);
-   }
-
-   protected boolean j() {
-      return this.i() > 0;
-   }
-
-   protected int k() {
-      return azm.a((int)((float)(this.h * this.h) / (float)this.n()), 32, this.h - 8);
-   }
-
-   protected int l() {
-      return this.H() - 6;
-   }
-
-   protected int m() {
-      return Math.max(this.G(), (int)this.a * (this.h - this.k()) / this.i() + this.G());
-   }
-
-   protected void a(fsm $$0) {
-      if (this.j()) {
-         int $$1 = this.l();
-         int $$2 = this.k();
-         int $$3 = this.m();
-         $$0.a(grc::H, d, $$1, this.G(), 6, this.y());
-         $$0.a(grc::H, c, $$1, $$3, 6, $$2);
-      }
-   }
-
-   protected abstract int n();
-
-   protected abstract double o();
 }

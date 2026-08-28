@@ -1,57 +1,58 @@
-import java.util.UUID;
-import java.util.function.Supplier;
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class gdh extends gda<gma.a> {
-   private static final int C = 85;
-   private static final int D = 178;
-   private static final wy E = wy.c("gui.abuseReport.skin.title");
-   private fts F;
-   private fta G;
+public class gdh extends gdj {
+   private static final xa a = xa.c("options.online.title");
+   @Nullable
+   private frg<Unit> u;
 
-   private gdh(fys $$0, glz $$1, gma.a $$2) {
-      super(E, $$0, $$1, $$2);
-   }
-
-   public gdh(fys $$0, glz $$1, UUID $$2, Supplier<hks> $$3) {
-      this($$0, $$1, new gma.a($$2, $$3, $$1.a().b()));
-   }
-
-   public gdh(fys $$0, glz $$1, gma $$2) {
-      this($$0, $$1, new gma.a($$2, $$1.a().b()));
+   public gdh(gad $$0, frh $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
-   protected void E() {
-      fws $$0 = this.z.a(fws.e().a(8));
-      $$0.c().e();
-      $$0.a(new fua(85, 120, this.m.aS(), this.A.e().a()));
-      fws $$1 = $$0.a(fws.d().a(8));
-      this.G = fta.a(c, $$0x -> this.m.a(new gdg(this, this.A.i(), gly.b, $$0xx -> {
-            this.A.a($$0xx);
-            this.G();
-         }))).a(178).a();
-      $$1.a(fwk.a(this.p, this.G, b));
-      this.F = this.a(178, 9 * 8, $$0x -> {
-         this.A.a($$0x);
-         this.G();
-      });
-      $$1.a(fwk.a(this.p, this.F, d, $$0x -> $$0x.e(12)));
+   protected void aS_() {
+      super.aS_();
+      if (this.u != null) {
+         fuj $$0 = this.d.b(this.u);
+         if ($$0 != null) {
+            $$0.j = false;
+         }
+      }
    }
 
-   @Override
-   protected void G() {
-      glx $$0 = this.A.i();
-      if ($$0 != null) {
-         this.G.b($$0.b());
-      } else {
-         this.G.b(c);
+   private frg<?>[] a(frh $$0, frd $$1) {
+      List<frg<?>> $$2 = new ArrayList<>();
+      $$2.add($$0.W());
+      $$2.add($$0.X());
+      frg<Unit> $$3 = y.a(
+         $$1.s,
+         $$0x -> {
+            buo $$1x = $$0x.an();
+            return new frg<>(
+               "options.difficulty.online",
+               frg.a(),
+               ($$1xx, $$2x) -> $$1x.b(),
+               new frg.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
+               Unit.INSTANCE,
+               $$0xx -> {
+               }
+            );
+         }
+      );
+      if ($$3 != null) {
+         this.u = $$3;
+         $$2.add($$3);
       }
 
-      super.G();
+      return $$2.toArray(new frg[0]);
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.F.b($$0, $$1, $$2);
+   protected void m() {
+      this.d.a(this.a(this.c, this.m));
    }
 }

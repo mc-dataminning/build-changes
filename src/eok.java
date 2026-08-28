@@ -1,21 +1,20 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eok extends eod {
-   public static final MapCodec<eok> b = eat.a.fieldOf("state").xmap(eas.a::b, dmr::m).xmap(eok::new, $$0 -> $$0.c);
-   private final dmr c;
+public record eok(eoq b, float c) {
+   public static final Codec<eok> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eoq.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, eok::new)
+   );
 
-   public eok(dmr $$0) {
-      this.c = $$0;
+   public eoq a() {
+      return this.b;
    }
 
-   @Override
-   protected eoe<?> a() {
-      return eoe.f;
-   }
-
-   @Override
-   public eat a(azv $$0, iv $$1) {
-      jb.a $$2 = jb.a.a($$0);
-      return this.c.m().c(dtk.d, $$2);
+   public float b() {
+      return this.c;
    }
 }

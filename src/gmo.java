@@ -1,17 +1,26 @@
-public class gmo extends gmq {
-   protected gmo(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gou $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
-   }
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-   public static class a implements goc<mc> {
-      private final gou a;
-
-      public a(gou $$0) {
-         this.a = $$0;
+public interface gmo {
+   gmo a = new gmo() {
+      @Override
+      public CompletableFuture<Optional<csa>> a() {
+         return CompletableFuture.completedFuture(Optional.empty());
       }
 
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gmo($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
+      @Override
+      public boolean b() {
+         return false;
       }
+   };
+
+   static gmo a(UserApiService $$0, frp $$1, Path $$2) {
+      return (gmo)($$1.g() == frp.a.c ? new glt($$0, $$1.b(), $$2) : a);
    }
+
+   CompletableFuture<Optional<csa>> a();
+
+   boolean b();
 }

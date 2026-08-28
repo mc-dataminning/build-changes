@@ -1,16 +1,11 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import java.util.function.Predicate;
+public interface bzm<E extends bxu> {
+   bzl.a a();
 
-public class bzm {
-   public static <E extends bxj> bzb<E> a(Predicate<E> $$0, cgl<?> $$1) {
-      return ccn.a((Function<ccn.b<E>, ? extends App<ccn.c<E>, ccq<E>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$1xx -> ($$2x, $$3, $$4) -> {
-               if ($$0.test((E)$$3)) {
-                  $$1xx.b();
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
-   }
+   boolean e(ars var1, E var2, long var3);
+
+   void f(ars var1, E var2, long var3);
+
+   void g(ars var1, E var2, long var3);
+
+   String b();
 }

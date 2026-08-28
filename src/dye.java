@@ -1,252 +1,220 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dye extends dxr {
-   private static final int b = 2;
-   private static final int c = 13;
-   private static final float d = -0.0375F;
-   private static final int e = 16;
-   private static final int f = 42;
-   private static final int g = 8;
-   private static final dmr[] h = new dmr[]{dmt.iB, dmt.iC, dmt.iK, dmt.iD};
-   public int a;
-   private float i;
-   private boolean j;
-   private boolean k;
-   private final List<iv> l = Lists.newArrayList();
+public class dye<T extends dyc> {
+   private static final Logger V = LogUtils.getLogger();
+   public static final dye<dzc> a = a("furnace", dzc::new, dne.cO);
+   public static final dye<dyk> b = a("chest", dyk::new, dne.cG);
+   public static final dye<eab> c = a("trapped_chest", eab::new, dne.hw);
+   public static final dye<dza> d = a("ender_chest", dza::new, dne.gf);
+   public static final dye<dzh> e = a("jukebox", dzh::new, dne.ek);
+   public static final dye<dyx> f = a("dispenser", dyx::new, dne.bb);
+   public static final dye<dyy> g = a("dropper", dyy::new, dne.hJ);
+   public static final dye<dzq> h = a(
+      "sign",
+      dzq::new,
+      dne.cP,
+      dne.cQ,
+      dne.cR,
+      dne.cS,
+      dne.cT,
+      dne.cU,
+      dne.cV,
+      dne.cW,
+      dne.dd,
+      dne.de,
+      dne.df,
+      dne.dg,
+      dne.dh,
+      dne.di,
+      dne.dj,
+      dne.dk,
+      dne.pC,
+      dne.pE,
+      dne.pD,
+      dne.pF,
+      dne.cX,
+      dne.dl,
+      dne.cY,
+      dne.dm
+   );
+   public static final dye<dzd> i = a(
+      "hanging_sign",
+      dzd::new,
+      dne.dn,
+      dne.do,
+      dne.dp,
+      dne.dq,
+      dne.dr,
+      dne.ds,
+      dne.dt,
+      dne.du,
+      dne.dv,
+      dne.dw,
+      dne.dx,
+      dne.dy,
+      dne.dz,
+      dne.dA,
+      dne.dB,
+      dne.dC,
+      dne.dD,
+      dne.dE,
+      dne.dF,
+      dne.dG,
+      dne.dI,
+      dne.dJ,
+      dne.dH,
+      dne.dK
+   );
+   public static final dye<dzu> j = a("mob_spawner", dzu::new, dne.cD);
+   public static final dye<dys> k = a("creaking_heart", dys::new, dne.cE);
+   public static final dye<eaz> l = a("piston", eaz::new, dne.ca);
+   public static final dye<dyg> m = a("brewing_stand", dyg::new, dne.fR);
+   public static final dye<dyz> n = a("enchanting_table", dyz::new, dne.fQ);
+   public static final dye<dzz> o = a("end_portal", dzz::new, dne.fW);
+   public static final dye<dxx> p = a("beacon", dxx::new, dne.gn);
+   public static final dye<dzs> q = a(
+      "skull", dzs::new, dne.hf, dne.hg, dne.hn, dne.ho, dne.hp, dne.hq, dne.hj, dne.hk, dne.hh, dne.hi, dne.hl, dne.hm, dne.hr, dne.hs
+   );
+   public static final dye<dyt> r = a("daylight_detector", dyt::new, dne.hA);
+   public static final dye<dzf> s = a("hopper", dzf::new, dne.hD);
+   public static final dye<dyo> t = a("comparator", dyo::new, dne.hz);
+   public static final dye<dxq> u = a(
+      "banner",
+      dxq::new,
+      dne.jl,
+      dne.jm,
+      dne.jn,
+      dne.jo,
+      dne.jp,
+      dne.jq,
+      dne.jr,
+      dne.js,
+      dne.jt,
+      dne.ju,
+      dne.jv,
+      dne.jw,
+      dne.jx,
+      dne.jy,
+      dne.jz,
+      dne.jA,
+      dne.jB,
+      dne.jC,
+      dne.jD,
+      dne.jE,
+      dne.jF,
+      dne.jG,
+      dne.jH,
+      dne.jI,
+      dne.jJ,
+      dne.jK,
+      dne.jL,
+      dne.jM,
+      dne.jN,
+      dne.jO,
+      dne.jP,
+      dne.jQ
+   );
+   public static final dye<dzv> v = a("structure_block", dzv::new, dne.pG);
+   public static final dye<dzy> w = a("end_gateway", dzy::new, dne.ll);
+   public static final dye<dyn> x = a("command_block", dyn::new, dne.gm, dne.ln, dne.lm);
+   public static final dye<dzp> y = a(
+      "shulker_box",
+      dzp::new,
+      dne.lv,
+      dne.lL,
+      dne.lH,
+      dne.lI,
+      dne.lF,
+      dne.lD,
+      dne.lJ,
+      dne.lz,
+      dne.lE,
+      dne.lB,
+      dne.ly,
+      dne.lx,
+      dne.lC,
+      dne.lG,
+      dne.lK,
+      dne.lw,
+      dne.lA
+   );
+   public static final dye<dxy> z = a(
+      "bed", dxy::new, dne.bu, dne.bv, dne.br, dne.bs, dne.bp, dne.bn, dne.bt, dne.bj, dne.bo, dne.bl, dne.bi, dne.bh, dne.bm, dne.bq, dne.bg, dne.bk
+   );
+   public static final dye<dyp> A = a("conduit", dyp::new, dne.nD);
+   public static final dye<dxu> B = a("barrel", dxu::new, dne.oA);
+   public static final dye<dzt> C = a("smoker", dzt::new, dne.oB);
+   public static final dye<dyb> D = a("blast_furnace", dyb::new, dne.oC);
+   public static final dye<dzi> E = a("lectern", dzi::new, dne.oG);
+   public static final dye<dya> F = a("bell", dya::new, dne.oJ);
+   public static final dye<dzg> G = a("jigsaw", dzg::new, dne.pH);
+   public static final dye<dyj> H = a("campfire", dyj::new, dne.oM, dne.oN);
+   public static final dye<dxz> I = a("beehive", dxz::new, dne.pM, dne.pN);
+   public static final dye<dzn> J = a("sculk_sensor", dzn::new, dne.ry);
+   public static final dye<dyi> K = a("calibrated_sculk_sensor", dyi::new, dne.rz);
+   public static final dye<dzm> L = a("sculk_catalyst", dzm::new, dne.rC);
+   public static final dye<dzo> M = a("sculk_shrieker", dzo::new, dne.rD);
+   public static final dye<dym> N = a("chiseled_bookshelf", dym::new, dne.cw);
+   public static final dye<dyh> O = a("brushable_block", dyh::new, dne.M, dne.P);
+   public static final dye<dyu> P = a("decorated_pot", dyu::new, dne.tZ);
+   public static final dye<dyr> Q = a("crafter", dyr::new, dne.ua);
+   public static final dye<eac> R = a("trial_spawner", eac::new, dne.ub);
+   public static final dye<eal> S = a("vault", eal::new, dne.uc);
+   public static final dye<dzw> T = a("test_block", dzw::new, dne.pI);
+   public static final dye<dzx> U = a("test_instance_block", dzx::new, dne.pJ);
+   private static final Set<dye<?>> W = Set.of(x, E, h, i, j, R);
+   private final dye.a<? extends T> X;
+   private final Set<dnc> Y;
+   private final jf.c<dye<?>> Z = mg.j.f(this);
+
    @Nullable
-   private bxj m;
-   @Nullable
-   private UUID q;
-   private long r;
-
-   public dye(iv $$0, eat $$1) {
-      super(dxt.A, $$0, $$1);
+   public static ali a(dye<?> $$0) {
+      return mg.j.b($$0);
    }
 
-   @Override
-   protected void a(tz $$0, jh.a $$1) {
-      super.a($$0, $$1);
-      this.q = $$0.<UUID>a("Target", jz.a).orElse(null);
+   private static <T extends dyc> dye<T> a(String $$0, dye.a<? extends T> $$1, dnc... $$2) {
+      if ($$2.length == 0) {
+         V.warn("Block entity type {} requires at least one valid block to be defined!", $$0);
+      }
+
+      ag.a(bjb.s, $$0);
+      return js.a(mg.j, $$0, new dye<>($$1, Set.of($$2)));
    }
 
-   @Override
-   protected void b(tz $$0, jh.a $$1) {
-      super.b($$0, $$1);
-      if (this.m != null) {
-         $$0.a("Target", jz.a, this.m.cF());
-      }
-   }
-
-   public aca a() {
-      return aca.a(this);
-   }
-
-   @Override
-   public tz a(jh.a $$0) {
-      return this.e($$0);
-   }
-
-   public static void a(djm $$0, iv $$1, eat $$2, dye $$3) {
-      $$3.a++;
-      long $$4 = $$0.ae();
-      List<iv> $$5 = $$3.l;
-      if ($$4 % 40L == 0L) {
-         $$3.j = a($$0, $$1, $$5);
-         a($$3, $$5);
-      }
-
-      a($$0, $$1, $$3);
-      a($$0, $$1, $$5, $$3.m, $$3.a);
-      if ($$3.c()) {
-         $$3.i++;
-      }
-   }
-
-   public static void b(djm $$0, iv $$1, eat $$2, dye $$3) {
-      $$3.a++;
-      long $$4 = $$0.ae();
-      List<iv> $$5 = $$3.l;
-      if ($$4 % 40L == 0L) {
-         boolean $$6 = a($$0, $$1, $$5);
-         if ($$6 != $$3.j) {
-            awm $$7 = $$6 ? awn.fA : awn.fE;
-            $$0.a(null, $$1, $$7, awo.e, 1.0F, 1.0F);
-         }
-
-         $$3.j = $$6;
-         a($$3, $$5);
-         if ($$6) {
-            b($$0, $$1, $$5);
-            a($$0, $$1, $$2, $$5, $$3);
-         }
-      }
-
-      if ($$3.c()) {
-         if ($$4 % 80L == 0L) {
-            $$0.a(null, $$1, awn.fB, awo.e, 1.0F, 1.0F);
-         }
-
-         if ($$4 > $$3.r) {
-            $$3.r = $$4 + 60L + (long)$$0.C_().a(40);
-            $$0.a(null, $$1, awn.fC, awo.e, 1.0F, 1.0F);
-         }
-      }
-   }
-
-   private static void a(dye $$0, List<iv> $$1) {
-      $$0.a($$1.size() >= 42);
-   }
-
-   private static boolean a(djm $$0, iv $$1, List<iv> $$2) {
-      $$2.clear();
-
-      for (int $$3 = -1; $$3 <= 1; $$3++) {
-         for (int $$4 = -1; $$4 <= 1; $$4++) {
-            for (int $$5 = -1; $$5 <= 1; $$5++) {
-               iv $$6 = $$1.b($$3, $$4, $$5);
-               if (!$$0.A($$6)) {
-                  return false;
-               }
-            }
-         }
-      }
-
-      for (int $$7 = -2; $$7 <= 2; $$7++) {
-         for (int $$8 = -2; $$8 <= 2; $$8++) {
-            for (int $$9 = -2; $$9 <= 2; $$9++) {
-               int $$10 = Math.abs($$7);
-               int $$11 = Math.abs($$8);
-               int $$12 = Math.abs($$9);
-               if (($$10 > 1 || $$11 > 1 || $$12 > 1)
-                  && ($$7 == 0 && ($$11 == 2 || $$12 == 2) || $$8 == 0 && ($$10 == 2 || $$12 == 2) || $$9 == 0 && ($$10 == 2 || $$11 == 2))) {
-                  iv $$13 = $$1.b($$7, $$8, $$9);
-                  eat $$14 = $$0.a_($$13);
-
-                  for (dmr $$15 : h) {
-                     if ($$14.a($$15)) {
-                        $$2.add($$13);
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      return $$2.size() >= 16;
-   }
-
-   private static void b(djm $$0, iv $$1, List<iv> $$2) {
-      int $$3 = $$2.size();
-      int $$4 = $$3 / 7 * 16;
-      int $$5 = $$1.u();
-      int $$6 = $$1.v();
-      int $$7 = $$1.w();
-      fex $$8 = new fex((double)$$5, (double)$$6, (double)$$7, (double)($$5 + 1), (double)($$6 + 1), (double)($$7 + 1))
-         .g((double)$$4)
-         .b(0.0, (double)$$0.H_(), 0.0);
-      List<crm> $$9 = $$0.a(crm.class, $$8);
-      if (!$$9.isEmpty()) {
-         for (crm $$10 : $$9) {
-            if ($$1.a($$10.du(), (double)$$4) && $$10.bj()) {
-               $$10.a(new bvm(bvo.C, 260, 0, true, true));
-            }
-         }
-      }
-   }
-
-   private static void a(djm $$0, iv $$1, eat $$2, List<iv> $$3, dye $$4) {
-      bxj $$5 = $$4.m;
-      int $$6 = $$3.size();
-      if ($$6 < 42) {
-         $$4.m = null;
-      } else if ($$4.m == null && $$4.q != null) {
-         $$4.m = a($$0, $$1, $$4.q);
-         $$4.q = null;
-      } else if ($$4.m == null) {
-         List<bxj> $$7 = $$0.a(bxj.class, a($$1), $$0x -> $$0x instanceof cof && $$0x.bj());
-         if (!$$7.isEmpty()) {
-            $$4.m = $$7.get($$0.A.a($$7.size()));
-         }
-      } else if (!$$4.m.bI() || !$$1.a($$4.m.du(), 8.0)) {
-         $$4.m = null;
-      }
-
-      if ($$4.m != null) {
-         $$0.a(null, $$4.m.dz(), $$4.m.dB(), $$4.m.dF(), awn.fD, awo.e, 1.0F, 1.0F);
-         $$4.m.a($$0.al().q(), 4.0F);
-      }
-
-      if ($$5 != $$4.m) {
-         $$0.a($$1, $$2, $$2, 2);
-      }
-   }
-
-   private static void a(djm $$0, iv $$1, dye $$2) {
-      if ($$2.q == null) {
-         $$2.m = null;
-      } else if ($$2.m == null || !$$2.m.cF().equals($$2.q)) {
-         $$2.m = a($$0, $$1, $$2.q);
-         if ($$2.m == null) {
-            $$2.q = null;
-         }
-      }
-   }
-
-   private static fex a(iv $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      return new fex((double)$$1, (double)$$2, (double)$$3, (double)($$1 + 1), (double)($$2 + 1), (double)($$3 + 1)).g(8.0);
+   private dye(dye.a<? extends T> $$0, Set<dnc> $$1) {
+      this.X = $$0;
+      this.Y = $$1;
    }
 
    @Nullable
-   private static bxj a(djm $$0, iv $$1, UUID $$2) {
-      List<bxj> $$3 = $$0.a(bxj.class, a($$1), $$1x -> $$1x.cF().equals($$2));
-      return $$3.size() == 1 ? $$3.get(0) : null;
+   public T a(iv $$0, ebe $$1) {
+      return (T)this.X.create($$0, $$1);
    }
 
-   private static void a(djm $$0, iv $$1, List<iv> $$2, @Nullable bwi $$3, int $$4) {
-      azv $$5 = $$0.A;
-      double $$6 = (double)(azm.a((float)($$4 + 35) * 0.1F) / 2.0F + 0.5F);
-      $$6 = ($$6 * $$6 + $$6) * 0.3F;
-      ffc $$7 = new ffc((double)$$1.u() + 0.5, (double)$$1.v() + 1.5 + $$6, (double)$$1.w() + 0.5);
-
-      for (iv $$8 : $$2) {
-         if ($$5.a(50) == 0) {
-            iv $$9 = $$8.b($$1);
-            float $$10 = -0.5F + $$5.i() + (float)$$9.u();
-            float $$11 = -2.0F + $$5.i() + (float)$$9.v();
-            float $$12 = -0.5F + $$5.i() + (float)$$9.w();
-            $$0.a(ly.au, $$7.d, $$7.e, $$7.f, (double)$$10, (double)$$11, (double)$$12);
-         }
-      }
-
-      if ($$3 != null) {
-         ffc $$13 = new ffc($$3.dz(), $$3.dD(), $$3.dF());
-         float $$14 = (-0.5F + $$5.i()) * (3.0F + $$3.dp());
-         float $$15 = -1.0F + $$5.i() * $$3.dq();
-         float $$16 = (-0.5F + $$5.i()) * (3.0F + $$3.dp());
-         ffc $$17 = new ffc((double)$$14, (double)$$15, (double)$$16);
-         $$0.a(ly.au, $$13.d, $$13.e, $$13.f, $$17.d, $$17.e, $$17.f);
-      }
+   public boolean a(ebe $$0) {
+      return this.Y.contains($$0.b());
    }
 
-   public boolean c() {
-      return this.j;
+   @Deprecated
+   public jf.c<dye<?>> a() {
+      return this.Z;
    }
 
-   public boolean d() {
-      return this.k;
+   @Nullable
+   public T a(djb $$0, iv $$1) {
+      dyc $$2 = $$0.c_($$1);
+      return (T)($$2 != null && $$2.p() == this ? $$2 : null);
    }
 
-   private void a(boolean $$0) {
-      this.k = $$0;
+   public boolean b() {
+      return W.contains(this);
    }
 
-   public float a(float $$0) {
-      return (this.i + $$0) * -0.0375F;
+   @FunctionalInterface
+   interface a<T extends dyc> {
+      T create(iv var1, ebe var2);
    }
 }

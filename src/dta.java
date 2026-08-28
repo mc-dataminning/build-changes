@@ -1,415 +1,534 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
+import java.util.Optional;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class dta extends dmr {
+public class dta extends dnc implements dpz, dun {
    public static final MapCodec<dta> a = b(dta::new);
-   public static final ebr<eby> b = ebj.ae;
-   public static final ebr<eby> c = ebj.ad;
-   public static final ebr<eby> d = ebj.af;
-   public static final ebr<eby> e = ebj.ag;
-   public static final ebt f = ebj.aW;
-   public static final Map<jb, ebr<eby>> g = ImmutableMap.copyOf(Maps.newEnumMap(Map.of(jb.c, b, jb.f, c, jb.d, d, jb.e, e)));
-   private static final int[] h = ag.a(new int[16], $$0 -> {
-      for (int $$1 = 0; $$1 <= 15; $$1++) {
-         float $$2 = (float)$$1 / 15.0F;
-         float $$3 = $$2 * 0.6F + ($$2 > 0.0F ? 0.4F : 0.3F);
-         float $$4 = azm.a($$2 * $$2 * 0.7F - 0.5F, 0.0F, 1.0F);
-         float $$5 = azm.a($$2 * $$2 * 0.6F - 0.7F, 0.0F, 1.0F);
-         $$0[$$1] = axw.a(1.0F, $$3, $$4, $$5);
-      }
-   });
-   private static final float i = 0.2F;
-   private final Function<eat, ffw> D;
-   private final eat R;
-   private final eyk S = new eyd(this);
-   private boolean T = true;
+   public static final ecc<jb> b = ebu.bp;
+   public static final ecc<ecb> c = ebu.bq;
+   public static final ebv d = ebu.I;
+   private static final int e = 11;
+   private static final int f = 2;
+   private static final float g = 0.02F;
+   private static final float h = 0.12F;
+   private static final int i = 11;
+   private static final float D = 0.17578125F;
+   private static final float R = 0.05859375F;
+   private static final double S = 0.6;
+   private static final float T = 1.0F;
+   private static final int U = 40;
+   private static final int V = 6;
+   private static final float W = 2.5F;
+   private static final int X = 2;
+   private static final float Y = 5.0F;
+   private static final float Z = 0.011377778F;
+   private static final int aa = 7;
+   private static final int ab = 10;
+   private static final fgk ac = dnc.b(6.0, 0.0, 16.0);
+   private static final fgk ad = dnc.b(6.0, 0.0, 11.0);
+   private static final fgk ae = dnc.b(6.0, 5.0, 16.0);
+   private static final fgk af = dnc.b(8.0, 0.0, 16.0);
+   private static final fgk ag = dnc.b(10.0, 0.0, 16.0);
+   private static final fgk ah = dnc.b(12.0, 0.0, 16.0);
+   private static final double ai = ae.b(jb.a.b);
+   private static final float aj = (float)ah.b(jb.a.a);
+   private static final fgk ak = dnc.b(4.0, 0.0, 16.0);
 
    @Override
    public MapCodec<dta> a() {
       return a;
    }
 
-   public dta(eas.d $$0) {
+   public dta(ebd.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, eby.c).b(c, eby.c).b(d, eby.c).b(e, eby.c).b(f, Integer.valueOf(0)));
-      this.D = this.b();
-      this.R = this.m().b(b, eby.b).b(c, eby.b).b(d, eby.b).b(e, eby.b);
-   }
-
-   private Function<eat, ffw> b() {
-      int $$0 = 1;
-      int $$1 = 10;
-      ffw $$2 = dmr.b(10.0, 0.0, 1.0);
-      Map<jb, ffw> $$3 = fft.c(dmr.a(10.0, 0.0, 1.0, 0.0, 8.0));
-      Map<jb, ffw> $$4 = fft.c(dmr.b(10.0, 16.0, 0.0, 1.0));
-      return this.a($$3x -> {
-         ffw $$4x = $$2;
-
-         for (Entry<jb, ebr<eby>> $$5 : g.entrySet()) {
-            $$4x = switch ((eby)$$3x.c($$5.getValue())) {
-               case a -> fft.a($$4x, $$3.get($$5.getKey()), $$4.get($$5.getKey()));
-               case b -> fft.a($$4x, $$3.get($$5.getKey()));
-               case c -> $$4x;
-            };
-         }
-
-         return $$4x;
-      }, new ebw[]{f});
+      this.l(this.C.b().b(b, jb.b).b(c, ecb.b).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return this.D.apply($$0);
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(b, c, d);
    }
 
    @Override
-   public eat a(ddg $$0) {
-      return this.a($$0.q(), this.R, $$0.a());
+   protected boolean a(ebe $$0, dka $$1, iv $$2) {
+      return c($$1, $$2, $$0.c(b));
    }
 
-   private eat a(diq $$0, eat $$1, iv $$2) {
-      boolean $$3 = r($$1);
-      $$1 = this.b($$0, this.m().b(f, $$1.c(f)), $$2);
-      if ($$3 && r($$1)) {
-         return $$1;
+   @Override
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      if ($$0.c(d)) {
+         $$2.a($$3, exp.c, exp.c.a($$1));
+      }
+
+      if ($$4 != jb.b && $$4 != jb.a) {
+         return $$0;
       } else {
-         boolean $$4 = $$1.c(b).a();
-         boolean $$5 = $$1.c(d).a();
-         boolean $$6 = $$1.c(c).a();
-         boolean $$7 = $$1.c(e).a();
-         boolean $$8 = !$$4 && !$$5;
-         boolean $$9 = !$$6 && !$$7;
-         if (!$$7 && $$8) {
-            $$1 = $$1.b(e, eby.b);
-         }
-
-         if (!$$6 && $$8) {
-            $$1 = $$1.b(c, eby.b);
-         }
-
-         if (!$$4 && $$9) {
-            $$1 = $$1.b(b, eby.b);
-         }
-
-         if (!$$5 && $$9) {
-            $$1 = $$1.b(d, eby.b);
-         }
-
-         return $$1;
-      }
-   }
-
-   private eat b(diq $$0, eat $$1, iv $$2) {
-      boolean $$3 = !$$0.a_($$2.d()).d($$0, $$2);
-
-      for (jb $$4 : jb.c.a) {
-         if (!$$1.c(g.get($$4)).a()) {
-            eby $$5 = this.a($$0, $$2, $$4, $$3);
-            $$1 = $$1.b(g.get($$4), $$5);
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      if ($$4 == jb.a) {
-         return !this.a($$1, $$5, $$6) ? dmt.a.m() : $$0;
-      } else if ($$4 == jb.b) {
-         return this.a($$1, $$0, $$3);
-      } else {
-         eby $$8 = this.a($$1, $$3, $$4);
-         return $$8.a() == $$0.c(g.get($$4)).a() && !q($$0) ? $$0.b(g.get($$4), $$8) : this.a($$1, this.R.b(f, $$0.c(f)).b(g.get($$4), $$8), $$3);
-      }
-   }
-
-   private static boolean q(eat $$0) {
-      return $$0.c(b).a() && $$0.c(d).a() && $$0.c(c).a() && $$0.c(e).a();
-   }
-
-   private static boolean r(eat $$0) {
-      return !$$0.c(b).a() && !$$0.c(d).a() && !$$0.c(c).a() && !$$0.c(e).a();
-   }
-
-   @Override
-   protected void a(eat $$0, djn $$1, iv $$2, int $$3, int $$4) {
-      iv.a $$5 = new iv.a();
-
-      for (jb $$6 : jb.c.a) {
-         eby $$7 = $$0.c(g.get($$6));
-         if ($$7 != eby.c && !$$1.a_($$5.a($$2, $$6)).a(this)) {
-            $$5.c(jb.a);
-            eat $$8 = $$1.a_($$5);
-            if ($$8.a(this)) {
-               iv $$9 = $$5.a($$6.g());
-               $$1.a($$6.g(), $$5, $$9, $$1.a_($$9), $$3, $$4);
-            }
-
-            $$5.a($$2, $$6).c(jb.b);
-            eat $$10 = $$1.a_($$5);
-            if ($$10.a(this)) {
-               iv $$11 = $$5.a($$6.g());
-               $$1.a($$6.g(), $$5, $$11, $$1.a_($$11), $$3, $$4);
-            }
-         }
-      }
-   }
-
-   private eby a(diq $$0, iv $$1, jb $$2) {
-      return this.a($$0, $$1, $$2, !$$0.a_($$1.d()).d($$0, $$1));
-   }
-
-   private eby a(diq $$0, iv $$1, jb $$2, boolean $$3) {
-      iv $$4 = $$1.a($$2);
-      eat $$5 = $$0.a_($$4);
-      if ($$3) {
-         boolean $$6 = $$5.b() instanceof dvt || this.a($$0, $$4, $$5);
-         if ($$6 && o($$0.a_($$4.d()))) {
-            if ($$5.c($$0, $$4, $$2.g())) {
-               return eby.a;
-            }
-
-            return eby.b;
-         }
-      }
-
-      return !a($$5, $$2) && ($$5.d($$0, $$4) || !o($$0.a_($$4.e()))) ? eby.c : eby.b;
-   }
-
-   @Override
-   protected boolean a(eat $$0, djp $$1, iv $$2) {
-      iv $$3 = $$2.e();
-      eat $$4 = $$1.a_($$3);
-      return this.a($$1, $$3, $$4);
-   }
-
-   private boolean a(diq $$0, iv $$1, eat $$2) {
-      return $$2.c($$0, $$1, jb.b) || $$2.a(dmt.hD);
-   }
-
-   private void a(djm $$0, iv $$1, eat $$2, @Nullable eyi $$3, boolean $$4) {
-      if (a($$0)) {
-         new eyf(this).a($$0, $$1, $$2, $$3, $$4);
-      } else {
-         this.S.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   public int a(djm $$0, iv $$1) {
-      this.T = false;
-      int $$2 = $$0.E($$1);
-      this.T = true;
-      return $$2;
-   }
-
-   private void b(djm $$0, iv $$1) {
-      if ($$0.a_($$1).a(this)) {
-         $$0.a($$1, this);
-
-         for (jb $$2 : jb.values()) {
-            $$0.a($$1.a($$2), this);
-         }
-      }
-   }
-
-   @Override
-   protected void a(eat $$0, djm $$1, iv $$2, eat $$3, boolean $$4) {
-      if (!$$3.a($$0.b()) && !$$1.C) {
-         this.a($$1, $$2, $$0, null, true);
-
-         for (jb $$5 : jb.c.b) {
-            $$1.a($$2.a($$5), this);
-         }
-
-         this.c($$1, $$2);
-      }
-   }
-
-   @Override
-   protected void a(eat $$0, arq $$1, iv $$2, boolean $$3) {
-      if (!$$3) {
-         for (jb $$4 : jb.values()) {
-            $$1.a($$2.a($$4), this);
-         }
-
-         this.a($$1, $$2, $$0, null, false);
-         this.c($$1, $$2);
-      }
-   }
-
-   private void c(djm $$0, iv $$1) {
-      for (jb $$2 : jb.c.a) {
-         this.b($$0, $$1.a($$2));
-      }
-
-      for (jb $$3 : jb.c.a) {
-         iv $$4 = $$1.a($$3);
-         if ($$0.a_($$4).d($$0, $$4)) {
-            this.b($$0, $$4.d());
-         } else {
-            this.b($$0, $$4.e());
-         }
-      }
-   }
-
-   @Override
-   protected void a(eat $$0, djm $$1, iv $$2, dmr $$3, @Nullable eyi $$4, boolean $$5) {
-      if (!$$1.C) {
-         if ($$3 != this || !a($$1)) {
-            if ($$0.a((djp)$$1, $$2)) {
-               this.a($$1, $$2, $$0, $$4, false);
-            } else {
-               c($$0, $$1, $$2);
-               $$1.a($$2, false);
-            }
-         }
-      }
-   }
-
-   private static boolean a(djm $$0) {
-      return $$0.K().b(cuy.c);
-   }
-
-   @Override
-   protected int b(eat $$0, diq $$1, iv $$2, jb $$3) {
-      return !this.T ? 0 : $$0.a($$1, $$2, $$3);
-   }
-
-   @Override
-   protected int a(eat $$0, diq $$1, iv $$2, jb $$3) {
-      if (this.T && $$3 != jb.a) {
-         int $$4 = $$0.c(f);
-         if ($$4 == 0) {
-            return 0;
-         } else {
-            return $$3 != jb.b && !this.a($$1, $$0, $$2).c(g.get($$3.g())).a() ? 0 : $$4;
-         }
-      } else {
-         return 0;
-      }
-   }
-
-   protected static boolean o(eat $$0) {
-      return a($$0, null);
-   }
-
-   protected static boolean a(eat $$0, @Nullable jb $$1) {
-      if ($$0.a(dmt.cH)) {
-         return true;
-      } else if ($$0.a(dmt.ey)) {
-         jb $$2 = $$0.c(dtf.e);
-         return $$2 == $$1 || $$2.g() == $$1;
-      } else {
-         return $$0.a(dmt.lu) ? $$1 == $$0.c(dsj.a) : $$0.p() && $$1 != null;
-      }
-   }
-
-   @Override
-   protected boolean f_(eat $$0) {
-      return this.T;
-   }
-
-   public static int b(int $$0) {
-      return h[$$0];
-   }
-
-   private static void a(djm $$0, azv $$1, iv $$2, int $$3, jb $$4, jb $$5, float $$6, float $$7) {
-      float $$8 = $$7 - $$6;
-      if (!($$1.i() >= 0.2F * $$8)) {
-         float $$9 = 0.4375F;
-         float $$10 = $$6 + $$8 * $$1.i();
-         double $$11 = 0.5 + (double)(0.4375F * (float)$$4.j()) + (double)($$10 * (float)$$5.j());
-         double $$12 = 0.5 + (double)(0.4375F * (float)$$4.k()) + (double)($$10 * (float)$$5.k());
-         double $$13 = 0.5 + (double)(0.4375F * (float)$$4.l()) + (double)($$10 * (float)$$5.l());
-         $$0.a(new lt($$3, 1.0F), (double)$$2.u() + $$11, (double)$$2.v() + $$12, (double)$$2.w() + $$13, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
-      int $$4 = $$0.c(f);
-      if ($$4 != 0) {
-         for (jb $$5 : jb.c.a) {
-            eby $$6 = $$0.c(g.get($$5));
-            switch ($$6) {
-               case a:
-                  a($$1, $$3, $$2, h[$$4], $$5, jb.b, -0.5F, 0.5F);
-               case b:
-                  a($$1, $$3, $$2, h[$$4], jb.a, $$5, 0.0F, 0.5F);
-                  break;
-               case c:
-               default:
-                  a($$1, $$3, $$2, h[$$4], jb.a, $$5, 0.0F, 0.3F);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected eat a(eat $$0, dtl $$1) {
-      switch ($$1) {
-         case c:
-            return $$0.b(b, $$0.c(d)).b(c, $$0.c(e)).b(d, $$0.c(b)).b(e, $$0.c(c));
-         case d:
-            return $$0.b(b, $$0.c(c)).b(c, $$0.c(d)).b(d, $$0.c(e)).b(e, $$0.c(b));
-         case b:
-            return $$0.b(b, $$0.c(e)).b(c, $$0.c(b)).b(d, $$0.c(c)).b(e, $$0.c(d));
-         default:
+         jb $$8 = $$0.c(b);
+         if ($$8 == jb.a && $$2.U().a($$3, this)) {
             return $$0;
+         } else if ($$4 == $$8.g() && !this.a($$0, $$1, $$3)) {
+            if ($$8 == jb.a) {
+               $$2.a($$3, this, 2);
+            } else {
+               $$2.a($$3, this, 1);
+            }
+
+            return $$0;
+         } else {
+            boolean $$9 = $$0.c(c) == ecb.a;
+            ecb $$10 = a($$1, $$3, $$8, $$9);
+            return $$0.b(c, $$10);
+         }
       }
    }
 
    @Override
-   protected eat a(eat $$0, dru $$1) {
-      switch ($$1) {
-         case b:
-            return $$0.b(b, $$0.c(d)).b(d, $$0.c(b));
-         case c:
-            return $$0.b(c, $$0.c(e)).b(e, $$0.c(c));
-         default:
-            return super.a($$0, $$1);
+   protected void a(djx $$0, ebe $$1, ffm $$2, css $$3) {
+      if (!$$0.C) {
+         iv $$4 = $$2.b();
+         if ($$0 instanceof ars $$5 && $$3.c($$5, $$4) && $$3.a($$5) && $$3 instanceof ctg && $$3.dy().g() > 0.6) {
+            $$0.b($$4, true);
+         }
       }
    }
 
    @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(b, c, d, e, f);
-   }
-
-   @Override
-   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
-      if (!$$3.gj().e) {
-         return bug.e;
+   public void a(djx $$0, ebe $$1, iv $$2, bwt $$3, double $$4) {
+      if ($$1.c(b) == jb.b && $$1.c(c) == ecb.b) {
+         $$3.a($$4 + 2.5, 2.0F, $$0.al().w());
       } else {
-         if (q($$0) || r($$0)) {
-            eat $$5 = q($$0) ? this.m() : this.R;
-            $$5 = $$5.b(f, $$0.c(f));
-            $$5 = this.a($$1, $$5, $$2);
-            if ($$5 != $$0) {
-               $$1.a($$2, $$5, 3);
-               this.a($$1, $$2, $$0, $$5);
-               return bug.a;
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
+      if (o($$0)) {
+         float $$4 = $$3.i();
+         if (!($$4 > 0.12F)) {
+            b($$1, $$2, $$0).filter($$1x -> $$4 < 0.02F || a($$1x.b)).ifPresent($$3x -> a($$1, $$2, $$0, $$3x.b));
+         }
+      }
+   }
+
+   @Override
+   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      if (r($$0) && !this.a($$0, (dka)$$1, $$2)) {
+         $$1.b($$2, true);
+      } else {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected void b(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      a($$0, $$1, $$2, $$3.i());
+      if ($$3.i() < 0.011377778F && b($$0, (dka)$$1, $$2)) {
+         c($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @VisibleForTesting
+   public static void a(ebe $$0, ars $$1, iv $$2, float $$3) {
+      if (!($$3 > 0.17578125F) || !($$3 > 0.05859375F)) {
+         if (b($$0, (dka)$$1, $$2)) {
+            Optional<dta.a> $$4 = b($$1, $$2, $$0);
+            if (!$$4.isEmpty()) {
+               exn $$5 = $$4.get().b;
+               float $$6;
+               if ($$5 == exp.c) {
+                  $$6 = 0.17578125F;
+               } else {
+                  if ($$5 != exp.e) {
+                     return;
+                  }
+
+                  $$6 = 0.05859375F;
+               }
+
+               if (!($$3 >= $$6)) {
+                  iv $$9 = a($$0, $$1, $$2, 11, false);
+                  if ($$9 != null) {
+                     if ($$4.get().c.a(dne.ts) && $$5 == exp.c) {
+                        ebe $$10 = dne.ei.m();
+                        $$1.b($$4.get().a, $$10);
+                        dnc.a($$4.get().c, $$10, $$1, $$4.get().a);
+                        $$1.a(ege.c, $$4.get().a, ege.a.a($$10));
+                        $$1.c(1504, $$9, 0);
+                     } else {
+                        iv $$11 = a($$1, $$9, $$5);
+                        if ($$11 != null) {
+                           $$1.c(1504, $$9, 0);
+                           int $$12 = $$9.v() - $$11.v();
+                           int $$13 = 50 + $$12;
+                           ebe $$14 = $$1.a_($$11);
+                           $$1.a($$11, $$14.b(), $$13);
+                        }
+                     }
+                  }
+               }
             }
          }
-
-         return bug.e;
       }
    }
 
-   private void a(djm $$0, iv $$1, eat $$2, eat $$3) {
-      eyi $$4 = eye.a($$0, null, jb.b);
+   @Nullable
+   @Override
+   public ebe a(ddr $$0) {
+      djy $$1 = $$0.q();
+      iv $$2 = $$0.a();
+      jb $$3 = $$0.e().g();
+      jb $$4 = b($$1, $$2, $$3);
+      if ($$4 == null) {
+         return null;
+      } else {
+         boolean $$5 = !$$0.h();
+         ecb $$6 = a($$1, $$2, $$4, $$5);
+         return $$6 == null ? null : this.m().b(b, $$4).b(c, $$6).b(d, Boolean.valueOf($$1.b_($$2).a() == exp.c));
+      }
+   }
 
-      for (jb $$5 : jb.c.a) {
-         iv $$6 = $$1.a($$5);
-         if ($$2.c(g.get($$5)).a() != $$3.c(g.get($$5)).a() && $$0.a_($$6).d($$0, $$6)) {
-            $$0.a($$6, $$3.b(), $$5.g(), eye.a($$4, $$5));
+   @Override
+   protected exo b_(ebe $$0) {
+      return $$0.c(d) ? exp.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected fgk d_(ebe $$0) {
+      return fgh.a();
+   }
+
+   @Override
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      fgk $$4 = switch ((ecb)$$0.c(c)) {
+         case a -> ac;
+         case b -> $$0.c(b) == jb.a ? ae : ad;
+         case c -> af;
+         case d -> ag;
+         case e -> ah;
+      };
+      return $$4.a($$0.a($$2));
+   }
+
+   @Override
+   protected boolean a_(ebe $$0, djb $$1, iv $$2) {
+      return false;
+   }
+
+   @Override
+   protected float as_() {
+      return aj;
+   }
+
+   @Override
+   public void a(djx $$0, iv $$1, cob $$2) {
+      if (!$$2.ba()) {
+         $$0.c(1045, $$1, 0);
+      }
+   }
+
+   @Override
+   public bvi a(bwt $$0) {
+      return $$0.dW().c($$0);
+   }
+
+   private static void a(ebe $$0, ars $$1, iv $$2) {
+      iv.a $$3 = $$2.k();
+      ebe $$4 = $$0;
+
+      while (q($$4)) {
+         cob $$5 = cob.a($$1, $$3, $$4);
+         if (a($$4, true)) {
+            int $$6 = Math.max(1 + $$2.v() - $$3.v(), 6);
+            float $$7 = 1.0F * (float)$$6;
+            $$5.b($$7, 40);
+            break;
+         }
+
+         $$3.c(jb.a);
+         $$4 = $$1.a_($$3);
+      }
+   }
+
+   @VisibleForTesting
+   public static void c(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      ebe $$4 = $$1.a_($$2.b(1));
+      ebe $$5 = $$1.a_($$2.b(2));
+      if (a($$4, $$5)) {
+         iv $$6 = a($$0, $$1, $$2, 7, false);
+         if ($$6 != null) {
+            ebe $$7 = $$1.a_($$6);
+            if (o($$7) && b($$7, $$1, $$6)) {
+               if ($$3.h()) {
+                  a($$1, $$6, jb.a);
+               } else {
+                  b($$1, $$6);
+               }
+            }
          }
       }
+   }
+
+   private static void b(ars $$0, iv $$1) {
+      iv.a $$2 = $$1.k();
+
+      for (int $$3 = 0; $$3 < 10; $$3++) {
+         $$2.c(jb.a);
+         ebe $$4 = $$0.a_($$2);
+         if (!$$4.y().c()) {
+            return;
+         }
+
+         if (a($$4, jb.b) && b($$4, $$0, $$2)) {
+            a($$0, $$2, jb.b);
+            return;
+         }
+
+         if (c($$0, $$2, jb.b) && !$$0.A($$2.e())) {
+            a($$0, $$2.e(), jb.b);
+            return;
+         }
+
+         if (!a((djb)$$0, $$2, $$4)) {
+            return;
+         }
+      }
+   }
+
+   private static void a(ars $$0, iv $$1, jb $$2) {
+      iv $$3 = $$1.a($$2);
+      ebe $$4 = $$0.a_($$3);
+      if (a($$4, $$2.g())) {
+         a($$4, (djy)$$0, $$3);
+      } else if ($$4.l() || $$4.a(dne.J)) {
+         a($$0, $$3, $$2, ecb.b);
+      }
+   }
+
+   private static void a(djy $$0, iv $$1, jb $$2, ecb $$3) {
+      ebe $$4 = dne.tb.m().b(b, $$2).b(c, $$3).b(d, Boolean.valueOf($$0.b_($$1).a() == exp.c));
+      $$0.a($$1, $$4, 3);
+   }
+
+   private static void a(ebe $$0, djy $$1, iv $$2) {
+      iv $$4;
+      iv $$3;
+      if ($$0.c(b) == jb.b) {
+         $$3 = $$2;
+         $$4 = $$2.d();
+      } else {
+         $$4 = $$2;
+         $$3 = $$2.e();
+      }
+
+      a($$1, $$4, jb.a, ecb.a);
+      a($$1, $$3, jb.b, ecb.a);
+   }
+
+   public static void a(djx $$0, iv $$1, ebe $$2) {
+      b($$0, $$1, $$2).ifPresent($$3 -> a($$0, $$1, $$2, $$3.b));
+   }
+
+   private static void a(djx $$0, iv $$1, ebe $$2, exn $$3) {
+      ffq $$4 = $$2.a($$1);
+      double $$5 = 0.0625;
+      double $$6 = (double)$$1.u() + 0.5 + $$4.d;
+      double $$7 = (double)$$1.v() + ai - 0.0625;
+      double $$8 = (double)$$1.w() + 0.5 + $$4.f;
+      exn $$9 = a($$0, $$3);
+      lw $$10 = $$9.a(axj.b) ? ly.aO : ly.aQ;
+      $$0.a($$10, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   }
+
+   @Nullable
+   private static iv a(ebe $$0, djy $$1, iv $$2, int $$3, boolean $$4) {
+      if (a($$0, $$4)) {
+         return $$2;
+      } else {
+         jb $$5 = $$0.c(b);
+         BiPredicate<iv, ebe> $$6 = ($$1x, $$2x) -> $$2x.a(dne.tb) && $$2x.c(b) == $$5;
+         return a($$1, $$2, $$5.f(), $$6, $$1x -> a($$1x, $$4), $$3).orElse(null);
+      }
+   }
+
+   @Nullable
+   private static jb b(dka $$0, iv $$1, jb $$2) {
+      jb $$3;
+      if (c($$0, $$1, $$2)) {
+         $$3 = $$2;
+      } else {
+         if (!c($$0, $$1, $$2.g())) {
+            return null;
+         }
+
+         $$3 = $$2.g();
+      }
+
+      return $$3;
+   }
+
+   private static ecb a(dka $$0, iv $$1, jb $$2, boolean $$3) {
+      jb $$4 = $$2.g();
+      ebe $$5 = $$0.a_($$1.a($$2));
+      if (b($$5, $$4)) {
+         return !$$3 && $$5.c(c) != ecb.a ? ecb.b : ecb.a;
+      } else if (!b($$5, $$2)) {
+         return ecb.b;
+      } else {
+         ecb $$6 = $$5.c(c);
+         if ($$6 != ecb.b && $$6 != ecb.a) {
+            ebe $$7 = $$0.a_($$1.a($$4));
+            return !b($$7, $$2) ? ecb.e : ecb.d;
+         } else {
+            return ecb.c;
+         }
+      }
+   }
+
+   public static boolean o(ebe $$0) {
+      return q($$0) && $$0.c(c) == ecb.b && !$$0.c(d);
+   }
+
+   private static boolean b(ebe $$0, ars $$1, iv $$2) {
+      jb $$3 = $$0.c(b);
+      iv $$4 = $$2.a($$3);
+      ebe $$5 = $$1.a_($$4);
+      if (!$$5.y().c()) {
+         return false;
+      } else {
+         return $$5.l() ? true : a($$5, $$3.g());
+      }
+   }
+
+   private static Optional<iv> a(djx $$0, iv $$1, ebe $$2, int $$3) {
+      jb $$4 = $$2.c(b);
+      BiPredicate<iv, ebe> $$5 = ($$1x, $$2x) -> $$2x.a(dne.tb) && $$2x.c(b) == $$4;
+      return a($$0, $$1, $$4.g().f(), $$5, $$0x -> !$$0x.a(dne.tb), $$3);
+   }
+
+   private static boolean c(dka $$0, iv $$1, jb $$2) {
+      iv $$3 = $$1.a($$2.g());
+      ebe $$4 = $$0.a_($$3);
+      return $$4.c($$0, $$3, $$2) || b($$4, $$2);
+   }
+
+   private static boolean a(ebe $$0, boolean $$1) {
+      if (!$$0.a(dne.tb)) {
+         return false;
+      } else {
+         ecb $$2 = $$0.c(c);
+         return $$2 == ecb.b || $$1 && $$2 == ecb.a;
+      }
+   }
+
+   private static boolean a(ebe $$0, jb $$1) {
+      return a($$0, false) && $$0.c(b) == $$1;
+   }
+
+   private static boolean q(ebe $$0) {
+      return b($$0, jb.a);
+   }
+
+   private static boolean r(ebe $$0) {
+      return b($$0, jb.b);
+   }
+
+   private static boolean b(ebe $$0, dka $$1, iv $$2) {
+      return q($$0) && !$$1.a_($$2.d()).a(dne.tb);
+   }
+
+   @Override
+   protected boolean a(ebe $$0, eyd $$1) {
+      return false;
+   }
+
+   private static boolean b(ebe $$0, jb $$1) {
+      return $$0.a(dne.tb) && $$0.c(b) == $$1;
+   }
+
+   @Nullable
+   private static iv a(djx $$0, iv $$1, exn $$2) {
+      Predicate<ebe> $$3 = $$1x -> $$1x.b() instanceof dlv && ((dlv)$$1x.b()).a($$2);
+      BiPredicate<iv, ebe> $$4 = ($$1x, $$2x) -> a((djb)$$0, $$1x, $$2x);
+      return a($$0, $$1, jb.a.f(), $$4, $$3, 11).orElse(null);
+   }
+
+   @Nullable
+   public static iv a(djx $$0, iv $$1) {
+      BiPredicate<iv, ebe> $$2 = ($$1x, $$2x) -> a((djb)$$0, $$1x, $$2x);
+      return a($$0, $$1, jb.b.f(), $$2, dta::o, 11).orElse(null);
+   }
+
+   public static exn a(ars $$0, iv $$1) {
+      return b($$0, $$1, $$0.a_($$1)).map($$0x -> $$0x.b).filter(dta::a).orElse(exp.a);
+   }
+
+   private static Optional<dta.a> b(djx $$0, iv $$1, ebe $$2) {
+      return !q($$2) ? Optional.empty() : a($$0, $$1, $$2, 11).map($$1x -> {
+         iv $$2x = $$1x.d();
+         ebe $$3 = $$0.a_($$2x);
+         exn $$4;
+         if ($$3.a(dne.ts) && !$$0.F_().i()) {
+            $$4 = exp.c;
+         } else {
+            $$4 = $$0.b_($$2x).a();
+         }
+
+         return new dta.a($$2x, $$4, $$3);
+      });
+   }
+
+   private static boolean a(exn $$0) {
+      return $$0 == exp.e || $$0 == exp.c;
+   }
+
+   private static boolean a(ebe $$0, ebe $$1) {
+      return $$0.a(dne.tc) && $$1.a(dne.J) && $$1.y().b();
+   }
+
+   private static exn a(djx $$0, exn $$1) {
+      if ($$1.a(exp.a)) {
+         return $$0.F_().i() ? exp.e : exp.c;
+      } else {
+         return $$1;
+      }
+   }
+
+   private static Optional<iv> a(djy $$0, iv $$1, jb.b $$2, BiPredicate<iv, ebe> $$3, Predicate<ebe> $$4, int $$5) {
+      jb $$6 = jb.a($$2, jb.a.b);
+      iv.a $$7 = $$1.k();
+
+      for (int $$8 = 1; $$8 < $$5; $$8++) {
+         $$7.c($$6);
+         ebe $$9 = $$0.a_($$7);
+         if ($$4.test($$9)) {
+            return Optional.of($$7.j());
+         }
+
+         if ($$0.e($$7.v()) || !$$3.test($$7, $$9)) {
+            return Optional.empty();
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   private static boolean a(djb $$0, iv $$1, ebe $$2) {
+      if ($$2.l()) {
+         return true;
+      } else if ($$2.s()) {
+         return false;
+      } else if (!$$2.y().c()) {
+         return false;
+      } else {
+         fgk $$3 = $$2.g($$0, $$1);
+         return !fgh.c(ak, $$3, ffu.i);
+      }
+   }
+
+   static record a(iv a, exn b, ebe c) {
    }
 }

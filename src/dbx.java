@@ -1,15 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record dbx(axr<buz> c) {
-   public static final Codec<dbx> a = RecordCodecBuilder.create($$0 -> $$0.group(axr.b(mh.aN).fieldOf("types").forGetter(dbx::a)).apply($$0, dbx::new));
-   public static final yw<wj, dbx> b = yw.a(axr.c(mh.aN), dbx::a, dbx::new);
+public record dbx(List<dxz.c> d) implements ddd {
+   public static final Codec<dbx> a = dxz.c.b.xmap(dbx::new, dbx::a);
+   public static final yy<ByteBuf, dbx> b = dxz.c.c.a(yw.a()).a(dbx::new, dbx::a);
+   public static final dbx c = new dbx(List.of());
 
-   public boolean a(bux $$0) {
-      return $$0.a(this.c);
+   @Override
+   public void a(czu.b $$0, Consumer<xa> $$1, dbn $$2, kf $$3) {
+      $$1.accept(xa.a("container.beehive.bees", this.d.size(), 3).a(o.h));
    }
 
-   public axr<buz> a() {
-      return this.c;
+   public List<dxz.c> a() {
+      return this.d;
    }
 }

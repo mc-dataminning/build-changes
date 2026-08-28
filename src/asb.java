@@ -1,3 +1,8 @@
-public interface asb {
-   asa create(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface asb {
 }

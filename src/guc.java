@@ -1,71 +1,136 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.BitSet;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-class guc {
-   private final Map<iv, dxr> a;
+public class guc implements gtn {
+   private final guc.b a;
+   private final ebe b;
    @Nullable
-   private final List<edi<eat>> b;
-   private final boolean c;
-   private final eda d;
+   private List<gtn> c;
 
-   guc(eda $$0) {
-      this.d = $$0;
-      this.c = $$0.H().ak();
-      this.a = ImmutableMap.copyOf($$0.I());
-      if ($$0 instanceof ecw) {
-         this.b = null;
-      } else {
-         edb[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
+   guc(guc.b $$0, ebe $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-         for (edb $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
+   @Override
+   public hla a() {
+      return this.a.b;
+   }
+
+   @Override
+   public void a(azx $$0, List<gtm> $$1) {
+      if (this.c == null) {
+         this.c = this.a.a(this.b);
+      }
+
+      long $$2 = $$0.g();
+
+      for (gtn $$3 : this.c) {
+         $$0.b($$2);
+         $$3.a($$0, $$1);
       }
    }
 
-   @Nullable
-   public dxr a(iv $$0) {
-      return this.a.get($$0);
+   public static record a<T>(Predicate<ebe> a, T b) {
+
+      public <S> guc.a<S> a(S $$0) {
+         return new guc.a<>(this.a, $$0);
+      }
    }
 
-   public eat b(iv $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         eat $$4 = null;
-         if ($$2 == 60) {
-            $$4 = dmt.iy.m();
+   static final class b {
+      private final List<guc.a<gtn>> a;
+      final hla b;
+      private final Map<BitSet, List<gtn>> c = new ConcurrentHashMap<>();
+
+      private static gtn a(List<guc.a<gtn>> $$0) {
+         if ($$0.isEmpty()) {
+            throw new IllegalArgumentException("Model must have at least one selector");
+         } else {
+            return $$0.getFirst().b();
+         }
+      }
+
+      public b(List<guc.a<gtn>> $$0) {
+         this.a = $$0;
+         gtn $$1 = a($$0);
+         this.b = $$1.a();
+      }
+
+      public List<gtn> a(ebe $$0) {
+         BitSet $$1 = new BitSet();
+
+         for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
+            if (this.a.get($$2).a.test($$0)) {
+               $$1.set($$2);
+            }
          }
 
-         if ($$2 == 70) {
-            $$4 = egj.a($$1, $$3);
-         }
+         return this.c.computeIfAbsent($$1, $$0x -> {
+            Builder<gtn> $$1x = ImmutableList.builder();
 
-         return $$4 == null ? dmt.a.m() : $$4;
-      } else if (this.b == null) {
-         return dmt.a.m();
-      } else {
-         try {
-            int $$5 = this.d.f($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               edi<eat> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+            for (int $$2x = 0; $$2x < this.a.size(); $$2x++) {
+               if ($$0x.get($$2x)) {
+                  $$1x.add(this.a.get($$2x).b);
                }
             }
 
-            return dmt.a.m();
-         } catch (Throwable var8) {
-            p $$8 = p.a(var8, "Getting block state");
-            q $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> q.a(this.d, $$1, $$2, $$3));
-            throw new aa($$8);
+            return $$1x.build();
+         });
+      }
+   }
+
+   public static class c implements gtn.c {
+      final List<guc.a<gtn.b>> a;
+      private final hnj.a<guc.b> b = new hnj.a<guc.b>() {
+         public guc.b a(hnj $$0) {
+            Builder<guc.a<gtn>> $$1 = ImmutableList.builderWithExpectedSize(c.this.a.size());
+
+            for (guc.a<gtn.b> $$2 : c.this.a) {
+               $$1.add($$2.a($$2.b.a($$0)));
+            }
+
+            return new guc.b($$1.build());
          }
+      };
+
+      public c(List<guc.a<gtn.b>> $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public Object a(ebe $$0) {
+         IntList $$1 = new IntArrayList();
+
+         for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
+            if (this.a.get($$2).a.test($$0)) {
+               $$1.add($$2);
+            }
+         }
+
+         record a(guc.c a, IntList b) {
+         }
+
+         return new a(this, $$1);
+      }
+
+      @Override
+      public void a(hnr.a $$0) {
+         this.a.forEach($$1 -> $$1.b.a($$0));
+      }
+
+      @Override
+      public gtn a(ebe $$0, hnj $$1) {
+         guc.b $$2 = $$1.a(this.b);
+         return new guc($$2, $$0);
       }
    }
 }

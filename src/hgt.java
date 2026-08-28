@@ -1,5 +1,3 @@
-import com.mojang.serialization.MapCodec;
-
-public interface hgt extends hhe {
-   MapCodec<? extends hgt> a();
+public class hgt extends hdv {
+   public boolean d;
 }

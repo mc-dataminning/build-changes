@@ -1,26 +1,13 @@
-import java.util.function.BooleanSupplier;
+public class fqe extends fqf {
+   private final fnu b;
 
-public class fqe extends fpr {
-   private final BooleanSupplier h;
-
-   public fqe(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
-      super($$0, fiu.b.a, $$1, $$2);
-      this.h = $$3;
+   public fqe(fnu $$0, long $$1, xa $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
    @Override
-   public void a(boolean $$0) {
-      if (this.h.getAsBoolean()) {
-         if ($$0) {
-            super.a(!this.e());
-         }
-      } else {
-         super.a($$0);
-      }
-   }
-
-   @Override
-   protected void n() {
-      super.a(false);
+   protected void a(fmd $$0, long $$1) throws fnz {
+      $$0.d($$1, this.b.a);
    }
 }

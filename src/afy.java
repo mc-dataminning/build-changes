@@ -1,21 +1,23 @@
-public record afy(wy b, boolean c) implements zf<abu> {
-   public static final yw<wj, afy> a = yw.a(xa.d, afy::b, yu.b, afy::e, afy::new);
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public zh<afy> a() {
-      return agn.aZ;
+public class afy implements zh<abw> {
+   public static final afy a = new afy();
+   public static final yy<ByteBuf, afy> b = yy.a(a);
+
+   private afy() {
    }
 
-   public void a(abu $$0) {
+   @Override
+   public zj<afy> a() {
+      return agp.aX;
+   }
+
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
    @Override
-   public boolean c() {
+   public boolean d() {
       return true;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

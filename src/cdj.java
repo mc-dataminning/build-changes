@@ -1,32 +1,20 @@
-public class cdj extends cdh {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-   public cdj(bxl $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
-   }
-
-   @Override
-   public void a() {
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0x -> this.a.aX = this.a(this.a.aX, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.x(this.a(this.a.dM(), $$0x + 10.0F, this.c)));
-      } else {
-         if (this.a.O().k()) {
-            this.a.x(this.a(this.a.dM(), 0.0F, 5.0F));
-         }
-
-         this.a.aX = this.a(this.a.aX, this.a.aV, this.b);
-      }
-
-      float $$0 = azm.h(this.a.aX - this.a.aV);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aV -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aV += 4.0F;
-      }
+public class cdj {
+   public static bzm<bxu> a() {
+      return ccy.a(
+         (Function<ccy.b<bxu>, ? extends App<ccy.c<bxu>, cdb<bxu>>>)($$0 -> $$0.group($$0.a(cgw.o), $$0.a(cgw.aA), $$0.a(cgw.az), $$0.c(cgw.p))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
+                     Optional<iv> $$7 = $$0.<bxu>a($$3).map(bwt::dv).or(() -> $$0.a($$2));
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        $$1.a(new bzo($$7.get()));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

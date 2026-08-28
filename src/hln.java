@@ -1,20 +1,20 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record hln(boolean e, boolean f) {
-   public static final boolean a = false;
-   public static final boolean b = false;
-   public static final Codec<hln> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("blur", false).forGetter(hln::a), Codec.BOOL.optionalFieldOf("clamp", false).forGetter(hln::b))
-            .apply($$0, hln::new)
-   );
-   public static final auc<hln> d = new auc<>("texture", c);
+public record hln(azz c) implements hlf {
+   public static final MapCodec<hln> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(azz.a.fieldOf("pattern").forGetter(hln::b)).apply($$0, hln::new));
 
-   public boolean a() {
-      return this.e;
+   @Override
+   public void a(avf $$0, hlf.a $$1) {
+      $$1.a(this.c.c());
    }
 
-   public boolean b() {
-      return this.f;
+   @Override
+   public MapCodec<hln> a() {
+      return b;
+   }
+
+   public azz b() {
+      return this.c;
    }
 }

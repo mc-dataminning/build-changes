@@ -1,141 +1,58 @@
-import com.google.common.base.Charsets;
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.Socket;
-import java.util.List;
-import java.util.Locale;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.Scanner;
+import com.mojang.serialization.Codec;
+import java.util.Collection;
+import java.util.Map;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
 public class aml {
    private static final Logger a = LogUtils.getLogger();
-   private static final int b = 5;
-   private final String c;
-   private final int d;
-   private final MinecraftServer e;
-   private volatile boolean f;
+   private static final Codec<Map<ali, amk.a>> b = Codec.unboundedMap(ali.a, amk.a.a);
+   private final Map<ali, amk> c = Maps.newHashMap();
+
    @Nullable
-   private Socket g;
-   @Nullable
-   private Thread h;
-
-   public aml(String $$0, int $$1, MinecraftServer $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public amk a(ali $$0) {
+      return this.c.get($$0);
    }
 
-   public void a() {
-      if (this.h != null && this.h.isAlive()) {
-         a.warn("Remote control client was asked to start, but it is already running. Will ignore.");
-      }
-
-      this.f = true;
-      this.h = new Thread(this::c, "chase-client");
-      this.h.setDaemon(true);
-      this.h.start();
+   public amk a(ali $$0, xa $$1) {
+      amk $$2 = new amk($$0, $$1);
+      this.c.put($$0, $$2);
+      return $$2;
    }
 
-   public void b() {
-      this.f = false;
-      IOUtils.closeQuietly(this.g);
-      this.g = null;
-      this.h = null;
+   public void a(amk $$0) {
+      this.c.remove($$0.a());
    }
 
-   public void c() {
-      String $$0 = this.c + ":" + this.d;
+   public Collection<ali> a() {
+      return this.c.keySet();
+   }
 
-      while (this.f) {
-         try {
-            a.info("Connecting to remote control server {}", $$0);
-            this.g = new Socket(this.c, this.d);
-            a.info("Connected to remote control server! Will continuously execute the command broadcasted by that server.");
+   public Collection<amk> b() {
+      return this.c.values();
+   }
 
-            try (BufferedReader $$1 = new BufferedReader(new InputStreamReader(this.g.getInputStream(), Charsets.US_ASCII))) {
-               while (this.f) {
-                  String $$2 = $$1.readLine();
-                  if ($$2 == null) {
-                     a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
-                     break;
-                  }
+   public tz a(jh.a $$0) {
+      Map<ali, amk.a> $$1 = ag.a(this.c, amk::f);
+      return (tz)b.encodeStart($$0.a(un.a), $$1).getOrThrow();
+   }
 
-                  this.a($$2);
-               }
-            } catch (IOException var8) {
-               a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
-            }
-         } catch (IOException var9) {
-            a.warn("Failed to connect to remote control server {}. Will retry in {}s.", $$0, 5);
-         }
+   public void a(tz $$0, jh.a $$1) {
+      Map<ali, amk.a> $$2 = b.parse($$1.a(un.a), $$0).resultOrPartial($$0x -> a.error("Failed to parse boss bar events: {}", $$0x)).orElse(Map.of());
+      $$2.forEach(($$0x, $$1x) -> this.c.put($$0x, amk.a($$0x, $$1x)));
+   }
 
-         if (this.f) {
-            try {
-               Thread.sleep(5000L);
-            } catch (InterruptedException var5) {
-            }
-         }
+   public void a(art $$0) {
+      for (amk $$1 : this.c.values()) {
+         $$1.c($$0);
       }
    }
 
-   private void a(String $$0) {
-      try (Scanner $$1 = new Scanner(new StringReader($$0))) {
-         $$1.useLocale(Locale.ROOT);
-         String $$2 = $$1.next();
-         if ("t".equals($$2)) {
-            this.a($$1);
-         } else {
-            a.warn("Unknown message type '{}'", $$2);
-         }
-      } catch (NoSuchElementException var7) {
-         a.warn("Could not parse message '{}', ignoring", $$0);
+   public void b(art $$0) {
+      for (amk $$1 : this.c.values()) {
+         $$1.d($$0);
       }
-   }
-
-   private void a(Scanner $$0) {
-      this.b($$0)
-         .ifPresent(
-            $$0x -> this.b(
-                  String.format(Locale.ROOT, "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f", $$0x.a.a(), $$0x.b.d, $$0x.b.e, $$0x.b.f, $$0x.c.k, $$0x.c.j)
-               )
-         );
-   }
-
-   private Optional<aml.a> b(Scanner $$0) {
-      alf<djm> $$1 = (alf<djm>)amu.a.get($$0.next());
-      if ($$1 == null) {
-         return Optional.empty();
-      } else {
-         float $$2 = $$0.nextFloat();
-         float $$3 = $$0.nextFloat();
-         float $$4 = $$0.nextFloat();
-         float $$5 = $$0.nextFloat();
-         float $$6 = $$0.nextFloat();
-         return Optional.of(new aml.a($$1, new ffc((double)$$2, (double)$$3, (double)$$4), new ffb($$6, $$5)));
-      }
-   }
-
-   private void b(String $$0) {
-      this.e.execute(() -> {
-         List<arr> $$1 = this.e.ag().t();
-         if (!$$1.isEmpty()) {
-            arr $$2 = $$1.get(0);
-            arq $$3 = this.e.J();
-            ej $$4 = new ej($$2.z(), ffc.a($$3.aa()), ffb.a, $$3, 4, "", wx.a, this.e, $$2);
-            ek $$5 = this.e.aG();
-            $$5.a($$4, $$0);
-         }
-      });
-   }
-
-   static record a(alf<djm> a, ffc b, ffb c) {
    }
 }

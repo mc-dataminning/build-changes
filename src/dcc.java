@@ -1,72 +1,98 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
 import java.util.List;
 import java.util.function.Consumer;
 
-public record dcc(int d, List<dcb> e) implements dcs {
-   public static final int a = 256;
-   public static final Codec<dcc> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayu.k.optionalFieldOf("flight_duration", 0).forGetter(dcc::a),
-               dcb.c.sizeLimitedListOf(256).optionalFieldOf("explosions", List.of()).forGetter(dcc::b)
-            )
-            .apply($$0, dcc::new)
-   );
-   public static final yw<ByteBuf, dcc> c = yw.a(yu.h, dcc::a, dcb.d.a(yu.c(256)), dcc::b, dcc::new);
+public final class dcc implements ddd {
+   public static final dcc a = new dcc(List.of());
+   public static final Codec<dcc> b = czy.b.listOf().xmap(dcc::new, $$0 -> $$0.d);
+   public static final yy<wl, dcc> c = czy.i.a(yw.a()).a(dcc::new, $$0 -> $$0.d);
+   private final List<czy> d;
 
-   public dcc(int d, List<dcb> e) {
-      if (e.size() > 256) {
-         throw new IllegalArgumentException("Got " + e.size() + " explosions, but maximum is 256");
+   private dcc(List<czy> $$0) {
+      this.d = $$0;
+   }
+
+   public static dcc a(czy $$0) {
+      return new dcc(List.of($$0.v()));
+   }
+
+   public static dcc a(List<czy> $$0) {
+      return new dcc(List.copyOf(Lists.transform($$0, czy::v)));
+   }
+
+   public boolean a(czu $$0) {
+      for (czy $$1 : this.d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public List<czy> a() {
+      return Lists.transform(this.d, czy::v);
+   }
+
+   public boolean b() {
+      return this.d.isEmpty();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         this.d = d;
-         this.e = e;
+         if ($$0 instanceof dcc $$1 && czy.a(this.d, $$1.d)) {
+            return true;
+         }
+
+         return false;
       }
    }
 
    @Override
-   public void a(czj.b $$0, Consumer<wy> $$1, dbc $$2, kf $$3) {
-      if (this.d > 0) {
-         $$1.accept(wy.c("item.minecraft.firework_rocket.flight").b(wx.v).f(String.valueOf(this.d)).a(o.h));
-      }
+   public int hashCode() {
+      return czy.a(this.d);
+   }
 
-      dcb $$4 = null;
+   @Override
+   public String toString() {
+      return "ChargedProjectiles[items=" + this.d + "]";
+   }
+
+   @Override
+   public void a(czu.b $$0, Consumer<xa> $$1, dbn $$2, kf $$3) {
+      czy $$4 = null;
       int $$5 = 0;
 
-      for (dcb $$6 : this.e) {
+      for (czy $$6 : this.d) {
          if ($$4 == null) {
             $$4 = $$6;
             $$5 = 1;
-         } else if ($$4.equals($$6)) {
+         } else if (czy.a($$4, $$6)) {
             $$5++;
          } else {
-            a($$1, $$4, $$5);
+            a($$0, $$1, $$4, $$5);
             $$4 = $$6;
             $$5 = 1;
          }
       }
 
       if ($$4 != null) {
-         a($$1, $$4, $$5);
+         a($$0, $$1, $$4, $$5);
       }
    }
 
-   private static void a(Consumer<wy> $$0, dcb $$1, int $$2) {
-      wy $$3 = $$1.a().a();
-      if ($$2 == 1) {
-         $$0.accept(wy.a("item.minecraft.firework_rocket.single_star", $$3).a(o.h));
+   private static void a(czu.b $$0, Consumer<xa> $$1, czy $$2, int $$3) {
+      if ($$3 == 1) {
+         $$1.accept(xa.a("item.minecraft.crossbow.projectile.single", $$2.K()));
       } else {
-         $$0.accept(wy.a("item.minecraft.firework_rocket.multiple_stars", $$2, $$3).a(o.h));
+         $$1.accept(xa.a("item.minecraft.crossbow.projectile.multiple", $$3, $$2.K()));
       }
 
-      $$1.a((Consumer<wy>)($$1x -> $$0.accept(wy.b("  ").b($$1x))));
-   }
-
-   public int a() {
-      return this.d;
-   }
-
-   public List<dcb> b() {
-      return this.e;
+      ddc $$4 = $$2.a(kk.q, ddc.c);
+      $$2.a($$0, $$4, null, dbn.a, $$1x -> $$1.accept(xa.b("  ").b($$1x).a(o.h)));
    }
 }

@@ -1,21 +1,7 @@
-import com.mojang.serialization.Codec;
+@FunctionalInterface
+public interface ery {
+   ery a = ($$0, $$1, $$2, $$3, $$4, $$5, $$6) -> {
+   };
 
-public enum ery implements bak {
-   a("none"),
-   b("bury"),
-   c("beard_thin"),
-   d("beard_box"),
-   e("encapsulate");
-
-   public static final Codec<ery> f = bak.a(ery::values);
-   private final String g;
-
-   private ery(final String $$0) {
-      this.g = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.g;
-   }
+   void afterPlace(dkw var1, dkt var2, edc var3, azx var4, ert var5, djc var6, esq var7);
 }

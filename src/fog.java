@@ -1,58 +1,59 @@
-import com.google.gson.annotations.SerializedName;
-import com.mojang.logging.LogUtils;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class fog {
-   private static final String a = "realms_persistence.json";
-   private static final fll b = new fll();
-   private static final Logger c = LogUtils.getLogger();
+public abstract class fog {
+   public final int a;
+   public final int b;
+   public final int c;
+   public final int d;
 
-   public fog.a a() {
-      return b();
+   public fog(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public void a(fog.a $$0) {
-      b($$0);
+   public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$1 + this.c;
+      int $$6 = $$2 + this.d;
+      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
+      this.a($$0, $$5, $$6, $$7);
    }
 
-   public static fog.a b() {
-      Path $$0 = c();
+   protected abstract void a(ftx var1, int var2, int var3, boolean var4);
 
-      try {
-         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
-         fog.a $$2 = b.a($$1, fog.a.class);
-         if ($$2 != null) {
-            return $$2;
+   public int a() {
+      return this.c + this.a;
+   }
+
+   public int b() {
+      return this.d + this.b;
+   }
+
+   public abstract void a(int var1);
+
+   public static void a(ftx $$0, List<fog> $$1, fuf<?> $$2, int $$3, int $$4, int $$5, int $$6) {
+      for (fog $$7 : $$1) {
+         if ($$2.a() > $$7.a()) {
+            $$7.a($$0, $$3, $$4, $$5, $$6);
          }
-      } catch (NoSuchFileException var3) {
-      } catch (Exception var4) {
-         c.warn("Failed to read Realms storage {}", $$0, var4);
-      }
-
-      return new fog.a();
-   }
-
-   public static void b(fog.a $$0) {
-      Path $$1 = c();
-
-      try {
-         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
-      } catch (Exception var3) {
       }
    }
 
-   private static Path c() {
-      return fpt.Q().q.toPath().resolve("realms_persistence.json");
-   }
+   public static void a(fuf<?> $$0, fvh.a<?> $$1, List<fog> $$2, int $$3, double $$4, double $$5) {
+      int $$6 = $$0.aI_().indexOf($$1);
+      if ($$6 > -1) {
+         $$0.a($$6);
+         int $$7 = $$0.u();
+         int $$8 = $$0.d($$6);
+         int $$9 = (int)($$4 - (double)$$7);
+         int $$10 = (int)($$5 - (double)$$8);
 
-   public static class a implements fmc {
-      @SerializedName("newsLink")
-      public String a;
-      @SerializedName("hasUnreadNews")
-      public boolean b;
+         for (fog $$11 : $$2) {
+            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
+               $$11.a($$6);
+            }
+         }
+      }
    }
 }

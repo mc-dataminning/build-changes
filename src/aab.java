@@ -1,29 +1,20 @@
-public class aab implements zf<zy> {
-   public static final yw<vu, aab> a = zf.a(aab::a, aab::new);
-   private final long b;
+public record aab(arc b) implements zh<aaa> {
+   public static final yy<vw, aab> a = zh.a(aab::a, aab::new);
 
-   public aab(long $$0) {
-      this.b = $$0;
+   private aab(vw $$0) {
+      this(new arc($$0));
    }
 
-   private aab(vu $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(vu $$0) {
-      $$0.b(this.b);
+   private void a(vw $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public zh<aab> a() {
-      return zx.n;
+   public zj<aab> a() {
+      return zz.l;
    }
 
-   public void a(zy $$0) {
+   public void a(aaa $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

@@ -10,275 +10,275 @@ import java.util.stream.IntStream;
 
 public abstract class ni implements nl {
    protected final jh.a a;
-   protected final Set<czj> b;
-   protected final cuw c;
-   protected final Map<alf<ezy>, ezy.a> d;
+   protected final Set<czu> b;
+   protected final cvh c;
+   protected final Map<alh<fam>, fam.a> d;
    protected static final float[] e = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
    private static final float[] f = new float[]{0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
 
-   protected fdc.a a() {
-      jh.b<dga> $$0 = this.a.e(mh.aR);
-      return fdj.a(cm.a.a().a(ku.b, kv.a(List.of(new bt($$0.b(dgf.v), cw.d.b(1))))));
+   protected fdq.a a() {
+      jh.b<dgl> $$0 = this.a.e(mh.aR);
+      return fdx.a(cm.a.a().a(ku.b, kv.a(List.of(new bt($$0.b(dgq.v), cw.d.b(1))))));
    }
 
-   protected fdc.a b() {
+   protected fdq.a b() {
       return this.a().invert();
    }
 
-   protected fdc.a c() {
-      return fdj.a(cm.a.a().a(this.a.e(mh.K), czr.td));
+   protected fdq.a c() {
+      return fdx.a(cm.a.a().a(this.a.e(mh.K), dac.td));
    }
 
-   private fdc.a f() {
+   private fdq.a f() {
       return this.c().or(this.a());
    }
 
-   private fdc.a g() {
+   private fdq.a g() {
       return this.f().invert();
    }
 
-   protected ni(Set<czj> $$0, cuw $$1, jh.a $$2) {
+   protected ni(Set<czu> $$0, cvh $$1, jh.a $$2) {
       this($$0, $$1, new HashMap<>(), $$2);
    }
 
-   protected ni(Set<czj> $$0, cuw $$1, Map<alf<ezy>, ezy.a> $$2, jh.a $$3) {
+   protected ni(Set<czu> $$0, cvh $$1, Map<alh<fam>, fam.a> $$2, jh.a $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
       this.a = $$3;
    }
 
-   protected <T extends fbd<T>> T a(djl $$0, fbd<T> $$1) {
-      return !this.b.contains($$0.h()) ? $$1.b(far.c()) : $$1.c();
+   protected <T extends fbr<T>> T a(djw $$0, fbr<T> $$1) {
+      return !this.b.contains($$0.h()) ? $$1.b(fbf.c()) : $$1.c();
    }
 
-   protected <T extends fcu<T>> T a(djl $$0, fcu<T> $$1) {
-      return !this.b.contains($$0.h()) ? $$1.b(fcy.c()) : $$1.d();
+   protected <T extends fdi<T>> T a(djw $$0, fdi<T> $$1) {
+      return !this.b.contains($$0.h()) ? $$1.b(fdm.c()) : $$1.d();
    }
 
-   public ezy.a a(djl $$0) {
-      return ezy.b().a(this.a($$0, ezx.a().a(fdv.a(1.0F)).a(fag.a($$0))));
+   public fam.a a(djw $$0) {
+      return fam.b().a(this.a($$0, fal.a().a(fej.a(1.0F)).a(fau.a($$0))));
    }
 
-   private static ezy.a a(dmr $$0, fdc.a $$1, faj.a<?> $$2) {
-      return ezy.b().a(ezx.a().a(fdv.a(1.0F)).a(fag.a($$0).a($$1).a($$2)));
+   private static fam.a a(dnc $$0, fdq.a $$1, fax.a<?> $$2) {
+      return fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a($$0).a($$1).a($$2)));
    }
 
-   protected ezy.a a(dmr $$0, faj.a<?> $$1) {
+   protected fam.a a(dnc $$0, fax.a<?> $$1) {
       return a($$0, this.a(), $$1);
    }
 
-   protected ezy.a b(dmr $$0, faj.a<?> $$1) {
+   protected fam.a b(dnc $$0, fax.a<?> $$1) {
       return a($$0, this.c(), $$1);
    }
 
-   protected ezy.a c(dmr $$0, faj.a<?> $$1) {
+   protected fam.a c(dnc $$0, fax.a<?> $$1) {
       return a($$0, this.f(), $$1);
    }
 
-   protected ezy.a a(dmr $$0, djl $$1) {
-      return this.a($$0, (faj.a<?>)this.a((djl)$$0, fag.a($$1)));
+   protected fam.a a(dnc $$0, djw $$1) {
+      return this.a($$0, (fax.a<?>)this.a((djw)$$0, fau.a($$1)));
    }
 
-   protected ezy.a a(djl $$0, fdy $$1) {
-      return ezy.b().a(ezx.a().a(fdv.a(1.0F)).a((faj.a<?>)this.a($$0, fag.a($$0).a(fby.a($$1)))));
+   protected fam.a a(djw $$0, fem $$1) {
+      return fam.b().a(fal.a().a(fej.a(1.0F)).a((fax.a<?>)this.a($$0, fau.a($$0).a(fcm.a($$1)))));
    }
 
-   protected ezy.a a(dmr $$0, djl $$1, fdy $$2) {
-      return this.a($$0, (faj.a<?>)this.a((djl)$$0, fag.a($$1).a(fby.a($$2))));
+   protected fam.a a(dnc $$0, djw $$1, fem $$2) {
+      return this.a($$0, (fax.a<?>)this.a((djw)$$0, fau.a($$1).a(fcm.a($$2))));
    }
 
-   private ezy.a d(djl $$0) {
-      return ezy.b().a(ezx.a().a(this.a()).a(fdv.a(1.0F)).a(fag.a($$0)));
+   private fam.a d(djw $$0) {
+      return fam.b().a(fal.a().a(this.a()).a(fej.a(1.0F)).a(fau.a($$0)));
    }
 
-   private ezy.a e(djl $$0) {
-      return ezy.b().a(this.a(dmt.gq, ezx.a().a(fdv.a(1.0F)).a(fag.a(dmt.gq)))).a(this.a($$0, ezx.a().a(fdv.a(1.0F)).a(fag.a($$0))));
+   private fam.a e(djw $$0) {
+      return fam.b().a(this.a(dne.gq, fal.a().a(fej.a(1.0F)).a(fau.a(dne.gq)))).a(this.a($$0, fal.a().a(fej.a(1.0F)).a(fau.a($$0))));
    }
 
-   protected ezy.a a(dmr $$0) {
-      return ezy.b().a(ezx.a().a(fdv.a(1.0F)).a((faj.a<?>)this.a((djl)$$0, fag.a($$0).a(fby.a(fdv.a(2.0F)).a(fdb.a($$0).a(dr.a.a().a(due.b, ecb.c)))))));
+   protected fam.a a(dnc $$0) {
+      return fam.b().a(fal.a().a(fej.a(1.0F)).a((fax.a<?>)this.a((djw)$$0, fau.a($$0).a(fcm.a(fej.a(2.0F)).a(fdp.a($$0).a(dr.a.a().a(dup.b, ecm.c)))))));
    }
 
-   protected <T extends Comparable<T> & bak> ezy.a a(dmr $$0, ebw<T> $$1, T $$2) {
-      return ezy.b().a(this.a($$0, ezx.a().a(fdv.a(1.0F)).a(fag.a($$0).a(fdb.a($$0).a(dr.a.a().a($$1, $$2))))));
+   protected <T extends Comparable<T> & bam> fam.a a(dnc $$0, ech<T> $$1, T $$2) {
+      return fam.b().a(this.a($$0, fal.a().a(fej.a(1.0F)).a(fau.a($$0).a(fdp.a($$0).a(dr.a.a().a($$1, $$2))))));
    }
 
-   protected ezy.a b(dmr $$0) {
-      return ezy.b().a(this.a($$0, ezx.a().a(fdv.a(1.0F)).a(fag.a($$0).a(fat.a(fat.b.a).a(kk.g)))));
+   protected fam.a b(dnc $$0) {
+      return fam.b().a(this.a($$0, fal.a().a(fej.a(1.0F)).a(fau.a($$0).a(fbh.a(fbh.b.a).a(kk.g)))));
    }
 
-   protected ezy.a c(dmr $$0) {
-      return ezy.b().a(this.a($$0, ezx.a().a(fdv.a(1.0F)).a(fag.a($$0).a(fat.a(fat.b.a).a(kk.g).a(kk.ap).a(kk.as).a(kk.at)))));
+   protected fam.a c(dnc $$0) {
+      return fam.b().a(this.a($$0, fal.a().a(fej.a(1.0F)).a(fau.a($$0).a(fbh.a(fbh.b.a).a(kk.g).a(kk.ap).a(kk.as).a(kk.at)))));
    }
 
-   protected ezy.a d(dmr $$0) {
-      jh.b<dga> $$1 = this.a.e(mh.aR);
-      return this.a($$0, (faj.a<?>)this.a((djl)$$0, fag.a(czr.pu).a(fby.a(fec.a(2.0F, 5.0F))).a(faq.a($$1.b(dgf.x)))));
+   protected fam.a d(dnc $$0) {
+      jh.b<dgl> $$1 = this.a.e(mh.aR);
+      return this.a($$0, (fax.a<?>)this.a((djw)$$0, fau.a(dac.pu).a(fcm.a(feq.a(2.0F, 5.0F))).a(fbe.a($$1.b(dgq.x)))));
    }
 
-   protected ezy.a e(dmr $$0) {
-      jh.b<dga> $$1 = this.a.e(mh.aR);
-      return this.a($$0, (faj.a<?>)this.a((djl)$$0, fag.a(czr.pp).a(fby.a(fec.a(4.0F, 9.0F))).a(faq.a($$1.b(dgf.x)))));
+   protected fam.a e(dnc $$0) {
+      jh.b<dgl> $$1 = this.a.e(mh.aR);
+      return this.a($$0, (fax.a<?>)this.a((djw)$$0, fau.a(dac.pp).a(fcm.a(feq.a(4.0F, 9.0F))).a(fbe.a($$1.b(dgq.x)))));
    }
 
-   protected ezy.a f(dmr $$0) {
-      jh.b<dga> $$1 = this.a.e(mh.aR);
-      return this.a($$0, (faj.a<?>)this.a((djl)$$0, fag.a(czr.ml).a(fby.a(fec.a(4.0F, 5.0F))).a(faq.b($$1.b(dgf.x)))));
+   protected fam.a f(dnc $$0) {
+      jh.b<dgl> $$1 = this.a.e(mh.aR);
+      return this.a($$0, (fax.a<?>)this.a((djw)$$0, fau.a(dac.ml).a(fcm.a(feq.a(4.0F, 5.0F))).a(fbe.b($$1.b(dgq.x)))));
    }
 
-   protected ezy.a g(dmr $$0) {
-      return ezy.b().a(this.a($$0, ezx.a().a(fdv.a(1.0F)).a(fag.a($$0).a(fat.a(fat.b.a).a(kk.g).a(kk.h).a(kk.q).a(kk.am).a(kk.k)))));
+   protected fam.a g(dnc $$0) {
+      return fam.b().a(this.a($$0, fal.a().a(fej.a(1.0F)).a(fau.a($$0).a(fbh.a(fbh.b.a).a(kk.g).a(kk.h).a(kk.q).a(kk.am).a(kk.k)))));
    }
 
-   protected ezy.a h(dmr $$0) {
-      return ezy.b().a(ezx.a().a(this.a()).a(fdv.a(1.0F)).a(fag.a($$0).a(fat.a(fat.b.a).a(kk.ar)).a(fas.a($$0).a(dml.c))));
+   protected fam.a h(dnc $$0) {
+      return fam.b().a(fal.a().a(this.a()).a(fej.a(1.0F)).a(fau.a($$0).a(fbh.a(fbh.b.a).a(kk.ar)).a(fbg.a($$0).a(dmw.c))));
    }
 
-   protected ezy.a i(dmr $$0) {
-      return ezy.b().a(ezx.a().a(fdv.a(1.0F)).a(fag.a($$0).a(this.a()).a(fat.a(fat.b.a).a(kk.ar)).a(fas.a($$0).a(dml.c)).a(fag.a($$0))));
+   protected fam.a i(dnc $$0) {
+      return fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a($$0).a(this.a()).a(fbh.a(fbh.b.a).a(kk.ar)).a(fbg.a($$0).a(dmw.c)).a(fau.a($$0))));
    }
 
-   protected ezy.a j(dmr $$0) {
-      return ezy.b().a(ezx.a().a(fag.a(czr.xH)).a(fdb.a($$0).a(dr.a.a().a(dnp.t_, true))));
+   protected fam.a j(dnc $$0) {
+      return fam.b().a(fal.a().a(fau.a(dac.xH)).a(fdp.a($$0).a(dr.a.a().a(doa.r_, true))));
    }
 
-   protected ezy.a a(dmr $$0, czj $$1) {
-      jh.b<dga> $$2 = this.a.e(mh.aR);
-      return this.a($$0, (faj.a<?>)this.a((djl)$$0, fag.a($$1).a(faq.a($$2.b(dgf.x)))));
+   protected fam.a a(dnc $$0, czu $$1) {
+      jh.b<dgl> $$2 = this.a.e(mh.aR);
+      return this.a($$0, (fax.a<?>)this.a((djw)$$0, fau.a($$1).a(fbe.a($$2.b(dgq.x)))));
    }
 
-   protected ezy.a b(dmr $$0, djl $$1) {
-      return this.a($$0, (faj.a<?>)this.a((djl)$$0, fag.a($$1).a(fby.a(fec.a(-6.0F, 2.0F))).a(fbe.a(ezs.b(0)))));
+   protected fam.a b(dnc $$0, djw $$1) {
+      return this.a($$0, (fax.a<?>)this.a((djw)$$0, fau.a($$1).a(fcm.a(feq.a(-6.0F, 2.0F))).a(fbs.a(fag.b(0)))));
    }
 
-   protected ezy.a k(dmr $$0) {
-      jh.b<dga> $$1 = this.a.e(mh.aR);
-      return this.b($$0, (faj.a<?>)this.a((djl)$$0, fag.a(czr.qj).a(fdh.a(0.125F)).a(faq.a($$1.b(dgf.x), 2))));
+   protected fam.a k(dnc $$0) {
+      jh.b<dgl> $$1 = this.a.e(mh.aR);
+      return this.b($$0, (fax.a<?>)this.a((djw)$$0, fau.a(dac.qj).a(fdv.a(0.125F)).a(fbe.a($$1.b(dgq.x), 2))));
    }
 
-   public ezy.a b(dmr $$0, czj $$1) {
-      return ezy.b()
+   public fam.a b(dnc $$0, czu $$1) {
+      return fam.b()
          .a(
             this.a(
                $$0,
-               ezx.a()
-                  .a(fdv.a(1.0F))
-                  .a(fag.a($$1).a(dux.c.a(), $$1x -> fby.a(fdu.a(3, (float)($$1x + 1) / 15.0F)).a(fdb.a($$0).a(dr.a.a().a(dux.c, $$1x.intValue())))))
+               fal.a()
+                  .a(fej.a(1.0F))
+                  .a(fau.a($$1).a(dvi.c.a(), $$1x -> fcm.a(fei.a(3, (float)($$1x + 1) / 15.0F)).a(fdp.a($$0).a(dr.a.a().a(dvi.c, $$1x.intValue())))))
             )
          );
    }
 
-   public ezy.a c(dmr $$0, czj $$1) {
-      return ezy.b().a(this.a($$0, ezx.a().a(fdv.a(1.0F)).a(fag.a($$1).a(fby.a(fdu.a(3, 0.53333336F))))));
+   public fam.a c(dnc $$0, czu $$1) {
+      return fam.b().a(this.a($$0, fal.a().a(fej.a(1.0F)).a(fau.a($$1).a(fcm.a(fei.a(3, 0.53333336F))))));
    }
 
-   protected ezy.a b(djl $$0) {
-      return ezy.b().a(ezx.a().a(fdv.a(1.0F)).a(this.c()).a(fag.a($$0)));
+   protected fam.a b(djw $$0) {
+      return fam.b().a(fal.a().a(fej.a(1.0F)).a(this.c()).a(fau.a($$0)));
    }
 
-   protected ezy.a c(djl $$0) {
-      return ezy.b().a(ezx.a().a(fdv.a(1.0F)).a(this.f()).a(fag.a($$0)));
+   protected fam.a c(djw $$0) {
+      return fam.b().a(fal.a().a(fej.a(1.0F)).a(this.f()).a(fau.a($$0)));
    }
 
-   protected ezy.a a(dmr $$0, fdc.a $$1) {
-      return ezy.b()
+   protected fam.a a(dnc $$0, fdq.a $$1) {
+      return fam.b()
          .a(
-            ezx.a()
+            fal.a()
                .a(
-                  (faj.a<?>)this.a(
-                     (djl)$$0,
-                     fag.a($$0)
+                  (fax.a<?>)this.a(
+                     (djw)$$0,
+                     fau.a($$0)
                         .a($$1)
-                        .a(jb.values(), $$1x -> fby.a(fdv.a(1.0F), true).a(fdb.a($$0).a(dr.a.a().a(drx.b($$1x), true))))
-                        .a(fby.a(fdv.a(-1.0F), true))
+                        .a(jb.values(), $$1x -> fcm.a(fej.a(1.0F), true).a(fdp.a($$0).a(dr.a.a().a(dsi.b($$1x), true))))
+                        .a(fcm.a(fej.a(-1.0F), true))
                   )
                )
          );
    }
 
-   protected ezy.a l(dmr $$0) {
-      return ezy.b()
+   protected fam.a l(dnc $$0) {
+      return fam.b()
          .a(
-            ezx.a()
+            fal.a()
                .a(
-                  (faj.a<?>)this.a(
-                     (djl)$$0,
-                     fag.a($$0).a(jb.values(), $$1 -> fby.a(fdv.a(1.0F), true).a(fdb.a($$0).a(dr.a.a().a(drx.b($$1), true)))).a(fby.a(fdv.a(-1.0F), true))
+                  (fax.a<?>)this.a(
+                     (djw)$$0,
+                     fau.a($$0).a(jb.values(), $$1 -> fcm.a(fej.a(1.0F), true).a(fdp.a($$0).a(dr.a.a().a(dsi.b($$1), true)))).a(fcm.a(fej.a(-1.0F), true))
                   )
                )
          );
    }
 
-   protected ezy.a m(dmr $$0) {
-      return ezy.b().a(ezx.a().a((faj.a<?>)this.a($$0, fag.a($$0).a(fdb.a($$0).a(dr.a.a().a(drv.b, true))))));
+   protected fam.a m(dnc $$0) {
+      return fam.b().a(fal.a().a((fax.a<?>)this.a($$0, fau.a($$0).a(fdp.a($$0).a(dr.a.a().a(dsg.b, true))))));
    }
 
-   protected ezy.a a(dmr $$0, dmr $$1, float... $$2) {
-      jh.b<dga> $$3 = this.a.e(mh.aR);
-      return this.c($$0, ((fal.a)this.a((djl)$$0, fag.a($$1))).a(fcr.a($$3.b(dgf.x), $$2)))
-         .a(ezx.a().a(fdv.a(1.0F)).a(this.g()).a(((fal.a)this.a((djl)$$0, fag.a(czr.qe).a(fby.a(fec.a(1.0F, 2.0F))))).a(fcr.a($$3.b(dgf.x), f))));
+   protected fam.a a(dnc $$0, dnc $$1, float... $$2) {
+      jh.b<dgl> $$3 = this.a.e(mh.aR);
+      return this.c($$0, ((faz.a)this.a((djw)$$0, fau.a($$1))).a(fdf.a($$3.b(dgq.x), $$2)))
+         .a(fal.a().a(fej.a(1.0F)).a(this.g()).a(((faz.a)this.a((djw)$$0, fau.a(dac.qe).a(fcm.a(feq.a(1.0F, 2.0F))))).a(fdf.a($$3.b(dgq.x), f))));
    }
 
-   protected ezy.a b(dmr $$0, dmr $$1, float... $$2) {
-      jh.b<dga> $$3 = this.a.e(mh.aR);
+   protected fam.a b(dnc $$0, dnc $$1, float... $$2) {
+      jh.b<dgl> $$3 = this.a.e(mh.aR);
       return this.a($$0, $$1, $$2)
          .a(
-            ezx.a()
-               .a(fdv.a(1.0F))
+            fal.a()
+               .a(fej.a(1.0F))
                .a(this.g())
-               .a(((fal.a)this.a((djl)$$0, fag.a(czr.pi))).a(fcr.a($$3.b(dgf.x), 0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F)))
+               .a(((faz.a)this.a((djw)$$0, fau.a(dac.pi))).a(fdf.a($$3.b(dgq.x), 0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F)))
          );
    }
 
-   protected ezy.a n(dmr $$0) {
-      jh.b<dga> $$1 = this.a.e(mh.aR);
-      return this.c($$0, ((fal.a)this.a((djl)dmt.aS, fag.a(czr.qe).a(fby.a(fec.a(1.0F, 2.0F))))).a(fcr.a($$1.b(dgf.x), f)));
+   protected fam.a n(dnc $$0) {
+      jh.b<dgl> $$1 = this.a.e(mh.aR);
+      return this.c($$0, ((faz.a)this.a((djw)dne.aS, fau.a(dac.qe).a(fcm.a(feq.a(1.0F, 2.0F))))).a(fdf.a($$1.b(dgq.x), f)));
    }
 
-   protected ezy.a a(dmr $$0, czj $$1, czj $$2, fdc.a $$3) {
-      jh.b<dga> $$4 = this.a.e(mh.aR);
-      return this.a((djl)$$0, ezy.b().a(ezx.a().a(fag.a($$1).a($$3).a(fag.a($$2)))).a(ezx.a().a($$3).a(fag.a($$2).a(faq.a($$4.b(dgf.x), 0.5714286F, 3)))));
+   protected fam.a a(dnc $$0, czu $$1, czu $$2, fdq.a $$3) {
+      jh.b<dgl> $$4 = this.a.e(mh.aR);
+      return this.a((djw)$$0, fam.b().a(fal.a().a(fau.a($$1).a($$3).a(fau.a($$2)))).a(fal.a().a($$3).a(fau.a($$2).a(fbe.a($$4.b(dgq.x), 0.5714286F, 3)))));
    }
 
-   protected ezy.a o(dmr $$0) {
-      return ezy.b().a(ezx.a().a(this.c()).a(fag.a($$0).a(fby.a(fdv.a(2.0F)))));
+   protected fam.a o(dnc $$0) {
+      return fam.b().a(fal.a().a(this.c()).a(fau.a($$0).a(fcm.a(fej.a(2.0F)))));
    }
 
-   protected ezy.a a(dmr $$0, dmr $$1) {
-      jh.b<dmr> $$2 = this.a.e(mh.i);
-      faj.a<?> $$3 = fag.a($$1).a(fby.a(fdv.a(2.0F))).a(this.c()).a(((fal.a)this.a((djl)$$0, fag.a(czr.qj))).a(fdh.a(0.125F)));
-      return ezy.b()
-         .a(ezx.a().a($$3).a(fdb.a($$0).a(dr.a.a().a(dpa.b, ebp.b))).a(fda.a(cu.a.a().a(az.a.a().a($$2, $$0).a(dr.a.a().a(dpa.b, ebp.a))), new iv(0, 1, 0))))
-         .a(ezx.a().a($$3).a(fdb.a($$0).a(dr.a.a().a(dpa.b, ebp.a))).a(fda.a(cu.a.a().a(az.a.a().a($$2, $$0).a(dr.a.a().a(dpa.b, ebp.b))), new iv(0, -1, 0))));
+   protected fam.a a(dnc $$0, dnc $$1) {
+      jh.b<dnc> $$2 = this.a.e(mh.i);
+      fax.a<?> $$3 = fau.a($$1).a(fcm.a(fej.a(2.0F))).a(this.c()).a(((faz.a)this.a((djw)$$0, fau.a(dac.qj))).a(fdv.a(0.125F)));
+      return fam.b()
+         .a(fal.a().a($$3).a(fdp.a($$0).a(dr.a.a().a(dpl.b, eca.b))).a(fdo.a(cu.a.a().a(az.a.a().a($$2, $$0).a(dr.a.a().a(dpl.b, eca.a))), new iv(0, 1, 0))))
+         .a(fal.a().a($$3).a(fdp.a($$0).a(dr.a.a().a(dpl.b, eca.a))).a(fdo.a(cu.a.a().a(az.a.a().a($$2, $$0).a(dr.a.a().a(dpl.b, eca.b))), new iv(0, -1, 0))));
    }
 
-   protected ezy.a p(dmr $$0) {
-      return ezy.b()
+   protected fam.a p(dnc $$0) {
+      return fam.b()
          .a(
-            ezx.a()
-               .a(fdv.a(1.0F))
+            fal.a()
+               .a(fej.a(1.0F))
                .a(
-                  (faj.a<?>)this.a(
-                     $$0, fag.a($$0).a(List.of(2, 3, 4), $$1 -> fby.a(fdv.a((float)$$1.intValue())).a(fdb.a($$0).a(dr.a.a().a(dni.f, $$1.intValue()))))
+                  (fax.a<?>)this.a(
+                     $$0, fau.a($$0).a(List.of(2, 3, 4), $$1 -> fcm.a(fej.a((float)$$1.intValue())).a(fdp.a($$0).a(dr.a.a().a(dnt.f, $$1.intValue()))))
                   )
                )
          );
    }
 
-   public ezy.a q(dmr $$0) {
-      return $$0 instanceof dty $$1
-         ? ezy.b()
+   public fam.a q(dnc $$0) {
+      return $$0 instanceof duj $$1
+         ? fam.b()
             .a(
-               ezx.a()
-                  .a(fdv.a(1.0F))
+               fal.a()
+                  .a(fej.a(1.0F))
                   .a(
-                     (faj.a<?>)this.a(
+                     (fax.a<?>)this.a(
                         $$0,
-                        fag.a($$0)
+                        fau.a($$0)
                            .a(
                               IntStream.rangeClosed(1, 4).boxed().toList(),
-                              $$2 -> fby.a(fdv.a((float)$$2.intValue())).a(fdb.a($$0).a(dr.a.a().a($$1.c(), $$2.intValue())))
+                              $$2 -> fcm.a(fej.a((float)$$2.intValue())).a(fdp.a($$0).a(dr.a.a().a($$1.c(), $$2.intValue())))
                            )
                      )
                   )
@@ -286,31 +286,31 @@ public abstract class ni implements nl {
          : d();
    }
 
-   protected static ezy.a r(dmr $$0) {
-      return ezy.b().a(ezx.a().a(fdv.a(1.0F)).a(fag.a($$0)));
+   protected static fam.a r(dnc $$0) {
+      return fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a($$0)));
    }
 
-   public static ezy.a d() {
-      return ezy.b();
+   public static fam.a d() {
+      return fam.b();
    }
 
    protected abstract void e();
 
    @Override
-   public void generate(BiConsumer<alf<ezy>, ezy.a> $$0) {
+   public void generate(BiConsumer<alh<fam>, fam.a> $$0) {
       this.e();
-      Set<alf<ezy>> $$1 = new HashSet<>();
+      Set<alh<fam>> $$1 = new HashSet<>();
 
-      for (dmr $$2 : mg.e) {
+      for (dnc $$2 : mg.e) {
          if ($$2.a(this.c)) {
             $$2.u().ifPresent($$3 -> {
-               if ($$1.add((alf<ezy>)$$3)) {
-                  ezy.a $$4 = this.d.remove($$3);
+               if ($$1.add((alh<fam>)$$3)) {
+                  fam.a $$4 = this.d.remove($$3);
                   if ($$4 == null) {
                      throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$3.a(), mg.e.b($$2)));
                   }
 
-                  $$0.accept((alf<ezy>)$$3, $$4);
+                  $$0.accept((alh<fam>)$$3, $$4);
                }
             });
          }
@@ -321,42 +321,42 @@ public abstract class ni implements nl {
       }
    }
 
-   protected void b(dmr $$0, dmr $$1) {
-      jh.b<dga> $$2 = this.a.e(mh.aR);
-      ezy.a $$3 = this.c($$0, fag.a($$0).a(fcr.a($$2.b(dgf.x), 0.33F, 0.55F, 0.77F, 1.0F)));
+   protected void b(dnc $$0, dnc $$1) {
+      jh.b<dgl> $$2 = this.a.e(mh.aR);
+      fam.a $$3 = this.c($$0, fau.a($$0).a(fdf.a($$2.b(dgq.x), 0.33F, 0.55F, 0.77F, 1.0F)));
       this.a($$0, $$3);
       this.a($$1, $$3);
    }
 
-   protected ezy.a s(dmr $$0) {
-      return this.a($$0, doy.c, ebp.b);
+   protected fam.a s(dnc $$0) {
+      return this.a($$0, dpj.c, eca.b);
    }
 
-   protected void t(dmr $$0) {
-      this.a($$0, $$0x -> this.e((djl)((dpy)$$0x).b()));
+   protected void t(dnc $$0) {
+      this.a($$0, $$0x -> this.e((djw)((dqj)$$0x).b()));
    }
 
-   protected void c(dmr $$0, dmr $$1) {
-      this.a($$0, this.d((djl)$$1));
+   protected void c(dnc $$0, dnc $$1) {
+      this.a($$0, this.d((djw)$$1));
    }
 
-   protected void c(dmr $$0, djl $$1) {
+   protected void c(dnc $$0, djw $$1) {
       this.a($$0, this.a($$1));
    }
 
-   protected void u(dmr $$0) {
+   protected void u(dnc $$0) {
       this.c($$0, $$0);
    }
 
-   protected void v(dmr $$0) {
-      this.c($$0, (djl)$$0);
+   protected void v(dnc $$0) {
+      this.c($$0, (djw)$$0);
    }
 
-   protected void a(dmr $$0, Function<dmr, ezy.a> $$1) {
+   protected void a(dnc $$0, Function<dnc, fam.a> $$1) {
       this.a($$0, $$1.apply($$0));
    }
 
-   protected void a(dmr $$0, ezy.a $$1) {
+   protected void a(dnc $$0, fam.a $$1) {
       this.d.put($$0.u().orElseThrow(() -> new IllegalStateException("Block " + $$0 + " does not have loot table")), $$1);
    }
 }

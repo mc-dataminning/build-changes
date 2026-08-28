@@ -1,59 +1,34 @@
-public interface fgo extends btz {
-   czn f();
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   default czn c(int $$0) {
-      return this.f().a($$0);
+public record fgo(String a, int b, @Nullable xa c, @Nullable yq d) {
+   public boolean a() {
+      return this.a.startsWith("#");
    }
 
-   void b(czn var1);
-
-   default czn h() {
-      return this.c(this.ak_());
+   public xa b() {
+      return (xa)(this.c != null ? this.c : xa.b(this.c()));
    }
 
-   @Override
-   default int b() {
-      return 1;
+   public xo a(yq $$0) {
+      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
    }
 
-   @Override
-   default boolean c() {
-      return this.f().f();
+   public String c() {
+      return this.a;
    }
 
-   @Override
-   default void a() {
-      this.h();
+   public int d() {
+      return this.b;
    }
 
-   @Override
-   default czn b(int $$0) {
-      return this.a($$0, this.ak_());
+   @Nullable
+   public xa e() {
+      return this.c;
    }
 
-   @Override
-   default czn a(int $$0) {
-      return $$0 == 0 ? this.f() : czn.k;
-   }
-
-   @Override
-   default czn a(int $$0, int $$1) {
-      return $$0 != 0 ? czn.k : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, czn $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
-      }
-   }
-
-   public interface a extends fgo {
-      dxr t();
-
-      @Override
-      default boolean a(crm $$0) {
-         return btz.a(this.t(), $$0);
-      }
+   @Nullable
+   public yq f() {
+      return this.d;
    }
 }

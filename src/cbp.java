@@ -3,48 +3,46 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class cbp {
-   private static final int a = 200;
-
-   public static <E extends bxl> bzb<E> a(cbp.b<E> $$0) {
-      return a(($$0x, $$1) -> false, $$0, true);
+   public static bzm<byc> a(cgw<iv> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, ffq::c);
    }
 
-   public static <E extends bxl> bzb<E> a(cbp.a $$0) {
-      return a($$0, ($$0x, $$1, $$2) -> {
-      }, true);
+   public static caw<byc> b(cgw<? extends bwt> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, bwt::dt);
    }
 
-   public static <E extends bxl> bzb<E> a() {
-      return a(($$0, $$1) -> false, ($$0, $$1, $$2) -> {
-      }, true);
-   }
-
-   public static <E extends bxl> bzb<E> a(cbp.a $$0, cbp.b<E> $$1, boolean $$2) {
-      return ccn.a(
-         (Function<ccn.b<E>, ? extends App<ccn.c<E>, ccq<E>>>)($$3 -> $$3.group($$3.b(cgl.p), $$3.a(cgl.F)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  bxj $$9 = $$3.b($$4);
-                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bI() && $$9.dU() == $$7.dU() && !$$0.test($$6, $$9)) {
-                     return true;
+   private static <T> caw<byc> a(cgw<T> $$0, float $$1, int $$2, boolean $$3, Function<T, ffq> $$4) {
+      return ccy.a(
+         (Function<ccy.b<byc>, ? extends App<ccy.c<byc>, cdb<byc>>>)($$5 -> $$5.group($$5.a(cgw.n), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  Optional<cgz> $$10 = $$5.a($$5x);
+                  if ($$10.isPresent() && !$$3) {
+                     return false;
                   } else {
-                     $$1.accept($$6, (E)$$7, $$9);
-                     $$4.b();
-                     return true;
+                     ffq $$11 = $$8.dt();
+                     ffq $$12 = $$4.apply($$5.b($$6));
+                     if (!$$11.a((jp)$$12, (double)$$2)) {
+                        return false;
+                     } else {
+                        if ($$10.isPresent() && $$10.get().b() == $$1) {
+                           ffq $$13 = $$10.get().a().a().d($$11);
+                           ffq $$14 = $$12.d($$11);
+                           if ($$13.b($$14) < 0.0) {
+                              return false;
+                           }
+                        }
+
+                        for (int $$15 = 0; $$15 < 10; $$15++) {
+                           ffq $$16 = ciq.b($$8, 16, 7, $$12);
+                           if ($$16 != null) {
+                              $$5x.a(new cgz($$16, $$1, 0));
+                              break;
+                           }
+                        }
+
+                        return true;
+                     }
                   }
                }))
       );
-   }
-
-   private static boolean a(bxj $$0, Optional<Long> $$1) {
-      return $$1.isPresent() && $$0.dU().ae() - $$1.get() > 200L;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      boolean test(arq var1, bxj var2);
-   }
-
-   @FunctionalInterface
-   public interface b<E> {
-      void accept(arq var1, E var2, bxj var3);
    }
 }

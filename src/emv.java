@@ -1,16 +1,21 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emv implements emc {
-   public static final Codec<emv> a = ayu.c(eqr.c).fieldOf("features").xmap(emv::new, $$0 -> $$0.b).codec();
-   public final jj<eqr> b;
+public class emv extends emg {
+   public static final Codec<emv> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eoq.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
+               ayw.m.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
+               ayw.m.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, emv::new)
+   );
+   public final int d;
+   public final int e;
 
-   public emv(jj<eqr> $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public Stream<ejk<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public emv(eoq $$0, int $$1, int $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
    }
 }

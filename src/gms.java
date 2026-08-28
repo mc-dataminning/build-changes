@@ -1,87 +1,181 @@
-public class gms extends goz {
-   private final float a;
-   private final float b;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelException;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.socket.nio.NioSocketChannel;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   gms(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, hgi $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-   }
+public class gms {
+   private static final Logger a = LogUtils.getLogger();
+   private static final xa b = xa.c("multiplayer.status.cannot_connect").b(-65536);
+   private final List<vt> c = Collections.synchronizedList(Lists.newArrayList());
 
-   @Override
-   public god b() {
-      return god.a;
-   }
-
-   protected gms(gkq $$0, double $$1, double $$2, double $$3, hgi $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      hjq $$5 = $$4.a(this.r);
-      if ($$5 != null) {
-         this.a($$5);
+   public void a(final gmq $$0, final Runnable $$1, final Runnable $$2) throws UnknownHostException {
+      final gnt $$3 = gnt.a($$0.b);
+      Optional<InetSocketAddress> $$4 = gnv.a.a($$3).map(gns::d);
+      if ($$4.isEmpty()) {
+         this.a(fzc.b, $$0);
       } else {
-         this.a(fpt.Q().a(hjp.c).apply(hjf.c()));
+         final InetSocketAddress $$5 = $$4.get();
+         final vt $$6 = vt.a($$5, false, null);
+         this.c.add($$6);
+         $$0.d = xa.c("multiplayer.status.pinging");
+         $$0.i = Collections.emptyList();
+         akd $$7 = new akd() {
+            private boolean h;
+            private boolean i;
+            private long j;
+
+            @Override
+            public void a(ake $$0x) {
+               if (this.i) {
+                  $$6.a(xa.c("multiplayer.status.unrequested"));
+               } else {
+                  this.i = true;
+                  akf $$1 = $$0.b();
+                  $$0.d = $$1.a();
+                  $$1.c().ifPresentOrElse($$1xxx -> {
+                     $$0.h = xa.b($$1xxx.b());
+                     $$0.g = $$1xxx.c();
+                  }, () -> {
+                     $$0.h = xa.c("multiplayer.status.old");
+                     $$0.g = 0;
+                  });
+                  $$1.b().ifPresentOrElse($$1xxx -> {
+                     $$0.c = gms.a($$1xxx.b(), $$1xxx.a());
+                     $$0.e = $$1xxx;
+                     if (!$$1xxx.c().isEmpty()) {
+                        List<xa> $$2xx = new ArrayList<>($$1xxx.c().size());
+
+                        for (GameProfile $$3xx : $$1xxx.c()) {
+                           $$2xx.add(xa.b($$3xx.getName()));
+                        }
+
+                        if ($$1xxx.c().size() < $$1xxx.b()) {
+                           $$2xx.add(xa.a("multiplayer.status.and_more", $$1xxx.b() - $$1xxx.c().size()));
+                        }
+
+                        $$0.i = $$2xx;
+                     } else {
+                        $$0.i = List.of();
+                     }
+                  }, () -> $$0.c = xa.c("multiplayer.status.unknown").a(o.i));
+                  $$1.d().ifPresent($$2xx -> {
+                     if (!Arrays.equals($$2xx.a(), $$0.c())) {
+                        $$0.a(gmq.b($$2xx.a()));
+                        $$1.run();
+                     }
+                  });
+                  this.j = ag.c();
+                  $$6.a(new akb(this.j));
+                  this.h = true;
+               }
+            }
+
+            @Override
+            public void a(ajy $$0x) {
+               long $$1 = this.j;
+               long $$2 = ag.c();
+               $$0.f = $$2 - $$1;
+               $$6.a(xa.c("multiplayer.status.finished"));
+               $$2.run();
+            }
+
+            @Override
+            public void a(vv $$0x) {
+               if (!this.h) {
+                  gms.this.a($$0.a(), $$0);
+                  gms.this.a($$5, $$3, $$0);
+               }
+            }
+
+            @Override
+            public boolean c() {
+               return $$6.i();
+            }
+         };
+
+         try {
+            $$6.a($$3.a(), $$3.b(), $$7);
+            $$6.a(akh.a);
+         } catch (Throwable var10) {
+            a.error("Failed to ping server {}", $$3, var10);
+         }
       }
-
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
    }
 
-   @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
+   void a(xa $$0, gmq $$1) {
+      a.error("Can't ping {}: {}", $$1.b, $$0.getString());
+      $$1.d = b;
+      $$1.c = wz.a;
    }
 
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
+   void a(InetSocketAddress $$0, final gnt $$1, final gmq $$2) {
+      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)vt.e.get())).handler(new ChannelInitializer<Channel>() {
+         protected void initChannel(Channel $$0) {
+            try {
+               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
+            } catch (ChannelException var3) {
+            }
+
+            $$0.pipeline().addLast(new ChannelHandler[]{new gmj($$1, ($$1xx, $$2xx, $$3, $$4, $$5) -> {
+               $$2.a(gmq.b.d);
+               $$2.h = xa.b($$2xx);
+               $$2.d = xa.b($$3);
+               $$2.c = gms.a($$4, $$5);
+               $$2.e = new akf.b($$5, $$4, List.of());
+            })});
+         }
+      })).channel(NioSocketChannel.class)).connect($$0.getAddress(), $$0.getPort());
    }
 
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
+   public static xa a(int $$0, int $$1) {
+      xa $$2 = xa.b(Integer.toString($$0)).a(o.h);
+      xa $$3 = xa.b(Integer.toString($$1)).a(o.h);
+      return xa.a("multiplayer.status.player_count", $$2, $$3).a(o.i);
    }
 
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
+   public void a() {
+      synchronized (this.c) {
+         Iterator<vt> $$0 = this.c.iterator();
 
-   public static class a extends gms.b<mc> {
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gms($$1, $$2, $$3, $$4, this.a(new czn(czr.cT), $$1));
+         while ($$0.hasNext()) {
+            vt $$1 = $$0.next();
+            if ($$1.i()) {
+               $$1.b();
+            } else {
+               $$0.remove();
+               $$1.n();
+            }
+         }
       }
    }
 
-   public abstract static class b<T extends lw> implements goc<T> {
-      private final hgi a = new hgi();
+   public void b() {
+      synchronized (this.c) {
+         Iterator<vt> $$0 = this.c.iterator();
 
-      protected hgi a(czn $$0, gkq $$1) {
-         fpt.Q().bf().a(this.a, $$0, czl.h, $$1, null, 0);
-         return this.a;
-      }
-   }
-
-   public static class c extends gms.b<lu> {
-      public gnz a(lu $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gms($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$0.b(), $$1));
-      }
-   }
-
-   public static class d extends gms.b<mc> {
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gms($$1, $$2, $$3, $$4, this.a(new czn(czr.rG), $$1));
-      }
-   }
-
-   public static class e extends gms.b<mc> {
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gms($$1, $$2, $$3, $$4, this.a(new czn(czr.rs), $$1));
+         while ($$0.hasNext()) {
+            vt $$1 = $$0.next();
+            if ($$1.i()) {
+               $$0.remove();
+               $$1.a(xa.c("multiplayer.status.cancelled"));
+            }
+         }
       }
    }
 }

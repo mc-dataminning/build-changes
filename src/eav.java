@@ -1,167 +1,108 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public abstract class eav<O, S> {
-   public static final String b = "Name";
-   public static final String c = "Properties";
-   private static final Function<Entry<ebw<?>, Comparable<?>>, String> a = new Function<Entry<ebw<?>, Comparable<?>>, String>() {
-      public String a(@Nullable Entry<ebw<?>, Comparable<?>> $$0) {
-         if ($$0 == null) {
-            return "<NULL>";
-         } else {
-            ebw<?> $$1 = $$0.getKey();
-            return $$1.f() + "=" + this.a($$1, $$0.getValue());
-         }
-      }
-
-      private <T extends Comparable<T>> String a(ebw<T> $$0, Comparable<?> $$1) {
-         return $$0.b((T)$$1);
-      }
-   };
-   protected final O d;
-   private final Reference2ObjectArrayMap<ebw<?>, Comparable<?>> f;
-   private Map<ebw<?>, S[]> g;
-   protected final MapCodec<S> e;
-
-   protected eav(O $$0, Reference2ObjectArrayMap<ebw<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
-      this.d = $$0;
-      this.f = $$1;
-      this.e = $$2;
-   }
-
-   public <T extends Comparable<T>> S a(ebw<T> $$0) {
-      return this.b($$0, a($$0.a(), this.c($$0)));
-   }
-
-   protected static <T> T a(List<T> $$0, T $$1) {
-      int $$2 = $$0.indexOf($$1) + 1;
-      return $$2 == $$0.size() ? $$0.getFirst() : $$0.get($$2);
-   }
+public class eav extends dmo {
+   public static final MapCodec<eav> a = b(eav::new);
+   public static final ecc<jb> b = eax.a;
+   public static final ecc<ecg> c = eax.c;
 
    @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(this.d);
-      if (!this.G().isEmpty()) {
-         $$0.append('[');
-         $$0.append(this.G().entrySet().stream().map(a).collect(Collectors.joining(",")));
-         $$0.append(']');
-      }
-
-      return $$0.toString();
+   public MapCodec<eav> a() {
+      return a;
    }
 
-   @Override
-   public final boolean equals(Object $$0) {
-      return super.equals($$0);
-   }
-
-   @Override
-   public int hashCode() {
-      return super.hashCode();
-   }
-
-   public Collection<ebw<?>> F() {
-      return Collections.unmodifiableCollection(this.f.keySet());
-   }
-
-   public boolean b(ebw<?> $$0) {
-      return this.f.containsKey($$0);
-   }
-
-   public <T extends Comparable<T>> T c(ebw<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.d);
-      } else {
-         return $$0.g().cast($$1);
-      }
-   }
-
-   public <T extends Comparable<T>> Optional<T> d(ebw<T> $$0) {
-      return Optional.ofNullable(this.e($$0));
-   }
-
-   public <T extends Comparable<T>> T a(ebw<T> $$0, T $$1) {
-      return Objects.requireNonNullElse(this.e($$0), $$1);
+   public eav(ebd.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, jb.c).b(c, ecg.a));
    }
 
    @Nullable
-   private <T extends Comparable<T>> T e(ebw<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
-      return $$1 == null ? null : $$0.g().cast($$1);
+   @Override
+   public dyc a(iv $$0, ebe $$1) {
+      return null;
    }
 
-   public <T extends Comparable<T>, V extends T> S b(ebw<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.d);
-      } else {
-         return this.a($$0, $$1, $$2);
+   public static dyc a(iv $$0, ebe $$1, ebe $$2, jb $$3, boolean $$4, boolean $$5) {
+      return new eaz($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dyc> dyd<T> a(djx $$0, ebe $$1, dye<T> $$2) {
+      return a($$2, dye.l, eaz::a);
+   }
+
+   @Override
+   public void a(djy $$0, iv $$1, ebe $$2) {
+      iv $$3 = $$1.a($$2.c(b).g());
+      ebe $$4 = $$0.a_($$3);
+      if ($$4.b() instanceof eaw && $$4.c(eaw.c)) {
+         $$0.a($$3, false);
       }
    }
 
-   public <T extends Comparable<T>, V extends T> S c(ebw<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
-      return (S)($$2 == null ? this : this.a($$0, $$1, $$2));
-   }
-
-   private <T extends Comparable<T>, V extends T> S a(ebw<T> $$0, V $$1, Comparable<?> $$2) {
-      if ($$2.equals($$1)) {
-         return (S)this;
+   @Override
+   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
+      if (!$$1.C && $$1.c_($$2) == null) {
+         $$1.a($$2, false);
+         return bur.c;
       } else {
-         int $$3 = $$0.a((T)$$1);
-         if ($$3 < 0) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.d + ", it is not an allowed value");
-         } else {
-            return (S)this.g.get($$0)[$$3];
-         }
+         return bur.e;
       }
    }
 
-   public void a(Map<Map<ebw<?>, Comparable<?>>, S> $$0) {
-      if (this.g != null) {
-         throw new IllegalStateException();
-      } else {
-         Map<ebw<?>, S[]> $$1 = new Reference2ObjectArrayMap(this.f.size());
-         ObjectIterator var3 = this.f.entrySet().iterator();
-
-         while (var3.hasNext()) {
-            Entry<ebw<?>, Comparable<?>> $$2 = (Entry<ebw<?>, Comparable<?>>)var3.next();
-            ebw<?> $$3 = $$2.getKey();
-            $$1.put($$3, $$3.a().stream().map($$2x -> $$0.get(this.d($$3, $$2x))).toArray());
-         }
-
-         this.g = $$1;
-      }
+   @Override
+   protected List<czy> a(ebe $$0, fak.a $$1) {
+      eaz $$2 = this.a($$1.a(), iv.a($$1.a(fdb.f)));
+      return $$2 == null ? Collections.emptyList() : $$2.j().a($$1);
    }
 
-   private Map<ebw<?>, Comparable<?>> d(ebw<?> $$0, Comparable<?> $$1) {
-      Map<ebw<?>, Comparable<?>> $$2 = new Reference2ObjectArrayMap(this.f);
-      $$2.put($$0, $$1);
-      return $$2;
+   @Override
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return fgh.a();
    }
 
-   public Map<ebw<?>, Comparable<?>> G() {
-      return this.f;
+   @Override
+   protected fgk b(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      eaz $$4 = this.a($$1, $$2);
+      return $$4 != null ? $$4.a($$1, $$2) : fgh.a();
    }
 
-   protected static <O, S extends eav<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
-      return $$0.dispatch("Name", $$0x -> $$0x.d, $$1x -> {
-         S $$2 = $$1.apply((O)$$1x);
-         return $$2.G().isEmpty() ? MapCodec.unit($$2) : $$2.e.codec().lenientOptionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of);
-      });
+   @Nullable
+   private eaz a(djb $$0, iv $$1) {
+      dyc $$2 = $$0.c_($$1);
+      return $$2 instanceof eaz ? (eaz)$$2 : null;
+   }
+
+   @Override
+   protected dtp a_(ebe $$0) {
+      return dtp.a;
+   }
+
+   @Override
+   protected czy a(dka $$0, iv $$1, ebe $$2, boolean $$3) {
+      return czy.k;
+   }
+
+   @Override
+   protected ebe a(ebe $$0, dtw $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected ebe a(ebe $$0, dsf $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected boolean a(ebe $$0, eyd $$1) {
+      return false;
    }
 }

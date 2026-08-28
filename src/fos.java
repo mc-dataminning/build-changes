@@ -1,66 +1,62 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class fos extends hrm {
+   private final gad a;
+   private final fos.a b;
+   private fve c = fve.a;
 
-public class fos extends foq {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wy c = wy.c("mco.configure.world.opening");
-   private final flu d;
-   private final fys e;
-   private final boolean f;
-   private final fpt g;
+   public fos(fnz $$0, gad $$1) {
+      super(fqu.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
 
-   public fos(flu $$0, fys $$1, boolean $$2, fpt $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public fos(xa $$0, gad $$1) {
+      super(fqu.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
+
+   public fos(xa $$0, xa $$1, gad $$2) {
+      super(fqu.a);
+      this.a = $$2;
+      this.b = a($$0, $$1);
+   }
+
+   private static fos.a a(fnz $$0) {
+      fmf $$1 = $$0.a;
+      return a(xa.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
+   }
+
+   private static fos.a a(xa $$0) {
+      return a(xa.c("mco.errorMessage.generic"), $$0);
+   }
+
+   private static fos.a a(xa $$0, xa $$1) {
+      return new fos.a($$0, $$1);
    }
 
    @Override
-   public void run() {
-      fkt $$0 = fkt.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
-         try {
-            boolean $$2 = $$0.f(this.d.a);
-            if ($$2) {
-               this.g.execute(() -> {
-                  if (this.e instanceof fnd) {
-                     ((fnd)this.e).f();
-                  }
-
-                  this.d.e = flu.c.b;
-                  if (this.f) {
-                     fko.a(this.d, this.e);
-                  } else {
-                     this.g.a(this.e);
-                  }
-               });
-               break;
-            }
-         } catch (fmq var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to open server", var5);
-            this.a(var5);
-         }
-      }
+   public void aS_() {
+      this.c(ful.a(wz.h, $$0 -> this.aP_()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
+      this.c = fve.a(this.p, this.b.b, this.n * 3 / 4);
    }
 
    @Override
-   public wy a() {
-      return c;
+   public void aP_() {
+      this.m.a(this.a);
+   }
+
+   @Override
+   public xa i() {
+      return xa.i().b(this.b.a).f(": ").b(this.b.b);
+   }
+
+   @Override
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
+      this.c.a($$0, this.n / 2, 100, 9, -2142128);
+   }
+
+   static record a(xa a, xa b) {
    }
 }

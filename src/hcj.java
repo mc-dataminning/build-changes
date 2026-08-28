@@ -1,17 +1,42 @@
-public class hcj extends hef {
-   public bxa e = bxa.b;
-   public ghd.a f = ghd.a.a;
-   public final hgi g = new hgi();
-   public ghd.a h = ghd.a.a;
-   public final hgi i = new hgi();
-
-   public hgi aT_() {
-      return this.e == bxa.b ? this.g : this.i;
+public class hcj extends hcw<hey, gie> {
+   public hcj(haf<hey, gie> $$0) {
+      super($$0);
    }
 
-   public static void a(bxj $$0, hcj $$1, hgg $$2) {
-      $$1.e = $$0.fx();
-      $$2.a($$1.g, $$0.a(bxa.b), czl.c, $$0);
-      $$2.a($$1.i, $$0.a(bxa.a), czl.b, $$0);
+   public void a(flo $$0, gsa $$1, int $$2, hey $$3, float $$4, float $$5) {
+      hhs $$6 = $$3.i;
+      if (!$$6.c()) {
+         boolean $$7 = $$3.d;
+         boolean $$8 = $$3.aj;
+         $$0.a();
+         $$0.a(this.d().b.b / 16.0F, this.d().b.c / 16.0F, this.d().b.d / 16.0F);
+         if ($$8) {
+            float $$9 = 0.75F;
+            $$0.b(0.75F, 0.75F, 0.75F);
+         }
+
+         $$0.a(a.f.rotation($$3.a));
+         $$0.a(a.d.rotationDegrees($$4));
+         $$0.a(a.b.rotationDegrees($$5));
+         if ($$3.aj) {
+            if ($$7) {
+               $$0.a(0.4F, 0.26F, 0.15F);
+            } else {
+               $$0.a(0.06F, 0.26F, -0.5F);
+            }
+         } else if ($$7) {
+            $$0.a(0.46F, 0.26F, 0.22F);
+         } else {
+            $$0.a(0.06F, 0.27F, -0.5F);
+         }
+
+         $$0.a(a.b.rotationDegrees(90.0F));
+         if ($$7) {
+            $$0.a(a.f.rotationDegrees(90.0F));
+         }
+
+         $$6.a($$0, $$1, $$2, hkq.d);
+         $$0.b();
+      }
    }
 }

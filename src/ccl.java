@@ -1,48 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class ccl extends bza<cqy> {
-   private static final int c = 300;
-   private static final double d = 1.73;
-   private long e;
+public class ccl {
+   public static bzm<bxu> a(dnc $$0) {
+      return ccy.a(
+         (Function<ccy.b<bxu>, ? extends App<ccy.c<bxu>, cdb<bxu>>>)($$1 -> $$1.group($$1.c(cgw.p), $$1.b(cgw.n), $$1.b(cgw.Z))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
+                     if (!$$3x.bi() && $$3x.aH()) {
+                        iv $$5 = $$3x.dv().e();
 
-   public ccl() {
-      super(ImmutableMap.of(cgl.c, cgm.a, cgl.o, cgm.c));
-   }
+                        for (jb $$6 : jb.c.a) {
+                           iv $$7 = $$5.a($$6);
+                           if ($$2x.a_($$7).g($$2x, $$7).a(jb.b).c() && $$2x.b_($$7).b(exp.c)) {
+                              iv $$8 = $$7.d();
+                              if ($$2x.a_($$8).l()) {
+                                 ebe $$9 = $$0.m();
+                                 $$2x.a($$8, $$9, 3);
+                                 $$2x.a(ege.i, $$8, ege.a.a($$3x, $$9));
+                                 $$2x.a(null, $$3x, awp.kt, awq.e, 1.0F, 1.0F);
+                                 $$3.b();
+                                 return true;
+                              }
+                           }
+                        }
 
-   protected boolean b(arq $$0, cqy $$1) {
-      if ($$0.ae() - this.e < 300L) {
-         return false;
-      } else if ($$0.A.a(2) != 0) {
-         return false;
-      } else {
-         this.e = $$0.ae();
-         je $$2 = $$1.eb().c(cgl.c).get();
-         return $$2.a() == $$0.aj() && $$2.b().a($$1.ds(), 1.73);
-      }
-   }
-
-   protected void a(arq $$0, cqy $$1, long $$2) {
-      byj<cqy> $$3 = $$1.eb();
-      $$3.a(cgl.K, $$2);
-      $$3.c(cgl.c).ifPresent($$1x -> $$3.a(cgl.o, new bzd($$1x.b())));
-      $$1.gI();
-      this.a($$0, $$1);
-      if ($$1.gG()) {
-         $$1.gF();
-      }
-   }
-
-   protected void a(arq $$0, cqy $$1) {
-   }
-
-   protected boolean b(arq $$0, cqy $$1, long $$2) {
-      Optional<je> $$3 = $$1.eb().c(cgl.c);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         je $$4 = $$3.get();
-         return $$4.a() == $$0.aj() && $$4.b().a($$1.ds(), 1.73);
-      }
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

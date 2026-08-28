@@ -1,25 +1,30 @@
-import java.util.Arrays;
+public class gca extends gar {
+   private final diw u;
 
-public class gca extends gby {
-   private static final wy a = wy.c("options.sounds.title");
-
-   private static fpw<?>[] a(fpx $$0) {
-      return new fpw[]{$$0.Z(), $$0.aa()};
-   }
-
-   public gca(fys $$0, fpx $$1) {
-      super($$0, $$1, a);
+   public gca(diw $$0) {
+      this.u = $$0;
    }
 
    @Override
-   protected void m() {
-      this.d.a(this.c.b(awo.a));
-      this.d.a(this.H());
-      this.d.a(this.c.aw());
-      this.d.a(a(this.c));
+   public diw m() {
+      return this.u;
    }
 
-   private fpw<?>[] H() {
-      return Arrays.stream(awo.values()).filter($$0 -> $$0 != awo.a).map($$0 -> this.c.b($$0)).toArray(fpw[]::new);
+   @Override
+   int E() {
+      return 150;
+   }
+
+   @Override
+   protected void aS_() {
+      super.aS_();
+      this.a.a(this.m().m());
+   }
+
+   @Override
+   protected void a(diw $$0) {
+      if ($$0 instanceof cuu.a $$1) {
+         this.m.L().b(new aik($$1.h().ao(), this.a.a(), $$0.p()));
+      }
    }
 }

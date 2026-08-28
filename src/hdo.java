@@ -1,10 +1,8 @@
-public class hdo extends hdu {
-   public float a;
-   public float b;
-   public boolean c;
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public cjo.v h = cjo.v.a;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface hdo {
 }

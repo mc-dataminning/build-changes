@@ -1,11 +1,8 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface feh {
-   @Nullable
-   fgg a(ezt var1);
-
-   feg a();
-
-   Set<bax<?>> b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface feh {
 }

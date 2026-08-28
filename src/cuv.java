@@ -1,107 +1,126 @@
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+public class cuv extends cuk {
+   private static final akl<Boolean> c = akp.a(cuv.class, akn.k);
+   private static final int d = 3600;
+   private static final int h = 32000;
+   private static final short i = 0;
+   private static final ffq j = ffq.c;
+   private int k = 0;
+   public ffq b = j;
 
-public class cuv {
-   private static final Logger a = LogUtils.getLogger();
-   private final cux b;
-   private final Map<alg, cuu> c;
-   private final cuw d;
-
-   cuv(cux $$0, cuw $$1, Map<alg, cuu> $$2) {
-      this.b = $$0;
-      this.c = $$2;
-      this.d = $$1;
+   public cuv(bxc<? extends cuv> $$0, djx $$1) {
+      super($$0, $$1);
    }
 
-   public boolean a(cuw $$0) {
-      return $$0.a(this.d);
+   @Override
+   public boolean z() {
+      return true;
    }
 
-   public cuw a() {
-      return this.d;
+   @Override
+   protected void a(akp.a $$0) {
+      super.a($$0);
+      $$0.a(c, false);
    }
 
-   public cuw a(Iterable<alg> $$0) {
-      return this.a($$0, $$0x -> a.warn("Unknown feature flag: {}", $$0x));
-   }
-
-   public cuw a(cuu... $$0) {
-      return cuw.a(this.b, Arrays.asList($$0));
-   }
-
-   public cuw a(Iterable<alg> $$0, Consumer<alg> $$1) {
-      Set<cuu> $$2 = Sets.newIdentityHashSet();
-
-      for (alg $$3 : $$0) {
-         cuu $$4 = this.c.get($$3);
-         if ($$4 == null) {
-            $$1.accept($$3);
-         } else {
-            $$2.add($$4);
+   @Override
+   public void h() {
+      super.h();
+      if (!this.dV().A_()) {
+         if (this.k > 0) {
+            this.k--;
          }
-      }
 
-      return cuw.a(this.b, $$2);
-   }
-
-   public Set<alg> b(cuw $$0) {
-      Set<alg> $$1 = new HashSet<>();
-      this.c.forEach(($$2, $$3) -> {
-         if ($$0.b($$3)) {
-            $$1.add($$2);
+         if (this.k <= 0) {
+            this.b = ffq.c;
          }
-      });
-      return $$1;
-   }
 
-   public Codec<cuw> b() {
-      return alg.a.listOf().comapFlatMap($$0 -> {
-         Set<alg> $$1 = new HashSet<>();
-         cuw $$2 = this.a($$0, $$1::add);
-         return !$$1.isEmpty() ? DataResult.error(() -> "Unknown feature ids: " + $$1, $$2) : DataResult.success($$2);
-      }, $$0 -> List.copyOf(this.b($$0)));
-   }
-
-   public static class a {
-      private final cux a;
-      private int b;
-      private final Map<alg, cuu> c = new LinkedHashMap<>();
-
-      public a(String $$0) {
-         this.a = new cux($$0);
+         this.q(this.k > 0);
       }
 
-      public cuu a(String $$0) {
-         return this.a(alg.b($$0));
+      if (this.q() && this.ae.a(4) == 0) {
+         this.dV().a(ly.aa, this.dA(), this.dC() + 0.8, this.dG(), 0.0, 0.0, 0.0);
       }
+   }
 
-      public cuu a(alg $$0) {
-         if (this.b >= 64) {
-            throw new IllegalStateException("Too many feature flags");
-         } else {
-            cuu $$1 = new cuu(this.a, this.b++);
-            cuu $$2 = this.c.put($$0, $$1);
-            if ($$2 != null) {
-               throw new IllegalStateException("Duplicate feature flag " + $$0);
-            } else {
-               return $$1;
-            }
+   @Override
+   protected double a(ars $$0) {
+      return this.bi() ? super.a($$0) * 0.75 : super.a($$0) * 0.5;
+   }
+
+   @Override
+   protected czu o() {
+      return dac.ox;
+   }
+
+   @Override
+   public czy dI() {
+      return new czy(dac.ox);
+   }
+
+   @Override
+   protected ffq a(ffq $$0) {
+      ffq $$1;
+      if (this.b.h() > 1.0E-7) {
+         this.b = this.k($$0);
+         $$1 = $$0.d(0.8, 0.0, 0.8).e(this.b);
+         if (this.bi()) {
+            $$1 = $$1.c(0.1);
          }
+      } else {
+         $$1 = $$0.d(0.98, 0.0, 0.98);
       }
 
-      public cuv a() {
-         cuw $$0 = cuw.a(this.a, this.c.values());
-         return new cuv(this.a, $$0, Map.copyOf(this.c));
+      return super.a($$1);
+   }
+
+   private ffq k(ffq $$0) {
+      double $$1 = 1.0E-4;
+      double $$2 = 0.001;
+      return this.b.j() > 1.0E-4 && $$0.j() > 0.001 ? this.b.i($$0).d().c(this.b.g()) : this.b;
+   }
+
+   @Override
+   public bur a(crx $$0, buq $$1) {
+      czy $$2 = $$0.b($$1);
+      if ($$2.a(axm.bQ) && this.k + 3600 <= 32000) {
+         $$2.a(1, $$0);
+         this.k += 3600;
       }
+
+      if (this.k > 0) {
+         this.b = this.dt().d($$0.dt()).f();
+      }
+
+      return bur.a;
+   }
+
+   @Override
+   protected void b(tz $$0) {
+      super.b($$0);
+      $$0.a("PushX", this.b.d);
+      $$0.a("PushZ", this.b.f);
+      $$0.a("Fuel", (short)this.k);
+   }
+
+   @Override
+   protected void a(tz $$0) {
+      super.a($$0);
+      double $$1 = $$0.b("PushX", j.d);
+      double $$2 = $$0.b("PushZ", j.f);
+      this.b = new ffq($$1, 0.0, $$2);
+      this.k = $$0.b("Fuel", (short)0);
+   }
+
+   protected boolean q() {
+      return this.al.a(c);
+   }
+
+   protected void q(boolean $$0) {
+      this.al.a(c, $$0);
+   }
+
+   @Override
+   public ebe v() {
+      return dne.cO.m().b(dqn.a, jb.c).b(dqn.b, Boolean.valueOf(this.q()));
    }
 }

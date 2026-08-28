@@ -1,32 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dnm extends dmr {
+public class dnm extends dwo implements dnf {
    public static final MapCodec<dnm> a = b(dnm::new);
-   private static final wy b = wy.c("container.cartography_table");
+   private static final fgk b = dnc.b(16.0, 0.0, 13.0);
 
    @Override
    public MapCodec<dnm> a() {
       return a;
    }
 
-   protected dnm(eas.d $$0) {
+   protected dnm(ebd.d $$0) {
       super($$0);
    }
 
    @Override
-   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awx.aw);
-      }
-
-      return bug.a;
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return b;
    }
 
-   @Nullable
    @Override
-   protected bui b(eat $$0, djm $$1, iv $$2) {
-      return new buo(($$2x, $$3, $$4) -> new cvn($$2x, $$3, cvs.a($$1, $$2)), b);
+   public boolean a(dka $$0, iv $$1, ebe $$2) {
+      return dnf.a_($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(djx $$0, azx $$1, iv $$2, ebe $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ars $$0, azx $$1, iv $$2, ebe $$3) {
+      dnf.a((djx)$$0, $$2, $$3).ifPresent($$1x -> $$0.b($$1x, this.m()));
    }
 }

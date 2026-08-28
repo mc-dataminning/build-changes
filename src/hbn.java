@@ -1,26 +1,33 @@
-public class hbn extends hbm<hex, gig> {
-   private static final alg a = alg.b("textures/entity/sheep/sheep_wool.png");
-   private final ggp<hex> b;
-   private final ggp<hex> c;
-
-   public hbn(gyv<hex, gig> $$0, gjp $$1) {
-      super($$0);
-      this.b = new gif($$1.a(gjs.cQ));
-      this.c = new gif($$1.a(gjs.cP));
+public class hbn extends gxc<cmm, hhe, gkt> {
+   public hbn(gyi.a $$0) {
+      super($$0, new gkt($$0.a(gld.eb)), new gkt($$0.a(gld.ed)), 0.5F);
+      this.a(new hdl(this, $$0.f(), $$0.h()));
+      this.a(new hdm(this));
    }
 
-   public void a(fkd $$0, gqr $$1, int $$2, hex $$3, float $$4, float $$5) {
-      if (!$$3.c) {
-         ggp<hex> $$6 = $$3.aj ? this.c : this.b;
-         if ($$3.z) {
-            if ($$3.ao) {
-               $$6.a($$3);
-               fkh $$7 = $$1.getBuffer(grc.s(a));
-               $$6.a($$0, $$7, $$2, gxz.a($$3, 0.0F), -16777216);
-            }
-         } else {
-            a($$6, a, $$0, $$1, $$2, $$3, $$3.a());
-         }
-      }
+   protected int a(hhe $$0) {
+      float $$1 = $$0.f;
+      return $$1 == 1.0F ? -1 : axy.a(1.0F, $$1, $$1, $$1);
+   }
+
+   public ali b(hhe $$0) {
+      return $$0.g;
+   }
+
+   public hhe b() {
+      return new hhe();
+   }
+
+   public void a(cmm $$0, hhe $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.ae_();
+      $$1.b = $$0.x();
+      $$1.c = $$0.gI();
+      $$1.d = $$0.L($$2);
+      $$1.e = $$0.K($$2);
+      $$1.g = $$0.gG();
+      $$1.f = $$0.J($$2);
+      $$1.h = $$0.q() ? $$0.gJ() : null;
+      $$1.i = $$0.fY().v();
    }
 }

@@ -1,35 +1,31 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvf extends dpe implements dmu {
-   public static final MapCodec<dvf> b = b(dvf::new);
-   private static final ffw c = dmr.b(14.0, 0.0, 16.0);
+public class dvf extends dri implements dmt {
+   public static final MapCodec<dvf> h = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cyw.q.fieldOf("color").forGetter(dvf::b), t()).apply($$0, dvf::new));
+   private final cyw i;
 
    @Override
    public MapCodec<dvf> a() {
-      return b;
+      return h;
    }
 
-   protected dvf(eas.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return c;
-   }
-
-   @Override
-   public boolean a(djp $$0, iv $$1, eat $$2) {
-      return dmu.a_($$0, $$1, dmt.bE.m());
-   }
-
-   @Override
-   public boolean a(djm $$0, azv $$1, iv $$2, eat $$3) {
-      return true;
+   public dvf(cyw $$0, ebd.d $$1) {
+      super($$1);
+      this.i = $$0;
+      this.l(
+         this.C
+            .b()
+            .b(a, Boolean.valueOf(false))
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   public void a(arq $$0, azv $$1, iv $$2, eat $$3) {
-      dmu.a((djm)$$0, $$2, dmt.bE.m()).ifPresent($$1x -> $$0.b($$1x, dmt.bE.m()));
+   public cyw b() {
+      return this.i;
    }
 }

@@ -1,21 +1,7 @@
-public enum brz {
-   a("pathfinding"),
-   b("event-loops"),
-   c("consecutive-executors"),
-   d("ticking"),
-   e("jvm"),
-   f("chunk rendering"),
-   g("chunk rendering dispatching"),
-   h("cpu"),
-   i("gpu");
+import jdk.jfr.consumer.RecordedEvent;
 
-   private final String j;
-
-   private brz(final String $$0) {
-      this.j = $$0;
-   }
-
-   public String a() {
-      return this.j;
+public record brz(double a, double b, double c) {
+   public static brz a(RecordedEvent $$0) {
+      return new brz((double)$$0.getFloat("jvmSystem"), (double)$$0.getFloat("jvmUser"), (double)$$0.getFloat("machineTotal"));
    }
 }

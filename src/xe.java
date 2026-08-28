@@ -1,166 +1,160 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.BitSet;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public interface xe {
-   Codec<xe> a = xe.a.e.dispatch("action", xe::a, $$0 -> $$0.h);
+public class xe {
+   public static final Codec<xe> a = bam.a(xe.a::values).dispatch(xe::c, xe.a::a);
+   public static final xe b = new xe(new BitSet(0), xe.a.b);
+   public static final xe c = new xe(new BitSet(0), xe.a.a);
+   public static final xx d = xx.a.a(o.i).a(new xg.e(xa.c("chat.filtered")));
+   static final MapCodec<xe> e = MapCodec.unit(c);
+   static final MapCodec<xe> f = MapCodec.unit(b);
+   static final MapCodec<xe> g = ayw.w.xmap(xe::new, xe::d).fieldOf("value");
+   private static final char h = '#';
+   private final BitSet i;
+   private final xe.a j;
 
-   xe.a a();
+   private xe(BitSet $$0, xe.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
+   }
 
-   public static enum a implements bak {
-      a("show_text", true, xe.e.b),
-      b("show_item", true, xe.d.b),
-      c("show_entity", true, xe.c.b);
+   private xe(BitSet $$0) {
+      this.i = $$0;
+      this.j = xe.a.c;
+   }
 
-      public static final Codec<xe.a> d = bak.b(xe.a::values);
-      public static final Codec<xe.a> e = d.validate(xe.a::a);
-      private final String f;
-      private final boolean g;
-      final MapCodec<? extends xe> h;
+   public xe(int $$0) {
+      this(new BitSet($$0), xe.a.c);
+   }
 
-      private a(final String $$0, final boolean $$1, final MapCodec<? extends xe> $$2) {
-         this.f = $$0;
-         this.g = $$1;
-         this.h = $$2;
+   private xe.a c() {
+      return this.j;
+   }
+
+   private BitSet d() {
+      return this.i;
+   }
+
+   public static xe a(vw $$0) {
+      xe.a $$1 = $$0.b(xe.a.class);
+
+      return switch ($$1) {
+         case a -> c;
+         case b -> b;
+         case c -> new xe($$0.w(), xe.a.c);
+      };
+   }
+
+   public static void a(vw $$0, xe $$1) {
+      $$0.a($$1.j);
+      if ($$1.j == xe.a.c) {
+         $$0.a($$1.i);
       }
+   }
 
-      public boolean a() {
-         return this.g;
+   public void a(int $$0) {
+      this.i.set($$0);
+   }
+
+   @Nullable
+   public String a(String $$0) {
+      return switch (this.j) {
+         case a -> $$0;
+         case b -> null;
+         case c -> {
+            char[] $$1 = $$0.toCharArray();
+
+            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
+               if (this.i.get($$2)) {
+                  $$1[$$2] = '#';
+               }
+            }
+
+            yield new String($$1);
+         }
+      };
+   }
+
+   @Nullable
+   public xa b(String $$0) {
+      return switch (this.j) {
+         case a -> xa.b($$0);
+         case b -> null;
+         case c -> {
+            xo $$1 = xa.i();
+            int $$2 = 0;
+            boolean $$3 = this.i.get(0);
+
+            while (true) {
+               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
+               $$4 = $$4 < 0 ? $$0.length() : $$4;
+               if ($$4 == $$2) {
+                  yield $$1;
+               }
+
+               if ($$3) {
+                  $$1.b(xa.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
+               } else {
+                  $$1.f($$0.substring($$2, $$4));
+               }
+
+               $$3 = !$$3;
+               $$2 = $$4;
+            }
+         }
+      };
+   }
+
+   public boolean a() {
+      return this.j == xe.a.a;
+   }
+
+   public boolean b() {
+      return this.j == xe.a.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         xe $$1 = (xe)$$0;
+         return this.i.equals($$1.i) && this.j == $$1.j;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.i.hashCode();
+      return 31 * $$0 + this.j.hashCode();
+   }
+
+   static enum a implements bam {
+      a("pass_through", () -> xe.e),
+      b("fully_filtered", () -> xe.f),
+      c("partially_filtered", () -> xe.g);
+
+      private final String d;
+      private final Supplier<MapCodec<xe>> e;
+
+      private a(final String $$0, final Supplier<MapCodec<xe>> $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
       @Override
       public String c() {
-         return this.f;
+         return this.d;
       }
 
-      @Override
-      public String toString() {
-         return "<action " + this.f + ">";
-      }
-
-      private static DataResult<xe.a> a(xe.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
-      }
-   }
-
-   public static class b {
-      public static final MapCodec<xe.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  mg.f.q().fieldOf("id").forGetter($$0x -> $$0x.b),
-                  jz.f.fieldOf("uuid").forGetter($$0x -> $$0x.c),
-                  xa.a.optionalFieldOf("name").forGetter($$0x -> $$0x.d)
-               )
-               .apply($$0, xe.b::new)
-      );
-      public final bwr<?> b;
-      public final UUID c;
-      public final Optional<wy> d;
-      @Nullable
-      private List<wy> e;
-
-      public b(bwr<?> $$0, UUID $$1, @Nullable wy $$2) {
-         this($$0, $$1, Optional.ofNullable($$2));
-      }
-
-      public b(bwr<?> $$0, UUID $$1, Optional<wy> $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public List<wy> a() {
-         if (this.e == null) {
-            this.e = new ArrayList<>();
-            this.d.ifPresent(this.e::add);
-            this.e.add(wy.a("gui.entity_tooltip.type", this.b.h()));
-            this.e.add(wy.b(this.c.toString()));
-         }
-
-         return this.e;
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            xe.b $$1 = (xe.b)$$0;
-            return this.b.equals($$1.b) && this.c.equals($$1.c) && this.d.equals($$1.d);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         int $$0 = this.b.hashCode();
-         $$0 = 31 * $$0 + this.c.hashCode();
-         return 31 * $$0 + this.d.hashCode();
-      }
-   }
-
-   public static record c(xe.b c) implements xe {
-      public static final MapCodec<xe.c> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(xe.b.a.forGetter(xe.c::b)).apply($$0, xe.c::new));
-
-      @Override
-      public xe.a a() {
-         return xe.a.c;
-      }
-
-      public xe.b b() {
-         return this.c;
-      }
-   }
-
-   public static record d(czn c) implements xe {
-      public static final MapCodec<xe.d> b = czn.a.xmap(xe.d::new, xe.d::b);
-
-      public d(czn c) {
-         c = c.v();
-         this.c = c;
-      }
-
-      @Override
-      public xe.a a() {
-         return xe.a.b;
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if ($$0 instanceof xe.d $$1 && czn.a(this.c, $$1.c)) {
-            return true;
-         }
-
-         return false;
-      }
-
-      @Override
-      public int hashCode() {
-         return czn.b(this.c);
-      }
-
-      public czn b() {
-         return this.c;
-      }
-   }
-
-   public static record e(wy c) implements xe {
-      public static final MapCodec<xe.e> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(xa.a.fieldOf("value").forGetter(xe.e::b)).apply($$0, xe.e::new));
-
-      @Override
-      public xe.a a() {
-         return xe.a.a;
-      }
-
-      public wy b() {
-         return this.c;
+      private MapCodec<xe> a() {
+         return this.e.get();
       }
    }
 }

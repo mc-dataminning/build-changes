@@ -1,31 +1,88 @@
-public class fyl extends fys {
-   private static final wy a = wy.c("outOfMemory.title");
-   private static final wy b = wy.c("outOfMemory.message");
-   private static final int c = 300;
-   private final fwo d = new fwo(this);
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-   public fyl() {
-      super(a);
+public class fyl {
+   int a;
+   final Map<fyl.a, fyl.b> b = Maps.newTreeMap(Comparator.<fyl.a, fyh>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+
+   public void a(Consumer<fyi> $$0) {
+      this.a++;
+      $$0.accept(new fyl.c(0));
    }
 
-   @Override
-   protected void aO_() {
-      this.d.a(a, this.p);
-      this.d.c(new ftl(300, b, this.p));
-      fws $$0 = this.d.b(fws.e().a(8));
-      $$0.a(fta.a(wx.l, $$0x -> this.m.a(new fyu())).a());
-      $$0.a(fta.a(wy.c("menu.quit"), $$0x -> this.m.q()).a());
-      this.d.a(this::c);
-      this.c();
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean b = true;
+
+         public void a(String $$0) {
+            if (!this.b) {
+               $$1.append(". ");
+            }
+
+            this.b = false;
+            $$1.append($$0);
+         }
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
    }
 
-   @Override
-   protected void c() {
-      this.d.a();
+   static class a {
+      final fyh a;
+      final int b;
+
+      a(fyh $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   @Override
-   public boolean aD_() {
-      return false;
+   static class b {
+      fyk<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = fyk.a;
+         this.b = -1;
+      }
+
+      public fyl.b a(int $$0, fyk<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
+      }
+   }
+
+   class c implements fyi {
+      private final int b;
+
+      c(final int $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(fyh $$0, fyk<?> $$1) {
+         fyl.this.b.computeIfAbsent(new fyl.a($$0, this.b), $$0x -> new fyl.b()).a(fyl.this.a, $$1);
+      }
+
+      @Override
+      public fyi a() {
+         return fyl.this.new c(this.b + 1);
+      }
    }
 }

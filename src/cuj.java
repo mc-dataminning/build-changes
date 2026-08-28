@@ -1,109 +1,177 @@
-public class cuj extends ctz {
-   static final akj<String> b = akn.a(cuj.class, akl.e);
-   static final akj<wy> c = akn.a(cuj.class, akl.f);
-   private final dil d = new cuj.a();
-   private static final int h = 4;
-   private int i;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public cuj(bwr<? extends cuj> $$0, djm $$1) {
-      super($$0, $$1);
+public abstract class cuj extends cui implements bxk, cup {
+   private static final int j = 27;
+   private jo<czy> k = jo.a(27, czy.k);
+   @Nullable
+   private alh<fam> l;
+   private long m;
+
+   public cuj(bxc<? extends cuj> $$0, djx $$1, Supplier<czu> $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected czj o() {
-      return czr.ov;
+   protected float m() {
+      return 0.15F;
    }
 
    @Override
-   public czn dH() {
-      return new czn(czr.vX);
-   }
-
-   @Override
-   protected void a(akn.a $$0) {
-      super.a($$0);
-      $$0.a(b, "");
-      $$0.a(c, wx.a);
-   }
-
-   @Override
-   protected void a(tz $$0) {
-      super.a($$0);
-      this.d.b($$0, this.dW());
-      this.ar().a(b, this.q().m());
-      this.ar().a(c, this.q().l());
+   protected int n() {
+      return 1;
    }
 
    @Override
    protected void b(tz $$0) {
       super.b($$0);
-      this.d.a($$0, this.dW());
+      this.a($$0, this.dX());
    }
 
    @Override
-   public eat v() {
-      return dmt.gm.m();
-   }
-
-   public dil q() {
-      return this.d;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.af - this.i >= 4) {
-         this.q().a(this.dU());
-         this.i = this.af;
-      }
-   }
-
-   @Override
-   public bug a(crm $$0, buf $$1) {
-      return this.d.a($$0);
-   }
-
-   @Override
-   public void a(akj<?> $$0) {
+   protected void a(tz $$0) {
       super.a($$0);
-      if (c.equals($$0)) {
-         try {
-            this.d.c(this.ar().a(c));
-         } catch (Throwable var3) {
+      this.b($$0, this.dX());
+   }
+
+   @Override
+   public void a(ars $$0, bvi $$1) {
+      this.a($$0, this.o());
+      this.a($$1, $$0, this);
+   }
+
+   @Override
+   public void a(bwt.d $$0) {
+      if (!this.dV().C && $$0.a()) {
+         bun.a(this.dV(), this, this);
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   public bur a(crx $$0, buq $$1) {
+      if (!$$0.fY()) {
+         bur $$2 = super.a($$0, $$1);
+         if ($$2 != bur.e) {
+            return $$2;
          }
-      } else if (b.equals($$0)) {
-         this.d.a(this.ar().a(b));
+      }
+
+      if (this.r($$0) && !$$0.fY()) {
+         return bur.e;
+      } else {
+         bur $$3 = this.b_($$0);
+         if ($$3.a() && $$0.dV() instanceof ars $$4) {
+            this.a(ege.k, $$0);
+            cqn.a($$4, $$0, true);
+         }
+
+         return $$3;
       }
    }
 
-   public class a extends dil {
-      @Override
-      public arq e() {
-         return (arq)cuj.this.dU();
+   @Override
+   public void b(crx $$0) {
+      $$0.a(this);
+      if ($$0.dV() instanceof ars $$1) {
+         this.a(ege.k, $$0);
+         cqn.a($$1, $$0, true);
       }
+   }
 
-      @Override
-      public void f() {
-         cuj.this.ar().a(cuj.b, this.m());
-         cuj.this.ar().a(cuj.c, this.l());
-      }
+   @Override
+   public void a() {
+      this.ak_();
+   }
 
-      @Override
-      public ffc g() {
-         return cuj.this.ds();
-      }
+   @Override
+   public int b() {
+      return 27;
+   }
 
-      public cuj h() {
-         return cuj.this;
-      }
+   @Override
+   public czy a(int $$0) {
+      return this.g_($$0);
+   }
 
-      @Override
-      public ej i() {
-         return new ej(this, cuj.this.ds(), cuj.this.bS(), this.e(), 2, this.n().getString(), cuj.this.m_(), this.e().p(), cuj.this);
-      }
+   @Override
+   public czy a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
 
-      @Override
-      public boolean j() {
-         return !cuj.this.dP();
+   @Override
+   public czy b(int $$0) {
+      return this.f_($$0);
+   }
+
+   @Override
+   public void a(int $$0, czy $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public byl a_(int $$0) {
+      return this.h_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(crx $$0) {
+      return this.g($$0);
+   }
+
+   @Nullable
+   @Override
+   public cvq createMenu(int $$0, crw $$1, crx $$2) {
+      if (this.l != null && $$2.Z_()) {
+         return null;
+      } else {
+         this.e($$1.h);
+         return cvz.a($$0, $$1, this);
       }
+   }
+
+   public void e(@Nullable crx $$0) {
+      this.f($$0);
+   }
+
+   @Nullable
+   @Override
+   public alh<fam> q() {
+      return this.l;
+   }
+
+   @Override
+   public void a(@Nullable alh<fam> $$0) {
+      this.l = $$0;
+   }
+
+   @Override
+   public long s() {
+      return this.m;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public jo<czy> t() {
+      return this.k;
+   }
+
+   @Override
+   public void u() {
+      this.k = jo.a(this.b(), czy.k);
+   }
+
+   @Override
+   public void c(crx $$0) {
+      this.dV().a(ege.j, this.dt(), ege.a.a($$0));
    }
 }

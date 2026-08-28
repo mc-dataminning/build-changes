@@ -1,7 +1,26 @@
-public interface hmi {
-   void a(hmi.a var1);
+import java.util.IllegalFormatException;
 
-   public interface a {
-      void markDependency(alg var1);
+public class hmi {
+   private static volatile tu a = tu.a();
+
+   private hmi() {
+   }
+
+   static void a(tu $$0) {
+      a = $$0;
+   }
+
+   public static String a(String $$0, Object... $$1) {
+      String $$2 = a.a($$0);
+
+      try {
+         return String.format($$2, $$1);
+      } catch (IllegalFormatException var4) {
+         return "Format error: " + $$2;
+      }
+   }
+
+   public static boolean a(String $$0) {
+      return a.b($$0);
    }
 }

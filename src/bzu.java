@@ -1,27 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bzu {
-   public static bzb<bxj> a(float $$0, boolean $$1, int $$2) {
-      return a($$0x -> true, $$0, $$1, $$2);
+   public static <E extends bxu> bzm<E> a(int $$0, BiPredicate<E, bwt> $$1) {
+      return ccy.a((Function<ccy.b<E>, ? extends App<ccy.c<E>, cdb<E>>>)($$2 -> $$2.group($$2.a(cgw.t)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
+               bwt $$7 = $$5.dk();
+               bwt $$8 = $$2.<bwt>a($$3).orElse(null);
+               if ($$7 == null && $$8 == null) {
+                  return false;
+               } else {
+                  bwt $$9 = $$7 == null ? $$8 : $$7;
+                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
+                     return false;
+                  } else {
+                     $$5.bO();
+                     $$3.b();
+                     return true;
+                  }
+               }
+            })));
    }
 
-   public static <E extends bxj> bzb<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
-      return ccn.a((Function<ccn.b<E>, ? extends App<ccn.c<E>, ccq<E>>>)($$4 -> {
-         ccn<E, ? extends cco<? extends K1, cgo>> $$5 = $$2 ? $$4.a(cgl.n) : $$4.c(cgl.n);
-         return $$4.group($$4.a(cgl.o), $$5, $$4.b(cgl.M), $$4.a(cgl.aQ)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
-               cnr $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dU().A_().a($$11.du()) && $$9.fM()) {
-                  cgo $$12 = new cgo(new bzl($$11, false), $$1, 0);
-                  $$4x.a(new bzl($$11, true));
-                  $$5x.a($$12);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-      }));
+   private static boolean a(bxu $$0, bwt $$1, int $$2) {
+      return $$1.bJ() && $$1.a($$0, (double)$$2) && $$1.dV() == $$0.dV();
    }
 }

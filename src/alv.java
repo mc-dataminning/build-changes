@@ -1,95 +1,57 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.brigadier.CommandDispatcher;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.logging.LogUtils;
 import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
+import java.util.Map;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class alv {
+public class alv extends avj<ai> {
    private static final Logger a = LogUtils.getLogger();
-   private static final alg b = alg.b("tick");
-   private static final alg c = alg.b("load");
-   private final MinecraftServer d;
-   private List<hx<ej>> e = ImmutableList.of();
-   private boolean f;
-   private alu g;
+   private Map<ali, aj> b = Map.of();
+   private ao c = new ao();
+   private final jh.a d;
 
-   public alv(MinecraftServer $$0, alu $$1) {
+   public alv(jh.a $$0) {
+      super($$0, ai.a, mh.bu);
       this.d = $$0;
-      this.g = $$1;
-      this.b($$1);
    }
 
-   public CommandDispatcher<ej> a() {
-      return this.d.aG().a();
-   }
+   protected void a(Map<ali, ai> $$0, avf $$1, brb $$2) {
+      Builder<ali, aj> $$3 = ImmutableMap.builder();
+      $$0.forEach(($$1x, $$2x) -> {
+         this.a($$1x, $$2x);
+         $$3.put($$1x, new aj($$1x, $$2x));
+      });
+      this.b = $$3.buildOrThrow();
+      ao $$4 = new ao();
+      $$4.a(this.b.values());
 
-   public void b() {
-      if (this.d.aP().i()) {
-         if (this.f) {
-            this.f = false;
-            Collection<hx<ej>> $$0 = this.g.b(c);
-            this.a($$0, c);
+      for (ak $$5 : $$4.b()) {
+         if ($$5.b().b().c().isPresent()) {
+            aw.a($$5);
          }
-
-         this.a(this.e, b);
-      }
-   }
-
-   private void a(Collection<hx<ej>> $$0, alg $$1) {
-      bqp.a().a($$1::toString);
-
-      for (hx<ej> $$2 : $$0) {
-         this.a($$2, this.c());
       }
 
-      bqp.a().c();
+      this.c = $$4;
    }
 
-   public void a(hx<ej> $$0, ej $$1) {
-      bqq $$2 = bqp.a();
-      $$2.a(() -> "function " + $$0.a());
-
-      try {
-         hz<ej> $$3 = $$0.a(null, this.a());
-         ek.a($$1, $$2x -> hk.a($$2x, $$3, $$1, eg.a));
-      } catch (em var9) {
-      } catch (Exception var10) {
-         a.warn("Failed to execute function {}", $$0.a(), var10);
-      } finally {
-         $$2.c();
-      }
+   private void a(ali $$0, ai $$1) {
+      azv.a $$2 = new azv.a();
+      $$1.a($$2, this.d);
+      $$2.b().ifPresent($$1x -> a.warn("Found validation problems in advancement {}: \n{}", $$0, $$1x));
    }
 
-   public void a(alu $$0) {
-      this.g = $$0;
-      this.b($$0);
+   @Nullable
+   public aj a(ali $$0) {
+      return this.b.get($$0);
    }
 
-   private void b(alu $$0) {
-      this.e = List.copyOf($$0.b(b));
-      this.f = true;
+   public ao a() {
+      return this.c;
    }
 
-   public ej c() {
-      return this.d.aH().a(2).a();
-   }
-
-   public Optional<hx<ej>> a(alg $$0) {
-      return this.g.a($$0);
-   }
-
-   public List<hx<ej>> b(alg $$0) {
-      return this.g.b($$0);
-   }
-
-   public Iterable<alg> d() {
-      return this.g.a().keySet();
-   }
-
-   public Iterable<alg> e() {
-      return this.g.b();
+   public Collection<aj> b() {
+      return this.b.values();
    }
 }

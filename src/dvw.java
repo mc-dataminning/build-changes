@@ -1,193 +1,117 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dvw extends dmr {
-   public static final MapCodec<dvw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(mg.e.q().fieldOf("hook").forGetter($$0x -> $$0x.T), t()).apply($$0, dvw::new)
-   );
-   public static final ebk b = ebj.A;
-   public static final ebk c = ebj.a;
-   public static final ebk d = ebj.g;
-   public static final ebk e = dsl.b;
-   public static final ebk f = dsl.c;
-   public static final ebk g = dsl.d;
-   public static final ebk h = dsl.e;
-   private static final Map<jb, ebk> i = dop.f;
-   private static final ffw D = dmr.b(16.0, 1.0, 2.5);
-   private static final ffw R = dmr.b(16.0, 0.0, 8.0);
-   private static final int S = 10;
-   private final dmr T;
+public class dvw extends dmo implements dqo {
+   public static final MapCodec<dvw> a = b(dvw::new);
+   public static final ecc<ecp> b = ebu.bF;
+
+   public dvw(ebd.d $$0) {
+      super($$0);
+   }
+
+   @Nullable
+   @Override
+   public dyc a(iv $$0, ebe $$1) {
+      return new dzw($$0, $$1);
+   }
 
    @Override
-   public MapCodec<dvw> a() {
+   public ebe a(ddr $$0) {
+      dby $$1 = $$0.n().a(kk.aq);
+      ebe $$2 = this.m();
+      if ($$1 != null) {
+         ecp $$3 = $$1.a(b);
+         if ($$3 != null) {
+            $$2 = $$2.b(b, $$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   @Override
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
+      if ($$1.c_($$2) instanceof dzw $$6) {
+         if (!$$3.gG()) {
+            return bur.e;
+         } else {
+            if ($$1.C) {
+               $$3.a($$6);
+            }
+
+            return bur.a;
+         }
+      } else {
+         return bur.e;
+      }
+   }
+
+   @Override
+   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      dzw $$4 = a($$1, $$2);
+      if ($$4 != null) {
+         $$4.f();
+      }
+   }
+
+   @Override
+   protected void a(ebe $$0, djx $$1, iv $$2, dnc $$3, @Nullable eyw $$4, boolean $$5) {
+      dzw $$6 = a($$1, $$2);
+      if ($$6 != null) {
+         if ($$6.d() != ecp.a) {
+            boolean $$7 = $$1.D($$2);
+            boolean $$8 = $$6.c();
+            if ($$7 && !$$8) {
+               $$6.a(true);
+               $$6.j();
+            } else if (!$$7 && $$8) {
+               $$6.a(false);
+            }
+         }
+      }
+   }
+
+   @Nullable
+   private static dzw a(djx $$0, iv $$1) {
+      if ($$0 instanceof ars $$2) {
+         dyc var4 = $$2.c_($$1);
+         if (var4 instanceof dzw) {
+            return (dzw)var4;
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   public int a(ebe $$0, djb $$1, iv $$2, jb $$3) {
+      if ($$0.c(b) != ecp.a) {
+         return 0;
+      } else if ($$1.c_($$2) instanceof dzw $$5) {
+         return $$5.c() ? 15 : 0;
+      } else {
+         return 0;
+      }
+   }
+
+   @Override
+   protected czy a(dka $$0, iv $$1, ebe $$2, boolean $$3) {
+      czy $$4 = super.a($$0, $$1, $$2, $$3);
+      return a($$4, $$2.c(b));
+   }
+
+   public static czy a(czy $$0, ecp $$1) {
+      $$0.b(kk.aq, $$0.a(kk.aq, dby.a).a(b, $$1));
+      return $$0;
+   }
+
+   @Override
+   protected MapCodec<dvw> a() {
       return a;
-   }
-
-   public dvw(dmr $$0, eas.d $$1) {
-      super($$1);
-      this.l(
-         this.C
-            .b()
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-            .b(f, Boolean.valueOf(false))
-            .b(g, Boolean.valueOf(false))
-            .b(h, Boolean.valueOf(false))
-      );
-      this.T = $$0;
-   }
-
-   @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return $$0.c(c) ? D : R;
-   }
-
-   @Override
-   public eat a(ddg $$0) {
-      diq $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      return this.m()
-         .b(e, Boolean.valueOf(this.a($$1.a_($$2.f()), jb.c)))
-         .b(f, Boolean.valueOf(this.a($$1.a_($$2.i()), jb.f)))
-         .b(g, Boolean.valueOf(this.a($$1.a_($$2.g()), jb.d)))
-         .b(h, Boolean.valueOf(this.a($$1.a_($$2.h()), jb.e)));
-   }
-
-   @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      return $$4.o().d() ? $$0.b(i.get($$4), Boolean.valueOf(this.a($$6, $$4))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void a(eat $$0, djm $$1, iv $$2, eat $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2, $$0);
-      }
-   }
-
-   @Override
-   protected void a(eat $$0, arq $$1, iv $$2, boolean $$3) {
-      if (!$$3) {
-         this.a($$1, $$2, $$0.b(b, Boolean.valueOf(true)));
-      }
-   }
-
-   @Override
-   public eat a(djm $$0, iv $$1, eat $$2, crm $$3) {
-      if (!$$0.C && !$$3.fa().f() && $$3.fa().a(czr.td)) {
-         $$0.a($$1, $$2.b(d, Boolean.valueOf(true)), 260);
-         $$0.a($$3, eft.M, $$1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(djm $$0, iv $$1, eat $$2) {
-      for (jb $$3 : new jb[]{jb.d, jb.e}) {
-         for (int $$4 = 1; $$4 < 42; $$4++) {
-            iv $$5 = $$1.a($$3, $$4);
-            eat $$6 = $$0.a_($$5);
-            if ($$6.a(this.T)) {
-               if ($$6.c(dvx.b) == $$3.g()) {
-                  dvx.a($$0, $$5, $$6, false, true, $$4, $$2);
-               }
-               break;
-            }
-
-            if (!$$6.a(this)) {
-               break;
-            }
-         }
-      }
-   }
-
-   @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, bwi $$3) {
-      return $$0.f($$1, $$2);
-   }
-
-   @Override
-   protected void a(eat $$0, djm $$1, iv $$2, bwi $$3, bxb $$4) {
-      if (!$$1.C) {
-         if (!$$0.c(b)) {
-            this.a($$1, $$2, List.of($$3));
-         }
-      }
-   }
-
-   @Override
-   protected void a(eat $$0, arq $$1, iv $$2, azv $$3) {
-      if ($$1.a_($$2).c(b)) {
-         this.a($$1, $$2);
-      }
-   }
-
-   private void a(djm $$0, iv $$1) {
-      eat $$2 = $$0.a_($$1);
-      List<? extends bwi> $$3 = $$0.a_(null, $$2.f($$0, $$1).a().a($$1));
-      this.a($$0, $$1, $$3);
-   }
-
-   private void a(djm $$0, iv $$1, List<? extends bwi> $$2) {
-      eat $$3 = $$0.a_($$1);
-      boolean $$4 = $$3.c(b);
-      boolean $$5 = false;
-      if (!$$2.isEmpty()) {
-         for (bwi $$6 : $$2) {
-            if (!$$6.g_()) {
-               $$5 = true;
-               break;
-            }
-         }
-      }
-
-      if ($$5 != $$4) {
-         $$3 = $$3.b(b, Boolean.valueOf($$5));
-         $$0.a($$1, $$3, 3);
-         this.a($$0, $$1, $$3);
-      }
-
-      if ($$5) {
-         $$0.a(new iv($$1), this, 10);
-      }
-   }
-
-   public boolean a(eat $$0, jb $$1) {
-      return $$0.a(this.T) ? $$0.c(dvx.b) == $$1.g() : $$0.a(this);
-   }
-
-   @Override
-   protected eat a(eat $$0, dtl $$1) {
-      switch ($$1) {
-         case c:
-            return $$0.b(e, $$0.c(g)).b(f, $$0.c(h)).b(g, $$0.c(e)).b(h, $$0.c(f));
-         case d:
-            return $$0.b(e, $$0.c(f)).b(f, $$0.c(g)).b(g, $$0.c(h)).b(h, $$0.c(e));
-         case b:
-            return $$0.b(e, $$0.c(h)).b(f, $$0.c(e)).b(g, $$0.c(f)).b(h, $$0.c(g));
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   protected eat a(eat $$0, dru $$1) {
-      switch ($$1) {
-         case b:
-            return $$0.b(e, $$0.c(g)).b(g, $$0.c(e));
-         case c:
-            return $$0.b(f, $$0.c(h)).b(h, $$0.c(f));
-         default:
-            return super.a($$0, $$1);
-      }
-   }
-
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(b, c, d, e, f, h, g);
    }
 }

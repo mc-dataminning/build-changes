@@ -1,6 +1,8 @@
-public class fle extends flb {
-   @Override
-   public wy a() {
-      return wy.c("mco.upload.close.failure");
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@fht
+@fhr
+interface fle {
 }

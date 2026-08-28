@@ -1,29 +1,41 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public record fpm(int a, wy b, @Nullable xk c, @Nullable fpn d) {
-   @Nullable
-   public fpn.a a() {
-      return this.d != null ? this.d.f() : null;
-   }
+public interface fpm {
+   fpm a = new fpm() {
+      @Override
+      public long a() {
+         return 1L;
+      }
 
-   public int b() {
-      return this.a;
-   }
+      @Override
+      public long b() {
+         return 1L;
+      }
+   };
 
-   public wy c() {
-      return this.b;
-   }
+   long a();
 
-   @Nullable
-   public xk d() {
-      return this.c;
-   }
+   long b();
 
-   @Nullable
-   public fpn e() {
-      return this.d;
-   }
+   static fpm a(final int $$0) {
+      return new fpm() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
 
-   public static record a(int a, ayy b, @Nullable fpn c, boolean d) {
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
    }
 }

@@ -1,20 +1,18 @@
-public enum ebm implements bak {
-   a("compare"),
-   b("subtract");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String c;
+public class ebm implements Predicate<ebe> {
+   private final dnc a;
 
-   private ebm(final String $$0) {
-      this.c = $$0;
+   public ebm(dnc $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String toString() {
-      return this.c;
+   public static ebm a(dnc $$0) {
+      return new ebm($$0);
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   public boolean a(@Nullable ebe $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

@@ -1,29 +1,11 @@
-import java.util.Optional;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-public abstract class erm extends ern {
-   private final erm.a d;
-   private final int e;
-   private final int f;
-
-   protected erm(erm.a $$0, int $$1, int $$2, ern.c $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
+public abstract class erm extends eri {
+   protected abstract int a(azx var1, iv var2);
 
    @Override
-   public Optional<ern.b> a(ern.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, egs.a.a, $$1 -> this.a($$1, $$0));
-   }
-
-   private void a(esf $$0, ern.a $$1) {
-      dir $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
-   }
-
-   @FunctionalInterface
-   protected interface a {
-      err construct(ehr var1, int var2, int var3);
+   public Stream<iv> a_(erg $$0, azx $$1, iv $$2) {
+      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
    }
 }

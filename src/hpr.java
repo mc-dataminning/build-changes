@@ -1,69 +1,87 @@
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class hpr implements hpx {
-   private static final int a = 1200;
-   private static final wy b = wy.c("tutorial.craft_planks.title");
-   private static final wy c = wy.c("tutorial.craft_planks.description");
-   private final hpw d;
-   @Nullable
-   private fvm e;
-   private int f;
+public class hpr {
+   private final Set<hpr.a> a = Sets.newIdentityHashSet();
+   final fhy b;
+   final Executor c;
 
-   public hpr(hpw $$0) {
-      this.d = $$0;
+   public hpr(fhy $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hpy.f);
-      } else {
-         fpt $$0 = this.d.e();
-         if (this.f == 1) {
-            gpo $$1 = $$0.t;
-            if ($$1 != null) {
-               if ($$1.gi().a(axk.b)) {
-                  this.d.a(hpy.f);
-                  return;
-               }
+   public CompletableFuture<hpr.a> a(fhy.c $$0) {
+      CompletableFuture<hpr.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         fhx $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            hpr.a $$3 = new hpr.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
+         } else {
+            $$1.complete(null);
+         }
+      });
+      return $$1;
+   }
 
-               if (a($$1, axk.b)) {
-                  this.d.a(hpy.f);
-                  return;
-               }
+   public void a(Consumer<Stream<fhx>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   }
+
+   public void a() {
+      this.c.execute(() -> {
+         Iterator<hpr.a> $$0 = this.a.iterator();
+
+         while ($$0.hasNext()) {
+            hpr.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
             }
          }
-
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new fvm($$0.h, fvm.a.e, b, c, false);
-            $$0.aA().a(this.e);
-         }
-      }
+      });
    }
 
-   @Override
    public void b() {
-      if (this.e != null) {
-         this.e.e();
-         this.e = null;
-      }
+      this.a.forEach(hpr.a::b);
+      this.a.clear();
    }
 
-   @Override
-   public void a(czn $$0) {
-      if ($$0.a(axk.b)) {
-         this.d.a(hpy.f);
-      }
-   }
+   public class a {
+      @Nullable
+      fhx b;
+      private boolean c;
 
-   public static boolean a(gpo $$0, axr<czj> $$1) {
-      for (jf<czj> $$2 : mg.g.c($$1)) {
-         if ($$0.l().a(awx.b.b($$2.a())) > 0) {
-            return true;
-         }
+      public boolean a() {
+         return this.c;
       }
 
-      return false;
+      public a(final fhx $$1) {
+         this.b = $$1;
+      }
+
+      public void a(Consumer<fhx> $$0) {
+         hpr.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
+            }
+         });
+      }
+
+      public void b() {
+         this.c = true;
+         hpr.this.b.a(this.b);
+         this.b = null;
+      }
    }
 }

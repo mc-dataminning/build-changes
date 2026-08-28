@@ -1,22 +1,26 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class evu implements evx {
-   public static final MapCodec<evu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(tz.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, evu::new));
-   private final tz b;
+public class evu extends evx {
+   public static final MapCodec<evu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(mg.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, evu::new)
+   );
+   private final dnc b;
+   private final float d;
 
-   public evu(tz $$0) {
+   public evu(dnc $$0, float $$1) {
       this.b = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public tz a(azv $$0, @Nullable tz $$1) {
-      return $$1 == null ? this.b.i() : $$1.a(this.b);
+   public boolean a(ebe $$0, azx $$1) {
+      return $$0.a(this.b) && $$1.i() < this.d;
    }
 
    @Override
-   public evy<?> a() {
-      return evy.c;
+   protected evy<?> a() {
+      return evy.e;
    }
 }

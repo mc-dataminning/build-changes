@@ -1,44 +1,22 @@
-import java.util.Set;
+public class ggx extends giw {
+   public static final int a = 20;
+   public static final int b = 40;
+   public static final String c = "flag";
+   private static final String d = "pole";
+   private static final String e = "bar";
 
-public class ggx extends gia<hdr> {
-   public static final gkc a = new gfk(true, 19.0F, 1.0F, 2.5F, 2.0F, 24.0F, Set.of("head"));
-
-   public ggx(gjt $$0) {
-      super($$0);
+   public ggx(gle $$0) {
+      super($$0, gsl::d);
    }
 
-   public static gjz a() {
-      gkb $$0 = new gkb();
-      gkd $$1 = $$0.a();
-      gkd $$2 = $$1.a(
-         "head",
-         gjy.c()
-            .a(2, 61)
-            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(2, 61)
-            .a()
-            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(23, 52)
-            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
-         gjv.a(1.0F, 14.0F, 0.0F)
-      );
-      $$2.a("left_horn", gjy.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gjv.a(0.0F, 0.0F, 0.0F));
-      $$2.a("right_horn", gjy.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gjv.a(0.0F, 0.0F, 0.0F));
-      $$2.a("nose", gjy.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), gjv.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
-      $$1.a("body", gjy.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), gjv.a(0.0F, 24.0F, 0.0F));
-      $$1.a("left_hind_leg", gjy.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gjv.a(1.0F, 14.0F, 4.0F));
-      $$1.a("right_hind_leg", gjy.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gjv.a(-3.0F, 14.0F, 4.0F));
-      $$1.a("left_front_leg", gjy.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gjv.a(1.0F, 14.0F, -6.0F));
-      $$1.a("right_front_leg", gjy.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gjv.a(-3.0F, 14.0F, -6.0F));
-      return gjz.a($$0, 64, 64);
-   }
-
-   public void a(hdr $$0) {
-      super.a($$0);
-      this.b.b("left_horn").k = $$0.a;
-      this.b.b("right_horn").k = $$0.b;
-      if ($$0.c != 0.0F) {
-         this.b.e = $$0.c;
+   public static glk a(boolean $$0) {
+      glm $$1 = new glm();
+      glo $$2 = $$1.a();
+      if ($$0) {
+         $$2.a("pole", glj.c().a(44, 0).a(-1.0F, -42.0F, -1.0F, 2.0F, 42.0F, 2.0F), glg.a);
       }
+
+      $$2.a("bar", glj.c().a(0, 42).a(-10.0F, $$0 ? -44.0F : -20.5F, $$0 ? -1.0F : 9.5F, 20.0F, 2.0F, 2.0F), glg.a);
+      return glk.a($$1, 64, 64);
    }
 }

@@ -1,468 +1,606 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
-import java.lang.invoke.MethodHandles.Lookup;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.blaze3d.platform.GlConst;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.util.Collection;
+import java.util.OptionalDouble;
 import java.util.OptionalInt;
-import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWCharModsCallbackI;
-import org.lwjgl.glfw.GLFWCursorPosCallbackI;
-import org.lwjgl.glfw.GLFWDropCallbackI;
-import org.lwjgl.glfw.GLFWKeyCallbackI;
-import org.lwjgl.glfw.GLFWMouseButtonCallbackI;
-import org.lwjgl.glfw.GLFWScrollCallbackI;
+import org.lwjgl.opengl.GL11;
+import org.slf4j.Logger;
 
-public class fiu {
+public class fiu implements fkz {
+   private static final Logger a = LogUtils.getLogger();
+   private final fix b;
+   private final int c;
+   private final int d;
    @Nullable
-   private static final MethodHandle bw;
-   private static final int bx;
-   public static final int a = 48;
-   public static final int b = 49;
-   public static final int c = 50;
-   public static final int d = 51;
-   public static final int e = 52;
-   public static final int f = 53;
-   public static final int g = 54;
-   public static final int h = 55;
-   public static final int i = 56;
-   public static final int j = 57;
-   public static final int k = 65;
-   public static final int l = 66;
-   public static final int m = 67;
-   public static final int n = 68;
-   public static final int o = 69;
-   public static final int p = 70;
-   public static final int q = 71;
-   public static final int r = 72;
-   public static final int s = 73;
-   public static final int t = 74;
-   public static final int u = 75;
-   public static final int v = 76;
-   public static final int w = 77;
-   public static final int x = 78;
-   public static final int y = 79;
-   public static final int z = 80;
-   public static final int A = 81;
-   public static final int B = 82;
-   public static final int C = 83;
-   public static final int D = 84;
-   public static final int E = 85;
-   public static final int F = 86;
-   public static final int G = 87;
-   public static final int H = 88;
-   public static final int I = 89;
-   public static final int J = 90;
-   public static final int K = 290;
-   public static final int L = 291;
-   public static final int M = 292;
-   public static final int N = 293;
-   public static final int O = 294;
-   public static final int P = 295;
-   public static final int Q = 296;
-   public static final int R = 297;
-   public static final int S = 298;
-   public static final int T = 299;
-   public static final int U = 300;
-   public static final int V = 301;
-   public static final int W = 302;
-   public static final int X = 303;
-   public static final int Y = 304;
-   public static final int Z = 305;
-   public static final int aa = 306;
-   public static final int ab = 307;
-   public static final int ac = 308;
-   public static final int ad = 309;
-   public static final int ae = 310;
-   public static final int af = 311;
-   public static final int ag = 312;
-   public static final int ah = 313;
-   public static final int ai = 314;
-   public static final int aj = 282;
-   public static final int ak = 320;
-   public static final int al = 321;
-   public static final int am = 322;
-   public static final int an = 323;
-   public static final int ao = 324;
-   public static final int ap = 325;
-   public static final int aq = 326;
-   public static final int ar = 327;
-   public static final int as = 328;
-   public static final int at = 329;
-   public static final int au = 330;
-   public static final int av = 335;
-   public static final int aw = 336;
-   public static final int ax = 264;
-   public static final int ay = 263;
-   public static final int az = 262;
-   public static final int aA = 265;
-   public static final int aB = 334;
-   public static final int aC = 39;
-   public static final int aD = 92;
-   public static final int aE = 44;
-   public static final int aF = 61;
-   public static final int aG = 96;
-   public static final int aH = 91;
-   public static final int aI = 45;
-   public static final int aJ = 332;
-   public static final int aK = 46;
-   public static final int aL = 93;
-   public static final int aM = 59;
-   public static final int aN = 47;
-   public static final int aO = 32;
-   public static final int aP = 258;
-   public static final int aQ = 342;
-   public static final int aR = 341;
-   public static final int aS = 340;
-   public static final int aT = 343;
-   public static final int aU = 346;
-   public static final int aV = 345;
-   public static final int aW = 344;
-   public static final int aX = 347;
-   public static final int aY = 257;
-   public static final int aZ = 256;
-   public static final int ba = 259;
-   public static final int bb = 261;
-   public static final int bc = 269;
-   public static final int bd = 268;
-   public static final int be = 260;
-   public static final int bf = 267;
-   public static final int bg = 266;
-   public static final int bh = 280;
-   public static final int bi = 284;
-   public static final int bj = 281;
-   public static final int bk = 283;
-   public static final int bl = 1;
-   public static final int bm = 0;
-   public static final int bn = 2;
-   public static final int bo = 0;
-   public static final int bp = 2;
-   public static final int bq = 1;
-   public static final int br = 2;
-   public static final int bs = 208897;
-   public static final int bt = 212995;
-   public static final int bu = 212993;
-   public static final fiu.a bv;
+   private fjp e;
+   private boolean f;
+   @Nullable
+   private fiy g;
 
-   public static fiu.a a(int $$0, int $$1) {
-      return $$0 == -1 ? fiu.b.b.a($$1) : fiu.b.a.a($$0);
+   protected fiu(fix $$0) {
+      this.b = $$0;
+      this.c = $$0.l().a();
+      this.d = $$0.l().a();
    }
 
-   public static fiu.a a(String $$0) {
-      if (fiu.a.e.containsKey($$0)) {
-         return fiu.a.e.get($$0);
+   @Override
+   public flb a(flh $$0, OptionalInt $$1) {
+      return this.a($$0, $$1, null, OptionalDouble.empty());
+   }
+
+   @Override
+   public flb a(flh $$0, OptionalInt $$1, @Nullable flh $$2, OptionalDouble $$3) {
+      if (this.f) {
+         throw new IllegalStateException("Close the existing render pass before creating a new one!");
       } else {
-         for (fiu.b $$1 : fiu.b.values()) {
-            if ($$0.startsWith($$1.f)) {
-               String $$2 = $$0.substring($$1.f.length() + 1);
-               int $$3 = Integer.parseInt($$2);
-               if ($$1 == fiu.b.c) {
-                  $$3--;
+         if ($$3.isPresent() && $$2 == null) {
+            a.warn("Depth clear value was provided but no depth texture is being used");
+         }
+
+         this.f = true;
+         int $$4 = ((fjc)$$0).a(this.b.l(), $$2);
+         GlStateManager._glBindFramebuffer(36160, $$4);
+         int $$5 = 0;
+         if ($$1.isPresent()) {
+            int $$6 = $$1.getAsInt();
+            GL11.glClearColor(axy.j($$6), axy.k($$6), axy.l($$6), axy.i($$6));
+            $$5 |= 16384;
+         }
+
+         if ($$2 != null && $$3.isPresent()) {
+            GL11.glClearDepth($$3.getAsDouble());
+            $$5 |= 256;
+         }
+
+         if ($$5 != 0) {
+            GlStateManager._depthMask(true);
+            GlStateManager._colorMask(true, true, true, true);
+            GlStateManager._clear($$5);
+         }
+
+         GlStateManager._viewport(0, 0, $$0.a(0), $$0.b(0));
+         return new fiz(this, $$2 != null);
+      }
+   }
+
+   @Override
+   public void a(flh $$0, int $$1) {
+      if (this.f) {
+         throw new IllegalStateException("Close the existing render pass before creating a new one!");
+      } else if ($$0.d() == fli.c) {
+         throw new IllegalStateException("Trying to clear a depth texture as a color texture!");
+      } else {
+         GlStateManager._glBindFramebuffer(36160, this.d);
+         this.b.l().a(this.d, ((fjc)$$0).a, 0, 0);
+         GL11.glClearColor(axy.j($$1), axy.k($$1), axy.l($$1), axy.i($$1));
+         GlStateManager._colorMask(true, true, true, true);
+         GlStateManager._clear(16384);
+         GlStateManager._glBindFramebuffer(36160, 0);
+      }
+   }
+
+   @Override
+   public void a(flh $$0, int $$1, flh $$2, double $$3) {
+      if (this.f) {
+         throw new IllegalStateException("Close the existing render pass before creating a new one!");
+      } else if ($$0.d() == fli.c) {
+         throw new IllegalStateException("Trying to clear a depth texture as a color texture!");
+      } else if ($$2.d() != fli.c) {
+         throw new IllegalStateException("Trying to clear a color texture as a depth texture!");
+      } else {
+         int $$4 = ((fjc)$$0).a(this.b.l(), $$2);
+         GlStateManager._glBindFramebuffer(36160, $$4);
+         GL11.glClearDepth($$3);
+         GL11.glClearColor(axy.j($$1), axy.k($$1), axy.l($$1), axy.i($$1));
+         GlStateManager._depthMask(true);
+         GlStateManager._colorMask(true, true, true, true);
+         GlStateManager._clear(16640);
+         GlStateManager._glBindFramebuffer(36160, 0);
+      }
+   }
+
+   @Override
+   public void a(flh $$0, double $$1) {
+      if (this.f) {
+         throw new IllegalStateException("Close the existing render pass before creating a new one!");
+      } else if ($$0.d() != fli.c) {
+         throw new IllegalStateException("Trying to clear a color texture as a depth texture!");
+      } else {
+         GlStateManager._glBindFramebuffer(36160, this.d);
+         GL11.glDrawBuffer(0);
+         this.b.l().a(this.d, 0, ((fjc)$$0).a, 0);
+         GL11.glClearDepth($$1);
+         GlStateManager._depthMask(true);
+         GlStateManager._clear(256);
+         GL11.glDrawBuffer(36064);
+         GlStateManager._glBindFramebuffer(36160, 0);
+      }
+   }
+
+   @Override
+   public void a(fig $$0, ByteBuffer $$1, int $$2) {
+      fit $$3 = (fit)$$0;
+      if ($$3.c) {
+         throw new IllegalStateException("Buffer already closed");
+      } else if (!$$3.c().b()) {
+         throw new IllegalStateException("Buffer is not writable");
+      } else {
+         int $$4 = $$1.remaining();
+         if ($$4 + $$2 > $$3.a) {
+            throw new IllegalArgumentException(
+               "Cannot write more data than this buffer can hold (attempting to write " + $$4 + " bytes at offset " + $$2 + " to " + $$3.a + " size buffer)"
+            );
+         } else {
+            GlStateManager._glBindBuffer(GlConst.toGl($$3.b()), $$3.f);
+            if ($$3.d) {
+               GlStateManager._glBufferSubData(GlConst.toGl($$3.b()), $$2, $$1);
+            } else if ($$2 == 0 && $$4 == $$3.a) {
+               GlStateManager._glBufferData(GlConst.toGl($$3.b()), $$1, GlConst.toGl($$3.c()));
+               fit.b.malloc((long)$$3.f, $$3.a);
+               $$3.d = true;
+               this.b.a().a($$3);
+            } else {
+               GlStateManager._glBufferData(GlConst.toGl($$3.b()), (long)$$3.a, GlConst.toGl($$3.c()));
+               GlStateManager._glBufferSubData(GlConst.toGl($$3.b()), $$2, $$1);
+               fit.b.malloc((long)$$3.f, $$3.a);
+               $$3.d = true;
+               this.b.a().a($$3);
+            }
+         }
+      }
+   }
+
+   @Override
+   public void a(fig $$0, int $$1) {
+      fit $$2 = (fit)$$0;
+      if ($$2.c) {
+         throw new IllegalStateException("Buffer already closed");
+      } else {
+         if ($$2.d) {
+            fit.b.free((long)$$2.f);
+         }
+
+         $$2.a = $$1;
+         if ($$2.c().b()) {
+            $$2.d = false;
+         } else {
+            GlStateManager._glBindBuffer(GlConst.toGl($$2.b()), $$2.f);
+            GlStateManager._glBufferData(GlConst.toGl($$2.b()), (long)$$1, GlConst.toGl($$2.c()));
+            fit.b.malloc((long)$$2.f, $$1);
+            $$2.d = true;
+            this.b.a().a($$2);
+         }
+      }
+   }
+
+   @Override
+   public fig.a a(fig $$0) {
+      return this.a($$0, 0, $$0.a());
+   }
+
+   @Override
+   public fig.a a(fig $$0, int $$1, int $$2) {
+      fit $$3 = (fit)$$0;
+      if ($$3.c) {
+         throw new IllegalStateException("Buffer already closed");
+      } else if (!$$3.c().a()) {
+         throw new IllegalStateException("Buffer is not readable");
+      } else if ($$1 + $$2 > $$3.a) {
+         throw new IllegalArgumentException(
+            "Cannot read more data than this buffer can hold (attempting to read " + $$2 + " bytes at offset " + $$1 + " from " + $$3.a + " size buffer)"
+         );
+      } else {
+         GlStateManager.clearGlErrors();
+         GlStateManager._glBindBuffer(GlConst.toGl($$3.b()), $$3.f);
+         ByteBuffer $$4 = GlStateManager._glMapBufferRange(GlConst.toGl($$3.b()), $$1, $$2, 1);
+         if ($$4 == null) {
+            throw new IllegalStateException("Can't read buffer, opengl error " + GlStateManager._getError());
+         } else {
+            return new fit.a(GlConst.toGl($$3.b()), $$4);
+         }
+      }
+   }
+
+   @Override
+   public void a(flh $$0, fkg $$1) {
+      int $$2 = $$0.a(0);
+      int $$3 = $$0.b(0);
+      if ($$1.a() == $$2 && $$1.b() == $$3) {
+         this.a($$0, $$1, 0, 0, 0, $$2, $$3, 0, 0);
+      } else {
+         throw new IllegalArgumentException("Cannot replace texture of size " + $$2 + "x" + $$3 + " with image of size " + $$1.a() + "x" + $$1.b());
+      }
+   }
+
+   @Override
+   public void a(flh $$0, fkg $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      if ($$2 >= 0 && $$2 < $$0.c()) {
+         if ($$7 + $$5 > $$1.a() || $$8 + $$6 > $$1.b()) {
+            throw new IllegalArgumentException(
+               "Copy source (" + $$1.a() + "x" + $$1.b() + ") is not large enough to read a rectangle of " + $$5 + "x" + $$6 + " from " + $$7 + "x" + $$8
+            );
+         } else if ($$3 + $$5 <= $$0.a($$2) && $$4 + $$6 <= $$0.b($$2)) {
+            GlStateManager._bindTexture(((fjc)$$0).a);
+            GlStateManager._pixelStore(3314, $$1.a());
+            GlStateManager._pixelStore(3316, $$7);
+            GlStateManager._pixelStore(3315, $$8);
+            GlStateManager._pixelStore(3317, $$1.c().a());
+            GlStateManager._texSubImage2D(3553, $$2, $$3, $$4, $$5, $$6, GlConst.toGl($$1.c()), 5121, $$1.h());
+         } else {
+            throw new IllegalArgumentException(
+               "Dest texture ("
+                  + $$5
+                  + "x"
+                  + $$6
+                  + ") is not large enough to write a rectangle of "
+                  + $$5
+                  + "x"
+                  + $$6
+                  + " at "
+                  + $$3
+                  + "x"
+                  + $$4
+                  + " (at mip level "
+                  + $$2
+                  + ")"
+            );
+         }
+      } else {
+         throw new IllegalArgumentException("Invalid mipLevel " + $$2 + ", must be >= 0 and < " + $$0.c());
+      }
+   }
+
+   @Override
+   public void a(flh $$0, IntBuffer $$1, fkg.a $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      if ($$3 >= 0 && $$3 < $$0.c()) {
+         if ($$6 * $$7 > $$1.remaining()) {
+            throw new IllegalArgumentException(
+               "Copy would overrun the source buffer (remaining length of " + $$1.remaining() + ", but copy is " + $$6 + "x" + $$7 + ")"
+            );
+         } else if ($$4 + $$6 <= $$0.a($$3) && $$5 + $$7 <= $$0.b($$3)) {
+            GlStateManager._bindTexture(((fjc)$$0).a);
+            GlStateManager._pixelStore(3314, $$6);
+            GlStateManager._pixelStore(3316, 0);
+            GlStateManager._pixelStore(3315, 0);
+            GlStateManager._pixelStore(3317, $$2.a());
+            GlStateManager._texSubImage2D(3553, $$3, $$4, $$5, $$6, $$7, GlConst.toGl($$2), 5121, $$1);
+         } else {
+            throw new IllegalArgumentException(
+               "Dest texture (" + $$0.a($$3) + "x" + $$0.b($$3) + ") is not large enough to write a rectangle of " + $$6 + "x" + $$7 + " at " + $$4 + "x" + $$5
+            );
+         }
+      } else {
+         throw new IllegalArgumentException("Invalid mipLevel, must be >= 0 and < " + $$0.c());
+      }
+   }
+
+   @Override
+   public void a(flh $$0, fig $$1, int $$2, Runnable $$3, int $$4) {
+      if (this.f) {
+         throw new IllegalStateException("Close the existing render pass before performing additional commands");
+      } else {
+         this.a($$0, $$1, $$2, $$3, $$4, 0, 0, $$0.a($$4), $$0.b($$4));
+      }
+   }
+
+   @Override
+   public void a(flh $$0, fig $$1, int $$2, Runnable $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      if (this.f) {
+         throw new IllegalStateException("Close the existing render pass before performing additional commands");
+      } else if ($$4 >= 0 && $$4 < $$0.c()) {
+         if ($$0.a($$4) * $$0.b($$4) * $$0.d().a() + $$2 > $$1.a()) {
+            throw new IllegalArgumentException(
+               "Buffer of size "
+                  + $$1.a()
+                  + " is not large enough to hold "
+                  + $$7
+                  + "x"
+                  + $$8
+                  + " pixels ("
+                  + $$0.d().a()
+                  + " bytes each) starting from offset "
+                  + $$2
+            );
+         } else if ($$1.b() != fie.c) {
+            throw new IllegalArgumentException("Buffer of type " + $$1.b() + " cannot be used to retrieve a texture");
+         } else if ($$5 + $$7 <= $$0.a($$4) && $$6 + $$8 <= $$0.b($$4)) {
+            GlStateManager._glBindFramebuffer(36008, this.c);
+            GlStateManager._glBindBuffer(GlConst.toGl($$1.b()), ((fit)$$1).f);
+            GlStateManager._glFramebufferTexture2D(36008, 36064, 3553, ((fjc)$$0).b(), $$4);
+            GlStateManager._pixelStore(3330, $$7);
+            GlStateManager._readPixels($$5, $$6, $$7, $$8, GlConst.toGlExternalId($$0.d()), GlConst.toGlType($$0.d()), (long)$$2);
+            RenderSystem.queueFencedTask($$3);
+            GlStateManager._glBindFramebuffer(36008, 0);
+            GlStateManager._glBindBuffer(GlConst.toGl($$1.b()), 0);
+            int $$9 = GlStateManager._getError();
+            if ($$9 != 0) {
+               throw new IllegalStateException("Couldn't perform copyTobuffer for texture " + $$0.e() + ": GL error " + $$9);
+            }
+         } else {
+            throw new IllegalArgumentException(
+               "Copy source texture ("
+                  + $$0.a($$4)
+                  + "x"
+                  + $$0.b($$4)
+                  + ") is not large enough to read a rectangle of "
+                  + $$7
+                  + "x"
+                  + $$8
+                  + " from "
+                  + $$5
+                  + ","
+                  + $$6
+            );
+         }
+      } else {
+         throw new IllegalArgumentException("Invalid mipLevel " + $$4 + ", must be >= 0 and < " + $$0.c());
+      }
+   }
+
+   @Override
+   public void a(flh $$0, flh $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      if (this.f) {
+         throw new IllegalStateException("Close the existing render pass before performing additional commands");
+      } else if ($$2 >= 0 && $$2 < $$0.c() && $$2 < $$1.c()) {
+         if ($$3 + $$7 > $$1.a($$2) || $$4 + $$8 > $$1.b($$2)) {
+            throw new IllegalArgumentException(
+               "Dest texture (" + $$1.a($$2) + "x" + $$1.b($$2) + ") is not large enough to write a rectangle of " + $$7 + "x" + $$8 + " at " + $$3 + "x" + $$4
+            );
+         } else if ($$5 + $$7 <= $$0.a($$2) && $$6 + $$8 <= $$0.b($$2)) {
+            GlStateManager._glBindFramebuffer(36008, this.c);
+            GlStateManager._glBindFramebuffer(36009, this.d);
+            boolean $$9 = $$0.d() == fli.c;
+            GlStateManager._glFramebufferTexture2D(36008, $$9 ? '贀' : '賠', 3553, ((fjc)$$0).b(), $$2);
+            GlStateManager._glFramebufferTexture2D(36009, $$9 ? '贀' : '賠', 3553, ((fjc)$$1).b(), $$2);
+            GlStateManager._glBlitFrameBuffer($$5, $$6, $$7, $$8, $$3, $$4, $$7, $$8, $$9 ? 256 : 16384, 9728);
+            GlStateManager._glBindFramebuffer(36008, 0);
+            GlStateManager._glBindFramebuffer(36009, 0);
+            int $$10 = GlStateManager._getError();
+            if ($$10 != 0) {
+               throw new IllegalStateException("Couldn't perform copyToTexture for texture " + $$0.e() + " to " + $$1.e() + ": GL error " + $$10);
+            }
+         } else {
+            throw new IllegalArgumentException(
+               "Source texture ("
+                  + $$0.a($$2)
+                  + "x"
+                  + $$0.b($$2)
+                  + ") is not large enough to read a rectangle of "
+                  + $$7
+                  + "x"
+                  + $$8
+                  + " at "
+                  + $$5
+                  + "x"
+                  + $$6
+            );
+         }
+      } else {
+         throw new IllegalArgumentException("Invalid mipLevel " + $$2 + ", must be >= 0 and < " + $$0.c() + " and < " + $$1.c());
+      }
+   }
+
+   @Override
+   public void a(flh $$0) {
+      if (this.f) {
+         throw new IllegalStateException("Close the existing render pass before performing additional commands");
+      } else {
+         GlStateManager._glBindFramebuffer(36008, this.d);
+         GlStateManager._glFramebufferTexture2D(36008, 36064, 3553, ((fjc)$$0).b(), 0);
+         GlStateManager._glBlitFrameBuffer(0, 0, $$0.a(0), $$0.b(0), 0, 0, $$0.a(0), $$0.b(0), 16384, 9728);
+         GlStateManager._glBindFramebuffer(36008, 0);
+      }
+   }
+
+   protected void a(fiz $$0, Collection<flb.a> $$1) {
+      if (this.a($$0)) {
+         for (flb.a $$2 : $$1) {
+            $$0.a($$2.c(), $$2.d());
+            $$0.a($$2.a(), $$2.b());
+            if (fiz.b) {
+               if ($$0.e == null) {
+                  throw new IllegalStateException("Missing index buffer");
                }
 
-               return $$1.a($$3);
+               if ($$0.d[0] == null) {
+                  throw new IllegalStateException("Missing vertex buffer at slot 0");
+               }
+            }
+
+            Consumer<flb.b> $$3 = $$2.g();
+            if ($$3 != null) {
+               $$3.accept(($$1x, $$2x) -> {
+                  fjd $$3x = $$0.c.c().a($$1x);
+                  if ($$3x != null) {
+                     $$3x.a($$2x);
+                     $$3x.c();
+                  }
+               });
+            }
+
+            this.a($$0, $$2.e(), $$2.f(), $$2.d(), $$0.c);
+         }
+      }
+   }
+
+   protected void a(fiz $$0, int $$1, int $$2, @Nullable fls.b $$3) {
+      if (this.a($$0)) {
+         if (fiz.b) {
+            if ($$0.e == null && $$3 != null) {
+               throw new IllegalStateException("Missing index buffer");
+            }
+
+            if ($$0.d[0] == null) {
+               throw new IllegalStateException("Missing vertex buffer at slot 0");
             }
          }
 
-         throw new IllegalArgumentException("Unknown key name: " + $$0);
+         this.a($$0, $$1, $$2, $$3, $$0.c);
       }
    }
 
-   public static boolean a(long $$0, int $$1) {
-      return GLFW.glfwGetKey($$0, $$1) == 1;
-   }
-
-   public static void a(long $$0, GLFWKeyCallbackI $$1, GLFWCharModsCallbackI $$2) {
-      GLFW.glfwSetKeyCallback($$0, $$1);
-      GLFW.glfwSetCharModsCallback($$0, $$2);
-   }
-
-   public static void a(long $$0, GLFWCursorPosCallbackI $$1, GLFWMouseButtonCallbackI $$2, GLFWScrollCallbackI $$3, GLFWDropCallbackI $$4) {
-      GLFW.glfwSetCursorPosCallback($$0, $$1);
-      GLFW.glfwSetMouseButtonCallback($$0, $$2);
-      GLFW.glfwSetScrollCallback($$0, $$3);
-      GLFW.glfwSetDropCallback($$0, $$4);
-   }
-
-   public static void a(long $$0, int $$1, double $$2, double $$3) {
-      GLFW.glfwSetCursorPos($$0, $$2, $$3);
-      GLFW.glfwSetInputMode($$0, 208897, $$1);
-   }
-
-   public static boolean a() {
-      try {
-         return bw != null && (boolean)bw.invokeExact();
-      } catch (Throwable var1) {
-         throw new RuntimeException(var1);
+   private void a(fiz $$0, int $$1, int $$2, @Nullable fls.b $$3, fja $$4) {
+      this.b.m().a($$4.b().l(), (fit)$$0.d[0]);
+      if ($$3 != null) {
+         GlStateManager._glBindBuffer(34963, ((fit)$$0.e).f);
+         GlStateManager._drawElements(GlConst.toGl($$4.b().m()), $$2, GlConst.toGl($$3), (long)$$1 * (long)$$3.c);
+      } else {
+         GlStateManager._drawArrays(GlConst.toGl($$4.b().m()), $$1, $$2);
       }
    }
 
-   public static void a(long $$0, boolean $$1) {
-      if (a()) {
-         GLFW.glfwSetInputMode($$0, bx, $$1 ? 1 : 0);
-      }
-   }
+   private boolean a(fiz $$0) {
+      if (fiz.b) {
+         if ($$0.c == null) {
+            throw new IllegalStateException("Can't draw without a render pipeline");
+         }
 
-   static {
-      Lookup $$0 = MethodHandles.lookup();
-      MethodType $$1 = MethodType.methodType(boolean.class);
-      MethodHandle $$2 = null;
-      int $$3 = 0;
+         if ($$0.c.c() == fiy.b) {
+            throw new IllegalStateException("Pipeline contains invalid shader program");
+         }
 
-      try {
-         $$2 = $$0.findStatic(GLFW.class, "glfwRawMouseMotionSupported", $$1);
-         MethodHandle $$4 = $$0.findStaticGetter(GLFW.class, "GLFW_RAW_MOUSE_MOTION", int.class);
-         $$3 = (int)$$4.invokeExact();
-      } catch (NoSuchFieldException | NoSuchMethodException var5) {
-      } catch (Throwable var6) {
-         throw new RuntimeException(var6);
-      }
+         for (fjp.c $$1 : $$0.c.b().r()) {
+            Object $$2 = $$0.h.get($$1.a());
+            if ($$2 == null && !fiy.a.contains($$1.a())) {
+               throw new IllegalStateException("Missing uniform " + $$1.a() + " (should be " + $$1.b() + ")");
+            }
+         }
 
-      bw = $$2;
-      bx = $$3;
-      bv = fiu.b.a.a(-1);
-   }
+         for (String $$3 : $$0.c.b().q()) {
+            if (!$$0.i.containsKey($$3)) {
+               throw new IllegalStateException("Missing sampler " + $$3);
+            }
+         }
 
-   public static final class a {
-      private final String a;
-      private final fiu.b b;
-      private final int c;
-      private final azg<wy> d;
-      static final Map<String, fiu.a> e = Maps.newHashMap();
-
-      a(String $$0, fiu.b $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = new azg<>(() -> $$1.g.apply($$2, $$0));
-         e.put($$0, this);
+         if ($$0.c.b().s() && !$$0.a()) {
+            a.warn("Render pipeline {} wants a depth texture but none was provided - this is probably a bug", $$0.c.b().k());
+         }
+      } else if ($$0.c == null || $$0.c.c() == fiy.b) {
+         return false;
       }
 
-      public fiu.b a() {
-         return this.b;
-      }
+      fjp $$4 = $$0.c.b();
+      fiy $$5 = $$0.c.c();
 
-      public int b() {
-         return this.c;
-      }
-
-      public String c() {
-         return this.a;
-      }
-
-      public wy d() {
-         return this.d.a();
-      }
-
-      public OptionalInt e() {
-         if (this.c >= 48 && this.c <= 57) {
-            return OptionalInt.of(this.c - 48);
-         } else {
-            return this.c >= 320 && this.c <= 329 ? OptionalInt.of(this.c - 320) : OptionalInt.empty();
+      for (fjp.c $$6 : $$4.r()) {
+         if ($$0.j.contains($$6.a())) {
+            Object $$7 = $$0.h.get($$6.a());
+            if ($$7 instanceof int[]) {
+               $$5.b($$6.a()).a((int[])$$7);
+            } else if ($$7 instanceof float[]) {
+               $$5.b($$6.a()).a((float[])$$7);
+            } else if ($$7 != null) {
+               throw new IllegalStateException("Unknown uniform type - expected " + $$6.b() + ", found " + $$7);
+            }
          }
       }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            fiu.a $$1 = (fiu.a)$$0;
-            return this.c == $$1.c && this.b == $$1.b;
-         } else {
-            return false;
-         }
+      $$0.j.clear();
+      this.a($$4);
+      boolean $$8 = this.g != $$5;
+      if ($$8) {
+         GlStateManager._glUseProgram($$5.b());
+         this.g = $$5;
       }
 
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.b, this.c);
-      }
+      IntList $$9 = $$5.d();
 
-      @Override
-      public String toString() {
-         return this.a;
-      }
-   }
-
-   public static enum b {
-      a("key.keyboard", ($$0, $$1) -> {
-         if ("key.keyboard.unknown".equals($$1)) {
-            return wy.c($$1);
-         } else {
-            String $$2 = GLFW.glfwGetKeyName($$0, -1);
-            return $$2 != null ? wy.b($$2.toUpperCase(Locale.ROOT)) : wy.c($$1);
-         }
-      }),
-      b("scancode", ($$0, $$1) -> {
-         String $$2 = GLFW.glfwGetKeyName(-1, $$0);
-         return $$2 != null ? wy.b($$2) : wy.c($$1);
-      }),
-      c("key.mouse", ($$0, $$1) -> tu.a().b($$1) ? wy.c($$1) : wy.a("key.mouse", $$0 + 1));
-
-      private static final String d = "key.keyboard.unknown";
-      private final Int2ObjectMap<fiu.a> e = new Int2ObjectOpenHashMap();
-      final String f;
-      final BiFunction<Integer, String, wy> g;
-
-      private static void a(fiu.b $$0, String $$1, int $$2) {
-         fiu.a $$3 = new fiu.a($$1, $$0, $$2);
-         $$0.e.put($$2, $$3);
-      }
-
-      private b(final String $$0, final BiFunction<Integer, String, wy> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public fiu.a a(int $$0) {
-         return (fiu.a)this.e.computeIfAbsent($$0, $$0x -> {
-            int $$1 = $$0x;
-            if (this == c) {
-               $$1 = $$0x + 1;
+      for (int $$10 = 0; $$10 < $$4.q().size(); $$10++) {
+         String $$11 = $$4.q().get($$10);
+         fjc $$12 = (fjc)$$0.i.get($$11);
+         if ($$12 != null) {
+            if ($$8 || $$0.k.contains($$11)) {
+               int $$13 = $$9.getInt($$10);
+               fjd.b($$13, $$10);
+               RenderSystem.activeTexture(33984 + $$10);
             }
 
-            String $$2 = this.f + "." + $$1;
-            return new fiu.a($$2, this, $$0x);
-         });
+            GlStateManager._bindTexture($$12.b());
+            $$12.a();
+         }
       }
 
-      static {
-         a(a, "key.keyboard.unknown", -1);
-         a(c, "key.mouse.left", 0);
-         a(c, "key.mouse.right", 1);
-         a(c, "key.mouse.middle", 2);
-         a(c, "key.mouse.4", 3);
-         a(c, "key.mouse.5", 4);
-         a(c, "key.mouse.6", 5);
-         a(c, "key.mouse.7", 6);
-         a(c, "key.mouse.8", 7);
-         a(a, "key.keyboard.0", 48);
-         a(a, "key.keyboard.1", 49);
-         a(a, "key.keyboard.2", 50);
-         a(a, "key.keyboard.3", 51);
-         a(a, "key.keyboard.4", 52);
-         a(a, "key.keyboard.5", 53);
-         a(a, "key.keyboard.6", 54);
-         a(a, "key.keyboard.7", 55);
-         a(a, "key.keyboard.8", 56);
-         a(a, "key.keyboard.9", 57);
-         a(a, "key.keyboard.a", 65);
-         a(a, "key.keyboard.b", 66);
-         a(a, "key.keyboard.c", 67);
-         a(a, "key.keyboard.d", 68);
-         a(a, "key.keyboard.e", 69);
-         a(a, "key.keyboard.f", 70);
-         a(a, "key.keyboard.g", 71);
-         a(a, "key.keyboard.h", 72);
-         a(a, "key.keyboard.i", 73);
-         a(a, "key.keyboard.j", 74);
-         a(a, "key.keyboard.k", 75);
-         a(a, "key.keyboard.l", 76);
-         a(a, "key.keyboard.m", 77);
-         a(a, "key.keyboard.n", 78);
-         a(a, "key.keyboard.o", 79);
-         a(a, "key.keyboard.p", 80);
-         a(a, "key.keyboard.q", 81);
-         a(a, "key.keyboard.r", 82);
-         a(a, "key.keyboard.s", 83);
-         a(a, "key.keyboard.t", 84);
-         a(a, "key.keyboard.u", 85);
-         a(a, "key.keyboard.v", 86);
-         a(a, "key.keyboard.w", 87);
-         a(a, "key.keyboard.x", 88);
-         a(a, "key.keyboard.y", 89);
-         a(a, "key.keyboard.z", 90);
-         a(a, "key.keyboard.f1", 290);
-         a(a, "key.keyboard.f2", 291);
-         a(a, "key.keyboard.f3", 292);
-         a(a, "key.keyboard.f4", 293);
-         a(a, "key.keyboard.f5", 294);
-         a(a, "key.keyboard.f6", 295);
-         a(a, "key.keyboard.f7", 296);
-         a(a, "key.keyboard.f8", 297);
-         a(a, "key.keyboard.f9", 298);
-         a(a, "key.keyboard.f10", 299);
-         a(a, "key.keyboard.f11", 300);
-         a(a, "key.keyboard.f12", 301);
-         a(a, "key.keyboard.f13", 302);
-         a(a, "key.keyboard.f14", 303);
-         a(a, "key.keyboard.f15", 304);
-         a(a, "key.keyboard.f16", 305);
-         a(a, "key.keyboard.f17", 306);
-         a(a, "key.keyboard.f18", 307);
-         a(a, "key.keyboard.f19", 308);
-         a(a, "key.keyboard.f20", 309);
-         a(a, "key.keyboard.f21", 310);
-         a(a, "key.keyboard.f22", 311);
-         a(a, "key.keyboard.f23", 312);
-         a(a, "key.keyboard.f24", 313);
-         a(a, "key.keyboard.f25", 314);
-         a(a, "key.keyboard.num.lock", 282);
-         a(a, "key.keyboard.keypad.0", 320);
-         a(a, "key.keyboard.keypad.1", 321);
-         a(a, "key.keyboard.keypad.2", 322);
-         a(a, "key.keyboard.keypad.3", 323);
-         a(a, "key.keyboard.keypad.4", 324);
-         a(a, "key.keyboard.keypad.5", 325);
-         a(a, "key.keyboard.keypad.6", 326);
-         a(a, "key.keyboard.keypad.7", 327);
-         a(a, "key.keyboard.keypad.8", 328);
-         a(a, "key.keyboard.keypad.9", 329);
-         a(a, "key.keyboard.keypad.add", 334);
-         a(a, "key.keyboard.keypad.decimal", 330);
-         a(a, "key.keyboard.keypad.enter", 335);
-         a(a, "key.keyboard.keypad.equal", 336);
-         a(a, "key.keyboard.keypad.multiply", 332);
-         a(a, "key.keyboard.keypad.divide", 331);
-         a(a, "key.keyboard.keypad.subtract", 333);
-         a(a, "key.keyboard.down", 264);
-         a(a, "key.keyboard.left", 263);
-         a(a, "key.keyboard.right", 262);
-         a(a, "key.keyboard.up", 265);
-         a(a, "key.keyboard.apostrophe", 39);
-         a(a, "key.keyboard.backslash", 92);
-         a(a, "key.keyboard.comma", 44);
-         a(a, "key.keyboard.equal", 61);
-         a(a, "key.keyboard.grave.accent", 96);
-         a(a, "key.keyboard.left.bracket", 91);
-         a(a, "key.keyboard.minus", 45);
-         a(a, "key.keyboard.period", 46);
-         a(a, "key.keyboard.right.bracket", 93);
-         a(a, "key.keyboard.semicolon", 59);
-         a(a, "key.keyboard.slash", 47);
-         a(a, "key.keyboard.space", 32);
-         a(a, "key.keyboard.tab", 258);
-         a(a, "key.keyboard.left.alt", 342);
-         a(a, "key.keyboard.left.control", 341);
-         a(a, "key.keyboard.left.shift", 340);
-         a(a, "key.keyboard.left.win", 343);
-         a(a, "key.keyboard.right.alt", 346);
-         a(a, "key.keyboard.right.control", 345);
-         a(a, "key.keyboard.right.shift", 344);
-         a(a, "key.keyboard.right.win", 347);
-         a(a, "key.keyboard.enter", 257);
-         a(a, "key.keyboard.escape", 256);
-         a(a, "key.keyboard.backspace", 259);
-         a(a, "key.keyboard.delete", 261);
-         a(a, "key.keyboard.end", 269);
-         a(a, "key.keyboard.home", 268);
-         a(a, "key.keyboard.insert", 260);
-         a(a, "key.keyboard.page.down", 267);
-         a(a, "key.keyboard.page.up", 266);
-         a(a, "key.keyboard.caps.lock", 280);
-         a(a, "key.keyboard.pause", 284);
-         a(a, "key.keyboard.scroll.lock", 281);
-         a(a, "key.keyboard.menu", 348);
-         a(a, "key.keyboard.print.screen", 283);
-         a(a, "key.keyboard.world.1", 161);
-         a(a, "key.keyboard.world.2", 162);
+      fkk $$14 = frd.Q() == null ? null : frd.Q().aO();
+      $$5.a(
+         $$4.m(),
+         RenderSystem.getModelViewMatrix(),
+         RenderSystem.getProjectionMatrix(),
+         $$14 == null ? 0.0F : (float)$$14.k(),
+         $$14 == null ? 0.0F : (float)$$14.l()
+      );
+
+      for (fjd $$15 : $$5.e()) {
+         $$15.c();
       }
+
+      if ($$0.g.b()) {
+         GlStateManager._enableScissorTest();
+         GlStateManager._scissorBox($$0.g.c(), $$0.g.d(), $$0.g.e(), $$0.g.f());
+      } else {
+         GlStateManager._disableScissorTest();
+      }
+
+      return true;
+   }
+
+   private void a(fjp $$0) {
+      if (this.e != $$0) {
+         this.e = $$0;
+         if ($$0.a() != fjw.a) {
+            GlStateManager._enableDepthTest();
+            GlStateManager._depthFunc(GlConst.toGl($$0.a()));
+         } else {
+            GlStateManager._disableDepthTest();
+         }
+
+         if ($$0.c()) {
+            GlStateManager._enableCull();
+         } else {
+            GlStateManager._disableCull();
+         }
+
+         if ($$0.e().isPresent()) {
+            GlStateManager._enableBlend();
+            fjl $$1 = $$0.e().get();
+            GlStateManager._blendFuncSeparate(GlConst.toGl($$1.a()), GlConst.toGl($$1.b()), GlConst.toGl($$1.c()), GlConst.toGl($$1.d()));
+         } else {
+            GlStateManager._disableBlend();
+         }
+
+         GlStateManager._polygonMode(1032, GlConst.toGl($$0.b()));
+         GlStateManager._depthMask($$0.h());
+         GlStateManager._colorMask($$0.f(), $$0.f(), $$0.f(), $$0.g());
+         if ($$0.j() == 0.0F && $$0.i() == 0.0F) {
+            GlStateManager._disablePolygonOffset();
+         } else {
+            GlStateManager._polygonOffset($$0.i(), $$0.j());
+            GlStateManager._enablePolygonOffset();
+         }
+
+         switch ($$0.d()) {
+            case a:
+               GlStateManager._disableColorLogicOp();
+               break;
+            case b:
+               GlStateManager._enableColorLogicOp();
+               GlStateManager._logicOp(5387);
+         }
+      }
+   }
+
+   public void a() {
+      this.f = false;
+      GlStateManager._glBindFramebuffer(36160, 0);
+   }
+
+   protected fix b() {
+      return this.b;
    }
 }

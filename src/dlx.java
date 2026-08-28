@@ -1,78 +1,66 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dlx extends dmd {
-   public static final MapCodec<dlx> a = b(dlx::new);
-   public static final ebr<jb> b = ebj.R;
-   public static final ebk c = ebj.y;
+public abstract class dlx extends dmo {
+   public static final ecc<jb> a = drd.e;
+   public static final ebv b = ebu.u;
 
-   @Override
-   public MapCodec<dlx> a() {
-      return a;
-   }
-
-   public dlx(eas.d $$0) {
+   protected dlx(ebd.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, jb.c).b(c, Boolean.valueOf(false)));
+      this.l(this.C.b().b(a, jb.c).b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
-      if ($$1 instanceof arq $$5 && $$1.c_($$2) instanceof dxj $$6) {
-         $$3.a($$6);
-         $$3.a(awx.ar);
-         cqc.a($$5, $$3, true);
+   protected abstract MapCodec<? extends dlx> a();
+
+   @Override
+   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
+      if (!$$1.C) {
+         this.a($$1, $$2, $$3);
       }
 
-      return bug.a;
+      return bur.a;
+   }
+
+   protected abstract void a(djx var1, iv var2, crx var3);
+
+   @Override
+   public ebe a(ddr $$0) {
+      return this.m().b(a, $$0.g().g());
    }
 
    @Override
-   protected void a(eat $$0, arq $$1, iv $$2, boolean $$3) {
-      buc.a($$0, $$1, $$2);
+   protected void a(ebe $$0, ars $$1, iv $$2, boolean $$3) {
+      bun.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(eat $$0, arq $$1, iv $$2, azv $$3) {
-      dxr $$4 = $$1.c_($$2);
-      if ($$4 instanceof dxj) {
-         ((dxj)$$4).k();
-      }
-   }
-
-   @Nullable
-   @Override
-   public dxr a(iv $$0, eat $$1) {
-      return new dxj($$0, $$1);
-   }
-
-   @Override
-   protected boolean c_(eat $$0) {
+   protected boolean c_(ebe $$0) {
       return true;
    }
 
    @Override
-   protected int a(eat $$0, djm $$1, iv $$2) {
-      return cvf.a($$1.c_($$2));
+   protected int a(ebe $$0, djx $$1, iv $$2) {
+      return cvq.a($$1.c_($$2));
    }
 
    @Override
-   protected eat a(eat $$0, dtl $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   protected ebe a(ebe $$0, dtw $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   protected eat a(eat $$0, dru $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected ebe a(ebe $$0, dsf $$1) {
+      return $$0.a($$1.a($$0.c(a)));
    }
 
    @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(b, c);
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(a, b);
    }
 
-   @Override
-   public eat a(ddg $$0) {
-      return this.m().b(b, $$0.d().g());
+   @Nullable
+   protected static <T extends dyc> dyd<T> a(djx $$0, dye<T> $$1, dye<? extends dxp> $$2) {
+      return $$0 instanceof ars $$3 ? a($$1, $$2, ($$1x, $$2x, $$3x, $$4) -> dxp.a($$3, $$2x, $$3x, $$4)) : null;
    }
 }

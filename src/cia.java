@@ -1,25 +1,42 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Set;
 
-public class cia {
-   @Nullable
-   public static ffc a(bxr $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = cid.a($$0, $$1);
-      return cig.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+public class cia extends cic<crj> {
+   private static final int a = 40;
+
+   public cia() {
+      super(40);
    }
 
-   @Nullable
-   public static iv a(bxr $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      iv $$8 = cig.a($$0.dX(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
-      } else {
-         iv $$9 = cig.a($$0, $$1, $$0.dX(), $$8);
-         if (!cid.a($$9, $$0) && !cid.a($$7, $$0, $$9)) {
-            $$9 = cig.a($$9, $$0.dU().ao(), $$1x -> cid.c($$0, $$1x));
-            return cid.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
+   protected void a(ars $$0, crj $$1) {
+      alh<djx> $$2 = $$0.aj();
+      iv $$3 = $$1.dv();
+      List<je> $$4 = Lists.newArrayList();
+      int $$5 = 4;
+
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               iv $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gC().b().a().e().contains($$0.a_($$9).b())) {
+                  $$4.add(je.a($$2, $$9));
+               }
+            }
          }
       }
+
+      byu<?> $$10 = $$1.ec();
+      if (!$$4.isEmpty()) {
+         $$10.a(cgw.f, $$4);
+      } else {
+         $$10.b(cgw.f);
+      }
+   }
+
+   @Override
+   public Set<cgw<?>> a() {
+      return ImmutableSet.of(cgw.f);
    }
 }

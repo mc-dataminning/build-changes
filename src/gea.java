@@ -1,32 +1,69 @@
-import java.util.Map;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface gea {
-   Map<Optional<alf<erc>>, gea> a = Map.of(Optional.of(erd.b), ($$0, $$1) -> {
-      ecr $$2 = $$1.e().a();
-      jt $$3 = $$1.a();
-      jg<dkp> $$4 = $$3.f(mh.aG);
-      jg<ert> $$5 = $$3.f(mh.bd);
-      jg<eqr> $$6 = $$3.f(mh.bb);
-      return new fxt($$0, $$1x -> $$0.m().a(a($$1x)), $$2 instanceof egn ? ((egn)$$2).h() : epq.a($$4, $$5, $$6));
-   }, Optional.of(erd.e), ($$0, $$1) -> new fxs($$0, $$1, $$1x -> $$0.m().a(a($$1x))));
+public class gea {
+   private final Reference2ObjectMap<cxn, gea.a> a = new Reference2ObjectArrayMap();
+   private final gej b;
 
-   fys createEditScreen(gdt var1, ged var2);
-
-   static ged.a a(epq $$0) {
-      return ($$1, $$2) -> {
-         ecr $$3 = new egn($$0);
-         return $$2.a($$1, $$3);
-      };
+   public gea(gej $$0) {
+      this.b = $$0;
    }
 
-   private static ged.a a(jf<dkp> $$0) {
-      return ($$1, $$2) -> {
-         js<egx> $$3 = $$1.f(mh.aX);
-         jf<egx> $$4 = $$3.b(egx.c);
-         dkt $$5 = new dla($$0);
-         ecr $$6 = new egv($$5, $$4);
-         return $$2.a($$1, $$6);
-      };
+   public void a() {
+      this.a.clear();
+   }
+
+   private void a(cxn $$0, bbb $$1, dgb $$2, boolean $$3) {
+      List<czy> $$4 = $$2.a($$1);
+      if (!$$4.isEmpty()) {
+         this.a.put($$0, new gea.a($$4, $$3));
+      }
+   }
+
+   protected void a(cxn $$0, bbb $$1, dgb $$2) {
+      this.a($$0, $$1, $$2, false);
+   }
+
+   protected void b(cxn $$0, bbb $$1, dgb $$2) {
+      this.a($$0, $$1, $$2, true);
+   }
+
+   public void a(ftx $$0, frd $$1, boolean $$2) {
+      this.a.forEach(($$3, $$4) -> {
+         int $$5 = $$3.e;
+         int $$6 = $$3.f;
+         if ($$4.b && $$2) {
+            $$0.a($$5 - 4, $$6 - 4, $$5 + 20, $$6 + 20, 822018048);
+         } else {
+            $$0.a($$5, $$6, $$5 + 16, $$6 + 16, 822018048);
+         }
+
+         czy $$7 = $$4.a(this.b.currentIndex());
+         $$0.b($$7, $$5, $$6);
+         $$0.a(gsl.J(), $$5, $$6, $$5 + 16, $$6 + 16, 822083583);
+         if ($$4.b) {
+            $$0.a($$1.h, $$7, $$5, $$6);
+         }
+      });
+   }
+
+   public void a(ftx $$0, frd $$1, int $$2, int $$3, @Nullable cxn $$4) {
+      if ($$4 != null) {
+         gea.a $$5 = (gea.a)this.a.get($$4);
+         if ($$5 != null) {
+            czy $$6 = $$5.a(this.b.currentIndex());
+            $$0.a($$1.h, gad.a($$1, $$6), $$2, $$3, $$6.a(kk.G));
+         }
+      }
+   }
+
+   static record a(List<czy> a, boolean b) {
+
+      public czy a(int $$0) {
+         int $$1 = this.a.size();
+         return $$1 == 0 ? czy.k : this.a.get($$0 % $$1);
+      }
    }
 }

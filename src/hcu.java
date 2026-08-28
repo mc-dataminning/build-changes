@@ -1,9 +1,12 @@
-import javax.annotation.Nullable;
+public class hcu extends hci<hfy, gja> {
+   private static final gsl a = gsl.q(ali.b("textures/entity/phantom_eyes.png"));
 
-public class hcu extends hdl {
-   private static final alg j = alg.b("textures/entity/cat/tabby.png");
-   public alg a = j;
-   public boolean b;
-   @Nullable
-   public cyl c;
+   public hcu(haf<hfy, gja> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public gsl a() {
+      return a;
+   }
 }

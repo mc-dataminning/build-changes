@@ -1,131 +1,104 @@
-import com.mojang.logging.LogUtils;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeoutException;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class fop extends foq {
-   private static final wy b = wy.c("multiplayer.applyingPack");
-   private static final Logger c = LogUtils.getLogger();
-   private static final wy d = wy.c("mco.connect.connecting");
-   private final flu e;
-   private final fys f;
+public class fop extends hrm {
+   private static final xa a = xa.c("mco.selectServer.create");
+   private static final xa b = xa.c("mco.configure.world.name");
+   private static final xa c = xa.c("mco.configure.world.description");
+   private static final int C = 10;
+   private static final int D = 210;
+   private final fly E;
+   private final fxz F = new fxz(this);
+   private fuu G;
+   private fuu H;
+   private final Runnable I;
 
-   public fop(fys $$0, flu $$1) {
-      this.f = $$0;
-      this.e = $$1;
+   public fop(fly $$0, fne $$1, boolean $$2) {
+      super(a);
+      this.E = $$0;
+      this.I = () -> this.a($$1, $$2);
    }
 
    @Override
-   public void run() {
-      flv $$0;
-      try {
-         $$0 = this.f();
-      } catch (CancellationException var4) {
-         c.info("User aborted connecting to realms");
-         return;
-      } catch (fmp var5) {
-         switch (var5.a.a()) {
-            case 6002:
-               a(new fnw(this.f, this.e));
-               return;
-            case 6006:
-               boolean $$3 = fpt.Q().b(this.e.g);
-               a(
-                  (fys)($$3
-                     ? new fnb(this.f, this.e.a, this.e.i())
-                     : new fnh(wy.c("mco.brokenworld.nonowner.title"), wy.c("mco.brokenworld.nonowner.error"), this.f))
-               );
-               return;
-            default:
-               this.a(var5);
-               c.error("Couldn't connect to world", var5);
-               return;
-         }
-      } catch (TimeoutException var6) {
-         this.a(wy.c("mco.errorMessage.connectionFailure"));
-         return;
-      } catch (Exception var7) {
-         c.error("Couldn't connect to world", var7);
-         this.a(var7);
-         return;
-      }
-
-      if ($$0.a == null) {
-         this.a(wy.c("mco.errorMessage.connectionFailure"));
-      } else {
-         boolean $$7 = $$0.b != null && $$0.c != null;
-         fys $$8 = (fys)($$7 ? this.a($$0, a(this.e), this::a) : this.a($$0));
-         a($$8);
-      }
-   }
-
-   private static UUID a(flu $$0) {
-      return $$0.q != null
-         ? UUID.nameUUIDFromBytes(("minigame:" + $$0.q).getBytes(StandardCharsets.UTF_8))
-         : UUID.nameUUIDFromBytes(("realms:" + Objects.requireNonNullElse($$0.c, "") + ":" + $$0.p).getBytes(StandardCharsets.UTF_8));
-   }
-
-   @Override
-   public wy a() {
-      return d;
-   }
-
-   private flv f() throws fmp, TimeoutException, CancellationException {
-      fkt $$0 = fkt.a();
-
-      for (int $$1 = 0; $$1 < 40; $$1++) {
-         if (this.d()) {
-            throw new CancellationException();
-         }
-
-         try {
-            return $$0.c(this.e.a);
-         } catch (fmq var4) {
-            a((long)var4.c);
-         }
-      }
-
-      throw new TimeoutException();
-   }
-
-   public fnj a(flv $$0) {
-      return new fnk(this.f, new fon(this.f, this.e, $$0));
-   }
-
-   private fuc a(flv $$0, UUID $$1, Function<flv, fys> $$2) {
-      wy $$3 = wy.c("mco.configure.world.resourcepack.question");
-      return fnp.a(this.f, $$3, $$3x -> {
-         a(new fyd(b));
-         this.a($$0, $$1).thenRun(() -> a($$2.apply($$0))).exceptionally($$1xx -> {
-            fpt.Q().af().i();
-            c.error("Failed to download resource pack from {}", $$0, $$1xx);
-            a(new fnh(wy.c("mco.download.resourcePack.fail"), this.f));
-            return null;
-         });
+   public void aS_() {
+      this.F.a(this.l, this.p);
+      fyd $$0 = this.F.c(fyd.d()).a(10);
+      ful $$1 = ful.a(wz.j, $$0x -> this.I.run()).a();
+      $$1.j = false;
+      this.G = new fuu(this.p, 210, 20, b);
+      this.G.b($$1x -> $$1.j = !ban.h($$1x));
+      this.H = new fuu(this.p, 210, 20, c);
+      $$0.a(fxv.a(this.p, this.G, b));
+      $$0.a(fxv.a(this.p, this.H, c));
+      fyd $$2 = this.F.b(fyd.e().a(10));
+      $$2.a($$1);
+      $$2.a(ful.a(wz.k, $$0x -> this.aP_()).a());
+      this.F.a($$1x -> {
+         fuj var10000 = this.c($$1x);
       });
+      this.c();
    }
 
-   private CompletableFuture<?> a(flv $$0, UUID $$1) {
-      try {
-         if ($$0.b == null) {
-            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackUrl was null"));
-         } else if ($$0.c == null) {
-            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackHash was null"));
-         } else {
-            hmq $$2 = fpt.Q().af();
-            CompletableFuture<Void> $$3 = $$2.b($$1);
-            $$2.g();
-            $$2.a($$1, new URL($$0.b), $$0.c);
-            return $$3;
-         }
-      } catch (Exception var5) {
-         return CompletableFuture.failedFuture(var5);
+   @Override
+   protected void aG_() {
+      this.b(this.G);
+   }
+
+   @Override
+   protected void c() {
+      this.F.a();
+   }
+
+   private void a(fne $$0, boolean $$1) {
+      if (!$$0.h() && $$1) {
+         AtomicBoolean $$2 = new AtomicBoolean();
+         this.m.a(new fyw(() -> {
+            $$2.set(true);
+            this.E.h();
+            this.m.a(this.E);
+         }, xa.c("mco.upload.preparing"), xa.i()));
+         CompletableFuture.<fne>supplyAsync(() -> a($$0), ag.h()).thenAcceptAsync($$1x -> {
+            if (!$$2.get()) {
+               this.b($$1x);
+            }
+         }, this.m).exceptionallyAsync($$0x -> {
+            this.E.h();
+            xa $$3;
+            if ($$0x.getCause() instanceof fnz $$2x) {
+               $$3 = $$2x.a.b();
+            } else {
+               $$3 = xa.c("mco.errorMessage.initialize.failed");
+            }
+
+            this.m.a(new fos($$3, this.E));
+            return null;
+         }, this.m);
+      } else {
+         this.b($$0);
       }
+   }
+
+   private static fne a(fne $$0) {
+      fmd $$1 = fmd.a();
+
+      try {
+         return $$1.a(Long.valueOf($$0.a));
+      } catch (fnz var3) {
+         throw new RuntimeException(var3);
+      }
+   }
+
+   private void b(fne $$0) {
+      fqd $$1 = new fqd($$0.a, this.G.a(), this.H.a());
+      fpb $$2 = fpb.a(this, $$0, $$1, () -> this.m.execute(() -> {
+            fly.g();
+            this.m.a(this.E);
+         }));
+      this.m.a($$2);
+   }
+
+   @Override
+   public void aP_() {
+      this.m.a(this.E);
    }
 }

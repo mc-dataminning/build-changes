@@ -1,269 +1,223 @@
-import java.util.ArrayList;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class gsf implements hmm {
-   public static final alg a = alg.b("builtin/generated");
-   public static final List<String> b = List.of("layer0", "layer1", "layer2", "layer3", "layer4");
-   private static final float d = 7.5F;
-   private static final float e = 8.5F;
-   private static final gsl.a f = new gsl.a.a().a("particle", "layer0").a();
-   private static final grz.b g = new grz.b(0.0F, 0.0F, 16.0F, 16.0F);
-   private static final grz.b h = new grz.b(16.0F, 0.0F, 0.0F, 16.0F);
+public record gsf(Map<ali, gsf.d> b, List<gsf.e> c) {
+   public static final Codec<gsf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.unboundedMap(ali.a, gsf.d.b).optionalFieldOf("targets", Map.of()).forGetter(gsf::a),
+               gsf.e.a.listOf().optionalFieldOf("passes", List.of()).forGetter(gsf::b)
+            )
+            .apply($$0, gsf::new)
+   );
 
-   @Override
-   public gsl.a e() {
-      return f;
+   public Map<ali, gsf.d> a() {
+      return this.b;
    }
 
-   @Override
-   public hml a() {
-      return gsf::a;
+   public List<gsf.e> b() {
+      return this.c;
    }
 
-   @Nullable
-   @Override
-   public hmm.a b() {
-      return hmm.a.a;
-   }
+   public static record a(int c, int d) implements gsf.d {
+      public static final Codec<gsf.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ayw.m.fieldOf("width").forGetter(gsf.a::a), ayw.m.fieldOf("height").forGetter(gsf.a::b)).apply($$0, gsf.a::new)
+      );
 
-   private static hmh a(gsl $$0, hlz $$1, hmf $$2, hmb $$3) {
-      return a($$0, $$1.a(), $$2, $$3);
-   }
-
-   private static hmh a(gsl $$0, hmk $$1, hmf $$2, hmb $$3) {
-      List<gry> $$4 = new ArrayList<>();
-
-      for (int $$5 = 0; $$5 < b.size(); $$5++) {
-         String $$6 = b.get($$5);
-         hlx $$7 = $$0.a($$6);
-         if ($$7 == null) {
-            break;
-         }
-
-         hjk $$8 = $$1.a($$7, $$3).e();
-         $$4.addAll(a($$5, $$6, $$8));
-      }
-
-      return gsk.a($$4, $$0, $$1, $$2, $$3);
-   }
-
-   private static List<gry> a(int $$0, String $$1, hjk $$2) {
-      Map<jb, grz> $$3 = Map.of(jb.d, new grz(null, $$0, $$1, g, i.a), jb.c, new grz(null, $$0, $$1, h, i.a));
-      List<gry> $$4 = new ArrayList<>();
-      $$4.add(new gry(new Vector3f(0.0F, 0.0F, 7.5F), new Vector3f(16.0F, 16.0F, 8.5F), $$3));
-      $$4.addAll(a($$2, $$1, $$0));
-      return $$4;
-   }
-
-   private static List<gry> a(hjk $$0, String $$1, int $$2) {
-      float $$3 = (float)$$0.a();
-      float $$4 = (float)$$0.b();
-      List<gry> $$5 = new ArrayList<>();
-
-      for (gsf.a $$6 : a($$0)) {
-         float $$7 = 0.0F;
-         float $$8 = 0.0F;
-         float $$9 = 0.0F;
-         float $$10 = 0.0F;
-         float $$11 = 0.0F;
-         float $$12 = 0.0F;
-         float $$13 = 0.0F;
-         float $$14 = 0.0F;
-         float $$15 = 16.0F / $$3;
-         float $$16 = 16.0F / $$4;
-         float $$17 = (float)$$6.b();
-         float $$18 = (float)$$6.c();
-         float $$19 = (float)$$6.d();
-         gsf.b $$20 = $$6.a();
-         switch ($$20) {
-            case a:
-               $$11 = $$17;
-               $$7 = $$17;
-               $$9 = $$12 = $$18 + 1.0F;
-               $$13 = $$19;
-               $$8 = $$19;
-               $$10 = $$19;
-               $$14 = $$19 + 1.0F;
-               break;
-            case b:
-               $$13 = $$19;
-               $$14 = $$19 + 1.0F;
-               $$11 = $$17;
-               $$7 = $$17;
-               $$9 = $$12 = $$18 + 1.0F;
-               $$8 = $$19 + 1.0F;
-               $$10 = $$19 + 1.0F;
-               break;
-            case c:
-               $$11 = $$19;
-               $$7 = $$19;
-               $$9 = $$19;
-               $$12 = $$19 + 1.0F;
-               $$14 = $$17;
-               $$8 = $$17;
-               $$10 = $$13 = $$18 + 1.0F;
-               break;
-            case d:
-               $$11 = $$19;
-               $$12 = $$19 + 1.0F;
-               $$7 = $$19 + 1.0F;
-               $$9 = $$19 + 1.0F;
-               $$14 = $$17;
-               $$8 = $$17;
-               $$10 = $$13 = $$18 + 1.0F;
-         }
-
-         $$7 *= $$15;
-         $$9 *= $$15;
-         $$8 *= $$16;
-         $$10 *= $$16;
-         $$8 = 16.0F - $$8;
-         $$10 = 16.0F - $$10;
-         $$11 *= $$15;
-         $$12 *= $$15;
-         $$13 *= $$16;
-         $$14 *= $$16;
-         Map<jb, grz> $$21 = Map.of($$20.a(), new grz(null, $$2, $$1, new grz.b($$11, $$13, $$12, $$14), i.a));
-         switch ($$20) {
-            case a:
-               $$5.add(new gry(new Vector3f($$7, $$8, 7.5F), new Vector3f($$9, $$8, 8.5F), $$21));
-               break;
-            case b:
-               $$5.add(new gry(new Vector3f($$7, $$10, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21));
-               break;
-            case c:
-               $$5.add(new gry(new Vector3f($$7, $$8, 7.5F), new Vector3f($$7, $$10, 8.5F), $$21));
-               break;
-            case d:
-               $$5.add(new gry(new Vector3f($$9, $$8, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21));
-         }
-      }
-
-      return $$5;
-   }
-
-   private static List<gsf.a> a(hjk $$0) {
-      int $$1 = $$0.a();
-      int $$2 = $$0.b();
-      List<gsf.a> $$3 = new ArrayList<>();
-      $$0.d().forEach($$4 -> {
-         for (int $$5 = 0; $$5 < $$2; $$5++) {
-            for (int $$6 = 0; $$6 < $$1; $$6++) {
-               boolean $$7 = !a($$0, $$4, $$6, $$5, $$1, $$2);
-               a(gsf.b.a, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               a(gsf.b.b, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               a(gsf.b.c, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               a(gsf.b.d, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-            }
-         }
-      });
-      return $$3;
-   }
-
-   private static void a(gsf.b $$0, List<gsf.a> $$1, hjk $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8) {
-      boolean $$9 = a($$2, $$3, $$4 + $$0.b(), $$5 + $$0.c(), $$6, $$7) && $$8;
-      if ($$9) {
-         a($$1, $$0, $$4, $$5);
-      }
-   }
-
-   private static void a(List<gsf.a> $$0, gsf.b $$1, int $$2, int $$3) {
-      gsf.a $$4 = null;
-
-      for (gsf.a $$5 : $$0) {
-         if ($$5.a() == $$1) {
-            int $$6 = $$1.d() ? $$3 : $$2;
-            if ($$5.d() == $$6) {
-               $$4 = $$5;
-               break;
-            }
-         }
-      }
-
-      int $$7 = $$1.d() ? $$3 : $$2;
-      int $$8 = $$1.d() ? $$2 : $$3;
-      if ($$4 == null) {
-         $$0.add(new gsf.a($$1, $$8, $$7));
-      } else {
-         $$4.a($$8);
-      }
-   }
-
-   private static boolean a(hjk $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      return $$2 >= 0 && $$3 >= 0 && $$2 < $$4 && $$3 < $$5 ? $$0.a($$1, $$2, $$3) : true;
-   }
-
-   static class a {
-      private final gsf.b a;
-      private int b;
-      private int c;
-      private final int d;
-
-      public a(gsf.b $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public void a(int $$0) {
-         if ($$0 < this.b) {
-            this.b = $$0;
-         } else if ($$0 > this.c) {
-            this.c = $$0;
-         }
-      }
-
-      public gsf.b a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      public int c() {
+      public int a() {
          return this.c;
       }
 
-      public int d() {
+      public int b() {
          return this.d;
       }
    }
 
-   static enum b {
-      a(jb.b, 0, -1),
-      b(jb.a, 0, 1),
-      c(jb.f, -1, 0),
-      d(jb.e, 1, 0);
+   public static record b() implements gsf.d {
+      public static final Codec<gsf.b> a = Codec.unit(gsf.b::new);
+   }
 
-      private final jb e;
-      private final int f;
-      private final int g;
+   public sealed interface c permits gsf.g, gsf.f {
+      Codec<gsf.c> a = Codec.xor(gsf.g.b, gsf.f.b).xmap($$0 -> (gsf.c)$$0.map(Function.identity(), Function.identity()), $$0 -> {
+         Objects.requireNonNull($$0);
 
-      private b(final jb $$0, final int $$1, final int $$2) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
+         return switch ($$0) {
+            case gsf.g $$3 -> Either.left($$3);
+            case gsf.f $$4 -> Either.right($$4);
+            default -> throw new MatchException(null, null);
+         };
+      });
+
+      String a();
+
+      Set<ali> b();
+   }
+
+   public sealed interface d permits gsf.b, gsf.a {
+      Codec<gsf.d> b = Codec.either(gsf.a.a, gsf.b.a).xmap($$0 -> (gsf.d)$$0.map(Function.identity(), Function.identity()), $$0 -> {
+         Objects.requireNonNull($$0);
+
+         return switch ($$0) {
+            case gsf.a $$3 -> Either.left($$3);
+            case gsf.b $$4 -> Either.right($$4);
+            default -> throw new MatchException(null, null);
+         };
+      });
+   }
+
+   public static record e(ali b, ali c, List<gsf.c> d, ali e, List<gsf.h> f) {
+      private static final Codec<List<gsf.c>> g = gsf.c.a.listOf().validate($$0 -> {
+         Set<String> $$1 = new ObjectArraySet($$0.size());
+
+         for (gsf.c $$2 : $$0) {
+            if (!$$1.add($$2.a())) {
+               return DataResult.error(() -> "Encountered repeated sampler name: " + $$2.a());
+            }
+         }
+
+         return DataResult.success($$0);
+      });
+      public static final Codec<gsf.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ali.a.fieldOf("vertex_shader").forGetter(gsf.e::b),
+                  ali.a.fieldOf("fragment_shader").forGetter(gsf.e::c),
+                  g.optionalFieldOf("inputs", List.of()).forGetter(gsf.e::d),
+                  ali.a.fieldOf("output").forGetter(gsf.e::e),
+                  gsf.h.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(gsf.e::f)
+               )
+               .apply($$0, gsf.e::new)
+      );
+
+      public Stream<ali> a() {
+         Stream<ali> $$0 = this.d.stream().flatMap($$0x -> $$0x.b().stream());
+         return Stream.concat($$0, Stream.of(this.e));
+      }
+   }
+
+   public static record f(String c, ali d, boolean e, boolean f) implements gsf.c {
+      public static final Codec<gsf.f> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.STRING.fieldOf("sampler_name").forGetter(gsf.f::a),
+                  ali.a.fieldOf("target").forGetter(gsf.f::c),
+                  Codec.BOOL.optionalFieldOf("use_depth_buffer", false).forGetter(gsf.f::d),
+                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(gsf.f::e)
+               )
+               .apply($$0, gsf.f::new)
+      );
+
+      @Override
+      public Set<ali> b() {
+         return Set.of(this.d);
       }
 
-      public jb a() {
+      @Override
+      public String a() {
+         return this.c;
+      }
+
+      public ali c() {
+         return this.d;
+      }
+
+      public boolean d() {
          return this.e;
       }
 
-      public int b() {
+      public boolean e() {
+         return this.f;
+      }
+   }
+
+   public static record g(String c, ali d, int e, int f, boolean g) implements gsf.c {
+      public static final Codec<gsf.g> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.STRING.fieldOf("sampler_name").forGetter(gsf.g::a),
+                  ali.a.fieldOf("location").forGetter(gsf.g::c),
+                  ayw.m.fieldOf("width").forGetter(gsf.g::d),
+                  ayw.m.fieldOf("height").forGetter(gsf.g::e),
+                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(gsf.g::f)
+               )
+               .apply($$0, gsf.g::new)
+      );
+
+      @Override
+      public Set<ali> b() {
+         return Set.of();
+      }
+
+      @Override
+      public String a() {
+         return this.c;
+      }
+
+      public ali c() {
+         return this.d;
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      public int e() {
          return this.f;
       }
 
-      public int c() {
+      public boolean f() {
          return this.g;
       }
+   }
 
-      boolean d() {
-         return this == b || this == a;
+   public static record h(String b, String c, Optional<List<Float>> d) {
+      public static final Codec<gsf.h> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.STRING.fieldOf("name").forGetter(gsf.h::a),
+                  Codec.STRING.fieldOf("type").forGetter(gsf.h::b),
+                  Codec.FLOAT.sizeLimitedListOf(4).optionalFieldOf("values").forGetter(gsf.h::c)
+               )
+               .apply($$0, gsf.h::new)
+      );
+
+      public void a(flb $$0) {
+         fkx $$1 = fkx.h.a(this.c);
+         if (!this.d.isEmpty() && $$1 != null && !this.d.get().isEmpty()) {
+            List<Float> $$2 = this.d.get();
+            if ($$1.b()) {
+               $$0.a(this.b, (int)$$2.getFirst().floatValue());
+            } else {
+               float[] $$3 = new float[$$1.d()];
+               if ($$2.size() == 1) {
+                  Arrays.fill($$3, $$2.getFirst().floatValue());
+               } else {
+                  for (int $$4 = 0; $$4 < Math.min($$2.size(), $$1.d()); $$4++) {
+                     $$3[$$4] = $$2.get($$4);
+                  }
+               }
+
+               $$0.a(this.b, $$3);
+            }
+         }
+      }
+
+      public String a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public Optional<List<Float>> c() {
+         return this.d;
       }
    }
 }

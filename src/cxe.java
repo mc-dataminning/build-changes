@@ -1,89 +1,73 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntLists;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class cxe {
-   private static final List<cxd> b = ag.a(new ArrayList<>(), $$0 -> {
-      a($$0, "contents", 0);
-      a($$0, "container.", 0, 54);
-      a($$0, "hotbar.", 0, 9);
-      a($$0, "inventory.", 9, 27);
-      a($$0, "enderchest.", 200, 27);
-      a($$0, "villager.", 300, 8);
-      a($$0, "horse.", 500, 15);
-      int $$1 = bws.a.a(98);
-      int $$2 = bws.b.a(98);
-      a($$0, "weapon", $$1);
-      a($$0, "weapon.mainhand", $$1);
-      a($$0, "weapon.offhand", $$2);
-      a($$0, "weapon.*", $$1, $$2);
-      $$1 = bws.f.a(100);
-      $$2 = bws.e.a(100);
-      int $$5 = bws.d.a(100);
-      int $$6 = bws.c.a(100);
-      int $$7 = bws.g.a(105);
-      a($$0, "armor.head", $$1);
-      a($$0, "armor.chest", $$2);
-      a($$0, "armor.legs", $$5);
-      a($$0, "armor.feet", $$6);
-      a($$0, "armor.body", $$7);
-      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
-      a($$0, "saddle", bws.h.a(106));
-      a($$0, "horse.chest", 499);
-      a($$0, "player.cursor", 499);
-      a($$0, "player.crafting.", 500, 4);
-   });
-   public static final Codec<cxd> a = bak.b(() -> b.toArray(new cxd[0]));
-   private static final Function<String, cxd> c = bak.a(b.toArray(new cxd[0]), $$0 -> $$0);
+public class cxe extends buy {
+   @Nullable
+   private dza b;
 
-   private static cxd a(String $$0, int $$1) {
-      return cxd.a($$0, IntLists.singleton($$1));
+   public cxe() {
+      super(27);
    }
 
-   private static cxd a(String $$0, IntList $$1) {
-      return cxd.a($$0, IntLists.unmodifiable($$1));
+   public void a(dza $$0) {
+      this.b = $$0;
    }
 
-   private static cxd a(String $$0, int... $$1) {
-      return cxd.a($$0, IntList.of($$1));
+   public boolean b(dza $$0) {
+      return this.b == $$0;
    }
 
-   private static void a(List<cxd> $$0, String $$1, int $$2) {
-      $$0.add(a($$1, $$2));
-   }
-
-   private static void a(List<cxd> $$0, String $$1, int $$2, int $$3) {
-      IntList $$4 = new IntArrayList($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         int $$6 = $$2 + $$5;
-         $$0.add(a($$1 + $$5, $$6));
-         $$4.add($$6);
+   @Override
+   public void a(uf $$0, jh.a $$1) {
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         this.a($$2, czy.k);
       }
 
-      $$0.add(a($$1 + "*", $$4));
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         tz $$4 = $$0.b($$3);
+         int $$5 = $$4.b("Slot", (byte)0) & 255;
+         if ($$5 >= 0 && $$5 < this.b()) {
+            this.a($$5, czy.a($$1, $$4).orElse(czy.k));
+         }
+      }
    }
 
-   private static void a(List<cxd> $$0, String $$1, int... $$2) {
-      $$0.add(a($$1, $$2));
+   @Override
+   public uf a(jh.a $$0) {
+      uf $$1 = new uf();
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         czy $$3 = this.a($$2);
+         if (!$$3.f()) {
+            tz $$4 = new tz();
+            $$4.a("Slot", (byte)$$2);
+            $$1.add($$3.b($$0, $$4));
+         }
+      }
+
+      return $$1;
    }
 
-   @Nullable
-   public static cxd a(String $$0) {
-      return c.apply($$0);
+   @Override
+   public boolean a(crx $$0) {
+      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
    }
 
-   public static Stream<String> a() {
-      return b.stream().map(bak::c);
+   @Override
+   public void c_(crx $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+
+      super.c_($$0);
    }
 
-   public static Stream<String> b() {
-      return b.stream().filter($$0 -> $$0.b() == 1).map(bak::c);
+   @Override
+   public void c(crx $$0) {
+      if (this.b != null) {
+         this.b.b($$0);
+      }
+
+      super.c($$0);
+      this.b = null;
    }
 }

@@ -1,53 +1,84 @@
-public class gtr implements gtd<dze> {
-   private final gtr.a a;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
-   public gtr(gte.a $$0) {
-      this($$0.f());
+public record gtr(gtq b, gtq c, gtq d, gtq e, gtq f, gtq g, gtq h, gtq i) {
+   public static final gtr a = new gtr(gtq.a, gtq.a, gtq.a, gtq.a, gtq.a, gtq.a, gtq.a, gtq.a);
+
+   public gtq a(czw $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> gtq.a;
+      };
    }
 
-   public gtr(gjp $$0) {
-      this.a = new gtr.a($$0.a(gjs.cV));
+   public gtq a() {
+      return this.b;
    }
 
-   public void a(dze $$0, float $$1, fkd $$2, gqr $$3, int $$4, int $$5, ffc $$6) {
-      jb $$7 = $$0.m().a(dua.c, jb.b);
-      cyl $$8 = $$0.s();
-      hlx $$9;
-      if ($$8 == null) {
-         $$9 = grl.s;
-      } else {
-         $$9 = grl.d($$8);
+   public gtq b() {
+      return this.c;
+   }
+
+   public gtq c() {
+      return this.d;
+   }
+
+   public gtq d() {
+      return this.e;
+   }
+
+   public gtq e() {
+      return this.f;
+   }
+
+   public gtq f() {
+      return this.g;
+   }
+
+   public gtq g() {
+      return this.h;
+   }
+
+   public gtq h() {
+      return this.i;
+   }
+
+   protected static class a implements JsonDeserializer<gtr> {
+      public gtr a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         gtq $$4 = this.a($$2, $$3, czw.c);
+         gtq $$5 = this.a($$2, $$3, czw.b);
+         if ($$5 == gtq.a) {
+            $$5 = $$4;
+         }
+
+         gtq $$6 = this.a($$2, $$3, czw.e);
+         gtq $$7 = this.a($$2, $$3, czw.d);
+         if ($$7 == gtq.a) {
+            $$7 = $$6;
+         }
+
+         gtq $$8 = this.a($$2, $$3, czw.f);
+         gtq $$9 = this.a($$2, $$3, czw.g);
+         gtq $$10 = this.a($$2, $$3, czw.h);
+         gtq $$11 = this.a($$2, $$3, czw.i);
+         return new gtr($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
 
-      float $$11 = $$0.a($$1);
-      this.a($$2, $$3, $$4, $$5, $$7, $$11, $$9);
-   }
-
-   public void a(fkd $$0, gqr $$1, int $$2, int $$3, jb $$4, float $$5, hlx $$6) {
-      $$0.a();
-      $$0.a(0.5F, 0.5F, 0.5F);
-      float $$7 = 0.9995F;
-      $$0.b(0.9995F, 0.9995F, 0.9995F);
-      $$0.a($$4.b());
-      $$0.b(1.0F, -1.0F, -1.0F);
-      $$0.a(0.0F, -1.0F, 0.0F);
-      this.a.a($$5);
-      fkh $$8 = $$6.a($$1, this.a::a);
-      this.a.a($$0, $$8, $$2, $$3);
-      $$0.b();
-   }
-
-   static class a extends ghl {
-      private final gjt a;
-
-      public a(gjt $$0) {
-         super($$0, grc::g);
-         this.a = $$0.b("lid");
-      }
-
-      public void a(float $$0) {
-         this.a.a(0.0F, 24.0F - $$0 * 0.5F * 16.0F, 0.0F);
-         this.a.f = 270.0F * $$0 * (float) (Math.PI / 180.0);
+      private gtq a(JsonDeserializationContext $$0, JsonObject $$1, czw $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (gtq)$$0.deserialize($$1.get($$3), gtq.class) : gtq.a;
       }
    }
 }

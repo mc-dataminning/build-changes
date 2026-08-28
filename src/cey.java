@@ -1,90 +1,89 @@
 import java.util.EnumSet;
-import java.util.function.Function;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cey extends cef {
-   public static final int b = 1;
-   protected final bxr c;
-   protected final double d;
-   protected double e;
-   protected double f;
-   protected double g;
-   protected boolean h;
-   private final Function<bxr, axr<buz>> a;
+public class cey extends ceq {
+   public static final float a = 0.02F;
+   protected final bxw b;
+   @Nullable
+   protected bwt c;
+   protected final float d;
+   private int h;
+   protected final float e;
+   private final boolean i;
+   protected final Class<? extends bxu> f;
+   protected final cij g;
 
-   public cey(bxr $$0, double $$1) {
-      this($$0, $$1, axd.F);
+   public cey(bxw $$0, Class<? extends bxu> $$1, float $$2) {
+      this($$0, $$1, $$2, 0.02F);
    }
 
-   public cey(bxr $$0, double $$1, axr<buz> $$2) {
-      this($$0, $$1, $$1x -> $$2);
+   public cey(bxw $$0, Class<? extends bxu> $$1, float $$2, float $$3) {
+      this($$0, $$1, $$2, $$3, false);
    }
 
-   public cey(bxr $$0, double $$1, Function<bxr, axr<buz>> $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.a(EnumSet.of(cef.a.a));
+   public cey(bxw $$0, Class<? extends bxu> $$1, float $$2, float $$3, boolean $$4) {
+      this.b = $$0;
+      this.f = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.i = $$4;
+      this.a(EnumSet.of(ceq.a.b));
+      if ($$1 == crx.class) {
+         Predicate<bwt> $$5 = bxa.b($$0);
+         this.g = cij.b().a((double)$$2).a(($$1x, $$2x) -> $$5.test($$1x));
+      } else {
+         this.g = cij.b().a((double)$$2);
+      }
    }
 
    @Override
    public boolean b() {
-      if (!this.h()) {
+      if (this.b.dY().i() >= this.e) {
          return false;
       } else {
-         if (this.c.bW()) {
-            iv $$0 = this.a(this.c.dU(), this.c, 5);
-            if ($$0 != null) {
-               this.e = (double)$$0.u();
-               this.f = (double)$$0.v();
-               this.g = (double)$$0.w();
-               return true;
-            }
+         if (this.b.f() != null) {
+            this.c = this.b.f();
          }
 
-         return this.i();
+         ars $$0 = a(this.b);
+         if (this.f == crx.class) {
+            this.c = $$0.a(this.g, this.b, this.b.dA(), this.b.dE(), this.b.dG());
+         } else {
+            this.c = $$0.a(
+               this.b.dV().a(this.f, this.b.cR().c((double)this.d, 3.0, (double)this.d), $$0x -> true), this.g, this.b, this.b.dA(), this.b.dE(), this.b.dG()
+            );
+         }
+
+         return this.c != null;
       }
-   }
-
-   protected boolean h() {
-      return this.c.eH() != null && this.c.eH().a(this.a.apply(this.c));
-   }
-
-   protected boolean i() {
-      ffc $$0 = cic.a(this.c, 5, 4);
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.e = $$0.d;
-         this.f = $$0.e;
-         this.g = $$0.f;
-         return true;
-      }
-   }
-
-   public boolean k() {
-      return this.h;
-   }
-
-   @Override
-   public void d() {
-      this.c.O().a(this.e, this.f, this.g, this.d);
-      this.h = true;
-   }
-
-   @Override
-   public void e() {
-      this.h = false;
    }
 
    @Override
    public boolean c() {
-      return !this.c.O().k();
+      if (!this.c.bJ()) {
+         return false;
+      } else {
+         return this.b.g(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
+      }
    }
 
-   @Nullable
-   protected iv a(diq $$0, bwi $$1, int $$2) {
-      iv $$3 = $$1.du();
-      return !$$0.a_($$3).g($$0, $$3).c() ? null : iv.a($$1.du(), $$2, 1, $$1x -> $$0.b_($$1x).a(axh.a)).orElse(null);
+   @Override
+   public void d() {
+      this.h = this.a(40 + this.b.dY().a(40));
+   }
+
+   @Override
+   public void e() {
+      this.c = null;
+   }
+
+   @Override
+   public void a() {
+      if (this.c.bJ()) {
+         double $$0 = this.i ? this.b.dE() : this.c.dE();
+         this.b.J().a(this.c.dA(), $$0, this.c.dG());
+         this.h--;
+      }
    }
 }

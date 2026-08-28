@@ -1,17 +1,22 @@
-public class gnu extends gon {
-   protected gnu(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gou $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
-   }
+import com.mojang.logging.LogUtils;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   public static class a implements goc<mc> {
-      private final gou a;
-
-      public a(gou $$0) {
-         this.a = $$0;
+@FunctionalInterface
+public interface gnu {
+   Logger a = LogUtils.getLogger();
+   gnu b = $$0 -> {
+      try {
+         InetAddress $$1 = InetAddress.getByName($$0.a());
+         return Optional.of(gns.a(new InetSocketAddress($$1, $$0.b())));
+      } catch (UnknownHostException var2) {
+         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
+         return Optional.empty();
       }
+   };
 
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gnu($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
+   Optional<gns> resolve(gnt var1);
 }

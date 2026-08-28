@@ -1,57 +1,43 @@
-import java.util.OptionalInt;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public interface dah {
-   csh a(djm var1, jp var2, czn var3, jb var4);
+public class dah extends czu {
+   private static final Logger a = LogUtils.getLogger();
 
-   default dah.a a() {
-      return dah.a.a;
+   public dah(czu.a $$0) {
+      super($$0);
    }
 
-   default void a(csh $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-      $$0.c($$1, $$2, $$3, $$4, $$5);
-   }
+   @Override
+   public bur a(djx $$0, crx $$1, buq $$2) {
+      czy $$3 = $$1.b($$2);
+      List<alh<dep<?>>> $$4 = $$3.a(kk.ag, List.of());
+      $$3.a(1, $$1);
+      if ($$4.isEmpty()) {
+         return bur.d;
+      } else {
+         if (!$$0.C) {
+            dew $$5 = $$0.p().aI();
+            List<deu<?>> $$6 = new ArrayList<>($$4.size());
 
-   public static record a(dah.b b, float c, float d, OptionalInt e) {
-      public static final dah.a a = a().a();
+            for (alh<dep<?>> $$7 : $$4) {
+               Optional<deu<?>> $$8 = $$5.b($$7);
+               if (!$$8.isPresent()) {
+                  a.error("Invalid recipe: {}", $$7);
+                  return bur.d;
+               }
 
-      public static dah.a.a a() {
-         return new dah.a.a();
+               $$6.add($$8.get());
+            }
+
+            $$1.a($$6);
+            $$1.b(awz.c.b(this));
+         }
+
+         return bur.a;
       }
-
-      public static class a {
-         private dah.b a = ($$0, $$1) -> dox.a($$0, 0.7, new ffc(0.0, 0.1, 0.0));
-         private float b = 6.0F;
-         private float c = 1.1F;
-         private OptionalInt d = OptionalInt.empty();
-
-         public dah.a.a a(dah.b $$0) {
-            this.a = $$0;
-            return this;
-         }
-
-         public dah.a.a a(float $$0) {
-            this.b = $$0;
-            return this;
-         }
-
-         public dah.a.a b(float $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public dah.a.a a(int $$0) {
-            this.d = OptionalInt.of($$0);
-            return this;
-         }
-
-         public dah.a a() {
-            return new dah.a(this.a, this.b, this.c, this.d);
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      jp getDispensePosition(le var1, jb var2);
    }
 }

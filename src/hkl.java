@@ -1,17 +1,43 @@
-import java.io.IOException;
+import javax.annotation.Nullable;
 
-public class hkl extends avi<int[]> {
-   private static final alg a = alg.b("textures/colormap/grass.png");
+public abstract class hkl implements AutoCloseable {
+   @Nullable
+   protected flh a;
+   protected boolean b;
 
-   protected int[] a(avd $$0, bqq $$1) {
-      try {
-         return hkn.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load grass color texture", var4);
+   public void a(boolean $$0) {
+      if (this.a == null) {
+         throw new IllegalStateException("Texture does not exist, can't change its clamp before something initializes it");
+      } else {
+         this.a.a($$0 ? flf.b : flf.a);
       }
    }
 
-   protected void a(int[] $$0, avd $$1, bqq $$2) {
-      djk.a($$0);
+   public void a(bau $$0, boolean $$1) {
+      this.a($$0.a(this.b), $$1);
+   }
+
+   public void a(boolean $$0, boolean $$1) {
+      if (this.a == null) {
+         throw new IllegalStateException("Texture does not exist, can't get change its filter before something initializes it");
+      } else {
+         this.a.a($$0 ? flg.b : flg.a, $$1);
+      }
+   }
+
+   @Override
+   public void close() {
+      if (this.a != null) {
+         this.a.close();
+         this.a = null;
+      }
+   }
+
+   public flh a() {
+      if (this.a == null) {
+         throw new IllegalStateException("Texture does not exist, can't get it before something initializes it");
+      } else {
+         return this.a;
+      }
    }
 }

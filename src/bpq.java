@@ -1,6 +1,8 @@
-public interface bpq {
-   bpq a = () -> {
-   };
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void cut();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface bpq {
 }

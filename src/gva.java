@@ -1,59 +1,53 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import java.util.List;
 
-public class gva implements gut.a {
-   private final fpt a;
-   private final Map<Long, Map<iv, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+public class gva implements gun<eaz> {
+   private final gtd a;
 
-   gva(fpt $$0) {
-      this.a = $$0;
+   public gva(guo.a $$0) {
+      this.a = $$0.b();
    }
 
-   public void a(long $$0, iv $$1) {
-      Map<iv, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
+   public void a(eaz $$0, float $$1, flo $$2, gsa $$3, int $$4, int $$5, ffq $$6) {
+      djx $$7 = $$0.i();
+      if ($$7 != null) {
+         iv $$8 = $$0.aB_().a($$0.f().g());
+         ebe $$9 = $$0.j();
+         if (!$$9.l()) {
+            gtf.a();
+            $$2.a();
+            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
+            if ($$9.a(dne.bJ) && $$0.a($$1) <= 4.0F) {
+               $$9 = $$9.b(eax.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
+               this.a($$8, $$9, $$2, $$3, $$7, false, $$5);
+            } else if ($$0.d() && !$$0.a()) {
+               ecg $$10 = $$9.a(dne.by) ? ecg.b : ecg.a;
+               ebe $$11 = dne.bJ.m().b(eax.c, $$10).b(eax.a, $$9.c(eaw.a));
+               $$11 = $$11.b(eax.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
+               this.a($$8, $$11, $$2, $$3, $$7, false, $$5);
+               iv $$12 = $$8.a($$0.f());
+               $$2.b();
+               $$2.a();
+               $$9 = $$9.b(eaw.c, Boolean.valueOf(true));
+               this.a($$12, $$9, $$2, $$3, $$7, true, $$5);
+            } else {
+               this.a($$8, $$9, $$2, $$3, $$7, false, $$5);
+            }
+
+            $$2.b();
+            gtf.b();
+         }
+      }
+   }
+
+   private void a(iv $$0, ebe $$1, flo $$2, gsa $$3, djx $$4, boolean $$5, int $$6) {
+      gsl $$7 = grs.b($$1);
+      flr $$8 = $$3.getBuffer($$7);
+      List<gtm> $$9 = this.a.a($$1).a(azx.a($$1.b($$0)));
+      this.a.b().a($$4, $$9, $$1, $$0, $$2, $$8, $$5, $$6);
    }
 
    @Override
-   public void a(fkd $$0, gqr $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.s.ae();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<iv> $$8 = Sets.newHashSet();
-      Map<iv, Integer> $$9 = Maps.newHashMap();
-      fkh $$10 = $$1.getBuffer(grc.y());
-      Iterator<Entry<Long, Map<iv, Integer>>> $$11 = this.b.entrySet().iterator();
-
-      while ($$11.hasNext()) {
-         Entry<Long, Map<iv, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<iv, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<iv, Integer> $$16 : $$14.entrySet()) {
-               iv $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  fex $$19 = new fex(iv.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  grk.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
-            }
-         }
-      }
-
-      for (Entry<iv, Integer> $$20 : $$9.entrySet()) {
-         iv $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         gut.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
-      }
+   public int aV_() {
+      return 68;
    }
 }

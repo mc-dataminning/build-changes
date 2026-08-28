@@ -1,8 +1,71 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public abstract class dlh {
+   public static final alh<dla> a = a("the_void");
+   public static final alh<dla> b = a("plains");
+   public static final alh<dla> c = a("sunflower_plains");
+   public static final alh<dla> d = a("snowy_plains");
+   public static final alh<dla> e = a("ice_spikes");
+   public static final alh<dla> f = a("desert");
+   public static final alh<dla> g = a("swamp");
+   public static final alh<dla> h = a("mangrove_swamp");
+   public static final alh<dla> i = a("forest");
+   public static final alh<dla> j = a("flower_forest");
+   public static final alh<dla> k = a("birch_forest");
+   public static final alh<dla> l = a("dark_forest");
+   public static final alh<dla> m = a("pale_garden");
+   public static final alh<dla> n = a("old_growth_birch_forest");
+   public static final alh<dla> o = a("old_growth_pine_taiga");
+   public static final alh<dla> p = a("old_growth_spruce_taiga");
+   public static final alh<dla> q = a("taiga");
+   public static final alh<dla> r = a("snowy_taiga");
+   public static final alh<dla> s = a("savanna");
+   public static final alh<dla> t = a("savanna_plateau");
+   public static final alh<dla> u = a("windswept_hills");
+   public static final alh<dla> v = a("windswept_gravelly_hills");
+   public static final alh<dla> w = a("windswept_forest");
+   public static final alh<dla> x = a("windswept_savanna");
+   public static final alh<dla> y = a("jungle");
+   public static final alh<dla> z = a("sparse_jungle");
+   public static final alh<dla> A = a("bamboo_jungle");
+   public static final alh<dla> B = a("badlands");
+   public static final alh<dla> C = a("eroded_badlands");
+   public static final alh<dla> D = a("wooded_badlands");
+   public static final alh<dla> E = a("meadow");
+   public static final alh<dla> F = a("cherry_grove");
+   public static final alh<dla> G = a("grove");
+   public static final alh<dla> H = a("snowy_slopes");
+   public static final alh<dla> I = a("frozen_peaks");
+   public static final alh<dla> J = a("jagged_peaks");
+   public static final alh<dla> K = a("stony_peaks");
+   public static final alh<dla> L = a("river");
+   public static final alh<dla> M = a("frozen_river");
+   public static final alh<dla> N = a("beach");
+   public static final alh<dla> O = a("snowy_beach");
+   public static final alh<dla> P = a("stony_shore");
+   public static final alh<dla> Q = a("warm_ocean");
+   public static final alh<dla> R = a("lukewarm_ocean");
+   public static final alh<dla> S = a("deep_lukewarm_ocean");
+   public static final alh<dla> T = a("ocean");
+   public static final alh<dla> U = a("deep_ocean");
+   public static final alh<dla> V = a("cold_ocean");
+   public static final alh<dla> W = a("deep_cold_ocean");
+   public static final alh<dla> X = a("frozen_ocean");
+   public static final alh<dla> Y = a("deep_frozen_ocean");
+   public static final alh<dla> Z = a("mushroom_fields");
+   public static final alh<dla> aa = a("dripstone_caves");
+   public static final alh<dla> ab = a("lush_caves");
+   public static final alh<dla> ac = a("deep_dark");
+   public static final alh<dla> ad = a("nether_wastes");
+   public static final alh<dla> ae = a("warped_forest");
+   public static final alh<dla> af = a("crimson_forest");
+   public static final alh<dla> ag = a("soul_sand_valley");
+   public static final alh<dla> ah = a("basalt_deltas");
+   public static final alh<dla> ai = a("the_end");
+   public static final alh<dla> aj = a("end_highlands");
+   public static final alh<dla> ak = a("end_midlands");
+   public static final alh<dla> al = a("small_end_islands");
+   public static final alh<dla> am = a("end_barrens");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface dlh {
+   private static alh<dla> a(String $$0) {
+      return alh.a(mh.aG, ali.b($$0));
+   }
 }

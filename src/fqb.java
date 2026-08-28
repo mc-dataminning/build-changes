@@ -1,97 +1,56 @@
 import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fqb {
+public abstract class fqb implements Runnable {
+   protected static final int a = 25;
    private static final Logger b = LogUtils.getLogger();
-   public static final String a = "screenshots";
+   private boolean c = false;
 
-   public static void a(File $$0, fij $$1, Consumer<wy> $$2) {
-      a($$0, null, $$1, $$2);
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
+      }
    }
 
-   public static void a(File $$0, @Nullable String $$1, fij $$2, Consumer<wy> $$3) {
-      a($$2, $$3x -> {
-         File $$4 = new File($$0, "screenshots");
-         $$4.mkdir();
-         File $$5;
-         if ($$1 == null) {
-            $$5 = a($$4);
-         } else {
-            $$5 = new File($$4, $$1);
-         }
-
-         ag.i().execute(() -> {
-            try {
-               fiz $$4x = $$3x;
-
-               try {
-                  $$3x.a($$5);
-                  wy $$3xx = wy.b($$5.getName()).a(o.t).a($$1xxx -> $$1xxx.a(new ww.d($$5.getAbsoluteFile())));
-                  $$3.accept(wy.a("screenshot.success", $$3xx));
-               } catch (Throwable var7) {
-                  if ($$3x != null) {
-                     try {
-                        $$4x.close();
-                     } catch (Throwable var6) {
-                        var7.addSuppressed(var6);
-                     }
-                  }
-
-                  throw var7;
-               }
-
-               if ($$3x != null) {
-                  $$3x.close();
-               }
-            } catch (Exception var8) {
-               b.warn("Couldn't save screenshot", var8);
-               $$3.accept(wy.a("screenshot.failure", var8.getMessage()));
-            }
-         });
-      });
+   public static void a(gad $$0) {
+      frd $$1 = frd.Q();
+      $$1.execute(() -> $$1.a($$0));
    }
 
-   public static void a(fij $$0, Consumer<fiz> $$1) {
-      int $$2 = $$0.c;
-      int $$3 = $$0.d;
-      fjw $$4 = $$0.g();
-      if ($$4 == null) {
-         throw new IllegalStateException("Tried to capture screenshot of an incomplete framebuffer");
+   protected void a(xa $$0) {
+      this.b();
+      frd $$1 = frd.Q();
+      $$1.execute(() -> $$1.a(new fos($$0, new fly(new gaf()))));
+   }
+
+   protected void a(Exception $$0) {
+      if ($$0 instanceof fnz $$1) {
+         this.a($$1.a.b());
       } else {
-         fhs $$5 = new fhs(fhq.c, fhr.d, $$2 * $$3 * $$4.b().d());
-         $$4.a($$5, 0, () -> {
-            try (fhs.a $$5x = $$5.a()) {
-               fiz $$6 = new fiz($$2, $$3, false);
-
-               for (int $$7 = 0; $$7 < $$3; $$7++) {
-                  for (int $$8 = 0; $$8 < $$2; $$8++) {
-                     int $$9 = $$5x.a().getInt(($$8 + $$7 * $$2) * $$4.b().d());
-                     $$6.a($$8, $$3 - $$7 - 1, $$9 | 0xFF000000);
-                  }
-               }
-
-               $$1.accept($$6);
-            }
-
-            $$5.close();
-         }, 0);
+         this.a(xa.b($$0.getMessage()));
       }
    }
 
-   private static File a(File $$0) {
-      String $$1 = ag.f();
-      int $$2 = 1;
+   protected void a(fnz $$0) {
+      this.a($$0.a.b());
+   }
 
-      while (true) {
-         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
-         if (!$$3.exists()) {
-            return $$3;
-         }
+   public abstract xa a();
 
-         $$2++;
-      }
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

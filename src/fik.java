@@ -1,10 +1,24 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntSet;
 import javax.annotation.Nullable;
 
-public class fik extends fij {
-   public fik(@Nullable String $$0, int $$1, int $$2, boolean $$3) {
-      super($$0, $$3);
-      RenderSystem.assertOnRenderThread();
-      this.a($$1, $$2);
+public interface fik extends AutoCloseable {
+   float a = 7.0F;
+
+   @Override
+   default void close() {
+   }
+
+   @Nullable
+   default fij a(int $$0) {
+      return null;
+   }
+
+   IntSet a();
+
+   public static record a(fik a, fxc.a b) implements AutoCloseable {
+      @Override
+      public void close() {
+         this.a.close();
+      }
    }
 }

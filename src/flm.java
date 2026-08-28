@@ -1,28 +1,15 @@
-import com.google.common.collect.Sets;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.Set;
-
-public class flm extends fmi {
-   public Set<String> a = Sets.newHashSet();
-
-   public static flm a(String $$0) {
-      flm $$1 = new flm();
-      JsonParser $$2 = new JsonParser();
-
-      try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         JsonElement $$5 = $$4.get("ops");
-         if ($$5.isJsonArray()) {
-            for (JsonElement $$6 : $$5.getAsJsonArray()) {
-               $$1.a.add($$6.getAsString());
-            }
-         }
-      } catch (Exception var8) {
-      }
-
-      return $$1;
-   }
+public class flm {
+   public static final fls a = fls.a().a("Position", flt.b).a();
+   public static final fls b = fls.a().a("Position", flt.b).a("Color", flt.c).a("UV0", flt.d).a("UV2", flt.g).a("Normal", flt.h).a(1).a();
+   public static final fls c = fls.a().a("Position", flt.b).a("Color", flt.c).a("UV0", flt.d).a("UV1", flt.f).a("UV2", flt.g).a("Normal", flt.h).a(1).a();
+   public static final fls d = fls.a().a("Position", flt.b).a("UV0", flt.d).a("Color", flt.c).a("UV2", flt.g).a();
+   public static final fls e = fls.a().a("Position", flt.b).a();
+   public static final fls f = fls.a().a("Position", flt.b).a("Color", flt.c).a();
+   public static final fls g = fls.a().a("Position", flt.b).a("Color", flt.c).a("Normal", flt.h).a(1).a();
+   public static final fls h = fls.a().a("Position", flt.b).a("Color", flt.c).a("UV2", flt.g).a();
+   public static final fls i = fls.a().a("Position", flt.b).a("UV0", flt.d).a();
+   public static final fls j = fls.a().a("Position", flt.b).a("UV0", flt.d).a("Color", flt.c).a();
+   public static final fls k = fls.a().a("Position", flt.b).a("Color", flt.c).a("UV0", flt.d).a("UV2", flt.g).a();
+   public static final fls l = fls.a().a("Position", flt.b).a("UV0", flt.d).a("UV2", flt.g).a("Color", flt.c).a();
+   public static final fls m = fls.a().a("Position", flt.b).a("UV0", flt.d).a("Color", flt.c).a("Normal", flt.h).a(1).a();
 }

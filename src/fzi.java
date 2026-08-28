@@ -1,41 +1,51 @@
-import java.util.List;
+public class fzi extends gad {
+   private static final ali a = ali.b("textures/gui/demo_background.png");
+   private static final int b = 256;
+   private static final int c = 256;
+   private fve d = fve.a;
+   private fve s = fve.a;
 
-public abstract class fzi<T extends cvh> extends fzj<T> {
-   private final alg G;
-   private final alg H;
-   private final alg I;
-
-   public fzi(T $$0, crl $$1, wy $$2, wy $$3, alg $$4, alg $$5, alg $$6, List<gcr.a> $$7) {
-      super($$0, new gco($$0, $$3, $$7), $$1, $$2);
-      this.G = $$4;
-      this.H = $$5;
-      this.I = $$6;
+   public fzi() {
+      super(xa.c("demo.help.title"));
    }
 
    @Override
-   public void aO_() {
-      super.aO_();
-      this.v = (this.s - this.p.a(this.l)) / 2;
+   protected void aS_() {
+      int $$0 = -16;
+      this.c(ful.a(xa.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         ag.n().a(ayj.f);
+      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
+      this.c(ful.a(xa.c("demo.help.later"), $$0x -> {
+         this.m.a(null);
+         this.m.o.i();
+      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
+      frh $$1 = this.m.n;
+      this.d = fve.a(
+         this.p,
+         xa.a("demo.help.movementShort", $$1.v.k(), $$1.w.k(), $$1.x.k(), $$1.y.k()),
+         xa.c("demo.help.movementMouse"),
+         xa.a("demo.help.jump", $$1.z.k()),
+         xa.a("demo.help.inventory", $$1.C.k())
+      );
+      this.s = fve.a(this.p, xa.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   protected fxg G() {
-      return new fxg(this.C + 20, this.o / 2 - 49);
+   public void b(ftx $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2;
+      int $$5 = (this.o - 166) / 2;
+      $$0.a(gsl::H, a, $$4, $$5, 0.0F, 0.0F, 248, 166, 256, 256);
    }
 
    @Override
-   protected void a(fsm $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.C;
-      int $$5 = this.D;
-      $$0.a(grc::H, this.G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      if (this.z.o()) {
-         int $$6 = 14;
-         int $$7 = azm.f(this.z.n() * 13.0F) + 1;
-         $$0.a(grc::H, this.H, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
-      }
-
-      int $$8 = 24;
-      int $$9 = azm.f(this.z.m() * 24.0F);
-      $$0.a(grc::H, this.I, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2 + 10;
+      int $$5 = (this.o - 166) / 2 + 8;
+      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
+      $$5 = this.d.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.s.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

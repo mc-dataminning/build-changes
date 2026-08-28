@@ -2,7 +2,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
 public record ar<T extends au>(at<T> b, T c) {
-   private static final MapCodec<ar<?>> d = ayu.a("trigger", "conditions", (Codec<at<T>>)aq.a, ar::a, ar::a);
+   private static final MapCodec<ar<?>> d = ayw.a("trigger", "conditions", (Codec<at<T>>)aq.a, ar::a, ar::a);
    public static final Codec<ar<?>> a = d.codec();
 
    private static <T extends au> Codec<ar<T>> a(at<T> $$0) {

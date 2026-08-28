@@ -2,57 +2,57 @@ import java.util.function.BiConsumer;
 
 public record nv(jh.a a) implements nl {
    @Override
-   public void generate(BiConsumer<alf<ezy>, ezy.a> $$0) {
-      jh.b<dkp> $$1 = this.a.e(mh.aG);
+   public void generate(BiConsumer<alh<fam>, fam.a> $$0) {
+      jh.b<dla> $$1 = this.a.e(mh.aG);
       $$0.accept(
-         ezp.am,
-         ezy.b()
+         fad.am,
+         fam.b()
             .a(
-               ezx.a()
-                  .a(fdv.a(1.0F))
-                  .a(fam.a(ezp.an).a(10).b(-2))
-                  .a(fam.a(ezp.ao).a(5).b(2).a(fdf.a(ezt.b.a, by.a.a().a(ce.a(true)))))
-                  .a(fam.a(ezp.ap).a(85).b(-1))
+               fal.a()
+                  .a(fej.a(1.0F))
+                  .a(fba.a(fad.an).a(10).b(-2))
+                  .a(fba.a(fad.ao).a(5).b(2).a(fdt.a(fah.b.a, by.a.a().a(ce.a(true)))))
+                  .a(fba.a(fad.ap).a(85).b(-1))
             )
       );
-      $$0.accept(ezp.ap, a());
+      $$0.accept(fad.ap, a());
       $$0.accept(
-         ezp.an,
-         ezy.b()
+         fad.an,
+         fam.b()
             .a(
-               ezx.a()
-                  .a(fag.a(dmt.fF).a(17))
-                  .a(fag.a(czr.qp).a(10).a(fbz.a(fec.a(0.0F, 0.9F))))
-                  .a(fag.a(czr.rt).a(10))
-                  .a(fag.a(czr.sH).a(10))
-                  .a(fag.a(czr.tt).a(10).a(fce.a(dbk.a)))
-                  .a(fag.a(czr.qg).a(5))
-                  .a(fag.a(czr.sd).a(2).a(fbz.a(fec.a(0.0F, 0.9F))))
-                  .a(fag.a(czr.ph).a(10))
-                  .a(fag.a(czr.qe).a(5))
-                  .a(fag.a(czr.sn).a(1).a(fby.a(fdv.a(10.0F))))
-                  .a(fag.a(dmt.gg).a(10))
-                  .a(fag.a(czr.tm).a(10))
-                  .a(fag.a(dmt.nF).a(fda.a(cu.a.a().a(jj.a($$1.b(dkw.y), $$1.b(dkw.z), $$1.b(dkw.A))))).a(10))
+               fal.a()
+                  .a(fau.a(dne.fF).a(17))
+                  .a(fau.a(dac.qp).a(10).a(fcn.a(feq.a(0.0F, 0.9F))))
+                  .a(fau.a(dac.rt).a(10))
+                  .a(fau.a(dac.sH).a(10))
+                  .a(fau.a(dac.tt).a(10).a(fcs.a(dbv.a)))
+                  .a(fau.a(dac.qg).a(5))
+                  .a(fau.a(dac.sd).a(2).a(fcn.a(feq.a(0.0F, 0.9F))))
+                  .a(fau.a(dac.ph).a(10))
+                  .a(fau.a(dac.qe).a(5))
+                  .a(fau.a(dac.sn).a(1).a(fcm.a(fej.a(10.0F))))
+                  .a(fau.a(dne.gg).a(10))
+                  .a(fau.a(dac.tm).a(10))
+                  .a(fau.a(dne.nF).a(fdo.a(cu.a.a().a(jj.a($$1.b(dlh.y), $$1.b(dlh.z), $$1.b(dlh.A))))).a(10))
             )
       );
       $$0.accept(
-         ezp.ao,
-         ezy.b()
+         fad.ao,
+         fam.b()
             .a(
-               ezx.a()
-                  .a(fag.a(czr.vW))
-                  .a(fag.a(czr.ou))
-                  .a(fag.a(czr.pj).a(fbz.a(fec.a(0.0F, 0.25F))).a(fax.a(this.a, fdv.a(30.0F))))
-                  .a(fag.a(czr.sd).a(fbz.a(fec.a(0.0F, 0.25F))).a(fax.a(this.a, fdv.a(30.0F))))
-                  .a(fag.a(czr.rF).a(fax.a(this.a, fdv.a(30.0F))))
-                  .a(fag.a(czr.xe))
+               fal.a()
+                  .a(fau.a(dac.vW))
+                  .a(fau.a(dac.ou))
+                  .a(fau.a(dac.pj).a(fcn.a(feq.a(0.0F, 0.25F))).a(fbl.a(this.a, fej.a(30.0F))))
+                  .a(fau.a(dac.sd).a(fcn.a(feq.a(0.0F, 0.25F))).a(fbl.a(this.a, fej.a(30.0F))))
+                  .a(fau.a(dac.rF).a(fbl.a(this.a, fej.a(30.0F))))
+                  .a(fau.a(dac.xe))
             )
       );
    }
 
-   public static ezy.a a() {
-      return ezy.b().a(ezx.a().a(fag.a(czr.sh).a(60)).a(fag.a(czr.si).a(25)).a(fag.a(czr.sj).a(2)).a(fag.a(czr.sk).a(13)));
+   public static fam.a a() {
+      return fam.b().a(fal.a().a(fau.a(dac.sh).a(60)).a(fau.a(dac.si).a(25)).a(fau.a(dac.sj).a(2)).a(fau.a(dac.sk).a(13)));
    }
 
    public jh.a b() {

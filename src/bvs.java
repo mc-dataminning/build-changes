@@ -1,12 +1,12 @@
-class bvs extends bvk {
-   protected bvs(bvl $$0, int $$1) {
+class bvs extends bvv {
+   protected bvs(bvw $$0, int $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public boolean a(arq $$0, bxj $$1, int $$2) {
-      if ($$1.eF() < $$1.eT()) {
-         $$1.c(1.0F);
+   public boolean a(ars $$0, bxu $$1, int $$2) {
+      if ($$1 instanceof crx $$3) {
+         $$3.G(0.005F * (float)($$2 + 1));
       }
 
       return true;
@@ -14,7 +14,6 @@ class bvs extends bvk {
 
    @Override
    public boolean a(int $$0, int $$1) {
-      int $$2 = 50 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+      return true;
    }
 }

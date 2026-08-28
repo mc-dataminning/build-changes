@@ -1,15 +1,23 @@
-import java.util.Collection;
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hjo extends RuntimeException {
-   private final Collection<hjn.a> a;
+public record hjo() implements hjq<bxl> {
+   public static final Codec<bxl> a = bxl.c;
+   public static final hjq.a<hjo, bxl> b = hjq.a.a(MapCodec.unit(new hjo()), a);
 
-   public hjo(hjn.a $$0, Collection<hjn.a> $$1) {
-      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
-      this.a = $$1;
+   @Nullable
+   public bxl a(czy $$0, @Nullable gmb $$1, @Nullable bxu $$2, int $$3, czw $$4) {
+      return $$2 == null ? null : $$2.fy();
    }
 
-   public Collection<hjn.a> a() {
-      return this.a;
+   @Override
+   public hjq.a<hjo, bxl> a() {
+      return b;
+   }
+
+   @Override
+   public Codec<bxl> b() {
+      return a;
    }
 }

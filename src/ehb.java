@@ -1,71 +1,22 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
 public class ehb {
-   public static final alf<ewd.a> a = a("temperature");
-   public static final alf<ewd.a> b = a("vegetation");
-   public static final alf<ewd.a> c = a("continentalness");
-   public static final alf<ewd.a> d = a("erosion");
-   public static final alf<ewd.a> e = a("temperature_large");
-   public static final alf<ewd.a> f = a("vegetation_large");
-   public static final alf<ewd.a> g = a("continentalness_large");
-   public static final alf<ewd.a> h = a("erosion_large");
-   public static final alf<ewd.a> i = a("ridge");
-   public static final alf<ewd.a> j = a("offset");
-   public static final alf<ewd.a> k = a("aquifer_barrier");
-   public static final alf<ewd.a> l = a("aquifer_fluid_level_floodedness");
-   public static final alf<ewd.a> m = a("aquifer_lava");
-   public static final alf<ewd.a> n = a("aquifer_fluid_level_spread");
-   public static final alf<ewd.a> o = a("pillar");
-   public static final alf<ewd.a> p = a("pillar_rareness");
-   public static final alf<ewd.a> q = a("pillar_thickness");
-   public static final alf<ewd.a> r = a("spaghetti_2d");
-   public static final alf<ewd.a> s = a("spaghetti_2d_elevation");
-   public static final alf<ewd.a> t = a("spaghetti_2d_modulator");
-   public static final alf<ewd.a> u = a("spaghetti_2d_thickness");
-   public static final alf<ewd.a> v = a("spaghetti_3d_1");
-   public static final alf<ewd.a> w = a("spaghetti_3d_2");
-   public static final alf<ewd.a> x = a("spaghetti_3d_rarity");
-   public static final alf<ewd.a> y = a("spaghetti_3d_thickness");
-   public static final alf<ewd.a> z = a("spaghetti_roughness");
-   public static final alf<ewd.a> A = a("spaghetti_roughness_modulator");
-   public static final alf<ewd.a> B = a("cave_entrance");
-   public static final alf<ewd.a> C = a("cave_layer");
-   public static final alf<ewd.a> D = a("cave_cheese");
-   public static final alf<ewd.a> E = a("ore_veininess");
-   public static final alf<ewd.a> F = a("ore_vein_a");
-   public static final alf<ewd.a> G = a("ore_vein_b");
-   public static final alf<ewd.a> H = a("ore_gap");
-   public static final alf<ewd.a> I = a("noodle");
-   public static final alf<ewd.a> J = a("noodle_thickness");
-   public static final alf<ewd.a> K = a("noodle_ridge_a");
-   public static final alf<ewd.a> L = a("noodle_ridge_b");
-   public static final alf<ewd.a> M = a("jagged");
-   public static final alf<ewd.a> N = a("surface");
-   public static final alf<ewd.a> O = a("surface_secondary");
-   public static final alf<ewd.a> P = a("clay_bands_offset");
-   public static final alf<ewd.a> Q = a("badlands_pillar");
-   public static final alf<ewd.a> R = a("badlands_pillar_roof");
-   public static final alf<ewd.a> S = a("badlands_surface");
-   public static final alf<ewd.a> T = a("iceberg_pillar");
-   public static final alf<ewd.a> U = a("iceberg_pillar_roof");
-   public static final alf<ewd.a> V = a("iceberg_surface");
-   public static final alf<ewd.a> W = a("surface_swamp");
-   public static final alf<ewd.a> X = a("calcite");
-   public static final alf<ewd.a> Y = a("gravel");
-   public static final alf<ewd.a> Z = a("powder_snow");
-   public static final alf<ewd.a> aa = a("packed_ice");
-   public static final alf<ewd.a> ab = a("ice");
-   public static final alf<ewd.a> ac = a("soul_sand_layer");
-   public static final alf<ewd.a> ad = a("gravel_layer");
-   public static final alf<ewd.a> ae = a("patch");
-   public static final alf<ewd.a> af = a("netherrack");
-   public static final alf<ewd.a> ag = a("nether_wart");
-   public static final alf<ewd.a> ah = a("nether_state_selector");
+   public static final Codec<ehb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               emq.a.fieldOf("generate_crack_chance").orElse(1.0).forGetter($$0x -> $$0x.b),
+               Codec.doubleRange(0.0, 5.0).fieldOf("base_crack_size").orElse(2.0).forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 10).fieldOf("crack_point_offset").orElse(2).forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, ehb::new)
+   );
+   public final double b;
+   public final double c;
+   public final int d;
 
-   private static alf<ewd.a> a(String $$0) {
-      return alf.a(mh.aY, alg.b($$0));
-   }
-
-   public static ewd a(jg<ewd.a> $$0, ehf $$1, alf<ewd.a> $$2) {
-      jf<ewd.a> $$3 = $$0.b($$2);
-      return ewd.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
+   public ehb(double $$0, double $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

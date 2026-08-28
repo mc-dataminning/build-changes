@@ -1,59 +1,52 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dra extends dqk implements dro {
-   public static final MapCodec<dra> c = b(dra::new);
-   private static final double g = 0.14;
-   private static final ffw h = dmr.b(16.0, 0.0, 9.0);
+public class dra extends dnc implements dun {
+   public static final MapCodec<dra> a = b(dra::new);
+   public static final ebv b = ebu.I;
+   private static final fgk c = dnc.b(8.0, 0.0, 8.0);
+
+   public dra(ebd.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, Boolean.valueOf(false)));
+   }
 
    @Override
    public MapCodec<dra> a() {
+      return a;
+   }
+
+   @Override
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      if ($$0.c(b)) {
+         $$2.a($$3, exp.c, exp.c.a($$1));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected exo b_(ebe $$0) {
+      return $$0.c(b) ? exp.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   public ebe a(ddr $$0) {
+      exo $$1 = $$0.q().b_($$0.a());
+      return this.m().b(b, Boolean.valueOf($$1.b(exp.c)));
+   }
+
+   @Override
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
       return c;
    }
 
-   protected dra(eas.d $$0) {
-      super($$0, jb.b, h, true, 0.14);
-   }
-
    @Override
-   protected boolean h(eat $$0) {
-      return $$0.a(dmt.J);
-   }
-
-   @Override
-   protected dmr b() {
-      return dmt.mJ;
-   }
-
-   @Override
-   protected boolean o(eat $$0) {
-      return !$$0.a(dmt.lp);
-   }
-
-   @Override
-   public boolean a(@Nullable bxj $$0, diq $$1, iv $$2, eat $$3, ewz $$4) {
+   protected boolean a(ebe $$0, eyd $$1) {
       return false;
-   }
-
-   @Override
-   public boolean a(djn $$0, iv $$1, eat $$2, exa $$3) {
-      return false;
-   }
-
-   @Override
-   protected int a(azv $$0) {
-      return 1;
-   }
-
-   @Nullable
-   @Override
-   public eat a(ddg $$0) {
-      exa $$1 = $$0.q().b_($$0.a());
-      return $$1.a(axh.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
-
-   @Override
-   protected exa b_(eat $$0) {
-      return exb.c.a(false);
    }
 }

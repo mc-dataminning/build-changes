@@ -1,8 +1,19 @@
-public class hfc extends hef {
-   public boolean a;
-   public final bvz b = new bvz();
-   public final bvz c = new bvz();
-   public final bvz d = new bvz();
-   public final bvz e = new bvz();
-   public final bvz f = new bvz();
+import javax.annotation.Nullable;
+
+public class hfc extends hfp {
+   public float a;
+   public float b;
+   public ffq c;
+   @Nullable
+   public ffq d;
+   @Nullable
+   public ffq e;
+   @Nullable
+   public ffq f;
+   public float g;
+   public float h;
+
+   public hfc() {
+      this.c = ffq.c;
+   }
 }

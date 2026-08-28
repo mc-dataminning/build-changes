@@ -1,132 +1,46 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class amu {
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "localhost";
-   private static final String d = "0.0.0.0";
-   private static final int e = 10000;
-   private static final int f = 100;
-   public static BiMap<String, alf<djm>> a = ImmutableBiMap.of("o", djm.i, "n", djm.j, "e", djm.k);
-   @Nullable
-   private static amm g;
-   @Nullable
-   private static aml h;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xa.c("commands.ban.failed"));
 
    public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("chase")
-                  .then(
-                     ((LiteralArgumentBuilder)ek.a("follow")
-                           .then(
-                              ((RequiredArgumentBuilder)ek.a("host", StringArgumentType.string())
-                                    .executes($$0x -> b((ej)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
-                                 .then(
-                                    ek.a("port", IntegerArgumentType.integer(1, 65535))
-                                       .executes(
-                                          $$0x -> b(
-                                                (ej)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
-                                             )
-                                       )
-                                 )
-                           ))
-                        .executes($$0x -> b((ej)$$0x.getSource(), "localhost", 10000))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)ek.a("lead")
-                        .then(
-                           ((RequiredArgumentBuilder)ek.a("bind_address", StringArgumentType.string())
-                                 .executes($$0x -> a((ej)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
-                              .then(
-                                 ek.a("port", IntegerArgumentType.integer(1024, 65535))
-                                    .executes(
-                                       $$0x -> a(
-                                             (ej)$$0x.getSource(),
-                                             StringArgumentType.getString($$0x, "bind_address"),
-                                             IntegerArgumentType.getInteger($$0x, "port")
-                                          )
-                                    )
-                              )
-                        ))
-                     .executes($$0x -> a((ej)$$0x.getSource(), "0.0.0.0", 10000))
-               ))
-            .then(ek.a("stop").executes($$0x -> a((ej)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("ban").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)ek.a("targets", ey.a()).executes($$0x -> a((ej)$$0x.getSource(), ey.a($$0x, "targets"), null)))
+                  .then(ek.a("reason", fa.a()).executes($$0x -> a((ej)$$0x.getSource(), ey.a($$0x, "targets"), fa.a($$0x, "reason"))))
+            )
       );
    }
 
-   private static int a(ej $$0) {
-      if (h != null) {
-         h.b();
-         $$0.a(() -> wy.b("You have now stopped chasing"), false);
-         h = null;
-      }
+   private static int a(ej $$0, Collection<GameProfile> $$1, @Nullable xa $$2) throws CommandSyntaxException {
+      avy $$3 = $$0.l().ag().f();
+      int $$4 = 0;
 
-      if (g != null) {
-         g.b();
-         $$0.a(() -> wy.b("You are no longer being chased"), false);
-         g = null;
-      }
-
-      return 0;
-   }
-
-   private static boolean b(ej $$0) {
-      if (g != null) {
-         $$0.b(wy.b("Chase server is already running. Stop it using /chase stop"));
-         return true;
-      } else if (h != null) {
-         $$0.b(wy.b("You are already chasing someone. Stop it using /chase stop"));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static int a(ej $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         g = new amm($$1, $$2, $$0.l().ag(), 100);
-
-         try {
-            g.a();
-            $$0.a(() -> wy.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
-         } catch (IOException var4) {
-            b.error("Failed to start chase server", var4);
-            $$0.b(wy.b("Failed to start chase server on port " + $$2));
-            g = null;
+      for (GameProfile $$5 : $$1) {
+         if (!$$3.a($$5)) {
+            avz $$6 = new avz($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+            $$3.a($$6);
+            $$4++;
+            $$0.a(() -> xa.a("commands.ban.success", xa.b($$5.getName()), $$6.d()), true);
+            art $$7 = $$0.l().ag().a($$5.getId());
+            if ($$7 != null) {
+               $$7.f.a(xa.c("multiplayer.disconnect.banned"));
+            }
          }
-
-         return 0;
       }
-   }
 
-   private static int b(ej $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
+      if ($$4 == 0) {
+         throw a.create();
       } else {
-         h = new aml($$1, $$2, $$0.l());
-         h.a();
-         $$0.a(
-            () -> wy.b(
-                  "You are now chasing "
-                     + $$1
-                     + ":"
-                     + $$2
-                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
-               ),
-            false
-         );
-         return 0;
+         return $$4;
       }
    }
 }

@@ -1,326 +1,278 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.DynamicOps;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Set;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class eal extends dov {
-   public static final MapCodec<eal> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.fieldOf("sticky").forGetter($$0x -> $$0x.i), t()).apply($$0, eal::new)
-   );
-   public static final ebk c = ebj.j;
-   public static final int d = 0;
-   public static final int e = 1;
-   public static final int f = 2;
-   public static final int g = 4;
-   private static final Map<jb, ffw> h = fft.d(dmr.c(16.0, 4.0, 16.0));
-   private final boolean i;
+public class eal extends dyc {
+   private final eao a = new eao();
+   private final eap b = new eap();
+   private final eam c = new eam();
+   private ean d = ean.b;
 
-   @Override
-   public MapCodec<eal> a() {
-      return b;
+   public eal(iv $$0, ebe $$1) {
+      super(dye.S, $$0, $$1);
    }
 
-   public eal(boolean $$0, eas.d $$1) {
-      super($$1);
-      this.l(this.C.b().b(a, jb.c).b(c, Boolean.valueOf(false)));
-      this.i = $$0;
+   @Nullable
+   @Override
+   public zh<abw> ay_() {
+      return acc.a(this);
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return $$0.c(c) ? h.get($$0.c(a)) : fft.b();
+   public tz a(jh.a $$0) {
+      return ag.a(new tz(), $$1 -> $$1.a("shared_data", eap.b, $$0.a(un.a), this.b));
    }
 
    @Override
-   public void a(djm $$0, iv $$1, eat $$2, bxj $$3, czn $$4) {
-      if (!$$0.C) {
-         this.a($$0, $$1, $$2);
+   protected void b(tz $$0, jh.a $$1) {
+      super.b($$0, $$1);
+      alg<uy> $$2 = $$1.a(un.a);
+      $$0.a("config", ean.c, $$2, this.d);
+      $$0.a("shared_data", eap.b, $$2, this.b);
+      $$0.a("server_data", eao.b, $$2, this.a);
+   }
+
+   @Override
+   protected void a(tz $$0, jh.a $$1) {
+      super.a($$0, $$1);
+      DynamicOps<uy> $$2 = $$1.a(un.a);
+      $$0.<eao>a("server_data", eao.b, $$2).ifPresent(this.a::a);
+      this.d = $$0.<ean>a("config", ean.c, $$2).orElse(ean.b);
+      $$0.<eap>a("shared_data", eap.b, $$2).ifPresent(this.b::a);
+   }
+
+   @Nullable
+   public eao a() {
+      return this.n != null && !this.n.C ? this.a : null;
+   }
+
+   public eap c() {
+      return this.b;
+   }
+
+   public eam d() {
+      return this.c;
+   }
+
+   public ean f() {
+      return this.d;
+   }
+
+   @VisibleForTesting
+   public void a(ean $$0) {
+      this.d = $$0;
+   }
+
+   public static final class a {
+      private static final int a = 20;
+      private static final float b = 0.5F;
+      private static final float c = 0.02F;
+      private static final int d = 20;
+      private static final int e = 20;
+
+      public static void a(djx $$0, iv $$1, ebe $$2, eam $$3, eap $$4) {
+         $$3.c();
+         if ($$0.ae() % 20L == 0L) {
+            a($$0, $$1, $$2, $$4);
+         }
+
+         a($$0, $$1, $$4, $$2.c(dwn.d) ? ly.N : ly.aM);
+         a($$0, $$1, $$4);
       }
-   }
 
-   @Override
-   protected void a(eat $$0, djm $$1, iv $$2, dmr $$3, @Nullable eyi $$4, boolean $$5) {
-      if (!$$1.C) {
-         this.a($$1, $$2, $$0);
-      }
-   }
+      public static void a(djx $$0, iv $$1, ebe $$2, eap $$3, lw $$4) {
+         a($$0, $$1, $$2, $$3);
+         azx $$5 = $$0.A;
 
-   @Override
-   protected void a(eat $$0, djm $$1, iv $$2, eat $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         if (!$$1.C && $$1.c_($$2) == null) {
-            this.a($$1, $$2, $$0);
+         for (int $$6 = 0; $$6 < 20; $$6++) {
+            ffq $$7 = b($$1, $$5);
+            $$0.a(ly.ah, $$7.a(), $$7.b(), $$7.c(), 0.0, 0.0, 0.0);
+            $$0.a($$4, $$7.a(), $$7.b(), $$7.c(), 0.0, 0.0, 0.0);
          }
       }
-   }
 
-   @Override
-   public eat a(ddg $$0) {
-      return this.m().b(a, $$0.d().g()).b(c, Boolean.valueOf(false));
-   }
+      public static void a(djx $$0, iv $$1, lw $$2) {
+         azx $$3 = $$0.A;
 
-   private void a(djm $$0, iv $$1, eat $$2) {
-      jb $$3 = $$2.c(a);
-      boolean $$4 = this.a($$0, $$1, $$3);
-      if ($$4 && !$$2.c(c)) {
-         if (new eap($$0, $$1, $$3, true).a()) {
-            $$0.a($$1, this, 0, $$3.d());
-         }
-      } else if (!$$4 && $$2.c(c)) {
-         iv $$5 = $$1.a($$3, 2);
-         eat $$6 = $$0.a_($$5);
-         int $$7 = 1;
-         if ($$6.a(dmt.ca) && $$6.c(a) == $$3 && $$0.c_($$5) instanceof eao $$9 && $$9.a() && ($$9.a(0.0F) < 0.5F || $$0.ae() == $$9.t() || ((arq)$$0).d())) {
-            $$7 = 2;
-         }
-
-         $$0.a($$1, this, $$7, $$3.d());
-      }
-   }
-
-   private boolean a(dke $$0, iv $$1, jb $$2) {
-      for (jb $$3 : jb.values()) {
-         if ($$3 != $$2 && $$0.b($$1.a($$3), $$3)) {
-            return true;
+         for (int $$4 = 0; $$4 < 20; $$4++) {
+            ffq $$5 = a($$1, $$3);
+            ffq $$6 = new ffq($$3.k() * 0.02, $$3.k() * 0.02, $$3.k() * 0.02);
+            $$0.a($$2, $$5.a(), $$5.b(), $$5.c(), $$6.a(), $$6.b(), $$6.c());
          }
       }
 
-      if ($$0.b($$1, jb.a)) {
-         return true;
-      } else {
-         iv $$4 = $$1.d();
-
-         for (jb $$5 : jb.values()) {
-            if ($$5 != jb.a && $$0.b($$4.a($$5), $$5)) {
-               return true;
+      private static void a(djx $$0, iv $$1, eap $$2, lw $$3) {
+         azx $$4 = $$0.G_();
+         if ($$4.i() <= 0.5F) {
+            ffq $$5 = b($$1, $$4);
+            $$0.a(ly.ah, $$5.a(), $$5.b(), $$5.c(), 0.0, 0.0, 0.0);
+            if (a($$2)) {
+               $$0.a($$3, $$5.a(), $$5.b(), $$5.c(), 0.0, 0.0, 0.0);
             }
          }
-
-         return false;
       }
-   }
 
-   @Override
-   protected boolean a(eat $$0, djm $$1, iv $$2, int $$3, int $$4) {
-      jb $$5 = $$0.c(a);
-      eat $$6 = $$0.b(c, Boolean.valueOf(true));
-      if (!$$1.C) {
-         boolean $$7 = this.a($$1, $$2, $$5);
-         if ($$7 && ($$3 == 1 || $$3 == 2)) {
-            $$1.a($$2, $$6, 2);
-            return false;
-         }
+      private static void a(djx $$0, ffq $$1, crx $$2) {
+         azx $$3 = $$0.A;
+         ffq $$4 = $$1.a($$2.dt().b(0.0, (double)($$2.dr() / 2.0F), 0.0));
+         int $$5 = azo.a($$3, 2, 5);
 
-         if (!$$7 && $$3 == 0) {
-            return false;
+         for (int $$6 = 0; $$6 < $$5; $$6++) {
+            ffq $$7 = $$4.a($$3, 1.0F);
+            $$0.a(ly.bd, $$1.a(), $$1.b(), $$1.c(), $$7.a(), $$7.b(), $$7.c());
          }
       }
 
-      if ($$3 == 0) {
-         if (!this.a($$1, $$2, $$5, true)) {
-            return false;
-         }
+      private static void a(djx $$0, iv $$1, ebe $$2, eap $$3) {
+         Set<UUID> $$4 = $$3.d();
+         if (!$$4.isEmpty()) {
+            ffq $$5 = a($$1, $$2.c(dwn.c));
 
-         $$1.a($$2, $$6, 67);
-         $$1.a(null, $$2, awn.uO, awo.e, 0.5F, $$1.A.i() * 0.25F + 0.6F);
-         $$1.a(eft.a, $$2, eft.a.a($$6));
-      } else if ($$3 == 1 || $$3 == 2) {
-         dxr $$8 = $$1.c_($$2.a($$5));
-         if ($$8 instanceof eao) {
-            ((eao)$$8).k();
-         }
-
-         eat $$9 = dmt.ca.m().b(eak.b, $$5).b(eak.c, this.i ? ebv.b : ebv.a);
-         $$1.a($$2, $$9, 276);
-         $$1.a(eak.a($$2, $$9, this.m().b(a, jb.a($$4 & 7)), $$5, false, true));
-         $$1.a($$2, $$9.b());
-         $$9.a($$1, $$2, 2);
-         if (this.i) {
-            iv $$10 = $$2.b($$5.j() * 2, $$5.k() * 2, $$5.l() * 2);
-            eat $$11 = $$1.a_($$10);
-            boolean $$12 = false;
-            if ($$11.a(dmt.ca) && $$1.c_($$10) instanceof eao $$14 && $$14.c() == $$5 && $$14.a()) {
-               $$14.k();
-               $$12 = true;
-            }
-
-            if (!$$12) {
-               if ($$3 != 1 || $$11.l() || !a($$11, $$1, $$10, $$5.g(), false, $$5) || $$11.r() != exf.a && !$$11.a(dmt.bI) && !$$11.a(dmt.by)) {
-                  $$1.a($$2.a($$5), false);
-               } else {
-                  this.a($$1, $$2, $$5, false);
+            for (UUID $$6 : $$4) {
+               crx $$7 = $$0.a($$6);
+               if ($$7 != null && a($$1, $$3, $$7)) {
+                  a($$0, $$5, $$7);
                }
             }
+         }
+      }
+
+      private static boolean a(iv $$0, eap $$1, crx $$2) {
+         return $$2.dv().j($$0) <= azo.k($$1.e());
+      }
+
+      private static void a(djx $$0, iv $$1, eap $$2) {
+         if (a($$2)) {
+            azx $$3 = $$0.G_();
+            if ($$3.i() <= 0.02F) {
+               $$0.a($$1, awp.BF, awq.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+            }
+         }
+      }
+
+      public static boolean a(eap $$0) {
+         return $$0.b();
+      }
+
+      private static ffq a(iv $$0, azx $$1) {
+         return ffq.a($$0).b(azo.a($$1, 0.4, 0.6), azo.a($$1, 0.4, 0.6), azo.a($$1, 0.4, 0.6));
+      }
+
+      private static ffq b(iv $$0, azx $$1) {
+         return ffq.a($$0).b(azo.a($$1, 0.1, 0.9), azo.a($$1, 0.25, 0.75), azo.a($$1, 0.1, 0.9));
+      }
+
+      private static ffq a(iv $$0, jb $$1) {
+         return ffq.c($$0).b((double)$$1.j() * 0.5, 1.75, (double)$$1.l() * 0.5);
+      }
+   }
+
+   public static final class b {
+      private static final int a = 14;
+      private static final int b = 20;
+      private static final int c = 15;
+
+      public static void a(ars $$0, iv $$1, ebe $$2, ean $$3, eao $$4, eap $$5) {
+         eaq $$6 = $$2.c(dwn.b);
+         if (a($$0.ae(), $$6)) {
+            a($$0, $$6, $$3, $$5, $$1);
+         }
+
+         ebe $$7 = $$2;
+         if ($$0.ae() >= $$4.c()) {
+            $$7 = $$2.b(dwn.b, $$6.a($$0, $$1, $$3, $$4, $$5));
+            if ($$2 != $$7) {
+               a($$0, $$1, $$2, $$7, $$3, $$5);
+            }
+         }
+
+         if ($$4.c || $$5.c) {
+            eal.a($$0, $$1, $$2);
+            if ($$5.c) {
+               $$0.a($$1, $$2, $$7, 2);
+            }
+
+            $$4.c = false;
+            $$5.c = false;
+         }
+      }
+
+      public static void a(ars $$0, iv $$1, ebe $$2, ean $$3, eao $$4, eap $$5, crx $$6, czy $$7) {
+         eaq $$8 = $$2.c(dwn.b);
+         if (a($$3, $$8)) {
+            if (!a($$3, $$7)) {
+               a($$0, $$4, $$1, awp.BO);
+            } else if ($$4.a($$6)) {
+               a($$0, $$4, $$1, awp.BK);
+            } else {
+               List<czy> $$9 = a($$0, $$3, $$1, $$6, $$7);
+               if (!$$9.isEmpty()) {
+                  $$6.b(awz.c.b($$7.h()));
+                  $$7.a($$3.e().M(), (bxu)$$6);
+                  a($$0, $$2, $$1, $$3, $$4, $$5, $$9);
+                  $$4.b($$6);
+                  $$5.a($$0, $$1, $$4, $$3, $$3.d());
+               }
+            }
+         }
+      }
+
+      static void a(ars $$0, iv $$1, ebe $$2, ebe $$3, ean $$4, eap $$5) {
+         eaq $$6 = $$2.c(dwn.b);
+         eaq $$7 = $$3.c(dwn.b);
+         $$0.a($$1, $$3, 3);
+         $$6.a($$0, $$1, $$7, $$4, $$5, $$3.c(dwn.d));
+      }
+
+      static void a(ars $$0, eaq $$1, ean $$2, eap $$3, iv $$4) {
+         if (!a($$2, $$1)) {
+            $$3.a(czy.k);
          } else {
-            $$1.a($$2.a($$5), false);
+            czy $$5 = a($$0, $$4, $$2.f().orElse($$2.b()));
+            $$3.a($$5);
          }
-
-         $$1.a(null, $$2, awn.uN, awo.e, 0.5F, $$1.A.i() * 0.15F + 0.6F);
-         $$1.a(eft.e, $$2, eft.a.a($$9));
       }
 
-      return true;
-   }
-
-   public static boolean a(eat $$0, djm $$1, iv $$2, jb $$3, boolean $$4, jb $$5) {
-      if ($$2.v() < $$1.G_() || $$2.v() > $$1.ao() || !$$1.A_().a($$2)) {
-         return false;
-      } else if ($$0.l()) {
-         return true;
-      } else if ($$0.a(dmt.cy) || $$0.a(dmt.pS) || $$0.a(dmt.pT) || $$0.a(dmt.tY)) {
-         return false;
-      } else if ($$3 == jb.a && $$2.v() == $$1.G_()) {
-         return false;
-      } else if ($$3 == jb.b && $$2.v() == $$1.ao()) {
-         return false;
-      } else {
-         if (!$$0.a(dmt.bI) && !$$0.a(dmt.by)) {
-            if ($$0.e($$1, $$2) == -1.0F) {
-               return false;
-            }
-
-            switch ($$0.r()) {
-               case c:
-                  return false;
-               case b:
-                  return $$4;
-               case e:
-                  return $$3 == $$5;
-            }
-         } else if ($$0.c(c)) {
-            return false;
-         }
-
-         return !$$0.x();
-      }
-   }
-
-   private boolean a(djm $$0, iv $$1, jb $$2, boolean $$3) {
-      iv $$4 = $$1.a($$2);
-      if (!$$3 && $$0.a_($$4).a(dmt.bJ)) {
-         $$0.a($$4, dmt.a.m(), 276);
+      private static czy a(ars $$0, iv $$1, alh<fam> $$2) {
+         fam $$3 = $$0.p().bc().b($$2);
+         fak $$4 = new fak.a($$0).a(fdb.f, ffq.b($$1)).a(fda.l);
+         List<czy> $$5 = $$3.a($$4, $$0.G_());
+         return $$5.isEmpty() ? czy.k : ag.a($$5, $$0.G_());
       }
 
-      eap $$5 = new eap($$0, $$1, $$2, $$3);
-      if (!$$5.a()) {
-         return false;
-      } else {
-         Map<iv, eat> $$6 = Maps.newHashMap();
-         List<iv> $$7 = $$5.c();
-         List<eat> $$8 = Lists.newArrayList();
-
-         for (iv $$9 : $$7) {
-            eat $$10 = $$0.a_($$9);
-            $$8.add($$10);
-            $$6.put($$9, $$10);
-         }
-
-         List<iv> $$11 = $$5.d();
-         eat[] $$12 = new eat[$$7.size() + $$11.size()];
-         jb $$13 = $$3 ? $$2 : $$2.g();
-         int $$14 = 0;
-
-         for (int $$15 = $$11.size() - 1; $$15 >= 0; $$15--) {
-            iv $$16 = $$11.get($$15);
-            eat $$17 = $$0.a_($$16);
-            dxr $$18 = $$17.x() ? $$0.c_($$16) : null;
-            a($$17, $$0, $$16, $$18);
-            $$0.a($$16, dmt.a.m(), 18);
-            $$0.a(eft.f, $$16, eft.a.a($$17));
-            if (!$$17.a(axc.aN)) {
-               $$0.a($$16, $$17);
-            }
-
-            $$12[$$14++] = $$17;
-         }
-
-         for (int $$19 = $$7.size() - 1; $$19 >= 0; $$19--) {
-            iv $$20 = $$7.get($$19);
-            eat $$21 = $$0.a_($$20);
-            $$20 = $$20.a($$13);
-            $$6.remove($$20);
-            eat $$22 = dmt.ca.m().b(a, $$2);
-            $$0.a($$20, $$22, 324);
-            $$0.a(eak.a($$20, $$22, $$8.get($$19), $$2, $$3, false));
-            $$12[$$14++] = $$21;
-         }
-
-         if ($$3) {
-            ebv $$23 = this.i ? ebv.b : ebv.a;
-            eat $$24 = dmt.bJ.m().b(eam.a, $$2).b(eam.c, $$23);
-            eat $$25 = dmt.ca.m().b(eak.b, $$2).b(eak.c, this.i ? ebv.b : ebv.a);
-            $$6.remove($$4);
-            $$0.a($$4, $$25, 324);
-            $$0.a(eak.a($$4, $$25, $$24, $$2, true, true));
-         }
-
-         eat $$26 = dmt.a.m();
-
-         for (iv $$27 : $$6.keySet()) {
-            $$0.a($$27, $$26, 82);
-         }
-
-         for (Entry<iv, eat> $$28 : $$6.entrySet()) {
-            iv $$29 = $$28.getKey();
-            eat $$30 = $$28.getValue();
-            $$30.b($$0, $$29, 2);
-            $$26.a($$0, $$29, 2);
-            $$26.b($$0, $$29, 2);
-         }
-
-         eyi $$31 = eye.a($$0, $$5.b(), null);
-         $$14 = 0;
-
-         for (int $$32 = $$11.size() - 1; $$32 >= 0; $$32--) {
-            eat $$33 = $$12[$$14++];
-            iv $$34 = $$11.get($$32);
-            if ($$0 instanceof arq $$35) {
-               $$33.a($$35, $$34, false);
-            }
-
-            $$33.b($$0, $$34, 2);
-            $$0.a($$34, $$33.b(), $$31);
-         }
-
-         for (int $$36 = $$7.size() - 1; $$36 >= 0; $$36--) {
-            $$0.a($$7.get($$36), $$12[$$14++].b(), $$31);
-         }
-
-         if ($$3) {
-            $$0.a($$4, dmt.bJ, $$31);
-         }
-
-         return true;
+      private static void a(ars $$0, ebe $$1, iv $$2, ean $$3, eao $$4, eap $$5, List<czy> $$6) {
+         $$4.a($$6);
+         $$5.a($$4.f());
+         $$4.b($$0.ae() + 14L);
+         a($$0, $$2, $$1, $$1.b(dwn.b, eaq.c), $$3, $$5);
       }
-   }
 
-   @Override
-   protected eat a(eat $$0, dtl $$1) {
-      return $$0.b(a, $$1.a($$0.c(a)));
-   }
+      private static List<czy> a(ars $$0, ean $$1, iv $$2, crx $$3, czy $$4) {
+         fam $$5 = $$0.p().bc().b($$1.b());
+         fak $$6 = new fak.a($$0).a(fdb.f, ffq.b($$2)).a($$3.eh()).a(fdb.a, $$3).a(fdb.i, $$4).a(fda.l);
+         return $$5.a($$6);
+      }
 
-   @Override
-   protected eat a(eat $$0, dru $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
+      private static boolean a(ean $$0, eaq $$1) {
+         return !$$0.e().f() && $$1 != eaq.a;
+      }
 
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(a, c);
-   }
+      private static boolean a(ean $$0, czy $$1) {
+         return czy.c($$1, $$0.e()) && $$1.M() >= $$0.e().M();
+      }
 
-   @Override
-   protected boolean g_(eat $$0) {
-      return $$0.c(c);
-   }
+      private static boolean a(long $$0, eaq $$1) {
+         return $$0 % 20L == 0L && $$1 == eaq.b;
+      }
 
-   @Override
-   protected boolean a(eat $$0, exp $$1) {
-      return false;
+      private static void a(ars $$0, eao $$1, iv $$2, awo $$3) {
+         if ($$0.ae() >= $$1.a() + 15L) {
+            $$0.a(null, $$2, $$3, awq.e);
+            $$1.a($$0.ae());
+         }
+      }
    }
 }

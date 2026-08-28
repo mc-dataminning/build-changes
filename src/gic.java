@@ -1,44 +1,44 @@
-public class gic extends gex {
-   public gic(gjt $$0) {
+public class gic extends gia<her> {
+   private static final String a = "base";
+   private static final String b = "upper_jaw";
+   private static final String c = "lower_jaw";
+   private final gle d;
+   private final gle e;
+   private final gle f;
+
+   public gic(gle $$0) {
       super($$0);
+      this.d = $$0.b("base");
+      this.e = this.d.b("upper_jaw");
+      this.f = this.d.b("lower_jaw");
    }
 
-   private static void a(gkd $$0) {
-      $$0.a(
-         "bottom",
-         gjy.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
-         gjv.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
-      );
-      int $$1 = 20;
-      int $$2 = 7;
-      int $$3 = 6;
-      float $$4 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         gjy.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gjv.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         gjy.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gjv.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
+   public static glk a() {
+      glm $$0 = new glm();
+      glo $$1 = $$0.a();
+      glo $$2 = $$1.a("base", glj.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), glg.a(-5.0F, 24.0F, -5.0F));
+      glj $$3 = glj.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
+      $$2.a("upper_jaw", $$3, glg.a(6.5F, 0.0F, 1.0F, 0.0F, 0.0F, 2.042035F));
+      $$2.a("lower_jaw", $$3, glg.a(3.5F, 0.0F, 9.0F, 0.0F, (float) Math.PI, 4.2411504F));
+      return glk.a($$0, 64, 32);
    }
 
-   public static gjz a() {
-      gkb $$0 = new gkb();
-      gkd $$1 = $$0.a();
-      a($$1);
-      return gjz.a($$0, 128, 64);
-   }
+   public void a(her $$0) {
+      super.a($$0);
+      float $$1 = $$0.b;
+      float $$2 = Math.min($$1 * 2.0F, 1.0F);
+      $$2 = 1.0F - $$2 * $$2 * $$2;
+      this.e.g = (float) Math.PI - $$2 * 0.35F * (float) Math.PI;
+      this.f.g = (float) Math.PI + $$2 * 0.35F * (float) Math.PI;
+      this.d.c = this.d.c - ($$1 + azo.a($$1 * 2.7F)) * 7.2F;
+      float $$3 = 1.0F;
+      if ($$1 > 0.9F) {
+         $$3 *= (1.0F - $$1) / 0.1F;
+      }
 
-   public static gjz b() {
-      gkb $$0 = new gkb();
-      gkd $$1 = $$0.a();
-      a($$1);
-      $$1.a("chest_bottom", gjy.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), gjv.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lid", gjy.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), gjv.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lock", gjy.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), gjv.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      return gjz.a($$0, 128, 128);
+      this.v.c = 24.0F - 20.0F * $$3;
+      this.v.h = $$3;
+      this.v.i = $$3;
+      this.v.j = $$3;
    }
 }

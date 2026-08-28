@@ -1,3 +1,6 @@
-public interface wm extends we {
-   void d();
+public interface wm extends wg {
+   @Override
+   default zi a() {
+      return zi.a;
+   }
 }

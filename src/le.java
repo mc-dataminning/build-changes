@@ -1,9 +1,9 @@
-public record le(arq a, iv b, eat c, dym d) {
-   public ffc a() {
+public record le(ars a, iv b, ebe c, dyx d) {
+   public ffq a() {
       return this.b.b();
    }
 
-   public arq b() {
+   public ars b() {
       return this.a;
    }
 
@@ -11,11 +11,11 @@ public record le(arq a, iv b, eat c, dym d) {
       return this.b;
    }
 
-   public eat d() {
+   public ebe d() {
       return this.c;
    }
 
-   public dym e() {
+   public dyx e() {
       return this.d;
    }
 }

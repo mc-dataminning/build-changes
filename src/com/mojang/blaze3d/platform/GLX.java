@@ -9,6 +9,7 @@ import java.util.Locale;
 import java.util.function.Consumer;
 import java.util.function.LongSupplier;
 import java.util.function.Supplier;
+import javax.annotation.Nullable;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -19,19 +20,13 @@ import org.slf4j.Logger;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 
-@fhc
+@fhq
 public class GLX {
    private static final Logger LOGGER = LogUtils.getLogger();
+   @Nullable
    private static String cpuInfo;
 
-   public static String getOpenGLVersionString() {
-      RenderSystem.assertOnRenderThread();
-      return GLFW.glfwGetCurrentContext() == 0L
-         ? "NO CONTEXT"
-         : GlStateManager._getString(7937) + " GL version " + GlStateManager._getString(7938) + ", " + GlStateManager._getString(7936);
-   }
-
-   public static int _getRefreshRate(fjc $$0) {
+   public static int _getRefreshRate(fkk $$0) {
       RenderSystem.assertOnRenderThread();
       long $$1 = GLFW.glfwGetWindowMonitor($$0.h());
       if ($$1 == 0L) {
@@ -47,7 +42,7 @@ public class GLX {
    }
 
    public static LongSupplier _initGlfw() {
-      fjc.a(($$0x, $$1x) -> {
+      fkk.a(($$0x, $$1x) -> {
          throw new IllegalStateException(String.format(Locale.ROOT, "GLFW error before init: [0x%X]%s", $$0x, $$1x));
       });
       List<String> $$0 = Lists.newArrayList();
@@ -76,22 +71,22 @@ public class GLX {
       }
    }
 
-   public static boolean _shouldClose(fjc $$0) {
+   public static boolean _shouldClose(fkk $$0) {
       return GLFW.glfwWindowShouldClose($$0.h());
    }
 
-   public static void _init(int $$0, boolean $$1) {
-      try {
-         CentralProcessor $$2 = new SystemInfo().getHardware().getProcessor();
-         cpuInfo = String.format(Locale.ROOT, "%dx %s", $$2.getLogicalProcessorCount(), $$2.getProcessorIdentifier().getName()).replaceAll("\\s+", " ");
-      } catch (Throwable var3) {
+   public static String _getCpuInfo() {
+      if (cpuInfo == null) {
+         cpuInfo = "<unknown>";
+
+         try {
+            CentralProcessor $$0 = new SystemInfo().getHardware().getProcessor();
+            cpuInfo = String.format(Locale.ROOT, "%dx %s", $$0.getLogicalProcessorCount(), $$0.getProcessorIdentifier().getName()).replaceAll("\\s+", " ");
+         } catch (Throwable var1) {
+         }
       }
 
-      fir.a($$0, $$1);
-   }
-
-   public static String _getCpuInfo() {
-      return cpuInfo == null ? "<unknown>" : cpuInfo;
+      return cpuInfo;
    }
 
    public static <T> T make(Supplier<T> $$0) {

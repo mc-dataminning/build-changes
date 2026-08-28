@@ -9,8 +9,8 @@ public class br extends dk<br.a> {
       return br.a.a;
    }
 
-   public void a(arr $$0, @Nullable bwi $$1) {
-      ezt $$2 = $$1 != null ? by.b($$0, $$1) : null;
+   public void a(art $$0, @Nullable bwt $$1) {
+      fah $$2 = $$1 != null ? by.b($$0, $$1) : null;
       this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
@@ -32,8 +32,8 @@ public class br extends dk<br.a> {
          return aq.B.a(new br.a(Optional.empty(), Optional.empty(), Optional.of(by.a($$0.b()))));
       }
 
-      public boolean a(arr $$0, @Nullable ezt $$1) {
-         return this.c.isPresent() && !this.c.get().a((bxj)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
+      public boolean a(art $$0, @Nullable fah $$1) {
+         return this.c.isPresent() && !this.c.get().a((bxu)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
       }
 
       @Override

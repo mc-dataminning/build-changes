@@ -1,71 +1,13 @@
-public abstract class dkw {
-   public static final alf<dkp> a = a("the_void");
-   public static final alf<dkp> b = a("plains");
-   public static final alf<dkp> c = a("sunflower_plains");
-   public static final alf<dkp> d = a("snowy_plains");
-   public static final alf<dkp> e = a("ice_spikes");
-   public static final alf<dkp> f = a("desert");
-   public static final alf<dkp> g = a("swamp");
-   public static final alf<dkp> h = a("mangrove_swamp");
-   public static final alf<dkp> i = a("forest");
-   public static final alf<dkp> j = a("flower_forest");
-   public static final alf<dkp> k = a("birch_forest");
-   public static final alf<dkp> l = a("dark_forest");
-   public static final alf<dkp> m = a("pale_garden");
-   public static final alf<dkp> n = a("old_growth_birch_forest");
-   public static final alf<dkp> o = a("old_growth_pine_taiga");
-   public static final alf<dkp> p = a("old_growth_spruce_taiga");
-   public static final alf<dkp> q = a("taiga");
-   public static final alf<dkp> r = a("snowy_taiga");
-   public static final alf<dkp> s = a("savanna");
-   public static final alf<dkp> t = a("savanna_plateau");
-   public static final alf<dkp> u = a("windswept_hills");
-   public static final alf<dkp> v = a("windswept_gravelly_hills");
-   public static final alf<dkp> w = a("windswept_forest");
-   public static final alf<dkp> x = a("windswept_savanna");
-   public static final alf<dkp> y = a("jungle");
-   public static final alf<dkp> z = a("sparse_jungle");
-   public static final alf<dkp> A = a("bamboo_jungle");
-   public static final alf<dkp> B = a("badlands");
-   public static final alf<dkp> C = a("eroded_badlands");
-   public static final alf<dkp> D = a("wooded_badlands");
-   public static final alf<dkp> E = a("meadow");
-   public static final alf<dkp> F = a("cherry_grove");
-   public static final alf<dkp> G = a("grove");
-   public static final alf<dkp> H = a("snowy_slopes");
-   public static final alf<dkp> I = a("frozen_peaks");
-   public static final alf<dkp> J = a("jagged_peaks");
-   public static final alf<dkp> K = a("stony_peaks");
-   public static final alf<dkp> L = a("river");
-   public static final alf<dkp> M = a("frozen_river");
-   public static final alf<dkp> N = a("beach");
-   public static final alf<dkp> O = a("snowy_beach");
-   public static final alf<dkp> P = a("stony_shore");
-   public static final alf<dkp> Q = a("warm_ocean");
-   public static final alf<dkp> R = a("lukewarm_ocean");
-   public static final alf<dkp> S = a("deep_lukewarm_ocean");
-   public static final alf<dkp> T = a("ocean");
-   public static final alf<dkp> U = a("deep_ocean");
-   public static final alf<dkp> V = a("cold_ocean");
-   public static final alf<dkp> W = a("deep_cold_ocean");
-   public static final alf<dkp> X = a("frozen_ocean");
-   public static final alf<dkp> Y = a("deep_frozen_ocean");
-   public static final alf<dkp> Z = a("mushroom_fields");
-   public static final alf<dkp> aa = a("dripstone_caves");
-   public static final alf<dkp> ab = a("lush_caves");
-   public static final alf<dkp> ac = a("deep_dark");
-   public static final alf<dkp> ad = a("nether_wastes");
-   public static final alf<dkp> ae = a("warped_forest");
-   public static final alf<dkp> af = a("crimson_forest");
-   public static final alf<dkp> ag = a("soul_sand_valley");
-   public static final alf<dkp> ah = a("basalt_deltas");
-   public static final alf<dkp> ai = a("the_end");
-   public static final alf<dkp> aj = a("end_highlands");
-   public static final alf<dkp> ak = a("end_midlands");
-   public static final alf<dkp> al = a("small_end_islands");
-   public static final alf<dkp> am = a("end_barrens");
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   private static alf<dkp> a(String $$0) {
-      return alf.a(mh.aG, alg.b($$0));
+public interface dkw extends dko {
+   long E();
+
+   default boolean f_(iv $$0) {
+      return true;
+   }
+
+   default void a(@Nullable Supplier<String> $$0) {
    }
 }

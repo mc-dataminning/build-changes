@@ -1,31 +1,40 @@
 import com.google.common.collect.ImmutableMap;
 
-public class cct<E extends cqp> extends bza<E> {
-   public cct(int $$0) {
-      super(ImmutableMap.of(cgl.p, cgm.b, cgl.n, cgm.b), $$0);
+public class cct extends bzl<crj> {
+   public cct() {
+      super(ImmutableMap.of());
    }
 
-   protected boolean a(arq $$0, E $$1, long $$2) {
-      return $$1.dQ() == null;
+   protected boolean a(ars $$0, crj $$1, long $$2) {
+      return c($$1) || b($$1);
    }
 
-   protected boolean a(arq $$0, E $$1) {
-      return $$1.aH() || $$1.bh() || $$1.bu();
-   }
+   protected void b(ars $$0, crj $$1, long $$2) {
+      if (c($$1) || b($$1)) {
+         byu<?> $$3 = $$1.ec();
+         if (!$$3.c(ctr.g)) {
+            $$3.b(cgw.u);
+            $$3.b(cgw.n);
+            $$3.b(cgw.o);
+            $$3.b(cgw.s);
+            $$3.b(cgw.r);
+         }
 
-   protected void b(arq $$0, E $$1, long $$2) {
-      if ($$1.aH()) {
-         $$1.b(bxv.o);
-         $$1.a(awn.CP, 5.0F, 1.0F);
-      } else {
-         $$1.a(awn.CK, 5.0F, 1.0F);
-         this.c($$0, $$1, $$2);
+         $$3.a(ctr.g);
       }
    }
 
-   protected void c(arq $$0, E $$1, long $$2) {
-      if ($$1.dQ() == null) {
-         $$1.a(bwi.d.b);
+   protected void c(ars $$0, crj $$1, long $$2) {
+      if ($$2 % 100L == 0L) {
+         $$1.a($$0, $$2, 3);
       }
+   }
+
+   public static boolean b(bxu $$0) {
+      return $$0.ec().a(cgw.B);
+   }
+
+   public static boolean c(bxu $$0) {
+      return $$0.ec().a(cgw.y);
    }
 }

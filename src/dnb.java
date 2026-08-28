@@ -1,35 +1,56 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dnb extends dwd implements dmu {
-   public static final MapCodec<dnb> a = b(dnb::new);
-   private static final ffw b = dmr.b(16.0, 0.0, 13.0);
+public class dnb extends dlx {
+   public static final MapCodec<dnb> c = b(dnb::new);
 
    @Override
    public MapCodec<dnb> a() {
-      return a;
+      return c;
    }
 
-   protected dnb(eas.d $$0) {
+   protected dnb(ebd.d $$0) {
       super($$0);
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return b;
+   public dyc a(iv $$0, ebe $$1) {
+      return new dyb($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dyc> dyd<T> a(djx $$0, ebe $$1, dye<T> $$2) {
+      return a($$0, $$2, dye.D);
    }
 
    @Override
-   public boolean a(djp $$0, iv $$1, eat $$2) {
-      return dmu.a_($$0, $$1, $$2);
+   protected void a(djx $$0, iv $$1, crx $$2) {
+      dyc $$3 = $$0.c_($$1);
+      if ($$3 instanceof dyb) {
+         $$2.a((but)$$3);
+         $$2.a(awz.as);
+      }
    }
 
    @Override
-   public boolean a(djm $$0, azv $$1, iv $$2, eat $$3) {
-      return true;
-   }
+   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awp.cA, awq.e, 1.0F, 1.0F, false);
+         }
 
-   @Override
-   public void a(arq $$0, azv $$1, iv $$2, eat $$3) {
-      dmu.a((djm)$$0, $$2, $$3).ifPresent($$1x -> $$0.b($$1x, this.m()));
+         jb $$7 = $$0.c(a);
+         jb.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == jb.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 9.0 / 16.0;
+         double $$13 = $$8 == jb.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(ly.ah, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

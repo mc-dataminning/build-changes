@@ -1,49 +1,47 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum bud implements bak {
-   a(0, "peaceful"),
-   b(1, "easy"),
-   c(2, "normal"),
-   d(3, "hard");
-
-   public static final bak.a<bud> e = bak.a(bud::values);
-   private static final IntFunction<bud> f = ayc.a(bud::a, values(), ayc.a.b);
+public class bud extends btw {
+   public static final MapCodec<bud> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(btb.b(btw.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bud::new)
+   );
+   private final btb<btw> b;
+   private final int f;
    private final int g;
-   private final String h;
 
-   private bud(final int $$0, final String $$1) {
-      this.g = $$0;
-      this.h = $$1;
-   }
+   public bud(btb<btw> $$0) {
+      this.b = $$0;
+      int $$1 = Integer.MAX_VALUE;
+      int $$2 = Integer.MIN_VALUE;
 
-   public int a() {
-      return this.g;
-   }
+      for (bta<btw> $$3 : $$0.d()) {
+         int $$4 = $$3.a().a();
+         int $$5 = $$3.a().b();
+         $$1 = Math.min($$1, $$4);
+         $$2 = Math.max($$2, $$5);
+      }
 
-   public wy b() {
-      return wy.c("options.difficulty." + this.h);
-   }
-
-   public wy d() {
-      return wy.c("options.difficulty." + this.h + ".info");
-   }
-
-   public static bud a(int $$0) {
-      return f.apply($$0);
-   }
-
-   @Nullable
-   public static bud a(String $$0) {
-      return e.a($$0);
-   }
-
-   public String e() {
-      return this.h;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public int a(azx $$0) {
+      return this.b.b($$0).a($$0);
+   }
+
+   @Override
+   public int a() {
+      return this.f;
+   }
+
+   @Override
+   public int b() {
+      return this.g;
+   }
+
+   @Override
+   public btx<?> c() {
+      return btx.e;
    }
 }

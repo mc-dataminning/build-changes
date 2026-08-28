@@ -1,282 +1,304 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Map.Entry;
 import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-import org.joml.Vector4f;
 
 public class gse {
-   public static final int a = 8;
-   private static final float d = 1.0F / (float)Math.cos((float) (Math.PI / 8)) - 1.0F;
-   private static final float e = 1.0F / (float)Math.cos((float) (Math.PI / 4)) - 1.0F;
-   public static final int b = 4;
-   private static final int f = 3;
-   public static final int c = 4;
+   public static final ali a = ali.b("main");
+   private final List<gsg> b;
+   private final Map<ali, gsf.d> c;
+   private final Set<ali> d;
 
-   @VisibleForTesting
-   static grz.b a(Vector3fc $$0, Vector3fc $$1, jb $$2) {
-      return switch ($$2) {
-         case a -> new grz.b($$0.x(), 16.0F - $$1.z(), $$1.x(), 16.0F - $$0.z());
-         case b -> new grz.b($$0.x(), $$0.z(), $$1.x(), $$1.z());
-         case c -> new grz.b(16.0F - $$1.x(), 16.0F - $$1.y(), 16.0F - $$0.x(), 16.0F - $$0.y());
-         case d -> new grz.b($$0.x(), 16.0F - $$1.y(), $$1.x(), 16.0F - $$0.y());
-         case e -> new grz.b($$0.z(), 16.0F - $$1.y(), $$1.z(), 16.0F - $$0.y());
-         case f -> new grz.b(16.0F - $$1.z(), 16.0F - $$1.y(), 16.0F - $$0.z(), 16.0F - $$0.y());
-      };
+   private gse(List<gsg> $$0, Map<ali, gsf.d> $$1, Set<ali> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public static grx a(Vector3fc $$0, Vector3fc $$1, grz $$2, hjq $$3, jb $$4, hmf $$5, @Nullable gsa $$6, boolean $$7, int $$8) {
-      grz.b $$9 = $$2.d();
-      if ($$9 == null) {
-         $$9 = a($$0, $$1, $$4);
-      }
-
-      $$9 = a($$3, $$9);
-      Matrix4fc $$10 = $$5.b($$4);
-      int[] $$11 = a($$9, $$2.e(), $$10, $$3, $$4, a($$0, $$1), $$5.a(), $$6);
-      jb $$12 = a($$11);
-      if ($$6 == null) {
-         a($$11, $$12);
-      }
-
-      return new grx($$11, $$2.b(), $$12, $$3, $$7, $$8);
-   }
-
-   private static grz.b a(hjq $$0, grz.b $$1) {
-      float $$2 = $$1.a();
-      float $$3 = $$1.b();
-      float $$4 = $$1.c();
-      float $$5 = $$1.d();
-      float $$6 = $$0.j();
-      float $$7 = ($$2 + $$2 + $$4 + $$4) / 4.0F;
-      float $$8 = ($$3 + $$3 + $$5 + $$5) / 4.0F;
-      return new grz.b(azm.h($$6, $$2, $$7), azm.h($$6, $$3, $$8), azm.h($$6, $$4, $$7), azm.h($$6, $$5, $$8));
-   }
-
-   private static int[] a(grz.b $$0, i $$1, Matrix4fc $$2, hjq $$3, jb $$4, float[] $$5, k $$6, @Nullable gsa $$7) {
-      gqe $$8 = gqe.a($$4);
-      int[] $$9 = new int[32];
-
-      for (int $$10 = 0; $$10 < 4; $$10++) {
-         a($$9, $$10, $$8, $$0, $$1, $$2, $$5, $$3, $$6, $$7);
-      }
-
-      return $$9;
-   }
-
-   private static float[] a(Vector3fc $$0, Vector3fc $$1) {
-      float[] $$2 = new float[jb.values().length];
-      $$2[gqe.a.f] = $$0.x() / 16.0F;
-      $$2[gqe.a.e] = $$0.y() / 16.0F;
-      $$2[gqe.a.d] = $$0.z() / 16.0F;
-      $$2[gqe.a.c] = $$1.x() / 16.0F;
-      $$2[gqe.a.b] = $$1.y() / 16.0F;
-      $$2[gqe.a.a] = $$1.z() / 16.0F;
-      return $$2;
-   }
-
-   private static void a(int[] $$0, int $$1, gqe $$2, grz.b $$3, i $$4, Matrix4fc $$5, float[] $$6, hjq $$7, k $$8, @Nullable gsa $$9) {
-      gqe.b $$10 = $$2.a($$1);
-      Vector3f $$11 = new Vector3f($$6[$$10.a], $$6[$$10.b], $$6[$$10.c]);
-      a($$11, $$9);
-      a($$11, $$8);
-      float $$12 = grz.a($$3, $$4, $$1);
-      float $$13 = grz.b($$3, $$4, $$1);
-      float $$15;
-      float $$14;
-      if (f.a($$5)) {
-         $$14 = $$12;
-         $$15 = $$13;
+   public static gse a(gsf $$0, hlc $$1, Set<ali> $$2, ali $$3) throws gss.b {
+      Stream<ali> $$4 = $$0.b().stream().flatMap(gsf.e::a);
+      Set<ali> $$5 = $$4.filter($$1x -> !$$0.a().containsKey($$1x)).collect(Collectors.toSet());
+      Set<ali> $$6 = Sets.difference($$5, $$2);
+      if (!$$6.isEmpty()) {
+         throw new gss.b("Referenced external targets are not available in this context: " + $$6);
       } else {
-         Vector3f $$16 = $$5.transformPosition(new Vector3f(a($$12), a($$13), 0.0F));
-         $$14 = b($$16.x);
-         $$15 = b($$16.y);
+         Builder<gsg> $$7 = ImmutableList.builder();
+
+         for (int $$8 = 0; $$8 < $$0.b().size(); $$8++) {
+            gsf.e $$9 = $$0.b().get($$8);
+            $$7.add(a($$1, $$9, $$3.g("/" + $$8)));
+         }
+
+         return new gse($$7.build(), $$0.a(), $$5);
+      }
+   }
+
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   private static gsg a(hlc $$0, gsf.e $$1, ali $$2) throws gss.b {
+      fjp.a $$3 = fjp.a(gsj.a).b($$1.c()).c($$1.b()).a($$2);
+
+      for (gsf.c $$4 : $$1.d()) {
+         $$3.e($$4.a() + "Sampler");
+         $$3.a($$4.a() + "Size", fkx.d);
       }
 
-      a($$0, $$1, $$11, $$7, $$14, $$15);
-   }
+      for (gsf.h $$5 : $$1.f()) {
+         $$3.a($$5.a(), Objects.requireNonNull(fkx.h.a($$5.b())));
+      }
 
-   private static float a(float $$0) {
-      return $$0 - 0.5F;
-   }
+      fjp $$6 = $$3.c();
+      fjm $$7 = RenderSystem.getDevice().b($$6);
 
-   private static float b(float $$0) {
-      return $$0 + 0.5F;
-   }
+      for (gsf.h $$8 : $$1.f()) {
+         String $$9 = $$8.a();
+         if (!$$7.a($$9)) {
+            throw new gss.b("Uniform '" + $$9 + "' does not exist for " + $$2);
+         }
+      }
 
-   private static void a(int[] $$0, int $$1, Vector3f $$2, hjq $$3, float $$4, float $$5) {
-      int $$6 = $$1 * 8;
-      $$0[$$6] = Float.floatToRawIntBits($$2.x());
-      $$0[$$6 + 1] = Float.floatToRawIntBits($$2.y());
-      $$0[$$6 + 2] = Float.floatToRawIntBits($$2.z());
-      $$0[$$6 + 3] = -1;
-      $$0[$$6 + 4] = Float.floatToRawIntBits($$3.a($$4));
-      $$0[$$6 + 4 + 1] = Float.floatToRawIntBits($$3.c($$5));
-   }
+      gsg $$10 = new gsg($$6, $$1.e(), $$1.f());
 
-   private static void a(Vector3f $$0, @Nullable gsa $$1) {
-      if ($$1 != null) {
-         Vector3f $$2;
-         Vector3f $$3;
-         switch ($$1.b()) {
-            case a:
-               $$2 = new Vector3f(1.0F, 0.0F, 0.0F);
-               $$3 = new Vector3f(0.0F, 1.0F, 1.0F);
-               break;
-            case b:
-               $$2 = new Vector3f(0.0F, 1.0F, 0.0F);
-               $$3 = new Vector3f(1.0F, 0.0F, 1.0F);
-               break;
-            case c:
-               $$2 = new Vector3f(0.0F, 0.0F, 1.0F);
-               $$3 = new Vector3f(1.0F, 1.0F, 0.0F);
-               break;
+      for (gsf.c $$11 : $$1.d()) {
+         Objects.requireNonNull($$11);
+         Throwable var49;
+         switch ($$11) {
+            case gsf.g var11:
+               gsf.g var57 = var11;
+
+               try {
+                  var58 = var57.a();
+               } catch (Throwable var31) {
+                  var49 = var31;
+                  boolean var70 = false;
+                  break;
+               }
+
+               String var40 = var58;
+               gsf.g var59 = var11;
+
+               try {
+                  var60 = var59.c();
+               } catch (Throwable var30) {
+                  var49 = var30;
+                  boolean var71 = false;
+                  break;
+               }
+
+               ali var41 = var60;
+               gsf.g var61 = var11;
+
+               try {
+                  var62 = var61.d();
+               } catch (Throwable var29) {
+                  var49 = var29;
+                  boolean var72 = false;
+                  break;
+               }
+
+               int var42 = var62;
+               gsf.g var63 = var11;
+
+               try {
+                  var64 = var63.e();
+               } catch (Throwable var28) {
+                  var49 = var28;
+                  boolean var73 = false;
+                  break;
+               }
+
+               int var43 = var64;
+               gsf.g var65 = var11;
+
+               try {
+                  var66 = var65.f();
+               } catch (Throwable var27) {
+                  var49 = var27;
+                  boolean var74 = false;
+                  break;
+               }
+
+               boolean var44 = var66;
+               hkl $$17x = $$0.b(var41.a((UnaryOperator<String>)($$0x -> "textures/effect/" + $$0x + ".png")));
+               $$17x.a(var44, false);
+               $$10.a(new gsg.c(var40, $$17x, var42, var43));
+               continue;
+            case gsf.f $$17:
+               gsf.f var10000 = $$17;
+
+               try {
+                  var50 = var10000.a();
+               } catch (Throwable var26) {
+                  var49 = var26;
+                  boolean var10001 = false;
+                  break;
+               }
+
+               String var22 = var50;
+               gsf.f var51 = $$17;
+
+               try {
+                  var52 = var51.c();
+               } catch (Throwable var25) {
+                  var49 = var25;
+                  boolean var67 = false;
+                  break;
+               }
+
+               ali var46 = var52;
+               gsf.f var53 = $$17;
+
+               try {
+                  var54 = var53.d();
+               } catch (Throwable var24) {
+                  var49 = var24;
+                  boolean var68 = false;
+                  break;
+               }
+
+               boolean var47 = var54;
+               gsf.f var55 = $$17;
+
+               try {
+                  var56 = var55.e();
+               } catch (Throwable var23) {
+                  var49 = var23;
+                  boolean var69 = false;
+                  break;
+               }
+
+               boolean var48 = var56;
+               $$10.a(new gsg.b(var22, var46, var47, var48));
+               continue;
             default:
-               throw new IllegalArgumentException("There are only 3 axes");
+               throw new MatchException(null, null);
          }
 
-         Quaternionf $$10 = new Quaternionf().rotationAxis($$1.c() * (float) (Math.PI / 180.0), $$2);
-         if ($$1.d()) {
-            if (Math.abs($$1.c()) == 22.5F) {
-               $$3.mul(d);
-            } else {
-               $$3.mul(e);
+         Throwable var38 = var49;
+         throw new MatchException(var38.toString(), var38);
+      }
+
+      return $$10;
+   }
+
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   public void a(fip $$0, int $$1, int $$2, gse.a $$3, @Nullable Consumer<flb> $$4) {
+      Matrix4f $$5 = new Matrix4f().setOrtho(0.0F, (float)$$1, 0.0F, (float)$$2, 0.1F, 1000.0F);
+      Map<ali, fkt<fjq>> $$6 = new HashMap<>(this.c.size() + this.d.size());
+
+      for (ali $$7 : this.d) {
+         $$6.put($$7, $$3.b($$7));
+      }
+
+      for (Entry<ali, gsf.d> $$8 : this.c.entrySet()) {
+         ali $$9 = $$8.getKey();
+         gsf.d var36;
+         Objects.requireNonNull(var36);
+         Object var12 = var36;
+
+         var36 = $$8.getValue();
+         fkr $$12 = switch (var12) {
+            case gsf.a var14 -> {
+               gsf.a var30 = var14;
+
+               int var27;
+               label56: {
+                  label76: {
+                     try {
+                        var32 = var30.a();
+                     } catch (Throwable var19) {
+                        var31 = var19;
+                        boolean var10001 = false;
+                        break label76;
+                     }
+
+                     var27 = var32;
+                     gsf.a var33 = var14;
+
+                     try {
+                        var34 = var33.b();
+                        break label56;
+                     } catch (Throwable var18) {
+                        var31 = var18;
+                        boolean var35 = false;
+                     }
+                  }
+
+                  Throwable var21 = var31;
+                  throw new MatchException(var21.toString(), var21);
+               }
+
+               int var28 = var34;
+               yield new fkr(var27, var28, true, 0);
+            }
+            case gsf.b var17 -> new fkr($$1, $$2, true, 0);
+            default -> throw new MatchException(null, null);
+         };
+         $$6.put($$9, $$0.a($$9.toString(), $$12));
+      }
+
+      for (gsg $$13 : this.b) {
+         $$13.a($$0, $$6, $$5, $$4);
+      }
+
+      for (ali $$14 : this.d) {
+         $$3.a($$14, $$6.get($$14));
+      }
+   }
+
+   @Deprecated
+   public void a(fjq $$0, fkq $$1, @Nullable Consumer<flb> $$2) {
+      fip $$3 = new fip();
+      gse.a $$4 = gse.a.b(a, $$3.a("main", $$0));
+      this.a($$3, $$0.c, $$0.d, $$4, $$2);
+      $$3.a($$1);
+   }
+
+   public interface a {
+      static gse.a b(final ali $$0, final fkt<fjq> $$1) {
+         return new gse.a() {
+            private fkt<fjq> c = $$1;
+
+            @Override
+            public void a(ali $$0x, fkt<fjq> $$1x) {
+               if ($$0.equals($$0)) {
+                  this.c = $$1;
+               } else {
+                  throw new IllegalArgumentException("No target with id " + $$0);
+               }
             }
 
-            $$3.add(1.0F, 1.0F, 1.0F);
+            @Nullable
+            @Override
+            public fkt<fjq> a(ali $$0x) {
+               return $$0.equals($$0) ? this.c : null;
+            }
+         };
+      }
+
+      void a(ali var1, fkt<fjq> var2);
+
+      @Nullable
+      fkt<fjq> a(ali var1);
+
+      default fkt<fjq> b(ali $$0) {
+         fkt<fjq> $$1 = this.a($$0);
+         if ($$1 == null) {
+            throw new IllegalArgumentException("Missing target with id " + $$0);
          } else {
-            $$3.set(1.0F, 1.0F, 1.0F);
+            return $$1;
          }
-
-         a($$0, new Vector3f($$1.a()), new Matrix4f().rotation($$10), $$3);
-      }
-   }
-
-   private static void a(Vector3f $$0, k $$1) {
-      if ($$1 != k.a()) {
-         a($$0, new Vector3f(0.5F, 0.5F, 0.5F), $$1.c(), new Vector3f(1.0F, 1.0F, 1.0F));
-      }
-   }
-
-   private static void a(Vector3f $$0, Vector3fc $$1, Matrix4fc $$2, Vector3fc $$3) {
-      Vector4f $$4 = $$2.transform(new Vector4f($$0.x() - $$1.x(), $$0.y() - $$1.y(), $$0.z() - $$1.z(), 1.0F));
-      $$4.mul(new Vector4f($$3, 1.0F));
-      $$0.set($$4.x() + $$1.x(), $$4.y() + $$1.y(), $$4.z() + $$1.z());
-   }
-
-   private static jb a(int[] $$0) {
-      Vector3f $$1 = d($$0, 0);
-      Vector3f $$2 = d($$0, 8);
-      Vector3f $$3 = d($$0, 16);
-      Vector3f $$4 = new Vector3f($$1).sub($$2);
-      Vector3f $$5 = new Vector3f($$3).sub($$2);
-      Vector3f $$6 = new Vector3f($$5).cross($$4).normalize();
-      if (!$$6.isFinite()) {
-         return jb.b;
-      } else {
-         jb $$7 = null;
-         float $$8 = 0.0F;
-
-         for (jb $$9 : jb.values()) {
-            float $$10 = $$6.dot($$9.s());
-            if ($$10 >= 0.0F && $$10 > $$8) {
-               $$8 = $$10;
-               $$7 = $$9;
-            }
-         }
-
-         return $$7 == null ? jb.b : $$7;
-      }
-   }
-
-   private static float a(int[] $$0, int $$1) {
-      return Float.intBitsToFloat($$0[$$1]);
-   }
-
-   private static float b(int[] $$0, int $$1) {
-      return Float.intBitsToFloat($$0[$$1 + 1]);
-   }
-
-   private static float c(int[] $$0, int $$1) {
-      return Float.intBitsToFloat($$0[$$1 + 2]);
-   }
-
-   private static Vector3f d(int[] $$0, int $$1) {
-      return new Vector3f(a($$0, $$1), b($$0, $$1), c($$0, $$1));
-   }
-
-   private static void a(int[] $$0, jb $$1) {
-      int[] $$2 = new int[$$0.length];
-      System.arraycopy($$0, 0, $$2, 0, $$0.length);
-      float[] $$3 = new float[jb.values().length];
-      $$3[gqe.a.f] = 999.0F;
-      $$3[gqe.a.e] = 999.0F;
-      $$3[gqe.a.d] = 999.0F;
-      $$3[gqe.a.c] = -999.0F;
-      $$3[gqe.a.b] = -999.0F;
-      $$3[gqe.a.a] = -999.0F;
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         int $$5 = 8 * $$4;
-         float $$6 = a($$2, $$5);
-         float $$7 = b($$2, $$5);
-         float $$8 = c($$2, $$5);
-         if ($$6 < $$3[gqe.a.f]) {
-            $$3[gqe.a.f] = $$6;
-         }
-
-         if ($$7 < $$3[gqe.a.e]) {
-            $$3[gqe.a.e] = $$7;
-         }
-
-         if ($$8 < $$3[gqe.a.d]) {
-            $$3[gqe.a.d] = $$8;
-         }
-
-         if ($$6 > $$3[gqe.a.c]) {
-            $$3[gqe.a.c] = $$6;
-         }
-
-         if ($$7 > $$3[gqe.a.b]) {
-            $$3[gqe.a.b] = $$7;
-         }
-
-         if ($$8 > $$3[gqe.a.a]) {
-            $$3[gqe.a.a] = $$8;
-         }
-      }
-
-      gqe $$9 = gqe.a($$1);
-
-      for (int $$10 = 0; $$10 < 4; $$10++) {
-         int $$11 = 8 * $$10;
-         gqe.b $$12 = $$9.a($$10);
-         float $$13 = $$3[$$12.a];
-         float $$14 = $$3[$$12.b];
-         float $$15 = $$3[$$12.c];
-         $$0[$$11] = Float.floatToRawIntBits($$13);
-         $$0[$$11 + 1] = Float.floatToRawIntBits($$14);
-         $$0[$$11 + 2] = Float.floatToRawIntBits($$15);
-
-         for (int $$16 = 0; $$16 < 4; $$16++) {
-            int $$17 = 8 * $$16;
-            float $$18 = a($$2, $$17);
-            float $$19 = b($$2, $$17);
-            float $$20 = c($$2, $$17);
-            if (azm.a($$13, $$18) && azm.a($$14, $$19) && azm.a($$15, $$20)) {
-               $$0[$$11 + 4] = $$2[$$17 + 4];
-               $$0[$$11 + 4 + 1] = $$2[$$17 + 4 + 1];
-            }
-         }
-      }
-   }
-
-   public static void a(int[] $$0, Consumer<Vector3f> $$1) {
-      for (int $$2 = 0; $$2 < 4; $$2++) {
-         $$1.accept(d($$0, 8 * $$2));
       }
    }
 }

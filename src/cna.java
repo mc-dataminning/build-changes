@@ -1,63 +1,59 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class cna<T extends cmu> {
-   private static cna<?>[] l = new cna[0];
-   public static final cna<cmq> a = a(cmq.class, "HoldingPattern");
-   public static final cna<cmy> b = a(cmy.class, "StrafePlayer");
-   public static final cna<cms> c = a(cms.class, "LandingApproach");
-   public static final cna<cmt> d = a(cmt.class, "Landing");
-   public static final cna<cmz> e = a(cmz.class, "Takeoff");
-   public static final cna<cmw> f = a(cmw.class, "SittingFlaming");
-   public static final cna<cmx> g = a(cmx.class, "SittingScanning");
-   public static final cna<cmv> h = a(cmv.class, "SittingAttacking");
-   public static final cna<cmo> i = a(cmo.class, "ChargingPlayer");
-   public static final cna<cmp> j = a(cmp.class, "Dying");
-   public static final cna<cmr> k = a(cmr.class, "Hover");
-   private final Class<? extends cmu> m;
-   private final int n;
-   private final String o;
+public class cna extends cmx {
+   @Nullable
+   private ffq b;
+   private int c;
 
-   private cna(int $$0, Class<? extends cmu> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
-   }
-
-   public cmu a(cmk $$0) {
-      try {
-         Constructor<? extends cmu> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends cmu> a() throws NoSuchMethodException {
-      return this.m.getConstructor(cmk.class);
-   }
-
-   public int b() {
-      return this.n;
+   public cna(cmv $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   public void b() {
+      if (this.c++ % 10 == 0) {
+         float $$0 = (this.a.dY().i() - 0.5F) * 8.0F;
+         float $$1 = (this.a.dY().i() - 0.5F) * 4.0F;
+         float $$2 = (this.a.dY().i() - 0.5F) * 8.0F;
+         this.a.dV().a(ly.v, this.a.dA() + (double)$$0, this.a.dC() + 2.0 + (double)$$1, this.a.dG() + (double)$$2, 0.0, 0.0, 0.0);
+      }
    }
 
-   public static cna<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   public void a(ars $$0) {
+      this.c++;
+      if (this.b == null) {
+         iv $$1 = $$0.a(ehd.a.e, eki.a(this.a.j()));
+         this.b = ffq.c($$1);
+      }
+
+      double $$2 = this.b.c(this.a.dA(), this.a.dC(), this.a.dG());
+      if (!($$2 < 100.0) && !($$2 > 22500.0) && !this.a.P && !this.a.Q) {
+         this.a.d(1.0F);
+      } else {
+         this.a.d(0.0F);
+      }
    }
 
-   public static int c() {
-      return l.length;
+   @Override
+   public void c() {
+      this.b = null;
+      this.c = 0;
    }
 
-   private static <T extends cmu> cna<T> a(Class<T> $$0, String $$1) {
-      cna<T> $$2 = new cna<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   @Override
+   public float e() {
+      return 3.0F;
+   }
+
+   @Nullable
+   @Override
+   public ffq f() {
+      return this.b;
+   }
+
+   @Override
+   public cnl<cna> h() {
+      return cnl.j;
    }
 }

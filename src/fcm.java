@@ -1,54 +1,46 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
-import java.util.function.Consumer;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Set;
 
-public class fcm {
-   private static final BiMap<alg, bay> y = HashBiMap.create();
-   public static final Codec<bay> a = alg.a
-      .comapFlatMap(
-         $$0 -> Optional.ofNullable((bay)y.get($$0))
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
-         y.inverse()::get
-      );
-   public static final bay b = a("empty", $$0 -> {
-   });
-   public static final bay c = a("chest", $$0 -> $$0.a(fcn.f).b(fcn.a));
-   public static final bay d = a("command", $$0 -> $$0.a(fcn.f).b(fcn.a));
-   public static final bay e = a("selector", $$0 -> $$0.a(fcn.f).a(fcn.a));
-   public static final bay f = a("fishing", $$0 -> $$0.a(fcn.f).a(fcn.i).b(fcn.a));
-   public static final bay g = a("entity", $$0 -> $$0.a(fcn.a).a(fcn.f).a(fcn.c).b(fcn.d).b(fcn.e).b(fcn.b));
-   public static final bay h = a("equipment", $$0 -> $$0.a(fcn.f).a(fcn.a));
-   public static final bay i = a("archaeology", $$0 -> $$0.a(fcn.f).a(fcn.a).a(fcn.i));
-   public static final bay j = a("gift", $$0 -> $$0.a(fcn.f).a(fcn.a));
-   public static final bay k = a("barter", $$0 -> $$0.a(fcn.a));
-   public static final bay l = a("vault", $$0 -> $$0.a(fcn.f).b(fcn.a).b(fcn.i));
-   public static final bay m = a("advancement_reward", $$0 -> $$0.a(fcn.a).a(fcn.f));
-   public static final bay n = a("advancement_entity", $$0 -> $$0.a(fcn.a).a(fcn.f));
-   public static final bay o = a("advancement_location", $$0 -> $$0.a(fcn.a).a(fcn.f).a(fcn.i).a(fcn.g));
-   public static final bay p = a("block_use", $$0 -> $$0.a(fcn.a).a(fcn.f).a(fcn.g));
-   public static final bay q = a("generic", $$0 -> $$0.a(fcn.a).a(fcn.b).a(fcn.c).a(fcn.d).a(fcn.e).a(fcn.f).a(fcn.g).a(fcn.h).a(fcn.i).a(fcn.j));
-   public static final bay r = a("block", $$0 -> $$0.a(fcn.g).a(fcn.f).a(fcn.i).b(fcn.a).b(fcn.h).b(fcn.j));
-   public static final bay s = a("shearing", $$0 -> $$0.a(fcn.f).a(fcn.a).a(fcn.i));
-   public static final bay t = a("enchanted_damage", $$0 -> $$0.a(fcn.a).a(fcn.k).a(fcn.f).a(fcn.c).b(fcn.e).b(fcn.d));
-   public static final bay u = a("enchanted_item", $$0 -> $$0.a(fcn.i).a(fcn.k));
-   public static final bay v = a("enchanted_location", $$0 -> $$0.a(fcn.a).a(fcn.k).a(fcn.f).a(fcn.l));
-   public static final bay w = a("enchanted_entity", $$0 -> $$0.a(fcn.a).a(fcn.k).a(fcn.f));
-   public static final bay x = a("hit_block", $$0 -> $$0.a(fcn.a).a(fcn.k).a(fcn.f).a(fcn.g));
+public class fcm extends fbu {
+   public static final MapCodec<fcm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(fen.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
+            .apply($$0, fcm::new)
+   );
+   private final fem b;
+   private final boolean c;
 
-   private static bay a(String $$0, Consumer<bay.a> $$1) {
-      bay.a $$2 = new bay.a();
-      $$1.accept($$2);
-      bay $$3 = $$2.a();
-      alg $$4 = alg.b($$0);
-      bay $$5 = (bay)y.put($$4, $$3);
-      if ($$5 != null) {
-         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
-      } else {
-         return $$3;
-      }
+   private fcm(List<fdq> $$0, fem $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   @Override
+   public fbw<fcm> b() {
+      return fbx.e;
+   }
+
+   @Override
+   public Set<baz<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public czy a(czy $$0, fah $$1) {
+      int $$2 = this.c ? $$0.M() : 0;
+      $$0.e($$2 + this.b.a($$1));
+      return $$0;
+   }
+
+   public static fbu.a<?> a(fem $$0) {
+      return a($$1 -> new fcm($$1, $$0, false));
+   }
+
+   public static fbu.a<?> a(fem $$0, boolean $$1) {
+      return a($$2 -> new fcm($$2, $$0, $$1));
    }
 }

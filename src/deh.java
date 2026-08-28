@@ -1,2 +1,2 @@
-public class deh implements ddw {
+public interface deh {
 }

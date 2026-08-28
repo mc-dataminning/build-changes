@@ -1,96 +1,44 @@
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public class eln extends ejy<enb> {
-   public eln(Codec<enb> $$0) {
+public class eln extends ekk<emx> {
+   private static final int a = 7;
+
+   eln(Codec<emx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eka<enb> $$0) {
-      dkl $$1 = $$0.b();
-      enb $$2 = $$0.f();
-      azv $$3 = $$0.d();
+   public boolean a(ekm<emx> $$0) {
+      dkw $$1 = $$0.b();
+      azx $$2 = $$0.d();
+      emx $$3 = $$0.f();
       iv $$4 = $$0.e();
-      Predicate<eat> $$5 = $$1x -> $$1x.a($$2.b);
-      int $$6 = $$2.j.a($$3) + 1;
-      int $$7 = $$2.j.a($$3) + 1;
-      Set<iv> $$8 = this.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      this.a($$0, $$1, $$2, $$3, $$8, $$6, $$7);
-      return !$$8.isEmpty();
-   }
+      int $$5 = $$2.a($$3.c + 1);
+      iv.a $$6 = new iv.a();
 
-   protected Set<iv> a(dkl $$0, enb $$1, azv $$2, iv $$3, Predicate<eat> $$4, int $$5, int $$6) {
-      iv.a $$7 = $$3.k();
-      iv.a $$8 = $$7.k();
-      jb $$9 = $$1.e.a();
-      jb $$10 = $$9.g();
-      Set<iv> $$11 = new HashSet<>();
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         ebe $$8 = $$1.a_($$6);
 
-      for (int $$12 = -$$5; $$12 <= $$5; $$12++) {
-         boolean $$13 = $$12 == -$$5 || $$12 == $$5;
-
-         for (int $$14 = -$$6; $$14 <= $$6; $$14++) {
-            boolean $$15 = $$14 == -$$6 || $$14 == $$6;
-            boolean $$16 = $$13 || $$15;
-            boolean $$17 = $$13 && $$15;
-            boolean $$18 = $$16 && !$$17;
-            if (!$$17 && (!$$18 || $$1.k != 0.0F && !($$2.i() > $$1.k))) {
-               $$7.a($$3, $$12, 0, $$14);
-
-               for (int $$19 = 0; $$0.a($$7, eas.a::l) && $$19 < $$1.h; $$19++) {
-                  $$7.c($$9);
-               }
-
-               for (int var25 = 0; $$0.a($$7, $$0x -> !$$0x.l()) && var25 < $$1.h; var25++) {
-                  $$7.c($$10);
-               }
-
-               $$8.a($$7, $$1.e.a());
-               eat $$20 = $$0.a_($$8);
-               if ($$0.v($$7) && $$20.c($$0, $$8, $$1.e.a().g())) {
-                  int $$21 = $$1.f.a($$2) + ($$1.g > 0.0F && $$2.i() < $$1.g ? 1 : 0);
-                  iv $$22 = $$8.j();
-                  boolean $$23 = this.a($$0, $$1, $$4, $$2, $$8, $$21);
-                  if ($$23) {
-                     $$11.add($$22);
-                  }
-               }
+         for (emx.a $$9 : $$3.b) {
+            if (elf.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
             }
-         }
-      }
-
-      return $$11;
-   }
-
-   protected void a(eka<enb> $$0, dkl $$1, enb $$2, azv $$3, Set<iv> $$4, int $$5, int $$6) {
-      for (iv $$7 : $$4) {
-         if ($$2.i > 0.0F && $$3.i() < $$2.i) {
-            this.a($$1, $$2, $$0.c(), $$3, $$7);
-         }
-      }
-   }
-
-   protected boolean a(dkl $$0, enb $$1, ecr $$2, azv $$3, iv $$4) {
-      return $$1.d.a().a($$0, $$2, $$3, $$4.a($$1.e.a().g()));
-   }
-
-   protected boolean a(dkl $$0, enb $$1, Predicate<eat> $$2, azv $$3, iv.a $$4, int $$5) {
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         eat $$7 = $$1.c.a($$3, $$4);
-         eat $$8 = $$0.a_($$4);
-         if (!$$7.a($$8.b())) {
-            if (!$$2.test($$8)) {
-               return $$6 != 0;
-            }
-
-            $$0.a($$4, $$7, 2);
-            $$4.c($$1.e.a());
          }
       }
 
       return true;
+   }
+
+   private void a(iv.a $$0, azx $$1, iv $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(azx $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

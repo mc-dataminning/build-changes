@@ -1,118 +1,63 @@
-import com.google.common.annotations.VisibleForTesting;
-
-public class cow extends cnv {
-   private static final int b = 300;
-   private static final akj<Boolean> c = akn.a(cow.class, akl.k);
-   public static final String a = "StrayConversionTime";
-   private int d;
-   private int bG;
-
-   public cow(bwr<? extends cow> $$0, djm $$1) {
+public class cow extends cps {
+   public cow(bxc<? extends cow> $$0, djx $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   protected void a(akn.a $$0) {
-      super.a($$0);
-      $$0.a(c, false);
-   }
-
-   public boolean gt() {
-      return this.ar().a(c);
-   }
-
-   public void w(boolean $$0) {
-      this.al.a(c, $$0);
+   public static boolean a(bxc<cow> $$0, dko $$1, bxb $$2, iv $$3, azx $$4) {
+      return b($$0, $$1, $$2, $$3, $$4) && (bxb.a($$2) || $$1.h($$3));
    }
 
    @Override
-   public boolean x() {
-      return this.gt();
-   }
-
-   @Override
-   public void h() {
-      if (!this.dU().C && this.bI() && !this.gi()) {
-         if (this.av) {
-            if (this.gt()) {
-               this.bG--;
-               if (this.bG < 0) {
-                  this.gu();
-               }
-            } else {
-               this.d++;
-               if (this.d >= 140) {
-                  this.b(300);
-               }
-            }
-         } else {
-            this.d = -1;
-            this.w(false);
-         }
-      }
-
-      super.h();
-   }
-
-   @Override
-   public void b(tz $$0) {
-      super.b($$0);
-      $$0.a("StrayConversionTime", this.gt() ? this.bG : -1);
-   }
-
-   @Override
-   public void a(tz $$0) {
-      super.a($$0);
-      if ($$0.b("StrayConversionTime", 99) && $$0.f("StrayConversionTime") > -1) {
-         this.b($$0.f("StrayConversionTime"));
-      }
-   }
-
-   @VisibleForTesting
-   public void b(int $$0) {
-      this.bG = $$0;
-      this.w(true);
-   }
-
-   protected void gu() {
-      this.a(bwr.bs, bwc.a(this, true, true), $$0 -> {
-         if (!this.aZ()) {
-            this.dU().a(null, 1048, this.du(), 0);
-         }
-      });
-   }
-
-   @Override
-   public boolean dI() {
+   protected boolean ah_() {
       return false;
    }
 
    @Override
-   protected awm u() {
-      return awn.xR;
+   protected awo u() {
+      return awp.nB;
    }
 
    @Override
-   protected awm e(bux $$0) {
-      return awn.yc;
+   protected awo e(bvi $$0) {
+      return awp.nE;
    }
 
    @Override
-   protected awm l_() {
-      return awn.xT;
+   protected awo l_() {
+      return awp.nD;
    }
 
    @Override
-   awm m() {
-      return awn.ye;
+   protected awo n() {
+      return awp.nF;
    }
 
    @Override
-   protected void a(arq $$0, bux $$1, boolean $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$1.d() instanceof cnz $$4 && $$4.x()) {
-         $$4.gt();
-         this.a($$0, czr.vv);
+   public boolean c(ars $$0, bwt $$1) {
+      boolean $$2 = super.c($$0, $$1);
+      if ($$2 && this.fb().f() && $$1 instanceof bxu) {
+         float $$3 = this.dV().d_(this.dv()).b();
+         ((bxu)$$1).b(new bvx(bvz.q, 140 * (int)$$3), this);
       }
+
+      return $$2;
+   }
+
+   @Override
+   protected boolean x() {
+      return true;
+   }
+
+   @Override
+   protected void ag_() {
+      this.b(bxc.bP);
+      if (!this.ba()) {
+         this.dV().a(null, 1041, this.dv(), 0);
+      }
+   }
+
+   @Override
+   protected czy t() {
+      return czy.k;
    }
 }

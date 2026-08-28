@@ -1,8 +1,7 @@
-public interface aiz extends agq {
-   @Override
-   default vs b() {
-      return vs.a;
-   }
+public class aiz {
+   public static final zj<aiy> a = a("intention");
 
-   void a(aiw var1);
+   private static <T extends zh<ajb>> zj<T> a(String $$0) {
+      return new zj<>(zi.a, ali.b($$0));
+   }
 }

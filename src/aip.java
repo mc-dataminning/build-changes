@@ -1,33 +1,53 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class aip implements zh<agr> {
+   public static final yy<vw, aip> a = zh.a(aip::a, aip::new);
+   private static final int b = 384;
+   private final iv c;
+   private final String[] d;
+   private final boolean e;
 
-public class aip implements zf<agp> {
-   public static final yw<vu, aip> a = zf.a(aip::a, aip::new);
-   private final UUID b;
-
-   public aip(UUID $$0) {
-      this.b = $$0;
+   public aip(iv $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = new String[]{$$2, $$3, $$4, $$5};
    }
 
-   private aip(vu $$0) {
-      this.b = $$0.n();
+   private aip(vw $$0) {
+      this.c = $$0.e();
+      this.e = $$0.readBoolean();
+      this.d = new String[4];
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.d[$$1] = $$0.d(384);
+      }
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.b);
+   private void a(vw $$0) {
+      $$0.a(this.c);
+      $$0.a(this.e);
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         $$0.a(this.d[$$1]);
+      }
    }
 
    @Override
-   public zh<aip> a() {
-      return agn.cm;
+   public zj<aip> a() {
+      return agp.ck;
    }
 
-   public void a(agp $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bwi a(arq $$0) {
-      return $$0.b(this.b);
+   public iv b() {
+      return this.c;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public String[] f() {
+      return this.d;
    }
 }

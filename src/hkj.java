@@ -1,17 +1,20 @@
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class hkj extends avi<int[]> {
-   private static final alg a = alg.b("textures/colormap/dry_foliage.png");
+public class hkj {
+   @Nullable
+   public ali a;
+   public final List<hkj.a> b = new ArrayList<>();
 
-   protected int[] a(avd $$0, bqq $$1) {
-      try {
-         return hkn.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load dry foliage color texture", var4);
-      }
-   }
-
-   protected void a(int[] $$0, avd $$1, bqq $$2) {
-      dja.a($$0);
+   public static class a {
+      @Nullable
+      public hla a;
+      public byte b;
+      public byte c;
+      public byte d;
+      public boolean e;
+      @Nullable
+      public xa f;
    }
 }

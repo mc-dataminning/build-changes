@@ -1,20 +1,33 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxc extends dwj {
-   public static final MapCodec<dxc> b = b(dxc::new);
-
-   @Override
-   public MapCodec<dxc> a() {
-      return b;
-   }
-
-   protected dxc(eas.d $$0) {
-      super(dud.b.d, $$0);
-   }
+public class dxc extends dwx implements dwy {
+   public static final MapCodec<dxc> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dwy.a.e.fieldOf("weathering_state").forGetter(dxc::q), t()).apply($$0, dxc::new)
+   );
+   private final dwy.a f;
 
    @Override
-   public void a(djm $$0, iv $$1, eat $$2, @Nullable bxj $$3, czn $$4) {
-      dxb.a($$0, $$1);
+   protected MapCodec<dxc> a() {
+      return e;
+   }
+
+   protected dxc(dwy.a $$0, ebd.d $$1) {
+      super($$1);
+      this.f = $$0;
+   }
+
+   @Override
+   protected void b(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected boolean f(ebe $$0) {
+      return dwy.c($$0.b()).isPresent();
+   }
+
+   public dwy.a q() {
+      return this.f;
    }
 }

@@ -1,108 +1,194 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ela extends ejy<ems> {
+public class ela extends ekk<ems> {
    public ela(Codec<ems> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eka<ems> $$0) {
-      dkl $$1 = $$0.b();
+   public boolean a(ekm<ems> $$0) {
+      dkw $$1 = $$0.b();
       iv $$2 = $$0.e();
-      if (!$$1.a_($$2).l()) {
+      ems $$3 = $$0.f();
+      azx $$4 = $$0.d();
+      if (!eke.a($$1, $$2)) {
          return false;
       } else {
-         azv $$3 = $$0.d();
-         iv $$4 = $$0.e();
-         ems $$5 = $$0.f();
-         iv.a $$6 = $$4.k();
-         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
-            a($$1, $$5, $$3, $$4, $$6);
-         }
+         Optional<egt> $$5 = egt.a($$1, $$2, $$3.b, eke::c, eke::a);
+         if (!$$5.isEmpty() && $$5.get() instanceof egt.b) {
+            egt.b $$6 = (egt.b)$$5.get();
+            if ($$6.g() < 4) {
+               return false;
+            } else {
+               int $$7 = (int)((float)$$6.g() * $$3.e);
+               int $$8 = azo.a($$7, $$3.c.a(), $$3.c.b());
+               int $$9 = azo.b($$4, $$3.c.a(), $$8);
+               ela.a $$10 = a($$2.h($$6.e() - 1), false, $$4, $$9, $$3.f, $$3.d);
+               ela.a $$11 = a($$2.h($$6.f() + 1), true, $$4, $$9, $$3.g, $$3.d);
+               ela.b $$12;
+               if ($$10.a($$3) && $$11.a($$3)) {
+                  $$12 = new ela.b($$2.v(), $$4, $$3.h);
+               } else {
+                  $$12 = ela.b.a();
+               }
 
-         return true;
-      }
-   }
+               boolean $$14 = $$10.a($$1, $$12);
+               boolean $$15 = $$11.a($$1, $$12);
+               if ($$14) {
+                  $$10.a($$1, $$4, $$12);
+               }
 
-   private static boolean a(dkl $$0, ems $$1, iv $$2) {
-      iv.a $$3 = $$2.k();
+               if ($$15) {
+                  $$11.a($$1, $$4, $$12);
+               }
 
-      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
-         $$3.c(jb.b);
-         eat $$5 = $$0.a_($$3);
-         if (!a($$5, $$4, $$1.n)) {
+               return true;
+            }
+         } else {
             return false;
          }
       }
-
-      return true;
    }
 
-   private static boolean a(eat $$0, int $$1, int $$2) {
-      if ($$0.l()) {
-         return true;
-      } else {
-         int $$3 = $$1 + 1;
-         return $$3 <= $$2 && $$0.y().a(axh.a);
+   private static ela.a a(iv $$0, boolean $$1, azx $$2, int $$3, btu $$4, btu $$5) {
+      return new ela.a($$0, $$1, $$3, (double)$$4.a($$2), (double)$$5.a($$2));
+   }
+
+   private void a(dkw $$0, iv $$1, egt.b $$2, ela.b $$3) {
+      $$0.a($$3.a($$1.h($$2.e() - 1)), dne.cK.m(), 2);
+      $$0.a($$3.a($$1.h($$2.f() + 1)), dne.cr.m(), 2);
+
+      for (iv.a $$4 = $$1.h($$2.f() + 2).k(); $$4.v() < $$2.e() - 1; $$4.c(jb.b)) {
+         iv $$5 = $$3.a($$4);
+         if (eke.a($$0, $$5) || $$0.a_($$5).a(dne.tc)) {
+            $$0.a($$5, dne.hn.m(), 2);
+         }
       }
    }
 
-   private static boolean a(dkl $$0, ecr $$1, ems $$2, azv $$3, iv.a $$4, iv $$5) {
-      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
-         $$4.c(jb.b);
-         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
-            iv $$7 = $$4.e();
-            if ($$0.b_($$7).a(axh.b) || !$$0.a_($$7).e()) {
-               return false;
+   static final class a {
+      private iv a;
+      private final boolean b;
+      private int c;
+      private final double d;
+      private final double e;
+
+      a(iv $$0, boolean $$1, int $$2, double $$3, double $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      private int a() {
+         return this.a(0.0F);
+      }
+
+      private int b() {
+         return this.b ? this.a.v() : this.a.v() - this.a();
+      }
+
+      private int c() {
+         return !this.b ? this.a.v() : this.a.v() + this.a();
+      }
+
+      boolean a(dkw $$0, ela.b $$1) {
+         while (this.c > 1) {
+            iv.a $$2 = this.a.k();
+            int $$3 = Math.min(10, this.a());
+
+            for (int $$4 = 0; $$4 < $$3; $$4++) {
+               if ($$0.a_($$2).a(dne.K)) {
+                  return false;
+               }
+
+               if (eke.a($$0, $$1.a($$2), this.c)) {
+                  this.a = $$2;
+                  return true;
+               }
+
+               $$2.c(this.b ? jb.a : jb.b);
             }
 
-            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
-               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
-               return true;
+            this.c /= 2;
+         }
+
+         return false;
+      }
+
+      private int a(float $$0) {
+         return (int)eke.a((double)$$0, (double)this.c, this.e, this.d);
+      }
+
+      void a(dkw $$0, azx $$1, ela.b $$2) {
+         for (int $$3 = -this.c; $$3 <= this.c; $$3++) {
+            for (int $$4 = -this.c; $$4 <= this.c; $$4++) {
+               float $$5 = azo.c((float)($$3 * $$3 + $$4 * $$4));
+               if (!($$5 > (float)this.c)) {
+                  int $$6 = this.a($$5);
+                  if ($$6 > 0) {
+                     if ((double)$$1.i() < 0.2) {
+                        $$6 = (int)((float)$$6 * azo.b($$1, 0.8F, 1.0F));
+                     }
+
+                     iv.a $$7 = this.a.b($$3, 0, $$4).k();
+                     boolean $$8 = false;
+                     int $$9 = this.b ? $$0.a(ehd.a.a, $$7.u(), $$7.w()) : Integer.MAX_VALUE;
+
+                     for (int $$10 = 0; $$10 < $$6 && $$7.v() < $$9; $$10++) {
+                        iv $$11 = $$2.a($$7);
+                        if (eke.b($$0, $$11)) {
+                           $$8 = true;
+                           dnc $$12 = dne.tc;
+                           $$0.a($$11, $$12.m(), 2);
+                        } else if ($$8 && $$0.a_($$11).a(axe.bh)) {
+                           break;
+                        }
+
+                        $$7.c(this.b ? jb.b : jb.a);
+                     }
+                  }
+               }
             }
          }
       }
 
-      return false;
-   }
-
-   private static void a(iv $$0, int $$1, dkl $$2, ems $$3, azv $$4) {
-      int $$5 = $$0.u();
-      int $$6 = $$0.w();
-      iv.a $$7 = $$0.k();
-
-      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
-         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
+      boolean a(ems $$0) {
+         return this.c >= $$0.i && this.d >= (double)$$0.j;
       }
    }
 
-   private static void a(dkl $$0, ems $$1, azv $$2, int $$3, int $$4, iv.a $$5) {
-      int $$6 = $$1.d;
-      Predicate<eat> $$7 = $$1x -> $$1x.a($$1.e);
+   static final class b {
+      private final int a;
+      @Nullable
+      private final ffq b;
 
-      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
-         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
-         if ($$7.test($$0.a_($$5))) {
-            $$0.a($$5, $$1.f.a($$2, $$5), 2);
-         }
-
-         $$5.p($$3);
-         $$5.r($$4);
+      b(int $$0, azx $$1, btu $$2) {
+         this.a = $$0;
+         float $$3 = $$2.a($$1);
+         float $$4 = azo.b($$1, 0.0F, (float) Math.PI);
+         this.b = new ffq((double)(azo.b($$4) * $$3), 0.0, (double)(azo.a($$4) * $$3));
       }
-   }
 
-   private static void a(dkl $$0, ems $$1, azv $$2, iv $$3, iv.a $$4) {
-      int $$5 = $$1.i;
-      int $$6 = $$1.j;
+      private b() {
+         this.a = 0;
+         this.b = null;
+      }
 
-      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
-         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
-         if ($$0.v($$4)) {
-            eat $$8 = $$1.k.a($$2, $$4);
-            if ($$8.a($$0, $$4) && $$0.a_($$4.d()).c($$0, $$4, jb.a)) {
-               $$0.a($$4, $$8, 2);
-            }
+      static ela.b a() {
+         return new ela.b();
+      }
+
+      iv a(iv $$0) {
+         if (this.b == null) {
+            return $$0;
+         } else {
+            int $$1 = this.a - $$0.v();
+            ffq $$2 = this.b.c((double)$$1);
+            return $$0.b(azo.a($$2.d), 0, azo.a($$2.f));
          }
       }
    }

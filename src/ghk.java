@@ -1,20 +1,45 @@
-public class ghk extends ggp<hei> {
-   public ghk(gjt $$0) {
-      super($$0);
+public class ghk extends giw {
+   private static final String a = "bottom";
+   private static final String b = "lid";
+   private static final String c = "lock";
+   private final gle d;
+   private final gle e;
+
+   public ghk(gle $$0) {
+      super($$0, gsl::d);
+      this.d = $$0.b("lid");
+      this.e = $$0.b("lock");
    }
 
-   public static gjz a() {
-      gkb $$0 = new gkb();
-      gkd $$1 = $$0.a();
-      int $$2 = 20;
-      int $$3 = 8;
-      int $$4 = 16;
-      int $$5 = 4;
-      $$1.a("bottom", gjy.c().a(0, 10).a(-10.0F, -8.0F, -1.0F, 20.0F, 16.0F, 2.0F), gjv.a(0.0F, 4.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("front", gjy.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), gjv.a(-9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$1.a("back", gjy.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), gjv.a(9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left", gjy.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), gjv.a(0.0F, 4.0F, -7.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$1.a("right", gjy.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), gjv.a(0.0F, 4.0F, 7.0F));
-      return gjz.a($$0, 64, 32);
+   public static glk a() {
+      glm $$0 = new glm();
+      glo $$1 = $$0.a();
+      $$1.a("bottom", glj.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), glg.a);
+      $$1.a("lid", glj.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), glg.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", glj.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), glg.a(0.0F, 9.0F, 1.0F));
+      return glk.a($$0, 64, 64);
+   }
+
+   public static glk b() {
+      glm $$0 = new glm();
+      glo $$1 = $$0.a();
+      $$1.a("bottom", glj.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), glg.a);
+      $$1.a("lid", glj.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), glg.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", glj.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), glg.a(0.0F, 9.0F, 1.0F));
+      return glk.a($$0, 64, 64);
+   }
+
+   public static glk c() {
+      glm $$0 = new glm();
+      glo $$1 = $$0.a();
+      $$1.a("bottom", glj.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), glg.a);
+      $$1.a("lid", glj.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), glg.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", glj.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), glg.a(0.0F, 9.0F, 1.0F));
+      return glk.a($$0, 64, 64);
+   }
+
+   public void a(float $$0) {
+      this.d.e = -($$0 * (float) (Math.PI / 2));
+      this.e.e = this.d.e;
    }
 }

@@ -17,7 +17,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.joml.Vector3fc;
 
-public enum jb implements bak {
+public enum jb implements bam {
    a(0, 1, -1, "down", jb.b.b, jb.a.b, new ka(0, -1, 0)),
    b(1, 0, -1, "up", jb.b.a, jb.a.b, new ka(0, 1, 0)),
    c(2, 3, 2, "north", jb.b.b, jb.a.c, new ka(0, 0, -1)),
@@ -25,10 +25,10 @@ public enum jb implements bak {
    e(4, 5, 1, "west", jb.b.b, jb.a.a, new ka(-1, 0, 0)),
    f(5, 4, 3, "east", jb.b.a, jb.a.a, new ka(1, 0, 0));
 
-   public static final bak.a<jb> g = bak.a(jb::values);
+   public static final bam.a<jb> g = bam.a(jb::values);
    public static final Codec<jb> h = g.validate(jb::b);
-   public static final IntFunction<jb> i = ayc.a(jb::d, values(), ayc.a.b);
-   public static final yw<ByteBuf, jb> j = yu.a(i, jb::d);
+   public static final IntFunction<jb> i = aye.a(jb::d, values(), aye.a.b);
+   public static final yy<ByteBuf, jb> j = yw.a(i, jb::d);
    @Deprecated
    public static final Codec<jb> k = Codec.BYTE.xmap(jb::a, $$0 -> (byte)$$0.d());
    @Deprecated
@@ -40,7 +40,7 @@ public enum jb implements bak {
    private final jb.a q;
    private final jb.b r;
    private final ka s;
-   private final ffc t;
+   private final ffq t;
    private final Vector3fc u;
    private static final jb[] v = values();
    private static final jb[] w = Arrays.stream(v).sorted(Comparator.comparingInt($$0 -> $$0.m)).toArray(jb[]::new);
@@ -54,17 +54,17 @@ public enum jb implements bak {
       this.q = $$5;
       this.r = $$4;
       this.s = $$6;
-      this.t = ffc.a($$6);
+      this.t = ffq.a($$6);
       this.u = new Vector3f((float)$$6.u(), (float)$$6.v(), (float)$$6.w());
    }
 
-   public static jb[] a(bwi $$0) {
+   public static jb[] a(bwt $$0) {
       float $$1 = $$0.i(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.j(1.0F) * (float) (Math.PI / 180.0);
-      float $$3 = azm.a($$1);
-      float $$4 = azm.b($$1);
-      float $$5 = azm.a($$2);
-      float $$6 = azm.b($$2);
+      float $$3 = azo.a($$1);
+      float $$4 = azo.b($$1);
+      float $$5 = azo.a($$2);
+      float $$6 = azo.b($$2);
       boolean $$7 = $$5 > 0.0F;
       boolean $$8 = $$3 < 0.0F;
       boolean $$9 = $$6 > 0.0F;
@@ -98,7 +98,7 @@ public enum jb implements bak {
       return a($$2.x(), $$2.y(), $$2.z());
    }
 
-   public static Collection<jb> a(azv $$0) {
+   public static Collection<jb> a(azx $$0) {
       return ag.b(values(), $$0);
    }
 
@@ -139,7 +139,7 @@ public enum jb implements bak {
       return this.r;
    }
 
-   public static jb a(bwi $$0, jb.a $$1) {
+   public static jb a(bwt $$0, jb.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.j(1.0F)) ? f : e;
          case b -> $$0.i(1.0F) < 0.0F ? b : a;
@@ -257,15 +257,15 @@ public enum jb implements bak {
    }
 
    public static jb a(int $$0) {
-      return w[azm.a($$0 % w.length)];
+      return w[azo.a($$0 % w.length)];
    }
 
    public static jb b(int $$0) {
-      return x[azm.a($$0 % x.length)];
+      return x[azo.a($$0 % x.length)];
    }
 
    public static jb a(double $$0) {
-      return b(azm.a($$0 / 90.0 + 0.5) & 3);
+      return b(azo.a($$0 / 90.0 + 0.5) & 3);
    }
 
    public static jb a(jb.a $$0, jb.b $$1) {
@@ -280,7 +280,7 @@ public enum jb implements bak {
       return (float)((this.o & 3) * 90);
    }
 
-   public static jb b(azv $$0) {
+   public static jb b(azx $$0) {
       return ag.a(v, $$0);
    }
 
@@ -303,7 +303,7 @@ public enum jb implements bak {
       return $$3;
    }
 
-   public static jb a(ffc $$0) {
+   public static jb a(ffq $$0) {
       return a($$0.d, $$0.e, $$0.f);
    }
 
@@ -358,7 +358,7 @@ public enum jb implements bak {
       return this.s;
    }
 
-   public ffc r() {
+   public ffq r() {
       return this.t;
    }
 
@@ -368,12 +368,12 @@ public enum jb implements bak {
 
    public boolean a(float $$0) {
       float $$1 = $$0 * (float) (Math.PI / 180.0);
-      float $$2 = -azm.a($$1);
-      float $$3 = azm.b($$1);
+      float $$2 = -azo.a($$1);
+      float $$3 = azo.b($$1);
       return (float)this.s.u() * $$2 + (float)this.s.w() * $$3 > 0.0F;
    }
 
-   public static enum a implements bak, Predicate<jb> {
+   public static enum a implements bam, Predicate<jb> {
       a("x") {
          @Override
          public int a(int $$0, int $$1, int $$2) {
@@ -454,7 +454,7 @@ public enum jb implements bak {
       };
 
       public static final jb.a[] d = values();
-      public static final bak.a<jb.a> e = bak.a(jb.a::values);
+      public static final bam.a<jb.a> e = bam.a(jb.a::values);
       private final String f;
 
       a(final String $$0) {
@@ -491,7 +491,7 @@ public enum jb implements bak {
          return this.f;
       }
 
-      public static jb.a a(azv $$0) {
+      public static jb.a a(azx $$0) {
          return ag.a(d, $$0);
       }
 
@@ -560,11 +560,11 @@ public enum jb implements bak {
          this.d = $$1;
       }
 
-      public jb a(azv $$0) {
+      public jb a(azx $$0) {
          return ag.a(this.c, $$0);
       }
 
-      public jb.a b(azv $$0) {
+      public jb.a b(azx $$0) {
          return ag.a(this.d, $$0);
       }
 
@@ -581,7 +581,7 @@ public enum jb implements bak {
          return Arrays.stream(this.c);
       }
 
-      public List<jb> c(azv $$0) {
+      public List<jb> c(azx $$0) {
          return ag.b(this.c, $$0);
       }
 

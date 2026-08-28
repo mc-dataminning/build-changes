@@ -1,10 +1,9 @@
-public class axl {
-   public static final axr<cnn> a = a("placeable");
+public interface axl {
+   axt<czr> a = a("regular_goat_horns");
+   axt<czr> b = a("screaming_goat_horns");
+   axt<czr> c = a("goat_horns");
 
-   private axl() {
-   }
-
-   private static axr<cnn> a(String $$0) {
-      return axr.a(mh.aZ, alg.b($$0));
+   private static axt<czr> a(String $$0) {
+      return axt.a(mh.aU, ali.b($$0));
    }
 }

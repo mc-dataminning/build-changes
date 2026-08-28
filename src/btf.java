@@ -1,61 +1,172 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Queues;
+import com.mojang.jtracy.TracyClient;
+import com.mojang.jtracy.Zone;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.locks.LockSupport;
+import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
+import javax.annotation.CheckReturnValue;
+import org.slf4j.Logger;
 
-public class btf extends btj {
-   public static final MapCodec<btf> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.d),
-                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.e),
-                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, btf::new)
-      )
-      .validate($$0 -> $$0.f < $$0.e ? DataResult.error(() -> "Max must be larger than min: [" + $$0.e + ", " + $$0.f + "]") : DataResult.success($$0));
-   private final float b;
-   private final float d;
-   private final float e;
-   private final float f;
+public abstract class btf<R extends Runnable> implements bso, btm<R>, Executor {
+   public static final long k = 100000L;
+   private final String b;
+   private static final Logger c = LogUtils.getLogger();
+   private final Queue<R> d = Queues.newConcurrentLinkedQueue();
+   private int e;
 
-   public static btf a(float $$0, float $$1, float $$2, float $$3) {
-      return new btf($$0, $$1, $$2, $$3);
-   }
-
-   private btf(float $$0, float $$1, float $$2, float $$3) {
+   protected btf(String $$0) {
       this.b = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+      bsm.a.a(this);
+   }
+
+   protected abstract boolean e(R var1);
+
+   public boolean bx() {
+      return Thread.currentThread() == this.ay();
+   }
+
+   protected abstract Thread ay();
+
+   protected boolean ax() {
+      return !this.bx();
+   }
+
+   public int by() {
+      return this.d.size();
    }
 
    @Override
-   public float a(azv $$0) {
-      return a($$0, this.b, this.d, this.e, this.f);
+   public String z_() {
+      return this.b;
    }
 
-   public static float a(azv $$0, float $$1, float $$2, float $$3, float $$4) {
-      return azm.a(azm.c($$0, $$1, $$2), $$3, $$4);
+   public <V> CompletableFuture<V> a(Supplier<V> $$0) {
+      return this.ax() ? CompletableFuture.supplyAsync($$0, this) : CompletableFuture.completedFuture($$0.get());
+   }
+
+   private CompletableFuture<Void> b(Runnable $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         $$0.run();
+         return null;
+      }, this);
+   }
+
+   @CheckReturnValue
+   public CompletableFuture<Void> g(Runnable $$0) {
+      if (this.ax()) {
+         return this.b($$0);
+      } else {
+         $$0.run();
+         return CompletableFuture.completedFuture(null);
+      }
+   }
+
+   public void h(Runnable $$0) {
+      if (!this.bx()) {
+         this.b($$0).join();
+      } else {
+         $$0.run();
+      }
    }
 
    @Override
-   public float a() {
-      return this.e;
+   public void a_(R $$0) {
+      this.d.add($$0);
+      LockSupport.unpark(this.ay());
    }
 
    @Override
-   public float b() {
-      return this.f;
+   public void execute(Runnable $$0) {
+      if (this.ax()) {
+         this.a_(this.f($$0));
+      } else {
+         $$0.run();
+      }
+   }
+
+   public void c(Runnable $$0) {
+      this.execute($$0);
+   }
+
+   protected void bz() {
+      this.d.clear();
+   }
+
+   protected void bA() {
+      while (this.B()) {
+      }
+   }
+
+   public boolean B() {
+      R $$0 = this.d.peek();
+      if ($$0 == null) {
+         return false;
+      } else if (this.e == 0 && !this.e($$0)) {
+         return false;
+      } else {
+         this.d(this.d.remove());
+         return true;
+      }
+   }
+
+   public void b(BooleanSupplier $$0) {
+      this.e++;
+
+      try {
+         while (!$$0.getAsBoolean()) {
+            if (!this.B()) {
+               this.A();
+            }
+         }
+      } finally {
+         this.e--;
+      }
+   }
+
+   protected void A() {
+      Thread.yield();
+      LockSupport.parkNanos("waiting for tasks", 100000L);
+   }
+
+   protected void d(R $$0) {
+      try {
+         Zone $$1 = TracyClient.beginZone("Task", ac.aU);
+
+         try {
+            $$0.run();
+         } catch (Throwable var6) {
+            if ($$1 != null) {
+               try {
+                  $$1.close();
+               } catch (Throwable var5) {
+                  var6.addSuppressed(var5);
+               }
+            }
+
+            throw var6;
+         }
+
+         if ($$1 != null) {
+            $$1.close();
+         }
+      } catch (Exception var7) {
+         c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.z_(), var7);
+         throw var7;
+      }
    }
 
    @Override
-   public btk<?> c() {
-      return btk.c;
+   public List<bsl> bw() {
+      return ImmutableList.of(bsl.a(this.b + "-pending-tasks", bsk.b, this::by));
    }
 
-   @Override
-   public String toString() {
-      return "normal(" + this.b + ", " + this.d + ") in [" + this.e + "-" + this.f + "]";
+   public static boolean a(Throwable $$0) {
+      return $$0 instanceof aa $$1 ? a($$1.getCause()) : $$0 instanceof OutOfMemoryError || $$0 instanceof StackOverflowError;
    }
 }

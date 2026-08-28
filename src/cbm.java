@@ -1,43 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class cbm {
-   public static <E extends bxl> bzb<E> a(cbm.b<E> $$0) {
-      return a(($$0x, $$1) -> true, $$0);
-   }
+   private static final int a = 300;
 
-   public static <E extends bxl> bzb<E> a(cbm.a<E> $$0, cbm.b<E> $$1) {
-      return ccn.a(
-         (Function<ccn.b<E>, ? extends App<ccn.c<E>, ccq<E>>>)($$2 -> $$2.group($$2.c(cgl.p), $$2.a(cgl.F)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
-                  if (!$$0.test($$4, (E)$$5)) {
-                     return false;
-                  } else {
-                     Optional<? extends bxj> $$7 = $$1.get($$4, (E)$$5);
-                     if ($$7.isEmpty()) {
-                        return false;
-                     } else {
-                        bxj $$8 = $$7.get();
-                        if (!$$5.c($$8)) {
-                           return false;
-                        } else {
-                           $$2x.a($$8);
-                           $$3.b();
-                           return true;
+   public static bzm<bxu> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return ccy.a(
+         (Function<ccy.b<bxu>, ? extends App<ccy.c<bxu>, cdb<bxu>>>)($$3x -> $$3x.group($$3x.b(cgw.D), $$3x.b(cgw.E))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        iv $$11 = $$3x.<je>b($$4).b();
+                        if ($$11.a($$7.dv(), (double)$$1)) {
+                           $$3.increment();
                         }
+
+                        return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.ec().a($$6.af(), $$6.ae());
+                        $$3.setValue(0);
+                        return true;
                      }
-                  }
-               }))
+                  }))
       );
-   }
-
-   @FunctionalInterface
-   public interface a<E> {
-      boolean test(arq var1, E var2);
-   }
-
-   @FunctionalInterface
-   public interface b<E> {
-      Optional<? extends bxj> get(arq var1, E var2);
    }
 }

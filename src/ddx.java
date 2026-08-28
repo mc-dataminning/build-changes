@@ -1,70 +1,91 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class ddx extends ddu {
-   private static final dea d = dea.a(czr.rE);
-   private static final dea e = dea.a(czr.qi);
-   private static final dea f = dea.a(czr.vF);
-
-   public ddx(ddr $$0) {
+public class ddx extends def {
+   public ddx(dec $$0) {
       super($$0);
    }
 
-   public boolean a(dds $$0, djm $$1) {
-      if ($$0.e() < 2) {
+   public boolean a(ded $$0, djx $$1) {
+      if ($$0.e() != 2) {
          return false;
       } else {
-         boolean $$2 = false;
-         int $$3 = 0;
+         cyw $$2 = null;
+         boolean $$3 = false;
+         boolean $$4 = false;
 
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            czn $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if (d.a($$5)) {
-                  if ($$2) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               } else if (e.a($$5)) {
-                  if (++$$3 > 3) {
-                     return false;
-                  }
-               } else if (!f.a($$5)) {
+         for (int $$5 = 0; $$5 < $$0.a(); $$5++) {
+            czy $$6 = $$0.a($$5);
+            if (!$$6.f()) {
+               czu $$7 = $$6.h();
+               if (!($$7 instanceof cye)) {
                   return false;
+               }
+
+               cye $$8 = (cye)$$7;
+               if ($$2 == null) {
+                  $$2 = $$8.a();
+               } else if ($$2 != $$8.a()) {
+                  return false;
+               }
+
+               int $$10 = $$6.a(kk.am, dxs.a).b().size();
+               if ($$10 > 6) {
+                  return false;
+               }
+
+               if ($$10 > 0) {
+                  if ($$4) {
+                     return false;
+                  }
+
+                  $$4 = true;
+               } else {
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
                }
             }
          }
 
-         return $$2 && $$3 >= 1;
+         return $$4 && $$3;
       }
    }
 
-   public czn a(dds $$0, jh.a $$1) {
-      List<dcb> $$2 = new ArrayList<>();
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         czn $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (e.a($$5)) {
-               $$3++;
-            } else if (f.a($$5)) {
-               dcb $$6 = $$5.a(kk.ai);
-               if ($$6 != null) {
-                  $$2.add($$6);
-               }
+   public czy a(ded $$0, jh.a $$1) {
+      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+         czy $$3 = $$0.a($$2);
+         if (!$$3.f()) {
+            int $$4 = $$3.a(kk.am, dxs.a).b().size();
+            if ($$4 > 0 && $$4 <= 6) {
+               return $$3.c(1);
             }
          }
       }
 
-      czn $$7 = new czn(czr.vE, 3);
-      $$7.b(kk.aj, new dcc($$3, $$2));
-      return $$7;
+      return czy.k;
    }
 
    @Override
-   public deo<ddx> a() {
-      return deo.g;
+   public jo<czy> a(ded $$0) {
+      jo<czy> $$1 = jo.a($$0.a(), czy.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         czy $$3 = $$0.a($$2);
+         if (!$$3.f()) {
+            czy $$4 = $$3.h().i();
+            if (!$$4.f()) {
+               $$1.set($$2, $$4);
+            } else if (!$$3.a(kk.am, dxs.a).b().isEmpty()) {
+               $$1.set($$2, $$3.c(1));
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public dez<ddx> a() {
+      return dez.k;
    }
 }

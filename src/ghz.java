@@ -1,30 +1,47 @@
-public class ghz extends ggp<hdf> {
-   private final gjt a;
-   private final gjt b;
+public class ghz extends gia<hep> {
+   private static final int a = 4;
+   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
+   private static final int[][] c = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
+   private final gle[] d = new gle[4];
 
-   public ghz(gjt $$0) {
+   public ghz(gle $$0) {
       super($$0);
-      this.a = $$0.b("left_fin");
-      this.b = $$0.b("right_fin");
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.d[$$1] = $$0.b(a($$1));
+      }
    }
 
-   public static gjz a() {
-      gkb $$0 = new gkb();
-      gkd $$1 = $$0.a();
-      int $$2 = 23;
-      $$1.a("body", gjy.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), gjv.a(0.0F, 23.0F, 0.0F));
-      $$1.a("right_eye", gjy.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), gjv.a(0.0F, 20.0F, 0.0F));
-      $$1.a("left_eye", gjy.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), gjv.a(0.0F, 20.0F, 0.0F));
-      $$1.a("back_fin", gjy.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), gjv.a(0.0F, 22.0F, 1.5F));
-      $$1.a("right_fin", gjy.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), gjv.a(-1.5F, 22.0F, -1.5F));
-      $$1.a("left_fin", gjy.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), gjv.a(1.5F, 22.0F, -1.5F));
-      return gjz.a($$0, 32, 32);
+   private static String a(int $$0) {
+      return "segment" + $$0;
+   }
+
+   public static glk a() {
+      glm $$0 = new glm();
+      glo $$1 = $$0.a();
+      float $$2 = -3.5F;
+
+      for (int $$3 = 0; $$3 < 4; $$3++) {
+         $$1.a(
+            a($$3),
+            glj.c().a(c[$$3][0], c[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
+            glg.a(0.0F, (float)(24 - b[$$3][1]), $$2)
+         );
+         if ($$3 < 3) {
+            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
+         }
+      }
+
+      return glk.a($$0, 64, 32);
    }
 
    @Override
-   public void a(hdf $$0) {
+   public void a(hep $$0) {
       super.a($$0);
-      this.b.g = -0.2F + 0.4F * azm.a($$0.u * 0.2F);
-      this.a.g = 0.2F - 0.4F * azm.a($$0.u * 0.2F);
+
+      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
+         this.d[$$1].f = azo.b($$0.u * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$1 - 2));
+         this.d[$$1].b = azo.a($$0.u * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$1 - 2);
+      }
    }
 }

@@ -1,36 +1,28 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record fdv(float c) implements fdy {
-   public static final MapCodec<fdv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(fdv::c)).apply($$0, fdv::new));
-   public static final Codec<fdv> b = Codec.FLOAT.xmap(fdv::new, fdv::c);
+public record fdv(fem b) implements fdq {
+   public static final MapCodec<fdv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(fen.a.fieldOf("chance").forGetter(fdv::c)).apply($$0, fdv::new));
 
    @Override
-   public fdx b() {
-      return fdz.b;
+   public fdr b() {
+      return fds.d;
    }
 
-   @Override
-   public float b(ezt $$0) {
-      return this.c;
+   public boolean a(fah $$0) {
+      float $$1 = this.b.b($$0);
+      return $$0.b().i() < $$1;
    }
 
-   public static fdv a(float $$0) {
-      return new fdv($$0);
+   public static fdq.a a(float $$0) {
+      return () -> new fdv(fej.a($$0));
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((fdv)$$0).c, this.c) == 0 : false;
-      }
+   public static fdq.a a(fem $$0) {
+      return () -> new fdv($$0);
    }
 
-   @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   public fem c() {
+      return this.b;
    }
 }

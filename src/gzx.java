@@ -1,36 +1,39 @@
-public class gzx extends gye<cqp, hfq, gjd> {
-   private static final alg a = alg.b("textures/entity/warden/warden.png");
-   private static final alg j = alg.b("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final alg k = alg.b("textures/entity/warden/warden_heart.png");
-   private static final alg l = alg.b("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final alg m = alg.b("textures/entity/warden/warden_pulsating_spots_2.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gzx(gwy.a $$0) {
-      super($$0, new gjd($$0.a(gjs.dP)), 0.9F);
-      this.a(new hbf<>(this, j, ($$0x, $$1) -> 1.0F, gjd::d, grc::k, false));
-      this.a(new hbf<>(this, l, ($$0x, $$1) -> Math.max(0.0F, azm.b($$1 * 0.045F) * 0.25F), gjd::e, grc::k, false));
-      this.a(new hbf<>(this, m, ($$0x, $$1) -> Math.max(0.0F, azm.b($$1 * 0.045F + (float) Math.PI) * 0.25F), gjd::e, grc::k, false));
-      this.a(new hbf<>(this, a, ($$0x, $$1) -> $$0x.a, gjd::b, grc::k, false));
-      this.a(new hbf<>(this, k, ($$0x, $$1) -> $$0x.b, gjd::c, grc::k, false));
+public class gzx extends gzo<ckf, hfz, gjb> {
+   private final Map<ckg.a, ggm<gjb>> a;
+
+   public gzx(gyi.a $$0) {
+      super($$0, new gjb($$0.a(gld.cd)), 0.7F);
+      this.a = a($$0);
+      this.a(new hcz<>(this, $$0.h(), hng.d.g, $$0x -> $$0x.a, new gjb($$0.a(gld.cq)), new gjb($$0.a(gld.cp))));
    }
 
-   public alg a(hfq $$0) {
-      return a;
+   private static Map<ckg.a, ggm<gjb>> a(gyi.a $$0) {
+      return Maps.newEnumMap(
+         Map.of(ckg.a.a, new ggm<>(new gjb($$0.a(gld.cd)), new gjb($$0.a(gld.co))), ckg.a.b, new ggm<>(new ghp($$0.a(gld.ag)), new ghp($$0.a(gld.ah))))
+      );
    }
 
-   public hfq b() {
-      return new hfq();
+   public void a(hfz $$0, flo $$1, gsa $$2, int $$3) {
+      if ($$0.b != null) {
+         this.g = this.a.get($$0.b.b().a()).a($$0.aj);
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
-   public void a(cqp $$0, hfq $$1, float $$2) {
+   public ali a(hfz $$0) {
+      return $$0.b == null ? hkp.c() : $$0.b.b().b().b();
+   }
+
+   public hfz b() {
+      return new hfz();
+   }
+
+   public void a(ckf $$0, hfz $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = $$0.K($$2);
-      $$1.c.a($$0.a);
-      $$1.d.a($$0.b);
-      $$1.e.a($$0.c);
-      $$1.f.a($$0.d);
-      $$1.g.a($$0.bG);
-      $$1.h.a($$0.bH);
+      $$1.a = $$0.a(bxd.h).v();
+      $$1.b = $$0.t().a();
    }
 }

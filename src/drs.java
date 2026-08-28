@@ -1,116 +1,139 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.OptionalInt;
 
-public class drs extends dtn implements duc {
-   public static final MapCodec<drs> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eah.a.fieldOf("tree").forGetter($$0x -> $$0x.g), t()).apply($$0, drs::new)
-   );
-   public static final ebt b = ebj.aw;
-   public static final int c = 4;
-   private static final int[] h = new int[]{13, 10, 7, 3, 0};
-   private static final ffw[] i = dmr.a(4, $$0 -> dmr.b(2.0, (double)h[$$0], 16.0));
-   private static final ebk D = ebj.I;
-   public static final ebk d = ebj.m;
+public abstract class drs extends dnc implements dun {
+   public static final int a = 7;
+   public static final ece b = ebu.aF;
+   public static final ebv c = ebu.z;
+   public static final ebv d = ebu.I;
+   protected final float e;
+   private static final int f = 1;
 
    @Override
-   public MapCodec<drs> a() {
-      return a;
-   }
+   public abstract MapCodec<? extends drs> a();
 
-   public drs(eah $$0, eas.d $$1) {
-      super($$0, $$1);
-      this.l(this.C.b().b(f, Integer.valueOf(0)).b(b, Integer.valueOf(0)).b(D, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
+   public drs(float $$0, ebd.d $$1) {
+      super($$1);
+      this.e = $$0;
+      this.l(this.C.b().b(b, Integer.valueOf(7)).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(f).a(b).a(D).a(d);
+   protected fgk b_(ebe $$0, djb $$1, iv $$2) {
+      return fgh.a();
    }
 
    @Override
-   protected boolean b(eat $$0, diq $$1, iv $$2) {
-      return super.b($$0, $$1, $$2) || $$0.a(dmt.ei);
-   }
-
-   @Nullable
-   @Override
-   public eat a(ddg $$0) {
-      exa $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == exb.c;
-      return super.a($$0).b(D, Boolean.valueOf($$2)).b(b, Integer.valueOf(4));
+   protected boolean f(ebe $$0) {
+      return $$0.c(b) == 7 && !$$0.c(c);
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      int $$4 = $$0.c(d) ? $$0.c(b) : 4;
-      return i[$$4].a($$0.a($$2));
+   protected void b(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      if (this.o($$0)) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   protected boolean o(ebe $$0) {
+      return !$$0.c(c) && $$0.c(b) == 7;
    }
 
    @Override
-   protected boolean a(eat $$0, djp $$1, iv $$2) {
-      return o($$0) ? $$1.a_($$2.d()).a(dmt.aS) : super.a($$0, $$1, $$2);
+   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      $$1.a($$2, a($$0, $$1, $$2), 3);
    }
 
    @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      if ($$0.c(D)) {
-         $$2.a($$3, exb.c, exb.c.a($$1));
+   protected int i_(ebe $$0) {
+      return 1;
+   }
+
+   @Override
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      if ($$0.c(d)) {
+         $$2.a($$3, exp.c, exp.c.a($$1));
       }
 
-      return $$4 == jb.b && !$$0.a($$1, $$3) ? dmt.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      int $$8 = r($$6) + 1;
+      if ($$8 != 1 || $$0.c(b) != $$8) {
+         $$2.a($$3, this, 1);
+      }
+
+      return $$0;
    }
 
-   @Override
-   protected exa b_(eat $$0) {
-      return $$0.c(D) ? exb.c.a(false) : super.b_($$0);
-   }
+   private static ebe a(ebe $$0, djy $$1, iv $$2) {
+      int $$3 = 7;
+      iv.a $$4 = new iv.a();
 
-   @Override
-   protected void b(eat $$0, arq $$1, iv $$2, azv $$3) {
-      if (!o($$0)) {
-         if ($$3.a(7) == 0) {
-            this.a($$1, $$2, $$0, $$3);
-         }
-      } else {
-         if (!q($$0)) {
-            $$1.a($$2, $$0.a(b), 2);
+      for (jb $$5 : jb.values()) {
+         $$4.a($$2, $$5);
+         $$3 = Math.min($$3, r($$1.a_($$4)) + 1);
+         if ($$3 == 1) {
+            break;
          }
       }
+
+      return $$0.b(b, Integer.valueOf($$3));
    }
 
-   @Override
-   public boolean a(djp $$0, iv $$1, eat $$2) {
-      return !o($$2) || !q($$2);
+   private static int r(ebe $$0) {
+      return q($$0).orElse(7);
    }
 
-   @Override
-   public boolean a(djm $$0, azv $$1, iv $$2, eat $$3) {
-      return o($$3) ? !q($$3) : super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iv $$2, eat $$3) {
-      if (o($$3) && !q($$3)) {
-         $$0.a($$2, $$3.a(b), 2);
+   public static OptionalInt q(ebe $$0) {
+      if ($$0.a(axe.u)) {
+         return OptionalInt.of(0);
       } else {
-         super.a($$0, $$1, $$2, $$3);
+         return $$0.b(b) ? OptionalInt.of($$0.c(b)) : OptionalInt.empty();
       }
    }
 
-   private static boolean o(eat $$0) {
-      return $$0.c(d);
+   @Override
+   protected exo b_(ebe $$0) {
+      return $$0.c(d) ? exp.c.a(false) : super.b_($$0);
    }
 
-   private static boolean q(eat $$0) {
-      return $$0.c(b) == 4;
+   @Override
+   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      iv $$4 = $$2.e();
+      ebe $$5 = $$1.a_($$4);
+      a($$1, $$2, $$3, $$5, $$4);
+      this.b($$1, $$2, $$3, $$5, $$4);
    }
 
-   public static eat c() {
-      return b(0);
+   private static void a(djx $$0, iv $$1, azx $$2, ebe $$3, iv $$4) {
+      if ($$0.r($$1.d())) {
+         if ($$2.a(15) == 1) {
+            if (!$$3.t() || !$$3.c($$0, $$4, jb.b)) {
+               azs.a($$0, $$1, $$2, ly.l);
+            }
+         }
+      }
    }
 
-   public static eat b(int $$0) {
-      return dmt.H.m().b(d, Boolean.valueOf(true)).b(b, Integer.valueOf($$0));
+   private void b(djx $$0, iv $$1, azx $$2, ebe $$3, iv $$4) {
+      if (!($$2.i() >= this.e)) {
+         if (!a($$3.g($$0, $$4), jb.b)) {
+            this.a($$0, $$1, $$2);
+         }
+      }
+   }
+
+   protected abstract void a(djx var1, iv var2, azx var3);
+
+   @Override
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(b, c, d);
+   }
+
+   @Override
+   public ebe a(ddr $$0) {
+      exo $$1 = $$0.q().b_($$0.a());
+      ebe $$2 = this.m().b(c, Boolean.valueOf(true)).b(d, Boolean.valueOf($$1.a() == exp.c));
+      return a($$2, $$0.q(), $$0.a());
    }
 }

@@ -1,61 +1,36 @@
-public class ahw implements zf<agp> {
-   public static final yw<vu, ahw> a = zf.a(ahw::a, ahw::new);
-   private final int b;
-   private final ahw.a c;
-   private final int d;
+public class ahw implements zh<agr> {
+   public static final yy<vw, ahw> a = zh.a(ahw::a, ahw::new);
+   private static final int b = 2;
+   private final boolean c;
 
-   public ahw(bwi $$0, ahw.a $$1) {
-      this($$0, $$1, 0);
+   public ahw(crt $$0) {
+      this.c = $$0.b;
    }
 
-   public ahw(bwi $$0, ahw.a $$1, int $$2) {
-      this.b = $$0.ao();
-      this.c = $$1;
-      this.d = $$2;
+   private ahw(vw $$0) {
+      byte $$1 = $$0.readByte();
+      this.c = ($$1 & 2) != 0;
    }
 
-   private ahw(vu $$0) {
-      this.b = $$0.l();
-      this.c = $$0.b(ahw.a.class);
-      this.d = $$0.l();
-   }
+   private void a(vw $$0) {
+      byte $$1 = 0;
+      if (this.c) {
+         $$1 = (byte)($$1 | 2);
+      }
 
-   private void a(vu $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.c(this.d);
+      $$0.l($$1);
    }
 
    @Override
-   public zh<ahw> a() {
-      return agn.bT;
+   public zj<ahw> a() {
+      return agp.bR;
    }
 
-   public void a(agp $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public ahw.a e() {
+   public boolean b() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h,
-      i;
    }
 }

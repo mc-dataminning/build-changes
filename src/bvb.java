@@ -1,19 +1,9 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public enum bvb implements bak {
-   a("default"),
-   b("fall_variants"),
-   c("intentional_game_design");
+public interface bvb extends buk {
+   int[] a(jb var1);
 
-   public static final Codec<bvb> d = bak.a(bvb::values);
-   private final String e;
+   boolean a(int var1, czy var2, @Nullable jb var3);
 
-   private bvb(final String $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
-   }
+   boolean b(int var1, czy var2, jb var3);
 }

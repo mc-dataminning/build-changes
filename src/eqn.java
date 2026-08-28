@@ -1,31 +1,23 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class eqn extends equ {
+public class eqn extends eqi {
    public static final MapCodec<eqn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(egs.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, eqn::new)
+      $$0 -> $$0.group(btb.b(eqi.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, eqn::new)
    );
-   private final egs.a c;
+   private final btb<eqi> b;
 
-   private eqn(egs.a $$0) {
-      this.c = $$0;
-   }
-
-   public static eqn a(egs.a $$0) {
-      return new eqn($$0);
+   public eqn(btb<eqi> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public Stream<iv> a_(eqs $$0, azv $$1, iv $$2) {
-      int $$3 = $$2.u();
-      int $$4 = $$2.w();
-      int $$5 = $$0.a(this.c, $$3, $$4);
-      return $$5 > $$0.c() ? Stream.of(new iv($$3, $$5, $$4)) : Stream.of();
+   public int a(azx $$0, eia $$1) {
+      return this.b.b($$0).a($$0, $$1);
    }
 
    @Override
-   public eqv<?> b() {
-      return eqv.k;
+   public eqj<?> a() {
+      return eqj.f;
    }
 }

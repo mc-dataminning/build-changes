@@ -1,71 +1,29 @@
-import javax.annotation.Nullable;
+public enum fyp {
+   a,
+   b;
 
-public class fyp extends fys implements azu {
-   @Nullable
-   private wy a;
-   @Nullable
-   private wy b;
-   private int c;
-   private boolean d;
-   private final boolean s;
-
-   public fyp(boolean $$0) {
-      super(fpk.a);
-      this.s = $$0;
+   public fyp a() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
+      };
    }
 
-   @Override
-   public boolean aD_() {
-      return false;
+   public fyq b() {
+      return switch (this) {
+         case a -> fyq.d;
+         case b -> fyq.b;
+      };
    }
 
-   @Override
-   protected boolean aN_() {
-      return false;
+   public fyq c() {
+      return switch (this) {
+         case a -> fyq.c;
+         case b -> fyq.a;
+      };
    }
 
-   @Override
-   public void a(wy $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public void b(wy $$0) {
-      this.a = $$0;
-      this.c(wy.c("menu.working"));
-   }
-
-   @Override
-   public void c(wy $$0) {
-      this.b = $$0;
-      this.a(0);
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public void a() {
-      this.d = true;
-   }
-
-   @Override
-   public void a(fsm $$0, int $$1, int $$2, float $$3) {
-      if (this.d) {
-         if (this.s) {
-            this.m.a(null);
-         }
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         if (this.a != null) {
-            $$0.a(this.p, this.a, this.n / 2, 70, 16777215);
-         }
-
-         if (this.b != null && this.c != 0) {
-            $$0.a(this.p, wy.i().b(this.b).f(" " + this.c + "%"), this.n / 2, 90, 16777215);
-         }
-      }
+   public fyq a(boolean $$0) {
+      return $$0 ? this.b() : this.c();
    }
 }

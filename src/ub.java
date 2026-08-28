@@ -2,16 +2,16 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class ub implements uw {
+public final class ub implements uy {
    private static final int c = 8;
-   public static final uy<ub> a = new uy<ub>() {
+   public static final va<ub> a = new va<ub>() {
       public ub a(DataInput $$0, ui $$1) {
          $$1.b(8L);
          return ub.b;
       }
 
       @Override
-      public ut.b a(DataInput $$0, ut $$1, ui $$2) {
+      public uv.b a(DataInput $$0, uv $$1, ui $$2) {
          $$2.b(8L);
          return $$1.a();
       }
@@ -32,11 +32,6 @@ public class ub implements uw {
       @Override
       public String b() {
          return "TAG_End";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
       }
    };
    public static final ub b = new ub();
@@ -59,13 +54,15 @@ public class ub implements uw {
    }
 
    @Override
-   public uy<ub> c() {
+   public va<ub> c() {
       return a;
    }
 
    @Override
    public String toString() {
-      return this.p_();
+      ux $$0 = new ux();
+      $$0.a(this);
+      return $$0.a();
    }
 
    public ub e() {
@@ -73,12 +70,12 @@ public class ub implements uw {
    }
 
    @Override
-   public void a(va $$0) {
+   public void a(vc $$0) {
       $$0.a(this);
    }
 
    @Override
-   public ut.b a(ut $$0) {
+   public uv.b a(uv $$0) {
       return $$0.a();
    }
 }

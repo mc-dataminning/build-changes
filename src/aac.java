@@ -1,29 +1,16 @@
-public class aac implements zf<zy> {
-   public static final yw<vu, aac> a = zf.a(aac::a, aac::new);
-   private final int b;
+import com.google.common.collect.Lists;
 
-   public aac(int $$0) {
-      this.b = $$0;
-   }
-
-   private aac(vu $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(vu $$0) {
-      $$0.q(this.b);
-   }
+public record aac(aak b) implements zh<aaa> {
+   private static final int c = 32767;
+   public static final yy<vw, aac> a = aak.<vw>a($$0 -> aal.a($$0, 32767), ag.a(Lists.newArrayList(new aak.c[]{new aak.c<>(aai.b, aai.a)}), $$0 -> {
+   })).a(aac::new, aac::b);
 
    @Override
-   public zh<aac> a() {
-      return zx.o;
+   public zj<aac> a() {
+      return zz.m;
    }
 
-   public void a(zy $$0) {
+   public void a(aaa $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

@@ -1,43 +1,23 @@
-public class gyr extends gye<cjy, het, ggp<hdf>> {
-   private static final alg a = alg.b("textures/entity/fish/pufferfish.png");
-   private final ggp<hdf> j;
-   private final ggp<hdf> k;
-   private final ggp<hdf> l = this.c();
-
-   public gyr(gwy.a $$0) {
-      super($$0, new ghx($$0.a(gjs.cE)), 0.2F);
-      this.k = new ghy($$0.a(gjs.cF));
-      this.j = new ghz($$0.a(gjs.cG));
+public class gyr extends gzo<clh, hez, gif> {
+   public gyr(gyi.a $$0) {
+      super($$0, new gif($$0.a(gld.aZ)), 0.3F);
    }
 
-   public alg a(het $$0) {
-      return a;
+   public ali a(hez $$0) {
+      return $$0.f;
    }
 
-   public het b() {
-      return new het();
+   public hez b() {
+      return new hez();
    }
 
-   protected float b(het $$0) {
-      return 0.1F + 0.1F * (float)$$0.a;
-   }
-
-   public void a(het $$0, fkd $$1, gqr $$2, int $$3) {
-      this.g = switch ($$0.a) {
-         case 0 -> this.j;
-         case 1 -> this.k;
-         default -> this.l;
-      };
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public void a(cjy $$0, het $$1, float $$2) {
+   public void a(clh $$0, hez $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.x();
-   }
-
-   protected void a(het $$0, fkd $$1, float $$2, float $$3) {
-      $$1.a(0.0F, azm.b($$0.u * 0.05F) * 0.08F, 0.0F);
-      super.a($$0, $$1, $$2, $$3);
+      $$1.a = $$0.bi();
+      $$1.b.a($$0.bK);
+      $$1.c.a($$0.bM);
+      $$1.d.a($$0.bN);
+      $$1.e.a($$0.bO);
+      $$1.f = $$0.x().a().b().b();
    }
 }

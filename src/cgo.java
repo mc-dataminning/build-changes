@@ -1,35 +1,40 @@
-public class cgo {
-   private final cao a;
-   private final float b;
-   private final int c;
+import java.util.EnumSet;
 
-   public cgo(iv $$0, float $$1, int $$2) {
-      this(new bzd($$0), $$1, $$2);
-   }
+public class cgo extends cgq {
+   private final byq a;
+   private bxu b;
+   private int c;
 
-   public cgo(ffc $$0, float $$1, int $$2) {
-      this(new bzd(iv.a((jp)$$0)), $$1, $$2);
-   }
-
-   public cgo(bwi $$0, float $$1, int $$2) {
-      this(new bzl($$0, false), $$1, $$2);
-   }
-
-   public cgo(cao $$0, float $$1, int $$2) {
+   public cgo(byq $$0) {
+      super($$0, false);
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+      this.a(EnumSet.of(ceq.a.d));
    }
 
-   public cao a() {
-      return this.a;
+   @Override
+   public boolean b() {
+      if (this.a.q() && !this.a.gu()) {
+         bxu $$0 = this.a.e();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.eu();
+            int $$1 = $$0.ev();
+            return $$1 != this.c && this.a(this.b, cij.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
    }
 
-   public float b() {
-      return this.b;
-   }
+   @Override
+   public void d() {
+      this.e.g(this.b);
+      bxu $$0 = this.a.e();
+      if ($$0 != null) {
+         this.c = $$0.ev();
+      }
 
-   public int c() {
-      return this.c;
+      super.d();
    }
 }

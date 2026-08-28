@@ -1,20 +1,42 @@
-public record aby(int b) implements zf<abu> {
-   public static final yw<vu, aby> a = zf.a(aby::a, aby::new);
+public class aby implements zh<abw> {
+   public static final yy<vw, aby> a = zh.a(aby::a, aby::new);
+   public static final int b = 0;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   public static final int f = 5;
+   private final int g;
+   private final int h;
 
-   private aby(vu $$0) {
-      this($$0.l());
+   public aby(bwt $$0, int $$1) {
+      this.g = $$0.ao();
+      this.h = $$1;
    }
 
-   private void a(vu $$0) {
-      $$0.c(this.b);
+   private aby(vw $$0) {
+      this.g = $$0.l();
+      this.h = $$0.readUnsignedByte();
+   }
+
+   private void a(vw $$0) {
+      $$0.c(this.g);
+      $$0.l(this.h);
    }
 
    @Override
-   public zh<aby> a() {
-      return agn.f;
+   public zj<aby> a() {
+      return agp.d;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public int e() {
+      return this.h;
    }
 }

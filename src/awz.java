@@ -1,8 +1,98 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class awz {
+   public static final awy<dnc> a = a("mined", mg.e);
+   public static final awy<czu> b = a("crafted", mg.g);
+   public static final awy<czu> c = a("used", mg.g);
+   public static final awy<czu> d = a("broken", mg.g);
+   public static final awy<czu> e = a("picked_up", mg.g);
+   public static final awy<czu> f = a("dropped", mg.g);
+   public static final awy<bxc<?>> g = a("killed", mg.f);
+   public static final awy<bxc<?>> h = a("killed_by", mg.f);
+   public static final awy<ali> i = a("custom", mg.k);
+   public static final ali j = a("leave_game", awx.b);
+   public static final ali k = a("play_time", awx.e);
+   public static final ali l = a("total_world_time", awx.e);
+   public static final ali m = a("time_since_death", awx.e);
+   public static final ali n = a("time_since_rest", awx.e);
+   public static final ali o = a("sneak_time", awx.e);
+   public static final ali p = a("walk_one_cm", awx.d);
+   public static final ali q = a("crouch_one_cm", awx.d);
+   public static final ali r = a("sprint_one_cm", awx.d);
+   public static final ali s = a("walk_on_water_one_cm", awx.d);
+   public static final ali t = a("fall_one_cm", awx.d);
+   public static final ali u = a("climb_one_cm", awx.d);
+   public static final ali v = a("fly_one_cm", awx.d);
+   public static final ali w = a("walk_under_water_one_cm", awx.d);
+   public static final ali x = a("minecart_one_cm", awx.d);
+   public static final ali y = a("boat_one_cm", awx.d);
+   public static final ali z = a("pig_one_cm", awx.d);
+   public static final ali A = a("horse_one_cm", awx.d);
+   public static final ali B = a("aviate_one_cm", awx.d);
+   public static final ali C = a("swim_one_cm", awx.d);
+   public static final ali D = a("strider_one_cm", awx.d);
+   public static final ali E = a("jump", awx.b);
+   public static final ali F = a("drop", awx.b);
+   public static final ali G = a("damage_dealt", awx.c);
+   public static final ali H = a("damage_dealt_absorbed", awx.c);
+   public static final ali I = a("damage_dealt_resisted", awx.c);
+   public static final ali J = a("damage_taken", awx.c);
+   public static final ali K = a("damage_blocked_by_shield", awx.c);
+   public static final ali L = a("damage_absorbed", awx.c);
+   public static final ali M = a("damage_resisted", awx.c);
+   public static final ali N = a("deaths", awx.b);
+   public static final ali O = a("mob_kills", awx.b);
+   public static final ali P = a("animals_bred", awx.b);
+   public static final ali Q = a("player_kills", awx.b);
+   public static final ali R = a("fish_caught", awx.b);
+   public static final ali S = a("talked_to_villager", awx.b);
+   public static final ali T = a("traded_with_villager", awx.b);
+   public static final ali U = a("eat_cake_slice", awx.b);
+   public static final ali V = a("fill_cauldron", awx.b);
+   public static final ali W = a("use_cauldron", awx.b);
+   public static final ali X = a("clean_armor", awx.b);
+   public static final ali Y = a("clean_banner", awx.b);
+   public static final ali Z = a("clean_shulker_box", awx.b);
+   public static final ali aa = a("interact_with_brewingstand", awx.b);
+   public static final ali ab = a("interact_with_beacon", awx.b);
+   public static final ali ac = a("inspect_dropper", awx.b);
+   public static final ali ad = a("inspect_hopper", awx.b);
+   public static final ali ae = a("inspect_dispenser", awx.b);
+   public static final ali af = a("play_noteblock", awx.b);
+   public static final ali ag = a("tune_noteblock", awx.b);
+   public static final ali ah = a("pot_flower", awx.b);
+   public static final ali ai = a("trigger_trapped_chest", awx.b);
+   public static final ali aj = a("open_enderchest", awx.b);
+   public static final ali ak = a("enchant_item", awx.b);
+   public static final ali al = a("play_record", awx.b);
+   public static final ali am = a("interact_with_furnace", awx.b);
+   public static final ali an = a("interact_with_crafting_table", awx.b);
+   public static final ali ao = a("open_chest", awx.b);
+   public static final ali ap = a("sleep_in_bed", awx.b);
+   public static final ali aq = a("open_shulker_box", awx.b);
+   public static final ali ar = a("open_barrel", awx.b);
+   public static final ali as = a("interact_with_blast_furnace", awx.b);
+   public static final ali at = a("interact_with_smoker", awx.b);
+   public static final ali au = a("interact_with_lectern", awx.b);
+   public static final ali av = a("interact_with_campfire", awx.b);
+   public static final ali aw = a("interact_with_cartography_table", awx.b);
+   public static final ali ax = a("interact_with_loom", awx.b);
+   public static final ali ay = a("interact_with_stonecutter", awx.b);
+   public static final ali az = a("bell_ring", awx.b);
+   public static final ali aA = a("raid_trigger", awx.b);
+   public static final ali aB = a("raid_win", awx.b);
+   public static final ali aC = a("interact_with_anvil", awx.b);
+   public static final ali aD = a("interact_with_grindstone", awx.b);
+   public static final ali aE = a("target_hit", awx.b);
+   public static final ali aF = a("interact_with_smithing_table", awx.b);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface awz {
+   private static ali a(String $$0, awx $$1) {
+      ali $$2 = ali.b($$0);
+      js.a(mg.k, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
+   }
+
+   private static <T> awy<T> a(String $$0, js<T> $$1) {
+      xa $$2 = xa.c("stat_type.minecraft." + $$0);
+      return js.a(mg.v, $$0, new awy<>($$1, $$2));
+   }
 }

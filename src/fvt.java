@@ -1,110 +1,166 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
-import java.util.function.Supplier;
+import com.google.common.collect.Lists;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class fvt extends hjb implements hjc {
-   private static final int c = 256;
-   private final fvu d;
-   private final boolean e;
-   private final fvt.a f;
+public class fvt implements hqc {
+   private static final long a = 3000L;
+   private final frd b;
+   private final List<fvt.b> c = Lists.newArrayList();
+   private boolean d;
+   private final List<fvt.b> e = new ArrayList<>();
 
-   public fvt(Supplier<String> $$0, fvu $$1, boolean $$2) {
-      this.e = $$2;
-      this.f = new fvt.a(0, 0, 256, 256);
-      this.a = new fjw($$0, $$2 ? fjx.a : fjx.b, 256, 256, 1);
-      this.a.a(fjv.a, false);
-      this.d = $$1;
+   public fvt(frd $$0) {
+      this.b = $$0;
    }
 
-   @Nullable
-   public fvw a(fhx $$0) {
-      if ($$0.c() != this.e) {
-         return null;
-      } else {
-         fvt.a $$1 = this.f.a($$0);
-         if ($$1 != null && this.a != null) {
-            this.a.c();
-            $$0.a($$1.a, $$1.b, this.a);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new fvw(
-               this.d,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
+   public void a(ftx $$0) {
+      hqd $$1 = this.b.ak();
+      if (!this.d && this.b.n.Z().c()) {
+         $$1.a(this);
+         this.d = true;
+      } else if (this.d && !this.b.n.Z().c()) {
+         $$1.b(this);
+         this.d = false;
+      }
+
+      if (this.d) {
+         fia $$2 = $$1.b();
+         ffq $$3 = $$2.b();
+         ffq $$4 = $$2.c();
+         ffq $$5 = $$2.a();
+         this.e.clear();
+
+         for (fvt.b $$6 : this.c) {
+            if ($$6.c($$3)) {
+               this.e.add($$6);
+            }
+         }
+
+         if (!this.e.isEmpty()) {
+            int $$7 = 0;
+            int $$8 = 0;
+            double $$9 = this.b.n.D().c();
+            Iterator<fvt.b> $$10 = this.e.iterator();
+
+            while ($$10.hasNext()) {
+               fvt.b $$11 = $$10.next();
+               $$11.a(3000.0 * $$9);
+               if (!$$11.b()) {
+                  $$10.remove();
+               } else {
+                  $$8 = Math.max($$8, this.b.h.a($$11.a()));
+               }
+            }
+
+            $$8 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
+
+            for (fvt.b $$12 : this.e) {
+               int $$13 = 255;
+               xa $$14 = $$12.a();
+               fvt.a $$15 = $$12.a($$3);
+               if ($$15 != null) {
+                  ffq $$16 = $$15.a.d($$3).d();
+                  double $$17 = $$5.b($$16);
+                  double $$18 = $$4.b($$16);
+                  boolean $$19 = $$18 > 0.5;
+                  int $$20 = $$8 / 2;
+                  int $$21 = 9;
+                  int $$22 = $$21 / 2;
+                  float $$23 = 1.0F;
+                  int $$24 = this.b.h.a($$14);
+                  int $$25 = azo.d(azo.b(255.0F, 75.0F, (float)(ag.c() - $$15.b) / (float)(3000.0 * $$9)));
+                  $$0.c().a();
+                  $$0.c().a((float)$$0.a() - (float)$$20 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$7 * ($$21 + 1)) * 1.0F, 0.0F);
+                  $$0.c().b(1.0F, 1.0F, 1.0F);
+                  $$0.a(-$$20 - 1, -$$22 - 1, $$20 + 1, $$22 + 1, this.b.n.b(0.8F));
+                  int $$26 = axy.a(255, $$25, $$25, $$25);
+                  if (!$$19) {
+                     if ($$17 > 0.0) {
+                        $$0.b(this.b.h, ">", $$20 - this.b.h.b(">"), -$$22, $$26);
+                     } else if ($$17 < 0.0) {
+                        $$0.b(this.b.h, "<", -$$20, -$$22, $$26);
+                     }
+                  }
+
+                  $$0.b(this.b.h, $$14, -$$24 / 2, -$$22, $$26);
+                  $$0.c().b();
+                  $$7++;
+               }
+            }
          }
       }
    }
 
    @Override
-   public void a(alg $$0, Path $$1) {
-      if (this.a != null) {
-         String $$2 = $$0.c();
-         TextureUtil.writeAsPNG($$1, $$2, this.a, 0, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
+   public void a(hox $$0, hqe $$1, float $$2) {
+      if ($$1.a() != null) {
+         xa $$3 = $$1.a();
+         if (!this.c.isEmpty()) {
+            for (fvt.b $$4 : this.c) {
+               if ($$4.a().equals($$3)) {
+                  $$4.b(new ffq($$0.h(), $$0.i(), $$0.j()));
+                  return;
+               }
+            }
+         }
+
+         this.c.add(new fvt.b($$3, $$2, new ffq($$0.h(), $$0.i(), $$0.j())));
       }
    }
 
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private fvt.a e;
-      @Nullable
-      private fvt.a f;
-      private boolean g;
+   static record a(ffq a, long b) {
+   }
 
-      a(int $$0, int $$1, int $$2, int $$3) {
+   static class b {
+      private final xa a;
+      private final float b;
+      private final List<fvt.a> c = new ArrayList<>();
+
+      public b(xa $$0, float $$1, ffq $$2) {
          this.a = $$0;
          this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+         this.c.add(new fvt.a($$2, ag.c()));
+      }
+
+      public xa a() {
+         return this.a;
       }
 
       @Nullable
-      fvt.a a(fhx $$0) {
-         if (this.e != null && this.f != null) {
-            fvt.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
-
-            return $$1;
-         } else if (this.g) {
+      public fvt.a a(ffq $$0) {
+         if (this.c.isEmpty()) {
             return null;
          } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new fvt.a(this.a, this.b, $$2, this.d);
-                  this.f = new fvt.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new fvt.a(this.a, this.b, this.c, $$3);
-                  this.f = new fvt.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
-
-               return this.e.a($$0);
-            }
+            return this.c.size() == 1 ? this.c.getFirst() : this.c.stream().min(Comparator.comparingDouble($$1 -> $$1.a().f($$0))).orElse(null);
          }
+      }
+
+      public void b(ffq $$0) {
+         this.c.removeIf($$1 -> $$0.equals($$1.a()));
+         this.c.add(new fvt.a($$0, ag.c()));
+      }
+
+      public boolean c(ffq $$0) {
+         if (Float.isInfinite(this.b)) {
+            return true;
+         } else if (this.c.isEmpty()) {
+            return false;
+         } else {
+            fvt.a $$1 = this.a($$0);
+            return $$1 == null ? false : $$0.a((jp)$$1.a, (double)this.b);
+         }
+      }
+
+      public void a(double $$0) {
+         long $$1 = ag.c();
+         this.c.removeIf($$2 -> (double)($$1 - $$2.b()) > $$0);
+      }
+
+      public boolean b() {
+         return !this.c.isEmpty();
       }
    }
 }

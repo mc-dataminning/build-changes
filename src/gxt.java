@@ -1,34 +1,44 @@
-public class gxt extends gye<cjp, hdz, ghf> {
-   private static final alg a = alg.b("textures/entity/iron_golem/iron_golem.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gxt(gwy.a $$0) {
-      super($$0, new ghf($$0.a(gjs.bA)), 0.7F);
-      this.a(new hbc(this));
-      this.a(new hbd(this, $$0.d()));
+public class gxt extends gzo<cju, heg, ghq> {
+   private final Map<cjv.a, ggm<ghq>> a;
+
+   public gxt(gyi.a $$0) {
+      super($$0, new ghq($$0.a(gld.an)), 0.7F);
+      this.a = a($$0);
    }
 
-   public alg a(hdz $$0) {
-      return a;
+   private static Map<cjv.a, ggm<ghq>> a(gyi.a $$0) {
+      return Maps.newEnumMap(
+         Map.of(
+            cjv.a.a,
+            new ggm<>(new ghq($$0.a(gld.an)), new ghq($$0.a(gld.ao))),
+            cjv.a.c,
+            new ggm<>(new ghq($$0.a(gld.dQ)), new ghq($$0.a(gld.dR))),
+            cjv.a.b,
+            new ggm<>(new ghq($$0.a(gld.ae)), new ghq($$0.a(gld.af)))
+         )
+      );
    }
 
-   public hdz b() {
-      return new hdz();
+   public ali a(heg $$0) {
+      return $$0.a == null ? hkp.c() : $$0.a.b().b().b();
    }
 
-   public void a(cjp $$0, hdz $$1, float $$2) {
+   public heg a() {
+      return new heg();
+   }
+
+   public void a(cju $$0, heg $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.n() > 0.0F ? (float)$$0.n() - $$2 : 0.0F;
-      $$1.b = $$0.q();
-      $$1.c = $$0.m();
+      $$1.a = $$0.t().a();
    }
 
-   protected void a(hdz $$0, fkd $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (!((double)$$0.ae < 0.01)) {
-         float $$4 = 13.0F;
-         float $$5 = $$0.ad + 6.0F;
-         float $$6 = (Math.abs($$5 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$6));
+   public void a(heg $$0, flo $$1, gsa $$2, int $$3) {
+      if ($$0.a != null) {
+         this.g = this.a.get($$0.a.b().a()).a($$0.aj);
+         super.a($$0, $$1, $$2, $$3);
       }
    }
 }

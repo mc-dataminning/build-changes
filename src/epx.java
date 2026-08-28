@@ -1,50 +1,76 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class epx extends epu {
-   public static final MapCodec<epx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ehm.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), ehm.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, epx::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final ehm d;
-   private final ehm e;
-   private final LongSet f = new LongOpenHashSet();
+public abstract class epx {
+   public static final Codec<epx> c = mg.V.q().dispatch(epx::a, epy::a);
+   private static final int a = 32;
+   private static final int b = 24;
+   public static final int d = 80;
+   protected final int e;
+   protected final int f;
+   protected final int g;
 
-   private epx(ehm $$0, ehm $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   protected static <P extends epx> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
+         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
+         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   public static epx a(ehm $$0, ehm $$1) {
-      return new epx($$0, $$1);
+   public epx(int $$0, int $$1, int $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public int a(azv $$0, ehp $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
-            b.warn("Empty height range: {}", this);
-         }
+   protected abstract epy<?> a();
 
-         return $$2;
-      } else {
-         return azm.b($$0, $$2, $$3);
+   public abstract List<eob.a> a(dkd var1, BiConsumer<iv, ebe> var2, azx var3, int var4, iv var5, enl var6);
+
+   public int a(azx $$0) {
+      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
+   }
+
+   private static boolean c(dkd $$0, iv $$1) {
+      return $$0.a($$1, $$0x -> ekk.b($$0x) && !$$0x.a(dne.i) && !$$0x.a(dne.fE));
+   }
+
+   protected static void a(dkd $$0, BiConsumer<iv, ebe> $$1, azx $$2, iv $$3, enl $$4) {
+      if ($$4.k || !c($$0, $$3)) {
+         $$1.accept($$3, $$4.c.a($$2, $$3));
       }
    }
 
-   @Override
-   public epv<?> a() {
-      return epv.b;
+   protected boolean b(dkd $$0, BiConsumer<iv, ebe> $$1, azx $$2, iv $$3, enl $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
    }
 
-   @Override
-   public String toString() {
-      return "[" + this.d + "-" + this.e + "]";
+   protected boolean a(dkd $$0, BiConsumer<iv, ebe> $$1, azx $$2, iv $$3, enl $$4, Function<ebe, ebe> $$5) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(dkd $$0, BiConsumer<iv, ebe> $$1, azx $$2, iv.a $$3, enl $$4) {
+      if (this.b($$0, $$3)) {
+         this.b($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   protected boolean a(dkd $$0, iv $$1) {
+      return elw.d($$0, $$1);
+   }
+
+   public boolean b(dkd $$0, iv $$1) {
+      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(axe.u));
    }
 }

@@ -1,17 +1,8 @@
-public enum ebh implements bak {
-   a("floor"),
-   b("ceiling"),
-   c("single_wall"),
-   d("double_wall");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private final String e;
-
-   private ebh(final String $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface ebh {
 }

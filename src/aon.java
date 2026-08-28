@@ -1,80 +1,154 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.Collections;
+import javax.annotation.Nullable;
 
 public class aon {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.recipe.give.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("commands.recipe.take.failed"));
-
-   public static void a(CommandDispatcher<ej> $$0) {
+   public static void a(CommandDispatcher<ej> $$0, ef $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("recipe").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ek.a("give")
-                     .then(
-                        ((RequiredArgumentBuilder)ek.a("targets", ew.d())
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a(
+                                    "raid"
+                                 )
+                                 .requires($$0x -> $$0x.c(3)))
                               .then(
-                                 ek.a("recipe", fj.a(mh.bv))
-                                    .executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), Collections.singleton(fj.d($$0x, "recipe"))))
+                                 ek.a("start")
+                                    .then(
+                                       ek.a("omenlvl", IntegerArgumentType.integer(0))
+                                          .executes($$0x -> b((ej)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "omenlvl")))
+                                    )
                               ))
-                           .then(ek.a("*").executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), ((ej)$$0x.getSource()).l().aI().d())))
+                           .then(ek.a("stop").executes($$0x -> c((ej)$$0x.getSource()))))
+                        .then(ek.a("check").executes($$0x -> d((ej)$$0x.getSource()))))
+                     .then(ek.a("sound").then(ek.a("type", es.a($$1)).executes($$0x -> a((ej)$$0x.getSource(), es.b($$0x, "type"))))))
+                  .then(ek.a("spawnleader").executes($$0x -> b((ej)$$0x.getSource()))))
+               .then(
+                  ek.a("setomen")
+                     .then(
+                        ek.a("level", IntegerArgumentType.integer(0)).executes($$0x -> a((ej)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "level")))
                      )
                ))
-            .then(
-               ek.a("take")
-                  .then(
-                     ((RequiredArgumentBuilder)ek.a("targets", ew.d())
-                           .then(
-                              ek.a("recipe", fj.a(mh.bv))
-                                 .executes($$0x -> b((ej)$$0x.getSource(), ew.f($$0x, "targets"), Collections.singleton(fj.d($$0x, "recipe"))))
-                           ))
-                        .then(ek.a("*").executes($$0x -> b((ej)$$0x.getSource(), ew.f($$0x, "targets"), ((ej)$$0x.getSource()).l().aI().d())))
-                  )
-            )
+            .then(ek.a("glow").executes($$0x -> a((ej)$$0x.getSource())))
       );
    }
 
-   private static int a(ej $$0, Collection<arr> $$1, Collection<dej<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (arr $$4 : $$1) {
-         $$3 += $$4.a($$2);
+   private static int a(ej $$0) throws CommandSyntaxException {
+      ctn $$1 = a($$0.h());
+      if ($$1 != null) {
+         for (cto $$3 : $$1.h()) {
+            $$3.a(new bvx(bvz.x, 1000, 1));
+         }
       }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wy.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().m_()), true);
-         } else {
-            $$0.a(() -> wy.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
-         }
+      return 1;
+   }
 
-         return $$3;
+   private static int a(ej $$0, int $$1) throws CommandSyntaxException {
+      ctn $$2 = a($$0.h());
+      if ($$2 != null) {
+         int $$3 = $$2.k();
+         if ($$1 > $$3) {
+            $$0.b(xa.b("Sorry, the max raid omen level you can set is " + $$3));
+         } else {
+            int $$4 = $$2.l();
+            $$2.a($$1);
+            $$0.a(() -> xa.b("Changed village's raid omen level from " + $$4 + " to " + $$1), false);
+         }
+      } else {
+         $$0.b(xa.b("No raid found here"));
+      }
+
+      return 1;
+   }
+
+   private static int b(ej $$0) {
+      $$0.a(() -> xa.b("Spawned a raid captain"), false);
+      cto $$1 = bxc.aU.a($$0.e(), bxb.n);
+      if ($$1 == null) {
+         $$0.b(xa.b("Pillager failed to spawn"));
+         return 0;
+      } else {
+         $$1.w(true);
+         $$1.a(bxd.f, ctn.a($$0.u().f(mh.aF)));
+         $$1.a_($$0.d().d, $$0.d().e, $$0.d().f);
+         $$1.a($$0.e(), $$0.e().d_(iv.a((jp)$$0.d())), bxb.n, null);
+         $$0.e().a_($$1);
+         return 1;
       }
    }
 
-   private static int b(ej $$0, Collection<arr> $$1, Collection<dej<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (arr $$4 : $$1) {
-         $$3 += $$4.b($$2);
+   private static int a(ej $$0, @Nullable xa $$1) {
+      if ($$1 != null && $$1.getString().equals("local")) {
+         ars $$2 = $$0.e();
+         ffq $$3 = $$0.d().b(5.0, 0.0, 0.0);
+         $$2.a(null, $$3.d, $$3.e, $$3.f, awp.vQ, awq.g, 2.0F, 1.0F, $$2.A.g());
       }
 
-      if ($$3 == 0) {
-         throw b.create();
+      return 1;
+   }
+
+   private static int b(ej $$0, int $$1) throws CommandSyntaxException {
+      art $$2 = $$0.h();
+      iv $$3 = $$2.dv();
+      if ($$2.y().e($$3)) {
+         $$0.b(xa.b("Raid already started close by"));
+         return -1;
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wy.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().m_()), true);
+         ctp $$4 = $$2.y().B();
+         ctn $$5 = $$4.a($$2, $$2.dv());
+         if ($$5 != null) {
+            $$5.a($$1);
+            $$4.f();
+            $$0.a(() -> xa.b("Created a raid in your local village"), false);
          } else {
-            $$0.a(() -> wy.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
+            $$0.b(xa.b("Failed to create a raid in your local village"));
          }
 
-         return $$3;
+         return 1;
       }
+   }
+
+   private static int c(ej $$0) throws CommandSyntaxException {
+      art $$1 = $$0.h();
+      iv $$2 = $$1.dv();
+      ctn $$3 = $$1.y().d($$2);
+      if ($$3 != null) {
+         $$3.m();
+         $$0.a(() -> xa.b("Stopped raid"), false);
+         return 1;
+      } else {
+         $$0.b(xa.b("No raid here"));
+         return -1;
+      }
+   }
+
+   private static int d(ej $$0) throws CommandSyntaxException {
+      ctn $$1 = a($$0.h());
+      if ($$1 != null) {
+         StringBuilder $$2 = new StringBuilder();
+         $$2.append("Found a started raid! ");
+         $$0.a(() -> xa.b($$2.toString()), false);
+         StringBuilder $$3 = new StringBuilder();
+         $$3.append("Num groups spawned: ");
+         $$3.append($$1.j());
+         $$3.append(" Raid omen level: ");
+         $$3.append($$1.l());
+         $$3.append(" Num mobs: ");
+         $$3.append($$1.p());
+         $$3.append(" Raid health: ");
+         $$3.append($$1.o());
+         $$3.append(" / ");
+         $$3.append($$1.g());
+         $$0.a(() -> xa.b($$3.toString()), false);
+         return 1;
+      } else {
+         $$0.b(xa.b("Found no started raids"));
+         return 0;
+      }
+   }
+
+   @Nullable
+   private static ctn a(art $$0) {
+      return $$0.y().d($$0.dv());
    }
 }

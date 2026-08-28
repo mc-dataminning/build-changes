@@ -1,47 +1,40 @@
-public class hbw extends hbm<hfl, ggp<hfl>> {
-   private static final alg a = alg.b("textures/entity/fish/tropical_a_pattern_1.png");
-   private static final alg b = alg.b("textures/entity/fish/tropical_a_pattern_2.png");
-   private static final alg c = alg.b("textures/entity/fish/tropical_a_pattern_3.png");
-   private static final alg d = alg.b("textures/entity/fish/tropical_a_pattern_4.png");
-   private static final alg e = alg.b("textures/entity/fish/tropical_a_pattern_5.png");
-   private static final alg f = alg.b("textures/entity/fish/tropical_a_pattern_6.png");
-   private static final alg g = alg.b("textures/entity/fish/tropical_b_pattern_1.png");
-   private static final alg h = alg.b("textures/entity/fish/tropical_b_pattern_2.png");
-   private static final alg i = alg.b("textures/entity/fish/tropical_b_pattern_3.png");
-   private static final alg j = alg.b("textures/entity/fish/tropical_b_pattern_4.png");
-   private static final alg k = alg.b("textures/entity/fish/tropical_b_pattern_5.png");
-   private static final alg l = alg.b("textures/entity/fish/tropical_b_pattern_6.png");
-   private final gix m;
-   private final giy n;
+public class hbw extends hcw<hgb, gjg> {
+   private final gio<hgb> a;
+   private final hnf b;
 
-   public hbw(gyv<hfl, ggp<hfl>> $$0, gjp $$1) {
+   public hbw(haf<hgb, gjg> $$0, gla $$1, hnf $$2) {
       super($$0);
-      this.m = new gix($$1.a(gjs.dH));
-      this.n = new giy($$1.a(gjs.dF));
+      this.a = new gje<>($$1.a(gld.ct));
+      this.b = $$2;
    }
 
-   public void a(fkd $$0, gqr $$1, int $$2, hfl $$3, float $$4, float $$5) {
-      ckf.b $$6 = $$3.a;
+   private boolean a(czy $$0, hng.d $$1) {
+      dih $$2 = $$0.a(kk.D);
+      if ($$2 != null && !$$2.d().isEmpty()) {
+         hng $$3 = this.b.a($$2.d().get());
+         return !$$3.a($$1).isEmpty();
+      } else {
+         return false;
+      }
+   }
 
-      ggp<hfl> $$7 = (ggp<hfl>)(switch ($$6.a()) {
-         case a -> this.m;
-         case b -> this.n;
-      });
+   public void a(flo $$0, gsa $$1, int $$2, hgb $$3, float $$4, float $$5) {
+      if (!$$3.z && $$3.ay) {
+         hmc $$6 = $$3.a;
+         if ($$6.c() != null) {
+            if (!this.a($$3.W, hng.d.c)) {
+               $$0.a();
+               if (this.a($$3.W, hng.d.a)) {
+                  $$0.a(0.0F, -0.053125F, 0.06875F);
+               }
 
-      alg $$8 = switch ($$6) {
-         case a -> a;
-         case b -> b;
-         case c -> c;
-         case d -> d;
-         case e -> e;
-         case f -> f;
-         case g -> g;
-         case h -> h;
-         case i -> i;
-         case j -> j;
-         case k -> k;
-         case l -> l;
-      };
-      a($$7, $$8, $$0, $$1, $$2, $$3, $$3.c);
+               flr $$7 = $$1.getBuffer(gsl.d($$6.c()));
+               this.d().a(this.a);
+               this.a.a($$3);
+               this.a.a($$0, $$7, $$2, hkq.d);
+               $$0.b();
+            }
+         }
+      }
    }
 }

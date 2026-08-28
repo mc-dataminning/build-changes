@@ -1,34 +1,29 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
+import java.util.Locale;
 
-public interface fwd {
-   MapCodec<fwd> b = fwe.f.dispatchMap(fwd::a, fwe::a);
+public class fwd extends fwa {
+   private static final int f = 500;
 
-   fwe a();
-
-   Either<fwd.b, fwd.c> b();
-
-   public static record a(fwd b, fvr.a c) {
-      public static final Codec<fwd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fwd.b.forGetter(fwd.a::a), fvr.a.a.optionalFieldOf("filter", fvr.a.b).forGetter(fwd.a::b)).apply($$0, fwd.a::new)
-      );
-
-      public fwd a() {
-         return this.b;
-      }
-
-      public fvr.a b() {
-         return this.c;
-      }
+   public fwd(ftv $$0, bpg $$1) {
+      super($$0, $$1);
    }
 
-   public interface b {
-      fhw load(avd var1) throws IOException;
+   @Override
+   protected void d(ftx $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
    }
 
-   public static record c(alg a) {
+   @Override
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
+   }
+
+   @Override
+   protected int b(double $$0) {
+      return (int)Math.round($$0 * 60.0 / 500.0);
+   }
+
+   @Override
+   protected int a(long $$0) {
+      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
    }
 }

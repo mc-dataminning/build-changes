@@ -1,126 +1,193 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
 
-public class dwh extends dub {
-   public static final MapCodec<dwh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ech.a.fieldOf("wood_type").forGetter(dub::d), t()).apply($$0, dwh::new));
-   public static final ebr<jb> b = dqs.e;
-   private static final Map<jb.a, ffw> c = fft.a(dmr.a(16.0, 4.0, 14.0, 16.0));
-   private static final Map<jb.a, ffw> e = fft.a(fft.a(c.get(jb.a.c), dmr.a(14.0, 2.0, 0.0, 10.0)));
+public class dwh extends dnc {
+   public static final MapCodec<dwh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(mg.e.q().fieldOf("hook").forGetter($$0x -> $$0x.T), t()).apply($$0, dwh::new)
+   );
+   public static final ebv b = ebu.A;
+   public static final ebv c = ebu.a;
+   public static final ebv d = ebu.g;
+   public static final ebv e = dsw.b;
+   public static final ebv f = dsw.c;
+   public static final ebv g = dsw.d;
+   public static final ebv h = dsw.e;
+   private static final Map<jb, ebv> i = dpa.f;
+   private static final fgk D = dnc.b(16.0, 1.0, 2.5);
+   private static final fgk R = dnc.b(16.0, 0.0, 8.0);
+   private static final int S = 10;
+   private final dnc T;
 
    @Override
    public MapCodec<dwh> a() {
       return a;
    }
 
-   public dwh(ech $$0, eas.d $$1) {
-      super($$0, $$1.a($$0.e()));
-      this.l(this.C.b().b(b, jb.c).b(d, Boolean.valueOf(false)));
+   public dwh(dnc $$0, ebd.d $$1) {
+      super($$1);
+      this.l(
+         this.C
+            .b()
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+            .b(f, Boolean.valueOf(false))
+            .b(g, Boolean.valueOf(false))
+            .b(h, Boolean.valueOf(false))
+      );
+      this.T = $$0;
    }
 
    @Override
-   protected bug a(czn $$0, eat $$1, djm $$2, iv $$3, crm $$4, buf $$5, fey $$6) {
-      if ($$2.c_($$3) instanceof dzf $$7 && this.a($$1, $$4, $$6, $$7, $$0)) {
-         return bug.e;
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return $$0.c(c) ? D : R;
+   }
+
+   @Override
+   public ebe a(ddr $$0) {
+      djb $$1 = $$0.q();
+      iv $$2 = $$0.a();
+      return this.m()
+         .b(e, Boolean.valueOf(this.a($$1.a_($$2.f()), jb.c)))
+         .b(f, Boolean.valueOf(this.a($$1.a_($$2.i()), jb.f)))
+         .b(g, Boolean.valueOf(this.a($$1.a_($$2.g()), jb.d)))
+         .b(h, Boolean.valueOf(this.a($$1.a_($$2.h()), jb.e)));
+   }
+
+   @Override
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      return $$4.o().d() ? $$0.b(i.get($$4), Boolean.valueOf(this.a($$6, $$4))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void a(ebe $$0, djx $$1, iv $$2, ebe $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2, $$0);
+      }
+   }
+
+   @Override
+   protected void a(ebe $$0, ars $$1, iv $$2, boolean $$3) {
+      if (!$$3) {
+         this.a($$1, $$2, $$0.b(b, Boolean.valueOf(true)));
+      }
+   }
+
+   @Override
+   public ebe a(djx $$0, iv $$1, ebe $$2, crx $$3) {
+      if (!$$0.C && !$$3.fb().f() && $$3.fb().a(dac.td)) {
+         $$0.a($$1, $$2.b(d, Boolean.valueOf(true)), 260);
+         $$0.a($$3, ege.M, $$1);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      return super.a($$0, $$1, $$2, $$3);
    }
 
-   private boolean a(eat $$0, crm $$1, fey $$2, dzf $$3, czn $$4) {
-      return !$$3.a($$3.a($$1), $$1) && $$4.h() instanceof czc && !this.a($$2, $$0);
-   }
+   private void a(djx $$0, iv $$1, ebe $$2) {
+      for (jb $$3 : new jb[]{jb.d, jb.e}) {
+         for (int $$4 = 1; $$4 < 42; $$4++) {
+            iv $$5 = $$1.a($$3, $$4);
+            ebe $$6 = $$0.a_($$5);
+            if ($$6.a(this.T)) {
+               if ($$6.c(dwi.b) == $$3.g()) {
+                  dwi.a($$0, $$5, $$6, false, true, $$4, $$2);
+               }
+               break;
+            }
 
-   private boolean a(fey $$0, eat $$1) {
-      return $$0.c().o() == $$1.c(b).o();
+            if (!$$6.a(this)) {
+               break;
+            }
+         }
+      }
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return e.get($$0.c(b).o());
+   protected fgk a(ebe $$0, djb $$1, iv $$2, bwt $$3) {
+      return $$0.f($$1, $$2);
    }
 
    @Override
-   protected ffw b_(eat $$0, diq $$1, iv $$2) {
-      return this.a($$0, $$1, $$2, ffh.a());
+   protected void a(ebe $$0, djx $$1, iv $$2, bwt $$3, bxm $$4) {
+      if (!$$1.C) {
+         if (!$$0.c(b)) {
+            this.a($$1, $$2, List.of($$3));
+         }
+      }
    }
 
    @Override
-   protected ffw b(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return c.get($$0.c(b).o());
+   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      if ($$1.a_($$2).c(b)) {
+         this.a($$1, $$2);
+      }
    }
 
-   public boolean b(eat $$0, djp $$1, iv $$2) {
-      jb $$3 = $$0.c(b).h();
-      jb $$4 = $$0.c(b).i();
-      return this.a($$1, $$0, $$2.a($$3), $$4) || this.a($$1, $$0, $$2.a($$4), $$3);
+   private void a(djx $$0, iv $$1) {
+      ebe $$2 = $$0.a_($$1);
+      List<? extends bwt> $$3 = $$0.a_(null, $$2.f($$0, $$1).a().a($$1));
+      this.a($$0, $$1, $$3);
    }
 
-   public boolean a(djp $$0, eat $$1, iv $$2, jb $$3) {
-      eat $$4 = $$0.a_($$2);
-      return $$4.a(axc.aC) ? $$4.c(b).o().a($$1.c(b)) : $$4.a($$0, $$2, $$3, dvc.a);
-   }
-
-   @Nullable
-   @Override
-   public eat a(ddg $$0) {
-      eat $$1 = this.m();
-      exa $$2 = $$0.q().b_($$0.a());
-      djp $$3 = $$0.q();
-      iv $$4 = $$0.a();
-
-      for (jb $$5 : $$0.f()) {
-         if ($$5.o().d() && !$$5.o().a($$0.k())) {
-            jb $$6 = $$5.g();
-            $$1 = $$1.b(b, $$6);
-            if ($$1.a($$3, $$4) && this.b($$1, $$3, $$4)) {
-               return $$1.b(d, Boolean.valueOf($$2.a() == exb.c));
+   private void a(djx $$0, iv $$1, List<? extends bwt> $$2) {
+      ebe $$3 = $$0.a_($$1);
+      boolean $$4 = $$3.c(b);
+      boolean $$5 = false;
+      if (!$$2.isEmpty()) {
+         for (bwt $$6 : $$2) {
+            if (!$$6.g_()) {
+               $$5 = true;
+               break;
             }
          }
       }
 
-      return null;
+      if ($$5 != $$4) {
+         $$3 = $$3.b(b, Boolean.valueOf($$5));
+         $$0.a($$1, $$3, 3);
+         this.a($$0, $$1, $$3);
+      }
+
+      if ($$5) {
+         $$0.a(new iv($$1), this, 10);
+      }
+   }
+
+   public boolean a(ebe $$0, jb $$1) {
+      return $$0.a(this.T) ? $$0.c(dwi.b) == $$1.g() : $$0.a(this);
    }
 
    @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      return $$4.o() == $$0.c(b).h().o() && !$$0.a($$1, $$3) ? dmt.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected ebe a(ebe $$0, dtw $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.b(e, $$0.c(g)).b(f, $$0.c(h)).b(g, $$0.c(e)).b(h, $$0.c(f));
+         case d:
+            return $$0.b(e, $$0.c(f)).b(f, $$0.c(g)).b(g, $$0.c(h)).b(h, $$0.c(e));
+         case b:
+            return $$0.b(e, $$0.c(h)).b(f, $$0.c(e)).b(g, $$0.c(f)).b(h, $$0.c(g));
+         default:
+            return $$0;
+      }
    }
 
    @Override
-   public float h(eat $$0) {
-      return $$0.c(b).p();
+   protected ebe a(ebe $$0, dsf $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.b(e, $$0.c(g)).b(g, $$0.c(e));
+         case c:
+            return $$0.b(f, $$0.c(h)).b(h, $$0.c(f));
+         default:
+            return super.a($$0, $$1);
+      }
    }
 
    @Override
-   protected eat a(eat $$0, dtl $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected eat a(eat $$0, dru $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(b, d);
-   }
-
-   @Override
-   public dxr a(iv $$0, eat $$1) {
-      return new dys($$0, $$1);
-   }
-
-   @Override
-   protected boolean a(eat $$0, exp $$1) {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public <T extends dxr> dxs<T> a(djm $$0, eat $$1, dxt<T> $$2) {
-      return a($$2, dxt.i, dzf::a);
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(b, c, d, e, f, h, g);
    }
 }

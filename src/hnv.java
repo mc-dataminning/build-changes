@@ -1,35 +1,59 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+import javax.annotation.Nullable;
 
-public class hnv<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
+public interface hnv {
+   String c = "particle";
 
-   public hnv(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+   @Nullable
+   default Boolean c() {
+      return null;
    }
 
-   protected T computeNext() {
-      while (this.a.hasNext() && this.b.hasNext()) {
-         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$0 == 0) {
-            this.b.next();
-            return (T)this.a.next();
-         }
+   @Nullable
+   default hnv.a b() {
+      return null;
+   }
 
-         if ($$0 < 0) {
-            this.a.next();
-         } else {
-            this.b.next();
-         }
+   @Nullable
+   default gtr d() {
+      return null;
+   }
+
+   default gtv.a e() {
+      return gtv.a.a;
+   }
+
+   @Nullable
+   default hnu a() {
+      return null;
+   }
+
+   @Nullable
+   default ali f() {
+      return null;
+   }
+
+   public static enum a {
+      a("front"),
+      b("side");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
       }
 
-      return (T)this.endOfData();
+      public static hnv.a a(String $$0) {
+         for (hnv.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         throw new IllegalArgumentException("Invalid gui light: " + $$0);
+      }
+
+      public boolean a() {
+         return this == b;
+      }
    }
 }

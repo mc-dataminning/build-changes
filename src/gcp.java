@@ -1,69 +1,32 @@
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Objects;
+import org.joml.Matrix4f;
 
-public class gcp {
-   private final Reference2ObjectMap<cxc, gcp.a> a = new Reference2ObjectArrayMap();
-   private final gcy b;
-
-   public gcp(gcy $$0) {
-      this.b = $$0;
+public interface gcp {
+   static gcp a(aza $$0) {
+      return new gco($$0);
    }
 
-   public void a() {
-      this.a.clear();
-   }
+   static gcp a(cxx $$0) {
+      Objects.requireNonNull($$0);
 
-   private void a(cxc $$0, baz $$1, dfq $$2, boolean $$3) {
-      List<czn> $$4 = $$2.a($$1);
-      if (!$$4.isEmpty()) {
-         this.a.put($$0, new gcp.a($$4, $$3));
-      }
-   }
-
-   protected void a(cxc $$0, baz $$1, dfq $$2) {
-      this.a($$0, $$1, $$2, false);
-   }
-
-   protected void b(cxc $$0, baz $$1, dfq $$2) {
-      this.a($$0, $$1, $$2, true);
-   }
-
-   public void a(fsm $$0, fpt $$1, boolean $$2) {
-      this.a.forEach(($$3, $$4) -> {
-         int $$5 = $$3.e;
-         int $$6 = $$3.f;
-         if ($$4.b && $$2) {
-            $$0.a($$5 - 4, $$6 - 4, $$5 + 20, $$6 + 20, 822018048);
-         } else {
-            $$0.a($$5, $$6, $$5 + 16, $$6 + 16, 822018048);
-         }
-
-         czn $$7 = $$4.a(this.b.currentIndex());
-         $$0.b($$7, $$5, $$6);
-         $$0.a(grc.P(), $$5, $$6, $$5 + 16, $$6 + 16, 822083583);
-         if ($$4.b) {
-            $$0.a($$1.h, $$7, $$5, $$6);
-         }
+      return (gcp)(switch ($$0) {
+         case cxw $$1 -> new gcn($$1.a());
+         case gcm.a $$2 -> new gcm($$2);
+         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
       });
    }
 
-   public void a(fsm $$0, fpt $$1, int $$2, int $$3, @Nullable cxc $$4) {
-      if ($$4 != null) {
-         gcp.a $$5 = (gcp.a)this.a.get($$4);
-         if ($$5 != null) {
-            czn $$6 = $$5.a(this.b.currentIndex());
-            $$0.a($$1.h, fys.a($$1, $$6), $$2, $$3, $$6.a(kk.G));
-         }
-      }
+   int a(ftv var1);
+
+   int b(ftv var1);
+
+   default boolean a() {
+      return false;
    }
 
-   static record a(List<czn> a, boolean b) {
+   default void a(ftv $$0, int $$1, int $$2, Matrix4f $$3, gsa.a $$4) {
+   }
 
-      public czn a(int $$0) {
-         int $$1 = this.a.size();
-         return $$1 == 0 ? czn.k : this.a.get($$0 % $$1);
-      }
+   default void a(ftv $$0, int $$1, int $$2, int $$3, int $$4, ftx $$5) {
    }
 }

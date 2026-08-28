@@ -1,5 +1,3 @@
-public class fhe extends RuntimeException {
-   public fhe(String $$0) {
-      super($$0);
-   }
+public interface fhe<T> extends fhk<T> {
+   boolean b(iv var1, T var2);
 }

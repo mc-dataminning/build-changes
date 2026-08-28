@@ -1,17 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record eys(iv b, int c, int d) {
-   public static final Codec<eys> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(iv.a.fieldOf("pos").forGetter(eys::b), Codec.INT.fieldOf("rotation").forGetter(eys::c), Codec.INT.fieldOf("entity_id").forGetter(eys::d))
-            .apply($$0, eys::new)
-   );
+public class eys {
+   @Nullable
+   public static eyw a(djx $$0, @Nullable jb $$1, @Nullable jb $$2) {
+      if ($$0.K().b(cvj.c)) {
+         eyw $$3 = eyw.a($$0.A).a(eyw.a.a);
+         if ($$2 != null) {
+            $$3 = $$3.a($$2);
+         }
 
-   public String a() {
-      return a(this.b);
+         if ($$1 != null) {
+            $$3 = $$3.b($$1);
+         }
+
+         return $$3;
+      } else {
+         return null;
+      }
    }
 
-   public static String a(iv $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   @Nullable
+   public static eyw a(@Nullable eyw $$0, jb $$1) {
+      return $$0 == null ? null : $$0.b($$1);
    }
 }

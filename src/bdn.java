@@ -1,14 +1,33 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import java.util.stream.IntStream;
 
-public class bdn extends bht {
-   public bdn(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Colorless shulker entity fix", biz.D, "minecraft:shulker");
+public class bdn extends DataFix {
+   private static final long a = 32L;
+   private static final long b = 4294967295L;
+
+   public bdn(Schema $$0) {
+      super($$0, false);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.get("Color").asInt(0) == 10 ? $$0x.set("Color", $$0x.createByte((byte)16)) : $$0x);
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "ChunkTicketUnpackPosFix",
+         this.getInputSchema().getType(bjb.i),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(),
+               $$0x -> $$0x.update(
+                     "data",
+                     $$0xx -> $$0xx.update("tickets", $$0xxx -> $$0xxx.createList($$0xxx.asStream().map($$0xxxx -> $$0xxxx.update("chunk_pos", $$0xxxxx -> {
+                                 long $$1 = $$0xxxxx.asLong(0L);
+                                 int $$2 = (int)($$1 & 4294967295L);
+                                 int $$3 = (int)($$1 >>> 32 & 4294967295L);
+                                 return $$0xxxxx.createIntList(IntStream.of($$2, $$3));
+                              }))))
+                  )
+            )
+      );
    }
 }

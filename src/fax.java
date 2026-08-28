@@ -1,65 +1,66 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.function.Predicate;
 
-public class fax extends fbg {
-   public static final MapCodec<fax> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(fdz.a.fieldOf("levels").forGetter($$0x -> $$0x.b), ju.a(mh.aR).optionalFieldOf("options").forGetter($$0x -> $$0x.c)))
-            .apply($$0, fax::new)
-   );
-   private final fdy b;
-   private final Optional<jj<dga>> c;
+public abstract class fax implements fap {
+   protected final List<fdq> e;
+   private final Predicate<fah> a;
 
-   fax(List<fdc> $$0, fdy $$1, Optional<jj<dga>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   protected fax(List<fdq> $$0) {
+      this.e = $$0;
+      this.a = ag.a($$0);
    }
 
-   @Override
-   public fbi<fax> b() {
-      return fbj.g;
+   protected static <T extends fax> P1<Mu<T>, List<fdq>> a(Instance<T> $$0) {
+      return $$0.group(fdq.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   public Set<bax<?>> a() {
-      return this.b.a();
+   public void a(fan $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public czn a(czn $$0, ezt $$1) {
-      azv $$2 = $$1.b();
-      jt $$3 = $$1.d().F_();
-      return dgc.a($$2, $$0, this.b.a($$1), $$3, this.c);
+   protected final boolean a(fah $$0) {
+      return this.a.test($$0);
    }
 
-   public static fax.a a(jh.a $$0, fdy $$1) {
-      return new fax.a($$1).a($$0.e(mh.aR).b(axe.n));
-   }
+   public abstract fay a();
 
-   public static class a extends fbg.a<fax.a> {
-      private final fdy a;
-      private Optional<jj<dga>> b = Optional.empty();
+   public abstract static class a<T extends fax.a<T>> implements fdi<T> {
+      private final Builder<fdq> a = ImmutableList.builder();
 
-      public a(fdy $$0) {
-         this.a = $$0;
+      protected abstract T aF_();
+
+      public T a(fdq.a $$0) {
+         this.a.add($$0.build());
+         return this.aF_();
       }
 
-      protected fax.a a() {
-         return this;
+      public final T e() {
+         return this.aF_();
       }
 
-      public fax.a a(jj<dga> $$0) {
-         this.b = Optional.of($$0);
-         return this;
+      protected List<fdq> f() {
+         return this.a.build();
       }
 
-      @Override
-      public fbh b() {
-         return new fax(this.g(), this.a, this.b);
+      public fao.a a(fax.a<?> $$0) {
+         return new fao.a(this, $$0);
       }
+
+      public fat.a b(fax.a<?> $$0) {
+         return new fat.a(this, $$0);
+      }
+
+      public fbb.a c(fax.a<?> $$0) {
+         return new fbb.a(this, $$0);
+      }
+
+      public abstract fax b();
    }
 }

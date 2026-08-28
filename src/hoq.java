@@ -1,56 +1,50 @@
-import com.google.common.collect.Maps;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+public class hoq extends hog {
+   private static final float n = 0.0F;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final cuk s;
+   private float t = 0.0F;
 
-public class hoq {
-   private final avg a;
-   private final Map<alg, CompletableFuture<fho>> b = Maps.newHashMap();
-
-   public hoq(avg $$0) {
-      this.a = $$0;
+   public hoq(cuk $$0) {
+      super(awp.pz, awq.g, hox.t());
+      this.s = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
+      this.f = (double)((float)$$0.dA());
+      this.g = (double)((float)$$0.dC());
+      this.h = (double)((float)$$0.dG());
    }
 
-   public CompletableFuture<fho> a(alg $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
-            try {
-               fho var5;
-               try (
-                  InputStream $$1 = this.a.open($$0x);
-                  hok $$2 = new hom($$1);
-               ) {
-                  ByteBuffer $$3 = $$2.b();
-                  var5 = new fho($$3, $$2.a());
-               }
-
-               return var5;
-            } catch (IOException var10) {
-               throw new CompletionException(var10);
-            }
-         }, ag.j()));
+   @Override
+   public boolean s() {
+      return !this.s.ba();
    }
 
-   public CompletableFuture<hoh> a(alg $$0, boolean $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            InputStream $$2 = this.a.open($$0);
-            return (hoh)($$1 ? new hon(hom::new, $$2) : new hom($$2));
-         } catch (IOException var4) {
-            throw new CompletionException(var4);
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.s.dQ()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.s.dA());
+         this.g = (double)((float)this.s.dC());
+         this.h = (double)((float)this.s.dG());
+         float $$0 = (float)this.s.dy().i();
+         boolean $$1 = !this.s.cp() && this.s.f() instanceof cuz;
+         if ($$0 >= 0.01F && this.s.dV().u().i() && !$$1) {
+            this.t = azo.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = azo.h(azo.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
+         } else {
+            this.t = 0.0F;
+            this.d = 0.0F;
          }
-      }, ag.j());
-   }
-
-   public void a() {
-      this.b.values().forEach($$0 -> $$0.thenAccept(fho::b));
-      this.b.clear();
-   }
-
-   public CompletableFuture<?> a(Collection<hnl> $$0) {
-      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
+      }
    }
 }

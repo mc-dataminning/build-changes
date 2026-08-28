@@ -1,46 +1,42 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ReferenceLinkedOpenHashSet;
-import it.unimi.dsi.fastutil.objects.ReferenceSortedSets;
 import java.util.List;
-import java.util.SequencedSet;
+import java.util.function.Consumer;
 
-public record dcr(boolean d, SequencedSet<kj<?>> e) {
-   private static final Codec<SequencedSet<kj<?>>> f = kj.a.listOf().xmap(ReferenceLinkedOpenHashSet::new, List::copyOf);
-   public static final Codec<dcr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("hide_tooltip", false).forGetter(dcr::a),
-               f.optionalFieldOf("hidden_components", ReferenceSortedSets.emptySet()).forGetter(dcr::b)
-            )
-            .apply($$0, dcr::new)
-   );
-   public static final yw<wj, dcr> b = yw.a(yu.b, dcr::a, kj.b.a(yu.a(ReferenceLinkedOpenHashSet::new)), dcr::b, dcr::new);
-   public static final dcr c = new dcr(false, ReferenceSortedSets.emptySet());
+public record dcr(List<xa> e, List<xa> f) implements ddd {
+   public static final dcr a = new dcr(List.of());
+   public static final int b = 256;
+   private static final xx g = xx.a.a(o.f).b(true);
+   public static final Codec<dcr> c = xc.a.sizeLimitedListOf(256).xmap(dcr::new, dcr::a);
+   public static final yy<wl, dcr> d = xc.b.a(yw.c(256)).a(dcr::new, dcr::a);
 
-   public dcr a(kj<?> $$0, boolean $$1) {
-      if (this.e.contains($$0) == $$1) {
-         return this;
+   public dcr(List<xa> $$0) {
+      this($$0, Lists.transform($$0, $$0x -> xd.a($$0x.f(), g)));
+   }
+
+   public dcr(List<xa> e, List<xa> f) {
+      if (e.size() > 256) {
+         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
       } else {
-         SequencedSet<kj<?>> $$2 = new ReferenceLinkedOpenHashSet(this.e);
-         if ($$1) {
-            $$2.add($$0);
-         } else {
-            $$2.remove($$0);
-         }
-
-         return new dcr(this.d, $$2);
+         this.e = e;
+         this.f = f;
       }
    }
 
-   public boolean a(kj<?> $$0) {
-      return !this.d && !this.e.contains($$0);
+   public dcr a(xa $$0) {
+      return new dcr(ag.a(this.e, $$0));
    }
 
-   public boolean a() {
-      return this.d;
+   @Override
+   public void a(czu.b $$0, Consumer<xa> $$1, dbn $$2, kf $$3) {
+      this.f.forEach($$1);
    }
 
-   public SequencedSet<kj<?>> b() {
+   public List<xa> a() {
       return this.e;
+   }
+
+   public List<xa> b() {
+      return this.f;
    }
 }

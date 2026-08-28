@@ -1,32 +1,21 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-
-public enum daj implements bak {
-   a(0, "common", o.p),
-   b(1, "uncommon", o.o),
-   c(2, "rare", o.l),
-   d(3, "epic", o.n);
-
-   public static final Codec<daj> e = bak.b(daj::values);
-   public static final IntFunction<daj> f = ayc.a($$0 -> $$0.h, values(), ayc.a.a);
-   public static final yw<ByteBuf, daj> g = yu.a(f, $$0 -> $$0.h);
-   private final int h;
-   private final String i;
-   private final o j;
-
-   private daj(final int $$0, final String $$1, final o $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-   }
-
-   public o a() {
-      return this.j;
+public class daj extends dbk {
+   public daj(czu.a $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public bur a(djx $$0, crx $$1, buq $$2) {
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awp.oJ, awq.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected csh a(ars $$0, bxu $$1, czy $$2) {
+      return new cte($$0, $$1, $$2);
+   }
+
+   @Override
+   protected csh a(djx $$0, jp $$1, czy $$2) {
+      return new cte($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

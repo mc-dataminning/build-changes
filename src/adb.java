@@ -1,69 +1,26 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Optional;
 
-public class adb implements zf<abu> {
-   public static final yw<vu, adb> a = zf.a(adb::a, adb::new);
-   public static final adb.a b = new adb.a(0);
-   public static final adb.a c = new adb.a(1);
-   public static final adb.a d = new adb.a(2);
-   public static final adb.a e = new adb.a(3);
-   public static final adb.a f = new adb.a(4);
-   public static final adb.a g = new adb.a(5);
-   public static final adb.a h = new adb.a(6);
-   public static final adb.a i = new adb.a(7);
-   public static final adb.a j = new adb.a(8);
-   public static final adb.a k = new adb.a(9);
-   public static final adb.a l = new adb.a(10);
-   public static final adb.a m = new adb.a(11);
-   public static final adb.a n = new adb.a(12);
-   public static final adb.a o = new adb.a(13);
-   public static final int p = 0;
-   public static final int q = 101;
-   public static final int r = 102;
-   public static final int s = 103;
-   public static final int t = 104;
-   private final adb.a u;
-   private final float v;
-
-   public adb(adb.a $$0, float $$1) {
-      this.u = $$0;
-      this.v = $$1;
-   }
-
-   private adb(vu $$0) {
-      this.u = (adb.a)adb.a.a.get($$0.readUnsignedByte());
-      this.v = $$0.readFloat();
-   }
-
-   private void a(vu $$0) {
-      $$0.l(this.u.b);
-      $$0.a(this.v);
-   }
+public record adb(ffq b, Optional<ffq> c, lw d, jf<awo> e) implements zh<abw> {
+   public static final yy<wl, adb> a = yy.a(ffq.b, adb::b, ffq.b.a(yw::a), adb::e, ly.bl, adb::f, awo.d, adb::g, adb::new);
 
    @Override
-   public zh<adb> a() {
-      return agn.G;
+   public zj<adb> a() {
+      return agp.E;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public adb.a b() {
-      return this.u;
+   public Optional<ffq> e() {
+      return this.c;
    }
 
-   public float e() {
-      return this.v;
+   public lw f() {
+      return this.d;
    }
 
-   public static class a {
-      static final Int2ObjectMap<adb.a> a = new Int2ObjectOpenHashMap();
-      final int b;
-
-      public a(int $$0) {
-         this.b = $$0;
-         a.put($$0, this);
-      }
+   public jf<awo> g() {
+      return this.e;
    }
 }

@@ -1,72 +1,102 @@
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dvi extends dpa implements dro {
-   public static final MapCodec<dvi> c = b(dvi::new);
-   public static final ebr<ebp> d = dpa.b;
-   private static final ffw e = dmr.b(12.0, 0.0, 16.0);
+public class dvi extends dwo implements dnf {
+   public static final MapCodec<dvi> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               alh.a(mh.i).fieldOf("fruit").forGetter($$0x -> $$0x.e),
+               alh.a(mh.i).fieldOf("attached_stem").forGetter($$0x -> $$0x.f),
+               alh.a(mh.K).fieldOf("seed").forGetter($$0x -> $$0x.g),
+               t()
+            )
+            .apply($$0, dvi::new)
+   );
+   public static final int b = 7;
+   public static final ece c = ebu.ay;
+   private static final fgk[] d = dnc.a(7, $$0 -> dnc.b(2.0, 0.0, (double)(2 + $$0 * 2)));
+   private final alh<dnc> e;
+   private final alh<dnc> f;
+   private final alh<czu> g;
 
    @Override
    public MapCodec<dvi> a() {
-      return c;
+      return a;
    }
 
-   public dvi(eas.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return e;
-   }
-
-   @Override
-   protected boolean b(eat $$0, diq $$1, iv $$2) {
-      return $$0.c($$1, $$2, jb.b) && !$$0.a(dmt.lp);
+   protected dvi(alh<dnc> $$0, alh<dnc> $$1, alh<czu> $$2, ebd.d $$3) {
+      super($$3);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.l(this.C.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected czn a(djp $$0, iv $$1, eat $$2, boolean $$3) {
-      return new czn(dmt.bG);
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return d[$$0.c(c)];
    }
 
-   @Nullable
    @Override
-   public eat a(ddg $$0) {
-      eat $$1 = super.a($$0);
-      if ($$1 != null) {
-         exa $$2 = $$0.q().b_($$0.a().d());
-         if ($$2.a(axh.a) && $$2.e() == 8) {
-            return $$1;
+   protected boolean b(ebe $$0, djb $$1, iv $$2) {
+      return $$0.a(dne.cN);
+   }
+
+   @Override
+   protected void b(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      if ($$1.b($$2, 0) >= 9) {
+         float $$4 = doz.a(this, $$1, $$2);
+         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
+            int $$5 = $$0.c(c);
+            if ($$5 < 7) {
+               $$0 = $$0.b(c, Integer.valueOf($$5 + 1));
+               $$1.a($$2, $$0, 2);
+            } else {
+               jb $$6 = jb.c.a.a($$3);
+               iv $$7 = $$2.a($$6);
+               ebe $$8 = $$1.a_($$7.e());
+               if ($$1.a_($$7).l() && ($$8.a(dne.cN) || $$8.a(axe.ah))) {
+                  js<dnc> $$9 = $$1.J_().f(mh.i);
+                  Optional<dnc> $$10 = $$9.f(this.e);
+                  Optional<dnc> $$11 = $$9.f(this.f);
+                  if ($$10.isPresent() && $$11.isPresent()) {
+                     $$1.b($$7, $$10.get().m());
+                     $$1.b($$2, $$11.get().m().b(drd.e, $$6));
+                  }
+               }
+            }
          }
       }
-
-      return null;
    }
 
    @Override
-   protected boolean a(eat $$0, djp $$1, iv $$2) {
-      if ($$0.c(d) == ebp.a) {
-         eat $$3 = $$1.a_($$2.e());
-         return $$3.a(this) && $$3.c(d) == ebp.b;
-      } else {
-         exa $$4 = $$1.b_($$2);
-         return super.a($$0, $$1, $$2) && $$4.a(axh.a) && $$4.e() == 8;
+   protected czy a(dka $$0, iv $$1, ebe $$2, boolean $$3) {
+      return new czy((djw)DataFixUtils.orElse($$0.J_().f(mh.K).f(this.g), this));
+   }
+
+   @Override
+   public boolean a(dka $$0, iv $$1, ebe $$2) {
+      return $$2.c(c) != 7;
+   }
+
+   @Override
+   public boolean a(djx $$0, azx $$1, iv $$2, ebe $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ars $$0, azx $$1, iv $$2, ebe $$3) {
+      int $$4 = Math.min(7, $$3.c(c) + azo.a($$0.A, 2, 5));
+      ebe $$5 = $$3.b(c, Integer.valueOf($$4));
+      $$0.a($$2, $$5, 2);
+      if ($$4 == 7) {
+         $$5.b($$0, $$2, $$0.A);
       }
    }
 
    @Override
-   protected exa b_(eat $$0) {
-      return exb.c.a(false);
-   }
-
-   @Override
-   public boolean a(@Nullable bxj $$0, diq $$1, iv $$2, eat $$3, ewz $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(djn $$0, iv $$1, eat $$2, exa $$3) {
-      return false;
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(c);
    }
 }

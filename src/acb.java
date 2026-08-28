@@ -1,53 +1,45 @@
-public class acb implements zf<abu> {
-   public static final yw<wj, acb> a = zf.a(acb::a, acb::new);
-   private final iv b;
-   private final int c;
+public class acb implements zh<abw> {
+   public static final yy<vw, acb> a = zh.a(acb::a, acb::new);
+   private final int b;
+   private final iv c;
    private final int d;
-   private final dmr e;
 
-   public acb(iv $$0, dmr $$1, int $$2, int $$3) {
+   public acb(int $$0, iv $$1, int $$2) {
       this.b = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private acb(wj $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readUnsignedByte();
+   private acb(vw $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
       this.d = $$0.readUnsignedByte();
-      this.e = yu.a(mh.i).decode($$0);
    }
 
-   private void a(wj $$0) {
-      $$0.a(this.b);
-      $$0.l(this.c);
+   private void a(vw $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
       $$0.l(this.d);
-      yu.a(mh.i).encode($$0, this.e);
    }
 
    @Override
-   public zh<acb> a() {
-      return agn.i;
+   public zj<acb> a() {
+      return agp.g;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public iv b() {
+   public int b() {
       return this.b;
    }
 
-   public int e() {
+   public iv e() {
       return this.c;
    }
 
    public int f() {
       return this.d;
-   }
-
-   public dmr g() {
-      return this.e;
    }
 }

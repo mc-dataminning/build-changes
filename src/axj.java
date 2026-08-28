@@ -1,9 +1,11 @@
-public interface axj {
-   axr<czg> a = a("regular_goat_horns");
-   axr<czg> b = a("screaming_goat_horns");
-   axr<czg> c = a("goat_horns");
+public final class axj {
+   public static final axt<exn> a = a("water");
+   public static final axt<exn> b = a("lava");
 
-   private static axr<czg> a(String $$0) {
-      return axr.a(mh.aU, alg.b($$0));
+   private axj() {
+   }
+
+   private static axt<exn> a(String $$0) {
+      return axt.a(mh.F, ali.b($$0));
    }
 }

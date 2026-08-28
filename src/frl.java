@@ -1,62 +1,99 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.BiConsumer;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class frl implements mn {
-   private final mp.a d;
+public class frl {
+   private static final Logger b = LogUtils.getLogger();
+   public static final String a = "screenshots";
 
-   public frl(mp $$0) {
-      this.d = $$0.a(mp.b.b, "equipment");
+   public static void a(File $$0, fjq $$1, Consumer<xa> $$2) {
+      a($$0, null, $$1, $$2);
    }
 
-   private static void a(BiConsumer<alf<dhu>, hlw> $$0) {
-      $$0.accept(dhv.b, hlw.a().a(alg.b("leather"), true).a(alg.b("leather_overlay"), false).a(hlw.d.e, hlw.c.a(alg.b("leather"), true)).a());
-      $$0.accept(dhv.c, a("chainmail"));
-      $$0.accept(dhv.d, b("iron"));
-      $$0.accept(dhv.e, b("gold"));
-      $$0.accept(dhv.f, b("diamond"));
-      $$0.accept(dhv.g, hlw.a().b(alg.b("turtle_scute"), false).a());
-      $$0.accept(dhv.h, a("netherite"));
-      $$0.accept(dhv.i, hlw.a().a(hlw.d.d, hlw.c.b(alg.b("armadillo_scute"), false)).a(hlw.d.d, hlw.c.b(alg.b("armadillo_scute_overlay"), true)).a());
-      $$0.accept(dhv.j, hlw.a().a(hlw.d.c, new hlw.c(alg.b("elytra"), Optional.empty(), true)).a());
-      hlw.c $$1 = new hlw.c(alg.b("saddle"));
-      $$0.accept(
-         dhv.k, hlw.a().a(hlw.d.g, $$1).a(hlw.d.h, $$1).a(hlw.d.i, $$1).a(hlw.d.j, $$1).a(hlw.d.k, $$1).a(hlw.d.l, $$1).a(hlw.d.n, $$1).a(hlw.d.m, $$1).a()
-      );
-
-      for (Entry<cyl, alf<dhu>> $$2 : dhv.l.entrySet()) {
-         cyl $$3 = $$2.getKey();
-         alf<dhu> $$4 = $$2.getValue();
-         $$0.accept($$4, hlw.a().a(hlw.d.f, new hlw.c(alg.b($$3.c()))).a());
-      }
-
-      $$0.accept(dhv.m, hlw.a().a(hlw.d.f, new hlw.c(alg.b("trader_llama"))).a());
-   }
-
-   private static hlw a(String $$0) {
-      return hlw.a().a(alg.b($$0)).a();
-   }
-
-   private static hlw b(String $$0) {
-      return hlw.a().a(alg.b($$0)).a(hlw.d.e, hlw.c.a(alg.b($$0), false)).a();
-   }
-
-   @Override
-   public CompletableFuture<?> a(ml $$0) {
-      Map<alf<dhu>, hlw> $$1 = new HashMap<>();
-      a(($$1x, $$2) -> {
-         if ($$1.putIfAbsent($$1x, $$2) != null) {
-            throw new IllegalStateException("Tried to register equipment asset twice for id: " + $$1x);
+   public static void a(File $$0, @Nullable String $$1, fjq $$2, Consumer<xa> $$3) {
+      a($$2, $$3x -> {
+         File $$4 = new File($$0, "screenshots");
+         $$4.mkdir();
+         File $$5;
+         if ($$1 == null) {
+            $$5 = a($$4);
+         } else {
+            $$5 = new File($$4, $$1);
          }
+
+         ag.i().execute(() -> {
+            try {
+               fkg $$4x = $$3x;
+
+               try {
+                  $$3x.a($$5);
+                  xa $$3xx = xa.b($$5.getName()).a(o.t).a($$1xxx -> $$1xxx.a(new wy.d($$5.getAbsoluteFile())));
+                  $$3.accept(xa.a("screenshot.success", $$3xx));
+               } catch (Throwable var7) {
+                  if ($$3x != null) {
+                     try {
+                        $$4x.close();
+                     } catch (Throwable var6) {
+                        var7.addSuppressed(var6);
+                     }
+                  }
+
+                  throw var7;
+               }
+
+               if ($$3x != null) {
+                  $$3x.close();
+               }
+            } catch (Exception var8) {
+               b.warn("Couldn't save screenshot", var8);
+               $$3.accept(xa.a("screenshot.failure", var8.getMessage()));
+            }
+         });
       });
-      return mn.a($$0, hlw.a, this.d::a, $$1);
    }
 
-   @Override
-   public String a() {
-      return "Equipment Asset Definitions";
+   public static void a(fjq $$0, Consumer<fkg> $$1) {
+      int $$2 = $$0.c;
+      int $$3 = $$0.d;
+      flh $$4 = $$0.d();
+      if ($$4 == null) {
+         throw new IllegalStateException("Tried to capture screenshot of an incomplete framebuffer");
+      } else {
+         fig $$5 = RenderSystem.getDevice().a(() -> "Screenshot buffer", fie.c, fif.d, $$2 * $$3 * $$4.d().a());
+         fkz $$6 = RenderSystem.getDevice().b();
+         RenderSystem.getDevice().b().a($$4, $$5, 0, () -> {
+            try (fig.a $$6x = $$6.a($$5)) {
+               fkg $$7 = new fkg($$2, $$3, false);
+
+               for (int $$8 = 0; $$8 < $$3; $$8++) {
+                  for (int $$9 = 0; $$9 < $$2; $$9++) {
+                     int $$10 = $$6x.a().getInt(($$9 + $$8 * $$2) * $$4.d().a());
+                     $$7.a($$9, $$3 - $$8 - 1, $$10 | 0xFF000000);
+                  }
+               }
+
+               $$1.accept($$7);
+            }
+
+            $$5.close();
+         }, 0);
+      }
+   }
+
+   private static File a(File $$0) {
+      String $$1 = ag.f();
+      int $$2 = 1;
+
+      while (true) {
+         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
+         if (!$$3.exists()) {
+            return $$3;
+         }
+
+         $$2++;
+      }
    }
 }

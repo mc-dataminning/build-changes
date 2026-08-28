@@ -1,23 +1,16 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hhz() implements hig<alf<bwr<?>>> {
-   public static final Codec<alf<bwr<?>>> a = alf.a(mh.B);
-   public static final hig.a<hhz, alf<bwr<?>>> b = hig.a.a(MapCodec.unit(new hhz()), a);
+public record hhz() implements hid {
+   public static final MapCodec<hhz> a = MapCodec.unit(new hhz());
 
-   @Nullable
-   public alf<bwr<?>> a(czn $$0, @Nullable gkq $$1, @Nullable bxj $$2, int $$3, czl $$4) {
-      return $$2 == null ? null : $$2.an().r().h();
+   @Override
+   public boolean get(czy $$0, @Nullable gmb $$1, @Nullable bxu $$2, int $$3, czw $$4) {
+      return $$0.r();
    }
 
    @Override
-   public hig.a<hhz, alf<bwr<?>>> a() {
-      return b;
-   }
-
-   @Override
-   public Codec<alf<bwr<?>>> b() {
+   public MapCodec<hhz> a() {
       return a;
    }
 }

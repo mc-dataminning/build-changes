@@ -1,22 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class ena implements emc {
+public class ena implements emp {
    public static final Codec<ena> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, ena::new)
+      $$0 -> $$0.group(erf.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), erf.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, ena::new)
    );
-   public final int b;
-   public final int c;
-   public final float d;
+   public final jf<erf> b;
+   public final jf<erf> c;
 
-   public ena(int $$0, int $$1, float $$2) {
+   public ena(jf<erf> $$0, jf<erf> $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
+   }
+
+   @Override
+   public Stream<ejv<?, ?>> e() {
+      return Stream.concat(this.b.a().a(), this.c.a().a());
    }
 }

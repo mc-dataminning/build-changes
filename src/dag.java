@@ -1,47 +1,51 @@
-public class dag extends czj {
-   public dag(czj.a $$0) {
-      super($$0);
+public interface dag {
+   alh<dae> a = a("13");
+   alh<dae> b = a("cat");
+   alh<dae> c = a("blocks");
+   alh<dae> d = a("chirp");
+   alh<dae> e = a("far");
+   alh<dae> f = a("mall");
+   alh<dae> g = a("mellohi");
+   alh<dae> h = a("stal");
+   alh<dae> i = a("strad");
+   alh<dae> j = a("ward");
+   alh<dae> k = a("11");
+   alh<dae> l = a("wait");
+   alh<dae> m = a("pigstep");
+   alh<dae> n = a("otherside");
+   alh<dae> o = a("5");
+   alh<dae> p = a("relic");
+   alh<dae> q = a("precipice");
+   alh<dae> r = a("creator");
+   alh<dae> s = a("creator_music_box");
+
+   private static alh<dae> a(String $$0) {
+      return alh.a(mh.aV, ali.b($$0));
    }
 
-   @Override
-   public czn m() {
-      czn $$0 = super.m();
-      $$0.b(kk.R, new dbj(dbk.a));
-      return $$0;
+   private static void a(qh<dae> $$0, alh<dae> $$1, jf.c<awo> $$2, int $$3, int $$4) {
+      $$0.a($$1, new dae($$2, xa.c(ag.a("jukebox_song", $$1.a())), (float)$$3, $$4));
    }
 
-   @Override
-   public bug a(ddi $$0) {
-      djm $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      crm $$3 = $$0.o();
-      czn $$4 = $$0.n();
-      dbj $$5 = $$4.a(kk.R, dbj.a);
-      eat $$6 = $$1.a_($$2);
-      if ($$0.k() != jb.a && $$6.a(axc.co) && $$5.a(dbk.a)) {
-         $$1.a(null, $$2, awn.kM, awo.e, 1.0F, 1.0F);
-         $$3.a($$0.p(), czq.a($$4, $$3, new czn(czr.ts)));
-         $$3.b(awx.c.b($$4.h()));
-         if (!$$1.C) {
-            arq $$7 = (arq)$$1;
-
-            for (int $$8 = 0; $$8 < 5; $$8++) {
-               $$7.a(ly.ap, (double)$$2.u() + $$1.A.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.A.j(), 1, 0.0, 0.0, 0.0, 1.0);
-            }
-         }
-
-         $$1.a(null, $$2, awn.cB, awo.e, 1.0F, 1.0F);
-         $$1.a(null, eft.z, $$2);
-         $$1.b($$2, dmt.ts.m());
-         return bug.a;
-      } else {
-         return bug.e;
-      }
-   }
-
-   @Override
-   public wy a(czn $$0) {
-      dbj $$1 = $$0.a(kk.R);
-      return $$1 != null ? $$1.a(this.n + ".effect.") : super.a($$0);
+   static void a(qh<dae> $$0) {
+      a($$0, a, awp.qu, 178, 1);
+      a($$0, b, awp.qw, 185, 2);
+      a($$0, c, awp.qv, 345, 3);
+      a($$0, d, awp.qx, 185, 4);
+      a($$0, e, awp.qy, 174, 5);
+      a($$0, f, awp.qz, 197, 6);
+      a($$0, g, awp.qA, 96, 7);
+      a($$0, h, awp.qC, 150, 8);
+      a($$0, i, awp.qD, 188, 9);
+      a($$0, j, awp.qF, 251, 10);
+      a($$0, k, awp.qt, 71, 11);
+      a($$0, l, awp.qE, 238, 12);
+      a($$0, m, awp.qB, 149, 13);
+      a($$0, n, awp.qG, 195, 14);
+      a($$0, o, awp.qs, 178, 15);
+      a($$0, p, awp.qH, 218, 14);
+      a($$0, q, awp.qK, 299, 13);
+      a($$0, r, awp.qI, 176, 12);
+      a($$0, s, awp.qJ, 73, 11);
    }
 }

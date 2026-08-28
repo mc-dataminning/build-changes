@@ -1,11 +1,29 @@
-import javax.annotation.Nullable;
+public class hoo extends hog {
+   private final bwt n;
 
-public record hoo(@Nullable awk a, float b) {
-   public hoo(awk $$0) {
-      this($$0, 1.0F);
+   public hoo(awo $$0, awq $$1, float $$2, float $$3, bwt $$4, long $$5) {
+      super($$0, $$1, azx.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dA());
+      this.g = (double)((float)this.n.dC());
+      this.h = (double)((float)this.n.dG());
    }
 
-   public boolean a(hno $$0) {
-      return this.a == null ? false : this.a.d() && !this.a.a().a().a().equals($$0.a());
+   @Override
+   public boolean s() {
+      return !this.n.ba();
+   }
+
+   @Override
+   public void q() {
+      if (this.n.dQ()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.n.dA());
+         this.g = (double)((float)this.n.dC());
+         this.h = (double)((float)this.n.dG());
+      }
    }
 }

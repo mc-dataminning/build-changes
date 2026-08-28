@@ -1,22 +1,14 @@
 import java.time.Duration;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import jdk.jfr.consumer.RecordedEvent;
 
-public record brx<T extends brw>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
-   public static <T extends brw> brx<T> a(List<T> $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("No values");
-      } else {
-         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(brw::a)).toList();
-         Duration $$2 = $$1.stream().map(brw::a).reduce(Duration::plus).orElse(Duration.ZERO);
-         T $$3 = (T)$$1.get(0);
-         T $$4 = (T)$$1.get($$1.size() - 1);
-         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
-         int $$6 = $$1.size();
-         Map<Integer, Double> $$7 = bqz.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
-         return new brx<>($$3, $$4, $$5, $$6, $$7, $$2);
-      }
+public record brx(Duration a, djc b, ard c, eec d, String e) implements bsh {
+   public static brx a(RecordedEvent $$0) {
+      return new brx(
+         $$0.getDuration(),
+         new djc($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
+         new ard($$0.getInt("worldPosX"), $$0.getInt("worldPosZ")),
+         eec.a($$0.getString("status")),
+         $$0.getString("level")
+      );
    }
 }

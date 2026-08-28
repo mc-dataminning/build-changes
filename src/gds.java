@@ -1,7 +1,8 @@
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-@FunctionalInterface
-public interface gds {
-   boolean create(gdt var1, jm<alp> var2, ezl var3, @Nullable Path var4);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface gds {
 }

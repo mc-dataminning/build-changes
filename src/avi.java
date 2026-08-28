@@ -1,15 +1,29 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+import java.util.Optional;
 
-public abstract class avi<T> implements auw {
-   @Override
-   public final CompletableFuture<Void> reload(auw.a $$0, avd $$1, Executor $$2, Executor $$3) {
-      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, bqp.a()), $$2)
-         .thenCompose($$0::wait)
-         .thenAcceptAsync($$1x -> this.a((T)$$1x, $$1, bqp.a()), $$3);
+@FunctionalInterface
+public interface avi {
+   avi b = $$0 -> Optional.empty();
+
+   Optional<avd> getResource(ali var1);
+
+   default avd getResourceOrThrow(ali $$0) throws FileNotFoundException {
+      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
    }
 
-   protected abstract T b(avd var1, bqq var2);
+   default InputStream open(ali $$0) throws IOException {
+      return this.getResourceOrThrow($$0).d();
+   }
 
-   protected abstract void a(T var1, avd var2, bqq var3);
+   default BufferedReader openAsReader(ali $$0) throws IOException {
+      return this.getResourceOrThrow($$0).e();
+   }
+
+   static avi fromMap(Map<ali, avd> $$0) {
+      return $$1 -> Optional.ofNullable($$0.get($$1));
+   }
 }

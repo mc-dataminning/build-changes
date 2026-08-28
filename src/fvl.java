@@ -1,193 +1,81 @@
-import com.google.common.collect.Queues;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Deque;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class fvl {
-   private static final int a = 5;
-   private static final int b = -1;
-   final fpt c;
-   private final List<fvl.a<?>> d = new ArrayList<>();
-   private final BitSet e = new BitSet(5);
-   private final Deque<fvk> f = Queues.newArrayDeque();
-   private final Set<awm> g = new HashSet<>();
+public class fvl extends fuj {
+   private static final float a = 0.0625F;
+   private static final float b = 2.125F;
+   private static final float c = 100.0F;
+   private static final float d = 2.5F;
+   private static final float e = -5.0F;
+   private static final float f = 30.0F;
+   private static final float m = 50.0F;
+   private final fvl.a n;
+   private final Supplier<hmc> o;
+   private float p = -5.0F;
+   private float q = 30.0F;
 
-   public fvl(fpt $$0) {
-      this.c = $$0;
+   public fvl(int $$0, int $$1, gla $$2, Supplier<hmc> $$3) {
+      super(0, 0, $$0, $$1, wz.a);
+      this.n = fvl.a.a($$2);
+      this.o = $$3;
    }
 
-   public void a() {
-      MutableBoolean $$0 = new MutableBoolean(false);
-      this.d.removeIf($$1 -> {
-         fvk.a $$2 = $$1.h;
-         $$1.c();
-         if ($$1.h != $$2 && $$0.isFalse()) {
-            $$0.setTrue();
-            $$1.h.a(this.c.ak());
-         }
-
-         if ($$1.b()) {
-            this.e.clear($$1.d, $$1.d + $$1.e);
-            return true;
-         } else {
-            return false;
-         }
-      });
-      if (!this.f.isEmpty() && this.e() > 0) {
-         this.f.removeIf($$0x -> {
-            int $$1 = $$0x.h();
-            int $$2 = this.a($$1);
-            if ($$2 == -1) {
-               return false;
-            } else {
-               this.d.add(new fvl.a<>($$0x, $$2, $$1));
-               this.e.set($$2, $$2 + $$1);
-               awm $$3 = $$0x.b();
-               if ($$3 != null && this.g.add($$3)) {
-                  this.c.ak().a(hnj.a($$3, 1.0F, 1.0F));
-               }
-
-               return true;
-            }
-         });
-      }
-
-      this.g.clear();
+   @Override
+   protected void b(ftx $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)this.F() + (float)this.A() / 2.0F, (float)(this.G() + this.y()), 100.0F);
+      float $$4 = (float)this.y() / 2.125F;
+      $$0.c().b($$4, $$4, $$4);
+      $$0.c().a(0.0F, -0.0625F, 0.0F);
+      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
+      $$0.c().a(a.d.rotationDegrees(this.q));
+      $$0.d();
+      fkb.a(a.b.rotationDegrees(this.p));
+      this.n.a($$0, this.o.get());
+      $$0.d();
+      fkb.d();
+      $$0.c().b();
    }
 
-   public void a(fsm $$0) {
-      if (!this.c.n.X) {
-         int $$1 = $$0.a();
-
-         for (fvl.a<?> $$2 : this.d) {
-            $$2.a($$0, $$1);
-         }
-      }
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.p = azo.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
+      this.q += (float)$$2 * 2.5F;
    }
 
-   private int a(int $$0) {
-      if (this.e() >= $$0) {
-         int $$1 = 0;
-
-         for (int $$2 = 0; $$2 < 5; $$2++) {
-            if (this.e.get($$2)) {
-               $$1 = 0;
-            } else if (++$$1 == $$0) {
-               return $$2 + 1 - $$1;
-            }
-         }
-      }
-
-      return -1;
+   @Override
+   public void a(hqd $$0) {
    }
 
-   private int e() {
-      return 5 - this.e.cardinality();
+   @Override
+   protected void a(fyi $$0) {
+   }
+
+   @Override
+   public boolean E() {
+      return false;
    }
 
    @Nullable
-   public <T extends fvk> T a(Class<? extends T> $$0, Object $$1) {
-      for (fvl.a<?> $$2 : this.d) {
-         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().g().equals($$1)) {
-            return (T)$$2.a();
-         }
-      }
-
-      for (fvk $$3 : this.f) {
-         if ($$0.isAssignableFrom($$3.getClass()) && $$3.g().equals($$1)) {
-            return (T)$$3;
-         }
-      }
-
+   @Override
+   public ftu a(fyo $$0) {
       return null;
    }
 
-   public void b() {
-      this.e.clear();
-      this.d.clear();
-      this.f.clear();
-   }
-
-   public void a(fvk $$0) {
-      this.f.add($$0);
-   }
-
-   public fpt c() {
-      return this.c;
-   }
-
-   public double d() {
-      return this.c.n.D().c();
-   }
-
-   class a<T extends fvk> {
-      private static final long b = 600L;
-      private final T c;
-      final int d;
-      final int e;
-      private long f = -1L;
-      private long g = -1L;
-      fvk.a h = fvk.a.b;
-      private long i;
-      private float j;
-      private boolean k;
-
-      a(final T $$0, final int $$1, final int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
+   static record a(gjg a, gjg b) {
+      public static fvl.a a(gla $$0) {
+         gjg $$1 = new gjg($$0.a(gld.cs), false);
+         gjg $$2 = new gjg($$0.a(gld.cy), true);
+         return new fvl.a($$1, $$2);
       }
 
-      public T a() {
-         return this.c;
-      }
-
-      public boolean b() {
-         return this.k;
-      }
-
-      private void a(long $$0) {
-         float $$1 = azm.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
-         $$1 *= $$1;
-         if (this.h == fvk.a.b) {
-            this.j = 1.0F - $$1;
-         } else {
-            this.j = $$1;
-         }
-      }
-
-      public void c() {
-         long $$0 = ag.c();
-         if (this.f == -1L) {
-            this.f = $$0;
-            this.h = fvk.a.a;
-         }
-
-         if (this.h == fvk.a.a && $$0 - this.f <= 600L) {
-            this.g = $$0;
-         }
-
-         this.i = $$0 - this.g;
-         this.a($$0);
-         this.c.a(fvl.this, this.i);
-         fvk.a $$1 = this.c.a();
-         if ($$1 != this.h) {
-            this.f = $$0 - (long)((int)((1.0F - this.j) * 600.0F));
-            this.h = $$1;
-         }
-
-         this.k = this.h == fvk.a.b && $$0 - this.f > 600L;
-      }
-
-      public void a(fsm $$0, int $$1) {
+      public void a(ftx $$0, hmc $$1) {
          $$0.c().a();
-         $$0.c().a((float)$$1 - (float)this.c.c() * this.j, (float)(this.d * 32), 800.0F);
-         this.c.a($$0, fvl.this.c.h, this.i);
+         $$0.c().b(1.0F, 1.0F, -1.0F);
+         $$0.c().a(0.0F, -1.501F, 0.0F);
+         gjg $$2 = $$1.e() == hmc.a.a ? this.b : this.a;
+         gsl $$3 = $$2.a($$1.a());
+         $$0.a($$3x -> $$2.a($$0.c(), $$3x.getBuffer($$3), 15728880, hkq.d));
          $$0.c().b();
       }
    }

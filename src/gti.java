@@ -1,58 +1,104 @@
-public class gti implements gtd<dxw> {
-   private final gxw a;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import javax.annotation.Nullable;
 
-   public gti(gte.a $$0) {
-      this.a = $$0.e();
+public record gti(@Nullable jb b, int c, String d, @Nullable gti.b e, i f) {
+   public static final int a = -1;
+
+   public static float a(gti.b $$0, i $$1, int $$2) {
+      return $$0.a($$1.b($$2)) / 16.0F;
    }
 
-   public void a(dxw $$0, float $$1, fkd $$2, gqr $$3, int $$4, int $$5, ffc $$6) {
-      if ($$0.i() != null) {
-         int $$7 = $$0.m().c(ebj.by);
-         if ($$7 > 0) {
-            jb $$8 = $$0.c();
-            if ($$8 != null) {
-               czn $$9 = $$0.d();
-               if (!$$9.f()) {
-                  $$2.a();
-                  $$2.a(0.0F, 0.5F, 0.0F);
-                  float[] $$10 = this.a($$8, $$7);
-                  $$2.a($$10[0], $$10[1], $$10[2]);
-                  $$2.a(a.d.rotationDegrees(75.0F));
-                  boolean $$11 = $$8 == jb.f || $$8 == jb.e;
-                  $$2.a(a.d.rotationDegrees((float)(($$11 ? 90 : 0) + 11)));
-                  $$2.b(0.5F, 0.5F, 0.5F);
-                  int $$12 = gqm.a($$0.i(), $$0.m(), $$0.ax_().a($$8));
-                  this.a.a($$9, czl.i, $$12, hjg.d, $$2, $$3, $$0.i(), 0);
-                  $$2.b();
-               }
+   public static float b(gti.b $$0, i $$1, int $$2) {
+      return $$0.b($$1.b($$2)) / 16.0F;
+   }
+
+   @Nullable
+   public jb a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public String c() {
+      return this.d;
+   }
+
+   @Nullable
+   public gti.b d() {
+      return this.e;
+   }
+
+   public i e() {
+      return this.f;
+   }
+
+   protected static class a implements JsonDeserializer<gti> {
+      private static final int a = -1;
+      private static final int b = 0;
+
+      public gti a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         jb $$4 = c($$3);
+         int $$5 = a($$3);
+         String $$6 = b($$3);
+         gti.b $$7 = e($$3);
+         i $$8 = d($$3);
+         return new gti($$4, $$5, $$6, $$7, $$8);
+      }
+
+      private static int a(JsonObject $$0) {
+         return aze.a($$0, "tintindex", -1);
+      }
+
+      private static String b(JsonObject $$0) {
+         return aze.i($$0, "texture");
+      }
+
+      @Nullable
+      private static jb c(JsonObject $$0) {
+         String $$1 = aze.a($$0, "cullface", "");
+         return jb.a($$1);
+      }
+
+      private static i d(JsonObject $$0) {
+         int $$1 = aze.a($$0, "rotation", 0);
+         return i.a($$1);
+      }
+
+      @Nullable
+      private static gti.b e(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = aze.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float $$2 = aze.e($$1.get(0), "minU");
+               float $$3 = aze.e($$1.get(1), "minV");
+               float $$4 = aze.e($$1.get(2), "maxU");
+               float $$5 = aze.e($$1.get(3), "maxV");
+               return new gti.b($$2, $$3, $$4, $$5);
             }
          }
       }
    }
 
-   private float[] a(jb $$0, int $$1) {
-      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
-      float $$3 = (float)$$1 / 10.0F * 0.75F;
-      switch ($$0) {
-         case f:
-            $$2[0] = 0.73F + $$3;
-            break;
-         case e:
-            $$2[0] = 0.25F - $$3;
-            break;
-         case b:
-            $$2[1] = 0.25F + $$3;
-            break;
-         case a:
-            $$2[1] = -0.23F - $$3;
-            break;
-         case c:
-            $$2[2] = 0.25F - $$3;
-            break;
-         case d:
-            $$2[2] = 0.73F + $$3;
+   public static record b(float a, float b, float c, float d) {
+      public float a(int $$0) {
+         return $$0 != 0 && $$0 != 1 ? this.c : this.a;
       }
 
-      return $$2;
+      public float b(int $$0) {
+         return $$0 != 0 && $$0 != 3 ? this.d : this.b;
+      }
    }
 }

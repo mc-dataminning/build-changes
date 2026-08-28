@@ -1,87 +1,158 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.List;
+import java.util.function.Function;
 
-public record crb(wy q, Predicate<jf<cio>> r, Predicate<jf<cio>> s, ImmutableSet<czj> t, ImmutableSet<dmr> u, @Nullable awm v) {
-   public static final Predicate<jf<cio>> a = $$0 -> $$0.a(axm.a);
-   public static final alf<crb> b = a("none");
-   public static final alf<crb> c = a("armorer");
-   public static final alf<crb> d = a("butcher");
-   public static final alf<crb> e = a("cartographer");
-   public static final alf<crb> f = a("cleric");
-   public static final alf<crb> g = a("farmer");
-   public static final alf<crb> h = a("fisherman");
-   public static final alf<crb> i = a("fletcher");
-   public static final alf<crb> j = a("leatherworker");
-   public static final alf<crb> k = a("librarian");
-   public static final alf<crb> l = a("mason");
-   public static final alf<crb> m = a("nitwit");
-   public static final alf<crb> n = a("shepherd");
-   public static final alf<crb> o = a("toolsmith");
-   public static final alf<crb> p = a("weaponsmith");
+public class crb {
+   private static final float d = 0.5F;
+   private static final float e = 0.7F;
+   private static final float f = 1.2F;
+   private static final int g = 18;
+   private static final int h = azo.f(100.0F);
+   public static final int a = azo.f(133.59999F);
+   public static final int b = azo.f(84.0F);
+   private static final int i = azo.f(83.2F);
+   public static final int c = 1200;
+   private static final int j = 100;
+   private static final List<cid<? extends cic<? super cra>>> k = List.of(cid.d, cid.x);
+   private static final List<cgw<?>> l = List.of(
+      cgw.g,
+      cgw.h,
+      cgw.k,
+      cgw.l,
+      cgw.N,
+      cgw.o,
+      cgw.n,
+      cgw.F,
+      cgw.u,
+      cgw.p,
+      cgw.q,
+      cgw.C,
+      cgw.az,
+      cgw.aA,
+      cgw.aB,
+      cgw.aC,
+      cgw.aD,
+      cgw.aE,
+      cgw.aF,
+      cgw.aG,
+      cgw.aH,
+      cgw.aI,
+      cgw.aJ,
+      cgw.aK,
+      cgw.aL,
+      cgw.aM
+   );
+   private static final bzm<cra> m = ccy.a(
+      (Function<ccy.b<cra>, ? extends App<ccy.c<cra>, cdb<cra>>>)($$0 -> $$0.group($$0.a(cgw.aF)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$0.a($$1).isPresent()) {
+                  $$1.a(baw.a, 1200L);
+               }
 
-   private static alf<crb> a(String $$0) {
-      return alf.a(mh.aD, alg.b($$0));
+               return true;
+            }))
+   );
+
+   public static void a(cra $$0) {
+      $$0.ec().a(ImmutableList.of(ctr.y, ctr.z, ctr.x, ctr.k, ctr.w, ctr.v, ctr.b));
    }
 
-   private static crb a(js<crb> $$0, alf<crb> $$1, alf<cio> $$2, @Nullable awm $$3) {
-      return a($$0, $$1, $$1x -> $$1x.a($$2), $$1x -> $$1x.a($$2), $$3);
+   protected static byu<?> a(cra $$0, Dynamic<?> $$1) {
+      byu.b<cra> $$2 = byu.a(l, k);
+      byu<cra> $$3 = $$2.a($$1);
+      a($$3);
+      b($$3);
+      c($$3);
+      d($$3);
+      g($$3);
+      a($$0, $$3);
+      e($$3);
+      f($$3);
+      $$3.a(ImmutableSet.of(ctr.a));
+      $$3.b(ctr.b);
+      $$3.f();
+      return $$3;
    }
 
-   private static crb a(js<crb> $$0, alf<crb> $$1, Predicate<jf<cio>> $$2, Predicate<jf<cio>> $$3, @Nullable awm $$4) {
-      return a($$0, $$1, $$2, $$3, ImmutableSet.of(), ImmutableSet.of(), $$4);
+   private static void a(byu<cra> $$0) {
+      $$0.a(ctr.a, 0, ImmutableList.of(new ccf(0.8F), cdj.a(), new car(45, 90), new cav()));
    }
 
-   private static crb a(js<crb> $$0, alf<crb> $$1, alf<cio> $$2, ImmutableSet<czj> $$3, ImmutableSet<dmr> $$4, @Nullable awm $$5) {
-      return a($$0, $$1, $$1x -> $$1x.a($$2), $$1x -> $$1x.a($$2), $$3, $$4, $$5);
+   private static void b(byu<cra> $$0) {
+      $$0.a(ctr.y, 5, ImmutableList.of(new cdf(a)), cgw.aD);
    }
 
-   private static crb a(
-      js<crb> $$0, alf<crb> $$1, Predicate<jf<cio>> $$2, Predicate<jf<cio>> $$3, ImmutableSet<czj> $$4, ImmutableSet<dmr> $$5, @Nullable awm $$6
-   ) {
-      return js.a($$0, $$1, new crb(wy.c("entity." + $$1.a().b() + ".villager." + $$1.a().a()), $$2, $$3, $$4, $$5, $$6));
+   private static void c(byu<cra> $$0) {
+      $$0.a(ctr.z, ImmutableList.of(Pair.of(0, new cdg()), Pair.of(1, new cde(h))), ImmutableSet.of(Pair.of(cgw.az, cgx.b), Pair.of(cgw.aF, cgx.b)));
    }
 
-   public static crb a(js<crb> $$0) {
-      a($$0, b, cio.a, a, null);
-      a($$0, c, cip.a, awn.Cd);
-      a($$0, d, cip.b, awn.Ce);
-      a($$0, e, cip.c, awn.Cf);
-      a($$0, f, cip.d, awn.Cg);
-      a($$0, g, cip.e, ImmutableSet.of(czr.qk, czr.qj, czr.ww, czr.sG), ImmutableSet.of(dmt.cN), awn.Ch);
-      a($$0, h, cip.f, awn.Ci);
-      a($$0, i, cip.g, awn.Cj);
-      a($$0, j, cip.h, awn.Ck);
-      a($$0, k, cip.i, awn.Cl);
-      a($$0, l, cip.j, awn.Cm);
-      a($$0, m, cio.a, cio.a, null);
-      a($$0, n, cip.k, awn.Cn);
-      a($$0, o, cip.l, awn.Co);
-      return a($$0, p, cip.m, awn.Cp);
+   private static void d(byu<cra> $$0) {
+      $$0.a(
+         ctr.b,
+         10,
+         ImmutableList.of(
+            cdi.a(cra::q), cdm.a(), new cbi(ImmutableMap.of(cgw.aC, cgx.b), ImmutableList.of(Pair.of(cbd.a(0.5F), 2), Pair.of(new bzv(30, 60), 1)))
+         )
+      );
    }
 
-   public wy a() {
-      return this.q;
+   private static void e(byu<cra> $$0) {
+      $$0.a(ctr.w, 5, ImmutableList.of(cdi.a(cra::q), cae.a(cgw.aA, 2, 0.7F)), cgw.aA);
    }
 
-   public Predicate<jf<cio>> b() {
-      return this.r;
+   private static void f(byu<cra> $$0) {
+      $$0.a(ctr.v, 5, ImmutableList.of(cdi.a(cra::q), new cdk(i)), cgw.aC);
    }
 
-   public Predicate<jf<cio>> c() {
-      return this.s;
+   private static void g(byu<cra> $$0) {
+      $$0.a(ctr.x, 10, ImmutableList.of(new cdh()), cgw.az);
    }
 
-   public ImmutableSet<czj> d() {
-      return this.t;
+   private static void a(cra $$0, byu<cra> $$1) {
+      $$1.a(
+         ctr.k,
+         10,
+         ImmutableList.of(
+            m,
+            cca.a(($$1x, $$2) -> !$$0.n().d() || !$$0.b($$2), crb::a, false),
+            cbk.a($$1x -> a($$0, $$1x), (float)$$0.h(bza.m)),
+            cbq.a(1.2F),
+            new cdl(),
+            cas.a(18)
+         ),
+         cgw.p
+      );
    }
 
-   public ImmutableSet<dmr> e() {
-      return this.u;
+   private static boolean a(cra $$0, bxu $$1) {
+      return $$0.ec().c(cgw.p).filter($$1x -> $$1x == $$1).isPresent();
    }
 
-   @Nullable
-   public awm f() {
-      return this.v;
+   private static void a(ars $$0, cra $$1, bxu $$2) {
+      if (!$$1.b($$2)) {
+         $$1.c($$2);
+      }
+
+      a((bxu)$$1);
+   }
+
+   public static void a(bxu $$0) {
+      if ($$0.ec().a(cgw.aF)) {
+         $$0.ec().a(cgw.aF, baw.a, 1200L);
+      }
+   }
+
+   public static void a(cra $$0, iv $$1) {
+      if ($$0.dV().E_().a($$1) && !$$0.q().isPresent() && !$$0.ec().c(cgw.p).isPresent()) {
+         a((bxu)$$0);
+         $$0.ec().a(cgw.aH, baw.a, 100L);
+         $$0.ec().a(cgw.o, new bzo($$1), 100L);
+         $$0.ec().a(cgw.aA, $$1, 100L);
+         $$0.ec().b(cgw.n);
+      }
    }
 }

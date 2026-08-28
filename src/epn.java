@@ -1,29 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public class epn {
-   public static final Codec<epn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, eeq.c).fieldOf("height").forGetter(epn::a), mg.e.q().fieldOf("block").orElse(dmt.a).forGetter($$0x -> $$0x.b().b()))
-            .apply($$0, epn::new)
-   );
-   private final dmr b;
-   private final int c;
+public class epn extends epl {
+   public static final MapCodec<epn> a = MapCodec.unit(() -> epn.b);
+   public static final epn b = new epn();
 
-   public epn(int $$0, dmr $$1) {
-      this.c = $$0;
-      this.b = $$1;
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public eat b() {
-      return this.b.m();
+   @Override
+   protected epm<?> a() {
+      return epm.a;
    }
 
    @Override
-   public String toString() {
-      return (this.c != 1 ? this.c + "*" : "") + mg.e.b(this.b);
+   public void a(epl.a $$0) {
+      azx $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            iv $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dwp.d);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            iv $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dwp.f);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            iv $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dwp.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            iv $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dwp.c);
+            }
+         }
+      });
    }
 }

@@ -1,43 +1,53 @@
-import java.util.function.Supplier;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
-public class chs<U extends chr<?>> {
-   public static final chs<chb> a = a("dummy", chb::new);
-   public static final chs<chj> b = a("nearest_items", chj::new);
-   public static final chs<chk<bxj>> c = a("nearest_living_entities", chk::new);
-   public static final chs<cho> d = a("nearest_players", cho::new);
-   public static final chs<chi> e = a("nearest_bed", chi::new);
-   public static final chs<chf> f = a("hurt_by", chf::new);
-   public static final chs<chv> g = a("villager_hostiles", chv::new);
-   public static final chs<chu> h = a("villager_babies", chu::new);
-   public static final chs<chp> i = a("secondary_pois", chp::new);
-   public static final chs<chd> j = a("golem_detected", chd::new);
-   public static final chs<chh<ckl>> k = a("armadillo_scare_detected", () -> new chh<>(5, ckl::i, ckl::gF, cgl.H, 80));
-   public static final chs<chn> l = a("piglin_specific_sensor", chn::new);
-   public static final chs<chm> m = a("piglin_brute_specific_sensor", chm::new);
-   public static final chs<che> n = a("hoglin_specific_sensor", che::new);
-   public static final chs<cgy> o = a("nearest_adult", cgy::new);
-   public static final chs<cgz> p = a("axolotl_attackables", cgz::new);
-   public static final chs<cht> q = a("axolotl_temptations", () -> new cht(ckp.a()));
-   public static final chs<cht> r = a("goat_temptations", () -> new cht(clf.a()));
-   public static final chs<cht> s = a("frog_temptations", () -> new cht(ckx.a()));
-   public static final chs<cht> t = a("camel_temptations", () -> new cht(cku.b()));
-   public static final chs<cht> u = a("armadillo_temptations", () -> new cht(ckm.b()));
-   public static final chs<chc> v = a("frog_attackables", chc::new);
-   public static final chs<chg> w = a("is_in_water", chg::new);
-   public static final chs<chw> x = a("warden_entity_sensor", chw::new);
-   public static final chs<cht> y = a("sniffer_temptations", () -> new cht(clz.a()));
-   public static final chs<cha> z = a("breeze_attack_entity_sensor", cha::new);
-   private final Supplier<U> A;
+public class chs<T extends bxu> extends cic<T> {
+   private final BiPredicate<T, bxu> a;
+   private final Predicate<T> b;
+   private final cgw<Boolean> c;
+   private final int d;
 
-   private chs(Supplier<U> $$0) {
-      this.A = $$0;
+   public chs(int $$0, BiPredicate<T, bxu> $$1, Predicate<T> $$2, cgw<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
    }
 
-   public U a() {
-      return this.A.get();
+   @Override
+   protected void a(ars $$0, T $$1) {
+      if (!this.b.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
    }
 
-   private static <U extends chr<?>> chs<U> a(String $$0, Supplier<U> $$1) {
-      return js.a(mg.A, alg.b($$0), new chs<>($$1));
+   @Override
+   public Set<cgw<?>> a() {
+      return Set.of(cgw.g);
+   }
+
+   @Override
+   public void a(T $$0) {
+      Optional<List<bxu>> $$1 = $$0.ec().c(cgw.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public void b(T $$0) {
+      $$0.ec().a(this.c, true, (long)this.d);
+   }
+
+   public void c(T $$0) {
+      $$0.ec().b(this.c);
    }
 }

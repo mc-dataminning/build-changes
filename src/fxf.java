@@ -1,45 +1,17 @@
-import it.unimi.dsi.fastutil.ints.IntComparator;
+public record fxf(gsl a, gsl b, gsl c) {
+   public static fxf a(ali $$0) {
+      return new fxf(gsl.v($$0), gsl.z($$0), gsl.x($$0));
+   }
 
-public enum fxf {
-   a,
-   b,
-   c,
-   d;
+   public static fxf b(ali $$0) {
+      return new fxf(gsl.u($$0), gsl.y($$0), gsl.w($$0));
+   }
 
-   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
-
-   public fxe a() {
-      return switch (this) {
-         case a, b -> fxe.b;
-         case c, d -> fxe.a;
+   public gsl a(ftv.a $$0) {
+      return switch ($$0) {
+         case a -> this.a;
+         case b -> this.b;
+         case c -> this.c;
       };
-   }
-
-   public fxf b() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-         case c -> d;
-         case d -> c;
-      };
-   }
-
-   public boolean c() {
-      return switch (this) {
-         case a, c -> false;
-         case b, d -> true;
-      };
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return this.c() ? $$0 > $$1 : $$1 > $$0;
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return this.c() ? $$0 < $$1 : $$1 < $$0;
-   }
-
-   public IntComparator d() {
-      return this.e;
    }
 }

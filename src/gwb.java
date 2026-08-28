@@ -1,31 +1,104 @@
-import java.util.function.UnaryOperator;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class gwb extends gvm {
-   private final ghl a;
-   private final alg g;
-   private final ggp<hcq> h;
+public class gwb implements gwd.a {
+   final frd a;
+   private double b = Double.MIN_VALUE;
+   private final int c = 12;
+   @Nullable
+   private gwb.a d;
 
-   public gwb(gwy.a $$0, gjr $$1) {
-      super($$0);
-      this.g = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
-      this.a = new ghl.a($$0.a(gjs.E), $$0x -> grc.i());
-      this.h = new gfs($$0.a($$1));
+   public gwb(frd $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected ggp<hcq> a() {
-      return this.h;
+   public void a(flo $$0, gsa $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ag.d();
+      if ($$5 - this.b > 3.0E9) {
+         this.b = $$5;
+         hpl $$6 = this.a.V();
+         if ($$6 != null) {
+            this.d = new gwb.a($$6, $$2, $$4);
+         } else {
+            this.d = null;
+         }
+      }
+
+      if (this.d != null) {
+         Map<djc, String> $$7 = this.d.b.getNow(null);
+         double $$8 = this.a.j.k().b().e * 0.85;
+
+         for (Entry<djc, String> $$9 : this.d.a.entrySet()) {
+            djc $$10 = $$9.getKey();
+            String $$11 = $$9.getValue();
+            if ($$7 != null) {
+               $$11 = $$11 + $$7.get($$10);
+            }
+
+            String[] $$12 = $$11.split("\n");
+            int $$13 = 0;
+
+            for (String $$14 : $$12) {
+               gwd.a($$0, $$1, $$14, (double)jy.a($$10.h, 8), $$8 + (double)$$13, (double)jy.a($$10.i, 8), -1, 0.15F, true, 0.0F, true);
+               $$13 -= 2;
+            }
+         }
+      }
    }
 
-   @Override
-   protected grc b() {
-      return this.h.a(this.g);
-   }
+   final class a {
+      final Map<djc, String> a;
+      final CompletableFuture<Map<djc, String>> b;
 
-   @Override
-   protected void b(hcq $$0, fkd $$1, gqr $$2, int $$3) {
-      if (!$$0.f) {
-         this.a.a($$1, $$2.getBuffer(this.a.a(this.g)), $$3, hjg.d);
+      a(final hpl $$0, final double $$1, final double $$2) {
+         gmb $$3 = gwb.this.a.s;
+         alh<djx> $$4 = $$3.aj();
+         int $$5 = jy.a($$1);
+         int $$6 = jy.a($$2);
+         Builder<djc, String> $$7 = ImmutableMap.builder();
+         glx $$8 = $$3.h();
+
+         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
+            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
+               djc $$11 = new djc($$9, $$10);
+               String $$12 = "";
+               edl $$13 = $$8.a($$9, $$10, false);
+               $$12 = $$12 + "Client: ";
+               if ($$13 == null) {
+                  $$12 = $$12 + "0n/a\n";
+               } else {
+                  $$12 = $$12 + ($$13.E() ? " E" : "");
+                  $$12 = $$12 + "\n";
+               }
+
+               $$7.put($$11, $$12);
+            }
+         }
+
+         this.a = $$7.build();
+         this.b = $$0.a(() -> {
+            ars $$4x = $$0.a($$4);
+            if ($$4x == null) {
+               return ImmutableMap.of();
+            } else {
+               Builder<djc, String> $$5x = ImmutableMap.builder();
+               arp $$6x = $$4x.m();
+
+               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
+                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
+                     djc $$9x = new djc($$7x, $$8x);
+                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
+                  }
+               }
+
+               return $$5x.build();
+            }
+         });
       }
    }
 }

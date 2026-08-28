@@ -1,35 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class hil implements hiq {
-   private final gta a;
-   private final hlx b;
+public record hil() implements hid {
+   public static final MapCodec<hil> a = MapCodec.unit(new hil());
 
-   public hil(gta $$0, hlx $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   @Override
+   public boolean get(czy $$0, @Nullable gmb $$1, @Nullable bxu $$2, int $$3, czw $$4) {
+      if ($$2 instanceof gqz $$5 && $$5.gj().g() == $$0) {
+         return true;
+      }
+
+      return false;
    }
 
    @Override
-   public void a(czl $$0, fkd $$1, gqr $$2, int $$3, int $$4, boolean $$5) {
-      this.a.a($$1, $$2, $$3, $$4, this.b);
-   }
-
-   public static record a(alg b) implements hiu.a {
-      public static final MapCodec<hil.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alg.a.fieldOf("texture").forGetter(hil.a::b)).apply($$0, hil.a::new));
-
-      public a(cyl $$0) {
-         this(grl.b($$0));
-      }
-
-      @Override
-      public MapCodec<hil.a> a() {
-         return a;
-      }
-
-      @Override
-      public hiu<?> a(gjp $$0) {
-         return new hil(new gta($$0), grl.o.a(this.b));
-      }
+   public MapCodec<hil> a() {
+      return a;
    }
 }

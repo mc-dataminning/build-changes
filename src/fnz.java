@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fnz extends Exception {
+   public final fmf a;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface fnz {
+   public fnz(fmf $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public String getMessage() {
+      return this.a.c();
+   }
 }

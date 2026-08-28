@@ -1,24 +1,49 @@
-import java.util.Collection;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public interface fwv extends fuk, fwy {
-   fwv.a w();
+public interface fwv {
+   Object b = new Object();
+   int c = 160;
+   int d = 32;
 
-   default boolean E() {
-      return true;
+   fwv.a a();
+
+   void a(fww var1, long var2);
+
+   @Nullable
+   default awo b() {
+      return null;
    }
 
-   default Collection<? extends fwv> L() {
-      return List.of(this);
+   void a(ftx var1, ftv var2, long var3);
+
+   default Object g() {
+      return b;
+   }
+
+   default int c() {
+      return 160;
+   }
+
+   default int d() {
+      return 32;
+   }
+
+   default int h() {
+      return azo.e(this.d(), 32);
    }
 
    public static enum a {
-      a,
-      b,
-      c;
+      a(awp.BC),
+      b(awp.BD);
 
-      public boolean a() {
-         return this == c;
+      private final awo c;
+
+      private a(final awo $$0) {
+         this.c = $$0;
+      }
+
+      public void a(hqd $$0) {
+         $$0.a(hos.a(this.c, 1.0F, 1.0F));
       }
    }
 }

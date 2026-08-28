@@ -1,66 +1,19 @@
-public abstract class hbv<M extends ghv> extends hbm<her, M> {
-   private final ghl a;
-   private final alg b;
-   private final hbv.a c;
+public class hbv extends hcw<hec, ghg> {
+   private static final ali a = ali.b("textures/entity/breeze/breeze_wind.png");
+   private final ghg b;
 
-   public hbv(gxz<?, her, M> $$0, ghl $$1, alg $$2, hbv.a $$3) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+   public hbv(gyi.a $$0, haf<hec, ghg> $$1) {
+      super($$1);
+      this.b = new ghg($$0.a(gld.L));
    }
 
-   protected abstract int a(her var1);
-
-   private void a(fkd $$0, gqr $$1, int $$2, float $$3, float $$4, float $$5) {
-      float $$6 = azm.c($$3 * $$3 + $$5 * $$5);
-      float $$7 = (float)(Math.atan2((double)$$3, (double)$$5) * 180.0F / (float)Math.PI);
-      float $$8 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
-      $$0.a(a.d.rotationDegrees($$7 - 90.0F));
-      $$0.a(a.f.rotationDegrees($$8));
-      this.a.a($$0, $$1.getBuffer(this.a.a(this.b)), $$2, hjg.d);
+   public void a(flo $$0, gsa $$1, int $$2, hec $$3, float $$4, float $$5) {
+      flr $$6 = $$1.getBuffer(gsl.a(a, this.a($$3.u) % 1.0F, 0.0F));
+      this.b.a($$3);
+      gxn.a(this.b, this.b.d()).a($$0, $$6, $$2, hkq.d);
    }
 
-   public void a(fkd $$0, gqr $$1, int $$2, her $$3, float $$4, float $$5) {
-      int $$6 = this.a($$3);
-      if ($$6 > 0) {
-         azv $$7 = azv.a((long)$$3.aG);
-
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            $$0.a();
-            gjt $$9 = this.d().a($$7);
-            gjt.a $$10 = $$9.a($$7);
-            $$9.a($$0);
-            float $$11 = $$7.i();
-            float $$12 = $$7.i();
-            float $$13 = $$7.i();
-            if (this.c == hbv.a.b) {
-               int $$14 = $$7.a(3);
-               switch ($$14) {
-                  case 0:
-                     $$11 = a($$11);
-                     break;
-                  case 1:
-                     $$12 = a($$12);
-                     break;
-                  default:
-                     $$13 = a($$13);
-               }
-            }
-
-            $$0.a(azm.h($$11, $$10.b, $$10.e) / 16.0F, azm.h($$12, $$10.c, $$10.f) / 16.0F, azm.h($$13, $$10.d, $$10.g) / 16.0F);
-            this.a($$0, $$1, $$2, -($$11 * 2.0F - 1.0F), -($$12 * 2.0F - 1.0F), -($$13 * 2.0F - 1.0F));
-            $$0.b();
-         }
-      }
-   }
-
-   private static float a(float $$0) {
-      return $$0 > 0.5F ? 1.0F : 0.5F;
-   }
-
-   public static enum a {
-      a,
-      b;
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

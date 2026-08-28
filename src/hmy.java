@@ -1,3 +1,8 @@
-public interface hmy {
-   void a();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface hmy {
 }

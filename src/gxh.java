@@ -1,23 +1,32 @@
-public class gxh extends gye<ckw, hdp, ggu> {
-   public gxh(gwy.a $$0) {
-      super($$0, new ggu($$0.a(gjs.aZ)), 0.3F);
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
+
+public class gxh extends gxc<ckz, hdw, ggu> {
+   private static final Map<ckz.e, ali> a = ag.a(Maps.newHashMap(), $$0 -> {
+      for (ckz.e $$1 : ckz.e.values()) {
+         $$0.put($$1, ali.b(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+      }
+   });
+
+   public gxh(gyi.a $$0) {
+      super($$0, new ggu($$0.a(gld.m)), new ggu($$0.a(gld.n)), 0.5F);
    }
 
-   public alg a(hdp $$0) {
-      return $$0.f;
+   public ali a(hdw $$0) {
+      return a.get($$0.a);
    }
 
-   public hdp b() {
-      return new hdp();
+   public hdw a() {
+      return new hdw();
    }
 
-   public void a(ckw $$0, hdp $$1, float $$2) {
+   public void a(ckz $$0, hdw $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.bh();
-      $$1.b.a($$0.bI);
-      $$1.c.a($$0.bK);
-      $$1.d.a($$0.bL);
-      $$1.e.a($$0.bM);
-      $$1.f = $$0.x().a().b().b();
+      $$1.a = $$0.t();
+      $$1.b = $$0.bP.a($$2);
+      $$1.d = $$0.bQ.a($$2);
+      $$1.e = $$0.bR.a($$2);
+      $$1.c = $$0.bS.a($$2);
    }
 }

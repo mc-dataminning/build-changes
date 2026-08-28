@@ -1,68 +1,44 @@
-import com.mojang.datafixers.Products.P4;
-import com.mojang.datafixers.Products.P5;
-import com.mojang.datafixers.Products.P9;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Optional;
 
-public class esh extends esk {
-   public static final MapCodec<esh> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, esh::new));
-   private final int c;
-   private final int d;
-   private final int e;
-   private final jj<dkp> f;
+public record esh(List<esh.a> c, esy d) {
+   public static final Codec<esh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(esh.a.a.listOf().fieldOf("structures").forGetter(esh::a), esy.b.fieldOf("placement").forGetter(esh::b)).apply($$0, esh::new)
+   );
+   public static final Codec<jf<esh>> b = ale.a(mh.bd, a);
 
-   private static P9<Mu<esh>, ka, esk.c, Float, Integer, Optional<esk.a>, Integer, Integer, Integer, jj<dkp>> b(Instance<esh> $$0) {
-      P5<Mu<esh>, ka, esk.c, Float, Integer, Optional<esk.a>> $$1 = a($$0);
-      P4<Mu<esh>, Integer, Integer, Integer, jj<dkp>> $$2 = $$0.group(
-         Codec.intRange(0, 1023).fieldOf("distance").forGetter(esh::a),
-         Codec.intRange(0, 1023).fieldOf("spread").forGetter(esh::b),
-         Codec.intRange(1, 4095).fieldOf("count").forGetter(esh::c),
-         ju.a(mh.aG).fieldOf("preferred_biomes").forGetter(esh::d)
-      );
-      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
+   public esh(jf<esb> $$0, esy $$1) {
+      this(List.of(new esh.a($$0, 1)), $$1);
    }
 
-   public esh(ka $$0, esk.c $$1, float $$2, int $$3, Optional<esk.a> $$4, int $$5, int $$6, int $$7, jj<dkp> $$8) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
-      this.f = $$8;
+   public static esh.a a(jf<esb> $$0, int $$1) {
+      return new esh.a($$0, $$1);
    }
 
-   public esh(int $$0, int $$1, int $$2, jj<dkp> $$3) {
-      this(ka.i, esk.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
+   public static esh.a a(jf<esb> $$0) {
+      return new esh.a($$0, 1);
    }
 
-   public int a() {
+   public List<esh.a> a() {
       return this.c;
    }
 
-   public int b() {
+   public esy b() {
       return this.d;
    }
 
-   public int c() {
-      return this.e;
-   }
+   public static record a(jf<esb> b, int c) {
+      public static final Codec<esh.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(esb.b.fieldOf("structure").forGetter(esh.a::a), ayw.m.fieldOf("weight").forGetter(esh.a::b)).apply($$0, esh.a::new)
+      );
 
-   public jj<dkp> d() {
-      return this.f;
-   }
+      public jf<esb> a() {
+         return this.b;
+      }
 
-   @Override
-   protected boolean a(ecs $$0, int $$1, int $$2) {
-      List<dir> $$3 = $$0.a(this);
-      return $$3 == null ? false : $$3.contains(new dir($$1, $$2));
-   }
-
-   @Override
-   public esl<?> e() {
-      return esl.b;
+      public int b() {
+         return this.c;
+      }
    }
 }

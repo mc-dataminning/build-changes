@@ -1,76 +1,76 @@
-public class gnl extends goz {
-   private final double a;
-   private final double b;
-   private final double F;
-   private final int G;
-   private final int H;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-   gnl(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, int $$8) {
-      super($$0, $$1, $$2, $$3);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      this.n = false;
-      this.t = (int)(Math.random() * 5.0) + 25;
-      this.G = $$7;
-      this.H = $$8;
+public class gnl extends gng {
+   final Supplier<hmc> g;
+
+   gnl(UUID $$0, Instant $$1, UUID $$2, Supplier<hmc> $$3) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
+   }
+
+   public Supplier<hmc> a() {
+      return this.g;
+   }
+
+   public gnl c() {
+      gnl $$0 = new gnl(this.a, this.b, this.c, this.g);
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      return $$0;
    }
 
    @Override
-   public god b() {
-      return god.b;
+   public gad a(gad $$0, gnk $$1) {
+      return new ges($$0, $$1, this);
    }
 
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         float $$1 = 1.0F - $$0;
-         this.g = this.a + this.j * (double)$$1;
-         this.h = this.b + this.k * (double)$$1;
-         this.i = this.F + this.l * (double)$$1;
-         int $$2 = axw.a($$0, this.G, this.H);
-         this.a((float)axw.b($$2) / 255.0F, (float)axw.c($$2) / 255.0F, (float)axw.d($$2) / 255.0F);
-         this.e((float)axw.a($$2) / 255.0F);
-      }
-   }
-
-   public static class a implements goc<mc> {
-      private final gou a;
-
-      public a(gou $$0) {
-         this.a = $$0;
+   public static class a extends gng.a<gnl> {
+      public a(gnl $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gnl $$8 = new gnl($$1, $$2, $$3, $$4, $$5, $$6, $$7, -12210434, -1);
-         $$8.d(azm.b($$1.C_(), 3.0F, 5.0F));
-         $$8.a(this.a);
-         return $$8;
+      public a(UUID $$0, Supplier<hmc> $$1, AbuseReportLimits $$2) {
+         super(new gnl(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
+
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g()) || this.i() != null;
+      }
+
+      @Nullable
+      @Override
+      public gng.b c() {
+         if (this.a.e == null) {
+            return gng.b.a;
+         } else {
+            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gng.b.d : super.c();
+         }
+      }
+
+      @Override
+      public Either<gng.c, gng.b> a(gnk $$0) {
+         gng.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            String $$2 = Objects.requireNonNull(this.a.e).a();
+            ReportedEntity $$3 = new ReportedEntity(this.a.c);
+            hmc $$4 = this.a.g.get();
+            String $$5 = $$4.b();
+            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
+            return Either.left(new gng.c(this.a.a, gnj.b, $$6));
+         }
       }
    }
 }

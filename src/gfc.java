@@ -1,86 +1,132 @@
-public class gfc extends ggp<hch> implements gff {
-   private final gjt a = this.v.b("head");
-   private final gjt b = this.v.b("body");
-   private final gjt c = this.b.b("right_arm");
-   private final gjt d = this.b.b("left_arm");
-   private final gjt e = this.b.b("right_wing");
-   private final gjt f = this.b.b("left_wing");
-   private static final float g = (float) (Math.PI / 4);
-   private static final float i = -1.134464F;
-   private static final float j = (float) (-Math.PI / 3);
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-   public gfc(gjt $$0) {
-      super($$0.b("root"), grc::j);
-   }
+public class gfc extends gad {
+   private static final xa a = xa.c("selectWorld.experimental.title");
+   private static final xa b = xa.c("selectWorld.experimental.message");
+   private static final xa c = xa.c("selectWorld.experimental.details");
+   private static final int d = 10;
+   private static final int s = 100;
+   private final BooleanConsumer u;
+   final Collection<aum> v;
+   private final fxy w = new fxy().a(10).b(20);
 
-   public static gjz a() {
-      gkb $$0 = new gkb();
-      gkd $$1 = $$0.a();
-      gkd $$2 = $$1.a("root", gjy.c(), gjv.a(0.0F, 23.5F, 0.0F));
-      $$2.a("head", gjy.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new gjx(0.0F)), gjv.a(0.0F, -3.99F, 0.0F));
-      gkd $$3 = $$2.a(
-         "body",
-         gjy.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new gjx(0.0F)).a(0, 16).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F, new gjx(-0.2F)),
-         gjv.a(0.0F, -4.0F, 0.0F)
-      );
-      $$3.a("right_arm", gjy.c().a(23, 0).a(-0.75F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new gjx(-0.01F)), gjv.a(-1.75F, 0.5F, 0.0F));
-      $$3.a("left_arm", gjy.c().a(23, 6).a(-0.25F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new gjx(-0.01F)), gjv.a(1.75F, 0.5F, 0.0F));
-      $$3.a("right_wing", gjy.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new gjx(0.0F)), gjv.a(-0.5F, 0.0F, 0.6F));
-      $$3.a("left_wing", gjy.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new gjx(0.0F)), gjv.a(0.5F, 0.0F, 0.6F));
-      return gjz.a($$0, 32, 32);
-   }
-
-   public void a(hch $$0) {
-      super.a($$0);
-      float $$1 = $$0.ae;
-      float $$2 = $$0.ad;
-      float $$3 = $$0.u * 20.0F * (float) (Math.PI / 180.0) + $$2;
-      float $$4 = azm.b($$3) * (float) Math.PI * 0.15F + $$1;
-      float $$5 = $$0.u * 9.0F * (float) (Math.PI / 180.0);
-      float $$6 = Math.min($$1 / 0.3F, 1.0F);
-      float $$7 = 1.0F - $$6;
-      float $$8 = $$0.d;
-      if ($$0.a) {
-         float $$9 = $$0.u * 8.0F * (float) (Math.PI / 180.0) + $$1;
-         float $$10 = azm.b($$9) * 16.0F * (float) (Math.PI / 180.0);
-         float $$11 = $$0.c;
-         float $$12 = azm.b($$9) * 14.0F * (float) (Math.PI / 180.0);
-         float $$13 = azm.b($$9) * 30.0F * (float) (Math.PI / 180.0);
-         this.v.f = $$0.b ? (float) (Math.PI * 4) * $$11 : this.v.f;
-         this.v.g = $$10 * (1.0F - $$11);
-         this.a.f = $$13 * (1.0F - $$11);
-         this.a.g = $$12 * (1.0F - $$11);
-      } else {
-         this.a.e = $$0.ab * (float) (Math.PI / 180.0);
-         this.a.f = $$0.aa * (float) (Math.PI / 180.0);
-      }
-
-      this.e.e = 0.43633232F * (1.0F - $$6);
-      this.e.f = (float) (-Math.PI / 4) + $$4;
-      this.f.e = 0.43633232F * (1.0F - $$6);
-      this.f.f = (float) (Math.PI / 4) - $$4;
-      this.b.e = $$6 * (float) (Math.PI / 4);
-      float $$14 = $$8 * azm.h($$6, (float) (-Math.PI / 3), -1.134464F);
-      this.v.c = this.v.c + (float)Math.cos((double)$$5) * 0.25F * $$7;
-      this.c.e = $$14;
-      this.d.e = $$14;
-      float $$15 = $$7 * (1.0F - $$8);
-      float $$16 = 0.43633232F - azm.b($$5 + (float) (Math.PI * 3.0 / 2.0)) * (float) Math.PI * 0.075F * $$15;
-      this.d.g = -$$16;
-      this.c.g = $$16;
-      this.c.f = 0.27925268F * $$8;
-      this.d.f = -0.27925268F * $$8;
+   public gfc(Collection<aum> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.v = $$0;
+      this.u = $$1;
    }
 
    @Override
-   public void a(bxa $$0, fkd $$1) {
-      float $$2 = 1.0F;
-      float $$3 = 3.0F;
-      this.v.a($$1);
-      this.b.a($$1);
-      $$1.a(0.0F, 0.0625F, 0.1875F);
-      $$1.a(a.b.rotation(this.c.e));
-      $$1.b(0.7F, 0.7F, 0.7F);
-      $$1.a(0.0625F, 0.0F, 0.0F);
+   public xa i() {
+      return wz.a(super.i(), b);
+   }
+
+   @Override
+   protected void aS_() {
+      super.aS_();
+      fxy.b $$0 = this.w.d(2);
+      fyc $$1 = $$0.b().b();
+      $$0.a(new fvs(this.l, this.p), 2, $$1);
+      fvf $$2 = $$0.a(new fvf(b, this.p).b(true), 2, $$1);
+      $$2.d(310);
+      $$0.a(ful.a(c, $$0x -> this.m.a(new gfc.a())).a(100).a(), 2, $$1);
+      $$0.a(ful.a(wz.i, $$0x -> this.u.accept(true)).a());
+      $$0.a(ful.a(wz.k, $$0x -> this.u.accept(false)).a());
+      this.w.a($$1x -> {
+         fuj var10000 = this.c($$1x);
+      });
+      this.w.a();
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      fxx.a(this.w, 0, 0, this.n, this.o, 0.5F, 0.5F);
+   }
+
+   @Override
+   public void aP_() {
+      this.u.accept(false);
+   }
+
+   class a extends gad {
+      private static final xa b = xa.c("selectWorld.experimental.details.title");
+      final fxz c = new fxz(this);
+      @Nullable
+      private gfc.a.a d;
+
+      a() {
+         super(b);
+      }
+
+      @Override
+      protected void aS_() {
+         this.c.a(b, this.p);
+         this.d = this.c.c(new gfc.a.a(this.m, gfc.this.v));
+         this.c.b(ful.a(wz.k, $$0 -> this.aP_()).a());
+         this.c.a($$1 -> {
+            fuj var10000 = this.c($$1);
+         });
+         this.c();
+      }
+
+      @Override
+      protected void c() {
+         if (this.d != null) {
+            this.d.a(this.n, this.c);
+         }
+
+         this.c.a();
+      }
+
+      @Override
+      public void aP_() {
+         this.m.a(gfc.this);
+      }
+
+      class a extends fvh<gfc.a.b> {
+         public a(final frd $$0, final Collection<aum> $$1) {
+            super($$0, a.this.n, a.this.c.d(), a.this.c.c(), (9 + 2) * 3);
+
+            for (aum $$2 : $$1) {
+               String $$3 = cvj.a(cvj.g, $$2.e());
+               if (!$$3.isEmpty()) {
+                  xa $$4 = xd.a($$2.b().f(), xx.a.a(true));
+                  xa $$5 = xa.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, fve.a(a.this.p, $$5, this.a())));
+               }
+            }
+         }
+
+         @Override
+         public int a() {
+            return this.g * 3 / 4;
+         }
+      }
+
+      class b extends fvh.a<gfc.a.b> {
+         private final xa b;
+         private final xa c;
+         private final fve d;
+
+         b(final xa $$0, final xa $$1, final fve $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
+         }
+
+         @Override
+         public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.m.h, this.b, $$3, $$2, -1);
+            this.d.b($$0, $$3, $$2 + 12, 9, -1);
+         }
+
+         @Override
+         public xa a() {
+            return xa.a("narrator.select", wz.a(this.b, this.c));
+         }
+      }
    }
 }

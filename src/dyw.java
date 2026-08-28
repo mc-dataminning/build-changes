@@ -1,143 +1,95 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dyw extends dxr implements fgo.a {
-   public static final String b = "RecordItem";
-   public static final String c = "ticks_since_song_started";
-   private czn d = czn.k;
-   private final czu e = new czu(this::k, this.ax_());
+public class dyw {
+   public static final alh<dyv> a = a("blank");
+   public static final alh<dyv> b = a("angler");
+   public static final alh<dyv> c = a("archer");
+   public static final alh<dyv> d = a("arms_up");
+   public static final alh<dyv> e = a("blade");
+   public static final alh<dyv> f = a("brewer");
+   public static final alh<dyv> g = a("burn");
+   public static final alh<dyv> h = a("danger");
+   public static final alh<dyv> i = a("explorer");
+   public static final alh<dyv> j = a("flow");
+   public static final alh<dyv> k = a("friend");
+   public static final alh<dyv> l = a("guster");
+   public static final alh<dyv> m = a("heart");
+   public static final alh<dyv> n = a("heartbreak");
+   public static final alh<dyv> o = a("howl");
+   public static final alh<dyv> p = a("miner");
+   public static final alh<dyv> q = a("mourner");
+   public static final alh<dyv> r = a("plenty");
+   public static final alh<dyv> s = a("prize");
+   public static final alh<dyv> t = a("scrape");
+   public static final alh<dyv> u = a("sheaf");
+   public static final alh<dyv> v = a("shelter");
+   public static final alh<dyv> w = a("skull");
+   public static final alh<dyv> x = a("snort");
+   private static final Map<czu, alh<dyv>> y = Map.ofEntries(
+      Map.entry(dac.rB, a),
+      Map.entry(dac.za, b),
+      Map.entry(dac.zb, c),
+      Map.entry(dac.zc, d),
+      Map.entry(dac.zd, e),
+      Map.entry(dac.ze, f),
+      Map.entry(dac.zf, g),
+      Map.entry(dac.zg, h),
+      Map.entry(dac.zh, i),
+      Map.entry(dac.zi, j),
+      Map.entry(dac.zj, k),
+      Map.entry(dac.zk, l),
+      Map.entry(dac.zl, m),
+      Map.entry(dac.zm, n),
+      Map.entry(dac.zn, o),
+      Map.entry(dac.zo, p),
+      Map.entry(dac.zp, q),
+      Map.entry(dac.zq, r),
+      Map.entry(dac.zr, s),
+      Map.entry(dac.zs, t),
+      Map.entry(dac.zt, u),
+      Map.entry(dac.zu, v),
+      Map.entry(dac.zv, w),
+      Map.entry(dac.zw, x)
+   );
 
-   public dyw(iv $$0, eat $$1) {
-      super(dxt.e, $$0, $$1);
+   @Nullable
+   public static alh<dyv> a(czu $$0) {
+      return y.get($$0);
    }
 
-   public czu j() {
-      return this.e;
+   private static alh<dyv> a(String $$0) {
+      return alh.a(mh.s, ali.b($$0));
    }
 
-   public void k() {
-      this.n.a(this.ax_(), this.m().b());
-      this.e();
+   public static dyv a(js<dyv> $$0) {
+      a($$0, b, "angler_pottery_pattern");
+      a($$0, c, "archer_pottery_pattern");
+      a($$0, d, "arms_up_pottery_pattern");
+      a($$0, e, "blade_pottery_pattern");
+      a($$0, f, "brewer_pottery_pattern");
+      a($$0, g, "burn_pottery_pattern");
+      a($$0, h, "danger_pottery_pattern");
+      a($$0, i, "explorer_pottery_pattern");
+      a($$0, j, "flow_pottery_pattern");
+      a($$0, k, "friend_pottery_pattern");
+      a($$0, l, "guster_pottery_pattern");
+      a($$0, m, "heart_pottery_pattern");
+      a($$0, n, "heartbreak_pottery_pattern");
+      a($$0, o, "howl_pottery_pattern");
+      a($$0, p, "miner_pottery_pattern");
+      a($$0, q, "mourner_pottery_pattern");
+      a($$0, r, "plenty_pottery_pattern");
+      a($$0, s, "prize_pottery_pattern");
+      a($$0, t, "scrape_pottery_pattern");
+      a($$0, u, "sheaf_pottery_pattern");
+      a($$0, v, "shelter_pottery_pattern");
+      a($$0, w, "skull_pottery_pattern");
+      a($$0, x, "snort_pottery_pattern");
+      return a($$0, a, "decorated_pot_side");
    }
 
-   private void a(boolean $$0) {
-      if (this.n != null && this.n.a_(this.ax_()) == this.m()) {
-         this.n.a(this.ax_(), this.m().b(dqz.b, Boolean.valueOf($$0)), 2);
-         this.n.a(eft.c, this.ax_(), eft.a.a(this.m()));
-      }
-   }
-
-   public void s() {
-      if (this.n != null && !this.n.C) {
-         iv $$0 = this.ax_();
-         czn $$1 = this.f();
-         if (!$$1.f()) {
-            this.h();
-            ffc $$2 = ffc.a($$0, 0.5, 1.01, 0.5).a(this.n.A, 0.7F);
-            czn $$3 = $$1.v();
-            cnr $$4 = new cnr(this.n, $$2.a(), $$2.b(), $$2.c(), $$3);
-            $$4.j();
-            this.n.b($$4);
-         }
-      }
-   }
-
-   public static void a(djm $$0, iv $$1, eat $$2, dyw $$3) {
-      $$3.e.b($$0, $$2);
-   }
-
-   public int u() {
-      return czt.a(this.n.F_(), this.d).map(jf::a).map(czt::e).orElse(0);
-   }
-
-   @Override
-   protected void a(tz $$0, jh.a $$1) {
-      super.a($$0, $$1);
-      ale<uw> $$2 = $$1.a(un.a);
-      czn $$3 = $$0.<czn>a("RecordItem", czn.b, $$2).orElse(czn.k);
-      if (!this.d.f() && !czn.c($$3, this.d)) {
-         this.e.a(this.n, this.m());
-      }
-
-      this.d = $$3;
-      if ($$0.b("ticks_since_song_started", 4)) {
-         czt.a($$1, this.d).ifPresent($$1x -> this.e.a($$1x, $$0.g("ticks_since_song_started")));
-      }
-   }
-
-   @Override
-   protected void b(tz $$0, jh.a $$1) {
-      super.b($$0, $$1);
-      if (!this.f().f()) {
-         ale<uw> $$2 = $$1.a(un.a);
-         $$0.a("RecordItem", czn.b, $$2, this.f());
-      }
-
-      if (this.e.b() != null) {
-         $$0.a("ticks_since_song_started", this.e.c());
-      }
-   }
-
-   @Override
-   public czn f() {
-      return this.d;
-   }
-
-   @Override
-   public czn c(int $$0) {
-      czn $$1 = this.d;
-      this.b(czn.k);
-      return $$1;
-   }
-
-   @Override
-   public void b(czn $$0) {
-      this.d = $$0;
-      boolean $$1 = !this.d.f();
-      Optional<jf<czt>> $$2 = czt.a(this.n.F_(), this.d);
-      this.a($$1);
-      if ($$1 && $$2.isPresent()) {
-         this.e.a(this.n, $$2.get());
-      } else {
-         this.e.a(this.n, this.m());
-      }
-   }
-
-   @Override
-   public int ak_() {
-      return 1;
-   }
-
-   @Override
-   public dxr t() {
-      return this;
-   }
-
-   @Override
-   public boolean b(int $$0, czn $$1) {
-      return $$1.c(kk.ae) && this.a($$0).f();
-   }
-
-   @Override
-   public boolean a(btz $$0, int $$1, czn $$2) {
-      return $$0.a_(czn::f);
-   }
-
-   @Override
-   public void a(iv $$0, eat $$1) {
-      this.s();
-   }
-
-   @VisibleForTesting
-   public void c(czn $$0) {
-      this.d = $$0;
-      czt.a(this.n.F_(), $$0).ifPresent($$0x -> this.e.a($$0x, 0L));
-      this.n.a(this.ax_(), this.m().b());
-      this.e();
-   }
-
-   @VisibleForTesting
-   public void v() {
-      czt.a(this.n.F_(), this.f()).ifPresent($$0 -> this.e.a(this.n, (jf<czt>)$$0));
+   private static dyv a(js<dyv> $$0, alh<dyv> $$1, String $$2) {
+      return js.a($$0, $$1, new dyv(ali.b($$2)));
    }
 }

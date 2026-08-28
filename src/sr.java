@@ -11,7 +11,7 @@ public abstract class sr {
    }
 
    private static MapCodec<? extends sr> a(js<MapCodec<? extends sr>> $$0, String $$1, MapCodec<? extends sr> $$2) {
-      return js.a($$0, alf.a(mh.az, alg.b($$1)), $$2);
+      return js.a($$0, alh.a(mh.az, ali.b($$1)), $$2);
    }
 
    protected sr(tk<jf<tl>> $$0) {
@@ -26,7 +26,7 @@ public abstract class sr {
       return this.a.a();
    }
 
-   public alg e() {
+   public ali e() {
       return this.a.b();
    }
 
@@ -58,7 +58,7 @@ public abstract class sr {
       return this.a.j();
    }
 
-   public dtl m() {
+   public dtw m() {
       return this.a.f();
    }
 
@@ -66,25 +66,25 @@ public abstract class sr {
       return this.a;
    }
 
-   protected abstract xm b();
+   protected abstract xo b();
 
-   public wy c() {
+   public xa c() {
       return this.o().b(this.p());
    }
 
-   protected xm o() {
+   protected xo o() {
       return this.a("test_instance.description.type", this.b());
    }
 
-   protected wy p() {
+   protected xa p() {
       return this.a("test_instance.description.structure", this.a.b().toString()).b(this.a("test_instance.description.batch", this.a.a().g()));
    }
 
-   protected xm a(String $$0, String $$1) {
-      return this.a($$0, wy.b($$1));
+   protected xo a(String $$0, String $$1) {
+      return this.a($$0, xa.b($$1));
    }
 
-   protected xm a(String $$0, xm $$1) {
-      return wy.a($$0, $$1.a(o.j)).b(wy.b("\n"));
+   protected xo a(String $$0, xo $$1) {
+      return xa.a($$0, $$1.a(o.j)).b(xa.b("\n"));
    }
 }

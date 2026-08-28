@@ -1,42 +1,53 @@
-public class gpb extends gnx {
-   private final bwi a;
-   private int b;
-   private final int D;
-   private final lw E;
-
-   public gpb(gkq $$0, bwi $$1, lw $$2) {
-      this($$0, $$1, $$2, 3);
-   }
-
-   public gpb(gkq $$0, bwi $$1, lw $$2, int $$3) {
-      this($$0, $$1, $$2, $$3, $$1.dx());
-   }
-
-   private gpb(gkq $$0, bwi $$1, lw $$2, int $$3, ffc $$4) {
-      super($$0, $$1.dz(), $$1.e(0.5), $$1.dF(), $$4.d, $$4.e, $$4.f);
-      this.a = $$1;
-      this.D = $$3;
-      this.E = $$2;
-      this.a();
+public class gpb extends gqk {
+   gpb(gmb $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
    }
 
    @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 16; $$0++) {
-         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
-         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
-            double $$4 = this.a.c($$1 / 4.0);
-            double $$5 = this.a.e(0.5 + $$2 / 4.0);
-            double $$6 = this.a.f($$3 / 4.0);
-            this.c.a(this.E, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
-         }
+   public gpo b() {
+      return gpo.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * azo.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements gpn<mc> {
+      private final gqf a;
+
+      public a(gqf $$0) {
+         this.a = $$0;
       }
 
-      this.b++;
-      if (this.b >= this.D) {
-         this.k();
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gpb $$8 = new gpb($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class b implements gpn<mc> {
+      private final gqf a;
+
+      public b(gqf $$0) {
+         this.a = $$0;
+      }
+
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gpb $$8 = new gpb($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

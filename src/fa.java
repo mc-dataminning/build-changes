@@ -13,49 +13,49 @@ import net.minecraft.server.MinecraftServer;
 
 public class fa implements fr<fa.a> {
    private static final Collection<String> a = Arrays.asList("Hello world!", "foo", "@e", "Hello @p :)");
-   static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("argument.message.too_long", $$0, $$1));
+   static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xa.b("argument.message.too_long", $$0, $$1));
 
    public static fa a() {
       return new fa();
    }
 
-   public static wy a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
+   public static xa a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
       fa.a $$2 = (fa.a)$$0.getArgument($$1, fa.a.class);
       return $$2.a((ej)$$0.getSource());
    }
 
-   public static void a(CommandContext<ej> $$0, String $$1, Consumer<xo> $$2) throws CommandSyntaxException {
+   public static void a(CommandContext<ej> $$0, String $$1, Consumer<xq> $$2) throws CommandSyntaxException {
       fa.a $$3 = (fa.a)$$0.getArgument($$1, fa.a.class);
       ej $$4 = (ej)$$0.getSource();
-      wy $$5 = $$3.a($$4);
+      xa $$5 = $$3.a($$4);
       eh $$6 = $$4.n();
-      xo $$7 = $$6.a($$1);
+      xq $$7 = $$6.a($$1);
       if ($$7 != null) {
          a($$2, $$4, $$7.a($$5));
       } else {
-         b($$2, $$4, xo.a($$3.a).a($$5));
+         b($$2, $$4, xq.a($$3.a).a($$5));
       }
    }
 
-   private static void a(Consumer<xo> $$0, ej $$1, xo $$2) {
+   private static void a(Consumer<xq> $$0, ej $$1, xq $$2) {
       MinecraftServer $$3 = $$1.l();
-      CompletableFuture<asj> $$4 = a($$1, $$2);
-      wy $$5 = $$3.bk().decorate($$1.i(), $$2.d());
+      CompletableFuture<asl> $$4 = a($$1, $$2);
+      xa $$5 = $$3.bk().decorate($$1.i(), $$2.d());
       $$1.o().append($$4, $$3x -> {
-         xo $$4x = $$2.a($$5).a($$3x.e());
+         xq $$4x = $$2.a($$5).a($$3x.e());
          $$0.accept($$4x);
       });
    }
 
-   private static void b(Consumer<xo> $$0, ej $$1, xo $$2) {
-      wt $$3 = $$1.l().bk();
-      wy $$4 = $$3.decorate($$1.i(), $$2.d());
+   private static void b(Consumer<xq> $$0, ej $$1, xq $$2) {
+      wv $$3 = $$1.l().bk();
+      xa $$4 = $$3.decorate($$1.i(), $$2.d());
       $$0.accept($$2.a($$4));
    }
 
-   private static CompletableFuture<asj> a(ej $$0, xo $$1) {
-      arr $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cF()) ? $$2.W().a($$1.c()) : CompletableFuture.completedFuture(asj.a($$1.c()));
+   private static CompletableFuture<asl> a(ej $$0, xq $$1) {
+      art $$2 = $$0.i();
+      return $$2 != null && $$1.a($$2.cG()) ? $$2.W().a($$1.c()) : CompletableFuture.completedFuture(asl.a($$1.c()));
    }
 
    public fa.a a(StringReader $$0) throws CommandSyntaxException {
@@ -72,17 +72,17 @@ public class fa implements fr<fa.a> {
 
    public static record a(String a, fa.b[] b) {
 
-      wy a(ej $$0) throws CommandSyntaxException {
+      xa a(ej $$0) throws CommandSyntaxException {
          return this.a($$0, ha.a($$0));
       }
 
-      public wy a(ej $$0, boolean $$1) throws CommandSyntaxException {
+      public xa a(ej $$0, boolean $$1) throws CommandSyntaxException {
          if (this.b.length != 0 && $$1) {
-            xm $$2 = wy.b(this.a.substring(0, this.b[0].a()));
+            xo $$2 = xa.b(this.a.substring(0, this.b[0].a()));
             int $$3 = this.b[0].a();
 
             for (fa.b $$4 : this.b) {
-               wy $$5 = $$4.a($$0);
+               xa $$5 = $$4.a($$0);
                if ($$3 < $$4.a()) {
                   $$2.f(this.a.substring($$3, $$4.a()));
                }
@@ -97,7 +97,7 @@ public class fa implements fr<fa.a> {
 
             return $$2;
          } else {
-            return wy.b(this.a);
+            return xa.b(this.a);
          }
       }
 
@@ -148,7 +148,7 @@ public class fa implements fr<fa.a> {
    }
 
    public static record b(int a, int b, gz c) {
-      public wy a(ej $$0) throws CommandSyntaxException {
+      public xa a(ej $$0) throws CommandSyntaxException {
          return gz.a(this.c.b($$0));
       }
    }

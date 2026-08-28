@@ -1,5 +1,3 @@
-public class hfm extends hef {
-   public boolean a;
-   public boolean b;
-   public boolean c;
+public class hfm extends hfk {
+   public float d;
 }

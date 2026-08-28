@@ -1,62 +1,52 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.Optional;
 
-public record fea(feh b, String c, float d) implements fdy {
+public record fea(Optional<Boolean> b, Optional<Boolean> c) implements fdq {
    public static final MapCodec<fea> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               fei.a.fieldOf("target").forGetter(fea::c),
-               Codec.STRING.fieldOf("score").forGetter(fea::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(fea::e)
-            )
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(fea::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(fea::e))
             .apply($$0, fea::new)
    );
 
    @Override
-   public fdx b() {
-      return fdz.e;
+   public fdr b() {
+      return fds.o;
    }
 
-   @Override
-   public Set<bax<?>> a() {
-      return this.b.b();
+   public boolean a(fah $$0) {
+      ars $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.ah() ? false : !this.c.isPresent() || this.c.get() == $$1.ag();
    }
 
-   public static fea a(ezt.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
+   public static fea.a c() {
+      return new fea.a();
    }
 
-   public static fea a(ezt.b $$0, String $$1, float $$2) {
-      return new fea(fee.a($$0), $$1, $$2);
-   }
-
-   @Override
-   public float b(ezt $$0) {
-      fgg $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         return 0.0F;
-      } else {
-         fgh $$2 = $$0.d().g();
-         ffz $$3 = $$2.a(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            fgd $$4 = $$2.d($$1, $$3);
-            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
-         }
-      }
-   }
-
-   public feh c() {
+   public Optional<Boolean> d() {
       return this.b;
    }
 
-   public String d() {
+   public Optional<Boolean> e() {
       return this.c;
    }
 
-   public float e() {
-      return this.d;
+   public static class a implements fdq.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
+
+      public fea.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public fea.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public fea a() {
+         return new fea(this.a, this.b);
+      }
    }
 }

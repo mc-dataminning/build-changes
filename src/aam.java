@@ -1,36 +1,26 @@
-public record aam(iv c, int d, String e, int f) implements aai {
-   public static final yw<vu, aam> a = aai.a(aam::a, aam::new);
-   public static final aai.b<aam> b = aai.a("debug/game_test_add_marker");
+public record aam(alh<ege> c, ffq d) implements aak {
+   public static final yy<vw, aam> a = aak.a(aam::a, aam::new);
+   public static final aak.b<aam> b = aak.a("debug/game_event");
 
-   private aam(vu $$0) {
-      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
+   private aam(vw $$0) {
+      this($$0.a(mh.H), $$0.k());
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.c);
-      $$0.q(this.d);
-      $$0.a(this.e);
-      $$0.q(this.f);
+   private void a(vw $$0) {
+      $$0.b(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public aai.b<aam> a() {
+   public aak.b<aam> a() {
       return b;
    }
 
-   public iv b() {
+   public alh<ege> b() {
       return this.c;
    }
 
-   public int c() {
+   public ffq c() {
       return this.d;
-   }
-
-   public String d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
    }
 }

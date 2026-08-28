@@ -1,33 +1,11 @@
-public enum fjx {
-   a(32856, 6408, 5121, 4),
-   b(33321, 6403, 5121, 1),
-   c(33191, 6402, 5126, 4);
+import java.util.OptionalInt;
 
-   private final int d;
-   private final int e;
-   private final int f;
-   private final int g;
-
-   private fjx(final int $$0, final int $$1, final int $$2, final int $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+public record fjx(int a, int b, OptionalInt c, OptionalInt d, boolean e) {
+   public fjx a(int $$0, int $$1) {
+      return new fjx($$0, $$1, this.c, this.d, this.e);
    }
 
-   int a() {
-      return this.d;
-   }
-
-   int b() {
-      return this.e;
-   }
-
-   int c() {
-      return this.f;
-   }
-
-   public int d() {
-      return this.g;
+   public fjx a(boolean $$0) {
+      return new fjx(this.a, this.b, this.c, this.d, $$0);
    }
 }

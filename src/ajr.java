@@ -1,5 +1,5 @@
-public record ajr(alg a) implements ajp {
-   @Override
-   public void a(vu $$0) {
-   }
+public interface ajr {
+   ali a();
+
+   void a(vw var1);
 }

@@ -1,16 +1,16 @@
 public interface ei {
    ei a = new ei() {
       @Override
-      public void a(wy $$0) {
+      public void a(xa $$0) {
       }
 
       @Override
-      public boolean t_() {
+      public boolean x_() {
          return false;
       }
 
       @Override
-      public boolean u_() {
+      public boolean y_() {
          return false;
       }
 
@@ -20,11 +20,11 @@ public interface ei {
       }
    };
 
-   void a(wy var1);
+   void a(xa var1);
 
-   boolean t_();
+   boolean x_();
 
-   boolean u_();
+   boolean y_();
 
    boolean c();
 

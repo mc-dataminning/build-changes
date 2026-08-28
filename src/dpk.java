@@ -1,126 +1,88 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class dpk extends dll<dyp> implements duc {
-   public static final MapCodec<dpk> b = b(dpk::new);
-   public static final ebr<jb> c = dqs.e;
-   public static final ebk d = ebj.I;
-   private static final ffw e = dmr.b(14.0, 0.0, 14.0);
-   private static final wy f = wy.c("container.enderchest");
-
-   @Override
-   public MapCodec<dpk> a() {
-      return b;
-   }
-
-   protected dpk(eas.d $$0) {
-      super($$0, () -> dxt.d);
-      this.l(this.C.b().b(c, jb.c).b(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   public doz.c<? extends dxz> a(eat $$0, djm $$1, iv $$2, boolean $$3) {
-      return doz.b::b;
-   }
-
-   @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return e;
-   }
-
-   @Override
-   public eat a(ddg $$0) {
-      exa $$1 = $$0.q().b_($$0.a());
-      return this.m().b(c, $$0.g().g()).b(d, Boolean.valueOf($$1.a() == exb.c));
-   }
-
-   @Override
-   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
-      cwt $$5 = $$3.gw();
-      if ($$5 != null && $$1.c_($$2) instanceof dyp $$7) {
-         iv $$9 = $$2.d();
-         if ($$1.a_($$9).d($$1, $$9)) {
-            return bug.a;
+public class dpk {
+   public static <S extends dyc> dpk.c<S> a(
+      dye<S> $$0, Function<ebe, dpk.a> $$1, Function<ebe, jb> $$2, ech<jb> $$3, ebe $$4, djy $$5, iv $$6, BiPredicate<djy, iv> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return dpk.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return dpk.b::b;
+      } else {
+         dpk.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == dpk.a.a;
+         boolean $$11 = $$9 == dpk.a.b;
+         if ($$10) {
+            return new dpk.c.b<>($$8);
          } else {
-            if ($$1 instanceof arq $$10) {
-               $$5.a($$7);
-               $$3.a(new buo(($$1x, $$2x, $$3x) -> cvo.a($$1x, $$2x, $$5), f));
-               $$3.a(awx.aj);
-               cqc.a($$10, $$3, true);
+            iv $$12 = $$6.a($$2.apply($$4));
+            ebe $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               dpk.a $$14 = $$1.apply($$13);
+               if ($$14 != dpk.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return dpk.b::b;
+                  }
+
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new dpk.c.a<>($$16, $$17);
+                  }
+               }
             }
 
-            return bug.a;
+            return new dpk.c.b<>($$8);
          }
-      } else {
-         return bug.a;
       }
    }
 
-   @Override
-   public dxr a(iv $$0, eat $$1) {
-      return new dyp($$0, $$1);
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   @Nullable
-   @Override
-   public <T extends dxr> dxs<T> a(djm $$0, eat $$1, dxt<T> $$2) {
-      return $$0.C ? a($$2, dxt.d, dyp::a) : null;
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
    }
 
-   @Override
-   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
-      for (int $$4 = 0; $$4 < 3; $$4++) {
-         int $$5 = $$3.a(2) * 2 - 1;
-         int $$6 = $$3.a(2) * 2 - 1;
-         double $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$5;
-         double $$8 = (double)((float)$$2.v() + $$3.i());
-         double $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$6;
-         double $$10 = (double)($$3.i() * (float)$$5);
-         double $$11 = ((double)$$3.i() - 0.5) * 0.125;
-         double $$12 = (double)($$3.i() * (float)$$6);
-         $$1.a(ly.af, $$7, $$8, $$9, $$10, $$11, $$12);
-      }
-   }
+   public interface c<S> {
+      <T> T apply(dpk.b<? super S, T> var1);
 
-   @Override
-   protected eat a(eat $$0, dtl $$1) {
-      return $$0.b(c, $$1.a($$0.c(c)));
-   }
+      public static final class a<S> implements dpk.c<S> {
+         private final S a;
+         private final S b;
 
-   @Override
-   protected eat a(eat $$0, dru $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
 
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(c, d);
-   }
-
-   @Override
-   protected exa b_(eat $$0) {
-      return $$0.c(d) ? exb.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      if ($$0.c(d)) {
-         $$2.a($$3, exb.c, exb.c.a($$1));
+         @Override
+         public <T> T apply(dpk.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
+         }
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+      public static final class b<S> implements dpk.c<S> {
+         private final S a;
 
-   @Override
-   protected boolean a(eat $$0, exp $$1) {
-      return false;
-   }
+         public b(S $$0) {
+            this.a = $$0;
+         }
 
-   @Override
-   protected void a(eat $$0, arq $$1, iv $$2, azv $$3) {
-      dxr $$4 = $$1.c_($$2);
-      if ($$4 instanceof dyp) {
-         ((dyp)$$4).a();
+         @Override
+         public <T> T apply(dpk.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
       }
    }
 }

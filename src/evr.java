@@ -1,20 +1,13 @@
 import com.mojang.serialization.MapCodec;
 
-public class evr extends evj {
-   public static final MapCodec<evr> a = axr.a(mh.i).fieldOf("tag").xmap(evr::new, $$0 -> $$0.b);
-   private final axr<dmr> b;
+public interface evr<P extends evq> {
+   evr<evp> a = a("always_true", evp.a);
+   evr<evm> b = a("linear_pos", evm.a);
+   evr<evb> c = a("axis_aligned_linear_pos", evb.a);
 
-   public evr(axr<dmr> $$0) {
-      this.b = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public boolean a(eat $$0, azv $$1) {
-      return $$0.a(this.b);
-   }
-
-   @Override
-   protected evk<?> a() {
-      return evk.d;
+   static <P extends evq> evr<P> a(String $$0, MapCodec<P> $$1) {
+      return js.a(mg.o, $$0, () -> $$1);
    }
 }

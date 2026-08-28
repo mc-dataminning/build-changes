@@ -1,66 +1,63 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import org.apache.commons.lang3.Validate;
+import java.util.Map;
+import java.util.Set;
 
-public class hnn implements JsonDeserializer<hnm> {
-   private static final btj a = bth.a(1.0F);
+public class hnn {
+   static final int a = -1;
+   private static final int b = 0;
 
-   public hnm a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-      JsonObject $$3 = azc.m($$0, "entry");
-      boolean $$4 = azc.a($$3, "replace", false);
-      String $$5 = azc.a($$3, "subtitle", null);
-      List<hnl> $$6 = this.a($$3);
-      return new hnm($$6, $$4, $$5);
-   }
+   public static Object2IntMap<ebe> a(fsf $$0, hnd.b $$1) {
+      Map<dnc, List<ech<?>>> $$2 = new HashMap<>();
+      Map<hnn.a, Set<ebe>> $$3 = new HashMap<>();
+      $$1.a().forEach(($$3x, $$4x) -> {
+         List<ech<?>> $$5x = $$2.computeIfAbsent($$3x.b(), $$1xx -> List.copyOf($$0.a($$1xx)));
+         hnn.a $$6x = hnn.a.a($$3x, $$4x, $$5x);
+         $$3.computeIfAbsent($$6x, $$0xx -> Sets.newIdentityHashSet()).add($$3x);
+      });
+      int $$4 = 1;
+      Object2IntMap<ebe> $$5 = new Object2IntOpenHashMap();
+      $$5.defaultReturnValue(-1);
 
-   private List<hnl> a(JsonObject $$0) {
-      List<hnl> $$1 = Lists.newArrayList();
-      if ($$0.has("sounds")) {
-         JsonArray $$2 = azc.v($$0, "sounds");
+      for (Set<ebe> $$6 : $$3.values()) {
+         Iterator<ebe> $$7 = $$6.iterator();
 
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            JsonElement $$4 = $$2.get($$3);
-            if (azc.a($$4)) {
-               alg $$5 = alg.a(azc.a($$4, "sound"));
-               $$1.add(new hnl($$5, a, a, 1, hnl.a.a, false, false, 16));
-            } else {
-               $$1.add(this.b(azc.m($$4, "sound")));
+         while ($$7.hasNext()) {
+            ebe $$8 = $$7.next();
+            if ($$8.o() != dtp.b) {
+               $$7.remove();
+               $$5.put($$8, 0);
             }
+         }
+
+         if ($$6.size() > 1) {
+            int $$9 = $$4++;
+            $$6.forEach($$2x -> $$5.put($$2x, $$9));
          }
       }
 
-      return $$1;
+      return $$5;
    }
 
-   private hnl b(JsonObject $$0) {
-      alg $$1 = alg.a(azc.i($$0, "name"));
-      hnl.a $$2 = this.a($$0, hnl.a.a);
-      float $$3 = azc.a($$0, "volume", 1.0F);
-      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
-      float $$4 = azc.a($$0, "pitch", 1.0F);
-      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
-      int $$5 = azc.a($$0, "weight", 1);
-      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
-      boolean $$6 = azc.a($$0, "preload", false);
-      boolean $$7 = azc.a($$0, "stream", false);
-      int $$8 = azc.a($$0, "attenuation_distance", 16);
-      return new hnl($$1, bth.a($$3), bth.a($$4), $$5, $$2, $$7, $$6, $$8);
-   }
-
-   private hnl.a a(JsonObject $$0, hnl.a $$1) {
-      hnl.a $$2 = $$1;
-      if ($$0.has("type")) {
-         $$2 = hnl.a.a(azc.i($$0, "type"));
-         Validate.notNull($$2, "Invalid type", new Object[0]);
+   static record a(Object a, List<Object> b) {
+      public static hnn.a a(ebe $$0, gtn.c $$1, List<ech<?>> $$2) {
+         List<Object> $$3 = a($$0, $$2);
+         Object $$4 = $$1.a($$0);
+         return new hnn.a($$4, $$3);
       }
 
-      return $$2;
+      private static List<Object> a(ebe $$0, List<ech<?>> $$1) {
+         Object[] $$2 = new Object[$$1.size()];
+
+         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+            $$2[$$3] = $$0.c($$1.get($$3));
+         }
+
+         return List.of($$2);
+      }
    }
 }

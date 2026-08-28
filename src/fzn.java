@@ -1,13 +1,74 @@
-import java.util.List;
+import com.google.common.hash.Hashing;
+import javax.annotation.Nullable;
 
-public class fzn extends fzi<cvl> {
-   private static final alg G = alg.b("container/blast_furnace/lit_progress");
-   private static final alg H = alg.b("container/blast_furnace/burn_progress");
-   private static final alg I = alg.b("textures/gui/container/blast_furnace.png");
-   private static final wy J = wy.c("gui.recipebook.toggleRecipes.blastable");
-   private static final List<gcr.a> K = List.of(new gcr.a(gcx.c), new gcr.a(czr.au, deg.h), new gcr.a(czr.pQ, czr.qE, deg.i));
+public class fzn implements AutoCloseable {
+   private static final ali a = ali.b("textures/misc/unknown_server.png");
+   private static final int b = 64;
+   private static final int c = 64;
+   private final hlc d;
+   private final ali e;
+   @Nullable
+   private hkn f;
+   private boolean g;
 
-   public fzn(cvl $$0, crl $$1, wy $$2) {
-      super($$0, $$1, $$2, J, I, G, H, K);
+   private fzn(hlc $$0, ali $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   public static fzn a(hlc $$0, String $$1) {
+      return new fzn($$0, ali.b("worlds/" + ag.a($$1, ali::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   }
+
+   public static fzn b(hlc $$0, String $$1) {
+      return new fzn($$0, ali.b("servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   }
+
+   public void a(fkg $$0) {
+      if ($$0.a() == 64 && $$0.b() == 64) {
+         try {
+            this.c();
+            if (this.f == null) {
+               this.f = new hkn(() -> "Favicon " + this.e, $$0);
+            } else {
+               this.f.a($$0);
+               this.f.b();
+            }
+
+            this.d.a(this.e, this.f);
+         } catch (Throwable var3) {
+            $$0.close();
+            this.a();
+            throw var3;
+         }
+      } else {
+         $$0.close();
+         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
+      }
+   }
+
+   public void a() {
+      this.c();
+      if (this.f != null) {
+         this.d.c(this.e);
+         this.f.close();
+         this.f = null;
+      }
+   }
+
+   public ali b() {
+      return this.f != null ? this.e : a;
+   }
+
+   @Override
+   public void close() {
+      this.a();
+      this.g = true;
+   }
+
+   private void c() {
+      if (this.g) {
+         throw new IllegalStateException("Icon already closed");
+      }
    }
 }

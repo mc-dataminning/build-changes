@@ -1,26 +1,250 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class gba implements gbf {
-   private final fxh a;
+public class gba extends gad {
+   public static final int a = 16;
+   public static final int b = 36;
+   public static final int c = 30;
+   private static final int y = 256;
+   private static final int z = 256;
+   public static final gba.a d = new gba.a(List.of());
+   public static final ali s = ali.b("textures/gui/book.png");
+   protected static final int u = 114;
+   protected static final int v = 128;
+   protected static final int w = 192;
+   protected static final int x = 192;
+   private gba.a A;
+   private int B;
+   private List<aza> C = Collections.emptyList();
+   private int D = -1;
+   private xa E = wz.a;
+   private gcb F;
+   private gcb G;
+   private final boolean H;
 
-   public gba(fxh $$0) {
-      this.a = $$0;
+   public gba(gba.a $$0) {
+      this($$0, true);
+   }
+
+   public gba() {
+      this(d, false);
+   }
+
+   private gba(gba.a $$0, boolean $$1) {
+      super(fqu.a);
+      this.A = $$0;
+      this.H = $$1;
+   }
+
+   public void a(gba.a $$0) {
+      this.A = $$0;
+      this.B = azo.a(this.B, 0, $$0.a());
+      this.L();
+      this.D = -1;
+   }
+
+   public boolean a(int $$0) {
+      int $$1 = azo.a($$0, 0, this.A.a() - 1);
+      if ($$1 != this.B) {
+         this.B = $$1;
+         this.L();
+         this.D = -1;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean b(int $$0) {
+      return this.a($$0);
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i();
-      $$6.x = this.a.d() + 3;
-      $$6.y = this.a.c() + 3 + 1;
-      if ($$6.y + $$5 + 3 > $$1) {
-         $$6.y = this.a.b() - $$5 - 3 - 1;
+   protected void aS_() {
+      this.m();
+      this.E();
+   }
+
+   protected void m() {
+      this.c(ful.a(wz.d, $$0 -> this.aP_()).a(this.n / 2 - 100, 196, 200, 20).a());
+   }
+
+   protected void E() {
+      int $$0 = (this.n - 192) / 2;
+      int $$1 = 2;
+      this.F = this.c(new gcb($$0 + 116, 159, true, $$0x -> this.H(), this.H));
+      this.G = this.c(new gcb($$0 + 43, 159, false, $$0x -> this.G(), this.H));
+      this.L();
+   }
+
+   private int F() {
+      return this.A.a();
+   }
+
+   protected void G() {
+      if (this.B > 0) {
+         this.B--;
       }
 
-      if ($$6.x + $$4 > $$0) {
-         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
+      this.L();
+   }
+
+   protected void H() {
+      if (this.B < this.F() - 1) {
+         this.B++;
       }
 
-      return $$6;
+      this.L();
+   }
+
+   private void L() {
+      this.F.k = this.B < this.F() - 1;
+      this.G.k = this.B > 0;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else {
+         switch ($$0) {
+            case 266:
+               this.G.b();
+               return true;
+            case 267:
+               this.F.b();
+               return true;
+            default:
+               return false;
+         }
+      }
+   }
+
+   @Override
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 192) / 2;
+      int $$5 = 2;
+      if (this.D != this.B) {
+         xf $$6 = this.A.a(this.B);
+         this.C = this.p.c($$6, 114);
+         this.E = xa.a("book.pageIndicator", this.B + 1, Math.max(this.F(), 1));
+      }
+
+      this.D = this.B;
+      int $$7 = this.p.a(this.E);
+      $$0.a(this.p, this.E, $$4 - $$7 + 192 - 44, 18, 0, false);
+      int $$8 = Math.min(128 / 9, this.C.size());
+
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         aza $$10 = this.C.get($$9);
+         $$0.a(this.p, $$10, $$4 + 36, 32 + $$9 * 9, 0, false);
+      }
+
+      xx $$11 = this.b((double)$$1, (double)$$2);
+      if ($$11 != null) {
+         $$0.a(this.p, $$11, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void b(ftx $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+      $$0.a(gsl::H, s, (this.n - 192) / 2, 2, 0.0F, 0.0F, 192, 192, 256, 256);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 == 0) {
+         xx $$3 = this.b($$0, $$1);
+         if ($$3 != null && this.a($$3)) {
+            return true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(xx $$0) {
+      wy $$1 = $$0.i();
+      if ($$1 == null) {
+         return false;
+      } else if ($$1 instanceof wy.b var7) {
+         wy.b var10000 = var7;
+
+         try {
+            var8 = var10000.b();
+         } catch (Throwable var6) {
+            throw new MatchException(var6.toString(), var6);
+         }
+
+         int var5 = var8;
+         return this.b(var5 - 1);
+      } else {
+         boolean $$3 = super.a($$0);
+         if ($$3 && $$1.a() == wy.a.c) {
+            this.I();
+         }
+
+         return $$3;
+      }
+   }
+
+   protected void I() {
+      this.m.a(null);
+   }
+
+   @Nullable
+   public xx b(double $$0, double $$1) {
+      if (this.C.isEmpty()) {
+         return null;
+      } else {
+         int $$2 = azo.a($$0 - (double)((this.n - 192) / 2) - 36.0);
+         int $$3 = azo.a($$1 - 2.0 - 30.0);
+         if ($$2 >= 0 && $$3 >= 0) {
+            int $$4 = Math.min(128 / 9, this.C.size());
+            if ($$2 <= 114 && $$3 < 9 * $$4 + $$4) {
+               int $$5 = $$3 / 9;
+               if ($$5 >= 0 && $$5 < this.C.size()) {
+                  aza $$6 = this.C.get($$5);
+                  return this.m.h.b().a($$6, $$2);
+               } else {
+                  return null;
+               }
+            } else {
+               return null;
+            }
+         } else {
+            return null;
+         }
+      }
+   }
+
+   public static record a(List<xa> a) {
+      public int a() {
+         return this.a.size();
+      }
+
+      public xf a(int $$0) {
+         return $$0 >= 0 && $$0 < this.a() ? this.a.get($$0) : xf.b;
+      }
+
+      @Nullable
+      public static gba.a a(czy $$0) {
+         boolean $$1 = frd.Q().aT();
+         ddi $$2 = $$0.a(kk.V);
+         if ($$2 != null) {
+            return new gba.a($$2.a($$1));
+         } else {
+            ddh $$3 = $$0.a(kk.U);
+            return $$3 != null ? new gba.a($$3.a($$1).map(xa::b).toList()) : null;
+         }
+      }
+
+      public List<xa> b() {
+         return this.a;
+      }
    }
 }

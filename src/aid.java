@@ -1,28 +1,29 @@
-public record aid(int b, int c) implements zf<agp> {
-   public static final yw<vu, aid> a = zf.a(aid::a, aid::new);
+public class aid implements zh<agr> {
+   public static final yy<vw, aid> a = zh.a(aid::a, aid::new);
+   private final String b;
 
-   private aid(vu $$0) {
-      this($$0.l(), $$0.l());
-      if (this.c < 0 && this.c != -1) {
-         throw new IllegalArgumentException("Invalid selectedItemIndex: " + this.c);
-      }
+   public aid(String $$0) {
+      this.b = $$0;
    }
 
-   private void a(vu $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private aid(vw $$0) {
+      this.b = $$0.p();
+   }
+
+   private void a(vw $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zh<aid> a() {
-      return agn.bm;
+   public zj<aid> a() {
+      return agp.bY;
    }
 
-   public void a(agp $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   public String b() {
+      return this.b;
    }
 }

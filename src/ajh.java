@@ -1,19 +1,29 @@
-public class ajh {
-   public static final zh<ajc> a = a("custom_query");
-   public static final zh<ajg> b = a("login_finished");
-   public static final zh<ajd> c = a("hello");
-   public static final zh<aje> d = a("login_compression");
-   public static final zh<ajf> e = a("login_disconnect");
-   public static final zh<ajk> f = b("custom_query_answer");
-   public static final zh<ajl> g = b("hello");
-   public static final zh<ajm> h = b("key");
-   public static final zh<ajn> i = b("login_acknowledged");
+public class ajh implements zh<ajd> {
+   public static final yy<vw, ajh> a = zh.a(ajh::a, ajh::new);
+   private final xa b;
 
-   private static <T extends zf<ajb>> zh<T> a(String $$0) {
-      return new zh<>(zg.b, alg.b($$0));
+   public ajh(xa $$0) {
+      this.b = $$0;
    }
 
-   private static <T extends zf<ajj>> zh<T> b(String $$0) {
-      return new zh<>(zg.a, alg.b($$0));
+   private ajh(vw $$0) {
+      this.b = xa.a.b($$0.d(262144), jt.b);
+   }
+
+   private void a(vw $$0) {
+      $$0.a(xa.a.a(this.b, jt.b));
+   }
+
+   @Override
+   public zj<ajh> a() {
+      return ajj.e;
+   }
+
+   public void a(ajd $$0) {
+      $$0.a(this);
+   }
+
+   public xa b() {
+      return this.b;
    }
 }

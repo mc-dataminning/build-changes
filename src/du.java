@@ -8,8 +8,8 @@ public class du extends dk<du.a> {
       return du.a.a;
    }
 
-   public void a(arr $$0, ciz $$1) {
-      ezt $$2 = by.b($$0, $$1);
+   public void a(art $$0, cjk $$1) {
+      fah $$2 = by.b($$0, $$1);
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -26,7 +26,7 @@ public class du extends dk<du.a> {
          return aq.y.a(new du.a(Optional.empty(), Optional.of(by.a($$0))));
       }
 
-      public boolean a(ezt $$0) {
+      public boolean a(fah $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

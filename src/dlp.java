@@ -1,22 +1,14 @@
-import com.mojang.serialization.MapCodec;
+public class dlp {
+   public static final alh<dlo> a = a("nether");
+   public static final alh<dlo> b = a("overworld");
 
-public class dlp extends dmr {
-   public static final MapCodec<dlp> a = b(dlp::new);
-
-   @Override
-   public MapCodec<? extends dlp> a() {
-      return a;
+   public static void a(qh<dlo> $$0) {
+      jg<dla> $$1 = $$0.a(mh.aG);
+      $$0.a(a, new dlo(dlo.a.a, $$1));
+      $$0.a(b, new dlo(dlo.a.b, $$1));
    }
 
-   public dlp(eas.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected void a(djm $$0, eat $$1, fey $$2, csh $$3) {
-      if (!$$0.C) {
-         iv $$4 = $$2.b();
-         $$0.a(null, $$4, awn.E, awo.e, 1.0F, 0.5F + $$0.A.i() * 1.2F);
-      }
+   private static alh<dlo> a(String $$0) {
+      return alh.a(mh.aW, ali.b($$0));
    }
 }

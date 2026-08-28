@@ -1,33 +1,31 @@
-public enum aul {
-   a("old"),
-   b("new"),
-   c("compatible");
+import io.netty.buffer.ByteBuf;
 
-   private final wy d;
-   private final wy e;
+public record aul(String c, String d, String e) {
+   public static final yy<ByteBuf, aul> a = yy.a(yw.p, aul::b, yw.p, aul::c, yw.p, aul::d, aul::new);
+   public static final String b = "minecraft";
 
-   private aul(final String $$0) {
-      this.d = wy.c("pack.incompatible." + $$0).a(o.h);
-      this.e = wy.c("pack.incompatible.confirm." + $$0);
+   public static aul a(String $$0) {
+      return new aul("minecraft", $$0, ac.b().b());
    }
 
    public boolean a() {
-      return this == c;
+      return this.c.equals("minecraft");
    }
 
-   public static aul a(aze<Integer> $$0, int $$1) {
-      if ($$0.b() < $$1) {
-         return a;
-      } else {
-         return $$1 < $$0.a() ? b : c;
-      }
+   @Override
+   public String toString() {
+      return this.c + ":" + this.d + ":" + this.e;
    }
 
-   public wy b() {
+   public String b() {
+      return this.c;
+   }
+
+   public String c() {
       return this.d;
    }
 
-   public wy c() {
+   public String d() {
       return this.e;
    }
 }

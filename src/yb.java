@@ -3,46 +3,50 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public record yb(String d, @Nullable gz e) implements ya {
-   public static final MapCodec<yb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(yb::b)).apply($$0, yb::new));
-   public static final ya.a<yb> b = new ya.a<>(a, "entity");
+public record yb(String d, @Nullable gi e) implements yc {
+   public static final MapCodec<yb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(yb::b)).apply($$0, yb::new));
+   public static final yc.a<yb> b = new yc.a<>(a, "block");
 
    public yb(String $$0) {
       this($$0, a($$0));
    }
 
    @Nullable
-   private static gz a(String $$0) {
+   private static gi a(String $$0) {
       try {
-         ha $$1 = new ha(new StringReader($$0), true);
-         return $$1.t();
+         return gg.a().a(new StringReader($$0));
       } catch (CommandSyntaxException var2) {
          return null;
       }
    }
 
    @Override
-   public Stream<tz> a(ej $$0) throws CommandSyntaxException {
+   public Stream<tz> a(ej $$0) {
       if (this.e != null) {
-         List<? extends bwi> $$1 = this.e.b($$0);
-         return $$1.stream().map(cz::b);
-      } else {
-         return Stream.empty();
+         ars $$1 = $$0.e();
+         iv $$2 = this.e.c($$0);
+         if ($$1.p($$2)) {
+            dyc $$3 = $$1.c_($$2);
+            if ($$3 != null) {
+               return Stream.of($$3.b($$0.u()));
+            }
+         }
       }
+
+      return Stream.empty();
    }
 
    @Override
-   public ya.a<?> a() {
+   public yc.a<?> a() {
       return b;
    }
 
    @Override
    public String toString() {
-      return "entity=" + this.d;
+      return "block=" + this.d;
    }
 
    @Override
@@ -68,7 +72,7 @@ public record yb(String d, @Nullable gz e) implements ya {
    }
 
    @Nullable
-   public gz c() {
+   public gi c() {
       return this.e;
    }
 }

@@ -1,19 +1,85 @@
-public class daf extends day {
-   public daf(dmr $$0, dmr $$1, czj.a $$2) {
-      super($$0, $$1, jb.a, $$2);
+import javax.annotation.Nullable;
+
+public class daf {
+   public static final int a = 20;
+   private long b;
+   @Nullable
+   private jf<dae> c;
+   private final iv d;
+   private final daf.a e;
+
+   public daf(daf.a $$0, iv $$1) {
+      this.e = $$0;
+      this.d = $$1;
    }
 
-   @Override
-   public wy a(czn $$0) {
-      dcn $$1 = $$0.a(kk.ak);
-      return (wy)($$1 != null && $$1.c().isPresent() ? wy.a(this.n + ".named", $$1.c().get()) : super.a($$0));
+   public boolean a() {
+      return this.c != null;
    }
 
-   @Override
-   public void l(czn $$0) {
-      dcn $$1 = $$0.a(kk.ak);
-      if ($$1 != null && !$$1.b()) {
-         $$1.a().thenAcceptAsync($$1x -> $$0.b(kk.ak, $$1x), dzh.a);
+   @Nullable
+   public dae b() {
+      return this.c == null ? null : this.c.a();
+   }
+
+   public long c() {
+      return this.b;
+   }
+
+   public void a(jf<dae> $$0, long $$1) {
+      if (!$$0.a().a($$1)) {
+         this.c = $$0;
+         this.b = $$1;
       }
+   }
+
+   public void a(djy $$0, jf<dae> $$1) {
+      this.c = $$1;
+      this.b = 0L;
+      int $$2 = $$0.J_().f(mh.aV).a(this.c.a());
+      $$0.a(null, 1010, this.d, $$2);
+      this.e.notifyChange();
+   }
+
+   public void a(djy $$0, @Nullable ebe $$1) {
+      if (this.c != null) {
+         this.c = null;
+         this.b = 0L;
+         $$0.a(ege.F, this.d, ege.a.a($$1));
+         $$0.c(1011, this.d, 0);
+         this.e.notifyChange();
+      }
+   }
+
+   public void b(djy $$0, @Nullable ebe $$1) {
+      if (this.c != null) {
+         if (this.c.a().a(this.b)) {
+            this.a($$0, $$1);
+         } else {
+            if (this.d()) {
+               $$0.a(ege.E, this.d, ege.a.a($$1));
+               a($$0, this.d);
+            }
+
+            this.b++;
+         }
+      }
+   }
+
+   private boolean d() {
+      return this.b % 20L == 0L;
+   }
+
+   private static void a(djy $$0, iv $$1) {
+      if ($$0 instanceof ars $$2) {
+         ffq $$3 = ffq.c($$1).b(0.0, 1.2F, 0.0);
+         float $$4 = (float)$$0.G_().a(4) / 24.0F;
+         $$2.a(ly.ad, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void notifyChange();
    }
 }

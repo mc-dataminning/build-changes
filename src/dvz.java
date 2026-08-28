@@ -1,30 +1,23 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvz extends dqk {
-   public static final MapCodec<dvz> c = b(dvz::new);
-   private static final ffw g = dmr.b(8.0, 0.0, 15.0);
+public class dvz extends drs {
+   public static final MapCodec<dvz> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayw.a(0.0F, 1.0F).fieldOf("leaf_particle_chance").forGetter($$0x -> $$0x.e), t()).apply($$0, dvz::new)
+   );
 
-   @Override
-   public MapCodec<dvz> a() {
-      return c;
-   }
-
-   public dvz(eas.d $$0) {
-      super($$0, jb.b, g, false, 0.1);
+   public dvz(float $$0, ebd.d $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected int a(azv $$0) {
-      return dse.a($$0);
+   protected void a(djx $$0, iv $$1, azx $$2) {
+      lr $$3 = lr.a(ly.J, $$0.s($$1));
+      azs.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected dmr b() {
-      return dmt.pi;
-   }
-
-   @Override
-   protected boolean h(eat $$0) {
-      return dse.a($$0);
+   public MapCodec<? extends dvz> a() {
+      return g;
    }
 }

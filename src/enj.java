@@ -1,43 +1,43 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class enj extends eno {
-   public static final MapCodec<enj> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, enj::new));
-   protected final int b;
+public class enj implements emp {
+   public static final Codec<enj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               elu.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               iv.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, enj::new)
+   );
+   private final boolean b;
+   private final List<elu.a> c;
+   @Nullable
+   private final iv d;
 
-   protected static <P extends enj> P3<Mu<P>, btl, btl, Integer> a(Instance<P> $$0) {
-      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
+   public enj(boolean $$0, List<elu.a> $$1, @Nullable iv $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
    }
 
-   public enj(btl $$0, btl $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   private enj(boolean $$0, List<elu.a> $$1, Optional<iv> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
    }
 
-   @Override
-   protected enp<?> a() {
-      return enp.a;
-   }
-
-   @Override
-   protected void a(djs $$0, eno.b $$1, azv $$2, emy $$3, int $$4, eno.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   public int a(azv $$0, int $$1, emy $$2) {
+   public boolean a() {
       return this.b;
    }
 
-   @Override
-   protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
+   public List<elu.a> b() {
+      return this.c;
+   }
+
+   @Nullable
+   public iv c() {
+      return this.d;
    }
 }

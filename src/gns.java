@@ -1,27 +1,35 @@
-public class gns extends gnx {
-   gns(gkq $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 8;
-   }
+import java.net.InetSocketAddress;
 
-   @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 6; $$0++) {
-         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
-         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
-         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
-         this.c.a(ly.w, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
-      }
+public interface gns {
+   String a();
 
-      this.s++;
-      if (this.s == this.t) {
-         this.k();
-      }
-   }
+   String b();
 
-   public static class a implements goc<mc> {
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gns($$1, $$2, $$3, $$4);
-      }
+   int c();
+
+   InetSocketAddress d();
+
+   static gns a(final InetSocketAddress $$0) {
+      return new gns() {
+         @Override
+         public String a() {
+            return $$0.getAddress().getHostName();
+         }
+
+         @Override
+         public String b() {
+            return $$0.getAddress().getHostAddress();
+         }
+
+         @Override
+         public int c() {
+            return $$0.getPort();
+         }
+
+         @Override
+         public InetSocketAddress d() {
+            return $$0;
+         }
+      };
    }
 }

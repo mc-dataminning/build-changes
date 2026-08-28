@@ -1,18 +1,8 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.UUID;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface hmt {
-   void scheduleReload(hmt.a var1);
-
-   public interface a {
-      void a();
-
-      void a(boolean var1);
-
-      List<hmt.b> b();
-   }
-
-   public static record b(UUID a, Path b) {
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface hmt {
 }

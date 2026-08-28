@@ -1,62 +1,36 @@
-public class ddh extends ddg {
-   private final jb b;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.stream.Stream;
 
-   public ddh(djm $$0, iv $$1, jb $$2, czn $$3, jb $$4) {
-      super($$0, null, buf.a, $$3, new fey(ffc.c($$1), $$4, $$1, false));
-      this.b = $$2;
-   }
+public record ddh(List<ask<String>> g) implements dca<String, ddh> {
+   public static final ddh a = new ddh(List.of());
+   public static final int b = 1024;
+   public static final int c = 100;
+   private static final Codec<ask<String>> h = ask.a(Codec.string(0, 1024));
+   public static final Codec<List<ask<String>>> d = h.sizeLimitedListOf(100);
+   public static final Codec<ddh> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(ddh::a)).apply($$0, ddh::new));
+   public static final yy<ByteBuf, ddh> f = ask.a(yw.b(1024)).a(yw.c(100)).a(ddh::new, ddh::a);
 
-   @Override
-   public iv a() {
-      return this.j().b();
-   }
-
-   @Override
-   public boolean b() {
-      return this.q().a_(this.j().b()).a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return this.b();
-   }
-
-   @Override
-   public jb d() {
-      return jb.a;
-   }
-
-   @Override
-   public jb[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new jb[]{jb.a, jb.c, jb.f, jb.d, jb.e, jb.b};
-         case b:
-            return new jb[]{jb.a, jb.b, jb.c, jb.f, jb.d, jb.e};
-         case c:
-            return new jb[]{jb.a, jb.c, jb.f, jb.e, jb.b, jb.d};
-         case d:
-            return new jb[]{jb.a, jb.d, jb.f, jb.e, jb.b, jb.c};
-         case e:
-            return new jb[]{jb.a, jb.e, jb.d, jb.b, jb.c, jb.f};
-         case f:
-            return new jb[]{jb.a, jb.f, jb.d, jb.b, jb.c, jb.e};
+   public ddh(List<ask<String>> g) {
+      if (g.size() > 100) {
+         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
+      } else {
+         this.g = g;
       }
    }
 
-   @Override
-   public jb g() {
-      return this.b.o() == jb.a.b ? jb.c : this.b;
+   public Stream<String> a(boolean $$0) {
+      return this.g.stream().map($$1 -> $$1.a($$0));
+   }
+
+   public ddh b(List<ask<String>> $$0) {
+      return new ddh($$0);
    }
 
    @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+   public List<ask<String>> a() {
+      return this.g;
    }
 }

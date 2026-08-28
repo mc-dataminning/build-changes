@@ -54,7 +54,7 @@ class hy<T extends el<T>> {
       this.b.add(new ia.b<>($$3, this.a($$3.b()), $$2));
    }
 
-   public hx<T> a(alg $$0) {
+   public hx<T> a(ali $$0) {
       return (hx<T>)(this.b != null ? new ia<>($$0, this.b, this.c) : new ib<>($$0, this.a));
    }
 }

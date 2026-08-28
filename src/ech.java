@@ -1,58 +1,112 @@
+import com.google.common.base.MoreObjects;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public record ech(String n, ebi o, duo p, duo q, awm r, awm s) {
-   private static final Map<String, ech> t = new Object2ObjectArrayMap();
-   public static final Codec<ech> a = Codec.stringResolver(ech::b, t::get);
-   public static final ech b = a(new ech("oak", ebi.g));
-   public static final ech c = a(new ech("spruce", ebi.h));
-   public static final ech d = a(new ech("birch", ebi.i));
-   public static final ech e = a(new ech("acacia", ebi.j));
-   public static final ech f = a(new ech("cherry", ebi.k, duo.aW, duo.aZ, awn.eQ, awn.eR));
-   public static final ech g = a(new ech("jungle", ebi.l));
-   public static final ech h = a(new ech("dark_oak", ebi.m));
-   public static final ech i = a(new ech("pale_oak", ebi.n));
-   public static final ech j = a(new ech("crimson", ebi.o, duo.aV, duo.aS, awn.rI, awn.rJ));
-   public static final ech k = a(new ech("warped", ebi.p, duo.aV, duo.aS, awn.rI, awn.rJ));
-   public static final ech l = a(new ech("mangrove", ebi.q));
-   public static final ech m = a(new ech("bamboo", ebi.r, duo.aU, duo.aT, awn.bw, awn.bx));
+public abstract class ech<T extends Comparable<T>> {
+   private final Class<T> a;
+   private final String b;
+   @Nullable
+   private Integer c;
+   private final Codec<T> d = Codec.STRING
+      .comapFlatMap(
+         $$0x -> this.b($$0x)
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
+         this::b
+      );
+   private final Codec<ech.a<T>> e = this.d.xmap(this::c, ech.a::b);
 
-   public ech(String $$0, ebi $$1) {
-      this($$0, $$1, duo.b, duo.aR, awn.jl, awn.jm);
+   protected ech(String $$0, Class<T> $$1) {
+      this.a = $$1;
+      this.b = $$0;
    }
 
-   private static ech a(ech $$0) {
-      t.put($$0.b(), $$0);
-      return $$0;
+   public ech.a<T> c(T $$0) {
+      return new ech.a<>(this, $$0);
    }
 
-   public static Stream<ech> a() {
-      return t.values().stream();
+   public ech.a<T> a(ebg<?, ?> $$0) {
+      return new ech.a<>(this, $$0.c(this));
    }
 
-   public String b() {
-      return this.n;
+   public Stream<ech.a<T>> c() {
+      return this.a().stream().map(this::c);
    }
 
-   public ebi c() {
-      return this.o;
+   public Codec<T> d() {
+      return this.d;
    }
 
-   public duo d() {
-      return this.p;
+   public Codec<ech.a<T>> e() {
+      return this.e;
    }
 
-   public duo e() {
-      return this.q;
+   public String f() {
+      return this.b;
    }
 
-   public awm f() {
-      return this.r;
+   public Class<T> g() {
+      return this.a;
    }
 
-   public awm g() {
-      return this.s;
+   public abstract List<T> a();
+
+   public abstract String b(T var1);
+
+   public abstract Optional<T> b(String var1);
+
+   public abstract int a(T var1);
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof ech<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+      }
+   }
+
+   @Override
+   public final int hashCode() {
+      if (this.c == null) {
+         this.c = this.b();
+      }
+
+      return this.c;
+   }
+
+   public int b() {
+      return 31 * this.a.hashCode() + this.b.hashCode();
+   }
+
+   public <U, S extends ebg<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
+      DataResult<T> $$3 = this.d.parse($$0, $$2);
+      return $$3.map($$1x -> $$1.b(this, $$1x)).setPartial($$1);
+   }
+
+   public static record a<T extends Comparable<T>>(ech<T> a, T b) {
+      public a(ech<T> a, T b) {
+         if (!a.a().contains(b)) {
+            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
+         } else {
+            this.a = a;
+            this.b = b;
+         }
+      }
+
+      @Override
+      public String toString() {
+         return this.a.f() + "=" + this.a.b(this.b);
+      }
    }
 }

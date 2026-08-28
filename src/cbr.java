@@ -1,29 +1,42 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class cbr {
-   private static final int a = 180;
-   private static final int b = 8;
-   private static final int c = 6;
+   public static caw<crj> a(cgw<je> $$0, float $$1, int $$2, int $$3, int $$4) {
+      return ccy.a(
+         (Function<ccy.b<crj>, ? extends App<ccy.c<crj>, cdb<crj>>>)($$5 -> $$5.group($$5.a(cgw.F), $$5.c(cgw.n), $$5.b($$0))
+               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
+                     je $$12 = $$5.b($$8);
+                     Optional<Long> $$13 = $$5.a($$6);
+                     if ($$12.a() == $$9.aj() && (!$$13.isPresent() || $$9.ae() - $$13.get() <= (long)$$4)) {
+                        if ($$12.b().k($$10.dv()) > $$3) {
+                           ffq $$14 = null;
+                           int $$15 = 0;
+                           int $$16 = 1000;
 
-   public static cal<bxr> a(cgl<je> $$0, float $$1, int $$2) {
-      MutableLong $$3 = new MutableLong(0L);
-      return ccn.a(
-         (Function<ccn.b<bxr>, ? extends App<ccn.c<bxr>, ccq<bxr>>>)($$4 -> $$4.group($$4.a(cgl.n), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                  je $$9 = $$4.b($$5);
-                  if ($$6.aj() != $$9.a() || !$$9.b().a($$7.ds(), (double)$$2)) {
-                     return false;
-                  } else if ($$8 <= $$3.getValue()) {
+                           while ($$14 == null || iv.a((jp)$$14).k($$10.dv()) > $$3) {
+                              $$14 = cin.a($$10, 15, 7, ffq.c($$12.b()), (float) (Math.PI / 2));
+                              if (++$$15 == 1000) {
+                                 $$10.a($$0);
+                                 $$8.b();
+                                 $$6.a($$11);
+                                 return true;
+                              }
+                           }
+
+                           $$7.a(new cgz($$14, $$1, $$2));
+                        } else if ($$12.b().k($$10.dv()) > $$2) {
+                           $$7.a(new cgz($$12.b(), $$1, $$2));
+                        }
+                     } else {
+                        $$10.a($$0);
+                        $$8.b();
+                        $$6.a($$11);
+                     }
+
                      return true;
-                  } else {
-                     Optional<ffc> $$10 = Optional.ofNullable(cif.a($$7, 8, 6));
-                     $$4x.a($$10.map($$1xxxx -> new cgo($$1xxxx, $$1, 1)));
-                     $$3.setValue($$8 + 180L);
-                     return true;
-                  }
-               }))
+                  }))
       );
    }
 }

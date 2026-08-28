@@ -1,56 +1,27 @@
-import com.mojang.jtracy.TracyClient;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.mojang.brigadier.StringReader;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import javax.annotation.Nullable;
 
-public final class bqp {
-   private static final ThreadLocal<bqu> a = ThreadLocal.withInitial(bqu::new);
-   private static final ThreadLocal<bqq> b = new ThreadLocal<>();
-   private static final AtomicInteger c = new AtomicInteger();
+public class bqp<T> implements bqa<StringReader, Dynamic<? extends T>> {
+   private final DynamicOps<T> a;
+   private final uz<T> b;
 
-   private bqp() {
+   public bqp(DynamicOps<T> $$0) {
+      this.a = $$0;
+      this.b = uz.a($$0);
    }
 
-   public static bqp.a a(bqq $$0) {
-      b($$0);
-      return bqp::b;
-   }
+   @Nullable
+   public Dynamic<? extends T> b(bpz<StringReader> $$0) {
+      $$0.f().skipWhitespace();
+      int $$1 = $$0.g();
 
-   private static void b(bqq $$0) {
-      if (b.get() != null) {
-         throw new IllegalStateException("Profiler is already active");
-      } else {
-         bqq $$1 = c($$0);
-         b.set($$1);
-         c.incrementAndGet();
-         $$1.a();
+      try {
+         return new Dynamic(this.a, this.b.b($$0.f()));
+      } catch (Exception var4) {
+         $$0.b().a($$1, var4);
+         return null;
       }
-   }
-
-   private static void b() {
-      bqq $$0 = b.get();
-      if ($$0 == null) {
-         throw new IllegalStateException("Profiler was not active");
-      } else {
-         b.remove();
-         c.decrementAndGet();
-         $$0.b();
-      }
-   }
-
-   private static bqq c(bqq $$0) {
-      return bqq.a(c(), $$0);
-   }
-
-   public static bqq a() {
-      return c.get() == 0 ? c() : Objects.requireNonNullElseGet(b.get(), bqp::c);
-   }
-
-   private static bqq c() {
-      return (bqq)(TracyClient.isAvailable() ? a.get() : bqm.a);
-   }
-
-   public interface a extends AutoCloseable {
-      @Override
-      void close();
    }
 }

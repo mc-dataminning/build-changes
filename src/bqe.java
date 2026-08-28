@@ -1,50 +1,50 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.stream.Stream;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
 
-public interface bqe {
-   static bpy<StringReader> a(String $$0) {
-      return new bqe.b($$0);
-   }
+public interface bqe<T> {
+   T a(StringReader var1) throws CommandSyntaxException;
 
-   static bpy<StringReader> a(char $$0) {
-      return new bqe.a($$0);
-   }
+   CompletableFuture<Suggestions> a(SuggestionsBuilder var1);
 
-   public static record a(char a) implements bpy<StringReader> {
-      @Override
-      public boolean a(bpu<StringReader> $$0, bpw $$1, bpq $$2) {
-         $$0.b().skipWhitespace();
-         int $$3 = $$0.c();
-         if ($$0.b().canRead() && $$0.b().read() == this.a) {
-            return true;
-         } else {
-            $$0.a().a($$3, $$0x -> Stream.of(String.valueOf(this.a)), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
-            return false;
+   default <S> bqe<S> a(final Function<T, S> $$0) {
+      return new bqe<S>() {
+         @Override
+         public S a(StringReader $$0x) throws CommandSyntaxException {
+            return $$0.apply((T)bqe.this.a($$0));
          }
-      }
 
-      public char c() {
-         return this.a;
-      }
+         @Override
+         public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0x) {
+            return bqe.this.a($$0);
+         }
+      };
    }
 
-   public static record b(String a) implements bpy<StringReader> {
-      @Override
-      public boolean a(bpu<StringReader> $$0, bpw $$1, bpq $$2) {
-         $$0.b().skipWhitespace();
-         int $$3 = $$0.c();
-         String $$4 = $$0.b().readUnquotedString();
-         if (!$$4.equals(this.a)) {
-            $$0.a().a($$3, $$0x -> Stream.of(this.a), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
-            return false;
-         } else {
-            return true;
+   default <T, O> bqe<T> a(final DynamicOps<O> $$0, final bqe<O> $$1, final Codec<T> $$2, final DynamicCommandExceptionType $$3) {
+      return new bqe<T>() {
+         @Override
+         public T a(StringReader $$0x) throws CommandSyntaxException {
+            int $$1 = $$0.getCursor();
+            O $$2 = $$1.a($$0);
+            DataResult<T> $$3 = $$2.parse($$0, $$2);
+            return (T)$$3.getOrThrow($$3xxx -> {
+               $$0.setCursor($$1);
+               return $$3.createWithContext($$0, $$3xxx);
+            });
          }
-      }
 
-      public String c() {
-         return this.a;
-      }
+         @Override
+         public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0x) {
+            return bqe.this.a($$0);
+         }
+      };
    }
 }

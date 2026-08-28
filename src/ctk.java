@@ -1,59 +1,16 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
+public class ctk extends ctj {
+   private static final float f = 3.0F;
 
-public class ctk {
-   private final List<cth> a = Lists.newArrayList();
-   private int b;
-
-   public ImmutableList<cth> a() {
-      return ImmutableList.copyOf(this.a);
+   public ctk(bxc<? extends ctj> $$0, djx $$1) {
+      super($$0, $$1);
    }
 
-   public ctk a(int $$0, float $$1) {
-      this.a.add(new cth($$0, $$1));
-      this.b();
-      return this;
+   public ctk(cpv $$0, djx $$1) {
+      super(bxc.t, $$1, $$0, $$0.dA(), $$0.x(), $$0.dG());
    }
 
-   public ctk a(Collection<cth> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
-   }
-
-   private void b() {
-      Int2ObjectSortedMap<cth> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
-   }
-
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         cth $$1 = this.a.get(this.b);
-         cth $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
-
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            cth $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
-
-            this.b = $$6;
-            $$5 = $$7.b();
-         }
-
-         return $$5;
-      }
+   @Override
+   protected void a(ffq $$0) {
+      this.dV().a(this, null, d, $$0.a(), $$0.b(), $$0.c(), 3.0F, false, djx.a.e, ly.A, ly.z, awp.cQ);
    }
 }

@@ -1,19 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public record dxg(alg e, String f) {
-   public static final Codec<dxg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(alg.a.fieldOf("asset_id").forGetter(dxg::a), Codec.STRING.fieldOf("translation_key").forGetter(dxg::b)).apply($$0, dxg::new)
-   );
-   public static final yw<wj, dxg> b = yw.a(alg.b, dxg::a, yu.p, dxg::b, dxg::new);
-   public static final Codec<jf<dxg>> c = alc.a(mh.aF, a);
-   public static final yw<wj, jf<dxg>> d = yu.a(mh.aF, b);
+public class dxg extends dnc {
+   public static final MapCodec<dxg> a = b(dxg::new);
 
-   public alg a() {
-      return this.e;
+   @Override
+   public MapCodec<dxg> a() {
+      return a;
    }
 
-   public String b() {
-      return this.f;
+   public dxg(ebd.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected void a(ebe $$0, djx $$1, iv $$2, bwt $$3, bxm $$4) {
+      ffq $$5 = new ffq(0.25, 0.05F, 0.25);
+      if ($$3 instanceof bxu $$6 && $$6.b(bvz.K)) {
+         $$5 = new ffq(0.5, 0.25, 0.5);
+      }
+
+      $$3.a($$0, $$5);
    }
 }

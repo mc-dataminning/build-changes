@@ -1,70 +1,27 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class foo extends foq {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wy c = wy.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final fys f;
-   private final String g;
+public class foo extends hrm {
+   protected BooleanConsumer a;
+   private final xa b;
+   private final xa c;
 
-   public foo(long $$0, int $$1, String $$2, fys $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
+   public foo(BooleanConsumer $$0, xa $$1, xa $$2) {
+      super(fqu.a);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public void run() {
-      fkt $$0 = fkt.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            fmj $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(new fng(this.f, $$2, this.g, $$0x -> {
-            }));
-            return;
-         } catch (fmq var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (fmp var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var5);
-            a(new fnh(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
-            return;
-         }
-      }
+   public void aS_() {
+      this.c(ful.a(wz.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
+      this.c(ful.a(wz.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
    }
 
    @Override
-   public wy a() {
-      return c;
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
+      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
    }
 }

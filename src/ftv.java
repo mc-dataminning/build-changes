@@ -1,356 +1,324 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.ArabicShapingException;
+import com.ibm.icu.text.Bidi;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
 public class ftv {
-   public static final int a = Integer.MAX_VALUE;
-   private static final int b = 2;
-   private final fsk c;
-   private final List<ftv.a> d = Lists.newArrayList();
-   private String e;
-   private int f;
-   private int g;
-   private boolean h;
-   private int i = Integer.MAX_VALUE;
-   private final int j;
-   private Consumer<String> k = $$0x -> {
-   };
-   private Runnable l = () -> {
-   };
+   private static final float f = 0.01F;
+   public static final float a = 0.03F;
+   public static final int b = 0;
+   public static final int c = 8;
+   public final int d = 9;
+   public final azx e = azx.a();
+   private final Function<ali, fxd> g;
+   final boolean h;
+   private final frn i;
 
-   public ftv(fsk $$0, int $$1) {
-      this.c = $$0;
-      this.j = $$1;
-      this.a("");
+   public ftv(Function<ali, fxd> $$0, boolean $$1) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = new frn(($$0x, $$1x) -> this.a($$1x.l()).a($$0x, this.h).a($$1x.c()));
    }
 
-   public int a() {
-      return this.i;
+   fxd a(ali $$0) {
+      return this.g.apply($$0);
    }
 
-   public void a(int $$0) {
-      if ($$0 < 0) {
-         throw new IllegalArgumentException("Character limit cannot be negative");
-      } else {
-         this.i = $$0;
-      }
-   }
-
-   public boolean b() {
-      return this.i != Integer.MAX_VALUE;
-   }
-
-   public void a(Consumer<String> $$0) {
-      this.k = $$0;
-   }
-
-   public void a(Runnable $$0) {
-      this.l = $$0;
-   }
-
-   public void a(String $$0) {
-      this.e = this.c($$0);
-      this.f = this.e.length();
-      this.g = this.f;
-      this.n();
-   }
-
-   public String c() {
-      return this.e;
-   }
-
-   public void b(String $$0) {
-      if (!$$0.isEmpty() || this.i()) {
-         String $$1 = this.d(bal.a($$0, true));
-         ftv.a $$2 = this.e();
-         this.e = new StringBuilder(this.e).replace($$2.a, $$2.b, $$1).toString();
-         this.f = $$2.a + $$1.length();
-         this.g = this.f;
-         this.n();
-      }
-   }
-
-   public void b(int $$0) {
-      if (!this.i()) {
-         this.g = azm.a(this.f + $$0, 0, this.e.length());
-      }
-
-      this.b("");
-   }
-
-   public int d() {
-      return this.f;
-   }
-
-   public void a(boolean $$0) {
-      this.h = $$0;
-   }
-
-   public ftv.a e() {
-      return new ftv.a(Math.min(this.g, this.f), Math.max(this.g, this.f));
-   }
-
-   public int f() {
-      return this.d.size();
-   }
-
-   public int g() {
-      for (int $$0 = 0; $$0 < this.d.size(); $$0++) {
-         ftv.a $$1 = this.d.get($$0);
-         if (this.f >= $$1.a && this.f <= $$1.b) {
-            return $$0;
-         }
-      }
-
-      return -1;
-   }
-
-   public ftv.a c(int $$0) {
-      return this.d.get(azm.a($$0, 0, this.d.size() - 1));
-   }
-
-   public void a(fum $$0, int $$1) {
-      switch ($$0) {
-         case a:
-            this.f = $$1;
-            break;
-         case b:
-            this.f += $$1;
-            break;
-         case c:
-            this.f = this.e.length() + $$1;
-      }
-
-      this.f = azm.a(this.f, 0, this.e.length());
-      this.l.run();
-      if (!this.h) {
-         this.g = this.f;
-      }
-   }
-
-   public void d(int $$0) {
-      if ($$0 != 0) {
-         int $$1 = this.c.b(this.e.substring(this.m().a, this.f)) + 2;
-         ftv.a $$2 = this.f($$0);
-         int $$3 = this.c.a(this.e.substring($$2.a, $$2.b), $$1).length();
-         this.a(fum.a, $$2.a + $$3);
-      }
-   }
-
-   public void a(double $$0, double $$1) {
-      int $$2 = azm.a($$0);
-      int $$3 = azm.a($$1 / 9.0);
-      ftv.a $$4 = this.d.get(azm.a($$3, 0, this.d.size() - 1));
-      int $$5 = this.c.a(this.e.substring($$4.a, $$4.b), $$2).length();
-      this.a(fum.a, $$4.a + $$5);
-   }
-
-   public boolean e(int $$0) {
-      this.h = fys.t();
-      if (fys.f($$0)) {
-         this.f = this.e.length();
-         this.g = 0;
-         return true;
-      } else if (fys.e($$0)) {
-         fpt.Q().p.a(this.j());
-         return true;
-      } else if (fys.d($$0)) {
-         this.b(fpt.Q().p.a());
-         return true;
-      } else if (fys.c($$0)) {
-         fpt.Q().p.a(this.j());
-         this.b("");
-         return true;
-      } else {
-         switch ($$0) {
-            case 257:
-            case 335:
-               this.b("\n");
-               return true;
-            case 259:
-               if (fys.s()) {
-                  ftv.a $$3 = this.k();
-                  this.b($$3.a - this.f);
-               } else {
-                  this.b(-1);
-               }
-
-               return true;
-            case 261:
-               if (fys.s()) {
-                  ftv.a $$4 = this.l();
-                  this.b($$4.a - this.f);
-               } else {
-                  this.b(1);
-               }
-
-               return true;
-            case 262:
-               if (fys.s()) {
-                  ftv.a $$2 = this.l();
-                  this.a(fum.a, $$2.a);
-               } else {
-                  this.a(fum.b, 1);
-               }
-
-               return true;
-            case 263:
-               if (fys.s()) {
-                  ftv.a $$1 = this.k();
-                  this.a(fum.a, $$1.a);
-               } else {
-                  this.a(fum.b, -1);
-               }
-
-               return true;
-            case 264:
-               if (!fys.s()) {
-                  this.d(1);
-               }
-
-               return true;
-            case 265:
-               if (!fys.s()) {
-                  this.d(-1);
-               }
-
-               return true;
-            case 266:
-               this.a(fum.a, 0);
-               return true;
-            case 267:
-               this.a(fum.c, 0);
-               return true;
-            case 268:
-               if (fys.s()) {
-                  this.a(fum.a, 0);
-               } else {
-                  this.a(fum.a, this.m().a);
-               }
-
-               return true;
-            case 269:
-               if (fys.s()) {
-                  this.a(fum.c, 0);
-               } else {
-                  this.a(fum.a, this.m().b);
-               }
-
-               return true;
-            default:
-               return false;
-         }
-      }
-   }
-
-   public Iterable<ftv.a> h() {
-      return this.d;
-   }
-
-   public boolean i() {
-      return this.g != this.f;
-   }
-
-   @VisibleForTesting
-   public String j() {
-      ftv.a $$0 = this.e();
-      return this.e.substring($$0.a, $$0.b);
-   }
-
-   private ftv.a m() {
-      return this.f(0);
-   }
-
-   private ftv.a f(int $$0) {
-      int $$1 = this.g();
-      if ($$1 < 0) {
-         throw new IllegalStateException("Cursor is not within text (cursor = " + this.f + ", length = " + this.e.length() + ")");
-      } else {
-         return this.d.get(azm.a($$1 + $$0, 0, this.d.size() - 1));
-      }
-   }
-
-   @VisibleForTesting
-   public ftv.a k() {
-      if (this.e.isEmpty()) {
-         return ftv.a.c;
-      } else {
-         int $$0 = azm.a(this.f, 0, this.e.length() - 1);
-
-         while ($$0 > 0 && Character.isWhitespace(this.e.charAt($$0 - 1))) {
-            $$0--;
-         }
-
-         while ($$0 > 0 && !Character.isWhitespace(this.e.charAt($$0 - 1))) {
-            $$0--;
-         }
-
-         return new ftv.a($$0, this.g($$0));
-      }
-   }
-
-   @VisibleForTesting
-   public ftv.a l() {
-      if (this.e.isEmpty()) {
-         return ftv.a.c;
-      } else {
-         int $$0 = azm.a(this.f, 0, this.e.length() - 1);
-
-         while ($$0 < this.e.length() && !Character.isWhitespace(this.e.charAt($$0))) {
-            $$0++;
-         }
-
-         while ($$0 < this.e.length() && Character.isWhitespace(this.e.charAt($$0))) {
-            $$0++;
-         }
-
-         return new ftv.a($$0, this.g($$0));
-      }
-   }
-
-   private int g(int $$0) {
-      int $$1 = $$0;
-
-      while ($$1 < this.e.length() && !Character.isWhitespace(this.e.charAt($$1))) {
-         $$1++;
-      }
-
-      return $$1;
-   }
-
-   private void n() {
-      this.o();
-      this.k.accept(this.e);
-      this.l.run();
-   }
-
-   private void o() {
-      this.d.clear();
-      if (this.e.isEmpty()) {
-         this.d.add(ftv.a.c);
-      } else {
-         this.c.b().a(this.e, this.j, xv.a, false, ($$0, $$1, $$2) -> this.d.add(new ftv.a($$1, $$2)));
-         if (this.e.charAt(this.e.length() - 1) == '\n') {
-            this.d.add(new ftv.a(this.e.length(), this.e.length()));
-         }
-      }
-   }
-
-   private String c(String $$0) {
-      return this.b() ? bal.a($$0, this.i, false) : $$0;
-   }
-
-   private String d(String $$0) {
-      if (this.b()) {
-         int $$1 = this.i - this.e.length();
-         return bal.a($$0, $$1, false);
-      } else {
+   public String a(String $$0) {
+      try {
+         Bidi $$1 = new Bidi(new ArabicShaping(8).shape($$0), 127);
+         $$1.setReorderingMode(0);
+         return $$1.writeReordered(2);
+      } catch (ArabicShapingException var3) {
          return $$0;
       }
    }
 
-   protected static record a(int a, int b) {
-      static final ftv.a c = new ftv.a(0, 0);
+   public int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gsa $$6, ftv.a $$7, int $$8, int $$9) {
+      if (this.a()) {
+         $$0 = this.a($$0);
+      }
+
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, true);
+   }
+
+   public int a(xa $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gsa $$6, ftv.a $$7, int $$8, int $$9) {
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, true);
+   }
+
+   public int a(xa $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gsa $$6, ftv.a $$7, int $$8, int $$9, boolean $$10) {
+      return this.a($$0.g(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+   }
+
+   public int a(aza $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gsa $$6, ftv.a $$7, int $$8, int $$9) {
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, true);
+   }
+
+   public void a(aza $$0, float $$1, float $$2, int $$3, int $$4, Matrix4f $$5, gsa $$6, int $$7) {
+      int $$8 = a($$4);
+      ftv.b $$9 = new ftv.b(this, $$6, 0.0F, 0.0F, $$8, false, $$5, ftv.a.a, $$7);
+
+      for (int $$10 = -1; $$10 <= 1; $$10++) {
+         for (int $$11 = -1; $$11 <= 1; $$11++) {
+            if ($$10 != 0 || $$11 != 0) {
+               float[] $$12 = new float[]{$$1};
+               int $$13 = $$10;
+               int $$14 = $$11;
+               $$0.accept(($$6x, $$7x, $$8x) -> {
+                  boolean $$9x = $$7x.c();
+                  fxd $$10x = this.a($$7x.l());
+                  fij $$11x = $$10x.a($$8x, this.h);
+                  $$9.j = $$12[0] + (float)$$13 * $$11x.b();
+                  $$9.k = $$2 + (float)$$14 * $$11x.b();
+                  $$12[0] += $$11x.a($$9x);
+                  return $$9.accept($$6x, $$7x.a($$8), $$8x);
+               });
+            }
+         }
+      }
+
+      $$9.a();
+      ftv.b $$15 = new ftv.b(this, $$6, $$1, $$2, a($$3), false, $$5, ftv.a.c, $$7);
+      $$0.accept($$15);
+      $$15.a($$1);
+   }
+
+   private static int a(int $$0) {
+      return ($$0 & -67108864) == 0 ? axy.f($$0) : $$0;
+   }
+
+   private int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gsa $$6, ftv.a $$7, int $$8, int $$9, boolean $$10) {
+      $$3 = a($$3);
+      $$1 = this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+      return (int)$$1 + ($$4 ? 1 : 0);
+   }
+
+   private int a(aza $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gsa $$6, ftv.a $$7, int $$8, int $$9, boolean $$10) {
+      $$3 = a($$3);
+      $$1 = this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+      return (int)$$1 + ($$4 ? 1 : 0);
+   }
+
+   private float b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gsa $$6, ftv.a $$7, int $$8, int $$9, boolean $$10) {
+      ftv.b $$11 = new ftv.b(this, $$6, $$1, $$2, $$3, $$8, $$4, $$5, $$7, $$9, $$10);
+      bal.c($$0, xx.a, $$11);
+      return $$11.a($$1);
+   }
+
+   private float b(aza $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gsa $$6, ftv.a $$7, int $$8, int $$9, boolean $$10) {
+      ftv.b $$11 = new ftv.b(this, $$6, $$1, $$2, $$3, $$8, $$4, $$5, $$7, $$9, $$10);
+      $$0.accept($$11);
+      return $$11.a($$1);
+   }
+
+   public int b(String $$0) {
+      return azo.f(this.i.a($$0));
+   }
+
+   public int a(xf $$0) {
+      return azo.f(this.i.a($$0));
+   }
+
+   public int a(aza $$0) {
+      return azo.f(this.i.a($$0));
+   }
+
+   public String a(String $$0, int $$1, boolean $$2) {
+      return $$2 ? this.i.c($$0, $$1, xx.a) : this.i.b($$0, $$1, xx.a);
+   }
+
+   public String a(String $$0, int $$1) {
+      return this.i.b($$0, $$1, xx.a);
+   }
+
+   public xf a(xf $$0, int $$1) {
+      return this.i.a($$0, $$1, xx.a);
+   }
+
+   public int b(String $$0, int $$1) {
+      return 9 * this.i.g($$0, $$1, xx.a).size();
+   }
+
+   public int b(xf $$0, int $$1) {
+      return 9 * this.i.b($$0, $$1, xx.a).size();
+   }
+
+   public List<aza> c(xf $$0, int $$1) {
+      return tu.a().a(this.i.b($$0, $$1, xx.a));
+   }
+
+   public boolean a() {
+      return tu.a().b();
+   }
+
+   public frn b() {
+      return this.i;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   class b implements azb {
+      final gsa a;
+      private final boolean c;
+      private final int d;
+      private final int e;
+      private final Matrix4f f;
+      private final ftv.a g;
+      private final int h;
+      private final boolean i;
+      float j;
+      float k;
+      private final List<fxh.b> l;
+      @Nullable
+      private List<fxh.a> m;
+
+      private void a(fxh.a $$0) {
+         if (this.m == null) {
+            this.m = Lists.newArrayList();
+         }
+
+         this.m.add($$0);
+      }
+
+      public b(
+         final ftv param1,
+         final gsa $$0,
+         final float $$1,
+         final float $$2,
+         final int $$3,
+         final boolean $$4,
+         final Matrix4f $$5,
+         final ftv.a $$6,
+         final int $$7
+      ) {
+         this(var1, $$0, $$1, $$2, $$3, 0, $$4, $$5, $$6, $$7, true);
+      }
+
+      public b(
+         final ftv param1,
+         final gsa $$0,
+         final float $$1,
+         final float $$2,
+         final int $$3,
+         final int $$4,
+         final boolean $$5,
+         final Matrix4f $$6,
+         final ftv.a $$7,
+         final int $$8,
+         final boolean $$9
+      ) {
+         this.b = var1;
+         this.l = new ArrayList<>();
+         this.a = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.c = $$5;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$6;
+         this.g = $$7;
+         this.h = $$8;
+         this.i = $$9;
+      }
+
+      @Override
+      public boolean accept(int $$0, xx $$1, int $$2) {
+         fxd $$3 = this.b.a($$1.l());
+         fij $$4 = $$3.a($$2, this.b.h);
+         fxh $$5 = $$1.g() && $$2 != 32 ? $$3.a($$4) : $$3.a($$2);
+         boolean $$6 = $$1.c();
+         xz $$7 = $$1.a();
+         int $$8 = this.a($$7);
+         int $$9 = this.a($$1, $$8);
+         float $$10 = $$4.a($$6);
+         float $$11 = $$0 == 0 ? this.j - 1.0F : this.j;
+         float $$12 = $$4.b();
+         if (!($$5 instanceof fxi)) {
+            float $$13 = $$6 ? $$4.a() : 0.0F;
+            this.l.add(new fxh.b(this.j, this.k, $$8, $$9, $$5, $$1, $$13, $$12));
+         }
+
+         if ($$1.e()) {
+            this.a(new fxh.a($$11, this.k + 4.5F, this.j + $$10, this.k + 4.5F - 1.0F, this.b(), $$8, $$9, $$12));
+         }
+
+         if ($$1.f()) {
+            this.a(new fxh.a($$11, this.k + 9.0F, this.j + $$10, this.k + 9.0F - 1.0F, this.b(), $$8, $$9, $$12));
+         }
+
+         this.j += $$10;
+         return true;
+      }
+
+      float a(float $$0) {
+         fxh $$1 = null;
+         if (this.e != 0) {
+            fxh.a $$2 = new fxh.a($$0 - 1.0F, this.k + 9.0F, this.j, this.k - 1.0F, this.c(), this.e);
+            $$1 = this.b.a(xx.b).b();
+            flr $$3 = this.a.getBuffer($$1.a(this.g));
+            $$1.a($$2, this.f, $$3, this.h);
+         }
+
+         this.a();
+         if (this.m != null) {
+            if ($$1 == null) {
+               $$1 = this.b.a(xx.b).b();
+            }
+
+            flr $$4 = this.a.getBuffer($$1.a(this.g));
+
+            for (fxh.a $$5 : this.m) {
+               $$1.a($$5, this.f, $$4, this.h);
+            }
+         }
+
+         return this.j;
+      }
+
+      private int a(@Nullable xz $$0) {
+         if ($$0 != null) {
+            int $$1 = axy.a(this.d);
+            int $$2 = $$0.a();
+            return axy.c($$1, $$2);
+         } else {
+            return this.d;
+         }
+      }
+
+      private int a(xx $$0, int $$1) {
+         Integer $$2 = $$0.b();
+         if ($$2 != null) {
+            float $$3 = axy.i($$1);
+            float $$4 = axy.i($$2);
+            return $$3 != 1.0F ? axy.c(axy.b($$3 * $$4), $$2) : $$2;
+         } else {
+            return this.c ? axy.a($$1, 0.25F) : 0;
+         }
+      }
+
+      void a() {
+         for (fxh.b $$0 : this.l) {
+            fxh $$1 = $$0.e();
+            flr $$2 = this.a.getBuffer($$1.a(this.g));
+            $$1.a($$0, this.f, $$2, this.h);
+         }
+      }
+
+      private float b() {
+         return this.i ? 0.01F : -0.01F;
+      }
+
+      private float c() {
+         return this.i ? -0.01F : 0.01F;
+      }
    }
 }

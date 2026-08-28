@@ -1,208 +1,151 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
+import com.google.common.hash.HashCode;
+import com.google.common.hash.HashFunction;
+import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import java.io.File;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.Proxy;
+import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Locale;
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
-public class atm extends atg {
-   static final Logger c = LogUtils.getLogger();
-   private final atm.b d;
-   private final String e;
+public class atm implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 20;
+   private final Path c;
+   private final bpk<atm.e> d;
+   private final btg e = new btg(ag.j(), "download-queue");
 
-   atm(ato $$0, atm.b $$1, String $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   public atm(Path $$0) throws IOException {
+      this.c = $$0;
+      w.c($$0);
+      this.d = bpk.a(atm.e.a, $$0.resolve("log.json"));
+      atl.a($$0, 20);
    }
 
-   private static String b(atr $$0, alg $$1) {
-      return String.format(Locale.ROOT, "%s/%s/%s", $$0.a(), $$1.b(), $$1.a());
-   }
+   private atm.b b(atm.a $$0, Map<UUID, atm.c> $$1) {
+      atm.b $$2 = new atm.b();
+      $$1.forEach(
+         ($$2x, $$3) -> {
+            Path $$4 = this.c.resolve($$2x.toString());
+            Path $$5 = null;
 
-   @Nullable
-   @Override
-   public auu<InputStream> a(String... $$0) {
-      return this.b(String.join("/", $$0));
-   }
+            try {
+               $$5 = azf.a($$4, $$3.a, $$0.c, $$0.a, $$3.b, $$0.b, $$0.d, $$0.e);
+               $$2.a.put($$2x, $$5);
+            } catch (Exception var9) {
+               a.error("Failed to download {}", $$3.a, var9);
+               $$2.b.add($$2x);
+            }
 
-   @Override
-   public auu<InputStream> a(atr $$0, alg $$1) {
-      return this.b(b($$0, $$1));
-   }
-
-   private String a(String $$0) {
-      return this.e.isEmpty() ? $$0 : this.e + "/" + $$0;
-   }
-
-   @Nullable
-   private auu<InputStream> b(String $$0) {
-      ZipFile $$1 = this.d.a();
-      if ($$1 == null) {
-         return null;
-      } else {
-         ZipEntry $$2 = $$1.getEntry(this.a($$0));
-         return $$2 == null ? null : auu.create($$1, $$2);
-      }
-   }
-
-   @Override
-   public Set<String> a(atr $$0) {
-      ZipFile $$1 = this.d.a();
-      if ($$1 == null) {
-         return Set.of();
-      } else {
-         Enumeration<? extends ZipEntry> $$2 = $$1.entries();
-         Set<String> $$3 = Sets.newHashSet();
-         String $$4 = this.a($$0.a() + "/");
-
-         while ($$2.hasMoreElements()) {
-            ZipEntry $$5 = $$2.nextElement();
-            String $$6 = $$5.getName();
-            String $$7 = a($$4, $$6);
-            if (!$$7.isEmpty()) {
-               if (alg.j($$7)) {
-                  $$3.add($$7);
-               } else {
-                  c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$7, this.d.a);
-               }
+            try {
+               this.d
+                  .a(
+                     new atm.e(
+                        $$2x,
+                        $$3.a.toString(),
+                        Instant.now(),
+                        Optional.ofNullable($$3.b).map(HashCode::toString),
+                        $$5 != null ? this.a($$5) : Either.left("download_failed")
+                     )
+                  );
+            } catch (Exception var8) {
+               a.error("Failed to log download of {}", $$3.a, var8);
             }
          }
+      );
+      return $$2;
+   }
 
-         return $$3;
+   private Either<String, atm.d> a(Path $$0) {
+      try {
+         long $$1 = Files.size($$0);
+         Path $$2 = this.c.relativize($$0);
+         return Either.right(new atm.d($$2.toString(), $$1));
+      } catch (IOException var5) {
+         a.error("Failed to get file size of {}", $$0, var5);
+         return Either.left("no_access");
       }
    }
 
-   @VisibleForTesting
-   public static String a(String $$0, String $$1) {
-      if (!$$1.startsWith($$0)) {
-         return "";
-      } else {
-         int $$2 = $$0.length();
-         int $$3 = $$1.indexOf(47, $$2);
-         return $$3 == -1 ? $$1.substring($$2) : $$1.substring($$2, $$3);
-      }
+   public CompletableFuture<atm.b> a(atm.a $$0, Map<UUID, atm.c> $$1) {
+      return CompletableFuture.supplyAsync(() -> this.b($$0, $$1), this.e::a_);
    }
 
    @Override
-   public void close() {
+   public void close() throws IOException {
+      this.e.close();
       this.d.close();
    }
 
-   @Override
-   public void a(atr $$0, String $$1, String $$2, atp.a $$3) {
-      ZipFile $$4 = this.d.a();
-      if ($$4 != null) {
-         Enumeration<? extends ZipEntry> $$5 = $$4.entries();
-         String $$6 = this.a($$0.a() + "/" + $$1 + "/");
-         String $$7 = $$6 + $$2 + "/";
+   public static record a(HashFunction a, int b, Map<String, String> c, Proxy d, azf.a e) {
+   }
 
-         while ($$5.hasMoreElements()) {
-            ZipEntry $$8 = $$5.nextElement();
-            if (!$$8.isDirectory()) {
-               String $$9 = $$8.getName();
-               if ($$9.startsWith($$7)) {
-                  String $$10 = $$9.substring($$6.length());
-                  alg $$11 = alg.b($$1, $$10);
-                  if ($$11 != null) {
-                     $$3.accept($$11, auu.create($$4, $$8));
-                  } else {
-                     c.warn("Invalid path in datapack: {}:{}, ignoring", $$1, $$10);
-                  }
-               }
-            }
-         }
+   public static record b(Map<UUID, Path> a, Set<UUID> b) {
+
+      public b() {
+         this(new HashMap<>(), new HashSet<>());
       }
    }
 
-   public static class a implements auk.c {
-      private final File a;
+   public static record c(URL a, @Nullable HashCode b) {
+   }
 
-      public a(Path $$0) {
-         this($$0.toFile());
+   static record d(String b, long c) {
+      public static final Codec<atm.d> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(atm.d::a), Codec.LONG.fieldOf("size").forGetter(atm.d::b)).apply($$0, atm.d::new)
+      );
+
+      public String a() {
+         return this.b;
       }
 
-      public a(File $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public atp a(ato $$0) {
-         atm.b $$1 = new atm.b(this.a);
-         return new atm($$0, $$1, "");
-      }
-
-      @Override
-      public atp a(ato $$0, auk.a $$1) {
-         atm.b $$2 = new atm.b(this.a);
-         atp $$3 = new atm($$0, $$2, "");
-         List<String> $$4 = $$1.d();
-         if ($$4.isEmpty()) {
-            return $$3;
-         } else {
-            List<atp> $$5 = new ArrayList<>($$4.size());
-
-            for (String $$6 : $$4) {
-               $$5.add(new atm($$0, $$2, $$6));
-            }
-
-            return new ati($$3, $$5);
-         }
+      public long b() {
+         return this.c;
       }
    }
 
-   static class b implements AutoCloseable {
-      final File a;
-      @Nullable
-      private ZipFile b;
-      private boolean c;
+   static record e(UUID b, String c, Instant d, Optional<String> e, Either<String, atm.d> f) {
+      public static final Codec<atm.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  jz.d.fieldOf("id").forGetter(atm.e::a),
+                  Codec.STRING.fieldOf("url").forGetter(atm.e::b),
+                  ayw.q.fieldOf("time").forGetter(atm.e::c),
+                  Codec.STRING.optionalFieldOf("hash").forGetter(atm.e::d),
+                  Codec.mapEither(Codec.STRING.fieldOf("error"), atm.d.a.fieldOf("file")).forGetter(atm.e::e)
+               )
+               .apply($$0, atm.e::new)
+      );
 
-      b(File $$0) {
-         this.a = $$0;
+      public UUID a() {
+         return this.b;
       }
 
-      @Nullable
-      ZipFile a() {
-         if (this.c) {
-            return null;
-         } else {
-            if (this.b == null) {
-               try {
-                  this.b = new ZipFile(this.a);
-               } catch (IOException var2) {
-                  atm.c.error("Failed to open pack {}", this.a, var2);
-                  this.c = true;
-                  return null;
-               }
-            }
-
-            return this.b;
-         }
+      public String b() {
+         return this.c;
       }
 
-      @Override
-      public void close() {
-         if (this.b != null) {
-            IOUtils.closeQuietly(this.b);
-            this.b = null;
-         }
+      public Instant c() {
+         return this.d;
       }
 
-      @Override
-      protected void finalize() throws Throwable {
-         this.close();
-         super.finalize();
+      public Optional<String> d() {
+         return this.e;
+      }
+
+      public Either<String, atm.d> e() {
+         return this.f;
       }
    }
 }

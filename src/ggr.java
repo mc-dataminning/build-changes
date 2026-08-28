@@ -1,44 +1,37 @@
-public class ggr extends ggp<hdh> {
-   private static final String a = "base";
-   private static final String b = "upper_jaw";
-   private static final String c = "lower_jaw";
-   private final gjt d;
-   private final gjt e;
-   private final gjt f;
-
-   public ggr(gjt $$0) {
+public class ggr extends gio<hdu> {
+   public ggr(gle $$0) {
       super($$0);
-      this.d = $$0.b("base");
-      this.e = this.d.b("upper_jaw");
-      this.f = this.d.b("lower_jaw");
    }
 
-   public static gjz a() {
-      gkb $$0 = new gkb();
-      gkd $$1 = $$0.a();
-      gkd $$2 = $$1.a("base", gjy.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), gjv.a(-5.0F, 24.0F, -5.0F));
-      gjy $$3 = gjy.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-      $$2.a("upper_jaw", $$3, gjv.a(6.5F, 0.0F, 1.0F, 0.0F, 0.0F, 2.042035F));
-      $$2.a("lower_jaw", $$3, gjv.a(3.5F, 0.0F, 9.0F, 0.0F, (float) Math.PI, 4.2411504F));
-      return gjz.a($$0, 64, 32);
+   public static glk a(gli $$0) {
+      glm $$1 = gio.a($$0, 0.0F);
+      glo $$2 = $$1.a();
+      glo $$3 = $$2.a("head", glj.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), glg.a(0.0F, 1.0F, 0.0F));
+      $$3.a("hat", glj.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), glg.a);
+      $$2.a("right_leg", glj.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), glg.a(-1.9F, 11.0F, 0.0F));
+      $$2.a("left_leg", glj.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), glg.a(1.9F, 11.0F, 0.0F));
+      return glk.a($$1, 64, 32);
    }
 
-   public void a(hdh $$0) {
+   public void a(hdu $$0) {
       super.a($$0);
-      float $$1 = $$0.b;
-      float $$2 = Math.min($$1 * 2.0F, 1.0F);
-      $$2 = 1.0F - $$2 * $$2 * $$2;
-      this.e.g = (float) Math.PI - $$2 * 0.35F * (float) Math.PI;
-      this.f.g = (float) Math.PI + $$2 * 0.35F * (float) Math.PI;
-      this.d.c = this.d.c - ($$1 + azm.a($$1 * 2.7F)) * 7.2F;
-      float $$3 = 1.0F;
-      if ($$1 > 0.9F) {
-         $$3 *= (1.0F - $$1) / 0.1F;
-      }
-
-      this.v.c = 24.0F - 20.0F * $$3;
-      this.v.h = $$3;
-      this.v.i = $$3;
-      this.v.j = $$3;
+      this.o.e = (float) (Math.PI / 180.0) * $$0.l.a();
+      this.o.f = (float) (Math.PI / 180.0) * $$0.l.b();
+      this.o.g = (float) (Math.PI / 180.0) * $$0.l.c();
+      this.q.e = (float) (Math.PI / 180.0) * $$0.m.a();
+      this.q.f = (float) (Math.PI / 180.0) * $$0.m.b();
+      this.q.g = (float) (Math.PI / 180.0) * $$0.m.c();
+      this.s.e = (float) (Math.PI / 180.0) * $$0.n.a();
+      this.s.f = (float) (Math.PI / 180.0) * $$0.n.b();
+      this.s.g = (float) (Math.PI / 180.0) * $$0.n.c();
+      this.r.e = (float) (Math.PI / 180.0) * $$0.o.a();
+      this.r.f = (float) (Math.PI / 180.0) * $$0.o.b();
+      this.r.g = (float) (Math.PI / 180.0) * $$0.o.c();
+      this.u.e = (float) (Math.PI / 180.0) * $$0.p.a();
+      this.u.f = (float) (Math.PI / 180.0) * $$0.p.b();
+      this.u.g = (float) (Math.PI / 180.0) * $$0.p.c();
+      this.t.e = (float) (Math.PI / 180.0) * $$0.q.a();
+      this.t.f = (float) (Math.PI / 180.0) * $$0.q.b();
+      this.t.g = (float) (Math.PI / 180.0) * $$0.q.c();
    }
 }

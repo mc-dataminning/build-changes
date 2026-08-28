@@ -1,12 +1,33 @@
-public record aer(wy b) implements zf<abu> {
-   public static final yw<wj, aer> a = yw.a(xa.d, aer::b, aer::new);
+import javax.annotation.Nullable;
 
-   @Override
-   public zh<aer> a() {
-      return agn.au;
+public class aer implements zh<abw> {
+   public static final yy<vw, aer> a = zh.a(aer::a, aer::new);
+   @Nullable
+   private final ali b;
+
+   public aer(@Nullable ali $$0) {
+      this.b = $$0;
    }
 
-   public void a(abu $$0) {
+   private aer(vw $$0) {
+      this.b = $$0.c(vw::q);
+   }
+
+   private void a(vw $$0) {
+      $$0.a(this.b, vw::a);
+   }
+
+   @Override
+   public zj<aer> a() {
+      return agp.as;
+   }
+
+   public void a(abw $$0) {
       $$0.a(this);
+   }
+
+   @Nullable
+   public ali b() {
+      return this.b;
    }
 }

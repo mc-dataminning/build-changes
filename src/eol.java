@@ -1,49 +1,40 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record eol(eod b, List<eol.a> c) {
+public record eol(jj<dnc> b, jj<dnc> c, eoq d, int e, int f, float g) {
    public static final Codec<eol> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eod.a.fieldOf("fallback").forGetter(eol::a), eol.a.a.listOf().fieldOf("rules").forGetter(eol::b)).apply($$0, eol::new)
+      $$0 -> $$0.group(
+               ju.a(mh.i).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               ju.a(mh.i).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               eoq.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eol::new)
    );
 
-   public static eol a(eod $$0) {
-      return new eol($$0, List.of());
-   }
-
-   public static eol a(dmr $$0) {
-      return a(eod.a($$0));
-   }
-
-   public eat a(dkl $$0, azv $$1, iv $$2) {
-      for (eol.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
-      }
-
-      return this.b.a($$1, $$2);
-   }
-
-   public eod a() {
+   public jj<dnc> a() {
       return this.b;
    }
 
-   public List<eol.a> b() {
+   public jj<dnc> b() {
       return this.c;
    }
 
-   public static record a(ehz b, eod c) {
-      public static final Codec<eol.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ehz.b.fieldOf("if_true").forGetter(eol.a::a), eod.a.fieldOf("then").forGetter(eol.a::b)).apply($$0, eol.a::new)
-      );
+   public eoq c() {
+      return this.d;
+   }
 
-      public ehz a() {
-         return this.b;
-      }
+   public int d() {
+      return this.e;
+   }
 
-      public eod b() {
-         return this.c;
-      }
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

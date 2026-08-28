@@ -1,46 +1,70 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class fgs<T> implements fgv<T>, fgx<T> {
-   private final List<fgt<T>> a = Lists.newArrayList();
-   private final Set<fgt<?>> b = new ObjectOpenCustomHashSet(fgt.a);
+public class fgs implements fgr {
+   public static final MapCodec<fgs> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("Score", 0).forGetter(fgs::a),
+               Codec.BOOL.optionalFieldOf("Locked", false).forGetter(fgs::b),
+               xc.a.optionalFieldOf("display").forGetter($$0x -> Optional.ofNullable($$0x.d)),
+               ys.b.optionalFieldOf("format").forGetter($$0x -> Optional.ofNullable($$0x.e))
+            )
+            .apply($$0, fgs::new)
+   );
+   private int b;
+   private boolean c = true;
+   @Nullable
+   private xa d;
+   @Nullable
+   private yq e;
 
-   @Override
-   public void a(fgu<T> $$0) {
-      fgt<T> $$1 = new fgt<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
+   public fgs() {
    }
 
-   private void a(fgt<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
-      }
-   }
-
-   @Override
-   public boolean a(iv $$0, T $$1) {
-      return this.b.contains(fgt.a($$1, $$0));
+   private fgs(int $$0, boolean $$1, Optional<xa> $$2, Optional<yq> $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
+      this.e = $$3.orElse(null);
    }
 
    @Override
    public int a() {
-      return this.a.size();
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public List<fgt<T>> a(long $$0) {
-      return this.a;
+   public boolean b() {
+      return this.c;
    }
 
-   public List<fgt<T>> b() {
-      return List.copyOf(this.a);
+   public void a(boolean $$0) {
+      this.c = $$0;
    }
 
-   public static <T> fgs<T> a(List<fgt<T>> $$0) {
-      fgs<T> $$1 = new fgs<>();
-      $$0.forEach($$1::a);
-      return $$1;
+   @Nullable
+   public xa d() {
+      return this.d;
+   }
+
+   public void a(@Nullable xa $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   @Override
+   public yq c() {
+      return this.e;
+   }
+
+   public void b(@Nullable yq $$0) {
+      this.e = $$0;
    }
 }

@@ -1,59 +1,35 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.PeekingIterator;
+import java.util.Comparator;
+import java.util.Iterator;
 
-public class hpe implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ".json";
-   private static final int c = 7;
-   private final bph d;
-   @Nullable
-   private CompletableFuture<Optional<hpa>> e;
+public class hpe<T> extends AbstractIterator<T> {
+   private final PeekingIterator<T> a;
+   private final PeekingIterator<T> b;
+   private final Comparator<T> c;
 
-   private hpe(bph $$0) {
-      this.d = $$0;
+   public hpe(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
+      this.a = Iterators.peekingIterator($$0);
+      this.b = Iterators.peekingIterator($$1);
+      this.c = $$2;
    }
 
-   public static CompletableFuture<Optional<hpe>> a(Path $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            bph $$1 = bph.a($$0, ".json");
-            $$1.a().a(LocalDate.now(), 7).a();
-            return Optional.of(new hpe($$1));
-         } catch (Exception var2) {
-            a.error("Failed to create telemetry log manager", var2);
-            return Optional.empty();
+   protected T computeNext() {
+      while (this.a.hasNext() && this.b.hasNext()) {
+         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
+         if ($$0 == 0) {
+            this.b.next();
+            return (T)this.a.next();
          }
-      }, ag.h());
-   }
 
-   public CompletableFuture<Optional<hpb>> a() {
-      if (this.e == null) {
-         this.e = CompletableFuture.supplyAsync(() -> {
-            try {
-               bph.e $$0 = this.d.a(LocalDate.now());
-               FileChannel $$1 = $$0.e();
-               return Optional.of(new hpa($$1, ag.h()));
-            } catch (IOException var3) {
-               a.error("Failed to open channel for telemetry event log", var3);
-               return Optional.empty();
-            }
-         }, ag.h());
+         if ($$0 < 0) {
+            this.a.next();
+         } else {
+            this.b.next();
+         }
       }
 
-      return this.e.thenApply($$0 -> $$0.map(hpa::a));
-   }
-
-   @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.thenAccept($$0 -> $$0.ifPresent(hpa::close));
-      }
+      return (T)this.endOfData();
    }
 }

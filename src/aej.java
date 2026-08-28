@@ -1,36 +1,15 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public class aej implements zf<abu> {
-   public static final yw<vu, aej> a = zf.a(aej::a, aej::new);
-   private final IntList b;
-
-   public aej(IntList $$0) {
-      this.b = new IntArrayList($$0);
-   }
-
-   public aej(int... $$0) {
-      this.b = new IntArrayList($$0);
-   }
-
-   private aej(vu $$0) {
-      this.b = $$0.a();
-   }
-
-   private void a(vu $$0) {
-      $$0.a(this.b);
-   }
+public record aej(List<dfx> b) implements zh<abw> {
+   public static final yy<ByteBuf, aej> a = yy.a(dfx.a.a(yw.a()), aej::b, aej::new);
 
    @Override
-   public zh<aej> a() {
-      return agn.an;
+   public zj<aej> a() {
+      return agp.al;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
-   }
-
-   public IntList b() {
-      return this.b;
    }
 }

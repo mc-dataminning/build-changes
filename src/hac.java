@@ -1,46 +1,41 @@
-public class hac extends gwx<csw, hft> {
-   private static final alg a = alg.b("textures/entity/wither/wither_invulnerable.png");
-   private static final alg g = alg.b("textures/entity/wither/wither.png");
-   private final gim h;
+public class hac extends gxc<ckk, hge, gjm> {
+   private static final ali a = ali.b("textures/entity/rabbit/brown.png");
+   private static final ali j = ali.b("textures/entity/rabbit/white.png");
+   private static final ali k = ali.b("textures/entity/rabbit/black.png");
+   private static final ali l = ali.b("textures/entity/rabbit/gold.png");
+   private static final ali m = ali.b("textures/entity/rabbit/salt.png");
+   private static final ali n = ali.b("textures/entity/rabbit/white_splotched.png");
+   private static final ali o = ali.b("textures/entity/rabbit/toast.png");
+   private static final ali p = ali.b("textures/entity/rabbit/caerbannog.png");
 
-   public hac(gwy.a $$0) {
-      super($$0);
-      this.h = new gim($$0.a(gjs.ea));
+   public hac(gyi.a $$0) {
+      super($$0, new gjm($$0.a(gld.cH)), new gjm($$0.a(gld.cI)), 0.3F);
    }
 
-   public static gjz a() {
-      gkb $$0 = new gkb();
-      gkd $$1 = $$0.a();
-      $$1.a("head", gjy.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gjv.a);
-      return gjz.a($$0, 64, 64);
+   public ali a(hge $$0) {
+      if ($$0.b) {
+         return o;
+      } else {
+         return switch ($$0.c) {
+            case a -> a;
+            case b -> j;
+            case c -> k;
+            case e -> l;
+            case f -> m;
+            case d -> n;
+            case g -> p;
+         };
+      }
    }
 
-   protected int a(csw $$0, iv $$1) {
-      return 15;
+   public hge b() {
+      return new hge();
    }
 
-   public void a(hft $$0, fkd $$1, gqr $$2, int $$3) {
-      $$1.a();
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      fkh $$4 = $$2.getBuffer(this.h.a(this.a($$0)));
-      this.h.a(0.0F, $$0.c, $$0.b);
-      this.h.a($$1, $$4, $$3, hjg.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private alg a(hft $$0) {
-      return $$0.a ? a : g;
-   }
-
-   public hft b() {
-      return new hft();
-   }
-
-   public void a(csw $$0, hft $$1, float $$2) {
+   public void a(ckk $$0, hge $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.o();
-      $$1.c = $$0.l($$2);
-      $$1.b = $$0.k($$2);
+      $$1.a = $$0.J($$2);
+      $$1.b = "Toast".equals(o.a($$0.ai().getString()));
+      $$1.c = $$0.gu();
    }
 }

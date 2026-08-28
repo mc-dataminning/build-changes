@@ -1,30 +1,32 @@
-public class gyo extends gxp<cqa, heq, ghs> {
-   private static final alg j = alg.b("textures/entity/piglin/piglin.png");
-   private static final alg k = alg.b("textures/entity/piglin/piglin_brute.png");
-   public static final har.a a = new har.a(0.0F, 0.0F, 1.0019531F);
+public class gyo extends gyh<csn, hew> {
+   private final hhq a;
 
-   public gyo(gwy.a $$0, gjr $$1, gjr $$2, gjr $$3, gjr $$4, gjr $$5, gjr $$6) {
-      super($$0, new ghs($$0.a($$1)), new ghs($$0.a($$2)), 0.5F, a);
-      this.a(new hbb<>(this, new ghc($$0.a($$3)), new ghc($$0.a($$4)), new ghc($$0.a($$5)), new ghc($$0.a($$6)), $$0.h()));
+   public gyo(gyi.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   public alg a(heq $$0) {
-      return $$0.a ? k : j;
+   public void a(hew $$0, flo $$1, gsa $$2, int $$3) {
+      $$1.a();
+      $$1.a(this.d.b());
+      if ($$0.a) {
+         $$1.a(a.f.rotationDegrees(180.0F));
+         $$1.a(a.d.rotationDegrees(180.0F));
+         $$1.a(a.b.rotationDegrees(90.0F));
+      }
+
+      $$0.b.a($$1, $$2, $$3, hkq.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public heq b() {
-      return new heq();
+   public hew a() {
+      return new hew();
    }
 
-   public void a(cqa $$0, heq $$1, float $$2) {
+   public void a(csn $$0, hew $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.an() == bwr.aS;
-      $$1.d = $$0.x();
-      $$1.c = (float)cyg.b($$0.fA(), $$0);
-      $$1.b = $$0.q();
-   }
-
-   protected boolean b(heq $$0) {
-      return super.a($$0) || $$0.b;
+      $$1.a = $$0.g();
+      this.a.a($$1.b, $$0.f(), czw.h, $$0);
    }
 }

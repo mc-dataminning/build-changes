@@ -1,23 +1,218 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.Set;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.time.Duration;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.annotation.Nullable;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.InputStreamEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.Args;
+import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
 
-public class fmb extends fmi implements fmc {
-   @SerializedName("seed")
-   private final String a;
-   @SerializedName("worldTemplateId")
-   private final long b;
-   @SerializedName("levelType")
-   private final int c;
-   @SerializedName("generateStructures")
-   private final boolean d;
-   @SerializedName("experiments")
-   private final Set<String> e;
+public class fmb {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 5;
+   private static final String c = "/upload";
+   private final File d;
+   private final long e;
+   private final int f;
+   private final fnr g;
+   private final String h;
+   private final String i;
+   private final String j;
+   private final String k;
+   private final fmh l;
+   final AtomicBoolean m = new AtomicBoolean(false);
+   @Nullable
+   private CompletableFuture<fpj> n;
+   private final RequestConfig o = RequestConfig.custom()
+      .setSocketTimeout((int)TimeUnit.MINUTES.toMillis(10L))
+      .setConnectTimeout((int)TimeUnit.SECONDS.toMillis(15L))
+      .build();
 
-   public fmb(String $$0, long $$1, int $$2, boolean $$3, Set<String> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public fmb(File $$0, long $$1, int $$2, fnr $$3, frp $$4, String $$5, String $$6, fmh $$7) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4.a();
+      this.i = $$4.c();
+      this.j = $$5;
+      this.k = $$6;
+      this.l = $$7;
+   }
+
+   public fpj a() {
+      if (this.n != null) {
+         return new fpj.a().a();
+      } else {
+         this.n = CompletableFuture.supplyAsync(() -> this.a(0), ag.h());
+         if (this.m.get()) {
+            this.b();
+            return new fpj.a().a();
+         } else {
+            return this.n.join();
+         }
+      }
+   }
+
+   public void b() {
+      this.m.set(true);
+   }
+
+   private fpj a(int $$0) {
+      fpj.a $$1 = new fpj.a();
+      if (this.m.get()) {
+         return $$1.a();
+      } else {
+         this.l.a(this.d.length());
+         HttpPost $$2 = new HttpPost(this.g.b().resolve("/upload/" + this.e + "/" + this.f));
+         CloseableHttpClient $$3 = HttpClientBuilder.create().setDefaultRequestConfig(this.o).build();
+
+         fpj var8;
+         try {
+            this.a($$2);
+            HttpResponse $$4 = $$3.execute($$2);
+            long $$5 = this.a($$4);
+            if (!this.a($$5, $$0)) {
+               this.a($$4, $$1);
+               return $$1.a();
+            }
+
+            var8 = this.b($$5, $$0);
+         } catch (Exception var12) {
+            if (!this.m.get()) {
+               a.error("Caught exception while uploading: ", var12);
+               return $$1.a();
+            }
+
+            throw new fmk();
+         } finally {
+            this.a($$2, $$3);
+         }
+
+         return var8;
+      }
+   }
+
+   private void a(HttpPost $$0, @Nullable CloseableHttpClient $$1) {
+      $$0.releaseConnection();
+      if ($$1 != null) {
+         try {
+            $$1.close();
+         } catch (IOException var4) {
+            a.error("Failed to close Realms upload client");
+         }
+      }
+   }
+
+   private void a(HttpPost $$0) throws FileNotFoundException {
+      $$0.setHeader("Cookie", "sid=" + this.h + ";token=" + this.g.a() + ";user=" + this.i + ";version=" + this.j + ";worldVersion=" + this.k);
+      fmb.a $$1 = new fmb.a(new FileInputStream(this.d), this.d.length(), this.l);
+      $$1.setContentType("application/octet-stream");
+      $$0.setEntity($$1);
+   }
+
+   private void a(HttpResponse $$0, fpj.a $$1) throws IOException {
+      int $$2 = $$0.getStatusLine().getStatusCode();
+      if ($$2 == 401) {
+         a.debug("Realms server returned 401: {}", $$0.getFirstHeader("WWW-Authenticate"));
+      }
+
+      $$1.a($$2);
+      if ($$0.getEntity() != null) {
+         String $$3 = EntityUtils.toString($$0.getEntity(), "UTF-8");
+         if ($$3 != null) {
+            try {
+               JsonParser $$4 = new JsonParser();
+               JsonElement $$5 = $$4.parse($$3).getAsJsonObject().get("errorMsg");
+               Optional<String> $$6 = Optional.ofNullable($$5).map(JsonElement::getAsString);
+               $$1.a($$6.orElse(null));
+            } catch (Exception var8) {
+            }
+         }
+      }
+   }
+
+   private boolean a(long $$0, int $$1) {
+      return $$0 > 0L && $$1 + 1 < 5;
+   }
+
+   private fpj b(long $$0, int $$1) throws InterruptedException {
+      Thread.sleep(Duration.ofSeconds($$0).toMillis());
+      return this.a($$1 + 1);
+   }
+
+   private long a(HttpResponse $$0) {
+      return Optional.ofNullable($$0.getFirstHeader("Retry-After")).<String>map(NameValuePair::getValue).map(Long::valueOf).orElse(0L);
+   }
+
+   public boolean c() {
+      return this.n.isDone() || this.n.isCancelled();
+   }
+
+   class a extends InputStreamEntity {
+      private final long b;
+      private final InputStream c;
+      private final fmh d;
+
+      public a(final InputStream $$0, final long $$1, final fmh $$2) {
+         super($$0);
+         this.c = $$0;
+         this.b = $$1;
+         this.d = $$2;
+      }
+
+      public void writeTo(OutputStream $$0) throws IOException {
+         Args.notNull($$0, "Output stream");
+
+         try (InputStream $$1 = this.c) {
+            byte[] $$2 = new byte[4096];
+            int $$3;
+            if (this.b < 0L) {
+               while (($$3 = $$1.read($$2)) != -1) {
+                  if (fmb.this.m.get()) {
+                     throw new fmk();
+                  }
+
+                  $$0.write($$2, 0, $$3);
+                  this.d.b((long)$$3);
+               }
+            } else {
+               long $$4 = this.b;
+
+               while ($$4 > 0L) {
+                  $$3 = $$1.read($$2, 0, (int)Math.min(4096L, $$4));
+                  if ($$3 == -1) {
+                     break;
+                  }
+
+                  if (fmb.this.m.get()) {
+                     throw new fmk();
+                  }
+
+                  $$0.write($$2, 0, $$3);
+                  this.d.b((long)$$3);
+                  $$4 -= (long)$$3;
+                  $$0.flush();
+               }
+            }
+         }
+      }
    }
 }

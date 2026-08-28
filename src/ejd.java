@@ -1,83 +1,61 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejd extends ejy<emj> {
-   public ejd(Codec<emj> $$0) {
-      super($$0);
+public class ejd {
+   public static final ejd a = new ejd(false, dne.gZ.m(), dne.qt.m(), dne.eA.m(), dne.aX.m());
+   public static final Codec<ejd> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(ejd::a),
+               ebe.a.optionalFieldOf("air_state", a.b()).forGetter(ejd::b),
+               ebe.a.optionalFieldOf("water_state", a.b()).forGetter(ejd::c),
+               ebe.a.optionalFieldOf("lava_state", a.b()).forGetter(ejd::d),
+               ebe.a.optionalFieldOf("barrier_state", a.b()).forGetter(ejd::e)
+            )
+            .apply($$0, ejd::new)
+   );
+   private final boolean c;
+   private final ebe d;
+   private final ebe e;
+   private final ebe f;
+   private final ebe g;
+
+   public static ejd a(boolean $$0, ebe $$1, ebe $$2, ebe $$3, ebe $$4) {
+      return new ejd($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   public boolean a(eka<emj> $$0) {
-      iv $$1 = $$0.e();
-      dkl $$2 = $$0.b();
-      azv $$3 = $$0.d();
-      if ($$2.v($$1) && !$$2.v($$1.d())) {
-         iv.a $$4 = $$1.k();
-         iv.a $$5 = $$1.k();
-         boolean $$6 = true;
-         boolean $$7 = true;
-         boolean $$8 = true;
-         boolean $$9 = true;
-
-         while ($$2.v($$4)) {
-            if ($$2.t($$4)) {
-               return true;
-            }
-
-            $$2.a($$4, dmt.ep.m(), 2);
-            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, jb.c));
-            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, jb.d));
-            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, jb.e));
-            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, jb.f));
-            $$4.c(jb.a);
-         }
-
-         $$4.c(jb.b);
-         this.a($$2, $$3, $$5.a($$4, jb.c));
-         this.a($$2, $$3, $$5.a($$4, jb.d));
-         this.a($$2, $$3, $$5.a($$4, jb.e));
-         this.a($$2, $$3, $$5.a($$4, jb.f));
-         $$4.c(jb.a);
-         iv.a $$10 = new iv.a();
-
-         for (int $$11 = -3; $$11 < 4; $$11++) {
-            for (int $$12 = -3; $$12 < 4; $$12++) {
-               int $$13 = azm.a($$11) * azm.a($$12);
-               if ($$3.a(10) < 10 - $$13) {
-                  $$10.g($$4.b($$11, 0, $$12));
-                  int $$14 = 3;
-
-                  while ($$2.v($$5.a($$10, jb.a))) {
-                     $$10.c(jb.a);
-                     if (--$$14 <= 0) {
-                        break;
-                     }
-                  }
-
-                  if (!$$2.v($$5.a($$10, jb.a))) {
-                     $$2.a($$10, dmt.ep.m(), 2);
-                  }
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   public static ejd a(ebe $$0, ebe $$1, ebe $$2, ebe $$3) {
+      return new ejd(false, $$0, $$1, $$2, $$3);
    }
 
-   private void a(djn $$0, azv $$1, iv $$2) {
-      if ($$1.h()) {
-         $$0.a($$2, dmt.ep.m(), 2);
-      }
+   public static ejd a(boolean $$0, ebe $$1) {
+      return new ejd($$0, $$1, a.c(), a.d(), a.e());
    }
 
-   private boolean b(djn $$0, azv $$1, iv $$2) {
-      if ($$1.a(10) != 0) {
-         $$0.a($$2, dmt.ep.m(), 2);
-         return true;
-      } else {
-         return false;
-      }
+   private ejd(boolean $$0, ebe $$1, ebe $$2, ebe $$3, ebe $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a() {
+      return this.c;
+   }
+
+   public ebe b() {
+      return this.d;
+   }
+
+   public ebe c() {
+      return this.e;
+   }
+
+   public ebe d() {
+      return this.f;
+   }
+
+   public ebe e() {
+      return this.g;
    }
 }

@@ -1,48 +1,63 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Queue;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record gsp(gsp.a b, List<gsq> c) implements gsq {
-   @Override
-   public <O, S extends eav<O, S>> Predicate<S> instantiate(eau<O, S> $$0) {
-      return this.b.a(Lists.transform(this.c, $$1 -> $$1.instantiate($$0)));
+public class gsp {
+   private static final Logger a = LogUtils.getLogger();
+   private final Queue<gso> b;
+   private volatile int c;
+
+   private gsp(List<gso> $$0) {
+      this.b = Queues.newArrayDeque($$0);
+      this.c = this.b.size();
    }
 
-   public gsp.a a() {
-      return this.b;
+   public static gsp a(int $$0) {
+      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / gso.a);
+      int $$2 = Math.max(1, Math.min($$0, $$1));
+      List<gso> $$3 = new ArrayList<>($$2);
+
+      try {
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3.add(new gso());
+         }
+      } catch (OutOfMemoryError var7) {
+         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
+         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            $$3.remove($$3.size() - 1).close();
+         }
+      }
+
+      return new gsp($$3);
    }
 
-   public List<gsq> b() {
+   @Nullable
+   public gso a() {
+      gso $$0 = this.b.poll();
+      if ($$0 != null) {
+         this.c = this.b.size();
+         return $$0;
+      } else {
+         return null;
+      }
+   }
+
+   public void a(gso $$0) {
+      this.b.add($$0);
+      this.c = this.b.size();
+   }
+
+   public boolean b() {
+      return this.b.isEmpty();
+   }
+
+   public int c() {
       return this.c;
-   }
-
-   public static enum a implements bak {
-      a("AND") {
-         @Override
-         public <V> Predicate<V> a(List<Predicate<V>> $$0) {
-            return ag.a($$0);
-         }
-      },
-      b("OR") {
-         @Override
-         public <V> Predicate<V> a(List<Predicate<V>> $$0) {
-            return ag.b($$0);
-         }
-      };
-
-      public static final Codec<gsp.a> c = bak.a(gsp.a::values);
-      private final String d;
-
-      a(final String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-
-      public abstract <V> Predicate<V> a(List<Predicate<V>> var1);
    }
 }

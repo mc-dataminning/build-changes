@@ -1,27 +1,20 @@
-import com.mojang.serialization.Codec;
+public enum ecd implements bam {
+   a("top"),
+   b("bottom");
 
-public enum ecd implements bak {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
-
-   @Deprecated
-   public static final Codec<ecd> e = ayu.c(ecd::valueOf);
-   private final String f;
-   private final wy g;
+   private final String c;
 
    private ecd(final String $$0) {
-      this.f = $$0;
-      this.g = wy.c("structure_block.mode_info." + $$0);
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.f;
-   }
-
-   public wy a() {
-      return this.g;
+      return this.c;
    }
 }

@@ -1,57 +1,40 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class flq extends fmi implements fmc {
-   @SerializedName("name")
+public class flq {
+   private static final int a = 786432;
+   private final fll b;
    @Nullable
-   private String a;
-   @SerializedName("uuid")
-   private UUID b;
-   @SerializedName("operator")
-   private boolean c;
-   @SerializedName("accepted")
-   private boolean d;
-   @SerializedName("online")
-   private boolean e;
+   private static flq c;
 
-   public String a() {
-      return this.a == null ? "" : this.a;
+   public static void a() {
+      if (c != null) {
+         throw new IllegalStateException("Tesselator has already been initialized");
+      } else {
+         c = new flq();
+      }
    }
 
-   public void a(String $$0) {
-      this.a = $$0;
+   public static flq b() {
+      if (c == null) {
+         throw new IllegalStateException("Tesselator has not been initialized");
+      } else {
+         return c;
+      }
    }
 
-   public UUID b() {
-      return this.b;
+   public flq(int $$0) {
+      this.b = new fll($$0);
    }
 
-   public void a(UUID $$0) {
-      this.b = $$0;
+   public flq() {
+      this(786432);
    }
 
-   public boolean c() {
-      return this.c;
+   public flk a(fls.c $$0, fls $$1) {
+      return new flk(this.b, $$0, $$1);
    }
 
-   public void a(boolean $$0) {
-      this.c = $$0;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public void b(boolean $$0) {
-      this.d = $$0;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public void c(boolean $$0) {
-      this.e = $$0;
+   public void c() {
+      this.b.b();
    }
 }

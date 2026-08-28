@@ -1,169 +1,158 @@
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class cwj extends cvf {
-   private static final int m = 9;
-   private static final int n = 3;
-   private static final int o = 0;
-   protected final cvs q;
-   protected final crm r;
-   protected final btz s;
-   protected final cwx t = new cwx() {
-      @Override
-      public void e() {
-         cwj.this.a(this);
+public class cwj extends cvr {
+   private static final int p = 3;
+   private static final int q = 3;
+   public static final int o = 0;
+   private static final int r = 1;
+   private static final int s = 9;
+   private static final int t = 10;
+   private static final int u = 10;
+   private static final int v = 37;
+   private static final int w = 37;
+   private static final int x = 46;
+   private final cwd y;
+   private final crx z;
+   private boolean A;
+
+   public cwj(int $$0, crw $$1) {
+      this($$0, $$1, cwd.a);
+   }
+
+   public cwj(int $$0, crw $$1, cwd $$2) {
+      super(cwz.m, $$0, 3, 3);
+      this.y = $$2;
+      this.z = $$1.h;
+      this.a(this.z, 124, 35);
+      this.d(30, 17);
+      this.c($$1, 8, 84);
+   }
+
+   protected static void a(cvq $$0, ars $$1, crx $$2, cwi $$3, cxi $$4, @Nullable deu<dee> $$5) {
+      ded $$6 = $$3.aC_();
+      art $$7 = (art)$$2;
+      czy $$8 = czy.k;
+      Optional<deu<dee>> $$9 = $$1.p().aI().a(dfa.a, $$6, $$1, $$5);
+      if ($$9.isPresent()) {
+         deu<dee> $$10 = $$9.get();
+         dee $$11 = $$10.b();
+         if ($$4.a($$7, $$10)) {
+            czy $$12 = $$11.a($$6, $$1.J_());
+            if ($$12.a($$1.K())) {
+               $$8 = $$12;
+            }
+         }
       }
-   };
-   private final int p;
 
-   protected boolean a(crm $$0, boolean $$1) {
-      return true;
+      $$4.a(0, $$8);
+      $$0.a(0, $$8);
+      $$7.f.b(new acs($$0.l, $$0.k(), 0, $$8));
    }
 
-   protected abstract void a(crm var1, czn var2);
-
-   protected abstract boolean a(eat var1);
-
-   public cwj(@Nullable cwo<?> $$0, int $$1, crl $$2, cvs $$3, cwk $$4) {
-      super($$0, $$1);
-      this.q = $$3;
-      this.r = $$2.h;
-      this.s = this.e($$4.d());
-      this.p = $$4.e();
-      this.a($$4);
-      this.b($$4);
-      this.c($$2, 8, 84);
-   }
-
-   private void a(cwk $$0) {
-      for (final cwk.b $$1 : $$0.c()) {
-         this.a(new cxc(this.s, $$1.a(), $$1.b(), $$1.c()) {
-            @Override
-            public boolean a(czn $$0) {
-               return $$1.d().test($$0);
+   @Override
+   public void a(buk $$0) {
+      if (!this.A) {
+         this.y.a(($$0x, $$1) -> {
+            if ($$0x instanceof ars $$2) {
+               a(this, $$2, this.z, this.m, this.n, null);
             }
          });
       }
    }
 
-   private void b(cwk $$0) {
-      this.a(new cxc(this.t, $$0.b().a(), $$0.b().b(), $$0.b().c()) {
-         @Override
-         public boolean a(czn $$0) {
-            return false;
-         }
-
-         @Override
-         public boolean a(crm $$0) {
-            return cwj.this.a($$0, this.h());
-         }
-
-         @Override
-         public void a(crm $$0, czn $$1) {
-            cwj.this.a($$0, $$1);
-         }
-      });
+   @Override
+   public void l() {
+      this.A = true;
    }
 
    @Override
-   public abstract void l();
-
-   private bun e(int $$0) {
-      return new bun($$0) {
-         @Override
-         public void e() {
-            super.e();
-            cwj.this.a(this);
-         }
-      };
+   public void a(ars $$0, deu<dee> $$1) {
+      this.A = false;
+      a(this, $$0, this.z, this.m, this.n, $$1);
    }
 
    @Override
-   public void a(btz $$0) {
+   public void a(crx $$0) {
       super.a($$0);
-      if ($$0 == this.s) {
-         this.l();
-      }
+      this.y.a(($$1, $$2) -> this.a($$0, this.m));
    }
 
    @Override
-   public void a(crm $$0) {
-      super.a($$0);
-      this.q.a(($$1, $$2) -> this.a($$0, this.s));
+   public boolean b(crx $$0) {
+      return a(this.y, $$0, dne.cL);
    }
 
    @Override
-   public boolean b(crm $$0) {
-      return this.q.a(($$1, $$2) -> !this.a($$1.a_($$2)) ? false : $$0.a($$2, 4.0), true);
-   }
-
-   @Override
-   public czn b(crm $$0, int $$1) {
-      czn $$2 = czn.k;
-      cxc $$3 = this.k.get($$1);
+   public czy b(crx $$0, int $$1) {
+      czy $$2 = czy.k;
+      cxn $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
-         czn $$4 = $$3.g();
+         czy $$4 = $$3.g();
          $$2 = $$4.v();
-         int $$5 = this.m();
-         int $$6 = this.q();
-         if ($$1 == this.n()) {
-            if (!this.a($$4, $$5, $$6, true)) {
-               return czn.k;
+         if ($$1 == 0) {
+            this.y.a(($$2x, $$3x) -> $$4.h().a($$4, $$2x, $$0));
+            if (!this.a($$4, 10, 46, true)) {
+               return czy.k;
             }
 
             $$3.b($$4, $$2);
-         } else if ($$1 >= 0 && $$1 < this.n()) {
-            if (!this.a($$4, $$5, $$6, false)) {
-               return czn.k;
+         } else if ($$1 >= 10 && $$1 < 46) {
+            if (!this.a($$4, 1, 10, false)) {
+               if ($$1 < 37) {
+                  if (!this.a($$4, 37, 46, false)) {
+                     return czy.k;
+                  }
+               } else if (!this.a($$4, 10, 37, false)) {
+                  return czy.k;
+               }
             }
-         } else if (this.c($$4) && $$1 >= this.m() && $$1 < this.q()) {
-            if (!this.a($$4, 0, this.n(), false)) {
-               return czn.k;
-            }
-         } else if ($$1 >= this.m() && $$1 < this.o()) {
-            if (!this.a($$4, this.p(), this.q(), false)) {
-               return czn.k;
-            }
-         } else if ($$1 >= this.p() && $$1 < this.q() && !this.a($$4, this.m(), this.o(), false)) {
-            return czn.k;
+         } else if (!this.a($$4, 10, 46, false)) {
+            return czy.k;
          }
 
          if ($$4.f()) {
-            $$3.e(czn.k);
+            $$3.e(czy.k);
          } else {
             $$3.d();
          }
 
          if ($$4.M() == $$2.M()) {
-            return czn.k;
+            return czy.k;
          }
 
          $$3.a($$0, $$4);
+         if ($$1 == 0) {
+            $$0.a($$4, false);
+         }
       }
 
       return $$2;
    }
 
-   protected boolean c(czn $$0) {
-      return true;
+   @Override
+   public boolean a(czy $$0, cxn $$1) {
+      return $$1.c != this.n && super.a($$0, $$1);
    }
 
-   public int n() {
-      return this.p;
+   @Override
+   public cxn m() {
+      return this.k.get(0);
    }
 
-   private int m() {
-      return this.n() + 1;
+   @Override
+   public List<cxn> n() {
+      return this.k.subList(1, 10);
    }
 
-   private int o() {
-      return this.m() + 27;
+   @Override
+   public cxg an_() {
+      return cxg.a;
    }
 
-   private int p() {
-      return this.o();
-   }
-
-   private int q() {
-      return this.p() + 9;
+   @Override
+   protected crx q() {
+      return this.z;
    }
 }

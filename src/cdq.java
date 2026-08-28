@@ -1,62 +1,51 @@
-import java.util.EnumSet;
+public class cdq extends cdt {
+   private final int l;
+   private final boolean m;
 
-public class cdq extends cef {
-   private final bxr a;
-
-   public cdq(bxr $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(cef.a.a, cef.a.b));
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.cr() < 140;
-   }
-
-   @Override
-   public boolean c() {
-      return this.b();
-   }
-
-   @Override
-   public boolean Q_() {
-      return false;
-   }
-
-   @Override
-   public void d() {
-      this.h();
-   }
-
-   private void h() {
-      Iterable<iv> $$0 = iv.b(
-         azm.a(this.a.dz() - 1.0), this.a.dA(), azm.a(this.a.dF() - 1.0), azm.a(this.a.dz() + 1.0), azm.a(this.a.dB() + 8.0), azm.a(this.a.dF() + 1.0)
-      );
-      iv $$1 = null;
-
-      for (iv $$2 : $$0) {
-         if (this.a(this.a.dU(), $$2)) {
-            $$1 = $$2;
-            break;
-         }
-      }
-
-      if ($$1 == null) {
-         $$1 = iv.a(this.a.dz(), this.a.dB() + 8.0, this.a.dF());
-      }
-
-      this.a.O().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
+   public cdq(bxw $$0, int $$1, boolean $$2) {
+      super($$0);
+      this.l = $$1;
+      this.m = $$2;
    }
 
    @Override
    public void a() {
-      this.h();
-      this.a.a(0.02F, new ffc((double)this.a.bg, (double)this.a.bh, (double)this.a.bi));
-      this.a.a(bxn.a, this.a.dx());
-   }
+      if (this.k == cdt.a.b) {
+         this.k = cdt.a.a;
+         this.d.f(true);
+         double $$0 = this.e - this.d.dA();
+         double $$1 = this.f - this.d.dC();
+         double $$2 = this.g - this.d.dG();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.H(0.0F);
+            this.d.G(0.0F);
+            return;
+         }
 
-   private boolean a(djp $$0, iv $$1) {
-      eat $$2 = $$0.a_($$1);
-      return ($$0.b_($$1).c() || $$2.a(dmt.nJ)) && $$2.a(exp.a);
+         float $$4 = (float)(azo.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+         this.d.w(this.b(this.d.dL(), $$4, 90.0F));
+         float $$5;
+         if (this.d.aH()) {
+            $$5 = (float)(this.h * this.d.h(bza.v));
+         } else {
+            $$5 = (float)(this.h * this.d.h(bza.l));
+         }
+
+         this.d.B($$5);
+         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
+            float $$8 = (float)(-(azo.d($$1, $$7) * 180.0F / (float)Math.PI));
+            this.d.x(this.b(this.d.dN(), $$8, (float)this.l));
+            this.d.H($$1 > 0.0 ? $$5 : -$$5);
+         }
+      } else {
+         if (!this.m) {
+            this.d.f(false);
+         }
+
+         this.d.H(0.0F);
+         this.d.G(0.0F);
+      }
    }
 }

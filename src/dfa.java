@@ -1,33 +1,18 @@
-public record dfa(czn a, czn b, czn c) implements dek {
-   @Override
-   public czn a(int $$0) {
-      return switch ($$0) {
-         case 0 -> this.a;
-         case 1 -> this.b;
-         case 2 -> this.c;
-         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
-      };
-   }
+public interface dfa<T extends dep<?>> {
+   dfa<dee> a = a("crafting");
+   dfa<dfj> b = a("smelting");
+   dfa<ddy> c = a("blasting");
+   dfa<dfo> d = a("smoking");
+   dfa<dea> e = a("campfire_cooking");
+   dfa<dfp> f = a("stonecutting");
+   dfa<dfk> g = a("smithing");
 
-   @Override
-   public int a() {
-      return 3;
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.f() && this.b.f() && this.c.f();
-   }
-
-   public czn c() {
-      return this.a;
-   }
-
-   public czn d() {
-      return this.b;
-   }
-
-   public czn e() {
-      return this.c;
+   static <T extends dep<?>> dfa<T> a(final String $$0) {
+      return js.a(mg.q, ali.b($$0), new dfa<T>() {
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      });
    }
 }

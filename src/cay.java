@@ -1,65 +1,54 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class cay {
-   private static final int a = 40;
-   private static final int b = 5;
-   private static final int c = 20;
-   private static final int d = 4;
-
-   public static bzb<bxr> a(float $$0) {
-      Long2LongMap $$1 = new Long2LongOpenHashMap();
-      MutableLong $$2 = new MutableLong(0L);
-      return ccn.a(
-         (Function<ccn.b<bxr>, ? extends App<ccn.c<bxr>, ccq<bxr>>>)($$3 -> $$3.group($$3.c(cgl.n), $$3.c(cgl.b))
-               .apply($$3, ($$3x, $$4) -> ($$4x, $$5, $$6) -> {
-                     if ($$4x.ae() - $$2.getValue() < 20L) {
-                        return false;
-                     } else {
-                        cil $$7 = $$4x.A();
-                        Optional<iv> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(cip.n), $$5.du(), 48, cil.b.c);
-                        if (!$$8.isEmpty() && !($$8.get().j($$5.du()) <= 4.0)) {
-                           MutableInt $$9 = new MutableInt(0);
-                           $$2.setValue($$4x.ae() + (long)$$4x.C_().a(20));
-                           Predicate<iv> $$10 = $$3xxx -> {
-                              long $$4xx = $$3xxx.a();
-                              if ($$1.containsKey($$4xx)) {
-                                 return false;
-                              } else if ($$9.incrementAndGet() >= 5) {
-                                 return false;
-                              } else {
-                                 $$1.put($$4xx, $$2.getValue() + 40L);
-                                 return true;
-                              }
-                           };
-                           Set<Pair<jf<cio>, iv>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(cip.n), $$10, $$5.du(), 48, cil.b.c).collect(Collectors.toSet());
-                           exo $$12 = byt.a($$5, $$11);
-                           if ($$12 != null && $$12.j()) {
-                              iv $$13 = $$12.l();
-                              Optional<jf<cio>> $$14 = $$7.c($$13);
-                              if ($$14.isPresent()) {
-                                 $$3x.a(new cgo($$13, $$0, 1));
-                                 agm.c($$4x, $$13);
-                              }
-                           } else if ($$9.getValue() < 5) {
-                              $$1.long2LongEntrySet().removeIf($$1xxxx -> $$1xxxx.getLongValue() < $$2.getValue());
-                           }
-
-                           return true;
-                        } else {
-                           return false;
-                        }
+   public static bzm<crj> a() {
+      return ccy.a(
+         (Function<ccy.b<crj>, ? extends App<ccy.c<crj>, cdb<crj>>>)($$0 -> $$0.group($$0.b(cgw.c), $$0.b(cgw.g))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        je $$6 = $$0.b($$1);
+                        $$3.A()
+                           .c($$6.b())
+                           .ifPresent(
+                              $$4x -> $$0.<List<bxu>>b($$2)
+                                    .stream()
+                                    .filter($$1xxx -> $$1xxx instanceof crj && $$1xxx != $$4)
+                                    .map($$0xxxx -> (crj)$$0xxxx)
+                                    .filter(bxu::bJ)
+                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
+                                    .reduce($$4, cay::a)
+                           );
+                        return true;
                      }
-                  }))
+               ))
       );
+   }
+
+   private static crj a(crj $$0, crj $$1) {
+      crj $$2;
+      crj $$3;
+      if ($$0.t() > $$1.t()) {
+         $$2 = $$0;
+         $$3 = $$1;
+      } else {
+         $$2 = $$1;
+         $$3 = $$0;
+      }
+
+      $$3.ec().b(cgw.c);
+      return $$2;
+   }
+
+   private static boolean a(je $$0, jf<ciz> $$1, crj $$2) {
+      Optional<je> $$3 = $$2.ec().c(cgw.c);
+      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gC().b());
+   }
+
+   private static boolean a(jf<ciz> $$0, jf<crm> $$1) {
+      return $$1.a().b().test($$0);
    }
 }

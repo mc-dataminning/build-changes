@@ -1,73 +1,53 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Comparator;
+import com.mojang.authlib.GameProfile;
 import javax.annotation.Nullable;
 
-public record fgu<T>(T d, iv e, long f, fgy g, long h) {
-   public static final Comparator<fgu<?>> a = ($$0, $$1) -> {
-      int $$2 = Long.compare($$0.f, $$1.f);
-      if ($$2 != 0) {
-         return $$2;
+public interface fgu {
+   String co = "*";
+   fgu cp = new fgu() {
+      @Override
+      public String cI() {
+         return "*";
+      }
+   };
+
+   String cI();
+
+   @Nullable
+   default xa m_() {
+      return null;
+   }
+
+   default xa hg() {
+      xa $$0 = this.m_();
+      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xg.e(xa.b(this.cI())))) : xa.b(this.cI());
+   }
+
+   static fgu c(final String $$0) {
+      if ($$0.equals("*")) {
+         return cp;
       } else {
-         $$2 = $$0.g.compareTo($$1.g);
-         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-      }
-   };
-   public static final Comparator<fgu<?>> b = ($$0, $$1) -> {
-      int $$2 = $$0.g.compareTo($$1.g);
-      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-   };
-   public static final Strategy<fgu<?>> c = new Strategy<fgu<?>>() {
-      public int a(fgu<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
-      }
+         final xa $$1 = xa.b($$0);
+         return new fgu() {
+            @Override
+            public String cI() {
+               return $$0;
+            }
 
-      public boolean a(@Nullable fgu<?> $$0, @Nullable fgu<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+            @Override
+            public xa hg() {
+               return $$1;
+            }
+         };
+      }
+   }
+
+   static fgu a(GameProfile $$0) {
+      final String $$1 = $$0.getName();
+      return new fgu() {
+         @Override
+         public String cI() {
+            return $$1;
          }
-      }
-   };
-
-   public fgu(T $$0, iv $$1, long $$2, long $$3) {
-      this($$0, $$1, $$2, fgy.d, $$3);
-   }
-
-   public fgu(T d, iv e, long f, fgy g, long h) {
-      e = e.j();
-      this.d = d;
-      this.e = e;
-      this.f = f;
-      this.g = g;
-      this.h = h;
-   }
-
-   public static <T> fgu<T> a(T $$0, iv $$1) {
-      return new fgu<>($$0, $$1, 0L, fgy.d, 0L);
-   }
-
-   public fgt<T> a(long $$0) {
-      return new fgt<>(this.d, this.e, (int)(this.f - $$0), this.g);
-   }
-
-   public T a() {
-      return this.d;
-   }
-
-   public iv b() {
-      return this.e;
-   }
-
-   public long c() {
-      return this.f;
-   }
-
-   public fgy d() {
-      return this.g;
-   }
-
-   public long e() {
-      return this.h;
+      };
    }
 }

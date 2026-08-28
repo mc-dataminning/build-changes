@@ -1,31 +1,35 @@
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvq extends dmh {
-   protected static final MapCodec<mc> a = mg.i
-      .q()
-      .comapFlatMap($$0 -> $$0 instanceof mc $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
-      .fieldOf("particle_options");
-   public static final MapCodec<dvq> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), t()).apply($$0, dvq::new));
-   protected final mc c;
+public class dvq extends dpp implements dnf {
+   public static final MapCodec<dvq> b = b(dvq::new);
+   private static final fgk c = dnc.b(14.0, 0.0, 16.0);
 
    @Override
-   public MapCodec<? extends dvq> a() {
+   public MapCodec<dvq> a() {
       return b;
    }
 
-   protected dvq(mc $$0, eas.d $$1) {
-      super($$1);
-      this.c = $$0;
+   protected dvq(ebd.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
-      double $$4 = (double)$$2.u() + 0.5;
-      double $$5 = (double)$$2.v() + 0.7;
-      double $$6 = (double)$$2.w() + 0.5;
-      $$1.a(ly.ah, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      $$1.a(this.c, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return c;
+   }
+
+   @Override
+   public boolean a(dka $$0, iv $$1, ebe $$2) {
+      return dnf.a_($$0, $$1, dne.bE.m());
+   }
+
+   @Override
+   public boolean a(djx $$0, azx $$1, iv $$2, ebe $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ars $$0, azx $$1, iv $$2, ebe $$3) {
+      dnf.a((djx)$$0, $$2, dne.bE.m()).ifPresent($$1x -> $$0.b($$1x, dne.bE.m()));
    }
 }

@@ -1,220 +1,145 @@
-import java.util.Arrays;
 import javax.annotation.Nullable;
 
-public class dxv extends dxk implements buq {
-   private static final int g = 3;
-   private static final int h = 4;
-   private static final int[] i = new int[]{3};
-   private static final int[] j = new int[]{0, 1, 2, 3};
-   private static final int[] k = new int[]{0, 1, 2, 4};
-   public static final int b = 20;
-   public static final int c = 0;
-   public static final int d = 1;
-   public static final int e = 2;
-   private jo<czn> l = jo.a(5, czn.k);
-   int m;
-   private boolean[] q;
-   private czj r;
-   int s;
-   protected final cvr f = new cvr() {
-      @Override
-      public int a(int $$0) {
-         return switch ($$0) {
-            case 0 -> dxv.this.m;
-            case 1 -> dxv.this.s;
-            default -> 0;
-         };
-      }
+public abstract class dxv extends dyc implements buk, but, buu {
+   private bus d = bus.a;
+   @Nullable
+   private xa e;
 
-      @Override
-      public void a(int $$0, int $$1) {
-         switch ($$0) {
-            case 0:
-               dxv.this.m = $$1;
-               break;
-            case 1:
-               dxv.this.s = $$1;
-         }
-      }
-
-      @Override
-      public int a() {
-         return 2;
-      }
-   };
-
-   public dxv(iv $$0, eat $$1) {
-      super(dxt.m, $$0, $$1);
-   }
-
-   @Override
-   protected wy j() {
-      return wy.c("container.brewing");
-   }
-
-   @Override
-   public int b() {
-      return this.l.size();
-   }
-
-   @Override
-   protected jo<czn> f() {
-      return this.l;
-   }
-
-   @Override
-   protected void a(jo<czn> $$0) {
-      this.l = $$0;
-   }
-
-   public static void a(djm $$0, iv $$1, eat $$2, dxv $$3) {
-      czn $$4 = $$3.l.get(4);
-      if ($$3.s <= 0 && $$4.a(axk.X)) {
-         $$3.s = 20;
-         $$4.h(1);
-         a($$0, $$1, $$2);
-      }
-
-      boolean $$5 = a($$0.L(), $$3.l);
-      boolean $$6 = $$3.m > 0;
-      czn $$7 = $$3.l.get(3);
-      if ($$6) {
-         $$3.m--;
-         boolean $$8 = $$3.m == 0;
-         if ($$8 && $$5) {
-            a($$0, $$1, $$3.l);
-         } else if (!$$5 || !$$7.a($$3.r)) {
-            $$3.m = 0;
-         }
-
-         a($$0, $$1, $$2);
-      } else if ($$5 && $$3.s > 0) {
-         $$3.s--;
-         $$3.m = 400;
-         $$3.r = $$7.h();
-         a($$0, $$1, $$2);
-      }
-
-      boolean[] $$9 = $$3.k();
-      if (!Arrays.equals($$9, $$3.q)) {
-         $$3.q = $$9;
-         eat $$10 = $$2;
-         if (!($$2.b() instanceof dmw)) {
-            return;
-         }
-
-         for (int $$11 = 0; $$11 < dmw.b.length; $$11++) {
-            $$10 = $$10.b(dmw.b[$$11], Boolean.valueOf($$9[$$11]));
-         }
-
-         $$0.a($$1, $$10, 2);
-      }
-   }
-
-   private boolean[] k() {
-      boolean[] $$0 = new boolean[3];
-
-      for (int $$1 = 0; $$1 < 3; $$1++) {
-         if (!this.l.get($$1).f()) {
-            $$0[$$1] = true;
-         }
-      }
-
-      return $$0;
-   }
-
-   private static boolean a(dbi $$0, jo<czn> $$1) {
-      czn $$2 = $$1.get(3);
-      if ($$2.f()) {
-         return false;
-      } else if (!$$0.a($$2)) {
-         return false;
-      } else {
-         for (int $$3 = 0; $$3 < 3; $$3++) {
-            czn $$4 = $$1.get($$3);
-            if (!$$4.f() && $$0.a($$4, $$2)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   private static void a(djm $$0, iv $$1, jo<czn> $$2) {
-      czn $$3 = $$2.get(3);
-      dbi $$4 = $$0.L();
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         $$2.set($$5, $$4.d($$3, $$2.get($$5)));
-      }
-
-      $$3.h(1);
-      czn $$6 = $$3.h().i();
-      if (!$$6.f()) {
-         if ($$3.f()) {
-            $$3 = $$6;
-         } else {
-            buc.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$6);
-         }
-      }
-
-      $$2.set(3, $$3);
-      $$0.c(1035, $$1, 0);
+   protected dxv(dye<?> $$0, iv $$1, ebe $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    protected void a(tz $$0, jh.a $$1) {
       super.a($$0, $$1);
-      this.l = jo.a(this.b(), czn.k);
-      bua.b($$0, this.l, $$1);
-      this.m = $$0.e("BrewTime");
-      if (this.m > 0) {
-         this.r = this.l.get(3).h();
-      }
-
-      this.s = $$0.d("Fuel");
+      this.d = bus.b($$0, $$1);
+      this.e = a($$0.a("CustomName"), $$1);
    }
 
    @Override
    protected void b(tz $$0, jh.a $$1) {
       super.b($$0, $$1);
-      $$0.a("BrewTime", (short)this.m);
-      bua.a($$0, this.l, $$1);
-      $$0.a("Fuel", (byte)this.s);
-   }
-
-   @Override
-   public boolean b(int $$0, czn $$1) {
-      if ($$0 == 3) {
-         dbi $$2 = this.n != null ? this.n.L() : dbi.b;
-         return $$2.a($$1);
-      } else {
-         return $$0 == 4 ? $$1.a(axk.X) : ($$1.a(czr.tt) || $$1.a(czr.wz) || $$1.a(czr.wC) || $$1.a(czr.ts)) && this.a($$0).f();
+      this.d.a($$0, $$1);
+      if (this.e != null) {
+         $$0.a("CustomName", (uy)xc.a.encodeStart($$1.a(un.a), this.e).getOrThrow());
       }
    }
 
    @Override
-   public int[] a(jb $$0) {
-      if ($$0 == jb.b) {
-         return i;
+   public xa ai() {
+      return this.e != null ? this.e : this.j();
+   }
+
+   @Override
+   public xa m_() {
+      return this.ai();
+   }
+
+   @Nullable
+   @Override
+   public xa ak() {
+      return this.e;
+   }
+
+   protected abstract xa j();
+
+   public boolean d(crx $$0) {
+      return a($$0, this.d, this.m_());
+   }
+
+   public static boolean a(crx $$0, bus $$1, xa $$2) {
+      if (!$$0.Z_() && !$$1.a($$0.fb())) {
+         $$0.a(xa.a("container.isLocked", $$2), true);
+         $$0.a(awp.eT, awq.e, 1.0F, 1.0F);
+         return false;
       } else {
-         return $$0 == jb.a ? j : k;
+         return true;
       }
    }
 
+   protected abstract jo<czy> f();
+
+   protected abstract void a(jo<czy> var1);
+
    @Override
-   public boolean a(int $$0, czn $$1, @Nullable jb $$2) {
-      return this.b($$0, $$1);
+   public boolean c() {
+      for (czy $$0 : this.f()) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
-   public boolean b(int $$0, czn $$1, jb $$2) {
-      return $$0 == 3 ? $$1.a(czr.ts) : true;
+   public czy a(int $$0) {
+      return this.f().get($$0);
    }
 
    @Override
-   protected cvf a(int $$0, crl $$1) {
-      return new cvm($$0, $$1, this, this.f);
+   public czy a(int $$0, int $$1) {
+      czy $$2 = bul.a(this.f(), $$0, $$1);
+      if (!$$2.f()) {
+         this.e();
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public czy b(int $$0) {
+      return bul.a(this.f(), $$0);
+   }
+
+   @Override
+   public void a(int $$0, czy $$1) {
+      this.f().set($$0, $$1);
+      $$1.f(this.f_($$1));
+      this.e();
+   }
+
+   @Override
+   public boolean a(crx $$0) {
+      return buk.a(this, $$0);
+   }
+
+   @Override
+   public void a() {
+      this.f().clear();
+   }
+
+   @Nullable
+   @Override
+   public cvq createMenu(int $$0, crw $$1, crx $$2) {
+      return this.d($$2) ? this.a($$0, $$1) : null;
+   }
+
+   protected abstract cvq a(int var1, crw var2);
+
+   @Override
+   protected void a(kf $$0) {
+      super.a($$0);
+      this.e = $$0.a(kk.g);
+      this.d = $$0.a(kk.as, bus.a);
+      $$0.a(kk.ap, dcq.a).a(this.f());
+   }
+
+   @Override
+   protected void a(kh.a $$0) {
+      super.a($$0);
+      $$0.a(kk.g, this.e);
+      if (!this.d.equals(bus.a)) {
+         $$0.a(kk.as, this.d);
+      }
+
+      $$0.a(kk.ap, dcq.a(this.f()));
+   }
+
+   @Override
+   public void a(tz $$0) {
+      $$0.r("CustomName");
+      $$0.r("lock");
+      $$0.r("Items");
    }
 }

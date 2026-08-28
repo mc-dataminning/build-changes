@@ -1,25 +1,30 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
-public class ftf {
-   private static final ayy a = ayy.codepoint(32, xv.a);
+public record ftf(List<ech.a<?>> b) {
+   public static final ftf a = new ftf(List.of());
+   private static final Comparator<ech.a<?>> c = Comparator.comparing($$0 -> $$0.a().f());
 
-   private static String a(String $$0) {
-      return fpt.Q().n.N().c() ? $$0 : o.a($$0);
+   public ftf a(ech.a<?> $$0) {
+      return new ftf(ag.a(this.b, $$0));
    }
 
-   public static List<ayy> a(xd $$0, int $$1, fsk $$2) {
-      fph $$3 = new fph();
-      $$0.a(($$1x, $$2x) -> {
-         $$3.a(xd.a(a($$2x), $$1x));
-         return Optional.empty();
-      }, xv.a);
-      List<ayy> $$4 = Lists.newArrayList();
-      $$2.b().a($$3.b(), $$1, xv.a, ($$1x, $$2x) -> {
-         ayy $$3x = tu.a().a($$1x);
-         $$4.add($$2x ? ayy.composite(a, $$3x) : $$3x);
-      });
-      return (List<ayy>)($$4.isEmpty() ? Lists.newArrayList(new ayy[]{ayy.a}) : $$4);
+   public ftf a(ftf $$0) {
+      return new ftf(ImmutableList.builder().addAll(this.b).addAll($$0.b).build());
+   }
+
+   public static ftf a(ech.a<?>... $$0) {
+      return new ftf(List.of($$0));
+   }
+
+   public String a() {
+      return this.b.stream().sorted(c).map(ech.a::toString).collect(Collectors.joining(","));
+   }
+
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

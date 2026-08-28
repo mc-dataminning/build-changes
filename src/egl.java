@@ -1,105 +1,70 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public interface egl {
-   Codec<egl> b = egm.b;
-   Codec<jf<egl>> c = alc.a(mh.aO, b);
-   Codec<egl> d = c.xmap(egm.j::new, $$0 -> (jf)($$0 instanceof egm.j $$1 ? $$1.j() : new jf.a<>($$0)));
+public record egl(jf<ege> b, float c, ffq d, @Nullable UUID e, @Nullable UUID f, @Nullable bwt g) {
+   public static final Codec<egl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ege.aj.fieldOf("game_event").forGetter(egl::a),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(egl::b),
+               ffq.a.fieldOf("pos").forGetter(egl::c),
+               jz.a.lenientOptionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
+               jz.a.lenientOptionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
+            )
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new egl($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
+   );
 
-   double a(egl.b var1);
-
-   void a(double[] var1, egl.a var2);
-
-   egl a(egl.f var1);
-
-   double a();
-
-   double b();
-
-   azf<? extends egl> c();
-
-   default egl a(double $$0, double $$1) {
-      return new egm.g(this, $$0, $$1);
+   public egl(jf<ege> $$0, float $$1, ffq $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+      this($$0, $$1, $$2, $$3, $$4, null);
    }
 
-   default egl d() {
-      return egm.a(this, egm.k.a.a);
+   public egl(jf<ege> $$0, float $$1, ffq $$2, @Nullable bwt $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cG(), a($$3), $$3);
    }
 
-   default egl e() {
-      return egm.a(this, egm.k.a.b);
-   }
-
-   default egl f() {
-      return egm.a(this, egm.k.a.c);
-   }
-
-   default egl g() {
-      return egm.a(this, egm.k.a.d);
-   }
-
-   default egl h() {
-      return egm.a(this, egm.k.a.e);
-   }
-
-   default egl i() {
-      return egm.a(this, egm.k.a.f);
-   }
-
-   public interface a {
-      egl.b a(int var1);
-
-      void a(double[] var1, egl var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default ehu d() {
-         return ehu.a();
-      }
-   }
-
-   public static record c(jf<ewd.a> b, @Nullable ewd c) {
-      public static final Codec<egl.c> a = ewd.a.b.xmap($$0 -> new egl.c($$0, null), egl.c::b);
-
-      public c(jf<ewd.a> $$0) {
-         this($$0, null);
+   @Nullable
+   private static UUID a(@Nullable bwt $$0) {
+      if ($$0 instanceof css $$1 && $$1.q() != null) {
+         return $$1.q().cG();
       }
 
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
+      return null;
    }
 
-   public interface d extends egl {
-      @Override
-      default void a(double[] $$0, egl.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      default egl a(egl.f $$0) {
-         return $$0.apply(this);
-      }
+   public Optional<bwt> a(ars $$0) {
+      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::b));
    }
 
-   public static record e(int a, int b, int c) implements egl.b {
+   public Optional<bwt> b(ars $$0) {
+      return this.a($$0).filter($$0x -> $$0x instanceof css).map($$0x -> (css)$$0x).map(css::q).or(() -> Optional.ofNullable(this.f).map($$0::b));
    }
 
-   public interface f {
-      egl apply(egl var1);
+   public jf<ege> a() {
+      return this.b;
+   }
 
-      default egl.c a(egl.c $$0) {
-         return $$0;
-      }
+   public float b() {
+      return this.c;
+   }
+
+   public ffq c() {
+      return this.d;
+   }
+
+   @Nullable
+   public UUID d() {
+      return this.e;
+   }
+
+   @Nullable
+   public UUID e() {
+      return this.f;
+   }
+
+   @Nullable
+   public bwt f() {
+      return this.g;
    }
 }

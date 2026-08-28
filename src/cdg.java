@@ -1,17 +1,17 @@
-public class cdg implements cde {
-   private final bxl b;
-   protected boolean a;
+import com.google.common.collect.ImmutableMap;
 
-   public cdg(bxl $$0) {
-      this.b = $$0;
+public class cdg extends bzl<bxu> {
+   public cdg() {
+      super(ImmutableMap.of());
    }
 
-   public void a() {
-      this.a = true;
+   @Override
+   protected boolean a(ars $$0, bxu $$1) {
+      return $$1.bY();
    }
 
-   public void b() {
-      this.b.s(this.a);
-      this.a = false;
+   @Override
+   protected void d(ars $$0, bxu $$1, long $$2) {
+      $$1.al();
    }
 }

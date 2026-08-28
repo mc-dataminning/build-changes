@@ -1,22 +1,37 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public record frf(int b) implements frd {
-   public static final MapCodec<frf> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.i.fieldOf("default").forGetter(frf::b)).apply($$0, frf::new));
+public enum frf {
+   a(0, "options.narrator.off"),
+   b(1, "options.narrator.all"),
+   c(2, "options.narrator.chat"),
+   d(3, "options.narrator.system");
 
-   public frf() {
-      this(dcj.c.a());
+   private static final IntFunction<frf> e = aye.a(frf::a, values(), aye.a.b);
+   private final int f;
+   private final xa g;
+
+   private frf(final int $$0, final String $$1) {
+      this.f = $$0;
+      this.g = xa.c($$1);
    }
 
-   @Override
-   public int a(czn $$0, @Nullable gkq $$1, @Nullable bxj $$2) {
-      dcj $$3 = $$0.a(kk.L);
-      return $$3 != null ? axw.f($$3.a()) : axw.f(this.b);
+   public int a() {
+      return this.f;
    }
 
-   @Override
-   public MapCodec<frf> a() {
-      return a;
+   public xa b() {
+      return this.g;
+   }
+
+   public static frf a(int $$0) {
+      return e.apply($$0);
+   }
+
+   public boolean c() {
+      return this == b || this == c;
+   }
+
+   public boolean d() {
+      return this == b || this == d;
    }
 }

@@ -1,16 +1,45 @@
-import com.mojang.serialization.MapCodec;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 
-public interface btm<P extends btl> {
-   btm<bti> a = a("constant", bti.b);
-   btm<btr> b = a("uniform", btr.a);
-   btm<btd> c = a("biased_to_bottom", btd.a);
-   btm<bte> d = a("clamped", bte.a);
-   btm<bts> e = a("weighted_list", bts.a);
-   btm<btg> f = a("clamped_normal", btg.a);
+public interface btm<R extends Runnable> extends AutoCloseable {
+   String z_();
 
-   MapCodec<P> codec();
+   void a_(R var1);
 
-   static <P extends btl> btm<P> a(String $$0, MapCodec<P> $$1) {
-      return js.a(mg.K, $$0, () -> $$1);
+   @Override
+   default void close() {
+   }
+
+   R f(Runnable var1);
+
+   default <Source> CompletableFuture<Source> a(Consumer<CompletableFuture<Source>> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      this.a_(this.f(() -> $$0.accept($$1)));
+      return $$1;
+   }
+
+   static btm<Runnable> a(final String $$0, final Executor $$1) {
+      return new btm<Runnable>() {
+         @Override
+         public String z_() {
+            return $$0;
+         }
+
+         @Override
+         public void a_(Runnable $$0x) {
+            $$1.execute($$0);
+         }
+
+         @Override
+         public Runnable f(Runnable $$0x) {
+            return $$0;
+         }
+
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

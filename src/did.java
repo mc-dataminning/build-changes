@@ -1,54 +1,17 @@
-public class did {
-   public static final alf<dic> a = a("sentry");
-   public static final alf<dic> b = a("dune");
-   public static final alf<dic> c = a("coast");
-   public static final alf<dic> d = a("wild");
-   public static final alf<dic> e = a("ward");
-   public static final alf<dic> f = a("eye");
-   public static final alf<dic> g = a("vex");
-   public static final alf<dic> h = a("tide");
-   public static final alf<dic> i = a("snout");
-   public static final alf<dic> j = a("rib");
-   public static final alf<dic> k = a("spire");
-   public static final alf<dic> l = a("wayfinder");
-   public static final alf<dic> m = a("shaper");
-   public static final alf<dic> n = a("silence");
-   public static final alf<dic> o = a("raiser");
-   public static final alf<dic> p = a("host");
-   public static final alf<dic> q = a("flow");
-   public static final alf<dic> r = a("bolt");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public static void a(qh<dic> $$0) {
-      a($$0, a);
-      a($$0, b);
-      a($$0, c);
-      a($$0, d);
-      a($$0, e);
-      a($$0, f);
-      a($$0, g);
-      a($$0, h);
-      a($$0, i);
-      a($$0, j);
-      a($$0, k);
-      a($$0, l);
-      a($$0, m);
-      a($$0, n);
-      a($$0, o);
-      a($$0, p);
-      a($$0, q);
-      a($$0, r);
-   }
+public interface did {
+   dic a = new dic(5, a(1, 2, 3, 1, 3), 15, awp.av, 0.0F, 0.0F, axm.bi, dig.b);
+   dic b = new dic(15, a(1, 4, 5, 2, 4), 12, awp.ap, 0.0F, 0.0F, axm.bj, dig.c);
+   dic c = new dic(15, a(2, 5, 6, 2, 5), 9, awp.au, 0.0F, 0.0F, axm.bk, dig.d);
+   dic d = new dic(7, a(1, 3, 5, 2, 7), 25, awp.at, 0.0F, 0.0F, axm.bl, dig.e);
+   dic e = new dic(33, a(3, 6, 8, 3, 11), 10, awp.aq, 2.0F, 0.0F, axm.bm, dig.f);
+   dic f = new dic(25, a(2, 5, 6, 2, 5), 9, awp.ax, 0.0F, 0.0F, axm.bo, dig.g);
+   dic g = new dic(37, a(3, 6, 8, 3, 11), 15, awp.aw, 3.0F, 0.1F, axm.bn, dig.h);
+   dic h = new dic(4, a(3, 6, 8, 3, 11), 10, awp.ay, 0.0F, 0.0F, axm.bp, dig.i);
 
-   public static void a(qh<dic> $$0, alf<dic> $$1) {
-      dic $$2 = new dic(a($$1), wy.c(ag.a("trim_pattern", $$1.a())), false);
-      $$0.a($$1, $$2);
-   }
-
-   private static alf<dic> a(String $$0) {
-      return alf.a(mh.bl, alg.b($$0));
-   }
-
-   public static alg a(alf<dic> $$0) {
-      return $$0.a();
+   private static Map<die, Integer> a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      return Maps.newEnumMap(Map.of(die.d, $$0, die.c, $$1, die.b, $$2, die.a, $$3, die.e, $$4));
    }
 }

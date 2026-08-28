@@ -1,130 +1,54 @@
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
+import com.mojang.blaze3d.platform.GlConst;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import org.apache.commons.lang3.StringUtils;
 
-public final class fjb {
-   private final int a;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final int f;
-   private static final Pattern g = Pattern.compile("(\\d+)x(\\d+)(?:@(\\d+)(?::(\\d+))?)?");
+public class fjb implements AutoCloseable {
+   private static final int b = -1;
+   public static final fjb a = new fjb(-1, ali.b("invalid"), fkw.a);
+   private final ali c;
+   private int d;
+   private final fkw e;
 
-   public fjb(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   public fjb(int $$0, ali $$1, fkw $$2) {
+      this.c = $$1;
+      this.d = $$0;
+      this.e = $$2;
    }
 
-   public fjb(Buffer $$0) {
-      this.a = $$0.width();
-      this.b = $$0.height();
-      this.c = $$0.redBits();
-      this.d = $$0.greenBits();
-      this.e = $$0.blueBits();
-      this.f = $$0.refreshRate();
+   public static fjb a(ali $$0, fkw $$1, String $$2) throws gss.b {
+      RenderSystem.assertOnRenderThread();
+      int $$3 = GlStateManager.glCreateShader(GlConst.toGl($$1));
+      GlStateManager.glShaderSource($$3, $$2);
+      GlStateManager.glCompileShader($$3);
+      if (GlStateManager.glGetShaderi($$3, 35713) == 0) {
+         String $$4 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$3, 32768));
+         throw new gss.b("Couldn't compile " + $$1.a() + " shader (" + $$0 + ") : " + $$4);
+      } else {
+         return new fjb($$3, $$0, $$1);
+      }
    }
 
-   public fjb(GLFWVidMode $$0) {
-      this.a = $$0.width();
-      this.b = $$0.height();
-      this.c = $$0.redBits();
-      this.d = $$0.greenBits();
-      this.e = $$0.blueBits();
-      this.f = $$0.refreshRate();
+   @Override
+   public void close() {
+      if (this.d == -1) {
+         throw new IllegalStateException("Already closed");
+      } else {
+         RenderSystem.assertOnRenderThread();
+         GlStateManager.glDeleteShader(this.d);
+         this.d = -1;
+      }
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int c() {
+   public ali a() {
       return this.c;
    }
 
-   public int d() {
+   public int b() {
       return this.d;
    }
 
-   public int e() {
-      return this.e;
-   }
-
-   public int f() {
-      return this.f;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         fjb $$1 = (fjb)$$0;
-         return this.a == $$1.a && this.b == $$1.b && this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b, this.c, this.d, this.e, this.f);
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "%sx%s@%s (%sbit)", this.a, this.b, this.f, this.c + this.d + this.e);
-   }
-
-   public static Optional<fjb> a(@Nullable String $$0) {
-      if ($$0 == null) {
-         return Optional.empty();
-      } else {
-         try {
-            Matcher $$1 = g.matcher($$0);
-            if ($$1.matches()) {
-               int $$2 = Integer.parseInt($$1.group(1));
-               int $$3 = Integer.parseInt($$1.group(2));
-               String $$4 = $$1.group(3);
-               int $$5;
-               if ($$4 == null) {
-                  $$5 = 60;
-               } else {
-                  $$5 = Integer.parseInt($$4);
-               }
-
-               String $$7 = $$1.group(4);
-               int $$8;
-               if ($$7 == null) {
-                  $$8 = 24;
-               } else {
-                  $$8 = Integer.parseInt($$7);
-               }
-
-               int $$10 = $$8 / 3;
-               return Optional.of(new fjb($$2, $$3, $$10, $$10, $$10, $$5));
-            }
-         } catch (Exception var9) {
-         }
-
-         return Optional.empty();
-      }
-   }
-
-   public String g() {
-      return String.format(Locale.ROOT, "%sx%s@%s:%s", this.a, this.b, this.f, this.c + this.d + this.e);
+   public String c() {
+      return this.e.b().a(this.c).toString();
    }
 }

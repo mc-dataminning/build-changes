@@ -1,80 +1,39 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.concurrent.CompletionException;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fkz {
-   private static final Logger a = LogUtils.getLogger();
+public interface fkz {
+   flb a(flh var1, OptionalInt var2);
 
-   public static void a(fpt $$0, fys $$1, fys $$2, int $$3, flu $$4, @Nullable fot $$5) {
-      gdt.a($$0, $$1, ($$6, $$7, $$8, $$9) -> {
-         Path $$10;
-         try {
-            $$10 = a($$7, $$8, $$9);
-         } catch (IOException var13) {
-            a.warn("Failed to create temporary world folder.");
-            $$0.a(new fnh(wy.c("mco.create.world.failed"), $$2));
-            return true;
-         }
+   flb a(flh var1, OptionalInt var2, @Nullable flh var3, OptionalDouble var4);
 
-         fma $$13 = fma.a($$8.J(), $$8.J().e(), ac.b().c());
-         flg $$14 = new flg($$10, $$13, $$0.X(), $$4.a, $$3, flh.f());
-         $$0.d(new fxl($$14::b, wy.c("mco.create.world.reset.title"), wy.i(), wx.e, false));
-         if ($$5 != null) {
-            $$5.run();
-         }
+   void a(flh var1, int var2);
 
-         $$14.a().handleAsync(($$5xx, $$6x) -> {
-            if ($$6x != null) {
-               if ($$6x instanceof CompletionException $$7x) {
-                  $$6x = $$7x.getCause();
-               }
+   void a(flh var1, int var2, flh var3, double var4);
 
-               if ($$6x instanceof fla) {
-                  $$0.d($$2);
-               } else {
-                  if ($$6x instanceof flc $$8x) {
-                     a.warn("Failed to create realms world {}", $$8x.a());
-                  } else {
-                     a.warn("Failed to create realms world {}", $$6x.getMessage());
-                  }
+   void a(flh var1, double var2);
 
-                  $$0.d(new fnh(wy.c("mco.create.world.failed"), $$2));
-               }
-            } else {
-               if ($$1 instanceof fnd $$9x) {
-                  $$9x.a($$4.a);
-               }
+   void a(fig var1, ByteBuffer var2, int var3);
 
-               if ($$5 != null) {
-                  fko.a($$4, $$1, true);
-               } else {
-                  $$0.d($$1);
-               }
+   void a(fig var1, int var2);
 
-               fko.g();
-            }
+   fig.a a(fig var1);
 
-            return null;
-         }, $$0);
-         return true;
-      });
-   }
+   fig.a a(fig var1, int var2, int var3);
 
-   private static Path a(jm<alp> $$0, ezl $$1, @Nullable Path $$2) throws IOException {
-      Path $$3 = Files.createTempDirectory("minecraft_realms_world_upload");
-      if ($$2 != null) {
-         Files.move($$2, $$3.resolve("datapacks"));
-      }
+   void a(flh var1, fkg var2);
 
-      tz $$4 = $$1.a($$0.a(), null);
-      tz $$5 = new tz();
-      $$5.a("Data", $$4);
-      Path $$6 = Files.createFile($$3.resolve("level.dat"));
-      um.a($$5, $$6);
-      return $$3;
-   }
+   void a(flh var1, fkg var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9);
+
+   void a(flh var1, IntBuffer var2, fkg.a var3, int var4, int var5, int var6, int var7, int var8);
+
+   void a(flh var1, fig var2, int var3, Runnable var4, int var5);
+
+   void a(flh var1, fig var2, int var3, Runnable var4, int var5, int var6, int var7, int var8, int var9);
+
+   void a(flh var1, flh var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9);
+
+   void a(flh var1);
 }

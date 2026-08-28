@@ -1,37 +1,19 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+public class gvi implements gun<eac> {
+   private final gyg a;
 
-public class gvi implements gut.a {
-   private static final int a = 60;
-   private final Set<jy> b = Sets.newHashSet();
-
-   gvi() {
+   public gvi(guo.a $$0) {
+      this.a = $$0.c();
    }
 
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   public void a(jy $$0) {
-      this.b.add($$0);
-   }
-
-   public void b(jy $$0) {
-      this.b.remove($$0);
-   }
-
-   @Override
-   public void a(fkd $$0, gqr $$1, double $$2, double $$3, double $$4) {
-      iv $$5 = iv.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.k(), 60.0)) {
-            a($$0, $$1, $$3x);
+   public void a(eac $$0, float $$1, flo $$2, gsa $$3, int $$4, int $$5, ffq $$6) {
+      djx $$7 = $$0.i();
+      if ($$7 != null) {
+         eaf $$8 = $$0.c();
+         eai $$9 = $$8.f();
+         bwt $$10 = $$9.a($$8, $$7, $$8.i());
+         if ($$10 != null) {
+            gve.a($$1, $$2, $$3, $$4, $$10, this.a, $$9.e(), $$9.d());
          }
-      });
-   }
-
-   private static void a(fkd $$0, gqr $$1, jy $$2) {
-      gut.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
+      }
    }
 }

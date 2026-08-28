@@ -1,20 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public interface dfk {
-   Codec<dfk> d = mg.ax.q().dispatch(dfk::a, dfk.a::a);
-   yw<wj, dfk> e = yu.a(mh.ag).b(dfk::a, dfk.a::b);
-
-   dfq d();
-
-   dfq e();
-
-   dfk.a<? extends dfk> a();
-
-   default boolean a(cuw $$0) {
-      return this.d().a($$0) && this.e().a($$0);
+public interface dfk extends dep<dfl> {
+   @Override
+   default dfa<dfk> b() {
+      return dfa.g;
    }
 
-   public static record a<T extends dfk>(MapCodec<T> a, yw<wj, T> b) {
+   @Override
+   dez<? extends dfk> a();
+
+   default boolean a(dfl $$0, djx $$1) {
+      return del.a(this.c(), $$0.c()) && this.f().a($$0.d()) && del.a(this.k(), $$0.e());
+   }
+
+   Optional<del> c();
+
+   del f();
+
+   Optional<del> k();
+
+   @Override
+   default des h() {
+      return der.l;
    }
 }

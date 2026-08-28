@@ -1,81 +1,69 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class faa extends fac {
-   public static final MapCodec<faa> a = a(faa::new);
+public interface faa extends fac {
+   @Override
+   String e();
 
-   faa(List<faj> $$0, List<fdc> $$1) {
-      super($$0, $$1);
-   }
+   void a(boolean var1);
+
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
 
    @Override
-   public fak a() {
-      return fah.g;
+   default void a(q $$0, djz $$1) {
+      fac.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
    }
 
-   @Override
-   protected fab a(List<? extends fab> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> b;
-         case 1 -> (fab)$$0.get(0);
-         case 2 -> $$0.get(0).or($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (fab $$3 : $$0) {
-            if ($$3.expand($$1, $$2)) {
-               return true;
-            }
-         }
+   int f();
 
-         return false;
-      };
-      };
-   }
+   void a(int var1);
 
-   @Override
-   public void a(ezz $$0) {
-      super.a($$0);
+   int t();
 
-      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
-         if (this.d.get($$1).e.isEmpty()) {
-            $$0.b("Unreachable entry!");
-         }
-      }
-   }
+   void d(int var1);
 
-   public static faa.a a(faj.a<?>... $$0) {
-      return new faa.a($$0);
-   }
+   int u();
 
-   public static <E> faa.a a(Collection<E> $$0, Function<E, faj.a<?>> $$1) {
-      return new faa.a($$0.stream().map($$1::apply).toArray(faj.a[]::new));
-   }
+   void e(int var1);
 
-   public static class a extends faj.a<faa.a> {
-      private final Builder<faj> a = ImmutableList.builder();
+   @Nullable
+   UUID v();
 
-      public a(faj.a<?>... $$0) {
-         for (faj.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
+   void a(UUID var1);
 
-      protected faa.a a() {
-         return this;
-      }
+   dju k();
 
-      @Override
-      public faa.a a(faj.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+   void a(ecw.d var1);
 
-      @Override
-      public faj b() {
-         return new faa(this.a.build(), this.f());
-      }
-   }
+   ecw.d p();
+
+   boolean n();
+
+   void c(boolean var1);
+
+   boolean m();
+
+   void a(dju var1);
+
+   ffd<MinecraftServer> s();
+
+   void a(long var1);
+
+   void b(long var1);
+
+   djt o();
 }

@@ -1,396 +1,362 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.List;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.google.common.math.DoubleMath;
+import com.google.common.math.IntMath;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Objects;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.slf4j.Logger;
 
-public class fgh {
-   public static final String b = "#";
-   private static final Logger a = LogUtils.getLogger();
-   private final Object2ObjectMap<String, ffz> c = new Object2ObjectOpenHashMap(16, 0.5F);
-   private final Reference2ObjectMap<fgk, List<ffz>> d = new Reference2ObjectOpenHashMap();
-   private final Map<String, fgb> e = new Object2ObjectOpenHashMap(16, 0.5F);
-   private final Map<ffy, ffz> f = new EnumMap<>(ffy.class);
-   private final Object2ObjectMap<String, fgc> g = new Object2ObjectOpenHashMap();
-   private final Object2ObjectMap<String, fgc> h = new Object2ObjectOpenHashMap();
+public final class fgh {
+   public static final double a = 1.0E-7;
+   public static final double b = 1.0E-6;
+   private static final fgk d = ag.a(() -> {
+      ffz $$0 = new fft(1, 1, 1);
+      $$0.c(0, 0, 0);
+      return new ffx($$0);
+   });
+   private static final ffq e = new ffq(0.5, 0.5, 0.5);
+   public static final fgk c = a(
+      Double.NEGATIVE_INFINITY,
+      Double.NEGATIVE_INFINITY,
+      Double.NEGATIVE_INFINITY,
+      Double.POSITIVE_INFINITY,
+      Double.POSITIVE_INFINITY,
+      Double.POSITIVE_INFINITY
+   );
+   private static final fgk f = new ffs(
+      new fft(0, 0, 0), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0})
+   );
 
-   @Nullable
-   public ffz a(@Nullable String $$0) {
-      return (ffz)this.c.get($$0);
+   public static fgk a() {
+      return f;
    }
 
-   public ffz a(String $$0, fgk $$1, wy $$2, fgk.a $$3, boolean $$4, @Nullable yo $$5) {
-      if (this.c.containsKey($$0)) {
-         throw new IllegalArgumentException("An objective with the name '" + $$0 + "' already exists!");
+   public static fgk b() {
+      return d;
+   }
+
+   public static fgk a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      if (!($$0 > $$3) && !($$1 > $$4) && !($$2 > $$5)) {
+         return b($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
-         ffz $$6 = new ffz(this, $$0, $$1, $$2, $$3, $$4, $$5);
-         ((List)this.d.computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$6);
-         this.c.put($$0, $$6);
-         this.a($$6);
-         return $$6;
+         throw new IllegalArgumentException("The min values need to be smaller or equals to the max values");
       }
    }
 
-   public final void a(fgk $$0, fgg $$1, Consumer<fgf> $$2) {
-      ((List)this.d.getOrDefault($$0, Collections.emptyList())).forEach($$2x -> $$2.accept(this.a($$1, $$2x, true)));
+   public static fgk b(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      if (!($$3 - $$0 < 1.0E-7) && !($$4 - $$1 < 1.0E-7) && !($$5 - $$2 < 1.0E-7)) {
+         int $$6 = a($$0, $$3);
+         int $$7 = a($$1, $$4);
+         int $$8 = a($$2, $$5);
+         if ($$6 < 0 || $$7 < 0 || $$8 < 0) {
+            return new ffs(
+               d.a, DoubleArrayList.wrap(new double[]{$$0, $$3}), DoubleArrayList.wrap(new double[]{$$1, $$4}), DoubleArrayList.wrap(new double[]{$$2, $$5})
+            );
+         } else if ($$6 == 0 && $$7 == 0 && $$8 == 0) {
+            return b();
+         } else {
+            int $$9 = 1 << $$6;
+            int $$10 = 1 << $$7;
+            int $$11 = 1 << $$8;
+            fft $$12 = fft.a(
+               $$9,
+               $$10,
+               $$11,
+               (int)Math.round($$0 * (double)$$9),
+               (int)Math.round($$1 * (double)$$10),
+               (int)Math.round($$2 * (double)$$11),
+               (int)Math.round($$3 * (double)$$9),
+               (int)Math.round($$4 * (double)$$10),
+               (int)Math.round($$5 * (double)$$11)
+            );
+            return new ffx($$12);
+         }
+      } else {
+         return a();
+      }
    }
 
-   private fgb f(String $$0) {
-      return this.e.computeIfAbsent($$0, $$0x -> new fgb());
+   public static fgk a(ffl $$0) {
+      return b($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
    }
 
-   public fgf c(fgg $$0, ffz $$1) {
-      return this.a($$0, $$1, false);
-   }
-
-   public fgf a(final fgg $$0, final ffz $$1, boolean $$2) {
-      final boolean $$3 = $$2 || !$$1.d().e();
-      fgb $$4 = this.f($$0.cH());
-      final MutableBoolean $$5 = new MutableBoolean();
-      final fge $$6 = $$4.a($$1, $$1x -> $$5.setTrue());
-      return new fgf() {
-         @Override
-         public int a() {
-            return $$6.a();
+   @VisibleForTesting
+   protected static int a(double $$0, double $$1) {
+      if (!($$0 < -1.0E-7) && !($$1 > 1.0000001)) {
+         for (int $$2 = 0; $$2 <= 3; $$2++) {
+            int $$3 = 1 << $$2;
+            double $$4 = $$0 * (double)$$3;
+            double $$5 = $$1 * (double)$$3;
+            boolean $$6 = Math.abs($$4 - (double)Math.round($$4)) < 1.0E-7 * (double)$$3;
+            boolean $$7 = Math.abs($$5 - (double)Math.round($$5)) < 1.0E-7 * (double)$$3;
+            if ($$6 && $$7) {
+               return $$2;
+            }
          }
 
-         @Override
-         public void a(int $$0x) {
-            if (!$$3) {
-               throw new IllegalStateException("Cannot modify read-only score");
+         return -1;
+      } else {
+         return -1;
+      }
+   }
+
+   protected static long a(int $$0, int $$1) {
+      return (long)$$0 * (long)($$1 / IntMath.gcd($$0, $$1));
+   }
+
+   public static fgk a(fgk $$0, fgk $$1) {
+      return a($$0, $$1, ffu.o);
+   }
+
+   public static fgk a(fgk $$0, fgk... $$1) {
+      return Arrays.stream($$1).reduce($$0, fgh::a);
+   }
+
+   public static fgk a(fgk $$0, fgk $$1, ffu $$2) {
+      return b($$0, $$1, $$2).d();
+   }
+
+   public static fgk b(fgk $$0, fgk $$1, ffu $$2) {
+      if ($$2.apply(false, false)) {
+         throw (IllegalArgumentException)ag.b(new IllegalArgumentException());
+      } else if ($$0 == $$1) {
+         return $$2.apply(true, true) ? $$0 : a();
+      } else {
+         boolean $$3 = $$2.apply(true, false);
+         boolean $$4 = $$2.apply(false, true);
+         if ($$0.c()) {
+            return $$4 ? $$1 : a();
+         } else if ($$1.c()) {
+            return $$3 ? $$0 : a();
+         } else {
+            fgc $$5 = a(1, $$0.a(jb.a.a), $$1.a(jb.a.a), $$3, $$4);
+            fgc $$6 = a($$5.size() - 1, $$0.a(jb.a.b), $$1.a(jb.a.b), $$3, $$4);
+            fgc $$7 = a(($$5.size() - 1) * ($$6.size() - 1), $$0.a(jb.a.c), $$1.a(jb.a.c), $$3, $$4);
+            fft $$8 = fft.a($$0.a, $$1.a, $$5, $$6, $$7, $$2);
+            return (fgk)($$5 instanceof ffy && $$6 instanceof ffy && $$7 instanceof ffy ? new ffx($$8) : new ffs($$8, $$5.a(), $$6.a(), $$7.a()));
+         }
+      }
+   }
+
+   public static boolean c(fgk $$0, fgk $$1, ffu $$2) {
+      if ($$2.apply(false, false)) {
+         throw (IllegalArgumentException)ag.b(new IllegalArgumentException());
+      } else {
+         boolean $$3 = $$0.c();
+         boolean $$4 = $$1.c();
+         if (!$$3 && !$$4) {
+            if ($$0 == $$1) {
+               return $$2.apply(true, true);
             } else {
-               boolean $$1 = $$5.isTrue();
-               if ($$1.f()) {
-                  wy $$2 = $$0.m_();
-                  if ($$2 != null && !$$2.equals($$6.d())) {
-                     $$6.a($$2);
-                     $$1 = true;
+               boolean $$5 = $$2.apply(true, false);
+               boolean $$6 = $$2.apply(false, true);
+
+               for (jb.a $$7 : is.d) {
+                  if ($$0.c($$7) < $$1.b($$7) - 1.0E-7) {
+                     return $$5 || $$6;
+                  }
+
+                  if ($$1.c($$7) < $$0.b($$7) - 1.0E-7) {
+                     return $$5 || $$6;
                   }
                }
 
-               if ($$0 != $$6.a()) {
-                  $$6.a($$0);
-                  $$1 = true;
-               }
-
-               if ($$1) {
-                  this.h();
-               }
+               fgc $$8 = a(1, $$0.a(jb.a.a), $$1.a(jb.a.a), $$5, $$6);
+               fgc $$9 = a($$8.size() - 1, $$0.a(jb.a.b), $$1.a(jb.a.b), $$5, $$6);
+               fgc $$10 = a(($$8.size() - 1) * ($$9.size() - 1), $$0.a(jb.a.c), $$1.a(jb.a.c), $$5, $$6);
+               return a($$8, $$9, $$10, $$0.a, $$1.a, $$2);
             }
-         }
-
-         @Nullable
-         @Override
-         public wy g() {
-            return $$6.d();
-         }
-
-         @Override
-         public void a(@Nullable wy $$0x) {
-            if ($$5.isTrue() || !Objects.equals($$0, $$6.d())) {
-               $$6.a($$0);
-               this.h();
-            }
-         }
-
-         @Override
-         public void a(@Nullable yo $$0x) {
-            $$6.b($$0);
-            this.h();
-         }
-
-         @Override
-         public boolean d() {
-            return $$6.b();
-         }
-
-         @Override
-         public void e() {
-            this.a(false);
-         }
-
-         @Override
-         public void f() {
-            this.a(true);
-         }
-
-         private void a(boolean $$0x) {
-            $$6.a($$0);
-            if ($$5.isTrue()) {
-               this.h();
-            }
-
-            fgh.this.a($$0, $$1);
-         }
-
-         private void h() {
-            fgh.this.a($$0, $$1, $$6);
-            $$5.setFalse();
-         }
-      };
-   }
-
-   @Nullable
-   public fgd d(fgg $$0, ffz $$1) {
-      fgb $$2 = this.e.get($$0.cH());
-      return $$2 != null ? $$2.a($$1) : null;
-   }
-
-   public Collection<fga> i(ffz $$0) {
-      List<fga> $$1 = new ArrayList<>();
-      this.e.forEach(($$2, $$3) -> {
-         fge $$4 = $$3.a($$0);
-         if ($$4 != null) {
-            $$1.add(new fga($$2, $$4.a(), $$4.d(), $$4.c()));
-         }
-      });
-      return $$1;
-   }
-
-   public Collection<ffz> b() {
-      return this.c.values();
-   }
-
-   public Collection<String> c() {
-      return this.c.keySet();
-   }
-
-   public Collection<fgg> d() {
-      return this.e.keySet().stream().map(fgg::c).toList();
-   }
-
-   public void b(fgg $$0) {
-      fgb $$1 = this.e.remove($$0.cH());
-      if ($$1 != null) {
-         this.a($$0);
-      }
-   }
-
-   public void e(fgg $$0, ffz $$1) {
-      fgb $$2 = this.e.get($$0.cH());
-      if ($$2 != null) {
-         boolean $$3 = $$2.b($$1);
-         if (!$$2.a()) {
-            fgb $$4 = this.e.remove($$0.cH());
-            if ($$4 != null) {
-               this.a($$0);
-            }
-         } else if ($$3) {
-            this.b($$0, $$1);
+         } else {
+            return $$2.apply(!$$3, !$$4);
          }
       }
    }
 
-   public Object2IntMap<ffz> c(fgg $$0) {
-      fgb $$1 = this.e.get($$0.cH());
-      return $$1 != null ? $$1.b() : Object2IntMaps.emptyMap();
+   private static boolean a(fgc $$0, fgc $$1, fgc $$2, ffz $$3, ffz $$4, ffu $$5) {
+      return !$$0.a(($$5x, $$6, $$7) -> $$1.a(($$6x, $$7x, $$8) -> $$2.a(($$7xx, $$8x, $$9) -> !$$5.apply($$3.e($$5x, $$6x, $$7xx), $$4.e($$6, $$7x, $$8x)))));
    }
 
-   public void j(ffz $$0) {
-      this.c.remove($$0.c());
-
-      for (ffy $$1 : ffy.values()) {
-         if (this.a($$1) == $$0) {
-            this.a($$1, null);
+   public static double a(jb.a $$0, ffl $$1, Iterable<fgk> $$2, double $$3) {
+      for (fgk $$4 : $$2) {
+         if (Math.abs($$3) < 1.0E-7) {
+            return 0.0;
          }
+
+         $$3 = $$4.a($$0, $$1, $$3);
       }
 
-      List<ffz> $$2 = (List<ffz>)this.d.get($$0.d());
-      if ($$2 != null) {
-         $$2.remove($$0);
-      }
-
-      for (fgb $$3 : this.e.values()) {
-         $$3.b($$0);
-      }
-
-      this.c($$0);
+      return $$3;
    }
 
-   public void a(ffy $$0, @Nullable ffz $$1) {
-      this.f.put($$0, $$1);
-   }
-
-   @Nullable
-   public ffz a(ffy $$0) {
-      return this.f.get($$0);
-   }
-
-   @Nullable
-   public fgc b(String $$0) {
-      return (fgc)this.g.get($$0);
-   }
-
-   public fgc c(String $$0) {
-      fgc $$1 = this.b($$0);
-      if ($$1 != null) {
-         a.warn("Requested creation of existing team '{}'", $$0);
-         return $$1;
+   public static boolean a(fgk $$0, fgk $$1, jb $$2) {
+      if ($$0 == b() && $$1 == b()) {
+         return true;
+      } else if ($$1.c()) {
+         return false;
       } else {
-         $$1 = new fgc(this, $$0);
-         this.g.put($$0, $$1);
-         this.a($$1);
-         return $$1;
+         jb.a $$3 = $$2.o();
+         jb.b $$4 = $$2.f();
+         fgk $$5 = $$4 == jb.b.a ? $$0 : $$1;
+         fgk $$6 = $$4 == jb.b.a ? $$1 : $$0;
+         ffu $$7 = $$4 == jb.b.a ? ffu.e : ffu.c;
+         return DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)
+            && DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)
+            && !c(new fgi($$5, $$3, $$5.a.c($$3) - 1), new fgi($$6, $$3, 0), $$7);
       }
    }
 
-   public void d(fgc $$0) {
-      this.g.remove($$0.c());
+   public static boolean b(fgk $$0, fgk $$1, jb $$2) {
+      if ($$0 != b() && $$1 != b()) {
+         jb.a $$3 = $$2.o();
+         jb.b $$4 = $$2.f();
+         fgk $$5 = $$4 == jb.b.a ? $$0 : $$1;
+         fgk $$6 = $$4 == jb.b.a ? $$1 : $$0;
+         if (!DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)) {
+            $$5 = a();
+         }
 
-      for (String $$1 : $$0.h()) {
-         this.h.remove($$1);
+         if (!DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)) {
+            $$6 = a();
+         }
+
+         return !c(b(), b(new fgi($$5, $$3, $$5.a.c($$3) - 1), new fgi($$6, $$3, 0), ffu.o), ffu.e);
+      } else {
+         return true;
       }
-
-      this.c($$0);
    }
 
-   public boolean a(String $$0, fgc $$1) {
-      if (this.e($$0) != null) {
-         this.d($$0);
-      }
-
-      this.h.put($$0, $$1);
-      return $$1.h().add($$0);
-   }
-
-   public boolean d(String $$0) {
-      fgc $$1 = this.e($$0);
-      if ($$1 != null) {
-         this.b($$0, $$1);
+   public static boolean b(fgk $$0, fgk $$1) {
+      if ($$0 == b() || $$1 == b()) {
          return true;
       } else {
-         return false;
+         return $$0.c() && $$1.c() ? false : !c(b(), b($$0, $$1, ffu.o), ffu.e);
       }
    }
 
-   public void b(String $$0, fgc $$1) {
-      if (this.e($$0) != $$1) {
-         throw new IllegalStateException("Player is either on another team or not on any team. Cannot remove from team '" + $$1.c() + "'.");
+   @VisibleForTesting
+   protected static fgc a(int $$0, DoubleList $$1, DoubleList $$2, boolean $$3, boolean $$4) {
+      int $$5 = $$1.size() - 1;
+      int $$6 = $$2.size() - 1;
+      if ($$1 instanceof ffw && $$2 instanceof ffw) {
+         long $$7 = a($$5, $$6);
+         if ((long)$$0 * $$7 <= 256L) {
+            return new ffy($$5, $$6);
+         }
+      }
+
+      if ($$1.getDouble($$5) < $$2.getDouble(0) - 1.0E-7) {
+         return new fgf($$1, $$2, false);
+      } else if ($$2.getDouble($$6) < $$1.getDouble(0) - 1.0E-7) {
+         return new fgf($$2, $$1, true);
       } else {
-         this.h.remove($$0);
-         $$1.h().remove($$0);
+         return (fgc)($$5 == $$6 && Objects.equals($$1, $$2) ? new fgb($$1) : new fgd($$1, $$2, $$3, $$4));
       }
    }
 
-   public Collection<String> e() {
-      return this.g.keySet();
+   public static fgk a(fgk $$0, h $$1) {
+      return a($$0, $$1, e);
    }
 
-   public Collection<fgc> f() {
-      return this.g.values();
-   }
-
-   @Nullable
-   public fgc e(String $$0) {
-      return (fgc)this.h.get($$0);
-   }
-
-   public void a(ffz $$0) {
-   }
-
-   public void b(ffz $$0) {
-   }
-
-   public void c(ffz $$0) {
-   }
-
-   protected void a(fgg $$0, ffz $$1, fge $$2) {
-   }
-
-   protected void a(fgg $$0, ffz $$1) {
-   }
-
-   public void a(fgg $$0) {
-   }
-
-   public void b(fgg $$0, ffz $$1) {
-   }
-
-   public void a(fgc $$0) {
-   }
-
-   public void b(fgc $$0) {
-   }
-
-   public void c(fgc $$0) {
-   }
-
-   public void a(bwi $$0) {
-      if (!($$0 instanceof crm) && !$$0.bI()) {
-         this.b($$0);
-         this.d($$0.cH());
-      }
-   }
-
-   protected List<fgh.a> g() {
-      return this.e.entrySet().stream().flatMap($$0 -> {
-         String $$1 = $$0.getKey();
-         return $$0.getValue().c().entrySet().stream().map($$1x -> new fgh.a($$1, ((ffz)$$1x.getKey()).c(), (fge)$$1x.getValue()));
-      }).toList();
-   }
-
-   protected void a(fgh.a $$0) {
-      ffz $$1 = this.a($$0.c);
-      if ($$1 == null) {
-         a.error("Unknown objective {} for name {}, ignoring", $$0.c, $$0.b);
+   public static fgk a(fgk $$0, h $$1, ffq $$2) {
+      if ($$1 == h.a) {
+         return $$0;
       } else {
-         this.f($$0.b).a($$1, $$0.d);
+         ffz $$3 = $$0.a.a($$1);
+         if ($$0 instanceof ffx && e.equals($$2)) {
+            return new ffx($$3);
+         } else {
+            jb.a $$4 = $$1.b(jb.a.a);
+            jb.a $$5 = $$1.b(jb.a.b);
+            jb.a $$6 = $$1.b(jb.a.c);
+            DoubleList $$7 = $$0.a($$4);
+            DoubleList $$8 = $$0.a($$5);
+            DoubleList $$9 = $$0.a($$6);
+            boolean $$10 = $$1.a($$4);
+            boolean $$11 = $$1.a($$5);
+            boolean $$12 = $$1.a($$6);
+            boolean $$13 = $$4.a($$10, $$11, $$12);
+            boolean $$14 = $$5.a($$10, $$11, $$12);
+            boolean $$15 = $$6.a($$10, $$11, $$12);
+            return new ffs($$3, a($$7, $$13, $$2.a($$4), $$2.d), a($$8, $$14, $$2.a($$5), $$2.e), a($$9, $$15, $$2.a($$6), $$2.f));
+         }
       }
    }
 
-   protected void a(fgc.a $$0) {
-      fgc $$1 = this.c($$0.a());
-      $$0.b().ifPresent($$1::a);
-      $$0.c().ifPresent($$1::a);
-      $$1.a($$0.d());
-      $$1.b($$0.e());
-      $$1.b($$0.f());
-      $$1.c($$0.g());
-      $$1.a($$0.h());
-      $$1.b($$0.i());
-      $$1.a($$0.j());
+   @VisibleForTesting
+   static DoubleList a(DoubleList $$0, boolean $$1, double $$2, double $$3) {
+      if (!$$1 && $$2 == $$3) {
+         return $$0;
+      } else {
+         int $$4 = $$0.size();
+         DoubleList $$5 = new DoubleArrayList($$4);
+         int $$6 = $$1 ? -1 : 1;
 
-      for (String $$2 : $$0.k()) {
-         this.a($$2, $$1);
+         for (int $$7 = $$1 ? $$4 - 1 : 0; $$7 >= 0 && $$7 < $$4; $$7 += $$6) {
+            $$5.add($$3 + (double)$$6 * ($$0.getDouble($$7) - $$2));
+         }
+
+         return $$5;
       }
    }
 
-   protected void a(ffz.a $$0) {
-      this.a($$0.a(), $$0.b(), $$0.c(), $$0.d(), $$0.e(), $$0.f().orElse(null));
+   public static boolean c(fgk $$0, fgk $$1) {
+      return !c($$0, $$1, ffu.g);
    }
 
-   public static record a(String b, String c, fge d) {
-      public static final Codec<fgh.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("Name").forGetter(fgh.a::a), Codec.STRING.fieldOf("Objective").forGetter(fgh.a::b), fge.a.forGetter(fgh.a::c))
-               .apply($$0, fgh.a::new)
+   public static Map<jb.a, fgk> a(fgk $$0) {
+      return a($$0, e);
+   }
+
+   public static Map<jb.a, fgk> a(fgk $$0, ffq $$1) {
+      return Maps.newEnumMap(Map.of(jb.a.c, $$0, jb.a.a, a($$0, h.a(i.a, i.b), $$1)));
+   }
+
+   public static Map<jb.a, fgk> b(fgk $$0) {
+      return b($$0, e);
+   }
+
+   public static Map<jb.a, fgk> b(fgk $$0, ffq $$1) {
+      return Maps.newEnumMap(Map.of(jb.a.c, $$0, jb.a.a, a($$0, h.a(i.a, i.b), $$1), jb.a.b, a($$0, h.a(i.b, i.a), $$1)));
+   }
+
+   public static Map<jb, fgk> c(fgk $$0) {
+      return c($$0, e);
+   }
+
+   public static Map<jb, fgk> c(fgk $$0, ffq $$1) {
+      return Maps.newEnumMap(Map.of(jb.c, $$0, jb.f, a($$0, h.a(i.a, i.b), $$1), jb.d, a($$0, h.a(i.a, i.c), $$1), jb.e, a($$0, h.a(i.a, i.d), $$1)));
+   }
+
+   public static Map<jb, fgk> d(fgk $$0) {
+      return d($$0, e);
+   }
+
+   public static Map<jb, fgk> d(fgk $$0, ffq $$1) {
+      return Maps.newEnumMap(
+         Map.of(
+            jb.c,
+            $$0,
+            jb.f,
+            a($$0, h.a(i.a, i.b), $$1),
+            jb.d,
+            a($$0, h.a(i.a, i.c), $$1),
+            jb.e,
+            a($$0, h.a(i.a, i.d), $$1),
+            jb.b,
+            a($$0, h.a(i.d, i.a), $$1),
+            jb.a,
+            a($$0, h.a(i.b, i.a), $$1)
+         )
       );
+   }
 
-      public String a() {
-         return this.b;
-      }
+   public static Map<ebp, Map<jb, fgk>> e(fgk $$0) {
+      return Map.of(ebp.b, c($$0), ebp.a, c(a($$0, h.a(i.d, i.a))), ebp.c, c(a($$0, h.a(i.b, i.c))));
+   }
 
-      public String b() {
-         return this.c;
-      }
-
-      public fge c() {
-         return this.d;
-      }
+   public interface a {
+      void consume(double var1, double var3, double var5, double var7, double var9, double var11);
    }
 }

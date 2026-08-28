@@ -1,96 +1,84 @@
-public class gab {
-   private static final alg a = alg.b("alt");
-   private static final xv b = xv.a.a(a);
-   private static final gab c = new gab();
-   private final azv d = azv.a();
-   private final String[] e = new String[]{
-      "the",
-      "elder",
-      "scrolls",
-      "klaatu",
-      "berata",
-      "niktu",
-      "xyzzy",
-      "bless",
-      "curse",
-      "light",
-      "darkness",
-      "fire",
-      "air",
-      "earth",
-      "water",
-      "hot",
-      "dry",
-      "cold",
-      "wet",
-      "ignite",
-      "snuff",
-      "embiggen",
-      "twist",
-      "shorten",
-      "stretch",
-      "fiddle",
-      "destroy",
-      "imbue",
-      "galvanize",
-      "enchant",
-      "free",
-      "limited",
-      "range",
-      "of",
-      "towards",
-      "inside",
-      "sphere",
-      "cube",
-      "self",
-      "other",
-      "ball",
-      "mental",
-      "physical",
-      "grow",
-      "shrink",
-      "demon",
-      "elemental",
-      "spirit",
-      "animal",
-      "creature",
-      "beast",
-      "humanoid",
-      "undead",
-      "fresh",
-      "stale",
-      "phnglui",
-      "mglwnafh",
-      "cthulhu",
-      "rlyeh",
-      "wgahnagl",
-      "fhtagn",
-      "baguette"
-   };
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
 
-   private gab() {
+public class gab extends gad {
+   private static final xa a = xa.c("multiplayer.downloadingTerrain");
+   private static final long b = 30000L;
+   private final long c;
+   private final BooleanSupplier d;
+   private final gab.a s;
+   @Nullable
+   private hla u;
+
+   public gab(BooleanSupplier $$0, gab.a $$1) {
+      super(fqu.a);
+      this.d = $$0;
+      this.s = $$1;
+      this.c = ag.c();
    }
 
-   public static gab a() {
-      return c;
+   @Override
+   public boolean aH_() {
+      return false;
    }
 
-   public xd a(fsk $$0, int $$1) {
-      StringBuilder $$2 = new StringBuilder();
-      int $$3 = this.d.a(2) + 3;
+   @Override
+   protected boolean aR_() {
+      return false;
+   }
 
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if ($$4 != 0) {
-            $$2.append(" ");
-         }
+   @Override
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, a, this.n / 2, this.o / 2 - 50, -1);
+   }
 
-         $$2.append(ag.a(this.e, this.d));
+   @Override
+   public void b(ftx $$0, int $$1, int $$2, float $$3) {
+      switch (this.s) {
+         case a:
+            $$0.a(gsl::G, this.m(), 0, 0, $$0.a(), $$0.b());
+            break;
+         case b:
+            $$0.b(gsl.u(), 0, 0, this.n, this.o, 0);
+            break;
+         case c:
+            this.a($$0, $$3);
+            this.r();
+            this.a($$0);
       }
-
-      return $$0.b().a(wy.b($$2.toString()).c(b), $$1, xv.a);
    }
 
-   public void a(long $$0) {
-      this.d.b($$0);
+   private hla m() {
+      if (this.u != null) {
+         return this.u;
+      } else {
+         this.u = this.m.ap().a().a(dne.eu.m());
+         return this.u;
+      }
+   }
+
+   @Override
+   public void e() {
+      if (this.d.getAsBoolean() || ag.c() > this.c + 30000L) {
+         this.aP_();
+      }
+   }
+
+   @Override
+   public void aP_() {
+      this.m.aY().c(xa.c("narrator.ready_to_play"));
+      super.aP_();
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

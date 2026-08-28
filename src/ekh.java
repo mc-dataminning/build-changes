@@ -1,31 +1,33 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekh implements emc {
-   public static final Codec<ekh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eat.a.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               eat.a.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               eat.a.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               eat.a.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               ehz.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, ekh::new)
-   );
-   public final eat b;
-   public final eat c;
-   public final eat d;
-   public final eat e;
-   public final ehz f;
-   public final boolean g;
+public class ekh extends ekk<emw> {
+   public ekh(Codec<emw> $$0) {
+      super($$0);
+   }
 
-   public ekh(eat $$0, eat $$1, eat $$2, eat $$3, ehz $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   @Override
+   public boolean a(ekm<emw> $$0) {
+      a($$0.b(), $$0.e(), false);
+      return true;
+   }
+
+   public static void a(dko $$0, iv $$1, boolean $$2) {
+      iv.a $$3 = $$1.k();
+
+      for (int $$4 = -2; $$4 <= 2; $$4++) {
+         for (int $$5 = -2; $$5 <= 2; $$5++) {
+            for (int $$6 = -1; $$6 < 3; $$6++) {
+               iv $$7 = $$3.g($$1).e($$5, $$6, $$4);
+               dnc $$8 = $$6 == -1 ? dne.cy : dne.a;
+               if (!$$0.a_($$7).a($$8)) {
+                  if ($$2) {
+                     $$0.a($$7, true, null);
+                  }
+
+                  $$0.a($$7, $$8.m(), 3);
+               }
+            }
+         }
+      }
    }
 }

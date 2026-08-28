@@ -1,42 +1,14 @@
-public class gzo extends gvp<cun, hej> {
-   private final gru g;
-
-   public gzo(gwy.a $$0) {
-      super($$0, gjs.dA);
-      this.g = $$0.d();
+public abstract class gzo<T extends bxw, S extends hfp, M extends gia<? super S>> extends gzj<T, S, M> {
+   public gzo(gyi.a $$0, M $$1, float $$2) {
+      super($$0, $$1, $$2);
    }
 
-   protected void a(hej $$0, eat $$1, fkd $$2, gqr $$3, int $$4) {
-      float $$5 = $$0.n;
-      if ($$5 > -1.0F && $$5 < 10.0F) {
-         float $$6 = 1.0F - $$5 / 10.0F;
-         $$6 = azm.a($$6, 0.0F, 1.0F);
-         $$6 *= $$6;
-         $$6 *= $$6;
-         float $$7 = 1.0F + $$6 * 0.3F;
-         $$2.b($$7, $$7, $$7);
-      }
-
-      a(this.g, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
+   protected boolean a(T $$0, double $$1) {
+      return super.a($$0, $$1) && ($$0.cM() || $$0.h_() && $$0 == this.d.c);
    }
 
-   public static void a(gru $$0, eat $$1, fkd $$2, gqr $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = hjg.a(hjg.a(1.0F), 10);
-      } else {
-         $$6 = hjg.d;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6);
-   }
-
-   public hej a() {
-      return new hej();
-   }
-
-   public void a(cun $$0, hej $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.n = $$0.q() > -1 ? (float)$$0.q() - $$2 + 1.0F : -1.0F;
+   @Override
+   protected float g(S $$0) {
+      return super.g($$0) * $$0.ag;
    }
 }

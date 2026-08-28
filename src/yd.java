@@ -1,10 +1,74 @@
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class yd {
-   static Function<String, Supplier<wy>> a = $$0 -> () -> wy.b($$0);
+public record yd(String d, @Nullable gz e) implements yc {
+   public static final MapCodec<yd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(yd::b)).apply($$0, yd::new));
+   public static final yc.a<yd> b = new yc.a<>(a, "entity");
 
-   public static void a(Function<String, Supplier<wy>> $$0) {
-      a = $$0;
+   public yd(String $$0) {
+      this($$0, a($$0));
+   }
+
+   @Nullable
+   private static gz a(String $$0) {
+      try {
+         ha $$1 = new ha(new StringReader($$0), true);
+         return $$1.t();
+      } catch (CommandSyntaxException var2) {
+         return null;
+      }
+   }
+
+   @Override
+   public Stream<tz> a(ej $$0) throws CommandSyntaxException {
+      if (this.e != null) {
+         List<? extends bwt> $$1 = this.e.b($$0);
+         return $$1.stream().map(cz::b);
+      } else {
+         return Stream.empty();
+      }
+   }
+
+   @Override
+   public yc.a<?> a() {
+      return b;
+   }
+
+   @Override
+   public String toString() {
+      return "entity=" + this.d;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof yd $$1 && this.d.equals($$1.d)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d.hashCode();
+   }
+
+   public String b() {
+      return this.d;
+   }
+
+   @Nullable
+   public gz c() {
+      return this.e;
    }
 }

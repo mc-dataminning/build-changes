@@ -1,3 +1,3 @@
-public class hes extends hef {
-   public float a;
+public class hes extends hfh {
+   public boolean a;
 }

@@ -1,46 +1,14 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
+import javax.annotation.Nullable;
 
-public class hka {
-   private final alg a;
-   private final avb b;
-   private final AtomicReference<fiz> c = new AtomicReference<>();
-   private final AtomicInteger d;
-
-   public hka(alg $$0, avb $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = new AtomicInteger($$2);
+public interface hka extends hke<Void> {
+   @Nullable
+   default Void a(czy $$0) {
+      return null;
    }
 
-   public fiz a() throws IOException {
-      fiz $$0 = this.c.get();
-      if ($$0 == null) {
-         synchronized (this) {
-            $$0 = this.c.get();
-            if ($$0 == null) {
-               try (InputStream $$1 = this.b.d()) {
-                  $$0 = fiz.a($$1);
-                  this.c.set($$0);
-               } catch (IOException var9) {
-                  throw new IOException("Failed to load image " + this.a, var9);
-               }
-            }
-         }
-      }
-
-      return $$0;
+   default void a(@Nullable Void $$0, czw $$1, flo $$2, gsa $$3, int $$4, int $$5, boolean $$6) {
+      this.a($$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public void b() {
-      int $$0 = this.d.decrementAndGet();
-      if ($$0 <= 0) {
-         fiz $$1 = this.c.getAndSet(null);
-         if ($$1 != null) {
-            $$1.close();
-         }
-      }
-   }
+   void a(czw var1, flo var2, gsa var3, int var4, int var5, boolean var6);
 }

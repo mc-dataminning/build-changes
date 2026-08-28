@@ -1,5 +1,8 @@
-public enum erp {
-   a,
-   b,
-   c;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface erp {
 }

@@ -1,36 +1,71 @@
 import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.charset.StandardCharsets;
 import java.security.SignatureException;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.time.Instant;
+import java.util.Optional;
 
-public record xt(int b, UUID c, UUID d) {
-   public static final Codec<xt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayu.l.fieldOf("index").forGetter(xt::b), jz.a.fieldOf("sender").forGetter(xt::c), jz.a.fieldOf("session_id").forGetter(xt::d))
+public record xt(String b, Instant c, long d, xh e) {
+   public static final MapCodec<xt> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("content").forGetter(xt::a),
+               ayw.q.fieldOf("time_stamp").forGetter(xt::b),
+               Codec.LONG.fieldOf("salt").forGetter(xt::c),
+               xh.a.optionalFieldOf("last_seen", xh.b).forGetter(xt::d)
+            )
             .apply($$0, xt::new)
    );
 
-   public static xt a(UUID $$0) {
-      return a($$0, ag.e);
+   public static xt a(String $$0) {
+      return new xt($$0, Instant.now(), 0L, xh.b);
    }
 
-   public static xt a(UUID $$0, UUID $$1) {
-      return new xt(0, $$0, $$1);
+   public void a(bac.a $$0) throws SignatureException {
+      $$0.update(Longs.toByteArray(this.d));
+      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
+      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
+      $$0.update(Ints.toByteArray($$1.length));
+      $$0.update($$1);
+      this.e.a($$0);
    }
 
-   public void a(baa.a $$0) throws SignatureException {
-      $$0.update(jz.b(this.c));
-      $$0.update(jz.b(this.d));
-      $$0.update(Ints.toByteArray(this.b));
+   public xt.a a(xn $$0) {
+      return new xt.a(this.b, this.c, this.d, this.e.a($$0));
    }
 
-   public boolean a(xt $$0) {
-      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
+   public String a() {
+      return this.b;
    }
 
-   @Nullable
-   public xt a() {
-      return this.b == Integer.MAX_VALUE ? null : new xt(this.b + 1, this.c, this.d);
+   public Instant b() {
+      return this.c;
+   }
+
+   public long c() {
+      return this.d;
+   }
+
+   public xh d() {
+      return this.e;
+   }
+
+   public static record a(String a, Instant b, long c, xh.a d) {
+      public a(vw $$0) {
+         this($$0.d(256), $$0.t(), $$0.readLong(), new xh.a($$0));
+      }
+
+      public void a(vw $$0) {
+         $$0.a(this.a, 256);
+         $$0.a(this.b);
+         $$0.b(this.c);
+         this.d.a($$0);
+      }
+
+      public Optional<xt> a(xn $$0) {
+         return this.d.a($$0).map($$0x -> new xt(this.a, this.b, this.c, $$0x));
+      }
    }
 }

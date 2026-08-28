@@ -1,29 +1,18 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class cbf {
-   private static final int a = 1;
-
-   public static bzb<bxl> a(float $$0) {
-      return a($$1 -> $$0);
-   }
-
-   public static bzb<bxl> a(Function<bxj, Float> $$0) {
-      return ccn.a(
-         (Function<ccn.b<bxl>, ? extends App<ccn.c<bxl>, ccq<bxl>>>)($$1 -> $$1.group($$1.a(cgl.n), $$1.a(cgl.o), $$1.b(cgl.p), $$1.a(cgl.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bxj $$9 = $$1.b($$4);
-                     Optional<cgn> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bzc.a($$7, $$9, 1)) {
-                        $$2.b();
-                     } else {
-                        $$3.a(new bzl($$9, true));
-                        $$2.a(new cgo(new bzl($$9, false), $$0.apply($$7), 0));
-                     }
-
-                     return true;
-                  }))
-      );
+   public static bzm<crj> a() {
+      return ccy.a((Function<ccy.b<crj>, ? extends App<ccy.c<crj>, cdb<crj>>>)($$0 -> $$0.group($$0.c(cgw.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               crk $$3 = $$1.gC();
+               boolean $$4 = !$$3.b().a(crm.b) && !$$3.b().a(crm.m);
+               if ($$4 && $$1.t() == 0 && $$3.c() <= 1) {
+                  $$1.a($$1.gC().b($$0xx.J_(), crm.b));
+                  $$1.g($$0xx);
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 }

@@ -1,139 +1,60 @@
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import org.joml.Vector2i;
 
-public interface ftt {
-   ftt a = new ftt() {
-      @Override
-      public void a(fsm $$0, int $$1, int $$2) {
-      }
+public class ftt implements ftz {
+   private final frd a;
+   private final frm b;
 
-      @Override
-      public void a(fsm $$0, int $$1, int $$2, int $$3, int $$4) {
-      }
-
-      @Override
-      public void b(fsm $$0, int $$1, int $$2, int $$3, int $$4) {
-      }
-
-      @Override
-      public int c(fsm $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public int b() {
-         return 0;
-      }
-   };
-
-   static ftt a(fsk $$0, wy... $$1) {
-      return a($$0, Integer.MAX_VALUE, Integer.MAX_VALUE, $$1);
+   public ftt(frd $$0) {
+      this.a = $$0;
+      this.b = new frm();
    }
 
-   static ftt a(fsk $$0, int $$1, wy... $$2) {
-      return a($$0, $$1, Integer.MAX_VALUE, $$2);
+   @Override
+   public boolean a(cxn $$0) {
+      return $$0.g().a(axm.bR);
    }
 
-   static ftt a(fsk $$0, wy $$1, int $$2) {
-      return a($$0, $$2, Integer.MAX_VALUE, $$1);
-   }
-
-   static ftt a(final fsk $$0, final int $$1, final int $$2, final wy... $$3) {
-      return $$3.length == 0 ? a : new ftt() {
-         @Nullable
-         private List<ftt.a> f;
-         @Nullable
-         private tu g;
-
-         @Override
-         public void a(fsm $$0x, int $$1x, int $$2x) {
-            this.a($$0, $$1, $$2, 9, -1);
-         }
-
-         @Override
-         public void a(fsm $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
-            int $$5 = $$2;
-
-            for (ftt.a $$6 : this.c()) {
-               $$0.a($$0, $$6.a, $$1, $$5, $$4);
-               $$5 += $$3;
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, czy $$3) {
+      int $$4 = cyn.j($$3);
+      if ($$4 == 0) {
+         return false;
+      } else {
+         Vector2i $$5 = this.b.a($$0, $$1);
+         int $$6 = $$5.y == 0 ? -$$5.x : $$5.y;
+         if ($$6 != 0) {
+            int $$7 = cyn.h($$3);
+            int $$8 = frm.a((double)$$6, $$7, $$4);
+            if ($$7 != $$8) {
+               this.a($$3, $$2, $$8);
             }
          }
 
-         @Override
-         public void b(fsm $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
-            int $$5 = $$2;
-
-            for (ftt.a $$6 : this.c()) {
-               $$0.b($$0, $$6.a, $$1, $$5, $$4);
-               $$5 += $$3;
-            }
-         }
-
-         @Override
-         public int c(fsm $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
-            int $$5 = $$2;
-
-            for (ftt.a $$6 : this.c()) {
-               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         private List<ftt.a> c() {
-            tu $$0 = tu.a();
-            if (this.f != null && $$0 == this.g) {
-               return this.f;
-            } else {
-               this.g = $$0;
-               List<ayy> $$1 = new ArrayList<>();
-
-               for (wy $$2 : $$3) {
-                  $$1.addAll($$0.c($$2, $$1));
-               }
-
-               this.f = new ArrayList<>();
-
-               for (ayy $$3 : $$1.subList(0, Math.min($$1.size(), $$2))) {
-                  this.f.add(new ftt.a($$3, $$0.a($$3)));
-               }
-
-               return this.f;
-            }
-         }
-
-         @Override
-         public int a() {
-            return this.c().size();
-         }
-
-         @Override
-         public int b() {
-            return Math.min($$1, this.c().stream().mapToInt(ftt.a::b).max().orElse(0));
-         }
-      };
+         return true;
+      }
    }
 
-   void a(fsm var1, int var2, int var3);
+   @Override
+   public void b(cxn $$0) {
+      this.a($$0.g(), $$0.d);
+   }
 
-   void a(fsm var1, int var2, int var3, int var4, int var5);
+   @Override
+   public void a(cxn $$0, cwb $$1) {
+      if ($$1 == cwb.b || $$1 == cwb.c) {
+         this.a($$0.g(), $$0.d);
+      }
+   }
 
-   void b(fsm var1, int var2, int var3, int var4, int var5);
+   private void a(czy $$0, int $$1, int $$2) {
+      if (this.a.L() != null && $$2 < cyn.j($$0)) {
+         gmc $$3 = this.a.L();
+         cyn.a($$0, $$2);
+         $$3.b(new aif($$1, $$2));
+      }
+   }
 
-   int c(fsm var1, int var2, int var3, int var4, int var5);
-
-   int a();
-
-   int b();
-
-   public static record a(ayy a, int b) {
+   public void a(czy $$0, int $$1) {
+      this.a($$0, $$1, -1);
    }
 }

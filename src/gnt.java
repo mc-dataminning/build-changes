@@ -1,76 +1,85 @@
-public class gnt extends gnz {
-   private static final int a = 3;
-   private final bwi b;
-   private final bwi D;
-   private int E;
-   private final gww F;
-   private double G;
-   private double H;
-   private double I;
-   private double J;
-   private double K;
-   private double L;
+import com.google.common.net.HostAndPort;
+import com.mojang.logging.LogUtils;
+import java.net.IDN;
+import org.slf4j.Logger;
 
-   public gnt(gww $$0, gkq $$1, bwi $$2, bwi $$3) {
-      this($$0, $$1, $$2, $$3, $$2.dx());
+public final class gnt {
+   private static final Logger a = LogUtils.getLogger();
+   private final HostAndPort b;
+   private static final gnt c = new gnt(HostAndPort.fromParts("server.invalid", 25565));
+
+   public gnt(String $$0, int $$1) {
+      this(HostAndPort.fromParts($$0, $$1));
    }
 
-   private gnt(gww $$0, gkq $$1, bwi $$2, bwi $$3, ffc $$4) {
-      super($$1, $$2.dz(), $$2.dB(), $$2.dF(), $$4.d, $$4.e, $$4.f);
-      this.b = this.a($$2);
-      this.D = $$3;
-      this.F = $$0;
-      this.c();
-      this.d();
+   private gnt(HostAndPort $$0) {
+      this.b = $$0;
    }
 
-   private bwi a(bwi $$0) {
-      return (bwi)(!($$0 instanceof cnr) ? $$0 : ((cnr)$$0).v());
+   public String a() {
+      try {
+         return IDN.toASCII(this.b.getHost());
+      } catch (IllegalArgumentException var2) {
+         return "";
+      }
    }
 
-   @Override
-   public god b() {
-      return god.d;
+   public int b() {
+      return this.b.getPort();
    }
 
-   @Override
-   public void a(fkd $$0, gqr $$1, fpb $$2, float $$3) {
-      float $$4 = ((float)this.E + $$3) / 3.0F;
-      $$4 *= $$4;
-      double $$5 = azm.d((double)$$3, this.J, this.G);
-      double $$6 = azm.d((double)$$3, this.K, this.H);
-      double $$7 = azm.d((double)$$3, this.L, this.I);
-      double $$8 = azm.d((double)$$4, this.b.dz(), $$5);
-      double $$9 = azm.d((double)$$4, this.b.dB(), $$6);
-      double $$10 = azm.d((double)$$4, this.b.dF(), $$7);
-      ffc $$11 = $$2.b();
-      this.F.a(this.b, $$8 - $$11.a(), $$9 - $$11.b(), $$10 - $$11.c(), $$3, new fkd(), $$1, this.F.a(this.b, $$3));
+   public static gnt a(String $$0) {
+      if ($$0 == null) {
+         return c;
+      } else {
+         try {
+            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
+            return $$1.getHost().isEmpty() ? c : new gnt($$1);
+         } catch (IllegalArgumentException var2) {
+            a.info("Failed to parse URL {}", $$0, var2);
+            return c;
+         }
+      }
    }
 
-   @Override
-   public void a(fkh $$0, fpb $$1, float $$2) {
-   }
-
-   @Override
-   public void a() {
-      this.E++;
-      if (this.E == 3) {
-         this.k();
+   public static boolean b(String $$0) {
+      try {
+         HostAndPort $$1 = HostAndPort.fromString($$0);
+         String $$2 = $$1.getHost();
+         if (!$$2.isEmpty()) {
+            IDN.toASCII($$2);
+            return true;
+         }
+      } catch (IllegalArgumentException var3) {
       }
 
-      this.d();
-      this.c();
+      return false;
    }
 
-   private void c() {
-      this.G = this.D.dz();
-      this.H = (this.D.dB() + this.D.dD()) / 2.0;
-      this.I = this.D.dF();
+   static int c(String $$0) {
+      try {
+         return Integer.parseInt($$0.trim());
+      } catch (Exception var2) {
+         return 25565;
+      }
    }
 
-   private void d() {
-      this.J = this.G;
-      this.K = this.H;
-      this.L = this.I;
+   @Override
+   public String toString() {
+      return this.b.toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof gnt ? this.b.equals(((gnt)$$0).b) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 }

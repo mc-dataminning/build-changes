@@ -1,16 +1,25 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class gsd {
+   public static final ali a = ali.b("textures/gui/title/background/panorama_overlay.png");
+   private final frd b;
+   private final grl c;
+   private float d;
 
-public interface gsd {
-   List<grx> a(eat var1, @Nullable jb var2, azv var3);
+   public gsd(grl $$0) {
+      this.c = $$0;
+      this.b = frd.Q();
+   }
 
-   boolean a();
+   public void a(ftx $$0, int $$1, int $$2, float $$3, float $$4) {
+      float $$5 = this.b.av().b();
+      float $$6 = (float)((double)$$5 * this.b.n.t().c());
+      this.d = a(this.d + $$6 * 0.1F, 360.0F);
+      $$0.d();
+      this.c.a(this.b, 10.0F, -this.d, $$3);
+      $$0.d();
+      $$0.a(gsl::H, a, 0, 0, 0.0F, 0.0F, $$1, $$2, 16, 128, 16, 128, axy.a($$3));
+   }
 
-   hjq b();
-
-   public interface a extends hmi {
-      gsd a(hlz var1);
-
-      Object a(eat var1);
+   private static float a(float $$0, float $$1) {
+      return $$0 > $$1 ? $$0 - $$1 : $$0;
    }
 }

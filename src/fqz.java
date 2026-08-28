@@ -1,27 +1,32 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public record fqz(int b, int c) implements frd {
-   public static final MapCodec<fqz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayu.l.optionalFieldOf("index", 0).forGetter(fqz::b), ayu.i.fieldOf("default").forGetter(fqz::c)).apply($$0, fqz::new)
-   );
+public enum fqz implements azr, bam {
+   a(0, "minimized", "options.inactivityFpsLimit.minimized"),
+   b(1, "afk", "options.inactivityFpsLimit.afk");
 
-   @Override
-   public int a(czn $$0, @Nullable gkq $$1, @Nullable bxj $$2) {
-      dbw $$3 = $$0.a(kk.p);
-      if ($$3 != null) {
-         Integer $$4 = $$3.d(this.b);
-         if ($$4 != null) {
-            return axw.f($$4);
-         }
-      }
+   public static final Codec<fqz> c = bam.a(fqz::values);
+   private final int d;
+   private final String e;
+   private final String f;
 
-      return axw.f(this.c);
+   private fqz(final int $$0, final String $$1, final String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public MapCodec<fqz> a() {
-      return a;
+   public int b() {
+      return this.d;
+   }
+
+   @Override
+   public String a() {
+      return this.f;
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

@@ -1,67 +1,57 @@
-import io.netty.buffer.ByteBuf;
-import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.Set;
+import com.mojang.serialization.Codec;
 
-public enum bxx {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4),
-   f(5),
-   g(6),
-   h(7),
-   i(8);
+public enum bxx implements bam {
+   a("monster", 70, false, false, 128),
+   b("creature", 10, true, true, 128),
+   c("ambient", 15, true, false, 128),
+   d("axolotls", 5, true, false, 128),
+   e("underground_water_creature", 5, true, false, 128),
+   f("water_creature", 5, true, false, 128),
+   g("water_ambient", 20, true, false, 64),
+   h("misc", -1, true, true, 128);
 
-   public static final Set<bxx> j = Set.of(values());
-   public static final Set<bxx> k = Set.of(e, d);
-   public static final Set<bxx> l = Set.of(f, g, h, i);
-   public static final yw<ByteBuf, Set<bxx>> m = yu.g.a(bxx::a, bxx::a);
-   private final int n;
+   public static final Codec<bxx> i = bam.a(bxx::values);
+   private final int j;
+   private final boolean k;
+   private final boolean l;
+   private final String m;
+   private final int n = 32;
+   private final int o;
 
-   @SafeVarargs
-   public static Set<bxx> a(Set<bxx>... $$0) {
-      HashSet<bxx> $$1 = new HashSet<>();
-
-      for (Set<bxx> $$2 : $$0) {
-         $$1.addAll($$2);
-      }
-
-      return $$1;
+   private bxx(final String $$0, final int $$1, final boolean $$2, final boolean $$3, final int $$4) {
+      this.m = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.o = $$4;
    }
 
-   private bxx(final int $$0) {
-      this.n = $$0;
+   public String a() {
+      return this.m;
    }
 
-   private int a() {
-      return 1 << this.n;
+   @Override
+   public String c() {
+      return this.m;
    }
 
-   private boolean b(int $$0) {
-      return ($$0 & this.a()) == this.a();
+   public int b() {
+      return this.j;
    }
 
-   public static Set<bxx> a(int $$0) {
-      Set<bxx> $$1 = EnumSet.noneOf(bxx.class);
-
-      for (bxx $$2 : values()) {
-         if ($$2.b($$0)) {
-            $$1.add($$2);
-         }
-      }
-
-      return $$1;
+   public boolean d() {
+      return this.k;
    }
 
-   public static int a(Set<bxx> $$0) {
-      int $$1 = 0;
+   public boolean e() {
+      return this.l;
+   }
 
-      for (bxx $$2 : $$0) {
-         $$1 |= $$2.a();
-      }
+   public int f() {
+      return this.o;
+   }
 
-      return $$1;
+   public int g() {
+      return 32;
    }
 }

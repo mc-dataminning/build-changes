@@ -1,87 +1,107 @@
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
 import java.util.function.Predicate;
 
 public class clf {
-   public static final int a = 20;
-   public static final int b = 7;
-   private static final btr i = btr.a(5, 16);
-   private static final float j = 1.0F;
-   private static final float k = 1.25F;
-   private static final float l = 1.25F;
-   private static final float m = 2.0F;
-   private static final float n = 1.25F;
-   private static final btr o = btr.a(600, 1200);
-   public static final int c = 5;
-   public static final int d = 5;
-   public static final float e = 3.5714288F;
-   private static final btr p = btr.a(600, 6000);
-   private static final btr q = btr.a(100, 300);
-   private static final chy r = chy.a().a(($$0, $$1) -> !$$0.an().equals(bwr.ah) && (!$$1.O().c(dji.d) || !$$0.an().equals(bwr.f)) && $$1.A_().a($$0.cQ()));
-   private static final float s = 3.0F;
-   public static final int f = 4;
-   public static final float g = 2.5F;
-   public static final float h = 1.0F;
+   private static final float a = 4.0F;
+   private static final float b = 2.0F;
+   private static final float c = 2.5F;
+   private static final float d = 2.5F;
+   private static final float e = 1.0F;
+   private static final buc f = buc.a(5, 16);
+   private static final ImmutableList<cid<? extends cic<? super cle>>> g = ImmutableList.of(cid.c, cid.f, cid.t, cid.o);
+   private static final ImmutableList<cgw<?>> h = ImmutableList.of(
+      cgw.aa, cgw.y, cgw.z, cgw.n, cgw.o, cgw.F, cgw.u, cgw.h, cgw.P, cgw.Q, cgw.R, cgw.S, new cgw[]{cgw.s, cgw.L}
+   );
 
-   protected static void a(cle $$0, azv $$1) {
-      $$0.eb().a(cgl.T, o.a($$1));
-      $$0.eb().a(cgl.W, p.a($$1));
+   protected static void a(cle $$0, azx $$1) {
    }
 
-   protected static byj<?> a(byj<cle> $$0) {
+   public static byu.b<cle> a() {
+      return byu.a(h, g);
+   }
+
+   protected static byu<?> a(byu<cle> $$0) {
       b($$0);
       c($$0);
-      d($$0);
-      e($$0);
-      $$0.a(ImmutableSet.of(ctg.a));
-      $$0.b(ctg.b);
+      $$0.a(ImmutableSet.of(ctr.a));
+      $$0.b(ctr.b);
       $$0.f();
       return $$0;
    }
 
-   private static void b(byj<cle> $$0) {
-      $$0.a(ctg.a, 0, ImmutableList.of(new cbu(0.8F), new byv(2.0F), new cag(45, 90), new cak(), new bzg(cgl.Q), new bzg(cgl.T), new bzg(cgl.W)));
+   private static void b(byu<cle> $$0) {
+      $$0.a(ctr.a, 0, ImmutableList.of(new ccf(0.8F), new clf.a(4.0F), new car(45, 90), new cav(), new bzr(cgw.Q), new bzr(cgw.R)));
    }
 
-   private static void c(byj<cle> $$0) {
+   private static void c(byu<cle> $$0) {
       $$0.a(
-         ctg.b,
+         ctr.b,
          ImmutableList.of(
-            Pair.of(0, cba.a(bwr.bS, 6.0F, btr.a(30, 60))),
-            Pair.of(0, new byu(bwr.ah)),
-            Pair.of(1, new bzn($$0x -> 1.25F)),
-            Pair.of(2, byx.a(i, 1.25F)),
-            Pair.of(3, new cax(ImmutableList.of(Pair.of(cas.a(1.0F), 2), Pair.of(cbh.a(1.0F, 3), 2), Pair.of(new bzk(30, 60), 1))))
-         ),
-         ImmutableSet.of(Pair.of(cgl.X, cgm.b), Pair.of(cgl.U, cgm.b))
-      );
-   }
-
-   private static void d(byj<cle> $$0) {
-      $$0.a(
-         ctg.q,
-         ImmutableList.of(Pair.of(0, new cab(o, awn.lF)), Pair.of(1, new cad<>(o, 5, 5, 3.5714288F, $$0x -> $$0x.gF() ? awn.lB : awn.ls))),
-         ImmutableSet.of(Pair.of(cgl.P, cgm.b), Pair.of(cgl.s, cgm.b), Pair.of(cgl.n, cgm.b), Pair.of(cgl.T, cgm.b))
-      );
-   }
-
-   private static void e(byj<cle> $$0) {
-      $$0.a(
-         ctg.r,
-         ImmutableList.of(
-            Pair.of(0, new caq($$0x -> $$0x.gF() ? q : p, r, 3.0F, $$0x -> $$0x.n_() ? 1.0 : 2.5, $$0x -> $$0x.gF() ? awn.lE : awn.lv, $$0x -> awn.lw)),
-            Pair.of(1, new cap<>($$0x -> $$0x.gF() ? q.a() : p.a(), 4, 7, 1.25F, r, 20, $$0x -> $$0x.gF() ? awn.lD : awn.lu))
-         ),
-         ImmutableSet.of(Pair.of(cgl.P, cgm.b), Pair.of(cgl.s, cgm.b), Pair.of(cgl.W, cgm.b))
+            Pair.of(0, cbl.a(bxc.bT, 6.0F, buc.a(30, 60))),
+            Pair.of(1, new bzf(bxc.u)),
+            Pair.of(
+               2,
+               new cbi(
+                  ImmutableList.of(Pair.of(new bzy($$0x -> 2.5F, $$0x -> $$0x.n_() ? 2.5 : 3.5), 1), Pair.of(ccy.a(Predicate.not(cle::t), bzi.a(f, 2.5F)), 1))
+               )
+            ),
+            Pair.of(3, new cbc(buc.a(150, 250), 30.0F, 0.0F, 0.0F)),
+            Pair.of(
+               4,
+               new cbi(
+                  ImmutableMap.of(cgw.n, cgx.b),
+                  ImmutableList.of(
+                     Pair.of(ccy.a(Predicate.not(cle::t), cbd.a(2.0F)), 1),
+                     Pair.of(ccy.a(Predicate.not(cle::t), cbs.a(2.0F, 3)), 1),
+                     Pair.of(new clf.b(20), 1),
+                     Pair.of(new bzv(30, 60), 1)
+                  )
+               )
+            )
+         )
       );
    }
 
    public static void a(cle $$0) {
-      $$0.eb().a(ImmutableList.of(ctg.r, ctg.q, ctg.b));
+      $$0.ec().a(ImmutableList.of(ctr.b));
    }
 
-   public static Predicate<czn> a() {
-      return $$0 -> $$0.a(axk.af);
+   public static Predicate<czy> b() {
+      return $$0 -> $$0.a(axm.al);
+   }
+
+   public static class a extends bzg<cle> {
+      public a(float $$0) {
+         super($$0);
+      }
+
+      protected void a(ars $$0, cle $$1, long $$2) {
+         $$1.gJ();
+         super.b($$0, $$1, $$2);
+      }
+   }
+
+   public static class b extends bzl<cle> {
+      private final int c;
+
+      public b(int $$0) {
+         super(ImmutableMap.of());
+         this.c = $$0 * 20;
+      }
+
+      protected boolean a(ars $$0, cle $$1) {
+         return !$$1.bi() && $$1.gK() >= (long)this.c && !$$1.S_() && $$1.aH() && !$$1.cX() && $$1.gu();
+      }
+
+      protected void a(ars $$0, cle $$1, long $$2) {
+         if ($$1.gx()) {
+            $$1.gI();
+         } else if (!$$1.gr()) {
+            $$1.gH();
+         }
+      }
    }
 }

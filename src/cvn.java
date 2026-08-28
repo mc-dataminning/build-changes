@@ -1,181 +1,62 @@
-public class cvn extends cvf {
-   public static final int m = 0;
-   public static final int n = 1;
-   public static final int o = 2;
-   private static final int q = 3;
-   private static final int r = 30;
-   private static final int s = 30;
-   private static final int t = 39;
-   private final cvs u;
-   long v;
-   public final btz p = new bun(2) {
-      @Override
-      public void e() {
-         cvn.this.a(this);
-         super.e();
-      }
-   };
-   private final cwx w = new cwx() {
-      @Override
-      public void e() {
-         cvn.this.a(this);
-         super.e();
-      }
-   };
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public cvn(int $$0, crl $$1) {
-      this($$0, $$1, cvs.a);
-   }
-
-   public cvn(int $$0, crl $$1, final cvs $$2) {
-      super(cwo.x, $$0);
-      this.u = $$2;
-      this.a(new cxc(this.p, 0, 15, 15) {
-         @Override
-         public boolean a(czn $$0) {
-            return $$0.c(kk.M);
-         }
-      });
-      this.a(new cxc(this.p, 1, 15, 52) {
-         @Override
-         public boolean a(czn $$0) {
-            return $$0.a(czr.rE) || $$0.a(czr.vt) || $$0.a(czr.gp);
-         }
-      });
-      this.a(new cxc(this.w, 2, 145, 39) {
-         @Override
-         public boolean a(czn $$0) {
-            return false;
-         }
-
-         @Override
-         public void a(crm $$0, czn $$1) {
-            cvn.this.k.get(0).a(1);
-            cvn.this.k.get(1).a(1);
-            $$1.h().a($$1, $$0.dU(), $$0);
-            $$2.a(($$0x, $$1x) -> {
-               long $$2xx = $$0x.ae();
-               if (cvn.this.v != $$2xx) {
-                  $$0x.a(null, $$1x, awn.By, awo.e, 1.0F, 1.0F);
-                  cvn.this.v = $$2xx;
-               }
-            });
-            super.a($$0, $$1);
-         }
-      });
-      this.c($$1, 8, 84);
-   }
+public record cvn(int c, float d, boolean e) implements dce {
+   public static final Codec<cvn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayw.l.fieldOf("nutrition").forGetter(cvn::a),
+               Codec.FLOAT.fieldOf("saturation").forGetter(cvn::b),
+               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(cvn::c)
+            )
+            .apply($$0, cvn::new)
+   );
+   public static final yy<wl, cvn> b = yy.a(yw.h, cvn::a, yw.l, cvn::b, yw.b, cvn::c, cvn::new);
 
    @Override
-   public boolean b(crm $$0) {
-      return a(this.u, $$0, dmt.oD);
-   }
-
-   @Override
-   public void a(btz $$0) {
-      czn $$1 = this.p.a(0);
-      czn $$2 = this.p.a(1);
-      czn $$3 = this.w.a(2);
-      if ($$3.f() || !$$1.f() && !$$2.f()) {
-         if (!$$1.f() && !$$2.f()) {
-            this.a($$1, $$2, $$3);
-         }
-      } else {
-         this.w.b(2);
+   public void a(djx $$0, bxu $$1, czy $$2, dcd $$3) {
+      azx $$4 = $$1.dY();
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), $$3.e().a(), awq.g, 1.0F, $$4.a(1.0F, 0.4F));
+      if ($$1 instanceof crx $$5) {
+         $$5.gu().a(this);
+         $$0.a(null, $$5.dA(), $$5.dC(), $$5.dG(), awp.uX, awq.h, 0.5F, azo.b($$4, 0.9F, 1.0F));
       }
    }
 
-   private void a(czn $$0, czn $$1, czn $$2) {
-      this.u.a(($$3, $$4) -> {
-         eyv $$5 = daa.b($$0, $$3);
-         if ($$5 != null) {
-            czn $$6;
-            if ($$1.a(czr.rE) && !$$5.i && $$5.g < 4) {
-               $$6 = $$0.c(1);
-               $$6.b(kk.O, dck.b);
-               this.d();
-            } else if ($$1.a(czr.gp) && !$$5.i) {
-               $$6 = $$0.c(1);
-               $$6.b(kk.O, dck.a);
-               this.d();
-            } else {
-               if (!$$1.a(czr.vt)) {
-                  this.w.b(2);
-                  this.d();
-                  return;
-               }
-
-               $$6 = $$0.c(2);
-               this.d();
-            }
-
-            if (!czn.a($$6, $$2)) {
-               this.w.a(2, $$6);
-               this.d();
-            }
-         }
-      });
+   public int a() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(czn $$0, cxc $$1) {
-      return $$1.c != this.w && super.a($$0, $$1);
+   public float b() {
+      return this.d;
    }
 
-   @Override
-   public czn b(crm $$0, int $$1) {
-      czn $$2 = czn.k;
-      cxc $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         czn $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 == 2) {
-            $$4.h().a($$4, $$0.dU(), $$0);
-            if (!this.a($$4, 3, 39, true)) {
-               return czn.k;
-            }
+   public boolean c() {
+      return this.e;
+   }
 
-            $$3.b($$4, $$2);
-         } else if ($$1 != 1 && $$1 != 0) {
-            if ($$4.c(kk.M)) {
-               if (!this.a($$4, 0, 1, false)) {
-                  return czn.k;
-               }
-            } else if (!$$4.a(czr.rE) && !$$4.a(czr.vt) && !$$4.a(czr.gp)) {
-               if ($$1 >= 3 && $$1 < 30) {
-                  if (!this.a($$4, 30, 39, false)) {
-                     return czn.k;
-                  }
-               } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-                  return czn.k;
-               }
-            } else if (!this.a($$4, 1, 2, false)) {
-               return czn.k;
-            }
-         } else if (!this.a($$4, 3, 39, false)) {
-            return czn.k;
-         }
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
 
-         if ($$4.f()) {
-            $$3.e(czn.k);
-         }
-
-         $$3.d();
-         if ($$4.M() == $$2.M()) {
-            return czn.k;
-         }
-
-         $$3.a($$0, $$4);
-         this.d();
+      public cvn.a a(int $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      return $$2;
-   }
+      public cvn.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
 
-   @Override
-   public void a(crm $$0) {
-      super.a($$0);
-      this.w.b(2);
-      this.u.a(($$1, $$2) -> this.a($$0, this.p));
+      public cvn.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public cvn b() {
+         float $$0 = cvl.a(this.a, this.b);
+         return new cvn(this.a, $$0, this.c);
+      }
    }
 }

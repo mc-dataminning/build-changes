@@ -1,35 +1,43 @@
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.util.Set;
-import javax.annotation.Nullable;
+public class bxq {
+   private static final int a = 140;
+   private static final int b = 700;
+   private final akp c;
+   private final akl<Integer> d;
+   private boolean e;
+   private int f;
 
-public interface bxq {
-   @Nullable
-   bwo<bxj> d();
-
-   djm dU();
-
-   @Nullable
-   default bxj e() {
-      return bwo.a(this.d(), this.dU(), bxj.class);
+   public bxq(akp $$0, akl<Integer> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   @Nullable
-   default bxj P_() {
-      Set<Object> $$0 = new ObjectArraySet();
-      bxj $$1 = this.e();
-      $$0.add(this);
+   public void a() {
+      this.e = true;
+      this.f = 0;
+   }
 
-      while ($$1 instanceof bxq) {
-         bxq $$2 = (bxq)$$1;
-         bxj $$3 = $$2.e();
-         if ($$0.contains($$3)) {
-            return null;
-         }
-
-         $$0.add($$1);
-         $$1 = $$2.e();
+   public boolean a(azx $$0) {
+      if (this.e) {
+         return false;
+      } else {
+         this.e = true;
+         this.f = 0;
+         this.c.a(this.d, $$0.a(841) + 140);
+         return true;
       }
+   }
 
-      return $$1;
+   public void b() {
+      if (this.e && this.f++ > this.d()) {
+         this.e = false;
+      }
+   }
+
+   public float c() {
+      return this.e ? 1.0F + 1.15F * azo.a((float)this.f / (float)this.d() * (float) Math.PI) : 1.0F;
+   }
+
+   private int d() {
+      return this.c.a(this.d);
    }
 }

@@ -1,5 +1,4 @@
-public class hfi extends hdf {
-   public float a;
-   public float b;
-   public boolean c;
+public class hfi extends hfh {
+   public ffq[] a = new ffq[0];
+   public boolean n;
 }

@@ -1,24 +1,30 @@
-public abstract class haw<S extends hdf, M extends ggp<S>> extends hbm<S, M> {
-   public haw(gyv<S, M> $$0) {
+public class haw extends gyh<ctg, hgs> {
+   public static final ali a = ali.b("textures/entity/trident.png");
+   private final gkh g;
+
+   public haw(gyi.a $$0) {
       super($$0);
+      this.g = new gkh($$0.a(gld.dD));
    }
 
-   @Override
-   public void a(fkd $$0, gqr $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (this.a($$3)) {
-         float $$6 = $$3.u;
-         M $$7 = this.c();
-         fkh $$8 = $$1.getBuffer(grc.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
-         $$7.a($$3);
-         $$7.a($$0, $$8, $$2, hjg.d, -8355712);
-      }
+   public void a(hgs $$0, flo $$1, gsa $$2, int $$3) {
+      $$1.a();
+      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.a + 90.0F));
+      flr $$4 = gzg.a($$2, this.g.a(a), false, $$0.c);
+      this.g.a($$1, $$4, $$3, hkq.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   protected abstract boolean a(S var1);
+   public hgs a() {
+      return new hgs();
+   }
 
-   protected abstract float a(float var1);
-
-   protected abstract alg a();
-
-   protected abstract M c();
+   public void a(ctg $$0, hgs $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.l($$2);
+      $$1.a = $$0.k($$2);
+      $$1.c = $$0.y();
+   }
 }

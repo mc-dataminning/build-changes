@@ -1,15 +1,28 @@
-import java.util.Locale;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class yk extends IllegalArgumentException {
-   public yk(yj $$0, String $$1) {
-      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
+public record yk(ali d) implements yc {
+   public static final MapCodec<yk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ali.a.fieldOf("storage").forGetter(yk::b)).apply($$0, yk::new));
+   public static final yc.a<yk> b = new yc.a<>(a, "storage");
+
+   @Override
+   public Stream<tz> a(ej $$0) {
+      tz $$1 = $$0.l().aK().a(this.d);
+      return Stream.of($$1);
    }
 
-   public yk(yj $$0, int $$1) {
-      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   @Override
+   public yc.a<?> a() {
+      return b;
    }
 
-   public yk(yj $$0, Throwable $$1) {
-      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
+   @Override
+   public String toString() {
+      return "storage=" + this.d;
+   }
+
+   public ali b() {
+      return this.d;
    }
 }

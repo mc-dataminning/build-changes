@@ -1,36 +1,40 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
+public class gpt extends gqk {
+   private final gqf a;
 
-public class gpt implements bsc {
-   private final gqm a;
-   private final Set<bsa> b = new ObjectOpenHashSet();
-   private final bsi c = new bsi();
-
-   public gpt(LongSupplier $$0, gqm $$1) {
-      this.a = $$1;
-      this.b.add(bsj.a($$0));
-      this.a();
-   }
-
-   private void a() {
-      this.b.addAll(bsj.a());
-      this.b.add(bsa.a("totalChunks", brz.f, this.a, gqm::g));
-      this.b.add(bsa.a("renderedChunks", brz.f, this.a, gqm::i));
-      this.b.add(bsa.a("lastViewDistance", brz.f, this.a, gqm::h));
-      gug $$0 = this.a.f();
-      this.b.add(bsa.a("toUpload", brz.g, $$0, gug::c));
-      this.b.add(bsa.a("freeBufferCount", brz.g, $$0, gug::d));
-      this.b.add(bsa.a("toBatchCount", brz.g, $$0, gug::b));
-      if (fjs.a().isPresent()) {
-         this.b.add(bsa.a("gpuUtilization", brz.i, fpt.Q(), fpt::v));
-      }
+   gpt(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gqf $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
-   public Set<bsa> a(Supplier<bqn> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public gpo b() {
+      return gpo.c;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
+
+   public static record a(gqf a) implements gpn<ma> {
+      public gpk a(ma $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gpt $$8 = new gpt($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.A.a(12) + 8);
+         return $$8;
+      }
    }
 }

@@ -1,209 +1,158 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
 
-public class doy extends dmr {
-   public static final MapCodec<doy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ebi.a.fieldOf("block_set_type").forGetter(doy::b), t()).apply($$0, doy::new)
-   );
-   public static final ebr<jb> b = dqs.e;
-   public static final ebr<ebp> c = ebj.ah;
-   public static final ebr<ebo> d = ebj.bh;
-   public static final ebk e = ebj.y;
-   public static final ebk f = ebj.A;
-   private static final Map<jb, ffw> g = fft.c(dmr.c(16.0, 13.0, 16.0));
-   private final ebi h;
+public class doy extends dmo {
+   public static final MapCodec<doy> a = b(doy::new);
+   public static final ecc<jb.a> b = ebu.K;
+   public static final ecc<eby> c = ebu.bD;
+   public static final ebv d = ebu.w;
 
    @Override
-   public MapCodec<? extends doy> a() {
+   public MapCodec<doy> a() {
       return a;
    }
 
-   protected doy(ebi $$0, eas.d $$1) {
-      super($$1.a($$0.g()));
-      this.h = $$0;
-      this.l(this.C.b().b(b, jb.c).b(e, Boolean.valueOf(false)).b(d, ebo.a).b(f, Boolean.valueOf(false)).b(c, ebp.b));
-   }
-
-   public ebi b() {
-      return this.h;
+   protected doy(ebd.d $$0) {
+      super($$0);
+      this.l(this.m().b(b, jb.a.b).b(c, eby.a).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      jb $$4 = $$0.c(b);
-      jb $$5 = $$0.c(e) ? ($$0.c(d) == ebo.b ? $$4.i() : $$4.h()) : $$4;
-      return g.get($$5);
+   public dyc a(iv $$0, ebe $$1) {
+      return new dys($$0, $$1);
    }
 
+   @Nullable
    @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      ebp $$8 = $$0.c(c);
-      if ($$4.o() != jb.a.b || $$8 == ebp.b != ($$4 == jb.b)) {
-         return $$8 == ebp.b && $$4 == jb.a && !$$0.a($$1, $$3) ? dmt.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public <T extends dyc> dyd<T> a(djx $$0, ebe $$1, dye<T> $$2) {
+      if ($$0.C) {
+         return null;
       } else {
-         return $$6.b() instanceof doy && $$6.c(c) != $$8 ? $$6.b(c, $$8) : dmt.a.m();
+         return $$1.c(c) != eby.a ? a($$2, dye.k, dys::a) : null;
+      }
+   }
+
+   public static boolean a(djx $$0) {
+      return $$0.X();
+   }
+
+   @Override
+   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
+      if (a($$1)) {
+         if ($$0.c(c) != eby.a) {
+            if ($$3.a(16) == 0 && a($$1, $$2)) {
+               $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awp.gD, awq.e, 1.0F, 1.0F, false);
+            }
+         }
       }
    }
 
    @Override
-   protected void a(eat $$0, arq $$1, iv $$2, djf $$3, BiConsumer<czn, iv> $$4) {
-      if ($$3.g() && $$0.c(c) == ebp.b && this.h.d() && !$$0.c(f)) {
-         this.a(null, $$1, $$0, $$2, !this.n($$0));
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      $$2.a($$3, this, 1);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      ebe $$4 = d($$0, $$1, $$2);
+      if ($$4 != $$0) {
+         $$1.a($$2, $$4, 3);
+      }
+   }
+
+   private static ebe d(ebe $$0, djx $$1, iv $$2) {
+      boolean $$3 = b($$0, $$1, $$2);
+      boolean $$4 = $$0.c(c) == eby.a;
+      return $$3 && $$4 ? $$0.b(c, a($$1) ? eby.c : eby.b) : $$0;
+   }
+
+   public static boolean b(ebe $$0, dka $$1, iv $$2) {
+      jb.a $$3 = $$0.c(b);
+
+      for (jb $$4 : $$3.g()) {
+         ebe $$5 = $$1.a_($$2.a($$4));
+         if (!$$5.a(axe.w) || $$5.c(b) != $$3) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static boolean a(djy $$0, iv $$1) {
+      for (jb $$2 : jb.values()) {
+         iv $$3 = $$1.a($$2);
+         ebe $$4 = $$0.a_($$3);
+         if (!$$4.a(axe.w)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Nullable
+   @Override
+   public ebe a(ddr $$0) {
+      return d(this.m().b(b, $$0.k().o()), $$0.q(), $$0.a());
+   }
+
+   @Override
+   protected ebe a(ebe $$0, dtw $$1) {
+      return dtv.b($$0, $$1);
+   }
+
+   @Override
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(b, c, d);
+   }
+
+   @Override
+   protected void a(ebe $$0, ars $$1, iv $$2, boolean $$3) {
+      bun.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(ebe $$0, ars $$1, iv $$2, djq $$3, BiConsumer<czy, iv> $$4) {
+      if ($$1.c_($$2) instanceof dys $$5 && $$3 instanceof dkn $$6 && $$3.b().a()) {
+         $$5.a($$6.k());
+         if ($$3.c() instanceof crx $$7 && $$3.b().a()) {
+            this.a($$7, $$0, $$1, $$2);
+         }
       }
 
       super.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public eat a(djm $$0, iv $$1, eat $$2, crm $$3) {
-      if (!$$0.C && ($$3.gk() || !$$3.d($$2))) {
-         dpa.b($$0, $$1, $$2, $$3);
+   public ebe a(djx $$0, iv $$1, ebe $$2, crx $$3) {
+      if ($$0.c_($$1) instanceof dys $$4) {
+         $$4.a($$3.dW().a($$3));
+         this.a($$3, $$2, $$0, $$1);
       }
 
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   protected boolean a(eat $$0, exp $$1) {
-      return switch ($$1) {
-         case a, c -> $$0.c(e);
-         case b -> false;
-      };
+   private void a(crx $$0, ebe $$1, djx $$2, iv $$3) {
+      if (!$$0.gl() && !$$0.Z_() && $$1.c(d) && $$2 instanceof ars $$4) {
+         this.a($$4, $$3, $$2.A.a(20, 24));
+      }
    }
 
-   @Nullable
    @Override
-   public eat a(ddg $$0) {
-      iv $$1 = $$0.a();
-      djm $$2 = $$0.q();
-      if ($$1.v() < $$2.ao() && $$2.a_($$1.d()).a($$0)) {
-         boolean $$3 = $$2.D($$1) || $$2.D($$1.d());
-         return this.m().b(b, $$0.g()).b(d, this.b($$0)).b(f, Boolean.valueOf($$3)).b(e, Boolean.valueOf($$3)).b(c, ebp.b);
+   protected boolean c_(ebe $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(ebe $$0, djx $$1, iv $$2) {
+      if ($$0.c(c) == eby.a) {
+         return 0;
       } else {
-         return null;
+         return $$1.c_($$2) instanceof dys $$3 ? $$3.d() : 0;
       }
-   }
-
-   @Override
-   public void a(djm $$0, iv $$1, eat $$2, bxj $$3, czn $$4) {
-      $$0.a($$1.d(), $$2.b(c, ebp.a), 3);
-   }
-
-   private ebo b(ddg $$0) {
-      diq $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      jb $$3 = $$0.g();
-      iv $$4 = $$2.d();
-      jb $$5 = $$3.i();
-      iv $$6 = $$2.a($$5);
-      eat $$7 = $$1.a_($$6);
-      iv $$8 = $$4.a($$5);
-      eat $$9 = $$1.a_($$8);
-      jb $$10 = $$3.h();
-      iv $$11 = $$2.a($$10);
-      eat $$12 = $$1.a_($$11);
-      iv $$13 = $$4.a($$10);
-      eat $$14 = $$1.a_($$13);
-      int $$15 = ($$7.m($$1, $$6) ? -1 : 0) + ($$9.m($$1, $$8) ? -1 : 0) + ($$12.m($$1, $$11) ? 1 : 0) + ($$14.m($$1, $$13) ? 1 : 0);
-      boolean $$16 = $$7.b() instanceof doy && $$7.c(c) == ebp.b;
-      boolean $$17 = $$12.b() instanceof doy && $$12.c(c) == ebp.b;
-      if ((!$$16 || $$17) && $$15 <= 0) {
-         if ((!$$17 || $$16) && $$15 >= 0) {
-            int $$18 = $$3.j();
-            int $$19 = $$3.l();
-            ffc $$20 = $$0.l();
-            double $$21 = $$20.d - (double)$$2.u();
-            double $$22 = $$20.f - (double)$$2.w();
-            return ($$18 >= 0 || !($$22 < 0.5)) && ($$18 <= 0 || !($$22 > 0.5)) && ($$19 >= 0 || !($$21 > 0.5)) && ($$19 <= 0 || !($$21 < 0.5)) ? ebo.a : ebo.b;
-         } else {
-            return ebo.a;
-         }
-      } else {
-         return ebo.b;
-      }
-   }
-
-   @Override
-   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
-      if (!this.h.c()) {
-         return bug.e;
-      } else {
-         $$0 = $$0.a(e);
-         $$1.a($$2, $$0, 10);
-         this.a($$3, $$1, $$2, $$0.c(e));
-         $$1.a($$3, this.n($$0) ? eft.h : eft.d, $$2);
-         return bug.a;
-      }
-   }
-
-   public boolean n(eat $$0) {
-      return $$0.c(e);
-   }
-
-   public void a(@Nullable bwi $$0, djm $$1, eat $$2, iv $$3, boolean $$4) {
-      if ($$2.a(this) && $$2.c(e) != $$4) {
-         $$1.a($$3, $$2.b(e, Boolean.valueOf($$4)), 10);
-         this.a($$0, $$1, $$3, $$4);
-         $$1.a($$0, $$4 ? eft.h : eft.d, $$3);
-      }
-   }
-
-   @Override
-   protected void a(eat $$0, djm $$1, iv $$2, dmr $$3, @Nullable eyi $$4, boolean $$5) {
-      boolean $$6 = $$1.D($$2) || $$1.D($$2.a($$0.c(c) == ebp.b ? jb.b : jb.a));
-      if (!this.m().a($$3) && $$6 != $$0.c(f)) {
-         if ($$6 != $$0.c(e)) {
-            this.a(null, $$1, $$2, $$6);
-            $$1.a(null, $$6 ? eft.h : eft.d, $$2);
-         }
-
-         $$1.a($$2, $$0.b(f, Boolean.valueOf($$6)).b(e, Boolean.valueOf($$6)), 2);
-      }
-   }
-
-   @Override
-   protected boolean a(eat $$0, djp $$1, iv $$2) {
-      iv $$3 = $$2.e();
-      eat $$4 = $$1.a_($$3);
-      return $$0.c(c) == ebp.b ? $$4.c($$1, $$3, jb.b) : $$4.a(this);
-   }
-
-   private void a(@Nullable bwi $$0, djm $$1, iv $$2, boolean $$3) {
-      $$1.a($$0, $$2, $$3 ? this.h.i() : this.h.h(), awo.e, 1.0F, $$1.C_().i() * 0.1F + 0.9F);
-   }
-
-   @Override
-   protected eat a(eat $$0, dtl $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected eat a(eat $$0, dru $$1) {
-      return $$1 == dru.a ? $$0 : $$0.a($$1.a($$0.c(b))).a(d);
-   }
-
-   @Override
-   protected long a(eat $$0, iv $$1) {
-      return azm.b($$1.u(), $$1.c($$0.c(c) == ebp.b ? 0 : 1).v(), $$1.w());
-   }
-
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(c, b, e, d, f);
-   }
-
-   public static boolean a(djm $$0, iv $$1) {
-      return o($$0.a_($$1));
-   }
-
-   public static boolean o(eat $$0) {
-      if ($$0.b() instanceof doy $$1 && $$1.b().c()) {
-         return true;
-      }
-
-      return false;
    }
 }

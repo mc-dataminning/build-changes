@@ -1,75 +1,32 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class hkh extends auh {
-   private static final aud e = new aud(wy.c("resourcePack.vanilla.description"), ac.b().a(atr.a), Optional.empty());
-   private static final ath f = ath.a(aud.b, e);
-   public static final String d = "high_contrast";
-   private static final Map<String, wy> g = Map.of(
-      "programmer_art", wy.c("resourcePack.programmer_art.name"), "high_contrast", wy.c("resourcePack.high_contrast.name")
-   );
-   private static final ato h = new ato("vanilla", wy.c("resourcePack.vanilla.name"), auo.c, Optional.of(c));
-   private static final atq i = new atq(true, auk.b.b, false);
-   private static final atq j = new atq(false, auk.b.a, false);
-   private static final alg k = alg.b("resourcepacks");
-   @Nullable
-   private final Path l;
+public class hkh implements hka {
+   private final gkh a;
 
-   public hkh(Path $$0, fes $$1) {
-      super(atr.a, b($$0), k, $$1);
-      this.l = this.a($$0);
+   public hkh(gkh $$0) {
+      this.a = $$0;
    }
 
-   private static ato a(String $$0, wy $$1) {
-      return new ato($$0, $$1, auo.c, Optional.of(auj.a($$0)));
+   @Override
+   public void a(czw $$0, flo $$1, gsa $$2, int $$3, int $$4, boolean $$5) {
+      $$1.a();
+      $$1.b(1.0F, -1.0F, -1.0F);
+      flr $$6 = gzg.a($$2, this.a.a(gkh.a), false, $$5);
+      this.a.a($$1, $$6, $$3, $$4);
+      $$1.b();
    }
 
-   @Nullable
-   private Path a(Path $$0) {
-      if (ac.aV && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
-         }
+   public static record a() implements hke.a {
+      public static final MapCodec<hkh.a> a = MapCodec.unit(new hkh.a());
+
+      @Override
+      public MapCodec<hkh.a> a() {
+         return a;
       }
 
-      return null;
-   }
-
-   private static att b(Path $$0) {
-      atu $$1 = new atu().a(f).a("minecraft", "realms");
-      return $$1.b().a().a(atr.a, $$0).a(h);
-   }
-
-   @Override
-   protected wy a(String $$0) {
-      wy $$1 = g.get($$0);
-      return (wy)($$1 != null ? $$1 : wy.b($$0));
-   }
-
-   @Nullable
-   @Override
-   protected auk a(atp $$0) {
-      return auk.a(h, b($$0), atr.a, i);
-   }
-
-   @Nullable
-   @Override
-   protected auk a(String $$0, auk.c $$1, wy $$2) {
-      return auk.a(a($$0, $$2), $$1, atr.a, j);
-   }
-
-   @Override
-   protected void a(BiConsumer<String, Function<String, auk>> $$0) {
-      super.a($$0);
-      if (this.l != null) {
-         this.a(this.l, $$0);
+      @Override
+      public hke<?> a(gla $$0) {
+         return new hkh(new gkh($$0.a(gld.dD)));
       }
    }
 }

@@ -1,72 +1,68 @@
-public class gpv {
-   public static final wy a = wy.c("quickplay.error.title");
-   private static final wy b = wy.c("quickplay.error.invalid_identifier");
-   private static final wy c = wy.c("quickplay.error.realm_connect");
-   private static final wy d = wy.c("quickplay.error.realm_permission");
-   private static final wy e = wy.c("gui.toTitle");
-   private static final wy f = wy.c("gui.toWorld");
-   private static final wy g = wy.c("gui.toRealms");
+import org.joml.Quaternionf;
 
-   public static void a(fpt $$0, geu.c $$1, fkt $$2) {
-      String $$3 = $$1.c();
-      String $$4 = $$1.d();
-      String $$5 = $$1.e();
-      if (!bal.h($$3)) {
-         a($$0, $$3);
-      } else if (!bal.h($$4)) {
-         b($$0, $$4);
-      } else if (!bal.h($$5)) {
-         a($$0, $$2, $$5);
+public class gpv extends gqk {
+   private static final float a = 1.0472F;
+   private int b;
+
+   gpv(gmb $$0, double $$1, double $$2, double $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.85F;
+      this.b = $$4;
+      this.t = 30;
+      this.u = 0.0F;
+      this.j = 0.0;
+      this.k = 0.1;
+      this.l = 0.0;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * azo.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
+   }
+
+   @Override
+   public void a(flr $$0, fql $$1, float $$2) {
+      if (this.b <= 0) {
+         this.y = 1.0F - azo.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
+         Quaternionf $$3 = new Quaternionf();
+         $$3.rotationX(-1.0472F);
+         this.a($$0, $$1, $$3, $$2);
+         $$3.rotationYXZ((float) -Math.PI, 1.0472F, 0.0F);
+         this.a($$0, $$1, $$3, $$2);
       }
    }
 
-   private static void a(fpt $$0, String $$1) {
-      if (!$$0.m().b($$1)) {
-         fys $$2 = new geb(new fyu());
-         $$0.a(new fxz($$2, a, b, f));
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public gpo b() {
+      return gpo.c;
+   }
+
+   @Override
+   public void a() {
+      if (this.b > 0) {
+         this.b--;
       } else {
-         $$0.x().a($$1, () -> $$0.a(new fyu()));
+         super.a();
       }
    }
 
-   private static void b(fpt $$0, String $$1) {
-      glg $$2 = new glg($$0);
-      $$2.a();
-      glf $$3 = $$2.a($$1);
-      if ($$3 == null) {
-         $$3 = new glf(hky.a("selectServer.defaultName"), $$1, glf.c.c);
-         $$2.a($$3, true);
-         $$2.b();
+   public static class a implements gpn<mb> {
+      private final gqf a;
+
+      public a(gqf $$0) {
+         this.a = $$0;
       }
 
-      gmi $$4 = gmi.a($$1);
-      fxr.a(new gbk(new fyu()), $$0, $$4, $$3, true, null);
-   }
-
-   private static void a(fpt $$0, fkt $$1, String $$2) {
-      long $$3;
-      flw $$4;
-      try {
-         $$3 = Long.parseLong($$2);
-         $$4 = $$1.b();
-      } catch (NumberFormatException var9) {
-         fys $$6 = new fko(new fyu());
-         $$0.a(new fxz($$6, a, b, g));
-         return;
-      } catch (fmp var10) {
-         fys $$8 = new fyu();
-         $$0.a(new fxz($$8, a, c, e));
-         return;
-      }
-
-      flu $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
-      if ($$11 == null) {
-         fys $$12 = new fko(new fyu());
-         $$0.a(new fxz($$12, a, d, g));
-      } else {
-         fyu $$13 = new fyu();
-         fop $$14 = new fop($$13, $$11);
-         $$0.a(new fnj($$13, $$14));
+      public gpk a(mb $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gpv $$8 = new gpv($$1, $$2, $$3, $$4, $$0.b());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

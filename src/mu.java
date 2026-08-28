@@ -10,44 +10,44 @@ public class mu implements mr {
    private static final int c = 320;
    private static final int d = -64;
    private static final int e = 5;
-   protected static final List<bwr<?>> a = Arrays.asList(
-      bwr.o,
-      bwr.q,
-      bwr.r,
-      bwr.v,
-      bwr.D,
-      bwr.E,
-      bwr.K,
-      bwr.M,
-      bwr.P,
-      bwr.N,
-      bwr.O,
-      bwr.S,
-      bwr.ad,
-      bwr.ai,
-      bwr.aj,
-      bwr.am,
-      bwr.az,
-      bwr.aP,
-      bwr.aR,
-      bwr.aS,
-      bwr.aT,
-      bwr.aZ,
-      bwr.bc,
-      bwr.be,
-      bwr.bf,
-      bwr.bh,
-      bwr.bo,
-      bwr.bs,
-      bwr.bC,
-      bwr.bE,
-      bwr.bI,
-      bwr.bK,
-      bwr.bJ,
-      bwr.bN,
-      bwr.bQ,
-      bwr.bO,
-      bwr.bR
+   protected static final List<bxc<?>> a = Arrays.asList(
+      bxc.p,
+      bxc.r,
+      bxc.s,
+      bxc.w,
+      bxc.E,
+      bxc.F,
+      bxc.L,
+      bxc.N,
+      bxc.Q,
+      bxc.O,
+      bxc.P,
+      bxc.T,
+      bxc.ae,
+      bxc.aj,
+      bxc.ak,
+      bxc.an,
+      bxc.aA,
+      bxc.aQ,
+      bxc.aS,
+      bxc.aT,
+      bxc.aU,
+      bxc.ba,
+      bxc.bd,
+      bxc.bf,
+      bxc.bg,
+      bxc.bi,
+      bxc.bp,
+      bxc.bt,
+      bxc.bD,
+      bxc.bF,
+      bxc.bJ,
+      bxc.bL,
+      bxc.bK,
+      bxc.bO,
+      bxc.bR,
+      bxc.bP,
+      bxc.bS
    );
 
    private static ar<ct.a> a(cw.d $$0, Optional<by> $$1) {
@@ -60,15 +60,15 @@ public class mu implements mr {
 
    @Override
    public void a(jh.a $$0, Consumer<aj> $$1) {
-      jg<bwr<?>> $$2 = $$0.e(mh.B);
-      jg<czj> $$3 = $$0.e(mh.K);
-      jg<dmr> $$4 = $$0.e(mh.i);
+      jg<bxc<?>> $$2 = $$0.e(mh.B);
+      jg<czu> $$3 = $$0.e(mh.K);
+      jg<dnc> $$4 = $$0.e(mh.i);
       aj $$5 = ai.a.a()
          .a(
-            czr.vt,
-            wy.c("advancements.adventure.root.title"),
-            wy.c("advancements.adventure.root.description"),
-            alg.b("gui/advancements/backgrounds/adventure"),
+            dac.vt,
+            xa.c("advancements.adventure.root.title"),
+            xa.c("advancements.adventure.root.description"),
+            ali.b("gui/advancements/backgrounds/adventure"),
             ap.a,
             false,
             false,
@@ -80,21 +80,21 @@ public class mu implements mr {
          .a($$1, "adventure/root");
       aj $$6 = ai.a.a()
          .a($$5)
-         .a(dmt.bu, wy.c("advancements.adventure.sleep_in_bed.title"), wy.c("advancements.adventure.sleep_in_bed.description"), null, ap.a, true, true, false)
+         .a(dne.bu, xa.c("advancements.adventure.sleep_in_bed.title"), xa.c("advancements.adventure.sleep_in_bed.description"), null, ap.a, true, true, false)
          .a("slept_in_bed", de.a.b())
          .a($$1, "adventure/sleep_in_bed");
-      a($$0, $$1, $$6, dld.a.b);
+      a($$0, $$1, $$6, dlo.a.b);
       aj $$7 = ai.a.a()
          .a($$5)
-         .a(czr.po, wy.c("advancements.adventure.trade.title"), wy.c("advancements.adventure.trade.description"), null, ap.a, true, true, false)
+         .a(dac.po, xa.c("advancements.adventure.trade.title"), xa.c("advancements.adventure.trade.description"), null, ap.a, true, true, false)
          .a("traded", dw.a.b())
          .a($$1, "adventure/trade");
       ai.a.a()
          .a($$7)
          .a(
-            czr.po,
-            wy.c("advancements.adventure.trade_at_world_height.title"),
-            wy.c("advancements.adventure.trade_at_world_height.description"),
+            dac.po,
+            xa.c("advancements.adventure.trade_at_world_height.title"),
+            xa.c("advancements.adventure.trade_at_world_height.description"),
             null,
             ap.a,
             true,
@@ -106,87 +106,87 @@ public class mu implements mr {
       aj $$8 = a($$5, $$1, $$2, a);
       aj $$9 = ai.a.a()
          .a($$8)
-         .a(czr.pj, wy.c("advancements.adventure.shoot_arrow.title"), wy.c("advancements.adventure.shoot_arrow.description"), null, ap.a, true, true, false)
-         .a("shot_arrow", db.a.a(bm.a.a().a(bn.a.a().a(dt.a(axd.j)).a(by.a.a().a($$2, axf.f)))))
+         .a(dac.pj, xa.c("advancements.adventure.shoot_arrow.title"), xa.c("advancements.adventure.shoot_arrow.description"), null, ap.a, true, true, false)
+         .a("shot_arrow", db.a.a(bm.a.a().a(bn.a.a().a(dt.a(axf.j)).a(by.a.a().a($$2, axh.f)))))
          .a($$1, "adventure/shoot_arrow");
       aj $$10 = ai.a.a()
          .a($$8)
-         .a(czr.xd, wy.c("advancements.adventure.throw_trident.title"), wy.c("advancements.adventure.throw_trident.description"), null, ap.a, true, true, false)
-         .a("shot_trident", db.a.a(bm.a.a().a(bn.a.a().a(dt.a(axd.j)).a(by.a.a().a($$2, bwr.bz)))))
+         .a(dac.xd, xa.c("advancements.adventure.throw_trident.title"), xa.c("advancements.adventure.throw_trident.description"), null, ap.a, true, true, false)
+         .a("shot_trident", db.a.a(bm.a.a().a(bn.a.a().a(dt.a(axf.j)).a(by.a.a().a($$2, bxc.bA)))))
          .a($$1, "adventure/throw_trident");
       ai.a.a()
          .a($$10)
          .a(
-            czr.xd,
-            wy.c("advancements.adventure.very_very_frightening.title"),
-            wy.c("advancements.adventure.very_very_frightening.description"),
+            dac.xd,
+            xa.c("advancements.adventure.very_very_frightening.title"),
+            xa.c("advancements.adventure.very_very_frightening.description"),
             null,
             ap.a,
             true,
             true,
             false
          )
-         .a("struck_villager", bd.a.a(by.a.a().a($$2, bwr.bD)))
+         .a("struck_villager", bd.a.a(by.a.a().a($$2, bxc.bE)))
          .a($$1, "adventure/very_very_frightening");
       ai.a.a()
          .a($$7)
          .a(
-            dmt.ev,
-            wy.c("advancements.adventure.summon_iron_golem.title"),
-            wy.c("advancements.adventure.summon_iron_golem.description"),
+            dne.ev,
+            xa.c("advancements.adventure.summon_iron_golem.title"),
+            xa.c("advancements.adventure.summon_iron_golem.description"),
             null,
             ap.c,
             true,
             true,
             false
          )
-         .a("summoned_golem", ds.a.a(by.a.a().a($$2, bwr.ap)))
+         .a("summoned_golem", ds.a.a(by.a.a().a($$2, bxc.aq)))
          .a($$1, "adventure/summon_iron_golem");
       ai.a.a()
          .a($$9)
-         .a(czr.pk, wy.c("advancements.adventure.sniper_duel.title"), wy.c("advancements.adventure.sniper_duel.description"), null, ap.b, true, true, false)
+         .a(dac.pk, xa.c("advancements.adventure.sniper_duel.title"), xa.c("advancements.adventure.sniper_duel.description"), null, ap.b, true, true, false)
          .a(an.a.a(50))
-         .a("killed_skeleton", cp.a.a(by.a.a().a($$2, bwr.bf).a(bp.a(cw.c.b(50.0))), bn.a.a().a(dt.a(axd.j))))
+         .a("killed_skeleton", cp.a.a(by.a.a().a($$2, bxc.bg).a(bp.a(cw.c.b(50.0))), bn.a.a().a(dt.a(axf.j))))
          .a($$1, "adventure/sniper_duel");
       ai.a.a()
          .a($$8)
          .a(
-            czr.wE,
-            wy.c("advancements.adventure.totem_of_undying.title"),
-            wy.c("advancements.adventure.totem_of_undying.description"),
+            dac.wE,
+            xa.c("advancements.adventure.totem_of_undying.title"),
+            xa.c("advancements.adventure.totem_of_undying.description"),
             null,
             ap.c,
             true,
             true,
             false
          )
-         .a("used_totem", dy.a.a($$3, czr.wE))
+         .a("used_totem", dy.a.a($$3, dac.wE))
          .a($$1, "adventure/totem_of_undying");
       aj $$11 = ai.a.a()
          .a($$5)
-         .a(czr.xg, wy.c("advancements.adventure.ol_betsy.title"), wy.c("advancements.adventure.ol_betsy.description"), null, ap.a, true, true, false)
-         .a("shot_crossbow", dj.a.a($$3, czr.xg))
+         .a(dac.xg, xa.c("advancements.adventure.ol_betsy.title"), xa.c("advancements.adventure.ol_betsy.description"), null, ap.a, true, true, false)
+         .a("shot_crossbow", dj.a.a($$3, dac.xg))
          .a($$1, "adventure/ol_betsy");
       ai.a.a()
          .a($$11)
          .a(
-            czr.xg,
-            wy.c("advancements.adventure.whos_the_pillager_now.title"),
-            wy.c("advancements.adventure.whos_the_pillager_now.description"),
+            dac.xg,
+            xa.c("advancements.adventure.whos_the_pillager_now.title"),
+            xa.c("advancements.adventure.whos_the_pillager_now.description"),
             null,
             ap.a,
             true,
             true,
             false
          )
-         .a("kill_pillager", co.a.a($$3, by.a.a().a($$2, bwr.aT)))
+         .a("kill_pillager", co.a.a($$3, by.a.a().a($$2, bxc.aU)))
          .a($$1, "adventure/whos_the_pillager_now");
       ai.a.a()
          .a($$11)
          .a(
-            czr.xg,
-            wy.c("advancements.adventure.two_birds_one_arrow.title"),
-            wy.c("advancements.adventure.two_birds_one_arrow.description"),
+            dac.xg,
+            xa.c("advancements.adventure.two_birds_one_arrow.title"),
+            xa.c("advancements.adventure.two_birds_one_arrow.description"),
             null,
             ap.b,
             true,
@@ -194,35 +194,35 @@ public class mu implements mr {
             false
          )
          .a(an.a.a(65))
-         .a("two_birds", co.a.a($$3, by.a.a().a($$2, bwr.aP), by.a.a().a($$2, bwr.aP)))
+         .a("two_birds", co.a.a($$3, by.a.a().a($$2, bxc.aQ), by.a.a().a($$2, bxc.aQ)))
          .a($$1, "adventure/two_birds_one_arrow");
       ai.a.a()
          .a($$11)
-         .a(czr.xg, wy.c("advancements.adventure.arbalistic.title"), wy.c("advancements.adventure.arbalistic.description"), null, ap.b, true, true, true)
+         .a(dac.xg, xa.c("advancements.adventure.arbalistic.title"), xa.c("advancements.adventure.arbalistic.description"), null, ap.b, true, true, true)
          .a(an.a.a(85))
          .a("arbalistic", co.a.a($$3, cw.d.a(5)))
          .a($$1, "adventure/arbalistic");
-      jh.b<dxg> $$12 = $$0.e(mh.aF);
+      jh.b<dxr> $$12 = $$0.e(mh.aF);
       aj $$13 = ai.a.a()
          .a($$5)
          .a(
-            ctc.a($$12),
-            wy.c("advancements.adventure.voluntary_exile.title"),
-            wy.c("advancements.adventure.voluntary_exile.description"),
+            ctn.a($$12),
+            xa.c("advancements.adventure.voluntary_exile.title"),
+            xa.c("advancements.adventure.voluntary_exile.description"),
             null,
             ap.a,
             true,
             true,
             true
          )
-         .a("voluntary_exile", cp.a.a(by.a.a().a($$2, axf.c).a(bv.a($$3, $$12))))
+         .a("voluntary_exile", cp.a.a(by.a.a().a($$2, axh.c).a(bv.a($$3, $$12))))
          .a($$1, "adventure/voluntary_exile");
       ai.a.a()
          .a($$13)
          .a(
-            ctc.a($$12),
-            wy.c("advancements.adventure.hero_of_the_village.title"),
-            wy.c("advancements.adventure.hero_of_the_village.description"),
+            ctn.a($$12),
+            xa.c("advancements.adventure.hero_of_the_village.title"),
+            xa.c("advancements.adventure.hero_of_the_village.description"),
             null,
             ap.b,
             true,
@@ -235,113 +235,113 @@ public class mu implements mr {
       ai.a.a()
          .a($$5)
          .a(
-            dmt.pO.h(),
-            wy.c("advancements.adventure.honey_block_slide.title"),
-            wy.c("advancements.adventure.honey_block_slide.description"),
+            dne.pO.h(),
+            xa.c("advancements.adventure.honey_block_slide.title"),
+            xa.c("advancements.adventure.honey_block_slide.description"),
             null,
             ap.a,
             true,
             true,
             false
          )
-         .a("honey_block_slide", dm.a.a(dmt.pO))
+         .a("honey_block_slide", dm.a.a(dne.pO))
          .a($$1, "adventure/honey_block_slide");
       ai.a.a()
          .a($$9)
-         .a(dmt.pL.h(), wy.c("advancements.adventure.bullseye.title"), wy.c("advancements.adventure.bullseye.description"), null, ap.b, true, true, false)
+         .a(dne.pL.h(), xa.c("advancements.adventure.bullseye.title"), xa.c("advancements.adventure.bullseye.description"), null, ap.b, true, true, false)
          .a(an.a.a(50))
          .a("bullseye", dv.a.a(cw.d.a(15), Optional.of(by.a(by.a.a().a(bp.a(cw.c.b(30.0)))))))
          .a($$1, "adventure/bullseye");
       ai.a.a()
          .a($$6)
          .a(
-            czr.qp,
-            wy.c("advancements.adventure.walk_on_powder_snow_with_leather_boots.title"),
-            wy.c("advancements.adventure.walk_on_powder_snow_with_leather_boots.description"),
+            dac.qp,
+            xa.c("advancements.adventure.walk_on_powder_snow_with_leather_boots.title"),
+            xa.c("advancements.adventure.walk_on_powder_snow_with_leather_boots.description"),
             null,
             ap.a,
             true,
             true,
             false
          )
-         .a("walk_on_powder_snow_with_leather_boots", de.a.a($$4, $$3, dmt.rx, czr.qp))
+         .a("walk_on_powder_snow_with_leather_boots", de.a.a($$4, $$3, dne.rx, dac.qp))
          .a($$1, "adventure/walk_on_powder_snow_with_leather_boots");
       ai.a.a()
          .a($$5)
          .a(
-            czr.mB,
-            wy.c("advancements.adventure.lightning_rod_with_villager_no_fire.title"),
-            wy.c("advancements.adventure.lightning_rod_with_villager_no_fire.description"),
+            dac.mB,
+            xa.c("advancements.adventure.lightning_rod_with_villager_no_fire.title"),
+            xa.c("advancements.adventure.lightning_rod_with_villager_no_fire.description"),
             null,
             ap.a,
             true,
             true,
             false
          )
-         .a("lightning_rod_with_villager_no_fire", a(cw.d.a(0), Optional.of(by.a.a().a($$2, bwr.bD).b())))
+         .a("lightning_rod_with_villager_no_fire", a(cw.d.a(0), Optional.of(by.a.a().a($$2, bxc.bE).b())))
          .a($$1, "adventure/lightning_rod_with_villager_no_fire");
       aj $$14 = ai.a.a()
          .a($$5)
          .a(
-            czr.sf,
-            wy.c("advancements.adventure.spyglass_at_parrot.title"),
-            wy.c("advancements.adventure.spyglass_at_parrot.description"),
+            dac.sf,
+            xa.c("advancements.adventure.spyglass_at_parrot.title"),
+            xa.c("advancements.adventure.spyglass_at_parrot.description"),
             null,
             ap.a,
             true,
             true,
             false
          )
-         .a("spyglass_at_parrot", a(by.a.a().a($$2, bwr.aO), cm.a.a().a($$3, czr.sf)))
+         .a("spyglass_at_parrot", a(by.a.a().a($$2, bxc.aP), cm.a.a().a($$3, dac.sf)))
          .a($$1, "adventure/spyglass_at_parrot");
       aj $$15 = ai.a.a()
          .a($$14)
          .a(
-            czr.sf,
-            wy.c("advancements.adventure.spyglass_at_ghast.title"),
-            wy.c("advancements.adventure.spyglass_at_ghast.description"),
+            dac.sf,
+            xa.c("advancements.adventure.spyglass_at_ghast.title"),
+            xa.c("advancements.adventure.spyglass_at_ghast.description"),
             null,
             ap.a,
             true,
             true,
             false
          )
-         .a("spyglass_at_ghast", a(by.a.a().a($$2, bwr.ad), cm.a.a().a($$3, czr.sf)))
+         .a("spyglass_at_ghast", a(by.a.a().a($$2, bxc.ae), cm.a.a().a($$3, dac.sf)))
          .a($$1, "adventure/spyglass_at_ghast");
       ai.a.a()
          .a($$6)
          .a(
-            czr.ft,
-            wy.c("advancements.adventure.play_jukebox_in_meadows.title"),
-            wy.c("advancements.adventure.play_jukebox_in_meadows.description"),
+            dac.ft,
+            xa.c("advancements.adventure.play_jukebox_in_meadows.title"),
+            xa.c("advancements.adventure.play_jukebox_in_meadows.description"),
             null,
             ap.a,
             true,
             true,
             false
          )
-         .a("play_jukebox_in_meadows", cn.a.a(cu.a.a().a(jj.a($$0.e(mh.aG).b(dkw.E))).a(az.a.a().a($$4, dmt.ek)), cm.a.a().a(ku.n, ky.b())))
+         .a("play_jukebox_in_meadows", cn.a.a(cu.a.a().a(jj.a($$0.e(mh.aG).b(dlh.E))).a(az.a.a().a($$4, dne.ek)), cm.a.a().a(ku.n, ky.b())))
          .a($$1, "adventure/play_jukebox_in_meadows");
       ai.a.a()
          .a($$15)
          .a(
-            czr.sf,
-            wy.c("advancements.adventure.spyglass_at_dragon.title"),
-            wy.c("advancements.adventure.spyglass_at_dragon.description"),
+            dac.sf,
+            xa.c("advancements.adventure.spyglass_at_dragon.title"),
+            xa.c("advancements.adventure.spyglass_at_dragon.description"),
             null,
             ap.a,
             true,
             true,
             false
          )
-         .a("spyglass_at_dragon", a(by.a.a().a($$2, bwr.P), cm.a.a().a($$3, czr.sf)))
+         .a("spyglass_at_dragon", a(by.a.a().a($$2, bxc.Q), cm.a.a().a($$3, dac.sf)))
          .a($$1, "adventure/spyglass_at_dragon");
       ai.a.a()
          .a($$5)
          .a(
-            czr.rp,
-            wy.c("advancements.adventure.fall_from_world_height.title"),
-            wy.c("advancements.adventure.fall_from_world_height.description"),
+            dac.rp,
+            xa.c("advancements.adventure.fall_from_world_height.title"),
+            xa.c("advancements.adventure.fall_from_world_height.description"),
             null,
             ap.a,
             true,
@@ -353,9 +353,9 @@ public class mu implements mr {
       ai.a.a()
          .a($$8)
          .a(
-            dmt.rC,
-            wy.c("advancements.adventure.kill_mob_near_sculk_catalyst.title"),
-            wy.c("advancements.adventure.kill_mob_near_sculk_catalyst.description"),
+            dne.rC,
+            xa.c("advancements.adventure.kill_mob_near_sculk_catalyst.title"),
+            xa.c("advancements.adventure.kill_mob_near_sculk_catalyst.description"),
             null,
             ap.b,
             true,
@@ -367,9 +367,9 @@ public class mu implements mr {
       ai.a.a()
          .a($$5)
          .a(
-            dmt.ry,
-            wy.c("advancements.adventure.avoid_vibration.title"),
-            wy.c("advancements.adventure.avoid_vibration.description"),
+            dne.ry,
+            xa.c("advancements.adventure.avoid_vibration.title"),
+            xa.c("advancements.adventure.avoid_vibration.description"),
             null,
             ap.a,
             true,
@@ -380,14 +380,14 @@ public class mu implements mr {
          .a($$1, "adventure/avoid_vibration");
       aj $$16 = a($$3, ai.a.a())
          .a($$5)
-         .a(czr.yG, wy.c("advancements.adventure.salvage_sherd.title"), wy.c("advancements.adventure.salvage_sherd.description"), null, ap.a, true, true, false)
+         .a(dac.yG, xa.c("advancements.adventure.salvage_sherd.title"), xa.c("advancements.adventure.salvage_sherd.description"), null, ap.a, true, true, false)
          .a($$1, "adventure/salvage_sherd");
       ai.a.a()
          .a($$16)
          .a(
-            dyj.a(new dyz(Optional.empty(), Optional.of(czr.zl), Optional.empty(), Optional.of(czr.zh))),
-            wy.c("advancements.adventure.craft_decorated_pot_using_only_sherds.title"),
-            wy.c("advancements.adventure.craft_decorated_pot_using_only_sherds.description"),
+            dyu.a(new dzk(Optional.empty(), Optional.of(dac.zl), Optional.empty(), Optional.of(dac.zh))),
+            xa.c("advancements.adventure.craft_decorated_pot_using_only_sherds.title"),
+            xa.c("advancements.adventure.craft_decorated_pot_using_only_sherds.description"),
             null,
             ap.a,
             true,
@@ -397,17 +397,17 @@ public class mu implements mr {
          .a(
             "pot_crafted_using_only_sherds",
             dg.a.a(
-               alf.a(mh.bv, alg.b("decorated_pot")),
-               List.of(cm.a.a().a($$3, axk.bF), cm.a.a().a($$3, axk.bF), cm.a.a().a($$3, axk.bF), cm.a.a().a($$3, axk.bF))
+               alh.a(mh.bv, ali.b("decorated_pot")),
+               List.of(cm.a.a().a($$3, axm.bF), cm.a.a().a($$3, axm.bF), cm.a.a().a($$3, axm.bF), cm.a.a().a($$3, axm.bF))
             )
          )
          .a($$1, "adventure/craft_decorated_pot_using_only_sherds");
       aj $$17 = b(ai.a.a())
          .a($$5)
          .a(
-            new czn(czr.yJ),
-            wy.c("advancements.adventure.trim_with_any_armor_pattern.title"),
-            wy.c("advancements.adventure.trim_with_any_armor_pattern.description"),
+            new czy(dac.yJ),
+            xa.c("advancements.adventure.trim_with_any_armor_pattern.title"),
+            xa.c("advancements.adventure.trim_with_any_armor_pattern.description"),
             null,
             ap.a,
             true,
@@ -418,9 +418,9 @@ public class mu implements mr {
       a(ai.a.a())
          .a($$17)
          .a(
-            new czn(czr.yV),
-            wy.c("advancements.adventure.trim_with_all_exclusive_armor_patterns.title"),
-            wy.c("advancements.adventure.trim_with_all_exclusive_armor_patterns.description"),
+            new czy(dac.yV),
+            xa.c("advancements.adventure.trim_with_all_exclusive_armor_patterns.title"),
+            xa.c("advancements.adventure.trim_with_all_exclusive_armor_patterns.description"),
             null,
             ap.b,
             true,
@@ -432,9 +432,9 @@ public class mu implements mr {
       ai.a.a()
          .a($$5)
          .a(
-            czr.eU,
-            wy.c("advancements.adventure.read_power_from_chiseled_bookshelf.title"),
-            wy.c("advancements.adventure.read_power_from_chiseled_bookshelf.description"),
+            dac.eU,
+            xa.c("advancements.adventure.read_power_from_chiseled_bookshelf.title"),
+            xa.c("advancements.adventure.read_power_from_chiseled_bookshelf.description"),
             null,
             ap.a,
             true,
@@ -442,177 +442,177 @@ public class mu implements mr {
             false
          )
          .a(am.a.b)
-         .a("chiseled_bookshelf", a($$4, dmt.cw))
-         .a("comparator", b($$4, dmt.cw))
+         .a("chiseled_bookshelf", a($$4, dne.cw))
+         .a("comparator", b($$4, dne.cw))
          .a($$1, "adventure/read_power_of_chiseled_bookshelf");
       ai.a.a()
          .a($$5)
          .a(
-            czr.pe,
-            wy.c("advancements.adventure.brush_armadillo.title"),
-            wy.c("advancements.adventure.brush_armadillo.description"),
+            dac.pe,
+            xa.c("advancements.adventure.brush_armadillo.title"),
+            xa.c("advancements.adventure.brush_armadillo.description"),
             null,
             ap.a,
             true,
             true,
             false
          )
-         .a("brush_armadillo", dc.a.a(cm.a.a().a($$3, czr.yG), Optional.of(by.a(by.a.a().a($$2, bwr.e)))))
+         .a("brush_armadillo", dc.a.a(cm.a.a().a($$3, dac.yG), Optional.of(by.a(by.a.a().a($$2, bxc.f)))))
          .a($$1, "adventure/brush_armadillo");
       aj $$18 = ai.a.a()
          .a($$5)
          .a(
-            dmt.rp,
-            wy.c("advancements.adventure.minecraft_trials_edition.title"),
-            wy.c("advancements.adventure.minecraft_trials_edition.description"),
+            dne.rp,
+            xa.c("advancements.adventure.minecraft_trials_edition.title"),
+            xa.c("advancements.adventure.minecraft_trials_edition.description"),
             null,
             ap.a,
             true,
             true,
             false
          )
-         .a("minecraft_trials_edition", de.a.a(cu.a.b($$0.e(mh.be).b(erh.H))))
+         .a("minecraft_trials_edition", de.a.a(cu.a.b($$0.e(mh.be).b(erv.H))))
          .a($$1, "adventure/minecraft_trials_edition");
       ai.a.a()
          .a($$18)
-         .a(czr.zF, wy.c("advancements.adventure.lighten_up.title"), wy.c("advancements.adventure.lighten_up.description"), null, ap.a, true, true, false)
-         .a("lighten_up", cn.a.a(cu.a.a().a(az.a.a().a($$4, dmt.sV, dmt.sU, dmt.sT, dmt.sZ, dmt.sY, dmt.sX).a(dr.a.a().a(dog.c, true))), cm.a.a().a($$3, mv.c)))
+         .a(dac.zF, xa.c("advancements.adventure.lighten_up.title"), xa.c("advancements.adventure.lighten_up.description"), null, ap.a, true, true, false)
+         .a("lighten_up", cn.a.a(cu.a.a().a(az.a.a().a($$4, dne.sV, dne.sU, dne.sT, dne.sZ, dne.sY, dne.sX).a(dr.a.a().a(dor.c, true))), cm.a.a().a($$3, mv.c)))
          .a($$1, "adventure/lighten_up");
       aj $$19 = ai.a.a()
          .a($$18)
          .a(
-            czr.zO,
-            wy.c("advancements.adventure.under_lock_and_key.title"),
-            wy.c("advancements.adventure.under_lock_and_key.description"),
+            dac.zO,
+            xa.c("advancements.adventure.under_lock_and_key.title"),
+            xa.c("advancements.adventure.under_lock_and_key.description"),
             null,
             ap.a,
             true,
             true,
             false
          )
-         .a("under_lock_and_key", cn.a.a(cu.a.a().a(az.a.a().a($$4, dmt.uc).a(dr.a.a().a(dwc.d, false))), cm.a.a().a($$3, czr.zO)))
+         .a("under_lock_and_key", cn.a.a(cu.a.a().a(az.a.a().a($$4, dne.uc).a(dr.a.a().a(dwn.d, false))), cm.a.a().a($$3, dac.zO)))
          .a($$1, "adventure/under_lock_and_key");
       ai.a.a()
          .a($$19)
-         .a(czr.zP, wy.c("advancements.adventure.revaulting.title"), wy.c("advancements.adventure.revaulting.description"), null, ap.c, true, true, false)
-         .a("revaulting", cn.a.a(cu.a.a().a(az.a.a().a($$4, dmt.uc).a(dr.a.a().a(dwc.d, true))), cm.a.a().a($$3, czr.zP)))
+         .a(dac.zP, xa.c("advancements.adventure.revaulting.title"), xa.c("advancements.adventure.revaulting.description"), null, ap.c, true, true, false)
+         .a("revaulting", cn.a.a(cu.a.a().a(az.a.a().a($$4, dne.uc).a(dr.a.a().a(dwn.d, true))), cm.a.a().a($$3, dac.zP)))
          .a($$1, "adventure/revaulting");
       ai.a.a()
          .a($$18)
-         .a(czr.vh, wy.c("advancements.adventure.blowback.title"), wy.c("advancements.adventure.blowback.description"), null, ap.b, true, true, false)
+         .a(dac.vh, xa.c("advancements.adventure.blowback.title"), xa.c("advancements.adventure.blowback.description"), null, ap.b, true, true, false)
          .a(an.a.a(40))
-         .a("blowback", cp.a.a(by.a.a().a($$2, bwr.r), bn.a.a().a(dt.a(axd.j)).a(by.a.a().a($$2, bwr.s))))
+         .a("blowback", cp.a.a(by.a.a().a($$2, bxc.s), bn.a.a().a(dt.a(axf.j)).a(by.a.a().a($$2, bxc.t))))
          .a($$1, "adventure/blowback");
       ai.a.a()
          .a($$5)
          .a(
-            czr.tb,
-            wy.c("advancements.adventure.crafters_crafting_crafters.title"),
-            wy.c("advancements.adventure.crafters_crafting_crafters.description"),
+            dac.tb,
+            xa.c("advancements.adventure.crafters_crafting_crafters.title"),
+            xa.c("advancements.adventure.crafters_crafting_crafters.description"),
             null,
             ap.a,
             true,
             true,
             false
          )
-         .a("crafter_crafted_crafter", dg.a.b(alf.a(mh.bv, alg.b("crafter"))))
+         .a("crafter_crafted_crafter", dg.a.b(alh.a(mh.bv, ali.b("crafter"))))
          .a($$1, "adventure/crafters_crafting_crafters");
       ai.a.a()
          .a($$5)
-         .a(czr.xQ, wy.c("advancements.adventure.use_lodestone.title"), wy.c("advancements.adventure.use_lodestone.description"), null, ap.a, true, true, false)
-         .a("use_lodestone", cn.a.a(cu.a.a().a(az.a.a().a($$4, dmt.pY)), cm.a.a().a($$3, czr.rK)))
+         .a(dac.xQ, xa.c("advancements.adventure.use_lodestone.title"), xa.c("advancements.adventure.use_lodestone.description"), null, ap.a, true, true, false)
+         .a("use_lodestone", cn.a.a(cu.a.a().a(az.a.a().a($$4, dne.pY)), cm.a.a().a($$3, dac.rK)))
          .a($$1, "adventure/use_lodestone");
       ai.a.a()
          .a($$18)
          .a(
-            czr.vh,
-            wy.c("advancements.adventure.who_needs_rockets.title"),
-            wy.c("advancements.adventure.who_needs_rockets.description"),
+            dac.vh,
+            xa.c("advancements.adventure.who_needs_rockets.title"),
+            xa.c("advancements.adventure.who_needs_rockets.description"),
             null,
             ap.a,
             true,
             true,
             false
          )
-         .a("who_needs_rockets", cc.a.a(bp.b(cw.c.b(7.0)), by.a.a().a($$2, bwr.bH)))
+         .a("who_needs_rockets", cc.a.a(bp.b(cw.c.b(7.0)), by.a.a().a($$2, bxc.bI)))
          .a($$1, "adventure/who_needs_rockets");
       ai.a.a()
          .a($$18)
-         .a(czr.vl, wy.c("advancements.adventure.overoverkill.title"), wy.c("advancements.adventure.overoverkill.description"), null, ap.b, true, true, false)
+         .a(dac.vl, xa.c("advancements.adventure.overoverkill.title"), xa.c("advancements.adventure.overoverkill.description"), null, ap.b, true, true, false)
          .a(an.a.a(50))
-         .a("overoverkill", db.a.a(bm.a.a().a(cw.c.b(100.0)).a(bn.a.a().a(dt.a(axd.H)).a(by.a.a().a($$2, bwr.bS).a(bv.a.a().f(cm.a.a().a($$3, czr.vl)))))))
+         .a("overoverkill", db.a.a(bm.a.a().a(cw.c.b(100.0)).a(bn.a.a().a(dt.a(axf.H)).a(by.a.a().a($$2, bxc.bT).a(bv.a.a().f(cm.a.a().a($$3, dac.vl)))))))
          .a($$1, "adventure/overoverkill");
    }
 
-   public static aj a(aj $$0, Consumer<aj> $$1, jg<bwr<?>> $$2, List<bwr<?>> $$3) {
+   public static aj a(aj $$0, Consumer<aj> $$1, jg<bxc<?>> $$2, List<bxc<?>> $$3) {
       aj $$4 = a(ai.a.a(), $$2, $$3)
          .a($$0)
-         .a(czr.pP, wy.c("advancements.adventure.kill_a_mob.title"), wy.c("advancements.adventure.kill_a_mob.description"), null, ap.a, true, true, false)
+         .a(dac.pP, xa.c("advancements.adventure.kill_a_mob.title"), xa.c("advancements.adventure.kill_a_mob.description"), null, ap.a, true, true, false)
          .a(am.a.b)
          .a($$1, "adventure/kill_a_mob");
       a(ai.a.a(), $$2, $$3)
          .a($$4)
-         .a(czr.pU, wy.c("advancements.adventure.kill_all_mobs.title"), wy.c("advancements.adventure.kill_all_mobs.description"), null, ap.b, true, true, false)
+         .a(dac.pU, xa.c("advancements.adventure.kill_all_mobs.title"), xa.c("advancements.adventure.kill_all_mobs.description"), null, ap.b, true, true, false)
          .a(an.a.a(100))
          .a($$1, "adventure/kill_all_mobs");
       return $$4;
    }
 
-   private static ar<cn.a> a(jg<dmr> $$0, dmr $$1) {
-      fdc.a[] $$2 = doc.e.a().stream().map($$1x -> {
-         dr.a $$2x = dr.a.a().a(doc.e, $$1x);
-         az.a $$3 = az.a.a().a($$0, dmt.hz).a($$2x);
-         return fda.a(cu.a.a().a($$3), new iv($$1x.g().q()));
-      }).toArray(fdc.a[]::new);
-      return cn.a.a(fdb.a($$1), fcq.a($$2));
+   private static ar<cn.a> a(jg<dnc> $$0, dnc $$1) {
+      fdq.a[] $$2 = don.e.a().stream().map($$1x -> {
+         dr.a $$2x = dr.a.a().a(don.e, $$1x);
+         az.a $$3 = az.a.a().a($$0, dne.hz).a($$2x);
+         return fdo.a(cu.a.a().a($$3), new iv($$1x.g().q()));
+      }).toArray(fdq.a[]::new);
+      return cn.a.a(fdp.a($$1), fde.a($$2));
    }
 
-   private static ar<cn.a> b(jg<dmr> $$0, dmr $$1) {
-      fdc.a[] $$2 = doc.e.a().stream().map($$2x -> {
-         dr.a $$3 = dr.a.a().a(doc.e, $$2x);
-         fdb.a $$4 = new fdb.a(dmt.hz).a($$3);
-         fdc.a $$5 = fda.a(cu.a.a().a(az.a.a().a($$0, $$1)), new iv($$2x.q()));
-         return fcp.a($$4, $$5);
-      }).toArray(fdc.a[]::new);
-      return cn.a.a(fcq.a($$2));
+   private static ar<cn.a> b(jg<dnc> $$0, dnc $$1) {
+      fdq.a[] $$2 = don.e.a().stream().map($$2x -> {
+         dr.a $$3 = dr.a.a().a(don.e, $$2x);
+         fdp.a $$4 = new fdp.a(dne.hz).a($$3);
+         fdq.a $$5 = fdo.a(cu.a.a().a(az.a.a().a($$0, $$1)), new iv($$2x.q()));
+         return fdd.a($$4, $$5);
+      }).toArray(fdq.a[]::new);
+      return cn.a.a(fde.a($$2));
    }
 
    private static ai.a a(ai.a $$0) {
       $$0.a(am.a.a);
-      Set<czj> $$1 = Set.of(czr.yS, czr.yQ, czr.yR, czr.yM, czr.yV, czr.yO, czr.yP, czr.yT);
+      Set<czu> $$1 = Set.of(dac.yS, dac.yQ, dac.yR, dac.yM, dac.yV, dac.yO, dac.yP, dac.yT);
       or.b().filter($$1x -> $$1.contains($$1x.a())).forEach($$1x -> $$0.a("armor_trimmed_" + $$1x.c().a(), dg.a.a($$1x.c())));
       return $$0;
    }
 
    private static ai.a b(ai.a $$0) {
       $$0.a(am.a.b);
-      or.b().map(or.b::c).forEach($$1 -> $$0.a("armor_trimmed_" + $$1.a(), dg.a.a((alf<dee<?>>)$$1)));
+      or.b().map(or.b::c).forEach($$1 -> $$0.a("armor_trimmed_" + $$1.a(), dg.a.a((alh<dep<?>>)$$1)));
       return $$0;
    }
 
-   private static ai.a a(jg<czj> $$0, ai.a $$1) {
+   private static ai.a a(jg<czu> $$0, ai.a $$1) {
       List<Pair<String, ar<cv.a>>> $$2 = List.of(
-         Pair.of("desert_pyramid", cv.a.a(ezp.aY)),
-         Pair.of("desert_well", cv.a.a(ezp.aX)),
-         Pair.of("ocean_ruin_cold", cv.a.a(ezp.bc)),
-         Pair.of("ocean_ruin_warm", cv.a.a(ezp.bb)),
-         Pair.of("trail_ruins_rare", cv.a.a(ezp.ba)),
-         Pair.of("trail_ruins_common", cv.a.a(ezp.aZ))
+         Pair.of("desert_pyramid", cv.a.a(fad.aY)),
+         Pair.of("desert_well", cv.a.a(fad.aX)),
+         Pair.of("ocean_ruin_cold", cv.a.a(fad.bc)),
+         Pair.of("ocean_ruin_warm", cv.a.a(fad.bb)),
+         Pair.of("trail_ruins_rare", cv.a.a(fad.ba)),
+         Pair.of("trail_ruins_common", cv.a.a(fad.aZ))
       );
       $$2.forEach($$1x -> $$1.a((String)$$1x.getFirst(), (ar<?>)$$1x.getSecond()));
       String $$3 = "has_sherd";
-      $$1.a("has_sherd", ck.a.a(cm.a.a().a($$0, axk.bF)));
+      $$1.a("has_sherd", ck.a.a(cm.a.a().a($$0, axm.bF)));
       $$1.a(new am(List.of($$2.stream().<String>map(Pair::getFirst).toList(), List.of("has_sherd"))));
       return $$1;
    }
 
-   protected static void a(jh.a $$0, Consumer<aj> $$1, aj $$2, dld.a $$3) {
+   protected static void a(jh.a $$0, Consumer<aj> $$1, aj $$2, dlo.a $$3) {
       a(ai.a.a(), $$0, $$3.a().toList())
          .a($$2)
          .a(
-            czr.qB,
-            wy.c("advancements.adventure.adventuring_time.title"),
-            wy.c("advancements.adventure.adventuring_time.description"),
+            dac.qB,
+            xa.c("advancements.adventure.adventuring_time.title"),
+            xa.c("advancements.adventure.adventuring_time.description"),
             null,
             ap.b,
             true,
@@ -623,15 +623,15 @@ public class mu implements mr {
          .a($$1, "adventure/adventuring_time");
    }
 
-   private static ai.a a(ai.a $$0, jg<bwr<?>> $$1, List<bwr<?>> $$2) {
+   private static ai.a a(ai.a $$0, jg<bxc<?>> $$1, List<bxc<?>> $$2) {
       $$2.forEach($$2x -> $$0.a(mg.f.b($$2x).toString(), cp.a.a(by.a.a().a($$1, $$2x))));
       return $$0;
    }
 
-   protected static ai.a a(ai.a $$0, jh.a $$1, List<alf<dkp>> $$2) {
-      jg<dkp> $$3 = $$1.e(mh.aG);
+   protected static ai.a a(ai.a $$0, jh.a $$1, List<alh<dla>> $$2) {
+      jg<dla> $$3 = $$1.e(mh.aG);
 
-      for (alf<dkp> $$4 : $$2) {
+      for (alh<dla> $$4 : $$2) {
          $$0.a($$4.a().toString(), de.a.a(cu.a.a($$3.b($$4))));
       }
 

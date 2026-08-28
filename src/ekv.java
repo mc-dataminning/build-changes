@@ -1,18 +1,51 @@
 import com.mojang.serialization.Codec;
 
-public class ekv extends ejy<emn> {
-   public ekv(Codec<emn> $$0) {
+public class ekv extends ejl {
+   public ekv(Codec<emr> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eka<emn> $$0) {
-      azv $$1 = $$0.d();
-      emn $$2 = $$0.f();
-      dkl $$3 = $$0.b();
-      ecr $$4 = $$0.c();
-      iv $$5 = $$0.e();
-      boolean $$6 = $$1.h();
-      return ($$6 ? $$2.b : $$2.c).a().a($$3, $$4, $$1, $$5);
+   protected void a(djy $$0, azx $$1, iv $$2, int $$3, iv.a $$4, emr $$5) {
+      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
+         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
+         int $$8 = $$5.d - 2;
+
+         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
+            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
+               boolean $$11 = $$9 == -$$7;
+               boolean $$12 = $$9 == $$7;
+               boolean $$13 = $$10 == -$$7;
+               boolean $$14 = $$10 == $$7;
+               boolean $$15 = $$11 || $$12;
+               boolean $$16 = $$13 || $$14;
+               if ($$6 >= $$3 || $$15 != $$16) {
+                  $$4.a($$2, $$9, $$6, $$10);
+                  ebe $$17 = $$5.b.a($$1, $$2);
+                  if ($$17.b(dre.e) && $$17.b(dre.c) && $$17.b(dre.b) && $$17.b(dre.d) && $$17.b(dre.f)) {
+                     $$17 = $$17.b(dre.f, Boolean.valueOf($$6 >= $$3 - 1))
+                        .b(dre.e, Boolean.valueOf($$9 < -$$8))
+                        .b(dre.c, Boolean.valueOf($$9 > $$8))
+                        .b(dre.b, Boolean.valueOf($$10 < -$$8))
+                        .b(dre.d, Boolean.valueOf($$10 > $$8));
+                  }
+
+                  this.a($$0, $$4, $$17);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 0;
+      if ($$3 < $$1 && $$3 >= $$1 - 3) {
+         $$4 = $$2;
+      } else if ($$3 == $$1) {
+         $$4 = $$2;
+      }
+
+      return $$4;
    }
 }

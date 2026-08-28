@@ -1,33 +1,37 @@
-import javax.annotation.Nullable;
+public class aep implements zh<abw> {
+   public static final yy<vw, aep> a = zh.a(aep::a, aep::new);
+   private final int b;
+   private final byte c;
 
-public class aep implements zf<abu> {
-   public static final yw<vu, aep> a = zf.a(aep::a, aep::new);
-   @Nullable
-   private final alg b;
-
-   public aep(@Nullable alg $$0) {
-      this.b = $$0;
+   public aep(bwt $$0, byte $$1) {
+      this.b = $$0.ao();
+      this.c = $$1;
    }
 
-   private aep(vu $$0) {
-      this.b = $$0.c(vu::q);
+   private aep(vw $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readByte();
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.b, vu::a);
+   private void a(vw $$0) {
+      $$0.c(this.b);
+      $$0.l(this.c);
    }
 
    @Override
-   public zh<aep> a() {
-      return agn.as;
+   public zj<aep> a() {
+      return agp.aq;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public alg b() {
-      return this.b;
+   public bwt a(djx $$0) {
+      return $$0.a(this.b);
+   }
+
+   public float b() {
+      return azo.a(this.c);
    }
 }

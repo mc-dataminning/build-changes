@@ -1,124 +1,245 @@
-import java.util.function.Supplier;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class gbx extends fys {
-   private static final wy a = wy.c("options.title");
-   private static final wy b = wy.c("options.skinCustomisation");
-   private static final wy c = wy.c("options.sounds");
-   private static final wy d = wy.c("options.video");
-   private static final wy s = wy.c("options.controls");
-   private static final wy u = wy.c("options.language");
-   private static final wy v = wy.c("options.chat");
-   private static final wy w = wy.c("options.resourcepack");
-   private static final wy x = wy.c("options.accessibility");
-   private static final wy y = wy.c("options.telemetry");
-   private static final ful z = ful.a(wy.c("options.telemetry.disabled"));
-   private static final wy A = wy.c("options.credits_and_attribution");
-   private static final int B = 2;
-   private final fwo C = new fwo(this, 61, 33);
-   private final fys D;
-   private final fpx E;
+public class gbx extends gas<cwx> {
+   private static final ali G = ali.b("container/slot/banner");
+   private static final ali H = ali.b("container/slot/dye");
+   private static final ali I = ali.b("container/slot/banner_pattern");
+   private static final ali J = ali.b("container/loom/scroller");
+   private static final ali K = ali.b("container/loom/scroller_disabled");
+   private static final ali L = ali.b("container/loom/pattern_selected");
+   private static final ali M = ali.b("container/loom/pattern_highlighted");
+   private static final ali N = ali.b("container/loom/pattern");
+   private static final ali O = ali.b("container/loom/error");
+   private static final ali P = ali.b("textures/gui/container/loom.png");
+   private static final int Q = 4;
+   private static final int R = 4;
+   private static final int S = 12;
+   private static final int T = 15;
+   private static final int U = 14;
+   private static final int V = 56;
+   private static final int W = 60;
+   private static final int X = 13;
+   private gle Y;
    @Nullable
-   private fth<bud> F;
-   @Nullable
-   private ftq G;
+   private dxs Z;
+   private czy aa = czy.k;
+   private czy ab = czy.k;
+   private czy ac = czy.k;
+   private boolean ad;
+   private boolean ae;
+   private float af;
+   private boolean ag;
+   private int ah;
 
-   public gbx(fys $$0, fpx $$1) {
-      super(a);
-      this.D = $$0;
-      this.E = $$1;
+   public gbx(cwx $$0, crw $$1, xa $$2) {
+      super($$0, $$1, $$2);
+      $$0.a(this::H);
+      this.w -= 2;
    }
 
    @Override
-   protected void aO_() {
-      fws $$0 = this.C.a(fws.d().a(8));
-      $$0.a(new fuh(a, this.p), fwr::b);
-      fws $$1 = $$0.a(fws.e()).a(8);
-      $$1.a(this.E.ak().a(this.m.n));
-      $$1.a(this.m());
-      fwn $$2 = new fwn();
-      $$2.c().f(4).e(4).b();
-      fwn.b $$3 = $$2.d(2);
-      $$3.a(this.a(b, () -> new gbz(this, this.E)));
-      $$3.a(this.a(c, () -> new gca(this, this.E)));
-      $$3.a(this.a(d, () -> new gcc(this, this.m, this.E)));
-      $$3.a(this.a(s, () -> new gcd(this, this.E)));
-      $$3.a(this.a(u, () -> new gbu(this, this.E, this.m.ah())));
-      $$3.a(this.a(v, () -> new gbs(this, this.E)));
-      $$3.a(this.a(w, () -> new gck(this.m.ad(), this::a, this.m.ag(), wy.c("resourcePack.title"))));
-      $$3.a(this.a(x, () -> new gbr(this, this.E)));
-      fta $$4 = $$3.a(this.a(y, () -> new gdp(this, this.E)));
-      if (!this.m.E()) {
-         $$4.j = false;
-         $$4.a(z);
+   protected void aS_() {
+      super.aS_();
+      this.Y = this.m.aS().a(gld.r).b("flag");
+   }
+
+   @Override
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   private int G() {
+      return azo.e(this.z.l().size(), 4);
+   }
+
+   @Override
+   protected void a(ftx $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.C;
+      int $$5 = this.D;
+      $$0.a(gsl::H, P, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      cxn $$6 = this.z.n();
+      cxn $$7 = this.z.o();
+      cxn $$8 = this.z.p();
+      cxn $$9 = this.z.q();
+      if (!$$6.h()) {
+         $$0.a(gsl::H, G, $$4 + $$6.e, $$5 + $$6.f, 16, 16);
       }
 
-      $$3.a(this.a(A, () -> new fxu(this)));
-      this.C.c($$2);
-      this.C.b(fta.a(wx.d, $$0x -> this.aL_()).a(200).a());
-      this.C.a($$1x -> {
-         fsy var10000 = this.c($$1x);
-      });
-      this.c();
-   }
+      if (!$$7.h()) {
+         $$0.a(gsl::H, H, $$4 + $$7.e, $$5 + $$7.f, 16, 16);
+      }
 
-   @Override
-   protected void c() {
-      this.C.a();
-   }
+      if (!$$8.h()) {
+         $$0.a(gsl::H, I, $$4 + $$8.e, $$5 + $$8.f, 16, 16);
+      }
 
-   @Override
-   public void aL_() {
-      this.m.a(this.D);
-   }
+      int $$10 = (int)(41.0F * this.af);
+      ali $$11 = this.ad ? J : K;
+      $$0.a(gsl::H, $$11, $$4 + 119, $$5 + 13 + $$10, 12, 15);
+      $$0.d();
+      fkb.c();
+      if (this.Z != null && !this.ae) {
+         $$0.c().a();
+         $$0.c().a((float)($$4 + 139), (float)($$5 + 52), 0.0F);
+         $$0.c().b(24.0F, 24.0F, 1.0F);
+         $$0.c().a(0.5F, 0.0F, 0.5F);
+         float $$12 = 0.6666667F;
+         $$0.c().b(0.6666667F, 0.6666667F, -0.6666667F);
+         cyw $$13 = ((cye)$$9.g().h()).a();
+         $$0.a($$2x -> gui.a($$0.c(), $$2x, 15728880, hkq.d, this.Y, hnk.f, true, $$13, this.Z));
+         $$0.c().b();
+      } else if (this.ae) {
+         $$0.a(gsl::H, O, $$4 + $$9.e - 5, $$5 + $$9.f - 5, 26, 26);
+      }
 
-   private void a(aun $$0) {
-      this.E.a($$0);
-      this.m.a(this);
-   }
+      if (this.ad) {
+         int $$14 = $$4 + 60;
+         int $$15 = $$5 + 13;
+         List<jf<dxr>> $$16 = this.z.l();
 
-   private fwq m() {
-      if (this.m.s != null && this.m.U()) {
-         this.F = a(0, 0, "options.difficulty", this.m);
-         if (!this.m.s.k().l()) {
-            this.G = new ftq(0, 0, $$0x -> this.m.a(new fxq(this::c, wy.c("difficulty.lock.title"), wy.a("difficulty.lock.question", this.m.s.k().q().b()))));
-            this.F.h(this.F.A() - this.G.A());
-            this.G.b(this.m.s.k().r());
-            this.G.j = !this.G.a();
-            this.F.j = !this.G.a();
-            fwl $$0 = new fwl(150, 0, fwl.b.a);
-            $$0.a(this.F);
-            $$0.a(this.G);
-            return $$0;
-         } else {
-            this.F.j = false;
-            return this.F;
+         label64:
+         for (int $$17 = 0; $$17 < 4; $$17++) {
+            for (int $$18 = 0; $$18 < 4; $$18++) {
+               int $$19 = $$17 + this.ah;
+               int $$20 = $$19 * 4 + $$18;
+               if ($$20 >= $$16.size()) {
+                  break label64;
+               }
+
+               int $$21 = $$14 + $$18 * 14;
+               int $$22 = $$15 + $$17 * 14;
+               boolean $$23 = $$2 >= $$21 && $$3 >= $$22 && $$2 < $$21 + 14 && $$3 < $$22 + 14;
+               ali $$24;
+               if ($$20 == this.z.m()) {
+                  $$24 = L;
+               } else if ($$23) {
+                  $$24 = M;
+               } else {
+                  $$24 = N;
+               }
+
+               $$0.a(gsl::H, $$24, $$21, $$22, 14, 14);
+               this.a($$0, $$16.get($$20), $$21, $$22);
+            }
          }
-      } else {
-         return fta.a(wy.c("options.online"), $$0x -> this.m.a(new gbw(this, this.E))).a(this.n / 2 + 5, this.o / 6 - 12 + 24, 150, 20).a();
       }
+
+      $$0.d();
+      fkb.d();
    }
 
-   public static fth<bud> a(int $$0, int $$1, String $$2, fpt $$3) {
-      return fth.a(bud::b).a(bud.values()).a($$3.s.an()).a($$0, $$1, 150, 20, wy.c($$2), ($$1x, $$2x) -> $$3.L().b(new agt($$2x)));
+   private void a(ftx $$0, jf<dxr> $$1, int $$2, int $$3) {
+      flo $$4 = new flo();
+      $$4.a();
+      $$4.a((float)$$2 + 0.5F, (float)($$3 + 16), 0.0F);
+      $$4.b(6.0F, -6.0F, 1.0F);
+      $$4.a(0.5F, 0.0F, 0.0F);
+      $$4.a(0.5F, 0.5F, 0.5F);
+      float $$5 = 0.6666667F;
+      $$4.b(0.6666667F, -0.6666667F, -0.6666667F);
+      dxs $$6 = new dxs.a().a($$1, cyw.a).a();
+      $$0.a($$2x -> gui.a($$4, $$2x, 15728880, hkq.d, this.Y, hnk.f, true, cyw.h, $$6));
+      $$4.b();
+      $$0.d();
    }
 
-   private void c(boolean $$0) {
-      this.m.a(this);
-      if ($$0 && this.m.s != null && this.G != null && this.F != null) {
-         this.m.L().b(new ahn(true));
-         this.G.b(true);
-         this.G.j = false;
-         this.F.j = false;
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      this.ag = false;
+      if (this.ad) {
+         int $$3 = this.C + 60;
+         int $$4 = this.D + 13;
+
+         for (int $$5 = 0; $$5 < 4; $$5++) {
+            for (int $$6 = 0; $$6 < 4; $$6++) {
+               double $$7 = $$0 - (double)($$3 + $$6 * 14);
+               double $$8 = $$1 - (double)($$4 + $$5 * 14);
+               int $$9 = $$5 + this.ah;
+               int $$10 = $$9 * 4 + $$6;
+               if ($$7 >= 0.0 && $$8 >= 0.0 && $$7 < 14.0 && $$8 < 14.0 && this.z.a(this.m.t, $$10)) {
+                  frd.Q().ak().a(hos.a(awp.Bw, 1.0F));
+                  this.m.r.a(this.z.l, $$10);
+                  return true;
+               }
+            }
+         }
+
+         $$3 = this.C + 119;
+         $$4 = this.D + 9;
+         if ($$0 >= (double)$$3 && $$0 < (double)($$3 + 12) && $$1 >= (double)$$4 && $$1 < (double)($$4 + 56)) {
+            this.ag = true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      int $$5 = this.G() - 4;
+      if (this.ag && this.ad && $$5 > 0) {
+         int $$6 = this.D + 13;
+         int $$7 = $$6 + 56;
+         this.af = ((float)$$1 - (float)$$6 - 7.5F) / ((float)($$7 - $$6) - 15.0F);
+         this.af = azo.a(this.af, 0.0F, 1.0F);
+         this.ah = Math.max((int)((double)(this.af * (float)$$5) + 0.5), 0);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   public void aF_() {
-      this.E.az();
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (super.a($$0, $$1, $$2, $$3)) {
+         return true;
+      } else {
+         int $$4 = this.G() - 4;
+         if (this.ad && $$4 > 0) {
+            float $$5 = (float)$$3 / (float)$$4;
+            this.af = azo.a(this.af - $$5, 0.0F, 1.0F);
+            this.ah = Math.max((int)(this.af * (float)$$4 + 0.5F), 0);
+         }
+
+         return true;
+      }
    }
 
-   private fta a(wy $$0, Supplier<fys> $$1) {
-      return fta.a($$0, $$1x -> this.m.a($$1.get())).a();
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      return $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.s) || $$1 >= (double)($$3 + this.u);
+   }
+
+   private void H() {
+      czy $$0 = this.z.q().g();
+      if ($$0.f()) {
+         this.Z = null;
+      } else {
+         this.Z = $$0.a(kk.am, dxs.a);
+      }
+
+      czy $$1 = this.z.n().g();
+      czy $$2 = this.z.o().g();
+      czy $$3 = this.z.p().g();
+      dxs $$4 = $$1.a(kk.am, dxs.a);
+      this.ae = $$4.b().size() >= 6;
+      if (this.ae) {
+         this.Z = null;
+      }
+
+      if (!czy.a($$1, this.aa) || !czy.a($$2, this.ab) || !czy.a($$3, this.ac)) {
+         this.ad = !$$1.f() && !$$2.f() && !this.ae && !this.z.l().isEmpty();
+      }
+
+      if (this.ah >= this.G()) {
+         this.ah = 0;
+         this.af = 0.0F;
+      }
+
+      this.aa = $$1.v();
+      this.ab = $$2.v();
+      this.ac = $$3.v();
    }
 }

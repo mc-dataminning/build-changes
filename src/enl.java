@@ -1,70 +1,97 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public class enl extends eno {
-   public static final MapCodec<enl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  btl.b(4, 16).fieldOf("height").forGetter($$0x -> $$0x.b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter($$0x -> $$0x.c),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter($$0x -> $$0x.c),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter($$0x -> $$0x.h),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter($$0x -> $$0x.i)
-               )
+public class enl implements emp {
+   public static final Codec<enl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eoq.a.fieldOf("trunk_provider").forGetter($$0x -> $$0x.b),
+               epx.c.fieldOf("trunk_placer").forGetter($$0x -> $$0x.d),
+               eoq.a.fieldOf("foliage_provider").forGetter($$0x -> $$0x.e),
+               eob.d.fieldOf("foliage_placer").forGetter($$0x -> $$0x.f),
+               eon.d.optionalFieldOf("root_placer").forGetter($$0x -> $$0x.g),
+               eoq.a.fieldOf("dirt_provider").forGetter($$0x -> $$0x.c),
+               enq.a.fieldOf("minimum_size").forGetter($$0x -> $$0x.h),
+               epl.h.listOf().fieldOf("decorators").forGetter($$0x -> $$0x.i),
+               Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter($$0x -> $$0x.j),
+               Codec.BOOL.fieldOf("force_dirt").orElse(false).forGetter($$0x -> $$0x.k)
             )
             .apply($$0, enl::new)
    );
-   private final btl b;
-   private final float c;
-   private final float g;
-   private final float h;
-   private final float i;
+   public final eoq b;
+   public final eoq c;
+   public final epx d;
+   public final eoq e;
+   public final eob f;
+   public final Optional<eon> g;
+   public final enq h;
+   public final List<epl> i;
+   public final boolean j;
+   public final boolean k;
 
-   public enl(btl $$0, btl $$1, btl $$2, float $$3, float $$4, float $$5, float $$6) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
+   protected enl(eoq $$0, epx $$1, eoq $$2, eob $$3, Optional<eon> $$4, eoq $$5, enq $$6, List<epl> $$7, boolean $$8, boolean $$9) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
       this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
+      this.c = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 
-   @Override
-   protected enp<?> a() {
-      return enp.k;
-   }
+   public static class a {
+      public final eoq a;
+      private final epx c;
+      public final eoq b;
+      private final eob d;
+      private final Optional<eon> e;
+      private eoq f;
+      private final enq g;
+      private List<epl> h = ImmutableList.of();
+      private boolean i;
+      private boolean j;
 
-   @Override
-   protected void a(djs $$0, eno.b $$1, azv $$2, emy $$3, int $$4, eno.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      iv $$10 = $$5.a().b($$8);
-      int $$11 = $$7 + $$5.b() - 1;
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 2, $$6 - 3, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, $$6 - 4, $$9);
-
-      for (int $$12 = $$6 - 5; $$12 >= 0; $$12--) {
-         this.a($$0, $$1, $$2, $$3, $$10, $$11, $$12, $$9);
+      public a(eoq $$0, epx $$1, eoq $$2, eob $$3, Optional<eon> $$4, enq $$5) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+         this.f = eoq.a(dne.j);
+         this.d = $$3;
+         this.e = $$4;
+         this.g = $$5;
       }
 
-      this.a($$0, $$1, $$2, $$3, $$10, $$11, -1, $$9, this.h, this.i);
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, -2, $$9, this.h, this.i);
-   }
+      public a(eoq $$0, epx $$1, eoq $$2, eob $$3, enq $$4) {
+         this($$0, $$1, $$2, $$3, Optional.empty(), $$4);
+      }
 
-   @Override
-   public int a(azv $$0, int $$1, emy $$2) {
-      return this.b.a($$0);
-   }
+      public enl.a a(eoq $$0) {
+         this.f = $$0;
+         return this;
+      }
 
-   @Override
-   protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && ($$1 == $$4 || $$3 == $$4) && $$0.i() < this.c) {
-         return true;
-      } else {
-         boolean $$6 = $$1 == $$4 && $$3 == $$4;
-         boolean $$7 = $$4 > 2;
-         return $$7 ? $$6 || $$1 + $$3 > $$4 * 2 - 2 && $$0.i() < this.g : $$6 && $$0.i() < this.g;
+      public enl.a a(List<epl> $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public enl.a a() {
+         this.i = true;
+         return this;
+      }
+
+      public enl.a b() {
+         this.j = true;
+         return this;
+      }
+
+      public enl c() {
+         return new enl(this.a, this.c, this.b, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
       }
    }
 }

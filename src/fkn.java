@@ -1,71 +1,129 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fkn {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private static CompletableFuture<fkn.a> b;
+public abstract class fkn {
+   private static final String a = "/\\*(?:[^*]|\\*+[^*/])*\\*+/";
+   private static final String b = "//[^\\v]*";
+   private static final Pattern c = Pattern.compile(
+      "(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*moj_import(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(?:\"(.*)\"|<(.*)>))"
+   );
+   private static final Pattern d = Pattern.compile("(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*version(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(\\d+))\\b");
+   private static final Pattern e = Pattern.compile("(?:^|\\v)(?:\\s|/\\*(?:[^*]|\\*+[^*/])*\\*+/|(//[^\\v]*))*\\z");
 
-   public static CompletableFuture<fkn.a> a() {
-      if (b == null || a(b)) {
-         b = b();
-      }
-
-      return b;
+   public List<String> a(String $$0) {
+      fkn.a $$1 = new fkn.a();
+      List<String> $$2 = this.a($$0, $$1, "");
+      $$2.set(0, this.a($$2.get(0), $$1.a));
+      return $$2;
    }
 
-   private static boolean a(CompletableFuture<fkn.a> $$0) {
-      fkn.a $$1 = $$0.getNow(null);
-      return $$1 != null && $$1.b() != null;
-   }
+   private List<String> a(String $$0, fkn.a $$1, String $$2) {
+      int $$3 = $$1.b;
+      int $$4 = 0;
+      String $$5 = "";
+      List<String> $$6 = Lists.newArrayList();
+      Matcher $$7 = c.matcher($$0);
 
-   private static CompletableFuture<fkn.a> b() {
-      fqf $$0 = fpt.Q().X();
-      return $$0.g() != fqf.a.c ? CompletableFuture.completedFuture(new fkn.a(fkn.b.d)) : CompletableFuture.supplyAsync(() -> {
-         fkt $$0x = fkt.a();
-
-         try {
-            if ($$0x.g() != fkt.a.a) {
-               return new fkn.a(fkn.b.b);
-            } else {
-               return !$$0x.f() ? new fkn.a(fkn.b.c) : new fkn.a(fkn.b.a);
+      while ($$7.find()) {
+         if (!a($$0, $$7, $$4)) {
+            String $$8 = $$7.group(2);
+            boolean $$9 = $$8 != null;
+            if (!$$9) {
+               $$8 = $$7.group(3);
             }
-         } catch (fmp var2) {
-            a.error("Couldn't connect to realms", var2);
-            return var2.a.a() == 401 ? new fkn.a(fkn.b.d) : new fkn.a(var2);
+
+            if ($$8 != null) {
+               String $$10 = $$0.substring($$4, $$7.start(1));
+               String $$11 = $$2 + $$8;
+               String $$12 = this.a($$9, $$11);
+               if (!Strings.isNullOrEmpty($$12)) {
+                  if (!ban.d($$12)) {
+                     $$12 = $$12 + System.lineSeparator();
+                  }
+
+                  $$1.b++;
+                  int $$13 = $$1.b;
+                  List<String> $$14 = this.a($$12, $$1, $$9 ? w.b($$11) : "");
+                  $$14.set(0, String.format(Locale.ROOT, "#line %d %d\n%s", 0, $$13, this.a($$14.get(0), $$1)));
+                  if (!ban.h($$10)) {
+                     $$6.add($$10);
+                  }
+
+                  $$6.addAll($$14);
+               } else {
+                  String $$15 = $$9 ? String.format(Locale.ROOT, "/*#moj_import \"%s\"*/", $$8) : String.format(Locale.ROOT, "/*#moj_import <%s>*/", $$8);
+                  $$6.add($$5 + $$10 + $$15);
+               }
+
+               int $$16 = ban.c($$0.substring(0, $$7.end(1)));
+               $$5 = String.format(Locale.ROOT, "#line %d %d", $$16, $$3);
+               $$4 = $$7.end(1);
+            }
          }
-      }, ag.i());
+      }
+
+      String $$17 = $$0.substring($$4);
+      if (!ban.h($$17)) {
+         $$6.add($$5 + $$17);
+      }
+
+      return $$6;
    }
 
-   public static record a(fkn.b a, @Nullable fmp b) {
-      public a(fkn.b $$0) {
-         this($$0, null);
-      }
-
-      public a(fmp $$0) {
-         this(fkn.b.e, $$0);
-      }
-
-      @Nullable
-      public fys a(fys $$0) {
-         return (fys)(switch (this.a) {
-            case a -> null;
-            case b -> new fnc($$0);
-            case c -> new fnm($$0);
-            case d -> new fnh(wy.c("mco.error.invalid.session.title"), wy.c("mco.error.invalid.session.message"), $$0);
-            case e -> new fnh(Objects.requireNonNull(this.b), $$0);
-         });
+   private String a(String $$0, fkn.a $$1) {
+      Matcher $$2 = d.matcher($$0);
+      if ($$2.find() && a($$0, $$2)) {
+         $$1.a = Math.max($$1.a, Integer.parseInt($$2.group(2)));
+         return $$0.substring(0, $$2.start(1)) + "/*" + $$0.substring($$2.start(1), $$2.end(1)) + "*/" + $$0.substring($$2.end(1));
+      } else {
+         return $$0;
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+   private String a(String $$0, int $$1) {
+      Matcher $$2 = d.matcher($$0);
+      return $$2.find() && a($$0, $$2) ? $$0.substring(0, $$2.start(2)) + Math.max($$1, Integer.parseInt($$2.group(2))) + $$0.substring($$2.end(2)) : $$0;
+   }
+
+   private static boolean a(String $$0, Matcher $$1) {
+      return !a($$0, $$1, 0);
+   }
+
+   private static boolean a(String $$0, Matcher $$1, int $$2) {
+      int $$3 = $$1.start() - $$2;
+      if ($$3 == 0) {
+         return false;
+      } else {
+         Matcher $$4 = e.matcher($$0.substring($$2, $$1.start()));
+         if (!$$4.find()) {
+            return true;
+         } else {
+            int $$5 = $$4.end(1);
+            return $$5 == $$1.start();
+         }
+      }
+   }
+
+   @Nullable
+   public abstract String a(boolean var1, String var2);
+
+   public static String a(String $$0, gsr $$1) {
+      if ($$1.c()) {
+         return $$0;
+      } else {
+         int $$2 = $$0.indexOf(10);
+         int $$3 = $$2 + 1;
+         return $$0.substring(0, $$3) + $$1.b() + "#line 1 0\n" + $$0.substring($$3);
+      }
+   }
+
+   static final class a {
+      int a;
+      int b;
    }
 }

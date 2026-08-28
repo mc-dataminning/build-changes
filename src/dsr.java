@@ -1,25 +1,68 @@
 import com.mojang.serialization.MapCodec;
 
-public class dsr extends doo {
+public class dsr extends dnc implements dnf {
    public static final MapCodec<dsr> a = b(dsr::new);
-   private static final ffw[] b = dmr.a(7, $$0 -> dmr.b(16.0, 0.0, (double)(2 + $$0)));
 
    @Override
    public MapCodec<dsr> a() {
       return a;
    }
 
-   public dsr(eas.d $$0) {
+   public dsr(ebd.d $$0) {
       super($$0);
    }
 
    @Override
-   protected djl d() {
-      return czr.vq;
+   public boolean a(dka $$0, iv $$1, ebe $$2) {
+      if (!$$0.a_($$1.d()).f()) {
+         return false;
+      } else {
+         for (iv $$3 : iv.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
+            if ($$0.a_($$3).a(axe.aO)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return b[this.h($$0)];
+   public boolean a(djx $$0, azx $$1, iv $$2, ebe $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ars $$0, azx $$1, iv $$2, ebe $$3) {
+      boolean $$4 = false;
+      boolean $$5 = false;
+
+      for (iv $$6 : iv.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
+         ebe $$7 = $$0.a_($$6);
+         if ($$7.a(dne.oT)) {
+            $$5 = true;
+         }
+
+         if ($$7.a(dne.pc)) {
+            $$4 = true;
+         }
+
+         if ($$5 && $$4) {
+            break;
+         }
+      }
+
+      if ($$5 && $$4) {
+         $$0.a($$2, $$1.h() ? dne.oT.m() : dne.pc.m(), 3);
+      } else if ($$5) {
+         $$0.a($$2, dne.oT.m(), 3);
+      } else if ($$4) {
+         $$0.a($$2, dne.pc.m(), 3);
+      }
+   }
+
+   @Override
+   public dnf.a ar_() {
+      return dnf.a.a;
    }
 }

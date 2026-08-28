@@ -1,60 +1,70 @@
-import java.util.Objects;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-
-public class gyz extends gye<cou, hez, gij> {
-   private static final alg a = grl.s.b().a((UnaryOperator<String>)($$0 -> "textures/" + $$0 + ".png"));
-   private static final alg[] j = grl.t.stream().map($$0 -> $$0.b().a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"))).toArray(alg[]::new);
-
-   public gyz(gwy.a $$0) {
-      super($$0, new gij($$0.a(gjs.cU)), 0.0F);
+public abstract class gyz<T extends bxw, S extends hfg, M extends gio<S>> extends gxc<T, S, M> {
+   public gyz(gyi.a $$0, M $$1, float $$2) {
+      this($$0, $$1, $$1, $$2);
    }
 
-   public ffc a(hez $$0) {
-      return $$0.a;
+   public gyz(gyi.a $$0, M $$1, M $$2, float $$3) {
+      this($$0, $$1, $$2, $$3, hcb.a.a);
    }
 
-   public boolean a(cou $$0, guk $$1, double $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else {
-         ffc $$5 = $$0.K(0.0F);
-         if ($$5 == null) {
-            return false;
-         } else {
-            bwr<?> $$6 = $$0.an();
-            float $$7 = $$6.m() / 2.0F;
-            float $$8 = $$6.l() / 2.0F;
-            ffc $$9 = ffc.c($$0.du());
-            return $$1.a(new fex($$5.d, $$5.e + (double)$$7, $$5.f, $$9.d, $$9.e + (double)$$7, $$9.f).c((double)$$8, (double)$$7, (double)$$8));
-         }
-      }
+   public gyz(gyi.a $$0, M $$1, M $$2, float $$3, hcb.a $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a(new hcb<>(this, $$0.f(), $$4));
+      this.a(new hdi<>(this, $$0.f(), $$0.h()));
+      this.a(new hco<>(this));
    }
 
-   public alg b(hez $$0) {
-      return a($$0.b);
+   protected gio.a a(T $$0, bxl $$1) {
+      return gio.a.a;
    }
 
-   public hez b() {
-      return new hez();
-   }
-
-   public void a(cou $$0, hez $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = Objects.requireNonNullElse($$0.K($$2), ffc.c);
-      $$1.b = $$0.t();
-      $$1.c = $$0.J($$2);
-      $$1.d = $$0.aX;
-      $$1.e = $$0.aV;
-      $$1.f = $$0.n();
+      a($$0, $$1, $$2, this.h);
+      $$1.h = this.a($$0, bxl.a);
+      $$1.f = this.a($$0, bxl.b);
    }
 
-   public static alg a(@Nullable cyl $$0) {
-      return $$0 == null ? a : j[$$0.a()];
+   public static void a(bxu $$0, hfg $$1, float $$2, hhq $$3) {
+      hdt.a($$0, $$1, $$3);
+      $$1.N = $$0.ch();
+      $$1.O = $$0.fJ();
+      $$1.P = $$0.ck();
+      $$1.Q = $$0.bY();
+      $$1.I = 1.0F;
+      if ($$1.O) {
+         $$1.I = (float)$$0.dy().h();
+         $$1.I /= 0.2F;
+         $$1.I = $$1.I * $$1.I * $$1.I;
+      }
+
+      if ($$1.I < 1.0F) {
+         $$1.I = 1.0F;
+      }
+
+      $$1.H = $$0.D($$2);
+      $$1.G = $$0.a($$2);
+      $$1.L = c($$0);
+      $$1.M = $$0.fA();
+      $$1.J = (float)cyr.b($$0.fB(), $$0);
+      $$1.K = $$0.fD();
+      $$1.R = $$0.fz();
+      $$1.S = $$0.aZ.a($$2);
+      $$1.T = $$0.aZ.b($$2);
+      $$1.U = $$0.aZ.c($$2);
+      $$1.V = a($$0, bxd.f);
+      $$1.W = a($$0, bxd.e);
+      $$1.X = a($$0, bxd.d);
+      $$1.Y = a($$0, bxd.c);
    }
 
-   protected void a(hez $$0, fkd $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2 + 180.0F, $$3);
-      $$1.a($$0.f.g().b(), 0.0F, 0.5F, 0.0F);
+   private static czy a(bxu $$0, bxd $$1) {
+      czy $$2 = $$0.a($$1);
+      return hcl.a($$2, $$1) ? $$2.v() : czy.k;
+   }
+
+   private static bxl c(bxu $$0) {
+      bxl $$1 = $$0.fy();
+      return $$0.aJ == buq.a ? $$1 : $$1.e();
    }
 }

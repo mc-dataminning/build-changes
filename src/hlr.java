@@ -1,91 +1,75 @@
-import java.util.EnumMap;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Map;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public enum hlr implements hmf {
-   a(i.a, i.a),
-   b(i.a, i.b),
-   c(i.a, i.c),
-   d(i.a, i.d),
-   e(i.b, i.a),
-   f(i.b, i.b),
-   g(i.b, i.c),
-   h(i.b, i.d),
-   i(i.c, i.a),
-   j(i.c, i.b),
-   k(i.c, i.c),
-   l(i.c, i.d),
-   m(i.d, i.a),
-   n(i.d, i.b),
-   o(i.d, i.c),
-   p(i.d, i.d);
+public class hlr extends auj {
+   private static final auf e = new auf(xa.c("resourcePack.vanilla.description"), ac.b().a(att.a), Optional.empty());
+   private static final atj f = atj.a(auf.b, e);
+   public static final String d = "high_contrast";
+   private static final Map<String, xa> g = Map.of(
+      "programmer_art", xa.c("resourcePack.programmer_art.name"), "high_contrast", xa.c("resourcePack.high_contrast.name")
+   );
+   private static final atq h = new atq("vanilla", xa.c("resourcePack.vanilla.name"), auq.c, Optional.of(c));
+   private static final ats i = new ats(true, aum.b.b, false);
+   private static final ats j = new ats(false, aum.b.a, false);
+   private static final ali k = ali.b("resourcepacks");
+   @Nullable
+   private final Path l;
 
-   private static final hlr[][] r = ag.a(new hlr[i.values().length][i.values().length], $$0 -> {
-      for (hlr $$1 : values()) {
-         $$0[$$1.s.ordinal()][$$1.t.ordinal()] = $$1;
-      }
-   });
-   private final i s;
-   private final i t;
-   final k u;
-   private final h v;
-   final Map<jb, Matrix4fc> w = new EnumMap<>(jb.class);
-   final Map<jb, Matrix4fc> x = new EnumMap<>(jb.class);
-   private final hlr.a y = new hlr.a(this);
+   public hlr(Path $$0, ffg $$1) {
+      super(att.a, b($$0), k, $$1);
+      this.l = this.a($$0);
+   }
 
-   private hlr(final i $$0, final i $$1) {
-      this.s = $$0;
-      this.t = $$1;
-      this.v = h.a($$0, $$1);
-      if (this.v != h.a) {
-         this.u = new k(new Matrix4f(this.v.b()));
-      } else {
-         this.u = k.a();
+   private static atq a(String $$0, xa $$1) {
+      return new atq($$0, $$1, auq.c, Optional.of(aul.a($$0)));
+   }
+
+   @Nullable
+   private Path a(Path $$0) {
+      if (ac.aU && $$0.getFileSystem() == FileSystems.getDefault()) {
+         Path $$1 = $$0.getParent().resolve("resourcepacks");
+         if (Files.isDirectory($$1)) {
+            return $$1;
+         }
       }
 
-      for (jb $$2 : jb.values()) {
-         Matrix4fc $$3 = iu.a(this.u, $$2).c();
-         this.w.put($$2, $$3);
-         this.x.put($$2, $$3.invertAffine(new Matrix4f()));
-      }
+      return null;
+   }
+
+   private static atv b(Path $$0) {
+      atw $$1 = new atw().a(f).a("minecraft", "realms");
+      return $$1.b().a().a(att.a, $$0).a(h);
    }
 
    @Override
-   public k a() {
-      return this.u;
+   protected xa a(String $$0) {
+      xa $$1 = g.get($$0);
+      return (xa)($$1 != null ? $$1 : xa.b($$0));
    }
 
-   public static hlr a(i $$0, i $$1) {
-      return r[$$0.ordinal()][$$1.ordinal()];
+   @Nullable
+   @Override
+   protected aum a(atr $$0) {
+      return aum.a(h, b($$0), att.a, i);
    }
 
-   public h b() {
-      return this.v;
+   @Nullable
+   @Override
+   protected aum a(String $$0, aum.c $$1, xa $$2) {
+      return aum.a(a($$0, $$2), $$1, att.a, j);
    }
 
-   public hmf c() {
-      return this.y;
-   }
-
-   static record a(hlr a) implements hmf {
-      @Override
-      public k a() {
-         return this.a.u;
-      }
-
-      @Override
-      public Matrix4fc a(jb $$0) {
-         return this.a.w.getOrDefault($$0, q);
-      }
-
-      @Override
-      public Matrix4fc b(jb $$0) {
-         return this.a.x.getOrDefault($$0, q);
-      }
-
-      public hlr b() {
-         return this.a;
+   @Override
+   protected void a(BiConsumer<String, Function<String, aum>> $$0) {
+      super.a($$0);
+      if (this.l != null) {
+         this.a(this.l, $$0);
       }
    }
 }

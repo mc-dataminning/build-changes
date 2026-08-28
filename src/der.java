@@ -1,61 +1,23 @@
-import java.util.List;
-import java.util.Optional;
+public class der {
+   public static final des a = a("crafting_building_blocks");
+   public static final des b = a("crafting_redstone");
+   public static final des c = a("crafting_equipment");
+   public static final des d = a("crafting_misc");
+   public static final des e = a("furnace_food");
+   public static final des f = a("furnace_blocks");
+   public static final des g = a("furnace_misc");
+   public static final des h = a("blast_furnace_blocks");
+   public static final des i = a("blast_furnace_misc");
+   public static final des j = a("smoker_food");
+   public static final des k = a("stonecutter");
+   public static final des l = a("smithing");
+   public static final des m = a("campfire");
 
-public record der<T extends dee<?>>(dfq a, Optional<dej<T>> b) {
-   public static <T extends dee<?>> yw<wj, der<T>> a() {
-      return yw.a(dfq.b, der::b, $$0 -> new der<>($$0, Optional.empty()));
+   private static des a(String $$0) {
+      return js.a(mg.az, $$0, new des());
    }
 
-   public dfq b() {
-      return this.a;
-   }
-
-   public Optional<dej<T>> c() {
-      return this.b;
-   }
-
-   public static record a<T extends dee<?>>(dea a, der<T> b) {
-
-      public static <T extends dee<?>> yw<wj, der.a<T>> a() {
-         return yw.a(dea.a, der.a::b, der.a(), der.a::c, der.a::new);
-      }
-
-      public dea b() {
-         return this.a;
-      }
-
-      public der<T> c() {
-         return this.b;
-      }
-   }
-
-   public static record b<T extends dee<?>>(List<der.a<T>> a) {
-      public static <T extends dee<?>> der.b<T> a() {
-         return new der.b<>(List.of());
-      }
-
-      public static <T extends dee<?>> yw<wj, der.b<T>> b() {
-         return yw.a(der.a.<T>a().a(yu.a()), der.b::e, der.b::new);
-      }
-
-      public boolean a(czn $$0) {
-         return this.a.stream().anyMatch($$1 -> $$1.a.a($$0));
-      }
-
-      public der.b<T> b(czn $$0) {
-         return new der.b<>(this.a.stream().filter($$1 -> $$1.a.a($$0)).toList());
-      }
-
-      public boolean c() {
-         return this.a.isEmpty();
-      }
-
-      public int d() {
-         return this.a.size();
-      }
-
-      public List<der.a<T>> e() {
-         return this.a;
-      }
+   public static des a(js<des> $$0) {
+      return m;
    }
 }

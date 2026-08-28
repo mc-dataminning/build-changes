@@ -1,68 +1,108 @@
 import com.mojang.logging.LogUtils;
+import java.time.Instant;
+import java.util.UUID;
 import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface xu {
-   Logger a = LogUtils.getLogger();
-   xu b = xo::b;
-   xu c = $$0 -> {
-      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.g());
-      return null;
-   };
-
+public class xu {
+   static final Logger a = LogUtils.getLogger();
    @Nullable
-   xo updateAndValidate(xo var1);
+   xv b;
+   Instant c = Instant.EPOCH;
 
-   public static class a implements xu {
-      private final bab d;
-      private final BooleanSupplier e;
-      @Nullable
-      private xo f;
-      private boolean g = true;
+   public xu(UUID $$0, UUID $$1) {
+      this.b = xv.a($$0, $$1);
+   }
 
-      public a(bab $$0, BooleanSupplier $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      private boolean a(xo $$0) {
-         if ($$0.equals(this.f)) {
-            return true;
-         } else if (this.f != null && !$$0.k().a(this.f.k())) {
-            a.error(
-               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{$$0.g(), this.f.k().b(), this.f.k().d(), $$0.k().b(), $$0.k().d()}
-            );
-            return false;
-         } else {
-            return true;
-         }
-      }
-
-      private boolean b(xo $$0) {
-         if (this.e.getAsBoolean()) {
-            a.error("Received message from player with expired profile public key: {}", $$0);
-            return false;
-         } else if (!$$0.a(this.d)) {
-            a.error("Received message with invalid signature from {}", $$0.g());
-            return false;
-         } else {
-            return this.a($$0);
-         }
-      }
-
-      @Nullable
-      @Override
-      public xo updateAndValidate(xo $$0) {
-         this.g = this.g && this.b($$0);
-         if (!this.g) {
+   public xu.c a(bae $$0) {
+      return $$1 -> {
+         xv $$2 = this.b;
+         if ($$2 == null) {
             return null;
          } else {
-            this.f = $$0;
-            return $$0;
+            this.b = $$2.a();
+            return new xm($$0.sign($$2x -> xq.a($$2x, $$2, $$1)));
          }
+      };
+   }
+
+   public xu.b a(final csb $$0) {
+      final bad $$1 = $$0.a();
+      return new xu.b() {
+         @Override
+         public xq unpack(@Nullable xm $$0x, xt $$1x) throws xu.a {
+            if ($$0 == null) {
+               throw new xu.a(xu.a.a);
+            } else if ($$0.b().a()) {
+               throw new xu.a(xu.a.c);
+            } else {
+               xv $$2 = xu.this.b;
+               if ($$2 == null) {
+                  throw new xu.a(xu.a.b);
+               } else if ($$1.b().isBefore(xu.this.c)) {
+                  this.setChainBroken();
+                  throw new xu.a(xu.a.e);
+               } else {
+                  xu.this.c = $$1.b();
+                  xq $$3 = new xq($$2, $$0, $$1, null, xe.c);
+                  if (!$$3.a($$1)) {
+                     this.setChainBroken();
+                     throw new xu.a(xu.a.d);
+                  } else {
+                     if ($$3.a(Instant.now())) {
+                        xu.a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$1.a());
+                     }
+
+                     xu.this.b = $$2.a();
+                     return $$3;
+                  }
+               }
+            }
+         }
+
+         @Override
+         public void setChainBroken() {
+            xu.this.b = null;
+         }
+      };
+   }
+
+   public static class a extends ya {
+      static final xa a = xa.c("chat.disabled.missingProfileKey");
+      static final xa b = xa.c("chat.disabled.chain_broken");
+      static final xa c = xa.c("chat.disabled.expiredProfileKey");
+      static final xa d = xa.c("chat.disabled.invalid_signature");
+      static final xa e = xa.c("chat.disabled.out_of_order_chat");
+
+      public a(xa $$0) {
+         super($$0);
       }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      static xu.b unsigned(UUID $$0, BooleanSupplier $$1) {
+         return ($$2, $$3) -> {
+            if ($$1.getAsBoolean()) {
+               throw new xu.a(xu.a.a);
+            } else {
+               return xq.a($$0, $$3.a());
+            }
+         };
+      }
+
+      xq unpack(@Nullable xm var1, xt var2) throws xu.a;
+
+      default void setChainBroken() {
+      }
+   }
+
+   @FunctionalInterface
+   public interface c {
+      xu.c a = $$0 -> null;
+
+      @Nullable
+      xm pack(xt var1);
    }
 }

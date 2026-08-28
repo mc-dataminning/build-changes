@@ -1,147 +1,94 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public abstract class cua extends ctz implements cue {
-   private jo<czn> b = jo.a(36, czn.k);
-   @Nullable
-   private alf<ezy> c;
-   private long d;
+public interface cua<Context, Condition extends cua.b<Context>> {
+   List<cua.a<Context, Condition>> a();
 
-   protected cua(bwr<?> $$0, djm $$1) {
-      super($$0, $$1);
-   }
+   static <C, T> Stream<T> a(Stream<T> $$0, Function<T, cua<C, ?>> $$1, C $$2) {
+      List<cua.c<C, T>> $$3 = new ArrayList<>();
+      $$0.forEach($$2x -> {
+         cua<C, ?> $$3x = $$1.apply((T)$$2x);
 
-   @Override
-   public void a(arq $$0, bux $$1) {
-      super.a($$0, $$1);
-      this.a($$1, $$0, this);
-   }
+         for (cua.a<C, ?> $$4x : $$3x.a()) {
+            $$3.add(new cua.c<>((T)$$2x, $$4x.b(), (cua.b<C>)DataFixUtils.orElseGet($$4x.a(), cua.b::alwaysTrue)));
+         }
+      });
+      $$3.sort(cua.c.a);
+      Iterator<cua.c<C, T>> $$4 = $$3.iterator();
+      int $$5 = Integer.MIN_VALUE;
 
-   @Override
-   public czn a(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public czn a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public czn b(int $$0) {
-      return this.f_($$0);
-   }
-
-   @Override
-   public void a(int $$0, czn $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public bya a_(int $$0) {
-      return this.h_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(crm $$0) {
-      return this.g($$0);
-   }
-
-   @Override
-   public void a(bwi.d $$0) {
-      if (!this.dU().C && $$0.a()) {
-         buc.a(this.dU(), this, this);
+      while ($$4.hasNext()) {
+         cua.c<C, T> $$6 = $$4.next();
+         if ($$6.c < $$5) {
+            $$4.remove();
+         } else if ($$6.d.test($$2)) {
+            $$5 = $$6.c;
+         } else {
+            $$4.remove();
+         }
       }
 
-      super.a($$0);
+      return $$3.stream().map(cua.c::a);
    }
 
-   @Override
-   protected void b(tz $$0) {
-      super.b($$0);
-      this.a($$0, this.dW());
+   static <C, T> Optional<T> a(Stream<T> $$0, Function<T, cua<C, ?>> $$1, azx $$2, C $$3) {
+      List<T> $$4 = a($$0, $$1, $$3).toList();
+      return ag.b($$4, $$2);
    }
 
-   @Override
-   protected void a(tz $$0) {
-      super.a($$0);
-      this.b($$0, this.dW());
+   static <Context, Condition extends cua.b<Context>> List<cua.a<Context, Condition>> a(Condition $$0, int $$1) {
+      return List.of(new cua.a<>($$0, $$1));
    }
 
-   @Override
-   public bug a(crm $$0, buf $$1) {
-      return this.b_($$0);
+   static <Context, Condition extends cua.b<Context>> List<cua.a<Context, Condition>> a(int $$0) {
+      return List.of(new cua.a<>(Optional.empty(), $$0));
    }
 
-   @Override
-   protected ffc a(ffc $$0) {
-      float $$1 = 0.98F;
-      if (this.c == null) {
-         int $$2 = 15 - cvf.b(this);
-         $$1 += (float)$$2 * 0.001F;
+   public static record a<Context, Condition extends cua.b<Context>>(Optional<Condition> a, int b) {
+      public a(Condition $$0, int $$1) {
+         this(Optional.of($$0), $$1);
       }
 
-      if (this.bh()) {
-         $$1 *= 0.95F;
+      public a(int $$0) {
+         this(Optional.empty(), $$0);
       }
 
-      return $$0.d((double)$$1, 0.0, (double)$$1);
-   }
-
-   @Override
-   public void a() {
-      this.ag_();
-   }
-
-   public void a(alf<ezy> $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Nullable
-   @Override
-   public cvf createMenu(int $$0, crl $$1, crm $$2) {
-      if (this.c != null && $$2.V_()) {
-         return null;
-      } else {
-         this.f($$1.h);
-         return this.a($$0, $$1);
+      public static <Context, Condition extends cua.b<Context>> Codec<cua.a<Context, Condition>> a(Codec<Condition> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.optionalFieldOf("condition").forGetter(cua.a::a), Codec.INT.fieldOf("priority").forGetter(cua.a::b)).apply($$1, cua.a::new)
+         );
       }
    }
 
-   protected abstract cvf a(int var1, crl var2);
-
-   @Nullable
-   @Override
-   public alf<ezy> q() {
-      return this.c;
+   @FunctionalInterface
+   public interface b<C> extends Predicate<C> {
+      static <C> cua.b<C> alwaysTrue() {
+         return $$0 -> true;
+      }
    }
 
-   @Override
-   public void a(@Nullable alf<ezy> $$0) {
-      this.c = $$0;
-   }
+   public static record c<C, T>(T b, int c, cua.b<C> d) {
+      public static final Comparator<cua.c<?, ?>> a = Comparator.comparingInt(cua.c::b).reversed();
 
-   @Override
-   public long s() {
-      return this.d;
-   }
+      public T a() {
+         return this.b;
+      }
 
-   @Override
-   public void a(long $$0) {
-      this.d = $$0;
-   }
+      public int b() {
+         return this.c;
+      }
 
-   @Override
-   public jo<czn> t() {
-      return this.b;
-   }
-
-   @Override
-   public void u() {
-      this.b = jo.a(this.b(), czn.k);
+      public cua.b<C> c() {
+         return this.d;
+      }
    }
 }

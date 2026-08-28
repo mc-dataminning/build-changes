@@ -1,101 +1,147 @@
-import javax.annotation.Nullable;
+public class goy extends gqk {
+   static final azx a = azx.a();
+   private final gqf b;
 
-public class goy extends goz {
-   private final iv a;
-   private final float b;
-   private final float F;
-
-   public goy(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, eat $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, iv.a($$1, $$2, $$3));
-   }
-
-   public goy(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, eat $$7, iv $$8) {
+   goy(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gqf $$7) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.a = $$8;
-      this.a(fpt.Q().ap().a().a($$7));
-      this.u = 1.0F;
-      this.v = 0.6F;
-      this.w = 0.6F;
-      this.x = 0.6F;
-      if (!$$7.a(dmt.i)) {
-         int $$9 = fpt.Q().aw().a($$7, $$0, $$8, 0);
-         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
-         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
-         this.x *= (float)($$9 & 0xFF) / 255.0F;
-      }
-
-      this.D /= 2.0F;
-      this.b = this.r.i() * 3.0F;
-      this.F = this.r.i() * 3.0F;
+      this.B = 0.96F;
+      this.C = true;
+      this.b = $$7;
+      this.D *= 0.75F;
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
-   public god b() {
-      return god.a;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.b + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.b / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.F / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.F + 1.0F) / 4.0F);
+   public gpo b() {
+      return gpo.c;
    }
 
    @Override
    public int a(float $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == 0 && this.c.C(this.a) ? gqm.a(this.c, this.a) : $$1;
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = azo.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
+      }
+
+      return $$3 | $$4 << 16;
    }
 
-   @Nullable
-   static goy a(lq $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      eat $$8 = $$0.b();
-      return !$$8.l() && !$$8.a(dmt.ca) && $$8.D() ? new goy($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
    }
 
-   public static class a implements goc<lq> {
-      @Nullable
-      public gnz a(lq $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gnz $$8 = goy.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         if ($$8 != null) {
-            $$8.b(0.0, 0.0, 0.0);
-            $$8.a($$1.A.a(10) + 1);
-         }
+   public static class a implements gpn<mc> {
+      private final double a = 0.25;
+      private final gqf b;
 
+      public a(gqf $$0) {
+         this.b = $$0;
+      }
+
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         goy $$8 = new goy($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(1.0F, 0.9F, 1.0F);
+         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
+         int $$9 = 2;
+         int $$10 = 4;
+         $$8.a($$1.A.a(2) + 2);
          return $$8;
       }
    }
 
-   public static class b implements goc<lq> {
-      @Nullable
-      public gnz a(lq $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gnz $$8 = goy.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         if ($$8 != null) {
-            $$8.b($$1.A.k() / 30.0, $$6 + $$1.A.k() / 2.0, $$1.A.k() / 30.0);
-            $$8.a($$1.A.a(20) + 20);
+   public static class b implements gpn<mc> {
+      private final gqf a;
+
+      public b(gqf $$0) {
+         this.a = $$0;
+      }
+
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         goy $$8 = new goy($$1, $$2, $$3, $$4, 0.5 - goy.a.j(), $$6, 0.5 - goy.a.j(), this.a);
+         if ($$1.A.h()) {
+            $$8.a(0.6F, 1.0F, 0.8F);
+         } else {
+            $$8.a(0.08F, 0.4F, 0.4F);
          }
 
+         $$8.k *= 0.2F;
+         if ($$5 == 0.0 && $$7 == 0.0) {
+            $$8.j *= 0.1F;
+            $$8.l *= 0.1F;
+         }
+
+         $$8.a((int)(8.0 / ($$1.A.j() * 0.8 + 0.2)));
          return $$8;
       }
    }
 
-   public static class c implements goc<lq> {
-      @Nullable
-      public gnz a(lq $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return goy.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public static class c implements gpn<mc> {
+      private final double a = 0.01;
+      private final gqf b;
+
+      public c(gqf $$0) {
+         this.b = $$0;
+      }
+
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         goy $$8 = new goy($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         if ($$1.A.h()) {
+            $$8.a(0.29F, 0.58F, 0.51F);
+         } else {
+            $$8.a(0.43F, 0.77F, 0.62F);
+         }
+
+         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.A.a(30) + 10);
+         return $$8;
+      }
+   }
+
+   public static class d implements gpn<mc> {
+      private final double a = 0.01;
+      private final gqf b;
+
+      public d(gqf $$0) {
+         this.b = $$0;
+      }
+
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         goy $$8 = new goy($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(1.0F, 0.9F, 1.0F);
+         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.A.a(30) + 10);
+         return $$8;
+      }
+   }
+
+   public static class e implements gpn<mc> {
+      private final double a = 0.01;
+      private final gqf b;
+
+      public e(gqf $$0) {
+         this.b = $$0;
+      }
+
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         goy $$8 = new goy($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(0.91F, 0.55F, 0.08F);
+         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.A.a(30) + 10);
+         return $$8;
       }
    }
 }

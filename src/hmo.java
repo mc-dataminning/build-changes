@@ -1,8 +1,2 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface hmo {
+public record hmo(int a, int b) {
 }

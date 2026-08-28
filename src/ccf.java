@@ -1,22 +1,28 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class ccf {
-   private static final int a = 36;
+public class ccf<T extends bxw> extends bzl<T> {
+   private final float c;
 
-   public static bzb<bxj> a() {
-      return ccn.a(
-         (Function<ccn.b<bxj>, ? extends App<ccn.c<bxj>, ccq<bxj>>>)($$0 -> $$0.group($$0.a(cgl.y), $$0.a(cgl.z), $$0.a(cgl.B))
-               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
-                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bxj>a($$2).filter($$1xx -> $$1xx.g($$5) <= 36.0).isPresent();
-                     if (!$$7) {
-                        $$1.b();
-                        $$2.b();
-                        $$5.eb().a($$4.af(), $$4.ae());
-                     }
+   public ccf(float $$0) {
+      super(ImmutableMap.of());
+      this.c = $$0;
+   }
 
-                     return true;
-                  }))
-      );
+   public static <T extends bxw> boolean a(T $$0) {
+      return $$0.bi() && $$0.b(axj.a) > $$0.dp() || $$0.bv();
+   }
+
+   protected boolean a(ars $$0, bxw $$1) {
+      return a($$1);
+   }
+
+   protected boolean a(ars $$0, bxw $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(ars $$0, bxw $$1, long $$2) {
+      if ($$1.dY().i() < this.c) {
+         $$1.N().a();
+      }
    }
 }

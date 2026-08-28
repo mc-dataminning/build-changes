@@ -1,18 +1,12 @@
-import com.google.common.collect.Lists;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import com.mojang.serialization.DynamicOps;
 
 public class beh extends DataFix {
    public beh(Schema $$0) {
@@ -20,80 +14,23 @@ public class beh extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      return this.a(this.getInputSchema().getTypeRaw(biz.t), this.getOutputSchema().getTypeRaw(biz.t));
+      Type<?> $$0 = this.getInputSchema().getType(bjb.D);
+      Type<?> $$1 = this.getOutputSchema().getType(bjb.D);
+      OpticFinder<String> $$2 = DSL.fieldFinder("id", bkw.a());
+      OpticFinder<String> $$3 = $$0.findField("CustomName");
+      Type<?> $$4 = $$1.findFieldType("CustomName");
+      return this.fixTypeEverywhereTyped("EntityCustomNameToComponentFix", $$0, $$1, $$3x -> a($$3x, $$2, $$3, $$4));
    }
 
-   private <ItemStackOld, ItemStackNew> TypeRewriteRule a(Type<ItemStackOld> $$0, Type<ItemStackNew> $$1) {
-      Type<Pair<String, Either<List<ItemStackOld>, Unit>>> $$2 = DSL.named(biz.A.typeName(), DSL.optional(DSL.field("Equipment", DSL.list($$0))));
-      Type<Pair<String, Pair<Either<List<ItemStackNew>, Unit>, Pair<Either<List<ItemStackNew>, Unit>, Pair<Either<ItemStackNew, Unit>, Either<ItemStackNew, Unit>>>>>> $$3 = DSL.named(
-         biz.A.typeName(),
-         DSL.and(
-            DSL.optional(DSL.field("ArmorItems", DSL.list($$1))),
-            DSL.optional(DSL.field("HandItems", DSL.list($$1))),
-            DSL.optional(DSL.field("body_armor_item", $$1)),
-            DSL.optional(DSL.field("saddle", $$1))
-         )
-      );
-      if (!$$2.equals(this.getInputSchema().getType(biz.A))) {
-         throw new IllegalStateException("Input entity_equipment type does not match expected");
-      } else if (!$$3.equals(this.getOutputSchema().getType(biz.A))) {
-         throw new IllegalStateException("Output entity_equipment type does not match expected");
-      } else {
-         return TypeRewriteRule.seq(
-            this.fixTypeEverywhereTyped(
-               "EntityEquipmentToArmorAndHandFix - drop chances", this.getInputSchema().getType(biz.D), $$0x -> $$0x.update(DSL.remainderFinder(), beh::a)
-            ),
-            this.fixTypeEverywhere(
-               "EntityEquipmentToArmorAndHandFix - equipment",
-               $$2,
-               $$3,
-               $$1x -> {
-                  ItemStackNew $$2x = (ItemStackNew)((Pair)$$1.read(new Dynamic($$1x).emptyMap())
-                        .result()
-                        .orElseThrow(() -> new IllegalStateException("Could not parse newly created empty itemstack.")))
-                     .getFirst();
-                  Either<ItemStackNew, Unit> $$3x = Either.right(DSL.unit());
-                  return $$2xx -> $$2xx.mapSecond($$2xxx -> {
-                        List<ItemStackOld> $$3xx = (List<ItemStackOld>)$$2xxx.map(Function.identity(), $$0xxxx -> List.of());
-                        Either<List<ItemStackNew>, Unit> $$4 = Either.right(DSL.unit());
-                        Either<List<ItemStackNew>, Unit> $$5 = Either.right(DSL.unit());
-                        if (!$$3xx.isEmpty()) {
-                           $$4 = Either.left(Lists.newArrayList(new Object[]{$$3xx.getFirst(), $$2x}));
-                        }
-
-                        if ($$3xx.size() > 1) {
-                           List<ItemStackNew> $$6 = Lists.newArrayList(new Object[]{$$2x, $$2x, $$2x, $$2x});
-
-                           for (int $$7 = 1; $$7 < Math.min($$3xx.size(), 5); $$7++) {
-                              $$6.set($$7 - 1, (ItemStackNew)$$3xx.get($$7));
-                           }
-
-                           $$5 = Either.left($$6);
-                        }
-
-                        return Pair.of($$5, Pair.of($$4, Pair.of($$3x, $$3x)));
-                     });
-               }
-            )
-         );
-      }
+   private static <T> Typed<?> a(Typed<?> $$0, OpticFinder<String> $$1, OpticFinder<String> $$2, Type<T> $$3) {
+      return $$0.update($$2, $$3, $$3x -> {
+         String $$4 = $$0.getOptional($$1).orElse("");
+         Dynamic<?> $$5 = a($$0.getOps(), $$3x, $$4);
+         return ag.a($$3, $$5).getValue();
+      });
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<? extends Stream<? extends Dynamic<?>>> $$1 = $$0.get("DropChances").asStreamOpt().result();
-      $$0 = $$0.remove("DropChances");
-      if ($$1.isPresent()) {
-         Iterator<Float> $$2 = Stream.concat($$1.get().map($$0x -> $$0x.asFloat(0.0F)), Stream.generate(() -> 0.0F)).iterator();
-         float $$3 = $$2.next();
-         if ($$0.get("HandDropChances").result().isEmpty()) {
-            $$0 = $$0.set("HandDropChances", $$0.createList(Stream.of($$3, 0.0F).map($$0::createFloat)));
-         }
-
-         if ($$0.get("ArmorDropChances").result().isEmpty()) {
-            $$0 = $$0.set("ArmorDropChances", $$0.createList(Stream.of($$2.next(), $$2.next(), $$2.next(), $$2.next()).map($$0::createFloat)));
-         }
-      }
-
-      return $$0;
+   private static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1, String $$2) {
+      return "minecraft:commandblock_minecart".equals($$2) ? new Dynamic($$0, $$0.createString($$1)) : bbg.a($$0, $$1);
    }
 }

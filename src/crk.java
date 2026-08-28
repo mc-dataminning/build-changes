@@ -1,63 +1,68 @@
-public record crk(boolean c, boolean d, boolean e, boolean f, boolean g, boolean h, boolean i) {
-   private static final byte j = 1;
-   private static final byte k = 2;
-   private static final byte l = 4;
-   private static final byte m = 8;
-   private static final byte n = 16;
-   private static final byte o = 32;
-   private static final byte p = 64;
-   public static final yw<vu, crk> a = new yw<vu, crk>() {
-      public void a(vu $$0, crk $$1) {
-         byte $$2 = 0;
-         $$2 = (byte)($$2 | ($$1.a() ? 1 : 0));
-         $$2 = (byte)($$2 | ($$1.b() ? 2 : 0));
-         $$2 = (byte)($$2 | ($$1.c() ? 4 : 0));
-         $$2 = (byte)($$2 | ($$1.d() ? 8 : 0));
-         $$2 = (byte)($$2 | ($$1.e() ? 16 : 0));
-         $$2 = (byte)($$2 | ($$1.f() ? 32 : 0));
-         $$2 = (byte)($$2 | ($$1.g() ? 64 : 0));
-         $$0.l($$2);
-      }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-      public crk a(vu $$0) {
-         byte $$1 = $$0.readByte();
-         boolean $$2 = ($$1 & 1) != 0;
-         boolean $$3 = ($$1 & 2) != 0;
-         boolean $$4 = ($$1 & 4) != 0;
-         boolean $$5 = ($$1 & 8) != 0;
-         boolean $$6 = ($$1 & 16) != 0;
-         boolean $$7 = ($$1 & 32) != 0;
-         boolean $$8 = ($$1 & 64) != 0;
-         return new crk($$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      }
-   };
-   public static crk b = new crk(false, false, false, false, false, false, false);
+public record crk(jf<cro> e, jf<crm> f, int g) {
+   public static final int a = 1;
+   public static final int b = 5;
+   private static final int[] h = new int[]{0, 10, 70, 150, 250};
+   public static final Codec<crk> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               mg.w.r().fieldOf("type").orElseGet(() -> mg.w.b(cro.c)).forGetter($$0x -> $$0x.e),
+               mg.x.r().fieldOf("profession").orElseGet(() -> mg.x.b(crm.b)).forGetter($$0x -> $$0x.f),
+               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, crk::new)
+   );
+   public static final yy<wl, crk> d = yy.a(yw.b(mh.aE), crk::a, yw.b(mh.aD), crk::b, yw.h, crk::c, crk::new);
 
-   public boolean a() {
-      return this.c;
+   public crk(jf<cro> e, jf<crm> f, int g) {
+      g = Math.max(1, g);
+      this.e = e;
+      this.f = f;
+      this.g = g;
    }
 
-   public boolean b() {
-      return this.d;
+   public crk a(jf<cro> $$0) {
+      return new crk($$0, this.f, this.g);
    }
 
-   public boolean c() {
+   public crk a(jg.a $$0, alh<cro> $$1) {
+      return this.a($$0.d($$1));
+   }
+
+   public crk b(jf<crm> $$0) {
+      return new crk(this.e, $$0, this.g);
+   }
+
+   public crk b(jg.a $$0, alh<crm> $$1) {
+      return this.b($$0.d($$1));
+   }
+
+   public crk a(int $$0) {
+      return new crk(this.e, this.f, $$0);
+   }
+
+   public static int b(int $$0) {
+      return d($$0) ? h[$$0 - 1] : 0;
+   }
+
+   public static int c(int $$0) {
+      return d($$0) ? h[$$0] : 0;
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 >= 1 && $$0 < 5;
+   }
+
+   public jf<cro> a() {
       return this.e;
    }
 
-   public boolean d() {
+   public jf<crm> b() {
       return this.f;
    }
 
-   public boolean e() {
+   public int c() {
       return this.g;
-   }
-
-   public boolean f() {
-      return this.h;
-   }
-
-   public boolean g() {
-      return this.i;
    }
 }

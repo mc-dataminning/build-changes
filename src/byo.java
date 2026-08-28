@@ -1,95 +1,38 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class byo {
-   private final Map<jf<byk>, byl> a;
-
-   byo(Map<jf<byk>, byl> $$0) {
-      this.a = $$0;
-   }
-
-   private byl d(jf<byk> $$0) {
-      byl $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
+public interface byo {
+   byn a = ($$0, $$1, $$2) -> true;
+   byn b = ($$0, $$1, $$2) -> {
+      if ($$2 != null && $$0.E_().a($$1)) {
+         iv $$3 = $$1.d();
+         return $$0.b_($$1).a(axj.a) && !$$0.a_($$3).d($$0, $$3);
       } else {
-         return $$1;
+         return false;
       }
-   }
-
-   public double a(jf<byk> $$0) {
-      return this.d($$0).g();
-   }
-
-   public double b(jf<byk> $$0) {
-      return this.d($$0).b();
-   }
-
-   public double a(jf<byk> $$0, alg $$1) {
-      byn $$2 = this.d($$0).a($$1);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
-      } else {
-         return $$2.b();
-      }
-   }
-
-   @Nullable
-   public byl a(Consumer<byl> $$0, jf<byk> $$1) {
-      byl $$2 = this.a.get($$1);
-      if ($$2 == null) {
-         return null;
-      } else {
-         byl $$3 = new byl($$1, $$0);
-         $$3.a($$2);
-         return $$3;
-      }
-   }
-
-   public static byo.a a() {
-      return new byo.a();
-   }
-
-   public boolean c(jf<byk> $$0) {
-      return this.a.containsKey($$0);
-   }
-
-   public boolean b(jf<byk> $$0, alg $$1) {
-      byl $$2 = this.a.get($$0);
-      return $$2 != null && $$2.a($$1) != null;
-   }
-
-   public static class a {
-      private final Builder<jf<byk>, byl> a = ImmutableMap.builder();
-      private boolean b;
-
-      private byl b(jf<byk> $$0) {
-         byl $$1 = new byl($$0, $$1x -> {
-            if (this.b) {
-               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
-            }
-         });
-         this.a.put($$0, $$1);
-         return $$1;
+   };
+   byn c = ($$0, $$1, $$2) -> $$2 != null && $$0.E_().a($$1) ? $$0.b_($$1).a(axj.b) : false;
+   byn d = new byn() {
+      @Override
+      public boolean isSpawnPositionOk(dka $$0, iv $$1, @Nullable bxc<?> $$2) {
+         if ($$2 != null && $$0.E_().a($$1)) {
+            iv $$3 = $$1.d();
+            iv $$4 = $$1.e();
+            ebe $$5 = $$0.a_($$4);
+            return !$$5.a($$0, $$4, $$2) ? false : this.a($$0, $$1, $$2) && this.a($$0, $$3, $$2);
+         } else {
+            return false;
+         }
       }
 
-      public byo.a a(jf<byk> $$0) {
-         this.b($$0);
-         return this;
+      private boolean a(dka $$0, iv $$1, bxc<?> $$2) {
+         ebe $$3 = $$0.a_($$1);
+         return dki.a($$0, $$1, $$3, $$3.y(), $$2);
       }
 
-      public byo.a a(jf<byk> $$0, double $$1) {
-         byl $$2 = this.b($$0);
-         $$2.a($$1);
-         return this;
+      @Override
+      public iv a(dka $$0, iv $$1) {
+         iv $$2 = $$1.e();
+         return $$0.a_($$2).a(eyd.a) ? $$2 : $$1;
       }
-
-      public byo a() {
-         this.b = true;
-         return new byo(this.a.buildKeepingLast());
-      }
-   }
+   };
 }

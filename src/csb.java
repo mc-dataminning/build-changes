@@ -1,64 +1,83 @@
-public abstract class csb extends crv implements cse {
-   private static final float d = 12.25F;
-   private static final akj<czn> e = akn.a(csb.class, akl.h);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.UUID;
 
-   public csb(bwr<? extends csb> $$0, djm $$1) {
-      super($$0, $$1);
-   }
+public record csb(csb.a d) {
+   public static final xa a = xa.c("multiplayer.disconnect.expired_public_key");
+   private static final xa e = xa.c("multiplayer.disconnect.invalid_public_key_signature");
+   public static final Duration b = Duration.ofHours(8L);
+   public static final Codec<csb> c = csb.a.a.xmap(csb::new, csb::b);
 
-   public csb(bwr<? extends csb> $$0, double $$1, double $$2, double $$3, ffc $$4, djm $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public csb(bwr<? extends csb> $$0, bxj $$1, ffc $$2, djm $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   public void a(czn $$0) {
-      if ($$0.f()) {
-         this.ar().a(e, this.o());
+   public static csb a(bad $$0, UUID $$1, csb.a $$2) throws csb.b {
+      if (!$$2.a($$0, $$1)) {
+         throw new csb.b(e);
       } else {
-         this.ar().a(e, $$0.c(1));
+         return new csb($$2);
       }
    }
 
-   @Override
-   protected void aK() {
+   public bad a() {
+      return bad.a(this.d.c, "SHA256withRSA");
    }
 
-   @Override
-   public czn f() {
-      return this.ar().a(e);
+   public csb.a b() {
+      return this.d;
    }
 
-   @Override
-   protected void a(akn.a $$0) {
-      $$0.a(e, this.o());
+   public static record a(Instant b, PublicKey c, byte[] d) {
+      private static final int e = 4096;
+      public static final Codec<csb.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ayw.q.fieldOf("expires_at").forGetter(csb.a::b), ayl.f.fieldOf("key").forGetter(csb.a::c), ayw.r.fieldOf("signature_v2").forGetter(csb.a::d)
+               )
+               .apply($$0, csb.a::new)
+      );
+
+      public a(vw $$0) {
+         this($$0.t(), $$0.u(), $$0.a(4096));
+      }
+
+      public void a(vw $$0) {
+         $$0.a(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
+      }
+
+      boolean a(bad $$0, UUID $$1) {
+         return $$0.a(this.a($$1), this.d);
+      }
+
+      private byte[] a(UUID $$0) {
+         byte[] $$1 = this.c.getEncoded();
+         byte[] $$2 = new byte[24 + $$1.length];
+         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
+         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
+         return $$2;
+      }
+
+      public boolean a() {
+         return this.b.isBefore(Instant.now());
+      }
+
+      public boolean a(Duration $$0) {
+         return this.b.plus($$0).isBefore(Instant.now());
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof csb.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
+      }
    }
 
-   @Override
-   public void b(tz $$0) {
-      ale<uw> $$1 = this.dW().a(un.a);
-      $$0.a("Item", czn.b, $$1, this.f());
-   }
-
-   @Override
-   public void a(tz $$0) {
-      ale<uw> $$1 = this.dW().a(un.a);
-      this.a($$0.<czn>a("Item", czn.b, $$1).orElse(this.o()));
-   }
-
-   private czn o() {
-      return new czn(czr.vg);
-   }
-
-   @Override
-   public bya a_(int $$0) {
-      return $$0 == 0 ? bya.a(this::f, this::a) : super.a_($$0);
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      return this.af < 2 && $$0 < 12.25 ? false : super.a($$0);
+   public static class b extends ya {
+      public b(xa $$0) {
+         super($$0);
+      }
    }
 }

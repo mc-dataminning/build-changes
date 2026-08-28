@@ -1,29 +1,60 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class epi extends epj {
-   public static final MapCodec<epi> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, epi::new));
+public class epi extends epl {
+   public static final MapCodec<epi> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(epi::new, $$0 -> $$0.b);
+   private final float b;
 
-   public epi(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   protected epm<?> a() {
+      return epm.b;
+   }
+
+   public epi(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected epk<?> a() {
-      return epk.a;
+   public void a(epl.a $$0) {
+      azx $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            iv $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               a($$3, dwp.d, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            iv $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               a($$4, dwp.f, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            iv $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               a($$5, dwp.e, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            iv $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               a($$6, dwp.c, $$0);
+            }
+         }
+      });
    }
 
-   @Override
-   public List<eno.a> a(djs $$0, BiConsumer<iv, eat> $$1, azv $$2, int $$3, iv $$4, emy $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
+   private static void a(iv $$0, ebv $$1, epl.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
 
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
+      for (iv var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.e();
       }
-
-      return ImmutableList.of(new eno.a($$4.b($$3), 0, false));
    }
 }

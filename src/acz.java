@@ -1,26 +1,40 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record acz(ffc b, Optional<ffc> c, lw d, jf<awm> e) implements zf<abu> {
-   public static final yw<wj, acz> a = yw.a(ffc.b, acz::b, ffc.b.a(yu::a), acz::e, ly.bl, acz::f, awm.d, acz::g, acz::new);
+public class acz implements zh<abw> {
+   public static final yy<vw, acz> a = zh.a(acz::a, acz::new);
+   private final int b;
+   private final byte c;
 
-   @Override
-   public zh<acz> a() {
-      return agn.E;
+   public acz(bwt $$0, byte $$1) {
+      this.b = $$0.ao();
+      this.c = $$1;
    }
 
-   public void a(abu $$0) {
+   private acz(vw $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
+   }
+
+   private void a(vw $$0) {
+      $$0.q(this.b);
+      $$0.l(this.c);
+   }
+
+   @Override
+   public zj<acz> a() {
+      return agp.C;
+   }
+
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public Optional<ffc> e() {
+   @Nullable
+   public bwt a(djx $$0) {
+      return $$0.a(this.b);
+   }
+
+   public byte b() {
       return this.c;
-   }
-
-   public lw f() {
-      return this.d;
-   }
-
-   public jf<awm> g() {
-      return this.e;
    }
 }

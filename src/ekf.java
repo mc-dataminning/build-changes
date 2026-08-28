@@ -1,47 +1,40 @@
 import com.mojang.serialization.Codec;
 
-public class ekf extends ejy<emj> {
-   public ekf(Codec<emj> $$0) {
+public class ekf extends ekk<emn> {
+   public ekf(Codec<emn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eka<emj> $$0) {
-      dkl $$1 = $$0.b();
-      iv $$2 = $$0.e();
-      azv $$3 = $$0.d();
-      if (!$$1.v($$2)) {
-         return false;
-      } else {
-         eat $$4 = $$1.a_($$2.d());
-         if (!$$4.a(dmt.em) && !$$4.a(dmt.ep) && !$$4.a(dmt.pZ)) {
-            return false;
-         } else {
-            $$1.a($$2, dmt.et.m(), 2);
+   public boolean a(ekm<emn> $$0) {
+      iv $$1 = $$0.e();
+      dkw $$2 = $$0.b();
+      emn $$3 = $$0.f();
 
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               iv $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).l()) {
-                  int $$7 = 0;
-
-                  for (jb $$8 : jb.values()) {
-                     if ($$1.a_($$6.a($$8)).a(dmt.et)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
-
-                  if ($$7 == 1) {
-                     $$1.a($$6, dmt.et.m(), 2);
-                  }
+      for (iv $$4 : iv.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
+         boolean $$5 = $$4.u() == $$1.u();
+         boolean $$6 = $$4.v() == $$1.v();
+         boolean $$7 = $$4.w() == $$1.w();
+         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
+         if ($$5 && $$6 && $$7) {
+            iv $$9 = $$4.j();
+            this.a($$2, $$9, dne.ll.m());
+            $$3.b().ifPresent($$3x -> {
+               if ($$2.c_($$9) instanceof dzy $$5x) {
+                  $$5x.a($$3x, $$3.c());
                }
-            }
-
-            return true;
+            });
+         } else if ($$6) {
+            this.a($$2, $$4, dne.a.m());
+         } else if ($$8 && $$5 && $$7) {
+            this.a($$2, $$4, dne.I.m());
+         } else if (($$5 || $$7) && !$$8) {
+            this.a($$2, $$4, dne.I.m());
+         } else {
+            this.a($$2, $$4, dne.a.m());
          }
       }
+
+      return true;
    }
 }

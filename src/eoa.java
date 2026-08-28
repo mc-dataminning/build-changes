@@ -1,61 +1,28 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class eoa {
-   public static final Codec<eoa> d = mg.W.q().dispatch(eoa::a, eob::a);
-   protected final btl e;
-   protected final eod f;
-   protected final Optional<enx> g;
+public class eoa extends enw {
+   public static final MapCodec<eoa> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eoa::new));
 
-   protected static <P extends eoa> P3<Mu<P>, btl, eod, Optional<enx>> a(Instance<P> $$0) {
-      return $$0.group(
-         btl.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         eod.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         enx.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
-      );
+   public eoa(btw $$0, btw $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public eoa(btl $$0, eod $$1, Optional<enx> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   @Override
+   protected eoc<?> a() {
+      return eoc.f;
    }
 
-   protected abstract eob<?> a();
-
-   public abstract boolean a(djs var1, BiConsumer<iv, eat> var2, azv var3, iv var4, iv var5, emy var6);
-
-   protected boolean a(djs $$0, iv $$1) {
-      return elk.d($$0, $$1);
-   }
-
-   protected void a(djs $$0, BiConsumer<iv, eat> $$1, azv $$2, iv $$3, emy $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            enx $$5 = this.g.get();
-            iv $$6 = $$3.d();
-            if ($$2.i() < $$5.b() && $$0.a($$6, eas.a::l)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
-            }
-         }
+   @Override
+   protected void a(dkd $$0, eob.b $$1, azx $$2, enl $$3, int $$4, eob.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
    }
 
-   protected eat a(djs $$0, iv $$1, eat $$2) {
-      if ($$2.b(ebj.I)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(axh.a));
-         return $$2.b(ebj.I, Boolean.valueOf($$3));
-      } else {
-         return $$2;
-      }
-   }
-
-   public iv a(iv $$0, azv $$1) {
-      return $$0.b(this.e.a($$1));
+   @Override
+   protected boolean a(azx $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return azo.l((float)$$1 + 0.5F) + azo.l((float)$$3 + 0.5F) > (float)($$4 * $$4);
    }
 }

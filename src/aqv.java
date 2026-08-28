@@ -1,113 +1,65 @@
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public interface aqv<T> {
-   static <T> aqv<T> a(T $$0) {
-      return new aqv.b<>($$0);
-   }
-
-   static <T> aqv<T> a(String $$0) {
-      return a(() -> $$0);
-   }
-
-   static <T> aqv<T> a(Supplier<String> $$0) {
-      return new aqv.a<>($$0);
-   }
-
-   boolean a();
+public class aqv {
+   private static final int c = 33;
+   private static final int d = 32;
+   private static final int e = 31;
+   private static final eef f = eeb.a.a(eec.n);
+   public static final int a = f.c().c();
+   public static final int b = 33 + a;
 
    @Nullable
-   T b(@Nullable T var1);
-
-   @Nullable
-   static <R> R a(aqv<? extends R> $$0, @Nullable R $$1) {
-      R $$2 = (R)$$0.b(null);
-      return $$2 != null ? $$2 : $$1;
+   public static eec a(int $$0) {
+      return a($$0 - 33, null);
    }
 
    @Nullable
-   String b();
-
-   aqv<T> a(Consumer<T> var1);
-
-   <R> aqv<R> a(Function<T, R> var1);
-
-   <E extends Throwable> T b(Supplier<E> var1) throws E;
-
-   public static record a<T>(Supplier<String> a) implements aqv<T> {
-      @Override
-      public boolean a() {
-         return false;
-      }
-
-      @Nullable
-      @Override
-      public T b(@Nullable T $$0) {
-         return $$0;
-      }
-
-      @Override
-      public String b() {
-         return this.a.get();
-      }
-
-      @Override
-      public aqv<T> a(Consumer<T> $$0) {
-         return this;
-      }
-
-      @Override
-      public <R> aqv<R> a(Function<T, R> $$0) {
-         return new aqv.a(this.a);
-      }
-
-      @Override
-      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
-         throw $$0.get();
-      }
-
-      public Supplier<String> c() {
-         return this.a;
+   @Contract("_,!null->!null;_,_->_")
+   public static eec a(int $$0, @Nullable eec $$1) {
+      if ($$0 > a) {
+         return $$1;
+      } else {
+         return $$0 <= 0 ? eec.n : f.c().a($$0);
       }
    }
 
-   public static record b<T>(T a) implements aqv<T> {
-      @Override
-      public boolean a() {
-         return true;
-      }
+   public static eec b(int $$0) {
+      return a($$0, eec.c);
+   }
 
-      @Override
-      public T b(@Nullable T $$0) {
-         return this.a;
-      }
+   public static int a(eec $$0) {
+      return 33 + f.a($$0);
+   }
 
-      @Nullable
-      @Override
-      public String b() {
-         return null;
+   public static arg c(int $$0) {
+      if ($$0 <= 31) {
+         return arg.d;
+      } else if ($$0 <= 32) {
+         return arg.c;
+      } else {
+         return $$0 <= 33 ? arg.b : arg.a;
       }
+   }
 
-      @Override
-      public aqv<T> a(Consumer<T> $$0) {
-         $$0.accept(this.a);
-         return this;
-      }
+   public static int a(arg $$0) {
+      return switch ($$0) {
+         case a -> b;
+         case b -> 33;
+         case c -> 32;
+         case d -> 31;
+      };
+   }
 
-      @Override
-      public <R> aqv<R> a(Function<T, R> $$0) {
-         return new aqv.b<>($$0.apply(this.a));
-      }
+   public static boolean d(int $$0) {
+      return $$0 <= 31;
+   }
 
-      @Override
-      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
-         return this.a;
-      }
+   public static boolean e(int $$0) {
+      return $$0 <= 32;
+   }
 
-      public T c() {
-         return this.a;
-      }
+   public static boolean f(int $$0) {
+      return $$0 <= b;
    }
 }

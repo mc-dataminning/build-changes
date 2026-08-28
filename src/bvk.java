@@ -1,173 +1,53 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bvk implements cut {
-   public static final Codec<jf<bvk>> a = mg.d.r();
-   public static final yw<wj, jf<bvk>> b = yu.b(mh.W);
-   private static final int c = azm.d(38.25F);
-   private final Map<jf<byk>, bvk.a> d = new Object2ObjectOpenHashMap();
-   private final bvl e;
-   private final int f;
-   private final Function<bvm, lw> g;
-   @Nullable
-   private String h;
-   private int i;
-   private int j;
-   private int k;
-   private Optional<awm> l = Optional.empty();
-   private cuw m = cuy.g;
+public record bvk(String d, bvh e, float f, bvg g, bvm h) {
+   public static final Codec<bvk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(bvk::a),
+               bvh.d.fieldOf("scaling").forGetter(bvk::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(bvk::c),
+               bvg.g.optionalFieldOf("effects", bvg.a).forGetter(bvk::d),
+               bvm.d.optionalFieldOf("death_message_type", bvm.a).forGetter(bvk::e)
+            )
+            .apply($$0, bvk::new)
+   );
+   public static final Codec<jf<bvk>> b = alf.a(mh.aN);
+   public static final yy<wl, jf<bvk>> c = yw.b(mh.aN);
 
-   protected bvk(bvl $$0, int $$1) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$1x -> {
-         int $$2 = $$1x.f() ? c : 255;
-         return lr.a(ly.u, axw.c($$2, $$1));
-      };
+   public bvk(String $$0, bvh $$1, float $$2) {
+      this($$0, $$1, $$2, bvg.a, bvm.a);
    }
 
-   protected bvk(bvl $$0, int $$1, lw $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$1x -> $$2;
+   public bvk(String $$0, bvh $$1, float $$2, bvg $$3) {
+      this($$0, $$1, $$2, $$3, bvm.a);
    }
 
-   public int b() {
-      return this.i;
+   public bvk(String $$0, float $$1, bvg $$2) {
+      this($$0, bvh.b, $$1, $$2);
    }
 
-   public int c() {
-      return this.j;
+   public bvk(String $$0, float $$1) {
+      this($$0, bvh.b, $$1);
    }
 
-   public int d() {
-      return this.k;
+   public String a() {
+      return this.d;
    }
 
-   public boolean a(arq $$0, bxj $$1, int $$2) {
-      return true;
-   }
-
-   public void a(arq $$0, @Nullable bwi $$1, @Nullable bwi $$2, bxj $$3, int $$4, double $$5) {
-      this.a($$0, $$3, $$4);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return false;
-   }
-
-   public void a(bxj $$0, int $$1) {
-   }
-
-   public void b(bxj $$0, int $$1) {
-      this.l.ifPresent($$1x -> $$0.dU().a(null, $$0.dz(), $$0.dB(), $$0.dF(), $$1x, $$0.dl(), 1.0F, 1.0F));
-   }
-
-   public void a(arq $$0, bxj $$1, int $$2, bwi.d $$3) {
-   }
-
-   public void a(arq $$0, bxj $$1, int $$2, bux $$3, float $$4) {
-   }
-
-   public boolean a() {
-      return false;
-   }
-
-   protected String e() {
-      if (this.h == null) {
-         this.h = ag.a("effect", mg.d.b(this));
-      }
-
-      return this.h;
-   }
-
-   public String f() {
-      return this.e();
-   }
-
-   public wy g() {
-      return wy.c(this.f());
-   }
-
-   public bvl h() {
+   public bvh b() {
       return this.e;
    }
 
-   public int i() {
+   public float c() {
       return this.f;
    }
 
-   public bvk a(jf<byk> $$0, alg $$1, double $$2, byn.a $$3) {
-      this.d.put($$0, new bvk.a($$1, $$2, $$3));
-      return this;
+   public bvg d() {
+      return this.g;
    }
 
-   public bvk a(int $$0) {
-      return this.a($$0, $$0, $$0);
-   }
-
-   public bvk a(int $$0, int $$1, int $$2) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      return this;
-   }
-
-   public void a(int $$0, BiConsumer<jf<byk>, byn> $$1) {
-      this.d.forEach(($$2, $$3) -> $$1.accept((jf<byk>)$$2, $$3.a($$0)));
-   }
-
-   public void a(bym $$0) {
-      for (Entry<jf<byk>, bvk.a> $$1 : this.d.entrySet()) {
-         byl $$2 = $$0.a($$1.getKey());
-         if ($$2 != null) {
-            $$2.c($$1.getValue().a());
-         }
-      }
-   }
-
-   public void a(bym $$0, int $$1) {
-      for (Entry<jf<byk>, bvk.a> $$2 : this.d.entrySet()) {
-         byl $$3 = $$0.a($$2.getKey());
-         if ($$3 != null) {
-            $$3.c($$2.getValue().a());
-            $$3.d($$2.getValue().a($$1));
-         }
-      }
-   }
-
-   public boolean j() {
-      return this.e == bvl.a;
-   }
-
-   public lw a(bvm $$0) {
-      return this.g.apply($$0);
-   }
-
-   public bvk a(awm $$0) {
-      this.l = Optional.of($$0);
-      return this;
-   }
-
-   public bvk a(cuu... $$0) {
-      this.m = cuy.e.a($$0);
-      return this;
-   }
-
-   @Override
-   public cuw k() {
-      return this.m;
-   }
-
-   static record a(alg a, double b, byn.a c) {
-      public byn a(int $$0) {
-         return new byn(this.a, this.b * (double)($$0 + 1), this.c);
-      }
+   public bvm e() {
+      return this.h;
    }
 }

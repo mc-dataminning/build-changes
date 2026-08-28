@@ -1,40 +1,37 @@
 import com.mojang.serialization.MapCodec;
 
-public class drp extends dqs {
-   public static final MapCodec<drp> a = b(drp::new);
-   private static final wy b = wy.c("container.loom");
+public class drp extends dlv {
+   public static final MapCodec<drp> c = b(drp::new);
 
    @Override
    public MapCodec<drp> a() {
-      return a;
+      return c;
    }
 
-   protected drp(eas.d $$0) {
-      super($$0);
+   public drp(ebd.d $$0) {
+      super($$0, kc.e);
    }
 
    @Override
-   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awx.ax);
+   protected double b(ebe $$0) {
+      return 0.9375;
+   }
+
+   @Override
+   public boolean d(ebe $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(ebe $$0, djx $$1, iv $$2, bwt $$3, bxm $$4) {
+      if (this.a($$0, $$2, $$3)) {
+         $$3.aB();
+         $$3.aC();
       }
-
-      return bug.a;
    }
 
    @Override
-   protected bui b(eat $$0, djm $$1, iv $$2) {
-      return new buo(($$2x, $$3, $$4) -> new cwm($$2x, $$3, cvs.a($$1, $$2)), b);
-   }
-
-   @Override
-   public eat a(ddg $$0) {
-      return this.m().b(e, $$0.g().g());
-   }
-
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(e);
+   protected int a(ebe $$0, djx $$1, iv $$2) {
+      return 3;
    }
 }

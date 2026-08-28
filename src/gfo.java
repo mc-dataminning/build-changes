@@ -1,82 +1,70 @@
-public class gfo extends ggp<hco> {
-   public static final gkc a = gkc.scaling(0.5F);
-   private static final String b = "bone";
-   private static final String c = "stinger";
-   private static final String d = "left_antenna";
-   private static final String e = "right_antenna";
-   private static final String f = "front_legs";
-   private static final String g = "middle_legs";
-   private static final String i = "back_legs";
-   private final gjt j;
-   private final gjt k;
-   private final gjt l;
-   private final gjt m;
-   private final gjt n;
-   private final gjt o;
-   private final gjt p;
-   private final gjt q;
-   private final gjt r;
-   private float s;
+import java.util.Set;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
-   public gfo(gjt $$0) {
-      super($$0);
-      this.j = $$0.b("bone");
-      gjt $$1 = this.j.b("body");
-      this.p = $$1.b("stinger");
-      this.q = $$1.b("left_antenna");
-      this.r = $$1.b("right_antenna");
-      this.k = this.j.b("right_wing");
-      this.l = this.j.b("left_wing");
-      this.m = this.j.b("front_legs");
-      this.n = this.j.b("middle_legs");
-      this.o = this.j.b("back_legs");
+public record gfo(eib a, js<efc> b, ehy c, jm<alr> d, alt e, dkv f, gfj g) {
+   public gfo(ehz $$0, jm<alr> $$1, alt $$2, dkv $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3, new gfj(gfq.a.a, Set.of(), null));
    }
 
-   public static gjz a() {
-      gkb $$0 = new gkb();
-      gkd $$1 = $$0.a();
-      gkd $$2 = $$1.a("bone", gjy.c(), gjv.a(0.0F, 19.0F, 0.0F));
-      gkd $$3 = $$2.a("body", gjy.c().a(0, 0).a(-3.5F, -4.0F, -5.0F, 7.0F, 7.0F, 10.0F), gjv.a);
-      $$3.a("stinger", gjy.c().a(26, 7).a(0.0F, -1.0F, 5.0F, 0.0F, 1.0F, 2.0F), gjv.a);
-      $$3.a("left_antenna", gjy.c().a(2, 0).a(1.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), gjv.a(0.0F, -2.0F, -5.0F));
-      $$3.a("right_antenna", gjy.c().a(2, 3).a(-2.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), gjv.a(0.0F, -2.0F, -5.0F));
-      gjx $$4 = new gjx(0.001F);
-      $$2.a("right_wing", gjy.c().a(0, 18).a(-9.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$4), gjv.a(-1.5F, -4.0F, -3.0F, 0.0F, -0.2618F, 0.0F));
-      $$2.a("left_wing", gjy.c().a(0, 18).a().a(0.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$4), gjv.a(1.5F, -4.0F, -3.0F, 0.0F, 0.2618F, 0.0F));
-      $$2.a("front_legs", gjy.c().a("front_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 1), gjv.a(1.5F, 3.0F, -2.0F));
-      $$2.a("middle_legs", gjy.c().a("middle_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 3), gjv.a(1.5F, 3.0F, 0.0F));
-      $$2.a("back_legs", gjy.c().a("back_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 5), gjv.a(1.5F, 3.0F, 2.0F));
-      return gjz.a($$0, 64, 64);
+   public gfo(eib $$0, ehy $$1, jm<alr> $$2, alt $$3, dkv $$4, gfj $$5) {
+      this($$0, $$2.a(alr.c).f(mh.bq), $$1, $$2.a(alr.c), $$3, $$4, $$5);
    }
 
-   public void a(hco $$0) {
-      super.a($$0);
-      this.s = $$0.a;
-      this.p.k = $$0.b;
-      if (!$$0.c) {
-         float $$1 = $$0.u * 120.32113F * (float) (Math.PI / 180.0);
-         this.k.f = 0.0F;
-         this.k.g = azm.b($$1) * (float) Math.PI * 0.15F;
-         this.l.e = this.k.e;
-         this.l.f = this.k.f;
-         this.l.g = -this.k.g;
-         this.m.e = (float) (Math.PI / 4);
-         this.n.e = (float) (Math.PI / 4);
-         this.o.e = (float) (Math.PI / 4);
-      }
+   public gfo a(eib $$0, ehy $$1) {
+      return new gfo($$0, this.b, $$1, this.d, this.e, this.f, this.g);
+   }
 
-      if (!$$0.d && !$$0.c) {
-         float $$2 = azm.b($$0.u * 0.18F);
-         this.j.e = 0.1F + $$2 * (float) Math.PI * 0.025F;
-         this.q.e = $$2 * (float) Math.PI * 0.03F;
-         this.r.e = $$2 * (float) Math.PI * 0.03F;
-         this.m.e = -$$2 * (float) Math.PI * 0.1F + (float) (Math.PI / 8);
-         this.o.e = -$$2 * (float) Math.PI * 0.05F + (float) (Math.PI / 4);
-         this.j.c = this.j.c - azm.b($$0.u * 0.18F) * 0.9F;
-      }
+   public gfo a(gfo.b $$0) {
+      return new gfo($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f, this.g);
+   }
 
-      if (this.s > 0.0F) {
-         this.j.e = azm.j(this.s, this.j.e, 3.0915928F);
+   public gfo a(gfo.a $$0) {
+      return new gfo(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f, this.g);
+   }
+
+   public jt.b a() {
+      return this.d.a();
+   }
+
+   public void b() {
+      for (efc $$0 : this.d()) {
+         $$0.b().a();
       }
+   }
+
+   public eib c() {
+      return this.a;
+   }
+
+   public js<efc> d() {
+      return this.b;
+   }
+
+   public ehy e() {
+      return this.c;
+   }
+
+   public jm<alr> f() {
+      return this.d;
+   }
+
+   public alt g() {
+      return this.e;
+   }
+
+   public dkv h() {
+      return this.f;
+   }
+
+   public gfj i() {
+      return this.g;
+   }
+
+   @FunctionalInterface
+   public interface a extends BiFunction<jt.b, ehy, ehy> {
+   }
+
+   public interface b extends UnaryOperator<eib> {
    }
 }

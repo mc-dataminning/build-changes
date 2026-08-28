@@ -1,22 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eme implements emc {
+public class eme {
    public static final Codec<eme> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eod.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               eod.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
+      $$0 -> $$0.group(erf.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
             .apply($$0, eme::new)
    );
-   public final eod b;
-   public final eod c;
-   public final int d;
+   public final jf<erf> b;
+   public final float c;
 
-   public eme(eod $$0, eod $$1, int $$2) {
+   public eme(jf<erf> $$0, float $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
+   }
+
+   public boolean a(dkw $$0, edc $$1, azx $$2, iv $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

@@ -1,25 +1,22 @@
-public class gqu {
-   public static final alg a = alg.b("textures/gui/title/background/panorama_overlay.png");
-   private final fpt b;
-   private final gqb c;
-   private float d;
+public class gqu extends gob {
+   private static final int a = 12235202;
 
-   public gqu(gqb $$0) {
-      this.c = $$0;
-      this.b = fpt.Q();
+   protected gqu(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gqf $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
+      this.v = 0.7294118F;
+      this.w = 0.69411767F;
+      this.x = 0.7607843F;
    }
 
-   public void a(fsm $$0, int $$1, int $$2, float $$3, float $$4) {
-      float $$5 = this.b.av().b();
-      float $$6 = (float)((double)$$5 * this.b.n.t().c());
-      this.d = a(this.d + $$6 * 0.1F, 360.0F);
-      $$0.d();
-      this.c.a(this.b, 10.0F, -this.d, $$3);
-      $$0.d();
-      $$0.a(grc::H, a, 0, 0, 0.0F, 0.0F, $$1, $$2, 16, 128, 16, 128, axw.a($$3));
-   }
+   public static class a implements gpn<mc> {
+      private final gqf a;
 
-   private static float a(float $$0, float $$1) {
-      return $$0 > $$1 ? $$0 - $$1 : $$0;
+      public a(gqf $$0) {
+         this.a = $$0;
+      }
+
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gqu($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      }
    }
 }

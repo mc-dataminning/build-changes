@@ -1,12 +1,12 @@
 import java.util.Map;
 import java.util.function.Consumer;
 
-public record ta(Map<alg, tk<alf<tl>>> a, alf<Consumer<sp>> b, Consumer<sp> c) {
-   public ta(Map<alg, tk<alf<tl>>> $$0, alg $$1, Consumer<sp> $$2) {
-      this($$0, alf.a(mh.ay, $$1), $$2);
+public record ta(Map<ali, tk<alh<tl>>> a, alh<Consumer<sp>> b, Consumer<sp> c) {
+   public ta(Map<ali, tk<alh<tl>>> $$0, ali $$1, Consumer<sp> $$2) {
+      this($$0, alh.a(mh.ay, $$1), $$2);
    }
 
-   public ta(alg $$0, tk<alf<tl>> $$1, Consumer<sp> $$2) {
+   public ta(ali $$0, tk<alh<tl>> $$1, Consumer<sp> $$2) {
       this(Map.of($$0, $$1), $$0, $$2);
    }
 }

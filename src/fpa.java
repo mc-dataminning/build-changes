@@ -1,30 +1,19 @@
-import java.util.function.IntFunction;
+import java.util.function.Consumer;
 
-public enum fpa implements azp {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public class fpa {
+   private static final int a = 8226750;
+   private static final xa b = xa.c("mco.info").b(8226750);
+   private static final xa c = xa.c("mco.warning").b(-65536);
 
-   private static final IntFunction<fpa> d = ayc.a(fpa::b, values(), ayc.a.b);
-   private final int e;
-   private final String f;
-
-   private fpa(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public static fvn a(gad $$0, xa $$1, Consumer<fvn> $$2) {
+      return new fvn.a($$0, b).a($$1).a(wz.j, $$2).a(wz.e, fvn::aP_).a();
    }
 
-   @Override
-   public int b() {
-      return this.e;
+   public static fvn b(gad $$0, xa $$1, Consumer<fvn> $$2) {
+      return new fvn.a($$0, c).a($$1).a(wz.j, $$2).a(wz.e, fvn::aP_).a();
    }
 
-   @Override
-   public String a() {
-      return this.f;
-   }
-
-   public static fpa a(int $$0) {
-      return d.apply($$0);
+   public static fvn c(gad $$0, xa $$1, Consumer<fvn> $$2) {
+      return new fvn.a($$0, c).a($$1).a(wz.h, $$2).a();
    }
 }

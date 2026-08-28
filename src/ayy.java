@@ -1,80 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.net.URI;
+import java.nio.file.FileSystemAlreadyExistsException;
+import java.nio.file.FileSystemNotFoundException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Collections;
+import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface ayy {
-   ayy a = $$0 -> true;
+public class ayy {
+   private static final Logger a = LogUtils.getLogger();
 
-   boolean accept(ayz var1);
-
-   static ayy codepoint(int $$0, xv $$1) {
-      return $$2 -> $$2.accept(0, $$1, $$0);
-   }
-
-   static ayy forward(String $$0, xv $$1) {
-      return $$0.isEmpty() ? a : $$2 -> baj.a($$0, $$1, $$2);
-   }
-
-   static ayy forward(String $$0, xv $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> baj.a($$0, $$1, decorateOutput($$3, $$2));
-   }
-
-   static ayy backward(String $$0, xv $$1) {
-      return $$0.isEmpty() ? a : $$2 -> baj.b($$0, $$1, $$2);
-   }
-
-   static ayy backward(String $$0, xv $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> baj.b($$0, $$1, decorateOutput($$3, $$2));
-   }
-
-   static ayz decorateOutput(ayz $$0, Int2IntFunction $$1) {
-      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
-   }
-
-   static ayy composite() {
-      return a;
-   }
-
-   static ayy composite(ayy $$0) {
-      return $$0;
-   }
-
-   static ayy composite(ayy $$0, ayy $$1) {
-      return fromPair($$0, $$1);
-   }
-
-   static ayy composite(ayy... $$0) {
-      return fromList(ImmutableList.copyOf($$0));
-   }
-
-   static ayy composite(List<ayy> $$0) {
-      int $$1 = $$0.size();
-      switch ($$1) {
-         case 0:
-            return a;
-         case 1:
-            return $$0.get(0);
-         case 2:
-            return fromPair($$0.get(0), $$0.get(1));
-         default:
-            return fromList(ImmutableList.copyOf($$0));
+   public static Path a(URI $$0) throws IOException {
+      try {
+         return Paths.get($$0);
+      } catch (FileSystemNotFoundException var3) {
+      } catch (Throwable var4) {
+         a.warn("Unable to get path for: {}", $$0, var4);
       }
-   }
 
-   static ayy fromPair(ayy $$0, ayy $$1) {
-      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
-   }
+      try {
+         FileSystems.newFileSystem($$0, Collections.emptyMap());
+      } catch (FileSystemAlreadyExistsException var2) {
+      }
 
-   static ayy fromList(List<ayy> $$0) {
-      return $$1 -> {
-         for (ayy $$2 : $$0) {
-            if (!$$2.accept($$1)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
+      return Paths.get($$0);
    }
 }

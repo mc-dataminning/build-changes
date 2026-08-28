@@ -1,86 +1,74 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dvb extends dmr {
+public class dvb extends dnc {
    public static final MapCodec<dvb> a = b(dvb::new);
-   public static final ebt b = ebj.az;
-   private static final ffw c = dmr.b(12.0, 0.0, 16.0);
+   public static final int b = 6;
+   public static final int c = 64;
+   private static final jb[] d = jb.values();
 
    @Override
    public MapCodec<dvb> a() {
       return a;
    }
 
-   protected dvb(eas.d $$0) {
+   protected dvb(ebd.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return c;
-   }
-
-   @Override
-   protected void a(eat $$0, arq $$1, iv $$2, azv $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   protected void a(ebe $$0, djx $$1, iv $$2, ebe $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
    }
 
    @Override
-   protected void b(eat $$0, arq $$1, iv $$2, azv $$3) {
-      if ($$1.v($$2.d())) {
-         int $$4 = 1;
+   protected void a(ebe $$0, djx $$1, iv $$2, dnc $$3, @Nullable eyw $$4, boolean $$5) {
+      this.a($$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-         while ($$1.a_($$2.c($$4)).a(this)) {
-            $$4++;
+   protected void a(djx $$0, iv $$1) {
+      if (this.b($$0, $$1)) {
+         $$0.a($$1, dne.aW.m(), 2);
+         $$0.a(null, $$1, awp.Aa, awq.e, 1.0F, 1.0F);
+      }
+   }
+
+   private boolean b(djx $$0, iv $$1) {
+      return iv.a($$1, 6, 65, ($$0x, $$1x) -> {
+         for (jb $$2 : d) {
+            $$1x.accept($$0x.a($$2));
          }
-
-         if ($$4 < 3) {
-            int $$5 = $$0.c(b);
-            if ($$5 == 15) {
-               $$1.b($$2.d(), this.m());
-               $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 260);
+      }, $$2 -> {
+         if ($$2.equals($$1)) {
+            return iv.b.a;
+         } else {
+            ebe $$3 = $$0.a_($$2);
+            exo $$4 = $$0.b_($$2);
+            if (!$$4.a(axj.a)) {
+               return iv.b.b;
             } else {
-               $$1.a($$2, $$0.b(b, Integer.valueOf($$5 + 1)), 260);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      if (!$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(eat $$0, djp $$1, iv $$2) {
-      eat $$3 = $$1.a_($$2.e());
-      if ($$3.a(this)) {
-         return true;
-      } else {
-         if ($$3.a(axc.ah) || $$3.a(axc.J)) {
-            iv $$4 = $$2.e();
-
-            for (jb $$5 : jb.c.a) {
-               eat $$6 = $$1.a_($$4.a($$5));
-               exa $$7 = $$1.b_($$4.a($$5));
-               if ($$7.a(axh.a) || $$6.a(dmt.lo)) {
-                  return true;
+               if ($$3.b() instanceof dnk $$6 && !$$6.a(null, $$0, $$2, $$3).f()) {
+                  return iv.b.a;
                }
+
+               if ($$3.b() instanceof dry) {
+                  $$0.a($$2, dne.a.m(), 3);
+               } else {
+                  if (!$$3.a(dne.mI) && !$$3.a(dne.mJ) && !$$3.a(dne.bG) && !$$3.a(dne.bH)) {
+                     return iv.b.b;
+                  }
+
+                  dyc $$7 = $$3.x() ? $$0.c_($$2) : null;
+                  a($$3, $$0, $$2, $$7);
+                  $$0.a($$2, dne.a.m(), 3);
+               }
+
+               return iv.b.a;
             }
          }
-
-         return false;
-      }
-   }
-
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(b);
+      }) > 1;
    }
 }

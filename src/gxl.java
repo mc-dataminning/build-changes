@@ -1,22 +1,31 @@
-public class gxl extends gvs<cle, hdr, ggx> {
-   private static final alg a = alg.b("textures/entity/goat/goat.png");
+import java.util.function.UnaryOperator;
 
-   public gxl(gwy.a $$0) {
-      super($$0, new ggx($$0.a(gjs.bh)), new ggx($$0.a(gjs.bi)), 0.7F);
+public class gxl extends gww {
+   private final giw a;
+   private final ali g;
+   private final gia<hea> h;
+
+   public gxl(gyi.a $$0, glc $$1) {
+      super($$0);
+      this.g = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
+      this.a = new giw.a($$0.a(gld.E), $$0x -> gsl.j());
+      this.h = new ghd($$0.a($$1));
    }
 
-   public alg a(hdr $$0) {
-      return a;
+   @Override
+   protected gia<hea> a() {
+      return this.h;
    }
 
-   public hdr b() {
-      return new hdr();
+   @Override
+   protected gsl b() {
+      return this.h.a(this.g);
    }
 
-   public void a(cle $$0, hdr $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gt();
-      $$1.b = $$0.gu();
-      $$1.c = $$0.gG();
+   @Override
+   protected void b(hea $$0, flo $$1, gsa $$2, int $$3) {
+      if (!$$0.f) {
+         this.a.a($$1, $$2.getBuffer(this.a.a(this.g)), $$3, hkq.d);
+      }
    }
 }

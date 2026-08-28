@@ -1,15 +1,20 @@
-import io.netty.buffer.ByteBuf;
+public record ahb(float b) implements zh<agr> {
+   public static final yy<vw, ahb> a = zh.a(ahb::a, ahb::new);
 
-public record ahb() implements zf<agp> {
-   public static final ahb a = new ahb();
-   public static final yw<ByteBuf, ahb> b = yw.a(a);
-
-   @Override
-   public zh<ahb> a() {
-      return agn.bv;
+   private ahb(vw $$0) {
+      this($$0.readFloat());
    }
 
-   public void a(agp $$0) {
+   private void a(vw $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public zj<ahb> a() {
+      return agp.bt;
+   }
+
+   public void a(agr $$0) {
       $$0.a(this);
    }
 }

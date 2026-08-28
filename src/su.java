@@ -58,7 +58,7 @@ public class su {
             tb.a(new tc((File)f.value($$2)));
          }
 
-         ali.a();
+         alk.a();
          ag.p();
          String $$3 = (String)$$2.valueOf(e);
          a($$3);
@@ -68,8 +68,8 @@ public class su {
             a($$3, $$4);
          }
 
-         ezh.c $$5 = ezh.b(Paths.get($$3)).e("gametestworld");
-         aun $$6 = auq.a($$5);
+         ezv.c $$5 = ezv.b(Paths.get($$3)).e("gametestworld");
+         aup $$6 = aus.a($$5);
          MinecraftServer.a((Function<Thread, sx>)($$3x -> sx.a($$3x, $$5, $$6, a($$2, g), $$2.has(h))));
       }
    }

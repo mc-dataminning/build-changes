@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface abt {
+public interface abt extends ags {
+   void a(abu var1);
 }

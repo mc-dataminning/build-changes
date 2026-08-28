@@ -1,23 +1,33 @@
-public class gzw extends gye<cre, hfp, gjc> {
-   private static final alg a = alg.b("textures/entity/wandering_trader.png");
+public class gzw extends gzo<cpb, hfy, gja> {
+   private static final ali a = ali.b("textures/entity/phantom.png");
 
-   public gzw(gwy.a $$0) {
-      super($$0, new gjc($$0.a(gjs.dO)), 0.5F);
-      this.a(new har<>(this, $$0.f()));
-      this.a(new haq<>(this));
+   public gzw(gyi.a $$0) {
+      super($$0, new gja($$0.a(gld.cc)), 0.75F);
+      this.a(new hcu(this));
    }
 
-   public alg a(hfp $$0) {
+   public ali a(hfy $$0) {
       return a;
    }
 
-   public hfp b() {
-      return new hfp();
+   public hfy b() {
+      return new hfy();
    }
 
-   public void a(cre $$0, hfp $$1, float $$2) {
+   public void a(cpb $$0, hfy $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      hdu.a($$0, $$1, this.h);
-      $$1.a = $$0.q() > 0;
+      $$1.a = (float)$$0.m() + $$1.u;
+      $$1.b = $$0.j();
+   }
+
+   protected void a(hfy $$0, flo $$1) {
+      float $$2 = 1.0F + 0.15F * (float)$$0.b;
+      $$1.b($$2, $$2, $$2);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(hfy $$0, flo $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$1.a(a.b.rotationDegrees($$0.ab));
    }
 }

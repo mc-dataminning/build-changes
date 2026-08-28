@@ -1,33 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class ejw extends ejy<emj> {
-   public ejw(Codec<emj> $$0) {
+public class ejw extends ejx {
+   public ejw(Codec<emw> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eka<emj> $$0) {
-      a($$0.b(), $$0.e(), false);
-      return true;
-   }
+   protected boolean a(djy $$0, azx $$1, iv $$2, ebe $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         jb $$4 = jb.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<jb> $$6 = ag.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-   public static void a(dkd $$0, iv $$1, boolean $$2) {
-      iv.a $$3 = $$1.k();
+         for (jb $$8 : $$6.subList(0, $$5)) {
+            iv.a $$9 = $$2.k();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            jb $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(jb.b);
+               jb[] $$13 = new jb[]{$$8, jb.b};
+               $$11 = ag.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
 
-      for (int $$4 = -2; $$4 <= 2; $$4++) {
-         for (int $$5 = -2; $$5 <= 2; $$5++) {
-            for (int $$6 = -1; $$6 < 3; $$6++) {
-               iv $$7 = $$3.g($$1).e($$5, $$6, $$4);
-               dmr $$8 = $$6 == -1 ? dmt.cy : dmt.a;
-               if (!$$0.a_($$7).a($$8)) {
-                  if ($$2) {
-                     $$0.a($$7, true, null);
-                  }
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
 
-                  $$0.a($$7, $$8.m(), 3);
+            $$9.c($$11.g());
+            $$9.c(jb.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(jb.b);
                }
             }
          }
+
+         return true;
       }
    }
 }

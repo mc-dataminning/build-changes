@@ -1,25 +1,42 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collections;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
 
-public record etc(bsq<List<esz>> c) implements esz {
-   static MapCodec<etc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bsq.b(Codec.list(esz.b)).fieldOf("groups").forGetter(etc::c)).apply($$0, etc::new));
+public class etc extends etj {
+   public static final MapCodec<etc> a = MapCodec.unit(() -> etc.b);
+   public static final etc b = new etc();
 
-   @Override
-   public void a(azv $$0, BiConsumer<alf<esx>, alf<esx>> $$1) {
-      this.c.a($$0).ifPresent($$2 -> $$2.forEach($$2x -> $$2x.a($$0, $$1)));
+   private etc() {
+      super(etl.a.a);
    }
 
    @Override
-   public Stream<alf<esx>> a() {
-      return this.c.d().stream().flatMap($$0 -> $$0.a().stream()).flatMap(esz::a);
+   public ka a(ewe $$0, dtw $$1) {
+      return ka.i;
    }
 
    @Override
-   public MapCodec<etc> b() {
-      return a;
+   public List<ewd.a> a(ewe $$0, iv $$1, dtw $$2, azx $$3) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public ert a(ewe $$0, iv $$1, dtw $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
+   }
+
+   @Override
+   public boolean a(ewe $$0, dkw $$1, dkt $$2, edc $$3, iv $$4, iv $$5, dtw $$6, ert $$7, azx $$8, evn $$9, boolean $$10) {
+      return true;
+   }
+
+   @Override
+   public etk<?> a() {
+      return etk.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Empty";
    }
 }

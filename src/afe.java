@@ -1,39 +1,45 @@
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class afe implements zf<abu> {
-   public static final yw<vu, afe> a = zf.a(afe::a, afe::new);
-   private final int b;
-   private final int c;
+public class afe implements zh<abw> {
+   public static final yy<vw, afe> a = zh.a(afe::a, afe::new);
+   private final fgm b;
+   private final String c;
 
-   public afe(bwi $$0, @Nullable bwi $$1) {
-      this.b = $$0.ao();
-      this.c = $$1 != null ? $$1.ao() : 0;
+   public afe(fgm $$0, @Nullable fgn $$1) {
+      this.b = $$0;
+      if ($$1 == null) {
+         this.c = "";
+      } else {
+         this.c = $$1.c();
+      }
    }
 
-   private afe(vu $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
+   private afe(vw $$0) {
+      this.b = $$0.a(fgm.u);
+      this.c = $$0.p();
    }
 
-   private void a(vu $$0) {
-      $$0.q(this.b);
-      $$0.q(this.c);
+   private void a(vw $$0) {
+      $$0.a(fgm::a, this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zh<afe> a() {
-      return agn.aG;
+   public zj<afe> a() {
+      return agp.aE;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public fgm b() {
       return this.b;
    }
 
-   public int e() {
-      return this.c;
+   @Nullable
+   public String e() {
+      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

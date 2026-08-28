@@ -1,32 +1,23 @@
-public class gxe extends gwx<csc, hdm> {
-   private final hgg a;
+public class gxe extends gxc<ckw, hds, ggp> {
+   private static final ali a = ali.b("textures/entity/armadillo.png");
 
-   public gxe(gwy.a $$0) {
-      super($$0);
-      this.a = $$0.b();
+   public gxe(gyi.a $$0) {
+      super($$0, new ggp($$0.a(gld.d)), new ggp($$0.a(gld.e)), 0.4F);
    }
 
-   public void a(hdm $$0, fkd $$1, gqr $$2, int $$3) {
-      $$1.a();
-      $$1.a(this.d.b());
-      if ($$0.a) {
-         $$1.a(a.f.rotationDegrees(180.0F));
-         $$1.a(a.d.rotationDegrees(180.0F));
-         $$1.a(a.b.rotationDegrees(90.0F));
-      }
-
-      $$0.b.a($$1, $$2, $$3, hjg.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public ali a(hds $$0) {
+      return a;
    }
 
-   public hdm a() {
-      return new hdm();
+   public hds a() {
+      return new hds();
    }
 
-   public void a(csc $$0, hdm $$1, float $$2) {
+   public void a(ckw $$0, hds $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.g();
-      this.a.a($$1.b, $$0.f(), czl.h, $$0);
+      $$1.a = $$0.x();
+      $$1.d.a($$0.bO);
+      $$1.b.a($$0.bM);
+      $$1.c.a($$0.bN);
    }
 }

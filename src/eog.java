@@ -1,30 +1,50 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class eog extends eod {
-   protected final long c;
-   protected final ewd.a d;
-   protected final float e;
-   protected final ewd f;
+public class eog extends eob {
+   public static final MapCodec<eog> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  btw.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+               )
+            )
+            .apply($$0, eog::new)
+   );
+   private final btw b;
+   private final int c;
 
-   protected static <P extends eog> P3<Mu<P>, Long, ewd.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         ewd.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         ayu.o.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   public eog(btw $$0, btw $$1, btw $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   protected eog(long $$0, ewd.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = ewd.b(new ehr(new egt($$0)), $$1);
+   @Override
+   protected eoc<?> a() {
+      return eoc.j;
    }
 
-   protected double a(iv $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   @Override
+   protected void a(dkd $$0, eob.b $$1, azx $$2, enl $$3, int $$4, eob.a $$5, int $$6, int $$7, int $$8) {
+      iv $$9 = $$5.a();
+      iv.a $$10 = $$9.k();
+
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
+      }
+   }
+
+   @Override
+   public int a(azx $$0, int $$1, enl $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azx $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

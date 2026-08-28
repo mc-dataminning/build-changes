@@ -1,153 +1,90 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
 public class glf {
-   private static final Logger j = LogUtils.getLogger();
-   private static final int k = 1024;
-   public String a;
-   public String b;
-   public wy c;
-   public wy d;
-   @Nullable
-   public akd.b e;
-   public long f;
-   public int g = ac.b().e();
-   public wy h = wy.b(ac.b().c());
-   public List<wy> i = Collections.emptyList();
-   private glf.a l = glf.a.c;
-   @Nullable
-   private byte[] m;
-   private glf.c n;
-   private glf.b o = glf.b.a;
-
-   public glf(String $$0, String $$1, glf.c $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.n = $$2;
-   }
-
-   public tz a() {
-      tz $$0 = new tz();
-      $$0.a("name", this.a);
-      $$0.a("ip", this.b);
-      $$0.b("icon", ayu.r, this.m);
-      $$0.a(glf.a.d, this.l);
-      return $$0;
-   }
-
-   public glf.a b() {
-      return this.l;
-   }
-
-   public void a(glf.a $$0) {
-      this.l = $$0;
-   }
-
-   public static glf a(tz $$0) {
-      glf $$1 = new glf($$0.j("name"), $$0.j("ip"), glf.c.c);
-      $$1.a($$0.<byte[]>a("icon", ayu.r).orElse(null));
-      $$1.a($$0.<glf.a>a(glf.a.d).orElse(glf.a.c));
-      return $$1;
-   }
-
-   @Nullable
-   public byte[] c() {
-      return this.m;
-   }
-
-   public void a(@Nullable byte[] $$0) {
-      this.m = $$0;
-   }
-
-   public boolean d() {
-      return this.n == glf.c.a;
-   }
-
-   public boolean e() {
-      return this.n == glf.c.b;
-   }
-
-   public glf.c f() {
-      return this.n;
-   }
-
-   public void a(glf $$0) {
-      this.b = $$0.b;
-      this.a = $$0.a;
-      this.m = $$0.m;
-   }
-
-   public void b(glf $$0) {
-      this.a($$0);
-      this.a($$0.b());
-      this.n = $$0.n;
-   }
-
-   public glf.b g() {
-      return this.o;
-   }
-
-   public void a(glf.b $$0) {
-      this.o = $$0;
-   }
-
-   @Nullable
-   public static byte[] b(@Nullable byte[] $$0) {
-      if ($$0 != null) {
-         try {
-            azs $$1 = azs.a($$0);
-            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
-               return $$0;
-            }
-         } catch (IOException var2) {
-            j.warn("Failed to decode server icon", var2);
-         }
-      }
-
-      return null;
-   }
-
-   public static enum a {
-      a("enabled"),
-      b("disabled"),
-      c("prompt");
-
-      public static final MapCodec<glf.a> d = Codec.BOOL.optionalFieldOf("acceptTextures").xmap($$0 -> $$0.<glf.a>map($$0x -> $$0x ? a : b).orElse(c), $$0 -> {
-         return switch ($$0) {
-            case a -> Optional.of(true);
-            case b -> Optional.of(false);
-            case c -> Optional.empty();
-         };
-      });
-      private final wy e;
-
-      private a(final String $$0) {
-         this.e = wy.c("addServer.resourcePack." + $$0);
-      }
-
-      public wy a() {
-         return this.e;
-      }
-   }
-
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
-   }
-
-   public static enum c {
-      a,
-      b,
-      c;
-   }
+   public static final String a = "left_fin";
+   public static final String b = "right_fin";
+   public static final String c = "top_fin";
+   public static final String d = "bottom_fin";
+   public static final String e = "tail_fin";
+   public static final String f = "left_blue_fin";
+   public static final String g = "right_blue_fin";
+   public static final String h = "left_arm";
+   public static final String i = "right_arm";
+   public static final String j = "left_wing";
+   public static final String k = "right_wing";
+   public static final String l = "left_wing_base";
+   public static final String m = "right_wing_base";
+   public static final String n = "left_wing_tip";
+   public static final String o = "right_wing_tip";
+   public static final String p = "left_ear";
+   public static final String q = "right_ear";
+   public static final String r = "left_leg";
+   public static final String s = "right_leg";
+   public static final String t = "left_hind_leg";
+   public static final String u = "right_hind_leg";
+   public static final String v = "left_mid_leg";
+   public static final String w = "right_mid_leg";
+   public static final String x = "left_front_leg";
+   public static final String y = "right_front_leg";
+   public static final String z = "left_hind_foot";
+   public static final String A = "right_hind_foot";
+   public static final String B = "left_front_foot";
+   public static final String C = "right_front_foot";
+   public static final String D = "feet";
+   public static final String E = "left_hind_leg_tip";
+   public static final String F = "right_hind_leg_tip";
+   public static final String G = "left_front_leg_tip";
+   public static final String H = "right_front_leg_tip";
+   public static final String I = "left_lid";
+   public static final String J = "right_lid";
+   public static final String K = "left_chest";
+   public static final String L = "right_chest";
+   public static final String M = "left_horn";
+   public static final String N = "right_horn";
+   public static final String O = "left_eye";
+   public static final String P = "right_eye";
+   public static final String Q = "jaw";
+   public static final String R = "nose";
+   public static final String S = "arms";
+   public static final String T = "tail";
+   public static final String U = "cube";
+   public static final String V = "beak";
+   public static final String W = "back_fin";
+   public static final String X = "mane";
+   public static final String Y = "neck";
+   public static final String Z = "mouth";
+   public static final String aa = "upper_mouth";
+   public static final String ab = "head";
+   public static final String ac = "hat";
+   public static final String ad = "body";
+   public static final String ae = "upper_body";
+   public static final String af = "hat_rim";
+   public static final String ag = "jacket";
+   public static final String ah = "top_gills";
+   public static final String ai = "left_gills";
+   public static final String aj = "right_gills";
+   public static final String ak = "root";
+   public static final String al = "croaking_body";
+   public static final String am = "tongue";
+   public static final String an = "tongue_r1";
+   public static final String ao = "left_hand";
+   public static final String ap = "right_hand";
+   public static final String aq = "left_foot";
+   public static final String ar = "right_foot";
+   public static final String as = "eyes";
+   public static final String at = "right_tendril";
+   public static final String au = "left_tendril";
+   public static final String av = "right_ribcage";
+   public static final String aw = "left_ribcage";
+   public static final String ax = "wind_body";
+   public static final String ay = "wind_top";
+   public static final String az = "wind_mid";
+   public static final String aA = "wind_bottom";
+   public static final String aB = "rods";
+   public static final String aC = "mushrooms";
+   public static final String aD = "bone";
+   public static final String aE = "left_paddle";
+   public static final String aF = "right_paddle";
+   public static final String aG = "bottom";
+   public static final String aH = "chest_bottom";
+   public static final String aI = "chest_lid";
+   public static final String aJ = "chest_lock";
 }

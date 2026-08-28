@@ -9,44 +9,44 @@ import java.util.stream.Stream;
 public interface jh<T> extends jg<T> {
    Stream<jf.c<T>> c();
 
-   default Stream<alf<T>> c_() {
+   default Stream<alh<T>> c_() {
       return this.c().map(jf.c::h);
    }
 
    Stream<jj.c<T>> e();
 
-   default Stream<axr<T>> f() {
+   default Stream<axt<T>> f() {
       return this.e().map(jj.c::h);
    }
 
    public interface a extends jg.a {
-      Stream<alf<? extends js<?>>> b();
+      Stream<alh<? extends js<?>>> b();
 
       default Stream<jh.b<?>> c() {
          return this.b().map(this::e);
       }
 
       @Override
-      <T> Optional<? extends jh.b<T>> a(alf<? extends js<? extends T>> var1);
+      <T> Optional<? extends jh.b<T>> a(alh<? extends js<? extends T>> var1);
 
-      default <T> jh.b<T> e(alf<? extends js<? extends T>> $$0) {
+      default <T> jh.b<T> e(alh<? extends js<? extends T>> $$0) {
          return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
       }
 
-      default <V> ale<V> a(DynamicOps<V> $$0) {
-         return ale.a((DynamicOps<T>)$$0, this);
+      default <V> alg<V> a(DynamicOps<V> $$0) {
+         return alg.a((DynamicOps<T>)$$0, this);
       }
 
       static jh.a a(Stream<jh.b<?>> $$0) {
-         final Map<alf<? extends js<?>>, jh.b<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(jh.b::g, $$0x -> $$0x));
+         final Map<alh<? extends js<?>>, jh.b<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(jh.b::g, $$0x -> $$0x));
          return new jh.a() {
             @Override
-            public Stream<alf<? extends js<?>>> b() {
+            public Stream<alh<? extends js<?>>> b() {
                return $$1.keySet().stream();
             }
 
             @Override
-            public <T> Optional<jh.b<T>> a(alf<? extends js<? extends T>> $$0) {
+            public <T> Optional<jh.b<T>> a(alh<? extends js<? extends T>> $$0) {
                return Optional.ofNullable((jh.b<T>)$$1.get($$0));
             }
          };
@@ -58,12 +58,12 @@ public interface jh<T> extends jg<T> {
    }
 
    public interface b<T> extends jh<T>, ji<T> {
-      alf<? extends js<? extends T>> g();
+      alh<? extends js<? extends T>> g();
 
       Lifecycle h();
 
-      default jh.b<T> a(cuw $$0) {
-         return cut.bU.contains(this.g()) ? this.a($$1 -> ((cut)$$1).a($$0)) : this;
+      default jh.b<T> a(cvh $$0) {
+         return cve.bV.contains(this.g()) ? this.a($$1 -> ((cve)$$1).a($$0)) : this;
       }
 
       default jh.b<T> a(final Predicate<T> $$0) {
@@ -74,7 +74,7 @@ public interface jh<T> extends jg<T> {
             }
 
             @Override
-            public Optional<jf.c<T>> a(alf<T> $$0x) {
+            public Optional<jf.c<T>> a(alh<T> $$0x) {
                return this.a().a($$0).filter($$1 -> $$0.test($$1.a()));
             }
 
@@ -89,7 +89,7 @@ public interface jh<T> extends jg<T> {
          jh.b<T> a();
 
          @Override
-         default alf<? extends js<? extends T>> g() {
+         default alh<? extends js<? extends T>> g() {
             return this.a().g();
          }
 
@@ -99,7 +99,7 @@ public interface jh<T> extends jg<T> {
          }
 
          @Override
-         default Optional<jf.c<T>> a(alf<T> $$0) {
+         default Optional<jf.c<T>> a(alh<T> $$0) {
             return this.a().a($$0);
          }
 
@@ -109,7 +109,7 @@ public interface jh<T> extends jg<T> {
          }
 
          @Override
-         default Optional<jj.c<T>> a(axr<T> $$0) {
+         default Optional<jj.c<T>> a(axt<T> $$0) {
             return this.a().a($$0);
          }
 

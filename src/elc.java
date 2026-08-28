@@ -1,60 +1,73 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class elc extends ejy<emt> {
-   public elc(Codec<emt> $$0) {
+public class elc extends ekk<emu> {
+   public elc(Codec<emu> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eka<emt> $$0) {
-      dkl $$1 = $$0.b();
+   public boolean a(ekm<emu> $$0) {
+      dkw $$1 = $$0.b();
       iv $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
+      azx $$3 = $$0.d();
+      emu $$4 = $$0.f();
+      if (!c($$1.a_($$2))) {
          return false;
       } else {
-         emt $$3 = $$0.f();
-         azv $$4 = $$0.d();
-         dtu $$5 = dtu.b();
-         int $$6 = $$3.f() + $$3.d();
+         List<jb> $$5 = $$4.a($$3);
+         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+            return true;
+         } else {
+            iv.a $$6 = $$2.k();
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
+            for (jb $$7 : $$5) {
+               $$6.g($$2);
+               List<jb> $$8 = $$4.a($$3, $$7.g());
+
+               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
+                  $$6.a($$2, $$7);
+                  ebe $$10 = $$1.a_($$6);
+                  if (!c($$10) && !$$10.a($$4.b)) {
+                     break;
+                  }
+
+                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
+                     return true;
+                  }
+               }
             }
 
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
-            }
-
-            $$5.j();
+            return false;
          }
-
-         iv $$11 = $$2.e();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).m($$1, $$11)) {
-            $$1.a($$2, dmt.rC.m(), 3);
-         }
-
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            iv $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).l() && $$1.a_($$14.e()).c($$1, $$14.e(), jb.b)) {
-               $$1.a($$14, dmt.rD.m().b(dtt.d, Boolean.valueOf(true)), 3);
-            }
-         }
-
-         return true;
       }
    }
 
-   private boolean a(djn $$0, iv $$1) {
-      eat $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof dtp) {
-         return true;
-      } else {
-         return !$$2.l() && (!$$2.a(dmt.J) || !$$2.y().b()) ? false : jb.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).m($$0, $$1x));
+   public static boolean a(dkw $$0, iv $$1, ebe $$2, emu $$3, azx $$4, List<jb> $$5) {
+      iv.a $$6 = $$1.k();
+
+      for (jb $$7 : $$5) {
+         ebe $$8 = $$0.a_($$6.a($$1, $$7));
+         if ($$8.a($$3.h)) {
+            ebe $$9 = $$3.b.c($$2, $$0, $$1, $$7);
+            if ($$9 == null) {
+               return false;
+            }
+
+            $$0.a($$1, $$9, 3);
+            $$0.z($$1).e($$1);
+            if ($$4.i() < $$3.g) {
+               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
+            }
+
+            return true;
+         }
       }
+
+      return false;
+   }
+
+   private static boolean c(ebe $$0) {
+      return $$0.l() || $$0.a(dne.J);
    }
 }

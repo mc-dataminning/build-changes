@@ -1,16 +1,41 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public interface epv<P extends epu> {
-   epv<ept> a = a("constant", ept.b);
-   epv<epx> b = a("uniform", epx.a);
-   epv<eps> c = a("biased_to_bottom", eps.a);
-   epv<epy> d = a("very_biased_to_bottom", epy.a);
-   epv<epw> e = a("trapezoid", epw.a);
-   epv<epz> f = a("weighted_list", epz.a);
+public class epv extends epu {
+   public static final MapCodec<epv> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, epv::new));
 
-   MapCodec<P> codec();
+   public epv(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   private static <P extends epu> epv<P> a(String $$0, MapCodec<P> $$1) {
-      return js.a(mg.L, $$0, () -> $$1);
+   @Override
+   protected epy<?> a() {
+      return epy.d;
+   }
+
+   @Override
+   public List<eob.a> a(dkd $$0, BiConsumer<iv, ebe> $$1, azx $$2, int $$3, iv $$4, enl $$5) {
+      List<eob.a> $$6 = Lists.newArrayList();
+      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
+
+      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
+         float $$8 = $$2.i() * (float) (Math.PI * 2);
+         int $$9 = 0;
+         int $$10 = 0;
+
+         for (int $$11 = 0; $$11 < 5; $$11++) {
+            $$9 = (int)(1.5F + azo.b($$8) * (float)$$11);
+            $$10 = (int)(1.5F + azo.a($$8) * (float)$$11);
+            iv $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
+            this.b($$0, $$1, $$2, $$12, $$5);
+         }
+
+         $$6.add(new eob.a($$4.b($$9, $$7, $$10), -2, false));
+      }
+
+      return $$6;
    }
 }

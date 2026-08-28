@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface hqf<T> {
+   int e();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface hqf {
+   T b(azx var1);
+
+   void a(hqa var1);
 }

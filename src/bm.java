@@ -14,7 +14,7 @@ public record bm(cw.c b, cw.c c, Optional<by> d, Optional<Boolean> e, Optional<b
             .apply($$0, bm::new)
    );
 
-   public boolean a(arr $$0, bux $$1, float $$2, float $$3, boolean $$4) {
+   public boolean a(art $$0, bvi $$1, float $$2, float $$3, boolean $$4) {
       if (!this.b.d((double)$$2)) {
          return false;
       } else if (!this.c.d((double)$$3)) {

@@ -1,40 +1,70 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public record hhx<T>(kj<T> a) implements hig<T> {
-   private static final hig.a<? extends hhx<?>, ?> b = e();
+public class hhx<T> implements hhp {
+   private static final Vector3f[] a = new Vector3f[]{
+      new Vector3f(0.0F, 0.0F, 0.0F),
+      new Vector3f(0.0F, 0.0F, 1.0F),
+      new Vector3f(0.0F, 1.0F, 1.0F),
+      new Vector3f(0.0F, 1.0F, 0.0F),
+      new Vector3f(1.0F, 1.0F, 0.0F),
+      new Vector3f(1.0F, 1.0F, 1.0F),
+      new Vector3f(1.0F, 0.0F, 1.0F),
+      new Vector3f(1.0F, 0.0F, 0.0F)
+   };
+   private final hke<T> b;
+   private final hhu c;
 
-   private static <T> hig.a<hhx<T>, T> e() {
-      Codec<? extends kj<?>> $$0 = mg.am.q().validate($$0x -> $$0x.d() ? DataResult.error(() -> "Component can't be serialized") : DataResult.success($$0x));
-      MapCodec<hgm.d<hhx<T>, T>> $$2 = $$0.dispatchMap(
-         "component", $$0x -> ((hhx)$$0x.a()).a, $$0x -> hig.a.a($$0x.c()).xmap($$1 -> new hgm.d<>(new hhx($$0x), $$1), hgm.d::b)
+   public hhx(hke<T> $$0, hhu $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   @Override
+   public void a(hhs $$0, czy $$1, hhq $$2, czw $$3, @Nullable gmb $$4, @Nullable bxu $$5, int $$6) {
+      hhs.b $$7 = $$0.a();
+      if ($$1.C()) {
+         $$7.a(hhs.a.b);
+      }
+
+      $$7.a(() -> a);
+      $$7.a(this.b, this.b.b($$1));
+      this.c.a($$7, $$3);
+   }
+
+   public static record a(ali b, hke.a c) implements hhp.b {
+      public static final MapCodec<hhx.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ali.a.fieldOf("base").forGetter(hhx.a::b), hkf.a.fieldOf("model").forGetter(hhx.a::c)).apply($$0, hhx.a::new)
       );
-      return new hig.a<>($$2);
-   }
 
-   public static <T> hig.a<hhx<T>, T> c() {
-      return (hig.a<hhx<T>, T>)b;
-   }
+      @Override
+      public void a(hnr.a $$0) {
+         $$0.markDependency(this.b);
+      }
 
-   @Nullable
-   @Override
-   public T b(czn $$0, @Nullable gkq $$1, @Nullable bxj $$2, int $$3, czl $$4) {
-      return $$0.a(this.a);
-   }
+      @Override
+      public hhp a(hhp.a $$0) {
+         hke<?> $$1 = this.c.a($$0.b());
+         if ($$1 == null) {
+            return $$0.c();
+         } else {
+            hhu $$2 = this.b($$0);
+            return new hhx<>($$1, $$2);
+         }
+      }
 
-   @Override
-   public hig.a<hhx<T>, T> a() {
-      return c();
-   }
+      private hhu b(hhp.a $$0) {
+         hnj $$1 = $$0.a();
+         hns $$2 = $$1.a(this.b);
+         gtv $$3 = $$2.g();
+         return hhu.a($$1, $$2, $$3);
+      }
 
-   @Override
-   public Codec<T> b() {
-      return this.a.c();
-   }
-
-   public kj<T> d() {
-      return this.a;
+      @Override
+      public MapCodec<hhx.a> a() {
+         return a;
+      }
    }
 }

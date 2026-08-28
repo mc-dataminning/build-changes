@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum fli {
+   a(4),
+   b(1),
+   c(4);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface fli {
+   private final int d;
+
+   private fli(final int $$0) {
+      this.d = $$0;
+   }
+
+   public int a() {
+      return this.d;
+   }
 }

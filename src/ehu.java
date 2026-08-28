@@ -1,345 +1,828 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableDouble;
-import org.apache.commons.lang3.mutable.MutableObject;
 
 public class ehu {
-   private static final ehu a = new ehu(new Long2ObjectOpenHashMap(), new Long2ObjectOpenHashMap()) {
-      @Override
-      public ehu.a a(int $$0, int $$1) {
-         return new ehu.a(1.0, 0.0);
-      }
+   public static final ehu.f a = a(0, false, eqv.b);
+   public static final ehu.f b = a(0, true, eqv.b);
+   public static final ehu.f c = a(0, true, 6, eqv.b);
+   public static final ehu.f d = a(0, true, 30, eqv.b);
+   public static final ehu.f e = a(0, false, eqv.a);
+   public static final ehu.f f = a(0, true, eqv.a);
 
-      @Override
-      public double a(egl.b $$0, double $$1) {
-         return $$1;
-      }
-
-      @Override
-      public dks a(dks $$0) {
-         return $$0;
-      }
-   };
-   private static final ewd b = ewd.b(new eht(42L), ql.a);
-   private static final int c = jq.d(7) - 1;
-   private static final int d = jq.e(c + 3);
-   private static final int e = 2;
-   private static final int f = jq.e(5);
-   private static final double g = 8.0;
-   private final Long2ObjectOpenHashMap<ehv> h;
-   private final Long2ObjectOpenHashMap<ehv> i;
-
-   public static ehu a() {
-      return a;
+   public static ehu.f a(int $$0, boolean $$1, eqv $$2) {
+      return new ehu.t($$0, $$1, 0, $$2);
    }
 
-   public static ehu a(@Nullable ary $$0) {
-      if ($$0 == null) {
+   public static ehu.f a(int $$0, boolean $$1, int $$2, eqv $$3) {
+      return new ehu.t($$0, $$1, $$2, $$3);
+   }
+
+   public static ehu.f a(ehu.f $$0) {
+      return new ehu.n($$0);
+   }
+
+   public static ehu.f a(ehx $$0, int $$1) {
+      return new ehu.aa($$0, $$1, false);
+   }
+
+   public static ehu.f b(ehx $$0, int $$1) {
+      return new ehu.aa($$0, $$1, true);
+   }
+
+   public static ehu.f a(int $$0, int $$1) {
+      return new ehu.z($$0, $$1, false);
+   }
+
+   public static ehu.f b(int $$0, int $$1) {
+      return new ehu.z($$0, $$1, true);
+   }
+
+   @SafeVarargs
+   public static ehu.f a(alh<dla>... $$0) {
+      return a(List.of($$0));
+   }
+
+   private static ehu.c a(List<alh<dla>> $$0) {
+      return new ehu.c($$0);
+   }
+
+   public static ehu.f a(alh<ewr.a> $$0, double $$1) {
+      return a($$0, $$1, Double.MAX_VALUE);
+   }
+
+   public static ehu.f a(alh<ewr.a> $$0, double $$1, double $$2) {
+      return new ehu.l($$0, $$1, $$2);
+   }
+
+   public static ehu.f a(String $$0, ehx $$1, ehx $$2) {
+      return new ehu.y(ali.a($$0), $$1, $$2);
+   }
+
+   public static ehu.f a() {
+      return ehu.s.a;
+   }
+
+   public static ehu.f b() {
+      return ehu.h.a;
+   }
+
+   public static ehu.f c() {
+      return ehu.a.a;
+   }
+
+   public static ehu.f d() {
+      return ehu.v.a;
+   }
+
+   public static ehu.o a(ehu.f $$0, ehu.o $$1) {
+      return new ehu.x($$0, $$1);
+   }
+
+   public static ehu.o a(ehu.o... $$0) {
+      if ($$0.length == 0) {
+         throw new IllegalArgumentException("Need at least 1 rule for a sequence");
+      } else {
+         return new ehu.q(Arrays.asList($$0));
+      }
+   }
+
+   public static ehu.o a(ebe $$0) {
+      return new ehu.d($$0);
+   }
+
+   public static ehu.o e() {
+      return ehu.b.a;
+   }
+
+   static <A> MapCodec<? extends A> a(js<MapCodec<? extends A>> $$0, String $$1, azh<? extends A> $$2) {
+      return js.a($$0, $$1, $$2.a());
+   }
+
+   static enum a implements ehu.f {
+      a;
+
+      static final azh<ehu.a> c = azh.a(MapCodec.unit(a));
+
+      @Override
+      public azh<? extends ehu.f> a() {
+         return c;
+      }
+
+      public ehu.e a(ehu.g $$0) {
+         return $$0.i;
+      }
+   }
+
+   static record aa(ehx a, int c, boolean d) implements ehu.f {
+      static final azh<ehu.aa> e = azh.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     ehx.a.fieldOf("anchor").forGetter(ehu.aa::b),
+                     Codec.intRange(-20, 20).fieldOf("surface_depth_multiplier").forGetter(ehu.aa::c),
+                     Codec.BOOL.fieldOf("add_stone_depth").forGetter(ehu.aa::d)
+                  )
+                  .apply($$0, ehu.aa::new)
+         )
+      );
+
+      @Override
+      public azh<? extends ehu.f> a() {
+         return e;
+      }
+
+      public ehu.e a(final ehu.g $$0) {
+         class a extends ehu.k {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               return this.c.B + (aa.this.d ? this.c.E : 0) >= aa.this.a.a(this.c.n) + this.c.t * aa.this.c;
+            }
+         }
+
+         return new a();
+      }
+
+      public ehx b() {
+         return this.a;
+      }
+   }
+
+   static enum b implements ehu.o {
+      a;
+
+      static final azh<ehu.b> c = azh.a(MapCodec.unit(a));
+
+      @Override
+      public azh<? extends ehu.o> a() {
+         return c;
+      }
+
+      public ehu.u a(ehu.g $$0) {
+         return $$0.e::a;
+      }
+   }
+
+   static final class c implements ehu.f {
+      static final azh<ehu.c> a = azh.a(alh.a(mh.aG).listOf().fieldOf("biome_is").xmap(ehu::a, $$0 -> $$0.c));
+      private final List<alh<dla>> c;
+      final Predicate<alh<dla>> d;
+
+      c(List<alh<dla>> $$0) {
+         this.c = $$0;
+         this.d = Set.copyOf($$0)::contains;
+      }
+
+      @Override
+      public azh<? extends ehu.f> a() {
          return a;
-      } else {
-         dir $$1 = $$0.b();
-         if (!$$0.a($$1, d)) {
-            return a;
+      }
+
+      public ehu.e a(final ehu.g $$0) {
+         class a extends ehu.k {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               return this.c.A.get().a(c.this.d);
+            }
+         }
+
+         return new a();
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
          } else {
-            Long2ObjectOpenHashMap<ehv> $$2 = new Long2ObjectOpenHashMap();
-            Long2ObjectOpenHashMap<ehv> $$3 = new Long2ObjectOpenHashMap();
-            int $$4 = azm.h(d + 1);
+            return $$0 instanceof ehu.c $$1 ? this.c.equals($$1.c) : false;
+         }
+      }
 
-            for (int $$5 = -d; $$5 <= d; $$5++) {
-               for (int $$6 = -d; $$6 <= d; $$6++) {
-                  if ($$5 * $$5 + $$6 * $$6 <= $$4) {
-                     int $$7 = $$1.h + $$5;
-                     int $$8 = $$1.i + $$6;
-                     ehv $$9 = ehv.a($$0, $$7, $$8);
-                     if ($$9 != null) {
-                        $$2.put(dir.c($$7, $$8), $$9);
-                        if ($$5 >= -f && $$5 <= f && $$6 >= -f && $$6 <= f) {
-                           $$3.put(dir.c($$7, $$8), $$9);
-                        }
-                     }
-                  }
-               }
+      @Override
+      public int hashCode() {
+         return this.c.hashCode();
+      }
+
+      @Override
+      public String toString() {
+         return "BiomeConditionSource[biomes=" + this.c + "]";
+      }
+   }
+
+   static record d(ebe a, ehu.r c) implements ehu.o {
+      static final azh<ehu.d> d = azh.a(ebe.a.xmap(ehu.d::new, ehu.d::b).fieldOf("result_state"));
+
+      d(ebe $$0) {
+         this($$0, new ehu.r($$0));
+      }
+
+      @Override
+      public azh<? extends ehu.o> a() {
+         return d;
+      }
+
+      public ehu.u a(ehu.g $$0) {
+         return this.c;
+      }
+
+      public ebe b() {
+         return this.a;
+      }
+   }
+
+   interface e {
+      boolean b();
+   }
+
+   public interface f extends Function<ehu.g, ehu.e> {
+      Codec<ehu.f> b = mg.ab.q().dispatch($$0 -> $$0.a().a(), Function.identity());
+
+      static MapCodec<? extends ehu.f> a(js<MapCodec<? extends ehu.f>> $$0) {
+         ehu.a($$0, "biome", ehu.c.a);
+         ehu.a($$0, "noise_threshold", ehu.l.e);
+         ehu.a($$0, "vertical_gradient", ehu.y.e);
+         ehu.a($$0, "y_above", ehu.aa.e);
+         ehu.a($$0, "water", ehu.z.e);
+         ehu.a($$0, "temperature", ehu.v.c);
+         ehu.a($$0, "steep", ehu.s.c);
+         ehu.a($$0, "not", ehu.n.c);
+         ehu.a($$0, "hole", ehu.h.c);
+         ehu.a($$0, "above_preliminary_surface", ehu.a.c);
+         return ehu.a($$0, "stone_depth", ehu.t.f);
+      }
+
+      azh<? extends ehu.f> a();
+   }
+
+   protected static final class g {
+      private static final int a = 8;
+      private static final int b = 4;
+      private static final int c = 16;
+      private static final int d = 15;
+      final ehv e;
+      final ehu.e f = new ehu.g.d(this);
+      final ehu.e g = new ehu.g.c(this);
+      final ehu.e h = new ehu.g.b(this);
+      final ehu.e i = new ehu.g.a();
+      final ehr j;
+      final edb k;
+      private final ehh l;
+      private final Function<iv, jf<dla>> m;
+      final eia n;
+      private long o = Long.MAX_VALUE;
+      private final int[] p = new int[4];
+      long q = -9223372036854775807L;
+      int r;
+      int s;
+      int t;
+      private long u = this.q - 1L;
+      private double v;
+      private long w = this.q - 1L;
+      private int x;
+      long y = -9223372036854775807L;
+      final iv.a z = new iv.a();
+      Supplier<jf<dla>> A;
+      int B;
+      int C;
+      int D;
+      int E;
+
+      protected g(ehv $$0, ehr $$1, edb $$2, ehh $$3, Function<iv, jf<dla>> $$4, js<dla> $$5, eia $$6) {
+         this.e = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
+         this.m = $$4;
+         this.n = $$6;
+      }
+
+      protected void a(int $$0, int $$1) {
+         this.q++;
+         this.y++;
+         this.r = $$0;
+         this.s = $$1;
+         this.t = this.e.a($$0, $$1);
+      }
+
+      protected void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+         this.y++;
+         this.A = Suppliers.memoize(() -> this.m.apply(this.z.d($$3, $$4, $$5)));
+         this.B = $$4;
+         this.C = $$2;
+         this.D = $$1;
+         this.E = $$0;
+      }
+
+      protected double a() {
+         if (this.u != this.q) {
+            this.u = this.q;
+            this.v = this.e.b(this.r, this.s);
+         }
+
+         return this.v;
+      }
+
+      public int b() {
+         return this.e.a();
+      }
+
+      private static int a(int $$0) {
+         return $$0 >> 4;
+      }
+
+      private static int b(int $$0) {
+         return $$0 << 4;
+      }
+
+      protected int c() {
+         if (this.w != this.q) {
+            this.w = this.q;
+            int $$0 = a(this.r);
+            int $$1 = a(this.s);
+            long $$2 = djc.c($$0, $$1);
+            if (this.o != $$2) {
+               this.o = $$2;
+               this.p[0] = this.l.a(b($$0), b($$1));
+               this.p[1] = this.l.a(b($$0 + 1), b($$1));
+               this.p[2] = this.l.a(b($$0), b($$1 + 1));
+               this.p[3] = this.l.a(b($$0 + 1), b($$1 + 1));
             }
 
-            return $$2.isEmpty() && $$3.isEmpty() ? a : new ehu($$2, $$3);
+            int $$3 = azo.a(
+               azo.a(
+                  (double)((float)(this.r & 15) / 16.0F),
+                  (double)((float)(this.s & 15) / 16.0F),
+                  (double)this.p[0],
+                  (double)this.p[1],
+                  (double)this.p[2],
+                  (double)this.p[3]
+               )
+            );
+            this.x = $$3 + this.t - 8;
+         }
+
+         return this.x;
+      }
+
+      final class a implements ehu.e {
+         @Override
+         public boolean b() {
+            return g.this.B >= g.this.c();
+         }
+      }
+
+      static final class b extends ehu.j {
+         b(ehu.g $$0) {
+            super($$0);
+         }
+
+         @Override
+         protected boolean a() {
+            return this.c.t <= 0;
+         }
+      }
+
+      static class c extends ehu.j {
+         c(ehu.g $$0) {
+            super($$0);
+         }
+
+         @Override
+         protected boolean a() {
+            int $$0 = this.c.r & 15;
+            int $$1 = this.c.s & 15;
+            int $$2 = Math.max($$1 - 1, 0);
+            int $$3 = Math.min($$1 + 1, 15);
+            edb $$4 = this.c.k;
+            int $$5 = $$4.a(ehd.a.a, $$0, $$2);
+            int $$6 = $$4.a(ehd.a.a, $$0, $$3);
+            if ($$6 >= $$5 + 4) {
+               return true;
+            } else {
+               int $$7 = Math.max($$0 - 1, 0);
+               int $$8 = Math.min($$0 + 1, 15);
+               int $$9 = $$4.a(ehd.a.a, $$7, $$1);
+               int $$10 = $$4.a(ehd.a.a, $$8, $$1);
+               return $$9 >= $$10 + 4;
+            }
+         }
+      }
+
+      static class d extends ehu.k {
+         d(ehu.g $$0) {
+            super($$0);
+         }
+
+         @Override
+         protected boolean a() {
+            return this.c.A.get().a().b(this.c.z.d(this.c.r, this.c.B, this.c.s), this.c.b());
          }
       }
    }
 
-   ehu(Long2ObjectOpenHashMap<ehv> $$0, Long2ObjectOpenHashMap<ehv> $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   static enum h implements ehu.f {
+      a;
+
+      static final azh<ehu.h> c = azh.a(MapCodec.unit(a));
+
+      @Override
+      public azh<? extends ehu.f> a() {
+         return c;
+      }
+
+      public ehu.e a(ehu.g $$0) {
+         return $$0.h;
+      }
    }
 
-   public ehu.a a(int $$0, int $$1) {
-      int $$2 = jq.a($$0);
-      int $$3 = jq.a($$1);
-      double $$4 = this.a($$2, 0, $$3, ehv::a);
-      if ($$4 != Double.MAX_VALUE) {
-         return new ehu.a(0.0, a($$4));
-      } else {
-         MutableDouble $$5 = new MutableDouble(0.0);
-         MutableDouble $$6 = new MutableDouble(0.0);
-         MutableDouble $$7 = new MutableDouble(Double.POSITIVE_INFINITY);
-         this.h.forEach(($$5x, $$6x) -> $$6x.a(jq.d(dir.a($$5x)), jq.d(dir.b($$5x)), ($$5xx, $$6xx, $$7x) -> {
-               double $$8x = (double)azm.f((float)($$2 - $$5xx), (float)($$3 - $$6xx));
-               if (!($$8x > (double)c)) {
-                  if ($$8x < $$7.doubleValue()) {
-                     $$7.setValue($$8x);
-                  }
+   abstract static class i implements ehu.e {
+      protected final ehu.g c;
+      private long a;
+      @Nullable
+      Boolean d;
 
-                  double $$9x = 1.0 / ($$8x * $$8x * $$8x * $$8x);
-                  $$6.add($$7x * $$9x);
-                  $$5.add($$9x);
-               }
-            }));
-         if ($$7.doubleValue() == Double.POSITIVE_INFINITY) {
-            return new ehu.a(1.0, 0.0);
+      protected i(ehu.g $$0) {
+         this.c = $$0;
+         this.a = this.c() - 1L;
+      }
+
+      @Override
+      public boolean b() {
+         long $$0 = this.c();
+         if ($$0 == this.a) {
+            if (this.d == null) {
+               throw new IllegalStateException("Update triggered but the result is null");
+            } else {
+               return this.d;
+            }
          } else {
-            double $$8 = $$6.doubleValue() / $$5.doubleValue();
-            double $$9 = azm.a($$7.doubleValue() / (double)(c + 1), 0.0, 1.0);
-            $$9 = 3.0 * $$9 * $$9 - 2.0 * $$9 * $$9 * $$9;
-            return new ehu.a($$9, a($$8));
-         }
-      }
-   }
-
-   private static double a(double $$0) {
-      double $$1 = 1.0;
-      double $$2 = $$0 + 0.5;
-      double $$3 = azm.c($$2, 8.0);
-      return 1.0 * (32.0 * ($$2 - 128.0) - 3.0 * ($$2 - 120.0) * $$3 + 3.0 * $$3 * $$3) / (128.0 * (32.0 - 3.0 * $$3));
-   }
-
-   public double a(egl.b $$0, double $$1) {
-      int $$2 = jq.a($$0.a());
-      int $$3 = $$0.b() / 8;
-      int $$4 = jq.a($$0.c());
-      double $$5 = this.a($$2, $$3, $$4, ehv::b);
-      if ($$5 != Double.MAX_VALUE) {
-         return $$5;
-      } else {
-         MutableDouble $$6 = new MutableDouble(0.0);
-         MutableDouble $$7 = new MutableDouble(0.0);
-         MutableDouble $$8 = new MutableDouble(Double.POSITIVE_INFINITY);
-         this.i.forEach(($$6x, $$7x) -> $$7x.a(jq.d(dir.a($$6x)), jq.d(dir.b($$6x)), $$3 - 1, $$3 + 1, ($$6xx, $$7xx, $$8x, $$9x) -> {
-               double $$10x = azm.g((double)($$2 - $$6xx), (double)(($$3 - $$7xx) * 2), (double)($$4 - $$8x));
-               if (!($$10x > 2.0)) {
-                  if ($$10x < $$8.doubleValue()) {
-                     $$8.setValue($$10x);
-                  }
-
-                  double $$11 = 1.0 / ($$10x * $$10x * $$10x * $$10x);
-                  $$7.add($$9x * $$11);
-                  $$6.add($$11);
-               }
-            }));
-         if ($$8.doubleValue() == Double.POSITIVE_INFINITY) {
-            return $$1;
-         } else {
-            double $$9 = $$7.doubleValue() / $$6.doubleValue();
-            double $$10 = azm.a($$8.doubleValue() / 3.0, 0.0, 1.0);
-            return azm.d($$10, $$9, $$1);
-         }
-      }
-   }
-
-   private double a(int $$0, int $$1, int $$2, ehu.b $$3) {
-      int $$4 = jq.e($$0);
-      int $$5 = jq.e($$2);
-      boolean $$6 = ($$0 & 3) == 0;
-      boolean $$7 = ($$2 & 3) == 0;
-      double $$8 = this.a($$3, $$4, $$5, $$0, $$1, $$2);
-      if ($$8 == Double.MAX_VALUE) {
-         if ($$6 && $$7) {
-            $$8 = this.a($$3, $$4 - 1, $$5 - 1, $$0, $$1, $$2);
-         }
-
-         if ($$8 == Double.MAX_VALUE) {
-            if ($$6) {
-               $$8 = this.a($$3, $$4 - 1, $$5, $$0, $$1, $$2);
-            }
-
-            if ($$8 == Double.MAX_VALUE && $$7) {
-               $$8 = this.a($$3, $$4, $$5 - 1, $$0, $$1, $$2);
-            }
+            this.a = $$0;
+            this.d = this.a();
+            return this.d;
          }
       }
 
-      return $$8;
+      protected abstract long c();
+
+      protected abstract boolean a();
    }
 
-   private double a(ehu.b $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      ehv $$6 = (ehv)this.h.get(dir.c($$1, $$2));
-      return $$6 != null ? $$0.get($$6, $$3 - jq.d($$1), $$4, $$5 - jq.d($$2)) : Double.MAX_VALUE;
+   abstract static class j extends ehu.i {
+      protected j(ehu.g $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected long c() {
+         return this.c.q;
+      }
    }
 
-   public dks a(dks $$0) {
-      return ($$1, $$2, $$3, $$4) -> {
-         jf<dkp> $$5 = this.a($$1, $$2, $$3);
-         return $$5 == null ? $$0.getNoiseBiome($$1, $$2, $$3, $$4) : $$5;
-      };
+   abstract static class k extends ehu.i {
+      protected k(ehu.g $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected long c() {
+         return this.c.y;
+      }
    }
 
-   @Nullable
-   private jf<dkp> a(int $$0, int $$1, int $$2) {
-      MutableDouble $$3 = new MutableDouble(Double.POSITIVE_INFINITY);
-      MutableObject<jf<dkp>> $$4 = new MutableObject();
-      this.h.forEach(($$5x, $$6x) -> $$6x.a(jq.d(dir.a($$5x)), $$1, jq.d(dir.b($$5x)), ($$4xx, $$5xx, $$6xx) -> {
-            double $$7 = (double)azm.f((float)($$0 - $$4xx), (float)($$2 - $$5xx));
-            if (!($$7 > (double)c)) {
-               if ($$7 < $$3.doubleValue()) {
-                  $$4.setValue($$6xx);
-                  $$3.setValue($$7);
-               }
+   static record l(alh<ewr.a> a, double c, double d) implements ehu.f {
+      static final azh<ehu.l> e = azh.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     alh.a(mh.aY).fieldOf("noise").forGetter(ehu.l::b),
+                     Codec.DOUBLE.fieldOf("min_threshold").forGetter(ehu.l::c),
+                     Codec.DOUBLE.fieldOf("max_threshold").forGetter(ehu.l::d)
+                  )
+                  .apply($$0, ehu.l::new)
+         )
+      );
+
+      @Override
+      public azh<? extends ehu.f> a() {
+         return e;
+      }
+
+      public ehu.e a(final ehu.g $$0) {
+         final ewr $$1 = $$0.j.a(this.a);
+
+         class a extends ehu.j {
+            a() {
+               super($$0);
             }
-         }));
-      if ($$3.doubleValue() == Double.POSITIVE_INFINITY) {
+
+            @Override
+            protected boolean a() {
+               double $$0 = $$1.a((double)this.c.r, 0.0, (double)this.c.s);
+               return $$0 >= l.this.c && $$0 <= l.this.d;
+            }
+         }
+
+         return new a();
+      }
+
+      public alh<ewr.a> b() {
+         return this.a;
+      }
+   }
+
+   static record m(ehu.e a) implements ehu.e {
+      @Override
+      public boolean b() {
+         return !this.a.b();
+      }
+   }
+
+   static record n(ehu.f a) implements ehu.f {
+      static final azh<ehu.n> c = azh.a(ehu.f.b.xmap(ehu.n::new, ehu.n::b).fieldOf("invert"));
+
+      @Override
+      public azh<? extends ehu.f> a() {
+         return c;
+      }
+
+      public ehu.e a(ehu.g $$0) {
+         return new ehu.m(this.a.apply($$0));
+      }
+
+      public ehu.f b() {
+         return this.a;
+      }
+   }
+
+   public interface o extends Function<ehu.g, ehu.u> {
+      Codec<ehu.o> b = mg.ac.q().dispatch($$0 -> $$0.a().a(), Function.identity());
+
+      static MapCodec<? extends ehu.o> a(js<MapCodec<? extends ehu.o>> $$0) {
+         ehu.a($$0, "bandlands", ehu.b.c);
+         ehu.a($$0, "block", ehu.d.d);
+         ehu.a($$0, "sequence", ehu.q.c);
+         return ehu.a($$0, "condition", ehu.x.d);
+      }
+
+      azh<? extends ehu.o> a();
+   }
+
+   static record p(List<ehu.u> a) implements ehu.u {
+      @Nullable
+      @Override
+      public ebe tryApply(int $$0, int $$1, int $$2) {
+         for (ehu.u $$3 : this.a) {
+            ebe $$4 = $$3.tryApply($$0, $$1, $$2);
+            if ($$4 != null) {
+               return $$4;
+            }
+         }
+
          return null;
-      } else {
-         double $$5 = b.a((double)$$0, 0.0, (double)$$2) * 12.0;
-         double $$6 = azm.a(($$3.doubleValue() + $$5) / (double)(c + 1), 0.0, 1.0);
-         return $$6 > 0.5 ? null : (jf)$$4.getValue();
       }
    }
 
-   public static void a(ary $$0, ecq $$1) {
-      dir $$2 = $$1.f();
-      boolean $$3 = $$1.u();
-      iv.a $$4 = new iv.a();
-      iv $$5 = new iv($$2.d(), 0, $$2.e());
-      ehv $$6 = $$1.v();
-      if ($$6 != null) {
-         int $$7 = $$6.b().G_();
-         int $$8 = $$6.b().ao();
-         if ($$3) {
-            for (int $$9 = 0; $$9 < 16; $$9++) {
-               for (int $$10 = 0; $$10 < 16; $$10++) {
-                  a($$1, $$4.a($$5, $$9, $$7 - 1, $$10));
-                  a($$1, $$4.a($$5, $$9, $$7, $$10));
-                  a($$1, $$4.a($$5, $$9, $$8, $$10));
-                  a($$1, $$4.a($$5, $$9, $$8 + 1, $$10));
+   static record q(List<ehu.o> a) implements ehu.o {
+      static final azh<ehu.q> c = azh.a(ehu.o.b.listOf().xmap(ehu.q::new, ehu.q::b).fieldOf("sequence"));
+
+      @Override
+      public azh<? extends ehu.o> a() {
+         return c;
+      }
+
+      public ehu.u a(ehu.g $$0) {
+         if (this.a.size() == 1) {
+            return this.a.get(0).apply($$0);
+         } else {
+            Builder<ehu.u> $$1 = ImmutableList.builder();
+
+            for (ehu.o $$2 : this.a) {
+               $$1.add($$2.apply($$0));
+            }
+
+            return new ehu.p($$1.build());
+         }
+      }
+
+      public List<ehu.o> b() {
+         return this.a;
+      }
+   }
+
+   static record r(ebe a) implements ehu.u {
+      @Override
+      public ebe tryApply(int $$0, int $$1, int $$2) {
+         return this.a;
+      }
+   }
+
+   static enum s implements ehu.f {
+      a;
+
+      static final azh<ehu.s> c = azh.a(MapCodec.unit(a));
+
+      @Override
+      public azh<? extends ehu.f> a() {
+         return c;
+      }
+
+      public ehu.e a(ehu.g $$0) {
+         return $$0.g;
+      }
+   }
+
+   static record t(int a, boolean c, int d, eqv e) implements ehu.f {
+      static final azh<ehu.t> f = azh.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     Codec.INT.fieldOf("offset").forGetter(ehu.t::b),
+                     Codec.BOOL.fieldOf("add_surface_depth").forGetter(ehu.t::c),
+                     Codec.INT.fieldOf("secondary_depth_range").forGetter(ehu.t::d),
+                     eqv.c.fieldOf("surface_type").forGetter(ehu.t::e)
+                  )
+                  .apply($$0, ehu.t::new)
+         )
+      );
+
+      @Override
+      public azh<? extends ehu.f> a() {
+         return f;
+      }
+
+      public ehu.e a(final ehu.g $$0) {
+         final boolean $$1 = this.e == eqv.a;
+
+         class a extends ehu.k {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               int $$0 = $$1 ? this.c.D : this.c.E;
+               int $$1 = t.this.c ? this.c.t : 0;
+               int $$2 = t.this.d == 0 ? 0 : (int)azo.b(this.c.a(), -1.0, 1.0, 0.0, (double)t.this.d);
+               return $$0 <= 1 + t.this.a + $$1 + $$2;
+            }
+         }
+
+         return new a();
+      }
+
+      public int b() {
+         return this.a;
+      }
+   }
+
+   protected interface u {
+      @Nullable
+      ebe tryApply(int var1, int var2, int var3);
+   }
+
+   static enum v implements ehu.f {
+      a;
+
+      static final azh<ehu.v> c = azh.a(MapCodec.unit(a));
+
+      @Override
+      public azh<? extends ehu.f> a() {
+         return c;
+      }
+
+      public ehu.e a(ehu.g $$0) {
+         return $$0.f;
+      }
+   }
+
+   static record w(ehu.e a, ehu.u b) implements ehu.u {
+      @Nullable
+      @Override
+      public ebe tryApply(int $$0, int $$1, int $$2) {
+         return !this.a.b() ? null : this.b.tryApply($$0, $$1, $$2);
+      }
+   }
+
+   static record x(ehu.f a, ehu.o c) implements ehu.o {
+      static final azh<ehu.x> d = azh.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(ehu.f.b.fieldOf("if_true").forGetter(ehu.x::b), ehu.o.b.fieldOf("then_run").forGetter(ehu.x::c)).apply($$0, ehu.x::new)
+         )
+      );
+
+      @Override
+      public azh<? extends ehu.o> a() {
+         return d;
+      }
+
+      public ehu.u a(ehu.g $$0) {
+         return new ehu.w(this.a.apply($$0), this.c.apply($$0));
+      }
+
+      public ehu.f b() {
+         return this.a;
+      }
+   }
+
+   static record y(ali a, ehx c, ehx d) implements ehu.f {
+      static final azh<ehu.y> e = azh.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     ali.a.fieldOf("random_name").forGetter(ehu.y::b),
+                     ehx.a.fieldOf("true_at_and_below").forGetter(ehu.y::c),
+                     ehx.a.fieldOf("false_at_and_above").forGetter(ehu.y::d)
+                  )
+                  .apply($$0, ehu.y::new)
+         )
+      );
+
+      @Override
+      public azh<? extends ehu.f> a() {
+         return e;
+      }
+
+      public ehu.e a(final ehu.g $$0) {
+         final int $$1 = this.c().a($$0.n);
+         final int $$2 = this.d().a($$0.n);
+         final ehq $$3 = $$0.j.a(this.b());
+
+         class a extends ehu.k {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               int $$0 = this.c.B;
+               if ($$0 <= $$1) {
+                  return true;
+               } else if ($$0 >= $$2) {
+                  return false;
+               } else {
+                  double $$1 = azo.b((double)$$0, (double)$$1, (double)$$2, 1.0, 0.0);
+                  azx $$2 = $$3.a(this.c.r, $$0, this.c.s);
+                  return (double)$$2.i() < $$1;
                }
             }
          }
 
-         for (jb $$11 : jb.c.a) {
-            if ($$0.a($$2.h + $$11.j(), $$2.i + $$11.l()).u() != $$3) {
-               int $$12 = $$11 == jb.f ? 15 : 0;
-               int $$13 = $$11 == jb.e ? 0 : 15;
-               int $$14 = $$11 == jb.d ? 15 : 0;
-               int $$15 = $$11 == jb.c ? 0 : 15;
+         return new a();
+      }
 
-               for (int $$16 = $$12; $$16 <= $$13; $$16++) {
-                  for (int $$17 = $$14; $$17 <= $$15; $$17++) {
-                     int $$18 = Math.min($$8, $$1.a(egs.a.e, $$16, $$17)) + 1;
+      public ali b() {
+         return this.a;
+      }
+   }
 
-                     for (int $$19 = $$7; $$19 < $$18; $$19++) {
-                        a($$1, $$4.a($$5, $$16, $$19, $$17));
-                     }
-                  }
-               }
+   static record z(int a, int c, boolean d) implements ehu.f {
+      static final azh<ehu.z> e = azh.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     Codec.INT.fieldOf("offset").forGetter(ehu.z::b),
+                     Codec.intRange(-20, 20).fieldOf("surface_depth_multiplier").forGetter(ehu.z::c),
+                     Codec.BOOL.fieldOf("add_stone_depth").forGetter(ehu.z::d)
+                  )
+                  .apply($$0, ehu.z::new)
+         )
+      );
+
+      @Override
+      public azh<? extends ehu.f> a() {
+         return e;
+      }
+
+      public ehu.e a(final ehu.g $$0) {
+         class a extends ehu.k {
+            a() {
+               super($$0);
             }
-         }
-      }
-   }
 
-   private static void a(ecq $$0, iv $$1) {
-      eat $$2 = $$0.a_($$1);
-      if ($$2.a(axc.Q)) {
-         $$0.e($$1);
-      }
-
-      exa $$3 = $$0.b_($$1);
-      if (!$$3.c()) {
-         $$0.e($$1);
-      }
-   }
-
-   public static void a(dkl $$0, edk $$1) {
-      dir $$2 = $$1.f();
-      Builder<jc, ehv> $$3 = ImmutableMap.builder();
-
-      for (jc $$4 : jc.values()) {
-         int $$5 = $$2.h + $$4.b();
-         int $$6 = $$2.i + $$4.c();
-         ehv $$7 = $$0.a($$5, $$6).v();
-         if ($$7 != null) {
-            $$3.put($$4, $$7);
-         }
-      }
-
-      ImmutableMap<jc, ehv> $$8 = $$3.build();
-      if ($$1.u() || !$$8.isEmpty()) {
-         ehu.c $$9 = a($$1.v(), $$8);
-         ecp.a $$10 = ($$1x, $$2x, $$3x) -> {
-            double $$4x = (double)$$1x + 0.5 + b.a((double)$$1x, (double)$$2x, (double)$$3x) * 4.0;
-            double $$5x = (double)$$2x + 0.5 + b.a((double)$$2x, (double)$$3x, (double)$$1x) * 4.0;
-            double $$6x = (double)$$3x + 0.5 + b.a((double)$$3x, (double)$$1x, (double)$$2x) * 4.0;
-            return $$9.getDistance($$4x, $$5x, $$6x) < 4.0;
-         };
-         $$1.F().a($$10);
-      }
-   }
-
-   public static ehu.c a(@Nullable ehv $$0, Map<jc, ehv> $$1) {
-      List<ehu.c> $$2 = Lists.newArrayList();
-      if ($$0 != null) {
-         $$2.add(a(null, $$0));
-      }
-
-      $$1.forEach(($$1x, $$2x) -> $$2.add(a($$1x, $$2x)));
-      return ($$1x, $$2x, $$3) -> {
-         double $$4 = Double.POSITIVE_INFINITY;
-
-         for (ehu.c $$5 : $$2) {
-            double $$6 = $$5.getDistance($$1x, $$2x, $$3);
-            if ($$6 < $$4) {
-               $$4 = $$6;
+            @Override
+            protected boolean a() {
+               return this.c.C == Integer.MIN_VALUE || this.c.B + (z.this.d ? this.c.E : 0) >= this.c.C + z.this.a + this.c.t * z.this.c;
             }
          }
 
-         return $$4;
-      };
-   }
-
-   private static ehu.c a(@Nullable jc $$0, ehv $$1) {
-      double $$2 = 0.0;
-      double $$3 = 0.0;
-      if ($$0 != null) {
-         for (jb $$4 : $$0.a()) {
-            $$2 += (double)($$4.j() * 16);
-            $$3 += (double)($$4.l() * 16);
-         }
+         return new a();
       }
 
-      double $$5 = $$2;
-      double $$6 = $$3;
-      double $$7 = (double)$$1.b().H_() / 2.0;
-      double $$8 = (double)$$1.b().G_() + $$7;
-      return ($$4x, $$5x, $$6x) -> a($$4x - 8.0 - $$5, $$5x - $$8, $$6x - 8.0 - $$6, 8.0, $$7, 8.0);
-   }
-
-   private static double a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      double $$6 = Math.abs($$0) - $$3;
-      double $$7 = Math.abs($$1) - $$4;
-      double $$8 = Math.abs($$2) - $$5;
-      return azm.g(Math.max(0.0, $$6), Math.max(0.0, $$7), Math.max(0.0, $$8));
-   }
-
-   public static record a(double a, double b) {
-   }
-
-   interface b {
-      double get(ehv var1, int var2, int var3, int var4);
-   }
-
-   public interface c {
-      double getDistance(double var1, double var3, double var5);
+      public int b() {
+         return this.a;
+      }
    }
 }

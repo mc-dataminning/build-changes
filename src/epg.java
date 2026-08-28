@@ -1,44 +1,39 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class epg extends epj {
-   public static final MapCodec<epg> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, epg::new));
+public class epg extends epl {
+   public static final MapCodec<epg> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(epg::new, $$0 -> $$0.b);
+   private final float b;
 
-   public epg(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public epg(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected epk<?> a() {
-      return epk.c;
+   protected epm<?> a() {
+      return epm.e;
    }
 
    @Override
-   public List<eno.a> a(djs $$0, BiConsumer<iv, eat> $$1, azv $$2, int $$3, iv $$4, emy $$5) {
-      iv $$6 = $$4.e();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.i(), $$5);
-      a($$0, $$1, $$2, $$6.g(), $$5);
-      a($$0, $$1, $$2, $$6.g().i(), $$5);
-      iv.a $$7 = new iv.a();
-
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
+   public void a(epl.a $$0) {
+      azx $$1 = $$0.b();
+      if (!($$1.i() >= this.b)) {
+         List<iv> $$2 = $$0.c();
+         if (!$$2.isEmpty()) {
+            int $$3 = $$2.getFirst().v();
+            $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+               for (jb $$3x : jb.c.a) {
+                  if ($$1.i() <= 0.25F) {
+                     jb $$4 = $$3x.g();
+                     iv $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                     if ($$0.a($$5)) {
+                        $$0.a($$5, dne.gb.m().b(dok.c, Integer.valueOf($$1.a(3))).b(dok.e, $$3x));
+                     }
+                  }
+               }
+            });
          }
       }
-
-      return ImmutableList.of(new eno.a($$4.b($$3), 0, true));
-   }
-
-   private void a(djs $$0, BiConsumer<iv, eat> $$1, azv $$2, iv.a $$3, emy $$4, iv $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
    }
 }

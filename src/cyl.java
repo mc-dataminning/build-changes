@@ -1,118 +1,112 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.IntFunction;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
+public class cyl extends czu {
+   public static final int a = 10;
+   private static final int b = 200;
 
-public enum cyl implements bak {
-   a(0, "white", 16383998, exe.i, 15790320, 16777215),
-   b(1, "orange", 16351261, exe.p, 15435844, 16738335),
-   c(2, "magenta", 13061821, exe.q, 12801229, 16711935),
-   d(3, "light_blue", 3847130, exe.r, 6719955, 10141901),
-   e(4, "yellow", 16701501, exe.s, 14602026, 16776960),
-   f(5, "lime", 8439583, exe.t, 4312372, 12582656),
-   g(6, "pink", 15961002, exe.u, 14188952, 16738740),
-   h(7, "gray", 4673362, exe.v, 4408131, 8421504),
-   i(8, "light_gray", 10329495, exe.w, 11250603, 13882323),
-   j(9, "cyan", 1481884, exe.x, 2651799, 65535),
-   k(10, "purple", 8991416, exe.y, 8073150, 10494192),
-   l(11, "blue", 3949738, exe.z, 2437522, 255),
-   m(12, "brown", 8606770, exe.A, 5320730, 9127187),
-   n(13, "green", 6192150, exe.B, 3887386, 65280),
-   o(14, "red", 11546150, exe.C, 11743532, 16711680),
-   p(15, "black", 1908001, exe.D, 1973019, 0);
-
-   private static final IntFunction<cyl> t = ayc.a(cyl::a, values(), ayc.a.a);
-   private static final Int2ObjectOpenHashMap<cyl> u = new Int2ObjectOpenHashMap(
-      Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.z, $$0 -> (cyl)$$0))
-   );
-   public static final bak.a<cyl> q = bak.a(cyl::values);
-   public static final yw<ByteBuf, cyl> r = yu.a(t, cyl::a);
-   @Deprecated
-   public static final Codec<cyl> s = Codec.BYTE.xmap(cyl::a, $$0 -> (byte)$$0.v);
-   private final int v;
-   private final String w;
-   private final exe x;
-   private final int y;
-   private final int z;
-   private final int A;
-
-   private cyl(final int $$0, final String $$1, final int $$2, final exe $$3, final int $$4, final int $$5) {
-      this.v = $$0;
-      this.w = $$1;
-      this.x = $$3;
-      this.A = $$5;
-      this.y = axw.f($$2);
-      this.z = $$4;
-   }
-
-   public int a() {
-      return this.v;
-   }
-
-   public String b() {
-      return this.w;
-   }
-
-   public int d() {
-      return this.y;
-   }
-
-   public exe e() {
-      return this.x;
-   }
-
-   public int f() {
-      return this.z;
-   }
-
-   public int g() {
-      return this.A;
-   }
-
-   public static cyl a(int $$0) {
-      return t.apply($$0);
-   }
-
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static cyl a(String $$0, @Nullable cyl $$1) {
-      cyl $$2 = q.a($$0);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   @Nullable
-   public static cyl b(int $$0) {
-      return (cyl)u.get($$0);
+   public cyl(czu.a $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.w;
+   public bur a(ddt $$0) {
+      crx $$1 = $$0.o();
+      if ($$1 != null && this.a($$1).d() == ffo.a.b) {
+         $$1.c($$0.p());
+      }
+
+      return bur.c;
    }
 
    @Override
-   public String c() {
-      return this.w;
+   public daa b(czy $$0) {
+      return daa.j;
    }
 
-   public static cyl a(arq $$0, cyl $$1, cyl $$2) {
-      dds $$3 = a($$1, $$2);
-      return $$0.t()
-         .a(dep.a, $$3, $$0)
-         .map($$2x -> ((ddt)$$2x.b()).a($$3, $$0.F_()))
-         .map(czn::h)
-         .filter(cym.class::isInstance)
-         .map(cym.class::cast)
-         .map(cym::a)
-         .orElseGet(() -> $$0.A.h() ? $$1 : $$2);
+   @Override
+   public int a(czy $$0, bxu $$1) {
+      return 200;
    }
 
-   private static dds a(cyl $$0, cyl $$1) {
-      return dds.a(2, 1, List.of(new czn(cym.a($$0)), new czn(cym.a($$1))));
+   @Override
+   public void a(djx $$0, bxu $$1, czy $$2, int $$3) {
+      if ($$3 >= 0 && $$1 instanceof crx $$4) {
+         ffo $$6 = this.a($$4);
+         if ($$6 instanceof ffm $$7 && $$6.d() == ffo.a.b) {
+            int $$9 = this.a($$2, $$1) - $$3 + 1;
+            boolean $$10 = $$9 % 10 == 5;
+            if ($$10) {
+               iv $$11 = $$7.b();
+               ebe $$12 = $$0.a_($$11);
+               bxl $$13 = $$1.fA() == buq.a ? $$4.fy() : $$4.fy().e();
+               if ($$12.D() && $$12.o() != dtp.a) {
+                  this.a($$0, $$7, $$12, $$1.h(0.0F), $$13);
+               }
+
+               awo $$15;
+               if ($$12.b() instanceof dni $$14) {
+                  $$15 = $$14.c();
+               } else {
+                  $$15 = awp.cS;
+               }
+
+               $$0.a($$4, $$11, $$15, awq.e);
+               if ($$0 instanceof ars $$17 && $$0.c_($$11) instanceof dyh $$18) {
+                  boolean $$19 = $$18.a($$0.ae(), $$17, $$4, $$7.c(), $$2);
+                  if ($$19) {
+                     bxd $$20 = $$2.equals($$4.a(bxd.b)) ? bxd.b : bxd.a;
+                     $$2.a(1, $$4, $$20);
+                  }
+               }
+            }
+
+            return;
+         }
+
+         $$1.fE();
+      } else {
+         $$1.fE();
+      }
+   }
+
+   private ffo a(crx $$0) {
+      return csu.a($$0, bxa.h, $$0.gL());
+   }
+
+   private void a(djx $$0, ffm $$1, ebe $$2, ffq $$3, bxl $$4) {
+      double $$5 = 3.0;
+      int $$6 = $$4 == bxl.b ? 1 : -1;
+      int $$7 = $$0.G_().b(7, 12);
+      lq $$8 = new lq(ly.b, $$2);
+      jb $$9 = $$1.c();
+      cyl.a $$10 = cyl.a.a($$3, $$9);
+      ffq $$11 = $$1.g();
+
+      for (int $$12 = 0; $$12 < $$7; $$12++) {
+         $$0.a(
+            $$8,
+            $$11.d - (double)($$9 == jb.e ? 1.0E-6F : 0.0F),
+            $$11.e,
+            $$11.f - (double)($$9 == jb.c ? 1.0E-6F : 0.0F),
+            $$10.a() * (double)$$6 * 3.0 * $$0.G_().j(),
+            0.0,
+            $$10.c() * (double)$$6 * 3.0 * $$0.G_().j()
+         );
+      }
+   }
+
+   static record a(double a, double b, double c) {
+      private static final double d = 1.0;
+      private static final double e = 0.1;
+
+      public static cyl.a a(ffq $$0, jb $$1) {
+         double $$2 = 0.0;
+
+         return switch ($$1) {
+            case a, b -> new cyl.a($$0.c(), 0.0, -$$0.a());
+            case c -> new cyl.a(1.0, 0.0, -0.1);
+            case d -> new cyl.a(-1.0, 0.0, 0.1);
+            case e -> new cyl.a(-0.1, 0.0, -1.0);
+            case f -> new cyl.a(0.1, 0.0, 1.0);
+         };
+      }
    }
 }

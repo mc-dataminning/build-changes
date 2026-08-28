@@ -1,49 +1,47 @@
-import java.net.SocketAddress;
-import jdk.jfr.Category;
-import jdk.jfr.DataAmount;
-import jdk.jfr.Enabled;
-import jdk.jfr.Event;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.util.function.LongSupplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-@Category({"Minecraft", "Network"})
-@StackTrace(false)
-@Enabled(false)
-public abstract class bre extends Event {
-   @Name("protocolId")
-   @Label("Protocol Id")
-   public final String protocolId;
-   @Name("packetDirection")
-   @Label("Packet Direction")
-   public final String packetDirection;
-   @Name("packetId")
-   @Label("Packet Id")
-   public final String packetId;
-   @Name("remoteAddress")
-   @Label("Remote Address")
-   public final String remoteAddress;
-   @Name("bytes")
-   @Label("Bytes")
-   @DataAmount
-   public final int bytes;
+public class bre {
+   private static final Logger a = LogUtils.getLogger();
+   private final LongSupplier b;
+   private final long c;
+   private int d;
+   private final File e;
+   private bqy f = bqx.a;
 
-   public bre(String $$0, String $$1, String $$2, SocketAddress $$3, int $$4) {
-      this.protocolId = $$0;
-      this.packetDirection = $$1;
-      this.packetId = $$2;
-      this.remoteAddress = $$3.toString();
-      this.bytes = $$4;
+   public bre(LongSupplier $$0, String $$1, long $$2) {
+      this.b = $$0;
+      this.e = new File("debug", $$1);
+      this.c = $$2;
    }
 
-   public static final class a {
-      public static final String a = "remoteAddress";
-      public static final String b = "protocolId";
-      public static final String c = "packetDirection";
-      public static final String d = "packetId";
-      public static final String e = "bytes";
+   public brb a() {
+      this.f = new bqt(this.b, () -> this.d, () -> true);
+      this.d++;
+      return this.f;
+   }
 
-      private a() {
+   public void b() {
+      if (this.f != bqx.a) {
+         bqz $$0 = this.f.d();
+         this.f = bqx.a;
+         if ($$0.g() >= this.c) {
+            File $$1 = new File(this.e, "tick-results-" + ag.f() + ".txt");
+            $$0.a($$1.toPath());
+            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
+         }
       }
+   }
+
+   @Nullable
+   public static bre a(String $$0) {
+      return null;
+   }
+
+   public static brb a(brb $$0, @Nullable bre $$1) {
+      return $$1 != null ? brb.a($$1.a(), $$0) : $$0;
    }
 }

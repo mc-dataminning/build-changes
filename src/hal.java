@@ -1,19 +1,15 @@
-public class hal extends hbm<hcs, gfv> {
-   private static final alg a = alg.b("textures/entity/breeze/breeze_wind.png");
-   private final gfv b;
+public class hal extends gxa<cph, hgk> {
+   private static final ali a = ali.b("textures/entity/skeleton/skeleton.png");
 
-   public hal(gwy.a $$0, gyv<hcs, gfv> $$1) {
-      super($$1);
-      this.b = new gfv($$0.a(gjs.L));
+   public hal(gyi.a $$0) {
+      super($$0, gld.cY, gld.dd, gld.de);
    }
 
-   public void a(fkd $$0, gqr $$1, int $$2, hcs $$3, float $$4, float $$5) {
-      fkh $$6 = $$1.getBuffer(grc.a(a, this.a($$3.u) % 1.0F, 0.0F));
-      this.b.a($$3);
-      gwd.a(this.b, this.b.d()).a($$0, $$6, $$2, hjg.d);
+   public ali b(hgk $$0) {
+      return a;
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public hgk b() {
+      return new hgk();
    }
 }

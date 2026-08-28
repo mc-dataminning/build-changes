@@ -1,56 +1,121 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dmq extends dlm {
-   public static final MapCodec<dmq> c = b(dmq::new);
+public abstract class dmq extends dnc {
+   private static final fgk c = dnc.b(14.0, 0.0, 0.5);
+   private static final fgk d = dnc.b(14.0, 0.0, 1.0);
+   protected static final ffl a = dnc.b(14.0, 0.0, 4.0).e().getFirst();
+   protected final ebt b;
 
-   @Override
-   public MapCodec<dmq> a() {
-      return c;
-   }
-
-   protected dmq(eas.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dxr a(iv $$0, eat $$1) {
-      return new dxq($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dxr> dxs<T> a(djm $$0, eat $$1, dxt<T> $$2) {
-      return a($$0, $$2, dxt.D);
+   protected dmq(ebd.d $$0, ebt $$1) {
+      super($$0.a($$1.g()));
+      this.b = $$1;
    }
 
    @Override
-   protected void a(djm $$0, iv $$1, crm $$2) {
-      dxr $$3 = $$0.c_($$1);
-      if ($$3 instanceof dxq) {
-         $$2.a((bui)$$3);
-         $$2.a(awx.as);
+   protected abstract MapCodec<? extends dmq> a();
+
+   @Override
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return this.h($$0) > 0 ? c : d;
+   }
+
+   protected int b() {
+      return 20;
+   }
+
+   @Override
+   public boolean a(ebe $$0) {
+      return true;
+   }
+
+   @Override
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      return $$4 == jb.a && !$$0.a($$1, $$3) ? dne.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean a(ebe $$0, dka $$1, iv $$2) {
+      iv $$3 = $$2.e();
+      return c($$1, $$3) || a($$1, $$3, jb.b);
+   }
+
+   @Override
+   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      int $$4 = this.h($$0);
+      if ($$4 > 0) {
+         this.a(null, $$1, $$2, $$0, $$4);
       }
    }
 
    @Override
-   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awn.cA, awo.e, 1.0F, 1.0F, false);
+   protected void a(ebe $$0, djx $$1, iv $$2, bwt $$3, bxm $$4) {
+      if (!$$1.C) {
+         int $$5 = this.h($$0);
+         if ($$5 == 0) {
+            this.a($$3, $$1, $$2, $$0, $$5);
          }
-
-         jb $$7 = $$0.c(a);
-         jb.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == jb.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 9.0 / 16.0;
-         double $$13 = $$8 == jb.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(ly.ah, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
    }
+
+   private void a(@Nullable bwt $$0, djx $$1, iv $$2, ebe $$3, int $$4) {
+      int $$5 = this.b($$1, $$2);
+      boolean $$6 = $$4 > 0;
+      boolean $$7 = $$5 > 0;
+      if ($$4 != $$5) {
+         ebe $$8 = this.a($$3, $$5);
+         $$1.a($$2, $$8, 2);
+         this.a($$1, $$2);
+         $$1.b($$2, $$3, $$8);
+      }
+
+      if (!$$7 && $$6) {
+         $$1.a(null, $$2, this.b.l(), awq.e);
+         $$1.a($$0, ege.e, $$2);
+      } else if ($$7 && !$$6) {
+         $$1.a(null, $$2, this.b.m(), awq.e);
+         $$1.a($$0, ege.a, $$2);
+      }
+
+      if ($$7) {
+         $$1.a(new iv($$2), this, this.b());
+      }
+   }
+
+   @Override
+   protected void a(ebe $$0, ars $$1, iv $$2, boolean $$3) {
+      if (!$$3 && this.h($$0) > 0) {
+         this.a($$1, $$2);
+      }
+   }
+
+   protected void a(djx $$0, iv $$1) {
+      $$0.a($$1, this);
+      $$0.a($$1.e(), this);
+   }
+
+   @Override
+   protected int a(ebe $$0, djb $$1, iv $$2, jb $$3) {
+      return this.h($$0);
+   }
+
+   @Override
+   protected int b(ebe $$0, djb $$1, iv $$2, jb $$3) {
+      return $$3 == jb.b ? this.h($$0) : 0;
+   }
+
+   @Override
+   protected boolean f_(ebe $$0) {
+      return true;
+   }
+
+   protected static int a(djx $$0, ffl $$1, Class<? extends bwt> $$2) {
+      return $$0.a($$2, $$1, bxa.f.and($$0x -> !$$0x.g_())).size();
+   }
+
+   protected abstract int b(djx var1, iv var2);
+
+   protected abstract int h(ebe var1);
+
+   protected abstract ebe a(ebe var1, int var2);
 }

@@ -1,132 +1,109 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 import java.util.Optional;
-import java.util.UUID;
+import java.util.function.Predicate;
 
-public class cla extends bza<ckw> {
-   public static final int c = 100;
-   public static final int d = 6;
-   public static final int e = 10;
-   private static final float h = 1.75F;
-   private static final float i = 0.75F;
-   public static final int f = 100;
-   public static final int g = 5;
-   private int j;
-   private int k;
-   private final awm l;
-   private final awm m;
-   private ffc n;
-   private cla.a o = cla.a.d;
+public class cla {
+   private static final buc a = buc.a(5, 16);
+   private static final float b = 0.2F;
+   private static final float c = 0.15F;
+   private static final float d = 0.5F;
+   private static final float e = 0.6F;
+   private static final float f = 0.6F;
 
-   public cla(awm $$0, awm $$1) {
-      super(ImmutableMap.of(cgl.n, cgm.b, cgl.o, cgm.c, cgl.p, cgm.a, cgl.aa, cgm.b), 100);
-      this.l = $$0;
-      this.m = $$1;
+   protected static byu<?> a(byu<ckz> $$0) {
+      d($$0);
+      e($$0);
+      c($$0);
+      b($$0);
+      $$0.a(ImmutableSet.of(ctr.a));
+      $$0.b(ctr.b);
+      $$0.f();
+      return $$0;
    }
 
-   protected boolean a(arq $$0, ckw $$1) {
-      bxj $$2 = $$1.eb().c(cgl.p).get();
-      boolean $$3 = this.a($$1, $$2);
-      if (!$$3) {
-         $$1.eb().b(cgl.p);
-         this.b($$1, $$2);
-      }
-
-      return $$3 && $$1.at() != bxv.i && ckw.i($$2);
+   private static void b(byu<ckz> $$0) {
+      $$0.a(ctr.p, ImmutableList.of(Pair.of(0, new clb()), Pair.of(1, bzx.a(bzn::a, cgw.O))), ImmutableSet.of(Pair.of(cgw.O, cgx.a)), ImmutableSet.of(cgw.O));
    }
 
-   protected boolean a(arq $$0, ckw $$1, long $$2) {
-      return $$1.eb().a(cgl.p) && this.o != cla.a.d && !$$1.eb().a(cgl.aa);
+   private static void c(byu<ckz> $$0) {
+      $$0.a(ctr.k, 0, ImmutableList.of(cca.a(ckz::a), cbq.a(cla::b), cas.a(20), bzx.a(bzn::a, cgw.p)), cgw.p);
    }
 
-   protected void b(arq $$0, ckw $$1, long $$2) {
-      bxj $$3 = $$1.eb().c(cgl.p).get();
-      bzc.a($$1, $$3);
-      $$1.b($$3);
-      $$1.eb().a(cgl.n, new cgo($$3.ds(), 2.0F, 0));
-      this.k = 10;
-      this.o = cla.a.a;
+   private static void d(byu<ckz> $$0) {
+      $$0.a(ctr.a, 0, ImmutableList.of(new car(45, 90), new cav(), clc.a(), new bzr(cgw.Q)));
    }
 
-   protected void c(arq $$0, ckw $$1, long $$2) {
-      $$1.eb().b(cgl.p);
-      $$1.q();
-      $$1.b(bxv.a);
+   private static void e(byu<ckz> $$0) {
+      $$0.a(
+         ctr.b,
+         ImmutableList.of(
+            Pair.of(0, cbl.a(bxc.bT, 6.0F, buc.a(30, 60))),
+            Pair.of(1, new bzf(bxc.i, 0.2F, 2)),
+            Pair.of(2, new cbi(ImmutableList.of(Pair.of(new bzy(cla::d), 1), Pair.of(bzi.a(a, cla::c), 1)))),
+            Pair.of(3, cbx.a(cla::a)),
+            Pair.of(3, cck.a(6, 0.15F)),
+            Pair.of(
+               4,
+               new bzz(
+                  ImmutableMap.of(cgw.n, cgx.b),
+                  ImmutableSet.of(),
+                  bzz.a.a,
+                  bzz.b.b,
+                  ImmutableList.of(
+                     Pair.of(cbd.c(0.5F), 2),
+                     Pair.of(cbd.a(0.15F, false), 2),
+                     Pair.of(cbs.a(cla::a, cla::d, 3), 3),
+                     Pair.of(ccy.a(bwt::bi), 5),
+                     Pair.of(ccy.a(bwt::aH), 5)
+                  )
+               )
+            )
+         )
+      );
    }
 
-   private void b(arq $$0, ckw $$1) {
-      $$0.a(null, $$1, this.m, awo.g, 2.0F, 1.0F);
-      Optional<bwi> $$2 = $$1.t();
+   private static boolean a(bxu $$0) {
+      djx $$1 = $$0.dV();
+      Optional<caz> $$2 = $$0.ec().c(cgw.o);
       if ($$2.isPresent()) {
-         bwi $$3 = $$2.get();
-         if ($$3.bI()) {
-            $$1.c($$0, $$3);
-            if (!$$3.bI()) {
-               $$3.a(bwi.d.a);
-            }
+         iv $$3 = $$2.get().b();
+         return $$1.A($$3) == $$0.bi();
+      } else {
+         return false;
+      }
+   }
+
+   public static void a(ckz $$0) {
+      byu<ckz> $$1 = $$0.ec();
+      ctr $$2 = $$1.g().orElse(null);
+      if ($$2 != ctr.p) {
+         $$1.a(ImmutableList.of(ctr.p, ctr.k, ctr.b));
+         if ($$2 == ctr.k && $$1.g().orElse(null) != ctr.k) {
+            $$1.a(cgw.V, true, 2400L);
          }
       }
    }
 
-   protected void d(arq $$0, ckw $$1, long $$2) {
-      bxj $$3 = $$1.eb().c(cgl.p).get();
-      $$1.b($$3);
-      switch (this.o) {
-         case a:
-            if ($$3.f($$1) < 1.75F) {
-               $$0.a(null, $$1, this.l, awo.g, 2.0F, 1.0F);
-               $$1.b(bxv.j);
-               $$3.i($$3.ds().a($$1.ds()).d().c(0.75));
-               this.n = $$3.ds();
-               this.j = 0;
-               this.o = cla.a.b;
-            } else if (this.k <= 0) {
-               $$1.eb().a(cgl.n, new cgo($$3.ds(), 2.0F, 0));
-               this.k = 10;
-            } else {
-               this.k--;
-            }
-            break;
-         case b:
-            if (this.j++ >= 6) {
-               this.o = cla.a.c;
-               this.b($$0, $$1);
-            }
-            break;
-         case c:
-            if (this.j >= 10) {
-               this.o = cla.a.d;
-            } else {
-               this.j++;
-            }
-         case d:
-      }
+   private static float b(bxu $$0) {
+      return $$0.bi() ? 0.6F : 0.15F;
    }
 
-   private boolean a(ckw $$0, bxj $$1) {
-      exo $$2 = $$0.O().a($$1, 0);
-      return $$2 != null && $$2.m() < 1.75F;
+   private static float c(bxu $$0) {
+      return $$0.bi() ? 0.6F : 0.15F;
    }
 
-   private void b(ckw $$0, bxj $$1) {
-      List<UUID> $$2 = $$0.eb().c(cgl.ab).orElseGet(ArrayList::new);
-      boolean $$3 = !$$2.contains($$1.cF());
-      if ($$2.size() == 5 && $$3) {
-         $$2.remove(0);
-      }
-
-      if ($$3) {
-         $$2.add($$1.cF());
-      }
-
-      $$0.eb().a(cgl.ab, $$2, 100L);
+   private static float d(bxu $$0) {
+      return $$0.bi() ? 0.5F : 0.15F;
    }
 
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+   private static Optional<? extends bxu> a(ars $$0, ckz $$1) {
+      return bzn.a($$1) ? Optional.empty() : $$1.ec().c(cgw.C);
+   }
+
+   public static Predicate<czy> a() {
+      return $$0 -> $$0.a(axm.aD);
    }
 }

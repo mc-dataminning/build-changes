@@ -1,24 +1,21 @@
-public record acy(int b, bxw c, boolean d) implements zf<abu> {
-   public static final yw<vu, acy> a = yw.a(yu.h, acy::b, bxw.a, acy::e, yu.b, acy::f, acy::new);
-
-   public static acy a(bwi $$0) {
-      return new acy($$0.ao(), new bxw($$0.dt(), $$0.dx(), $$0.dK(), $$0.dM()), $$0.aH());
-   }
+public record acy(xa b, ww.a c) implements zh<abw> {
+   public static final yy<wl, acy> a = yy.a(xc.d, acy::b, ww.a.a, acy::e, acy::new);
 
    @Override
-   public zh<acy> a() {
-      return agn.D;
+   public zj<acy> a() {
+      return agp.B;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public bxw e() {
-      return this.c;
+   @Override
+   public boolean c() {
+      return true;
    }
 
-   public boolean f() {
-      return this.d;
+   public ww.a e() {
+      return this.c;
    }
 }

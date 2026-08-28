@@ -1,15 +1,12 @@
-import java.lang.Thread.UncaughtExceptionHandler;
-import org.slf4j.Logger;
+public class fmn extends fml {
+   final long a;
 
-public class fmn implements UncaughtExceptionHandler {
-   private final Logger a;
-
-   public fmn(Logger $$0) {
+   public fmn(long $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void uncaughtException(Thread $$0, Throwable $$1) {
-      this.a.error("Caught previously unhandled exception", $$1);
+   public xa[] b() {
+      return new xa[]{xa.c("mco.upload.failed.too_big.title"), xa.a("mco.upload.failed.too_big.description", flz.b(this.a, flz.a(this.a)))};
    }
 }

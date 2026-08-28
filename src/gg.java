@@ -12,20 +12,20 @@ import java.util.concurrent.CompletableFuture;
 
 public class gg implements ArgumentType<gi> {
    private static final Collection<String> d = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "~0.5 ~1 ~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("argument.pos.unloaded"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("argument.pos.outofworld"));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wy.c("argument.pos.outofbounds"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xa.c("argument.pos.unloaded"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xa.c("argument.pos.outofworld"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xa.c("argument.pos.outofbounds"));
 
    public static gg a() {
       return new gg();
    }
 
    public static iv a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
-      arq $$2 = ((ej)$$0.getSource()).e();
+      ars $$2 = ((ej)$$0.getSource()).e();
       return a($$0, $$2, $$1);
    }
 
-   public static iv a(CommandContext<ej> $$0, arq $$1, String $$2) throws CommandSyntaxException {
+   public static iv a(CommandContext<ej> $$0, ars $$1, String $$2) throws CommandSyntaxException {
       iv $$3 = b($$0, $$2);
       if (!$$1.C($$3)) {
          throw a.create();
@@ -42,7 +42,7 @@ public class gg implements ArgumentType<gi> {
 
    public static iv c(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
       iv $$2 = b($$0, $$1);
-      if (!djm.l($$2)) {
+      if (!djx.l($$2)) {
          throw c.create();
       } else {
          return $$2;

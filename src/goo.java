@@ -1,44 +1,30 @@
-public class goo extends goz {
-   private final gou a;
+public class goo extends gob {
+   private static final int a = 12235202;
 
-   protected goo(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gou $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.u = 0.225F;
-      this.B = 1.0F;
-      this.a = $$7;
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
-      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
-      this.b($$7);
-   }
-
-   @Override
-   public god b() {
-      return god.b;
+   protected goo(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gqf $$8) {
+      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
+      float $$9 = (float)Math.random() * 0.2F;
+      this.v = (float)axy.b(12235202) / 255.0F - $$9;
+      this.w = (float)axy.c(12235202) / 255.0F - $$9;
+      this.x = (float)axy.d(12235202) / 255.0F - $$9;
    }
 
    @Override
    public void a() {
+      this.u = 0.88F * this.u;
+      this.B = 0.92F * this.B;
       super.a();
-      this.b(this.a);
-      this.j *= 0.95F;
-      this.k *= 0.9F;
-      this.l *= 0.95F;
    }
 
-   public static class a implements goc<mc> {
-      private final gou a;
+   public static class a implements gpn<mc> {
+      private final gqf a;
 
-      public a(gou $$0) {
+      public a(gqf $$0) {
          this.a = $$0;
       }
 
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         goo $$8 = new goo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a(0.923F, 0.964F, 0.999F);
-         return $$8;
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new goo($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

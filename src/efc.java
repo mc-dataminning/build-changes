@@ -1,72 +1,19 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efc<T extends eey> {
-   private static final Logger a = LogUtils.getLogger();
-   private final ayd<T> b;
-   private efn c;
+public record efc(jf<efb> e, edc f) {
+   public static final Codec<efc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(efb.l.fieldOf("type").forGetter(efc::a), edc.a.fieldOf("generator").forGetter(efc::b)).apply($$0, $$0.stable(efc::new))
+   );
+   public static final alh<efc> b = alh.a(mh.bq, ali.b("overworld"));
+   public static final alh<efc> c = alh.a(mh.bq, ali.b("the_nether"));
+   public static final alh<efc> d = alh.a(mh.bq, ali.b("the_end"));
 
-   public efc(Class<T> $$0, efn $$1) {
-      this.c = $$1;
-      this.b = new ayd<>($$0);
+   public jf<efb> a() {
+      return this.e;
    }
 
-   public void a(T $$0) {
-      this.b.add($$0);
-   }
-
-   public boolean b(T $$0) {
-      return this.b.remove($$0);
-   }
-
-   public axx.a a(fex $$0, axx<T> $$1) {
-      for (T $$2 : this.b) {
-         if ($$2.cQ().c($$0) && $$1.accept($$2).a()) {
-            return axx.a.b;
-         }
-      }
-
-      return axx.a.a;
-   }
-
-   public <U extends T> axx.a a(eff<T, U> $$0, fex $$1, axx<? super U> $$2) {
-      Collection<? extends T> $$3 = this.b.a($$0.a());
-      if ($$3.isEmpty()) {
-         return axx.a.a;
-      } else {
-         for (T $$4 : $$3) {
-            U $$5 = (U)$$0.a($$4);
-            if ($$5 != null && $$4.cQ().c($$1) && $$2.accept($$5).a()) {
-               return axx.a.b;
-            }
-         }
-
-         return axx.a.a;
-      }
-   }
-
-   public boolean a() {
-      return this.b.isEmpty();
-   }
-
-   public Stream<T> b() {
-      return this.b.stream();
-   }
-
-   public efn c() {
-      return this.c;
-   }
-
-   public efn a(efn $$0) {
-      efn $$1 = this.c;
-      this.c = $$0;
-      return $$1;
-   }
-
-   @bav
-   public int d() {
-      return this.b.size();
+   public edc b() {
+      return this.f;
    }
 }

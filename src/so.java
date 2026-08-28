@@ -3,5 +3,5 @@ public abstract class so extends RuntimeException {
       super($$0);
    }
 
-   public abstract wy a();
+   public abstract xa a();
 }

@@ -1,85 +1,41 @@
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import java.net.IDN;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-public final class gmi {
-   private static final Logger a = LogUtils.getLogger();
-   private final HostAndPort b;
-   private static final gmi c = new gmi(HostAndPort.fromParts("server.invalid", 25565));
+public class gmi {
+   private final aup a = aus.c();
+   private final Map<aul, String> b;
 
-   public gmi(String $$0, int $$1) {
-      this(HostAndPort.fromParts($$0, $$1));
+   public gmi() {
+      this.a.a();
+      Builder<aul, String> $$0 = ImmutableMap.builder();
+      this.a.d().forEach($$1 -> {
+         atq $$2 = $$1.a();
+         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
+      });
+      this.b = $$0.build();
    }
 
-   private gmi(HostAndPort $$0) {
-      this.b = $$0;
-   }
+   public List<aul> a(List<aul> $$0) {
+      List<aul> $$1 = new ArrayList<>($$0.size());
+      List<String> $$2 = new ArrayList<>($$0.size());
 
-   public String a() {
-      try {
-         return IDN.toASCII(this.b.getHost());
-      } catch (IllegalArgumentException var2) {
-         return "";
-      }
-   }
-
-   public int b() {
-      return this.b.getPort();
-   }
-
-   public static gmi a(String $$0) {
-      if ($$0 == null) {
-         return c;
-      } else {
-         try {
-            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
-            return $$1.getHost().isEmpty() ? c : new gmi($$1);
-         } catch (IllegalArgumentException var2) {
-            a.info("Failed to parse URL {}", $$0, var2);
-            return c;
+      for (aul $$3 : $$0) {
+         String $$4 = this.b.get($$3);
+         if ($$4 != null) {
+            $$2.add($$4);
+            $$1.add($$3);
          }
       }
+
+      this.a.b($$2);
+      return $$1;
    }
 
-   public static boolean b(String $$0) {
-      try {
-         HostAndPort $$1 = HostAndPort.fromString($$0);
-         String $$2 = $$1.getHost();
-         if (!$$2.isEmpty()) {
-            IDN.toASCII($$2);
-            return true;
-         }
-      } catch (IllegalArgumentException var3) {
-      }
-
-      return false;
-   }
-
-   static int c(String $$0) {
-      try {
-         return Integer.parseInt($$0.trim());
-      } catch (Exception var2) {
-         return 25565;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof gmi ? this.b.equals(((gmi)$$0).b) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public auu a() {
+      List<atr> $$0 = this.a.h();
+      return new auy(att.b, $$0);
    }
 }

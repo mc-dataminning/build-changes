@@ -1,43 +1,30 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class eot extends eox {
-   public static final MapCodec<eot> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eot::new, $$0 -> $$0.b);
-   private final float b;
+public abstract class eot extends eoq {
+   protected final long c;
+   protected final ewr.a d;
+   protected final float e;
+   protected final ewr f;
 
-   public eot(float $$0) {
-      this.b = $$0;
+   protected static <P extends eot> P3<Mu<P>, Long, ewr.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         ewr.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         ayw.o.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   @Override
-   protected eoy<?> a() {
-      return eoy.d;
+   protected eot(long $$0, ewr.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = ewr.b(new eic(new ehe($$0)), $$1);
    }
 
-   @Override
-   public void a(eox.a $$0) {
-      azv $$1 = $$0.b();
-      List<iv> $$2 = $$0.c();
-      if (!$$2.isEmpty()) {
-         if (!($$1.i() >= this.b)) {
-            List<iv> $$3 = new ArrayList<>($$2);
-            ag.c($$3, $$1);
-            Optional<iv> $$4 = $$3.stream().filter($$1x -> {
-               for (jb $$2x : jb.values()) {
-                  if (!$$0.a($$1x.a($$2x), $$0xx -> $$0xx.a(axc.u))) {
-                     return false;
-                  }
-               }
-
-               return true;
-            }).findFirst();
-            if (!$$4.isEmpty()) {
-               $$0.a($$4.get(), dmt.cE.m().b(don.c, ebn.b).b(don.d, Boolean.valueOf(true)));
-            }
-         }
-      }
+   protected double a(iv $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

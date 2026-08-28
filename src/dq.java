@@ -8,7 +8,7 @@ public class dq extends dk<dq.a> {
       return dq.a.a;
    }
 
-   public void a(arr $$0) {
+   public void a(art $$0) {
       this.a($$0, $$0x -> true);
    }
 

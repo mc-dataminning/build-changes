@@ -1,34 +1,66 @@
-public record dej<T extends dee<?>>(alf<dee<?>> b, T c) {
-   public static final yw<wj, dej<?>> a = yw.a(alf.b(mh.bv), dej::a, dee.c, dej::b, dej::new);
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+public class dej extends def {
+   private static final del d = del.a(dac.vF);
+
+   public dej(dec $$0) {
+      super($$0);
+   }
+
+   public boolean a(ded $$0, djx $$1) {
+      if ($$0.e() < 2) {
+         return false;
       } else {
-         if ($$0 instanceof dej<?> $$1 && this.b == $$1.b) {
-            return true;
+         boolean $$2 = false;
+         boolean $$3 = false;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            czy $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.h() instanceof cyx) {
+                  $$2 = true;
+               } else {
+                  if (!d.a($$5)) {
+                     return false;
+                  }
+
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
          }
 
-         return false;
+         return $$3 && $$2;
+      }
+   }
+
+   public czy a(ded $$0, jh.a $$1) {
+      IntList $$2 = new IntArrayList();
+      czy $$3 = null;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         czy $$5 = $$0.a($$4);
+         if ($$5.h() instanceof cyx $$7) {
+            $$2.add($$7.a().f());
+         } else if (d.a($$5)) {
+            $$3 = $$5.c(1);
+         }
+      }
+
+      if ($$3 != null && !$$2.isEmpty()) {
+         $$3.a(kk.ai, dcm.a, $$2, dcm::a);
+         return $$3;
+      } else {
+         return czy.k;
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   public alf<dee<?>> a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+   public dez<dej> a() {
+      return dez.i;
    }
 }

@@ -16,30 +16,30 @@ import java.util.function.Predicate;
 
 public class fm<T> implements ArgumentType<fm.c<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("argument.resource_tag.not_found", $$0, $$1));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xa.b("argument.resource_tag.not_found", $$0, $$1));
    private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> wy.b("argument.resource_tag.invalid_type", $$0, $$1, $$2)
+      ($$0, $$1, $$2) -> xa.b("argument.resource_tag.invalid_type", $$0, $$1, $$2)
    );
    private final jh<T> d;
-   final alf<? extends js<T>> e;
+   final alh<? extends js<T>> e;
 
-   public fm(ef $$0, alf<? extends js<T>> $$1) {
+   public fm(ef $$0, alh<? extends js<T>> $$1) {
       this.e = $$1;
       this.d = $$0.e($$1);
    }
 
-   public static <T> fm<T> a(ef $$0, alf<? extends js<T>> $$1) {
+   public static <T> fm<T> a(ef $$0, alh<? extends js<T>> $$1) {
       return new fm<>($$0, $$1);
    }
 
-   public static <T> fm.c<T> a(CommandContext<ej> $$0, String $$1, alf<js<T>> $$2) throws CommandSyntaxException {
+   public static <T> fm.c<T> a(CommandContext<ej> $$0, String $$1, alh<js<T>> $$2) throws CommandSyntaxException {
       fm.c<?> $$3 = (fm.c<?>)$$0.getArgument($$1, fm.c.class);
       Optional<fm.c<T>> $$4 = $$3.a($$2);
       return $$4.orElseThrow(() -> (CommandSyntaxException)$$3.a().map($$1xx -> {
-            alf<?> $$2x = $$1xx.h();
+            alh<?> $$2x = $$1xx.h();
             return fi.b.create($$2x.a(), $$2x.b(), $$2.a());
          }, $$1xx -> {
-            axr<?> $$2x = $$1xx.h();
+            axt<?> $$2x = $$1xx.h();
             return c.create($$2x.b(), $$2x.a(), $$2.a());
          }));
    }
@@ -50,8 +50,8 @@ public class fm<T> implements ArgumentType<fm.c<T>> {
 
          try {
             $$0.skip();
-            alg $$2 = alg.a($$0);
-            axr<T> $$3 = axr.a(this.e, $$2);
+            ali $$2 = ali.a($$0);
+            axt<T> $$3 = axt.a(this.e, $$2);
             jj.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.createWithContext($$0, $$2, this.e.a()));
             return new fm.d<>($$4);
          } catch (CommandSyntaxException var6) {
@@ -59,16 +59,16 @@ public class fm<T> implements ArgumentType<fm.c<T>> {
             throw var6;
          }
       } else {
-         alg $$6 = alg.a($$0);
-         alf<T> $$7 = alf.a(this.e, $$6);
+         ali $$6 = ali.a($$0);
+         alh<T> $$7 = alh.a(this.e, $$6);
          jf.c<T> $$8 = this.d.a($$7).orElseThrow(() -> fi.a.createWithContext($$0, $$6, this.e.a()));
          return new fm.b<>($$8);
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      eo.a(this.d.f().map(axr::b), $$1, "#");
-      return eo.a(this.d.c_().map(alf::a), $$1);
+      eo.a(this.d.f().map(axt::b), $$1, "#");
+      return eo.a(this.d.c_().map(alh::a), $$1);
    }
 
    public Collection<String> getExamples() {
@@ -76,11 +76,11 @@ public class fm<T> implements ArgumentType<fm.c<T>> {
    }
 
    public static class a<T> implements ig<fm<T>, fm.a<T>.a> {
-      public void a(fm.a<T>.a $$0, vu $$1) {
+      public void a(fm.a<T>.a $$0, vw $$1) {
          $$1.b($$0.b);
       }
 
-      public fm.a<T>.a a(vu $$0) {
+      public fm.a<T>.a a(vw $$0) {
          return new fm.a.a($$0.r());
       }
 
@@ -93,9 +93,9 @@ public class fm<T> implements ArgumentType<fm.c<T>> {
       }
 
       public final class a implements ig.a<fm<T>> {
-         final alf<? extends js<T>> b;
+         final alh<? extends js<T>> b;
 
-         a(final alf<? extends js<T>> $$1) {
+         a(final alh<? extends js<T>> $$1) {
             this.b = $$1;
          }
 
@@ -117,7 +117,7 @@ public class fm<T> implements ArgumentType<fm.c<T>> {
       }
 
       @Override
-      public <E> Optional<fm.c<E>> a(alf<? extends js<E>> $$0) {
+      public <E> Optional<fm.c<E>> a(alh<? extends js<E>> $$0) {
          return this.a.h().c($$0) ? Optional.of((fm.c<E>)this) : Optional.empty();
       }
 
@@ -138,7 +138,7 @@ public class fm<T> implements ArgumentType<fm.c<T>> {
    public interface c<T> extends Predicate<jf<T>> {
       Either<jf.c<T>, jj.c<T>> a();
 
-      <E> Optional<fm.c<E>> a(alf<? extends js<E>> var1);
+      <E> Optional<fm.c<E>> a(alh<? extends js<E>> var1);
 
       String b();
    }
@@ -150,7 +150,7 @@ public class fm<T> implements ArgumentType<fm.c<T>> {
       }
 
       @Override
-      public <E> Optional<fm.c<E>> a(alf<? extends js<E>> $$0) {
+      public <E> Optional<fm.c<E>> a(alh<? extends js<E>> $$0) {
          return this.a.h().d($$0) ? Optional.of((fm.c<E>)this) : Optional.empty();
       }
 

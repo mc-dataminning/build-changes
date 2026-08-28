@@ -1,65 +1,65 @@
-import com.google.common.collect.Maps;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class euo extends evm {
-   public static final MapCodec<euo> a = MapCodec.unit(() -> euo.b);
-   public static final euo b = new euo();
-   private final Map<dmr, dmr> c = ag.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dmt.m, dmt.pZ);
-      $$0.put(dmt.cx, dmt.pZ);
-      $$0.put(dmt.b, dmt.qd);
-      $$0.put(dmt.eZ, dmt.qe);
-      $$0.put(dmt.fa, dmt.qe);
-      $$0.put(dmt.dc, dmt.qa);
-      $$0.put(dmt.nO, dmt.qa);
-      $$0.put(dmt.nQ, dmt.ql);
-      $$0.put(dmt.fC, dmt.qi);
-      $$0.put(dmt.nM, dmt.qi);
-      $$0.put(dmt.kl, dmt.qc);
-      $$0.put(dmt.oc, dmt.qc);
-      $$0.put(dmt.kh, dmt.qm);
-      $$0.put(dmt.kg, dmt.qm);
-      $$0.put(dmt.kn, dmt.qh);
-      $$0.put(dmt.oa, dmt.qh);
-      $$0.put(dmt.oq, dmt.qj);
-      $$0.put(dmt.oo, dmt.qj);
-      $$0.put(dmt.go, dmt.qb);
-      $$0.put(dmt.gp, dmt.qb);
-      $$0.put(dmt.fc, dmt.qg);
-      $$0.put(dmt.fb, dmt.qf);
-      $$0.put(dmt.fo, dmt.fp);
-   });
+public class euo extends esb {
+   public static final MapCodec<euo> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               a($$0),
+               euo.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, euo::new)
+   );
+   public final euo.a e;
+   public final float f;
+   public final float g;
 
-   private euo() {
+   public euo(esb.c $$0, euo.a $$1, float $$2, float $$3) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public evp.d a(djp $$0, iv $$1, iv $$2, evp.d $$3, evp.d $$4, evl $$5) {
-      dmr $$6 = this.c.get($$4.b().b());
-      if ($$6 == null) {
-         return $$4;
-      } else {
-         eat $$7 = $$4.b();
-         eat $$8 = $$6.m();
-         if ($$7.b(duv.b)) {
-            $$8 = $$8.b(duv.b, $$7.c(duv.b));
-         }
+   public Optional<esb.b> a(esb.a $$0) {
+      return a($$0, ehd.a.c, $$1 -> this.a($$1, $$0));
+   }
 
-         if ($$7.b(duv.c)) {
-            $$8 = $$8.b(duv.c, $$7.c(duv.c));
-         }
+   private void a(est $$0, esb.a $$1) {
+      iv $$2 = new iv($$1.h().d(), 90, $$1.h().e());
+      dtw $$3 = dtw.a($$1.f());
+      eun.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
+   }
 
-         if ($$7.b(due.b)) {
-            $$8 = $$8.b(due.b, $$7.c(due.b));
-         }
+   @Override
+   public esk<?> e() {
+      return esk.k;
+   }
 
-         return new evp.d($$4.a(), $$8, $$4.c());
+   public static enum a implements bam {
+      a("warm"),
+      b("cold");
+
+      public static final Codec<euo.a> c = bam.a(euo.a::values);
+      @Deprecated
+      public static final Codec<euo.a> d = ayw.c(euo.a::valueOf);
+      private final String e;
+
+      private a(final String $$0) {
+         this.e = $$0;
       }
-   }
 
-   @Override
-   protected evo<?> a() {
-      return evo.l;
+      public String a() {
+         return this.e;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

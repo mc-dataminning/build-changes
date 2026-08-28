@@ -1,40 +1,53 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class emf implements emc {
+public record emf(List<emf.a> b, jb c, eik d, boolean e) implements emp {
    public static final Codec<emf> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               btl.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               btj.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               btj.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               btj.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               btj.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
+               emf.a.a.listOf().fieldOf("layers").forGetter(emf::a),
+               jb.g.fieldOf("direction").forGetter(emf::b),
+               eik.b.fieldOf("allowed_placement").forGetter(emf::c),
+               Codec.BOOL.fieldOf("prioritize_tip").forGetter(emf::d)
             )
             .apply($$0, emf::new)
    );
-   public final int b;
-   public final btl c;
-   public final btj d;
-   public final float e;
-   public final btj f;
-   public final btj g;
-   public final btj h;
-   public final int i;
-   public final float j;
 
-   public emf(int $$0, btl $$1, btj $$2, float $$3, btj $$4, btj $$5, btj $$6, int $$7, float $$8) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   public static emf.a a(btw $$0, eoq $$1) {
+      return new emf.a($$0, $$1);
+   }
+
+   public static emf b(btw $$0, eoq $$1) {
+      return new emf(List.of(a($$0, $$1)), jb.b, eik.c, false);
+   }
+
+   public List<emf.a> a() {
+      return this.b;
+   }
+
+   public jb b() {
+      return this.c;
+   }
+
+   public eik c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public static record a(btw b, eoq c) {
+      public static final Codec<emf.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(btw.d.fieldOf("height").forGetter(emf.a::a), eoq.a.fieldOf("provider").forGetter(emf.a::b)).apply($$0, emf.a::new)
+      );
+
+      public btw a() {
+         return this.b;
+      }
+
+      public eoq b() {
+         return this.c;
+      }
    }
 }

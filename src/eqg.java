@@ -1,27 +1,53 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class eqg extends eqt {
+public class eqg extends eqi {
    public static final MapCodec<eqg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ehz.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, eqg::new)
+      $$0 -> $$0.group(
+               ehx.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               ehx.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eqg::new)
    );
-   private final ehz c;
+   private static final Logger b = LogUtils.getLogger();
+   private final ehx d;
+   private final ehx e;
+   private final int f;
 
-   private eqg(ehz $$0) {
-      this.c = $$0;
+   private eqg(ehx $$0, ehx $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static eqg a(ehz $$0) {
-      return new eqg($$0);
+   public static eqg a(ehx $$0, ehx $$1, int $$2) {
+      return new eqg($$0, $$1, $$2);
    }
 
    @Override
-   protected boolean a(eqs $$0, azv $$1, iv $$2) {
-      return this.c.test($$0.d(), $$2);
+   public int a(azx $$0, eia $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
+         return $$0.a($$4 + this.f) + $$2;
+      }
    }
 
    @Override
-   public eqv<?> b() {
-      return eqv.a;
+   public eqj<?> a() {
+      return eqj.c;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

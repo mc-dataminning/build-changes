@@ -1,22 +1,26 @@
-public class hbi extends hbm<hem, ghn> {
-   public hbi(gyv<hem, ghn> $$0) {
+public class hbi extends gyh<ctj, hep> {
+   private static final ali a = ali.b("textures/entity/projectiles/wind_charge.png");
+   private final gkq g;
+
+   public hbi(gyi.a $$0) {
       super($$0);
+      this.g = new gkq($$0.a(gld.dS));
    }
 
-   public void a(fkd $$0, gqr $$1, int $$2, hem $$3, float $$4, float $$5) {
-      hgi $$6 = $$3.i;
-      if (!$$6.c() && $$3.g && !$$3.f) {
-         float $$7 = -0.6F;
-         float $$8 = 1.4F;
-         if ($$3.e) {
-            $$7 -= 0.2F * azm.a($$3.u * 0.6F) + 0.2F;
-            $$8 -= 0.09F * azm.a($$3.u * 0.6F);
-         }
+   @Override
+   public void a(hep $$0, flo $$1, gsa $$2, int $$3) {
+      flr $$4 = $$2.getBuffer(gsl.a(a, this.a($$0.u) % 1.0F, 0.0F));
+      this.g.a($$0);
+      this.g.a($$1, $$4, $$3, hkq.d);
+      super.a($$0, $$1, $$2, $$3);
+   }
 
-         $$0.a();
-         $$0.a(0.1F, $$8, $$7);
-         $$6.a($$0, $$1, $$2, hjg.d);
-         $$0.b();
-      }
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
+   }
+
+   @Override
+   public hep d() {
+      return new hep();
    }
 }

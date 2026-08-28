@@ -1,39 +1,51 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eos extends eox {
-   public static final MapCodec<eos> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eos::new, $$0 -> $$0.b);
-   private final float b;
+public class eos extends eou {
+   public static final MapCodec<eos> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               azg.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
+               ewr.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
+               ayw.o.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
+            )
+            .and(b($$0))
+            .apply($$0, eos::new)
+   );
+   private final azg<Integer> i;
+   private final ewr.a j;
+   private final float k;
+   private final ewr l;
 
-   public eos(float $$0) {
-      this.b = $$0;
+   public eos(azg<Integer> $$0, ewr.a $$1, float $$2, long $$3, ewr.a $$4, float $$5, List<ebe> $$6) {
+      super($$3, $$4, $$5, $$6);
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = ewr.b(new eic(new ehe($$3)), $$1);
    }
 
    @Override
-   protected eoy<?> a() {
-      return eoy.e;
+   protected eor<?> a() {
+      return eor.e;
    }
 
    @Override
-   public void a(eox.a $$0) {
-      azv $$1 = $$0.b();
-      if (!($$1.i() >= this.b)) {
-         List<iv> $$2 = $$0.c();
-         if (!$$2.isEmpty()) {
-            int $$3 = $$2.getFirst().v();
-            $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
-               for (jb $$3x : jb.c.a) {
-                  if ($$1.i() <= 0.25F) {
-                     jb $$4 = $$3x.g();
-                     iv $$5 = $$2x.b($$4.j(), 0, $$4.l());
-                     if ($$0.a($$5)) {
-                        $$0.a($$5, dmt.gb.m().b(dnz.c, Integer.valueOf($$1.a(3))).b(dnz.e, $$3x));
-                     }
-                  }
-               }
-            });
-         }
+   public ebe a(azx $$0, iv $$1) {
+      double $$2 = this.a($$1);
+      int $$3 = (int)azo.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
+      List<ebe> $$4 = Lists.newArrayListWithCapacity($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
       }
+
+      return this.a($$4, $$1, (double)this.e);
+   }
+
+   protected double a(iv $$0) {
+      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
    }
 }

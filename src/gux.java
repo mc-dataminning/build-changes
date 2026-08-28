@@ -1,64 +1,36 @@
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+public class gux implements gun<dyz> {
+   public static final hnh a = new hnh(hkz.c, ali.b("entity/enchanting_table_book"));
+   private final ghf b;
 
-public class gux implements gut.a {
-   private final fpt a;
-   private static final int b = 2;
-   private static final float c = 0.09375F;
-
-   public gux(fpt $$0) {
-      this.a = $$0;
+   public gux(guo.a $$0) {
+      this.b = new ghf($$0.a(gld.J));
    }
 
-   @Override
-   public void a(fkd $$0, gqr $$1, double $$2, double $$3, double $$4) {
-      djn $$5 = this.a.s;
-      fkh $$6 = $$1.getBuffer(grc.B());
-      iv $$7 = iv.a($$2, 0.0, $$4);
+   public void a(dyz $$0, float $$1, flo $$2, gsa $$3, int $$4, int $$5, ffq $$6) {
+      $$2.a();
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$7 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + azo.a($$7 * 0.1F) * 0.01F, 0.0F);
+      float $$8 = $$0.h - $$0.i;
 
-      for (int $$8 = -2; $$8 <= 2; $$8++) {
-         for (int $$9 = -2; $$9 <= 2; $$9++) {
-            ecq $$10 = $$5.z($$7.b($$8 * 16, 0, $$9 * 16));
-
-            for (Entry<egs.a, egs> $$11 : $$10.e()) {
-               egs.a $$12 = $$11.getKey();
-               dir $$13 = $$10.f();
-               Vector3f $$14 = this.a($$12);
-
-               for (int $$15 = 0; $$15 < 16; $$15++) {
-                  for (int $$16 = 0; $$16 < 16; $$16++) {
-                     int $$17 = jy.a($$13.h, $$15);
-                     int $$18 = jy.a($$13.i, $$16);
-                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
-                     grk.b(
-                        $$0,
-                        $$6,
-                        (double)((float)$$17 + 0.25F) - $$2,
-                        (double)$$19,
-                        (double)((float)$$18 + 0.25F) - $$4,
-                        (double)((float)$$17 + 0.75F) - $$2,
-                        (double)($$19 + 0.09375F),
-                        (double)((float)$$18 + 0.75F) - $$4,
-                        $$14.x(),
-                        $$14.y(),
-                        $$14.z(),
-                        1.0F
-                     );
-                  }
-               }
-            }
-         }
+      while ($$8 >= (float) Math.PI) {
+         $$8 -= (float) (Math.PI * 2);
       }
-   }
 
-   private Vector3f a(egs.a $$0) {
-      return switch ($$0) {
-         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
+      while ($$8 < (float) -Math.PI) {
+         $$8 += (float) (Math.PI * 2);
+      }
+
+      float $$9 = $$0.i + $$8 * $$1;
+      $$2.a(a.d.rotation(-$$9));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$10 = azo.h($$1, $$0.c, $$0.b);
+      float $$11 = azo.i($$10 + 0.25F) * 1.6F - 0.3F;
+      float $$12 = azo.i($$10 + 0.75F) * 1.6F - 0.3F;
+      float $$13 = azo.h($$1, $$0.g, $$0.f);
+      this.b.a($$7, azo.a($$11, 0.0F, 1.0F), azo.a($$12, 0.0F, 1.0F), $$13);
+      flr $$14 = a.a($$3, gsl::d);
+      this.b.a($$2, $$14, $$4, $$5);
+      $$2.b();
    }
 }

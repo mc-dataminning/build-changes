@@ -1,45 +1,21 @@
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import javax.annotation.Nullable;
 
-public class bqk implements bqo {
-   public static final bqk a = new bqk();
+public class bqk implements bqa<StringReader, ali> {
+   public static final bqa<StringReader, ali> a = new bqk();
 
    private bqk() {
    }
 
-   @Override
-   public List<bqs> a(String $$0) {
-      return Collections.emptyList();
-   }
+   @Nullable
+   public ali b(bpz<StringReader> $$0) {
+      $$0.f().skipWhitespace();
 
-   @Override
-   public boolean a(Path $$0) {
-      return false;
-   }
-
-   @Override
-   public long a() {
-      return 0L;
-   }
-
-   @Override
-   public int b() {
-      return 0;
-   }
-
-   @Override
-   public long c() {
-      return 0L;
-   }
-
-   @Override
-   public int d() {
-      return 0;
-   }
-
-   @Override
-   public String e() {
-      return "";
+      try {
+         return ali.b($$0.f());
+      } catch (CommandSyntaxException var3) {
+         return null;
+      }
    }
 }

@@ -1,50 +1,37 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface hju {
-   Logger a = LogUtils.getLogger();
+public class hju implements hke<dxs> {
+   private final gui a;
+   private final cyw b;
 
-   static hju create(Collection<auc<?>> $$0) {
-      return ($$1, $$2) -> {
-         avf $$3;
-         try {
-            $$3 = $$2.f().a($$0);
-         } catch (Exception var9) {
-            a.error("Unable to parse metadata from {}", $$1, var9);
-            return null;
-         }
-
-         fiz $$7;
-         try (InputStream $$6 = $$2.d()) {
-            $$7 = fiz.a($$6);
-         } catch (IOException var11) {
-            a.error("Using missing texture, unable to load {}", $$1, var11);
-            return null;
-         }
-
-         Optional<hld> $$11 = $$3.a(hld.b);
-         hle $$12;
-         if ($$11.isPresent()) {
-            $$12 = $$11.get().a($$7.a(), $$7.b());
-            if (!azm.c($$7.a(), $$12.a()) || !azm.c($$7.b(), $$12.b())) {
-               a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
-               $$7.close();
-               return null;
-            }
-         } else {
-            $$12 = new hle($$7.a(), $$7.b());
-         }
-
-         return new hjk($$1, $$12, $$7, $$3);
-      };
+   public hju(cyw $$0, gui $$1) {
+      this.a = $$1;
+      this.b = $$0;
    }
 
    @Nullable
-   hjk loadSprite(alg var1, avb var2);
+   public dxs a(czy $$0) {
+      return $$0.a(kk.am);
+   }
+
+   public void a(@Nullable dxs $$0, czw $$1, flo $$2, gsa $$3, int $$4, int $$5, boolean $$6) {
+      this.a.a($$2, $$3, $$4, $$5, this.b, Objects.requireNonNullElse($$0, dxs.a));
+   }
+
+   public static record a(cyw b) implements hke.a {
+      public static final MapCodec<hju.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cyw.q.fieldOf("color").forGetter(hju.a::b)).apply($$0, hju.a::new));
+
+      @Override
+      public MapCodec<hju.a> a() {
+         return a;
+      }
+
+      @Override
+      public hke<?> a(gla $$0) {
+         return new hju(this.b, new gui($$0));
+      }
+   }
 }

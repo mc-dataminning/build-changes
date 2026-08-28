@@ -1,34 +1,16 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class eni extends eno {
-   public static final MapCodec<eni> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eni::new));
+public class eni implements emp {
+   public static final Codec<eni> a = ayw.c(erf.c).fieldOf("features").xmap(eni::new, $$0 -> $$0.b).codec();
+   public final jj<erf> b;
 
-   public eni(btl $$0, btl $$1) {
-      super($$0, $$1);
+   public eni(jj<erf> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected enp<?> a() {
-      return enp.d;
-   }
-
-   @Override
-   protected void a(djs $$0, eno.b $$1, azv $$2, emy $$3, int $$4, eno.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      iv $$10 = $$5.a().b($$8);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
-   }
-
-   @Override
-   public int a(azv $$0, int $$1, emy $$2) {
-      return 0;
-   }
-
-   @Override
-   protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public Stream<ejv<?, ?>> e() {
+      return this.b.a().flatMap($$0 -> $$0.a().a());
    }
 }

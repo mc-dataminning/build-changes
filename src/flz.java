@@ -1,54 +1,43 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public class flz {
-   private static final String a = "translationKey";
-   private static final String b = "args";
-   private final String c;
-   @Nullable
-   private final String[] d;
+public enum flz {
+   a,
+   b,
+   c,
+   d;
 
-   private flz(String $$0, @Nullable String[] $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+   private static final int e = 1024;
 
-   public wy a(wy $$0) {
-      return Objects.requireNonNullElse(this.a(), $$0);
-   }
-
-   @Nullable
-   public wy a() {
-      if (!hky.a(this.c)) {
-         return null;
+   public static flz a(long $$0) {
+      if ($$0 < 1024L) {
+         return a;
       } else {
-         return this.d == null ? wy.c(this.c) : wy.a(this.c, this.d);
-      }
-   }
-
-   public static flz a(JsonObject $$0) {
-      String $$1 = foe.a("translationKey", $$0);
-      JsonElement $$2 = $$0.get("args");
-      String[] $$5;
-      if ($$2 != null && !$$2.isJsonNull()) {
-         JsonArray $$4 = $$2.getAsJsonArray();
-         $$5 = new String[$$4.size()];
-
-         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
-            $$5[$$6] = $$4.get($$6).getAsString();
+         try {
+            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
+            return valueOf($$2 + "B");
+         } catch (Exception var4) {
+            return d;
          }
-      } else {
-         $$5 = null;
       }
-
-      return new flz($$1, $$5);
    }
 
-   @Override
-   public String toString() {
-      return this.c;
+   public static double a(long $$0, flz $$1) {
+      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
+   }
+
+   public static String b(long $$0) {
+      int $$1 = 1024;
+      if ($$0 < 1024L) {
+         return $$0 + " B";
+      } else {
+         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
+         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
+      }
+   }
+
+   public static String b(long $$0, flz $$1) {
+      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
    }
 }

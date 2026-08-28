@@ -1,43 +1,41 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public class czw extends czj {
-   private static final Logger a = LogUtils.getLogger();
+public enum czw implements bam {
+   a(0, "none"),
+   b(1, "thirdperson_lefthand"),
+   c(2, "thirdperson_righthand"),
+   d(3, "firstperson_lefthand"),
+   e(4, "firstperson_righthand"),
+   f(5, "head"),
+   g(6, "gui"),
+   h(7, "ground"),
+   i(8, "fixed");
 
-   public czw(czj.a $$0) {
-      super($$0);
+   public static final Codec<czw> j = bam.a(czw::values);
+   public static final IntFunction<czw> k = aye.a(czw::a, values(), aye.a.a);
+   private final byte l;
+   private final String m;
+
+   private czw(final int $$0, final String $$1) {
+      this.m = $$1;
+      this.l = (byte)$$0;
    }
 
    @Override
-   public bug a(djm $$0, crm $$1, buf $$2) {
-      czn $$3 = $$1.b($$2);
-      List<alf<dee<?>>> $$4 = $$3.a(kk.ag, List.of());
-      $$3.a(1, $$1);
-      if ($$4.isEmpty()) {
-         return bug.d;
-      } else {
-         if (!$$0.C) {
-            del $$5 = $$0.p().aI();
-            List<dej<?>> $$6 = new ArrayList<>($$4.size());
+   public String c() {
+      return this.m;
+   }
 
-            for (alf<dee<?>> $$7 : $$4) {
-               Optional<dej<?>> $$8 = $$5.b($$7);
-               if (!$$8.isPresent()) {
-                  a.error("Invalid recipe: {}", $$7);
-                  return bug.d;
-               }
+   public byte a() {
+      return this.l;
+   }
 
-               $$6.add($$8.get());
-            }
+   public boolean b() {
+      return this == d || this == e;
+   }
 
-            $$1.a($$6);
-            $$1.b(awx.c.b(this));
-         }
-
-         return bug.a;
-      }
+   public boolean d() {
+      return this == d || this == b;
    }
 }

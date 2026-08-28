@@ -1,30 +1,46 @@
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public record agc(int b, bxw c, Set<bxx> d, boolean e) implements zf<abu> {
-   public static final yw<vu, agc> a = yw.a(yu.h, agc::b, bxw.a, agc::e, bxx.m, agc::f, yu.b, agc::g, agc::new);
+public class agc implements zh<abw> {
+   public static final yy<vw, agc> a = zh.a(agc::a, agc::new);
+   private final int b;
+   @Nullable
+   private final tz c;
 
-   public static agc a(int $$0, bxw $$1, Set<bxx> $$2, boolean $$3) {
-      return new agc($$0, $$1, $$2, $$3);
+   public agc(int $$0, @Nullable tz $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   private agc(vw $$0) {
+      this.b = $$0.l();
+      this.c = $$0.o();
+   }
+
+   private void a(vw $$0) {
+      $$0.c(this.b);
+      $$0.a((uy)this.c);
    }
 
    @Override
-   public zh<agc> a() {
-      return agn.bd;
+   public zj<agc> a() {
+      return agp.bb;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public bxw e() {
+   public int b() {
+      return this.b;
+   }
+
+   @Nullable
+   public tz e() {
       return this.c;
    }
 
-   public Set<bxx> f() {
-      return this.d;
-   }
-
-   public boolean g() {
-      return this.e;
+   @Override
+   public boolean c() {
+      return true;
    }
 }

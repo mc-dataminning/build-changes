@@ -1,23 +1,15 @@
 import io.netty.buffer.ByteBuf;
 
-public class ahd implements zf<agp> {
+public record ahd() implements zh<agr> {
    public static final ahd a = new ahd();
-   public static final yw<ByteBuf, ahd> b = yw.a(a);
-
-   private ahd() {
-   }
+   public static final yy<ByteBuf, ahd> b = yy.a(a);
 
    @Override
-   public zh<ahd> a() {
-      return agn.bx;
+   public zj<ahd> a() {
+      return agp.bv;
    }
 
-   public void a(agp $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
    }
 }

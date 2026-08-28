@@ -1,43 +1,67 @@
-public class byi {
-   private float a;
-   private float b;
-   private float c;
-   private float d = 1.0F;
+import io.netty.buffer.ByteBuf;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.Set;
 
-   public void a(float $$0) {
-      this.b = $$0;
+public enum byi {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4),
+   f(5),
+   g(6),
+   h(7),
+   i(8);
+
+   public static final Set<byi> j = Set.of(values());
+   public static final Set<byi> k = Set.of(e, d);
+   public static final Set<byi> l = Set.of(f, g, h, i);
+   public static final yy<ByteBuf, Set<byi>> m = yw.g.a(byi::a, byi::a);
+   private final int n;
+
+   @SafeVarargs
+   public static Set<byi> a(Set<byi>... $$0) {
+      HashSet<byi> $$1 = new HashSet<>();
+
+      for (Set<byi> $$2 : $$0) {
+         $$1.addAll($$2);
+      }
+
+      return $$1;
    }
 
-   public void a(float $$0, float $$1, float $$2) {
-      this.a = this.b;
-      this.b = this.b + ($$0 - this.b) * $$1;
-      this.c = this.c + this.b;
-      this.d = $$2;
+   private byi(final int $$0) {
+      this.n = $$0;
    }
 
-   public void a() {
-      this.a = 0.0F;
-      this.b = 0.0F;
-      this.c = 0.0F;
+   private int a() {
+      return 1 << this.n;
    }
 
-   public float b() {
-      return this.b;
+   private boolean b(int $$0) {
+      return ($$0 & this.a()) == this.a();
    }
 
-   public float b(float $$0) {
-      return Math.min(azm.h($$0, this.a, this.b), 1.0F);
+   public static Set<byi> a(int $$0) {
+      Set<byi> $$1 = EnumSet.noneOf(byi.class);
+
+      for (byi $$2 : values()) {
+         if ($$2.b($$0)) {
+            $$1.add($$2);
+         }
+      }
+
+      return $$1;
    }
 
-   public float c() {
-      return this.c * this.d;
-   }
+   public static int a(Set<byi> $$0) {
+      int $$1 = 0;
 
-   public float c(float $$0) {
-      return (this.c - this.b * (1.0F - $$0)) * this.d;
-   }
+      for (byi $$2 : $$0) {
+         $$1 |= $$2.a();
+      }
 
-   public boolean d() {
-      return this.b > 1.0E-5F;
+      return $$1;
    }
 }

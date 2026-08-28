@@ -1,33 +1,59 @@
-public class gwk<T extends cps> extends gye<T, hcx, ggg> {
-   private static final alg a = alg.b("textures/entity/creaking/creaking.png");
-   private static final alg j = alg.b("textures/entity/creaking/creaking_eyes.png");
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-   public gwk(gwy.a $$0) {
-      super($$0, new ggg($$0.a(gjs.ap)), 0.6F);
-      this.a(new hbf<>(this, j, ($$0x, $$1) -> 1.0F, ggg::b, grc::q, true));
+public class gwk implements gwd.a {
+   private final frd a;
+   private final Map<Long, Map<iv, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+
+   gwk(frd $$0) {
+      this.a = $$0;
    }
 
-   public alg a(hcx $$0) {
-      return a;
+   public void a(long $$0, iv $$1) {
+      Map<iv, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
    }
 
-   public hcx a() {
-      return new hcx();
-   }
+   @Override
+   public void a(flo $$0, gsa $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.s.ae();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<iv> $$8 = Sets.newHashSet();
+      Map<iv, Integer> $$9 = Maps.newHashMap();
+      flr $$10 = $$1.getBuffer(gsl.w());
+      Iterator<Entry<Long, Map<iv, Integer>>> $$11 = this.b.entrySet().iterator();
 
-   public void a(T $$0, hcx $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b.a($$0.bI);
-      $$1.a.a($$0.bJ);
-      $$1.c.a($$0.bK);
-      if ($$0.gu()) {
-         $$1.ac = 0.0F;
-         $$1.am = false;
-         $$1.d = $$0.gx();
-      } else {
-         $$1.d = $$0.gB();
+      while ($$11.hasNext()) {
+         Entry<Long, Map<iv, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<iv, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<iv, Integer> $$16 : $$14.entrySet()) {
+               iv $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  ffl $$19 = new ffl(iv.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  gst.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
+            }
+         }
       }
 
-      $$1.e = $$0.n();
+      for (Entry<iv, Integer> $$20 : $$9.entrySet()) {
+         iv $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         gwd.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      }
    }
 }

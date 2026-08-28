@@ -1,263 +1,226 @@
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class buy {
-   private final js<buz> a;
-   private final bux b;
-   private final bux c;
-   private final bux d;
-   private final bux e;
-   private final bux f;
-   private final bux g;
-   private final bux h;
-   private final bux i;
-   private final bux j;
-   private final bux k;
-   private final bux l;
-   private final bux m;
-   private final bux n;
-   private final bux o;
-   private final bux p;
-   private final bux q;
-   private final bux r;
-   private final bux s;
-   private final bux t;
-   private final bux u;
-   private final bux v;
-   private final bux w;
-   private final bux x;
-   private final bux y;
-   private final bux z;
+public class buy implements buk, cxs {
+   private final int b;
+   private final jo<czy> c;
+   @Nullable
+   private List<bum> d;
 
-   public buy(jt $$0) {
-      this.a = $$0.f(mh.aN);
-      this.b = this.a(bva.a);
-      this.c = this.a(bva.b);
-      this.d = this.a(bva.c);
-      this.e = this.a(bva.d);
-      this.f = this.a(bva.e);
-      this.g = this.a(bva.f);
-      this.h = this.a(bva.g);
-      this.i = this.a(bva.h);
-      this.j = this.a(bva.i);
-      this.k = this.a(bva.j);
-      this.l = this.a(bva.k);
-      this.m = this.a(bva.l);
-      this.n = this.a(bva.m);
-      this.o = this.a(bva.n);
-      this.p = this.a(bva.o);
-      this.q = this.a(bva.p);
-      this.r = this.a(bva.q);
-      this.s = this.a(bva.r);
-      this.t = this.a(bva.s);
-      this.u = this.a(bva.t);
-      this.v = this.a(bva.u);
-      this.w = this.a(bva.v);
-      this.x = this.a(bva.w);
-      this.y = this.a(bva.U);
-      this.z = this.a(bva.V);
+   public buy(int $$0) {
+      this.b = $$0;
+      this.c = jo.a($$0, czy.k);
    }
 
-   private bux a(alf<buz> $$0) {
-      return new bux(this.a.b($$0));
+   public buy(czy... $$0) {
+      this.b = $$0.length;
+      this.c = jo.a(czy.k, $$0);
    }
 
-   private bux a(alf<buz> $$0, @Nullable bwi $$1) {
-      return new bux(this.a.b($$0), $$1);
+   public void a(bum $$0) {
+      if (this.d == null) {
+         this.d = Lists.newArrayList();
+      }
+
+      this.d.add($$0);
    }
 
-   private bux a(alf<buz> $$0, @Nullable bwi $$1, @Nullable bwi $$2) {
-      return new bux(this.a.b($$0), $$1, $$2);
+   public void b(bum $$0) {
+      if (this.d != null) {
+         this.d.remove($$0);
+      }
    }
 
-   public bux a() {
+   @Override
+   public czy a(int $$0) {
+      return $$0 >= 0 && $$0 < this.c.size() ? this.c.get($$0) : czy.k;
+   }
+
+   public List<czy> f() {
+      List<czy> $$0 = this.c.stream().filter($$0x -> !$$0x.f()).collect(Collectors.toList());
+      this.a();
+      return $$0;
+   }
+
+   @Override
+   public czy a(int $$0, int $$1) {
+      czy $$2 = bul.a(this.c, $$0, $$1);
+      if (!$$2.f()) {
+         this.e();
+      }
+
+      return $$2;
+   }
+
+   public czy a(czu $$0, int $$1) {
+      czy $$2 = new czy($$0, 0);
+
+      for (int $$3 = this.b - 1; $$3 >= 0; $$3--) {
+         czy $$4 = this.a($$3);
+         if ($$4.h().equals($$0)) {
+            int $$5 = $$1 - $$2.M();
+            czy $$6 = $$4.a($$5);
+            $$2.g($$6.M());
+            if ($$2.M() == $$1) {
+               break;
+            }
+         }
+      }
+
+      if (!$$2.f()) {
+         this.e();
+      }
+
+      return $$2;
+   }
+
+   public czy b(czy $$0) {
+      if ($$0.f()) {
+         return czy.k;
+      } else {
+         czy $$1 = $$0.v();
+         this.e($$1);
+         if ($$1.f()) {
+            return czy.k;
+         } else {
+            this.d($$1);
+            return $$1.f() ? czy.k : $$1;
+         }
+      }
+   }
+
+   public boolean c(czy $$0) {
+      boolean $$1 = false;
+
+      for (czy $$2 : this.c) {
+         if ($$2.f() || czy.c($$2, $$0) && $$2.M() < $$2.k()) {
+            $$1 = true;
+            break;
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public czy b(int $$0) {
+      czy $$1 = this.c.get($$0);
+      if ($$1.f()) {
+         return czy.k;
+      } else {
+         this.c.set($$0, czy.k);
+         return $$1;
+      }
+   }
+
+   @Override
+   public void a(int $$0, czy $$1) {
+      this.c.set($$0, $$1);
+      $$1.f(this.f_($$1));
+      this.e();
+   }
+
+   @Override
+   public int b() {
       return this.b;
    }
 
-   public bux b() {
+   @Override
+   public boolean c() {
+      for (czy $$0 : this.c) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.d != null) {
+         for (bum $$0 : this.d) {
+            $$0.a(this);
+         }
+      }
+   }
+
+   @Override
+   public boolean a(crx $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.c.clear();
+      this.e();
+   }
+
+   @Override
+   public void fillStackedContents(csd $$0) {
+      for (czy $$1 : this.c) {
+         $$0.b($$1);
+      }
+   }
+
+   @Override
+   public String toString() {
+      return this.c.stream().filter($$0 -> !$$0.f()).collect(Collectors.toList()).toString();
+   }
+
+   private void d(czy $$0) {
+      for (int $$1 = 0; $$1 < this.b; $$1++) {
+         czy $$2 = this.a($$1);
+         if ($$2.f()) {
+            this.a($$1, $$0.g());
+            return;
+         }
+      }
+   }
+
+   private void e(czy $$0) {
+      for (int $$1 = 0; $$1 < this.b; $$1++) {
+         czy $$2 = this.a($$1);
+         if (czy.c($$2, $$0)) {
+            this.a($$0, $$2);
+            if ($$0.f()) {
+               return;
+            }
+         }
+      }
+   }
+
+   private void a(czy $$0, czy $$1) {
+      int $$2 = this.f_($$1);
+      int $$3 = Math.min($$0.M(), $$2 - $$1.M());
+      if ($$3 > 0) {
+         $$1.g($$3);
+         $$0.h($$3);
+         this.e();
+      }
+   }
+
+   public void a(uf $$0, jh.a $$1) {
+      this.a();
+      $$0.j().flatMap($$1x -> czy.a($$1, $$1x).stream()).forEach(this::b);
+   }
+
+   public uf a(jh.a $$0) {
+      uf $$1 = new uf();
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         czy $$3 = this.a($$2);
+         if (!$$3.f()) {
+            $$1.add($$3.a($$0));
+         }
+      }
+
+      return $$1;
+   }
+
+   public jo<czy> g() {
       return this.c;
-   }
-
-   public bux c() {
-      return this.d;
-   }
-
-   public bux d() {
-      return this.e;
-   }
-
-   public bux e() {
-      return this.f;
-   }
-
-   public bux f() {
-      return this.g;
-   }
-
-   public bux g() {
-      return this.h;
-   }
-
-   public bux h() {
-      return this.i;
-   }
-
-   public bux i() {
-      return this.j;
-   }
-
-   public bux j() {
-      return this.k;
-   }
-
-   public bux k() {
-      return this.l;
-   }
-
-   public bux l() {
-      return this.m;
-   }
-
-   public bux m() {
-      return this.n;
-   }
-
-   public bux n() {
-      return this.o;
-   }
-
-   public bux o() {
-      return this.p;
-   }
-
-   public bux p() {
-      return this.q;
-   }
-
-   public bux q() {
-      return this.r;
-   }
-
-   public bux r() {
-      return this.s;
-   }
-
-   public bux s() {
-      return this.t;
-   }
-
-   public bux t() {
-      return this.u;
-   }
-
-   public bux u() {
-      return this.v;
-   }
-
-   public bux v() {
-      return this.w;
-   }
-
-   public bux w() {
-      return this.x;
-   }
-
-   public bux a(bwi $$0) {
-      return this.a(bva.x, $$0);
-   }
-
-   public bux b(bwi $$0) {
-      return this.a(bva.y, $$0);
-   }
-
-   public bux c(bwi $$0) {
-      return this.a(bva.z, $$0);
-   }
-
-   public bux a(bxj $$0) {
-      return this.a(bva.A, $$0);
-   }
-
-   public bux b(bxj $$0) {
-      return this.a(bva.B, $$0);
-   }
-
-   public bux c(bxj $$0) {
-      return this.a(bva.C, $$0);
-   }
-
-   public bux a(crm $$0) {
-      return this.a(bva.D, $$0);
-   }
-
-   public bux a(cru $$0, @Nullable bwi $$1) {
-      return this.a(bva.E, $$0, $$1);
-   }
-
-   public bux a(bwi $$0, @Nullable bwi $$1) {
-      return this.a(bva.F, $$0, $$1);
-   }
-
-   public bux a(bwi $$0, @Nullable bxj $$1) {
-      return this.a(bva.G, $$0, $$1);
-   }
-
-   public bux b(bwi $$0, @Nullable bxj $$1) {
-      return this.a(bva.H, $$0, $$1);
-   }
-
-   public bux c(bwi $$0, @Nullable bxj $$1) {
-      return this.a(bva.I, $$0, $$1);
-   }
-
-   public bux a(csc $$0, @Nullable bwi $$1) {
-      return this.a(bva.J, $$0, $$1);
-   }
-
-   public bux a(csb $$0, @Nullable bwi $$1) {
-      return $$1 == null ? this.a(bva.L, $$0) : this.a(bva.K, $$0, $$1);
-   }
-
-   public bux a(csw $$0, bwi $$1) {
-      return this.a(bva.M, $$0, $$1);
-   }
-
-   public bux b(bwi $$0, @Nullable bwi $$1) {
-      return this.a(bva.N, $$0, $$1);
-   }
-
-   public bux c(bwi $$0, @Nullable bwi $$1) {
-      return this.a(bva.O, $$0, $$1);
-   }
-
-   public bux d(bwi $$0) {
-      return this.a(bva.P, $$0);
-   }
-
-   public bux a(@Nullable djf $$0) {
-      return $$0 != null ? this.d($$0.d(), $$0.c()) : this.d(null, null);
-   }
-
-   public bux d(@Nullable bwi $$0, @Nullable bwi $$1) {
-      return this.a($$1 != null && $$0 != null ? bva.R : bva.Q, $$0, $$1);
-   }
-
-   public bux e(bwi $$0) {
-      return this.a(bva.S, $$0);
-   }
-
-   public bux a(ffc $$0) {
-      return new bux(this.a.b(bva.T), $$0);
-   }
-
-   public bux x() {
-      return this.y;
-   }
-
-   public bux y() {
-      return this.z;
-   }
-
-   public bux f(bwi $$0) {
-      return this.a(bva.W, $$0);
    }
 }

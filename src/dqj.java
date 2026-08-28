@@ -1,73 +1,113 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public abstract class dqj extends dqi implements dmu {
-   protected dqj(eas.d $$0, jb $$1, ffw $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public class dqj extends dnc {
+   public static final MapCodec<dqj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(mg.e.q().fieldOf("potted").forGetter($$0x -> $$0x.d), t()).apply($$0, dqj::new)
+   );
+   private static final Map<dnc, dnc> b = Maps.newHashMap();
+   private static final fgk c = dnc.b(6.0, 0.0, 6.0);
+   private final dnc d;
+
+   @Override
+   public MapCodec<dqj> a() {
+      return a;
+   }
+
+   public dqj(dnc $$0, ebd.d $$1) {
+      super($$1);
+      this.d = $$0;
+      b.put($$0, this);
    }
 
    @Override
-   protected abstract MapCodec<? extends dqj> a();
-
-   protected eat a(eat $$0, eat $$1) {
-      return $$1;
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return c;
    }
 
    @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      if ($$4 == this.a.g() && !$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-      }
-
-      dqk $$8 = this.c();
-      if ($$4 == this.a && !$$6.a(this) && !$$6.a($$8)) {
-         return this.a($$0, $$8.b($$7));
+   protected bur a(czy $$0, ebe $$1, djx $$2, iv $$3, crx $$4, buq $$5, ffm $$6) {
+      ebe $$8 = ($$0.h() instanceof cyg $$7 ? b.getOrDefault($$7.c(), dne.a) : dne.a).m();
+      if ($$8.l()) {
+         return bur.f;
+      } else if (!this.q()) {
+         return bur.c;
       } else {
-         if (this.b) {
-            $$2.a($$3, exb.c, exb.c.a($$1));
+         $$2.a($$3, $$8, 3);
+         $$2.a($$4, ege.c, $$3);
+         $$4.a(awz.ah);
+         $$0.a(1, $$4);
+         return bur.a;
+      }
+   }
+
+   @Override
+   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
+      if (this.q()) {
+         return bur.c;
+      } else {
+         czy $$5 = new czy(this.d);
+         if (!$$3.h($$5)) {
+            $$3.a($$5, false);
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$1.a($$2, dne.gq.m(), 3);
+         $$1.a($$3, ege.c, $$2);
+         return bur.a;
       }
    }
 
    @Override
-   protected czn a(djp $$0, iv $$1, eat $$2, boolean $$3) {
-      return new czn(this.c());
+   protected czy a(dka $$0, iv $$1, ebe $$2, boolean $$3) {
+      return this.q() ? super.a($$0, $$1, $$2, $$3) : new czy(this.d);
+   }
+
+   private boolean q() {
+      return this.d == dne.a;
    }
 
    @Override
-   public boolean a(djp $$0, iv $$1, eat $$2) {
-      Optional<iv> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.c().h($$0.a_($$3.get().a(this.a)));
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      return $$4 == jb.a && !$$0.a($$1, $$3) ? dne.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   public dnc b() {
+      return this.d;
    }
 
    @Override
-   public boolean a(djm $$0, azv $$1, iv $$2, eat $$3) {
-      return true;
+   protected boolean a(ebe $$0, eyd $$1) {
+      return false;
    }
 
    @Override
-   public void a(arq $$0, azv $$1, iv $$2, eat $$3) {
-      Optional<iv> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         eat $$5 = $$0.a_($$4.get());
-         ((dqk)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+   protected boolean f(ebe $$0) {
+      return $$0.a(dne.uj) || $$0.a(dne.uk);
+   }
+
+   @Override
+   protected void b(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      if (this.f($$0) && $$1.F_().j()) {
+         boolean $$4 = this.d == dne.uh;
+         boolean $$5 = doy.a($$1);
+         if ($$4 != $$5) {
+            $$1.a($$2, this.o($$0), 3);
+            dpx.a $$6 = dpx.a.a($$4).c();
+            $$6.a($$1, $$2, $$3);
+            $$1.a(null, $$2, $$6.e(), awq.e, 1.0F, 1.0F);
+         }
       }
+
+      super.b($$0, $$1, $$2, $$3);
    }
 
-   private Optional<iv> a(diq $$0, iv $$1, dmr $$2) {
-      return m.a($$0, $$1, $$2, this.a, this.c());
-   }
-
-   @Override
-   protected boolean a(eat $$0, ddg $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.c().h()) ? false : $$2;
-   }
-
-   @Override
-   protected dmr b() {
-      return this;
+   public ebe o(ebe $$0) {
+      if ($$0.a(dne.uj)) {
+         return dne.uk.m();
+      } else {
+         return $$0.a(dne.uk) ? dne.uj.m() : $$0;
+      }
    }
 }

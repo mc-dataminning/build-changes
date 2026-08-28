@@ -1,84 +1,126 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dtd extends dtc {
-   public static final MapCodec<dtd> f = b(dtd::new);
-   public static final ebr<jb> g = dqs.e;
-   public static final ebk h = dtc.b;
+public class dtd extends dnc implements dnk {
+   public static final MapCodec<dtd> a = b(dtd::new);
+   private static final float b = 0.083333336F;
+   private static final float c = 0.9F;
+   private static final float d = 1.5F;
+   private static final float e = 2.5F;
+   private static final fgk f = fgh.a(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
+   private static final double g = 4.0;
+   private static final double h = 7.0;
 
    @Override
    public MapCodec<dtd> a() {
-      return f;
+      return a;
    }
 
-   protected dtd(eas.d $$0) {
+   public dtd(ebd.d $$0) {
       super($$0);
-      this.l(this.C.b().b(g, jb.c).b(h, Boolean.valueOf(true)));
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return dwk.o($$0);
+   protected boolean b(ebe $$0, ebe $$1, jb $$2) {
+      return $$1.a(this) ? true : super.b($$0, $$1, $$2);
    }
 
    @Override
-   protected boolean a(eat $$0, djp $$1, iv $$2) {
-      return dwk.b($$1, $$2, $$0.c(g));
+   protected void a(ebe $$0, djx $$1, iv $$2, bwt $$3, bxm $$4) {
+      if (!($$3 instanceof bxu) || $$3.dw().a(this)) {
+         $$3.a($$0, new ffq(0.9F, 1.5, 0.9F));
+         if ($$1.C) {
+            azx $$5 = $$1.G_();
+            boolean $$6 = $$3.aa != $$3.dA() || $$3.ac != $$3.dG();
+            if ($$6 && $$5.h()) {
+               $$1.a(
+                  ly.aN,
+                  $$3.dA(),
+                  (double)($$2.v() + 1),
+                  $$3.dG(),
+                  (double)(azo.b($$5, -1.0F, 1.0F) * 0.083333336F),
+                  0.05F,
+                  (double)(azo.b($$5, -1.0F, 1.0F) * 0.083333336F)
+               );
+            }
+         }
+      }
+
+      iv $$7 = $$2.j();
+      $$4.a(bxn.d, $$2x -> {
+         if ($$1 instanceof ars $$3x && $$2x.bX() && ($$3x.O().c(djt.d) || $$2x instanceof crx) && $$2x.c($$3x, $$7)) {
+            $$1.b($$7, false);
+         }
+      });
+      $$4.a(bxn.a);
+      $$4.a(bxn.d);
    }
 
    @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      return $$4.g() == $$0.c(g) && !$$0.a($$1, $$3) ? dmt.a.m() : $$0;
-   }
-
-   @Nullable
-   @Override
-   public eat a(ddg $$0) {
-      eat $$1 = dmt.cA.a($$0);
-      return $$1 == null ? null : this.m().b(g, $$1.c(g));
-   }
-
-   @Override
-   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
-      if ($$0.c(h)) {
-         jb $$4 = $$0.c(g).g();
-         double $$5 = 0.27;
-         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
-         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
-         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
-         $$1.a(lt.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   public void a(djx $$0, ebe $$1, iv $$2, bwt $$3, double $$4) {
+      if (!($$4 < 4.0) && $$3 instanceof bxu $$5) {
+         bxu.a $$7 = $$5.eO();
+         awo $$8 = $$4 < 7.0 ? $$7.a() : $$7.b();
+         $$3.a($$8, 1.0F, 1.0F);
       }
    }
 
    @Override
-   protected boolean a(djm $$0, iv $$1, eat $$2) {
-      jb $$3 = $$2.c(g).g();
-      return $$0.b($$1.a($$3), $$3);
+   protected fgk a(ebe $$0, djb $$1, iv $$2, bwt $$3) {
+      fgk $$4 = this.b($$0, $$1, $$2, ffv.a($$3));
+      return $$4.c() ? fgh.b() : $$4;
    }
 
    @Override
-   protected int a(eat $$0, diq $$1, iv $$2, jb $$3) {
-      return $$0.c(h) && $$0.c(g) != $$3 ? 15 : 0;
+   protected fgk b(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      if (!$$3.c() && $$3 instanceof fga $$4) {
+         bwt $$5 = $$4.d();
+         if ($$5 != null) {
+            if ($$5.Z > 2.5) {
+               return f;
+            }
+
+            boolean $$6 = $$5 instanceof cob;
+            if ($$6 || a($$5) && $$3.a(fgh.b(), $$2, false) && !$$3.b()) {
+               return super.b($$0, $$1, $$2, $$3);
+            }
+         }
+      }
+
+      return fgh.a();
    }
 
    @Override
-   protected eat a(eat $$0, dtl $$1) {
-      return $$0.b(g, $$1.a($$0.c(g)));
+   protected fgk c(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return fgh.a();
+   }
+
+   public static boolean a(bwt $$0) {
+      if ($$0.an().a(axh.h)) {
+         return true;
+      } else {
+         return $$0 instanceof bxu ? ((bxu)$$0).a(bxd.c).a(dac.qp) : false;
+      }
    }
 
    @Override
-   protected eat a(eat $$0, dru $$1) {
-      return $$0.a($$1.a($$0.c(g)));
+   public czy a(@Nullable bxu $$0, djy $$1, iv $$2, ebe $$3) {
+      $$1.a($$2, dne.a.m(), 11);
+      if (!$$1.A_()) {
+         $$1.c(2001, $$2, dnc.j($$3));
+      }
+
+      return new czy(dac.rr);
    }
 
    @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(g, h);
+   public Optional<awo> at_() {
+      return Optional.of(awp.dn);
    }
 
-   @Nullable
    @Override
-   protected eyi a(djm $$0, eat $$1) {
-      return eye.a($$0, $$1.c(g).g(), jb.b);
+   protected boolean a(ebe $$0, eyd $$1) {
+      return true;
    }
 }

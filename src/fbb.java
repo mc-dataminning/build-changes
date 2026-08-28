@@ -1,35 +1,64 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class fbb extends fbg {
-   public static final MapCodec<fbb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(cm.a.fieldOf("item_filter").forGetter($$0x -> $$0x.b), fbj.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
-            .apply($$0, fbb::new)
-   );
-   private final cm b;
-   private final fbh c;
+public class fbb extends faq {
+   public static final MapCodec<fbb> a = a(fbb::new);
 
-   private fbb(List<fdc> $$0, cm $$1, fbh $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   fbb(List<fax> $$0, List<fdq> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public fbi<fbb> b() {
-      return fbj.v;
+   public fay a() {
+      return fav.h;
    }
 
    @Override
-   public czn a(czn $$0, ezt $$1) {
-      return this.b.a($$0) ? this.c.apply($$0, $$1) : $$0;
+   protected fap a(List<? extends fap> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (fap)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (fap $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
+      };
    }
 
-   @Override
-   public void a(ezz $$0) {
-      super.a($$0);
-      this.c.a($$0.a(".modifier"));
+   public static fbb.a a(fax.a<?>... $$0) {
+      return new fbb.a($$0);
+   }
+
+   public static class a extends fax.a<fbb.a> {
+      private final Builder<fax> a = ImmutableList.builder();
+
+      public a(fax.a<?>... $$0) {
+         for (fax.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected fbb.a a() {
+         return this;
+      }
+
+      @Override
+      public fbb.a c(fax.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public fax b() {
+         return new fbb(this.a.build(), this.f());
+      }
    }
 }

@@ -1,11 +1,7 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
+import java.util.UUID;
 
 public interface efx {
-   Codec<efx> c = mg.t.q().dispatch(efx::a, efy::a);
-   yw<wj, efx> d = yu.a(mh.ac).b(efx::a, efy::b);
+   UUID cG();
 
-   Optional<ffc> a(djm var1);
-
-   efy<? extends efx> a();
+   boolean dQ();
 }

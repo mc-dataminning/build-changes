@@ -1,85 +1,66 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleLists;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class ffp implements ffo {
-   private static final DoubleList a = DoubleLists.unmodifiable(DoubleArrayList.wrap(new double[]{0.0}));
-   private final double[] b;
-   private final int[] c;
-   private final int[] d;
-   private final int e;
+public class ffp {
+   public static final ffp a = new ffp(0.0F, 0.0F);
+   public static final ffp b = new ffp(1.0F, 1.0F);
+   public static final ffp c = new ffp(1.0F, 0.0F);
+   public static final ffp d = new ffp(-1.0F, 0.0F);
+   public static final ffp e = new ffp(0.0F, 1.0F);
+   public static final ffp f = new ffp(0.0F, -1.0F);
+   public static final ffp g = new ffp(Float.MAX_VALUE, Float.MAX_VALUE);
+   public static final ffp h = new ffp(Float.MIN_VALUE, Float.MIN_VALUE);
+   public static final Codec<ffp> i = Codec.FLOAT
+      .listOf()
+      .comapFlatMap($$0 -> ag.a($$0, 2).map($$0x -> new ffp((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.j, $$0.k));
+   public final float j;
+   public final float k;
 
-   public ffp(DoubleList $$0, DoubleList $$1, boolean $$2, boolean $$3) {
-      double $$4 = Double.NaN;
-      int $$5 = $$0.size();
-      int $$6 = $$1.size();
-      int $$7 = $$5 + $$6;
-      this.b = new double[$$7];
-      this.c = new int[$$7];
-      this.d = new int[$$7];
-      boolean $$8 = !$$2;
-      boolean $$9 = !$$3;
-      int $$10 = 0;
-      int $$11 = 0;
-      int $$12 = 0;
-
-      while (true) {
-         boolean $$13 = $$11 >= $$5;
-         boolean $$14 = $$12 >= $$6;
-         if ($$13 && $$14) {
-            this.e = Math.max(1, $$10);
-            return;
-         }
-
-         boolean $$15 = !$$13 && ($$14 || $$0.getDouble($$11) < $$1.getDouble($$12) + 1.0E-7);
-         if ($$15) {
-            $$11++;
-            if ($$8 && ($$12 == 0 || $$14)) {
-               continue;
-            }
-         } else {
-            $$12++;
-            if ($$9 && ($$11 == 0 || $$13)) {
-               continue;
-            }
-         }
-
-         int $$16 = $$11 - 1;
-         int $$17 = $$12 - 1;
-         double $$18 = $$15 ? $$0.getDouble($$16) : $$1.getDouble($$17);
-         if (!($$4 >= $$18 - 1.0E-7)) {
-            this.c[$$10] = $$16;
-            this.d[$$10] = $$17;
-            this.b[$$10] = $$18;
-            $$10++;
-            $$4 = $$18;
-         } else {
-            this.c[$$10 - 1] = $$16;
-            this.d[$$10 - 1] = $$17;
-         }
-      }
+   public ffp(float $$0, float $$1) {
+      this.j = $$0;
+      this.k = $$1;
    }
 
-   @Override
-   public boolean a(ffo.a $$0) {
-      int $$1 = this.e - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge(this.c[$$2], this.d[$$2], $$2)) {
-            return false;
-         }
-      }
-
-      return true;
+   public ffp a(float $$0) {
+      return new ffp(this.j * $$0, this.k * $$0);
    }
 
-   @Override
-   public int size() {
-      return this.e;
+   public float a(ffp $$0) {
+      return this.j * $$0.j + this.k * $$0.k;
    }
 
-   @Override
-   public DoubleList a() {
-      return (DoubleList)(this.e <= 1 ? a : DoubleArrayList.wrap(this.b, this.e));
+   public ffp b(ffp $$0) {
+      return new ffp(this.j + $$0.j, this.k + $$0.k);
+   }
+
+   public ffp b(float $$0) {
+      return new ffp(this.j + $$0, this.k + $$0);
+   }
+
+   public boolean c(ffp $$0) {
+      return this.j == $$0.j && this.k == $$0.k;
+   }
+
+   public ffp a() {
+      float $$0 = azo.c(this.j * this.j + this.k * this.k);
+      return $$0 < 1.0E-4F ? a : new ffp(this.j / $$0, this.k / $$0);
+   }
+
+   public float b() {
+      return azo.c(this.j * this.j + this.k * this.k);
+   }
+
+   public float c() {
+      return this.j * this.j + this.k * this.k;
+   }
+
+   public float d(ffp $$0) {
+      float $$1 = $$0.j - this.j;
+      float $$2 = $$0.k - this.k;
+      return $$1 * $$1 + $$2 * $$2;
+   }
+
+   public ffp d() {
+      return new ffp(-this.j, -this.k);
    }
 }

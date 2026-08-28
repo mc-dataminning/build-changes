@@ -1,60 +1,32 @@
-public abstract class ckh extends bxr {
-   public static final int d = 120;
+import java.util.Optional;
 
-   protected ckh(bwr<? extends ckh> $$0, djm $$1) {
-      super($$0, $$1);
-      this.a(exr.j, 0.0F);
+public class ckh {
+   public static final alh<ckg> a = a(ckp.a);
+   public static final alh<ckg> b = a(ckp.b);
+   public static final alh<ckg> c = a(ckp.c);
+   public static final alh<ckg> d = a;
+
+   private static alh<ckg> a(ali $$0) {
+      return alh.a(mh.ba, $$0);
    }
 
-   @Override
-   public boolean a(djp $$0) {
-      return $$0.f(this);
+   public static void a(qh<ckg> $$0) {
+      a($$0, a, ckg.a.a, "temperate_pig", cue.a(0));
+      a($$0, b, ckg.a.a, "warm_pig", axd.al);
+      a($$0, c, ckg.a.b, "cold_pig", axd.ak);
    }
 
-   @Override
-   public int S() {
-      return 120;
+   private static void a(qh<ckg> $$0, alh<ckg> $$1, ckg.a $$2, String $$3, axt<dla> $$4) {
+      jj<dla> $$5 = $$0.a(mh.aG).b($$4);
+      a($$0, $$1, $$2, $$3, cue.a(new ctx($$5), 1));
    }
 
-   @Override
-   protected int e(arq $$0) {
-      return 1 + this.ae.a(3);
+   private static void a(qh<ckg> $$0, alh<ckg> $$1, ckg.a $$2, String $$3, cue $$4) {
+      ali $$5 = ali.b("entity/pig/" + $$3);
+      $$0.a($$1, new ckg(new cty<>($$2, $$5), $$4));
    }
 
-   protected void a(arq $$0, int $$1) {
-      if (this.bI() && !this.bh()) {
-         this.j($$1 - 1);
-         if (this.cr() == -20) {
-            this.j(0);
-            this.a($$0, this.dV().i(), 2.0F);
-         }
-      } else {
-         this.j(300);
-      }
-   }
-
-   @Override
-   public void aw() {
-      int $$0 = this.cr();
-      super.aw();
-      if (this.dU() instanceof arq $$1) {
-         this.a($$1, $$0);
-      }
-   }
-
-   @Override
-   public boolean cI() {
-      return false;
-   }
-
-   @Override
-   public boolean w() {
-      return false;
-   }
-
-   public static boolean c(bwr<? extends ckh> $$0, djn $$1, bwq $$2, iv $$3, azv $$4) {
-      int $$5 = $$1.P();
-      int $$6 = $$5 - 13;
-      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(axh.a) && $$1.a_($$3.d()).a(dmt.J);
+   public static Optional<jf.c<ckg>> a(azx $$0, jt $$1, cud $$2) {
+      return cua.a($$1.f(mh.ba).c(), jf::a, $$0, $$2);
    }
 }

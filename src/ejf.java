@@ -1,66 +1,32 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejf extends ejy<elt> {
-   public ejf(Codec<elt> $$0) {
-      super($$0);
+public class ejf extends ejc {
+   public static final Codec<ejf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ejc.d.forGetter($$0x -> $$0x),
+               btu.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               btu.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               btu.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, ejf::new)
+   );
+   public final btu b;
+   public final btu c;
+   final btu j;
+
+   public ejf(float $$0, eqi $$1, btu $$2, ehx $$3, ejd $$4, jj<dnc> $$5, btu $$6, btu $$7, btu $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   public boolean a(eka<elt> $$0) {
-      dkl $$1 = $$0.b();
-      elt $$2 = $$0.f();
-      azv $$3 = $$0.d();
-      int $$4 = $$2.a().size();
-      int[] $$5 = new int[$$4];
-      int $$6 = 0;
-
-      for (int $$7 = 0; $$7 < $$4; $$7++) {
-         $$5[$$7] = $$2.a().get($$7).a().a($$3);
-         $$6 += $$5[$$7];
-      }
-
-      if ($$6 == 0) {
-         return false;
-      } else {
-         iv.a $$8 = $$0.e().k();
-         iv.a $$9 = $$8.k().c($$2.b());
-
-         for (int $$10 = 0; $$10 < $$6; $$10++) {
-            if (!$$2.c().test($$1, $$9)) {
-               a($$5, $$6, $$10, $$2.d());
-               break;
-            }
-
-            $$9.c($$2.b());
-         }
-
-         for (int $$11 = 0; $$11 < $$4; $$11++) {
-            int $$12 = $$5[$$11];
-            if ($$12 != 0) {
-               elt.a $$13 = $$2.a().get($$11);
-
-               for (int $$14 = 0; $$14 < $$12; $$14++) {
-                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
-                  $$8.c($$2.b());
-               }
-            }
-         }
-
-         return true;
-      }
+   public ejf(float $$0, eqi $$1, btu $$2, ehx $$3, jj<dnc> $$4, btu $$5, btu $$6, btu $$7) {
+      this($$0, $$1, $$2, $$3, ejd.a, $$4, $$5, $$6, $$7);
    }
 
-   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$1 - $$2;
-      int $$5 = $$3 ? 1 : -1;
-      int $$6 = $$3 ? 0 : $$0.length - 1;
-      int $$7 = $$3 ? $$0.length : -1;
-
-      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
-         int $$9 = $$0[$$8];
-         int $$10 = Math.min($$9, $$4);
-         $$4 -= $$10;
-         $$0[$$8] -= $$10;
-      }
+   public ejf(ejc $$0, btu $$1, btu $$2, btu $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

@@ -1,48 +1,36 @@
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public enum fvr implements bak {
-   a("uniform"),
-   b("jp");
+public class fvr extends fuj {
+   @Nullable
+   protected fvy a;
+   protected boolean b;
 
-   public static final Codec<fvr> c = bak.a(fvr::values);
-   private final String d;
+   public fvr(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, wz.a);
+      this.b = $$4;
+   }
 
-   private fvr(final String $$0) {
-      this.d = $$0;
+   public void a(fvy $$0) {
+      this.a = $$0;
+   }
+
+   public void b(boolean $$0) {
+      this.b = $$0;
+   }
+
+   public boolean a() {
+      return this.b;
    }
 
    @Override
-   public String c() {
-      return this.d;
+   public void a(fyi $$0) {
+      this.c($$0);
    }
 
-   public static class a {
-      private final Map<fvr, Boolean> c;
-      public static final Codec<fvr.a> a = Codec.unboundedMap(fvr.c, Codec.BOOL).xmap(fvr.a::new, $$0 -> $$0.c);
-      public static final fvr.a b = new fvr.a(Map.of());
-
-      public a(Map<fvr, Boolean> $$0) {
-         this.c = $$0;
-      }
-
-      public boolean a(Set<fvr> $$0) {
-         for (Entry<fvr, Boolean> $$1 : this.c.entrySet()) {
-            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-
-      public fvr.a a(fvr.a $$0) {
-         Map<fvr, Boolean> $$1 = new HashMap<>($$0.c);
-         $$1.putAll(this.c);
-         return new fvr.a(Map.copyOf($$1));
+   @Override
+   public void b(ftx $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         $$0.a(gsl::H, this.a.a(this.b, this.D()), this.F(), this.G(), this.g, this.h);
       }
    }
 }

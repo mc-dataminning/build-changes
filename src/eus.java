@@ -2,41 +2,44 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class eus extends evm {
-   public static final MapCodec<eus> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ju.a(mh.i).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, eus::new)
+public class eus extends esb {
+   public static final MapCodec<eus> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, eus::new)
    );
-   private final Optional<jj<dmr>> b;
-   private final float c;
+   public final boolean e;
 
-   public eus(jj<dmr> $$0, float $$1) {
-      this(Optional.of($$0), $$1);
-   }
-
-   public eus(float $$0) {
-      this(Optional.empty(), $$0);
-   }
-
-   private eus(Optional<jj<dmr>> $$0, float $$1) {
-      this.c = $$1;
-      this.b = $$0;
-   }
-
-   @Nullable
-   @Override
-   public evp.d a(djp $$0, iv $$1, iv $$2, evp.d $$3, evp.d $$4, evl $$5) {
-      azv $$6 = $$5.b($$4.a());
-      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
+   public eus(esb.c $$0, boolean $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   protected evo<?> a() {
-      return evo.f;
+   public Optional<esb.b> a(esb.a $$0) {
+      ehd.a $$1 = this.e ? ehd.a.a : ehd.a.c;
+      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
+   }
+
+   private void a(est $$0, esb.a $$1) {
+      dtw $$2 = dtw.a($$1.f());
+      iv $$3 = new iv($$1.h().d(), 90, $$1.h().e());
+      eur.a $$4 = eur.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
+      if ($$4.l()) {
+         ert $$5 = $$4.f();
+         int $$7;
+         if (this.e) {
+            int $$6 = esb.b($$1, $$5.h(), $$5.d(), $$5.j(), $$5.f());
+            $$7 = $$4.a($$6, $$1.f());
+         } else {
+            $$7 = esb.a($$1, $$5.h(), $$5.d(), $$5.j(), $$5.f());
+         }
+
+         $$4.c($$7);
+      }
+   }
+
+   @Override
+   public esk<?> e() {
+      return esk.m;
    }
 }

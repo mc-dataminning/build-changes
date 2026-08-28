@@ -8,16 +8,16 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class ik {
-   private static final Map<alg, SuggestionProvider<eo>> d = Maps.newHashMap();
-   private static final alg e = alg.b("ask_server");
+   private static final Map<ali, SuggestionProvider<eo>> d = Maps.newHashMap();
+   private static final ali e = ali.b("ask_server");
    public static final SuggestionProvider<eo> a = a(e, ($$0, $$1) -> ((eo)$$0.getSource()).a($$0));
-   public static final SuggestionProvider<ej> b = a(alg.b("available_sounds"), ($$0, $$1) -> eo.a(((eo)$$0.getSource()).s(), $$1));
+   public static final SuggestionProvider<ej> b = a(ali.b("available_sounds"), ($$0, $$1) -> eo.a(((eo)$$0.getSource()).s(), $$1));
    public static final SuggestionProvider<ej> c = a(
-      alg.b("summonable_entities"),
-      ($$0, $$1) -> eo.a(mg.f.s().filter($$1x -> $$1x.a(((eo)$$0.getSource()).v()) && $$1x.c()), $$1, bwr::a, $$0x -> wy.c(ag.a("entity", bwr.a($$0x))))
+      ali.b("summonable_entities"),
+      ($$0, $$1) -> eo.a(mg.f.s().filter($$1x -> $$1x.a(((eo)$$0.getSource()).v()) && $$1x.c()), $$1, bxc::a, $$0x -> xa.c(ag.a("entity", bxc.a($$0x))))
    );
 
-   public static <S extends eo> SuggestionProvider<S> a(alg $$0, SuggestionProvider<eo> $$1) {
+   public static <S extends eo> SuggestionProvider<S> a(ali $$0, SuggestionProvider<eo> $$1) {
       if (d.containsKey($$0)) {
          throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + $$0);
       } else {
@@ -26,11 +26,11 @@ public class ik {
       }
    }
 
-   public static SuggestionProvider<eo> a(alg $$0) {
+   public static SuggestionProvider<eo> a(ali $$0) {
       return d.getOrDefault($$0, a);
    }
 
-   public static alg a(SuggestionProvider<eo> $$0) {
+   public static ali a(SuggestionProvider<eo> $$0) {
       return $$0 instanceof ik.a ? ((ik.a)$$0).b : e;
    }
 
@@ -40,9 +40,9 @@ public class ik {
 
    protected static class a implements SuggestionProvider<eo> {
       private final SuggestionProvider<eo> a;
-      final alg b;
+      final ali b;
 
-      public a(alg $$0, SuggestionProvider<eo> $$1) {
+      public a(ali $$0, SuggestionProvider<eo> $$1) {
          this.a = $$1;
          this.b = $$0;
       }

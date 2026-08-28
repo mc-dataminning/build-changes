@@ -1,19 +1,45 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public record ctu(jj<ern> c) implements ctq {
-   public static final MapCodec<ctu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ju.a(mh.be).fieldOf("structures").forGetter(ctu::b)).apply($$0, ctu::new));
+public class ctu {
+   private final ctt a;
+   private final List<ctu.a> b = Lists.newArrayList();
 
-   public boolean a(cts $$0) {
-      return $$0.b().a().b().a($$0.a(), this.c).b();
+   public ctu(ctt $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public MapCodec<ctu> a() {
-      return a;
+   public ctu a(int $$0, ctr $$1) {
+      this.b.add(new ctu.a($$0, $$1));
+      return this;
    }
 
-   public jj<ern> b() {
-      return this.c;
+   public ctt a() {
+      this.b.stream().map(ctu.a::b).collect(Collectors.toSet()).forEach(this.a::a);
+      this.b.forEach($$0 -> {
+         ctr $$1 = $$0.b();
+         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
+         this.a.b($$1).a($$0.a(), 1.0F);
+      });
+      return this.a;
+   }
+
+   static class a {
+      private final int a;
+      private final ctr b;
+
+      public a(int $$0, ctr $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public int a() {
+         return this.a;
+      }
+
+      public ctr b() {
+         return this.b;
+      }
    }
 }

@@ -3,11 +3,11 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType.StringType;
 
 public class ip implements ig<StringArgumentType, ip.a> {
-   public void a(ip.a $$0, vu $$1) {
+   public void a(ip.a $$0, vw $$1) {
       $$1.a((Enum<?>)$$0.b);
    }
 
-   public ip.a a(vu $$0) {
+   public ip.a a(vw $$0) {
       StringType $$1 = $$0.b(StringType.class);
       return new ip.a($$1);
    }

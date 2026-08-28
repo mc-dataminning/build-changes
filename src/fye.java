@@ -1,82 +1,61 @@
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class fye extends fys {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
-   @Nullable
-   private final wy d;
-   private final wy s;
-   private final Runnable u;
-   @Nullable
-   private ftt v;
-   private fta w;
-   private int x;
+public class fye implements fyb {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
 
-   public static fye a(wy $$0, wy $$1, Runnable $$2) {
-      return new fye($$0, null, $$1, $$2, 0);
+   public fye(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public static fye a(wy $$0, wy $$1, wy $$2, Runnable $$3) {
-      return new fye($$0, $$1, $$2, $$3, 20);
+   public fye(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   protected fye(wy $$0, @Nullable wy $$1, wy $$2, Runnable $$3, int $$4) {
-      super($$0);
-      this.d = $$1;
-      this.s = $$2;
-      this.u = $$3;
-      this.x = $$4;
+   public static fye a(int $$0) {
+      return new fye($$0, 0);
+   }
+
+   public static fye b(int $$0) {
+      return new fye(0, $$0);
    }
 
    @Override
-   protected void aO_() {
-      super.aO_();
-      if (this.d != null) {
-         this.v = ftt.a(this.p, this.d, 360);
-      }
-
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.v != null ? this.v.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.o - 40);
-      this.w = this.c(fta.a(this.s, $$0x -> this.aL_()).a((this.n - 150) / 2, $$4, 150, 20).a());
+   public void j(int $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void e() {
-      if (this.x > 0) {
-         this.x--;
-      }
-
-      this.w.j = this.x == 0;
+   public void k(int $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(fsm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
-      if (this.v == null) {
-         String $$4 = fyh.a(ag.c());
-         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
-      } else {
-         this.v.a($$0, this.n / 2, 120);
-      }
+   public int F() {
+      return this.a;
    }
 
    @Override
-   public boolean aD_() {
-      return this.v != null && this.w.j;
+   public int G() {
+      return this.b;
    }
 
    @Override
-   public void aL_() {
-      this.u.run();
+   public int A() {
+      return this.c;
    }
 
    @Override
-   public wy i() {
-      return wx.a(this.l, this.d != null ? this.d : wx.a);
+   public int y() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<fuj> $$0) {
    }
 }

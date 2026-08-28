@@ -1,72 +1,150 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-public class ded {
-   public static final int a = -1;
-   public static final ded b = new ded(List.of(), IntList.of());
-   private final List<dea> c;
-   private final IntList d;
+public class ded implements dev {
+   public static final ded a = new ded(0, 0, List.of());
+   private final int b;
+   private final int c;
+   private final List<czy> d;
+   private final csd e = new csd();
+   private final int f;
 
-   private ded(List<dea> $$0, IntList $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   private ded(int $$0, int $$1, List<czy> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      int $$3 = 0;
+
+      for (czy $$4 : $$2) {
+         if (!$$4.f()) {
+            $$3++;
+            this.e.a($$4, 1);
+         }
+      }
+
+      this.f = $$3;
    }
 
-   public static ded a(dea $$0) {
-      return $$0.b() ? b : new ded(List.of($$0), IntList.of(0));
+   public static ded a(int $$0, int $$1, List<czy> $$2) {
+      return b($$0, $$1, $$2).a();
    }
 
-   public static ded a(List<Optional<dea>> $$0) {
-      int $$1 = $$0.size();
-      List<dea> $$2 = new ArrayList<>($$1);
-      IntList $$3 = new IntArrayList($$1);
-      int $$4 = 0;
+   public static ded.a b(int $$0, int $$1, List<czy> $$2) {
+      if ($$0 != 0 && $$1 != 0) {
+         int $$3 = $$0 - 1;
+         int $$4 = 0;
+         int $$5 = $$1 - 1;
+         int $$6 = 0;
 
-      for (Optional<dea> $$5 : $$0) {
-         if ($$5.isPresent()) {
-            dea $$6 = $$5.get();
-            if ($$6.b()) {
-               return b;
+         for (int $$7 = 0; $$7 < $$1; $$7++) {
+            boolean $$8 = true;
+
+            for (int $$9 = 0; $$9 < $$0; $$9++) {
+               czy $$10 = $$2.get($$9 + $$7 * $$0);
+               if (!$$10.f()) {
+                  $$3 = Math.min($$3, $$9);
+                  $$4 = Math.max($$4, $$9);
+                  $$8 = false;
+               }
             }
 
-            $$2.add($$6);
-            $$3.add($$4++);
+            if (!$$8) {
+               $$5 = Math.min($$5, $$7);
+               $$6 = Math.max($$6, $$7);
+            }
+         }
+
+         int $$11 = $$4 - $$3 + 1;
+         int $$12 = $$6 - $$5 + 1;
+         if ($$11 <= 0 || $$12 <= 0) {
+            return ded.a.a;
+         } else if ($$11 == $$0 && $$12 == $$1) {
+            return new ded.a(new ded($$0, $$1, $$2), $$3, $$5);
          } else {
-            $$3.add(-1);
-         }
-      }
+            List<czy> $$13 = new ArrayList<>($$11 * $$12);
 
-      return new ded($$2, $$3);
+            for (int $$14 = 0; $$14 < $$12; $$14++) {
+               for (int $$15 = 0; $$15 < $$11; $$15++) {
+                  int $$16 = $$15 + $$3 + ($$14 + $$5) * $$0;
+                  $$13.add($$2.get($$16));
+               }
+            }
+
+            return new ded.a(new ded($$11, $$12, $$13), $$3, $$5);
+         }
+      } else {
+         return ded.a.a;
+      }
    }
 
-   public static ded b(List<dea> $$0) {
-      int $$1 = $$0.size();
-      IntList $$2 = new IntArrayList($$1);
-
-      for (int $$3 = 0; $$3 < $$1; $$3++) {
-         dea $$4 = $$0.get($$3);
-         if ($$4.b()) {
-            return b;
-         }
-
-         $$2.add($$3);
-      }
-
-      return new ded($$0, $$2);
+   @Override
+   public czy a(int $$0) {
+      return this.d.get($$0);
    }
 
-   public IntList a() {
+   public czy a(int $$0, int $$1) {
+      return this.d.get($$0 + $$1 * this.b);
+   }
+
+   @Override
+   public int a() {
+      return this.d.size();
+   }
+
+   @Override
+   public boolean b() {
+      return this.f == 0;
+   }
+
+   public csd c() {
+      return this.e;
+   }
+
+   public List<czy> d() {
       return this.d;
    }
 
-   public List<dea> b() {
+   public int e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.b;
+   }
+
+   public int g() {
       return this.c;
    }
 
-   public boolean c() {
-      return this.d.isEmpty();
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return !($$0 instanceof ded $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.f == $$1.f && czy.a(this.d, $$1.d);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = czy.a(this.d);
+      $$0 = 31 * $$0 + this.b;
+      return 31 * $$0 + this.c;
+   }
+
+   public static record a(ded b, int c, int d) {
+      public static final ded.a a = new ded.a(ded.a, 0, 0);
+
+      public ded a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
    }
 }

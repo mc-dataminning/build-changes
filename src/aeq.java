@@ -1,19 +1,66 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.shorts.ShortIterator;
+import it.unimi.dsi.fastutil.shorts.ShortSet;
+import java.util.function.BiConsumer;
 
-public record aeq(wy b, Optional<byte[]> c) implements zf<abu> {
-   public static final yw<ByteBuf, aeq> a = yw.a(xa.f, aeq::b, yu.n.a(yu::a), aeq::e, aeq::new);
+public class aeq implements zh<abw> {
+   public static final yy<vw, aeq> a = zh.a(aeq::a, aeq::new);
+   private static final int b = 12;
+   private final jy c;
+   private final short[] d;
+   private final ebe[] e;
 
-   @Override
-   public zh<aeq> a() {
-      return agn.at;
+   public aeq(jy $$0, ShortSet $$1, edm $$2) {
+      this.c = $$0;
+      int $$3 = $$1.size();
+      this.d = new short[$$3];
+      this.e = new ebe[$$3];
+      int $$4 = 0;
+
+      for (ShortIterator var6 = $$1.iterator(); var6.hasNext(); $$4++) {
+         short $$5 = (Short)var6.next();
+         this.d[$$4] = $$5;
+         this.e[$$4] = $$2.a(jy.a($$5), jy.b($$5), jy.c($$5));
+      }
    }
 
-   public void a(abu $$0) {
+   private aeq(vw $$0) {
+      this.c = jy.a($$0.readLong());
+      int $$1 = $$0.l();
+      this.d = new short[$$1];
+      this.e = new ebe[$$1];
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         long $$3 = $$0.m();
+         this.d[$$2] = (short)((int)($$3 & 4095L));
+         this.e[$$2] = dnc.k.a((int)($$3 >>> 12));
+      }
+   }
+
+   private void a(vw $$0) {
+      $$0.b(this.c.s());
+      $$0.c(this.d.length);
+
+      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
+         $$0.a((long)dnc.j(this.e[$$1]) << 12 | (long)this.d[$$1]);
+      }
+   }
+
+   @Override
+   public zj<aeq> a() {
+      return agp.ar;
+   }
+
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public Optional<byte[]> e() {
-      return this.c;
+   public void a(BiConsumer<iv, ebe> $$0) {
+      iv.a $$1 = new iv.a();
+
+      for (int $$2 = 0; $$2 < this.d.length; $$2++) {
+         short $$3 = this.d[$$2];
+         $$1.d(this.c.d($$3), this.c.e($$3), this.c.f($$3));
+         $$0.accept($$1, this.e[$$2]);
+      }
    }
 }

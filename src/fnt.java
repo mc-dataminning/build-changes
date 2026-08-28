@@ -1,64 +1,27 @@
-import java.util.Objects;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fnt extends hqd {
-   private static final int a = 212;
-   private static final wy b = wy.c("mco.configure.world.name");
-   private static final wy c = wy.c("mco.configure.world.description");
-   private final fnd C;
-   private final flu D;
-   private ftj E;
-   private ftj F;
+public class fnt extends fns {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
-   public fnt(fnd $$0, flu $$1) {
-      super(wy.c("mco.configure.world.settings.title"));
-      this.C = $$0;
-      this.D = $$1;
-   }
+   public static fnt a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+      fnt $$3 = new fnt();
 
-   @Override
-   public void aO_() {
-      int $$0 = this.n / 2 - 106;
-      String $$1 = this.D.e == flu.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
-      fta $$2 = fta.a(wy.c($$1), $$0x -> {
-         if (this.D.e == flu.c.b) {
-            this.m.a(fnp.a(this, wy.c("mco.configure.world.close.question.line1"), $$0xx -> this.C.b()));
-         } else {
-            this.C.b(false);
-         }
-      }).a(this.n / 2 - 53, g(0), 106, 20).a();
-      this.c($$2);
-      this.F = new ftj(this.m.h, $$0, g(4), 212, 20, wy.c("mco.configure.world.name"));
-      this.F.f(32);
-      this.F.a(Objects.requireNonNullElse(this.D.b(), ""));
-      this.c(this.F);
-      this.E = new ftj(this.m.h, $$0, g(8), 212, 20, wy.c("mco.configure.world.description"));
-      this.E.f(32);
-      this.E.a(this.D.a());
-      this.c(this.E);
-      fta $$3 = this.c(fta.a(wy.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
-      this.F.b($$1x -> $$3.j = !bal.h($$1x));
-      this.c(fta.a(wx.e, $$0x -> this.aL_()).a(this.n / 2 + 2, g(12), 106, 20).a());
-   }
+      try {
+         $$3.a = fpp.b("downloadLink", $$2, "");
+         $$3.b = fpp.b("resourcePackUrl", $$2, "");
+         $$3.c = fpp.b("resourcePackHash", $$2, "");
+      } catch (Exception var5) {
+         d.error("Could not parse WorldDownload: {}", var5.getMessage());
+      }
 
-   @Override
-   protected void aC_() {
-      this.b(this.F);
-   }
-
-   @Override
-   public void aL_() {
-      this.m.a(this.C);
-   }
-
-   @Override
-   public void a(fsm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, -1);
-      $$0.b(this.p, b, this.n / 2 - 106, g(3), -1);
-      $$0.b(this.p, c, this.n / 2 - 106, g(7), -1);
-   }
-
-   public void g() {
-      this.C.a(this.F.a(), this.E.a());
+      return $$3;
    }
 }

@@ -1,60 +1,26 @@
-import com.mojang.serialization.Codec;
-import java.time.Instant;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.function.UnaryOperator;
 
-public enum glm implements bak {
-   a("secure"),
-   b("modified"),
-   c("not_secure");
+public class glm {
+   private final glo a;
 
-   public static final Codec<glm> d = bak.a(glm::values);
-   private final String e;
-
-   private glm(final String $$0) {
-      this.e = $$0;
+   public glm() {
+      this(new glo(ImmutableList.of(), glg.a));
    }
 
-   public static glm a(xo $$0, wy $$1, Instant $$2) {
-      if (!$$0.i() || $$0.b($$2)) {
-         return c;
-      } else {
-         return a($$0, $$1) ? b : a;
-      }
+   private glm(glo $$0) {
+      this.a = $$0;
    }
 
-   private static boolean a(xo $$0, wy $$1) {
-      if (!$$1.getString().contains($$0.c())) {
-         return true;
-      } else {
-         wy $$2 = $$0.n();
-         return $$2 == null ? false : a($$2);
-      }
+   public glo a() {
+      return this.a;
    }
 
-   private static boolean a(wy $$0) {
-      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), xv.a).orElse(false);
+   public glm a(UnaryOperator<glg> $$0) {
+      return new glm(this.a.a($$0));
    }
 
-   private static boolean a(xv $$0) {
-      return !$$0.l().equals(xv.b);
-   }
-
-   public boolean a() {
-      return this == c;
-   }
-
-   @Nullable
-   public fpn a(xo $$0) {
-      return switch (this) {
-         case b -> fpn.a($$0.c());
-         case c -> fpn.c();
-         default -> null;
-      };
-   }
-
-   @Override
-   public String c() {
-      return this.e;
+   public glm a(gln $$0) {
+      return $$0.apply(this);
    }
 }

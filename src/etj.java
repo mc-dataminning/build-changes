@@ -1,52 +1,90 @@
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Set;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class etj extends erm {
-   public static final MapCodec<etj> d = a(etj::new);
+public abstract class etj {
+   public static final Codec<etj> f = mg.ag.q().dispatch("element_type", etj::a, etk::codec);
+   private static final jf<ewb> a = jf.a(new ewb(List.of()));
+   @Nullable
+   private volatile etl.a b;
 
-   public etj(ern.c $$0) {
-      super(eti::new, 21, 21, $$0);
+   protected static <E extends etj> RecordCodecBuilder<E, etl.a> f() {
+      return etl.a.c.fieldOf("projection").forGetter(etj::g);
    }
 
-   @Override
-   public void a(dkl $$0, dki $$1, ecr $$2, azv $$3, erf $$4, dir $$5, esc $$6) {
-      Set<iv> $$7 = bag.a(ka::i);
+   protected etj(etl.a $$0) {
+      this.b = $$0;
+   }
 
-      for (err $$8 : $$6.c()) {
-         if ($$8 instanceof eti $$9) {
-            $$7.addAll($$9.b());
-            a($$4, $$0, $$9.c());
-         }
-      }
+   public abstract ka a(ewe var1, dtw var2);
 
-      ObjectArrayList<iv> $$10 = new ObjectArrayList($$7.stream().toList());
-      azv $$11 = azv.a($$0.E()).e().a($$6.b().g());
-      ag.c($$10, $$11);
-      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
-      ObjectListIterator var12 = $$10.iterator();
+   public abstract List<ewd.a> a(ewe var1, iv var2, dtw var3, azx var4);
 
-      while (var12.hasNext()) {
-         iv $$13 = (iv)var12.next();
-         if ($$12 > 0) {
-            $$12--;
-            a($$4, $$0, $$13);
-         } else if ($$4.b($$13)) {
-            $$0.a($$13, dmt.L.m(), 2);
-         }
+   public abstract ert a(ewe var1, iv var2, dtw var3);
+
+   public abstract boolean a(ewe var1, dkw var2, dkt var3, edc var4, iv var5, iv var6, dtw var7, ert var8, azx var9, evn var10, boolean var11);
+
+   public abstract etk<?> a();
+
+   public void a(djy $$0, ewd.d $$1, iv $$2, dtw $$3, azx $$4, ert $$5) {
+   }
+
+   public etj a(etl.a $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   public etl.a g() {
+      etl.a $$0 = this.b;
+      if ($$0 == null) {
+         throw new IllegalStateException();
+      } else {
+         return $$0;
       }
    }
 
-   private static void a(erf $$0, dkl $$1, iv $$2) {
-      if ($$0.b($$2)) {
-         $$1.a($$2, dmt.M.m(), 2);
-         $$1.a($$2, dxt.O).ifPresent($$1x -> $$1x.a(ezp.aY, $$2.a()));
-      }
+   public int h() {
+      return 1;
    }
 
-   @Override
-   public erw<?> e() {
-      return erw.b;
+   public static Function<etl.a, etc> i() {
+      return $$0 -> etc.b;
+   }
+
+   public static Function<etl.a, etg> a(String $$0) {
+      return $$1 -> new etg(Either.left(ali.a($$0)), a, $$1, Optional.empty());
+   }
+
+   public static Function<etl.a, etg> a(String $$0, jf<ewb> $$1) {
+      return $$2 -> new etg(Either.left(ali.a($$0)), $$1, $$2, Optional.empty());
+   }
+
+   public static Function<etl.a, eti> b(String $$0) {
+      return $$1 -> new eti(Either.left(ali.a($$0)), a, $$1, Optional.empty());
+   }
+
+   public static Function<etl.a, eti> b(String $$0, jf<ewb> $$1) {
+      return $$2 -> new eti(Either.left(ali.a($$0)), $$1, $$2, Optional.empty());
+   }
+
+   public static Function<etl.a, eti> a(String $$0, evn $$1) {
+      return $$2 -> new eti(Either.left(ali.a($$0)), a, $$2, Optional.of($$1));
+   }
+
+   public static Function<etl.a, eti> a(String $$0, jf<ewb> $$1, evn $$2) {
+      return $$3 -> new eti(Either.left(ali.a($$0)), $$1, $$3, Optional.of($$2));
+   }
+
+   public static Function<etl.a, etd> a(jf<erf> $$0) {
+      return $$1 -> new etd($$0, $$1);
+   }
+
+   public static Function<etl.a, eth> b(List<Function<etl.a, ? extends etj>> $$0) {
+      return $$1 -> new eth($$0.stream().map($$1x -> (etj)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
    }
 }

@@ -1,98 +1,143 @@
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public record eya(arq d, ffc e, ffc f, float g, float h, boolean i, boolean j, Set<bxx> k, eya.a l) {
-   public static final eya.a a = $$0 -> {
-   };
-   public static final eya.a b = eya::a;
-   public static final eya.a c = eya::b;
+public class eya {
+   public final int a;
+   public final int b;
+   public final int c;
+   private final int m;
+   public int d = -1;
+   public float e;
+   public float f;
+   public float g;
+   @Nullable
+   public eya h;
+   public boolean i;
+   public float j;
+   public float k;
+   public eyf l = eyf.a;
 
-   public eya(arq $$0, ffc $$1, ffc $$2, float $$3, float $$4, eya.a $$5) {
-      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
+   public eya(int $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.m = b($$0, $$1, $$2);
    }
 
-   public eya(arq $$0, ffc $$1, ffc $$2, float $$3, float $$4, Set<bxx> $$5, eya.a $$6) {
-      this($$0, $$1, $$2, $$3, $$4, false, false, $$5, $$6);
+   public eya a(int $$0, int $$1, int $$2) {
+      eya $$3 = new eya($$0, $$1, $$2);
+      $$3.d = this.d;
+      $$3.e = this.e;
+      $$3.f = this.f;
+      $$3.g = this.g;
+      $$3.h = this.h;
+      $$3.i = this.i;
+      $$3.j = this.j;
+      $$3.k = this.k;
+      $$3.l = this.l;
+      return $$3;
    }
 
-   public eya(arq $$0, bwi $$1, eya.a $$2) {
-      this($$0, a($$0, $$1), ffc.c, 0.0F, 0.0F, false, false, Set.of(), $$2);
+   public static int b(int $$0, int $$1, int $$2) {
+      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
    }
 
-   private static void a(bwi $$0) {
-      if ($$0 instanceof arr $$1) {
-         $$1.f.b(new adh(1032, iv.c, 0, false));
-      }
+   public float a(eya $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return azo.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
    }
 
-   private static void b(bwi $$0) {
-      $$0.f(iv.a((jp)$$0.ds()));
+   public float b(eya $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.c - this.c);
+      return azo.c($$1 * $$1 + $$2 * $$2);
    }
 
-   public static eya a(arq $$0, bwi $$1, eya.a $$2) {
-      return new eya($$0, a($$0, $$1), ffc.c, 0.0F, 0.0F, true, false, Set.of(), $$2);
+   public float a(iv $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return azo.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
    }
 
-   private static ffc a(arq $$0, bwi $$1) {
-      return $$1.a($$0, $$0.aa()).c();
+   public float c(eya $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   public eya a(float $$0, float $$1) {
-      return new eya(this.b(), this.c(), this.d(), $$0, $$1, this.g(), this.h(), this.i(), this.j());
+   public float b(iv $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   public eya a(ffc $$0) {
-      return new eya(this.b(), $$0, this.d(), this.e(), this.f(), this.g(), this.h(), this.i(), this.j());
+   public float d(eya $$0) {
+      float $$1 = (float)Math.abs($$0.a - this.a);
+      float $$2 = (float)Math.abs($$0.b - this.b);
+      float $$3 = (float)Math.abs($$0.c - this.c);
+      return $$1 + $$2 + $$3;
    }
 
-   public eya a() {
-      return new eya(this.b(), this.c(), this.d(), this.e(), this.f(), this.g(), true, this.i(), this.j());
+   public float c(iv $$0) {
+      float $$1 = (float)Math.abs($$0.u() - this.a);
+      float $$2 = (float)Math.abs($$0.v() - this.b);
+      float $$3 = (float)Math.abs($$0.w() - this.c);
+      return $$1 + $$2 + $$3;
    }
 
-   public arq b() {
-      return this.d;
+   public iv a() {
+      return new iv(this.a, this.b, this.c);
    }
 
-   public ffc c() {
-      return this.e;
+   public ffq b() {
+      return new ffq((double)this.a, (double)this.b, (double)this.c);
    }
 
-   public ffc d() {
-      return this.f;
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof eya $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
    }
 
-   public float e() {
-      return this.g;
+   @Override
+   public int hashCode() {
+      return this.m;
    }
 
-   public float f() {
-      return this.h;
+   public boolean c() {
+      return this.d >= 0;
    }
 
-   public boolean g() {
-      return this.i;
+   @Override
+   public String toString() {
+      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
    }
 
-   public boolean h() {
-      return this.j;
+   public void a(vw $$0) {
+      $$0.q(this.a);
+      $$0.q(this.b);
+      $$0.q(this.c);
+      $$0.a(this.j);
+      $$0.a(this.k);
+      $$0.a(this.i);
+      $$0.a(this.l);
+      $$0.a(this.g);
    }
 
-   public Set<bxx> i() {
-      return this.k;
+   public static eya b(vw $$0) {
+      eya $$1 = new eya($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 
-   public eya.a j() {
-      return this.l;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void onTransition(bwi var1);
-
-      default eya.a then(eya.a $$0) {
-         return $$1 -> {
-            this.onTransition($$1);
-            $$0.onTransition($$1);
-         };
-      }
+   protected static void a(vw $$0, eya $$1) {
+      $$1.j = $$0.readFloat();
+      $$1.k = $$0.readFloat();
+      $$1.i = $$0.readBoolean();
+      $$1.l = $$0.b(eyf.class);
+      $$1.g = $$0.readFloat();
    }
 }

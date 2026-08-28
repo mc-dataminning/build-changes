@@ -1,20 +1,28 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record enx(eod b, float c) {
-   public static final Codec<enx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eod.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, enx::new)
-   );
+public class enx extends enw {
+   public static final MapCodec<enx> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, enx::new));
 
-   public eod a() {
-      return this.b;
+   public enx(btw $$0, btw $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public float b() {
-      return this.c;
+   @Override
+   protected eoc<?> a() {
+      return eoc.e;
+   }
+
+   @Override
+   protected void a(dkd $$0, eob.b $$1, azx $$2, enl $$3, int $$4, eob.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + $$5.b() - 1 - $$9;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
+   }
+
+   @Override
+   protected boolean a(azx $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

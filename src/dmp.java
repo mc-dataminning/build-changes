@@ -1,101 +1,182 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 import java.util.Optional;
 
-public class dmp extends dqs implements dmu, duc {
-   public static final MapCodec<dmp> a = b(dmp::new);
-   private static final ebk b = ebj.I;
-   private static final Map<jb, ffw> c = fft.c(dmr.b(6.0, 0.0, 16.0).a(0.0, 0.0, 0.25).d());
+public abstract class dmp extends dnc {
+   private static final int b = 8;
+   private static final int c = 1;
+   private static final int d = 3;
+   private final float e;
+   protected static final fgk a = dnc.b(16.0, 0.0, 1.0);
+
+   public dmp(ebd.d $$0, float $$1) {
+      super($$0);
+      this.e = $$1;
+   }
 
    @Override
-   public MapCodec<dmp> a() {
+   protected abstract MapCodec<? extends dmp> a();
+
+   @Override
+   public ebe a(ddr $$0) {
+      return a($$0.q(), $$0.a());
+   }
+
+   public static ebe a(djb $$0, iv $$1) {
+      iv $$2 = $$1.e();
+      ebe $$3 = $$0.a_($$2);
+      return dux.o($$3) ? dne.cC.m() : ((dqe)dne.cB).b($$0, $$1);
+   }
+
+   @Override
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
       return a;
    }
 
-   protected dmp(eas.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(false)).b(e, jb.c));
-   }
-
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return c.get($$0.c(e));
-   }
-
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(b, e);
-   }
-
-   @Override
-   protected exa b_(eat $$0) {
-      return $$0.c(b) ? exb.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(eat $$0, djp $$1, iv $$2) {
-      iv $$3 = $$2.e();
-      eat $$4 = $$1.a_($$3);
-      eat $$5 = $$1.a_($$2.d());
-      return ($$4.a(this) || $$4.a(axc.bB)) && ($$5.a(this) || $$5.a(dmt.tn));
-   }
-
-   protected static boolean a(djn $$0, iv $$1, exa $$2, jb $$3) {
-      eat $$4 = dmt.to.m().b(b, Boolean.valueOf($$2.a(exb.c))).b(e, $$3);
-      return $$0.a($$1, $$4, 3);
-   }
-
-   @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      if (($$4 == jb.a || $$4 == jb.b) && !$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
+   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
+      if ($$3.a(24) == 0) {
+         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, awp.jx, awq.e, 1.0F + $$3.i(), $$3.i() * 0.7F + 0.3F, false);
       }
 
-      if ($$0.c(b)) {
-         $$2.a($$3, exb.c, exb.c.a($$1));
-      }
+      iv $$4 = $$2.e();
+      ebe $$5 = $$1.a_($$4);
+      if (!this.g($$5) && !$$5.c($$1, $$4, jb.b)) {
+         if (this.g($$1.a_($$2.h()))) {
+            for (int $$10 = 0; $$10 < 2; $$10++) {
+               double $$11 = (double)$$2.u() + $$3.j() * 0.1F;
+               double $$12 = (double)$$2.v() + $$3.j();
+               double $$13 = (double)$$2.w() + $$3.j();
+               $$1.a(ly.aa, $$11, $$12, $$13, 0.0, 0.0, 0.0);
+            }
+         }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         if (this.g($$1.a_($$2.i()))) {
+            for (int $$14 = 0; $$14 < 2; $$14++) {
+               double $$15 = (double)($$2.u() + 1) - $$3.j() * 0.1F;
+               double $$16 = (double)$$2.v() + $$3.j();
+               double $$17 = (double)$$2.w() + $$3.j();
+               $$1.a(ly.aa, $$15, $$16, $$17, 0.0, 0.0, 0.0);
+            }
+         }
+
+         if (this.g($$1.a_($$2.f()))) {
+            for (int $$18 = 0; $$18 < 2; $$18++) {
+               double $$19 = (double)$$2.u() + $$3.j();
+               double $$20 = (double)$$2.v() + $$3.j();
+               double $$21 = (double)$$2.w() + $$3.j() * 0.1F;
+               $$1.a(ly.aa, $$19, $$20, $$21, 0.0, 0.0, 0.0);
+            }
+         }
+
+         if (this.g($$1.a_($$2.g()))) {
+            for (int $$22 = 0; $$22 < 2; $$22++) {
+               double $$23 = (double)$$2.u() + $$3.j();
+               double $$24 = (double)$$2.v() + $$3.j();
+               double $$25 = (double)($$2.w() + 1) - $$3.j() * 0.1F;
+               $$1.a(ly.aa, $$23, $$24, $$25, 0.0, 0.0, 0.0);
+            }
+         }
+
+         if (this.g($$1.a_($$2.d()))) {
+            for (int $$26 = 0; $$26 < 2; $$26++) {
+               double $$27 = (double)$$2.u() + $$3.j();
+               double $$28 = (double)($$2.v() + 1) - $$3.j() * 0.1F;
+               double $$29 = (double)$$2.w() + $$3.j();
+               $$1.a(ly.aa, $$27, $$28, $$29, 0.0, 0.0, 0.0);
+            }
+         }
+      } else {
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            double $$7 = (double)$$2.u() + $$3.j();
+            double $$8 = (double)$$2.v() + $$3.j() * 0.5 + 0.5;
+            double $$9 = (double)$$2.w() + $$3.j();
+            $$1.a(ly.aa, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+         }
+      }
+   }
+
+   protected abstract boolean g(ebe var1);
+
+   @Override
+   protected void a(ebe $$0, djx $$1, iv $$2, bwt $$3, bxm $$4) {
+      $$4.a(bxn.b);
+      $$4.b(bxn.b, $$0x -> $$0x.a($$0x.dV().al().a(), this.e));
+   }
+
+   public static void a(bwt $$0) {
+      if (!$$0.bh()) {
+         if ($$0.aE() < 0) {
+            $$0.h($$0.aE() + 1);
+         } else if ($$0 instanceof art) {
+            int $$1 = $$0.dV().G_().b(1, 3);
+            $$0.h($$0.aE() + $$1);
+         }
+
+         if ($$0.aE() >= 0) {
+            $$0.e(8.0F);
+         }
+      }
    }
 
    @Override
-   protected void a(eat $$0, arq $$1, iv $$2, azv $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   protected void a(ebe $$0, djx $$1, iv $$2, ebe $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         if (a($$1)) {
+            Optional<eyn> $$5 = eyn.a((djy)$$1, $$2, jb.a.a);
+            if ($$5.isPresent()) {
+               $$5.get().a($$1);
+               return;
+            }
+         }
+
+         if (!$$0.a((dka)$$1, $$2)) {
+            $$1.a($$2, false);
+         }
       }
    }
 
+   private static boolean a(djx $$0) {
+      return $$0.aj() == djx.i || $$0.aj() == djx.j;
+   }
+
    @Override
-   public boolean a(djp $$0, iv $$1, eat $$2) {
-      Optional<iv> $$3 = m.a($$0, $$1, $$2.b(), jb.b, dmt.tn);
-      if ($$3.isEmpty()) {
+   protected void a(djx $$0, crx $$1, iv $$2, ebe $$3) {
+   }
+
+   @Override
+   public ebe a(djx $$0, iv $$1, ebe $$2, crx $$3) {
+      if (!$$0.A_()) {
+         $$0.a(null, 1009, $$1, 0);
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   public static boolean a(djx $$0, iv $$1, jb $$2) {
+      ebe $$3 = $$0.a_($$1);
+      return !$$3.l() ? false : a($$0, $$1).a((dka)$$0, $$1) || b($$0, $$1, $$2);
+   }
+
+   private static boolean b(djx $$0, iv $$1, jb $$2) {
+      if (!a($$0)) {
          return false;
       } else {
-         iv $$4 = $$3.get().d();
-         eat $$5 = $$0.a_($$4);
-         return dmo.a((djo)$$0, $$4, $$5);
+         iv.a $$3 = $$1.k();
+         boolean $$4 = false;
+
+         for (jb $$5 : jb.values()) {
+            if ($$0.a_($$3.g($$1).c($$5)).a(dne.cy)) {
+               $$4 = true;
+               break;
+            }
+         }
+
+         if (!$$4) {
+            return false;
+         } else {
+            jb.a $$6 = $$2.o().d() ? $$2.i().o() : jb.c.a.b($$0.A);
+            return eyn.a((djy)$$0, $$1, $$6).isPresent();
+         }
       }
-   }
-
-   @Override
-   public boolean a(djm $$0, azv $$1, iv $$2, eat $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iv $$2, eat $$3) {
-      Optional<iv> $$4 = m.a($$0, $$2, $$3.b(), jb.b, dmt.tn);
-      if (!$$4.isEmpty()) {
-         iv $$5 = $$4.get();
-         iv $$6 = $$5.d();
-         jb $$7 = $$3.c(e);
-         a($$0, $$5, $$0.b_($$5), $$7);
-         dmo.a($$0, $$6, $$0.b_($$6), $$7);
-      }
-   }
-
-   @Override
-   protected czn a(djp $$0, iv $$1, eat $$2, boolean $$3) {
-      return new czn(dmt.tn);
    }
 }

@@ -1,36 +1,48 @@
-import org.joml.Quaternionf;
+public class ght extends gia<hek> {
+   public static final gln a = gln.scaling(0.5F);
+   private final gle b;
+   private final gle c;
+   private final gle d;
 
-public class ght<T extends her> extends ghd<T> {
-   private static final String a = "cape";
-   private final gjt b = this.q.b("cape");
-
-   public ght(gjt $$0) {
+   public ght(gle $$0) {
       super($$0);
+      this.b = $$0.b("body");
+      this.c = this.b.b("tail");
+      this.d = this.c.b("tail_fin");
    }
 
-   public static gjz a() {
-      gkb $$0 = ghd.a(gjx.a, 0.0F);
-      gkd $$1 = $$0.a();
-      gkd $$2 = $$1.a("head");
-      $$2.a("hat");
-      gkd $$3 = $$1.a("body");
-      $$1.a("left_arm");
-      $$1.a("right_arm");
-      $$1.a("left_leg");
-      $$1.a("right_leg");
-      $$3.a("cape", gjy.c().a(0, 0).a(-5.0F, 0.0F, -1.0F, 10.0F, 16.0F, 1.0F, gjx.a, 1.0F, 0.5F), gjv.a(0.0F, 0.0F, 2.0F, 0.0F, (float) Math.PI, 0.0F));
-      return gjz.a($$0, 64, 64);
+   public static glk a() {
+      glm $$0 = new glm();
+      glo $$1 = $$0.a();
+      float $$2 = 18.0F;
+      float $$3 = -8.0F;
+      glo $$4 = $$1.a("body", glj.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), glg.a(0.0F, 22.0F, -5.0F));
+      $$4.a("back_fin", glj.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), glg.b((float) (Math.PI / 3), 0.0F, 0.0F));
+      $$4.a(
+         "left_fin",
+         glj.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         glg.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
+      );
+      $$4.a(
+         "right_fin",
+         glj.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         glg.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
+      );
+      glo $$5 = $$4.a("tail", glj.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), glg.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
+      $$5.a("tail_fin", glj.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), glg.a(0.0F, 0.0F, 9.0F));
+      glo $$6 = $$4.a("head", glj.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), glg.a(0.0F, -4.0F, -3.0F));
+      $$6.a("nose", glj.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), glg.a);
+      return glk.a($$0, 64, 64);
    }
 
-   public void a(T $$0) {
+   public void a(hek $$0) {
       super.a($$0);
-      this.b
-         .a(
-            new Quaternionf()
-               .rotateY((float) -Math.PI)
-               .rotateX((6.0F + $$0.c / 2.0F + $$0.b) * (float) (Math.PI / 180.0))
-               .rotateZ($$0.d / 2.0F * (float) (Math.PI / 180.0))
-               .rotateY((180.0F - $$0.d / 2.0F) * (float) (Math.PI / 180.0))
-         );
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
+      if ($$0.a) {
+         this.b.e = this.b.e + (-0.05F - 0.05F * azo.b($$0.u * 0.3F));
+         this.c.e = -0.1F * azo.b($$0.u * 0.3F);
+         this.d.e = -0.2F * azo.b($$0.u * 0.3F);
+      }
    }
 }

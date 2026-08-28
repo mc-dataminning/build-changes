@@ -1,53 +1,37 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import com.mojang.authlib.GameProfile;
+import java.net.SocketAddress;
+import javax.annotation.Nullable;
 
-public final class hpk extends hpi {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
+public class hpk extends avs {
+   @Nullable
+   private tz h;
+
+   public hpk(hpl $$0, jm<alr> $$1, ezy $$2) {
+      super($$0, $$1, $$2, 8);
+      this.a(10);
+   }
 
    @Override
-   public void a(hpc $$0) {
-      if (fpt.Q().C()) {
-         super.a($$0);
+   protected void b(art $$0) {
+      if (this.b().a($$0.gi())) {
+         this.h = $$0.h(new tz());
       }
-   }
 
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
+      super.b($$0);
    }
 
    @Override
-   public void f() {
-      this.b.add((long)fpt.Q().o());
-      this.h();
-      this.c.add(fpt.Q().p());
+   public xa a(SocketAddress $$0, GameProfile $$1) {
+      return (xa)(this.b().a($$1) && this.a($$1.getName()) != null ? xa.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
    }
 
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
+   public hpl b() {
+      return (hpl)super.c();
    }
 
+   @Nullable
    @Override
-   public void b(hpc $$0) {
-      $$0.send(hpd.c, $$0x -> {
-         $$0x.a(hpf.r, new LongArrayList(this.b));
-         $$0x.a(hpf.s, new LongArrayList(this.c));
-         $$0x.a(hpf.t, new LongArrayList(this.d));
-         $$0x.a(hpf.u, this.e());
-         $$0x.a(hpf.v, fpt.Q().n.aH());
-         $$0x.a(hpf.w, (int)a);
-      });
-      this.g();
-   }
-
-   private static long a(long $$0) {
-      return $$0 / 1000L;
+   public tz r() {
+      return this.h;
    }
 }

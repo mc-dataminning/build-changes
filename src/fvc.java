@@ -1,26 +1,35 @@
-import java.util.function.Consumer;
+public class fvc {
+   public static final ali a = ali.b("textures/gui/title/minecraft.png");
+   public static final ali b = ali.b("textures/gui/title/minceraft.png");
+   public static final ali c = ali.b("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)azx.a().i() < 1.0E-4;
+   private final boolean o;
 
-public class fvc implements fvd {
-   private final wy b;
-   protected final fwn a = new fwn();
-
-   public fvc(wy $$0) {
-      this.b = $$0;
+   public fvc(boolean $$0) {
+      this.o = $$0;
    }
 
-   @Override
-   public wy a() {
-      return this.b;
+   public void a(ftx $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   @Override
-   public void a(Consumer<fsy> $$0) {
-      this.a.a($$0);
-   }
-
-   @Override
-   public void a(fxh $$0) {
-      this.a.a();
-      fwm.a(this.a, $$0, 0.5F, 0.16666667F);
+   public void a(ftx $$0, int $$1, float $$2, int $$3) {
+      int $$4 = $$1 / 2 - 128;
+      float $$5 = this.o ? 1.0F : $$2;
+      int $$6 = axy.a($$5);
+      $$0.a(gsl::H, this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64, $$6);
+      int $$7 = $$1 / 2 - 64;
+      int $$8 = $$3 + 44 - 7;
+      $$0.a(gsl::H, c, $$7, $$8, 0.0F, 0.0F, 128, 14, 128, 16, $$6);
    }
 }

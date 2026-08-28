@@ -1,21 +1,20 @@
-public enum ecg implements bak {
-   a("none"),
-   b("low"),
-   c("tall");
+public enum ecg implements bam {
+   a("normal"),
+   b("sticky");
 
-   private final String d;
+   private final String c;
 
    private ecg(final String $$0) {
-      this.d = $$0;
+      this.c = $$0;
    }
 
    @Override
    public String toString() {
-      return this.c();
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.c;
    }
 }

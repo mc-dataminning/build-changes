@@ -1,72 +1,83 @@
 import java.util.EnumSet;
 import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cdx extends cef {
-   private static final int a = 40;
-   private static final Predicate<eat> b = $$0 -> $$0.a(axc.bd);
-   private final bxl c;
-   private final djm d;
-   private int e;
+public class cdx<T extends bxu> extends ceq {
+   protected final byc a;
+   private final double i;
+   private final double j;
+   @Nullable
+   protected T b;
+   protected final float c;
+   @Nullable
+   protected eyc d;
+   protected final che e;
+   protected final Class<T> f;
+   protected final Predicate<bxu> g;
+   protected final Predicate<bxu> h;
+   private final cij k;
 
-   public cdx(bxl $$0) {
-      this.c = $$0;
-      this.d = $$0.dU();
-      this.a(EnumSet.of(cef.a.a, cef.a.b, cef.a.c));
+   public cdx(byc $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bxa.e::test);
+   }
+
+   public cdx(byc $$0, Class<T> $$1, Predicate<bxu> $$2, float $$3, double $$4, double $$5, Predicate<bxu> $$6) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.h = $$6;
+      this.e = $$0.O();
+      this.a(EnumSet.of(ceq.a.a));
+      this.k = cij.a().a((double)$$3).a(($$2x, $$3x) -> $$6.test($$2x) && $$2.test($$2x));
+   }
+
+   public cdx(byc $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bxu> $$5) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
    }
 
    @Override
    public boolean b() {
-      if (this.c.dX().a(this.c.n_() ? 50 : 1000) != 0) {
+      this.b = a(this.a)
+         .a(this.a.dV().a(this.f, this.a.cR().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dA(), this.a.dC(), this.a.dG());
+      if (this.b == null) {
          return false;
       } else {
-         iv $$0 = this.c.du();
-         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.e()).a(dmt.i);
+         ffq $$0 = cin.a(this.a, 16, 7, this.b.dt());
+         if ($$0 == null) {
+            return false;
+         } else if (this.b.h($$0.d, $$0.e, $$0.f) < this.b.g(this.a)) {
+            return false;
+         } else {
+            this.d = this.e.a($$0.d, $$0.e, $$0.f, 0);
+            return this.d != null;
+         }
       }
    }
 
    @Override
+   public boolean c() {
+      return !this.e.k();
+   }
+
+   @Override
    public void d() {
-      this.e = this.a(40);
-      this.d.a(this.c, (byte)10);
-      this.c.O().m();
+      this.e.a(this.d, this.i);
    }
 
    @Override
    public void e() {
-      this.e = 0;
-   }
-
-   @Override
-   public boolean c() {
-      return this.e > 0;
-   }
-
-   public int h() {
-      return this.e;
+      this.b = null;
    }
 
    @Override
    public void a() {
-      this.e = Math.max(0, this.e - 1);
-      if (this.e == this.a(4)) {
-         iv $$0 = this.c.du();
-         if (b.test(this.d.a_($$0))) {
-            if (a(this.d).O().c(dji.d)) {
-               this.d.b($$0, false);
-            }
-
-            this.c.R();
-         } else {
-            iv $$1 = $$0.e();
-            if (this.d.a_($$1).a(dmt.i)) {
-               if (a(this.d).O().c(dji.d)) {
-                  this.d.c(2001, $$1, dmr.j(dmt.i.m()));
-                  this.d.a($$1, dmt.j.m(), 2);
-               }
-
-               this.c.R();
-            }
-         }
+      if (this.a.g((bwt)this.b) < 49.0) {
+         this.a.O().a(this.j);
+      } else {
+         this.a.O().a(this.i);
       }
    }
 }

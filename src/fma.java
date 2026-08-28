@@ -1,154 +1,392 @@
-import com.google.gson.JsonObject;
-import java.util.Objects;
+import com.google.common.hash.Hashing;
+import com.google.common.io.Files;
+import com.mojang.logging.LogUtils;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
+import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
+import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
+import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.output.CountingOutputStream;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.slf4j.Logger;
 
-public class fma extends fmi {
-   public final boolean a;
-   public final boolean b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final int f;
-   public final int g;
-   public final boolean h;
-   private final String n;
-   public final String i;
-   public final flu.a j;
-   public long k;
+public class fma {
+   static final Logger a = LogUtils.getLogger();
+   volatile boolean b;
+   volatile boolean c;
+   volatile boolean d;
+   volatile boolean e;
    @Nullable
-   public String l;
-   public boolean m;
-   private static final boolean o = false;
-   private static final boolean p = true;
-   private static final boolean q = true;
-   private static final int r = 0;
-   private static final boolean s = false;
-   private static final int t = 2;
-   private static final int u = 0;
-   private static final boolean v = false;
-   private static final String w = "";
-   private static final String x = "";
-   private static final flu.a y = flu.a.a;
-   private static final long z = -1L;
-   private static final String A = null;
+   private volatile File f;
+   volatile File g;
+   @Nullable
+   private volatile HttpGet h;
+   @Nullable
+   private Thread i;
+   private final RequestConfig j = RequestConfig.custom().setSocketTimeout(120000).setConnectTimeout(120000).build();
+   private static final String[] k = new String[]{
+      "CON",
+      "COM",
+      "PRN",
+      "AUX",
+      "CLOCK$",
+      "NUL",
+      "COM1",
+      "COM2",
+      "COM3",
+      "COM4",
+      "COM5",
+      "COM6",
+      "COM7",
+      "COM8",
+      "COM9",
+      "LPT1",
+      "LPT2",
+      "LPT3",
+      "LPT4",
+      "LPT5",
+      "LPT6",
+      "LPT7",
+      "LPT8",
+      "LPT9"
+   };
 
-   public fma(boolean $$0, boolean $$1, int $$2, boolean $$3, int $$4, int $$5, boolean $$6, boolean $$7, String $$8, String $$9, flu.a $$10) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.e = $$7;
-      this.n = $$8;
-      this.i = $$9;
-      this.j = $$10;
+   public long a(String $$0) {
+      CloseableHttpClient $$1 = null;
+      HttpGet $$2 = null;
+
+      long var5;
+      try {
+         $$2 = new HttpGet($$0);
+         $$1 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
+         CloseableHttpResponse $$3 = $$1.execute($$2);
+         return Long.parseLong($$3.getFirstHeader("Content-Length").getValue());
+      } catch (Throwable var16) {
+         a.error("Unable to get content length for download");
+         var5 = 0L;
+      } finally {
+         if ($$2 != null) {
+            $$2.releaseConnection();
+         }
+
+         if ($$1 != null) {
+            try {
+               $$1.close();
+            } catch (IOException var15) {
+               a.error("Could not close http client", var15);
+            }
+         }
+      }
+
+      return var5;
    }
 
-   public static fma a() {
-      return new fma(true, true, 0, false, 2, 0, false, false, "", "", y);
+   public void a(fnt $$0, String $$1, foq.a $$2, ezv $$3) {
+      if (this.i == null) {
+         this.i = new Thread(() -> {
+            CloseableHttpClient $$4 = null;
+
+            try {
+               this.f = File.createTempFile("backup", ".tar.gz");
+               this.h = new HttpGet($$0.a);
+               $$4 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
+               HttpResponse $$5 = $$4.execute(this.h);
+               $$2.b = Long.parseLong($$5.getFirstHeader("Content-Length").getValue());
+               if ($$5.getStatusLine().getStatusCode() == 200) {
+                  OutputStream $$12 = new FileOutputStream(this.f);
+                  fma.b $$13 = new fma.b($$1.trim(), this.f, $$3, $$2);
+                  fma.a $$14 = new fma.a($$12);
+                  $$14.a($$13);
+                  IOUtils.copy($$5.getEntity().getContent(), $$14);
+                  return;
+               }
+
+               this.d = true;
+               this.h.abort();
+            } catch (Exception var93) {
+               a.error("Caught exception while downloading: {}", var93.getMessage());
+               this.d = true;
+               return;
+            } finally {
+               this.h.releaseConnection();
+               if (this.f != null) {
+                  this.f.delete();
+               }
+
+               if (!this.d) {
+                  if (!$$0.b.isEmpty() && !$$0.c.isEmpty()) {
+                     try {
+                        this.f = File.createTempFile("resources", ".tar.gz");
+                        this.h = new HttpGet($$0.b);
+                        HttpResponse $$28 = $$4.execute(this.h);
+                        $$2.b = Long.parseLong($$28.getFirstHeader("Content-Length").getValue());
+                        if ($$28.getStatusLine().getStatusCode() != 200) {
+                           this.d = true;
+                           this.h.abort();
+                           return;
+                        }
+
+                        OutputStream $$29 = new FileOutputStream(this.f);
+                        fma.c $$30 = new fma.c(this.f, $$2, $$0);
+                        fma.a $$31 = new fma.a($$29);
+                        $$31.a($$30);
+                        IOUtils.copy($$28.getEntity().getContent(), $$31);
+                     } catch (Exception var91) {
+                        a.error("Caught exception while downloading: {}", var91.getMessage());
+                        this.d = true;
+                     } finally {
+                        this.h.releaseConnection();
+                        if (this.f != null) {
+                           this.f.delete();
+                        }
+                     }
+                  } else {
+                     this.c = true;
+                  }
+               }
+
+               if ($$4 != null) {
+                  try {
+                     $$4.close();
+                  } catch (IOException var90) {
+                     a.error("Failed to close Realms download client");
+                  }
+               }
+            }
+         });
+         this.i.setUncaughtExceptionHandler(new fnx(a));
+         this.i.start();
+      }
    }
 
-   public static fma a(djj $$0, boolean $$1, bud $$2, boolean $$3, String $$4, String $$5) {
-      return new fma(true, true, 0, $$1, $$2.a(), $$0.a(), $$3, false, $$5, $$4, y);
+   public void a() {
+      if (this.h != null) {
+         this.h.abort();
+      }
+
+      if (this.f != null) {
+         this.f.delete();
+      }
+
+      this.b = true;
    }
 
-   public static fma a(djq $$0, boolean $$1, String $$2) {
-      return a($$0.b(), $$1, $$0.d(), $$0.c(), $$2, $$0.a());
+   public boolean b() {
+      return this.c;
    }
 
-   public static fma b() {
-      fma $$0 = a();
-      $$0.a(true);
+   public boolean c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public static String b(String $$0) {
+      $$0 = $$0.replaceAll("[\\./\"]", "_");
+
+      for (String $$1 : k) {
+         if ($$0.equalsIgnoreCase($$1)) {
+            $$0 = "_" + $$0 + "_";
+         }
+      }
+
       return $$0;
    }
 
-   public void a(boolean $$0) {
-      this.m = $$0;
-   }
+   void a(String $$0, @Nullable File $$1, ezv $$2) throws IOException {
+      Pattern $$3 = Pattern.compile(".*-([0-9]+)$");
+      int $$4 = 1;
 
-   public static fma a(JsonObject $$0, fly $$1) {
-      fma $$2 = new fma(
-         foe.a("pvp", $$0, true),
-         foe.a("spawnMonsters", $$0, true),
-         foe.a("spawnProtection", $$0, 0),
-         foe.a("commandBlocks", $$0, false),
-         foe.a("difficulty", $$0, 2),
-         foe.a("gameMode", $$0, 0),
-         $$1.a(),
-         foe.a("forceGameMode", $$0, false),
-         foe.a("slotName", $$0, ""),
-         foe.a("version", $$0, ""),
-         flu.d(foe.a("compatibility", $$0, flu.a.a.name()))
-      );
-      $$2.k = foe.a("worldTemplateId", $$0, -1L);
-      $$2.l = foe.b("worldTemplateImage", $$0, A);
-      return $$2;
-   }
+      for (char $$5 : ac.bc) {
+         $$0 = $$0.replace($$5, '_');
+      }
 
-   public String a(int $$0) {
-      if (bal.h(this.n)) {
-         return this.m ? hky.a("mco.configure.world.slot.empty") : this.b($$0);
+      if (StringUtils.isEmpty($$0)) {
+         $$0 = "Realm";
+      }
+
+      $$0 = b($$0);
+
+      try {
+         for (ezv.b $$6 : $$2.b()) {
+            String $$7 = $$6.a();
+            if ($$7.toLowerCase(Locale.ROOT).startsWith($$0.toLowerCase(Locale.ROOT))) {
+               Matcher $$8 = $$3.matcher($$7);
+               if ($$8.matches()) {
+                  int $$9 = Integer.parseInt($$8.group(1));
+                  if ($$9 > $$4) {
+                     $$4 = $$9;
+                  }
+               } else {
+                  $$4++;
+               }
+            }
+         }
+      } catch (Exception var43) {
+         a.error("Error getting level list", var43);
+         this.d = true;
+         return;
+      }
+
+      String $$13;
+      if ($$2.a($$0) && $$4 <= 1) {
+         $$13 = $$0;
       } else {
-         return this.n;
+         $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
+         if (!$$2.a($$13)) {
+            boolean $$12 = false;
+
+            while (!$$12) {
+               $$4++;
+               $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
+               if ($$2.a($$13)) {
+                  $$12 = true;
+               }
+            }
+         }
+      }
+
+      TarArchiveInputStream $$14 = null;
+      File $$15 = new File(frd.Q().q.getAbsolutePath(), "saves");
+
+      try {
+         $$15.mkdir();
+         $$14 = new TarArchiveInputStream(new GzipCompressorInputStream(new BufferedInputStream(new FileInputStream($$1))));
+
+         for (TarArchiveEntry $$16 = $$14.getNextTarEntry(); $$16 != null; $$16 = $$14.getNextTarEntry()) {
+            File $$17 = new File($$15, $$16.getName().replace("world", $$13));
+            if ($$16.isDirectory()) {
+               $$17.mkdirs();
+            } else {
+               $$17.createNewFile();
+
+               try (FileOutputStream $$18 = new FileOutputStream($$17)) {
+                  IOUtils.copy($$14, $$18);
+               }
+            }
+         }
+      } catch (Exception var41) {
+         a.error("Error extracting world", var41);
+         this.d = true;
+      } finally {
+         if ($$14 != null) {
+            $$14.close();
+         }
+
+         if ($$1 != null) {
+            $$1.delete();
+         }
+
+         try (ezv.c $$26 = $$2.d($$13)) {
+            $$26.b($$13);
+         } catch (uk | ur | IOException var39) {
+            a.error("Failed to modify unpacked realms level {}", $$13, var39);
+         } catch (fff var40) {
+            a.warn("{}", var40.getMessage());
+         }
+
+         this.g = new File($$15, $$13 + File.separator + "resources.zip");
       }
    }
 
-   public String b(int $$0) {
-      return hky.a("mco.configure.world.slot", $$0);
+   static class a extends CountingOutputStream {
+      @Nullable
+      private ActionListener a;
+
+      public a(OutputStream $$0) {
+         super($$0);
+      }
+
+      public void a(ActionListener $$0) {
+         this.a = $$0;
+      }
+
+      protected void afterWrite(int $$0) throws IOException {
+         super.afterWrite($$0);
+         if (this.a != null) {
+            this.a.actionPerformed(new ActionEvent(this, 0, null));
+         }
+      }
    }
 
-   public String c() {
-      JsonObject $$0 = new JsonObject();
-      if (!this.a) {
-         $$0.addProperty("pvp", this.a);
+   class b implements ActionListener {
+      private final String b;
+      private final File c;
+      private final ezv d;
+      private final foq.a e;
+
+      b(final String $$0, final File $$1, final ezv $$2, final foq.a $$3) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
       }
 
-      if (!this.b) {
-         $$0.addProperty("spawnMonsters", this.b);
+      @Override
+      public void actionPerformed(ActionEvent $$0) {
+         this.e.a = ((fma.a)$$0.getSource()).getByteCount();
+         if (this.e.a >= this.e.b && !fma.this.b && !fma.this.d) {
+            try {
+               fma.this.e = true;
+               fma.this.a(this.b, this.c, this.d);
+            } catch (IOException var3) {
+               fma.a.error("Error extracting archive", var3);
+               fma.this.d = true;
+            }
+         }
       }
-
-      if (this.c != 0) {
-         $$0.addProperty("spawnProtection", this.c);
-      }
-
-      if (this.d) {
-         $$0.addProperty("commandBlocks", this.d);
-      }
-
-      if (this.f != 2) {
-         $$0.addProperty("difficulty", this.f);
-      }
-
-      if (this.g != 0) {
-         $$0.addProperty("gameMode", this.g);
-      }
-
-      if (this.h) {
-         $$0.addProperty("hardcore", this.h);
-      }
-
-      if (this.e) {
-         $$0.addProperty("forceGameMode", this.e);
-      }
-
-      if (!Objects.equals(this.n, "")) {
-         $$0.addProperty("slotName", this.n);
-      }
-
-      if (!Objects.equals(this.i, "")) {
-         $$0.addProperty("version", this.i);
-      }
-
-      if (this.j != y) {
-         $$0.addProperty("compatibility", this.j.name());
-      }
-
-      return $$0.toString();
    }
 
-   public fma d() {
-      return new fma(this.a, this.b, this.c, this.d, this.f, this.g, this.h, this.e, this.n, this.i, this.j);
+   class c implements ActionListener {
+      private final File b;
+      private final foq.a c;
+      private final fnt d;
+
+      c(final File $$0, final foq.a $$1, final fnt $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      @Override
+      public void actionPerformed(ActionEvent $$0) {
+         this.c.a = ((fma.a)$$0.getSource()).getByteCount();
+         if (this.c.a >= this.c.b && !fma.this.b) {
+            try {
+               String $$1 = Hashing.sha1().hashBytes(Files.toByteArray(this.b)).toString();
+               if ($$1.equals(this.d.c)) {
+                  FileUtils.copyFile(this.b, fma.this.g);
+                  fma.this.c = true;
+               } else {
+                  fma.a.error("Resourcepack had wrong hash (expected {}, found {}). Deleting it.", this.d.c, $$1);
+                  FileUtils.deleteQuietly(this.b);
+                  fma.this.d = true;
+               }
+            } catch (IOException var3) {
+               fma.a.error("Error copying resourcepack file: {}", var3.getMessage());
+               fma.this.d = true;
+            }
+         }
+      }
    }
 }

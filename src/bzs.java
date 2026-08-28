@@ -1,41 +1,34 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
 
-public class bzs extends bza<cqy> {
-   private static final int d = 1200;
-   final float c;
+public class bzs extends bzl<clh> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
 
-   public bzs(float $$0) {
-      super(ImmutableMap.of(cgl.d, cgm.a), 1200);
-      this.c = $$0;
+   public bzs() {
+      super(ImmutableMap.of(cgw.n, cgx.b), 100);
    }
 
-   protected boolean a(arq $$0, cqy $$1) {
-      return $$1.eb().g().map($$0x -> $$0x == ctg.b || $$0x == ctg.c || $$0x == ctg.d).orElse(true);
+   protected boolean a(ars $$0, clh $$1) {
+      return $$1.at() == byg.a;
    }
 
-   protected boolean a(arq $$0, cqy $$1, long $$2) {
-      return $$1.eb().a(cgl.d);
+   protected boolean a(ars $$0, clh $$1, long $$2) {
+      return this.e < 60;
    }
 
-   protected void b(arq $$0, cqy $$1, long $$2) {
-      bzc.a($$1, $$1.eb().c(cgl.d).get().b(), this.c, 1);
+   protected void b(ars $$0, clh $$1, long $$2) {
+      if (!$$1.bl()) {
+         $$1.b(byg.i);
+         this.e = 0;
+      }
    }
 
-   protected void c(arq $$0, cqy $$1, long $$2) {
-      Optional<je> $$3 = $$1.eb().c(cgl.d);
-      $$3.ifPresent($$1x -> {
-         iv $$2x = $$1x.b();
-         arq $$3x = $$0.p().a($$1x.a());
-         if ($$3x != null) {
-            cil $$4 = $$3x.A();
-            if ($$4.a($$2x, $$0xx -> true)) {
-               $$4.b($$2x);
-            }
+   protected void c(ars $$0, clh $$1, long $$2) {
+      $$1.b(byg.a);
+   }
 
-            agm.c($$0, $$2x);
-         }
-      });
-      $$1.eb().b(cgl.d);
+   protected void d(ars $$0, clh $$1, long $$2) {
+      this.e++;
    }
 }

@@ -1,22 +1,25 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+public class chk extends chw {
+   public static final float a = 8.0F;
 
-public class chk<T extends bxj> extends chr<T> {
    @Override
-   protected void a(arq $$0, T $$1) {
-      double $$2 = $$1.h(byp.m);
-      fex $$3 = $$1.cQ().c($$2, $$2, $$2);
-      List<bxj> $$4 = $$0.a(bxj.class, $$3, $$1x -> $$1x != $$1 && $$1x.bI());
-      $$4.sort(Comparator.comparingDouble($$1::g));
-      byj<?> $$5 = $$1.eb();
-      $$5.a(cgl.g, $$4);
-      $$5.a(cgl.h, new cgn($$0, $$1, $$4));
+   protected boolean a(ars $$0, bxu $$1, bxu $$2) {
+      return this.b($$1, $$2) && $$2.bi() && (this.b($$2) || this.a($$1, $$2)) && cic.c($$0, $$1, $$2);
+   }
+
+   private boolean a(bxu $$0, bxu $$1) {
+      return !$$0.ec().a(cgw.V) && $$1.an().a(axh.j);
+   }
+
+   private boolean b(bxu $$0) {
+      return $$0.an().a(axh.i);
+   }
+
+   private boolean b(bxu $$0, bxu $$1) {
+      return $$1.g($$0) <= 64.0;
    }
 
    @Override
-   public Set<cgl<?>> a() {
-      return ImmutableSet.of(cgl.g, cgl.h);
+   protected cgw<bxu> b() {
+      return cgw.C;
    }
 }

@@ -1,27 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.PrimitiveCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public record hic(String c) implements hig<String> {
-   public static final PrimitiveCodec<String> a = Codec.STRING;
-   public static final hig.a<hic, String> b = hig.a.a(
-      RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block_state_property").forGetter(hic::c)).apply($$0, hic::new)), a
-   );
+public class hic {
+   private static final ayw.b<ali, MapCodec<? extends hid>> b = new ayw.b<>();
+   public static final MapCodec<hid> a = b.a(ali.a).dispatchMap("property", hid::a, $$0 -> $$0);
 
-   @Nullable
-   public String a(czn $$0, @Nullable gkq $$1, @Nullable bxj $$2, int $$3, czl $$4) {
-      dbn $$5 = $$0.a(kk.aq);
-      return $$5 == null ? null : $$5.b().get(this.c);
-   }
-
-   @Override
-   public hig.a<hic, String> a() {
-      return b;
-   }
-
-   @Override
-   public Codec<String> b() {
-      return a;
+   public static void a() {
+      b.a(ali.b("custom_model_data"), hie.a);
+      b.a(ali.b("using_item"), him.a);
+      b.a(ali.b("broken"), hhz.a);
+      b.a(ali.b("damaged"), hif.a);
+      b.a(ali.b("fishing_rod/cast"), hih.a);
+      b.a(ali.b("has_component"), hii.a);
+      b.a(ali.b("bundle/has_selected_item"), hia.a);
+      b.a(ali.b("selected"), hil.a);
+      b.a(ali.b("carried"), hij.a);
+      b.a(ali.b("extended_view"), hig.a);
+      b.a(ali.b("keybind_down"), hik.a);
+      b.a(ali.b("view_entity"), hin.a);
+      b.a(ali.b("component"), hib.a);
    }
 }

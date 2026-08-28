@@ -1,20 +1,42 @@
-public record agy(xp.a b) implements zf<agp> {
-   public static final yw<vu, agy> a = zf.a(agy::a, agy::new);
+import java.time.Instant;
 
-   private agy(vu $$0) {
-      this(xp.a.a($$0));
+public record agy(String b, Instant c, long d, eq e, xh.b f) implements zh<agr> {
+   public static final yy<vw, agy> a = zh.a(agy::a, agy::new);
+
+   private agy(vw $$0) {
+      this($$0.p(), $$0.t(), $$0.readLong(), new eq($$0), new xh.b($$0));
    }
 
-   private void a(vu $$0) {
-      xp.a.a($$0, this.b);
+   private void a(vw $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      this.e.a($$0);
+      this.f.a($$0);
    }
 
    @Override
-   public zh<agy> a() {
-      return agn.bs;
+   public zj<agy> a() {
+      return agp.bq;
    }
 
-   public void a(agp $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
+   }
+
+   public Instant e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
+   }
+
+   public eq g() {
+      return this.e;
+   }
+
+   public xh.b h() {
+      return this.f;
    }
 }

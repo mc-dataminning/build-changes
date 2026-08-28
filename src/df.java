@@ -16,8 +16,8 @@ public record df(boolean d, boolean e) implements bz {
    }
 
    @Override
-   public boolean a(bwi $$0, arq $$1, @Nullable ffc $$2) {
-      return !($$0 instanceof ctd $$3) ? false : $$3.gG() == this.d && $$3.gF() == this.e;
+   public boolean a(bwt $$0, ars $$1, @Nullable ffq $$2) {
+      return !($$0 instanceof cto $$3) ? false : $$3.gH() == this.d && $$3.gG() == this.e;
    }
 
    public boolean b() {

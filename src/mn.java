@@ -32,7 +32,7 @@ public interface mn {
 
    String a();
 
-   static <T> CompletableFuture<?> a(ml $$0, Codec<T> $$1, mp.a $$2, Map<alg, T> $$3) {
+   static <T> CompletableFuture<?> a(ml $$0, Codec<T> $$1, mp.a $$2, Map<ali, T> $$3) {
       return a($$0, $$1, $$2::a, $$3);
    }
 
@@ -49,7 +49,7 @@ public interface mn {
    }
 
    static <T> CompletableFuture<?> a(ml $$0, jh.a $$1, Codec<T> $$2, T $$3, Path $$4) {
-      ale<JsonElement> $$5 = $$1.a(JsonOps.INSTANCE);
+      alg<JsonElement> $$5 = $$1.a(JsonOps.INSTANCE);
       return a($$0, $$5, $$2, $$3, $$4);
    }
 
@@ -72,7 +72,7 @@ public interface mn {
             try {
                $$5.setSerializeNulls(false);
                $$5.setIndent("  ");
-               azc.a($$5, $$1, b);
+               aze.a($$5, $$1, b);
             } catch (Throwable var9) {
                try {
                   $$5.close();

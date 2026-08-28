@@ -1,44 +1,48 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.List;
+public class gbb extends gas<cvx> {
+   private static final ali G = ali.b("container/brewing_stand/fuel_length");
+   private static final ali H = ali.b("container/brewing_stand/brew_progress");
+   private static final ali I = ali.b("container/brewing_stand/bubbles");
+   private static final ali J = ali.b("textures/gui/container/brewing_stand.png");
+   private static final int[] K = new int[]{29, 24, 20, 16, 11, 6, 0};
 
-public class gbb implements gbe {
-   private static final int a = 10;
-   private static final int b = 2;
-   private final List<ProfileResult> c;
-
-   public gbb(gbb.a $$0) {
-      this.c = $$0.a();
+   public gbb(cvx $$0, crw $$1, xa $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public int a(fsk $$0) {
-      return this.c.size() * 12 + 2;
+   protected void aS_() {
+      super.aS_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
    @Override
-   public int b(fsk $$0) {
-      int $$1 = 0;
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
 
-      for (ProfileResult $$2 : this.c) {
-         int $$3 = $$0.b($$2.profile().getName());
-         if ($$3 > $$1) {
-            $$1 = $$3;
+   @Override
+   protected void a(ftx $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gsl::H, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      int $$6 = this.z.l();
+      int $$7 = azo.a((18 * $$6 + 20 - 1) / 20, 0, 18);
+      if ($$7 > 0) {
+         $$0.a(gsl::H, G, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+      }
+
+      int $$8 = this.z.m();
+      if ($$8 > 0) {
+         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
+         if ($$9 > 0) {
+            $$0.a(gsl::H, H, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
+         }
+
+         $$9 = K[$$8 / 2 % 7];
+         if ($$9 > 0) {
+            $$0.a(gsl::H, I, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
          }
       }
-
-      return $$1 + 10 + 6;
-   }
-
-   @Override
-   public void a(fsk $$0, int $$1, int $$2, int $$3, int $$4, fsm $$5) {
-      for (int $$6 = 0; $$6 < this.c.size(); $$6++) {
-         ProfileResult $$7 = this.c.get($$6);
-         int $$8 = $$2 + 2 + $$6 * 12;
-         ftz.a($$5, fpt.Q().an().b($$7.profile()), $$1 + 2, $$8, 10);
-         $$5.b($$0, $$7.profile().getName(), $$1 + 10 + 4, $$8 + 2, -1);
-      }
-   }
-
-   public static record a(List<ProfileResult> a) implements cxm {
    }
 }

@@ -1,13 +1,38 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
 public class cib {
-   @Nullable
-   public static ffc a(bxr $$0, int $$1, int $$2, int $$3, ffc $$4, double $$5) {
-      ffc $$6 = $$4.a($$0.dz(), $$0.dB(), $$0.dF());
-      boolean $$7 = cid.a($$0, $$1);
-      return cig.a($$0, () -> {
-         iv $$7x = cia.a($$0, $$1, $$2, $$3, $$6.d, $$6.f, $$5, $$7);
-         return $$7x != null && !cid.a($$0, $$7x) ? $$7x : null;
-      });
+   private final bxw a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
+
+   public cib(bxw $$0) {
+      this.a = $$0;
+   }
+
+   public void a() {
+      this.b.clear();
+      this.c.clear();
+   }
+
+   public boolean a(bwt $$0) {
+      int $$1 = $$0.ao();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
+      } else {
+         brb $$2 = bra.a();
+         $$2.a("hasLineOfSight");
+         boolean $$3 = this.a.E($$0);
+         $$2.c();
+         if ($$3) {
+            this.b.add($$1);
+         } else {
+            this.c.add($$1);
+         }
+
+         return $$3;
+      }
    }
 }

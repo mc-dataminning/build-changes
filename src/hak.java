@@ -1,13 +1,21 @@
-public class hak extends hbm<hcs, gfv> {
-   private static final grc a = grc.r(alg.b("textures/entity/breeze/breeze_eyes.png"));
+public class hak extends gzo<cpg, hfp, gjv> {
+   private static final ali a = ali.b("textures/entity/silverfish.png");
 
-   public hak(gyv<hcs, gfv> $$0) {
-      super($$0);
+   public hak(gyi.a $$0) {
+      super($$0, new gjv($$0.a(gld.cX)), 0.3F);
    }
 
-   public void a(fkd $$0, gqr $$1, int $$2, hcs $$3, float $$4, float $$5) {
-      fkh $$6 = $$1.getBuffer(a);
-      gfv $$7 = this.d();
-      gwd.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hjg.d);
+   @Override
+   protected float aW_() {
+      return 180.0F;
+   }
+
+   @Override
+   public ali b(hfp $$0) {
+      return a;
+   }
+
+   public hfp b() {
+      return new hfp();
    }
 }

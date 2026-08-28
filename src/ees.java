@@ -1,91 +1,110 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public enum ees {
-   a {
-      @Override
-      public void a(arq $$0, eet $$1, List<cmj> $$2, int $$3, iv $$4) {
-         iv $$5 = new iv(0, 128, 0);
+public final class ees implements AutoCloseable {
+   public static final String a = ".mca";
+   private static final int b = 256;
+   private final Long2ObjectLinkedOpenHashMap<eer> c = new Long2ObjectLinkedOpenHashMap();
+   private final eeu d;
+   private final Path e;
+   private final boolean f;
 
-         for (cmj $$6 : $$2) {
-            $$6.a($$5);
+   ees(eeu $$0, Path $$1, boolean $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.d = $$0;
+   }
+
+   private eer b(djc $$0) throws IOException {
+      long $$1 = djc.c($$0.h(), $$0.i());
+      eer $$2 = (eer)this.c.getAndMoveToFirst($$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         if (this.c.size() >= 256) {
+            ((eer)this.c.removeLast()).close();
          }
 
-         $$1.a(b);
+         w.c(this.e);
+         Path $$3 = this.e.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
+         eer $$4 = new eer(this.d, $$3, this.e, this.f);
+         this.c.putAndMoveToFirst($$1, $$4);
+         return $$4;
       }
-   },
-   b {
-      @Override
-      public void a(arq $$0, eet $$1, List<cmj> $$2, int $$3, iv $$4) {
-         if ($$3 < 100) {
-            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
-               $$0.c(3001, new iv(0, 128, 0), 0);
-            }
-         } else {
-            $$1.a(c);
+   }
+
+   @Nullable
+   public tz a(djc $$0) throws IOException {
+      eer $$1 = this.b($$0);
+
+      tz var4;
+      try (DataInputStream $$2 = $$1.a($$0)) {
+         if ($$2 == null) {
+            return null;
+         }
+
+         var4 = um.a($$2);
+      }
+
+      return var4;
+   }
+
+   public void a(djc $$0, uv $$1) throws IOException {
+      eer $$2 = this.b($$0);
+
+      try (DataInputStream $$3 = $$2.a($$0)) {
+         if ($$3 != null) {
+            um.a((DataInput)$$3, $$1, ui.a());
          }
       }
-   },
-   c {
-      @Override
-      public void a(arq $$0, eet $$1, List<cmj> $$2, int $$3, iv $$4) {
-         int $$5 = 40;
-         boolean $$6 = $$3 % 40 == 0;
-         boolean $$7 = $$3 % 40 == 39;
-         if ($$6 || $$7) {
-            List<eli.a> $$8 = eli.a($$0);
-            int $$9 = $$3 / 40;
-            if ($$9 < $$8.size()) {
-               eli.a $$10 = $$8.get($$9);
-               if ($$6) {
-                  for (cmj $$11 : $$2) {
-                     $$11.a(new iv($$10.a(), $$10.d() + 1, $$10.b()));
-                  }
-               } else {
-                  int $$12 = 10;
+   }
 
-                  for (iv $$13 : iv.c(new iv($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new iv($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
-                     $$0.a($$13, false);
-                  }
-
-                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, djm.a.b);
-                  emw $$14 = new emw(true, ImmutableList.of($$10), new iv(0, 128, 0));
-                  ejy.K.a($$14, $$0, $$0.m().g(), azv.a(), new iv($$10.a(), 45, $$10.b()));
-               }
-            } else if ($$6) {
-               $$1.a(d);
-            }
+   protected void a(djc $$0, @Nullable tz $$1) throws IOException {
+      eer $$2 = this.b($$0);
+      if ($$1 == null) {
+         $$2.d($$0);
+      } else {
+         try (DataOutputStream $$3 = $$2.c($$0)) {
+            um.a($$1, (DataOutput)$$3);
          }
       }
-   },
-   d {
-      @Override
-      public void a(arq $$0, eet $$1, List<cmj> $$2, int $$3, iv $$4) {
-         if ($$3 >= 100) {
-            $$1.a(e);
-            $$1.h();
+   }
 
-            for (cmj $$5 : $$2) {
-               $$5.a(null);
-               $$0.a($$5, $$5.dz(), $$5.dB(), $$5.dF(), 6.0F, djm.a.a);
-               $$5.aq();
-            }
-         } else if ($$3 >= 80) {
-            $$0.c(3001, new iv(0, 128, 0), 0);
-         } else if ($$3 == 0) {
-            for (cmj $$6 : $$2) {
-               $$6.a(new iv(0, 128, 0));
-            }
-         } else if ($$3 < 5) {
-            $$0.c(3001, new iv(0, 128, 0), 0);
+   @Override
+   public void close() throws IOException {
+      ayv<IOException> $$0 = new ayv<>();
+      ObjectIterator var2 = this.c.values().iterator();
+
+      while (var2.hasNext()) {
+         eer $$1 = (eer)var2.next();
+
+         try {
+            $$1.close();
+         } catch (IOException var5) {
+            $$0.a(var5);
          }
       }
-   },
-   e {
-      @Override
-      public void a(arq $$0, eet $$1, List<cmj> $$2, int $$3, iv $$4) {
-      }
-   };
 
-   public abstract void a(arq var1, eet var2, List<cmj> var3, int var4, iv var5);
+      $$0.a();
+   }
+
+   public void a() throws IOException {
+      ObjectIterator var1 = this.c.values().iterator();
+
+      while (var1.hasNext()) {
+         eer $$0 = (eer)var1.next();
+         $$0.b();
+      }
+   }
+
+   public eeu b() {
+      return this.d;
+   }
 }

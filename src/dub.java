@@ -1,142 +1,84 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Arrays;
-import java.util.UUID;
-import javax.annotation.Nullable;
 
-public abstract class dub extends dmd implements duc {
-   public static final ebk d = ebj.I;
-   private static final ffw a = dmr.b(8.0, 0.0, 16.0);
-   private final ech b;
+public class dub extends dpn implements dua {
+   public static final MapCodec<dub> b = b(dub::new);
 
-   protected dub(ech $$0, eas.d $$1) {
-      super($$1);
-      this.b = $$0;
+   @Override
+   public MapCodec<dub> a() {
+      return b;
+   }
+
+   public dub(ebd.d $$0) {
+      super(btt.a(1), $$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dub> a();
-
-   @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      if ($$0.c(d)) {
-         $$2.a($$3, exb.c, exb.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return a;
-   }
-
-   @Override
-   public boolean a(eat $$0) {
-      return true;
-   }
-
-   @Override
-   public dxr a(iv $$0, eat $$1) {
-      return new dzf($$0, $$1);
-   }
-
-   @Override
-   protected bug a(czn $$0, eat $$1, djm $$2, iv $$3, crm $$4, buf $$5, fey $$6) {
-      if ($$2.c_($$3) instanceof dzf $$7) {
-         dap $$10 = $$0.h() instanceof dap $$9 ? $$9 : null;
-         boolean $$11 = $$10 != null && $$4.gv();
-         if (!$$2.C) {
-            if ($$11 && !$$7.u() && !this.a($$4, $$7)) {
-               boolean $$12 = $$7.a($$4);
-               if ($$10.a($$7.a($$12), $$4) && $$10.a($$2, $$7, $$12, $$4)) {
-                  $$7.a($$4, $$2, $$3, $$12);
-                  $$4.b(awx.c.b($$0.h()));
-                  $$2.a(eft.c, $$7.ax_(), eft.a.a($$4, $$7.m()));
-                  $$0.a(1, $$4);
-                  return bug.a;
-               } else {
-                  return bug.f;
-               }
-            } else {
-               return bug.f;
+   public int a(duf.a $$0, djy $$1, iv $$2, azx $$3, duf $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         iv $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               iv $$10 = $$7.d();
+               ebe $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.A().e(), awq.e, 1.0F, 1.0F);
             }
+
+            return Math.max(0, $$6 - $$9);
          } else {
-            return !$$11 && !$$7.u() ? bug.c : bug.a;
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
          }
       } else {
-         return bug.e;
+         return $$6;
+      }
+   }
+
+   private static int a(duf $$0, iv $$1, iv $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = azo.l((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = azo.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
+   }
+
+   private ebe a(djy $$0, iv $$1, azx $$2, boolean $$3) {
+      ebe $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = dne.rD.m().b(due.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = dne.ry.m();
+      }
+
+      return $$4.b(ebu.I) && !$$0.b_($$1).c() ? $$4.b(ebu.I, Boolean.valueOf(true)) : $$4;
+   }
+
+   private static boolean a(djy $$0, iv $$1) {
+      ebe $$2 = $$0.a_($$1.d());
+      if ($$2.l() || $$2.a(dne.J) && $$2.y().b(exp.c)) {
+         int $$3 = 0;
+
+         for (iv $$4 : iv.c($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            ebe $$5 = $$0.a_($$4);
+            if ($$5.a(dne.ry) || $$5.a(dne.rD)) {
+               $$3++;
+            }
+
+            if ($$3 > 2) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
    @Override
-   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
-      if ($$1.c_($$2) instanceof dzf $$5) {
-         if ($$1.C) {
-            ag.b(new IllegalStateException("Expected to only call this on server"));
-         }
-
-         boolean $$7 = $$5.a($$3);
-         boolean $$8 = $$5.a($$3, $$1, $$2, $$7);
-         if ($$5.u()) {
-            $$1.a(null, $$5.ax_(), $$5.d(), awo.e);
-            return bug.b;
-         } else if ($$8) {
-            return bug.b;
-         } else if (!this.a($$3, $$5) && $$3.gv() && this.b($$3, $$5, $$7)) {
-            this.a($$3, $$5, $$7);
-            return bug.b;
-         } else {
-            return bug.e;
-         }
-      } else {
-         return bug.e;
-      }
-   }
-
-   private boolean b(crm $$0, dzf $$1, boolean $$2) {
-      dzg $$3 = $$1.a($$2);
-      return Arrays.stream($$3.b($$0.X())).allMatch($$0x -> $$0x.equals(wx.a) || $$0x.b() instanceof yf);
-   }
-
-   public abstract float h(eat var1);
-
-   public ffc o(eat $$0) {
-      return new ffc(0.5, 0.5, 0.5);
-   }
-
-   @Override
-   protected exa b_(eat $$0) {
-      return $$0.c(d) ? exb.c.a(false) : super.b_($$0);
-   }
-
-   public ech d() {
-      return this.b;
-   }
-
-   public static ech a(dmr $$0) {
-      ech $$1;
-      if ($$0 instanceof dub) {
-         $$1 = ((dub)$$0).d();
-      } else {
-         $$1 = ech.b;
-      }
-
-      return $$1;
-   }
-
-   public void a(crm $$0, dzf $$1, boolean $$2) {
-      $$1.a($$0.cF());
-      $$0.a($$1, $$2);
-   }
-
-   private boolean a(crm $$0, dzf $$1) {
-      UUID $$2 = $$1.t();
-      return $$2 != null && !$$2.equals($$0.cF());
-   }
-
-   @Nullable
-   @Override
-   public <T extends dxr> dxs<T> a(djm $$0, eat $$1, dxt<T> $$2) {
-      return a($$2, dxt.h, dzf::a);
+   public boolean d() {
+      return false;
    }
 }

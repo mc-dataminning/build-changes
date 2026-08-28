@@ -1,3 +1,4 @@
-public class hew extends hef {
-   public cka.a a = cka.a.b;
+public class hew extends hep {
+   public boolean a;
+   public final hhs b = new hhs();
 }

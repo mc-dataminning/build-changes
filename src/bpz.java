@@ -1,65 +1,36 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public record bpz<T>(bpr<StringReader> a, bpp<T> b) {
-   public Optional<T> a(bpu<StringReader> $$0) {
-      return $$0.a(this.b);
-   }
+public interface bpz<S> {
+   bqb a();
 
-   public T a(StringReader $$0) throws CommandSyntaxException {
-      bps.a<StringReader> $$1 = new bps.a<>();
-      bqd $$2 = new bqd(this.a(), $$1, $$0);
-      Optional<T> $$3 = this.a($$2);
-      if ($$3.isPresent()) {
-         return $$3.get();
+   bpw<S> b();
+
+   default <T> Optional<T> b(bpy<S, T> $$0) {
+      T $$1 = this.a($$0);
+      if ($$1 != null) {
+         this.b().a(this.g());
+      }
+
+      if (!this.a().g()) {
+         throw new IllegalStateException("Malformed scope: " + this.a());
       } else {
-         List<Exception> $$4 = $$1.a().stream().<Exception>mapMulti(($$0x, $$1x) -> {
-            if ($$0x.c() instanceof Exception $$3x) {
-               $$1x.accept($$3x);
-            }
-         }).toList();
-
-         for (Exception $$5 : $$4) {
-            if ($$5 instanceof CommandSyntaxException $$6) {
-               throw $$6;
-            }
-         }
-
-         if ($$4.size() == 1 && $$4.get(0) instanceof RuntimeException $$7) {
-            throw $$7;
-         } else {
-            throw new IllegalStateException("Failed to parse: " + $$1.a().stream().map(bpt::toString).collect(Collectors.joining(", ")));
-         }
+         return Optional.ofNullable($$1);
       }
    }
 
-   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
-      StringReader $$1 = new StringReader($$0.getInput());
-      $$1.setCursor($$0.getStart());
-      bps.a<StringReader> $$2 = new bps.a<>();
-      bqd $$3 = new bqd(this.a(), $$2, $$1);
-      this.a($$3);
-      List<bpt<StringReader>> $$4 = $$2.a();
-      if ($$4.isEmpty()) {
-         return $$0.buildFuture();
-      } else {
-         SuggestionsBuilder $$5 = $$0.createOffset($$2.b());
+   @Nullable
+   <T> T a(bpy<S, T> var1);
 
-         for (bpt<StringReader> $$6 : $$4) {
-            if ($$6.b() instanceof bqc $$7) {
-               eo.a($$7.a(), $$5);
-            } else {
-               eo.b($$6.b().possibleValues($$3), $$5);
-            }
-         }
+   S f();
 
-         return $$5.buildFuture();
-      }
-   }
+   int g();
+
+   void a(int var1);
+
+   bpt c();
+
+   void d();
+
+   bpz<S> e();
 }

@@ -1,39 +1,50 @@
-public class fmt {
-   private final fog a;
-   private boolean b;
-   private String c;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import java.util.Date;
+import java.util.Map;
+import java.util.Map.Entry;
+import org.slf4j.Logger;
 
-   public fmt(fog $$0) {
-      this.a = $$0;
-      fog.a $$1 = $$0.a();
-      this.b = $$1.b;
-      this.c = $$1.a;
+public class fmt extends fns {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public Date b;
+   public long c;
+   private boolean g;
+   public Map<String, String> d = Maps.newHashMap();
+   public Map<String, String> e = Maps.newHashMap();
+
+   public static fmt a(JsonElement $$0) {
+      JsonObject $$1 = $$0.getAsJsonObject();
+      fmt $$2 = new fmt();
+
+      try {
+         $$2.a = fpp.b("backupId", $$1, "");
+         $$2.b = fpp.b("lastModifiedDate", $$1);
+         $$2.c = fpp.a("size", $$1, 0L);
+         if ($$1.has("metadata")) {
+            JsonObject $$3 = $$1.getAsJsonObject("metadata");
+
+            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
+               if (!$$5.getValue().isJsonNull()) {
+                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
+               }
+            }
+         }
+      } catch (Exception var7) {
+         f.error("Could not parse Backup: {}", var7.getMessage());
+      }
+
+      return $$2;
    }
 
    public boolean a() {
-      return this.b;
+      return this.g;
    }
 
-   public String b() {
-      return this.c;
-   }
-
-   public void a(fls $$0) {
-      fog.a $$1 = this.b($$0);
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
-
-   private fog.a b(fls $$0) {
-      fog.a $$1 = this.a.a();
-      if ($$0.a != null && !$$0.a.equals($$1.a)) {
-         fog.a $$2 = new fog.a();
-         $$2.a = $$0.a;
-         $$2.b = true;
-         this.a.a($$2);
-         return $$2;
-      } else {
-         return $$1;
-      }
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 }

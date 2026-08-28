@@ -1,34 +1,32 @@
-import java.util.EnumSet;
+public class cdu extends cds {
+   private final int h;
+   private static final int i = 10;
+   private static final int j = 20;
 
-public class cdu extends cef {
-   private final bxl a;
-   private final djm b;
-
-   public cdu(bxl $$0, djm $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(cef.a.c));
-   }
-
-   @Override
-   public boolean b() {
-      boolean $$0 = this.a.aw || this.a.av;
-      if ($$0 && this.a.an().a(axf.h)) {
-         iv $$1 = this.a.du().d();
-         eat $$2 = this.b.a_($$1);
-         return $$2.a(dmt.rx) || $$2.g(this.b, $$1) == fft.a();
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean R_() {
-      return true;
+   public cdu(bxw $$0, int $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
    @Override
    public void a() {
-      this.a.N().a();
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0x -> this.a.aX = this.a(this.a.aX, $$0x + 20.0F, this.b));
+         this.h().ifPresent($$0x -> this.a.x(this.a(this.a.dN(), $$0x + 10.0F, this.c)));
+      } else {
+         if (this.a.O().k()) {
+            this.a.x(this.a(this.a.dN(), 0.0F, 5.0F));
+         }
+
+         this.a.aX = this.a(this.a.aX, this.a.aV, this.b);
+      }
+
+      float $$0 = azo.h(this.a.aX - this.a.aV);
+      if ($$0 < (float)(-this.h)) {
+         this.a.aV -= 4.0F;
+      } else if ($$0 > (float)this.h) {
+         this.a.aV += 4.0F;
+      }
    }
 }

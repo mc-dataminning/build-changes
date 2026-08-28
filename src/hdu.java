@@ -1,7 +1,14 @@
-public class hdu extends hef {
-   public final hgi i = new hgi();
-
-   public static void a(bxj $$0, hdu $$1, hgg $$2) {
-      $$2.a($$1.i, $$0.fa(), czl.h, $$0);
-   }
+public class hdu extends hfg {
+   public float a;
+   public float b;
+   public boolean c;
+   public boolean d;
+   public boolean j;
+   public boolean k = true;
+   public jx l = cnr.b;
+   public jx m = cnr.c;
+   public jx n = cnr.d;
+   public jx o = cnr.e;
+   public jx p = cnr.f;
+   public jx q = cnr.g;
 }

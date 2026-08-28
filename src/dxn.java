@@ -1,20 +1,20 @@
-public class dxn extends dxr {
-   private final cyl a;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   public dxn(iv $$0, eat $$1) {
-      this($$0, $$1, ((dmk)$$1.b()).b());
+public class dxn extends dwu {
+   public static final MapCodec<dxn> b = b(dxn::new);
+
+   @Override
+   public MapCodec<dxn> a() {
+      return b;
    }
 
-   public dxn(iv $$0, eat $$1, cyl $$2) {
-      super(dxt.z, $$0, $$1);
-      this.a = $$2;
+   protected dxn(ebd.d $$0) {
+      super(duo.b.d, $$0);
    }
 
-   public aca a() {
-      return aca.a(this);
-   }
-
-   public cyl c() {
-      return this.a;
+   @Override
+   public void a(djx $$0, iv $$1, ebe $$2, @Nullable bxu $$3, czy $$4) {
+      dxm.a($$0, $$1);
    }
 }

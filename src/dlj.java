@@ -1,76 +1,542 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public abstract class dlj extends dmr {
-   public static final int a = 3;
-   public static final ebk b = ebj.u;
+public class dlj {
+   private static final boolean b = false;
+   private static final float c = 10000.0F;
+   @VisibleForTesting
+   protected static final int a = 7;
 
-   @Override
-   protected abstract MapCodec<? extends dlj> a();
-
-   protected dlj(eas.d $$0) {
-      super($$0);
+   public static dlj.h a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new dlj.h(a($$0), a($$1), a($$2), a($$3), a($$4), a($$5));
    }
 
-   protected abstract Iterable<ffc> b(eat var1);
-
-   public static boolean c(eat $$0) {
-      return $$0.b(b) && ($$0.a(axc.ag) || $$0.a(axc.bn)) && $$0.c(b);
+   public static dlj.d a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      return new dlj.d(dlj.b.a($$0), dlj.b.a($$1), dlj.b.a($$2), dlj.b.a($$3), dlj.b.a($$4), dlj.b.a($$5), a($$6));
    }
 
-   @Override
-   protected void a(djm $$0, eat $$1, fey $$2, csh $$3) {
-      if (!$$0.C && $$3.bW() && this.d($$1)) {
-         a($$0, $$1, $$2.b(), true);
+   public static dlj.d a(dlj.b $$0, dlj.b $$1, dlj.b $$2, dlj.b $$3, dlj.b $$4, dlj.b $$5, float $$6) {
+      return new dlj.d($$0, $$1, $$2, $$3, $$4, $$5, a($$6));
+   }
+
+   public static long a(float $$0) {
+      return (long)($$0 * 10000.0F);
+   }
+
+   public static float a(long $$0) {
+      return (float)$$0 / 10000.0F;
+   }
+
+   public static dlj.f a() {
+      egw $$0 = egx.a();
+      return new dlj.f($$0, $$0, $$0, $$0, $$0, $$0, List.of());
+   }
+
+   public static iv a(List<dlj.d> $$0, dlj.f $$1) {
+      return (new dlj.g($$0, $$1)).b.a();
+   }
+
+   interface a<T> {
+      long distance(dlj.e.b<T> var1, long[] var2);
+   }
+
+   public static record b(long b, long c) {
+      public static final Codec<dlj.b> a = ayw.a(
+         Codec.floatRange(-2.0F, 2.0F),
+         "min",
+         "max",
+         ($$0, $$1) -> $$0.compareTo($$1) > 0
+               ? DataResult.error(() -> "Cannon construct interval, min > max (" + $$0 + " > " + $$1 + ")")
+               : DataResult.success(new dlj.b(dlj.a($$0), dlj.a($$1))),
+         $$0 -> dlj.a($$0.a()),
+         $$0 -> dlj.a($$0.b())
+      );
+
+      public static dlj.b a(float $$0) {
+         return a($$0, $$0);
       }
-   }
 
-   protected boolean d(eat $$0) {
-      return !$$0.c(b);
-   }
-
-   @Override
-   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
-      }
-   }
-
-   private static void a(djm $$0, ffc $$1, azv $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(ly.ah, $$1.d, $$1.e, $$1.f, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.d + 0.5, $$1.e + 0.5, $$1.f + 0.5, awn.dN, awo.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
+      public static dlj.b a(float $$0, float $$1) {
+         if ($$0 > $$1) {
+            throw new IllegalArgumentException("min > max: " + $$0 + " " + $$1);
+         } else {
+            return new dlj.b(dlj.a($$0), dlj.a($$1));
          }
       }
 
-      $$0.a(ly.aM, $$1.d, $$1.e, $$1.f, 0.0, 0.0, 0.0);
-   }
-
-   public static void a(@Nullable crm $$0, eat $$1, djn $$2, iv $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof dlj) {
-         ((dlj)$$1.b())
-            .b($$1)
-            .forEach($$2x -> $$2.a(ly.ah, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
+      public static dlj.b a(dlj.b $$0, dlj.b $$1) {
+         if ($$0.a() > $$1.b()) {
+            throw new IllegalArgumentException("min > max: " + $$0 + " " + $$1);
+         } else {
+            return new dlj.b($$0.a(), $$1.b());
+         }
       }
 
-      $$2.a(null, $$3, awn.dP, awo.e, 1.0F, 1.0F);
-      $$2.a($$0, eft.c, $$3);
-   }
-
-   private static void a(djn $$0, eat $$1, iv $$2, boolean $$3) {
-      $$0.a($$2, $$1.b(b, Boolean.valueOf($$3)), 11);
-   }
-
-   @Override
-   protected void a(eat $$0, arq $$1, iv $$2, djf $$3, BiConsumer<czn, iv> $$4) {
-      if ($$3.g() && $$0.c(b)) {
-         a(null, $$0, $$1, $$2);
+      @Override
+      public String toString() {
+         return this.b == this.c ? String.format(Locale.ROOT, "%d", this.b) : String.format(Locale.ROOT, "[%d-%d]", this.b, this.c);
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4);
+      public long a(long $$0) {
+         long $$1 = $$0 - this.c;
+         long $$2 = this.b - $$0;
+         return $$1 > 0L ? $$1 : Math.max($$2, 0L);
+      }
+
+      public long a(dlj.b $$0) {
+         long $$1 = $$0.a() - this.c;
+         long $$2 = this.b - $$0.b();
+         return $$1 > 0L ? $$1 : Math.max($$2, 0L);
+      }
+
+      public dlj.b b(@Nullable dlj.b $$0) {
+         return $$0 == null ? this : new dlj.b(Math.min(this.b, $$0.a()), Math.max(this.c, $$0.b()));
+      }
+
+      public long a() {
+         return this.b;
+      }
+
+      public long b() {
+         return this.c;
+      }
+   }
+
+   public static class c<T> {
+      private final List<Pair<dlj.d, T>> a;
+      private final dlj.e<T> b;
+
+      public static <T> Codec<dlj.c<T>> a(MapCodec<T> $$0) {
+         return ayw.b(
+               RecordCodecBuilder.create(
+                     $$1 -> $$1.group(dlj.d.a.fieldOf("parameters").forGetter(Pair::getFirst), $$0.forGetter(Pair::getSecond)).apply($$1, Pair::of)
+                  )
+                  .listOf()
+            )
+            .xmap(dlj.c::new, dlj.c::a);
+      }
+
+      public c(List<Pair<dlj.d, T>> $$0) {
+         this.a = $$0;
+         this.b = dlj.e.a($$0);
+      }
+
+      public List<Pair<dlj.d, T>> a() {
+         return this.a;
+      }
+
+      public T a(dlj.h $$0) {
+         return this.c($$0);
+      }
+
+      @VisibleForTesting
+      public T b(dlj.h $$0) {
+         Iterator<Pair<dlj.d, T>> $$1 = this.a().iterator();
+         Pair<dlj.d, T> $$2 = $$1.next();
+         long $$3 = ((dlj.d)$$2.getFirst()).a($$0);
+         T $$4 = (T)$$2.getSecond();
+
+         while ($$1.hasNext()) {
+            Pair<dlj.d, T> $$5 = $$1.next();
+            long $$6 = ((dlj.d)$$5.getFirst()).a($$0);
+            if ($$6 < $$3) {
+               $$3 = $$6;
+               $$4 = (T)$$5.getSecond();
+            }
+         }
+
+         return $$4;
+      }
+
+      public T c(dlj.h $$0) {
+         return this.a($$0, dlj.e.b::a);
+      }
+
+      protected T a(dlj.h $$0, dlj.a<T> $$1) {
+         return this.b.a($$0, $$1);
+      }
+   }
+
+   public static record d(dlj.b b, dlj.b c, dlj.b d, dlj.b e, dlj.b f, dlj.b g, long h) {
+      public static final Codec<dlj.d> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  dlj.b.a.fieldOf("temperature").forGetter($$0x -> $$0x.b),
+                  dlj.b.a.fieldOf("humidity").forGetter($$0x -> $$0x.c),
+                  dlj.b.a.fieldOf("continentalness").forGetter($$0x -> $$0x.d),
+                  dlj.b.a.fieldOf("erosion").forGetter($$0x -> $$0x.e),
+                  dlj.b.a.fieldOf("depth").forGetter($$0x -> $$0x.f),
+                  dlj.b.a.fieldOf("weirdness").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("offset").xmap(dlj::a, dlj::a).forGetter($$0x -> $$0x.h)
+               )
+               .apply($$0, dlj.d::new)
+      );
+
+      long a(dlj.h $$0) {
+         return azo.b(this.b.a($$0.a))
+            + azo.b(this.c.a($$0.b))
+            + azo.b(this.d.a($$0.c))
+            + azo.b(this.e.a($$0.d))
+            + azo.b(this.f.a($$0.e))
+            + azo.b(this.g.a($$0.f))
+            + azo.b(this.h);
+      }
+
+      protected List<dlj.b> a() {
+         return ImmutableList.of(this.b, this.c, this.d, this.e, this.f, this.g, new dlj.b(this.h, this.h));
+      }
+   }
+
+   protected static final class e<T> {
+      private static final int a = 6;
+      private final dlj.e.b<T> b;
+      private final ThreadLocal<dlj.e.a<T>> c = new ThreadLocal<>();
+
+      private e(dlj.e.b<T> $$0) {
+         this.b = $$0;
+      }
+
+      public static <T> dlj.e<T> a(List<Pair<dlj.d, T>> $$0) {
+         if ($$0.isEmpty()) {
+            throw new IllegalArgumentException("Need at least one value to build the search tree.");
+         } else {
+            int $$1 = ((dlj.d)$$0.get(0).getFirst()).a().size();
+            if ($$1 != 7) {
+               throw new IllegalStateException("Expecting parameter space to be 7, got " + $$1);
+            } else {
+               List<dlj.e.a<T>> $$2 = $$0.stream()
+                  .map($$0x -> new dlj.e.a<>((dlj.d)$$0x.getFirst(), $$0x.getSecond()))
+                  .collect(Collectors.toCollection(ArrayList::new));
+               return new dlj.e<>(a($$1, $$2));
+            }
+         }
+      }
+
+      private static <T> dlj.e.b<T> a(int $$0, List<? extends dlj.e.b<T>> $$1) {
+         if ($$1.isEmpty()) {
+            throw new IllegalStateException("Need at least one child to build a node");
+         } else if ($$1.size() == 1) {
+            return (dlj.e.b<T>)$$1.get(0);
+         } else if ($$1.size() <= 6) {
+            $$1.sort(Comparator.comparingLong($$1x -> {
+               long $$2x = 0L;
+
+               for (int $$3x = 0; $$3x < $$0; $$3x++) {
+                  dlj.b $$4x = $$1x.a[$$3x];
+                  $$2x += Math.abs(($$4x.a() + $$4x.b()) / 2L);
+               }
+
+               return $$2x;
+            }));
+            return new dlj.e.c<>($$1);
+         } else {
+            long $$2 = Long.MAX_VALUE;
+            int $$3 = -1;
+            List<dlj.e.c<T>> $$4 = null;
+
+            for (int $$5 = 0; $$5 < $$0; $$5++) {
+               a($$1, $$0, $$5, false);
+               List<dlj.e.c<T>> $$6 = b($$1);
+               long $$7 = 0L;
+
+               for (dlj.e.c<T> $$8 : $$6) {
+                  $$7 += a($$8.a);
+               }
+
+               if ($$2 > $$7) {
+                  $$2 = $$7;
+                  $$3 = $$5;
+                  $$4 = $$6;
+               }
+            }
+
+            a($$4, $$0, $$3, true);
+            return new dlj.e.c<>($$4.stream().map($$1x -> a($$0, Arrays.asList($$1x.b))).collect(Collectors.toList()));
+         }
+      }
+
+      private static <T> void a(List<? extends dlj.e.b<T>> $$0, int $$1, int $$2, boolean $$3) {
+         Comparator<dlj.e.b<T>> $$4 = a($$2, $$3);
+
+         for (int $$5 = 1; $$5 < $$1; $$5++) {
+            $$4 = $$4.thenComparing(a(($$2 + $$5) % $$1, $$3));
+         }
+
+         $$0.sort($$4);
+      }
+
+      private static <T> Comparator<dlj.e.b<T>> a(int $$0, boolean $$1) {
+         return Comparator.comparingLong($$2 -> {
+            dlj.b $$3 = $$2.a[$$0];
+            long $$4 = ($$3.a() + $$3.b()) / 2L;
+            return $$1 ? Math.abs($$4) : $$4;
+         });
+      }
+
+      private static <T> List<dlj.e.c<T>> b(List<? extends dlj.e.b<T>> $$0) {
+         List<dlj.e.c<T>> $$1 = Lists.newArrayList();
+         List<dlj.e.b<T>> $$2 = Lists.newArrayList();
+         int $$3 = (int)Math.pow(6.0, Math.floor(Math.log((double)$$0.size() - 0.01) / Math.log(6.0)));
+
+         for (dlj.e.b<T> $$4 : $$0) {
+            $$2.add($$4);
+            if ($$2.size() >= $$3) {
+               $$1.add(new dlj.e.c<>($$2));
+               $$2 = Lists.newArrayList();
+            }
+         }
+
+         if (!$$2.isEmpty()) {
+            $$1.add(new dlj.e.c<>($$2));
+         }
+
+         return $$1;
+      }
+
+      private static long a(dlj.b[] $$0) {
+         long $$1 = 0L;
+
+         for (dlj.b $$2 : $$0) {
+            $$1 += Math.abs($$2.b() - $$2.a());
+         }
+
+         return $$1;
+      }
+
+      static <T> List<dlj.b> c(List<? extends dlj.e.b<T>> $$0) {
+         if ($$0.isEmpty()) {
+            throw new IllegalArgumentException("SubTree needs at least one child");
+         } else {
+            int $$1 = 7;
+            List<dlj.b> $$2 = Lists.newArrayList();
+
+            for (int $$3 = 0; $$3 < 7; $$3++) {
+               $$2.add(null);
+            }
+
+            for (dlj.e.b<T> $$4 : $$0) {
+               for (int $$5 = 0; $$5 < 7; $$5++) {
+                  $$2.set($$5, $$4.a[$$5].b($$2.get($$5)));
+               }
+            }
+
+            return $$2;
+         }
+      }
+
+      public T a(dlj.h $$0, dlj.a<T> $$1) {
+         long[] $$2 = $$0.a();
+         dlj.e.a<T> $$3 = this.b.a($$2, this.c.get(), $$1);
+         this.c.set($$3);
+         return $$3.b;
+      }
+
+      static final class a<T> extends dlj.e.b<T> {
+         final T b;
+
+         a(dlj.d $$0, T $$1) {
+            super($$0.a());
+            this.b = $$1;
+         }
+
+         @Override
+         protected dlj.e.a<T> a(long[] $$0, @Nullable dlj.e.a<T> $$1, dlj.a<T> $$2) {
+            return this;
+         }
+      }
+
+      abstract static class b<T> {
+         protected final dlj.b[] a;
+
+         protected b(List<dlj.b> $$0) {
+            this.a = $$0.toArray(new dlj.b[0]);
+         }
+
+         protected abstract dlj.e.a<T> a(long[] var1, @Nullable dlj.e.a<T> var2, dlj.a<T> var3);
+
+         protected long a(long[] $$0) {
+            long $$1 = 0L;
+
+            for (int $$2 = 0; $$2 < 7; $$2++) {
+               $$1 += azo.b(this.a[$$2].a($$0[$$2]));
+            }
+
+            return $$1;
+         }
+
+         @Override
+         public String toString() {
+            return Arrays.toString((Object[])this.a);
+         }
+      }
+
+      static final class c<T> extends dlj.e.b<T> {
+         final dlj.e.b<T>[] b;
+
+         protected c(List<? extends dlj.e.b<T>> $$0) {
+            this(dlj.e.c($$0), $$0);
+         }
+
+         protected c(List<dlj.b> $$0, List<? extends dlj.e.b<T>> $$1) {
+            super($$0);
+            this.b = $$1.toArray(new dlj.e.b[0]);
+         }
+
+         @Override
+         protected dlj.e.a<T> a(long[] $$0, @Nullable dlj.e.a<T> $$1, dlj.a<T> $$2) {
+            long $$3 = $$1 == null ? Long.MAX_VALUE : $$2.distance($$1, $$0);
+            dlj.e.a<T> $$4 = $$1;
+
+            for (dlj.e.b<T> $$5 : this.b) {
+               long $$6 = $$2.distance($$5, $$0);
+               if ($$3 > $$6) {
+                  dlj.e.a<T> $$7 = $$5.a($$0, $$4, $$2);
+                  long $$8 = $$5 == $$7 ? $$6 : $$2.distance($$7, $$0);
+                  if ($$3 > $$8) {
+                     $$3 = $$8;
+                     $$4 = $$7;
+                  }
+               }
+            }
+
+            return $$4;
+         }
+      }
+   }
+
+   public static record f(egw a, egw b, egw c, egw d, egw e, egw f, List<dlj.d> g) {
+      public dlj.h a(int $$0, int $$1, int $$2) {
+         int $$3 = jq.c($$0);
+         int $$4 = jq.c($$1);
+         int $$5 = jq.c($$2);
+         egw.e $$6 = new egw.e($$3, $$4, $$5);
+         return dlj.a((float)this.a.a($$6), (float)this.b.a($$6), (float)this.c.a($$6), (float)this.d.a($$6), (float)this.e.a($$6), (float)this.f.a($$6));
+      }
+
+      public iv a() {
+         return this.g.isEmpty() ? iv.c : dlj.a(this.g, this);
+      }
+
+      public egw b() {
+         return this.a;
+      }
+
+      public egw c() {
+         return this.b;
+      }
+
+      public egw d() {
+         return this.c;
+      }
+
+      public egw e() {
+         return this.d;
+      }
+
+      public egw f() {
+         return this.e;
+      }
+
+      public egw g() {
+         return this.f;
+      }
+
+      public List<dlj.d> h() {
+         return this.g;
+      }
+   }
+
+   static class g {
+      private static final long a = 2048L;
+      dlj.g.a b;
+
+      g(List<dlj.d> $$0, dlj.f $$1) {
+         this.b = a($$0, $$1, 0, 0);
+         this.a($$0, $$1, 2048.0F, 512.0F);
+         this.a($$0, $$1, 512.0F, 32.0F);
+      }
+
+      private void a(List<dlj.d> $$0, dlj.f $$1, float $$2, float $$3) {
+         float $$4 = 0.0F;
+         float $$5 = $$3;
+         iv $$6 = this.b.a();
+
+         while ($$5 <= $$2) {
+            int $$7 = $$6.u() + (int)(Math.sin((double)$$4) * (double)$$5);
+            int $$8 = $$6.w() + (int)(Math.cos((double)$$4) * (double)$$5);
+            dlj.g.a $$9 = a($$0, $$1, $$7, $$8);
+            if ($$9.b() < this.b.b()) {
+               this.b = $$9;
+            }
+
+            $$4 += $$3 / $$5;
+            if ((double)$$4 > Math.PI * 2) {
+               $$4 = 0.0F;
+               $$5 += $$3;
+            }
+         }
+      }
+
+      private static dlj.g.a a(List<dlj.d> $$0, dlj.f $$1, int $$2, int $$3) {
+         dlj.h $$4 = $$1.a(jq.a($$2), 0, jq.a($$3));
+         dlj.h $$5 = new dlj.h($$4.b(), $$4.c(), $$4.d(), $$4.e(), 0L, $$4.g());
+         long $$6 = Long.MAX_VALUE;
+
+         for (dlj.d $$7 : $$0) {
+            $$6 = Math.min($$6, $$7.a($$5));
+         }
+
+         long $$8 = azo.b((long)$$2) + azo.b((long)$$3);
+         long $$9 = $$6 * azo.b(2048L) + $$8;
+         return new dlj.g.a(new iv($$2, 0, $$3), $$9);
+      }
+
+      static record a(iv a, long b) {
+      }
+   }
+
+   public static record h(long a, long b, long c, long d, long e, long f) {
+
+      @VisibleForTesting
+      protected long[] a() {
+         return new long[]{this.a, this.b, this.c, this.d, this.e, this.f, 0L};
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public long c() {
+         return this.b;
+      }
+
+      public long d() {
+         return this.c;
+      }
+
+      public long e() {
+         return this.d;
+      }
+
+      public long f() {
+         return this.e;
+      }
+
+      public long g() {
+         return this.f;
+      }
    }
 }

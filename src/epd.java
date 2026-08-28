@@ -1,72 +1,72 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
 import java.util.List;
-import java.util.function.BiConsumer;
+import java.util.Set;
 
-public class epd extends epj {
-   public static final MapCodec<epd> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, epd::new));
+public class epd extends epl {
+   public static final MapCodec<epd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
+               eoq.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
+               ayw.b(jb.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, epd::new)
+   );
+   protected final float b;
+   protected final int c;
+   protected final int d;
+   protected final eoq e;
+   protected final int f;
+   protected final List<jb> g;
 
-   public epd(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public epd(float $$0, int $$1, int $$2, eoq $$3, int $$4, List<jb> $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
    @Override
-   protected epk<?> a() {
-      return epk.e;
-   }
+   public void a(epl.a $$0) {
+      Set<iv> $$1 = new HashSet<>();
+      azx $$2 = $$0.b();
 
-   @Override
-   public List<eno.a> a(djs $$0, BiConsumer<iv, eat> $$1, azv $$2, int $$3, iv $$4, emy $$5) {
-      List<eno.a> $$6 = Lists.newArrayList();
-      iv $$7 = $$4.e();
-      a($$0, $$1, $$2, $$7, $$5);
-      a($$0, $$1, $$2, $$7.i(), $$5);
-      a($$0, $$1, $$2, $$7.g(), $$5);
-      a($$0, $$1, $$2, $$7.g().i(), $$5);
-      jb $$8 = jb.c.a.a($$2);
-      int $$9 = $$3 - $$2.a(4);
-      int $$10 = 2 - $$2.a(3);
-      int $$11 = $$4.u();
-      int $$12 = $$4.v();
-      int $$13 = $$4.w();
-      int $$14 = $$11;
-      int $$15 = $$13;
-      int $$16 = $$12 + $$3 - 1;
+      for (iv $$3 : ag.a($$0.d(), $$2)) {
+         jb $$4 = ag.a(this.g, $$2);
+         iv $$5 = $$3.a($$4);
+         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
+            iv $$6 = $$5.b(-this.c, -this.d, -this.c);
+            iv $$7 = $$5.b(this.c, this.d, this.c);
 
-      for (int $$17 = 0; $$17 < $$3; $$17++) {
-         if ($$17 >= $$9 && $$10 > 0) {
-            $$14 += $$8.j();
-            $$15 += $$8.l();
-            $$10--;
-         }
-
-         int $$18 = $$12 + $$17;
-         iv $$19 = new iv($$14, $$18, $$15);
-         if (elk.c($$0, $$19)) {
-            this.b($$0, $$1, $$2, $$19, $$5);
-            this.b($$0, $$1, $$2, $$19.i(), $$5);
-            this.b($$0, $$1, $$2, $$19.g(), $$5);
-            this.b($$0, $$1, $$2, $$19.i().g(), $$5);
-         }
-      }
-
-      $$6.add(new eno.a(new iv($$14, $$16, $$15), 0, true));
-
-      for (int $$20 = -1; $$20 <= 2; $$20++) {
-         for (int $$21 = -1; $$21 <= 2; $$21++) {
-            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
-               int $$22 = $$2.a(3) + 2;
-
-               for (int $$23 = 0; $$23 < $$22; $$23++) {
-                  this.b($$0, $$1, $$2, new iv($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
-               }
-
-               $$6.add(new eno.a(new iv($$11 + $$20, $$16, $$13 + $$21), 0, false));
+            for (iv $$8 : iv.c($$6, $$7)) {
+               $$1.add($$8.j());
             }
+
+            $$0.a($$5, this.e.a($$2, $$5));
+         }
+      }
+   }
+
+   private boolean a(epl.a $$0, iv $$1, jb $$2) {
+      for (int $$3 = 1; $$3 <= this.f; $$3++) {
+         iv $$4 = $$1.a($$2, $$3);
+         if (!$$0.a($$4)) {
+            return false;
          }
       }
 
-      return $$6;
+      return true;
+   }
+
+   @Override
+   protected epm<?> a() {
+      return epm.h;
    }
 }

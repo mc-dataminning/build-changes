@@ -1,46 +1,308 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
 public interface dgb {
-   Codec<kj<?>> a = Codec.lazyInitialized(() -> mg.aq.q());
-   Codec<kh> b = kh.a(a);
-   kj<List<dfx<dgt>>> c = a("damage_protection", $$0 -> $$0.a(dfx.a(dgt.b, fcm.t).listOf()));
-   kj<List<dfx<dgp>>> d = a("damage_immunity", $$0 -> $$0.a(dfx.a(dgp.b, fcm.t).listOf()));
-   kj<List<dfx<dgt>>> e = a("damage", $$0 -> $$0.a(dfx.a(dgt.b, fcm.t).listOf()));
-   kj<List<dfx<dgt>>> f = a("smash_damage_per_fallen_block", $$0 -> $$0.a(dfx.a(dgt.b, fcm.t).listOf()));
-   kj<List<dfx<dgt>>> g = a("knockback", $$0 -> $$0.a(dfx.a(dgt.b, fcm.t).listOf()));
-   kj<List<dfx<dgt>>> h = a("armor_effectiveness", $$0 -> $$0.a(dfx.a(dgt.b, fcm.t).listOf()));
-   kj<List<dgj<dgr>>> i = a("post_attack", $$0 -> $$0.a(dgj.a(dgr.b, fcm.t).listOf()));
-   kj<List<dfx<dgr>>> j = a("hit_block", $$0 -> $$0.a(dfx.a(dgr.b, fcm.x).listOf()));
-   kj<List<dfx<dgt>>> k = a("item_damage", $$0 -> $$0.a(dfx.a(dgt.b, fcm.u).listOf()));
-   kj<List<dgq>> l = a("attributes", $$0 -> $$0.a(dgq.a.codec().listOf()));
-   kj<List<dgj<dgt>>> m = a("equipment_drops", $$0 -> $$0.a(dgj.b(dgt.b, fcm.t).listOf()));
-   kj<List<dfx<dgs>>> n = a("location_changed", $$0 -> $$0.a(dfx.a(dgs.c, fcm.v).listOf()));
-   kj<List<dfx<dgr>>> o = a("tick", $$0 -> $$0.a(dfx.a(dgr.b, fcm.w).listOf()));
-   kj<List<dfx<dgt>>> p = a("ammo_use", $$0 -> $$0.a(dfx.a(dgt.b, fcm.u).listOf()));
-   kj<List<dfx<dgt>>> q = a("projectile_piercing", $$0 -> $$0.a(dfx.a(dgt.b, fcm.u).listOf()));
-   kj<List<dfx<dgr>>> r = a("projectile_spawned", $$0 -> $$0.a(dfx.a(dgr.b, fcm.w).listOf()));
-   kj<List<dfx<dgt>>> s = a("projectile_spread", $$0 -> $$0.a(dfx.a(dgt.b, fcm.w).listOf()));
-   kj<List<dfx<dgt>>> t = a("projectile_count", $$0 -> $$0.a(dfx.a(dgt.b, fcm.w).listOf()));
-   kj<List<dfx<dgt>>> u = a("trident_return_acceleration", $$0 -> $$0.a(dfx.a(dgt.b, fcm.w).listOf()));
-   kj<List<dfx<dgt>>> v = a("fishing_time_reduction", $$0 -> $$0.a(dfx.a(dgt.b, fcm.w).listOf()));
-   kj<List<dfx<dgt>>> w = a("fishing_luck_bonus", $$0 -> $$0.a(dfx.a(dgt.b, fcm.w).listOf()));
-   kj<List<dfx<dgt>>> x = a("block_experience", $$0 -> $$0.a(dfx.a(dgt.b, fcm.u).listOf()));
-   kj<List<dfx<dgt>>> y = a("mob_experience", $$0 -> $$0.a(dfx.a(dgt.b, fcm.w).listOf()));
-   kj<List<dfx<dgt>>> z = a("repair_with_xp", $$0 -> $$0.a(dfx.a(dgt.b, fcm.u).listOf()));
-   kj<dgt> A = a("crossbow_charge_time", $$0 -> $$0.a(dgt.b));
-   kj<List<cyg.b>> B = a("crossbow_charging_sounds", $$0 -> $$0.a(cyg.b.a.listOf()));
-   kj<List<jf<awm>>> C = a("trident_sound", $$0 -> $$0.a(awm.b.listOf()));
-   kj<bau> D = a("prevent_equipment_drop", $$0 -> $$0.a(bau.b));
-   kj<bau> E = a("prevent_armor_change", $$0 -> $$0.a(bau.b));
-   kj<dgt> F = a("trident_spin_attack_strength", $$0 -> $$0.a(dgt.b));
+   Codec<dgb> a = mg.ay.q().dispatch(dgb::a, dgb.i::a);
+   yy<wl, dgb> b = yw.a(mh.ao).b(dgb::a, dgb.i::b);
 
-   static kj<?> a(js<kj<?>> $$0) {
-      return c;
+   <T> Stream<T> a(bbb var1, dft<T> var2);
+
+   dgb.i<? extends dgb> a();
+
+   default boolean a(cvh $$0) {
+      return true;
    }
 
-   private static <T> kj<T> a(String $$0, UnaryOperator<kj.a<T>> $$1) {
-      return js.a(mg.aq, $$0, $$1.apply(kj.a()).b());
+   default List<czy> a(bbb $$0) {
+      return this.a($$0, dgb.e.a).toList();
+   }
+
+   default czy b(bbb $$0) {
+      return this.a($$0, dgb.e.a).findFirst().orElse(czy.k);
+   }
+
+   public static class a implements dgb {
+      public static final dgb.a c = new dgb.a();
+      public static final MapCodec<dgb.a> d = MapCodec.unit(c);
+      public static final yy<wl, dgb.a> e = yy.a(c);
+      public static final dgb.i<dgb.a> f = new dgb.i<>(d, e);
+
+      private a() {
+      }
+
+      @Override
+      public dgb.i<dgb.a> a() {
+         return f;
+      }
+
+      @Override
+      public String toString() {
+         return "<any fuel>";
+      }
+
+      @Override
+      public <T> Stream<T> a(bbb $$0, dft<T> $$1) {
+         if ($$1 instanceof dft.b<T> $$2) {
+            dzb $$3 = $$0.c(dgc.a);
+            if ($$3 != null) {
+               return $$3.a().stream().map($$2::a);
+            }
+         }
+
+         return Stream.empty();
+      }
+   }
+
+   public static record b(List<dgb> f) implements dgb {
+      public static final MapCodec<dgb.b> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(dgb.a.listOf().fieldOf("contents").forGetter(dgb.b::b)).apply($$0, dgb.b::new)
+      );
+      public static final yy<wl, dgb.b> d = yy.a(dgb.b.a(yw.a()), dgb.b::b, dgb.b::new);
+      public static final dgb.i<dgb.b> e = new dgb.i<>(c, d);
+
+      @Override
+      public dgb.i<dgb.b> a() {
+         return e;
+      }
+
+      @Override
+      public <T> Stream<T> a(bbb $$0, dft<T> $$1) {
+         return this.f.stream().flatMap($$2 -> $$2.a($$0, $$1));
+      }
+
+      @Override
+      public boolean a(cvh $$0) {
+         return this.f.stream().allMatch($$1 -> $$1.a($$0));
+      }
+
+      public List<dgb> b() {
+         return this.f;
+      }
+   }
+
+   public static class c implements dgb {
+      public static final dgb.c c = new dgb.c();
+      public static final MapCodec<dgb.c> d = MapCodec.unit(c);
+      public static final yy<wl, dgb.c> e = yy.a(c);
+      public static final dgb.i<dgb.c> f = new dgb.i<>(d, e);
+
+      private c() {
+      }
+
+      @Override
+      public dgb.i<dgb.c> a() {
+         return f;
+      }
+
+      @Override
+      public String toString() {
+         return "<empty>";
+      }
+
+      @Override
+      public <T> Stream<T> a(bbb $$0, dft<T> $$1) {
+         return Stream.empty();
+      }
+   }
+
+   public static record d(jf<czu> f) implements dgb {
+      public static final MapCodec<dgb.d> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(czu.e.fieldOf("item").forGetter(dgb.d::b)).apply($$0, dgb.d::new));
+      public static final yy<wl, dgb.d> d = yy.a(czu.f, dgb.d::b, dgb.d::new);
+      public static final dgb.i<dgb.d> e = new dgb.i<>(c, d);
+
+      public d(czu $$0) {
+         this($$0.e());
+      }
+
+      @Override
+      public dgb.i<dgb.d> a() {
+         return e;
+      }
+
+      @Override
+      public <T> Stream<T> a(bbb $$0, dft<T> $$1) {
+         return $$1 instanceof dft.b<T> $$2 ? Stream.of($$2.a(this.f)) : Stream.empty();
+      }
+
+      @Override
+      public boolean a(cvh $$0) {
+         return this.f.a().a($$0);
+      }
+
+      public jf<czu> b() {
+         return this.f;
+      }
+   }
+
+   public static class e implements dft.b<czy> {
+      public static final dgb.e a = new dgb.e();
+
+      public czy b(czy $$0) {
+         return $$0;
+      }
+   }
+
+   public static record f(czy f) implements dgb {
+      public static final MapCodec<dgb.f> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(czy.d.fieldOf("item").forGetter(dgb.f::b)).apply($$0, dgb.f::new));
+      public static final yy<wl, dgb.f> d = yy.a(czy.i, dgb.f::b, dgb.f::new);
+      public static final dgb.i<dgb.f> e = new dgb.i<>(c, d);
+
+      @Override
+      public dgb.i<dgb.f> a() {
+         return e;
+      }
+
+      @Override
+      public <T> Stream<T> a(bbb $$0, dft<T> $$1) {
+         return $$1 instanceof dft.b<T> $$2 ? Stream.of($$2.a(this.f)) : Stream.empty();
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            if ($$0 instanceof dgb.f $$1 && czy.a(this.f, $$1.f)) {
+               return true;
+            }
+
+            return false;
+         }
+      }
+
+      @Override
+      public boolean a(cvh $$0) {
+         return this.f.h().a($$0);
+      }
+
+      public czy b() {
+         return this.f;
+      }
+   }
+
+   public static record g(dgb f, dgb g, jf<din> h) implements dgb {
+      public static final MapCodec<dgb.g> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  dgb.a.fieldOf("base").forGetter(dgb.g::b), dgb.a.fieldOf("material").forGetter(dgb.g::c), din.c.fieldOf("pattern").forGetter(dgb.g::d)
+               )
+               .apply($$0, dgb.g::new)
+      );
+      public static final yy<wl, dgb.g> d = yy.a(dgb.b, dgb.g::b, dgb.b, dgb.g::c, din.d, dgb.g::d, dgb.g::new);
+      public static final dgb.i<dgb.g> e = new dgb.i<>(c, d);
+
+      @Override
+      public dgb.i<dgb.g> a() {
+         return e;
+      }
+
+      @Override
+      public <T> Stream<T> a(bbb $$0, dft<T> $$1) {
+         if ($$1 instanceof dft.b<T> $$2) {
+            jh.a $$3 = $$0.c(dgc.b);
+            if ($$3 != null) {
+               azx $$4 = azx.a((long)System.identityHashCode(this));
+               List<czy> $$5 = this.f.a($$0);
+               if ($$5.isEmpty()) {
+                  return Stream.empty();
+               }
+
+               List<czy> $$6 = this.g.a($$0);
+               if ($$6.isEmpty()) {
+                  return Stream.empty();
+               }
+
+               return Stream.<czy>generate(() -> {
+                  czy $$4x = ag.a($$5, $$4);
+                  czy $$5x = ag.a($$6, $$4);
+                  return dfn.a($$3, $$4x, $$5x, this.h);
+               }).limit(256L).filter($$0x -> !$$0x.f()).limit(16L).map($$2::a);
+            }
+         }
+
+         return Stream.empty();
+      }
+
+      public dgb b() {
+         return this.f;
+      }
+
+      public dgb c() {
+         return this.g;
+      }
+
+      public jf<din> d() {
+         return this.h;
+      }
+   }
+
+   public static record h(axt<czu> f) implements dgb {
+      public static final MapCodec<dgb.h> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(axt.a(mh.K).fieldOf("tag").forGetter(dgb.h::b)).apply($$0, dgb.h::new)
+      );
+      public static final yy<wl, dgb.h> d = yy.a(axt.c(mh.K), dgb.h::b, dgb.h::new);
+      public static final dgb.i<dgb.h> e = new dgb.i<>(c, d);
+
+      @Override
+      public dgb.i<dgb.h> a() {
+         return e;
+      }
+
+      @Override
+      public <T> Stream<T> a(bbb $$0, dft<T> $$1) {
+         if ($$1 instanceof dft.b<T> $$2) {
+            jh.a $$3 = $$0.c(dgc.b);
+            if ($$3 != null) {
+               return $$3.e(mh.K).a(this.f).map($$1x -> $$1x.a().map($$2::a)).stream().flatMap($$0x -> $$0x);
+            }
+         }
+
+         return Stream.empty();
+      }
+
+      public axt<czu> b() {
+         return this.f;
+      }
+   }
+
+   public static record i<T extends dgb>(MapCodec<T> a, yy<wl, T> b) {
+   }
+
+   public static record j(dgb f, dgb g) implements dgb {
+      public static final MapCodec<dgb.j> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(dgb.a.fieldOf("input").forGetter(dgb.j::b), dgb.a.fieldOf("remainder").forGetter(dgb.j::c)).apply($$0, dgb.j::new)
+      );
+      public static final yy<wl, dgb.j> d = yy.a(dgb.b, dgb.j::b, dgb.b, dgb.j::c, dgb.j::new);
+      public static final dgb.i<dgb.j> e = new dgb.i<>(c, d);
+
+      @Override
+      public dgb.i<dgb.j> a() {
+         return e;
+      }
+
+      @Override
+      public <T> Stream<T> a(bbb $$0, dft<T> $$1) {
+         if ($$1 instanceof dft.a<T> $$2) {
+            List<T> $$3 = this.g.a($$0, $$1).toList();
+            return this.f.a($$0, $$1).map($$2x -> $$2.a((T)$$2x, $$3));
+         } else {
+            return this.f.a($$0, $$1);
+         }
+      }
+
+      @Override
+      public boolean a(cvh $$0) {
+         return this.f.a($$0) && this.g.a($$0);
+      }
+
+      public dgb b() {
+         return this.f;
+      }
+
+      public dgb c() {
+         return this.g;
+      }
    }
 }

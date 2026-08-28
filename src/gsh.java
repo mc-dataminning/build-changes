@@ -1,84 +1,70 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+public class gsh {
+   private int a;
+   private int b;
+   private int c;
+   private int d;
 
-public record gsh(gsg b, gsg c, gsg d, gsg e, gsg f, gsg g, gsg h, gsg i) {
-   public static final gsh a = new gsh(gsg.a, gsg.a, gsg.a, gsg.a, gsg.a, gsg.a, gsg.a, gsg.a);
-
-   public gsg a(czl $$0) {
-      return switch ($$0) {
-         case b -> this.b;
-         case c -> this.c;
-         case d -> this.d;
-         case e -> this.e;
-         case f -> this.f;
-         case g -> this.g;
-         case h -> this.h;
-         case i -> this.i;
-         default -> gsg.a;
-      };
+   public gsh(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public gsg a() {
+   public gsh a(gsh $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      int $$3 = this.a + this.c;
+      int $$4 = this.b + this.d;
+      int $$5 = $$0.a();
+      int $$6 = $$0.b();
+      int $$7 = $$5 + $$0.c();
+      int $$8 = $$6 + $$0.d();
+      this.a = Math.max($$1, $$5);
+      this.b = Math.max($$2, $$6);
+      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
+      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
+      return this;
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public int b() {
       return this.b;
    }
 
-   public gsg b() {
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(int $$0) {
+      this.b = $$0;
+   }
+
+   public int c() {
       return this.c;
    }
 
-   public gsg c() {
+   public int d() {
       return this.d;
    }
 
-   public gsg d() {
-      return this.e;
+   public void c(int $$0) {
+      this.c = $$0;
    }
 
-   public gsg e() {
-      return this.f;
+   public void d(int $$0) {
+      this.d = $$0;
    }
 
-   public gsg f() {
-      return this.g;
+   public void a(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public gsg g() {
-      return this.h;
-   }
-
-   public gsg h() {
-      return this.i;
-   }
-
-   protected static class a implements JsonDeserializer<gsh> {
-      public gsh a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         gsg $$4 = this.a($$2, $$3, czl.c);
-         gsg $$5 = this.a($$2, $$3, czl.b);
-         if ($$5 == gsg.a) {
-            $$5 = $$4;
-         }
-
-         gsg $$6 = this.a($$2, $$3, czl.e);
-         gsg $$7 = this.a($$2, $$3, czl.d);
-         if ($$7 == gsg.a) {
-            $$7 = $$6;
-         }
-
-         gsg $$8 = this.a($$2, $$3, czl.f);
-         gsg $$9 = this.a($$2, $$3, czl.g);
-         gsg $$10 = this.a($$2, $$3, czl.h);
-         gsg $$11 = this.a($$2, $$3, czl.i);
-         return new gsh($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
-      }
-
-      private gsg a(JsonDeserializationContext $$0, JsonObject $$1, czl $$2) {
-         String $$3 = $$2.c();
-         return $$1.has($$3) ? (gsg)$$0.deserialize($$1.get($$3), gsg.class) : gsg.a;
-      }
+   public boolean b(int $$0, int $$1) {
+      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
    }
 }

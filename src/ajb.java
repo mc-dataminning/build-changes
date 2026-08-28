@@ -1,16 +1,8 @@
-public interface ajb extends abo {
+public interface ajb extends ags {
    @Override
-   default vs b() {
-      return vs.d;
+   default vu b() {
+      return vu.a;
    }
 
-   void a(ajd var1);
-
-   void a(ajg var1);
-
-   void a(ajf var1);
-
-   void a(aje var1);
-
-   void a(ajc var1);
+   void a(aiy var1);
 }

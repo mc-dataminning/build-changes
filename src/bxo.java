@@ -1,103 +1,178 @@
-import java.util.Objects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.UUID;
 import javax.annotation.Nullable;
 
-public interface bxo {
-   String a_ = "AngerTime";
-   String b_ = "AngryAt";
-
-   int a();
-
-   void a(int var1);
-
+public class bxo extends bwt implements bwm, byr {
+   private static final akl<Float> a = akp.a(bxo.class, akn.d);
+   private static final akl<Float> b = akp.a(bxo.class, akn.d);
+   private static final akl<Boolean> c = akp.a(bxo.class, akn.k);
+   private static final String d = "width";
+   private static final String e = "height";
+   private static final String f = "attack";
+   private static final String g = "interaction";
+   private static final String h = "response";
+   private static final float i = 1.0F;
+   private static final float j = 1.0F;
+   private static final boolean k = false;
    @Nullable
-   UUID b();
+   private bxo.a l;
+   @Nullable
+   private bxo.a m;
 
-   void a(@Nullable UUID var1);
-
-   void c();
-
-   default void a_(tz $$0) {
-      $$0.a("AngerTime", this.a());
-      $$0.b("AngryAt", jz.a, this.b());
+   public bxo(bxc<?> $$0, djx $$1) {
+      super($$0, $$1);
+      this.ad = true;
    }
 
-   default void a(djm $$0, tz $$1) {
-      this.a($$1.f("AngerTime"));
-      if ($$0 instanceof arq $$2) {
-         UUID $$4 = $$1.<UUID>a("AngryAt", jz.a).orElse(null);
-         this.a($$4);
-         if (($$4 != null ? $$2.b($$4) : null) instanceof bxj $$6) {
-            this.g($$6);
-         }
+   @Override
+   protected void a(akp.a $$0) {
+      $$0.a(a, 1.0F);
+      $$0.a(b, 1.0F);
+      $$0.a(c, false);
+   }
+
+   @Override
+   protected void a(tz $$0) {
+      this.a($$0.b("width", 1.0F));
+      this.b($$0.b("height", 1.0F));
+      this.l = $$0.<bxo.a>a("attack", bxo.a.a).orElse(null);
+      this.m = $$0.<bxo.a>a("interaction", bxo.a.a).orElse(null);
+      this.a($$0.b("response", false));
+      this.a(this.au());
+   }
+
+   @Override
+   protected void b(tz $$0) {
+      $$0.a("width", this.g());
+      $$0.a("height", this.j());
+      $$0.b("attack", bxo.a.a, this.l);
+      $$0.b("interaction", bxo.a.a, this.m);
+      $$0.a("response", this.m());
+   }
+
+   @Override
+   public void a(akl<?> $$0) {
+      super.a($$0);
+      if (b.equals($$0) || a.equals($$0)) {
+         this.i_();
       }
    }
 
-   default void a(arq $$0, boolean $$1) {
-      bxj $$2 = this.f();
-      UUID $$3 = this.b();
-      if (($$2 == null || $$2.eG()) && $$3 != null && $$0.b($$3) instanceof bxl) {
-         this.W_();
+   @Override
+   public boolean bE() {
+      return false;
+   }
+
+   @Override
+   public boolean bF() {
+      return true;
+   }
+
+   @Override
+   public ext j_() {
+      return ext.d;
+   }
+
+   @Override
+   public boolean g_() {
+      return true;
+   }
+
+   @Override
+   public boolean v(bwt $$0) {
+      if ($$0 instanceof crx $$1) {
+         this.l = new bxo.a($$1.cG(), this.dV().ae());
+         if ($$1 instanceof art $$2) {
+            aq.h.a($$2, this, $$1.dW().p(), 1.0F, 1.0F, false);
+         }
+
+         return !this.m();
       } else {
-         if ($$2 != null && !Objects.equals($$3, $$2.cF())) {
-            this.a($$2.cF());
-            this.c();
-         }
-
-         if (this.a() > 0 && ($$2 == null || $$2.an() != bwr.bS || !$$1)) {
-            this.a(this.a() - 1);
-            if (this.a() == 0) {
-               this.W_();
-            }
-         }
-      }
-   }
-
-   default boolean a(bxj $$0, arq $$1) {
-      if (!this.c($$0)) {
          return false;
+      }
+   }
+
+   @Override
+   public final boolean a(ars $$0, bvi $$1, float $$2) {
+      return false;
+   }
+
+   @Override
+   public bur a(crx $$0, buq $$1) {
+      if (this.dV().C) {
+         return this.m() ? bur.a : bur.c;
       } else {
-         return $$0.an() == bwr.bS && this.a_($$1) ? true : $$0.cF().equals(this.b());
+         this.m = new bxo.a($$0.cG(), this.dV().ae());
+         return bur.c;
       }
    }
 
-   default boolean a_(arq $$0) {
-      return $$0.O().c(dji.Q) && this.aa_() && this.b() == null;
+   @Override
+   public void h() {
    }
 
-   default boolean aa_() {
-      return this.a() > 0;
+   @Nullable
+   @Override
+   public bxu aj() {
+      return this.l != null ? this.dV().a(this.l.a()) : null;
    }
 
-   default void a_(arq $$0, crm $$1) {
-      if ($$0.O().c(dji.P)) {
-         if ($$1.cF().equals(this.b())) {
-            this.W_();
-         }
+   @Nullable
+   @Override
+   public bxu f() {
+      return this.m != null ? this.dV().a(this.m.a()) : null;
+   }
+
+   private void a(float $$0) {
+      this.al.a(a, $$0);
+   }
+
+   private float g() {
+      return this.al.a(a);
+   }
+
+   private void b(float $$0) {
+      this.al.a(b, $$0);
+   }
+
+   private float j() {
+      return this.al.a(b);
+   }
+
+   private void a(boolean $$0) {
+      this.al.a(c, $$0);
+   }
+
+   private boolean m() {
+      return this.al.a(c);
+   }
+
+   private bww n() {
+      return bww.b(this.g(), this.j());
+   }
+
+   @Override
+   public bww a(byg $$0) {
+      return this.n();
+   }
+
+   @Override
+   protected ffl c(ffq $$0) {
+      return this.n().a($$0);
+   }
+
+   static record a(UUID b, long c) {
+      public static final Codec<bxo.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(jz.a.fieldOf("player").forGetter(bxo.a::a), Codec.LONG.fieldOf("timestamp").forGetter(bxo.a::b)).apply($$0, bxo.a::new)
+      );
+
+      public UUID a() {
+         return this.b;
+      }
+
+      public long b() {
+         return this.c;
       }
    }
-
-   default void ab_() {
-      this.W_();
-      this.c();
-   }
-
-   default void W_() {
-      this.a(null);
-      this.a(null);
-      this.g(null);
-      this.a(0);
-   }
-
-   @Nullable
-   bxj eq();
-
-   void a(@Nullable bxj var1);
-
-   void g(@Nullable bxj var1);
-
-   boolean c(bxj var1);
-
-   @Nullable
-   bxj f();
 }

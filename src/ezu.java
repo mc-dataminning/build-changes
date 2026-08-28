@@ -1,11 +1,12 @@
-import java.util.Set;
+public class ezu extends RuntimeException {
+   private final xa a;
 
-public interface ezu {
-   default Set<bax<?>> a() {
-      return Set.of();
+   public ezu(xa $$0) {
+      super($$0.getString());
+      this.a = $$0;
    }
 
-   default void a(ezz $$0) {
-      $$0.a(this);
+   public xa a() {
+      return this.a;
    }
 }

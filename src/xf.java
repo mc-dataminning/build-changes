@@ -1,71 +1,99 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import java.security.SignatureException;
-import java.util.ArrayList;
-import java.util.BitSet;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
 import java.util.Optional;
 
-public record xf(List<xk> d) {
-   public static final Codec<xf> a = xk.a.listOf().xmap(xf::new, xf::a);
-   public static xf b = new xf(List.of());
-   public static final int c = 20;
-
-   public void a(baa.a $$0) throws SignatureException {
-      $$0.update(Ints.toByteArray(this.d.size()));
-
-      for (xk $$1 : this.d) {
-         $$0.update($$1.b());
-      }
-   }
-
-   public xf.a a(xl $$0) {
-      return new xf.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
-   }
-
-   public List<xk> a() {
-      return this.d;
-   }
-
-   public static record a(List<xk.a> b) {
-      public static final xf.a a = new xf.a(List.of());
-
-      public a(vu $$0) {
-         this($$0.a(vu.a(ArrayList::new, 20), xk.a::a));
+public interface xf {
+   Optional<baw> a = Optional.of(baw.a);
+   xf b = new xf() {
+      @Override
+      public <T> Optional<T> a(xf.a<T> $$0) {
+         return Optional.empty();
       }
 
-      public void a(vu $$0) {
-         $$0.a(this.b, xk.a::a);
+      @Override
+      public <T> Optional<T> a(xf.b<T> $$0, xx $$1) {
+         return Optional.empty();
       }
+   };
 
-      public Optional<xf> a(xl $$0) {
-         List<xk> $$1 = new ArrayList<>(this.b.size());
+   <T> Optional<T> a(xf.a<T> var1);
 
-         for (xk.a $$2 : this.b) {
-            Optional<xk> $$3 = $$2.a($$0);
-            if ($$3.isEmpty()) {
-               return Optional.empty();
-            }
+   <T> Optional<T> a(xf.b<T> var1, xx var2);
 
-            $$1.add($$3.get());
+   static xf e(final String $$0) {
+      return new xf() {
+         @Override
+         public <T> Optional<T> a(xf.a<T> $$0x) {
+            return $$0.accept($$0);
          }
 
-         return Optional.of(new xf($$1));
-      }
-
-      public List<xk.a> a() {
-         return this.b;
-      }
+         @Override
+         public <T> Optional<T> a(xf.b<T> $$0x, xx $$1) {
+            return $$0.accept($$1, $$0);
+         }
+      };
    }
 
-   public static record b(int a, BitSet b) {
-      public b(vu $$0) {
-         this($$0.l(), $$0.e(20));
-      }
+   static xf a(final String $$0, final xx $$1) {
+      return new xf() {
+         @Override
+         public <T> Optional<T> a(xf.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
 
-      public void a(vu $$0) {
-         $$0.c(this.a);
-         $$0.a(this.b, 20);
-      }
+         @Override
+         public <T> Optional<T> a(xf.b<T> $$0x, xx $$1x) {
+            return $$0.accept($$1.a($$1), $$0);
+         }
+      };
+   }
+
+   static xf a(xf... $$0) {
+      return a(ImmutableList.copyOf($$0));
+   }
+
+   static xf a(final List<? extends xf> $$0) {
+      return new xf() {
+         @Override
+         public <T> Optional<T> a(xf.a<T> $$0x) {
+            for (xf $$1 : $$0) {
+               Optional<T> $$2 = $$1.a($$0);
+               if ($$2.isPresent()) {
+                  return $$2;
+               }
+            }
+
+            return Optional.empty();
+         }
+
+         @Override
+         public <T> Optional<T> a(xf.b<T> $$0x, xx $$1) {
+            for (xf $$2 : $$0) {
+               Optional<T> $$3 = $$2.a($$0, $$1);
+               if ($$3.isPresent()) {
+                  return $$3;
+               }
+            }
+
+            return Optional.empty();
+         }
+      };
+   }
+
+   default String getString() {
+      StringBuilder $$0 = new StringBuilder();
+      this.a($$1 -> {
+         $$0.append($$1);
+         return Optional.empty();
+      });
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      Optional<T> accept(String var1);
+   }
+
+   public interface b<T> {
+      Optional<T> accept(xx var1, String var2);
    }
 }

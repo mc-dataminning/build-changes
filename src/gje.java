@@ -1,32 +1,36 @@
-public class gje extends ggf {
-   public gje(gjt $$0) {
+import org.joml.Quaternionf;
+
+public class gje<T extends hgb> extends gio<T> {
+   private static final String a = "cape";
+   private final gle b = this.q.b("cape");
+
+   public gje(gle $$0) {
       super($$0);
    }
 
-   public static gjz a() {
-      gkb $$0 = c();
-      $$0.a()
+   public static glk a() {
+      glm $$0 = gio.a(gli.a, 0.0F);
+      glo $$1 = $$0.a();
+      glo $$2 = $$1.a("head");
+      $$2.a("hat");
+      glo $$3 = $$1.a("body");
+      $$1.a("left_arm");
+      $$1.a("right_arm");
+      $$1.a("left_leg");
+      $$1.a("right_leg");
+      $$3.a("cape", glj.c().a(0, 0).a(-5.0F, 0.0F, -1.0F, 10.0F, 16.0F, 1.0F, gli.a, 1.0F, 0.5F), glg.a(0.0F, 0.0F, 2.0F, 0.0F, (float) Math.PI, 0.0F));
+      return glk.a($$0, 64, 64);
+   }
+
+   public void a(T $$0) {
+      super.a($$0);
+      this.b
          .a(
-            "head",
-            gjy.c()
-               .a(0, 0)
-               .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
-               .a(0, 32)
-               .a(-3.0F, 0.99F, -7.0F, 6.0F, 3.0F, 2.0F)
-               .a(27, 0)
-               .a(-8.0F, -3.0F, -5.0F, 4.0F, 2.0F, 2.0F)
-               .a(39, 0)
-               .a(-8.0F, -5.0F, -5.0F, 2.0F, 2.0F, 2.0F)
-               .a(27, 0)
-               .a()
-               .a(4.0F, -3.0F, -5.0F, 4.0F, 2.0F, 2.0F)
-               .a(false)
-               .a(39, 0)
-               .a()
-               .a(6.0F, -5.0F, -5.0F, 2.0F, 2.0F, 2.0F)
-               .a(false),
-            gjv.a(0.0F, 4.0F, -8.0F)
+            new Quaternionf()
+               .rotateY((float) -Math.PI)
+               .rotateX((6.0F + $$0.c / 2.0F + $$0.b) * (float) (Math.PI / 180.0))
+               .rotateZ($$0.d / 2.0F * (float) (Math.PI / 180.0))
+               .rotateY((180.0F - $$0.d / 2.0F) * (float) (Math.PI / 180.0))
          );
-      return gjz.a($$0, 64, 64);
    }
 }

@@ -1,29 +1,24 @@
-public class adr implements zf<abu> {
-   public static final yw<vu, adr> a = zf.a(adr::a, adr::new);
-   private final buf b;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public adr(buf $$0) {
-      this.b = $$0;
-   }
-
-   private adr(vu $$0) {
-      this.b = $$0.b(buf.class);
-   }
-
-   private void a(vu $$0) {
-      $$0.a(this.b);
-   }
+public record adr(int b, List<cuz.a> c) implements zh<abw> {
+   public static final yy<vw, adr> a = yy.a(yw.h, adr::b, cuz.a.a.a(yw.a()), adr::e, adr::new);
 
    @Override
-   public zh<adr> a() {
-      return agn.W;
+   public zj<adr> a() {
+      return agp.T;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public buf b() {
-      return this.b;
+   @Nullable
+   public bwt a(djx $$0) {
+      return $$0.a(this.b);
+   }
+
+   public List<cuz.a> e() {
+      return this.c;
    }
 }

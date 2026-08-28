@@ -1,36 +1,107 @@
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public enum hpy {
-   a("movement", hpt::new),
-   b("find_tree", hps::new),
-   c("punch_tree", hpv::new),
-   d("open_inventory", hpu::new),
-   e("craft_planks", hpr::new),
-   f("none", hpq::new);
+public class hpy {
+   private static final int a = 100;
+   private final azx b = azx.a();
+   private final frd c;
+   @Nullable
+   private hox d;
+   private float e = 1.0F;
+   private int f = 100;
 
-   private final String g;
-   private final Function<hpw, ? extends hpx> h;
-
-   private <T extends hpx> hpy(final String $$0, final Function<hpw, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public hpy(frd $$0) {
+      this.c = $$0;
    }
 
-   public hpx a(hpw $$0) {
-      return this.h.apply($$0);
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public static hpy a(String $$0) {
-      for (hpy $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
+   public void a() {
+      hpx $$0 = this.c.al();
+      float $$1 = $$0.b();
+      if (this.d != null && this.e != $$1) {
+         boolean $$2 = this.a($$1);
+         if (!$$2) {
+            return;
          }
       }
 
-      return f;
+      awm $$3 = $$0.a();
+      if ($$3 == null) {
+         this.f = Math.max(this.f, 100);
+      } else {
+         if (this.d != null) {
+            if ($$0.a(this.d)) {
+               this.c.ak().b(this.d);
+               this.f = azo.a(this.b, 0, $$3.b() / 2);
+            }
+
+            if (!this.c.ak().c(this.d)) {
+               this.d = null;
+               this.f = Math.min(this.f, azo.a(this.b, $$3.b(), $$3.c()));
+            }
+         }
+
+         this.f = Math.min(this.f, $$3.c());
+         if (this.d == null && this.f-- <= 0) {
+            this.a($$0);
+         }
+      }
+   }
+
+   public void a(hpx $$0) {
+      this.d = hos.a($$0.a().a().a());
+      if (this.d.b() != hqd.b) {
+         this.c.ak().a(this.d);
+         this.c.ak().a(this.d, $$0.b());
+      }
+
+      this.f = Integer.MAX_VALUE;
+      this.e = $$0.b();
+   }
+
+   public void a(awm $$0) {
+      if (this.b($$0)) {
+         this.b();
+      }
+   }
+
+   public void b() {
+      if (this.d != null) {
+         this.c.ak().b(this.d);
+         this.d = null;
+      }
+
+      this.f += 100;
+   }
+
+   private boolean a(float $$0) {
+      if (this.d == null) {
+         return false;
+      } else if (this.e == $$0) {
+         return true;
+      } else {
+         if (this.e < $$0) {
+            this.e = this.e + azo.a(this.e, 5.0E-4F, 0.005F);
+            if (this.e > $$0) {
+               this.e = $$0;
+            }
+         } else {
+            this.e = 0.03F * $$0 + 0.97F * this.e;
+            if (Math.abs(this.e - $$0) < 1.0E-4F || this.e < $$0) {
+               this.e = $$0;
+            }
+         }
+
+         this.e = azo.a(this.e, 0.0F, 1.0F);
+         if (this.e <= 1.0E-4F) {
+            this.b();
+            return false;
+         } else {
+            this.c.ak().a(this.d, this.e);
+            return true;
+         }
+      }
+   }
+
+   public boolean b(awm $$0) {
+      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

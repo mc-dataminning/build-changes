@@ -1,53 +1,20 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public interface fgg {
-   String co = "*";
-   fgg cp = new fgg() {
-      @Override
-      public String cH() {
-         return "*";
-      }
-   };
+public class fgg extends AbstractDoubleList {
+   private final DoubleList a;
+   private final double b;
 
-   String cH();
-
-   @Nullable
-   default wy m_() {
-      return null;
+   public fgg(DoubleList $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   default wy hf() {
-      wy $$0 = this.m_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xe.e(wy.b(this.cH())))) : wy.b(this.cH());
+   public double getDouble(int $$0) {
+      return this.a.getDouble($$0) + this.b;
    }
 
-   static fgg c(final String $$0) {
-      if ($$0.equals("*")) {
-         return cp;
-      } else {
-         final wy $$1 = wy.b($$0);
-         return new fgg() {
-            @Override
-            public String cH() {
-               return $$0;
-            }
-
-            @Override
-            public wy hf() {
-               return $$1;
-            }
-         };
-      }
-   }
-
-   static fgg a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new fgg() {
-         @Override
-         public String cH() {
-            return $$1;
-         }
-      };
+   public int size() {
+      return this.a.size();
    }
 }

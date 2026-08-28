@@ -1,155 +1,77 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class bul extends eym {
-   public static final eyn<bul> a = new eyn<>("random_sequences", $$0 -> new bul($$0.c()), $$0 -> a($$0.c()), bbb.m);
-   private final long b;
-   private int c;
-   private boolean d = true;
-   private boolean e = true;
-   private final Map<alg, buk> f = new Object2ObjectOpenHashMap();
+public class bul {
+   public static final String a = "Items";
 
-   public bul(long $$0) {
-      this.b = $$0;
+   public static czy a(List<czy> $$0, int $$1, int $$2) {
+      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).f() && $$2 > 0 ? $$0.get($$1).a($$2) : czy.k;
    }
 
-   private bul(long $$0, int $$1, boolean $$2, boolean $$3, Map<alg, buk> $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f.putAll($$4);
+   public static czy a(List<czy> $$0, int $$1) {
+      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, czy.k) : czy.k;
    }
 
-   public static Codec<bul> a(long $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  RecordCodecBuilder.point($$0),
-                  Codec.INT.fieldOf("salt").forGetter($$0xx -> $$0xx.c),
-                  Codec.BOOL.optionalFieldOf("include_world_seed", true).forGetter($$0xx -> $$0xx.d),
-                  Codec.BOOL.optionalFieldOf("include_sequence_id", true).forGetter($$0xx -> $$0xx.e),
-                  Codec.unboundedMap(alg.a, buk.a).fieldOf("sequences").forGetter($$0xx -> $$0xx.f)
-               )
-               .apply($$1, bul::new)
-      );
+   public static tz a(tz $$0, jo<czy> $$1, jh.a $$2) {
+      return a($$0, $$1, true, $$2);
    }
 
-   public azv a(alg $$0) {
-      azv $$1 = this.f.computeIfAbsent($$0, this::c).a();
-      return new bul.a($$1);
-   }
+   public static tz a(tz $$0, jo<czy> $$1, boolean $$2, jh.a $$3) {
+      uf $$4 = new uf();
 
-   private buk c(alg $$0) {
-      return this.b($$0, this.c, this.d, this.e);
-   }
+      for (int $$5 = 0; $$5 < $$1.size(); $$5++) {
+         czy $$6 = $$1.get($$5);
+         if (!$$6.f()) {
+            tz $$7 = new tz();
+            $$7.a("Slot", (byte)$$5);
+            $$4.add($$6.b($$3, $$7));
+         }
+      }
 
-   private buk b(alg $$0, int $$1, boolean $$2, boolean $$3) {
-      long $$4 = ($$2 ? this.b : 0L) ^ (long)$$1;
-      return new buk($$4, $$3 ? Optional.of($$0) : Optional.empty());
-   }
+      if (!$$4.isEmpty() || $$2) {
+         $$0.a("Items", $$4);
+      }
 
-   public void a(BiConsumer<alg, buk> $$0) {
-      this.f.forEach($$0);
-   }
-
-   public void a(int $$0, boolean $$1, boolean $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public int a() {
-      int $$0 = this.f.size();
-      this.f.clear();
       return $$0;
    }
 
-   public void b(alg $$0) {
-      this.f.put($$0, this.c($$0));
-   }
+   public static void b(tz $$0, jo<czy> $$1, jh.a $$2) {
+      uf $$3 = $$0.p("Items");
 
-   public void a(alg $$0, int $$1, boolean $$2, boolean $$3) {
-      this.f.put($$0, this.b($$0, $$1, $$2, $$3));
-   }
-
-   class a implements azv {
-      private final azv c;
-
-      a(final azv $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public azv d() {
-         bul.this.f();
-         return this.c.d();
-      }
-
-      @Override
-      public ehf e() {
-         bul.this.f();
-         return this.c.e();
-      }
-
-      @Override
-      public void b(long $$0) {
-         bul.this.f();
-         this.c.b($$0);
-      }
-
-      @Override
-      public int f() {
-         bul.this.f();
-         return this.c.f();
-      }
-
-      @Override
-      public int a(int $$0) {
-         bul.this.f();
-         return this.c.a($$0);
-      }
-
-      @Override
-      public long g() {
-         bul.this.f();
-         return this.c.g();
-      }
-
-      @Override
-      public boolean h() {
-         bul.this.f();
-         return this.c.h();
-      }
-
-      @Override
-      public float i() {
-         bul.this.f();
-         return this.c.i();
-      }
-
-      @Override
-      public double j() {
-         bul.this.f();
-         return this.c.j();
-      }
-
-      @Override
-      public double k() {
-         bul.this.f();
-         return this.c.k();
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            return $$0 instanceof bul.a $$1 ? this.c.equals($$1.c) : false;
+      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+         tz $$5 = $$3.b($$4);
+         int $$6 = $$5.b("Slot", (byte)0) & 255;
+         if ($$6 >= 0 && $$6 < $$1.size()) {
+            $$1.set($$6, czy.a($$2, $$5).orElse(czy.k));
          }
+      }
+   }
+
+   public static int a(buk $$0, Predicate<czy> $$1, int $$2, boolean $$3) {
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
+         czy $$6 = $$0.a($$5);
+         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
+         if ($$7 > 0 && !$$3 && $$6.f()) {
+            $$0.a($$5, czy.k);
+         }
+
+         $$4 += $$7;
+      }
+
+      return $$4;
+   }
+
+   public static int a(czy $$0, Predicate<czy> $$1, int $$2, boolean $$3) {
+      if ($$0.f() || !$$1.test($$0)) {
+         return 0;
+      } else if ($$3) {
+         return $$0.M();
+      } else {
+         int $$4 = $$2 < 0 ? $$0.M() : Math.min($$2, $$0.M());
+         $$0.h($$4);
+         return $$4;
       }
    }
 }

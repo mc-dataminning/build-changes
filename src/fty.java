@@ -1,18 +1,22 @@
-public class fty extends fta {
-   private final fsk a;
-   private final wy b;
-   private final wy c;
+import java.util.Set;
 
-   public fty(int $$0, int $$1, int $$2, int $$3, wy $$4, fta.c $$5, fsk $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, q);
-      this.a = $$6;
-      this.b = $$4;
-      this.c = xb.a($$4.f(), xv.a.c(true));
+public class fty extends hmf {
+   private static final Set<aue<?>> a = Set.of(hmn.b, hmr.c);
+
+   public fty(hlc $$0) {
+      super($$0, ali.b("textures/atlas/gui.png"), hmz.g, a);
    }
 
    @Override
-   public void b(fsm $$0, int $$1, int $$2, float $$3) {
-      wy $$4 = this.D() ? this.c : this.b;
-      $$0.b(this.a, $$4, this.F(), this.G(), 16777215 | azm.f(this.l * 255.0F) << 24);
+   public hla a(ali $$0) {
+      return super.a($$0);
+   }
+
+   public hms a(hla $$0) {
+      return this.b($$0).a();
+   }
+
+   private hmr b(hla $$0) {
+      return $$0.e().f().a(hmr.c).orElse(hmr.a);
    }
 }

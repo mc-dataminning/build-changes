@@ -1,48 +1,64 @@
-public class fzq extends fzh<cvm> {
-   private static final alg G = alg.b("container/brewing_stand/fuel_length");
-   private static final alg H = alg.b("container/brewing_stand/brew_progress");
-   private static final alg I = alg.b("container/brewing_stand/bubbles");
-   private static final alg J = alg.b("textures/gui/container/brewing_stand.png");
-   private static final int[] K = new int[]{29, 24, 20, 16, 11, 6, 0};
+public class fzq extends fyz {
+   private ful c;
 
-   public fzq(cvm $$0, crl $$1, wy $$2) {
-      super($$0, $$1, $$2);
+   public fzq() {
+      super("");
    }
 
    @Override
-   protected void aO_() {
-      super.aO_();
-      this.v = (this.s - this.p.a(this.l)) / 2;
+   protected void aS_() {
+      super.aS_();
+      this.c = ful.a(xa.c("multiplayer.stopSleeping"), $$0 -> this.E()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
+      this.c(this.c);
    }
 
    @Override
-   public void a(fsm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+      if (!this.m.J().a(this.m.T())) {
+         this.c.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
    @Override
-   protected void a(fsm $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(grc::H, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      int $$6 = this.z.l();
-      int $$7 = azm.a((18 * $$6 + 20 - 1) / 20, 0, 18);
-      if ($$7 > 0) {
-         $$0.a(grc::H, G, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+   public void aP_() {
+      this.E();
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.E();
       }
 
-      int $$8 = this.z.m();
-      if ($$8 > 0) {
-         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
-         if ($$9 > 0) {
-            $$0.a(grc::H, H, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
-         }
+      if (!this.m.J().a(this.m.T())) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.b(this.b.a(), true);
+         this.b.a("");
+         this.m.m.d().d();
+         return true;
+      }
+   }
 
-         $$9 = K[$$8 / 2 % 7];
-         if ($$9 > 0) {
-            $$0.a(grc::H, I, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
-         }
+   private void E() {
+      gmc $$0 = this.m.t.j;
+      $$0.b(new ahy(this.m.t, ahy.a.c));
+   }
+
+   public void m() {
+      if (this.b.a().isEmpty()) {
+         this.m.a(null);
+      } else {
+         this.m.a(new fyz(this.b.a()));
       }
    }
 }

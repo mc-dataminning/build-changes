@@ -1,151 +1,105 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
 import java.util.Optional;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public final class eah {
-   private static final Map<String, eah> l = new Object2ObjectArrayMap();
-   public static final Codec<eah> a = Codec.stringResolver($$0 -> $$0.m, l::get);
-   public static final eah b = new eah(
-      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(rn.g), Optional.of(rn.q), Optional.of(rn.F), Optional.of(rn.M)
-   );
-   public static final eah c = new eah(
-      "spruce", 0.5F, Optional.of(rn.t), Optional.of(rn.u), Optional.of(rn.n), Optional.empty(), Optional.empty(), Optional.empty()
-   );
-   public static final eah d = new eah(
-      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(rn.A), Optional.of(rn.B), Optional.empty(), Optional.empty()
-   );
-   public static final eah e = new eah("azalea", Optional.empty(), Optional.of(rn.z), Optional.empty());
-   public static final eah f = new eah("birch", Optional.empty(), Optional.of(rn.l), Optional.of(rn.J));
-   public static final eah g = new eah("jungle", Optional.of(rn.s), Optional.of(rn.r), Optional.empty());
-   public static final eah h = new eah("acacia", Optional.empty(), Optional.of(rn.m), Optional.empty());
-   public static final eah i = new eah("cherry", Optional.empty(), Optional.of(rn.C), Optional.of(rn.O));
-   public static final eah j = new eah("dark_oak", Optional.of(rn.h), Optional.empty(), Optional.empty());
-   public static final eah k = new eah("pale_oak", Optional.of(rn.j), Optional.empty(), Optional.empty());
-   private final String m;
-   private final float n;
-   private final Optional<alf<ejk<?, ?>>> o;
-   private final Optional<alf<ejk<?, ?>>> p;
-   private final Optional<alf<ejk<?, ?>>> q;
-   private final Optional<alf<ejk<?, ?>>> r;
-   private final Optional<alf<ejk<?, ?>>> s;
-   private final Optional<alf<ejk<?, ?>>> t;
+public class eah {
+   private static final eah.a a = eah.a.a("trial_chamber/breeze");
+   private static final eah.a b = eah.a.a("trial_chamber/melee/husk");
+   private static final eah.a c = eah.a.a("trial_chamber/melee/spider");
+   private static final eah.a d = eah.a.a("trial_chamber/melee/zombie");
+   private static final eah.a e = eah.a.a("trial_chamber/ranged/poison_skeleton");
+   private static final eah.a f = eah.a.a("trial_chamber/ranged/skeleton");
+   private static final eah.a g = eah.a.a("trial_chamber/ranged/stray");
+   private static final eah.a h = eah.a.a("trial_chamber/slow_ranged/poison_skeleton");
+   private static final eah.a i = eah.a.a("trial_chamber/slow_ranged/skeleton");
+   private static final eah.a j = eah.a.a("trial_chamber/slow_ranged/stray");
+   private static final eah.a k = eah.a.a("trial_chamber/small_melee/baby_zombie");
+   private static final eah.a l = eah.a.a("trial_chamber/small_melee/cave_spider");
+   private static final eah.a m = eah.a.a("trial_chamber/small_melee/silverfish");
+   private static final eah.a n = eah.a.a("trial_chamber/small_melee/slime");
 
-   public eah(String $$0, Optional<alf<ejk<?, ?>>> $$1, Optional<alf<ejk<?, ?>>> $$2, Optional<alf<ejk<?, ?>>> $$3) {
-      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
+   public static void a(qh<eag> $$0) {
+      a(
+         $$0,
+         a,
+         eag.b().b(1.0F).d(0.5F).b(20).a(2.0F).c(1.0F).a(btb.a(a(bxc.s))).a(),
+         eag.b().d(0.5F).b(20).a(4.0F).c(1.0F).a(btb.a(a(bxc.s))).b(btb.<alh<fam>>b().a(fad.aN, 3).a(fad.aO, 7).a()).a()
+      );
+      a($$0, b, c().a(btb.a(a(bxc.an))).a(), c().a(btb.a(a(bxc.an, fad.ak))).b(btb.<alh<fam>>b().a(fad.aN, 3).a(fad.aO, 7).a()).a());
+      a($$0, c, c().a(btb.a(a(bxc.bp))).a(), a().a(btb.a(a(bxc.bp))).b(btb.<alh<fam>>b().a(fad.aN, 3).a(fad.aO, 7).a()).a());
+      a($$0, d, c().a(btb.a(a(bxc.bP))).a(), c().b(btb.<alh<fam>>b().a(fad.aN, 3).a(fad.aO, 7).a()).a(btb.a(a(bxc.bP, fad.ak))).a());
+      a($$0, e, c().a(btb.a(a(bxc.r))).a(), c().b(btb.<alh<fam>>b().a(fad.aN, 3).a(fad.aO, 7).a()).a(btb.a(a(bxc.r, fad.aj))).a());
+      a($$0, f, c().a(btb.a(a(bxc.bg))).a(), c().b(btb.<alh<fam>>b().a(fad.aN, 3).a(fad.aO, 7).a()).a(btb.a(a(bxc.bg, fad.aj))).a());
+      a($$0, g, c().a(btb.a(a(bxc.bt))).a(), c().b(btb.<alh<fam>>b().a(fad.aN, 3).a(fad.aO, 7).a()).a(btb.a(a(bxc.bt, fad.aj))).a());
+      a($$0, h, b().a(btb.a(a(bxc.r))).a(), b().b(btb.<alh<fam>>b().a(fad.aN, 3).a(fad.aO, 7).a()).a(btb.a(a(bxc.r, fad.aj))).a());
+      a($$0, i, b().a(btb.a(a(bxc.bg))).a(), b().b(btb.<alh<fam>>b().a(fad.aN, 3).a(fad.aO, 7).a()).a(btb.a(a(bxc.bg, fad.aj))).a());
+      a($$0, j, b().a(btb.a(a(bxc.bt))).a(), b().b(btb.<alh<fam>>b().a(fad.aN, 3).a(fad.aO, 7).a()).a(btb.a(a(bxc.bt, fad.aj))).a());
+      a(
+         $$0,
+         k,
+         eag.b().d(0.5F).b(20).a(btb.a(a(bxc.bP, $$0x -> $$0x.a("IsBaby", true), null))).a(),
+         eag.b().d(0.5F).b(20).b(btb.<alh<fam>>b().a(fad.aN, 3).a(fad.aO, 7).a()).a(btb.a(a(bxc.bP, $$0x -> $$0x.a("IsBaby", true), fad.ak))).a()
+      );
+      a($$0, l, c().a(btb.a(a(bxc.w))).a(), a().b(btb.<alh<fam>>b().a(fad.aN, 3).a(fad.aO, 7).a()).a(btb.a(a(bxc.w))).a());
+      a($$0, m, c().a(btb.a(a(bxc.bf))).a(), a().b(btb.<alh<fam>>b().a(fad.aN, 3).a(fad.aO, 7).a()).a(btb.a(a(bxc.bf))).a());
+      a(
+         $$0,
+         n,
+         c().a(btb.<dkr>b().a(a(bxc.bi, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(bxc.bi, $$0x -> $$0x.a("Size", (byte)2)), 1).a()).a(),
+         a()
+            .b(btb.<alh<fam>>b().a(fad.aN, 3).a(fad.aO, 7).a())
+            .a(btb.<dkr>b().a(a(bxc.bi, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(bxc.bi, $$0x -> $$0x.a("Size", (byte)2)), 1).a())
+            .a()
+      );
    }
 
-   public eah(
-      String $$0,
-      float $$1,
-      Optional<alf<ejk<?, ?>>> $$2,
-      Optional<alf<ejk<?, ?>>> $$3,
-      Optional<alf<ejk<?, ?>>> $$4,
-      Optional<alf<ejk<?, ?>>> $$5,
-      Optional<alf<ejk<?, ?>>> $$6,
-      Optional<alf<ejk<?, ?>>> $$7
-   ) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.r = $$5;
-      this.s = $$6;
-      this.t = $$7;
-      l.put($$0, this);
+   private static <T extends bwt> dkr a(bxc<T> $$0) {
+      return a($$0, $$0x -> {
+      }, null);
    }
 
-   @Nullable
-   private alf<ejk<?, ?>> a(azv $$0, boolean $$1) {
-      if ($$0.i() < this.n) {
-         if ($$1 && this.t.isPresent()) {
-            return this.t.get();
-         }
+   private static <T extends bwt> dkr a(bxc<T> $$0, Consumer<tz> $$1) {
+      return a($$0, $$1, null);
+   }
 
-         if (this.r.isPresent()) {
-            return this.r.get();
-         }
+   private static <T extends bwt> dkr a(bxc<T> $$0, alh<fam> $$1) {
+      return a($$0, $$0x -> {
+      }, $$1);
+   }
+
+   private static <T extends bwt> dkr a(bxc<T> $$0, Consumer<tz> $$1, @Nullable alh<fam> $$2) {
+      tz $$3 = new tz();
+      $$3.a("id", mg.f.b($$0).toString());
+      $$1.accept($$3);
+      Optional<bxf> $$4 = Optional.ofNullable($$2).map($$0x -> new bxf($$0x, 0.0F));
+      return new dkr($$3, Optional.empty(), $$4);
+   }
+
+   private static void a(qh<eag> $$0, eah.a $$1, eag $$2, eag $$3) {
+      $$0.a($$1.a, $$2);
+      $$0.a($$1.b, $$3);
+   }
+
+   static alh<eag> a(String $$0) {
+      return alh.a(mh.bi, ali.b($$0));
+   }
+
+   private static eag.a a() {
+      return eag.b().b(4.0F).d(0.5F).b(20).a(12.0F);
+   }
+
+   private static eag.a b() {
+      return eag.b().b(4.0F).d(2.0F).b(160);
+   }
+
+   private static eag.a c() {
+      return eag.b().b(3.0F).d(0.5F).b(20);
+   }
+
+   static record a(alh<eag> a, alh<eag> b) {
+
+      public static eah.a a(String $$0) {
+         return new eah.a(eah.a($$0 + "/normal"), eah.a($$0 + "/ominous"));
       }
-
-      return $$1 && this.s.isPresent() ? this.s.get() : this.q.orElse(null);
-   }
-
-   @Nullable
-   private alf<ejk<?, ?>> a(azv $$0) {
-      return this.p.isPresent() && $$0.i() < this.n ? this.p.get() : this.o.orElse(null);
-   }
-
-   public boolean a(arq $$0, ecr $$1, iv $$2, eat $$3, azv $$4) {
-      alf<ejk<?, ?>> $$5 = this.a($$4);
-      if ($$5 != null) {
-         jf<ejk<?, ?>> $$6 = $$0.F_().f(mh.aL).a($$5).orElse(null);
-         if ($$6 != null) {
-            for (int $$7 = 0; $$7 >= -1; $$7--) {
-               for (int $$8 = 0; $$8 >= -1; $$8--) {
-                  if (a($$3, $$0, $$2, $$7, $$8)) {
-                     ejk<?, ?> $$9 = $$6.a();
-                     eat $$10 = dmt.a.m();
-                     $$0.a($$2.b($$7, 0, $$8), $$10, 260);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 260);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 260);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 260);
-                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
-                        return true;
-                     }
-
-                     $$0.a($$2.b($$7, 0, $$8), $$3, 260);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 260);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 260);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 260);
-                     return false;
-                  }
-               }
-            }
-         }
-      }
-
-      alf<ejk<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
-      if ($$11 == null) {
-         return false;
-      } else {
-         jf<ejk<?, ?>> $$12 = $$0.F_().f(mh.aL).a($$11).orElse(null);
-         if ($$12 == null) {
-            return false;
-         } else {
-            ejk<?, ?> $$13 = $$12.a();
-            eat $$14 = $$0.b_($$2).g();
-            $$0.a($$2, $$14, 260);
-            if ($$13.a($$0, $$1, $$4, $$2)) {
-               if ($$0.a_($$2) == $$14) {
-                  $$0.a($$2, $$3, $$14, 2);
-               }
-
-               return true;
-            } else {
-               $$0.a($$2, $$3, 260);
-               return false;
-            }
-         }
-      }
-   }
-
-   private static boolean a(eat $$0, diq $$1, iv $$2, int $$3, int $$4) {
-      dmr $$5 = $$0.b();
-      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
-   }
-
-   private boolean a(djn $$0, iv $$1) {
-      for (iv $$2 : iv.a.c($$1.e().d(2).f(2), $$1.d().e(2).g(2))) {
-         if ($$0.a_($$2).a(axc.V)) {
-            return true;
-         }
-      }
-
-      return false;
    }
 }

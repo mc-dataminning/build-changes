@@ -1,139 +1,174 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.MoreObjects;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
 public class ebj {
-   public static final ebk a = ebk.a("attached");
-   public static final ebk b = ebk.a("berries");
-   public static final ebk c = ebk.a("bloom");
-   public static final ebk d = ebk.a("bottom");
-   public static final ebk e = ebk.a("can_summon");
-   public static final ebk f = ebk.a("conditional");
-   public static final ebk g = ebk.a("disarmed");
-   public static final ebk h = ebk.a("drag");
-   public static final ebk i = ebk.a("enabled");
-   public static final ebk j = ebk.a("extended");
-   public static final ebk k = ebk.a("eye");
-   public static final ebk l = ebk.a("falling");
-   public static final ebk m = ebk.a("hanging");
-   public static final ebk n = ebk.a("has_bottle_0");
-   public static final ebk o = ebk.a("has_bottle_1");
-   public static final ebk p = ebk.a("has_bottle_2");
-   public static final ebk q = ebk.a("has_record");
-   public static final ebk r = ebk.a("has_book");
-   public static final ebk s = ebk.a("inverted");
-   public static final ebk t = ebk.a("in_wall");
-   public static final ebk u = ebk.a("lit");
-   public static final ebk v = ebk.a("locked");
-   public static final ebk w = ebk.a("natural");
-   public static final ebk x = ebk.a("occupied");
-   public static final ebk y = ebk.a("open");
-   public static final ebk z = ebk.a("persistent");
-   public static final ebk A = ebk.a("powered");
-   public static final ebk B = ebk.a("short");
-   public static final ebk C = ebk.a("shrieking");
-   public static final ebk D = ebk.a("signal_fire");
-   public static final ebk E = ebk.a("snowy");
-   public static final ebk F = ebk.a("tip");
-   public static final ebk G = ebk.a("triggered");
-   public static final ebk H = ebk.a("unstable");
-   public static final ebk I = ebk.a("waterlogged");
-   public static final ebr<jb.a> J = ebr.a("axis", jb.a.class, jb.a.a, jb.a.c);
-   public static final ebr<jb.a> K = ebr.a("axis", jb.a.class);
-   public static final ebk L = ebk.a("up");
-   public static final ebk M = ebk.a("down");
-   public static final ebk N = ebk.a("north");
-   public static final ebk O = ebk.a("east");
-   public static final ebk P = ebk.a("south");
-   public static final ebk Q = ebk.a("west");
-   public static final ebr<jb> R = ebr.a("facing", jb.class, jb.c, jb.f, jb.d, jb.e, jb.b, jb.a);
-   public static final ebr<jb> S = ebr.a("facing", jb.class, $$0 -> $$0 != jb.b);
-   public static final ebr<jb> T = ebr.a("facing", jb.class, jb.c.a);
-   public static final ebt U = ebt.a("flower_amount", 1, 4);
-   public static final ebt V = ebt.a("segment_amount", 1, 4);
-   public static final ebr<jd> W = ebr.a("orientation", jd.class);
-   public static final ebr<ebe> X = ebr.a("face", ebe.class);
-   public static final ebr<ebh> Y = ebr.a("attachment", ebh.class);
-   public static final ebr<ecg> Z = ebr.a("east", ecg.class);
-   public static final ebr<ecg> aa = ebr.a("north", ecg.class);
-   public static final ebr<ecg> ab = ebr.a("south", ecg.class);
-   public static final ebr<ecg> ac = ebr.a("west", ecg.class);
-   public static final ebr<eby> ad = ebr.a("east", eby.class);
-   public static final ebr<eby> ae = ebr.a("north", eby.class);
-   public static final ebr<eby> af = ebr.a("south", eby.class);
-   public static final ebr<eby> ag = ebr.a("west", eby.class);
-   public static final ebr<ebp> ah = ebr.a("half", ebp.class);
-   public static final ebr<ebs> ai = ebr.a("half", ebs.class);
-   public static final ebr<ebx> aj = ebr.a("shape", ebx.class);
-   public static final ebr<ebx> ak = ebr.a("shape", ebx.class, $$0 -> $$0 != ebx.j && $$0 != ebx.i && $$0 != ebx.g && $$0 != ebx.h);
-   public static final int al = 1;
-   public static final int am = 2;
-   public static final int an = 3;
-   public static final int ao = 4;
-   public static final int ap = 5;
-   public static final int aq = 7;
-   public static final int ar = 15;
-   public static final int as = 25;
-   public static final ebt at = ebt.a("age", 0, 1);
-   public static final ebt au = ebt.a("age", 0, 2);
-   public static final ebt av = ebt.a("age", 0, 3);
-   public static final ebt aw = ebt.a("age", 0, 4);
-   public static final ebt ax = ebt.a("age", 0, 5);
-   public static final ebt ay = ebt.a("age", 0, 7);
-   public static final ebt az = ebt.a("age", 0, 15);
-   public static final ebt aA = ebt.a("age", 0, 25);
-   public static final ebt aB = ebt.a("bites", 0, 6);
-   public static final ebt aC = ebt.a("candles", 1, 4);
-   public static final ebt aD = ebt.a("delay", 1, 4);
-   public static final int aE = 7;
-   public static final ebt aF = ebt.a("distance", 1, 7);
-   public static final ebt aG = ebt.a("eggs", 1, 4);
-   public static final ebt aH = ebt.a("hatch", 0, 2);
-   public static final ebt aI = ebt.a("layers", 1, 8);
-   public static final int aJ = 0;
-   public static final int aK = 1;
-   public static final int aL = 3;
-   public static final int aM = 8;
-   public static final ebt aN = ebt.a("level", 1, 3);
-   public static final ebt aO = ebt.a("level", 0, 8);
-   public static final ebt aP = ebt.a("level", 1, 8);
-   public static final ebt aQ = ebt.a("honey_level", 0, 5);
-   public static final int aR = 15;
-   public static final ebt aS = ebt.a("level", 0, 15);
-   public static final ebt aT = ebt.a("moisture", 0, 7);
-   public static final ebt aU = ebt.a("note", 0, 24);
-   public static final ebt aV = ebt.a("pickles", 1, 4);
-   public static final ebt aW = ebt.a("power", 0, 15);
-   public static final ebt aX = ebt.a("stage", 0, 1);
-   public static final int aY = 7;
-   public static final ebt aZ = ebt.a("distance", 0, 7);
-   public static final int ba = 0;
-   public static final int bb = 4;
-   public static final ebt bc = ebt.a("charges", 0, 4);
-   public static final ebt bd = ebt.a("rotation", 0, ebz.a());
-   public static final ebr<ebg> be = ebr.a("part", ebg.class);
-   public static final ebr<ebl> bf = ebr.a("type", ebl.class);
-   public static final ebr<ebm> bg = ebr.a("mode", ebm.class);
-   public static final ebr<ebo> bh = ebr.a("hinge", ebo.class);
-   public static final ebr<ebu> bi = ebr.a("instrument", ebu.class);
-   public static final ebr<ebv> bj = ebr.a("type", ebv.class);
-   public static final ebr<ecb> bk = ebr.a("type", ecb.class);
-   public static final ebr<ecc> bl = ebr.a("shape", ecc.class);
-   public static final ebr<ecd> bm = ebr.a("mode", ecd.class);
-   public static final ebr<ebf> bn = ebr.a("leaves", ebf.class);
-   public static final ebr<ecf> bo = ebr.a("tilt", ecf.class);
-   public static final ebr<jb> bp = ebr.a("vertical_direction", jb.class, jb.b, jb.a);
-   public static final ebr<ebq> bq = ebr.a("thickness", ebq.class);
-   public static final ebr<eca> br = ebr.a("sculk_sensor_phase", eca.class);
-   public static final ebk bs = ebk.a("slot_0_occupied");
-   public static final ebk bt = ebk.a("slot_1_occupied");
-   public static final ebk bu = ebk.a("slot_2_occupied");
-   public static final ebk bv = ebk.a("slot_3_occupied");
-   public static final ebk bw = ebk.a("slot_4_occupied");
-   public static final ebk bx = ebk.a("slot_5_occupied");
-   public static final ebt by = ebt.a("dusted", 0, 3);
-   public static final ebk bz = ebk.a("cracked");
-   public static final ebk bA = ebk.a("crafting");
-   public static final ebr<dzy> bB = ebr.a("trial_spawner_state", dzy.class);
-   public static final ebr<eaf> bC = ebr.a("vault_state", eaf.class);
-   public static final ebr<ebn> bD = ebr.a("creaking_heart_state", ebn.class);
-   public static final ebk bE = ebk.a("ominous");
-   public static final ebr<ece> bF = ebr.a("mode", ece.class);
-   public static final ebk bG = ebk.a("map");
+   private final Predicate<ebi>[][][] a;
+   private final int b;
+   private final int c;
+   private final int d;
+
+   public ebj(Predicate<ebi>[][][] $$0) {
+      this.a = $$0;
+      this.b = $$0.length;
+      if (this.b > 0) {
+         this.c = $$0[0].length;
+         if (this.c > 0) {
+            this.d = $$0[0][0].length;
+         } else {
+            this.d = 0;
+         }
+      } else {
+         this.c = 0;
+         this.d = 0;
+      }
+   }
+
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   @VisibleForTesting
+   public Predicate<ebi>[][][] d() {
+      return this.a;
+   }
+
+   @Nullable
+   @VisibleForTesting
+   public ebj.b a(dka $$0, iv $$1, jb $$2, jb $$3) {
+      LoadingCache<iv, ebi> $$4 = a($$0, false);
+      return this.a($$1, $$2, $$3, $$4);
+   }
+
+   @Nullable
+   private ebj.b a(iv $$0, jb $$1, jb $$2, LoadingCache<iv, ebi> $$3) {
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         for (int $$5 = 0; $$5 < this.c; $$5++) {
+            for (int $$6 = 0; $$6 < this.b; $$6++) {
+               if (!this.a[$$6][$$5][$$4].test((ebi)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
+                  return null;
+               }
+            }
+         }
+      }
+
+      return new ebj.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
+   }
+
+   @Nullable
+   public ebj.b a(dka $$0, iv $$1) {
+      LoadingCache<iv, ebi> $$2 = a($$0, false);
+      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
+
+      for (iv $$4 : iv.c($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
+         for (jb $$5 : jb.values()) {
+            for (jb $$6 : jb.values()) {
+               if ($$6 != $$5 && $$6 != $$5.g()) {
+                  ebj.b $$7 = this.a($$4, $$5, $$6, $$2);
+                  if ($$7 != null) {
+                     return $$7;
+                  }
+               }
+            }
+         }
+      }
+
+      return null;
+   }
+
+   public static LoadingCache<iv, ebi> a(dka $$0, boolean $$1) {
+      return CacheBuilder.newBuilder().build(new ebj.a($$0, $$1));
+   }
+
+   protected static iv a(iv $$0, jb $$1, jb $$2, int $$3, int $$4, int $$5) {
+      if ($$1 != $$2 && $$1 != $$2.g()) {
+         ka $$6 = new ka($$1.j(), $$1.k(), $$1.l());
+         ka $$7 = new ka($$2.j(), $$2.k(), $$2.l());
+         ka $$8 = $$6.d($$7);
+         return $$0.b(
+            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
+         );
+      } else {
+         throw new IllegalArgumentException("Invalid forwards & up combination");
+      }
+   }
+
+   static class a extends CacheLoader<iv, ebi> {
+      private final dka a;
+      private final boolean b;
+
+      public a(dka $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public ebi a(iv $$0) {
+         return new ebi(this.a, $$0, this.b);
+      }
+   }
+
+   public static class b {
+      private final iv a;
+      private final jb b;
+      private final jb c;
+      private final LoadingCache<iv, ebi> d;
+      private final int e;
+      private final int f;
+      private final int g;
+
+      public b(iv $$0, jb $$1, jb $$2, LoadingCache<iv, ebi> $$3, int $$4, int $$5, int $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
+
+      public iv a() {
+         return this.a;
+      }
+
+      public jb b() {
+         return this.b;
+      }
+
+      public jb c() {
+         return this.c;
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      public int e() {
+         return this.f;
+      }
+
+      public int f() {
+         return this.g;
+      }
+
+      public ebi a(int $$0, int $$1, int $$2) {
+         return (ebi)this.d.getUnchecked(ebj.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
+      }
+
+      @Override
+      public String toString() {
+         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
+      }
+   }
 }

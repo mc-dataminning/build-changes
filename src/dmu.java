@@ -1,45 +1,41 @@
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface dmu {
-   boolean a(djp var1, iv var2, eat var3);
+public class dmu extends dmo implements dmt {
+   public static final MapCodec<dmu> a = b(dmu::new);
 
-   boolean a(djm var1, azv var2, iv var3, eat var4);
-
-   void a(arq var1, azv var2, iv var3, eat var4);
-
-   static boolean a_(djp $$0, iv $$1, eat $$2) {
-      return a(jb.c.a.a().toList(), $$0, $$1, $$2).isPresent();
+   @Override
+   public MapCodec<dmu> a() {
+      return a;
    }
 
-   static Optional<iv> a(djm $$0, iv $$1, eat $$2) {
-      return a(jb.c.a.c($$0.A), $$0, $$1, $$2);
+   public dmu(ebd.d $$0) {
+      super($$0);
    }
 
-   private static Optional<iv> a(List<jb> $$0, djp $$1, iv $$2, eat $$3) {
-      for (jb $$4 : $$0) {
-         iv $$5 = $$2.a($$4);
-         if ($$1.v($$5) && $$3.a($$1, $$5)) {
-            return Optional.of($$5);
-         }
+   @Override
+   public cyw b() {
+      return cyw.a;
+   }
+
+   @Override
+   public dyc a(iv $$0, ebe $$1) {
+      return new dxx($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dyc> dyd<T> a(djx $$0, ebe $$1, dye<T> $$2) {
+      return a($$2, dye.p, dxx::a);
+   }
+
+   @Override
+   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof dxx $$5) {
+         $$3.a($$5);
+         $$3.a(awz.ab);
       }
 
-      return Optional.empty();
-   }
-
-   default iv a(iv $$0) {
-      return switch (this.an_()) {
-         case a -> $$0.d();
-         case b -> $$0;
-      };
-   }
-
-   default dmu.a an_() {
-      return dmu.a.b;
-   }
-
-   public static enum a {
-      a,
-      b;
+      return bur.a;
    }
 }

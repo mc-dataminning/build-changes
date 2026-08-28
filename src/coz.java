@@ -1,187 +1,114 @@
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class coz extends coo {
-   private static final akj<Byte> a = akn.a(coz.class, akl.a);
-   private static final float b = 0.1F;
-
-   public coz(bwr<? extends coz> $$0, djm $$1) {
+public abstract class coz extends byc implements cor {
+   protected coz(bxc<? extends coz> $$0, djx $$1) {
       super($$0, $$1);
+      this.bA = 5;
    }
 
    @Override
-   protected void D() {
-      this.bD.a(1, new cdz(this));
-      this.bD.a(2, new cdm<>(this, ckl.class, 6.0F, 1.0, 1.2, $$0 -> !((ckl)$$0).t()));
-      this.bD.a(3, new cel(this, 0.4F));
-      this.bD.a(4, new coz.a(this));
-      this.bD.a(5, new cfs(this, 0.8));
-      this.bD.a(6, new cen(this, crm.class, 8.0F));
-      this.bD.a(6, new cfa(this));
-      this.bE.a(1, new cfx(this));
-      this.bE.a(2, new coz.c<>(this, crm.class));
-      this.bE.a(3, new coz.c<>(this, cjp.class));
+   public awq dm() {
+      return awq.f;
    }
 
    @Override
-   protected cgt b(djm $$0) {
-      return new cgu(this, $$0);
+   public void k_() {
+      this.eZ();
+      this.gw();
+      super.k_();
    }
 
-   @Override
-   protected void a(akn.a $$0) {
-      super.a($$0);
-      $$0.a(a, (byte)0);
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      if (!this.dU().C) {
-         this.w(this.P);
-      }
-   }
-
-   public static byo.a m() {
-      return coo.gw().a(byp.s, 16.0).a(byp.v, 0.3F);
-   }
-
-   @Override
-   protected awm u() {
-      return awn.zP;
-   }
-
-   @Override
-   protected awm e(bux $$0) {
-      return awn.zR;
-   }
-
-   @Override
-   protected awm l_() {
-      return awn.zQ;
-   }
-
-   @Override
-   protected void b(iv $$0, eat $$1) {
-      this.a(awn.zS, 0.15F, 1.0F);
-   }
-
-   @Override
-   public boolean d_() {
-      return this.n();
-   }
-
-   @Override
-   public void a(eat $$0, ffc $$1) {
-      if (!$$0.a(dmt.bz)) {
-         super.a($$0, $$1);
+   protected void gw() {
+      float $$0 = this.bw();
+      if ($$0 > 0.5F) {
+         this.bd += 2;
       }
    }
 
    @Override
-   public boolean b(bvm $$0) {
-      return $$0.a(bvo.s) ? false : super.b($$0);
+   protected boolean aa() {
+      return true;
    }
 
-   public boolean n() {
-      return (this.al.a(a) & 1) != 0;
+   @Override
+   protected awo aU() {
+      return awp.nA;
    }
 
-   public void w(boolean $$0) {
-      byte $$1 = this.al.a(a);
-      if ($$0) {
-         $$1 = (byte)($$1 | 1);
+   @Override
+   protected awo aV() {
+      return awp.nz;
+   }
+
+   @Override
+   protected awo e(bvi $$0) {
+      return awp.nx;
+   }
+
+   @Override
+   protected awo l_() {
+      return awp.nw;
+   }
+
+   @Override
+   public bxu.a eO() {
+      return new bxu.a(awp.ny, awp.nv);
+   }
+
+   @Override
+   public float a(iv $$0, dka $$1) {
+      return -$$1.x($$0);
+   }
+
+   public static boolean a(dko $$0, iv $$1, azx $$2) {
+      if ($$0.a(dkg.a, $$1) > $$2.a(32)) {
+         return false;
       } else {
-         $$1 = (byte)($$1 & -2);
-      }
-
-      this.al.a(a, $$1);
-   }
-
-   @Nullable
-   @Override
-   public byb a(dkd $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
-      $$3 = super.a($$0, $$1, $$2, $$3);
-      azv $$4 = $$0.C_();
-      if ($$4.a(100) == 0) {
-         cow $$5 = bwr.bf.a(this.dU(), bwq.g);
-         if ($$5 != null) {
-            $$5.b(this.dz(), this.dB(), this.dF(), this.dK(), 0.0F);
-            $$5.a($$0, $$1, $$2, null);
-            $$5.n(this);
-         }
-      }
-
-      if ($$3 == null) {
-         $$3 = new coz.b();
-         if ($$0.an() == bud.d && $$4.i() < 0.1F * $$1.d()) {
-            ((coz.b)$$3).a($$4);
-         }
-      }
-
-      if ($$3 instanceof coz.b $$6) {
-         jf<bvk> $$7 = $$6.a;
-         if ($$7 != null) {
-            this.a(new bvm($$7, -1));
-         }
-      }
-
-      return $$3;
-   }
-
-   @Override
-   public ffc l(bwi $$0) {
-      return $$0.dp() <= this.dp() ? new ffc(0.0, 0.3125 * (double)this.ek(), 0.0) : super.l($$0);
-   }
-
-   static class a extends cep {
-      public a(coz $$0) {
-         super($$0, 1.0, true);
-      }
-
-      @Override
-      public boolean b() {
-         return super.b() && !this.a.bY();
-      }
-
-      @Override
-      public boolean c() {
-         float $$0 = this.a.bv();
-         if ($$0 >= 0.5F && this.a.dX().a(100) == 0) {
-            this.a.g(null);
+         efb $$3 = $$0.F_();
+         int $$4 = $$3.e();
+         if ($$4 < 15 && $$0.a(dkg.b, $$1) > $$4) {
             return false;
          } else {
-            return super.c();
+            int $$5 = $$0.a().ag() ? $$0.c($$1, 10) : $$0.B($$1);
+            return $$5 <= $$3.d().a($$2);
          }
       }
    }
 
-   public static class b implements byb {
-      @Nullable
-      public jf<bvk> a;
-
-      public void a(azv $$0) {
-         int $$1 = $$0.a(5);
-         if ($$1 <= 1) {
-            this.a = bvo.a;
-         } else if ($$1 <= 2) {
-            this.a = bvo.e;
-         } else if ($$1 <= 3) {
-            this.a = bvo.j;
-         } else if ($$1 <= 4) {
-            this.a = bvo.n;
-         }
-      }
+   public static boolean b(bxc<? extends coz> $$0, dko $$1, bxb $$2, iv $$3, azx $$4) {
+      return $$1.an() != buo.a && (bxb.b($$2) || a($$1, $$3, $$4)) && a($$0, $$1, $$2, $$3, $$4);
    }
 
-   static class c<T extends bxj> extends cfy<T> {
-      public c(coz $$0, Class<T> $$1) {
-         super($$0, $$1, true);
-      }
+   public static boolean c(bxc<? extends coz> $$0, djy $$1, bxb $$2, iv $$3, azx $$4) {
+      return $$1.an() != buo.a && a($$0, $$1, $$2, $$3, $$4);
+   }
 
-      @Override
-      public boolean b() {
-         float $$0 = this.e.bv();
-         return $$0 >= 0.5F ? false : super.b();
+   public static byz.a gx() {
+      return bxw.E().a(bza.c);
+   }
+
+   @Override
+   public boolean eo() {
+      return true;
+   }
+
+   @Override
+   protected boolean ep() {
+      return true;
+   }
+
+   public boolean a(ars $$0, crx $$1) {
+      return true;
+   }
+
+   @Override
+   public czy d(czy $$0) {
+      if ($$0.h() instanceof dat) {
+         Predicate<czy> $$1 = ((dat)$$0.h()).c();
+         czy $$2 = dat.a(this, $$1);
+         return $$2.f() ? new czy(dac.pk) : $$2;
+      } else {
+         return czy.k;
       }
    }
 }

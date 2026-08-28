@@ -2,22 +2,22 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record ky(Optional<jj<czt>> c) implements dl<czs> {
+public record ky(Optional<jj<dae>> c) implements dl<dad> {
    public static final Codec<ky> a = RecordCodecBuilder.create($$0 -> $$0.group(ju.a(mh.aV).optionalFieldOf("song").forGetter(ky::c)).apply($$0, ky::new));
 
    @Override
-   public kj<czs> a() {
+   public kj<dad> a() {
       return kk.ae;
    }
 
-   public boolean a(czs $$0) {
+   public boolean a(dad $$0) {
       if (!this.c.isPresent()) {
          return true;
       } else {
          boolean $$1 = false;
 
-         for (jf<czt> $$2 : this.c.get()) {
-            Optional<alf<czt>> $$3 = $$2.e();
+         for (jf<dae> $$2 : this.c.get()) {
+            Optional<alh<dae>> $$3 = $$2.e();
             if (!$$3.isEmpty() && $$3.equals($$0.a().a())) {
                $$1 = true;
                break;

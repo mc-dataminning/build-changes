@@ -1,11 +1,6 @@
-public class heg extends hef {
-   public cll.d a;
-   public boolean b;
-   public czn c;
-   public boolean d;
+import javax.annotation.Nullable;
 
-   public heg() {
-      this.a = cll.d.a;
-      this.c = czn.k;
-   }
+public class heg extends hfp {
+   @Nullable
+   public cjv a;
 }

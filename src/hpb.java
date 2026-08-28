@@ -1,3 +1,8 @@
-public interface hpb {
-   void log(hoz var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface hpb {
 }

@@ -1,3 +1,8 @@
-public class hdn extends hdf {
-   public ffc a = ffc.c;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface hdn {
 }

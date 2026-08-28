@@ -1,58 +1,22 @@
-import java.util.List;
+public class cry extends bwx {
+   private final crx b;
 
-public class cry extends crv {
-   public static final float d = 4.0F;
-
-   public cry(bwr<? extends cry> $$0, djm $$1) {
-      super($$0, $$1);
-   }
-
-   public cry(djm $$0, bxj $$1, ffc $$2) {
-      super(bwr.J, $$1, $$2, $$0);
+   public cry(crx $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected void a(ffa $$0) {
-      super.a($$0);
-      if ($$0.d() != ffa.a.c || !this.e(((fez)$$0).a())) {
-         if (!this.dU().C) {
-            List<bxj> $$1 = this.dU().a(bxj.class, this.cQ().c(4.0, 2.0, 4.0));
-            bwa $$2 = new bwa(this.dU(), this.dz(), this.dB(), this.dF());
-            bwi $$3 = this.q();
-            if ($$3 instanceof bxj) {
-               $$2.a((bxj)$$3);
-            }
-
-            $$2.a(ly.h);
-            $$2.a(3.0F);
-            $$2.a(600);
-            $$2.d((7.0F - $$2.e()) / (float)$$2.i());
-            $$2.b(0.25F);
-            $$2.a(new bvm(bvo.g, 1, 1));
-            if (!$$1.isEmpty()) {
-               for (bxj $$4 : $$1) {
-                  double $$5 = this.g($$4);
-                  if ($$5 < 16.0) {
-                     $$2.a_($$4.dz(), $$4.dB(), $$4.dF());
-                     break;
-                  }
-               }
-            }
-
-            this.dU().c(2006, this.du(), this.aZ() ? -1 : 1);
-            this.dU().b($$2);
-            this.aq();
-         }
-      }
+   public czy a(bxd $$0, czy $$1) {
+      return $$0 == bxd.a ? this.b.gj().b($$1) : super.a($$0, $$1);
    }
 
    @Override
-   protected lw j() {
-      return ly.h;
+   public czy a(bxd $$0) {
+      return $$0 == bxd.a ? this.b.gj().g() : super.a($$0);
    }
 
    @Override
-   protected boolean g() {
-      return false;
+   public boolean a() {
+      return this.b.gj().g().f() && super.a();
    }
 }

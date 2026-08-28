@@ -1,36 +1,22 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
 
-public class chv extends chl {
-   private static final ImmutableMap<bwr<?>, Float> a = ImmutableMap.builder()
-      .put(bwr.K, 8.0F)
-      .put(bwr.S, 12.0F)
-      .put(bwr.am, 8.0F)
-      .put(bwr.an, 12.0F)
-      .put(bwr.aT, 15.0F)
-      .put(bwr.aZ, 12.0F)
-      .put(bwr.bC, 8.0F)
-      .put(bwr.bE, 10.0F)
-      .put(bwr.bN, 10.0F)
-      .put(bwr.bO, 8.0F)
-      .put(bwr.bQ, 8.0F)
-      .build();
-
+public class chv<T extends bxu> extends cic<T> {
    @Override
-   protected boolean a(arq $$0, bxj $$1, bxj $$2) {
-      return this.b($$2) && this.a($$1, $$2);
-   }
-
-   private boolean a(bxj $$0, bxj $$1) {
-      float $$2 = (Float)a.get($$1.an());
-      return $$1.g($$0) <= (double)($$2 * $$2);
+   protected void a(ars $$0, T $$1) {
+      double $$2 = $$1.h(bza.m);
+      ffl $$3 = $$1.cR().c($$2, $$2, $$2);
+      List<bxu> $$4 = $$0.a(bxu.class, $$3, $$1x -> $$1x != $$1 && $$1x.bJ());
+      $$4.sort(Comparator.comparingDouble($$1::g));
+      byu<?> $$5 = $$1.ec();
+      $$5.a(cgw.g, $$4);
+      $$5.a(cgw.h, new cgy($$0, $$1, $$4));
    }
 
    @Override
-   protected cgl<bxj> b() {
-      return cgl.B;
-   }
-
-   private boolean b(bxj $$0) {
-      return a.containsKey($$0.an());
+   public Set<cgw<?>> a() {
+      return ImmutableSet.of(cgw.g, cgw.h);
    }
 }

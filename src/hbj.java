@@ -1,35 +1,25 @@
-public class hbj extends hbm<her, ghv> {
-   private final gho a;
-   private final hen b = new hen();
+public class hbj extends gzo<cpp, hhb, gkr> {
+   private static final ali a = ali.b("textures/entity/witch.png");
 
-   public hbj(gyv<her, ghv> $$0, gjp $$1) {
-      super($$0);
-      this.a = new gho($$1.a(gjs.cb));
-      this.b.c = gho.a.e;
+   public hbj(gyi.a $$0) {
+      super($$0, new gkr($$0.a(gld.dT)), 0.5F);
+      this.a(new hdj(this));
    }
 
-   public void a(fkd $$0, gqr $$1, int $$2, her $$3, float $$4, float $$5) {
-      cjt.b $$6 = $$3.aE;
-      if ($$6 != null) {
-         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
-      }
-
-      cjt.b $$7 = $$3.aF;
-      if ($$7 != null) {
-         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
-      }
+   public ali a(hhb $$0) {
+      return a;
    }
 
-   private void a(fkd $$0, gqr $$1, int $$2, her $$3, cjt.b $$4, float $$5, float $$6, boolean $$7) {
-      $$0.a();
-      $$0.a($$7 ? 0.4F : -0.4F, $$3.N ? -1.3F : -1.5F, 0.0F);
-      this.b.u = $$3.u;
-      this.b.ad = $$3.ad;
-      this.b.ae = $$3.ae;
-      this.b.aa = $$5;
-      this.b.ab = $$6;
-      this.a.a(this.b);
-      this.a.a($$0, $$1.getBuffer(this.a.a(gyl.a($$4))), $$2, hjg.d);
-      $$0.b();
+   public hhb b() {
+      return new hhb();
+   }
+
+   public void a(cpp $$0, hhb $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      hfe.a($$0, $$1, this.h);
+      $$1.a = $$0.ao();
+      czy $$3 = $$0.fb();
+      $$1.b = !$$3.f();
+      $$1.c = $$3.a(dac.tt);
    }
 }

@@ -1,130 +1,103 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 
 public class dlb {
-   private static final Logger d = LogUtils.getLogger();
-   private static final float e = 0.1F;
-   public static final bsq<dlb.c> a = bsq.a();
-   public static final dlb b = new dlb.a().a();
-   public static final MapCodec<dlb> c = RecordCodecBuilder.mapCodec(
+   private static final Logger c = LogUtils.getLogger();
+   public static final dlb a = new dlb(jj.a(), List.of());
+   public static final MapCodec<dlb> b = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
-               Codec.simpleMap(bxm.i, bsq.a(dlb.c.a).promotePartial(ag.a("Spawn data: ", d::error)), bak.a(bxm.values()))
-                  .fieldOf("spawners")
-                  .forGetter($$0x -> $$0x.g),
-               Codec.simpleMap(mg.f.q(), dlb.b.a, mg.f).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
+               ejh.c.promotePartial(ag.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               erf.d.promotePartial(ag.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, dlb::new)
    );
-   private final float f;
-   private final Map<bxm, bsq<dlb.c>> g;
-   private final Map<bwr<?>, dlb.b> h;
+   private final jj<ejh<?>> d;
+   private final List<jj<erf>> e;
+   private final Supplier<List<ejv<?, ?>>> f;
+   private final Supplier<Set<erf>> g;
 
-   dlb(float $$0, Map<bxm, bsq<dlb.c>> $$1, Map<bwr<?>, dlb.b> $$2) {
-      this.f = $$0;
-      this.g = ImmutableMap.copyOf($$1);
-      this.h = ImmutableMap.copyOf($$2);
+   dlb(jj<ejh<?>> $$0, List<jj<erf>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(jj::a).map(jf::a).flatMap(erf::a).filter($$0xx -> $$0xx.b() == ekk.h).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(jj::a).map(jf::a).collect(Collectors.toSet()));
    }
 
-   public bsq<dlb.c> a(bxm $$0) {
-      return this.g.getOrDefault($$0, a);
+   public Iterable<jf<ejh<?>>> a() {
+      return this.d;
    }
 
-   @Nullable
-   public dlb.b a(bwr<?> $$0) {
-      return this.h.get($$0);
+   public List<ejv<?, ?>> b() {
+      return this.f.get();
    }
 
-   public float a() {
-      return this.f;
+   public List<jj<erf>> c() {
+      return this.e;
    }
 
-   public static class a {
-      private final Map<bxm, bsq.a<dlb.c>> a = ag.a(bxm.class, $$0 -> bsq.b());
-      private final Map<bwr<?>, dlb.b> b = Maps.newLinkedHashMap();
-      private float c = 0.1F;
+   public boolean a(erf $$0) {
+      return this.g.get().contains($$0);
+   }
 
-      public dlb.a a(bxm $$0, int $$1, dlb.c $$2) {
-         this.a.get($$0).a($$2, $$1);
+   public static class a extends dlb.b {
+      private final jg<erf> a;
+      private final jg<ejh<?>> b;
+
+      public a(jg<erf> $$0, jg<ejh<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public dlb.a a(egz.a $$0, alh<erf> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
          return this;
       }
 
-      public dlb.a a(bwr<?> $$0, double $$1, double $$2) {
-         this.b.put($$0, new dlb.b($$2, $$1));
+      public dlb.a a(alh<ejh<?>> $$0) {
+         this.a(this.b.b($$0));
+         return this;
+      }
+   }
+
+   public static class b {
+      private final List<jf<ejh<?>>> a = new ArrayList<>();
+      private final List<List<jf<erf>>> b = new ArrayList<>();
+
+      public dlb.b a(egz.a $$0, jf<erf> $$1) {
+         return this.a($$0.ordinal(), $$1);
+      }
+
+      public dlb.b a(int $$0, jf<erf> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
          return this;
       }
 
-      public dlb.a a(float $$0) {
-         this.c = $$0;
+      public dlb.b a(jf<ejh<?>> $$0) {
+         this.a.add($$0);
          return this;
+      }
+
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
+         }
       }
 
       public dlb a() {
-         return new dlb(
-            this.c,
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ((bsq.a)$$0.getValue()).a())),
-            ImmutableMap.copyOf(this.b)
-         );
-      }
-   }
-
-   public static record b(double b, double c) {
-      public static final Codec<dlb.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
-               .apply($$0, dlb.b::new)
-      );
-
-      public double a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-   }
-
-   public static record c(bwr<?> b, int c, int d) {
-      public static final MapCodec<dlb.c> a = RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     mg.f.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                     ayu.m.fieldOf("minCount").forGetter($$0x -> $$0x.c),
-                     ayu.m.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
-                  )
-                  .apply($$0, dlb.c::new)
-         )
-         .validate($$0 -> $$0.c > $$0.d ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount") : DataResult.success($$0));
-
-      public c(bwr<?> b, int c, int d) {
-         b = b.f() == bxm.h ? bwr.aQ : b;
-         this.b = b;
-         this.c = c;
-         this.d = d;
-      }
-
-      @Override
-      public String toString() {
-         return bwr.a(this.b) + "*(" + this.c + "-" + this.d + ")";
-      }
-
-      public bwr<?> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
+         return new dlb(jj.a(this.a), this.b.stream().map(jj::a).collect(ImmutableList.toImmutableList()));
       }
    }
 }

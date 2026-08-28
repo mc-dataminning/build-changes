@@ -1,30 +1,22 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
+import java.time.Duration;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class bsi {
-   private final Set<String> a = new ObjectOpenHashSet();
-
-   public Set<bsa> a(Supplier<bqn> $$0) {
-      Set<bsa> $$1 = $$0.get()
-         .e()
-         .stream()
-         .filter($$0x -> !this.a.contains($$0x.getLeft()))
-         .map($$1x -> a($$0, (String)$$1x.getLeft(), (brz)$$1x.getRight()))
-         .collect(Collectors.toSet());
-
-      for (bsa $$2 : $$1) {
-         this.a.add($$2.d());
+public record bsi<T extends bsh>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
+   public static <T extends bsh> bsi<T> a(List<T> $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("No values");
+      } else {
+         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(bsh::a)).toList();
+         Duration $$2 = $$1.stream().map(bsh::a).reduce(Duration::plus).orElse(Duration.ZERO);
+         T $$3 = (T)$$1.get(0);
+         T $$4 = (T)$$1.get($$1.size() - 1);
+         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
+         int $$6 = $$1.size();
+         Map<Integer, Double> $$7 = brk.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
+         return new bsi<>($$3, $$4, $$5, $$6, $$7, $$2);
       }
-
-      return $$1;
-   }
-
-   private static bsa a(Supplier<bqn> $$0, String $$1, brz $$2) {
-      return bsa.a($$1, $$2, () -> {
-         bqi.a $$2x = $$0.get().c($$1);
-         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)baq.b;
-      });
    }
 }

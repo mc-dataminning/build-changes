@@ -1,36 +1,18 @@
-public class ahu implements zf<agp> {
-   public static final yw<vu, ahu> a = zf.a(ahu::a, ahu::new);
-   private static final int b = 2;
-   private final boolean c;
+import io.netty.buffer.ByteBuf;
 
-   public ahu(cri $$0) {
-      this.c = $$0.b;
-   }
-
-   private ahu(vu $$0) {
-      byte $$1 = $$0.readByte();
-      this.c = ($$1 & 2) != 0;
-   }
-
-   private void a(vu $$0) {
-      byte $$1 = 0;
-      if (this.c) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.l($$1);
-   }
+public record ahu(int b, boolean c) implements zh<agr> {
+   public static final yy<ByteBuf, ahu> a = yy.a(yw.h, ahu::b, yw.b, ahu::e, ahu::new);
 
    @Override
-   public zh<ahu> a() {
-      return agn.bR;
+   public zj<ahu> a() {
+      return agp.bP;
    }
 
-   public void a(agp $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public boolean e() {
       return this.c;
    }
 }

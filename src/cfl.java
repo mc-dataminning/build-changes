@@ -1,67 +1,42 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cfl extends cef {
-   private static final int a = 10;
-   private final bxr b;
-   private final int c;
-   @Nullable
-   private iv d;
+public class cfl extends ceq {
+   private final bxw a;
+   private double b;
+   private double c;
+   private int d;
 
-   public cfl(bxr $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
-      this.a(EnumSet.of(cef.a.a));
+   public cfl(bxw $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(ceq.a.a, ceq.a.b));
    }
 
    @Override
    public boolean b() {
-      if (this.b.cW()) {
-         return false;
-      } else if (this.b.dU().V()) {
-         return false;
-      } else if (this.b.dX().a(this.c) != 0) {
-         return false;
-      } else {
-         arq $$0 = (arq)this.b.dU();
-         iv $$1 = this.b.du();
-         if (!$$0.a($$1, 6)) {
-            return false;
-         } else {
-            ffc $$2 = cif.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(jy.a($$1x))));
-            this.d = $$2 == null ? null : iv.a((jp)$$2);
-            return this.d != null;
-         }
-      }
+      return this.a.dY().i() < 0.02F;
    }
 
    @Override
    public boolean c() {
-      return this.d != null && !this.b.O().k() && this.b.O().g().equals(this.d);
+      return this.d >= 0;
+   }
+
+   @Override
+   public void d() {
+      double $$0 = (Math.PI * 2) * this.a.dY().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.dY().a(20);
+   }
+
+   @Override
+   public boolean V_() {
+      return true;
    }
 
    @Override
    public void a() {
-      if (this.d != null) {
-         cgt $$0 = this.b.O();
-         if ($$0.k() && !this.d.a(this.b.ds(), 10.0)) {
-            ffc $$1 = ffc.c(this.d);
-            ffc $$2 = this.b.ds();
-            ffc $$3 = $$2.d($$1);
-            $$1 = $$3.c(0.4).e($$1);
-            ffc $$4 = $$1.d($$2).d().c(10.0).e($$2);
-            iv $$5 = iv.a((jp)$$4);
-            $$5 = this.b.dU().a(egs.a.f, $$5);
-            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
-               this.h();
-            }
-         }
-      }
-   }
-
-   private void h() {
-      azv $$0 = this.b.dX();
-      iv $$1 = this.b.dU().a(egs.a.f, this.b.du().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
-      this.b.O().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
+      this.d--;
+      this.a.J().a(this.a.dA() + this.b, this.a.dE(), this.a.dG() + this.c);
    }
 }

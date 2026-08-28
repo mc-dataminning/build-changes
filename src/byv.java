@@ -1,79 +1,59 @@
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class byv<E extends bxr> extends bza<E> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
-   private final float g;
-   private final Function<bxr, axr<buz>> h;
+public class byv {
+   public static final Codec<jf<byv>> a = mg.s.r();
+   public static final yy<wl, jf<byv>> b = yw.b(mh.c);
+   private final double c;
+   private boolean d;
+   private final String e;
+   private byv.a f = byv.a.a;
 
-   public byv(float $$0) {
-      this($$0, $$0x -> axd.F);
+   protected byv(String $$0, double $$1) {
+      this.c = $$1;
+      this.e = $$0;
    }
 
-   public byv(float $$0, Function<bxr, axr<buz>> $$1) {
-      super(Map.of(cgl.aa, cgm.c, cgl.y, cgm.c), 100, 120);
-      this.g = $$0;
-      this.h = $$1;
+   public double a() {
+      return this.c;
    }
 
-   protected boolean a(arq $$0, E $$1) {
-      return $$1.eb().c(cgl.y).map($$1x -> $$1x.a(this.h.apply($$1))).orElse(false) || $$1.eb().a(cgl.aa);
+   public boolean b() {
+      return this.d;
    }
 
-   protected boolean a(arq $$0, E $$1, long $$2) {
-      return true;
+   public byv a(boolean $$0) {
+      this.d = $$0;
+      return this;
    }
 
-   protected void b(arq $$0, E $$1, long $$2) {
-      $$1.eb().a(cgl.aa, true);
-      $$1.eb().b(cgl.n);
+   public byv a(byv.a $$0) {
+      this.f = $$0;
+      return this;
    }
 
-   protected void c(arq $$0, E $$1, long $$2) {
-      byj<?> $$3 = $$1.eb();
-      $$3.b(cgl.aa);
+   public double a(double $$0) {
+      return $$0;
    }
 
-   protected void d(arq $$0, E $$1, long $$2) {
-      if ($$1.O().k()) {
-         ffc $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.eb().a(cgl.n, new cgo($$3, this.g, 0));
-         }
-      }
+   public String c() {
+      return this.e;
    }
 
-   @Nullable
-   private ffc a(E $$0, arq $$1) {
-      if ($$0.bW()) {
-         Optional<ffc> $$2 = this.a((diq)$$1, $$0).map(ffc::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
-         }
-      }
-
-      return cif.a($$0, 5, 4);
+   public o b(boolean $$0) {
+      return this.f.a($$0);
    }
 
-   private Optional<iv> a(diq $$0, bwi $$1) {
-      iv $$2 = $$1.du();
-      if (!$$0.a_($$2).g($$0, $$2).c()) {
-         return Optional.empty();
-      } else {
-         Predicate<iv> $$3;
-         if (azm.f($$1.dp()) == 2) {
-            $$3 = $$1x -> iv.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(axh.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(axh.a);
-         }
+   public static enum a {
+      a,
+      b,
+      c;
 
-         return iv.a($$2, 5, 1, $$3);
+      public o a(boolean $$0) {
+         return switch (this) {
+            case a -> $$0 ? o.j : o.m;
+            case b -> o.h;
+            case c -> $$0 ? o.m : o.j;
+         };
       }
    }
 }

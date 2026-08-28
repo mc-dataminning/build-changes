@@ -1,31 +1,35 @@
-public record aar(int c, exo d, float e) implements aai {
-   public static final yw<vu, aar> a = aai.a(aar::a, aar::new);
-   public static final aai.b<aar> b = aai.a("debug/path");
+public record aar(aar.a c) implements aak {
+   public static final yy<vw, aar> a = aak.a(aar::a, aar::new);
+   public static final aak.b<aar> b = aak.a("debug/hive");
 
-   private aar(vu $$0) {
-      this($$0.readInt(), exo.b($$0), $$0.readFloat());
+   private aar(vw $$0) {
+      this(new aar.a($$0));
    }
 
-   private void a(vu $$0) {
-      $$0.q(this.c);
-      this.d.a($$0);
-      $$0.a(this.e);
+   private void a(vw $$0) {
+      this.c.a($$0);
    }
 
    @Override
-   public aai.b<aar> a() {
+   public aak.b<aar> a() {
       return b;
    }
 
-   public int b() {
+   public aar.a b() {
       return this.c;
    }
 
-   public exo c() {
-      return this.d;
-   }
+   public static record a(iv a, String b, int c, int d, boolean e) {
+      public a(vw $$0) {
+         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
 
-   public float d() {
-      return this.e;
+      public void a(vw $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.q(this.c);
+         $$0.q(this.d);
+         $$0.a(this.e);
+      }
    }
 }

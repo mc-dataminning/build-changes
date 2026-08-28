@@ -1,83 +1,46 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Collection;
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+public final class fgj extends ffz {
+   private final ffz d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final int j;
 
-public abstract class fgj {
-   public boolean a(@Nullable fgj $$0) {
-      return $$0 == null ? false : this == $$0;
+   protected fgj(ffz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   public abstract String c();
-
-   public abstract xm d(wy var1);
-
-   public abstract boolean j();
-
-   public abstract boolean i();
-
-   public abstract fgj.b k();
-
-   public abstract o o();
-
-   public abstract Collection<String> h();
-
-   public abstract fgj.b l();
-
-   public abstract fgj.a m();
-
-   public static enum a implements bak {
-      a("always", 0),
-      b("never", 1),
-      c("pushOtherTeams", 2),
-      d("pushOwnTeam", 3);
-
-      public static final Codec<fgj.a> e = bak.a(fgj.a::values);
-      private static final IntFunction<fgj.a> i = ayc.a($$0 -> $$0.h, values(), ayc.a.a);
-      public static final yw<ByteBuf, fgj.a> f = yu.a(i, $$0 -> $$0.h);
-      public final String g;
-      public final int h;
-
-      private a(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
-      }
-
-      public wy a() {
-         return wy.c("team.collision." + this.g);
-      }
-
-      @Override
-      public String c() {
-         return this.g;
-      }
+   @Override
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   public static enum b implements bak {
-      a("always", 0),
-      b("never", 1),
-      c("hideForOtherTeams", 2),
-      d("hideForOwnTeam", 3);
+   @Override
+   public void c(int $$0, int $$1, int $$2) {
+      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
+   }
 
-      public static final Codec<fgj.b> e = bak.a(fgj.b::values);
-      private static final IntFunction<fgj.b> i = ayc.a($$0 -> $$0.h, values(), ayc.a.a);
-      public static final yw<ByteBuf, fgj.b> f = yu.a(i, $$0 -> $$0.h);
-      public final String g;
-      public final int h;
+   @Override
+   public int a(jb.a $$0) {
+      return this.a($$0, this.d.a($$0));
+   }
 
-      private b(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
-      }
+   @Override
+   public int b(jb.a $$0) {
+      return this.a($$0, this.d.b($$0));
+   }
 
-      public wy a() {
-         return wy.c("team.visibility." + this.g);
-      }
-
-      @Override
-      public String c() {
-         return this.g;
-      }
+   private int a(jb.a $$0, int $$1) {
+      int $$2 = $$0.a(this.e, this.f, this.g);
+      int $$3 = $$0.a(this.h, this.i, this.j);
+      return azo.a($$1, $$2, $$3) - $$2;
    }
 }

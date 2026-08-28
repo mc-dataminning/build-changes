@@ -1,121 +1,147 @@
-public class cul extends cua implements dyt {
-   private boolean c = true;
-   private boolean d = false;
+import javax.annotation.Nullable;
 
-   public cul(bwr<? extends cul> $$0, djm $$1) {
+public abstract class cul extends cuk implements cup {
+   private jo<czy> b = jo.a(36, czy.k);
+   @Nullable
+   private alh<fam> c;
+   private long d;
+
+   protected cul(bxc<?> $$0, djx $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public eat v() {
-      return dmt.hD.m();
+   public void a(ars $$0, bvi $$1) {
+      super.a($$0, $$1);
+      this.a($$1, $$0, this);
    }
 
    @Override
-   public int x() {
-      return 1;
+   public czy a(int $$0) {
+      return this.g_($$0);
    }
 
    @Override
-   public int b() {
-      return 5;
+   public czy a(int $$0, int $$1) {
+      return this.b($$0, $$1);
    }
 
    @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.A()) {
-         this.q($$4);
+   public czy b(int $$0) {
+      return this.f_($$0);
+   }
+
+   @Override
+   public void a(int $$0, czy $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public byl a_(int $$0) {
+      return this.h_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(crx $$0) {
+      return this.g($$0);
+   }
+
+   @Override
+   public void a(bwt.d $$0) {
+      if (!this.dV().C && $$0.a()) {
+         bun.a(this.dV(), this, this);
       }
-   }
 
-   public boolean A() {
-      return this.c;
-   }
-
-   public void q(boolean $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public double B() {
-      return this.dz();
-   }
-
-   @Override
-   public double C() {
-      return this.dB() + 0.5;
-   }
-
-   @Override
-   public double D() {
-      return this.dF();
-   }
-
-   @Override
-   public boolean E() {
-      return false;
-   }
-
-   @Override
-   public void h() {
-      this.d = false;
-      super.h();
-      this.J();
-   }
-
-   @Override
-   protected double a(iv $$0, ebx $$1, double $$2) {
-      double $$3 = super.a($$0, $$1, $$2);
-      this.J();
-      return $$3;
-   }
-
-   private void J() {
-      if (!this.dU().C && this.bI() && this.A() && !this.d && this.F()) {
-         this.d = true;
-         this.e();
-      }
-   }
-
-   public boolean F() {
-      if (dyu.a(this.dU(), this)) {
-         return true;
-      } else {
-         for (cnr $$1 : this.dU().a(cnr.class, this.cQ().c(0.25, 0.0, 0.25), bwp.a)) {
-            if (dyu.a(this, $$1)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   protected czj o() {
-      return czr.oz;
-   }
-
-   @Override
-   public czn dH() {
-      return new czn(czr.oz);
+      super.a($$0);
    }
 
    @Override
    protected void b(tz $$0) {
       super.b($$0);
-      $$0.a("Enabled", this.c);
+      this.a($$0, this.dX());
    }
 
    @Override
    protected void a(tz $$0) {
       super.a($$0);
-      this.c = $$0.c("Enabled") ? $$0.o("Enabled") : true;
+      this.b($$0, this.dX());
    }
 
    @Override
-   public cvf a(int $$0, crl $$1) {
-      return new cwg($$0, $$1, this);
+   public bur a(crx $$0, buq $$1) {
+      return this.b_($$0);
+   }
+
+   @Override
+   protected ffq a(ffq $$0) {
+      float $$1 = 0.98F;
+      if (this.c == null) {
+         int $$2 = 15 - cvq.b(this);
+         $$1 += (float)$$2 * 0.001F;
+      }
+
+      if (this.bi()) {
+         $$1 *= 0.95F;
+      }
+
+      return $$0.d((double)$$1, 0.0, (double)$$1);
+   }
+
+   @Override
+   public void a() {
+      this.ak_();
+   }
+
+   public void a(alh<fam> $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   @Nullable
+   @Override
+   public cvq createMenu(int $$0, crw $$1, crx $$2) {
+      if (this.c != null && $$2.Z_()) {
+         return null;
+      } else {
+         this.f($$1.h);
+         return this.a($$0, $$1);
+      }
+   }
+
+   protected abstract cvq a(int var1, crw var2);
+
+   @Nullable
+   @Override
+   public alh<fam> q() {
+      return this.c;
+   }
+
+   @Override
+   public void a(@Nullable alh<fam> $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public long s() {
+      return this.d;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public jo<czy> t() {
+      return this.b;
+   }
+
+   @Override
+   public void u() {
+      this.b = jo.a(this.b(), czy.k);
    }
 }

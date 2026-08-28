@@ -1,34 +1,43 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public record fcw(boolean b) implements fdc {
-   public static final MapCodec<fcw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(fcw::e)).apply($$0, fcw::new));
+public class fcw extends fbu {
+   private static final Logger b = LogUtils.getLogger();
+   public static final MapCodec<fcw> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, fcw::new));
 
-   public boolean a(ezt $$0) {
-      return $$0.b(fcn.l) == this.b;
+   private fcw(List<fdq> $$0) {
+      super($$0);
    }
 
    @Override
-   public fdd b() {
-      return fde.s;
+   public fbw<fcw> b() {
+      return fbx.l;
    }
 
    @Override
-   public Set<bax<?>> a() {
-      return Set.of(fcn.l);
+   public czy a(czy $$0, fah $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         dfi $$2 = new dfi($$0);
+         Optional<deu<dfj>> $$3 = $$1.d().t().a(dfa.b, $$2, $$1.d());
+         if ($$3.isPresent()) {
+            czy $$4 = $$3.get().b().a($$2, $$1.d().J_());
+            if (!$$4.f()) {
+               return $$4.c($$0.M());
+            }
+         }
+
+         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
+         return $$0;
+      }
    }
 
-   public static fdc.a c() {
-      return () -> new fcw(true);
-   }
-
-   public static fdc.a d() {
-      return () -> new fcw(false);
-   }
-
-   public boolean e() {
-      return this.b;
+   public static fbu.a<?> c() {
+      return a(fcw::new);
    }
 }

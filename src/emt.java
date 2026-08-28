@@ -1,33 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record emt(int b, int c, int d, int e, int f, btl g, float h) implements emc {
+public class emt implements emp {
    public static final Codec<emt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(emt::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(emt::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(emt::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(emt::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(emt::f),
-               btl.c.fieldOf("extra_rare_growths").forGetter(emt::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(emt::h)
-            )
+      $$0 -> $$0.group(Codec.intRange(0, efb.c).fieldOf("height").forGetter($$0x -> $$0x.b), ebe.a.fieldOf("state").forGetter($$0x -> $$0x.c))
             .apply($$0, emt::new)
    );
+   public final int b;
+   public final ebe c;
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
+   public emt(int $$0, ebe $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 }

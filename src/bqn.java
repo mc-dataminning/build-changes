@@ -1,12 +1,24 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import com.mojang.brigadier.StringReader;
 
-public interface bqn extends bqq {
-   bqo d();
+public class bqn extends bps<StringReader> {
+   private final StringReader a;
 
-   @Nullable
-   bqi.a c(String var1);
+   public bqn(bpw<StringReader> $$0, StringReader $$1) {
+      super($$0);
+      this.a = $$1;
+   }
 
-   Set<Pair<String, brz>> e();
+   public StringReader h() {
+      return this.a;
+   }
+
+   @Override
+   public int g() {
+      return this.a.getCursor();
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.a.setCursor($$0);
+   }
 }

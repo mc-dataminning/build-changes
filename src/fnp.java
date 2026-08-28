@@ -1,19 +1,31 @@
-import java.util.function.Consumer;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.List;
 
-public class fnp {
-   private static final int a = 8226750;
-   private static final wy b = wy.c("mco.info").b(8226750);
-   private static final wy c = wy.c("mco.warning").b(-65536);
+public class fnp extends fns {
+   public long a;
+   public List<fno> b = Lists.newArrayList();
 
-   public static fuc a(fys $$0, wy $$1, Consumer<fuc> $$2) {
-      return new fuc.a($$0, b).a($$1).a(wx.j, $$2).a(wx.e, fuc::aL_).a();
-   }
+   public static fnp a(String $$0) {
+      fnp $$1 = new fnp();
+      JsonParser $$2 = new JsonParser();
 
-   public static fuc b(fys $$0, wy $$1, Consumer<fuc> $$2) {
-      return new fuc.a($$0, c).a($$1).a(wx.j, $$2).a(wx.e, fuc::aL_).a();
-   }
+      try {
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         $$1.a = fpp.a("periodInMillis", $$4, -1L);
+         JsonElement $$5 = $$4.get("playerActivityDto");
+         if ($$5 != null && $$5.isJsonArray()) {
+            for (JsonElement $$7 : $$5.getAsJsonArray()) {
+               fno $$8 = fno.a($$7.getAsJsonObject());
+               $$1.b.add($$8);
+            }
+         }
+      } catch (Exception var10) {
+      }
 
-   public static fuc c(fys $$0, wy $$1, Consumer<fuc> $$2) {
-      return new fuc.a($$0, c).a($$1).a(wx.h, $$2).a();
+      return $$1;
    }
 }

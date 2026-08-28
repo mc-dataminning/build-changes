@@ -1,27 +1,38 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class hbc extends gwy<clt, heq, ggj<heq>> {
+   private final ali a;
 
-public class hbc extends hbm<hdz, ghf> {
-   private static final Map<bwe.a, alg> a = ImmutableMap.of(
-      bwe.a.b,
-      alg.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      bwe.a.c,
-      alg.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      bwe.a.d,
-      alg.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public hbc(gyv<hdz, ghf> $$0) {
-      super($$0);
+   public hbc(gyi.a $$0, hbc.a $$1) {
+      super($$0, new gim($$0.a($$1.d)), new gim($$0.a($$1.e)));
+      this.a = $$1.c;
+      this.a(new hcz<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new gib($$0.a($$1.g)), new gib($$0.a($$1.h))));
    }
 
-   public void a(fkd $$0, gqr $$1, int $$2, hdz $$3, float $$4, float $$5) {
-      if (!$$3.z) {
-         bwe.a $$6 = $$3.c;
-         if ($$6 != bwe.a.a) {
-            alg $$7 = a.get($$6);
-            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
-         }
+   public ali a(heq $$0) {
+      return this.a;
+   }
+
+   public heq b() {
+      return new heq();
+   }
+
+   public static enum a {
+      a(ali.b("textures/entity/horse/horse_skeleton.png"), gld.cZ, gld.da, hng.d.n, gld.db, gld.dc),
+      b(ali.b("textures/entity/horse/horse_zombie.png"), gld.em, gld.en, hng.d.m, gld.eo, gld.ep);
+
+      final ali c;
+      final glc d;
+      final glc e;
+      final hng.d f;
+      final glc g;
+      final glc h;
+
+      private a(final ali $$0, final glc $$1, final glc $$2, final hng.d $$3, final glc $$4, final glc $$5) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+         this.h = $$5;
       }
    }
 }

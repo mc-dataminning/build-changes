@@ -1,29 +1,20 @@
-public class aio implements zf<agp> {
-   public static final yw<vu, aio> a = zf.a(aio::a, aio::new);
-   private final buf b;
-
-   public aio(buf $$0) {
-      this.b = $$0;
-   }
-
-   private aio(vu $$0) {
-      this.b = $$0.b(buf.class);
-   }
-
-   private void a(vu $$0) {
-      $$0.a(this.b);
-   }
+public record aio(iv b, ecp c, String d) implements zh<agr> {
+   public static final yy<vw, aio> a = yy.a(iv.b, aio::b, ecp.f, aio::e, yw.p, aio::f, aio::new);
 
    @Override
-   public zh<aio> a() {
-      return agn.cl;
+   public zj<aio> a() {
+      return agp.ci;
    }
 
-   public void a(agp $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public buf b() {
-      return this.b;
+   public ecp e() {
+      return this.c;
+   }
+
+   public String f() {
+      return this.d;
    }
 }

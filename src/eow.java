@@ -1,69 +1,69 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class eow extends eox {
-   public static final MapCodec<eow> a = RecordCodecBuilder.mapCodec(
+public class eow extends eoq {
+   public static final MapCodec<eow> b = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               ayu.m.fieldOf("tries").orElse(128).forGetter($$0x -> $$0x.b),
-               ayu.l.fieldOf("radius").orElse(2).forGetter($$0x -> $$0x.c),
-               ayu.l.fieldOf("height").orElse(1).forGetter($$0x -> $$0x.d),
-               eod.a.fieldOf("block_state_provider").forGetter($$0x -> $$0x.e)
+               eoq.a.fieldOf("source").forGetter($$0x -> $$0x.c),
+               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
+               btw.c.fieldOf("values").forGetter($$0x -> $$0x.f)
             )
             .apply($$0, eow::new)
    );
-   private final int b;
-   private final int c;
-   private final int d;
-   private final eod e;
+   private final eoq c;
+   private final String d;
+   @Nullable
+   private ece e;
+   private final btw f;
 
-   public eow(int $$0, int $$1, int $$2, eod $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-   }
+   public eow(eoq $$0, ece $$1, btw $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$1.f();
+      this.f = $$2;
+      Collection<Integer> $$3 = $$1.a();
 
-   @Override
-   protected eoy<?> a() {
-      return eoy.i;
-   }
-
-   @Override
-   public void a(eox.a $$0) {
-      List<iv> $$1 = elk.a($$0);
-      if (!$$1.isEmpty()) {
-         iv $$2 = $$1.getFirst();
-         int $$3 = $$2.v();
-         int $$4 = $$2.u();
-         int $$5 = $$2.u();
-         int $$6 = $$2.w();
-         int $$7 = $$2.w();
-
-         for (iv $$8 : $$1) {
-            if ($$8.v() == $$3) {
-               $$4 = Math.min($$4, $$8.u());
-               $$5 = Math.max($$5, $$8.u());
-               $$6 = Math.min($$6, $$8.w());
-               $$7 = Math.max($$7, $$8.w());
-            }
-         }
-
-         azv $$9 = $$0.b();
-         erf $$10 = new erf($$4, $$3, $$6, $$5, $$3, $$7).c(this.c, this.d, this.c);
-         iv.a $$11 = new iv.a();
-
-         for (int $$12 = 0; $$12 < this.b; $$12++) {
-            $$11.d($$9.a($$10.h(), $$10.k()), $$9.a($$10.i(), $$10.l()), $$9.a($$10.j(), $$10.m()));
-            this.a($$0, $$11);
+      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
+         if (!$$3.contains($$4)) {
+            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
          }
       }
    }
 
-   private void a(eox.a $$0, iv $$1) {
-      iv $$2 = $$1.d();
-      if ($$0.a().a($$2, $$0x -> $$0x.l() || $$0x.a(dmt.fx)) && $$0.a($$1, eas.a::s)) {
-         $$0.a($$2, this.e.a($$0.b(), $$2));
+   public eow(eoq $$0, String $$1, btw $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
+   }
+
+   @Override
+   protected eor<?> a() {
+      return eor.g;
+   }
+
+   @Override
+   public ebe a(azx $$0, iv $$1) {
+      ebe $$2 = this.c.a($$0, $$1);
+      if (this.e == null || !$$2.b(this.e)) {
+         ece $$3 = a($$2, this.d);
+         if ($$3 == null) {
+            return $$2;
+         }
+
+         this.e = $$3;
       }
+
+      return $$2.b(this.e, Integer.valueOf(this.f.a($$0)));
+   }
+
+   @Nullable
+   private static ece a(ebe $$0, String $$1) {
+      Collection<ech<?>> $$2 = $$0.F();
+      Optional<ece> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof ece).map($$0x -> (ece)$$0x).findAny();
+      return $$3.orElse(null);
    }
 }

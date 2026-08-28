@@ -1,34 +1,20 @@
-public class aha implements zf<agp> {
-   public static final yw<vu, aha> a = zf.a(aha::a, aha::new);
-   private final aha.a b;
+public record aha(xr.a b) implements zh<agr> {
+   public static final yy<vw, aha> a = zh.a(aha::a, aha::new);
 
-   public aha(aha.a $$0) {
-      this.b = $$0;
+   private aha(vw $$0) {
+      this(xr.a.a($$0));
    }
 
-   private aha(vu $$0) {
-      this.b = $$0.b(aha.a.class);
-   }
-
-   private void a(vu $$0) {
-      $$0.a(this.b);
+   private void a(vw $$0) {
+      xr.a.a($$0, this.b);
    }
 
    @Override
-   public zh<aha> a() {
-      return agn.bu;
+   public zj<aha> a() {
+      return agp.bs;
    }
 
-   public void a(agp $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
-   }
-
-   public aha.a b() {
-      return this.b;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

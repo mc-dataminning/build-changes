@@ -1,29 +1,29 @@
-public class agt implements zf<agp> {
-   public static final yw<vu, agt> a = zf.a(agt::a, agt::new);
-   private final bud b;
+public class agt implements zh<agr> {
+   public static final yy<vw, agt> a = zh.a(agt::a, agt::new);
+   private final int b;
 
-   public agt(bud $$0) {
+   public agt(int $$0) {
       this.b = $$0;
    }
 
-   private agt(vu $$0) {
-      this.b = bud.a($$0.readUnsignedByte());
+   private agt(vw $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vu $$0) {
-      $$0.l(this.b.a());
+   private void a(vw $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zh<agt> a() {
-      return agn.bn;
+   public zj<agt> a() {
+      return agp.bk;
    }
 
-   public void a(agp $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public bud b() {
+   public int b() {
       return this.b;
    }
 }

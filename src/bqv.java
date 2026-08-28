@@ -1,51 +1,45 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
 
-public class bqv implements AutoCloseable {
-   public static final bqv a = new bqv(null);
-   @Nullable
-   private final bqq b;
+public class bqv implements bqz {
+   public static final bqv a = new bqv();
 
-   bqv(@Nullable bqq $$0) {
-      this.b = $$0;
-   }
-
-   public bqv a(String $$0) {
-      if (this.b != null) {
-         this.b.e($$0);
-      }
-
-      return this;
-   }
-
-   public bqv a(Supplier<String> $$0) {
-      if (this.b != null) {
-         this.b.e($$0.get());
-      }
-
-      return this;
-   }
-
-   public bqv a(long $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
-   }
-
-   public bqv a(int $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
+   private bqv() {
    }
 
    @Override
-   public void close() {
-      if (this.b != null) {
-         this.b.c();
-      }
+   public List<brd> a(String $$0) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public boolean a(Path $$0) {
+      return false;
+   }
+
+   @Override
+   public long a() {
+      return 0L;
+   }
+
+   @Override
+   public int b() {
+      return 0;
+   }
+
+   @Override
+   public long c() {
+      return 0L;
+   }
+
+   @Override
+   public int d() {
+      return 0;
+   }
+
+   @Override
+   public String e() {
+      return "";
    }
 }

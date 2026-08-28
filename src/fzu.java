@@ -1,100 +1,82 @@
-public class fzu extends fzh<cvv> {
-   private static final alg G = alg.b("container/crafter/disabled_slot");
-   private static final alg H = alg.b("container/crafter/powered_redstone");
-   private static final alg I = alg.b("container/crafter/unpowered_redstone");
-   private static final alg J = alg.b("textures/gui/container/crafter.png");
-   private static final wy K = wy.c("gui.togglable_slot");
-   private final crm L;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public fzu(cvv $$0, crl $$1, wy $$2) {
-      super($$0, $$1, $$2);
-      this.L = $$1.h;
+public class fzu {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<cwz<?>, fzu.a<?, ?>> b = Maps.newHashMap();
+
+   public static <T extends cvq> void a(cwz<T> $$0, frd $$1, int $$2, xa $$3) {
+      fzu.a<T, ?> $$4 = a($$0);
+      if ($$4 == null) {
+         a.warn("Failed to create screen for menu type: {}", mg.p.b($$0));
+      } else {
+         $$4.a($$3, $$0, $$1, $$2);
+      }
    }
 
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.v = (this.s - this.p.a(this.l)) / 2;
+   @Nullable
+   private static <T extends cvq> fzu.a<T, ?> a(cwz<T> $$0) {
+      return (fzu.a<T, ?>)b.get($$0);
    }
 
-   @Override
-   protected void a(cxc $$0, int $$1, int $$2, cvq $$3) {
-      if ($$0 instanceof cvw && !$$0.h() && !this.L.V_()) {
-         switch ($$3) {
-            case a:
-               if (this.z.e($$1)) {
-                  this.a($$1);
-               } else if (this.z.g().f()) {
-                  this.b($$1);
-               }
-               break;
-            case c:
-               czn $$4 = this.L.gi().a($$2);
-               if (this.z.e($$1) && !$$4.f()) {
-                  this.a($$1);
-               }
+   private static <M extends cvq, U extends gad & gby<M>> void a(cwz<? extends M> $$0, fzu.a<M, U> $$1) {
+      fzu.a<?, ?> $$2 = b.put($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalStateException("Duplicate registration for " + mg.p.b($$0));
+      }
+   }
+
+   public static boolean a() {
+      boolean $$0 = false;
+
+      for (cwz<?> $$1 : mg.p) {
+         if (!b.containsKey($$1)) {
+            a.debug("Menu {} has no matching screen", mg.p.b($$1));
+            $$0 = true;
          }
       }
 
-      super.a($$0, $$1, $$2, $$3);
+      return $$0;
    }
 
-   private void a(int $$0) {
-      this.a($$0, true);
+   static {
+      a(cwz.a, gbe::new);
+      a(cwz.b, gbe::new);
+      a(cwz.c, gbe::new);
+      a(cwz.d, gbe::new);
+      a(cwz.e, gbe::new);
+      a(cwz.f, gbe::new);
+      a(cwz.g, gbk::new);
+      a(cwz.h, gbf::new);
+      a(cwz.i, gaw::new);
+      a(cwz.j, gax::new);
+      a(cwz.k, gay::new);
+      a(cwz.l, gbb::new);
+      a(cwz.m, gbg::new);
+      a(cwz.n, gbn::new);
+      a(cwz.o, gbo::new);
+      a(cwz.p, gbp::new);
+      a(cwz.q, gbr::new);
+      a(cwz.r, gbw::new);
+      a(cwz.s, gbx::new);
+      a(cwz.t, gbz::new);
+      a(cwz.u, gcc::new);
+      a(cwz.v, gce::new);
+      a(cwz.w, gcf::new);
+      a(cwz.x, gbc::new);
+      a(cwz.y, gcg::new);
    }
 
-   private void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   private void a(int $$0, boolean $$1) {
-      this.z.a($$0, $$1);
-      super.a($$0, this.z.l, $$1);
-      float $$2 = $$1 ? 1.0F : 0.75F;
-      this.L.a(awn.Bv.a(), 0.4F, $$2);
-   }
-
-   @Override
-   public void a(fsm $$0, cxc $$1) {
-      if ($$1 instanceof cvw $$2 && this.z.e($$1.d)) {
-         this.a($$0, $$2);
-         return;
+   interface a<T extends cvq, U extends gad & gby<T>> {
+      default void a(xa $$0, cwz<T> $$1, frd $$2, int $$3) {
+         U $$4 = this.create($$1.a($$3, $$2.t.gj()), $$2.t.gj(), $$0);
+         $$2.t.bR = $$4.F();
+         $$2.a($$4);
       }
 
-      super.a($$0, $$1);
-   }
-
-   private void a(fsm $$0, cvw $$1) {
-      $$0.a(grc::H, G, $$1.e - 1, $$1.f - 1, 18, 18);
-   }
-
-   @Override
-   public void a(fsm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d($$0);
-      this.a($$0, $$1, $$2);
-      if (this.B instanceof cvw && !this.z.e(this.B.d) && this.z.g().f() && !this.B.h() && !this.L.V_()) {
-         $$0.a(this.p, K, $$1, $$2);
-      }
-   }
-
-   private void d(fsm $$0) {
-      int $$1 = this.n / 2 + 9;
-      int $$2 = this.o / 2 - 48;
-      alg $$3;
-      if (this.z.l()) {
-         $$3 = H;
-      } else {
-         $$3 = I;
-      }
-
-      $$0.a(grc::H, $$3, $$1, $$2, 16, 16);
-   }
-
-   @Override
-   protected void a(fsm $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(grc::H, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      U create(T var1, crw var2, xa var3);
    }
 }

@@ -1,50 +1,35 @@
-public class fkx {
-   private volatile long a;
-   private volatile long b;
-   private long c = ag.c();
-   private long d;
-   private long e;
+public enum fkx implements bam {
+   a(1, "int"),
+   b(3, "ivec3"),
+   c(1, "float"),
+   d(2, "vec2"),
+   e(3, "vec3"),
+   f(4, "vec4"),
+   g(16, "matrix4x4");
 
-   public void a(long $$0) {
-      this.b = $$0;
+   public static final bam.a<fkx> h = bam.a(fkx::values);
+   final int i;
+   final String j;
+
+   private fkx(final int $$0, final String $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
-   public long a() {
-      return this.b;
+   public int a() {
+      return this.i;
    }
 
-   public long b() {
-      return this.a;
+   public boolean b() {
+      return this == a || this == b;
    }
 
-   public void b(long $$0) {
-      this.a += $$0;
+   @Override
+   public String c() {
+      return this.j;
    }
 
-   public boolean c() {
-      return this.a != 0L;
-   }
-
-   public boolean d() {
-      return this.a == this.a();
-   }
-
-   public double e() {
-      return Math.min((double)this.b() / (double)this.a(), 1.0);
-   }
-
-   public void f() {
-      long $$0 = ag.c();
-      long $$1 = $$0 - this.c;
-      if ($$1 >= 1000L) {
-         long $$2 = this.a;
-         this.e = 1000L * ($$2 - this.d) / $$1;
-         this.d = $$2;
-         this.c = $$0;
-      }
-   }
-
-   public long g() {
-      return this.e;
+   public int d() {
+      return this.i;
    }
 }

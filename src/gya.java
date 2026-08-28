@@ -1,32 +1,32 @@
-public class gya extends gvs<cll, heg, ghi> {
-   private static final alg a = alg.b("textures/entity/llama/creamy.png");
-   private static final alg j = alg.b("textures/entity/llama/white.png");
-   private static final alg k = alg.b("textures/entity/llama/brown.png");
-   private static final alg l = alg.b("textures/entity/llama/gray.png");
+public class gya extends gxb<com, hhf, ghv> {
+   private static final ali a = ali.b("textures/entity/zombie/drowned.png");
 
-   public gya(gwy.a $$0, gjr $$1, gjr $$2) {
-      super($$0, new ghi($$0.a($$1)), new ghi($$0.a($$2)), 0.7F);
-      this.a(new hbg(this, $$0.f(), $$0.h()));
+   public gya(gyi.a $$0) {
+      super($$0, new ghv($$0.a(gld.aG)), new ghv($$0.a(gld.aH)), new ghv($$0.a(gld.aL)), new ghv($$0.a(gld.aM)), new ghv($$0.a(gld.aI)), new ghv($$0.a(gld.aJ)));
+      this.a(new hce(this, $$0.f()));
    }
 
-   public alg a(heg $$0) {
-      return switch ($$0.a) {
-         case a -> a;
-         case b -> j;
-         case c -> k;
-         case d -> l;
-      };
+   public hhf a() {
+      return new hhf();
    }
 
-   public heg b() {
-      return new heg();
+   @Override
+   public ali a(hhf $$0) {
+      return a;
    }
 
-   public void a(cll $$0, heg $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gG();
-      $$1.b = !$$0.n_() && $$0.t();
-      $$1.c = $$0.fX();
-      $$1.d = $$0.gw();
+   protected void a(hhf $$0, flo $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = $$0.G;
+      if ($$4 > 0.0F) {
+         float $$5 = -10.0F - $$0.ab;
+         float $$6 = azo.h($$4, 0.0F, $$5);
+         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.w / 2.0F / $$3, 0.0F);
+      }
+   }
+
+   protected gio.a a(com $$0, bxl $$1) {
+      czy $$2 = $$0.a($$1);
+      return $$0.fy() == $$1 && $$0.gl() && $$2.a(dac.xd) ? gio.a.e : gio.a.a;
    }
 }

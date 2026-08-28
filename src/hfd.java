@@ -1,3 +1,4 @@
-public class hfd extends hef {
-   public boolean a;
+public class hfd extends hfp {
+   public int a;
+   public boolean b;
 }

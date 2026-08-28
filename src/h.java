@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 import org.joml.Matrix3f;
 import org.joml.Matrix3fc;
 
-public enum h implements bak {
+public enum h implements bam {
    a("identity", j.a, false, false, false),
    b("rot_180_face_xy", j.a, true, true, false),
    c("rot_180_face_xz", j.a, true, false, true),

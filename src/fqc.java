@@ -1,44 +1,66 @@
-import org.joml.Vector2i;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fqc {
-   private double a;
-   private double b;
+public class fqc extends fqb {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xa c = xa.c("mco.configure.world.opening");
+   private final fne d;
+   private final gad e;
+   private final boolean f;
+   private final frd g;
 
-   public Vector2i a(double $$0, double $$1) {
-      if (this.a != 0.0 && Math.signum($$0) != Math.signum(this.a)) {
-         this.a = 0.0;
-      }
+   public fqc(fne $$0, gad $$1, boolean $$2, frd $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+   }
 
-      if (this.b != 0.0 && Math.signum($$1) != Math.signum(this.b)) {
-         this.b = 0.0;
-      }
+   @Override
+   public void run() {
+      fmd $$0 = fmd.a();
 
-      this.a += $$0;
-      this.b += $$1;
-      int $$2 = (int)this.a;
-      int $$3 = (int)this.b;
-      if ($$2 == 0 && $$3 == 0) {
-         return new Vector2i(0, 0);
-      } else {
-         this.a -= (double)$$2;
-         this.b -= (double)$$3;
-         return new Vector2i($$2, $$3);
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.f(this.d.a);
+            if ($$2) {
+               this.g.execute(() -> {
+                  if (this.e instanceof fon) {
+                     ((fon)this.e).f();
+                  }
+
+                  this.d.e = fne.c.b;
+                  if (this.f) {
+                     fly.a(this.d, this.e);
+                  } else {
+                     this.g.a(this.e);
+                  }
+               });
+               break;
+            }
+         } catch (foa var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to open server", var5);
+            this.a(var5);
+         }
       }
    }
 
-   public static int a(double $$0, int $$1, int $$2) {
-      int $$3 = (int)Math.signum($$0);
-      $$1 -= $$3;
-      $$1 = Math.max(-1, $$1);
-
-      while ($$1 < 0) {
-         $$1 += $$2;
-      }
-
-      while ($$1 >= $$2) {
-         $$1 -= $$2;
-      }
-
-      return $$1;
+   @Override
+   public xa a() {
+      return c;
    }
 }

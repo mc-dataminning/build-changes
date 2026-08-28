@@ -1,7 +1,11 @@
-import java.util.function.Consumer;
+import java.util.Set;
 
 public interface fai {
-   int a(float var1);
+   default Set<baz<?>> a() {
+      return Set.of();
+   }
 
-   void a(Consumer<czn> var1, ezt var2);
+   default void a(fan $$0) {
+      $$0.a(this);
+   }
 }

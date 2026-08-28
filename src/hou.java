@@ -1,278 +1,99 @@
-import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class hou extends avi<hou.a> {
-   public static final alg a = alg.b("empty");
-   public static final hnl b = new hnl(a, bth.a(1.0F), bth.a(1.0F), 1, hnl.a.a, false, false, 16);
-   public static final alg c = alg.b("intentionally_empty");
-   public static final hov d = new hov(c, null);
-   public static final hnl e = new hnl(c, bth.a(1.0F), bth.a(1.0F), 1, hnl.a.a, false, false, 16);
-   static final Logger f = LogUtils.getLogger();
-   private static final String g = "sounds.json";
-   private static final Gson h = new GsonBuilder().registerTypeHierarchyAdapter(wy.class, new wy.b(jt.b)).registerTypeAdapter(hnm.class, new hnn()).create();
-   private static final TypeToken<Map<String, hnm>> i = new TypeToken<Map<String, hnm>>() {
-   };
-   private final Map<alg, hov> j = Maps.newHashMap();
-   private final hor k;
-   private final Map<alg, avb> l = new HashMap<>();
+public class hou implements hqf<hou> {
+   public static final alb a = new alb("sounds", ".ogg");
+   private final ali b;
+   private final btz c;
+   private final btz d;
+   private final int e;
+   private final hou.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
 
-   public hou(fpx $$0) {
-      this.k = new hor(this, $$0, avg.fromMap(this.l));
+   public hou(ali $$0, btz $$1, btz $$2, int $$3, hou.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   protected hou.a a(avd $$0, bqq $$1) {
-      hou.a $$2 = new hou.a();
+   public ali a() {
+      return this.b;
+   }
 
-      try (bqv $$3 = $$1.d("list")) {
-         $$2.a($$0);
+   public ali b() {
+      return a.a(this.b);
+   }
+
+   public btz c() {
+      return this.c;
+   }
+
+   public btz d() {
+      return this.d;
+   }
+
+   @Override
+   public int e() {
+      return this.e;
+   }
+
+   public hou a(azx $$0) {
+      return this;
+   }
+
+   @Override
+   public void a(hqa $$0) {
+      if (this.h) {
+         $$0.a(this);
+      }
+   }
+
+   public hou.a f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
+   }
+
+   @Override
+   public String toString() {
+      return "Sound[" + this.b + "]";
+   }
+
+   public static enum a {
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
       }
 
-      for (String $$4 : $$0.a()) {
-         try (bqv $$5 = $$1.d($$4)) {
-            for (avb $$7 : $$0.a(alg.a($$4, "sounds.json"))) {
-               $$1.a($$7.b());
-
-               try (Reader $$8 = $$7.e()) {
-                  $$1.a("parse");
-                  Map<String, hnm> $$9 = azc.a(h, $$8, i);
-                  $$1.b("register");
-
-                  for (Entry<String, hnm> $$10 : $$9.entrySet()) {
-                     $$2.a(alg.a($$4, $$10.getKey()), $$10.getValue());
-                  }
-
-                  $$1.c();
-               } catch (RuntimeException var19) {
-                  f.warn("Invalid {} in resourcepack: '{}'", new Object[]{"sounds.json", $$7.b(), var19});
-               }
-
-               $$1.c();
+      @Nullable
+      public static hou.a a(String $$0) {
+         for (hou.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
             }
-         } catch (IOException var21) {
-         }
-      }
-
-      return $$2;
-   }
-
-   protected void a(hou.a $$0, avd $$1, bqq $$2) {
-      $$0.a(this.j, this.l, this.k);
-      if (ac.aV) {
-         for (alg $$3 : this.j.keySet()) {
-            hov $$4 = this.j.get($$3);
-            if (!xb.b($$4.a()) && mg.b.d($$3)) {
-               f.error("Missing subtitle {} for sound event: {}", $$4.a(), $$3);
-            }
-         }
-      }
-
-      if (f.isDebugEnabled()) {
-         for (alg $$5 : this.j.keySet()) {
-            if (!mg.b.d($$5)) {
-               f.debug("Not having sound event for: {}", $$5);
-            }
-         }
-      }
-
-      this.k.a();
-   }
-
-   public List<String> a() {
-      return this.k.h();
-   }
-
-   public fhm b() {
-      return this.k.i();
-   }
-
-   static boolean a(hnl $$0, alg $$1, avg $$2) {
-      alg $$3 = $$0.b();
-      if ($$2.getResource($$3).isEmpty()) {
-         f.warn("File {} does not exist, cannot add it to event {}", $$3, $$1);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   @Nullable
-   public hov a(alg $$0) {
-      return this.j.get($$0);
-   }
-
-   public Collection<alg> c() {
-      return this.j.keySet();
-   }
-
-   public void a(hnp $$0) {
-      this.k.a($$0);
-   }
-
-   public void a(hno $$0) {
-      this.k.c($$0);
-   }
-
-   public void a(hno $$0, int $$1) {
-      this.k.a($$0, $$1);
-   }
-
-   public void a(fpb $$0) {
-      this.k.a($$0);
-   }
-
-   public void d() {
-      this.k.e();
-   }
-
-   public void e() {
-      this.k.d();
-   }
-
-   public void f() {
-      this.k.b();
-   }
-
-   public void g() {
-      this.k.c();
-   }
-
-   public void a(boolean $$0) {
-      this.k.a($$0);
-   }
-
-   public void h() {
-      this.k.f();
-   }
-
-   public void a(awo $$0, float $$1) {
-      if ($$0 == awo.a && $$1 <= 0.0F) {
-         this.e();
-      }
-
-      this.k.a($$0, $$1);
-   }
-
-   public void b(hno $$0) {
-      this.k.a($$0);
-   }
-
-   public void a(hno $$0, float $$1) {
-      this.k.a($$0, $$1);
-   }
-
-   public boolean c(hno $$0) {
-      return this.k.b($$0);
-   }
-
-   public void a(hot $$0) {
-      this.k.a($$0);
-   }
-
-   public void b(hot $$0) {
-      this.k.b($$0);
-   }
-
-   public void a(@Nullable alg $$0, @Nullable awo $$1) {
-      this.k.a($$0, $$1);
-   }
-
-   public String i() {
-      return this.k.g();
-   }
-
-   public void j() {
-      this.k.a();
-   }
-
-   protected static class a {
-      final Map<alg, hov> a = Maps.newHashMap();
-      private Map<alg, avb> b = Map.of();
-
-      void a(avd $$0) {
-         this.b = hnl.a.a($$0);
-      }
-
-      void a(alg $$0, hnm $$1) {
-         hov $$2 = this.a.get($$0);
-         boolean $$3 = $$2 == null;
-         if ($$3 || $$1.b()) {
-            if (!$$3) {
-               hou.f.debug("Replaced sound event location {}", $$0);
-            }
-
-            $$2 = new hov($$0, $$1.c());
-            this.a.put($$0, $$2);
          }
 
-         avg $$4 = avg.fromMap(this.b);
-
-         for (final hnl $$5 : $$1.a()) {
-            final alg $$6 = $$5.a();
-            how<hnl> $$8;
-            switch ($$5.f()) {
-               case a:
-                  if (!hou.a($$5, $$0, $$4)) {
-                     continue;
-                  }
-
-                  $$8 = $$5;
-                  break;
-               case b:
-                  $$8 = new how<hnl>() {
-                     @Override
-                     public int e() {
-                        hov $$0 = a.this.a.get($$6);
-                        return $$0 == null ? 0 : $$0.e();
-                     }
-
-                     public hnl a(azv $$0) {
-                        hov $$1 = a.this.a.get($$6);
-                        if ($$1 == null) {
-                           return hou.b;
-                        } else {
-                           hnl $$2 = $$1.a($$0);
-                           return new hnl($$2.a(), new btn($$2.c(), $$5.c()), new btn($$2.d(), $$5.d()), $$5.e(), hnl.a.a, $$2.g() || $$5.g(), $$2.h(), $$2.i());
-                        }
-                     }
-
-                     @Override
-                     public void a(hor $$0) {
-                        hov $$1 = a.this.a.get($$6);
-                        if ($$1 != null) {
-                           $$1.a($$0);
-                        }
-                     }
-                  };
-                  break;
-               default:
-                  throw new IllegalStateException("Unknown SoundEventRegistration type: " + $$5.f());
-            }
-
-            $$2.a($$8);
-         }
-      }
-
-      public void a(Map<alg, hov> $$0, Map<alg, avb> $$1, hor $$2) {
-         $$0.clear();
-         $$1.clear();
-         $$1.putAll(this.b);
-
-         for (Entry<alg, hov> $$3 : this.a.entrySet()) {
-            $$0.put($$3.getKey(), $$3.getValue());
-            $$3.getValue().a($$2);
-         }
+         return null;
       }
    }
 }

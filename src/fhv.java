@@ -1,26 +1,26 @@
-import java.util.function.Function;
+import com.mojang.jtracy.TracyClient;
+import com.mojang.logging.LogListeners;
+import org.slf4j.event.Level;
 
-public interface fhv {
-   float getAdvance();
+public class fhv {
+   private static boolean a;
 
-   default float a(boolean $$0) {
-      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
-   }
-
-   default float a() {
-      return 1.0F;
-   }
-
-   default float b() {
-      return 1.0F;
-   }
-
-   fvw bake(Function<fhx, fvw> var1);
-
-   public interface a extends fhv {
-      @Override
-      default fvw bake(Function<fhx, fvw> $$0) {
-         return fvx.b;
+   public static void a() {
+      if (!a) {
+         TracyClient.load();
+         if (TracyClient.isAvailable()) {
+            LogListeners.addListener("Tracy", ($$0, $$1) -> TracyClient.message($$0, a($$1)));
+            a = true;
+         }
       }
+   }
+
+   private static int a(Level $$0) {
+      return switch ($$0) {
+         case DEBUG -> 11184810;
+         case WARN -> 16777130;
+         case ERROR -> 16755370;
+         default -> 16777215;
+      };
    }
 }

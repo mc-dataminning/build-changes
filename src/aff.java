@@ -1,61 +1,52 @@
-public class aff implements zf<abu> {
-   public static final yw<vu, aff> a = zf.a(aff::a, aff::new);
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
+import java.util.ArrayList;
+import java.util.List;
 
-   public aff(bwi $$0) {
-      this($$0.ao(), $$0.dx());
+public record aff(int c, List<akp.c<?>> d) implements zh<abw> {
+   public static final yy<wl, aff> a = zh.a(aff::b, aff::new);
+   public static final int b = 255;
+
+   private aff(wl $$0) {
+      this($$0.l(), a($$0));
    }
 
-   public aff(int $$0, ffc $$1) {
-      this.b = $$0;
-      double $$2 = 3.9;
-      double $$3 = azm.a($$1.d, -3.9, 3.9);
-      double $$4 = azm.a($$1.e, -3.9, 3.9);
-      double $$5 = azm.a($$1.f, -3.9, 3.9);
-      this.c = (int)($$3 * 8000.0);
-      this.d = (int)($$4 * 8000.0);
-      this.e = (int)($$5 * 8000.0);
+   private static void a(List<akp.c<?>> $$0, wl $$1) {
+      for (akp.c<?> $$2 : $$0) {
+         $$2.a($$1);
+      }
+
+      $$1.l(255);
    }
 
-   private aff(vu $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
-      this.e = $$0.readShort();
+   private static List<akp.c<?>> a(wl $$0) {
+      List<akp.c<?>> $$1 = new ArrayList<>();
+
+      int $$2;
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(akp.c.a($$0, $$2));
+      }
+
+      return $$1;
    }
 
-   private void a(vu $$0) {
-      $$0.c(this.b);
-      $$0.m(this.c);
-      $$0.m(this.d);
-      $$0.m(this.e);
+   private void b(wl $$0) {
+      $$0.c(this.c);
+      a(this.d, $$0);
    }
 
    @Override
-   public zh<aff> a() {
-      return agn.aH;
+   public zj<aff> a() {
+      return agp.aF;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.b;
+      return this.c;
    }
 
-   public double e() {
-      return (double)this.c / 8000.0;
-   }
-
-   public double f() {
-      return (double)this.d / 8000.0;
-   }
-
-   public double g() {
-      return (double)this.e / 8000.0;
+   public List<akp.c<?>> e() {
+      return this.d;
    }
 }

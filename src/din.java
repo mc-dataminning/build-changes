@@ -1,19 +1,32 @@
-public interface din extends diq {
-   float a(jb var1, boolean var2);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   ewp x_();
+public record din(ali e, xa f, boolean g) {
+   public static final Codec<din> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ali.a.fieldOf("asset_id").forGetter(din::a),
+               xc.a.fieldOf("description").forGetter(din::b),
+               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(din::c)
+            )
+            .apply($$0, din::new)
+   );
+   public static final yy<wl, din> b = yy.a(ali.b, din::a, xc.b, din::b, yw.b, din::c, din::new);
+   public static final Codec<jf<din>> c = ale.a(mh.bl, a);
+   public static final yy<wl, jf<din>> d = yw.a(mh.bl, b);
 
-   int a(iv var1, diw var2);
-
-   default int a(djv $$0, iv $$1) {
-      return this.x_().a($$0).b($$1);
+   public xa a(jf<dil> $$0) {
+      return this.f.f().c($$0.a().b().a());
    }
 
-   default int b(iv $$0, int $$1) {
-      return this.x_().a($$0, $$1);
+   public ali a() {
+      return this.e;
    }
 
-   default boolean h(iv $$0) {
-      return this.a(djv.a, $$0) >= 15;
+   public xa b() {
+      return this.f;
+   }
+
+   public boolean c() {
+      return this.g;
    }
 }

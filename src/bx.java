@@ -8,7 +8,7 @@ public class bx extends dk<bx.a> {
       return bx.a.a;
    }
 
-   public void a(arr $$0, bux $$1, float $$2, float $$3, boolean $$4) {
+   public void a(art $$0, bvi $$1, float $$2, float $$3, boolean $$4) {
       this.a($$0, $$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
    }
 
@@ -29,7 +29,7 @@ public class bx extends dk<bx.a> {
          return aq.i.a(new bx.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(arr $$0, bux $$1, float $$2, float $$3, boolean $$4) {
+      public boolean a(art $$0, bvi $$1, float $$2, float $$3, boolean $$4) {
          return !this.c.isPresent() || this.c.get().a($$0, $$1, $$2, $$3, $$4);
       }
 

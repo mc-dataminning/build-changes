@@ -1,167 +1,67 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public record glg(float b, float c, float d, float e, float f, float g, float h, float i, float j) {
+   public static final glg a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
 
-public class glg {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bsv b = new bsv(ag.h(), "server-list-io");
-   private static final int c = 16;
-   private final fpt d;
-   private final List<glf> e = Lists.newArrayList();
-   private final List<glf> f = Lists.newArrayList();
-
-   public glg(fpt $$0) {
-      this.d = $$0;
+   public static glg a(float $$0, float $$1, float $$2) {
+      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
    }
 
-   public void a() {
-      try {
-         this.e.clear();
-         this.f.clear();
-         tz $$0 = um.a(this.d.q.toPath().resolve("servers.dat"));
-         if ($$0 == null) {
-            return;
-         }
-
-         uf $$1 = $$0.d("servers", 10);
-
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            tz $$3 = $$1.a($$2);
-            glf $$4 = glf.a($$3);
-            if ($$3.o("hidden")) {
-               this.f.add($$4);
-            } else {
-               this.e.add($$4);
-            }
-         }
-      } catch (Exception var6) {
-         a.error("Couldn't load server list", var6);
-      }
+   public static glg b(float $$0, float $$1, float $$2) {
+      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
    }
 
-   public void b() {
-      try {
-         uf $$0 = new uf();
-
-         for (glf $$1 : this.e) {
-            tz $$2 = $$1.a();
-            $$2.a("hidden", false);
-            $$0.add($$2);
-         }
-
-         for (glf $$3 : this.f) {
-            tz $$4 = $$3.a();
-            $$4.a("hidden", true);
-            $$0.add($$4);
-         }
-
-         tz $$5 = new tz();
-         $$5.a("servers", $$0);
-         Path $$6 = this.d.q.toPath();
-         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
-         um.b($$5, $$7);
-         Path $$8 = $$6.resolve("servers.dat_old");
-         Path $$9 = $$6.resolve("servers.dat");
-         ag.a($$9, $$7, $$8);
-      } catch (Exception var7) {
-         a.error("Couldn't save server list", var7);
-      }
+   public static glg a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new glg($$0, $$1, $$2, $$3, $$4, $$5, 1.0F, 1.0F, 1.0F);
    }
 
-   public glf a(int $$0) {
-      return this.e.get($$0);
+   public glg c(float $$0, float $$1, float $$2) {
+      return new glg(this.b + $$0, this.c + $$1, this.d + $$2, this.e, this.f, this.g, this.h, this.i, this.j);
    }
 
-   @Nullable
-   public glf a(String $$0) {
-      for (glf $$1 : this.e) {
-         if ($$1.b.equals($$0)) {
-            return $$1;
-         }
-      }
-
-      for (glf $$2 : this.f) {
-         if ($$2.b.equals($$0)) {
-            return $$2;
-         }
-      }
-
-      return null;
+   public glg a(float $$0) {
+      return new glg(this.b, this.c, this.d, this.e, this.f, this.g, $$0, $$0, $$0);
    }
 
-   @Nullable
-   public glf b(String $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         glf $$2 = this.f.get($$1);
-         if ($$2.b.equals($$0)) {
-            this.f.remove($$1);
-            this.e.add($$2);
-            return $$2;
-         }
-      }
-
-      return null;
+   public glg b(float $$0) {
+      return $$0 == 1.0F ? this : this.d($$0, $$0, $$0);
    }
 
-   public void a(glf $$0) {
-      if (!this.e.remove($$0)) {
-         this.f.remove($$0);
-      }
+   public glg d(float $$0, float $$1, float $$2) {
+      return new glg(this.b * $$0, this.c * $$1, this.d * $$2, this.e, this.f, this.g, this.h * $$0, this.i * $$1, this.j * $$2);
    }
 
-   public void a(glf $$0, boolean $$1) {
-      if ($$1) {
-         this.f.add(0, $$0);
-
-         while (this.f.size() > 16) {
-            this.f.remove(this.f.size() - 1);
-         }
-      } else {
-         this.e.add($$0);
-      }
+   public float a() {
+      return this.b;
    }
 
-   public int c() {
-      return this.e.size();
+   public float b() {
+      return this.c;
    }
 
-   public void a(int $$0, int $$1) {
-      glf $$2 = this.a($$0);
-      this.e.set($$0, this.a($$1));
-      this.e.set($$1, $$2);
-      this.b();
+   public float c() {
+      return this.d;
    }
 
-   public void a(int $$0, glf $$1) {
-      this.e.set($$0, $$1);
+   public float d() {
+      return this.e;
    }
 
-   private static boolean a(glf $$0, List<glf> $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         glf $$3 = $$1.get($$2);
-         if (Objects.equals($$3.a, $$0.a) && $$3.b.equals($$0.b)) {
-            $$1.set($$2, $$0);
-            return true;
-         }
-      }
-
-      return false;
+   public float e() {
+      return this.f;
    }
 
-   public static void b(glf $$0) {
-      b.a_(() -> {
-         glg $$1 = new glg(fpt.Q());
-         $$1.a();
-         if (!a($$0, $$1.e)) {
-            a($$0, $$1.f);
-         }
+   public float f() {
+      return this.g;
+   }
 
-         $$1.b();
-      });
+   public float g() {
+      return this.h;
+   }
+
+   public float h() {
+      return this.i;
+   }
+
+   public float i() {
+      return this.j;
    }
 }

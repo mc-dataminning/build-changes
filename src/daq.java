@@ -1,21 +1,19 @@
-import javax.annotation.Nullable;
-
-public class daq extends day {
-   public daq(dmr $$0, dmr $$1, czj.a $$2) {
+public class daq extends dbj {
+   public daq(dnc $$0, dnc $$1, czu.a $$2) {
       super($$0, $$1, jb.a, $$2);
    }
 
-   public daq(czj.a $$0, dmr $$1, dmr $$2, jb $$3) {
-      super($$1, $$2, $$3, $$0);
+   @Override
+   public xa a(czy $$0) {
+      dcy $$1 = $$0.a(kk.ak);
+      return (xa)($$1 != null && $$1.c().isPresent() ? xa.a(this.n + ".named", $$1.c().get()) : super.a($$0));
    }
 
    @Override
-   protected boolean a(iv $$0, djm $$1, @Nullable crm $$2, czn $$3, eat $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.C && !$$5 && $$2 != null && $$1.c_($$0) instanceof dzf $$6 && $$1.a_($$0).b() instanceof dub $$7) {
-         $$7.a($$2, $$6, true);
+   public void l(czy $$0) {
+      dcy $$1 = $$0.a(kk.ak);
+      if ($$1 != null && !$$1.b()) {
+         $$1.a().thenAcceptAsync($$1x -> $$0.b(kk.ak, $$1x), dzs.a);
       }
-
-      return $$5;
    }
 }

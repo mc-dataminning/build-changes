@@ -1,43 +1,80 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import java.util.List;
 
-public class aza implements bam, AutoCloseable {
-   private static final Logger b = LogUtils.getLogger();
-   private CompletableFuture<?> c = CompletableFuture.completedFuture(null);
-   private final Executor d;
-   private volatile boolean e;
+@FunctionalInterface
+public interface aza {
+   aza a = $$0 -> true;
 
-   public aza(Executor $$0) {
-      this.d = $$0;
+   boolean accept(azb var1);
+
+   static aza codepoint(int $$0, xx $$1) {
+      return $$2 -> $$2.accept(0, $$1, $$0);
    }
 
-   @Override
-   public <T> void append(CompletableFuture<T> $$0, Consumer<T> $$1) {
-      this.c = this.c.<T, Object>thenCombine($$0, ($$0x, $$1x) -> $$1x).thenAcceptAsync($$1x -> {
-         if (!this.e) {
-            $$1.accept((T)$$1x);
-         }
-      }, this.d).exceptionally($$0x -> {
-         if ($$0x instanceof CompletionException $$1x) {
-            $$0x = $$1x.getCause();
-         }
-
-         if ($$0x instanceof CancellationException $$2) {
-            throw $$2;
-         } else {
-            b.error("Chain link failed, continuing to next one", $$0x);
-            return null;
-         }
-      });
+   static aza forward(String $$0, xx $$1) {
+      return $$0.isEmpty() ? a : $$2 -> bal.a($$0, $$1, $$2);
    }
 
-   @Override
-   public void close() {
-      this.e = true;
+   static aza forward(String $$0, xx $$1, Int2IntFunction $$2) {
+      return $$0.isEmpty() ? a : $$3 -> bal.a($$0, $$1, decorateOutput($$3, $$2));
+   }
+
+   static aza backward(String $$0, xx $$1) {
+      return $$0.isEmpty() ? a : $$2 -> bal.b($$0, $$1, $$2);
+   }
+
+   static aza backward(String $$0, xx $$1, Int2IntFunction $$2) {
+      return $$0.isEmpty() ? a : $$3 -> bal.b($$0, $$1, decorateOutput($$3, $$2));
+   }
+
+   static azb decorateOutput(azb $$0, Int2IntFunction $$1) {
+      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
+   }
+
+   static aza composite() {
+      return a;
+   }
+
+   static aza composite(aza $$0) {
+      return $$0;
+   }
+
+   static aza composite(aza $$0, aza $$1) {
+      return fromPair($$0, $$1);
+   }
+
+   static aza composite(aza... $$0) {
+      return fromList(ImmutableList.copyOf($$0));
+   }
+
+   static aza composite(List<aza> $$0) {
+      int $$1 = $$0.size();
+      switch ($$1) {
+         case 0:
+            return a;
+         case 1:
+            return $$0.get(0);
+         case 2:
+            return fromPair($$0.get(0), $$0.get(1));
+         default:
+            return fromList(ImmutableList.copyOf($$0));
+      }
+   }
+
+   static aza fromPair(aza $$0, aza $$1) {
+      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
+   }
+
+   static aza fromList(List<aza> $$0) {
+      return $$1 -> {
+         for (aza $$2 : $$0) {
+            if (!$$2.accept($$1)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
    }
 }

@@ -1,48 +1,66 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-
-public class dem {
-   public static final dem a = new dem(ImmutableMultimap.of(), Map.of());
-   private final Multimap<dep<?>, dej<?>> b;
-   private final Map<alf<dee<?>>, dej<?>> c;
-
-   private dem(Multimap<dep<?>, dej<?>> $$0, Map<alf<dee<?>>, dej<?>> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class dem extends def {
+   public dem(dec $$0) {
+      super($$0);
    }
 
-   public static dem a(Iterable<dej<?>> $$0) {
-      Builder<dep<?>, dej<?>> $$1 = ImmutableMultimap.builder();
-      com.google.common.collect.ImmutableMap.Builder<alf<dee<?>>, dej<?>> $$2 = ImmutableMap.builder();
+   public boolean a(ded $$0, djx $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
 
-      for (dej<?> $$3 : $$0) {
-         $$1.put($$3.b().b(), $$3);
-         $$2.put($$3.a(), $$3);
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            czy $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.c(kk.M)) {
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               } else {
+                  if (!$$5.a(dac.vt)) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
+      }
+   }
+
+   public czy a(ded $$0, jh.a $$1) {
+      int $$2 = 0;
+      czy $$3 = czy.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         czy $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.c(kk.M)) {
+               if (!$$3.f()) {
+                  return czy.k;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(dac.vt)) {
+                  return czy.k;
+               }
+
+               $$2++;
+            }
+         }
       }
 
-      return new dem($$1.build(), $$2.build());
+      return !$$3.f() && $$2 >= 1 ? $$3.c($$2 + 1) : czy.k;
    }
 
-   public <I extends dek, T extends dee<I>> Collection<dej<T>> a(dep<T> $$0) {
-      return this.b.get($$0);
-   }
-
-   public Collection<dej<?>> a() {
-      return this.c.values();
-   }
-
-   @Nullable
-   public dej<?> a(alf<dee<?>> $$0) {
-      return this.c.get($$0);
-   }
-
-   public <I extends dek, T extends dee<I>> Stream<dej<T>> a(dep<T> $$0, I $$1, djm $$2) {
-      return $$1.b() ? Stream.empty() : this.a($$0).stream().filter($$2x -> $$2x.b().a($$1, $$2));
+   @Override
+   public dez<dem> a() {
+      return dez.e;
    }
 }

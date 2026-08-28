@@ -1,35 +1,33 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-
-public record dfl(dfm b, dfk c, OptionalInt d, deh e, Optional<List<dea>> f) {
-   public static final yw<wj, dfl> a = yw.a(dfm.a, dfl::a, dfk.e, dfl::b, yu.i, dfl::c, yu.a(mh.af), dfl::d, dea.a.a(yu.a()).a(yu::a), dfl::e, dfl::new);
-
-   public List<czn> a(baz $$0) {
-      return this.c.d().a($$0);
+public record dfl(czy a, czy b, czy c) implements dev {
+   @Override
+   public czy a(int $$0) {
+      return switch ($$0) {
+         case 0 -> this.a;
+         case 1 -> this.b;
+         case 2 -> this.c;
+         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
+      };
    }
 
-   public boolean a(crs $$0) {
-      return this.f.isEmpty() ? false : $$0.a(this.f.get(), null);
+   @Override
+   public int a() {
+      return 3;
    }
 
-   public dfm a() {
+   @Override
+   public boolean b() {
+      return this.a.f() && this.b.f() && this.c.f();
+   }
+
+   public czy c() {
+      return this.a;
+   }
+
+   public czy d() {
       return this.b;
    }
 
-   public dfk b() {
+   public czy e() {
       return this.c;
-   }
-
-   public OptionalInt c() {
-      return this.d;
-   }
-
-   public deh d() {
-      return this.e;
-   }
-
-   public Optional<List<dea>> e() {
-      return this.f;
    }
 }

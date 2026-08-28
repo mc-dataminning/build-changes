@@ -1,362 +1,219 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.google.common.math.DoubleMath;
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Objects;
+import java.util.BitSet;
 
-public final class fft {
-   public static final double a = 1.0E-7;
-   public static final double b = 1.0E-6;
-   private static final ffw d = ag.a(() -> {
-      ffl $$0 = new fff(1, 1, 1);
-      $$0.c(0, 0, 0);
-      return new ffj($$0);
-   });
-   private static final ffc e = new ffc(0.5, 0.5, 0.5);
-   public static final ffw c = a(
-      Double.NEGATIVE_INFINITY,
-      Double.NEGATIVE_INFINITY,
-      Double.NEGATIVE_INFINITY,
-      Double.POSITIVE_INFINITY,
-      Double.POSITIVE_INFINITY,
-      Double.POSITIVE_INFINITY
-   );
-   private static final ffw f = new ffe(
-      new fff(0, 0, 0), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0})
-   );
+public final class fft extends ffz {
+   private final BitSet d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
+   private int i;
+   private int j;
 
-   public static ffw a() {
-      return f;
+   public fft(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+      this.d = new BitSet($$0 * $$1 * $$2);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public static ffw b() {
-      return d;
-   }
+   public static fft a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      fft $$9 = new fft($$0, $$1, $$2);
+      $$9.e = $$3;
+      $$9.f = $$4;
+      $$9.g = $$5;
+      $$9.h = $$6;
+      $$9.i = $$7;
+      $$9.j = $$8;
 
-   public static ffw a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      if (!($$0 > $$3) && !($$1 > $$4) && !($$2 > $$5)) {
-         return b($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         throw new IllegalArgumentException("The min values need to be smaller or equals to the max values");
-      }
-   }
-
-   public static ffw b(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      if (!($$3 - $$0 < 1.0E-7) && !($$4 - $$1 < 1.0E-7) && !($$5 - $$2 < 1.0E-7)) {
-         int $$6 = a($$0, $$3);
-         int $$7 = a($$1, $$4);
-         int $$8 = a($$2, $$5);
-         if ($$6 < 0 || $$7 < 0 || $$8 < 0) {
-            return new ffe(
-               d.a, DoubleArrayList.wrap(new double[]{$$0, $$3}), DoubleArrayList.wrap(new double[]{$$1, $$4}), DoubleArrayList.wrap(new double[]{$$2, $$5})
-            );
-         } else if ($$6 == 0 && $$7 == 0 && $$8 == 0) {
-            return b();
-         } else {
-            int $$9 = 1 << $$6;
-            int $$10 = 1 << $$7;
-            int $$11 = 1 << $$8;
-            fff $$12 = fff.a(
-               $$9,
-               $$10,
-               $$11,
-               (int)Math.round($$0 * (double)$$9),
-               (int)Math.round($$1 * (double)$$10),
-               (int)Math.round($$2 * (double)$$11),
-               (int)Math.round($$3 * (double)$$9),
-               (int)Math.round($$4 * (double)$$10),
-               (int)Math.round($$5 * (double)$$11)
-            );
-            return new ffj($$12);
-         }
-      } else {
-         return a();
-      }
-   }
-
-   public static ffw a(fex $$0) {
-      return b($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
-   }
-
-   @VisibleForTesting
-   protected static int a(double $$0, double $$1) {
-      if (!($$0 < -1.0E-7) && !($$1 > 1.0000001)) {
-         for (int $$2 = 0; $$2 <= 3; $$2++) {
-            int $$3 = 1 << $$2;
-            double $$4 = $$0 * (double)$$3;
-            double $$5 = $$1 * (double)$$3;
-            boolean $$6 = Math.abs($$4 - (double)Math.round($$4)) < 1.0E-7 * (double)$$3;
-            boolean $$7 = Math.abs($$5 - (double)Math.round($$5)) < 1.0E-7 * (double)$$3;
-            if ($$6 && $$7) {
-               return $$2;
+      for (int $$10 = $$3; $$10 < $$6; $$10++) {
+         for (int $$11 = $$4; $$11 < $$7; $$11++) {
+            for (int $$12 = $$5; $$12 < $$8; $$12++) {
+               $$9.a($$10, $$11, $$12, false);
             }
          }
-
-         return -1;
-      } else {
-         return -1;
       }
+
+      return $$9;
    }
 
-   protected static long a(int $$0, int $$1) {
-      return (long)$$0 * (long)($$1 / IntMath.gcd($$0, $$1));
-   }
-
-   public static ffw a(ffw $$0, ffw $$1) {
-      return a($$0, $$1, ffg.o);
-   }
-
-   public static ffw a(ffw $$0, ffw... $$1) {
-      return Arrays.stream($$1).reduce($$0, fft::a);
-   }
-
-   public static ffw a(ffw $$0, ffw $$1, ffg $$2) {
-      return b($$0, $$1, $$2).d();
-   }
-
-   public static ffw b(ffw $$0, ffw $$1, ffg $$2) {
-      if ($$2.apply(false, false)) {
-         throw (IllegalArgumentException)ag.b(new IllegalArgumentException());
-      } else if ($$0 == $$1) {
-         return $$2.apply(true, true) ? $$0 : a();
+   public fft(ffz $$0) {
+      super($$0.a, $$0.b, $$0.c);
+      if ($$0 instanceof fft) {
+         this.d = (BitSet)((fft)$$0).d.clone();
       } else {
-         boolean $$3 = $$2.apply(true, false);
-         boolean $$4 = $$2.apply(false, true);
-         if ($$0.c()) {
-            return $$4 ? $$1 : a();
-         } else if ($$1.c()) {
-            return $$3 ? $$0 : a();
-         } else {
-            ffo $$5 = a(1, $$0.a(jb.a.a), $$1.a(jb.a.a), $$3, $$4);
-            ffo $$6 = a($$5.size() - 1, $$0.a(jb.a.b), $$1.a(jb.a.b), $$3, $$4);
-            ffo $$7 = a(($$5.size() - 1) * ($$6.size() - 1), $$0.a(jb.a.c), $$1.a(jb.a.c), $$3, $$4);
-            fff $$8 = fff.a($$0.a, $$1.a, $$5, $$6, $$7, $$2);
-            return (ffw)($$5 instanceof ffk && $$6 instanceof ffk && $$7 instanceof ffk ? new ffj($$8) : new ffe($$8, $$5.a(), $$6.a(), $$7.a()));
-         }
-      }
-   }
+         this.d = new BitSet(this.a * this.b * this.c);
 
-   public static boolean c(ffw $$0, ffw $$1, ffg $$2) {
-      if ($$2.apply(false, false)) {
-         throw (IllegalArgumentException)ag.b(new IllegalArgumentException());
-      } else {
-         boolean $$3 = $$0.c();
-         boolean $$4 = $$1.c();
-         if (!$$3 && !$$4) {
-            if ($$0 == $$1) {
-               return $$2.apply(true, true);
-            } else {
-               boolean $$5 = $$2.apply(true, false);
-               boolean $$6 = $$2.apply(false, true);
-
-               for (jb.a $$7 : is.d) {
-                  if ($$0.c($$7) < $$1.b($$7) - 1.0E-7) {
-                     return $$5 || $$6;
-                  }
-
-                  if ($$1.c($$7) < $$0.b($$7) - 1.0E-7) {
-                     return $$5 || $$6;
+         for (int $$1 = 0; $$1 < this.a; $$1++) {
+            for (int $$2 = 0; $$2 < this.b; $$2++) {
+               for (int $$3 = 0; $$3 < this.c; $$3++) {
+                  if ($$0.b($$1, $$2, $$3)) {
+                     this.d.set(this.a($$1, $$2, $$3));
                   }
                }
-
-               ffo $$8 = a(1, $$0.a(jb.a.a), $$1.a(jb.a.a), $$5, $$6);
-               ffo $$9 = a($$8.size() - 1, $$0.a(jb.a.b), $$1.a(jb.a.b), $$5, $$6);
-               ffo $$10 = a(($$8.size() - 1) * ($$9.size() - 1), $$0.a(jb.a.c), $$1.a(jb.a.c), $$5, $$6);
-               return a($$8, $$9, $$10, $$0.a, $$1.a, $$2);
             }
-         } else {
-            return $$2.apply(!$$3, !$$4);
          }
+      }
+
+      this.e = $$0.a(jb.a.a);
+      this.f = $$0.a(jb.a.b);
+      this.g = $$0.a(jb.a.c);
+      this.h = $$0.b(jb.a.a);
+      this.i = $$0.b(jb.a.b);
+      this.j = $$0.b(jb.a.c);
+   }
+
+   protected int a(int $$0, int $$1, int $$2) {
+      return ($$0 * this.b + $$1) * this.c + $$2;
+   }
+
+   @Override
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.d.get(this.a($$0, $$1, $$2));
+   }
+
+   private void a(int $$0, int $$1, int $$2, boolean $$3) {
+      this.d.set(this.a($$0, $$1, $$2));
+      if ($$3) {
+         this.e = Math.min(this.e, $$0);
+         this.f = Math.min(this.f, $$1);
+         this.g = Math.min(this.g, $$2);
+         this.h = Math.max(this.h, $$0 + 1);
+         this.i = Math.max(this.i, $$1 + 1);
+         this.j = Math.max(this.j, $$2 + 1);
       }
    }
 
-   private static boolean a(ffo $$0, ffo $$1, ffo $$2, ffl $$3, ffl $$4, ffg $$5) {
-      return !$$0.a(($$5x, $$6, $$7) -> $$1.a(($$6x, $$7x, $$8) -> $$2.a(($$7xx, $$8x, $$9) -> !$$5.apply($$3.e($$5x, $$6x, $$7xx), $$4.e($$6, $$7x, $$8x)))));
+   @Override
+   public void c(int $$0, int $$1, int $$2) {
+      this.a($$0, $$1, $$2, true);
    }
 
-   public static double a(jb.a $$0, fex $$1, Iterable<ffw> $$2, double $$3) {
-      for (ffw $$4 : $$2) {
-         if (Math.abs($$3) < 1.0E-7) {
-            return 0.0;
+   @Override
+   public boolean a() {
+      return this.d.isEmpty();
+   }
+
+   @Override
+   public int a(jb.a $$0) {
+      return $$0.a(this.e, this.f, this.g);
+   }
+
+   @Override
+   public int b(jb.a $$0) {
+      return $$0.a(this.h, this.i, this.j);
+   }
+
+   static fft a(ffz $$0, ffz $$1, fgc $$2, fgc $$3, fgc $$4, ffu $$5) {
+      fft $$6 = new fft($$2.size() - 1, $$3.size() - 1, $$4.size() - 1);
+      int[] $$7 = new int[]{Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE};
+      $$2.a(($$7x, $$8, $$9) -> {
+         boolean[] $$10 = new boolean[]{false};
+         $$3.a(($$10x, $$11, $$12) -> {
+            boolean[] $$13 = new boolean[]{false};
+            $$4.a(($$12x, $$13x, $$14) -> {
+               if ($$5.apply($$0.e($$7x, $$10x, $$12x), $$1.e($$8, $$11, $$13x))) {
+                  $$6.d.set($$6.a($$9, $$12, $$14));
+                  $$7[2] = Math.min($$7[2], $$14);
+                  $$7[5] = Math.max($$7[5], $$14);
+                  $$13[0] = true;
+               }
+
+               return true;
+            });
+            if ($$13[0]) {
+               $$7[1] = Math.min($$7[1], $$12);
+               $$7[4] = Math.max($$7[4], $$12);
+               $$10[0] = true;
+            }
+
+            return true;
+         });
+         if ($$10[0]) {
+            $$7[0] = Math.min($$7[0], $$9);
+            $$7[3] = Math.max($$7[3], $$9);
          }
 
-         $$3 = $$4.a($$0, $$1, $$3);
-      }
-
-      return $$3;
-   }
-
-   public static boolean a(ffw $$0, ffw $$1, jb $$2) {
-      if ($$0 == b() && $$1 == b()) {
          return true;
-      } else if ($$1.c()) {
-         return false;
-      } else {
-         jb.a $$3 = $$2.o();
-         jb.b $$4 = $$2.f();
-         ffw $$5 = $$4 == jb.b.a ? $$0 : $$1;
-         ffw $$6 = $$4 == jb.b.a ? $$1 : $$0;
-         ffg $$7 = $$4 == jb.b.a ? ffg.e : ffg.c;
-         return DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)
-            && DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)
-            && !c(new ffu($$5, $$3, $$5.a.c($$3) - 1), new ffu($$6, $$3, 0), $$7);
-      }
+      });
+      $$6.e = $$7[0];
+      $$6.f = $$7[1];
+      $$6.g = $$7[2];
+      $$6.h = $$7[3] + 1;
+      $$6.i = $$7[4] + 1;
+      $$6.j = $$7[5] + 1;
+      return $$6;
    }
 
-   public static boolean b(ffw $$0, ffw $$1, jb $$2) {
-      if ($$0 != b() && $$1 != b()) {
-         jb.a $$3 = $$2.o();
-         jb.b $$4 = $$2.f();
-         ffw $$5 = $$4 == jb.b.a ? $$0 : $$1;
-         ffw $$6 = $$4 == jb.b.a ? $$1 : $$0;
-         if (!DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)) {
-            $$5 = a();
-         }
+   protected static void a(ffz $$0, ffz.b $$1, boolean $$2) {
+      fft $$3 = new fft($$0);
 
-         if (!DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)) {
-            $$6 = a();
-         }
+      for (int $$4 = 0; $$4 < $$3.b; $$4++) {
+         for (int $$5 = 0; $$5 < $$3.a; $$5++) {
+            int $$6 = -1;
 
-         return !c(b(), b(new ffu($$5, $$3, $$5.a.c($$3) - 1), new ffu($$6, $$3, 0), ffg.o), ffg.e);
-      } else {
-         return true;
-      }
-   }
+            for (int $$7 = 0; $$7 <= $$3.c; $$7++) {
+               if ($$3.e($$5, $$4, $$7)) {
+                  if ($$2) {
+                     if ($$6 == -1) {
+                        $$6 = $$7;
+                     }
+                  } else {
+                     $$1.consume($$5, $$4, $$7, $$5 + 1, $$4 + 1, $$7 + 1);
+                  }
+               } else if ($$6 != -1) {
+                  int $$8 = $$5;
+                  int $$9 = $$4;
+                  $$3.b($$6, $$7, $$5, $$4);
 
-   public static boolean b(ffw $$0, ffw $$1) {
-      if ($$0 == b() || $$1 == b()) {
-         return true;
-      } else {
-         return $$0.c() && $$1.c() ? false : !c(b(), b($$0, $$1, ffg.o), ffg.e);
-      }
-   }
+                  while ($$3.a($$6, $$7, $$8 + 1, $$4)) {
+                     $$3.b($$6, $$7, $$8 + 1, $$4);
+                     $$8++;
+                  }
 
-   @VisibleForTesting
-   protected static ffo a(int $$0, DoubleList $$1, DoubleList $$2, boolean $$3, boolean $$4) {
-      int $$5 = $$1.size() - 1;
-      int $$6 = $$2.size() - 1;
-      if ($$1 instanceof ffi && $$2 instanceof ffi) {
-         long $$7 = a($$5, $$6);
-         if ((long)$$0 * $$7 <= 256L) {
-            return new ffk($$5, $$6);
-         }
-      }
+                  while ($$3.a($$5, $$8 + 1, $$6, $$7, $$9 + 1)) {
+                     for (int $$10 = $$5; $$10 <= $$8; $$10++) {
+                        $$3.b($$6, $$7, $$10, $$9 + 1);
+                     }
 
-      if ($$1.getDouble($$5) < $$2.getDouble(0) - 1.0E-7) {
-         return new ffr($$1, $$2, false);
-      } else if ($$2.getDouble($$6) < $$1.getDouble(0) - 1.0E-7) {
-         return new ffr($$2, $$1, true);
-      } else {
-         return (ffo)($$5 == $$6 && Objects.equals($$1, $$2) ? new ffn($$1) : new ffp($$1, $$2, $$3, $$4));
-      }
-   }
+                     $$9++;
+                  }
 
-   public static ffw a(ffw $$0, h $$1) {
-      return a($$0, $$1, e);
-   }
-
-   public static ffw a(ffw $$0, h $$1, ffc $$2) {
-      if ($$1 == h.a) {
-         return $$0;
-      } else {
-         ffl $$3 = $$0.a.a($$1);
-         if ($$0 instanceof ffj && e.equals($$2)) {
-            return new ffj($$3);
-         } else {
-            jb.a $$4 = $$1.b(jb.a.a);
-            jb.a $$5 = $$1.b(jb.a.b);
-            jb.a $$6 = $$1.b(jb.a.c);
-            DoubleList $$7 = $$0.a($$4);
-            DoubleList $$8 = $$0.a($$5);
-            DoubleList $$9 = $$0.a($$6);
-            boolean $$10 = $$1.a($$4);
-            boolean $$11 = $$1.a($$5);
-            boolean $$12 = $$1.a($$6);
-            boolean $$13 = $$4.a($$10, $$11, $$12);
-            boolean $$14 = $$5.a($$10, $$11, $$12);
-            boolean $$15 = $$6.a($$10, $$11, $$12);
-            return new ffe($$3, a($$7, $$13, $$2.a($$4), $$2.d), a($$8, $$14, $$2.a($$5), $$2.e), a($$9, $$15, $$2.a($$6), $$2.f));
+                  $$1.consume($$5, $$4, $$6, $$8 + 1, $$9 + 1, $$7);
+                  $$6 = -1;
+               }
+            }
          }
       }
    }
 
-   @VisibleForTesting
-   static DoubleList a(DoubleList $$0, boolean $$1, double $$2, double $$3) {
-      if (!$$1 && $$2 == $$3) {
-         return $$0;
-      } else {
-         int $$4 = $$0.size();
-         DoubleList $$5 = new DoubleArrayList($$4);
-         int $$6 = $$1 ? -1 : 1;
+   private boolean a(int $$0, int $$1, int $$2, int $$3) {
+      return $$2 < this.a && $$3 < this.b ? this.d.nextClearBit(this.a($$2, $$3, $$0)) >= this.a($$2, $$3, $$1) : false;
+   }
 
-         for (int $$7 = $$1 ? $$4 - 1 : 0; $$7 >= 0 && $$7 < $$4; $$7 += $$6) {
-            $$5.add($$3 + (double)$$6 * ($$0.getDouble($$7) - $$2));
+   private boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$0; $$5 < $$1; $$5++) {
+         if (!this.a($$2, $$3, $$5, $$4)) {
+            return false;
          }
-
-         return $$5;
       }
+
+      return true;
    }
 
-   public static boolean c(ffw $$0, ffw $$1) {
-      return !c($$0, $$1, ffg.g);
+   private void b(int $$0, int $$1, int $$2, int $$3) {
+      this.d.clear(this.a($$2, $$3, $$0), this.a($$2, $$3, $$1));
    }
 
-   public static Map<jb.a, ffw> a(ffw $$0) {
-      return a($$0, e);
-   }
-
-   public static Map<jb.a, ffw> a(ffw $$0, ffc $$1) {
-      return Maps.newEnumMap(Map.of(jb.a.c, $$0, jb.a.a, a($$0, h.a(i.a, i.b), $$1)));
-   }
-
-   public static Map<jb.a, ffw> b(ffw $$0) {
-      return b($$0, e);
-   }
-
-   public static Map<jb.a, ffw> b(ffw $$0, ffc $$1) {
-      return Maps.newEnumMap(Map.of(jb.a.c, $$0, jb.a.a, a($$0, h.a(i.a, i.b), $$1), jb.a.b, a($$0, h.a(i.b, i.a), $$1)));
-   }
-
-   public static Map<jb, ffw> c(ffw $$0) {
-      return c($$0, e);
-   }
-
-   public static Map<jb, ffw> c(ffw $$0, ffc $$1) {
-      return Maps.newEnumMap(Map.of(jb.c, $$0, jb.f, a($$0, h.a(i.a, i.b), $$1), jb.d, a($$0, h.a(i.a, i.c), $$1), jb.e, a($$0, h.a(i.a, i.d), $$1)));
-   }
-
-   public static Map<jb, ffw> d(ffw $$0) {
-      return d($$0, e);
-   }
-
-   public static Map<jb, ffw> d(ffw $$0, ffc $$1) {
-      return Maps.newEnumMap(
-         Map.of(
-            jb.c,
-            $$0,
-            jb.f,
-            a($$0, h.a(i.a, i.b), $$1),
-            jb.d,
-            a($$0, h.a(i.a, i.c), $$1),
-            jb.e,
-            a($$0, h.a(i.a, i.d), $$1),
-            jb.b,
-            a($$0, h.a(i.d, i.a), $$1),
-            jb.a,
-            a($$0, h.a(i.b, i.a), $$1)
-         )
-      );
-   }
-
-   public static Map<ebe, Map<jb, ffw>> e(ffw $$0) {
-      return Map.of(ebe.b, c($$0), ebe.a, c(a($$0, h.a(i.d, i.a))), ebe.c, c(a($$0, h.a(i.b, i.c))));
-   }
-
-   public interface a {
-      void consume(double var1, double var3, double var5, double var7, double var9, double var11);
+   public boolean d(int $$0, int $$1, int $$2) {
+      boolean $$3 = $$0 > 0 && $$0 < this.a - 1 && $$1 > 0 && $$1 < this.b - 1 && $$2 > 0 && $$2 < this.c - 1;
+      return $$3
+         && this.b($$0, $$1, $$2)
+         && this.b($$0 - 1, $$1, $$2)
+         && this.b($$0 + 1, $$1, $$2)
+         && this.b($$0, $$1 - 1, $$2)
+         && this.b($$0, $$1 + 1, $$2)
+         && this.b($$0, $$1, $$2 - 1)
+         && this.b($$0, $$1, $$2 + 1);
    }
 }

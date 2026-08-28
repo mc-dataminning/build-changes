@@ -1,28 +1,22 @@
-public class ddn extends ddk {
-   public ddn(String $$0, ddq $$1, dea $$2, czn $$3, float $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record ddn(jf<awo> c) implements ddm {
+   public static final MapCodec<ddn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(awo.b.fieldOf("sound").forGetter(ddn::b)).apply($$0, ddn::new));
+   public static final yy<wl, ddn> b = yy.a(awo.d, ddn::b, ddn::new);
+
+   @Override
+   public ddm.a<ddn> a() {
+      return ddm.a.e;
    }
 
    @Override
-   protected czj f() {
-      return czr.xx;
+   public boolean a(djx $$0, czy $$1, bxu $$2) {
+      $$0.a(null, $$2.dv(), this.c.a(), $$2.dm(), 1.0F, 1.0F);
+      return true;
    }
 
-   @Override
-   public deo<ddn> a() {
-      return deo.p;
-   }
-
-   @Override
-   public dep<ddn> b() {
-      return dep.c;
-   }
-
-   @Override
-   public deh h() {
-      return switch (this.e()) {
-         case b -> deg.h;
-         case a, c -> deg.i;
-      };
+   public jf<awo> b() {
+      return this.c;
    }
 }

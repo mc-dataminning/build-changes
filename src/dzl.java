@@ -1,113 +1,103 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dzl extends dxr {
-   private static final Logger a = LogUtils.getLogger();
-   private ece b;
-   private String c = "";
-   private boolean d;
-   private boolean e;
+public abstract class dzl extends dxv implements bux {
+   @Nullable
+   protected alh<fam> l;
+   protected long m = 0L;
 
-   public dzl(iv $$0, eat $$1) {
-      super(dxt.T, $$0, $$1);
-      this.b = $$1.c(dvl.b);
-   }
-
-   @Override
-   public void b(tz $$0, jh.a $$1) {
-      $$0.a("mode", ece.e, this.b);
-      $$0.a("message", this.c);
-      $$0.a("powered", this.d);
-   }
-
-   @Override
-   public void a(tz $$0, jh.a $$1) {
-      this.b = $$0.<ece>a("mode", ece.e).orElse(ece.c);
-      this.c = $$0.j("message");
-      this.d = $$0.o("powered");
-   }
-
-   private void u() {
-      if (this.n != null) {
-         iv $$0 = this.ax_();
-         eat $$1 = this.n.a_($$0);
-         if ($$1.a(dmt.pI)) {
-            this.n.a($$0, $$1.b(dvl.b, this.b), 2);
-         }
-      }
+   protected dzl(dye<?> $$0, iv $$1, ebe $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Nullable
-   public aca a() {
-      return aca.a(this);
+   @Override
+   public alh<fam> ax_() {
+      return this.l;
    }
 
    @Override
-   public tz a(jh.a $$0) {
-      return this.e($$0);
+   public void a(@Nullable alh<fam> $$0) {
+      this.l = $$0;
    }
 
+   @Override
+   public long aA_() {
+      return this.m;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
+   }
+
+   @Override
    public boolean c() {
-      return this.d;
+      this.d_(null);
+      return super.c();
    }
 
-   public void a(boolean $$0) {
-      this.d = $$0;
+   @Override
+   public czy a(int $$0) {
+      this.d_(null);
+      return super.a($$0);
    }
 
-   public ece d() {
-      return this.b;
+   @Override
+   public czy a(int $$0, int $$1) {
+      this.d_(null);
+      return super.a($$0, $$1);
    }
 
-   public void a(ece $$0) {
-      this.b = $$0;
-      this.u();
+   @Override
+   public czy b(int $$0) {
+      this.d_(null);
+      return super.b($$0);
    }
 
-   private dmr v() {
-      return this.m().b();
+   @Override
+   public void a(int $$0, czy $$1) {
+      this.d_(null);
+      super.a($$0, $$1);
    }
 
-   public void f() {
-      this.e = false;
-      if (this.b == ece.a && this.n != null) {
-         this.a(false);
-         this.n.a(this.ax_(), this.v());
-      }
+   @Override
+   public boolean d(crx $$0) {
+      return super.d($$0) && (this.l == null || !$$0.Z_());
    }
 
-   public void j() {
-      if (this.b == ece.a && this.n != null) {
-         this.a(true);
-         iv $$0 = this.ax_();
-         this.n.a($$0, this.v());
-         this.n.U().b($$0, this.v());
-         this.k();
+   @Nullable
+   @Override
+   public cvq createMenu(int $$0, crw $$1, crx $$2) {
+      if (this.d($$2)) {
+         this.d_($$1.h);
+         return this.a($$0, $$1);
       } else {
-         if (this.b == ece.b) {
-            this.k();
-         }
-
-         this.e = true;
+         return null;
       }
    }
 
-   public void k() {
-      if (!this.c.isBlank()) {
-         a.info("Test {} (at {}): {}", new Object[]{this.b.c(), this.ax_(), this.c});
+   @Override
+   protected void a(kf $$0) {
+      super.a($$0);
+      dcz $$1 = $$0.a(kk.at);
+      if ($$1 != null) {
+         this.l = $$1.a();
+         this.m = $$1.b();
       }
    }
 
-   public boolean s() {
-      return this.e;
+   @Override
+   protected void a(kh.a $$0) {
+      super.a($$0);
+      if (this.l != null) {
+         $$0.a(kk.at, new dcz(this.l, this.m));
+      }
    }
 
-   public String t() {
-      return this.c;
-   }
-
-   public void a(String $$0) {
-      this.c = $$0;
+   @Override
+   public void a(tz $$0) {
+      super.a($$0);
+      $$0.r("LootTable");
+      $$0.r("LootTableSeed");
    }
 }

@@ -1,30 +1,36 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-public class flv extends fmi {
-   private static final Logger d = LogUtils.getLogger();
-   @Nullable
-   public String a;
-   @Nullable
-   public String b;
-   @Nullable
-   public String c;
+public interface flv {
+   flv a = a(0.0F, 0.0F, 0.0F);
+   flv b = a((flv.a)($$0 -> -$$0.z()));
 
-   public static flv a(String $$0) {
-      flv $$1 = new flv();
+   static flv a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
+   }
 
-      try {
-         JsonObject $$2 = JsonParser.parseString($$0).getAsJsonObject();
-         $$1.a = foe.b("address", $$2, null);
-         $$1.b = foe.b("resourcePackUrl", $$2, null);
-         $$1.c = foe.b("resourcePackHash", $$2, null);
-      } catch (Exception var3) {
-         d.error("Could not parse RealmsServerAddress: {}", var3.getMessage());
-      }
+   static flv a(Vector3f $$0) {
+      return a($$0::distanceSquared);
+   }
 
-      return $$1;
+   static flv a(flv.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
+
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
+         }
+
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
+   }
+
+   int[] sort(Vector3f[] var1);
+
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

@@ -1,120 +1,33 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Collection;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
 import java.util.List;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fmy extends hqd {
-   private static final wy a = wy.c("mco.selectServer.popup");
-   private static final wy b = wy.c("mco.selectServer.close");
-   private static final alg c = alg.b("popup/background");
-   private static final alg C = alg.b("icon/trial_available");
-   private static final fun D = new fun(alg.b("widget/cross_button"), alg.b("widget/cross_button_highlighted"));
-   private static final int E = 236;
-   private static final int F = 34;
-   private static final int G = 6;
-   private static final int H = 195;
-   private static final int I = 152;
-   private static final int J = 4;
-   private static final int K = 10;
-   private static final int L = 320;
-   private static final int M = 172;
-   private static final int N = 100;
-   private static final int O = 99;
-   private static final int P = 100;
-   private static List<alg> Q = List.of();
-   private final fys R;
-   private final boolean S;
-   @Nullable
-   private fta T;
-   private int U;
-   private int V;
+public class fmy extends fns {
+   private static final Logger b = LogUtils.getLogger();
+   public List<fmx> a = Lists.newArrayList();
 
-   public fmy(fys $$0, boolean $$1) {
-      super(a);
-      this.R = $$0;
-      this.S = $$1;
-   }
+   public static fmy a(String $$0) {
+      fmy $$1 = new fmy();
 
-   public static void a(avd $$0) {
-      Collection<alg> $$1 = $$0.b("textures/gui/images", $$0x -> $$0x.a().endsWith(".png")).keySet();
-      Q = $$1.stream().filter($$0x -> $$0x.b().equals("realms")).toList();
-   }
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("invites").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
 
-   @Override
-   protected void aO_() {
-      this.R.a(this.m, this.n, this.o);
-      if (this.S) {
-         this.T = this.c(fta.a(wy.c("mco.selectServer.trial"), fxp.b(this, ayh.q)).a(this.G() - 10 - 99, this.H() - 10 - 4 - 40, 99, 20).a());
+            while ($$4.hasNext()) {
+               $$1.a.add(fmx.a($$4.next().getAsJsonObject()));
+            }
+         }
+      } catch (Exception var5) {
+         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
       }
 
-      this.c(fta.a(wy.c("mco.selectServer.buy"), fxp.b(this, ayh.r)).a(this.G() - 10 - 99, this.H() - 10 - 20, 99, 20).a());
-      ftm $$0 = this.c(new ftm(this.E() + 4, this.F() + 4, 14, 14, D, $$0x -> this.aL_(), b));
-      $$0.a(ful.a(b));
-      int $$1 = 142 - (this.S ? 40 : 20);
-      ftk $$2 = new ftk(this.G() - 10 - 100, this.F() + 10, 100, $$1, a, this.p);
-      if ($$2.q()) {
-         $$2.h(94);
-      }
-
-      this.c($$2);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      if (++this.V > 100) {
-         this.V = 0;
-         this.U = (this.U + 1) % Q.size();
-      }
-   }
-
-   @Override
-   public void a(fsm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.T != null) {
-         a($$0, this.T);
-      }
-   }
-
-   public static void a(fsm $$0, fta $$1) {
-      int $$2 = 8;
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 110.0F);
-      $$0.a(grc::H, C, $$1.F() + $$1.A() - 8 - 4, $$1.G() + $$1.y() / 2 - 4, 8, 8);
-      $$0.c().b();
-   }
-
-   @Override
-   public void b(fsm $$0, int $$1, int $$2, float $$3) {
-      this.R.a($$0, -1, -1, $$3);
-      $$0.d();
-      RenderSystem.clear(256);
-      this.A();
-      this.b($$0);
-      $$0.a(grc::H, c, this.E(), this.F(), 320, 172);
-      if (!Q.isEmpty()) {
-         $$0.a(grc::H, Q.get(this.U), this.E() + 10, this.F() + 10, 0.0F, 0.0F, 195, 152, 195, 152);
-      }
-   }
-
-   private int E() {
-      return (this.n - 320) / 2;
-   }
-
-   private int F() {
-      return (this.o - 172) / 2;
-   }
-
-   private int G() {
-      return this.E() + 320;
-   }
-
-   private int H() {
-      return this.F() + 172;
-   }
-
-   @Override
-   public void aL_() {
-      this.m.a(this.R);
+      return $$1;
    }
 }

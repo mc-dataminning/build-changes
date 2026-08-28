@@ -1,55 +1,61 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dnr extends dqj implements dnp {
-   public static final MapCodec<dnr> c = b(dnr::new);
+public class dnr extends dud {
+   public static final MapCodec<dnr> a = b(dnr::new);
+   public static final ecc<jb> b = ebu.T;
 
    @Override
    public MapCodec<dnr> a() {
-      return c;
+      return a;
    }
 
-   public dnr(eas.d $$0) {
-      super($$0, jb.a, s_, false);
-      this.l(this.C.b().b(t_, Boolean.valueOf(false)));
+   public dnr(ebd.d $$0) {
+      super($$0);
+      this.l(this.m().b(b, jb.c));
+   }
+
+   @Nullable
+   @Override
+   public dyc a(iv $$0, ebe $$1) {
+      return new dyi($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dyc> dyd<T> a(djx $$0, ebe $$1, dye<T> $$2) {
+      return !$$0.C ? a($$2, dye.K, ($$0x, $$1x, $$2x, $$3) -> egn.c.a($$0x, $$3.x(), $$3.gu())) : null;
+   }
+
+   @Nullable
+   @Override
+   public ebe a(ddr $$0) {
+      return super.a($$0).b(b, $$0.g());
    }
 
    @Override
-   protected dqk c() {
-      return (dqk)dmt.td;
+   public int a(ebe $$0, djb $$1, iv $$2, jb $$3) {
+      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
    }
 
    @Override
-   protected eat a(eat $$0, eat $$1) {
-      return $$1.b(t_, $$0.c(t_));
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      super.a($$0);
+      $$0.a(b);
    }
 
    @Override
-   protected czn a(djp $$0, iv $$1, eat $$2, boolean $$3) {
-      return new czn(czr.xH);
+   public ebe a(ebe $$0, dtw $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
-      return dnp.a($$3, $$0, $$1, $$2);
+   public ebe a(ebe $$0, dsf $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(t_);
-   }
-
-   @Override
-   public boolean a(djp $$0, iv $$1, eat $$2) {
-      return !$$2.c(t_);
-   }
-
-   @Override
-   public boolean a(djm $$0, azv $$1, iv $$2, eat $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iv $$2, eat $$3) {
-      $$0.a($$2, $$3.b(t_, Boolean.valueOf(true)), 2);
+   public int c() {
+      return 10;
    }
 }

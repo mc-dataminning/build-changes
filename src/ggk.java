@@ -1,38 +1,68 @@
-public class ggk extends gjj<hfv> {
-   public ggk(gjt $$0) {
-      super($$0);
+public class ggk<S extends hfg> extends gio<S> {
+   private static final String x = "left_sleeve";
+   private static final String y = "right_sleeve";
+   private static final String z = "left_pants";
+   private static final String A = "right_pants";
+   public final gle a = this.s.b("left_sleeve");
+   public final gle b = this.r.b("right_sleeve");
+   public final gle c = this.u.b("left_pants");
+   public final gle d = this.t.b("right_pants");
+   public final gle e = this.q.b("jacket");
+   public final gle f = this.o.b("right_ear");
+   public final gle g = this.o.b("left_ear");
+
+   public ggk(gle $$0) {
+      super($$0, gsl::j);
    }
 
-   public static gjz a(gjx $$0) {
-      gkb $$1 = ghd.a($$0, 0.0F);
-      gkd $$2 = $$1.a();
-      $$2.a("left_arm", gjy.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gjv.a(5.0F, 2.0F, 0.0F));
-      $$2.a("left_leg", gjy.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gjv.a(1.9F, 12.0F, 0.0F));
-      return gjz.a($$1, 64, 64);
+   public static glm a(gli $$0) {
+      glm $$1 = gjg.a($$0, false);
+      glo $$2 = $$1.a();
+      $$2.a("body", glj.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), glg.a);
+      glo $$3 = a($$0, $$1);
+      $$3.a("hat");
+      return $$1;
+   }
+
+   public static glo a(gli $$0, glm $$1) {
+      glo $$2 = $$1.a();
+      glo $$3 = $$2.a(
+         "head",
+         glj.c()
+            .a(0, 0)
+            .a(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, $$0)
+            .a(31, 1)
+            .a(-2.0F, -4.0F, -5.0F, 4.0F, 4.0F, 1.0F, $$0)
+            .a(2, 4)
+            .a(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0)
+            .a(2, 0)
+            .a(-3.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0),
+         glg.a
+      );
+      $$3.a("left_ear", glj.c().a(51, 6).a(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), glg.a(4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 6)));
+      $$3.a("right_ear", glj.c().a(39, 6).a(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), glg.a(-4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 6)));
+      return $$3;
    }
 
    @Override
-   public void a(hfv $$0) {
+   public void a(S $$0) {
       super.a($$0);
-      if ($$0.h == ghd.a.e) {
-         this.s.e = this.s.e * 0.5F - (float) Math.PI;
-         this.s.f = 0.0F;
-      }
+      float $$1 = $$0.ad;
+      float $$2 = $$0.ae;
+      float $$3 = (float) (Math.PI / 6);
+      float $$4 = $$0.u * 0.1F + $$1 * 0.5F;
+      float $$5 = 0.08F + $$2 * 0.4F;
+      this.g.g = (float) (-Math.PI / 6) - azo.b($$4 * 1.2F) * $$5;
+      this.f.g = (float) (Math.PI / 6) + azo.b($$4) * $$5;
+   }
 
-      if ($$0.f == ghd.a.e) {
-         this.r.e = this.r.e * 0.5F - (float) Math.PI;
-         this.r.f = 0.0F;
-      }
-
-      float $$1 = $$0.G;
-      if ($$1 > 0.0F) {
-         this.r.e = azm.j($$1, this.r.e, (float) (-Math.PI * 4.0 / 5.0)) + $$1 * 0.35F * azm.a(0.1F * $$0.u);
-         this.s.e = azm.j($$1, this.s.e, (float) (-Math.PI * 4.0 / 5.0)) - $$1 * 0.35F * azm.a(0.1F * $$0.u);
-         this.r.g = azm.j($$1, this.r.g, -0.15F);
-         this.s.g = azm.j($$1, this.s.g, 0.15F);
-         this.u.e = this.u.e - $$1 * 0.55F * azm.a(0.1F * $$0.u);
-         this.t.e = this.t.e + $$1 * 0.55F * azm.a(0.1F * $$0.u);
-         this.o.e = 0.0F;
-      }
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

@@ -1,30 +1,111 @@
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.UUID;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.ints.IntConsumer;
+import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableLong;
+import org.joml.Vector3f;
+import org.lwjgl.system.MemoryUtil;
 
-public class fln extends fmi {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
-   public UUID d;
-   public Date e;
+public class fln implements AutoCloseable {
+   private final fll.a a;
+   @Nullable
+   private fll.a b;
+   private final fln.a c;
 
-   public static fln a(JsonObject $$0) {
-      fln $$1 = new fln();
+   public fln(fll.a $$0, fln.a $$1) {
+      this.a = $$0;
+      this.c = $$1;
+   }
 
-      try {
-         $$1.a = foe.b("invitationId", $$0, "");
-         $$1.b = foe.b("worldName", $$0, "");
-         $$1.c = foe.b("worldOwnerName", $$0, "");
-         $$1.d = foe.a("worldOwnerUuid", $$0, ag.e);
-         $$1.e = foe.b("date", $$0);
-      } catch (Exception var3) {
-         f.error("Could not parse PendingInvite: {}", var3.getMessage());
+   private static Vector3f[] a(ByteBuffer $$0, int $$1, fls $$2) {
+      int $$3 = $$2.a(flt.b);
+      if ($$3 == -1) {
+         throw new IllegalArgumentException("Cannot identify quad centers with no position element");
+      } else {
+         FloatBuffer $$4 = $$0.asFloatBuffer();
+         int $$5 = $$2.b() / 4;
+         int $$6 = $$5 * 4;
+         int $$7 = $$1 / 4;
+         Vector3f[] $$8 = new Vector3f[$$7];
+
+         for (int $$9 = 0; $$9 < $$7; $$9++) {
+            int $$10 = $$9 * $$6 + $$3;
+            int $$11 = $$10 + $$5 * 2;
+            float $$12 = $$4.get($$10 + 0);
+            float $$13 = $$4.get($$10 + 1);
+            float $$14 = $$4.get($$10 + 2);
+            float $$15 = $$4.get($$11 + 0);
+            float $$16 = $$4.get($$11 + 1);
+            float $$17 = $$4.get($$11 + 2);
+            $$8[$$9] = new Vector3f(($$12 + $$15) / 2.0F, ($$13 + $$16) / 2.0F, ($$14 + $$17) / 2.0F);
+         }
+
+         return $$8;
+      }
+   }
+
+   public ByteBuffer a() {
+      return this.a.a();
+   }
+
+   @Nullable
+   public ByteBuffer b() {
+      return this.b != null ? this.b.a() : null;
+   }
+
+   public fln.a c() {
+      return this.c;
+   }
+
+   @Nullable
+   public fln.b a(fll $$0, flv $$1) {
+      if (this.c.d() != fls.c.h) {
+         return null;
+      } else {
+         Vector3f[] $$2 = a(this.a.a(), this.c.b(), this.c.a());
+         fln.b $$3 = new fln.b($$2, this.c.e());
+         this.b = $$3.a($$0, $$1);
+         return $$3;
+      }
+   }
+
+   @Override
+   public void close() {
+      this.a.close();
+      if (this.b != null) {
+         this.b.close();
+      }
+   }
+
+   public static record a(fls a, int b, int c, fls.c d, fls.b e) {
+   }
+
+   public static record b(Vector3f[] a, fls.b b) {
+      @Nullable
+      public fll.a a(fll $$0, flv $$1) {
+         int[] $$2 = $$1.sort(this.a);
+         long $$3 = $$0.a($$2.length * 6 * this.b.c);
+         IntConsumer $$4 = this.a($$3, this.b);
+
+         for (int $$5 : $$2) {
+            $$4.accept($$5 * 4 + 0);
+            $$4.accept($$5 * 4 + 1);
+            $$4.accept($$5 * 4 + 2);
+            $$4.accept($$5 * 4 + 2);
+            $$4.accept($$5 * 4 + 3);
+            $$4.accept($$5 * 4 + 0);
+         }
+
+         return $$0.a();
       }
 
-      return $$1;
+      private IntConsumer a(long $$0, fls.b $$1) {
+         MutableLong $$2 = new MutableLong($$0);
+
+         return switch ($$1) {
+            case a -> $$1x -> MemoryUtil.memPutShort($$2.getAndAdd(2L), (short)$$1x);
+            case b -> $$1x -> MemoryUtil.memPutInt($$2.getAndAdd(4L), $$1x);
+         };
+      }
    }
 }

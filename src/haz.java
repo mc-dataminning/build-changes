@@ -1,42 +1,43 @@
-public class haz extends hbm<hdo, ggt> {
-   public haz(gyv<hdo, ggt> $$0) {
+public class haz extends gyh<cod, hgu> {
+   private final gtd a;
+
+   public haz(gyi.a $$0) {
       super($$0);
+      this.e = 0.5F;
+      this.a = $$0.d();
    }
 
-   public void a(fkd $$0, gqr $$1, int $$2, hdo $$3, float $$4, float $$5) {
-      hgi $$6 = $$3.i;
-      if (!$$6.c()) {
-         boolean $$7 = $$3.d;
-         boolean $$8 = $$3.aj;
-         $$0.a();
-         $$0.a(this.d().b.b / 16.0F, this.d().b.c / 16.0F, this.d().b.d / 16.0F);
-         if ($$8) {
-            float $$9 = 0.75F;
-            $$0.b(0.75F, 0.75F, 0.75F);
-         }
-
-         $$0.a(a.f.rotation($$3.a));
-         $$0.a(a.d.rotationDegrees($$4));
-         $$0.a(a.b.rotationDegrees($$5));
-         if ($$3.aj) {
-            if ($$7) {
-               $$0.a(0.4F, 0.26F, 0.15F);
-            } else {
-               $$0.a(0.06F, 0.26F, -0.5F);
-            }
-         } else if ($$7) {
-            $$0.a(0.46F, 0.26F, 0.22F);
-         } else {
-            $$0.a(0.06F, 0.27F, -0.5F);
-         }
-
-         $$0.a(a.b.rotationDegrees(90.0F));
-         if ($$7) {
-            $$0.a(a.f.rotationDegrees(90.0F));
-         }
-
-         $$6.a($$0, $$1, $$2, hjg.d);
-         $$0.b();
+   public void a(hgu $$0, flo $$1, gsa $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.5F, 0.0F);
+      float $$4 = $$0.a;
+      if ($$0.a < 10.0F) {
+         float $$5 = 1.0F - $$0.a / 10.0F;
+         $$5 = azo.a($$5, 0.0F, 1.0F);
+         $$5 *= $$5;
+         $$5 *= $$5;
+         float $$6 = 1.0F + $$5 * 0.3F;
+         $$1.b($$6, $$6, $$6);
       }
+
+      $$1.a(a.d.rotationDegrees(-90.0F));
+      $$1.a(-0.5F, -0.5F, 0.5F);
+      $$1.a(a.d.rotationDegrees(90.0F));
+      if ($$0.b != null) {
+         hay.a(this.a, $$0.b, $$1, $$2, $$3, (int)$$4 / 5 % 2 == 0);
+      }
+
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public hgu a() {
+      return new hgu();
+   }
+
+   public void a(cod $$0, hgu $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = (float)$$0.g() - $$2 + 1.0F;
+      $$1.b = $$0.j();
    }
 }

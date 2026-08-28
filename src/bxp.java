@@ -1,150 +1,135 @@
-public class bxp extends bwi {
-   private static final int b = 60;
-   private static final int c = 120;
-   private static final String d = "spawn_item_after_ticks";
-   private static final String e = "item";
-   private static final akj<czn> f = akn.a(bxp.class, akl.h);
-   public static final int a = 36;
-   private long g;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public bxp(bwr<? extends bxp> $$0, djm $$1) {
-      super($$0, $$1);
-      this.ad = true;
+public class bxp {
+   public static final int a = 3;
+   private final bwt b;
+   private int c;
+   private final bxp.a d = new bxp.a(0, ffq.c, 0.0F, 0.0F);
+   @Nullable
+   private ffq e;
+   @Nullable
+   private ffp f;
+   @Nullable
+   private final Consumer<bxp> g;
+
+   public bxp(bwt $$0) {
+      this($$0, 3, null);
    }
 
-   public static bxp a(djm $$0, czn $$1) {
-      bxp $$2 = new bxp(bwr.aJ, $$0);
-      $$2.g = (long)$$0.A.a(60, 120);
-      $$2.a($$1);
-      return $$2;
+   public bxp(bwt $$0, int $$1) {
+      this($$0, $$1, null);
    }
 
-   @Override
-   public void h() {
-      super.h();
-      if (this.dU() instanceof arq $$0) {
-         this.a($$0);
-      } else {
-         this.j();
-      }
+   public bxp(bwt $$0, @Nullable Consumer<bxp> $$1) {
+      this($$0, 3, $$1);
    }
 
-   private void a(arq $$0) {
-      if ((long)this.af == this.g - 36L) {
-         $$0.a(null, this.du(), awn.mF, awo.g);
-      }
-
-      if ((long)this.af >= this.g) {
-         this.m();
-         this.c($$0);
-      }
+   public bxp(bwt $$0, int $$1, @Nullable Consumer<bxp> $$2) {
+      this.c = $$1;
+      this.b = $$0;
+      this.g = $$2;
    }
 
-   private void j() {
-      if (this.dU().ae() % 5L == 0L) {
+   public ffq a() {
+      return this.d.a > 0 ? this.d.b : this.b.dt();
+   }
+
+   public float b() {
+      return this.d.a > 0 ? this.d.c : this.b.dL();
+   }
+
+   public float c() {
+      return this.d.a > 0 ? this.d.d : this.b.dN();
+   }
+
+   public void a(ffq $$0, float $$1, float $$2) {
+      if (this.c == 0) {
+         this.b.b($$0, $$1, $$2);
          this.f();
-      }
-   }
-
-   private void m() {
-      if (this.dU() instanceof arq $$0) {
-         czn $$2 = this.g();
-         if (!$$2.f()) {
-            bwi $$4;
-            if ($$2.h() instanceof dah $$3) {
-               $$4 = this.a($$0, $$3, $$2);
-            } else {
-               $$4 = new cnr($$0, this.dz(), this.dB(), this.dF(), $$2);
-               $$0.b($$4);
-            }
-
-            $$0.c(3021, this.du(), 1);
-            $$0.a($$4, eft.t, this.ds());
-            this.a(czn.k);
+      } else {
+         this.d.a = this.c;
+         this.d.b = $$0;
+         this.d.c = $$1;
+         this.d.d = $$2;
+         this.e = this.b.dt();
+         this.f = new ffp(this.b.dN(), this.b.dL());
+         if (this.g != null) {
+            this.g.accept(this);
          }
       }
    }
 
-   private bwi a(arq $$0, dah $$1, czn $$2) {
-      dah.a $$3 = $$1.a();
-      $$3.e().ifPresent($$1x -> $$0.c($$1x, this.du(), 0));
-      jb $$4 = jb.a;
-      csh $$5 = csh.a($$1.a($$0, this.ds(), $$2, $$4), $$0, $$2, (double)$$4.j(), (double)$$4.k(), (double)$$4.l(), $$3.d(), $$3.c());
-      $$5.c(this);
-      return $$5;
+   public boolean d() {
+      return this.d.a > 0;
    }
 
-   @Override
-   protected void a(akn.a $$0) {
-      $$0.a(f, czn.k);
+   public void a(int $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected void a(tz $$0) {
-      ale<uw> $$1 = this.dW().a(un.a);
-      this.a($$0.<czn>a("item", czn.b, $$1).orElse(czn.k));
-      this.g = $$0.g("spawn_item_after_ticks");
-   }
+   public void e() {
+      if (!this.d()) {
+         this.f();
+      } else {
+         double $$0 = 1.0 / (double)this.d.a;
+         if (this.e != null) {
+            ffq $$1 = this.b.dt().d(this.e);
+            if (this.b.dV().a(this.b, this.b.au().c(this.d.b.e($$1)))) {
+               this.d.a($$1);
+            }
+         }
 
-   @Override
-   protected void b(tz $$0) {
-      if (!this.g().f()) {
-         ale<uw> $$1 = this.dW().a(un.a);
-         $$0.a("item", czn.b, $$1, this.g());
+         if (this.f != null) {
+            float $$2 = this.b.dL() - this.f.k;
+            float $$3 = this.b.dN() - this.f.j;
+            this.d.a($$2, $$3);
+         }
+
+         double $$4 = azo.d($$0, this.b.dA(), this.d.b.d);
+         double $$5 = azo.d($$0, this.b.dC(), this.d.b.e);
+         double $$6 = azo.d($$0, this.b.dG(), this.d.b.f);
+         ffq $$7 = new ffq($$4, $$5, $$6);
+         float $$8 = (float)azo.e($$0, (double)this.b.dL(), (double)this.d.c);
+         float $$9 = (float)azo.d($$0, (double)this.b.dN(), (double)this.d.d);
+         this.b.b($$7);
+         this.b.b($$8, $$9);
+         this.d.a();
+         this.e = $$7;
+         this.f = new ffp(this.b.dN(), this.b.dL());
       }
-
-      $$0.a("spawn_item_after_ticks", this.g);
-   }
-
-   @Override
-   protected boolean r(bwi $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean bO() {
-      return false;
-   }
-
-   @Override
-   protected void p(bwi $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-   }
-
-   @Override
-   public exf j_() {
-      return exf.d;
-   }
-
-   @Override
-   public boolean g_() {
-      return true;
    }
 
    public void f() {
-      ffc $$0 = this.ds();
-      int $$1 = this.ae.a(1, 3);
+      this.d.a = 0;
+      this.e = null;
+      this.f = null;
+   }
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         double $$3 = 0.4;
-         ffc $$4 = new ffc(
-            this.dz() + 0.4 * (this.ae.k() - this.ae.k()), this.dB() + 0.4 * (this.ae.k() - this.ae.k()), this.dF() + 0.4 * (this.ae.k() - this.ae.k())
-         );
-         ffc $$5 = $$0.a($$4);
-         this.dU().a(ly.bf, $$0.a(), $$0.b(), $$0.c(), $$5.a(), $$5.b(), $$5.c());
+   static class a {
+      protected int a;
+      ffq b;
+      float c;
+      float d;
+
+      a(int $$0, ffq $$1, float $$2, float $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
-   }
 
-   public czn g() {
-      return this.ar().a(f);
-   }
+      public void a() {
+         this.a--;
+      }
 
-   private void a(czn $$0) {
-      this.ar().a(f, $$0);
-   }
+      public void a(ffq $$0) {
+         this.b = this.b.e($$0);
+      }
 
-   @Override
-   public final boolean a(arq $$0, bux $$1, float $$2) {
-      return false;
+      public void a(float $$0, float $$1) {
+         this.c += $$0;
+         this.d += $$1;
+      }
    }
 }

@@ -1,45 +1,59 @@
-public class afi implements zf<abu> {
-   public static final yw<vu, afi> a = zf.a(afi::a, afi::new);
-   private final float b;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+
+public class afi implements zh<abw> {
+   public static final yy<wl, afi> a = zh.a(afi::a, afi::new);
+   private static final byte b = -128;
    private final int c;
-   private final float d;
+   private final List<Pair<bxd, czy>> d;
 
-   public afi(float $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public afi(int $$0, List<Pair<bxd, czy>> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private afi(vu $$0) {
-      this.b = $$0.readFloat();
+   private afi(wl $$0) {
       this.c = $$0.l();
-      this.d = $$0.readFloat();
+      this.d = Lists.newArrayList();
+
+      int $$1;
+      do {
+         $$1 = $$0.readByte();
+         bxd $$2 = bxd.j.get($$1 & 127);
+         czy $$3 = czy.h.decode($$0);
+         this.d.add(Pair.of($$2, $$3));
+      } while (($$1 & -128) != 0);
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.b);
+   private void a(wl $$0) {
       $$0.c(this.c);
-      $$0.a(this.d);
+      int $$1 = this.d.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         Pair<bxd, czy> $$3 = this.d.get($$2);
+         bxd $$4 = (bxd)$$3.getFirst();
+         boolean $$5 = $$2 != $$1 - 1;
+         int $$6 = $$4.ordinal();
+         $$0.l($$5 ? $$6 | -128 : $$6);
+         czy.h.encode($$0, (czy)$$3.getSecond());
+      }
    }
 
    @Override
-   public zh<afi> a() {
-      return agn.aK;
+   public zj<afi> a() {
+      return agp.aI;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public float b() {
-      return this.b;
-   }
-
-   public int e() {
+   public int b() {
       return this.c;
    }
 
-   public float f() {
+   public List<Pair<bxd, czy>> e() {
       return this.d;
    }
 }

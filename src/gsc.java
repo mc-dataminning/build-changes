@@ -1,62 +1,81 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
 
-public record gsc(Map<String, gsi> b, Optional<gss.b> c) {
-   private static final Logger d = LogUtils.getLogger();
-   public static final Codec<gsc> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.unboundedMap(Codec.STRING, gsi.a).optionalFieldOf("variants", Map.of()).forGetter(gsc::a),
-                  gss.b.a.optionalFieldOf("multipart").forGetter(gsc::b)
-               )
-               .apply($$0, gsc::new)
-      )
-      .validate($$0 -> $$0.a().isEmpty() && $$0.b().isEmpty() ? DataResult.error(() -> "Neither 'variants' nor 'multipart' found") : DataResult.success($$0));
+public class gsc implements gsa {
+   private final gsa.a a;
+   private final gsa.a b = gsa.a(new fll(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   public Map<eat, gsd.a> a(eau<dmr, eat> $$0, Supplier<String> $$1) {
-      Map<eat, gsd.a> $$2 = new IdentityHashMap<>();
-      List<eat> $$3 = $$0.a();
-      gss $$4;
-      if (this.c.isPresent()) {
-         $$4 = this.c.get().a($$0);
-         $$3.forEach($$2x -> $$2.put($$2x, $$4));
+   public gsc(gsa.a $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public flr getBuffer(gsl $$0) {
+      if ($$0.S()) {
+         flr $$1 = this.b.getBuffer($$0);
+         return new gsc.a($$1, this.c, this.d, this.e, this.f);
       } else {
-         $$4 = null;
+         flr $$2 = this.a.getBuffer($$0);
+         Optional<gsl> $$3 = $$0.R();
+         if ($$3.isPresent()) {
+            flr $$4 = this.b.getBuffer($$3.get());
+            gsc.a $$5 = new gsc.a($$4, this.c, this.d, this.e, this.f);
+            return flu.a($$5, $$2);
+         } else {
+            return $$2;
+         }
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public void a() {
+      this.b.b();
+   }
+
+   static record a(flr a, int b) implements flr {
+      public a(flr $$0, int $$1, int $$2, int $$3, int $$4) {
+         this($$0, axy.a($$4, $$1, $$2, $$3));
       }
 
-      this.b.forEach(($$5x, $$6) -> {
-         try {
-            Predicate<eav<dmr, eat>> $$7 = gso.a($$0, $$5x);
+      @Override
+      public flr a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2).a(this.b);
+         return this;
+      }
 
-            for (eat $$8 : $$3) {
-               if ($$7.test($$8)) {
-                  gsd.a $$9 = $$2.put($$8, $$6);
-                  if ($$9 != null && $$9 != $$4) {
-                     String $$10 = this.b.entrySet().stream().filter($$1xx -> $$1xx.getValue() == $$9).findFirst().get().getKey();
-                     throw new IllegalArgumentException("Overlapping definition with: " + $$10);
-                  }
-               }
-            }
-         } catch (Exception var13) {
-            d.warn("Exception loading blockstate definition: '{}' for variant: '{}': {}", new Object[]{$$1.get(), $$5x, var13.getMessage()});
-         }
-      });
-      return $$2;
-   }
+      @Override
+      public flr a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
 
-   public Map<String, gsi> a() {
-      return this.b;
-   }
+      @Override
+      public flr a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
 
-   public Optional<gss.b> b() {
-      return this.c;
+      @Override
+      public flr a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public flr b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public flr b(float $$0, float $$1, float $$2) {
+         return this;
+      }
    }
 }

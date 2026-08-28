@@ -1,97 +1,56 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMaps;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.SequencedMap;
-import javax.annotation.Nullable;
+public class gqr extends gqk {
+   private float a;
 
-public interface gqr {
-   static gqr.a a(fka $$0) {
-      return a(Object2ObjectSortedMaps.emptyMap(), $$0);
+   gqr(gmb $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.t = (int)(Math.random() * 60.0) + 30;
+      this.n = false;
+      this.j = 0.0;
+      this.k = -0.05;
+      this.l = 0.0;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.u = 0.002F;
    }
 
-   static gqr.a a(SequencedMap<grc, fka> $$0, fka $$1) {
-      return new gqr.a($$1, $$0);
+   @Override
+   public gpo b() {
+      return gpo.b;
    }
 
-   fkh getBuffer(grc var1);
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = 0.6F;
+         this.j = this.j + (double)(0.6F * azo.b(this.a));
+         this.l = this.l + (double)(0.6F * azo.a(this.a));
+         this.j *= 0.07;
+         this.l *= 0.07;
+         this.a(this.j, this.k, this.l);
+         if (!this.c.b_(iv.a(this.g, this.h, this.i)).a(axj.a) || this.m) {
+            this.k();
+         }
 
-   public static class a implements gqr {
-      protected final fka a;
-      protected final SequencedMap<grc, fka> b;
-      protected final Map<grc, fjz> c = new HashMap<>();
-      @Nullable
-      protected grc d;
+         this.a += 0.08F;
+      }
+   }
 
-      protected a(fka $$0, SequencedMap<grc, fka> $$1) {
+   public static class a implements gpn<mc> {
+      private final gqf a;
+
+      public a(gqf $$0) {
          this.a = $$0;
-         this.b = $$1;
       }
 
-      @Override
-      public fkh getBuffer(grc $$0) {
-         fjz $$1 = this.c.get($$0);
-         if ($$1 != null && !$$0.ab()) {
-            this.a($$0, $$1);
-            $$1 = null;
-         }
-
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            fka $$2 = this.b.get($$0);
-            if ($$2 != null) {
-               $$1 = new fjz($$2, $$0.X(), $$0.W());
-            } else {
-               if (this.d != null) {
-                  this.a(this.d);
-               }
-
-               $$1 = new fjz(this.a, $$0.X(), $$0.W());
-               this.d = $$0;
-            }
-
-            this.c.put($$0, $$1);
-            return $$1;
-         }
-      }
-
-      public void a() {
-         if (this.d != null) {
-            this.a(this.d);
-            this.d = null;
-         }
-      }
-
-      public void b() {
-         this.a();
-
-         for (grc $$0 : this.b.keySet()) {
-            this.a($$0);
-         }
-      }
-
-      public void a(grc $$0) {
-         fjz $$1 = this.c.remove($$0);
-         if ($$1 != null) {
-            this.a($$0, $$1);
-         }
-      }
-
-      private void a(grc $$0, fjz $$1) {
-         fkc $$2 = $$1.a();
-         if ($$2 != null) {
-            if ($$0.ac()) {
-               fka $$3 = this.b.getOrDefault($$0, this.a);
-               $$2.a($$3, RenderSystem.getProjectionType().a());
-            }
-
-            $$0.a($$2);
-         }
-
-         if ($$0.equals(this.d)) {
-            this.d = null;
-         }
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gqr $$8 = new gqr($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

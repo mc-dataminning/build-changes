@@ -1,184 +1,901 @@
-import java.util.Optional;
-import java.util.stream.IntStream;
-
 public class fsb {
-   public static final fsa a = a("cube", fsd.c, fsd.j, fsd.k, fsd.l, fsd.m, fsd.n, fsd.o);
-   public static final fsa b = a("cube_directional", fsd.c, fsd.j, fsd.k, fsd.l, fsd.m, fsd.n, fsd.o);
-   public static final fsa c = a("cube_all", fsd.a);
-   public static final fsa d = a("cube_all_inner_faces", fsd.a);
-   public static final fsa e = b("cube_mirrored_all", "_mirrored", fsd.a);
-   public static final fsa f = b("cube_north_west_mirrored_all", "_north_west_mirrored", fsd.a);
-   public static final fsa g = b("cube_column_uv_locked_x", "_x", fsd.d, fsd.i);
-   public static final fsa h = b("cube_column_uv_locked_y", "_y", fsd.d, fsd.i);
-   public static final fsa i = b("cube_column_uv_locked_z", "_z", fsd.d, fsd.i);
-   public static final fsa j = a("cube_column", fsd.d, fsd.i);
-   public static final fsa k = b("cube_column_horizontal", "_horizontal", fsd.d, fsd.i);
-   public static final fsa l = b("cube_column_mirrored", "_mirrored", fsd.d, fsd.i);
-   public static final fsa m = a("cube_top", fsd.f, fsd.i);
-   public static final fsa n = a("cube_bottom_top", fsd.f, fsd.e, fsd.i);
-   public static final fsa o = a("cube_bottom_top_inner_faces", fsd.f, fsd.e, fsd.i);
-   public static final fsa p = a("orientable", fsd.f, fsd.g, fsd.i);
-   public static final fsa q = a("orientable_with_bottom", fsd.f, fsd.e, fsd.i, fsd.g);
-   public static final fsa r = b("orientable_vertical", "_vertical", fsd.g, fsd.i);
-   public static final fsa s = a("button", fsd.b);
-   public static final fsa t = b("button_pressed", "_pressed", fsd.b);
-   public static final fsa u = b("button_inventory", "_inventory", fsd.b);
-   public static final fsa v = b("door_bottom_left", "_bottom_left", fsd.f, fsd.e);
-   public static final fsa w = b("door_bottom_left_open", "_bottom_left_open", fsd.f, fsd.e);
-   public static final fsa x = b("door_bottom_right", "_bottom_right", fsd.f, fsd.e);
-   public static final fsa y = b("door_bottom_right_open", "_bottom_right_open", fsd.f, fsd.e);
-   public static final fsa z = b("door_top_left", "_top_left", fsd.f, fsd.e);
-   public static final fsa A = b("door_top_left_open", "_top_left_open", fsd.f, fsd.e);
-   public static final fsa B = b("door_top_right", "_top_right", fsd.f, fsd.e);
-   public static final fsa C = b("door_top_right_open", "_top_right_open", fsd.f, fsd.e);
-   public static final fsa D = b("custom_fence_post", "_post", fsd.b, fsd.c);
-   public static final fsa E = b("custom_fence_side_north", "_side_north", fsd.b);
-   public static final fsa F = b("custom_fence_side_east", "_side_east", fsd.b);
-   public static final fsa G = b("custom_fence_side_south", "_side_south", fsd.b);
-   public static final fsa H = b("custom_fence_side_west", "_side_west", fsd.b);
-   public static final fsa I = b("custom_fence_inventory", "_inventory", fsd.b);
-   public static final fsa J = b("fence_post", "_post", fsd.b);
-   public static final fsa K = b("fence_side", "_side", fsd.b);
-   public static final fsa L = b("fence_inventory", "_inventory", fsd.b);
-   public static final fsa M = b("template_wall_post", "_post", fsd.s);
-   public static final fsa N = b("template_wall_side", "_side", fsd.s);
-   public static final fsa O = b("template_wall_side_tall", "_side_tall", fsd.s);
-   public static final fsa P = b("wall_inventory", "_inventory", fsd.s);
-   public static final fsa Q = a("template_custom_fence_gate", fsd.b, fsd.c);
-   public static final fsa R = b("template_custom_fence_gate_open", "_open", fsd.b, fsd.c);
-   public static final fsa S = b("template_custom_fence_gate_wall", "_wall", fsd.b, fsd.c);
-   public static final fsa T = b("template_custom_fence_gate_wall_open", "_wall_open", fsd.b, fsd.c);
-   public static final fsa U = a("template_fence_gate", fsd.b);
-   public static final fsa V = b("template_fence_gate_open", "_open", fsd.b);
-   public static final fsa W = b("template_fence_gate_wall", "_wall", fsd.b);
-   public static final fsa X = b("template_fence_gate_wall_open", "_wall_open", fsd.b);
-   public static final fsa Y = a("pressure_plate_up", fsd.b);
-   public static final fsa Z = b("pressure_plate_down", "_down", fsd.b);
-   public static final fsa aa = a(fsd.c);
-   public static final fsa ab = a("slab", fsd.e, fsd.f, fsd.i);
-   public static final fsa ac = b("slab_top", "_top", fsd.e, fsd.f, fsd.i);
-   public static final fsa ad = a("leaves", fsd.a);
-   public static final fsa ae = a("stairs", fsd.e, fsd.f, fsd.i);
-   public static final fsa af = b("inner_stairs", "_inner", fsd.e, fsd.f, fsd.i);
-   public static final fsa ag = b("outer_stairs", "_outer", fsd.e, fsd.f, fsd.i);
-   public static final fsa ah = b("template_trapdoor_top", "_top", fsd.b);
-   public static final fsa ai = b("template_trapdoor_bottom", "_bottom", fsd.b);
-   public static final fsa aj = b("template_trapdoor_open", "_open", fsd.b);
-   public static final fsa ak = b("template_orientable_trapdoor_top", "_top", fsd.b);
-   public static final fsa al = b("template_orientable_trapdoor_bottom", "_bottom", fsd.b);
-   public static final fsa am = b("template_orientable_trapdoor_open", "_open", fsd.b);
-   public static final fsa an = a("pointed_dripstone", fsd.p);
-   public static final fsa ao = a("cross", fsd.p);
-   public static final fsa ap = a("tinted_cross", fsd.p);
-   public static final fsa aq = a("cross_emissive", fsd.p, fsd.q);
-   public static final fsa ar = a("flower_pot_cross", fsd.r);
-   public static final fsa as = a("tinted_flower_pot_cross", fsd.r);
-   public static final fsa at = a("flower_pot_cross_emissive", fsd.r, fsd.q);
-   public static final fsa au = a("rail_flat", fsd.t);
-   public static final fsa av = b("rail_curved", "_corner", fsd.t);
-   public static final fsa aw = b("template_rail_raised_ne", "_raised_ne", fsd.t);
-   public static final fsa ax = b("template_rail_raised_sw", "_raised_sw", fsd.t);
-   public static final fsa ay = a("carpet", fsd.u);
-   public static final fsa az = a("mossy_carpet_side", fsd.i);
-   public static final fsa aA = b("flowerbed_1", "_1", fsd.Q, fsd.z);
-   public static final fsa aB = b("flowerbed_2", "_2", fsd.Q, fsd.z);
-   public static final fsa aC = b("flowerbed_3", "_3", fsd.Q, fsd.z);
-   public static final fsa aD = b("flowerbed_4", "_4", fsd.Q, fsd.z);
-   public static final fsa aE = b("template_leaf_litter_1", "_1", fsd.b);
-   public static final fsa aF = b("template_leaf_litter_2", "_2", fsd.b);
-   public static final fsa aG = b("template_leaf_litter_3", "_3", fsd.b);
-   public static final fsa aH = b("template_leaf_litter_4", "_4", fsd.b);
-   public static final fsa aI = a("coral_fan", fsd.y);
-   public static final fsa aJ = a("coral_wall_fan", fsd.y);
-   public static final fsa aK = a("template_glazed_terracotta", fsd.v);
-   public static final fsa aL = a("template_chorus_flower", fsd.b);
-   public static final fsa aM = a("template_daylight_detector", fsd.f, fsd.i);
-   public static final fsa aN = b("template_glass_pane_noside", "_noside", fsd.w);
-   public static final fsa aO = b("template_glass_pane_noside_alt", "_noside_alt", fsd.w);
-   public static final fsa aP = b("template_glass_pane_post", "_post", fsd.w, fsd.x);
-   public static final fsa aQ = b("template_glass_pane_side", "_side", fsd.w, fsd.x);
-   public static final fsa aR = b("template_glass_pane_side_alt", "_side_alt", fsd.w, fsd.x);
-   public static final fsa aS = a("template_command_block", fsd.g, fsd.h, fsd.i);
-   public static final fsa aT = b("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", fsd.b);
-   public static final fsa aU = b("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", fsd.b);
-   public static final fsa aV = b("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", fsd.b);
-   public static final fsa aW = b("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", fsd.b);
-   public static final fsa aX = b("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", fsd.b);
-   public static final fsa aY = b("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", fsd.b);
-   public static final fsa aZ = a("template_anvil", fsd.f);
-   public static final fsa[] ba = IntStream.range(0, 8).mapToObj($$0 -> b("stem_growth" + $$0, "_stage" + $$0, fsd.z)).toArray(fsa[]::new);
-   public static final fsa bb = a("stem_fruit", fsd.z, fsd.A);
-   public static final fsa bc = a("crop", fsd.B);
-   public static final fsa bd = a("template_farmland", fsd.C, fsd.f);
-   public static final fsa be = a("template_fire_floor", fsd.D);
-   public static final fsa bf = a("template_fire_side", fsd.D);
-   public static final fsa bg = a("template_fire_side_alt", fsd.D);
-   public static final fsa bh = a("template_fire_up", fsd.D);
-   public static final fsa bi = a("template_fire_up_alt", fsd.D);
-   public static final fsa bj = a("template_campfire", fsd.D, fsd.L);
-   public static final fsa bk = a("template_lantern", fsd.E);
-   public static final fsa bl = b("template_hanging_lantern", "_hanging", fsd.E);
-   public static final fsa bm = a("template_torch", fsd.H);
-   public static final fsa bn = a("template_torch_unlit", fsd.H);
-   public static final fsa bo = a("template_torch_wall", fsd.H);
-   public static final fsa bp = a("template_torch_wall_unlit", fsd.H);
-   public static final fsa bq = a("template_redstone_torch", fsd.H);
-   public static final fsa br = a("template_redstone_torch_wall", fsd.H);
-   public static final fsa bs = a("template_piston", fsd.F, fsd.e, fsd.i);
-   public static final fsa bt = a("template_piston_head", fsd.F, fsd.i, fsd.G);
-   public static final fsa bu = a("template_piston_head_short", fsd.F, fsd.i, fsd.G);
-   public static final fsa bv = a("template_seagrass", fsd.b);
-   public static final fsa bw = a("template_turtle_egg", fsd.a);
-   public static final fsa bx = a("template_two_turtle_eggs", fsd.a);
-   public static final fsa by = a("template_three_turtle_eggs", fsd.a);
-   public static final fsa bz = a("template_four_turtle_eggs", fsd.a);
-   public static final fsa bA = a("template_single_face", fsd.b);
-   public static final fsa bB = a("template_cauldron_level1", fsd.O, fsd.N, fsd.c, fsd.f, fsd.e, fsd.i);
-   public static final fsa bC = a("template_cauldron_level2", fsd.O, fsd.N, fsd.c, fsd.f, fsd.e, fsd.i);
-   public static final fsa bD = a("template_cauldron_full", fsd.O, fsd.N, fsd.c, fsd.f, fsd.e, fsd.i);
-   public static final fsa bE = a("template_azalea", fsd.f, fsd.i);
-   public static final fsa bF = a("template_potted_azalea_bush", fsd.r, fsd.f, fsd.i);
-   public static final fsa bG = a("template_potted_azalea_bush", fsd.r, fsd.f, fsd.i);
-   public static final fsa bH = a("sniffer_egg", fsd.f, fsd.e, fsd.j, fsd.k, fsd.l, fsd.m);
-   public static final fsa bI = b("generated", fsd.I);
-   public static final fsa bJ = b("template_music_disc", fsd.I);
-   public static final fsa bK = b("handheld", fsd.I);
-   public static final fsa bL = b("handheld_rod", fsd.I);
-   public static final fsa bM = b("generated", fsd.I, fsd.J);
-   public static final fsa bN = b("generated", fsd.I, fsd.J, fsd.K);
-   public static final fsa bO = b("template_shulker_box", fsd.c);
-   public static final fsa bP = b("template_bed", fsd.c);
-   public static final fsa bQ = b("template_chest", fsd.c);
-   public static final fsa bR = a("template_bundle_open_front", "_open_front", fsd.I);
-   public static final fsa bS = a("template_bundle_open_back", "_open_back", fsd.I);
-   public static final fsa bT = b("bow", fsd.I);
-   public static final fsa bU = b("crossbow", fsd.I);
-   public static final fsa bV = a("template_candle", fsd.a, fsd.c);
-   public static final fsa bW = a("template_two_candles", fsd.a, fsd.c);
-   public static final fsa bX = a("template_three_candles", fsd.a, fsd.c);
-   public static final fsa bY = a("template_four_candles", fsd.a, fsd.c);
-   public static final fsa bZ = a("template_cake_with_candle", fsd.M, fsd.e, fsd.i, fsd.f, fsd.c);
-   public static final fsa ca = a("template_sculk_shrieker", fsd.e, fsd.i, fsd.f, fsd.c, fsd.P);
-   public static final fsa cb = a("template_vault", fsd.f, fsd.e, fsd.i, fsd.g);
-   public static final fsa cc = b("handheld_mace", fsd.I);
-
-   private static fsa a(fsd... $$0) {
-      return new fsa(Optional.empty(), Optional.empty(), $$0);
-   }
-
-   private static fsa a(String $$0, fsd... $$1) {
-      return new fsa(Optional.of(alg.b("block/" + $$0)), Optional.empty(), $$1);
-   }
-
-   private static fsa b(String $$0, fsd... $$1) {
-      return new fsa(Optional.of(alg.b("item/" + $$0)), Optional.empty(), $$1);
-   }
-
-   private static fsa a(String $$0, String $$1, fsd... $$2) {
-      return new fsa(Optional.of(alg.b("item/" + $$0)), Optional.of($$1), $$2);
-   }
-
-   private static fsa b(String $$0, String $$1, fsd... $$2) {
-      return new fsa(Optional.of(alg.b("block/" + $$0)), Optional.of($$1), $$2);
-   }
+   public static final frr a = frr.a.a(6.68F)
+      .a(
+         "body",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.52F, frt.b(0.0F, 0.0F, -22.5F), frq.b.b),
+            new frs(1.2F, frt.b(0.0F, 0.0F, -7.5F), frq.b.b),
+            new frs(1.68F, frt.b(0.0F, 0.0F, 10.0F), frq.b.b),
+            new frs(1.8F, frt.b(0.0F, 0.0F, 10.0F), frq.b.b),
+            new frs(2.28F, frt.b(0.0F, 0.0F, 10.0F), frq.b.b),
+            new frs(2.88F, frt.b(0.0F, 0.0F, 10.0F), frq.b.b),
+            new frs(3.76F, frt.b(25.0F, 0.0F, -7.5F), frq.b.b),
+            new frs(3.92F, frt.b(35.0F, 0.0F, -7.5F), frq.b.b),
+            new frs(4.08F, frt.b(25.0F, 0.0F, -7.5F), frq.b.b),
+            new frs(4.44F, frt.b(47.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.56F, frt.b(47.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.68F, frt.b(47.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(5.0F, frt.b(70.0F, 0.0F, 2.5F), frq.b.b),
+            new frs(5.8F, frt.b(70.0F, 0.0F, 2.5F), frq.b.b),
+            new frs(6.64F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "body",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, -63.0F, 0.0F), frq.b.b),
+            new frs(0.52F, frt.a(0.0F, -56.0F, 0.0F), frq.b.b),
+            new frs(1.2F, frt.a(0.0F, -32.0F, 0.0F), frq.b.b),
+            new frs(1.68F, frt.a(0.0F, -32.0F, 0.0F), frq.b.b),
+            new frs(1.8F, frt.a(0.0F, -32.0F, 0.0F), frq.b.b),
+            new frs(2.28F, frt.a(0.0F, -32.0F, 0.0F), frq.b.b),
+            new frs(2.88F, frt.a(0.0F, -32.0F, 0.0F), frq.b.b),
+            new frs(3.16F, frt.a(0.0F, -27.0F, 0.0F), frq.b.b),
+            new frs(3.76F, frt.a(0.0F, -14.0F, 0.0F), frq.b.b),
+            new frs(3.92F, frt.a(0.0F, -11.0F, 0.0F), frq.b.b),
+            new frs(4.08F, frt.a(0.0F, -14.0F, 0.0F), frq.b.b),
+            new frs(4.44F, frt.a(0.0F, -6.0F, -3.0F), frq.b.b),
+            new frs(4.56F, frt.a(0.0F, -4.0F, -3.0F), frq.b.b),
+            new frs(4.68F, frt.a(0.0F, -6.0F, -3.0F), frq.b.b),
+            new frs(5.0F, frt.a(0.0F, -3.0F, -4.0F), frq.b.b),
+            new frs(5.8F, frt.a(0.0F, -3.0F, -4.0F), frq.b.b),
+            new frs(6.64F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "head",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.52F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.92F, frt.b(0.74F, 0.0F, -40.38F), frq.b.b),
+            new frs(1.16F, frt.b(-67.5F, 0.0F, -2.5F), frq.b.b),
+            new frs(1.24F, frt.b(-67.5F, 0.0F, -2.5F), frq.b.b),
+            new frs(1.32F, frt.b(-47.5F, 0.0F, -2.5F), frq.b.b),
+            new frs(1.4F, frt.b(-67.5F, 0.0F, -2.5F), frq.b.b),
+            new frs(1.68F, frt.b(-67.5F, 0.0F, 15.0F), frq.b.b),
+            new frs(1.76F, frt.b(-67.5F, 0.0F, -5.0F), frq.b.b),
+            new frs(1.84F, frt.b(-52.5F, 0.0F, -5.0F), frq.b.b),
+            new frs(1.92F, frt.b(-67.5F, 0.0F, -5.0F), frq.b.b),
+            new frs(2.64F, frt.b(-17.5F, 0.0F, -10.0F), frq.b.b),
+            new frs(3.76F, frt.b(70.0F, 0.0F, 12.5F), frq.b.b),
+            new frs(4.04F, frt.b(70.0F, 0.0F, 12.5F), frq.b.b),
+            new frs(4.12F, frt.b(80.0F, 0.0F, 12.5F), frq.b.b),
+            new frs(4.24F, frt.b(70.0F, 0.0F, 12.5F), frq.b.b),
+            new frs(5.0F, frt.b(77.5F, 0.0F, -2.5F), frq.b.b),
+            new frs(6.64F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "head",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.52F, frt.a(-8.0F, -11.0F, 0.0F), frq.b.b),
+            new frs(0.92F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.24F, frt.a(0.0F, 0.47F, -0.95F), frq.b.b),
+            new frs(1.32F, frt.a(0.0F, 0.47F, -0.95F), frq.b.b),
+            new frs(1.4F, frt.a(0.0F, 0.47F, -0.95F), frq.b.b),
+            new frs(1.68F, frt.a(0.0F, 1.0F, -2.0F), frq.b.b),
+            new frs(1.76F, frt.a(0.0F, 1.0F, -2.0F), frq.b.b),
+            new frs(1.84F, frt.a(0.0F, 1.0F, -2.0F), frq.b.b),
+            new frs(1.92F, frt.a(0.0F, 1.0F, -2.0F), frq.b.b),
+            new frs(2.64F, frt.a(0.0F, -2.0F, -2.0F), frq.b.b),
+            new frs(3.76F, frt.a(0.0F, -4.0F, 1.0F), frq.b.b),
+            new frs(4.04F, frt.a(0.0F, -1.0F, 1.0F), frq.b.b),
+            new frs(4.12F, frt.a(0.0F, -1.0F, 1.0F), frq.b.b),
+            new frs(4.24F, frt.a(0.0F, -1.0F, 1.0F), frq.b.b),
+            new frs(5.0F, frt.a(0.0F, -1.0F, 1.0F), frq.b.b),
+            new frs(6.64F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.52F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.28F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.88F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.36F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.56F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(5.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(5.8F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(6.64F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.52F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.28F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.88F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.36F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.56F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(5.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(5.8F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(6.64F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.52F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.28F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.88F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.36F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.56F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(5.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(5.8F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(6.64F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.52F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.28F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.88F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.36F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.56F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(5.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(5.8F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(6.64F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.52F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.2F, frt.b(-152.5F, 2.5F, 7.5F), frq.b.b),
+            new frs(1.68F, frt.b(-180.0F, 12.5F, -10.0F), frq.b.b),
+            new frs(1.8F, frt.b(-90.0F, 12.5F, -10.0F), frq.b.b),
+            new frs(2.28F, frt.b(-90.0F, 12.5F, -10.0F), frq.b.b),
+            new frs(2.88F, frt.b(-90.0F, 12.5F, -10.0F), frq.b.b),
+            new frs(3.08F, frt.b(-95.0F, 12.5F, -10.0F), frq.b.b),
+            new frs(3.24F, frt.b(-83.93F, 3.93F, 5.71F), frq.b.b),
+            new frs(3.36F, frt.b(-80.0F, 7.5F, 17.5F), frq.b.b),
+            new frs(3.76F, frt.b(-67.5F, 2.5F, 0.0F), frq.b.b),
+            new frs(4.08F, frt.b(-67.5F, 2.5F, 0.0F), frq.b.b),
+            new frs(4.44F, frt.b(-55.0F, 2.5F, 0.0F), frq.b.b),
+            new frs(4.56F, frt.b(-60.0F, 2.5F, 0.0F), frq.b.b),
+            new frs(4.68F, frt.b(-55.0F, 2.5F, 0.0F), frq.b.b),
+            new frs(5.0F, frt.b(-67.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(5.56F, frt.b(-50.45F, 0.0F, 2.69F), frq.b.b),
+            new frs(6.08F, frt.b(-62.72F, 0.0F, 4.3F), frq.b.b),
+            new frs(6.64F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.52F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.2F, frt.a(0.0F, -21.0F, 9.0F), frq.b.b),
+            new frs(1.68F, frt.a(2.0F, -2.0F, 0.0F), frq.b.b),
+            new frs(1.8F, frt.a(2.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.28F, frt.a(2.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.88F, frt.a(2.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.08F, frt.a(2.0F, -2.0F, 0.0F), frq.b.b),
+            new frs(3.24F, frt.a(2.0F, 2.71F, 3.86F), frq.b.b),
+            new frs(3.36F, frt.a(2.0F, 1.0F, 5.0F), frq.b.b),
+            new frs(3.76F, frt.a(2.0F, 3.0F, 3.0F), frq.b.b),
+            new frs(4.08F, frt.a(2.0F, 3.0F, 3.0F), frq.b.b),
+            new frs(4.44F, frt.a(2.67F, 4.0F, 0.0F), frq.b.b),
+            new frs(4.56F, frt.a(2.67F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.68F, frt.a(2.67F, 4.0F, 0.0F), frq.b.b),
+            new frs(5.0F, frt.a(0.67F, 3.0F, 4.0F), frq.b.b),
+            new frs(6.64F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.12F, frt.b(-167.5F, -17.5F, -7.5F), frq.b.b),
+            new frs(0.6F, frt.b(-167.5F, -17.5F, -7.5F), frq.b.b),
+            new frs(0.88F, frt.b(-175.0F, -17.5F, 15.0F), frq.b.b),
+            new frs(1.16F, frt.b(-190.0F, -17.5F, 5.0F), frq.b.b),
+            new frs(1.28F, frt.b(-90.0F, -5.0F, 5.0F), frq.b.b),
+            new frs(1.68F, frt.b(-90.0F, -17.5F, -12.5F), frq.b.b),
+            new frs(1.8F, frt.b(-90.0F, -17.5F, -12.5F), frq.b.b),
+            new frs(2.28F, frt.b(-90.0F, -17.5F, -12.5F), frq.b.b),
+            new frs(2.88F, frt.b(-90.0F, -17.5F, -12.5F), frq.b.b),
+            new frs(3.04F, frt.b(-81.29F, -10.64F, -14.21F), frq.b.b),
+            new frs(3.16F, frt.b(-83.5F, -5.5F, -15.5F), frq.b.b),
+            new frs(3.76F, frt.b(-62.5F, -7.5F, 5.0F), frq.b.b),
+            new frs(3.92F, frt.b(-58.75F, -3.75F, 5.0F), frq.b.b),
+            new frs(4.08F, frt.b(-55.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.44F, frt.b(-52.5F, 0.0F, 5.0F), frq.b.b),
+            new frs(4.56F, frt.b(-50.0F, 0.0F, 5.0F), frq.b.b),
+            new frs(4.68F, frt.b(-52.5F, 0.0F, 5.0F), frq.b.b),
+            new frs(5.0F, frt.b(-72.5F, -2.5F, 5.0F), frq.b.b),
+            new frs(5.56F, frt.b(-57.5F, -4.54F, 2.99F), frq.b.b),
+            new frs(6.08F, frt.b(-70.99F, -5.77F, 1.78F), frq.b.b),
+            new frs(6.64F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.12F, frt.a(0.0F, -8.0F, 0.0F), frq.b.b),
+            new frs(0.6F, frt.a(0.0F, -8.0F, 0.0F), frq.b.b),
+            new frs(0.88F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.2F, frt.a(-2.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.68F, frt.a(-4.0F, 3.0F, 0.0F), frq.b.b),
+            new frs(1.8F, frt.a(-4.0F, 3.0F, 0.0F), frq.b.b),
+            new frs(2.28F, frt.a(-4.0F, 3.0F, 0.0F), frq.b.b),
+            new frs(2.88F, frt.a(-4.0F, 3.0F, 0.0F), frq.b.b),
+            new frs(3.04F, frt.a(-3.23F, 5.7F, 4.97F), frq.b.b),
+            new frs(3.16F, frt.a(-1.49F, 2.22F, 5.25F), frq.b.b),
+            new frs(3.76F, frt.a(-1.14F, 1.71F, 1.86F), frq.b.b),
+            new frs(3.92F, frt.a(-1.14F, 1.21F, 3.86F), frq.b.b),
+            new frs(4.08F, frt.a(-1.14F, 2.71F, 4.86F), frq.b.b),
+            new frs(4.44F, frt.a(-1.0F, 1.0F, 3.0F), frq.b.b),
+            new frs(4.56F, frt.a(0.0F, 1.0F, 1.0F), frq.b.b),
+            new frs(4.68F, frt.a(0.0F, 1.0F, 3.0F), frq.b.b),
+            new frs(5.0F, frt.a(-2.0F, 0.0F, 4.0F), frq.b.b),
+            new frs(6.64F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.52F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.28F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.88F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.36F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.32F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.48F, frt.b(55.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.6F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(5.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(5.8F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(6.64F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, -63.0F, 0.0F), frq.b.b),
+            new frs(0.52F, frt.a(0.0F, -56.0F, 0.0F), frq.b.b),
+            new frs(1.2F, frt.a(0.0F, -32.0F, 0.0F), frq.b.b),
+            new frs(1.68F, frt.a(0.0F, -32.0F, 0.0F), frq.b.b),
+            new frs(1.8F, frt.a(0.0F, -32.0F, 0.0F), frq.b.b),
+            new frs(2.28F, frt.a(0.0F, -32.0F, 0.0F), frq.b.b),
+            new frs(2.88F, frt.a(0.0F, -32.0F, 0.0F), frq.b.b),
+            new frs(3.36F, frt.a(0.0F, -22.0F, 0.0F), frq.b.b),
+            new frs(3.76F, frt.a(0.0F, -12.28F, 2.48F), frq.b.b),
+            new frs(3.92F, frt.a(0.0F, -9.28F, 2.48F), frq.b.b),
+            new frs(4.08F, frt.a(0.0F, -12.28F, 2.48F), frq.b.b),
+            new frs(4.32F, frt.a(0.0F, -4.14F, 4.14F), frq.b.b),
+            new frs(4.48F, frt.a(0.0F, -0.57F, -8.43F), frq.b.b),
+            new frs(4.6F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(5.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(5.8F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(6.64F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.52F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.28F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.88F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.36F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.84F, frt.b(20.0F, 0.0F, -17.5F), frq.b.b),
+            new frs(4.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.68F, frt.b(20.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.84F, frt.b(10.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(5.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(5.8F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(6.64F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, -63.0F, 0.0F), frq.b.b),
+            new frs(0.52F, frt.a(0.0F, -56.0F, 0.0F), frq.b.b),
+            new frs(1.2F, frt.a(0.0F, -32.0F, 0.0F), frq.b.b),
+            new frs(1.68F, frt.a(0.0F, -32.0F, 0.0F), frq.b.b),
+            new frs(1.8F, frt.a(0.0F, -32.0F, 0.0F), frq.b.b),
+            new frs(2.28F, frt.a(0.0F, -32.0F, 0.0F), frq.b.b),
+            new frs(2.88F, frt.a(0.0F, -32.0F, 0.0F), frq.b.b),
+            new frs(3.36F, frt.a(0.0F, -22.0F, 0.0F), frq.b.b),
+            new frs(3.84F, frt.a(-4.0F, 2.0F, -7.0F), frq.b.b),
+            new frs(4.0F, frt.a(-4.0F, 0.0F, -5.0F), frq.b.b),
+            new frs(4.68F, frt.a(-4.0F, 0.0F, -9.0F), frq.b.b),
+            new frs(4.84F, frt.a(-2.0F, 2.0F, -3.5F), frq.b.b),
+            new frs(5.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(5.8F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(6.64F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .b();
+   public static final frr b = frr.a.a(5.0F)
+      .a(
+         "body",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.25F, frt.b(4.13441F, 0.94736F, 1.2694F), frq.b.b),
+            new frs(0.5F, frt.b(50.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.7083F, frt.b(54.45407F, -13.53935F, -18.14183F), frq.b.b),
+            new frs(1.0417F, frt.b(59.46442F, -10.8885F, 35.7954F), frq.b.b),
+            new frs(1.3333F, frt.b(82.28261F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.625F, frt.b(53.23606F, 10.04715F, -29.72932F), frq.b.b),
+            new frs(2.2083F, frt.b(-17.71739F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.5417F, frt.b(112.28261F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.6667F, frt.b(116.06889F, 5.11581F, -24.50117F), frq.b.b),
+            new frs(2.8333F, frt.b(121.56244F, -4.17248F, 19.57737F), frq.b.b),
+            new frs(3.0417F, frt.b(138.5689F, 5.11581F, -24.50117F), frq.b.b),
+            new frs(3.25F, frt.b(144.06244F, -4.17248F, 19.57737F), frq.b.b),
+            new frs(3.375F, frt.b(147.28261F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.625F, frt.b(147.28261F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.875F, frt.b(134.36221F, 8.81113F, -8.90172F), frq.b.b),
+            new frs(4.0417F, frt.b(132.05966F, -8.35927F, 9.70506F), frq.b.b),
+            new frs(4.25F, frt.b(134.36221F, 8.81113F, -8.90172F), frq.b.b),
+            new frs(4.5F, frt.b(147.5F, 0.0F, 0.0F), frq.b.a)
+         )
+      )
+      .a(
+         "body",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.5F, frt.a(0.0F, -16.48454F, -6.5784F), frq.b.b),
+            new frs(0.7083F, frt.a(0.0F, -16.48454F, -6.5784F), frq.b.b),
+            new frs(1.0417F, frt.a(0.0F, -16.97F, -7.11F), frq.b.b),
+            new frs(1.625F, frt.a(0.0F, -13.97F, -7.11F), frq.b.b),
+            new frs(2.2083F, frt.a(0.0F, -11.48454F, -0.5784F), frq.b.b),
+            new frs(2.5417F, frt.a(0.0F, -16.48454F, -6.5784F), frq.b.b),
+            new frs(2.6667F, frt.a(0.0F, -20.27F, -5.42F), frq.b.b),
+            new frs(3.375F, frt.a(0.0F, -21.48454F, -5.5784F), frq.b.b),
+            new frs(4.0417F, frt.a(0.0F, -22.48454F, -5.5784F), frq.b.b),
+            new frs(4.5F, frt.a(0.0F, -40.0F, -8.0F), frq.b.a)
+         )
+      )
+      .a(
+         "head",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.6667F, frt.b(12.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.2083F, frt.b(12.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.75F, frt.b(45.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.375F, frt.b(-22.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.5417F, frt.b(67.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.375F, frt.b(67.5F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a("head", new frq(frq.d.a, new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b), new frs(4.375F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a)))
+      .a(
+         "right_arm",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.5F, frt.b(-101.8036F, -21.29587F, 30.61478F), frq.b.b),
+            new frs(0.7083F, frt.b(-101.8036F, -21.29587F, 30.61478F), frq.b.b),
+            new frs(1.0F, frt.b(48.7585F, -17.61941F, 9.9865F), frq.b.b),
+            new frs(1.1667F, frt.b(48.7585F, -17.61941F, 9.9865F), frq.b.b),
+            new frs(1.4583F, frt.b(-101.8036F, -21.29587F, 30.61478F), frq.b.b),
+            new frs(1.75F, frt.b(-89.04994F, -4.19657F, -1.47845F), frq.b.b),
+            new frs(2.2083F, frt.b(-158.30728F, 3.7152F, -1.52352F), frq.b.b),
+            new frs(2.5417F, frt.b(-89.04994F, -4.19657F, -1.47845F), frq.b.b),
+            new frs(4.375F, frt.b(-120.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.7083F, frt.a(2.22F, 0.0F, 0.86F), frq.b.b),
+            new frs(1.0F, frt.a(3.12F, 0.0F, 4.29F), frq.b.b),
+            new frs(2.2083F, frt.a(1.0F, 0.0F, 4.0F), frq.b.b),
+            new frs(4.375F, frt.a(0.0F, 0.0F, 4.0F), frq.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.2917F, frt.b(-63.89288F, -0.52011F, 2.09491F), frq.b.b),
+            new frs(0.5F, frt.b(-63.89288F, -0.52011F, 2.09491F), frq.b.b),
+            new frs(0.7083F, frt.b(-62.87857F, 15.15061F, 9.97445F), frq.b.b),
+            new frs(0.9167F, frt.b(-86.93642F, 17.45026F, 4.05284F), frq.b.b),
+            new frs(1.1667F, frt.b(-86.93642F, 17.45026F, 4.05284F), frq.b.b),
+            new frs(1.4583F, frt.b(-86.93642F, 17.45026F, 4.05284F), frq.b.b),
+            new frs(1.6667F, frt.b(63.0984F, 8.83573F, -8.71284F), frq.b.b),
+            new frs(1.8333F, frt.b(35.5984F, 8.83573F, -8.71284F), frq.b.b),
+            new frs(2.2083F, frt.b(-153.27473F, -0.02953F, 3.5235F), frq.b.b),
+            new frs(2.5417F, frt.b(-87.07754F, -0.02625F, 3.132F), frq.b.b),
+            new frs(4.375F, frt.b(-120.0F, 0.0F, 0.0F), frq.b.a)
+         )
+      )
+      .a(
+         "left_arm",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.5F, frt.a(-0.28F, 5.0F, 10.0F), frq.b.b),
+            new frs(0.7083F, frt.a(-1.51F, 4.35F, 4.33F), frq.b.b),
+            new frs(0.9167F, frt.a(-0.6F, 3.61F, 4.63F), frq.b.b),
+            new frs(1.1667F, frt.a(-0.6F, 3.61F, 0.63F), frq.b.b),
+            new frs(1.6667F, frt.a(-2.85F, -0.1F, 3.33F), frq.b.b),
+            new frs(2.2083F, frt.a(-1.0F, 0.0F, 4.0F), frq.b.b),
+            new frs(4.375F, frt.a(0.0F, 0.0F, 4.0F), frq.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.5F, frt.b(113.27F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.7083F, frt.b(113.27F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.3333F, frt.b(113.27F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.5833F, frt.b(182.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.8333F, frt.b(120.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.0833F, frt.b(182.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.2917F, frt.b(120.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.5F, frt.b(90.0F, 0.0F, 0.0F), frq.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.5F, frt.a(0.0F, -13.98F, -2.37F), frq.b.b),
+            new frs(0.7083F, frt.a(0.0F, -13.98F, -2.37F), frq.b.b),
+            new frs(3.3333F, frt.a(0.0F, -13.98F, -2.37F), frq.b.b),
+            new frs(3.5833F, frt.a(0.0F, -7.0F, -3.0F), frq.b.b),
+            new frs(3.8333F, frt.a(0.0F, -9.0F, -3.0F), frq.b.b),
+            new frs(4.0833F, frt.a(0.0F, -16.71F, -3.69F), frq.b.b),
+            new frs(4.2917F, frt.a(0.0F, -28.0F, -5.0F), frq.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.5F, frt.b(114.98F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.7083F, frt.b(114.98F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.3333F, frt.b(114.98F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.5833F, frt.b(90.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.8333F, frt.b(172.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.0833F, frt.b(90.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.2917F, frt.b(197.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.5F, frt.b(90.0F, 0.0F, 0.0F), frq.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.5F, frt.a(0.0F, -14.01F, -2.35F), frq.b.b),
+            new frs(0.7083F, frt.a(0.0F, -14.01F, -2.35F), frq.b.b),
+            new frs(3.3333F, frt.a(0.0F, -14.01F, -2.35F), frq.b.b),
+            new frs(3.5833F, frt.a(0.0F, -5.0F, -4.0F), frq.b.b),
+            new frs(3.8333F, frt.a(0.0F, -7.0F, -4.0F), frq.b.b),
+            new frs(4.0833F, frt.a(0.0F, -15.5F, -3.76F), frq.b.b),
+            new frs(4.2917F, frt.a(0.0F, -28.0F, -5.0F), frq.b.a)
+         )
+      )
+      .b();
+   public static final frr c = frr.a.a(4.2F)
+      .a(
+         "body",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.24F, frt.b(-25.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.6F, frt.b(32.5F, 0.0F, -7.5F), frq.b.b),
+            new frs(1.84F, frt.b(38.33F, 0.0F, 2.99F), frq.b.b),
+            new frs(2.08F, frt.b(40.97F, 0.0F, -4.3F), frq.b.b),
+            new frs(2.36F, frt.b(44.41F, 0.0F, 6.29F), frq.b.b),
+            new frs(3.0F, frt.b(47.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(4.2F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "body",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.24F, frt.a(0.0F, -1.0F, 3.0F), frq.b.b),
+            new frs(1.6F, frt.a(0.0F, -3.0F, -6.0F), frq.b.b),
+            new frs(3.0F, frt.a(0.0F, -3.0F, -6.0F), frq.b.b),
+            new frs(4.2F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "head",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.24F, frt.b(-32.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.6F, frt.b(-32.5F, 0.0F, -27.5F), frq.b.b),
+            new frs(1.8F, frt.b(-32.5F, 0.0F, 26.0F), frq.b.b),
+            new frs(2.04F, frt.b(-32.5F, 0.0F, -27.5F), frq.b.b),
+            new frs(2.44F, frt.b(-32.5F, 0.0F, 26.0F), frq.b.b),
+            new frs(2.84F, frt.b(-5.0F, 0.0F, -12.5F), frq.b.b),
+            new frs(4.2F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "head",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.24F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.6F, frt.a(0.0F, -2.0F, -6.0F), frq.b.b),
+            new frs(2.2F, frt.a(0.0F, -2.0F, -6.0F), frq.b.b),
+            new frs(2.48F, frt.a(0.0F, -2.0F, -6.0F), frq.b.b),
+            new frs(4.2F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.24F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.76F, frt.b(0.0F, 0.0F, -10.85F), frq.b.b),
+            new frs(2.08F, frt.b(0.0F, 0.0F, 12.5F), frq.b.b),
+            new frs(2.4F, frt.b(0.0F, 0.0F, -10.85F), frq.b.b),
+            new frs(2.72F, frt.b(0.0F, 0.0F, 12.5F), frq.b.b),
+            new frs(3.0F, frt.b(0.0F, 0.0F, -10.85F), frq.b.b),
+            new frs(4.2F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.24F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.76F, frt.b(0.0F, 0.0F, -15.85F), frq.b.b),
+            new frs(2.08F, frt.b(0.0F, 0.0F, 12.5F), frq.b.b),
+            new frs(2.4F, frt.b(0.0F, 0.0F, -15.85F), frq.b.b),
+            new frs(2.72F, frt.b(0.0F, 0.0F, 12.5F), frq.b.b),
+            new frs(3.0F, frt.b(0.0F, 0.0F, -15.85F), frq.b.b),
+            new frs(4.2F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.72F, frt.b(-120.0F, 0.0F, -20.0F), frq.b.b),
+            new frs(1.24F, frt.b(-77.5F, 3.75F, 15.0F), frq.b.b),
+            new frs(1.48F, frt.b(67.5F, -32.5F, 20.0F), frq.b.b),
+            new frs(2.48F, frt.b(37.5F, -32.5F, 25.0F), frq.b.b),
+            new frs(2.88F, frt.b(27.6F, -17.1F, 32.5F), frq.b.b),
+            new frs(4.2F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.72F, frt.a(3.0F, -2.0F, 0.0F), frq.b.b),
+            new frs(1.48F, frt.a(4.0F, -2.0F, 0.0F), frq.b.b),
+            new frs(2.48F, frt.a(4.0F, -2.0F, 0.0F), frq.b.b),
+            new frs(4.2F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.72F, frt.b(-125.0F, 0.0F, 20.0F), frq.b.b),
+            new frs(1.24F, frt.b(-76.25F, -17.5F, -7.5F), frq.b.b),
+            new frs(1.48F, frt.b(62.5F, 42.5F, -12.5F), frq.b.b),
+            new frs(2.48F, frt.b(37.5F, 27.5F, -27.5F), frq.b.b),
+            new frs(2.88F, frt.b(25.0F, 18.4F, -30.0F), frq.b.b),
+            new frs(4.2F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.72F, frt.a(-3.0F, -2.0F, 0.0F), frq.b.b),
+            new frs(1.48F, frt.a(-4.0F, -2.0F, 0.0F), frq.b.b),
+            new frs(2.48F, frt.a(-4.0F, -2.0F, 0.0F), frq.b.b),
+            new frs(4.2F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .b();
+   public static final frr d = frr.a.a(4.16F)
+      .a(
+         "body",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.56F, frt.b(17.5F, 32.5F, 0.0F), frq.b.b),
+            new frs(0.96F, frt.b(0.0F, 32.5F, 0.0F), frq.b.b),
+            new frs(2.2F, frt.b(10.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.8F, frt.b(10.0F, -30.0F, 0.0F), frq.b.b),
+            new frs(3.32F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "head",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.68F, frt.b(0.0F, 40.0F, 0.0F), frq.b.b),
+            new frs(0.96F, frt.b(-22.5F, 40.0F, 0.0F), frq.b.b),
+            new frs(1.24F, frt.b(0.0F, 20.0F, 0.0F), frq.b.b),
+            new frs(1.52F, frt.b(-35.0F, 20.0F, 0.0F), frq.b.b),
+            new frs(1.76F, frt.b(0.0F, 20.0F, 0.0F), frq.b.b),
+            new frs(2.28F, frt.b(0.0F, -20.0F, 0.0F), frq.b.b),
+            new frs(2.88F, frt.b(0.0F, -20.0F, 0.0F), frq.b.b),
+            new frs(3.32F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.96F, frt.b(17.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.2F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.76F, frt.b(-15.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.32F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.96F, frt.b(-15.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.2F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.76F, frt.b(17.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.32F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .b();
+   public static final frr e = frr.a.a(0.33333F)
+      .a(
+         "body",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.0417F, frt.b(-22.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.2083F, frt.b(22.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.3333F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "body",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.0417F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.2083F, frt.a(0.0F, -1.0F, -2.0F), frq.b.b),
+            new frs(0.3333F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "head",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.0417F, frt.b(22.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.25F, frt.b(-30.17493F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.3333F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "head",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.0417F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.25F, frt.a(0.0F, -2.0F, -2.0F), frq.b.b),
+            new frs(0.3333F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.0417F, frt.b(-120.36119F, 40.78947F, -20.94102F), frq.b.b),
+            new frs(0.1667F, frt.b(-90.0F, -45.0F, 0.0F), frq.b.b),
+            new frs(0.3333F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.0417F, frt.a(4.0F, 0.0F, 5.0F), frq.b.b),
+            new frs(0.1667F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.3333F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.0417F, frt.b(-120.36119F, -40.78947F, 20.94102F), frq.b.b),
+            new frs(0.1667F, frt.b(-61.1632F, 42.85882F, 11.52421F), frq.b.b),
+            new frs(0.3333F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.0417F, frt.a(-4.0F, 0.0F, 5.0F), frq.b.b),
+            new frs(0.1667F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.3333F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .b();
+   public static final frr f = frr.a.a(3.0F)
+      .a(
+         "body",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.0833F, frt.b(47.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.625F, frt.b(55.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.9167F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.0F, frt.b(-32.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.4583F, frt.b(-32.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.7083F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.875F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "body",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.0833F, frt.a(0.0F, -3.0F, 0.0F), frq.b.b),
+            new frs(1.625F, frt.a(0.0F, -4.0F, -1.0F), frq.b.b),
+            new frs(1.9167F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.7083F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.875F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "right_ribcage",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.5417F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.7917F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.875F, frt.b(0.0F, 125.0F, 0.0F), frq.b.b),
+            new frs(2.5F, frt.b(0.0F, 125.0F, 0.0F), frq.b.b),
+            new frs(2.6667F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "left_ribcage",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.5417F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.7917F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.875F, frt.b(0.0F, -125.0F, 0.0F), frq.b.b),
+            new frs(2.5F, frt.b(0.0F, -125.0F, 0.0F), frq.b.b),
+            new frs(2.6667F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "head",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.0F, frt.b(67.5F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.75F, frt.b(80.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.9167F, frt.b(-45.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.5F, frt.b(-45.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.7083F, frt.b(-45.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.875F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "head",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.9167F, frt.a(0.0F, 0.0F, -3.0F), frq.b.b),
+            new frs(2.5F, frt.a(0.0F, 0.0F, -3.0F), frq.b.b),
+            new frs(2.7083F, frt.a(0.0F, 0.0F, -3.0F), frq.b.b),
+            new frs(2.875F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.875F, frt.b(-42.28659F, -32.69813F, -5.00825F), frq.b.b),
+            new frs(1.1667F, frt.b(-29.83757F, -35.39626F, -45.28089F), frq.b.b),
+            new frs(1.3333F, frt.b(-29.83757F, -35.39626F, -45.28089F), frq.b.b),
+            new frs(1.6667F, frt.b(-72.28659F, -32.69813F, -5.00825F), frq.b.b),
+            new frs(1.8333F, frt.b(35.26439F, -30.0F, 35.26439F), frq.b.b),
+            new frs(1.9167F, frt.b(73.75484F, -13.0931F, 19.20518F), frq.b.b),
+            new frs(2.5F, frt.b(73.75484F, -13.0931F, 19.20518F), frq.b.b),
+            new frs(2.75F, frt.b(58.20713F, -21.1064F, 28.7261F), frq.b.b),
+            new frs(3.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.8333F, frt.a(3.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.75F, frt.a(3.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new frq(
+            frq.d.b,
+            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(0.875F, frt.b(-33.80694F, 32.31058F, 6.87997F), frq.b.b),
+            new frs(1.1667F, frt.b(-17.87827F, 34.62115F, 49.02433F), frq.b.b),
+            new frs(1.3333F, frt.b(-17.87827F, 34.62115F, 49.02433F), frq.b.b),
+            new frs(1.6667F, frt.b(-51.30694F, 32.31058F, 6.87997F), frq.b.b),
+            new frs(1.8333F, frt.b(35.26439F, 30.0F, -35.26439F), frq.b.b),
+            new frs(1.9167F, frt.b(73.75484F, 13.0931F, -19.20518F), frq.b.b),
+            new frs(2.5F, frt.b(73.75484F, 13.0931F, -19.20518F), frq.b.b),
+            new frs(2.75F, frt.b(58.20713F, 21.1064F, -28.7261F), frq.b.b),
+            new frs(3.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new frq(
+            frq.d.a,
+            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(1.8333F, frt.a(-3.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(2.75F, frt.a(-3.0F, 0.0F, 0.0F), frq.b.b),
+            new frs(3.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
+         )
+      )
+      .b();
 }

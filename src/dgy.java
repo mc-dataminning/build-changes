@@ -1,21 +1,17 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dgy(dgh c) implements dgt {
-   public static final MapCodec<dgy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dgh.b.fieldOf("chance").forGetter(dgy::b)).apply($$0, dgy::new));
+public record dgy(dgs d) implements dhc {
+   public static final MapCodec<dgy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dgs.b.fieldOf("amount").forGetter($$0x -> $$0x.d)).apply($$0, dgy::new));
 
    @Override
-   public float a(int $$0, azv $$1, float $$2) {
-      float $$3 = this.c.a($$0);
-      int $$4 = 0;
-
-      for (int $$5 = 0; (float)$$5 < $$2; $$5++) {
-         if ($$1.i() < $$3) {
-            $$4++;
-         }
+   public void a(ars $$0, int $$1, dgk $$2, bwt $$3, ffq $$4) {
+      czy $$5 = $$2.a();
+      if ($$5.c(kk.d) && $$5.c(kk.e)) {
+         art $$7 = $$2.c() instanceof art $$6 ? $$6 : null;
+         int $$8 = (int)this.d.a($$1);
+         $$5.a($$8, $$0, $$7, $$2.d());
       }
-
-      return $$2 - (float)$$4;
    }
 
    @Override
@@ -23,7 +19,7 @@ public record dgy(dgh c) implements dgt {
       return a;
    }
 
-   public dgh b() {
-      return this.c;
+   public dgs b() {
+      return this.d;
    }
 }

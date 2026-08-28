@@ -1,70 +1,60 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dwc extends dmd {
+public class dwc extends doz {
    public static final MapCodec<dwc> a = b(dwc::new);
-   public static final ebw<eaf> b = ebj.bC;
-   public static final ebr<jb> c = dqs.e;
-   public static final ebk d = ebj.bE;
+   public static final int b = 1;
+   public static final ece c = ebu.at;
+   private static final fgk[] g = dnc.a(1, $$0 -> dnc.b(6.0, 0.0, (double)(6 + $$0 * 4)));
+   private static final int h = 1;
 
    @Override
    public MapCodec<dwc> a() {
       return a;
    }
 
-   public dwc(eas.d $$0) {
+   public dwc(ebd.d $$0) {
       super($$0);
-      this.l(this.C.b().b(c, jb.c).b(b, eaf.a).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public bug a(czn $$0, eat $$1, djm $$2, iv $$3, crm $$4, buf $$5, fey $$6) {
-      if (!$$0.f() && $$1.c(b) == eaf.b) {
-         if ($$2 instanceof arq $$7) {
-            if (!($$7.c_($$3) instanceof eaa $$8)) {
-               return bug.f;
-            }
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(c);
+   }
 
-            eaa.b.a($$7, $$3, $$1, $$8.f(), $$8.a(), $$8.c(), $$4, $$0);
-         }
+   @Override
+   public fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return g[this.h($$0)];
+   }
 
-         return bug.b;
-      } else {
-         return bug.f;
+   @Override
+   protected ece b() {
+      return c;
+   }
+
+   @Override
+   public int c() {
+      return 2;
+   }
+
+   @Override
+   protected djw d() {
+      return dac.wt;
+   }
+
+   @Override
+   public ebe b(int $$0) {
+      return $$0 == 2 ? dne.cc.m() : super.b($$0);
+   }
+
+   @Override
+   public void b(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      if ($$3.a(3) != 0) {
+         super.b($$0, $$1, $$2, $$3);
       }
    }
 
-   @Nullable
    @Override
-   public dxr a(iv $$0, eat $$1) {
-      return new eaa($$0, $$1);
-   }
-
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(c, b, d);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dxr> dxs<T> a(djm $$0, eat $$1, dxt<T> $$2) {
-      return $$0 instanceof arq $$3
-         ? a($$2, dxt.S, ($$1x, $$2x, $$3x, $$4) -> eaa.b.a($$3, $$2x, $$3x, $$4.f(), $$4.a(), $$4.c()))
-         : a($$2, dxt.S, ($$0x, $$1x, $$2x, $$3x) -> eaa.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
-   }
-
-   @Override
-   public eat a(ddg $$0) {
-      return this.m().b(c, $$0.g().g());
-   }
-
-   @Override
-   public eat a(eat $$0, dtl $$1) {
-      return $$0.b(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   public eat a(eat $$0, dru $$1) {
-      return $$0.a($$1.a($$0.c(c)));
+   protected int a(djx $$0) {
+      return 1;
    }
 }

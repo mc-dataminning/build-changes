@@ -1,53 +1,25 @@
-public class etv {
-   private static final alg[] a = new alg[]{
-      alg.b("nether_fossils/fossil_1"),
-      alg.b("nether_fossils/fossil_2"),
-      alg.b("nether_fossils/fossil_3"),
-      alg.b("nether_fossils/fossil_4"),
-      alg.b("nether_fossils/fossil_5"),
-      alg.b("nether_fossils/fossil_6"),
-      alg.b("nether_fossils/fossil_7"),
-      alg.b("nether_fossils/fossil_8"),
-      alg.b("nether_fossils/fossil_9"),
-      alg.b("nether_fossils/fossil_10"),
-      alg.b("nether_fossils/fossil_11"),
-      alg.b("nether_fossils/fossil_12"),
-      alg.b("nether_fossils/fossil_13"),
-      alg.b("nether_fossils/fossil_14")
-   };
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-   public static void a(evq $$0, ers $$1, azv $$2, iv $$3) {
-      dtl $$4 = dtl.a($$2);
-      $$1.a(new etv.a($$0, ag.a(a, $$2), $$3, $$4));
+public class etv extends esb {
+   public static final MapCodec<etv> d = a(etv::new);
+
+   public etv(esb.c $$0) {
+      super($$0);
    }
 
-   public static class a extends erx {
-      public a(evq $$0, alg $$1, iv $$2, dtl $$3) {
-         super(ese.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
-      }
+   @Override
+   public Optional<esb.b> a(esb.a $$0) {
+      return a($$0, ehd.a.c, $$1 -> a($$1, $$0));
+   }
 
-      public a(evq $$0, tz $$1) {
-         super(ese.ac, $$1, $$0, $$1x -> a($$1.<dtl>a("Rot", dtl.h).orElseThrow()));
-      }
+   private static void a(est $$0, esb.a $$1) {
+      iv $$2 = new iv($$1.h().a(9), 90, $$1.h().b(9));
+      $$0.a(new etu.a($$2));
+   }
 
-      private static evl a(dtl $$0) {
-         return new evl().a($$0).a(dru.a).a(euq.d);
-      }
-
-      @Override
-      protected void a(esd $$0, tz $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", dtl.h, this.c.d());
-      }
-
-      @Override
-      protected void a(String $$0, iv $$1, dkd $$2, azv $$3, erf $$4) {
-      }
-
-      @Override
-      public void a(dkl $$0, dki $$1, ecr $$2, azv $$3, erf $$4, dir $$5, iv $$6) {
-         $$4.b(this.b.b(this.c, this.d));
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
+   @Override
+   public esk<?> e() {
+      return esk.a;
    }
 }

@@ -1,37 +1,11 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
 
-public enum dht implements bak {
-   a(bws.f, 11, "helmet"),
-   b(bws.e, 16, "chestplate"),
-   c(bws.d, 15, "leggings"),
-   d(bws.c, 13, "boots"),
-   e(bws.g, 16, "body");
+public interface dht {
+   Codec<dht> a = mg.av.q().dispatch(dht::a, Function.identity());
 
-   public static final Codec<dht> f = bak.b(dht::values);
-   private final bws g;
-   private final String h;
-   private final int i;
+   void a(czy var1, dgr.a var2, azx var3, bup var4);
 
-   private dht(final bws $$0, final int $$1, final String $$2) {
-      this.g = $$0;
-      this.h = $$2;
-      this.i = $$1;
-   }
-
-   public int a(int $$0) {
-      return this.i * $$0;
-   }
-
-   public bws a() {
-      return this.g;
-   }
-
-   public String b() {
-      return this.h;
-   }
-
-   @Override
-   public String c() {
-      return this.h;
-   }
+   MapCodec<? extends dht> a();
 }

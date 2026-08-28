@@ -1,71 +1,70 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class gdc extends gdj {
+   public static final xa a = xa.c("options.accessibility.title");
 
-public class gdc {
-   private final gll a;
-   private final glt b;
-   private final Predicate<glo.a> c;
-   @Nullable
-   private xt d = null;
-   private int e;
-   private int f;
-   @Nullable
-   private xo g;
-
-   public gdc(glz $$0, Predicate<glo.a> $$1) {
-      this.a = $$0.b();
-      this.b = new glt($$0.a().b().leadingContextMessageCount());
-      this.c = $$1;
-      this.e = this.a.b();
+   private static frg<?>[] a(frh $$0) {
+      return new frg[]{
+         $$0.av(),
+         $$0.Z(),
+         $$0.u(),
+         $$0.J(),
+         $$0.q(),
+         $$0.s(),
+         $$0.ab(),
+         $$0.o(),
+         $$0.p(),
+         $$0.C(),
+         $$0.D(),
+         $$0.ae(),
+         $$0.af(),
+         $$0.ag(),
+         $$0.am(),
+         $$0.an(),
+         $$0.ao(),
+         $$0.ar(),
+         $$0.ap(),
+         $$0.aq(),
+         $$0.b(),
+         $$0.a(),
+         $$0.t(),
+         $$0.c(),
+         $$0.w(),
+         $$0.K(),
+         $$0.v()
+      };
    }
 
-   public void a(int $$0, gdc.a $$1) {
-      int $$2 = 0;
+   public gdc(gad $$0, frh $$1) {
+      super($$0, $$1, a);
+   }
 
-      while ($$2 < $$0) {
-         gln $$3 = this.a.b(this.e);
-         if ($$3 == null) {
-            break;
-         }
+   @Override
+   protected void aS_() {
+      super.aS_();
+      fuj $$0 = this.d.b(this.c.u());
+      if ($$0 != null && !this.m.ad().c().contains("high_contrast")) {
+         $$0.j = false;
+         $$0.a(fvw.a(xa.c("options.accessibility.high_contrast.error.tooltip")));
+      }
 
-         int $$4 = this.e--;
-         if ($$3 instanceof glo.a $$5 && !$$5.g().equals(this.g)) {
-            if (this.a($$1, $$5)) {
-               if (this.f > 0) {
-                  $$1.a(wy.a("gui.chatSelection.fold", this.f));
-                  this.f = 0;
-               }
-
-               $$1.a($$4, $$5);
-               $$2++;
-            } else {
-               this.f++;
-            }
-
-            this.g = $$5.g();
-         }
+      fuj $$1 = this.d.b(this.c.K());
+      if ($$1 != null) {
+         $$1.j = this.H();
       }
    }
 
-   private boolean a(gdc.a $$0, glo.a $$1) {
-      xo $$2 = $$1.g();
-      boolean $$3 = this.b.b($$2);
-      if (this.c.test($$1)) {
-         this.b.a($$2);
-         if (this.d != null && !this.d.a($$2.k())) {
-            $$0.a(wy.a("gui.chatSelection.join", $$1.f().getName()).a(o.o));
-         }
-
-         this.d = $$2.k();
-         return true;
-      } else {
-         return $$3;
-      }
+   @Override
+   protected void m() {
+      this.d.a(a(this.c));
    }
 
-   public interface a {
-      void a(int var1, glo.a var2);
+   @Override
+   protected void E() {
+      fyd $$0 = this.s.b(fyd.e().a(8));
+      $$0.a(ful.a(xa.c("options.accessibility.link"), fza.b(this, ayj.l)).a());
+      $$0.a(ful.a(wz.d, $$0x -> this.m.a(this.b)).a());
+   }
 
-      void a(wy var1);
+   private boolean H() {
+      return this.m.s != null && this.m.s.K().b(cvj.d);
    }
 }

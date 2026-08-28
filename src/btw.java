@@ -1,140 +1,36 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.UUID;
+import com.mojang.serialization.DataResult;
 
 public abstract class btw {
-   private final UUID h;
-   protected wy a;
-   protected float b;
-   protected btw.a c;
-   protected btw.b d;
-   protected boolean e;
-   protected boolean f;
-   protected boolean g;
+   private static final Codec<Either<Integer, btw>> a = Codec.either(Codec.INT, mg.K.q().dispatch(btw::c, btx::codec));
+   public static final Codec<btw> c = a.xmap(
+      $$0 -> (btw)$$0.map(btt::a, $$0x -> $$0x), $$0 -> $$0.c() == btx.a ? Either.left(((btt)$$0).d()) : Either.right($$0)
+   );
+   public static final Codec<btw> d = b(0, Integer.MAX_VALUE);
+   public static final Codec<btw> e = b(1, Integer.MAX_VALUE);
 
-   public btw(UUID $$0, wy $$1, btw.a $$2, btw.b $$3) {
-      this.h = $$0;
-      this.a = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.b = 1.0F;
+   public static Codec<btw> b(int $$0, int $$1) {
+      return a($$0, $$1, c);
    }
 
-   public UUID i() {
-      return this.h;
+   public static <T extends btw> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
+      return $$2.validate($$2x -> a($$0, $$1, $$2x));
    }
 
-   public wy j() {
-      return this.a;
-   }
-
-   public void a(wy $$0) {
-      this.a = $$0;
-   }
-
-   public float k() {
-      return this.b;
-   }
-
-   public void a(float $$0) {
-      this.b = $$0;
-   }
-
-   public btw.a l() {
-      return this.c;
-   }
-
-   public void a(btw.a $$0) {
-      this.c = $$0;
-   }
-
-   public btw.b m() {
-      return this.d;
-   }
-
-   public void a(btw.b $$0) {
-      this.d = $$0;
-   }
-
-   public boolean n() {
-      return this.e;
-   }
-
-   public btw a(boolean $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public boolean o() {
-      return this.f;
-   }
-
-   public btw b(boolean $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public btw c(boolean $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public boolean p() {
-      return this.g;
-   }
-
-   public static enum a implements bak {
-      a("pink", o.m),
-      b("blue", o.j),
-      c("red", o.e),
-      d("green", o.k),
-      e("yellow", o.o),
-      f("purple", o.b),
-      g("white", o.p);
-
-      public static final Codec<btw.a> h = bak.a(btw.a::values);
-      private final String i;
-      private final o j;
-
-      private a(final String $$0, final o $$1) {
-         this.i = $$0;
-         this.j = $$1;
-      }
-
-      public o a() {
-         return this.j;
-      }
-
-      public String b() {
-         return this.i;
-      }
-
-      @Override
-      public String c() {
-         return this.i;
+   private static <T extends btw> DataResult<T> a(int $$0, int $$1, T $$2) {
+      if ($$2.a() < $$0) {
+         return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+      } else {
+         return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
       }
    }
 
-   public static enum b implements bak {
-      a("progress"),
-      b("notched_6"),
-      c("notched_10"),
-      d("notched_12"),
-      e("notched_20");
+   public abstract int a(azx var1);
 
-      public static final Codec<btw.b> f = bak.a(btw.b::values);
-      private final String g;
+   public abstract int a();
 
-      private b(final String $$0) {
-         this.g = $$0;
-      }
+   public abstract int b();
 
-      public String a() {
-         return this.g;
-      }
-
-      @Override
-      public String c() {
-         return this.g;
-      }
-   }
+   public abstract btx<?> c();
 }

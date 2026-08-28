@@ -1,40 +1,39 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
 
 public class aoe {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.pardon.failed"));
-
    public static void a(CommandDispatcher<ej> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("pardon").requires($$0x -> $$0x.c(3)))
-            .then(
-               ek.a("targets", ey.a())
-                  .suggests(($$0x, $$1) -> eo.a(((ej)$$0x.getSource()).l().ag().f().a(), $$1))
-                  .executes($$0x -> a((ej)$$0x.getSource(), ey.a($$0x, "targets")))
-            )
+      LiteralCommandNode<ej> $$1 = $$0.register(
+         (LiteralArgumentBuilder)ek.a("msg").then(ek.a("targets", ew.d()).then(ek.a("message", fa.a()).executes($$0x -> {
+            Collection<art> $$1x = ew.f($$0x, "targets");
+            if (!$$1x.isEmpty()) {
+               fa.a($$0x, "message", $$2 -> a((ej)$$0x.getSource(), $$1x, $$2));
+            }
+
+            return $$1x.size();
+         })))
       );
+      $$0.register((LiteralArgumentBuilder)ek.a("tell").redirect($$1));
+      $$0.register((LiteralArgumentBuilder)ek.a("w").redirect($$1));
    }
 
-   private static int a(ej $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avw $$2 = $$0.l().ag().f();
-      int $$3 = 0;
+   private static void a(ej $$0, Collection<art> $$1, xq $$2) {
+      ww.a $$3 = ww.a(ww.g, $$0);
+      xp $$4 = xp.a($$2);
+      boolean $$5 = false;
 
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            $$2.c($$4);
-            $$3++;
-            $$0.a(() -> wy.a("commands.pardon.success", wy.b($$4.getName())), true);
-         }
+      for (art $$6 : $$1) {
+         ww.a $$7 = ww.a(ww.h, $$0).c($$6.m_());
+         $$0.a($$4, false, $$7);
+         boolean $$8 = $$0.a($$6);
+         $$6.a($$4, $$8, $$3);
+         $$5 |= $$8 && $$2.j();
       }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         return $$3;
+      if ($$5) {
+         $$0.a(avs.e);
       }
    }
 }

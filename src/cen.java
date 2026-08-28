@@ -1,89 +1,89 @@
 import java.util.EnumSet;
+import java.util.List;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cen extends cef {
-   public static final float a = 0.02F;
-   protected final bxl b;
+public class cen extends ceq {
+   private final bxw a;
+   private final Predicate<bxw> b;
    @Nullable
-   protected bwi c;
-   protected final float d;
-   private int h;
-   protected final float e;
-   private final boolean i;
-   protected final Class<? extends bxj> f;
-   protected final chy g;
+   private bxw c;
+   private final double d;
+   private final che e;
+   private int f;
+   private final float g;
+   private float h;
+   private final float i;
 
-   public cen(bxl $$0, Class<? extends bxj> $$1, float $$2) {
-      this($$0, $$1, $$2, 0.02F);
-   }
-
-   public cen(bxl $$0, Class<? extends bxj> $$1, float $$2, float $$3) {
-      this($$0, $$1, $$2, $$3, false);
-   }
-
-   public cen(bxl $$0, Class<? extends bxj> $$1, float $$2, float $$3, boolean $$4) {
-      this.b = $$0;
-      this.f = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.i = $$4;
-      this.a(EnumSet.of(cef.a.b));
-      if ($$1 == crm.class) {
-         Predicate<bwi> $$5 = bwp.b($$0);
-         this.g = chy.b().a((double)$$2).a(($$1x, $$2x) -> $$5.test($$1x));
-      } else {
-         this.g = chy.b().a((double)$$2);
+   public cen(bxw $$0, double $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
+      this.d = $$1;
+      this.e = $$0.O();
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(ceq.a.a, ceq.a.b));
+      if (!($$0.O() instanceof chd) && !($$0.O() instanceof chc)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
       }
    }
 
    @Override
    public boolean b() {
-      if (this.b.dX().i() >= this.e) {
-         return false;
-      } else {
-         if (this.b.f() != null) {
-            this.c = this.b.f();
+      List<bxw> $$0 = this.a.dV().a(bxw.class, this.a.cR().g((double)this.i), this.b);
+      if (!$$0.isEmpty()) {
+         for (bxw $$1 : $$0) {
+            if (!$$1.co()) {
+               this.c = $$1;
+               return true;
+            }
          }
-
-         arq $$0 = a(this.b);
-         if (this.f == crm.class) {
-            this.c = $$0.a(this.g, this.b, this.b.dz(), this.b.dD(), this.b.dF());
-         } else {
-            this.c = $$0.a(
-               this.b.dU().a(this.f, this.b.cQ().c((double)this.d, 3.0, (double)this.d), $$0x -> true), this.g, this.b, this.b.dz(), this.b.dD(), this.b.dF()
-            );
-         }
-
-         return this.c != null;
       }
+
+      return false;
    }
 
    @Override
    public boolean c() {
-      if (!this.c.bI()) {
-         return false;
-      } else {
-         return this.b.g(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
-      }
+      return this.c != null && !this.e.k() && this.a.g(this.c) > (double)(this.g * this.g);
    }
 
    @Override
    public void d() {
-      this.h = this.a(40 + this.b.dX().a(40));
+      this.f = 0;
+      this.h = this.a.a(eyf.j);
+      this.a.a(eyf.j, 0.0F);
    }
 
    @Override
    public void e() {
       this.c = null;
+      this.e.m();
+      this.a.a(eyf.j, this.h);
    }
 
    @Override
    public void a() {
-      if (this.c.bI()) {
-         double $$0 = this.i ? this.b.dD() : this.c.dD();
-         this.b.J().a(this.c.dz(), $$0, this.c.dF());
-         this.h--;
+      if (this.c != null && !this.a.S_()) {
+         this.a.J().a(this.c, 10.0F, (float)this.a.ad());
+         if (--this.f <= 0) {
+            this.f = this.a(10);
+            double $$0 = this.a.dA() - this.c.dA();
+            double $$1 = this.a.dC() - this.c.dC();
+            double $$2 = this.a.dG() - this.c.dG();
+            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+            if (!($$3 <= (double)(this.g * this.g))) {
+               this.e.a(this.c, this.d);
+            } else {
+               this.e.m();
+               cds $$4 = this.c.J();
+               if ($$3 <= (double)this.g || $$4.e() == this.a.dA() && $$4.f() == this.a.dC() && $$4.g() == this.a.dG()) {
+                  double $$5 = this.c.dA() - this.a.dA();
+                  double $$6 = this.c.dG() - this.a.dG();
+                  this.e.a(this.a.dA() - $$5, this.a.dC(), this.a.dG() - $$6, this.d);
+               }
+            }
+         }
       }
    }
 }

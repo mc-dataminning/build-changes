@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface esg {
+public interface esg {
+   void a(esf var1);
+
+   @Nullable
+   esf a(ert var1);
 }

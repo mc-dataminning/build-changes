@@ -8,7 +8,7 @@ public class cd extends dk<cd.a> {
       return cd.a.a;
    }
 
-   public void a(arr $$0, czn $$1) {
+   public void a(art $$0, czy $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class cd extends dk<cd.a> {
          return aq.k.a(new cd.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(czn $$0) {
+      public boolean a(czy $$0) {
          return !this.c.isPresent() || this.c.get().a($$0);
       }
 

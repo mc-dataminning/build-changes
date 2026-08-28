@@ -1,43 +1,85 @@
-import java.util.Locale;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.ArrayDeque;
+import java.util.Collection;
+import java.util.Deque;
+import java.util.Iterator;
 
-public enum fkp {
-   a,
-   b,
-   c,
-   d;
+public class fkp implements fkq, AutoCloseable {
+   private final int b;
+   private final Deque<fkp.a<?>> c = new ArrayDeque<>();
 
-   private static final int e = 1024;
+   public fkp(int $$0) {
+      this.b = $$0;
+   }
 
-   public static fkp a(long $$0) {
-      if ($$0 < 1024L) {
-         return a;
-      } else {
-         try {
-            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
-            return valueOf($$2 + "B");
-         } catch (Exception var4) {
-            return d;
+   public void a() {
+      Iterator<? extends fkp.a<?>> $$0 = this.c.iterator();
+
+      while ($$0.hasNext()) {
+         fkp.a<?> $$1 = (fkp.a<?>)$$0.next();
+         if ($$1.c-- == 0) {
+            $$1.close();
+            $$0.remove();
          }
       }
    }
 
-   public static double a(long $$0, fkp $$1) {
-      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
+   @Override
+   public <T> T a(fks<T> $$0) {
+      T $$1 = this.b($$0);
+      $$0.b($$1);
+      return $$1;
    }
 
-   public static String b(long $$0) {
-      int $$1 = 1024;
-      if ($$0 < 1024L) {
-         return $$0 + " B";
-      } else {
-         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
-         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
+   private <T> T b(fks<T> $$0) {
+      Iterator<? extends fkp.a<?>> $$1 = this.c.iterator();
+
+      while ($$1.hasNext()) {
+         fkp.a<?> $$2 = (fkp.a<?>)$$1.next();
+         if ($$0.a($$2.a)) {
+            $$1.remove();
+            return (T)$$2.b;
+         }
       }
+
+      return $$0.f();
    }
 
-   public static String b(long $$0, fkp $$1) {
-      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
+   @Override
+   public <T> void a(fks<T> $$0, T $$1) {
+      this.c.addFirst(new fkp.a<>($$0, $$1, this.b));
+   }
+
+   public void b() {
+      this.c.forEach(fkp.a::close);
+      this.c.clear();
+   }
+
+   @Override
+   public void close() {
+      this.b();
+   }
+
+   @VisibleForTesting
+   protected Collection<fkp.a<?>> c() {
+      return this.c;
+   }
+
+   @VisibleForTesting
+   protected static final class a<T> implements AutoCloseable {
+      final fks<T> a;
+      final T b;
+      int c;
+
+      a(fks<T> $$0, T $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public void close() {
+         this.a.a(this.b);
+      }
    }
 }

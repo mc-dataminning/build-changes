@@ -1,470 +1,851 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.ArrayList;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Consumer;
-import java.util.stream.Stream;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import net.minecraft.server.MinecraftServer;
 
-public final class djx {
-   private static final Logger d = LogUtils.getLogger();
-   private static final int e = 24;
-   public static final int a = 8;
-   public static final int b = 128;
-   public static final int c = azm.d(8.0F / azm.g);
-   static final int f = (int)Math.pow(17.0, 2.0);
-   private static final bxm[] g = Stream.of(bxm.values()).filter($$0 -> $$0 != bxm.h).toArray(bxm[]::new);
+public abstract class djx implements djy, efw<bwt>, AutoCloseable {
+   public static final Codec<alh<djx>> h = alh.a(mh.bp);
+   public static final alh<djx> i = alh.a(mh.bp, ali.b("overworld"));
+   public static final alh<djx> j = alh.a(mh.bp, ali.b("the_nether"));
+   public static final alh<djx> k = alh.a(mh.bp, ali.b("the_end"));
+   public static final int l = 30000000;
+   public static final int m = 512;
+   public static final int n = 32;
+   public static final int o = 15;
+   public static final int p = 24000;
+   public static final int q = 20000000;
+   public static final int r = -20000000;
+   protected final List<eaa> s = Lists.newArrayList();
+   protected final eyv t;
+   private final List<eaa> a = Lists.newArrayList();
+   private boolean b;
+   private final Thread c;
+   private final boolean d;
+   private int e;
+   protected int u = azx.a().f();
+   protected final int v = 1013904223;
+   protected float w;
+   protected float x;
+   protected float y;
+   protected float z;
+   public final azx A = azx.a();
+   @Deprecated
+   private final azx f = azx.b();
+   private final jf<efb> E;
+   protected final fac B;
+   public final boolean C;
+   private final ecw F;
+   private final dlc G;
+   private final alh<djx> H;
+   private final jt I;
+   private final bvj J;
+   private long K;
 
-   private djx() {
-   }
+   protected djx(fac $$0, alh<djx> $$1, jt $$2, jf<efb> $$3, boolean $$4, boolean $$5, long $$6, int $$7) {
+      this.B = $$0;
+      this.E = $$3;
+      final efb $$8 = $$3.a();
+      this.H = $$1;
+      this.C = $$4;
+      if ($$8.k() != 1.0) {
+         this.F = new ecw() {
+            @Override
+            public double a() {
+               return super.a() / $$8.k();
+            }
 
-   public static djx.d a(int $$0, Iterable<bwi> $$1, djx.b $$2, djw $$3) {
-      dka $$4 = new dka();
-      Object2IntOpenHashMap<bxm> $$5 = new Object2IntOpenHashMap();
-
-      for (bwi $$6 : $$1) {
-         if ($$6 instanceof bxl $$7 && ($$7.gc() || $$7.Z())) {
-            continue;
-         }
-
-         bxm $$8 = $$6.an().f();
-         if ($$8 != bxm.h) {
-            iv $$9 = $$6.du();
-            $$2.query(dir.a($$9), $$6x -> {
-               dlb.b $$7 = a($$9, $$6x).b().a($$6.an());
-               if ($$7 != null) {
-                  $$4.a($$6.du(), $$7.b());
-               }
-
-               if ($$6 instanceof bxl) {
-                  $$3.a($$6x.f(), $$8);
-               }
-
-               $$5.addTo($$8, 1);
-            });
-         }
+            @Override
+            public double b() {
+               return super.b() / $$8.k();
+            }
+         };
+      } else {
+         this.F = new ecw();
       }
 
-      return new djx.d($$0, $$5, $$4, $$3);
+      this.c = Thread.currentThread();
+      this.G = new dlc(this, $$6);
+      this.d = $$5;
+      this.t = new eyq(this, $$7);
+      this.I = $$2;
+      this.J = new bvj($$2);
    }
 
-   static dkp a(iv $$0, ecq $$1) {
-      return $$1.getNoiseBiome(jq.a($$0.u()), jq.a($$0.v()), jq.a($$0.w())).a();
+   @Override
+   public boolean A_() {
+      return this.C;
    }
 
-   public static List<bxm> a(djx.d $$0, boolean $$1, boolean $$2, boolean $$3) {
-      List<bxm> $$4 = new ArrayList<>(g.length);
+   @Nullable
+   @Override
+   public MinecraftServer p() {
+      return null;
+   }
 
-      for (bxm $$5 : g) {
-         if (($$1 || !$$5.d()) && ($$2 || $$5.d()) && ($$3 || !$$5.e()) && $$0.a($$5)) {
-            $$4.add($$5);
+   public boolean k(iv $$0) {
+      return !this.t($$0) && g($$0);
+   }
+
+   public static boolean l(iv $$0) {
+      return !b($$0.v()) && g($$0);
+   }
+
+   private static boolean g(iv $$0) {
+      return $$0.u() >= -30000000 && $$0.w() >= -30000000 && $$0.u() < 30000000 && $$0.w() < 30000000;
+   }
+
+   private static boolean b(int $$0) {
+      return $$0 < -20000000 || $$0 >= 20000000;
+   }
+
+   public edl m(iv $$0) {
+      return this.d(jy.a($$0.u()), jy.a($$0.w()));
+   }
+
+   public edl d(int $$0, int $$1) {
+      return (edl)this.a($$0, $$1, eec.n);
+   }
+
+   @Nullable
+   @Override
+   public edb a(int $$0, int $$1, eec $$2, boolean $$3) {
+      edb $$4 = this.S().a($$0, $$1, $$2, $$3);
+      if ($$4 == null && $$3) {
+         throw new IllegalStateException("Should always be able to create a chunk!");
+      } else {
+         return $$4;
+      }
+   }
+
+   @Override
+   public boolean a(iv $$0, ebe $$1, int $$2) {
+      return this.a($$0, $$1, $$2, 512);
+   }
+
+   @Override
+   public boolean a(iv $$0, ebe $$1, int $$2, int $$3) {
+      if (this.t($$0)) {
+         return false;
+      } else if (!this.C && this.ak()) {
+         return false;
+      } else {
+         edl $$4 = this.m($$0);
+         dnc $$5 = $$1.b();
+         ebe $$6 = $$4.a($$0, $$1, $$2);
+         if ($$6 == null) {
+            return false;
+         } else {
+            ebe $$7 = this.a_($$0);
+            if ($$7 == $$1) {
+               if ($$6 != $$7) {
+                  this.b($$0, $$6, $$7);
+               }
+
+               if (($$2 & 2) != 0 && (!this.C || ($$2 & 4) == 0) && (this.C || $$4.F() != null && $$4.F().a(arg.c))) {
+                  this.a($$0, $$6, $$1, $$2);
+               }
+
+               if (($$2 & 1) != 0) {
+                  this.a($$0, $$6.b());
+                  if (!this.C && $$1.q()) {
+                     this.b($$0, $$5);
+                  }
+               }
+
+               if (($$2 & 16) == 0 && $$3 > 0) {
+                  int $$8 = $$2 & -34;
+                  $$6.b(this, $$0, $$8, $$3 - 1);
+                  $$1.a((djy)this, $$0, $$8, $$3 - 1);
+                  $$1.b(this, $$0, $$8, $$3 - 1);
+               }
+
+               this.a($$0, $$6, $$7);
+            }
+
+            return true;
          }
+      }
+   }
+
+   public void a(iv $$0, ebe $$1, ebe $$2) {
+   }
+
+   @Override
+   public boolean a(iv $$0, boolean $$1) {
+      exo $$2 = this.b_($$0);
+      return this.a($$0, $$2.g(), 3 | ($$1 ? 64 : 0));
+   }
+
+   @Override
+   public boolean a(iv $$0, boolean $$1, @Nullable bwt $$2, int $$3) {
+      ebe $$4 = this.a_($$0);
+      if ($$4.l()) {
+         return false;
+      } else {
+         exo $$5 = this.b_($$0);
+         if (!($$4.b() instanceof dmp)) {
+            this.c(2001, $$0, dnc.j($$4));
+         }
+
+         if ($$1) {
+            dyc $$6 = $$4.x() ? this.c_($$0) : null;
+            dnc.a($$4, this, $$0, $$6, $$2, czy.k);
+         }
+
+         boolean $$7 = this.a($$0, $$5.g(), 3, $$3);
+         if ($$7) {
+            this.a(ege.f, $$0, ege.a.a($$2, $$4));
+         }
+
+         return $$7;
+      }
+   }
+
+   public void a(iv $$0, ebe $$1) {
+   }
+
+   public boolean b(iv $$0, ebe $$1) {
+      return this.a($$0, $$1, 3);
+   }
+
+   public abstract void a(iv var1, ebe var2, ebe var3, int var4);
+
+   public void b(iv $$0, ebe $$1, ebe $$2) {
+   }
+
+   public void a(iv $$0, dnc $$1, @Nullable eyw $$2) {
+   }
+
+   public void a(iv $$0, dnc $$1, jb $$2, @Nullable eyw $$3) {
+   }
+
+   public void b(iv $$0, dnc $$1, @Nullable eyw $$2) {
+   }
+
+   public void a(ebe $$0, iv $$1, dnc $$2, @Nullable eyw $$3, boolean $$4) {
+   }
+
+   @Override
+   public void a(jb $$0, iv $$1, iv $$2, ebe $$3, int $$4, int $$5) {
+      this.t.a($$0, $$3, $$1, $$2, $$4, $$5);
+   }
+
+   @Override
+   public int a(ehd.a $$0, int $$1, int $$2) {
+      int $$4;
+      if ($$1 >= -30000000 && $$2 >= -30000000 && $$1 < 30000000 && $$2 < 30000000) {
+         if (this.b(jy.a($$1), jy.a($$2))) {
+            $$4 = this.d(jy.a($$1), jy.a($$2)).a($$0, $$1 & 15, $$2 & 15) + 1;
+         } else {
+            $$4 = this.K_();
+         }
+      } else {
+         $$4 = this.P() + 1;
       }
 
       return $$4;
    }
 
-   public static void a(arq $$0, eda $$1, djx.d $$2, List<bxm> $$3) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.appendParamList(InvocationExprent.java:1153)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.toJava(InvocationExprent.java:902)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.IfStatement.toJava(IfStatement.java:241)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.DoStatement.toJava(DoStatement.java:148)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.SequenceStatement.toJava(SequenceStatement.java:107)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
-      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
-      //
-      // Bytecode:
-      // 00: invokestatic bqp.a ()Lbqq;
-      // 03: astore 4
-      // 05: aload 4
-      // 07: ldc "spawner"
-      // 09: invokeinterface bqq.a (Ljava/lang/String;)V 2
-      // 0e: aload 3
-      // 0f: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
-      // 14: astore 5
-      // 16: aload 5
-      // 18: invokeinterface java/util/Iterator.hasNext ()Z 1
-      // 1d: ifeq 59
-      // 20: aload 5
-      // 22: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
-      // 27: checkcast bxm
-      // 2a: astore 6
-      // 2c: aload 2
-      // 2d: aload 6
-      // 2f: aload 1
-      // 30: invokevirtual eda.f ()Ldir;
-      // 33: invokevirtual djx$d.a (Lbxm;Ldir;)Z
-      // 36: ifeq 56
-      // 39: aload 6
-      // 3b: aload 0
-      // 3c: aload 1
-      // 3d: aload 2
-      // 3e: dup
-      // 3f: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 42: pop
-      // 43: invokedynamic test (Ldjx$d;)Ldjx$c; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Lbwr;Liv;Lecq;)Z, djx$d.a (Lbwr;Liv;Lecq;)Z, (Lbwr;Liv;Lecq;)Z ]
-      // 48: aload 2
-      // 49: dup
-      // 4a: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 4d: pop
-      // 4e: invokedynamic run (Ldjx$d;)Ldjx$a; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Lbxl;Lecq;)V, djx$d.a (Lbxl;Lecq;)V, (Lbxl;Lecq;)V ]
-      // 53: invokestatic djx.a (Lbxm;Larq;Leda;Ldjx$c;Ldjx$a;)V
-      // 56: goto 16
-      // 59: aload 4
-      // 5b: invokeinterface bqq.c ()V 1
-      // 60: return
+   @Override
+   public exd B_() {
+      return this.S().q();
    }
 
-   public static void a(bxm $$0, arq $$1, eda $$2, djx.c $$3, djx.a $$4) {
-      iv $$5 = a($$1, $$2);
-      if ($$5.v() >= $$1.G_() + 1) {
-         a($$0, $$1, $$2, $$5, $$3, $$4);
+   @Override
+   public ebe a_(iv $$0) {
+      if (this.t($$0)) {
+         return dne.nH.m();
+      } else {
+         edl $$1 = this.d(jy.a($$0.u()), jy.a($$0.w()));
+         return $$1.a_($$0);
       }
    }
 
-   @bav
-   public static void a(bxm $$0, arq $$1, iv $$2) {
-      a($$0, $$1, $$1.z($$2), $$2, ($$0x, $$1x, $$2x) -> true, ($$0x, $$1x) -> {
-      });
+   @Override
+   public exo b_(iv $$0) {
+      if (this.t($$0)) {
+         return exp.a.g();
+      } else {
+         edl $$1 = this.m($$0);
+         return $$1.b_($$0);
+      }
    }
 
-   public static void a(bxm $$0, arq $$1, ecq $$2, iv $$3, djx.c $$4, djx.a $$5) {
-      dki $$6 = $$1.b();
-      ecr $$7 = $$1.m().g();
-      int $$8 = $$3.v();
-      eat $$9 = $$2.a_($$3);
-      if (!$$9.d($$2, $$3)) {
-         iv.a $$10 = new iv.a();
-         int $$11 = 0;
+   public boolean V() {
+      return !this.F_().a() && this.e < 4;
+   }
 
-         for (int $$12 = 0; $$12 < 3; $$12++) {
-            int $$13 = $$3.u();
-            int $$14 = $$3.w();
-            int $$15 = 6;
-            dlb.c $$16 = null;
-            byb $$17 = null;
-            int $$18 = azm.f($$1.A.i() * 4.0F);
-            int $$19 = 0;
+   public boolean W() {
+      return !this.F_().a() && !this.V();
+   }
 
-            for (int $$20 = 0; $$20 < $$18; $$20++) {
-               $$13 += $$1.A.a(6) - $$1.A.a(6);
-               $$14 += $$1.A.a(6) - $$1.A.a(6);
-               $$10.d($$13, $$8, $$14);
-               double $$21 = (double)$$13 + 0.5;
-               double $$22 = (double)$$14 + 0.5;
-               crm $$23 = $$1.a($$21, (double)$$8, $$22, -1.0, false);
-               if ($$23 != null) {
-                  double $$24 = $$23.h($$21, (double)$$8, $$22);
-                  if (a($$1, $$2, $$10, $$24)) {
-                     if ($$16 == null) {
-                        Optional<dlb.c> $$25 = a($$1, $$6, $$7, $$0, $$1.A, $$10);
-                        if ($$25.isEmpty()) {
-                           break;
-                        }
+   public boolean X() {
+      if (!this.F_().j()) {
+         return false;
+      } else {
+         int $$0 = (int)(this.af() % 24000L);
+         return $$0 >= 12600 && $$0 <= 23400;
+      }
+   }
 
-                        $$16 = $$25.get();
-                        $$18 = $$16.b() + $$1.A.a(1 + $$16.c() - $$16.b());
-                     }
+   @Override
+   public void a(@Nullable bwt $$0, iv $$1, awo $$2, awq $$3, float $$4, float $$5) {
+      this.a($$0, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, $$2, $$3, $$4, $$5);
+   }
 
-                     if (a($$1, $$0, $$6, $$7, $$16, $$10, $$24) && $$4.test($$16.a(), $$10, $$2)) {
-                        bxl $$26 = a($$1, $$16.a());
-                        if ($$26 == null) {
-                           return;
-                        }
+   public abstract void a(@Nullable bwt var1, double var2, double var4, double var6, jf<awo> var8, awq var9, float var10, float var11, long var12);
 
-                        $$26.b($$21, (double)$$8, $$22, $$1.A.i() * 360.0F, 0.0F);
-                        if (a($$1, $$26, $$24)) {
-                           $$17 = $$26.a($$1, $$1.d_($$26.du()), bwq.a, $$17);
-                           $$11++;
-                           $$19++;
-                           $$1.a_($$26);
-                           $$5.run($$26, $$2);
-                           if ($$11 >= $$26.fW()) {
-                              return;
-                           }
+   public void a(@Nullable bwt $$0, double $$1, double $$2, double $$3, awo $$4, awq $$5, float $$6, float $$7, long $$8) {
+      this.a($$0, $$1, $$2, $$3, mg.b.e($$4), $$5, $$6, $$7, $$8);
+   }
 
-                           if ($$26.q($$19)) {
-                              break;
-                           }
-                        }
-                     }
-                  }
-               }
-            }
+   public abstract void a(@Nullable bwt var1, bwt var2, jf<awo> var3, awq var4, float var5, float var6, long var7);
+
+   public void a(@Nullable bwt $$0, double $$1, double $$2, double $$3, awo $$4, awq $$5) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, 1.0F, 1.0F);
+   }
+
+   public void a(@Nullable bwt $$0, double $$1, double $$2, double $$3, awo $$4, awq $$5, float $$6, float $$7) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.f.g());
+   }
+
+   public void a(@Nullable bwt $$0, double $$1, double $$2, double $$3, jf<awo> $$4, awq $$5, float $$6, float $$7) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.f.g());
+   }
+
+   public void a(@Nullable bwt $$0, bwt $$1, awo $$2, awq $$3, float $$4, float $$5) {
+      this.a($$0, $$1, mg.b.e($$2), $$3, $$4, $$5, this.f.g());
+   }
+
+   public void a(iv $$0, awo $$1, awq $$2, float $$3, float $$4, boolean $$5) {
+      this.a((double)$$0.u() + 0.5, (double)$$0.v() + 0.5, (double)$$0.w() + 0.5, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public void a(bwt $$0, awo $$1, awq $$2, float $$3, float $$4) {
+   }
+
+   public void a(double $$0, double $$1, double $$2, awo $$3, awq $$4, float $$5, float $$6, boolean $$7) {
+   }
+
+   public void a(awo $$0, awq $$1, float $$2, float $$3) {
+   }
+
+   @Override
+   public void a(lw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+   }
+
+   public void a(lw $$0, boolean $$1, boolean $$2, double $$3, double $$4, double $$5, double $$6, double $$7, double $$8) {
+   }
+
+   public void b(lw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+   }
+
+   public void a(lw $$0, boolean $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   }
+
+   public float a(float $$0) {
+      float $$1 = this.f($$0);
+      return $$1 * (float) (Math.PI * 2);
+   }
+
+   public void a(eaa $$0) {
+      (this.b ? this.a : this.s).add($$0);
+   }
+
+   protected void Y() {
+      brb $$0 = bra.a();
+      $$0.a("blockEntities");
+      this.b = true;
+      if (!this.a.isEmpty()) {
+         this.s.addAll(this.a);
+         this.a.clear();
+      }
+
+      Iterator<eaa> $$1 = this.s.iterator();
+      boolean $$2 = this.u().i();
+
+      while ($$1.hasNext()) {
+         eaa $$3 = $$1.next();
+         if ($$3.b()) {
+            $$1.remove();
+         } else if ($$2 && this.n($$3.c())) {
+            $$3.a();
+         }
+      }
+
+      this.b = false;
+      $$0.c();
+   }
+
+   public <T extends bwt> void a(Consumer<T> $$0, T $$1) {
+      try {
+         $$0.accept($$1);
+      } catch (Throwable var6) {
+         p $$3 = p.a(var6, "Ticking entity");
+         q $$4 = $$3.a("Entity being ticked");
+         $$1.a($$4);
+         throw new aa($$3);
+      }
+   }
+
+   public boolean h(bwt $$0) {
+      return true;
+   }
+
+   public boolean a(long $$0) {
+      return true;
+   }
+
+   public boolean n(iv $$0) {
+      return this.a(djc.a($$0));
+   }
+
+   public void a(@Nullable bwt $$0, double $$1, double $$2, double $$3, float $$4, djx.a $$5) {
+      this.a($$0, djq.a(this, $$0), null, $$1, $$2, $$3, $$4, false, $$5, ly.w, ly.v, awp.kI);
+   }
+
+   public void a(@Nullable bwt $$0, double $$1, double $$2, double $$3, float $$4, boolean $$5, djx.a $$6) {
+      this.a($$0, djq.a(this, $$0), null, $$1, $$2, $$3, $$4, $$5, $$6, ly.w, ly.v, awp.kI);
+   }
+
+   public void a(@Nullable bwt $$0, @Nullable bvi $$1, @Nullable djr $$2, ffq $$3, float $$4, boolean $$5, djx.a $$6) {
+      this.a($$0, $$1, $$2, $$3.a(), $$3.b(), $$3.c(), $$4, $$5, $$6, ly.w, ly.v, awp.kI);
+   }
+
+   public void a(@Nullable bwt $$0, @Nullable bvi $$1, @Nullable djr $$2, double $$3, double $$4, double $$5, float $$6, boolean $$7, djx.a $$8) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, ly.w, ly.v, awp.kI);
+   }
+
+   public abstract void a(
+      @Nullable bwt var1,
+      @Nullable bvi var2,
+      @Nullable djr var3,
+      double var4,
+      double var6,
+      double var8,
+      float var10,
+      boolean var11,
+      djx.a var12,
+      lw var13,
+      lw var14,
+      jf<awo> var15
+   );
+
+   public abstract String J();
+
+   @Nullable
+   @Override
+   public dyc c_(iv $$0) {
+      if (this.t($$0)) {
+         return null;
+      } else {
+         return !this.C && Thread.currentThread() != this.c ? null : this.m($$0).a($$0, edl.b.a);
+      }
+   }
+
+   public void a(dyc $$0) {
+      iv $$1 = $$0.aB_();
+      if (!this.t($$1)) {
+         this.m($$1).b($$0);
+      }
+   }
+
+   public void o(iv $$0) {
+      if (!this.t($$0)) {
+         this.m($$0).d($$0);
+      }
+   }
+
+   public boolean p(iv $$0) {
+      return this.t($$0) ? false : this.S().b(jy.a($$0.u()), jy.a($$0.w()));
+   }
+
+   public boolean a(iv $$0, bwt $$1, jb $$2) {
+      if (this.t($$0)) {
+         return false;
+      } else {
+         edb $$3 = this.a(jy.a($$0.u()), jy.a($$0.w()), eec.n, false);
+         return $$3 == null ? false : $$3.a_($$0).a(this, $$0, $$1, $$2);
+      }
+   }
+
+   public boolean a(iv $$0, bwt $$1) {
+      return this.a($$0, $$1, jb.b);
+   }
+
+   public void Z() {
+      double $$0 = 1.0 - (double)(this.d(1.0F) * 5.0F) / 16.0;
+      double $$1 = 1.0 - (double)(this.b(1.0F) * 5.0F) / 16.0;
+      double $$2 = 0.5 + 2.0 * azo.a((double)azo.b(this.f(1.0F) * (float) (Math.PI * 2)), -0.25, 0.25);
+      this.e = (int)((1.0 - $$2 * $$0 * $$1) * 11.0);
+   }
+
+   public void a(boolean $$0) {
+      this.S().b($$0);
+   }
+
+   public iv aa() {
+      iv $$0 = this.B.a();
+      if (!this.E_().a($$0)) {
+         $$0 = this.a(ehd.a.e, iv.a(this.E_().a(), 0.0, this.E_().b()));
+      }
+
+      return $$0;
+   }
+
+   public float ab() {
+      return this.B.b();
+   }
+
+   protected void ac() {
+      if (this.B.i()) {
+         this.x = 1.0F;
+         if (this.B.g()) {
+            this.z = 1.0F;
          }
       }
    }
 
-   private static boolean a(arq $$0, ecq $$1, iv.a $$2, double $$3) {
-      if ($$3 <= 576.0) {
-         return false;
-      } else if ($$0.aa().a(new ffc((double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5), 24.0)) {
-         return false;
-      } else {
-         dir $$4 = new dir($$2);
-         return Objects.equals($$4, $$1.f()) || $$0.c($$4);
+   @Override
+   public void close() throws IOException {
+      this.S().close();
+   }
+
+   @Nullable
+   @Override
+   public djb c(int $$0, int $$1) {
+      return this.a($$0, $$1, eec.n, false);
+   }
+
+   @Override
+   public List<bwt> a(@Nullable bwt $$0, ffl $$1, Predicate<? super bwt> $$2) {
+      bra.a().f("getEntities");
+      List<bwt> $$3 = Lists.newArrayList();
+      this.H().a($$1, $$3x -> {
+         if ($$3x != $$0 && $$2.test($$3x)) {
+            $$3.add($$3x);
+         }
+      });
+
+      for (cms $$4 : this.s()) {
+         if ($$4 != $$0 && $$4.a != $$0 && $$2.test($$4) && $$1.c($$4.cR())) {
+            $$3.add($$4);
+         }
+      }
+
+      return $$3;
+   }
+
+   @Override
+   public <T extends bwt> List<T> a(efq<bwt, T> $$0, ffl $$1, Predicate<? super T> $$2) {
+      List<T> $$3 = Lists.newArrayList();
+      this.a($$0, $$1, $$2, $$3);
+      return $$3;
+   }
+
+   public <T extends bwt> void a(efq<bwt, T> $$0, ffl $$1, Predicate<? super T> $$2, List<? super T> $$3) {
+      this.a($$0, $$1, $$2, $$3, Integer.MAX_VALUE);
+   }
+
+   public <T extends bwt> void a(efq<bwt, T> $$0, ffl $$1, Predicate<? super T> $$2, List<? super T> $$3, int $$4) {
+      bra.a().f("getEntities");
+      this.H().a($$0, $$1, $$4x -> {
+         if ($$2.test((T)$$4x)) {
+            $$3.add((T)$$4x);
+            if ($$3.size() >= $$4) {
+               return axz.a.b;
+            }
+         }
+
+         if ($$4x instanceof cmv $$5) {
+            for (cms $$6 : $$5.q()) {
+               T $$7 = $$0.a($$6);
+               if ($$7 != null && $$2.test($$7)) {
+                  $$3.add($$7);
+                  if ($$3.size() >= $$4) {
+                     return axz.a.b;
+                  }
+               }
+            }
+         }
+
+         return axz.a.a;
+      });
+   }
+
+   public List<bwt> i(bwt $$0, ffl $$1) {
+      return this.a($$0, $$1, bxa.a($$0));
+   }
+
+   @Nullable
+   public abstract bwt a(int var1);
+
+   @Nullable
+   public bwt b(UUID $$0) {
+      return this.H().a($$0);
+   }
+
+   public abstract Collection<cms> s();
+
+   public void q(iv $$0) {
+      if (this.C($$0)) {
+         this.m($$0).i();
       }
    }
 
-   private static boolean a(arq $$0, bxm $$1, dki $$2, ecr $$3, dlb.c $$4, iv.a $$5, double $$6) {
-      bwr<?> $$7 = $$4.a();
-      if ($$7.f() == bxm.h) {
+   public void ad() {
+   }
+
+   public long ae() {
+      return this.B.c();
+   }
+
+   public long af() {
+      return this.B.d();
+   }
+
+   public boolean a(bwt $$0, iv $$1) {
+      return true;
+   }
+
+   public void a(bwt $$0, byte $$1) {
+   }
+
+   public void a(bwt $$0, bvi $$1) {
+   }
+
+   public void a(iv $$0, dnc $$1, int $$2, int $$3) {
+      this.a_($$0).a(this, $$0, $$2, $$3);
+   }
+
+   @Override
+   public ezr C_() {
+      return this.B;
+   }
+
+   public abstract bva u();
+
+   public float b(float $$0) {
+      return azo.h($$0, this.y, this.z) * this.d($$0);
+   }
+
+   public void c(float $$0) {
+      float $$1 = azo.a($$0, 0.0F, 1.0F);
+      this.y = $$1;
+      this.z = $$1;
+   }
+
+   public float d(float $$0) {
+      return azo.h($$0, this.w, this.x);
+   }
+
+   public void e(float $$0) {
+      float $$1 = azo.a($$0, 0.0F, 1.0F);
+      this.w = $$1;
+      this.x = $$1;
+   }
+
+   private boolean a() {
+      return this.F_().g() && !this.F_().h();
+   }
+
+   public boolean ag() {
+      return this.a() && (double)this.b(1.0F) > 0.9;
+   }
+
+   public boolean ah() {
+      return this.a() && (double)this.d(1.0F) > 0.2;
+   }
+
+   public boolean r(iv $$0) {
+      if (!this.ah()) {
          return false;
-      } else if (!$$7.e() && $$6 > (double)($$7.f().f() * $$7.f().f())) {
+      } else if (!this.h($$0)) {
          return false;
-      } else if (!$$7.c() || !a($$0, $$2, $$3, $$1, $$4, $$5)) {
-         return false;
-      } else if (!bye.a($$7, $$0, $$5)) {
+      } else if (this.a(ehd.a.e, $$0).v() > $$0.v()) {
          return false;
       } else {
-         return !bye.a($$7, $$0, bwq.a, $$5, $$0.A) ? false : $$0.b($$7.a((double)$$5.u() + 0.5, (double)$$5.v(), (double)$$5.w() + 0.5));
+         dla $$1 = this.u($$0).a();
+         return $$1.a($$0, this.P()) == dla.c.b;
       }
    }
 
    @Nullable
-   private static bxl a(arq $$0, bwr<?> $$1) {
+   public abstract ezj a(ezh var1);
+
+   public abstract void a(ezh var1, ezj var2);
+
+   public abstract ezh x();
+
+   public void b(int $$0, iv $$1, int $$2) {
+   }
+
+   public q a(p $$0) {
+      q $$1 = $$0.a("Affected level", 1);
+      $$1.a("All players", () -> this.z().size() + " total; " + this.z());
+      $$1.a("Chunk stats", this.S()::e);
+      $$1.a("Level dimension", () -> this.aj().a().toString());
+
       try {
-         bwi var3 = $$1.a($$0, bwq.a);
-         if (var3 instanceof bxl) {
-            return (bxl)var3;
-         }
-
-         d.warn("Can't spawn entity of type: {}", mg.f.b($$1));
-      } catch (Exception var4) {
-         d.warn("Failed to create mob", var4);
+         this.B.a($$1, this);
+      } catch (Throwable var4) {
+         $$1.a("Level Data Unobtainable", var4);
       }
 
-      return null;
+      return $$1;
    }
 
-   private static boolean a(arq $$0, bxl $$1, double $$2) {
-      return $$2 > (double)($$1.an().f().f() * $$1.an().f().f()) && $$1.h($$2) ? false : $$1.a($$0, bwq.a) && $$1.a((djp)$$0);
+   public abstract void a(int var1, iv var2, int var3);
+
+   public void a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, List<dcm> $$6) {
    }
 
-   private static Optional<dlb.c> a(arq $$0, dki $$1, ecr $$2, bxm $$3, azv $$4, iv $$5) {
-      jf<dkp> $$6 = $$0.u($$5);
-      return $$3 == bxm.g && $$6.a(axb.ao) && $$4.i() < 0.98F ? Optional.empty() : a($$0, $$1, $$2, $$3, $$5, $$6).a($$4);
-   }
+   public abstract fgv R();
 
-   private static boolean a(arq $$0, dki $$1, ecr $$2, bxm $$3, dlb.c $$4, iv $$5) {
-      return a($$0, $$1, $$2, $$3, $$5, null).b($$4);
-   }
-
-   private static bsq<dlb.c> a(arq $$0, dki $$1, ecr $$2, bxm $$3, iv $$4, @Nullable jf<dkp> $$5) {
-      return a($$4, $$0, $$3, $$1) ? etu.d : $$2.a($$5 != null ? $$5 : $$0.u($$4), $$1, $$3, $$4);
-   }
-
-   public static boolean a(iv $$0, arq $$1, bxm $$2, dki $$3) {
-      if ($$2 == bxm.a && $$1.a_($$0.e()).a(dmt.fM)) {
-         ern $$4 = $$3.b().f(mh.be).c(erh.o);
-         return $$4 == null ? false : $$3.a($$0, $$4).b();
-      } else {
-         return false;
-      }
-   }
-
-   private static iv a(djm $$0, eda $$1) {
-      dir $$2 = $$1.f();
-      int $$3 = $$2.d() + $$0.A.a(16);
-      int $$4 = $$2.e() + $$0.A.a(16);
-      int $$5 = $$1.a(egs.a.b, $$3, $$4) + 1;
-      int $$6 = azm.b($$0.A, $$0.G_(), $$5);
-      return new iv($$3, $$6, $$4);
-   }
-
-   public static boolean a(diq $$0, iv $$1, eat $$2, exa $$3, bwr<?> $$4) {
-      if ($$2.m($$0, $$1)) {
-         return false;
-      } else if ($$2.p()) {
-         return false;
-      } else if (!$$3.c()) {
-         return false;
-      } else {
-         return $$2.a(axc.aZ) ? false : !$$4.a($$2);
-      }
-   }
-
-   public static void a(dkd $$0, jf<dkp> $$1, dir $$2, azv $$3) {
-      dlb $$4 = $$1.a().b();
-      bsq<dlb.c> $$5 = $$4.a(bxm.b);
-      if (!$$5.c()) {
-         int $$6 = $$2.d();
-         int $$7 = $$2.e();
-
-         while ($$3.i() < $$4.a()) {
-            Optional<dlb.c> $$8 = $$5.a($$3);
-            if (!$$8.isEmpty()) {
-               dlb.c $$9 = $$8.get();
-               int $$10 = $$9.b() + $$3.a(1 + $$9.c() - $$9.b());
-               byb $$11 = null;
-               int $$12 = $$6 + $$3.a(16);
-               int $$13 = $$7 + $$3.a(16);
-               int $$14 = $$12;
-               int $$15 = $$13;
-
-               for (int $$16 = 0; $$16 < $$10; $$16++) {
-                  boolean $$17 = false;
-
-                  for (int $$18 = 0; !$$17 && $$18 < 4; $$18++) {
-                     iv $$19 = a($$0, $$9.a(), $$12, $$13);
-                     if ($$9.a().c() && bye.a($$9.a(), $$0, $$19)) {
-                        float $$20 = $$9.a().l();
-                        double $$21 = azm.a((double)$$12, (double)$$6 + (double)$$20, (double)$$6 + 16.0 - (double)$$20);
-                        double $$22 = azm.a((double)$$13, (double)$$7 + (double)$$20, (double)$$7 + 16.0 - (double)$$20);
-                        if (!$$0.b($$9.a().a($$21, (double)$$19.v(), $$22)) || !bye.a($$9.a(), $$0, bwq.b, iv.a($$21, (double)$$19.v(), $$22), $$0.C_())) {
-                           continue;
-                        }
-
-                        bwi $$23;
-                        try {
-                           $$23 = $$9.a().a($$0.a(), bwq.a);
-                        } catch (Exception var27) {
-                           d.warn("Failed to create mob", var27);
-                           continue;
-                        }
-
-                        if ($$23 == null) {
-                           continue;
-                        }
-
-                        $$23.b($$21, (double)$$19.v(), $$22, $$3.i() * 360.0F, 0.0F);
-                        if ($$23 instanceof bxl $$26 && $$26.a($$0, bwq.b) && $$26.a($$0)) {
-                           $$11 = $$26.a($$0, $$0.d_($$26.du()), bwq.b, $$11);
-                           $$0.a_($$26);
-                           $$17 = true;
-                        }
-                     }
-
-                     $$12 += $$3.a(5) - $$3.a(5);
-
-                     for ($$13 += $$3.a(5) - $$3.a(5); $$12 < $$6 || $$12 >= $$6 + 16 || $$13 < $$7 || $$13 >= $$7 + 16; $$13 = $$15 + $$3.a(5) - $$3.a(5)) {
-                        $$12 = $$14 + $$3.a(5) - $$3.a(5);
-                     }
-                  }
+   public void b(iv $$0, dnc $$1) {
+      for (jb $$2 : jb.c.a) {
+         iv $$3 = $$0.a($$2);
+         if (this.C($$3)) {
+            ebe $$4 = this.a_($$3);
+            if ($$4.a(dne.hz)) {
+               this.a($$4, $$3, $$1, null, false);
+            } else if ($$4.d(this, $$3)) {
+               $$3 = $$3.a($$2);
+               $$4 = this.a_($$3);
+               if ($$4.a(dne.hz)) {
+                  this.a($$4, $$3, $$1, null, false);
                }
             }
          }
       }
    }
 
-   private static iv a(djp $$0, bwr<?> $$1, int $$2, int $$3) {
-      int $$4 = $$0.a(bye.b($$1), $$2, $$3);
-      iv.a $$5 = new iv.a($$2, $$4, $$3);
-      if ($$0.B_().h()) {
-         do {
-            $$5.c(jb.a);
-         } while (!$$0.a_($$5).l());
-
-         do {
-            $$5.c(jb.a);
-         } while ($$0.a_($$5).l() && $$5.v() > $$0.G_());
+   @Override
+   public bup d_(iv $$0) {
+      long $$1 = 0L;
+      float $$2 = 0.0F;
+      if (this.C($$0)) {
+         $$2 = this.as();
+         $$1 = this.m($$0).w();
       }
 
-      return bye.a($$1).a($$0, $$5.j());
+      return new bup(this.an(), this.af(), $$1, $$2);
    }
 
-   @FunctionalInterface
-   public interface a {
-      void run(bxl var1, ecq var2);
+   @Override
+   public int D_() {
+      return this.e;
    }
 
-   @FunctionalInterface
-   public interface b {
-      void query(long var1, Consumer<eda> var3);
+   public void c(int $$0) {
    }
 
-   @FunctionalInterface
-   public interface c {
-      boolean test(bwr<?> var1, iv var2, ecq var3);
+   @Override
+   public ecw E_() {
+      return this.F;
    }
 
-   public static class d {
-      private final int a;
-      private final Object2IntOpenHashMap<bxm> b;
-      private final dka c;
-      private final Object2IntMap<bxm> d;
-      private final djw e;
-      @Nullable
-      private iv f;
-      @Nullable
-      private bwr<?> g;
-      private double h;
+   public void a(zh<?> $$0) {
+      throw new UnsupportedOperationException("Can't send packets to server unless you're on the client.");
+   }
 
-      d(int $$0, Object2IntOpenHashMap<bxm> $$1, dka $$2, djw $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.e = $$3;
-         this.d = Object2IntMaps.unmodifiable($$1);
-      }
+   @Override
+   public efb F_() {
+      return this.E.a();
+   }
 
-      private boolean a(bwr<?> $$0, iv $$1, ecq $$2) {
-         this.f = $$1;
+   public jf<efb> ai() {
+      return this.E;
+   }
+
+   public alh<djx> aj() {
+      return this.H;
+   }
+
+   @Override
+   public azx G_() {
+      return this.A;
+   }
+
+   @Override
+   public boolean a(iv $$0, Predicate<ebe> $$1) {
+      return $$1.test(this.a_($$0));
+   }
+
+   @Override
+   public boolean b(iv $$0, Predicate<exo> $$1) {
+      return $$1.test(this.b_($$0));
+   }
+
+   public abstract deq Q();
+
+   public iv a(int $$0, int $$1, int $$2, int $$3) {
+      this.u = this.u * 3 + 1013904223;
+      int $$4 = this.u >> 2;
+      return new iv($$0 + ($$4 & 15), $$1 + ($$4 >> 16 & $$3), $$2 + ($$4 >> 8 & 15));
+   }
+
+   public boolean v() {
+      return false;
+   }
+
+   @Override
+   public dlc H_() {
+      return this.G;
+   }
+
+   public final boolean ak() {
+      return this.d;
+   }
+
+   protected abstract efs<bwt> H();
+
+   @Override
+   public long I_() {
+      return this.K++;
+   }
+
+   @Override
+   public jt J_() {
+      return this.I;
+   }
+
+   public bvj al() {
+      return this.J;
+   }
+
+   public abstract dbt L();
+
+   public abstract dzb M();
+
+   public int s(iv $$0) {
+      return 0;
+   }
+
+   public static enum a implements bam {
+      a("none"),
+      b("block"),
+      c("mob"),
+      d("tnt"),
+      e("trigger");
+
+      public static final Codec<djx.a> f = bam.a(djx.a::values);
+      private final String g;
+
+      private a(final String $$0) {
          this.g = $$0;
-         dlb.b $$3 = djx.a($$1, $$2).b().a($$0);
-         if ($$3 == null) {
-            this.h = 0.0;
-            return true;
-         } else {
-            double $$4 = $$3.b();
-            this.h = $$4;
-            double $$5 = this.c.b($$1, $$4);
-            return $$5 <= $$3.a();
-         }
       }
 
-      private void a(bxl $$0, ecq $$1) {
-         bwr<?> $$2 = $$0.an();
-         iv $$3 = $$0.du();
-         double $$4;
-         if ($$3.equals(this.f) && $$2 == this.g) {
-            $$4 = this.h;
-         } else {
-            dlb.b $$5 = djx.a($$3, $$1).b().a($$2);
-            if ($$5 != null) {
-               $$4 = $$5.b();
-            } else {
-               $$4 = 0.0;
-            }
-         }
-
-         this.c.a($$3, $$4);
-         bxm $$8 = $$2.f();
-         this.b.addTo($$8, 1);
-         this.e.a(new dir($$3), $$8);
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public Object2IntMap<bxm> b() {
-         return this.d;
-      }
-
-      boolean a(bxm $$0) {
-         int $$1 = $$0.b() * this.a / djx.f;
-         return this.b.getInt($$0) < $$1;
-      }
-
-      boolean a(bxm $$0, dir $$1) {
-         return this.e.a($$0, $$1);
+      @Override
+      public String c() {
+         return this.g;
       }
    }
 }

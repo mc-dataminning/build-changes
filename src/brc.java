@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface brc {
+public interface brc {
+   long a();
+
+   long b();
+
+   long c();
+
+   Object2LongMap<String> d();
 }

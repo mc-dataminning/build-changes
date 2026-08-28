@@ -1,40 +1,42 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class cci extends bza<cqy> {
-   public cci() {
-      super(ImmutableMap.of());
-   }
+public class cci {
+   private static final int a = 60;
 
-   protected boolean a(arq $$0, cqy $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
+   public static bzm<byc> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return ccy.a(
+         (Function<ccy.b<byc>, ? extends App<ccy.c<byc>, cdb<byc>>>)($$3 -> $$3.group($$3.c(cgw.p), $$3.c(cgw.n), $$3.a(cgw.o))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if (!$$5x.b_($$6.dv()).a(axj.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     } else {
+                        iv $$8 = $$6.dv();
+                        iv.a $$9 = new iv.a();
+                        ffv $$10 = ffv.a($$6);
 
-   protected void b(arq $$0, cqy $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         byj<?> $$3 = $$1.eb();
-         if (!$$3.c(ctg.g)) {
-            $$3.b(cgl.u);
-            $$3.b(cgl.n);
-            $$3.b(cgl.o);
-            $$3.b(cgl.s);
-            $$3.b(cgl.r);
-         }
+                        for (iv $$11 : iv.a($$8, $$0, $$0, $$0)) {
+                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
+                              ebe $$12 = $$5x.a_($$11);
+                              ebe $$13 = $$5x.a_($$9.a($$11, jb.a));
+                              if (!$$12.a(dne.J) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.c($$5x, $$9, jb.b)) {
+                                 iv $$14 = $$11.j();
+                                 $$5.a(new bzo($$14));
+                                 $$4.a(new cgz(new bzo($$14), $$1, 1));
+                                 break;
+                              }
+                           }
+                        }
 
-         $$3.a(ctg.g);
-      }
-   }
-
-   protected void c(arq $$0, cqy $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bxj $$0) {
-      return $$0.eb().a(cgl.B);
-   }
-
-   public static boolean c(bxj $$0) {
-      return $$0.eb().a(cgl.y);
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

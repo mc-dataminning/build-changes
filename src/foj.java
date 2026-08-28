@@ -1,172 +1,120 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public class foj {
-   private foj() {
+public class foj extends hrm {
+   private static final xa a = xa.c("mco.backup.info.title");
+   private static final xa b = xa.c("mco.backup.unknown");
+   private final gad c;
+   final fmt C;
+   final fxz D = new fxz(this);
+   private foj.a E;
+
+   public foj(gad $$0, fmt $$1) {
+      super(a);
+      this.c = $$0;
+      this.C = $$1;
    }
 
-   @VisibleForTesting
-   protected static List<String> a(String $$0) {
-      return Arrays.asList($$0.split("\\n"));
+   @Override
+   public void aS_() {
+      this.D.a(a, this.p);
+      this.E = this.D.c(new foj.a(this.m));
+      this.D.b(ful.a(wz.k, $$0 -> this.aP_()).a());
+      this.c();
+      this.D.a($$1 -> {
+         fuj var10000 = this.c($$1);
+      });
    }
 
-   public static List<foj.a> a(String $$0, foj.b... $$1) {
-      return a($$0, Arrays.asList($$1));
+   @Override
+   protected void c() {
+      this.E.b(this.n, this.D.d());
+      this.D.a();
    }
 
-   private static List<foj.a> a(String $$0, List<foj.b> $$1) {
-      List<String> $$2 = a($$0);
-      return a($$2, $$1);
+   @Override
+   public void aP_() {
+      this.m.a(this.c);
    }
 
-   private static List<foj.a> a(List<String> $$0, List<foj.b> $$1) {
-      int $$2 = 0;
-      List<foj.a> $$3 = Lists.newArrayList();
-
-      for (String $$4 : $$0) {
-         List<foj.b> $$5 = Lists.newArrayList();
-
-         for (String $$7 : a($$4, "%link")) {
-            if ("%link".equals($$7)) {
-               $$5.add($$1.get($$2++));
-            } else {
-               $$5.add(foj.b.a($$7));
-            }
-         }
-
-         $$3.add(new foj.a($$5));
-      }
-
-      return $$3;
-   }
-
-   public static List<String> a(String $$0, String $$1) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Delimiter cannot be the empty string");
+   xa a(String $$0, String $$1) {
+      String $$2 = $$0.toLowerCase(Locale.ROOT);
+      if ($$2.contains("game") && $$2.contains("mode")) {
+         return this.b($$1);
       } else {
-         List<String> $$2 = Lists.newArrayList();
-         int $$3 = 0;
-
-         int $$4;
-         while (($$4 = $$0.indexOf($$1, $$3)) != -1) {
-            if ($$4 > $$3) {
-               $$2.add($$0.substring($$3, $$4));
-            }
-
-            $$2.add($$1);
-            $$3 = $$4 + $$1.length();
-         }
-
-         if ($$3 < $$0.length()) {
-            $$2.add($$0.substring($$3));
-         }
-
-         return $$2;
+         return (xa)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : xa.b($$1));
       }
    }
 
-   public static class a {
-      public final List<foj.b> a;
-
-      a(foj.b... $$0) {
-         this(Arrays.asList($$0));
-      }
-
-      a(List<foj.b> $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public String toString() {
-         return "Line{segments=" + this.a + "}";
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            foj.a $$1 = (foj.a)$$0;
-            return Objects.equals(this.a, $$1.a);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a);
+   private xa a(String $$0) {
+      try {
+         return fpf.a.get(Integer.parseInt($$0)).b();
+      } catch (Exception var3) {
+         return b;
       }
    }
 
-   public static class b {
-      private final String a;
-      @Nullable
-      private final String b;
-      @Nullable
-      private final String c;
-
-      private b(String $$0) {
-         this.a = $$0;
-         this.b = null;
-         this.c = null;
+   private xa b(String $$0) {
+      try {
+         return fpf.b.get(Integer.parseInt($$0)).e();
+      } catch (Exception var3) {
+         return b;
       }
+   }
 
-      private b(String $$0, @Nullable String $$1, @Nullable String $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            foj.b $$1 = (foj.b)$$0;
-            return Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
-         } else {
-            return false;
+   class a extends fvh<foj.b> {
+      public a(final frd $$0) {
+         super($$0, foj.this.n, foj.this.D.d(), foj.this.D.c(), 36);
+         if (foj.this.C.e != null) {
+            foj.this.C.e.forEach(($$0x, $$1) -> this.b(foj.this.new b($$0x, $$1)));
          }
       }
+   }
 
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b, this.c);
+   class b extends fvh.a<foj.b> {
+      private static final xa b = xa.c("mco.backup.entry.templateName");
+      private static final xa c = xa.c("mco.backup.entry.gameDifficulty");
+      private static final xa d = xa.c("mco.backup.entry.name");
+      private static final xa e = xa.c("mco.backup.entry.gameServerVersion");
+      private static final xa f = xa.c("mco.backup.entry.uploaded");
+      private static final xa g = xa.c("mco.backup.entry.enabledPack");
+      private static final xa h = xa.c("mco.backup.entry.description");
+      private static final xa i = xa.c("mco.backup.entry.gameMode");
+      private static final xa j = xa.c("mco.backup.entry.seed");
+      private static final xa k = xa.c("mco.backup.entry.worldType");
+      private static final xa l = xa.c("mco.backup.entry.undefined");
+      private final String m;
+      private final String n;
+
+      public b(final String $$0, final String $$1) {
+         this.m = $$0;
+         this.n = $$1;
       }
 
       @Override
-      public String toString() {
-         return "Segment{fullText='" + this.a + "', linkTitle='" + this.b + "', linkUrl='" + this.c + "'}";
+      public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(foj.this.p, this.a(this.m), $$3, $$2, -6250336);
+         $$0.b(foj.this.p, foj.this.a(this.m, this.n), $$3, $$2 + 12, -1);
       }
 
-      public String a() {
-         return this.b() ? this.b : this.a;
+      private xa a(String $$0) {
+         return switch ($$0) {
+            case "template_name" -> b;
+            case "game_difficulty" -> c;
+            case "name" -> d;
+            case "game_server_version" -> e;
+            case "uploaded" -> f;
+            case "enabled_packs" -> g;
+            case "description" -> h;
+            case "game_mode" -> i;
+            case "seed" -> j;
+            case "world_type" -> k;
+            default -> l;
+         };
       }
 
-      public boolean b() {
-         return this.b != null;
-      }
-
-      public String c() {
-         if (!this.b()) {
-            throw new IllegalStateException("Not a link: " + this);
-         } else {
-            return this.c;
-         }
-      }
-
-      public static foj.b a(String $$0, String $$1) {
-         return new foj.b(null, $$0, $$1);
-      }
-
-      @VisibleForTesting
-      protected static foj.b a(String $$0) {
-         return new foj.b($$0);
+      @Override
+      public xa a() {
+         return xa.a("narrator.select", this.m + " " + this.n);
       }
    }
 }

@@ -1,54 +1,48 @@
-import com.mojang.datafixers.kinds.App;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 
-public class can {
-   public static bzb<cqy> a() {
-      return ccn.a(
-         (Function<ccn.b<cqy>, ? extends App<ccn.c<cqy>, ccq<cqy>>>)($$0 -> $$0.group($$0.b(cgl.c), $$0.b(cgl.g))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        je $$6 = $$0.b($$1);
-                        $$3.A()
-                           .c($$6.b())
-                           .ifPresent(
-                              $$4x -> $$0.<List<bxj>>b($$2)
-                                    .stream()
-                                    .filter($$1xxx -> $$1xxx instanceof cqy && $$1xxx != $$4)
-                                    .map($$0xxxx -> (cqy)$$0xxxx)
-                                    .filter(bxj::bI)
-                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
-                                    .reduce($$4, can::a)
-                           );
-                        return true;
-                     }
-               ))
-      );
+public class can<E extends bxw> extends cao<E> {
+   private final axt<dnc> m;
+   private final float n;
+   private final List<cao.a> o = new ArrayList<>();
+   private boolean p;
+
+   public can(buc $$0, int $$1, int $$2, float $$3, Function<E, awo> $$4, axt<dnc> $$5, float $$6, BiPredicate<E, iv> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
    }
 
-   private static cqy a(cqy $$0, cqy $$1) {
-      cqy $$2;
-      cqy $$3;
-      if ($$0.t() > $$1.t()) {
-         $$2 = $$0;
-         $$3 = $$1;
+   @Override
+   protected void a(ars $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.dY().i() < this.n;
+   }
+
+   @Override
+   protected Optional<cao.a> a(ars $$0) {
+      if (!this.p) {
+         return super.a($$0);
       } else {
-         $$2 = $$1;
-         $$3 = $$0;
+         iv.a $$1 = new iv.a();
+
+         while (!this.h.isEmpty()) {
+            Optional<cao.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               cao.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.a(), jb.a)).a(this.m)) {
+                  return $$2;
+               }
+
+               this.o.add($$3);
+            }
+         }
+
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
       }
-
-      $$3.eb().b(cgl.c);
-      return $$2;
-   }
-
-   private static boolean a(je $$0, jf<cio> $$1, cqy $$2) {
-      Optional<je> $$3 = $$2.eb().c(cgl.c);
-      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gB().b());
-   }
-
-   private static boolean a(jf<cio> $$0, jf<crb> $$1) {
-      return $$1.a().b().test($$0);
    }
 }

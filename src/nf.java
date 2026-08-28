@@ -20,7 +20,7 @@ public class nf implements mn {
 
    private JsonElement b() {
       JsonObject $$0 = new JsonObject();
-      Stream.of(aiy.a, akh.c, akh.a, aji.c, aji.a, abj.c, abj.a, ago.b, ago.a).collect(Collectors.groupingBy(wg.a::a)).forEach(($$1, $$2) -> {
+      Stream.of(aja.a, akj.c, akj.a, ajk.c, ajk.a, abl.c, abl.a, agq.b, agq.a).collect(Collectors.groupingBy(wi.a::a)).forEach(($$1, $$2) -> {
          JsonObject $$3 = new JsonObject();
          $$0.add($$1.a(), $$3);
          $$2.forEach($$1x -> {

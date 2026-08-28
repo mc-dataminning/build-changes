@@ -1,91 +1,106 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 public abstract class exn {
-   protected ext b;
-   protected bxl c;
-   protected final Int2ObjectMap<exm> d = new Int2ObjectOpenHashMap();
-   protected int e;
-   protected int f;
-   protected int g;
-   protected boolean h = true;
-   protected boolean i;
-   protected boolean j;
-   protected boolean k;
+   public static final jl<exo> c = new jl<>();
+   protected final ebf<exn, exo> d;
+   private exo a;
+   private final jf.c<exn> b = mg.c.f(this);
 
-   public void a(djz $$0, bxl $$1) {
-      this.b = new ext($$0, $$1);
-      this.c = $$1;
-      this.d.clear();
-      this.e = azm.d($$1.dp() + 1.0F);
-      this.f = azm.d($$1.dq() + 1.0F);
-      this.g = azm.d($$1.dp() + 1.0F);
+   protected exn() {
+      ebf.a<exn, exo> $$0 = new ebf.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(exn::g, exo::new);
+      this.f(this.d.b());
    }
 
-   public void b() {
-      this.b = null;
-      this.c = null;
+   protected void a(ebf.a<exn, exo> $$0) {
    }
 
-   protected exm b(iv $$0) {
-      return this.c($$0.u(), $$0.v(), $$0.w());
+   public ebf<exn, exo> f() {
+      return this.d;
    }
 
-   protected exm c(int $$0, int $$1, int $$2) {
-      return (exm)this.d.computeIfAbsent(exm.b($$0, $$1, $$2), $$3 -> new exm($$0, $$1, $$2));
+   protected final void f(exo $$0) {
+      this.a = $$0;
    }
 
-   public abstract exm a();
-
-   public abstract exv a(double var1, double var3, double var5);
-
-   protected exv b(double $$0, double $$1, double $$2) {
-      return new exv(this.c(azm.a($$0), azm.a($$1), azm.a($$2)));
+   public final exo g() {
+      return this.a;
    }
 
-   public abstract int a(exm[] var1, exm var2);
+   public abstract czu a();
 
-   public abstract exr a(ext var1, int var2, int var3, int var4, bxl var5);
-
-   public abstract exr a(ext var1, int var2, int var3, int var4);
-
-   public exr a(bxl $$0, iv $$1) {
-      return this.a(new ext($$0.dU(), $$0), $$1.u(), $$1.v(), $$1.w());
+   protected void a(djx $$0, iv $$1, exo $$2, azx $$3) {
    }
 
-   public void a(boolean $$0) {
-      this.h = $$0;
+   protected void b(ars $$0, iv $$1, ebe $$2, exo $$3) {
    }
 
-   public void b(boolean $$0) {
-      this.i = $$0;
+   protected void a(ars $$0, iv $$1, exo $$2, azx $$3) {
    }
 
-   public void c(boolean $$0) {
-      this.j = $$0;
+   protected void a(djx $$0, iv $$1, bwt $$2, bxm $$3) {
    }
 
-   public void d(boolean $$0) {
-      this.k = $$0;
+   @Nullable
+   protected lw h() {
+      return null;
    }
 
-   public boolean d() {
-      return this.h;
+   protected abstract boolean a(exo var1, djb var2, iv var3, exn var4, jb var5);
+
+   protected abstract ffq a(djb var1, iv var2, exo var3);
+
+   public abstract int a(dka var1);
+
+   protected boolean i() {
+      return false;
    }
 
-   public boolean e() {
-      return this.i;
+   protected boolean b() {
+      return false;
    }
 
-   public boolean f() {
-      return this.j;
+   protected abstract float c();
+
+   public abstract float a(exo var1, djb var2, iv var3);
+
+   public abstract float a(exo var1);
+
+   protected abstract ebe b(exo var1);
+
+   public abstract boolean c(exo var1);
+
+   public abstract int d(exo var1);
+
+   public boolean a(exn $$0) {
+      return $$0 == this;
    }
 
-   public boolean g() {
-      return this.k;
+   @Deprecated
+   public boolean a(axt<exn> $$0) {
+      return this.b.a($$0);
    }
 
-   public static boolean a(eat $$0) {
-      return $$0.a(axc.aN) || $$0.a(dmt.K) || $$0.a(dmt.lp) || dnh.h($$0) || $$0.a(dmt.fU);
+   public abstract fgk b(exo var1, djb var2, iv var3);
+
+   @Nullable
+   public ffl c(exo $$0, djb $$1, iv $$2) {
+      if (this.b()) {
+         return null;
+      } else {
+         float $$3 = $$0.a($$1, $$2);
+         return new ffl((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), (double)$$2.u() + 1.0, (double)((float)$$2.v() + $$3), (double)$$2.w() + 1.0);
+      }
+   }
+
+   public Optional<awo> j() {
+      return Optional.empty();
+   }
+
+   @Deprecated
+   public jf.c<exn> k() {
+      return this.b;
    }
 }

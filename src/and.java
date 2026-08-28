@@ -1,35 +1,58 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
 public class and {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.b("Source is not a mob"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.b("Path not found"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wy.b("Target not reached"));
-
    public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("debugpath").requires($$0x -> $$0x.c(2)))
-            .then(ek.a("to", gg.a()).executes($$0x -> a((ej)$$0x.getSource(), gg.a($$0x, "to"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("debugconfig").requires($$0x -> $$0x.c(3)))
+               .then(ek.a("config").then(ek.a("target", ew.c()).executes($$0x -> a((ej)$$0x.getSource(), ew.e($$0x, "target"))))))
+            .then(
+               ek.a("unconfig")
+                  .then(
+                     ek.a("target", ga.a())
+                        .suggests(($$0x, $$1) -> eo.b(a(((ej)$$0x.getSource()).l()), $$1))
+                        .executes($$0x -> a((ej)$$0x.getSource(), ga.a($$0x, "target")))
+                  )
+            )
       );
    }
 
-   private static int a(ej $$0, iv $$1) throws CommandSyntaxException {
-      if (!($$0.f() instanceof bxl $$3)) {
-         throw a.create();
-      } else {
-         cgt $$4 = new cgs($$3, $$0.e());
-         exo $$5 = $$4.a($$1, 0);
-         agm.a($$0.e(), $$3, $$5, $$4.p());
-         if ($$5 == null) {
-            throw b.create();
-         } else if (!$$5.j()) {
-            throw c.create();
-         } else {
-            $$0.a(() -> wy.b("Made path"), true);
-            return 1;
+   private static Iterable<String> a(MinecraftServer $$0) {
+      Set<String> $$1 = new HashSet<>();
+
+      for (vt $$2 : $$0.ah().e()) {
+         if ($$2.k() instanceof ast $$3) {
+            $$1.add($$3.j().getId().toString());
          }
       }
+
+      return $$1;
+   }
+
+   private static int a(ej $$0, art $$1) {
+      GameProfile $$2 = $$1.gi();
+      $$1.f.n();
+      $$0.a(() -> xa.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
+      return 1;
+   }
+
+   private static int a(ej $$0, UUID $$1) {
+      for (vt $$2 : $$0.l().ah().e()) {
+         wg var5 = $$2.k();
+         if (var5 instanceof ast) {
+            ast $$3 = (ast)var5;
+            if ($$3.j().getId().equals($$1)) {
+               $$3.m();
+            }
+         }
+      }
+
+      $$0.b(xa.b("Can't find player to unconfig"));
+      return 0;
    }
 }

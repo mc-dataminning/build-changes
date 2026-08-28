@@ -1,24 +1,204 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fls extends fmi {
-   private static final Logger b = LogUtils.getLogger();
+public class fls {
+   public static final int a = -1;
+   private final List<flt> b;
+   private final List<String> c;
+   private final int d;
+   private final int e;
+   private final int[] f = new int[32];
    @Nullable
-   public String a;
+   private fig g;
+   @Nullable
+   private fig h;
 
-   public static fls a(String $$0) {
-      fls $$1 = new fls();
+   fls(List<flt> $$0, List<String> $$1, IntList $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3;
+      this.e = $$0.stream().mapToInt(flt::a).reduce(0, ($$0x, $$1x) -> $$0x | $$1x);
 
-      try {
-         JsonObject $$2 = JsonParser.parseString($$0).getAsJsonObject();
-         $$1.a = foe.b("newsLink", $$2, null);
-      } catch (Exception var3) {
-         b.error("Could not parse RealmsNews: {}", var3.getMessage());
+      for (int $$4 = 0; $$4 < this.f.length; $$4++) {
+         flt $$5 = flt.a($$4);
+         int $$6 = $$5 != null ? $$0.indexOf($$5) : -1;
+         this.f[$$4] = $$6 != -1 ? $$2.getInt($$6) : -1;
+      }
+   }
+
+   public static fls.a a() {
+      return new fls.a();
+   }
+
+   @Override
+   public String toString() {
+      return "VertexFormat" + this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public List<flt> c() {
+      return this.b;
+   }
+
+   public List<String> d() {
+      return this.c;
+   }
+
+   public int[] e() {
+      return this.f;
+   }
+
+   public int a(flt $$0) {
+      return this.f[$$0.c()];
+   }
+
+   public boolean b(flt $$0) {
+      return (this.e & $$0.a()) != 0;
+   }
+
+   public int f() {
+      return this.e;
+   }
+
+   public String c(flt $$0) {
+      int $$1 = this.b.indexOf($$0);
+      if ($$1 == -1) {
+         throw new IllegalArgumentException($$0 + " is not contained in format");
+      } else {
+         return this.c.get($$1);
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof fls $$1 && this.e == $$1.e && this.d == $$1.d && this.c.equals($$1.c) && Arrays.equals(this.f, $$1.f)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.e * 31 + Arrays.hashCode(this.f);
+   }
+
+   public fig a(ByteBuffer $$0) {
+      fla $$1 = RenderSystem.getDevice();
+      if (this.g == null) {
+         this.g = $$1.a(() -> "Immediate vertex buffer for " + this, fie.a, fif.a, $$0);
+      } else {
+         fkz $$2 = $$1.b();
+         if (this.g.a() < $$0.remaining()) {
+            $$2.a(this.g, $$0.remaining());
+         }
+
+         $$2.a(this.g, $$0, 0);
       }
 
-      return $$1;
+      return this.g;
+   }
+
+   public fig b(ByteBuffer $$0) {
+      fla $$1 = RenderSystem.getDevice();
+      if (this.h == null) {
+         this.h = RenderSystem.getDevice().a(() -> "Immediate index buffer for " + this, fie.b, fif.a, $$0);
+      } else {
+         fkz $$2 = $$1.b();
+         if (this.h.a() < $$0.remaining()) {
+            $$2.a(this.h, $$0.remaining());
+         }
+
+         $$2.a(this.h, $$0, 0);
+      }
+
+      return this.h;
+   }
+
+   public static class a {
+      private final Builder<String, flt> a = ImmutableMap.builder();
+      private final IntList b = new IntArrayList();
+      private int c;
+
+      a() {
+      }
+
+      public fls.a a(String $$0, flt $$1) {
+         this.a.put($$0, $$1);
+         this.b.add(this.c);
+         this.c = this.c + $$1.b();
+         return this;
+      }
+
+      public fls.a a(int $$0) {
+         this.c += $$0;
+         return this;
+      }
+
+      public fls a() {
+         ImmutableMap<String, flt> $$0 = this.a.buildOrThrow();
+         ImmutableList<flt> $$1 = $$0.values().asList();
+         ImmutableList<String> $$2 = $$0.keySet().asList();
+         return new fls($$1, $$2, this.b, this.c);
+      }
+   }
+
+   public static enum b {
+      a(2),
+      b(4);
+
+      public final int c;
+
+      private b(final int $$0) {
+         this.c = $$0;
+      }
+
+      public static fls.b a(int $$0) {
+         return ($$0 & -65536) != 0 ? b : a;
+      }
+   }
+
+   public static enum c {
+      a(2, 2, false),
+      b(2, 1, true),
+      c(2, 2, false),
+      d(2, 1, true),
+      e(3, 3, false),
+      f(3, 1, true),
+      g(3, 1, true),
+      h(4, 4, false);
+
+      public final int i;
+      public final int j;
+      public final boolean k;
+
+      private c(final int $$0, final int $$1, final boolean $$2) {
+         this.i = $$0;
+         this.j = $$1;
+         this.k = $$2;
+      }
+
+      public int a(int $$0) {
+         return switch (this) {
+            case a, h -> $$0 / 4 * 6;
+            case b, c, d, e, f, g -> $$0;
+            default -> 0;
+         };
+      }
    }
 }

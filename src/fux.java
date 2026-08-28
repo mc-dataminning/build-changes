@@ -1,62 +1,22 @@
-import javax.annotation.Nullable;
+public class fux extends ful {
+   protected final fvy a;
 
-public interface fux extends fuk {
-   long t = 250L;
-
-   default void f(double $$0, double $$1) {
+   public fux(int $$0, int $$1, int $$2, int $$3, fvy $$4, ful.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, wz.a);
    }
 
-   default boolean a(double $$0, double $$1, int $$2) {
-      return false;
+   public fux(int $$0, int $$1, int $$2, int $$3, fvy $$4, ful.c $$5, xa $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, q);
+      this.a = $$4;
    }
 
-   default boolean b(double $$0, double $$1, int $$2) {
-      return false;
+   public fux(int $$0, int $$1, fvy $$2, ful.c $$3, xa $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
    }
 
-   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return false;
-   }
-
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return false;
-   }
-
-   default boolean a(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean c(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean a(char $$0, int $$1) {
-      return false;
-   }
-
-   @Nullable
-   default fsj a(fxd $$0) {
-      return null;
-   }
-
-   default boolean a_(double $$0, double $$1) {
-      return false;
-   }
-
-   void a(boolean var1);
-
-   boolean aJ_();
-
-   @Nullable
-   default fsj aK_() {
-      return this.aJ_() ? fsj.a(this) : null;
-   }
-
-   default fxh J() {
-      return fxh.a();
-   }
-
-   default fxh b(fxf $$0) {
-      return this.J().c($$0);
+   @Override
+   public void b(ftx $$0, int $$1, int $$2, float $$3) {
+      ali $$4 = this.a.a(this.E(), this.D());
+      $$0.a(gsl::H, $$4, this.F(), this.G(), this.g, this.h);
    }
 }

@@ -1,58 +1,28 @@
-import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import java.util.List;
+import java.util.Set;
 
-public class cif {
-   @Nullable
-   public static ffc a(bxr $$0, int $$1, int $$2) {
-      return a($$0, $$1, $$2, $$0::c);
+public class cif extends cic<bxu> {
+   @Override
+   public Set<cgw<?>> a() {
+      return ImmutableSet.of(cgw.i);
    }
 
-   @Nullable
-   public static ffc a(bxr $$0, int $$1, int $$2, ToDoubleFunction<iv> $$3) {
-      boolean $$4 = cid.a($$0, $$1);
-      return cig.a(() -> {
-         iv $$4x = cig.a($$0.dX(), $$1, $$2);
-         iv $$5 = a($$0, $$1, $$4, $$4x);
-         return $$5 == null ? null : a($$0, $$5);
-      }, $$3);
+   @Override
+   protected void a(ars $$0, bxu $$1) {
+      $$1.ec().a(cgw.i, this.a($$1));
    }
 
-   @Nullable
-   public static ffc a(bxr $$0, int $$1, int $$2, ffc $$3) {
-      ffc $$4 = $$3.a($$0.dz(), $$0.dB(), $$0.dF());
-      boolean $$5 = cid.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
+   private List<bxu> a(bxu $$0) {
+      return ImmutableList.copyOf(this.c($$0).b(this::b));
    }
 
-   @Nullable
-   public static ffc b(bxr $$0, int $$1, int $$2, ffc $$3) {
-      ffc $$4 = $$0.ds().d($$3);
-      boolean $$5 = cid.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
+   private boolean b(bxu $$0) {
+      return $$0.an() == bxc.bE && $$0.n_();
    }
 
-   @Nullable
-   private static ffc a(bxr $$0, int $$1, int $$2, ffc $$3, boolean $$4) {
-      return cig.a($$0, () -> {
-         iv $$5 = cig.a($$0.dX(), $$1, $$2, 0, $$3.d, $$3.f, (float) (Math.PI / 2));
-         if ($$5 == null) {
-            return null;
-         } else {
-            iv $$6 = a($$0, $$1, $$4, $$5);
-            return $$6 == null ? null : a($$0, $$6);
-         }
-      });
-   }
-
-   @Nullable
-   public static iv a(bxr $$0, iv $$1) {
-      $$1 = cig.a($$1, $$0.dU().ao(), $$1x -> cid.c($$0, $$1x));
-      return !cid.a($$0, $$1) && !cid.b($$0, $$1) ? $$1 : null;
-   }
-
-   @Nullable
-   public static iv a(bxr $$0, int $$1, boolean $$2, iv $$3) {
-      iv $$4 = cig.a($$0, $$1, $$0.dX(), $$3);
-      return !cid.a($$4, $$0) && !cid.a($$2, $$0, $$4) && !cid.a($$0.O(), $$4) ? $$4 : null;
+   private cgy c(bxu $$0) {
+      return $$0.ec().c(cgw.h).orElse(cgy.a());
    }
 }

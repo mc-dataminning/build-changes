@@ -1,74 +1,61 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-
-public class ffm implements ffh {
-   protected static final ffh a = new ffm(false, false, -Double.MAX_VALUE, czn.k, $$0 -> false, null) {
-      @Override
-      public boolean a(ffw $$0, iv $$1, boolean $$2) {
-         return $$2;
-      }
-   };
-   private final boolean b;
-   private final double c;
+public class ffm extends ffo {
+   private final jb b;
+   private final iv c;
    private final boolean d;
-   private final czn e;
-   private final Predicate<exa> f;
-   @Nullable
-   private final bwi g;
+   private final boolean e;
+   private final boolean f;
 
-   protected ffm(boolean $$0, boolean $$1, double $$2, czn $$3, Predicate<exa> $$4, @Nullable bwi $$5) {
-      this.b = $$0;
-      this.d = $$1;
-      this.c = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public static ffm a(ffq $$0, jb $$1, iv $$2) {
+      return new ffm(true, $$0, $$1, $$2, false, false);
    }
 
-   @Deprecated
-   protected ffm(bwi $$0, boolean $$1, boolean $$2) {
-      this(
-         $$0.cf(),
-         $$2,
-         $$0.dB(),
-         $$0 instanceof bxj $$3 ? $$3.fa() : czn.k,
-         $$1 ? $$0x -> true : ($$0 instanceof bxj $$4 ? $$1x -> $$4.a($$1x) : $$0x -> false),
-         $$0
-      );
+   public ffm(ffq $$0, jb $$1, iv $$2, boolean $$3) {
+      this(false, $$0, $$1, $$2, $$3, false);
    }
 
-   @Override
-   public boolean a(czj $$0) {
-      return this.e.a($$0);
+   public ffm(ffq $$0, jb $$1, iv $$2, boolean $$3, boolean $$4) {
+      this(false, $$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   public boolean a(exa $$0, exa $$1) {
-      return this.f.test($$1) && !$$0.a().a($$1.a());
+   private ffm(boolean $$0, ffq $$1, jb $$2, iv $$3, boolean $$4, boolean $$5) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public ffw a(eat $$0, diu $$1, iv $$2) {
-      return $$0.b($$1, $$2, this);
+   public ffm a(jb $$0) {
+      return new ffm(this.d, this.a, $$0, this.c, this.e, this.f);
    }
 
-   @Override
-   public boolean b() {
+   public ffm a(iv $$0) {
+      return new ffm(this.d, this.a, this.b, $$0, this.e, this.f);
+   }
+
+   public ffm a() {
+      return new ffm(this.d, this.a, this.b, this.c, this.e, true);
+   }
+
+   public iv b() {
+      return this.c;
+   }
+
+   public jb c() {
       return this.b;
    }
 
    @Override
-   public boolean a(ffw $$0, iv $$1, boolean $$2) {
-      return this.c > (double)$$1.v() + $$0.c(jb.a.b) - 1.0E-5F;
+   public ffo.a d() {
+      return this.d ? ffo.a.a : ffo.a.b;
    }
 
-   @Nullable
-   public bwi d() {
-      return this.g;
+   public boolean e() {
+      return this.e;
    }
 
-   @Override
-   public boolean c() {
-      return this.d;
+   public boolean f() {
+      return this.f;
    }
 }

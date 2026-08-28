@@ -1,65 +1,162 @@
-public class gfw extends ggp<hct> {
-   private static final float c = 2.0F;
-   private static final float d = 2.5F;
-   public static final gkc a = gkc.scaling(0.45F);
-   protected final gjt b;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public gfw(gjt $$0) {
-      super($$0);
-      gjt $$1 = $$0.b("body");
-      this.b = $$1.b("head");
+public class gfw {
+   static final ali b = ali.b("spectator/close");
+   static final ali c = ali.b("spectator/scroll_left");
+   static final ali d = ali.b("spectator/scroll_right");
+   private static final gfy e = new gfw.a();
+   private static final gfy f = new gfw.b(-1, true);
+   private static final gfy g = new gfw.b(1, true);
+   private static final gfy h = new gfw.b(1, false);
+   private static final int i = 8;
+   static final xa j = xa.c("spectatorMenu.close");
+   static final xa k = xa.c("spectatorMenu.previous_page");
+   static final xa l = xa.c("spectatorMenu.next_page");
+   public static final gfy a = new gfy() {
+      @Override
+      public void a(gfw $$0) {
+      }
+
+      @Override
+      public xa aT_() {
+         return wz.a;
+      }
+
+      @Override
+      public void a(ftx $$0, float $$1, float $$2) {
+      }
+
+      @Override
+      public boolean aU_() {
+         return false;
+      }
+   };
+   private final gfz m;
+   private gfx n;
+   private int o = -1;
+   int p;
+
+   public gfw(gfz $$0) {
+      this.n = new gfv();
+      this.m = $$0;
    }
 
-   public static gjz a() {
-      return gjz.a(b(), 128, 128);
+   public gfy a(int $$0) {
+      int $$1 = $$0 + this.p * 6;
+      if (this.p > 0 && $$0 == 0) {
+         return f;
+      } else if ($$0 == 7) {
+         return $$1 < this.n.a().size() ? g : h;
+      } else if ($$0 == 8) {
+         return e;
+      } else {
+         return $$1 >= 0 && $$1 < this.n.a().size() ? (gfy)MoreObjects.firstNonNull(this.n.a().get($$1), a) : a;
+      }
    }
 
-   protected static gkb b() {
-      gkb $$0 = new gkb();
-      gkd $$1 = $$0.a();
-      gkd $$2 = $$1.a("body", gjy.c().a(0, 25).a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F), gjv.a(0.0F, 4.0F, 9.5F));
-      $$2.a("hump", gjy.c().a(74, 0).a(-4.5F, -5.0F, -5.5F, 9.0F, 5.0F, 11.0F), gjv.a(0.0F, -12.0F, -10.0F));
-      $$2.a("tail", gjy.c().a(122, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 0.0F), gjv.a(0.0F, -9.0F, 3.5F));
-      gkd $$3 = $$2.a(
-         "head",
-         gjy.c()
-            .a(60, 24)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F)
-            .a(21, 0)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F)
-            .a(50, 0)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F),
-         gjv.a(0.0F, -3.0F, -19.5F)
-      );
-      $$3.a("left_ear", gjy.c().a(45, 0).a(-0.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), gjv.a(2.5F, -21.0F, -9.5F));
-      $$3.a("right_ear", gjy.c().a(67, 0).a(-2.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), gjv.a(-2.5F, -21.0F, -9.5F));
-      $$1.a("left_hind_leg", gjy.c().a(58, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gjv.a(4.9F, 1.0F, 9.5F));
-      $$1.a("right_hind_leg", gjy.c().a(94, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gjv.a(-4.9F, 1.0F, 9.5F));
-      $$1.a("left_front_leg", gjy.c().a(0, 0).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gjv.a(4.9F, 1.0F, -10.5F));
-      $$1.a("right_front_leg", gjy.c().a(0, 26).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gjv.a(-4.9F, 1.0F, -10.5F));
+   public List<gfy> a() {
+      List<gfy> $$0 = Lists.newArrayList();
+
+      for (int $$1 = 0; $$1 <= 8; $$1++) {
+         $$0.add(this.a($$1));
+      }
+
       return $$0;
    }
 
-   public void a(hct $$0) {
-      super.a($$0);
-      this.a($$0, $$0.aa, $$0.ab);
-      this.a(fqn.a, $$0.ad, $$0.ae, 2.0F, 2.5F);
-      this.a($$0.d, fqn.b, $$0.u, 1.0F);
-      this.a($$0.e, fqn.c, $$0.u, 1.0F);
-      this.a($$0.f, fqn.d, $$0.u, 1.0F);
-      this.a($$0.g, fqn.f, $$0.u, 1.0F);
-      this.a($$0.h, fqn.e, $$0.u, 1.0F);
+   public gfy b() {
+      return this.a(this.o);
    }
 
-   private void a(hct $$0, float $$1, float $$2) {
-      $$1 = azm.a($$1, -30.0F, 30.0F);
-      $$2 = azm.a($$2, -25.0F, 45.0F);
-      if ($$0.c > 0.0F) {
-         float $$3 = 45.0F * $$0.c / 55.0F;
-         $$2 = azm.a($$2 + $$3, -25.0F, 70.0F);
+   public gfx c() {
+      return this.n;
+   }
+
+   public void b(int $$0) {
+      gfy $$1 = this.a($$0);
+      if ($$1 != a) {
+         if (this.o == $$0 && $$1.aU_()) {
+            $$1.a(this);
+         } else {
+            this.o = $$0;
+         }
+      }
+   }
+
+   public void d() {
+      this.m.a(this);
+   }
+
+   public int e() {
+      return this.o;
+   }
+
+   public void a(gfx $$0) {
+      this.n = $$0;
+      this.o = -1;
+      this.p = 0;
+   }
+
+   public gga f() {
+      return new gga(this.a(), this.o);
+   }
+
+   static class a implements gfy {
+      @Override
+      public void a(gfw $$0) {
+         $$0.d();
       }
 
-      this.b.f = $$1 * (float) (Math.PI / 180.0);
-      this.b.e = $$2 * (float) (Math.PI / 180.0);
+      @Override
+      public xa aT_() {
+         return gfw.j;
+      }
+
+      @Override
+      public void a(ftx $$0, float $$1, float $$2) {
+         $$0.a(gsl::H, gfw.b, 0, 0, 16, 16, axy.a($$2, $$1, $$1, $$1));
+      }
+
+      @Override
+      public boolean aU_() {
+         return true;
+      }
+   }
+
+   static class b implements gfy {
+      private final int a;
+      private final boolean b;
+
+      public b(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(gfw $$0) {
+         $$0.p = $$0.p + this.a;
+      }
+
+      @Override
+      public xa aT_() {
+         return this.a < 0 ? gfw.k : gfw.l;
+      }
+
+      @Override
+      public void a(ftx $$0, float $$1, float $$2) {
+         int $$3 = axy.a($$2, $$1, $$1, $$1);
+         if (this.a < 0) {
+            $$0.a(gsl::H, gfw.c, 0, 0, 16, 16, $$3);
+         } else {
+            $$0.a(gsl::H, gfw.d, 0, 0, 16, 16, $$3);
+         }
+      }
+
+      @Override
+      public boolean aU_() {
+         return this.b;
+      }
    }
 }

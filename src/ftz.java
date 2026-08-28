@@ -1,35 +1,9 @@
-public class ftz {
-   public static final int a = 8;
-   public static final int b = 8;
-   public static final int c = 8;
-   public static final int d = 8;
-   public static final int e = 40;
-   public static final int f = 8;
-   public static final int g = 8;
-   public static final int h = 8;
-   public static final int i = 64;
-   public static final int j = 64;
+public interface ftz {
+   boolean a(cxn var1);
 
-   public static void a(fsm $$0, hks $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, -1);
-   }
+   boolean a(double var1, double var3, int var5, czy var6);
 
-   public static void a(fsm $$0, hks $$1, int $$2, int $$3, int $$4, int $$5) {
-      a($$0, $$1.a(), $$2, $$3, $$4, true, false, $$5);
-   }
+   void b(cxn var1);
 
-   public static void a(fsm $$0, alg $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6, int $$7) {
-      int $$8 = 8 + ($$6 ? 8 : 0);
-      int $$9 = 8 * ($$6 ? -1 : 1);
-      $$0.a(grc::H, $$1, $$2, $$3, 8.0F, (float)$$8, $$4, $$4, 8, $$9, 64, 64, $$7);
-      if ($$5) {
-         a($$0, $$1, $$2, $$3, $$4, $$6, $$7);
-      }
-   }
-
-   private static void a(fsm $$0, alg $$1, int $$2, int $$3, int $$4, boolean $$5, int $$6) {
-      int $$7 = 8 + ($$5 ? 8 : 0);
-      int $$8 = 8 * ($$5 ? -1 : 1);
-      $$0.a(grc::H, $$1, $$2, $$3, 40.0F, (float)$$7, $$4, $$4, 8, $$8, 64, 64, $$6);
-   }
+   void a(cxn var1, cwb var2);
 }

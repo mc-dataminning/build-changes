@@ -1,28 +1,25 @@
-public class cyy<T extends bwi & bxg> extends czj {
-   private final bwr<T> a;
-   private final int b;
+public class cyy extends czu implements das {
+   public static final float a = 1.5F;
 
-   public cyy(bwr<T> $$0, int $$1, czj.a $$2) {
-      super($$2);
-      this.a = $$0;
-      this.b = $$1;
+   public cyy(czu.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bug a(djm $$0, crm $$1, buf $$2) {
-      czn $$3 = $$1.b($$2);
-      if ($$0.C) {
-         return bug.e;
-      } else {
-         bwi $$4 = $$1.dk();
-         if ($$1.bX() && $$4 instanceof bxg $$5 && $$4.an() == this.a && $$5.a()) {
-            bws $$6 = bxj.d($$2);
-            czn $$7 = $$3.a(this.b, czr.sd, $$1, $$6);
-            return bug.b.a($$7);
-         }
-
-         $$1.b(awx.c.b(this));
-         return bug.e;
+   public bur a(djx $$0, crx $$1, buq $$2) {
+      czy $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awp.il, awq.h, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof ars $$4) {
+         css.a(ctb::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
       }
+
+      $$1.b(awz.c.b(this));
+      $$3.a(1, $$1);
+      return bur.a;
+   }
+
+   @Override
+   public css a(djx $$0, jp $$1, czy $$2, jb $$3) {
+      return new ctb($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

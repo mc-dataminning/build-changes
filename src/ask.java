@@ -1,24 +1,47 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import java.nio.charset.StandardCharsets;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class ask {
-   public static final int a = 250;
-   public static final String b = "MC|PingHost";
-   public static final int c = 254;
-   public static final int d = 1;
-   public static final int e = 255;
-   public static final int f = 127;
-
-   public static void a(ByteBuf $$0, String $$1) {
-      $$0.writeShort($$1.length());
-      $$0.writeCharSequence($$1, StandardCharsets.UTF_16BE);
+public record ask<T>(T a, Optional<T> b) {
+   public static <T> Codec<ask<T>> a(Codec<T> $$0) {
+      Codec<ask<T>> $$1 = RecordCodecBuilder.create(
+         $$1x -> $$1x.group($$0.fieldOf("raw").forGetter(ask::a), $$0.optionalFieldOf("filtered").forGetter(ask::b)).apply($$1x, ask::new)
+      );
+      Codec<ask<T>> $$2 = $$0.xmap(ask::a, ask::a);
+      return Codec.withAlternative($$1, $$2);
    }
 
-   public static String a(ByteBuf $$0) {
-      int $$1 = $$0.readShort();
-      int $$2 = $$1 * 2;
-      String $$3 = $$0.toString($$0.readerIndex(), $$2, StandardCharsets.UTF_16BE);
-      $$0.skipBytes($$2);
-      return $$3;
+   public static <B extends ByteBuf, T> yy<B, ask<T>> a(yy<B, T> $$0) {
+      return yy.a($$0, ask::a, $$0.a(yw::a), ask::b, ask::new);
+   }
+
+   public static <T> ask<T> a(T $$0) {
+      return new ask<>($$0, Optional.empty());
+   }
+
+   public static ask<String> a(asl $$0) {
+      return new ask<>($$0.d(), $$0.c() ? Optional.of($$0.b()) : Optional.empty());
+   }
+
+   public T a(boolean $$0) {
+      return $$0 ? this.b.orElse(this.a) : this.a;
+   }
+
+   public <U> ask<U> a(Function<T, U> $$0) {
+      return new ask<>($$0.apply(this.a), this.b.map($$0));
+   }
+
+   public <U> Optional<ask<U>> b(Function<T, Optional<U>> $$0) {
+      Optional<U> $$1 = $$0.apply(this.a);
+      if ($$1.isEmpty()) {
+         return Optional.empty();
+      } else if (this.b.isPresent()) {
+         Optional<U> $$2 = $$0.apply(this.b.get());
+         return $$2.isEmpty() ? Optional.empty() : Optional.of(new ask<>($$1.get(), $$2));
+      } else {
+         return Optional.of(new ask<>($$1.get(), Optional.empty()));
+      }
    }
 }

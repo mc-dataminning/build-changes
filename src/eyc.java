@@ -1,154 +1,201 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class eyc implements eyh {
-   private static final Logger b = LogUtils.getLogger();
-   private final djm c;
-   private final int d;
-   private final ArrayDeque<eyc.c> e = new ArrayDeque<>();
-   private final List<eyc.c> f = new ArrayList<>();
-   private int g = 0;
+public class eyc {
+   private final List<eya> a;
+   @Nullable
+   private eyc.a b;
+   private int c;
+   private final iv d;
+   private final float e;
+   private final boolean f;
 
-   public eyc(djm $$0, int $$1) {
-      this.c = $$0;
+   public eyc(List<eya> $$0, iv $$1, boolean $$2) {
+      this.a = $$0;
       this.d = $$1;
+      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
+      this.f = $$2;
    }
 
-   @Override
-   public void a(jb $$0, eat $$1, iv $$2, iv $$3, int $$4, int $$5) {
-      this.a($$2, new eyc.d($$0, $$1, $$2.j(), $$3.j(), $$4, $$5));
+   public void a() {
+      this.c++;
    }
 
-   @Override
-   public void a(iv $$0, dmr $$1, @Nullable eyi $$2) {
-      this.a($$0, new eyc.e($$0, $$1, $$2));
+   public boolean b() {
+      return this.c <= 0;
    }
 
-   @Override
-   public void a(eat $$0, iv $$1, dmr $$2, @Nullable eyi $$3, boolean $$4) {
-      this.a($$1, new eyc.a($$0, $$1.j(), $$2, $$3, $$4));
+   public boolean c() {
+      return this.c >= this.a.size();
    }
 
-   @Override
-   public void a(iv $$0, dmr $$1, @Nullable jb $$2, @Nullable eyi $$3) {
-      this.a($$0, new eyc.b($$0.j(), $$1, $$3, $$2));
+   @Nullable
+   public eya d() {
+      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
    }
 
-   private void a(iv $$0, eyc.c $$1) {
-      boolean $$2 = this.g > 0;
-      boolean $$3 = this.d >= 0 && this.g >= this.d;
-      this.g++;
-      if (!$$3) {
-         if ($$2) {
-            this.f.add($$1);
-         } else {
-            this.e.push($$1);
-         }
-      } else if (this.g - 1 == this.d) {
-         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
-      }
+   public eya a(int $$0) {
+      return this.a.get($$0);
+   }
 
-      if (!$$2) {
-         this.a();
+   public void b(int $$0) {
+      if (this.a.size() > $$0) {
+         this.a.subList($$0, this.a.size()).clear();
       }
    }
 
-   private void a() {
-      try {
-         while (!this.e.isEmpty() || !this.f.isEmpty()) {
-            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
-               this.e.push(this.f.get($$0));
-            }
-
-            this.f.clear();
-            eyc.c $$1 = this.e.peek();
-
-            while (this.f.isEmpty()) {
-               if (!$$1.a(this.c)) {
-                  this.e.pop();
-                  break;
-               }
-            }
-         }
-      } finally {
-         this.e.clear();
-         this.f.clear();
-         this.g = 0;
-      }
+   public void a(int $$0, eya $$1) {
+      this.a.set($$0, $$1);
    }
 
-   static record a(eat a, iv b, dmr c, @Nullable eyi d, boolean e) implements eyc.c {
-      @Override
-      public boolean a(djm $$0) {
-         eyh.a($$0, this.a, this.b, this.c, this.d, this.e);
+   public int e() {
+      return this.a.size();
+   }
+
+   public int f() {
+      return this.c;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public ffq a(bwt $$0, int $$1) {
+      eya $$2 = this.a.get($$1);
+      double $$3 = (double)$$2.a + (double)((int)($$0.dq() + 1.0F)) * 0.5;
+      double $$4 = (double)$$2.b;
+      double $$5 = (double)$$2.c + (double)((int)($$0.dq() + 1.0F)) * 0.5;
+      return new ffq($$3, $$4, $$5);
+   }
+
+   public iv d(int $$0) {
+      return this.a.get($$0).a();
+   }
+
+   public ffq a(bwt $$0) {
+      return this.a($$0, this.c);
+   }
+
+   public iv g() {
+      return this.a.get(this.c).a();
+   }
+
+   public eya h() {
+      return this.a.get(this.c);
+   }
+
+   @Nullable
+   public eya i() {
+      return this.c > 0 ? this.a.get(this.c - 1) : null;
+   }
+
+   public boolean a(@Nullable eyc $$0) {
+      if ($$0 == null) {
          return false;
-      }
-   }
-
-   static final class b implements eyc.c {
-      private final iv a;
-      private final dmr b;
-      @Nullable
-      private eyi c;
-      @Nullable
-      private final jb d;
-      private int e = 0;
-
-      b(iv $$0, dmr $$1, @Nullable eyi $$2, @Nullable jb $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         if (eyh.a[this.e] == $$3) {
-            this.e++;
-         }
-      }
-
-      @Override
-      public boolean a(djm $$0) {
-         jb $$1 = eyh.a[this.e++];
-         iv $$2 = this.a.a($$1);
-         eat $$3 = $$0.a_($$2);
-         eyi $$4 = null;
-         if ($$0.K().b(cuy.c)) {
-            if (this.c == null) {
-               this.c = eye.a($$0, this.d == null ? null : this.d.g(), null);
+      } else if ($$0.a.size() != this.a.size()) {
+         return false;
+      } else {
+         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+            eya $$2 = this.a.get($$1);
+            eya $$3 = $$0.a.get($$1);
+            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
+               return false;
             }
-
-            $$4 = this.c.b($$1);
          }
 
-         eyh.a($$0, $$3, $$2, this.b, $$4, false);
-         if (this.e < eyh.a.length && eyh.a[this.e] == this.d) {
-            this.e++;
-         }
-
-         return this.e < eyh.a.length;
+         return true;
       }
    }
 
-   interface c {
-      boolean a(djm var1);
+   public boolean j() {
+      return this.f;
    }
 
-   static record d(jb a, eat b, iv c, iv d, int e, int f) implements eyc.c {
-      @Override
-      public boolean a(djm $$0) {
-         eyh.a($$0, this.a, this.c, this.d, this.b, this.e, this.f);
-         return false;
+   @bax
+   void a(eya[] $$0, eya[] $$1, Set<eyj> $$2) {
+      this.b = new eyc.a($$0, $$1, $$2);
+   }
+
+   @Nullable
+   public eyc.a k() {
+      return this.b;
+   }
+
+   public void a(vw $$0) {
+      if (this.b != null && !this.b.c.isEmpty()) {
+         $$0.a(this.f);
+         $$0.q(this.c);
+         $$0.a(this.d);
+         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
+         this.b.a($$0);
       }
    }
 
-   static record e(iv a, dmr b, @Nullable eyi c) implements eyc.c {
-      @Override
-      public boolean a(djm $$0) {
-         eat $$1 = $$0.a_(this.a);
-         eyh.a($$0, $$1, this.a, this.b, this.c, false);
-         return false;
+   public static eyc b(vw $$0) {
+      boolean $$1 = $$0.readBoolean();
+      int $$2 = $$0.readInt();
+      iv $$3 = $$0.e();
+      List<eya> $$4 = $$0.a(eya::b);
+      eyc.a $$5 = eyc.a.b($$0);
+      eyc $$6 = new eyc($$4, $$3, $$1);
+      $$6.b = $$5;
+      $$6.c = $$2;
+      return $$6;
+   }
+
+   @Override
+   public String toString() {
+      return "Path(length=" + this.a.size() + ")";
+   }
+
+   public iv l() {
+      return this.d;
+   }
+
+   public float m() {
+      return this.e;
+   }
+
+   static eya[] c(vw $$0) {
+      eya[] $$1 = new eya[$$0.l()];
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$1[$$2] = eya.b($$0);
+      }
+
+      return $$1;
+   }
+
+   static void a(vw $$0, eya[] $$1) {
+      $$0.c($$1.length);
+
+      for (eya $$2 : $$1) {
+         $$2.a($$0);
+      }
+   }
+
+   public eyc n() {
+      eyc $$0 = new eyc(this.a, this.d, this.f);
+      $$0.b = this.b;
+      $$0.c = this.c;
+      return $$0;
+   }
+
+   public static record a(eya[] a, eya[] b, Set<eyj> c) {
+
+      public void a(vw $$0) {
+         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+         eyc.a($$0, this.a);
+         eyc.a($$0, this.b);
+      }
+
+      public static eyc.a b(vw $$0) {
+         HashSet<eyj> $$1 = $$0.a(HashSet::new, eyj::c);
+         eya[] $$2 = eyc.c($$0);
+         eya[] $$3 = eyc.c($$0);
+         return new eyc.a($$2, $$3, $$1);
       }
    }
 }

@@ -1,60 +1,59 @@
+import javax.annotation.concurrent.Immutable;
+
+@Immutable
 public class bup {
-   public static final float a = 1.0F;
-   protected float b = 20.0F;
-   protected long c = baq.a / 20L;
-   protected int d = 0;
-   protected boolean e = true;
-   protected boolean f = false;
+   private static final float a = -72000.0F;
+   private static final float b = 1440000.0F;
+   private static final float c = 3600000.0F;
+   private final buo d;
+   private final float e;
 
-   public void a(float $$0) {
-      this.b = Math.max($$0, 1.0F);
-      this.c = (long)((double)baq.a / (double)this.b);
-   }
-
-   public float f() {
-      return this.b;
-   }
-
-   public float g() {
-      return (float)this.c / (float)baq.b;
-   }
-
-   public long h() {
-      return this.c;
-   }
-
-   public boolean i() {
-      return this.e;
-   }
-
-   public boolean j() {
-      return this.d > 0;
-   }
-
-   public void c(int $$0) {
+   public bup(buo $$0, long $$1, long $$2, float $$3) {
       this.d = $$0;
+      this.e = this.a($$0, $$1, $$2, $$3);
    }
 
-   public int k() {
+   public buo a() {
       return this.d;
    }
 
-   public void a(boolean $$0) {
-      this.f = $$0;
+   public float b() {
+      return this.e;
    }
 
-   public boolean l() {
-      return this.f;
+   public boolean c() {
+      return this.e >= (float)buo.d.ordinal();
    }
 
-   public void m() {
-      this.e = !this.f || this.d > 0;
-      if (this.d > 0) {
-         this.d--;
+   public boolean a(float $$0) {
+      return this.e > $$0;
+   }
+
+   public float d() {
+      if (this.e < 2.0F) {
+         return 0.0F;
+      } else {
+         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
       }
    }
 
-   public boolean a(bwi $$0) {
-      return !this.i() && !($$0 instanceof crm) && $$0.dc() <= 0;
+   private float a(buo $$0, long $$1, long $$2, float $$3) {
+      if ($$0 == buo.a) {
+         return 0.0F;
+      } else {
+         boolean $$4 = $$0 == buo.d;
+         float $$5 = 0.75F;
+         float $$6 = azo.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
+         $$5 += $$6;
+         float $$7 = 0.0F;
+         $$7 += azo.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
+         $$7 += azo.a($$3 * 0.25F, 0.0F, $$6);
+         if ($$0 == buo.b) {
+            $$7 *= 0.5F;
+         }
+
+         $$5 += $$7;
+         return (float)$$0.a() * $$5;
+      }
    }
 }

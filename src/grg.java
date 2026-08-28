@@ -1,63 +1,72 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
 public class grg {
-   private static final Logger a = LogUtils.getLogger();
-   private final Queue<grf> b;
-   private volatile int c;
+   public static final xa a = xa.c("quickplay.error.title");
+   private static final xa b = xa.c("quickplay.error.invalid_identifier");
+   private static final xa c = xa.c("quickplay.error.realm_connect");
+   private static final xa d = xa.c("quickplay.error.realm_permission");
+   private static final xa e = xa.c("gui.toTitle");
+   private static final xa f = xa.c("gui.toWorld");
+   private static final xa g = xa.c("gui.toRealms");
 
-   private grg(List<grf> $$0) {
-      this.b = Queues.newArrayDeque($$0);
-      this.c = this.b.size();
-   }
-
-   public static grg a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / grf.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<grf> $$3 = new ArrayList<>($$2);
-
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new grf());
-         }
-      } catch (OutOfMemoryError var7) {
-         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
-         }
+   public static void a(frd $$0, ggf.c $$1, fmd $$2) {
+      String $$3 = $$1.c();
+      String $$4 = $$1.d();
+      String $$5 = $$1.e();
+      if (!ban.h($$3)) {
+         a($$0, $$3);
+      } else if (!ban.h($$4)) {
+         b($$0, $$4);
+      } else if (!ban.h($$5)) {
+         a($$0, $$2, $$5);
       }
-
-      return new grg($$3);
    }
 
-   @Nullable
-   public grf a() {
-      grf $$0 = this.b.poll();
-      if ($$0 != null) {
-         this.c = this.b.size();
-         return $$0;
+   private static void a(frd $$0, String $$1) {
+      if (!$$0.m().b($$1)) {
+         gad $$2 = new gfm(new gaf());
+         $$0.a(new fzk($$2, a, b, f));
       } else {
-         return null;
+         $$0.x().a($$1, () -> $$0.a(new gaf()));
       }
    }
 
-   public void a(grf $$0) {
-      this.b.add($$0);
-      this.c = this.b.size();
+   private static void b(frd $$0, String $$1) {
+      gmr $$2 = new gmr($$0);
+      $$2.a();
+      gmq $$3 = $$2.a($$1);
+      if ($$3 == null) {
+         $$3 = new gmq(hmi.a("selectServer.defaultName"), $$1, gmq.c.c);
+         $$2.a($$3, true);
+         $$2.b();
+      }
+
+      gnt $$4 = gnt.a($$1);
+      fzc.a(new gcv(new gaf()), $$0, $$4, $$3, true, null);
    }
 
-   public boolean b() {
-      return this.b.isEmpty();
-   }
+   private static void a(frd $$0, fmd $$1, String $$2) {
+      long $$3;
+      fng $$4;
+      try {
+         $$3 = Long.parseLong($$2);
+         $$4 = $$1.c();
+      } catch (NumberFormatException var9) {
+         gad $$6 = new fly(new gaf());
+         $$0.a(new fzk($$6, a, b, g));
+         return;
+      } catch (fnz var10) {
+         gad $$8 = new gaf();
+         $$0.a(new fzk($$8, a, c, e));
+         return;
+      }
 
-   public int c() {
-      return this.c;
+      fne $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
+      if ($$11 == null) {
+         gad $$12 = new fly(new gaf());
+         $$0.a(new fzk($$12, a, d, g));
+      } else {
+         gaf $$13 = new gaf();
+         fqa $$14 = new fqa($$13, $$11);
+         $$0.a(new fou($$13, $$14));
+      }
    }
 }

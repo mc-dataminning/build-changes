@@ -1,29 +1,20 @@
-public class zp implements zf<zl> {
-   public static final yw<vu, zp> a = zf.a(zp::a, zp::new);
-   private final long b;
+import io.netty.buffer.ByteBuf;
+import java.util.HashMap;
+import java.util.Map;
 
-   public zp(long $$0) {
-      this.b = $$0;
-   }
-
-   private zp(vu $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(vu $$0) {
-      $$0.b(this.b);
-   }
+public record zp(Map<String, String> b) implements zh<zn> {
+   private static final int c = 128;
+   private static final int d = 4096;
+   private static final int e = 32;
+   private static final yy<ByteBuf, Map<String, String>> f = yw.a(HashMap::new, yw.b(128), yw.b(4096), 32);
+   public static final yy<ByteBuf, zp> a = yy.a(f, zp::b, zp::new);
 
    @Override
-   public zh<zp> a() {
-      return zx.d;
+   public zj<zp> a() {
+      return zz.b;
    }
 
-   public void a(zl $$0) {
+   public void a(zn $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

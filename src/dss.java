@@ -1,126 +1,128 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dss extends dmr implements dmz {
+public class dss extends dnc {
    public static final MapCodec<dss> a = b(dss::new);
-   private static final float b = 0.083333336F;
-   private static final float c = 0.9F;
-   private static final float d = 1.5F;
-   private static final float e = 2.5F;
-   private static final ffw f = fft.a(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
-   private static final double g = 4.0;
-   private static final double h = 7.0;
+   public static final ecc<ecf> b = ebu.bi;
+   public static final ebv c = ebu.A;
+   public static final ece d = ebu.aU;
+   public static final int e = 3;
 
    @Override
    public MapCodec<dss> a() {
       return a;
    }
 
-   public dss(eas.d $$0) {
+   public dss(ebd.d $$0) {
       super($$0);
+      this.l(this.C.b().b(b, ecf.a).b(d, Integer.valueOf(0)).b(c, Boolean.valueOf(false)));
    }
 
-   @Override
-   protected boolean b(eat $$0, eat $$1, jb $$2) {
-      return $$1.a(this) ? true : super.b($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(eat $$0, djm $$1, iv $$2, bwi $$3, bxb $$4) {
-      if (!($$3 instanceof bxj) || $$3.dv().a(this)) {
-         $$3.a($$0, new ffc(0.9F, 1.5, 0.9F));
-         if ($$1.C) {
-            azv $$5 = $$1.C_();
-            boolean $$6 = $$3.aa != $$3.dz() || $$3.ac != $$3.dF();
-            if ($$6 && $$5.h()) {
-               $$1.a(
-                  ly.aN,
-                  $$3.dz(),
-                  (double)($$2.v() + 1),
-                  $$3.dF(),
-                  (double)(azm.b($$5, -1.0F, 1.0F) * 0.083333336F),
-                  0.05F,
-                  (double)(azm.b($$5, -1.0F, 1.0F) * 0.083333336F)
-               );
-            }
-         }
-      }
-
-      iv $$7 = $$2.j();
-      $$4.a(bxc.d, $$2x -> {
-         if ($$1 instanceof arq $$3x && $$2x.bW() && ($$3x.O().c(dji.d) || $$2x instanceof crm) && $$2x.c($$3x, $$7)) {
-            $$1.b($$7, false);
-         }
-      });
-      $$4.a(bxc.a);
-      $$4.a(bxc.d);
-   }
-
-   @Override
-   public void a(djm $$0, eat $$1, iv $$2, bwi $$3, double $$4) {
-      if (!($$4 < 4.0) && $$3 instanceof bxj $$5) {
-         bxj.a $$7 = $$5.eN();
-         awm $$8 = $$4 < 7.0 ? $$7.a() : $$7.b();
-         $$3.a($$8, 1.0F, 1.0F);
-      }
-   }
-
-   @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, bwi $$3) {
-      ffw $$4 = this.b($$0, $$1, $$2, ffh.a($$3));
-      return $$4.c() ? fft.b() : $$4;
-   }
-
-   @Override
-   protected ffw b(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      if (!$$3.c() && $$3 instanceof ffm $$4) {
-         bwi $$5 = $$4.d();
-         if ($$5 != null) {
-            if ($$5.Z > 2.5) {
-               return f;
-            }
-
-            boolean $$6 = $$5 instanceof cnq;
-            if ($$6 || a($$5) && $$3.a(fft.b(), $$2, false) && !$$3.b()) {
-               return super.b($$0, $$1, $$2, $$3);
-            }
-         }
-      }
-
-      return fft.a();
-   }
-
-   @Override
-   protected ffw c(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return fft.a();
-   }
-
-   public static boolean a(bwi $$0) {
-      if ($$0.an().a(axf.h)) {
-         return true;
+   private ebe a(dka $$0, iv $$1, ebe $$2) {
+      ecf $$3 = $$0.a_($$1.d()).E();
+      if ($$3.e()) {
+         return $$2.b(b, $$3);
       } else {
-         return $$0 instanceof bxj ? ((bxj)$$0).a(bws.c).a(czr.qp) : false;
+         ecf $$4 = $$0.a_($$1.e()).E();
+         ecf $$5 = $$4.e() ? ecf.a : $$4;
+         return $$2.b(b, $$5);
       }
    }
 
    @Override
-   public czn a(@Nullable bxj $$0, djn $$1, iv $$2, eat $$3) {
-      $$1.a($$2, dmt.a.m(), 11);
-      if (!$$1.w_()) {
-         $$1.c(2001, $$2, dmr.j($$3));
+   public ebe a(ddr $$0) {
+      return this.a($$0.q(), $$0.a(), this.m());
+   }
+
+   @Override
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      boolean $$8 = $$4.o() == jb.a.b;
+      return $$8 ? this.a($$1, $$3, $$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void a(ebe $$0, djx $$1, iv $$2, dnc $$3, @Nullable eyw $$4, boolean $$5) {
+      boolean $$6 = $$1.D($$2);
+      if ($$6 != $$0.c(c)) {
+         if ($$6) {
+            this.a(null, $$0, $$1, $$2);
+         }
+
+         $$1.a($$2, $$0.b(c, Boolean.valueOf($$6)), 3);
+      }
+   }
+
+   private void a(@Nullable bwt $$0, ebe $$1, djx $$2, iv $$3) {
+      if ($$1.c(b).e() || $$2.a_($$3.d()).l()) {
+         $$2.a($$3, this, 0, 0);
+         $$2.a($$0, ege.H, $$3);
+      }
+   }
+
+   @Override
+   protected bur a(czy $$0, ebe $$1, djx $$2, iv $$3, crx $$4, buq $$5, ffm $$6) {
+      return (bur)($$0.a(axm.bx) && $$6.c() == jb.b ? bur.e : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6));
+   }
+
+   @Override
+   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
+      if (!$$1.C) {
+         $$0 = $$0.a(d);
+         $$1.a($$2, $$0, 3);
+         this.a($$3, $$0, $$1, $$2);
+         $$3.a(awz.ag);
       }
 
-      return new czn(czr.rr);
+      return bur.a;
    }
 
    @Override
-   public Optional<awm> ap_() {
-      return Optional.of(awn.dn);
+   protected void a_(ebe $$0, djx $$1, iv $$2, crx $$3) {
+      if (!$$1.C) {
+         this.a($$3, $$0, $$1, $$2);
+         $$3.a(awz.af);
+      }
+   }
+
+   public static float b(int $$0) {
+      return (float)Math.pow(2.0, (double)($$0 - 12) / 12.0);
    }
 
    @Override
-   protected boolean a(eat $$0, exp $$1) {
+   protected boolean a(ebe $$0, djx $$1, iv $$2, int $$3, int $$4) {
+      ecf $$5 = $$0.c(b);
+      float $$7;
+      if ($$5.b()) {
+         int $$6 = $$0.c(d);
+         $$7 = b($$6);
+         $$1.a(ly.ad, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, (double)$$6 / 24.0, 0.0, 0.0);
+      } else {
+         $$7 = 1.0F;
+      }
+
+      jf<awo> $$10;
+      if ($$5.d()) {
+         ali $$9 = this.a($$1, $$2);
+         if ($$9 == null) {
+            return false;
+         }
+
+         $$10 = jf.a(awo.a($$9));
+      } else {
+         $$10 = $$5.a();
+      }
+
+      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, $$10, awq.c, 3.0F, $$7, $$1.A.g());
       return true;
+   }
+
+   @Nullable
+   private ali a(djx $$0, iv $$1) {
+      return $$0.c_($$1.d()) instanceof dzs $$2 ? $$2.d() : null;
+   }
+
+   @Override
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(b, c, d);
    }
 }

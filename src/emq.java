@@ -1,19 +1,53 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class emq implements emc {
-   public static final Codec<emq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(emk.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, emq::new)
+public class emq implements emp {
+   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
+   public static final Codec<emq> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eha.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
+               ehc.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
+               ehb.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
+               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
+               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
+               btw.b(1, 20).fieldOf("outer_wall_distance").orElse(buc.a(4, 5)).forGetter($$0x -> $$0x.i),
+               btw.b(1, 20).fieldOf("distribution_points").orElse(buc.a(3, 4)).forGetter($$0x -> $$0x.j),
+               btw.b(0, 10).fieldOf("point_offset").orElse(buc.a(1, 2)).forGetter($$0x -> $$0x.k),
+               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
+               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
+               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
+               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
+            )
+            .apply($$0, emq::new)
    );
-   public final List<emk.a> b;
+   public final eha c;
+   public final ehc d;
+   public final ehb e;
+   public final double f;
+   public final double g;
+   public final boolean h;
+   public final btw i;
+   public final btw j;
+   public final btw k;
+   public final int l;
+   public final int n;
+   public final double o;
+   public final int p;
 
-   public emq(eat $$0, eat $$1) {
-      this(ImmutableList.of(emk.a(new eut($$0), $$1)));
-   }
-
-   public emq(List<emk.a> $$0) {
-      this.b = $$0;
+   public emq(eha $$0, ehc $$1, ehb $$2, double $$3, double $$4, boolean $$5, btw $$6, btw $$7, btw $$8, int $$9, int $$10, double $$11, int $$12) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
+      this.n = $$10;
+      this.o = $$11;
+      this.p = $$12;
    }
 }

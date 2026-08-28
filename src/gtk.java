@@ -1,64 +1,119 @@
-import java.util.Calendar;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.io.Reader;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class gtk<T extends dxr & dyy> implements gtd<T> {
-   private final gfz a;
-   private final gfz b;
-   private final gfz c;
-   private final boolean d = b();
+public record gtk(@Nullable hnu b, @Nullable hnv.a d, @Nullable Boolean e, @Nullable gtr f, gtv.a g, @Nullable ali h) implements hnv {
+   @VisibleForTesting
+   static final Gson a = new GsonBuilder()
+      .registerTypeAdapter(gtk.class, new gtk.a())
+      .registerTypeAdapter(gth.class, new gth.a())
+      .registerTypeAdapter(gti.class, new gti.a())
+      .registerTypeAdapter(gtq.class, new gtq.a())
+      .registerTypeAdapter(gtr.class, new gtr.a())
+      .create();
 
-   public gtk(gte.a $$0) {
-      this.a = new gfz($$0.a(gjs.X));
-      this.b = new gfz($$0.a(gjs.aD));
-      this.c = new gfz($$0.a(gjs.aE));
+   public static gtk a(Reader $$0) {
+      return aze.a(a, $$0, gtk.class);
    }
 
-   public static boolean b() {
-      Calendar $$0 = Calendar.getInstance();
-      return $$0.get(2) + 1 == 12 && $$0.get(5) >= 24 && $$0.get(5) <= 26;
+   @Nullable
+   @Override
+   public hnu a() {
+      return this.b;
+   }
+
+   @Nullable
+   @Override
+   public hnv.a b() {
+      return this.d;
+   }
+
+   @Nullable
+   @Override
+   public Boolean c() {
+      return this.e;
+   }
+
+   @Nullable
+   @Override
+   public gtr d() {
+      return this.f;
    }
 
    @Override
-   public void a(T $$0, float $$1, fkd $$2, gqr $$3, int $$4, int $$5, ffc $$6) {
-      djm $$7 = $$0.i();
-      boolean $$8 = $$7 != null;
-      eat $$9 = $$8 ? $$0.m() : dmt.cG.m().b(dnv.c, jb.d);
-      ebl $$10 = $$9.b(dnv.d) ? $$9.c(dnv.d) : ebl.a;
-      if ($$9.b() instanceof dll<?> $$12) {
-         boolean $$13 = $$10 != ebl.a;
-         $$2.a();
-         float $$14 = $$9.c(dnv.c).p();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(a.d.rotationDegrees(-$$14));
-         $$2.a(-0.5F, -0.5F, -0.5F);
-         doz.c<? extends dxz> $$15;
-         if ($$8) {
-            $$15 = $$12.a($$9, $$7, $$0.ax_(), true);
-         } else {
-            $$15 = doz.b::b;
-         }
-
-         float $$17 = $$15.apply(dnv.a($$0)).get($$1);
-         $$17 = 1.0F - $$17;
-         $$17 = 1.0F - $$17 * $$17 * $$17;
-         int $$18 = $$15.apply(new gth<>()).applyAsInt($$4);
-         hlx $$19 = grl.a($$0, $$10, this.d);
-         fkh $$20 = $$19.a($$3, grc::f);
-         if ($$13) {
-            if ($$10 == ebl.b) {
-               this.a($$2, $$20, this.b, $$17, $$18, $$5);
-            } else {
-               this.a($$2, $$20, this.c, $$17, $$18, $$5);
-            }
-         } else {
-            this.a($$2, $$20, this.a, $$17, $$18, $$5);
-         }
-
-         $$2.b();
-      }
+   public gtv.a e() {
+      return this.g;
    }
 
-   private void a(fkd $$0, fkh $$1, gfz $$2, float $$3, int $$4, int $$5) {
-      $$2.a($$3);
-      $$2.a($$0, $$1, $$4, $$5);
+   @Nullable
+   @Override
+   public ali f() {
+      return this.h;
+   }
+
+   public static class a implements JsonDeserializer<gtk> {
+      public gtk a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         hnu $$4 = this.a($$2, $$3);
+         String $$5 = this.c($$3);
+         gtv.a $$6 = this.b($$3);
+         Boolean $$7 = this.a($$3);
+         gtr $$8 = null;
+         if ($$3.has("display")) {
+            JsonObject $$9 = aze.u($$3, "display");
+            $$8 = (gtr)$$2.deserialize($$9, gtr.class);
+         }
+
+         hnv.a $$10 = null;
+         if ($$3.has("gui_light")) {
+            $$10 = hnv.a.a(aze.i($$3, "gui_light"));
+         }
+
+         ali $$11 = $$5.isEmpty() ? null : ali.a($$5);
+         return new gtk($$4, $$10, $$7, $$8, $$6, $$11);
+      }
+
+      private gtv.a b(JsonObject $$0) {
+         if ($$0.has("textures")) {
+            JsonObject $$1 = aze.u($$0, "textures");
+            return gtv.a($$1, hkz.c);
+         } else {
+            return gtv.a.a;
+         }
+      }
+
+      private String c(JsonObject $$0) {
+         return aze.a($$0, "parent", "");
+      }
+
+      @Nullable
+      protected Boolean a(JsonObject $$0) {
+         return $$0.has("ambientocclusion") ? aze.k($$0, "ambientocclusion") : null;
+      }
+
+      @Nullable
+      protected hnu a(JsonDeserializationContext $$0, JsonObject $$1) {
+         if (!$$1.has("elements")) {
+            return null;
+         } else {
+            List<gth> $$2 = new ArrayList<>();
+
+            for (JsonElement $$3 : aze.v($$1, "elements")) {
+               $$2.add((gth)$$0.deserialize($$3, gth.class));
+            }
+
+            return new gtt($$2);
+         }
+      }
    }
 }

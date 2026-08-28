@@ -1,41 +1,62 @@
-import java.util.Map;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dty {
-   int d = 1;
-   int e = 4;
-   ebt f = ebj.V;
+public class dty extends dwo implements dnf {
+   public static final MapCodec<dty> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eas.a.fieldOf("tree").forGetter($$0x -> $$0x.g), t()).apply($$0, dty::new)
+   );
+   public static final ece f = ebu.aX;
+   private static final fgk a = dnc.b(12.0, 0.0, 12.0);
+   protected final eas g;
 
-   default Function<eat, ffw> a(ebr<jb> $$0, ebt $$1) {
-      Map<jb, ffw> $$2 = fft.c(dmr.a(0.0, 0.0, 0.0, 8.0, this.b(), 8.0));
-      return $$3 -> {
-         ffw $$4 = fft.a();
-         jb $$5 = $$3.c($$0);
-         int $$6 = $$3.c($$1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$4 = fft.a($$4, $$2.get($$5));
-            $$5 = $$5.i();
-         }
-
-         return $$4.b();
-      };
+   @Override
+   public MapCodec<? extends dty> a() {
+      return e;
    }
 
-   default ebt c() {
-      return f;
+   protected dty(eas $$0, ebd.d $$1) {
+      super($$1);
+      this.g = $$0;
+      this.l(this.C.b().b(f, Integer.valueOf(0)));
    }
 
-   default double b() {
-      return 1.0;
+   @Override
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return a;
    }
 
-   default boolean a(eat $$0, ddg $$1, ebt $$2) {
-      return !$$1.h() && $$1.n().a($$0.b().h()) && $$0.c($$2) < 4;
+   @Override
+   protected void b(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      if ($$1.B($$2.d()) >= 9 && $$3.a(7) == 0) {
+         this.a($$1, $$2, $$0, $$3);
+      }
    }
 
-   default eat a(ddg $$0, dmr $$1, ebt $$2, ebr<jb> $$3) {
-      eat $$4 = $$0.q().a_($$0.a());
-      return $$4.a($$1) ? $$4.b($$2, Integer.valueOf(Math.min(4, $$4.c($$2) + 1))) : $$1.m().b($$3, $$0.g().g());
+   public void a(ars $$0, iv $$1, ebe $$2, azx $$3) {
+      if ($$2.c(f) == 0) {
+         $$0.a($$1, $$2.a(f), 260);
+      } else {
+         this.g.a($$0, $$0.m().g(), $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public boolean a(dka $$0, iv $$1, ebe $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(djx $$0, azx $$1, iv $$2, ebe $$3) {
+      return (double)$$0.A.i() < 0.45;
+   }
+
+   @Override
+   public void a(ars $$0, azx $$1, iv $$2, ebe $$3) {
+      this.a($$0, $$2, $$3, $$1);
+   }
+
+   @Override
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(f);
    }
 }

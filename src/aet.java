@@ -1,45 +1,12 @@
-public class aet implements zf<abu> {
-   public static final yw<vu, aet> a = zf.a(aet::a, aet::new);
-   private final double b;
-   private final double c;
-   private final long d;
-
-   public aet(ecl $$0) {
-      this.b = $$0.i();
-      this.c = $$0.k();
-      this.d = $$0.j();
-   }
-
-   private aet(vu $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.m();
-   }
-
-   private void a(vu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-   }
+public record aet(xa b) implements zh<abw> {
+   public static final yy<wl, aet> a = yy.a(xc.d, aet::b, aet::new);
 
    @Override
-   public zh<aet> a() {
-      return agn.aw;
+   public zj<aet> a() {
+      return agp.au;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
-   }
-
-   public double b() {
-      return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public long f() {
-      return this.d;
    }
 }

@@ -1,116 +1,93 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cij implements diy {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-   private cij.a c;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
-
-   public cij() {
-      this.c = cij.a.c;
-   }
-
-   @Override
-   public void a(arq $$0, boolean $$1, boolean $$2) {
-      if (!$$0.V() && $$1) {
-         float $$3 = $$0.f(0.0F);
-         if ((double)$$3 == 0.5) {
-            this.c = $$0.A.a(10) == 0 ? cij.a.b : cij.a.c;
-         }
-
-         if (this.c != cij.a.c) {
-            if (!this.b) {
-               if (!this.a($$0)) {
-                  return;
-               }
-
-               this.b = true;
-            }
-
-            if (this.e > 0) {
-               this.e--;
-            } else {
-               this.e = 2;
-               if (this.d > 0) {
-                  this.b($$0);
-                  this.d--;
-               } else {
-                  this.c = cij.a.c;
-               }
-            }
-         }
-      } else {
-         this.c = cij.a.c;
-         this.b = false;
-      }
-   }
-
-   private boolean a(arq $$0) {
-      for (crm $$1 : $$0.z()) {
-         if (!$$1.V_()) {
-            iv $$2 = $$1.du();
-            if ($$0.c($$2) && !$$0.u($$2).a(axb.af)) {
-               for (int $$3 = 0; $$3 < 10; $$3++) {
-                  float $$4 = $$0.A.i() * (float) (Math.PI * 2);
-                  this.f = $$2.u() + azm.d(azm.b($$4) * 32.0F);
-                  this.g = $$2.v();
-                  this.h = $$2.w() + azm.d(azm.a($$4) * 32.0F);
-                  if (this.a($$0, new iv(this.f, this.g, this.h)) != null) {
-                     this.e = 0;
-                     this.d = 20;
-                     break;
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private void b(arq $$0) {
-      ffc $$1 = this.a($$0, new iv(this.f, this.g, this.h));
-      if ($$1 != null) {
-         cph $$2;
-         try {
-            $$2 = new cph($$0);
-            $$2.a($$0, $$0.d_($$2.du()), bwq.h, null);
-         } catch (Exception var5) {
-            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
-            return;
-         }
-
-         $$2.b($$1.d, $$1.e, $$1.f, $$0.A.i() * 360.0F, 0.0F);
-         $$0.a_($$2);
-      }
-   }
-
+public class cij {
+   public static final cij a = a();
+   private static final double b = 2.0;
+   private final boolean c;
+   private double d = -1.0;
+   private boolean e = true;
+   private boolean f = true;
    @Nullable
-   private ffc a(arq $$0, iv $$1) {
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         int $$3 = $$1.u() + $$0.A.a(16) - 8;
-         int $$4 = $$1.w() + $$0.A.a(16) - 8;
-         int $$5 = $$0.a(egs.a.b, $$3, $$4);
-         iv $$6 = new iv($$3, $$5, $$4);
-         if ($$0.c($$6) && coo.b(bwr.bO, $$0, bwq.h, $$6, $$0.A)) {
-            return ffc.c($$6);
-         }
-      }
+   private cij.a g;
 
-      return null;
+   private cij(boolean $$0) {
+      this.c = $$0;
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public static cij a() {
+      return new cij(true);
+   }
+
+   public static cij b() {
+      return new cij(false);
+   }
+
+   public cij c() {
+      cij $$0 = this.c ? a() : b();
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.g = this.g;
+      return $$0;
+   }
+
+   public cij a(double $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public cij d() {
+      this.e = false;
+      return this;
+   }
+
+   public cij e() {
+      this.f = false;
+      return this;
+   }
+
+   public cij a(@Nullable cij.a $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean a(ars $$0, @Nullable bxu $$1, bxu $$2) {
+      if ($$1 == $$2) {
+         return false;
+      } else if (!$$2.eA()) {
+         return false;
+      } else if (this.g != null && !this.g.test($$2, $$0)) {
+         return false;
+      } else {
+         if ($$1 == null) {
+            if (this.c && (!$$2.ez() || $$0.an() == buo.a)) {
+               return false;
+            }
+         } else {
+            if (this.c && (!$$1.c($$2) || !$$1.a($$2.an()) || $$1.s($$2))) {
+               return false;
+            }
+
+            if (this.d > 0.0) {
+               double $$3 = this.f ? $$2.C($$1) : 1.0;
+               double $$4 = Math.max(this.d * $$3, 2.0);
+               double $$5 = $$1.h($$2.dA(), $$2.dC(), $$2.dG());
+               if ($$5 > $$4 * $$4) {
+                  return false;
+               }
+            }
+
+            if (this.e && $$1 instanceof bxw $$6 && !$$6.P().a($$2)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      boolean test(bxu var1, ars var2);
    }
 }

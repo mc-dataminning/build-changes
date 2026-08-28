@@ -3,35 +3,35 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record ko(Optional<bg<dce.b, ko.a>> c) implements dl<dce> {
+public record ko(Optional<bg<dcp.b, ko.a>> c) implements dl<dcp> {
    public static final Codec<ko> a = RecordCodecBuilder.create($$0 -> $$0.group(bg.a(ko.a.a).optionalFieldOf("modifiers").forGetter(ko::b)).apply($$0, ko::new));
 
    @Override
-   public kj<dce> a() {
+   public kj<dcp> a() {
       return kk.o;
    }
 
-   public boolean a(dce $$0) {
+   public boolean a(dcp $$0) {
       return !this.c.isPresent() || this.c.get().a($$0.b());
    }
 
-   public Optional<bg<dce.b, ko.a>> b() {
+   public Optional<bg<dcp.b, ko.a>> b() {
       return this.c;
    }
 
-   public static record a(Optional<jj<byk>> b, Optional<alg> c, cw.c d, Optional<byn.a> e, Optional<bwt> f) implements Predicate<dce.b> {
+   public static record a(Optional<jj<byv>> b, Optional<ali> c, cw.c d, Optional<byy.a> e, Optional<bxe> f) implements Predicate<dcp.b> {
       public static final Codec<ko.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   ju.a(mh.c).optionalFieldOf("attribute").forGetter(ko.a::a),
-                  alg.a.optionalFieldOf("id").forGetter(ko.a::b),
+                  ali.a.optionalFieldOf("id").forGetter(ko.a::b),
                   cw.c.d.optionalFieldOf("amount", cw.c.c).forGetter(ko.a::c),
-                  byn.a.f.optionalFieldOf("operation").forGetter(ko.a::d),
-                  bwt.m.optionalFieldOf("slot").forGetter(ko.a::e)
+                  byy.a.f.optionalFieldOf("operation").forGetter(ko.a::d),
+                  bxe.m.optionalFieldOf("slot").forGetter(ko.a::e)
                )
                .apply($$0, ko.a::new)
       );
 
-      public boolean a(dce.b $$0) {
+      public boolean a(dcp.b $$0) {
          if (this.b.isPresent() && !this.b.get().a($$0.a())) {
             return false;
          } else if (this.c.isPresent() && !this.c.get().equals($$0.b().a())) {
@@ -43,11 +43,11 @@ public record ko(Optional<bg<dce.b, ko.a>> c) implements dl<dce> {
          }
       }
 
-      public Optional<jj<byk>> a() {
+      public Optional<jj<byv>> a() {
          return this.b;
       }
 
-      public Optional<alg> b() {
+      public Optional<ali> b() {
          return this.c;
       }
 
@@ -55,11 +55,11 @@ public record ko(Optional<bg<dce.b, ko.a>> c) implements dl<dce> {
          return this.d;
       }
 
-      public Optional<byn.a> d() {
+      public Optional<byy.a> d() {
          return this.e;
       }
 
-      public Optional<bwt> e() {
+      public Optional<bxe> e() {
          return this.f;
       }
    }

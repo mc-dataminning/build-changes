@@ -1,97 +1,39 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class eyy {
-   private static final String a = "command_storage_";
-   private final Map<String, eyy.a> b = new HashMap<>();
-   private final ezb c;
+public abstract class eyy {
+   protected final dtl a;
 
-   public eyy(ezb $$0) {
-      this.c = $$0;
+   protected eyy(dtl $$0) {
+      this.a = $$0;
    }
 
-   public tz a(alg $$0) {
-      eyy.a $$1 = this.a($$0.b());
-      return $$1 != null ? $$1.b($$0.a()) : new tz();
+   public abstract void a(djx var1, iv var2, ebe var3, @Nullable eyw var4, boolean var5);
+
+   protected int a(djx $$0, iv $$1) {
+      return this.a.a($$0, $$1);
    }
 
-   @Nullable
-   private eyy.a a(String $$0) {
-      eyy.a $$1 = this.b.get($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         eyy.a $$2 = this.c.b(eyy.a.a($$0));
-         if ($$2 != null) {
-            this.b.put($$0, $$2);
+   protected int a(iv $$0, ebe $$1) {
+      return $$1.a(this.a) ? $$1.c(dtl.f) : 0;
+   }
+
+   protected int b(djx $$0, iv $$1) {
+      int $$2 = 0;
+
+      for (jb $$3 : jb.c.a) {
+         iv $$4 = $$1.a($$3);
+         ebe $$5 = $$0.a_($$4);
+         $$2 = Math.max($$2, this.a($$4, $$5));
+         iv $$6 = $$1.d();
+         if ($$5.d($$0, $$4) && !$$0.a_($$6).d($$0, $$6)) {
+            iv $$7 = $$4.d();
+            $$2 = Math.max($$2, this.a($$7, $$0.a_($$7)));
+         } else if (!$$5.d($$0, $$4)) {
+            iv $$8 = $$4.e();
+            $$2 = Math.max($$2, this.a($$8, $$0.a_($$8)));
          }
-
-         return $$2;
-      }
-   }
-
-   private eyy.a b(String $$0) {
-      eyy.a $$1 = this.b.get($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         eyy.a $$2 = this.c.a(eyy.a.a($$0));
-         this.b.put($$0, $$2);
-         return $$2;
-      }
-   }
-
-   public void a(alg $$0, tz $$1) {
-      this.b($$0.b()).a($$0.a(), $$1);
-   }
-
-   public Stream<alg> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().c($$0.getKey()));
-   }
-
-   static String c(String $$0) {
-      return "command_storage_" + $$0;
-   }
-
-   static class a extends eym {
-      public static final Codec<eyy.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.unboundedMap(ayu.C, tz.a).fieldOf("contents").forGetter($$0x -> $$0x.b)).apply($$0, eyy.a::new)
-      );
-      private final Map<String, tz> b;
-
-      private a(Map<String, tz> $$0) {
-         this.b = new HashMap<>($$0);
       }
 
-      private a() {
-         this(new HashMap<>());
-      }
-
-      public static eyn<eyy.a> a(String $$0) {
-         return new eyn<>(eyy.c($$0), eyy.a::new, a, bbb.h);
-      }
-
-      public tz b(String $$0) {
-         tz $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new tz();
-      }
-
-      public void a(String $$0, tz $$1) {
-         if ($$1.g()) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         this.f();
-      }
-
-      public Stream<alg> c(String $$0) {
-         return this.b.keySet().stream().map($$1 -> alg.a($$0, $$1));
-      }
+      return Math.max(0, $$2 - 1);
    }
 }

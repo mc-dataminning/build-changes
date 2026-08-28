@@ -1,70 +1,60 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class duy extends dmr {
+public class duy extends dnc {
    public static final MapCodec<duy> a = b(duy::new);
-   private static final wy c = wy.c("container.stonecutter");
-   public static final ebr<jb> b = dqs.e;
-   private static final ffw d = dmr.b(16.0, 0.0, 9.0);
+   private static final fgk b = dnc.b(16.0, 0.0, 14.0);
+   private static final int c = 20;
 
    @Override
    public MapCodec<duy> a() {
       return a;
    }
 
-   public duy(eas.d $$0) {
+   public duy(ebd.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, jb.c));
    }
 
    @Override
-   public eat a(ddg $$0) {
-      return this.m().b(b, $$0.g().g());
+   protected fgk b(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return b;
    }
 
    @Override
-   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awx.ay);
+   protected fgk b_(ebe $$0, djb $$1, iv $$2) {
+      return fgh.b();
+   }
+
+   @Override
+   protected fgk c(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return fgh.b();
+   }
+
+   @Override
+   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      dnj.b($$1, $$2.d(), $$0);
+   }
+
+   @Override
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      if ($$4 == jb.b && $$6.a(dne.J)) {
+         $$2.a($$3, this, 20);
       }
 
-      return bug.a;
-   }
-
-   @Nullable
-   @Override
-   protected bui b(eat $$0, djm $$1, iv $$2) {
-      return new buo(($$2x, $$3, $$4) -> new cxi($$2x, $$3, cvs.a($$1, $$2)), c);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return d;
+   protected void a(ebe $$0, djx $$1, iv $$2, ebe $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 
    @Override
-   protected boolean g_(eat $$0) {
-      return true;
-   }
-
-   @Override
-   protected eat a(eat $$0, dtl $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected eat a(eat $$0, dru $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(eat $$0, exp $$1) {
+   protected boolean a(ebe $$0, eyd $$1) {
       return false;
+   }
+
+   @Override
+   protected float c(ebe $$0, djb $$1, iv $$2) {
+      return 0.2F;
    }
 }

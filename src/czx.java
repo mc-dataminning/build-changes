@@ -1,59 +1,10 @@
-import java.util.List;
-import java.util.function.Predicate;
-
-public class czx extends czj {
-   public czx(czj.a $$0) {
-      super($$0);
+public class czx extends czm {
+   public czx(bxc<? extends cnu> $$0, czu.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public bug a(ddi $$0) {
-      djm $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      eat $$3 = $$1.a_($$2);
-      if ($$3.a(axc.U)) {
-         crm $$4 = $$0.o();
-         if (!$$1.C && $$4 != null) {
-            return a($$4, $$1, $$2);
-         }
-      }
-
-      return bug.e;
-   }
-
-   public static bug a(crm $$0, djm $$1, iv $$2) {
-      cnl $$3 = null;
-      List<bxh> $$4 = a($$1, $$2, $$1x -> $$1x.C() == $$0);
-
-      for (bxh $$5 : $$4) {
-         if ($$3 == null) {
-            $$3 = cnl.b($$1, $$2);
-            $$3.m();
-         }
-
-         $$5.a_($$3, true);
-      }
-
-      if (!$$4.isEmpty()) {
-         $$1.a(eft.b, $$2, eft.a.a($$0));
-         return bug.b;
-      } else {
-         return bug.e;
-      }
-   }
-
-   public static List<bxh> a(djm $$0, iv $$1, Predicate<bxh> $$2) {
-      double $$3 = 7.0;
-      int $$4 = $$1.u();
-      int $$5 = $$1.v();
-      int $$6 = $$1.w();
-      fex $$7 = new fex((double)$$4 - 7.0, (double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$4 + 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0);
-      return $$0.a(bwi.class, $$7, $$1x -> {
-         if ($$1x instanceof bxh $$2x && $$2.test($$2x)) {
-            return true;
-         }
-
-         return false;
-      }).stream().map(bxh.class::cast).toList();
+   protected boolean a(crx $$0, jb $$1, czy $$2, iv $$3) {
+      return !$$0.dV().t($$3) && $$0.a($$3, $$1, $$2);
    }
 }

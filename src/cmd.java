@@ -1,57 +1,57 @@
-public class cmd {
-   public static final alf<cmc> a = a(cmd.a.a);
-   public static final alf<cmc> b = a(cmd.a.b);
-   public static final alf<cmc> c = a(cmd.a.c);
-   public static final alf<cmc> d = a(cmd.a.d);
-   public static final alf<cmc> e = a(cmd.a.e);
-   public static final alf<cmc> f = a(cmd.a.f);
-   public static final alf<cmc> g = a(cmd.a.g);
+import javax.annotation.Nullable;
 
-   private static alf<cmc> a(cmd.a $$0) {
-      return alf.a(mh.bn, alg.b($$0.a()));
+public class cmd extends clt {
+   private static final bww bI = bxc.bQ.n().a(bwv.a().a(bwu.a, 0.0F, bxc.bQ.m() - 0.03125F, 0.0F)).a(0.5F);
+
+   public cmd(bxc<? extends cmd> $$0, djx $$1) {
+      super($$0, $$1);
    }
 
-   public static void a(qh<cmc> $$0) {
-      a($$0, a, cmd.a.a);
-      a($$0, b, cmd.a.b);
-      a($$0, c, cmd.a.c);
-      a($$0, d, cmd.a.d);
-      a($$0, e, cmd.a.e);
-      a($$0, f, cmd.a.f);
-      a($$0, g, cmd.a.g);
+   public static byz.a q() {
+      return gV().a(bza.s, 15.0).a(bza.v, 0.2F);
    }
 
-   private static void a(qh<cmc> $$0, alf<cmc> $$1, cmd.a $$2) {
-      $$0.a($$1, awn.DS.get($$2));
+   public static boolean c(bxc<? extends cjk> $$0, djy $$1, bxb $$2, iv $$3, azx $$4) {
+      return !bxb.a($$2) ? cjk.b($$0, $$1, $$2, $$3, $$4) : bxb.b($$2) || a($$1, $$3);
    }
 
-   public static jf<cmc> a(jt $$0, azv $$1) {
-      return $$0.f(mh.bn).a($$1).orElseThrow();
+   @Override
+   protected void a(azx $$0) {
+      this.g(bza.o).a(a($$0::j));
    }
 
-   public static enum a {
-      a("classic", ""),
-      b("puglin", "_puglin"),
-      c("sad", "_sad"),
-      d("angry", "_angry"),
-      e("grumpy", "_grumpy"),
-      f("big", "_big"),
-      g("cute", "_cute");
+   @Override
+   protected awo u() {
+      return awp.Ey;
+   }
 
-      private final String h;
-      private final String i;
+   @Override
+   protected awo l_() {
+      return awp.Ez;
+   }
 
-      private a(final String $$0, final String $$1) {
-         this.h = $$0;
-         this.i = $$1;
-      }
+   @Override
+   protected awo e(bvi $$0) {
+      return awp.EA;
+   }
 
-      public String a() {
-         return this.h;
-      }
+   @Nullable
+   @Override
+   public bwj a(ars $$0, bwj $$1) {
+      return bxc.bQ.a($$0, bxb.e);
+   }
 
-      public String b() {
-         return this.i;
-      }
+   @Override
+   public bur b(crx $$0, buq $$1) {
+      return (bur)(!this.gL() ? bur.e : super.b($$0, $$1));
+   }
+
+   @Override
+   protected void gM() {
+   }
+
+   @Override
+   public bww e(byg $$0) {
+      return this.n_() ? bI : super.e($$0);
    }
 }

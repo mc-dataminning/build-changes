@@ -1,56 +1,33 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.nio.file.Path;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.UnaryOperator;
 
-public class auq extends auh {
-   private static final aud d = new aud(wy.c("dataPack.vanilla.description"), ac.b().a(atr.b), Optional.empty());
-   private static final atl e = new atl(cuy.h);
-   private static final ath f = ath.a(aud.b, d, atl.a, e);
-   private static final ato g = new ato("vanilla", wy.c("dataPack.vanilla.name"), auo.c, Optional.of(c));
-   private static final atq h = new atq(false, auk.b.b, false);
-   private static final atq i = new atq(false, auk.b.a, false);
-   private static final alg j = alg.b("datapacks");
+public interface auq {
+   UnaryOperator<xa> a = UnaryOperator.identity();
+   auq b = a(a, true);
+   auq c = a(a("pack.source.builtin"), true);
+   auq d = a(a("pack.source.feature"), false);
+   auq e = a(a("pack.source.world"), true);
+   auq f = a(a("pack.source.server"), true);
 
-   public auq(fes $$0) {
-      super(atr.b, b(), j, $$0);
+   xa a(xa var1);
+
+   boolean a();
+
+   static auq a(final UnaryOperator<xa> $$0, final boolean $$1) {
+      return new auq() {
+         @Override
+         public xa a(xa $$0x) {
+            return $$0.apply($$0);
+         }
+
+         @Override
+         public boolean a() {
+            return $$1;
+         }
+      };
    }
 
-   private static ato a(String $$0, wy $$1) {
-      return new ato($$0, $$1, auo.d, Optional.of(auj.a($$0)));
-   }
-
-   @VisibleForTesting
-   public static att b() {
-      return new atu().a(f).a("minecraft").b().a().a(g);
-   }
-
-   @Override
-   protected wy a(String $$0) {
-      return wy.b($$0);
-   }
-
-   @Nullable
-   @Override
-   protected auk a(atp $$0) {
-      return auk.a(g, b($$0), atr.b, h);
-   }
-
-   @Nullable
-   @Override
-   protected auk a(String $$0, auk.c $$1, wy $$2) {
-      return auk.a(a($$0, $$2), $$1, atr.b, i);
-   }
-
-   public static aun a(Path $$0, fes $$1) {
-      return new aun(new auq($$1), new aui($$0, atr.b, auo.e, $$1));
-   }
-
-   public static aun c() {
-      return new aun(new auq(new fes($$0 -> true)));
-   }
-
-   public static aun a(ezh.c $$0) {
-      return a($$0.a(ezf.j), $$0.d().e());
+   private static UnaryOperator<xa> a(String $$0) {
+      xa $$1 = xa.c($$0);
+      return $$1x -> xa.a("pack.nameAndSource", $$1x, $$1).a(o.h);
    }
 }

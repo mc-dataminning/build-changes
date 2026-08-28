@@ -24,7 +24,7 @@ import org.lwjgl.opengl.GL32C;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 
-@fhc
+@fhq
 public class GlStateManager {
    private static final boolean ON_LINUX = ag.n() == ag.a.a;
    private static final Plot PLOT_TEXTURES = TracyClient.createPlot("GPU Textures");
@@ -35,13 +35,11 @@ public class GlStateManager {
    private static final GlStateManager.a BLEND = new GlStateManager.a();
    private static final GlStateManager.f DEPTH = new GlStateManager.f();
    private static final GlStateManager.e CULL = new GlStateManager.e();
-   private static final GlStateManager.i POLY_OFFSET = new GlStateManager.i();
+   private static final GlStateManager.g POLY_OFFSET = new GlStateManager.g();
    private static final GlStateManager.c COLOR_LOGIC = new GlStateManager.c();
-   private static final GlStateManager.j SCISSOR = new GlStateManager.j();
-   private static final GlStateManager.g READ_FRAMEBUFFER = new GlStateManager.g();
-   private static final GlStateManager.g DRAW_FRAMEBUFFER = new GlStateManager.g();
+   private static final GlStateManager.h SCISSOR = new GlStateManager.h();
    private static int activeTexture;
-   private static final GlStateManager.k[] TEXTURES = IntStream.range(0, 12).mapToObj($$0 -> new GlStateManager.k()).toArray(GlStateManager.k[]::new);
+   private static final GlStateManager.i[] TEXTURES = IntStream.range(0, 12).mapToObj($$0 -> new GlStateManager.i()).toArray(GlStateManager.i[]::new);
    private static final GlStateManager.d COLOR_MASK = new GlStateManager.d();
 
    public static void _disableScissorTest() {
@@ -302,23 +300,8 @@ public class GlStateManager {
       GL15.glDeleteBuffers($$0);
    }
 
-   public static void _glDeleteVertexArrays(int $$0) {
-      RenderSystem.assertOnRenderThread();
-      GL30.glDeleteVertexArrays($$0);
-   }
-
    public static void _glBindFramebuffer(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThread();
-
-      boolean $$2 = switch ($$0) {
-         case 36008 -> READ_FRAMEBUFFER.a($$1);
-         case 36009 -> DRAW_FRAMEBUFFER.a($$1);
-         case 36160 -> READ_FRAMEBUFFER.a($$1) | DRAW_FRAMEBUFFER.a($$1);
-         default -> true;
-      };
-      if ($$2) {
-         GL30.glBindFramebuffer($$0, $$1);
-      }
+      GL30.glBindFramebuffer($$0, $$1);
    }
 
    public static void _glBlitFrameBuffer(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9) {
@@ -334,11 +317,6 @@ public class GlStateManager {
    public static int glGenFramebuffers() {
       RenderSystem.assertOnRenderThread();
       return GL30.glGenFramebuffers();
-   }
-
-   public static int glCheckFramebufferStatus(int $$0) {
-      RenderSystem.assertOnRenderThread();
-      return GL30.glCheckFramebufferStatus($$0);
    }
 
    public static void _glFramebufferTexture2D(int $$0, int $$1, int $$2, int $$3, int $$4) {
@@ -466,7 +444,7 @@ public class GlStateManager {
       RenderSystem.assertOnRenderThread();
       GL11.glDeleteTextures($$0);
 
-      for (GlStateManager.k $$1 : TEXTURES) {
+      for (GlStateManager.i $$1 : TEXTURES) {
          if ($$1.a == $$0) {
             $$1.a = -1;
          }
@@ -504,11 +482,6 @@ public class GlStateManager {
    }
 
    public static void _viewport(int $$0, int $$1, int $$2, int $$3) {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager.l.a.b = $$0;
-      GlStateManager.l.a.c = $$1;
-      GlStateManager.l.a.d = $$2;
-      GlStateManager.l.a.e = $$3;
       GL11.glViewport($$0, $$1, $$2, $$3);
    }
 
@@ -523,20 +496,10 @@ public class GlStateManager {
       }
    }
 
-   public static void _clearDepth(double $$0) {
-      RenderSystem.assertOnRenderThread();
-      GL11.glClearDepth($$0);
-   }
-
-   public static void _clearColor(float $$0, float $$1, float $$2, float $$3) {
-      RenderSystem.assertOnRenderThread();
-      GL11.glClearColor($$0, $$1, $$2, $$3);
-   }
-
    public static void _clear(int $$0) {
       RenderSystem.assertOnRenderThread();
       GL11.glClear($$0);
-      if (fiw.a) {
+      if (fkd.a) {
          _getError();
       }
    }
@@ -556,14 +519,14 @@ public class GlStateManager {
       GL20.glEnableVertexAttribArray($$0);
    }
 
-   public static void _disableVertexAttribArray(int $$0) {
-      RenderSystem.assertOnRenderThread();
-      GL20.glDisableVertexAttribArray($$0);
-   }
-
    public static void _drawElements(int $$0, int $$1, int $$2, long $$3) {
       RenderSystem.assertOnRenderThread();
       GL11.glDrawElements($$0, $$1, $$2, $$3);
+   }
+
+   public static void _drawArrays(int $$0, int $$1, int $$2) {
+      RenderSystem.assertOnRenderThread();
+      GL11.glDrawArrays($$0, $$1, $$2);
    }
 
    public static void _pixelStore(int $$0, int $$1) {
@@ -579,6 +542,13 @@ public class GlStateManager {
    public static int _getError() {
       RenderSystem.assertOnRenderThread();
       return GL11.glGetError();
+   }
+
+   public static void clearGlErrors() {
+      RenderSystem.assertOnRenderThread();
+
+      while (GL11.glGetError() != 0) {
+      }
    }
 
    public static String _getString(int $$0) {
@@ -604,55 +574,6 @@ public class GlStateManager {
    public static void _glDeleteSync(long $$0) {
       RenderSystem.assertOnRenderThread();
       GL32.glDeleteSync($$0);
-   }
-
-   @fhc
-   public static enum DestFactor {
-      CONSTANT_ALPHA(32771),
-      CONSTANT_COLOR(32769),
-      DST_ALPHA(772),
-      DST_COLOR(774),
-      ONE(1),
-      ONE_MINUS_CONSTANT_ALPHA(32772),
-      ONE_MINUS_CONSTANT_COLOR(32770),
-      ONE_MINUS_DST_ALPHA(773),
-      ONE_MINUS_DST_COLOR(775),
-      ONE_MINUS_SRC_ALPHA(771),
-      ONE_MINUS_SRC_COLOR(769),
-      SRC_ALPHA(770),
-      SRC_COLOR(768),
-      ZERO(0);
-
-      public final int value;
-
-      private DestFactor(final int $$0) {
-         this.value = $$0;
-      }
-   }
-
-   @fhc
-   public static enum SourceFactor {
-      CONSTANT_ALPHA(32771),
-      CONSTANT_COLOR(32769),
-      DST_ALPHA(772),
-      DST_COLOR(774),
-      ONE(1),
-      ONE_MINUS_CONSTANT_ALPHA(32772),
-      ONE_MINUS_CONSTANT_COLOR(32770),
-      ONE_MINUS_DST_ALPHA(773),
-      ONE_MINUS_DST_COLOR(775),
-      ONE_MINUS_SRC_ALPHA(771),
-      ONE_MINUS_SRC_COLOR(769),
-      SRC_ALPHA(770),
-      SRC_ALPHA_SATURATE(776),
-      SRC_COLOR(768),
-      ZERO(0);
-
-      public final int value;
-
-      private SourceFactor(final int $$0) {
-         this.value = $$0;
-      }
    }
 
    static class a {
@@ -715,80 +636,16 @@ public class GlStateManager {
    }
 
    static class g {
-      public int a;
-
-      public boolean a(int $$0) {
-         if ($$0 != this.a) {
-            this.a = $$0;
-            return true;
-         } else {
-            return false;
-         }
-      }
-   }
-
-   public static enum h {
-      a(-1),
-      b(5377),
-      c(5380),
-      d(5378),
-      e(5376),
-      f(5379),
-      g(5388),
-      h(5385),
-      i(5386),
-      j(5390),
-      k(5381),
-      l(5384),
-      m(5383),
-      n(5389),
-      o(5387),
-      p(5391),
-      q(5382);
-
-      public final int r;
-
-      private h(final int $$0) {
-         this.r = $$0;
-      }
-   }
-
-   static class i {
       public final GlStateManager.b a = new GlStateManager.b(32823);
       public float b;
       public float c;
    }
 
-   static class j {
+   static class h {
       public final GlStateManager.b a = new GlStateManager.b(3089);
    }
 
-   static class k {
+   static class i {
       public int a;
-   }
-
-   public static enum l {
-      a;
-
-      int b;
-      int c;
-      int d;
-      int e;
-
-      public static int a() {
-         return a.b;
-      }
-
-      public static int b() {
-         return a.c;
-      }
-
-      public static int c() {
-         return a.d;
-      }
-
-      public static int d() {
-         return a.e;
-      }
    }
 }

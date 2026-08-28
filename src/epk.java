@@ -1,26 +1,69 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class epk<P extends epj> {
-   public static final epk<epi> a = a("straight_trunk_placer", epi.a);
-   public static final epk<epf> b = a("forking_trunk_placer", epf.a);
-   public static final epk<epg> c = a("giant_trunk_placer", epg.a);
-   public static final epk<eph> d = a("mega_jungle_trunk_placer", eph.b);
-   public static final epk<epd> e = a("dark_oak_trunk_placer", epd.a);
-   public static final epk<epe> f = a("fancy_trunk_placer", epe.a);
-   public static final epk<epb> g = a("bending_trunk_placer", epb.a);
-   public static final epk<epl> h = a("upwards_branching_trunk_placer", epl.a);
-   public static final epk<epc> i = a("cherry_trunk_placer", epc.a);
-   private final MapCodec<P> j;
+public class epk extends epl {
+   public static final MapCodec<epk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ayw.m.fieldOf("tries").orElse(128).forGetter($$0x -> $$0x.b),
+               ayw.l.fieldOf("radius").orElse(2).forGetter($$0x -> $$0x.c),
+               ayw.l.fieldOf("height").orElse(1).forGetter($$0x -> $$0x.d),
+               eoq.a.fieldOf("block_state_provider").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, epk::new)
+   );
+   private final int b;
+   private final int c;
+   private final int d;
+   private final eoq e;
 
-   private static <P extends epj> epk<P> a(String $$0, MapCodec<P> $$1) {
-      return js.a(mg.V, $$0, new epk<>($$1));
+   public epk(int $$0, int $$1, int $$2, eoq $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private epk(MapCodec<P> $$0) {
-      this.j = $$0;
+   @Override
+   protected epm<?> a() {
+      return epm.i;
    }
 
-   public MapCodec<P> a() {
-      return this.j;
+   @Override
+   public void a(epl.a $$0) {
+      List<iv> $$1 = elw.a($$0);
+      if (!$$1.isEmpty()) {
+         iv $$2 = $$1.getFirst();
+         int $$3 = $$2.v();
+         int $$4 = $$2.u();
+         int $$5 = $$2.u();
+         int $$6 = $$2.w();
+         int $$7 = $$2.w();
+
+         for (iv $$8 : $$1) {
+            if ($$8.v() == $$3) {
+               $$4 = Math.min($$4, $$8.u());
+               $$5 = Math.max($$5, $$8.u());
+               $$6 = Math.min($$6, $$8.w());
+               $$7 = Math.max($$7, $$8.w());
+            }
+         }
+
+         azx $$9 = $$0.b();
+         ert $$10 = new ert($$4, $$3, $$6, $$5, $$3, $$7).c(this.c, this.d, this.c);
+         iv.a $$11 = new iv.a();
+
+         for (int $$12 = 0; $$12 < this.b; $$12++) {
+            $$11.d($$9.a($$10.h(), $$10.k()), $$9.a($$10.i(), $$10.l()), $$9.a($$10.j(), $$10.m()));
+            this.a($$0, $$11);
+         }
+      }
+   }
+
+   private void a(epl.a $$0, iv $$1) {
+      iv $$2 = $$1.d();
+      if ($$0.a().a($$2, $$0x -> $$0x.l() || $$0x.a(dne.fx)) && $$0.a($$1, ebd.a::s)) {
+         $$0.a($$2, this.e.a($$0.b(), $$2));
+      }
    }
 }

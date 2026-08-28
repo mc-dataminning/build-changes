@@ -1,14 +1,15 @@
-public class gog extends gof {
-   gog(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.D *= 1.5F;
-      this.t = (int)(Math.random() * 2.0) + 60;
-   }
+public class gog extends gqk {
+   private final gqf a;
 
-   @Override
-   public float b(float $$0) {
-      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
-      return this.D * $$1;
+   gog(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gqf $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$7;
+      this.t = 4;
+      this.u = 0.008F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.b($$7);
    }
 
    @Override
@@ -19,24 +20,26 @@ public class gog extends gof {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         float $$0 = (float)this.s / (float)this.t;
-         this.g = this.g + this.j * (double)$$0;
-         this.h = this.h + this.k * (double)$$0;
-         this.i = this.i + this.l * (double)$$0;
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.b(this.a);
       }
    }
 
-   public static class a implements goc<mc> {
-      private final gou a;
+   @Override
+   public gpo b() {
+      return gpo.b;
+   }
 
-      public a(gou $$0) {
+   public static class a implements gpn<mc> {
+      private final gqf a;
+
+      public a(gqf $$0) {
          this.a = $$0;
       }
 
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gog $$8 = new gog($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gog($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

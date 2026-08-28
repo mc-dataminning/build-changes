@@ -2,18 +2,18 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Optional;
 import org.apache.commons.lang3.ArrayUtils;
 
-public class ud extends ty<ue> {
+public final class ud implements ty {
    private static final int b = 24;
-   public static final uy<ud> a = new uy.b<ud>() {
+   public static final va<ud> a = new va.b<ud>() {
       public ud a(DataInput $$0, ui $$1) throws IOException {
          return new ud(d($$0, $$1));
       }
 
       @Override
-      public ut.b a(DataInput $$0, ut $$1, ui $$2) throws IOException {
+      public uv.b a(DataInput $$0, uv $$1, ui $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
@@ -51,21 +51,6 @@ public class ud extends ty<ue> {
       this.c = $$0;
    }
 
-   public ud(List<Integer> $$0) {
-      this(a($$0));
-   }
-
-   private static int[] a(List<Integer> $$0) {
-      int[] $$1 = new int[$$0.size()];
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         Integer $$3 = $$0.get($$2);
-         $$1[$$2] = $$3 == null ? 0 : $$3;
-      }
-
-      return $$1;
-   }
-
    @Override
    public void a(DataOutput $$0) throws IOException {
       $$0.writeInt(this.c.length);
@@ -86,13 +71,15 @@ public class ud extends ty<ue> {
    }
 
    @Override
-   public uy<ud> c() {
+   public va<ud> c() {
       return a;
    }
 
    @Override
    public String toString() {
-      return this.p_();
+      ux $$0 = new ux();
+      $$0.a(this);
+      return $$0.a();
    }
 
    public ud e() {
@@ -116,7 +103,7 @@ public class ud extends ty<ue> {
    }
 
    @Override
-   public void a(va $$0) {
+   public void a(vc $$0) {
       $$0.a(this);
    }
 
@@ -129,20 +116,10 @@ public class ud extends ty<ue> {
       return ue.a(this.c[$$0]);
    }
 
-   public ue a(int $$0, ue $$1) {
-      int $$2 = this.c[$$0];
-      this.c[$$0] = $$1.g();
-      return ue.a($$2);
-   }
-
-   public void b(int $$0, ue $$1) {
-      this.c = ArrayUtils.add(this.c, $$0, $$1.g());
-   }
-
    @Override
-   public boolean a(int $$0, uw $$1) {
-      if ($$1 instanceof up) {
-         this.c[$$0] = ((up)$$1).g();
+   public boolean a(int $$0, uy $$1) {
+      if ($$1 instanceof up $$2) {
+         this.c[$$0] = $$2.h();
          return true;
       } else {
          return false;
@@ -150,9 +127,9 @@ public class ud extends ty<ue> {
    }
 
    @Override
-   public boolean b(int $$0, uw $$1) {
-      if ($$1 instanceof up) {
-         this.c = ArrayUtils.add(this.c, $$0, ((up)$$1).g());
+   public boolean b(int $$0, uy $$1) {
+      if ($$1 instanceof up $$2) {
+         this.c = ArrayUtils.add(this.c, $$0, $$2.h());
          return true;
       } else {
          return false;
@@ -166,17 +143,17 @@ public class ud extends ty<ue> {
    }
 
    @Override
-   public byte f() {
-      return 3;
-   }
-
-   @Override
    public void clear() {
       this.c = new int[0];
    }
 
    @Override
-   public ut.b a(ut $$0) {
+   public Optional<int[]> q_() {
+      return Optional.of(this.c);
+   }
+
+   @Override
+   public uv.b a(uv $$0) {
       return $$0.a(this.c);
    }
 }

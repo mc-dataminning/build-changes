@@ -1,31 +1,44 @@
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import org.lwjgl.system.MemoryUtil;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
 public class fis {
-   public static ByteBuffer a(int $$0) {
-      return MemoryUtil.memAlloc($$0);
+   public void a(float $$0) {
    }
 
-   public static void a(Buffer $$0) {
-      MemoryUtil.memFree($$0);
+   public void a(float $$0, float $$1) {
    }
 
-   public static String a() {
-      return GlStateManager._getString(7936);
+   public void a(float $$0, float $$1, float $$2) {
    }
 
-   public static String b() {
-      return GLX._getCpuInfo();
+   public void a(float $$0, float $$1, float $$2, float $$3) {
    }
 
-   public static String c() {
-      return GlStateManager._getString(7937);
+   public void a(int $$0) {
    }
 
-   public static String d() {
-      return GlStateManager._getString(7938);
+   public void a(int $$0, int $$1) {
+   }
+
+   public void a(int $$0, int $$1, int $$2) {
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+   }
+
+   public void a(float[] $$0) {
+   }
+
+   public void a(int[] $$0) {
+   }
+
+   public void a(Vector3f $$0) {
+   }
+
+   public void a(Vector4f $$0) {
+   }
+
+   public void a(Matrix4f $$0) {
    }
 }

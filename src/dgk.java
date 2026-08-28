@@ -1,20 +1,8 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public record dgk(dgh c) implements dgt {
-   public static final MapCodec<dgk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dgh.b.fieldOf("value").forGetter(dgk::b)).apply($$0, dgk::new));
-
-   @Override
-   public float a(int $$0, azv $$1, float $$2) {
-      return $$2 + this.c.a($$0);
-   }
-
-   @Override
-   public MapCodec<dgk> a() {
-      return a;
-   }
-
-   public dgh b() {
-      return this.c;
+public record dgk(czy a, @Nullable bxd b, @Nullable bxu c, Consumer<czu> d) {
+   public dgk(czy $$0, bxd $$1, bxu $$2) {
+      this($$0, $$1, $$2, $$2x -> $$2.a($$2x, $$1));
    }
 }

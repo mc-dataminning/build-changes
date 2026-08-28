@@ -1,23 +1,18 @@
-import java.util.List;
-import java.util.UUID;
+import io.netty.buffer.ByteBuf;
 
-public record aea(List<UUID> b) implements zf<abu> {
-   public static final yw<vu, aea> a = zf.a(aea::a, aea::new);
+public class aea implements zh<abw> {
+   public static final aea a = new aea();
+   public static final yy<ByteBuf, aea> b = yy.a(a);
 
-   private aea(vu $$0) {
-      this($$0.a(jz.g));
-   }
-
-   private void a(vu $$0) {
-      $$0.a(this.b, jz.g);
+   private aea() {
    }
 
    @Override
-   public zh<aea> a() {
-      return agn.af;
+   public zj<aea> a() {
+      return agp.ad;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 }

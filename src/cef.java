@@ -1,65 +1,34 @@
 import java.util.EnumSet;
 
-public abstract class cef {
-   private final EnumSet<cef.a> a = EnumSet.noneOf(cef.a.class);
+public class cef extends ceq {
+   private final bxw a;
+   private final djx b;
 
-   public abstract boolean b();
-
-   public boolean c() {
-      return this.b();
-   }
-
-   public boolean Q_() {
-      return true;
-   }
-
-   public void d() {
-   }
-
-   public void e() {
-   }
-
-   public boolean R_() {
-      return false;
-   }
-
-   public void a() {
-   }
-
-   public void a(EnumSet<cef.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   public cef(bxw $$0, djx $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(ceq.a.c));
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public boolean b() {
+      boolean $$0 = this.a.aw || this.a.av;
+      if ($$0 && this.a.an().a(axh.h)) {
+         iv $$1 = this.a.dv().d();
+         ebe $$2 = this.b.a_($$1);
+         return $$2.a(dne.rx) || $$2.g(this.b, $$1) == fgh.a();
+      } else {
+         return false;
+      }
    }
 
-   public EnumSet<cef.a> j() {
-      return this.a;
+   @Override
+   public boolean V_() {
+      return true;
    }
 
-   protected int a(int $$0) {
-      return this.R_() ? $$0 : b($$0);
-   }
-
-   protected static int b(int $$0) {
-      return azm.e($$0, 2);
-   }
-
-   protected static arq a(bwi $$0) {
-      return (arq)$$0.dU();
-   }
-
-   protected static arq a(djm $$0) {
-      return (arq)$$0;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public void a() {
+      this.a.N().a();
    }
 }

@@ -1,3 +1,8 @@
-public class hdq extends hef {
-   public boolean a;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface hdq {
 }

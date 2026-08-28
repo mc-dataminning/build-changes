@@ -1,24 +1,18 @@
-public record agf(int b) implements zf<abu> {
-   public static final yw<vu, agf> a = zf.a(agf::a, agf::new);
+import java.util.Optional;
 
-   private agf(vu $$0) {
-      this($$0.l());
-   }
-
-   public static agf a(bup $$0) {
-      return new agf($$0.k());
-   }
-
-   private void a(vu $$0) {
-      $$0.c(this.b);
-   }
+public record agf(xa b, Optional<ka> c) implements zh<abw> {
+   public static final yy<wl, agf> a = yy.a(xc.b, agf::b, yw.a(ka.h), agf::e, agf::new);
 
    @Override
-   public zh<agf> a() {
-      return agn.cr;
+   public zj<agf> a() {
+      return agp.be;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
+   }
+
+   public Optional<ka> e() {
+      return this.c;
    }
 }

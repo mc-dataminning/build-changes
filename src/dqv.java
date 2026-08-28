@@ -1,69 +1,113 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.Supplier;
 
-public class dqv extends dmr {
-   public static final MapCodec<dqv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(mg.e.q().fieldOf("host").forGetter(dqv::b), t()).apply($$0, dqv::new));
-   private final dmr b;
-   private static final Map<dmr, dmr> c = Maps.newIdentityHashMap();
-   private static final Map<eat, eat> d = Maps.newIdentityHashMap();
-   private static final Map<eat, eat> e = Maps.newIdentityHashMap();
+public abstract class dqv extends dqt implements dnf {
+   public static final ece e = ebu.aA;
+   public static final int f = 25;
+   private final double c;
 
-   @Override
-   public MapCodec<? extends dqv> a() {
-      return a;
-   }
-
-   public dqv(dmr $$0, eas.d $$1) {
-      super($$1.e($$0.x() / 2.0F).f(0.75F));
-      this.b = $$0;
-      c.put($$0, this);
-   }
-
-   public dmr b() {
-      return this.b;
-   }
-
-   public static boolean o(eat $$0) {
-      return c.containsKey($$0.b());
-   }
-
-   private void a(arq $$0, iv $$1) {
-      cov $$2 = bwr.be.a($$0, bwq.k);
-      if ($$2 != null) {
-         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
-         $$0.b($$2);
-         $$2.U();
-      }
+   protected dqv(ebd.d $$0, jb $$1, fgk $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+      this.l(this.C.b().b(e, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(eat $$0, arq $$1, iv $$2, czn $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$1.O().c(dji.i) && !dgc.a($$3, axe.t)) {
-         this.a($$1, $$2);
+   protected abstract MapCodec<? extends dqv> a();
+
+   @Override
+   public ebe b(azx $$0) {
+      return this.m().b(e, Integer.valueOf($$0.a(25)));
+   }
+
+   @Override
+   protected boolean f(ebe $$0) {
+      return $$0.c(e) < 25;
+   }
+
+   @Override
+   protected void b(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      if ($$0.c(e) < 25 && $$3.j() < this.c) {
+         iv $$4 = $$2.a(this.a);
+         if (this.h($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.A));
+         }
       }
    }
 
-   public static eat p(eat $$0) {
-      return a(d, $$0, () -> c.get($$0.b()).m());
+   protected ebe a(ebe $$0, azx $$1) {
+      return $$0.a(e);
    }
 
-   public eat q(eat $$0) {
-      return a(e, $$0, () -> this.b().m());
+   public ebe p(ebe $$0) {
+      return $$0.b(e, Integer.valueOf(25));
    }
 
-   private static eat a(Map<eat, eat> $$0, eat $$1, Supplier<eat> $$2) {
-      return $$0.computeIfAbsent($$1, $$1x -> {
-         eat $$2x = $$2.get();
+   public boolean q(ebe $$0) {
+      return $$0.c(e) == 25;
+   }
 
-         for (ebw $$3 : $$1x.F()) {
-            $$2x = $$2x.b($$3) ? $$2x.b($$3, $$1x.c($$3)) : $$2x;
+   protected ebe a(ebe $$0, ebe $$1) {
+      return $$1;
+   }
+
+   @Override
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      if ($$4 == this.a.g()) {
+         if (!$$0.a($$1, $$3)) {
+            $$2.a($$3, this, 1);
+         } else {
+            ebe $$8 = $$1.a_($$3.a(this.a));
+            if ($$8.a(this) || $$8.a(this.b())) {
+               return this.a($$0, this.b().m());
+            }
+         }
+      }
+
+      if ($$4 != this.a || !$$6.a(this) && !$$6.a(this.b())) {
+         if (this.b) {
+            $$2.a($$3, exp.c, exp.c.a($$1));
          }
 
-         return $$2x;
-      });
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      } else {
+         return this.a($$0, this.b().m());
+      }
+   }
+
+   @Override
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(e);
+   }
+
+   @Override
+   public boolean a(dka $$0, iv $$1, ebe $$2) {
+      return this.h($$0.a_($$1.a(this.a)));
+   }
+
+   @Override
+   public boolean a(djx $$0, azx $$1, iv $$2, ebe $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ars $$0, azx $$1, iv $$2, ebe $$3) {
+      iv $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(e) + 1, 25);
+      int $$6 = this.a($$1);
+
+      for (int $$7 = 0; $$7 < $$6 && this.h($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.b(e, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
+      }
+   }
+
+   protected abstract int a(azx var1);
+
+   protected abstract boolean h(ebe var1);
+
+   @Override
+   protected dqv c() {
+      return this;
    }
 }

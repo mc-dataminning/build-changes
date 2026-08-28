@@ -1,53 +1,72 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record dcn(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
-   private static final Codec<dcn> g = RecordCodecBuilder.create(
+public record dcn(int d, List<dcm> e) implements ddd {
+   public static final int a = 256;
+   public static final Codec<dcn> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ayu.y.optionalFieldOf("name").forGetter(dcn::c),
-               jz.a.optionalFieldOf("id").forGetter(dcn::d),
-               ayu.x.optionalFieldOf("properties", new PropertyMap()).forGetter(dcn::e)
+               ayw.k.optionalFieldOf("flight_duration", 0).forGetter(dcn::a),
+               dcm.c.sizeLimitedListOf(256).optionalFieldOf("explosions", List.of()).forGetter(dcn::b)
             )
             .apply($$0, dcn::new)
    );
-   public static final Codec<dcn> a = Codec.withAlternative(g, ayu.y, $$0 -> new dcn(Optional.of($$0), Optional.empty(), new PropertyMap()));
-   public static final yw<ByteBuf, dcn> b = yw.a(yu.b(16).a(yu::a), dcn::c, jz.g.a(yu::a), dcn::d, yu.y, dcn::e, dcn::new);
+   public static final yy<ByteBuf, dcn> c = yy.a(yw.h, dcn::a, dcm.d.a(yw.c(256)), dcn::b, dcn::new);
 
-   public dcn(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
-   }
-
-   public dcn(GameProfile $$0) {
-      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
-   }
-
-   public CompletableFuture<dcn> a() {
-      if (this.b()) {
-         return CompletableFuture.completedFuture(this);
+   public dcn(int d, List<dcm> e) {
+      if (e.size() > 256) {
+         throw new IllegalArgumentException("Got " + e.size() + " explosions, but maximum is 256");
       } else {
-         return this.d.isPresent() ? dzh.a(this.d.get()).thenApply($$0 -> {
-            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(this.d.get(), this.c.orElse("")));
-            return new dcn($$1);
-         }) : dzh.a(this.c.orElseThrow()).thenApply($$0 -> {
-            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(ag.e, this.c.get()));
-            return new dcn($$1);
-         });
+         this.d = d;
+         this.e = e;
       }
    }
 
-   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
-      GameProfile $$3 = new GameProfile($$1.orElse(ag.e), $$0.orElse(""));
-      $$3.getProperties().putAll($$2);
-      return $$3;
+   @Override
+   public void a(czu.b $$0, Consumer<xa> $$1, dbn $$2, kf $$3) {
+      if (this.d > 0) {
+         $$1.accept(xa.c("item.minecraft.firework_rocket.flight").b(wz.v).f(String.valueOf(this.d)).a(o.h));
+      }
+
+      dcm $$4 = null;
+      int $$5 = 0;
+
+      for (dcm $$6 : this.e) {
+         if ($$4 == null) {
+            $$4 = $$6;
+            $$5 = 1;
+         } else if ($$4.equals($$6)) {
+            $$5++;
+         } else {
+            a($$1, $$4, $$5);
+            $$4 = $$6;
+            $$5 = 1;
+         }
+      }
+
+      if ($$4 != null) {
+         a($$1, $$4, $$5);
+      }
    }
 
-   public boolean b() {
-      return !this.e.isEmpty() ? true : this.d.isPresent() == this.c.isPresent();
+   private static void a(Consumer<xa> $$0, dcm $$1, int $$2) {
+      xa $$3 = $$1.a().a();
+      if ($$2 == 1) {
+         $$0.accept(xa.a("item.minecraft.firework_rocket.single_star", $$3).a(o.h));
+      } else {
+         $$0.accept(xa.a("item.minecraft.firework_rocket.multiple_stars", $$2, $$3).a(o.h));
+      }
+
+      $$1.a((Consumer<xa>)($$1x -> $$0.accept(xa.b("  ").b($$1x))));
+   }
+
+   public int a() {
+      return this.d;
+   }
+
+   public List<dcm> b() {
+      return this.e;
    }
 }

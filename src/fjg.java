@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fjg {
+   int a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@fhf
-@fhd
-interface fjg {
+   void a(int var1, int var2, int var3, int var4);
 }

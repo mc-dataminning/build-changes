@@ -1,5 +1,6 @@
-public class uq extends aa {
-   public uq(p $$0) {
-      super($$0);
+public sealed interface uq extends uy permits up, uw {
+   @Override
+   default uy d() {
+      return this;
    }
 }

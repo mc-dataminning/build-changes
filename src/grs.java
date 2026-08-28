@@ -1,130 +1,392 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Matrix4f;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
 public class grs {
-   public static final alg a = alg.b("textures/misc/forcefield.png");
-   private boolean b = true;
-   private double c;
-   private double d;
-   private double e;
-   private double f;
-   private double g;
-   private double h;
-   private fkg[] i = new fkg[4];
+   private static final Map<dnc, gsl> a = ag.a(Maps.newHashMap(), $$0 -> {
+      gsl $$1 = gsl.t();
+      $$0.put(dne.gh, $$1);
+      gsl $$2 = gsl.e();
+      $$0.put(dne.i, $$2);
+      $$0.put(dne.fo, $$2);
+      $$0.put(dne.fq, $$2);
+      $$0.put(dne.gg, $$2);
+      $$0.put(dne.hD, $$2);
+      $$0.put(dne.fp, $$2);
+      $$0.put(dne.aN, $$2);
+      $$0.put(dne.aK, $$2);
+      $$0.put(dne.aL, $$2);
+      $$0.put(dne.aO, $$2);
+      $$0.put(dne.aP, $$2);
+      $$0.put(dne.aM, $$2);
+      $$0.put(dne.aQ, $$2);
+      $$0.put(dne.aR, $$2);
+      $$0.put(dne.aT, $$2);
+      $$0.put(dne.aU, $$2);
+      $$0.put(dne.ag, $$2);
+      $$0.put(dne.aS, $$2);
+      gsl $$3 = gsl.f();
+      $$0.put(dne.z, $$3);
+      $$0.put(dne.A, $$3);
+      $$0.put(dne.B, $$3);
+      $$0.put(dne.C, $$3);
+      $$0.put(dne.D, $$3);
+      $$0.put(dne.E, $$3);
+      $$0.put(dne.F, $$3);
+      $$0.put(dne.G, $$3);
+      $$0.put(dne.aX, $$3);
+      $$0.put(dne.bg, $$3);
+      $$0.put(dne.bh, $$3);
+      $$0.put(dne.bi, $$3);
+      $$0.put(dne.bj, $$3);
+      $$0.put(dne.bk, $$3);
+      $$0.put(dne.bl, $$3);
+      $$0.put(dne.bm, $$3);
+      $$0.put(dne.bn, $$3);
+      $$0.put(dne.bo, $$3);
+      $$0.put(dne.bp, $$3);
+      $$0.put(dne.bq, $$3);
+      $$0.put(dne.br, $$3);
+      $$0.put(dne.bs, $$3);
+      $$0.put(dne.bt, $$3);
+      $$0.put(dne.bu, $$3);
+      $$0.put(dne.bv, $$3);
+      $$0.put(dne.bw, $$3);
+      $$0.put(dne.bx, $$3);
+      $$0.put(dne.bz, $$3);
+      $$0.put(dne.bA, $$3);
+      $$0.put(dne.bB, $$3);
+      $$0.put(dne.bD, $$3);
+      $$0.put(dne.bC, $$3);
+      $$0.put(dne.bE, $$3);
+      $$0.put(dne.bF, $$3);
+      $$0.put(dne.bG, $$3);
+      $$0.put(dne.bH, $$3);
+      $$0.put(dne.cb, $$3);
+      $$0.put(dne.uh, $$3);
+      $$0.put(dne.ui, $$3);
+      $$0.put(dne.cd, $$3);
+      $$0.put(dne.ce, $$3);
+      $$0.put(dne.cf, $$3);
+      $$0.put(dne.cg, $$3);
+      $$0.put(dne.ch, $$3);
+      $$0.put(dne.ci, $$3);
+      $$0.put(dne.cj, $$3);
+      $$0.put(dne.ck, $$3);
+      $$0.put(dne.cl, $$3);
+      $$0.put(dne.cm, $$3);
+      $$0.put(dne.cn, $$3);
+      $$0.put(dne.co, $$3);
+      $$0.put(dne.cp, $$3);
+      $$0.put(dne.cq, $$3);
+      $$0.put(dne.cz, $$3);
+      $$0.put(dne.cA, $$3);
+      $$0.put(dne.er, $$3);
+      $$0.put(dne.es, $$3);
+      $$0.put(dne.cB, $$3);
+      $$0.put(dne.cC, $$3);
+      $$0.put(dne.cD, $$3);
+      $$0.put(dne.ub, $$3);
+      $$0.put(dne.uc, $$3);
+      $$0.put(dne.cH, $$3);
+      $$0.put(dne.cM, $$3);
+      $$0.put(dne.cZ, $$3);
+      $$0.put(dne.da, $$3);
+      $$0.put(dne.db, $$3);
+      $$0.put(dne.dN, $$3);
+      $$0.put(dne.ea, $$3);
+      $$0.put(dne.eb, $$3);
+      $$0.put(dne.eg, $$3);
+      $$0.put(dne.ej, $$3);
+      $$0.put(dne.ey, $$3);
+      $$0.put(dne.eP, $$3);
+      $$0.put(dne.eQ, $$3);
+      $$0.put(dne.eR, $$3);
+      $$0.put(dne.eS, $$3);
+      $$0.put(dne.eT, $$3);
+      $$0.put(dne.eU, $$3);
+      $$0.put(dne.eV, $$3);
+      $$0.put(dne.eW, $$3);
+      $$0.put(dne.ps, $$3);
+      $$0.put(dne.pt, $$3);
+      $$0.put(dne.eX, $$3);
+      $$0.put(dne.eY, $$3);
+      $$0.put(dne.sC, $$3);
+      $$0.put(dne.sD, $$3);
+      $$0.put(dne.sF, $$3);
+      $$0.put(dne.sE, $$3);
+      $$0.put(dne.sG, $$3);
+      $$0.put(dne.sH, $$3);
+      $$0.put(dne.sJ, $$3);
+      $$0.put(dne.sI, $$3);
+      $$0.put(dne.ft, $$3);
+      $$0.put(dne.fu, $$3);
+      $$0.put(dne.fv, $$3);
+      $$0.put(dne.fw, $$3);
+      $$0.put(dne.fx, $$3);
+      $$0.put(dne.uf, $$3);
+      $$0.put(dne.ug, $$3);
+      $$0.put(dne.fy, $$3);
+      $$0.put(dne.fz, $$3);
+      $$0.put(dne.fF, $$3);
+      $$0.put(dne.fP, $$3);
+      $$0.put(dne.fR, $$3);
+      $$0.put(dne.gb, $$3);
+      $$0.put(dne.gn, $$3);
+      $$0.put(dne.gq, $$3);
+      $$0.put(dne.gs, $$3);
+      $$0.put(dne.gt, $$3);
+      $$0.put(dne.gu, $$3);
+      $$0.put(dne.gv, $$3);
+      $$0.put(dne.gw, $$3);
+      $$0.put(dne.gx, $$3);
+      $$0.put(dne.gy, $$3);
+      $$0.put(dne.gz, $$3);
+      $$0.put(dne.gA, $$3);
+      $$0.put(dne.gB, $$3);
+      $$0.put(dne.gC, $$3);
+      $$0.put(dne.gD, $$3);
+      $$0.put(dne.uj, $$3);
+      $$0.put(dne.uk, $$3);
+      $$0.put(dne.gE, $$3);
+      $$0.put(dne.gF, $$3);
+      $$0.put(dne.gG, $$3);
+      $$0.put(dne.gH, $$3);
+      $$0.put(dne.gI, $$3);
+      $$0.put(dne.gJ, $$3);
+      $$0.put(dne.gK, $$3);
+      $$0.put(dne.gL, $$3);
+      $$0.put(dne.gM, $$3);
+      $$0.put(dne.gN, $$3);
+      $$0.put(dne.gO, $$3);
+      $$0.put(dne.gP, $$3);
+      $$0.put(dne.gQ, $$3);
+      $$0.put(dne.gR, $$3);
+      $$0.put(dne.gS, $$3);
+      $$0.put(dne.tS, $$3);
+      $$0.put(dne.tT, $$3);
+      $$0.put(dne.gr, $$3);
+      $$0.put(dne.gT, $$3);
+      $$0.put(dne.gU, $$3);
+      $$0.put(dne.hz, $$3);
+      $$0.put(dne.hI, $$3);
+      $$0.put(dne.iA, $$3);
+      $$0.put(dne.jf, $$3);
+      $$0.put(dne.jg, $$3);
+      $$0.put(dne.jh, $$3);
+      $$0.put(dne.ji, $$3);
+      $$0.put(dne.jj, $$3);
+      $$0.put(dne.jk, $$3);
+      $$0.put(dne.kQ, $$3);
+      $$0.put(dne.kR, $$3);
+      $$0.put(dne.kS, $$3);
+      $$0.put(dne.kT, $$3);
+      $$0.put(dne.kU, $$3);
+      $$0.put(dne.kV, $$3);
+      $$0.put(dne.kW, $$3);
+      $$0.put(dne.kX, $$3);
+      $$0.put(dne.kY, $$3);
+      $$0.put(dne.su, $$3);
+      $$0.put(dne.sv, $$3);
+      $$0.put(dne.sx, $$3);
+      $$0.put(dne.sw, $$3);
+      $$0.put(dne.sy, $$3);
+      $$0.put(dne.sz, $$3);
+      $$0.put(dne.sB, $$3);
+      $$0.put(dne.sA, $$3);
+      $$0.put(dne.kZ, $$3);
+      $$0.put(dne.la, $$3);
+      $$0.put(dne.lb, $$3);
+      $$0.put(dne.cc, $$3);
+      $$0.put(dne.lg, $$3);
+      $$0.put(dne.li, $$3);
+      $$0.put(dne.lh, $$3);
+      $$0.put(dne.lj, $$3);
+      $$0.put(dne.mI, $$3);
+      $$0.put(dne.mJ, $$3);
+      $$0.put(dne.mL, $$3);
+      $$0.put(dne.mX, $$3);
+      $$0.put(dne.mY, $$3);
+      $$0.put(dne.mZ, $$3);
+      $$0.put(dne.na, $$3);
+      $$0.put(dne.nb, $$3);
+      $$0.put(dne.nc, $$3);
+      $$0.put(dne.nd, $$3);
+      $$0.put(dne.ne, $$3);
+      $$0.put(dne.nf, $$3);
+      $$0.put(dne.ng, $$3);
+      $$0.put(dne.nh, $$3);
+      $$0.put(dne.ni, $$3);
+      $$0.put(dne.nj, $$3);
+      $$0.put(dne.nk, $$3);
+      $$0.put(dne.nl, $$3);
+      $$0.put(dne.nm, $$3);
+      $$0.put(dne.nn, $$3);
+      $$0.put(dne.no, $$3);
+      $$0.put(dne.np, $$3);
+      $$0.put(dne.nq, $$3);
+      $$0.put(dne.nr, $$3);
+      $$0.put(dne.ns, $$3);
+      $$0.put(dne.nt, $$3);
+      $$0.put(dne.nu, $$3);
+      $$0.put(dne.nv, $$3);
+      $$0.put(dne.nw, $$3);
+      $$0.put(dne.nx, $$3);
+      $$0.put(dne.ny, $$3);
+      $$0.put(dne.nz, $$3);
+      $$0.put(dne.nA, $$3);
+      $$0.put(dne.nB, $$3);
+      $$0.put(dne.nD, $$3);
+      $$0.put(dne.nE, $$3);
+      $$0.put(dne.nF, $$3);
+      $$0.put(dne.nG, $$3);
+      $$0.put(dne.oy, $$3);
+      $$0.put(dne.oI, $$3);
+      $$0.put(dne.oK, $$3);
+      $$0.put(dne.oL, $$3);
+      $$0.put(dne.oM, $$3);
+      $$0.put(dne.oN, $$3);
+      $$0.put(dne.oO, $$3);
+      $$0.put(dne.pf, $$3);
+      $$0.put(dne.pg, $$3);
+      $$0.put(dne.ph, $$3);
+      $$0.put(dne.pi, $$3);
+      $$0.put(dne.oX, $$3);
+      $$0.put(dne.pd, $$3);
+      $$0.put(dne.oU, $$3);
+      $$0.put(dne.pj, $$3);
+      $$0.put(dne.oW, $$3);
+      $$0.put(dne.pU, $$3);
+      $$0.put(dne.pV, $$3);
+      $$0.put(dne.pW, $$3);
+      $$0.put(dne.pX, $$3);
+      $$0.put(dne.pA, $$3);
+      $$0.put(dne.pB, $$3);
+      $$0.put(dne.tb, $$3);
+      $$0.put(dne.rg, $$3);
+      $$0.put(dne.rf, $$3);
+      $$0.put(dne.re, $$3);
+      $$0.put(dne.rd, $$3);
+      $$0.put(dne.ta, $$3);
+      $$0.put(dne.td, $$3);
+      $$0.put(dne.te, $$3);
+      $$0.put(dne.tf, $$3);
+      $$0.put(dne.th, $$3);
+      $$0.put(dne.tg, $$3);
+      $$0.put(dne.tj, $$3);
+      $$0.put(dne.tk, $$3);
+      $$0.put(dne.tl, $$3);
+      $$0.put(dne.tn, $$3);
+      $$0.put(dne.to, $$3);
+      $$0.put(dne.tp, $$3);
+      $$0.put(dne.tq, $$3);
+      $$0.put(dne.ry, $$3);
+      $$0.put(dne.rz, $$3);
+      $$0.put(dne.rB, $$3);
+      $$0.put(dne.rD, $$3);
+      $$0.put(dne.H, $$3);
+      $$0.put(dne.tX, $$3);
+      $$0.put(dne.sK, $$3);
+      $$0.put(dne.sL, $$3);
+      $$0.put(dne.sM, $$3);
+      $$0.put(dne.sN, $$3);
+      $$0.put(dne.sO, $$3);
+      $$0.put(dne.sP, $$3);
+      $$0.put(dne.sQ, $$3);
+      $$0.put(dne.sR, $$3);
+      $$0.put(dne.ul, $$3);
+      $$0.put(dne.eh, $$3);
+      gsl $$4 = gsl.g();
+      $$0.put(dne.ee, $$4);
+      $$0.put(dne.eu, $$4);
+      $$0.put(dne.ez, $$4);
+      $$0.put(dne.eA, $$4);
+      $$0.put(dne.eB, $$4);
+      $$0.put(dne.eC, $$4);
+      $$0.put(dne.eD, $$4);
+      $$0.put(dne.eE, $$4);
+      $$0.put(dne.eF, $$4);
+      $$0.put(dne.eG, $$4);
+      $$0.put(dne.eH, $$4);
+      $$0.put(dne.eI, $$4);
+      $$0.put(dne.eJ, $$4);
+      $$0.put(dne.eK, $$4);
+      $$0.put(dne.eL, $$4);
+      $$0.put(dne.eM, $$4);
+      $$0.put(dne.eN, $$4);
+      $$0.put(dne.eO, $$4);
+      $$0.put(dne.ia, $$4);
+      $$0.put(dne.ib, $$4);
+      $$0.put(dne.ic, $$4);
+      $$0.put(dne.id, $$4);
+      $$0.put(dne.ie, $$4);
+      $$0.put(dne.if, $$4);
+      $$0.put(dne.ig, $$4);
+      $$0.put(dne.ih, $$4);
+      $$0.put(dne.ii, $$4);
+      $$0.put(dne.ij, $$4);
+      $$0.put(dne.ik, $$4);
+      $$0.put(dne.il, $$4);
+      $$0.put(dne.im, $$4);
+      $$0.put(dne.in, $$4);
+      $$0.put(dne.io, $$4);
+      $$0.put(dne.ip, $$4);
+      $$0.put(dne.ix, $$4);
+      $$0.put(dne.pO, $$4);
+      $$0.put(dne.lo, $$4);
+      $$0.put(dne.nJ, $$4);
+      $$0.put(dne.rw, $$4);
+   });
+   private static final Map<exn, gsl> b = ag.a(Maps.newHashMap(), $$0 -> {
+      gsl $$1 = gsl.g();
+      $$0.put(exp.b, $$1);
+      $$0.put(exp.c, $$1);
+   });
+   private static boolean c;
 
-   public grs() {
-      for (jb $$0 : jb.c.a) {
-         this.i[$$0.e()] = new fkg(fhr.b);
+   public static gsl a(ebe $$0) {
+      dnc $$1 = $$0.b();
+      if ($$1 instanceof drs) {
+         return c ? gsl.e() : gsl.d();
+      } else {
+         gsl $$2 = a.get($$1);
+         return $$2 != null ? $$2 : gsl.d();
       }
    }
 
-   private void a(ecl $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6) {
-      try (fka $$7 = new fka(fkb.i.b() * 4)) {
-         double $$8 = $$0.e();
-         double $$9 = $$0.g();
-         double $$10 = $$0.f();
-         double $$11 = $$0.h();
-         double $$12 = Math.max((double)azm.a($$2 - $$1), $$10);
-         double $$13 = Math.min((double)azm.c($$2 + $$1), $$11);
-         float $$14 = (float)(azm.a($$12) & 1) * 0.5F;
-         float $$15 = (float)($$13 - $$12) / 2.0F;
-         double $$16 = Math.max((double)azm.a($$3 - $$1), $$8);
-         double $$17 = Math.min((double)azm.c($$3 + $$1), $$9);
-         float $$18 = (float)(azm.a($$16) & 1) * 0.5F;
-         float $$19 = (float)($$17 - $$16) / 2.0F;
-
-         for (jb $$20 : jb.c.a) {
-            fjz $$21 = new fjz($$7, fki.c.h, fkb.i);
-            switch ($$20) {
-               case f:
-                  $$21.a((float)($$9 - $$16), -$$4, (float)($$13 - $$12)).a($$14, $$5);
-                  $$21.a((float)($$9 - $$16), -$$4, 0.0F).a($$15 + $$14, $$5);
-                  $$21.a((float)($$9 - $$16), $$4, 0.0F).a($$15 + $$14, $$6);
-                  $$21.a((float)($$9 - $$16), $$4, (float)($$13 - $$12)).a($$14, $$6);
-                  break;
-               case e:
-                  $$21.a(0.0F, -$$4, 0.0F).a($$14, $$5);
-                  $$21.a(0.0F, -$$4, (float)($$13 - $$12)).a($$15 + $$14, $$5);
-                  $$21.a(0.0F, $$4, (float)($$13 - $$12)).a($$15 + $$14, $$6);
-                  $$21.a(0.0F, $$4, 0.0F).a($$14, $$6);
-                  break;
-               case d:
-                  $$21.a(0.0F, -$$4, (float)($$11 - $$12)).a($$18, $$5);
-                  $$21.a((float)($$17 - $$16), -$$4, (float)($$11 - $$12)).a($$19 + $$18, $$5);
-                  $$21.a((float)($$17 - $$16), $$4, (float)($$11 - $$12)).a($$19 + $$18, $$6);
-                  $$21.a(0.0F, $$4, (float)($$11 - $$12)).a($$18, $$6);
-                  break;
-               case c:
-                  $$21.a((float)($$17 - $$16), -$$4, 0.0F).a($$18, $$5);
-                  $$21.a(0.0F, -$$4, 0.0F).a($$19 + $$18, $$5);
-                  $$21.a(0.0F, $$4, 0.0F).a($$19 + $$18, $$6);
-                  $$21.a((float)($$17 - $$16), $$4, 0.0F).a($$18, $$6);
-            }
-
-            this.i[$$20.e()].a();
-            this.i[$$20.e()].a($$21.b());
+   public static gsl b(ebe $$0) {
+      dnc $$1 = $$0.b();
+      if ($$1 instanceof drs) {
+         return c ? gsl.e() : gsl.d();
+      } else {
+         gsl $$2 = a.get($$1);
+         if ($$2 != null) {
+            return $$2 == gsl.g() ? gsl.h() : $$2;
+         } else {
+            return gsl.d();
          }
-
-         fkg.b();
-         this.e = $$8;
-         this.f = $$9;
-         this.g = $$10;
-         this.h = $$11;
-         this.c = $$16;
-         this.d = $$12;
-         this.b = false;
       }
    }
 
-   public void a(ecl $$0, ffc $$1, double $$2, double $$3) {
-      double $$4 = $$0.e();
-      double $$5 = $$0.g();
-      double $$6 = $$0.f();
-      double $$7 = $$0.h();
-      if ((!($$1.d < $$5 - $$2) || !($$1.d > $$4 + $$2) || !($$1.f < $$7 - $$2) || !($$1.f > $$6 + $$2))
-         && !($$1.d < $$4 - $$2)
-         && !($$1.d > $$5 + $$2)
-         && !($$1.f < $$6 - $$2)
-         && !($$1.f > $$7 + $$2)) {
-         double $$8 = 1.0 - $$0.b($$1.d, $$1.f) / $$2;
-         $$8 = Math.pow($$8, 4.0);
-         $$8 = azm.a($$8, 0.0, 1.0);
-         double $$9 = $$1.d;
-         double $$10 = $$1.f;
-         float $$11 = (float)$$3;
-         grc $$12 = grc.G();
-         int $$13 = $$0.d().a();
-         float $$14 = (float)axw.b($$13) / 255.0F;
-         float $$15 = (float)axw.c($$13) / 255.0F;
-         float $$16 = (float)axw.d($$13) / 255.0F;
-         RenderSystem.setShaderColor($$14, $$15, $$16, (float)$$8);
-         float $$17 = (float)(ag.c() % 3000L) / 3000.0F;
-         RenderSystem.setTextureMatrix(new Matrix4f().translation($$17, $$17, 0.0F));
-         float $$18 = (float)(-azm.e($$1.e * 0.5));
-         float $$19 = $$18 + $$11;
-         if (this.a($$0)) {
-            this.a($$0, $$2, $$10, $$9, $$11, $$19, $$18);
-         }
+   public static gsl c(ebe $$0) {
+      gsl $$1 = a($$0);
+      return $$1 == gsl.g() ? gsu.j() : gsu.i();
+   }
 
-         RenderSystem.setModelOffset((float)(this.c - $$9), (float)(-$$1.e), (float)(this.d - $$10));
-
-         for (ecl.b $$20 : $$0.c($$9, $$10)) {
-            if ($$20.b() < $$2) {
-               this.i[$$20.a().e()].a($$12);
-            }
-         }
-
-         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-         RenderSystem.resetTextureMatrix();
-         RenderSystem.resetModelOffset();
+   public static gsl a(czy $$0) {
+      if ($$0.h() instanceof cyg $$2) {
+         dnc $$3 = $$2.c();
+         return c($$3.m());
+      } else {
+         return gsu.j();
       }
    }
 
-   public void a() {
-      this.b = true;
+   public static gsl a(exo $$0) {
+      gsl $$1 = b.get($$0.a());
+      return $$1 != null ? $$1 : gsl.d();
    }
 
-   private boolean a(ecl $$0) {
-      return this.b || $$0.e() != this.e || $$0.f() != this.g || $$0.g() != this.f || $$0.h() != this.h;
+   public static void a(boolean $$0) {
+      c = $$0;
    }
 }

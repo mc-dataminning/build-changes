@@ -1,7 +1,7 @@
 import javax.annotation.Nullable;
 
 public interface og {
-   void a(alf<dee<?>> var1, dee<?> var2, @Nullable aj var3);
+   void a(alh<dep<?>> var1, dep<?> var2, @Nullable aj var3);
 
    ai.a a();
 

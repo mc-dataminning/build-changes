@@ -1,127 +1,144 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class dzg {
-   private static final Codec<wy[]> c = xa.a
-      .listOf()
-      .comapFlatMap(
-         $$0 -> ag.a($$0, 4).map($$0x -> new wy[]{(wy)$$0x.get(0), (wy)$$0x.get(1), (wy)$$0x.get(2), (wy)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<dzg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.lenientOptionalFieldOf("filtered_messages").forGetter(dzg::d),
-               cyl.q.fieldOf("color").orElse(cyl.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dzg::a)
-   );
-   public static final int b = 4;
-   private final wy[] d;
-   private final wy[] e;
-   private final cyl f;
-   private final boolean g;
-   @Nullable
-   private ayy[] h;
-   private boolean i;
+public class dzg extends dyc {
+   public static final Codec<alh<etl>> a = alh.a(mh.bf);
+   public static final ali b = ali.b("empty");
+   private static final int k = 0;
+   private static final int l = 0;
+   public static final String c = "target";
+   public static final String d = "pool";
+   public static final String e = "joint";
+   public static final String f = "placement_priority";
+   public static final String g = "selection_priority";
+   public static final String h = "name";
+   public static final String i = "final_state";
+   public static final String j = "minecraft:air";
+   private ali m = b;
+   private ali q = b;
+   private alh<etl> r = qo.a;
+   private dzg.a s = dzg.a.a;
+   private String t = "minecraft:air";
+   private int u = 0;
+   private int v = 0;
 
-   public dzg() {
-      this(c(), c(), cyl.p, false);
+   public dzg(iv $$0, ebe $$1) {
+      super(dye.G, $$0, $$1);
    }
 
-   public dzg(wy[] $$0, wy[] $$1, cyl $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public ali a() {
+      return this.m;
    }
 
-   private static wy[] c() {
-      return new wy[]{wx.a, wx.a, wx.a, wx.a};
+   public ali c() {
+      return this.q;
    }
 
-   private static dzg a(wy[] $$0, Optional<wy[]> $$1, cyl $$2, boolean $$3) {
-      return new dzg($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
+   public alh<etl> d() {
+      return this.r;
    }
 
-   public boolean a() {
-      return this.g;
+   public String f() {
+      return this.t;
    }
 
-   public dzg a(boolean $$0) {
-      return $$0 == this.g ? this : new dzg(this.d, this.e, this.f, $$0);
+   public dzg.a j() {
+      return this.s;
    }
 
-   public cyl b() {
-      return this.f;
+   public int k() {
+      return this.u;
    }
 
-   public dzg a(cyl $$0) {
-      return $$0 == this.b() ? this : new dzg(this.d, this.e, $$0, this.g);
+   public int s() {
+      return this.v;
    }
 
-   public wy a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
+   public void a(ali $$0) {
+      this.m = $$0;
    }
 
-   public dzg a(int $$0, wy $$1) {
-      return this.a($$0, $$1, $$1);
+   public void b(ali $$0) {
+      this.q = $$0;
    }
 
-   public dzg a(int $$0, wy $$1, wy $$2) {
-      wy[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      wy[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new dzg($$3, $$4, this.f, this.g);
+   public void a(alh<etl> $$0) {
+      this.r = $$0;
    }
 
-   public boolean a(crm $$0) {
-      return Arrays.stream(this.b($$0.X())).anyMatch($$0x -> !$$0x.getString().isEmpty());
+   public void a(String $$0) {
+      this.t = $$0;
    }
 
-   public wy[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
+   public void a(dzg.a $$0) {
+      this.s = $$0;
    }
 
-   public ayy[] a(boolean $$0, Function<wy, ayy> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new ayy[4];
+   public void a(int $$0) {
+      this.u = $$0;
+   }
 
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
-         }
+   public void b(int $$0) {
+      this.v = $$0;
+   }
+
+   @Override
+   protected void b(tz $$0, jh.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("name", ali.a, this.m);
+      $$0.a("target", ali.a, this.q);
+      $$0.a("pool", a, this.r);
+      $$0.a("final_state", this.t);
+      $$0.a("joint", dzg.a.c, this.s);
+      $$0.a("placement_priority", this.u);
+      $$0.a("selection_priority", this.v);
+   }
+
+   @Override
+   protected void a(tz $$0, jh.a $$1) {
+      super.a($$0, $$1);
+      this.m = $$0.<ali>a("name", ali.a).orElse(b);
+      this.q = $$0.<ali>a("target", ali.a).orElse(b);
+      this.r = $$0.<alh<etl>>a("pool", a).orElse(qo.a);
+      this.t = $$0.b("final_state", "minecraft:air");
+      this.s = $$0.<dzg.a>a("joint", dzg.a.c).orElseGet(() -> ewd.a(this.m()));
+      this.u = $$0.b("placement_priority", 0);
+      this.v = $$0.b("selection_priority", 0);
+   }
+
+   public acc t() {
+      return acc.a(this);
+   }
+
+   @Override
+   public tz a(jh.a $$0) {
+      return this.e($$0);
+   }
+
+   public void a(ars $$0, int $$1, boolean $$2) {
+      iv $$3 = this.aB_().a(this.m().c(drj.b).a());
+      js<etl> $$4 = $$0.J_().f(mh.bf);
+      jf<etl> $$5 = $$4.b(this.r);
+      etf.a($$0, $$5, this.q, $$1, $$3, $$2);
+   }
+
+   public static enum a implements bam {
+      a("rollable"),
+      b("aligned");
+
+      public static final bam.a<dzg.a> c = bam.a(dzg.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
       }
 
-      return this.h;
-   }
-
-   private Optional<wy[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
-         }
+      @Override
+      public String c() {
+         return this.d;
       }
 
-      return Optional.empty();
-   }
-
-   public boolean b(crm $$0) {
-      for (wy $$1 : this.b($$0.X())) {
-         xv $$2 = $$1.a();
-         ww $$3 = $$2.i();
-         if ($$3 != null && $$3.a() == ww.a.c) {
-            return true;
-         }
+      public xa a() {
+         return xa.c("jigsaw_block.joint." + this.d);
       }
-
-      return false;
    }
 }

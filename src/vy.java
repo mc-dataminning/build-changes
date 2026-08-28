@@ -1,9 +1,53 @@
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelOutboundHandlerAdapter;
-import io.netty.channel.ChannelPromise;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufUtil;
+import io.netty.util.ReferenceCounted;
 
-public class vy extends ChannelOutboundHandlerAdapter {
-   public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) {
-      $$0.write(vw.a($$1), $$2);
+public record vy(ByteBuf a) implements ReferenceCounted {
+   public vy(final ByteBuf a) {
+      this.a = ByteBufUtil.ensureAccessible(a);
+   }
+
+   public static Object a(Object $$0) {
+      return $$0 instanceof ByteBuf $$1 ? new vy($$1) : $$0;
+   }
+
+   public static Object b(Object $$0) {
+      return $$0 instanceof vy $$1 ? ByteBufUtil.ensureAccessible($$1.a) : $$0;
+   }
+
+   public int refCnt() {
+      return this.a.refCnt();
+   }
+
+   public vy a() {
+      this.a.retain();
+      return this;
+   }
+
+   public vy a(int $$0) {
+      this.a.retain($$0);
+      return this;
+   }
+
+   public vy b() {
+      this.a.touch();
+      return this;
+   }
+
+   public vy c(Object $$0) {
+      this.a.touch($$0);
+      return this;
+   }
+
+   public boolean release() {
+      return this.a.release();
+   }
+
+   public boolean release(int $$0) {
+      return this.a.release($$0);
+   }
+
+   public ByteBuf c() {
+      return this.a;
    }
 }

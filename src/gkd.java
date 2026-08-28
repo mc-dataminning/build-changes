@@ -1,68 +1,38 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
+public class gkd extends gia<hgb> {
+   private static final int a = 2;
+   private final gle[] b = new gle[2];
 
-public class gkd {
-   private final List<gjw> a;
-   private final gjv b;
-   private final Map<String, gkd> c = Maps.newHashMap();
+   public gkd(gle $$0) {
+      super($$0);
 
-   gkd(List<gjw> $$0, gjv $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public gkd a(String $$0, gjy $$1, gjv $$2) {
-      gkd $$3 = new gkd($$1.b(), $$2);
-      return this.a($$0, $$3);
-   }
-
-   public gkd a(String $$0, gkd $$1) {
-      gkd $$2 = this.c.put($$0, $$1);
-      if ($$2 != null) {
-         $$1.c.putAll($$2.c);
-      }
-
-      return $$1;
-   }
-
-   public gkd a(String $$0) {
-      gkd $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("No child with name: " + $$0);
-      } else {
-         return this.a($$0, gjy.c(), $$1.b);
+      for (int $$1 = 0; $$1 < 2; $$1++) {
+         this.b[$$1] = $$0.b(a($$1));
       }
    }
 
-   public gjt a(int $$0, int $$1) {
-      Object2ObjectArrayMap<String, gjt> $$2 = this.c
-         .entrySet()
-         .stream()
-         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((gkd)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
-      List<gjt.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).toList();
-      gjt $$4 = new gjt($$3, $$2);
-      $$4.a(this.b);
-      $$4.b(this.b);
-      return $$4;
+   private static String a(int $$0) {
+      return "box" + $$0;
    }
 
-   public gkd b(String $$0) {
-      return this.c.get($$0);
+   public static glk a() {
+      glm $$0 = new glm();
+      glo $$1 = $$0.a();
+
+      for (int $$2 = 0; $$2 < 2; $$2++) {
+         float $$3 = -3.2F + 9.6F * (float)($$2 + 1);
+         float $$4 = 0.75F * (float)($$2 + 1);
+         $$1.a(a($$2), glj.c().a(0, 0).a(-8.0F, -16.0F + $$3, -8.0F, 16.0F, 32.0F, 16.0F), glg.a.a($$4));
+      }
+
+      return glk.a($$0, 64, 64);
    }
 
-   public Set<Entry<String, gkd>> a() {
-      return this.c.entrySet();
-   }
+   public void a(hgb $$0) {
+      super.a($$0);
 
-   public gkd a(UnaryOperator<gjv> $$0) {
-      gkd $$1 = new gkd(this.a, $$0.apply(this.b));
-      $$1.c.putAll(this.c);
-      return $$1;
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         float $$2 = $$0.u * (float)(-(45 + ($$1 + 1) * 5));
+         this.b[$$1].f = azo.h($$2) * (float) (Math.PI / 180.0);
+      }
    }
 }

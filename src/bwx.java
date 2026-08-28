@@ -1,42 +1,71 @@
-public abstract class bwx extends bxl {
-   protected bwx(bwr<? extends bwx> $$0, djm $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Map.Entry;
+
+public class bwx {
+   public static final Codec<bwx> a = Codec.unboundedMap(bxd.l, czy.b).xmap($$0 -> {
+      EnumMap<bxd, czy> $$1 = new EnumMap<>(bxd.class);
+      $$1.putAll($$0);
+      return new bwx($$1);
+   }, $$0 -> {
+      Map<bxd, czy> $$1 = new EnumMap<>($$0.b);
+      $$1.values().removeIf(czy::f);
+      return $$1;
+   });
+   private final EnumMap<bxd, czy> b;
+
+   private bwx(EnumMap<bxd, czy> $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected void a(double $$0, boolean $$1, eat $$2, iv $$3) {
+   public bwx() {
+      this(new EnumMap<>(bxd.class));
    }
 
-   @Override
-   public void a_(ffc $$0) {
-      if (this.bh()) {
-         this.a(0.02F, $$0);
-         this.a(bxn.a, this.dx());
-         this.i(this.dx().c(0.8F));
-      } else if (this.bu()) {
-         this.a(0.02F, $$0);
-         this.a(bxn.a, this.dx());
-         this.i(this.dx().c(0.5));
-      } else {
-         float $$1 = 0.91F;
-         if (this.aH()) {
-            $$1 = this.dU().a_(this.aO()).b().g() * 0.91F;
-         }
+   public czy a(bxd $$0, czy $$1) {
+      $$1.h().l($$1);
+      return Objects.requireNonNullElse(this.b.put($$0, $$1), czy.k);
+   }
 
-         float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-         $$1 = 0.91F;
-         if (this.aH()) {
-            $$1 = this.dU().a_(this.aO()).b().g() * 0.91F;
-         }
+   public czy a(bxd $$0) {
+      return this.b.getOrDefault($$0, czy.k);
+   }
 
-         this.a(this.aH() ? 0.1F * $$2 : 0.02F, $$0);
-         this.a(bxn.a, this.dx());
-         this.i(this.dx().c((double)$$1));
+   public boolean a() {
+      for (czy $$0 : this.b.values()) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public void a(bwt $$0) {
+      for (Entry<bxd, czy> $$1 : this.b.entrySet()) {
+         czy $$2 = $$1.getValue();
+         if (!$$2.f()) {
+            $$2.a($$0.dV(), $$0, $$1.getKey());
+         }
       }
    }
 
-   @Override
-   public boolean d_() {
-      return false;
+   public void a(bwx $$0) {
+      this.b.clear();
+      this.b.putAll($$0.b);
+   }
+
+   public void a(bxu $$0) {
+      for (czy $$1 : this.b.values()) {
+         $$0.a($$1, true, false);
+      }
+
+      this.b();
+   }
+
+   public void b() {
+      this.b.replaceAll(($$0, $$1) -> czy.k);
    }
 }

@@ -4,20 +4,26 @@ import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 
 public class bik extends DataFix {
-   private final String a;
-   private final String b;
-   private final String c;
-
-   public bik(Schema $$0, boolean $$1, String $$2, String $$3, String $$4) {
-      super($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
-      this.c = $$4;
+   public bik(Schema $$0) {
+      super($$0, false);
    }
 
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         this.a, this.getInputSchema().getType(biz.e), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.renameField(this.b, this.c))
+         "OptionsMenuBlurrinessFix",
+         this.getInputSchema().getType(bjb.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("menuBackgroundBlurriness", $$0xx -> {
+                  int $$1 = this.a($$0xx.asString("0.5"));
+                  return $$0xx.createString(String.valueOf($$1));
+               }))
       );
+   }
+
+   private int a(String $$0) {
+      try {
+         return Math.round(Float.parseFloat($$0) * 10.0F);
+      } catch (NumberFormatException var3) {
+         return 5;
+      }
    }
 }

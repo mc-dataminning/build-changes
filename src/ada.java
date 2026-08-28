@@ -1,20 +1,24 @@
-public record ada(dir b) implements zf<abu> {
-   public static final yw<vu, ada> a = zf.a(ada::a, ada::new);
+public record ada(int b, byh c, boolean d) implements zh<abw> {
+   public static final yy<vw, ada> a = yy.a(yw.h, ada::b, byh.a, ada::e, yw.b, ada::f, ada::new);
 
-   private ada(vu $$0) {
-      this($$0.f());
-   }
-
-   private void a(vu $$0) {
-      $$0.a(this.b);
+   public static ada a(bwt $$0) {
+      return new ada($$0.ao(), new byh($$0.du(), $$0.dy(), $$0.dL(), $$0.dN()), $$0.aH());
    }
 
    @Override
-   public zh<ada> a() {
-      return agn.F;
+   public zj<ada> a() {
+      return agp.D;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
+   }
+
+   public byh e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

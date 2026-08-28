@@ -1,212 +1,202 @@
-import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fze extends fys {
-   static final alg a = alg.b("gamemode_switcher/slot");
-   static final alg b = alg.b("gamemode_switcher/selection");
-   private static final alg c = alg.b("textures/gui/container/gamemode_switcher.png");
-   private static final int d = 128;
-   private static final int s = 128;
-   private static final int u = 26;
-   private static final int v = 5;
-   private static final int w = 31;
-   private static final int x = 5;
-   private static final int y = fze.a.values().length * 31 - 5;
-   private static final wy z = wy.a("debug.gamemodes.select_next", wy.c("debug.gamemodes.press_f4").a(o.l));
-   private final fze.a A;
+public class fze extends gad {
+   private static final xa b = xa.c("createWorld.customize.flat.title");
+   static final ali c = ali.b("container/slot");
+   private static final int d = 18;
+   private static final int s = 20;
+   private static final int u = 1;
+   private static final int v = 1;
+   private static final int w = 2;
+   private static final int x = 2;
+   private final fxz y = new fxz(this, 33, 64);
+   protected final gfe a;
+   private final Consumer<eqe> z;
+   eqe A;
+   @Nullable
    private fze.a B;
-   private int C;
-   private int D;
-   private boolean E;
-   private final List<fze.b> F = Lists.newArrayList();
+   @Nullable
+   private ful C;
 
-   public fze() {
-      super(fpk.a);
-      this.A = fze.a.a(this.m());
-      this.B = this.A;
+   public fze(gfe $$0, Consumer<eqe> $$1, eqe $$2) {
+      super(b);
+      this.a = $$0;
+      this.z = $$1;
+      this.A = $$2;
    }
 
-   private djj m() {
-      gla $$0 = fpt.Q().r;
-      djj $$1 = $$0.h();
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         return $$0.i() == djj.b ? djj.a : djj.b;
+   public eqe l() {
+      return this.A;
+   }
+
+   public void a(eqe $$0) {
+      this.A = $$0;
+      if (this.B != null) {
+         this.B.b();
+         this.m();
       }
    }
 
    @Override
-   protected void aO_() {
-      super.aO_();
-      this.B = this.A;
-
-      for (int $$0 = 0; $$0 < fze.a.e.length; $$0++) {
-         fze.a $$1 = fze.a.e[$$0];
-         this.F.add(new fze.b($$1, this.n / 2 - y / 2 + $$0 * 31, this.o / 2 - 31));
-      }
+   protected void aS_() {
+      this.y.a(this.l, this.p);
+      this.B = this.y.c(new fze.a());
+      fyd $$0 = this.y.b(fyd.d().a(4));
+      $$0.c().e();
+      fyd $$1 = $$0.a(fyd.e().a(8));
+      fyd $$2 = $$0.a(fyd.e().a(8));
+      this.C = $$1.a(ful.a(xa.c("createWorld.customize.flat.removeLayer"), $$0x -> {
+         if (this.E()) {
+            List<eqb> $$1x = this.A.e();
+            int $$2x = this.B.aI_().indexOf(this.B.p());
+            int $$3 = $$1x.size() - $$2x - 1;
+            $$1x.remove($$3);
+            this.B.a($$1x.isEmpty() ? null : this.B.aI_().get(Math.min($$2x, $$1x.size() - 1)));
+            this.A.g();
+            this.B.b();
+            this.m();
+         }
+      }).a());
+      $$1.a(ful.a(xa.c("createWorld.customize.presets"), $$0x -> {
+         this.m.a(new fzz(this));
+         this.A.g();
+         this.m();
+      }).a());
+      $$2.a(ful.a(wz.d, $$0x -> {
+         this.z.accept(this.A);
+         this.aP_();
+         this.A.g();
+      }).a());
+      $$2.a(ful.a(wz.e, $$0x -> {
+         this.aP_();
+         this.A.g();
+      }).a());
+      this.A.g();
+      this.m();
+      this.y.a(this::c);
+      this.c();
    }
 
    @Override
-   public void a(fsm $$0, int $$1, int $$2, float $$3) {
-      if (!this.F()) {
-         $$0.c().a();
-         int $$4 = this.n / 2 - 62;
-         int $$5 = this.o / 2 - 31 - 27;
-         $$0.a(grc::H, c, $$4, $$5, 0.0F, 0.0F, 125, 75, 128, 128);
-         $$0.c().b();
-         super.a($$0, $$1, $$2, $$3);
-         $$0.a(this.p, this.B.a(), this.n / 2, this.o / 2 - 31 - 20, -1);
-         $$0.a(this.p, z, this.n / 2, this.o / 2 + 5, 16777215);
-         if (!this.E) {
-            this.C = $$1;
-            this.D = $$2;
-            this.E = true;
+   protected void c() {
+      if (this.B != null) {
+         this.B.a(this.n, this.y);
+      }
+
+      this.y.a();
+   }
+
+   void m() {
+      if (this.C != null) {
+         this.C.j = this.E();
+      }
+   }
+
+   private boolean E() {
+      return this.B != null && this.B.p() != null;
+   }
+
+   @Override
+   public void aP_() {
+      this.m.a(this.a);
+   }
+
+   class a extends fvh<fze.a.a> {
+      private static final xa m = xa.c("createWorld.customize.flat.tile").a(o.t);
+      private static final xa n = xa.c("createWorld.customize.flat.height").a(o.t);
+
+      public a() {
+         super(fze.this.m, fze.this.n, fze.this.o - 103, 43, 24, (int)(9.0 * 1.5));
+
+         for (int $$0 = 0; $$0 < fze.this.A.e().size(); $$0++) {
+            this.b(new fze.a.a());
+         }
+      }
+
+      public void a(@Nullable fze.a.a $$0) {
+         super.a($$0);
+         fze.this.m();
+      }
+
+      public void b() {
+         int $$0 = this.aI_().indexOf(this.p());
+         this.s();
+
+         for (int $$1 = 0; $$1 < fze.this.A.e().size(); $$1++) {
+            this.b(new fze.a.a());
          }
 
-         boolean $$6 = this.C == $$1 && this.D == $$2;
+         List<fze.a.a> $$2 = this.aI_();
+         if ($$0 >= 0 && $$0 < $$2.size()) {
+            this.a($$2.get($$0));
+         }
+      }
 
-         for (fze.b $$7 : this.F) {
-            $$7.a($$0, $$1, $$2, $$3);
-            $$7.b(this.B == $$7.a);
-            if (!$$6 && $$7.D()) {
-               this.B = $$7.a;
+      @Override
+      protected void a(ftx $$0, int $$1, int $$2) {
+         $$0.b(fze.this.p, m, $$1, $$2, -1);
+         $$0.b(fze.this.p, n, $$1 + this.a() - fze.this.p.a(n) - 8, $$2, -1);
+      }
+
+      class a extends fvh.a<fze.a.a> {
+         @Override
+         public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            eqb $$10 = fze.this.A.e().get(fze.this.A.e().size() - $$1 - 1);
+            ebe $$11 = $$10.b();
+            czy $$12 = this.a($$11);
+            this.a($$0, $$3, $$2, $$12);
+            int $$13 = $$2 + $$5 / 2 - 9 / 2;
+            $$0.b(fze.this.p, $$12.y(), $$3 + 18 + 5, $$13, -1);
+            xa $$14;
+            if ($$1 == 0) {
+               $$14 = xa.a("createWorld.customize.flat.layer.top", $$10.a());
+            } else if ($$1 == fze.this.A.e().size() - 1) {
+               $$14 = xa.a("createWorld.customize.flat.layer.bottom", $$10.a());
+            } else {
+               $$14 = xa.a("createWorld.customize.flat.layer", $$10.a());
+            }
+
+            $$0.b(fze.this.p, $$14, $$3 + $$4 - fze.this.p.a($$14) - 8, $$13, -1);
+         }
+
+         private czy a(ebe $$0) {
+            czu $$1 = $$0.b().h();
+            if ($$1 == dac.a) {
+               if ($$0.a(dne.J)) {
+                  $$1 = dac.rp;
+               } else if ($$0.a(dne.K)) {
+                  $$1 = dac.rq;
+               }
+            }
+
+            return new czy($$1);
+         }
+
+         @Override
+         public xa a() {
+            eqb $$0 = fze.this.A.e().get(fze.this.A.e().size() - a.this.aI_().indexOf(this) - 1);
+            czy $$1 = this.a($$0.b());
+            return (xa)(!$$1.f() ? xa.a("narrator.select", $$1.y()) : wz.a);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return super.a($$0, $$1, $$2);
+         }
+
+         private void a(ftx $$0, int $$1, int $$2, czy $$3) {
+            this.a($$0, $$1 + 1, $$2 + 1);
+            if (!$$3.f()) {
+               $$0.b($$3, $$1 + 2, $$2 + 2);
             }
          }
-      }
-   }
 
-   @Override
-   public void b(fsm $$0, int $$1, int $$2, float $$3) {
-   }
-
-   private void E() {
-      a(this.m, this.B);
-   }
-
-   private static void a(fpt $$0, fze.a $$1) {
-      if ($$0.r != null && $$0.t != null) {
-         fze.a $$2 = fze.a.a($$0.r.i());
-         if ($$0.t.s(2) && $$1 != $$2) {
-            $$0.t.j.d($$1.b());
+         private void a(ftx $$0, int $$1, int $$2) {
+            $$0.a(gsl::H, fze.c, $$1, $$2, 18, 18);
          }
-      }
-   }
-
-   private boolean F() {
-      if (!fiu.a(this.m.aO().h(), 292)) {
-         this.E();
-         this.m.a(null);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 293) {
-         this.E = false;
-         this.B = this.B.c();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   static enum a {
-      a(wy.c("gameMode.creative"), "gamemode creative", new czn(dmt.i)),
-      b(wy.c("gameMode.survival"), "gamemode survival", new czn(czr.pP)),
-      c(wy.c("gameMode.adventure"), "gamemode adventure", new czn(czr.vt)),
-      d(wy.c("gameMode.spectator"), "gamemode spectator", new czn(czr.tA));
-
-      protected static final fze.a[] e = values();
-      private static final int j = 16;
-      protected static final int f = 5;
-      final wy g;
-      final String h;
-      final czn i;
-
-      private a(final wy $$0, final String $$1, final czn $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-      }
-
-      void a(fsm $$0, int $$1, int $$2) {
-         $$0.a(this.i, $$1, $$2);
-      }
-
-      wy a() {
-         return this.g;
-      }
-
-      String b() {
-         return this.h;
-      }
-
-      fze.a c() {
-         return switch (this) {
-            case a -> b;
-            case b -> c;
-            case c -> d;
-            case d -> a;
-         };
-      }
-
-      static fze.a a(djj $$0) {
-         return switch ($$0) {
-            case d -> d;
-            case a -> b;
-            case b -> a;
-            case c -> c;
-         };
-      }
-   }
-
-   public static class b extends fsy {
-      final fze.a a;
-      private boolean b;
-
-      public b(fze.a $$0, int $$1, int $$2) {
-         super($$1, $$2, 26, 26, $$0.a());
-         this.a = $$0;
-      }
-
-      @Override
-      public void b(fsm $$0, int $$1, int $$2, float $$3) {
-         this.a($$0);
-         this.a.a($$0, this.F() + 5, this.G() + 5);
-         if (this.b) {
-            this.b($$0);
-         }
-      }
-
-      @Override
-      public void a(fwx $$0) {
-         this.c($$0);
-      }
-
-      @Override
-      public boolean D() {
-         return super.D() || this.b;
-      }
-
-      public void b(boolean $$0) {
-         this.b = $$0;
-      }
-
-      private void a(fsm $$0) {
-         $$0.a(grc::H, fze.a, this.F(), this.G(), 26, 26);
-      }
-
-      private void b(fsm $$0) {
-         $$0.a(grc::H, fze.b, this.F(), this.G(), 26, 26);
       }
    }
 }

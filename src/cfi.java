@@ -1,24 +1,32 @@
-public class cfi extends cef {
-   private final bxr a;
+public class cfi extends ceh {
+   private final boolean a;
+   private int b;
 
-   public cfi(bxr $$0) {
-      this.a = $$0;
+   public cfi(bxw $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public boolean b() {
-      return this.a.dU().V() && this.a.a(bws.f).f() && cid.a(this.a);
+   public boolean c() {
+      return this.a && this.b > 0 && super.c();
    }
 
    @Override
    public void d() {
-      ((cgs)this.a.O()).c(true);
+      this.b = 20;
+      this.a(true);
    }
 
    @Override
    public void e() {
-      if (cid.a(this.a)) {
-         ((cgs)this.a.O()).c(false);
-      }
+      this.a(false);
+   }
+
+   @Override
+   public void a() {
+      this.b--;
+      super.a();
    }
 }

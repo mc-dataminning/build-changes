@@ -1,16 +1,3 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import javax.annotation.Nullable;
-
-public class fvo implements fhw {
-   @Nullable
-   @Override
-   public fhv a(int $$0) {
-      return fvy.b;
-   }
-
-   @Override
-   public IntSet a() {
-      return IntSets.EMPTY_SET;
-   }
+public interface fvo {
+   void a(ftx var1, int var2, int var3, float var4);
 }

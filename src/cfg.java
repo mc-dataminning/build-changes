@@ -1,127 +1,65 @@
 import java.util.EnumSet;
 
-public class cfg<T extends coo & cos & coa> extends cef {
-   public static final btr a = baq.a(1, 2);
-   private final T b;
-   private cfg.a c = cfg.a.a;
-   private final double d;
-   private final float e;
-   private int f;
-   private int g;
-   private int h;
+public class cfg extends ceq {
+   private final bxw a;
+   private bxu b;
+   private int c;
 
-   public cfg(T $$0, double $$1, float $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2 * $$2;
-      this.a(EnumSet.of(cef.a.a, cef.a.b));
+   public cfg(bxw $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(ceq.a.a, ceq.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.i() && this.h();
-   }
-
-   private boolean h() {
-      return this.b.b(czr.xg);
-   }
-
-   @Override
-   public boolean c() {
-      return this.i() && (this.b() || !this.b.O().k()) && this.h();
-   }
-
-   private boolean i() {
-      return this.b.f() != null && this.b.f().bI();
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.b.v(false);
-      this.b.g(null);
-      this.f = 0;
-      if (this.b.fy()) {
-         this.b.fE();
-         this.b.b(false);
-         this.b.fA().b(kk.P, dbr.a);
+      bxu $$0 = this.a.f();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0;
+         return true;
       }
    }
 
    @Override
-   public boolean R_() {
+   public boolean c() {
+      if (!this.b.bJ()) {
+         return false;
+      } else {
+         return this.a.g((bwt)this.b) > 225.0 ? false : !this.a.O().k() || this.b();
+      }
+   }
+
+   @Override
+   public void e() {
+      this.b = null;
+      this.a.O().m();
+   }
+
+   @Override
+   public boolean V_() {
       return true;
    }
 
    @Override
    public void a() {
-      bxj $$0 = this.b.f();
-      if ($$0 != null) {
-         boolean $$1 = this.b.P().a($$0);
-         boolean $$2 = this.f > 0;
-         if ($$1 != $$2) {
-            this.f = 0;
-         }
+      this.a.J().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dq() * 2.0F * this.a.dq() * 2.0F);
+      double $$1 = this.a.h(this.b.dA(), this.b.dC(), this.b.dG());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
 
-         if ($$1) {
-            this.f++;
-         } else {
-            this.f--;
-         }
-
-         double $$3 = this.b.g((bwi)$$0);
-         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
-         if ($$4) {
-            this.h--;
-            if (this.h <= 0) {
-               this.b.O().a($$0, this.k() ? this.d : this.d * 0.5);
-               this.h = a.a(this.b.dX());
-            }
-         } else {
-            this.h = 0;
-            this.b.O().m();
-         }
-
-         this.b.J().a($$0, 30.0F, 30.0F);
-         if (this.c == cfg.a.a) {
-            if (!$$4) {
-               this.b.c(csj.a(this.b, czr.xg));
-               this.c = cfg.a.b;
-               this.b.b(true);
-            }
-         } else if (this.c == cfg.a.b) {
-            if (!this.b.fy()) {
-               this.c = cfg.a.a;
-            }
-
-            int $$5 = this.b.fC();
-            czn $$6 = this.b.fA();
-            if ($$5 >= cyg.b($$6, this.b)) {
-               this.b.fD();
-               this.c = cfg.a.c;
-               this.g = 20 + this.b.dX().a(20);
-               this.b.b(false);
-            }
-         } else if (this.c == cfg.a.c) {
-            this.g--;
-            if (this.g == 0) {
-               this.c = cfg.a.d;
-            }
-         } else if (this.c == cfg.a.d && $$1) {
-            this.b.a($$0, 1.0F);
-            this.c = cfg.a.a;
+      this.a.O().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.c(a(this.a), this.b);
          }
       }
-   }
-
-   private boolean k() {
-      return this.c == cfg.a.a;
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
    }
 }

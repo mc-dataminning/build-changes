@@ -1,62 +1,81 @@
-public class fnh extends hqd {
-   private final fys a;
-   private final fnh.a b;
-   private ftt c = ftt.a;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import org.slf4j.Logger;
 
-   public fnh(fmp $$0, fys $$1) {
-      super(fpk.a);
-      this.a = $$1;
-      this.b = a($$0);
+public class fnh extends fns {
+   private static final Logger b = LogUtils.getLogger();
+   public Map<Long, List<ProfileResult>> a = Map.of();
+
+   public static fnh a(String $$0) {
+      fnh $$1 = new fnh();
+      Builder<Long, List<ProfileResult>> $$2 = ImmutableMap.builder();
+
+      try {
+         JsonObject $$3 = aze.a($$0);
+         if (aze.d($$3, "lists")) {
+            for (JsonElement $$5 : $$3.getAsJsonArray("lists")) {
+               JsonObject $$6 = $$5.getAsJsonObject();
+               String $$7 = fpp.b("playerList", $$6, null);
+               List<ProfileResult> $$9;
+               if ($$7 != null) {
+                  JsonElement $$8 = JsonParser.parseString($$7);
+                  if ($$8.isJsonArray()) {
+                     $$9 = a($$8.getAsJsonArray());
+                  } else {
+                     $$9 = Lists.newArrayList();
+                  }
+               } else {
+                  $$9 = Lists.newArrayList();
+               }
+
+               $$2.put(fpp.a("serverId", $$6, -1L), $$9);
+            }
+         }
+      } catch (Exception var11) {
+         b.error("Could not parse RealmsServerPlayerLists: {}", var11.getMessage());
+      }
+
+      $$1.a = $$2.build();
+      return $$1;
    }
 
-   public fnh(wy $$0, fys $$1) {
-      super(fpk.a);
-      this.a = $$1;
-      this.b = a($$0);
+   private static List<ProfileResult> a(JsonArray $$0) {
+      List<ProfileResult> $$1 = new ArrayList<>($$0.size());
+      MinecraftSessionService $$2 = frd.Q().am();
+
+      for (JsonElement $$3 : $$0) {
+         if ($$3.isJsonObject()) {
+            UUID $$4 = fpp.a("playerId", $$3.getAsJsonObject(), null);
+            if ($$4 != null && !frd.Q().b($$4)) {
+               try {
+                  ProfileResult $$5 = $$2.fetchProfile($$4, false);
+                  if ($$5 != null) {
+                     $$1.add($$5);
+                  }
+               } catch (Exception var7) {
+                  b.error("Could not get name for {}", $$4, var7);
+               }
+            }
+         }
+      }
+
+      return $$1;
    }
 
-   public fnh(wy $$0, wy $$1, fys $$2) {
-      super(fpk.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
-   }
-
-   private static fnh.a a(fmp $$0) {
-      fkv $$1 = $$0.a;
-      return a(wy.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
-   }
-
-   private static fnh.a a(wy $$0) {
-      return a(wy.c("mco.errorMessage.generic"), $$0);
-   }
-
-   private static fnh.a a(wy $$0, wy $$1) {
-      return new fnh.a($$0, $$1);
-   }
-
-   @Override
-   public void aO_() {
-      this.c(fta.a(wx.h, $$0 -> this.aL_()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
-      this.c = ftt.a(this.p, this.b.b, this.n * 3 / 4);
-   }
-
-   @Override
-   public void aL_() {
-      this.m.a(this.a);
-   }
-
-   @Override
-   public wy i() {
-      return wy.i().b(this.b.a).f(": ").b(this.b.b);
-   }
-
-   @Override
-   public void a(fsm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
-      this.c.a($$0, this.n / 2, 100, 9, -2142128);
-   }
-
-   static record a(wy a, wy b) {
+   public List<ProfileResult> a(long $$0) {
+      List<ProfileResult> $$1 = this.a.get($$0);
+      return $$1 != null ? $$1 : List.of();
    }
 }

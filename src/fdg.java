@@ -1,28 +1,60 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class fdg implements fdc {
-   private static final fdg b = new fdg();
-   public static final MapCodec<fdg> a = MapCodec.unit(b);
+public abstract class fdg implements fdq {
+   protected final List<fdq> c;
+   private final Predicate<fah> a;
 
-   private fdg() {
+   protected fdg(List<fdq> $$0, Predicate<fah> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends fdg> MapCodec<T> a(Function<List<fdq>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(fdq.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends fdg> Codec<T> b(Function<List<fdq>, T> $$0) {
+      return fdq.e.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(fah $$0) {
+      return this.a.test($$0);
    }
 
    @Override
-   public fdd b() {
-      return fde.g;
+   public void a(fan $$0) {
+      fdq.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public Set<bax<?>> a() {
-      return Set.of(fcn.b);
-   }
+   public abstract static class a implements fdq.a {
+      private final Builder<fdq> a = ImmutableList.builder();
 
-   public boolean a(ezt $$0) {
-      return $$0.a(fcn.b);
-   }
+      protected a(fdq.a... $$0) {
+         for (fdq.a $$1 : $$0) {
+            this.a.add($$1.build());
+         }
+      }
 
-   public static fdc.a c() {
-      return () -> b;
+      public void a(fdq.a $$0) {
+         this.a.add($$0.build());
+      }
+
+      @Override
+      public fdq build() {
+         return this.a(this.a.build());
+      }
+
+      protected abstract fdq a(List<fdq> var1);
    }
 }

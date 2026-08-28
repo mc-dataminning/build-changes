@@ -1,37 +1,34 @@
-public class ahc implements zf<agp> {
-   public static final yw<vu, ahc> a = zf.a(ahc::a, ahc::new);
-   private final int b;
-   private final String c;
+public class ahc implements zh<agr> {
+   public static final yy<vw, ahc> a = zh.a(ahc::a, ahc::new);
+   private final ahc.a b;
 
-   public ahc(int $$0, String $$1) {
+   public ahc(ahc.a $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private ahc(vu $$0) {
-      this.b = $$0.l();
-      this.c = $$0.d(32500);
+   private ahc(vw $$0) {
+      this.b = $$0.b(ahc.a.class);
    }
 
-   private void a(vu $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c, 32500);
+   private void a(vw $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zh<ahc> a() {
-      return agn.bw;
+   public zj<ahc> a() {
+      return agp.bu;
    }
 
-   public void a(agp $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public ahc.a b() {
       return this.b;
    }
 
-   public String e() {
-      return this.c;
+   public static enum a {
+      a,
+      b;
    }
 }

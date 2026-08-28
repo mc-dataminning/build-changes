@@ -1,81 +1,50 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class ced extends cef {
-   private final byf a;
-   @Nullable
-   private bxj b;
-   private final double c;
-   private final cgt d;
-   private int e;
-   private final float f;
-   private final float g;
-   private float h;
+public class ced extends cfd {
+   private final cjn g;
 
-   public ced(byf $$0, double $$1, float $$2, float $$3) {
-      this.a = $$0;
-      this.c = $$1;
-      this.d = $$0.O();
-      this.g = $$2;
-      this.f = $$3;
-      this.a(EnumSet.of(cef.a.a, cef.a.b));
-      if (!($$0.O() instanceof cgs) && !($$0.O() instanceof cgr)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
-      }
+   public ced(cjn $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2, 6);
+      this.g = $$0;
+      this.f = -2;
+      this.a(EnumSet.of(ceq.a.c, ceq.a.a));
    }
 
    @Override
    public boolean b() {
-      bxj $$0 = this.a.e();
-      if ($$0 == null) {
-         return false;
-      } else if (this.a.gw()) {
-         return false;
-      } else if (this.a.g((bwi)$$0) < (double)(this.g * this.g)) {
-         return false;
-      } else {
-         this.b = $$0;
-         return true;
-      }
-   }
-
-   @Override
-   public boolean c() {
-      if (this.d.k()) {
-         return false;
-      } else {
-         return this.a.gw() ? false : !(this.a.g((bwi)this.b) <= (double)(this.f * this.f));
-      }
+      return this.g.q() && !this.g.gu() && !this.g.gH() && super.b();
    }
 
    @Override
    public void d() {
-      this.e = 0;
-      this.h = this.a.a(exr.j);
-      this.a.a(exr.j, 0.0F);
+      super.d();
+      this.g.x(false);
+   }
+
+   @Override
+   protected int a(byc $$0) {
+      return 40;
    }
 
    @Override
    public void e() {
-      this.b = null;
-      this.d.m();
-      this.a.a(exr.j, this.h);
+      super.e();
+      this.g.z(false);
    }
 
    @Override
    public void a() {
-      boolean $$0 = this.a.gv();
-      if (!$$0) {
-         this.a.J().a(this.b, 10.0F, (float)this.a.ad());
+      super.a();
+      this.g.x(false);
+      if (!this.m()) {
+         this.g.z(false);
+      } else if (!this.g.gH()) {
+         this.g.z(true);
       }
+   }
 
-      if (--this.e <= 0) {
-         this.e = this.a(10);
-         if ($$0) {
-            this.a.gu();
-         } else {
-            this.d.a(this.b, this.c);
-         }
-      }
+   @Override
+   protected boolean a(dka $$0, iv $$1) {
+      return $$0.v($$1.d()) && $$0.a_($$1).a(axe.T);
    }
 }

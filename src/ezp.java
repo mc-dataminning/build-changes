@@ -1,136 +1,203 @@
-import java.util.Collections;
-import java.util.HashSet;
+import com.google.common.collect.Iterables;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PushbackInputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ezp {
-   private static final Set<alf<ezy>> bd = new HashSet<>();
-   private static final Set<alf<ezy>> be = Collections.unmodifiableSet(bd);
-   public static final alf<ezy> a = b("chests/spawn_bonus_chest");
-   public static final alf<ezy> b = b("chests/end_city_treasure");
-   public static final alf<ezy> c = b("chests/simple_dungeon");
-   public static final alf<ezy> d = b("chests/village/village_weaponsmith");
-   public static final alf<ezy> e = b("chests/village/village_toolsmith");
-   public static final alf<ezy> f = b("chests/village/village_armorer");
-   public static final alf<ezy> g = b("chests/village/village_cartographer");
-   public static final alf<ezy> h = b("chests/village/village_mason");
-   public static final alf<ezy> i = b("chests/village/village_shepherd");
-   public static final alf<ezy> j = b("chests/village/village_butcher");
-   public static final alf<ezy> k = b("chests/village/village_fletcher");
-   public static final alf<ezy> l = b("chests/village/village_fisher");
-   public static final alf<ezy> m = b("chests/village/village_tannery");
-   public static final alf<ezy> n = b("chests/village/village_temple");
-   public static final alf<ezy> o = b("chests/village/village_desert_house");
-   public static final alf<ezy> p = b("chests/village/village_plains_house");
-   public static final alf<ezy> q = b("chests/village/village_taiga_house");
-   public static final alf<ezy> r = b("chests/village/village_snowy_house");
-   public static final alf<ezy> s = b("chests/village/village_savanna_house");
-   public static final alf<ezy> t = b("chests/abandoned_mineshaft");
-   public static final alf<ezy> u = b("chests/nether_bridge");
-   public static final alf<ezy> v = b("chests/stronghold_library");
-   public static final alf<ezy> w = b("chests/stronghold_crossing");
-   public static final alf<ezy> x = b("chests/stronghold_corridor");
-   public static final alf<ezy> y = b("chests/desert_pyramid");
-   public static final alf<ezy> z = b("chests/jungle_temple");
-   public static final alf<ezy> A = b("chests/jungle_temple_dispenser");
-   public static final alf<ezy> B = b("chests/igloo_chest");
-   public static final alf<ezy> C = b("chests/woodland_mansion");
-   public static final alf<ezy> D = b("chests/underwater_ruin_small");
-   public static final alf<ezy> E = b("chests/underwater_ruin_big");
-   public static final alf<ezy> F = b("chests/buried_treasure");
-   public static final alf<ezy> G = b("chests/shipwreck_map");
-   public static final alf<ezy> H = b("chests/shipwreck_supply");
-   public static final alf<ezy> I = b("chests/shipwreck_treasure");
-   public static final alf<ezy> J = b("chests/pillager_outpost");
-   public static final alf<ezy> K = b("chests/bastion_treasure");
-   public static final alf<ezy> L = b("chests/bastion_other");
-   public static final alf<ezy> M = b("chests/bastion_bridge");
-   public static final alf<ezy> N = b("chests/bastion_hoglin_stable");
-   public static final alf<ezy> O = b("chests/ancient_city");
-   public static final alf<ezy> P = b("chests/ancient_city_ice_box");
-   public static final alf<ezy> Q = b("chests/ruined_portal");
-   public static final alf<ezy> R = b("chests/trial_chambers/reward");
-   public static final alf<ezy> S = b("chests/trial_chambers/reward_common");
-   public static final alf<ezy> T = b("chests/trial_chambers/reward_rare");
-   public static final alf<ezy> U = b("chests/trial_chambers/reward_unique");
-   public static final alf<ezy> V = b("chests/trial_chambers/reward_ominous");
-   public static final alf<ezy> W = b("chests/trial_chambers/reward_ominous_common");
-   public static final alf<ezy> X = b("chests/trial_chambers/reward_ominous_rare");
-   public static final alf<ezy> Y = b("chests/trial_chambers/reward_ominous_unique");
-   public static final alf<ezy> Z = b("chests/trial_chambers/supply");
-   public static final alf<ezy> aa = b("chests/trial_chambers/corridor");
-   public static final alf<ezy> ab = b("chests/trial_chambers/intersection");
-   public static final alf<ezy> ac = b("chests/trial_chambers/intersection_barrel");
-   public static final alf<ezy> ad = b("chests/trial_chambers/entrance");
-   public static final alf<ezy> ae = b("dispensers/trial_chambers/corridor");
-   public static final alf<ezy> af = b("dispensers/trial_chambers/chamber");
-   public static final alf<ezy> ag = b("dispensers/trial_chambers/water");
-   public static final alf<ezy> ah = b("pots/trial_chambers/corridor");
-   public static final alf<ezy> ai = b("equipment/trial_chamber");
-   public static final alf<ezy> aj = b("equipment/trial_chamber_ranged");
-   public static final alf<ezy> ak = b("equipment/trial_chamber_melee");
-   public static final Map<cyl, alf<ezy>> al = a("entities/sheep");
-   public static final alf<ezy> am = b("gameplay/fishing");
-   public static final alf<ezy> an = b("gameplay/fishing/junk");
-   public static final alf<ezy> ao = b("gameplay/fishing/treasure");
-   public static final alf<ezy> ap = b("gameplay/fishing/fish");
-   public static final alf<ezy> aq = b("gameplay/cat_morning_gift");
-   public static final alf<ezy> ar = b("gameplay/hero_of_the_village/armorer_gift");
-   public static final alf<ezy> as = b("gameplay/hero_of_the_village/butcher_gift");
-   public static final alf<ezy> at = b("gameplay/hero_of_the_village/cartographer_gift");
-   public static final alf<ezy> au = b("gameplay/hero_of_the_village/cleric_gift");
-   public static final alf<ezy> av = b("gameplay/hero_of_the_village/farmer_gift");
-   public static final alf<ezy> aw = b("gameplay/hero_of_the_village/fisherman_gift");
-   public static final alf<ezy> ax = b("gameplay/hero_of_the_village/fletcher_gift");
-   public static final alf<ezy> ay = b("gameplay/hero_of_the_village/leatherworker_gift");
-   public static final alf<ezy> az = b("gameplay/hero_of_the_village/librarian_gift");
-   public static final alf<ezy> aA = b("gameplay/hero_of_the_village/mason_gift");
-   public static final alf<ezy> aB = b("gameplay/hero_of_the_village/shepherd_gift");
-   public static final alf<ezy> aC = b("gameplay/hero_of_the_village/toolsmith_gift");
-   public static final alf<ezy> aD = b("gameplay/hero_of_the_village/weaponsmith_gift");
-   public static final alf<ezy> aE = b("gameplay/hero_of_the_village/unemployed_gift");
-   public static final alf<ezy> aF = b("gameplay/hero_of_the_village/baby_gift");
-   public static final alf<ezy> aG = b("gameplay/sniffer_digging");
-   public static final alf<ezy> aH = b("gameplay/panda_sneeze");
-   public static final alf<ezy> aI = b("gameplay/chicken_lay");
-   public static final alf<ezy> aJ = b("gameplay/armadillo_shed");
-   public static final alf<ezy> aK = b("gameplay/piglin_bartering");
-   public static final alf<ezy> aL = b("spawners/trial_chamber/key");
-   public static final alf<ezy> aM = b("spawners/trial_chamber/consumables");
-   public static final alf<ezy> aN = b("spawners/ominous/trial_chamber/key");
-   public static final alf<ezy> aO = b("spawners/ominous/trial_chamber/consumables");
-   public static final alf<ezy> aP = b("spawners/trial_chamber/items_to_drop_when_ominous");
-   public static final alf<ezy> aQ = b("shearing/bogged");
-   public static final alf<ezy> aR = b("shearing/mooshroom");
-   public static final alf<ezy> aS = b("shearing/mooshroom/red");
-   public static final alf<ezy> aT = b("shearing/mooshroom/brown");
-   public static final alf<ezy> aU = b("shearing/snow_golem");
-   public static final alf<ezy> aV = b("shearing/sheep");
-   public static final Map<cyl, alf<ezy>> aW = a("shearing/sheep");
-   public static final alf<ezy> aX = b("archaeology/desert_well");
-   public static final alf<ezy> aY = b("archaeology/desert_pyramid");
-   public static final alf<ezy> aZ = b("archaeology/trail_ruins_common");
-   public static final alf<ezy> ba = b("archaeology/trail_ruins_rare");
-   public static final alf<ezy> bb = b("archaeology/ocean_ruin_warm");
-   public static final alf<ezy> bc = b("archaeology/ocean_ruin_cold");
+public class ezp implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final eza.a b;
+   private final Map<ezb<?>, Optional<eza>> c = new HashMap<>();
+   private final DataFixer d;
+   private final jh.a e;
+   private final Path f;
+   private CompletableFuture<?> g = CompletableFuture.completedFuture(null);
 
-   private static Map<cyl, alf<ezy>> a(String $$0) {
-      return ag.a(cyl.class, $$1 -> b($$0 + "/" + $$1.b()));
+   public ezp(eza.a $$0, Path $$1, DataFixer $$2, jh.a $$3) {
+      this.b = $$0;
+      this.d = $$2;
+      this.f = $$1;
+      this.e = $$3;
    }
 
-   private static alf<ezy> b(String $$0) {
-      return a(alf.a(mh.br, alg.b($$0)));
+   private Path a(String $$0) {
+      return this.f.resolve($$0 + ".dat");
    }
 
-   private static alf<ezy> a(alf<ezy> $$0) {
-      if (bd.add($$0)) {
-         return $$0;
+   public <T extends eza> T a(ezb<T> $$0) {
+      T $$1 = this.b($$0);
+      if ($$1 != null) {
+         return $$1;
       } else {
-         throw new IllegalArgumentException($$0.a() + " is already a registered built-in loot table");
+         T $$2 = (T)$$0.b().apply(this.b);
+         this.a($$0, $$2);
+         return $$2;
       }
    }
 
-   public static Set<alf<ezy>> a() {
-      return be;
+   @Nullable
+   public <T extends eza> T b(ezb<T> $$0) {
+      Optional<eza> $$1 = this.c.get($$0);
+      if ($$1 == null) {
+         $$1 = Optional.ofNullable(this.c($$0));
+         this.c.put($$0, $$1);
+      }
+
+      return (T)$$1.orElse(null);
+   }
+
+   @Nullable
+   private <T extends eza> T c(ezb<T> $$0) {
+      try {
+         Path $$1 = this.a($$0.a());
+         if (Files.exists($$1)) {
+            tz $$2 = this.a($$0.a(), $$0.d(), ac.b().d().c());
+            alg<uy> $$3 = this.e.a(un.a);
+            return (T)$$0.c()
+               .apply(this.b)
+               .parse($$3, $$2.a("data"))
+               .resultOrPartial($$1x -> a.error("Failed to parse saved data for '{}': {}", $$0, $$1x))
+               .orElse(null);
+         }
+      } catch (Exception var5) {
+         a.error("Error loading saved data: {}", $$0, var5);
+      }
+
+      return null;
+   }
+
+   public <T extends eza> void a(ezb<T> $$0, T $$1) {
+      this.c.put($$0, Optional.of($$1));
+      $$1.f();
+   }
+
+   public tz a(String $$0, bbd $$1, int $$2) throws IOException {
+      tz var8;
+      try (
+         InputStream $$3 = Files.newInputStream(this.a($$0));
+         PushbackInputStream $$4 = new PushbackInputStream(new ayx($$3), 2);
+      ) {
+         tz $$5;
+         if (this.a($$4)) {
+            $$5 = um.a($$4, ui.a());
+         } else {
+            try (DataInputStream $$6 = new DataInputStream($$4)) {
+               $$5 = um.a($$6);
+            }
+         }
+
+         int $$9 = uo.b($$5, 1343);
+         var8 = $$1.a(this.d, $$5, $$9, $$2);
+      }
+
+      return var8;
+   }
+
+   private boolean a(PushbackInputStream $$0) throws IOException {
+      byte[] $$1 = new byte[2];
+      boolean $$2 = false;
+      int $$3 = $$0.read($$1, 0, 2);
+      if ($$3 == 2) {
+         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
+         if ($$4 == 35615) {
+            $$2 = true;
+         }
+      }
+
+      if ($$3 != 0) {
+         $$0.unread($$1, 0, $$3);
+      }
+
+      return $$2;
+   }
+
+   public CompletableFuture<?> a() {
+      Map<ezb<?>, tz> $$0 = this.c();
+      if ($$0.isEmpty()) {
+         return CompletableFuture.completedFuture(null);
+      } else {
+         int $$1 = ag.g();
+         int $$2 = $$0.size();
+         if ($$2 > $$1) {
+            this.g = this.g.thenCompose($$3 -> {
+               List<CompletableFuture<?>> $$4 = new ArrayList<>($$1);
+               int $$5 = azo.e($$2, $$1);
+
+               for (List<Entry<ezb<?>, tz>> $$6 : Iterables.partition($$0.entrySet(), $$5)) {
+                  $$4.add(CompletableFuture.runAsync(() -> {
+                     for (Entry<ezb<?>, tz> $$1xx : $$6) {
+                        this.a($$1xx.getKey(), $$1xx.getValue());
+                     }
+                  }, ag.i()));
+               }
+
+               return CompletableFuture.allOf($$4.toArray(CompletableFuture[]::new));
+            });
+         } else {
+            this.g = this.g
+               .thenCompose(
+                  $$1x -> CompletableFuture.allOf(
+                        $$0.entrySet()
+                           .stream()
+                           .map($$0xx -> CompletableFuture.runAsync(() -> this.a((ezb<?>)$$0xx.getKey(), (tz)$$0xx.getValue()), ag.i()))
+                           .toArray(CompletableFuture[]::new)
+                     )
+               );
+         }
+
+         return this.g;
+      }
+   }
+
+   private Map<ezb<?>, tz> c() {
+      Map<ezb<?>, tz> $$0 = new Object2ObjectArrayMap();
+      alg<uy> $$1 = this.e.a(un.a);
+      this.c.forEach(($$2, $$3) -> $$3.filter(eza::g).ifPresent($$3x -> {
+            $$0.put($$2, this.a($$2, $$3x, $$1));
+            $$3x.a(false);
+         }));
+      return $$0;
+   }
+
+   private <T extends eza> tz a(ezb<T> $$0, eza $$1, alg<uy> $$2) {
+      Codec<T> $$3 = $$0.c().apply(this.b);
+      tz $$4 = new tz();
+      $$4.a("data", (uy)$$3.encodeStart($$2, $$1).getOrThrow());
+      uo.e($$4);
+      return $$4;
+   }
+
+   private void a(ezb<?> $$0, tz $$1) {
+      Path $$2 = this.a($$0.a());
+
+      try {
+         um.a($$1, $$2);
+      } catch (IOException var5) {
+         a.error("Could not save data to {}", $$2.getFileName(), var5);
+      }
+   }
+
+   public void b() {
+      this.a().join();
+   }
+
+   @Override
+   public void close() {
+      this.b();
    }
 }

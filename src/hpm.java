@@ -1,22 +1,23 @@
-import java.time.Duration;
-import javax.annotation.Nullable;
-
 public class hpm {
-   private final boolean a;
-   @Nullable
-   private final Duration b;
+   private final String a;
+   private final String b;
+   private long c;
 
-   public hpm(boolean $$0, @Nullable Duration $$1) {
-      this.b = $$1;
+   public hpm(String $$0, String $$1) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = ag.c();
    }
 
-   public void a(hpc $$0) {
-      if (this.b != null) {
-         $$0.send(hpd.d, $$0x -> {
-            $$0x.a(hpf.x, (int)this.b.toMillis());
-            $$0x.a(hpf.y, this.a);
-         });
-      }
+   public String a() {
+      return this.a;
+   }
+
+   public String b() {
+      return this.b;
+   }
+
+   public void c() {
+      this.c = ag.c();
    }
 }

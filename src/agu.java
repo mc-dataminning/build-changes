@@ -1,20 +1,37 @@
-public record agu(int b) implements zf<agp> {
-   public static final yw<vu, agu> a = zf.a(agu::a, agu::new);
+public class agu implements zh<agr> {
+   public static final yy<vw, agu> a = zh.a(agu::a, agu::new);
+   private final int b;
+   private final iv c;
 
-   private agu(vu $$0) {
-      this($$0.l());
+   public agu(int $$0, iv $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(vu $$0) {
+   private agu(vw $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
+   }
+
+   private void a(vw $$0) {
       $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zh<agu> a() {
-      return agn.bo;
+   public zj<agu> a() {
+      return agp.bl;
    }
 
-   public void a(agp $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public iv e() {
+      return this.c;
    }
 }

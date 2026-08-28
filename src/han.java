@@ -1,24 +1,29 @@
-public class han extends hbm<hde, ggn<hde>> {
-   private final gru a;
+public class han extends gxc<cmj, hgm, gka> {
+   private static final ali a = ali.b("textures/entity/sniffer/sniffer.png");
 
-   public han(gyv<hde, ggn<hde>> $$0, gru $$1) {
-      super($$0);
-      this.a = $$1;
+   public han(gyi.a $$0) {
+      super($$0, new gka($$0.a(gld.di)), new gka($$0.a(gld.dj)), 1.1F);
    }
 
-   public void a(fkd $$0, gqr $$1, int $$2, hde $$3, float $$4, float $$5) {
-      eat $$6 = $$3.b;
-      if ($$6 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$7 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$6, $$0, $$1, $$2, hjg.d);
-         $$0.b();
-      }
+   public ali a(hgm $$0) {
+      return a;
+   }
+
+   public hgm b() {
+      return new hgm();
+   }
+
+   public void a(cmj $$0, hgm $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.t();
+      $$1.b.a($$0.bM);
+      $$1.c.a($$0.bK);
+      $$1.d.a($$0.bN);
+      $$1.e.a($$0.bI);
+      $$1.f.a($$0.bJ);
+   }
+
+   protected ffl a(cmj $$0) {
+      return super.a($$0).g(0.6F);
    }
 }

@@ -1,49 +1,35 @@
-import javax.annotation.Nullable;
+public class fvk {
+   public static final int a = 8;
+   public static final int b = 8;
+   public static final int c = 8;
+   public static final int d = 8;
+   public static final int e = 40;
+   public static final int f = 8;
+   public static final int g = 8;
+   public static final int h = 8;
+   public static final int i = 64;
+   public static final int j = 64;
 
-public interface fvk {
-   Object b = new Object();
-   int c = 160;
-   int d = 32;
-
-   fvk.a a();
-
-   void a(fvl var1, long var2);
-
-   @Nullable
-   default awm b() {
-      return null;
+   public static void a(ftx $$0, hmc $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, -1);
    }
 
-   void a(fsm var1, fsk var2, long var3);
-
-   default Object g() {
-      return b;
+   public static void a(ftx $$0, hmc $$1, int $$2, int $$3, int $$4, int $$5) {
+      a($$0, $$1.a(), $$2, $$3, $$4, true, false, $$5);
    }
 
-   default int c() {
-      return 160;
-   }
-
-   default int d() {
-      return 32;
-   }
-
-   default int h() {
-      return azm.e(this.d(), 32);
-   }
-
-   public static enum a {
-      a(awn.BC),
-      b(awn.BD);
-
-      private final awm c;
-
-      private a(final awm $$0) {
-         this.c = $$0;
+   public static void a(ftx $$0, ali $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6, int $$7) {
+      int $$8 = 8 + ($$6 ? 8 : 0);
+      int $$9 = 8 * ($$6 ? -1 : 1);
+      $$0.a(gsl::H, $$1, $$2, $$3, 8.0F, (float)$$8, $$4, $$4, 8, $$9, 64, 64, $$7);
+      if ($$5) {
+         a($$0, $$1, $$2, $$3, $$4, $$6, $$7);
       }
+   }
 
-      public void a(hou $$0) {
-         $$0.a(hnj.a(this.c, 1.0F, 1.0F));
-      }
+   private static void a(ftx $$0, ali $$1, int $$2, int $$3, int $$4, boolean $$5, int $$6) {
+      int $$7 = 8 + ($$5 ? 8 : 0);
+      int $$8 = 8 * ($$5 ? -1 : 1);
+      $$0.a(gsl::H, $$1, $$2, $$3, 40.0F, (float)$$7, $$4, $$4, 8, $$8, 64, 64, $$6);
    }
 }

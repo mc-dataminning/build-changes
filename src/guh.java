@@ -1,155 +1,122 @@
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
-import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
-import java.util.BitSet;
-import java.util.EnumSet;
-import java.util.Set;
+import java.util.List;
 
-public class guh {
-   private static final int a = 4;
-   private static final int b = 16;
-   private static final int c = 15;
-   private static final int d = 4096;
-   private static final int e = 0;
-   private static final int f = 4;
-   private static final int g = 8;
-   private static final int h = (int)Math.pow(16.0, 0.0);
-   private static final int i = (int)Math.pow(16.0, 1.0);
-   private static final int j = (int)Math.pow(16.0, 2.0);
-   private static final int k = -1;
-   private static final jb[] l = jb.values();
-   private final BitSet m = new BitSet(4096);
-   private static final int[] n = ag.a(new int[1352], $$0 -> {
-      int $$1 = 0;
-      int $$2 = 15;
-      int $$3 = 0;
+public abstract class guh implements gun<dzq> {
+   private static final int a = -988212;
+   private static final int b = azo.h(16);
+   private final ftv c;
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
-                  $$0[$$3++] = a($$4, $$5, $$6);
-               }
-            }
-         }
-      }
-   });
-   private int o = 4096;
-
-   public void a(iv $$0) {
-      this.m.set(b($$0), true);
-      this.o--;
+   public guh(guo.a $$0) {
+      this.c = $$0.g();
    }
 
-   private static int b(iv $$0) {
-      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
+   protected abstract giw a(ebe var1, ecs var2);
+
+   protected abstract hnh a(ecs var1);
+
+   protected abstract float a();
+
+   protected abstract float b();
+
+   protected abstract ffq c();
+
+   protected abstract void a(flo var1, float var2, ebe var3);
+
+   public void a(dzq $$0, float $$1, flo $$2, gsa $$3, int $$4, int $$5, ffq $$6) {
+      ebe $$7 = $$0.m();
+      dum $$8 = (dum)$$7.b();
+      giw $$9 = this.a($$7, $$8.d());
+      this.a($$0, $$2, $$3, $$4, $$5, $$7, $$8, $$8.d(), $$9);
    }
 
-   private static int a(int $$0, int $$1, int $$2) {
-      return $$0 << 0 | $$1 << 8 | $$2 << 4;
+   private void a(dzq $$0, flo $$1, gsa $$2, int $$3, int $$4, ebe $$5, dum $$6, ecs $$7, giw $$8) {
+      $$1.a();
+      this.a($$1, -$$6.h($$5), $$5);
+      this.a($$1, $$2, $$3, $$4, $$7, $$8);
+      this.a($$0.aB_(), $$0.j(), $$1, $$2, $$3, $$0.a(), $$0.c(), true);
+      this.a($$0.aB_(), $$0.k(), $$1, $$2, $$3, $$0.a(), $$0.c(), false);
+      $$1.b();
    }
 
-   public gui a() {
-      gui $$0 = new gui();
-      if (4096 - this.o < 256) {
-         $$0.a(true);
-      } else if (this.o == 0) {
-         $$0.a(false);
+   protected void a(flo $$0, gsa $$1, int $$2, int $$3, ecs $$4, giw $$5) {
+      $$0.a();
+      float $$6 = this.a();
+      $$0.b($$6, -$$6, -$$6);
+      hnh $$7 = this.a($$4);
+      flr $$8 = $$7.a($$1, $$5::a);
+      $$5.a($$0, $$8, $$2, $$3);
+      $$0.b();
+   }
+
+   private void a(iv $$0, dzr $$1, flo $$2, gsa $$3, int $$4, int $$5, int $$6, boolean $$7) {
+      $$2.a();
+      this.a($$2, $$7, this.c());
+      int $$8 = a($$1);
+      int $$9 = 4 * $$5 / 2;
+      aza[] $$10 = $$1.a(frd.Q().aT(), $$1x -> {
+         List<aza> $$2x = this.c.c($$1x, $$6);
+         return $$2x.isEmpty() ? aza.a : $$2x.get(0);
+      });
+      int $$11;
+      boolean $$12;
+      int $$13;
+      if ($$1.a()) {
+         $$11 = $$1.b().g();
+         $$12 = a($$0, $$11);
+         $$13 = 15728880;
       } else {
-         for (int $$1 : n) {
-            if (!this.m.get($$1)) {
-               $$0.a(this.a($$1));
-            }
+         $$11 = $$8;
+         $$12 = false;
+         $$13 = $$4;
+      }
+
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         aza $$18 = $$10[$$17];
+         float $$19 = (float)(-this.c.a($$18) / 2);
+         if ($$12) {
+            this.c.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
+         } else {
+            this.c.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, ftv.a.c, 0, $$13);
          }
       }
 
-      return $$0;
+      $$2.b();
    }
 
-   private Set<jb> a(int $$0) {
-      Set<jb> $$1 = EnumSet.noneOf(jb.class);
-      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
-      $$2.enqueue($$0);
-      this.m.set($$0, true);
+   private void a(flo $$0, boolean $$1, ffq $$2) {
+      if (!$$1) {
+         $$0.a(a.d.rotationDegrees(180.0F));
+      }
 
-      while (!$$2.isEmpty()) {
-         int $$3 = $$2.dequeueInt();
-         this.a($$3, $$1);
+      float $$3 = 0.015625F * this.b();
+      $$0.a($$2);
+      $$0.b($$3, -$$3, $$3);
+   }
 
-         for (jb $$4 : l) {
-            int $$5 = this.a($$3, $$4);
-            if ($$5 >= 0 && !this.m.get($$5)) {
-               this.m.set($$5, true);
-               $$2.enqueue($$5);
-            }
+   private static boolean a(iv $$0, int $$1) {
+      if ($$1 == cyw.p.g()) {
+         return true;
+      } else {
+         frd $$2 = frd.Q();
+         gqz $$3 = $$2.t;
+         if ($$3 != null && $$2.n.aE().a() && $$3.gH()) {
+            return true;
+         } else {
+            bwt $$4 = $$2.ao();
+            return $$4 != null && $$4.g(ffq.b($$0)) < (double)b;
          }
       }
-
-      return $$1;
    }
 
-   private void a(int $$0, Set<jb> $$1) {
-      int $$2 = $$0 >> 0 & 15;
-      if ($$2 == 0) {
-         $$1.add(jb.e);
-      } else if ($$2 == 15) {
-         $$1.add(jb.f);
-      }
-
-      int $$3 = $$0 >> 8 & 15;
-      if ($$3 == 0) {
-         $$1.add(jb.a);
-      } else if ($$3 == 15) {
-         $$1.add(jb.b);
-      }
-
-      int $$4 = $$0 >> 4 & 15;
-      if ($$4 == 0) {
-         $$1.add(jb.c);
-      } else if ($$4 == 15) {
-         $$1.add(jb.d);
-      }
-   }
-
-   private int a(int $$0, jb $$1) {
-      switch ($$1) {
-         case a:
-            if (($$0 >> 8 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - j;
-         case b:
-            if (($$0 >> 8 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + j;
-         case c:
-            if (($$0 >> 4 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - i;
-         case d:
-            if (($$0 >> 4 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + i;
-         case e:
-            if (($$0 >> 0 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - h;
-         case f:
-            if (($$0 >> 0 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + h;
-         default:
-            return -1;
+   public static int a(dzr $$0) {
+      int $$1 = $$0.b().g();
+      if ($$1 == cyw.p.g() && $$0.a()) {
+         return -988212;
+      } else {
+         double $$2 = 0.4;
+         int $$3 = (int)((double)axy.b($$1) * 0.4);
+         int $$4 = (int)((double)axy.c($$1) * 0.4);
+         int $$5 = (int)((double)axy.d($$1) * 0.4);
+         return axy.a(0, $$3, $$4, $$5);
       }
    }
 }

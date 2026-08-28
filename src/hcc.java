@@ -1,16 +1,18 @@
-public class hcc extends hbm<hfu, gji> {
-   private static final alg a = alg.b("textures/entity/wolf/wolf_collar.png");
+public class hcc extends hcw<hgb, gjg> {
+   private final gio<hgb> a;
 
-   public hcc(gyv<hfu, gji> $$0) {
+   public hcc(haf<hgb, gjg> $$0, gla $$1) {
       super($$0);
+      this.a = new gjf($$1.a(gld.cu));
    }
 
-   public void a(fkd $$0, gqr $$1, int $$2, hfu $$3, float $$4, float $$5) {
-      cyl $$6 = $$3.h;
-      if ($$6 != null && !$$3.z) {
-         int $$7 = $$6.d();
-         fkh $$8 = $$1.getBuffer(grc.g(a));
-         this.d().a($$0, $$8, $$2, hjg.d, $$7);
+   public void a(flo $$0, gsa $$1, int $$2, hgb $$3, float $$4, float $$5) {
+      if ("deadmau5".equals($$3.aH) && !$$3.z) {
+         flr $$6 = $$1.getBuffer(gsl.d($$3.a.a()));
+         int $$7 = gzj.a($$3, 0.0F);
+         this.d().a(this.a);
+         this.a.a($$3);
+         this.a.a($$0, $$6, $$2, $$7);
       }
    }
 }

@@ -1,8 +1,21 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum bsk {
+   a("pathfinding"),
+   b("event-loops"),
+   c("consecutive-executors"),
+   d("ticking"),
+   e("jvm"),
+   f("chunk rendering"),
+   g("chunk rendering dispatching"),
+   h("cpu"),
+   i("gpu");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface bsk {
+   private final String j;
+
+   private bsk(final String $$0) {
+      this.j = $$0;
+   }
+
+   public String a() {
+      return this.j;
+   }
 }

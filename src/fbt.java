@@ -1,65 +1,199 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class fbt extends fbg {
-   private static final Codec<fdy> b = Codec.withAlternative(fdz.a, ayu.i, fdv::new);
-   public static final MapCodec<fbt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  fbf.e.a(fdz.a, Integer.MAX_VALUE).optionalFieldOf("floats").forGetter($$0x -> $$0x.c),
-                  fbf.e.a(Codec.BOOL, Integer.MAX_VALUE).optionalFieldOf("flags").forGetter($$0x -> $$0x.d),
-                  fbf.e.a(Codec.STRING, Integer.MAX_VALUE).optionalFieldOf("strings").forGetter($$0x -> $$0x.e),
-                  fbf.e.a(b, Integer.MAX_VALUE).optionalFieldOf("colors").forGetter($$0x -> $$0x.f)
-               )
-            )
-            .apply($$0, fbt::new)
-   );
-   private final Optional<fbf.e<fdy>> c;
-   private final Optional<fbf.e<Boolean>> d;
-   private final Optional<fbf.e<String>> e;
-   private final Optional<fbf.e<fdy>> f;
+public interface fbt {
+   MapCodec<fbt> a = a(Integer.MAX_VALUE);
 
-   public fbt(List<fdc> $$0, Optional<fbf.e<fdy>> $$1, Optional<fbf.e<Boolean>> $$2, Optional<fbf.e<String>> $$3, Optional<fbf.e<fdy>> $$4) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   static MapCodec<fbt> a(int $$0) {
+      return fbt.f.e.dispatchMap("mode", fbt::a, $$0x -> $$0x.g).validate($$1 -> {
+         if ($$1 instanceof fbt.d $$2 && $$2.c().isPresent()) {
+            int $$3 = $$2.c().get();
+            if ($$3 > $$0) {
+               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
+            }
+         }
+
+         return DataResult.success($$1);
+      });
    }
 
-   @Override
-   public Set<bax<?>> a() {
-      return Stream.concat(this.c.stream(), this.f.stream()).flatMap($$0 -> $$0.a().stream()).flatMap($$0 -> $$0.a().stream()).collect(Collectors.toSet());
+   fbt.f a();
+
+   default <T> List<T> a(List<T> $$0, List<T> $$1) {
+      return this.a($$0, $$1, Integer.MAX_VALUE);
    }
 
-   @Override
-   public fbi<fbt> b() {
-      return fbj.R;
+   <T> List<T> a(List<T> var1, List<T> var2, int var3);
+
+   public static class a implements fbt {
+      private static final Logger d = LogUtils.getLogger();
+      public static final fbt.a b = new fbt.a();
+      public static final MapCodec<fbt.a> c = MapCodec.unit(() -> b);
+
+      private a() {
+      }
+
+      @Override
+      public fbt.f a() {
+         return fbt.f.d;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         if ($$0.size() + $$1.size() > $$2) {
+            d.error("Contents overflow in section append");
+            return $$0;
+         } else {
+            return Stream.concat($$0.stream(), $$1.stream()).toList();
+         }
+      }
    }
 
-   private static <T> List<T> a(Optional<fbf.e<T>> $$0, List<T> $$1) {
-      return $$0.<List<T>>map($$1x -> $$1x.a($$1)).orElse($$1);
+   public static record b(int c) implements fbt {
+      private static final Logger d = LogUtils.getLogger();
+      public static final MapCodec<fbt.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ayw.l.optionalFieldOf("offset", 0).forGetter(fbt.b::b)).apply($$0, fbt.b::new)
+      );
+
+      @Override
+      public fbt.f a() {
+         return fbt.f.c;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            d.error("Cannot insert when offset is out of bounds");
+            return $$0;
+         } else if ($$3 + $$1.size() > $$2) {
+            d.error("Contents overflow in section insertion");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            $$4.addAll($$0.subList(this.c, $$3));
+            return $$4.build();
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 
-   private static <T, E> List<E> a(Optional<fbf.e<T>> $$0, List<E> $$1, Function<T, E> $$2) {
-      return $$0.<List<E>>map($$2x -> {
-         List<E> $$3 = $$2x.a().stream().map($$2).toList();
-         return $$2x.b().a($$1, $$3);
-      }).orElse($$1);
+   public static class c implements fbt {
+      public static final fbt.c b = new fbt.c();
+      public static final MapCodec<fbt.c> c = MapCodec.unit(() -> b);
+
+      private c() {
+      }
+
+      @Override
+      public fbt.f a() {
+         return fbt.f.a;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         return $$1;
+      }
    }
 
-   @Override
-   public czn a(czn $$0, ezt $$1) {
-      dbw $$2 = $$0.a(kk.p, dbw.a);
-      $$0.b(kk.p, new dbw(a(this.c, $$2.a(), $$1x -> $$1x.b($$1)), a(this.d, $$2.b()), a(this.e, $$2.c()), a(this.f, $$2.d(), $$1x -> $$1x.a($$1))));
-      return $$0;
+   public static record d(int c, Optional<Integer> d) implements fbt {
+      private static final Logger e = LogUtils.getLogger();
+      public static final MapCodec<fbt.d> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ayw.l.optionalFieldOf("offset", 0).forGetter(fbt.d::b), ayw.l.optionalFieldOf("size").forGetter(fbt.d::c)).apply($$0, fbt.d::new)
+      );
+
+      public d(int $$0) {
+         this($$0, Optional.empty());
+      }
+
+      @Override
+      public fbt.f a() {
+         return fbt.f.b;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            e.error("Cannot replace when offset is out of bounds");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            int $$5 = this.c + this.d.orElse($$1.size());
+            if ($$5 < $$3) {
+               $$4.addAll($$0.subList($$5, $$3));
+            }
+
+            List<T> $$6 = $$4.build();
+            if ($$6.size() > $$2) {
+               e.error("Contents overflow in section replacement");
+               return $$0;
+            } else {
+               return $$6;
+            }
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public Optional<Integer> c() {
+         return this.d;
+      }
+   }
+
+   public static record e<T>(List<T> a, fbt b) {
+      public static <T> Codec<fbt.e<T>> a(Codec<T> $$0, int $$1) {
+         return RecordCodecBuilder.create(
+            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), fbt.a($$1).forGetter($$0xx -> $$0xx.b))
+                  .apply($$2, fbt.e::new)
+         );
+      }
+
+      public List<T> a(List<T> $$0) {
+         return this.b.a($$0, this.a);
+      }
+   }
+
+   public static enum f implements bam {
+      a("replace_all", fbt.c.c),
+      b("replace_section", fbt.d.b),
+      c("insert", fbt.b.b),
+      d("append", fbt.a.c);
+
+      public static final Codec<fbt.f> e = bam.a(fbt.f::values);
+      private final String f;
+      final MapCodec<? extends fbt> g;
+
+      private f(final String $$0, final MapCodec<? extends fbt> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public MapCodec<? extends fbt> a() {
+         return this.g;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

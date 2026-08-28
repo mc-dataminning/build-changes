@@ -1,77 +1,59 @@
-import com.mojang.util.UndashedUuid;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fqf {
-   private final String a;
-   private final UUID b;
-   private final String c;
-   private final Optional<String> d;
-   private final Optional<String> e;
-   private final fqf.a f;
+public abstract class fqf extends fqb {
+   private static final Logger b = LogUtils.getLogger();
+   private final long c;
+   private final xa d;
+   private final Runnable e;
 
-   public fqf(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, fqf.a $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   public fqf(long $$0, xa $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public String a() {
-      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
+   protected abstract void a(fmd var1, long var2) throws fnz;
+
+   @Override
+   public void run() {
+      fmd $$0 = fmd.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
+            }
+
+            this.e.run();
+            return;
+         } catch (foa var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't reset world");
+            this.a(var5);
+            return;
+         }
+      }
    }
 
-   public UUID b() {
-      return this.b;
-   }
-
-   public String c() {
-      return this.a;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public Optional<String> e() {
-      return this.e;
-   }
-
-   public Optional<String> f() {
+   @Override
+   public xa a() {
       return this.d;
-   }
-
-   public fqf.a g() {
-      return this.f;
-   }
-
-   public static enum a {
-      a("legacy"),
-      b("mojang"),
-      c("msa");
-
-      private static final Map<String, fqf.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
-      private final String e;
-
-      private a(final String $$0) {
-         this.e = $$0;
-      }
-
-      @Nullable
-      public static fqf.a a(String $$0) {
-         return d.get($$0.toLowerCase(Locale.ROOT));
-      }
-
-      public String a() {
-         return this.e;
-      }
    }
 }

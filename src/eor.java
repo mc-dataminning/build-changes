@@ -1,51 +1,24 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class eor extends eox {
-   public static final MapCodec<eor> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eor::new, $$0 -> $$0.d);
-   private static final jb b = jb.d;
-   private static final jb[] c = jb.c.a.a().filter($$0 -> $$0 != b.g()).toArray(jb[]::new);
-   private final float d;
+public class eor<P extends eoq> {
+   public static final eor<eoz> a = a("simple_state_provider", eoz.b);
+   public static final eor<epa> b = a("weighted_state_provider", epa.b);
+   public static final eor<eov> c = a("noise_threshold_provider", eov.b);
+   public static final eor<eou> d = a("noise_provider", eou.g);
+   public static final eor<eos> e = a("dual_noise_provider", eos.b);
+   public static final eor<eox> f = a("rotated_block_provider", eox.b);
+   public static final eor<eow> g = a("randomized_int_state_provider", eow.b);
+   private final MapCodec<P> h;
 
-   public eor(float $$0) {
-      this.d = $$0;
+   private static <P extends eoq> eor<P> a(String $$0, MapCodec<P> $$1) {
+      return js.a(mg.T, $$0, new eor<>($$1));
    }
 
-   @Override
-   protected eoy<?> a() {
-      return eoy.f;
+   private eor(MapCodec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public void a(eox.a $$0) {
-      List<iv> $$1 = $$0.d();
-      List<iv> $$2 = $$0.c();
-      if (!$$2.isEmpty()) {
-         azv $$3 = $$0.b();
-         if (!($$3.i() >= this.d)) {
-            int $$4 = !$$1.isEmpty()
-               ? Math.max($$1.getFirst().v() - 1, $$2.getFirst().v() + 1)
-               : Math.min($$2.getFirst().v() + 1 + $$3.a(3), $$2.getLast().v());
-            List<iv> $$5 = $$2.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-            if (!$$5.isEmpty()) {
-               ag.c($$5, $$3);
-               Optional<iv> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-               if (!$$6.isEmpty()) {
-                  $$0.a($$6.get(), dmt.pM.m().b(dml.b, b));
-                  $$0.a().a($$6.get(), dxt.I).ifPresent($$1x -> {
-                     int $$2x = 2 + $$3.a(2);
-
-                     for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                        $$1x.a(dxo.c.a($$3.a(599)));
-                     }
-                  });
-               }
-            }
-         }
-      }
+   public MapCodec<P> a() {
+      return this.h;
    }
 }

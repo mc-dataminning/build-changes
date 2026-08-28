@@ -1,17 +1,32 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 
-public class hjx {
-   private static final ayu.b<alg, MapCodec<? extends hjv>> c = new ayu.b<>();
-   public static final Codec<hjv> a = c.a(alg.a).dispatch(hjv::a, $$0 -> $$0);
-   public static final Codec<List<hjv>> b = a.listOf().fieldOf("sources").codec();
+public class hjx implements hka {
+   private final gle a;
 
-   public static void a() {
-      c.a(alg.b("single"), hkc.b);
-      c.a(alg.b("directory"), hjz.b);
-      c.a(alg.b("filter"), hkd.b);
-      c.a(alg.b("unstitch"), hke.b);
-      c.a(alg.b("paletted_permutations"), hkb.c);
+   public hjx(gle $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void a(czw $$0, flo $$1, gsa $$2, int $$3, int $$4, boolean $$5) {
+      flr $$6 = guv.b.a($$2, gsl::d);
+      $$1.a();
+      $$1.a(0.5F, 0.5F, 0.5F);
+      this.a.a($$1, $$6, $$3, $$4);
+      $$1.b();
+   }
+
+   public static record a() implements hke.a {
+      public static final MapCodec<hjx.a> a = MapCodec.unit(new hjx.a());
+
+      @Override
+      public MapCodec<hjx.a> a() {
+         return a;
+      }
+
+      @Override
+      public hke<?> a(gla $$0) {
+         return new hjx($$0.a(gld.al));
+      }
    }
 }

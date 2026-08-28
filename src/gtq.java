@@ -1,50 +1,88 @@
-public class gtq implements gtd<eao> {
-   private final gru a;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+import org.joml.Vector3fc;
 
-   public gtq(gte.a $$0) {
-      this.a = $$0.b();
-   }
+public record gtq(Vector3fc b, Vector3fc c, Vector3fc d) {
+   public static final gtq a = new gtq(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
 
-   public void a(eao $$0, float $$1, fkd $$2, gqr $$3, int $$4, int $$5, ffc $$6) {
-      djm $$7 = $$0.i();
-      if ($$7 != null) {
-         iv $$8 = $$0.ax_().a($$0.f().g());
-         eat $$9 = $$0.j();
-         if (!$$9.l()) {
-            grw.a();
-            $$2.a();
-            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
-            if ($$9.a(dmt.bJ) && $$0.a($$1) <= 4.0F) {
-               $$9 = $$9.b(eam.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
-               this.a($$8, $$9, $$2, $$3, $$7, false, $$5);
-            } else if ($$0.d() && !$$0.a()) {
-               ebv $$10 = $$9.a(dmt.by) ? ebv.b : ebv.a;
-               eat $$11 = dmt.bJ.m().b(eam.c, $$10).b(eam.a, $$9.c(eal.a));
-               $$11 = $$11.b(eam.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
-               this.a($$8, $$11, $$2, $$3, $$7, false, $$5);
-               iv $$12 = $$8.a($$0.f());
-               $$2.b();
-               $$2.a();
-               $$9 = $$9.b(eal.c, Boolean.valueOf(true));
-               this.a($$12, $$9, $$2, $$3, $$7, true, $$5);
-            } else {
-               this.a($$8, $$9, $$2, $$3, $$7, false, $$5);
-            }
-
-            $$2.b();
-            grw.b();
+   public void a(boolean $$0, flo.a $$1) {
+      if (this == a) {
+         $$1.a(-0.5F, -0.5F, -0.5F);
+      } else {
+         float $$2;
+         float $$3;
+         float $$4;
+         if ($$0) {
+            $$2 = -this.c.x();
+            $$3 = -this.b.y();
+            $$4 = -this.b.z();
+         } else {
+            $$2 = this.c.x();
+            $$3 = this.b.y();
+            $$4 = this.b.z();
          }
+
+         $$1.a($$2, this.c.y(), this.c.z());
+         $$1.a(new Quaternionf().rotationXYZ(this.b.x() * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
+         $$1.b(this.d.x(), this.d.y(), this.d.z());
+         $$1.a(-0.5F, -0.5F, -0.5F);
       }
    }
 
-   private void a(iv $$0, eat $$1, fkd $$2, gqr $$3, djm $$4, boolean $$5, int $$6) {
-      grc $$7 = gqj.b($$1);
-      fkh $$8 = $$3.getBuffer($$7);
-      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, azv.a(), $$1.b($$0), $$6);
+   public Vector3fc a() {
+      return this.b;
    }
 
-   @Override
-   public int aR_() {
-      return 68;
+   public Vector3fc b() {
+      return this.c;
+   }
+
+   public Vector3fc c() {
+      return this.d;
+   }
+
+   protected static class a implements JsonDeserializer<gtq> {
+      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
+      public static final float a = 5.0F;
+      public static final float b = 4.0F;
+
+      public gtq a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Vector3f $$4 = this.a($$3, "rotation", c);
+         Vector3f $$5 = this.a($$3, "translation", d);
+         $$5.mul(0.0625F);
+         $$5.set(azo.a($$5.x, -5.0F, 5.0F), azo.a($$5.y, -5.0F, 5.0F), azo.a($$5.z, -5.0F, 5.0F));
+         Vector3f $$6 = this.a($$3, "scale", e);
+         $$6.set(azo.a($$6.x, -4.0F, 4.0F), azo.a($$6.y, -4.0F, 4.0F), azo.a($$6.z, -4.0F, 4.0F));
+         return new gtq($$4, $$5, $$6);
+      }
+
+      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
+         if (!$$0.has($$1)) {
+            return $$2;
+         } else {
+            JsonArray $$3 = aze.v($$0, $$1);
+            if ($$3.size() != 3) {
+               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
+            } else {
+               float[] $$4 = new float[3];
+
+               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+                  $$4[$$5] = aze.e($$3.get($$5), $$1 + "[" + $$5 + "]");
+               }
+
+               return new Vector3f($$4[0], $$4[1], $$4[2]);
+            }
+         }
+      }
    }
 }

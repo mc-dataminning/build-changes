@@ -1,14 +1,29 @@
-import com.mojang.serialization.MapCodec;
+public enum efy {
+   a(false, false),
+   b(true, false),
+   c(true, true);
 
-public interface efy<T extends efx> {
-   efy<efp> a = a("block", new efp.a());
-   efy<efr> b = a("entity", new efr.a());
+   private final boolean d;
+   private final boolean e;
 
-   MapCodec<T> a();
+   private efy(final boolean $$0, final boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
 
-   yw<? super wj, T> b();
+   public boolean a() {
+      return this.e;
+   }
 
-   static <S extends efy<T>, T extends efx> S a(String $$0, S $$1) {
-      return js.a(mg.t, $$0, $$1);
+   public boolean b() {
+      return this.d;
+   }
+
+   public static efy a(arg $$0) {
+      if ($$0.a(arg.d)) {
+         return c;
+      } else {
+         return $$0.a(arg.b) ? b : a;
+      }
    }
 }

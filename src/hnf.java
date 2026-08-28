@@ -1,29 +1,21 @@
-public class hnf extends hmx {
-   private final bwi n;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-   public hnf(awm $$0, awo $$1, float $$2, float $$3, bwi $$4, long $$5) {
-      super($$0, $$1, azv.a($$5));
-      this.d = $$2;
-      this.e = $$3;
-      this.n = $$4;
-      this.f = (double)((float)this.n.dz());
-      this.g = (double)((float)this.n.dB());
-      this.h = (double)((float)this.n.dF());
+public class hnf extends avj<hng> {
+   public static final hng a = new hng(Map.of());
+   private static final alb b = alb.a("equipment");
+   private Map<alh<dif>, hng> c = Map.of();
+
+   public hnf() {
+      super(hng.a, b);
    }
 
-   @Override
-   public boolean s() {
-      return !this.n.aZ();
+   protected void a(Map<ali, hng> $$0, avf $$1, brb $$2) {
+      this.c = $$0.entrySet().stream().collect(Collectors.toUnmodifiableMap($$0x -> alh.a(dig.a, (ali)$$0x.getKey()), Entry::getValue));
    }
 
-   @Override
-   public void q() {
-      if (this.n.dP()) {
-         this.n();
-      } else {
-         this.f = (double)((float)this.n.dz());
-         this.g = (double)((float)this.n.dB());
-         this.h = (double)((float)this.n.dF());
-      }
+   public hng a(alh<dif> $$0) {
+      return this.c.getOrDefault($$0, a);
    }
 }

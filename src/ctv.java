@@ -1,22 +1,59 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
 
 public class ctv {
-   public static final String a = "variant";
+   private final List<cts> a = Lists.newArrayList();
+   private int b;
 
-   public static <T> jf<T> a(jt $$0, alf<T> $$1) {
-      js<T> $$2 = $$0.f($$1.c());
-      return $$2.a($$1).or($$2::a).orElseThrow();
+   public ImmutableList<cts> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   public static <T> jf<T> b(jt $$0, alf<? extends js<T>> $$1) {
-      return $$0.f($$1).a().orElseThrow();
+   public ctv a(int $$0, float $$1) {
+      this.a.add(new cts($$0, $$1));
+      this.b();
+      return this;
    }
 
-   public static <T> void a(tz $$0, jf<T> $$1) {
-      $$1.e().ifPresent($$1x -> $$0.a("variant", $$1x.a().toString()));
+   public ctv a(Collection<cts> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
    }
 
-   public static <T> Optional<jf<T>> a(tz $$0, jt $$1, alf<? extends js<T>> $$2) {
-      return Optional.ofNullable(alg.c($$0.j("variant"))).map($$1x -> alf.a($$2, $$1x)).flatMap($$1::c);
+   private void b() {
+      Int2ObjectSortedMap<cts> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
+   }
+
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
+      } else {
+         cts $$1 = this.a.get(this.b);
+         cts $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
+
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            cts $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
+
+            this.b = $$6;
+            $$5 = $$7.b();
+         }
+
+         return $$5;
+      }
    }
 }

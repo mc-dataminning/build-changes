@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 
 public interface tl {
    Codec<tl> a = mg.aB.q().dispatch(tl::a, $$0 -> $$0);
-   Codec<jf<tl>> b = alc.a(mh.bg, a);
+   Codec<jf<tl>> b = ale.a(mh.bg, a);
 
    static MapCodec<? extends tl> a(js<MapCodec<? extends tl>> $$0) {
       js.a($$0, "all_of", tl.a.c);
@@ -20,9 +20,9 @@ public interface tl {
       return js.a($$0, "function", tl.b.c);
    }
 
-   void a(arq var1);
+   void a(ars var1);
 
-   default void b(arq $$0) {
+   default void b(ars $$0) {
    }
 
    MapCodec<? extends tl> a();
@@ -37,12 +37,12 @@ public interface tl {
       }
 
       @Override
-      public void a(arq $$0) {
+      public void a(ars $$0) {
          this.d.forEach($$1 -> $$1.a().a($$0));
       }
 
       @Override
-      public void b(arq $$0) {
+      public void b(ars $$0) {
          this.d.forEach($$1 -> $$1.a().b($$0));
       }
 
@@ -56,25 +56,25 @@ public interface tl {
       }
    }
 
-   public static record b(Optional<alg> d, Optional<alg> e) implements tl {
+   public static record b(Optional<ali> d, Optional<ali> e) implements tl {
       private static final Logger f = LogUtils.getLogger();
       public static final MapCodec<tl.b> c = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(alg.a.optionalFieldOf("setup").forGetter(tl.b::b), alg.a.optionalFieldOf("teardown").forGetter(tl.b::c)).apply($$0, tl.b::new)
+         $$0 -> $$0.group(ali.a.optionalFieldOf("setup").forGetter(tl.b::b), ali.a.optionalFieldOf("teardown").forGetter(tl.b::c)).apply($$0, tl.b::new)
       );
 
       @Override
-      public void a(arq $$0) {
+      public void a(ars $$0) {
          this.d.ifPresent($$1 -> a($$0, $$1));
       }
 
       @Override
-      public void b(arq $$0) {
+      public void b(ars $$0) {
          this.e.ifPresent($$1 -> a($$0, $$1));
       }
 
-      private static void a(arq $$0, alg $$1) {
+      private static void a(ars $$0, ali $$1) {
          MinecraftServer $$2 = $$0.p();
-         alv $$3 = $$2.aE();
+         alx $$3 = $$2.aE();
          Optional<hx<ej>> $$4 = $$3.a($$1);
          if ($$4.isPresent()) {
             ej $$5 = $$2.aH().a(2).a().a($$0);
@@ -89,49 +89,49 @@ public interface tl {
          return c;
       }
 
-      public Optional<alg> b() {
+      public Optional<ali> b() {
          return this.d;
       }
 
-      public Optional<alg> c() {
+      public Optional<ali> c() {
          return this.e;
       }
    }
 
-   public static record c(List<tl.c.a<Boolean, dji.a>> d, List<tl.c.a<Integer, dji.d>> e) implements tl {
+   public static record c(List<tl.c.a<Boolean, djt.a>> d, List<tl.c.a<Integer, djt.d>> e) implements tl {
       public static final MapCodec<tl.c> c = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  tl.c.a.a(dji.a.class, Codec.BOOL).listOf().fieldOf("bool_rules").forGetter(tl.c::b),
-                  tl.c.a.a(dji.d.class, Codec.INT).listOf().fieldOf("int_rules").forGetter(tl.c::c)
+                  tl.c.a.a(djt.a.class, Codec.BOOL).listOf().fieldOf("bool_rules").forGetter(tl.c::b),
+                  tl.c.a.a(djt.d.class, Codec.INT).listOf().fieldOf("int_rules").forGetter(tl.c::c)
                )
                .apply($$0, tl.c::new)
       );
 
       @Override
-      public void a(arq $$0) {
-         dji $$1 = $$0.O();
+      public void a(ars $$0) {
+         djt $$1 = $$0.O();
          MinecraftServer $$2 = $$0.p();
 
-         for (tl.c.a<Boolean, dji.a> $$3 : this.d) {
+         for (tl.c.a<Boolean, djt.a> $$3 : this.d) {
             $$1.b($$3.a()).a($$3.b(), $$2);
          }
 
-         for (tl.c.a<Integer, dji.d> $$4 : this.e) {
+         for (tl.c.a<Integer, djt.d> $$4 : this.e) {
             $$1.b($$4.a()).a($$4.b(), $$2);
          }
       }
 
       @Override
-      public void b(arq $$0) {
-         dji $$1 = $$0.O();
+      public void b(ars $$0) {
+         djt $$1 = $$0.O();
          MinecraftServer $$2 = $$0.p();
 
-         for (tl.c.a<Boolean, dji.a> $$3 : this.d) {
-            $$1.b($$3.a()).a(dji.a($$3.a()).a(), $$2);
+         for (tl.c.a<Boolean, djt.a> $$3 : this.d) {
+            $$1.b($$3.a()).a(djt.a($$3.a()).a(), $$2);
          }
 
-         for (tl.c.a<Integer, dji.d> $$4 : this.e) {
-            $$1.b($$4.a()).a(dji.a($$4.a()).a(), $$2);
+         for (tl.c.a<Integer, djt.d> $$4 : this.e) {
+            $$1.b($$4.a()).a(djt.a($$4.a()).a(), $$2);
          }
       }
 
@@ -140,32 +140,32 @@ public interface tl {
          return c;
       }
 
-      public static <S, T extends dji.g<T>> tl.c.a<S, T> a(dji.e<T> $$0, S $$1) {
+      public static <S, T extends djt.g<T>> tl.c.a<S, T> a(djt.e<T> $$0, S $$1) {
          return new tl.c.a<>($$0, $$1);
       }
 
-      public List<tl.c.a<Boolean, dji.a>> b() {
+      public List<tl.c.a<Boolean, djt.a>> b() {
          return this.d;
       }
 
-      public List<tl.c.a<Integer, dji.d>> c() {
+      public List<tl.c.a<Integer, djt.d>> c() {
          return this.e;
       }
 
-      public static record a<S, T extends dji.g<T>>(dji.e<T> a, S b) {
-         public static <S, T extends dji.g<T>> Codec<tl.c.a<S, T>> a(Class<T> $$0, Codec<S> $$1) {
+      public static record a<S, T extends djt.g<T>>(djt.e<T> a, S b) {
+         public static <S, T extends djt.g<T>> Codec<tl.c.a<S, T>> a(Class<T> $$0, Codec<S> $$1) {
             return RecordCodecBuilder.create(
-               $$2 -> $$2.group(dji.a($$0).fieldOf("rule").forGetter(tl.c.a::a), $$1.fieldOf("value").forGetter(tl.c.a::b)).apply($$2, tl.c.a::new)
+               $$2 -> $$2.group(djt.a($$0).fieldOf("rule").forGetter(tl.c.a::a), $$1.fieldOf("value").forGetter(tl.c.a::b)).apply($$2, tl.c.a::new)
             );
          }
       }
    }
 
    public static record d(int d) implements tl {
-      public static final MapCodec<tl.d> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.l.fieldOf("time").forGetter(tl.d::b)).apply($$0, tl.d::new));
+      public static final MapCodec<tl.d> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayw.l.fieldOf("time").forGetter(tl.d::b)).apply($$0, tl.d::new));
 
       @Override
-      public void a(arq $$0) {
+      public void a(ars $$0) {
          $$0.b((long)this.d);
       }
 
@@ -183,12 +183,12 @@ public interface tl {
       public static final MapCodec<tl.e> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(tl.e.a.d.fieldOf("weather").forGetter(tl.e::b)).apply($$0, tl.e::new));
 
       @Override
-      public void a(arq $$0) {
+      public void a(ars $$0) {
          this.d.a($$0);
       }
 
       @Override
-      public void b(arq $$0) {
+      public void b(ars $$0) {
          $$0.h();
       }
 
@@ -201,12 +201,12 @@ public interface tl {
          return this.d;
       }
 
-      public static enum a implements bak {
+      public static enum a implements bam {
          a("clear", 100000, 0, false, false),
          b("rain", 0, 100000, true, false),
          c("thunder", 0, 100000, true, true);
 
-         public static final Codec<tl.e.a> d = bak.a(tl.e.a::values);
+         public static final Codec<tl.e.a> d = bam.a(tl.e.a::values);
          private final String e;
          private final int f;
          private final int g;
@@ -221,7 +221,7 @@ public interface tl {
             this.i = $$4;
          }
 
-         void a(arq $$0) {
+         void a(ars $$0) {
             $$0.a(this.f, this.g, this.h, this.i);
          }
 

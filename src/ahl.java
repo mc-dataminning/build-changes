@@ -1,166 +1,30 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
 
-public class ahl implements zf<agp> {
-   public static final yw<vu, ahl> a = zf.a(ahl::a, ahl::new);
-   private final int b;
-   private final ahl.a c;
-   private final boolean d;
-   static final ahl.a e = new ahl.a() {
-      @Override
-      public ahl.b a() {
-         return ahl.b.b;
-      }
+public record ahl(int b, List<String> c, Optional<String> d) implements zh<agr> {
+   public static final yy<vw, ahl> a = yy.a(yw.h, ahl::b, yw.b(1024).a(yw.c(100)), ahl::e, yw.b(32).a(yw::a), ahl::f, ahl::new);
 
-      @Override
-      public void a(ahl.c $$0) {
-         $$0.a();
-      }
-
-      @Override
-      public void a(vu $$0) {
-      }
-   };
-
-   private ahl(int $$0, boolean $$1, ahl.a $$2) {
-      this.b = $$0;
-      this.c = $$2;
-      this.d = $$1;
-   }
-
-   public static ahl a(bwi $$0, boolean $$1) {
-      return new ahl($$0.ao(), $$1, e);
-   }
-
-   public static ahl a(bwi $$0, boolean $$1, buf $$2) {
-      return new ahl($$0.ao(), $$1, new ahl.d($$2));
-   }
-
-   public static ahl a(bwi $$0, boolean $$1, buf $$2, ffc $$3) {
-      return new ahl($$0.ao(), $$1, new ahl.e($$2, $$3));
-   }
-
-   private ahl(vu $$0) {
-      this.b = $$0.l();
-      ahl.b $$1 = $$0.b(ahl.b.class);
-      this.c = $$1.d.apply($$0);
-      this.d = $$0.readBoolean();
-   }
-
-   private void a(vu $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c.a());
-      this.c.a($$0);
-      $$0.a(this.d);
+   public ahl(int b, List<String> c, Optional<String> d) {
+      c = List.copyOf(c);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
    @Override
-   public zh<ahl> a() {
-      return agn.bF;
+   public zj<ahl> a() {
+      return agp.bD;
    }
 
-   public void a(agp $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bwi a(arq $$0) {
-      return $$0.b(this.b);
+   public List<String> e() {
+      return this.c;
    }
 
-   public boolean b() {
+   public Optional<String> f() {
       return this.d;
-   }
-
-   public void a(ahl.c $$0) {
-      this.c.a($$0);
-   }
-
-   interface a {
-      ahl.b a();
-
-      void a(ahl.c var1);
-
-      void a(vu var1);
-   }
-
-   static enum b {
-      a(ahl.d::new),
-      b($$0 -> ahl.e),
-      c(ahl.e::new);
-
-      final Function<vu, ahl.a> d;
-
-      private b(final Function<vu, ahl.a> $$0) {
-         this.d = $$0;
-      }
-   }
-
-   public interface c {
-      void a(buf var1);
-
-      void a(buf var1, ffc var2);
-
-      void a();
-   }
-
-   static class d implements ahl.a {
-      private final buf a;
-
-      d(buf $$0) {
-         this.a = $$0;
-      }
-
-      private d(vu $$0) {
-         this.a = $$0.b(buf.class);
-      }
-
-      @Override
-      public ahl.b a() {
-         return ahl.b.a;
-      }
-
-      @Override
-      public void a(ahl.c $$0) {
-         $$0.a(this.a);
-      }
-
-      @Override
-      public void a(vu $$0) {
-         $$0.a(this.a);
-      }
-   }
-
-   static class e implements ahl.a {
-      private final buf a;
-      private final ffc b;
-
-      e(buf $$0, ffc $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private e(vu $$0) {
-         this.b = new ffc((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
-         this.a = $$0.b(buf.class);
-      }
-
-      @Override
-      public ahl.b a() {
-         return ahl.b.c;
-      }
-
-      @Override
-      public void a(ahl.c $$0) {
-         $$0.a(this.a, this.b);
-      }
-
-      @Override
-      public void a(vu $$0) {
-         $$0.a((float)this.b.d);
-         $$0.a((float)this.b.e);
-         $$0.a((float)this.b.f);
-         $$0.a(this.a);
-      }
    }
 }

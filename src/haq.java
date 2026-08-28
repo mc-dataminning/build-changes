@@ -1,23 +1,30 @@
-public class haq<S extends hdu, M extends ggp<S> & gjb> extends hbm<S, M> {
-   public haq(gyv<S, M> $$0) {
-      super($$0);
+public class haq<T extends cpk> extends gzo<T, hfp, gkc> {
+   private static final ali a = ali.b("textures/entity/spider/spider.png");
+
+   public haq(gyi.a $$0) {
+      this($$0, gld.dm);
    }
 
-   public void a(fkd $$0, gqr $$1, int $$2, S $$3, float $$4, float $$5) {
-      hgi $$6 = $$3.i;
-      if (!$$6.c()) {
-         $$0.a();
-         this.a($$3, $$0);
-         $$6.a($$0, $$1, $$2, hjg.d);
-         $$0.b();
-      }
+   public haq(gyi.a $$0, glc $$1) {
+      super($$0, new gkc($$0.a($$1)), 0.8F);
+      this.a(new hdd<>(this));
    }
 
-   protected void a(S $$0, fkd $$1) {
-      this.d().a($$1);
-      $$1.a(a.b.rotation(0.75F));
-      $$1.b(1.07F, 1.07F, 1.07F);
-      $$1.a(0.0F, 0.13F, -0.34F);
-      $$1.a(a.b.rotation((float) Math.PI));
+   @Override
+   protected float aW_() {
+      return 180.0F;
+   }
+
+   @Override
+   public ali b(hfp $$0) {
+      return a;
+   }
+
+   public hfp b() {
+      return new hfp();
+   }
+
+   public void a(T $$0, hfp $$1, float $$2) {
+      super.a($$0, $$1, $$2);
    }
 }

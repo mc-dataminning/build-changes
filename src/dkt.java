@@ -1,142 +1,154 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class dkt implements dks {
-   public static final Codec<dkt> a = mg.Z.q().dispatchStable(dkt::a, Function.identity());
-   private final Supplier<Set<jf<dkp>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
+public class dkt {
+   private final djy a;
+   private final eib b;
+   private final esc c;
 
-   protected dkt() {
+   public dkt(djy $$0, eib $$1, esc $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   protected abstract MapCodec<? extends dkt> a();
-
-   protected abstract Stream<jf<dkp>> b();
-
-   public Set<jf<dkp>> c() {
-      return this.b.get();
-   }
-
-   public Set<jf<dkp>> a(int $$0, int $$1, int $$2, int $$3, dky.f $$4) {
-      int $$5 = jq.a($$0 - $$3);
-      int $$6 = jq.a($$1 - $$3);
-      int $$7 = jq.a($$2 - $$3);
-      int $$8 = jq.a($$0 + $$3);
-      int $$9 = jq.a($$1 + $$3);
-      int $$10 = jq.a($$2 + $$3);
-      int $$11 = $$8 - $$5 + 1;
-      int $$12 = $$9 - $$6 + 1;
-      int $$13 = $$10 - $$7 + 1;
-      Set<jf<dkp>> $$14 = Sets.newHashSet();
-
-      for (int $$15 = 0; $$15 < $$13; $$15++) {
-         for (int $$16 = 0; $$16 < $$11; $$16++) {
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               int $$18 = $$5 + $$16;
-               int $$19 = $$6 + $$17;
-               int $$20 = $$7 + $$15;
-               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
-            }
-         }
-      }
-
-      return $$14;
-   }
-
-   @Nullable
-   public Pair<iv, jf<dkp>> a(int $$0, int $$1, int $$2, int $$3, Predicate<jf<dkp>> $$4, azv $$5, dky.f $$6) {
-      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
-   }
-
-   @Nullable
-   public Pair<iv, jf<dkp>> a(iv $$0, int $$1, int $$2, int $$3, Predicate<jf<dkp>> $$4, dky.f $$5, djp $$6) {
-      Set<jf<dkp>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
-      if ($$7.isEmpty()) {
-         return null;
+   public dkt a(asa $$0) {
+      if ($$0.a() != this.a) {
+         throw new IllegalStateException("Using invalid structure manager (source level: " + $$0.a() + ", region: " + $$0);
       } else {
-         int $$8 = Math.floorDiv($$1, $$2);
-         int[] $$9 = azm.a($$0.v(), $$6.G_() + 1, $$6.ao() + 1, $$3).toArray();
+         return new dkt($$0, this.b, this.c);
+      }
+   }
 
-         for (iv.a $$10 : iv.a(iv.c, $$8, jb.f, jb.d)) {
-            int $$11 = $$0.u() + $$10.u() * $$2;
-            int $$12 = $$0.w() + $$10.w() * $$2;
-            int $$13 = jq.a($$11);
-            int $$14 = jq.a($$12);
+   public List<esj> a(djc $$0, Predicate<esb> $$1) {
+      Map<esb, LongSet> $$2 = this.a.a($$0.h, $$0.i, eec.e).h();
+      Builder<esj> $$3 = ImmutableList.builder();
 
-            for (int $$15 : $$9) {
-               int $$16 = jq.a($$15);
-               jf<dkp> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
-               if ($$7.contains($$17)) {
-                  return Pair.of(new iv($$11, $$15, $$12), $$17);
-               }
-            }
+      for (Entry<esb, LongSet> $$4 : $$2.entrySet()) {
+         esb $$5 = $$4.getKey();
+         if ($$1.test($$5)) {
+            this.a($$5, $$4.getValue(), $$3::add);
          }
+      }
 
-         return null;
+      return $$3.build();
+   }
+
+   public List<esj> a(jy $$0, esb $$1) {
+      LongSet $$2 = this.a.a($$0.a(), $$0.c(), eec.e).b($$1);
+      Builder<esj> $$3 = ImmutableList.builder();
+      this.a($$1, $$2, $$3::add);
+      return $$3.build();
+   }
+
+   public void a(esb $$0, LongSet $$1, Consumer<esj> $$2) {
+      LongIterator var4 = $$1.iterator();
+
+      while (var4.hasNext()) {
+         long $$3 = (Long)var4.next();
+         jy $$4 = jy.a(new djc($$3), this.a.aq());
+         esj $$5 = this.a($$4, $$0, this.a.a($$4.a(), $$4.c(), eec.d));
+         if ($$5 != null && $$5.b()) {
+            $$2.accept($$5);
+         }
       }
    }
 
    @Nullable
-   public Pair<iv, jf<dkp>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<jf<dkp>> $$5, azv $$6, boolean $$7, dky.f $$8) {
-      int $$9 = jq.a($$0);
-      int $$10 = jq.a($$2);
-      int $$11 = jq.a($$3);
-      int $$12 = jq.a($$1);
-      Pair<iv, jf<dkp>> $$13 = null;
-      int $$14 = 0;
-      int $$15 = $$7 ? 0 : $$11;
-      int $$16 = $$15;
-
-      while ($$16 <= $$11) {
-         for (int $$17 = ac.as ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
-            boolean $$18 = Math.abs($$17) == $$16;
-
-            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
-               if ($$7) {
-                  boolean $$20 = Math.abs($$19) == $$16;
-                  if (!$$20 && !$$18) {
-                     continue;
-                  }
-               }
-
-               int $$21 = $$9 + $$19;
-               int $$22 = $$10 + $$17;
-               jf<dkp> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
-               if ($$5.test($$23)) {
-                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
-                     iv $$24 = new iv(jq.c($$21), $$1, jq.c($$22));
-                     if ($$7) {
-                        return Pair.of($$24, $$23);
-                     }
-
-                     $$13 = Pair.of($$24, $$23);
-                  }
-
-                  $$14++;
-               }
-            }
-         }
-
-         $$16 += $$4;
-      }
-
-      return $$13;
+   public esj a(jy $$0, esb $$1, edx $$2) {
+      return $$2.a($$1);
    }
 
-   @Override
-   public abstract jf<dkp> getNoiseBiome(int var1, int var2, int var3, dky.f var4);
+   public void a(jy $$0, esb $$1, esj $$2, edx $$3) {
+      $$3.a($$1, $$2);
+   }
 
-   public void a(List<String> $$0, iv $$1, dky.f $$2) {
+   public void a(jy $$0, esb $$1, long $$2, edx $$3) {
+      $$3.a($$1, $$2);
+   }
+
+   public boolean a() {
+      return this.b.d();
+   }
+
+   public esj a(iv $$0, esb $$1) {
+      for (esj $$2 : this.a(jy.a($$0), $$1)) {
+         if ($$2.a().b($$0)) {
+            return $$2;
+         }
+      }
+
+      return esj.b;
+   }
+
+   public esj a(iv $$0, axt<esb> $$1) {
+      return this.a($$0, $$1x -> $$1x.a($$1));
+   }
+
+   public esj a(iv $$0, jj<esb> $$1) {
+      return this.a($$0, $$1::a);
+   }
+
+   public esj a(iv $$0, Predicate<jf<esb>> $$1) {
+      js<esb> $$2 = this.b().f(mh.be);
+
+      for (esj $$3 : this.a(new djc($$0), $$2x -> $$2.c($$2.a($$2x)).map($$1::test).orElse(false))) {
+         if (this.a($$0, $$3)) {
+            return $$3;
+         }
+      }
+
+      return esj.b;
+   }
+
+   public esj b(iv $$0, esb $$1) {
+      for (esj $$2 : this.a(jy.a($$0), $$1)) {
+         if (this.a($$0, $$2)) {
+            return $$2;
+         }
+      }
+
+      return esj.b;
+   }
+
+   public boolean a(iv $$0, esj $$1) {
+      for (esf $$2 : $$1.i()) {
+         if ($$2.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean a(iv $$0) {
+      jy $$1 = jy.a($$0);
+      return this.a.a($$1.a(), $$1.c(), eec.e).y();
+   }
+
+   public Map<esb, LongSet> b(iv $$0) {
+      jy $$1 = jy.a($$0);
+      return this.a.a($$1.a(), $$1.c(), eec.e).h();
+   }
+
+   public esd a(djc $$0, esb $$1, esy $$2, boolean $$3) {
+      return this.c.a($$0, $$1, $$2, $$3);
+   }
+
+   public void a(esj $$0) {
+      $$0.e();
+      this.c.a($$0.c(), $$0.h());
+   }
+
+   public jt b() {
+      return this.a.J_();
    }
 }

@@ -1,30 +1,34 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum eqh implements bak {
-   a(jb.b, 1, "ceiling"),
-   b(jb.a, -1, "floor");
+public class eqh extends eqi {
+   public static final eqh a = new eqh(ehx.a(0));
+   public static final MapCodec<eqh> b = ehx.a.fieldOf("value").xmap(eqh::new, eqh::b);
+   private final ehx d;
 
-   public static final Codec<eqh> c = bak.a(eqh::values);
-   private final jb d;
-   private final int e;
-   private final String f;
-
-   private eqh(final jb $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public static eqh a(ehx $$0) {
+      return new eqh($$0);
    }
 
-   public jb a() {
+   private eqh(ehx $$0) {
+      this.d = $$0;
+   }
+
+   public ehx b() {
       return this.d;
    }
 
-   public int b() {
-      return this.e;
+   @Override
+   public int a(azx $$0, eia $$1) {
+      return this.d.a($$1);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public eqj<?> a() {
+      return eqj.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
    }
 }

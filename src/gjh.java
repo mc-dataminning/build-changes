@@ -1,69 +1,60 @@
-public class gjh extends ggp<hfs> {
-   private static final String a = "ribcage";
-   private static final String b = "center_head";
-   private static final String c = "right_head";
-   private static final String d = "left_head";
-   private static final float e = 0.065F;
-   private static final float f = 0.265F;
-   private final gjt g;
-   private final gjt i;
-   private final gjt j;
-   private final gjt k;
-   private final gjt l;
+import java.util.Set;
 
-   public gjh(gjt $$0) {
+public class gjh extends gjl<hgc> {
+   private static final float a = 2.25F;
+   private static final gln i = new ggv(true, 16.0F, 4.0F, 2.25F, 2.0F, 24.0F, Set.of("head"));
+
+   public gjh(gle $$0) {
       super($$0);
-      this.k = $$0.b("ribcage");
-      this.l = $$0.b("tail");
-      this.g = $$0.b("center_head");
-      this.i = $$0.b("right_head");
-      this.j = $$0.b("left_head");
    }
 
-   public static gjz a(gjx $$0) {
-      gkb $$1 = new gkb();
-      gkd $$2 = $$1.a();
-      $$2.a("shoulders", gjy.c().a(0, 16).a(-10.0F, 3.9F, -0.5F, 20.0F, 3.0F, 3.0F, $$0), gjv.a);
-      float $$3 = 0.20420352F;
+   public static glk a(boolean $$0) {
+      glm $$1 = new glm();
+      glo $$2 = $$1.a();
       $$2.a(
-         "ribcage",
-         gjy.c()
-            .a(0, 22)
-            .a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 1.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 4.0F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 6.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0),
-         gjv.a(-2.0F, 6.9F, -0.5F, 0.20420352F, 0.0F, 0.0F)
+         "head",
+         glj.c()
+            .a(0, 0)
+            .a(-3.5F, -3.0F, -3.0F, 7.0F, 7.0F, 7.0F)
+            .a(0, 44)
+            .a("mouth", -2.5F, 1.0F, -6.0F, 5.0F, 3.0F, 3.0F)
+            .a(26, 0)
+            .a("right_ear", -4.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F)
+            .a(26, 0)
+            .a()
+            .a("left_ear", 2.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F),
+         glg.a(0.0F, 10.0F, -16.0F)
       );
       $$2.a(
-         "tail",
-         gjy.c().a(12, 22).a(0.0F, 0.0F, 0.0F, 3.0F, 6.0F, 3.0F, $$0),
-         gjv.a(-2.0F, 6.9F + azm.b(0.20420352F) * 10.0F, -0.5F + azm.a(0.20420352F) * 10.0F, 0.83252203F, 0.0F, 0.0F)
+         "body",
+         glj.c().a(0, 19).a(-5.0F, -13.0F, -7.0F, 14.0F, 14.0F, 11.0F).a(39, 0).a(-4.0F, -25.0F, -7.0F, 12.0F, 12.0F, 10.0F),
+         glg.a(-2.0F, 9.0F, 12.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
       );
-      $$2.a("center_head", gjy.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gjv.a);
-      gjy $$4 = gjy.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, $$0);
-      $$2.a("right_head", $$4, gjv.a(-8.0F, 4.0F, 0.0F));
-      $$2.a("left_head", $$4, gjv.a(10.0F, 4.0F, 0.0F));
-      return gjz.a($$1, 64, 64);
+      int $$3 = 10;
+      glj $$4 = glj.c().a(50, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 8.0F);
+      $$2.a("right_hind_leg", $$4, glg.a(-4.5F, 14.0F, 6.0F));
+      $$2.a("left_hind_leg", $$4, glg.a(4.5F, 14.0F, 6.0F));
+      glj $$5 = glj.c().a(50, 40).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 6.0F);
+      $$2.a("right_front_leg", $$5, glg.a(-3.5F, 14.0F, -8.0F));
+      $$2.a("left_front_leg", $$5, glg.a(3.5F, 14.0F, -8.0F));
+      return glk.a($$1, 128, 64).a($$0 ? i : gln.a).a(gln.scaling(1.2F));
    }
 
-   public void a(hfs $$0) {
+   public void a(hgc $$0) {
       super.a($$0);
-      a($$0, this.i, 0);
-      a($$0, this.j, 1);
-      float $$1 = azm.b($$0.u * 0.1F);
-      this.k.e = (0.065F + 0.05F * $$1) * (float) Math.PI;
-      this.l.a(-2.0F, 6.9F + azm.b(this.k.e) * 10.0F, -0.5F + azm.a(this.k.e) * 10.0F);
-      this.l.e = (0.265F + 0.1F * $$1) * (float) Math.PI;
-      this.g.f = $$0.aa * (float) (Math.PI / 180.0);
-      this.g.e = $$0.ab * (float) (Math.PI / 180.0);
-   }
-
-   private static void a(hfs $$0, gjt $$1, int $$2) {
-      $$1.f = ($$0.b[$$2] - $$0.Z) * (float) (Math.PI / 180.0);
-      $$1.e = $$0.a[$$2] * (float) (Math.PI / 180.0);
+      float $$1 = $$0.a * $$0.a;
+      float $$2 = $$0.ag;
+      float $$3 = $$0.aj ? 0.44444445F : 1.0F;
+      this.c.e -= $$1 * (float) Math.PI * 0.35F;
+      this.c.c += $$1 * $$2 * 2.0F;
+      this.f.c -= $$1 * $$2 * 20.0F;
+      this.f.d += $$1 * $$2 * 4.0F;
+      this.f.e -= $$1 * (float) Math.PI * 0.45F;
+      this.g.c = this.f.c;
+      this.g.d = this.f.d;
+      this.g.e -= $$1 * (float) Math.PI * 0.45F;
+      this.b.c -= $$1 * $$3 * 24.0F;
+      this.b.d += $$1 * $$3 * 13.0F;
+      this.b.e += $$1 * (float) Math.PI * 0.15F;
    }
 }

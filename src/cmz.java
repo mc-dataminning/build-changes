@@ -1,80 +1,56 @@
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cmz extends cmm {
-   private boolean b;
+public class cmz extends cmx {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
    @Nullable
-   private exo c;
-   @Nullable
-   private ffc d;
+   private ffq d;
+   private int e;
 
-   public cmz(cmk $$0) {
+   public cmz(cmv $$0) {
       super($$0);
    }
 
    @Override
-   public void a(arq $$0) {
-      if (!this.b && this.c != null) {
-         iv $$1 = $$0.a(egs.a.f, ejx.a(this.a.j()));
-         if (!$$1.a(this.a.ds(), 10.0)) {
-            this.a.t().a(cna.a);
-         }
+   public void a(ars $$0) {
+      if (this.d == null) {
+         b.warn("Aborting charge player as no target was set.");
+         this.a.t().a(cnl.a);
+      } else if (this.e > 0 && this.e++ >= 10) {
+         this.a.t().a(cnl.a);
       } else {
-         this.b = false;
-         this.i();
+         double $$1 = this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
+         if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
+            this.e++;
+         }
       }
    }
 
    @Override
    public void c() {
-      this.b = true;
-      this.c = null;
       this.d = null;
+      this.e = 0;
    }
 
-   private void i() {
-      int $$0 = this.a.n();
-      ffc $$1 = this.a.J(1.0F);
-      int $$2 = this.a.q(-$$1.d * 40.0, 105.0, -$$1.f * 40.0);
-      if (this.a.x() != null && this.a.x().e() > 0) {
-         $$2 %= 12;
-         if ($$2 < 0) {
-            $$2 += 12;
-         }
-      } else {
-         $$2 -= 12;
-         $$2 &= 7;
-         $$2 += 12;
-      }
-
-      this.c = this.a.a($$0, $$2, null);
-      this.j();
+   public void a(ffq $$0) {
+      this.d = $$0;
    }
 
-   private void j() {
-      if (this.c != null) {
-         this.c.a();
-         if (!this.c.c()) {
-            ka $$0 = this.c.g();
-            this.c.a();
-
-            double $$1;
-            do {
-               $$1 = (double)((float)$$0.v() + this.a.dX().i() * 20.0F);
-            } while ($$1 < (double)$$0.v());
-
-            this.d = new ffc((double)$$0.u(), $$1, (double)$$0.w());
-         }
-      }
+   @Override
+   public float e() {
+      return 3.0F;
    }
 
    @Nullable
    @Override
-   public ffc f() {
+   public ffq f() {
       return this.d;
    }
 
    @Override
-   public cna<cmz> h() {
-      return cna.e;
+   public cnl<cmz> h() {
+      return cnl.i;
    }
 }

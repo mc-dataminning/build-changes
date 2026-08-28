@@ -1,82 +1,69 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.datafixers.util.Pair;
 import javax.annotation.Nullable;
 
-public class dfb implements dez {
-   final Optional<dea> d;
-   final dea e;
-   final Optional<dea> f;
-   final dfh g;
+public class dfb extends def {
+   public dfb(dec $$0) {
+      super($$0);
+   }
+
    @Nullable
-   private ded h;
+   private static Pair<czy, czy> c(ded $$0) {
+      if ($$0.e() != 2) {
+         return null;
+      } else {
+         czy $$1 = null;
 
-   public dfb(Optional<dea> $$0, dea $$1, Optional<dea> $$2, dfh $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-   }
+         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+            czy $$3 = $$0.a($$2);
+            if (!$$3.f()) {
+               if ($$1 != null) {
+                  return a($$1, $$3) ? Pair.of($$1, $$3) : null;
+               }
 
-   public czn a(dfa $$0, jh.a $$1) {
-      return this.g.a($$0.d());
-   }
+               $$1 = $$3;
+            }
+         }
 
-   @Override
-   public Optional<dea> c() {
-      return this.d;
-   }
-
-   @Override
-   public dea f() {
-      return this.e;
-   }
-
-   @Override
-   public Optional<dea> k() {
-      return this.f;
-   }
-
-   @Override
-   public deo<dfb> a() {
-      return deo.t;
-   }
-
-   @Override
-   public ded al_() {
-      if (this.h == null) {
-         this.h = ded.a(List.of(this.d, Optional.of(this.e), this.f));
+         return null;
       }
+   }
 
-      return this.h;
+   private static boolean a(czy $$0, czy $$1) {
+      return $$1.a($$0.h()) && $$0.M() == 1 && $$1.M() == 1 && $$0.c(kk.d) && $$1.c(kk.d) && $$0.c(kk.e) && $$1.c(kk.e);
+   }
+
+   public boolean a(ded $$0, djx $$1) {
+      return c($$0) != null;
+   }
+
+   public czy a(ded $$0, jh.a $$1) {
+      Pair<czy, czy> $$2 = c($$0);
+      if ($$2 == null) {
+         return czy.k;
+      } else {
+         czy $$3 = (czy)$$2.getFirst();
+         czy $$4 = (czy)$$2.getSecond();
+         int $$5 = Math.max($$3.p(), $$4.p());
+         int $$6 = $$3.p() - $$3.o();
+         int $$7 = $$4.p() - $$4.o();
+         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
+         czy $$9 = new czy($$3.h());
+         $$9.b(kk.d, $$5);
+         $$9.b(Math.max($$5 - $$8, 0));
+         dgr $$10 = dgn.b($$3);
+         dgr $$11 = dgn.b($$4);
+         dgn.a($$9, $$3x -> $$1.e(mh.aR).c().filter($$0xx -> $$0xx.a(axg.o)).forEach($$3xx -> {
+               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
+               if ($$4x > 0) {
+                  $$3x.b($$3xx, $$4x);
+               }
+            }));
+         return $$9;
+      }
    }
 
    @Override
-   public List<dfk> g() {
-      return List.of(new dft(dea.a(this.d), this.e.c(), dea.a(this.f), this.g.a(), new dfq.d(czr.xB)));
-   }
-
-   public static class a implements deo<dfb> {
-      private static final MapCodec<dfb> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  dea.d.optionalFieldOf("template").forGetter($$0x -> $$0x.d),
-                  dea.d.fieldOf("base").forGetter($$0x -> $$0x.e),
-                  dea.d.optionalFieldOf("addition").forGetter($$0x -> $$0x.f),
-                  dfh.a.fieldOf("result").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, dfb::new)
-      );
-      public static final yw<wj, dfb> w = yw.a(dea.b, $$0 -> $$0.d, dea.a, $$0 -> $$0.e, dea.b, $$0 -> $$0.f, dfh.b, $$0 -> $$0.g, dfb::new);
-
-      @Override
-      public MapCodec<dfb> a() {
-         return x;
-      }
-
-      @Override
-      public yw<wj, dfb> b() {
-         return w;
-      }
+   public dez<dfb> a() {
+      return dez.n;
    }
 }

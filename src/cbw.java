@@ -1,28 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
 import java.util.function.Function;
 
 public class cbw {
-   public static <E extends bxj> cal<E> a(List<Pair<? extends ccq<? super E>, Integer>> $$0) {
-      return a($$0, bzo.a.b, bzo.b.a);
-   }
+   private static final float a = 0.3F;
 
-   public static <E extends bxj> cal<E> a(List<Pair<? extends ccq<? super E>, Integer>> $$0, bzo.a $$1, bzo.b $$2) {
-      cbj<ccq<? super E>> $$3 = new cbj<>();
-      $$0.forEach($$1x -> $$3.a((ccq<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return ccn.a((Function<ccn.b<E>, ? extends App<ccn.c<E>, ccq<E>>>)($$3x -> $$3x.a((ccq<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == bzo.a.b) {
-               $$3.a();
-            }
-
-            for (ccq<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bzo.b.a) {
-                  break;
-               }
-            }
-
-            return true;
-         }))));
+   public static caw<bxu> a() {
+      return ccy.a(
+         (Function<ccy.b<bxu>, ? extends App<ccy.c<bxu>, cdb<bxu>>>)($$0 -> $$0.group($$0.a(cgw.n), $$0.a(cgw.o), $$0.b(cgw.e), $$0.b(cgw.h), $$0.c(cgw.r))
+               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     je $$9 = $$0.b($$3);
+                     cgy $$10 = $$0.b($$4);
+                     if ($$6.G_().a(100) == 0 && $$6.aj() == $$9.a() && $$9.b().a($$7.dt(), 4.0) && $$10.d($$0xxx -> bxc.bE.equals($$0xxx.an()))) {
+                        $$10.a($$1xx -> bxc.bE.equals($$1xx.an()) && $$1xx.g($$7) <= 32.0).ifPresent($$3xx -> {
+                           $$5.a($$3xx);
+                           $$2.a(new bzw($$3xx, true));
+                           $$1.a(new cgz(new bzw($$3xx, false), 0.3F, 1));
+                        });
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

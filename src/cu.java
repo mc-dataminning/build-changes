@@ -4,9 +4,9 @@ import java.util.Optional;
 
 public record cu(
    Optional<cu.b> b,
-   Optional<jj<dkp>> c,
-   Optional<jj<ern>> d,
-   Optional<alf<djm>> e,
+   Optional<jj<dla>> c,
+   Optional<jj<esb>> d,
+   Optional<alh<djx>> e,
    Optional<Boolean> f,
    Optional<cr> g,
    Optional<az> h,
@@ -18,7 +18,7 @@ public record cu(
                cu.b.a.optionalFieldOf("position").forGetter(cu::a),
                ju.a(mh.aG).optionalFieldOf("biomes").forGetter(cu::b),
                ju.a(mh.be).optionalFieldOf("structures").forGetter(cu::c),
-               alf.a(mh.bp).optionalFieldOf("dimension").forGetter(cu::d),
+               alh.a(mh.bp).optionalFieldOf("dimension").forGetter(cu::d),
                Codec.BOOL.optionalFieldOf("smokey").forGetter(cu::e),
                cr.a.optionalFieldOf("light").forGetter(cu::f),
                az.a.optionalFieldOf("block").forGetter(cu::g),
@@ -28,7 +28,7 @@ public record cu(
             .apply($$0, cu::new)
    );
 
-   public boolean a(arq $$0, double $$1, double $$2, double $$3) {
+   public boolean a(ars $$0, double $$1, double $$2, double $$3) {
       if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
          return false;
       } else if (this.e.isPresent() && this.e.get() != $$0.aj()) {
@@ -38,7 +38,7 @@ public record cu(
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && this.c.get().a($$0.u($$4))) {
             if (!this.d.isPresent() || $$5 && $$0.b().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dnh.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == dns.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else if (this.h.isPresent() && !this.h.get().a($$0, $$4)) {
@@ -62,15 +62,15 @@ public record cu(
       return this.b;
    }
 
-   public Optional<jj<dkp>> b() {
+   public Optional<jj<dla>> b() {
       return this.c;
    }
 
-   public Optional<jj<ern>> c() {
+   public Optional<jj<esb>> c() {
       return this.d;
    }
 
-   public Optional<alf<djm>> d() {
+   public Optional<alh<djx>> d() {
       return this.e;
    }
 
@@ -98,9 +98,9 @@ public record cu(
       private cw.c a;
       private cw.c b;
       private cw.c c;
-      private Optional<jj<dkp>> d;
-      private Optional<jj<ern>> e;
-      private Optional<alf<djm>> f;
+      private Optional<jj<dla>> d;
+      private Optional<jj<esb>> e;
+      private Optional<alh<djx>> f;
       private Optional<Boolean> g;
       private Optional<cr> h;
       private Optional<az> i;
@@ -125,15 +125,15 @@ public record cu(
          return new cu.a();
       }
 
-      public static cu.a a(jf<dkp> $$0) {
+      public static cu.a a(jf<dla> $$0) {
          return a().a(jj.a($$0));
       }
 
-      public static cu.a a(alf<djm> $$0) {
+      public static cu.a a(alh<djx> $$0) {
          return a().b($$0);
       }
 
-      public static cu.a b(jf<ern> $$0) {
+      public static cu.a b(jf<esb> $$0) {
          return a().b(jj.a($$0));
       }
 
@@ -156,17 +156,17 @@ public record cu(
          return this;
       }
 
-      public cu.a a(jj<dkp> $$0) {
+      public cu.a a(jj<dla> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public cu.a b(jj<ern> $$0) {
+      public cu.a b(jj<esb> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public cu.a b(alf<djm> $$0) {
+      public cu.a b(alh<djx> $$0) {
          this.f = Optional.of($$0);
          return this;
       }

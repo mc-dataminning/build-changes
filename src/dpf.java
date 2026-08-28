@@ -1,88 +1,176 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class dpf extends dmd {
-   public static final MapCodec<dpf> a = b(dpf::new);
-   public static final List<iv> b = iv.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(iv::j).toList();
-   private static final ffw c = dmr.b(16.0, 0.0, 12.0);
+public abstract class dpf extends drd {
+   public static final ebv c = ebu.A;
+   private static final fgk a = dnc.b(16.0, 0.0, 2.0);
 
-   @Override
-   public MapCodec<dpf> a() {
-      return a;
-   }
-
-   protected dpf(eas.d $$0) {
+   protected dpf(ebd.d $$0) {
       super($$0);
    }
 
-   public static boolean a(djm $$0, iv $$1, iv $$2) {
-      return $$0.a_($$1.a((ka)$$2)).a(axc.cC) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(axc.cD);
+   @Override
+   protected abstract MapCodec<? extends dpf> a();
+
+   @Override
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return a;
    }
 
    @Override
-   protected boolean g_(eat $$0) {
-      return true;
+   protected boolean a(ebe $$0, dka $$1, iv $$2) {
+      iv $$3 = $$2.e();
+      return this.a($$1, $$3, $$1.a_($$3));
+   }
+
+   protected boolean a(dka $$0, iv $$1, ebe $$2) {
+      return $$2.a($$0, $$1, jb.b, dvn.c);
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return c;
-   }
-
-   @Override
-   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
-      super.a($$0, $$1, $$2, $$3);
-
-      for (iv $$4 : b) {
-         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
-            $$1.a(
-               ly.s,
-               (double)$$2.u() + 0.5,
-               (double)$$2.v() + 2.0,
-               (double)$$2.w() + 0.5,
-               (double)((float)$$4.u() + $$3.i()) - 0.5,
-               (double)((float)$$4.v() - $$3.i() - 1.0F),
-               (double)((float)$$4.w() + $$3.i()) - 0.5
-            );
+   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      if (!this.b((dka)$$1, $$2, $$0)) {
+         boolean $$4 = $$0.c(c);
+         boolean $$5 = this.a((djx)$$1, $$2, $$0);
+         if ($$4 && !$$5) {
+            $$1.a($$2, $$0.b(c, Boolean.valueOf(false)), 2);
+         } else if (!$$4) {
+            $$1.a($$2, $$0.b(c, Boolean.valueOf(true)), 2);
+            if (!$$5) {
+               $$1.a($$2, this, this.h($$0), fhm.b);
+            }
          }
       }
    }
 
    @Override
-   public dxr a(iv $$0, eat $$1) {
-      return new dyo($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dxr> dxs<T> a(djm $$0, eat $$1, dxt<T> $$2) {
-      return $$0.C ? a($$2, dxt.n, dyo::a) : null;
+   protected int b(ebe $$0, djb $$1, iv $$2, jb $$3) {
+      return $$0.a($$1, $$2, $$3);
    }
 
    @Override
-   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-      }
-
-      return bug.a;
-   }
-
-   @Nullable
-   @Override
-   protected bui b(eat $$0, djm $$1, iv $$2) {
-      dxr $$3 = $$1.c_($$2);
-      if ($$3 instanceof dyo) {
-         wy $$4 = ((buj)$$3).m_();
-         return new buo(($$2x, $$3x, $$4x) -> new cwb($$2x, $$3x, cvs.a($$1, $$2)), $$4);
+   protected int a(ebe $$0, djb $$1, iv $$2, jb $$3) {
+      if (!$$0.c(c)) {
+         return 0;
       } else {
-         return null;
+         return $$0.c(e) == $$3 ? this.a($$1, $$2, $$0) : 0;
       }
    }
 
    @Override
-   protected boolean a(eat $$0, exp $$1) {
+   protected void a(ebe $$0, djx $$1, iv $$2, dnc $$3, @Nullable eyw $$4, boolean $$5) {
+      if ($$0.a((dka)$$1, $$2)) {
+         this.c($$1, $$2, $$0);
+      } else {
+         dyc $$6 = $$0.x() ? $$1.c_($$2) : null;
+         a($$0, $$1, $$2, $$6);
+         $$1.a($$2, false);
+
+         for (jb $$7 : jb.values()) {
+            $$1.a($$2.a($$7), this);
+         }
+      }
+   }
+
+   protected void c(djx $$0, iv $$1, ebe $$2) {
+      if (!this.b((dka)$$0, $$1, $$2)) {
+         boolean $$3 = $$2.c(c);
+         boolean $$4 = this.a($$0, $$1, $$2);
+         if ($$3 != $$4 && !$$0.U().b($$1, this)) {
+            fhm $$5 = fhm.c;
+            if (this.b((djb)$$0, $$1, $$2)) {
+               $$5 = fhm.a;
+            } else if ($$3) {
+               $$5 = fhm.b;
+            }
+
+            $$0.a($$1, this, this.h($$2), $$5);
+         }
+      }
+   }
+
+   public boolean b(dka $$0, iv $$1, ebe $$2) {
       return false;
    }
+
+   protected boolean a(djx $$0, iv $$1, ebe $$2) {
+      return this.b($$0, $$1, $$2) > 0;
+   }
+
+   protected int b(djx $$0, iv $$1, ebe $$2) {
+      jb $$3 = $$2.c(e);
+      iv $$4 = $$1.a($$3);
+      int $$5 = $$0.c($$4, $$3);
+      if ($$5 >= 15) {
+         return $$5;
+      } else {
+         ebe $$6 = $$0.a_($$4);
+         return Math.max($$5, $$6.a(dne.cH) ? $$6.c(dtl.f) : 0);
+      }
+   }
+
+   protected int a(dkp $$0, iv $$1, ebe $$2) {
+      jb $$3 = $$2.c(e);
+      jb $$4 = $$3.h();
+      jb $$5 = $$3.i();
+      boolean $$6 = this.b();
+      return Math.max($$0.a($$1.a($$4), $$4, $$6), $$0.a($$1.a($$5), $$5, $$6));
+   }
+
+   @Override
+   protected boolean f_(ebe $$0) {
+      return true;
+   }
+
+   @Override
+   public ebe a(ddr $$0) {
+      return this.m().b(e, $$0.g().g());
+   }
+
+   @Override
+   public void a(djx $$0, iv $$1, ebe $$2, bxu $$3, czy $$4) {
+      if (this.a($$0, $$1, $$2)) {
+         $$0.a($$1, this, 1);
+      }
+   }
+
+   @Override
+   protected void a(ebe $$0, djx $$1, iv $$2, ebe $$3, boolean $$4) {
+      this.d($$1, $$2, $$0);
+   }
+
+   @Override
+   protected void a(ebe $$0, ars $$1, iv $$2, boolean $$3) {
+      if (!$$3) {
+         this.d($$1, $$2, $$0);
+      }
+   }
+
+   protected void d(djx $$0, iv $$1, ebe $$2) {
+      jb $$3 = $$2.c(e);
+      iv $$4 = $$1.a($$3.g());
+      eyw $$5 = eys.a($$0, $$3.g(), jb.b);
+      $$0.b($$4, this, $$5);
+      $$0.a($$4, this, $$3, $$5);
+   }
+
+   protected boolean b() {
+      return false;
+   }
+
+   protected int a(djb $$0, iv $$1, ebe $$2) {
+      return 15;
+   }
+
+   public static boolean n(ebe $$0) {
+      return $$0.b() instanceof dpf;
+   }
+
+   public boolean b(djb $$0, iv $$1, ebe $$2) {
+      jb $$3 = $$2.c(e).g();
+      ebe $$4 = $$0.a_($$1.a($$3));
+      return n($$4) && $$4.c(e) != $$3;
+   }
+
+   protected abstract int h(ebe var1);
 }

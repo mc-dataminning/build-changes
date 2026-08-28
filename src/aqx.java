@@ -1,87 +1,113 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.util.List;
-import java.util.stream.IntStream;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class aqx {
-   public static final int a = aqt.b + 2;
-   private final List<Long2ObjectLinkedOpenHashMap<List<Runnable>>> b = IntStream.range(0, a).mapToObj($$0x -> new Long2ObjectLinkedOpenHashMap()).toList();
-   private volatile int c = a;
-   private final String d;
-
-   public aqx(String $$0) {
-      this.d = $$0;
+public interface aqx<T> {
+   static <T> aqx<T> a(T $$0) {
+      return new aqx.b<>($$0);
    }
 
-   protected void a(int $$0, dir $$1, int $$2) {
-      if ($$0 < a) {
-         Long2ObjectLinkedOpenHashMap<List<Runnable>> $$3 = this.b.get($$0);
-         List<Runnable> $$4 = (List<Runnable>)$$3.remove($$1.a());
-         if ($$0 == this.c) {
-            while (this.b() && this.b.get(this.c).isEmpty()) {
-               this.c++;
-            }
-         }
-
-         if ($$4 != null && !$$4.isEmpty()) {
-            ((List)this.b.get($$2).computeIfAbsent($$1.a(), $$0x -> Lists.newArrayList())).addAll($$4);
-            this.c = Math.min(this.c, $$2);
-         }
-      }
+   static <T> aqx<T> a(String $$0) {
+      return a(() -> $$0);
    }
 
-   protected void a(Runnable $$0, long $$1, int $$2) {
-      ((List)this.b.get($$2).computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$0);
-      this.c = Math.min(this.c, $$2);
+   static <T> aqx<T> a(Supplier<String> $$0) {
+      return new aqx.a<>($$0);
    }
 
-   protected void a(long $$0, boolean $$1) {
-      for (Long2ObjectLinkedOpenHashMap<List<Runnable>> $$2 : this.b) {
-         List<Runnable> $$3 = (List<Runnable>)$$2.get($$0);
-         if ($$3 != null) {
-            if ($$1) {
-               $$3.clear();
-            }
+   boolean a();
 
-            if ($$3.isEmpty()) {
-               $$2.remove($$0);
-            }
-         }
-      }
+   @Nullable
+   T b(@Nullable T var1);
 
-      while (this.b() && this.b.get(this.c).isEmpty()) {
-         this.c++;
-      }
+   @Nullable
+   static <R> R a(aqx<? extends R> $$0, @Nullable R $$1) {
+      R $$2 = (R)$$0.b(null);
+      return $$2 != null ? $$2 : $$1;
    }
 
    @Nullable
-   public aqx.a a() {
-      if (!this.b()) {
-         return null;
-      } else {
-         int $$0 = this.c;
-         Long2ObjectLinkedOpenHashMap<List<Runnable>> $$1 = this.b.get($$0);
-         long $$2 = $$1.firstLongKey();
-         List<Runnable> $$3 = (List<Runnable>)$$1.removeFirst();
+   String b();
 
-         while (this.b() && this.b.get(this.c).isEmpty()) {
-            this.c++;
-         }
+   aqx<T> a(Consumer<T> var1);
 
-         return new aqx.a($$2, $$3);
+   <R> aqx<R> a(Function<T, R> var1);
+
+   <E extends Throwable> T b(Supplier<E> var1) throws E;
+
+   public static record a<T>(Supplier<String> a) implements aqx<T> {
+      @Override
+      public boolean a() {
+         return false;
+      }
+
+      @Nullable
+      @Override
+      public T b(@Nullable T $$0) {
+         return $$0;
+      }
+
+      @Override
+      public String b() {
+         return this.a.get();
+      }
+
+      @Override
+      public aqx<T> a(Consumer<T> $$0) {
+         return this;
+      }
+
+      @Override
+      public <R> aqx<R> a(Function<T, R> $$0) {
+         return new aqx.a(this.a);
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         throw $$0.get();
+      }
+
+      public Supplier<String> c() {
+         return this.a;
       }
    }
 
-   public boolean b() {
-      return this.c < a;
-   }
+   public static record b<T>(T a) implements aqx<T> {
+      @Override
+      public boolean a() {
+         return true;
+      }
 
-   @Override
-   public String toString() {
-      return this.d + " " + this.c + "...";
-   }
+      @Override
+      public T b(@Nullable T $$0) {
+         return this.a;
+      }
 
-   public static record a(long a, List<Runnable> b) {
+      @Nullable
+      @Override
+      public String b() {
+         return null;
+      }
+
+      @Override
+      public aqx<T> a(Consumer<T> $$0) {
+         $$0.accept(this.a);
+         return this;
+      }
+
+      @Override
+      public <R> aqx<R> a(Function<T, R> $$0) {
+         return new aqx.b<>($$0.apply(this.a));
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         return this.a;
+      }
+
+      public T c() {
+         return this.a;
+      }
    }
 }

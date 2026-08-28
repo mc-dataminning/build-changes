@@ -1,69 +1,97 @@
-import java.util.Locale;
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public interface ezm extends ezo {
-   @Override
-   String e();
+public class ezm {
+   private static final String a = "command_storage_";
+   private final Map<String, ezm.a> b = new HashMap<>();
+   private final ezp c;
 
-   void a(boolean var1);
-
-   int j();
-
-   void c(int var1);
-
-   void b(int var1);
-
-   int h();
-
-   @Override
-   default void a(q $$0, djo $$1) {
-      ezo.super.a($$0, $$1);
-      $$0.a("Level name", this::e);
-      $$0.a(
-         "Level game mode",
-         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
+   public ezm(ezp $$0) {
+      this.c = $$0;
    }
 
-   int f();
-
-   void a(int var1);
-
-   int t();
-
-   void d(int var1);
-
-   int u();
-
-   void e(int var1);
+   public tz a(ali $$0) {
+      ezm.a $$1 = this.a($$0.b());
+      return $$1 != null ? $$1.b($$0.a()) : new tz();
+   }
 
    @Nullable
-   UUID v();
+   private ezm.a a(String $$0) {
+      ezm.a $$1 = this.b.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         ezm.a $$2 = this.c.b(ezm.a.a($$0));
+         if ($$2 != null) {
+            this.b.put($$0, $$2);
+         }
 
-   void a(UUID var1);
+         return $$2;
+      }
+   }
 
-   djj k();
+   private ezm.a b(String $$0) {
+      ezm.a $$1 = this.b.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         ezm.a $$2 = this.c.a(ezm.a.a($$0));
+         this.b.put($$0, $$2);
+         return $$2;
+      }
+   }
 
-   void a(ecl.d var1);
+   public void a(ali $$0, tz $$1) {
+      this.b($$0.b()).a($$0.a(), $$1);
+   }
 
-   ecl.d p();
+   public Stream<ali> a() {
+      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().c($$0.getKey()));
+   }
 
-   boolean n();
+   static String c(String $$0) {
+      return "command_storage_" + $$0;
+   }
 
-   void c(boolean var1);
+   static class a extends eza {
+      public static final Codec<ezm.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.unboundedMap(ayw.C, tz.a).fieldOf("contents").forGetter($$0x -> $$0x.b)).apply($$0, ezm.a::new)
+      );
+      private final Map<String, tz> b;
 
-   boolean m();
+      private a(Map<String, tz> $$0) {
+         this.b = new HashMap<>($$0);
+      }
 
-   void a(djj var1);
+      private a() {
+         this(new HashMap<>());
+      }
 
-   fep<MinecraftServer> s();
+      public static ezb<ezm.a> a(String $$0) {
+         return new ezb<>(ezm.c($$0), ezm.a::new, a, bbd.h);
+      }
 
-   void a(long var1);
+      public tz b(String $$0) {
+         tz $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new tz();
+      }
 
-   void b(long var1);
+      public void a(String $$0, tz $$1) {
+         if ($$1.j()) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
 
-   dji o();
+         this.f();
+      }
+
+      public Stream<ali> c(String $$0) {
+         return this.b.keySet().stream().map($$1 -> ali.a($$0, $$1));
+      }
+   }
 }

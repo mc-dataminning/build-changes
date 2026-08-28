@@ -1,40 +1,13 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cfo extends cef {
-   private final cqt a;
-
-   public cfo(cqt $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(cef.a.c, cef.a.a));
+public class cfo extends cfn {
+   public cfo(byc $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
+   @Nullable
    @Override
-   public boolean b() {
-      if (!this.a.bI()) {
-         return false;
-      } else if (this.a.bh()) {
-         return false;
-      } else if (!this.a.aH()) {
-         return false;
-      } else if (this.a.T) {
-         return false;
-      } else {
-         crm $$0 = this.a.x();
-         if ($$0 == null) {
-            return false;
-         } else {
-            return this.a.g($$0) > 16.0 ? false : $$0.bR != null;
-         }
-      }
-   }
-
-   @Override
-   public void d() {
-      this.a.O().m();
-   }
-
-   @Override
-   public void e() {
-      this.a.a(null);
+   protected ffq h() {
+      return bzn.a(this.b, 10, 7);
    }
 }

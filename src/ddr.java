@@ -1,30 +1,77 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum ddr implements bak {
-   a("building", 0),
-   b("redstone", 1),
-   c("equipment", 2),
-   d("misc", 3);
+public class ddr extends ddt {
+   private final iv b;
+   protected boolean a = true;
 
-   public static final Codec<ddr> e = bak.a(ddr::values);
-   public static final IntFunction<ddr> f = ayc.a(ddr::a, values(), ayc.a.a);
-   public static final yw<ByteBuf, ddr> g = yu.a(f, ddr::a);
-   private final String h;
-   private final int i;
+   public ddr(crx $$0, buq $$1, czy $$2, ffm $$3) {
+      this($$0.dV(), $$0, $$1, $$2, $$3);
+   }
 
-   private ddr(final String $$0, final int $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   public ddr(ddt $$0) {
+      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   }
+
+   protected ddr(djx $$0, @Nullable crx $$1, buq $$2, czy $$3, ffm $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.b = $$4.b().a($$4.c());
+      this.a = $$0.a_($$4.b()).a(this);
+   }
+
+   public static ddr a(ddr $$0, iv $$1, jb $$2) {
+      return new ddr(
+         $$0.q(),
+         $$0.o(),
+         $$0.p(),
+         $$0.n(),
+         new ffm(
+            new ffq((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
+            $$2,
+            $$1,
+            false
+         )
+      );
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public iv a() {
+      return this.a ? super.a() : this.b;
    }
 
-   private int a() {
-      return this.i;
+   public boolean b() {
+      return this.a || this.q().a_(this.a()).a(this);
+   }
+
+   public boolean c() {
+      return this.a;
+   }
+
+   public jb d() {
+      return jb.a(this.o())[0];
+   }
+
+   public jb e() {
+      return jb.a(this.o(), jb.a.b);
+   }
+
+   public jb[] f() {
+      jb[] $$0 = jb.a(this.o());
+      if (this.a) {
+         return $$0;
+      } else {
+         jb $$1 = this.k();
+         int $$2 = 0;
+
+         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
+            $$2++;
+         }
+
+         if ($$2 > 0) {
+            System.arraycopy($$0, 0, $$0, 1, $$2);
+            $$0[0] = $$1.g();
+         }
+
+         return $$0;
+      }
    }
 }

@@ -1,108 +1,79 @@
-public class gor extends goz {
-   private static final azv a = azv.a();
-   private final gou b;
-   private float F = 1.0F;
+import javax.annotation.Nullable;
 
-   gor(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gou $$7) {
-      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
+public class gor extends gqk {
+   private final float a;
+   private final gqf b;
+
+   gor(gmb $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gqf $$7) {
+      super($$0, $$1, $$2, $$3);
       this.b = $$7;
-      this.k *= 0.2F;
-      if ($$4 == 0.0 && $$6 == 0.0) {
-         this.j *= 0.1F;
-         this.l *= 0.1F;
-      }
-
-      this.D *= 0.75F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
+      this.v = $$4;
+      this.w = $$5;
+      this.x = $$6;
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
       this.b($$7);
-      if (this.g()) {
-         this.e(0.0F);
-      }
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public god b() {
-      return god.c;
+   public gpo b() {
+      return gpo.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * azo.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.b);
-      if (this.g()) {
-         this.y = 0.0F;
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         this.y = azm.h(0.05F, this.y, this.F);
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
+         }
+
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
       }
    }
 
-   @Override
-   protected void e(float $$0) {
-      super.e($$0);
-      this.F = $$0;
-   }
+   public static class a implements gpn<lq> {
+      private final gqf a;
 
-   private boolean g() {
-      fpt $$0 = fpt.Q();
-      gpo $$1 = $$0.t;
-      return $$1 != null && $$1.bC().c(this.g, this.h, this.i) <= 9.0 && $$0.n.aE().a() && $$1.gG();
-   }
-
-   public static class a implements goc<mc> {
-      private final gou a;
-
-      public a(gou $$0) {
+      public a(gqf $$0) {
          this.a = $$0;
       }
 
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gor($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
+      @Nullable
+      public gpk a(lq $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ebe $$8 = $$0.b();
+         if (!$$8.l() && $$8.o() == dtp.a) {
+            return null;
+         } else {
+            iv $$9 = iv.a($$2, $$3, $$4);
+            int $$10 = frd.Q().aw().a($$8, $$1, $$9);
+            if ($$8.b() instanceof dqa) {
+               $$10 = ((dqa)$$8.b()).b($$8, $$1, $$9);
+            }
 
-   public static class b implements goc<lr> {
-      private final gou a;
-
-      public b(gou $$0) {
-         this.a = $$0;
-      }
-
-      public gnz a(lr $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gnz $$8 = new gor($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a($$0.b(), $$0.c(), $$0.d());
-         $$8.e($$0.e());
-         return $$8;
-      }
-   }
-
-   public static class c implements goc<mc> {
-      private final gou a;
-
-      public c(gou $$0) {
-         this.a = $$0;
-      }
-
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gor($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class d implements goc<mc> {
-      private final gou a;
-
-      public d(gou $$0) {
-         this.a = $$0;
-      }
-
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gor $$8 = new gor($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         float $$9 = $$1.A.i() * 0.5F + 0.35F;
-         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
-         return $$8;
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new gor($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
       }
    }
 }

@@ -1,22 +1,32 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hhk(boolean b) implements hhq {
-   public static final MapCodec<hhk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("normalize", true).forGetter(hhk::b)).apply($$0, hhk::new)
-   );
+public class hhk implements hhp {
+   static final hhp a = new hhk();
 
    @Override
-   public float a(czn $$0, @Nullable gkq $$1, @Nullable bxj $$2, int $$3) {
-      float $$4 = (float)$$0.M();
-      float $$5 = (float)$$0.k();
-      return this.b ? azm.a($$4 / $$5, 0.0F, 1.0F) : azm.a($$4, 0.0F, $$5);
+   public void a(hhs $$0, czy $$1, hhq $$2, czw $$3, @Nullable gmb $$4, @Nullable bxu $$5, int $$6) {
+      czy $$7 = cyn.i($$1);
+      if (!$$7.f()) {
+         $$2.b($$0, $$7, $$3, $$4, $$5, $$6);
+      }
    }
 
-   @Override
-   public MapCodec<hhk> a() {
-      return a;
+   public static record a() implements hhp.b {
+      public static final MapCodec<hhk.a> a = MapCodec.unit(new hhk.a());
+
+      @Override
+      public MapCodec<hhk.a> a() {
+         return a;
+      }
+
+      @Override
+      public hhp a(hhp.a $$0) {
+         return hhk.a;
+      }
+
+      @Override
+      public void a(hnr.a $$0) {
+      }
    }
 }

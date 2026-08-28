@@ -1,35 +1,28 @@
-import java.net.InetSocketAddress;
+import java.util.EnumMap;
 
-public interface gmh {
-   String a();
+public class gmh {
+   public static final int a = 5000;
+   private final gmc b;
+   private final fut c;
+   private final EnumMap<bpd, Long> d;
 
-   String b();
+   public gmh(gmc $$0, fut $$1) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = new EnumMap<>(bpd.class);
+   }
 
-   int c();
+   public void a() {
+      if (this.c.g()) {
+         this.a(bpd.a);
+      }
+   }
 
-   InetSocketAddress d();
-
-   static gmh a(final InetSocketAddress $$0) {
-      return new gmh() {
-         @Override
-         public String a() {
-            return $$0.getAddress().getHostName();
-         }
-
-         @Override
-         public String b() {
-            return $$0.getAddress().getHostAddress();
-         }
-
-         @Override
-         public int c() {
-            return $$0.getPort();
-         }
-
-         @Override
-         public InetSocketAddress d() {
-            return $$0;
-         }
-      };
+   private void a(bpd $$0) {
+      long $$1 = ag.c();
+      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
+         this.b.b(new ahk($$0));
+         this.d.put($$0, $$1);
+      }
    }
 }

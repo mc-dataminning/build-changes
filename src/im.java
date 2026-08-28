@@ -2,7 +2,7 @@ import com.google.gson.JsonObject;
 import com.mojang.brigadier.arguments.FloatArgumentType;
 
 public class im implements ig<FloatArgumentType, im.a> {
-   public void a(im.a $$0, vu $$1) {
+   public void a(im.a $$0, vw $$1) {
       boolean $$2 = $$0.b != -Float.MAX_VALUE;
       boolean $$3 = $$0.c != Float.MAX_VALUE;
       $$1.l(ii.a($$2, $$3));
@@ -15,7 +15,7 @@ public class im implements ig<FloatArgumentType, im.a> {
       }
    }
 
-   public im.a a(vu $$0) {
+   public im.a a(vw $$0) {
       byte $$1 = $$0.readByte();
       float $$2 = ii.a($$1) ? $$0.readFloat() : -Float.MAX_VALUE;
       float $$3 = ii.b($$1) ? $$0.readFloat() : Float.MAX_VALUE;

@@ -1,44 +1,83 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class ejo extends ejm {
-   public ejo(Codec<emj> $$0) {
+public class ejo extends ekk<emw> {
+   public ejo(Codec<emw> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(djn $$0, azv $$1, iv $$2, eat $$3) {
-      iv.a $$4 = $$2.k();
-      int $$5 = $$1.a(3) + 1;
+   public boolean a(ekm<emw> $$0) {
+      iv $$1 = $$0.e();
+      dkw $$2 = $$0.b();
+      azx $$3 = $$0.d();
+      if ($$2.v($$1) && !$$2.v($$1.d())) {
+         iv.a $$4 = $$1.k();
+         iv.a $$5 = $$1.k();
+         boolean $$6 = true;
+         boolean $$7 = true;
+         boolean $$8 = true;
+         boolean $$9 = true;
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
-            return true;
+         while ($$2.v($$4)) {
+            if ($$2.t($$4)) {
+               return true;
+            }
+
+            $$2.a($$4, dne.ep.m(), 2);
+            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, jb.c));
+            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, jb.d));
+            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, jb.e));
+            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, jb.f));
+            $$4.c(jb.a);
          }
 
          $$4.c(jb.b);
-      }
+         this.a($$2, $$3, $$5.a($$4, jb.c));
+         this.a($$2, $$3, $$5.a($$4, jb.d));
+         this.a($$2, $$3, $$5.a($$4, jb.e));
+         this.a($$2, $$3, $$5.a($$4, jb.f));
+         $$4.c(jb.a);
+         iv.a $$10 = new iv.a();
 
-      iv $$7 = $$4.j();
-      int $$8 = $$1.a(3) + 2;
-      List<jb> $$9 = jb.c.a.c($$1);
+         for (int $$11 = -3; $$11 < 4; $$11++) {
+            for (int $$12 = -3; $$12 < 4; $$12++) {
+               int $$13 = azo.a($$11) * azo.a($$12);
+               if ($$3.a(10) < 10 - $$13) {
+                  $$10.g($$4.b($$11, 0, $$12));
+                  int $$14 = 3;
 
-      for (jb $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.c($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
+                  while ($$2.v($$5.a($$10, jb.a))) {
+                     $$10.c(jb.a);
+                     if (--$$14 <= 0) {
+                        break;
+                     }
+                  }
 
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.c(jb.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.c($$11);
-               $$13 = 0;
+                  if (!$$2.v($$5.a($$10, jb.a))) {
+                     $$2.a($$10, dne.ep.m(), 2);
+                  }
+               }
             }
          }
-      }
 
-      return true;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(djy $$0, azx $$1, iv $$2) {
+      if ($$1.h()) {
+         $$0.a($$2, dne.ep.m(), 2);
+      }
+   }
+
+   private boolean b(djy $$0, azx $$1, iv $$2) {
+      if ($$1.a(10) != 0) {
+         $$0.a($$2, dne.ep.m(), 2);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

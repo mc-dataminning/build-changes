@@ -2,16 +2,16 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class uc extends up {
-   private static final int c = 12;
+public record uc(float c) implements up {
+   private static final int v = 12;
    public static final uc a = new uc(0.0F);
-   public static final uy<uc> b = new uy.a<uc>() {
+   public static final va<uc> b = new va.a<uc>() {
       public uc a(DataInput $$0, ui $$1) throws IOException {
          return uc.a(d($$0, $$1));
       }
 
       @Override
-      public ut.b a(DataInput $$0, ut $$1, ui $$2) throws IOException {
+      public uv.b a(DataInput $$0, uv $$1, ui $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
@@ -34,16 +34,13 @@ public class uc extends up {
       public String b() {
          return "TAG_Float";
       }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
    };
-   private final float w;
 
-   private uc(float $$0) {
-      this.w = $$0;
+   @Deprecated(
+      forRemoval = true
+   )
+   public uc(float c) {
+      this.c = c;
    }
 
    public static uc a(float $$0) {
@@ -52,7 +49,7 @@ public class uc extends up {
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeFloat(this.w);
+      $$0.writeFloat(this.c);
    }
 
    @Override
@@ -66,7 +63,7 @@ public class uc extends up {
    }
 
    @Override
-   public uy<uc> c() {
+   public va<uc> c() {
       return b;
    }
 
@@ -75,57 +72,58 @@ public class uc extends up {
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof uc && this.w == ((uc)$$0).w;
-   }
-
-   @Override
-   public int hashCode() {
-      return Float.floatToIntBits(this.w);
-   }
-
-   @Override
-   public void a(va $$0) {
+   public void a(vc $$0) {
       $$0.a(this);
    }
 
    @Override
-   public long f() {
-      return (long)this.w;
+   public long g() {
+      return (long)this.c;
    }
 
    @Override
-   public int g() {
-      return azm.d(this.w);
+   public int h() {
+      return azo.d(this.c);
    }
 
    @Override
-   public short h() {
-      return (short)(azm.d(this.w) & 65535);
+   public short i() {
+      return (short)(azo.d(this.c) & 65535);
    }
 
    @Override
-   public byte i() {
-      return (byte)(azm.d(this.w) & 0xFF);
+   public byte j() {
+      return (byte)(azo.d(this.c) & 0xFF);
    }
 
    @Override
-   public double j() {
-      return (double)this.w;
+   public double k() {
+      return (double)this.c;
    }
 
    @Override
-   public float k() {
-      return this.w;
+   public float l() {
+      return this.c;
    }
 
    @Override
-   public Number l() {
-      return this.w;
+   public Number m() {
+      return this.c;
    }
 
    @Override
-   public ut.b a(ut $$0) {
-      return $$0.a(this.w);
+   public uv.b a(uv $$0) {
+      return $$0.a(this.c);
+   }
+
+   @Override
+   public String toString() {
+      ux $$0 = new ux();
+      $$0.a(this);
+      return $$0.a();
+   }
+
+   public float n() {
+      return this.c;
    }
 }

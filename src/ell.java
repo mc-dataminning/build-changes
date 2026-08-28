@@ -1,79 +1,23 @@
 import com.mojang.serialization.Codec;
 
-public class ell extends ejy<emz> {
-   public ell(Codec<emz> $$0) {
+public class ell extends ekk<end> {
+   public ell(Codec<end> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eka<emz> $$0) {
-      dkl $$1 = $$0.b();
+   public boolean a(ekm<end> $$0) {
+      dkw $$1 = $$0.b();
       iv $$2 = $$0.e();
-      if (a($$1, $$2)) {
-         return false;
-      } else {
-         azv $$3 = $$0.d();
-         emz $$4 = $$0.f();
-         int $$5 = $$4.a();
-         int $$6 = $$4.b();
-         int $$7 = $$4.c();
-         iv.a $$8 = new iv.a();
+      end $$3 = $$0.f();
 
-         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
-            $$8.g($$2).e(azm.a($$3, -$$5, $$5), azm.a($$3, -$$6, $$6), azm.a($$3, -$$5, $$5));
-            if (a($$1, $$8) && !a($$1, (iv)$$8)) {
-               int $$10 = azm.a($$3, 1, $$7);
-               if ($$3.a(6) == 0) {
-                  $$10 *= 2;
-               }
-
-               if ($$3.a(5) == 0) {
-                  $$10 = 1;
-               }
-
-               int $$11 = 17;
-               int $$12 = 25;
-               a($$1, $$3, $$8, $$10, 17, 25);
-            }
+      for (emx.a $$4 : $$3.b) {
+         if ($$4.b.a($$1.a_($$2), $$0.d())) {
+            $$1.a($$2, $$4.c, 2);
+            break;
          }
-
-         return true;
       }
-   }
 
-   private static boolean a(djn $$0, iv.a $$1) {
-      do {
-         $$1.e(0, -1, 0);
-         if ($$0.t($$1)) {
-            return false;
-         }
-      } while ($$0.a_($$1).l());
-
-      $$1.e(0, 1, 0);
       return true;
-   }
-
-   public static void a(djn $$0, azv $$1, iv.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 1; $$6 <= $$3; $$6++) {
-         if ($$0.v($$2)) {
-            if ($$6 == $$3 || !$$0.v($$2.d())) {
-               $$0.a($$2, dmt.ph.m().b(dqk.e, Integer.valueOf(azm.a($$1, $$4, $$5))), 2);
-               break;
-            }
-
-            $$0.a($$2, dmt.pi.m(), 2);
-         }
-
-         $$2.c(jb.b);
-      }
-   }
-
-   private static boolean a(djn $$0, iv $$1) {
-      if (!$$0.v($$1)) {
-         return true;
-      } else {
-         eat $$2 = $$0.a_($$1.e());
-         return !$$2.a(dmt.em) && !$$2.a(dmt.oT) && !$$2.a(dmt.oV);
-      }
    }
 }

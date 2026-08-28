@@ -35,105 +35,105 @@ public class ek {
    private final CommandDispatcher<ej> h = new CommandDispatcher();
 
    public ek(ek.a $$0, ef $$1) {
-      amo.a(this.h);
-      amp.a(this.h, $$1);
-      anj.a(this.h, $$1);
-      amt.a(this.h, $$1);
+      amq.a(this.h);
+      amr.a(this.h, $$1);
+      anl.a(this.h, $$1);
       amv.a(this.h, $$1);
-      amw.a(this.h, $$1);
       amx.a(this.h, $$1);
-      aqa.a(this.h);
-      amy.a(this.h);
+      amy.a(this.h, $$1);
+      amz.a(this.h, $$1);
+      aqc.a(this.h);
       ana.a(this.h);
-      ane.a(this.h);
-      anf.a(this.h);
-      ang.a(this.h, $$1);
+      anc.a(this.h);
+      ang.a(this.h);
       anh.a(this.h);
       ani.a(this.h, $$1);
-      ank.a(this.h);
-      anm.a(this.h, $$1);
-      anl.a(this.h, $$1);
-      ann.a(this.h);
-      ano.a(this.h);
+      anj.a(this.h);
+      ank.a(this.h, $$1);
+      anm.a(this.h);
+      ano.a(this.h, $$1);
+      ann.a(this.h, $$1);
       anp.a(this.h);
-      anq.a(this.h, $$1);
-      anr.a(this.h, $$1);
-      ans.a(this.h);
-      anu.a(this.h, $$1);
-      anw.a(this.h);
-      anx.a(this.h);
+      anq.a(this.h);
+      anr.a(this.h);
+      ans.a(this.h, $$1);
+      ant.a(this.h, $$1);
+      anu.a(this.h);
+      anw.a(this.h, $$1);
       any.a(this.h);
-      anz.a(this.h, $$1);
+      anz.a(this.h);
+      aoa.a(this.h);
       aob.a(this.h, $$1);
-      aoc.a(this.h);
-      aog.a(this.h, $$1);
-      aoi.a(this.h);
-      aoj.a(this.h);
-      aom.a(this.h);
+      aod.a(this.h, $$1);
+      aoe.a(this.h);
+      aoi.a(this.h, $$1);
+      aok.a(this.h);
+      aol.a(this.h);
       aoo.a(this.h);
-      aon.a(this.h);
-      aop.a(this.h);
       aoq.a(this.h);
+      aop.a(this.h);
       aor.a(this.h);
-      aov.a(this.h);
-      aow.a(this.h);
-      aox.a(this.h, $$1);
-      aoy.a(this.h, $$0 != ek.a.c);
-      apa.a(this.h, $$1);
-      apc.a(this.h);
-      apd.a(this.h);
+      aos.a(this.h);
+      aot.a(this.h);
+      aox.a(this.h);
+      aoy.a(this.h);
+      aoz.a(this.h, $$1);
+      apa.a(this.h, $$0 != ek.a.c);
+      apc.a(this.h, $$1);
+      ape.a(this.h);
       apf.a(this.h);
-      apg.a(this.h);
+      aph.a(this.h);
       api.a(this.h);
-      apj.a(this.h, $$1);
       apk.a(this.h);
       apl.a(this.h, $$1);
       apm.a(this.h);
-      apn.a(this.h);
-      apo.a(this.h, $$1);
-      tj.a(this.h, $$1);
+      apn.a(this.h, $$1);
+      apo.a(this.h);
       app.a(this.h);
-      apq.a(this.h);
-      apr.a(this.h, $$1);
-      apt.a(this.h);
+      apq.a(this.h, $$1);
+      tj.a(this.h, $$1);
+      apr.a(this.h);
+      aps.a(this.h);
+      apt.a(this.h, $$1);
       apv.a(this.h);
       apx.a(this.h);
-      if (bqy.f.d()) {
-         anv.a(this.h);
+      apz.a(this.h);
+      if (brj.f.d()) {
+         anx.a(this.h);
       }
 
-      if (ac.aV) {
-         aol.a(this.h, $$1);
-         and.a(this.h);
-         anc.a(this.h);
-         apu.a(this.h);
-         ape.a(this.h);
-         aoz.a(this.h);
+      if (ac.aU) {
+         aon.a(this.h, $$1);
+         anf.a(this.h);
+         ane.a(this.h);
+         apw.a(this.h);
+         apg.a(this.h);
+         apb.a(this.h);
          if ($$0.e) {
-            anb.a(this.h);
+            and.a(this.h);
          }
       }
 
       if ($$0.e) {
-         amq.a(this.h);
-         amr.a(this.h);
          ams.a(this.h);
-         amz.a(this.h);
-         aod.a(this.h);
-         aoe.a(this.h);
+         amt.a(this.h);
+         amu.a(this.h);
+         anb.a(this.h);
          aof.a(this.h);
+         aog.a(this.h);
          aoh.a(this.h);
-         aos.a(this.h);
-         aot.a(this.h);
+         aoj.a(this.h);
          aou.a(this.h);
-         apb.a(this.h);
-         aph.a(this.h);
-         aps.a(this.h);
-         apw.a(this.h);
+         aov.a(this.h);
+         aow.a(this.h);
+         apd.a(this.h);
+         apj.a(this.h);
+         apu.a(this.h);
+         apy.a(this.h);
       }
 
       if ($$0.d) {
-         aok.a(this.h);
+         aom.a(this.h);
       }
 
       this.h.setConsumer(el.b_());
@@ -152,7 +152,7 @@ public class ek {
 
    public void a(ParseResults<ej> $$0, String $$1) {
       ej $$2 = (ej)$$0.getContext().getSource();
-      bqp.a().a(() -> "/" + $$1);
+      bra.a().a(() -> "/" + $$1);
       ContextChain<ej> $$3 = a($$0, $$1, $$2);
 
       try {
@@ -160,7 +160,7 @@ public class ek {
             a($$2, $$3x -> hk.a($$3x, $$1, $$3, $$2, eg.a));
          }
       } catch (Exception var12) {
-         xm $$5 = wy.b(var12.getMessage() == null ? var12.getClass().getName() : var12.getMessage());
+         xo $$5 = xa.b(var12.getMessage() == null ? var12.getClass().getName() : var12.getMessage());
          if (g.isDebugEnabled()) {
             g.error("Command exception: /{}", $$1, var12);
             StackTraceElement[] $$6 = var12.getStackTrace();
@@ -170,13 +170,13 @@ public class ek {
             }
          }
 
-         $$2.b(wy.c("command.failed").a($$1x -> $$1x.a(new xe.e($$5))));
-         if (ac.aV) {
-            $$2.b(wy.b(ag.c(var12)));
+         $$2.b(xa.c("command.failed").a($$1x -> $$1x.a(new xg.e($$5))));
+         if (ac.aU) {
+            $$2.b(xa.b(ag.c(var12)));
             g.error("'/{}' threw an exception", $$1, var12);
          }
       } finally {
-         bqp.a().c();
+         bra.a().c();
       }
    }
 
@@ -187,21 +187,21 @@ public class ek {
          return (ContextChain<ej>)ContextChain.tryFlatten($$0.getContext().build($$1))
             .orElseThrow(() -> CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext($$0.getReader()));
       } catch (CommandSyntaxException var7) {
-         $$2.b(xb.a(var7.getRawMessage()));
+         $$2.b(xd.a(var7.getRawMessage()));
          if (var7.getInput() != null && var7.getCursor() >= 0) {
             int $$4 = Math.min(var7.getInput().length(), var7.getCursor());
-            xm $$5 = wy.i().a(o.h).a($$1x -> $$1x.a(new ww.g("/" + $$1)));
+            xo $$5 = xa.i().a(o.h).a($$1x -> $$1x.a(new wy.g("/" + $$1)));
             if ($$4 > 10) {
-               $$5.b(wx.u);
+               $$5.b(wz.u);
             }
 
             $$5.f(var7.getInput().substring(Math.max(0, $$4 - 10), $$4));
             if ($$4 < var7.getInput().length()) {
-               wy $$6 = wy.b(var7.getInput().substring($$4)).a(o.m, o.t);
+               xa $$6 = xa.b(var7.getInput().substring($$4)).a(o.m, o.t);
                $$5.b($$6);
             }
 
-            $$5.b(wy.c("command.context.here").a(o.m, o.u));
+            $$5.b(xa.c("command.context.here").a(o.m, o.u));
             $$2.b($$5);
          }
 
@@ -214,10 +214,10 @@ public class ek {
       hk<ej> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aL().d(dji.z));
-         int $$6 = $$2.aL().d(dji.A);
+         int $$5 = Math.max(1, $$2.aL().d(djt.z));
+         int $$6 = $$2.aL().d(djt.A);
 
-         try (hk<ej> $$7 = new hk<>($$5, $$6, bqp.a())) {
+         try (hk<ej> $$7 = new hk<>($$5, $$6, bra.a())) {
             f.set($$7);
             $$1.accept($$7);
             $$7.a();
@@ -229,12 +229,12 @@ public class ek {
       }
    }
 
-   public void a(arr $$0) {
+   public void a(art $$0) {
       Map<CommandNode<ej>, CommandNode<eo>> $$1 = Maps.newHashMap();
       RootCommandNode<eo> $$2 = new RootCommandNode();
       $$1.put(this.h.getRoot(), $$2);
       this.a(this.h.getRoot(), $$2, $$0.A(), $$1);
-      $$0.f.b(new acm($$2));
+      $$0.f.b(new aco($$2));
    }
 
    private void a(CommandNode<ej> $$0, CommandNode<eo> $$1, ej $$2, Map<CommandNode<ej>, CommandNode<eo>> $$3) {
@@ -313,17 +313,17 @@ public class ek {
    public static ef a(final jh.a $$0) {
       return new ef() {
          @Override
-         public cuw a() {
-            return cuy.e.a();
+         public cvh a() {
+            return cvj.e.a();
          }
 
          @Override
-         public Stream<alf<? extends js<?>>> b() {
+         public Stream<alh<? extends js<?>>> b() {
             return $$0.b();
          }
 
          @Override
-         public <T> Optional<jh.b<T>> a(alf<? extends js<? extends T>> $$0x) {
+         public <T> Optional<jh.b<T>> a(alh<? extends js<? extends T>> $$0x) {
             return $$0.a($$0).map(this::a);
          }
 
@@ -335,12 +335,12 @@ public class ek {
                }
 
                @Override
-               public Optional<jj.c<T>> a(axr<T> $$0xx) {
+               public Optional<jj.c<T>> a(axt<T> $$0xx) {
                   return Optional.of(this.b($$0));
                }
 
                @Override
-               public jj.c<T> b(axr<T> $$0xx) {
+               public jj.c<T> b(axt<T> $$0xx) {
                   Optional<jj.c<T>> $$1 = this.a().a($$0);
                   return $$1.orElseGet(() -> jj.a(this.a(), $$0));
                }

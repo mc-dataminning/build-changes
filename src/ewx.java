@@ -1,61 +1,24 @@
-public class ewx extends ewz {
-   @Override
-   public czj a() {
-      return czr.a;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+
+public class ewx extends exc<ewx.a> {
+   protected ewx(edo $$0) {
+      super(dkg.b, $$0, new ewx.a(new Long2ObjectOpenHashMap()));
    }
 
    @Override
-   public boolean a(exa $$0, diq $$1, iv $$2, ewz $$3, jb $$4) {
-      return true;
+   protected int a(long $$0) {
+      long $$1 = jy.e($$0);
+      edg $$2 = this.a($$1, false);
+      return $$2 == null ? 0 : $$2.a(jy.b(iv.a($$0)), jy.b(iv.b($$0)), jy.b(iv.c($$0)));
    }
 
-   @Override
-   public ffc a(diq $$0, iv $$1, exa $$2) {
-      return ffc.c;
-   }
+   protected static final class a extends ewz<ewx.a> {
+      public a(Long2ObjectOpenHashMap<edg> $$0) {
+         super($$0);
+      }
 
-   @Override
-   public int a(djp $$0) {
-      return 0;
-   }
-
-   @Override
-   protected boolean b() {
-      return true;
-   }
-
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
-
-   @Override
-   public float a(exa $$0, diq $$1, iv $$2) {
-      return 0.0F;
-   }
-
-   @Override
-   public float a(exa $$0) {
-      return 0.0F;
-   }
-
-   @Override
-   protected eat b(exa $$0) {
-      return dmt.a.m();
-   }
-
-   @Override
-   public boolean c(exa $$0) {
-      return false;
-   }
-
-   @Override
-   public int d(exa $$0) {
-      return 0;
-   }
-
-   @Override
-   public ffw b(exa $$0, diq $$1, iv $$2) {
-      return fft.a();
+      public ewx.a a() {
+         return new ewx.a(this.a.clone());
+      }
    }
 }

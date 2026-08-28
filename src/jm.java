@@ -81,8 +81,8 @@ public class jm<T> {
       return this.c;
    }
 
-   private static Map<alf<? extends js<?>>, js<?>> a(Stream<? extends jt> $$0) {
-      Map<alf<? extends js<?>>, js<?>> $$1 = new HashMap<>();
+   private static Map<alh<? extends js<?>>, js<?>> a(Stream<? extends jt> $$0) {
+      Map<alh<? extends js<?>>, js<?>> $$1 = new HashMap<>();
       $$0.forEach($$1x -> $$1x.a().forEach($$1xx -> {
             if ($$1.put($$1xx.a(), $$1xx.b()) != null) {
                throw new IllegalStateException("Duplicated registry " + $$1xx.a());

@@ -1,61 +1,38 @@
-import com.google.common.base.Predicates;
-import java.util.function.Predicate;
+public class bwp {
+   public static final bwp a = new bwp(0.75F, 0.5F, 0.25F);
+   public static final bwp b = new bwp(0.95F, 0.69F, 0.32F);
+   private final float c;
+   private final float d;
+   private final float e;
 
-public final class bwp {
-   public static final Predicate<bwi> a = bwi::bI;
-   public static final Predicate<bwi> b = $$0 -> $$0.bI() && $$0 instanceof bxj;
-   public static final Predicate<bwi> c = $$0 -> $$0.bI() && !$$0.bY() && !$$0.bX();
-   public static final Predicate<bwi> d = $$0 -> $$0 instanceof btz && $$0.bI();
-   public static final Predicate<bwi> e = $$0 -> {
-      if ($$0 instanceof crm $$1 && ($$0.V_() || $$1.b())) {
-         return false;
+   private bwp(float $$0, float $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public bwp.a a(float $$0) {
+      if ($$0 < this.e) {
+         return bwp.a.d;
+      } else if ($$0 < this.d) {
+         return bwp.a.c;
+      } else {
+         return $$0 < this.c ? bwp.a.b : bwp.a.a;
       }
-
-      return true;
-   };
-   public static final Predicate<bwi> f = $$0 -> !$$0.V_();
-   public static final Predicate<bwi> g = f.and(bwi::bK);
-   public static final Predicate<bwi> h = f.and(bwi::bE);
-
-   private bwp() {
    }
 
-   public static Predicate<bwi> a(double $$0, double $$1, double $$2, double $$3) {
-      double $$4 = $$3 * $$3;
-      return $$4x -> $$4x != null && $$4x.h($$0, $$1, $$2) <= $$4;
+   public bwp.a a(czy $$0) {
+      return !$$0.m() ? bwp.a.a : this.a($$0.o(), $$0.p());
    }
 
-   public static Predicate<bwi> a(bwi $$0) {
-      fgj $$1 = $$0.cp();
-      fgj.a $$2 = $$1 == null ? fgj.a.a : $$1.m();
-      return (Predicate<bwi>)($$2 == fgj.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
-         if (!$$3.bF()) {
-            return false;
-         } else if (!$$0.dU().C || $$3 instanceof crm $$4 && $$4.gg()) {
-            fgj $$5 = $$3.cp();
-            fgj.a $$6 = $$5 == null ? fgj.a.a : $$5.m();
-            if ($$6 == fgj.a.b) {
-               return false;
-            } else {
-               boolean $$7 = $$1 != null && $$1.a($$5);
-               return ($$2 == fgj.a.d || $$6 == fgj.a.d) && $$7 ? false : $$2 != fgj.a.c && $$6 != fgj.a.c || $$7;
-            }
-         } else {
-            return false;
-         }
-      }));
+   public bwp.a a(int $$0, int $$1) {
+      return this.a((float)($$1 - $$0) / (float)$$1);
    }
 
-   public static Predicate<bwi> b(bwi $$0) {
-      return $$1 -> {
-         while ($$1.bX()) {
-            $$1 = $$1.dj();
-            if ($$1 == $$0) {
-               return false;
-            }
-         }
-
-         return true;
-      };
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

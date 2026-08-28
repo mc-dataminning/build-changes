@@ -1,12 +1,15 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+public class djs {
+   public static final int a = -10380959;
+   public static final int b = -8345771;
+   public static final int c = -12012264;
+   public static final int d = -7158200;
+   private static int[] e = new int[65536];
 
-public interface djs {
-   boolean a(iv var1, Predicate<eat> var2);
+   public static void a(int[] $$0) {
+      e = $$0;
+   }
 
-   boolean b(iv var1, Predicate<exa> var2);
-
-   <T extends dxr> Optional<T> a(iv var1, dxt<T> var2);
-
-   iv a(egs.a var1, iv var2);
+   public static int a(double $$0, double $$1) {
+      return djg.a($$0, $$1, e, -12012264);
+   }
 }

@@ -1,49 +1,27 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
+public enum fif {
+   a(false, true),
+   b(false, true),
+   c(false, true),
+   d(true, false),
+   e(true, false),
+   f(true, false),
+   g(false, false),
+   h(false, false),
+   i(false, false);
 
-public record fif(GlStateManager.SourceFactor h, GlStateManager.DestFactor i, GlStateManager.SourceFactor j, GlStateManager.DestFactor k) {
-   public static final fif a = new fif(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
-   public static final fif b = new fif(
-      GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
-   );
-   public static final fif c = new fif(
-      GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
-   );
-   public static final fif d = new fif(
-      GlStateManager.SourceFactor.SRC_ALPHA,
-      GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
-      GlStateManager.SourceFactor.ONE,
-      GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
-   );
-   public static final fif e = new fif(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
-   public static final fif f = new fif(
-      GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
-   );
-   public static final fif g = new fif(
-      GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
-   );
+   final boolean j;
+   final boolean k;
 
-   public fif(GlStateManager.SourceFactor $$0, GlStateManager.DestFactor $$1) {
-      this($$0, $$1, $$0, $$1);
+   private fif(final boolean $$0, final boolean $$1) {
+      this.j = $$0;
+      this.k = $$1;
    }
 
-   public void a() {
-      RenderSystem.blendFuncSeparate(this.h, this.i, this.j, this.k);
-   }
-
-   public GlStateManager.SourceFactor b() {
-      return this.h;
-   }
-
-   public GlStateManager.DestFactor c() {
-      return this.i;
-   }
-
-   public GlStateManager.SourceFactor d() {
+   public boolean a() {
       return this.j;
    }
 
-   public GlStateManager.DestFactor e() {
+   public boolean b() {
       return this.k;
    }
 }

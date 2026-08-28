@@ -1,69 +1,28 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Locale;
 
 public interface ezr {
-   ezq<dcf> a = new ezq<dcf>() {
-      @Override
-      public kj<dcf> a() {
-         return kk.ap;
-      }
+   iv a();
 
-      public Stream<czn> a(dcf $$0) {
-         return $$0.b();
-      }
+   float b();
 
-      public dcf c() {
-         return dcf.a;
-      }
+   long c();
 
-      public dcf a(dcf $$0, Stream<czn> $$1) {
-         return dcf.a($$1.toList());
-      }
-   };
-   ezq<dbq> b = new ezq<dbq>() {
-      @Override
-      public kj<dbq> a() {
-         return kk.Q;
-      }
+   long d();
 
-      public dbq c() {
-         return dbq.a;
-      }
+   boolean g();
 
-      public Stream<czn> a(dbq $$0) {
-         return $$0.b();
-      }
+   boolean i();
 
-      public dbq a(dbq $$0, Stream<czn> $$1) {
-         dbq.a $$2 = new dbq.a($$0).a();
-         $$1.forEach($$2::a);
-         return $$2.d();
-      }
-   };
-   ezq<dbr> c = new ezq<dbr>() {
-      @Override
-      public kj<dbr> a() {
-         return kk.P;
-      }
+   void b(boolean var1);
 
-      public dbr c() {
-         return dbr.a;
-      }
+   boolean l();
 
-      public Stream<czn> a(dbr $$0) {
-         return $$0.a().stream();
-      }
+   buo q();
 
-      public dbr a(dbr $$0, Stream<czn> $$1) {
-         return dbr.a($$1.toList());
-      }
-   };
-   Map<kj<?>, ezq<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(ezq::a, $$0 -> (ezq<?>)$$0));
-   Codec<ezq<?>> e = mg.am.q().comapFlatMap($$0 -> {
-      ezq<?> $$1 = d.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
-   }, ezq::a);
+   boolean r();
+
+   default void a(q $$0, djz $$1) {
+      $$0.a("Level spawn location", () -> q.a($$1, this.a()));
+      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+   }
 }

@@ -1,6 +1,11 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-
 public interface azw {
-   <T> DataResult<T> a(Codec<T> var1, T var2, jh.a var3);
+   void a(xa var1);
+
+   void b(xa var1);
+
+   void c(xa var1);
+
+   void a(int var1);
+
+   void a();
 }

@@ -1,117 +1,51 @@
-public class gbu extends gby {
-   private static final wy a = wy.c("options.languageAccuracyWarning").b(-4539718);
-   private static final int u = 53;
-   private gbu.a v;
-   final hla w;
+public abstract class gbu<T extends cwu> extends gas<T> implements cwe {
+   private final ali G;
 
-   public gbu(fys $$0, fpx $$1, hla $$2) {
-      super($$0, $$1, wy.c("options.language.title"));
-      this.w = $$2;
-      this.s.a(53);
+   public gbu(T $$0, crw $$1, xa $$2, ali $$3) {
+      super($$0, $$1, $$2);
+      this.G = $$3;
    }
 
    @Override
-   protected void F() {
-      this.v = this.s.c(new gbu.a(this.m));
+   protected void G() {
    }
 
    @Override
-   protected void m() {
+   protected void aS_() {
+      super.aS_();
+      this.G();
+      this.z.a(this);
    }
 
    @Override
-   protected void E() {
-      fws $$0 = this.s.b(fws.d()).a(8);
-      $$0.c().b();
-      $$0.a(new fuh(a, this.p));
-      fws $$1 = $$0.a(fws.e().a(8));
-      $$1.a(fta.a(wy.c("options.font"), $$0x -> this.m.a(new gbt(this, this.c))).a());
-      $$1.a(fta.a(wx.d, $$0x -> this.H()).a());
+   public void aJ_() {
+      super.aJ_();
+      this.z.b(this);
    }
 
    @Override
-   protected void c() {
-      super.c();
-      this.v.a(this.n, this.s);
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
-   void H() {
-      gbu.a.a $$0 = this.v.p();
-      if ($$0 != null && !$$0.b.equals(this.w.a())) {
-         this.w.a($$0.b);
-         this.c.ab = $$0.b;
-         this.m.l();
-      }
-
-      this.m.a(this.b);
+   protected void d(ftx $$0, int $$1, int $$2, float $$3) {
    }
 
-   class a extends ftw<gbu.a.a> {
-      public a(final fpt $$0) {
-         super($$0, gbu.this.n, gbu.this.o - 33 - 53, 33, 18);
-         String $$1 = gbu.this.w.a();
-         gbu.this.w.b().forEach(($$1x, $$2) -> {
-            gbu.a.a $$3 = new gbu.a.a($$1x, $$2);
-            this.b($$3);
-            if ($$1.equals($$1x)) {
-               this.a($$3);
-            }
-         });
-         if (this.p() != null) {
-            this.e(this.p());
-         }
-      }
+   @Override
+   protected void a(ftx $$0, float $$1, int $$2, int $$3) {
+      $$0.a(gsl::H, this.G, this.C, this.D, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      this.c($$0, this.C, this.D);
+   }
 
-      @Override
-      public int a() {
-         return super.a() + 50;
-      }
+   protected abstract void c(ftx var1, int var2, int var3);
 
-      public class a extends ftw.a<gbu.a.a> {
-         final String b;
-         private final wy c;
-         private long d;
+   @Override
+   public void a(cvq $$0, int $$1, int $$2) {
+   }
 
-         public a(final String $$1, final hkz $$2) {
-            this.b = $$1;
-            this.c = $$2.a();
-         }
-
-         @Override
-         public void a(fsm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(gbu.this.p, this.c, a.this.g / 2, $$2 + $$5 / 2 - 9 / 2, -1);
-         }
-
-         @Override
-         public boolean a(int $$0, int $$1, int $$2) {
-            if (fxc.a($$0)) {
-               this.b();
-               gbu.this.H();
-               return true;
-            } else {
-               return super.a($$0, $$1, $$2);
-            }
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            if (ag.c() - this.d < 250L) {
-               gbu.this.H();
-            }
-
-            this.d = ag.c();
-            return super.a($$0, $$1, $$2);
-         }
-
-         private void b() {
-            a.this.a(this);
-         }
-
-         @Override
-         public wy a() {
-            return wy.a("narrator.select", this.c);
-         }
-      }
+   @Override
+   public void a(cvq $$0, int $$1, czy $$2) {
    }
 }

@@ -1,76 +1,64 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 
-public class eae {
-   static final String a = "shared_data";
-   static Codec<eae> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               czn.a("display_item").forGetter($$0x -> $$0x.d),
-               jz.c.lenientOptionalFieldOf("connected_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.lenientOptionalFieldOf("connected_particles_range", eac.b.d()).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eae::new)
-   );
-   private czn d = czn.k;
-   private Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private double f = eac.b.d();
-   boolean c;
+public interface eae {
+   eae a = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dv().a($$2, $$3) && !$$2x.b() && !$$2x.Z_())
+         .stream()
+         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bD()))
+         .map(bwt::cG)
+         .toList();
+   eae b = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dv().a($$2, $$3) && !$$2x.Z_())
+         .stream()
+         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bD()))
+         .map(bwt::cG)
+         .toList();
+   eae c = ($$0, $$1, $$2, $$3, $$4) -> {
+      ffl $$5 = new ffl($$2).g($$3);
+      return $$1.a($$0, bxc.bc, $$5, bxu::bJ).stream().filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bD())).map(bwt::cG).toList();
+   };
 
-   eae(czn $$0, Set<UUID> $$1, double $$2) {
-      this.d = $$0;
-      this.e.addAll($$1);
-      this.f = $$2;
+   List<UUID> detect(ars var1, eae.a var2, iv var3, double var4, boolean var6);
+
+   private static boolean a(djx $$0, ffq $$1, ffq $$2) {
+      ffm $$3 = $$0.a(new dje($$2, $$1, dje.a.c, dje.b.a, ffv.a()));
+      return $$3.b().equals(iv.a((jp)$$1)) || $$3.d() == ffo.a.a;
    }
 
-   eae() {
-   }
+   public interface a {
+      eae.a a = new eae.a() {
+         @Override
+         public List<art> a(ars $$0, Predicate<? super crx> $$1) {
+            return $$0.a($$1);
+         }
 
-   public czn a() {
-      return this.d;
-   }
+         @Override
+         public <T extends bwt> List<T> a(ars $$0, efq<bwt, T> $$1, ffl $$2, Predicate<? super T> $$3) {
+            return $$0.a($$1, $$2, $$3);
+         }
+      };
 
-   public boolean b() {
-      return !this.d.f();
-   }
+      List<? extends crx> a(ars var1, Predicate<? super crx> var2);
 
-   public void a(czn $$0) {
-      if (!czn.a(this.d, $$0)) {
-         this.d = $$0.v();
-         this.f();
+      <T extends bwt> List<T> a(ars var1, efq<bwt, T> var2, ffl var3, Predicate<? super T> var4);
+
+      static eae.a a(crx $$0) {
+         return a(List.of($$0));
       }
-   }
 
-   boolean c() {
-      return !this.e.isEmpty();
-   }
+      static eae.a a(final List<crx> $$0) {
+         return new eae.a() {
+            @Override
+            public List<crx> a(ars $$0x, Predicate<? super crx> $$1) {
+               return $$0.stream().filter($$1).toList();
+            }
 
-   Set<UUID> d() {
-      return this.e;
-   }
-
-   double e() {
-      return this.f;
-   }
-
-   void a(arq $$0, iv $$1, ead $$2, eac $$3, double $$4) {
-      Set<UUID> $$5 = $$3.a().detect($$0, $$3.g(), $$1, $$4, false).stream().filter($$1x -> !$$2.b().contains($$1x)).collect(Collectors.toSet());
-      if (!this.e.equals($$5)) {
-         this.e = $$5;
-         this.f();
+            @Override
+            public <T extends bwt> List<T> a(ars $$0x, efq<bwt, T> $$1, ffl $$2, Predicate<? super T> $$3) {
+               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
+            }
+         };
       }
-   }
-
-   private void f() {
-      this.c = true;
-   }
-
-   void a(eae $$0) {
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
    }
 }

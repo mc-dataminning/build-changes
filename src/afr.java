@@ -1,20 +1,20 @@
-public record afr(long b, long c, boolean d) implements zf<abu> {
-   public static final yw<vu, afr> a = yw.a(yu.j, afr::b, yu.j, afr::e, yu.b, afr::f, afr::new);
+public record afr(int b) implements zh<abw> {
+   public static final yy<vw, afr> a = zh.a(afr::a, afr::new);
+
+   private afr(vw $$0) {
+      this($$0.l());
+   }
+
+   private void a(vw $$0) {
+      $$0.c(this.b);
+   }
 
    @Override
-   public zh<afr> a() {
-      return agn.aS;
+   public zj<afr> a() {
+      return agp.aQ;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
-   }
-
-   public long e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

@@ -1,61 +1,81 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Function;
 
-public class fao extends fal {
-   public static final MapCodec<fao> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(axr.a(mh.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, fao::new)
-   );
-   private final axr<czj> j;
-   private final boolean k;
+public class fao extends faq {
+   public static final MapCodec<fao> a = a(fao::new);
 
-   private fao(axr<czj> $$0, boolean $$1, int $$2, int $$3, List<fdc> $$4, List<fbh> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   fao(List<fax> $$0, List<fdq> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public fak a() {
-      return fah.f;
+   public fay a() {
+      return fav.g;
    }
 
    @Override
-   public void a(Consumer<czn> $$0, ezt $$1) {
-      mg.g.c(this.j).forEach($$1x -> $$0.accept(new czn($$1x)));
-   }
-
-   private boolean a(ezt $$0, Consumer<fai> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final jf<czj> $$2 : mg.g.c(this.j)) {
-            $$1.accept(new fal.c() {
-               @Override
-               public void a(Consumer<czn> $$0, ezt $$1) {
-                  $$0.accept(new czn($$2));
-               }
-            });
+   protected fap a(List<? extends fap> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (fap)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (fap $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
+            }
          }
 
-         return true;
+         return false;
+      };
+      };
+   }
+
+   @Override
+   public void a(fan $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.b("Unreachable entry!");
+         }
       }
    }
 
-   @Override
-   public boolean expand(ezt $$0, Consumer<fai> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   public static fao.a a(fax.a<?>... $$0) {
+      return new fao.a($$0);
    }
 
-   public static fal.a<?> a(axr<czj> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new fao($$0, false, $$1, $$2, $$3, $$4));
+   public static <E> fao.a a(Collection<E> $$0, Function<E, fax.a<?>> $$1) {
+      return new fao.a($$0.stream().map($$1::apply).toArray(fax.a[]::new));
    }
 
-   public static fal.a<?> b(axr<czj> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new fao($$0, true, $$1, $$2, $$3, $$4));
+   public static class a extends fax.a<fao.a> {
+      private final Builder<fax> a = ImmutableList.builder();
+
+      public a(fax.a<?>... $$0) {
+         for (fax.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected fao.a a() {
+         return this;
+      }
+
+      @Override
+      public fao.a a(fax.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public fax b() {
+         return new fao(this.a.build(), this.f());
+      }
    }
 }

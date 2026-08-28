@@ -1,18 +1,36 @@
-public interface dep<T extends dee<?>> {
-   dep<ddt> a = a("crafting");
-   dep<dey> b = a("smelting");
-   dep<ddn> c = a("blasting");
-   dep<dfd> d = a("smoking");
-   dep<ddp> e = a("campfire_cooking");
-   dep<dfe> f = a("stonecutting");
-   dep<dez> g = a("smithing");
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-   static <T extends dee<?>> dep<T> a(final String $$0) {
-      return js.a(mg.q, alg.b($$0), new dep<T>() {
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      });
+public interface dep<T extends dev> {
+   Codec<dep<?>> a = mg.r.q().dispatch(dep::a, dez::a);
+   Codec<alh<dep<?>>> b = alh.a(mh.bv);
+   yy<wl, dep<?>> c = yw.a(mh.ah).b(dep::a, dez::b);
+
+   boolean a(T var1, djx var2);
+
+   czy a(T var1, jh.a var2);
+
+   default boolean aq_() {
+      return false;
    }
+
+   default boolean i() {
+      return true;
+   }
+
+   default String j() {
+      return "";
+   }
+
+   dez<? extends dep<T>> a();
+
+   dfa<? extends dep<T>> b();
+
+   deo ap_();
+
+   default List<dfv> g() {
+      return List.of();
+   }
+
+   des h();
 }

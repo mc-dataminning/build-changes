@@ -1,45 +1,28 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gxo extends gxc<cle, hed, ghh> {
+   private static final ali a = ali.b("textures/entity/camel/camel.png");
 
-public final class gxo extends gvo<clk, hdv, ghb> {
-   private static final Map<clr, alg> a = Maps.newEnumMap(
-      Map.of(
-         clr.a,
-         alg.b("textures/entity/horse/horse_white.png"),
-         clr.b,
-         alg.b("textures/entity/horse/horse_creamy.png"),
-         clr.c,
-         alg.b("textures/entity/horse/horse_chestnut.png"),
-         clr.d,
-         alg.b("textures/entity/horse/horse_brown.png"),
-         clr.e,
-         alg.b("textures/entity/horse/horse_black.png"),
-         clr.f,
-         alg.b("textures/entity/horse/horse_gray.png"),
-         clr.g,
-         alg.b("textures/entity/horse/horse_darkbrown.png")
-      )
-   );
-
-   public gxo(gwy.a $$0) {
-      super($$0, new ghb($$0.a(gjs.bn)), new ghb($$0.a(gjs.bq)));
-      this.a(new hba(this));
-      this.a(new hbp<>(this, $$0.h(), hlw.d.e, $$0x -> $$0x.i, new ghb($$0.a(gjs.bo)), new ghb($$0.a(gjs.br))));
-      this.a(new hbp<>(this, $$0.h(), hlw.d.j, $$0x -> $$0x.b, new ggq($$0.a(gjs.bp)), new ggq($$0.a(gjs.bs))));
+   public gxo(gyi.a $$0) {
+      super($$0, new ghh($$0.a(gld.M)), new ghh($$0.a(gld.N)), 0.7F);
+      this.a(new hcz<>(this, $$0.h(), hng.d.i, $$0x -> $$0x.a, new ghi($$0.a(gld.O)), new ghi($$0.a(gld.P))));
    }
 
-   public alg a(hdv $$0) {
-      return a.get($$0.a);
+   public ali a(hed $$0) {
+      return a;
    }
 
-   public hdv b() {
-      return new hdv();
+   public hed a() {
+      return new hed();
    }
 
-   public void a(clk $$0, hdv $$1, float $$2) {
+   public void a(cle $$0, hed $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.q();
-      $$1.h = $$0.t();
-      $$1.i = $$0.fX().v();
+      $$1.a = $$0.a(bxd.h).v();
+      $$1.b = $$0.bZ();
+      $$1.c = Math.max((float)$$0.c() - $$2, 0.0F);
+      $$1.d.a($$0.bO);
+      $$1.e.a($$0.bP);
+      $$1.f.a($$0.bQ);
+      $$1.g.a($$0.bR);
+      $$1.h.a($$0.bS);
    }
 }

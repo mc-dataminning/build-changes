@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.system.MemoryUtil;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@fhf
-@fhd
-interface fhp {
+public class fhp {
+   public static void a() {
+      MemoryUtil.memSet(0L, 0, 1L);
+   }
+
+   public static double b() {
+      return GLFW.glfwGetTime();
+   }
+
+   private fhp() {
+   }
 }

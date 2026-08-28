@@ -1,111 +1,71 @@
-import java.util.function.Consumer;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class fws implements fwp {
-   private final fwn a;
-   private final fws.a b;
-   private int c = 0;
+public class fws implements fwv {
+   private static final ali e = ali.b("toast/advancement");
+   public static final int a = 5000;
+   private final aj f;
+   private fwv.a g = fwv.a.b;
 
-   private fws(fws.a $$0) {
-      this(0, 0, $$0);
-   }
-
-   public fws(int $$0, int $$1, fws.a $$2) {
-      this.a = new fwn($$0, $$1);
-      this.b = $$2;
-   }
-
-   public fws a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
-   }
-
-   public fwr b() {
-      return this.a.b();
-   }
-
-   public fwr c() {
-      return this.a.c();
-   }
-
-   public <T extends fwq> T a(T $$0, fwr $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
-   }
-
-   public <T extends fwq> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fwq> T a(T $$0, Consumer<fwr> $$1) {
-      return this.b.a(this.a, $$0, this.c++, ag.a(this.b(), $$1));
+   public fws(aj $$0) {
+      this.f = $$0;
    }
 
    @Override
-   public void b(Consumer<fwq> $$0) {
-      this.a.b($$0);
+   public fwv.a a() {
+      return this.g;
    }
 
    @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public int A() {
-      return this.a.A();
-   }
-
-   @Override
-   public int y() {
-      return this.a.y();
-   }
-
-   @Override
-   public void j(int $$0) {
-      this.a.j($$0);
-   }
-
-   @Override
-   public void k(int $$0) {
-      this.a.k($$0);
-   }
-
-   @Override
-   public int F() {
-      return this.a.F();
-   }
-
-   @Override
-   public int G() {
-      return this.a.G();
-   }
-
-   public static fws d() {
-      return new fws(fws.a.b);
-   }
-
-   public static fws e() {
-      return new fws(fws.a.a);
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      void a(fwn $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
-         }
+   public void a(fww $$0, long $$1) {
+      av $$2 = this.f.b().c().orElse(null);
+      if ($$2 == null) {
+         this.g = fwv.a.b;
+      } else {
+         this.g = (double)$$1 >= 5000.0 * $$0.d() ? fwv.a.b : fwv.a.a;
       }
+   }
 
-      public <T extends fwq> T a(fwn $$0, T $$1, int $$2, fwr $$3) {
-         return (T)(switch (this) {
-            case a -> (fwq)$$0.a($$1, 0, $$2, $$3);
-            case b -> (fwq)$$0.a($$1, $$2, 0, $$3);
-         });
+   @Nullable
+   @Override
+   public awo b() {
+      return this.e() ? awp.BB : null;
+   }
+
+   private boolean e() {
+      Optional<av> $$0 = this.f.b().c();
+      return $$0.isPresent() && $$0.get().e().equals(ap.b);
+   }
+
+   @Override
+   public void a(ftx $$0, ftv $$1, long $$2) {
+      av $$3 = this.f.b().c().orElse(null);
+      $$0.a(gsl::H, e, 0, 0, this.c(), this.d());
+      if ($$3 != null) {
+         List<aza> $$4 = $$1.c($$3.a(), 125);
+         int $$5 = $$3.e() == ap.b ? -30465 : -256;
+         if ($$4.size() == 1) {
+            $$0.a($$1, $$3.e().b(), 30, 7, $$5, false);
+            $$0.a($$1, $$4.get(0), 30, 18, -1, false);
+         } else {
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = azo.d(azo.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1, $$3.e().b(), 30, 11, $$5 | $$8, false);
+            } else {
+               int $$9 = azo.d(azo.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.d() / 2 - $$4.size() * 9 / 2;
+
+               for (aza $$11 : $$4) {
+                  $$0.a($$1, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
+               }
+            }
+         }
+
+         $$0.b($$3.c(), 8, 8);
       }
    }
 }

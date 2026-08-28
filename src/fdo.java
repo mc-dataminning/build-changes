@@ -1,92 +1,51 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public class fdo implements fdq {
-   private static final String d = "block_entity";
-   private static final fdo.a e = new fdo.a() {
-      @Override
-      public uw a(ezt $$0) {
-         dxr $$1 = $$0.c(fcn.h);
-         return $$1 != null ? $$1.b($$1.i().F_()) : null;
-      }
+public record fdo(Optional<cu> b, iv c) implements fdq {
+   private static final MapCodec<iv> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(ka::u),
+               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(ka::v),
+               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(ka::w)
+            )
+            .apply($$0, iv::new)
+   );
+   public static final MapCodec<fdo> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(cu.a.optionalFieldOf("predicate").forGetter(fdo::c), g.forGetter(fdo::d)).apply($$0, fdo::new)
+   );
 
-      @Override
-      public String a() {
-         return "block_entity";
-      }
-
-      @Override
-      public Set<bax<?>> b() {
-         return Set.of(fcn.h);
-      }
-   };
-   public static final fdo a = new fdo(e);
-   private static final Codec<fdo.a> f = Codec.STRING.xmap($$0 -> {
-      if ($$0.equals("block_entity")) {
-         return e;
-      } else {
-         ezt.b $$1 = ezt.b.a($$0);
-         return b($$1);
-      }
-   }, fdo.a::a);
-   public static final MapCodec<fdo> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, fdo::new));
-   public static final Codec<fdo> c = f.xmap(fdo::new, $$0 -> $$0.g);
-   private final fdo.a g;
-
-   private static fdo.a b(final ezt.b $$0) {
-      return new fdo.a() {
-         @Nullable
-         @Override
-         public uw a(ezt $$0x) {
-            bwi $$1 = $$0.c($$0.a());
-            return $$1 != null ? cz.b($$1) : null;
-         }
-
-         @Override
-         public String a() {
-            return $$0.name();
-         }
-
-         @Override
-         public Set<bax<?>> b() {
-            return Set.of($$0.a());
-         }
-      };
+   @Override
+   public fdr b() {
+      return fds.n;
    }
 
-   private fdo(fdo.a $$0) {
-      this.g = $$0;
+   public boolean a(fah $$0) {
+      ffq $$1 = $$0.c(fdb.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
    }
 
    @Override
-   public fdp a() {
-      return fdr.c;
+   public Set<baz<?>> a() {
+      return Set.of(fdb.f);
    }
 
-   @Nullable
-   @Override
-   public uw a(ezt $$0) {
-      return this.g.a($$0);
+   public static fdq.a a(cu.a $$0) {
+      return () -> new fdo(Optional.of($$0.b()), iv.c);
    }
 
-   @Override
-   public Set<bax<?>> b() {
-      return this.g.b();
+   public static fdq.a a(cu.a $$0, iv $$1) {
+      return () -> new fdo(Optional.of($$0.b()), $$1);
    }
 
-   public static fdq a(ezt.b $$0) {
-      return new fdo(b($$0));
+   public Optional<cu> c() {
+      return this.b;
    }
 
-   interface a {
-      @Nullable
-      uw a(ezt var1);
-
-      String a();
-
-      Set<bax<?>> b();
+   public iv d() {
+      return this.c;
    }
 }

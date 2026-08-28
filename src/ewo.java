@@ -1,325 +1,159 @@
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Locale;
+import java.util.stream.IntStream;
 
-public abstract class ewo<M extends ewl<M>> {
-   private final djv i;
-   protected final edd a;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final LongSet j = new LongOpenHashSet();
-   protected volatile M c;
-   protected final M d;
-   protected final LongSet e = new LongOpenHashSet();
-   protected final LongSet f = new LongOpenHashSet();
-   protected final Long2ObjectMap<ecv> g = Long2ObjectMaps.synchronize(new Long2ObjectOpenHashMap());
-   private final LongSet k = new LongOpenHashSet();
-   private final LongSet l = new LongOpenHashSet();
-   protected volatile boolean h;
+public class ewo implements egw.d {
+   private static final Codec<Double> e = Codec.doubleRange(0.001, 1000.0);
+   private static final MapCodec<ewo> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               e.fieldOf("xz_scale").forGetter($$0x -> $$0x.p),
+               e.fieldOf("y_scale").forGetter($$0x -> $$0x.q),
+               e.fieldOf("xz_factor").forGetter($$0x -> $$0x.l),
+               e.fieldOf("y_factor").forGetter($$0x -> $$0x.m),
+               Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter($$0x -> $$0x.n)
+            )
+            .apply($$0, ewo::a)
+   );
+   public static final azh<ewo> a = azh.a(f);
+   private final ews g;
+   private final ews h;
+   private final ews i;
+   private final double j;
+   private final double k;
+   private final double l;
+   private final double m;
+   private final double n;
+   private final double o;
+   private final double p;
+   private final double q;
 
-   protected ewo(djv $$0, edd $$1, M $$2) {
-      this.i = $$0;
-      this.a = $$1;
-      this.d = $$2;
-      this.c = $$2.b();
-      this.c.d();
-      this.b.defaultReturnValue((byte)0);
+   public static ewo a(double $$0, double $$1, double $$2, double $$3, double $$4) {
+      return new ewo(new eie(0L), $$0, $$1, $$2, $$3, $$4);
    }
 
-   protected boolean b(long $$0) {
-      return this.a($$0, true) != null;
+   private ewo(ews $$0, ews $$1, ews $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.l = $$5;
+      this.m = $$6;
+      this.n = $$7;
+      this.j = 684.412 * this.p;
+      this.k = 684.412 * this.q;
+      this.o = $$0.a(this.k);
    }
 
-   @Nullable
-   protected ecv a(long $$0, boolean $$1) {
-      return this.a($$1 ? this.d : this.c, $$0);
+   @VisibleForTesting
+   public ewo(azx $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      this(
+         ews.a($$0, IntStream.rangeClosed(-15, 0)),
+         ews.a($$0, IntStream.rangeClosed(-15, 0)),
+         ews.a($$0, IntStream.rangeClosed(-7, 0)),
+         $$1,
+         $$2,
+         $$3,
+         $$4,
+         $$5
+      );
    }
 
-   @Nullable
-   protected ecv a(M $$0, long $$1) {
-      return $$0.c($$1);
+   public ewo a(azx $$0) {
+      return new ewo($$0, this.p, this.q, this.l, this.m, this.n);
    }
 
-   @Nullable
-   protected ecv c(long $$0) {
-      ecv $$1 = this.d.c($$0);
-      if ($$1 == null) {
-         return null;
-      } else {
-         if (this.e.add($$0)) {
-            $$1 = $$1.b();
-            this.d.a($$0, $$1);
-            this.d.c();
+   @Override
+   public double a(egw.b $$0) {
+      double $$1 = (double)$$0.a() * this.j;
+      double $$2 = (double)$$0.b() * this.k;
+      double $$3 = (double)$$0.c() * this.j;
+      double $$4 = $$1 / this.l;
+      double $$5 = $$2 / this.m;
+      double $$6 = $$3 / this.l;
+      double $$7 = this.k * this.n;
+      double $$8 = $$7 / this.m;
+      double $$9 = 0.0;
+      double $$10 = 0.0;
+      double $$11 = 0.0;
+      boolean $$12 = true;
+      double $$13 = 1.0;
+
+      for (int $$14 = 0; $$14 < 8; $$14++) {
+         ewp $$15 = this.i.a($$14);
+         if ($$15 != null) {
+            $$11 += $$15.a(ews.b($$4 * $$13), ews.b($$5 * $$13), ews.b($$6 * $$13), $$8 * $$13, $$5 * $$13) / $$13;
          }
 
-         return $$1;
-      }
-   }
-
-   @Nullable
-   public ecv d(long $$0) {
-      ecv $$1 = (ecv)this.g.get($$0);
-      return $$1 != null ? $$1 : this.a($$0, false);
-   }
-
-   protected abstract int a(long var1);
-
-   protected int e(long $$0) {
-      long $$1 = jy.e($$0);
-      ecv $$2 = this.a($$1, true);
-      return $$2.a(jy.b(iv.a($$0)), jy.b(iv.b($$0)), jy.b(iv.c($$0)));
-   }
-
-   protected void a(long $$0, int $$1) {
-      long $$2 = jy.e($$0);
-      ecv $$3;
-      if (this.e.add($$2)) {
-         $$3 = this.d.a($$2);
-      } else {
-         $$3 = this.a($$2, true);
+         $$13 /= 2.0;
       }
 
-      $$3.a(jy.b(iv.a($$0)), jy.b(iv.b($$0)), jy.b(iv.c($$0)), $$1);
-      jy.a($$0, this.f::add);
-   }
+      double $$16 = ($$11 / 10.0 + 1.0) / 2.0;
+      boolean $$17 = $$16 >= 1.0;
+      boolean $$18 = $$16 <= 0.0;
+      $$13 = 1.0;
 
-   protected void f(long $$0) {
-      int $$1 = jy.b($$0);
-      int $$2 = jy.c($$0);
-      int $$3 = jy.d($$0);
-
-      for (int $$4 = -1; $$4 <= 1; $$4++) {
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            for (int $$6 = -1; $$6 <= 1; $$6++) {
-               this.f.add(jy.b($$1 + $$5, $$2 + $$6, $$3 + $$4));
-            }
-         }
-      }
-   }
-
-   protected ecv g(long $$0) {
-      ecv $$1 = (ecv)this.g.get($$0);
-      return $$1 != null ? $$1 : new ecv();
-   }
-
-   protected boolean a() {
-      return this.h;
-   }
-
-   protected void a(ewr<M, ?> $$0) {
-      if (this.h) {
-         this.h = false;
-         LongIterator $$5 = this.l.iterator();
-
-         while ($$5.hasNext()) {
-            long $$1 = (Long)$$5.next();
-            ecv $$2 = (ecv)this.g.remove($$1);
-            ecv $$3 = this.d.d($$1);
-            if (this.k.contains(jy.f($$1))) {
-               if ($$2 != null) {
-                  this.g.put($$1, $$2);
-               } else if ($$3 != null) {
-                  this.g.put($$1, $$3);
-               }
+      for (int $$19 = 0; $$19 < 16; $$19++) {
+         double $$20 = ews.b($$1 * $$13);
+         double $$21 = ews.b($$2 * $$13);
+         double $$22 = ews.b($$3 * $$13);
+         double $$23 = $$7 * $$13;
+         if (!$$17) {
+            ewp $$24 = this.g.a($$19);
+            if ($$24 != null) {
+               $$9 += $$24.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
             }
          }
 
-         this.d.c();
-         $$5 = this.l.iterator();
-
-         while ($$5.hasNext()) {
-            long $$4 = (Long)$$5.next();
-            this.i($$4);
-            this.e.add($$4);
-         }
-
-         this.l.clear();
-         ObjectIterator<Entry<ecv>> $$5x = Long2ObjectMaps.fastIterator(this.g);
-
-         while ($$5x.hasNext()) {
-            Entry<ecv> $$6 = (Entry<ecv>)$$5x.next();
-            long $$7 = $$6.getLongKey();
-            if (this.b($$7)) {
-               ecv $$8 = (ecv)$$6.getValue();
-               if (this.d.c($$7) != $$8) {
-                  this.d.a($$7, $$8);
-                  this.e.add($$7);
-               }
-
-               $$5x.remove();
+         if (!$$18) {
+            ewp $$25 = this.h.a($$19);
+            if ($$25 != null) {
+               $$10 += $$25.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
             }
          }
 
-         this.d.c();
+         $$13 /= 2.0;
       }
+
+      return azo.b($$9 / 512.0, $$10 / 512.0, $$16) / 128.0;
    }
 
-   protected void h(long $$0) {
+   @Override
+   public double a() {
+      return -this.b();
    }
 
-   protected void i(long $$0) {
+   @Override
+   public double b() {
+      return this.o;
    }
 
-   protected void b(long $$0, boolean $$1) {
-      if ($$1) {
-         this.j.add($$0);
-      } else {
-         this.j.remove($$0);
-      }
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("BlendedNoise{minLimitNoise=");
+      this.g.a($$0);
+      $$0.append(", maxLimitNoise=");
+      this.h.a($$0);
+      $$0.append(", mainNoise=");
+      this.i.a($$0);
+      $$0.append(
+            String.format(
+               Locale.ROOT,
+               ", xzScale=%.3f, yScale=%.3f, xzMainScale=%.3f, yMainScale=%.3f, cellWidth=4, cellHeight=8",
+               684.412,
+               684.412,
+               8.555150000000001,
+               4.277575000000001
+            )
+         )
+         .append('}');
    }
 
-   protected boolean j(long $$0) {
-      long $$1 = jy.f($$0);
-      return this.j.contains($$1);
-   }
-
-   protected boolean k(long $$0) {
-      return this.j.contains($$0);
-   }
-
-   public void c(long $$0, boolean $$1) {
-      if ($$1) {
-         this.k.add($$0);
-      } else {
-         this.k.remove($$0);
-      }
-   }
-
-   protected void a(long $$0, @Nullable ecv $$1) {
-      if ($$1 != null) {
-         this.g.put($$0, $$1);
-         this.h = true;
-      } else {
-         this.g.remove($$0);
-      }
-   }
-
-   protected void d(long $$0, boolean $$1) {
-      byte $$2 = this.b.get($$0);
-      byte $$3 = ewo.a.a($$2, !$$1);
-      if ($$2 != $$3) {
-         this.a($$0, $$3);
-         int $$4 = $$1 ? -1 : 1;
-
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            for (int $$6 = -1; $$6 <= 1; $$6++) {
-               for (int $$7 = -1; $$7 <= 1; $$7++) {
-                  if ($$5 != 0 || $$6 != 0 || $$7 != 0) {
-                     long $$8 = jy.a($$0, $$5, $$6, $$7);
-                     byte $$9 = this.b.get($$8);
-                     this.a($$8, ewo.a.a($$9, ewo.a.b($$9) + $$4));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   protected void a(long $$0, byte $$1) {
-      if ($$1 != 0) {
-         if (this.b.put($$0, $$1) == 0) {
-            this.m($$0);
-         }
-      } else if (this.b.remove($$0) != 0) {
-         this.n($$0);
-      }
-   }
-
-   private void m(long $$0) {
-      if (!this.l.remove($$0)) {
-         this.d.a($$0, this.g($$0));
-         this.e.add($$0);
-         this.h($$0);
-         this.f($$0);
-         this.h = true;
-      }
-   }
-
-   private void n(long $$0) {
-      this.l.add($$0);
-      this.h = true;
-   }
-
-   protected void b() {
-      if (!this.e.isEmpty()) {
-         M $$0 = this.d.b();
-         $$0.d();
-         this.c = $$0;
-         this.e.clear();
-      }
-
-      if (!this.f.isEmpty()) {
-         LongIterator $$1 = this.f.iterator();
-
-         while ($$1.hasNext()) {
-            long $$2 = $$1.nextLong();
-            this.a.a(this.i, jy.a($$2));
-         }
-
-         this.f.clear();
-      }
-   }
-
-   public ewo.b l(long $$0) {
-      return ewo.a.c(this.b.get($$0));
-   }
-
-   protected static class a {
-      public static final byte a = 0;
-      private static final int b = 0;
-      private static final int c = 26;
-      private static final byte d = 32;
-      private static final byte e = 31;
-
-      public static byte a(byte $$0, boolean $$1) {
-         return (byte)($$1 ? $$0 | 32 : $$0 & -33);
-      }
-
-      public static byte a(byte $$0, int $$1) {
-         if ($$1 >= 0 && $$1 <= 26) {
-            return (byte)($$0 & -32 | $$1 & 31);
-         } else {
-            throw new IllegalArgumentException("Neighbor count was not within range [0; 26]");
-         }
-      }
-
-      public static boolean a(byte $$0) {
-         return ($$0 & 32) != 0;
-      }
-
-      public static int b(byte $$0) {
-         return $$0 & 31;
-      }
-
-      public static ewo.b c(byte $$0) {
-         if ($$0 == 0) {
-            return ewo.b.a;
-         } else {
-            return a($$0) ? ewo.b.c : ewo.b.b;
-         }
-      }
-   }
-
-   public static enum b {
-      a("2"),
-      b("1"),
-      c("0");
-
-      private final String d;
-
-      private b(final String $$0) {
-         this.d = $$0;
-      }
-
-      public String a() {
-         return this.d;
-      }
+   @Override
+   public azh<? extends egw> c() {
+      return a;
    }
 }

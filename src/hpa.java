@@ -1,33 +1,52 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+public class hpa {
+   public static class a extends hog {
+      private final gqz n;
 
-public class hpa implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final bpi<hoz> b;
-   private final bsv c;
+      protected a(gqz $$0, awo $$1) {
+         super($$1, awq.i, hox.t());
+         this.n = $$0;
+         this.i = false;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
 
-   public hpa(FileChannel $$0, Executor $$1) {
-      this.b = new bpi<>(hoz.a, $$0);
-      this.c = new bsv($$1, "telemetry-event-log");
+      @Override
+      public void q() {
+         if (this.n.dQ() || !this.n.bm()) {
+            this.n();
+         }
+      }
    }
 
-   public hpb a() {
-      return $$0 -> this.c.a_(() -> {
-            try {
-               this.b.a($$0);
-            } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
+   public static class b extends hog {
+      public static final int n = 40;
+      private final gqz o;
+      private int p;
+
+      public b(gqz $$0) {
+         super(awp.z, awq.i, hox.t());
+         this.o = $$0;
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
+
+      @Override
+      public void q() {
+         if (!this.o.dQ() && this.p >= 0) {
+            if (this.o.bm()) {
+               this.p++;
+            } else {
+               this.p -= 2;
             }
-         });
-   }
 
-   @Override
-   public void close() {
-      this.c.a_(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
+            this.p = Math.min(this.p, 40);
+            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+         } else {
+            this.n();
+         }
+      }
    }
 }

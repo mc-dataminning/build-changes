@@ -5,17 +5,17 @@ public class nx {
    public static nk a(mp $$0, CompletableFuture<jh.a> $$1) {
       return new nk(
          $$0,
-         ezp.a(),
+         fad.a(),
          List.of(
-            new nk.a(nv::new, fcm.f),
-            new nk.a(ns::new, fcm.c),
-            new nk.a(nt::new, fcm.g),
-            new nk.a(nu::new, fcm.h),
-            new nk.a(nr::new, fcm.r),
-            new nk.a(ny::new, fcm.k),
-            new nk.a(nw::new, fcm.j),
-            new nk.a(nq::new, fcm.i),
-            new nk.a(nz::new, fcm.s)
+            new nk.a(nv::new, fda.f),
+            new nk.a(ns::new, fda.c),
+            new nk.a(nt::new, fda.g),
+            new nk.a(nu::new, fda.h),
+            new nk.a(nr::new, fda.r),
+            new nk.a(ny::new, fda.k),
+            new nk.a(nw::new, fda.j),
+            new nk.a(nq::new, fda.i),
+            new nk.a(nz::new, fda.s)
          ),
          $$1
       );

@@ -1,16 +1,8 @@
-public interface abc extends zl {
-   @Override
-   default vs b() {
-      return vs.e;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(abd var1);
-
-   void a(abe var1);
-
-   void a(abh var1);
-
-   void a(abg var1);
-
-   void a(abf var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface abc {
 }

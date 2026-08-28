@@ -1,98 +1,40 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dsa extends dwd implements dmu {
-   public static final MapCodec<dsa> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alf.a(mh.aL).fieldOf("feature").forGetter($$0x -> $$0x.c), t()).apply($$0, dsa::new)
-   );
-   private static final ffw b = dmr.b(6.0, 0.0, 6.0);
-   private final alf<ejk<?, ?>> c;
+public class dsa extends drd {
+   public static final MapCodec<dsa> a = b(dsa::new);
+   private static final xa b = xa.c("container.loom");
 
    @Override
    public MapCodec<dsa> a() {
       return a;
    }
 
-   public dsa(alf<ejk<?, ?>> $$0, eas.d $$1) {
-      super($$1);
-      this.c = $$0;
+   protected dsa(ebd.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return b;
-   }
-
-   @Override
-   protected void b(eat $$0, arq $$1, iv $$2, azv $$3) {
-      if ($$3.a(25) == 0) {
-         int $$4 = 5;
-         int $$5 = 4;
-
-         for (iv $$6 : iv.c($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
-            if ($$1.a_($$6).a(this)) {
-               if (--$$4 <= 0) {
-                  return;
-               }
-            }
-         }
-
-         iv $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            if ($$1.v($$7) && $$0.a($$1, $$7)) {
-               $$2 = $$7;
-            }
-
-            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-         }
-
-         if ($$1.v($$7) && $$0.a($$1, $$7)) {
-            $$1.a($$7, $$0, 2);
-         }
+   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(awz.ax);
       }
+
+      return bur.a;
    }
 
    @Override
-   protected boolean b(eat $$0, diq $$1, iv $$2) {
-      return $$0.s();
+   protected but b(ebe $$0, djx $$1, iv $$2) {
+      return new buz(($$2x, $$3, $$4) -> new cwx($$2x, $$3, cwd.a($$1, $$2)), b);
    }
 
    @Override
-   protected boolean a(eat $$0, djp $$1, iv $$2) {
-      iv $$3 = $$2.e();
-      eat $$4 = $$1.a_($$3);
-      return $$4.a(axc.bc) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
-   }
-
-   public boolean a(arq $$0, iv $$1, eat $$2, azv $$3) {
-      Optional<? extends jf<ejk<?, ?>>> $$4 = $$0.F_().f(mh.aL).a(this.c);
-      if ($$4.isEmpty()) {
-         return false;
-      } else {
-         $$0.a($$1, false);
-         if ($$4.get().a().a($$0, $$0.m().g(), $$3, $$1)) {
-            return true;
-         } else {
-            $$0.a($$1, $$2, 3);
-            return false;
-         }
-      }
+   public ebe a(ddr $$0) {
+      return this.m().b(e, $$0.g().g());
    }
 
    @Override
-   public boolean a(djp $$0, iv $$1, eat $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(djm $$0, azv $$1, iv $$2, eat $$3) {
-      return (double)$$1.i() < 0.4;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iv $$2, eat $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(e);
    }
 }

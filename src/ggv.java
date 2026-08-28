@@ -1,39 +1,58 @@
-public class ggv extends ggp<hdq> {
-   private final gjt[] a = new gjt[9];
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
 
-   public ggv(gjt $$0) {
-      super($$0);
-
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         this.a[$$1] = $$0.b(a($$1));
-      }
+public record ggv(boolean b, float c, float d, float e, float f, float g, Set<String> h) implements gln {
+   public ggv(Set<String> $$0) {
+      this(false, 5.0F, 2.0F, $$0);
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
+   public ggv(boolean $$0, float $$1, float $$2, Set<String> $$3) {
+      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F, $$3);
    }
 
-   public static gjz a() {
-      gkb $$0 = new gkb();
-      gkd $$1 = $$0.a();
-      $$1.a("body", gjy.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), gjv.a(0.0F, 17.6F, 0.0F));
-      azv $$2 = azv.a(1660L);
+   @Override
+   public glm apply(glm $$0) {
+      float $$1 = this.b ? 1.5F / this.e : 1.0F;
+      float $$2 = 1.0F / this.f;
+      UnaryOperator<glg> $$3 = $$1x -> $$1x.c(0.0F, this.c, this.d).b($$1);
+      UnaryOperator<glg> $$4 = $$1x -> $$1x.c(0.0F, this.g, 0.0F).b($$2);
+      glm $$5 = new glm();
 
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         int $$6 = $$2.a(7) + 8;
-         $$1.a(a($$3), gjy.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), gjv.a($$4, 24.6F, $$5));
+      for (Entry<String, glo> $$6 : $$0.a().a()) {
+         String $$7 = $$6.getKey();
+         glo $$8 = $$6.getValue();
+         $$5.a().a($$7, $$8.a(this.h.contains($$7) ? $$3 : $$4));
       }
 
-      return gjz.a($$0, 64, 32).a(gkc.scaling(4.5F));
+      return $$5;
    }
 
-   public void a(hdq $$0) {
-      super.a($$0);
+   public boolean a() {
+      return this.b;
+   }
 
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         this.a[$$1].e = 0.2F * azm.a($$0.u * 0.3F + (float)$$1) + 0.4F;
-      }
+   public float b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public Set<String> g() {
+      return this.h;
    }
 }

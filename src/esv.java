@@ -1,90 +1,68 @@
-import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.Products.P4;
+import com.mojang.datafixers.Products.P5;
+import com.mojang.datafixers.Products.P9;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public abstract class esv {
-   public static final Codec<esv> f = mg.ag.q().dispatch("element_type", esv::a, esw::codec);
-   private static final jf<evn> a = jf.a(new evn(List.of()));
-   @Nullable
-   private volatile esx.a b;
+public class esv extends esy {
+   public static final MapCodec<esv> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, esv::new));
+   private final int c;
+   private final int d;
+   private final int e;
+   private final jj<dla> f;
 
-   protected static <E extends esv> RecordCodecBuilder<E, esx.a> f() {
-      return esx.a.c.fieldOf("projection").forGetter(esv::g);
+   private static P9<Mu<esv>, ka, esy.c, Float, Integer, Optional<esy.a>, Integer, Integer, Integer, jj<dla>> b(Instance<esv> $$0) {
+      P5<Mu<esv>, ka, esy.c, Float, Integer, Optional<esy.a>> $$1 = a($$0);
+      P4<Mu<esv>, Integer, Integer, Integer, jj<dla>> $$2 = $$0.group(
+         Codec.intRange(0, 1023).fieldOf("distance").forGetter(esv::a),
+         Codec.intRange(0, 1023).fieldOf("spread").forGetter(esv::b),
+         Codec.intRange(1, 4095).fieldOf("count").forGetter(esv::c),
+         ju.a(mh.aG).fieldOf("preferred_biomes").forGetter(esv::d)
+      );
+      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
    }
 
-   protected esv(esx.a $$0) {
-      this.b = $$0;
+   public esv(ka $$0, esy.c $$1, float $$2, int $$3, Optional<esy.a> $$4, int $$5, int $$6, int $$7, jj<dla> $$8) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
+      this.f = $$8;
    }
 
-   public abstract ka a(evq var1, dtl var2);
-
-   public abstract List<evp.a> a(evq var1, iv var2, dtl var3, azv var4);
-
-   public abstract erf a(evq var1, iv var2, dtl var3);
-
-   public abstract boolean a(evq var1, dkl var2, dki var3, ecr var4, iv var5, iv var6, dtl var7, erf var8, azv var9, euz var10, boolean var11);
-
-   public abstract esw<?> a();
-
-   public void a(djn $$0, evp.d $$1, iv $$2, dtl $$3, azv $$4, erf $$5) {
+   public esv(int $$0, int $$1, int $$2, jj<dla> $$3) {
+      this(ka.i, esy.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
    }
 
-   public esv a(esx.a $$0) {
-      this.b = $$0;
-      return this;
+   public int a() {
+      return this.c;
    }
 
-   public esx.a g() {
-      esx.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
-      } else {
-         return $$0;
-      }
+   public int b() {
+      return this.d;
    }
 
-   public int h() {
-      return 1;
+   public int c() {
+      return this.e;
    }
 
-   public static Function<esx.a, eso> i() {
-      return $$0 -> eso.b;
+   public jj<dla> d() {
+      return this.f;
    }
 
-   public static Function<esx.a, ess> a(String $$0) {
-      return $$1 -> new ess(Either.left(alg.a($$0)), a, $$1, Optional.empty());
+   @Override
+   protected boolean a(edd $$0, int $$1, int $$2) {
+      List<djc> $$3 = $$0.a(this);
+      return $$3 == null ? false : $$3.contains(new djc($$1, $$2));
    }
 
-   public static Function<esx.a, ess> a(String $$0, jf<evn> $$1) {
-      return $$2 -> new ess(Either.left(alg.a($$0)), $$1, $$2, Optional.empty());
-   }
-
-   public static Function<esx.a, esu> b(String $$0) {
-      return $$1 -> new esu(Either.left(alg.a($$0)), a, $$1, Optional.empty());
-   }
-
-   public static Function<esx.a, esu> b(String $$0, jf<evn> $$1) {
-      return $$2 -> new esu(Either.left(alg.a($$0)), $$1, $$2, Optional.empty());
-   }
-
-   public static Function<esx.a, esu> a(String $$0, euz $$1) {
-      return $$2 -> new esu(Either.left(alg.a($$0)), a, $$2, Optional.of($$1));
-   }
-
-   public static Function<esx.a, esu> a(String $$0, jf<evn> $$1, euz $$2) {
-      return $$3 -> new esu(Either.left(alg.a($$0)), $$1, $$3, Optional.of($$2));
-   }
-
-   public static Function<esx.a, esp> a(jf<eqr> $$0) {
-      return $$1 -> new esp($$0, $$1);
-   }
-
-   public static Function<esx.a, est> b(List<Function<esx.a, ? extends esv>> $$0) {
-      return $$1 -> new est($$0.stream().map($$1x -> (esv)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+   @Override
+   public esz<?> e() {
+      return esz.b;
    }
 }

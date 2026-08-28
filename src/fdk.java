@@ -1,61 +1,34 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record fdk(Optional<Long> b, ezs c) implements fdc {
-   public static final MapCodec<fdk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(fdk::c), ezs.a.fieldOf("value").forGetter(fdk::d)).apply($$0, fdk::new)
-   );
+public record fdk(boolean b) implements fdq {
+   public static final MapCodec<fdk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(fdk::e)).apply($$0, fdk::new));
 
-   @Override
-   public fdd b() {
-      return fde.q;
+   public boolean a(fah $$0) {
+      return $$0.b(fdb.l) == this.b;
    }
 
    @Override
-   public Set<bax<?>> a() {
-      return this.c.a();
+   public fdr b() {
+      return fds.s;
    }
 
-   public boolean a(ezt $$0) {
-      arq $$1 = $$0.d();
-      long $$2 = $$1.af();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
+   @Override
+   public Set<baz<?>> a() {
+      return Set.of(fdb.l);
    }
 
-   public static fdk.a a(ezs $$0) {
-      return new fdk.a($$0);
+   public static fdq.a c() {
+      return () -> new fdk(true);
    }
 
-   public Optional<Long> c() {
+   public static fdq.a d() {
+      return () -> new fdk(false);
+   }
+
+   public boolean e() {
       return this.b;
-   }
-
-   public ezs d() {
-      return this.c;
-   }
-
-   public static class a implements fdc.a {
-      private Optional<Long> a = Optional.empty();
-      private final ezs b;
-
-      public a(ezs $$0) {
-         this.b = $$0;
-      }
-
-      public fdk.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public fdk a() {
-         return new fdk(this.a, this.b);
-      }
    }
 }

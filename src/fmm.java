@@ -1,7 +1,16 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fmm extends fml {
+   private final xa a;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-interface fmm {
+   public fmm(xa $$0) {
+      this.a = $$0;
+   }
+
+   public fmm(String $$0) {
+      this(xa.b($$0));
+   }
+
+   @Override
+   public xa a() {
+      return xa.a("mco.upload.failed", this.a);
+   }
 }

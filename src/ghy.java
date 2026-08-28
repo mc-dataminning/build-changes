@@ -1,35 +1,45 @@
-public class ghy extends ggp<hdf> {
-   private final gjt a;
-   private final gjt b;
-
-   public ghy(gjt $$0) {
+public class ghy<T extends heo> extends gio<T> {
+   public ghy(gle $$0) {
       super($$0);
-      this.a = $$0.b("left_blue_fin");
-      this.b = $$0.b("right_blue_fin");
    }
 
-   public static gjz a() {
-      gkb $$0 = new gkb();
-      gkd $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", gjy.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), gjv.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", gjy.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), gjv.a(-2.5F, 18.0F, -1.5F));
-      $$1.a("left_blue_fin", gjy.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), gjv.a(2.5F, 18.0F, -1.5F));
-      $$1.a("top_front_fin", gjy.c().a(19, 17).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F), gjv.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_back_fin", gjy.c().a(11, 17).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F), gjv.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", gjy.c().a(5, 17).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gjv.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("right_back_fin", gjy.c().a(9, 17).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gjv.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", gjy.c().a(1, 17).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gjv.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", gjy.c().a(1, 17).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gjv.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_back_fin", gjy.c().a(18, 20).a(0.0F, 0.0F, 0.0F, 5.0F, 1.0F, 0.0F), gjv.a(-2.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_front_fin", gjy.c().a(17, 19).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), gjv.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      return gjz.a($$0, 32, 32);
+   public static glk a() {
+      float $$0 = -14.0F;
+      glm $$1 = gio.a(gli.a, -14.0F);
+      glo $$2 = $$1.a();
+      glo $$3 = $$2.a("head", glj.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), glg.a(0.0F, -13.0F, 0.0F));
+      $$3.a("hat", glj.c().a(0, 16).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gli(-0.5F)), glg.a);
+      $$2.a("body", glj.c().a(32, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), glg.a(0.0F, -14.0F, 0.0F));
+      $$2.a("right_arm", glj.c().a(56, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), glg.a(-5.0F, -12.0F, 0.0F));
+      $$2.a("left_arm", glj.c().a(56, 0).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), glg.a(5.0F, -12.0F, 0.0F));
+      $$2.a("right_leg", glj.c().a(56, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), glg.a(-2.0F, -5.0F, 0.0F));
+      $$2.a("left_leg", glj.c().a(56, 0).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), glg.a(2.0F, -5.0F, 0.0F));
+      return glk.a($$1, 64, 32);
    }
 
-   @Override
-   public void a(hdf $$0) {
+   public void a(T $$0) {
       super.a($$0);
-      this.b.g = -0.2F + 0.4F * azm.a($$0.u * 0.2F);
-      this.a.g = 0.2F - 0.4F * azm.a($$0.u * 0.2F);
+      this.o.k = true;
+      this.r.e *= 0.5F;
+      this.s.e *= 0.5F;
+      this.t.e *= 0.5F;
+      this.u.e *= 0.5F;
+      float $$1 = 0.4F;
+      this.r.e = azo.a(this.r.e, -0.4F, 0.4F);
+      this.s.e = azo.a(this.s.e, -0.4F, 0.4F);
+      this.t.e = azo.a(this.t.e, -0.4F, 0.4F);
+      this.u.e = azo.a(this.u.e, -0.4F, 0.4F);
+      if ($$0.b != null) {
+         this.r.e = -0.5F;
+         this.s.e = -0.5F;
+         this.r.g = 0.05F;
+         this.s.g = -0.05F;
+      }
+
+      if ($$0.a) {
+         float $$2 = 5.0F;
+         this.o.c -= 5.0F;
+         this.p.c += 5.0F;
+      }
    }
 }

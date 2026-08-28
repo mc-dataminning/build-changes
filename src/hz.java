@@ -1,7 +1,7 @@
 import java.util.List;
 
 public interface hz<T> {
-   alg a();
+   ali a();
 
    List<ho<T>> b();
 }

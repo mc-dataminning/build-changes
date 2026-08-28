@@ -1,122 +1,44 @@
-import java.util.List;
+public class gsx implements flr {
+   private final flr a;
+   private final hla b;
 
-public abstract class gsx implements gtd<dzf> {
-   private static final int a = -988212;
-   private static final int b = azm.h(16);
-   private final fsk c;
-
-   public gsx(gte.a $$0) {
-      this.c = $$0.g();
+   public gsx(flr $$0, hla $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   protected abstract ghl a(eat var1, ech var2);
-
-   protected abstract hlx a(ech var1);
-
-   protected abstract float a();
-
-   protected abstract float b();
-
-   protected abstract ffc c();
-
-   protected abstract void a(fkd var1, float var2, eat var3);
-
-   public void a(dzf $$0, float $$1, fkd $$2, gqr $$3, int $$4, int $$5, ffc $$6) {
-      eat $$7 = $$0.m();
-      dub $$8 = (dub)$$7.b();
-      ghl $$9 = this.a($$7, $$8.d());
-      this.a($$0, $$2, $$3, $$4, $$5, $$7, $$8, $$8.d(), $$9);
+   @Override
+   public flr a(float $$0, float $$1, float $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   private void a(dzf $$0, fkd $$1, gqr $$2, int $$3, int $$4, eat $$5, dub $$6, ech $$7, ghl $$8) {
-      $$1.a();
-      this.a($$1, -$$6.h($$5), $$5);
-      this.a($$1, $$2, $$3, $$4, $$7, $$8);
-      this.a($$0.ax_(), $$0.j(), $$1, $$2, $$3, $$0.a(), $$0.c(), true);
-      this.a($$0.ax_(), $$0.k(), $$1, $$2, $$3, $$0.a(), $$0.c(), false);
-      $$1.b();
+   @Override
+   public flr a(int $$0, int $$1, int $$2, int $$3) {
+      return this.a.a($$0, $$1, $$2, $$3);
    }
 
-   protected void a(fkd $$0, gqr $$1, int $$2, int $$3, ech $$4, ghl $$5) {
-      $$0.a();
-      float $$6 = this.a();
-      $$0.b($$6, -$$6, -$$6);
-      hlx $$7 = this.a($$4);
-      fkh $$8 = $$7.a($$1, $$5::a);
-      $$5.a($$0, $$8, $$2, $$3);
-      $$0.b();
+   @Override
+   public flr a(float $$0, float $$1) {
+      return this.a.a(this.b.a($$0), this.b.c($$1));
    }
 
-   private void a(iv $$0, dzg $$1, fkd $$2, gqr $$3, int $$4, int $$5, int $$6, boolean $$7) {
-      $$2.a();
-      this.a($$2, $$7, this.c());
-      int $$8 = a($$1);
-      int $$9 = 4 * $$5 / 2;
-      ayy[] $$10 = $$1.a(fpt.Q().aT(), $$1x -> {
-         List<ayy> $$2x = this.c.c($$1x, $$6);
-         return $$2x.isEmpty() ? ayy.a : $$2x.get(0);
-      });
-      int $$11;
-      boolean $$12;
-      int $$13;
-      if ($$1.a()) {
-         $$11 = $$1.b().g();
-         $$12 = a($$0, $$11);
-         $$13 = 15728880;
-      } else {
-         $$11 = $$8;
-         $$12 = false;
-         $$13 = $$4;
-      }
-
-      for (int $$17 = 0; $$17 < 4; $$17++) {
-         ayy $$18 = $$10[$$17];
-         float $$19 = (float)(-this.c.a($$18) / 2);
-         if ($$12) {
-            this.c.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
-         } else {
-            this.c.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, fsk.a.c, 0, $$13);
-         }
-      }
-
-      $$2.b();
+   @Override
+   public flr a(int $$0, int $$1) {
+      return this.a.a($$0, $$1);
    }
 
-   private void a(fkd $$0, boolean $$1, ffc $$2) {
-      if (!$$1) {
-         $$0.a(a.d.rotationDegrees(180.0F));
-      }
-
-      float $$3 = 0.015625F * this.b();
-      $$0.a($$2);
-      $$0.b($$3, -$$3, $$3);
+   @Override
+   public flr b(int $$0, int $$1) {
+      return this.a.b($$0, $$1);
    }
 
-   private static boolean a(iv $$0, int $$1) {
-      if ($$1 == cyl.p.g()) {
-         return true;
-      } else {
-         fpt $$2 = fpt.Q();
-         gpo $$3 = $$2.t;
-         if ($$3 != null && $$2.n.aE().a() && $$3.gG()) {
-            return true;
-         } else {
-            bwi $$4 = $$2.ao();
-            return $$4 != null && $$4.g(ffc.b($$0)) < (double)b;
-         }
-      }
+   @Override
+   public flr b(float $$0, float $$1, float $$2) {
+      return this.a.b($$0, $$1, $$2);
    }
 
-   public static int a(dzg $$0) {
-      int $$1 = $$0.b().g();
-      if ($$1 == cyl.p.g() && $$0.a()) {
-         return -988212;
-      } else {
-         double $$2 = 0.4;
-         int $$3 = (int)((double)axw.b($$1) * 0.4);
-         int $$4 = (int)((double)axw.c($$1) * 0.4);
-         int $$5 = (int)((double)axw.d($$1) * 0.4);
-         return axw.a(0, $$3, $$4, $$5);
-      }
+   @Override
+   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      this.a.a($$0, $$1, $$2, $$3, this.b.a($$4), this.b.c($$5), $$6, $$7, $$8, $$9, $$10);
    }
 }

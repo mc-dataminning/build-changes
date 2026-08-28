@@ -1,5 +1,8 @@
-public abstract class fym implements fud {
-   public boolean a() {
-      return true;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface fym {
 }

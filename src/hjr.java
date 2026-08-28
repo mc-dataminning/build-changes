@@ -1,44 +1,24 @@
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hjr(fiz a, @Nullable hln b) implements Closeable {
-   public static hjr a(avd $$0, alg $$1) throws IOException {
-      avb $$2 = $$0.getResourceOrThrow($$1);
+public record hjr() implements hjq<alh<dil>> {
+   public static final Codec<alh<dil>> a = alh.a(mh.bk);
+   public static final hjq.a<hjr, alh<dil>> b = hjq.a.a(MapCodec.unit(new hjr()), a);
 
-      fiz $$4;
-      try (InputStream $$3 = $$2.d()) {
-         $$4 = fiz.a($$3);
-      }
-
-      hln $$6 = $$2.f().a(hln.d).orElse(null);
-      return new hjr($$4, $$6);
-   }
-
-   public static hjr a() {
-      return new hjr(hjf.a(), null);
-   }
-
-   public boolean b() {
-      return this.b != null ? this.b.a() : false;
-   }
-
-   public boolean c() {
-      return this.b != null ? this.b.b() : false;
+   @Nullable
+   public alh<dil> a(czy $$0, @Nullable gmb $$1, @Nullable bxu $$2, int $$3, czw $$4) {
+      dij $$5 = $$0.a(kk.W);
+      return $$5 == null ? null : $$5.a().e().orElse(null);
    }
 
    @Override
-   public void close() {
-      this.a.close();
+   public hjq.a<hjr, alh<dil>> a() {
+      return b;
    }
 
-   public fiz d() {
-      return this.a;
-   }
-
-   @Nullable
-   public hln e() {
-      return this.b;
+   @Override
+   public Codec<alh<dil>> b() {
+      return a;
    }
 }

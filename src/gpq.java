@@ -1,64 +1,91 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+public class gpq extends gqk {
+   private final double a;
+   private final double b;
+   private final double F;
 
-public class gpq {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = crl.h();
-   public static final Codec<gpq> a = Codec.PASSTHROUGH.listOf().validate($$0 -> ag.a($$0, c)).xmap(gpq::new, $$0 -> $$0.f);
-   private static final DynamicOps<uw> d = un.a;
-   private static final Dynamic<?> e = new Dynamic(d, (uw)czn.f.encodeStart(d, czn.k).getOrThrow());
-   private List<Dynamic<?>> f;
-
-   private gpq(List<Dynamic<?>> $$0) {
-      this.f = $$0;
+   protected gpq(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.a = this.g;
+      this.b = this.h;
+      this.F = this.i;
+      this.D = 0.1F * (this.r.i() * 0.2F + 0.5F);
+      float $$7 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$7 * 0.9F;
+      this.w = $$7 * 0.3F;
+      this.x = $$7;
+      this.t = (int)(Math.random() * 10.0) + 40;
    }
 
-   public gpq() {
-      this(Collections.nCopies(c, e));
+   @Override
+   public gpo b() {
+      return gpo.b;
    }
 
-   public List<czn> a(jh.a $$0) {
-      return this.f
-         .stream()
-         .map($$1 -> czn.f.parse(ale.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(czn.k))
-         .toList();
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
-   public void a(crl $$0, jt $$1) {
-      ale<uw> $$2 = $$1.a(d);
-      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = 1.0F - $$1;
+      $$1 *= $$1;
+      $$1 = 1.0F - $$1;
+      return this.D * $$1;
+   }
 
-      for (int $$4 = 0; $$4 < c; $$4++) {
-         czn $$5 = $$0.a($$4);
-         Optional<Dynamic<?>> $$6 = czn.f
-            .encodeStart($$2, $$5)
-            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
-            .map($$0x -> new Dynamic(d, $$0x));
-         $$3.add($$6.orElse(e));
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      float $$2 = (float)this.s / (float)this.t;
+      $$2 *= $$2;
+      $$2 *= $$2;
+      int $$3 = $$1 & 0xFF;
+      int $$4 = $$1 >> 16 & 0xFF;
+      $$4 += (int)($$2 * 15.0F * 16.0F);
+      if ($$4 > 240) {
+         $$4 = 240;
       }
 
-      this.f = $$3.build();
+      return $$3 | $$4 << 16;
    }
 
-   public boolean a() {
-      for (Dynamic<?> $$0 : this.f) {
-         if (!a($$0)) {
-            return false;
-         }
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         float var3 = -$$0 + $$0 * $$0 * 2.0F;
+         float var4 = 1.0F - var3;
+         this.g = this.a + this.j * (double)var4;
+         this.h = this.b + this.k * (double)var4 + (double)(1.0F - $$0);
+         this.i = this.F + this.l * (double)var4;
+      }
+   }
+
+   public static class a implements gpn<mc> {
+      private final gqf a;
+
+      public a(gqf $$0) {
+         this.a = $$0;
       }
 
-      return true;
-   }
-
-   private static boolean a(Dynamic<?> $$0) {
-      return e.equals($$0);
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gpq $$8 = new gpq($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

@@ -1,33 +1,53 @@
-import java.util.List;
+public class acs implements zh<abw> {
+   public static final yy<wl, acs> a = zh.a(acs::a, acs::new);
+   private final int b;
+   private final int c;
+   private final int d;
+   private final czy e;
 
-public record acs(acs.a b, List<String> c) implements zf<abu> {
-   public static final yw<vu, acs> a = zf.a(acs::a, acs::new);
-
-   private acs(vu $$0) {
-      this($$0.b(acs.a.class), $$0.a(vu::p));
+   public acs(int $$0, int $$1, int $$2, czy $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3.v();
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, vu::a);
+   private acs(wl $$0) {
+      this.b = $$0.x();
+      this.c = $$0.l();
+      this.d = $$0.readShort();
+      this.e = czy.h.decode($$0);
+   }
+
+   private void a(wl $$0) {
+      $$0.f(this.b);
+      $$0.c(this.c);
+      $$0.m(this.d);
+      czy.h.encode($$0, this.e);
    }
 
    @Override
-   public zh<acs> a() {
-      return agn.x;
+   public zj<acs> a() {
+      return agp.v;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public int e() {
+      return this.d;
+   }
+
+   public czy f() {
+      return this.e;
+   }
+
+   public int g() {
+      return this.c;
    }
 }

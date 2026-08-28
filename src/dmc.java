@@ -2,75 +2,102 @@ import com.mojang.serialization.MapCodec;
 import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dmc extends dlz {
-   public static final MapCodec<dmc> c = b(dmc::new);
-   public static final ebr<jb> d = dqs.e;
-   private static final Map<jb, ffw> e = fft.c(dmr.b(16.0, 8.0, 5.0, 16.0));
+public class dmc extends dqa {
+   public static final MapCodec<dmc> a = b(dmc::new);
+   public static final ecc<jb> b = drd.e;
+   private static final Map<jb.a, fgk> c = fgh.a(
+      fgh.a(dnc.b(12.0, 0.0, 4.0), dnc.a(8.0, 10.0, 4.0, 5.0), dnc.a(4.0, 8.0, 5.0, 10.0), dnc.a(10.0, 16.0, 10.0, 16.0))
+   );
+   private static final xa d = xa.c("container.repair");
+   private static final float e = 2.0F;
+   private static final int f = 40;
 
    @Override
-   public MapCodec<? extends dmc> a() {
-      return c;
+   public MapCodec<dmc> a() {
+      return a;
    }
 
-   protected dmc(eas.d $$0) {
+   public dmc(ebd.d $$0) {
       super($$0);
-      this.l(this.C.b().b(d, jb.c).b(b, Boolean.valueOf(true)));
+      this.l(this.C.b().b(b, jb.c));
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return e.get($$0.c(d));
+   public ebe a(ddr $$0) {
+      return this.m().b(b, $$0.g().h());
    }
 
    @Override
-   protected eat a(eat $$0, dtl $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected eat a(eat $$0, dru $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(d, b);
-   }
-
-   @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, exb.c, exb.c.a($$1));
+   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(awz.aC);
       }
 
-      return $$4.g() == $$0.c(d) && !$$0.a($$1, $$3) ? dmt.a.m() : $$0;
-   }
-
-   @Override
-   protected boolean a(eat $$0, djp $$1, iv $$2) {
-      jb $$3 = $$0.c(d);
-      iv $$4 = $$2.a($$3.g());
-      eat $$5 = $$1.a_($$4);
-      return $$5.c($$1, $$4, $$3);
+      return bur.a;
    }
 
    @Nullable
    @Override
-   public eat a(ddg $$0) {
-      eat $$1 = super.a($$0);
-      djp $$2 = $$0.q();
-      iv $$3 = $$0.a();
-      jb[] $$4 = $$0.f();
+   protected but b(ebe $$0, djx $$1, iv $$2) {
+      return new buz(($$2x, $$3, $$4) -> new cvt($$2x, $$3, cwd.a($$1, $$2)), d);
+   }
 
-      for (jb $$5 : $$4) {
-         if ($$5.o().d()) {
-            $$1 = $$1.b(d, $$5.g());
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
-         }
+   @Override
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return c.get($$0.c(b).o());
+   }
+
+   @Override
+   protected void a(cob $$0) {
+      $$0.b(2.0F, 40);
+   }
+
+   @Override
+   public void a(djx $$0, iv $$1, ebe $$2, ebe $$3, cob $$4) {
+      if (!$$4.ba()) {
+         $$0.c(1031, $$1, 0);
       }
+   }
 
-      return null;
+   @Override
+   public void a(djx $$0, iv $$1, cob $$2) {
+      if (!$$2.ba()) {
+         $$0.c(1029, $$1, 0);
+      }
+   }
+
+   @Override
+   public bvi a(bwt $$0) {
+      return $$0.dW().b($$0);
+   }
+
+   @Nullable
+   public static ebe e(ebe $$0) {
+      if ($$0.a(dne.ht)) {
+         return dne.hu.m().b(b, $$0.c(b));
+      } else {
+         return $$0.a(dne.hu) ? dne.hv.m().b(b, $$0.c(b)) : null;
+      }
+   }
+
+   @Override
+   protected ebe a(ebe $$0, dtw $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(ebe $$0, eyd $$1) {
+      return false;
+   }
+
+   @Override
+   public int b(ebe $$0, djb $$1, iv $$2) {
+      return $$0.a($$1, $$2).ak;
    }
 }

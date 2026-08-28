@@ -1,26 +1,42 @@
-public interface erg {
-   alf<ert> a = a("villages");
-   alf<ert> b = a("desert_pyramids");
-   alf<ert> c = a("igloos");
-   alf<ert> d = a("jungle_temples");
-   alf<ert> e = a("swamp_huts");
-   alf<ert> f = a("pillager_outposts");
-   alf<ert> g = a("ocean_monuments");
-   alf<ert> h = a("woodland_mansions");
-   alf<ert> i = a("buried_treasures");
-   alf<ert> j = a("mineshafts");
-   alf<ert> k = a("ruined_portals");
-   alf<ert> l = a("shipwrecks");
-   alf<ert> m = a("ocean_ruins");
-   alf<ert> n = a("nether_complexes");
-   alf<ert> o = a("nether_fossils");
-   alf<ert> p = a("end_cities");
-   alf<ert> q = a("ancient_cities");
-   alf<ert> r = a("strongholds");
-   alf<ert> s = a("trail_ruins");
-   alf<ert> t = a("trial_chambers");
+import java.util.Optional;
 
-   private static alf<ert> a(String $$0) {
-      return alf.a(mh.bd, alg.b($$0));
+public class erg extends eia {
+   private final dkw a;
+   private final edc b;
+   private final Optional<erf> c;
+
+   public erg(dkw $$0, edc $$1, Optional<erf> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public int a(ehd.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   public eda a(djc $$0) {
+      return ((edv)this.a.a($$0.h, $$0.i)).F();
+   }
+
+   public ebe a(iv $$0) {
+      return this.a.a_($$0);
+   }
+
+   public int c() {
+      return this.a.K_();
+   }
+
+   public dkw d() {
+      return this.a;
+   }
+
+   public Optional<erf> e() {
+      return this.c;
+   }
+
+   public edc f() {
+      return this.b;
    }
 }

@@ -1,46 +1,34 @@
+import com.google.common.collect.Maps;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
-public class frr implements frp {
-   private final dmr a;
-   private final List<gst> b = new ArrayList<>();
+public record frr(float a, boolean b, Map<String, List<frq>> c) {
+   public static class a {
+      private final float a;
+      private final Map<String, List<frq>> b = Maps.newHashMap();
+      private boolean c;
 
-   private frr(dmr $$0) {
-      this.a = $$0;
-   }
+      public static frr.a a(float $$0) {
+         return new frr.a($$0);
+      }
 
-   @Override
-   public dmr a() {
-      return this.a;
-   }
+      private a(float $$0) {
+         this.a = $$0;
+      }
 
-   public static frr a(dmr $$0) {
-      return new frr($$0);
-   }
+      public frr.a a() {
+         this.c = true;
+         return this;
+      }
 
-   public frr a(gsi $$0) {
-      this.b.add(new gst(Optional.empty(), $$0));
-      return this;
-   }
+      public frr.a a(String $$0, frq $$1) {
+         this.b.computeIfAbsent($$0, $$0x -> new ArrayList<>()).add($$1);
+         return this;
+      }
 
-   private void a(gsq $$0) {
-      $$0.instantiate(this.a.l());
-   }
-
-   public frr a(gsq $$0, gsi $$1) {
-      this.a($$0);
-      this.b.add(new gst(Optional.of($$0), $$1));
-      return this;
-   }
-
-   public frr a(frq $$0, gsi $$1) {
-      return this.a($$0.a(), $$1);
-   }
-
-   @Override
-   public gsc b() {
-      return new gsc(Map.of(), Optional.of(new gss.b(List.copyOf(this.b))));
+      public frr b() {
+         return new frr(this.a, this.c, this.b);
+      }
    }
 }

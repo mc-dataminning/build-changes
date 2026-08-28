@@ -1,103 +1,69 @@
-import javax.annotation.Nullable;
+public class dza extends dyc implements dzj {
+   private final dyl a = new dyl();
+   private final dyq b = new dyq() {
+      @Override
+      protected void a(djx $$0, iv $$1, ebe $$2) {
+         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awp.ix, awq.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
+      }
 
-public abstract class dza extends dxk implements bum {
-   @Nullable
-   protected alf<ezy> l;
-   protected long m = 0L;
+      @Override
+      protected void b(djx $$0, iv $$1, ebe $$2) {
+         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awp.iw, awq.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
+      }
 
-   protected dza(dxt<?> $$0, iv $$1, eat $$2) {
-      super($$0, $$1, $$2);
+      @Override
+      protected void a(djx $$0, iv $$1, ebe $$2, int $$3, int $$4) {
+         $$0.a(dza.this.o, dne.gf, 1, $$4);
+      }
+
+      @Override
+      protected boolean a(crx $$0) {
+         return $$0.gx().b(dza.this);
+      }
+   };
+
+   public dza(iv $$0, ebe $$1) {
+      super(dye.d, $$0, $$1);
    }
 
-   @Nullable
-   @Override
-   public alf<ezy> at_() {
-      return this.l;
-   }
-
-   @Override
-   public void a(@Nullable alf<ezy> $$0) {
-      this.l = $$0;
-   }
-
-   @Override
-   public long aw_() {
-      return this.m;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.m = $$0;
-   }
-
-   @Override
-   public boolean c() {
-      this.d_(null);
-      return super.c();
+   public static void a(djx $$0, iv $$1, ebe $$2, dza $$3) {
+      $$3.a.a();
    }
 
    @Override
-   public czn a(int $$0) {
-      this.d_(null);
-      return super.a($$0);
-   }
-
-   @Override
-   public czn a(int $$0, int $$1) {
-      this.d_(null);
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public czn b(int $$0) {
-      this.d_(null);
-      return super.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, czn $$1) {
-      this.d_(null);
-      super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean d(crm $$0) {
-      return super.d($$0) && (this.l == null || !$$0.V_());
-   }
-
-   @Nullable
-   @Override
-   public cvf createMenu(int $$0, crl $$1, crm $$2) {
-      if (this.d($$2)) {
-         this.d_($$1.h);
-         return this.a($$0, $$1);
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.a.a($$1 > 0);
+         return true;
       } else {
-         return null;
+         return super.a_($$0, $$1);
+      }
+   }
+
+   public void a(crx $$0) {
+      if (!this.p && !$$0.Z_()) {
+         this.b.a($$0, this.i(), this.aB_(), this.m());
+      }
+   }
+
+   public void b(crx $$0) {
+      if (!this.p && !$$0.Z_()) {
+         this.b.b($$0, this.i(), this.aB_(), this.m());
+      }
+   }
+
+   public boolean c(crx $$0) {
+      return buk.a(this, $$0);
+   }
+
+   public void a() {
+      if (!this.p) {
+         this.b.c(this.i(), this.aB_(), this.m());
       }
    }
 
    @Override
-   protected void a(kf $$0) {
-      super.a($$0);
-      dco $$1 = $$0.a(kk.at);
-      if ($$1 != null) {
-         this.l = $$1.a();
-         this.m = $$1.b();
-      }
-   }
-
-   @Override
-   protected void a(kh.a $$0) {
-      super.a($$0);
-      if (this.l != null) {
-         $$0.a(kk.at, new dco(this.l, this.m));
-      }
-   }
-
-   @Override
-   public void a(tz $$0) {
-      super.a($$0);
-      $$0.p("LootTable");
-      $$0.p("LootTableSeed");
+   public float a(float $$0) {
+      return this.a.a($$0);
    }
 }

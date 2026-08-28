@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class fx extends fu<dru> {
+public class fx extends fu<dsf> {
    private fx() {
-      super(dru.d, dru::values);
+      super(dsf.d, dsf::values);
    }
 
-   public static fu<dru> a() {
+   public static fu<dsf> a() {
       return new fx();
    }
 
-   public static dru a(CommandContext<ej> $$0, String $$1) {
-      return (dru)$$0.getArgument($$1, dru.class);
+   public static dsf a(CommandContext<ej> $$0, String $$1) {
+      return (dsf)$$0.getArgument($$1, dsf.class);
    }
 }

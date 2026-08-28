@@ -1,169 +1,118 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class gqi extends avi<gqi.a> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final alg b = alg.b("gpu_warnlist.json");
-   private ImmutableMap<String, String> c = ImmutableMap.of();
-   private boolean d;
-   private boolean e;
-   private boolean f;
-
-   public boolean a() {
-      return !this.c.isEmpty();
+public class gqi extends gqk {
+   gqi(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      float $$7 = this.r.i() * 0.1F + 0.2F;
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
+      this.j *= 0.02F;
+      this.k *= 0.02F;
+      this.l *= 0.02F;
+      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
    }
 
-   public boolean b() {
-      return this.a() && !this.e;
+   @Override
+   public gpo b() {
+      return gpo.b;
    }
 
-   public void c() {
-      this.d = true;
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
-   public void d() {
-      this.e = true;
-   }
-
-   public void e() {
-      this.e = true;
-      this.f = true;
-   }
-
-   public boolean f() {
-      return this.d && !this.e;
-   }
-
-   public boolean g() {
-      return this.f;
-   }
-
-   public void h() {
-      this.d = false;
-      this.e = false;
-      this.f = false;
-   }
-
-   @Nullable
-   public String i() {
-      return (String)this.c.get("renderer");
-   }
-
-   @Nullable
-   public String j() {
-      return (String)this.c.get("version");
-   }
-
-   @Nullable
-   public String k() {
-      return (String)this.c.get("vendor");
-   }
-
-   @Nullable
-   public String l() {
-      StringBuilder $$0 = new StringBuilder();
-      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
-      return $$0.length() == 0 ? null : $$0.toString();
-   }
-
-   protected gqi.a a(avd $$0, bqq $$1) {
-      List<Pattern> $$2 = Lists.newArrayList();
-      List<Pattern> $$3 = Lists.newArrayList();
-      List<Pattern> $$4 = Lists.newArrayList();
-      JsonObject $$5 = c($$0, $$1);
-      if ($$5 != null) {
-         try (bqv $$6 = $$1.d("compile_regex")) {
-            a($$5.getAsJsonArray("renderer"), $$2);
-            a($$5.getAsJsonArray("version"), $$3);
-            a($$5.getAsJsonArray("vendor"), $$4);
-         }
-      }
-
-      return new gqi.a($$2, $$3, $$4);
-   }
-
-   protected void a(gqi.a $$0, avd $$1, bqq $$2) {
-      this.c = $$0.a();
-   }
-
-   private static void a(JsonArray $$0, List<Pattern> $$1) {
-      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
-   }
-
-   @Nullable
-   private static JsonObject c(avd $$0, bqq $$1) {
-      try {
-         JsonObject var4;
-         try (
-            bqv $$2 = $$1.d("parse_json");
-            Reader $$3 = $$0.openAsReader(b);
-         ) {
-            var4 = JsonParser.parseReader($$3).getAsJsonObject();
-         }
-
-         return var4;
-      } catch (JsonSyntaxException | IOException var10) {
-         a.warn("Failed to load GPU warnlist");
-         return null;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.99;
+         this.k *= 0.99;
+         this.l *= 0.99;
       }
    }
 
-   protected static final class a {
-      private final List<Pattern> a;
-      private final List<Pattern> b;
-      private final List<Pattern> c;
+   public static class a implements gpn<mc> {
+      private final gqf a;
 
-      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
+      public a(gqf $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
       }
 
-      private static String a(List<Pattern> $$0, String $$1) {
-         List<String> $$2 = Lists.newArrayList();
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gqi $$8 = new gqi($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         $$8.a(3 + $$1.G_().a(5));
+         return $$8;
+      }
+   }
 
-         for (Pattern $$3 : $$0) {
-            Matcher $$4 = $$3.matcher($$1);
+   public static class b implements gpn<mc> {
+      private final gqf a;
 
-            while ($$4.find()) {
-               $$2.add($$4.group());
-            }
-         }
-
-         return String.join(", ", $$2);
+      public b(gqf $$0) {
+         this.a = $$0;
       }
 
-      ImmutableMap<String, String> a() {
-         Builder<String, String> $$0 = new Builder();
-         String $$1 = a(this.a, fis.c());
-         if (!$$1.isEmpty()) {
-            $$0.put("renderer", $$1);
-         }
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gqi $$8 = new gqi($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(0.3F, 0.5F, 1.0F);
+         $$8.a(this.a);
+         $$8.e(1.0F - $$1.A.i() * 0.7F);
+         $$8.a($$8.j() / 2);
+         return $$8;
+      }
+   }
 
-         String $$2 = a(this.b, fis.d());
-         if (!$$2.isEmpty()) {
-            $$0.put("version", $$2);
-         }
+   public static class c implements gpn<mc> {
+      private final gqf a;
 
-         String $$3 = a(this.c, fis.a());
-         if (!$$3.isEmpty()) {
-            $$0.put("vendor", $$3);
-         }
+      public c(gqf $$0) {
+         this.a = $$0;
+      }
 
-         return $$0.build();
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gqi $$8 = new gqi($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class d implements gpn<mc> {
+      private final gqf a;
+
+      public d(gqf $$0) {
+         this.a = $$0;
+      }
+
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gqi $$8 = new gqi($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class e implements gpn<mc> {
+      private final gqf a;
+
+      public e(gqf $$0) {
+         this.a = $$0;
+      }
+
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gqi $$8 = new gqi($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

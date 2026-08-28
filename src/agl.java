@@ -1,93 +1,19 @@
-import java.util.UUID;
+import java.util.HashMap;
+import java.util.Map;
 
-public class agl {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
+public record agl(Map<alh<dey>, dey> b, dfc.b<dfp> c) implements zh<abw> {
+   public static final yy<wl, agl> a = yy.a(yw.a(HashMap::new, alh.b(dey.a), dey.i), agl::b, dfc.b.b(), agl::e, agl::new);
 
-   public static String a(bwi $$0) {
-      if ($$0 instanceof crm) {
-         return $$0.ai().getString();
-      } else {
-         wy $$1 = $$0.ak();
-         return $$1 != null ? $$1.getString() : a($$0.cF());
-      }
+   @Override
+   public zj<agl> a() {
+      return agp.bi;
    }
 
-   public static String a(UUID $$0) {
-      azv $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
+   public void a(abw $$0) {
+      $$0.a(this);
    }
 
-   private static String a(azv $$0, String[] $$1) {
-      return ag.a($$1, $$0);
-   }
-
-   private static azv b(UUID $$0) {
-      return azv.a((long)($$0.hashCode() >> 2));
+   public dfc.b<dfp> e() {
+      return this.c;
    }
 }

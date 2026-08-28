@@ -1,28 +1,20 @@
-import java.util.EnumMap;
-
-public class gkw {
-   public static final int a = 5000;
-   private final gkr b;
-   private final fti c;
-   private final EnumMap<bpb, Long> d;
-
-   public gkw(gkr $$0, fti $$1) {
-      this.c = $$1;
-      this.b = $$0;
-      this.d = new EnumMap<>(bpb.class);
+public class gkw extends ggk<hhh> {
+   public gkw(gle $$0) {
+      super($$0);
    }
 
-   public void a() {
-      if (this.c.g()) {
-         this.a(bpb.a);
-      }
+   public void a(hhh $$0) {
+      super.a($$0);
+      ggo.a(this.s, this.r, $$0.a, $$0.H, $$0.u);
    }
 
-   private void a(bpb $$0) {
-      long $$1 = ag.c();
-      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
-         this.b.b(new ahi($$0));
-         this.d.put($$0, $$1);
-      }
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

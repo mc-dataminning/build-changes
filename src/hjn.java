@@ -1,225 +1,88 @@
-import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import com.ibm.icu.text.DateFormat;
+import com.ibm.icu.text.SimpleDateFormat;
+import com.ibm.icu.util.Calendar;
+import com.ibm.icu.util.TimeZone;
+import com.ibm.icu.util.ULocale;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Date;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 import javax.annotation.Nullable;
 
-public class hjn<T extends hjn.a> {
-   private static final Comparator<hjn.b<?>> a = Comparator.<hjn.b<?>, Integer>comparing($$0 -> -$$0.c)
-      .thenComparing($$0 -> -$$0.b)
-      .thenComparing($$0 -> $$0.a.c());
-   private final int b;
-   private final List<hjn.b<T>> c = new ArrayList<>();
-   private final List<hjn.c<T>> d = new ArrayList<>();
-   private int e;
-   private int f;
-   private final int g;
-   private final int h;
+public class hjn implements hjq<String> {
+   public static final String a = "";
+   private static final long d = TimeUnit.SECONDS.toMillis(1L);
+   public static final Codec<String> b = Codec.STRING;
+   private static final Codec<TimeZone> e = b.comapFlatMap($$0 -> {
+      TimeZone $$1 = TimeZone.getTimeZone($$0);
+      return $$1.equals(TimeZone.UNKNOWN_ZONE) ? DataResult.error(() -> "Unknown timezone: " + $$0) : DataResult.success($$1);
+   }, TimeZone::getID);
+   private static final MapCodec<hjn.a> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("pattern").forGetter($$0x -> $$0x.a),
+               Codec.STRING.optionalFieldOf("locale", "").forGetter($$0x -> $$0x.b),
+               e.optionalFieldOf("time_zone").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, hjn.a::new)
+   );
+   public static final hjq.a<hjn, String> c = hjq.a.a(f.flatXmap(hjn::a, $$0 -> DataResult.success($$0.g)), b);
+   private final hjn.a g;
+   private final DateFormat h;
+   private long i;
+   private String j = "";
 
-   public hjn(int $$0, int $$1, int $$2) {
-      this.b = $$2;
+   private hjn(hjn.a $$0, DateFormat $$1) {
       this.g = $$0;
       this.h = $$1;
    }
 
-   public int a() {
-      return this.e;
+   public static hjn a(String $$0, String $$1, Optional<TimeZone> $$2) {
+      return (hjn)a(new hjn.a($$0, $$1, $$2)).getOrThrow($$0x -> new IllegalStateException("Failed to validate format: " + $$0x));
    }
 
-   public int b() {
-      return this.f;
+   private static DataResult<hjn> a(hjn.a $$0) {
+      ULocale $$1 = new ULocale($$0.b);
+      Calendar $$2 = $$0.c.<Calendar>map($$1x -> Calendar.getInstance($$1x, $$1)).orElseGet(() -> Calendar.getInstance($$1));
+      SimpleDateFormat $$3 = new SimpleDateFormat($$0.a, $$1);
+      $$3.setCalendar($$2);
+
+      try {
+         $$3.format(new Date());
+      } catch (Exception var5) {
+         return DataResult.error(() -> "Invalid time format '" + $$3 + "': " + var5.getMessage());
+      }
+
+      return DataResult.success(new hjn($$0, $$3));
    }
 
-   public void a(T $$0) {
-      hjn.b<T> $$1 = new hjn.b<>($$0, this.b);
-      this.c.add($$1);
+   @Nullable
+   public String a(czy $$0, @Nullable gmb $$1, @Nullable bxu $$2, int $$3, czw $$4) {
+      long $$5 = ag.c();
+      if ($$5 > this.i) {
+         this.j = this.c();
+         this.i = $$5 + d;
+      }
+
+      return this.j;
    }
 
-   public void c() {
-      List<hjn.b<T>> $$0 = new ArrayList<>(this.c);
-      $$0.sort(a);
-
-      for (hjn.b<T> $$1 : $$0) {
-         if (!this.a($$1)) {
-            throw new hjo($$1.a, $$0.stream().map($$0x -> $$0x.a).collect(ImmutableList.toImmutableList()));
-         }
-      }
+   private String c() {
+      return this.h.format(new Date());
    }
 
-   public void a(hjn.d<T> $$0) {
-      for (hjn.c<T> $$1 : this.d) {
-         $$1.a($$0);
-      }
+   @Override
+   public hjq.a<hjn, String> a() {
+      return c;
    }
 
-   static int a(int $$0, int $$1) {
-      return ($$0 >> $$1) + (($$0 & (1 << $$1) - 1) == 0 ? 0 : 1) << $$1;
+   @Override
+   public Codec<String> b() {
+      return b;
    }
 
-   private boolean a(hjn.b<T> $$0) {
-      for (hjn.c<T> $$1 : this.d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
-      }
-
-      return this.b($$0);
-   }
-
-   private boolean b(hjn.b<T> $$0) {
-      int $$1 = azm.c(this.e);
-      int $$2 = azm.c(this.f);
-      int $$3 = azm.c(this.e + $$0.b);
-      int $$4 = azm.c(this.f + $$0.c);
-      boolean $$5 = $$3 <= this.g;
-      boolean $$6 = $$4 <= this.h;
-      if (!$$5 && !$$6) {
-         return false;
-      } else {
-         boolean $$7 = $$5 && $$1 != $$3;
-         boolean $$8 = $$6 && $$2 != $$4;
-         boolean $$9;
-         if ($$7 ^ $$8) {
-            $$9 = $$7;
-         } else {
-            $$9 = $$5 && $$1 <= $$2;
-         }
-
-         hjn.c<T> $$11;
-         if ($$9) {
-            if (this.f == 0) {
-               this.f = $$4;
-            }
-
-            $$11 = new hjn.c<>(this.e, 0, $$3 - this.e, this.f);
-            this.e = $$3;
-         } else {
-            $$11 = new hjn.c<>(0, this.f, this.e, $$4 - this.f);
-            this.f = $$4;
-         }
-
-         $$11.a($$0);
-         this.d.add($$11);
-         return true;
-      }
-   }
-
-   public interface a {
-      int a();
-
-      int b();
-
-      alg c();
-   }
-
-   static record b<T extends hjn.a>(T a, int b, int c) {
-
-      public b(T $$0, int $$1) {
-         this($$0, hjn.a($$0.a(), $$1), hjn.a($$0.b(), $$1));
-      }
-   }
-
-   public static class c<T extends hjn.a> {
-      private final int a;
-      private final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private List<hjn.c<T>> e;
-      @Nullable
-      private hjn.b<T> f;
-
-      public c(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      public boolean a(hjn.b<T> $$0) {
-         if (this.f != null) {
-            return false;
-         } else {
-            int $$1 = $$0.b;
-            int $$2 = $$0.c;
-            if ($$1 <= this.c && $$2 <= this.d) {
-               if ($$1 == this.c && $$2 == this.d) {
-                  this.f = $$0;
-                  return true;
-               } else {
-                  if (this.e == null) {
-                     this.e = new ArrayList<>(1);
-                     this.e.add(new hjn.c<>(this.a, this.b, $$1, $$2));
-                     int $$3 = this.c - $$1;
-                     int $$4 = this.d - $$2;
-                     if ($$4 > 0 && $$3 > 0) {
-                        int $$5 = Math.max(this.d, $$3);
-                        int $$6 = Math.max(this.c, $$4);
-                        if ($$5 >= $$6) {
-                           this.e.add(new hjn.c<>(this.a, this.b + $$2, $$1, $$4));
-                           this.e.add(new hjn.c<>(this.a + $$1, this.b, $$3, this.d));
-                        } else {
-                           this.e.add(new hjn.c<>(this.a + $$1, this.b, $$3, $$2));
-                           this.e.add(new hjn.c<>(this.a, this.b + $$2, this.c, $$4));
-                        }
-                     } else if ($$3 == 0) {
-                        this.e.add(new hjn.c<>(this.a, this.b + $$2, $$1, $$4));
-                     } else if ($$4 == 0) {
-                        this.e.add(new hjn.c<>(this.a + $$1, this.b, $$3, $$2));
-                     }
-                  }
-
-                  for (hjn.c<T> $$7 : this.e) {
-                     if ($$7.a($$0)) {
-                        return true;
-                     }
-                  }
-
-                  return false;
-               }
-            } else {
-               return false;
-            }
-         }
-      }
-
-      public void a(hjn.d<T> $$0) {
-         if (this.f != null) {
-            $$0.load(this.f.a, this.a(), this.b());
-         } else if (this.e != null) {
-            for (hjn.c<T> $$1 : this.e) {
-               $$1.a($$0);
-            }
-         }
-      }
-
-      @Override
-      public String toString() {
-         return "Slot{originX="
-            + this.a
-            + ", originY="
-            + this.b
-            + ", width="
-            + this.c
-            + ", height="
-            + this.d
-            + ", texture="
-            + this.f
-            + ", subSlots="
-            + this.e
-            + "}";
-      }
-   }
-
-   public interface d<T extends hjn.a> {
-      void load(T var1, int var2, int var3);
+   static record a(String a, String b, Optional<TimeZone> c) {
    }
 }

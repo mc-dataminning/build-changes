@@ -1,119 +1,251 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.io.Reader;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public record gsb(@Nullable hml b, @Nullable hmm.a d, @Nullable Boolean e, @Nullable gsh f, gsl.a g, @Nullable alg h) implements hmm {
-   @VisibleForTesting
-   static final Gson a = new GsonBuilder()
-      .registerTypeAdapter(gsb.class, new gsb.a())
-      .registerTypeAdapter(gry.class, new gry.a())
-      .registerTypeAdapter(grz.class, new grz.a())
-      .registerTypeAdapter(gsg.class, new gsg.a())
-      .registerTypeAdapter(gsh.class, new gsh.a())
-      .create();
+public class gsb {
+   private final gsb.b a;
+   final iv b;
 
-   public static gsb a(Reader $$0) {
-      return azc.a(a, $$0, gsb.class);
+   public gsb(jy $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$1 * 2 + 1;
+      int $$5 = azo.c($$4);
+      int $$6 = $$1 * 16;
+      iv $$7 = $$0.j();
+      this.b = $$0.k();
+      int $$8 = $$7.u() - $$6;
+      int $$9 = $$8 + $$5 * 16 - 1;
+      int $$10 = $$5 >= $$2 ? $$3 : $$7.v() - $$6;
+      int $$11 = $$10 + $$5 * 16 - 1;
+      int $$12 = $$7.w() - $$6;
+      int $$13 = $$12 + $$5 * 16 - 1;
+      this.a = new gsb.b(new ert($$8, $$10, $$12, $$9, $$11, $$13));
    }
 
-   @Nullable
-   @Override
-   public hml a() {
-      return this.b;
+   public boolean a(gvq.b $$0) {
+      return this.a.a($$0);
    }
 
-   @Nullable
-   @Override
-   public hmm.a b() {
-      return this.d;
+   public void a(gsb.e $$0, gvu $$1, int $$2) {
+      this.a.a($$0, false, $$1, 0, $$2, true);
    }
 
-   @Nullable
-   @Override
-   public Boolean c() {
-      return this.e;
+   boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, int $$6) {
+      int $$7 = this.b.u();
+      int $$8 = this.b.v();
+      int $$9 = this.b.w();
+      return (double)$$7 > $$0 - (double)$$6
+         && (double)$$7 < $$3 + (double)$$6
+         && (double)$$8 > $$1 - (double)$$6
+         && (double)$$8 < $$4 + (double)$$6
+         && (double)$$9 > $$2 - (double)$$6
+         && (double)$$9 < $$5 + (double)$$6;
    }
 
-   @Nullable
-   @Override
-   public gsh d() {
-      return this.f;
-   }
+   static enum a {
+      a(4, 2, 1),
+      b(4, 1, 2),
+      c(2, 4, 1),
+      d(1, 4, 2),
+      e(2, 1, 4),
+      f(1, 2, 4);
 
-   @Override
-   public gsl.a e() {
-      return this.g;
-   }
+      final int g;
+      final int h;
+      final int i;
 
-   @Nullable
-   @Override
-   public alg f() {
-      return this.h;
-   }
-
-   public static class a implements JsonDeserializer<gsb> {
-      public gsb a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         hml $$4 = this.a($$2, $$3);
-         String $$5 = this.c($$3);
-         gsl.a $$6 = this.b($$3);
-         Boolean $$7 = this.a($$3);
-         gsh $$8 = null;
-         if ($$3.has("display")) {
-            JsonObject $$9 = azc.u($$3, "display");
-            $$8 = (gsh)$$2.deserialize($$9, gsh.class);
-         }
-
-         hmm.a $$10 = null;
-         if ($$3.has("gui_light")) {
-            $$10 = hmm.a.a(azc.i($$3, "gui_light"));
-         }
-
-         alg $$11 = $$5.isEmpty() ? null : alg.a($$5);
-         return new gsb($$4, $$10, $$7, $$8, $$6, $$11);
+      private a(final int $$0, final int $$1, final int $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
       }
 
-      private gsl.a b(JsonObject $$0) {
-         if ($$0.has("textures")) {
-            JsonObject $$1 = azc.u($$0, "textures");
-            return gsl.a($$1, hjp.c);
+      public static gsb.a a(int $$0, int $$1, int $$2) {
+         if ($$0 > $$1 && $$0 > $$2) {
+            return $$1 > $$2 ? a : b;
+         } else if ($$1 > $$0 && $$1 > $$2) {
+            return $$0 > $$2 ? c : d;
          } else {
-            return gsl.a.a;
+            return $$0 > $$1 ? e : f;
+         }
+      }
+   }
+
+   class b implements gsb.d {
+      private final gsb.d[] b = new gsb.d[8];
+      private final ert c;
+      private final int d;
+      private final int e;
+      private final int f;
+      private final gsb.a g;
+      private final boolean h;
+      private final boolean i;
+      private final boolean j;
+
+      public b(final ert $$0) {
+         this.c = $$0;
+         this.d = this.c.h() + this.c.d() / 2;
+         this.e = this.c.i() + this.c.e() / 2;
+         this.f = this.c.j() + this.c.f() / 2;
+         int $$1 = gsb.this.b.u() - this.d;
+         int $$2 = gsb.this.b.v() - this.e;
+         int $$3 = gsb.this.b.w() - this.f;
+         this.g = gsb.a.a(Math.abs($$1), Math.abs($$2), Math.abs($$3));
+         this.h = $$1 < 0;
+         this.i = $$2 < 0;
+         this.j = $$3 < 0;
+      }
+
+      public boolean a(gvq.b $$0) {
+         long $$1 = $$0.g();
+         boolean $$2 = jy.c(jy.b($$1)) - this.d < 0;
+         boolean $$3 = jy.c(jy.c($$1)) - this.e < 0;
+         boolean $$4 = jy.c(jy.d($$1)) - this.f < 0;
+         boolean $$5 = $$2 != this.h;
+         boolean $$6 = $$3 != this.i;
+         boolean $$7 = $$4 != this.j;
+         int $$8 = a(this.g, $$5, $$6, $$7);
+         if (this.c()) {
+            boolean $$9 = this.b[$$8] != null;
+            this.b[$$8] = gsb.this.new c($$0);
+            return !$$9;
+         } else if (this.b[$$8] != null) {
+            gsb.b $$10 = (gsb.b)this.b[$$8];
+            return $$10.a($$0);
+         } else {
+            ert $$11 = this.a($$2, $$3, $$4);
+            gsb.b $$12 = gsb.this.new b($$11);
+            this.b[$$8] = $$12;
+            return $$12.a($$0);
          }
       }
 
-      private String c(JsonObject $$0) {
-         return azc.a($$0, "parent", "");
+      private static int a(gsb.a $$0, boolean $$1, boolean $$2, boolean $$3) {
+         int $$4 = 0;
+         if ($$1) {
+            $$4 += $$0.g;
+         }
+
+         if ($$2) {
+            $$4 += $$0.h;
+         }
+
+         if ($$3) {
+            $$4 += $$0.i;
+         }
+
+         return $$4;
       }
 
-      @Nullable
-      protected Boolean a(JsonObject $$0) {
-         return $$0.has("ambientocclusion") ? azc.k($$0, "ambientocclusion") : null;
+      private boolean c() {
+         return this.c.d() == 32;
       }
 
-      @Nullable
-      protected hml a(JsonDeserializationContext $$0, JsonObject $$1) {
-         if (!$$1.has("elements")) {
-            return null;
+      private ert a(boolean $$0, boolean $$1, boolean $$2) {
+         int $$3;
+         int $$4;
+         if ($$0) {
+            $$3 = this.c.h();
+            $$4 = this.d - 1;
          } else {
-            List<gry> $$2 = new ArrayList<>();
+            $$3 = this.d;
+            $$4 = this.c.k();
+         }
 
-            for (JsonElement $$3 : azc.v($$1, "elements")) {
-               $$2.add((gry)$$0.deserialize($$3, gry.class));
+         int $$7;
+         int $$8;
+         if ($$1) {
+            $$7 = this.c.i();
+            $$8 = this.e - 1;
+         } else {
+            $$7 = this.e;
+            $$8 = this.c.l();
+         }
+
+         int $$11;
+         int $$12;
+         if ($$2) {
+            $$11 = this.c.j();
+            $$12 = this.f - 1;
+         } else {
+            $$11 = this.f;
+            $$12 = this.c.m();
+         }
+
+         return new ert($$3, $$7, $$11, $$4, $$8, $$12);
+      }
+
+      @Override
+      public void a(gsb.e $$0, boolean $$1, gvu $$2, int $$3, int $$4, boolean $$5) {
+         boolean $$6 = $$1;
+         if (!$$1) {
+            int $$7 = $$2.a(this.c);
+            $$1 = $$7 == -2;
+            $$6 = $$7 == -2 || $$7 == -1;
+         }
+
+         if ($$6) {
+            $$5 = $$5
+               && gsb.this.a((double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)this.c.k(), (double)this.c.l(), (double)this.c.m(), $$4);
+            $$0.visit(this, $$1, $$3, $$5);
+
+            for (gsb.d $$8 : this.b) {
+               if ($$8 != null) {
+                  $$8.a($$0, $$1, $$2, $$3 + 1, $$4, $$5);
+               }
             }
-
-            return new gsk($$2);
          }
       }
+
+      @Nullable
+      @Override
+      public gvq.b a() {
+         return null;
+      }
+
+      @Override
+      public ffl b() {
+         return new ffl(
+            (double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)(this.c.k() + 1), (double)(this.c.l() + 1), (double)(this.c.m() + 1)
+         );
+      }
+   }
+
+   final class c implements gsb.d {
+      private final gvq.b b;
+
+      c(final gvq.b $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(gsb.e $$0, boolean $$1, gvu $$2, int $$3, int $$4, boolean $$5) {
+         ffl $$6 = this.b.b();
+         if ($$1 || $$2.a(this.a().b())) {
+            $$5 = $$5 && gsb.this.a($$6.a, $$6.b, $$6.c, $$6.d, $$6.e, $$6.f, $$4);
+            $$0.visit(this, $$1, $$3, $$5);
+         }
+      }
+
+      @Override
+      public gvq.b a() {
+         return this.b;
+      }
+
+      @Override
+      public ffl b() {
+         return this.b.b();
+      }
+   }
+
+   public interface d {
+      void a(gsb.e var1, boolean var2, gvu var3, int var4, int var5, boolean var6);
+
+      @Nullable
+      gvq.b a();
+
+      ffl b();
+   }
+
+   @FunctionalInterface
+   public interface e {
+      void visit(gsb.d var1, boolean var2, int var3, boolean var4);
    }
 }

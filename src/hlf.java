@@ -1,31 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record hlf(hlf.a c) {
-   public static final Codec<hlf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(hlf.a.d.optionalFieldOf("hat", hlf.a.a).forGetter(hlf::a)).apply($$0, hlf::new)
-   );
-   public static final auc<hlf> b = new auc<>("villager", a);
+public interface hlf {
+   alb a = new alb("textures", ".png");
 
-   public hlf.a a() {
-      return this.c;
-   }
+   void a(avf var1, hlf.a var2);
 
-   public static enum a implements bak {
-      a("none"),
-      b("partial"),
-      c("full");
+   MapCodec<? extends hlf> a();
 
-      public static final Codec<hlf.a> d = bak.a(hlf.a::values);
-      private final String e;
-
-      private a(final String $$0) {
-         this.e = $$0;
+   public interface a {
+      default void a(ali $$0, avd $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
       }
 
-      @Override
-      public String c() {
-         return this.e;
+      void a(ali var1, hlf.b var2);
+
+      void a(Predicate<ali> var1);
+   }
+
+   public interface b extends Function<hle, hku> {
+      default void a() {
       }
    }
 }

@@ -1,5 +1,48 @@
-public class fxc {
-   public static boolean a(int $$0) {
-      return $$0 == 257 || $$0 == 32 || $$0 == 335;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+
+public enum fxc implements bam {
+   a("uniform"),
+   b("jp");
+
+   public static final Codec<fxc> c = bam.a(fxc::values);
+   private final String d;
+
+   private fxc(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
+
+   public static class a {
+      private final Map<fxc, Boolean> c;
+      public static final Codec<fxc.a> a = Codec.unboundedMap(fxc.c, Codec.BOOL).xmap(fxc.a::new, $$0 -> $$0.c);
+      public static final fxc.a b = new fxc.a(Map.of());
+
+      public a(Map<fxc, Boolean> $$0) {
+         this.c = $$0;
+      }
+
+      public boolean a(Set<fxc> $$0) {
+         for (Entry<fxc, Boolean> $$1 : this.c.entrySet()) {
+            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+
+      public fxc.a a(fxc.a $$0) {
+         Map<fxc, Boolean> $$1 = new HashMap<>($$0.c);
+         $$1.putAll(this.c);
+         return new fxc.a(Map.copyOf($$1));
+      }
    }
 }

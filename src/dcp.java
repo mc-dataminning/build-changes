@@ -1,60 +1,111 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.Locale;
+import java.util.function.BiConsumer;
 
-public record dcp(List<dcp.a> e) implements dbt, dcs {
+public record dcp(List<dcp.b> e) {
    public static final dcp a = new dcp(List.of());
-   public static final int b = 160;
-   public static final Codec<dcp> c = dcp.a.a.listOf().xmap(dcp::new, dcp::a);
-   public static final yw<wj, dcp> d = dcp.a.b.a(yu.a()).a(dcp::new, dcp::a);
+   public static final Codec<dcp> b = dcp.b.a.listOf().xmap(dcp::new, dcp::b);
+   public static final yy<wl, dcp> c = yy.a(dcp.b.b.a(yw.a()), dcp::b, dcp::new);
+   public static final DecimalFormat d = ag.a(new DecimalFormat("#.##"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
 
-   public dcp a(dcp.a $$0) {
-      return new dcp(ag.a(this.e, $$0));
+   public static dcp.a a() {
+      return new dcp.a();
    }
 
-   @Override
-   public void a(djm $$0, bxj $$1, czn $$2, dbs $$3) {
-      for (dcp.a $$4 : this.e) {
-         $$1.a($$4.a());
-      }
-   }
+   public dcp a(jf<byv> $$0, byy $$1, bxe $$2) {
+      Builder<dcp.b> $$3 = ImmutableList.builderWithExpectedSize(this.e.size() + 1);
 
-   @Override
-   public void a(czj.b $$0, Consumer<wy> $$1, dbc $$2, kf $$3) {
-      if ($$2.b()) {
-         List<bvm> $$4 = new ArrayList<>();
-
-         for (dcp.a $$5 : this.e) {
-            $$4.add($$5.a());
+      for (dcp.b $$4 : this.e) {
+         if (!$$4.a($$0, $$1.a())) {
+            $$3.add($$4);
          }
+      }
 
-         dbj.a($$4, $$1, 1.0F, $$0.b());
+      $$3.add(new dcp.b($$0, $$1, $$2));
+      return new dcp($$3.build());
+   }
+
+   public void a(bxe $$0, BiConsumer<jf<byv>, byy> $$1) {
+      for (dcp.b $$2 : this.e) {
+         if ($$2.e.equals($$0)) {
+            $$1.accept($$2.c, $$2.d);
+         }
       }
    }
 
-   public List<dcp.a> a() {
+   public void a(bxd $$0, BiConsumer<jf<byv>, byy> $$1) {
+      for (dcp.b $$2 : this.e) {
+         if ($$2.e.b($$0)) {
+            $$1.accept($$2.c, $$2.d);
+         }
+      }
+   }
+
+   public double a(double $$0, bxd $$1) {
+      double $$2 = $$0;
+
+      for (dcp.b $$3 : this.e) {
+         if ($$3.e.b($$1)) {
+            double $$4 = $$3.d.b();
+
+            $$2 += switch ($$3.d.c()) {
+               case a -> $$4;
+               case b -> $$4 * $$0;
+               case c -> $$4 * $$2;
+            };
+         }
+      }
+
+      return $$2;
+   }
+
+   public List<dcp.b> b() {
       return this.e;
    }
 
-   public static record a(jf<bvk> c, int d) {
-      public static final Codec<dcp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bvk.a.fieldOf("id").forGetter(dcp.a::b), Codec.INT.lenientOptionalFieldOf("duration", 160).forGetter(dcp.a::c))
-               .apply($$0, dcp.a::new)
-      );
-      public static final yw<wj, dcp.a> b = yw.a(bvk.b, dcp.a::b, yu.h, dcp.a::c, dcp.a::new);
+   public static class a {
+      private final Builder<dcp.b> a = ImmutableList.builder();
 
-      public bvm a() {
-         return new bvm(this.c, this.d);
+      a() {
       }
 
-      public jf<bvk> b() {
+      public dcp.a a(jf<byv> $$0, byy $$1, bxe $$2) {
+         this.a.add(new dcp.b($$0, $$1, $$2));
+         return this;
+      }
+
+      public dcp a() {
+         return new dcp(this.a.build());
+      }
+   }
+
+   public static record b(jf<byv> c, byy d, bxe e) {
+      public static final Codec<dcp.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(byv.a.fieldOf("type").forGetter(dcp.b::a), byy.a.forGetter(dcp.b::b), bxe.m.optionalFieldOf("slot", bxe.a).forGetter(dcp.b::c))
+               .apply($$0, dcp.b::new)
+      );
+      public static final yy<wl, dcp.b> b = yy.a(byv.b, dcp.b::a, byy.c, dcp.b::b, bxe.n, dcp.b::c, dcp.b::new);
+
+      public boolean a(jf<byv> $$0, ali $$1) {
+         return $$0.equals(this.c) && this.d.a($$1);
+      }
+
+      public jf<byv> a() {
          return this.c;
       }
 
-      public int c() {
+      public byy b() {
          return this.d;
+      }
+
+      public bxe c() {
+         return this.e;
       }
    }
 }

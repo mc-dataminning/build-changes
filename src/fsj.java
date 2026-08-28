@@ -1,54 +1,27 @@
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public interface fsj {
-   static fsj a(fux $$0) {
-      return new fsj.a($$0);
-   }
+public record fsj(int b, int c) implements fsn {
+   public static final MapCodec<fsj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayw.l.optionalFieldOf("index", 0).forGetter(fsj::b), ayw.i.fieldOf("default").forGetter(fsj::c)).apply($$0, fsj::new)
+   );
 
-   @Nullable
-   static fsj a(fuw $$0, @Nullable fsj $$1) {
-      return $$1 == null ? null : new fsj.b($$0, $$1);
-   }
-
-   static fsj a(fux $$0, fuw... $$1) {
-      fsj $$2 = a($$0);
-
-      for (fuw $$3 : $$1) {
-         $$2 = a($$3, $$2);
-      }
-
-      return $$2;
-   }
-
-   fux a();
-
-   void a(boolean var1);
-
-   public static record a(fux a) implements fsj {
-      @Override
-      public void a(boolean $$0) {
-         this.a.a($$0);
-      }
-   }
-
-   public static record b(fuw a, fsj b) implements fsj {
-      @Override
-      public void a(boolean $$0) {
-         if (!$$0) {
-            this.a.a(null);
-         } else {
-            this.a.a(this.b.a());
+   @Override
+   public int a(czy $$0, @Nullable gmb $$1, @Nullable bxu $$2) {
+      dch $$3 = $$0.a(kk.p);
+      if ($$3 != null) {
+         Integer $$4 = $$3.d(this.b);
+         if ($$4 != null) {
+            return axy.f($$4);
          }
-
-         this.b.a($$0);
       }
 
-      public fuw b() {
-         return this.a;
-      }
+      return axy.f(this.c);
+   }
 
-      public fsj c() {
-         return this.b;
-      }
+   @Override
+   public MapCodec<fsj> a() {
+      return a;
    }
 }

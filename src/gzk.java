@@ -1,16 +1,32 @@
-public class gzk extends gye<clb, hef, giv> {
-   private static final alg a = alg.b("textures/entity/tadpole/tadpole.png");
+public class gzk extends gxc<clw, hfq, git> {
+   private static final ali a = ali.b("textures/entity/llama/creamy.png");
+   private static final ali j = ali.b("textures/entity/llama/white.png");
+   private static final ali k = ali.b("textures/entity/llama/brown.png");
+   private static final ali l = ali.b("textures/entity/llama/gray.png");
 
-   public gzk(gwy.a $$0) {
-      super($$0, new giv($$0.a(gjs.dz)), 0.14F);
+   public gzk(gyi.a $$0, glc $$1, glc $$2) {
+      super($$0, new git($$0.a($$1)), new git($$0.a($$2)), 0.7F);
+      this.a(new hcq(this, $$0.f(), $$0.h()));
    }
 
-   @Override
-   public alg b(hef $$0) {
-      return a;
+   public ali a(hfq $$0) {
+      return switch ($$0.a) {
+         case a -> a;
+         case b -> j;
+         case c -> k;
+         case d -> l;
+      };
    }
 
-   public hef b() {
-      return new hef();
+   public hfq b() {
+      return new hfq();
+   }
+
+   public void a(clw $$0, hfq $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gH();
+      $$1.b = !$$0.n_() && $$0.t();
+      $$1.c = $$0.fY();
+      $$1.d = $$0.gx();
    }
 }

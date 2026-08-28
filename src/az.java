@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record az(Optional<jj<dmr>> c, Optional<dr> d, Optional<cz> e) {
+public record az(Optional<jj<dnc>> c, Optional<dr> d, Optional<cz> e) {
    public static final Codec<az> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                ju.a(mh.i).optionalFieldOf("blocks").forGetter(az::b),
@@ -14,9 +14,9 @@ public record az(Optional<jj<dmr>> c, Optional<dr> d, Optional<cz> e) {
             )
             .apply($$0, az::new)
    );
-   public static final yw<wj, az> b = yw.a(yu.a(yu.c(mh.i)), az::b, yu.a(dr.b), az::c, yu.a(cz.b), az::d, az::new);
+   public static final yy<wl, az> b = yy.a(yw.a(yw.c(mh.i)), az::b, yw.a(dr.b), az::c, yw.a(cz.b), az::d, az::new);
 
-   public boolean a(arq $$0, iv $$1) {
+   public boolean a(ars $$0, iv $$1) {
       if (!$$0.p($$1)) {
          return false;
       } else {
@@ -24,23 +24,23 @@ public record az(Optional<jj<dmr>> c, Optional<dr> d, Optional<cz> e) {
       }
    }
 
-   public boolean a(eax $$0) {
+   public boolean a(ebi $$0) {
       return !this.a($$0.a()) ? false : !this.e.isPresent() || a($$0.c(), $$0.b(), this.e.get());
    }
 
-   private boolean a(eat $$0) {
+   private boolean a(ebe $$0) {
       return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
    }
 
-   private static boolean a(djp $$0, @Nullable dxr $$1, cz $$2) {
-      return $$1 != null && $$2.a($$1.b($$0.F_()));
+   private static boolean a(dka $$0, @Nullable dyc $$1, cz $$2) {
+      return $$1 != null && $$2.a($$1.b($$0.J_()));
    }
 
    public boolean a() {
       return this.e.isPresent();
    }
 
-   public Optional<jj<dmr>> b() {
+   public Optional<jj<dnc>> b() {
       return this.c;
    }
 
@@ -53,7 +53,7 @@ public record az(Optional<jj<dmr>> c, Optional<dr> d, Optional<cz> e) {
    }
 
    public static class a {
-      private Optional<jj<dmr>> a = Optional.empty();
+      private Optional<jj<dnc>> a = Optional.empty();
       private Optional<dr> b = Optional.empty();
       private Optional<cz> c = Optional.empty();
 
@@ -64,16 +64,16 @@ public record az(Optional<jj<dmr>> c, Optional<dr> d, Optional<cz> e) {
          return new az.a();
       }
 
-      public az.a a(jg<dmr> $$0, dmr... $$1) {
+      public az.a a(jg<dnc> $$0, dnc... $$1) {
          return this.a($$0, Arrays.asList($$1));
       }
 
-      public az.a a(jg<dmr> $$0, Collection<dmr> $$1) {
-         this.a = Optional.of(jj.a(dmr::p, $$1));
+      public az.a a(jg<dnc> $$0, Collection<dnc> $$1) {
+         this.a = Optional.of(jj.a(dnc::p, $$1));
          return this;
       }
 
-      public az.a a(jg<dmr> $$0, axr<dmr> $$1) {
+      public az.a a(jg<dnc> $$0, axt<dnc> $$1) {
          this.a = Optional.of($$0.b($$1));
          return this;
       }

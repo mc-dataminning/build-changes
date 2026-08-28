@@ -1,44 +1,43 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class cny extends coz {
-   public cny(bwr<? extends cny> $$0, djm $$1) {
-      super($$0, $$1);
+public record cny(int e, int f, ali g, Optional<xa> h, Optional<xa> i) {
+   public static final Codec<cny> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayw.a(1, 16).fieldOf("width").forGetter(cny::b),
+               ayw.a(1, 16).fieldOf("height").forGetter(cny::c),
+               ali.a.fieldOf("asset_id").forGetter(cny::d),
+               xc.a.optionalFieldOf("title").forGetter(cny::e),
+               xc.a.optionalFieldOf("author").forGetter(cny::f)
+            )
+            .apply($$0, cny::new)
+   );
+   public static final yy<wl, cny> b = yy.a(yw.h, cny::b, yw.h, cny::c, ali.b, cny::d, xc.e, cny::e, xc.e, cny::f, cny::new);
+   public static final Codec<jf<cny>> c = ale.a(mh.aZ, a);
+   public static final yy<wl, jf<cny>> d = yw.a(mh.aZ, b);
+
+   public int a() {
+      return this.b() * this.c();
    }
 
-   public static byo.a j() {
-      return coz.m().a(byp.s, 12.0);
+   public int b() {
+      return this.e;
    }
 
-   @Override
-   public boolean c(arq $$0, bwi $$1) {
-      if (super.c($$0, $$1)) {
-         if ($$1 instanceof bxj) {
-            int $$2 = 0;
-            if (this.dU().an() == bud.c) {
-               $$2 = 7;
-            } else if (this.dU().an() == bud.d) {
-               $$2 = 15;
-            }
-
-            if ($$2 > 0) {
-               ((bxj)$$1).b(new bvm(bvo.s, $$2 * 20, 0), this);
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   public int c() {
+      return this.f;
    }
 
-   @Nullable
-   @Override
-   public byb a(dkd $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
-      return $$3;
+   public ali d() {
+      return this.g;
    }
 
-   @Override
-   public ffc l(bwi $$0) {
-      return $$0.dp() <= this.dp() ? new ffc(0.0, 0.21875 * (double)this.ek(), 0.0) : super.l($$0);
+   public Optional<xa> e() {
+      return this.h;
+   }
+
+   public Optional<xa> f() {
+      return this.i;
    }
 }

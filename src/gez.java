@@ -1,68 +1,149 @@
-public class gez<S extends hdw> extends ghd<S> {
-   private static final String x = "left_sleeve";
-   private static final String y = "right_sleeve";
-   private static final String z = "left_pants";
-   private static final String A = "right_pants";
-   public final gjt a = this.s.b("left_sleeve");
-   public final gjt b = this.r.b("right_sleeve");
-   public final gjt c = this.u.b("left_pants");
-   public final gjt d = this.t.b("right_pants");
-   public final gjt e = this.q.b("jacket");
-   public final gjt f = this.o.b("right_ear");
-   public final gjt g = this.o.b("left_ear");
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.DoubleConsumer;
+import javax.annotation.Nullable;
 
-   public gez(gjt $$0) {
-      super($$0, grc::j);
+public class gez extends fui {
+   private static final int a = 32;
+   private static final String c = "telemetry.event.required";
+   private static final String d = "telemetry.event.optional";
+   private static final String e = "telemetry.event.optional.disabled";
+   private static final xa f = xa.c("telemetry_info.property_title").a(o.t);
+   private final ftv m;
+   private gez.a n;
+   @Nullable
+   private DoubleConsumer o;
+
+   public gez(int $$0, int $$1, int $$2, int $$3, ftv $$4) {
+      super($$0, $$1, $$2, $$3, xa.i());
+      this.m = $$4;
+      this.n = this.c(frd.Q().C());
    }
 
-   public static gkb a(gjx $$0) {
-      gkb $$1 = ghv.a($$0, false);
-      gkd $$2 = $$1.a();
-      $$2.a("body", gjy.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), gjv.a);
-      gkd $$3 = a($$0, $$1);
-      $$3.a("hat");
-      return $$1;
+   public void b(boolean $$0) {
+      this.n = this.c($$0);
+      this.h();
    }
 
-   public static gkd a(gjx $$0, gkb $$1) {
-      gkd $$2 = $$1.a();
-      gkd $$3 = $$2.a(
-         "head",
-         gjy.c()
-            .a(0, 0)
-            .a(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, $$0)
-            .a(31, 1)
-            .a(-2.0F, -4.0F, -5.0F, 4.0F, 4.0F, 1.0F, $$0)
-            .a(2, 4)
-            .a(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0)
-            .a(2, 0)
-            .a(-3.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0),
-         gjv.a
-      );
-      $$3.a("left_ear", gjy.c().a(51, 6).a(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), gjv.a(4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 6)));
-      $$3.a("right_ear", gjy.c().a(39, 6).a(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), gjv.a(-4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 6)));
-      return $$3;
+   public void q() {
+      this.n = this.c(frd.Q().C());
+      this.h();
+   }
+
+   private gez.a c(boolean $$0) {
+      gez.b $$1 = new gez.b(this.r());
+      List<hqm> $$2 = new ArrayList<>(hqm.g());
+      $$2.sort(Comparator.comparing(hqm::d));
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         hqm $$4 = $$2.get($$3);
+         boolean $$5 = $$4.d() && !$$0;
+         this.a($$1, $$4, $$5);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
+         }
+      }
+
+      return $$1.a();
+   }
+
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.o = $$0;
    }
 
    @Override
-   public void a(S $$0) {
+   public void a(double $$0) {
       super.a($$0);
-      float $$1 = $$0.ad;
-      float $$2 = $$0.ae;
-      float $$3 = (float) (Math.PI / 6);
-      float $$4 = $$0.u * 0.1F + $$1 * 0.5F;
-      float $$5 = 0.08F + $$2 * 0.4F;
-      this.g.g = (float) (-Math.PI / 6) - azm.b($$4 * 1.2F) * $$5;
-      this.f.g = (float) (Math.PI / 6) + azm.b($$4) * $$5;
+      if (this.o != null) {
+         this.o.accept(this.g());
+      }
    }
 
    @Override
-   public void c_(boolean $$0) {
-      super.c_($$0);
-      this.a.k = $$0;
-      this.b.k = $$0;
-      this.c.k = $$0;
-      this.d.k = $$0;
-      this.e.k = $$0;
+   protected int c() {
+      return this.n.a().y();
+   }
+
+   @Override
+   protected double o() {
+      return 9.0;
+   }
+
+   @Override
+   protected void c(ftx $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.p();
+      int $$5 = this.e();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.n.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fyi $$0) {
+      $$0.a(fyh.a, this.n.b());
+   }
+
+   private xa a(xa $$0, boolean $$1) {
+      return (xa)($$1 ? $$0.f().a(o.h) : $$0);
+   }
+
+   private void a(gez.b $$0, hqm $$1, boolean $$2) {
+      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
+      $$0.b(this.m, this.a(xa.a($$3, $$1.e()), $$2));
+      $$0.b(this.m, $$1.f().a(o.h));
+      $$0.a(9 / 2);
+      $$0.a(this.m, this.a(f, $$2), 2);
+      this.a($$1, $$0, $$2);
+   }
+
+   private void a(hqm $$0, gez.b $$1, boolean $$2) {
+      for (hqo<?> $$3 : $$0.b()) {
+         $$1.a(this.m, this.a($$3.a(), $$2));
+      }
+   }
+
+   private int r() {
+      return this.g - this.b();
+   }
+
+   static record a(fya a, xa b) {
+   }
+
+   static class b {
+      private final int a;
+      private final fyd b;
+      private final xo c = xa.i();
+
+      public b(int $$0) {
+         this.a = $$0;
+         this.b = fyd.d();
+         this.b.c().a();
+         this.b.a(fye.a($$0));
+      }
+
+      public void a(ftv $$0, xa $$1) {
+         this.a($$0, $$1, 0);
+      }
+
+      public void a(ftv $$0, xa $$1, int $$2) {
+         this.b.a(new fvf($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
+      }
+
+      public void b(ftv $$0, xa $$1) {
+         this.b.a(new fvf($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
+      }
+
+      public void a(int $$0) {
+         this.b.a(fye.b($$0));
+      }
+
+      public gez.a a() {
+         this.b.a();
+         return new gez.a(this.b, this.c);
+      }
    }
 }

@@ -1,74 +1,143 @@
-import com.google.common.hash.Hashing;
-import javax.annotation.Nullable;
+public interface fyc {
+   fyc a(int var1);
 
-public class fyc implements AutoCloseable {
-   private static final alg a = alg.b("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final hjs d;
-   private final alg e;
-   @Nullable
-   private hjd f;
-   private boolean g;
+   fyc a(int var1, int var2);
 
-   private fyc(hjs $$0, alg $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   fyc a(int var1, int var2, int var3, int var4);
+
+   fyc b(int var1);
+
+   fyc c(int var1);
+
+   fyc d(int var1);
+
+   fyc e(int var1);
+
+   fyc f(int var1);
+
+   fyc g(int var1);
+
+   fyc a(float var1, float var2);
+
+   fyc a(float var1);
+
+   fyc b(float var1);
+
+   default fyc a() {
+      return this.a(0.0F);
    }
 
-   public static fyc a(hjs $$0, String $$1) {
-      return new fyc($$0, alg.b("worlds/" + ag.a($$1, alg::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   default fyc b() {
+      return this.a(0.5F);
    }
 
-   public static fyc b(hjs $$0, String $$1) {
-      return new fyc($$0, alg.b("servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   default fyc c() {
+      return this.a(1.0F);
    }
 
-   public void a(fiz $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new hjd(() -> "Favicon " + this.e, $$0);
-            } else {
-               this.f.a($$0);
-               this.f.c();
-            }
+   default fyc d() {
+      return this.b(0.0F);
+   }
 
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
-         }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
+   default fyc e() {
+      return this.b(0.5F);
+   }
+
+   default fyc f() {
+      return this.b(1.0F);
+   }
+
+   fyc g();
+
+   fyc.a h();
+
+   static fyc i() {
+      return new fyc.a();
+   }
+
+   public static class a implements fyc {
+      public int a;
+      public int b;
+      public int c;
+      public int d;
+      public float e;
+      public float f;
+
+      public a() {
       }
-   }
 
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.c(this.e);
-         this.f.close();
-         this.f = null;
+      public a(fyc.a $$0) {
+         this.a = $$0.a;
+         this.b = $$0.b;
+         this.c = $$0.c;
+         this.d = $$0.d;
+         this.e = $$0.e;
+         this.f = $$0.f;
       }
-   }
 
-   public alg b() {
-      return this.f != null ? this.e : a;
-   }
+      public fyc.a h(int $$0) {
+         return this.b($$0, $$0);
+      }
 
-   @Override
-   public void close() {
-      this.a();
-      this.g = true;
-   }
+      public fyc.a b(int $$0, int $$1) {
+         return this.m($$0).n($$1);
+      }
 
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
+      public fyc.a b(int $$0, int $$1, int $$2, int $$3) {
+         return this.i($$0).k($$2).j($$1).l($$3);
+      }
+
+      public fyc.a i(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public fyc.a j(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public fyc.a k(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fyc.a l(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fyc.a m(int $$0) {
+         return this.i($$0).k($$0);
+      }
+
+      public fyc.a n(int $$0) {
+         return this.j($$0).l($$0);
+      }
+
+      public fyc.a b(float $$0, float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public fyc.a c(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fyc.a d(float $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public fyc.a j() {
+         return new fyc.a(this);
+      }
+
+      @Override
+      public fyc.a h() {
+         return this;
       }
    }
 }

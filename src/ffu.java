@@ -1,24 +1,20 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public interface ffu {
+   ffu a = ($$0, $$1) -> false;
+   ffu b = ($$0, $$1) -> !$$0 && !$$1;
+   ffu c = ($$0, $$1) -> $$1 && !$$0;
+   ffu d = ($$0, $$1) -> !$$0;
+   ffu e = ($$0, $$1) -> $$0 && !$$1;
+   ffu f = ($$0, $$1) -> !$$1;
+   ffu g = ($$0, $$1) -> $$0 != $$1;
+   ffu h = ($$0, $$1) -> !$$0 || !$$1;
+   ffu i = ($$0, $$1) -> $$0 && $$1;
+   ffu j = ($$0, $$1) -> $$0 == $$1;
+   ffu k = ($$0, $$1) -> $$1;
+   ffu l = ($$0, $$1) -> !$$0 || $$1;
+   ffu m = ($$0, $$1) -> $$0;
+   ffu n = ($$0, $$1) -> $$0 || !$$1;
+   ffu o = ($$0, $$1) -> $$0 || $$1;
+   ffu p = ($$0, $$1) -> true;
 
-public class ffu extends ffw {
-   private final ffw b;
-   private final jb.a c;
-   private static final DoubleList d = new ffi(1);
-
-   public ffu(ffw $$0, jb.a $$1, int $$2) {
-      super(a($$0.a, $$1, $$2));
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private static ffl a(ffl $$0, jb.a $$1, int $$2) {
-      return new ffv(
-         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
-      );
-   }
-
-   @Override
-   public DoubleList a(jb.a $$0) {
-      return $$0 == this.c ? d : this.b.a($$0);
-   }
+   boolean apply(boolean var1, boolean var2);
 }

@@ -1,12 +1,12 @@
-public class hbt<M extends gir> extends hay<hef, M> {
-   private static final grc a = grc.q(alg.b("textures/entity/spider_eyes.png"));
+public class hbt<M extends gjg> extends hdf<M> {
+   private static final ali a = ali.b("textures/entity/bee/bee_stinger.png");
 
-   public hbt(gyv<hef, M> $$0) {
-      super($$0);
+   public hbt(gzj<?, hgb, M> $$0, gyi.a $$1) {
+      super($$0, new gha($$1.a(gld.z)), a, hdf.a.b);
    }
 
    @Override
-   public grc a() {
-      return a;
+   protected int a(hgb $$0) {
+      return $$0.k;
    }
 }

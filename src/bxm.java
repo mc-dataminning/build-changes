@@ -1,57 +1,90 @@
-import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
 
-public enum bxm implements bak {
-   a("monster", 70, false, false, 128),
-   b("creature", 10, true, true, 128),
-   c("ambient", 15, true, false, 128),
-   d("axolotls", 5, true, false, 128),
-   e("underground_water_creature", 5, true, false, 128),
-   f("water_creature", 5, true, false, 128),
-   g("water_ambient", 20, true, false, 64),
-   h("misc", -1, true, true, 128);
+public interface bxm {
+   bxm a = new bxm() {
+      @Override
+      public void a(bxn $$0) {
+      }
 
-   public static final Codec<bxm> i = bak.a(bxm::values);
-   private final int j;
-   private final boolean k;
-   private final boolean l;
-   private final String m;
-   private final int n = 32;
-   private final int o;
+      @Override
+      public void a(bxn $$0, Consumer<bwt> $$1) {
+      }
 
-   private bxm(final String $$0, final int $$1, final boolean $$2, final boolean $$3, final int $$4) {
-      this.m = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.o = $$4;
-   }
+      @Override
+      public void b(bxn $$0, Consumer<bwt> $$1) {
+      }
+   };
 
-   public String a() {
-      return this.m;
-   }
+   void a(bxn var1);
 
-   @Override
-   public String c() {
-      return this.m;
-   }
+   void a(bxn var1, Consumer<bwt> var2);
 
-   public int b() {
-      return this.j;
-   }
+   void b(bxn var1, Consumer<bwt> var2);
 
-   public boolean d() {
-      return this.k;
-   }
+   public static class a implements bxm {
+      private static final bxn[] b = bxn.values();
+      private static final int c = -1;
+      private final Set<bxn> d = EnumSet.noneOf(bxn.class);
+      private final Map<bxn, List<Consumer<bwt>>> e = ag.a(bxn.class, $$0 -> new ArrayList<>());
+      private final Map<bxn, List<Consumer<bwt>>> f = ag.a(bxn.class, $$0 -> new ArrayList<>());
+      private final List<Consumer<bwt>> g = new ArrayList<>();
+      private int h = -1;
 
-   public boolean e() {
-      return this.l;
-   }
+      public void a(int $$0) {
+         if (this.h != $$0) {
+            this.h = $$0;
+            this.a();
+         }
+      }
 
-   public int f() {
-      return this.o;
-   }
+      public void a(bwt $$0) {
+         this.a();
 
-   public int g() {
-      return 32;
+         for (Consumer<bwt> $$1 : this.g) {
+            if (!$$0.bJ()) {
+               break;
+            }
+
+            $$1.accept($$0);
+         }
+
+         this.g.clear();
+         this.h = -1;
+      }
+
+      private void a() {
+         for (bxn $$0 : b) {
+            List<Consumer<bwt>> $$1 = this.e.get($$0);
+            this.g.addAll($$1);
+            $$1.clear();
+            if (this.d.remove($$0)) {
+               this.g.add($$0.a());
+            }
+
+            List<Consumer<bwt>> $$2 = this.f.get($$0);
+            this.g.addAll($$2);
+            $$2.clear();
+         }
+      }
+
+      @Override
+      public void a(bxn $$0) {
+         this.d.add($$0);
+      }
+
+      @Override
+      public void a(bxn $$0, Consumer<bwt> $$1) {
+         this.e.get($$0).add($$1);
+      }
+
+      @Override
+      public void b(bxn $$0, Consumer<bwt> $$1) {
+         this.f.get($$0).add($$1);
+      }
    }
 }

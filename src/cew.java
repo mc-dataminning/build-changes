@@ -1,49 +1,48 @@
 import java.util.EnumSet;
 
-public class cew extends cef {
-   private static final chy b = chy.b().a(6.0);
-   public static final int a = 400;
-   private final cjp c;
-   private cqy d;
-   private int e;
+public class cew extends ceq {
+   private final bxw a;
+   private bxu b;
+   private final float c;
 
-   public cew(cjp $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(cef.a.a, cef.a.b));
+   public cew(bxw $$0, float $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.a(EnumSet.of(ceq.a.c, ceq.a.a));
    }
 
    @Override
    public boolean b() {
-      if (!this.c.dU().V()) {
-         return false;
-      } else if (this.c.dX().a(8000) != 0) {
+      if (this.a.cX()) {
          return false;
       } else {
-         this.d = a(this.c).a(cqy.class, b, this.c, this.c.dz(), this.c.dB(), this.c.dF(), this.c.cQ().c(6.0, 2.0, 6.0));
-         return this.d != null;
+         this.b = this.a.f();
+         if (this.b == null) {
+            return false;
+         } else {
+            double $$0 = this.a.g((bwt)this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aH() ? false : this.a.dY().a(b(5)) == 0;
+            }
+         }
       }
    }
 
    @Override
    public boolean c() {
-      return this.e > 0;
+      return !this.a.aH();
    }
 
    @Override
    public void d() {
-      this.e = this.a(400);
-      this.c.w(true);
-   }
+      ffq $$0 = this.a.dy();
+      ffq $$1 = new ffq(this.b.dA() - this.a.dA(), 0.0, this.b.dG() - this.a.dG());
+      if ($$1.h() > 1.0E-7) {
+         $$1 = $$1.d().c(0.4).e($$0.c(0.2));
+      }
 
-   @Override
-   public void e() {
-      this.c.w(false);
-      this.d = null;
-   }
-
-   @Override
-   public void a() {
-      this.c.J().a(this.d, 30.0F, 30.0F);
-      this.e--;
+      this.a.n($$1.d, (double)this.c, $$1.f);
    }
 }

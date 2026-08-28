@@ -1,52 +1,56 @@
-import java.util.List;
-import java.util.Map;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface avd extends avg {
-   Set<String> a();
+public class avd {
+   private final atr a;
+   private final auw<InputStream> b;
+   private final auw<avh> c;
+   @Nullable
+   private avh d;
 
-   List<avb> a(alg var1);
+   public avd(atr $$0, auw<InputStream> $$1, auw<avh> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
 
-   Map<alg, avb> b(String var1, Predicate<alg> var2);
+   public avd(atr $$0, auw<InputStream> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = avh.b;
+      this.d = avh.a;
+   }
 
-   Map<alg, List<avb>> c(String var1, Predicate<alg> var2);
+   public atr a() {
+      return this.a;
+   }
 
-   Stream<atp> b();
+   public String b() {
+      return this.a.b();
+   }
 
-   public static enum a implements avd {
-      a;
+   public Optional<aul> c() {
+      return this.a.c();
+   }
 
-      @Override
-      public Set<String> a() {
-         return Set.of();
+   public InputStream d() throws IOException {
+      return this.b.get();
+   }
+
+   public BufferedReader e() throws IOException {
+      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
+   }
+
+   public avh f() throws IOException {
+      if (this.d == null) {
+         this.d = this.c.get();
       }
 
-      @Override
-      public Optional<avb> getResource(alg $$0) {
-         return Optional.empty();
-      }
-
-      @Override
-      public List<avb> a(alg $$0) {
-         return List.of();
-      }
-
-      @Override
-      public Map<alg, avb> b(String $$0, Predicate<alg> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Map<alg, List<avb>> c(String $$0, Predicate<alg> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Stream<atp> b() {
-         return Stream.of();
-      }
+      return this.d;
    }
 }

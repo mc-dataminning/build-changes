@@ -1,20 +1,21 @@
-public class hao extends hbm<hcu, gfy> {
-   private static final alg a = alg.b("textures/entity/cat/cat_collar.png");
-   private final gfy b;
-   private final gfy c;
+public class hao extends gzo<ckn, hgn, gkb> {
+   private static final ali a = ali.b("textures/entity/snow_golem.png");
 
-   public hao(gyv<hcu, gfy> $$0, gjp $$1) {
-      super($$0);
-      this.b = new gfy($$1.a(gjs.T));
-      this.c = new gfy($$1.a(gjs.S));
+   public hao(gyi.a $$0) {
+      super($$0, new gkb($$0.a(gld.dk)), 0.5F);
+      this.a(new hdc(this, $$0.d()));
    }
 
-   public void a(fkd $$0, gqr $$1, int $$2, hcu $$3, float $$4, float $$5) {
-      cyl $$6 = $$3.c;
-      if ($$6 != null) {
-         int $$7 = $$6.d();
-         gfy $$8 = $$3.aj ? this.c : this.b;
-         a($$8, a, $$0, $$1, $$2, $$3, $$7);
-      }
+   public ali a(hgn $$0) {
+      return a;
+   }
+
+   public hgn b() {
+      return new hgn();
+   }
+
+   public void a(ckn $$0, hgn $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.m();
    }
 }

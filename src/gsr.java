@@ -1,158 +1,108 @@
-import com.google.common.base.Joiner;
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.ArrayList;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public record gsr(Map<String, gsr.b> c) implements gsq {
-   static final Logger d = LogUtils.getLogger();
-   public static final Codec<gsr> b = ayu.d(Codec.unboundedMap(Codec.STRING, gsr.b.a)).xmap(gsr::new, gsr::a);
+public record gsr(Map<String, String> c, Set<String> d) {
+   public static final gsr a = new gsr(Map.of(), Set.of());
+   public static final Codec<gsr> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(gsr::d),
+               Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(gsr::e)
+            )
+            .apply($$0, gsr::new)
+   );
 
-   @Override
-   public <O, S extends eav<O, S>> Predicate<S> instantiate(eau<O, S> $$0) {
-      List<Predicate<S>> $$1 = new ArrayList<>(this.c.size());
-      this.c.forEach(($$2, $$3) -> $$1.add(a($$0, $$2, $$3)));
-      return ag.a($$1);
+   public static gsr.a a() {
+      return new gsr.a();
    }
 
-   private static <O, S extends eav<O, S>> Predicate<S> a(eau<O, S> $$0, String $$1, gsr.b $$2) {
-      ebw<?> $$3 = $$0.a($$1);
-      if ($$3 == null) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", $$1, $$0.c()));
+   public gsr a(gsr $$0) {
+      if (this.c()) {
+         return $$0;
+      } else if ($$0.c()) {
+         return this;
       } else {
-         return $$2.a($$0.c(), $$3);
+         Builder<String, String> $$1 = ImmutableMap.builderWithExpectedSize(this.c.size() + $$0.c.size());
+         $$1.putAll(this.c);
+         $$1.putAll($$0.c);
+         com.google.common.collect.ImmutableSet.Builder<String> $$2 = ImmutableSet.builderWithExpectedSize(this.d.size() + $$0.d.size());
+         $$2.addAll(this.d);
+         $$2.addAll($$0.d);
+         return new gsr($$1.buildKeepingLast(), $$2.build());
       }
    }
 
-   public Map<String, gsr.b> a() {
+   public String b() {
+      StringBuilder $$0 = new StringBuilder();
+
+      for (Entry<String, String> $$1 : this.c.entrySet()) {
+         String $$2 = $$1.getKey();
+         String $$3 = $$1.getValue();
+         $$0.append("#define ").append($$2).append(" ").append($$3).append('\n');
+      }
+
+      for (String $$4 : this.d) {
+         $$0.append("#define ").append($$4).append('\n');
+      }
+
+      return $$0.toString();
+   }
+
+   public boolean c() {
+      return this.c.isEmpty() && this.d.isEmpty();
+   }
+
+   public Map<String, String> d() {
       return this.c;
    }
 
-   public static record a(String a, boolean b) {
-      private static final String c = "!";
-
-      public a(String a, boolean b) {
-         if (a.isEmpty()) {
-            throw new IllegalArgumentException("Empty term");
-         } else {
-            this.a = a;
-            this.b = b;
-         }
-      }
-
-      public static gsr.a a(String $$0) {
-         return $$0.startsWith("!") ? new gsr.a($$0.substring(1), true) : new gsr.a($$0, false);
-      }
-
-      @Override
-      public String toString() {
-         return this.b ? "!" + this.a : this.a;
-      }
+   public Set<String> e() {
+      return this.d;
    }
 
-   public static record b(List<gsr.a> b) {
-      private static final char c = '|';
-      private static final Joiner d = Joiner.on('|');
-      private static final Splitter e = Splitter.on('|');
-      private static final Codec<String> f = Codec.either(Codec.INT, Codec.BOOL)
-         .flatComapMap($$0 -> (String)$$0.map(String::valueOf, String::valueOf), $$0 -> DataResult.error(() -> "This codec can't be used for encoding"));
-      public static final Codec<gsr.b> a = Codec.withAlternative(Codec.STRING, f).comapFlatMap(gsr.b::a, gsr.b::toString);
+   public static class a {
+      private final Builder<String, String> a = ImmutableMap.builder();
+      private final com.google.common.collect.ImmutableSet.Builder<String> b = ImmutableSet.builder();
 
-      public b(List<gsr.a> b) {
-         if (b.isEmpty()) {
-            throw new IllegalArgumentException("Empty value for property");
+      a() {
+      }
+
+      public gsr.a a(String $$0, String $$1) {
+         if ($$1.isBlank()) {
+            throw new IllegalArgumentException("Cannot define empty string");
          } else {
-            this.b = b;
+            this.a.put($$0, b($$1));
+            return this;
          }
       }
 
-      public static DataResult<gsr.b> a(String $$0) {
-         List<gsr.a> $$1 = e.splitToStream($$0).map(gsr.a::a).toList();
-         if ($$1.isEmpty()) {
-            return DataResult.error(() -> "Empty value for property");
-         } else {
-            for (gsr.a $$2 : $$1) {
-               if ($$2.a.isEmpty()) {
-                  return DataResult.error(() -> "Empty term in value '" + $$0 + "'");
-               }
-            }
-
-            return DataResult.success(new gsr.b($$1));
-         }
+      private static String b(String $$0) {
+         return $$0.replaceAll("\n", "\\\\\n");
       }
 
-      @Override
-      public String toString() {
-         return d.join(this.b);
+      public gsr.a a(String $$0, float $$1) {
+         this.a.put($$0, String.valueOf($$1));
+         return this;
       }
 
-      public <O, S extends eav<O, S>, T extends Comparable<T>> Predicate<S> a(O $$0, ebw<T> $$1) {
-         Predicate<T> $$2 = ag.b(Lists.transform(this.b, $$2x -> this.a($$0, $$1, $$2x)));
-         List<T> $$3 = new ArrayList<>($$1.a());
-         int $$4 = $$3.size();
-         $$3.removeIf($$2.negate());
-         int $$5 = $$3.size();
-         if ($$5 == 0) {
-            gsr.d.warn("Condition {} for property {} on {} is always false", new Object[]{this, $$1.f(), $$0});
-            return $$0x -> false;
-         } else {
-            int $$6 = $$4 - $$5;
-            if ($$6 == 0) {
-               gsr.d.warn("Condition {} for property {} on {} is always true", new Object[]{this, $$1.f(), $$0});
-               return $$0x -> true;
-            } else {
-               boolean $$7;
-               List<T> $$8;
-               if ($$5 <= $$6) {
-                  $$7 = false;
-                  $$8 = $$3;
-               } else {
-                  $$7 = true;
-                  List<T> $$10 = new ArrayList<>($$1.a());
-                  $$10.removeIf($$2);
-                  $$8 = $$10;
-               }
-
-               if ($$8.size() == 1) {
-                  T $$12 = (T)$$8.getFirst();
-                  return $$3x -> {
-                     T $$4x = $$3x.c($$1);
-                     return $$12.equals($$4x) ^ $$7;
-                  };
-               } else {
-                  return $$3x -> {
-                     T $$4x = $$3x.c($$1);
-                     return $$8.contains($$4x) ^ $$7;
-                  };
-               }
-            }
-         }
+      public gsr.a a(String $$0, int $$1) {
+         this.a.put($$0, String.valueOf($$1));
+         return this;
       }
 
-      private <T extends Comparable<T>> T a(Object $$0, ebw<T> $$1, String $$2) {
-         Optional<T> $$3 = $$1.b($$2);
-         if ($$3.isEmpty()) {
-            throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, $$1, $$0, this));
-         } else {
-            return $$3.get();
-         }
+      public gsr.a a(String $$0) {
+         this.b.add($$0);
+         return this;
       }
 
-      private <T extends Comparable<T>> Predicate<T> a(Object $$0, ebw<T> $$1, gsr.a $$2) {
-         T $$3 = this.a($$0, $$1, $$2.a);
-         return $$2.b ? $$1x -> !$$1x.equals($$3) : $$1x -> $$1x.equals($$3);
-      }
-
-      public List<gsr.a> a() {
-         return this.b;
+      public gsr a() {
+         return new gsr(this.a.build(), this.b.build());
       }
    }
 }

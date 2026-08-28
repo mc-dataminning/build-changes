@@ -1,158 +1,211 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Arrays;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumSet;
 import java.util.Locale;
+import java.util.Set;
+import javax.annotation.Nullable;
 
 public class app {
-   private static final float a = 10000.0F;
-   private static final String b = String.valueOf(20);
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xa.c("commands.teleport.invalidPosition"));
 
    public static void a(CommandDispatcher<ej> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a(
-                                 "tick"
-                              )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(ek.a("query").executes($$0x -> a((ej)$$0x.getSource()))))
-                        .then(
-                           ek.a("rate")
-                              .then(
-                                 ek.a("rate", FloatArgumentType.floatArg(1.0F, 10000.0F))
-                                    .suggests(($$0x, $$1) -> eo.a(new String[]{b}, $$1))
-                                    .executes($$0x -> a((ej)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "rate")))
-                              )
-                        ))
-                     .then(
-                        ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("step").executes($$0x -> b((ej)$$0x.getSource(), 1)))
-                              .then(ek.a("stop").executes($$0x -> b((ej)$$0x.getSource()))))
-                           .then(
-                              ek.a("time", fz.a(1))
-                                 .suggests(($$0x, $$1) -> eo.a(new String[]{"1t", "1s"}, $$1))
-                                 .executes($$0x -> b((ej)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
-                           )
-                     ))
+      LiteralCommandNode<ej> $$1 = $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("teleport").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ((LiteralArgumentBuilder)ek.a("sprint").then(ek.a("stop").executes($$0x -> c((ej)$$0x.getSource()))))
-                        .then(
-                           ek.a("time", fz.a(1))
-                              .suggests(($$0x, $$1) -> eo.a(new String[]{"60s", "1d", "3d"}, $$1))
-                              .executes($$0x -> a((ej)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
+                     ek.a("location", gn.a())
+                        .executes(
+                           $$0x -> a(
+                                 (ej)$$0x.getSource(),
+                                 Collections.singleton(((ej)$$0x.getSource()).g()),
+                                 ((ej)$$0x.getSource()).e(),
+                                 gn.b($$0x, "location"),
+                                 null,
+                                 null
+                              )
                         )
                   ))
-               .then(ek.a("unfreeze").executes($$0x -> a((ej)$$0x.getSource(), false))))
-            .then(ek.a("freeze").executes($$0x -> a((ej)$$0x.getSource(), true)))
+               .then(
+                  ek.a("destination", ew.a())
+                     .executes($$0x -> a((ej)$$0x.getSource(), Collections.singleton(((ej)$$0x.getSource()).g()), ew.a($$0x, "destination")))
+               ))
+            .then(
+               ((RequiredArgumentBuilder)ek.a("targets", ew.b())
+                     .then(
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a("location", gn.a())
+                                 .executes(
+                                    $$0x -> a((ej)$$0x.getSource(), ew.b($$0x, "targets"), ((ej)$$0x.getSource()).e(), gn.b($$0x, "location"), null, null)
+                                 ))
+                              .then(
+                                 ek.a("rotation", gk.a())
+                                    .executes(
+                                       $$0x -> a(
+                                             (ej)$$0x.getSource(),
+                                             ew.b($$0x, "targets"),
+                                             ((ej)$$0x.getSource()).e(),
+                                             gn.b($$0x, "location"),
+                                             gk.a($$0x, "rotation"),
+                                             null
+                                          )
+                                    )
+                              ))
+                           .then(
+                              ((LiteralArgumentBuilder)ek.a("facing")
+                                    .then(
+                                       ek.a("entity")
+                                          .then(
+                                             ((RequiredArgumentBuilder)ek.a("facingEntity", ew.a())
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (ej)$$0x.getSource(),
+                                                            ew.b($$0x, "targets"),
+                                                            ((ej)$$0x.getSource()).e(),
+                                                            gn.b($$0x, "location"),
+                                                            null,
+                                                            new aoc.a(ew.a($$0x, "facingEntity"), ev.a.a)
+                                                         )
+                                                   ))
+                                                .then(
+                                                   ek.a("facingAnchor", ev.a())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ej)$$0x.getSource(),
+                                                               ew.b($$0x, "targets"),
+                                                               ((ej)$$0x.getSource()).e(),
+                                                               gn.b($$0x, "location"),
+                                                               null,
+                                                               new aoc.a(ew.a($$0x, "facingEntity"), ev.a($$0x, "facingAnchor"))
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(
+                                    ek.a("facingLocation", gn.a())
+                                       .executes(
+                                          $$0x -> a(
+                                                (ej)$$0x.getSource(),
+                                                ew.b($$0x, "targets"),
+                                                ((ej)$$0x.getSource()).e(),
+                                                gn.b($$0x, "location"),
+                                                null,
+                                                new aoc.b(gn.a($$0x, "facingLocation"))
+                                             )
+                                       )
+                                 )
+                           )
+                     ))
+                  .then(ek.a("destination", ew.a()).executes($$0x -> a((ej)$$0x.getSource(), ew.b($$0x, "targets"), ew.a($$0x, "destination"))))
+            )
       );
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static String a(long $$0) {
-      return String.format(Locale.ROOT, "%.1f", (float)$$0 / (float)baq.b);
-   }
+   private static int a(ej $$0, Collection<? extends bwt> $$1, bwt $$2) throws CommandSyntaxException {
+      for (bwt $$3 : $$1) {
+         a($$0, $$3, (ars)$$2.dV(), $$2.dA(), $$2.dC(), $$2.dG(), EnumSet.noneOf(byi.class), $$2.dL(), $$2.dN(), null);
+      }
 
-   private static int a(ej $$0, float $$1) {
-      ama $$2 = $$0.l().aP();
-      $$2.a($$1);
-      String $$3 = String.format(Locale.ROOT, "%.1f", $$1);
-      $$0.a(() -> wy.a("commands.tick.rate.success", $$3), true);
-      return (int)$$1;
-   }
-
-   private static int a(ej $$0) {
-      ama $$1 = $$0.l().aP();
-      String $$2 = a($$0.l().aQ());
-      float $$3 = $$1.f();
-      String $$4 = String.format(Locale.ROOT, "%.1f", $$3);
-      if ($$1.a()) {
-         $$0.a(() -> wy.c("commands.tick.status.sprinting"), false);
-         $$0.a(() -> wy.a("commands.tick.query.rate.sprinting", $$4, $$2), false);
+      if ($$1.size() == 1) {
+         $$0.a(() -> xa.a("commands.teleport.success.entity.single", $$1.iterator().next().m_(), $$2.m_()), true);
       } else {
-         if ($$1.l()) {
-            $$0.a(() -> wy.c("commands.tick.status.frozen"), false);
-         } else if ($$1.h() < $$0.l().aQ()) {
-            $$0.a(() -> wy.c("commands.tick.status.lagging"), false);
+         $$0.a(() -> xa.a("commands.teleport.success.entity.multiple", $$1.size(), $$2.m_()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(ej $$0, Collection<? extends bwt> $$1, ars $$2, gi $$3, @Nullable gi $$4, @Nullable aoc $$5) throws CommandSyntaxException {
+      ffq $$6 = $$3.a($$0);
+      ffp $$7 = $$4 == null ? null : $$4.b($$0);
+
+      for (bwt $$8 : $$1) {
+         Set<byi> $$9 = a($$3, $$4, $$8.dV().aj() == $$2.aj());
+         if ($$7 == null) {
+            a($$0, $$8, $$2, $$6.d, $$6.e, $$6.f, $$9, $$8.dL(), $$8.dN(), $$5);
          } else {
-            $$0.a(() -> wy.c("commands.tick.status.running"), false);
-         }
-
-         String $$5 = a($$1.h());
-         $$0.a(() -> wy.a("commands.tick.query.rate.running", $$4, $$2, $$5), false);
-      }
-
-      long[] $$6 = Arrays.copyOf($$0.l().aR(), $$0.l().aR().length);
-      Arrays.sort($$6);
-      String $$7 = a($$6[$$6.length / 2]);
-      String $$8 = a($$6[(int)((double)$$6.length * 0.95)]);
-      String $$9 = a($$6[(int)((double)$$6.length * 0.99)]);
-      $$0.a(() -> wy.a("commands.tick.query.percentiles", $$7, $$8, $$9, $$6.length), false);
-      return (int)$$3;
-   }
-
-   private static int a(ej $$0, int $$1) {
-      boolean $$2 = $$0.l().aP().b($$1);
-      if ($$2) {
-         $$0.a(() -> wy.c("commands.tick.sprint.stop.success"), true);
-      }
-
-      $$0.a(() -> wy.c("commands.tick.status.sprinting"), true);
-      return 1;
-   }
-
-   private static int a(ej $$0, boolean $$1) {
-      ama $$2 = $$0.l().aP();
-      if ($$1) {
-         if ($$2.a()) {
-            $$2.c();
-         }
-
-         if ($$2.j()) {
-            $$2.b();
+            a($$0, $$8, $$2, $$6.d, $$6.e, $$6.f, $$9, $$7.k, $$7.j, $$5);
          }
       }
 
-      $$2.a($$1);
-      if ($$1) {
-         $$0.a(() -> wy.c("commands.tick.status.frozen"), true);
+      if ($$1.size() == 1) {
+         $$0.a(() -> xa.a("commands.teleport.success.location.single", $$1.iterator().next().m_(), a($$6.d), a($$6.e), a($$6.f)), true);
       } else {
-         $$0.a(() -> wy.c("commands.tick.status.running"), true);
+         $$0.a(() -> xa.a("commands.teleport.success.location.multiple", $$1.size(), a($$6.d), a($$6.e), a($$6.f)), true);
       }
 
-      return $$1 ? 1 : 0;
+      return $$1.size();
    }
 
-   private static int b(ej $$0, int $$1) {
-      ama $$2 = $$0.l().aP();
-      boolean $$3 = $$2.a($$1);
-      if ($$3) {
-         $$0.a(() -> wy.a("commands.tick.step.success", $$1), true);
-      } else {
-         $$0.b(wy.c("commands.tick.step.fail"));
+   private static Set<byi> a(gi $$0, @Nullable gi $$1, boolean $$2) {
+      Set<byi> $$3 = EnumSet.noneOf(byi.class);
+      if ($$0.a()) {
+         $$3.add(byi.f);
+         if ($$2) {
+            $$3.add(byi.a);
+         }
       }
 
-      return 1;
-   }
-
-   private static int b(ej $$0) {
-      ama $$1 = $$0.l().aP();
-      boolean $$2 = $$1.b();
-      if ($$2) {
-         $$0.a(() -> wy.c("commands.tick.step.stop.success"), true);
-         return 1;
-      } else {
-         $$0.b(wy.c("commands.tick.step.stop.fail"));
-         return 0;
+      if ($$0.b()) {
+         $$3.add(byi.g);
+         if ($$2) {
+            $$3.add(byi.b);
+         }
       }
+
+      if ($$0.c()) {
+         $$3.add(byi.h);
+         if ($$2) {
+            $$3.add(byi.c);
+         }
+      }
+
+      if ($$1 == null || $$1.a()) {
+         $$3.add(byi.e);
+      }
+
+      if ($$1 == null || $$1.b()) {
+         $$3.add(byi.d);
+      }
+
+      return $$3;
    }
 
-   private static int c(ej $$0) {
-      ama $$1 = $$0.l().aP();
-      boolean $$2 = $$1.c();
-      if ($$2) {
-         $$0.a(() -> wy.c("commands.tick.sprint.stop.success"), true);
-         return 1;
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%f", $$0);
+   }
+
+   private static void a(ej $$0, bwt $$1, ars $$2, double $$3, double $$4, double $$5, Set<byi> $$6, float $$7, float $$8, @Nullable aoc $$9) throws CommandSyntaxException {
+      iv $$10 = iv.a($$3, $$4, $$5);
+      if (!djx.l($$10)) {
+         throw a.create();
       } else {
-         $$0.b(wy.c("commands.tick.sprint.stop.fail"));
-         return 0;
+         double $$11 = $$6.contains(byi.a) ? $$3 - $$1.dA() : $$3;
+         double $$12 = $$6.contains(byi.b) ? $$4 - $$1.dC() : $$4;
+         double $$13 = $$6.contains(byi.c) ? $$5 - $$1.dG() : $$5;
+         float $$14 = $$6.contains(byi.d) ? $$7 - $$1.dL() : $$7;
+         float $$15 = $$6.contains(byi.e) ? $$8 - $$1.dN() : $$8;
+         float $$16 = azo.h($$14);
+         float $$17 = azo.h($$15);
+         if ($$1.a($$2, $$11, $$12, $$13, $$6, $$16, $$17, true)) {
+            if ($$9 != null) {
+               $$9.perform($$0, $$1);
+            }
+
+            if (!($$1 instanceof bxu $$18) || !$$18.fJ()) {
+               $$1.i($$1.dy().d(1.0, 0.0, 1.0));
+               $$1.d(true);
+            }
+
+            if ($$1 instanceof byc $$19) {
+               $$19.O().m();
+            }
+         }
       }
    }
 }

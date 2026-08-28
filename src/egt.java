@@ -1,82 +1,181 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class egt implements egh {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final egu i = new egu(this);
-
-   public egt(long $$0) {
-      this.b($$0);
+public abstract class egt {
+   public static egt.b a(int $$0, int $$1) {
+      return new egt.b($$0 - 1, $$1 + 1);
    }
 
-   @Override
-   public azv d() {
-      return new egt(this.g());
+   public static egt.b b(int $$0, int $$1) {
+      return new egt.b($$0, $$1);
    }
 
-   @Override
-   public ehf e() {
-      return new egt.a(this.g());
+   public static egt a(int $$0) {
+      return new egt.c($$0, false);
    }
 
-   @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw ban.a("LegacyRandomSource", null);
+   public static egt b(int $$0) {
+      return new egt.c($$0 + 1, false);
+   }
+
+   public static egt c(int $$0) {
+      return new egt.c($$0, true);
+   }
+
+   public static egt d(int $$0) {
+      return new egt.c($$0 - 1, true);
+   }
+
+   public static egt a() {
+      return egt.a.a;
+   }
+
+   public static egt a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
       } else {
-         this.i.a();
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
       }
    }
 
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw ban.a("LegacyRandomSource", null);
+   public abstract OptionalInt b();
+
+   public abstract OptionalInt c();
+
+   public abstract OptionalInt d();
+
+   public egt a(OptionalInt $$0) {
+      return a($$0, this.b());
+   }
+
+   public egt b(OptionalInt $$0) {
+      return a(this.c(), $$0);
+   }
+
+   public static Optional<egt> a(dkd $$0, iv $$1, int $$2, Predicate<ebe> $$3, Predicate<ebe> $$4) {
+      iv.a $$5 = $$1.k();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
       } else {
-         return (int)($$2 >> 48 - $$0);
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, jb.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, jb.a);
+         return Optional.of(a($$8, $$7));
       }
    }
 
-   @Override
-   public double k() {
-      return this.i.b();
+   private static OptionalInt a(dkd $$0, int $$1, Predicate<ebe> $$2, Predicate<ebe> $$3, iv.a $$4, int $$5, jb $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
    }
 
-   public static class a implements ehf {
-      private final long a;
+   public static final class a extends egt {
+      static final egt.a a = new egt.a();
 
-      public a(long $$0) {
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
+   }
+
+   public static final class b extends egt {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
          this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
+         }
       }
 
       @Override
-      public azv a(int $$0, int $$1, int $$2) {
-         long $$3 = azm.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new egt($$4);
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
       }
 
       @Override
-      public azv a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new egt((long)$$1 ^ this.a);
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
       }
 
       @Override
-      public azv a(long $$0) {
-         return new egt($$0);
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
       }
 
-      @VisibleForTesting
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
       @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
+   }
+
+   public static final class c extends egt {
+      private final int a;
+      private final boolean b;
+
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
       }
    }
 }

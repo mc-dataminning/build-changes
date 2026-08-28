@@ -1,50 +1,67 @@
-public class hnh extends hmx {
-   private static final float n = 0.0F;
-   private static final float o = 0.7F;
-   private static final float p = 0.0F;
-   private static final float q = 1.0F;
-   private static final float r = 0.0025F;
-   private final ctz s;
-   private float t = 0.0F;
+import java.util.Comparator;
+import java.util.Objects;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public hnh(ctz $$0) {
-      super(awn.pz, awo.g, hno.t());
-      this.s = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
-      this.f = (double)((float)$$0.dz());
-      this.g = (double)((float)$$0.dB());
-      this.h = (double)((float)$$0.dF());
+public class hnh {
+   public static final Comparator<hnh> a = Comparator.<hnh, ali>comparing(hnh::a).thenComparing(hnh::b);
+   private final ali b;
+   private final ali c;
+   @Nullable
+   private gsl d;
+
+   public hnh(ali $$0, ali $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public boolean s() {
-      return !this.s.aZ();
+   public ali a() {
+      return this.b;
    }
 
-   @Override
-   public boolean r() {
-      return true;
+   public ali b() {
+      return this.c;
    }
 
-   @Override
-   public void q() {
-      if (this.s.dP()) {
-         this.n();
-      } else {
-         this.f = (double)((float)this.s.dz());
-         this.g = (double)((float)this.s.dB());
-         this.h = (double)((float)this.s.dF());
-         float $$0 = (float)this.s.dx().i();
-         boolean $$1 = !this.s.co() && this.s.f() instanceof cuo;
-         if ($$0 >= 0.01F && this.s.dU().u().i() && !$$1) {
-            this.t = azm.a(this.t + 0.0025F, 0.0F, 1.0F);
-            this.d = azm.h(azm.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
-         } else {
-            this.t = 0.0F;
-            this.d = 0.0F;
-         }
+   public hla c() {
+      return frd.Q().a(this.a()).apply(this.b());
+   }
+
+   public gsl a(Function<ali, gsl> $$0) {
+      if (this.d == null) {
+         this.d = $$0.apply(this.b);
       }
+
+      return this.d;
+   }
+
+   public flr a(gsa $$0, Function<ali, gsl> $$1) {
+      return this.c().a($$0.getBuffer(this.a($$1)));
+   }
+
+   public flr a(gsa $$0, Function<ali, gsl> $$1, boolean $$2, boolean $$3) {
+      return this.c().a(gzg.a($$0, this.a($$1), $$2, $$3));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         hnh $$1 = (hnh)$$0;
+         return this.b.equals($$1.b) && this.c.equals($$1.c);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.b, this.c);
+   }
+
+   @Override
+   public String toString() {
+      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
    }
 }

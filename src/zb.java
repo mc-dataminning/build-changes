@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface zb {
+@FunctionalInterface
+public interface zb<O, T> {
+   void encode(T var1, O var2);
 }

@@ -1,38 +1,68 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import it.unimi.dsi.fastutil.ints.IntImmutableList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
-public enum ece implements bak {
-   a(0, "start"),
-   b(1, "log"),
-   c(2, "fail"),
-   d(3, "accept");
+public final class ece extends ech<Integer> {
+   private final IntImmutableList a;
+   private final int b;
+   private final int c;
 
-   private static final IntFunction<ece> g = ayc.a($$0 -> $$0.h, values(), ayc.a.a);
-   public static final Codec<ece> e = bak.a(ece::values);
-   public static final yw<ByteBuf, ece> f = yu.a(g, $$0 -> $$0.h);
-   private final int h;
-   private final String i;
-   private final wy j;
-   private final wy k;
-
-   private ece(final int $$0, final String $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = wy.c("test_block.mode." + $$1);
-      this.k = wy.c("test_block.mode_info." + $$1);
+   private ece(String $$0, int $$1, int $$2) {
+      super($$0, Integer.class);
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
+      } else if ($$2 <= $$1) {
+         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
+      } else {
+         this.b = $$1;
+         this.c = $$2;
+         this.a = IntImmutableList.toList(IntStream.range($$1, $$2 + 1));
+      }
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public List<Integer> a() {
+      return this.a;
    }
 
-   public wy a() {
-      return this.j;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof ece $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
    }
 
-   public wy b() {
-      return this.k;
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
+   }
+
+   public static ece a(String $$0, int $$1, int $$2) {
+      return new ece($$0, $$1, $$2);
+   }
+
+   @Override
+   public Optional<Integer> b(String $$0) {
+      try {
+         int $$1 = Integer.parseInt($$0);
+         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
+      } catch (NumberFormatException var3) {
+         return Optional.empty();
+      }
+   }
+
+   public String a(Integer $$0) {
+      return $$0.toString();
+   }
+
+   public int b(Integer $$0) {
+      return $$0 <= this.c ? $$0 - this.b : -1;
    }
 }

@@ -1,32 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public record dic(alg e, wy f, boolean g) {
-   public static final Codec<dic> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               alg.a.fieldOf("asset_id").forGetter(dic::a),
-               xa.a.fieldOf("description").forGetter(dic::b),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(dic::c)
-            )
-            .apply($$0, dic::new)
-   );
-   public static final yw<wj, dic> b = yw.a(alg.b, dic::a, xa.b, dic::b, yu.b, dic::c, dic::new);
-   public static final Codec<jf<dic>> c = alc.a(mh.bl, a);
-   public static final yw<wj, jf<dic>> d = yu.a(mh.bl, b);
+public record dic(int a, Map<die, Integer> b, int c, jf<awo> d, float e, float f, axt<czu> g, alh<dif> h) {
+   public dcp a(die $$0) {
+      int $$1 = this.b.getOrDefault($$0, 0);
+      dcp.a $$2 = dcp.a();
+      bxe $$3 = bxe.a($$0.a());
+      ali $$4 = ali.b("armor." + $$0.b());
+      $$2.a(bza.a, new byy($$4, (double)$$1, byy.a.a), $$3);
+      $$2.a(bza.b, new byy($$4, (double)this.e, byy.a.a), $$3);
+      if (this.f > 0.0F) {
+         $$2.a(bza.p, new byy($$4, (double)this.f, byy.a.a), $$3);
+      }
 
-   public wy a(jf<dia> $$0) {
-      return this.f.f().c($$0.a().b().a());
-   }
-
-   public alg a() {
-      return this.e;
-   }
-
-   public wy b() {
-      return this.f;
-   }
-
-   public boolean c() {
-      return this.g;
+      return $$2.a();
    }
 }

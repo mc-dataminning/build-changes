@@ -1,23 +1,40 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bof extends bku {
+public class bof extends bkw {
    public bof(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.registerSimple($$1, "minecraft:creaking");
-      $$0.registerSimple($$1, "minecraft:creaking_transient");
+      $$1.remove("minecraft:boat");
+      $$1.remove("minecraft:chest_boat");
+      this.registerSimple($$1, "minecraft:oak_boat");
+      this.registerSimple($$1, "minecraft:spruce_boat");
+      this.registerSimple($$1, "minecraft:birch_boat");
+      this.registerSimple($$1, "minecraft:jungle_boat");
+      this.registerSimple($$1, "minecraft:acacia_boat");
+      this.registerSimple($$1, "minecraft:cherry_boat");
+      this.registerSimple($$1, "minecraft:dark_oak_boat");
+      this.registerSimple($$1, "minecraft:mangrove_boat");
+      this.registerSimple($$1, "minecraft:bamboo_raft");
+      this.a($$1, "minecraft:oak_chest_boat");
+      this.a($$1, "minecraft:spruce_chest_boat");
+      this.a($$1, "minecraft:birch_chest_boat");
+      this.a($$1, "minecraft:jungle_chest_boat");
+      this.a($$1, "minecraft:acacia_chest_boat");
+      this.a($$1, "minecraft:cherry_chest_boat");
+      this.a($$1, "minecraft:dark_oak_chest_boat");
+      this.a($$1, "minecraft:mangrove_chest_boat");
+      this.a($$1, "minecraft:bamboo_chest_raft");
       return $$1;
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      this.registerSimple($$1, "minecraft:creaking_heart");
-      return $$1;
+   private void a(Map<String, Supplier<TypeTemplate>> $$0, String $$1) {
+      this.register($$0, $$1, $$0x -> DSL.optionalFields("Items", DSL.list(bjb.t.in(this))));
    }
 }

@@ -1,80 +1,17 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.io.IOException;
 
-public class hlu {
-   private static final Logger a = LogUtils.getLogger();
-   private static final akz b = akz.a("items");
+public class hlu extends avk<int[]> {
+   private static final ali a = ali.b("textures/colormap/foliage.png");
 
-   public static CompletableFuture<hlu.a> a(avd $$0, Executor $$1) {
-      jt.b $$2 = gkt.a().a();
-      return CompletableFuture.<Map<alg, avb>>supplyAsync(() -> b.a($$0), $$1)
-         .thenCompose(
-            $$2x -> {
-               List<CompletableFuture<hlu.b>> $$3 = new ArrayList<>($$2x.size());
-               $$2x.forEach(
-                  ($$3x, $$4) -> $$3.add(
-                        CompletableFuture.supplyAsync(
-                           () -> {
-                              alg $$3xx = b.b($$3x);
-
-                              try {
-                                 hlu.b var8;
-                                 try (Reader $$4x = $$4.e()) {
-                                    azr $$5 = new azr($$2);
-                                    DynamicOps<JsonElement> $$6 = $$5.a(JsonOps.INSTANCE);
-                                    hgb $$7 = hgb.a
-                                       .parse($$6, JsonParser.parseReader($$4x))
-                                       .ifError(
-                                          $$2xxxx -> a.error(
-                                                "Couldn't parse item model '{}' from pack '{}': {}", new Object[]{$$3xx, $$4.b(), $$2xxxx.message()}
-                                             )
-                                       )
-                                       .result()
-                                       .map($$1xxxx -> $$5.b() ? $$1xxxx.a($$5.a()) : $$1xxxx)
-                                       .orElse(null);
-                                    var8 = new hlu.b($$3xx, $$7);
-                                 }
-
-                                 return var8;
-                              } catch (Exception var11) {
-                                 a.error("Failed to open item model {} from pack '{}'", new Object[]{$$3x, $$4.b(), var11});
-                                 return new hlu.b($$3xx, null);
-                              }
-                           },
-                           $$1
-                        )
-                     )
-               );
-               return ag.d($$3).thenApply($$0xx -> {
-                  Map<alg, hgb> $$1xx = new HashMap<>();
-
-                  for (hlu.b $$2xx : $$0xx) {
-                     if ($$2xx.b != null) {
-                        $$1xx.put($$2xx.a, $$2xx.b);
-                     }
-                  }
-
-                  return new hlu.a($$1xx);
-               });
-            }
-         );
+   protected int[] a(avf $$0, brb $$1) {
+      try {
+         return hlx.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load foliage color texture", var4);
+      }
    }
 
-   public static record a(Map<alg, hgb> a) {
-   }
-
-   static record b(alg a, @Nullable hgb b) {
+   protected void a(int[] $$0, avf $$1, brb $$2) {
+      djs.a($$0);
    }
 }

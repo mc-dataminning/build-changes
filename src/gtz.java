@@ -1,29 +1,48 @@
-public class gtz implements gtd<eaa> {
-   private final hgg a;
-   private final azv b = azv.a();
-   private final hea c = new hea();
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.function.Predicate;
 
-   public gtz(gte.a $$0) {
-      this.a = $$0.d();
+public record gtz(gtz.a b, List<gua> c) implements gua {
+   @Override
+   public <O, S extends ebg<O, S>> Predicate<S> instantiate(ebf<O, S> $$0) {
+      return this.b.a(Lists.transform(this.c, $$1 -> $$1.instantiate($$0)));
    }
 
-   public void a(eaa $$0, float $$1, fkd $$2, gqr $$3, int $$4, int $$5, ffc $$6) {
-      if (eaa.a.a($$0.c())) {
-         djm $$7 = $$0.i();
-         if ($$7 != null) {
-            czn $$8 = $$0.c().a();
-            if (!$$8.f()) {
-               this.a.a(this.c.a, $$8, czl.h, $$7, null, 0);
-               this.c.b = hea.a($$8.M());
-               this.c.c = hea.a($$8);
-               eab $$9 = $$0.d();
-               $$2.a();
-               $$2.a(0.5F, 0.4F, 0.5F);
-               $$2.a(a.d.rotationDegrees(azm.i($$1, $$9.b(), $$9.a())));
-               gxu.a($$2, $$3, $$4, this.c, this.b);
-               $$2.b();
-            }
+   public gtz.a a() {
+      return this.b;
+   }
+
+   public List<gua> b() {
+      return this.c;
+   }
+
+   public static enum a implements bam {
+      a("AND") {
+         @Override
+         public <V> Predicate<V> a(List<Predicate<V>> $$0) {
+            return ag.a($$0);
          }
+      },
+      b("OR") {
+         @Override
+         public <V> Predicate<V> a(List<Predicate<V>> $$0) {
+            return ag.b($$0);
+         }
+      };
+
+      public static final Codec<gtz.a> c = bam.a(gtz.a::values);
+      private final String d;
+
+      a(final String $$0) {
+         this.d = $$0;
       }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
+
+      public abstract <V> Predicate<V> a(List<Predicate<V>> var1);
    }
 }

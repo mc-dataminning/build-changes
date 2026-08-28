@@ -1,35 +1,41 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public final class cco<F extends K1, Value> {
-   private final byj<?> a;
-   private final cgl<Value> b;
-   private final App<F, Value> c;
+public class cco {
+   private static final int a = 16;
 
-   public cco(byj<?> $$0, cgl<Value> $$1, App<F, Value> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static bzm<bxu> a(Predicate<jf<ciz>> $$0, cgw<je> $$1) {
+      return ccy.a((Function<ccy.b<bxu>, ? extends App<ccy.c<bxu>, cdb<bxu>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               je $$6 = $$2.b($$2x);
+               iv $$7 = $$6.b();
+               if ($$3.aj() == $$6.a() && $$7.a($$4.dt(), 16.0)) {
+                  ars $$8 = $$3.p().a($$6.a());
+                  if ($$8 == null || !$$8.A().a($$7, $$0)) {
+                     $$2x.b();
+                  } else if (a($$8, $$7, $$4)) {
+                     $$2x.b();
+                     if (!a($$8, $$7)) {
+                        $$3.A().b($$7);
+                        ago.c($$3, $$7);
+                     }
+                  }
+
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 
-   public App<F, Value> a() {
-      return this.c;
+   private static boolean a(ars $$0, iv $$1, bxu $$2) {
+      ebe $$3 = $$0.a_($$1);
+      return $$3.a(axe.T) && $$3.c(dmv.c) && !$$2.fR();
    }
 
-   public void a(Value $$0) {
-      this.a.a(this.b, Optional.of($$0));
-   }
-
-   public void a(Optional<Value> $$0) {
-      this.a.a(this.b, $$0);
-   }
-
-   public void a(Value $$0, long $$1) {
-      this.a.a(this.b, $$0, $$1);
-   }
-
-   public void b() {
-      this.a.b(this.b);
+   private static boolean a(ars $$0, iv $$1) {
+      List<crj> $$2 = $$0.a(crj.class, new ffl($$1), bxu::fR);
+      return !$$2.isEmpty();
    }
 }

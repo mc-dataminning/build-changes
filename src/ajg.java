@@ -1,20 +1,29 @@
-import com.mojang.authlib.GameProfile;
-import io.netty.buffer.ByteBuf;
+public class ajg implements zh<ajd> {
+   public static final yy<vw, ajg> a = zh.a(ajg::a, ajg::new);
+   private final int b;
 
-public record ajg(GameProfile b) implements zf<ajb> {
-   public static final yw<ByteBuf, ajg> a = yw.a(yu.z, ajg::b, ajg::new);
-
-   @Override
-   public zh<ajg> a() {
-      return ajh.b;
+   public ajg(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(ajb $$0) {
+   private ajg(vw $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vw $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zj<ajg> a() {
+      return ajj.d;
+   }
+
+   public void a(ajd $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public int b() {
+      return this.b;
    }
 }

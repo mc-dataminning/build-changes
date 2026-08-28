@@ -1,53 +1,96 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emd implements emc {
-   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
-   public static final Codec<emd> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               egp.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
-               egr.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
-               egq.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
-               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
-               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
-               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
-               btl.b(1, 20).fieldOf("outer_wall_distance").orElse(btr.a(4, 5)).forGetter($$0x -> $$0x.i),
-               btl.b(1, 20).fieldOf("distribution_points").orElse(btr.a(3, 4)).forGetter($$0x -> $$0x.j),
-               btl.b(0, 10).fieldOf("point_offset").orElse(btr.a(1, 2)).forGetter($$0x -> $$0x.k),
-               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
-               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
-               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
-               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
-            )
-            .apply($$0, emd::new)
-   );
-   public final egp c;
-   public final egr d;
-   public final egq e;
-   public final double f;
-   public final double g;
-   public final boolean h;
-   public final btl i;
-   public final btl j;
-   public final btl k;
-   public final int l;
-   public final int n;
-   public final double o;
-   public final int p;
+public class emd extends ekk<emw> {
+   private static final jb[] a = jb.values();
 
-   public emd(egp $$0, egr $$1, egq $$2, double $$3, double $$4, boolean $$5, btl $$6, btl $$7, btl $$8, int $$9, int $$10, double $$11, int $$12) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
-      this.n = $$10;
-      this.o = $$11;
-      this.p = $$12;
+   public emd(Codec<emw> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a(ekm<emw> $$0) {
+      dkw $$1 = $$0.b();
+      iv $$2 = $$0.e();
+      azx $$3 = $$0.d();
+      if (!$$1.v($$2)) {
+         return false;
+      } else {
+         ebe $$4 = $$1.a_($$2.d());
+         if (!$$4.a(dne.em) && !$$4.a(dne.lq)) {
+            return false;
+         } else {
+            this.a($$1, $$3, $$2);
+            this.b($$1, $$3, $$2);
+            return true;
+         }
+      }
+   }
+
+   private void a(djy $$0, azx $$1, iv $$2) {
+      $$0.a($$2, dne.lq.m(), 2);
+      iv.a $$3 = new iv.a();
+      iv.a $$4 = new iv.a();
+
+      for (int $$5 = 0; $$5 < 200; $$5++) {
+         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
+         if ($$0.v($$3)) {
+            int $$6 = 0;
+
+            for (jb $$7 : a) {
+               ebe $$8 = $$0.a_($$4.a($$3, $$7));
+               if ($$8.a(dne.em) || $$8.a(dne.lq)) {
+                  $$6++;
+               }
+
+               if ($$6 > 1) {
+                  break;
+               }
+            }
+
+            if ($$6 == 1) {
+               $$0.a($$3, dne.lq.m(), 2);
+            }
+         }
+      }
+   }
+
+   private void b(djy $$0, azx $$1, iv $$2) {
+      iv.a $$3 = new iv.a();
+
+      for (int $$4 = 0; $$4 < 100; $$4++) {
+         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
+         if ($$0.v($$3)) {
+            ebe $$5 = $$0.a_($$3.d());
+            if ($$5.a(dne.em) || $$5.a(dne.lq)) {
+               int $$6 = azo.a($$1, 1, 8);
+               if ($$1.a(6) == 0) {
+                  $$6 *= 2;
+               }
+
+               if ($$1.a(5) == 0) {
+                  $$6 = 1;
+               }
+
+               int $$7 = 17;
+               int $$8 = 25;
+               a($$0, $$1, $$3, $$6, 17, 25);
+            }
+         }
+      }
+   }
+
+   public static void a(djy $$0, azx $$1, iv.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 <= $$3; $$6++) {
+         if ($$0.v($$2)) {
+            if ($$6 == $$3 || !$$0.v($$2.e())) {
+               $$0.a($$2, dne.pf.m().b(dqv.e, Integer.valueOf(azo.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dne.pg.m(), 2);
+         }
+
+         $$2.c(jb.a);
+      }
    }
 }

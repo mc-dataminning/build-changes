@@ -1,181 +1,118 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.List.ListType;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.HashMap;
-import java.util.Map;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class bkd extends bht {
-   private static final Logger c = LogUtils.getLogger();
+public class bkd extends DataFix {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 4096;
+   private static final short c = 12;
 
-   public bkd(Schema $$0) {
-      super($$0, false, "TrialSpawnerConfigInRegistryFix", biz.s, "minecraft:trial_spawner");
+   public bkd(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   public Dynamic<?> a(Dynamic<uw> $$0) {
-      Optional<Dynamic<uw>> $$1 = $$0.get("normal_config").result();
-      if ($$1.isEmpty()) {
-         return $$0;
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getOutputSchema().getType(bjb.c);
+      Type<?> $$1 = $$0.findFieldType("Level");
+      if (!($$1.findFieldType("TileEntities") instanceof ListType<?> $$3)) {
+         throw new IllegalStateException("Tile entity type is not a list type.");
       } else {
-         Optional<Dynamic<uw>> $$2 = $$0.get("ominous_config").result();
-         if ($$2.isEmpty()) {
-            return $$0;
+         OpticFinder<? extends List<?>> $$4 = DSL.fieldFinder("TileEntities", $$3);
+         Type<?> $$5 = this.getInputSchema().getType(bjb.c);
+         OpticFinder<?> $$6 = $$5.findField("Level");
+         OpticFinder<?> $$7 = $$6.type().findField("Sections");
+         Type<?> $$8 = $$7.type();
+         if (!($$8 instanceof ListType)) {
+            throw new IllegalStateException("Expecting sections to be a list.");
          } else {
-            alg $$3 = bkd.a.a.get(Pair.of($$1.get(), $$2.get()));
-            return $$3 == null
-               ? $$0
-               : $$0.set("normal_config", $$0.createString($$3.g("/normal").toString())).set("ominous_config", $$0.createString($$3.g("/ominous").toString()));
+            Type<?> $$9 = ((ListType)$$8).getElement();
+            OpticFinder<?> $$10 = DSL.typeFinder($$9);
+            return TypeRewriteRule.seq(
+               new bbn(this.getOutputSchema(), "AddTrappedChestFix", bjb.s).makeRule(),
+               this.fixTypeEverywhereTyped("Trapped Chest fix", $$5, $$4x -> $$4x.updateTyped($$6, $$3xx -> {
+                     Optional<? extends Typed<?>> $$4xx = $$3xx.getOptionalTyped($$7);
+                     if ($$4xx.isEmpty()) {
+                        return $$3xx;
+                     } else {
+                        List<? extends Typed<?>> $$5x = $$4xx.get().getAllTyped($$10);
+                        IntSet $$6x = new IntOpenHashSet();
+
+                        for (Typed<?> $$7x : $$5x) {
+                           bkd.a $$8x = new bkd.a($$7x, this.getInputSchema());
+                           if (!$$8x.b()) {
+                              for (int $$9x = 0; $$9x < 4096; $$9x++) {
+                                 int $$10x = $$8x.c($$9x);
+                                 if ($$8x.a($$10x)) {
+                                    $$6x.add($$8x.c() << 12 | $$9x);
+                                 }
+                              }
+                           }
+                        }
+
+                        Dynamic<?> $$11 = (Dynamic<?>)$$3xx.get(DSL.remainderFinder());
+                        int $$12 = $$11.get("xPos").asInt(0);
+                        int $$13 = $$11.get("zPos").asInt(0);
+                        TaggedChoiceType<String> $$14 = this.getInputSchema().findChoiceType(bjb.s);
+                        return $$3xx.updateTyped($$4, $$4xxx -> $$4xxx.updateTyped($$14.finder(), $$4xxxx -> {
+                              Dynamic<?> $$5xx = (Dynamic<?>)$$4xxxx.getOrCreate(DSL.remainderFinder());
+                              int $$6xx = $$5xx.get("x").asInt(0) - ($$12 << 4);
+                              int $$7xx = $$5xx.get("y").asInt(0);
+                              int $$8xx = $$5xx.get("z").asInt(0) - ($$13 << 4);
+                              return $$6x.contains(bhf.a($$6xx, $$7xx, $$8xx)) ? $$4xxxx.update($$14.finder(), $$0xxxxx -> $$0xxxxx.mapFirst($$0xxxxxx -> {
+                                    if (!Objects.equals($$0xxxxxx, "minecraft:chest")) {
+                                       a.warn("Block Entity was expected to be a chest");
+                                    }
+
+                                    return "minecraft:trapped_chest";
+                                 })) : $$4xxxx;
+                           }));
+                     }
+                  }))
+            );
          }
       }
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> {
-         DynamicOps<?> $$1 = $$0x.getOps();
-         Dynamic<?> $$2 = this.a($$0x.convert(un.a));
-         return $$2.convert($$1);
-      });
-   }
+   public static final class a extends bhf.b {
+      @Nullable
+      private IntSet h;
 
-   static final class a {
-      public static final Map<Pair<Dynamic<uw>, Dynamic<uw>>, alg> a = new HashMap<>();
-
-      private a() {
+      public a(Typed<?> $$0, Schema $$1) {
+         super($$0, $$1);
       }
 
-      private static void a(alg $$0, String $$1, String $$2) {
-         try {
-            tz $$3 = a($$1);
-            tz $$4 = a($$2);
-            tz $$5 = $$3.i().a($$4);
-            tz $$6 = b($$5.i());
-            Dynamic<uw> $$7 = a($$3);
-            a.put(Pair.of($$7, a($$4)), $$0);
-            a.put(Pair.of($$7, a($$5)), $$0);
-            a.put(Pair.of($$7, a($$6)), $$0);
-         } catch (RuntimeException var8) {
-            throw new IllegalStateException("Failed to parse NBT for " + $$0, var8);
+      @Override
+      protected boolean a() {
+         this.h = new IntOpenHashSet();
+
+         for (int $$0 = 0; $$0 < this.e.size(); $$0++) {
+            Dynamic<?> $$1 = this.e.get($$0);
+            String $$2 = $$1.get("Name").asString("");
+            if (Objects.equals($$2, "minecraft:trapped_chest")) {
+               this.h.add($$0);
+            }
          }
+
+         return this.h.isEmpty();
       }
 
-      private static Dynamic<uw> a(tz $$0) {
-         return new Dynamic(un.a, $$0);
-      }
-
-      private static tz a(String $$0) {
-         try {
-            return ux.a($$0);
-         } catch (CommandSyntaxException var2) {
-            throw new IllegalArgumentException("Failed to parse Trial Spawner NBT config: " + $$0, var2);
-         }
-      }
-
-      private static tz b(tz $$0) {
-         if ($$0.f("spawn_range") == 4) {
-            $$0.p("spawn_range");
-         }
-
-         if ($$0.h("total_mobs") == 6.0F) {
-            $$0.p("total_mobs");
-         }
-
-         if ($$0.h("simultaneous_mobs") == 2.0F) {
-            $$0.p("simultaneous_mobs");
-         }
-
-         if ($$0.h("total_mobs_added_per_player") == 2.0F) {
-            $$0.p("total_mobs_added_per_player");
-         }
-
-         if ($$0.h("simultaneous_mobs_added_per_player") == 1.0F) {
-            $$0.p("simultaneous_mobs_added_per_player");
-         }
-
-         if ($$0.f("ticks_between_spawn") == 40) {
-            $$0.p("ticks_between_spawn");
-         }
-
-         return $$0;
-      }
-
-      static {
-         a(
-            alg.b("trial_chamber/breeze"),
-            "{simultaneous_mobs: 1.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:breeze\"}}, weight: 1}], ticks_between_spawn: 20, total_mobs: 2.0f, total_mobs_added_per_player: 1.0f}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], simultaneous_mobs: 2.0f, total_mobs: 4.0f}"
-         );
-         a(
-            alg.b("trial_chamber/melee/husk"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:husk\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:husk\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_melee\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            alg.b("trial_chamber/melee/spider"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:spider\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}],simultaneous_mobs: 4.0f, total_mobs: 12.0f}"
-         );
-         a(
-            alg.b("trial_chamber/melee/zombie"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:zombie\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}],spawn_potentials: [{data: {entity: {id: \"minecraft:zombie\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_melee\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            alg.b("trial_chamber/ranged/poison_skeleton"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:bogged\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}],spawn_potentials: [{data: {entity: {id: \"minecraft:bogged\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            alg.b("trial_chamber/ranged/skeleton"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:skeleton\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:skeleton\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            alg.b("trial_chamber/ranged/stray"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:stray\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:stray\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            alg.b("trial_chamber/slow_ranged/poison_skeleton"),
-            "{simultaneous_mobs: 4.0f, simultaneous_mobs_added_per_player: 2.0f, spawn_potentials: [{data: {entity: {id: \"minecraft:bogged\"}}, weight: 1}], ticks_between_spawn: 160}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:bogged\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            alg.b("trial_chamber/slow_ranged/skeleton"),
-            "{simultaneous_mobs: 4.0f, simultaneous_mobs_added_per_player: 2.0f, spawn_potentials: [{data: {entity: {id: \"minecraft:skeleton\"}}, weight: 1}], ticks_between_spawn: 160}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {id: \"minecraft:skeleton\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            alg.b("trial_chamber/slow_ranged/stray"),
-            "{simultaneous_mobs: 4.0f, simultaneous_mobs_added_per_player: 2.0f, spawn_potentials: [{data: {entity: {id: \"minecraft:stray\"}}, weight: 1}], ticks_between_spawn: 160}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}],spawn_potentials: [{data: {entity: {id: \"minecraft:stray\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_ranged\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            alg.b("trial_chamber/small_melee/baby_zombie"),
-            "{simultaneous_mobs: 2.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {IsBaby: 1b, id: \"minecraft:zombie\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], spawn_potentials: [{data: {entity: {IsBaby: 1b, id: \"minecraft:zombie\"}, equipment: {loot_table: \"minecraft:equipment/trial_chamber_melee\", slot_drop_chances: 0.0f}}, weight: 1}]}"
-         );
-         a(
-            alg.b("trial_chamber/small_melee/cave_spider"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:cave_spider\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], simultaneous_mobs: 4.0f, total_mobs: 12.0f}"
-         );
-         a(
-            alg.b("trial_chamber/small_melee/silverfish"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {id: \"minecraft:silverfish\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], simultaneous_mobs: 4.0f, total_mobs: 12.0f}"
-         );
-         a(
-            alg.b("trial_chamber/small_melee/slime"),
-            "{simultaneous_mobs: 3.0f, simultaneous_mobs_added_per_player: 0.5f, spawn_potentials: [{data: {entity: {Size: 1, id: \"minecraft:slime\"}}, weight: 3}, {data: {entity: {Size: 2, id: \"minecraft:slime\"}}, weight: 1}], ticks_between_spawn: 20}",
-            "{loot_tables_to_eject: [{data: \"minecraft:spawners/ominous/trial_chamber/key\", weight: 3}, {data: \"minecraft:spawners/ominous/trial_chamber/consumables\", weight: 7}], simultaneous_mobs: 4.0f, total_mobs: 12.0f}"
-         );
+      public boolean a(int $$0) {
+         return this.h.contains($$0);
       }
    }
 }

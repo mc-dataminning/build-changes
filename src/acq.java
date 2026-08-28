@@ -1,37 +1,44 @@
-public class acq implements zf<abu> {
-   public static final yw<wj, acq> a = zf.a(acq::a, acq::new);
+import java.util.List;
+
+public class acq implements zh<abw> {
+   public static final yy<wl, acq> a = zh.a(acq::a, acq::new);
    private final int b;
    private final int c;
-   private final int d;
-   private final czn e;
+   private final List<czy> d;
+   private final czy e;
 
-   public acq(int $$0, int $$1, int $$2, czn $$3) {
+   public acq(int $$0, int $$1, jo<czy> $$2, czy $$3) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
+      this.d = jo.a($$2.size(), czy.k);
+
+      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
+         this.d.set($$4, $$2.get($$4).v());
+      }
+
       this.e = $$3.v();
    }
 
-   private acq(wj $$0) {
+   private acq(wl $$0) {
       this.b = $$0.x();
       this.c = $$0.l();
-      this.d = $$0.readShort();
-      this.e = czn.h.decode($$0);
+      this.d = czy.j.decode($$0);
+      this.e = czy.h.decode($$0);
    }
 
-   private void a(wj $$0) {
+   private void a(wl $$0) {
       $$0.f(this.b);
       $$0.c(this.c);
-      $$0.m(this.d);
-      czn.h.encode($$0, this.e);
+      czy.j.encode($$0, this.d);
+      czy.h.encode($$0, this.e);
    }
 
    @Override
-   public zh<acq> a() {
-      return agn.v;
+   public zj<acq> a() {
+      return agp.t;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
@@ -39,11 +46,11 @@ public class acq implements zf<abu> {
       return this.b;
    }
 
-   public int e() {
+   public List<czy> e() {
       return this.d;
    }
 
-   public czn f() {
+   public czy f() {
       return this.e;
    }
 

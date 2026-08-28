@@ -1,63 +1,142 @@
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.hash.Hashing;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.SignatureState;
+import com.mojang.authlib.minecraft.MinecraftProfileTexture;
+import com.mojang.authlib.minecraft.MinecraftProfileTextures;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
+import com.mojang.authlib.properties.Property;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.Path;
+import java.time.Duration;
 import java.util.Map;
-import java.util.Set;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class hmd {
-   static final int a = -1;
-   private static final int b = 0;
+   static final Logger a = LogUtils.getLogger();
+   private final MinecraftSessionService b;
+   private final LoadingCache<hmd.a, CompletableFuture<Optional<hmc>>> c;
+   private final hmd.b d;
+   private final hmd.b e;
+   private final hmd.b f;
 
-   public static Object2IntMap<eat> a(fqv $$0, hlt.b $$1) {
-      Map<dmr, List<ebw<?>>> $$2 = new HashMap<>();
-      Map<hmd.a, Set<eat>> $$3 = new HashMap<>();
-      $$1.a().forEach(($$3x, $$4x) -> {
-         List<ebw<?>> $$5x = $$2.computeIfAbsent($$3x.b(), $$1xx -> List.copyOf($$0.a($$1xx)));
-         hmd.a $$6x = hmd.a.a($$3x, $$4x, $$5x);
-         $$3.computeIfAbsent($$6x, $$0xx -> Sets.newIdentityHashSet()).add($$3x);
+   public hmd(Path $$0, final MinecraftSessionService $$1, final Executor $$2) {
+      this.b = $$1;
+      this.d = new hmd.b($$0, Type.SKIN);
+      this.e = new hmd.b($$0, Type.CAPE);
+      this.f = new hmd.b($$0, Type.ELYTRA);
+      this.c = CacheBuilder.newBuilder().expireAfterAccess(Duration.ofSeconds(15L)).build(new CacheLoader<hmd.a, CompletableFuture<Optional<hmc>>>() {
+         public CompletableFuture<Optional<hmc>> a(hmd.a $$0) {
+            return CompletableFuture.<MinecraftProfileTextures>supplyAsync(() -> {
+               Property $$2xx = $$0.b();
+               if ($$2xx == null) {
+                  return MinecraftProfileTextures.EMPTY;
+               } else {
+                  MinecraftProfileTextures $$3 = $$1.unpackTextures($$2xx);
+                  if ($$3.signatureState() == SignatureState.INVALID) {
+                     hmd.a.warn("Profile contained invalid signature for textures property (profile id: {})", $$0.a());
+                  }
+
+                  return $$3;
+               }
+            }, ag.h().a("unpackSkinTextures")).thenComposeAsync($$1xx -> hmd.this.a($$0.a(), $$1xx), $$2).handle(($$1xx, $$2xx) -> {
+               if ($$2xx != null) {
+                  hmd.a.warn("Failed to load texture for profile {}", $$0.a, $$2xx);
+               }
+
+               return Optional.ofNullable($$1xx);
+            });
+         }
       });
-      int $$4 = 1;
-      Object2IntMap<eat> $$5 = new Object2IntOpenHashMap();
-      $$5.defaultReturnValue(-1);
-
-      for (Set<eat> $$6 : $$3.values()) {
-         Iterator<eat> $$7 = $$6.iterator();
-
-         while ($$7.hasNext()) {
-            eat $$8 = $$7.next();
-            if ($$8.o() != dte.b) {
-               $$7.remove();
-               $$5.put($$8, 0);
-            }
-         }
-
-         if ($$6.size() > 1) {
-            int $$9 = $$4++;
-            $$6.forEach($$2x -> $$5.put($$2x, $$9));
-         }
-      }
-
-      return $$5;
    }
 
-   static record a(Object a, List<Object> b) {
-      public static hmd.a a(eat $$0, gsd.a $$1, List<ebw<?>> $$2) {
-         List<Object> $$3 = a($$0, $$2);
-         Object $$4 = $$1.a($$0);
-         return new hmd.a($$4, $$3);
+   public Supplier<hmc> a(GameProfile $$0) {
+      CompletableFuture<Optional<hmc>> $$1 = this.c($$0);
+      hmc $$2 = hls.a($$0);
+      return () -> $$1.getNow(Optional.empty()).orElse($$2);
+   }
+
+   public hmc b(GameProfile $$0) {
+      hmc $$1 = this.c($$0).getNow(Optional.empty()).orElse(null);
+      return $$1 != null ? $$1 : hls.a($$0);
+   }
+
+   public CompletableFuture<Optional<hmc>> c(GameProfile $$0) {
+      Property $$1 = this.b.getPackedTextures($$0);
+      return (CompletableFuture<Optional<hmc>>)this.c.getUnchecked(new hmd.a($$0.getId(), $$1));
+   }
+
+   CompletableFuture<hmc> a(UUID $$0, MinecraftProfileTextures $$1) {
+      MinecraftProfileTexture $$2 = $$1.skin();
+      CompletableFuture<ali> $$3;
+      hmc.a $$4;
+      if ($$2 != null) {
+         $$3 = this.d.a($$2);
+         $$4 = hmc.a.a($$2.getMetadata("model"));
+      } else {
+         hmc $$5 = hls.a($$0);
+         $$3 = CompletableFuture.completedFuture($$5.a());
+         $$4 = $$5.e();
       }
 
-      private static List<Object> a(eat $$0, List<ebw<?>> $$1) {
-         Object[] $$2 = new Object[$$1.size()];
+      String $$8 = y.a($$2, MinecraftProfileTexture::getUrl);
+      MinecraftProfileTexture $$9 = $$1.cape();
+      CompletableFuture<ali> $$10 = $$9 != null ? this.e.a($$9) : CompletableFuture.completedFuture(null);
+      MinecraftProfileTexture $$11 = $$1.elytra();
+      CompletableFuture<ali> $$12 = $$11 != null ? this.f.a($$11) : CompletableFuture.completedFuture(null);
+      return CompletableFuture.allOf($$3, $$10, $$12)
+         .thenApply($$6x -> new hmc($$3.join(), $$8, $$10.join(), $$12.join(), $$4, $$1.signatureState() == SignatureState.SIGNED));
+   }
 
-         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-            $$2[$$3] = $$0.c($$1.get($$3));
+   static record a(UUID a, @Nullable Property b) {
+   }
+
+   static class b {
+      private final Path a;
+      private final Type b;
+      private final Map<String, CompletableFuture<ali>> c = new Object2ObjectOpenHashMap();
+
+      b(Path $$0, Type $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public CompletableFuture<ali> a(MinecraftProfileTexture $$0) {
+         String $$1 = $$0.getHash();
+         CompletableFuture<ali> $$2 = this.c.get($$1);
+         if ($$2 == null) {
+            $$2 = this.b($$0);
+            this.c.put($$1, $$2);
          }
 
-         return List.of($$2);
+         return $$2;
+      }
+
+      private CompletableFuture<ali> b(MinecraftProfileTexture $$0) {
+         String $$1 = Hashing.sha1().hashUnencodedChars($$0.getHash()).toString();
+         ali $$2 = this.a($$1);
+         Path $$3 = this.a.resolve($$1.length() > 2 ? $$1.substring(0, 2) : "xx").resolve($$1);
+         return hkt.a($$2, $$3, $$0.getUrl(), this.b == Type.SKIN);
+      }
+
+      private ali a(String $$0) {
+         String $$1 = switch (this.b) {
+            case SKIN -> "skins";
+            case CAPE -> "capes";
+            case ELYTRA -> "elytra";
+            default -> throw new MatchException(null, null);
+         };
+         return ali.b($$1 + "/" + $$0);
       }
    }
 }

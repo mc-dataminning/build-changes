@@ -1,81 +1,26 @@
-import java.util.Optional;
+public class gqt extends gob {
+   private static final int a = 12235202;
 
-public class gqt implements gqr {
-   private final gqr.a a;
-   private final gqr.a b = gqr.a(new fka(1536));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
-
-   public gqt(gqr.a $$0) {
-      this.a = $$0;
+   protected gqt(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gqf $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
+      this.v = (float)axy.b(12235202) / 255.0F;
+      this.w = (float)axy.c(12235202) / 255.0F;
+      this.x = (float)axy.d(12235202) / 255.0F;
    }
 
-   @Override
-   public fkh getBuffer(grc $$0) {
-      if ($$0.Z()) {
-         fkh $$1 = this.b.getBuffer($$0);
-         return new gqt.a($$1, this.c, this.d, this.e, this.f);
-      } else {
-         fkh $$2 = this.a.getBuffer($$0);
-         Optional<grc> $$3 = $$0.Y();
-         if ($$3.isPresent()) {
-            fkh $$4 = this.b.getBuffer($$3.get());
-            gqt.a $$5 = new gqt.a($$4, this.c, this.d, this.e, this.f);
-            return fkk.a($$5, $$2);
-         } else {
-            return $$2;
-         }
-      }
-   }
+   public static class a implements gpn<mc> {
+      private final gqf a;
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
-
-   public void a() {
-      this.b.b();
-   }
-
-   static record a(fkh a, int b) implements fkh {
-      public a(fkh $$0, int $$1, int $$2, int $$3, int $$4) {
-         this($$0, axw.a($$4, $$1, $$2, $$3));
+      public a(gqf $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public fkh a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2).a(this.b);
-         return this;
-      }
-
-      @Override
-      public fkh a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
-
-      @Override
-      public fkh a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fkh a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fkh b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fkh b(float $$0, float $$1, float $$2) {
-         return this;
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         azx $$8 = $$1.A;
+         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
+         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         return new gqt($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
       }
    }
 }

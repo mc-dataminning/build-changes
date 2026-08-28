@@ -1,119 +1,68 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.UUID;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
-public interface glo extends gln {
-   static glo.a a(GameProfile $$0, xo $$1, glm $$2) {
-      return new glo.a($$0, $$1, $$2);
+public class glo {
+   private final List<glh> a;
+   private final glg b;
+   private final Map<String, glo> c = Maps.newHashMap();
+
+   glo(List<glh> $$0, glg $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   static glo.b a(wy $$0, Instant $$1) {
-      return new glo.b($$0, $$1);
+   public glo a(String $$0, glj $$1, glg $$2) {
+      glo $$3 = new glo($$1.b(), $$2);
+      return this.a($$0, $$3);
    }
 
-   wy b();
+   public glo a(String $$0, glo $$1) {
+      glo $$2 = this.c.put($$0, $$1);
+      if ($$2 != null) {
+         $$1.c.putAll($$2.c);
+      }
 
-   default wy c() {
-      return this.b();
+      return $$1;
    }
 
-   boolean a(UUID var1);
-
-   public static record a(GameProfile c, xo d, glm e) implements glo {
-      public static final MapCodec<glo.a> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  ayu.z.fieldOf("profile").forGetter(glo.a::f), xo.a.forGetter(glo.a::g), glm.d.optionalFieldOf("trust_level", glm.a).forGetter(glo.a::h)
-               )
-               .apply($$0, glo.a::new)
-      );
-      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
-
-      @Override
-      public wy b() {
-         if (!this.d.o().a()) {
-            wy $$0 = this.d.o().b(this.d.c());
-            return (wy)($$0 != null ? $$0 : wy.i());
-         } else {
-            return this.d.d();
-         }
-      }
-
-      @Override
-      public wy c() {
-         wy $$0 = this.b();
-         wy $$1 = this.i();
-         return wy.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
-      }
-
-      public wy d() {
-         wy $$0 = this.i();
-         return wy.a("gui.chatSelection.heading", this.c.getName(), $$0);
-      }
-
-      private wy i() {
-         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
-         return wy.b($$0.format(f)).a(o.u, o.h);
-      }
-
-      @Override
-      public boolean a(UUID $$0) {
-         return this.d.a($$0);
-      }
-
-      public UUID e() {
-         return this.c.getId();
-      }
-
-      @Override
-      public gln.a a() {
-         return gln.a.a;
-      }
-
-      public GameProfile f() {
-         return this.c;
-      }
-
-      public xo g() {
-         return this.d;
-      }
-
-      public glm h() {
-         return this.e;
+   public glo a(String $$0) {
+      glo $$1 = this.c.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("No child with name: " + $$0);
+      } else {
+         return this.a($$0, glj.c(), $$1.b);
       }
    }
 
-   public static record b(wy c, Instant d) implements glo {
-      public static final MapCodec<glo.b> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(xa.a.fieldOf("message").forGetter(glo.b::d), ayu.q.fieldOf("time_stamp").forGetter(glo.b::e)).apply($$0, glo.b::new)
-      );
+   public gle a(int $$0, int $$1) {
+      Object2ObjectArrayMap<String, gle> $$2 = this.c
+         .entrySet()
+         .stream()
+         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((glo)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
+      List<gle.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).toList();
+      gle $$4 = new gle($$3, $$2);
+      $$4.a(this.b);
+      $$4.b(this.b);
+      return $$4;
+   }
 
-      @Override
-      public wy b() {
-         return this.c;
-      }
+   public glo b(String $$0) {
+      return this.c.get($$0);
+   }
 
-      @Override
-      public boolean a(UUID $$0) {
-         return false;
-      }
+   public Set<Entry<String, glo>> a() {
+      return this.c.entrySet();
+   }
 
-      @Override
-      public gln.a a() {
-         return gln.a.b;
-      }
-
-      public wy d() {
-         return this.c;
-      }
-
-      public Instant e() {
-         return this.d;
-      }
+   public glo a(UnaryOperator<glg> $$0) {
+      glo $$1 = new glo(this.a, $$0.apply(this.b));
+      $$1.c.putAll(this.c);
+      return $$1;
    }
 }

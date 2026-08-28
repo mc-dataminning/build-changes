@@ -4,15 +4,15 @@ import javax.annotation.Nullable;
 public interface ja<T> extends js<T> {
    @Nonnull
    @Override
-   alg b(T var1);
+   ali b(T var1);
 
    @Nonnull
    @Override
-   T a(@Nullable alg var1);
+   T a(@Nullable ali var1);
 
    @Nonnull
    @Override
    T a(int var1);
 
-   alg b();
+   ali b();
 }

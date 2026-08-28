@@ -1,41 +1,36 @@
-import com.google.common.collect.Lists;
-import java.util.Iterator;
-import java.util.List;
-import org.joml.Vector3f;
+public class gve implements gun<dzu> {
+   private final gyg a;
 
-public class gve implements gut.a {
-   public static final int a = 200;
-   private final fpt b;
-   private final List<aaw> c = Lists.newArrayList();
-
-   gve(fpt $$0) {
-      this.b = $$0;
+   public gve(guo.a $$0) {
+      this.a = $$0.c();
    }
 
-   public void a(aaw $$0) {
-      this.c.add($$0);
-   }
-
-   @Override
-   public void a(fkd $$0, gqr $$1, double $$2, double $$3, double $$4) {
-      fkh $$5 = $$1.getBuffer(grc.y());
-      long $$6 = this.b.s.ae();
-      Iterator<aaw> $$7 = this.c.iterator();
-
-      while ($$7.hasNext()) {
-         aaw $$8 = $$7.next();
-         long $$9 = $$6 - $$8.b();
-         if ($$9 > 200L) {
-            $$7.remove();
-         } else {
-            for (aaw.a $$10 : $$8.c()) {
-               Vector3f $$11 = $$10.a().c().a($$2, $$3 - 0.1, $$4).k();
-               eyi $$12 = $$10.b();
-               grk.a($$0, $$5, $$11, $$12.b().r().c(0.5), -16776961);
-               grk.a($$0, $$5, $$11, $$12.c().r().c(0.4), -65536);
-               grk.a($$0, $$5, $$11, $$12.d().r().c(0.3), -256);
-            }
+   public void a(dzu $$0, float $$1, flo $$2, gsa $$3, int $$4, int $$5, ffq $$6) {
+      djx $$7 = $$0.i();
+      if ($$7 != null) {
+         dix $$8 = $$0.c();
+         bwt $$9 = $$8.b($$7, $$0.aB_());
+         if ($$9 != null) {
+            a($$1, $$2, $$3, $$4, $$9, this.a, $$8.b(), $$8.a());
          }
       }
+   }
+
+   public static void a(float $$0, flo $$1, gsa $$2, int $$3, bwt $$4, gyg $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dq(), $$4.dr());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
+      }
+
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)azo.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

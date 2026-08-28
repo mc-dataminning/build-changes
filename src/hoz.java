@@ -1,29 +1,32 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
+public class hoz implements hoh {
+   public static final float a = 0.01F;
+   public static final float b = 0.001F;
+   public static final float c = 1.0E-4F;
+   private static final int d = 0;
+   private final gqz e;
+   private final hqd f;
+   private int g = 0;
 
-public record hoz(hpd b, hpg c) {
-   public static final Codec<hoz> a = hpd.a.dispatchStable(hoz::a, hpd::c);
+   public hoz(gqz $$0, hqd $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
 
-   public hoz(hpd b, hpg c) {
-      c.b().forEach($$1x -> {
-         if (!$$0.a($$1x)) {
-            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
+   @Override
+   public void a() {
+      this.g--;
+      if (this.g <= 0 && this.e.bm()) {
+         float $$0 = this.e.dV().A.i();
+         if ($$0 < 1.0E-4F) {
+            this.g = 0;
+            this.f.a((hox)(new hpa.a(this.e, awp.C)));
+         } else if ($$0 < 0.001F) {
+            this.g = 0;
+            this.f.a((hox)(new hpa.a(this.e, awp.B)));
+         } else if ($$0 < 0.01F) {
+            this.g = 0;
+            this.f.a((hox)(new hpa.a(this.e, awp.A)));
          }
-      });
-      this.b = b;
-      this.c = c;
-   }
-
-   public TelemetryEvent a(TelemetrySession $$0) {
-      return this.b.a($$0, this.c);
-   }
-
-   public hpd a() {
-      return this.b;
-   }
-
-   public hpg b() {
-      return this.c;
+      }
    }
 }

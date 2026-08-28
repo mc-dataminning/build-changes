@@ -1,27 +1,65 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class ceq extends cfc {
-   private static final int i = 10;
-   private static final int j = 7;
+public abstract class ceq {
+   private final EnumSet<ceq.a> a = EnumSet.noneOf(ceq.a.class);
 
-   public ceq(bxr $$0, double $$1, boolean $$2) {
-      super($$0, $$1, 10, $$2);
+   public abstract boolean b();
+
+   public boolean c() {
+      return this.b();
+   }
+
+   public boolean U_() {
+      return true;
+   }
+
+   public void d() {
+   }
+
+   public void e() {
+   }
+
+   public boolean V_() {
+      return false;
+   }
+
+   public void a() {
+   }
+
+   public void a(EnumSet<ceq.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
    }
 
    @Override
-   public boolean b() {
-      arq $$0 = (arq)this.b.dU();
-      iv $$1 = this.b.du();
-      return $$0.c($$1) ? false : super.b();
+   public String toString() {
+      return this.getClass().getSimpleName();
    }
 
-   @Nullable
-   @Override
-   protected ffc h() {
-      arq $$0 = (arq)this.b.dU();
-      iv $$1 = this.b.du();
-      jy $$2 = jy.a($$1);
-      jy $$3 = bzc.a($$0, $$2, 2);
-      return $$3 != $$2 ? cic.a(this.b, 10, 7, ffc.c($$3.k()), (float) (Math.PI / 2)) : null;
+   public EnumSet<ceq.a> j() {
+      return this.a;
+   }
+
+   protected int a(int $$0) {
+      return this.V_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return azo.e($$0, 2);
+   }
+
+   protected static ars a(bwt $$0) {
+      return (ars)$$0.dV();
+   }
+
+   protected static ars a(djx $$0) {
+      return (ars)$$0;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

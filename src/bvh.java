@@ -1,19 +1,19 @@
-class bvh extends bvk {
-   protected bvh(bvl $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bvh implements bam {
+   a("never"),
+   b("when_caused_by_living_non_player"),
+   c("always");
+
+   public static final Codec<bvh> d = bam.a(bvh::values);
+   private final String e;
+
+   private bvh(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(arq $$0, bxj $$1, int $$2) {
-      if ($$1 instanceof crm $$3) {
-         $$3.G(0.005F * (float)($$2 + 1));
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public String c() {
+      return this.e;
    }
 }

@@ -56,11 +56,11 @@ public class Main {
       $$7.a(a(mt::a, $$6));
       $$7.a(a(nx::a, $$6));
       $$7.a(a(or.a::new, $$6));
-      pr<dmr> $$8 = $$7.a(a(pt::new, $$6));
-      pr<czj> $$9 = $$7.a($$2x -> new pv($$2x, $$6, $$8.c()));
-      pr<dkp> $$10 = $$7.a(a(pe::new, $$6));
-      pr<dxg> $$11 = $$7.a(a(pd::new, $$6));
-      pr<ern> $$12 = $$7.a(a(pq::new, $$6));
+      pr<dnc> $$8 = $$7.a(a(pt::new, $$6));
+      pr<czu> $$9 = $$7.a($$2x -> new pv($$2x, $$6, $$8.c()));
+      pr<dla> $$10 = $$7.a(a(pe::new, $$6));
+      pr<dxr> $$11 = $$7.a(a(pd::new, $$6));
+      pr<esb> $$12 = $$7.a(a(pq::new, $$6));
       $$7.a(a(pf::new, $$6));
       $$7.a(a(ph::new, $$6));
       $$7.a(a(pi::new, $$6));
@@ -85,12 +85,12 @@ public class Main {
       CompletableFuture<jh.a> $$16 = $$15.thenApply(jv.g::b);
       mm.a $$17 = $$0.a($$2, "trade_rebalance");
       $$17.a(a(ot::new, $$16));
-      $$17.a($$0x -> ob.a($$0x, wy.c("dataPack.trade_rebalance.description"), cuw.a(cuy.b)));
+      $$17.a($$0x -> ob.a($$0x, xa.c("dataPack.trade_rebalance.description"), cvh.a(cvj.b)));
       $$17.a(a(np::a, $$6));
       $$17.a(a(ps::new, $$6));
       $$7 = $$0.a($$2, "redstone_experiments");
-      $$7.a($$0x -> ob.a($$0x, wy.c("dataPack.redstone_experiments.description"), cuw.a(cuy.c)));
+      $$7.a($$0x -> ob.a($$0x, xa.c("dataPack.redstone_experiments.description"), cvh.a(cvj.c)));
       $$7 = $$0.a($$2, "minecart_improvements");
-      $$7.a($$0x -> ob.a($$0x, wy.c("dataPack.minecart_improvements.description"), cuw.a(cuy.d)));
+      $$7.a($$0x -> ob.a($$0x, xa.c("dataPack.minecart_improvements.description"), cvh.a(cvj.d)));
    }
 }

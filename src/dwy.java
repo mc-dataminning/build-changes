@@ -1,54 +1,96 @@
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-public class dwy extends dmf {
-   public static final MapCodec<dwy> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.e), ebi.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.b), t())
-            .apply($$0, dwy::new)
+public interface dwy extends dof<dwy.a> {
+   Supplier<BiMap<dnc, dnc>> t_ = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(dne.rE, dne.rF)
+            .put(dne.rF, dne.rG)
+            .put(dne.rG, dne.rH)
+            .put(dne.rN, dne.rM)
+            .put(dne.rM, dne.rL)
+            .put(dne.rL, dne.rK)
+            .put(dne.rR, dne.rQ)
+            .put(dne.rQ, dne.rP)
+            .put(dne.rP, dne.rO)
+            .put(dne.sd, dne.sc)
+            .put(dne.sc, dne.sb)
+            .put(dne.sb, dne.sa)
+            .put(dne.rZ, dne.rY)
+            .put(dne.rY, dne.rX)
+            .put(dne.rX, dne.rW)
+            .put(dne.su, dne.sv)
+            .put(dne.sv, dne.sx)
+            .put(dne.sx, dne.sw)
+            .put(dne.sC, dne.sD)
+            .put(dne.sD, dne.sF)
+            .put(dne.sF, dne.sE)
+            .put(dne.sK, dne.sL)
+            .put(dne.sL, dne.sM)
+            .put(dne.sM, dne.sN)
+            .put(dne.sS, dne.sT)
+            .put(dne.sT, dne.sU)
+            .put(dne.sU, dne.sV)
+            .build()
    );
-   public static final ebt d = ebj.aW;
-   private final int e;
+   Supplier<BiMap<dnc, dnc>> u_ = Suppliers.memoize(() -> t_.get().inverse());
 
-   @Override
-   public MapCodec<dwy> a() {
-      return c;
+   static Optional<dnc> a(dnc $$0) {
+      return Optional.ofNullable((dnc)u_.get().get($$0));
    }
 
-   protected dwy(int $$0, ebi $$1, eas.d $$2) {
-      super($$2, $$1);
-      this.l(this.C.b().b(d, Integer.valueOf(0)));
-      this.e = $$0;
-   }
+   static dnc b(dnc $$0) {
+      dnc $$1 = $$0;
 
-   @Override
-   protected int b(djm $$0, iv $$1) {
-      int $$2 = Math.min(a($$0, a.a($$1), bwi.class), this.e);
-      if ($$2 > 0) {
-         float $$3 = (float)Math.min(this.e, $$2) / (float)this.e;
-         return azm.f($$3 * 15.0F);
-      } else {
-         return 0;
+      for (dnc $$2 = (dnc)u_.get().get($$0); $$2 != null; $$2 = (dnc)u_.get().get($$2)) {
+         $$1 = $$2;
       }
+
+      return $$1;
+   }
+
+   static Optional<ebe> b(ebe $$0) {
+      return a($$0.b()).map($$1 -> $$1.m($$0));
+   }
+
+   static Optional<dnc> c(dnc $$0) {
+      return Optional.ofNullable((dnc)t_.get().get($$0));
+   }
+
+   static ebe c(ebe $$0) {
+      return b($$0.b()).m($$0);
    }
 
    @Override
-   protected int h(eat $$0) {
-      return $$0.c(d);
+   default Optional<ebe> k_(ebe $$0) {
+      return c($$0.b()).map($$1 -> $$1.m($$0));
    }
 
    @Override
-   protected eat a(eat $$0, int $$1) {
-      return $$0.b(d, Integer.valueOf($$1));
+   default float av_() {
+      return this.c() == dwy.a.a ? 0.75F : 1.0F;
    }
 
-   @Override
-   protected int b() {
-      return 10;
-   }
+   public static enum a implements bam {
+      a("unaffected"),
+      b("exposed"),
+      c("weathered"),
+      d("oxidized");
 
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(d);
+      public static final Codec<dwy.a> e = bam.a(dwy.a::values);
+      private final String f;
+
+      private a(final String $$0) {
+         this.f = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

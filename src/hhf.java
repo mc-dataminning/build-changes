@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface hhf {
+public class hhf extends hfg {
+   public boolean a;
+   public boolean b;
 }

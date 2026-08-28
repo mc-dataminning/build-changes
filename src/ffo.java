@@ -1,13 +1,26 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public abstract class ffo {
+   protected final ffq a;
 
-interface ffo {
-   DoubleList a();
+   protected ffo(ffq $$0) {
+      this.a = $$0;
+   }
 
-   boolean a(ffo.a var1);
+   public double a(bwt $$0) {
+      double $$1 = this.a.d - $$0.dA();
+      double $$2 = this.a.e - $$0.dC();
+      double $$3 = this.a.f - $$0.dG();
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
 
-   int size();
+   public abstract ffo.a d();
 
-   public interface a {
-      boolean merge(int var1, int var2, int var3);
+   public ffq g() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

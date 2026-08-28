@@ -1,78 +1,121 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class hla implements ave {
-   private static final Logger a = LogUtils.getLogger();
-   private static final hkz b = new hkz("US", "English", false);
-   private Map<String, hkz> c = ImmutableMap.of("en_us", b);
-   private String d;
-   private final Consumer<hkw> e;
+public class hla {
+   private final ali a;
+   private final hku b;
+   final int c;
+   final int d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
 
-   public hla(String $$0, Consumer<hkw> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   protected hla(ali $$0, hku $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$4;
+      this.d = $$5;
+      this.e = (float)$$4 / (float)$$2;
+      this.f = (float)($$4 + $$1.a()) / (float)$$2;
+      this.g = (float)$$5 / (float)$$3;
+      this.h = (float)($$5 + $$1.b()) / (float)$$3;
    }
 
-   private static Map<String, hkz> a(Stream<atp> $$0) {
-      Map<String, hkz> $$1 = Maps.newHashMap();
-      $$0.forEach($$1x -> {
-         try {
-            hlk $$2 = $$1x.a(hlk.c);
-            if ($$2 != null) {
-               $$2.a().forEach($$1::putIfAbsent);
-            }
-         } catch (IOException | RuntimeException var3) {
-            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
-         }
-      });
-      return ImmutableMap.copyOf($$1);
+   public int a() {
+      return this.c;
    }
 
-   @Override
-   public void a(avd $$0) {
-      this.c = a($$0.b());
-      List<String> $$1 = new ArrayList<>(2);
-      boolean $$2 = b.d();
-      $$1.add("en_us");
-      if (!this.d.equals("en_us")) {
-         hkz $$3 = this.c.get(this.d);
-         if ($$3 != null) {
-            $$1.add(this.d);
-            $$2 = $$3.d();
-         }
-      }
-
-      hkw $$4 = hkw.a($$0, $$1, $$2);
-      hky.a($$4);
-      tu.a($$4);
-      this.e.accept($$4);
-   }
-
-   public void a(String $$0) {
-      this.d = $$0;
-   }
-
-   public String a() {
+   public int b() {
       return this.d;
    }
 
-   public SortedMap<String, hkz> b() {
-      return new TreeMap<>(this.c);
+   public float c() {
+      return this.e;
+   }
+
+   public float d() {
+      return this.f;
+   }
+
+   public hku e() {
+      return this.b;
    }
 
    @Nullable
-   public hkz b(String $$0) {
-      return this.c.get($$0);
+   public hla.a f() {
+      final hkw $$0 = this.b.e();
+      return $$0 != null ? new hla.a() {
+         @Override
+         public void a(flh $$0x) {
+            $$0.a(hla.this.c, hla.this.d, $$0);
+         }
+
+         @Override
+         public void close() {
+            $$0.close();
+         }
+      } : null;
+   }
+
+   public float a(float $$0) {
+      float $$1 = this.f - this.e;
+      return this.e + $$1 * $$0;
+   }
+
+   public float b(float $$0) {
+      float $$1 = this.f - this.e;
+      return ($$0 - this.e) / $$1;
+   }
+
+   public float g() {
+      return this.g;
+   }
+
+   public float h() {
+      return this.h;
+   }
+
+   public float c(float $$0) {
+      float $$1 = this.h - this.g;
+      return this.g + $$1 * $$0;
+   }
+
+   public float d(float $$0) {
+      float $$1 = this.h - this.g;
+      return ($$0 - this.g) / $$1;
+   }
+
+   public ali i() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
+   }
+
+   public void a(flh $$0) {
+      this.b.a(this.c, this.d, $$0);
+   }
+
+   private float k() {
+      float $$0 = (float)this.b.a() / (this.f - this.e);
+      float $$1 = (float)this.b.b() / (this.h - this.g);
+      return Math.max($$1, $$0);
+   }
+
+   public float j() {
+      return 4.0F / this.k();
+   }
+
+   public flr a(flr $$0) {
+      return new gsx($$0, this);
+   }
+
+   public interface a extends AutoCloseable {
+      void a(flh var1);
+
+      @Override
+      void close();
    }
 }

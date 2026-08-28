@@ -1,227 +1,179 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-public abstract class gwm<T extends bwf, S, ST extends hcz> extends gwx<T, ST> {
-   private final gww a;
+public class gwm implements gwd.a {
+   private final Map<Integer, eyc> a = Maps.newHashMap();
+   private final Map<Integer, Float> b = Maps.newHashMap();
+   private final Map<Integer, Long> c = Maps.newHashMap();
+   private static final long d = 5000L;
+   private static final float e = 80.0F;
+   private static final boolean f = true;
+   private static final boolean g = false;
+   private static final boolean h = false;
+   private static final boolean i = true;
+   private static final boolean j = true;
+   private static final float k = 0.02F;
 
-   protected gwm(gwy.a $$0) {
-      super($$0);
-      this.a = $$0.a();
+   public void a(int $$0, eyc $$1, float $$2) {
+      this.a.put($$0, $$1);
+      this.c.put($$0, ag.c());
+      this.b.put($$0, $$2);
    }
 
-   protected fex a(T $$0) {
-      return $$0.f();
-   }
+   @Override
+   public void a(flo $$0, gsa $$1, double $$2, double $$3, double $$4) {
+      if (!this.a.isEmpty()) {
+         long $$5 = ag.c();
 
-   protected boolean b(T $$0) {
-      return $$0.g();
-   }
-
-   private static int c(bwf $$0) {
-      bwf.j $$1 = $$0.j();
-      return $$1 != null ? $$1.c() : -1;
-   }
-
-   protected int a(T $$0, iv $$1) {
-      int $$2 = c($$0);
-      return $$2 != -1 ? gqo.b($$2) : super.b($$0, $$1);
-   }
-
-   protected int b(T $$0, iv $$1) {
-      int $$2 = c($$0);
-      return $$2 != -1 ? gqo.a($$2) : super.a($$0, $$1);
-   }
-
-   protected float a(ST $$0) {
-      bwf.j $$1 = $$0.b;
-      return $$1 == null ? 0.0F : $$1.d().get($$0.c);
-   }
-
-   protected float b(ST $$0) {
-      bwf.j $$1 = $$0.b;
-      return $$1 == null ? 0.0F : $$1.e().get($$0.c);
-   }
-
-   public void a(ST $$0, fkd $$1, gqr $$2, int $$3) {
-      bwf.j $$4 = $$0.b;
-      if ($$4 != null && $$0.a()) {
-         float $$5 = $$0.c;
-         super.a($$0, $$1, $$2, $$3);
-         $$1.a();
-         $$1.a(this.a($$4, $$0, new Quaternionf()));
-         k $$6 = $$4.a().get($$5);
-         $$1.a($$6.c());
-         this.a($$0, $$1, $$2, $$3, $$5);
-         $$1.b();
-      }
-   }
-
-   private Quaternionf a(bwf.j $$0, ST $$1, Quaternionf $$2) {
-      fpb $$3 = this.a.b;
-
-      return switch ($$0.b()) {
-         case a -> $$2.rotationYXZ((float) (-Math.PI / 180.0) * $$1.d, (float) (Math.PI / 180.0) * $$1.e, 0.0F);
-         case c -> $$2.rotationYXZ((float) (-Math.PI / 180.0) * $$1.d, (float) (Math.PI / 180.0) * b($$3), 0.0F);
-         case b -> $$2.rotationYXZ((float) (-Math.PI / 180.0) * a($$3), (float) (Math.PI / 180.0) * $$1.e, 0.0F);
-         case d -> $$2.rotationYXZ((float) (-Math.PI / 180.0) * a($$3), (float) (Math.PI / 180.0) * b($$3), 0.0F);
-      };
-   }
-
-   private static float a(fpb $$0) {
-      return $$0.e() - 180.0F;
-   }
-
-   private static float b(fpb $$0) {
-      return -$$0.d();
-   }
-
-   private static <T extends bwf> float a(T $$0, float $$1) {
-      return $$0.l($$1);
-   }
-
-   private static <T extends bwf> float b(T $$0, float $$1) {
-      return $$0.k($$1);
-   }
-
-   protected abstract void a(ST var1, fkd var2, gqr var3, int var4, float var5);
-
-   public void a(T $$0, ST $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b = $$0.j();
-      $$1.c = $$0.a($$2);
-      $$1.d = a($$0, $$2);
-      $$1.e = b($$0, $$2);
-   }
-
-   public static class a extends gwm<bwf.b, bwf.b.a, hcp> {
-      private final gru a;
-
-      protected a(gwy.a $$0) {
-         super($$0);
-         this.a = $$0.d();
-      }
-
-      public hcp a() {
-         return new hcp();
-      }
-
-      public void a(bwf.b $$0, hcp $$1, float $$2) {
-         super.a($$0, $$1, $$2);
-         $$1.a = $$0.m();
-      }
-
-      public void a(hcp $$0, fkd $$1, gqr $$2, int $$3, float $$4) {
-         this.a.a($$0.a.a(), $$1, $$2, $$3, hjg.d);
-      }
-   }
-
-   public static class b extends gwm<bwf.g, bwf.g.a, heb> {
-      private final hgg a;
-
-      protected b(gwy.a $$0) {
-         super($$0);
-         this.a = $$0.b();
-      }
-
-      public heb a() {
-         return new heb();
-      }
-
-      public void a(bwf.g $$0, heb $$1, float $$2) {
-         super.a($$0, $$1, $$2);
-         bwf.g.a $$3 = $$0.m();
-         if ($$3 != null) {
-            this.a.a($$1.a, $$3.a(), $$3.b(), $$0);
-         } else {
-            $$1.a.b();
+         for (Integer $$6 : this.a.keySet()) {
+            eyc $$7 = this.a.get($$6);
+            float $$8 = this.b.get($$6);
+            a($$0, $$1, $$7, $$8, true, true, $$2, $$3, $$4);
          }
-      }
 
-      public void a(heb $$0, fkd $$1, gqr $$2, int $$3, float $$4) {
-         if (!$$0.a.c()) {
-            $$1.a(a.d.rotation((float) Math.PI));
-            $$0.a.a($$1, $$2, $$3, hjg.d);
+         for (Integer $$9 : this.c.keySet().toArray(new Integer[0])) {
+            if ($$5 - this.c.get($$9) > 5000L) {
+               this.a.remove($$9);
+               this.c.remove($$9);
+            }
          }
       }
    }
 
-   public static class c extends gwm<bwf.k, bwf.k.e, hfg> {
-      private final fsk a;
+   public static void a(flo $$0, gsa $$1, eyc $$2, float $$3, boolean $$4, boolean $$5, double $$6, double $$7, double $$8) {
+      a($$0, $$1.getBuffer(gsl.a(6.0)), $$2, $$6, $$7, $$8);
+      iv $$9 = $$2.l();
+      if (a($$9, $$6, $$7, $$8) <= 80.0F) {
+         gwd.a(
+            $$0,
+            $$1,
+            new ffl(
+                  (double)((float)$$9.u() + 0.25F),
+                  (double)((float)$$9.v() + 0.25F),
+                  (double)$$9.w() + 0.25,
+                  (double)((float)$$9.u() + 0.75F),
+                  (double)((float)$$9.v() + 0.75F),
+                  (double)((float)$$9.w() + 0.75F)
+               )
+               .d(-$$6, -$$7, -$$8),
+            0.0F,
+            1.0F,
+            0.0F,
+            0.5F
+         );
 
-      protected c(gwy.a $$0) {
-         super($$0);
-         this.a = $$0.j();
-      }
-
-      public hfg a() {
-         return new hfg();
-      }
-
-      public void a(bwf.k $$0, hfg $$1, float $$2) {
-         super.a($$0, $$1, $$2);
-         $$1.a = $$0.m();
-         $$1.f = $$0.a(this::a);
-      }
-
-      private bwf.k.b a(wy $$0, int $$1) {
-         List<ayy> $$2 = this.a.c($$0, $$1);
-         List<bwf.k.c> $$3 = new ArrayList<>($$2.size());
-         int $$4 = 0;
-
-         for (ayy $$5 : $$2) {
-            int $$6 = this.a.a($$5);
-            $$4 = Math.max($$4, $$6);
-            $$3.add(new bwf.k.c($$5, $$6));
-         }
-
-         return new bwf.k.b($$3, $$4);
-      }
-
-      public void a(hfg $$0, fkd $$1, gqr $$2, int $$3, float $$4) {
-         bwf.k.e $$5 = $$0.a;
-         byte $$6 = $$5.e();
-         boolean $$7 = ($$6 & 2) != 0;
-         boolean $$8 = ($$6 & 4) != 0;
-         boolean $$9 = ($$6 & 1) != 0;
-         bwf.k.a $$10 = bwf.k.a($$6);
-         byte $$11 = (byte)$$5.c().get($$4);
-         int $$13;
-         if ($$8) {
-            float $$12 = fpt.Q().n.a(0.25F);
-            $$13 = (int)($$12 * 255.0F) << 24;
-         } else {
-            $$13 = $$5.d().get($$4);
-         }
-
-         float $$15 = 0.0F;
-         Matrix4f $$16 = $$1.c().a();
-         $$16.rotate((float) Math.PI, 0.0F, 1.0F, 0.0F);
-         $$16.scale(-0.025F, -0.025F, -0.025F);
-         bwf.k.b $$17 = $$0.f;
-         int $$18 = 1;
-         int $$19 = 9 + 1;
-         int $$20 = $$17.b();
-         int $$21 = $$17.a().size() * $$19 - 1;
-         $$16.translate(1.0F - (float)$$20 / 2.0F, (float)(-$$21), 0.0F);
-         if ($$13 != 0) {
-            fkh $$22 = $$2.getBuffer($$7 ? grc.o() : grc.n());
-            $$22.a($$16, -1.0F, -1.0F, 0.0F).a($$13).c($$3);
-            $$22.a($$16, -1.0F, (float)$$21, 0.0F).a($$13).c($$3);
-            $$22.a($$16, (float)$$20, (float)$$21, 0.0F).a($$13).c($$3);
-            $$22.a($$16, (float)$$20, -1.0F, 0.0F).a($$13).c($$3);
-         }
-
-         for (bwf.k.c $$23 : $$17.a()) {
-            float $$24 = switch ($$10) {
-               case b -> 0.0F;
-               case c -> (float)($$20 - $$23.b());
-               case a -> (float)$$20 / 2.0F - (float)$$23.b() / 2.0F;
-            };
-            this.a.a($$23.a(), $$24, $$15, $$11 << 24 | 16777215, $$9, $$16, $$2, $$7 ? fsk.a.b : fsk.a.c, 0, $$3);
-            $$15 += (float)$$19;
+         for (int $$10 = 0; $$10 < $$2.e(); $$10++) {
+            eya $$11 = $$2.a($$10);
+            if (a($$11.a(), $$6, $$7, $$8) <= 80.0F) {
+               float $$12 = $$10 == $$2.f() ? 1.0F : 0.0F;
+               float $$13 = $$10 == $$2.f() ? 0.0F : 1.0F;
+               gwd.a(
+                  $$0,
+                  $$1,
+                  new ffl(
+                        (double)((float)$$11.a + 0.5F - $$3),
+                        (double)((float)$$11.b + 0.01F * (float)$$10),
+                        (double)((float)$$11.c + 0.5F - $$3),
+                        (double)((float)$$11.a + 0.5F + $$3),
+                        (double)((float)$$11.b + 0.25F + 0.01F * (float)$$10),
+                        (double)((float)$$11.c + 0.5F + $$3)
+                     )
+                     .d(-$$6, -$$7, -$$8),
+                  $$12,
+                  0.0F,
+                  $$13,
+                  0.5F
+               );
+            }
          }
       }
+
+      eyc.a $$14 = $$2.k();
+      if ($$4 && $$14 != null) {
+         for (eya $$15 : $$14.b()) {
+            if (a($$15.a(), $$6, $$7, $$8) <= 80.0F) {
+               gwd.a(
+                  $$0,
+                  $$1,
+                  new ffl(
+                        (double)((float)$$15.a + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$15.b + 0.01F),
+                        (double)((float)$$15.c + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$15.a + 0.5F + $$3 / 2.0F),
+                        (double)$$15.b + 0.1,
+                        (double)((float)$$15.c + 0.5F + $$3 / 2.0F)
+                     )
+                     .d(-$$6, -$$7, -$$8),
+                  1.0F,
+                  0.8F,
+                  0.8F,
+                  0.5F
+               );
+            }
+         }
+
+         for (eya $$16 : $$14.a()) {
+            if (a($$16.a(), $$6, $$7, $$8) <= 80.0F) {
+               gwd.a(
+                  $$0,
+                  $$1,
+                  new ffl(
+                        (double)((float)$$16.a + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$16.b + 0.01F),
+                        (double)((float)$$16.c + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$16.a + 0.5F + $$3 / 2.0F),
+                        (double)$$16.b + 0.1,
+                        (double)((float)$$16.c + 0.5F + $$3 / 2.0F)
+                     )
+                     .d(-$$6, -$$7, -$$8),
+                  0.8F,
+                  1.0F,
+                  1.0F,
+                  0.5F
+               );
+            }
+         }
+      }
+
+      if ($$5) {
+         for (int $$17 = 0; $$17 < $$2.e(); $$17++) {
+            eya $$18 = $$2.a($$17);
+            if (a($$18.a(), $$6, $$7, $$8) <= 80.0F) {
+               gwd.a($$0, $$1, String.valueOf($$18.l), (double)$$18.a + 0.5, (double)$$18.b + 0.75, (double)$$18.c + 0.5, -1, 0.02F, true, 0.0F, true);
+               gwd.a(
+                  $$0,
+                  $$1,
+                  String.format(Locale.ROOT, "%.2f", $$18.k),
+                  (double)$$18.a + 0.5,
+                  (double)$$18.b + 0.25,
+                  (double)$$18.c + 0.5,
+                  -1,
+                  0.02F,
+                  true,
+                  0.0F,
+                  true
+               );
+            }
+         }
+      }
+   }
+
+   public static void a(flo $$0, flr $$1, eyc $$2, double $$3, double $$4, double $$5) {
+      for (int $$6 = 0; $$6 < $$2.e(); $$6++) {
+         eya $$7 = $$2.a($$6);
+         if (!(a($$7.a(), $$3, $$4, $$5) > 80.0F)) {
+            float $$8 = (float)$$6 / (float)$$2.e() * 0.33F;
+            int $$9 = $$6 == 0 ? 0 : azo.g($$8, 0.9F, 0.9F);
+            int $$10 = $$9 >> 16 & 0xFF;
+            int $$11 = $$9 >> 8 & 0xFF;
+            int $$12 = $$9 & 0xFF;
+            $$1.a($$0.c(), (float)((double)$$7.a - $$3 + 0.5), (float)((double)$$7.b - $$4 + 0.5), (float)((double)$$7.c - $$5 + 0.5)).a($$10, $$11, $$12, 255);
+         }
+      }
+   }
+
+   private static float a(iv $$0, double $$1, double $$2, double $$3) {
+      return (float)(Math.abs((double)$$0.u() - $$1) + Math.abs((double)$$0.v() - $$2) + Math.abs((double)$$0.w() - $$3));
    }
 }

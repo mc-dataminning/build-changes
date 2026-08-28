@@ -1,71 +1,52 @@
-public class ejx extends ejy<emj> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final iv ao = iv.c;
-   private final boolean ap;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-   public static iv a(iv $$0) {
-      return ao.a((ka)$$0);
-   }
-
-   public ejx(boolean $$0) {
-      super(emj.a);
-      this.ap = $$0;
+public abstract class ejx extends ekk<emw> {
+   public ejx(Codec<emw> $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(eka<emj> $$0) {
-      iv $$1 = $$0.e();
-      dkl $$2 = $$0.b();
-
-      for (iv $$3 : iv.c(new iv($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new iv($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, dmt.I.m());
-               } else if ($$3.v() < $$1.v()) {
-                  if (this.ap) {
-                     this.a($$2, $$3, dmt.fY);
-                  } else {
-                     this.a($$2, $$3, dmt.fY.m());
-                  }
-               }
-            } else if ($$3.v() > $$1.v()) {
-               if (this.ap) {
-                  this.a($$2, $$3, dmt.a);
-               } else {
-                  this.a($$2, $$3, dmt.a.m());
-               }
-            } else if (!$$4) {
-               this.a($$2, $$3, dmt.I.m());
-            } else if (this.ap) {
-               this.a($$2, new iv($$3), dmt.fW);
-            } else {
-               this.a($$2, new iv($$3), dmt.a.m());
-            }
-         }
-      }
-
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), dmt.I.m());
-      }
-
-      iv $$6 = $$1.b(2);
-
-      for (jb $$7 : jb.c.a) {
-         this.a($$2, $$6.a($$7), dmt.cA.m().b(dwk.e, $$7));
-      }
-
-      return true;
+   public boolean a(ekm<emw> $$0) {
+      azx $$1 = $$0.d();
+      dkw $$2 = $$0.b();
+      iv $$3 = $$0.e();
+      Optional<dnc> $$4 = mg.e.a(axe.at, $$1).map(jf::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().m());
    }
 
-   private void a(dkl $$0, iv $$1, dmr $$2) {
-      if (!$$0.a_($$1).a($$2)) {
-         $$0.a($$1, true, null);
-         this.a($$0, $$1, $$2.m());
+   protected abstract boolean a(djy var1, azx var2, iv var3, ebe var4);
+
+   protected boolean b(djy $$0, azx $$1, iv $$2, ebe $$3) {
+      iv $$4 = $$2.d();
+      ebe $$5 = $$0.a_($$2);
+      if (($$5.a(dne.J) || $$5.a(axe.aw)) && $$0.a_($$4).a(dne.J)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            mg.e.a(axe.aw, $$1).map(jf::a).ifPresent($$2x -> $$0.a($$4, $$2x.m(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, dne.nB.m().b(duh.c, Integer.valueOf($$1.a(4) + 1)), 2);
+         }
+
+         for (jb $$6 : jb.c.a) {
+            if ($$1.i() < 0.2F) {
+               iv $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(dne.J)) {
+                  mg.e.a(axe.au, $$1).map(jf::a).ifPresent($$3x -> {
+                     ebe $$4x = $$3x.m();
+                     if ($$4x.b(dmn.d)) {
+                        $$4x = $$4x.b(dmn.d, $$6);
+                     }
+
+                     $$0.a($$7, $$4x, 2);
+                  });
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 }

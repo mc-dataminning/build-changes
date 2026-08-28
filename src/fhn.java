@@ -1,91 +1,29 @@
-import com.mojang.logging.LogUtils;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioFormat.Encoding;
-import org.lwjgl.openal.AL10;
-import org.lwjgl.openal.ALC10;
-import org.slf4j.Logger;
+import java.util.function.Function;
 
-public class fhn {
-   private static final Logger a = LogUtils.getLogger();
+public class fhn<T> implements fhe<T> {
+   private final Function<iv, fhl<T>> a;
 
-   private static String a(int $$0) {
-      switch ($$0) {
-         case 40961:
-            return "Invalid name parameter.";
-         case 40962:
-            return "Invalid enumerated parameter value.";
-         case 40963:
-            return "Invalid parameter parameter value.";
-         case 40964:
-            return "Invalid operation.";
-         case 40965:
-            return "Unable to allocate memory.";
-         default:
-            return "An unrecognized error occurred.";
-      }
+   public fhn(Function<iv, fhl<T>> $$0) {
+      this.a = $$0;
    }
 
-   static boolean a(String $$0) {
-      int $$1 = AL10.alGetError();
-      if ($$1 != 0) {
-         a.error("{}: {}", $$0, a($$1));
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public boolean a(iv $$0, T $$1) {
+      return this.a.apply($$0).a($$0, $$1);
    }
 
-   private static String b(int $$0) {
-      switch ($$0) {
-         case 40961:
-            return "Invalid device.";
-         case 40962:
-            return "Invalid context.";
-         case 40963:
-            return "Illegal enum.";
-         case 40964:
-            return "Invalid value.";
-         case 40965:
-            return "Unable to allocate memory.";
-         default:
-            return "An unrecognized error occurred.";
-      }
+   @Override
+   public void a(fhi<T> $$0) {
+      this.a.apply($$0.b()).a($$0);
    }
 
-   static boolean a(long $$0, String $$1) {
-      int $$2 = ALC10.alcGetError($$0);
-      if ($$2 != 0) {
-         a.error("{} ({}): {}", new Object[]{$$1, $$0, b($$2)});
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public boolean b(iv $$0, T $$1) {
+      return false;
    }
 
-   static int a(AudioFormat $$0) {
-      Encoding $$1 = $$0.getEncoding();
-      int $$2 = $$0.getChannels();
-      int $$3 = $$0.getSampleSizeInBits();
-      if ($$1.equals(Encoding.PCM_UNSIGNED) || $$1.equals(Encoding.PCM_SIGNED)) {
-         if ($$2 == 1) {
-            if ($$3 == 8) {
-               return 4352;
-            }
-
-            if ($$3 == 16) {
-               return 4353;
-            }
-         } else if ($$2 == 2) {
-            if ($$3 == 8) {
-               return 4354;
-            }
-
-            if ($$3 == 16) {
-               return 4355;
-            }
-         }
-      }
-
-      throw new IllegalArgumentException("Invalid audio format: " + $$0);
+   @Override
+   public int a() {
+      return 0;
    }
 }

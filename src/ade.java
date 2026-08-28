@@ -1,85 +1,45 @@
-public class ade implements zf<abu> {
-   public static final yw<vu, ade> a = zf.a(ade::a, ade::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final double e;
-   private final long f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class ade implements zh<abw> {
+   public static final yy<vw, ade> a = zh.a(ade::a, ade::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-   private ade(vu $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readDouble();
-      this.f = $$0.m();
-      this.g = $$0.l();
-      this.h = $$0.l();
-      this.i = $$0.l();
+   public ade(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public ade(ecl $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
-      this.d = $$0.i();
-      this.e = $$0.k();
-      this.f = $$0.j();
-      this.g = $$0.m();
-      this.h = $$0.r();
-      this.i = $$0.q();
+   private ade(vw $$0) {
+      this.b = $$0.x();
+      this.c = $$0.l();
+      this.d = $$0.readInt();
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.c(this.g);
-      $$0.c(this.h);
-      $$0.c(this.i);
+   private void a(vw $$0) {
+      $$0.f(this.b);
+      $$0.c(this.c);
+      $$0.q(this.d);
    }
 
    @Override
-   public zh<ade> a() {
-      return agn.J;
+   public zj<ade> a() {
+      return agp.H;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   public int b() {
       return this.b;
    }
 
-   public double e() {
+   public int e() {
       return this.c;
    }
 
-   public double f() {
-      return this.e;
-   }
-
-   public double g() {
+   public int f() {
       return this.d;
-   }
-
-   public long h() {
-      return this.f;
-   }
-
-   public int i() {
-      return this.g;
-   }
-
-   public int j() {
-      return this.i;
-   }
-
-   public int k() {
-      return this.h;
    }
 }

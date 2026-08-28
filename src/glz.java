@@ -1,73 +1,106 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Objects;
-import java.util.UUID;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class glz {
-   private static final int a = 1024;
-   private final glq b;
-   private final glw c;
-   private final gll d;
+public class glz extends gly implements abe, wo {
+   private static final Logger l = LogUtils.getLogger();
+   private final GameProfile m;
+   private cvh n;
+   private final jt.b o;
+   private final gmp p = new gmp();
    @Nullable
-   private glv e;
+   private gmi q;
+   @Nullable
+   protected fum.b k;
 
-   public glz(glq $$0, glw $$1, gll $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public glz(frd $$0, vt $$1, gmg $$2) {
+      super($$0, $$1, $$2);
+      this.m = $$2.a();
+      this.o = $$2.c();
+      this.n = $$2.d();
+      this.k = $$2.i();
    }
 
-   public static glz a(glw $$0, UserApiService $$1) {
-      gll $$2 = new gll(1024);
-      glq $$3 = glq.a($$0, $$1);
-      return new glz($$3, $$0, $$2);
+   @Override
+   public boolean c() {
+      return this.b.i();
    }
 
-   public void a(fpt $$0, fys $$1, Runnable $$2, boolean $$3) {
-      if (this.e != null) {
-         glv $$4 = this.e.b();
-         $$0.a(
-            new fxq(
-               $$4x -> {
-                  this.a(null);
-                  if ($$4x) {
-                     $$0.a($$4.a($$1, this));
-                  } else {
-                     $$2.run();
-                  }
-               },
-               wy.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
-               wy.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
-               wy.c("gui.abuseReport.draft.edit"),
-               wy.c("gui.abuseReport.draft.discard")
-            )
-         );
+   @Override
+   protected void a(aak $$0) {
+      this.b($$0);
+   }
+
+   private void b(aak $$0) {
+      l.warn("Unknown custom packet payload: {}", $$0.a().a());
+   }
+
+   @Override
+   public void a(abg $$0) {
+      zk.a($$0, this, this.a);
+      this.p.a($$0.b(), $$0.e());
+   }
+
+   @Override
+   public void a(zy $$0) {
+      zk.a($$0, this, this.a);
+      this.p.a($$0.b());
+   }
+
+   @Override
+   public void a(abj $$0) {
+      this.n = cvj.e.a($$0.b());
+   }
+
+   @Override
+   public void a(abi $$0) {
+      zk.a($$0, this, this.a);
+      if (this.q == null) {
+         this.q = new gmi();
+      }
+
+      List<aul> $$1 = this.q.a($$0.b());
+      this.b(new abo($$1));
+   }
+
+   @Override
+   public void a(abh $$0) {
+      this.k = null;
+   }
+
+   private <T> T a(Function<avi, T> $$0) {
+      if (this.q == null) {
+         return $$0.apply(avi.b);
       } else {
-         $$2.run();
+         Object var3;
+         try (auu $$1 = this.q.a()) {
+            var3 = $$0.apply($$1);
+         }
+
+         return (T)var3;
       }
    }
 
-   public glq a() {
-      return this.b;
+   @Override
+   public void a(abf $$0) {
+      zk.a($$0, this, this.a);
+      jt.b $$1 = this.a($$0x -> this.p.a($$0x, this.o, this.b.e()));
+      this.b.a(agq.b.a(wl.a($$1)), new gmc(this.a, this.b, new gmg(this.m, this.e, $$1, this.n, this.d, this.c, this.f, this.h, this.k, this.i, this.j)));
+      this.b.a(abn.a);
+      this.b.a(agq.a.a(wl.a($$1)));
    }
 
-   public gll b() {
-      return this.d;
+   @Override
+   public void d() {
+      this.e();
    }
 
-   public boolean a(glw $$0) {
-      return Objects.equals(this.c, $$0);
-   }
-
-   public void a(@Nullable glv $$0) {
-      this.e = $$0;
-   }
-
-   public boolean c() {
-      return this.e != null;
-   }
-
-   public boolean a(UUID $$0) {
-      return this.c() && this.e.a($$0);
+   @Override
+   public void a(vv $$0) {
+      super.a($$0);
+      this.a.z();
    }
 }

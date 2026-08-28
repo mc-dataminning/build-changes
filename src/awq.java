@@ -1,32 +1,22 @@
-public class awq {
-   protected final awr a = new awr();
+public enum awq {
+   a("master"),
+   b("music"),
+   c("record"),
+   d("weather"),
+   e("block"),
+   f("hostile"),
+   g("neutral"),
+   h("player"),
+   i("ambient"),
+   j("voice");
 
-   public boolean a(cwv $$0) {
-      return this.a.a($$0);
+   private final String k;
+
+   private awq(final String $$0) {
+      this.k = $$0;
    }
 
-   public void a(cwv $$0, boolean $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   public boolean b(cwv $$0) {
-      return this.a.b($$0);
-   }
-
-   public void b(cwv $$0, boolean $$1) {
-      this.a.b($$0, $$1);
-   }
-
-   public void a(awr $$0) {
-      this.a.a($$0);
-   }
-
-   public awr a() {
-      return this.a.a();
-   }
-
-   public void a(cwv $$0, boolean $$1, boolean $$2) {
-      this.a.a($$0, $$1);
-      this.a.b($$0, $$2);
+   public String a() {
+      return this.k;
    }
 }

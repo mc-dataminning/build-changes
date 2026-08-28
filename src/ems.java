@@ -1,40 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ems implements emc {
+public class ems implements emp {
    public static final Codec<ems> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               eqr.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
-               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
-               axr.b(mh.i).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
-               eod.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
-               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
-               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
-               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
-               eod.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
-               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
-               ehz.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
+               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
+               btw.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
+               btu.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
+               btu.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
+               btu.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
+               btu.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
+               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
+               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
             )
             .apply($$0, ems::new)
    );
-   public final jf<eqr> b;
-   public final int c;
-   public final int d;
-   public final axr<dmr> e;
-   public final eod f;
-   public final int g;
-   public final int h;
+   public final int b;
+   public final btw c;
+   public final btu d;
+   public final float e;
+   public final btu f;
+   public final btu g;
+   public final btu h;
    public final int i;
-   public final int j;
-   public final eod k;
-   public final int l;
-   public final int n;
-   public final ehz o;
+   public final float j;
 
-   public ems(jf<eqr> $$0, int $$1, int $$2, axr<dmr> $$3, eod $$4, int $$5, int $$6, int $$7, int $$8, eod $$9, int $$10, int $$11, ehz $$12) {
+   public ems(int $$0, btw $$1, btu $$2, float $$3, btu $$4, btu $$5, btu $$6, int $$7, float $$8) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -44,9 +36,5 @@ public class ems implements emc {
       this.h = $$6;
       this.i = $$7;
       this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.n = $$11;
-      this.o = $$12;
    }
 }

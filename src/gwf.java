@@ -1,39 +1,61 @@
-public class gwf extends gvs<cjc, hcu, gfy> {
-   public gwf(gwy.a $$0) {
-      super($$0, new gfy($$0.a(gjs.Q)), new gfy($$0.a(gjs.R)), 0.4F);
-      this.a(new hao(this, $$0.f()));
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public class gwf implements gwd.a {
+   private static final float a = 0.02F;
+   private final Map<iv, gwf.a> b = Maps.newHashMap();
+
+   public void a(iv $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new gwf.a($$1, $$2, ag.c() + (long)$$3));
    }
 
-   public alg a(hcu $$0) {
-      return $$0.a;
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   public hcu a() {
-      return new hcu();
+   @Override
+   public void a(flo $$0, gsa $$1, double $$2, double $$3, double $$4) {
+      long $$5 = ag.c();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((gwf.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
    }
 
-   public void a(cjc $$0, hcu $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gF().a().b().b();
-      $$1.d = $$0.cg();
-      $$1.e = $$0.ch();
-      $$1.f = $$0.x();
-      $$1.g = $$0.J($$2);
-      $$1.h = $$0.K($$2);
-      $$1.i = $$0.L($$2);
-      $$1.b = $$0.gK();
-      $$1.c = $$0.q() ? $$0.gH() : null;
+   private void a(flo $$0, gsa $$1, iv $$2, gwf.a $$3) {
+      gwd.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         gwd.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
+      }
    }
 
-   protected void a(hcu $$0, fkd $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = $$0.g;
-      if ($$4 > 0.0F) {
-         $$1.a(0.4F * $$4, 0.15F * $$4, 0.1F * $$4);
-         $$1.a(a.f.rotationDegrees(azm.i($$4, 0.0F, 90.0F)));
-         if ($$0.b) {
-            $$1.a(0.15F * $$4, 0.0F, 0.0F);
-         }
+   static class a {
+      public int a;
+      public String b;
+      public long c;
+
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      }
+
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
+
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
+
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
       }
    }
 }

@@ -1,14 +1,16 @@
 import com.mojang.serialization.MapCodec;
 
 public interface evy<P extends evx> {
-   evy<evv> a = a("clear", evv.a);
-   evy<evw> b = a("passthrough", evw.b);
-   evy<evu> c = a("append_static", evu.a);
-   evy<evt> d = a("append_loot", evt.a);
+   evy<eva> a = a("always_true", eva.a);
+   evy<evf> b = a("block_match", evf.a);
+   evy<evh> c = a("blockstate_match", evh.a);
+   evy<ewf> d = a("tag_match", ewf.a);
+   evy<evu> e = a("random_block_match", evu.a);
+   evy<evv> f = a("random_blockstate_match", evv.a);
 
    MapCodec<P> codec();
 
-   private static <P extends evx> evy<P> a(String $$0, MapCodec<P> $$1) {
-      return js.a(mg.n, $$0, () -> $$1);
+   static <P extends evx> evy<P> a(String $$0, MapCodec<P> $$1) {
+      return js.a(mg.m, $$0, () -> $$1);
    }
 }

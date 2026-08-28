@@ -1,26 +1,33 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public record dhm(jf<dga> c, btl d) implements dhi {
-   public static final MapCodec<dhm> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dga.c.fieldOf("enchantment").forGetter(dhm::b), btl.c.fieldOf("level").forGetter(dhm::c)).apply($$0, dhm::new)
-   );
+public record dhm(ali d) implements dhc {
+   private static final Logger e = LogUtils.getLogger();
+   public static final MapCodec<dhm> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ali.a.fieldOf("function").forGetter(dhm::b)).apply($$0, dhm::new));
 
    @Override
-   public void a(czn $$0, dgg.a $$1, azv $$2, bue $$3) {
-      $$1.b(this.c, azm.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
+   public void a(ars $$0, int $$1, dgk $$2, bwt $$3, ffq $$4) {
+      MinecraftServer $$5 = $$0.p();
+      alx $$6 = $$5.aE();
+      Optional<hx<ej>> $$7 = $$6.a(this.d);
+      if ($$7.isPresent()) {
+         ej $$8 = $$5.aH().a(2).a().a($$3).a($$0).a($$4).a($$3.bT());
+         $$6.a($$7.get(), $$8);
+      } else {
+         e.error("Enchantment run_function effect failed for non-existent function {}", this.d);
+      }
    }
 
    @Override
    public MapCodec<dhm> a() {
-      return b;
+      return a;
    }
 
-   public jf<dga> b() {
-      return this.c;
-   }
-
-   public btl c() {
+   public ali b() {
       return this.d;
    }
 }

@@ -1,49 +1,77 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dui extends dlm {
-   public static final MapCodec<dui> c = b(dui::new);
+public class dui extends dwo implements dnf, drz {
+   public static final MapCodec<dui> a = b(dui::new);
+   private static final fgk b = dnc.b(12.0, 0.0, 12.0);
 
    @Override
    public MapCodec<dui> a() {
-      return c;
+      return a;
    }
 
-   protected dui(eas.d $$0) {
+   protected dui(ebd.d $$0) {
       super($$0);
    }
 
    @Override
-   public dxr a(iv $$0, eat $$1) {
-      return new dzi($$0, $$1);
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return b;
+   }
+
+   @Override
+   protected boolean b(ebe $$0, djb $$1, iv $$2) {
+      return $$0.c($$1, $$2, jb.b) && !$$0.a(dne.lp);
    }
 
    @Nullable
    @Override
-   public <T extends dxr> dxs<T> a(djm $$0, eat $$1, dxt<T> $$2) {
-      return a($$0, $$2, dxt.C);
+   public ebe a(ddr $$0) {
+      exo $$1 = $$0.q().b_($$0.a());
+      return $$1.a(axj.a) && $$1.e() == 8 ? super.a($$0) : null;
    }
 
    @Override
-   protected void a(djm $$0, iv $$1, crm $$2) {
-      dxr $$3 = $$0.c_($$1);
-      if ($$3 instanceof dzi) {
-         $$2.a((bui)$$3);
-         $$2.a(awx.at);
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      ebe $$8 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if (!$$8.l()) {
+         $$2.a($$3, exp.c, exp.c.a($$1));
       }
+
+      return $$8;
    }
 
    @Override
-   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awn.zo, awo.e, 1.0F, 1.0F, false);
-         }
+   public boolean a(dka $$0, iv $$1, ebe $$2) {
+      return $$0.a_($$1.d()).a(dne.J);
+   }
 
-         $$1.a(ly.ah, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
-      }
+   @Override
+   public boolean a(djx $$0, azx $$1, iv $$2, ebe $$3) {
+      return true;
+   }
+
+   @Override
+   protected exo b_(ebe $$0) {
+      return exp.c.a(false);
+   }
+
+   @Override
+   public void a(ars $$0, azx $$1, iv $$2, ebe $$3) {
+      ebe $$4 = dne.bH.m();
+      ebe $$5 = $$4.b(dvt.d, eca.a);
+      iv $$6 = $$2.d();
+      $$0.a($$2, $$4, 2);
+      $$0.a($$6, $$5, 2);
+   }
+
+   @Override
+   public boolean a(@Nullable bxu $$0, djb $$1, iv $$2, ebe $$3, exn $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(djy $$0, iv $$1, ebe $$2, exo $$3) {
+      return false;
    }
 }

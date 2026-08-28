@@ -1,21 +1,22 @@
-public class gjz {
-   private final gkb a;
-   private final gka b;
-
-   private gjz(gkb $$0, gka $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class gjz extends gia<hep> {
+   public gjz(gle $$0) {
+      super($$0);
    }
 
-   public gjz a(gkc $$0) {
-      return new gjz($$0.apply(this.a), this.b);
+   public static glk a() {
+      glm $$0 = new glm();
+      glo $$1 = $$0.a();
+      $$1.a("cube", glj.c().a(0, 0).a(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F), glg.a);
+      return glk.a($$0, 64, 32);
    }
 
-   public gjt a() {
-      return this.a.a().a(this.b.a, this.b.b);
-   }
-
-   public static gjz a(gkb $$0, int $$1, int $$2) {
-      return new gjz($$0, new gka($$1, $$2));
+   public static glk b() {
+      glm $$0 = new glm();
+      glo $$1 = $$0.a();
+      $$1.a("cube", glj.c().a(0, 16).a(-3.0F, 17.0F, -3.0F, 6.0F, 6.0F, 6.0F), glg.a);
+      $$1.a("right_eye", glj.c().a(32, 0).a(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), glg.a);
+      $$1.a("left_eye", glj.c().a(32, 4).a(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), glg.a);
+      $$1.a("mouth", glj.c().a(32, 8).a(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F), glg.a);
+      return glk.a($$0, 64, 32);
    }
 }

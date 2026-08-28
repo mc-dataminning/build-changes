@@ -8,7 +8,7 @@ public class de extends dk<de.a> {
       return de.a.a;
    }
 
-   public void a(arr $$0) {
+   public void a(art $$0) {
       this.a($$0, $$0x -> true);
    }
 
@@ -43,7 +43,7 @@ public class de extends dk<de.a> {
          return aq.x.a(new de.a(Optional.empty()));
       }
 
-      public static ar<de.a> a(jg<dmr> $$0, jg<czj> $$1, dmr $$2, czj $$3) {
+      public static ar<de.a> a(jg<dnc> $$0, jg<czu> $$1, dnc $$2, czu $$3) {
          return a(by.a.a().a(bv.a.a().d(cm.a.a().a($$1, $$3))).b(cu.a.a().a(az.a.a().a($$0, $$2))));
       }
 

@@ -1,59 +1,32 @@
-public class ftk extends fsx {
-   private final fsk a;
-   private final ftu c;
+import java.util.function.UnaryOperator;
 
-   public ftk(int $$0, int $$1, int $$2, int $$3, wy $$4, fsk $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
-      this.c = new ftu($$4, $$5).d(this.A() - this.b());
+public class ftk {
+   @Deprecated
+   public static ali a(String $$0) {
+      return ali.b("block/" + $$0);
    }
 
-   public ftk a(int $$0) {
-      this.c.c($$0);
-      return this;
+   public static ali b(String $$0) {
+      return ali.b("item/" + $$0);
    }
 
-   @Override
-   public void h(int $$0) {
-      super.h($$0);
-      this.c.d(this.A() - this.b());
+   public static ali a(dnc $$0, String $$1) {
+      ali $$2 = mg.e.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
    }
 
-   @Override
-   protected int c() {
-      return this.c.y();
+   public static ali a(dnc $$0) {
+      ali $$1 = mg.e.b($$0);
+      return $$1.f("block/");
    }
 
-   @Override
-   protected double o() {
-      return 9.0;
+   public static ali a(czu $$0) {
+      ali $$1 = mg.g.b($$0);
+      return $$1.f("item/");
    }
 
-   @Override
-   protected void c(fsm $$0) {
-      super.c($$0);
-   }
-
-   public boolean q() {
-      return super.j();
-   }
-
-   @Override
-   protected void c(fsm $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)this.e(), (float)this.p(), 0.0F);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.c().b();
-   }
-
-   @Override
-   protected void a(fwx $$0) {
-      $$0.a(fww.a, this.B());
-   }
-
-   @Override
-   public void b(wy $$0) {
-      super.b($$0);
-      this.c.b($$0);
+   public static ali a(czu $$0, String $$1) {
+      ali $$2 = mg.g.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
    }
 }

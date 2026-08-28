@@ -1,15 +1,10 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-
-public record abm(List<auj> b) implements zf<abk> {
-   public static final yw<ByteBuf, abm> a = yw.a(auj.a.a(yu.c(64)), abm::b, abm::new);
-
+public interface abm extends aaa {
    @Override
-   public zh<abm> a() {
-      return abi.g;
+   default vu b() {
+      return vu.e;
    }
 
-   public void a(abk $$0) {
-      $$0.a(this);
-   }
+   void a(abn var1);
+
+   void a(abo var1);
 }

@@ -1,18 +1,28 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+public class hgh extends hfp {
+   public float a;
+   public float b;
+   public boolean c;
+   public cyw d = cyw.a;
+   public int e;
 
-public class hgh {
-   private static final ayu.b<alg, MapCodec<? extends hgf.b>> b = new ayu.b<>();
-   public static final Codec<hgf.b> a = b.a(alg.a).dispatch(hgf.b::a, $$0 -> $$0);
+   public int a() {
+      if (this.b()) {
+         int $$0 = 25;
+         int $$1 = azo.d(this.u);
+         int $$2 = $$1 / 25 + this.e;
+         int $$3 = cyw.values().length;
+         int $$4 = $$2 % $$3;
+         int $$5 = ($$2 + 1) % $$3;
+         float $$6 = ((float)($$1 % 25) + azo.i(this.u)) / 25.0F;
+         int $$7 = cmg.a(cyw.a($$4));
+         int $$8 = cmg.a(cyw.a($$5));
+         return axy.a($$6, $$7, $$8);
+      } else {
+         return cmg.a(this.d);
+      }
+   }
 
-   public static void a() {
-      b.a(alg.b("empty"), hge.a.a);
-      b.a(alg.b("model"), hfz.a.a);
-      b.a(alg.b("range_dispatch"), hgl.b.a);
-      b.a(alg.b("special"), hgn.a.a);
-      b.a(alg.b("composite"), hgc.a.a);
-      b.a(alg.b("bundle/selected_item"), hga.a.a);
-      b.a(alg.b("select"), hgm.c.a);
-      b.a(alg.b("condition"), hgd.a.a);
+   public boolean b() {
+      return this.aq != null && "jeb_".equals(this.aq.getString());
    }
 }

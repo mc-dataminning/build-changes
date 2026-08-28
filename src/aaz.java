@@ -1,46 +1,57 @@
-public record aaz(iv c, float d, float e, float f, float g, float h) implements aai {
-   public static final yw<vu, aaz> a = aai.a(aaz::a, aaz::new);
-   public static final aai.b<aaz> b = aai.a("debug/worldgen_attempt");
+import java.util.List;
 
-   private aaz(vu $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+public record aaz(alh<djx> c, ert d, List<aaz.a> e) implements aak {
+   public static final yy<vw, aaz> a = aak.a(aaz::a, aaz::new);
+   public static final aak.b<aaz> b = aak.a("debug/structures");
+
+   private aaz(vw $$0) {
+      this($$0.a(mh.bp), b($$0), $$0.a(aaz.a::new));
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
+   private void a(vw $$0) {
+      $$0.b(this.c);
+      a($$0, this.d);
+      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
    }
 
    @Override
-   public aai.b<aaz> a() {
+   public aak.b<aaz> a() {
       return b;
    }
 
-   public iv b() {
+   static ert b(vw $$0) {
+      return new ert($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   }
+
+   static void a(vw $$0, ert $$1) {
+      $$0.q($$1.h());
+      $$0.q($$1.i());
+      $$0.q($$1.j());
+      $$0.q($$1.k());
+      $$0.q($$1.l());
+      $$0.q($$1.m());
+   }
+
+   public alh<djx> b() {
       return this.c;
    }
 
-   public float c() {
+   public ert c() {
       return this.d;
    }
 
-   public float d() {
+   public List<aaz.a> d() {
       return this.e;
    }
 
-   public float e() {
-      return this.f;
-   }
+   public static record a(ert a, boolean b) {
+      public a(vw $$0) {
+         this(aaz.b($$0), $$0.readBoolean());
+      }
 
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
+      public void a(vw $$0) {
+         aaz.a($$0, this.a);
+         $$0.a(this.b);
+      }
    }
 }

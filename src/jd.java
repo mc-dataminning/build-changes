@@ -1,4 +1,4 @@
-public enum jd implements bak {
+public enum jd implements bam {
    a("down_east", jb.a, jb.f),
    b("down_north", jb.a, jb.c),
    c("down_south", jb.a, jb.d),

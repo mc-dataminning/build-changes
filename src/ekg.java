@@ -1,41 +1,29 @@
 import com.mojang.serialization.Codec;
 
-public class ekg extends eja {
-   public ekg(Codec<eme> $$0) {
+public class ekg extends ekk<emw> {
+   public ekg(Codec<emw> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(djn $$0, azv $$1, iv $$2, int $$3, iv.a $$4, eme $$5) {
-      int $$6 = $$5.d;
+   public boolean a(ekm<emw> $$0) {
+      dkw $$1 = $$0.b();
+      azx $$2 = $$0.d();
+      iv $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-               boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-               boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-               boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-               eat $$19 = $$5.b.a($$1, $$2);
-               if ($$19.b(dqt.e) && $$19.b(dqt.c) && $$19.b(dqt.b) && $$19.b(dqt.d)) {
-                  $$19 = $$19.b(dqt.e, Boolean.valueOf($$15)).b(dqt.c, Boolean.valueOf($$16)).b(dqt.b, Boolean.valueOf($$17)).b(dqt.d, Boolean.valueOf($$18));
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = azo.d(-$$4); $$6 <= azo.f($$4); $$6++) {
+            for (int $$7 = azo.d(-$$4); $$7 <= azo.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), dne.fY.m());
                }
-
-               this.a($$0, $$4, $$19);
             }
          }
-      }
-   }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
+         $$4 -= (float)$$2.a(2) + 0.5F;
+      }
+
+      return true;
    }
 }

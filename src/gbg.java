@@ -1,27 +1,25 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public class gbg extends gau<cwj> {
+   private static final ali G = ali.b("textures/gui/container/crafting_table.png");
 
-public class gbg implements gbf {
-   public static final gbf a = new gbg();
-
-   private gbg() {
+   public gbg(cwj $$0, crw $$1, xa $$2) {
+      super($$0, new gdy($$0), $$1, $$2);
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
-      this.a($$0, $$1, $$6, $$4, $$5);
-      return $$6;
+   protected void aS_() {
+      super.aS_();
+      this.v = 29;
    }
 
-   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
-      if ($$2.x + $$3 > $$0) {
-         $$2.x = Math.max($$2.x - 24 - $$3, 4);
-      }
+   @Override
+   protected fyr G() {
+      return new fyr(this.C + 5, this.o / 2 - 49);
+   }
 
-      int $$5 = $$4 + 3;
-      if ($$2.y + $$5 > $$1) {
-         $$2.y = $$1 - $$5;
-      }
+   @Override
+   protected void a(ftx $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.C;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gsl::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
    }
 }

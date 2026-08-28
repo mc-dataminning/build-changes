@@ -1,46 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
 
-public class enf extends end {
-   public static final MapCodec<enf> d = RecordCodecBuilder.mapCodec(
+public class enf implements emp {
+   public static final Codec<enf> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
-               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
-               a()
+               erf.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
+               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
+               axt.b(mh.i).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
+               eoq.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
+               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
+               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
+               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
+               eoq.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
+               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
+               eik.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
             )
             .apply($$0, enf::new)
    );
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
+   public final jf<erf> b;
+   public final int c;
+   public final int d;
+   public final axt<dnc> e;
+   public final eoq f;
+   public final int g;
+   public final int h;
+   public final int i;
+   public final int j;
+   public final eoq k;
+   public final int l;
+   public final int n;
+   public final eik o;
 
-   public enf(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
-      super($$5);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-   }
-
-   @Override
-   protected ene<?> b() {
-      return ene.b;
-   }
-
-   @Override
-   public int a(int $$0, int $$1) {
-      if ($$1 < this.e) {
-         return this.g;
-      } else {
-         return $$1 >= $$0 - this.f ? this.i : this.h;
-      }
+   public enf(jf<erf> $$0, int $$1, int $$2, axt<dnc> $$3, eoq $$4, int $$5, int $$6, int $$7, int $$8, eoq $$9, int $$10, int $$11, eik $$12) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.n = $$11;
+      this.o = $$12;
    }
 }

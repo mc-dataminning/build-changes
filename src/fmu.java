@@ -1,40 +1,33 @@
-import java.util.ArrayList;
-import java.util.HashSet;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import org.slf4j.Logger;
 
-public class fmu implements Iterable<flu> {
-   private final fpt a;
-   private final Set<flu> b = new HashSet<>();
-   private List<flu> c = List.of();
+public class fmu extends fns {
+   private static final Logger b = LogUtils.getLogger();
+   public List<fmt> a;
 
-   public fmu(fpt $$0) {
-      this.a = $$0;
-   }
+   public static fmu a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      fmu $$2 = new fmu();
+      $$2.a = Lists.newArrayList();
 
-   public void a(List<flu> $$0) {
-      List<flu> $$1 = new ArrayList<>($$0);
-      $$1.sort(new flu.b(this.a.X().c()));
-      boolean $$2 = $$1.removeAll(this.b);
-      if (!$$2) {
-         this.b.clear();
+      try {
+         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
+         if ($$3.isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$2.a.add(fmt.a($$4.next()));
+            }
+         }
+      } catch (Exception var5) {
+         b.error("Could not parse BackupList: {}", var5.getMessage());
       }
 
-      this.c = $$1;
-   }
-
-   public void a(flu $$0) {
-      this.c.remove($$0);
-      this.b.add($$0);
-   }
-
-   @Override
-   public Iterator<flu> iterator() {
-      return this.c.iterator();
-   }
-
-   public boolean a() {
-      return this.c.isEmpty();
+      return $$2;
    }
 }

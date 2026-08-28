@@ -1,91 +1,61 @@
-import javax.annotation.Nullable;
-
-public class bwy extends ckd {
-   private static final akj<Integer> bO = akn.a(bwy.class, akl.b);
-
-   public bwy(bwr<? extends bwy> $$0, djm $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected lw q() {
-      return ly.aS;
-   }
-
-   @Override
-   protected void a(akn.a $$0) {
-      super.a($$0);
-      $$0.a(bO, 0);
-   }
-
-   @Nullable
-   @Override
-   public bvy a(arq $$0, bvy $$1) {
-      return bwr.ag.a($$0, bwq.e);
-   }
-
-   @Override
-   protected awm t() {
-      return awn.ln;
-   }
-
-   @Override
-   protected awm u() {
-      return awn.lk;
-   }
-
-   @Override
-   protected awm e(bux $$0) {
-      return awn.lm;
-   }
-
-   @Override
-   protected awm l_() {
-      return awn.ll;
-   }
-
-   @Override
-   public void b(tz $$0) {
-      super.b($$0);
-      $$0.a("DarkTicksRemaining", this.x());
-   }
-
-   @Override
-   public void a(tz $$0) {
-      super.a($$0);
-      this.s($$0.f("DarkTicksRemaining"));
-   }
-
-   @Override
-   public void k_() {
-      super.k_();
-      int $$0 = this.x();
-      if ($$0 > 0) {
-         this.s($$0 - 1);
-      }
-
-      this.dU().a(ly.aT, this.d(0.6), this.dC(), this.g(0.6), 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public boolean a(arq $$0, bux $$1, float $$2) {
-      boolean $$3 = super.a($$0, $$1, $$2);
-      if ($$3) {
-         this.s(100);
-      }
-
-      return $$3;
-   }
-
-   private void s(int $$0) {
-      this.al.a(bO, $$0);
-   }
-
-   public int x() {
-      return this.al.a(bO);
-   }
-
-   public static boolean a(bwr<? extends bxj> $$0, dkd $$1, bwq $$2, iv $$3, azv $$4) {
-      return $$3.v() <= $$1.P() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(dmt.J);
-   }
+public class bwy {
+   public static final byte a = 1;
+   public static final byte b = 3;
+   public static final byte c = 4;
+   public static final byte d = 5;
+   public static final byte e = 6;
+   public static final byte f = 7;
+   public static final byte g = 8;
+   public static final byte h = 9;
+   public static final byte i = 10;
+   public static final byte j = 11;
+   public static final byte k = 12;
+   public static final byte l = 13;
+   public static final byte m = 14;
+   public static final byte n = 15;
+   public static final byte o = 16;
+   public static final byte p = 17;
+   public static final byte q = 18;
+   public static final byte r = 19;
+   public static final byte s = 20;
+   public static final byte t = 21;
+   public static final byte u = 22;
+   public static final byte v = 23;
+   public static final byte w = 24;
+   public static final byte x = 25;
+   public static final byte y = 26;
+   public static final byte z = 27;
+   public static final byte A = 28;
+   public static final byte B = 31;
+   public static final byte C = 32;
+   public static final byte D = 34;
+   public static final byte E = 35;
+   public static final byte F = 38;
+   public static final byte G = 39;
+   public static final byte H = 40;
+   public static final byte I = 41;
+   public static final byte J = 42;
+   public static final byte K = 45;
+   public static final byte L = 46;
+   public static final byte M = 47;
+   public static final byte N = 48;
+   public static final byte O = 49;
+   public static final byte P = 50;
+   public static final byte Q = 51;
+   public static final byte R = 52;
+   public static final byte S = 53;
+   public static final byte T = 54;
+   public static final byte U = 55;
+   public static final byte V = 56;
+   public static final byte W = 58;
+   public static final byte X = 59;
+   public static final byte Y = 60;
+   public static final byte Z = 61;
+   public static final byte aa = 62;
+   public static final byte ab = 63;
+   public static final byte ac = 64;
+   public static final byte ad = 65;
+   public static final byte ae = 66;
+   public static final byte af = 67;
+   public static final byte ag = 68;
 }

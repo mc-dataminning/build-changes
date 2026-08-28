@@ -3,19 +3,23 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bhc extends bht {
-   public bhc(Schema $$0) {
-      super($$0, false, "JukeboxTicksSinceSongStartedFix", biz.s, "minecraft:jukebox");
+public class bhc extends bhv {
+   public bhc(Schema $$0, boolean $$1) {
+      super($$0, $$1, "JigsawPropertiesFix", bjb.s, "minecraft:jigsaw");
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      long $$1 = $$0.get("TickCount").asLong(0L) - $$0.get("RecordStartTick").asLong(0L);
-      Dynamic<?> $$2 = $$0.remove("IsPlaying").remove("TickCount").remove("RecordStartTick");
-      return $$1 > 0L ? $$2.set("ticks_since_song_started", $$0.createLong($$1)) : $$2;
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      String $$1 = $$0.get("attachement_type").asString("minecraft:empty");
+      String $$2 = $$0.get("target_pool").asString("minecraft:empty");
+      return $$0.set("name", $$0.createString($$1))
+         .set("target", $$0.createString($$1))
+         .remove("attachement_type")
+         .set("pool", $$0.createString($$2))
+         .remove("target_pool");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+      return $$0.update(DSL.remainderFinder(), bhc::a);
    }
 }

@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 public class sv {
    public static final int a = 8;
    private static final Logger b = LogUtils.getLogger();
-   final arq c;
+   final ars c;
    private final sy d;
    private final List<sq> e;
    private ImmutableList<sj> f;
@@ -27,7 +27,7 @@ public class sv {
    private final sv.c m;
    final boolean n;
 
-   protected sv(sv.b $$0, Collection<sj> $$1, arq $$2, sy $$3, sv.c $$4, sv.c $$5, boolean $$6) {
+   protected sv(sv.b $$0, Collection<sj> $$1, ars $$2, sy $$3, sv.c $$4, sv.c $$5, boolean $$6) {
       this.c = $$2;
       this.d = $$3;
       this.i = $$0;
@@ -90,7 +90,7 @@ public class sv {
                if ($$3.i()) {
                   sv.this.g.forEach($$1xx -> $$1xx.b($$1));
                   LongSet $$0 = new LongArraySet(sv.this.c.y());
-                  $$0.forEach($$0xxx -> sv.this.c.a(dir.a($$0xxx), dir.b($$0xxx), false));
+                  $$0.forEach($$0xxx -> sv.this.c.a(djc.a($$0xxx), djc.b($$0xxx), false));
                   sv.this.a($$0 + 1);
                }
             }
@@ -109,7 +109,7 @@ public class sv {
                if (sv.this.n) {
                   sv.this.d();
                   LongSet $$2 = new LongArraySet(sv.this.c.y());
-                  $$2.forEach($$0xxx -> sv.this.c.a(dir.a($$0xxx), dir.b($$0xxx), false));
+                  $$2.forEach($$0xxx -> sv.this.c.a(djc.a($$0xxx), djc.b($$0xxx), false));
                   sy.a.a();
                } else {
                   this.a();
@@ -156,12 +156,12 @@ public class sv {
       return $$0.c() == null ? this.m.spawnStructure($$0) : this.l.spawnStructure($$0);
    }
 
-   public static void a(arq $$0) {
-      agm.a($$0);
+   public static void a(ars $$0) {
+      ago.a($$0);
    }
 
    public static class a {
-      private final arq a;
+      private final ars a;
       private final sy b = sy.a;
       private sv.b c = sk.a();
       private sv.c d = sv.c.a;
@@ -169,16 +169,16 @@ public class sv {
       private final Collection<sj> f;
       private boolean g = false;
 
-      private a(Collection<sj> $$0, arq $$1) {
+      private a(Collection<sj> $$0, ars $$1) {
          this.f = $$0;
          this.a = $$1;
       }
 
-      public static sv.a a(Collection<sj> $$0, arq $$1) {
+      public static sv.a a(Collection<sj> $$0, ars $$1) {
          return new sv.a($$0, $$1);
       }
 
-      public static sv.a b(Collection<sq> $$0, arq $$1) {
+      public static sv.a b(Collection<sq> $$0, ars $$1) {
          return a(sk.a().batch($$0), $$1);
       }
 
@@ -217,7 +217,7 @@ public class sv {
 
       Optional<sq> spawnStructure(sq var1);
 
-      default void a(arq $$0) {
+      default void a(ars $$0) {
       }
    }
 }

@@ -1,38 +1,22 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BooleanSupplier;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class fsp {
-   public static final float a = 200.0F;
-   private final List<fsp.a> b = new ArrayList<>();
+public record fsp(int b) implements fsn {
+   public static final MapCodec<fsp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayw.i.fieldOf("default").forGetter(fsp::b)).apply($$0, fsp::new));
 
-   public fsp a(fsp.a $$0) {
-      this.b.add($$0);
-      return this;
+   public fsp() {
+      this(dcu.c.a());
    }
 
-   public fsp a(fsp $$0, BooleanSupplier $$1) {
-      return this.a(($$2, $$3) -> {
-         if ($$1.getAsBoolean()) {
-            $$0.b($$2, $$3);
-         }
-      });
+   @Override
+   public int a(czy $$0, @Nullable gmb $$1, @Nullable bxu $$2) {
+      dcu $$3 = $$0.a(kk.L);
+      return $$3 != null ? axy.f($$3.a()) : axy.f(this.b);
    }
 
-   public void a(fsm $$0, fpj $$1) {
-      $$0.c().a();
-      this.b($$0, $$1);
-      $$0.c().b();
-   }
-
-   private void b(fsm $$0, fpj $$1) {
-      for (fsp.a $$2 : this.b) {
-         $$2.render($$0, $$1);
-         $$0.c().a(0.0F, 0.0F, 200.0F);
-      }
-   }
-
-   public interface a {
-      void render(fsm var1, fpj var2);
+   @Override
+   public MapCodec<fsp> a() {
+      return a;
    }
 }

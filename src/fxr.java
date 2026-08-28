@@ -1,188 +1,108 @@
-import com.mojang.logging.LogUtils;
-import io.netty.channel.ChannelFuture;
-import java.net.InetSocketAddress;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.List;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FreeType;
 
-public class fxr extends fys {
-   private static final AtomicInteger c = new AtomicInteger(0);
-   static final Logger d = LogUtils.getLogger();
-   private static final long s = 2000L;
-   public static final wy a = wy.c("connect.aborted");
-   public static final wy b = wy.a("disconnect.genericReason", wy.c("disconnect.unknownHost"));
-   @Nullable
-   volatile vr u;
-   @Nullable
-   ChannelFuture v;
-   volatile boolean w;
-   final fys x;
-   private wy y = wy.c("connect.connecting");
-   private long z = -1L;
-   final wy A;
+public record fxr(ali c, float d, float e, fxr.a f, String g) implements fxo {
+   private static final Codec<String> h = Codec.withAlternative(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
+   public static final MapCodec<fxr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ali.a.fieldOf("file").forGetter(fxr::c),
+               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fxr::d),
+               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fxr::e),
+               fxr.a.b.optionalFieldOf("shift", fxr.a.a).forGetter(fxr::f),
+               h.optionalFieldOf("skip", "").forGetter(fxr::g)
+            )
+            .apply($$0, fxr::new)
+   );
 
-   private fxr(fys $$0, wy $$1) {
-      super(fpk.a);
-      this.x = $$0;
-      this.A = $$1;
+   @Override
+   public fxp a() {
+      return fxp.b;
    }
 
-   public static void a(fys $$0, fpt $$1, gmi $$2, glf $$3, boolean $$4, @Nullable glj $$5) {
-      if ($$1.z instanceof fxr) {
-         d.error("Attempt to connect while already connecting");
-      } else {
-         wy $$6;
-         if ($$5 != null) {
-            $$6 = wx.q;
-         } else if ($$4) {
-            $$6 = gpv.a;
-         } else {
-            $$6 = wx.r;
-         }
-
-         fxr $$9 = new fxr($$0, $$6);
-         if ($$5 != null) {
-            $$9.a(wy.c("connect.transferring"));
-         }
-
-         $$1.y();
-         $$1.aU();
-         $$1.a(glw.a($$3.b));
-         $$1.bc().a(gpw.c.b, $$3.b, $$3.a);
-         $$1.a($$9);
-         $$9.a($$1, $$2, $$3, $$5);
-      }
+   @Override
+   public Either<fxo.b, fxo.c> b() {
+      return Either.left(this::a);
    }
 
-   private void a(final fpt $$0, final gmi $$1, final glf $$2, @Nullable final glj $$3) {
-      d.info("Connecting to {}, {}", $$1.a(), $$1.b());
-      Thread $$4 = new Thread("Server Connector #" + c.incrementAndGet()) {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
+   private fik a(avf $$0) throws IOException {
+      FT_Face $$1 = null;
+      ByteBuffer $$2 = null;
 
-            try {
-               if (fxr.this.w) {
-                  return;
-               }
+      try {
+         fin var20;
+         try (InputStream $$3 = $$0.open(this.c.f("font/"))) {
+            $$2 = TextureUtil.readResource($$3);
+            $$2.flip();
+            synchronized (fxn.a) {
+               MemoryStack $$4 = MemoryStack.stackPush();
 
-               Optional<InetSocketAddress> $$1 = gmk.a.a($$1).map(gmh::d);
-               if (fxr.this.w) {
-                  return;
-               }
-
-               if ($$1.isEmpty()) {
-                  $$0.execute(() -> $$0.a(new fxz(fxr.this.x, fxr.this.A, fxr.b)));
-                  return;
-               }
-
-               $$0 = $$1.get();
-               vr $$2;
-               synchronized (fxr.this) {
-                  if (fxr.this.w) {
-                     return;
+               try {
+                  PointerBuffer $$5 = $$4.mallocPointer(1);
+                  fxn.a(FreeType.FT_New_Memory_Face(fxn.a(), $$2, 0L, $$5), "Initializing font face");
+                  $$1 = FT_Face.create($$5.get());
+               } catch (Throwable var14) {
+                  if ($$4 != null) {
+                     try {
+                        $$4.close();
+                     } catch (Throwable var12) {
+                        var14.addSuppressed(var12);
+                     }
                   }
 
-                  $$2 = new vr(zg.b);
-                  $$2.a($$0.aQ().n());
-                  fxr.this.v = vr.a($$0, $$0.n.aD(), $$2);
+                  throw var14;
                }
 
-               fxr.this.v.syncUninterruptibly();
-               synchronized (fxr.this) {
-                  if (fxr.this.w) {
-                     $$2.a(fxr.a);
-                     return;
-                  }
-
-                  fxr.this.u = $$2;
-                  $$0.af().a($$2, a($$2.b()));
+               if ($$4 != null) {
+                  $$4.close();
                }
 
-               fxr.this.u
-                  .a($$0.getHostName(), $$0.getPort(), aji.b, aji.d, new gkp(fxr.this.u, $$0, $$2, fxr.this.x, false, null, fxr.this::a, $$3), $$3 != null);
-               fxr.this.u.a(new ajl($$0.X().c(), $$0.X().b()));
-            } catch (Exception var9) {
-               if (fxr.this.w) {
-                  return;
+               String $$6 = FreeType.FT_Get_Font_Format($$1);
+               if (!"TrueType".equals($$6)) {
+                  throw new IOException("Font is not in TTF format, was " + $$6);
                }
 
-               Exception $$6;
-               if (var9.getCause() instanceof Exception $$5) {
-                  $$6 = $$5;
-               } else {
-                  $$6 = var9;
-               }
-
-               fxr.d.error("Couldn't connect to server", var9);
-               String $$8 = $$0 == null
-                  ? $$6.getMessage()
-                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
-               $$0.execute(() -> $$0.a(new fxz(fxr.this.x, fxr.this.A, wy.a("disconnect.genericReason", $$8))));
+               fxn.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
+               var20 = new fin($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
             }
          }
 
-         private static hmu.c a(glf.a $$0x) {
-            return switch ($$0) {
-               case a -> hmu.c.b;
-               case b -> hmu.c.c;
-               case c -> hmu.c.a;
-            };
+         return var20;
+      } catch (Exception var17) {
+         synchronized (fxn.a) {
+            if ($$1 != null) {
+               FreeType.FT_Done_Face($$1);
+            }
          }
-      };
-      $$4.setUncaughtExceptionHandler(new s(d));
-      $$4.start();
-   }
 
-   private void a(wy $$0) {
-      this.y = $$0;
-   }
-
-   @Override
-   public void e() {
-      if (this.u != null) {
-         if (this.u.i()) {
-            this.u.b();
-         } else {
-            this.u.n();
-         }
+         MemoryUtil.memFree($$2);
+         throw var17;
       }
    }
 
-   @Override
-   public boolean aD_() {
-      return false;
-   }
+   public static record a(float c, float d) {
+      public static final fxr.a a = new fxr.a(0.0F, 0.0F);
+      public static final Codec<fxr.a> b = Codec.floatRange(-512.0F, 512.0F)
+         .listOf()
+         .comapFlatMap($$0 -> ag.a($$0, 2).map($$0x -> new fxr.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
 
-   @Override
-   protected void aO_() {
-      this.c(fta.a(wx.e, $$0 -> {
-         synchronized (this) {
-            this.w = true;
-            if (this.v != null) {
-               this.v.cancel(true);
-               this.v = null;
-            }
-
-            if (this.u != null) {
-               this.u.a(a);
-            }
-         }
-
-         this.m.a(this.x);
-      }).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
-   }
-
-   @Override
-   public void a(fsm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = ag.c();
-      if ($$4 - this.z > 2000L) {
-         this.z = $$4;
-         this.m.aY().c(wy.c("narrator.joining"));
+      public float a() {
+         return this.c;
       }
 
-      $$0.a(this.p, this.y, this.n / 2, this.o / 2 - 50, 16777215);
+      public float b() {
+         return this.d;
+      }
    }
 }

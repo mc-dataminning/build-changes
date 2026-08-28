@@ -1,18 +1,18 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
 
-public class evn {
-   private final List<evm> a;
+public enum evn implements bam {
+   a("ignore_waterlogging"),
+   b("apply_waterlogging");
 
-   public evn(List<evm> $$0) {
-      this.a = $$0;
-   }
+   public static Codec<evn> c = bam.b(evn::values);
+   private final String d;
 
-   public List<evm> a() {
-      return this.a;
+   private evn(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public String toString() {
-      return "ProcessorList[" + this.a + "]";
+   public String c() {
+      return this.d;
    }
 }

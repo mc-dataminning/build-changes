@@ -1,109 +1,75 @@
-public abstract class cur extends bwi {
-   protected static final akj<Integer> e = akn.a(cur.class, akl.b);
-   protected static final akj<Integer> f = akn.a(cur.class, akl.b);
-   protected static final akj<Float> g = akn.a(cur.class, akl.d);
+public class cur extends cuk {
+   private float b;
+   private float c;
 
-   public cur(bwr<?> $$0, djm $$1) {
+   public cur(bxc<?> $$0, djx $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public boolean b(bux $$0) {
+   public bur a(crx $$0, buq $$1) {
+      if (!$$0.fY() && !this.bZ() && (this.dV().C || $$0.n(this))) {
+         this.c = this.b;
+         if (!this.dV().C) {
+            return (bur)($$0.n(this) ? bur.c : bur.e);
+         } else {
+            return bur.a;
+         }
+      } else {
+         return bur.e;
+      }
+   }
+
+   @Override
+   protected czu o() {
+      return dac.ov;
+   }
+
+   @Override
+   public czy dI() {
+      return new czy(dac.ov);
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3) {
+         if (this.bZ()) {
+            this.bN();
+         }
+
+         if (this.H() == 0) {
+            this.l(-this.I());
+            this.d(10);
+            this.b(50.0F);
+            this.bB();
+         }
+      }
+   }
+
+   @Override
+   public boolean y() {
       return true;
    }
 
    @Override
-   public boolean a(arq $$0, bux $$1, float $$2) {
-      if (this.dP()) {
-         return true;
-      } else if (this.d($$1)) {
-         return false;
-      } else {
-         boolean var10000;
-         label32: {
-            this.l(-this.I());
-            this.d(10);
-            this.bA();
-            this.b(this.G() + $$2 * 10.0F);
-            this.a(eft.o, $$1.d());
-            if ($$1.d() instanceof crm $$3 && $$3.gj().d) {
-               var10000 = true;
-               break label32;
-            }
-
-            var10000 = false;
-         }
-
-         boolean $$4 = var10000;
-         if (($$4 || !(this.G() > 40.0F)) && !this.e($$1)) {
-            if ($$4) {
-               this.aq();
-            }
-         } else {
-            this.a($$0, $$1);
-         }
-
-         return true;
-      }
-   }
-
-   boolean e(bux $$0) {
-      return false;
-   }
-
-   @Override
-   public boolean a(djf $$0) {
-      return $$0.c() instanceof bxl && !$$0.a().O().c(dji.d);
-   }
-
-   public void a(arq $$0, czj $$1) {
-      this.c($$0);
-      if ($$0.O().c(dji.j)) {
-         czn $$2 = new czn($$1);
-         $$2.b(kk.g, this.ak());
-         this.a($$0, $$2);
+   public void h() {
+      double $$0 = (double)this.dL();
+      ffq $$1 = this.dt();
+      super.h();
+      double $$2 = ((double)this.dL() - $$0) % 360.0;
+      if (this.dV().C && $$1.f(this.dt()) > 0.01) {
+         this.b += (float)$$2;
+         this.b %= 360.0F;
       }
    }
 
    @Override
-   protected void a(akn.a $$0) {
-      $$0.a(e, 0);
-      $$0.a(f, 1);
-      $$0.a(g, 0.0F);
+   protected void a(bwt $$0, bwt.a $$1) {
+      super.a($$0, $$1);
+      if (this.dV().C && $$0 instanceof crx $$2 && $$2.gQ() && b(this.dV())) {
+         float $$3 = (float)azo.e(0.5, (double)this.c, (double)this.b);
+         $$2.w($$2.dL() - ($$3 - this.c));
+         this.c = $$3;
+      }
    }
-
-   public void d(int $$0) {
-      this.al.a(e, $$0);
-   }
-
-   public void l(int $$0) {
-      this.al.a(f, $$0);
-   }
-
-   public void b(float $$0) {
-      this.al.a(g, $$0);
-   }
-
-   public float G() {
-      return this.al.a(g);
-   }
-
-   public int H() {
-      return this.al.a(e);
-   }
-
-   public int I() {
-      return this.al.a(f);
-   }
-
-   protected void a(arq $$0, bux $$1) {
-      this.a($$0, this.o());
-   }
-
-   @Override
-   public int bV() {
-      return 10;
-   }
-
-   protected abstract czj o();
 }

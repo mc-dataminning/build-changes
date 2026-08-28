@@ -1,26 +1,20 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 
-public abstract class btj implements bto {
-   private static final Codec<Either<Float, btj>> a = Codec.either(Codec.FLOAT, mg.J.q().dispatch(btj::c, btk::codec));
-   public static final Codec<btj> c = a.xmap(
-      $$0 -> (btj)$$0.map(bth::a, $$0x -> $$0x), $$0 -> $$0.c() == btk.a ? Either.left(((bth)$$0).d()) : Either.right($$0)
-   );
-
-   public static Codec<btj> a(float $$0, float $$1) {
-      return c.validate($$2 -> {
-         if ($$2.a() < $$0) {
-            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-         } else {
-            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-         }
-      });
+public class btj extends bte<btl.c> {
+   public btj(int $$0, Executor $$1, String $$2) {
+      super(new btl.a($$0), $$1, $$2);
+      bsm.a.a(this);
    }
 
-   public abstract float a();
+   public btl.c b(Runnable $$0) {
+      return new btl.c(0, $$0);
+   }
 
-   public abstract float b();
-
-   public abstract btk<?> c();
+   public <Source> CompletableFuture<Source> a(int $$0, Consumer<CompletableFuture<Source>> $$1) {
+      CompletableFuture<Source> $$2 = new CompletableFuture<>();
+      this.a_(new btl.c($$0, () -> $$1.accept($$2)));
+      return $$2;
+   }
 }

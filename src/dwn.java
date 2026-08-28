@@ -1,96 +1,70 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface dwn extends dnu<dwn.a> {
-   Supplier<BiMap<dmr, dmr>> v_ = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(dmt.rE, dmt.rF)
-            .put(dmt.rF, dmt.rG)
-            .put(dmt.rG, dmt.rH)
-            .put(dmt.rN, dmt.rM)
-            .put(dmt.rM, dmt.rL)
-            .put(dmt.rL, dmt.rK)
-            .put(dmt.rR, dmt.rQ)
-            .put(dmt.rQ, dmt.rP)
-            .put(dmt.rP, dmt.rO)
-            .put(dmt.sd, dmt.sc)
-            .put(dmt.sc, dmt.sb)
-            .put(dmt.sb, dmt.sa)
-            .put(dmt.rZ, dmt.rY)
-            .put(dmt.rY, dmt.rX)
-            .put(dmt.rX, dmt.rW)
-            .put(dmt.su, dmt.sv)
-            .put(dmt.sv, dmt.sx)
-            .put(dmt.sx, dmt.sw)
-            .put(dmt.sC, dmt.sD)
-            .put(dmt.sD, dmt.sF)
-            .put(dmt.sF, dmt.sE)
-            .put(dmt.sK, dmt.sL)
-            .put(dmt.sL, dmt.sM)
-            .put(dmt.sM, dmt.sN)
-            .put(dmt.sS, dmt.sT)
-            .put(dmt.sT, dmt.sU)
-            .put(dmt.sU, dmt.sV)
-            .build()
-   );
-   Supplier<BiMap<dmr, dmr>> w_ = Suppliers.memoize(() -> v_.get().inverse());
+public class dwn extends dmo {
+   public static final MapCodec<dwn> a = b(dwn::new);
+   public static final ech<eaq> b = ebu.bC;
+   public static final ecc<jb> c = drd.e;
+   public static final ebv d = ebu.bE;
 
-   static Optional<dmr> a(dmr $$0) {
-      return Optional.ofNullable((dmr)w_.get().get($$0));
+   @Override
+   public MapCodec<dwn> a() {
+      return a;
    }
 
-   static dmr b(dmr $$0) {
-      dmr $$1 = $$0;
-
-      for (dmr $$2 = (dmr)w_.get().get($$0); $$2 != null; $$2 = (dmr)w_.get().get($$2)) {
-         $$1 = $$2;
-      }
-
-      return $$1;
-   }
-
-   static Optional<eat> b(eat $$0) {
-      return a($$0.b()).map($$1 -> $$1.m($$0));
-   }
-
-   static Optional<dmr> c(dmr $$0) {
-      return Optional.ofNullable((dmr)v_.get().get($$0));
-   }
-
-   static eat c(eat $$0) {
-      return b($$0.b()).m($$0);
+   public dwn(ebd.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(c, jb.c).b(b, eaq.a).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   default Optional<eat> k_(eat $$0) {
-      return c($$0.b()).map($$1 -> $$1.m($$0));
+   public bur a(czy $$0, ebe $$1, djx $$2, iv $$3, crx $$4, buq $$5, ffm $$6) {
+      if (!$$0.f() && $$1.c(b) == eaq.b) {
+         if ($$2 instanceof ars $$7) {
+            if (!($$7.c_($$3) instanceof eal $$8)) {
+               return bur.f;
+            }
+
+            eal.b.a($$7, $$3, $$1, $$8.f(), $$8.a(), $$8.c(), $$4, $$0);
+         }
+
+         return bur.b;
+      } else {
+         return bur.f;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dyc a(iv $$0, ebe $$1) {
+      return new eal($$0, $$1);
    }
 
    @Override
-   default float ar_() {
-      return this.c() == dwn.a.a ? 0.75F : 1.0F;
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(c, b, d);
    }
 
-   public static enum a implements bak {
-      a("unaffected"),
-      b("exposed"),
-      c("weathered"),
-      d("oxidized");
+   @Nullable
+   @Override
+   public <T extends dyc> dyd<T> a(djx $$0, ebe $$1, dye<T> $$2) {
+      return $$0 instanceof ars $$3
+         ? a($$2, dye.S, ($$1x, $$2x, $$3x, $$4) -> eal.b.a($$3, $$2x, $$3x, $$4.f(), $$4.a(), $$4.c()))
+         : a($$2, dye.S, ($$0x, $$1x, $$2x, $$3x) -> eal.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
+   }
 
-      public static final Codec<dwn.a> e = bak.a(dwn.a::values);
-      private final String f;
+   @Override
+   public ebe a(ddr $$0) {
+      return this.m().b(c, $$0.g().g());
+   }
 
-      private a(final String $$0) {
-         this.f = $$0;
-      }
+   @Override
+   public ebe a(ebe $$0, dtw $$1) {
+      return $$0.b(c, $$1.a($$0.c(c)));
+   }
 
-      @Override
-      public String c() {
-         return this.f;
-      }
+   @Override
+   public ebe a(ebe $$0, dsf $$1) {
+      return $$0.a($$1.a($$0.c(c)));
    }
 }

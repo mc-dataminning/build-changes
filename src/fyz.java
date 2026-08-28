@@ -1,125 +1,226 @@
-enum fyz {
-   a(
-      new fyz.a(alg.b("advancements/tab_above_left_selected"), alg.b("advancements/tab_above_middle_selected"), alg.b("advancements/tab_above_right_selected")),
-      new fyz.a(alg.b("advancements/tab_above_left"), alg.b("advancements/tab_above_middle"), alg.b("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new fyz.a(alg.b("advancements/tab_below_left_selected"), alg.b("advancements/tab_below_middle_selected"), alg.b("advancements/tab_below_right_selected")),
-      new fyz.a(alg.b("advancements/tab_below_left"), alg.b("advancements/tab_below_middle"), alg.b("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new fyz.a(alg.b("advancements/tab_left_top_selected"), alg.b("advancements/tab_left_middle_selected"), alg.b("advancements/tab_left_bottom_selected")),
-      new fyz.a(alg.b("advancements/tab_left_top"), alg.b("advancements/tab_left_middle"), alg.b("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new fyz.a(alg.b("advancements/tab_right_top_selected"), alg.b("advancements/tab_right_middle_selected"), alg.b("advancements/tab_right_bottom_selected")),
-      new fyz.a(alg.b("advancements/tab_right_top"), alg.b("advancements/tab_right_middle"), alg.b("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-   private final fyz.a e;
-   private final fyz.a f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class fyz extends gad {
+   public static final double a = 7.0;
+   private static final xa c = xa.c("chat_screen.usage");
+   private static final int d = 210;
+   private String s = "";
+   private int u = -1;
+   protected fuu b;
+   private String v;
+   fuo w;
 
-   private fyz(final fyz.a $$0, final fyz.a $$1, final int $$2, final int $$3, final int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public fyz(String $$0) {
+      super(xa.c("chat_screen.title"));
+      this.v = $$0;
    }
 
-   public int a() {
-      return this.i;
+   @Override
+   protected void aS_() {
+      this.u = this.m.m.d().c().size();
+      this.b = new fuu(this.m.i, 4, this.o - 12, this.n - 4, 12, xa.c("chat.editBox")) {
+         @Override
+         protected xo d() {
+            return super.d().b(fyz.this.w.e());
+         }
+      };
+      this.b.f(256);
+      this.b.d(false);
+      this.b.a(this.v);
+      this.b.b(this::b);
+      this.b.f(false);
+      this.d(this.b);
+      this.w = new fuo(this.m, this, this.b, this.p, false, false, 1, 10, true, -805306368);
+      this.w.b(false);
+      this.w.d();
    }
 
-   public void a(fsm $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      fyz.a $$5 = $$3 ? this.e : this.f;
-      alg $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
+   @Override
+   protected void aG_() {
+      this.b(this.b);
+   }
+
+   @Override
+   public void a(frd $$0, int $$1, int $$2) {
+      String $$3 = this.b.a();
+      this.b($$0, $$1, $$2);
+      this.c($$3);
+      this.w.d();
+   }
+
+   @Override
+   public void aJ_() {
+      this.m.m.d().d();
+   }
+
+   private void b(String $$0) {
+      String $$1 = this.b.a();
+      this.w.a(!$$1.equals(this.v));
+      this.w.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.w.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 == 256) {
+         this.m.a(null);
+         return true;
+      } else if ($$0 == 257 || $$0 == 335) {
+         this.b(this.b.a(), true);
+         this.m.a(null);
+         return true;
+      } else if ($$0 == 265) {
+         this.a(-1);
+         return true;
+      } else if ($$0 == 264) {
+         this.a(1);
+         return true;
+      } else if ($$0 == 266) {
+         this.m.m.d().a(this.m.m.d().j() - 1);
+         return true;
+      } else if ($$0 == 267) {
+         this.m.m.d().a(-this.m.m.d().j() + 1);
+         return true;
       } else {
-         $$6 = $$5.b();
-      }
-
-      $$0.a(grc::H, $$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
-   }
-
-   public void a(fsm $$0, int $$1, int $$2, int $$3, czn $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
-      }
-
-      $$0.b($$4, $$5, $$6);
-   }
-
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+         return false;
       }
    }
 
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      $$3 = azo.a($$3, -1.0, 1.0);
+      if (this.w.a($$3)) {
+         return true;
+      } else {
+         if (!t()) {
+            $$3 *= 7.0;
+         }
+
+         this.m.m.d().a((int)$$3);
+         return true;
       }
    }
 
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.w.a((double)((int)$$0), (double)((int)$$1), $$2)) {
+         return true;
+      } else {
+         if ($$2 == 0) {
+            fum $$3 = this.m.m.d();
+            if ($$3.a($$0, $$1)) {
+               return true;
+            }
+
+            xx $$4 = this.b($$0, $$1);
+            if ($$4 != null && this.a($$4)) {
+               this.v = this.b.a();
+               return true;
+            }
+         }
+
+         return this.b.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      }
    }
 
-   static record a(alg a, alg b, alg c) {
+   @Override
+   protected void a_(String $$0, boolean $$1) {
+      if ($$1) {
+         this.b.a($$0);
+      } else {
+         this.b.b($$0);
+      }
+   }
+
+   public void a(int $$0) {
+      int $$1 = this.u + $$0;
+      int $$2 = this.m.m.d().c().size();
+      $$1 = azo.a($$1, 0, $$2);
+      if ($$1 != this.u) {
+         if ($$1 == $$2) {
+            this.u = $$2;
+            this.b.a(this.s);
+         } else {
+            if (this.u == $$2) {
+               this.s = this.b.a();
+            }
+
+            this.b.a(this.m.m.d().c().get($$1));
+            this.w.a(false);
+            this.u = $$1;
+         }
+      }
+   }
+
+   @Override
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+      this.m.m.d().a($$0, this.m.m.e(), $$1, $$2, true);
+      $$0.a(2, this.o - 14, this.n - 2, this.o - 2, this.m.n.a(Integer.MIN_VALUE));
+      this.b.a($$0, $$1, $$2, $$3);
+      super.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 200.0F);
+      this.w.a($$0, $$1, $$2);
+      $$0.c().b();
+      fqx $$4 = this.m.m.d().c((double)$$1, (double)$$2);
+      if ($$4 != null && $$4.g() != null) {
+         $$0.b(this.p, this.p.c($$4.g(), 210), $$1, $$2);
+      } else {
+         xx $$5 = this.b((double)$$1, (double)$$2);
+         if ($$5 != null && $$5.j() != null) {
+            $$0.a(this.p, $$5, $$1, $$2);
+         }
+      }
+   }
+
+   @Override
+   public void b(ftx $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   private void c(String $$0) {
+      this.b.a($$0);
+   }
+
+   @Override
+   protected void a(fyi $$0) {
+      $$0.a(fyh.a, this.n());
+      $$0.a(fyh.d, c);
+      String $$1 = this.b.a();
+      if (!$$1.isEmpty()) {
+         $$0.a().a(fyh.a, xa.a("chat_screen.message", $$1));
+      }
+   }
+
+   @Nullable
+   private xx b(double $$0, double $$1) {
+      return this.m.m.d().b($$0, $$1);
+   }
+
+   public void b(String $$0, boolean $$1) {
+      $$0 = this.a($$0);
+      if (!$$0.isEmpty()) {
+         if ($$1) {
+            this.m.m.d().a($$0);
+         }
+
+         if ($$0.startsWith("/")) {
+            this.m.t.j.c($$0.substring(1));
+         } else {
+            this.m.t.j.b($$0);
+         }
+      }
+   }
+
+   public String a(String $$0) {
+      return ban.e(StringUtils.normalizeSpace($$0.trim()));
    }
 }

@@ -12,52 +12,52 @@ import java.util.stream.Collectors;
 
 public abstract class nj implements nl {
    protected final jh.a a;
-   private final cuw b;
-   private final cuw c;
-   private final Map<bwr<?>, Map<alf<ezy>, ezy.a>> d = Maps.newHashMap();
+   private final cvh b;
+   private final cvh c;
+   private final Map<bxc<?>, Map<alh<fam>, fam.a>> d = Maps.newHashMap();
 
-   protected final fcq.a a() {
-      jh.b<dga> $$0 = this.a.e(mh.aR);
-      return fcq.a(
-         fdf.a(ezt.b.a, by.a.a().a(bw.a.a().b(true))), fdf.a(ezt.b.c, by.a.a().a(bv.a.a().f(cm.a.a().a(ku.b, kv.a(List.of(new bt($$0.b(axe.p), cw.d.c)))))))
+   protected final fde.a a() {
+      jh.b<dgl> $$0 = this.a.e(mh.aR);
+      return fde.a(
+         fdt.a(fah.b.a, by.a.a().a(bw.a.a().b(true))), fdt.a(fah.b.c, by.a.a().a(bv.a.a().f(cm.a.a().a(ku.b, kv.a(List.of(new bt($$0.b(axg.p), cw.d.c)))))))
       );
    }
 
-   protected nj(cuw $$0, jh.a $$1) {
+   protected nj(cvh $$0, jh.a $$1) {
       this($$0, $$0, $$1);
    }
 
-   protected nj(cuw $$0, cuw $$1, jh.a $$2) {
+   protected nj(cvh $$0, cvh $$1, jh.a $$2) {
       this.b = $$0;
       this.c = $$1;
       this.a = $$2;
    }
 
-   public static ezx.a a(Map<cyl, alf<ezy>> $$0) {
-      faa.a $$1 = faa.a();
+   public static fal.a a(Map<cyw, alh<fam>> $$0) {
+      fao.a $$1 = fao.a();
 
-      for (Entry<cyl, alf<ezy>> $$2 : $$0.entrySet()) {
-         $$1 = $$1.a(fam.a($$2.getValue()).a(fdf.a(ezt.b.a, by.a.a().a(ke.a(kk.aR, $$2.getKey())).a(di.b()))));
+      for (Entry<cyw, alh<fam>> $$2 : $$0.entrySet()) {
+         $$1 = $$1.a(fba.a($$2.getValue()).a(fdt.a(fah.b.a, by.a.a().a(ke.a(kk.aR, $$2.getKey())).a(di.b()))));
       }
 
-      return ezx.a().a($$1);
+      return fal.a().a($$1);
    }
 
    public abstract void b();
 
    @Override
-   public void generate(BiConsumer<alf<ezy>, ezy.a> $$0) {
+   public void generate(BiConsumer<alh<fam>, fam.a> $$0) {
       this.b();
-      Set<alf<ezy>> $$1 = new HashSet<>();
+      Set<alh<fam>> $$1 = new HashSet<>();
       mg.f
          .c()
          .forEach(
             $$2 -> {
-               bwr<?> $$3 = $$2.a();
+               bxc<?> $$3 = $$2.a();
                if ($$3.a(this.b)) {
-                  Optional<alf<ezy>> $$4 = $$3.j();
+                  Optional<alh<fam>> $$4 = $$3.j();
                   if ($$4.isPresent()) {
-                     Map<alf<ezy>, ezy.a> $$5 = this.d.remove($$3);
+                     Map<alh<fam>, fam.a> $$5 = this.d.remove($$3);
                      if ($$3.a(this.c) && ($$5 == null || !$$5.containsKey($$4.get()))) {
                         throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$4.get(), $$2.h().a()));
                      }
@@ -72,7 +72,7 @@ public abstract class nj implements nl {
                         });
                      }
                   } else {
-                     Map<alf<ezy>, ezy.a> $$6 = this.d.remove($$3);
+                     Map<alh<fam>, fam.a> $$6 = this.d.remove($$3);
                      if ($$6 != null) {
                         throw new IllegalStateException(
                            String.format(
@@ -92,19 +92,19 @@ public abstract class nj implements nl {
       }
    }
 
-   protected fdc.a a(jg<bwr<?>> $$0) {
-      return fcv.a(bn.a.a().b(by.a.a().a($$0, bwr.ab)));
+   protected fdq.a a(jg<bxc<?>> $$0) {
+      return fdj.a(bn.a.a().b(by.a.a().a($$0, bxc.ac)));
    }
 
-   protected fdc.a a(jg<bwr<?>> $$0, jg<cky> $$1, alf<cky> $$2) {
-      return fcv.a(bn.a.a().b(by.a.a().a($$0, bwr.ab).a(ke.a(kk.aK, $$1.b($$2)))));
+   protected fdq.a a(jg<bxc<?>> $$0, jg<clj> $$1, alh<clj> $$2) {
+      return fdj.a(bn.a.a().b(by.a.a().a($$0, bxc.ac).a(ke.a(kk.aK, $$1.b($$2)))));
    }
 
-   protected void a(bwr<?> $$0, ezy.a $$1) {
+   protected void a(bxc<?> $$0, fam.a $$1) {
       this.a($$0, $$0.j().orElseThrow(() -> new IllegalStateException("Entity " + $$0 + " has no loot table")), $$1);
    }
 
-   protected void a(bwr<?> $$0, alf<ezy> $$1, ezy.a $$2) {
+   protected void a(bxc<?> $$0, alh<fam> $$1, fam.a $$2) {
       this.d.computeIfAbsent($$0, $$0x -> new HashMap<>()).put($$1, $$2);
    }
 }

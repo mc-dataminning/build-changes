@@ -1,30 +1,41 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
-
 public class gmk {
-   public static final gmk a = new gmk(gmj.b, gml.createDnsSrvRedirectHandler(), gmg.a());
-   private final gmj b;
-   private final gml c;
-   private final gmg d;
+   private final gqz a;
+   private final gmb b;
+   private final grv c;
+   private gmk.a d = gmk.a.a;
 
-   @VisibleForTesting
-   gmk(gmj $$0, gml $$1, gmg $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public gmk(gqz $$0, gmb $$1, grv $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public Optional<gmh> a(gmi $$0) {
-      Optional<gmh> $$1 = this.b.resolve($$0);
-      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
-         Optional<gmi> $$2 = this.c.lookupRedirect($$0);
-         if ($$2.isPresent()) {
-            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
-         }
-
-         return $$1;
-      } else {
-         return Optional.empty();
+   public void a() {
+      switch (this.d) {
+         case b:
+            iv $$0 = this.a.dv();
+            boolean $$1 = this.b.e($$0.v());
+            if ($$1 || this.c.a($$0) || this.a.Z_() || !this.a.bJ()) {
+               this.d = gmk.a.c;
+            }
+         case a:
+         case c:
       }
+   }
+
+   public boolean b() {
+      return this.d == gmk.a.c;
+   }
+
+   public void c() {
+      if (this.d == gmk.a.a) {
+         this.d = gmk.a.b;
+      }
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

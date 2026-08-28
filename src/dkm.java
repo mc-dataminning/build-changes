@@ -1,23 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface dkm {
+   <T> fhi<T> a(iv var1, T var2, int var3, fhm var4);
 
-public class dkm {
-   public static final Codec<dkm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awm.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, dkm::new)
-   );
-   private final jf<awm> b;
-   private final double c;
+   <T> fhi<T> a(iv var1, T var2, int var3);
 
-   public dkm(jf<awm> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   fhe<dnc> U();
+
+   default void a(iv $$0, dnc $$1, int $$2, fhm $$3) {
+      this.U().a(this.a($$0, $$1, $$2, $$3));
    }
 
-   public jf<awm> a() {
-      return this.b;
+   default void a(iv $$0, dnc $$1, int $$2) {
+      this.U().a(this.a($$0, $$1, $$2));
    }
 
-   public double b() {
-      return this.c;
+   fhe<exn> T();
+
+   default void a(iv $$0, exn $$1, int $$2, fhm $$3) {
+      this.T().a(this.a($$0, $$1, $$2, $$3));
+   }
+
+   default void a(iv $$0, exn $$1, int $$2) {
+      this.T().a(this.a($$0, $$1, $$2));
    }
 }

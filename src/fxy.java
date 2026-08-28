@@ -1,79 +1,218 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class fxy extends fys {
-   private static final wy a = wy.c("addServer.enterIp");
-   private fta b;
-   private final glf c;
-   private ftj d;
-   private final BooleanConsumer s;
-   private final fys u;
+public class fxy extends fxu {
+   private final List<fyb> c = new ArrayList<>();
+   private final List<fxy.a> d = new ArrayList<>();
+   private final fyc e = fyc.i();
+   private int f = 0;
+   private int g = 0;
 
-   public fxy(fys $$0, BooleanConsumer $$1, glf $$2) {
-      super(wy.c("selectServer.direct"));
-      this.u = $$0;
-      this.c = $$2;
-      this.s = $$1;
+   public fxy() {
+      this(0, 0);
+   }
+
+   public fxy(int $$0, int $$1) {
+      super($$0, $$1, 0, 0);
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.b.j || this.aI_() != this.d || $$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
+   public void a() {
+      super.a();
+      int $$0 = 0;
+      int $$1 = 0;
+
+      for (fxy.a $$2 : this.d) {
+         $$0 = Math.max($$2.c(), $$0);
+         $$1 = Math.max($$2.d(), $$1);
+      }
+
+      int[] $$3 = new int[$$1 + 1];
+      int[] $$4 = new int[$$0 + 1];
+
+      for (fxy.a $$5 : this.d) {
+         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
+         c $$7 = new c($$6, $$5.e);
+
+         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
+            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
+         }
+
+         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
+         c $$10 = new c($$9, $$5.f);
+
+         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
+            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
+         }
+      }
+
+      int[] $$12 = new int[$$1 + 1];
+      int[] $$13 = new int[$$0 + 1];
+      $$12[0] = 0;
+
+      for (int $$14 = 1; $$14 <= $$1; $$14++) {
+         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
+      }
+
+      $$13[0] = 0;
+
+      for (int $$15 = 1; $$15 <= $$0; $$15++) {
+         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
+      }
+
+      for (fxy.a $$16 : this.d) {
+         int $$17 = 0;
+
+         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
+            $$17 += $$3[$$18];
+         }
+
+         $$17 += this.g * ($$16.f - 1);
+         $$16.a(this.F() + $$12[$$16.d], $$17);
+         int $$19 = 0;
+
+         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
+            $$19 += $$4[$$20];
+         }
+
+         $$19 += this.f * ($$16.e - 1);
+         $$16.b(this.G() + $$13[$$16.c], $$19);
+      }
+
+      this.a = $$12[$$1] + $$3[$$1];
+      this.b = $$13[$$0] + $$4[$$0];
+   }
+
+   public <T extends fyb> T a(T $$0, int $$1, int $$2) {
+      return this.a($$0, $$1, $$2, this.b());
+   }
+
+   public <T extends fyb> T a(T $$0, int $$1, int $$2, fyc $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, $$3);
+   }
+
+   public <T extends fyb> T a(T $$0, int $$1, int $$2, Consumer<fyc> $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, ag.a(this.b(), $$3));
+   }
+
+   public <T extends fyb> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
+   }
+
+   public <T extends fyb> T a(T $$0, int $$1, int $$2, int $$3, int $$4, fyc $$5) {
+      if ($$3 < 1) {
+         throw new IllegalArgumentException("Occupied rows must be at least 1");
+      } else if ($$4 < 1) {
+         throw new IllegalArgumentException("Occupied columns must be at least 1");
       } else {
-         this.m();
-         return true;
+         this.d.add(new fxy.a($$0, $$1, $$2, $$3, $$4, $$5));
+         this.c.add($$0);
+         return $$0;
       }
    }
 
-   @Override
-   protected void aO_() {
-      this.d = new ftj(this.p, this.n / 2 - 100, 116, 200, 20, wy.c("addServer.enterIp"));
-      this.d.f(128);
-      this.d.a(this.m.n.Y);
-      this.d.b($$0 -> this.E());
-      this.d(this.d);
-      this.b = this.c(fta.a(wy.c("selectServer.select"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 12, 200, 20).a());
-      this.c(fta.a(wx.e, $$0 -> this.s.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
-      this.E();
+   public <T extends fyb> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<fyc> $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, ag.a(this.b(), $$5));
+   }
+
+   public fxy a(int $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public fxy b(int $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public fxy c(int $$0) {
+      return this.a($$0).b($$0);
    }
 
    @Override
-   protected void aC_() {
-      this.b(this.d);
+   public void b(Consumer<fyb> $$0) {
+      this.c.forEach($$0);
    }
 
-   @Override
-   public void a(fpt $$0, int $$1, int $$2) {
-      String $$3 = this.d.a();
-      this.b($$0, $$1, $$2);
-      this.d.a($$3);
+   public fyc b() {
+      return this.e.g();
    }
 
-   private void m() {
-      this.c.b = this.d.a();
-      this.s.accept(true);
+   public fyc c() {
+      return this.e;
    }
 
-   @Override
-   public void aL_() {
-      this.m.a(this.u);
+   public fxy.b d(int $$0) {
+      return new fxy.b($$0);
    }
 
-   @Override
-   public void aF_() {
-      this.m.n.Y = this.d.a();
-      this.m.n.az();
+   static class a extends fxu.a {
+      final int c;
+      final int d;
+      final int e;
+      final int f;
+
+      a(fyb $$0, int $$1, int $$2, int $$3, int $$4, fyc $$5) {
+         super($$0, $$5.h());
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+      }
+
+      public int c() {
+         return this.c + this.e - 1;
+      }
+
+      public int d() {
+         return this.d + this.f - 1;
+      }
    }
 
-   private void E() {
-      this.b.j = gmi.b(this.d.a());
-   }
+   public final class b {
+      private final int b;
+      private int c;
 
-   @Override
-   public void a(fsm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
-      $$0.b(this.p, a, this.n / 2 - 100 + 1, 100, 10526880);
-      this.d.a($$0, $$1, $$2, $$3);
+      b(final int $$1) {
+         this.b = $$1;
+      }
+
+      public <T extends fyb> T a(T $$0) {
+         return this.a($$0, 1);
+      }
+
+      public <T extends fyb> T a(T $$0, int $$1) {
+         return this.a($$0, $$1, this.c());
+      }
+
+      public <T extends fyb> T a(T $$0, fyc $$1) {
+         return this.a($$0, 1, $$1);
+      }
+
+      public <T extends fyb> T a(T $$0, int $$1, fyc $$2) {
+         int $$3 = this.c / this.b;
+         int $$4 = this.c % this.b;
+         if ($$4 + $$1 > this.b) {
+            $$3++;
+            $$4 = 0;
+            this.c = azo.d(this.c, this.b);
+         }
+
+         this.c += $$1;
+         return fxy.this.a($$0, $$3, $$4, 1, $$1, $$2);
+      }
+
+      public fxy a() {
+         return fxy.this;
+      }
+
+      public fyc b() {
+         return fxy.this.b();
+      }
+
+      public fyc c() {
+         return fxy.this.c();
+      }
    }
 }

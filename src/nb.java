@@ -22,17 +22,17 @@ public class nb implements mn {
          .thenCompose(
             $$2 -> {
                JsonObject $$3 = new JsonObject();
-               ale<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
+               alg<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
                $$2.e(mh.i)
                   .c()
                   .forEach(
                      $$2x -> {
                         JsonObject $$3x = new JsonObject();
-                        eau<dmr, eat> $$4x = ((dmr)$$2x.a()).l();
+                        ebf<dnc, ebe> $$4x = ((dnc)$$2x.a()).l();
                         if (!$$4x.d().isEmpty()) {
                            JsonObject $$5 = new JsonObject();
 
-                           for (ebw<?> $$6 : $$4x.d()) {
+                           for (ech<?> $$6 : $$4x.d()) {
                               JsonArray $$7 = new JsonArray();
 
                               for (Comparable<?> $$8 : $$6.a()) {
@@ -49,11 +49,11 @@ public class nb implements mn {
                         UnmodifiableIterator var13 = $$4x.a().iterator();
 
                         while (var13.hasNext()) {
-                           eat $$10 = (eat)var13.next();
+                           ebe $$10 = (ebe)var13.next();
                            JsonObject $$11 = new JsonObject();
                            JsonObject $$12 = new JsonObject();
 
-                           for (ebw<?> $$13 : $$4x.d()) {
+                           for (ech<?> $$13 : $$4x.d()) {
                               $$12.addProperty($$13.f(), ag.a($$13, $$10.c($$13)));
                            }
 
@@ -61,8 +61,8 @@ public class nb implements mn {
                               $$11.add("properties", $$12);
                            }
 
-                           $$11.addProperty("id", dmr.j($$10));
-                           if ($$10 == ((dmr)$$2x.a()).m()) {
+                           $$11.addProperty("id", dnc.j($$10));
+                           if ($$10 == ((dnc)$$2x.a()).m()) {
                               $$11.addProperty("default", true);
                            }
 
@@ -71,9 +71,9 @@ public class nb implements mn {
 
                         $$3x.add("states", $$9);
                         String $$14 = $$2x.g();
-                        JsonElement $$15 = (JsonElement)dms.a
+                        JsonElement $$15 = (JsonElement)dnd.a
                            .codec()
-                           .encodeStart($$4, (dmr)$$2x.a())
+                           .encodeStart($$4, (dnc)$$2x.a())
                            .getOrThrow($$1xxx -> new AssertionError("Failed to serialize block " + $$14 + " (is type registered in BlockTypes?): " + $$1xxx));
                         $$3x.add("definition", $$15);
                         $$3.add($$14, $$3x);

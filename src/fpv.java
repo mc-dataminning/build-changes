@@ -1,37 +1,19 @@
-import java.util.function.IntFunction;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public enum fpv {
-   a(0, "options.narrator.off"),
-   b(1, "options.narrator.all"),
-   c(2, "options.narrator.chat"),
-   d(3, "options.narrator.system");
+public class fpv {
+   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
 
-   private static final IntFunction<fpv> e = ayc.a(fpv::a, values(), ayc.a.b);
-   private final int f;
-   private final wy g;
-
-   private fpv(final int $$0, final String $$1) {
-      this.f = $$0;
-      this.g = wy.c($$1);
+   public static String a(long $$0) {
+      return (String)a.get($$0);
    }
 
-   public int a() {
-      return this.f;
+   public static void b(long $$0) {
+      a.remove($$0);
    }
 
-   public wy b() {
-      return this.g;
-   }
-
-   public static fpv a(int $$0) {
-      return e.apply($$0);
-   }
-
-   public boolean c() {
-      return this == b || this == c;
-   }
-
-   public boolean d() {
-      return this == b || this == d;
+   public static void a(long $$0, @Nullable String $$1) {
+      a.put($$0, $$1);
    }
 }

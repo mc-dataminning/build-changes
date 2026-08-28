@@ -1,425 +1,119 @@
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2FloatMap;
-import it.unimi.dsi.fastutil.objects.Object2FloatOpenHashMap;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class dod extends dmr implements bur {
-   public static final MapCodec<dod> a = b(dod::new);
-   public static final int b = 8;
-   public static final int c = 0;
-   public static final int d = 7;
-   public static final ebt e = ebj.aO;
-   public static final Object2FloatMap<djl> f = new Object2FloatOpenHashMap();
-   private static final int g = 12;
-   private static final ffw[] h = ag.a(() -> {
-      ffw[] $$0 = dmr.a(8, $$0x -> fft.a(fft.b(), dmr.b(12.0, (double)Math.clamp((long)(1 + $$0x * 2), 2, 16), 16.0), ffg.e));
-      $$0[8] = $$0[7];
-      return $$0;
-   });
+public class dod extends dum {
+   public static final MapCodec<dod> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ecs.a.fieldOf("wood_type").forGetter(dum::d), t()).apply($$0, dod::new));
+   public static final ece b = ebu.bd;
+   public static final ebv c = ebu.a;
+   private static final fgk e = dnc.b(10.0, 0.0, 16.0);
+   private static final Map<Integer, fgk> f = fgh.c(dnc.a(14.0, 2.0, 0.0, 10.0))
+      .entrySet()
+      .stream()
+      .collect(Collectors.toMap($$0 -> eck.a($$0.getKey()), Entry::getValue));
 
    @Override
    public MapCodec<dod> a() {
       return a;
    }
 
-   public static void b() {
-      f.defaultReturnValue(-1.0F);
-      float $$0 = 0.3F;
-      float $$1 = 0.5F;
-      float $$2 = 0.65F;
-      float $$3 = 0.85F;
-      float $$4 = 1.0F;
-      a(0.3F, czr.cD);
-      a(0.3F, czr.cA);
-      a(0.3F, czr.cB);
-      a(0.3F, czr.cG);
-      a(0.3F, czr.cH);
-      a(0.3F, czr.cE);
-      a(0.3F, czr.cF);
-      a(0.3F, czr.cC);
-      a(0.3F, czr.cJ);
-      a(0.3F, czr.cI);
-      a(0.3F, czr.X);
-      a(0.3F, czr.Y);
-      a(0.3F, czr.Z);
-      a(0.3F, czr.aa);
-      a(0.3F, czr.ab);
-      a(0.3F, czr.ac);
-      a(0.3F, czr.ad);
-      a(0.3F, czr.ae);
-      a(0.3F, czr.af);
-      a(0.3F, czr.ww);
-      a(0.3F, czr.tf);
-      a(0.3F, czr.cU);
-      a(0.3F, czr.dX);
-      a(0.3F, czr.th);
-      a(0.3F, czr.tg);
-      a(0.3F, czr.dd);
-      a(0.3F, czr.xG);
-      a(0.3F, czr.xH);
-      a(0.3F, czr.qj);
-      a(0.3F, czr.eb);
-      a(0.3F, czr.ed);
-      a(0.3F, czr.ee);
-      a(0.3F, czr.dY);
-      a(0.3F, czr.dZ);
-      a(0.3F, czr.ea);
-      a(0.3F, czr.ei);
-      a(0.3F, czr.eg);
-      a(0.3F, czr.bN);
-      a(0.3F, czr.wt);
-      a(0.3F, czr.wu);
-      a(0.3F, czr.da);
-      a(0.3F, czr.cW);
-      a(0.3F, czr.fr);
-      a(0.3F, czr.db);
-      a(0.3F, czr.dc);
-      a(0.5F, czr.rD);
-      a(0.5F, czr.iF);
-      a(0.5F, czr.cK);
-      a(0.5F, czr.fq);
-      a(0.5F, czr.dW);
-      a(0.5F, czr.gr);
-      a(0.5F, czr.dT);
-      a(0.5F, czr.dU);
-      a(0.5F, czr.dV);
-      a(0.5F, czr.te);
-      a(0.5F, czr.gs);
-      a(0.65F, czr.de);
-      a(0.65F, czr.gE);
-      a(0.65F, czr.fG);
-      a(0.65F, czr.fH);
-      a(0.65F, czr.gq);
-      a(0.65F, czr.pi);
-      a(0.65F, czr.wv);
-      a(0.65F, czr.vp);
-      a(0.65F, czr.sp);
-      a(0.65F, czr.vq);
-      a(0.65F, czr.qk);
-      a(0.65F, czr.dN);
-      a(0.65F, czr.dO);
-      a(0.65F, czr.gm);
-      a(0.65F, czr.dP);
-      a(0.65F, czr.dQ);
-      a(0.65F, czr.tr);
-      a(0.65F, czr.dR);
-      a(0.65F, czr.dS);
-      a(0.65F, czr.xK);
-      a(0.65F, czr.dv);
-      a(0.65F, czr.dy);
-      a(0.65F, czr.dz);
-      a(0.65F, czr.dA);
-      a(0.65F, czr.dB);
-      a(0.65F, czr.dC);
-      a(0.65F, czr.dD);
-      a(0.65F, czr.dE);
-      a(0.65F, czr.dF);
-      a(0.65F, czr.dG);
-      a(0.65F, czr.dH);
-      a(0.65F, czr.dI);
-      a(0.65F, czr.dJ);
-      a(0.65F, czr.dw);
-      a(0.65F, czr.dx);
-      a(0.65F, czr.cV);
-      a(0.65F, czr.iB);
-      a(0.65F, czr.iC);
-      a(0.65F, czr.iD);
-      a(0.65F, czr.iE);
-      a(0.65F, czr.iG);
-      a(0.65F, czr.dM);
-      a(0.65F, czr.cX);
-      a(0.65F, czr.ec);
-      a(0.65F, czr.ef);
-      a(0.65F, czr.eh);
-      a(0.85F, czr.ih);
-      a(0.85F, czr.gk);
-      a(0.85F, czr.gl);
-      a(0.85F, czr.jB);
-      a(0.85F, czr.jC);
-      a(0.85F, czr.cY);
-      a(0.85F, czr.ql);
-      a(0.85F, czr.vr);
-      a(0.85F, czr.ta);
-      a(0.85F, czr.dK);
-      a(0.85F, czr.dL);
-      a(1.0F, czr.sJ);
-      a(1.0F, czr.vD);
-   }
-
-   private static void a(float $$0, djl $$1) {
-      f.put($$1.h(), $$0);
-   }
-
-   public dod(eas.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(e, Integer.valueOf(0)));
-   }
-
-   public static void a(djm $$0, iv $$1, boolean $$2) {
-      eat $$3 = $$0.a_($$1);
-      $$0.a($$1, $$2 ? awn.fy : awn.fx, awo.e, 1.0F, 1.0F, false);
-      double $$4 = $$3.f($$0, $$1).b(jb.a.b, 0.5, 0.5) + 0.03125;
-      double $$5 = 2.0;
-      double $$6 = 0.1875;
-      double $$7 = 0.625;
-      azv $$8 = $$0.C_();
-
-      for (int $$9 = 0; $$9 < 10; $$9++) {
-         double $$10 = $$8.k() * 0.02;
-         double $$11 = $$8.k() * 0.02;
-         double $$12 = $$8.k() * 0.02;
-         $$0.a(
-            ly.R,
-            (double)$$1.u() + 0.1875 + 0.625 * (double)$$8.i(),
-            (double)$$1.v() + $$4 + (double)$$8.i() * (1.0 - $$4),
-            (double)$$1.w() + 0.1875 + 0.625 * (double)$$8.i(),
-            $$10,
-            $$11,
-            $$12
-         );
-      }
+   public dod(ecs $$0, ebd.d $$1) {
+      super($$0, $$1.a($$0.e()));
+      this.l(this.C.b().b(b, Integer.valueOf(0)).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return h[$$0.c(e)];
+   protected bur a(czy $$0, ebe $$1, djx $$2, iv $$3, crx $$4, buq $$5, ffm $$6) {
+      if ($$2.c_($$3) instanceof dzq $$7 && this.a($$4, $$6, $$7, $$0)) {
+         return bur.e;
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   private boolean a(crx $$0, ffm $$1, dzq $$2, czy $$3) {
+      return !$$2.a($$2.a($$0), $$0) && $$3.h() instanceof czn && $$1.c().equals(jb.a);
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2) {
-      return fft.b();
+   protected boolean a(ebe $$0, dka $$1, iv $$2) {
+      return $$1.a_($$2.d()).a($$1, $$2.d(), jb.a, dvn.b);
    }
 
    @Override
-   protected ffw b(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return h[0];
-   }
-
-   @Override
-   protected void a(eat $$0, djm $$1, iv $$2, eat $$3, boolean $$4) {
-      if ($$0.c(e) == 7) {
-         $$1.a($$2, $$0.b(), 20);
-      }
-   }
-
-   @Override
-   protected bug a(czn $$0, eat $$1, djm $$2, iv $$3, crm $$4, buf $$5, fey $$6) {
-      int $$7 = $$1.c(e);
-      if ($$7 < 8 && f.containsKey($$0.h())) {
-         if ($$7 < 7 && !$$2.C) {
-            eat $$8 = a($$4, $$1, $$2, $$3, $$0);
-            $$2.c(1500, $$3, $$1 != $$8 ? 1 : 0);
-            $$4.b(awx.c.b($$0.h()));
-            $$0.a(1, $$4);
-         }
-
-         return bug.a;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
-   }
-
-   @Override
-   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
-      int $$5 = $$0.c(e);
-      if ($$5 == 8) {
-         a($$3, $$0, $$1, $$2);
-         return bug.a;
-      } else {
-         return bug.e;
-      }
-   }
-
-   public static eat a(bwi $$0, eat $$1, arq $$2, czn $$3, iv $$4) {
-      int $$5 = $$1.c(e);
-      if ($$5 < 7 && f.containsKey($$3.h())) {
-         eat $$6 = a($$0, $$1, $$2, $$4, $$3);
-         $$3.h(1);
-         return $$6;
-      } else {
-         return $$1;
-      }
-   }
-
-   public static eat a(bwi $$0, eat $$1, djm $$2, iv $$3) {
-      if (!$$2.C) {
-         ffc $$4 = ffc.a($$3, 0.5, 1.01, 0.5).a($$2.A, 0.7F);
-         cnr $$5 = new cnr($$2, $$4.a(), $$4.b(), $$4.c(), new czn(czr.sG));
-         $$5.j();
-         $$2.b($$5);
-      }
-
-      eat $$6 = a($$0, $$1, (djn)$$2, $$3);
-      $$2.a(null, $$3, awn.fw, awo.e, 1.0F, 1.0F);
-      return $$6;
-   }
-
-   static eat a(@Nullable bwi $$0, eat $$1, djn $$2, iv $$3) {
-      eat $$4 = $$1.b(e, Integer.valueOf(0));
-      $$2.a($$3, $$4, 3);
-      $$2.a(eft.c, $$3, eft.a.a($$0, $$4));
-      return $$4;
-   }
-
-   static eat a(@Nullable bwi $$0, eat $$1, djn $$2, iv $$3, czn $$4) {
-      int $$5 = $$1.c(e);
-      float $$6 = f.getFloat($$4.h());
-      if (($$5 != 0 || !($$6 > 0.0F)) && !($$2.C_().j() < (double)$$6)) {
-         return $$1;
-      } else {
-         int $$7 = $$5 + 1;
-         eat $$8 = $$1.b(e, Integer.valueOf($$7));
-         $$2.a($$3, $$8, 3);
-         $$2.a(eft.c, $$3, eft.a.a($$0, $$8));
-         if ($$7 == 7) {
-            $$2.a($$3, $$1.b(), 20);
-         }
-
-         return $$8;
-      }
-   }
-
-   @Override
-   protected void a(eat $$0, arq $$1, iv $$2, azv $$3) {
-      if ($$0.c(e) == 7) {
-         $$1.a($$2, $$0.a(e), 3);
-         $$1.a(null, $$2, awn.fz, awo.e, 1.0F, 1.0F);
-      }
-   }
-
-   @Override
-   protected boolean c_(eat $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(eat $$0, djm $$1, iv $$2) {
-      return $$0.c(e);
-   }
-
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(e);
-   }
-
-   @Override
-   protected boolean a(eat $$0, exp $$1) {
-      return false;
-   }
-
-   @Override
-   public buq a(eat $$0, djn $$1, iv $$2) {
-      int $$3 = $$0.c(e);
-      if ($$3 == 8) {
-         return new dod.c($$0, $$1, $$2, new czn(czr.sG));
-      } else {
-         return (buq)($$3 < 7 ? new dod.b($$0, $$1, $$2) : new dod.a());
-      }
-   }
-
-   static class a extends bun implements buq {
-      public a() {
-         super(0);
-      }
-
-      @Override
-      public int[] a(jb $$0) {
-         return new int[0];
-      }
-
-      @Override
-      public boolean a(int $$0, czn $$1, @Nullable jb $$2) {
-         return false;
-      }
-
-      @Override
-      public boolean b(int $$0, czn $$1, jb $$2) {
-         return false;
-      }
-   }
-
-   static class b extends bun implements buq {
-      private final eat b;
-      private final djn c;
-      private final iv d;
-      private boolean e;
-
-      public b(eat $$0, djn $$1, iv $$2) {
-         super(1);
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      @Override
-      public int ak_() {
-         return 1;
-      }
-
-      @Override
-      public int[] a(jb $$0) {
-         return $$0 == jb.b ? new int[]{0} : new int[0];
-      }
-
-      @Override
-      public boolean a(int $$0, czn $$1, @Nullable jb $$2) {
-         return !this.e && $$2 == jb.b && dod.f.containsKey($$1.h());
-      }
-
-      @Override
-      public boolean b(int $$0, czn $$1, jb $$2) {
-         return false;
-      }
-
-      @Override
-      public void e() {
-         czn $$0 = this.a(0);
-         if (!$$0.f()) {
-            this.e = true;
-            eat $$1 = dod.a(null, this.b, this.c, this.d, $$0);
-            this.c.c(1500, this.d, $$1 != this.b ? 1 : 0);
-            this.b(0);
+   public ebe a(ddr $$0) {
+      djx $$1 = $$0.q();
+      exo $$2 = $$1.b_($$0.a());
+      iv $$3 = $$0.a().d();
+      ebe $$4 = $$1.a_($$3);
+      boolean $$5 = $$4.a(axe.aD);
+      jb $$6 = jb.a((double)$$0.i());
+      boolean $$7 = !dnc.a($$4.g($$1, $$3), jb.a) || $$0.h();
+      if ($$5 && !$$0.h()) {
+         if ($$4.b(dws.b)) {
+            jb $$8 = $$4.c(dws.b);
+            if ($$8.o().a($$6)) {
+               $$7 = false;
+            }
+         } else if ($$4.b(b)) {
+            Optional<jb> $$9 = eck.a($$4.c(b));
+            if ($$9.isPresent() && $$9.get().o().a($$6)) {
+               $$7 = false;
+            }
          }
       }
+
+      int $$10 = !$$7 ? eck.a($$6.g()) : eck.a($$0.i() + 180.0F);
+      return this.m().b(c, Boolean.valueOf($$7)).b(b, Integer.valueOf($$10)).b(d, Boolean.valueOf($$2.a() == exp.c));
    }
 
-   static class c extends bun implements buq {
-      private final eat b;
-      private final djn c;
-      private final iv d;
-      private boolean e;
+   @Override
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return f.getOrDefault($$0.c(b), e);
+   }
 
-      public c(eat $$0, djn $$1, iv $$2, czn $$3) {
-         super($$3);
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
+   @Override
+   protected fgk b_(ebe $$0, djb $$1, iv $$2) {
+      return this.a($$0, $$1, $$2, ffv.a());
+   }
 
-      @Override
-      public int ak_() {
-         return 1;
-      }
+   @Override
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      return $$4 == jb.b && !this.a($$0, $$1, $$3) ? dne.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
 
-      @Override
-      public int[] a(jb $$0) {
-         return $$0 == jb.a ? new int[]{0} : new int[0];
-      }
+   @Override
+   public float h(ebe $$0) {
+      return eck.b($$0.c(b));
+   }
 
-      @Override
-      public boolean a(int $$0, czn $$1, @Nullable jb $$2) {
-         return false;
-      }
+   @Override
+   protected ebe a(ebe $$0, dtw $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
 
-      @Override
-      public boolean b(int $$0, czn $$1, jb $$2) {
-         return !this.e && $$2 == jb.a && $$1.a(czr.sG);
-      }
+   @Override
+   protected ebe a(ebe $$0, dsf $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
 
-      @Override
-      public void e() {
-         dod.a(null, this.b, this.c, this.d);
-         this.e = true;
-      }
+   @Override
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(b, c, d);
+   }
+
+   @Override
+   public dyc a(iv $$0, ebe $$1) {
+      return new dzd($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dyc> dyd<T> a(djx $$0, ebe $$1, dye<T> $$2) {
+      return a($$2, dye.i, dzq::a);
    }
 }

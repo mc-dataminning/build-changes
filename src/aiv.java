@@ -1,26 +1,51 @@
-public enum aiv {
-   a,
-   b,
-   c;
+import org.jetbrains.annotations.VisibleForTesting;
 
-   private static final int d = 1;
-   private static final int e = 2;
-   private static final int f = 3;
+public class aiv {
+   private static final double a = 4096.0;
+   private ffq b = ffq.c;
 
-   public static aiv a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         case 3 -> c;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   @VisibleForTesting
+   static long a(double $$0) {
+      return Math.round($$0 * 4096.0);
    }
 
-   public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-         case c -> 3;
-      };
+   @VisibleForTesting
+   static double a(long $$0) {
+      return (double)$$0 / 4096.0;
+   }
+
+   public ffq a(long $$0, long $$1, long $$2) {
+      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
+         return this.b;
+      } else {
+         double $$3 = $$0 == 0L ? this.b.d : a(a(this.b.d) + $$0);
+         double $$4 = $$1 == 0L ? this.b.e : a(a(this.b.e) + $$1);
+         double $$5 = $$2 == 0L ? this.b.f : a(a(this.b.f) + $$2);
+         return new ffq($$3, $$4, $$5);
+      }
+   }
+
+   public long a(ffq $$0) {
+      return a($$0.d) - a(this.b.d);
+   }
+
+   public long b(ffq $$0) {
+      return a($$0.e) - a(this.b.e);
+   }
+
+   public long c(ffq $$0) {
+      return a($$0.f) - a(this.b.f);
+   }
+
+   public ffq d(ffq $$0) {
+      return $$0.d(this.b);
+   }
+
+   public void e(ffq $$0) {
+      this.b = $$0;
+   }
+
+   public ffq a() {
+      return this.b;
    }
 }

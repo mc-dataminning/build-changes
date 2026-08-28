@@ -1,19 +1,19 @@
-import java.util.List;
-
-public interface dfi<T> {
-   public interface a<T> extends dfi<T> {
-      T a(T var1, List<T> var2);
+public record dfi(czy a) implements dev {
+   @Override
+   public czy a(int $$0) {
+      if ($$0 != 0) {
+         throw new IllegalArgumentException("No item for index " + $$0);
+      } else {
+         return this.a;
+      }
    }
 
-   public interface b<T> extends dfi<T> {
-      default T a(jf<czj> $$0) {
-         return this.a(new czn($$0));
-      }
+   @Override
+   public int a() {
+      return 1;
+   }
 
-      default T a(czj $$0) {
-         return this.a(new czn($$0));
-      }
-
-      T a(czn var1);
+   public czy c() {
+      return this.a;
    }
 }

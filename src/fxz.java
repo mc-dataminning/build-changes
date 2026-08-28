@@ -1,65 +1,130 @@
-public class fxz extends fys {
-   private static final wy a = wy.c("gui.toMenu");
-   private static final wy b = wy.c("gui.toTitle");
-   private static final wy c = wy.c("gui.report_to_server");
-   private static final wy d = wy.c("gui.open_report_dir");
-   private final fys s;
-   private final vt u;
-   private final wy v;
-   private final fws w = fws.d();
+import java.util.function.Consumer;
 
-   public fxz(fys $$0, wy $$1, wy $$2) {
-      this($$0, $$1, new vt($$2));
+public class fxz implements fya {
+   public static final int a = 33;
+   private static final int b = 30;
+   private final fxx c = new fxx();
+   private final fxx d = new fxx();
+   private final fxx e = new fxx();
+   private final gad f;
+   private int g;
+   private int h;
+
+   public fxz(gad $$0) {
+      this($$0, 33);
    }
 
-   public fxz(fys $$0, wy $$1, wy $$2, wy $$3) {
-      this($$0, $$1, new vt($$2), $$3);
+   public fxz(gad $$0, int $$1) {
+      this($$0, $$1, $$1);
    }
 
-   public fxz(fys $$0, wy $$1, vt $$2) {
-      this($$0, $$1, $$2, a);
-   }
-
-   public fxz(fys $$0, wy $$1, vt $$2, wy $$3) {
-      super($$1);
-      this.s = $$0;
-      this.u = $$2;
-      this.v = $$3;
-   }
-
-   @Override
-   protected void aO_() {
-      this.w.c().b().a(10);
-      this.w.a(new fuh(this.l, this.p));
-      this.w.a(new ftu(this.u.a(), this.p).d(this.n - 50).b(true));
-      this.w.c().a(2);
-      this.u.c().ifPresent($$0 -> this.w.a(fta.a(c, fxp.b(this, $$0, false)).a(200).a()));
-      this.u.b().ifPresent($$0 -> this.w.a(fta.a(d, $$1x -> ag.n().a($$0.getParent())).a(200).a()));
-      fta $$0;
-      if (this.m.F()) {
-         $$0 = fta.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
-      } else {
-         $$0 = fta.a(b, $$0x -> this.m.a(new fyu())).a(200).a();
-      }
-
-      this.w.a($$0);
-      this.w.a();
-      this.w.a(this::c);
-      this.c();
+   public fxz(gad $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.c.c().a(0.5F, 0.5F);
+      this.d.c().a(0.5F, 0.5F);
    }
 
    @Override
-   protected void c() {
-      fwm.a(this.w, this.J());
+   public void j(int $$0) {
    }
 
    @Override
-   public wy i() {
-      return wx.a(this.l, this.u.a());
+   public void k(int $$0) {
    }
 
    @Override
-   public boolean aD_() {
-      return false;
+   public int F() {
+      return 0;
+   }
+
+   @Override
+   public int G() {
+      return 0;
+   }
+
+   @Override
+   public int A() {
+      return this.f.n;
+   }
+
+   @Override
+   public int y() {
+      return this.f.o;
+   }
+
+   public int b() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.f.o - this.c() - this.b();
+   }
+
+   @Override
+   public void b(Consumer<fyb> $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+      this.d.b($$0);
+   }
+
+   @Override
+   public void a() {
+      int $$0 = this.c();
+      int $$1 = this.b();
+      this.c.b(this.f.n);
+      this.c.a($$0);
+      this.c.c(0, 0);
+      this.c.a();
+      this.d.b(this.f.n);
+      this.d.a($$1);
+      this.d.a();
+      this.d.k(this.f.o - $$1);
+      this.e.b(this.f.n);
+      this.e.a();
+      int $$2 = $$0 + 30;
+      int $$3 = this.f.o - $$1 - this.e.y();
+      this.e.c(0, Math.min($$2, $$3));
+   }
+
+   public <T extends fyb> T a(T $$0) {
+      return this.c.a($$0);
+   }
+
+   public <T extends fyb> T a(T $$0, Consumer<fyc> $$1) {
+      return this.c.a($$0, $$1);
+   }
+
+   public void a(xa $$0, ftv $$1) {
+      this.c.a(new fvs($$0, $$1));
+   }
+
+   public <T extends fyb> T b(T $$0) {
+      return this.d.a($$0);
+   }
+
+   public <T extends fyb> T b(T $$0, Consumer<fyc> $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   public <T extends fyb> T c(T $$0) {
+      return this.e.a($$0);
+   }
+
+   public <T extends fyb> T c(T $$0, Consumer<fyc> $$1) {
+      return this.e.a($$0, $$1);
    }
 }

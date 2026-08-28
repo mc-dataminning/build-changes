@@ -1,10 +1,8 @@
-public record bpp<T>(String a) {
-   @Override
-   public String toString() {
-      return "<" + this.a + ">";
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public static <T> bpp<T> a(String $$0) {
-      return new bpp<>($$0);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface bpp {
 }

@@ -1,12 +1,13 @@
-public class gxq extends haf {
-   private static final alg a = alg.b("textures/entity/zombie/husk.png");
+public class gxq extends haq<coj> {
+   private static final ali a = ali.b("textures/entity/spider/cave_spider.png");
 
-   public gxq(gwy.a $$0) {
-      super($$0, gjs.bt, gjs.bu, gjs.bx, gjs.by, gjs.bv, gjs.bw);
+   public gxq(gyi.a $$0) {
+      super($$0, gld.U);
+      this.e = 0.56F;
    }
 
    @Override
-   public alg a(hfv $$0) {
+   public ali b(hfp $$0) {
       return a;
    }
 }

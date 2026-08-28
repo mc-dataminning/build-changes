@@ -1,7 +1,7 @@
-public enum eby implements bak {
-   a("up"),
-   b("side"),
-   c("none");
+public enum eby implements bam {
+   a("uprooted"),
+   b("dormant"),
+   c("awake");
 
    private final String d;
 
@@ -11,15 +11,11 @@ public enum eby implements bak {
 
    @Override
    public String toString() {
-      return this.c();
+      return this.d;
    }
 
    @Override
    public String c() {
       return this.d;
-   }
-
-   public boolean a() {
-      return this != c;
    }
 }

@@ -55,7 +55,7 @@ public class mm {
    }
 
    static {
-      ali.a();
+      alk.a();
    }
 
    public class a {

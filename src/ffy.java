@@ -1,66 +1,38 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import com.google.common.math.IntMath;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public enum ffy implements bak {
-   a(0, "list"),
-   b(1, "sidebar"),
-   c(2, "below_name"),
-   d(3, "sidebar.team.black"),
-   e(4, "sidebar.team.dark_blue"),
-   f(5, "sidebar.team.dark_green"),
-   g(6, "sidebar.team.dark_aqua"),
-   h(7, "sidebar.team.dark_red"),
-   i(8, "sidebar.team.dark_purple"),
-   j(9, "sidebar.team.gold"),
-   k(10, "sidebar.team.gray"),
-   l(11, "sidebar.team.dark_gray"),
-   m(12, "sidebar.team.blue"),
-   n(13, "sidebar.team.green"),
-   o(14, "sidebar.team.aqua"),
-   p(15, "sidebar.team.red"),
-   q(16, "sidebar.team.light_purple"),
-   r(17, "sidebar.team.yellow"),
-   s(18, "sidebar.team.white");
+public final class ffy implements fgc {
+   private final ffw a;
+   private final int b;
+   private final int c;
 
-   public static final bak.a<ffy> t = bak.a(ffy::values);
-   public static final IntFunction<ffy> u = ayc.a(ffy::a, values(), ayc.a.a);
-   private final int v;
-   private final String w;
-
-   private ffy(final int $$0, final String $$1) {
-      this.v = $$0;
-      this.w = $$1;
-   }
-
-   public int a() {
-      return this.v;
+   ffy(int $$0, int $$1) {
+      this.a = new ffw((int)fgh.a($$0, $$1));
+      int $$2 = IntMath.gcd($$0, $$1);
+      this.b = $$0 / $$2;
+      this.c = $$1 / $$2;
    }
 
    @Override
-   public String c() {
-      return this.w;
+   public boolean a(fgc.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   @Nullable
-   public static ffy a(o $$0) {
-      return switch ($$0) {
-         case a -> d;
-         case b -> e;
-         case c -> f;
-         case d -> g;
-         case e -> h;
-         case f -> i;
-         case g -> j;
-         case h -> k;
-         case i -> l;
-         case j -> m;
-         case k -> n;
-         case l -> o;
-         case m -> p;
-         case n -> q;
-         case o -> r;
-         case p -> s;
-         case r, u, t, v, q, s -> null;
-      };
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
    }
 }

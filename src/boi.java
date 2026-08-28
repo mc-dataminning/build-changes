@@ -4,24 +4,38 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class boi extends bku {
+public class boi extends bkw {
    public boi(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:llama", $$1x -> a($$0));
-      $$0.register($$1, "minecraft:trader_llama", $$1x -> a($$0));
-      $$0.register($$1, "minecraft:donkey", $$1x -> a($$0));
-      $$0.register($$1, "minecraft:mule", $$1x -> a($$0));
-      $$0.registerSimple($$1, "minecraft:horse");
-      $$0.registerSimple($$1, "minecraft:skeleton_horse");
-      $$0.registerSimple($$1, "minecraft:zombie_horse");
-      return $$1;
-   }
-
-   private static TypeTemplate a(Schema $$0) {
-      return DSL.optionalFields("Items", DSL.list(biz.t.in($$0)));
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         true,
+         bjb.z,
+         () -> DSL.or(
+               DSL.or(DSL.constType(DSL.string()), DSL.list(bjb.z.in($$0))),
+               DSL.optionalFields(
+                  "extra",
+                  DSL.list(bjb.z.in($$0)),
+                  "separator",
+                  bjb.z.in($$0),
+                  "hoverEvent",
+                  DSL.taggedChoice(
+                     "action",
+                     DSL.string(),
+                     Map.of(
+                        "show_text",
+                        DSL.optionalFields("contents", bjb.z.in($$0)),
+                        "show_item",
+                        DSL.optionalFields("contents", DSL.or(bjb.t.in($$0), bjb.F.in($$0))),
+                        "show_entity",
+                        DSL.optionalFields("type", bjb.B.in($$0), "name", bjb.z.in($$0))
+                     )
+                  )
+               )
+            )
+      );
    }
 }

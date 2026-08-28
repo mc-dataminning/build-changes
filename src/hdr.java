@@ -1,5 +1,6 @@
-public class hdr extends hef {
-   public boolean a = true;
-   public boolean b = true;
+public class hdr extends hdt {
+   public boolean a;
+   public boolean b;
    public float c;
+   public float d;
 }

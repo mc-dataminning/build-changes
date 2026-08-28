@@ -1,29 +1,58 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class hqe {
-   private final float a;
-   private final AtomicReference<hqe.a> b = new AtomicReference<>();
+public class hqe implements hqf<hou> {
+   private final List<hqf<hou>> a = Lists.newArrayList();
+   @Nullable
+   private final xa b;
 
-   public hqe(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+   public hqe(ali $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : xa.c($$1);
    }
 
-   public void a(fpk $$0, wy $$1) {
-      hqe.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new hqe.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
+   @Override
+   public int e() {
+      int $$0 = 0;
+
+      for (hqf<hou> $$1 : this.a) {
+         $$0 += $$1.e();
+      }
+
+      return $$0;
+   }
+
+   public hou a(azx $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
+
+         for (hqf<hou> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
+            }
+         }
+
+         return hqd.b;
+      } else {
+         return hqd.b;
       }
    }
 
-   static class a {
-      final wy a;
-      final RateLimiter b;
+   public void a(hqf<hou> $$0) {
+      this.a.add($$0);
+   }
 
-      a(wy $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Nullable
+   public xa a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(hqa $$0) {
+      for (hqf<hou> $$1 : this.a) {
+         $$1.a($$0);
       }
    }
 }

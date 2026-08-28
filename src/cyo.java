@@ -1,40 +1,58 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import java.util.Optional;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public record cyo<T>(Either<jf<T>, alf<T>> a) {
-   public cyo(jf<T> $$0) {
-      this(Either.left($$0));
+public class cyo extends czu {
+   private static final xa a = xa.c("item.minecraft.lodestone_compass");
+
+   public cyo(czu.a $$0) {
+      super($$0);
    }
 
-   public cyo(alf<T> $$0) {
-      this(Either.right($$0));
+   @Override
+   public boolean d_(czy $$0) {
+      return $$0.c(kk.ah) || super.d_($$0);
    }
 
-   public static <T> Codec<cyo<T>> a(alf<js<T>> $$0, Codec<jf<T>> $$1) {
-      return Codec.either($$1, alf.a($$0).comapFlatMap($$0x -> DataResult.error(() -> "Cannot parse as key without registry"), Function.identity()))
-         .xmap(cyo::new, cyo::b);
+   @Override
+   public void a(czy $$0, ars $$1, bwt $$2, @Nullable bxd $$3) {
+      dcs $$4 = $$0.a(kk.ah);
+      if ($$4 != null) {
+         dcs $$5 = $$4.a($$1);
+         if ($$5 != $$4) {
+            $$0.b(kk.ah, $$5);
+         }
+      }
    }
 
-   public static <T> yw<wj, cyo<T>> a(alf<js<T>> $$0, yw<wj, jf<T>> $$1) {
-      return yw.a(yu.a($$1, alf.b($$0)), cyo::b, cyo::new);
+   @Override
+   public bur a(ddt $$0) {
+      iv $$1 = $$0.a();
+      djx $$2 = $$0.q();
+      if (!$$2.a_($$1).a(dne.pY)) {
+         return super.a($$0);
+      } else {
+         $$2.a(null, $$1, awp.oZ, awq.h, 1.0F, 1.0F);
+         crx $$3 = $$0.o();
+         czy $$4 = $$0.n();
+         boolean $$5 = !$$3.fV() && $$4.M() == 1;
+         dcs $$6 = new dcs(Optional.of(je.a($$2.aj(), $$1)), true);
+         if ($$5) {
+            $$4.b(kk.ah, $$6);
+         } else {
+            czy $$7 = $$4.a(dac.rK, 1);
+            $$4.a(1, $$3);
+            $$7.b(kk.ah, $$6);
+            if (!$$3.gj().g($$7)) {
+               $$3.a($$7, false);
+            }
+         }
+
+         return bur.a;
+      }
    }
 
-   public Optional<T> a(js<T> $$0) {
-      return (Optional<T>)this.a.map($$0x -> Optional.of($$0x.a()), $$0::f);
-   }
-
-   public Optional<jf<T>> a(jh.a $$0) {
-      return (Optional<jf<T>>)this.a.map(Optional::of, $$1 -> $$0.c($$1).map($$0xx -> $$0xx));
-   }
-
-   public Optional<alf<T>> a() {
-      return (Optional<alf<T>>)this.a.map(jf::e, Optional::of);
-   }
-
-   public Either<jf<T>, alf<T>> b() {
-      return this.a;
+   @Override
+   public xa a(czy $$0) {
+      return $$0.c(kk.ah) ? a : super.a($$0);
    }
 }

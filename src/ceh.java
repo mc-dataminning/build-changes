@@ -1,86 +1,95 @@
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+public abstract class ceh extends ceq {
+   protected bxw d;
+   protected iv e = iv.c;
+   protected boolean f;
+   private boolean a;
+   private float b;
+   private float c;
 
-public class ceh extends cfc {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
-
-   public ceh(bxr $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public ceh(bxw $$0) {
+      this.d = $$0;
+      if (!cio.a($$0)) {
+         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
+      }
    }
 
-   @Nullable
-   @Override
-   protected ffc h() {
-      float $$0 = this.b.dU().A.i();
-      if (this.b.dU().A.i() < 0.3F) {
-         return this.k();
+   protected boolean h() {
+      if (!this.f) {
+         return false;
       } else {
-         ffc $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
+         ebe $$0 = this.d.dV().a_(this.e);
+         if (!($$0.b() instanceof dpj)) {
+            this.f = false;
+            return false;
          } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
-            }
+            return $$0.c(dpj.e);
          }
-
-         return $$1 == null ? this.k() : $$1;
       }
    }
 
-   @Nullable
-   private ffc k() {
-      return cif.a(this.b, 10, 7);
+   protected void a(boolean $$0) {
+      if (this.f) {
+         ebe $$1 = this.d.dV().a_(this.e);
+         if ($$1.b() instanceof dpj) {
+            ((dpj)$$1.b()).a(this.d, this.d.dV(), $$1, this.e, $$0);
+         }
+      }
    }
 
-   @Nullable
-   private ffc l() {
-      arq $$0 = (arq)this.b.dU();
-      List<cqy> $$1 = $$0.a(bwr.bD, this.b.cQ().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
+   @Override
+   public boolean b() {
+      if (!cio.a(this.d)) {
+         return false;
+      } else if (!this.d.P) {
+         return false;
       } else {
-         cqy $$2 = $$1.get(this.b.dU().A.a($$1.size()));
-         ffc $$3 = $$2.ds();
-         return cif.a(this.b, 10, 7, $$3);
+         chd $$0 = (chd)this.d.O();
+         eyc $$1 = $$0.i();
+         if ($$1 != null && !$$1.c()) {
+            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
+               eya $$3 = $$1.a($$2);
+               this.e = new iv($$3.a, $$3.b + 1, $$3.c);
+               if (!(this.d.h((double)this.e.u(), this.d.dC(), (double)this.e.w()) > 2.25)) {
+                  this.f = dpj.a(this.d.dV(), this.e);
+                  if (this.f) {
+                     return true;
+                  }
+               }
+            }
+
+            this.e = this.d.dv().d();
+            this.f = dpj.a(this.d.dV(), this.e);
+            return this.f;
+         } else {
+            return false;
+         }
       }
    }
 
-   @Nullable
-   private ffc m() {
-      jy $$0 = this.n();
-      if ($$0 == null) {
-         return null;
-      } else {
-         iv $$1 = this.a($$0);
-         return $$1 == null ? null : cif.a(this.b, 10, 7, ffc.c($$1));
+   @Override
+   public boolean c() {
+      return !this.a;
+   }
+
+   @Override
+   public void d() {
+      this.a = false;
+      this.b = (float)((double)this.e.u() + 0.5 - this.d.dA());
+      this.c = (float)((double)this.e.w() + 0.5 - this.d.dG());
+   }
+
+   @Override
+   public boolean V_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dA());
+      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dG());
+      float $$2 = this.b * $$0 + this.c * $$1;
+      if ($$2 < 0.0F) {
+         this.a = true;
       }
-   }
-
-   @Nullable
-   private jy n() {
-      arq $$0 = (arq)this.b.dU();
-      List<jy> $$1 = jy.a(jy.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.A.a($$1.size()));
-   }
-
-   @Nullable
-   private iv a(jy $$0) {
-      arq $$1 = (arq)this.b.dU();
-      cil $$2 = $$1.A();
-      List<iv> $$3 = $$2.c($$0x -> true, $$0.k(), 8, cil.b.b).map(cim::g).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.A.a($$3.size()));
-   }
-
-   private boolean a(cqy $$0) {
-      return $$0.a(this.b.dU().ae());
    }
 }

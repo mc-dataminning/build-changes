@@ -1,79 +1,101 @@
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class gng extends goz {
-   private final float a;
-   private final gou b;
+public abstract class gng {
+   protected final UUID a;
+   protected final Instant b;
+   protected final UUID c;
+   protected String d = "";
+   @Nullable
+   protected gni e;
+   protected boolean f;
 
-   gng(gkq $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gou $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
-      this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
+   public gng(UUID $$0, Instant $$1, UUID $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public god b() {
-      return god.b;
+   public boolean a(UUID $$0) {
+      return $$0.equals(this.c);
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   public abstract gng b();
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
-         }
+   public abstract gad a(gad var1, gnk var2);
 
-         this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
-      }
-   }
+   public abstract static class a<R extends gng> {
+      protected final R a;
+      protected final AbuseReportLimits b;
 
-   public static class a implements goc<lq> {
-      private final gou a;
-
-      public a(gou $$0) {
+      protected a(R $$0, AbuseReportLimits $$1) {
          this.a = $$0;
+         this.b = $$1;
+      }
+
+      public R e() {
+         return this.a;
+      }
+
+      public UUID f() {
+         return this.a.c;
+      }
+
+      public String g() {
+         return this.a.d;
+      }
+
+      public boolean h() {
+         return this.e().f;
+      }
+
+      public void a(String $$0) {
+         this.a.d = $$0;
       }
 
       @Nullable
-      public gnz a(lq $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         eat $$8 = $$0.b();
-         if (!$$8.l() && $$8.o() == dte.a) {
-            return null;
-         } else {
-            iv $$9 = iv.a($$2, $$3, $$4);
-            int $$10 = fpt.Q().aw().a($$8, $$1, $$9);
-            if ($$8.b() instanceof dpp) {
-               $$10 = ((dpp)$$8.b()).b($$8, $$1, $$9);
-            }
-
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new gng($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
-         }
+      public gni i() {
+         return this.a.e;
       }
+
+      public void a(gni $$0) {
+         this.a.e = $$0;
+      }
+
+      public void a(boolean $$0) {
+         this.a.f = $$0;
+      }
+
+      public abstract boolean b();
+
+      @Nullable
+      public gng.b c() {
+         return !this.e().f ? gng.b.e : null;
+      }
+
+      public abstract Either<gng.c, gng.b> a(gnk var1);
+   }
+
+   public static record b(xa f) {
+      public static final gng.b a = new gng.b(xa.c("gui.abuseReport.send.no_reason"));
+      public static final gng.b b = new gng.b(xa.c("gui.chatReport.send.no_reported_messages"));
+      public static final gng.b c = new gng.b(xa.c("gui.chatReport.send.too_many_messages"));
+      public static final gng.b d = new gng.b(xa.c("gui.abuseReport.send.comment_too_long"));
+      public static final gng.b e = new gng.b(xa.c("gui.abuseReport.send.not_attested"));
+
+      public fvw a() {
+         return fvw.a(this.f);
+      }
+
+      public xa b() {
+         return this.f;
+      }
+   }
+
+   public static record c(UUID a, gnj b, AbuseReport c) {
    }
 }

@@ -1,103 +1,59 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dlr extends dpp {
-   public static final MapCodec<dlr> a = b(dlr::new);
-   public static final ebr<jb> b = dqs.e;
-   private static final Map<jb.a, ffw> c = fft.a(
-      fft.a(dmr.b(12.0, 0.0, 4.0), dmr.a(8.0, 10.0, 4.0, 5.0), dmr.a(4.0, 8.0, 5.0, 10.0), dmr.a(10.0, 16.0, 10.0, 16.0))
+public class dlr extends dle {
+   public static final MapCodec<dlr> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alg.d(dlh.ai), alg.d(dlh.aj), alg.d(dlh.ak), alg.d(dlh.al), alg.d(dlh.am)).apply($$0, $$0.stable(dlr::new))
    );
-   private static final wy d = wy.c("container.repair");
-   private static final float e = 2.0F;
-   private static final int f = 40;
+   private final jf<dla> c;
+   private final jf<dla> d;
+   private final jf<dla> e;
+   private final jf<dla> f;
+   private final jf<dla> g;
 
-   @Override
-   public MapCodec<dlr> a() {
-      return a;
+   public static dlr a(jg<dla> $$0) {
+      return new dlr($$0.b(dlh.ai), $$0.b(dlh.aj), $$0.b(dlh.ak), $$0.b(dlh.al), $$0.b(dlh.am));
    }
 
-   public dlr(eas.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, jb.c));
-   }
-
-   @Override
-   public eat a(ddg $$0) {
-      return this.m().b(b, $$0.g().h());
-   }
-
-   @Override
-   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awx.aC);
-      }
-
-      return bug.a;
-   }
-
-   @Nullable
-   @Override
-   protected bui b(eat $$0, djm $$1, iv $$2) {
-      return new buo(($$2x, $$3, $$4) -> new cvi($$2x, $$3, cvs.a($$1, $$2)), d);
+   private dlr(jf<dla> $$0, jf<dla> $$1, jf<dla> $$2, jf<dla> $$3, jf<dla> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return c.get($$0.c(b).o());
+   protected Stream<jf<dla>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
    }
 
    @Override
-   protected void a(cnq $$0) {
-      $$0.b(2.0F, 40);
+   protected MapCodec<? extends dle> a() {
+      return b;
    }
 
    @Override
-   public void a(djm $$0, iv $$1, eat $$2, eat $$3, cnq $$4) {
-      if (!$$4.aZ()) {
-         $$0.c(1031, $$1, 0);
-      }
-   }
-
-   @Override
-   public void a(djm $$0, iv $$1, cnq $$2) {
-      if (!$$2.aZ()) {
-         $$0.c(1029, $$1, 0);
-      }
-   }
-
-   @Override
-   public bux a(bwi $$0) {
-      return $$0.dV().b($$0);
-   }
-
-   @Nullable
-   public static eat e(eat $$0) {
-      if ($$0.a(dmt.ht)) {
-         return dmt.hu.m().b(b, $$0.c(b));
+   public jf<dla> getNoiseBiome(int $$0, int $$1, int $$2, dlj.f $$3) {
+      int $$4 = jq.c($$0);
+      int $$5 = jq.c($$1);
+      int $$6 = jq.c($$2);
+      int $$7 = jy.a($$4);
+      int $$8 = jy.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
       } else {
-         return $$0.a(dmt.hu) ? dmt.hv.m().b(b, $$0.c(b)) : null;
+         int $$9 = (jy.a($$4) * 2 + 1) * 8;
+         int $$10 = (jy.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new egw.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
+         }
       }
-   }
-
-   @Override
-   protected eat a(eat $$0, dtl $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(eat $$0, exp $$1) {
-      return false;
-   }
-
-   @Override
-   public int b(eat $$0, diq $$1, iv $$2) {
-      return $$0.a($$1, $$2).ak;
    }
 }

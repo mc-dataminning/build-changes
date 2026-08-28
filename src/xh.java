@@ -1,72 +1,71 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
+import com.google.common.primitives.Ints;
+import com.mojang.serialization.Codec;
+import java.security.SignatureException;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class xh {
-   private final int a;
-   private final ObjectList<xi> b = new ObjectArrayList();
-   @Nullable
-   private xk c;
+public record xh(List<xm> d) {
+   public static final Codec<xh> a = xm.a.listOf().xmap(xh::new, xh::a);
+   public static xh b = new xh(List.of());
+   public static final int c = 20;
 
-   public xh(int $$0) {
-      this.a = $$0;
+   public void a(bac.a $$0) throws SignatureException {
+      $$0.update(Ints.toByteArray(this.d.size()));
 
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.b.add(null);
+      for (xm $$1 : this.d) {
+         $$0.update($$1.b());
       }
    }
 
-   public void a(xk $$0) {
-      if (!$$0.equals(this.c)) {
-         this.b.add(new xi($$0, true));
-         this.c = $$0;
+   public xh.a a(xn $$0) {
+      return new xh.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
+   }
+
+   public List<xm> a() {
+      return this.d;
+   }
+
+   public static record a(List<xm.a> b) {
+      public static final xh.a a = new xh.a(List.of());
+
+      public a(vw $$0) {
+         this($$0.a(vw.a(ArrayList::new, 20), xm.a::a));
       }
-   }
 
-   public int a() {
-      return this.b.size();
-   }
-
-   public boolean a(int $$0) {
-      int $$1 = this.b.size() - this.a;
-      if ($$0 >= 0 && $$0 <= $$1) {
-         this.b.removeElements(0, $$0);
-         return true;
-      } else {
-         return false;
+      public void a(vw $$0) {
+         $$0.a(this.b, xm.a::a);
       }
-   }
 
-   public Optional<xf> a(xf.b $$0) {
-      if (!this.a($$0.a())) {
-         return Optional.empty();
-      } else {
-         ObjectList<xk> $$1 = new ObjectArrayList($$0.b().cardinality());
-         if ($$0.b().length() > this.a) {
-            return Optional.empty();
-         } else {
-            for (int $$2 = 0; $$2 < this.a; $$2++) {
-               boolean $$3 = $$0.b().get($$2);
-               xi $$4 = (xi)this.b.get($$2);
-               if ($$3) {
-                  if ($$4 == null) {
-                     return Optional.empty();
-                  }
+      public Optional<xh> a(xn $$0) {
+         List<xm> $$1 = new ArrayList<>(this.b.size());
 
-                  this.b.set($$2, $$4.a());
-                  $$1.add($$4.b());
-               } else {
-                  if ($$4 != null && !$$4.c()) {
-                     return Optional.empty();
-                  }
-
-                  this.b.set($$2, null);
-               }
+         for (xm.a $$2 : this.b) {
+            Optional<xm> $$3 = $$2.a($$0);
+            if ($$3.isEmpty()) {
+               return Optional.empty();
             }
 
-            return Optional.of(new xf($$1));
+            $$1.add($$3.get());
          }
+
+         return Optional.of(new xh($$1));
+      }
+
+      public List<xm.a> a() {
+         return this.b;
+      }
+   }
+
+   public static record b(int a, BitSet b) {
+      public b(vw $$0) {
+         this($$0.l(), $$0.e(20));
+      }
+
+      public void a(vw $$0) {
+         $$0.c(this.a);
+         $$0.a(this.b, 20);
       }
    }
 }

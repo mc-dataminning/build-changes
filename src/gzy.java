@@ -1,26 +1,30 @@
-public class gzy extends gwx<csy, hdf> {
-   private static final alg a = alg.b("textures/entity/projectiles/wind_charge.png");
-   private final gjf g;
+public class gzy extends gyz<cql, hga, gjd> {
+   private static final ali j = ali.b("textures/entity/piglin/piglin.png");
+   private static final ali k = ali.b("textures/entity/piglin/piglin_brute.png");
+   public static final hcb.a a = new hcb.a(0.0F, 0.0F, 1.0019531F);
 
-   public gzy(gwy.a $$0) {
-      super($$0);
-      this.g = new gjf($$0.a(gjs.dS));
+   public gzy(gyi.a $$0, glc $$1, glc $$2, glc $$3, glc $$4, glc $$5, glc $$6) {
+      super($$0, new gjd($$0.a($$1)), new gjd($$0.a($$2)), 0.5F, a);
+      this.a(new hcl<>(this, new gin($$0.a($$3)), new gin($$0.a($$4)), new gin($$0.a($$5)), new gin($$0.a($$6)), $$0.h()));
    }
 
-   @Override
-   public void a(hdf $$0, fkd $$1, gqr $$2, int $$3) {
-      fkh $$4 = $$2.getBuffer(grc.a(a, this.a($$0.u) % 1.0F, 0.0F));
-      this.g.a($$0);
-      this.g.a($$1, $$4, $$3, hjg.d);
-      super.a($$0, $$1, $$2, $$3);
+   public ali a(hga $$0) {
+      return $$0.a ? k : j;
    }
 
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
+   public hga b() {
+      return new hga();
    }
 
-   @Override
-   public hdf d() {
-      return new hdf();
+   public void a(cql $$0, hga $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.an() == bxc.aT;
+      $$1.d = $$0.x();
+      $$1.c = (float)cyr.b($$0.fB(), $$0);
+      $$1.b = $$0.q();
+   }
+
+   protected boolean b(hga $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

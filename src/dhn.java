@@ -1,78 +1,45 @@
-public interface dhn {
-   alf<dhi> a = dho.a("trades/desert_armorer_boots_4");
-   alf<dhi> b = dho.a("trades/desert_armorer_leggings_4");
-   alf<dhi> c = dho.a("trades/desert_armorer_chestplate_4");
-   alf<dhi> d = dho.a("trades/desert_armorer_helmet_4");
-   alf<dhi> e = dho.a("trades/desert_armorer_leggings_5");
-   alf<dhi> f = dho.a("trades/desert_armorer_chestplate_5");
-   alf<dhi> g = dho.a("trades/plains_armorer_boots_4");
-   alf<dhi> h = dho.a("trades/plains_armorer_leggings_4");
-   alf<dhi> i = dho.a("trades/plains_armorer_chestplate_4");
-   alf<dhi> j = dho.a("trades/plains_armorer_helmet_4");
-   alf<dhi> k = dho.a("trades/plains_armorer_boots_5");
-   alf<dhi> l = dho.a("trades/plains_armorer_leggings_5");
-   alf<dhi> m = dho.a("trades/savanna_armorer_boots_4");
-   alf<dhi> n = dho.a("trades/savanna_armorer_leggings_4");
-   alf<dhi> o = dho.a("trades/savanna_armorer_chestplate_4");
-   alf<dhi> p = dho.a("trades/savanna_armorer_helmet_4");
-   alf<dhi> q = dho.a("trades/savanna_armorer_chestplate_5");
-   alf<dhi> r = dho.a("trades/savanna_armorer_helmet_5");
-   alf<dhi> s = dho.a("trades/snow_armorer_boots_4");
-   alf<dhi> t = dho.a("trades/snow_armorer_helmet_4");
-   alf<dhi> u = dho.a("trades/snow_armorer_boots_5");
-   alf<dhi> v = dho.a("trades/snow_armorer_helmet_5");
-   alf<dhi> w = dho.a("trades/jungle_armorer_boots_4");
-   alf<dhi> x = dho.a("trades/jungle_armorer_leggings_4");
-   alf<dhi> y = dho.a("trades/jungle_armorer_chestplate_4");
-   alf<dhi> z = dho.a("trades/jungle_armorer_helmet_4");
-   alf<dhi> A = dho.a("trades/jungle_armorer_boots_5");
-   alf<dhi> B = dho.a("trades/jungle_armorer_helmet_5");
-   alf<dhi> C = dho.a("trades/swamp_armorer_boots_4");
-   alf<dhi> D = dho.a("trades/swamp_armorer_leggings_4");
-   alf<dhi> E = dho.a("trades/swamp_armorer_chestplate_4");
-   alf<dhi> F = dho.a("trades/swamp_armorer_helmet_4");
-   alf<dhi> G = dho.a("trades/swamp_armorer_boots_5");
-   alf<dhi> H = dho.a("trades/swamp_armorer_helmet_5");
-   alf<dhi> I = dho.a("trades/taiga_armorer_leggings_5");
-   alf<dhi> J = dho.a("trades/taiga_armorer_chestplate_5");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   static void a(qh<dhi> $$0) {
-      jg<dga> $$1 = $$0.a(mh.aR);
-      $$0.a(a, new dhm($$1.b(dgf.h), bti.a(1)));
-      $$0.a(b, new dhm($$1.b(dgf.h), bti.a(1)));
-      $$0.a(c, new dhm($$1.b(dgf.h), bti.a(1)));
-      $$0.a(d, new dhm($$1.b(dgf.h), bti.a(1)));
-      $$0.a(e, new dhm($$1.b(dgf.h), bti.a(1)));
-      $$0.a(f, new dhm($$1.b(dgf.h), bti.a(1)));
-      $$0.a(g, new dhm($$1.b(dgf.a), bti.a(1)));
-      $$0.a(h, new dhm($$1.b(dgf.a), bti.a(1)));
-      $$0.a(i, new dhm($$1.b(dgf.a), bti.a(1)));
-      $$0.a(j, new dhm($$1.b(dgf.a), bti.a(1)));
-      $$0.a(k, new dhm($$1.b(dgf.a), bti.a(1)));
-      $$0.a(l, new dhm($$1.b(dgf.a), bti.a(1)));
-      $$0.a(m, new dhm($$1.b(dgf.k), bti.a(1)));
-      $$0.a(n, new dhm($$1.b(dgf.k), bti.a(1)));
-      $$0.a(o, new dhm($$1.b(dgf.k), bti.a(1)));
-      $$0.a(p, new dhm($$1.b(dgf.k), bti.a(1)));
-      $$0.a(q, new dhm($$1.b(dgf.k), bti.a(1)));
-      $$0.a(r, new dhm($$1.b(dgf.k), bti.a(1)));
-      $$0.a(s, new dhm($$1.b(dgf.j), bti.a(1)));
-      $$0.a(t, new dhm($$1.b(dgf.g), bti.a(1)));
-      $$0.a(u, new dhm($$1.b(dgf.j), bti.a(1)));
-      $$0.a(v, new dhm($$1.b(dgf.g), bti.a(1)));
-      $$0.a(w, new dhm($$1.b(dgf.w), bti.a(1)));
-      $$0.a(x, new dhm($$1.b(dgf.w), bti.a(1)));
-      $$0.a(y, new dhm($$1.b(dgf.w), bti.a(1)));
-      $$0.a(z, new dhm($$1.b(dgf.w), bti.a(1)));
-      $$0.a(A, new dhm($$1.b(dgf.c), bti.a(1)));
-      $$0.a(B, new dhm($$1.b(dgf.e), bti.a(1)));
-      $$0.a(C, new dhm($$1.b(dgf.O), bti.a(1)));
-      $$0.a(D, new dhm($$1.b(dgf.O), bti.a(1)));
-      $$0.a(E, new dhm($$1.b(dgf.O), bti.a(1)));
-      $$0.a(F, new dhm($$1.b(dgf.O), bti.a(1)));
-      $$0.a(G, new dhm($$1.b(dgf.i), bti.a(1)));
-      $$0.a(H, new dhm($$1.b(dgf.f), bti.a(1)));
-      $$0.a(I, new dhm($$1.b(dgf.d), bti.a(1)));
-      $$0.a(J, new dhm($$1.b(dgf.d), bti.a(1)));
+public record dhn(dby d, ka e, Optional<jf<ege>> f) implements dhc {
+   public static final MapCodec<dhn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dby.b.fieldOf("properties").forGetter(dhn::b),
+               ka.g.optionalFieldOf("offset", ka.i).forGetter(dhn::c),
+               ege.aj.optionalFieldOf("trigger_game_event").forGetter(dhn::d)
+            )
+            .apply($$0, dhn::new)
+   );
+
+   public dhn(dby $$0) {
+      this($$0, ka.i, Optional.of(ege.c));
+   }
+
+   @Override
+   public void a(ars $$0, int $$1, dgk $$2, bwt $$3, ffq $$4) {
+      iv $$5 = iv.a((jp)$$4).a(this.e);
+      ebe $$6 = $$3.dV().a_($$5);
+      ebe $$7 = this.d.a($$6);
+      if ($$6 != $$7 && $$3.dV().a($$5, $$7, 3)) {
+         this.f.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
+      }
+   }
+
+   @Override
+   public MapCodec<dhn> a() {
+      return a;
+   }
+
+   public dby b() {
+      return this.d;
+   }
+
+   public ka c() {
+      return this.e;
+   }
+
+   public Optional<jf<ege>> d() {
+      return this.f;
    }
 }

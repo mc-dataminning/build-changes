@@ -1,78 +1,65 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dqy extends dmr implements dpl, dqd {
+public class dqy extends dnc implements dun {
    public static final MapCodec<dqy> a = b(dqy::new);
-   public static final ebr<jd> b = ebj.W;
+   private static final ebv b = ebu.I;
+   private static final fgk c = dnc.b(12.0, 10.0, 16.0);
 
    @Override
    public MapCodec<dqy> a() {
       return a;
    }
 
-   protected dqy(eas.d $$0) {
+   protected dqy(ebd.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, jd.k));
+      this.l(this.C.b().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(eau.a<dmr, eat> $$0) {
+   protected void a(ebf.a<dnc, ebe> $$0) {
       $$0.a(b);
    }
 
    @Override
-   protected eat a(eat $$0, dtl $$1) {
-      return $$0.b(b, $$1.a().a($$0.c(b)));
+   protected exo b_(ebe $$0) {
+      return $$0.c(b) ? exp.c.a(false) : super.b_($$0);
    }
 
+   @Nullable
    @Override
-   protected eat a(eat $$0, dru $$1) {
-      return $$0.b(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   public eat a(ddg $$0) {
-      jb $$1 = $$0.k();
-      jb $$2;
-      if ($$1.o() == jb.a.b) {
-         $$2 = $$0.g().g();
+   public ebe a(ddr $$0) {
+      ebe $$1 = super.a($$0);
+      if ($$1 != null) {
+         exo $$2 = $$0.q().b_($$0.a());
+         return $$1.b(b, Boolean.valueOf($$2.a() == exp.c));
       } else {
-         $$2 = jb.b;
-      }
-
-      return this.m().b(b, jd.a($$1, $$2));
-   }
-
-   @Override
-   public dxr a(iv $$0, eat $$1) {
-      return new dyv($$0, $$1);
-   }
-
-   @Override
-   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
-      dxr $$5 = $$1.c_($$2);
-      if ($$5 instanceof dyv && $$3.gF()) {
-         $$3.a((dyv)$$5);
-         return bug.a;
-      } else {
-         return bug.e;
+         return null;
       }
    }
 
-   public static boolean a(evp.a $$0, evp.a $$1) {
-      jb $$2 = o($$0.a().b());
-      jb $$3 = o($$1.a().b());
-      jb $$4 = p($$0.a().b());
-      jb $$5 = p($$1.a().b());
-      dyv.a $$6 = $$0.b();
-      boolean $$7 = $$6 == dyv.a.a;
-      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.e().equals($$1.c());
+   @Override
+   protected boolean a(ebe $$0, dka $$1, iv $$2) {
+      iv $$3 = $$2.d();
+      ebe $$4 = $$1.a_($$3);
+      return $$4.c($$1, $$3, jb.a);
    }
 
-   public static jb o(eat $$0) {
-      return $$0.c(b).a();
+   @Override
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return c;
    }
 
-   public static jb p(eat $$0) {
-      return $$0.c(b).b();
+   @Override
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      if ($$4 == jb.b && !this.a($$0, $$1, $$3)) {
+         return dne.a.m();
+      } else {
+         if ($$0.c(b)) {
+            $$2.a($$3, exp.c, exp.c.a($$1));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 }

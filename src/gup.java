@@ -1,90 +1,52 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-public class gup implements gut.a {
-   private final fpt a;
-   private static final int b = axw.a(255, 0, 155, 155);
-   private static final int c = axw.a(255, 255, 255, 0);
+public class gup {
+   private static final Map<dye<?>, guo<?>> a = Maps.newHashMap();
 
-   public gup(fpt $$0) {
-      this.a = $$0;
+   private static <T extends dyc> void a(dye<? extends T> $$0, guo<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   @Override
-   public void a(fkd $$0, gqr $$1, double $$2, double $$3, double $$4) {
-      bwi $$5 = this.a.j.k().g();
-      float $$6 = (float)((double)this.a.s.G_() - $$3);
-      float $$7 = (float)((double)(this.a.s.ao() + 1) - $$3);
-      dir $$8 = $$5.dw();
-      float $$9 = (float)((double)$$8.d() - $$2);
-      float $$10 = (float)((double)$$8.e() - $$4);
-      fkh $$11 = $$1.getBuffer(grc.a(1.0));
-      Matrix4f $$12 = $$0.c().a();
-
-      for (int $$13 = -16; $$13 <= 32; $$13 += 16) {
-         for (int $$14 = -16; $$14 <= 32; $$14 += 16) {
-            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F);
-            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F);
-            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F);
-            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F);
+   public static Map<dye<?>, gun<?>> a(guo.a $$0) {
+      Builder<dye<?>, gun<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + mg.j.b((dye<?>)$$2), var5);
          }
-      }
+      });
+      return $$1.build();
+   }
 
-      for (int $$15 = 2; $$15 < 16; $$15 += 2) {
-         int $$16 = $$15 % 4 == 0 ? b : c;
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a($$16);
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a($$16);
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F);
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a($$16);
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a($$16);
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F);
-      }
-
-      for (int $$17 = 2; $$17 < 16; $$17 += 2) {
-         int $$18 = $$17 % 4 == 0 ? b : c;
-         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
-         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a($$18);
-         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a($$18);
-         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
-         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
-         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a($$18);
-         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a($$18);
-         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
-      }
-
-      for (int $$19 = this.a.s.G_(); $$19 <= this.a.s.ao() + 1; $$19 += 2) {
-         float $$20 = (float)((double)$$19 - $$3);
-         int $$21 = $$19 % 8 == 0 ? b : c;
-         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
-         $$11.a($$12, $$9, $$20, $$10).a($$21);
-         $$11.a($$12, $$9, $$20, $$10 + 16.0F).a($$21);
-         $$11.a($$12, $$9 + 16.0F, $$20, $$10 + 16.0F).a($$21);
-         $$11.a($$12, $$9 + 16.0F, $$20, $$10).a($$21);
-         $$11.a($$12, $$9, $$20, $$10).a($$21);
-         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
-      }
-
-      $$11 = $$1.getBuffer(grc.a(2.0));
-
-      for (int $$22 = 0; $$22 <= 16; $$22 += 16) {
-         for (int $$23 = 0; $$23 <= 16; $$23 += 16) {
-            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F);
-            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F);
-            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F);
-            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F);
-         }
-      }
-
-      for (int $$24 = this.a.s.G_(); $$24 <= this.a.s.ao() + 1; $$24 += 16) {
-         float $$25 = (float)((double)$$24 - $$3);
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F);
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F);
-         $$11.a($$12, $$9, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F);
-         $$11.a($$12, $$9 + 16.0F, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F);
-         $$11.a($$12, $$9 + 16.0F, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F);
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F);
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F);
-      }
+   static {
+      a(dye.h, gvc::new);
+      a(dye.i, guy::new);
+      a(dye.j, gve::new);
+      a(dye.l, gva::new);
+      a(dye.b, guu::new);
+      a(dye.d, guu::new);
+      a(dye.c, guu::new);
+      a(dye.n, gux::new);
+      a(dye.E, guz::new);
+      a(dye.o, gvh::new);
+      a(dye.w, gvg::new);
+      a(dye.p, guj::new);
+      a(dye.q, gvd::new);
+      a(dye.u, gui::new);
+      a(dye.v, guq::new);
+      a(dye.U, gvf::new);
+      a(dye.y, gvb::new);
+      a(dye.z, guk::new);
+      a(dye.A, guv::new);
+      a(dye.F, gul::new);
+      a(dye.H, gut::new);
+      a(dye.O, gus::new);
+      a(dye.P, guw::new);
+      a(dye.R, gvi::new);
+      a(dye.S, gvj::new);
    }
 }

@@ -1,47 +1,70 @@
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-@Deprecated
-public class ehl implements egh {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final egu i = new egu(this);
+public record ehl(int g, int h, int i, int j) {
+   public static final Codec<ehl> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.intRange(efb.e, efb.d).fieldOf("min_y").forGetter(ehl::c),
+                  Codec.intRange(0, efb.c).fieldOf("height").forGetter(ehl::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(ehl::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(ehl::f)
+               )
+               .apply($$0, ehl::new)
+      )
+      .comapFlatMap(ehl::a, Function.identity());
+   protected static final ehl b = a(-64, 384, 1, 2);
+   protected static final ehl c = a(0, 128, 1, 2);
+   protected static final ehl d = a(0, 128, 2, 1);
+   protected static final ehl e = a(-64, 192, 1, 2);
+   protected static final ehl f = a(0, 256, 2, 1);
 
-   public ehl(long $$0) {
-      this.b($$0);
+   private static DataResult<ehl> a(ehl $$0) {
+      if ($$0.c() + $$0.d() > efb.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (efb.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
+      } else {
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+      }
    }
 
-   @Override
-   public azv d() {
-      return new ehl(this.g());
+   public static ehl a(int $$0, int $$1, int $$2, int $$3) {
+      ehl $$4 = new ehl($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
    }
 
-   @Override
-   public ehf e() {
-      return new egt.a(this.g());
+   public int a() {
+      return jq.c(this.f());
    }
 
-   @Override
-   public void b(long $$0) {
-      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
+   public int b() {
+      return jq.c(this.e());
    }
 
-   @Override
-   public int c(int $$0) {
-      long $$1;
-      long $$2;
-      do {
-         $$1 = this.h.get();
-         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      } while (!this.h.compareAndSet($$1, $$2));
-
-      return (int)($$2 >>> 48 - $$0);
+   public ehl a(djz $$0) {
+      int $$1 = Math.max(this.g, $$0.K_());
+      int $$2 = Math.min(this.g + this.h, $$0.ao() + 1) - $$1;
+      return new ehl($$1, $$2, this.i, this.j);
    }
 
-   @Override
-   public double k() {
-      return this.i.b();
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public int e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
    }
 }

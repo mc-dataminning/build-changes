@@ -1,52 +1,59 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class dsf extends dwd {
-   public static final MapCodec<dsf> a = b(dsf::new);
-   public static final int b = 3;
-   public static final ebt c = ebj.av;
-   private static final ffw[] d = dmr.a(3, $$0 -> dmr.b(16.0, 0.0, (double)(5 + $$0 * 3)));
+public enum dsf implements bam {
+   a("none", h.a),
+   b("left_right", h.B),
+   c("front_back", h.z);
 
-   @Override
-   public MapCodec<dsf> a() {
-      return a;
+   public static final Codec<dsf> d = bam.a(dsf::values);
+   @Deprecated
+   public static final Codec<dsf> e = ayw.c(dsf::valueOf);
+   private final String f;
+   private final xa g;
+   private final h h;
+
+   private dsf(final String $$0, final h $$1) {
+      this.f = $$0;
+      this.g = xa.c("mirror." + $$0);
+      this.h = $$1;
    }
 
-   protected dsf(eas.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(c, Integer.valueOf(0)));
-   }
-
-   @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   protected boolean b(eat $$0, diq $$1, iv $$2) {
-      return $$0.a(dmt.en);
-   }
-
-   @Override
-   protected boolean f(eat $$0) {
-      return $$0.c(c) < 3;
-   }
-
-   @Override
-   protected void b(eat $$0, arq $$1, iv $$2, azv $$3) {
-      int $$4 = $$0.c(c);
-      if ($$4 < 3 && $$3.a(10) == 0) {
-         $$0 = $$0.b(c, Integer.valueOf($$4 + 1));
-         $$1.a($$2, $$0, 2);
+   public int a(int $$0, int $$1) {
+      int $$2 = $$1 / 2;
+      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
+      switch (this) {
+         case b:
+            return ($$2 - $$3 + $$1) % $$1;
+         case c:
+            return ($$1 - $$3) % $$1;
+         default:
+            return $$0;
       }
    }
 
-   @Override
-   protected czn a(djp $$0, iv $$1, eat $$2, boolean $$3) {
-      return new czn(czr.tr);
+   public dtw a(jb $$0) {
+      jb.a $$1 = $$0.o();
+      return (this != b || $$1 != jb.a.c) && (this != c || $$1 != jb.a.a) ? dtw.a : dtw.c;
+   }
+
+   public jb b(jb $$0) {
+      if (this == c && $$0.o() == jb.a.a) {
+         return $$0.g();
+      } else {
+         return this == b && $$0.o() == jb.a.c ? $$0.g() : $$0;
+      }
+   }
+
+   public h a() {
+      return this.h;
+   }
+
+   public xa b() {
+      return this.g;
    }
 
    @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(c);
+   public String c() {
+      return this.f;
    }
 }

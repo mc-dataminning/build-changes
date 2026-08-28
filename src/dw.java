@@ -8,8 +8,8 @@ public class dw extends dk<dw.a> {
       return dw.a.a;
    }
 
-   public void a(arr $$0, cqt $$1, czn $$2) {
-      ezt $$3 = by.b($$0, $$1);
+   public void a(art $$0, cre $$1, czy $$2) {
+      fah $$3 = by.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$3, $$2));
    }
 
@@ -31,7 +31,7 @@ public class dw extends dk<dw.a> {
          return aq.t.a(new dw.a(Optional.of(by.a($$0)), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(ezt $$0, czn $$1) {
+      public boolean a(fah $$0, czy $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

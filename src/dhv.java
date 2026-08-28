@@ -1,21 +1,28 @@
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dhv {
-   alf<? extends js<dhu>> a = alf.a(alg.b("equipment_asset"));
-   alf<dhu> b = a("leather");
-   alf<dhu> c = a("chainmail");
-   alf<dhu> d = a("iron");
-   alf<dhu> e = a("gold");
-   alf<dhu> f = a("diamond");
-   alf<dhu> g = a("turtle_scute");
-   alf<dhu> h = a("netherite");
-   alf<dhu> i = a("armadillo_scute");
-   alf<dhu> j = a("elytra");
-   alf<dhu> k = a("saddle");
-   Map<cyl, alf<dhu>> l = ag.a(cyl.class, $$0 -> a($$0.c() + "_carpet"));
-   alf<dhu> m = a("trader_llama");
+public record dhv(jj<dgl> c, btw d) implements dht {
+   public static final MapCodec<dhv> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ju.a(mh.aR).fieldOf("enchantments").forGetter(dhv::b), btw.c.fieldOf("cost").forGetter(dhv::c)).apply($$0, dhv::new)
+   );
 
-   static alf<dhu> a(String $$0) {
-      return alf.a(a, alg.b($$0));
+   @Override
+   public void a(czy $$0, dgr.a $$1, azx $$2, bup $$3) {
+      for (dgo $$5 : dgn.b($$2, $$0, this.d.a($$2), this.c.a())) {
+         $$1.b($$5.b(), $$5.c());
+      }
+   }
+
+   @Override
+   public MapCodec<dhv> a() {
+      return b;
+   }
+
+   public jj<dgl> b() {
+      return this.c;
+   }
+
+   public btw c() {
+      return this.d;
    }
 }

@@ -1,84 +1,101 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+import com.google.common.hash.Hashing;
 
-public class dlc extends dkt {
-   private static final MapCodec<jf<dkp>> d = dkp.c.fieldOf("biome");
-   public static final MapCodec<dky.c<jf<dkp>>> b = dky.c.a(d).fieldOf("biomes");
-   private static final MapCodec<jf<dld>> e = dld.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final MapCodec<dlc> c = Codec.mapEither(b, e).xmap(dlc::new, $$0 -> $$0.f);
-   private final Either<dky.c<jf<dkp>>, jf<dld>> f;
+public class dlc {
+   public static final int a = jq.a(8);
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 3;
+   private final dlc.a e;
+   private final long f;
 
-   private dlc(Either<dky.c<jf<dkp>>, jf<dld>> $$0) {
-      this.f = $$0;
+   public dlc(dlc.a $$0, long $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public static dlc a(dky.c<jf<dkp>> $$0) {
-      return new dlc(Either.left($$0));
+   public static long a(long $$0) {
+      return Hashing.sha256().hashLong($$0).asLong();
    }
 
-   public static dlc a(jf<dld> $$0) {
-      return new dlc(Either.right($$0));
+   public dlc a(dlc.a $$0) {
+      return new dlc($$0, this.f);
    }
 
-   private dky.c<jf<dkp>> d() {
-      return (dky.c<jf<dkp>>)this.f.map($$0 -> $$0, $$0 -> ((dld)$$0.a()).a());
+   public jf<dla> a(iv $$0) {
+      int $$1 = $$0.u() - 2;
+      int $$2 = $$0.v() - 2;
+      int $$3 = $$0.w() - 2;
+      int $$4 = $$1 >> 2;
+      int $$5 = $$2 >> 2;
+      int $$6 = $$3 >> 2;
+      double $$7 = (double)($$1 & 3) / 4.0;
+      double $$8 = (double)($$2 & 3) / 4.0;
+      double $$9 = (double)($$3 & 3) / 4.0;
+      int $$10 = 0;
+      double $$11 = Double.POSITIVE_INFINITY;
+
+      for (int $$12 = 0; $$12 < 8; $$12++) {
+         boolean $$13 = ($$12 & 4) == 0;
+         boolean $$14 = ($$12 & 2) == 0;
+         boolean $$15 = ($$12 & 1) == 0;
+         int $$16 = $$13 ? $$4 : $$4 + 1;
+         int $$17 = $$14 ? $$5 : $$5 + 1;
+         int $$18 = $$15 ? $$6 : $$6 + 1;
+         double $$19 = $$13 ? $$7 : $$7 - 1.0;
+         double $$20 = $$14 ? $$8 : $$8 - 1.0;
+         double $$21 = $$15 ? $$9 : $$9 - 1.0;
+         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
+         if ($$11 > $$22) {
+            $$10 = $$12;
+            $$11 = $$22;
+         }
+      }
+
+      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
+      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
+      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
+      return this.e.getNoiseBiome($$23, $$24, $$25);
    }
 
-   @Override
-   protected Stream<jf<dkp>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
+   public jf<dla> a(double $$0, double $$1, double $$2) {
+      int $$3 = jq.a(azo.a($$0));
+      int $$4 = jq.a(azo.a($$1));
+      int $$5 = jq.a(azo.a($$2));
+      return this.a($$3, $$4, $$5);
    }
 
-   @Override
-   protected MapCodec<? extends dkt> a() {
-      return c;
+   public jf<dla> b(iv $$0) {
+      int $$1 = jq.a($$0.u());
+      int $$2 = jq.a($$0.v());
+      int $$3 = jq.a($$0.w());
+      return this.a($$1, $$2, $$3);
    }
 
-   public boolean a(alf<dld> $$0) {
-      Optional<jf<dld>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
+   public jf<dla> a(int $$0, int $$1, int $$2) {
+      return this.e.getNoiseBiome($$0, $$1, $$2);
    }
 
-   @Override
-   public jf<dkp> getNoiseBiome(int $$0, int $$1, int $$2, dky.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
+   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      long $$7 = azj.a($$0, (long)$$1);
+      $$7 = azj.a($$7, (long)$$2);
+      $$7 = azj.a($$7, (long)$$3);
+      $$7 = azj.a($$7, (long)$$1);
+      $$7 = azj.a($$7, (long)$$2);
+      $$7 = azj.a($$7, (long)$$3);
+      double $$8 = b($$7);
+      $$7 = azj.a($$7, $$0);
+      double $$9 = b($$7);
+      $$7 = azj.a($$7, $$0);
+      double $$10 = b($$7);
+      return azo.k($$6 + $$10) + azo.k($$5 + $$9) + azo.k($$4 + $$8);
    }
 
-   @bav
-   public jf<dkp> a(dky.h $$0) {
-      return this.d().a($$0);
+   private static double b(long $$0) {
+      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
+      return ($$1 - 0.5) * 0.9;
    }
 
-   @Override
-   public void a(List<String> $$0, iv $$1, dky.f $$2) {
-      int $$3 = jq.a($$1.u());
-      int $$4 = jq.a($$1.v());
-      int $$5 = jq.a($$1.w());
-      dky.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = dky.a($$6.d());
-      float $$8 = dky.a($$6.e());
-      float $$9 = dky.a($$6.b());
-      float $$10 = dky.a($$6.c());
-      float $$11 = dky.a($$6.g());
-      double $$12 = (double)egz.a($$11);
-      dlf $$13 = new dlf();
-      $$0.add(
-         "Biome builder PV: "
-            + dlf.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
-      );
+   public interface a {
+      jf<dla> getNoiseBiome(int var1, int var2, int var3);
    }
 }

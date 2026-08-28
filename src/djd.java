@@ -1,19 +1,25 @@
-import java.util.Optional;
+import java.util.function.Predicate;
 
-public class djd extends djg {
-   private final bwi a;
+public class djd {
+   private final ffq a;
+   private final ffq b;
+   private final Predicate<ebe> c;
 
-   public djd(bwi $$0) {
+   public djd(ffq $$0, ffq $$1, Predicate<ebe> $$2) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public Optional<Float> a(djf $$0, diq $$1, iv $$2, eat $$3, exa $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   public ffq a() {
+      return this.b;
    }
 
-   @Override
-   public boolean a(djf $$0, diq $$1, iv $$2, eat $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
+   public ffq b() {
+      return this.a;
+   }
+
+   public Predicate<ebe> c() {
+      return this.c;
    }
 }

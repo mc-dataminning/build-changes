@@ -1,164 +1,134 @@
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cns extends bwi implements byh {
-   private static final akj<Integer> b = akn.a(cns.class, akl.b);
-   private static final akj<eat> c = akn.a(cns.class, akl.i);
-   private static final int d = 80;
-   private static final float e = 4.0F;
-   private static final String f = "block_state";
-   public static final String a = "fuse";
-   private static final String g = "explosion_power";
-   private static final djg h = new djg() {
-      @Override
-      public boolean a(djf $$0, diq $$1, iv $$2, eat $$3, float $$4) {
-         return $$3.a(dmt.eu) ? false : super.a($$0, $$1, $$2, $$3, $$4);
-      }
+public abstract class cns extends bwt {
+   private static final Logger b = LogUtils.getLogger();
+   private int c;
+   protected iv a;
 
-      @Override
-      public Optional<Float> a(djf $$0, diq $$1, iv $$2, eat $$3, exa $$4) {
-         return $$3.a(dmt.eu) ? Optional.empty() : super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   };
-   @Nullable
-   private bxj i;
-   private boolean j;
-   private float k = 4.0F;
-
-   public cns(bwr<? extends cns> $$0, djm $$1) {
+   protected cns(bxc<? extends cns> $$0, djx $$1) {
       super($$0, $$1);
-      this.I = true;
    }
 
-   public cns(djm $$0, double $$1, double $$2, double $$3, @Nullable bxj $$4) {
-      this(bwr.bw, $$0);
-      this.a_($$1, $$2, $$3);
-      double $$5 = $$0.A.j() * (float) (Math.PI * 2);
-      this.n(-Math.sin($$5) * 0.02, 0.2F, -Math.cos($$5) * 0.02);
-      this.b(80);
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
-      this.i = $$4;
+   protected cns(bxc<? extends cns> $$0, djx $$1, iv $$2) {
+      this($$0, $$1);
+      this.a = $$2;
    }
 
-   @Override
-   protected void a(akn.a $$0) {
-      $$0.a(b, 80);
-      $$0.a(c, dmt.cu.m());
-   }
-
-   @Override
-   protected bwi.c be() {
-      return bwi.c.a;
-   }
-
-   @Override
-   public boolean bE() {
-      return !this.dP();
-   }
-
-   @Override
-   protected double bb() {
-      return 0.04;
-   }
+   protected abstract void f();
 
    @Override
    public void h() {
-      this.bU();
-      this.bd();
-      this.a(bxn.a, this.dx());
-      this.aI();
-      this.i(this.dx().c(0.98));
-      if (this.aH()) {
-         this.i(this.dx().d(0.7, -0.5, 0.7));
-      }
-
-      int $$0 = this.g() - 1;
-      this.b($$0);
-      if ($$0 <= 0) {
-         this.aq();
-         if (!this.dU().C) {
-            this.m();
+      if (this.dV() instanceof ars $$0) {
+         this.ax();
+         if (this.c++ == 100) {
+            this.c = 0;
+            if (!this.dQ() && !this.g()) {
+               this.aq();
+               this.a($$0, null);
+            }
          }
+      }
+   }
+
+   public abstract boolean g();
+
+   @Override
+   public boolean bF() {
+      return true;
+   }
+
+   @Override
+   public boolean v(bwt $$0) {
+      if ($$0 instanceof crx $$1) {
+         return !this.dV().a($$1, this.a) ? true : this.b(this.dW().a($$1), 0.0F);
       } else {
-         this.bn();
-         if (this.dU().C) {
-            this.dU().a(ly.ah, this.dz(), this.dB() + 0.5, this.dF(), 0.0, 0.0, 0.0);
+         return false;
+      }
+   }
+
+   @Override
+   public boolean b(bvi $$0) {
+      return !this.d($$0);
+   }
+
+   @Override
+   public boolean a(ars $$0, bvi $$1, float $$2) {
+      if (this.d($$1)) {
+         return false;
+      } else if (!$$0.O().c(djt.d) && $$1.d() instanceof bxw) {
+         return false;
+      } else {
+         if (!this.dQ()) {
+            this.c($$0);
+            this.bB();
+            this.a($$0, $$1.d());
          }
-      }
-   }
 
-   private void m() {
-      this.dU().a(this, djf.a(this.dU(), this), this.j ? h : null, this.dz(), this.e(0.0625), this.dF(), this.k, false, djm.a.d);
-   }
-
-   @Override
-   protected void b(tz $$0) {
-      ale<uw> $$1 = this.dW().a(un.a);
-      $$0.a("fuse", (short)this.g());
-      $$0.a("block_state", eat.a, $$1, this.j());
-      if (this.k != 4.0F) {
-         $$0.a("explosion_power", this.k);
+         return true;
       }
    }
 
    @Override
-   protected void a(tz $$0) {
-      ale<uw> $$1 = this.dW().a(un.a);
-      this.b($$0.e("fuse"));
-      this.c($$0.<eat>a("block_state", eat.a, $$1).orElse(dmt.cu.m()));
-      if ($$0.b("explosion_power", 99)) {
-         this.k = azm.a($$0.h("explosion_power"), 0.0F, 128.0F);
-      }
-   }
-
-   @Nullable
-   public bxj f() {
-      return this.i;
+   public boolean a(djq $$0) {
+      return $$0.h() ? super.a($$0) : true;
    }
 
    @Override
-   public void x(bwi $$0) {
-      super.x($$0);
-      if ($$0 instanceof cns $$1) {
-         this.i = $$1.i;
+   public void a(bxy $$0, ffq $$1) {
+      if (this.dV() instanceof ars $$2 && !this.dQ() && $$1.h() > 0.0) {
+         this.c($$2);
+         this.a($$2, null);
       }
    }
 
-   public void b(int $$0) {
-      this.al.a(b, $$0);
-   }
-
-   public int g() {
-      return this.al.a(b);
-   }
-
-   public void c(eat $$0) {
-      this.al.a(c, $$0);
-   }
-
-   public eat j() {
-      return this.al.a(c);
-   }
-
-   private void a(boolean $$0) {
-      this.j = $$0;
-   }
-
-   @Nullable
    @Override
-   public bwi b(eya $$0) {
-      bwi $$1 = super.b($$0);
-      if ($$1 instanceof cns $$2) {
-         $$2.a(true);
+   public void i(double $$0, double $$1, double $$2) {
+      if (this.dV() instanceof ars $$3 && !this.dQ() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
+         this.c($$3);
+         this.a($$3, null);
       }
-
-      return $$1;
    }
 
    @Override
-   public final boolean a(arq $$0, bux $$1, float $$2) {
+   public void b(tz $$0) {
+      $$0.a("block_pos", iv.a, this.j());
+   }
+
+   @Override
+   public void a(tz $$0) {
+      iv $$1 = $$0.<iv>a("block_pos", iv.a).orElse(null);
+      if ($$1 != null && $$1.a(this.dv(), 16.0)) {
+         this.a = $$1;
+      } else {
+         b.error("Block-attached entity at invalid position: {}", $$1);
+      }
+   }
+
+   public abstract void a(ars var1, @Nullable bwt var2);
+
+   @Override
+   protected boolean bH() {
       return false;
+   }
+
+   @Override
+   public void a_(double $$0, double $$1, double $$2) {
+      this.a = iv.a($$0, $$1, $$2);
+      this.f();
+      this.ar = true;
+   }
+
+   public iv j() {
+      return this.a;
+   }
+
+   @Override
+   public void a(ars $$0, bxt $$1) {
+   }
+
+   @Override
+   public void i_() {
    }
 }

@@ -16,7 +16,7 @@ public class sq {
    private final jf.c<sr> a;
    @Nullable
    private iv b;
-   private final arq c;
+   private final ars c;
    private final Collection<st> d = Lists.newArrayList();
    private final int e;
    private final Collection<sw> f = Lists.newCopyOnWriteArrayList();
@@ -28,13 +28,13 @@ public class sq {
    private final tg l;
    private final Stopwatch m = Stopwatch.createUnstarted();
    private boolean n;
-   private final dtl o;
+   private final dtw o;
    @Nullable
    private so p;
    @Nullable
-   private dzm q;
+   private dzx q;
 
-   public sq(jf.c<sr> $$0, dtl $$1, arq $$2, tg $$3) {
+   public sq(jf.c<sr> $$0, dtw $$1, ars $$2, tg $$3) {
       this.a = $$0;
       this.c = $$2;
       this.l = $$3;
@@ -53,14 +53,14 @@ public class sq {
 
    public void a() {
       if (!this.h) {
-         dzm $$0 = this.f();
+         dzx $$0 = this.f();
          if (!$$0.A()) {
-            this.a(wy.a("test.error.structure.failure", $$0.k().getString()));
+            this.a(xa.a("test.error.structure.failure", $$0.k().getString()));
          }
 
          this.h = true;
          $$0.C();
-         erf $$1 = $$0.d();
+         ert $$1 = $$0.d();
          this.c.n().a($$1);
          this.c.a($$1);
          this.d.forEach($$0x -> $$0x.a(this));
@@ -70,11 +70,11 @@ public class sq {
    public void a(sv $$0) {
       if (!this.k()) {
          if (!this.h) {
-            this.a(wy.c("test.error.ticking_without_structure"));
+            this.a(xa.c("test.error.ticking_without_structure"));
          }
 
          if (this.q == null) {
-            this.a(wy.c("test.error.missing_block_entity"));
+            this.a(xa.c("test.error.missing_block_entity"));
          }
 
          if (this.p != null) {
@@ -121,11 +121,11 @@ public class sq {
 
          if (this.j > this.e) {
             if (this.f.isEmpty()) {
-               this.a(new sz(wy.a("test.error.timeout.no_result", this.a.a().f())));
+               this.a(new sz(xa.a("test.error.timeout.no_result", this.a.a().f())));
             } else {
                this.f.forEach($$0x -> $$0x.c(this.j));
                if (this.p == null) {
-                  this.a(new sz(wy.a("test.error.timeout.no_sequences_finished", this.a.a().f())));
+                  this.a(new sz(xa.a("test.error.timeout.no_sequences_finished", this.a.a().f())));
                }
             }
          } else {
@@ -153,7 +153,7 @@ public class sq {
       this.g.put($$1, $$0);
    }
 
-   public alg b() {
+   public ali b() {
       return this.a.h().a();
    }
 
@@ -166,18 +166,18 @@ public class sq {
       return this.q.B();
    }
 
-   public fex e() {
-      dzm $$0 = this.f();
+   public ffl e() {
+      dzx $$0 = this.f();
       return $$0.f();
    }
 
-   public dzm f() {
+   public dzx f() {
       if (this.q == null) {
          if (this.b == null) {
             throw new IllegalStateException("This GameTestInfo has no position");
          }
 
-         if (this.c.c_(this.b) instanceof dzm $$0) {
+         if (this.c.c_(this.b) instanceof dzx $$0) {
             this.q = $$0;
          }
 
@@ -189,7 +189,7 @@ public class sq {
       return this.q;
    }
 
-   public arq g() {
+   public ars g() {
       return this.c;
    }
 
@@ -225,13 +225,13 @@ public class sq {
    public void m() {
       if (this.p == null) {
          this.G();
-         fex $$0 = this.e();
-         List<bwi> $$1 = this.g().a(bwi.class, $$0.g(1.0), $$0x -> !($$0x instanceof crm));
-         $$1.forEach($$0x -> $$0x.a(bwi.d.b));
+         ffl $$0 = this.e();
+         List<bwt> $$1 = this.g().a(bwt.class, $$0.g(1.0), $$0x -> !($$0x instanceof crx));
+         $$1.forEach($$0x -> $$0x.a(bwt.d.b));
       }
    }
 
-   public void a(wy $$0) {
+   public void a(xa $$0) {
       this.a(new sh($$0, this.j));
    }
 
@@ -259,12 +259,12 @@ public class sq {
       return this;
    }
 
-   private dzm a(iv $$0, dtl $$1, arq $$2) {
-      $$2.b($$0, dmt.pJ.m());
-      dzm $$3 = Objects.requireNonNull((dzm)$$2.c_($$0));
-      alf<sr> $$4 = this.w().h();
-      ka $$5 = dzm.a($$2, $$4).orElse(new ka(1, 1, 1));
-      $$3.a(new dzm.a(Optional.of($$4), $$5, $$1, false, dzm.b.a, Optional.empty()));
+   private dzx a(iv $$0, dtw $$1, ars $$2) {
+      $$2.b($$0, dne.pJ.m());
+      dzx $$3 = Objects.requireNonNull((dzx)$$2.c_($$0));
+      alh<sr> $$4 = this.w().h();
+      ka $$5 = dzx.a($$2, $$4).orElse(new ka(1, 1, 1));
+      $$3.a(new dzx.a(Optional.of($$4), $$5, $$1, false, dzx.b.a, Optional.empty()));
       return $$3;
    }
 
@@ -286,11 +286,11 @@ public class sq {
       return !this.a.a().h();
    }
 
-   public alg t() {
+   public ali t() {
       return this.a.a().e();
    }
 
-   public dtl u() {
+   public dtw u() {
       return this.a.a().n().f().a(this.o);
    }
 

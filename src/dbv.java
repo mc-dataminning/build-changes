@@ -1,173 +1,56 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import io.netty.buffer.ByteBuf;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class dbv {
+   public static final jf<dbs> a = a("water", new dbs("water"));
+   public static final jf<dbs> b = a("mundane", new dbs("mundane"));
+   public static final jf<dbs> c = a("thick", new dbs("thick"));
+   public static final jf<dbs> d = a("awkward", new dbs("awkward"));
+   public static final jf<dbs> e = a("night_vision", new dbs("night_vision", new bvx(bvz.p, 3600)));
+   public static final jf<dbs> f = a("long_night_vision", new dbs("night_vision", new bvx(bvz.p, 9600)));
+   public static final jf<dbs> g = a("invisibility", new dbs("invisibility", new bvx(bvz.n, 3600)));
+   public static final jf<dbs> h = a("long_invisibility", new dbs("invisibility", new bvx(bvz.n, 9600)));
+   public static final jf<dbs> i = a("leaping", new dbs("leaping", new bvx(bvz.h, 3600)));
+   public static final jf<dbs> j = a("long_leaping", new dbs("leaping", new bvx(bvz.h, 9600)));
+   public static final jf<dbs> k = a("strong_leaping", new dbs("leaping", new bvx(bvz.h, 1800, 1)));
+   public static final jf<dbs> l = a("fire_resistance", new dbs("fire_resistance", new bvx(bvz.l, 3600)));
+   public static final jf<dbs> m = a("long_fire_resistance", new dbs("fire_resistance", new bvx(bvz.l, 9600)));
+   public static final jf<dbs> n = a("swiftness", new dbs("swiftness", new bvx(bvz.a, 3600)));
+   public static final jf<dbs> o = a("long_swiftness", new dbs("swiftness", new bvx(bvz.a, 9600)));
+   public static final jf<dbs> p = a("strong_swiftness", new dbs("swiftness", new bvx(bvz.a, 1800, 1)));
+   public static final jf<dbs> q = a("slowness", new dbs("slowness", new bvx(bvz.b, 1800)));
+   public static final jf<dbs> r = a("long_slowness", new dbs("slowness", new bvx(bvz.b, 4800)));
+   public static final jf<dbs> s = a("strong_slowness", new dbs("slowness", new bvx(bvz.b, 400, 3)));
+   public static final jf<dbs> t = a("turtle_master", new dbs("turtle_master", new bvx(bvz.b, 400, 3), new bvx(bvz.k, 400, 2)));
+   public static final jf<dbs> u = a("long_turtle_master", new dbs("turtle_master", new bvx(bvz.b, 800, 3), new bvx(bvz.k, 800, 2)));
+   public static final jf<dbs> v = a("strong_turtle_master", new dbs("turtle_master", new bvx(bvz.b, 400, 5), new bvx(bvz.k, 400, 3)));
+   public static final jf<dbs> w = a("water_breathing", new dbs("water_breathing", new bvx(bvz.m, 3600)));
+   public static final jf<dbs> x = a("long_water_breathing", new dbs("water_breathing", new bvx(bvz.m, 9600)));
+   public static final jf<dbs> y = a("healing", new dbs("healing", new bvx(bvz.f, 1)));
+   public static final jf<dbs> z = a("strong_healing", new dbs("healing", new bvx(bvz.f, 1, 1)));
+   public static final jf<dbs> A = a("harming", new dbs("harming", new bvx(bvz.g, 1)));
+   public static final jf<dbs> B = a("strong_harming", new dbs("harming", new bvx(bvz.g, 1, 1)));
+   public static final jf<dbs> C = a("poison", new dbs("poison", new bvx(bvz.s, 900)));
+   public static final jf<dbs> D = a("long_poison", new dbs("poison", new bvx(bvz.s, 1800)));
+   public static final jf<dbs> E = a("strong_poison", new dbs("poison", new bvx(bvz.s, 432, 1)));
+   public static final jf<dbs> F = a("regeneration", new dbs("regeneration", new bvx(bvz.j, 900)));
+   public static final jf<dbs> G = a("long_regeneration", new dbs("regeneration", new bvx(bvz.j, 1800)));
+   public static final jf<dbs> H = a("strong_regeneration", new dbs("regeneration", new bvx(bvz.j, 450, 1)));
+   public static final jf<dbs> I = a("strength", new dbs("strength", new bvx(bvz.e, 3600)));
+   public static final jf<dbs> J = a("long_strength", new dbs("strength", new bvx(bvz.e, 9600)));
+   public static final jf<dbs> K = a("strong_strength", new dbs("strength", new bvx(bvz.e, 1800, 1)));
+   public static final jf<dbs> L = a("weakness", new dbs("weakness", new bvx(bvz.r, 1800)));
+   public static final jf<dbs> M = a("long_weakness", new dbs("weakness", new bvx(bvz.r, 4800)));
+   public static final jf<dbs> N = a("luck", new dbs("luck", new bvx(bvz.z, 6000)));
+   public static final jf<dbs> O = a("slow_falling", new dbs("slow_falling", new bvx(bvz.B, 1800)));
+   public static final jf<dbs> P = a("long_slow_falling", new dbs("slow_falling", new bvx(bvz.B, 4800)));
+   public static final jf<dbs> Q = a("wind_charged", new dbs("wind_charged", new bvx(bvz.J, 3600)));
+   public static final jf<dbs> R = a("weaving", new dbs("weaving", new bvx(bvz.K, 3600)));
+   public static final jf<dbs> S = a("oozing", new dbs("oozing", new bvx(bvz.L, 3600)));
+   public static final jf<dbs> T = a("infested", new dbs("infested", new bvx(bvz.M, 3600)));
 
-public final class dbv implements dcs {
-   private static final Logger e = LogUtils.getLogger();
-   public static final dbv a = new dbv(new tz());
-   private static final String f = "id";
-   public static final Codec<dbv> b = Codec.withAlternative(tz.a, ux.i).xmap(dbv::new, $$0 -> $$0.i);
-   public static final Codec<dbv> c = b.validate(
-      $$0 -> $$0.e().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0)
-   );
-   @Deprecated
-   public static final yw<ByteBuf, dbv> d = yu.s.a(dbv::new, $$0 -> $$0.i);
-   private static final alg g = dxt.j.a().h().a();
-   private static final alg h = dxt.R.a().h().a();
-   private final tz i;
-
-   private dbv(tz $$0) {
-      this.i = $$0;
+   private static jf<dbs> a(String $$0, dbs $$1) {
+      return js.b(mg.h, ali.b($$0), $$1);
    }
 
-   public static dbv a(tz $$0) {
-      return new dbv($$0.i());
-   }
-
-   public static Predicate<czn> a(kj<dbv> $$0, tz $$1) {
-      return $$2 -> {
-         dbv $$3 = $$2.a($$0, a);
-         return $$3.b($$1);
-      };
-   }
-
-   public boolean b(tz $$0) {
-      return uo.a($$0, this.i, true);
-   }
-
-   public static void a(kj<dbv> $$0, czn $$1, Consumer<tz> $$2) {
-      dbv $$3 = $$1.a($$0, a).a($$2);
-      if ($$3.i.g()) {
-         $$1.e($$0);
-      } else {
-         $$1.b($$0, $$3);
-      }
-   }
-
-   public static void a(kj<dbv> $$0, czn $$1, tz $$2) {
-      if (!$$2.g()) {
-         $$1.b($$0, a($$2));
-      } else {
-         $$1.e($$0);
-      }
-   }
-
-   public dbv a(Consumer<tz> $$0) {
-      tz $$1 = this.i.i();
-      $$0.accept($$1);
-      return new dbv($$1);
-   }
-
-   @Nullable
-   public alg a() {
-      return this.i.<alg>a("id", alg.a).orElse(null);
-   }
-
-   @Nullable
-   public <T> T a(jh.a $$0, alf<? extends js<T>> $$1) {
-      alg $$2 = this.a();
-      return $$2 == null ? null : $$0.a($$1).flatMap($$2x -> $$2x.a(alf.a($$1, $$2))).map(jf::a).orElse(null);
-   }
-
-   public void a(bwi $$0) {
-      tz $$1 = $$0.f(new tz());
-      UUID $$2 = $$0.cF();
-      $$1.a(this.i);
-      $$0.g($$1);
-      $$0.a_($$2);
-   }
-
-   public boolean a(dxr $$0, jh.a $$1) {
-      tz $$2 = $$0.e($$1);
-      tz $$3 = $$2.i();
-      $$2.a(this.i);
-      if (!$$2.equals($$3)) {
-         try {
-            $$0.d($$2, $$1);
-            $$0.e();
-            return true;
-         } catch (Exception var8) {
-            e.warn("Failed to apply custom data to block entity at {}", $$0.ax_(), var8);
-
-            try {
-               $$0.d($$3, $$1);
-            } catch (Exception var7) {
-               e.warn("Failed to rollback block entity at {} after failure", $$0.ax_(), var7);
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public <T> DataResult<dbv> a(DynamicOps<uw> $$0, MapEncoder<T> $$1, T $$2) {
-      return $$1.encode($$2, $$0, $$0.mapBuilder()).build(this.i).map($$0x -> new dbv((tz)$$0x));
-   }
-
-   public <T> DataResult<T> a(MapDecoder<T> $$0) {
-      return this.a(un.a, $$0);
-   }
-
-   public <T> DataResult<T> a(DynamicOps<uw> $$0, MapDecoder<T> $$1) {
-      MapLike<uw> $$2 = (MapLike<uw>)$$0.getMap(this.i).getOrThrow();
-      return $$1.decode($$0, $$2);
-   }
-
-   public int b() {
-      return this.i.f();
-   }
-
-   public boolean c() {
-      return this.i.g();
-   }
-
-   public tz d() {
-      return this.i.i();
-   }
-
-   public boolean a(String $$0) {
-      return this.i.c($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
-      } else {
-         return $$0 instanceof dbv $$1 ? this.i.equals($$1.i) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.i.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.i.toString();
-   }
-
-   @Deprecated
-   public tz e() {
-      return this.i;
-   }
-
-   @Override
-   public void a(czj.b $$0, Consumer<wy> $$1, dbc $$2, kf $$3) {
-      alg $$4 = alg.c(this.i.j("id"));
-      if (g.equals($$4) || h.equals($$4)) {
-         dkh.a(this, $$1, "SpawnData");
-      }
+   public static jf<dbs> a(js<dbs> $$0) {
+      return a;
    }
 }

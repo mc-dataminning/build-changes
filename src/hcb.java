@@ -1,42 +1,64 @@
-import java.util.Map;
+import java.util.function.Function;
 
-public class hcb extends hbm<hfu, gji> {
-   private final gji a;
-   private final gji b;
-   private final hax c;
-   private static final Map<bwe.a, alg> d = Map.of(
-      bwe.a.b,
-      alg.b("textures/entity/wolf/wolf_armor_crackiness_low.png"),
-      bwe.a.c,
-      alg.b("textures/entity/wolf/wolf_armor_crackiness_medium.png"),
-      bwe.a.d,
-      alg.b("textures/entity/wolf/wolf_armor_crackiness_high.png")
-   );
+public class hcb<S extends hfp, M extends gia<S> & gik> extends hcw<S, M> {
+   private static final float a = 0.625F;
+   private static final float b = 1.1875F;
+   private final hcb.a c;
+   private final Function<duo.a, gjy> d;
 
-   public hcb(gyv<hfu, gji> $$0, gjp $$1, hax $$2) {
-      super($$0);
-      this.a = new gji($$1.a(gjs.ec));
-      this.b = new gji($$1.a(gjs.ee));
-      this.c = $$2;
+   public hcb(haf<S, M> $$0, gla $$1) {
+      this($$0, $$1, hcb.a.a);
    }
 
-   public void a(fkd $$0, gqr $$1, int $$2, hfu $$3, float $$4, float $$5) {
-      czn $$6 = $$3.i;
-      dhw $$7 = $$6.a(kk.D);
-      if ($$7 != null && !$$7.d().isEmpty()) {
-         gji $$8 = $$3.aj ? this.b : this.a;
-         $$8.a($$3);
-         this.c.a(hlw.d.d, $$7.d().get(), $$8, $$6, $$0, $$1, $$2);
-         this.a($$0, $$1, $$2, $$6, $$8);
+   public hcb(haf<S, M> $$0, gla $$1, hcb.a $$2) {
+      super($$0);
+      this.c = $$2;
+      this.d = ag.b($$1x -> gvd.a($$1, $$1x));
+   }
+
+   public void a(flo $$0, gsa $$1, int $$2, S $$3, float $$4, float $$5) {
+      if (!$$3.as.c() || $$3.au != null) {
+         $$0.a();
+         $$0.b(this.c.c(), 1.0F, this.c.c());
+         M $$6 = this.d();
+         $$6.e().a($$0);
+         $$6.b().a($$0);
+         if ($$3.au != null) {
+            $$0.a(0.0F, this.c.b(), 0.0F);
+            $$0.b(1.1875F, -1.1875F, -1.1875F);
+            $$0.a(-0.5, 0.0, -0.5);
+            duo.a $$7 = $$3.au;
+            gjy $$8 = this.d.apply($$7);
+            gsl $$9 = gvd.a($$7, $$3.av);
+            gvd.a(null, 180.0F, $$3.at, $$0, $$1, $$2, $$8, $$9);
+         } else {
+            a($$0, this.c);
+            $$3.as.a($$0, $$1, $$2, hkq.d);
+         }
+
+         $$0.b();
       }
    }
 
-   private void a(fkd $$0, gqr $$1, int $$2, czn $$3, ghl $$4) {
-      bwe.a $$5 = bwe.b.a($$3);
-      if ($$5 != bwe.a.a) {
-         alg $$6 = d.get($$5);
-         fkh $$7 = $$1.getBuffer(grc.c($$6));
-         $$4.a($$0, $$7, $$2, hjg.d);
+   public static void a(flo $$0, hcb.a $$1) {
+      $$0.a(0.0F, -0.25F + $$1.a(), 0.0F);
+      $$0.a(a.d.rotationDegrees(180.0F));
+      $$0.b(0.625F, -0.625F, -0.625F);
+   }
+
+   public static record a(float b, float c, float d) {
+      public static final hcb.a a = new hcb.a(0.0F, 0.0F, 1.0F);
+
+      public float a() {
+         return this.b;
+      }
+
+      public float b() {
+         return this.c;
+      }
+
+      public float c() {
+         return this.d;
       }
    }
 }

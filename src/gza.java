@@ -1,21 +1,12 @@
-public class gza extends gye<cov, hef, gik> {
-   private static final alg a = alg.b("textures/entity/silverfish.png");
+public class gza extends hbp {
+   private static final ali a = ali.b("textures/entity/zombie/husk.png");
 
-   public gza(gwy.a $$0) {
-      super($$0, new gik($$0.a(gjs.cX)), 0.3F);
+   public gza(gyi.a $$0) {
+      super($$0, gld.bt, gld.bu, gld.bx, gld.by, gld.bv, gld.bw);
    }
 
    @Override
-   protected float aS_() {
-      return 180.0F;
-   }
-
-   @Override
-   public alg b(hef $$0) {
+   public ali a(hhf $$0) {
       return a;
-   }
-
-   public hef b() {
-      return new hef();
    }
 }

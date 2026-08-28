@@ -1,36 +1,23 @@
-public record aem(agk e, byte f) implements zf<abu> {
-   public static final yw<wj, aem> a = zf.a(aem::a, aem::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+import javax.annotation.Nullable;
 
-   private aem(wj $$0) {
-      this(new agk($$0), $$0.readByte());
-   }
-
-   private void a(wj $$0) {
-      this.e.a($$0);
-      $$0.l(this.f);
-   }
+public record aem(int b, jf<bvv> c) implements zh<abw> {
+   public static final yy<wl, aem> a = yy.a(yw.h, aem::b, bvv.b, aem::e, aem::new);
 
    @Override
-   public zh<aem> a() {
-      return agn.ap;
+   public zj<aem> a() {
+      return agp.ao;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
+   @Nullable
+   public bwt a(djx $$0) {
+      return $$0.a(this.b);
    }
 
-   public agk b() {
-      return this.e;
-   }
-
-   public byte e() {
-      return this.f;
+   public jf<bvv> e() {
+      return this.c;
    }
 }

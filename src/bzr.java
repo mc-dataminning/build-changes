@@ -1,37 +1,37 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bzr {
-   public static bzb<cqy> a(float $$0, int $$1) {
-      return ccn.a((Function<ccn.b<cqy>, ? extends App<ccn.c<cqy>, ccq<cqy>>>)($$2 -> $$2.group($$2.c(cgl.n)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               if ($$3.c($$4.du())) {
-                  return false;
-               } else {
-                  cil $$6 = $$3.A();
-                  int $$7 = $$6.a(jy.a($$4.du()));
-                  ffc $$8 = null;
+public class bzr extends bzl<bxu> {
+   private final cgw<Integer> c;
 
-                  for (int $$9 = 0; $$9 < 5; $$9++) {
-                     ffc $$10 = cif.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(jy.a($$1xxxx))));
-                     if ($$10 != null) {
-                        int $$11 = $$6.a(jy.a(iv.a((jp)$$10)));
-                        if ($$11 < $$7) {
-                           $$8 = $$10;
-                           break;
-                        }
+   public bzr(cgw<Integer> $$0) {
+      super(ImmutableMap.of($$0, cgx.a));
+      this.c = $$0;
+   }
 
-                        if ($$11 == $$7) {
-                           $$8 = $$10;
-                        }
-                     }
-                  }
+   private Optional<Integer> b(bxu $$0) {
+      return $$0.ec().c(this.c);
+   }
 
-                  if ($$8 != null) {
-                     $$2x.a(new cgo($$8, $$0, $$1));
-                  }
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
 
-                  return true;
-               }
-            })));
+   @Override
+   protected boolean a(ars $$0, bxu $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
+   }
+
+   @Override
+   protected void c(ars $$0, bxu $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.ec().a(this.c, $$3.get() - 1);
+   }
+
+   @Override
+   protected void b(ars $$0, bxu $$1, long $$2) {
+      $$1.ec().b(this.c);
    }
 }

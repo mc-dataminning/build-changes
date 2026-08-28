@@ -1,319 +1,216 @@
-import com.mojang.datafixers.util.Either;
-import java.util.Optional;
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Objects;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.Mutable;
-import org.apache.commons.lang3.mutable.MutableObject;
+import org.slf4j.Logger;
 
-public class dyh extends dxr {
-   private static final int b = 32;
-   public static final int a = 32;
-   private static final int c = 34;
-   private static final int d = 16;
-   private static final int e = 8;
-   private static final int f = 5;
-   private static final int g = 20;
-   private static final int h = 5;
-   private static final int i = 100;
-   private static final int j = 10;
-   private static final int k = 10;
-   private static final int l = 50;
-   private static final int m = 2;
-   private static final int q = 64;
-   private static final int r = 30;
-   private static final Optional<cps> s = Optional.empty();
+public class dyh extends dyc {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "LootTable";
+   private static final String c = "LootTableSeed";
+   private static final String d = "hit_direction";
+   private static final String e = "item";
+   private static final int f = 10;
+   private static final int g = 40;
+   private static final int h = 10;
+   private int i;
+   private long j;
+   private long k;
+   private czy l = czy.k;
    @Nullable
-   private Either<cps, UUID> t;
-   private long u;
-   private int v;
-   private int w;
+   private jb m;
    @Nullable
-   private ffc x;
-   private int y;
+   private alh<fam> q;
+   private long r;
 
-   public dyh(iv $$0, eat $$1) {
-      super(dxt.k, $$0, $$1);
+   public dyh(iv $$0, ebe $$1) {
+      super(dye.O, $$0, $$1);
    }
 
-   public static void a(djm $$0, iv $$1, eat $$2, dyh $$3) {
-      $$3.u++;
-      if ($$0 instanceof arq $$4) {
-         int $$6 = $$3.f();
-         if ($$3.y != $$6) {
-            $$3.y = $$6;
-            $$0.b($$1, dmt.cE);
-         }
-
-         if ($$3.w > 0) {
-            if ($$3.w > 50) {
-               $$3.a($$4, 1, true);
-               $$3.a($$4, 1, false);
-            }
-
-            if ($$3.w % 10 == 0 && $$3.x != null) {
-               $$3.s().ifPresent($$1x -> $$3.x = $$1x.cQ().f());
-               ffc $$7 = ffc.b($$1);
-               float $$8 = 0.2F + 0.8F * (float)(100 - $$3.w) / 100.0F;
-               ffc $$9 = $$7.d($$3.x).c((double)$$8).e($$3.x);
-               iv $$10 = iv.a((jp)$$9);
-               float $$11 = (float)$$3.w / 2.0F / 100.0F + 0.5F;
-               $$4.a(null, $$10, awn.gA, awo.e, $$11, 1.0F);
-            }
-
-            $$3.w--;
-         }
-
-         if ($$3.v-- < 0) {
-            $$3.v = $$3.n == null ? 20 : $$3.n.A.a(5) + 20;
-            eat $$12 = a($$0, $$2, $$1, $$3);
-            if ($$12 != $$2) {
-               $$0.a($$1, $$12, 3);
-               if ($$12.c(don.c) == ebn.a) {
-                  return;
-               }
-            }
-
-            if ($$3.t == null) {
-               if ($$12.c(don.c) == ebn.c) {
-                  if ($$0.an() != bud.a) {
-                     if ($$4.O().c(dji.f)) {
-                        crm $$15 = $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 32.0, false);
-                        if ($$15 != null) {
-                           cps $$16 = a($$4, $$3);
-                           if ($$16 != null) {
-                              $$3.a($$16);
-                              $$16.b(awn.gu);
-                              $$0.a(null, $$3.ax_(), awn.gE, awo.e, 1.0F, 1.0F);
-                           }
-                        }
-                     }
-                  }
-               }
-            } else {
-               Optional<cps> $$13 = $$3.s();
-               if ($$13.isPresent()) {
-                  cps $$14 = $$13.get();
-                  if (!don.a($$0) && !$$14.gc() || $$3.j() > 34.0 || $$14.t()) {
-                     $$3.a(null);
-                  }
-               }
-            }
-         }
+   public boolean a(long $$0, ars $$1, bxu $$2, jb $$3, czy $$4) {
+      if (this.m == null) {
+         this.m = $$3;
       }
-   }
 
-   private static eat a(djm $$0, eat $$1, iv $$2, dyh $$3) {
-      if (!don.b($$1, $$0, $$2) && $$3.t == null) {
-         return $$1.b(don.c, ebn.a);
+      this.j = $$0 + 40L;
+      if ($$0 < this.k) {
+         return false;
       } else {
-         boolean $$4 = don.a($$0);
-         return $$1.b(don.c, $$4 ? ebn.c : ebn.b);
+         this.k = $$0 + 10L;
+         this.a($$1, $$2, $$4);
+         int $$5 = this.f();
+         if (++this.i >= 10) {
+            this.b($$1, $$2, $$4);
+            return true;
+         } else {
+            $$1.a(this.aB_(), this.m().b(), 2);
+            int $$6 = this.f();
+            if ($$5 != $$6) {
+               ebe $$7 = this.m();
+               ebe $$8 = $$7.b(ebu.by, Integer.valueOf($$6));
+               $$1.a(this.aB_(), $$8, 3);
+            }
+
+            return false;
+         }
       }
    }
 
-   private double j() {
-      return this.s().map($$0 -> Math.sqrt($$0.g(ffc.c(this.ax_())))).orElse(0.0);
-   }
-
-   private void k() {
-      this.t = null;
-      this.e();
-   }
-
-   public void a(cps $$0) {
-      this.t = Either.left($$0);
-      this.e();
-   }
-
-   public void a(UUID $$0) {
-      this.t = Either.right($$0);
-      this.u = 0L;
-      this.e();
-   }
-
-   private Optional<cps> s() {
-      if (this.t == null) {
-         return s;
-      } else {
-         if (this.t.left().isPresent()) {
-            cps $$0 = (cps)this.t.left().get();
-            if (!$$0.dP()) {
-               return Optional.of($$0);
-            }
-
-            this.a($$0.cF());
+   private void a(ars $$0, bxu $$1, czy $$2) {
+      if (this.q != null) {
+         fam $$3 = $$0.p().bc().b(this.q);
+         if ($$1 instanceof art $$4) {
+            aq.Q.a($$4, this.q);
          }
 
-         if (this.n instanceof arq $$1 && this.t.right().isPresent()) {
-            UUID $$2 = (UUID)this.t.right().get();
-            if ($$1.b($$2) instanceof cps $$4) {
-               this.a($$4);
-               return Optional.of($$4);
-            }
+         fak $$5 = new fak.a($$0).a(fdb.f, ffq.b(this.o)).a($$1.eh()).a(fdb.a, $$1).a(fdb.i, $$2).a(fda.i);
+         ObjectArrayList<czy> $$6 = $$3.a($$5, this.r);
 
-            if (this.u >= 30L) {
-               this.k();
+         this.l = switch ($$6.size()) {
+            case 0 -> czy.k;
+            case 1 -> (czy)$$6.getFirst();
+            default -> {
+               a.warn("Expected max 1 loot from loot table {}, but got {}", this.q.a(), $$6.size());
+               yield (czy)$$6.getFirst();
             }
+         };
+         this.q = null;
+         this.e();
+      }
+   }
 
-            return s;
+   private void b(ars $$0, bxu $$1, czy $$2) {
+      this.c($$0, $$1, $$2);
+      ebe $$3 = this.m();
+      $$0.c(3008, this.aB_(), dnc.j($$3));
+      dnc $$6;
+      if (this.m().b() instanceof dni $$5) {
+         $$6 = $$5.b();
+      } else {
+         $$6 = dne.a;
+      }
+
+      $$0.a(this.o, $$6.m(), 3);
+   }
+
+   private void c(ars $$0, bxu $$1, czy $$2) {
+      this.a($$0, $$1, $$2);
+      if (!this.l.f()) {
+         double $$3 = (double)bxc.ar.l();
+         double $$4 = 1.0 - $$3;
+         double $$5 = $$3 / 2.0;
+         jb $$6 = Objects.requireNonNullElse(this.m, jb.b);
+         iv $$7 = this.o.a($$6, 1);
+         double $$8 = (double)$$7.u() + 0.5 * $$4 + $$5;
+         double $$9 = (double)$$7.v() + 0.5 + (double)(bxc.ar.m() / 2.0F);
+         double $$10 = (double)$$7.w() + 0.5 * $$4 + $$5;
+         coc $$11 = new coc($$0, $$8, $$9, $$10, this.l.a($$0.A.a(21) + 10));
+         $$11.i(ffq.c);
+         $$0.b($$11);
+         this.l = czy.k;
+      }
+   }
+
+   public void a(ars $$0) {
+      if (this.i != 0 && $$0.ae() >= this.j) {
+         int $$1 = this.f();
+         this.i = Math.max(0, this.i - 2);
+         int $$2 = this.f();
+         if ($$1 != $$2) {
+            $$0.a(this.aB_(), this.m().b(ebu.by, Integer.valueOf($$2)), 3);
          }
 
-         return s;
+         int $$3 = 4;
+         this.j = $$0.ae() + 4L;
       }
-   }
 
-   @Nullable
-   private static cps a(arq $$0, dyh $$1) {
-      iv $$2 = $$1.ax_();
-      Optional<cps> $$3 = bah.a(bwr.D, bwq.c, $$0, $$2, 5, 16, 8, bah.a.c, true);
-      if ($$3.isEmpty()) {
-         return null;
+      if (this.i == 0) {
+         this.m = null;
+         this.j = 0L;
+         this.k = 0L;
       } else {
-         cps $$4 = $$3.get();
-         $$0.a($$4, eft.t, $$4.ds());
-         $$0.a($$4, (byte)60);
-         $$4.h($$2);
-         return $$4;
+         $$0.a(this.aB_(), this.m().b(), 2);
       }
    }
 
-   public aca a() {
-      return aca.a(this);
+   private boolean c(tz $$0) {
+      this.q = $$0.<alh<fam>>a("LootTable", fam.a).orElse(null);
+      this.r = $$0.b("LootTableSeed", 0L);
+      return this.q != null;
+   }
+
+   private boolean d(tz $$0) {
+      if (this.q == null) {
+         return false;
+      } else {
+         $$0.a("LootTable", fam.a, this.q);
+         if (this.r != 0L) {
+            $$0.a("LootTableSeed", this.r);
+         }
+
+         return true;
+      }
    }
 
    @Override
    public tz a(jh.a $$0) {
-      return this.e($$0);
-   }
-
-   public void c() {
-      if (this.s().orElse(null) instanceof cps $$0) {
-         if (this.n instanceof arq $$2) {
-            if (this.w <= 0) {
-               this.a($$2, 20, false);
-               if (this.m().c(don.c) == ebn.c) {
-                  int $$4 = this.n.C_().a(2, 3);
-
-                  for (int $$5 = 0; $$5 < $$4; $$5++) {
-                     this.t().ifPresent($$0x -> {
-                        this.n.a(null, $$0x, awn.yO, awo.e, 1.0F, 1.0F);
-                        this.n.a(eft.i, $$0x, eft.a.a(this.m()));
-                     });
-                  }
-               }
-
-               this.w = 100;
-               this.x = $$0.cQ().f();
-            }
-         }
+      tz $$1 = super.a($$0);
+      $$1.b("hit_direction", jb.k, this.m);
+      if (!this.l.f()) {
+         alg<uy> $$2 = $$0.a(un.a);
+         $$1.a("item", czy.b, $$2, this.l);
       }
+
+      return $$1;
    }
 
-   private Optional<iv> t() {
-      Mutable<iv> $$0 = new MutableObject(null);
-      iv.a(this.o, 2, 64, ($$0x, $$1) -> {
-         for (jb $$2 : ag.b(jb.values(), this.n.A)) {
-            iv $$3 = $$0x.a($$2);
-            if (this.n.a_($$3).a(axc.w)) {
-               $$1.accept($$3);
-            }
-         }
-      }, $$1 -> {
-         if (!this.n.a_($$1).a(axc.w)) {
-            return iv.b.a;
-         } else {
-            for (jb $$2 : ag.b(jb.values(), this.n.A)) {
-               iv $$3 = $$1.a($$2);
-               eat $$4 = this.n.a_($$3);
-               jb $$5 = $$2.g();
-               if ($$4.l()) {
-                  $$4 = dmt.fz.m();
-               } else if ($$4.a(dmt.J) && $$4.y().b()) {
-                  $$4 = dmt.fz.m().b(drx.c, Boolean.valueOf(true));
-               }
-
-               if ($$4.a(dmt.fz) && !drx.a($$4, $$5)) {
-                  this.n.a($$3, $$4.b(drx.b($$5), Boolean.valueOf(true)), 3);
-                  $$0.setValue($$3);
-                  return iv.b.c;
-               }
-            }
-
-            return iv.b.a;
-         }
-      });
-      return Optional.ofNullable((iv)$$0.getValue());
-   }
-
-   private void a(arq $$0, int $$1, boolean $$2) {
-      if (this.s().orElse(null) instanceof cps $$3) {
-         int $$5 = $$2 ? 16545810 : 6250335;
-         azv $$6 = $$0.A;
-
-         for (double $$7 = 0.0; $$7 < (double)$$1; $$7++) {
-            fex $$8 = $$3.cQ();
-            ffc $$9 = $$8.h().b($$6.j() * $$8.b(), $$6.j() * $$8.c(), $$6.j() * $$8.d());
-            ffc $$10 = ffc.a(this.ax_()).b($$6.j(), $$6.j(), $$6.j());
-            if ($$2) {
-               ffc $$11 = $$9;
-               $$9 = $$10;
-               $$10 = $$11;
-            }
-
-            md $$12 = new md($$10, $$5, $$6.a(40) + 10);
-            $$0.a($$12, true, true, $$9.d, $$9.e, $$9.f, 1, 0.0, 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   @Override
-   public void a(iv $$0, eat $$1) {
-      this.a(null);
-   }
-
-   public void a(@Nullable bux $$0) {
-      if (this.s().orElse(null) instanceof cps $$1) {
-         if ($$0 == null) {
-            $$1.q();
-         } else {
-            $$1.j($$0);
-            $$1.gt();
-            $$1.d(0.0F);
-         }
-
-         this.k();
-      }
-   }
-
-   public boolean b(cps $$0) {
-      return this.s().map($$1 -> $$1 == $$0).orElse(false);
-   }
-
-   public int d() {
-      return this.y;
-   }
-
-   public int f() {
-      if (this.t != null && !this.s().isEmpty()) {
-         double $$0 = this.j();
-         double $$1 = Math.clamp($$0, 0.0, 32.0) / 32.0;
-         return 15 - (int)Math.floor($$1 * 15.0);
-      } else {
-         return 0;
-      }
+   public acc a() {
+      return acc.a(this);
    }
 
    @Override
    protected void a(tz $$0, jh.a $$1) {
       super.a($$0, $$1);
-      $$0.<UUID>a("creaking", jz.a).ifPresentOrElse(this::a, this::k);
+      alg<uy> $$2 = $$1.a(un.a);
+      if (!this.c($$0)) {
+         this.l = $$0.<czy>a("item", czy.b, $$2).orElse(czy.k);
+      } else {
+         this.l = czy.k;
+      }
+
+      this.m = $$0.<jb>a("hit_direction", jb.k).orElse(null);
    }
 
    @Override
    protected void b(tz $$0, jh.a $$1) {
       super.b($$0, $$1);
-      if (this.t != null) {
-         $$0.a("creaking", jz.a, (UUID)this.t.map(bwi::cF, $$0x -> $$0x));
+      if (!this.d($$0) && !this.l.f()) {
+         alg<uy> $$2 = $$1.a(un.a);
+         $$0.a("item", czy.b, $$2, this.l);
       }
+   }
+
+   public void a(alh<fam> $$0, long $$1) {
+      this.q = $$0;
+      this.r = $$1;
+   }
+
+   private int f() {
+      if (this.i == 0) {
+         return 0;
+      } else if (this.i < 3) {
+         return 1;
+      } else {
+         return this.i < 6 ? 2 : 3;
+      }
+   }
+
+   @Nullable
+   public jb c() {
+      return this.m;
+   }
+
+   public czy d() {
+      return this.l;
    }
 }

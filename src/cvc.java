@@ -1,62 +1,109 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public abstract class cvc extends bwt {
+   protected static final akl<Integer> e = akp.a(cvc.class, akn.b);
+   protected static final akl<Integer> f = akp.a(cvc.class, akn.b);
+   protected static final akl<Float> g = akp.a(cvc.class, akn.d);
 
-public record cvc(int c, float d, boolean e) implements dbt {
-   public static final Codec<cvc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayu.l.fieldOf("nutrition").forGetter(cvc::a),
-               Codec.FLOAT.fieldOf("saturation").forGetter(cvc::b),
-               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(cvc::c)
-            )
-            .apply($$0, cvc::new)
-   );
-   public static final yw<wj, cvc> b = yw.a(yu.h, cvc::a, yu.l, cvc::b, yu.b, cvc::c, cvc::new);
+   public cvc(bxc<?> $$0, djx $$1) {
+      super($$0, $$1);
+   }
 
    @Override
-   public void a(djm $$0, bxj $$1, czn $$2, dbs $$3) {
-      azv $$4 = $$1.dX();
-      $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), $$3.e().a(), awo.g, 1.0F, $$4.a(1.0F, 0.4F));
-      if ($$1 instanceof crm $$5) {
-         $$5.gt().a(this);
-         $$0.a(null, $$5.dz(), $$5.dB(), $$5.dF(), awn.uX, awo.h, 0.5F, azm.b($$4, 0.9F, 1.0F));
+   public boolean b(bvi $$0) {
+      return true;
+   }
+
+   @Override
+   public boolean a(ars $$0, bvi $$1, float $$2) {
+      if (this.dQ()) {
+         return true;
+      } else if (this.d($$1)) {
+         return false;
+      } else {
+         boolean var10000;
+         label32: {
+            this.l(-this.I());
+            this.d(10);
+            this.bB();
+            this.b(this.G() + $$2 * 10.0F);
+            this.a(ege.o, $$1.d());
+            if ($$1.d() instanceof crx $$3 && $$3.gk().d) {
+               var10000 = true;
+               break label32;
+            }
+
+            var10000 = false;
+         }
+
+         boolean $$4 = var10000;
+         if (($$4 || !(this.G() > 40.0F)) && !this.e($$1)) {
+            if ($$4) {
+               this.aq();
+            }
+         } else {
+            this.a($$0, $$1);
+         }
+
+         return true;
       }
    }
 
-   public int a() {
-      return this.c;
+   boolean e(bvi $$0) {
+      return false;
    }
 
-   public float b() {
-      return this.d;
+   @Override
+   public boolean a(djq $$0) {
+      return $$0.c() instanceof bxw && !$$0.a().O().c(djt.d);
    }
 
-   public boolean c() {
-      return this.e;
-   }
-
-   public static class a {
-      private int a;
-      private float b;
-      private boolean c;
-
-      public cvc.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public cvc.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public cvc.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public cvc b() {
-         float $$0 = cva.a(this.a, this.b);
-         return new cvc(this.a, $$0, this.c);
+   public void a(ars $$0, czu $$1) {
+      this.c($$0);
+      if ($$0.O().c(djt.j)) {
+         czy $$2 = new czy($$1);
+         $$2.b(kk.g, this.ak());
+         this.a($$0, $$2);
       }
    }
+
+   @Override
+   protected void a(akp.a $$0) {
+      $$0.a(e, 0);
+      $$0.a(f, 1);
+      $$0.a(g, 0.0F);
+   }
+
+   public void d(int $$0) {
+      this.al.a(e, $$0);
+   }
+
+   public void l(int $$0) {
+      this.al.a(f, $$0);
+   }
+
+   public void b(float $$0) {
+      this.al.a(g, $$0);
+   }
+
+   public float G() {
+      return this.al.a(g);
+   }
+
+   public int H() {
+      return this.al.a(e);
+   }
+
+   public int I() {
+      return this.al.a(f);
+   }
+
+   protected void a(ars $$0, bvi $$1) {
+      this.a($$0, this.o());
+   }
+
+   @Override
+   public int bW() {
+      return 10;
+   }
+
+   protected abstract czu o();
 }

@@ -1,215 +1,132 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.Instant;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gac extends fzh<cwb> {
-   private static final alg[] M = new alg[]{
-      alg.b("container/enchanting_table/level_1"), alg.b("container/enchanting_table/level_2"), alg.b("container/enchanting_table/level_3")
-   };
-   private static final alg[] N = new alg[]{
-      alg.b("container/enchanting_table/level_1_disabled"),
-      alg.b("container/enchanting_table/level_2_disabled"),
-      alg.b("container/enchanting_table/level_3_disabled")
-   };
-   private static final alg O = alg.b("container/enchanting_table/enchantment_slot_disabled");
-   private static final alg P = alg.b("container/enchanting_table/enchantment_slot_highlighted");
-   private static final alg Q = alg.b("container/enchanting_table/enchantment_slot");
-   private static final alg R = alg.b("textures/gui/container/enchanting_table.png");
-   private static final alg S = alg.b("textures/entity/enchanting_table_book.png");
-   private final azv T = azv.a();
-   private gfu U;
-   public float G;
-   public float H;
-   public float I;
-   public float J;
-   public float K;
-   public float L;
-   private czn V = czn.k;
+public class gac extends gad {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 25;
+   private static final xa c = xa.c("recover_world.title").a(o.r);
+   private static final xa d = xa.c("recover_world.bug_tracker");
+   private static final xa s = xa.c("recover_world.restore");
+   private static final xa u = xa.c("recover_world.no_fallback");
+   private static final xa v = xa.c("recover_world.done.title");
+   private static final xa w = xa.c("recover_world.done.success");
+   private static final xa x = xa.c("recover_world.done.failed");
+   private static final xa y = xa.c("recover_world.issue.none").a(o.k);
+   private static final xa z = xa.c("recover_world.issue.missing_file").a(o.m);
+   private final BooleanConsumer A;
+   private final fyd B = fyd.d().a(8);
+   private final xa C;
+   private final fvf D;
+   private final fvf E;
+   private final ezv.c F;
 
-   public gac(cwb $$0, crl $$1, wy $$2) {
-      super($$0, $$1, $$2);
+   public gac(frd $$0, BooleanConsumer $$1, ezv.c $$2) {
+      super(c);
+      this.A = $$1;
+      this.C = xa.a("recover_world.message", xa.b($$2.f()).a(o.h));
+      this.D = new fvf(this.C, $$0.h);
+      this.F = $$2;
+      Exception $$3 = this.a($$2, false);
+      Exception $$4 = this.a($$2, true);
+      xa $$5 = xa.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
+      this.E = new fvf($$5, $$0.h);
+      boolean $$6 = $$3 != null && $$4 == null;
+      this.B.c().b();
+      this.B.a(new fvs(this.l, $$0.h));
+      this.B.a(this.D.b(true));
+      this.B.a(this.E);
+      fyd $$7 = fyd.e().a(5);
+      $$7.a(ful.a(d, fza.b(this, ayj.j)).b(120, 20).a());
+      $$7.a(ful.a(s, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : fvw.a(u)).a()).j = $$6;
+      this.B.a($$7);
+      this.B.a(ful.a(wz.k, $$0x -> this.aP_()).b(120, 20).a());
+      this.B.a(this::c);
    }
 
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.U = new gfu(this.m.aS().a(gjs.J));
-   }
-
-   @Override
-   public void E() {
-      super.E();
-      this.G();
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      int $$3 = (this.n - this.s) / 2;
-      int $$4 = (this.o - this.u) / 2;
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         double $$6 = $$0 - (double)($$3 + 60);
-         double $$7 = $$1 - (double)($$4 + 14 + 19 * $$5);
-         if ($$6 >= 0.0 && $$7 >= 0.0 && $$6 < 108.0 && $$7 < 19.0 && this.z.a(this.m.t, $$5)) {
-            this.m.r.a(this.z.l, $$5);
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fsm $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(grc::H, R, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      this.d($$0, $$4, $$5, $$1);
-      gab.a().a((long)this.z.m());
-      int $$6 = this.z.l();
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         int $$8 = $$4 + 60;
-         int $$9 = $$8 + 20;
-         int $$10 = this.z.m[$$7];
-         if ($$10 == 0) {
-            $$0.a(grc::H, O, $$8, $$5 + 14 + 19 * $$7, 108, 19);
+   private void a(frd $$0) {
+      Exception $$1 = this.a(this.F, false);
+      Exception $$2 = this.a(this.F, true);
+      if ($$1 != null && $$2 == null) {
+         $$0.d(new fzo(xa.c("recover_world.restoring")));
+         gfh.a(this.F);
+         if (this.F.n()) {
+            $$0.a(new fzb(this.A, v, w, wz.j, wz.k));
          } else {
-            String $$11 = $$10 + "";
-            int $$12 = 86 - this.p.b($$11);
-            xd $$13 = gab.a().a(this.p, $$12);
-            int $$14 = 6839882;
-            if (($$6 < $$7 + 1 || this.m.t.cf < $$10) && !this.m.t.fU()) {
-               $$0.a(grc::H, O, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-               $$0.a(grc::H, N[$$7], $$8 + 1, $$5 + 15 + 19 * $$7, 16, 16);
-               $$0.a(this.p, $$13, $$9, $$5 + 16 + 19 * $$7, $$12, ($$14 & 16711422) >> 1, false);
-               $$14 = 4226832;
-            } else {
-               int $$15 = $$2 - ($$4 + 60);
-               int $$16 = $$3 - ($$5 + 14 + 19 * $$7);
-               if ($$15 >= 0 && $$16 >= 0 && $$15 < 108 && $$16 < 19) {
-                  $$0.a(grc::H, P, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-                  $$14 = 16777088;
-               } else {
-                  $$0.a(grc::H, Q, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-               }
-
-               $$0.a(grc::H, M[$$7], $$8 + 1, $$5 + 15 + 19 * $$7, 16, 16);
-               $$0.a(this.p, $$13, $$9, $$5 + 16 + 19 * $$7, $$12, $$14, false);
-               $$14 = 8453920;
-            }
-
-            $$0.b(this.p, $$11, $$9 + 86 - this.p.b($$11), $$5 + 16 + 19 * $$7 + 7, $$14);
+            $$0.a(new fyw(() -> this.A.accept(false), v, x));
          }
-      }
-   }
-
-   private void d(fsm $$0, int $$1, int $$2, float $$3) {
-      float $$4 = azm.h($$3, this.L, this.K);
-      float $$5 = azm.h($$3, this.H, this.G);
-      $$0.d();
-      fiv.e();
-      $$0.c().a();
-      $$0.c().a((float)$$1 + 33.0F, (float)$$2 + 31.0F, 100.0F);
-      float $$6 = 40.0F;
-      $$0.c().b(-40.0F, 40.0F, 40.0F);
-      $$0.c().a(a.b.rotationDegrees(25.0F));
-      $$0.c().a((1.0F - $$4) * 0.2F, (1.0F - $$4) * 0.1F, (1.0F - $$4) * 0.25F);
-      float $$7 = -(1.0F - $$4) * 90.0F - 90.0F;
-      $$0.c().a(a.d.rotationDegrees($$7));
-      $$0.c().a(a.b.rotationDegrees(180.0F));
-      float $$8 = azm.a(azm.i($$5 + 0.25F) * 1.6F - 0.3F, 0.0F, 1.0F);
-      float $$9 = azm.a(azm.i($$5 + 0.75F) * 1.6F - 0.3F, 0.0F, 1.0F);
-      this.U.a(0.0F, $$8, $$9, $$4);
-      $$0.a($$1x -> {
-         fkh $$2x = $$1x.getBuffer(this.U.a(S));
-         this.U.a($$0.c(), $$2x, 15728880, hjg.d);
-      });
-      $$0.d();
-      $$0.c().b();
-      fiv.d();
-   }
-
-   @Override
-   public void a(fsm $$0, int $$1, int $$2, float $$3) {
-      float $$4 = this.m.av().a(false);
-      super.a($$0, $$1, $$2, $$4);
-      this.a($$0, $$1, $$2);
-      boolean $$5 = this.m.t.fU();
-      int $$6 = this.z.l();
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         int $$8 = this.z.m[$$7];
-         Optional<jf.c<dga>> $$9 = this.m.s.F_().f(mh.aR).c(this.z.n[$$7]);
-         if (!$$9.isEmpty()) {
-            int $$10 = this.z.o[$$7];
-            int $$11 = $$7 + 1;
-            if (this.a(60, 14 + 19 * $$7, 108, 17, (double)$$1, (double)$$2) && $$8 > 0 && $$10 >= 0 && $$9 != null) {
-               List<wy> $$12 = Lists.newArrayList();
-               $$12.add(wy.a("container.enchant.clue", dga.a($$9.get(), $$10)).a(o.p));
-               if (!$$5) {
-                  $$12.add(wx.a);
-                  if (this.m.t.cf < $$8) {
-                     $$12.add(wy.a("container.enchant.level.requirement", this.z.m[$$7]).a(o.m));
-                  } else {
-                     xm $$13;
-                     if ($$11 == 1) {
-                        $$13 = wy.c("container.enchant.lapis.one");
-                     } else {
-                        $$13 = wy.a("container.enchant.lapis.many", $$11);
-                     }
-
-                     $$12.add($$13.a($$6 >= $$11 ? o.h : o.m));
-                     xm $$15;
-                     if ($$11 == 1) {
-                        $$15 = wy.c("container.enchant.level.one");
-                     } else {
-                        $$15 = wy.a("container.enchant.level.many", $$11);
-                     }
-
-                     $$12.add($$15.a(o.h));
-                  }
-               }
-
-               $$0.a(this.p, $$12, $$1, $$2);
-               break;
-            }
-         }
-      }
-   }
-
-   @Override
-   public void G() {
-      czn $$0 = this.z.b(0).g();
-      if (!czn.a($$0, this.V)) {
-         this.V = $$0;
-
-         do {
-            this.I = this.I + (float)(this.T.a(4) - this.T.a(4));
-         } while (this.G <= this.I + 1.0F && this.G >= this.I - 1.0F);
-      }
-
-      this.H = this.G;
-      this.L = this.K;
-      boolean $$1 = false;
-
-      for (int $$2 = 0; $$2 < 3; $$2++) {
-         if (this.z.m[$$2] != 0) {
-            $$1 = true;
-         }
-      }
-
-      if ($$1) {
-         this.K += 0.2F;
       } else {
-         this.K -= 0.2F;
+         a.error(
+            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
+            $$1 != null ? $$1.getMessage() : "no issues",
+            $$2 != null ? $$2.getMessage() : "no issues"
+         );
+         $$0.a(new fyw(() -> this.A.accept(false), v, x));
       }
+   }
 
-      this.K = azm.a(this.K, 0.0F, 1.0F);
-      float $$3 = (this.I - this.G) * 0.4F;
-      float $$4 = 0.2F;
-      $$3 = azm.a($$3, -0.2F, 0.2F);
-      this.J = this.J + ($$3 - this.J) * 0.9F;
-      this.G = this.G + this.J;
+   private xa a(ezv.c $$0, boolean $$1, @Nullable Exception $$2) {
+      if ($$1 && $$2 instanceof FileNotFoundException) {
+         return xa.i();
+      } else {
+         xo $$3 = xa.i();
+         Instant $$4 = $$0.a($$1);
+         xo $$5 = $$4 != null ? xa.b(gfs.a.format($$4)) : xa.c("recover_world.state_entry.unknown");
+         $$3.b(xa.a("recover_world.state_entry", $$5.a(o.h)));
+         if ($$2 == null) {
+            $$3.b(y);
+         } else if ($$2 instanceof FileNotFoundException) {
+            $$3.b(z);
+         } else if ($$2 instanceof ur) {
+            $$3.b(xa.b($$2.getCause().toString()).a(o.m));
+         } else {
+            $$3.b(xa.b($$2.toString()).a(o.m));
+         }
+
+         return $$3;
+      }
+   }
+
+   @Nullable
+   private Exception a(ezv.c $$0, boolean $$1) {
+      try {
+         if (!$$1) {
+            $$0.a($$0.h());
+         } else {
+            $$0.a($$0.i());
+         }
+
+         return null;
+      } catch (uk | ur | IOException var4) {
+         return var4;
+      }
+   }
+
+   @Override
+   protected void aS_() {
+      super.aS_();
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.E.d(this.n - 50);
+      this.D.d(this.n - 50);
+      this.B.a();
+      fxx.a(this.B, this.J());
+   }
+
+   @Override
+   public xa i() {
+      return wz.a(super.i(), this.C);
+   }
+
+   @Override
+   public void aP_() {
+      this.A.accept(false);
    }
 }

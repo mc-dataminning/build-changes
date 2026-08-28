@@ -1,104 +1,38 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.collect.Streams;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Stream;
 
-public class bge extends DataFix {
-   public bge(Schema $$0) {
-      super($$0, false);
+public class bge extends bhw {
+   private final String a;
+   private final boolean b;
+
+   public bge(Schema $$0, String $$1, String $$2, boolean $$3) {
+      super($$0, true, "Horse armor fix for " + $$1, bjb.D, $$1);
+      this.a = $$2;
+      this.b = $$3;
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<?> $$0 = this.a("minecraft:vex");
-      OpticFinder<?> $$1 = this.a("minecraft:phantom");
-      OpticFinder<?> $$2 = this.a("minecraft:turtle");
-      List<OpticFinder<?>> $$3 = List.of(
-         this.a("minecraft:item_frame"), this.a("minecraft:glow_item_frame"), this.a("minecraft:painting"), this.a("minecraft:leash_knot")
-      );
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped(
-            "InlineBlockPosFormatFix - player", this.getInputSchema().getType(biz.b), $$0x -> $$0x.update(DSL.remainderFinder(), this::a)
-         ),
-         this.fixTypeEverywhereTyped(
-            "InlineBlockPosFormatFix - entity",
-            this.getInputSchema().getType(biz.D),
-            $$4 -> {
-               $$4 = $$4.update(DSL.remainderFinder(), this::b)
-                  .updateTyped($$0, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::c))
-                  .updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::d))
-                  .updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::e));
-
-               for (OpticFinder<?> $$5 : $$3) {
-                  $$4 = $$4.updateTyped($$5, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::f));
-               }
-
-               return $$4;
-            }
-         )
-      );
-   }
-
-   private OpticFinder<?> a(String $$0) {
-      return DSL.namedChoice($$0, this.getInputSchema().getChoiceType(biz.D, $$0));
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      $$0 = this.b($$0);
-      Optional<Number> $$1 = $$0.get("SpawnX").asNumber().result();
-      Optional<Number> $$2 = $$0.get("SpawnY").asNumber().result();
-      Optional<Number> $$3 = $$0.get("SpawnZ").asNumber().result();
-      if ($$1.isPresent() && $$2.isPresent() && $$3.isPresent()) {
-         Dynamic<?> $$4 = $$0.createMap(Map.of($$0.createString("pos"), bbd.a($$0, $$1.get().intValue(), $$2.get().intValue(), $$3.get().intValue())));
-         $$4 = Dynamic.copyField($$0, "SpawnAngle", $$4, "angle");
-         $$4 = Dynamic.copyField($$0, "SpawnDimension", $$4, "dimension");
-         $$4 = Dynamic.copyField($$0, "SpawnForced", $$4, "forced");
-         $$0 = $$0.remove("SpawnX").remove("SpawnY").remove("SpawnZ").remove("SpawnAngle").remove("SpawnDimension").remove("SpawnForced");
-         $$0 = $$0.set("respawn", $$4);
-      }
-
-      Optional<? extends Dynamic<?>> $$5 = $$0.get("enteredNetherPosition").result();
-      if ($$5.isPresent()) {
-         $$0 = $$0.remove("enteredNetherPosition")
-            .set(
-               "entered_nether_pos",
-               $$0.createList(
-                  Stream.of(
-                     $$0.createDouble($$5.get().get("x").asDouble(0.0)),
-                     $$0.createDouble($$5.get().get("y").asDouble(0.0)),
-                     $$0.createDouble($$5.get().get("z").asDouble(0.0))
-                  )
-               )
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get(this.a).result();
+      if ($$1.isPresent()) {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
+         Dynamic<T> $$3 = $$0.remove(this.a);
+         if (this.b) {
+            $$3 = $$3.update(
+               "ArmorItems", $$0x -> $$0x.createList(Streams.mapWithIndex($$0x.asStream(), ($$0xx, $$1x) -> $$1x == 2L ? $$0xx.emptyMap() : $$0xx))
             );
+            $$3 = $$3.update(
+               "ArmorDropChances",
+               $$0x -> $$0x.createList(Streams.mapWithIndex($$0x.asStream(), ($$0xx, $$1x) -> $$1x == 2L ? $$0xx.createFloat(0.085F) : $$0xx))
+            );
+         }
+
+         $$3 = $$3.set("body_armor_item", $$2);
+         return $$3.set("body_armor_drop_chance", $$0.createFloat(2.0F));
+      } else {
+         return $$0;
       }
-
-      return $$0;
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return bbd.a($$0, "SleepingX", "SleepingY", "SleepingZ", "sleeping_pos");
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      return bbd.a($$0.renameField("LifeTicks", "life_ticks"), "BoundX", "BoundY", "BoundZ", "bound_pos");
-   }
-
-   private Dynamic<?> d(Dynamic<?> $$0) {
-      return bbd.a($$0.renameField("Size", "size"), "AX", "AY", "AZ", "anchor_pos");
-   }
-
-   private Dynamic<?> e(Dynamic<?> $$0) {
-      $$0 = $$0.remove("TravelPosX").remove("TravelPosY").remove("TravelPosZ");
-      $$0 = bbd.a($$0, "HomePosX", "HomePosY", "HomePosZ", "home_pos");
-      return $$0.renameField("HasEgg", "has_egg");
-   }
-
-   private Dynamic<?> f(Dynamic<?> $$0) {
-      return bbd.a($$0, "TileX", "TileY", "TileZ", "block_pos");
    }
 }

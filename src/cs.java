@@ -19,8 +19,8 @@ public record cs(cw.d c, Optional<by> d) implements bz {
    }
 
    @Override
-   public boolean a(bwi $$0, arq $$1, @Nullable ffc $$2) {
-      return !($$0 instanceof bxi $$3) ? false : this.c.d($$3.g()) && (this.d.isEmpty() || $$3.j().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
+   public boolean a(bwt $$0, ars $$1, @Nullable ffq $$2) {
+      return !($$0 instanceof bxt $$3) ? false : this.c.d($$3.g()) && (this.d.isEmpty() || $$3.j().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 
    public cw.d b() {

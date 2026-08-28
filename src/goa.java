@@ -1,27 +1,49 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
+public class goa extends gqk {
+   private final gqf a;
 
-public class goa {
-   private final List<alg> a;
-
-   private goa(List<alg> $$0) {
-      this.a = $$0;
+   goa(gmb $$0, double $$1, double $$2, double $$3, double $$4, gqf $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$5;
+      this.t = 4;
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 1.0F - (float)$$4 * 0.5F;
+      this.b($$5);
    }
 
-   public List<alg> a() {
-      return this.a;
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 
-   public static goa a(JsonObject $$0) {
-      JsonArray $$1 = azc.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new goa(List.of());
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         List<alg> $$2 = Streams.stream($$1).map($$0x -> azc.a($$0x, "texture")).map(alg::a).collect(ImmutableList.toImmutableList());
-         return new goa($$2);
+         this.b(this.a);
+      }
+   }
+
+   @Override
+   public gpo b() {
+      return gpo.b;
+   }
+
+   public static class a implements gpn<mc> {
+      private final gqf a;
+
+      public a(gqf $$0) {
+         this.a = $$0;
+      }
+
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new goa($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

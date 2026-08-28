@@ -1,75 +1,48 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.google.common.collect.Interner;
+import com.google.common.collect.Interners;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import io.netty.buffer.ByteBuf;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-public class axt {
-   public static Map<alf<? extends js<?>>, axt.a> a(jm<alp> $$0) {
-      return jw.b($$0)
-         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
-         .filter($$0x -> !((axt.a)$$0x.getSecond()).a())
-         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+public record axt<T>(alh<? extends js<T>> a, ali b) {
+   private static final Interner<axt<?>> c = Interners.newWeakInterner();
+
+   @Deprecated
+   public axt(alh<? extends js<T>> a, ali b) {
+      this.a = a;
+      this.b = b;
    }
 
-   private static <T> axt.a a(js<T> $$0) {
-      Map<alg, IntList> $$1 = new HashMap<>();
-      $$0.l().forEach($$2 -> {
-         IntList $$3 = new IntArrayList($$2.b());
-
-         for (jf<T> $$4 : $$2) {
-            if ($$4.f() != jf.b.a) {
-               throw new IllegalStateException("Can't serialize unregistered value " + $$4);
-            }
-
-            $$3.add($$0.a($$4.a()));
-         }
-
-         $$1.put($$2.h().b(), $$3);
-      });
-      return new axt.a($$1);
+   public static <T> Codec<axt<T>> a(alh<? extends js<T>> $$0) {
+      return ali.a.xmap($$1 -> a($$0, $$1), axt::b);
    }
 
-   static <T> axs.c<T> a(js<T> $$0, axt.a $$1) {
-      alf<? extends js<T>> $$2 = $$0.g();
-      Map<axr<T>, List<jf<T>>> $$3 = new HashMap<>();
-      $$1.b.forEach(($$3x, $$4) -> {
-         axr<T> $$5 = axr.a($$2, $$3x);
-         List<jf<T>> $$6 = $$4.intStream().mapToObj($$0::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-         $$3.put($$5, $$6);
-      });
-      return new axs.c<>($$2, $$3);
+   public static <T> Codec<axt<T>> b(alh<? extends js<T>> $$0) {
+      return Codec.STRING
+         .comapFlatMap(
+            $$1 -> $$1.startsWith("#") ? ali.d($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
+         );
    }
 
-   public static final class a {
-      public static final axt.a a = new axt.a(Map.of());
-      final Map<alg, IntList> b;
+   public static <T> yy<ByteBuf, axt<T>> c(alh<? extends js<T>> $$0) {
+      return ali.b.a($$1 -> a($$0, $$1), axt::b);
+   }
 
-      a(Map<alg, IntList> $$0) {
-         this.b = $$0;
-      }
+   public static <T> axt<T> a(alh<? extends js<T>> $$0, ali $$1) {
+      return (axt<T>)c.intern(new axt<>($$0, $$1));
+   }
 
-      public void a(vu $$0) {
-         $$0.a(this.b, vu::a, vu::a);
-      }
+   public boolean d(alh<? extends js<?>> $$0) {
+      return this.a == $$0;
+   }
 
-      public static axt.a b(vu $$0) {
-         return new axt.a($$0.a(vu::q, vu::a));
-      }
+   public <E> Optional<axt<E>> e(alh<? extends js<E>> $$0) {
+      return this.d($$0) ? Optional.of((axt<E>)this) : Optional.empty();
+   }
 
-      public boolean a() {
-         return this.b.isEmpty();
-      }
-
-      public int b() {
-         return this.b.size();
-      }
-
-      public <T> axs.c<T> a(js<T> $$0) {
-         return axt.a($$0, this);
-      }
+   @Override
+   public String toString() {
+      return "TagKey[" + this.a.a() + " / " + this.b + "]";
    }
 }

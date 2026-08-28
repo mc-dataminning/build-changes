@@ -1,43 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class elp extends ejy<emj> {
-   private static final iv a = new iv(8, 3, 8);
-   private static final dir b = new dir(a);
-   private static final int c = 16;
-   private static final int d = 1;
-
+public class elp extends ekk<emj> {
    public elp(Codec<emj> $$0) {
       super($$0);
    }
 
-   private static int a(int $$0, int $$1, int $$2, int $$3) {
-      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
-   }
-
    @Override
-   public boolean a(eka<emj> $$0) {
-      dkl $$1 = $$0.b();
-      dir $$2 = new dir($$0.e());
-      if (a($$2.h, $$2.i, b.h, b.i) > 1) {
-         return true;
-      } else {
-         iv $$3 = a.h($$0.e().v() + a.v());
-         iv.a $$4 = new iv.a();
+   public boolean a(ekm<emj> $$0) {
+      int $$1 = 0;
+      azx $$2 = $$0.d();
+      dkw $$3 = $$0.b();
+      iv $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
-            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
-               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
-                  $$4.d($$6, $$3.v(), $$5);
-                  if ($$4.equals($$3)) {
-                     $$1.a($$4, dmt.m.m(), 2);
-                  } else {
-                     $$1.a($$4, dmt.b.m(), 2);
-                  }
-               }
-            }
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(ehd.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         iv $$10 = new iv($$4.u() + $$7, $$9, $$4.w() + $$8);
+         ebe $$11 = dne.nB.m().b(duh.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(dne.J) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
          }
-
-         return true;
       }
+
+      return $$1 > 0;
    }
 }

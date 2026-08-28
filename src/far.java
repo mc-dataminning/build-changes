@@ -1,41 +1,30 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class far extends fbg {
-   public static final MapCodec<far> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, far::new));
+public class far extends faz {
+   public static final MapCodec<far> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ali.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, far::new)
+   );
+   private final ali j;
 
-   private far(List<fdc> $$0) {
-      super($$0);
+   private far(ali $$0, int $$1, int $$2, List<fdq> $$3, List<fbv> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public fbi<far> b() {
-      return fbj.z;
+   public fay a() {
+      return fav.e;
    }
 
    @Override
-   public czn a(czn $$0, ezt $$1) {
-      Float $$2 = $$1.c(fcn.j);
-      if ($$2 != null) {
-         azv $$3 = $$1.b();
-         float $$4 = 1.0F / $$2;
-         int $$5 = $$0.M();
-         int $$6 = 0;
-
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            if ($$3.i() <= $$4) {
-               $$6++;
-            }
-         }
-
-         $$0.e($$6);
-      }
-
-      return $$0;
+   public void a(Consumer<czy> $$0, fah $$1) {
+      $$1.a(this.j, $$0);
    }
 
-   public static fbg.a<?> c() {
-      return a(far::new);
+   public static faz.a<?> a(ali $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new far($$0, $$1, $$2, $$3, $$4));
    }
 }

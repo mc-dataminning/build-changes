@@ -1,167 +1,63 @@
-import javax.annotation.Nullable;
-
-public abstract class crv extends csh {
-   public static final double a = 0.1;
-   public static final double b = 0.5;
-   public double c = 0.1;
-
-   protected crv(bwr<? extends crv> $$0, djm $$1) {
-      super($$0, $$1);
-   }
-
-   protected crv(bwr<? extends crv> $$0, double $$1, double $$2, double $$3, djm $$4) {
-      this($$0, $$4);
-      this.a_($$1, $$2, $$3);
-   }
-
-   public crv(bwr<? extends crv> $$0, double $$1, double $$2, double $$3, ffc $$4, djm $$5) {
-      this($$0, $$5);
-      this.b($$1, $$2, $$3, this.dK(), this.dM());
-      this.av();
-      this.a($$4, this.c);
-   }
-
-   public crv(bwr<? extends crv> $$0, bxj $$1, ffc $$2, djm $$3) {
-      this($$0, $$1.dz(), $$1.dB(), $$1.dF(), $$2, $$3);
-      this.c($$1);
-      this.b($$1.dK(), $$1.dM());
-   }
-
-   @Override
-   protected void a(akn.a $$0) {
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cQ().a() * 4.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 4.0;
+public record crv(boolean c, boolean d, boolean e, boolean f, boolean g, boolean h, boolean i) {
+   private static final byte j = 1;
+   private static final byte k = 2;
+   private static final byte l = 4;
+   private static final byte m = 8;
+   private static final byte n = 16;
+   private static final byte o = 32;
+   private static final byte p = 64;
+   public static final yy<vw, crv> a = new yy<vw, crv>() {
+      public void a(vw $$0, crv $$1) {
+         byte $$2 = 0;
+         $$2 = (byte)($$2 | ($$1.a() ? 1 : 0));
+         $$2 = (byte)($$2 | ($$1.b() ? 2 : 0));
+         $$2 = (byte)($$2 | ($$1.c() ? 4 : 0));
+         $$2 = (byte)($$2 | ($$1.d() ? 8 : 0));
+         $$2 = (byte)($$2 | ($$1.e() ? 16 : 0));
+         $$2 = (byte)($$2 | ($$1.f() ? 32 : 0));
+         $$2 = (byte)($$2 | ($$1.g() ? 64 : 0));
+         $$0.l($$2);
       }
 
-      $$1 *= 64.0;
-      return $$0 < $$1 * $$1;
-   }
-
-   protected dit.a af_() {
-      return dit.a.a;
-   }
-
-   @Override
-   public void h() {
-      bwi $$0 = this.q();
-      this.o();
-      if (this.dU().C || ($$0 == null || !$$0.dP()) && this.dU().C(this.du())) {
-         ffa $$1 = csj.a(this, this::b, this.af_());
-         ffc $$2;
-         if ($$1.d() != ffa.a.a) {
-            $$2 = $$1.g();
-         } else {
-            $$2 = this.ds().e(this.dx());
-         }
-
-         csj.a(this, 0.2F);
-         this.b($$2);
-         this.aI();
-         super.h();
-         if (this.g()) {
-            this.e(1.0F);
-         }
-
-         if ($$1.d() != ffa.a.a && this.bI()) {
-            this.b($$1);
-         }
-
-         this.s();
-      } else {
-         this.aq();
+      public crv a(vw $$0) {
+         byte $$1 = $$0.readByte();
+         boolean $$2 = ($$1 & 1) != 0;
+         boolean $$3 = ($$1 & 2) != 0;
+         boolean $$4 = ($$1 & 4) != 0;
+         boolean $$5 = ($$1 & 8) != 0;
+         boolean $$6 = ($$1 & 16) != 0;
+         boolean $$7 = ($$1 & 32) != 0;
+         boolean $$8 = ($$1 & 64) != 0;
+         return new crv($$2, $$3, $$4, $$5, $$6, $$7, $$8);
       }
+   };
+   public static crv b = new crv(false, false, false, false, false, false, false);
+
+   public boolean a() {
+      return this.c;
    }
 
-   private void o() {
-      ffc $$0 = this.dx();
-      ffc $$1 = this.ds();
-      float $$4;
-      if (this.bh()) {
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            float $$3 = 0.25F;
-            this.dU().a(ly.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
-         }
-
-         $$4 = this.n();
-      } else {
-         $$4 = this.m();
-      }
-
-      this.i($$0.e($$0.d().c(this.c)).c((double)$$4));
+   public boolean b() {
+      return this.d;
    }
 
-   private void s() {
-      lw $$0 = this.j();
-      ffc $$1 = this.ds();
-      if ($$0 != null) {
-         this.dU().a($$0, $$1.d, $$1.e + 0.5, $$1.f, 0.0, 0.0, 0.0);
-      }
+   public boolean c() {
+      return this.e;
    }
 
-   @Override
-   public boolean a(arq $$0, bux $$1, float $$2) {
-      return false;
+   public boolean d() {
+      return this.f;
    }
 
-   @Override
-   protected boolean b(bwi $$0) {
-      return super.b($$0) && !$$0.ad;
+   public boolean e() {
+      return this.g;
    }
 
-   @Override
-   protected boolean g() {
-      return true;
+   public boolean f() {
+      return this.h;
    }
 
-   @Nullable
-   protected lw j() {
-      return ly.ah;
-   }
-
-   protected float m() {
-      return 0.95F;
-   }
-
-   protected float n() {
-      return 0.8F;
-   }
-
-   @Override
-   public void b(tz $$0) {
-      super.b($$0);
-      $$0.a("acceleration_power", this.c);
-   }
-
-   @Override
-   public void a(tz $$0) {
-      super.a($$0);
-      if ($$0.b("acceleration_power", 6)) {
-         this.c = $$0.i("acceleration_power");
-      }
-   }
-
-   @Override
-   public float bv() {
-      return 1.0F;
-   }
-
-   private void a(ffc $$0, double $$1) {
-      this.i($$0.d().c($$1));
-      this.ar = true;
-   }
-
-   @Override
-   protected void c(@Nullable bwi $$0, boolean $$1) {
-      super.c($$0, $$1);
-      if ($$1) {
-         this.c = 0.1;
-      } else {
-         this.c *= 0.5;
-      }
+   public boolean g() {
+      return this.i;
    }
 }

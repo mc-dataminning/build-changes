@@ -1,24 +1,49 @@
-import com.google.common.collect.UnmodifiableIterator;
+import javax.annotation.Nullable;
 
-public class exb {
-   public static final ewz a = a("empty", new ewx());
-   public static final ewy b = a("flowing_water", new exg.a());
-   public static final ewy c = a("water", new exg.b());
-   public static final ewy d = a("flowing_lava", new exd.a());
-   public static final ewy e = a("lava", new exd.b());
+public interface exb extends exg {
+   @Nullable
+   edg a(jy var1);
 
-   private static <T extends ewz> T a(String $$0, T $$1) {
-      return js.a(mg.c, $$0, $$1);
-   }
+   int b(iv var1);
 
-   static {
-      for (ewz $$0 : mg.c) {
-         UnmodifiableIterator var2 = $$0.f().a().iterator();
+   public static enum a implements exb {
+      a;
 
-         while (var2.hasNext()) {
-            exa $$1 = (exa)var2.next();
-            ewz.c.b($$1);
-         }
+      @Nullable
+      @Override
+      public edg a(jy $$0) {
+         return null;
+      }
+
+      @Override
+      public int b(iv $$0) {
+         return 0;
+      }
+
+      @Override
+      public void a(iv $$0) {
+      }
+
+      @Override
+      public boolean M_() {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public void a(jy $$0, boolean $$1) {
+      }
+
+      @Override
+      public void a(djc $$0, boolean $$1) {
+      }
+
+      @Override
+      public void b(djc $$0) {
       }
    }
 }

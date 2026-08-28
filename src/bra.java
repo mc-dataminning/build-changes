@@ -1,58 +1,56 @@
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
+import com.mojang.jtracy.TracyClient;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class bra {
-   private static final Logger a = LogUtils.getLogger();
-   private final Runnable b;
+public final class bra {
+   private static final ThreadLocal<brf> a = ThreadLocal.withInitial(brf::new);
+   private static final ThreadLocal<brb> b = new ThreadLocal<>();
+   private static final AtomicInteger c = new AtomicInteger();
 
-   protected bra(Runnable $$0) {
-      this.b = $$0;
+   private bra() {
    }
 
-   public void a(@Nullable Path $$0) {
-      if ($$0 != null) {
-         this.b.run();
-         a(() -> "Dumped flight recorder profiling to " + $$0);
-
-         bri $$1;
-         try {
-            $$1 = brh.a($$0);
-         } catch (Throwable var5) {
-            a(() -> "Failed to parse JFR recording", var5);
-            return;
-         }
-
-         try {
-            a($$1::b);
-            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
-            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
-            a(() -> "Dumped recording summary to " + $$4);
-         } catch (Throwable var4) {
-            a(() -> "Failed to output JFR report", var4);
-         }
-      }
+   public static bra.a a(brb $$0) {
+      b($$0);
+      return bra::b;
    }
 
-   private static void a(Supplier<String> $$0) {
-      if (LogUtils.isLoggerActive()) {
-         a.info($$0.get());
+   private static void b(brb $$0) {
+      if (b.get() != null) {
+         throw new IllegalStateException("Profiler is already active");
       } else {
-         ali.a($$0.get());
+         brb $$1 = c($$0);
+         b.set($$1);
+         c.incrementAndGet();
+         $$1.a();
       }
    }
 
-   private static void a(Supplier<String> $$0, Throwable $$1) {
-      if (LogUtils.isLoggerActive()) {
-         a.warn($$0.get(), $$1);
+   private static void b() {
+      brb $$0 = b.get();
+      if ($$0 == null) {
+         throw new IllegalStateException("Profiler was not active");
       } else {
-         ali.a($$0.get());
-         $$1.printStackTrace(ali.a);
+         b.remove();
+         c.decrementAndGet();
+         $$0.b();
       }
+   }
+
+   private static brb c(brb $$0) {
+      return brb.a(c(), $$0);
+   }
+
+   public static brb a() {
+      return c.get() == 0 ? c() : Objects.requireNonNullElseGet(b.get(), bra::c);
+   }
+
+   private static brb c() {
+      return (brb)(TracyClient.isAvailable() ? a.get() : bqx.a);
+   }
+
+   public interface a extends AutoCloseable {
+      @Override
+      void close();
    }
 }

@@ -1,71 +1,34 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
 public class cas {
-   private static final int a = 10;
-   private static final int b = 7;
-   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
-
-   public static cal<bxr> a(float $$0) {
-      return a($$0, true);
+   public static <T extends bxw> caw<T> a(int $$0) {
+      return a($$0x -> true, $$0);
    }
 
-   public static cal<bxr> a(float $$0, boolean $$1) {
-      return a($$0, $$0x -> cif.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.bh());
+   public static <T extends bxw> caw<T> a(Predicate<T> $$0, int $$1) {
+      return ccy.a(
+         (Function<ccy.b<T>, ? extends App<ccy.c<T>, cdb<T>>>)($$2 -> $$2.group($$2.a(cgw.o), $$2.b(cgw.p), $$2.c(cgw.q), $$2.b(cgw.h))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     bxu $$10 = $$2.b($$4);
+                     if ($$0.test((T)$$8) && !a($$8) && $$8.h($$10) && $$2.<cgy>b($$6).a($$10)) {
+                        $$3.a(new bzw($$10, true));
+                        $$8.a(buq.a);
+                        $$8.c($$7, $$10);
+                        $$5.a(true, (long)$$1);
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 
-   public static bzb<bxr> a(float $$0, int $$1, int $$2) {
-      return a($$0, $$2x -> cif.a($$2x, $$1, $$2), $$0x -> true);
-   }
-
-   public static bzb<bxr> b(float $$0) {
-      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
-   }
-
-   public static bzb<bxr> c(float $$0) {
-      return a($$0, cas::a, bwi::bh);
-   }
-
-   private static cal<bxr> a(float $$0, Function<bxr, ffc> $$1, Predicate<bxr> $$2) {
-      return ccn.a((Function<ccn.b<bxr>, ? extends App<ccn.c<bxr>, ccq<bxr>>>)($$3 -> $$3.group($$3.c(cgl.n)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               if (!$$2.test($$5)) {
-                  return false;
-               } else {
-                  Optional<ffc> $$7 = Optional.ofNullable($$1.apply($$5));
-                  $$3x.a($$7.map($$1xxxx -> new cgo($$1xxxx, $$0, 0)));
-                  return true;
-               }
-            })));
-   }
-
-   @Nullable
-   private static ffc a(bxr $$0) {
-      ffc $$1 = null;
-      ffc $$2 = null;
-
-      for (int[] $$3 : c) {
-         if ($$1 == null) {
-            $$2 = bzc.a($$0, $$3[0], $$3[1]);
-         } else {
-            $$2 = $$0.ds().e($$0.ds().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
-         }
-
-         if ($$2 == null || $$0.dU().b_(iv.a((jp)$$2)).c()) {
-            return $$1;
-         }
-
-         $$1 = $$2;
-      }
-
-      return $$2;
-   }
-
-   @Nullable
-   private static ffc a(bxr $$0, int $$1, int $$2) {
-      ffc $$3 = $$0.h(0.0F);
-      return cia.a($$0, $$1, $$2, -2, $$3.d, $$3.f, (float) (Math.PI / 2));
+   private static boolean a(bxw $$0) {
+      return $$0.b($$1 -> {
+         czu $$2 = $$1.h();
+         return $$2 instanceof dat && $$0.a((dat)$$2);
+      });
    }
 }

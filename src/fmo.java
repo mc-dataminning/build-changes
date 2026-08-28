@@ -1,5 +1,6 @@
-public class fmo extends RuntimeException {
-   public fmo(String $$0, Exception $$1) {
-      super($$0, $$1);
+public class fmo extends fml {
+   @Override
+   public xa a() {
+      return xa.c("mco.upload.close.failure");
    }
 }

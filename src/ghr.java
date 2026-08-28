@@ -1,27 +1,87 @@
-public class ghr extends gin {
-   private final gjt a;
-   private final gjt b;
-   private final gjt c;
+import java.util.List;
 
-   public ghr(gjt $$0) {
+public class ghr extends gia<heh> {
+   public static final List<gle> a = List.of();
+   private final gle b;
+   private final List<gle> c;
+
+   public ghr(gle $$0) {
       super($$0);
-      this.a = $$0.b("head");
-      this.b = this.a.b("left_ear");
-      this.c = this.a.b("right_ear");
+      gle $$1 = $$0.b("root");
+      gle $$2 = $$1.b("upper_body");
+      this.b = $$2.b("head");
+      this.c = List.of(this.b);
    }
 
-   public static gkb a() {
-      gkb $$0 = new gkb();
-      ghs.a(gjx.a, $$0);
+   private static glm b() {
+      glm $$0 = new glm();
+      glo $$1 = $$0.a();
+      glo $$2 = $$1.a("root", glj.c(), glg.a(0.0F, 24.0F, 0.0F));
+      glo $$3 = $$2.a("upper_body", glj.c(), glg.a(-1.0F, -19.0F, 0.0F));
+      $$3.a(
+         "head",
+         glj.c()
+            .a(0, 0)
+            .a(-3.0F, -10.0F, -3.0F, 6.0F, 10.0F, 6.0F)
+            .a(28, 31)
+            .a(-3.0F, -13.0F, -3.0F, 6.0F, 3.0F, 6.0F)
+            .a(12, 40)
+            .a(3.0F, -13.0F, 0.0F, 9.0F, 14.0F, 0.0F)
+            .a(34, 12)
+            .a(-12.0F, -14.0F, 0.0F, 9.0F, 14.0F, 0.0F),
+         glg.a(-3.0F, -11.0F, 0.0F)
+      );
+      $$3.a("body", glj.c().a(0, 16).a(0.0F, -3.0F, -3.0F, 6.0F, 13.0F, 5.0F).a(24, 0).a(-6.0F, -4.0F, -3.0F, 6.0F, 7.0F, 5.0F), glg.a(0.0F, -7.0F, 1.0F));
+      $$3.a(
+         "right_arm", glj.c().a(22, 13).a(-2.0F, -1.5F, -1.5F, 3.0F, 21.0F, 3.0F).a(46, 0).a(-2.0F, 19.5F, -1.5F, 3.0F, 4.0F, 3.0F), glg.a(-7.0F, -9.5F, 1.5F)
+      );
+      $$3.a(
+         "left_arm",
+         glj.c()
+            .a(30, 40)
+            .a(0.0F, -1.0F, -1.5F, 3.0F, 16.0F, 3.0F)
+            .a(52, 12)
+            .a(0.0F, -5.0F, -1.5F, 3.0F, 4.0F, 3.0F)
+            .a(52, 19)
+            .a(0.0F, 15.0F, -1.5F, 3.0F, 4.0F, 3.0F),
+         glg.a(6.0F, -9.0F, 0.5F)
+      );
+      $$2.a(
+         "left_leg", glj.c().a(42, 40).a(-1.5F, 0.0F, -1.5F, 3.0F, 16.0F, 3.0F).a(45, 55).a(-1.5F, 15.7F, -4.5F, 5.0F, 0.0F, 9.0F), glg.a(1.5F, -16.0F, 0.5F)
+      );
+      $$2.a(
+         "right_leg",
+         glj.c()
+            .a(0, 34)
+            .a(-3.0F, -1.5F, -1.5F, 3.0F, 19.0F, 3.0F)
+            .a(45, 46)
+            .a(-5.0F, 17.2F, -4.5F, 5.0F, 0.0F, 9.0F)
+            .a(12, 34)
+            .a(-3.0F, -4.5F, -1.5F, 3.0F, 3.0F, 3.0F),
+         glg.a(-1.0F, -17.5F, 0.5F)
+      );
       return $$0;
    }
 
-   @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
-      float $$3 = 1.2F;
-      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
-      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
+   public static glk a() {
+      glm $$0 = b();
+      return glk.a($$0, 64, 64);
+   }
+
+   public void a(heh $$0) {
+      super.a($$0);
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
+      if ($$0.e) {
+         this.a(fry.a, $$0.ad, $$0.ae, 1.0F, 1.0F);
+      }
+
+      this.a($$0.b, fry.b, $$0.u);
+      this.a($$0.a, fry.c, $$0.u);
+      this.a($$0.c, fry.d, $$0.u);
+   }
+
+   public List<gle> b(heh $$0) {
+      return !$$0.d ? a : this.c;
    }
 }

@@ -1,40 +1,31 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public record dfp(List<dfq> f, dfq g, dfq h) implements dfk {
-   public static final MapCodec<dfp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dfq.a.listOf().fieldOf("ingredients").forGetter(dfp::b),
-               dfq.a.fieldOf("result").forGetter(dfp::d),
-               dfq.a.fieldOf("crafting_station").forGetter(dfp::e)
-            )
-            .apply($$0, dfp::new)
-   );
-   public static final yw<wj, dfp> b = yw.a(dfq.b.a(yu.a()), dfp::b, dfq.b, dfp::d, dfq.b, dfp::e, dfp::new);
-   public static final dfk.a<dfp> c = new dfk.a<>(a, b);
-
-   @Override
-   public dfk.a<dfp> a() {
-      return c;
+public class dfp extends dfh {
+   public dfp(String $$0, del $$1, czy $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public boolean a(cuw $$0) {
-      return this.f.stream().allMatch($$1 -> $$1.a($$0)) && dfk.super.a($$0);
-   }
-
-   public List<dfq> b() {
-      return this.f;
+   public dfa<dfp> b() {
+      return dfa.f;
    }
 
    @Override
-   public dfq d() {
-      return this.g;
+   public dez<dfp> a() {
+      return dez.s;
    }
 
    @Override
-   public dfq e() {
-      return this.h;
+   public List<dfv> g() {
+      return List.of(new dgf(this.k().c(), this.c(), new dgb.d(dac.xC)));
+   }
+
+   public dgb c() {
+      return new dgb.f(this.l());
+   }
+
+   @Override
+   public des h() {
+      return der.k;
    }
 }

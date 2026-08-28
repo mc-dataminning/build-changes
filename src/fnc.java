@@ -1,38 +1,24 @@
-public class fnc extends hqd {
-   private static final wy a = wy.c("mco.client.incompatible.title").b(-65536);
-   private static final wy b = wy.b(ac.b().c()).b(-65536);
-   private static final wy c = wy.a("mco.client.unsupported.snapshot.version", b);
-   private static final wy C = wy.a("mco.client.outdated.stable.version", b);
-   private final fys D;
-   private final fwo E = new fwo(this);
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public fnc(fys $$0) {
-      super(a);
-      this.D = $$0;
-   }
+public class fnc extends fns {
+   private static final Logger b = LogUtils.getLogger();
+   @Nullable
+   public String a;
 
-   @Override
-   public void aO_() {
-      this.E.a(a, this.p);
-      this.E.c(new ftu(this.E(), this.p).b(true));
-      this.E.b(fta.a(wx.k, $$0 -> this.aL_()).a(200).a());
-      this.E.a($$1 -> {
-         fsy var10000 = this.c($$1);
-      });
-      this.c();
-   }
+   public static fnc a(String $$0) {
+      fnc $$1 = new fnc();
 
-   @Override
-   protected void c() {
-      this.E.a();
-   }
+      try {
+         JsonObject $$2 = JsonParser.parseString($$0).getAsJsonObject();
+         $$1.a = fpp.b("newsLink", $$2, null);
+      } catch (Exception var3) {
+         b.error("Could not parse RealmsNews: {}", var3.getMessage());
+      }
 
-   @Override
-   public void aL_() {
-      this.m.a(this.D);
-   }
-
-   private wy E() {
-      return ac.b().g() ? C : c;
+      return $$1;
    }
 }

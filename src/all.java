@@ -1,18 +1,80 @@
-import com.mojang.logging.LogUtils;
-import java.io.OutputStream;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class all extends aln {
-   private static final Logger b = LogUtils.getLogger();
+public class all extends IOException {
+   private final List<all.a> a = Lists.newArrayList();
+   private final String b;
 
-   public all(String $$0, OutputStream $$1) {
-      super($$0, $$1);
+   public all(String $$0) {
+      this.a.add(new all.a());
+      this.b = $$0;
+   }
+
+   public all(String $$0, Throwable $$1) {
+      super($$1);
+      this.a.add(new all.a());
+      this.b = $$0;
+   }
+
+   public void a(String $$0) {
+      this.a.get(0).a($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.get(0).a = $$0;
+      this.a.add(0, new all.a());
    }
 
    @Override
-   protected void a(String $$0) {
-      StackTraceElement[] $$1 = Thread.currentThread().getStackTrace();
-      StackTraceElement $$2 = $$1[Math.min(3, $$1.length)];
-      b.info("[{}]@.({}:{}): {}", new Object[]{this.a, $$2.getFileName(), $$2.getLineNumber(), $$0});
+   public String getMessage() {
+      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
+   }
+
+   public static all a(Exception $$0) {
+      if ($$0 instanceof all) {
+         return (all)$$0;
+      } else {
+         String $$1 = $$0.getMessage();
+         if ($$0 instanceof FileNotFoundException) {
+            $$1 = "File not found";
+         }
+
+         return new all($$1, $$0);
+      }
+   }
+
+   public static class a {
+      @Nullable
+      String a;
+      private final List<String> b = Lists.newArrayList();
+
+      a() {
+      }
+
+      void a(String $$0) {
+         this.b.add(0, $$0);
+      }
+
+      @Nullable
+      public String a() {
+         return this.a;
+      }
+
+      public String b() {
+         return StringUtils.join(this.b, "->");
+      }
+
+      @Override
+      public String toString() {
+         if (this.a != null) {
+            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
+         } else {
+            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
+         }
+      }
    }
 }

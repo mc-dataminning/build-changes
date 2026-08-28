@@ -1,5 +1,4 @@
-public class hfr extends hdu {
-   public int a;
-   public boolean b;
-   public boolean c;
+public class hfr extends hep {
+   public float a;
+   public float b;
 }

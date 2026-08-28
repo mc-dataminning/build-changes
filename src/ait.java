@@ -1,51 +1,45 @@
-import org.jetbrains.annotations.VisibleForTesting;
+public class ait implements zh<agr> {
+   public static final yy<vw, ait> a = zh.a(ait::a, ait::new);
+   private final ffm b;
+   private final buq c;
+   private final int d;
 
-public class ait {
-   private static final double a = 4096.0;
-   private ffc b = ffc.c;
-
-   @VisibleForTesting
-   static long a(double $$0) {
-      return Math.round($$0 * 4096.0);
+   public ait(buq $$0, ffm $$1, int $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.d = $$2;
    }
 
-   @VisibleForTesting
-   static double a(long $$0) {
-      return (double)$$0 / 4096.0;
+   private ait(vw $$0) {
+      this.c = $$0.b(buq.class);
+      this.b = $$0.v();
+      this.d = $$0.l();
    }
 
-   public ffc a(long $$0, long $$1, long $$2) {
-      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
-         return this.b;
-      } else {
-         double $$3 = $$0 == 0L ? this.b.d : a(a(this.b.d) + $$0);
-         double $$4 = $$1 == 0L ? this.b.e : a(a(this.b.e) + $$1);
-         double $$5 = $$2 == 0L ? this.b.f : a(a(this.b.f) + $$2);
-         return new ffc($$3, $$4, $$5);
-      }
+   private void a(vw $$0) {
+      $$0.a(this.c);
+      $$0.a(this.b);
+      $$0.c(this.d);
    }
 
-   public long a(ffc $$0) {
-      return a($$0.d) - a(this.b.d);
+   @Override
+   public zj<ait> a() {
+      return agp.cn;
    }
 
-   public long b(ffc $$0) {
-      return a($$0.e) - a(this.b.e);
+   public void a(agr $$0) {
+      $$0.a(this);
    }
 
-   public long c(ffc $$0) {
-      return a($$0.f) - a(this.b.f);
+   public buq b() {
+      return this.c;
    }
 
-   public ffc d(ffc $$0) {
-      return $$0.d(this.b);
-   }
-
-   public void e(ffc $$0) {
-      this.b = $$0;
-   }
-
-   public ffc a() {
+   public ffm e() {
       return this.b;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

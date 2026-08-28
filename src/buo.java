@@ -1,19 +1,49 @@
-public final class buo implements bui {
-   private final wy a;
-   private final cwn b;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-   public buo(cwn $$0, wy $$1) {
-      this.b = $$0;
-      this.a = $$1;
+public enum buo implements bam {
+   a(0, "peaceful"),
+   b(1, "easy"),
+   c(2, "normal"),
+   d(3, "hard");
+
+   public static final bam.a<buo> e = bam.a(buo::values);
+   private static final IntFunction<buo> f = aye.a(buo::a, values(), aye.a.b);
+   private final int g;
+   private final String h;
+
+   private buo(final int $$0, final String $$1) {
+      this.g = $$0;
+      this.h = $$1;
+   }
+
+   public int a() {
+      return this.g;
+   }
+
+   public xa b() {
+      return xa.c("options.difficulty." + this.h);
+   }
+
+   public xa d() {
+      return xa.c("options.difficulty." + this.h + ".info");
+   }
+
+   public static buo a(int $$0) {
+      return f.apply($$0);
+   }
+
+   @Nullable
+   public static buo a(String $$0) {
+      return e.a($$0);
+   }
+
+   public String e() {
+      return this.h;
    }
 
    @Override
-   public wy m_() {
-      return this.a;
-   }
-
-   @Override
-   public cvf createMenu(int $$0, crl $$1, crm $$2) {
-      return this.b.createMenu($$0, $$1, $$2);
+   public String c() {
+      return this.h;
    }
 }

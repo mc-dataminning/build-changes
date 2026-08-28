@@ -1,21 +1,46 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import org.slf4j.Logger;
 
-public class bhl extends bdr {
+public class bhl extends bbl {
+   private static final Logger b = LogUtils.getLogger();
+
    public bhl(Schema $$0) {
-      super($$0, "LodestoneCompassComponentFix", "minecraft:lodestone_target", "minecraft:lodestone_tracker");
+      super($$0, bjb.a);
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("pos").result();
-      Optional<Dynamic<T>> $$2 = $$0.get("dimension").result();
-      $$0 = $$0.remove("pos").remove("dimension");
-      if ($$1.isPresent() && $$2.isPresent()) {
-         $$0 = $$0.set("target", $$0.emptyMap().set("pos", $$1.get()).set("dimension", $$2.get()));
-      }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(this.a);
+      OpticFinder<?> $$1 = $$0.findField("CustomBossEvents");
+      OpticFinder<?> $$2 = DSL.typeFinder(DSL.and(DSL.optional(DSL.field("Name", this.getInputSchema().getTypeRaw(bjb.z))), DSL.remainderType()));
+      return this.fixTypeEverywhereTyped("LevelUUIDFix", $$0, $$2x -> $$2x.update(DSL.remainderFinder(), $$0xx -> {
+            $$0xx = this.c($$0xx);
+            return this.b($$0xx);
+         }).updateTyped($$1, $$1xx -> $$1xx.updateTyped($$2, $$0xxx -> $$0xxx.update(DSL.remainderFinder(), this::d))));
+   }
 
-      return $$0;
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return a($$0, "WanderingTraderId", "WanderingTraderId").orElse($$0);
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return $$0.update(
+         "DimensionData",
+         $$0x -> $$0x.updateMapValues(
+               $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DragonFight", $$0xxxx -> c($$0xxxx, "DragonUUID", "Dragon").orElse($$0xxxx)))
+            )
+      );
+   }
+
+   private Dynamic<?> d(Dynamic<?> $$0) {
+      return $$0.update("Players", $$1 -> $$0.createList($$1.asStream().map($$0xx -> (Dynamic)a($$0xx).orElseGet(() -> {
+               b.warn("CustomBossEvents contains invalid UUIDs.");
+               return $$0xx;
+            }))));
    }
 }

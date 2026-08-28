@@ -1,72 +1,143 @@
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class fvi implements fvk {
-   private static final alg a = alg.b("toast/recipe");
-   private static final long e = 5000L;
-   private static final wy f = wy.c("recipe.toast.title");
-   private static final wy g = wy.c("recipe.toast.description");
-   private final List<fvi.a> h = new ArrayList<>();
-   private long i;
-   private boolean j;
-   private fvk.a k = fvk.a.b;
-   private int l;
+public class fvi extends fur<fvi.a> {
+   private static final int a = 310;
+   private static final int m = 25;
+   private final gdj n;
 
-   private fvi() {
+   public fvi(frd $$0, int $$1, gdj $$2) {
+      super($$0, $$1, $$2.s.d(), $$2.s.c(), 25);
+      this.e = false;
+      this.n = $$2;
+   }
+
+   public void a(frg<?> $$0) {
+      this.b(fvi.b.a(this.c.n, $$0, this.n));
+   }
+
+   public void a(frg<?>... $$0) {
+      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
+         frg<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
+         this.b(fvi.b.a(this.c.n, $$0[$$1], $$2, this.n));
+      }
+   }
+
+   public void a(List<fuj> $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
+         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
+      }
+   }
+
+   public void a(fuj $$0, @Nullable fuj $$1) {
+      this.b(fvi.a.a($$0, $$1, this.n));
    }
 
    @Override
-   public fvk.a a() {
-      return this.k;
+   public int a() {
+      return 310;
    }
 
-   @Override
-   public void a(fvl $$0, long $$1) {
-      if (this.j) {
-         this.i = $$1;
-         this.j = false;
+   @Nullable
+   public fuj b(frg<?> $$0) {
+      for (fvi.a $$1 : this.aI_()) {
+         if ($$1 instanceof fvi.b $$2) {
+            fuj $$3 = $$2.a.get($$0);
+            if ($$3 != null) {
+               return $$3;
+            }
+         }
       }
 
-      if (this.h.isEmpty()) {
-         this.k = fvk.a.b;
-      } else {
-         this.k = (double)($$1 - this.i) >= 5000.0 * $$0.d() ? fvk.a.b : fvk.a.a;
+      return null;
+   }
+
+   public void b() {
+      for (fvi.a $$0 : this.aI_()) {
+         if ($$0 instanceof fvi.b) {
+            fvi.b $$1 = (fvi.b)$$0;
+
+            for (fuj $$2 : $$1.a.values()) {
+               if ($$2 instanceof frg.i<?> $$3) {
+                  $$3.c();
+               }
+            }
+         }
+      }
+   }
+
+   public Optional<fwi> e(double $$0, double $$1) {
+      for (fvi.a $$2 : this.aI_()) {
+         for (fwi $$3 : $$2.aI_()) {
+            if ($$3.a_($$0, $$1)) {
+               return Optional.of($$3);
+            }
+         }
       }
 
-      this.l = (int)((double)$$1 / Math.max(1.0, 5000.0 * $$0.d() / (double)this.h.size()) % (double)this.h.size());
+      return Optional.empty();
    }
 
-   @Override
-   public void a(fsm $$0, fsk $$1, long $$2) {
-      $$0.a(grc::H, a, 0, 0, this.c(), this.d());
-      $$0.a($$1, f, 30, 7, -11534256, false);
-      $$0.a($$1, g, 30, 18, -16777216, false);
-      fvi.a $$3 = this.h.get(this.l);
-      $$0.c().a();
-      $$0.c().b(0.6F, 0.6F, 1.0F);
-      $$0.b($$3.a(), 3, 3);
-      $$0.c().b();
-      $$0.b($$3.b(), 8, 8);
-   }
+   protected static class a extends fur.a<fvi.a> {
+      private final List<fuj> a;
+      private final gad b;
+      private static final int c = 160;
 
-   private void a(czn $$0, czn $$1) {
-      this.h.add(new fvi.a($$0, $$1));
-      this.j = true;
-   }
-
-   public static void a(fvl $$0, dfk $$1) {
-      fvi $$2 = $$0.a(fvi.class, b);
-      if ($$2 == null) {
-         $$2 = new fvi();
-         $$0.a($$2);
+      a(List<fuj> $$0, gad $$1) {
+         this.a = ImmutableList.copyOf($$0);
+         this.b = $$1;
       }
 
-      baz $$3 = dfr.a($$0.c().s);
-      czn $$4 = $$1.e().b($$3);
-      czn $$5 = $$1.d().b($$3);
-      $$2.a($$4, $$5);
+      public static fvi.a a(List<fuj> $$0, gad $$1) {
+         return new fvi.a($$0, $$1);
+      }
+
+      public static fvi.a a(fuj $$0, @Nullable fuj $$1, gad $$2) {
+         return $$1 == null ? new fvi.a(ImmutableList.of($$0), $$2) : new fvi.a(ImmutableList.of($$0, $$1), $$2);
+      }
+
+      @Override
+      public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = 0;
+         int $$11 = this.b.n / 2 - 155;
+
+         for (fuj $$12 : this.a) {
+            $$12.c($$11 + $$10, $$2);
+            $$12.a($$0, $$6, $$7, $$9);
+            $$10 += 160;
+         }
+      }
+
+      @Override
+      public List<? extends fwi> aI_() {
+         return this.a;
+      }
+
+      @Override
+      public List<? extends fyg> b() {
+         return this.a;
+      }
    }
 
-   static record a(czn a, czn b) {
+   protected static class b extends fvi.a {
+      final Map<frg<?>, fuj> a;
+
+      private b(Map<frg<?>, fuj> $$0, gdj $$1) {
+         super(ImmutableList.copyOf($$0.values()), $$1);
+         this.a = $$0;
+      }
+
+      public static fvi.b a(frh $$0, frg<?> $$1, gdj $$2) {
+         return new fvi.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
+      }
+
+      public static fvi.b a(frh $$0, frg<?> $$1, @Nullable frg<?> $$2, gdj $$3) {
+         fuj $$4 = $$1.a($$0);
+         return $$2 == null ? new fvi.b(ImmutableMap.of($$1, $$4), $$3) : new fvi.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
+      }
    }
 }

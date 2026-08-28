@@ -1,151 +1,80 @@
-import com.google.common.hash.HashCode;
-import com.google.common.hash.HashFunction;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
 import java.io.IOException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class atk implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 20;
-   private final Path c;
-   private final bpi<atk.e> d;
-   private final bsv e = new bsv(ag.j(), "download-queue");
+public class atk implements atr {
+   private final atr c;
+   private final List<atr> d;
 
-   public atk(Path $$0) throws IOException {
+   public atk(atr $$0, List<atr> $$1) {
       this.c = $$0;
-      w.c($$0);
-      this.d = bpi.a(atk.e.a, $$0.resolve("log.json"));
-      atj.a($$0, 20);
+      List<atr> $$2 = new ArrayList<>($$1.size() + 1);
+      $$2.addAll(Lists.reverse($$1));
+      $$2.add($$0);
+      this.d = List.copyOf($$2);
    }
 
-   private atk.b b(atk.a $$0, Map<UUID, atk.c> $$1) {
-      atk.b $$2 = new atk.b();
-      $$1.forEach(
-         ($$2x, $$3) -> {
-            Path $$4 = this.c.resolve($$2x.toString());
-            Path $$5 = null;
+   @Nullable
+   @Override
+   public auw<InputStream> a(String... $$0) {
+      return this.c.a($$0);
+   }
 
-            try {
-               $$5 = azd.a($$4, $$3.a, $$0.c, $$0.a, $$3.b, $$0.b, $$0.d, $$0.e);
-               $$2.a.put($$2x, $$5);
-            } catch (Exception var9) {
-               a.error("Failed to download {}", $$3.a, var9);
-               $$2.b.add($$2x);
-            }
-
-            try {
-               this.d
-                  .a(
-                     new atk.e(
-                        $$2x,
-                        $$3.a.toString(),
-                        Instant.now(),
-                        Optional.ofNullable($$3.b).map(HashCode::toString),
-                        $$5 != null ? this.a($$5) : Either.left("download_failed")
-                     )
-                  );
-            } catch (Exception var8) {
-               a.error("Failed to log download of {}", $$3.a, var8);
-            }
+   @Nullable
+   @Override
+   public auw<InputStream> a(att $$0, ali $$1) {
+      for (atr $$2 : this.d) {
+         auw<InputStream> $$3 = $$2.a($$0, $$1);
+         if ($$3 != null) {
+            return $$3;
          }
-      );
-      return $$2;
-   }
-
-   private Either<String, atk.d> a(Path $$0) {
-      try {
-         long $$1 = Files.size($$0);
-         Path $$2 = this.c.relativize($$0);
-         return Either.right(new atk.d($$2.toString(), $$1));
-      } catch (IOException var5) {
-         a.error("Failed to get file size of {}", $$0, var5);
-         return Either.left("no_access");
       }
-   }
 
-   public CompletableFuture<atk.b> a(atk.a $$0, Map<UUID, atk.c> $$1) {
-      return CompletableFuture.supplyAsync(() -> this.b($$0, $$1), this.e::a_);
+      return null;
    }
 
    @Override
-   public void close() throws IOException {
-      this.e.close();
-      this.d.close();
+   public void a(att $$0, String $$1, String $$2, atr.a $$3) {
+      Map<ali, auw<InputStream>> $$4 = new HashMap<>();
+
+      for (atr $$5 : this.d) {
+         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
+      }
+
+      $$4.forEach($$3);
    }
 
-   public static record a(HashFunction a, int b, Map<String, String> c, Proxy d, azd.a e) {
+   @Override
+   public Set<String> a(att $$0) {
+      Set<String> $$1 = new HashSet<>();
+
+      for (atr $$2 : this.d) {
+         $$1.addAll($$2.a($$0));
+      }
+
+      return $$1;
    }
 
-   public static record b(Map<UUID, Path> a, Set<UUID> b) {
-
-      public b() {
-         this(new HashMap<>(), new HashSet<>());
-      }
+   @Nullable
+   @Override
+   public <T> T a(aue<T> $$0) throws IOException {
+      return this.c.a($$0);
    }
 
-   public static record c(URL a, @Nullable HashCode b) {
+   @Override
+   public atq a() {
+      return this.c.a();
    }
 
-   static record d(String b, long c) {
-      public static final Codec<atk.d> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(atk.d::a), Codec.LONG.fieldOf("size").forGetter(atk.d::b)).apply($$0, atk.d::new)
-      );
-
-      public String a() {
-         return this.b;
-      }
-
-      public long b() {
-         return this.c;
-      }
-   }
-
-   static record e(UUID b, String c, Instant d, Optional<String> e, Either<String, atk.d> f) {
-      public static final Codec<atk.e> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  jz.d.fieldOf("id").forGetter(atk.e::a),
-                  Codec.STRING.fieldOf("url").forGetter(atk.e::b),
-                  ayu.q.fieldOf("time").forGetter(atk.e::c),
-                  Codec.STRING.optionalFieldOf("hash").forGetter(atk.e::d),
-                  Codec.mapEither(Codec.STRING.fieldOf("error"), atk.d.a.fieldOf("file")).forGetter(atk.e::e)
-               )
-               .apply($$0, atk.e::new)
-      );
-
-      public UUID a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public Instant c() {
-         return this.d;
-      }
-
-      public Optional<String> d() {
-         return this.e;
-      }
-
-      public Either<String, atk.d> e() {
-         return this.f;
-      }
+   @Override
+   public void close() {
+      this.d.forEach(atr::close);
    }
 }

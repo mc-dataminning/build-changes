@@ -1,29 +1,16 @@
-public class ahg implements zf<agp> {
-   public static final yw<vu, ahg> a = zf.a(ahg::a, ahg::new);
-   private final int b;
-
-   public ahg(int $$0) {
-      this.b = $$0;
-   }
-
-   private ahg(vu $$0) {
-      this.b = $$0.x();
-   }
-
-   private void a(vu $$0) {
-      $$0.f(this.b);
-   }
+public record ahg(int b, int c) implements zh<agr> {
+   public static final yy<vw, ahg> a = yy.a(yw.x, ahg::b, yw.h, ahg::e, ahg::new);
 
    @Override
-   public zh<ahg> a() {
-      return agn.bA;
+   public zj<ahg> a() {
+      return agp.by;
    }
 
-   public void a(agp $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

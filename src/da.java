@@ -9,8 +9,8 @@ public class da extends dk<da.a> {
       return da.a.a;
    }
 
-   public void a(arr $$0, czn $$1, @Nullable bwi $$2) {
-      ezt $$3 = by.b($$0, $$2);
+   public void a(art $$0, czy $$1, @Nullable bwt $$2) {
+      fah $$3 = by.b($$0, $$2);
       this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
    }
 
@@ -32,7 +32,7 @@ public class da extends dk<da.a> {
          return aq.S.a(new da.a($$0, $$1, $$2));
       }
 
-      public boolean a(arr $$0, czn $$1, ezt $$2) {
+      public boolean a(art $$0, czy $$1, fah $$2) {
          return this.c.isPresent() && !this.c.get().a($$1) ? false : !this.d.isPresent() || this.d.get().a($$2);
       }
 

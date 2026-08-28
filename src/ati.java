@@ -1,80 +1,55 @@
-import com.google.common.collect.Lists;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ati implements atp {
-   private final atp c;
-   private final List<atp> d;
+public abstract class ati implements atr {
+   private static final Logger c = LogUtils.getLogger();
+   private final atq d;
 
-   public ati(atp $$0, List<atp> $$1) {
-      this.c = $$0;
-      List<atp> $$2 = new ArrayList<>($$1.size() + 1);
-      $$2.addAll(Lists.reverse($$1));
-      $$2.add($$0);
-      this.d = List.copyOf($$2);
+   protected ati(atq $$0) {
+      this.d = $$0;
    }
 
    @Nullable
    @Override
-   public auu<InputStream> a(String... $$0) {
-      return this.c.a($$0);
-   }
-
-   @Nullable
-   @Override
-   public auu<InputStream> a(atr $$0, alg $$1) {
-      for (atp $$2 : this.d) {
-         auu<InputStream> $$3 = $$2.a($$0, $$1);
-         if ($$3 != null) {
-            return $$3;
+   public <T> T a(aue<T> $$0) throws IOException {
+      auw<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
+      if ($$1 == null) {
+         return null;
+      } else {
+         Object var4;
+         try (InputStream $$2 = $$1.get()) {
+            var4 = a($$0, $$2);
          }
+
+         return (T)var4;
       }
-
-      return null;
-   }
-
-   @Override
-   public void a(atr $$0, String $$1, String $$2, atp.a $$3) {
-      Map<alg, auu<InputStream>> $$4 = new HashMap<>();
-
-      for (atp $$5 : this.d) {
-         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
-      }
-
-      $$4.forEach($$3);
-   }
-
-   @Override
-   public Set<String> a(atr $$0) {
-      Set<String> $$1 = new HashSet<>();
-
-      for (atp $$2 : this.d) {
-         $$1.addAll($$2.a($$0));
-      }
-
-      return $$1;
    }
 
    @Nullable
-   @Override
-   public <T> T a(auc<T> $$0) throws IOException {
-      return this.c.a($$0);
+   public static <T> T a(aue<T> $$0, InputStream $$1) {
+      JsonObject $$3;
+      try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1, StandardCharsets.UTF_8))) {
+         $$3 = aze.a($$2);
+      } catch (Exception var8) {
+         c.error("Couldn't load {} metadata", $$0.a(), var8);
+         return null;
+      }
+
+      return (T)(!$$3.has($$0.a())
+         ? null
+         : $$0.b().parse(JsonOps.INSTANCE, $$3.get($$0.a())).ifError($$1x -> c.error("Couldn't load {} metadata: {}", $$0.a(), $$1x)).result().orElse(null));
    }
 
    @Override
-   public ato a() {
-      return this.c.a();
-   }
-
-   @Override
-   public void close() {
-      this.d.forEach(atp::close);
+   public atq a() {
+      return this.d;
    }
 }

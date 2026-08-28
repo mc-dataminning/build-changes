@@ -1,8 +1,8 @@
-public class akv {
-   public static final alf<czj> a = a("pumpkin_seeds");
-   public static final alf<czj> b = a("melon_seeds");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private static alf<czj> a(String $$0) {
-      return alf.a(mh.K, alg.b($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface akv {
 }

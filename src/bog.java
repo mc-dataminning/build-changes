@@ -4,38 +4,15 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bog extends bku {
+public class bog extends bkw {
    public bog(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         true,
-         biz.z,
-         () -> DSL.or(
-               DSL.or(DSL.constType(DSL.string()), DSL.list(biz.z.in($$0))),
-               DSL.optionalFields(
-                  "extra",
-                  DSL.list(biz.z.in($$0)),
-                  "separator",
-                  biz.z.in($$0),
-                  "hoverEvent",
-                  DSL.taggedChoice(
-                     "action",
-                     DSL.string(),
-                     Map.of(
-                        "show_text",
-                        DSL.optionalFields("contents", biz.z.in($$0)),
-                        "show_item",
-                        DSL.optionalFields("contents", DSL.or(biz.t.in($$0), biz.F.in($$0))),
-                        "show_entity",
-                        DSL.optionalFields("type", biz.B.in($$0), "name", biz.z.in($$0))
-                     )
-                  )
-               )
-            )
-      );
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.registerSimple($$1, "minecraft:pale_oak_boat");
+      $$0.register($$1, "minecraft:pale_oak_chest_boat", $$1x -> DSL.optionalFields("Items", DSL.list(bjb.t.in($$0))));
+      return $$1;
    }
 }

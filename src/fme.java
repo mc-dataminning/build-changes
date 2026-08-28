@@ -1,22 +1,18 @@
-import com.google.gson.JsonObject;
+import java.net.Proxy;
 import javax.annotation.Nullable;
 
-public class fme extends fmi {
+public class fme {
    @Nullable
-   public String a;
-   public long b;
-   public long c;
+   private static Proxy a;
 
-   public static fme a(JsonObject $$0) {
-      fme $$1 = new fme();
+   @Nullable
+   public static Proxy a() {
+      return a;
+   }
 
-      try {
-         $$1.a = foe.b("profileUuid", $$0, null);
-         $$1.b = foe.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = foe.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
+   public static void a(Proxy $$0) {
+      if (a == null) {
+         a = $$0;
       }
-
-      return $$1;
    }
 }

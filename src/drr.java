@@ -1,37 +1,59 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class drr extends dvo implements dmu {
-   public static final MapCodec<drr> f = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayu.a(0.0F, 1.0F).fieldOf("leaf_particle_chance").forGetter($$0x -> $$0x.e), t()).apply($$0, drr::new)
-   );
+public class drr extends dwo implements duj {
+   public static final MapCodec<drr> a = b(drr::new);
+   public static final ecc<jb> b = ebu.T;
+   private final Function<ebe, fgk> c;
 
-   @Override
-   public MapCodec<drr> a() {
-      return f;
+   public drr(ebd.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, jb.c).b(this.c(), Integer.valueOf(1)));
+      this.c = this.q();
    }
 
-   public drr(float $$0, eas.d $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   public boolean a(djp $$0, iv $$1, eat $$2) {
-      return $$0.a_($$1.e()).l();
+   private Function<ebe, fgk> q() {
+      return this.a(this.a(b, this.c()));
    }
 
    @Override
-   public boolean a(djm $$0, azv $$1, iv $$2, eat $$3) {
-      return true;
+   protected MapCodec<drr> a() {
+      return a;
    }
 
    @Override
-   public void a(arq $$0, azv $$1, iv $$2, eat $$3) {
-      $$0.a($$2.e(), drs.c(), 2);
+   public ebe a(ebe $$0, dtw $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public iv a(iv $$0) {
-      return $$0.e();
+   public ebe a(ebe $$0, dsf $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   public boolean a(ebe $$0, ddr $$1) {
+      return this.a($$0, $$1, this.c()) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   protected boolean a(ebe $$0, dka $$1, iv $$2) {
+      iv $$3 = $$2.e();
+      return $$1.a_($$3).c($$1, $$3, jb.b);
+   }
+
+   @Override
+   public fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return this.c.apply($$0);
+   }
+
+   @Override
+   public ebe a(ddr $$0) {
+      return this.a($$0, this, this.c(), b);
+   }
+
+   @Override
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(b, this.c());
    }
 }

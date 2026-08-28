@@ -1,14 +1,27 @@
-import com.mojang.serialization.MapCodec;
+public abstract class btk<R extends Runnable> extends btf<R> {
+   private int b;
 
-public interface btk<P extends btj> {
-   btk<bth> a = a("constant", bth.b);
-   btk<btq> b = a("uniform", btq.a);
-   btk<btf> c = a("clamped_normal", btf.a);
-   btk<btp> d = a("trapezoid", btp.a);
+   public btk(String $$0) {
+      super($$0);
+   }
 
-   MapCodec<P> codec();
+   @Override
+   public boolean ax() {
+      return this.bB() || super.ax();
+   }
 
-   static <P extends btj> btk<P> a(String $$0, MapCodec<P> $$1) {
-      return js.a(mg.J, $$0, () -> $$1);
+   protected boolean bB() {
+      return this.b != 0;
+   }
+
+   @Override
+   public void d(R $$0) {
+      this.b++;
+
+      try {
+         super.d($$0);
+      } finally {
+         this.b--;
+      }
    }
 }

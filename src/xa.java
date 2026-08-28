@@ -1,145 +1,268 @@
+import com.google.common.collect.Lists;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.google.gson.stream.JsonReader;
+import com.mojang.brigadier.Message;
 import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+import java.io.StringReader;
+import java.lang.reflect.Type;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class xa {
-   public static final Codec<wy> a = Codec.recursive("Component", xa::a);
-   public static final yw<wj, wy> b = yu.d(a);
-   public static final yw<wj, Optional<wy>> c = b.a(yu::a);
-   public static final yw<wj, wy> d = yu.c(a);
-   public static final yw<wj, Optional<wy>> e = d.a(yu::a);
-   public static final yw<ByteBuf, wy> f = yu.a(a);
+public interface xa extends Message, xf {
+   xx a();
 
-   public static Codec<wy> a(final int $$0) {
-      return new Codec<wy>() {
-         public <T> DataResult<Pair<wy, T>> decode(DynamicOps<T> $$0x, T $$1) {
-            return xa.a
-               .decode($$0, $$1)
-               .flatMap(
-                  $$2 -> this.a($$0, (wy)$$2.getFirst())
-                        ? DataResult.error(() -> "Component was too large: greater than max size " + $$0)
-                        : DataResult.success($$2)
-               );
-         }
+   xb b();
 
-         public <T> DataResult<T> a(wy $$0x, DynamicOps<T> $$1, T $$2) {
-            return xa.a.encodeStart($$1, $$0);
-         }
-
-         private <T> boolean a(DynamicOps<T> $$0x, wy $$1) {
-            DataResult<JsonElement> $$2 = xa.a.encodeStart(a($$0), $$1);
-            return $$2.isSuccess() && azc.a((JsonElement)$$2.getOrThrow(), $$0);
-         }
-
-         private static <T> DynamicOps<JsonElement> a(DynamicOps<T> $$0x) {
-            return (DynamicOps<JsonElement>)($$0 instanceof ale<T> $$1 ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
-         }
-      };
+   @Override
+   default String getString() {
+      return xf.super.getString();
    }
 
-   private static xm a(List<wy> $$0) {
-      xm $$1 = $$0.get(0).f();
+   default String a(int $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      this.a((xf.a)($$2 -> {
+         int $$3 = $$0 - $$1.length();
+         if ($$3 <= 0) {
+            return a;
+         } else {
+            $$1.append($$2.length() <= $$3 ? $$2 : $$2.substring(0, $$3));
+            return Optional.empty();
+         }
+      }));
+      return $$1.toString();
+   }
 
-      for (int $$2 = 1; $$2 < $$0.size(); $$2++) {
-         $$1.b($$0.get($$2));
+   List<xa> c();
+
+   @Nullable
+   default String d() {
+      if (this.b() instanceof yh $$0 && this.c().isEmpty() && this.a().h()) {
+         return $$0.b();
       }
 
-      return $$1;
+      return null;
    }
 
-   public static <T extends bak, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
-      MapCodec<E> $$4 = new xa.a<>(Stream.<T>of($$0).map($$1).toList(), $$2x -> (MapEncoder<? extends E>)$$1.apply($$2.apply((E)$$2x)));
-      Codec<T> $$5 = bak.b((Supplier<T[]>)(() -> $$0));
-      MapCodec<E> $$6 = $$5.dispatchMap($$3, $$2, $$1);
-      MapCodec<E> $$7 = new xa.b($$3, $$6, $$4);
-      return ayu.a($$7, $$6);
+   default xo e() {
+      return xo.a(this.b());
    }
 
-   private static Codec<wy> a(Codec<wy> $$0) {
-      wz.a<?>[] $$1 = new wz.a[]{yf.b, yj.c, yc.b, yg.c, yh.b, ye.b};
-      MapCodec<wz> $$2 = a($$1, wz.a::a, wz::a, "type");
-      Codec<wy> $$3 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group($$2.forGetter(wy::b), ayu.b($$0.listOf()).optionalFieldOf("extra", List.of()).forGetter(wy::c), xv.b.a.forGetter(wy::a))
-               .apply($$2x, xm::new)
-      );
-      return Codec.either(Codec.either(Codec.STRING, ayu.b($$0.listOf())), $$3)
-         .xmap($$0x -> (wy)$$0x.map($$0xx -> (wy)$$0xx.map(wy::b, xa::a), $$0xx -> $$0xx), $$0x -> {
-            String $$1x = $$0x.d();
-            return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);
-         });
+   default xo f() {
+      return new xo(this.b(), new ArrayList<>(this.c()), this.a());
    }
 
-   static class a<T> extends MapCodec<T> {
-      private final List<MapCodec<? extends T>> a;
-      private final Function<T, MapEncoder<? extends T>> b;
+   aza g();
 
-      public a(List<MapCodec<? extends T>> $$0, Function<T, MapEncoder<? extends T>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public <S> DataResult<T> decode(DynamicOps<S> $$0, MapLike<S> $$1) {
-         for (MapDecoder<? extends T> $$2 : this.a) {
-            DataResult<? extends T> $$3 = $$2.decode($$0, $$1);
-            if ($$3.result().isPresent()) {
-               return (DataResult<T>)$$3;
+   @Override
+   default <T> Optional<T> a(xf.b<T> $$0, xx $$1) {
+      xx $$2 = this.a().a($$1);
+      Optional<T> $$3 = this.b().a($$0, $$2);
+      if ($$3.isPresent()) {
+         return $$3;
+      } else {
+         for (xa $$4 : this.c()) {
+            Optional<T> $$5 = $$4.a($$0, $$2);
+            if ($$5.isPresent()) {
+               return $$5;
             }
          }
 
-         return DataResult.error(() -> "No matching codec found");
-      }
-
-      public <S> RecordBuilder<S> encode(T $$0, DynamicOps<S> $$1, RecordBuilder<S> $$2) {
-         MapEncoder<T> $$3 = (MapEncoder<T>)this.b.apply($$0);
-         return $$3.encode($$0, $$1, $$2);
-      }
-
-      public <S> Stream<S> keys(DynamicOps<S> $$0) {
-         return this.a.stream().flatMap($$1 -> $$1.keys($$0)).distinct();
-      }
-
-      public String toString() {
-         return "FuzzyCodec[" + this.a + "]";
+         return Optional.empty();
       }
    }
 
-   static class b<T> extends MapCodec<T> {
-      private final String a;
-      private final MapCodec<T> b;
-      private final MapCodec<T> c;
+   @Override
+   default <T> Optional<T> a(xf.a<T> $$0) {
+      Optional<T> $$1 = this.b().a($$0);
+      if ($$1.isPresent()) {
+         return $$1;
+      } else {
+         for (xa $$2 : this.c()) {
+            Optional<T> $$3 = $$2.a($$0);
+            if ($$3.isPresent()) {
+               return $$3;
+            }
+         }
 
-      public b(String $$0, MapCodec<T> $$1, MapCodec<T> $$2) {
+         return Optional.empty();
+      }
+   }
+
+   default List<xa> h() {
+      return this.a(xx.a);
+   }
+
+   default List<xa> a(xx $$0) {
+      List<xa> $$1 = Lists.newArrayList();
+      this.a(($$1x, $$2) -> {
+         if (!$$2.isEmpty()) {
+            $$1.add(b($$2).c($$1x));
+         }
+
+         return Optional.empty();
+      }, $$0);
+      return $$1;
+   }
+
+   default boolean a(xa $$0) {
+      if (this.equals($$0)) {
+         return true;
+      } else {
+         List<xa> $$1 = this.h();
+         List<xa> $$2 = $$0.a(this.a());
+         return Collections.indexOfSubList($$1, $$2) != -1;
+      }
+   }
+
+   static xa a(@Nullable String $$0) {
+      return (xa)($$0 != null ? b($$0) : wz.a);
+   }
+
+   static xo b(String $$0) {
+      return xo.a(yh.a($$0));
+   }
+
+   static xo c(String $$0) {
+      return xo.a(new yl($$0, null, yl.a));
+   }
+
+   static xo a(String $$0, Object... $$1) {
+      return xo.a(new yl($$0, null, $$1));
+   }
+
+   static xo b(String $$0, Object... $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         Object $$3 = $$1[$$2];
+         if (!yl.a($$3) && !($$3 instanceof xa)) {
+            $$1[$$2] = String.valueOf($$3);
+         }
+      }
+
+      return a($$0, $$1);
+   }
+
+   static xo a(String $$0, @Nullable String $$1) {
+      return xo.a(new yl($$0, $$1, yl.a));
+   }
+
+   static xo a(String $$0, @Nullable String $$1, Object... $$2) {
+      return xo.a(new yl($$0, $$1, $$2));
+   }
+
+   static xo i() {
+      return xo.a(yh.c);
+   }
+
+   static xo d(String $$0) {
+      return xo.a(new ye($$0));
+   }
+
+   static xo a(String $$0, boolean $$1, Optional<xa> $$2, yc $$3) {
+      return xo.a(new yg($$0, $$1, $$2, $$3));
+   }
+
+   static xo a(hb $$0, String $$1) {
+      return xo.a(new yi(Either.left($$0), $$1));
+   }
+
+   static xo b(String $$0, String $$1) {
+      return xo.a(new yi(Either.right($$0), $$1));
+   }
+
+   static xo a(hb $$0, Optional<xa> $$1) {
+      return xo.a(new yj($$0, $$1));
+   }
+
+   static xa a(Date $$0) {
+      return b($$0.toString());
+   }
+
+   static xa a(Message $$0) {
+      return (xa)($$0 instanceof xa $$1 ? $$1 : b($$0.getString()));
+   }
+
+   static xa a(UUID $$0) {
+      return b($$0.toString());
+   }
+
+   static xa a(ali $$0) {
+      return b($$0.toString());
+   }
+
+   static xa a(djc $$0) {
+      return b($$0.toString());
+   }
+
+   static xa a(URI $$0) {
+      return b($$0.toString());
+   }
+
+   public static class a {
+      private static final Gson a = new GsonBuilder().disableHtmlEscaping().create();
+
+      private a() {
+      }
+
+      static xo b(JsonElement $$0, jh.a $$1) {
+         return (xo)xc.a.parse($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
+      }
+
+      static JsonElement b(xa $$0, jh.a $$1) {
+         return (JsonElement)xc.a.encodeStart($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
+      }
+
+      public static String a(xa $$0, jh.a $$1) {
+         return a.toJson(b($$0, $$1));
+      }
+
+      @Nullable
+      public static xo a(String $$0, jh.a $$1) {
+         JsonElement $$2 = JsonParser.parseString($$0);
+         return $$2 == null ? null : b($$2, $$1);
+      }
+
+      @Nullable
+      public static xo a(@Nullable JsonElement $$0, jh.a $$1) {
+         return $$0 == null ? null : b($$0, $$1);
+      }
+
+      @Nullable
+      public static xo b(String $$0, jh.a $$1) {
+         JsonReader $$2 = new JsonReader(new StringReader($$0));
+         $$2.setLenient(true);
+         JsonElement $$3 = JsonParser.parseReader($$2);
+         return $$3 == null ? null : b($$3, $$1);
+      }
+   }
+
+   public static class b implements JsonDeserializer<xo>, JsonSerializer<xa> {
+      private final jh.a a;
+
+      public b(jh.a $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
       }
 
-      public <O> DataResult<T> decode(DynamicOps<O> $$0, MapLike<O> $$1) {
-         return $$1.get(this.a) != null ? this.b.decode($$0, $$1) : this.c.decode($$0, $$1);
+      public xo a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return xa.a.b($$0, this.a);
       }
 
-      public <O> RecordBuilder<O> encode(T $$0, DynamicOps<O> $$1, RecordBuilder<O> $$2) {
-         return this.c.encode($$0, $$1, $$2);
-      }
-
-      public <T1> Stream<T1> keys(DynamicOps<T1> $$0) {
-         return Stream.concat(this.b.keys($$0), this.c.keys($$0)).distinct();
+      public JsonElement a(xa $$0, Type $$1, JsonSerializationContext $$2) {
+         return xa.a.b($$0, this.a);
       }
    }
 }

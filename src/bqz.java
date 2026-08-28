@@ -1,27 +1,32 @@
-import com.google.common.math.Quantiles;
-import com.google.common.math.Quantiles.ScaleAndIndexes;
-import it.unimi.dsi.fastutil.ints.Int2DoubleRBTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMaps;
-import java.util.Comparator;
-import java.util.Map;
+import java.nio.file.Path;
+import java.util.List;
 
-public class bqz {
-   public static final ScaleAndIndexes a = Quantiles.scale(100).indexes(new int[]{50, 75, 90, 99});
+public interface bqz {
+   char d = '\u001e';
 
-   private bqz() {
+   List<brd> a(String var1);
+
+   boolean a(Path var1);
+
+   long a();
+
+   int b();
+
+   long c();
+
+   int d();
+
+   default long g() {
+      return this.c() - this.a();
    }
 
-   public static Map<Integer, Double> a(long[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
+   default int f() {
+      return this.d() - this.b();
    }
 
-   public static Map<Integer, Double> a(double[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
-   }
+   String e();
 
-   private static Map<Integer, Double> a(Map<Integer, Double> $$0) {
-      Int2DoubleSortedMap $$1 = ag.a(new Int2DoubleRBTreeMap(Comparator.reverseOrder()), $$1x -> $$1x.putAll($$0));
-      return Int2DoubleSortedMaps.unmodifiable($$1);
+   static String b(String $$0) {
+      return $$0.replace('\u001e', '.');
    }
 }

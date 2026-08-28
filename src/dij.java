@@ -1,49 +1,32 @@
 import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
 
-public class dij extends ArrayList<dii> {
-   public static final Codec<dij> a = dii.a.listOf().optionalFieldOf("Recipes", List.of()).xmap(dij::new, Function.identity()).codec();
-   public static final yw<wj, dij> b = dii.b.a(yu.a(dij::new));
+public record dij(jf<dil> c, jf<din> d) implements ddd {
+   public static final Codec<dij> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dil.c.fieldOf("material").forGetter(dij::a), din.c.fieldOf("pattern").forGetter(dij::b)).apply($$0, dij::new)
+   );
+   public static final yy<wl, dij> b = yy.a(dil.d, dij::a, din.d, dij::b, dij::new);
+   private static final xa e = xa.c(ag.a("item", ali.b("smithing_template.upgrade"))).a(o.h);
 
-   public dij() {
+   @Override
+   public void a(czu.b $$0, Consumer<xa> $$1, dbn $$2, kf $$3) {
+      $$1.accept(e);
+      $$1.accept(wz.a().b(this.d.a().a(this.c)));
+      $$1.accept(wz.a().b(this.c.a().b()));
    }
 
-   private dij(int $$0) {
-      super($$0);
+   public ali a(String $$0, alh<dif> $$1) {
+      dik.a $$2 = this.a().a().a().a($$1);
+      return this.b().a().a().a((UnaryOperator<String>)($$2x -> $$0 + "/" + $$2x + "_" + $$2.a()));
    }
 
-   private dij(Collection<dii> $$0) {
-      super($$0);
+   public jf<dil> a() {
+      return this.c;
    }
 
-   @Nullable
-   public dii a(czn $$0, czn $$1, int $$2) {
-      if ($$2 > 0 && $$2 < this.size()) {
-         dii $$3 = this.get($$2);
-         return $$3.a($$0, $$1) ? $$3 : null;
-      } else {
-         for (int $$4 = 0; $$4 < this.size(); $$4++) {
-            dii $$5 = this.get($$4);
-            if ($$5.a($$0, $$1)) {
-               return $$5;
-            }
-         }
-
-         return null;
-      }
-   }
-
-   public dij a() {
-      dij $$0 = new dij(this.size());
-
-      for (dii $$1 : this) {
-         $$0.add($$1.v());
-      }
-
-      return $$0;
+   public jf<din> b() {
+      return this.d;
    }
 }

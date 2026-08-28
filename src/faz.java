@@ -1,125 +1,117 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Set;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-public class faz extends fbg {
-   public static final axr<ern> a = axn.l;
-   public static final jf<eyq> b = eyr.i;
-   public static final byte c = 2;
-   public static final int d = 50;
-   public static final boolean e = true;
-   public static final MapCodec<faz> f = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  axr.a(mh.be).optionalFieldOf("destination", a).forGetter($$0x -> $$0x.h),
-                  eyq.b.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
-                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter($$0x -> $$0x.j),
-                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter($$0x -> $$0x.k),
-                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
-               )
-            )
-            .apply($$0, faz::new)
-   );
-   private final axr<ern> h;
-   private final jf<eyq> i;
-   private final byte j;
-   private final int k;
-   private final boolean l;
+public abstract class faz extends fax {
+   public static final int d = 1;
+   public static final int f = 0;
+   protected final int g;
+   protected final int h;
+   protected final List<fbv> i;
+   final BiFunction<czy, fah, czy> a;
+   private final faw j = new faz.c() {
+      @Override
+      public void a(Consumer<czy> $$0, fah $$1) {
+         faz.this.a(fbv.a(faz.this.a, $$0, $$1), $$1);
+      }
+   };
 
-   faz(List<fdc> $$0, axr<ern> $$1, jf<eyq> $$2, byte $$3, int $$4, boolean $$5) {
-      super($$0);
+   protected faz(int $$0, int $$1, List<fdq> $$2, List<fbv> $$3) {
+      super($$2);
+      this.g = $$0;
       this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = $$5;
+      this.i = $$3;
+      this.a = fbx.a($$3);
+   }
+
+   protected static <T extends faz> P4<Mu<T>, Integer, Integer, List<fdq>, List<fbv>> b(Instance<T> $$0) {
+      return $$0.group(Codec.INT.optionalFieldOf("weight", 1).forGetter($$0x -> $$0x.g), Codec.INT.optionalFieldOf("quality", 0).forGetter($$0x -> $$0x.h))
+         .and(a($$0).t1())
+         .and(fbx.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.i));
    }
 
    @Override
-   public fbi<faz> b() {
-      return fbj.q;
+   public void a(fan $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
+         this.i.get($$1).a($$0.a(".functions[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public Set<bax<?>> a() {
-      return Set.of(fcn.f);
-   }
+   protected abstract void a(Consumer<czy> var1, fah var2);
 
    @Override
-   public czn a(czn $$0, ezt $$1) {
-      if (!$$0.a(czr.vt)) {
-         return $$0;
+   public boolean expand(fah $$0, Consumer<faw> $$1) {
+      if (this.a($$0)) {
+         $$1.accept(this.j);
+         return true;
       } else {
-         ffc $$2 = $$1.c(fcn.f);
-         if ($$2 != null) {
-            arq $$3 = $$1.d();
-            iv $$4 = $$3.a(this.h, iv.a((jp)$$2), this.k, this.l);
-            if ($$4 != null) {
-               czn $$5 = daa.a($$3, $$4.u(), $$4.w(), this.j, true, true);
-               daa.a($$3, $$5);
-               eyv.a($$5, $$4, "+", this.i);
-               return $$5;
-            }
-         }
-
-         return $$0;
+         return false;
       }
    }
 
-   public static faz.a c() {
-      return new faz.a();
+   public static faz.a<?> a(faz.d $$0) {
+      return new faz.b($$0);
    }
 
-   public static class a extends fbg.a<faz.a> {
-      private axr<ern> a;
-      private jf<eyq> b;
-      private byte c;
-      private int d;
-      private boolean e;
+   public abstract static class a<T extends faz.a<T>> extends fax.a<T> implements fbr<T> {
+      protected int a = 1;
+      protected int b = 0;
+      private final Builder<fbv> c = ImmutableList.builder();
 
-      public a() {
-         this.a = faz.a;
-         this.b = faz.b;
-         this.c = 2;
-         this.d = 50;
-         this.e = true;
+      public T a(fbv.a $$0) {
+         this.c.add($$0.b());
+         return this.aF_();
       }
 
-      protected faz.a a() {
-         return this;
+      protected List<fbv> a() {
+         return this.c.build();
       }
 
-      public faz.a a(axr<ern> $$0) {
+      public T a(int $$0) {
          this.a = $$0;
-         return this;
+         return this.aF_();
       }
 
-      public faz.a a(jf<eyq> $$0) {
+      public T b(int $$0) {
          this.b = $$0;
-         return this;
+         return this.aF_();
       }
+   }
 
-      public faz.a a(byte $$0) {
+   static class b extends faz.a<faz.b> {
+      private final faz.d c;
+
+      public b(faz.d $$0) {
          this.c = $$0;
-         return this;
       }
 
-      public faz.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public faz.a a(boolean $$0) {
-         this.e = $$0;
+      protected faz.b g() {
          return this;
       }
 
       @Override
-      public fbh b() {
-         return new faz(this.g(), this.a, this.b, this.c, this.d, this.e);
+      public fax b() {
+         return this.c.build(this.a, this.b, this.f(), this.a());
       }
+   }
+
+   protected abstract class c implements faw {
+      @Override
+      public int a(float $$0) {
+         return Math.max(azo.d((float)faz.this.g + (float)faz.this.h * $$0), 0);
+      }
+   }
+
+   @FunctionalInterface
+   protected interface d {
+      faz build(int var1, int var2, List<fdq> var3, List<fbv> var4);
    }
 }

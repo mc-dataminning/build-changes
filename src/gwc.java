@@ -1,22 +1,29 @@
-public class gwc extends gvq<cnx, hcr> {
-   private static final alg a = alg.b("textures/entity/skeleton/bogged.png");
-   private static final alg j = alg.b("textures/entity/skeleton/bogged_overlay.png");
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
 
-   public gwc(gwy.a $$0) {
-      super($$0, gjs.G, gjs.H, new gft($$0.a(gjs.F)));
-      this.a(new hbq<>(this, $$0.f(), gjs.I, j));
+public class gwc implements gwd.a {
+   private final frd a;
+   private double b = Double.MIN_VALUE;
+   private List<fgk> c = Collections.emptyList();
+
+   public gwc(frd $$0) {
+      this.a = $$0;
    }
 
-   public alg a(hcr $$0) {
-      return a;
-   }
+   @Override
+   public void a(flo $$0, gsa $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ag.d();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bwt $$6 = this.a.j.k().g();
+         this.c = ImmutableList.copyOf($$6.dV().d($$6, $$6.cR().g(6.0)));
+      }
 
-   public hcr a() {
-      return new hcr();
-   }
+      flr $$7 = $$1.getBuffer(gsl.w());
 
-   public void a(cnx $$0, hcr $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gu();
+      for (fgk $$8 : this.c) {
+         gwd.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+      }
    }
 }

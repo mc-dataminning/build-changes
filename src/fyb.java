@@ -1,31 +1,26 @@
-public class fyb extends fys {
-   private final wy a;
+import java.util.function.Consumer;
 
-   public fyb(wy $$0, wy $$1) {
-      super($$0);
-      this.a = $$1;
+public interface fyb {
+   void j(int var1);
+
+   void k(int var1);
+
+   int F();
+
+   int G();
+
+   int A();
+
+   int y();
+
+   default fys J() {
+      return new fys(this.F(), this.G(), this.A(), this.y());
    }
 
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.c(fta.a(wx.e, $$0 -> this.m.a(null)).a(this.n / 2 - 100, 140, 200, 20).a());
+   default void c(int $$0, int $$1) {
+      this.j($$0);
+      this.k($$1);
    }
 
-   @Override
-   public void a(fsm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 90, 16777215);
-      $$0.a(this.p, this.a, this.n / 2, 110, 16777215);
-   }
-
-   @Override
-   public void b(fsm $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.n, this.o, -12574688, -11530224);
-   }
-
-   @Override
-   public boolean aD_() {
-      return false;
-   }
+   void a(Consumer<fuj> var1);
 }

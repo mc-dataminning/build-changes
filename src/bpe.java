@@ -1,11 +1,19 @@
-public interface bpe {
-   int c();
+public class bpe extends bpa {
+   private final bpb c;
+   private final bpd d;
 
-   int d();
+   public bpe(int $$0, bpb $$1, bpd $$2) {
+      this($$0, $$1, $$2, new long[$$0]);
+   }
 
-   long a(int var1);
+   public bpe(int $$0, bpb $$1, bpd $$2, long[] $$3) {
+      super($$0, $$3);
+      this.c = $$1;
+      this.d = $$2;
+   }
 
-   long a(int var1, int var2);
-
-   void e();
+   @Override
+   protected void a() {
+      this.c.a(new acw((long[])this.b.clone(), this.d));
+   }
 }

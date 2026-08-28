@@ -1,81 +1,54 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+public class gqn extends gqk {
+   private final ffq a;
 
-public class gqn implements gqv.a {
-   public static final alg a = gqv.a;
-   public static final alg b = alg.b("translucent");
-   public static final alg c = alg.b("item_entity");
-   public static final alg d = alg.b("particles");
-   public static final alg e = alg.b("weather");
-   public static final alg f = alg.b("clouds");
-   public static final alg g = alg.b("entity_outline");
-   public static final Set<alg> h = Set.of(a);
-   public static final Set<alg> i = Set.of(a, g);
-   public static final Set<alg> j = Set.of(a, b, c, d, e, f);
-   public fjl<fij> k = fjl.a();
-   @Nullable
-   public fjl<fij> l;
-   @Nullable
-   public fjl<fij> m;
-   @Nullable
-   public fjl<fij> n;
-   @Nullable
-   public fjl<fij> o;
-   @Nullable
-   public fjl<fij> p;
-   @Nullable
-   public fjl<fij> q;
-
-   @Override
-   public void a(alg $$0, fjl<fij> $$1) {
-      if ($$0.equals(a)) {
-         this.k = $$1;
-      } else if ($$0.equals(b)) {
-         this.l = $$1;
-      } else if ($$0.equals(c)) {
-         this.m = $$1;
-      } else if ($$0.equals(d)) {
-         this.n = $$1;
-      } else if ($$0.equals(e)) {
-         this.o = $$1;
-      } else if ($$0.equals(f)) {
-         this.p = $$1;
-      } else {
-         if (!$$0.equals(g)) {
-            throw new IllegalArgumentException("No target with id " + $$0);
-         }
-
-         this.q = $$1;
-      }
+   gqn(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ffq $$7, int $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      $$8 = axy.a($$8, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F);
+      this.v = (float)axy.b($$8) / 255.0F;
+      this.w = (float)axy.c($$8) / 255.0F;
+      this.x = (float)axy.d($$8) / 255.0F;
+      this.D = 0.26F;
+      this.a = $$7;
    }
 
-   @Nullable
    @Override
-   public fjl<fij> a(alg $$0) {
-      if ($$0.equals(a)) {
-         return this.k;
-      } else if ($$0.equals(b)) {
-         return this.l;
-      } else if ($$0.equals(c)) {
-         return this.m;
-      } else if ($$0.equals(d)) {
-         return this.n;
-      } else if ($$0.equals(e)) {
-         return this.o;
-      } else if ($$0.equals(f)) {
-         return this.p;
-      } else {
-         return $$0.equals(g) ? this.q : null;
-      }
+   public gpo b() {
+      return gpo.b;
    }
 
+   @Override
    public void a() {
-      this.k = fjl.a();
-      this.l = null;
-      this.m = null;
-      this.n = null;
-      this.o = null;
-      this.p = null;
-      this.q = null;
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         int $$0 = this.t - this.s;
+         double $$1 = 1.0 / (double)$$0;
+         this.g = azo.d($$1, this.g, this.a.a());
+         this.h = azo.d($$1, this.h, this.a.b());
+         this.i = azo.d($$1, this.i, this.a.c());
+      }
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 15728880;
+   }
+
+   public static class a implements gpn<md> {
+      private final gqf a;
+
+      public a(gqf $$0) {
+         this.a = $$0;
+      }
+
+      public gpk a(md $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gqn $$8 = new gqn($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b(), $$0.c());
+         $$8.a(this.a);
+         $$8.a($$0.d());
+         return $$8;
+      }
    }
 }

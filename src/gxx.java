@@ -1,25 +1,22 @@
-public class gxx extends gwx<cnl, hdf> {
-   private static final alg a = alg.b("textures/entity/lead_knot.png");
-   private final ghh g;
+public class gxx extends gxc<cjx, hek, ght> {
+   private static final ali a = ali.b("textures/entity/dolphin.png");
 
-   public gxx(gwy.a $$0) {
-      super($$0);
-      this.g = new ghh($$0.a(gjs.bD));
+   public gxx(gyi.a $$0) {
+      super($$0, new ght($$0.a(gld.ax)), new ght($$0.a(gld.ay)), 0.7F);
+      this.a(new hcd(this));
    }
 
-   @Override
-   public void a(hdf $$0, fkd $$1, gqr $$2, int $$3) {
-      $$1.a();
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      this.g.a($$0);
-      fkh $$4 = $$2.getBuffer(this.g.a(a));
-      this.g.a($$1, $$4, $$3, hjg.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public ali a(hek $$0) {
+      return a;
    }
 
-   @Override
-   public hdf d() {
-      return new hdf();
+   public hek a() {
+      return new hek();
+   }
+
+   public void a(cjx $$0, hek $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      hfe.a($$0, $$1, this.h);
+      $$1.a = $$0.dy().j() > 1.0E-7;
    }
 }

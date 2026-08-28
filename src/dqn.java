@@ -1,65 +1,57 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dqn extends dmr implements duc {
-   public static final MapCodec<dqn> a = b(dqn::new);
-   private static final ebk b = ebj.I;
-   private static final ffw c = dmr.b(12.0, 10.0, 16.0);
+public class dqn extends dlx {
+   public static final MapCodec<dqn> c = b(dqn::new);
 
    @Override
    public MapCodec<dqn> a() {
-      return a;
+      return c;
    }
 
-   protected dqn(eas.d $$0) {
+   protected dqn(ebd.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected exa b_(eat $$0) {
-      return $$0.c(b) ? exb.c.a(false) : super.b_($$0);
+   public dyc a(iv $$0, ebe $$1) {
+      return new dzc($$0, $$1);
    }
 
    @Nullable
    @Override
-   public eat a(ddg $$0) {
-      eat $$1 = super.a($$0);
-      if ($$1 != null) {
-         exa $$2 = $$0.q().b_($$0.a());
-         return $$1.b(b, Boolean.valueOf($$2.a() == exb.c));
-      } else {
-         return null;
+   public <T extends dyc> dyd<T> a(djx $$0, ebe $$1, dye<T> $$2) {
+      return a($$0, $$2, dye.a);
+   }
+
+   @Override
+   protected void a(djx $$0, iv $$1, crx $$2) {
+      dyc $$3 = $$0.c_($$1);
+      if ($$3 instanceof dzc) {
+         $$2.a((but)$$3);
+         $$2.a(awz.am);
       }
    }
 
    @Override
-   protected boolean a(eat $$0, djp $$1, iv $$2) {
-      iv $$3 = $$2.d();
-      eat $$4 = $$1.a_($$3);
-      return $$4.c($$1, $$3, jb.a);
-   }
-
-   @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return c;
-   }
-
-   @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      if ($$4 == jb.b && !this.a($$0, $$1, $$3)) {
-         return dmt.a.m();
-      } else {
-         if ($$0.c(b)) {
-            $$2.a($$3, exb.c, exb.c.a($$1));
+   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awp.kC, awq.e, 1.0F, 1.0F, false);
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         jb $$7 = $$0.c(a);
+         jb.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == jb.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == jb.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(ly.ah, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(ly.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
    }
 }

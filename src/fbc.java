@@ -1,65 +1,61 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class fbc extends fbg {
-   private static final Logger b = LogUtils.getLogger();
+public class fbc extends faz {
    public static final MapCodec<fbc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(alf.a(mh.bs).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, fbc::new)
+      $$0 -> $$0.group(axt.a(mh.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
+            .apply($$0, fbc::new)
    );
-   private final alf<fbh> c;
+   private final axt<czu> j;
+   private final boolean k;
 
-   private fbc(List<fdc> $$0, alf<fbh> $$1) {
-      super($$0);
-      this.c = $$1;
+   private fbc(axt<czu> $$0, boolean $$1, int $$2, int $$3, List<fdq> $$4, List<fbv> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public fbi<fbc> b() {
-      return fbj.H;
+   public fay a() {
+      return fav.f;
    }
 
    @Override
-   public void a(ezz $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.c.a() + ", but references are not allowed");
-      } else if ($$0.a(this.c)) {
-         $$0.b("Function " + this.c.a() + " is recursively called");
+   public void a(Consumer<czy> $$0, fah $$1) {
+      mg.g.c(this.j).forEach($$1x -> $$0.accept(new czy($$1x)));
+   }
+
+   private boolean a(fah $$0, Consumer<faw> $$1) {
+      if (!this.a($$0)) {
+         return false;
       } else {
-         super.a($$0);
-         $$0.a()
-            .c(this.c)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
-      }
-   }
-
-   @Override
-   protected czn a(czn $$0, ezt $$1) {
-      fbh $$2 = $$1.a().c(this.c).map(jf::a).orElse(null);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c.a());
-         return $$0;
-      } else {
-         ezt.c<?> $$3 = ezt.a($$2);
-         if ($$1.b($$3)) {
-            czn var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
-
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
+         for (final jf<czu> $$2 : mg.g.c(this.j)) {
+            $$1.accept(new faz.c() {
+               @Override
+               public void a(Consumer<czy> $$0, fah $$1) {
+                  $$0.accept(new czy($$2));
+               }
+            });
          }
+
+         return true;
       }
    }
 
-   public static fbg.a<?> a(alf<fbh> $$0) {
-      return a($$1 -> new fbc($$1, $$0));
+   @Override
+   public boolean expand(fah $$0, Consumer<faw> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   }
+
+   public static faz.a<?> a(axt<czu> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new fbc($$0, false, $$1, $$2, $$3, $$4));
+   }
+
+   public static faz.a<?> b(axt<czu> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new fbc($$0, true, $$1, $$2, $$3, $$4));
    }
 }

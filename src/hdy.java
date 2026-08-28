@@ -1,4 +1,7 @@
-public class hdy extends hdx {
-   public ffc[] a = new ffc[0];
-   public boolean n;
+public class hdy extends hfp {
+   public float a;
+   public boolean b = true;
+   public boolean c;
+   public boolean d;
+   public boolean e;
 }

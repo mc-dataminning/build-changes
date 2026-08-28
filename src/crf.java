@@ -1,49 +1,28 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class crf implements diy {
-   private static final int b = 1200;
-   public static final int a = 24000;
-   private static final int c = 25;
-   private static final int d = 75;
-   private static final int e = 25;
-   private static final int f = 10;
-   private static final int g = 10;
-   private final azv h = azv.a();
-   private final ezm i;
-   private int j;
-   private int k;
-   private int l;
-
-   public crf(ezm $$0) {
-      this.i = $$0;
-      this.j = 1200;
-      this.k = $$0.t();
-      this.l = $$0.u();
-      if (this.k == 0 && this.l == 0) {
-         this.k = 24000;
-         $$0.d(this.k);
-         this.l = 25;
-         $$0.e(this.l);
-      }
-   }
+public class crf implements djj {
+   private static final int a = 1200;
+   private int b;
 
    @Override
-   public void a(arq $$0, boolean $$1, boolean $$2) {
-      if ($$0.O().c(dji.N)) {
-         if (--this.j <= 0) {
-            this.j = 1200;
-            this.k -= 1200;
-            this.i.d(this.k);
-            if (this.k <= 0) {
-               this.k = 24000;
-               if ($$0.O().c(dji.f)) {
-                  int $$3 = this.l;
-                  this.l = azm.a(this.l + 25, 25, 75);
-                  this.i.e(this.l);
-                  if (this.h.a(100) <= $$3) {
-                     if (this.a($$0)) {
-                        this.l = 25;
+   public void a(ars $$0, boolean $$1, boolean $$2) {
+      if ($$2 && $$0.O().c(djt.f)) {
+         this.b--;
+         if (this.b <= 0) {
+            this.b = 1200;
+            crx $$3 = $$0.k();
+            if ($$3 != null) {
+               azx $$4 = $$0.A;
+               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               iv $$7 = $$3.dv().b($$5, 0, $$6);
+               int $$8 = 10;
+               if ($$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
+                  if (byp.a(bxc.v, $$0, $$7)) {
+                     if ($$0.a($$7, 2)) {
+                        this.a($$0, $$7);
+                     } else if ($$0.b().a($$7, axp.n).b()) {
+                        this.b($$0, $$7);
                      }
                   }
                }
@@ -52,78 +31,34 @@ public class crf implements diy {
       }
    }
 
-   private boolean a(arq $$0) {
-      crm $$1 = $$0.k();
-      if ($$1 == null) {
-         return true;
-      } else if (this.h.a(10) != 0) {
-         return false;
-      } else {
-         iv $$2 = $$1.du();
-         int $$3 = 48;
-         cil $$4 = $$0.A();
-         Optional<iv> $$5 = $$4.d($$0x -> $$0x.a(cip.o), $$0x -> true, $$2, 48, cil.b.c);
-         iv $$6 = $$5.orElse($$2);
-         iv $$7 = this.a($$0, $$6, 48);
-         if ($$7 != null && this.a($$0, $$7)) {
-            if ($$0.u($$7).a(axb.ah)) {
-               return false;
-            }
-
-            cre $$8 = bwr.bF.a($$0, $$7, bwq.h);
-            if ($$8 != null) {
-               for (int $$9 = 0; $$9 < 2; $$9++) {
-                  this.a($$0, $$8, 4);
-               }
-
-               this.i.a($$8.cF());
-               $$8.t(48000);
-               $$8.h($$6);
-               $$8.a($$6, 16);
-               return true;
-            }
+   private void a(ars $$0, iv $$1) {
+      int $$2 = 48;
+      if ($$0.A().a($$0x -> $$0x.a(cja.n), $$1, 48, ciw.b.b) > 4L) {
+         List<cjn> $$3 = $$0.a(cjn.class, new ffl($$1).c(48.0, 8.0, 48.0));
+         if ($$3.size() < 5) {
+            this.a($$1, $$0, false);
          }
-
-         return false;
       }
    }
 
-   private void a(arq $$0, cre $$1, int $$2) {
-      iv $$3 = this.a($$0, $$1.du(), $$2);
+   private void b(ars $$0, iv $$1) {
+      int $$2 = 16;
+      List<cjn> $$3 = $$0.a(cjn.class, new ffl($$1).c(16.0, 8.0, 16.0));
+      if ($$3.isEmpty()) {
+         this.a($$1, $$0, true);
+      }
+   }
+
+   private void a(iv $$0, ars $$1, boolean $$2) {
+      cjn $$3 = bxc.v.a($$1, bxb.a);
       if ($$3 != null) {
-         clq $$4 = bwr.by.a($$0, $$3, bwq.h);
-         if ($$4 != null) {
-            $$4.a_($$1, true);
+         $$3.a($$1, $$1.d_($$0), bxb.a, null);
+         if ($$2) {
+            $$3.gc();
          }
+
+         $$3.a($$0, 0.0F, 0.0F);
+         $$1.a_($$3);
       }
-   }
-
-   @Nullable
-   private iv a(djp $$0, iv $$1, int $$2) {
-      iv $$3 = null;
-      byc $$4 = bye.a(bwr.bF);
-
-      for (int $$5 = 0; $$5 < 10; $$5++) {
-         int $$6 = $$1.u() + this.h.a($$2 * 2) - $$2;
-         int $$7 = $$1.w() + this.h.a($$2 * 2) - $$2;
-         int $$8 = $$0.a(egs.a.b, $$6, $$7);
-         iv $$9 = new iv($$6, $$8, $$7);
-         if ($$4.isSpawnPositionOk($$0, $$9, bwr.bF)) {
-            $$3 = $$9;
-            break;
-         }
-      }
-
-      return $$3;
-   }
-
-   private boolean a(diq $$0, iv $$1) {
-      for (iv $$2 : iv.c($$1, $$1.b(1, 2, 1))) {
-         if (!$$0.a_($$2).g($$0, $$2).c()) {
-            return false;
-         }
-      }
-
-      return true;
    }
 }

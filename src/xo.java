@@ -1,135 +1,130 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
-import java.time.Duration;
-import java.time.Instant;
+import com.google.common.collect.Lists;
+import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
 
-public record xo(xt d, @Nullable xk e, xr f, @Nullable wy g, xc h) {
-   public static final MapCodec<xo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               xt.a.fieldOf("link").forGetter(xo::k),
-               xk.a.optionalFieldOf("signature").forGetter($$0x -> Optional.ofNullable($$0x.e)),
-               xr.a.forGetter(xo::m),
-               xa.a.optionalFieldOf("unsigned_content").forGetter($$0x -> Optional.ofNullable($$0x.g)),
-               xc.a.optionalFieldOf("filter_mask", xc.c).forGetter(xo::o)
-            )
-            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new xo($$0x, (xk)$$1.orElse(null), $$2, (wy)$$3.orElse(null), $$4))
-   );
-   private static final UUID i = ag.e;
-   public static final Duration b = Duration.ofMinutes(5L);
-   public static final Duration c = b.plus(Duration.ofMinutes(2L));
+public class xo implements xa {
+   private final xb c;
+   private final List<xa> d;
+   private xx e;
+   private aza f = aza.a;
+   @Nullable
+   private tu g;
 
-   public static xo a(String $$0) {
-      return a(i, $$0);
+   xo(xb $$0, List<xa> $$1, xx $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static xo a(UUID $$0, String $$1) {
-      xr $$2 = xr.a($$1);
-      xt $$3 = xt.a($$0);
-      return new xo($$3, null, $$2, null, xc.c);
+   public static xo a(xb $$0) {
+      return new xo($$0, Lists.newArrayList(), xx.a);
    }
 
-   public xo a(wy $$0) {
-      wy $$1 = !$$0.equals(wy.b(this.c())) ? $$0 : null;
-      return new xo(this.d, this.e, this.f, $$1, this.h);
+   @Override
+   public xb b() {
+      return this.c;
    }
 
-   public xo a() {
-      return this.g != null ? new xo(this.d, this.e, this.f, null, this.h) : this;
-   }
-
-   public xo a(xc $$0) {
-      return this.h.equals($$0) ? this : new xo(this.d, this.e, this.f, this.g, $$0);
-   }
-
-   public xo a(boolean $$0) {
-      return this.a($$0 ? this.h : xc.c);
-   }
-
-   public xo b() {
-      xr $$0 = xr.a(this.c());
-      xt $$1 = xt.a(this.g());
-      return new xo($$1, null, $$0, this.g, this.h);
-   }
-
-   public static void a(baa.a $$0, xt $$1, xr $$2) throws SignatureException {
-      $$0.update(Ints.toByteArray(1));
-      $$1.a($$0);
-      $$2.a($$0);
-   }
-
-   public boolean a(bab $$0) {
-      return this.e != null && this.e.a($$0, $$0x -> a($$0x, this.d, this.f));
-   }
-
-   public String c() {
-      return this.f.a();
-   }
-
-   public wy d() {
-      return Objects.requireNonNullElseGet(this.g, () -> wy.b(this.c()));
-   }
-
-   public Instant e() {
-      return this.f.b();
-   }
-
-   public long f() {
-      return this.f.c();
-   }
-
-   public boolean a(Instant $$0) {
-      return $$0.isAfter(this.e().plus(b));
-   }
-
-   public boolean b(Instant $$0) {
-      return $$0.isAfter(this.e().plus(c));
-   }
-
-   public UUID g() {
-      return this.d.c();
-   }
-
-   public boolean h() {
-      return this.g().equals(i);
-   }
-
-   public boolean i() {
-      return this.e != null;
-   }
-
-   public boolean a(UUID $$0) {
-      return this.i() && this.d.c().equals($$0);
-   }
-
-   public boolean j() {
-      return this.h.b();
-   }
-
-   public xt k() {
+   @Override
+   public List<xa> c() {
       return this.d;
    }
 
-   @Nullable
-   public xk l() {
+   public xo b(xx $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   @Override
+   public xx a() {
       return this.e;
    }
 
-   public xr m() {
+   public xo f(String $$0) {
+      return $$0.isEmpty() ? this : this.b(xa.b($$0));
+   }
+
+   public xo b(xa $$0) {
+      this.d.add($$0);
+      return this;
+   }
+
+   public xo a(UnaryOperator<xx> $$0) {
+      this.b($$0.apply(this.a()));
+      return this;
+   }
+
+   public xo c(xx $$0) {
+      this.b($$0.a(this.a()));
+      return this;
+   }
+
+   public xo a(o... $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   public xo a(o $$0) {
+      this.b(this.a().b($$0));
+      return this;
+   }
+
+   public xo b(int $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   @Override
+   public aza g() {
+      tu $$0 = tu.a();
+      if (this.g != $$0) {
+         this.f = $$0.a(this);
+         this.g = $$0;
+      }
+
       return this.f;
    }
 
-   @Nullable
-   public wy n() {
-      return this.g;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof xo $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+      }
    }
 
-   public xc o() {
-      return this.h;
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.c, this.e, this.d);
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder(this.c.toString());
+      boolean $$1 = !this.e.h();
+      boolean $$2 = !this.d.isEmpty();
+      if ($$1 || $$2) {
+         $$0.append('[');
+         if ($$1) {
+            $$0.append("style=");
+            $$0.append(this.e);
+         }
+
+         if ($$1 && $$2) {
+            $$0.append(", ");
+         }
+
+         if ($$2) {
+            $$0.append("siblings=");
+            $$0.append(this.d);
+         }
+
+         $$0.append(']');
+      }
+
+      return $$0.toString();
    }
 }

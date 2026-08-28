@@ -1,124 +1,53 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class cmq extends cmm {
-   private static final chy b = chy.a().d();
-   @Nullable
-   private exo c;
-   @Nullable
-   private ffc d;
-   private boolean e;
+public class cmq {
+   public static final alh<cmp> a = a("pale");
+   public static final alh<cmp> b = a("spotted");
+   public static final alh<cmp> c = a("snowy");
+   public static final alh<cmp> d = a("black");
+   public static final alh<cmp> e = a("ashen");
+   public static final alh<cmp> f = a("rusty");
+   public static final alh<cmp> g = a("woods");
+   public static final alh<cmp> h = a("chestnut");
+   public static final alh<cmp> i = a("striped");
+   public static final alh<cmp> j = a;
 
-   public cmq(cmk $$0) {
-      super($$0);
+   private static alh<cmp> a(String $$0) {
+      return alh.a(mh.bm, ali.b($$0));
    }
 
-   @Override
-   public cna<cmq> h() {
-      return cna.a;
+   private static void a(qh<cmp> $$0, alh<cmp> $$1, String $$2, alh<dla> $$3) {
+      a($$0, $$1, $$2, a(jj.a($$0.a(mh.aG).b($$3))));
    }
 
-   @Override
-   public void a(arq $$0) {
-      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dz(), this.a.dB(), this.a.dF());
-      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-         this.b($$0);
-      }
+   private static void a(qh<cmp> $$0, alh<cmp> $$1, String $$2, axt<dla> $$3) {
+      a($$0, $$1, $$2, a($$0.a(mh.aG).b($$3)));
    }
 
-   @Override
-   public void c() {
-      this.c = null;
-      this.d = null;
+   private static cue a(jj<dla> $$0) {
+      return cue.a(new ctx($$0), 1);
    }
 
-   @Nullable
-   @Override
-   public ffc f() {
-      return this.d;
+   private static void a(qh<cmp> $$0, alh<cmp> $$1, String $$2, cue $$3) {
+      ali $$4 = ali.b("entity/wolf/" + $$2);
+      ali $$5 = ali.b("entity/wolf/" + $$2 + "_tame");
+      ali $$6 = ali.b("entity/wolf/" + $$2 + "_angry");
+      $$0.a($$1, new cmp(new cmp.a(new iw($$4), new iw($$5), new iw($$6)), $$3));
    }
 
-   private void b(arq $$0) {
-      if (this.c != null && this.c.c()) {
-         iv $$1 = $$0.a(egs.a.f, ejx.a(this.a.j()));
-         int $$2 = this.a.x() == null ? 0 : this.a.x().e();
-         if (this.a.dX().a($$2 + 3) == 0) {
-            this.a.t().a(cna.c);
-            return;
-         }
-
-         crm $$3 = $$0.a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-         double $$4;
-         if ($$3 != null) {
-            $$4 = $$1.b($$3.ds()) / 512.0;
-         } else {
-            $$4 = 64.0;
-         }
-
-         if ($$3 != null && (this.a.dX().a((int)($$4 + 2.0)) == 0 || this.a.dX().a($$2 + 2) == 0)) {
-            this.a($$3);
-            return;
-         }
-      }
-
-      if (this.c == null || this.c.c()) {
-         int $$6 = this.a.n();
-         int $$7 = $$6;
-         if (this.a.dX().a(8) == 0) {
-            this.e = !this.e;
-            $$7 = $$6 + 6;
-         }
-
-         if (this.e) {
-            $$7++;
-         } else {
-            $$7--;
-         }
-
-         if (this.a.x() != null && this.a.x().e() >= 0) {
-            $$7 %= 12;
-            if ($$7 < 0) {
-               $$7 += 12;
-            }
-         } else {
-            $$7 -= 12;
-            $$7 &= 7;
-            $$7 += 12;
-         }
-
-         this.c = this.a.a($$6, $$7, null);
-         if (this.c != null) {
-            this.c.a();
-         }
-      }
-
-      this.i();
+   public static Optional<? extends jf<cmp>> a(azx $$0, jt $$1, cud $$2) {
+      return cua.a($$1.f(mh.bm).c(), jf::a, $$0, $$2);
    }
 
-   private void a(crm $$0) {
-      this.a.t().a(cna.b);
-      this.a.t().b(cna.b).a($$0);
-   }
-
-   private void i() {
-      if (this.c != null && !this.c.c()) {
-         ka $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.dX().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new ffc($$1, $$3, $$2);
-      }
-   }
-
-   @Override
-   public void a(cmj $$0, iv $$1, bux $$2, @Nullable crm $$3) {
-      if ($$3 != null && this.a.c($$3)) {
-         this.a($$3);
-      }
+   public static void a(qh<cmp> $$0) {
+      a($$0, a, "wolf", cue.a(0));
+      a($$0, b, "wolf_spotted", axd.k);
+      a($$0, c, "wolf_snowy", dlh.G);
+      a($$0, d, "wolf_black", dlh.o);
+      a($$0, e, "wolf_ashen", dlh.r);
+      a($$0, f, "wolf_rusty", axd.i);
+      a($$0, g, "wolf_woods", dlh.i);
+      a($$0, h, "wolf_chestnut", dlh.p);
+      a($$0, i, "wolf_striped", axd.f);
    }
 }

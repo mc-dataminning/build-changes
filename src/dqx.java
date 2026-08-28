@@ -1,82 +1,104 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqx extends dop {
-   public static final MapCodec<dqx> g = b(dqx::new);
+public class dqx extends dnc implements dnf {
+   public static final MapCodec<dqx> a = b(dqx::new);
+   private static final fgk c = dnc.b(14.0, 0.0, 16.0);
+   private static final fgk d = dnc.b(14.0, 2.0, 16.0);
+   public static final ebv b = ebu.F;
 
    @Override
-   public MapCodec<? extends dqx> a() {
-      return g;
+   public MapCodec<dqx> a() {
+      return a;
    }
 
-   protected dqx(eas.d $$0) {
-      super(2.0F, 16.0F, 2.0F, 16.0F, 16.0F, $$0);
-      this.l(
-         this.C
-            .b()
-            .b(a, Boolean.valueOf(false))
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-      );
+   public dqx(ebd.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, Boolean.valueOf(true)));
    }
 
    @Override
-   public eat a(ddg $$0) {
-      diq $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      exa $$3 = $$0.q().b_($$0.a());
-      iv $$4 = $$2.f();
-      iv $$5 = $$2.g();
-      iv $$6 = $$2.h();
-      iv $$7 = $$2.i();
-      eat $$8 = $$1.a_($$4);
-      eat $$9 = $$1.a_($$5);
-      eat $$10 = $$1.a_($$6);
-      eat $$11 = $$1.a_($$7);
-      return this.m()
-         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, jb.d))))
-         .b(c, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, jb.c))))
-         .b(d, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, jb.f))))
-         .b(b, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, jb.e))))
-         .b(e, Boolean.valueOf($$3.a() == exb.c));
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return $$0.c(b) ? d : c;
    }
 
    @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      if ($$0.c(e)) {
-         $$2.a($$3, exb.c, exb.c.a($$1));
-      }
-
-      return $$4.o().d() ? $$0.b(f.get($$4), Boolean.valueOf(this.a($$6, $$6.c($$1, $$5, $$4.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected ffw c(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return fft.a();
-   }
-
-   @Override
-   protected boolean b(eat $$0, eat $$1, jb $$2) {
-      if ($$1.a(this)) {
-         if (!$$2.o().d()) {
-            return true;
-         }
-
-         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
-            return true;
+   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
+      if ($$3.a(500) == 0) {
+         ebe $$4 = $$1.a_($$2.d());
+         if ($$4.a(axe.w) || $$4.a(dne.aR)) {
+            $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awp.tg, awq.i, 1.0F, 1.0F, false);
          }
       }
-
-      return super.b($$0, $$1, $$2);
-   }
-
-   public final boolean a(eat $$0, boolean $$1) {
-      return !k($$0) && $$1 || $$0.b() instanceof dqx || $$0.a(axc.N);
    }
 
    @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(a, b, d, c, e);
+   protected boolean e_(ebe $$0) {
+      return true;
+   }
+
+   @Override
+   protected boolean a(ebe $$0, dka $$1, iv $$2) {
+      return this.b($$1, $$2);
+   }
+
+   private boolean b(djb $$0, iv $$1) {
+      iv $$2 = $$1.a(jb.b);
+      ebe $$3 = $$0.a_($$2);
+      return dsi.a($$0, jb.b, $$2, $$3) || $$3.a(dne.ug);
+   }
+
+   @Override
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      if (!this.b($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      return $$0.b(b, Boolean.valueOf(!$$1.a_($$3.e()).a(this)));
+   }
+
+   @Override
+   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      if (!this.b($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public boolean a(dka $$0, iv $$1, ebe $$2) {
+      return this.o($$0.a_(this.a($$0, $$1).e()));
+   }
+
+   private boolean o(ebe $$0) {
+      return $$0.l();
+   }
+
+   public iv a(djb $$0, iv $$1) {
+      iv.a $$2 = $$1.k();
+
+      ebe $$3;
+      do {
+         $$2.c(jb.a);
+         $$3 = $$0.a_($$2);
+      } while ($$3.a(this));
+
+      return $$2.a(jb.b).j();
+   }
+
+   @Override
+   public boolean a(djx $$0, azx $$1, iv $$2, ebe $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ars $$0, azx $$1, iv $$2, ebe $$3) {
+      iv $$4 = this.a($$0, $$2).e();
+      if (this.o($$0.a_($$4))) {
+         $$0.b($$4, $$3.b(b, Boolean.valueOf(true)));
+      }
    }
 }

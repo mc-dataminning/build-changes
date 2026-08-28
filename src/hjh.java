@@ -1,32 +1,40 @@
-import java.io.IOException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class hjh extends hjb {
-   private final alg c;
+public record hjh<T>(kj<T> a) implements hjq<T> {
+   private static final hjq.a<? extends hjh<?>, ?> b = e();
 
-   public hjh(alg $$0) {
-      this.c = $$0;
+   private static <T> hjq.a<hjh<T>, T> e() {
+      Codec<? extends kj<?>> $$0 = mg.am.q().validate($$0x -> $$0x.d() ? DataResult.error(() -> "Component can't be serialized") : DataResult.success($$0x));
+      MapCodec<hhw.d<hjh<T>, T>> $$2 = $$0.dispatchMap(
+         "component", $$0x -> ((hjh)$$0x.a()).a, $$0x -> hjq.a.a($$0x.c()).xmap($$1 -> new hhw.d<>(new hjh($$0x), $$1), hhw.d::b)
+      );
+      return new hjq.a<>($$2);
    }
 
-   public alg c() {
-      return this.c;
+   public static <T> hjq.a<hjh<T>, T> c() {
+      return (hjq.a<hjh<T>, T>)b;
    }
 
-   public void a(hjr $$0) {
-      boolean $$1 = $$0.c();
-      boolean $$2 = $$0.b();
-      this.b = $$2;
-
-      try (fiz $$3 = $$0.d()) {
-         this.a($$3, $$2, $$1);
-      }
+   @Nullable
+   @Override
+   public T b(czy $$0, @Nullable gmb $$1, @Nullable bxu $$2, int $$3, czw $$4) {
+      return $$0.a(this.a);
    }
 
-   private void a(fiz $$0, boolean $$1, boolean $$2) {
-      this.a = new fjw(this.c::toString, fjx.a, $$0.a(), $$0.b(), 1);
-      this.a($$1, false);
-      this.a($$2);
-      this.a.a($$0);
+   @Override
+   public hjq.a<hjh<T>, T> a() {
+      return c();
    }
 
-   public abstract hjr a(avd var1) throws IOException;
+   @Override
+   public Codec<T> b() {
+      return this.a.c();
+   }
+
+   public kj<T> d() {
+      return this.a;
+   }
 }

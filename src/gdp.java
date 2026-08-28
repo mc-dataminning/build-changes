@@ -1,108 +1,181 @@
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class gdp extends fys {
-   private static final wy a = wy.c("telemetry_info.screen.title");
-   private static final wy b = wy.c("telemetry_info.screen.description").b(-4539718);
-   private static final wy c = wy.c("telemetry_info.button.privacy_statement");
-   private static final wy d = wy.c("telemetry_info.button.give_feedback");
-   private static final wy s = wy.c("telemetry_info.button.show_data");
-   private static final wy u = wy.c("telemetry_info.opt_in.description");
-   private static final int v = 8;
-   private static final boolean w = fpt.Q().D();
-   private final fys x;
-   private final fpx y;
-   private final fwo z = new fwo(this, 16 + 9 * 5 + 20, w ? 33 + ftc.a(fpt.Q().h) : 33);
-   @Nullable
-   private gdo A;
-   @Nullable
-   private ftu B;
-   private double C;
+public class gdp extends fur<gdp.b> {
+   private static final int a = 20;
+   final gdq m;
+   private int n;
 
-   public gdp(fys $$0, fpx $$1) {
-      super(a);
-      this.x = $$0;
-      this.y = $$1;
-   }
+   public gdp(gdq $$0, frd $$1) {
+      super($$1, $$0.n, $$0.s.d(), $$0.s.c(), 20);
+      this.m = $$0;
+      frb[] $$2 = (frb[])ArrayUtils.clone($$1.n.V);
+      Arrays.sort((Object[])$$2);
+      String $$3 = null;
 
-   @Override
-   public wy i() {
-      return wx.a(super.i(), b);
-   }
+      for (frb $$4 : $$2) {
+         String $$5 = $$4.f();
+         if (!$$5.equals($$3)) {
+            $$3 = $$5;
+            this.b(new gdp.a(xa.c($$5)));
+         }
 
-   @Override
-   protected void aO_() {
-      fws $$0 = this.z.a(fws.d().a(4));
-      $$0.c().b();
-      $$0.a(new fuh(a, this.p));
-      this.B = $$0.a(new ftu(b, this.p).b(true));
-      fws $$1 = $$0.a(fws.e().a(8));
-      $$1.a(fta.a(c, this::a).a());
-      $$1.a(fta.a(d, this::b).a());
-      fws $$2 = this.z.b(fws.d().a(4));
-      if (w) {
-         $$2.a(this.m());
+         xa $$6 = xa.c($$4.h());
+         int $$7 = $$1.h.a($$6);
+         if ($$7 > this.n) {
+            this.n = $$7;
+         }
+
+         this.b(new gdp.c($$4, $$6));
       }
+   }
 
-      fws $$3 = $$2.a(fws.e().a(8));
-      $$3.a(fta.a(s, this::c).a());
-      $$3.a(fta.a(wx.d, $$0x -> this.aL_()).a());
-      fws $$4 = this.z.c(fws.d().a(8));
-      this.A = $$4.a(new gdo(0, 0, this.n - 40, this.z.d(), this.p));
-      this.A.a($$0x -> this.C = $$0x);
-      this.z.a($$1x -> {
-         fsy var10000 = this.c($$1x);
-      });
+   public void b() {
+      frb.d();
       this.c();
    }
 
-   @Override
-   protected void c() {
-      if (this.A != null) {
-         this.A.a(this.C);
-         this.A.h(this.n - 40);
-         this.A.i(this.z.d());
-         this.A.q();
-      }
-
-      if (this.B != null) {
-         this.B.d(this.n - 16);
-      }
-
-      this.z.a();
+   public void c() {
+      this.aI_().forEach(gdp.b::c);
    }
 
    @Override
-   protected void aC_() {
-      if (this.A != null) {
-         this.b(this.A);
+   public int a() {
+      return 340;
+   }
+
+   public class a extends gdp.b {
+      final xa b;
+      private final int c;
+
+      public a(final xa $$1) {
+         this.b = $$1;
+         this.c = gdp.this.c.h.a(this.b);
+      }
+
+      @Override
+      public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(gdp.this.c.h, this.b, gdp.this.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, -1);
+      }
+
+      @Nullable
+      @Override
+      public ftu a(fyo $$0) {
+         return null;
+      }
+
+      @Override
+      public List<? extends fwi> aI_() {
+         return Collections.emptyList();
+      }
+
+      @Override
+      public List<? extends fyg> b() {
+         return ImmutableList.of(new fyg() {
+            @Override
+            public fyg.a w() {
+               return fyg.a.b;
+            }
+
+            @Override
+            public void b(fyi $$0) {
+               $$0.a(fyh.a, a.this.b);
+            }
+         });
+      }
+
+      @Override
+      protected void c() {
       }
    }
 
-   private fsy m() {
-      fpw<Boolean> $$0 = this.y.al();
-      return ftc.a(u, this.p).a($$0).a(this::a).a();
+   public abstract static class b extends fur.a<gdp.b> {
+      abstract void c();
    }
 
-   private void a(fsy $$0, boolean $$1) {
-      if (this.A != null) {
-         this.A.b($$1);
+   public class c extends gdp.b {
+      private static final xa b = xa.c("controls.reset");
+      private static final int c = 10;
+      private final frb d;
+      private final xa e;
+      private final ful f;
+      private final ful g;
+      private boolean h = false;
+
+      c(final frb $$1, final xa $$2) {
+         this.d = $$1;
+         this.e = $$2;
+         this.f = ful.a($$2, $$1x -> {
+            gdp.this.m.a = $$1;
+            gdp.this.b();
+         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? xa.a("narrator.controls.unbound", $$2) : xa.a("narrator.controls.bound", $$2, $$2x.get())).a();
+         this.g = ful.a(b, $$1x -> {
+            $$1.b($$1.i());
+            gdp.this.b();
+         }).a(0, 0, 50, 20).a($$1x -> xa.a("narrator.controls.reset", $$2)).a();
+         this.c();
       }
-   }
 
-   private void a(fta $$0) {
-      fxp.a(this, ayh.c);
-   }
+      @Override
+      public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = gdp.this.l() - this.g.A() - 10;
+         int $$11 = $$2 - 2;
+         this.g.c($$10, $$11);
+         this.g.a($$0, $$6, $$7, $$9);
+         int $$12 = $$10 - 5 - this.f.A();
+         this.f.c($$12, $$11);
+         this.f.a($$0, $$6, $$7, $$9);
+         $$0.b(gdp.this.c.h, this.e, $$3, $$2 + $$5 / 2 - 9 / 2, -1);
+         if (this.h) {
+            int $$13 = 3;
+            int $$14 = this.f.F() - 6;
+            $$0.a($$14, $$2 - 1, $$14 + 3, $$2 + $$5, -65536);
+         }
+      }
 
-   private void b(fta $$0) {
-      fxp.a(this, ayh.i);
-   }
+      @Override
+      public List<? extends fwi> aI_() {
+         return ImmutableList.of(this.f, this.g);
+      }
 
-   private void c(fta $$0) {
-      ag.n().a(this.m.u().b());
-   }
+      @Override
+      public List<? extends fyg> b() {
+         return ImmutableList.of(this.f, this.g);
+      }
 
-   @Override
-   public void aL_() {
-      this.m.a(this.x);
+      @Override
+      protected void c() {
+         this.f.b(this.d.k());
+         this.g.j = !this.d.l();
+         this.h = false;
+         xo $$0 = xa.i();
+         if (!this.d.j()) {
+            for (frb $$1 : gdp.this.c.n.V) {
+               if ($$1 != this.d && this.d.b($$1)) {
+                  if (this.h) {
+                     $$0.f(", ");
+                  }
+
+                  this.h = true;
+                  $$0.b(xa.c($$1.h()));
+               }
+            }
+         }
+
+         if (this.h) {
+            this.f.b(xa.b("[ ").b(this.f.B().f().a(o.p)).f(" ]").a(o.m));
+            this.f.a(fvw.a(xa.a("controls.keybinds.duplicateKeybinds", $$0)));
+         } else {
+            this.f.a(null);
+         }
+
+         if (gdp.this.m.a == this.d) {
+            this.f.b(xa.b("> ").b(this.f.B().f().a(o.p, o.t)).f(" <").a(o.o));
+         }
+      }
    }
 }

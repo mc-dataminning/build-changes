@@ -1,61 +1,46 @@
-import java.net.URI;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-public class fyk extends fys {
-   private static final wy a = wy.c("symlink_warning.title.world").a(o.r);
-   private static final wy b = wy.a("symlink_warning.message.world", wy.a(ayh.p));
-   private static final wy c = wy.c("symlink_warning.title.pack").a(o.r);
-   private static final wy d = wy.a("symlink_warning.message.pack", wy.a(ayh.p));
-   private final wy s;
-   private final URI u;
-   private final Runnable v;
-   private final fwn w = new fwn().b(10);
+public class fyk<T> {
+   private final T b;
+   private final BiConsumer<Consumer<String>, T> c;
+   public static final fyk<?> a = new fyk<>(baw.a, ($$0, $$1) -> {
+   });
 
-   public fyk(wy $$0, wy $$1, URI $$2, Runnable $$3) {
-      super($$0);
-      this.s = $$1;
-      this.u = $$2;
-      this.v = $$3;
+   private fyk(T $$0, BiConsumer<Consumer<String>, T> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static fys a(Runnable $$0) {
-      return new fyk(a, b, ayh.p, $$0);
+   public static fyk<?> a(String $$0) {
+      return new fyk<>($$0, Consumer::accept);
    }
 
-   public static fys b(Runnable $$0) {
-      return new fyk(c, d, ayh.p, $$0);
+   public static fyk<?> a(xa $$0) {
+      return new fyk<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
    }
 
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.w.c().b();
-      fwn.b $$0 = this.w.d(1);
-      $$0.a(new fuh(this.l, this.p));
-      $$0.a(new ftu(this.s, this.p).d(this.n - 50).b(true));
-      int $$1 = 120;
-      fwn $$2 = new fwn().a(5);
-      fwn.b $$3 = $$2.d(3);
-      $$3.a(fta.a(wx.n, $$0x -> ag.n().a(this.u)).b(120, 20).a());
-      $$3.a(fta.a(wx.o, $$0x -> this.m.p.a(this.u.toString())).b(120, 20).a());
-      $$3.a(fta.a(wx.k, $$0x -> this.aL_()).b(120, 20).a());
-      $$0.a($$2);
-      this.c();
-      this.w.a(this::c);
+   public static fyk<?> a(List<xa> $$0) {
+      return new fyk<>($$0, ($$1, $$2) -> $$0.stream().map(xa::getString).forEach($$1));
+   }
+
+   public void a(Consumer<String> $$0) {
+      this.c.accept($$0, this.b);
    }
 
    @Override
-   protected void c() {
-      this.w.a();
-      fwm.a(this.w, this.J());
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fyk<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+      }
    }
 
    @Override
-   public wy i() {
-      return wx.a(super.i(), this.s);
-   }
-
-   @Override
-   public void aL_() {
-      this.v.run();
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 }

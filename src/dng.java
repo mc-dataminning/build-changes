@@ -1,61 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dng extends dts {
-   public static final MapCodec<dng> a = b(dng::new);
-   public static final ebr<jb> b = ebj.T;
+public class dng extends dnc implements dnf {
+   public static final MapCodec<dng> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alh.a(mh.aL).fieldOf("feature").forGetter($$0x -> $$0x.b), t()).apply($$0, dng::new)
+   );
+   private final alh<ejv<?, ?>> b;
 
    @Override
    public MapCodec<dng> a() {
       return a;
    }
 
-   public dng(eas.d $$0) {
-      super($$0);
-      this.l(this.m().b(b, jb.c));
-   }
-
-   @Nullable
-   @Override
-   public dxr a(iv $$0, eat $$1) {
-      return new dxx($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dxr> dxs<T> a(djm $$0, eat $$1, dxt<T> $$2) {
-      return !$$0.C ? a($$2, dxt.K, ($$0x, $$1x, $$2x, $$3) -> egc.c.a($$0x, $$3.x(), $$3.gt())) : null;
-   }
-
-   @Nullable
-   @Override
-   public eat a(ddg $$0) {
-      return super.a($$0).b(b, $$0.g());
+   public dng(alh<ejv<?, ?>> $$0, ebd.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   public int a(eat $$0, diq $$1, iv $$2, jb $$3) {
-      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
+   public boolean a(dka $$0, iv $$1, ebe $$2) {
+      return $$0.a_($$1.d()).l();
    }
 
    @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      super.a($$0);
-      $$0.a(b);
+   public boolean a(djx $$0, azx $$1, iv $$2, ebe $$3) {
+      return true;
    }
 
    @Override
-   public eat a(eat $$0, dtl $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   public void a(ars $$0, azx $$1, iv $$2, ebe $$3) {
+      $$0.J_().a(mh.aL).flatMap($$0x -> $$0x.a(this.b)).ifPresent($$3x -> ((ejv)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2.d()));
    }
 
    @Override
-   public eat a(eat $$0, dru $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   public int c() {
-      return 10;
+   public dnf.a ar_() {
+      return dnf.a.a;
    }
 }

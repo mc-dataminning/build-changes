@@ -1,95 +1,60 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dor extends dmd {
+public class dor extends dnc {
    public static final MapCodec<dor> a = b(dor::new);
-   public static final ebt b = ebj.aW;
-   public static final ebk c = ebj.s;
-   private static final ffw d = dmr.b(16.0, 0.0, 6.0);
+   public static final ebv b = ebu.A;
+   public static final ebv c = ebu.u;
 
    @Override
-   public MapCodec<dor> a() {
+   protected MapCodec<? extends dor> a() {
       return a;
    }
 
-   public dor(eas.d $$0) {
+   public dor(ebd.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, Integer.valueOf(0)).b(c, Boolean.valueOf(false)));
+      this.l(this.m().b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return d;
-   }
-
-   @Override
-   protected boolean g_(eat $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(eat $$0, diq $$1, iv $$2, jb $$3) {
-      return $$0.c(b);
-   }
-
-   private static void d(eat $$0, djm $$1, iv $$2) {
-      int $$3 = $$1.a(djv.a, $$2) - $$1.z_();
-      float $$4 = $$1.a(1.0F);
-      boolean $$5 = $$0.c(c);
-      if ($$5) {
-         $$3 = 15 - $$3;
-      } else if ($$3 > 0) {
-         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
-         $$4 += ($$6 - $$4) * 0.2F;
-         $$3 = Math.round((float)$$3 * azm.b($$4));
-      }
-
-      $$3 = azm.a($$3, 0, 15);
-      if ($$0.c(b) != $$3) {
-         $$1.a($$2, $$0.b(b, Integer.valueOf($$3)), 3);
+   protected void a(ebe $$0, djx $$1, iv $$2, ebe $$3, boolean $$4) {
+      if ($$3.b() != $$0.b() && $$1 instanceof ars $$5) {
+         this.a($$0, $$5, $$2);
       }
    }
 
    @Override
-   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
-      if (!$$3.gv()) {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      } else {
-         if (!$$1.C) {
-            eat $$5 = $$0.a(c);
-            $$1.a($$2, $$5, 2);
-            $$1.a(eft.c, $$2, eft.a.a($$3, $$5));
-            d($$5, $$1, $$2);
+   protected void a(ebe $$0, djx $$1, iv $$2, dnc $$3, @Nullable eyw $$4, boolean $$5) {
+      if ($$1 instanceof ars $$6) {
+         this.a($$0, $$6, $$2);
+      }
+   }
+
+   public void a(ebe $$0, ars $$1, iv $$2) {
+      boolean $$3 = $$1.D($$2);
+      if ($$3 != $$0.c(b)) {
+         ebe $$4 = $$0;
+         if (!$$0.c(b)) {
+            $$4 = $$0.a(c);
+            $$1.a(null, $$2, $$4.c(c) ? awp.fK : awp.fL, awq.e);
          }
 
-         return bug.a;
+         $$1.a($$2, $$4.b(b, Boolean.valueOf($$3)), 3);
       }
    }
 
    @Override
-   protected boolean f_(eat $$0) {
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(c, b);
+   }
+
+   @Override
+   protected boolean c_(ebe $$0) {
       return true;
    }
 
    @Override
-   public dxr a(iv $$0, eat $$1) {
-      return new dyi($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dxr> dxs<T> a(djm $$0, eat $$1, dxt<T> $$2) {
-      return !$$0.C && $$0.B_().g() ? a($$2, dxt.r, dor::a) : null;
-   }
-
-   private static void a(djm $$0, iv $$1, eat $$2, dyi $$3) {
-      if ($$0.ae() % 20L == 0L) {
-         d($$2, $$0, $$1);
-      }
-   }
-
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(b, c);
+   protected int a(ebe $$0, djx $$1, iv $$2) {
+      return $$1.a_($$2).c(c) ? 15 : 0;
    }
 }

@@ -1,84 +1,45 @@
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntComparator;
 
-public class fyq extends fys {
-   private static final wy a = wy.c("multiplayer.downloadingTerrain");
-   private static final long b = 30000L;
-   private final long c;
-   private final BooleanSupplier d;
-   private final fyq.a s;
-   @Nullable
-   private hjq u;
+public enum fyq {
+   a,
+   b,
+   c,
+   d;
 
-   public fyq(BooleanSupplier $$0, fyq.a $$1) {
-      super(fpk.a);
-      this.d = $$0;
-      this.s = $$1;
-      this.c = ag.c();
+   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
+
+   public fyp a() {
+      return switch (this) {
+         case a, b -> fyp.b;
+         case c, d -> fyp.a;
+      };
    }
 
-   @Override
-   public boolean aD_() {
-      return false;
+   public fyq b() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
+         case c -> d;
+         case d -> c;
+      };
    }
 
-   @Override
-   protected boolean aN_() {
-      return false;
+   public boolean c() {
+      return switch (this) {
+         case a, c -> false;
+         case b, d -> true;
+      };
    }
 
-   @Override
-   public void a(fsm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, a, this.n / 2, this.o / 2 - 50, -1);
+   public boolean a(int $$0, int $$1) {
+      return this.c() ? $$0 > $$1 : $$1 > $$0;
    }
 
-   @Override
-   public void b(fsm $$0, int $$1, int $$2, float $$3) {
-      switch (this.s) {
-         case a:
-            $$0.a(grc::G, this.m(), 0, 0, $$0.a(), $$0.b());
-            break;
-         case b:
-            $$0.b(grc.t(), 0, 0, this.n, this.o, 0);
-            break;
-         case c:
-            this.a($$0, $$3);
-            this.r();
-            this.a($$0);
-      }
+   public boolean b(int $$0, int $$1) {
+      return this.c() ? $$0 < $$1 : $$1 < $$0;
    }
 
-   private hjq m() {
-      if (this.u != null) {
-         return this.u;
-      } else {
-         this.u = this.m.ap().a().a(dmt.eu.m());
-         return this.u;
-      }
-   }
-
-   @Override
-   public void e() {
-      if (this.d.getAsBoolean() || ag.c() > this.c + 30000L) {
-         this.aL_();
-      }
-   }
-
-   @Override
-   public void aL_() {
-      this.m.aY().c(wy.c("narrator.ready_to_play"));
-      super.aL_();
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+   public IntComparator d() {
+      return this.e;
    }
 }

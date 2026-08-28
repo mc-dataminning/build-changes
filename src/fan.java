@@ -1,64 +1,67 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Optional;
+import java.util.Set;
 
-public class fan extends fac {
-   public static final MapCodec<fan> a = a(fan::new);
+public class fan {
+   private final azv a;
+   private final bba b;
+   private final Optional<jg.a> c;
+   private final Set<alh<?>> d;
 
-   fan(List<faj> $$0, List<fdc> $$1) {
-      super($$0, $$1);
+   public fan(azv $$0, bba $$1, jg.a $$2) {
+      this($$0, $$1, Optional.of($$2), Set.of());
    }
 
-   @Override
-   public fak a() {
-      return fah.h;
+   public fan(azv $$0, bba $$1) {
+      this($$0, $$1, Optional.empty(), Set.of());
    }
 
-   @Override
-   protected fab a(List<? extends fab> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (fab)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (fab $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
+   private fan(azv $$0, bba $$1, Optional<jg.a> $$2, Set<alh<?>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static fan.a a(faj.a<?>... $$0) {
-      return new fan.a($$0);
+   public fan a(String $$0) {
+      return new fan(this.a.a($$0), this.b, this.c, this.d);
    }
 
-   public static class a extends faj.a<fan.a> {
-      private final Builder<faj> a = ImmutableList.builder();
+   public fan a(String $$0, alh<?> $$1) {
+      Set<alh<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new fan(this.a.a($$0), this.b, this.c, $$2);
+   }
 
-      public a(faj.a<?>... $$0) {
-         for (faj.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
+   public boolean a(alh<?> $$0) {
+      return this.d.contains($$0);
+   }
 
-      protected fan.a a() {
-         return this;
-      }
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
 
-      @Override
-      public fan.a c(faj.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
+   public void a(fai $$0) {
+      Set<baz<?>> $$1 = $$0.a();
+      Set<baz<?>> $$2 = Sets.difference($$1, this.b.b());
+      if (!$$2.isEmpty()) {
+         this.a.b("Parameters " + $$2 + " are not provided in this context");
       }
+   }
 
-      @Override
-      public faj b() {
-         return new fan(this.a.build(), this.f());
-      }
+   public jg.a a() {
+      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
+   }
+
+   public boolean b() {
+      return this.c.isPresent();
+   }
+
+   public fan a(bba $$0) {
+      return new fan(this.a, $$0, this.c, this.d);
+   }
+
+   public azv c() {
+      return this.a;
    }
 }

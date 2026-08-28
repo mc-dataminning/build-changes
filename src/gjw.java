@@ -1,61 +1,47 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
-
-public final class gjw {
-   @Nullable
-   private final String a;
-   private final Vector3f b;
-   private final Vector3f c;
-   private final gjx d;
-   private final boolean e;
-   private final gke f;
-   private final gke g;
-   private final Set<jb> h;
-
-   protected gjw(
-      @Nullable String $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      gjx $$9,
-      boolean $$10,
-      float $$11,
-      float $$12,
-      Set<jb> $$13
-   ) {
-      this.a = $$0;
-      this.f = new gke($$1, $$2);
-      this.b = new Vector3f($$3, $$4, $$5);
-      this.c = new Vector3f($$6, $$7, $$8);
-      this.d = $$9;
-      this.e = $$10;
-      this.g = new gke($$11, $$12);
-      this.h = $$13;
+public class gjw<S extends hgk> extends gio<S> {
+   public gjw(gle $$0) {
+      super($$0);
    }
 
-   public gjt.a a(int $$0, int $$1) {
-      return new gjt.a(
-         (int)this.f.a(),
-         (int)this.f.b(),
-         this.b.x(),
-         this.b.y(),
-         this.b.z(),
-         this.c.x(),
-         this.c.y(),
-         this.c.z(),
-         this.d.b,
-         this.d.c,
-         this.d.d,
-         this.e,
-         (float)$$0 * this.g.a(),
-         (float)$$1 * this.g.b(),
-         this.h
-      );
+   public static glk c() {
+      glm $$0 = gio.a(gli.a, 0.0F);
+      glo $$1 = $$0.a();
+      a($$1);
+      return glk.a($$0, 64, 32);
+   }
+
+   protected static void a(glo $$0) {
+      $$0.a("right_arm", glj.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), glg.a(-5.0F, 2.0F, 0.0F));
+      $$0.a("left_arm", glj.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), glg.a(5.0F, 2.0F, 0.0F));
+      $$0.a("right_leg", glj.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), glg.a(-2.0F, 12.0F, 0.0F));
+      $$0.a("left_leg", glj.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), glg.a(2.0F, 12.0F, 0.0F));
+   }
+
+   public void a(S $$0) {
+      super.a($$0);
+      if ($$0.b && !$$0.d) {
+         float $$1 = $$0.H;
+         float $$2 = azo.a($$1 * (float) Math.PI);
+         float $$3 = azo.a((1.0F - (1.0F - $$1) * (1.0F - $$1)) * (float) Math.PI);
+         this.r.g = 0.0F;
+         this.s.g = 0.0F;
+         this.r.f = -(0.1F - $$2 * 0.6F);
+         this.s.f = 0.1F - $$2 * 0.6F;
+         this.r.e = (float) (-Math.PI / 2);
+         this.s.e = (float) (-Math.PI / 2);
+         this.r.e -= $$2 * 1.2F - $$3 * 0.4F;
+         this.s.e -= $$2 * 1.2F - $$3 * 0.4F;
+         ggo.a(this.r, this.s, $$0.u);
+      }
+   }
+
+   @Override
+   public void a(bxl $$0, flo $$1) {
+      this.e().a($$1);
+      float $$2 = $$0 == bxl.b ? 1.0F : -1.0F;
+      gle $$3 = this.a($$0);
+      $$3.b += $$2;
+      $$3.a($$1);
+      $$3.b -= $$2;
    }
 }

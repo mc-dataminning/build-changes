@@ -1,23 +1,8 @@
-public record akj<T>(int a, akk<T> b) {
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         akj<?> $$1 = (akj<?>)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
-   }
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public int hashCode() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<entity data: " + this.a + ">";
-   }
+public class akj {
+   public static final wi.a<akg, ByteBuf> a = zm.a(vu.c, $$0 -> $$0.a(aki.b, akh.b).a(ajz.b, akb.a));
+   public static final wi<akg> b = a.a($$0 -> $$0);
+   public static final wi.a<akd, vw> c = zm.b(vu.c, $$0 -> $$0.a(aki.a, ake.a).a(ajz.a, ajy.a));
+   public static final wi<akd> d = c.a(vw::new);
 }

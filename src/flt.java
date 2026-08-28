@@ -1,179 +1,134 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-import java.util.function.Consumer;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class flt {
-   static final Logger a = LogUtils.getLogger();
-   private static final String b = "notificationUuid";
-   private static final String c = "dismissable";
-   private static final String d = "seen";
-   private static final String e = "type";
-   private static final String f = "visitUrl";
-   private static final String g = "infoPopup";
-   static final wy h = wy.c("mco.notification.visitUrl.buttonText.default");
-   final UUID i;
-   final boolean j;
-   final boolean k;
-   final String l;
+public record flt(int i, int j, flt.a k, flt.b l, int m) {
+   public static final int a = 32;
+   private static final flt[] n = new flt[32];
+   private static final List<flt> o = new ArrayList<>(32);
+   public static final flt b = a(0, 0, flt.a.a, flt.b.a, 3);
+   public static final flt c = a(1, 0, flt.a.b, flt.b.c, 4);
+   public static final flt d = a(2, 0, flt.a.a, flt.b.d, 2);
+   public static final flt e = d;
+   public static final flt f = a(3, 1, flt.a.e, flt.b.d, 2);
+   public static final flt g = a(4, 2, flt.a.e, flt.b.d, 2);
+   public static final flt h = a(5, 0, flt.a.c, flt.b.b, 3);
 
-   flt(UUID $$0, boolean $$1, boolean $$2, String $$3) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
+   public flt(int i, int j, flt.a k, flt.b l, int m) {
+      if (i < 0 || i >= n.length) {
+         throw new IllegalArgumentException("Element ID must be in range [0; " + n.length + ")");
+      } else if (!this.a(j, l)) {
+         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
+      } else {
+         this.i = i;
+         this.j = j;
+         this.k = k;
+         this.l = l;
+         this.m = m;
+      }
    }
 
-   public boolean a() {
-      return this.k;
+   public static flt a(int $$0, int $$1, flt.a $$2, flt.b $$3, int $$4) {
+      flt $$5 = new flt($$0, $$1, $$2, $$3, $$4);
+      if (n[$$0] != null) {
+         throw new IllegalArgumentException("Duplicate element registration for: " + $$0);
+      } else {
+         n[$$0] = $$5;
+         o.add($$5);
+         return $$5;
+      }
    }
 
-   public boolean b() {
-      return this.j;
+   private boolean a(int $$0, flt.b $$1) {
+      return $$0 == 0 || $$1 == flt.b.d;
    }
 
-   public UUID c() {
+   @Override
+   public String toString() {
+      return this.m + "," + this.l + "," + this.k + " (" + this.i + ")";
+   }
+
+   public int a() {
+      return 1 << this.i;
+   }
+
+   public int b() {
+      return this.k.a() * this.m;
+   }
+
+   @Nullable
+   public static flt a(int $$0) {
+      return n[$$0];
+   }
+
+   public static Stream<flt> b(int $$0) {
+      return o.stream().filter($$1 -> $$1 != null && ($$0 & $$1.a()) != 0);
+   }
+
+   public int c() {
       return this.i;
    }
 
-   public static List<flt> a(String $$0) {
-      List<flt> $$1 = new ArrayList<>();
-
-      try {
-         for (JsonElement $$3 : JsonParser.parseString($$0).getAsJsonObject().get("notifications").getAsJsonArray()) {
-            $$1.add(a($$3.getAsJsonObject()));
-         }
-      } catch (Exception var5) {
-         a.error("Could not parse list of RealmsNotifications", var5);
-      }
-
-      return $$1;
+   public int d() {
+      return this.j;
    }
 
-   private static flt a(JsonObject $$0) {
-      UUID $$1 = foe.a("notificationUuid", $$0, null);
-      if ($$1 == null) {
-         throw new IllegalStateException("Missing required property notificationUuid");
-      } else {
-         boolean $$2 = foe.a("dismissable", $$0, true);
-         boolean $$3 = foe.a("seen", $$0, false);
-         String $$4 = foe.a("type", $$0);
-         flt $$5 = new flt($$1, $$2, $$3, $$4);
-
-         return (flt)(switch ($$4) {
-            case "visitUrl" -> flt.c.a($$5, $$0);
-            case "infoPopup" -> flt.a.a($$5, $$0);
-            default -> $$5;
-         });
-      }
+   public flt.a e() {
+      return this.k;
    }
 
-   public static class a extends flt {
-      private static final String a = "title";
-      private static final String b = "message";
-      private static final String c = "image";
-      private static final String d = "urlButton";
-      private final flz e;
-      private final flz f;
-      private final alg g;
-      @Nullable
-      private final flt.b h;
+   public flt.b f() {
+      return this.l;
+   }
 
-      private a(flt $$0, flz $$1, flz $$2, alg $$3, @Nullable flt.b $$4) {
-         super($$0.i, $$0.j, $$0.k, $$0.l);
-         this.e = $$1;
-         this.f = $$2;
-         this.g = $$3;
-         this.h = $$4;
+   public int g() {
+      return this.m;
+   }
+
+   public static enum a {
+      a(4, "Float"),
+      b(1, "Unsigned Byte"),
+      c(1, "Byte"),
+      d(2, "Unsigned Short"),
+      e(2, "Short"),
+      f(4, "Unsigned Int"),
+      g(4, "Int");
+
+      private final int h;
+      private final String i;
+
+      private a(final int $$0, final String $$1) {
+         this.h = $$0;
+         this.i = $$1;
       }
 
-      public static flt.a a(flt $$0, JsonObject $$1) {
-         flz $$2 = foe.a("title", $$1, flz::a);
-         flz $$3 = foe.a("message", $$1, flz::a);
-         alg $$4 = alg.a(foe.a("image", $$1));
-         flt.b $$5 = foe.b("urlButton", $$1, flt.b::a);
-         return new flt.a($$0, $$2, $$3, $$4, $$5);
+      public int a() {
+         return this.h;
       }
 
-      @Nullable
-      public fuc a(fys $$0, Consumer<UUID> $$1) {
-         wy $$2 = this.e.a();
-         if ($$2 == null) {
-            flt.a.warn("Realms info popup had title with no available translation: {}", this.e);
-            return null;
-         } else {
-            fuc.a $$3 = new fuc.a($$0, $$2).a(this.g).a(this.f.a(wx.a));
-            if (this.h != null) {
-               $$3.a(this.h.b.a(flt.h), $$2x -> {
-                  fpt $$3x = fpt.Q();
-                  $$3x.a(new fxp($$3xx -> {
-                     if ($$3xx) {
-                        ag.n().a(this.h.a);
-                        $$3x.a($$0);
-                     } else {
-                        $$3x.a($$2x);
-                     }
-                  }, this.h.a, true));
-                  $$1.accept(this.c());
-               });
-            }
-
-            $$3.a(wx.h, $$1x -> {
-               $$1x.aL_();
-               $$1.accept(this.c());
-            });
-            $$3.a(() -> $$1.accept(this.c()));
-            return $$3.a();
-         }
+      @Override
+      public String toString() {
+         return this.i;
       }
    }
 
-   static record b(String a, flz b) {
-      private static final String c = "url";
-      private static final String d = "urlText";
+   public static enum b {
+      a("Position"),
+      b("Normal"),
+      c("Vertex Color"),
+      d("UV"),
+      e("Generic");
 
-      public static flt.b a(JsonObject $$0) {
-         String $$1 = foe.a("url", $$0);
-         flz $$2 = foe.a("urlText", $$0, flz::a);
-         return new flt.b($$1, $$2);
-      }
-   }
+      private final String f;
 
-   public static class c extends flt {
-      private static final String a = "url";
-      private static final String b = "buttonText";
-      private static final String c = "message";
-      private final String d;
-      private final flz e;
-      private final flz f;
-
-      private c(flt $$0, String $$1, flz $$2, flz $$3) {
-         super($$0.i, $$0.j, $$0.k, $$0.l);
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
+      private b(final String $$0) {
+         this.f = $$0;
       }
 
-      public static flt.c a(flt $$0, JsonObject $$1) {
-         String $$2 = foe.a("url", $$1);
-         flz $$3 = foe.a("buttonText", $$1, flz::a);
-         flz $$4 = foe.a("message", $$1, flz::a);
-         return new flt.c($$0, $$2, $$3, $$4);
-      }
-
-      public wy d() {
-         return this.f.a(wy.c("mco.notification.visitUrl.message.default"));
-      }
-
-      public fta a(fys $$0) {
-         wy $$1 = this.e.a(flt.h);
-         return fta.a($$1, fxp.b($$0, this.d)).a();
+      @Override
+      public String toString() {
+         return this.f;
       }
    }
 }

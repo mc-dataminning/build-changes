@@ -1,42 +1,29 @@
-import java.util.UUID;
+public class aad implements zh<aaa> {
+   public static final yy<vw, aad> a = zh.a(aad::a, aad::new);
+   private final long b;
 
-public record aad(UUID b, aad.a c) implements zf<zy> {
-   public static final yw<vu, aad> a = zf.a(aad::a, aad::new);
-
-   private aad(vu $$0) {
-      this($$0.n(), $$0.b(aad.a.class));
+   public aad(long $$0) {
+      this.b = $$0;
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private aad(vw $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(vw $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public zh<aad> a() {
-      return zx.p;
+   public zj<aad> a() {
+      return zz.n;
    }
 
-   public void a(zy $$0) {
+   public void a(aaa $$0) {
       $$0.a(this);
    }
 
-   public aad.a e() {
-      return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-
-      public boolean a() {
-         return this != d && this != e;
-      }
+   public long b() {
+      return this.b;
    }
 }

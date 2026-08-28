@@ -1,39 +1,64 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
-public class gwh extends gye<cjf, hcv, gga> {
-   private final Map<cjg.a, gfb<gga>> a;
+public class gwh implements gwd.a {
+   private final frd a;
+   private static final int b = 2;
+   private static final float c = 0.09375F;
 
-   public gwh(gwy.a $$0) {
-      super($$0, new gga($$0.a(gjs.Z)), 0.3F);
-      this.a = a($$0);
+   public gwh(frd $$0) {
+      this.a = $$0;
    }
 
-   private static Map<cjg.a, gfb<gga>> a(gwy.a $$0) {
-      return Maps.newEnumMap(
-         Map.of(cjg.a.a, new gfb<>(new gga($$0.a(gjs.Z)), new gga($$0.a(gjs.aa))), cjg.a.b, new gfb<>(new ggc($$0.a(gjs.ac)), new ggc($$0.a(gjs.ad))))
-      );
-   }
+   @Override
+   public void a(flo $$0, gsa $$1, double $$2, double $$3, double $$4) {
+      djy $$5 = this.a.s;
+      flr $$6 = $$1.getBuffer(gsl.z());
+      iv $$7 = iv.a($$2, 0.0, $$4);
 
-   public void a(hcv $$0, fkd $$1, gqr $$2, int $$3) {
-      if ($$0.c != null) {
-         this.g = this.a.get($$0.c.b().a()).a($$0.aj);
-         super.a($$0, $$1, $$2, $$3);
+      for (int $$8 = -2; $$8 <= 2; $$8++) {
+         for (int $$9 = -2; $$9 <= 2; $$9++) {
+            edb $$10 = $$5.z($$7.b($$8 * 16, 0, $$9 * 16));
+
+            for (Entry<ehd.a, ehd> $$11 : $$10.e()) {
+               ehd.a $$12 = $$11.getKey();
+               djc $$13 = $$10.f();
+               Vector3f $$14 = this.a($$12);
+
+               for (int $$15 = 0; $$15 < 16; $$15++) {
+                  for (int $$16 = 0; $$16 < 16; $$16++) {
+                     int $$17 = jy.a($$13.h, $$15);
+                     int $$18 = jy.a($$13.i, $$16);
+                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
+                     gst.b(
+                        $$0,
+                        $$6,
+                        (double)((float)$$17 + 0.25F) - $$2,
+                        (double)$$19,
+                        (double)((float)$$18 + 0.25F) - $$4,
+                        (double)((float)$$17 + 0.75F) - $$2,
+                        (double)($$19 + 0.09375F),
+                        (double)((float)$$18 + 0.75F) - $$4,
+                        $$14.x(),
+                        $$14.y(),
+                        $$14.z(),
+                        1.0F
+                     );
+                  }
+               }
+            }
+         }
       }
    }
 
-   public alg a(hcv $$0) {
-      return $$0.c == null ? hjf.c() : $$0.c.b().b().b();
-   }
-
-   public hcv a() {
-      return new hcv();
-   }
-
-   public void a(cjf $$0, hcv $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = azm.h($$2, $$0.bK, $$0.bG);
-      $$1.b = azm.h($$2, $$0.bI, $$0.bH);
-      $$1.c = $$0.t().a();
+   private Vector3f a(ehd.a $$0) {
+      return switch ($$0) {
+         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
+         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
+         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
+         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
+         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
+         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
+      };
    }
 }

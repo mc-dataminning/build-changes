@@ -1,23 +1,21 @@
-public enum ebq implements bak {
-   a("tip_merge"),
-   b("tip"),
-   c("frustum"),
-   d("middle"),
-   e("base");
+public enum ebq implements bam {
+   a("none"),
+   b("small"),
+   c("large");
 
-   private final String f;
+   private final String d;
 
    private ebq(final String $$0) {
-      this.f = $$0;
+      this.d = $$0;
    }
 
    @Override
    public String toString() {
-      return this.f;
+      return this.d;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.d;
    }
 }

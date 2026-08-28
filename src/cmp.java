@@ -1,59 +1,48 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class cmp extends cmm {
-   @Nullable
-   private ffc b;
-   private int c;
+public record cmp(cmp.a e, cue f) implements cua<cud, cub> {
+   public static final Codec<cmp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cmp.a.a.fieldOf("assets").forGetter(cmp::b), cue.b.fieldOf("spawn_conditions").forGetter(cmp::c)).apply($$0, cmp::new)
+   );
+   public static final Codec<cmp> b = RecordCodecBuilder.create($$0 -> $$0.group(cmp.a.a.fieldOf("assets").forGetter(cmp::b)).apply($$0, cmp::new));
+   public static final Codec<jf<cmp>> c = alf.a(mh.bm);
+   public static final yy<wl, jf<cmp>> d = yw.b(mh.bm);
 
-   public cmp(cmk $$0) {
-      super($$0);
+   private cmp(cmp.a $$0) {
+      this($$0, cue.a);
    }
 
    @Override
-   public void b() {
-      if (this.c++ % 10 == 0) {
-         float $$0 = (this.a.dX().i() - 0.5F) * 8.0F;
-         float $$1 = (this.a.dX().i() - 0.5F) * 4.0F;
-         float $$2 = (this.a.dX().i() - 0.5F) * 8.0F;
-         this.a.dU().a(ly.v, this.a.dz() + (double)$$0, this.a.dB() + 2.0 + (double)$$1, this.a.dF() + (double)$$2, 0.0, 0.0, 0.0);
+   public List<cua.a<cud, cub>> a() {
+      return this.f.a();
+   }
+
+   public cmp.a b() {
+      return this.e;
+   }
+
+   public cue c() {
+      return this.f;
+   }
+
+   public static record a(iw b, iw c, iw d) {
+      public static final Codec<cmp.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(iw.a.fieldOf("wild").forGetter(cmp.a::a), iw.a.fieldOf("tame").forGetter(cmp.a::b), iw.a.fieldOf("angry").forGetter(cmp.a::c))
+               .apply($$0, cmp.a::new)
+      );
+
+      public iw a() {
+         return this.b;
       }
-   }
 
-   @Override
-   public void a(arq $$0) {
-      this.c++;
-      if (this.b == null) {
-         iv $$1 = $$0.a(egs.a.e, ejx.a(this.a.j()));
-         this.b = ffc.c($$1);
+      public iw b() {
+         return this.c;
       }
 
-      double $$2 = this.b.c(this.a.dz(), this.a.dB(), this.a.dF());
-      if (!($$2 < 100.0) && !($$2 > 22500.0) && !this.a.P && !this.a.Q) {
-         this.a.d(1.0F);
-      } else {
-         this.a.d(0.0F);
+      public iw c() {
+         return this.d;
       }
-   }
-
-   @Override
-   public void c() {
-      this.b = null;
-      this.c = 0;
-   }
-
-   @Override
-   public float e() {
-      return 3.0F;
-   }
-
-   @Nullable
-   @Override
-   public ffc f() {
-      return this.b;
-   }
-
-   @Override
-   public cna<cmp> h() {
-      return cna.j;
    }
 }

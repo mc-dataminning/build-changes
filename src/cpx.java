@@ -1,43 +1,20 @@
-public interface cpx {
-   int m_ = 10;
-   float n_ = 0.2F;
+public class cpx {
+   private static final double a = 50.0;
 
-   int q();
-
-   static boolean a(arq $$0, bxj $$1, bxj $$2) {
-      float $$3 = (float)$$1.h(byp.c);
-      float $$4;
-      if (!$$1.n_() && (int)$$3 > 0) {
-         $$4 = $$3 / 2.0F + (float)$$0.A.a((int)$$3);
-      } else {
-         $$4 = $$3;
-      }
-
-      bux $$6 = $$1.dV().b($$1);
-      boolean $$7 = $$2.a($$0, $$6, $$4);
-      if ($$7) {
-         dgc.a($$0, (bwi)$$2, $$6);
-         if (!$$1.n_()) {
-            a($$1, $$2);
-         }
-      }
-
-      return $$7;
+   public static ffq a(bxu $$0, azx $$1) {
+      int $$2 = 90;
+      float $$3 = $$0.aX + 180.0F + (float)$$1.k() * 90.0F / 2.0F;
+      float $$4 = azo.h($$1.i(), 4.0F, 8.0F);
+      ffq $$5 = ffq.a(0.0F, $$3).c((double)$$4);
+      return $$0.dt().e($$5);
    }
 
-   static void a(bxj $$0, bxj $$1) {
-      double $$2 = $$0.h(byp.d);
-      double $$3 = $$1.h(byp.p);
-      double $$4 = $$2 - $$3;
-      if (!($$4 <= 0.0)) {
-         double $$5 = $$1.dz() - $$0.dz();
-         double $$6 = $$1.dF() - $$0.dF();
-         float $$7 = (float)($$0.dU().A.a(21) - 10);
-         double $$8 = $$4 * (double)($$0.dU().A.i() * 0.5F + 0.2F);
-         ffc $$9 = new ffc($$5, 0.0, $$6).d().c($$8).b($$7);
-         double $$10 = $$4 * (double)$$0.dU().A.i() * 0.5;
-         $$1.i($$9.d, $$10, $$9.f);
-         $$1.T = true;
-      }
+   public static boolean a(cpv $$0, ffq $$1) {
+      ffq $$2 = new ffq($$0.dA(), $$0.dC(), $$0.dG());
+      return $$1.f($$2) > a($$0) ? false : $$0.dV().a(new dje($$2, $$1, dje.a.a, dje.b.a, $$0)).d() == ffo.a.a;
+   }
+
+   private static double a(cpv $$0) {
+      return Math.max(50.0, $$0.h(bza.m));
    }
 }

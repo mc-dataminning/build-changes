@@ -7,7 +7,7 @@ public class tr extends so {
    }
 
    @Override
-   public wy a() {
-      return wy.a("test.error.unknown", this.a.getMessage());
+   public xa a() {
+      return xa.a("test.error.unknown", this.a.getMessage());
    }
 }

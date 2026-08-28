@@ -1,33 +1,32 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import java.util.List;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class cce {
-   private static final int a = 10;
-   private static final int b = 7;
+   public static bzm<crj> a(cgw<List<je>> $$0, float $$1, int $$2, int $$3, cgw<je> $$4) {
+      MutableLong $$5 = new MutableLong(0L);
+      return ccy.a(
+         (Function<ccy.b<crj>, ? extends App<ccy.c<crj>, cdb<crj>>>)($$6 -> $$6.group($$6.a(cgw.n), $$6.b($$0), $$6.b($$4))
+               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
+                     List<je> $$11 = $$6.b($$6x);
+                     je $$12 = $$6.b($$7);
+                     if ($$11.isEmpty()) {
+                        return false;
+                     } else {
+                        je $$13 = $$11.get($$8.G_().a($$11.size()));
+                        if ($$13 != null && $$8.aj() == $$13.a() && $$12.b().a($$9.dt(), (double)$$3)) {
+                           if ($$10 > $$5.getValue()) {
+                              $$5xx.a(new cgz($$13.b(), $$1, $$2));
+                              $$5.setValue($$10 + 100L);
+                           }
 
-   public static cal<bxr> a(float $$0) {
-      return a($$0, 10, 7);
-   }
-
-   public static cal<bxr> a(float $$0, int $$1, int $$2) {
-      return ccn.a((Function<ccn.b<bxr>, ? extends App<ccn.c<bxr>, ccq<bxr>>>)($$3 -> $$3.group($$3.c(cgl.n)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               iv $$7 = $$5.du();
-               ffc $$8;
-               if ($$4.c($$7)) {
-                  $$8 = cif.a($$5, $$1, $$2);
-               } else {
-                  jy $$9 = jy.a($$7);
-                  jy $$10 = bzc.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = cic.a($$5, $$1, $$2, ffc.c($$10.k()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = cif.a($$5, $$1, $$2);
-                  }
-               }
-
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new cgo($$1xxxx, $$0, 0)));
-               return true;
-            })));
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

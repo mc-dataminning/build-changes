@@ -2,45 +2,46 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public record cjv(ctn<cjv.a> e, ctt f) implements ctp<cts, ctq> {
+public record cjv(cty<cjv.a> e, cue f) implements cua<cud, cub> {
    public static final Codec<cjv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ctn.a(cjv.a.c, cjv.a.a).forGetter(cjv::b), ctt.b.fieldOf("spawn_conditions").forGetter(cjv::c)).apply($$0, cjv::new)
+      $$0 -> $$0.group(cty.a(cjv.a.d, cjv.a.a).forGetter(cjv::b), cue.b.fieldOf("spawn_conditions").forGetter(cjv::c)).apply($$0, cjv::new)
    );
-   public static final Codec<cjv> b = RecordCodecBuilder.create($$0 -> $$0.group(ctn.a(cjv.a.c, cjv.a.a).forGetter(cjv::b)).apply($$0, cjv::new));
-   public static final Codec<jf<cjv>> c = ald.a(mh.ba);
-   public static final yw<wj, jf<cjv>> d = yu.b(mh.ba);
+   public static final Codec<cjv> b = RecordCodecBuilder.create($$0 -> $$0.group(cty.a(cjv.a.d, cjv.a.a).forGetter(cjv::b)).apply($$0, cjv::new));
+   public static final Codec<jf<cjv>> c = alf.a(mh.aM);
+   public static final yy<wl, jf<cjv>> d = yw.b(mh.aM);
 
-   private cjv(ctn<cjv.a> $$0) {
-      this($$0, ctt.a);
+   private cjv(cty<cjv.a> $$0) {
+      this($$0, cue.a);
    }
 
    @Override
-   public List<ctp.a<cts, ctq>> a() {
+   public List<cua.a<cud, cub>> a() {
       return this.f.a();
    }
 
-   public ctn<cjv.a> b() {
+   public cty<cjv.a> b() {
       return this.e;
    }
 
-   public ctt c() {
+   public cue c() {
       return this.f;
    }
 
-   public static enum a implements bak {
+   public static enum a implements bam {
       a("normal"),
-      b("cold");
+      b("cold"),
+      c("warm");
 
-      public static final Codec<cjv.a> c = bak.a(cjv.a::values);
-      private final String d;
+      public static final Codec<cjv.a> d = bam.a(cjv.a::values);
+      private final String e;
 
       private a(final String $$0) {
-         this.d = $$0;
+         this.e = $$0;
       }
 
       @Override
       public String c() {
-         return this.d;
+         return this.e;
       }
    }
 }

@@ -1,7 +1,9 @@
-public class gfy extends ggs<hcu> {
-   public static final gkc a = gkc.scaling(0.8F);
+public interface gfy {
+   void a(gfw var1);
 
-   public gfy(gjt $$0) {
-      super($$0);
-   }
+   xa aT_();
+
+   void a(ftx var1, float var2, float var3);
+
+   boolean aU_();
 }

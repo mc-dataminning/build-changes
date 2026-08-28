@@ -1,26 +1,15 @@
-import java.util.IllegalFormatException;
+import java.util.Collection;
+import java.util.Locale;
 
-public class hky {
-   private static volatile tu a = tu.a();
+public class hky extends RuntimeException {
+   private final Collection<hkx.a> a;
 
-   private hky() {
+   public hky(hkx.a $$0, Collection<hkx.a> $$1) {
+      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
+      this.a = $$1;
    }
 
-   static void a(tu $$0) {
-      a = $$0;
-   }
-
-   public static String a(String $$0, Object... $$1) {
-      String $$2 = a.a($$0);
-
-      try {
-         return String.format($$2, $$1);
-      } catch (IllegalFormatException var4) {
-         return "Format error: " + $$2;
-      }
-   }
-
-   public static boolean a(String $$0) {
-      return a.b($$0);
+   public Collection<hkx.a> a() {
+      return this.a;
    }
 }

@@ -1,28 +1,38 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class etn extends ern {
-   public static final MapCodec<etn> d = a(etn::new);
+public interface etn {
+   Codec<etn> b = mg.ah.q().dispatch(etn::b, Function.identity());
 
-   public etn(ern.c $$0) {
-      super($$0);
+   void a(azx var1, BiConsumer<alh<etl>, alh<etl>> var2);
+
+   Stream<alh<etl>> a();
+
+   static etm a(String $$0, String $$1) {
+      return a(qo.a($$0), qo.a($$1));
    }
 
-   @Override
-   public Optional<ern.b> a(ern.a $$0) {
-      return a($$0, egs.a.a, $$1 -> this.a($$1, $$0));
+   static etm a(alh<etl> $$0, alh<etl> $$1) {
+      return new etm($$0, $$1);
    }
 
-   private void a(esf $$0, ern.a $$1) {
-      dir $$2 = $$1.h();
-      ehr $$3 = $$1.f();
-      iv $$4 = new iv($$2.d(), 90, $$2.e());
-      dtl $$5 = dtl.a($$3);
-      etm.a($$1.e(), $$4, $$5, $$0, $$3);
+   static etr a(String $$0, btb<String> $$1) {
+      btb.a<alh<etl>> $$2 = btb.b();
+      $$1.d().forEach($$1x -> $$2.a(qo.a((String)$$1x.a()), $$1x.b()));
+      return a(qo.a($$0), $$2.a());
    }
 
-   @Override
-   public erw<?> e() {
-      return erw.e;
+   static etr a(alh<etl> $$0, btb<alh<etl>> $$1) {
+      return new etr($$0, $$1);
    }
+
+   static etq a(btb<List<etn>> $$0) {
+      return new etq($$0);
+   }
+
+   MapCodec<? extends etn> b();
 }

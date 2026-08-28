@@ -1,12 +1,8 @@
-import java.util.function.Supplier;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class cub extends ctx {
-   public cub(bwr<? extends cub> $$0, djm $$1, Supplier<czj> $$2) {
-      super($$0, $$1, $$2);
-   }
+public interface cub extends cua.b<cud> {
+   Codec<cub> b = mg.aD.q().dispatch(cub::a, $$0 -> $$0);
 
-   @Override
-   protected double b(bwl $$0) {
-      return (double)($$0.b() / 3.0F);
-   }
+   MapCodec<? extends cub> a();
 }

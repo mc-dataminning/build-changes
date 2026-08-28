@@ -1,25 +1,20 @@
-public class giv extends ggp<hef> {
-   private final gjt a;
-
-   public giv(gjt $$0) {
-      super($$0, grc::g);
-      this.a = $$0.b("tail");
+public class giv extends gia<hfs> {
+   public giv(gle $$0) {
+      super($$0);
    }
 
-   public static gjz a() {
-      gkb $$0 = new gkb();
-      gkd $$1 = $$0.a();
-      float $$2 = 0.0F;
-      float $$3 = 22.0F;
-      float $$4 = -3.0F;
-      $$1.a("body", gjy.c().a(0, 0).a(-1.5F, -1.0F, 0.0F, 3.0F, 2.0F, 3.0F), gjv.a(0.0F, 22.0F, -3.0F));
-      $$1.a("tail", gjy.c().a(0, 0).a(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 7.0F), gjv.a(0.0F, 22.0F, 0.0F));
-      return gjz.a($$0, 16, 16);
-   }
-
-   public void a(hef $$0) {
-      super.a($$0);
-      float $$1 = $$0.ak ? 1.0F : 1.5F;
-      this.a.f = -$$1 * 0.25F * azm.a(0.3F * $$0.u);
+   public static glk a() {
+      glm $$0 = new glm();
+      glo $$1 = $$0.a();
+      int $$2 = 20;
+      int $$3 = 8;
+      int $$4 = 16;
+      int $$5 = 4;
+      $$1.a("bottom", glj.c().a(0, 10).a(-10.0F, -8.0F, -1.0F, 20.0F, 16.0F, 2.0F), glg.a(0.0F, 4.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("front", glj.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), glg.a(-9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
+      $$1.a("back", glj.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), glg.a(9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$1.a("left", glj.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), glg.a(0.0F, 4.0F, -7.0F, 0.0F, (float) Math.PI, 0.0F));
+      $$1.a("right", glj.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), glg.a(0.0F, 4.0F, 7.0F));
+      return glk.a($$0, 64, 32);
    }
 }

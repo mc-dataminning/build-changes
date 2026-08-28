@@ -1,25 +1,33 @@
-public record acu(long[] b, bpb c) implements zf<abu> {
-   public static final yw<vu, acu> a = zf.a(acu::a, acu::new);
+import java.util.List;
 
-   private acu(vu $$0) {
-      this($$0.d(), $$0.b(bpb.class));
+public record acu(acu.a b, List<String> c) implements zh<abw> {
+   public static final yy<vw, acu> a = zh.a(acu::a, acu::new);
+
+   private acu(vw $$0) {
+      this($$0.b(acu.a.class), $$0.a(vw::p));
    }
 
-   private void a(vu $$0) {
+   private void a(vw $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.a(this.c, vw::a);
    }
 
    @Override
-   public zh<acu> a() {
-      return agn.z;
+   public zj<acu> a() {
+      return agp.x;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public bpb e() {
+   public List<String> e() {
       return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

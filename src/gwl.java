@@ -1,38 +1,38 @@
-public class gwl extends gye<cnz, hcy, ggh> {
-   private static final alg a = alg.b("textures/entity/creeper/creeper.png");
+import org.apache.commons.lang3.mutable.MutableInt;
 
-   public gwl(gwy.a $$0) {
-      super($$0, new ggh($$0.a(gjs.aq)), 0.5F);
-      this.a(new hap(this, $$0.f()));
+public class gwl {
+   private final frd a;
+
+   public gwl(frd $$0) {
+      this.a = $$0;
    }
 
-   protected void a(hcy $$0, fkd $$1) {
-      float $$2 = $$0.a;
-      float $$3 = 1.0F + azm.a($$2 * 100.0F) * $$2 * 0.01F;
-      $$2 = azm.a($$2, 0.0F, 1.0F);
-      $$2 *= $$2;
-      $$2 *= $$2;
-      float $$4 = (1.0F + $$2 * 0.4F) * $$3;
-      float $$5 = (1.0F + $$2 * 0.1F) / $$3;
-      $$1.b($$4, $$5, $$4);
+   public void a(flo $$0, gvu $$1, gsa $$2, double $$3, double $$4, double $$5) {
+      gsb $$6 = this.a.f.w().c();
+      MutableInt $$7 = new MutableInt(0);
+      $$6.a(($$6x, $$7x, $$8, $$9) -> this.a($$6x, $$0, $$2, $$3, $$4, $$5, $$8, $$7x, $$7, $$9), $$1, 32);
    }
 
-   protected float a(hcy $$0) {
-      float $$1 = $$0.a;
-      return (int)($$1 * 10.0F) % 2 == 0 ? 0.0F : azm.a($$1, 0.5F, 1.0F);
+   private void a(gsb.d $$0, flo $$1, gsa $$2, double $$3, double $$4, double $$5, int $$6, boolean $$7, MutableInt $$8, boolean $$9) {
+      ffl $$10 = $$0.b();
+      double $$11 = $$10.b();
+      long $$12 = Math.round($$11 / 16.0);
+      if ($$12 == 1L) {
+         $$8.add(1);
+         double $$13 = $$10.f().d;
+         double $$14 = $$10.f().e;
+         double $$15 = $$10.f().f;
+         int $$16 = $$9 ? -16711936 : -1;
+         gwd.a($$1, $$2, String.valueOf($$8.getValue()), $$13, $$14, $$15, $$16, 0.3F);
+      }
+
+      flr $$17 = $$2.getBuffer(gsl.w());
+      long $$18 = $$12 + 5L;
+      gst.a($$1, $$17, $$10.h(0.1 * (double)$$6).d(-$$3, -$$4, -$$5), a($$18, 0.3F), a($$18, 0.8F), a($$18, 0.5F), $$7 ? 0.4F : 1.0F);
    }
 
-   public alg b(hcy $$0) {
-      return a;
-   }
-
-   public hcy a() {
-      return new hcy();
-   }
-
-   public void a(cnz $$0, hcy $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = $$0.m();
+   private static float a(long $$0, float $$1) {
+      float $$2 = 0.1F;
+      return azo.i($$1 * (float)$$0) * 0.9F + 0.1F;
    }
 }

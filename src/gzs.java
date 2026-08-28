@@ -1,38 +1,36 @@
-public class gzs extends gvo<cli, hdg, gey<hdg>> {
-   private final alg a;
+public class gzs extends gyh<bya, hfk> {
+   private static final float a = 40.0F;
+   private static final int g = 50;
+   private final hhq h;
+   private final azx i = azx.a();
 
-   public gzs(gwy.a $$0, gzs.a $$1) {
-      super($$0, new ghb($$0.a($$1.d)), new ghb($$0.a($$1.e)));
-      this.a = $$1.c;
-      this.a(new hbp<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new ggq($$0.a($$1.g)), new ggq($$0.a($$1.h))));
+   protected gzs(gyi.a $$0) {
+      super($$0);
+      this.h = $$0.b();
    }
 
-   public alg a(hdg $$0) {
-      return this.a;
+   public hfk a() {
+      return new hfk();
    }
 
-   public hdg b() {
-      return new hdg();
+   public void a(bya $$0, hfk $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      czy $$3 = $$0.g();
+      $$1.a($$0, $$3, this.h);
    }
 
-   public static enum a {
-      a(alg.b("textures/entity/horse/horse_skeleton.png"), gjs.cZ, gjs.da, hlw.d.n, gjs.db, gjs.dc),
-      b(alg.b("textures/entity/horse/horse_zombie.png"), gjs.em, gjs.en, hlw.d.m, gjs.eo, gjs.ep);
+   public void a(hfk $$0, flo $$1, gsa $$2, int $$3) {
+      if (!$$0.a.c()) {
+         $$1.a();
+         if ($$0.u <= 50.0F) {
+            float $$4 = Math.min($$0.u, 50.0F) / 50.0F;
+            $$1.b($$4, $$4, $$4);
+         }
 
-      final alg c;
-      final gjr d;
-      final gjr e;
-      final hlw.d f;
-      final gjr g;
-      final gjr h;
-
-      private a(final alg $$0, final gjr $$1, final gjr $$2, final hlw.d $$3, final gjr $$4, final gjr $$5) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
-         this.h = $$5;
+         float $$5 = azo.h($$0.u * 40.0F);
+         $$1.a(a.d.rotationDegrees($$5));
+         gze.a($$1, $$2, 15728880, $$0, this.i);
+         $$1.b();
       }
    }
 }

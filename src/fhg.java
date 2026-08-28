@@ -1,27 +1,46 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.List;
+import java.util.Set;
 
-public enum fhg {
-   a(fkl.a, ($$0, $$1) -> $$0.scale(1.0F - $$1 / 4096.0F)),
-   b(fkl.b, ($$0, $$1) -> $$0.translate(0.0F, 0.0F, $$1 / 512.0F));
+public class fhg<T> implements fhj<T>, fhl<T> {
+   private final List<fhh<T>> a = Lists.newArrayList();
+   private final Set<fhh<?>> b = new ObjectOpenCustomHashSet(fhh.a);
 
-   private final fkl c;
-   private final fhg.a d;
-
-   private fhg(final fkl $$0, final fhg.a $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   @Override
+   public void a(fhi<T> $$0) {
+      fhh<T> $$1 = new fhh<>($$0.a(), $$0.b(), 0, $$0.d());
+      this.a($$1);
    }
 
-   public fkl a() {
-      return this.c;
+   private void a(fhh<T> $$0) {
+      if (this.b.add($$0)) {
+         this.a.add($$0);
+      }
    }
 
-   public void a(Matrix4f $$0, float $$1) {
-      this.d.apply($$0, $$1);
+   @Override
+   public boolean a(iv $$0, T $$1) {
+      return this.b.contains(fhh.a($$1, $$0));
    }
 
-   @FunctionalInterface
-   interface a {
-      void apply(Matrix4f var1, float var2);
+   @Override
+   public int a() {
+      return this.a.size();
+   }
+
+   @Override
+   public List<fhh<T>> a(long $$0) {
+      return this.a;
+   }
+
+   public List<fhh<T>> b() {
+      return List.copyOf(this.a);
+   }
+
+   public static <T> fhg<T> a(List<fhh<T>> $$0) {
+      fhg<T> $$1 = new fhg<>();
+      $$0.forEach($$1::a);
+      return $$1;
    }
 }

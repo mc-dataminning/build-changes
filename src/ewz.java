@@ -1,106 +1,77 @@
-import java.util.Optional;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import javax.annotation.Nullable;
 
-public abstract class ewz {
-   public static final jl<exa> c = new jl<>();
-   protected final eau<ewz, exa> d;
-   private exa a;
-   private final jf.c<ewz> b = mg.c.f(this);
+public abstract class ewz<M extends ewz<M>> {
+   private static final int b = 2;
+   private final long[] c = new long[2];
+   private final edg[] d = new edg[2];
+   private boolean e;
+   protected final Long2ObjectOpenHashMap<edg> a;
 
-   protected ewz() {
-      eau.a<ewz, exa> $$0 = new eau.a<>(this);
-      this.a($$0);
-      this.d = $$0.a(ewz::g, exa::new);
-      this.f(this.d.b());
-   }
-
-   protected void a(eau.a<ewz, exa> $$0) {
-   }
-
-   public eau<ewz, exa> f() {
-      return this.d;
-   }
-
-   protected final void f(exa $$0) {
+   protected ewz(Long2ObjectOpenHashMap<edg> $$0) {
       this.a = $$0;
+      this.c();
+      this.e = true;
    }
 
-   public final exa g() {
-      return this.a;
+   public abstract M b();
+
+   public edg a(long $$0) {
+      edg $$1 = ((edg)this.a.get($$0)).b();
+      this.a.put($$0, $$1);
+      this.c();
+      return $$1;
    }
 
-   public abstract czj a();
-
-   protected void a(djm $$0, iv $$1, exa $$2, azv $$3) {
-   }
-
-   protected void b(arq $$0, iv $$1, eat $$2, exa $$3) {
-   }
-
-   protected void a(arq $$0, iv $$1, exa $$2, azv $$3) {
-   }
-
-   protected void a(djm $$0, iv $$1, bwi $$2, bxb $$3) {
+   public boolean b(long $$0) {
+      return this.a.containsKey($$0);
    }
 
    @Nullable
-   protected lw h() {
-      return null;
-   }
+   public edg c(long $$0) {
+      if (this.e) {
+         for (int $$1 = 0; $$1 < 2; $$1++) {
+            if ($$0 == this.c[$$1]) {
+               return this.d[$$1];
+            }
+         }
+      }
 
-   protected abstract boolean a(exa var1, diq var2, iv var3, ewz var4, jb var5);
-
-   protected abstract ffc a(diq var1, iv var2, exa var3);
-
-   public abstract int a(djp var1);
-
-   protected boolean i() {
-      return false;
-   }
-
-   protected boolean b() {
-      return false;
-   }
-
-   protected abstract float c();
-
-   public abstract float a(exa var1, diq var2, iv var3);
-
-   public abstract float a(exa var1);
-
-   protected abstract eat b(exa var1);
-
-   public abstract boolean c(exa var1);
-
-   public abstract int d(exa var1);
-
-   public boolean a(ewz $$0) {
-      return $$0 == this;
-   }
-
-   @Deprecated
-   public boolean a(axr<ewz> $$0) {
-      return this.b.a($$0);
-   }
-
-   public abstract ffw b(exa var1, diq var2, iv var3);
-
-   @Nullable
-   public fex c(exa $$0, diq $$1, iv $$2) {
-      if (this.b()) {
+      edg $$2 = (edg)this.a.get($$0);
+      if ($$2 == null) {
          return null;
       } else {
-         float $$3 = $$0.a($$1, $$2);
-         return new fex((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), (double)$$2.u() + 1.0, (double)((float)$$2.v() + $$3), (double)$$2.w() + 1.0);
+         if (this.e) {
+            for (int $$3 = 1; $$3 > 0; $$3--) {
+               this.c[$$3] = this.c[$$3 - 1];
+               this.d[$$3] = this.d[$$3 - 1];
+            }
+
+            this.c[0] = $$0;
+            this.d[0] = $$2;
+         }
+
+         return $$2;
       }
    }
 
-   public Optional<awm> j() {
-      return Optional.empty();
+   @Nullable
+   public edg d(long $$0) {
+      return (edg)this.a.remove($$0);
    }
 
-   @Deprecated
-   public jf.c<ewz> k() {
-      return this.b;
+   public void a(long $$0, edg $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   public void c() {
+      for (int $$0 = 0; $$0 < 2; $$0++) {
+         this.c[$$0] = Long.MAX_VALUE;
+         this.d[$$0] = null;
+      }
+   }
+
+   public void d() {
+      this.e = false;
    }
 }

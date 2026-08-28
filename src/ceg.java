@@ -1,126 +1,85 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Predicate;
+public class ceg extends ceu {
+   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
+   private final cjx b;
+   private final int c;
+   private boolean d;
 
-public class ceg {
-   private static final cft a = new cft(Integer.MAX_VALUE, new cef() {
-      @Override
-      public boolean b() {
+   public ceg(cjx $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
+   }
+
+   @Override
+   public boolean b() {
+      if (this.b.dY().a(this.c) != 0) {
          return false;
-      }
-   }) {
-      @Override
-      public boolean h() {
-         return false;
-      }
-   };
-   private final Map<cef.a, cft> b = new EnumMap<>(cef.a.class);
-   private final Set<cft> c = new ObjectLinkedOpenHashSet();
-   private final EnumSet<cef.a> d = EnumSet.noneOf(cef.a.class);
+      } else {
+         jb $$0 = this.b.cP();
+         int $$1 = $$0.j();
+         int $$2 = $$0.l();
+         iv $$3 = this.b.dv();
 
-   public void a(int $$0, cef $$1) {
-      this.c.add(new cft($$0, $$1));
-   }
-
-   @VisibleForTesting
-   public void a(Predicate<cef> $$0) {
-      this.c.removeIf($$1 -> $$0.test($$1.k()));
-   }
-
-   public void a(cef $$0) {
-      for (cft $$1 : this.c) {
-         if ($$1.k() == $$0 && $$1.h()) {
-            $$1.e();
+         for (int $$4 : a) {
+            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
+               return false;
+            }
          }
-      }
 
-      this.c.removeIf($$1x -> $$1x.k() == $$0);
+         return true;
+      }
    }
 
-   private static boolean a(cft $$0, EnumSet<cef.a> $$1) {
-      for (cef.a $$2 : $$0.j()) {
-         if ($$1.contains($$2)) {
-            return true;
-         }
-      }
+   private boolean a(iv $$0, int $$1, int $$2, int $$3) {
+      iv $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
+      return this.b.dV().b_($$4).a(axj.a) && !this.b.dV().a_($$4).d();
+   }
 
+   private boolean b(iv $$0, int $$1, int $$2, int $$3) {
+      return this.b.dV().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).l() && this.b.dV().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).l();
+   }
+
+   @Override
+   public boolean c() {
+      double $$0 = this.b.dy().e;
+      return (!($$0 * $$0 < 0.03F) || this.b.dN() == 0.0F || !(Math.abs(this.b.dN()) < 10.0F) || !this.b.bi()) && !this.b.aH();
+   }
+
+   @Override
+   public boolean U_() {
       return false;
    }
 
-   private static boolean a(cft $$0, Map<cef.a, cft> $$1) {
-      for (cef.a $$2 : $$0.j()) {
-         if (!$$1.getOrDefault($$2, a).a($$0)) {
-            return false;
-         }
-      }
-
-      return true;
+   @Override
+   public void d() {
+      jb $$0 = this.b.cP();
+      this.b.i(this.b.dy().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
+      this.b.O().m();
    }
 
+   @Override
+   public void e() {
+      this.b.x(0.0F);
+   }
+
+   @Override
    public void a() {
-      bqq $$0 = bqp.a();
-      $$0.a("goalCleanup");
-
-      for (cft $$1 : this.c) {
-         if ($$1.h() && (a($$1, this.d) || !$$1.c())) {
-            $$1.e();
-         }
+      boolean $$0 = this.d;
+      if (!$$0) {
+         exo $$1 = this.b.dV().b_(this.b.dv());
+         this.d = $$1.a(axj.a);
       }
 
-      this.b.entrySet().removeIf($$0x -> !((cft)$$0x.getValue()).h());
-      $$0.c();
-      $$0.a("goalUpdate");
-
-      for (cft $$2 : this.c) {
-         if (!$$2.h() && !a($$2, this.d) && a($$2, this.b) && $$2.b()) {
-            for (cef.a $$3 : $$2.j()) {
-               cft $$4 = this.b.getOrDefault($$3, a);
-               $$4.e();
-               this.b.put($$3, $$2);
-            }
-
-            $$2.d();
-         }
+      if (this.d && !$$0) {
+         this.b.a(awp.hz, 1.0F, 1.0F);
       }
 
-      $$0.c();
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
-      bqq $$1 = bqp.a();
-      $$1.a("goalTick");
-
-      for (cft $$2 : this.c) {
-         if ($$2.h() && ($$0 || $$2.R_())) {
-            $$2.a();
-         }
-      }
-
-      $$1.c();
-   }
-
-   public Set<cft> b() {
-      return this.c;
-   }
-
-   public void a(cef.a $$0) {
-      this.d.add($$0);
-   }
-
-   public void b(cef.a $$0) {
-      this.d.remove($$0);
-   }
-
-   public void a(cef.a $$0, boolean $$1) {
-      if ($$1) {
-         this.b($$0);
-      } else {
-         this.a($$0);
+      ffq $$2 = this.b.dy();
+      if ($$2.e * $$2.e < 0.03F && this.b.dN() != 0.0F) {
+         this.b.x(azo.i(0.2F, this.b.dN(), 0.0F));
+      } else if ($$2.g() > 1.0E-5F) {
+         double $$3 = $$2.i();
+         double $$4 = Math.atan2(-$$2.e, $$3) * 180.0F / (float)Math.PI;
+         this.b.x((float)$$4);
       }
    }
 }

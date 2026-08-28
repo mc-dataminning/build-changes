@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface hgo {
+public class hgo extends hfp {
+   public float a;
+   public float b;
+   public float c;
 }

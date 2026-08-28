@@ -1,116 +1,67 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Optional;
 
-public class cqe extends cqa {
-   private static final int bH = 50;
-   private static final float bI = 0.35F;
-   private static final int bJ = 7;
-   private static final double bK = 12.0;
-   protected static final ImmutableList<chs<? extends chr<? super cqe>>> d = ImmutableList.of(chs.c, chs.d, chs.b, chs.f, chs.m);
-   protected static final ImmutableList<cgl<?>> bG = ImmutableList.of(
-      cgl.o, cgl.w, cgl.g, cgl.h, cgl.k, cgl.l, cgl.ap, cgl.ao, cgl.y, cgl.z, cgl.n, cgl.F, new cgl[]{cgl.p, cgl.q, cgl.r, cgl.u, cgl.ac, cgl.N, cgl.b}
-   );
+public class cqe {
+   protected static final ImmutableList<? extends cid<? extends cic<? super cqd>>> a = ImmutableList.of(cid.c, cid.d);
+   protected static final ImmutableList<? extends cgw<?>> b = ImmutableList.of(cgw.g, cgw.h, cgw.k, cgw.l, cgw.m, cgw.o, cgw.n, cgw.F, cgw.u, cgw.p, cgw.q);
 
-   public cqe(bwr<? extends cqe> $$0, djm $$1) {
-      super($$0, $$1);
-      this.by = 20;
+   static void a(byu<cqd> $$0) {
+      $$0.a(ctr.a, 0, ImmutableList.of(new ccf<cqd>(0.8F) {
+         protected boolean a(ars $$0, cqd $$1) {
+            return $$1.n() && super.a($$0, (bxu)$$1);
+         }
+      }, new car(45, 90), new cav()));
    }
 
-   public static byo.a n() {
-      return coo.gw().a(byp.s, 50.0).a(byp.v, 0.35F).a(byp.c, 7.0).a(byp.m, 12.0);
+   static void b(byu<cqd> $$0) {
+      $$0.a(
+         ctr.b,
+         10,
+         ImmutableList.of(
+            cbx.a(($$0x, $$1) -> $$1.gC(), ($$0x, $$1) -> $$1.ec().c(cgw.l)),
+            cbl.a(8.0F, buc.a(30, 60)),
+            new cbi(ImmutableList.of(Pair.of(cbd.a(0.3F), 2), Pair.of(cbs.a(0.3F, 3), 2), Pair.of(new bzv(30, 60), 1)))
+         )
+      );
    }
 
-   @Nullable
-   @Override
-   public byb a(dkd $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
-      cqf.a(this);
-      this.a($$0.C_(), $$1);
-      return super.a($$0, $$1, $$2, $$3);
+   static void a(cqd $$0, byu<cqd> $$1) {
+      $$1.a(ctr.k, 10, ImmutableList.of(cbq.a(1.0F), cas.a(cqd::n, 40), cca.a(($$1x, $$2) -> !a($$0, $$2))), ImmutableSet.of(Pair.of(cgw.p, cgx.a)));
    }
 
-   @Override
-   protected void a(azv $$0, bue $$1) {
-      this.a(bws.a, new czn(czr.pN));
+   private static boolean a(cqd $$0, bxu $$1) {
+      Optional<List<crx>> $$2 = $$0.ec().c(cgw.m);
+      return $$2.<Boolean>map($$1x -> {
+         if ($$1 instanceof crx $$2x && $$1x.contains($$2x)) {
+            return true;
+         }
+
+         return false;
+      }).orElse(false);
    }
 
-   @Override
-   protected byj.b<cqe> ec() {
-      return byj.a(bG, d);
+   public static byu.b<cqd> a() {
+      return byu.a(b, a);
    }
 
-   @Override
-   protected byj<?> a(Dynamic<?> $$0) {
-      return cqf.a(this, this.ec().a($$0));
+   public static byu<cqd> b(cqd $$0, byu<cqd> $$1) {
+      a($$1);
+      b($$1);
+      a($$0, $$1);
+      $$1.a(ImmutableSet.of(ctr.a));
+      $$1.b(ctr.b);
+      $$1.f();
+      return $$1;
    }
 
-   @Override
-   public byj<cqe> eb() {
-      return (byj<cqe>)super.eb();
-   }
-
-   @Override
-   public boolean j() {
-      return false;
-   }
-
-   @Override
-   public boolean c(arq $$0, czn $$1) {
-      return $$1.a(czr.pN) ? super.c($$0, $$1) : false;
-   }
-
-   @Override
-   protected void a(arq $$0) {
-      bqq $$1 = bqp.a();
-      $$1.a("piglinBruteBrain");
-      this.eb().a($$0, this);
-      $$1.c();
-      cqf.b(this);
-      cqf.c(this);
-      super.a($$0);
-   }
-
-   @Override
-   public cqd x() {
-      return this.gk() && this.gt() ? cqd.a : cqd.f;
-   }
-
-   @Override
-   public boolean a(arq $$0, bux $$1, float $$2) {
-      boolean $$3 = super.a($$0, $$1, $$2);
-      if ($$3 && $$1.d() instanceof bxj $$4) {
-         cqf.a($$0, this, $$4);
+   public static void a(cqd $$0) {
+      if (!$$0.n()) {
+         $$0.ec().f();
+      } else {
+         $$0.ec().a(ImmutableList.of(ctr.k, ctr.b));
       }
-
-      return $$3;
-   }
-
-   @Override
-   protected awm u() {
-      return awn.uD;
-   }
-
-   @Override
-   protected awm e(bux $$0) {
-      return awn.uG;
-   }
-
-   @Override
-   protected awm l_() {
-      return awn.uF;
-   }
-
-   @Override
-   protected void b(iv $$0, eat $$1) {
-      this.a(awn.uH, 0.15F, 1.0F);
-   }
-
-   protected void gx() {
-      this.b(awn.uE);
-   }
-
-   @Override
-   protected void gu() {
-      this.b(awn.uI);
    }
 }

@@ -1,96 +1,101 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public class fzr extends fzh<cvn> {
-   private static final alg G = alg.b("container/cartography_table/error");
-   private static final alg H = alg.b("container/cartography_table/scaled_map");
-   private static final alg I = alg.b("container/cartography_table/duplicated_map");
-   private static final alg J = alg.b("container/cartography_table/map");
-   private static final alg K = alg.b("container/cartography_table/locked");
-   private static final alg L = alg.b("textures/gui/container/cartography_table.png");
-   private final hiz M = new hiz();
+public class fzr extends gad {
+   private static final long a = 2000L;
+   private final asg b;
+   private long c = -1L;
+   private boolean d;
+   private static final Object2IntMap<eec> s = ag.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(eec.c, 5526612);
+      $$0.put(eec.d, 10066329);
+      $$0.put(eec.e, 6250897);
+      $$0.put(eec.f, 8434258);
+      $$0.put(eec.g, 13750737);
+      $$0.put(eec.h, 7497737);
+      $$0.put(eec.i, 3159410);
+      $$0.put(eec.j, 2213376);
+      $$0.put(eec.k, 13421772);
+      $$0.put(eec.l, 16769184);
+      $$0.put(eec.m, 15884384);
+      $$0.put(eec.n, 16777215);
+   });
 
-   public fzr(cvn $$0, crl $$1, wy $$2) {
-      super($$0, $$1, $$2);
-      this.w -= 2;
+   public fzr(asg $$0) {
+      super(fqu.a);
+      this.b = $$0;
    }
 
    @Override
-   public void a(fsm $$0, int $$1, int $$2, float $$3) {
+   public boolean aH_() {
+      return false;
+   }
+
+   @Override
+   protected boolean aR_() {
+      return false;
+   }
+
+   @Override
+   public void aJ_() {
+      this.d = true;
+      this.d(true);
+   }
+
+   @Override
+   protected void b(fyi $$0) {
+      if (this.d) {
+         $$0.a(fyh.a, xa.c("narrator.loading.done"));
+      } else {
+         $$0.a(fyh.a, this.m());
+      }
+   }
+
+   private xa m() {
+      return xa.a("loading.progress", azo.a(this.b.f(), 0, 100));
+   }
+
+   @Override
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+      long $$4 = ag.c();
+      if ($$4 - this.c > 2000L) {
+         this.c = $$4;
+         this.d(true);
+      }
+
+      int $$5 = this.n / 2;
+      int $$6 = this.o / 2;
+      a($$0, this.b, $$5, $$6, 2, 0);
+      int $$7 = this.b.e() + 9 + 2;
+      $$0.a(this.p, this.m(), $$5, $$6 - $$7, 16777215);
    }
 
-   @Override
-   protected void a(fsm $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.C;
-      int $$5 = this.D;
-      $$0.a(grc::H, L, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      czn $$6 = this.z.b(1).g();
-      boolean $$7 = $$6.a(czr.vt);
-      boolean $$8 = $$6.a(czr.rE);
-      boolean $$9 = $$6.a(czr.gp);
-      czn $$10 = this.z.b(0).g();
-      eyt $$11 = $$10.a(kk.M);
-      boolean $$12 = false;
-      eyv $$13;
-      if ($$11 != null) {
-         $$13 = daa.a($$11, this.m.s);
-         if ($$13 != null) {
-            if ($$13.i) {
-               $$12 = true;
-               if ($$8 || $$9) {
-                  $$0.a(grc::H, G, $$4 + 35, $$5 + 31, 28, 21);
-               }
-            }
+   public static void a(ftx $$0, asg $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$4 + $$5;
+      int $$7 = $$1.d();
+      int $$8 = $$7 * $$6 - $$5;
+      int $$9 = $$1.e();
+      int $$10 = $$9 * $$6 - $$5;
+      int $$11 = $$2 - $$10 / 2;
+      int $$12 = $$3 - $$10 / 2;
+      int $$13 = $$8 / 2 + 1;
+      int $$14 = -16772609;
+      if ($$5 != 0) {
+         $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
+         $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
+         $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
+         $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
+      }
 
-            if ($$8 && $$13.g >= 4) {
-               $$12 = true;
-               $$0.a(grc::H, G, $$4 + 35, $$5 + 31, 28, 21);
-            }
+      for (int $$15 = 0; $$15 < $$9; $$15++) {
+         for (int $$16 = 0; $$16 < $$9; $$16++) {
+            eec $$17 = $$1.a($$15, $$16);
+            int $$18 = $$11 + $$15 * $$6;
+            int $$19 = $$12 + $$16 * $$6;
+            $$0.a($$18, $$19, $$18 + $$4, $$19 + $$4, axy.f(s.getInt($$17)));
          }
-      } else {
-         $$13 = null;
-      }
-
-      this.a($$0, $$11, $$13, $$7, $$8, $$9, $$12);
-   }
-
-   private void a(fsm $$0, @Nullable eyt $$1, @Nullable eyv $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
-      int $$7 = this.C;
-      int $$8 = this.D;
-      if ($$4 && !$$6) {
-         $$0.a(grc::H, H, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
-      } else if ($$3) {
-         $$0.a(grc::H, I, $$7 + 67 + 16, $$8 + 13, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(grc::H, I, $$7 + 67, $$8 + 13 + 16, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
-         $$0.c().b();
-      } else if ($$5) {
-         $$0.a(grc::H, J, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(grc::H, K, $$7 + 118, $$8 + 60, 10, 14);
-         $$0.c().b();
-      } else {
-         $$0.a(grc::H, J, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
-      }
-   }
-
-   private void a(fsm $$0, @Nullable eyt $$1, @Nullable eyv $$2, int $$3, int $$4, float $$5) {
-      if ($$1 != null && $$2 != null) {
-         $$0.c().a();
-         $$0.c().a((float)$$3, (float)$$4, 1.0F);
-         $$0.c().b($$5, $$5, 1.0F);
-         gqp $$6 = this.m.at();
-         $$6.a($$1, $$2, this.M);
-         $$0.a($$2x -> $$6.a(this.M, $$0.c(), $$2x, true, 15728880));
-         $$0.c().b();
       }
    }
 }

@@ -1,57 +1,77 @@
-public class gno extends goz {
-   private final gou a;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 
-   protected gno(gkq $$0, double $$1, double $$2, double $$3, gou $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-      this.b($$4);
-      this.t = 12 + this.r.a(4);
-      this.D = 1.0F;
-      this.b(1.0F, 1.0F);
+public class gno implements AutoCloseable {
+   private final Long2ObjectOpenHashMap<gno.a> a = new Long2ObjectOpenHashMap();
+   private int b;
+   private boolean c;
+
+   public void a(iv $$0, ebe $$1, gqz $$2) {
+      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new gno.a(this.b, $$1, $$2.dt()));
    }
 
-   @Override
-   public god b() {
-      return god.b;
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
-
-   @Override
-   public void a() {
-      if (this.s++ >= this.t) {
-         this.k();
+   public boolean a(iv $$0, ebe $$1) {
+      gno.a $$2 = (gno.a)this.a.get($$0.a());
+      if ($$2 == null) {
+         return false;
       } else {
-         this.b(this.a);
+         $$2.a($$1);
+         return true;
       }
    }
 
-   public static class a implements goc<mc> {
-      private final gou a;
+   public void a(int $$0, gmb $$1) {
+      ObjectIterator<Entry<gno.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
 
-      public a(gou $$0) {
-         this.a = $$0;
-      }
-
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gno($$1, $$2, $$3, $$4, this.a);
+      while ($$2.hasNext()) {
+         Entry<gno.a> $$3 = (Entry<gno.a>)$$2.next();
+         gno.a $$4 = (gno.a)$$3.getValue();
+         if ($$4.b <= $$0) {
+            iv $$5 = iv.d($$3.getLongKey());
+            $$2.remove();
+            $$1.a($$5, $$4.c, $$4.a);
+         }
       }
    }
 
-   public static class b implements goc<mc> {
-      private final gou a;
+   public gno a() {
+      this.b++;
+      this.c = true;
+      return this;
+   }
 
-      public b(gou $$0) {
-         this.a = $$0;
+   @Override
+   public void close() {
+      this.c = false;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   static class a {
+      final ffq a;
+      int b;
+      ebe c;
+
+      a(int $$0, ebe $$1, ffq $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
       }
 
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gnz $$8 = new gno($$1, $$2, $$3, $$4, this.a);
-         $$8.d(0.15F);
-         return $$8;
+      gno.a a(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      void a(ebe $$0) {
+         this.c = $$0;
       }
    }
 }

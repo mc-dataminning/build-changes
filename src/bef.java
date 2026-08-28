@@ -1,36 +1,30 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import java.util.Objects;
 
-public class bef extends DataFix {
-   public bef(Schema $$0) {
-      super($$0, true);
+public class bef extends bjo {
+   public bef(Schema $$0, boolean $$1) {
+      super("EntityCatSplitFix", $$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biz.D);
-      Type<?> $$1 = this.getOutputSchema().getType(biz.D);
-      OpticFinder<String> $$2 = DSL.fieldFinder("id", bku.a());
-      OpticFinder<String> $$3 = $$0.findField("CustomName");
-      Type<?> $$4 = $$1.findFieldType("CustomName");
-      return this.fixTypeEverywhereTyped("EntityCustomNameToComponentFix", $$0, $$1, $$3x -> a($$3x, $$2, $$3, $$4));
-   }
+   @Override
+   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
+      if (Objects.equals("minecraft:ocelot", $$0)) {
+         int $$2 = $$1.get("CatType").asInt(0);
+         if ($$2 == 0) {
+            String $$3 = $$1.get("Owner").asString("");
+            String $$4 = $$1.get("OwnerUUID").asString("");
+            if ($$3.length() > 0 || $$4.length() > 0) {
+               $$1.set("Trusting", $$1.createBoolean(true));
+            }
+         } else if ($$2 > 0 && $$2 < 4) {
+            $$1 = $$1.set("CatType", $$1.createInt($$2));
+            $$1 = $$1.set("OwnerUUID", $$1.createString($$1.get("OwnerUUID").asString("")));
+            return Pair.of("minecraft:cat", $$1);
+         }
+      }
 
-   private static <T> Typed<?> a(Typed<?> $$0, OpticFinder<String> $$1, OpticFinder<String> $$2, Type<T> $$3) {
-      return $$0.update($$2, $$3, $$3x -> {
-         String $$4 = $$0.getOptional($$1).orElse("");
-         Dynamic<?> $$5 = a($$0.getOps(), $$3x, $$4);
-         return ag.a($$3, $$5).getValue();
-      });
-   }
-
-   private static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1, String $$2) {
-      return "minecraft:commandblock_minecart".equals($$2) ? new Dynamic($$0, $$0.createString($$1)) : bbe.a($$0, $$1);
+      return Pair.of($$0, $$1);
    }
 }

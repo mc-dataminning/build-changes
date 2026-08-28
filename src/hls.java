@@ -1,29 +1,45 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
 public class hls {
-   private static final eau<dmr, eat> a = b();
-   private static final eau<dmr, eat> b = b();
-   private static final alg c = alg.b("glow_item_frame");
-   private static final alg d = alg.b("item_frame");
-   private static final Map<alg, eau<dmr, eat>> e = Map.of(d, a, c, b);
+   private static final hmc[] a = new hmc[]{
+      a("textures/entity/player/slim/alex.png", hmc.a.a),
+      a("textures/entity/player/slim/ari.png", hmc.a.a),
+      a("textures/entity/player/slim/efe.png", hmc.a.a),
+      a("textures/entity/player/slim/kai.png", hmc.a.a),
+      a("textures/entity/player/slim/makena.png", hmc.a.a),
+      a("textures/entity/player/slim/noor.png", hmc.a.a),
+      a("textures/entity/player/slim/steve.png", hmc.a.a),
+      a("textures/entity/player/slim/sunny.png", hmc.a.a),
+      a("textures/entity/player/slim/zuri.png", hmc.a.a),
+      a("textures/entity/player/wide/alex.png", hmc.a.b),
+      a("textures/entity/player/wide/ari.png", hmc.a.b),
+      a("textures/entity/player/wide/efe.png", hmc.a.b),
+      a("textures/entity/player/wide/kai.png", hmc.a.b),
+      a("textures/entity/player/wide/makena.png", hmc.a.b),
+      a("textures/entity/player/wide/noor.png", hmc.a.b),
+      a("textures/entity/player/wide/steve.png", hmc.a.b),
+      a("textures/entity/player/wide/sunny.png", hmc.a.b),
+      a("textures/entity/player/wide/zuri.png", hmc.a.b)
+   };
 
-   private static eau<dmr, eat> b() {
-      return new eau.a<dmr, eat>(dmt.a).a(ebj.bG).a(dmr::m, eat::new);
+   public static ali a() {
+      return b().a();
    }
 
-   public static eat a(boolean $$0, boolean $$1) {
-      return ($$0 ? b : a).b().b(ebj.bG, Boolean.valueOf($$1));
+   public static hmc b() {
+      return a[6];
    }
 
-   static Function<alg, eau<dmr, eat>> a() {
-      Map<alg, eau<dmr, eat>> $$0 = new HashMap<>(e);
+   public static hmc a(UUID $$0) {
+      return a[Math.floorMod($$0.hashCode(), a.length)];
+   }
 
-      for (dmr $$1 : mg.e) {
-         $$0.put($$1.p().h().a(), $$1.l());
-      }
+   public static hmc a(GameProfile $$0) {
+      return a($$0.getId());
+   }
 
-      return $$0::get;
+   private static hmc a(String $$0, hmc.a $$1) {
+      return new hmc(ali.b($$0), null, null, null, $$1, true);
    }
 }

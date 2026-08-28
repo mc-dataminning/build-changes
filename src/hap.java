@@ -1,27 +1,16 @@
-public class hap extends haw<hcy, ggh> {
-   private static final alg a = alg.b("textures/entity/creeper/creeper_armor.png");
-   private final ggh b;
+public class hap extends gxg<csy, hdv> {
+   public static final ali a = ali.b("textures/entity/projectiles/spectral_arrow.png");
 
-   public hap(gyv<hcy, ggh> $$0, gjp $$1) {
+   public hap(gyi.a $$0) {
       super($$0);
-      this.b = new ggh($$1.a(gjs.ar));
-   }
-
-   protected boolean a(hcy $$0) {
-      return $$0.b;
    }
 
    @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected alg a() {
+   protected ali a(hdv $$0) {
       return a;
    }
 
-   protected ggh b() {
-      return this.b;
+   public hdv a() {
+      return new hdv();
    }
 }

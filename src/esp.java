@@ -1,58 +1,26 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public class esp extends esv {
-   public static final MapCodec<esp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eqr.b.fieldOf("feature").forGetter($$0x -> $$0x.b), f()).apply($$0, esp::new)
-   );
-   private final jf<eqr> b;
-   private final tz c;
+@FunctionalInterface
+public interface esp<C extends emp> {
+   Optional<eso<C>> createGenerator(esp.a<C> var1);
 
-   protected esp(jf<eqr> $$0, esx.a $$1) {
-      super($$1);
-      this.b = $$0;
-      this.c = this.b();
+   static <C extends emp> esp<C> simple(Predicate<esp.a<C>> $$0, eso<C> $$1) {
+      Optional<eso<C>> $$2 = Optional.of($$1);
+      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
    }
 
-   private tz b() {
-      tz $$0 = new tz();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", dyv.a.a.c());
-      return $$0;
+   static <C extends emp> Predicate<esp.a<C>> checkForBiomeOnTop(ehd.a $$0) {
+      return $$1 -> $$1.a($$0);
    }
 
-   @Override
-   public ka a(evq $$0, dtl $$1) {
-      return ka.i;
-   }
-
-   @Override
-   public List<evp.a> a(evq $$0, iv $$1, dtl $$2, azv $$3) {
-      return List.of(evp.a.a(new evp.d($$1, dmt.pH.m().b(dqy.b, jd.a(jb.a, jb.d)), this.c)));
-   }
-
-   @Override
-   public erf a(evq $$0, iv $$1, dtl $$2) {
-      ka $$3 = this.a($$0, $$2);
-      return new erf($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
-   }
-
-   @Override
-   public boolean a(evq $$0, dkl $$1, dki $$2, ecr $$3, iv $$4, iv $$5, dtl $$6, erf $$7, azv $$8, euz $$9, boolean $$10) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
-   }
-
-   @Override
-   public esw<?> a() {
-      return esw.c;
-   }
-
-   @Override
-   public String toString() {
-      return "Feature[" + this.b + "]";
+   public static record a<C extends emp>(edc a, dle b, ehr c, long d, djc e, C f, djz g, Predicate<jf<dla>> h, ewe i, jt j) {
+      public boolean a(ehd.a $$0) {
+         int $$1 = this.e.b();
+         int $$2 = this.e.c();
+         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
+         jf<dla> $$4 = this.a.d().getNoiseBiome(jq.a($$1), jq.a($$3), jq.a($$2), this.c.b());
+         return this.h.test($$4);
+      }
    }
 }

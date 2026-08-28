@@ -1,48 +1,32 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public interface czt {
+   int a = 256;
+   float b = 7.0F;
+   alh<czr> c = a("ponder_goat_horn");
+   alh<czr> d = a("sing_goat_horn");
+   alh<czr> e = a("seek_goat_horn");
+   alh<czr> f = a("feel_goat_horn");
+   alh<czr> g = a("admire_goat_horn");
+   alh<czr> h = a("call_goat_horn");
+   alh<czr> i = a("yearn_goat_horn");
+   alh<czr> j = a("dream_goat_horn");
 
-public record czt(jf<awm> e, wy f, float g, int h) {
-   public static final Codec<czt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awm.b.fieldOf("sound_event").forGetter(czt::b),
-               xa.a.fieldOf("description").forGetter(czt::c),
-               ayu.o.fieldOf("length_in_seconds").forGetter(czt::d),
-               ayu.a(0, 15).fieldOf("comparator_output").forGetter(czt::e)
-            )
-            .apply($$0, czt::new)
-   );
-   public static final yw<wj, czt> b = yw.a(awm.d, czt::b, xa.b, czt::c, yu.l, czt::d, yu.h, czt::e, czt::new);
-   public static final Codec<jf<czt>> c = ald.a(mh.aV);
-   public static final yw<wj, jf<czt>> d = yu.a(mh.aV, b);
-   private static final int i = 20;
-
-   public int a() {
-      return azm.f(this.g * 20.0F);
+   private static alh<czr> a(String $$0) {
+      return alh.a(mh.aU, ali.b($$0));
    }
 
-   public boolean a(long $$0) {
-      return $$0 >= (long)(this.a() + 20);
+   static void a(qh<czr> $$0) {
+      a($$0, c, (jf<awo>)awp.nh.get(0), 7.0F, 256.0F);
+      a($$0, d, (jf<awo>)awp.nh.get(1), 7.0F, 256.0F);
+      a($$0, e, (jf<awo>)awp.nh.get(2), 7.0F, 256.0F);
+      a($$0, f, (jf<awo>)awp.nh.get(3), 7.0F, 256.0F);
+      a($$0, g, (jf<awo>)awp.nh.get(4), 7.0F, 256.0F);
+      a($$0, h, (jf<awo>)awp.nh.get(5), 7.0F, 256.0F);
+      a($$0, i, (jf<awo>)awp.nh.get(6), 7.0F, 256.0F);
+      a($$0, j, (jf<awo>)awp.nh.get(7), 7.0F, 256.0F);
    }
 
-   public static Optional<jf<czt>> a(jh.a $$0, czn $$1) {
-      czs $$2 = $$1.a(kk.ae);
-      return $$2 != null ? $$2.a().a($$0) : Optional.empty();
-   }
-
-   public jf<awm> b() {
-      return this.e;
-   }
-
-   public wy c() {
-      return this.f;
-   }
-
-   public float d() {
-      return this.g;
-   }
-
-   public int e() {
-      return this.h;
+   static void a(qh<czr> $$0, alh<czr> $$1, jf<awo> $$2, float $$3, float $$4) {
+      xo $$5 = xa.c(ag.a("instrument", $$1.a()));
+      $$0.a($$1, new czr($$2, $$3, $$4, $$5));
    }
 }

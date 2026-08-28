@@ -1,72 +1,33 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class esi extends esk {
-   public static final MapCodec<esi> a = RecordCodecBuilder.mapCodec(
-         $$0 -> a($$0)
-               .and(
-                  $$0.group(
-                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(esi::a),
-                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(esi::b),
-                     esj.c.optionalFieldOf("spread_type", esj.a).forGetter(esi::c)
-                  )
-               )
-               .apply($$0, esi::new)
-      )
-      .validate(esi::a);
-   private final int c;
-   private final int d;
-   private final esj e;
+public record esi(esi.a b, btb<dlm.c> c) {
+   public static final Codec<esi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(esi.a.c.fieldOf("bounding_box").forGetter(esi::a), btb.a(dlm.c.a).fieldOf("spawns").forGetter(esi::b)).apply($$0, esi::new)
+   );
 
-   private static DataResult<esi> a(esi $$0) {
-      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   public esi.a a() {
+      return this.b;
    }
 
-   public esi(ka $$0, esk.c $$1, float $$2, int $$3, Optional<esk.a> $$4, int $$5, int $$6, esj $$7) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
-   }
-
-   public esi(int $$0, int $$1, esj $$2, int $$3) {
-      this(ka.i, esk.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
-   }
-
-   public int a() {
+   public btb<dlm.c> b() {
       return this.c;
    }
 
-   public int b() {
-      return this.d;
-   }
+   public static enum a implements bam {
+      a("piece"),
+      b("full");
 
-   public esj c() {
-      return this.e;
-   }
+      public static final Codec<esi.a> c = bam.a(esi.a::values);
+      private final String d;
 
-   public dir a(long $$0, int $$1, int $$2) {
-      int $$3 = Math.floorDiv($$1, this.c);
-      int $$4 = Math.floorDiv($$2, this.c);
-      ehr $$5 = new ehr(new egt(0L));
-      $$5.a($$0, $$3, $$4, this.i());
-      int $$6 = this.c - this.d;
-      int $$7 = this.e.a($$5, $$6);
-      int $$8 = this.e.a($$5, $$6);
-      return new dir($$3 * this.c + $$7, $$4 * this.c + $$8);
-   }
+      private a(final String $$0) {
+         this.d = $$0;
+      }
 
-   @Override
-   protected boolean a(ecs $$0, int $$1, int $$2) {
-      dir $$3 = this.a($$0.d(), $$1, $$2);
-      return $$3.h == $$1 && $$3.i == $$2;
-   }
-
-   @Override
-   public esl<?> e() {
-      return esl.a;
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

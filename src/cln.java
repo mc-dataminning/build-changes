@@ -1,49 +1,47 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 
-public class cln extends clh {
-   public cln(bwr<? extends cln> $$0, djm $$1) {
-      super($$0, $$1);
+public class cln {
+   private static final float a = 2.0F;
+   private static final float b = 0.5F;
+   private static final float c = 1.25F;
+
+   protected static byu<?> a(byu<clm> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(ctr.a));
+      $$0.b(ctr.b);
+      $$0.f();
+      return $$0;
    }
 
-   @Override
-   protected awm u() {
-      return awn.qj;
+   private static void b(byu<clm> $$0) {
+      $$0.a(ctr.a, 0, ImmutableList.of(new bzg(2.0F), new car(45, 90), new cav(), new bzr(cgw.Q)));
    }
 
-   @Override
-   protected awm gT() {
-      return awn.qk;
+   private static void c(byu<clm> $$0) {
+      $$0.a(
+         ctr.b,
+         ImmutableList.of(
+            Pair.of(0, cbl.a(bxc.bT, 6.0F, buc.a(30, 60))),
+            Pair.of(1, new bzy($$0x -> 1.25F)),
+            Pair.of(
+               2,
+               new bzz(
+                  ImmutableMap.of(cgw.n, cgx.b),
+                  ImmutableSet.of(),
+                  bzz.a.a,
+                  bzz.b.b,
+                  ImmutableList.of(Pair.of(cbd.c(0.5F), 2), Pair.of(cbs.a(0.5F, 3), 3), Pair.of(ccy.a(bwt::bi), 5))
+               )
+            )
+         )
+      );
    }
 
-   @Override
-   protected awm l_() {
-      return awn.qm;
-   }
-
-   @Nullable
-   @Override
-   protected awm gv() {
-      return awn.qn;
-   }
-
-   @Override
-   protected awm e(bux $$0) {
-      return awn.qo;
-   }
-
-   @Override
-   protected void ha() {
-      this.a(awn.qp, 0.4F, 1.0F);
-   }
-
-   @Override
-   protected void x() {
-      this.a(awn.ql, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
-   }
-
-   @Nullable
-   @Override
-   public bvy a(arq $$0, bvy $$1) {
-      return bwr.aF.a($$0, bwq.e);
+   public static void a(clm $$0) {
+      $$0.ec().a(ImmutableList.of(ctr.b));
    }
 }

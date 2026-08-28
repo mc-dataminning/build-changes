@@ -1,35 +1,54 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.Map;
 
-public class den {
-   public static final alf<? extends js<den>> a = alf.a(alg.b("recipe_property_set"));
-   public static final alf<den> b = a("smithing_base");
-   public static final alf<den> c = a("smithing_template");
-   public static final alf<den> d = a("smithing_addition");
-   public static final alf<den> e = a("furnace_input");
-   public static final alf<den> f = a("blast_furnace_input");
-   public static final alf<den> g = a("smoker_input");
-   public static final alf<den> h = a("campfire_input");
-   public static final yw<wj, den> i = czj.f.a(yu.a()).a($$0 -> new den(Set.copyOf($$0)), $$0 -> List.copyOf($$0.k));
-   public static final den j = new den(Set.of());
-   private final Set<jf<czj>> k;
-
-   private den(Set<jf<czj>> $$0) {
-      this.k = $$0;
+public class den extends dfd {
+   public den(dec $$0) {
+      super("", $$0, dfe.a(Map.of('#', del.a(dac.rE), 'x', del.a(dac.tc)), "###", "#x#", "###"), new czy(dac.vt));
    }
 
-   private static alf<den> a(String $$0) {
-      return alf.a(a, alg.b($$0));
+   @Override
+   public boolean a(ded $$0, djx $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         czy $$2 = c($$0);
+         if ($$2.f()) {
+            return false;
+         } else {
+            ezj $$3 = dal.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.d() ? false : $$3.g < 4;
+            }
+         }
+      }
    }
 
-   public boolean a(czn $$0) {
-      return this.k.contains($$0.i());
+   @Override
+   public czy a(ded $$0, jh.a $$1) {
+      czy $$2 = c($$0).c(1);
+      $$2.b(kk.O, dcv.b);
+      return $$2;
    }
 
-   static den a(Collection<dea> $$0) {
-      Set<jf<czj>> $$1 = $$0.stream().flatMap(dea::a).collect(Collectors.toUnmodifiableSet());
-      return new den($$1);
+   private static czy c(ded $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         czy $$2 = $$0.a($$1);
+         if ($$2.c(kk.M)) {
+            return $$2;
+         }
+      }
+
+      return czy.k;
+   }
+
+   @Override
+   public boolean aq_() {
+      return true;
+   }
+
+   @Override
+   public dez<den> a() {
+      return dez.f;
    }
 }

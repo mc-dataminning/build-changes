@@ -75,7 +75,7 @@ public class oy implements mn {
          Path var7;
          try (
             InputStream $$4 = Files.newInputStream($$1);
-            InputStream $$5 = new ayv($$4);
+            InputStream $$5 = new ayx($$4);
          ) {
             Path $$6 = $$3.resolve($$2 + ".snbt");
             a($$0, $$6, uo.a(um.a($$5, ui.a())));

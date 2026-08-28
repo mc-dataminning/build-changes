@@ -1,27 +1,16 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.PrimitiveCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hia(int c) implements hig<String> {
-   public static final PrimitiveCodec<String> a = Codec.STRING;
-   public static final hig.a<hia, String> b = hig.a.a(
-      RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.l.optionalFieldOf("index", 0).forGetter(hia::c)).apply($$0, hia::new)), a
-   );
+public record hia() implements hid {
+   public static final MapCodec<hia> a = MapCodec.unit(new hia());
 
-   @Nullable
-   public String a(czn $$0, @Nullable gkq $$1, @Nullable bxj $$2, int $$3, czl $$4) {
-      dbw $$5 = $$0.a(kk.p);
-      return $$5 != null ? $$5.c(this.c) : null;
+   @Override
+   public boolean get(czy $$0, @Nullable gmb $$1, @Nullable bxu $$2, int $$3, czw $$4) {
+      return cyn.g($$0);
    }
 
    @Override
-   public hig.a<hia, String> a() {
-      return b;
-   }
-
-   @Override
-   public Codec<String> b() {
+   public MapCodec<hia> a() {
       return a;
    }
 }

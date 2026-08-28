@@ -1,97 +1,73 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.jtracy.TracyClient;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import java.util.Comparator;
 import javax.annotation.Nullable;
 
-public class fhi implements AutoCloseable {
-   private static final int a = 320;
-   private static final int b = 180;
-   private static final int c = 4;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private final fij h = new fik("Tracy Frame Capture", 320, 180, false);
-   private final fhs i = new fhs(fhq.c, fhr.f, 0);
-   @Nullable
-   private fht j;
-   private int k;
-   private boolean l;
-
-   private void a(int $$0, int $$1) {
-      float $$2 = (float)$$0 / (float)$$1;
-      if ($$0 > 320) {
-         $$0 = 320;
-         $$1 = (int)(320.0F / $$2);
+public record fhi<T>(T d, iv e, long f, fhm g, long h) {
+   public static final Comparator<fhi<?>> a = ($$0, $$1) -> {
+      int $$2 = Long.compare($$0.f, $$1.f);
+      if ($$2 != 0) {
+         return $$2;
+      } else {
+         $$2 = $$0.g.compareTo($$1.g);
+         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+      }
+   };
+   public static final Comparator<fhi<?>> b = ($$0, $$1) -> {
+      int $$2 = $$0.g.compareTo($$1.g);
+      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+   };
+   public static final Strategy<fhi<?>> c = new Strategy<fhi<?>>() {
+      public int a(fhi<?> $$0) {
+         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
       }
 
-      if ($$1 > 180) {
-         $$0 = (int)(180.0F * $$2);
-         $$1 = 180;
-      }
-
-      $$0 = $$0 / 4 * 4;
-      $$1 = $$1 / 4 * 4;
-      if (this.f != $$0 || this.g != $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         this.h.a($$0, $$1);
-         this.i.a($$0 * $$1 * 4);
-         if (this.j != null) {
-            this.j.close();
-            this.j = null;
+      public boolean a(@Nullable fhi<?> $$0, @Nullable fhi<?> $$1) {
+         if ($$0 == $$1) {
+            return true;
+         } else {
+            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
          }
       }
+   };
+
+   public fhi(T $$0, iv $$1, long $$2, long $$3) {
+      this($$0, $$1, $$2, fhm.d, $$3);
    }
 
-   public void a(fij $$0) {
-      if (this.j == null && !this.l) {
-         this.l = true;
-         if ($$0.c != this.d || $$0.d != this.e) {
-            this.d = $$0.c;
-            this.e = $$0.d;
-            this.a(this.d, this.e);
-         }
-
-         GlStateManager._glBindFramebuffer(36009, this.h.i);
-         GlStateManager._glBindFramebuffer(36008, $$0.i);
-         GlStateManager._glBlitFrameBuffer(0, 0, $$0.c, $$0.d, 0, 0, this.f, this.g, 16384, 9729);
-         GlStateManager._glBindFramebuffer(36008, 0);
-         GlStateManager._glBindFramebuffer(36009, 0);
-         this.i.b();
-         GlStateManager._glBindFramebuffer(36008, this.h.i);
-         GlStateManager._readPixels(0, 0, this.f, this.g, 6408, 5121, 0L);
-         GlStateManager._glBindFramebuffer(36008, 0);
-         this.j = new fht();
-         this.k = 0;
-      }
+   public fhi(T d, iv e, long f, fhm g, long h) {
+      e = e.j();
+      this.d = d;
+      this.e = e;
+      this.f = f;
+      this.g = g;
+      this.h = h;
    }
 
-   public void a() {
-      if (this.j != null) {
-         if (this.j.a(0L)) {
-            this.j = null;
-
-            try (fhs.a $$0 = this.i.a()) {
-               TracyClient.frameImage($$0.a(), this.f, this.g, this.k, true);
-            }
-         }
-      }
+   public static <T> fhi<T> a(T $$0, iv $$1) {
+      return new fhi<>($$0, $$1, 0L, fhm.d, 0L);
    }
 
-   public void b() {
-      this.k++;
-      this.l = false;
-      TracyClient.markFrame();
+   public fhh<T> a(long $$0) {
+      return new fhh<>(this.d, this.e, (int)(this.f - $$0), this.g);
    }
 
-   @Override
-   public void close() {
-      if (this.j != null) {
-         this.j.close();
-         this.j = null;
-      }
+   public T a() {
+      return this.d;
+   }
 
-      this.i.close();
-      this.h.a();
+   public iv b() {
+      return this.e;
+   }
+
+   public long c() {
+      return this.f;
+   }
+
+   public fhm d() {
+      return this.g;
+   }
+
+   public long e() {
+      return this.h;
    }
 }

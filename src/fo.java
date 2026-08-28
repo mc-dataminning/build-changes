@@ -13,11 +13,11 @@ import org.apache.commons.io.FilenameUtils;
 
 public class fo<T> implements ArgumentType<Collection<jf.c<T>>> {
    private static final Collection<String> b = List.of("minecraft:*", "*:asset", "*");
-   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("argument.resource_selector.not_found", $$0, $$1));
-   final alf<? extends js<T>> c;
+   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xa.b("argument.resource_selector.not_found", $$0, $$1));
+   final alh<? extends js<T>> c;
    private final jh<T> d;
 
-   fo(ef $$0, alf<? extends js<T>> $$1) {
+   fo(ef $$0, alh<? extends js<T>> $$1) {
       this.c = $$1;
       this.d = $$0.e($$1);
    }
@@ -48,27 +48,27 @@ public class fo<T> implements ArgumentType<Collection<jf.c<T>>> {
    }
 
    private static boolean a(char $$0) {
-      return alg.a($$0) || $$0 == '*' || $$0 == '?';
+      return ali.a($$0) || $$0 == '*' || $$0 == '?';
    }
 
    private static String a(String $$0) {
       return !$$0.contains(":") ? "minecraft:" + $$0 : $$0;
    }
 
-   private static boolean a(String $$0, alg $$1) {
+   private static boolean a(String $$0, ali $$1) {
       return FilenameUtils.wildcardMatch($$1.toString(), $$0);
    }
 
-   public static <T> fo<T> a(ef $$0, alf<? extends js<T>> $$1) {
+   public static <T> fo<T> a(ef $$0, alh<? extends js<T>> $$1) {
       return new fo<>($$0, $$1);
    }
 
-   public static <T> Collection<jf.c<T>> a(CommandContext<ej> $$0, String $$1, alf<? extends js<T>> $$2) {
+   public static <T> Collection<jf.c<T>> a(CommandContext<ej> $$0, String $$1, alh<? extends js<T>> $$2) {
       return (Collection<jf.c<T>>)$$0.getArgument($$1, Collection.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof eo $$2 ? $$2.a(this.c, eo.a.b, $$1, $$0) : eo.b(this.d.c_().map(alf::a).map(alg::toString), $$1);
+      return $$0.getSource() instanceof eo $$2 ? $$2.a(this.c, eo.a.b, $$1, $$0) : eo.b(this.d.c_().map(alh::a).map(ali::toString), $$1);
    }
 
    public Collection<String> getExamples() {
@@ -76,11 +76,11 @@ public class fo<T> implements ArgumentType<Collection<jf.c<T>>> {
    }
 
    public static class a<T> implements ig<fo<T>, fo.a<T>.a> {
-      public void a(fo.a<T>.a $$0, vu $$1) {
+      public void a(fo.a<T>.a $$0, vw $$1) {
          $$1.b($$0.b);
       }
 
-      public fo.a<T>.a a(vu $$0) {
+      public fo.a<T>.a a(vw $$0) {
          return new fo.a.a($$0.r());
       }
 
@@ -93,9 +93,9 @@ public class fo<T> implements ArgumentType<Collection<jf.c<T>>> {
       }
 
       public final class a implements ig.a<fo<T>> {
-         final alf<? extends js<T>> b;
+         final alh<? extends js<T>> b;
 
-         a(final alf<? extends js<T>> $$1) {
+         a(final alh<? extends js<T>> $$1) {
             this.b = $$1;
          }
 

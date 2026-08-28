@@ -20,11 +20,11 @@ public record ce(Optional<Boolean> d) implements bz {
    }
 
    @Override
-   public boolean a(bwi $$0, arq $$1, @Nullable ffc $$2) {
+   public boolean a(bwt $$0, ars $$1, @Nullable ffq $$2) {
       if (this.d.isEmpty()) {
          return true;
       } else {
-         return $$0 instanceof csd $$3 ? this.d.get() == $$3.f() : false;
+         return $$0 instanceof cso $$3 ? this.d.get() == $$3.f() : false;
       }
    }
 

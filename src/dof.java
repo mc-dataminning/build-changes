@@ -1,65 +1,51 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class dof extends dmd implements duc {
-   public static final MapCodec<dof> a = b(dof::new);
-   public static final ebk b = ebj.I;
-   private static final ffw c = dmr.a(6.0);
+public interface dof<T extends Enum<T>> {
+   int v_ = 4;
 
-   @Override
-   public MapCodec<dof> a() {
-      return a;
+   Optional<ebe> k_(ebe var1);
+
+   float av_();
+
+   default void a_(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      float $$4 = 0.05688889F;
+      if ($$3.i() < 0.05688889F) {
+         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
+      }
    }
 
-   public dof(eas.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(true)));
-   }
+   T c();
 
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(b);
-   }
+   default Optional<ebe> c(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      int $$4 = this.c().ordinal();
+      int $$5 = 0;
+      int $$6 = 0;
 
-   @Override
-   public dxr a(iv $$0, eat $$1) {
-      return new dye($$0, $$1);
-   }
+      for (iv $$7 : iv.a($$2, 4, 4, 4)) {
+         int $$8 = $$7.k($$2);
+         if ($$8 > 4) {
+            break;
+         }
 
-   @Nullable
-   @Override
-   public <T extends dxr> dxs<T> a(djm $$0, eat $$1, dxt<T> $$2) {
-      return a($$2, dxt.A, $$0.C ? dye::a : dye::b);
-   }
+         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof dof<?> $$9) {
+            Enum<?> $$10 = $$9.c();
+            if (this.c().getClass() == $$10.getClass()) {
+               int $$11 = $$10.ordinal();
+               if ($$11 < $$4) {
+                  return Optional.empty();
+               }
 
-   @Override
-   protected exa b_(eat $$0) {
-      return $$0.c(b) ? exb.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, exb.c, exb.c.a($$1));
+               if ($$11 > $$4) {
+                  $$6++;
+               } else {
+                  $$5++;
+               }
+            }
+         }
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return c;
-   }
-
-   @Nullable
-   @Override
-   public eat a(ddg $$0) {
-      exa $$1 = $$0.q().b_($$0.a());
-      return this.m().b(b, Boolean.valueOf($$1.a(axh.a) && $$1.e() == 8));
-   }
-
-   @Override
-   protected boolean a(eat $$0, exp $$1) {
-      return false;
+      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
+      float $$13 = $$12 * $$12 * this.av_();
+      return $$3.i() < $$13 ? this.k_($$0) : Optional.empty();
    }
 }

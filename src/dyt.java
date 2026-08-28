@@ -1,15 +1,5 @@
-public interface dyt extends btz {
-   fex y_ = dmr.b(16.0, 11.0, 32.0).e().get(0);
-
-   default fex ai_() {
-      return y_;
+public class dyt extends dyc {
+   public dyt(iv $$0, ebe $$1) {
+      super(dye.r, $$0, $$1);
    }
-
-   double B();
-
-   double C();
-
-   double D();
-
-   boolean E();
 }

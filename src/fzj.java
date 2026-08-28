@@ -1,111 +1,79 @@
-public abstract class fzj<T extends cwu> extends fzh<T> implements gcw {
-   private final gcr<?> G;
-   private boolean H;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public fzj(T $$0, gcr<?> $$1, crl $$2, wy $$3) {
-      super($$0, $$2, $$3);
-      this.G = $$1;
-   }
+public class fzj extends gad {
+   private static final xa a = xa.c("addServer.enterIp");
+   private ful b;
+   private final gmq c;
+   private fuu d;
+   private final BooleanConsumer s;
+   private final gad u;
 
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.H = this.n < 379;
-      this.G.a(this.n, this.o, this.m, this.H);
-      this.C = this.G.a(this.n, this.s);
-      this.M();
-   }
-
-   protected abstract fxg G();
-
-   private void M() {
-      fxg $$0 = this.G();
-      this.c(new ftm($$0.a(), $$0.b(), 20, 18, gcr.a, $$0x -> {
-         this.G.c();
-         this.C = this.G.a(this.n, this.s);
-         fxg $$1 = this.G();
-         $$0x.c($$1.a(), $$1.b());
-         this.H();
-      }));
-      this.d(this.G);
-   }
-
-   protected void H() {
-   }
-
-   @Override
-   public void a(fsm $$0, int $$1, int $$2, float $$3) {
-      if (this.G.d() && this.H) {
-         this.b($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
-
-      this.G.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-      this.G.a($$0, $$1, $$2, this.B);
-   }
-
-   @Override
-   protected void c(fsm $$0) {
-      super.c($$0);
-      this.G.a($$0, this.I());
-   }
-
-   protected boolean I() {
-      return true;
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.G.a($$0, $$1) ? true : super.a($$0, $$1);
+   public fzj(gad $$0, BooleanConsumer $$1, gmq $$2) {
+      super(xa.c("selectServer.direct"));
+      this.u = $$0;
+      this.c = $$2;
+      this.s = $$1;
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      return this.G.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.G.a($$0, $$1, $$2)) {
-         this.a(this.G);
-         return true;
+      if (!this.b.j || this.aM_() != this.d || $$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
       } else {
-         return this.H && this.G.d() ? true : super.a($$0, $$1, $$2);
+         this.m();
+         return true;
       }
    }
 
    @Override
-   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
-      return (!this.H || !this.G.d()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void aS_() {
+      this.d = new fuu(this.p, this.n / 2 - 100, 116, 200, 20, xa.c("addServer.enterIp"));
+      this.d.f(128);
+      this.d.a(this.m.n.Y);
+      this.d.b($$0 -> this.E());
+      this.d(this.d);
+      this.b = this.c(ful.a(xa.c("selectServer.select"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 12, 200, 20).a());
+      this.c(ful.a(wz.e, $$0 -> this.s.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
+      this.E();
    }
 
    @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.s) || $$1 >= (double)($$3 + this.u);
-      return this.G.a($$0, $$1, this.C, this.D, this.s, this.u, $$4) && $$5;
+   protected void aG_() {
+      this.b(this.d);
    }
 
    @Override
-   protected void a(cxc $$0, int $$1, int $$2, cvq $$3) {
+   public void a(frd $$0, int $$1, int $$2) {
+      String $$3 = this.d.a();
+      this.b($$0, $$1, $$2);
+      this.d.a($$3);
+   }
+
+   private void m() {
+      this.c.b = this.d.a();
+      this.s.accept(true);
+   }
+
+   @Override
+   public void aP_() {
+      this.m.a(this.u);
+   }
+
+   @Override
+   public void aJ_() {
+      this.m.n.Y = this.d.a();
+      this.m.n.az();
+   }
+
+   private void E() {
+      this.b.j = gnt.b(this.d.a());
+   }
+
+   @Override
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.G.b($$0);
-   }
-
-   @Override
-   public void E() {
-      super.E();
-      this.G.e();
-   }
-
-   @Override
-   public void L() {
-      this.G.g();
-   }
-
-   @Override
-   public void a(dfk $$0) {
-      this.G.a($$0);
+      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
+      $$0.b(this.p, a, this.n / 2 - 100 + 1, 100, 10526880);
+      this.d.a($$0, $$1, $$2, $$3);
    }
 }

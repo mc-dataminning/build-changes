@@ -1,79 +1,92 @@
-import org.joml.Matrix4f;
+import java.util.Optional;
+import org.joml.Quaternionf;
 
-public class gqp {
-   private static final float a = -0.01F;
-   private static final float b = -0.001F;
-   private static final int c = 128;
-   private static final int d = 128;
-   private final hkp e;
-   private final hko f;
+public class gqp extends gqk {
+   private final egi a;
+   private float b;
+   private float F;
+   private float G;
+   private float H;
 
-   public gqp(hko $$0, hkp $$1) {
-      this.f = $$0;
-      this.e = $$1;
+   gqp(gmb $$0, double $$1, double $$2, double $$3, egi $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.3F;
+      this.a = $$4;
+      this.t = $$5;
+      Optional<ffq> $$6 = $$4.a($$0);
+      if ($$6.isPresent()) {
+         ffq $$7 = $$6.get();
+         double $$8 = $$1 - $$7.a();
+         double $$9 = $$2 - $$7.b();
+         double $$10 = $$3 - $$7.c();
+         this.F = this.b = (float)azo.d($$8, $$10);
+         this.H = this.G = (float)azo.d($$9, Math.sqrt($$8 * $$8 + $$10 * $$10));
+      }
    }
 
-   public void a(hiz $$0, fkd $$1, gqr $$2, boolean $$3, int $$4) {
-      Matrix4f $$5 = $$1.c().a();
-      fkh $$6 = $$2.getBuffer(grc.u($$0.a));
-      $$6.a($$5, 0.0F, 128.0F, -0.01F).a(-1).a(0.0F, 1.0F).c($$4);
-      $$6.a($$5, 128.0F, 128.0F, -0.01F).a(-1).a(1.0F, 1.0F).c($$4);
-      $$6.a($$5, 128.0F, 0.0F, -0.01F).a(-1).a(1.0F, 0.0F).c($$4);
-      $$6.a($$5, 0.0F, 0.0F, -0.01F).a(-1).a(0.0F, 0.0F).c($$4);
-      int $$7 = 0;
+   @Override
+   public void a(flr $$0, fql $$1, float $$2) {
+      float $$3 = azo.a(((float)this.s + $$2 - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
+      float $$4 = azo.h($$2, this.F, this.b);
+      float $$5 = azo.h($$2, this.H, this.G) + (float) (Math.PI / 2);
+      Quaternionf $$6 = new Quaternionf();
+      $$6.rotationY($$4).rotateX(-$$5).rotateY($$3);
+      this.a($$0, $$1, $$6, $$2);
+      $$6.rotationY((float) -Math.PI + $$4).rotateX($$5).rotateY($$3);
+      this.a($$0, $$1, $$6, $$2);
+   }
 
-      for (hiz.a $$8 : $$0.b) {
-         if (!$$3 || $$8.e) {
-            $$1.a();
-            $$1.a((float)$$8.b / 2.0F + 64.0F, (float)$$8.c / 2.0F + 64.0F, -0.02F);
-            $$1.a(a.f.rotationDegrees((float)($$8.d * 360) / 16.0F));
-            $$1.b(4.0F, 4.0F, 3.0F);
-            $$1.a(-0.125F, 0.125F, 0.0F);
-            Matrix4f $$9 = $$1.c().a();
-            hjq $$10 = $$8.a;
-            if ($$10 != null) {
-               fkh $$11 = $$2.getBuffer(grc.u($$10.i()));
-               $$11.a($$9, -1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.g()).c($$4);
-               $$11.a($$9, 1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.g()).c($$4);
-               $$11.a($$9, 1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.h()).c($$4);
-               $$11.a($$9, -1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.h()).c($$4);
-               $$1.b();
-            }
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
 
-            if ($$8.f != null) {
-               fsk $$12 = fpt.Q().h;
-               float $$13 = (float)$$12.a($$8.f);
-               float $$14 = azm.a(25.0F / $$13, 0.0F, 6.0F / 9.0F);
-               $$1.a();
-               $$1.a((float)$$8.b / 2.0F + 64.0F - $$13 * $$14 / 2.0F, (float)$$8.c / 2.0F + 64.0F + 4.0F, -0.025F);
-               $$1.b($$14, $$14, 1.0F);
-               $$1.a(0.0F, 0.0F, -0.1F);
-               $$12.a($$8.f, 0.0F, 0.0F, -1, false, $$1.c().a(), $$2, fsk.a.a, Integer.MIN_VALUE, $$4, false);
-               $$1.b();
-            }
+   @Override
+   public gpo b() {
+      return gpo.c;
+   }
 
-            $$7++;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         Optional<ffq> $$0 = this.a.a(this.c);
+         if ($$0.isEmpty()) {
+            this.k();
+         } else {
+            int $$1 = this.t - this.s;
+            double $$2 = 1.0 / (double)$$1;
+            ffq $$3 = $$0.get();
+            this.g = azo.d($$2, this.g, $$3.a());
+            this.h = azo.d($$2, this.h, $$3.b());
+            this.i = azo.d($$2, this.i, $$3.c());
+            double $$4 = this.g - $$3.a();
+            double $$5 = this.h - $$3.b();
+            double $$6 = this.i - $$3.c();
+            this.F = this.b;
+            this.b = (float)azo.d($$4, $$6);
+            this.H = this.G;
+            this.G = (float)azo.d($$5, Math.sqrt($$4 * $$4 + $$6 * $$6));
          }
       }
    }
 
-   public void a(eyt $$0, eyv $$1, hiz $$2) {
-      $$2.a = this.e.b($$0, $$1);
-      $$2.b.clear();
+   public static class a implements gpn<me> {
+      private final gqf a;
 
-      for (eyp $$3 : $$1.e()) {
-         $$2.b.add(this.a($$3));
+      public a(gqf $$0) {
+         this.a = $$0;
       }
-   }
 
-   private hiz.a a(eyp $$0) {
-      hiz.a $$1 = new hiz.a();
-      $$1.a = this.f.a($$0);
-      $$1.b = $$0.d();
-      $$1.c = $$0.e();
-      $$1.d = $$0.f();
-      $$1.f = $$0.g().orElse(null);
-      $$1.e = $$0.b();
-      return $$1;
+      public gpk a(me $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gqp $$8 = new gqp($$1, $$2, $$3, $$4, $$0.b(), $$0.c());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
+      }
    }
 }

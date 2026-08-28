@@ -1,153 +1,79 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
+import org.joml.Matrix4f;
 
-public record gry(Vector3fc a, Vector3fc b, Map<jb, grz> c, @Nullable gsa d, boolean e, int f) {
-   private static final boolean g = false;
-   private static final float h = -16.0F;
-   private static final float i = 32.0F;
+public class gry {
+   private static final float a = -0.01F;
+   private static final float b = -0.001F;
+   private static final int c = 128;
+   private static final int d = 128;
+   private final hlz e;
+   private final hly f;
 
-   public gry(Vector3fc $$0, Vector3fc $$1, Map<jb, grz> $$2) {
-      this($$0, $$1, $$2, null, true, 0);
+   public gry(hly $$0, hlz $$1) {
+      this.f = $$0;
+      this.e = $$1;
    }
 
-   protected static class a implements JsonDeserializer<gry> {
-      private static final boolean a = true;
-      private static final int b = 0;
+   public void a(hkj $$0, flo $$1, gsa $$2, boolean $$3, int $$4) {
+      Matrix4f $$5 = $$1.c().a();
+      flr $$6 = $$2.getBuffer(gsl.u($$0.a));
+      $$6.a($$5, 0.0F, 128.0F, -0.01F).a(-1).a(0.0F, 1.0F).c($$4);
+      $$6.a($$5, 128.0F, 128.0F, -0.01F).a(-1).a(1.0F, 1.0F).c($$4);
+      $$6.a($$5, 128.0F, 0.0F, -0.01F).a(-1).a(1.0F, 0.0F).c($$4);
+      $$6.a($$5, 0.0F, 0.0F, -0.01F).a(-1).a(0.0F, 0.0F).c($$4);
+      int $$7 = 0;
 
-      public gry a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Vector3f $$4 = this.e($$3);
-         Vector3f $$5 = this.d($$3);
-         gsa $$6 = this.a($$3);
-         Map<jb, grz> $$7 = this.a($$2, $$3);
-         if ($$3.has("shade") && !azc.c($$3, "shade")) {
-            throw new JsonParseException("Expected shade to be a Boolean");
-         } else {
-            boolean $$8 = azc.a($$3, "shade", true);
-            int $$9 = 0;
-            if ($$3.has("light_emission")) {
-               boolean $$10 = azc.b($$3, "light_emission");
-               if ($$10) {
-                  $$9 = azc.o($$3, "light_emission");
-               }
-
-               if (!$$10 || $$9 < 0 || $$9 > 15) {
-                  throw new JsonParseException("Expected light_emission to be an Integer between (inclusive) 0 and 15");
-               }
+      for (hkj.a $$8 : $$0.b) {
+         if (!$$3 || $$8.e) {
+            $$1.a();
+            $$1.a((float)$$8.b / 2.0F + 64.0F, (float)$$8.c / 2.0F + 64.0F, -0.02F);
+            $$1.a(a.f.rotationDegrees((float)($$8.d * 360) / 16.0F));
+            $$1.b(4.0F, 4.0F, 3.0F);
+            $$1.a(-0.125F, 0.125F, 0.0F);
+            Matrix4f $$9 = $$1.c().a();
+            hla $$10 = $$8.a;
+            if ($$10 != null) {
+               flr $$11 = $$2.getBuffer(gsl.u($$10.i()));
+               $$11.a($$9, -1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.g()).c($$4);
+               $$11.a($$9, 1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.g()).c($$4);
+               $$11.a($$9, 1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.h()).c($$4);
+               $$11.a($$9, -1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.h()).c($$4);
+               $$1.b();
             }
 
-            return new gry($$4, $$5, $$7, $$6, $$8, $$9);
-         }
-      }
-
-      @Nullable
-      private gsa a(JsonObject $$0) {
-         gsa $$1 = null;
-         if ($$0.has("rotation")) {
-            JsonObject $$2 = azc.u($$0, "rotation");
-            Vector3f $$3 = this.a($$2, "origin");
-            $$3.mul(0.0625F);
-            jb.a $$4 = this.c($$2);
-            float $$5 = this.b($$2);
-            boolean $$6 = azc.a($$2, "rescale", false);
-            $$1 = new gsa($$3, $$4, $$5, $$6);
-         }
-
-         return $$1;
-      }
-
-      private float b(JsonObject $$0) {
-         float $$1 = azc.m($$0, "angle");
-         if ($$1 != 0.0F && azm.e($$1) != 22.5F && azm.e($$1) != 45.0F) {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
-         } else {
-            return $$1;
-         }
-      }
-
-      private jb.a c(JsonObject $$0) {
-         String $$1 = azc.i($$0, "axis");
-         jb.a $$2 = jb.a.a($$1.toLowerCase(Locale.ROOT));
-         if ($$2 == null) {
-            throw new JsonParseException("Invalid rotation axis: " + $$1);
-         } else {
-            return $$2;
-         }
-      }
-
-      private Map<jb, grz> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<jb, grz> $$2 = this.b($$0, $$1);
-         if ($$2.isEmpty()) {
-            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
-         } else {
-            return $$2;
-         }
-      }
-
-      private Map<jb, grz> b(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<jb, grz> $$2 = Maps.newEnumMap(jb.class);
-         JsonObject $$3 = azc.u($$1, "faces");
-
-         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-            jb $$5 = this.a($$4.getKey());
-            $$2.put($$5, (grz)$$0.deserialize($$4.getValue(), grz.class));
-         }
-
-         return $$2;
-      }
-
-      private jb a(String $$0) {
-         jb $$1 = jb.a($$0);
-         if ($$1 == null) {
-            throw new JsonParseException("Unknown facing: " + $$0);
-         } else {
-            return $$1;
-         }
-      }
-
-      private Vector3f d(JsonObject $$0) {
-         Vector3f $$1 = this.a($$0, "to");
-         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
-            return $$1;
-         } else {
-            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
-         }
-      }
-
-      private Vector3f e(JsonObject $$0) {
-         Vector3f $$1 = this.a($$0, "from");
-         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
-            return $$1;
-         } else {
-            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
-         }
-      }
-
-      private Vector3f a(JsonObject $$0, String $$1) {
-         JsonArray $$2 = azc.v($$0, $$1);
-         if ($$2.size() != 3) {
-            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
-         } else {
-            float[] $$3 = new float[3];
-
-            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-               $$3[$$4] = azc.e($$2.get($$4), $$1 + "[" + $$4 + "]");
+            if ($$8.f != null) {
+               ftv $$12 = frd.Q().h;
+               float $$13 = (float)$$12.a($$8.f);
+               float $$14 = azo.a(25.0F / $$13, 0.0F, 6.0F / 9.0F);
+               $$1.a();
+               $$1.a((float)$$8.b / 2.0F + 64.0F - $$13 * $$14 / 2.0F, (float)$$8.c / 2.0F + 64.0F + 4.0F, -0.025F);
+               $$1.b($$14, $$14, 1.0F);
+               $$1.a(0.0F, 0.0F, -0.1F);
+               $$12.a($$8.f, 0.0F, 0.0F, -1, false, $$1.c().a(), $$2, ftv.a.a, Integer.MIN_VALUE, $$4, false);
+               $$1.b();
             }
 
-            return new Vector3f($$3[0], $$3[1], $$3[2]);
+            $$7++;
          }
       }
+   }
+
+   public void a(ezh $$0, ezj $$1, hkj $$2) {
+      $$2.a = this.e.b($$0, $$1);
+      $$2.b.clear();
+
+      for (ezd $$3 : $$1.e()) {
+         $$2.b.add(this.a($$3));
+      }
+   }
+
+   private hkj.a a(ezd $$0) {
+      hkj.a $$1 = new hkj.a();
+      $$1.a = this.f.a($$0);
+      $$1.b = $$0.d();
+      $$1.c = $$0.e();
+      $$1.d = $$0.f();
+      $$1.f = $$0.g().orElse(null);
+      $$1.e = $$0.b();
+      return $$1;
    }
 }

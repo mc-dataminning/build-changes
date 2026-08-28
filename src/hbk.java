@@ -1,12 +1,40 @@
-public class hbk extends hay<heo, ghp> {
-   private static final grc a = grc.q(alg.b("textures/entity/phantom_eyes.png"));
+public class hbk extends gzo<cnp, hhc, gks> {
+   private static final ali a = ali.b("textures/entity/wither/wither_invulnerable.png");
+   private static final ali j = ali.b("textures/entity/wither/wither.png");
 
-   public hbk(gyv<heo, ghp> $$0) {
-      super($$0);
+   public hbk(gyi.a $$0) {
+      super($$0, new gks($$0.a(gld.dU)), 1.0F);
+      this.a(new hdk(this, $$0.f()));
    }
 
-   @Override
-   public grc a() {
-      return a;
+   protected int a(cnp $$0, iv $$1) {
+      return 15;
+   }
+
+   public ali a(hhc $$0) {
+      int $$1 = azo.d($$0.c);
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : j;
+   }
+
+   public hhc b() {
+      return new hhc();
+   }
+
+   protected void a(hhc $$0, flo $$1) {
+      float $$2 = 2.0F;
+      if ($$0.c > 0.0F) {
+         $$2 -= $$0.c / 220.0F * 0.5F;
+      }
+
+      $$1.b($$2, $$2, $$2);
+   }
+
+   public void a(cnp $$0, hhc $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      int $$3 = $$0.t();
+      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
+      System.arraycopy($$0.q(), 0, $$1.a, 0, $$1.a.length);
+      System.arraycopy($$0.n(), 0, $$1.b, 0, $$1.b.length);
+      $$1.d = $$0.x();
    }
 }

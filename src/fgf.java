@@ -1,34 +1,53 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public interface fgf {
-   int a();
+public class fgf extends AbstractDoubleList implements fgc {
+   private final DoubleList a;
+   private final DoubleList b;
+   private final boolean c;
 
-   void a(int var1);
-
-   default int b(int $$0) {
-      int $$1 = this.a() + $$0;
-      this.a($$1);
-      return $$1;
+   protected fgf(DoubleList $$0, DoubleList $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   default int b() {
-      return this.b(1);
+   @Override
+   public int size() {
+      return this.a.size() + this.b.size();
    }
 
-   default void c() {
-      this.a(0);
+   @Override
+   public boolean a(fgc.a $$0) {
+      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
    }
 
-   boolean d();
+   private boolean b(fgc.a $$0) {
+      int $$1 = this.a.size();
 
-   void e();
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, -1, $$2)) {
+            return false;
+         }
+      }
 
-   void f();
+      int $$3 = this.b.size() - 1;
 
-   @Nullable
-   wy g();
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
+            return false;
+         }
+      }
 
-   void a(@Nullable wy var1);
+      return true;
+   }
 
-   void a(@Nullable yo var1);
+   public double getDouble(int $$0) {
+      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
+   }
+
+   @Override
+   public DoubleList a() {
+      return this;
+   }
 }

@@ -1,42 +1,83 @@
-public class fxu extends fys {
-   private static final int a = 8;
-   private static final int b = 210;
-   private static final wy c = wy.c("credits_and_attribution.screen.title");
-   private static final wy d = wy.c("credits_and_attribution.button.credits");
-   private static final wy s = wy.c("credits_and_attribution.button.attribution");
-   private static final wy u = wy.c("credits_and_attribution.button.licenses");
-   private final fys v;
-   private final fwo w = new fwo(this);
+public abstract class fxu implements fya {
+   private int c;
+   private int d;
+   protected int a;
+   protected int b;
 
-   public fxu(fys $$0) {
-      super(c);
-      this.v = $$0;
+   public fxu(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
    }
 
    @Override
-   protected void aO_() {
-      this.w.a(c, this.p);
-      fws $$0 = this.w.c(fws.d()).a(8);
-      $$0.c().b();
-      $$0.a(fta.a(d, $$0x -> this.m()).a(210).a());
-      $$0.a(fta.a(s, fxp.b(this, ayh.d)).a(210).a());
-      $$0.a(fta.a(u, fxp.b(this, ayh.e)).a(210).a());
-      this.w.b(fta.a(wx.d, $$0x -> this.aL_()).a(200).a());
-      this.w.a();
-      this.w.a(this::c);
+   public void j(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.F() + ($$0 - this.F());
+         $$1.j($$2);
+      });
+      this.c = $$0;
    }
 
    @Override
-   protected void c() {
-      this.w.a();
-   }
-
-   private void m() {
-      this.m.a(new fyv(false, () -> this.m.a(this)));
+   public void k(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.G() + ($$0 - this.G());
+         $$1.k($$2);
+      });
+      this.d = $$0;
    }
 
    @Override
-   public void aL_() {
-      this.m.a(this.v);
+   public int F() {
+      return this.c;
+   }
+
+   @Override
+   public int G() {
+      return this.d;
+   }
+
+   @Override
+   public int A() {
+      return this.a;
+   }
+
+   @Override
+   public int y() {
+      return this.b;
+   }
+
+   protected abstract static class a {
+      public final fyb a;
+      public final fyc.a b;
+
+      protected a(fyb $$0, fyc $$1) {
+         this.a = $$0;
+         this.b = $$1.h();
+      }
+
+      public int a() {
+         return this.a.y() + this.b.b + this.b.d;
+      }
+
+      public int b() {
+         return this.a.A() + this.b.a + this.b.c;
+      }
+
+      public void a(int $$0, int $$1) {
+         float $$2 = (float)this.b.a;
+         float $$3 = (float)($$1 - this.a.A() - this.b.c);
+         int $$4 = (int)azo.h(this.b.e, $$2, $$3);
+         this.a.j($$4 + $$0);
+      }
+
+      public void b(int $$0, int $$1) {
+         float $$2 = (float)this.b.b;
+         float $$3 = (float)($$1 - this.a.y() - this.b.d);
+         int $$4 = Math.round(azo.h(this.b.f, $$2, $$3));
+         this.a.k($$4 + $$0);
+      }
    }
 }

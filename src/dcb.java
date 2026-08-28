@@ -1,127 +1,223 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.mojang.serialization.DataResult;
 import java.util.ArrayList;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
+import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.math.Fraction;
 
-public record dcb(dcb.a e, IntList f, IntList g, boolean h, boolean i) implements dcs {
-   public static final dcb a = new dcb(dcb.a.a, IntList.of(), IntList.of(), false, false);
-   public static final Codec<IntList> b = Codec.INT.listOf().xmap(IntArrayList::new, ArrayList::new);
-   public static final Codec<dcb> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dcb.a.g.fieldOf("shape").forGetter(dcb::a),
-               b.optionalFieldOf("colors", IntList.of()).forGetter(dcb::b),
-               b.optionalFieldOf("fade_colors", IntList.of()).forGetter(dcb::c),
-               Codec.BOOL.optionalFieldOf("has_trail", false).forGetter(dcb::d),
-               Codec.BOOL.optionalFieldOf("has_twinkle", false).forGetter(dcb::e)
-            )
-            .apply($$0, dcb::new)
-   );
-   private static final yw<ByteBuf, IntList> j = yu.g.a(yu.a()).a(IntArrayList::new, ArrayList::new);
-   public static final yw<ByteBuf, dcb> d = yw.a(dcb.a.f, dcb::a, j, dcb::b, j, dcb::c, yu.b, dcb::d, yu.b, dcb::e, dcb::new);
-   private static final wy k = wy.c("item.minecraft.firework_star.custom_color");
+public final class dcb implements cxx {
+   public static final dcb a = new dcb(List.of());
+   public static final Codec<dcb> b = czy.b.listOf().flatXmap(dcb::a, $$0 -> DataResult.success($$0.g));
+   public static final yy<wl, dcb> c = czy.i.a(yw.a()).a(dcb::new, $$0 -> $$0.g);
+   private static final Fraction e = Fraction.getFraction(1, 16);
+   private static final int f = -1;
+   public static final int d = -1;
+   final List<czy> g;
+   final Fraction h;
+   final int i;
 
-   @Override
-   public void a(czj.b $$0, Consumer<wy> $$1, dbc $$2, kf $$3) {
-      $$1.accept(this.e.a().a(o.h));
-      this.a($$1);
+   dcb(List<czy> $$0, Fraction $$1, int $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
    }
 
-   public void a(Consumer<wy> $$0) {
-      if (!this.f.isEmpty()) {
-         $$0.accept(a(wy.i().a(o.h), this.f));
-      }
-
-      if (!this.g.isEmpty()) {
-         $$0.accept(a(wy.c("item.minecraft.firework_star.fade_to").b(wx.v).a(o.h), this.g));
-      }
-
-      if (this.h) {
-         $$0.accept(wy.c("item.minecraft.firework_star.trail").a(o.h));
-      }
-
-      if (this.i) {
-         $$0.accept(wy.c("item.minecraft.firework_star.flicker").a(o.h));
+   private static DataResult<dcb> a(List<czy> $$0) {
+      try {
+         Fraction $$1 = b($$0);
+         return DataResult.success(new dcb($$0, $$1, -1));
+      } catch (ArithmeticException var2) {
+         return DataResult.error(() -> "Excessive total bundle weight");
       }
    }
 
-   private static wy a(xm $$0, IntList $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         if ($$2 > 0) {
-            $$0.f(", ");
-         }
+   public dcb(List<czy> $$0) {
+      this($$0, b($$0), -1);
+   }
 
-         $$0.b(a($$1.getInt($$2)));
+   private static Fraction b(List<czy> $$0) {
+      Fraction $$1 = Fraction.ZERO;
+
+      for (czy $$2 : $$0) {
+         $$1 = $$1.add(b($$2).multiplyBy(Fraction.getFraction($$2.M(), 1)));
       }
 
-      return $$0;
+      return $$1;
    }
 
-   private static wy a(int $$0) {
-      cyl $$1 = cyl.b($$0);
-      return (wy)($$1 == null ? k : wy.c("item.minecraft.firework_star." + $$1.b()));
+   static Fraction b(czy $$0) {
+      dcb $$1 = $$0.a(kk.Q);
+      if ($$1 != null) {
+         return e.add($$1.f());
+      } else {
+         List<dxz.c> $$2 = $$0.a(kk.ar, dbx.c).a();
+         return !$$2.isEmpty() ? Fraction.ONE : Fraction.getFraction(1, $$0.k());
+      }
    }
 
-   public dcb a(IntList $$0) {
-      return new dcb(this.e, this.f, new IntArrayList($$0), this.h, this.i);
+   public static boolean a(czy $$0) {
+      return !$$0.f() && $$0.h().d();
    }
 
-   public dcb.a a() {
-      return this.e;
+   public int a() {
+      int $$0 = this.e();
+      int $$1 = $$0 > 12 ? 11 : 12;
+      int $$2 = $$0 % 4;
+      int $$3 = $$2 == 0 ? 0 : 4 - $$2;
+      return Math.min($$0, $$1 - $$3);
    }
 
-   public IntList b() {
-      return this.f;
+   public czy a(int $$0) {
+      return this.g.get($$0);
    }
 
-   public IntList c() {
+   public Stream<czy> b() {
+      return this.g.stream().map(czy::v);
+   }
+
+   public Iterable<czy> c() {
       return this.g;
    }
 
-   public boolean d() {
+   public Iterable<czy> d() {
+      return Lists.transform(this.g, czy::v);
+   }
+
+   public int e() {
+      return this.g.size();
+   }
+
+   public Fraction f() {
       return this.h;
    }
 
-   public boolean e() {
+   public boolean g() {
+      return this.g.isEmpty();
+   }
+
+   public int h() {
       return this.i;
    }
 
-   public static enum a implements bak {
-      a(0, "small_ball"),
-      b(1, "large_ball"),
-      c(2, "star"),
-      d(3, "creeper"),
-      e(4, "burst");
+   public boolean i() {
+      return this.i != -1;
+   }
 
-      private static final IntFunction<dcb.a> h = ayc.a(dcb.a::b, values(), ayc.a.a);
-      public static final yw<ByteBuf, dcb.a> f = yu.a(h, dcb.a::b);
-      public static final Codec<dcb.a> g = bak.b(dcb.a::values);
-      private final int i;
-      private final String j;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof dcb $$1) ? false : this.h.equals($$1.h) && czy.a(this.g, $$1.g);
+      }
+   }
 
-      private a(final int $$0, final String $$1) {
-         this.i = $$0;
-         this.j = $$1;
+   @Override
+   public int hashCode() {
+      return czy.a(this.g);
+   }
+
+   @Override
+   public String toString() {
+      return "BundleContents" + this.g;
+   }
+
+   public static class a {
+      private final List<czy> a;
+      private Fraction b;
+      private int c;
+
+      public a(dcb $$0) {
+         this.a = new ArrayList<>($$0.g);
+         this.b = $$0.h;
+         this.c = $$0.i;
       }
 
-      public xm a() {
-         return wy.c("item.minecraft.firework_star.shape." + this.j);
+      public dcb.a a() {
+         this.a.clear();
+         this.b = Fraction.ZERO;
+         this.c = -1;
+         return this;
       }
 
-      public int b() {
-         return this.i;
+      private int b(czy $$0) {
+         if (!$$0.l()) {
+            return -1;
+         } else {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (czy.c(this.a.get($$1), $$0)) {
+                  return $$1;
+               }
+            }
+
+            return -1;
+         }
       }
 
-      public static dcb.a a(int $$0) {
-         return h.apply($$0);
+      private int c(czy $$0) {
+         Fraction $$1 = Fraction.ONE.subtract(this.b);
+         return Math.max($$1.divideBy(dcb.b($$0)).intValue(), 0);
       }
 
-      @Override
-      public String c() {
-         return this.j;
+      public int a(czy $$0) {
+         if (!dcb.a($$0)) {
+            return 0;
+         } else {
+            int $$1 = Math.min($$0.M(), this.c($$0));
+            if ($$1 == 0) {
+               return 0;
+            } else {
+               this.b = this.b.add(dcb.b($$0).multiplyBy(Fraction.getFraction($$1, 1)));
+               int $$2 = this.b($$0);
+               if ($$2 != -1) {
+                  czy $$3 = this.a.remove($$2);
+                  czy $$4 = $$3.c($$3.M() + $$1);
+                  $$0.h($$1);
+                  this.a.add(0, $$4);
+               } else {
+                  this.a.add(0, $$0.a($$1));
+               }
+
+               return $$1;
+            }
+         }
+      }
+
+      public int a(cxn $$0, crx $$1) {
+         czy $$2 = $$0.g();
+         int $$3 = this.c($$2);
+         return dcb.a($$2) ? this.a($$0.b($$2.M(), $$3, $$1)) : 0;
+      }
+
+      public void a(int $$0) {
+         this.c = this.c != $$0 && !this.b($$0) ? $$0 : -1;
+      }
+
+      private boolean b(int $$0) {
+         return $$0 < 0 || $$0 >= this.a.size();
+      }
+
+      @Nullable
+      public czy b() {
+         if (this.a.isEmpty()) {
+            return null;
+         } else {
+            int $$0 = this.b(this.c) ? 0 : this.c;
+            czy $$1 = this.a.remove($$0).v();
+            this.b = this.b.subtract(dcb.b($$1).multiplyBy(Fraction.getFraction($$1.M(), 1)));
+            this.a(-1);
+            return $$1;
+         }
+      }
+
+      public Fraction c() {
+         return this.b;
+      }
+
+      public dcb d() {
+         return new dcb(List.copyOf(this.a), this.b, this.c);
       }
    }
 }

@@ -1,92 +1,81 @@
-import com.mojang.authlib.minecraft.BanDetails;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URI;
-import java.time.Duration;
-import java.time.Instant;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.logging.LogUtils;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.util.freetype.FT_Vector;
+import org.lwjgl.util.freetype.FreeType;
+import org.slf4j.Logger;
 
 public class fxn {
-   private static final wy b = wy.c("gui.banned.title.temporary").a(o.r);
-   private static final wy c = wy.c("gui.banned.title.permanent").a(o.r);
-   public static final wy a = wy.c("gui.banned.name.title").a(o.r);
-   private static final wy d = wy.c("gui.banned.skin.title").a(o.r);
-   private static final wy e = wy.a("gui.banned.skin.description", wy.a(ayh.n));
+   private static final Logger b = LogUtils.getLogger();
+   public static final Object a = new Object();
+   private static long c = 0L;
 
-   public static fxp a(BooleanConsumer $$0, BanDetails $$1) {
-      return new fxp($$0, a($$1), b($$1), ayh.n, wx.m, true);
-   }
+   public static long a() {
+      synchronized (a) {
+         if (c == 0L) {
+            MemoryStack $$0 = MemoryStack.stackPush();
 
-   public static fxp a(Runnable $$0) {
-      URI $$1 = ayh.n;
-      return new fxp($$2 -> {
-         if ($$2) {
-            ag.n().a($$1);
+            try {
+               PointerBuffer $$1 = $$0.mallocPointer(1);
+               a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
+               c = $$1.get();
+            } catch (Throwable var6) {
+               if ($$0 != null) {
+                  try {
+                     $$0.close();
+                  } catch (Throwable var5) {
+                     var6.addSuppressed(var5);
+                  }
+               }
+
+               throw var6;
+            }
+
+            if ($$0 != null) {
+               $$0.close();
+            }
          }
 
-         $$0.run();
-      }, d, e, $$1, wx.m, true);
-   }
-
-   public static fxp a(String $$0, Runnable $$1) {
-      URI $$2 = ayh.n;
-      return new fxp($$2x -> {
-         if ($$2x) {
-            ag.n().a($$2);
-         }
-
-         $$1.run();
-      }, a, wy.a("gui.banned.name.description", wy.b($$0).a(o.o), wy.a(ayh.n)), $$2, wx.m, true);
-   }
-
-   private static wy a(BanDetails $$0) {
-      return f($$0) ? b : c;
-   }
-
-   private static wy b(BanDetails $$0) {
-      return wy.a("gui.banned.description", c($$0), d($$0), wy.a(ayh.n));
-   }
-
-   private static wy c(BanDetails $$0) {
-      String $$1 = $$0.reason();
-      String $$2 = $$0.reasonMessage();
-      if (StringUtils.isNumeric($$1)) {
-         int $$3 = Integer.parseInt($$1);
-         glr $$4 = glr.a($$3);
-         wy $$5;
-         if ($$4 != null) {
-            $$5 = xb.a($$4.a().f(), xv.a.a(true));
-         } else if ($$2 != null) {
-            $$5 = wy.a("gui.banned.description.reason_id_message", $$3, $$2).a(o.r);
-         } else {
-            $$5 = wy.a("gui.banned.description.reason_id", $$3).a(o.r);
-         }
-
-         return wy.a("gui.banned.description.reason", $$5);
-      } else {
-         return wy.c("gui.banned.description.unknownreason");
+         return c;
       }
    }
 
-   private static wy d(BanDetails $$0) {
-      if (f($$0)) {
-         wy $$1 = e($$0);
-         return wy.a("gui.banned.description.temporary", wy.a("gui.banned.description.temporary.duration", $$1).a(o.r));
-      } else {
-         return wy.c("gui.banned.description.permanent").a(o.r);
+   public static void a(int $$0, String $$1) {
+      if ($$0 != 0) {
+         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
       }
    }
 
-   private static wy e(BanDetails $$0) {
-      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
-      long $$2 = $$1.toHours();
-      if ($$2 > 72L) {
-         return wx.a($$1.toDays());
+   public static boolean b(int $$0, String $$1) {
+      if ($$0 != 0) {
+         b.error("FreeType error: {} ({})", a($$0), $$1);
+         return true;
       } else {
-         return $$2 < 1L ? wx.c($$1.toMinutes()) : wx.b($$1.toHours());
+         return false;
       }
    }
 
-   private static boolean f(BanDetails $$0) {
-      return $$0.expires() != null;
+   private static String a(int $$0) {
+      String $$1 = FreeType.FT_Error_String($$0);
+      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
+   }
+
+   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
+      long $$3 = (long)Math.round($$1 * 64.0F);
+      long $$4 = (long)Math.round($$2 * 64.0F);
+      return $$0.set($$3, $$4);
+   }
+
+   public static float a(FT_Vector $$0) {
+      return (float)$$0.x() / 64.0F;
+   }
+
+   public static void b() {
+      synchronized (a) {
+         if (c != 0L) {
+            FreeType.FT_Done_Library(c);
+            c = 0L;
+         }
+      }
    }
 }

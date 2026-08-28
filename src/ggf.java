@@ -1,49 +1,100 @@
-import java.util.Set;
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public class ggf extends gia<hef> {
-   public static final gkc a = new gfk(false, 10.0F, 4.0F, Set.of("head"));
-   private static final int i = 12;
+public class ggf {
+   public final ggf.d a;
+   public final fjx b;
+   public final ggf.a c;
+   public final ggf.b d;
+   public final ggf.c e;
 
-   public ggf(gjt $$0) {
-      super($$0);
+   public ggf(ggf.d $$0, fjx $$1, ggf.a $$2, ggf.b $$3, ggf.c $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public static gjz b() {
-      gkb $$0 = c();
-      return gjz.a($$0, 64, 64);
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
+
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public Path a() {
+         return this.d == null ? this.c.toPath() : hlw.a(this.c.toPath(), this.d);
+      }
    }
 
-   static gkb c() {
-      gkb $$0 = new gkb();
-      gkd $$1 = $$0.a();
-      $$1.a(
-         "head",
-         gjy.c()
-            .a(0, 0)
-            .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
-            .a(0, 32)
-            .a(-3.0F, 0.99F, -7.0F, 6.0F, 3.0F, 2.0F)
-            .a(22, 0)
-            .a("right_horn", -5.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F)
-            .a(22, 0)
-            .a("left_horn", 4.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F),
-         gjv.a(0.0F, 4.0F, -8.0F)
-      );
-      $$1.a(
-         "body",
-         gjy.c().a(18, 4).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).a(52, 0).a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
-         gjv.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      gjy $$2 = gjy.c().a().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
-      gjy $$3 = gjy.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
-      $$1.a("right_hind_leg", $$3, gjv.a(-4.0F, 12.0F, 7.0F));
-      $$1.a("left_hind_leg", $$2, gjv.a(4.0F, 12.0F, 7.0F));
-      $$1.a("right_front_leg", $$3, gjv.a(-4.0F, 12.0F, -6.0F));
-      $$1.a("left_front_leg", $$2, gjv.a(4.0F, 12.0F, -6.0F));
-      return $$0;
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
+      public final boolean f;
+      public final boolean g;
+
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
    }
 
-   public gjt d() {
-      return this.b;
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !ban.h(this.b) || !ban.h(this.c) || !ban.h(this.d);
+      }
+
+      @Nullable
+      public String b() {
+         return this.a;
+      }
+
+      @Nullable
+      public String c() {
+         return this.b;
+      }
+
+      @Nullable
+      public String d() {
+         return this.c;
+      }
+
+      @Nullable
+      public String e() {
+         return this.d;
+      }
+   }
+
+   public static class d {
+      public final frp a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
+
+      public d(frp $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
    }
 }

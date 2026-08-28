@@ -1,21 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public class emn implements emc {
+public class emn implements emp {
    public static final Codec<emn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eqr.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), eqr.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, emn::new)
+      $$0 -> $$0.group(iv.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, emn::new)
    );
-   public final jf<eqr> b;
-   public final jf<eqr> c;
+   private final Optional<iv> b;
+   private final boolean c;
 
-   public emn(jf<eqr> $$0, jf<eqr> $$1) {
+   private emn(Optional<iv> $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   @Override
-   public Stream<ejk<?, ?>> e() {
-      return Stream.concat(this.b.a().a(), this.c.a().a());
+   public static emn a(iv $$0, boolean $$1) {
+      return new emn(Optional.of($$0), $$1);
+   }
+
+   public static emn a() {
+      return new emn(Optional.empty(), false);
+   }
+
+   public Optional<iv> b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
    }
 }

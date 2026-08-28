@@ -1,67 +1,89 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public class fke implements fkh {
-   private final fkh a;
-   private final Matrix4f b;
-   private final Matrix3f c;
-   private final float d;
-   private final Vector3f e = new Vector3f();
-   private final Vector3f f = new Vector3f();
-   private float g;
-   private float h;
-   private float i;
+public final class fke {
+   private final long a;
+   private final List<fkj> b;
+   private fkj c;
+   private int d;
+   private int e;
 
-   public fke(fkh $$0, fkd.a $$1, float $$2) {
+   public fke(long $$0) {
       this.a = $$0;
-      this.b = new Matrix4f($$1.a()).invert();
-      this.c = new Matrix3f($$1.b()).invert();
-      this.d = $$2;
+      this.b = Lists.newArrayList();
+      this.a();
+   }
+
+   public void a() {
+      this.b.clear();
+      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
+
+      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
+         $$0.position($$1);
+         fkj $$2 = new fkj($$0);
+         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
+            this.b.add($$2);
+         }
+      }
+
+      int[] $$3 = new int[1];
+      int[] $$4 = new int[1];
+      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
+      this.d = $$3[0];
+      this.e = $$4[0];
+      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
+      this.c = new fkj($$5);
+   }
+
+   public fkj a(Optional<fkj> $$0) {
+      if ($$0.isPresent()) {
+         fkj $$1 = $$0.get();
+
+         for (fkj $$2 : this.b) {
+            if ($$2.equals($$1)) {
+               return $$2;
+            }
+         }
+      }
+
+      return this.b();
+   }
+
+   public int a(fkj $$0) {
+      return this.b.indexOf($$0);
+   }
+
+   public fkj b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public fkj a(int $$0) {
+      return this.b.get($$0);
+   }
+
+   public int e() {
+      return this.b.size();
+   }
+
+   public long f() {
+      return this.a;
    }
 
    @Override
-   public fkh a(float $$0, float $$1, float $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.a.a($$0, $$1, $$2);
-      return this;
-   }
-
-   @Override
-   public fkh a(int $$0, int $$1, int $$2, int $$3) {
-      this.a.a(-1);
-      return this;
-   }
-
-   @Override
-   public fkh a(float $$0, float $$1) {
-      return this;
-   }
-
-   @Override
-   public fkh a(int $$0, int $$1) {
-      this.a.a($$0, $$1);
-      return this;
-   }
-
-   @Override
-   public fkh b(int $$0, int $$1) {
-      this.a.b($$0, $$1);
-      return this;
-   }
-
-   @Override
-   public fkh b(float $$0, float $$1, float $$2) {
-      this.a.b($$0, $$1, $$2);
-      Vector3f $$3 = this.c.transform($$0, $$1, $$2, this.f);
-      jb $$4 = jb.a($$3.x(), $$3.y(), $$3.z());
-      Vector3f $$5 = this.b.transformPosition(this.g, this.h, this.i, this.e);
-      $$5.rotateY((float) Math.PI);
-      $$5.rotateX((float) (-Math.PI / 2));
-      $$5.rotate($$4.b());
-      this.a.a(-$$5.x() * this.d, -$$5.y() * this.d);
-      return this;
+   public String toString() {
+      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
    }
 }

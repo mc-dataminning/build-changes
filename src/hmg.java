@@ -1,70 +1,69 @@
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.ArrayList;
-import java.util.BitSet;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class hmg implements gsd {
-   private final List<hmg.a> a;
-   private final boolean b;
-   private final hjq c;
-   private final Map<eat, BitSet> d = new Reference2ObjectOpenHashMap();
+public class hmg extends tu {
+   private static final Logger b = LogUtils.getLogger();
+   private final Map<String, String> c;
+   private final boolean d;
 
-   private static gsd a(List<hmg.a> $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Model must have at least one selector");
-      } else {
-         return $$0.getFirst().b();
-      }
+   private hmg(Map<String, String> $$0, boolean $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public hmg(List<hmg.a> $$0) {
-      this.a = $$0;
-      gsd $$1 = a($$0);
-      this.b = $$1.a();
-      this.c = $$1.b();
-   }
+   public static hmg a(avf $$0, List<String> $$1, boolean $$2) {
+      Map<String, String> $$3 = new HashMap<>();
 
-   @Override
-   public boolean a() {
-      return this.b;
-   }
+      for (String $$4 : $$1) {
+         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
 
-   @Override
-   public hjq b() {
-      return this.c;
-   }
-
-   @Override
-   public List<grx> a(eat $$0, @Nullable jb $$1, azv $$2) {
-      BitSet $$3 = this.d.get($$0);
-      if ($$3 == null) {
-         $$3 = new BitSet();
-
-         for (int $$4 = 0; $$4 < this.a.size(); $$4++) {
-            if (this.a.get($$4).a.test($$0)) {
-               $$3.set($$4);
+         for (String $$6 : $$0.a()) {
+            try {
+               ali $$7 = ali.a($$6, $$5);
+               a($$4, $$0.a($$7), $$3);
+            } catch (Exception var10) {
+               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
             }
          }
-
-         this.d.put($$0, $$3);
       }
 
-      List<grx> $$5 = new ArrayList<>();
-      long $$6 = $$2.g();
-
-      for (int $$7 = 0; $$7 < $$3.length(); $$7++) {
-         if ($$3.get($$7)) {
-            $$2.b($$6);
-            $$5.addAll(this.a.get($$7).b.a($$0, $$1, $$2));
-         }
-      }
-
-      return $$5;
+      tt.a().a($$3);
+      return new hmg(Map.copyOf($$3), $$2);
    }
 
-   public static record a(Predicate<eat> a, gsd b) {
+   private static void a(String $$0, List<avd> $$1, Map<String, String> $$2) {
+      for (avd $$3 : $$1) {
+         try (InputStream $$4 = $$3.d()) {
+            tu.a($$4, $$2::put);
+         } catch (IOException var10) {
+            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
+         }
+      }
+   }
+
+   @Override
+   public String a(String $$0, String $$1) {
+      return this.c.getOrDefault($$0, $$1);
+   }
+
+   @Override
+   public boolean b(String $$0) {
+      return this.c.containsKey($$0);
+   }
+
+   @Override
+   public boolean b() {
+      return this.d;
+   }
+
+   @Override
+   public aza a(xf $$0) {
+      return hmh.a($$0, this.d);
    }
 }

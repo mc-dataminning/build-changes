@@ -1,43 +1,45 @@
-public class bxf {
-   private static final int a = 140;
-   private static final int b = 700;
-   private final akn c;
-   private final akj<Integer> d;
-   private boolean e;
-   private int f;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
-   public bxf(akn $$0, akj<Integer> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public record bxf(alh<fam> c, Map<bxd, Float> d) {
+   public static final Codec<Map<bxd, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(bxd.l, Codec.FLOAT))
+      .xmap($$0 -> (Map)$$0.map(bxf::a, Function.identity()), $$0 -> {
+         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
+         boolean $$2 = $$0.keySet().containsAll(bxd.j);
+         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
+      });
+   public static final Codec<bxf> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(fam.a.fieldOf("loot_table").forGetter(bxf::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(bxf::b)).apply($$0, bxf::new)
+   );
+
+   public bxf(alh<fam> $$0, float $$1) {
+      this($$0, a($$1));
    }
 
-   public void a() {
-      this.e = true;
-      this.f = 0;
+   private static Map<bxd, Float> a(float $$0) {
+      return a(List.of(bxd.values()), $$0);
    }
 
-   public boolean a(azv $$0) {
-      if (this.e) {
-         return false;
-      } else {
-         this.e = true;
-         this.f = 0;
-         this.c.a(this.d, $$0.a(841) + 140);
-         return true;
+   private static Map<bxd, Float> a(List<bxd> $$0, float $$1) {
+      Map<bxd, Float> $$2 = Maps.newHashMap();
+
+      for (bxd $$3 : $$0) {
+         $$2.put($$3, $$1);
       }
+
+      return $$2;
    }
 
-   public void b() {
-      if (this.e && this.f++ > this.d()) {
-         this.e = false;
-      }
+   public alh<fam> a() {
+      return this.c;
    }
 
-   public float c() {
-      return this.e ? 1.0F + 1.15F * azm.a((float)this.f / (float)this.d() * (float) Math.PI) : 1.0F;
-   }
-
-   private int d() {
-      return this.c.a(this.d);
+   public Map<bxd, Float> b() {
+      return this.d;
    }
 }

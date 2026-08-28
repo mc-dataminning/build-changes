@@ -1,27 +1,24 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
-public abstract class chl extends chr<bxj> {
-   protected abstract boolean a(arq var1, bxj var2, bxj var3);
-
-   protected abstract cgl<bxj> b();
-
+public class chl extends chv<cpv> {
    @Override
-   public Set<cgl<?>> a() {
-      return ImmutableSet.of(this.b());
+   public Set<cgw<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cgw.C)));
    }
 
-   @Override
-   protected void a(arq $$0, bxj $$1) {
-      $$1.eb().a(this.b(), this.c($$0, $$1));
-   }
-
-   private Optional<bxj> c(arq $$0, bxj $$1) {
-      return this.a($$1).flatMap($$2 -> $$2.a($$2x -> this.a($$0, $$1, $$2x)));
-   }
-
-   protected Optional<cgn> a(bxj $$0) {
-      return $$0.eb().c(cgl.h);
+   protected void a(ars $$0, cpv $$1) {
+      super.a($$0, $$1);
+      $$1.ec()
+         .c(cgw.g)
+         .stream()
+         .flatMap(Collection::stream)
+         .filter(bxa.e)
+         .filter($$2 -> cic.c($$0, $$1, $$2))
+         .findFirst()
+         .ifPresentOrElse($$1x -> $$1.ec().a(cgw.C, $$1x), () -> $$1.ec().b(cgw.C));
    }
 }

@@ -1,120 +1,62 @@
-public abstract class fsv extends fsy {
-   private static final alg a = alg.b("widget/slider");
-   private static final alg d = alg.b("widget/slider_highlighted");
-   private static final alg e = alg.b("widget/slider_handle");
-   private static final alg f = alg.b("widget/slider_handle_highlighted");
-   protected static final int b = 2;
-   private static final int m = 8;
-   private static final int n = 4;
-   protected double c;
-   private boolean o;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
 
-   public fsv(int $$0, int $$1, int $$2, int $$3, wy $$4, double $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
+public class fsv implements mn {
+   private final mp.a d;
+
+   public fsv(mp $$0) {
+      this.d = $$0.a(mp.b.b, "equipment");
    }
 
-   private alg c() {
-      return this.E() && this.aJ_() && !this.o ? d : a;
+   private static void a(BiConsumer<alh<dif>, hng> $$0) {
+      $$0.accept(dig.b, hng.a().a(ali.b("leather"), true).a(ali.b("leather_overlay"), false).a(hng.d.e, hng.c.a(ali.b("leather"), true)).a());
+      $$0.accept(dig.c, a("chainmail"));
+      $$0.accept(dig.d, b("iron"));
+      $$0.accept(dig.e, b("gold"));
+      $$0.accept(dig.f, b("diamond"));
+      $$0.accept(dig.g, hng.a().b(ali.b("turtle_scute"), false).a());
+      $$0.accept(dig.h, a("netherite"));
+      $$0.accept(dig.i, hng.a().a(hng.d.d, hng.c.b(ali.b("armadillo_scute"), false)).a(hng.d.d, hng.c.b(ali.b("armadillo_scute_overlay"), true)).a());
+      $$0.accept(dig.j, hng.a().a(hng.d.c, new hng.c(ali.b("elytra"), Optional.empty(), true)).a());
+      hng.c $$1 = new hng.c(ali.b("saddle"));
+      $$0.accept(
+         dig.k, hng.a().a(hng.d.g, $$1).a(hng.d.h, $$1).a(hng.d.i, $$1).a(hng.d.j, $$1).a(hng.d.k, $$1).a(hng.d.l, $$1).a(hng.d.n, $$1).a(hng.d.m, $$1).a()
+      );
+
+      for (Entry<cyw, alh<dif>> $$2 : dig.l.entrySet()) {
+         cyw $$3 = $$2.getKey();
+         alh<dif> $$4 = $$2.getValue();
+         $$0.accept($$4, hng.a().a(hng.d.f, new hng.c(ali.b($$3.c()))).a());
+      }
+
+      $$0.accept(dig.m, hng.a().a(hng.d.f, new hng.c(ali.b("trader_llama"))).a());
    }
 
-   private alg e() {
-      return !this.E() || !this.i && !this.o ? e : f;
+   private static hng a(String $$0) {
+      return hng.a().a(ali.b($$0)).a();
+   }
+
+   private static hng b(String $$0) {
+      return hng.a().a(ali.b($$0)).a(hng.d.e, hng.c.a(ali.b($$0), false)).a();
    }
 
    @Override
-   protected xm d() {
-      return wy.a("gui.narrate.slider", this.B());
-   }
-
-   @Override
-   public void a(fwx $$0) {
-      $$0.a(fww.a, this.d());
-      if (this.j) {
-         if (this.aJ_()) {
-            $$0.a(fww.d, wy.c("narration.slider.usage.focused"));
-         } else {
-            $$0.a(fww.d, wy.c("narration.slider.usage.hovered"));
+   public CompletableFuture<?> a(ml $$0) {
+      Map<alh<dif>, hng> $$1 = new HashMap<>();
+      a(($$1x, $$2) -> {
+         if ($$1.putIfAbsent($$1x, $$2) != null) {
+            throw new IllegalStateException("Tried to register equipment asset twice for id: " + $$1x);
          }
-      }
+      });
+      return mn.a($$0, hng.a, this.d::a, $$1);
    }
 
    @Override
-   public void b(fsm $$0, int $$1, int $$2, float $$3) {
-      fpt $$4 = fpt.Q();
-      $$0.a(grc::H, this.c(), this.F(), this.G(), this.A(), this.y(), axw.a(this.l));
-      $$0.a(grc::H, this.e(), this.F() + (int)(this.c * (double)(this.g - 8)), this.G(), 8, this.y(), axw.a(this.l));
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, 2, $$5 | azm.f(this.l * 255.0F) << 24);
+   public String a() {
+      return "Equipment Asset Definitions";
    }
-
-   @Override
-   public void a(double $$0, double $$1) {
-      this.a($$0);
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      if (!$$0) {
-         this.o = false;
-      } else {
-         fpq $$1 = fpt.Q().aX();
-         if ($$1 == fpq.b || $$1 == fpq.d) {
-            this.o = true;
-         }
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (fxc.a($$0)) {
-         this.o = !this.o;
-         return true;
-      } else {
-         if (this.o) {
-            boolean $$3 = $$0 == 263;
-            if ($$3 || $$0 == 262) {
-               float $$4 = $$3 ? -1.0F : 1.0F;
-               this.b(this.c + (double)($$4 / (float)(this.g - 8)));
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   private void a(double $$0) {
-      this.b(($$0 - (double)(this.F() + 4)) / (double)(this.g - 8));
-   }
-
-   private void b(double $$0) {
-      double $$1 = this.c;
-      this.c = azm.a($$0, 0.0, 1.0);
-      if ($$1 != this.c) {
-         this.a();
-      }
-
-      this.b();
-   }
-
-   @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.a($$0);
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(hou $$0) {
-   }
-
-   @Override
-   public void b(double $$0, double $$1) {
-      super.a(fpt.Q().ak());
-   }
-
-   protected abstract void b();
-
-   protected abstract void a();
 }

@@ -1,69 +1,43 @@
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
-public class cmt extends cmm {
-   @Nullable
-   private ffc b;
+public class cmt {
+   public static final int a = 64;
+   private static final int b = 63;
+   private final cmt.a[] c = new cmt.a[64];
+   private int d = -1;
 
-   public cmt(cmk $$0) {
-      super($$0);
+   public cmt() {
+      Arrays.fill(this.c, new cmt.a(0.0, 0.0F));
    }
 
-   @Override
-   public void b() {
-      ffc $$0 = this.a.J(1.0F).d();
-      $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.c.dz();
-      double $$2 = this.a.c.e(0.5);
-      double $$3 = this.a.c.dF();
-
-      for (int $$4 = 0; $$4 < 8; $$4++) {
-         azv $$5 = this.a.dX();
-         double $$6 = $$1 + $$5.k() / 2.0;
-         double $$7 = $$2 + $$5.k() / 2.0;
-         double $$8 = $$3 + $$5.k() / 2.0;
-         ffc $$9 = this.a.dx();
-         this.a.dU().a(ly.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
-         $$0.b((float) (Math.PI / 16));
-      }
+   public void a(cmt $$0) {
+      System.arraycopy($$0.c, 0, this.c, 0, 64);
+      this.d = $$0.d;
    }
 
-   @Override
-   public void a(arq $$0) {
-      if (this.b == null) {
-         this.b = ffc.c($$0.a(egs.a.f, ejx.a(this.a.j())));
+   public void a(double $$0, float $$1) {
+      cmt.a $$2 = new cmt.a($$0, $$1);
+      if (this.d < 0) {
+         Arrays.fill(this.c, $$2);
       }
 
-      if (this.b.c(this.a.dz(), this.a.dB(), this.a.dF()) < 1.0) {
-         this.a.t().b(cna.f).i();
-         this.a.t().a(cna.g);
+      if (++this.d == 64) {
+         this.d = 0;
       }
+
+      this.c[this.d] = $$2;
    }
 
-   @Override
-   public float e() {
-      return 1.5F;
+   public cmt.a a(int $$0) {
+      return this.c[this.d - $$0 & 63];
    }
 
-   @Override
-   public float g() {
-      float $$0 = (float)this.a.dx().i() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return $$1 / $$0;
+   public cmt.a a(int $$0, float $$1) {
+      cmt.a $$2 = this.a($$0);
+      cmt.a $$3 = this.a($$0 + 1);
+      return new cmt.a(azo.d((double)$$1, $$3.a, $$2.a), azo.i($$1, $$3.b, $$2.b));
    }
 
-   @Override
-   public void c() {
-      this.b = null;
-   }
-
-   @Nullable
-   @Override
-   public ffc f() {
-      return this.b;
-   }
-
-   @Override
-   public cna<cmt> h() {
-      return cna.d;
+   public static record a(double a, float b) {
    }
 }

@@ -1,31 +1,89 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public interface ddb {
-   Codec<ddb> d = mg.aw.q().dispatch(ddb::a, ddb.a::a);
-   yw<wj, ddb> e = yu.a(mh.n).b(ddb::a, ddb.a::b);
+public record ddb(List<ddb.a> c, float d, int e, boolean f) {
+   public static final Codec<ddb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ddb.a.a.listOf().fieldOf("rules").forGetter(ddb::a),
+               Codec.FLOAT.optionalFieldOf("default_mining_speed", 1.0F).forGetter(ddb::b),
+               ayw.l.optionalFieldOf("damage_per_block", 1).forGetter(ddb::c),
+               Codec.BOOL.optionalFieldOf("can_destroy_blocks_in_creative", true).forGetter(ddb::d)
+            )
+            .apply($$0, ddb::new)
+   );
+   public static final yy<wl, ddb> b = yy.a(ddb.a.b.a(yw.a()), ddb::a, yw.l, ddb::b, yw.h, ddb::c, yw.b, ddb::d, ddb::new);
 
-   ddb.a<? extends ddb> a();
-
-   boolean a(djm var1, czn var2, bxj var3);
-
-   public static record a<T extends ddb>(MapCodec<T> f, yw<wj, T> g) {
-      public static final ddb.a<dcz> a = a("apply_effects", dcz.a, dcz.b);
-      public static final ddb.a<ddd> b = a("remove_effects", ddd.a, ddd.b);
-      public static final ddb.a<dda> c = a("clear_all_effects", dda.b, dda.c);
-      public static final ddb.a<dde> d = a("teleport_randomly", dde.a, dde.b);
-      public static final ddb.a<ddc> e = a("play_sound", ddc.a, ddc.b);
-
-      private static <T extends ddb> ddb.a<T> a(String $$0, MapCodec<T> $$1, yw<wj, T> $$2) {
-         return js.a(mg.aw, $$0, new ddb.a<>($$1, $$2));
+   public float a(ebe $$0) {
+      for (ddb.a $$1 : this.c) {
+         if ($$1.d.isPresent() && $$0.a($$1.c)) {
+            return $$1.d.get();
+         }
       }
 
-      public MapCodec<T> a() {
-         return this.f;
+      return this.d;
+   }
+
+   public boolean b(ebe $$0) {
+      for (ddb.a $$1 : this.c) {
+         if ($$1.e.isPresent() && $$0.a($$1.c)) {
+            return $$1.e.get();
+         }
       }
 
-      public yw<wj, T> b() {
-         return this.g;
+      return false;
+   }
+
+   public List<ddb.a> a() {
+      return this.c;
+   }
+
+   public float b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public boolean d() {
+      return this.f;
+   }
+
+   public static record a(jj<dnc> c, Optional<Float> d, Optional<Boolean> e) {
+      public static final Codec<ddb.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ju.a(mh.i).fieldOf("blocks").forGetter(ddb.a::a),
+                  ayw.o.optionalFieldOf("speed").forGetter(ddb.a::b),
+                  Codec.BOOL.optionalFieldOf("correct_for_drops").forGetter(ddb.a::c)
+               )
+               .apply($$0, ddb.a::new)
+      );
+      public static final yy<wl, ddb.a> b = yy.a(yw.c(mh.i), ddb.a::a, yw.l.a(yw::a), ddb.a::b, yw.b.a(yw::a), ddb.a::c, ddb.a::new);
+
+      public static ddb.a a(jj<dnc> $$0, float $$1) {
+         return new ddb.a($$0, Optional.of($$1), Optional.of(true));
+      }
+
+      public static ddb.a a(jj<dnc> $$0) {
+         return new ddb.a($$0, Optional.empty(), Optional.of(false));
+      }
+
+      public static ddb.a b(jj<dnc> $$0, float $$1) {
+         return new ddb.a($$0, Optional.of($$1), Optional.empty());
+      }
+
+      public jj<dnc> a() {
+         return this.c;
+      }
+
+      public Optional<Float> b() {
+         return this.d;
+      }
+
+      public Optional<Boolean> c() {
+         return this.e;
       }
    }
 }

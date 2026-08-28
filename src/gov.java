@@ -1,54 +1,66 @@
-public class gov extends gol {
-   gov(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, gou $$8) {
-      super($$0, $$1, $$2, $$3, $$8, 0.0F);
-      this.B = 0.92F;
-      this.D = 0.5F;
-      this.e(1.0F);
-      this.a((float)axw.b($$7), (float)axw.c($$7), (float)axw.d($$7));
-      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
-      this.b($$8);
-      this.n = false;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+public class gov extends gps {
+   gov(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    @Override
-   public void a() {
-      super.a();
-      if (!this.o) {
-         this.b(this.a);
-         if (this.s > this.t / 2) {
-            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         }
-
-         if (this.c.a_(iv.a(this.g, this.h, this.i)).l()) {
-            this.k -= 0.0074F;
-         }
-      }
+   public gpo b() {
+      return gpo.b;
    }
 
-   public static class a implements goc<mc> {
-      private final gou a;
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
 
-      public a(gou $$0) {
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1 * 0.5F);
+   }
+
+   @Override
+   public int a(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = azo.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
+      }
+
+      return $$3 | $$4 << 16;
+   }
+
+   public static class a implements gpn<mc> {
+      private final gqf a;
+
+      public a(gqf $$0) {
          this.a = $$0;
       }
 
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gov($$1, $$2, $$3, $$4, $$5, $$6, $$7, axw.a(255, 204, 31, 102), this.a);
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gov $$8 = new gov($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 
-   public static class b implements goc<mc> {
-      private final gou a;
+   public static class b implements gpn<mc> {
+      private final gqf a;
 
-      public b(gou $$0) {
+      public b(gqf $$0) {
          this.a = $$0;
       }
 
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gov($$1, $$2, $$3, $$4, $$5, $$6, $$7, axw.a(255, 255, 255, 255), this.a);
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gov $$8 = new gov($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.d(0.5F);
+         return $$8;
       }
    }
 }

@@ -1,51 +1,86 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record dfh(jf<czj> c, int d, ki e) {
-   private static final Codec<dfh> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               czj.e.fieldOf("id").forGetter(dfh::b),
-               ayu.a(1, 99).optionalFieldOf("count", 1).forGetter(dfh::c),
-               ki.b.optionalFieldOf("components", ki.a).forGetter(dfh::d)
-            )
-            .apply($$0, dfh::new)
-   );
-   public static final Codec<dfh> a = Codec.withAlternative(f, czj.e, $$0 -> new dfh((czj)$$0.a())).validate(dfh::a);
-   public static final yw<wj, dfh> b = yw.a(czj.f, dfh::b, yu.h, dfh::c, ki.c, dfh::d, dfh::new);
+public abstract class dfh implements dep<dfi> {
+   private final del d;
+   private final czy e;
+   private final String f;
+   @Nullable
+   private deo g;
 
-   public dfh(czj $$0) {
-      this($$0.e(), 1, ki.a);
+   public dfh(String $$0, del $$1, czy $$2) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private static DataResult<dfh> a(dfh $$0) {
-      return czn.a(new czn($$0.c, $$0.d, $$0.e)).map($$1 -> $$0);
+   @Override
+   public abstract dez<? extends dfh> a();
+
+   @Override
+   public abstract dfa<? extends dfh> b();
+
+   public boolean a(dfi $$0, djx $$1) {
+      return this.d.a($$0.c());
    }
 
-   public czn a(czn $$0) {
-      czn $$1 = $$0.a(this.c.a(), this.d);
-      $$1.b(this.e);
-      return $$1;
+   @Override
+   public String j() {
+      return this.f;
    }
 
-   public boolean b(czn $$0) {
-      czn $$1 = this.a($$0);
-      return czn.a($$0, $$1);
-   }
-
-   public dfq a() {
-      return new dfq.f(new czn(this.c, this.d, this.e));
-   }
-
-   public jf<czj> b() {
-      return this.c;
-   }
-
-   public int c() {
+   public del k() {
       return this.d;
    }
 
-   public ki d() {
+   protected czy l() {
       return this.e;
+   }
+
+   @Override
+   public deo ap_() {
+      if (this.g == null) {
+         this.g = deo.a(this.d);
+      }
+
+      return this.g;
+   }
+
+   public czy a(dfi $$0, jh.a $$1) {
+      return this.e.v();
+   }
+
+   @FunctionalInterface
+   public interface a<T extends dfh> {
+      T create(String var1, del var2, czy var3);
+   }
+
+   public static class b<T extends dfh> implements dez<T> {
+      private final MapCodec<T> w;
+      private final yy<wl, T> x;
+
+      protected b(dfh.a<T> $$0) {
+         this.w = RecordCodecBuilder.mapCodec(
+            $$1 -> $$1.group(
+                     Codec.STRING.optionalFieldOf("group", "").forGetter(dfh::j),
+                     del.d.fieldOf("ingredient").forGetter(dfh::k),
+                     czy.d.fieldOf("result").forGetter(dfh::l)
+                  )
+                  .apply($$1, $$0::create)
+         );
+         this.x = yy.a(yw.p, dfh::j, del.a, dfh::k, czy.i, dfh::l, $$0::create);
+      }
+
+      @Override
+      public MapCodec<T> a() {
+         return this.w;
+      }
+
+      @Override
+      public yy<wl, T> b() {
+         return this.x;
+      }
    }
 }

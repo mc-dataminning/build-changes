@@ -1,60 +1,28 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
-public abstract class fcs implements fdc {
-   protected final List<fdc> c;
-   private final Predicate<ezt> a;
+public class fcs extends fbu {
+   public static final MapCodec<fcs> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(dbs.a.fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, fcs::new));
+   private final jf<dbs> b;
 
-   protected fcs(List<fdc> $$0, Predicate<ezt> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends fcs> MapCodec<T> a(Function<List<fdc>, T> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(fdc.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends fcs> Codec<T> b(Function<List<fdc>, T> $$0) {
-      return fdc.e.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(ezt $$0) {
-      return this.a.test($$0);
+   private fcs(List<fdq> $$0, jf<dbs> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public void a(ezz $$0) {
-      fdc.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
-      }
+   public fbw<fcs> b() {
+      return fbx.F;
    }
 
-   public abstract static class a implements fdc.a {
-      private final Builder<fdc> a = ImmutableList.builder();
+   @Override
+   public czy a(czy $$0, fah $$1) {
+      $$0.a(kk.R, dbu.a, this.b, dbu::b);
+      return $$0;
+   }
 
-      protected a(fdc.a... $$0) {
-         for (fdc.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
-      }
-
-      public void a(fdc.a $$0) {
-         this.a.add($$0.build());
-      }
-
-      @Override
-      public fdc build() {
-         return this.a(this.a.build());
-      }
-
-      protected abstract fdc a(List<fdc> var1);
+   public static fbu.a<?> a(jf<dbs> $$0) {
+      return a($$1 -> new fcs($$1, $$0));
    }
 }

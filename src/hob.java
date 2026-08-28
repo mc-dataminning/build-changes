@@ -1,37 +1,20 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+import java.util.UUID;
 
-public class hob extends avq {
-   @Nullable
-   private tz h;
+public interface hob {
+   void a(UUID var1, hob.b var2);
 
-   public hob(hoc $$0, jm<alp> $$1, ezk $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   void a(UUID var1, hob.a var2);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   @Override
-   protected void b(arr $$0) {
-      if (this.b().a($$0.gh())) {
-         this.h = $$0.f(new tz());
-      }
-
-      super.b($$0);
-   }
-
-   @Override
-   public wy a(SocketAddress $$0, GameProfile $$1) {
-      return (wy)(this.b().a($$1) && this.a($$1.getName()) != null ? wy.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public hoc b() {
-      return (hoc)super.c();
-   }
-
-   @Nullable
-   @Override
-   public tz r() {
-      return this.h;
+   public static enum b {
+      a,
+      b;
    }
 }

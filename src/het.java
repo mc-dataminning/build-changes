@@ -1,3 +1,3 @@
-public class het extends hef {
+public class het extends hep {
    public int a;
 }

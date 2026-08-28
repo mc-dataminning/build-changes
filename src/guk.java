@@ -1,112 +1,59 @@
-import org.joml.FrustumIntersection;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
+public class guk implements gun<dxy> {
+   private final giw a;
+   private final giw b;
 
-public class guk {
-   public static final int a = 4;
-   private final FrustumIntersection b = new FrustumIntersection();
-   private final Matrix4f c = new Matrix4f();
-   private Vector4f d;
-   private double e;
-   private double f;
-   private double g;
-
-   public guk(Matrix4f $$0, Matrix4f $$1) {
-      this.a($$0, $$1);
+   public guk(guo.a $$0) {
+      this($$0.f());
    }
 
-   public guk(guk $$0) {
-      this.b.set($$0.c);
-      this.c.set($$0.c);
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.d = $$0.d;
+   public guk(gla $$0) {
+      this.a = new giw.a($$0.a(gld.w), gsl::d);
+      this.b = new giw.a($$0.a(gld.v), gsl::d);
    }
 
-   public guk a(int $$0) {
-      double $$1 = Math.floor(this.e / (double)$$0) * (double)$$0;
-      double $$2 = Math.floor(this.f / (double)$$0) * (double)$$0;
-      double $$3 = Math.floor(this.g / (double)$$0) * (double)$$0;
-      double $$4 = Math.ceil(this.e / (double)$$0) * (double)$$0;
-      double $$5 = Math.ceil(this.f / (double)$$0) * (double)$$0;
+   public static glk b() {
+      glm $$0 = new glm();
+      glo $$1 = $$0.a();
+      $$1.a("main", glj.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), glg.a);
+      $$1.a("left_leg", glj.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), glg.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", glj.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), glg.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return glk.a($$0, 64, 64);
+   }
 
-      for (double $$6 = Math.ceil(this.g / (double)$$0) * (double)$$0;
-         this.b
-               .intersectAab(
-                  (float)($$1 - this.e), (float)($$2 - this.f), (float)($$3 - this.g), (float)($$4 - this.e), (float)($$5 - this.f), (float)($$6 - this.g)
-               )
-            != -2;
-         this.g = this.g - (double)(this.d.z() * 4.0F)
-      ) {
-         this.e = this.e - (double)(this.d.x() * 4.0F);
-         this.f = this.f - (double)(this.d.y() * 4.0F);
+   public static glk c() {
+      glm $$0 = new glm();
+      glo $$1 = $$0.a();
+      $$1.a("main", glj.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), glg.a);
+      $$1.a("left_leg", glj.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), glg.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", glj.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), glg.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return glk.a($$0, 64, 64);
+   }
+
+   public void a(dxy $$0, float $$1, flo $$2, gsa $$3, int $$4, int $$5, ffq $$6) {
+      djx $$7 = $$0.i();
+      if ($$7 != null) {
+         hnh $$8 = gsu.a($$0.c());
+         ebe $$9 = $$0.m();
+         dpk.c<? extends dxy> $$10 = dpk.a(dye.z, dmv::i, dmv::h, dog.c, $$9, $$7, $$0.aB_(), ($$0x, $$1x) -> false);
+         int $$11 = $$10.apply(new gur<>()).get($$4);
+         this.a($$2, $$3, $$9.c(dmv.b) == ebr.a ? this.a : this.b, $$9.c(dmv.e), $$8, $$11, $$5, false);
       }
-
-      return this;
    }
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public void a(flo $$0, gsa $$1, int $$2, int $$3, hnh $$4) {
+      this.a($$0, $$1, this.a, jb.d, $$4, $$2, $$3, false);
+      this.a($$0, $$1, this.b, jb.d, $$4, $$2, $$3, true);
    }
 
-   private void a(Matrix4f $$0, Matrix4f $$1) {
-      $$1.mul($$0, this.c);
-      this.b.set(this.c);
-      this.d = this.c.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
-   }
-
-   public boolean a(fex $$0) {
-      int $$1 = this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
-      return $$1 == -2 || $$1 == -1;
-   }
-
-   public int a(erf $$0) {
-      return this.a((double)$$0.h(), (double)$$0.i(), (double)$$0.j(), (double)($$0.k() + 1), (double)($$0.l() + 1), (double)($$0.m() + 1));
-   }
-
-   private int a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      float $$6 = (float)($$0 - this.e);
-      float $$7 = (float)($$1 - this.f);
-      float $$8 = (float)($$2 - this.g);
-      float $$9 = (float)($$3 - this.e);
-      float $$10 = (float)($$4 - this.f);
-      float $$11 = (float)($$5 - this.g);
-      return this.b.intersectAab($$6, $$7, $$8, $$9, $$10, $$11);
-   }
-
-   public Vector4f[] a() {
-      Vector4f[] $$0 = new Vector4f[]{
-         new Vector4f(-1.0F, -1.0F, -1.0F, 1.0F),
-         new Vector4f(1.0F, -1.0F, -1.0F, 1.0F),
-         new Vector4f(1.0F, 1.0F, -1.0F, 1.0F),
-         new Vector4f(-1.0F, 1.0F, -1.0F, 1.0F),
-         new Vector4f(-1.0F, -1.0F, 1.0F, 1.0F),
-         new Vector4f(1.0F, -1.0F, 1.0F, 1.0F),
-         new Vector4f(1.0F, 1.0F, 1.0F, 1.0F),
-         new Vector4f(-1.0F, 1.0F, 1.0F, 1.0F)
-      };
-      Matrix4f $$1 = this.c.invert(new Matrix4f());
-
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         $$1.transform($$0[$$2]);
-         $$0[$$2].div($$0[$$2].w());
-      }
-
-      return $$0;
-   }
-
-   public double b() {
-      return this.e;
-   }
-
-   public double c() {
-      return this.f;
-   }
-
-   public double d() {
-      return this.g;
+   private void a(flo $$0, gsa $$1, giw $$2, jb $$3, hnh $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      flr $$8 = $$4.a($$1, gsl::d);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

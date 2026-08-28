@@ -1,81 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class cbk extends bza<bxj> {
-   public static final int c = 100;
-   private long d;
-
-   public cbk() {
-      super(ImmutableMap.of(cgl.b, cgm.a, cgl.J, cgm.c));
+public class cbk {
+   public static bzm<bxu> a(bxx $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.an().f()), $$1);
    }
 
-   @Override
-   protected boolean a(arq $$0, bxj $$1) {
-      if ($$1.bX()) {
-         return false;
-      } else {
-         byj<?> $$2 = $$1.eb();
-         je $$3 = $$2.c(cgl.b).get();
-         if ($$0.aj() != $$3.a()) {
-            return false;
-         } else {
-            Optional<Long> $$4 = $$2.c(cgl.J);
-            if ($$4.isPresent()) {
-               long $$5 = $$0.ae() - $$4.get();
-               if ($$5 > 0L && $$5 < 100L) {
-                  return false;
-               }
-            }
-
-            eat $$6 = $$0.a_($$3.b());
-            return $$3.b().a($$1.ds(), 2.0) && $$6.a(axc.T) && !$$6.c(dmk.c);
-         }
-      }
+   public static caw<bxu> a(bxc<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.an()), $$1);
    }
 
-   @Override
-   protected boolean a(arq $$0, bxj $$1, long $$2) {
-      Optional<je> $$3 = $$1.eb().c(cgl.b);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         iv $$4 = $$3.get().b();
-         return $$1.eb().c(ctg.e) && $$1.dB() > (double)$$4.v() + 0.4 && $$4.a($$1.ds(), 1.14);
-      }
+   public static caw<bxu> a(float $$0) {
+      return a($$0x -> true, $$0);
    }
 
-   @Override
-   protected void d(arq $$0, bxj $$1, long $$2) {
-      if ($$2 > this.d) {
-         byj<?> $$3 = $$1.eb();
-         if ($$3.a(cgl.w)) {
-            Set<je> $$4 = $$3.c(cgl.w).get();
-            Optional<List<bxj>> $$5;
-            if ($$3.a(cgl.g)) {
-               $$5 = $$3.c(cgl.g);
-            } else {
-               $$5 = Optional.empty();
-            }
-
-            bzy.a($$0, $$1, null, null, $$4, $$5);
-         }
-
-         $$1.b($$1.eb().c(cgl.b).get().b());
-      }
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected void b(arq $$0, bxj $$1, long $$2) {
-      if ($$1.fQ()) {
-         $$1.fR();
-         this.d = $$2 + 40L;
-      }
+   public static caw<bxu> a(Predicate<bxu> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return ccy.a(
+         (Function<ccy.b<bxu>, ? extends App<ccy.c<bxu>, cdb<bxu>>>)($$2x -> $$2x.group($$2x.c(cgw.o), $$2x.b(cgw.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<bxu> $$8 = $$2x.<cgy>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g($$6) <= (double)$$2 && !$$6.y($$2xxxx)));
+                     if ($$8.isEmpty()) {
+                        return false;
+                     } else {
+                        $$3.a(new bzw($$8.get(), true));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

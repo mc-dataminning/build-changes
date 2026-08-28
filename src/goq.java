@@ -1,56 +1,43 @@
-public class goq extends goh {
-   private final gou b;
-   protected boolean a;
+public class goq extends gqk {
+   private final gqf a;
 
-   goq(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gou $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.b = $$7;
-      this.d(1.5F);
+   protected goq(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gqf $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.1F;
+      this.B = 0.9F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      float $$8 = this.r.i() * 0.3F + 0.7F;
+      this.v = $$8;
+      this.w = $$8;
+      this.x = $$8;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
       this.b($$7);
    }
 
    @Override
-   public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
-   }
-
-   @Override
-   public god b() {
-      return god.c;
+   public gpo b() {
+      return gpo.b;
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.b);
+      this.b(this.a);
    }
 
-   public static class a implements goc<mc> {
-      private final gou a;
+   public static class a implements gpn<mc> {
+      private final gqf a;
 
-      public a(gou $$0) {
+      public a(gqf $$0) {
          this.a = $$0;
       }
 
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         goq $$8 = new goq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.a = true;
-         return $$8;
-      }
-   }
-
-   public static class b implements goc<mc> {
-      private final gou a;
-
-      public b(gou $$0) {
-         this.a = $$0;
-      }
-
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         goq $$8 = new goq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         return $$8;
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new goq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

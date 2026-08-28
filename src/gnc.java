@@ -1,37 +1,47 @@
-public class gnc<T extends lz> extends goz {
-   private final gou a;
+import javax.annotation.Nullable;
 
-   protected gnc(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, gou $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.a = $$8;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.D = this.D * 0.75F * $$7.d();
-      int $$9 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * $$7.d(), 1.0F);
-      this.b($$8);
+public enum gnc {
+   a("generic_violation"),
+   b("false_reporting"),
+   c("hate_speech"),
+   d("hate_terrorism_notorious_figure"),
+   e("harassment_or_bullying"),
+   f("defamation_impersonation_false_information"),
+   g("drugs"),
+   h("fraud"),
+   i("spam_or_advertising"),
+   j("nudity_or_pornography"),
+   k("sexually_inappropriate"),
+   l("extreme_violence_or_gore"),
+   m("imminent_harm_to_person_or_property");
+
+   private final xa n;
+
+   private gnc(final String $$0) {
+      this.n = xa.c("gui.banned.reason." + $$0);
    }
 
-   protected float a(float $$0, float $$1) {
-      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
+   public xa a() {
+      return this.n;
    }
 
-   @Override
-   public god b() {
-      return god.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+   @Nullable
+   public static gnc a(int $$0) {
+      return switch ($$0) {
+         case 2 -> b;
+         default -> null;
+         case 5 -> c;
+         case 16, 25 -> d;
+         case 17, 19, 23, 31 -> a;
+         case 21 -> e;
+         case 27 -> f;
+         case 28 -> g;
+         case 29 -> h;
+         case 30 -> i;
+         case 32 -> j;
+         case 33 -> k;
+         case 34 -> l;
+         case 53 -> m;
+      };
    }
 }

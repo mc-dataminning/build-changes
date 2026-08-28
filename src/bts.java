@@ -1,47 +1,45 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bts extends btl {
-   public static final MapCodec<bts> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bsq.b(btl.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bts::new)
-   );
-   private final bsq<btl> b;
-   private final int f;
-   private final int g;
+public class bts extends btu {
+   public static final bts a = new bts(0.0F);
+   public static final MapCodec<bts> b = Codec.FLOAT.fieldOf("value").xmap(bts::a, bts::d);
+   private final float d;
 
-   public bts(bsq<btl> $$0) {
-      this.b = $$0;
-      int $$1 = Integer.MAX_VALUE;
-      int $$2 = Integer.MIN_VALUE;
+   public static bts a(float $$0) {
+      return $$0 == 0.0F ? a : new bts($$0);
+   }
 
-      for (bsp<btl> $$3 : $$0.d()) {
-         int $$4 = $$3.a().a();
-         int $$5 = $$3.a().b();
-         $$1 = Math.min($$1, $$4);
-         $$2 = Math.max($$2, $$5);
-      }
+   private bts(float $$0) {
+      this.d = $$0;
+   }
 
-      this.f = $$1;
-      this.g = $$2;
+   public float d() {
+      return this.d;
    }
 
    @Override
-   public int a(azv $$0) {
-      return this.b.b($$0).a($$0);
+   public float a(azx $$0) {
+      return this.d;
    }
 
    @Override
-   public int a() {
-      return this.f;
+   public float a() {
+      return this.d;
    }
 
    @Override
-   public int b() {
-      return this.g;
+   public float b() {
+      return this.d;
    }
 
    @Override
-   public btm<?> c() {
-      return btm.e;
+   public btv<?> c() {
+      return btv.a;
+   }
+
+   @Override
+   public String toString() {
+      return Float.toString(this.d);
    }
 }

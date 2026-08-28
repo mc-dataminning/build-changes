@@ -1,37 +1,51 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
 
-public class dsw extends dmr {
-   public static final MapCodec<dsw> a = b(dsw::new);
+public abstract class dsw extends dnc {
+   public static final ebv b = ebu.N;
+   public static final ebv c = ebu.O;
+   public static final ebv d = ebu.P;
+   public static final ebv e = ebu.Q;
+   public static final ebv f = ebu.L;
+   public static final ebv g = ebu.M;
+   public static final Map<jb, ebv> h = ImmutableMap.copyOf(Maps.newEnumMap(Map.of(jb.c, b, jb.f, c, jb.d, d, jb.e, e, jb.b, f, jb.a, g)));
+   private final Function<ebe, fgk> a;
 
-   @Override
-   public MapCodec<dsw> a() {
-      return a;
+   protected dsw(float $$0, ebd.d $$1) {
+      super($$1);
+      this.a = this.a($$0);
    }
 
-   protected dsw(eas.d $$0) {
-      super($$0);
+   @Override
+   protected abstract MapCodec<? extends dsw> a();
+
+   private Function<ebe, fgk> a(float $$0) {
+      fgk $$1 = dnc.a((double)$$0);
+      Map<jb, fgk> $$2 = fgh.d(dnc.c((double)$$0, 0.0, 8.0));
+      return this.a($$2x -> {
+         fgk $$3 = $$1;
+
+         for (Entry<jb, ebv> $$4 : h.entrySet()) {
+            if ($$2x.c($$4.getValue())) {
+               $$3 = fgh.a($$2.get($$4.getKey()), $$3);
+            }
+         }
+
+         return $$3;
+      });
    }
 
    @Override
-   protected bug a(czn $$0, eat $$1, djm $$2, iv $$3, crm $$4, buf $$5, fey $$6) {
-      if (!$$0.a(czr.td)) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      } else if ($$2.C) {
-         return bug.a;
-      } else {
-         jb $$7 = $$6.c();
-         jb $$8 = $$7.o() == jb.a.b ? $$4.cN().g() : $$7;
-         $$2.a(null, $$3, awn.vK, awo.e, 1.0F, 1.0F);
-         $$2.a($$3, dmt.ev.m().b(dnn.b, $$8), 11);
-         cnr $$9 = new cnr(
-            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new czn(czr.tg, 4)
-         );
-         $$9.n(0.05 * (double)$$8.j() + $$2.A.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.A.j() * 0.02);
-         $$2.b($$9);
-         $$0.a(1, $$4, bxj.d($$5));
-         $$2.a($$4, eft.M, $$3);
-         $$4.b(awx.c.b(czr.td));
-         return bug.a;
-      }
+   protected boolean e_(ebe $$0) {
+      return false;
+   }
+
+   @Override
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return this.a.apply($$0);
    }
 }

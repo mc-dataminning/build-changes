@@ -5,9 +5,9 @@ import java.util.Optional;
 public class av {
    public static final Codec<av> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               czn.d.fieldOf("icon").forGetter(av::c),
-               xa.a.fieldOf("title").forGetter(av::a),
-               xa.a.fieldOf("description").forGetter(av::b),
+               czy.d.fieldOf("icon").forGetter(av::c),
+               xc.a.fieldOf("title").forGetter(av::a),
+               xc.a.fieldOf("description").forGetter(av::b),
                iw.a.optionalFieldOf("background").forGetter(av::d),
                ap.d.optionalFieldOf("frame", ap.a).forGetter(av::e),
                Codec.BOOL.optionalFieldOf("show_toast", true).forGetter(av::h),
@@ -16,10 +16,10 @@ public class av {
             )
             .apply($$0, av::new)
    );
-   public static final yw<wj, av> b = yw.a(av::a, av::b);
-   private final wy c;
-   private final wy d;
-   private final czn e;
+   public static final yy<wl, av> b = yy.a(av::a, av::b);
+   private final xa c;
+   private final xa d;
+   private final czy e;
    private final Optional<iw> f;
    private final ap g;
    private final boolean h;
@@ -28,7 +28,7 @@ public class av {
    private float k;
    private float l;
 
-   public av(czn $$0, wy $$1, wy $$2, Optional<iw> $$3, ap $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public av(czy $$0, xa $$1, xa $$2, Optional<iw> $$3, ap $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.c = $$1;
       this.d = $$2;
       this.e = $$0;
@@ -44,15 +44,15 @@ public class av {
       this.l = $$1;
    }
 
-   public wy a() {
+   public xa a() {
       return this.c;
    }
 
-   public wy b() {
+   public xa b() {
       return this.d;
    }
 
-   public czn c() {
+   public czy c() {
       return this.e;
    }
 
@@ -84,10 +84,10 @@ public class av {
       return this.j;
    }
 
-   private void a(wj $$0) {
-      xa.d.encode($$0, this.c);
-      xa.d.encode($$0, this.d);
-      czn.i.encode($$0, this.e);
+   private void a(wl $$0) {
+      xc.d.encode($$0, this.c);
+      xc.d.encode($$0, this.d);
+      czy.i.encode($$0, this.e);
       $$0.a(this.g);
       int $$1 = 0;
       if (this.f.isPresent()) {
@@ -108,10 +108,10 @@ public class av {
       $$0.a(this.l);
    }
 
-   private static av b(wj $$0) {
-      wy $$1 = xa.d.decode($$0);
-      wy $$2 = xa.d.decode($$0);
-      czn $$3 = czn.i.decode($$0);
+   private static av b(wl $$0) {
+      xa $$1 = xc.d.decode($$0);
+      xa $$2 = xc.d.decode($$0);
+      czy $$3 = czy.i.decode($$0);
       ap $$4 = $$0.b(ap.class);
       int $$5 = $$0.readInt();
       Optional<iw> $$6 = ($$5 & 1) != 0 ? Optional.of(new iw($$0.q())) : Optional.empty();

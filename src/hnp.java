@@ -1,5 +1,18 @@
-public interface hnp extends hno {
-   boolean m();
+import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
 
-   void q();
+public interface hnp {
+   Matrix4fc q = new Matrix4f();
+
+   default k a() {
+      return k.a();
+   }
+
+   default Matrix4fc a(jb $$0) {
+      return q;
+   }
+
+   default Matrix4fc b(jb $$0) {
+      return q;
+   }
 }

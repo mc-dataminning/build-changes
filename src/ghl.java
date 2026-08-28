@@ -1,71 +1,54 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import org.joml.Vector3f;
+import java.util.Set;
 
-public abstract class ghl {
-   private static final Vector3f a = new Vector3f();
-   protected final gjt v;
-   protected final Function<alg, grc> w;
-   private final List<gjt> b;
+public class ghl extends gia<hef> {
+   public static final String a = "red_thing";
+   public static final float b = 16.0F;
+   public static final gln c = new ggv(false, 5.0F, 2.0F, 2.0F, 1.99F, 24.0F, Set.of("head", "beak", "red_thing"));
+   private final gle d;
+   private final gle e;
+   private final gle f;
+   private final gle g;
+   private final gle i;
 
-   public ghl(gjt $$0, Function<alg, grc> $$1) {
-      this.v = $$0;
-      this.w = $$1;
-      this.b = $$0.e().toList();
+   public ghl(gle $$0) {
+      super($$0);
+      this.d = $$0.b("head");
+      this.e = $$0.b("right_leg");
+      this.f = $$0.b("left_leg");
+      this.g = $$0.b("right_wing");
+      this.i = $$0.b("left_wing");
    }
 
-   public final grc a(alg $$0) {
-      return this.w.apply($$0);
+   public static glk a() {
+      glm $$0 = b();
+      return glk.a($$0, 64, 32);
    }
 
-   public final void a(fkd $$0, fkh $$1, int $$2, int $$3, int $$4) {
-      this.e().a($$0, $$1, $$2, $$3, $$4);
+   protected static glm b() {
+      glm $$0 = new glm();
+      glo $$1 = $$0.a();
+      glo $$2 = $$1.a("head", glj.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), glg.a(0.0F, 15.0F, -4.0F));
+      $$2.a("beak", glj.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), glg.a);
+      $$2.a("red_thing", glj.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), glg.a);
+      $$1.a("body", glj.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), glg.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      glj $$3 = glj.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
+      $$1.a("right_leg", $$3, glg.a(-2.0F, 19.0F, 1.0F));
+      $$1.a("left_leg", $$3, glg.a(1.0F, 19.0F, 1.0F));
+      $$1.a("right_wing", glj.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), glg.a(-4.0F, 13.0F, 0.0F));
+      $$1.a("left_wing", glj.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), glg.a(4.0F, 13.0F, 0.0F));
+      return $$0;
    }
 
-   public final void a(fkd $$0, fkh $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, -1);
-   }
-
-   public final gjt e() {
-      return this.v;
-   }
-
-   public Optional<gjt> a(String $$0) {
-      return $$0.equals("root") ? Optional.of(this.e()) : this.e().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
-   }
-
-   public final List<gjt> f() {
-      return this.b;
-   }
-
-   public final void g() {
-      for (gjt $$0 : this.b) {
-         $$0.c();
-      }
-   }
-
-   protected void a(bvz $$0, fqh $$1, float $$2) {
-      this.a($$0, $$1, $$2, 1.0F);
-   }
-
-   protected void a(fqh $$0, float $$1, float $$2, float $$3, float $$4) {
-      long $$5 = (long)($$1 * 50.0F * $$3);
-      float $$6 = Math.min($$2 * $$4, 1.0F);
-      fqj.a(this, $$0, $$5, $$6, a);
-   }
-
-   protected void a(bvz $$0, fqh $$1, float $$2, float $$3) {
-      $$0.a($$3x -> fqj.a(this, $$1, (long)((float)$$3x.a($$2) * $$3), 1.0F, a));
-   }
-
-   protected void a(fqh $$0) {
-      fqj.a(this, $$0, 0L, 1.0F, a);
-   }
-
-   public static class a extends ghl {
-      public a(gjt $$0, Function<alg, grc> $$1) {
-         super($$0, $$1);
-      }
+   public void a(hef $$0) {
+      super.a($$0);
+      float $$1 = (azo.a($$0.a) + 1.0F) * $$0.b;
+      this.d.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.d.f = $$0.aa * (float) (Math.PI / 180.0);
+      float $$2 = $$0.ae;
+      float $$3 = $$0.ad;
+      this.e.e = azo.b($$3 * 0.6662F) * 1.4F * $$2;
+      this.f.e = azo.b($$3 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.g.g = $$1;
+      this.i.g = -$$1;
    }
 }

@@ -1,58 +1,24 @@
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class ejh extends ejy<emj> {
-   public ejh(Codec<emj> $$0) {
-      super($$0);
+public record ejh<WC extends ejc>(ejj<WC> d, WC e) {
+   public static final Codec<ejh<?>> a = mg.N.q().dispatch($$0 -> $$0.d, ejj::c);
+   public static final Codec<jf<ejh<?>>> b = ale.a(mh.aK, a);
+   public static final Codec<jj<ejh<?>>> c = ju.a(mh.aK, a);
+
+   public boolean a(azx $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   @Override
-   public boolean a(eka<emj> $$0) {
-      iv $$1 = $$0.e();
-      dkl $$2 = $$0.b();
-      azv $$3 = $$0.d();
-      if ($$1.v() > $$2.P() - 1) {
-         return false;
-      } else if (!$$2.a_($$1).a(dmt.J) && !$$2.a_($$1.e()).a(dmt.J)) {
-         return false;
-      } else {
-         boolean $$4 = false;
+   public boolean a(eje $$0, edb $$1, Function<iv, jf<dla>> $$2, azx $$3, egp $$4, djc $$5, eda $$6) {
+      return ac.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-         for (jb $$5 : jb.values()) {
-            if ($$5 != jb.a && $$2.a_($$1.a($$5)).a(dmt.je)) {
-               $$4 = true;
-               break;
-            }
-         }
+   public ejj<WC> a() {
+      return this.d;
+   }
 
-         if (!$$4) {
-            return false;
-         } else {
-            $$2.a($$1, dmt.nC.m(), 2);
-
-            for (int $$6 = 0; $$6 < 200; $$6++) {
-               int $$7 = $$3.a(5) - $$3.a(6);
-               int $$8 = 3;
-               if ($$7 < 2) {
-                  $$8 += $$7 / 2;
-               }
-
-               if ($$8 >= 1) {
-                  iv $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
-                  eat $$10 = $$2.a_($$9);
-                  if ($$10.l() || $$10.a(dmt.J) || $$10.a(dmt.je) || $$10.a(dmt.ee)) {
-                     for (jb $$11 : jb.values()) {
-                        eat $$12 = $$2.a_($$9.a($$11));
-                        if ($$12.a(dmt.nC)) {
-                           $$2.a($$9, dmt.nC.m(), 2);
-                           break;
-                        }
-                     }
-                  }
-               }
-            }
-
-            return true;
-         }
-      }
+   public WC b() {
+      return this.e;
    }
 }

@@ -1,312 +1,140 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
+import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
 
-public class dwe extends dmr {
-   public static final MapCodec<dwe> a = b(dwe::new);
-   public static final ebk b = dsl.f;
-   public static final ebk c = dsl.b;
-   public static final ebk d = dsl.c;
-   public static final ebk e = dsl.d;
-   public static final ebk f = dsl.e;
-   public static final Map<jb, ebk> g = dsl.h.entrySet().stream().filter($$0 -> $$0.getKey() != jb.a).collect(ag.a());
-   private final Function<eat, ffw> h;
+public class dwe extends drd implements dun {
+   public static final MapCodec<dwe> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ebt.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.h), t()).apply($$0, dwe::new)
+   );
+   public static final ebv b = ebu.y;
+   public static final ecc<ecd> c = ebu.ai;
+   public static final ebv d = ebu.A;
+   public static final ebv f = ebu.I;
+   private static final Map<jb, fgk> g = fgh.d(dnc.c(16.0, 13.0, 16.0));
+   private final ebt h;
 
    @Override
-   public MapCodec<dwe> a() {
+   public MapCodec<? extends dwe> a() {
       return a;
    }
 
-   public dwe(eas.d $$0) {
-      super($$0);
-      this.l(
-         this.C
-            .b()
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-            .b(f, Boolean.valueOf(false))
-      );
-      this.h = this.b();
-   }
-
-   private Function<eat, ffw> b() {
-      Map<jb, ffw> $$0 = fft.d(dmr.c(16.0, 0.0, 1.0));
-      return this.a($$1 -> {
-         ffw $$2 = fft.a();
-
-         for (Entry<jb, ebk> $$3 : g.entrySet()) {
-            if ($$1.c($$3.getValue())) {
-               $$2 = fft.a($$2, $$0.get($$3.getKey()));
-            }
-         }
-
-         return $$2.c() ? fft.b() : $$2;
-      });
+   protected dwe(ebt $$0, ebd.d $$1) {
+      super($$1.a($$0.g()));
+      this.h = $$0;
+      this.l(this.C.b().b(e, jb.c).b(b, Boolean.valueOf(false)).b(c, ecd.b).b(d, Boolean.valueOf(false)).b(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return this.h.apply($$0);
+   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+      return g.get($$0.c(b) ? $$0.c(e) : ($$0.c(c) == ecd.a ? jb.a : jb.b));
    }
 
    @Override
-   protected boolean e_(eat $$0) {
-      return true;
-   }
-
-   @Override
-   protected boolean a(eat $$0, djp $$1, iv $$2) {
-      return this.o(this.e($$0, $$1, $$2));
-   }
-
-   private boolean o(eat $$0) {
-      return this.q($$0) > 0;
-   }
-
-   private int q(eat $$0) {
-      int $$1 = 0;
-
-      for (ebk $$2 : g.values()) {
-         if ($$0.c($$2)) {
-            $$1++;
-         }
-      }
-
-      return $$1;
-   }
-
-   private boolean b(diq $$0, iv $$1, jb $$2) {
-      if ($$2 == jb.a) {
-         return false;
-      } else {
-         iv $$3 = $$1.a($$2);
-         if (a($$0, $$3, $$2)) {
-            return true;
-         } else if ($$2.o() == jb.a.b) {
+   protected boolean a(ebe $$0, eyd $$1) {
+      switch ($$1) {
+         case a:
+            return $$0.c(b);
+         case b:
+            return $$0.c(f);
+         case c:
+            return $$0.c(b);
+         default:
             return false;
-         } else {
-            ebk $$4 = g.get($$2);
-            eat $$5 = $$0.a_($$1.d());
-            return $$5.a(this) && $$5.c($$4);
-         }
       }
-   }
-
-   public static boolean a(diq $$0, iv $$1, jb $$2) {
-      return drx.a($$0, $$2, $$1, $$0.a_($$1));
-   }
-
-   private eat e(eat $$0, diq $$1, iv $$2) {
-      iv $$3 = $$2.d();
-      if ($$0.c(b)) {
-         $$0 = $$0.b(b, Boolean.valueOf(a($$1, $$3, jb.a)));
-      }
-
-      eat $$4 = null;
-
-      for (jb $$5 : jb.c.a) {
-         ebk $$6 = a($$5);
-         if ($$0.c($$6)) {
-            boolean $$7 = this.b($$1, $$2, $$5);
-            if (!$$7) {
-               if ($$4 == null) {
-                  $$4 = $$1.a_($$3);
-               }
-
-               $$7 = $$4.a(this) && $$4.c($$6);
-            }
-
-            $$0 = $$0.b($$6, Boolean.valueOf($$7));
-         }
-      }
-
-      return $$0;
    }
 
    @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      if ($$4 == jb.a) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
+      if (!this.h.c()) {
+         return bur.e;
       } else {
-         eat $$8 = this.e($$0, $$1, $$3);
-         return !this.o($$8) ? dmt.a.m() : $$8;
+         this.b($$0, $$1, $$2, $$3);
+         return bur.a;
       }
    }
 
    @Override
-   protected void b(eat $$0, arq $$1, iv $$2, azv $$3) {
-      if ($$1.O().c(dji.Z)) {
-         if ($$3.a(4) == 0) {
-            jb $$4 = jb.b($$3);
-            iv $$5 = $$2.d();
-            if ($$4.o().d() && !$$0.c(a($$4))) {
-               if (this.a($$1, $$2)) {
-                  iv $$6 = $$2.a($$4);
-                  eat $$7 = $$1.a_($$6);
-                  if ($$7.l()) {
-                     jb $$8 = $$4.h();
-                     jb $$9 = $$4.i();
-                     boolean $$10 = $$0.c(a($$8));
-                     boolean $$11 = $$0.c(a($$9));
-                     iv $$12 = $$6.a($$8);
-                     iv $$13 = $$6.a($$9);
-                     if ($$10 && a($$1, $$12, $$8)) {
-                        $$1.a($$6, this.m().b(a($$8), Boolean.valueOf(true)), 2);
-                     } else if ($$11 && a($$1, $$13, $$9)) {
-                        $$1.a($$6, this.m().b(a($$9), Boolean.valueOf(true)), 2);
-                     } else {
-                        jb $$14 = $$4.g();
-                        if ($$10 && $$1.v($$12) && a($$1, $$2.a($$8), $$14)) {
-                           $$1.a($$12, this.m().b(a($$14), Boolean.valueOf(true)), 2);
-                        } else if ($$11 && $$1.v($$13) && a($$1, $$2.a($$9), $$14)) {
-                           $$1.a($$13, this.m().b(a($$14), Boolean.valueOf(true)), 2);
-                        } else if ((double)$$3.i() < 0.05 && a($$1, $$6.d(), jb.b)) {
-                           $$1.a($$6, this.m().b(b, Boolean.valueOf(true)), 2);
-                        }
-                     }
-                  } else if (a($$1, $$6, $$4)) {
-                     $$1.a($$2, $$0.b(a($$4), Boolean.valueOf(true)), 2);
-                  }
-               }
-            } else {
-               if ($$4 == jb.b && $$2.v() < $$1.ao()) {
-                  if (this.b($$1, $$2, $$4)) {
-                     $$1.a($$2, $$0.b(b, Boolean.valueOf(true)), 2);
-                     return;
-                  }
+   protected void a(ebe $$0, ars $$1, iv $$2, djq $$3, BiConsumer<czy, iv> $$4) {
+      if ($$3.g() && this.h.d() && !$$0.c(d)) {
+         this.b($$0, $$1, $$2, null);
+      }
 
-                  if ($$1.v($$5)) {
-                     if (!this.a($$1, $$2)) {
-                        return;
-                     }
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
 
-                     eat $$15 = $$0;
+   private void b(ebe $$0, djx $$1, iv $$2, @Nullable crx $$3) {
+      ebe $$4 = $$0.a(b);
+      $$1.a($$2, $$4, 2);
+      if ($$4.c(f)) {
+         $$1.a($$2, exp.c, exp.c.a($$1));
+      }
 
-                     for (jb $$16 : jb.c.a) {
-                        if ($$3.h() || !a($$1, $$5.a($$16), $$16)) {
-                           $$15 = $$15.b(a($$16), Boolean.valueOf(false));
-                        }
-                     }
+      this.a($$3, $$1, $$2, $$4.c(b));
+   }
 
-                     if (this.r($$15)) {
-                        $$1.a($$5, $$15, 2);
-                     }
+   protected void a(@Nullable crx $$0, djx $$1, iv $$2, boolean $$3) {
+      $$1.a($$0, $$2, $$3 ? this.h.k() : this.h.j(), awq.e, 1.0F, $$1.G_().i() * 0.1F + 0.9F);
+      $$1.a($$0, $$3 ? ege.h : ege.d, $$2);
+   }
 
-                     return;
-                  }
-               }
+   @Override
+   protected void a(ebe $$0, djx $$1, iv $$2, dnc $$3, @Nullable eyw $$4, boolean $$5) {
+      if (!$$1.C) {
+         boolean $$6 = $$1.D($$2);
+         if ($$6 != $$0.c(d)) {
+            if ($$0.c(b) != $$6) {
+               $$0 = $$0.b(b, Boolean.valueOf($$6));
+               this.a(null, $$1, $$2, $$6);
+            }
 
-               if ($$2.v() > $$1.G_()) {
-                  iv $$17 = $$2.e();
-                  eat $$18 = $$1.a_($$17);
-                  if ($$18.l() || $$18.a(this)) {
-                     eat $$19 = $$18.l() ? this.m() : $$18;
-                     eat $$20 = this.a($$0, $$19, $$3);
-                     if ($$19 != $$20 && this.r($$20)) {
-                        $$1.a($$17, $$20, 2);
-                     }
-                  }
-               }
+            $$1.a($$2, $$0.b(d, Boolean.valueOf($$6)), 2);
+            if ($$0.c(f)) {
+               $$1.a($$2, exp.c, exp.c.a($$1));
             }
          }
       }
    }
 
-   private eat a(eat $$0, eat $$1, azv $$2) {
-      for (jb $$3 : jb.c.a) {
-         if ($$2.h()) {
-            ebk $$4 = a($$3);
-            if ($$0.c($$4)) {
-               $$1 = $$1.b($$4, Boolean.valueOf(true));
-            }
-         }
+   @Override
+   public ebe a(ddr $$0) {
+      ebe $$1 = this.m();
+      exo $$2 = $$0.q().b_($$0.a());
+      jb $$3 = $$0.k();
+      if (!$$0.c() && $$3.o().d()) {
+         $$1 = $$1.b(e, $$3).b(c, $$0.l().e - (double)$$0.a().v() > 0.5 ? ecd.a : ecd.b);
+      } else {
+         $$1 = $$1.b(e, $$0.g().g()).b(c, $$3 == jb.b ? ecd.b : ecd.a);
       }
 
-      return $$1;
-   }
-
-   private boolean r(eat $$0) {
-      return $$0.c(c) || $$0.c(d) || $$0.c(e) || $$0.c(f);
-   }
-
-   private boolean a(diq $$0, iv $$1) {
-      int $$2 = 4;
-      Iterable<iv> $$3 = iv.b($$1.u() - 4, $$1.v() - 1, $$1.w() - 4, $$1.u() + 4, $$1.v() + 1, $$1.w() + 4);
-      int $$4 = 5;
-
-      for (iv $$5 : $$3) {
-         if ($$0.a_($$5).a(this)) {
-            if (--$$4 <= 0) {
-               return false;
-            }
-         }
+      if ($$0.q().D($$0.a())) {
+         $$1 = $$1.b(b, Boolean.valueOf(true)).b(d, Boolean.valueOf(true));
       }
 
-      return true;
+      return $$1.b(f, Boolean.valueOf($$2.a() == exp.c));
    }
 
    @Override
-   protected boolean a(eat $$0, ddg $$1) {
-      eat $$2 = $$1.q().a_($$1.a());
-      return $$2.a(this) ? this.q($$2) < g.size() : super.a($$0, $$1);
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(e, b, c, d, f);
    }
 
-   @Nullable
    @Override
-   public eat a(ddg $$0) {
-      eat $$1 = $$0.q().a_($$0.a());
-      boolean $$2 = $$1.a(this);
-      eat $$3 = $$2 ? $$1 : this.m();
+   protected exo b_(ebe $$0) {
+      return $$0.c(f) ? exp.c.a(false) : super.b_($$0);
+   }
 
-      for (jb $$4 : $$0.f()) {
-         if ($$4 != jb.a) {
-            ebk $$5 = a($$4);
-            boolean $$6 = $$2 && $$1.c($$5);
-            if (!$$6 && this.b($$0.q(), $$0.a(), $$4)) {
-               return $$3.b($$5, Boolean.valueOf(true));
-            }
-         }
+   @Override
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      if ($$0.c(f)) {
+         $$2.a($$3, exp.c, exp.c.a($$1));
       }
 
-      return $$2 ? $$3 : null;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(b, c, d, e, f);
-   }
-
-   @Override
-   protected eat a(eat $$0, dtl $$1) {
-      switch ($$1) {
-         case c:
-            return $$0.b(c, $$0.c(e)).b(d, $$0.c(f)).b(e, $$0.c(c)).b(f, $$0.c(d));
-         case d:
-            return $$0.b(c, $$0.c(d)).b(d, $$0.c(e)).b(e, $$0.c(f)).b(f, $$0.c(c));
-         case b:
-            return $$0.b(c, $$0.c(f)).b(d, $$0.c(c)).b(e, $$0.c(d)).b(f, $$0.c(e));
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   protected eat a(eat $$0, dru $$1) {
-      switch ($$1) {
-         case b:
-            return $$0.b(c, $$0.c(e)).b(e, $$0.c(c));
-         case c:
-            return $$0.b(d, $$0.c(f)).b(f, $$0.c(d));
-         default:
-            return super.a($$0, $$1);
-      }
-   }
-
-   public static ebk a(jb $$0) {
-      return g.get($$0);
+   protected ebt q() {
+      return this.h;
    }
 }

@@ -1,17 +1,80 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.Optional;
 
-public class ccv extends bza<bxj> {
-   public ccv() {
-      super(ImmutableMap.of());
-   }
-
-   @Override
-   protected boolean a(arq $$0, bxj $$1) {
-      return $$1.bX();
-   }
+public class ccv extends ccw {
+   private static final List<czu> c = ImmutableList.of(dac.qj, dac.ww);
 
    @Override
-   protected void d(arq $$0, bxj $$1, long $$2) {
-      $$1.al();
+   protected void a(ars $$0, crj $$1) {
+      Optional<je> $$2 = $$1.ec().c(cgw.c);
+      if (!$$2.isEmpty()) {
+         je $$3 = $$2.get();
+         ebe $$4 = $$0.a_($$3.b());
+         if ($$4.a(dne.pK)) {
+            this.c($$0, $$1);
+            this.a($$0, $$1, $$3, $$4);
+         }
+      }
+   }
+
+   private void a(ars $$0, crj $$1, je $$2, ebe $$3) {
+      iv $$4 = $$2.b();
+      if ($$3.c(doo.e) == 8) {
+         $$3 = doo.a($$1, $$3, (djx)$$0, $$4);
+      }
+
+      int $$5 = 20;
+      int $$6 = 10;
+      int[] $$7 = new int[c.size()];
+      buy $$8 = $$1.n();
+      int $$9 = $$8.b();
+      ebe $$10 = $$3;
+
+      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
+         czy $$12 = $$8.a($$11);
+         int $$13 = c.indexOf($$12.h());
+         if ($$13 != -1) {
+            int $$14 = $$12.M();
+            int $$15 = $$7[$$13] + $$14;
+            $$7[$$13] = $$15;
+            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
+            if ($$16 > 0) {
+               $$5 -= $$16;
+
+               for (int $$17 = 0; $$17 < $$16; $$17++) {
+                  $$10 = doo.a($$1, $$10, $$0, $$12, $$4);
+                  if ($$10.c(doo.e) == 7) {
+                     this.a($$0, $$3, $$4, $$10);
+                     return;
+                  }
+               }
+            }
+         }
+      }
+
+      this.a($$0, $$3, $$4, $$10);
+   }
+
+   private void a(ars $$0, ebe $$1, iv $$2, ebe $$3) {
+      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
+   }
+
+   private void c(ars $$0, crj $$1) {
+      buy $$2 = $$1.n();
+      if ($$2.a_(dac.ql) <= 36) {
+         int $$3 = $$2.a_(dac.qk);
+         int $$4 = 3;
+         int $$5 = 3;
+         int $$6 = Math.min(3, $$3 / 3);
+         if ($$6 != 0) {
+            int $$7 = $$6 * 3;
+            $$2.a(dac.qk, $$7);
+            czy $$8 = $$2.b(new czy(dac.ql, $$6));
+            if (!$$8.f()) {
+               $$1.a($$0, $$8, 0.5F);
+            }
+         }
+      }
    }
 }

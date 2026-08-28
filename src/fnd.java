@@ -1,362 +1,179 @@
-import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.Supplier;
+import java.util.UUID;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fnd extends hqd {
-   private static final alg a = alg.b("realm_status/expired");
-   private static final alg b = alg.b("realm_status/expires_soon");
-   private static final alg c = alg.b("realm_status/open");
-   private static final alg C = alg.b("realm_status/closed");
-   private static final Logger D = LogUtils.getLogger();
-   private static final wy E = wy.c("mco.configure.worlds.title");
-   private static final wy F = wy.c("mco.configure.world.title");
-   private static final wy G = wy.c("mco.selectServer.expired");
-   private static final wy H = wy.c("mco.selectServer.expires.soon");
-   private static final wy I = wy.c("mco.selectServer.expires.day");
-   private static final wy J = wy.c("mco.selectServer.open");
-   private static final wy K = wy.c("mco.selectServer.closed");
-   private static final int L = 80;
-   private static final int M = 5;
-   @Nullable
-   private wy N;
-   private final fko O;
-   @Nullable
-   private flu P;
-   private final long Q;
-   private int R;
-   private int S;
-   private fta T;
-   private fta U;
-   private fta V;
-   private fta W;
-   private fta X;
-   private fta Y;
-   private fta Z;
-   private boolean aa;
-   private final List<fmv> ab = Lists.newArrayList();
+public class fnd {
+   static final Logger a = LogUtils.getLogger();
+   private static final String b = "notificationUuid";
+   private static final String c = "dismissable";
+   private static final String d = "seen";
+   private static final String e = "type";
+   private static final String f = "visitUrl";
+   private static final String g = "infoPopup";
+   static final xa h = xa.c("mco.notification.visitUrl.buttonText.default");
+   final UUID i;
+   final boolean j;
+   final boolean k;
+   final String l;
 
-   public fnd(fko $$0, long $$1) {
-      super(F);
-      this.O = $$0;
-      this.Q = $$1;
+   fnd(UUID $$0, boolean $$1, boolean $$2, String $$3) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
    }
 
-   @Override
-   public void aO_() {
-      if (this.P == null) {
-         this.a(this.Q);
-      }
-
-      this.R = this.n / 2 - 187;
-      this.S = this.n / 2 + 190;
-      this.T = this.c(fta.a(wy.c("mco.configure.world.buttons.players"), $$0x -> this.m.a(new fno(this, this.P))).a(this.a(0, 3), g(0), 100, 20).a());
-      this.U = this.c(fta.a(wy.c("mco.configure.world.buttons.settings"), $$0x -> this.m.a(new fnt(this, this.P.g()))).a(this.a(1, 3), g(0), 100, 20).a());
-      this.V = this.c(
-         fta.a(wy.c("mco.configure.world.buttons.subscription"), $$0x -> this.m.a(new fnv(this, this.P.g(), this.O))).a(this.a(2, 3), g(0), 100, 20).a()
-      );
-      this.ab.clear();
-
-      for (int $$0 = 1; $$0 < 5; $$0++) {
-         this.ab.add(this.a($$0));
-      }
-
-      this.Z = this.c(
-         fta.a(wy.c("mco.configure.world.buttons.switchminigame"), $$0x -> this.m.a(new fns(wy.c("mco.template.title.minigame"), this::a, flu.d.b)))
-            .a(this.b(0), g(13) - 5, 100, 20)
-            .a()
-      );
-      this.W = this.c(
-         fta.a(wy.c("mco.configure.world.buttons.options"), $$0x -> this.m.a(new fnu(this, this.P.i.get(this.P.p).d(), this.P.m, this.P.p)))
-            .a(this.b(0), g(13) - 5, 90, 20)
-            .a()
-      );
-      this.X = this.c(fta.a(wy.c("mco.configure.world.backup"), $$0x -> this.m.a(new fna(this, this.P.g(), this.P.p))).a(this.b(1), g(13) - 5, 90, 20).a());
-      this.Y = this.c(
-         fta.a(wy.c("mco.configure.world.buttons.resetworld"), $$0x -> this.m.a(fnq.a(this, this.P.g(), () -> this.m.execute(() -> this.m.a(this.g())))))
-            .a(this.b(2), g(13) - 5, 90, 20)
-            .a()
-      );
-      this.c(fta.a(wx.k, $$0x -> this.aL_()).a(this.S - 80 + 8, g(13) - 5, 70, 20).a());
-      this.X.j = true;
-      if (this.P == null) {
-         this.I();
-         this.H();
-         this.T.j = false;
-         this.U.j = false;
-         this.V.j = false;
-      } else {
-         this.E();
-         if (this.G()) {
-            this.H();
-         } else {
-            this.I();
-         }
-      }
+   public boolean a() {
+      return this.k;
    }
 
-   private fmv a(int $$0) {
-      int $$1 = this.h($$0);
-      int $$2 = g(5) + 5;
-      fmv $$3 = new fmv($$1, $$2, 80, 80, $$0, $$1x -> {
-         fmv.b $$2x = ((fmv)$$1x).a();
-         if ($$2x != null) {
-            switch ($$2x.c) {
-               case a:
-                  break;
-               case c:
-                  this.a(this.P);
-                  break;
-               case b:
-                  if ($$2x.b) {
-                     this.F();
-                  } else if ($$2x.a) {
-                     this.b($$0, this.P);
-                  } else {
-                     this.a($$0, this.P);
-                  }
-                  break;
-               default:
-                  throw new IllegalStateException("Unknown action " + $$2x.c);
-            }
-         }
-      });
-      if (this.P != null) {
-         $$3.a(this.P);
-      }
-
-      return this.c($$3);
+   public boolean b() {
+      return this.j;
    }
 
-   private int b(int $$0) {
-      return this.R + $$0 * 95;
+   public UUID c() {
+      return this.i;
    }
 
-   private int a(int $$0, int $$1) {
-      return this.n / 2 - ($$1 * 105 - 5) / 2 + $$0 * 105;
-   }
-
-   @Override
-   public void a(fsm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.N = null;
-      $$0.a(this.p, E, this.n / 2, g(4), -1);
-      if (this.P == null) {
-         $$0.a(this.p, this.l, this.n / 2, 17, -1);
-      } else {
-         String $$4 = Objects.requireNonNullElse(this.P.b(), "");
-         int $$5 = this.p.b($$4);
-         int $$6 = this.P.e == flu.c.a ? -6250336 : 8388479;
-         int $$7 = this.p.a(this.l);
-         $$0.a(this.p, this.l, this.n / 2, 12, -1);
-         $$0.a(this.p, $$4, this.n / 2, 24, $$6);
-         int $$8 = Math.min(this.a(2, 3) + 80 - 11, this.n / 2 + $$5 / 2 + $$7 / 2 + 10);
-         this.b($$0, $$8, 7, $$1, $$2);
-         if (this.G()) {
-            String $$9 = this.P.c();
-            if ($$9 != null) {
-               $$0.b(this.p, wy.a("mco.configure.world.minigame", $$9), this.R + 80 + 20 + 10, g(13), -1);
-            }
-         }
-      }
-   }
-
-   private int h(int $$0) {
-      return this.R + ($$0 - 1) * 98;
-   }
-
-   @Override
-   public void aL_() {
-      this.m.a(this.O);
-      if (this.aa) {
-         this.O.h();
-      }
-   }
-
-   @Override
-   public void a(long $$0) {
-      new Thread(() -> {
-         fkt $$1 = fkt.a();
-
-         try {
-            flu $$2 = $$1.a($$0);
-            this.m.execute(() -> {
-               this.P = $$2;
-               this.E();
-               if (this.G()) {
-                  this.b(this.Z);
-               } else {
-                  this.b(this.W);
-                  this.b(this.X);
-                  this.b(this.Y);
-               }
-
-               for (fmv $$1x : this.ab) {
-                  $$1x.a($$2);
-               }
-            });
-         } catch (fmp var5) {
-            D.error("Couldn't get own world", var5);
-            this.m.execute(() -> this.m.a(new fnh(var5, this.O)));
-         }
-      }).start();
-   }
-
-   private void E() {
-      this.T.j = !this.P.j;
-      this.U.j = !this.P.j;
-      this.V.j = true;
-      this.Z.j = !this.P.j;
-      this.W.j = !this.P.j;
-      this.Y.j = !this.P.j;
-   }
-
-   private void a(flu $$0) {
-      if (this.P.e == flu.c.b) {
-         fko.a($$0, this);
-      } else {
-         this.b(true);
-      }
-   }
-
-   private void F() {
-      fns $$0 = new fns(wy.c("mco.template.title.minigame"), this::a, flu.d.b);
-      $$0.a(wy.c("mco.minigame.world.info.line1"), wy.c("mco.minigame.world.info.line2"));
-      this.m.a($$0);
-   }
-
-   private void a(int $$0, flu $$1) {
-      this.m.a(fnp.a(this, wy.c("mco.configure.world.slot.switch.question.line1"), $$2 -> {
-         this.f();
-         this.m.a(new fnj(this.O, new foy($$1.a, $$0, () -> this.m.execute(() -> this.m.a(this.g())))));
-      }));
-   }
-
-   private void b(int $$0, flu $$1) {
-      this.m.a(fnp.a(this, wy.c("mco.configure.world.slot.switch.question.line1"), $$2 -> {
-         this.f();
-         fnq $$3 = fnq.a(this, $$0, $$1, () -> this.m.execute(() -> this.m.a(this.g())));
-         this.m.a($$3);
-      }));
-   }
-
-   private void b(fsm $$0, int $$1, int $$2, int $$3, int $$4) {
-      if (this.P.j) {
-         this.a($$0, $$1, $$2, $$3, $$4, a, () -> G);
-      } else if (this.P.e == flu.c.a) {
-         this.a($$0, $$1, $$2, $$3, $$4, C, () -> K);
-      } else if (this.P.e == flu.c.b) {
-         if (this.P.l < 7) {
-            this.a($$0, $$1, $$2, $$3, $$4, b, () -> {
-               if (this.P.l <= 0) {
-                  return H;
-               } else {
-                  return (wy)(this.P.l == 1 ? I : wy.a("mco.selectServer.expires.days", this.P.l));
-               }
-            });
-         } else {
-            this.a($$0, $$1, $$2, $$3, $$4, c, () -> J);
-         }
-      }
-   }
-
-   private void a(fsm $$0, int $$1, int $$2, int $$3, int $$4, alg $$5, Supplier<wy> $$6) {
-      $$0.a(grc::H, $$5, $$1, $$2, 10, 28);
-      if ($$3 >= $$1 && $$3 <= $$1 + 9 && $$4 >= $$2 && $$4 <= $$2 + 27) {
-         this.d($$6.get());
-      }
-   }
-
-   private boolean G() {
-      return this.P != null && this.P.i();
-   }
-
-   private void H() {
-      this.a(this.W);
-      this.a(this.X);
-      this.a(this.Y);
-   }
-
-   private void a(fta $$0) {
-      $$0.k = false;
-   }
-
-   private void b(fta $$0) {
-      $$0.k = true;
-   }
-
-   private void I() {
-      this.a(this.Z);
-   }
-
-   public void a(fma $$0) {
-      fma $$1 = this.P.i.get(this.P.p);
-      $$0.k = $$1.k;
-      $$0.l = $$1.l;
-      fkt $$2 = fkt.a();
+   public static List<fnd> a(String $$0) {
+      List<fnd> $$1 = new ArrayList<>();
 
       try {
-         $$2.a(this.P.a, this.P.p, $$0);
-         this.P.i.put(this.P.p, $$0);
-         if ($$1.g != $$0.g || $$1.h != $$0.h) {
-            fko.g();
+         for (JsonElement $$3 : JsonParser.parseString($$0).getAsJsonObject().get("notifications").getAsJsonArray()) {
+            $$1.add(a($$3.getAsJsonObject()));
          }
-      } catch (fmp var5) {
-         D.error("Couldn't save slot settings", var5);
-         this.m.a(new fnh(var5, this));
-         return;
+      } catch (Exception var5) {
+         a.error("Could not parse list of RealmsNotifications", var5);
       }
 
-      this.m.a(this);
+      return $$1;
    }
 
-   public void a(String $$0, String $$1) {
-      String $$2 = bal.h($$1) ? "" : $$1;
-      fkt $$3 = fkt.a();
-
-      try {
-         $$3.b(this.P.a, $$0, $$2);
-         this.P.a($$0);
-         this.P.b($$2);
-         this.f();
-      } catch (fmp var6) {
-         D.error("Couldn't save settings", var6);
-         this.m.a(new fnh(var6, this));
-         return;
-      }
-
-      this.m.a(this);
-   }
-
-   public void b(boolean $$0) {
-      fnd $$1 = this.g();
-      this.m.a(new fnj($$1, new fos(this.P, $$1, $$0, this.m)));
-   }
-
-   public void b() {
-      fnd $$0 = this.g();
-      this.m.a(new fnj($$0, new fom(this.P, $$0)));
-   }
-
-   public void f() {
-      this.aa = true;
-   }
-
-   private void a(@Nullable fmk $$0) {
-      if ($$0 != null && fmk.a.b == $$0.i) {
-         this.f();
-         this.m.a(new fnj(this.O, new fox(this.P.a, $$0, this.g())));
+   private static fnd a(JsonObject $$0) {
+      UUID $$1 = fpp.a("notificationUuid", $$0, null);
+      if ($$1 == null) {
+         throw new IllegalStateException("Missing required property notificationUuid");
       } else {
-         this.m.a(this);
+         boolean $$2 = fpp.a("dismissable", $$0, true);
+         boolean $$3 = fpp.a("seen", $$0, false);
+         String $$4 = fpp.a("type", $$0);
+         fnd $$5 = new fnd($$1, $$2, $$3, $$4);
+
+         return (fnd)(switch ($$4) {
+            case "visitUrl" -> fnd.c.a($$5, $$0);
+            case "infoPopup" -> fnd.a.a($$5, $$0);
+            default -> $$5;
+         });
       }
    }
 
-   public fnd g() {
-      fnd $$0 = new fnd(this.O, this.Q);
-      $$0.aa = this.aa;
-      return $$0;
+   public static class a extends fnd {
+      private static final String a = "title";
+      private static final String b = "message";
+      private static final String c = "image";
+      private static final String d = "urlButton";
+      private final fnj e;
+      private final fnj f;
+      private final ali g;
+      @Nullable
+      private final fnd.b h;
+
+      private a(fnd $$0, fnj $$1, fnj $$2, ali $$3, @Nullable fnd.b $$4) {
+         super($$0.i, $$0.j, $$0.k, $$0.l);
+         this.e = $$1;
+         this.f = $$2;
+         this.g = $$3;
+         this.h = $$4;
+      }
+
+      public static fnd.a a(fnd $$0, JsonObject $$1) {
+         fnj $$2 = fpp.a("title", $$1, fnj::a);
+         fnj $$3 = fpp.a("message", $$1, fnj::a);
+         ali $$4 = ali.a(fpp.a("image", $$1));
+         fnd.b $$5 = fpp.b("urlButton", $$1, fnd.b::a);
+         return new fnd.a($$0, $$2, $$3, $$4, $$5);
+      }
+
+      @Nullable
+      public fvn a(gad $$0, Consumer<UUID> $$1) {
+         xa $$2 = this.e.a();
+         if ($$2 == null) {
+            fnd.a.warn("Realms info popup had title with no available translation: {}", this.e);
+            return null;
+         } else {
+            fvn.a $$3 = new fvn.a($$0, $$2).a(this.g).a(this.f.a(wz.a));
+            if (this.h != null) {
+               $$3.a(this.h.b.a(fnd.h), $$2x -> {
+                  frd $$3x = frd.Q();
+                  $$3x.a(new fza($$3xx -> {
+                     if ($$3xx) {
+                        ag.n().a(this.h.a);
+                        $$3x.a($$0);
+                     } else {
+                        $$3x.a($$2x);
+                     }
+                  }, this.h.a, true));
+                  $$1.accept(this.c());
+               });
+            }
+
+            $$3.a(wz.h, $$1x -> {
+               $$1x.aP_();
+               $$1.accept(this.c());
+            });
+            $$3.a(() -> $$1.accept(this.c()));
+            return $$3.a();
+         }
+      }
+   }
+
+   static record b(String a, fnj b) {
+      private static final String c = "url";
+      private static final String d = "urlText";
+
+      public static fnd.b a(JsonObject $$0) {
+         String $$1 = fpp.a("url", $$0);
+         fnj $$2 = fpp.a("urlText", $$0, fnj::a);
+         return new fnd.b($$1, $$2);
+      }
+   }
+
+   public static class c extends fnd {
+      private static final String a = "url";
+      private static final String b = "buttonText";
+      private static final String c = "message";
+      private final String d;
+      private final fnj e;
+      private final fnj f;
+
+      private c(fnd $$0, String $$1, fnj $$2, fnj $$3) {
+         super($$0.i, $$0.j, $$0.k, $$0.l);
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+      }
+
+      public static fnd.c a(fnd $$0, JsonObject $$1) {
+         String $$2 = fpp.a("url", $$1);
+         fnj $$3 = fpp.a("buttonText", $$1, fnj::a);
+         fnj $$4 = fpp.a("message", $$1, fnj::a);
+         return new fnd.c($$0, $$2, $$3, $$4);
+      }
+
+      public xa d() {
+         return this.f.a(xa.c("mco.notification.visitUrl.message.default"));
+      }
+
+      public ful a(gad $$0) {
+         xa $$1 = this.e.a(fnd.h);
+         return ful.a($$1, fza.b($$0, this.d)).a();
+      }
    }
 }

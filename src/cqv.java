@@ -1,69 +1,32 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class cqv implements dih {
-   private final crm a;
-   private dij b = new dij();
-   private int c;
+public class cqv {
+   public static bzm<bxu> a(int $$0, int $$1) {
+      return ccy.a(
+         (Function<ccy.b<bxu>, ? extends App<ccy.c<bxu>, cdb<bxu>>>)($$2 -> $$2.group($$2.b(cgw.ae), $$2.b(cgw.M), $$2.a(cgw.af), $$2.a(cgw.ag))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                     if (!$$7.fc().f()) {
+                        return false;
+                     } else {
+                        Optional<Integer> $$9 = $$2.a($$5);
+                        if ($$9.isEmpty()) {
+                           $$5.a(0);
+                        } else {
+                           int $$10 = $$9.get();
+                           if ($$10 > $$0) {
+                              $$3.b();
+                              $$5.b();
+                              $$6.a(true, (long)$$1);
+                           } else {
+                              $$5.a($$10 + 1);
+                           }
+                        }
 
-   public cqv(crm $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public crm x() {
-      return this.a;
-   }
-
-   @Override
-   public void a(@Nullable crm $$0) {
-   }
-
-   @Override
-   public dij gu() {
-      return this.b;
-   }
-
-   @Override
-   public void a(dij $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(dii $$0) {
-      $$0.l();
-   }
-
-   @Override
-   public void i(czn $$0) {
-   }
-
-   @Override
-   public boolean gA() {
-      return this.a.dU().C;
-   }
-
-   @Override
-   public boolean e(crm $$0) {
-      return this.a == $$0;
-   }
-
-   @Override
-   public int t() {
-      return this.c;
-   }
-
-   @Override
-   public void s(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public boolean gv() {
-      return true;
-   }
-
-   @Override
-   public awm gw() {
-      return awn.Cc;
+                        return true;
+                     }
+                  }))
+      );
    }
 }

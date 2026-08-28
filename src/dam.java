@@ -1,43 +1,47 @@
-import java.util.List;
+public class dam extends czu {
+   private final bxc<? extends cuk> a;
 
-public class dam extends czj {
-   public dam(czj.a $$0) {
-      super($$0);
-   }
-
-   public static dcq a() {
-      jg<dmr> $$0 = mg.a(mg.e);
-      return new dcq(
-         List.of(dcq.a.a(jj.a(dmt.bz.p()), 15.0F), dcq.a.b($$0.b(axc.Q), 15.0F), dcq.a.b($$0.b(axc.a), 5.0F), dcq.a.b(jj.a(dmt.fx.p(), dmt.fy.p()), 2.0F)),
-         1.0F,
-         1,
-         true
-      );
+   public dam(bxc<? extends cuk> $$0, czu.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public bug a(ddi $$0) {
-      djm $$1 = $$0.q();
+   public bur a(ddt $$0) {
+      djx $$1 = $$0.q();
       iv $$2 = $$0.a();
-      eat $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dqk $$5 && !$$5.q($$3)) {
-         crm $$6 = $$0.o();
-         czn $$7 = $$0.n();
-         if ($$6 instanceof arr) {
-            aq.N.a((arr)$$6, $$2, $$7);
+      ebe $$3 = $$1.a_($$2);
+      if (!$$3.a(axe.P)) {
+         return bur.d;
+      } else {
+         czy $$4 = $$0.n();
+         eci $$5 = $$3.b() instanceof dmr ? $$3.c(((dmr)$$3.b()).c()) : eci.a;
+         double $$6 = 0.0;
+         if ($$5.b()) {
+            $$6 = 0.5;
          }
 
-         $$1.a($$6, $$2, awn.lR, awo.e, 1.0F, 1.0F);
-         eat $$8 = $$5.p($$3);
-         $$1.b($$2, $$8);
-         $$1.a(eft.c, $$2, eft.a.a($$0.o(), $$8));
-         if ($$6 != null) {
-            $$7.a(1, $$6, bxj.d($$0.p()));
-         }
+         ffq $$7 = new ffq((double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$6, (double)$$2.w() + 0.5);
+         cuk $$8 = cuk.a($$1, $$7.d, $$7.e, $$7.f, this.a, bxb.o, $$4, $$0.o());
+         if ($$8 == null) {
+            return bur.d;
+         } else {
+            if (cuk.b($$1)) {
+               for (bwt $$10 : $$1.a_(null, $$8.cR())) {
+                  if ($$10 instanceof cuk) {
+                     return bur.d;
+                  }
+               }
+            }
 
-         return bug.a;
+            if ($$1 instanceof ars $$11) {
+               $$11.b($$8);
+               $$11.a(ege.t, $$2, ege.a.a($$0.o(), $$11.a_($$2.e())));
+            }
+
+            $$4.h(1);
+            return bur.a;
+         }
       }
-
-      return super.a($$0);
    }
 }

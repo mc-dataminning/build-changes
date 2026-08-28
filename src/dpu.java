@@ -1,48 +1,39 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpu extends dwd implements dmu {
-   private static final double b = 0.7;
-   private static final double c = 10.0;
-   private static final double d = 5.0;
-   private static final int e = 13;
-   private static final int f = 30;
-   public static final MapCodec<dpu> a = b(dpu::new);
+public class dpu extends dts {
+   public static final MapCodec<dpu> b = b(dpu::new);
 
-   public dpu(eas.d $$0) {
+   @Override
+   public MapCodec<dpu> a() {
+      return b;
+   }
+
+   protected dpu(ebd.d $$0) {
       super($$0);
+      this.l(this.C.b().b(a, jb.b));
    }
 
    @Override
-   protected MapCodec<? extends dpu> a() {
-      return a;
+   public ebe a(ddr $$0) {
+      jb $$1 = $$0.k();
+      ebe $$2 = $$0.q().a_($$0.a().a($$1.g()));
+      return $$2.a(this) && $$2.c(a) == $$1 ? this.m().b(a, $$1.g()) : this.m().b(a, $$1);
    }
 
    @Override
-   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
-      if ($$3.a(30) == 0 && $$1.X() && $$1.b(egs.a.f, $$2) <= $$2.v()) {
-         $$1.a($$2, awn.jo, awo.e, 1.0F, 1.0F, false);
+   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
+      jb $$4 = $$0.c(a);
+      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
+      if ($$3.a(5) == 0) {
+         $$1.a(ly.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
       }
-
-      if ($$1.B($$2) <= 13 && $$3.j() <= 0.7) {
-         double $$4 = (double)$$2.u() + $$3.j() * 10.0 - 5.0;
-         double $$5 = (double)$$2.v() + $$3.j() * 5.0;
-         double $$6 = (double)$$2.w() + $$3.j() * 10.0 - 5.0;
-         $$1.a(ly.bj, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      }
    }
 
    @Override
-   public boolean a(djp $$0, iv $$1, eat $$2) {
-      return dmu.a_($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(djm $$0, azv $$1, iv $$2, eat $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iv $$2, eat $$3) {
-      dmu.a((djm)$$0, $$2, $$3).ifPresent($$1x -> $$0.b($$1x, this.m()));
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(a);
    }
 }

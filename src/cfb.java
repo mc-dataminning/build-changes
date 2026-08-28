@@ -1,47 +1,27 @@
-public class cfb extends cef {
-   private final cli a;
-   private int b;
+import javax.annotation.Nullable;
 
-   public cfb(cli $$0) {
-      this.a = $$0;
-      this.a($$0);
-   }
+public class cfb extends cfn {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   @Override
-   public void d() {
-      this.a.gY();
-      this.h();
-   }
-
-   private void h() {
-      awm $$0 = this.a.gX();
-      if ($$0 != null) {
-         this.a.a($$0);
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return false;
+   public cfb(byc $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean b() {
-      this.b++;
-      if (this.b > 0 && this.a.dX().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.ff() && this.a.dX().a(10) == 0;
-      } else {
-         return false;
-      }
+      ars $$0 = (ars)this.b.dV();
+      iv $$1 = this.b.dv();
+      return $$0.c($$1) ? false : super.b();
    }
 
-   private void a(cli $$0) {
-      this.b = -$$0.hc();
-   }
-
+   @Nullable
    @Override
-   public boolean R_() {
-      return true;
+   protected ffq h() {
+      ars $$0 = (ars)this.b.dV();
+      iv $$1 = this.b.dv();
+      jy $$2 = jy.a($$1);
+      jy $$3 = bzn.a($$0, $$2, 2);
+      return $$3 != $$2 ? cin.a(this.b, 10, 7, ffq.c($$3.k()), (float) (Math.PI / 2)) : null;
    }
 }

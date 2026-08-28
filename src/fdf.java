@@ -1,46 +1,47 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
-public record fdf(Optional<by> b, ezt.b c) implements fdc {
+public record fdf(jf<dgl> b, List<Float> c) implements fdq {
    public static final MapCodec<fdf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(by.a.optionalFieldOf("predicate").forGetter(fdf::c), ezt.b.e.fieldOf("entity").forGetter(fdf::d)).apply($$0, fdf::new)
+      $$0 -> $$0.group(dgl.c.fieldOf("enchantment").forGetter(fdf::c), ayw.b(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(fdf::d)).apply($$0, fdf::new)
    );
 
    @Override
-   public fdd b() {
-      return fde.f;
+   public fdr b() {
+      return fds.k;
    }
 
    @Override
-   public Set<bax<?>> a() {
-      return Set.of(fcn.f, this.c.a());
+   public Set<baz<?>> a() {
+      return Set.of(fdb.i);
    }
 
-   public boolean a(ezt $$0) {
-      bwi $$1 = $$0.c(this.c.a());
-      ffc $$2 = $$0.c(fcn.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   public boolean a(fah $$0) {
+      czy $$1 = $$0.c(fdb.i);
+      int $$2 = $$1 != null ? dgn.a(this.b, $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
    }
 
-   public static fdc.a a(ezt.b $$0) {
-      return a($$0, by.a.a());
+   public static fdq.a a(jf<dgl> $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
+      }
+
+      return () -> new fdf($$0, $$2);
    }
 
-   public static fdc.a a(ezt.b $$0, by.a $$1) {
-      return () -> new fdf(Optional.of($$1.b()), $$0);
-   }
-
-   public static fdc.a a(ezt.b $$0, by $$1) {
-      return () -> new fdf(Optional.of($$1), $$0);
-   }
-
-   public Optional<by> c() {
+   public jf<dgl> c() {
       return this.b;
    }
 
-   public ezt.b d() {
+   public List<Float> d() {
       return this.c;
    }
 }

@@ -1,5 +1,23 @@
-public interface ecn {
-   eat a(int var1);
+public enum ecn implements bam {
+   a("straight"),
+   b("inner_left"),
+   c("inner_right"),
+   d("outer_left"),
+   e("outer_right");
 
-   void a(int var1, eat var2);
+   private final String f;
+
+   private ecn(final String $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.f;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
+   }
 }

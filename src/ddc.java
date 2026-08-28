@@ -1,22 +1,46 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ReferenceLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ReferenceSortedSets;
+import java.util.List;
+import java.util.SequencedSet;
 
-public record ddc(jf<awm> c) implements ddb {
-   public static final MapCodec<ddc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(awm.b.fieldOf("sound").forGetter(ddc::b)).apply($$0, ddc::new));
-   public static final yw<wj, ddc> b = yw.a(awm.d, ddc::b, ddc::new);
+public record ddc(boolean d, SequencedSet<kj<?>> e) {
+   private static final Codec<SequencedSet<kj<?>>> f = kj.a.listOf().xmap(ReferenceLinkedOpenHashSet::new, List::copyOf);
+   public static final Codec<ddc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("hide_tooltip", false).forGetter(ddc::a),
+               f.optionalFieldOf("hidden_components", ReferenceSortedSets.emptySet()).forGetter(ddc::b)
+            )
+            .apply($$0, ddc::new)
+   );
+   public static final yy<wl, ddc> b = yy.a(yw.b, ddc::a, kj.b.a(yw.a(ReferenceLinkedOpenHashSet::new)), ddc::b, ddc::new);
+   public static final ddc c = new ddc(false, ReferenceSortedSets.emptySet());
 
-   @Override
-   public ddb.a<ddc> a() {
-      return ddb.a.e;
+   public ddc a(kj<?> $$0, boolean $$1) {
+      if (this.e.contains($$0) == $$1) {
+         return this;
+      } else {
+         SequencedSet<kj<?>> $$2 = new ReferenceLinkedOpenHashSet(this.e);
+         if ($$1) {
+            $$2.add($$0);
+         } else {
+            $$2.remove($$0);
+         }
+
+         return new ddc(this.d, $$2);
+      }
    }
 
-   @Override
-   public boolean a(djm $$0, czn $$1, bxj $$2) {
-      $$0.a(null, $$2.du(), this.c.a(), $$2.dl(), 1.0F, 1.0F);
-      return true;
+   public boolean a(kj<?> $$0) {
+      return !this.d && !this.e.contains($$0);
    }
 
-   public jf<awm> b() {
-      return this.c;
+   public boolean a() {
+      return this.d;
+   }
+
+   public SequencedSet<kj<?>> b() {
+      return this.e;
    }
 }

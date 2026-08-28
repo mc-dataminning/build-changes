@@ -1,59 +1,19 @@
-public interface djo {
-   int H_();
+import java.util.Optional;
 
-   int G_();
+public class djo extends djr {
+   private final bwt a;
 
-   default int ao() {
-      return this.G_() + this.H_() - 1;
+   public djo(bwt $$0) {
+      this.a = $$0;
    }
 
-   default int ap() {
-      return this.ar() - this.aq() + 1;
+   @Override
+   public Optional<Float> a(djq $$0, djb $$1, iv $$2, ebe $$3, exo $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
-   default int aq() {
-      return jy.a(this.G_());
-   }
-
-   default int ar() {
-      return jy.a(this.ao());
-   }
-
-   default boolean d(int $$0) {
-      return $$0 >= this.G_() && $$0 <= this.ao();
-   }
-
-   default boolean t(iv $$0) {
-      return this.e($$0.v());
-   }
-
-   default boolean e(int $$0) {
-      return $$0 < this.G_() || $$0 > this.ao();
-   }
-
-   default int f(int $$0) {
-      return this.g(jy.a($$0));
-   }
-
-   default int g(int $$0) {
-      return $$0 - this.aq();
-   }
-
-   default int h(int $$0) {
-      return $$0 + this.aq();
-   }
-
-   static djo e(final int $$0, final int $$1) {
-      return new djo() {
-         @Override
-         public int H_() {
-            return $$1;
-         }
-
-         @Override
-         public int G_() {
-            return $$0;
-         }
-      };
+   @Override
+   public boolean a(djq $$0, djb $$1, iv $$2, ebe $$3, float $$4) {
+      return this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

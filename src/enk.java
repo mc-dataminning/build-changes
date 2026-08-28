@@ -1,28 +1,28 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class enk extends enj {
-   public static final MapCodec<enk> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, enk::new));
+public class enk implements emp {
+   public static final Codec<enk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               exo.a.fieldOf("state").forGetter($$0x -> $$0x.b),
+               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
+               ju.a(mh.i).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, enk::new)
+   );
+   public final exo b;
+   public final boolean c;
+   public final int d;
+   public final int e;
+   public final jj<dnc> f;
 
-   public enk(btl $$0, btl $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Override
-   protected enp<?> a() {
-      return enp.e;
-   }
-
-   @Override
-   protected void a(djs $$0, eno.b $$1, azv $$2, emy $$3, int $$4, eno.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
+   public enk(exo $$0, boolean $$1, int $$2, int $$3, jj<dnc> $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 }

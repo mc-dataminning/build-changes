@@ -1,252 +1,128 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import io.netty.buffer.ByteBuf;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 
-public final class alg implements Comparable<alg> {
-   public static final Codec<alg> a = Codec.STRING.comapFlatMap(alg::d, alg::toString).stable();
-   public static final yw<ByteBuf, alg> b = yu.p.a(alg::a, alg::toString);
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wy.c("argument.id.invalid"));
-   public static final char d = ':';
-   public static final String e = "minecraft";
-   public static final String f = "realms";
-   private final String h;
-   private final String i;
+public class alg<T> extends akz<T> {
+   private final alg.c b;
 
-   private alg(String $$0, String $$1) {
-      assert j($$0);
-
-      assert i($$1);
-
-      this.h = $$0;
-      this.i = $$1;
+   public static <T> alg<T> a(DynamicOps<T> $$0, jh.a $$1) {
+      return a($$0, new alg.a($$1));
    }
 
-   private static alg d(String $$0, String $$1) {
-      return new alg(e($$0, $$1), f($$0, $$1));
+   public static <T> alg<T> a(DynamicOps<T> $$0, alg.c $$1) {
+      return new alg<>($$0, $$1);
    }
 
-   public static alg a(String $$0, String $$1) {
-      return d($$0, $$1);
+   public static <T> Dynamic<T> a(Dynamic<T> $$0, jh.a $$1) {
+      return new Dynamic($$1.a($$0.getOps()), $$0.getValue());
    }
 
-   public static alg a(String $$0) {
-      return a($$0, ':');
+   private alg(DynamicOps<T> $$0, alg.c $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   public static alg b(String $$0) {
-      return new alg("minecraft", f("minecraft", $$0));
+   public <U> alg<U> a(DynamicOps<U> $$0) {
+      return (alg<U>)($$0 == this.a ? this : new alg((DynamicOps<T>)$$0, this.b));
    }
 
-   @Nullable
-   public static alg c(String $$0) {
-      return b($$0, ':');
+   public <E> Optional<ji<E>> a(alh<? extends js<? extends E>> $$0) {
+      return this.b.a($$0).map(alg.b::a);
    }
 
-   @Nullable
-   public static alg b(String $$0, String $$1) {
-      return j($$0) && i($$1) ? new alg($$0, $$1) : null;
-   }
-
-   public static alg a(String $$0, char $$1) {
-      int $$2 = $$0.indexOf($$1);
-      if ($$2 >= 0) {
-         String $$3 = $$0.substring($$2 + 1);
-         if ($$2 != 0) {
-            String $$4 = $$0.substring(0, $$2);
-            return d($$4, $$3);
-         } else {
-            return b($$3);
-         }
-      } else {
-         return b($$0);
-      }
-   }
-
-   @Nullable
-   public static alg b(String $$0, char $$1) {
-      int $$2 = $$0.indexOf($$1);
-      if ($$2 >= 0) {
-         String $$3 = $$0.substring($$2 + 1);
-         if (!i($$3)) {
-            return null;
-         } else if ($$2 != 0) {
-            String $$4 = $$0.substring(0, $$2);
-            return j($$4) ? new alg($$4, $$3) : null;
-         } else {
-            return new alg("minecraft", $$3);
-         }
-      } else {
-         return i($$0) ? new alg("minecraft", $$0) : null;
-      }
-   }
-
-   public static DataResult<alg> d(String $$0) {
-      try {
-         return DataResult.success(a($$0));
-      } catch (ab var2) {
-         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
-      }
-   }
-
-   public String a() {
-      return this.i;
-   }
-
-   public String b() {
-      return this.h;
-   }
-
-   public alg e(String $$0) {
-      return new alg(this.h, f(this.h, $$0));
-   }
-
-   public alg a(UnaryOperator<String> $$0) {
-      return this.e($$0.apply(this.i));
-   }
-
-   public alg f(String $$0) {
-      return this.e($$0 + this.i);
-   }
-
-   public alg g(String $$0) {
-      return this.e(this.i + $$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.h + ":" + this.i;
+   public <E> Optional<jg<E>> b(alh<? extends js<? extends E>> $$0) {
+      return this.b.a($$0).map(alg.b::b);
    }
 
    @Override
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         alg<?> $$1 = (alg<?>)$$0;
+         return this.a.equals($$1.a) && this.b.equals($$1.b);
       } else {
-         return !($$0 instanceof alg $$1) ? false : this.h.equals($$1.h) && this.i.equals($$1.i);
+         return false;
       }
    }
 
    @Override
    public int hashCode() {
-      return 31 * this.h.hashCode() + this.i.hashCode();
+      return this.a.hashCode() * 31 + this.b.hashCode();
    }
 
-   public int a(alg $$0) {
-      int $$1 = this.i.compareTo($$0.i);
-      if ($$1 == 0) {
-         $$1 = this.h.compareTo($$0.h);
+   public static <E, O> RecordCodecBuilder<O, jg<E>> c(alh<? extends js<? extends E>> $$0) {
+      return ayw.a(
+            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof alg<?> $$2
+                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
+   }
+
+   public static <E, O> RecordCodecBuilder<O, jf.c<E>> d(alh<E> $$0) {
+      alh<? extends js<E>> $$1 = alh.a($$0.b());
+      return ayw.a(
+            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof alg<?> $$3
+                  ? $$3.b
+                     .a($$1)
+                     .flatMap($$1xx -> $$1xx.b().a($$0))
+                     .<DataResult<E>>map(DataResult::success)
+                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
+   }
+
+   static final class a implements alg.c {
+      private final jh.a a;
+      private final Map<alh<? extends js<?>>, Optional<? extends alg.b<?>>> b = new ConcurrentHashMap<>();
+
+      public a(jh.a $$0) {
+         this.a = $$0;
       }
 
-      return $$1;
-   }
-
-   public String c() {
-      return this.toString().replace('/', '_').replace(':', '_');
-   }
-
-   public String d() {
-      return this.h + "." + this.i;
-   }
-
-   public String e() {
-      return this.h.equals("minecraft") ? this.i : this.d();
-   }
-
-   public String h(String $$0) {
-      return $$0 + "." + this.d();
-   }
-
-   public String c(String $$0, String $$1) {
-      return $$0 + "." + this.d() + "." + $$1;
-   }
-
-   private static String c(StringReader $$0) {
-      int $$1 = $$0.getCursor();
-
-      while ($$0.canRead() && a($$0.peek())) {
-         $$0.skip();
+      @Override
+      public <E> Optional<alg.b<E>> a(alh<? extends js<? extends E>> $$0) {
+         return (Optional<alg.b<E>>)this.b.computeIfAbsent($$0, this::b);
       }
 
-      return $$0.getString().substring($$1, $$0.getCursor());
-   }
-
-   public static alg a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = c($$0);
-
-      try {
-         return a($$2);
-      } catch (ab var4) {
-         $$0.setCursor($$1);
-         throw c.createWithContext($$0);
+      private Optional<alg.b<Object>> b(alh<? extends js<?>> $$0) {
+         return this.a.a($$0).map(alg.b::a);
       }
-   }
 
-   public static alg b(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = c($$0);
-      if ($$2.isEmpty()) {
-         throw c.createWithContext($$0);
-      } else {
-         try {
-            return a($$2);
-         } catch (ab var4) {
-            $$0.setCursor($$1);
-            throw c.createWithContext($$0);
-         }
-      }
-   }
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            if ($$0 instanceof alg.a $$1 && this.a.equals($$1.a)) {
+               return true;
+            }
 
-   public static boolean a(char $$0) {
-      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
-   }
-
-   public static boolean i(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!b($$0.charAt($$1))) {
             return false;
          }
       }
 
-      return true;
-   }
-
-   public static boolean j(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!c($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static String e(String $$0, String $$1) {
-      if (!j($$0)) {
-         throw new ab("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$0;
+      @Override
+      public int hashCode() {
+         return this.a.hashCode();
       }
    }
 
-   public static boolean b(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
-   }
-
-   private static boolean c(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
-   }
-
-   private static String f(String $$0, String $$1) {
-      if (!i($$1)) {
-         throw new ab("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$1;
+   public static record b<T>(ji<T> a, jg<T> b, Lifecycle c) {
+      public static <T> alg.b<T> a(jh.b<T> $$0) {
+         return new alg.b<>($$0, $$0, $$0.h());
       }
+   }
+
+   public interface c {
+      <T> Optional<alg.b<T>> a(alh<? extends js<? extends T>> var1);
    }
 }

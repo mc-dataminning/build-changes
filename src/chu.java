@@ -1,28 +1,24 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class chu extends chr<bxj> {
-   @Override
-   public Set<cgl<?>> a() {
-      return ImmutableSet.of(cgl.i);
-   }
+public class chu extends cic<bxw> {
+   private static final long b = 32L;
+   private static final long c = 16L;
+   public static final int a = 32;
 
    @Override
-   protected void a(arq $$0, bxj $$1) {
-      $$1.eb().a(cgl.i, this.a($$1));
+   public Set<cgw<?>> a() {
+      return ImmutableSet.of(cgw.M);
    }
 
-   private List<bxj> a(bxj $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
-   }
-
-   private boolean b(bxj $$0) {
-      return $$0.an() == bwr.bD && $$0.n_();
-   }
-
-   private cgn c(bxj $$0) {
-      return $$0.eb().c(cgl.h).orElse(cgn.a());
+   protected void a(ars $$0, bxw $$1) {
+      byu<?> $$2 = $$1.ec();
+      List<coc> $$3 = $$0.a(coc.class, $$1.cR().c(32.0, 16.0, 32.0), $$0x -> true);
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      Optional<coc> $$4 = $$3.stream().filter($$2x -> $$1.c($$0, $$2x.f())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      $$2.a(cgw.M, $$4);
    }
 }

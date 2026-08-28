@@ -1,25 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class eyu extends eym {
-   private static final int c = -1;
-   public static final Codec<eyu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.optionalFieldOf("map", -1).forGetter($$0x -> $$0x.d)).apply($$0, eyu::new)
-   );
-   public static final eyn<eyu> b = new eyn<>("idcounts", eyu::new, a, bbb.k);
-   private int d;
+public class eyu implements eyv {
+   private final djx b;
 
-   public eyu() {
-      this(-1);
+   public eyu(djx $$0) {
+      this.b = $$0;
    }
 
-   public eyu(int $$0) {
-      this.d = $$0;
+   @Override
+   public void a(jb $$0, ebe $$1, iv $$2, iv $$3, int $$4, int $$5) {
+      eyv.a(this.b, $$0, $$2, $$3, $$1, $$4, $$5 - 1);
    }
 
-   public eyt a() {
-      eyt $$0 = new eyt(++this.d);
-      this.f();
-      return $$0;
+   @Override
+   public void a(iv $$0, dnc $$1, @Nullable eyw $$2) {
+      ebe $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
+   }
+
+   @Override
+   public void a(ebe $$0, iv $$1, dnc $$2, @Nullable eyw $$3, boolean $$4) {
+      eyv.a(this.b, $$0, $$1, $$2, $$3, $$4);
    }
 }

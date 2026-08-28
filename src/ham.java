@@ -1,40 +1,36 @@
-public class ham extends hbm<her, ghv> {
-   private final ghd<her> a;
-   private final hlv b;
+public class ham extends gzo<cpi, hgl, gjz> {
+   public static final ali a = ali.b("textures/entity/slime/slime.png");
 
-   public ham(gyv<her, ghv> $$0, gjp $$1, hlv $$2) {
-      super($$0);
-      this.a = new ght<>($$1.a(gjs.ct));
-      this.b = $$2;
+   public ham(gyi.a $$0) {
+      super($$0, new gjz($$0.a(gld.dg)), 0.25F);
+      this.a(new hdb(this, $$0.f()));
    }
 
-   private boolean a(czn $$0, hlw.d $$1) {
-      dhw $$2 = $$0.a(kk.D);
-      if ($$2 != null && !$$2.d().isEmpty()) {
-         hlw $$3 = this.b.a($$2.d().get());
-         return !$$3.a($$1).isEmpty();
-      } else {
-         return false;
-      }
+   protected float a(hgl $$0) {
+      return (float)$$0.b * 0.25F;
    }
 
-   public void a(fkd $$0, gqr $$1, int $$2, her $$3, float $$4, float $$5) {
-      if (!$$3.z && $$3.ay) {
-         hks $$6 = $$3.a;
-         if ($$6.c() != null) {
-            if (!this.a($$3.W, hlw.d.c)) {
-               $$0.a();
-               if (this.a($$3.W, hlw.d.a)) {
-                  $$0.a(0.0F, -0.053125F, 0.06875F);
-               }
+   protected void a(hgl $$0, flo $$1) {
+      float $$2 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$3 = (float)$$0.b;
+      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
+   }
 
-               fkh $$7 = $$1.getBuffer(grc.d($$6.c()));
-               this.d().a(this.a);
-               this.a.a($$3);
-               this.a.a($$0, $$7, $$2, hjg.d);
-               $$0.b();
-            }
-         }
-      }
+   public ali b(hgl $$0) {
+      return a;
+   }
+
+   public hgl b() {
+      return new hgl();
+   }
+
+   public void a(cpi $$0, hgl $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = azo.h($$2, $$0.f, $$0.e);
+      $$1.b = $$0.gs();
    }
 }

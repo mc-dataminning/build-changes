@@ -1,36 +1,46 @@
 import com.mojang.serialization.Codec;
 
-public class ekr extends ejy<emi> {
-   public ekr(Codec<emi> $$0) {
+public class ekr extends ekk<emw> {
+   public ekr(Codec<emw> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eka<emi> $$0) {
-      dkl $$1 = $$0.b();
+   public boolean a(ekm<emw> $$0) {
+      dkw $$1 = $$0.b();
       iv $$2 = $$0.e();
-      eat $$3 = $$1.a_($$2.e());
-      emi $$4 = $$0.f();
-      azv $$5 = $$0.d();
-      if (!$$3.a(axc.aO)) {
+      azx $$3 = $$0.d();
+      if (!$$1.v($$2)) {
          return false;
       } else {
-         int $$6 = $$2.v();
-         if ($$6 >= $$1.G_() + 1 && $$6 + 1 <= $$1.ao()) {
-            int $$7 = 0;
+         ebe $$4 = $$1.a_($$2.d());
+         if (!$$4.a(dne.em) && !$$4.a(dne.ep) && !$$4.a(dne.pZ)) {
+            return false;
+         } else {
+            $$1.a($$2, dne.et.m(), 2);
 
-            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
-               iv $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
-               eat $$10 = $$4.b.a($$5, $$9);
-               if ($$1.v($$9) && $$9.v() > $$1.G_() && $$10.a($$1, $$9)) {
-                  $$1.a($$9, $$10, 2);
-                  $$7++;
+            for (int $$5 = 0; $$5 < 1500; $$5++) {
+               iv $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
+               if ($$1.a_($$6).l()) {
+                  int $$7 = 0;
+
+                  for (jb $$8 : jb.values()) {
+                     if ($$1.a_($$6.a($$8)).a(dne.et)) {
+                        $$7++;
+                     }
+
+                     if ($$7 > 1) {
+                        break;
+                     }
+                  }
+
+                  if ($$7 == 1) {
+                     $$1.a($$6, dne.et.m(), 2);
+                  }
                }
             }
 
-            return $$7 > 0;
-         } else {
-            return false;
+            return true;
          }
       }
    }

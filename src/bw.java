@@ -18,22 +18,22 @@ public record bw(
             .apply($$0, bw::new)
    );
 
-   public boolean a(bwi $$0) {
+   public boolean a(bwt $$0) {
       if (this.b.isPresent() && $$0.aH() != this.b.get()) {
          return false;
-      } else if (this.c.isPresent() && $$0.bW() != this.c.get()) {
+      } else if (this.c.isPresent() && $$0.bX() != this.c.get()) {
          return false;
-      } else if (this.d.isPresent() && $$0.cg() != this.d.get()) {
+      } else if (this.d.isPresent() && $$0.ch() != this.d.get()) {
          return false;
-      } else if (this.e.isPresent() && $$0.ch() != this.e.get()) {
+      } else if (this.e.isPresent() && $$0.ci() != this.e.get()) {
          return false;
-      } else if (this.f.isPresent() && $$0.ci() != this.f.get()) {
+      } else if (this.f.isPresent() && $$0.cj() != this.f.get()) {
          return false;
       } else {
          if (this.g.isPresent()) {
             boolean var10000;
             label53: {
-               if ($$0 instanceof bxj $$1 && ($$1.fI() || $$1 instanceof crm $$2 && $$2.gj().b)) {
+               if ($$0 instanceof bxu $$1 && ($$1.fJ() || $$1 instanceof crx $$2 && $$2.gk().b)) {
                   var10000 = true;
                   break label53;
                }
@@ -47,7 +47,7 @@ public record bw(
             }
          }
 
-         if (this.h.isPresent() && $$0 instanceof bxj $$4 && $$4.n_() != this.h.get()) {
+         if (this.h.isPresent() && $$0 instanceof bxu $$4 && $$4.n_() != this.h.get()) {
             return false;
          }
 

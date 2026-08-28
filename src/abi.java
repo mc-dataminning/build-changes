@@ -1,17 +1,15 @@
-public class abi {
-   public static final zh<abd> a = a("finish_configuration");
-   public static final zh<abe> b = a("registry_data");
-   public static final zh<abh> c = a("update_enabled_features");
-   public static final zh<abg> d = a("select_known_packs");
-   public static final zh<abf> e = a("reset_chat");
-   public static final zh<abl> f = b("finish_configuration");
-   public static final zh<abm> g = b("select_known_packs");
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-   private static <T extends zf<abc>> zh<T> a(String $$0) {
-      return new zh<>(zg.b, alg.b($$0));
+public record abi(List<aul> b) implements zh<abe> {
+   public static final yy<ByteBuf, abi> a = yy.a(aul.a.a(yw.a()), abi::b, abi::new);
+
+   @Override
+   public zj<abi> a() {
+      return abk.d;
    }
 
-   private static <T extends zf<abk>> zh<T> b(String $$0) {
-      return new zh<>(zg.a, alg.b($$0));
+   public void a(abe $$0) {
+      $$0.a(this);
    }
 }

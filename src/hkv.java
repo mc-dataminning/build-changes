@@ -1,40 +1,144 @@
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public abstract class hkv implements auw, AutoCloseable {
-   private final hjp a;
-   private final alg b;
-   private final Set<auc<?>> c;
+public class hkv {
+   public static final Set<aue<?>> a = Set.of(hmn.b);
+   private static final Logger b = LogUtils.getLogger();
+   private final ali c;
+   private final int d;
+   private final int e;
+   private final int f;
 
-   public hkv(hjs $$0, alg $$1, alg $$2) {
-      this($$0, $$1, $$2, hjl.a);
+   public hkv(ali $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public hkv(hjs $$0, alg $$1, alg $$2, Set<auc<?>> $$3) {
-      this.b = $$2;
-      this.a = new hjp($$1);
-      $$0.a(this.a.f(), this.a);
-      this.c = $$3;
+   public static hkv a(hkz $$0) {
+      return new hkv($$0.e(), $$0.f(), $$0.g(), $$0.h());
    }
 
-   protected hjq a(alg $$0) {
-      return this.a.a($$0);
-   }
+   public hkv.a a(List<hku> $$0, int $$1, Executor $$2) {
+      hkv.a var17;
+      try (brg $$3 = bra.a().c(() -> "stitch " + this.c)) {
+         int $$4 = this.d;
+         hkx<hku> $$5 = new hkx<>($$4, $$4, $$1);
+         int $$6 = Integer.MAX_VALUE;
+         int $$7 = 1 << $$1;
 
-   @Override
-   public final CompletableFuture<Void> reload(auw.a $$0, avd $$1, Executor $$2, Executor $$3) {
-      return hjl.a(this.a).a($$1, this.b, 0, $$2, this.c).thenCompose(hjl.a::a).thenCompose($$0::wait).thenAcceptAsync(this::a, $$3);
-   }
+         for (hku $$8 : $$0) {
+            $$6 = Math.min($$6, Math.min($$8.a(), $$8.b()));
+            int $$9 = Math.min(Integer.lowestOneBit($$8.a()), Integer.lowestOneBit($$8.b()));
+            if ($$9 < $$7) {
+               b.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[]{$$8.c(), $$8.a(), $$8.b(), azo.f($$7), azo.f($$9)});
+               $$7 = $$9;
+            }
 
-   private void a(hjl.a $$0) {
-      try (bqv $$1 = bqp.a().d("upload")) {
-         this.a.a($$0);
+            $$5.a($$8);
+         }
+
+         int $$10 = Math.min($$6, $$7);
+         int $$11 = azo.f($$10);
+         int $$12;
+         if ($$11 < $$1) {
+            b.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[]{this.c, $$1, $$11, $$10});
+            $$12 = $$11;
+         } else {
+            $$12 = $$1;
+         }
+
+         try {
+            $$5.c();
+         } catch (hky var19) {
+            p $$15 = p.a(var19, "Stitching");
+            q $$16 = $$15.a("Stitcher");
+            $$16.a(
+               "Sprites",
+               var19.a().stream().map($$0x -> String.format(Locale.ROOT, "%s[%dx%d]", $$0x.c(), $$0x.a(), $$0x.b())).collect(Collectors.joining(","))
+            );
+            $$16.a("Max Texture Size", $$4);
+            throw new aa($$15);
+         }
+
+         int $$17 = Math.max($$5.a(), this.e);
+         int $$18 = Math.max($$5.b(), this.f);
+         Map<ali, hla> $$19 = this.a($$5, $$17, $$18);
+         hla $$20 = $$19.get(hkp.c());
+         CompletableFuture<Void> $$21;
+         if ($$12 > 0) {
+            $$21 = CompletableFuture.runAsync(() -> $$19.values().forEach($$1xx -> $$1xx.e().a($$12)), $$2);
+         } else {
+            $$21 = CompletableFuture.completedFuture(null);
+         }
+
+         var17 = new hkv.a($$17, $$18, $$12, $$20, $$19, $$21);
       }
+
+      return var17;
    }
 
-   @Override
-   public void close() {
-      this.a.e();
+   public static CompletableFuture<List<hku>> a(hle $$0, List<Function<hle, hku>> $$1, Executor $$2) {
+      List<CompletableFuture<hku>> $$3 = $$1.stream().map($$2x -> CompletableFuture.supplyAsync(() -> (hku)$$2x.apply($$0), $$2)).toList();
+      return ag.d($$3).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).toList());
+   }
+
+   public CompletableFuture<hkv.a> a(avf $$0, ali $$1, int $$2, Executor $$3) {
+      return this.a($$0, $$1, $$2, $$3, a);
+   }
+
+   public CompletableFuture<hkv.a> a(avf $$0, ali $$1, int $$2, Executor $$3, Collection<aue<?>> $$4) {
+      hle $$5 = hle.create($$4);
+      return CompletableFuture.<List<Function<hle, hku>>>supplyAsync(() -> hlg.a($$0, $$1).a($$0), $$3)
+         .thenCompose($$2x -> a($$5, $$2x, $$3))
+         .thenApply($$2x -> this.a($$2x, $$2, $$3));
+   }
+
+   private Map<ali, hla> a(hkx<hku> $$0, int $$1, int $$2) {
+      Map<ali, hla> $$3 = new HashMap<>();
+      $$0.a(($$3x, $$4, $$5) -> $$3.put($$3x.c(), new hla(this.c, $$3x, $$1, $$2, $$4, $$5)));
+      return $$3;
+   }
+
+   public static record a(int a, int b, int c, hla d, Map<ali, hla> e, CompletableFuture<Void> f) {
+      public CompletableFuture<hkv.a> a() {
+         return this.f.thenApply($$0 -> this);
+      }
+
+      public int b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public hla e() {
+         return this.d;
+      }
+
+      public Map<ali, hla> f() {
+         return this.e;
+      }
+
+      public CompletableFuture<Void> g() {
+         return this.f;
+      }
    }
 }

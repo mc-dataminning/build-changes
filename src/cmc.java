@@ -1,47 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public record cmc(jf<awm> e, jf<awm> f, jf<awm> g, jf<awm> h, jf<awm> i, jf<awm> j) {
-   public static final Codec<cmc> a = g();
-   public static final Codec<cmc> b = g();
-   public static final Codec<jf<cmc>> c = ald.a(mh.bn);
-   public static final yw<wj, jf<cmc>> d = yu.b(mh.bn);
+public enum cmc implements bam {
+   a(0, "white"),
+   b(1, "creamy"),
+   c(2, "chestnut"),
+   d(3, "brown"),
+   e(4, "black"),
+   f(5, "gray"),
+   g(6, "dark_brown");
 
-   private static Codec<cmc> g() {
-      return RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  awm.b.fieldOf("ambient_sound").forGetter(cmc::a),
-                  awm.b.fieldOf("death_sound").forGetter(cmc::b),
-                  awm.b.fieldOf("growl_sound").forGetter(cmc::c),
-                  awm.b.fieldOf("hurt_sound").forGetter(cmc::d),
-                  awm.b.fieldOf("pant_sound").forGetter(cmc::e),
-                  awm.b.fieldOf("whine_sound").forGetter(cmc::f)
-               )
-               .apply($$0, cmc::new)
-      );
+   public static final Codec<cmc> h = bam.a(cmc::values);
+   private static final IntFunction<cmc> j = aye.a(cmc::a, values(), aye.a.b);
+   public static final yy<ByteBuf, cmc> i = yw.a(j, cmc::a);
+   private final int k;
+   private final String l;
+
+   private cmc(final int $$0, final String $$1) {
+      this.k = $$0;
+      this.l = $$1;
    }
 
-   public jf<awm> a() {
-      return this.e;
+   public int a() {
+      return this.k;
    }
 
-   public jf<awm> b() {
-      return this.f;
+   public static cmc a(int $$0) {
+      return j.apply($$0);
    }
 
-   public jf<awm> c() {
-      return this.g;
-   }
-
-   public jf<awm> d() {
-      return this.h;
-   }
-
-   public jf<awm> e() {
-      return this.i;
-   }
-
-   public jf<awm> f() {
-      return this.j;
+   @Override
+   public String c() {
+      return this.l;
    }
 }

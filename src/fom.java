@@ -1,53 +1,38 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class fom extends hrm {
+   private static final xa a = xa.c("mco.client.incompatible.title").b(-65536);
+   private static final xa b = xa.b(ac.b().c()).b(-65536);
+   private static final xa c = xa.a("mco.client.unsupported.snapshot.version", b);
+   private static final xa C = xa.a("mco.client.outdated.stable.version", b);
+   private final gad D;
+   private final fxz E = new fxz(this);
 
-public class fom extends foq {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wy c = wy.c("mco.configure.world.closing");
-   private final flu d;
-   private final fnd e;
-
-   public fom(flu $$0, fnd $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public fom(gad $$0) {
+      super(a);
+      this.D = $$0;
    }
 
    @Override
-   public void run() {
-      fkt $$0 = fkt.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
-         try {
-            boolean $$2 = $$0.g(this.d.a);
-            if ($$2) {
-               this.e.f();
-               this.d.e = flu.c.a;
-               a(this.e);
-               break;
-            }
-         } catch (fmq var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to close server", var5);
-            this.a(var5);
-         }
-      }
+   public void aS_() {
+      this.E.a(a, this.p);
+      this.E.c(new fvf(this.E(), this.p).b(true));
+      this.E.b(ful.a(wz.k, $$0 -> this.aP_()).a(200).a());
+      this.E.a($$1 -> {
+         fuj var10000 = this.c($$1);
+      });
+      this.c();
    }
 
    @Override
-   public wy a() {
-      return c;
+   protected void c() {
+      this.E.a();
+   }
+
+   @Override
+   public void aP_() {
+      this.m.a(this.D);
+   }
+
+   private xa E() {
+      return ac.b().g() ? C : c;
    }
 }

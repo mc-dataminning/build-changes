@@ -1,20 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class els {
-   public static final Codec<els> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eqr.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
-            .apply($$0, els::new)
-   );
-   public final jf<eqr> b;
-   public final float c;
-
-   public els(jf<eqr> $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class els extends ekk<eni> {
+   public els(Codec<eni> $$0) {
+      super($$0);
    }
 
-   public boolean a(dkl $$0, ecr $$1, azv $$2, iv $$3) {
-      return this.b.a().a($$0, $$1, $$2, $$3);
+   @Override
+   public boolean a(ekm<eni> $$0) {
+      azx $$1 = $$0.d();
+      eni $$2 = $$0.f();
+      dkw $$3 = $$0.b();
+      iv $$4 = $$0.e();
+      edc $$5 = $$0.c();
+      int $$6 = $$1.a($$2.b.b());
+      erf $$7 = $$2.b.a($$6).a();
+      return $$7.a($$3, $$5, $$1, $$4);
    }
 }

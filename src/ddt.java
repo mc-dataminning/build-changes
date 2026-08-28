@@ -1,36 +1,71 @@
-public interface ddt extends dee<dds> {
-   @Override
-   default dep<ddt> b() {
-      return dep.a;
+import javax.annotation.Nullable;
+
+public class ddt {
+   @Nullable
+   private final crx a;
+   private final buq b;
+   private final ffm c;
+   private final djx d;
+   private final czy e;
+
+   public ddt(crx $$0, buq $$1, ffm $$2) {
+      this($$0.dV(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   @Override
-   deo<? extends ddt> a();
-
-   ddr c();
-
-   default jo<czn> a(dds $$0) {
-      return b($$0);
+   protected ddt(djx $$0, @Nullable crx $$1, buq $$2, czy $$3, ffm $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   static jo<czn> b(dds $$0) {
-      jo<czn> $$1 = jo.a($$0.a(), czn.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         czj $$3 = $$0.a($$2).h();
-         $$1.set($$2, $$3.i());
-      }
-
-      return $$1;
+   protected final ffm j() {
+      return this.c;
    }
 
-   @Override
-   default deh h() {
-      return switch (this.c()) {
-         case a -> deg.a;
-         case c -> deg.c;
-         case b -> deg.b;
-         case d -> deg.d;
-      };
+   public iv a() {
+      return this.c.b();
+   }
+
+   public jb k() {
+      return this.c.c();
+   }
+
+   public ffq l() {
+      return this.c.g();
+   }
+
+   public boolean m() {
+      return this.c.e();
+   }
+
+   public czy n() {
+      return this.e;
+   }
+
+   @Nullable
+   public crx o() {
+      return this.a;
+   }
+
+   public buq p() {
+      return this.b;
+   }
+
+   public djx q() {
+      return this.d;
+   }
+
+   public jb g() {
+      return this.a == null ? jb.c : this.a.cO();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fY();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dL();
    }
 }

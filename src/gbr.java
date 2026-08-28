@@ -1,70 +1,22 @@
-public class gbr extends gby {
-   public static final wy a = wy.c("options.accessibility.title");
+public class gbr extends gas<cwr> {
+   private static final ali G = ali.b("textures/gui/container/hopper.png");
 
-   private static fpw<?>[] a(fpx $$0) {
-      return new fpw[]{
-         $$0.av(),
-         $$0.Z(),
-         $$0.u(),
-         $$0.J(),
-         $$0.q(),
-         $$0.s(),
-         $$0.ab(),
-         $$0.o(),
-         $$0.p(),
-         $$0.C(),
-         $$0.D(),
-         $$0.ae(),
-         $$0.af(),
-         $$0.ag(),
-         $$0.am(),
-         $$0.an(),
-         $$0.ao(),
-         $$0.ar(),
-         $$0.ap(),
-         $$0.aq(),
-         $$0.b(),
-         $$0.a(),
-         $$0.t(),
-         $$0.c(),
-         $$0.w(),
-         $$0.K(),
-         $$0.v()
-      };
-   }
-
-   public gbr(fys $$0, fpx $$1) {
-      super($$0, $$1, a);
+   public gbr(cwr $$0, crw $$1, xa $$2) {
+      super($$0, $$1, $$2);
+      this.u = 133;
+      this.y = this.u - 94;
    }
 
    @Override
-   protected void aO_() {
-      super.aO_();
-      fsy $$0 = this.d.b(this.c.u());
-      if ($$0 != null && !this.m.ad().c().contains("high_contrast")) {
-         $$0.j = false;
-         $$0.a(ful.a(wy.c("options.accessibility.high_contrast.error.tooltip")));
-      }
-
-      fsy $$1 = this.d.b(this.c.K());
-      if ($$1 != null) {
-         $$1.j = this.H();
-      }
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void m() {
-      this.d.a(a(this.c));
-   }
-
-   @Override
-   protected void E() {
-      fws $$0 = this.s.b(fws.e().a(8));
-      $$0.a(fta.a(wy.c("options.accessibility.link"), fxp.b(this, ayh.l)).a());
-      $$0.a(fta.a(wx.d, $$0x -> this.m.a(this.b)).a());
-   }
-
-   private boolean H() {
-      return this.m.s != null && this.m.s.K().b(cuy.d);
+   protected void a(ftx $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gsl::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
    }
 }

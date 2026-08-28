@@ -1,45 +1,12 @@
-public class ahz implements zf<agp> {
-   public static final yw<vu, ahz> a = zf.a(ahz::a, ahz::new);
-   private final cwv b;
-   private final boolean c;
-   private final boolean d;
-
-   public ahz(cwv $$0, boolean $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   private ahz(vu $$0) {
-      this.b = $$0.b(cwv.class);
-      this.c = $$0.readBoolean();
-      this.d = $$0.readBoolean();
-   }
-
-   private void a(vu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-   }
+public record ahz(crv b) implements zh<agr> {
+   public static final yy<vw, ahz> a = yy.a(crv.a, ahz::b, ahz::new);
 
    @Override
-   public zh<ahz> a() {
-      return agn.bW;
+   public zj<ahz> a() {
+      return agp.bU;
    }
 
-   public void a(agp $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
-   }
-
-   public cwv b() {
-      return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

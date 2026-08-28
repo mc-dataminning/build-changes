@@ -1,32 +1,21 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eiu extends eir {
-   public static final Codec<eiu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eir.d.forGetter($$0x -> $$0x),
-               btj.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
-               btj.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
-               btj.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, eiu::new)
-   );
-   public final btj b;
-   public final btj c;
-   final btj j;
+@Deprecated
+public class eiu extends eiv {
+   public static final MapCodec<eiu> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eiu::new));
 
-   public eiu(float $$0, epu $$1, btj $$2, ehm $$3, eis $$4, jj<dmr> $$5, btj $$6, btj $$7, btj $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
-      this.j = $$8;
+   public eiu(ka $$0) {
+      super($$0);
    }
 
-   public eiu(float $$0, epu $$1, btj $$2, ehm $$3, jj<dmr> $$4, btj $$5, btj $$6, btj $$7) {
-      this($$0, $$1, $$2, $$3, eis.a, $$4, $$5, $$6, $$7);
+   @Override
+   protected boolean a(ebe $$0) {
+      return $$0.e();
    }
 
-   public eiu(eir $$0, btj $$1, btj $$2, btj $$3) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
+   @Override
+   public eil<?> a() {
+      return eil.e;
    }
 }

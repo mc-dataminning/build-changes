@@ -1,70 +1,37 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class fge implements fgd {
-   public static final MapCodec<fge> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.optionalFieldOf("Score", 0).forGetter(fge::a),
-               Codec.BOOL.optionalFieldOf("Locked", false).forGetter(fge::b),
-               xa.a.optionalFieldOf("display").forGetter($$0x -> Optional.ofNullable($$0x.d)),
-               yq.b.optionalFieldOf("format").forGetter($$0x -> Optional.ofNullable($$0x.e))
-            )
-            .apply($$0, fge::new)
-   );
-   private int b;
-   private boolean c = true;
+public class fge extends fga {
    @Nullable
-   private wy d;
+   private iv b;
    @Nullable
-   private yo e;
+   private iv c;
 
-   public fge() {
+   protected fge(cuk $$0, boolean $$1) {
+      super($$0, $$1, false);
+      this.a($$0);
    }
 
-   private fge(int $$0, boolean $$1, Optional<wy> $$2, Optional<yo> $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2.orElse(null);
-      this.e = $$3.orElse(null);
+   private void a(cuk $$0) {
+      iv $$1 = $$0.j();
+      ebe $$2 = $$0.dV().a_($$1);
+      boolean $$3 = dmr.h($$2);
+      if ($$3) {
+         this.b = $$1.e();
+         eci $$4 = $$2.c(((dmr)$$2.b()).c());
+         if ($$4.b()) {
+            this.c = switch ($$4) {
+               case c -> $$1.i();
+               case d -> $$1.h();
+               case e -> $$1.f();
+               case f -> $$1.g();
+               default -> null;
+            };
+         }
+      }
    }
 
    @Override
-   public int a() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public boolean b() {
-      return this.c;
-   }
-
-   public void a(boolean $$0) {
-      this.c = $$0;
-   }
-
-   @Nullable
-   public wy d() {
-      return this.d;
-   }
-
-   public void a(@Nullable wy $$0) {
-      this.d = $$0;
-   }
-
-   @Nullable
-   @Override
-   public yo c() {
-      return this.e;
-   }
-
-   public void b(@Nullable yo $$0) {
-      this.e = $$0;
+   public fgk a(ebe $$0, djf $$1, iv $$2) {
+      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : fgh.a();
    }
 }

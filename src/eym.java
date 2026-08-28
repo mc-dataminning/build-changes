@@ -1,37 +1,154 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.Comparator;
+import java.util.Optional;
 
-public abstract class eym {
-   private boolean a;
+public class eym {
+   public static final int a = 3;
+   private static final int b = 16;
+   private static final int c = 128;
+   private static final int d = 5;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = -1;
+   private static final int h = 4;
+   private static final int i = -1;
+   private static final int j = 3;
+   private static final int k = -1;
+   private static final int l = 2;
+   private static final int m = -1;
+   private final ars n;
 
-   public void f() {
-      this.a(true);
+   public eym(ars $$0) {
+      this.n = $$0;
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
+   public Optional<iv> a(iv $$0, boolean $$1, ecw $$2) {
+      ciw $$3 = this.n.A();
+      int $$4 = $$1 ? 16 : 128;
+      $$3.a(this.n, $$0, $$4);
+      return $$3.b($$0x -> $$0x.a(cja.r), $$0, $$4, ciw.b.c)
+         .map(cix::g)
+         .filter($$2::a)
+         .filter($$0x -> this.n.a_($$0x).b(ebu.J))
+         .min(Comparator.<iv>comparingDouble($$1x -> $$1x.j($$0)).thenComparingInt(ka::v));
    }
 
-   public boolean g() {
-      return this.a;
+   public Optional<m.a> a(iv $$0, jb.a $$1) {
+      jb $$2 = jb.a(jb.b.a, $$1);
+      double $$3 = -1.0;
+      iv $$4 = null;
+      double $$5 = -1.0;
+      iv $$6 = null;
+      ecw $$7 = this.n.E_();
+      int $$8 = Math.min(this.n.ao(), this.n.K_() + this.n.l() - 1);
+      int $$9 = 1;
+      iv.a $$10 = $$0.k();
+
+      for (iv.a $$11 : iv.a($$0, 16, jb.f, jb.d)) {
+         int $$12 = Math.min($$8, this.n.a(ehd.a.e, $$11.u(), $$11.w()));
+         if ($$7.a($$11) && $$7.a($$11.c($$2, 1))) {
+            $$11.c($$2.g(), 1);
+
+            for (int $$13 = $$12; $$13 >= this.n.K_(); $$13--) {
+               $$11.q($$13);
+               if (this.a($$11)) {
+                  int $$14 = $$13;
+
+                  while ($$13 > this.n.K_() && this.a($$11.c(jb.a))) {
+                     $$13--;
+                  }
+
+                  if ($$13 + 4 <= $$8) {
+                     int $$15 = $$14 - $$13;
+                     if ($$15 <= 0 || $$15 >= 3) {
+                        $$11.q($$13);
+                        if (this.a($$11, $$10, $$2, 0)) {
+                           double $$16 = $$0.j($$11);
+                           if (this.a($$11, $$10, $$2, -1) && this.a($$11, $$10, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
+                              $$3 = $$16;
+                              $$4 = $$11.j();
+                           }
+
+                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
+                              $$5 = $$16;
+                              $$6 = $$11.j();
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      if ($$3 == -1.0 && $$5 != -1.0) {
+         $$4 = $$6;
+         $$3 = $$5;
+      }
+
+      if ($$3 == -1.0) {
+         int $$17 = Math.max(this.n.K_() - -1, 70);
+         int $$18 = $$8 - 9;
+         if ($$18 < $$17) {
+            return Optional.empty();
+         }
+
+         $$4 = new iv($$0.u() - $$2.j() * 1, azo.a($$0.v(), $$17, $$18), $$0.w() - $$2.l() * 1).j();
+         $$4 = $$7.b($$4);
+         jb $$19 = $$2.h();
+
+         for (int $$20 = -1; $$20 < 2; $$20++) {
+            for (int $$21 = 0; $$21 < 2; $$21++) {
+               for (int $$22 = -1; $$22 < 3; $$22++) {
+                  ebe $$23 = $$22 < 0 ? dne.cy.m() : dne.a.m();
+                  $$10.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
+                  this.n.b($$10, $$23);
+               }
+            }
+         }
+      }
+
+      for (int $$24 = -1; $$24 < 3; $$24++) {
+         for (int $$25 = -1; $$25 < 4; $$25++) {
+            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
+               $$10.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
+               this.n.a($$10, dne.cy.m(), 3);
+            }
+         }
+      }
+
+      ebe $$26 = dne.eu.m().b(dsn.b, $$1);
+
+      for (int $$27 = 0; $$27 < 2; $$27++) {
+         for (int $$28 = 0; $$28 < 3; $$28++) {
+            $$10.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
+            this.n.a($$10, $$26, 18);
+         }
+      }
+
+      return Optional.of(new m.a($$4.j(), 2, 3));
    }
 
-   public static record a(@Nullable arq a, long b) {
-      public a(arq $$0) {
-         this($$0, $$0.E());
+   private boolean a(iv.a $$0) {
+      ebe $$1 = this.n.a_($$0);
+      return $$1.v() && $$1.y().c();
+   }
+
+   private boolean a(iv $$0, iv.a $$1, jb $$2, int $$3) {
+      jb $$4 = $$2.h();
+
+      for (int $$5 = -1; $$5 < 3; $$5++) {
+         for (int $$6 = -1; $$6 < 4; $$6++) {
+            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
+            if ($$6 < 0 && !this.n.a_($$1).e()) {
+               return false;
+            }
+
+            if ($$6 >= 0 && !this.a($$1)) {
+               return false;
+            }
+         }
       }
 
-      public arq a() {
-         return Objects.requireNonNull(this.a);
-      }
-
-      @Nullable
-      public arq b() {
-         return this.a;
-      }
-
-      public long c() {
-         return this.b;
-      }
+      return true;
    }
 }

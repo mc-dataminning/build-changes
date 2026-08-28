@@ -1,88 +1,52 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dqa extends dqu {
-   public static final MapCodec<dqa> a = b(dqa::new);
-   public static final int b = 3;
-   public static final ebt c = ebj.av;
-   private static final int f = 4;
-   private static final int g = 2;
-
-   @Override
-   public MapCodec<dqa> a() {
-      return a;
-   }
-
-   public dqa(eas.d $$0) {
+public abstract class dqa extends dnc implements dpz {
+   public dqa(ebd.d $$0) {
       super($$0);
-      this.l(this.C.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   public void a(eat $$0, djm $$1, iv $$2, eat $$3, boolean $$4) {
-      $$1.a($$2, this, azm.a($$1.C_(), 60, 120));
+   protected abstract MapCodec<? extends dqa> a();
+
+   @Override
+   protected void a(ebe $$0, djx $$1, iv $$2, ebe $$3, boolean $$4) {
+      $$1.a($$2, this, this.b());
    }
 
    @Override
-   protected void a(eat $$0, arq $$1, iv $$2, azv $$3) {
-      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.B($$2) > 11 - $$0.c(c) - $$0.g() && this.e($$0, $$1, $$2)) {
-         iv.a $$4 = new iv.a();
-
-         for (jb $$5 : jb.values()) {
-            $$4.a($$2, $$5);
-            eat $$6 = $$1.a_($$4);
-            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
-               $$1.a($$4, this, azm.a($$3, 20, 40));
-            }
-         }
-      } else {
-         $$1.a($$2, this, azm.a($$3, 20, 40));
-      }
-   }
-
-   private boolean e(eat $$0, djm $$1, iv $$2) {
-      int $$3 = $$0.c(c);
-      if ($$3 < 3) {
-         $$1.a($$2, $$0.b(c, Integer.valueOf($$3 + 1)), 2);
-         return false;
-      } else {
-         this.d($$0, $$1, $$2);
-         return true;
-      }
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      $$2.a($$3, this, this.b());
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void a(eat $$0, djm $$1, iv $$2, dmr $$3, @Nullable eyi $$4, boolean $$5) {
-      if ($$3.m().a(this) && this.a($$1, $$2, 2)) {
-         this.d($$0, $$1, $$2);
+   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      if (n($$1.a_($$2.e())) && $$2.v() >= $$1.K_()) {
+         cob $$4 = cob.a($$1, $$2, $$0);
+         this.a($$4);
       }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private boolean a(diq $$0, iv $$1, int $$2) {
-      int $$3 = 0;
-      iv.a $$4 = new iv.a();
+   protected void a(cob $$0) {
+   }
 
-      for (jb $$5 : jb.values()) {
-         $$4.a($$1, $$5);
-         if ($$0.a_($$4).a(this)) {
-            if (++$$3 >= $$2) {
-               return false;
-            }
+   protected int b() {
+      return 2;
+   }
+
+   public static boolean n(ebe $$0) {
+      return $$0.l() || $$0.a(axe.aN) || $$0.n() || $$0.v();
+   }
+
+   @Override
+   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
+      if ($$3.a(16) == 0) {
+         iv $$4 = $$2.e();
+         if (n($$1.a_($$4))) {
+            azs.a($$1, $$2, $$3, new lq(ly.C, $$0));
          }
       }
-
-      return true;
    }
 
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   protected czn a(djp $$0, iv $$1, eat $$2, boolean $$3) {
-      return czn.k;
-   }
+   public abstract int b(ebe var1, djb var2, iv var3);
 }

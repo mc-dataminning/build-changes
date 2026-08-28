@@ -1,3 +1,3 @@
-public interface bui extends cwn {
-   wy m_();
+public interface bui {
+   void a();
 }

@@ -1,11 +1,26 @@
-public class hae extends gvn<cpg> {
-   private static final alg a = alg.b("textures/entity/hoglin/zoglin.png");
+public class hae extends gzo<cpe, hgf, gjo> {
+   private static final ali a = ali.b("textures/entity/illager/ravager.png");
 
-   public hae(gwy.a $$0) {
-      super($$0, gjs.ef, gjs.eg, 0.7F);
+   public hae(gyi.a $$0) {
+      super($$0, new gjo($$0.a(gld.cJ)), 1.1F);
    }
 
-   public alg a(hdt $$0) {
+   public ali a(hgf $$0) {
       return a;
+   }
+
+   public hgf b() {
+      return new hgf();
+   }
+
+   public void a(cpe $$0, hgf $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = (float)$$0.q() > 0.0F ? (float)$$0.q() - $$2 : 0.0F;
+      $$1.b = (float)$$0.m() > 0.0F ? (float)$$0.m() - $$2 : 0.0F;
+      if ($$0.gB() > 0) {
+         $$1.c = ((float)(20 - $$0.gB()) + $$2) / 20.0F;
+      } else {
+         $$1.c = 0.0F;
+      }
    }
 }

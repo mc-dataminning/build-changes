@@ -1,26 +1,20 @@
-public abstract class ffa {
-   protected final ffc a;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.server.MinecraftServer;
 
-   protected ffa(ffc $$0) {
-      this.a = $$0;
+public record ffa(ali b) implements ffb<MinecraftServer> {
+   public static final MapCodec<ffa> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ali.a.fieldOf("Name").forGetter(ffa::b)).apply($$0, ffa::new));
+
+   public void a(MinecraftServer $$0, ffd<MinecraftServer> $$1, long $$2) {
+      alx $$3 = $$0.aE();
+
+      for (hx<ej> $$5 : $$3.b(this.b)) {
+         $$3.a($$5, $$3.c());
+      }
    }
 
-   public double a(bwi $$0) {
-      double $$1 = this.a.d - $$0.dz();
-      double $$2 = this.a.e - $$0.dB();
-      double $$3 = this.a.f - $$0.dF();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public abstract ffa.a d();
-
-   public ffc g() {
-      return this.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public MapCodec<ffa> a() {
+      return a;
    }
 }

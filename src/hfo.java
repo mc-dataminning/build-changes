@@ -1,6 +1,3 @@
-import javax.annotation.Nullable;
-
-public interface hfo {
-   @Nullable
-   cqz a();
+public class hfo extends hep {
+   public long a;
 }

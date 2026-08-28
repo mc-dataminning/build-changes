@@ -1,17 +1,20 @@
-public abstract class hmx extends hmw implements hnp {
-   private boolean n;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   protected hmx(awm $$0, awo $$1, azv $$2) {
-      super($$0, $$1, $$2);
+public record hmx(boolean e, boolean f) {
+   public static final boolean a = false;
+   public static final boolean b = false;
+   public static final Codec<hmx> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("blur", false).forGetter(hmx::a), Codec.BOOL.optionalFieldOf("clamp", false).forGetter(hmx::b))
+            .apply($$0, hmx::new)
+   );
+   public static final aue<hmx> d = new aue<>("texture", c);
+
+   public boolean a() {
+      return this.e;
    }
 
-   @Override
-   public boolean m() {
-      return this.n;
-   }
-
-   protected final void n() {
-      this.n = true;
-      this.i = false;
+   public boolean b() {
+      return this.f;
    }
 }

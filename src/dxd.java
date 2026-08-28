@@ -1,21 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxd extends dnk {
-   public static final MapCodec<dxd> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cyl.q.fieldOf("color").forGetter(dxd::b), t()).apply($$0, dxd::new));
-   private final cyl c;
+public class dxd extends dup implements dwy {
+   public static final MapCodec<dxd> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dwy.a.e.fieldOf("weathering_state").forGetter(dof::c), t()).apply($$0, dxd::new)
+   );
+   private final dwy.a e;
 
    @Override
    public MapCodec<dxd> a() {
-      return b;
+      return d;
    }
 
-   protected dxd(cyl $$0, eas.d $$1) {
+   public dxd(dwy.a $$0, ebd.d $$1) {
       super($$1);
-      this.c = $$0;
+      this.e = $$0;
    }
 
-   public cyl b() {
-      return this.c;
+   @Override
+   protected void b(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected boolean f(ebe $$0) {
+      return dwy.c($$0.b()).isPresent();
+   }
+
+   public dwy.a q() {
+      return this.e;
    }
 }

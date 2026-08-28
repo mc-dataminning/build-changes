@@ -1,41 +1,38 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+public class gkx extends gjy {
+   private final gle a;
+   private final gle b;
 
-public class gkx {
-   private final aun a = auq.c();
-   private final Map<auj, String> b;
-
-   public gkx() {
-      this.a.a();
-      Builder<auj, String> $$0 = ImmutableMap.builder();
-      this.a.d().forEach($$1 -> {
-         ato $$2 = $$1.a();
-         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
-      });
-      this.b = $$0.build();
+   public gkx(gle $$0) {
+      super($$0);
+      this.a = $$0.b("head");
+      this.b = this.a.b("jaw");
    }
 
-   public List<auj> a(List<auj> $$0) {
-      List<auj> $$1 = new ArrayList<>($$0.size());
-      List<String> $$2 = new ArrayList<>($$0.size());
-
-      for (auj $$3 : $$0) {
-         String $$4 = this.b.get($$3);
-         if ($$4 != null) {
-            $$2.add($$4);
-            $$1.add($$3);
-         }
-      }
-
-      this.a.b($$2);
-      return $$1;
+   public static glk a() {
+      glm $$0 = new glm();
+      glo $$1 = $$0.a();
+      float $$2 = -16.0F;
+      glo $$3 = $$1.a(
+         "head",
+         glj.c()
+            .a("upper_lip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
+            .a("upper_head", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
+            .a(true)
+            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
+            .a(false)
+            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
+         glg.a(0.0F, -7.986666F, 0.0F).b(0.75F)
+      );
+      $$3.a("jaw", glj.c().a(176, 65).a("jaw", -6.0F, 0.0F, -16.0F, 12.0F, 4.0F, 16.0F), glg.a(0.0F, 4.0F, -8.0F));
+      return glk.a($$0, 256, 256);
    }
 
-   public aus a() {
-      List<atp> $$0 = this.a.h();
-      return new auv(atr.b, $$0);
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.b.e = (float)(Math.sin((double)($$0 * (float) Math.PI * 0.2F)) + 1.0) * 0.2F;
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
    }
 }

@@ -1,48 +1,37 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
+import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
-public class cac<E extends bxl> extends cad<E> {
-   private final axr<dmr> m;
-   private final float n;
-   private final List<cad.a> o = new ArrayList<>();
-   private boolean p;
+public class cac {
+   public static bzm<crj> a(float $$0, int $$1) {
+      return ccy.a((Function<ccy.b<crj>, ? extends App<ccy.c<crj>, cdb<crj>>>)($$2 -> $$2.group($$2.c(cgw.n)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.c($$4.dv())) {
+                  return false;
+               } else {
+                  ciw $$6 = $$3.A();
+                  int $$7 = $$6.a(jy.a($$4.dv()));
+                  ffq $$8 = null;
 
-   public cac(btr $$0, int $$1, int $$2, float $$3, Function<E, awm> $$4, axr<dmr> $$5, float $$6, BiPredicate<E, iv> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
-   }
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     ffq $$10 = ciq.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(jy.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(jy.a(iv.a((jp)$$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
 
-   @Override
-   protected void a(arq $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.dX().i() < this.n;
-   }
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
+                        }
+                     }
+                  }
 
-   @Override
-   protected Optional<cad.a> a(arq $$0) {
-      if (!this.p) {
-         return super.a($$0);
-      } else {
-         iv.a $$1 = new iv.a();
+                  if ($$8 != null) {
+                     $$2x.a(new cgz($$8, $$0, $$1));
+                  }
 
-         while (!this.h.isEmpty()) {
-            Optional<cad.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               cad.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.a(), jb.a)).a(this.m)) {
-                  return $$2;
+                  return true;
                }
-
-               this.o.add($$3);
-            }
-         }
-
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
-      }
+            })));
    }
 }

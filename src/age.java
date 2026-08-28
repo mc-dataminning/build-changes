@@ -1,29 +1,30 @@
-public record age(float b, boolean c) implements zf<abu> {
-   public static final yw<vu, age> a = zf.a(age::a, age::new);
+import java.util.Set;
 
-   private age(vu $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
-   }
+public record age(int b, byh c, Set<byi> d, boolean e) implements zh<abw> {
+   public static final yy<vw, age> a = yy.a(yw.h, age::b, byh.a, age::e, byi.m, age::f, yw.b, age::g, age::new);
 
-   public static age a(bup $$0) {
-      return new age($$0.f(), $$0.l());
-   }
-
-   private void a(vu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public static age a(int $$0, byh $$1, Set<byi> $$2, boolean $$3) {
+      return new age($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public zh<age> a() {
-      return agn.cq;
+   public zj<age> a() {
+      return agp.bd;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public byh e() {
       return this.c;
+   }
+
+   public Set<byi> f() {
+      return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

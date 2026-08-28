@@ -2,11 +2,11 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public class sd extends tn {
-   public static final alf<Consumer<sp>> a = a("always_pass");
+   public static final alh<Consumer<sp>> a = a("always_pass");
    public static final Consumer<sp> b = sp::e;
 
-   private static alf<Consumer<sp>> a(String $$0) {
-      return alf.a(mh.ay, alg.b($$0));
+   private static alh<Consumer<sp>> a(String $$0) {
+      return alh.a(mh.ay, ali.b($$0));
    }
 
    public static Consumer<sp> a(js<Consumer<sp>> $$0) {
@@ -16,7 +16,7 @@ public class sd extends tn {
    }
 
    @Override
-   public void a(BiConsumer<alf<Consumer<sp>>, Consumer<sp>> $$0) {
+   public void a(BiConsumer<alh<Consumer<sp>>, Consumer<sp>> $$0) {
       $$0.accept(a, b);
    }
 }

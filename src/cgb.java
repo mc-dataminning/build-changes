@@ -1,20 +1,41 @@
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cgb<T extends bxj> extends cfy<T> {
-   private final byf i;
+public class cgb<T extends bxw> extends ceq {
+   private final T a;
+   private final czy b;
+   private final Predicate<? super T> c;
+   @Nullable
+   private final awo d;
 
-   public cgb(byf $$0, Class<T> $$1, boolean $$2, @Nullable chy.a $$3) {
-      super($$0, $$1, 10, $$2, false, $$3);
-      this.i = $$0;
+   public cgb(T $$0, czy $$1, @Nullable awo $$2, Predicate<? super T> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = $$3;
    }
 
    @Override
    public boolean b() {
-      return !this.i.q() && super.b();
+      return this.c.test(this.a);
    }
 
    @Override
    public boolean c() {
-      return this.d != null ? this.d.a(a(this.e), this.e, this.c) : super.c();
+      return this.a.fz();
+   }
+
+   @Override
+   public void d() {
+      this.a.a(bxd.a, this.b.v());
+      this.a.c(buq.a);
+   }
+
+   @Override
+   public void e() {
+      this.a.a(bxd.a, czy.k);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.dY().i() * 0.2F + 0.9F);
+      }
    }
 }

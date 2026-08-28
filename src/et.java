@@ -20,7 +20,7 @@ public class et implements ArgumentType<tz> {
    }
 
    public tz a(StringReader $$0) throws CommandSyntaxException {
-      return ux.a($$0);
+      return uz.c($$0);
    }
 
    public Collection<String> getExamples() {

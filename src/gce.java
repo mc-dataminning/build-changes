@@ -1,181 +1,137 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.ArrayUtils;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class gce extends ftg<gce.b> {
-   private static final int a = 20;
-   final gcf m;
-   private int n;
+public class gce extends gbu<cxq> {
+   private static final ali G = ali.b("container/smithing/error");
+   private static final ali H = ali.b("container/slot/smithing_template_armor_trim");
+   private static final ali I = ali.b("container/slot/smithing_template_netherite_upgrade");
+   private static final xa J = xa.c("container.upgrade.missing_template_tooltip");
+   private static final xa K = xa.c("container.upgrade.error_tooltip");
+   private static final List<ali> L = List.of(H, I);
+   private static final int M = 44;
+   private static final int N = 15;
+   private static final int O = 28;
+   private static final int P = 21;
+   private static final int Q = 65;
+   private static final int R = 46;
+   private static final int S = 115;
+   private static final int T = 210;
+   private static final int U = 25;
+   private static final Vector3f V = new Vector3f();
+   private static final Quaternionf W = new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI);
+   private static final int X = 25;
+   private static final int Y = 75;
+   private static final int Z = 141;
+   private final gbj aa = new gbj(0);
+   private final gbj ab = new gbj(1);
+   private final gbj ac = new gbj(2);
+   @Nullable
+   private cnr ad;
 
-   public gce(gcf $$0, fpt $$1) {
-      super($$1, $$0.n, $$0.s.d(), $$0.s.c(), 20);
-      this.m = $$0;
-      fpr[] $$2 = (fpr[])ArrayUtils.clone($$1.n.V);
-      Arrays.sort((Object[])$$2);
-      String $$3 = null;
-
-      for (fpr $$4 : $$2) {
-         String $$5 = $$4.f();
-         if (!$$5.equals($$3)) {
-            $$3 = $$5;
-            this.b(new gce.a(wy.c($$5)));
-         }
-
-         wy $$6 = wy.c($$4.h());
-         int $$7 = $$1.h.a($$6);
-         if ($$7 > this.n) {
-            this.n = $$7;
-         }
-
-         this.b(new gce.c($$4, $$6));
-      }
-   }
-
-   public void b() {
-      fpr.d();
-      this.c();
-   }
-
-   public void c() {
-      this.aE_().forEach(gce.b::c);
+   public gce(cxq $$0, crw $$1, xa $$2) {
+      super($$0, $$1, $$2, ali.b("textures/gui/container/smithing.png"));
+      this.v = 44;
+      this.w = 15;
    }
 
    @Override
-   public int a() {
-      return 340;
+   protected void G() {
+      this.ad = new cnr(this.m.s, 0.0, 0.0, 0.0);
+      this.ad.b(true);
+      this.ad.a(true);
+      this.ad.aV = 210.0F;
+      this.ad.x(25.0F);
+      this.ad.aX = this.ad.dL();
+      this.ad.aY = this.ad.dL();
+      this.b(this.z.b(3).g());
    }
 
-   public class a extends gce.b {
-      final wy b;
-      private final int c;
+   @Override
+   public void E() {
+      super.E();
+      Optional<dbc> $$0 = this.H();
+      this.aa.a(L);
+      this.ab.a($$0.map(dbc::c).orElse(List.of()));
+      this.ac.a($$0.map(dbc::n).orElse(List.of()));
+   }
 
-      public a(final wy $$1) {
-         this.b = $$1;
-         this.c = gce.this.c.h.a(this.b);
-      }
+   private Optional<dbc> H() {
+      czy $$0 = this.z.b(0).g();
+      return !$$0.f() && $$0.h() instanceof dbc $$1 ? Optional.of($$1) : Optional.empty();
+   }
 
-      @Override
-      public void a(fsm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.b(gce.this.c.h, this.b, gce.this.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, -1);
-      }
+   @Override
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2);
+   }
 
-      @Nullable
-      @Override
-      public fsj a(fxd $$0) {
-         return null;
-      }
+   @Override
+   protected void a(ftx $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.aa.a(this.z, $$0, $$1, this.C, this.D);
+      this.ab.a(this.z, $$0, $$1, this.C, this.D);
+      this.ac.a(this.z, $$0, $$1, this.C, this.D);
+      gbt.a($$0, (float)(this.C + 141), (float)(this.D + 75), 25.0F, V, W, null, this.ad);
+   }
 
-      @Override
-      public List<? extends fux> aE_() {
-         return Collections.emptyList();
-      }
-
-      @Override
-      public List<? extends fwv> b() {
-         return ImmutableList.of(new fwv() {
-            @Override
-            public fwv.a w() {
-               return fwv.a.b;
-            }
-
-            @Override
-            public void b(fwx $$0) {
-               $$0.a(fww.a, a.this.b);
-            }
-         });
-      }
-
-      @Override
-      protected void c() {
+   @Override
+   public void a(cvq $$0, int $$1, czy $$2) {
+      if ($$1 == 3) {
+         this.b($$2);
       }
    }
 
-   public abstract static class b extends ftg.a<gce.b> {
-      abstract void c();
+   private void b(czy $$0) {
+      if (this.ad != null) {
+         for (bxd $$1 : bxd.j) {
+            this.ad.a($$1, czy.k);
+         }
+
+         if (!$$0.f()) {
+            dih $$2 = $$0.a(kk.D);
+            bxd $$3 = $$2 != null ? $$2.b() : bxd.b;
+            this.ad.a($$3, $$0.v());
+         }
+      }
    }
 
-   public class c extends gce.b {
-      private static final wy b = wy.c("controls.reset");
-      private static final int c = 10;
-      private final fpr d;
-      private final wy e;
-      private final fta f;
-      private final fta g;
-      private boolean h = false;
+   @Override
+   protected void c(ftx $$0, int $$1, int $$2) {
+      if (this.I()) {
+         $$0.a(gsl::H, G, $$1 + 65, $$2 + 46, 28, 21);
+      }
+   }
 
-      c(final fpr $$1, final wy $$2) {
-         this.d = $$1;
-         this.e = $$2;
-         this.f = fta.a($$2, $$1x -> {
-            gce.this.m.a = $$1;
-            gce.this.b();
-         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? wy.a("narrator.controls.unbound", $$2) : wy.a("narrator.controls.bound", $$2, $$2x.get())).a();
-         this.g = fta.a(b, $$1x -> {
-            $$1.b($$1.i());
-            gce.this.b();
-         }).a(0, 0, 50, 20).a($$1x -> wy.a("narrator.controls.reset", $$2)).a();
-         this.c();
+   private void d(ftx $$0, int $$1, int $$2) {
+      Optional<xa> $$3 = Optional.empty();
+      if (this.I() && this.a(65, 46, 28, 21, (double)$$1, (double)$$2)) {
+         $$3 = Optional.of(K);
       }
 
-      @Override
-      public void a(fsm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = gce.this.l() - this.g.A() - 10;
-         int $$11 = $$2 - 2;
-         this.g.c($$10, $$11);
-         this.g.a($$0, $$6, $$7, $$9);
-         int $$12 = $$10 - 5 - this.f.A();
-         this.f.c($$12, $$11);
-         this.f.a($$0, $$6, $$7, $$9);
-         $$0.b(gce.this.c.h, this.e, $$3, $$2 + $$5 / 2 - 9 / 2, -1);
-         if (this.h) {
-            int $$13 = 3;
-            int $$14 = this.f.F() - 6;
-            $$0.a($$14, $$2 - 1, $$14 + 3, $$2 + $$5, -65536);
-         }
-      }
-
-      @Override
-      public List<? extends fux> aE_() {
-         return ImmutableList.of(this.f, this.g);
-      }
-
-      @Override
-      public List<? extends fwv> b() {
-         return ImmutableList.of(this.f, this.g);
-      }
-
-      @Override
-      protected void c() {
-         this.f.b(this.d.k());
-         this.g.j = !this.d.l();
-         this.h = false;
-         xm $$0 = wy.i();
-         if (!this.d.j()) {
-            for (fpr $$1 : gce.this.c.n.V) {
-               if ($$1 != this.d && this.d.b($$1)) {
-                  if (this.h) {
-                     $$0.f(", ");
-                  }
-
-                  this.h = true;
-                  $$0.b(wy.c($$1.h()));
-               }
+      if (this.B != null) {
+         czy $$4 = this.z.b(0).g();
+         czy $$5 = this.B.g();
+         if ($$4.f()) {
+            if (this.B.d == 0) {
+               $$3 = Optional.of(J);
+            }
+         } else if ($$4.h() instanceof dbc $$6 && $$5.f()) {
+            if (this.B.d == 1) {
+               $$3 = Optional.of($$6.a());
+            } else if (this.B.d == 2) {
+               $$3 = Optional.of($$6.b());
             }
          }
-
-         if (this.h) {
-            this.f.b(wy.b("[ ").b(this.f.B().f().a(o.p)).f(" ]").a(o.m));
-            this.f.a(ful.a(wy.a("controls.keybinds.duplicateKeybinds", $$0)));
-         } else {
-            this.f.a(null);
-         }
-
-         if (gce.this.m.a == this.d) {
-            this.f.b(wy.b("> ").b(this.f.B().f().a(o.p, o.t)).f(" <").a(o.o));
-         }
       }
+
+      $$3.ifPresent($$3x -> $$0.b(this.p, this.p.c($$3x, 115), $$1, $$2));
+   }
+
+   private boolean I() {
+      return this.z.m();
    }
 }

@@ -1,77 +1,67 @@
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bua {
-   public static final String a = "Items";
-
-   public static czn a(List<czn> $$0, int $$1, int $$2) {
-      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).f() && $$2 > 0 ? $$0.get($$1).a($$2) : czn.k;
-   }
-
-   public static czn a(List<czn> $$0, int $$1) {
-      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, czn.k) : czn.k;
-   }
-
-   public static tz a(tz $$0, jo<czn> $$1, jh.a $$2) {
-      return a($$0, $$1, true, $$2);
-   }
-
-   public static tz a(tz $$0, jo<czn> $$1, boolean $$2, jh.a $$3) {
-      uf $$4 = new uf();
-
-      for (int $$5 = 0; $$5 < $$1.size(); $$5++) {
-         czn $$6 = $$1.get($$5);
-         if (!$$6.f()) {
-            tz $$7 = new tz();
-            $$7.a("Slot", (byte)$$5);
-            $$4.add($$6.b($$3, $$7));
+public class bua extends btu {
+   public static final MapCodec<bua> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, bua::new)
+      )
+      .validate(
+         $$0 -> {
+            if ($$0.d < $$0.b) {
+               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
+            } else {
+               return $$0.e > $$0.d - $$0.b
+                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
+                  : DataResult.success($$0);
+            }
          }
-      }
+      );
+   private final float b;
+   private final float d;
+   private final float e;
 
-      if (!$$4.isEmpty() || $$2) {
-         $$0.a("Items", $$4);
-      }
-
-      return $$0;
+   public static bua a(float $$0, float $$1, float $$2) {
+      return new bua($$0, $$1, $$2);
    }
 
-   public static void b(tz $$0, jo<czn> $$1, jh.a $$2) {
-      uf $$3 = $$0.d("Items", 10);
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         tz $$5 = $$3.a($$4);
-         int $$6 = $$5.d("Slot") & 255;
-         if ($$6 >= 0 && $$6 < $$1.size()) {
-            $$1.set($$6, czn.a($$2, $$5).orElse(czn.k));
-         }
-      }
+   private bua(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static int a(btz $$0, Predicate<czn> $$1, int $$2, boolean $$3) {
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         czn $$6 = $$0.a($$5);
-         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
-         if ($$7 > 0 && !$$3 && $$6.f()) {
-            $$0.a($$5, czn.k);
-         }
-
-         $$4 += $$7;
-      }
-
-      return $$4;
+   @Override
+   public float a(azx $$0) {
+      float $$1 = this.d - this.b;
+      float $$2 = ($$1 - this.e) / 2.0F;
+      float $$3 = $$1 - $$2;
+      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
    }
 
-   public static int a(czn $$0, Predicate<czn> $$1, int $$2, boolean $$3) {
-      if ($$0.f() || !$$1.test($$0)) {
-         return 0;
-      } else if ($$3) {
-         return $$0.M();
-      } else {
-         int $$4 = $$2 < 0 ? $$0.M() : Math.min($$2, $$0.M());
-         $$0.h($$4);
-         return $$4;
-      }
+   @Override
+   public float a() {
+      return this.b;
+   }
+
+   @Override
+   public float b() {
+      return this.d;
+   }
+
+   @Override
+   public btv<?> c() {
+      return btv.d;
+   }
+
+   @Override
+   public String toString() {
+      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
    }
 }

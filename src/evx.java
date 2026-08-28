@@ -1,11 +1,9 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public interface evx {
-   Codec<evx> c = mg.n.q().dispatch(evx::a, evy::codec);
+public abstract class evx {
+   public static final Codec<evx> c = mg.m.q().dispatch("predicate_type", evx::a, evy::codec);
 
-   @Nullable
-   tz a(azv var1, @Nullable tz var2);
+   public abstract boolean a(ebe var1, azx var2);
 
-   evy<?> a();
+   protected abstract evy<?> a();
 }

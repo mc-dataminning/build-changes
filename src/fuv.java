@@ -1,36 +1,59 @@
-import javax.annotation.Nullable;
+public class fuv extends fui {
+   private final ftv a;
+   private final fvf c;
 
-public abstract class fuv implements fuw {
-   @Nullable
-   private fux a;
-   private boolean b;
+   public fuv(int $$0, int $$1, int $$2, int $$3, xa $$4, ftv $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.c = new fvf($$4, $$5).d(this.A() - this.b());
+   }
 
-   @Override
-   public final boolean aH_() {
-      return this.b;
+   public fuv a(int $$0) {
+      this.c.c($$0);
+      return this;
    }
 
    @Override
-   public final void b_(boolean $$0) {
-      this.b = $$0;
-   }
-
-   @Nullable
-   @Override
-   public fux aI_() {
-      return this.a;
+   public void h(int $$0) {
+      super.h($$0);
+      this.c.d(this.A() - this.b());
    }
 
    @Override
-   public void a(@Nullable fux $$0) {
-      if (this.a != null) {
-         this.a.a(false);
-      }
+   protected int c() {
+      return this.c.y();
+   }
 
-      if ($$0 != null) {
-         $$0.a(true);
-      }
+   @Override
+   protected double o() {
+      return 9.0;
+   }
 
-      this.a = $$0;
+   @Override
+   protected void c(ftx $$0) {
+      super.c($$0);
+   }
+
+   public boolean q() {
+      return super.j();
+   }
+
+   @Override
+   protected void c(ftx $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)this.e(), (float)this.p(), 0.0F);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fyi $$0) {
+      $$0.a(fyh.a, this.B());
+   }
+
+   @Override
+   public void b(xa $$0) {
+      super.b($$0);
+      this.c.b($$0);
    }
 }

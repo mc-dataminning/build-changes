@@ -1,41 +1,43 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiConsumer;
+import java.util.Optional;
 
-public class eph extends epg {
-   public static final MapCodec<eph> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eph::new));
+public class eph extends epl {
+   public static final MapCodec<eph> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eph::new, $$0 -> $$0.b);
+   private final float b;
 
-   public eph(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public eph(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected epk<?> a() {
-      return epk.d;
+   protected epm<?> a() {
+      return epm.d;
    }
 
    @Override
-   public List<eno.a> a(djs $$0, BiConsumer<iv, eat> $$1, azv $$2, int $$3, iv $$4, emy $$5) {
-      List<eno.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
+   public void a(epl.a $$0) {
+      azx $$1 = $$0.b();
+      List<iv> $$2 = $$0.c();
+      if (!$$2.isEmpty()) {
+         if (!($$1.i() >= this.b)) {
+            List<iv> $$3 = new ArrayList<>($$2);
+            ag.c($$3, $$1);
+            Optional<iv> $$4 = $$3.stream().filter($$1x -> {
+               for (jb $$2x : jb.values()) {
+                  if (!$$0.a($$1x.a($$2x), $$0xx -> $$0xx.a(axe.u))) {
+                     return false;
+                  }
+               }
 
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + azm.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + azm.a($$8) * (float)$$11);
-            iv $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
+               return true;
+            }).findFirst();
+            if (!$$4.isEmpty()) {
+               $$0.a($$4.get(), dne.cE.m().b(doy.c, eby.b).b(doy.d, Boolean.valueOf(true)));
+            }
          }
-
-         $$6.add(new eno.a($$4.b($$9, $$7, $$10), -2, false));
       }
-
-      return $$6;
    }
 }

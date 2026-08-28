@@ -1,53 +1,123 @@
-import ca.weblite.objc.Client;
-import ca.weblite.objc.NSObject;
-import com.sun.jna.Pointer;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Base64;
-import java.util.Locale;
-import java.util.Optional;
-import org.lwjgl.glfw.GLFWNativeCocoa;
+import com.mojang.logging.LogUtils;
+import java.util.function.Supplier;
+import org.lwjgl.opengl.EXTDebugLabel;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GLCapabilities;
+import org.lwjgl.opengl.KHRDebug;
+import org.slf4j.Logger;
 
-public class fiw {
-   public static final boolean a = System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("mac");
-   private static final int b = 8;
-   private static final int c = 16384;
+public abstract class fiw {
+   private static final Logger a = LogUtils.getLogger();
 
-   public static void a(long $$0) {
-      c($$0).filter(fiw::a).ifPresent(fiw::c);
+   public void a(fit $$0) {
    }
 
-   public static void b(long $$0) {
-      c($$0).ifPresent($$0x -> {
-         long $$1 = b($$0x);
-         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
-      });
+   public void a(fjc $$0) {
    }
 
-   private static Optional<NSObject> c(long $$0) {
-      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
-      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
+   public void a(fjb $$0) {
    }
 
-   private static boolean a(NSObject $$0) {
-      return (b($$0) & 16384L) != 0L;
+   public void a(fiy $$0) {
    }
 
-   private static long b(NSObject $$0) {
-      return (Long)$$0.sendRaw("styleMask", new Object[0]);
+   public void a(fje.c $$0) {
    }
 
-   private static void c(NSObject $$0) {
-      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
+   public static fiw a(GLCapabilities $$0, boolean $$1) {
+      if ($$1) {
+         if ($$0.GL_KHR_debug) {
+            return new fiw.a();
+         }
+
+         if ($$0.GL_EXT_debug_label) {
+            return new fiw.c();
+         }
+
+         a.warn("Debug labels unavailable: neither KHR_debug nor EXT_debug_label are supported");
+      }
+
+      return new fiw.b();
    }
 
-   public static void a(auu<InputStream> $$0) throws IOException {
-      try (InputStream $$1 = $$0.get()) {
-         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
-         Client $$3 = Client.getInstance();
-         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
-         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
-         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
+   public boolean a() {
+      return false;
+   }
+
+   static class a extends fiw {
+      private final int a = GL11.glGetInteger(33512);
+
+      @Override
+      public void a(fit $$0) {
+         $$0.d();
+         Supplier<String> $$1 = $$0.e;
+         if ($$1 != null) {
+            KHRDebug.glObjectLabel(33504, $$0.f, ban.a($$1.get(), this.a, true));
+         }
+      }
+
+      @Override
+      public void a(fjc $$0) {
+         KHRDebug.glObjectLabel(5890, $$0.a, ban.a($$0.e(), this.a, true));
+      }
+
+      @Override
+      public void a(fjb $$0) {
+         KHRDebug.glObjectLabel(33505, $$0.b(), ban.a($$0.c(), this.a, true));
+      }
+
+      @Override
+      public void a(fiy $$0) {
+         KHRDebug.glObjectLabel(33506, $$0.b(), ban.a($$0.c(), this.a, true));
+      }
+
+      @Override
+      public void a(fje.c $$0) {
+         KHRDebug.glObjectLabel(32884, $$0.a, ban.a($$0.b.toString(), this.a, true));
+      }
+
+      @Override
+      public boolean a() {
+         return true;
+      }
+   }
+
+   static class b extends fiw {
+   }
+
+   static class c extends fiw {
+      @Override
+      public void a(fit $$0) {
+         $$0.d();
+         Supplier<String> $$1 = $$0.e;
+         if ($$1 != null) {
+            EXTDebugLabel.glLabelObjectEXT(37201, $$0.f, ban.a($$1.get(), 256, true));
+         }
+      }
+
+      @Override
+      public void a(fjc $$0) {
+         EXTDebugLabel.glLabelObjectEXT(5890, $$0.a, ban.a($$0.e(), 256, true));
+      }
+
+      @Override
+      public void a(fjb $$0) {
+         EXTDebugLabel.glLabelObjectEXT(35656, $$0.b(), ban.a($$0.c(), 256, true));
+      }
+
+      @Override
+      public void a(fiy $$0) {
+         EXTDebugLabel.glLabelObjectEXT(35648, $$0.b(), ban.a($$0.c(), 256, true));
+      }
+
+      @Override
+      public void a(fje.c $$0) {
+         EXTDebugLabel.glLabelObjectEXT(32884, $$0.a, ban.a($$0.b.toString(), 256, true));
+      }
+
+      @Override
+      public boolean a() {
+         return true;
       }
    }
 }

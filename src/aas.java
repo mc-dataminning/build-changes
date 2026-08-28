@@ -1,31 +1,26 @@
-public record aas(iv c, String d, int e) implements aai {
-   public static final yw<vu, aas> a = aai.a(aas::a, aas::new);
-   public static final aai.b<aas> b = aai.a("debug/poi_added");
+public record aas(long c, iv d) implements aak {
+   public static final yy<vw, aas> a = aak.a(aas::a, aas::new);
+   public static final aak.b<aas> b = aak.a("debug/neighbors_update");
 
-   private aas(vu $$0) {
-      this($$0.e(), $$0.p(), $$0.readInt());
+   private aas(vw $$0) {
+      this($$0.m(), $$0.e());
    }
 
-   private void a(vu $$0) {
+   private void a(vw $$0) {
       $$0.a(this.c);
       $$0.a(this.d);
-      $$0.q(this.e);
    }
 
    @Override
-   public aai.b<aas> a() {
+   public aak.b<aas> a() {
       return b;
    }
 
-   public iv b() {
+   public long b() {
       return this.c;
    }
 
-   public String c() {
+   public iv c() {
       return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

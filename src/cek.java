@@ -1,37 +1,28 @@
-public class cek extends cef {
-   private final ckb a;
-   private boolean b;
+import java.util.EnumSet;
 
-   public cek(ckb $$0) {
+public class cek extends ceq {
+   private final bxw a;
+
+   public cek(bxw $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(ceq.a.c));
+      $$0.O().a(true);
    }
 
    @Override
    public boolean b() {
-      if (!(this.a.e() instanceof arr $$0)) {
-         return false;
-      } else {
-         boolean $$1 = !$$0.V_() && !$$0.gj().b && !$$0.bh() && !$$0.av;
-         return !this.a.gt() && $$1 && this.a.gJ();
-      }
+      return this.a.bi() && this.a.b(axj.a) > this.a.dp() || this.a.bv();
    }
 
    @Override
-   public boolean Q_() {
-      return !this.b;
-   }
-
-   @Override
-   public void d() {
-      this.b = false;
+   public boolean V_() {
+      return true;
    }
 
    @Override
    public void a() {
-      if (!this.b && !this.a.x() && !this.a.O_()) {
-         if (this.a.e() instanceof arr $$0 && this.a.cQ().c($$0.cQ())) {
-            this.b = this.a.b($$0);
-         }
+      if (this.a.dY().i() < 0.8F) {
+         this.a.N().a();
       }
    }
 }

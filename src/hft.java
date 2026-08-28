@@ -1,5 +1,3 @@
-public class hft extends hdf {
-   public boolean a;
-   public float b;
-   public float c;
+public class hft extends hfs {
+   public float n = -1.0F;
 }

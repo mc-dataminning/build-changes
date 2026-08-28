@@ -1,79 +1,59 @@
+import java.time.Duration;
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.WeakHashMap;
 import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import jdk.jfr.consumer.RecordedEvent;
 
-public class bsb {
-   public static final bsb a = new bsb();
-   private final WeakHashMap<bsd, Void> b = new WeakHashMap<>();
-
-   private bsb() {
+public record bsb(Instant a, long b, bsb.b c) {
+   public static bsb a(RecordedEvent $$0) {
+      return new bsb($$0.getStartTime(), $$0.getLong("heapUsed"), $$0.getString("when").equalsIgnoreCase("before gc") ? bsb.b.a : bsb.b.b);
    }
 
-   public void a(bsd $$0) {
-      this.b.put($$0, null);
+   public static bsb.a a(Duration $$0, List<bsb> $$1, Duration $$2, int $$3) {
+      return new bsb.a($$0, $$2, $$3, a($$1));
    }
 
-   public List<bsa> a() {
-      Map<String, List<bsa>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bw().stream()).collect(Collectors.groupingBy(bsa::d));
-      return a($$0);
+   private static double a(List<bsb> $$0) {
+      long $$1 = 0L;
+      Map<bsb.b, List<bsb>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.c));
+      List<bsb> $$3 = $$2.get(bsb.b.a);
+      List<bsb> $$4 = $$2.get(bsb.b.b);
+
+      for (int $$5 = 1; $$5 < $$3.size(); $$5++) {
+         bsb $$6 = $$3.get($$5);
+         bsb $$7 = $$4.get($$5 - 1);
+         $$1 += $$6.b - $$7.b;
+      }
+
+      Duration $$8 = Duration.between($$0.get(1).a, $$0.get($$0.size() - 1).a);
+      return (double)$$1 / (double)$$8.getSeconds();
    }
 
-   private static List<bsa> a(Map<String, List<bsa>> $$0) {
-      return $$0.entrySet().stream().map($$0x -> {
-         String $$1 = (String)$$0x.getKey();
-         List<bsa> $$2 = (List<bsa>)$$0x.getValue();
-         return (bsa)($$2.size() > 1 ? new bsb.a($$1, $$2) : $$2.get(0));
-      }).collect(Collectors.toList());
+   public static record a(Duration a, Duration b, int c, double d) {
+      public float a() {
+         return (float)this.b.toMillis() / (float)this.a.toMillis();
+      }
+
+      public Duration b() {
+         return this.a;
+      }
+
+      public Duration c() {
+         return this.b;
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public double e() {
+         return this.d;
+      }
    }
 
-   static class a extends bsa {
-      private final List<bsa> b;
-
-      a(String $$0, List<bsa> $$1) {
-         super($$0, $$1.get(0).e(), () -> c($$1), () -> b($$1), a($$1));
-         this.b = $$1;
-      }
-
-      private static bsa.c a(List<bsa> $$0) {
-         return $$1 -> $$0.stream().anyMatch($$1x -> $$1x.a != null ? $$1x.a.test($$1) : false);
-      }
-
-      private static void b(List<bsa> $$0) {
-         for (bsa $$1 : $$0) {
-            $$1.a();
-         }
-      }
-
-      private static double c(List<bsa> $$0) {
-         double $$1 = 0.0;
-
-         for (bsa $$2 : $$0) {
-            $$1 += $$2.c().getAsDouble();
-         }
-
-         return $$1 / (double)$$0.size();
-      }
-
-      @Override
-      public boolean equals(@Nullable Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 == null || this.getClass() != $$0.getClass()) {
-            return false;
-         } else if (!super.equals($$0)) {
-            return false;
-         } else {
-            bsb.a $$1 = (bsb.a)$$0;
-            return this.b.equals($$1.b);
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(super.hashCode(), this.b);
-      }
+   static enum b {
+      a,
+      b;
    }
 }

@@ -1,75 +1,24 @@
 import com.mojang.serialization.Codec;
 
-public class elj extends ejy<emx> {
-   public elj(Codec<emx> $$0) {
+public class elj extends ekk<enb> {
+   public elj(Codec<enb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eka<emx> $$0) {
-      emx $$1 = $$0.f();
-      dkl $$2 = $$0.b();
-      iv $$3 = $$0.e();
-      if (!$$2.a_($$3.d()).a($$1.f)) {
-         return false;
-      } else if ($$1.c && !$$2.a_($$3.e()).a($$1.f)) {
-         return false;
-      } else {
-         eat $$4 = $$2.a_($$3);
-         if (!$$4.l() && !$$4.a($$1.f)) {
-            return false;
-         } else {
-            int $$5 = 0;
-            int $$6 = 0;
-            if ($$2.a_($$3.h()).a($$1.f)) {
-               $$6++;
-            }
+   public boolean a(ekm<enb> $$0) {
+      enb $$1 = $$0.f();
+      azx $$2 = $$0.d();
+      dkw $$3 = $$0.b();
+      edc $$4 = $$0.c();
+      iv $$5 = $$0.e();
 
-            if ($$2.a_($$3.i()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.f()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.g()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.e()).a($$1.f)) {
-               $$6++;
-            }
-
-            int $$7 = 0;
-            if ($$2.v($$3.h())) {
-               $$7++;
-            }
-
-            if ($$2.v($$3.i())) {
-               $$7++;
-            }
-
-            if ($$2.v($$3.f())) {
-               $$7++;
-            }
-
-            if ($$2.v($$3.g())) {
-               $$7++;
-            }
-
-            if ($$2.v($$3.e())) {
-               $$7++;
-            }
-
-            if ($$6 == $$1.d && $$7 == $$1.e) {
-               $$2.a($$3, $$1.b.g(), 2);
-               $$2.a($$3, $$1.b.a(), 0);
-               $$5++;
-            }
-
-            return $$5 > 0;
+      for (eme $$6 : $$1.b) {
+         if ($$2.i() < $$6.c) {
+            return $$6.a($$3, $$4, $$2, $$5);
          }
       }
+
+      return $$1.c.a().a($$3, $$4, $$2, $$5);
    }
 }

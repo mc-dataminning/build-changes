@@ -1,45 +1,16 @@
-public class abz implements zf<abu> {
-   public static final yw<vu, abz> a = zf.a(abz::a, abz::new);
-   private final int b;
-   private final iv c;
-   private final int d;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   public abz(int $$0, iv $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   private abz(vu $$0) {
-      this.b = $$0.l();
-      this.c = $$0.e();
-      this.d = $$0.readUnsignedByte();
-   }
-
-   private void a(vu $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.l(this.d);
-   }
+public record abz(Object2IntMap<aww<?>> b) implements zh<abw> {
+   private static final yy<wl, Object2IntMap<aww<?>>> c = yw.a(Object2IntOpenHashMap::new, aww.a, yw.h);
+   public static final yy<wl, abz> a = c.a(abz::new, abz::b);
 
    @Override
-   public zh<abz> a() {
-      return agn.g;
+   public zj<abz> a() {
+      return agp.e;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public iv e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

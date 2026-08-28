@@ -1,25 +1,43 @@
-import java.util.function.Predicate;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public class dis {
-   private final ffc a;
-   private final ffc b;
-   private final Predicate<eat> c;
+public interface dis {
+   void a(@Nullable crx var1);
 
-   public dis(ffc $$0, ffc $$1, Predicate<eat> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   @Nullable
+   crx x();
+
+   diu gv();
+
+   void a(diu var1);
+
+   void a(dit var1);
+
+   void i(czy var1);
+
+   int t();
+
+   void s(int var1);
+
+   boolean gw();
+
+   awo gx();
+
+   default boolean gF() {
+      return false;
    }
 
-   public ffc a() {
-      return this.b;
+   default void a(crx $$0, xa $$1, int $$2) {
+      OptionalInt $$3 = $$0.a(new buz(($$0x, $$1x, $$2x) -> new cxb($$0x, $$1x, this), $$1));
+      if ($$3.isPresent()) {
+         diu $$4 = this.gv();
+         if (!$$4.isEmpty()) {
+            $$0.a($$3.getAsInt(), $$4, $$2, this.t(), this.gw(), this.gF());
+         }
+      }
    }
 
-   public ffc b() {
-      return this.a;
-   }
+   boolean gB();
 
-   public Predicate<eat> c() {
-      return this.c;
-   }
+   boolean e(crx var1);
 }

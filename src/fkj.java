@@ -1,158 +1,130 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public record fkj(int i, int j, fkj.a k, fkj.b l, int m) {
-   public static final int a = 32;
-   private static final fkj[] n = new fkj[32];
-   private static final List<fkj> o = new ArrayList<>(32);
-   public static final fkj b = a(0, 0, fkj.a.a, fkj.b.a, 3);
-   public static final fkj c = a(1, 0, fkj.a.b, fkj.b.c, 4);
-   public static final fkj d = a(2, 0, fkj.a.a, fkj.b.d, 2);
-   public static final fkj e = d;
-   public static final fkj f = a(3, 1, fkj.a.e, fkj.b.d, 2);
-   public static final fkj g = a(4, 2, fkj.a.e, fkj.b.d, 2);
-   public static final fkj h = a(5, 0, fkj.a.c, fkj.b.b, 3);
+public final class fkj {
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final int f;
+   private static final Pattern g = Pattern.compile("(\\d+)x(\\d+)(?:@(\\d+)(?::(\\d+))?)?");
 
-   public fkj(int i, int j, fkj.a k, fkj.b l, int m) {
-      if (i < 0 || i >= n.length) {
-         throw new IllegalArgumentException("Element ID must be in range [0; " + n.length + ")");
-      } else if (!this.a(j, l)) {
-         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
+   public fkj(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+   }
+
+   public fkj(Buffer $$0) {
+      this.a = $$0.width();
+      this.b = $$0.height();
+      this.c = $$0.redBits();
+      this.d = $$0.greenBits();
+      this.e = $$0.blueBits();
+      this.f = $$0.refreshRate();
+   }
+
+   public fkj(GLFWVidMode $$0) {
+      this.a = $$0.width();
+      this.b = $$0.height();
+      this.c = $$0.redBits();
+      this.d = $$0.greenBits();
+      this.e = $$0.blueBits();
+      this.f = $$0.refreshRate();
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public int e() {
+      return this.e;
+   }
+
+   public int f() {
+      return this.f;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         fkj $$1 = (fkj)$$0;
+         return this.a == $$1.a && this.b == $$1.b && this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f;
       } else {
-         this.i = i;
-         this.j = j;
-         this.k = k;
-         this.l = l;
-         this.m = m;
+         return false;
       }
    }
 
-   public static fkj a(int $$0, int $$1, fkj.a $$2, fkj.b $$3, int $$4) {
-      fkj $$5 = new fkj($$0, $$1, $$2, $$3, $$4);
-      if (n[$$0] != null) {
-         throw new IllegalArgumentException("Duplicate element registration for: " + $$0);
-      } else {
-         n[$$0] = $$5;
-         o.add($$5);
-         return $$5;
-      }
-   }
-
-   private boolean a(int $$0, fkj.b $$1) {
-      return $$0 == 0 || $$1 == fkj.b.d;
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b, this.c, this.d, this.e, this.f);
    }
 
    @Override
    public String toString() {
-      return this.m + "," + this.l + "," + this.k + " (" + this.i + ")";
+      return String.format(Locale.ROOT, "%sx%s@%s (%sbit)", this.a, this.b, this.f, this.c + this.d + this.e);
    }
 
-   public int a() {
-      return 1 << this.i;
-   }
+   public static Optional<fkj> a(@Nullable String $$0) {
+      if ($$0 == null) {
+         return Optional.empty();
+      } else {
+         try {
+            Matcher $$1 = g.matcher($$0);
+            if ($$1.matches()) {
+               int $$2 = Integer.parseInt($$1.group(1));
+               int $$3 = Integer.parseInt($$1.group(2));
+               String $$4 = $$1.group(3);
+               int $$5;
+               if ($$4 == null) {
+                  $$5 = 60;
+               } else {
+                  $$5 = Integer.parseInt($$4);
+               }
 
-   public int b() {
-      return this.k.a() * this.m;
-   }
+               String $$7 = $$1.group(4);
+               int $$8;
+               if ($$7 == null) {
+                  $$8 = 24;
+               } else {
+                  $$8 = Integer.parseInt($$7);
+               }
 
-   public void a(int $$0, long $$1, int $$2) {
-      this.l.g.setupBufferState(this.m, this.k.b(), $$2, $$1, $$0);
-   }
-
-   @Nullable
-   public static fkj a(int $$0) {
-      return n[$$0];
-   }
-
-   public static Stream<fkj> b(int $$0) {
-      return o.stream().filter($$1 -> $$1 != null && ($$0 & $$1.a()) != 0);
-   }
-
-   public int c() {
-      return this.i;
-   }
-
-   public int d() {
-      return this.j;
-   }
-
-   public fkj.a e() {
-      return this.k;
-   }
-
-   public fkj.b f() {
-      return this.l;
-   }
-
-   public int g() {
-      return this.m;
-   }
-
-   public static enum a {
-      a(4, "Float", 5126),
-      b(1, "Unsigned Byte", 5121),
-      c(1, "Byte", 5120),
-      d(2, "Unsigned Short", 5123),
-      e(2, "Short", 5122),
-      f(4, "Unsigned Int", 5125),
-      g(4, "Int", 5124);
-
-      private final int h;
-      private final String i;
-      private final int j;
-
-      private a(final int $$0, final String $$1, final int $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
-      }
-
-      public int a() {
-         return this.h;
-      }
-
-      public int b() {
-         return this.j;
-      }
-
-      @Override
-      public String toString() {
-         return this.i;
-      }
-   }
-
-   public static enum b {
-      a("Position", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3)),
-      b("Normal", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
-      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
-      d("UV", ($$0, $$1, $$2, $$3, $$4) -> {
-         if ($$1 == 5126) {
-            GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3);
-         } else {
-            GlStateManager._vertexAttribIPointer($$4, $$0, $$1, $$2, $$3);
+               int $$10 = $$8 / 3;
+               return Optional.of(new fkj($$2, $$3, $$10, $$10, $$10, $$5));
+            }
+         } catch (Exception var9) {
          }
-      }),
-      e("Generic", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3));
 
-      private final String f;
-      final fkj.b.a g;
-
-      private b(final String $$0, final fkj.b.a $$1) {
-         this.f = $$0;
-         this.g = $$1;
+         return Optional.empty();
       }
+   }
 
-      @Override
-      public String toString() {
-         return this.f;
-      }
-
-      @FunctionalInterface
-      interface a {
-         void setupBufferState(int var1, int var2, int var3, long var4, int var6);
-      }
+   public String g() {
+      return String.format(Locale.ROOT, "%sx%s@%s:%s", this.a, this.b, this.f, this.c + this.d + this.e);
    }
 }

@@ -1,80 +1,93 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public abstract class fbg implements fbh {
-   protected final List<fdc> g;
-   private final Predicate<ezt> a;
+public class fbg extends fbu {
+   public static final MapCodec<fbg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  mg.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(ech::f).toList())
+               )
+            )
+            .apply($$0, fbg::new)
+   );
+   private final jf<dnc> b;
+   private final Set<ech<?>> c;
 
-   protected fbg(List<fdc> $$0) {
-      this.g = $$0;
-      this.a = ag.a($$0);
+   fbg(List<fdq> $$0, jf<dnc> $$1, Set<ech<?>> $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   private fbg(List<fdq> $$0, jf<dnc> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public abstract fbi<? extends fbg> b();
-
-   protected static <T extends fbg> P1<Mu<T>, List<fdc>> a(Instance<T> $$0) {
-      return $$0.group(fdc.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
+   public fbw<fbg> b() {
+      return fbx.D;
    }
-
-   public final czn b(czn $$0, ezt $$1) {
-      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
-   }
-
-   protected abstract czn a(czn var1, ezt var2);
 
    @Override
-   public void a(ezz $$0) {
-      fbh.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
-      }
+   public Set<baz<?>> a() {
+      return Set.of(fdb.g);
    }
 
-   protected static fbg.a<?> a(Function<List<fdc>, fbh> $$0) {
-      return new fbg.b($$0);
+   @Override
+   protected czy a(czy $$0, fah $$1) {
+      ebe $$2 = $$1.c(fdb.g);
+      if ($$2 != null) {
+         $$0.a(kk.aq, dby.a, $$1x -> {
+            for (ech<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
+            }
+
+            return $$1x;
+         });
+      }
+
+      return $$0;
    }
 
-   public abstract static class a<T extends fbg.a<T>> implements fbh.a, fcu<T> {
-      private final Builder<fdc> a = ImmutableList.builder();
-
-      public T a(fdc.a $$0) {
-         this.a.add($$0.build());
-         return this.c();
-      }
-
-      public final T f() {
-         return this.c();
-      }
-
-      protected abstract T c();
-
-      protected List<fdc> g() {
-         return this.a.build();
-      }
+   public static fbg.a a(dnc $$0) {
+      return new fbg.a($$0);
    }
 
-   static final class b extends fbg.a<fbg.b> {
-      private final Function<List<fdc>, fbh> a;
+   public static class a extends fbu.a<fbg.a> {
+      private final jf<dnc> a;
+      private final Builder<ech<?>> b = ImmutableSet.builder();
 
-      public b(Function<List<fdc>, fbh> $$0) {
-         this.a = $$0;
+      a(dnc $$0) {
+         this.a = $$0.p();
       }
 
-      protected fbg.b a() {
+      public fbg.a a(ech<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
+
+      protected fbg.a a() {
          return this;
       }
 
       @Override
-      public fbh b() {
-         return this.a.apply(this.g());
+      public fbv b() {
+         return new fbg(this.g(), this.a, this.b.build());
       }
    }
 }

@@ -1,51 +1,67 @@
 import java.util.EnumSet;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class cfw extends cgf {
-   private final cjp a;
+public class cfw extends ceq {
+   private static final int a = 10;
+   private final byc b;
+   private final int c;
    @Nullable
-   private bxj b;
-   private final chy c = chy.a().a(64.0);
+   private iv d;
 
-   public cfw(cjp $$0) {
-      super($$0, false, true);
-      this.a = $$0;
-      this.a(EnumSet.of(cef.a.d));
+   public cfw(byc $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
+      this.a(EnumSet.of(ceq.a.a));
    }
 
    @Override
    public boolean b() {
-      fex $$0 = this.a.cQ().c(10.0, 8.0, 10.0);
-      arq $$1 = a(this.a);
-      List<? extends bxj> $$2 = $$1.a(cqy.class, this.c, this.a, $$0);
-      List<crm> $$3 = $$1.a(this.c, this.a, $$0);
-
-      for (bxj $$4 : $$2) {
-         cqy $$5 = (cqy)$$4;
-
-         for (crm $$6 : $$3) {
-            int $$7 = $$5.f($$6);
-            if ($$7 <= -100) {
-               this.b = $$6;
-            }
-         }
-      }
-
-      if (this.b == null) {
+      if (this.b.cX()) {
+         return false;
+      } else if (this.b.dV().V()) {
+         return false;
+      } else if (this.b.dY().a(this.c) != 0) {
          return false;
       } else {
-         if (this.b instanceof crm $$8 && ($$8.V_() || $$8.b())) {
+         ars $$0 = (ars)this.b.dV();
+         iv $$1 = this.b.dv();
+         if (!$$0.a($$1, 6)) {
             return false;
+         } else {
+            ffq $$2 = ciq.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(jy.a($$1x))));
+            this.d = $$2 == null ? null : iv.a((jp)$$2);
+            return this.d != null;
          }
-
-         return true;
       }
    }
 
    @Override
-   public void d() {
-      this.a.g(this.b);
-      super.d();
+   public boolean c() {
+      return this.d != null && !this.b.O().k() && this.b.O().g().equals(this.d);
+   }
+
+   @Override
+   public void a() {
+      if (this.d != null) {
+         che $$0 = this.b.O();
+         if ($$0.k() && !this.d.a(this.b.dt(), 10.0)) {
+            ffq $$1 = ffq.c(this.d);
+            ffq $$2 = this.b.dt();
+            ffq $$3 = $$2.d($$1);
+            $$1 = $$3.c(0.4).e($$1);
+            ffq $$4 = $$1.d($$2).d().c(10.0).e($$2);
+            iv $$5 = iv.a((jp)$$4);
+            $$5 = this.b.dV().a(ehd.a.f, $$5);
+            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
+               this.h();
+            }
+         }
+      }
+   }
+
+   private void h() {
+      azx $$0 = this.b.dY();
+      iv $$1 = this.b.dV().a(ehd.a.f, this.b.dv().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
+      this.b.O().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
    }
 }

@@ -1,28 +1,22 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class enn extends enj {
-   public static final MapCodec<enn> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, enn::new));
+public class enn implements emp {
+   public static final Codec<enn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, enn::new)
+   );
+   public final int b;
+   public final int c;
+   public final float d;
 
-   public enn(btl $$0, btl $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Override
-   protected enp<?> a() {
-      return enp.f;
-   }
-
-   @Override
-   protected void a(djs $$0, eno.b $$1, azv $$2, emy $$3, int $$4, eno.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return azm.l((float)$$1 + 0.5F) + azm.l((float)$$3 + 0.5F) > (float)($$4 * $$4);
+   public enn(int $$0, int $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

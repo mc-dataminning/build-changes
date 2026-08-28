@@ -103,10 +103,10 @@ public class m {
       return new Pair(new m.b($$1, $$2 - 1), $$3);
    }
 
-   public static Optional<iv> a(diq $$0, iv $$1, dmr $$2, jb $$3, dmr $$4) {
+   public static Optional<iv> a(djb $$0, iv $$1, dnc $$2, jb $$3, dnc $$4) {
       iv.a $$5 = $$1.k();
 
-      eat $$6;
+      ebe $$6;
       do {
          $$5.c($$3);
          $$6 = $$0.a_($$5);

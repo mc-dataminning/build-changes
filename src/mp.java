@@ -19,11 +19,11 @@ public class mp {
       return new mp.a(this, $$0, $$1);
    }
 
-   public mp.a a(alf<? extends js<?>> $$0) {
+   public mp.a a(alh<? extends js<?>> $$0) {
       return this.a(mp.b.a, mh.c($$0));
    }
 
-   public mp.a b(alf<? extends js<?>> $$0) {
+   public mp.a b(alh<? extends js<?>> $$0) {
       return this.a(mp.b.a, mh.d($$0));
    }
 
@@ -36,15 +36,15 @@ public class mp {
          this.b = $$2;
       }
 
-      public Path a(alg $$0, String $$1) {
+      public Path a(ali $$0, String $$1) {
          return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + "." + $$1);
       }
 
-      public Path a(alg $$0) {
+      public Path a(ali $$0) {
          return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + ".json");
       }
 
-      public Path a(alf<?> $$0) {
+      public Path a(alh<?> $$0) {
          return this.a.resolve($$0.a().b()).resolve(this.b).resolve($$0.a().a() + ".json");
       }
    }

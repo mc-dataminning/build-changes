@@ -1,56 +1,176 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.IntSupplier;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class arw {
-   public static final MapCodec<arw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               mg.aA.q().fieldOf("type").forGetter(arw::a),
-               ayu.l.fieldOf("level").forGetter(arw::b),
-               Codec.LONG.optionalFieldOf("ticks_left", 0L).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, arw::new)
-   );
-   private final arx b;
-   private final int c;
-   private long d;
+public class arw extends exd implements AutoCloseable {
+   public static final int a = 1000;
+   private static final Logger e = LogUtils.getLogger();
+   private final btg f;
+   private final ObjectList<Pair<arw.a, Runnable>> g = new ObjectArrayList();
+   private final aqw h;
+   private final aqy i;
+   private final int j = 1000;
+   private final AtomicBoolean k = new AtomicBoolean();
 
-   public arw(arx $$0, int $$1) {
-      this($$0, $$1, $$0.d());
-   }
-
-   private arw(arx $$0, int $$1, long $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public arw(edo $$0, aqw $$1, boolean $$2, btg $$3, aqy $$4) {
+      super($$0, true, $$2);
+      this.h = $$1;
+      this.i = $$4;
+      this.f = $$3;
    }
 
    @Override
-   public String toString() {
-      return this.b.c()
-         ? "Ticket[" + ag.a(mg.aA, this.b) + " " + this.c + "] with " + this.d + " ticks left ( out of" + this.b.d() + ")"
-         : "Ticket[" + ag.a(mg.aA, this.b) + " " + this.c + "] with no timeout";
+   public void close() {
    }
 
-   public arx a() {
-      return this.b;
+   @Override
+   public int a() {
+      throw (UnsupportedOperationException)ag.b(new UnsupportedOperationException("Ran automatically on a different thread!"));
    }
 
-   public int b() {
-      return this.c;
+   @Override
+   public void a(iv $$0) {
+      iv $$1 = $$0.j();
+      this.a(jy.a($$0.u()), jy.a($$0.w()), arw.a.a, ag.a((Runnable)(() -> super.a($$1)), (Supplier<String>)(() -> "checkBlock " + $$1)));
    }
 
-   public void c() {
-      this.d = this.b.d();
+   protected void a(djc $$0) {
+      this.a($$0.h, $$0.i, () -> 0, arw.a.a, ag.a((Runnable)(() -> {
+         super.b($$0, false);
+         super.a($$0, false);
+
+         for (int $$1 = this.d(); $$1 < this.e(); $$1++) {
+            super.a(dkg.b, jy.a($$0, $$1), null);
+            super.a(dkg.a, jy.a($$0, $$1), null);
+         }
+
+         for (int $$2 = this.d.aq(); $$2 <= this.d.ar(); $$2++) {
+            super.a(jy.a($$0, $$2), true);
+         }
+      }), (Supplier<String>)(() -> "updateChunkStatus " + $$0 + " true")));
    }
 
-   public void d() {
-      if (this.b.c()) {
-         this.d--;
+   @Override
+   public void a(jy $$0, boolean $$1) {
+      this.a($$0.a(), $$0.c(), () -> 0, arw.a.a, ag.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "updateSectionStatus " + $$0 + " " + $$1)));
+   }
+
+   @Override
+   public void b(djc $$0) {
+      this.a($$0.h, $$0.i, arw.a.a, ag.a((Runnable)(() -> super.b($$0)), (Supplier<String>)(() -> "propagateLight " + $$0)));
+   }
+
+   @Override
+   public void a(djc $$0, boolean $$1) {
+      this.a($$0.h, $$0.i, arw.a.a, ag.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "enableLight " + $$0 + " " + $$1)));
+   }
+
+   @Override
+   public void a(dkg $$0, jy $$1, @Nullable edg $$2) {
+      this.a($$1.a(), $$1.c(), () -> 0, arw.a.a, ag.a((Runnable)(() -> super.a($$0, $$1, $$2)), (Supplier<String>)(() -> "queueData " + $$1)));
+   }
+
+   private void a(int $$0, int $$1, arw.a $$2, Runnable $$3) {
+      this.a($$0, $$1, this.h.c(djc.c($$0, $$1)), $$2, $$3);
+   }
+
+   private void a(int $$0, int $$1, IntSupplier $$2, arw.a $$3, Runnable $$4) {
+      this.i.a(() -> {
+         this.g.add(Pair.of($$3, $$4));
+         if (this.g.size() >= 1000) {
+            this.f();
+         }
+      }, djc.c($$0, $$1), $$2);
+   }
+
+   @Override
+   public void b(djc $$0, boolean $$1) {
+      this.a($$0.h, $$0.i, () -> 0, arw.a.a, ag.a((Runnable)(() -> super.b($$0, $$1)), (Supplier<String>)(() -> "retainData " + $$0)));
+   }
+
+   public CompletableFuture<edb> a(edb $$0, boolean $$1) {
+      djc $$2 = $$0.f();
+      this.a($$2.h, $$2.i, arw.a.a, ag.a((Runnable)(() -> {
+         edm[] $$2x = $$0.d();
+
+         for (int $$3 = 0; $$3 < $$0.ap(); $$3++) {
+            edm $$4 = $$2x[$$3];
+            if (!$$4.c()) {
+               int $$5 = this.d.h($$3);
+               super.a(jy.a($$2, $$5), false);
+            }
+         }
+      }), (Supplier<String>)(() -> "initializeLight: " + $$2)));
+      return CompletableFuture.supplyAsync(() -> {
+         super.a($$2, $$1);
+         super.b($$2, false);
+         return $$0;
+      }, $$1x -> this.a($$2.h, $$2.i, arw.a.b, $$1x));
+   }
+
+   public CompletableFuture<edb> b(edb $$0, boolean $$1) {
+      djc $$2 = $$0.f();
+      $$0.a(false);
+      this.a($$2.h, $$2.i, arw.a.a, ag.a((Runnable)(() -> {
+         if (!$$1) {
+            super.b($$2);
+         }
+      }), (Supplier<String>)(() -> "lightChunk " + $$2 + " " + $$1)));
+      return CompletableFuture.supplyAsync(() -> {
+         $$0.a(true);
+         return $$0;
+      }, $$1x -> this.a($$2.h, $$2.i, arw.a.b, $$1x));
+   }
+
+   public void b() {
+      if ((!this.g.isEmpty() || super.M_()) && this.k.compareAndSet(false, true)) {
+         this.f.a_(() -> {
+            this.f();
+            this.k.set(false);
+         });
       }
    }
 
-   public boolean e() {
-      return this.b.c() && this.d <= 0L;
+   private void f() {
+      int $$0 = Math.min(this.g.size(), 1000);
+      ObjectListIterator<Pair<arw.a, Runnable>> $$1 = this.g.iterator();
+
+      int $$2;
+      for ($$2 = 0; $$1.hasNext() && $$2 < $$0; $$2++) {
+         Pair<arw.a, Runnable> $$3 = (Pair<arw.a, Runnable>)$$1.next();
+         if ($$3.getFirst() == arw.a.a) {
+            ((Runnable)$$3.getSecond()).run();
+         }
+      }
+
+      $$1.back($$2);
+      super.a();
+
+      for (int var5 = 0; $$1.hasNext() && var5 < $$0; var5++) {
+         Pair<arw.a, Runnable> $$4 = (Pair<arw.a, Runnable>)$$1.next();
+         if ($$4.getFirst() == arw.a.b) {
+            ((Runnable)$$4.getSecond()).run();
+         }
+
+         $$1.remove();
+      }
+   }
+
+   public CompletableFuture<?> a(int $$0, int $$1) {
+      return CompletableFuture.runAsync(() -> {
+      }, $$2 -> this.a($$0, $$1, arw.a.b, $$2));
+   }
+
+   static enum a {
+      a,
+      b;
    }
 }

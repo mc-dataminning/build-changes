@@ -1,81 +1,71 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ProfileResult;
 import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class flx extends fmi {
-   private static final Logger b = LogUtils.getLogger();
-   public Map<Long, List<ProfileResult>> a = Map.of();
+public class flx {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private static CompletableFuture<flx.a> b;
 
-   public static flx a(String $$0) {
-      flx $$1 = new flx();
-      Builder<Long, List<ProfileResult>> $$2 = ImmutableMap.builder();
-
-      try {
-         JsonObject $$3 = azc.a($$0);
-         if (azc.d($$3, "lists")) {
-            for (JsonElement $$5 : $$3.getAsJsonArray("lists")) {
-               JsonObject $$6 = $$5.getAsJsonObject();
-               String $$7 = foe.b("playerList", $$6, null);
-               List<ProfileResult> $$9;
-               if ($$7 != null) {
-                  JsonElement $$8 = JsonParser.parseString($$7);
-                  if ($$8.isJsonArray()) {
-                     $$9 = a($$8.getAsJsonArray());
-                  } else {
-                     $$9 = Lists.newArrayList();
-                  }
-               } else {
-                  $$9 = Lists.newArrayList();
-               }
-
-               $$2.put(foe.a("serverId", $$6, -1L), $$9);
-            }
-         }
-      } catch (Exception var11) {
-         b.error("Could not parse RealmsServerPlayerLists: {}", var11.getMessage());
+   public static CompletableFuture<flx.a> a() {
+      if (b == null || a(b)) {
+         b = b();
       }
 
-      $$1.a = $$2.build();
-      return $$1;
+      return b;
    }
 
-   private static List<ProfileResult> a(JsonArray $$0) {
-      List<ProfileResult> $$1 = new ArrayList<>($$0.size());
-      MinecraftSessionService $$2 = fpt.Q().am();
+   private static boolean a(CompletableFuture<flx.a> $$0) {
+      flx.a $$1 = $$0.getNow(null);
+      return $$1 != null && $$1.b() != null;
+   }
 
-      for (JsonElement $$3 : $$0) {
-         if ($$3.isJsonObject()) {
-            UUID $$4 = foe.a("playerId", $$3.getAsJsonObject(), null);
-            if ($$4 != null && !fpt.Q().b($$4)) {
-               try {
-                  ProfileResult $$5 = $$2.fetchProfile($$4, false);
-                  if ($$5 != null) {
-                     $$1.add($$5);
-                  }
-               } catch (Exception var7) {
-                  b.error("Could not get name for {}", $$4, var7);
-               }
+   private static CompletableFuture<flx.a> b() {
+      frp $$0 = frd.Q().X();
+      return $$0.g() != frp.a.c ? CompletableFuture.completedFuture(new flx.a(flx.b.d)) : CompletableFuture.supplyAsync(() -> {
+         fmd $$0x = fmd.a();
+
+         try {
+            if ($$0x.h() != fmd.a.a) {
+               return new flx.a(flx.b.b);
+            } else {
+               return !$$0x.g() ? new flx.a(flx.b.c) : new flx.a(flx.b.a);
             }
+         } catch (fnz var2) {
+            a.error("Couldn't connect to realms", var2);
+            return var2.a.a() == 401 ? new flx.a(flx.b.d) : new flx.a(var2);
          }
+      }, ag.i());
+   }
+
+   public static record a(flx.b a, @Nullable fnz b) {
+      public a(flx.b $$0) {
+         this($$0, null);
       }
 
-      return $$1;
+      public a(fnz $$0) {
+         this(flx.b.e, $$0);
+      }
+
+      @Nullable
+      public gad a(gad $$0) {
+         return (gad)(switch (this.a) {
+            case a -> null;
+            case b -> new fom($$0);
+            case c -> new fox($$0);
+            case d -> new fos(xa.c("mco.error.invalid.session.title"), xa.c("mco.error.invalid.session.message"), $$0);
+            case e -> new fos(Objects.requireNonNull(this.b), $$0);
+         });
+      }
    }
 
-   public List<ProfileResult> a(long $$0) {
-      List<ProfileResult> $$1 = this.a.get($$0);
-      return $$1 != null ? $$1 : List.of();
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

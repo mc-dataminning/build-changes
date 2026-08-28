@@ -1,50 +1,40 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class ent extends eno {
-   public static final MapCodec<ent> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  btl.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
-                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
-               )
+public class ent extends enq {
+   public static final MapCodec<ent> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
+               a()
             )
             .apply($$0, ent::new)
    );
-   private final btl b;
-   private final int c;
+   private final int e;
+   private final int f;
+   private final int g;
 
-   public ent(btl $$0, btl $$1, btl $$2, int $$3) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
+   public ent(int $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, OptionalInt.empty());
+   }
+
+   public ent(int $$0, int $$1, int $$2, OptionalInt $$3) {
+      super($$3);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
-   protected enp<?> a() {
-      return enp.j;
+   protected enr<?> b() {
+      return enr.a;
    }
 
    @Override
-   protected void a(djs $$0, eno.b $$1, azv $$2, emy $$3, int $$4, eno.a $$5, int $$6, int $$7, int $$8) {
-      iv $$9 = $$5.a();
-      iv.a $$10 = $$9.k();
-
-      for (int $$11 = 0; $$11 < this.c; $$11++) {
-         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
-         a($$0, $$1, $$2, $$3, $$10);
-      }
-   }
-
-   @Override
-   public int a(azv $$0, int $$1, emy $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return false;
+   public int a(int $$0, int $$1) {
+      return $$1 < this.e ? this.f : this.g;
    }
 }

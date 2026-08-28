@@ -1,28 +1,28 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.UnaryOperator;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
 
-public class bcp extends bbh {
-   private final String a;
-   private final String b;
-   private final String c;
-   private final UnaryOperator<String> d;
-
-   public bcp(Schema $$0, String $$1, String $$2, String $$3, String $$4, UnaryOperator<String> $$5) {
+public class bcp extends DataFix {
+   public bcp(Schema $$0, boolean $$1) {
       super($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
    }
 
-   @Override
-   protected boolean a(String $$0) {
-      return $$0.equals(this.a);
-   }
-
-   @Override
-   protected <T> Dynamic<T> a(String $$0, Dynamic<T> $$1) {
-      return $$1.renameAndFixField(this.b, this.c, $$0x -> $$0x.createString(this.d.apply($$0x.asString(""))));
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bjb.E);
+      Type<?> $$1 = this.getOutputSchema().getType(bjb.E);
+      Type<Pair<String, Either<Integer, String>>> $$2 = DSL.named(bjb.E.typeName(), DSL.or(DSL.intType(), bkw.a()));
+      Type<Pair<String, String>> $$3 = DSL.named(bjb.E.typeName(), bkw.a());
+      if (Objects.equals($$0, $$2) && Objects.equals($$1, $$3)) {
+         return this.fixTypeEverywhere(
+            "BlockNameFlatteningFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> (String)$$0xxx.map(bct::a, $$0xxxx -> bct.a(bkw.a($$0xxxx))))
+         );
+      } else {
+         throw new IllegalStateException("Expected and actual types don't match.");
+      }
    }
 }

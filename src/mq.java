@@ -20,7 +20,7 @@ public class mq implements mn {
    @Override
    public CompletableFuture<?> a(ml $$0) {
       return this.f.thenCompose($$1 -> {
-         Set<alg> $$2 = new HashSet<>();
+         Set<ali> $$2 = new HashSet<>();
          List<CompletableFuture<?>> $$3 = new ArrayList<>();
          Consumer<aj> $$4 = $$4x -> {
             if (!$$2.add($$4x.a())) {

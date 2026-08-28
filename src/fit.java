@@ -1,40 +1,67 @@
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
+import com.mojang.blaze3d.platform.GlConst;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.jtracy.MemoryPool;
+import com.mojang.jtracy.TracyClient;
+import java.nio.ByteBuffer;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public enum fit {
-   a("icons"),
-   b("icons", "snapshot");
+public class fit extends fig {
+   protected static final MemoryPool b = TracyClient.createMemoryPool("GPU Buffers");
+   protected boolean c;
+   protected boolean d = false;
+   @Nullable
+   protected final Supplier<String> e;
+   protected final int f;
 
-   private final String[] c;
-
-   private fit(final String... $$0) {
-      this.c = $$0;
+   protected fit(fiw $$0, @Nullable Supplier<String> $$1, fie $$2, fif $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4);
+      this.e = $$1;
+      this.f = $$5;
+      if ($$3.a()) {
+         GlStateManager._glBindBuffer(GlConst.toGl($$2), $$5);
+         GlStateManager._glBufferData(GlConst.toGl($$2), (long)$$4, GlConst.toGl($$3));
+         b.malloc((long)$$5, $$4);
+         this.d = true;
+         $$0.a(this);
+      }
    }
 
-   public List<auu<InputStream>> a(atp $$0) throws IOException {
-      return List.of(
-         this.a($$0, "icon_16x16.png"),
-         this.a($$0, "icon_32x32.png"),
-         this.a($$0, "icon_48x48.png"),
-         this.a($$0, "icon_128x128.png"),
-         this.a($$0, "icon_256x256.png")
-      );
+   protected void d() {
+      if (!this.d) {
+         GlStateManager._glBindBuffer(GlConst.toGl(this.b()), this.f);
+         GlStateManager._glBindBuffer(GlConst.toGl(this.b()), 0);
+      }
    }
 
-   public auu<InputStream> b(atp $$0) throws IOException {
-      return this.a($$0, "minecraft.icns");
+   @Override
+   public void close() {
+      if (!this.c) {
+         this.c = true;
+         GlStateManager._glDeleteBuffers(this.f);
+         if (this.d) {
+            b.free((long)this.f);
+         }
+      }
    }
 
-   private auu<InputStream> a(atp $$0, String $$1) throws IOException {
-      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
-      auu<InputStream> $$3 = $$0.a($$2);
-      if ($$3 == null) {
-         throw new FileNotFoundException(String.join("/", $$2));
-      } else {
-         return $$3;
+   public static class a implements fig.a {
+      private final int a;
+      private final ByteBuffer b;
+
+      protected a(int $$0, ByteBuffer $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public ByteBuffer a() {
+         return this.b;
+      }
+
+      @Override
+      public void close() {
+         GlStateManager._glUnmapBuffer(this.a);
       }
    }
 }

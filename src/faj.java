@@ -1,66 +1,41 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public abstract class faj implements fab {
-   protected final List<fdc> e;
-   private final Predicate<ezt> a;
+public record faj<T>(alh<js<T>> d, Codec<T> e, faj.a<T> f) {
+   public static final faj<fdq> a = new faj<>(mh.bt, fdq.e, e());
+   public static final faj<fbv> b = new faj<>(mh.bs, fbx.c, e());
+   public static final faj<fam> c = new faj<>(mh.br, fam.d, f());
 
-   protected faj(List<fdc> $$0) {
-      this.e = $$0;
-      this.a = ag.a($$0);
+   public void a(fan $$0, alh<T> $$1, T $$2) {
+      this.f.run($$0, $$1, $$2);
    }
 
-   protected static <T extends faj> P1<Mu<T>, List<fdc>> a(Instance<T> $$0) {
-      return $$0.group(fdc.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
+   public static Stream<faj<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   public void a(ezz $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
+   private static <T extends fai> faj.a<T> e() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   protected final boolean a(ezt $$0) {
-      return this.a.test($$0);
+   private static faj.a<fam> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public abstract fak a();
+   public alh<js<T>> b() {
+      return this.d;
+   }
 
-   public abstract static class a<T extends faj.a<T>> implements fcu<T> {
-      private final Builder<fdc> a = ImmutableList.builder();
+   public Codec<T> c() {
+      return this.e;
+   }
 
-      protected abstract T aB_();
+   public faj.a<T> d() {
+      return this.f;
+   }
 
-      public T a(fdc.a $$0) {
-         this.a.add($$0.build());
-         return this.aB_();
-      }
-
-      public final T e() {
-         return this.aB_();
-      }
-
-      protected List<fdc> f() {
-         return this.a.build();
-      }
-
-      public faa.a a(faj.a<?> $$0) {
-         return new faa.a(this, $$0);
-      }
-
-      public faf.a b(faj.a<?> $$0) {
-         return new faf.a(this, $$0);
-      }
-
-      public fan.a c(faj.a<?> $$0) {
-         return new fan.a(this, $$0);
-      }
-
-      public abstract faj b();
+   @FunctionalInterface
+   public interface a<T> {
+      void run(fan var1, alh<T> var2, T var3);
    }
 }

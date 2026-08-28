@@ -1,44 +1,43 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class ekm extends ejy<emj> {
-   public ekm(Codec<emj> $$0) {
-      super($$0);
+public class ekm<FC extends emp> {
+   private final Optional<ejv<?, ?>> a;
+   private final dkw b;
+   private final edc c;
+   private final azx d;
+   private final iv e;
+   private final FC f;
+
+   public ekm(Optional<ejv<?, ?>> $$0, dkw $$1, edc $$2, azx $$3, iv $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(eka<emj> $$0) {
-      int $$1 = 0;
-      dkl $$2 = $$0.b();
-      iv $$3 = $$0.e();
-      azv $$4 = $$0.d();
-      int $$5 = $$2.a(egs.a.d, $$3.u(), $$3.w());
-      iv $$6 = new iv($$3.u(), $$5, $$3.w());
-      if ($$2.a_($$6).a(dmt.J)) {
-         eat $$7 = dmt.mI.m();
-         eat $$8 = dmt.mJ.m();
-         int $$9 = 1 + $$4.a(10);
+   public Optional<ejv<?, ?>> a() {
+      return this.a;
+   }
 
-         for (int $$10 = 0; $$10 <= $$9; $$10++) {
-            if ($$2.a_($$6).a(dmt.J) && $$2.a_($$6.d()).a(dmt.J) && $$8.a($$2, $$6)) {
-               if ($$10 == $$9) {
-                  $$2.a($$6, $$7.b(dra.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               } else {
-                  $$2.a($$6, $$8, 2);
-               }
-            } else if ($$10 > 0) {
-               iv $$11 = $$6.e();
-               if ($$7.a($$2, $$11) && !$$2.a_($$11.e()).a(dmt.mI)) {
-                  $$2.a($$11, $$7.b(dra.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               }
-               break;
-            }
+   public dkw b() {
+      return this.b;
+   }
 
-            $$6 = $$6.d();
-         }
-      }
+   public edc c() {
+      return this.c;
+   }
 
-      return $$1 > 0;
+   public azx d() {
+      return this.d;
+   }
+
+   public iv e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

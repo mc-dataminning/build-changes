@@ -1,63 +1,29 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class epw extends epu {
-   public static final MapCodec<epw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ehm.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               ehm.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, epw::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final ehm d;
-   private final ehm e;
-   private final int f;
+public class epw extends epx {
+   public static final MapCodec<epw> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, epw::new));
 
-   private epw(ehm $$0, ehm $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static epw a(ehm $$0, ehm $$1, int $$2) {
-      return new epw($$0, $$1, $$2);
-   }
-
-   public static epw a(ehm $$0, ehm $$1) {
-      return a($$0, $$1, 0);
+   public epw(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public int a(azv $$0, ehp $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$3 - $$2;
-         if (this.f >= $$4) {
-            return azm.b($$0, $$2, $$3);
-         } else {
-            int $$5 = ($$4 - this.f) / 2;
-            int $$6 = $$4 - $$5;
-            return $$2 + azm.b($$0, 0, $$6) + azm.b($$0, 0, $$5);
-         }
+   protected epy<?> a() {
+      return epy.a;
+   }
+
+   @Override
+   public List<eob.a> a(dkd $$0, BiConsumer<iv, ebe> $$1, azx $$2, int $$3, iv $$4, enl $$5) {
+      a($$0, $$1, $$2, $$4.e(), $$5);
+
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
       }
-   }
 
-   @Override
-   public epv<?> a() {
-      return epv.e;
-   }
-
-   @Override
-   public String toString() {
-      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
+      return ImmutableList.of(new eob.a($$4.b($$3), 0, false));
    }
 }

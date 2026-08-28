@@ -1,34 +1,38 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import net.minecraft.server.MinecraftServer;
 
-public class bzh extends bza<ckw> {
-   private static final int c = 60;
-   private static final int d = 100;
-   private int e;
-
-   public bzh() {
-      super(ImmutableMap.of(cgl.n, cgm.b), 100);
-   }
-
-   protected boolean a(arq $$0, ckw $$1) {
-      return $$1.at() == bxv.a;
-   }
-
-   protected boolean a(arq $$0, ckw $$1, long $$2) {
-      return this.e < 60;
-   }
-
-   protected void b(arq $$0, ckw $$1, long $$2) {
-      if (!$$1.bk()) {
-         $$1.b(bxv.i);
-         this.e = 0;
-      }
-   }
-
-   protected void c(arq $$0, ckw $$1, long $$2) {
-      $$1.b(bxv.a);
-   }
-
-   protected void d(arq $$0, ckw $$1, long $$2) {
-      this.e++;
+public class bzh {
+   public static bzm<crj> a() {
+      return ccy.a(
+         (Function<ccy.b<crj>, ? extends App<ccy.c<crj>, cdb<crj>>>)($$0 -> $$0.group($$0.b(cgw.d), $$0.a(cgw.c))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        je $$6 = $$0.b($$1);
+                        if (!$$6.b().a($$4.dt(), 2.0) && !$$4.gE()) {
+                           return false;
+                        } else {
+                           $$1.b();
+                           $$2.a($$6);
+                           $$3.a($$4, (byte)14);
+                           if (!$$4.gC().b().a(crm.b)) {
+                              return true;
+                           } else {
+                              MinecraftServer $$7 = $$3.p();
+                              Optional.ofNullable($$7.a($$6.a()))
+                                 .flatMap($$1xx -> $$1xx.A().c($$6.b()))
+                                 .flatMap($$0xxx -> mg.x.c().filter($$1xx -> ((crm)$$1xx.a()).b().test($$0xxx)).findFirst())
+                                 .ifPresent($$2xx -> {
+                                    $$4.a($$4.gC().b($$2xx));
+                                    $$4.g($$3);
+                                 });
+                              return true;
+                           }
+                        }
+                     }
+               ))
+      );
    }
 }

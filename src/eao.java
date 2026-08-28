@@ -1,349 +1,124 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
 
-public class eao extends dxr {
-   private static final int b = 2;
-   private static final double c = 0.01;
-   public static final double a = 0.51;
-   private eat d = dmt.a.m();
-   private jb e;
-   private boolean f;
-   private boolean g;
-   private static final ThreadLocal<jb> h = ThreadLocal.withInitial(() -> null);
-   private float i;
-   private float j;
-   private long k;
-   private int l;
+public class eao {
+   static final String a = "server_data";
+   static Codec<eao> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jz.c.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
+               Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
+               czy.b.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
+               Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, eao::new)
+   );
+   private static final int d = 128;
+   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
+   private long f;
+   private final List<czy> g = new ObjectArrayList();
+   private long h;
+   private int i;
+   boolean c;
 
-   public eao(iv $$0, eat $$1) {
-      super(dxt.l, $$0, $$1);
+   eao(Set<UUID> $$0, long $$1, List<czy> $$2, int $$3) {
+      this.e.addAll($$0);
+      this.f = $$1;
+      this.g.addAll($$2);
+      this.i = $$3;
    }
 
-   public eao(iv $$0, eat $$1, eat $$2, jb $$3, boolean $$4, boolean $$5) {
-      this($$0, $$1);
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   eao() {
    }
 
-   @Override
-   public tz a(jh.a $$0) {
-      return this.e($$0);
+   void a(long $$0) {
+      this.h = $$0;
    }
 
-   public boolean a() {
-      return this.f;
+   long a() {
+      return this.h;
    }
 
-   public jb c() {
+   Set<UUID> b() {
       return this.e;
    }
 
-   public boolean d() {
+   boolean a(crx $$0) {
+      return this.e.contains($$0.cG());
+   }
+
+   @VisibleForTesting
+   public void b(crx $$0) {
+      this.e.add($$0.cG());
+      if (this.e.size() > 128) {
+         Iterator<UUID> $$1 = this.e.iterator();
+         if ($$1.hasNext()) {
+            $$1.next();
+            $$1.remove();
+         }
+      }
+
+      this.i();
+   }
+
+   long c() {
+      return this.f;
+   }
+
+   void b(long $$0) {
+      this.f = $$0;
+      this.i();
+   }
+
+   List<czy> d() {
       return this.g;
    }
 
-   public float a(float $$0) {
-      if ($$0 > 1.0F) {
-         $$0 = 1.0F;
-      }
-
-      return azm.h($$0, this.j, this.i);
+   void e() {
+      this.i = 0;
+      this.i();
    }
 
-   public float b(float $$0) {
-      return (float)this.e.j() * this.e(this.a($$0));
+   void a(List<czy> $$0) {
+      this.g.clear();
+      this.g.addAll($$0);
+      this.i = this.g.size();
+      this.i();
    }
 
-   public float c(float $$0) {
-      return (float)this.e.k() * this.e(this.a($$0));
+   czy f() {
+      return this.g.isEmpty() ? czy.k : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), czy.k);
    }
 
-   public float d(float $$0) {
-      return (float)this.e.l() * this.e(this.a($$0));
-   }
-
-   private float e(float $$0) {
-      return this.f ? $$0 - 1.0F : 1.0F - $$0;
-   }
-
-   private eat u() {
-      return !this.a() && this.d() && this.d.b() instanceof eal
-         ? dmt.bJ.m().b(eam.d, Boolean.valueOf(this.i > 0.25F)).b(eam.c, this.d.a(dmt.by) ? ebv.b : ebv.a).b(eam.a, this.d.c(eal.a))
-         : this.d;
-   }
-
-   private static void a(djm $$0, iv $$1, float $$2, eao $$3) {
-      jb $$4 = $$3.f();
-      double $$5 = (double)($$2 - $$3.i);
-      ffw $$6 = $$3.u().g($$0, $$1);
-      if (!$$6.c()) {
-         fex $$7 = a($$1, $$6.a(), $$3);
-         List<bwi> $$8 = $$0.a_(null, ean.a($$7, $$4, $$5).b($$7));
-         if (!$$8.isEmpty()) {
-            List<fex> $$9 = $$6.e();
-            boolean $$10 = $$3.d.a(dmt.ix);
-            Iterator var12 = $$8.iterator();
-
-            while (true) {
-               bwi $$11;
-               while (true) {
-                  if (!var12.hasNext()) {
-                     return;
-                  }
-
-                  $$11 = (bwi)var12.next();
-                  if ($$11.j_() != exf.d) {
-                     if (!$$10) {
-                        break;
-                     }
-
-                     if (!($$11 instanceof arr)) {
-                        ffc $$12 = $$11.dx();
-                        double $$13 = $$12.d;
-                        double $$14 = $$12.e;
-                        double $$15 = $$12.f;
-                        switch ($$4.o()) {
-                           case a:
-                              $$13 = (double)$$4.j();
-                              break;
-                           case b:
-                              $$14 = (double)$$4.k();
-                              break;
-                           case c:
-                              $$15 = (double)$$4.l();
-                        }
-
-                        $$11.n($$13, $$14, $$15);
-                        break;
-                     }
-                  }
-               }
-
-               double $$16 = 0.0;
-
-               for (fex $$17 : $$9) {
-                  fex $$18 = ean.a(a($$1, $$17, $$3), $$4, $$5);
-                  fex $$19 = $$11.cQ();
-                  if ($$18.c($$19)) {
-                     $$16 = Math.max($$16, a($$18, $$4, $$19));
-                     if ($$16 >= $$5) {
-                        break;
-                     }
-                  }
-               }
-
-               if (!($$16 <= 0.0)) {
-                  $$16 = Math.min($$16, $$5) + 0.01;
-                  a($$4, $$11, $$16, $$4);
-                  if (!$$3.f && $$3.g) {
-                     a($$1, $$11, $$4, $$5);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private static void a(jb $$0, bwi $$1, double $$2, jb $$3) {
-      h.set($$0);
-      $$1.a(bxn.c, new ffc($$2 * (double)$$3.j(), $$2 * (double)$$3.k(), $$2 * (double)$$3.l()));
-      $$1.aI();
-      h.set(null);
-   }
-
-   private static void b(djm $$0, iv $$1, float $$2, eao $$3) {
-      if ($$3.v()) {
-         jb $$4 = $$3.f();
-         if ($$4.o().d()) {
-            double $$5 = $$3.d.g($$0, $$1).c(jb.a.b);
-            fex $$6 = a($$1, new fex(0.0, $$5, 0.0, 1.0, 1.5000010000000001, 1.0), $$3);
-            double $$7 = (double)($$2 - $$3.i);
-
-            for (bwi $$9 : $$0.a((bwi)null, $$6, $$2x -> a($$6, $$2x, $$1))) {
-               a($$4, $$9, $$7, $$4);
-            }
-         }
-      }
-   }
-
-   private static boolean a(fex $$0, bwi $$1, iv $$2) {
-      return $$1.j_() == exf.a && $$1.aH() && ($$1.d($$2) || $$1.dz() >= $$0.a && $$1.dz() <= $$0.d && $$1.dF() >= $$0.c && $$1.dF() <= $$0.f);
-   }
-
-   private boolean v() {
-      return this.d.a(dmt.pO);
-   }
-
-   public jb f() {
-      return this.f ? this.e : this.e.g();
-   }
-
-   private static double a(fex $$0, jb $$1, fex $$2) {
-      switch ($$1) {
-         case f:
-            return $$0.d - $$2.a;
-         case e:
-            return $$2.d - $$0.a;
-         case b:
-         default:
-            return $$0.e - $$2.b;
-         case a:
-            return $$2.e - $$0.b;
-         case d:
-            return $$0.f - $$2.c;
-         case c:
-            return $$2.f - $$0.c;
-      }
-   }
-
-   private static fex a(iv $$0, fex $$1, eao $$2) {
-      double $$3 = (double)$$2.e($$2.i);
-      return $$1.d((double)$$0.u() + $$3 * (double)$$2.e.j(), (double)$$0.v() + $$3 * (double)$$2.e.k(), (double)$$0.w() + $$3 * (double)$$2.e.l());
-   }
-
-   private static void a(iv $$0, bwi $$1, jb $$2, double $$3) {
-      fex $$4 = $$1.cQ();
-      fex $$5 = fft.b().a().a($$0);
-      if ($$4.c($$5)) {
-         jb $$6 = $$2.g();
-         double $$7 = a($$5, $$6, $$4) + 0.01;
-         double $$8 = a($$5, $$6, $$4.a($$5)) + 0.01;
-         if (Math.abs($$7 - $$8) < 0.01) {
-            $$7 = Math.min($$7, $$3) + 0.01;
-            a($$2, $$1, $$7, $$6);
-         }
-      }
-   }
-
-   public eat j() {
-      return this.d;
-   }
-
-   public void k() {
-      if (this.n != null && (this.j < 1.0F || this.n.C)) {
-         this.i = 1.0F;
-         this.j = this.i;
-         this.n.o(this.o);
-         this.as_();
-         if (this.n.a_(this.o).a(dmt.ca)) {
-            eat $$0;
-            if (this.g) {
-               $$0 = dmt.a.m();
-            } else {
-               $$0 = dmr.b(this.d, this.n, this.o);
-            }
-
-            this.n.a(this.o, $$0, 3);
-            this.n.b(this.o, $$0.b(), eye.a(this.n, this.s(), null));
-         }
-      }
-   }
-
-   @Override
-   public void a(iv $$0, eat $$1) {
-      this.k();
-   }
-
-   public jb s() {
-      return this.f ? this.e : this.e.g();
-   }
-
-   public static void a(djm $$0, iv $$1, eat $$2, eao $$3) {
-      $$3.k = $$0.ae();
-      $$3.j = $$3.i;
-      if ($$3.j >= 1.0F) {
-         if ($$0.C && $$3.l < 5) {
-            $$3.l++;
-         } else {
-            $$0.o($$1);
-            $$3.as_();
-            if ($$0.a_($$1).a(dmt.ca)) {
-               eat $$4 = dmr.b($$3.d, $$0, $$1);
-               if ($$4.l()) {
-                  $$0.a($$1, $$3.d, 340);
-                  dmr.a($$3.d, $$4, $$0, $$1, 3);
-               } else {
-                  if ($$4.b(ebj.I) && $$4.c(ebj.I)) {
-                     $$4 = $$4.b(ebj.I, Boolean.valueOf(false));
-                  }
-
-                  $$0.a($$1, $$4, 67);
-                  $$0.b($$1, $$4.b(), eye.a($$0, $$3.s(), null));
-               }
-            }
-         }
+   czy g() {
+      if (this.g.isEmpty()) {
+         return czy.k;
       } else {
-         float $$5 = $$3.i + 0.5F;
-         a($$0, $$1, $$5, $$3);
-         b($$0, $$1, $$5, $$3);
-         $$3.i = $$5;
-         if ($$3.i >= 1.0F) {
-            $$3.i = 1.0F;
-         }
+         this.i();
+         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), czy.k);
       }
    }
 
-   @Override
-   protected void a(tz $$0, jh.a $$1) {
-      super.a($$0, $$1);
-      ale<uw> $$2 = $$1.a(un.a);
-      this.d = $$0.<eat>a("blockState", eat.a, $$2).orElse(dmt.a.m());
-      this.e = $$0.<jb>a("facing", jb.k).orElse(jb.a);
-      this.i = $$0.h("progress");
-      this.j = this.i;
-      this.f = $$0.o("extending");
-      this.g = $$0.o("source");
+   void a(eao $$0) {
+      this.f = $$0.c();
+      this.g.clear();
+      this.g.addAll($$0.g);
+      this.e.clear();
+      this.e.addAll($$0.e);
    }
 
-   @Override
-   protected void b(tz $$0, jh.a $$1) {
-      super.b($$0, $$1);
-      ale<uw> $$2 = $$1.a(un.a);
-      $$0.a("blockState", eat.a, $$2, this.d);
-      $$0.a("facing", jb.k, this.e);
-      $$0.a("progress", this.j);
-      $$0.a("extending", this.f);
-      $$0.a("source", this.g);
+   private void i() {
+      this.c = true;
    }
 
-   public ffw a(diq $$0, iv $$1) {
-      ffw $$2;
-      if (!this.f && this.g && this.d.b() instanceof eal) {
-         $$2 = this.d.b(eal.c, Boolean.valueOf(true)).g($$0, $$1);
-      } else {
-         $$2 = fft.a();
-      }
-
-      jb $$4 = h.get();
-      if ((double)this.i < 1.0 && $$4 == this.f()) {
-         return $$2;
-      } else {
-         eat $$5;
-         if (this.d()) {
-            $$5 = dmt.bJ.m().b(eam.a, this.e).b(eam.d, Boolean.valueOf(this.f != 1.0F - this.i < 0.25F));
-         } else {
-            $$5 = this.d;
-         }
-
-         float $$7 = this.e(this.i);
-         double $$8 = (double)((float)this.e.j() * $$7);
-         double $$9 = (double)((float)this.e.k() * $$7);
-         double $$10 = (double)((float)this.e.l() * $$7);
-         return fft.a($$2, $$5.g($$0, $$1).a($$8, $$9, $$10));
-      }
-   }
-
-   public long t() {
-      return this.k;
-   }
-
-   @Override
-   public void a(djm $$0) {
-      super.a($$0);
-      if ($$0.a(mh.i).a(this.d.b().p().h()).isEmpty()) {
-         this.d = dmt.a.m();
-      }
+   public float h() {
+      return this.i == 1 ? 1.0F : 1.0F - azo.f((float)this.d().size(), 1.0F, (float)this.i);
    }
 }

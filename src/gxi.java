@@ -1,21 +1,22 @@
-public class gxi extends gye<coh, hdq, ggv> {
-   private static final alg a = alg.b("textures/entity/ghast/ghast.png");
-   private static final alg j = alg.b("textures/entity/ghast/ghast_shooting.png");
+public class gxi extends gzo<cjd, hdx, ggy> {
+   private static final ali a = ali.b("textures/entity/bat.png");
 
-   public gxi(gwy.a $$0) {
-      super($$0, new ggv($$0.a(gjs.bb)), 1.5F);
+   public gxi(gyi.a $$0) {
+      super($$0, new ggy($$0.a(gld.u)), 0.25F);
    }
 
-   public alg a(hdq $$0) {
-      return $$0.a ? j : a;
+   public ali a(hdx $$0) {
+      return a;
    }
 
-   public hdq b() {
-      return new hdq();
+   public hdx a() {
+      return new hdx();
    }
 
-   public void a(coh $$0, hdq $$1, float $$2) {
+   public void a(cjd $$0, hdx $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.j();
+      $$1.a = $$0.m();
+      $$1.b.a($$0.c);
+      $$1.c.a($$0.d);
    }
 }

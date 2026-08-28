@@ -1,37 +1,29 @@
-public class aey implements zf<abu> {
-   public static final yw<vu, aey> a = zf.a(aey::a, aey::new);
+public class aey implements zh<abw> {
+   public static final yy<vw, aey> a = zh.a(aey::a, aey::new);
    private final int b;
-   private final int c;
 
-   public aey(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aey(ecw $$0) {
+      this.b = $$0.r();
    }
 
-   private aey(vu $$0) {
+   private aey(vw $$0) {
       this.b = $$0.l();
-      this.c = $$0.l();
    }
 
-   private void a(vu $$0) {
+   private void a(vw $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
    }
 
    @Override
-   public zh<aey> a() {
-      return agn.aB;
+   public zj<aey> a() {
+      return agp.az;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
    public int b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

@@ -3,141 +3,76 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
-import java.util.function.ToIntFunction;
 
 public class ank {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.experience.set.points.invalid"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xa.b("commands.enchant.failed.entity", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xa.b("commands.enchant.failed.itemless", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xa.b("commands.enchant.failed.incompatible", $$0));
+   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> xa.b("commands.enchant.failed.level", $$0, $$1));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xa.c("commands.enchant.failed"));
 
-   public static void a(CommandDispatcher<ej> $$0) {
-      LiteralCommandNode<ej> $$1 = $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("experience").requires($$0x -> $$0x.c(2)))
+   public static void a(CommandDispatcher<ej> $$0, ef $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("enchant").requires($$0x -> $$0x.c(2)))
+            .then(
+               ek.a("targets", ew.b())
                   .then(
-                     ek.a("add")
+                     ((RequiredArgumentBuilder)ek.a("enchantment", fi.a($$1, mh.aR))
+                           .executes($$0x -> a((ej)$$0x.getSource(), ew.b($$0x, "targets"), fi.g($$0x, "enchantment"), 1)))
                         .then(
-                           ek.a("target", ew.d())
-                              .then(
-                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a("amount", IntegerArgumentType.integer())
-                                          .executes(
-                                             $$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ank.a.a)
-                                          ))
-                                       .then(
-                                          ek.a("points")
-                                             .executes(
-                                                $$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ank.a.a)
-                                             )
-                                       ))
-                                    .then(
-                                       ek.a("levels")
-                                          .executes(
-                                             $$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ank.a.b)
-                                          )
+                           ek.a("level", IntegerArgumentType.integer(0))
+                              .executes(
+                                 $$0x -> a(
+                                       (ej)$$0x.getSource(), ew.b($$0x, "targets"), fi.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
                                     )
                               )
                         )
-                  ))
-               .then(
-                  ek.a("set")
-                     .then(
-                        ek.a("target", ew.d())
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a("amount", IntegerArgumentType.integer(0))
-                                       .executes($$0x -> b((ej)$$0x.getSource(), ew.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ank.a.a)))
-                                    .then(
-                                       ek.a("points")
-                                          .executes(
-                                             $$0x -> b((ej)$$0x.getSource(), ew.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ank.a.a)
-                                          )
-                                    ))
-                                 .then(
-                                    ek.a("levels")
-                                       .executes($$0x -> b((ej)$$0x.getSource(), ew.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ank.a.b))
-                                 )
-                           )
-                     )
-               ))
-            .then(
-               ek.a("query")
-                  .then(
-                     ((RequiredArgumentBuilder)ek.a("target", ew.c())
-                           .then(ek.a("points").executes($$0x -> a((ej)$$0x.getSource(), ew.e($$0x, "target"), ank.a.a))))
-                        .then(ek.a("levels").executes($$0x -> a((ej)$$0x.getSource(), ew.e($$0x, "target"), ank.a.b)))
                   )
             )
       );
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("xp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(ej $$0, arr $$1, ank.a $$2) {
-      int $$3 = $$2.f.applyAsInt($$1);
-      $$0.a(() -> wy.a("commands.experience.query." + $$2.e, $$1.m_(), $$3), false);
-      return $$3;
-   }
-
-   private static int a(ej $$0, Collection<? extends arr> $$1, int $$2, ank.a $$3) {
-      for (arr $$4 : $$1) {
-         $$3.c.accept($$4, $$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> wy.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().m_()), true);
+   private static int a(ej $$0, Collection<? extends bwt> $$1, jf<dgl> $$2, int $$3) throws CommandSyntaxException {
+      dgl $$4 = $$2.a();
+      if ($$3 > $$4.e()) {
+         throw d.create($$3, $$4.e());
       } else {
-         $$0.a(() -> wy.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
-      }
+         int $$5 = 0;
 
-      return $$1.size();
-   }
-
-   private static int b(ej $$0, Collection<? extends arr> $$1, int $$2, ank.a $$3) throws CommandSyntaxException {
-      int $$4 = 0;
-
-      for (arr $$5 : $$1) {
-         if ($$3.d.test($$5, $$2)) {
-            $$4++;
+         for (bwt $$6 : $$1) {
+            if ($$6 instanceof bxu) {
+               bxu $$7 = (bxu)$$6;
+               czy $$8 = $$7.fb();
+               if (!$$8.f()) {
+                  if ($$4.c($$8) && dgn.a(dgn.b($$8).a(), $$2)) {
+                     $$8.a($$2, $$3);
+                     $$5++;
+                  } else if ($$1.size() == 1) {
+                     throw c.create($$8.y().getString());
+                  }
+               } else if ($$1.size() == 1) {
+                  throw b.create($$7.ai().getString());
+               }
+            } else if ($$1.size() == 1) {
+               throw a.create($$6.ai().getString());
+            }
          }
-      }
 
-      if ($$4 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wy.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().m_()), true);
+         if ($$5 == 0) {
+            throw e.create();
          } else {
-            $$0.a(() -> wy.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
+            if ($$1.size() == 1) {
+               $$0.a(() -> xa.a("commands.enchant.success.single", dgl.a($$2, $$3), $$1.iterator().next().m_()), true);
+            } else {
+               $$0.a(() -> xa.a("commands.enchant.success.multiple", dgl.a($$2, $$3), $$1.size()), true);
+            }
+
+            return $$5;
          }
-
-         return $$1.size();
-      }
-   }
-
-   static enum a {
-      a("points", crm::d, ($$0, $$1) -> {
-         if ($$1 >= $$0.gs()) {
-            return false;
-         } else {
-            $$0.a($$1);
-            return true;
-         }
-      }, $$0 -> azm.d($$0.ch * (float)$$0.gs())),
-      b("levels", arr::c, ($$0, $$1) -> {
-         $$0.b($$1);
-         return true;
-      }, $$0 -> $$0.cf);
-
-      public final BiConsumer<arr, Integer> c;
-      public final BiPredicate<arr, Integer> d;
-      public final String e;
-      final ToIntFunction<arr> f;
-
-      private a(final String $$0, final BiConsumer<arr, Integer> $$1, final BiPredicate<arr, Integer> $$2, final ToIntFunction<arr> $$3) {
-         this.c = $$1;
-         this.e = $$0;
-         this.d = $$2;
-         this.f = $$3;
       }
    }
 }

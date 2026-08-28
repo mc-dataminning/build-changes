@@ -1,25 +1,30 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public interface eqv<P extends equ> {
-   eqv<eqg> a = a("block_predicate_filter", eqg.a);
-   eqv<eqx> b = a("rarity_filter", eqx.a);
-   eqv<eqz> c = a("surface_relative_threshold_filter", eqz.a);
-   eqv<era> d = a("surface_water_depth_filter", era.a);
-   eqv<eqf> e = a("biome", eqf.a);
-   eqv<eqj> f = a("count", eqj.a);
-   eqv<eqp> g = a("noise_based_count", eqp.a);
-   eqv<eqq> h = a("noise_threshold_count", eqq.a);
-   eqv<eqi> i = a("count_on_every_layer", eqi.a);
-   eqv<eqk> j = a("environment_scan", eqk.a);
-   eqv<eqn> k = a("heightmap", eqn.a);
-   eqv<eqm> l = a("height_range", eqm.a);
-   eqv<eqo> m = a("in_square", eqo.a);
-   eqv<eqw> n = a("random_offset", eqw.a);
-   eqv<eql> o = a("fixed_placement", eql.a);
+public enum eqv implements bam {
+   a(jb.b, 1, "ceiling"),
+   b(jb.a, -1, "floor");
 
-   MapCodec<P> codec();
+   public static final Codec<eqv> c = bam.a(eqv::values);
+   private final jb d;
+   private final int e;
+   private final String f;
 
-   private static <P extends equ> eqv<P> a(String $$0, MapCodec<P> $$1) {
-      return js.a(mg.S, $$0, () -> $$1);
+   private eqv(final jb $$0, final int $$1, final String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   public jb a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

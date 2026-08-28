@@ -1,38 +1,96 @@
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class cpq extends bza<cpk> {
-   public cpq() {
-      super(Map.of(cgl.p, cgm.a, cgl.n, cgm.b, cgl.aV, cgm.b, cgl.aW, cgm.b));
+public class cpq extends cog {
+   public cpq(bxc<? extends cpq> $$0, djx $$1) {
+      super($$0, $$1);
+      this.a(eyf.i, 8.0F);
    }
 
-   protected boolean a(arq $$0, cpk $$1) {
-      return $$1.aH() && !$$1.bh() && $$1.at() == bxv.a;
+   @Override
+   protected void D() {
+      this.bG.a(3, new cgj<>(this, cql.class, true));
+      super.D();
    }
 
-   protected void a(arq $$0, cpk $$1, long $$2) {
-      bxj $$3 = $$1.eb().c(cgl.p).orElse(null);
-      if ($$3 != null) {
-         boolean $$4 = $$1.l($$3.ds());
-         ffc $$5 = null;
-         if ($$4) {
-            ffc $$6 = cic.a($$1, 5, 5, $$3.ds());
-            if ($$6 != null && cpm.a($$1, $$6) && $$3.h($$6.d, $$6.e, $$6.f) > $$3.g($$1)) {
-               $$5 = $$6;
-            }
-         }
+   @Override
+   protected awo u() {
+      return awp.DH;
+   }
 
-         if ($$5 == null) {
-            $$5 = $$1.dX().h() ? cpm.a($$3, $$1.dX()) : a($$1, $$3);
-         }
+   @Override
+   protected awo e(bvi $$0) {
+      return awp.DJ;
+   }
 
-         $$1.eb().a(cgl.n, new cgo(iv.a((jp)$$5), 0.6F, 1));
+   @Override
+   protected awo l_() {
+      return awp.DI;
+   }
+
+   @Override
+   awo m() {
+      return awp.DK;
+   }
+
+   @Override
+   public axt<czu> Y() {
+      return null;
+   }
+
+   @Override
+   public boolean g(czy $$0) {
+      return !$$0.a(axm.bX) && super.g($$0);
+   }
+
+   @Override
+   protected void a(ars $$0, bvi $$1, boolean $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$1.d() instanceof cok $$4 && $$4.x()) {
+         $$4.gu();
+         this.a($$0, dac.vw);
       }
    }
 
-   private static ffc a(cpk $$0, bxj $$1) {
-      ffc $$2 = $$1.ds().d($$0.ds());
-      double $$3 = $$2.g() - azm.d($$0.dX().j(), 8.0, 4.0);
-      ffc $$4 = $$2.d().d($$3, $$3, $$3);
-      return $$0.ds().e($$4);
+   @Override
+   protected void a(azx $$0, bup $$1) {
+      this.a(bxd.a, new czy(dac.pF));
+   }
+
+   @Override
+   protected void a(dko $$0, azx $$1, bup $$2) {
+   }
+
+   @Nullable
+   @Override
+   public bym a(dko $$0, bup $$1, bxb $$2, @Nullable bym $$3) {
+      bym $$4 = super.a($$0, $$1, $$2, $$3);
+      this.g(bza.c).a(4.0);
+      this.n();
+      return $$4;
+   }
+
+   @Override
+   public boolean c(ars $$0, bwt $$1) {
+      if (!super.c($$0, $$1)) {
+         return false;
+      } else {
+         if ($$1 instanceof bxu) {
+            ((bxu)$$1).b(new bvx(bvz.t, 200), this);
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   protected csf a(czy $$0, float $$1, @Nullable czy $$2) {
+      csf $$3 = super.a($$0, $$1, $$2);
+      $$3.e(100.0F);
+      return $$3;
+   }
+
+   @Override
+   public boolean b(bvx $$0) {
+      return $$0.a(bvz.t) ? false : super.b($$0);
    }
 }

@@ -1,44 +1,50 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import org.slf4j.Logger;
 
-public class eql extends equ {
+public class eql extends eqi {
    public static final MapCodec<eql> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(iv.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, eql::new)
+      $$0 -> $$0.group(ehx.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), ehx.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, eql::new)
    );
-   private final List<iv> c;
+   private static final Logger b = LogUtils.getLogger();
+   private final ehx d;
+   private final ehx e;
+   private final LongSet f = new LongOpenHashSet();
 
-   public static eql a(iv... $$0) {
-      return new eql(List.of($$0));
+   private eql(ehx $$0, ehx $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private eql(List<iv> $$0) {
-      this.c = $$0;
+   public static eql a(ehx $$0, ehx $$1) {
+      return new eql($$0, $$1);
    }
 
    @Override
-   public Stream<iv> a_(eqs $$0, azv $$1, iv $$2) {
-      int $$3 = jy.a($$2.u());
-      int $$4 = jy.a($$2.w());
-      boolean $$5 = false;
-
-      for (iv $$6 : this.c) {
-         if (a($$3, $$4, $$6)) {
-            $$5 = true;
-            break;
+   public int a(azx $$0, eia $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
+            b.warn("Empty height range: {}", this);
          }
+
+         return $$2;
+      } else {
+         return azo.b($$0, $$2, $$3);
       }
-
-      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
-   }
-
-   private static boolean a(int $$0, int $$1, iv $$2) {
-      return $$0 == jy.a($$2.u()) && $$1 == jy.a($$2.w());
    }
 
    @Override
-   public eqv<?> b() {
-      return eqv.o;
+   public eqj<?> a() {
+      return eqj.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.d + "-" + this.e + "]";
    }
 }

@@ -1,39 +1,52 @@
-public class buc {
-   public static void a(djm $$0, iv $$1, btz $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public class buc extends btw {
+   public static final MapCodec<buc> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, buc::new)
+      )
+      .validate(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0)
+      );
+   private final int b;
+   private final int f;
+
+   private buc(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
    }
 
-   public static void a(djm $$0, bwi $$1, btz $$2) {
-      a($$0, $$1.dz(), $$1.dB(), $$1.dF(), $$2);
+   public static buc a(int $$0, int $$1) {
+      return new buc($$0, $$1);
    }
 
-   private static void a(djm $$0, double $$1, double $$2, double $$3, btz $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
-      }
+   @Override
+   public int a(azx $$0) {
+      return azo.b($$0, this.b, this.f);
    }
 
-   public static void a(djm $$0, iv $$1, jo<czn> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   @Override
+   public int a() {
+      return this.b;
    }
 
-   public static void a(djm $$0, double $$1, double $$2, double $$3, czn $$4) {
-      double $$5 = (double)bwr.aq.l();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.A.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.A.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.A.j() * $$6 + $$7;
-
-      while (!$$4.f()) {
-         cnr $$11 = new cnr($$0, $$8, $$9, $$10, $$4.a($$0.A.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.n($$0.A.a(0.0, 0.11485000171139836), $$0.A.a(0.2, 0.11485000171139836), $$0.A.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
-      }
+   @Override
+   public int b() {
+      return this.f;
    }
 
-   public static void a(eat $$0, djm $$1, iv $$2) {
-      $$1.b($$2, $$0.b());
+   @Override
+   public btx<?> c() {
+      return btx.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

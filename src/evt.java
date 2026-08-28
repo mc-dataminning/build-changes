@@ -1,27 +1,22 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class evt implements evx {
-   public static final MapCodec<evt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ezy.a.fieldOf("loot_table").forGetter($$0x -> $$0x.b)).apply($$0, evt::new)
-   );
-   private final alf<ezy> b;
+public class evt extends ewa {
+   public final axt<dnc> a;
+   public static final MapCodec<evt> b = axt.b(mh.i).xmap(evt::new, $$0 -> $$0.a).fieldOf("value");
 
-   public evt(alf<ezy> $$0) {
-      this.b = $$0;
+   public evt(axt<dnc> $$0) {
+      this.a = $$0;
+   }
+
+   @Nullable
+   @Override
+   public ewd.d a(dka $$0, iv $$1, iv $$2, ewd.d $$3, ewd.d $$4, evz $$5) {
+      return ekk.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
    }
 
    @Override
-   public tz a(azv $$0, @Nullable tz $$1) {
-      tz $$2 = $$1 == null ? new tz() : $$1.i();
-      $$2.a("LootTable", ezy.a, this.b);
-      $$2.a("LootTableSeed", $$0.g());
-      return $$2;
-   }
-
-   @Override
-   public evy<?> a() {
-      return evy.d;
+   protected ewc<?> a() {
+      return ewc.n;
    }
 }

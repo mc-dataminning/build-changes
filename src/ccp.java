@@ -1,53 +1,33 @@
-import com.mojang.datafixers.kinds.Const;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.Const.Mu;
-import com.mojang.datafixers.util.Unit;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public interface ccp<F extends K1, Value> {
-   cgl<Value> a();
+public class ccp {
+   private static final int a = 10;
+   private static final int b = 7;
 
-   cgm b();
-
-   @Nullable
-   cco<F, Value> a(byj<?> var1, Optional<Value> var2);
-
-   public static record a<Value>(cgl<Value> a) implements ccp<Mu<Unit>, Value> {
-      @Override
-      public cgm b() {
-         return cgm.b;
-      }
-
-      @Override
-      public cco<Mu<Unit>, Value> a(byj<?> $$0, Optional<Value> $$1) {
-         return $$1.isPresent() ? null : new cco<>($$0, this.a, Const.create(Unit.INSTANCE));
-      }
+   public static caw<byc> a(float $$0) {
+      return a($$0, 10, 7);
    }
 
-   public static record b<Value>(cgl<Value> a) implements ccp<com.mojang.datafixers.kinds.IdF.Mu, Value> {
-      @Override
-      public cgm b() {
-         return cgm.a;
-      }
+   public static caw<byc> a(float $$0, int $$1, int $$2) {
+      return ccy.a((Function<ccy.b<byc>, ? extends App<ccy.c<byc>, cdb<byc>>>)($$3 -> $$3.group($$3.c(cgw.n)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               iv $$7 = $$5.dv();
+               ffq $$8;
+               if ($$4.c($$7)) {
+                  $$8 = ciq.a($$5, $$1, $$2);
+               } else {
+                  jy $$9 = jy.a($$7);
+                  jy $$10 = bzn.a($$4, $$9, 2);
+                  if ($$10 != $$9) {
+                     $$8 = cin.a($$5, $$1, $$2, ffq.c($$10.k()), (float) (Math.PI / 2));
+                  } else {
+                     $$8 = ciq.a($$5, $$1, $$2);
+                  }
+               }
 
-      @Override
-      public cco<com.mojang.datafixers.kinds.IdF.Mu, Value> a(byj<?> $$0, Optional<Value> $$1) {
-         return $$1.isEmpty() ? null : new cco<>($$0, this.a, IdF.create($$1.get()));
-      }
-   }
-
-   public static record c<Value>(cgl<Value> a) implements ccp<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
-      @Override
-      public cgm b() {
-         return cgm.c;
-      }
-
-      @Override
-      public cco<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(byj<?> $$0, Optional<Value> $$1) {
-         return new cco<>($$0, this.a, OptionalBox.create($$1));
-      }
+               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new cgz($$1xxxx, $$0, 0)));
+               return true;
+            })));
    }
 }

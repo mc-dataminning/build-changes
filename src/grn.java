@@ -1,21 +1,51 @@
-import java.util.Map;
+public enum grn {
+   a(new grn.b(grn.a.f, grn.a.e, grn.a.a), new grn.b(grn.a.f, grn.a.e, grn.a.d), new grn.b(grn.a.c, grn.a.e, grn.a.d), new grn.b(grn.a.c, grn.a.e, grn.a.a)),
+   b(new grn.b(grn.a.f, grn.a.b, grn.a.d), new grn.b(grn.a.f, grn.a.b, grn.a.a), new grn.b(grn.a.c, grn.a.b, grn.a.a), new grn.b(grn.a.c, grn.a.b, grn.a.d)),
+   c(new grn.b(grn.a.c, grn.a.b, grn.a.d), new grn.b(grn.a.c, grn.a.e, grn.a.d), new grn.b(grn.a.f, grn.a.e, grn.a.d), new grn.b(grn.a.f, grn.a.b, grn.a.d)),
+   d(new grn.b(grn.a.f, grn.a.b, grn.a.a), new grn.b(grn.a.f, grn.a.e, grn.a.a), new grn.b(grn.a.c, grn.a.e, grn.a.a), new grn.b(grn.a.c, grn.a.b, grn.a.a)),
+   e(new grn.b(grn.a.f, grn.a.b, grn.a.d), new grn.b(grn.a.f, grn.a.e, grn.a.d), new grn.b(grn.a.f, grn.a.e, grn.a.a), new grn.b(grn.a.f, grn.a.b, grn.a.a)),
+   f(new grn.b(grn.a.c, grn.a.b, grn.a.a), new grn.b(grn.a.c, grn.a.e, grn.a.a), new grn.b(grn.a.c, grn.a.e, grn.a.d), new grn.b(grn.a.c, grn.a.b, grn.a.d));
 
-public class grn {
-   public static final grn a = new grn(Map.of());
-   private final Map<dmr, hiu<?>> b;
+   private static final grn[] g = ag.a(new grn[6], $$0 -> {
+      $$0[grn.a.e] = a;
+      $$0[grn.a.b] = b;
+      $$0[grn.a.d] = c;
+      $$0[grn.a.a] = d;
+      $$0[grn.a.f] = e;
+      $$0[grn.a.c] = f;
+   });
+   private final grn.b[] h;
 
-   public grn(Map<dmr, hiu<?>> $$0) {
-      this.b = $$0;
+   public static grn a(jb $$0) {
+      return g[$$0.d()];
    }
 
-   public static grn a(gjp $$0) {
-      return new grn(hiv.a($$0));
+   private grn(final grn.b... $$0) {
+      this.h = $$0;
    }
 
-   public void a(dmr $$0, czl $$1, fkd $$2, gqr $$3, int $$4, int $$5) {
-      hiu<?> $$6 = this.b.get($$0);
-      if ($$6 != null) {
-         $$6.a(null, $$1, $$2, $$3, $$4, $$5, false);
+   public grn.b a(int $$0) {
+      return this.h[$$0];
+   }
+
+   public static final class a {
+      public static final int a = jb.d.d();
+      public static final int b = jb.b.d();
+      public static final int c = jb.f.d();
+      public static final int d = jb.c.d();
+      public static final int e = jb.a.d();
+      public static final int f = jb.e.d();
+   }
+
+   public static class b {
+      public final int a;
+      public final int b;
+      public final int c;
+
+      b(int $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
    }
 }

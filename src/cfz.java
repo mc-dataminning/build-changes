@@ -1,18 +1,40 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cfz<T extends bxj> extends cfy<T> {
-   private boolean i = true;
+public class cfz extends ceq {
+   private final cre a;
 
-   public cfz(ctd $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable chy.a $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(boolean $$0) {
-      this.i = $$0;
+   public cfz(cre $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(ceq.a.c, ceq.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.i && super.b();
+      if (!this.a.bJ()) {
+         return false;
+      } else if (this.a.bi()) {
+         return false;
+      } else if (!this.a.aH()) {
+         return false;
+      } else if (this.a.T) {
+         return false;
+      } else {
+         crx $$0 = this.a.x();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.bR != null;
+         }
+      }
+   }
+
+   @Override
+   public void d() {
+      this.a.O().m();
+   }
+
+   @Override
+   public void e() {
+      this.a.a(null);
    }
 }

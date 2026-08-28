@@ -1,40 +1,48 @@
-import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
 
-public class eoh extends eog {
-   public static final MapCodec<eoh> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eoh::new));
-   protected final List<eat> h;
+public class eoh extends eob {
+   public static final MapCodec<eoh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(btw.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, eoh::new)
+   );
+   private final btw b;
 
-   protected static <P extends eoh> P4<Mu<P>, Long, ewd.a, Float, List<eat>> b(Instance<P> $$0) {
-      return a($$0).and(ayu.b(eat.a.listOf()).fieldOf("states").forGetter($$0x -> $$0x.h));
-   }
-
-   public eoh(long $$0, ewd.a $$1, float $$2, List<eat> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   public eoh(btw $$0, btw $$1, btw $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected eoe<?> a() {
-      return eoe.d;
+   protected eoc<?> a() {
+      return eoc.b;
    }
 
    @Override
-   public eat a(azv $$0, iv $$1) {
-      return this.a(this.h, $$1, (double)this.e);
+   protected void a(dkd $$0, eob.b $$1, azx $$2, enl $$3, int $$4, eob.a $$5, int $$6, int $$7, int $$8) {
+      iv $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
+
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
+         }
+      }
    }
 
-   protected eat a(List<eat> $$0, iv $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
+   @Override
+   public int a(azx $$0, int $$1, enl $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
    }
 
-   protected eat a(List<eat> $$0, double $$1) {
-      double $$2 = azm.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   @Override
+   protected boolean a(azx $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

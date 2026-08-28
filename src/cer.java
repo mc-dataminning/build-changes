@@ -1,119 +1,59 @@
-import com.google.common.collect.Lists;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class cer extends cef {
-   protected final bxr a;
-   private final double b;
-   @Nullable
-   private exo c;
-   private iv d;
-   private final boolean e;
-   private final List<iv> f = Lists.newArrayList();
-   private final int g;
-   private final BooleanSupplier h;
-
-   public cer(bxr $$0, double $$1, boolean $$2, int $$3, BooleanSupplier $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.e = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.a(EnumSet.of(cef.a.a));
-      if (!cid.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob for MoveThroughVillageGoal");
+public class cer {
+   private static final cge a = new cge(Integer.MAX_VALUE, new ceq() {
+      @Override
+      public boolean b() {
+         return false;
       }
+   }) {
+      @Override
+      public boolean h() {
+         return false;
+      }
+   };
+   private final Map<ceq.a, cge> b = new EnumMap<>(ceq.a.class);
+   private final Set<cge> c = new ObjectLinkedOpenHashSet();
+   private final EnumSet<ceq.a> d = EnumSet.noneOf(ceq.a.class);
+
+   public void a(int $$0, ceq $$1) {
+      this.c.add(new cge($$0, $$1));
    }
 
-   @Override
-   public boolean b() {
-      if (!cid.a(this.a)) {
-         return false;
-      } else {
-         this.h();
-         if (this.e && this.a.dU().V()) {
-            return false;
-         } else {
-            arq $$0 = (arq)this.a.dU();
-            iv $$1 = this.a.du();
-            if (!$$0.a($$1, 6)) {
-               return false;
-            } else {
-               ffc $$2 = cif.a(this.a, 15, 7, $$2x -> {
-                  if (!$$0.c($$2x)) {
-                     return Double.NEGATIVE_INFINITY;
-                  } else {
-                     Optional<iv> $$3x = $$0.A().d($$0xx -> $$0xx.a(axm.b), this::a, $$2x, 10, cil.b.b);
-                     return $$3x.<Double>map($$1xx -> -$$1xx.j($$1)).orElse(Double.NEGATIVE_INFINITY);
-                  }
-               });
-               if ($$2 == null) {
-                  return false;
-               } else {
-                  Optional<iv> $$3 = $$0.A().d($$0x -> $$0x.a(axm.b), this::a, iv.a((jp)$$2), 10, cil.b.b);
-                  if ($$3.isEmpty()) {
-                     return false;
-                  } else {
-                     this.d = $$3.get().j();
-                     cgs $$4 = (cgs)this.a.O();
-                     $$4.b(this.h.getAsBoolean());
-                     this.c = $$4.a(this.d, 0);
-                     $$4.b(true);
-                     if (this.c == null) {
-                        ffc $$5 = cic.a(this.a, 10, 7, ffc.c(this.d), (float) (Math.PI / 2));
-                        if ($$5 == null) {
-                           return false;
-                        }
+   @VisibleForTesting
+   public void a(Predicate<ceq> $$0) {
+      this.c.removeIf($$1 -> $$0.test($$1.k()));
+   }
 
-                        $$4.b(this.h.getAsBoolean());
-                        this.c = this.a.O().a($$5.d, $$5.e, $$5.f, 0);
-                        $$4.b(true);
-                        if (this.c == null) {
-                           return false;
-                        }
-                     }
-
-                     for (int $$6 = 0; $$6 < this.c.e(); $$6++) {
-                        exm $$7 = this.c.a($$6);
-                        iv $$8 = new iv($$7.a, $$7.b + 1, $$7.c);
-                        if (doy.a(this.a.dU(), $$8)) {
-                           this.c = this.a.O().a((double)$$7.a, (double)$$7.b, (double)$$7.c, 0);
-                           break;
-                        }
-                     }
-
-                     return this.c != null;
-                  }
-               }
-            }
+   public void a(ceq $$0) {
+      for (cge $$1 : this.c) {
+         if ($$1.k() == $$0 && $$1.h()) {
+            $$1.e();
          }
       }
+
+      this.c.removeIf($$1x -> $$1x.k() == $$0);
    }
 
-   @Override
-   public boolean c() {
-      return this.a.O().k() ? false : !this.d.a(this.a.ds(), (double)(this.a.dp() + (float)this.g));
-   }
-
-   @Override
-   public void d() {
-      this.a.O().a(this.c, this.b);
-   }
-
-   @Override
-   public void e() {
-      if (this.a.O().k() || this.d.a(this.a.ds(), (double)this.g)) {
-         this.f.add(this.d);
+   private static boolean a(cge $$0, EnumSet<ceq.a> $$1) {
+      for (ceq.a $$2 : $$0.j()) {
+         if ($$1.contains($$2)) {
+            return true;
+         }
       }
+
+      return false;
    }
 
-   private boolean a(iv $$0) {
-      for (iv $$1 : this.f) {
-         if (Objects.equals($$0, $$1)) {
+   private static boolean a(cge $$0, Map<ceq.a, cge> $$1) {
+      for (ceq.a $$2 : $$0.j()) {
+         if (!$$1.getOrDefault($$2, a).a($$0)) {
             return false;
          }
       }
@@ -121,9 +61,66 @@ public class cer extends cef {
       return true;
    }
 
-   private void h() {
-      if (this.f.size() > 15) {
-         this.f.remove(0);
+   public void a() {
+      brb $$0 = bra.a();
+      $$0.a("goalCleanup");
+
+      for (cge $$1 : this.c) {
+         if ($$1.h() && (a($$1, this.d) || !$$1.c())) {
+            $$1.e();
+         }
+      }
+
+      this.b.entrySet().removeIf($$0x -> !((cge)$$0x.getValue()).h());
+      $$0.c();
+      $$0.a("goalUpdate");
+
+      for (cge $$2 : this.c) {
+         if (!$$2.h() && !a($$2, this.d) && a($$2, this.b) && $$2.b()) {
+            for (ceq.a $$3 : $$2.j()) {
+               cge $$4 = this.b.getOrDefault($$3, a);
+               $$4.e();
+               this.b.put($$3, $$2);
+            }
+
+            $$2.d();
+         }
+      }
+
+      $$0.c();
+      this.a(true);
+   }
+
+   public void a(boolean $$0) {
+      brb $$1 = bra.a();
+      $$1.a("goalTick");
+
+      for (cge $$2 : this.c) {
+         if ($$2.h() && ($$0 || $$2.V_())) {
+            $$2.a();
+         }
+      }
+
+      $$1.c();
+   }
+
+   public Set<cge> b() {
+      return this.c;
+   }
+
+   public void a(ceq.a $$0) {
+      this.d.add($$0);
+   }
+
+   public void b(ceq.a $$0) {
+      this.d.remove($$0);
+   }
+
+   public void a(ceq.a $$0, boolean $$1) {
+      if ($$1) {
+         this.b($$0);
+      } else {
+         this.a($$0);
       }
    }
 }

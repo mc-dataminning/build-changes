@@ -1,63 +1,24 @@
-import javax.annotation.Nullable;
+public class gbp extends gas<cwq> {
+   private static final ali G = ali.b("container/grindstone/error");
+   private static final ali H = ali.b("textures/gui/container/grindstone.png");
 
-public abstract class gbp extends fys {
-   private static final int b = 100;
-   private final wy c;
-   @Nullable
-   private final wy d;
-   private final wy s;
-   @Nullable
-   protected ftc a;
-   @Nullable
-   private ftl u;
-   private final fwm v;
-
-   protected gbp(wy $$0, wy $$1, wy $$2) {
-      this($$0, $$1, null, $$2);
+   public gbp(cwq $$0, crw $$1, xa $$2) {
+      super($$0, $$1, $$2);
    }
-
-   protected gbp(wy $$0, wy $$1, @Nullable wy $$2, wy $$3) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.s = $$3;
-      this.v = new fwm(0, 0, this.n, this.o);
-   }
-
-   protected abstract fwp m();
 
    @Override
-   protected void aO_() {
-      fws $$0 = this.v.a(fws.d().a(8));
-      $$0.c().b();
-      $$0.a(new fuh(this.n(), this.p));
-      this.u = $$0.a(new ftl(this.n - 100, this.c, this.p, 12), $$0x -> $$0x.a(12));
-      this.u.b(false);
-      fws $$1 = $$0.a(fws.d().a(8));
-      $$1.c().b();
-      if (this.d != null) {
-         this.a = $$1.a(ftc.a(this.d, this.p).a());
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(ftx $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gsl::H, H, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(2).h()) {
+         $$0.a(gsl::H, G, $$4 + 92, $$5 + 31, 28, 21);
       }
-
-      $$1.a(this.m());
-      this.v.a($$1x -> {
-         fsy var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      if (this.u != null) {
-         this.u.d(this.n - 100);
-      }
-
-      this.v.a();
-      fwm.a(this.v, this.J());
-   }
-
-   @Override
-   public wy i() {
-      return this.s;
    }
 }

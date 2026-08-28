@@ -1,40 +1,44 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class eqz extends eqt {
+public class eqz extends eri {
    public static final MapCodec<eqz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               egs.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eqz::new)
+      $$0 -> $$0.group(iv.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, eqz::new)
    );
-   private final egs.a c;
-   private final int d;
-   private final int e;
+   private final List<iv> c;
 
-   private eqz(egs.a $$0, int $$1, int $$2) {
+   public static eqz a(iv... $$0) {
+      return new eqz(List.of($$0));
+   }
+
+   private eqz(List<iv> $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static eqz a(egs.a $$0, int $$1, int $$2) {
-      return new eqz($$0, $$1, $$2);
    }
 
    @Override
-   protected boolean a(eqs $$0, azv $$1, iv $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   public Stream<iv> a_(erg $$0, azx $$1, iv $$2) {
+      int $$3 = jy.a($$2.u());
+      int $$4 = jy.a($$2.w());
+      boolean $$5 = false;
+
+      for (iv $$6 : this.c) {
+         if (a($$3, $$4, $$6)) {
+            $$5 = true;
+            break;
+         }
+      }
+
+      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
+   }
+
+   private static boolean a(int $$0, int $$1, iv $$2) {
+      return $$0 == jy.a($$2.u()) && $$1 == jy.a($$2.w());
    }
 
    @Override
-   public eqv<?> b() {
-      return eqv.c;
+   public erj<?> b() {
+      return erj.o;
    }
 }

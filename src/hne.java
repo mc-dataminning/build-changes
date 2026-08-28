@@ -1,44 +1,80 @@
-public class hne extends hmx {
-   public static final int n = 20;
-   private final gpo o;
-   private int p;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public hne(gpo $$0) {
-      super(awn.iu, awo.h, hno.t());
-      this.o = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.1F;
+public class hne {
+   private static final Logger a = LogUtils.getLogger();
+   private static final alb b = alb.a("items");
+
+   public static CompletableFuture<hne.a> a(avf $$0, Executor $$1) {
+      jt.b $$2 = gme.a().a();
+      return CompletableFuture.<Map<ali, avd>>supplyAsync(() -> b.a($$0), $$1)
+         .thenCompose(
+            $$2x -> {
+               List<CompletableFuture<hne.b>> $$3 = new ArrayList<>($$2x.size());
+               $$2x.forEach(
+                  ($$3x, $$4) -> $$3.add(
+                        CompletableFuture.supplyAsync(
+                           () -> {
+                              ali $$3xx = b.b($$3x);
+
+                              try {
+                                 hne.b var8;
+                                 try (Reader $$4x = $$4.e()) {
+                                    azt $$5 = new azt($$2);
+                                    DynamicOps<JsonElement> $$6 = $$5.a(JsonOps.INSTANCE);
+                                    hhl $$7 = hhl.a
+                                       .parse($$6, JsonParser.parseReader($$4x))
+                                       .ifError(
+                                          $$2xxxx -> a.error(
+                                                "Couldn't parse item model '{}' from pack '{}': {}", new Object[]{$$3xx, $$4.b(), $$2xxxx.message()}
+                                             )
+                                       )
+                                       .result()
+                                       .map($$1xxxx -> $$5.b() ? $$1xxxx.a($$5.a()) : $$1xxxx)
+                                       .orElse(null);
+                                    var8 = new hne.b($$3xx, $$7);
+                                 }
+
+                                 return var8;
+                              } catch (Exception var11) {
+                                 a.error("Failed to open item model {} from pack '{}'", new Object[]{$$3x, $$4.b(), var11});
+                                 return new hne.b($$3xx, null);
+                              }
+                           },
+                           $$1
+                        )
+                     )
+               );
+               return ag.d($$3).thenApply($$0xx -> {
+                  Map<ali, hhl> $$1xx = new HashMap<>();
+
+                  for (hne.b $$2xx : $$0xx) {
+                     if ($$2xx.b != null) {
+                        $$1xx.put($$2xx.a, $$2xx.b);
+                     }
+                  }
+
+                  return new hne.a($$1xx);
+               });
+            }
+         );
    }
 
-   @Override
-   public void q() {
-      this.p++;
-      if (!this.o.dP() && (this.p <= 20 || this.o.fI())) {
-         this.f = (double)((float)this.o.dz());
-         this.g = (double)((float)this.o.dB());
-         this.h = (double)((float)this.o.dF());
-         float $$0 = (float)this.o.dx().h();
-         if ((double)$$0 >= 1.0E-7) {
-            this.d = azm.a($$0 / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.d = 0.0F;
-         }
+   public static record a(Map<ali, hhl> a) {
+   }
 
-         if (this.p < 20) {
-            this.d = 0.0F;
-         } else if (this.p < 40) {
-            this.d = this.d * ((float)(this.p - 20) / 20.0F);
-         }
-
-         float $$1 = 0.8F;
-         if (this.d > 0.8F) {
-            this.e = 1.0F + (this.d - 0.8F);
-         } else {
-            this.e = 1.0F;
-         }
-      } else {
-         this.n();
-      }
+   static record b(ali a, @Nullable hhl b) {
    }
 }

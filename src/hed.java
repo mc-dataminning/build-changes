@@ -1,11 +1,10 @@
-import javax.annotation.Nullable;
-
-public class hed extends hdf {
-   public jb a = jb.c;
-   public final hgi b = new hgi();
-   public int c;
-   public boolean d;
-   @Nullable
-   public eyt e;
-   public final hiz f = new hiz();
+public class hed extends hfp {
+   public czy a = czy.k;
+   public boolean b;
+   public float c;
+   public final bwk d = new bwk();
+   public final bwk e = new bwk();
+   public final bwk f = new bwk();
+   public final bwk g = new bwk();
+   public final bwk h = new bwk();
 }

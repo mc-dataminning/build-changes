@@ -1,11 +1,25 @@
-import javax.annotation.Nullable;
+public class goc extends gqk {
+   goc(gmb $$0, double $$1, double $$2, double $$3, ebe $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a(frd.Q().ap().a().a($$4));
+      this.u = 0.0F;
+      this.t = 80;
+      this.n = false;
+   }
 
-public interface goc<T extends lw> {
-   @Nullable
-   gnz createParticle(T var1, gkq var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   @Override
+   public gpo b() {
+      return gpo.a;
+   }
 
-   public interface a<T extends lw> {
-      @Nullable
-      goz createParticle(T var1, gkq var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   @Override
+   public float b(float $$0) {
+      return 0.5F;
+   }
+
+   public static class a implements gpn<lq> {
+      public gpk a(lq $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new goc($$1, $$2, $$3, $$4, $$0.b());
+      }
    }
 }

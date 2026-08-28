@@ -1,63 +1,53 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.Const;
+import com.mojang.datafixers.kinds.IdF;
+import com.mojang.datafixers.kinds.K1;
+import com.mojang.datafixers.kinds.OptionalBox;
+import com.mojang.datafixers.kinds.Const.Mu;
+import com.mojang.datafixers.util.Unit;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cda extends bza<cqp> {
-   private static final int d = 15;
-   private static final int e = 20;
-   private static final double f = 0.5;
-   private static final double g = 2.5;
-   public static final int c = 40;
-   private static final int h = azm.c(34.0);
-   private static final int i = azm.f(60.0F);
+public interface cda<F extends K1, Value> {
+   cgw<Value> a();
 
-   public cda() {
-      super(ImmutableMap.of(cgl.p, cgm.a, cgl.aK, cgm.b, cgl.aL, cgm.c, cgl.aM, cgm.c), i);
-   }
+   cgx b();
 
-   protected boolean a(arq $$0, cqp $$1) {
-      return $$1.a($$1.eb().c(cgl.p).get(), 15.0, 20.0);
-   }
+   @Nullable
+   ccz<F, Value> a(byu<?> var1, Optional<Value> var2);
 
-   protected boolean a(arq $$0, cqp $$1, long $$2) {
-      return true;
-   }
+   public static record a<Value>(cgw<Value> a) implements cda<Mu<Unit>, Value> {
+      @Override
+      public cgx b() {
+         return cgx.b;
+      }
 
-   protected void b(arq $$0, cqp $$1, long $$2) {
-      $$1.eb().a(cgl.q, true, (long)i);
-      $$1.eb().a(cgl.aM, bau.a, (long)h);
-      $$0.a($$1, (byte)62);
-      $$1.a(awn.Db, 3.0F, 1.0F);
-   }
-
-   protected void c(arq $$0, cqp $$1, long $$2) {
-      $$1.eb().c(cgl.p).ifPresent($$1x -> $$1.J().a($$1x.ds()));
-      if (!$$1.eb().a(cgl.aM) && !$$1.eb().a(cgl.aL)) {
-         $$1.eb().a(cgl.aL, bau.a, (long)(i - h));
-         $$1.eb().c(cgl.p).filter($$1::b).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
-            ffc $$3 = $$1.ds().e($$1.dr().b(bwj.d, 0, $$1.dK()));
-            ffc $$4 = $$2x.bC().d($$3);
-            ffc $$5 = $$4.d();
-            int $$6 = azm.a($$4.g()) + 7;
-
-            for (int $$7 = 1; $$7 < $$6; $$7++) {
-               ffc $$8 = $$3.e($$5.c((double)$$7));
-               $$0.a(ly.B, $$8.d, $$8.e, $$8.f, 1, 0.0, 0.0, 0.0, 0.0);
-            }
-
-            $$1.a(awn.Da, 3.0F, 1.0F);
-            if ($$2x.a($$0, $$0.al().e($$1), 10.0F)) {
-               double $$9 = 0.5 * (1.0 - $$2x.h(byp.p));
-               double $$10 = 2.5 * (1.0 - $$2x.h(byp.p));
-               $$2x.i($$5.a() * $$10, $$5.b() * $$9, $$5.c() * $$10);
-            }
-         });
+      @Override
+      public ccz<Mu<Unit>, Value> a(byu<?> $$0, Optional<Value> $$1) {
+         return $$1.isPresent() ? null : new ccz<>($$0, this.a, Const.create(Unit.INSTANCE));
       }
    }
 
-   protected void d(arq $$0, cqp $$1, long $$2) {
-      a($$1, 40);
+   public static record b<Value>(cgw<Value> a) implements cda<com.mojang.datafixers.kinds.IdF.Mu, Value> {
+      @Override
+      public cgx b() {
+         return cgx.a;
+      }
+
+      @Override
+      public ccz<com.mojang.datafixers.kinds.IdF.Mu, Value> a(byu<?> $$0, Optional<Value> $$1) {
+         return $$1.isEmpty() ? null : new ccz<>($$0, this.a, IdF.create($$1.get()));
+      }
    }
 
-   public static void a(bxj $$0, int $$1) {
-      $$0.eb().a(cgl.aK, bau.a, (long)$$1);
+   public static record c<Value>(cgw<Value> a) implements cda<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
+      @Override
+      public cgx b() {
+         return cgx.c;
+      }
+
+      @Override
+      public ccz<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(byu<?> $$0, Optional<Value> $$1) {
+         return new ccz<>($$0, this.a, OptionalBox.create($$1));
+      }
    }
 }

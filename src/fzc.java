@@ -1,245 +1,188 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import io.netty.channel.ChannelFuture;
+import java.net.InetSocketAddress;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fzc extends fys implements gkl.a {
-   private static final alg x = alg.b("textures/gui/advancements/window.png");
-   public static final int a = 252;
-   public static final int b = 140;
-   private static final int y = 9;
-   private static final int z = 18;
-   public static final int c = 234;
-   public static final int d = 113;
-   private static final int A = 8;
-   private static final int B = 6;
-   private static final int C = 256;
-   private static final int D = 256;
-   public static final int s = 16;
-   public static final int u = 16;
-   public static final int v = 14;
-   public static final int w = 7;
-   private static final double E = 16.0;
-   private static final wy F = wy.c("advancements.sad_label");
-   private static final wy G = wy.c("advancements.empty");
-   private static final wy H = wy.c("gui.advancements");
-   private final fwo I = new fwo(this);
+public class fzc extends gad {
+   private static final AtomicInteger c = new AtomicInteger(0);
+   static final Logger d = LogUtils.getLogger();
+   private static final long s = 2000L;
+   public static final xa a = xa.c("connect.aborted");
+   public static final xa b = xa.a("disconnect.genericReason", xa.c("disconnect.unknownHost"));
    @Nullable
-   private final fys J;
-   private final gkl K;
-   private final Map<aj, fyy> L = Maps.newLinkedHashMap();
+   volatile vt u;
    @Nullable
-   private fyy M;
-   private boolean N;
+   ChannelFuture v;
+   volatile boolean w;
+   final gad x;
+   private xa y = xa.c("connect.connecting");
+   private long z = -1L;
+   final xa A;
 
-   public fzc(gkl $$0) {
-      this($$0, null);
+   private fzc(gad $$0, xa $$1) {
+      super(fqu.a);
+      this.x = $$0;
+      this.A = $$1;
    }
 
-   public fzc(gkl $$0, @Nullable fys $$1) {
-      super(H);
-      this.K = $$0;
-      this.J = $$1;
-   }
-
-   @Override
-   protected void aO_() {
-      this.I.a(H, this.p);
-      this.L.clear();
-      this.M = null;
-      this.K.a(this);
-      if (this.M == null && !this.L.isEmpty()) {
-         fyy $$0 = this.L.values().iterator().next();
-         this.K.a($$0.c().b(), true);
+   public static void a(gad $$0, frd $$1, gnt $$2, gmq $$3, boolean $$4, @Nullable gmu $$5) {
+      if ($$1.z instanceof fzc) {
+         d.error("Attempt to connect while already connecting");
       } else {
-         this.K.a(this.M == null ? null : this.M.c().b(), true);
-      }
+         xa $$6;
+         if ($$5 != null) {
+            $$6 = wz.q;
+         } else if ($$4) {
+            $$6 = grg.a;
+         } else {
+            $$6 = wz.r;
+         }
 
-      this.I.b(fta.a(wx.d, $$0x -> this.aL_()).a(200).a());
-      this.I.a($$1 -> {
-         fsy var10000 = this.c($$1);
-      });
-      this.c();
-   }
+         fzc $$9 = new fzc($$0, $$6);
+         if ($$5 != null) {
+            $$9.a(xa.c("connect.transferring"));
+         }
 
-   @Override
-   protected void c() {
-      this.I.a();
-   }
-
-   @Override
-   public void aL_() {
-      this.m.a(this.J);
-   }
-
-   @Override
-   public void aF_() {
-      this.K.a(null);
-      gkr $$0 = this.m.L();
-      if ($$0 != null) {
-         $$0.b(aic.b());
+         $$1.y();
+         $$1.aU();
+         $$1.a(gnh.a($$3.b));
+         $$1.bc().a(grh.c.b, $$3.b, $$3.a);
+         $$1.a($$9);
+         $$9.a($$1, $$2, $$3, $$5);
       }
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         int $$3 = (this.n - 252) / 2;
-         int $$4 = (this.o - 140) / 2;
+   private void a(final frd $$0, final gnt $$1, final gmq $$2, @Nullable final gmu $$3) {
+      d.info("Connecting to {}, {}", $$1.a(), $$1.b());
+      Thread $$4 = new Thread("Server Connector #" + c.incrementAndGet()) {
+         @Override
+         public void run() {
+            InetSocketAddress $$0 = null;
 
-         for (fyy $$5 : this.L.values()) {
-            if ($$5.a($$3, $$4, $$0, $$1)) {
-               this.K.a($$5.c().b(), true);
-               break;
+            try {
+               if (fzc.this.w) {
+                  return;
+               }
+
+               Optional<InetSocketAddress> $$1 = gnv.a.a($$1).map(gns::d);
+               if (fzc.this.w) {
+                  return;
+               }
+
+               if ($$1.isEmpty()) {
+                  $$0.execute(() -> $$0.a(new fzk(fzc.this.x, fzc.this.A, fzc.b)));
+                  return;
+               }
+
+               $$0 = $$1.get();
+               vt $$2;
+               synchronized (fzc.this) {
+                  if (fzc.this.w) {
+                     return;
+                  }
+
+                  $$2 = new vt(zi.b);
+                  $$2.a($$0.aQ().n());
+                  fzc.this.v = vt.a($$0, $$0.n.aD(), $$2);
+               }
+
+               fzc.this.v.syncUninterruptibly();
+               synchronized (fzc.this) {
+                  if (fzc.this.w) {
+                     $$2.a(fzc.a);
+                     return;
+                  }
+
+                  fzc.this.u = $$2;
+                  $$0.af().a($$2, a($$2.b()));
+               }
+
+               fzc.this.u
+                  .a($$0.getHostName(), $$0.getPort(), ajk.b, ajk.d, new gma(fzc.this.u, $$0, $$2, fzc.this.x, false, null, fzc.this::a, $$3), $$3 != null);
+               fzc.this.u.a(new ajn($$0.X().c(), $$0.X().b()));
+            } catch (Exception var9) {
+               if (fzc.this.w) {
+                  return;
+               }
+
+               Exception $$6;
+               if (var9.getCause() instanceof Exception $$5) {
+                  $$6 = $$5;
+               } else {
+                  $$6 = var9;
+               }
+
+               fzc.d.error("Couldn't connect to server", var9);
+               String $$8 = $$0 == null
+                  ? $$6.getMessage()
+                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
+               $$0.execute(() -> $$0.a(new fzk(fzc.this.x, fzc.this.A, xa.a("disconnect.genericReason", $$8))));
             }
          }
-      }
 
-      return super.a($$0, $$1, $$2);
+         private static hod.c a(gmq.a $$0x) {
+            return switch ($$0) {
+               case a -> hod.c.b;
+               case b -> hod.c.c;
+               case c -> hod.c.a;
+            };
+         }
+      };
+      $$4.setUncaughtExceptionHandler(new s(d));
+      $$4.start();
+   }
+
+   private void a(xa $$0) {
+      this.y = $$0;
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.m.n.R.a($$0, $$1)) {
-         this.m.a(null);
-         this.m.o.i();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   public void e() {
+      if (this.u != null) {
+         if (this.u.i()) {
+            this.u.b();
+         } else {
+            this.u.n();
+         }
       }
    }
 
    @Override
-   public void a(fsm $$0, int $$1, int $$2, float $$3) {
+   public boolean aH_() {
+      return false;
+   }
+
+   @Override
+   protected void aS_() {
+      this.c(ful.a(wz.e, $$0 -> {
+         synchronized (this) {
+            this.w = true;
+            if (this.v != null) {
+               this.v.cancel(true);
+               this.v = null;
+            }
+
+            if (this.u != null) {
+               this.u.a(a);
+            }
+         }
+
+         this.m.a(this.x);
+      }).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
+   }
+
+   @Override
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 252) / 2;
-      int $$5 = (this.o - 140) / 2;
-      this.b($$0, $$1, $$2, $$4, $$5);
-      this.a($$0, $$4, $$5);
-      this.c($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if ($$2 != 0) {
-         this.N = false;
-         return false;
-      } else {
-         if (!this.N) {
-            this.N = true;
-         } else if (this.M != null) {
-            this.M.a($$3, $$4);
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (this.M != null) {
-         this.M.a($$2 * 16.0, $$3 * 16.0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void b(fsm $$0, int $$1, int $$2, int $$3, int $$4) {
-      fyy $$5 = this.M;
-      if ($$5 == null) {
-         $$0.a($$3 + 9, $$4 + 18, $$3 + 9 + 234, $$4 + 18 + 113, -16777216);
-         int $$6 = $$3 + 9 + 117;
-         $$0.a(this.p, G, $$6, $$4 + 18 + 56 - 9 / 2, -1);
-         $$0.a(this.p, F, $$6, $$4 + 18 + 113 - 9, -1);
-      } else {
-         $$5.b($$0, $$3 + 9, $$4 + 18);
-      }
-   }
-
-   public void a(fsm $$0, int $$1, int $$2) {
-      $$0.a(grc::H, x, $$1, $$2, 0.0F, 0.0F, 252, 140, 256, 256);
-      if (this.L.size() > 1) {
-         for (fyy $$3 : this.L.values()) {
-            $$3.a($$0, $$1, $$2, $$3 == this.M);
-         }
-
-         for (fyy $$4 : this.L.values()) {
-            $$4.a($$0, $$1, $$2);
-         }
+      long $$4 = ag.c();
+      if ($$4 - this.z > 2000L) {
+         this.z = $$4;
+         this.m.aY().c(xa.c("narrator.joining"));
       }
 
-      $$0.a(this.p, this.M != null ? this.M.d() : H, $$1 + 8, $$2 + 6, 4210752, false);
-   }
-
-   private void c(fsm $$0, int $$1, int $$2, int $$3, int $$4) {
-      if (this.M != null) {
-         $$0.c().a();
-         $$0.c().a((float)($$3 + 9), (float)($$4 + 18), 400.0F);
-         this.M.a($$0, $$1 - $$3 - 9, $$2 - $$4 - 18, $$3, $$4);
-         $$0.c().b();
-      }
-
-      if (this.L.size() > 1) {
-         for (fyy $$5 : this.L.values()) {
-            if ($$5.a($$3, $$4, (double)$$1, (double)$$2)) {
-               $$0.a(this.p, $$5.d(), $$1, $$2);
-            }
-         }
-      }
-   }
-
-   @Override
-   public void a(ak $$0) {
-      fyy $$1 = fyy.a(this.m, this, this.L.size(), $$0);
-      if ($$1 != null) {
-         this.L.put($$0.b(), $$1);
-      }
-   }
-
-   @Override
-   public void b(ak $$0) {
-   }
-
-   @Override
-   public void c(ak $$0) {
-      fyy $$1 = this.f($$0);
-      if ($$1 != null) {
-         $$1.a($$0);
-      }
-   }
-
-   @Override
-   public void d(ak $$0) {
-   }
-
-   @Override
-   public void a(ak $$0, al $$1) {
-      fza $$2 = this.e($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
-   }
-
-   @Override
-   public void a(@Nullable aj $$0) {
-      this.M = this.L.get($$0);
-   }
-
-   @Override
-   public void a() {
-      this.L.clear();
-      this.M = null;
-   }
-
-   @Nullable
-   public fza e(ak $$0) {
-      fyy $$1 = this.f($$0);
-      return $$1 == null ? null : $$1.a($$0.b());
-   }
-
-   @Nullable
-   private fyy f(ak $$0) {
-      ak $$1 = $$0.d();
-      return this.L.get($$1.b());
+      $$0.a(this.p, this.y, this.n / 2, this.o / 2 - 50, 16777215);
    }
 }

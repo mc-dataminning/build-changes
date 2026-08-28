@@ -14,7 +14,7 @@ import java.util.function.IntUnaryOperator;
 import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-@fhc
+@fhq
 public class TextureUtil {
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final int MIN_MIPMAP_LEVEL = 0;
@@ -42,54 +42,55 @@ public class TextureUtil {
       }
    }
 
-   public static void writeAsPNG(Path $$0, String $$1, fjw $$2, int $$3, IntUnaryOperator $$4) {
+   public static void writeAsPNG(Path $$0, String $$1, flh $$2, int $$3, IntUnaryOperator $$4) {
       RenderSystem.assertOnRenderThread();
       int $$5 = 0;
 
       for (int $$6 = 0; $$6 <= $$3; $$6++) {
-         $$5 += $$2.b().d() * $$2.a($$6) * $$2.b($$6);
+         $$5 += $$2.d().a() * $$2.a($$6) * $$2.b($$6);
       }
 
-      fhs $$7 = new fhs(fhq.c, fhr.d, $$5);
-      Runnable $$8 = () -> {
-         try (fhs.a $$6 = $$7.a()) {
-            int $$7x = 0;
+      fig $$7 = RenderSystem.getDevice().a(() -> "Texture output buffer", fie.c, fif.d, $$5);
+      fkz $$8 = RenderSystem.getDevice().b();
+      Runnable $$9 = () -> {
+         try (fig.a $$7x = $$8.a($$7)) {
+            int $$8x = 0;
 
-            for (int $$8x = 0; $$8x <= $$3; $$8x++) {
-               int $$9x = $$2.a($$8x);
-               int $$10x = $$2.b($$8x);
+            for (int $$9x = 0; $$9x <= $$3; $$9x++) {
+               int $$10x = $$2.a($$9x);
+               int $$11x = $$2.b($$9x);
 
-               try (fiz $$11x = new fiz($$9x, $$10x, false)) {
-                  for (int $$12 = 0; $$12 < $$10x; $$12++) {
-                     for (int $$13 = 0; $$13 < $$9x; $$13++) {
-                        int $$14 = $$6.a().getInt($$7x + ($$13 + $$12 * $$9x) * $$2.b().d());
-                        $$11x.a($$13, $$12, $$4.applyAsInt($$14));
+               try (fkg $$12x = new fkg($$10x, $$11x, false)) {
+                  for (int $$13 = 0; $$13 < $$11x; $$13++) {
+                     for (int $$14 = 0; $$14 < $$10x; $$14++) {
+                        int $$15 = $$7x.a().getInt($$8x + ($$14 + $$13 * $$10x) * $$2.d().a());
+                        $$12x.a($$14, $$13, $$4.applyAsInt($$15));
                      }
                   }
 
-                  Path $$15 = $$0.resolve($$1 + "_" + $$8x + ".png");
-                  $$11x.a($$15);
-                  LOGGER.debug("Exported png to: {}", $$15.toAbsolutePath());
-               } catch (IOException var18) {
-                  LOGGER.debug("Unable to write: ", var18);
+                  Path $$16 = $$0.resolve($$1 + "_" + $$9x + ".png");
+                  $$12x.a($$16);
+                  LOGGER.debug("Exported png to: {}", $$16.toAbsolutePath());
+               } catch (IOException var19) {
+                  LOGGER.debug("Unable to write: ", var19);
                }
 
-               $$7x += $$2.b().d() * $$9x * $$10x;
+               $$8x += $$2.d().a() * $$10x * $$11x;
             }
          }
 
          $$7.close();
       };
-      AtomicInteger $$9 = new AtomicInteger();
-      int $$10 = 0;
+      AtomicInteger $$10 = new AtomicInteger();
+      int $$11 = 0;
 
-      for (int $$11 = 0; $$11 <= $$3; $$11++) {
-         $$2.a($$7, $$10, () -> {
-            if ($$9.getAndIncrement() == $$3) {
-               $$8.run();
+      for (int $$12 = 0; $$12 <= $$3; $$12++) {
+         $$8.a($$2, $$7, $$11, () -> {
+            if ($$10.getAndIncrement() == $$3) {
+               $$9.run();
             }
-         }, $$11);
-         $$10 += $$2.b().d() * $$2.a($$11) * $$2.b($$11);
+         }, $$12);
+         $$11 += $$2.d().a() * $$2.a($$12) * $$2.b($$12);
       }
    }
 

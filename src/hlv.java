@@ -1,21 +1,17 @@
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import java.io.IOException;
 
-public class hlv extends avh<hlw> {
-   public static final hlw a = new hlw(Map.of());
-   private static final akz b = akz.a("equipment");
-   private Map<alf<dhu>, hlw> c = Map.of();
+public class hlv extends avk<int[]> {
+   private static final ali a = ali.b("textures/colormap/grass.png");
 
-   public hlv() {
-      super(hlw.a, b);
+   protected int[] a(avf $$0, brb $$1) {
+      try {
+         return hlx.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
+      }
    }
 
-   protected void a(Map<alg, hlw> $$0, avd $$1, bqq $$2) {
-      this.c = $$0.entrySet().stream().collect(Collectors.toUnmodifiableMap($$0x -> alf.a(dhv.a, (alg)$$0x.getKey()), Entry::getValue));
-   }
-
-   public hlw a(alf<dhu> $$0) {
-      return this.c.getOrDefault($$0, a);
+   protected void a(int[] $$0, avf $$1, brb $$2) {
+      djv.a($$0);
    }
 }

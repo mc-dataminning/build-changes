@@ -1,6 +1,6 @@
 package com.mojang.blaze3d.platform;
 
-@fhc
+@fhq
 public class GlConst {
    public static final int GL_READ_FRAMEBUFFER = 36008;
    public static final int GL_DRAW_FRAMEBUFFER = 36009;
@@ -17,6 +17,7 @@ public class GlConst {
    public static final int GL_MAP_READ_BIT = 1;
    public static final int GL_EQUAL = 514;
    public static final int GL_LEQUAL = 515;
+   public static final int GL_LESS = 513;
    public static final int GL_GREATER = 516;
    public static final int GL_GEQUAL = 518;
    public static final int GL_ALWAYS = 519;
@@ -121,4 +122,165 @@ public class GlConst {
    public static final int GL_R8 = 33321;
    public static final int GL_RED = 6403;
    public static final int GL_OUT_OF_MEMORY = 1285;
+
+   public static int toGl(fjw $$0) {
+      return switch ($$0) {
+         case a -> 519;
+         case b -> 514;
+         case d -> 513;
+         case e -> 516;
+         default -> 515;
+      };
+   }
+
+   public static int toGl(fkh $$0) {
+      return switch ($$0) {
+         case b -> 6913;
+         default -> 6914;
+      };
+   }
+
+   public static int toGl(DestFactor $$0) {
+      return switch ($$0) {
+         case CONSTANT_ALPHA -> '考';
+         case CONSTANT_COLOR -> '老';
+         case DST_ALPHA -> '̄';
+         case DST_COLOR -> '̆';
+         case ONE -> '\u0001';
+         case ONE_MINUS_CONSTANT_ALPHA -> '耄';
+         case ONE_MINUS_CONSTANT_COLOR -> '耂';
+         case ONE_MINUS_DST_ALPHA -> '̅';
+         case ONE_MINUS_DST_COLOR -> '̇';
+         case ONE_MINUS_SRC_ALPHA -> '̃';
+         case ONE_MINUS_SRC_COLOR -> '́';
+         case SRC_ALPHA -> '̂';
+         case SRC_COLOR -> '̀';
+         case ZERO -> '\u0000';
+      };
+   }
+
+   public static int toGl(SourceFactor $$0) {
+      return switch ($$0) {
+         case CONSTANT_ALPHA -> '考';
+         case CONSTANT_COLOR -> '老';
+         case DST_ALPHA -> '̄';
+         case DST_COLOR -> '̆';
+         case ONE -> '\u0001';
+         case ONE_MINUS_CONSTANT_ALPHA -> '耄';
+         case ONE_MINUS_CONSTANT_COLOR -> '耂';
+         case ONE_MINUS_DST_ALPHA -> '̅';
+         case ONE_MINUS_DST_COLOR -> '̇';
+         case ONE_MINUS_SRC_ALPHA -> '̃';
+         case ONE_MINUS_SRC_COLOR -> '́';
+         case SRC_ALPHA -> '̂';
+         case SRC_ALPHA_SATURATE -> '̈';
+         case SRC_COLOR -> '̀';
+         case ZERO -> '\u0000';
+      };
+   }
+
+   public static int toGl(fie $$0) {
+      return switch ($$0) {
+         case a -> '袒';
+         case b -> '袓';
+         case c -> '裫';
+         case d -> '輶';
+         case e -> '輷';
+         case f -> '裬';
+         case g -> '訑';
+      };
+   }
+
+   public static int toGl(fls.c $$0) {
+      return switch ($$0) {
+         case a -> 4;
+         case b -> 5;
+         case c -> 1;
+         case d -> 3;
+         case e -> 4;
+         case f -> 5;
+         case g -> 6;
+         case h -> 4;
+      };
+   }
+
+   public static int toGl(fls.b $$0) {
+      return switch ($$0) {
+         case a -> 5123;
+         case b -> 5125;
+      };
+   }
+
+   public static int toGl(fkg.a $$0) {
+      return switch ($$0) {
+         case a -> 'ᤈ';
+         case b -> 'ᤇ';
+         case c -> '舧';
+         case d -> 'ᤃ';
+      };
+   }
+
+   public static int toGl(fif $$0) {
+      return switch ($$0) {
+         case a -> '裨';
+         case b -> '裤';
+         case c -> '裠';
+         case d -> '裥';
+         case e -> '裩';
+         case f -> '裡';
+         case g -> '裪';
+         case h -> '裦';
+         case i -> '裢';
+      };
+   }
+
+   public static int toGl(flf $$0) {
+      return switch ($$0) {
+         case a -> '⤁';
+         case b -> '脯';
+      };
+   }
+
+   public static int toGl(flt.a $$0) {
+      return switch ($$0) {
+         case a -> 5126;
+         case b -> 5121;
+         case c -> 5120;
+         case d -> 5123;
+         case e -> 5122;
+         case f -> 5125;
+         case g -> 5124;
+      };
+   }
+
+   public static int toGlInternalId(fli $$0) {
+      return switch ($$0) {
+         case a -> '聘';
+         case b -> '舩';
+         case c -> '膧';
+      };
+   }
+
+   public static int toGlExternalId(fli $$0) {
+      return switch ($$0) {
+         case a -> 6408;
+         case b -> 6403;
+         case c -> 6402;
+      };
+   }
+
+   public static int toGlType(fli $$0) {
+      return switch ($$0) {
+         case a -> 5121;
+         case b -> 5121;
+         case c -> 5126;
+      };
+   }
+
+   public static int toGl(fkw $$0) {
+      return switch ($$0) {
+         case a -> '謱';
+         case b -> '謰';
+      };
+   }
 }

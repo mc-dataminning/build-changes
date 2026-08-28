@@ -1,77 +1,46 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.floats.FloatConsumer;
+import java.nio.ByteBuffer;
+import java.util.List;
+import org.lwjgl.BufferUtils;
 
-public class hps implements hpx {
-   private static final int a = 6000;
-   private static final wy b = wy.c("tutorial.find_tree.title");
-   private static final wy c = wy.c("tutorial.find_tree.description");
-   private final hpw d;
-   @Nullable
-   private fvm e;
-   private int f;
+public class hps implements FloatConsumer {
+   private final List<ByteBuffer> a = Lists.newArrayList();
+   private final int b;
+   private int c;
+   private ByteBuffer d;
 
-   public hps(hpw $$0) {
-      this.d = $$0;
+   public hps(int $$0) {
+      this.b = $$0 + 1 & -2;
+      this.d = BufferUtils.createByteBuffer($$0);
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hpy.f);
+   public void accept(float $$0) {
+      if (this.d.remaining() == 0) {
+         this.d.flip();
+         this.a.add(this.d);
+         this.d = BufferUtils.createByteBuffer(this.b);
+      }
+
+      int $$1 = azo.a((int)($$0 * 32767.5F - 0.5F), -32768, 32767);
+      this.d.putShort((short)$$1);
+      this.c += 2;
+   }
+
+   public ByteBuffer a() {
+      this.d.flip();
+      if (this.a.isEmpty()) {
+         return this.d;
       } else {
-         fpt $$0 = this.d.e();
-         if (this.f == 1) {
-            gpo $$1 = $$0.t;
-            if ($$1 != null && (b($$1) || a($$1))) {
-               this.d.a(hpy.e);
-               return;
-            }
-         }
-
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new fvm($$0.h, fvm.a.c, b, c, false);
-            $$0.aA().a(this.e);
-         }
+         ByteBuffer $$0 = BufferUtils.createByteBuffer(this.c);
+         this.a.forEach($$0::put);
+         $$0.put(this.d);
+         $$0.flip();
+         return $$0;
       }
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.e();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void a(gkq $$0, ffa $$1) {
-      if ($$1.d() == ffa.a.b) {
-         eat $$2 = $$0.a_(((fey)$$1).b());
-         if ($$2.a(axc.al)) {
-            this.d.a(hpy.c);
-         }
-      }
-   }
-
-   @Override
-   public void a(czn $$0) {
-      if ($$0.a(axk.aR)) {
-         this.d.a(hpy.e);
-      }
-   }
-
-   private static boolean b(gpo $$0) {
-      return $$0.gi().a_($$0x -> $$0x.a(axk.aR));
-   }
-
-   public static boolean a(gpo $$0) {
-      for (jf<dmr> $$1 : mg.e.c(axc.al)) {
-         dmr $$2 = $$1.a();
-         if ($$0.l().a(awx.a.b($$2)) > 0) {
-            return true;
-         }
-      }
-
-      return false;
+   public int b() {
+      return this.c;
    }
 }

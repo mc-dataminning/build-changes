@@ -1,70 +1,64 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cdy extends cef {
-   protected final bxr a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final djm f;
+public class cdy extends ceq {
+   private final cmm a;
+   @Nullable
+   private crx b;
+   private final ars c;
+   private final float d;
+   private int e;
+   private final cij f;
 
-   public cdy(bxr $$0, double $$1) {
+   public cdy(cmm $$0, float $$1) {
       this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dU();
-      this.a(EnumSet.of(cef.a.a));
+      this.c = a($$0);
+      this.d = $$1;
+      this.f = cij.b().a((double)$$1);
+      this.a(EnumSet.of(ceq.a.b));
    }
 
    @Override
    public boolean b() {
-      if (this.a.f() != null) {
-         return false;
-      } else if (!this.f.V()) {
-         return false;
-      } else if (!this.a.bW()) {
-         return false;
-      } else if (!this.f.h(this.a.du())) {
-         return false;
-      } else {
-         return !this.a.a(bws.f).f() ? false : this.h();
-      }
-   }
-
-   protected boolean h() {
-      ffc $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.d;
-         this.c = $$0.e;
-         this.d = $$0.f;
-         return true;
-      }
+      this.b = this.c.a(this.f, this.a);
+      return this.b == null ? false : this.a(this.b);
    }
 
    @Override
    public boolean c() {
-      return !this.a.O().k();
+      if (!this.b.bJ()) {
+         return false;
+      } else {
+         return this.a.g(this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
+      }
    }
 
    @Override
    public void d() {
-      this.a.O().a(this.b, this.c, this.d, this.e);
+      this.a.z(true);
+      this.e = this.a(40 + this.a.dY().a(40));
    }
 
-   @Nullable
-   protected ffc i() {
-      azv $$0 = this.a.dX();
-      iv $$1 = this.a.du();
+   @Override
+   public void e() {
+      this.a.z(false);
+      this.b = null;
+   }
 
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         iv $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
-            return ffc.c($$3);
+   @Override
+   public void a() {
+      this.a.J().a(this.b.dA(), this.b.dE(), this.b.dG(), 10.0F, (float)this.a.ad());
+      this.e--;
+   }
+
+   private boolean a(crx $$0) {
+      for (buq $$1 : buq.values()) {
+         czy $$2 = $$0.b($$1);
+         if ($$2.a(dac.sH) || this.a.i($$2)) {
+            return true;
          }
       }
 
-      return null;
+      return false;
    }
 }

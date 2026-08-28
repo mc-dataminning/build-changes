@@ -1,109 +1,26 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public interface axp {
+   axt<esb> a = a("eye_of_ender_located");
+   axt<esb> b = a("dolphin_located");
+   axt<esb> c = a("on_woodland_explorer_maps");
+   axt<esb> d = a("on_ocean_explorer_maps");
+   axt<esb> e = a("on_savanna_village_maps");
+   axt<esb> f = a("on_desert_village_maps");
+   axt<esb> g = a("on_plains_village_maps");
+   axt<esb> h = a("on_taiga_village_maps");
+   axt<esb> i = a("on_snowy_village_maps");
+   axt<esb> j = a("on_jungle_explorer_maps");
+   axt<esb> k = a("on_swamp_explorer_maps");
+   axt<esb> l = a("on_treasure_maps");
+   axt<esb> m = a("on_trial_chambers_maps");
+   axt<esb> n = a("cats_spawn_in");
+   axt<esb> o = a("cats_spawn_as_black");
+   axt<esb> p = a("village");
+   axt<esb> q = a("mineshaft");
+   axt<esb> r = a("shipwreck");
+   axt<esb> s = a("ruined_portal");
+   axt<esb> t = a("ocean_ruin");
 
-public class axp {
-   private static final Codec<axp> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayu.t.fieldOf("id").forGetter(axp::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, axp::new)
-   );
-   public static final Codec<axp> a = Codec.either(ayu.t, b)
-      .xmap($$0 -> (axp)$$0.map($$0x -> new axp($$0x, true), $$0x -> $$0x), $$0 -> $$0.e ? Either.left($$0.a()) : Either.right($$0));
-   private final alg c;
-   private final boolean d;
-   private final boolean e;
-
-   private axp(alg $$0, boolean $$1, boolean $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   private axp(ayu.d $$0, boolean $$1) {
-      this.c = $$0.a();
-      this.d = $$0.b();
-      this.e = $$1;
-   }
-
-   private ayu.d a() {
-      return new ayu.d(this.c, this.d);
-   }
-
-   public static axp a(alg $$0) {
-      return new axp($$0, false, true);
-   }
-
-   public static axp b(alg $$0) {
-      return new axp($$0, false, false);
-   }
-
-   public static axp c(alg $$0) {
-      return new axp($$0, true, true);
-   }
-
-   public static axp d(alg $$0) {
-      return new axp($$0, true, false);
-   }
-
-   public <T> boolean a(axp.a<T> $$0, Consumer<T> $$1) {
-      if (this.d) {
-         Collection<T> $$2 = $$0.a(this.c);
-         if ($$2 == null) {
-            return !this.e;
-         }
-
-         $$2.forEach($$1);
-      } else {
-         T $$3 = $$0.a(this.c, this.e);
-         if ($$3 == null) {
-            return !this.e;
-         }
-
-         $$1.accept($$3);
-      }
-
-      return true;
-   }
-
-   public void a(Consumer<alg> $$0) {
-      if (this.d && this.e) {
-         $$0.accept(this.c);
-      }
-   }
-
-   public void b(Consumer<alg> $$0) {
-      if (this.d && !this.e) {
-         $$0.accept(this.c);
-      }
-   }
-
-   public boolean a(Predicate<alg> $$0, Predicate<alg> $$1) {
-      return !this.e || (this.d ? $$1 : $$0).test(this.c);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      if (this.d) {
-         $$0.append('#');
-      }
-
-      $$0.append(this.c);
-      if (!this.e) {
-         $$0.append('?');
-      }
-
-      return $$0.toString();
-   }
-
-   public interface a<T> {
-      @Nullable
-      T a(alg var1, boolean var2);
-
-      @Nullable
-      Collection<T> a(alg var1);
+   private static axt<esb> a(String $$0) {
+      return axt.a(mh.be, ali.b($$0));
    }
 }

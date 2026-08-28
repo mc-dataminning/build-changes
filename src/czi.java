@@ -1,32 +1,40 @@
-public interface czi {
-   int a = 256;
-   float b = 7.0F;
-   alf<czg> c = a("ponder_goat_horn");
-   alf<czg> d = a("sing_goat_horn");
-   alf<czg> e = a("seek_goat_horn");
-   alf<czg> f = a("feel_goat_horn");
-   alf<czg> g = a("admire_goat_horn");
-   alf<czg> h = a("call_goat_horn");
-   alf<czg> i = a("yearn_goat_horn");
-   alf<czg> j = a("dream_goat_horn");
-
-   private static alf<czg> a(String $$0) {
-      return alf.a(mh.aU, alg.b($$0));
+public class czi extends czu {
+   public czi(czu.a $$0) {
+      super($$0);
    }
 
-   static void a(qh<czg> $$0) {
-      a($$0, c, (jf<awm>)awn.nh.get(0), 7.0F, 256.0F);
-      a($$0, d, (jf<awm>)awn.nh.get(1), 7.0F, 256.0F);
-      a($$0, e, (jf<awm>)awn.nh.get(2), 7.0F, 256.0F);
-      a($$0, f, (jf<awm>)awn.nh.get(3), 7.0F, 256.0F);
-      a($$0, g, (jf<awm>)awn.nh.get(4), 7.0F, 256.0F);
-      a($$0, h, (jf<awm>)awn.nh.get(5), 7.0F, 256.0F);
-      a($$0, i, (jf<awm>)awn.nh.get(6), 7.0F, 256.0F);
-      a($$0, j, (jf<awm>)awn.nh.get(7), 7.0F, 256.0F);
-   }
+   @Override
+   public bur a(ddt $$0) {
+      crx $$1 = $$0.o();
+      djx $$2 = $$0.q();
+      iv $$3 = $$0.a();
+      ebe $$4 = $$2.a_($$3);
+      if (!dns.i($$4) && !dnt.h($$4) && !dnu.h($$4)) {
+         iv $$5 = $$3.a($$0.k());
+         if (dmp.a($$2, $$5, $$0.g())) {
+            $$2.a($$1, $$5, awp.jD, awq.e, 1.0F, $$2.G_().i() * 0.4F + 0.8F);
+            ebe $$6 = dmp.a($$2, $$5);
+            $$2.a($$5, $$6, 11);
+            $$2.a($$1, ege.i, $$3);
+            czy $$7 = $$0.n();
+            if ($$1 instanceof art) {
+               aq.z.a((art)$$1, $$5, $$7);
+               $$7.a(1, $$1, bxu.d($$0.p()));
+            }
 
-   static void a(qh<czg> $$0, alf<czg> $$1, jf<awm> $$2, float $$3, float $$4) {
-      xm $$5 = wy.c(ag.a("instrument", $$1.a()));
-      $$0.a($$1, new czg($$2, $$3, $$4, $$5));
+            return bur.a;
+         } else {
+            return bur.d;
+         }
+      } else {
+         $$2.a($$1, $$3, awp.jD, awq.e, 1.0F, $$2.G_().i() * 0.4F + 0.8F);
+         $$2.a($$3, $$4.b(ebu.u, Boolean.valueOf(true)), 11);
+         $$2.a($$1, ege.c, $$3);
+         if ($$1 != null) {
+            $$0.n().a(1, $$1, bxu.d($$0.p()));
+         }
+
+         return bur.a;
+      }
    }
 }

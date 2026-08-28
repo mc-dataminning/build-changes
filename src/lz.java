@@ -9,7 +9,7 @@ public abstract class lz implements lw {
    private final float a;
 
    public lz(float $$0) {
-      this.a = azm.a($$0, 0.01F, 4.0F);
+      this.a = azo.a($$0, 0.01F, 4.0F);
    }
 
    public float d() {

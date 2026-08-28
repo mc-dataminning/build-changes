@@ -1,54 +1,30 @@
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class dec extends des {
-   public dec(ddr $$0) {
-      super("", $$0, det.a(Map.of('#', dea.a(czr.rE), 'x', dea.a(czr.tc)), "###", "#x#", "###"), new czn(czr.vt));
+public enum dec implements bam {
+   a("building", 0),
+   b("redstone", 1),
+   c("equipment", 2),
+   d("misc", 3);
+
+   public static final Codec<dec> e = bam.a(dec::values);
+   public static final IntFunction<dec> f = aye.a(dec::a, values(), aye.a.a);
+   public static final yy<ByteBuf, dec> g = yw.a(f, dec::a);
+   private final String h;
+   private final int i;
+
+   private dec(final String $$0, final int $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public boolean a(dds $$0, djm $$1) {
-      if (!super.a($$0, $$1)) {
-         return false;
-      } else {
-         czn $$2 = c($$0);
-         if ($$2.f()) {
-            return false;
-         } else {
-            eyv $$3 = daa.b($$2, $$1);
-            if ($$3 == null) {
-               return false;
-            } else {
-               return $$3.d() ? false : $$3.g < 4;
-            }
-         }
-      }
+   public String c() {
+      return this.h;
    }
 
-   @Override
-   public czn a(dds $$0, jh.a $$1) {
-      czn $$2 = c($$0).c(1);
-      $$2.b(kk.O, dck.b);
-      return $$2;
-   }
-
-   private static czn c(dds $$0) {
-      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
-         czn $$2 = $$0.a($$1);
-         if ($$2.c(kk.M)) {
-            return $$2;
-         }
-      }
-
-      return czn.k;
-   }
-
-   @Override
-   public boolean am_() {
-      return true;
-   }
-
-   @Override
-   public deo<dec> a() {
-      return deo.f;
+   private int a() {
+      return this.i;
    }
 }

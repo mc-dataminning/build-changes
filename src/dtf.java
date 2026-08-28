@@ -1,81 +1,253 @@
 import com.mojang.serialization.MapCodec;
 
-public class dtf extends dou {
-   public static final MapCodec<dtf> a = b(dtf::new);
-   public static final ebk b = ebj.v;
-   public static final ebt d = ebj.aD;
+public class dtf extends dmr {
+   public static final MapCodec<dtf> b = b(dtf::new);
+   public static final ecc<eci> c = ebu.ak;
+   public static final ebv d = ebu.A;
 
    @Override
    public MapCodec<dtf> a() {
-      return a;
+      return b;
    }
 
-   protected dtf(eas.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(e, jb.c).b(d, Integer.valueOf(1)).b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)));
+   protected dtf(ebd.d $$0) {
+      super(true, $$0);
+      this.l(this.C.b().b(c, eci.a).b(d, Boolean.valueOf(false)).b(a, Boolean.valueOf(false)));
    }
 
-   @Override
-   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
-      if (!$$3.gj().e) {
-         return bug.e;
+   protected boolean a(djx $$0, iv $$1, ebe $$2, boolean $$3, int $$4) {
+      if ($$4 >= 8) {
+         return false;
       } else {
-         $$1.a($$2, $$0.a(d), 3);
-         return bug.a;
-      }
-   }
+         int $$5 = $$1.u();
+         int $$6 = $$1.v();
+         int $$7 = $$1.w();
+         boolean $$8 = true;
+         eci $$9 = $$2.c(c);
+         switch ($$9) {
+            case a:
+               if ($$3) {
+                  $$7++;
+               } else {
+                  $$7--;
+               }
+               break;
+            case b:
+               if ($$3) {
+                  $$5--;
+               } else {
+                  $$5++;
+               }
+               break;
+            case c:
+               if ($$3) {
+                  $$5--;
+               } else {
+                  $$5++;
+                  $$6++;
+                  $$8 = false;
+               }
 
-   @Override
-   protected int h(eat $$0) {
-      return $$0.c(d) * 2;
-   }
+               $$9 = eci.b;
+               break;
+            case d:
+               if ($$3) {
+                  $$5--;
+                  $$6++;
+                  $$8 = false;
+               } else {
+                  $$5++;
+               }
 
-   @Override
-   public eat a(ddg $$0) {
-      eat $$1 = super.a($$0);
-      return $$1.b(b, Boolean.valueOf(this.b($$0.q(), $$0.a(), $$1)));
-   }
+               $$9 = eci.b;
+               break;
+            case e:
+               if ($$3) {
+                  $$7++;
+               } else {
+                  $$7--;
+                  $$6++;
+                  $$8 = false;
+               }
 
-   @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      if ($$4 == jb.a && !this.a($$1, $$5, $$6)) {
-         return dmt.a.m();
-      } else {
-         return !$$1.w_() && $$4.o() != $$0.c(e).o() ? $$0.b(b, Boolean.valueOf(this.b($$1, $$3, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-   }
+               $$9 = eci.a;
+               break;
+            case f:
+               if ($$3) {
+                  $$7++;
+                  $$6++;
+                  $$8 = false;
+               } else {
+                  $$7--;
+               }
 
-   @Override
-   public boolean b(djp $$0, iv $$1, eat $$2) {
-      return this.a((dke)$$0, $$1, $$2) > 0;
-   }
-
-   @Override
-   protected boolean b() {
-      return true;
-   }
-
-   @Override
-   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
-      if ($$0.c(c)) {
-         jb $$4 = $$0.c(e);
-         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
-         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         float $$8 = -5.0F;
-         if ($$3.h()) {
-            $$8 = (float)($$0.c(d) * 2 - 1);
+               $$9 = eci.a;
          }
 
-         $$8 /= 16.0F;
-         double $$9 = (double)($$8 * (float)$$4.j());
-         double $$10 = (double)($$8 * (float)$$4.l());
-         $$1.a(lt.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
+         return this.a($$0, new iv($$5, $$6, $$7), $$3, $$4, $$9) ? true : $$8 && this.a($$0, new iv($$5, $$6 - 1, $$7), $$3, $$4, $$9);
+      }
+   }
+
+   protected boolean a(djx $$0, iv $$1, boolean $$2, int $$3, eci $$4) {
+      ebe $$5 = $$0.a_($$1);
+      if (!$$5.a(this)) {
+         return false;
+      } else {
+         eci $$6 = $$5.c(c);
+         if ($$4 != eci.b || $$6 != eci.a && $$6 != eci.e && $$6 != eci.f) {
+            if ($$4 != eci.a || $$6 != eci.b && $$6 != eci.c && $$6 != eci.d) {
+               if (!$$5.c(d)) {
+                  return false;
+               } else {
+                  return $$0.D($$1) ? true : this.a($$0, $$1, $$5, $$2, $$3 + 1);
+               }
+            } else {
+               return false;
+            }
+         } else {
+            return false;
+         }
       }
    }
 
    @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(e, d, b, c);
+   protected void a(ebe $$0, djx $$1, iv $$2, dnc $$3) {
+      boolean $$4 = $$0.c(d);
+      boolean $$5 = $$1.D($$2) || this.a($$1, $$2, $$0, true, 0) || this.a($$1, $$2, $$0, false, 0);
+      if ($$5 != $$4) {
+         $$1.a($$2, $$0.b(d, Boolean.valueOf($$5)), 3);
+         $$1.a($$2.e(), this);
+         if ($$0.c(c).b()) {
+            $$1.a($$2.d(), this);
+         }
+      }
+   }
+
+   @Override
+   public ech<eci> c() {
+      return c;
+   }
+
+   @Override
+   protected ebe a(ebe $$0, dtw $$1) {
+      switch ($$1) {
+         case c:
+            switch ((eci)$$0.c(c)) {
+               case c:
+                  return $$0.b(c, eci.d);
+               case d:
+                  return $$0.b(c, eci.c);
+               case e:
+                  return $$0.b(c, eci.f);
+               case f:
+                  return $$0.b(c, eci.e);
+               case g:
+                  return $$0.b(c, eci.i);
+               case h:
+                  return $$0.b(c, eci.j);
+               case i:
+                  return $$0.b(c, eci.g);
+               case j:
+                  return $$0.b(c, eci.h);
+            }
+         case d:
+            switch ((eci)$$0.c(c)) {
+               case a:
+                  return $$0.b(c, eci.b);
+               case b:
+                  return $$0.b(c, eci.a);
+               case c:
+                  return $$0.b(c, eci.e);
+               case d:
+                  return $$0.b(c, eci.f);
+               case e:
+                  return $$0.b(c, eci.d);
+               case f:
+                  return $$0.b(c, eci.c);
+               case g:
+                  return $$0.b(c, eci.j);
+               case h:
+                  return $$0.b(c, eci.g);
+               case i:
+                  return $$0.b(c, eci.h);
+               case j:
+                  return $$0.b(c, eci.i);
+            }
+         case b:
+            switch ((eci)$$0.c(c)) {
+               case a:
+                  return $$0.b(c, eci.b);
+               case b:
+                  return $$0.b(c, eci.a);
+               case c:
+                  return $$0.b(c, eci.f);
+               case d:
+                  return $$0.b(c, eci.e);
+               case e:
+                  return $$0.b(c, eci.c);
+               case f:
+                  return $$0.b(c, eci.d);
+               case g:
+                  return $$0.b(c, eci.h);
+               case h:
+                  return $$0.b(c, eci.i);
+               case i:
+                  return $$0.b(c, eci.j);
+               case j:
+                  return $$0.b(c, eci.g);
+            }
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected ebe a(ebe $$0, dsf $$1) {
+      eci $$2 = $$0.c(c);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.b(c, eci.f);
+               case f:
+                  return $$0.b(c, eci.e);
+               case g:
+                  return $$0.b(c, eci.j);
+               case h:
+                  return $$0.b(c, eci.i);
+               case i:
+                  return $$0.b(c, eci.h);
+               case j:
+                  return $$0.b(c, eci.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.b(c, eci.d);
+               case d:
+                  return $$0.b(c, eci.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.b(c, eci.h);
+               case h:
+                  return $$0.b(c, eci.g);
+               case i:
+                  return $$0.b(c, eci.j);
+               case j:
+                  return $$0.b(c, eci.i);
+            }
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(c, d, a);
    }
 }

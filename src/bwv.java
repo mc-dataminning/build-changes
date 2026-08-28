@@ -1,61 +1,86 @@
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Nullable;
 
-public interface bwv {
-   void a(bws var1, czn var2);
+public class bwv {
+   private final Map<bwu, List<ffq>> a;
 
-   czn a(bws var1);
-
-   void a(bws var1, float var2);
-
-   default void a(bwu $$0, ezw $$1) {
-      this.a($$0.a(), $$1, $$0.b());
+   bwv(Map<bwu, List<ffq>> $$0) {
+      this.a = $$0;
    }
 
-   default void a(alf<ezy> $$0, ezw $$1, Map<bws, Float> $$2) {
-      this.a($$0, $$1, 0L, $$2);
+   public static bwv a(float $$0, float $$1) {
+      return a().a($$0, $$1);
    }
 
-   default void a(alf<ezy> $$0, ezw $$1, long $$2, Map<bws, Float> $$3) {
-      ezy $$4 = $$1.a().p().bc().b($$0);
-      if ($$4 != ezy.f) {
-         List<czn> $$5 = $$4.a($$1, $$2);
-         List<bws> $$6 = new ArrayList<>();
+   public static bwv.a a() {
+      return new bwv.a();
+   }
 
-         for (czn $$7 : $$5) {
-            bws $$8 = this.a($$7, $$6);
-            if ($$8 != null) {
-               czn $$9 = $$8.a($$7);
-               this.a($$8, $$9);
-               Float $$10 = $$3.get($$8);
-               if ($$10 != null) {
-                  this.a($$8, $$10);
-               }
+   public bwv a(float $$0, float $$1, float $$2) {
+      return new bwv(ag.a(bwu.class, $$3 -> {
+         List<ffq> $$4 = new ArrayList<>();
 
-               $$6.add($$8);
-            }
+         for (ffq $$5 : this.a.get($$3)) {
+            $$4.add($$5.d((double)$$0, (double)$$1, (double)$$2));
          }
-      }
+
+         return $$4;
+      }));
    }
 
    @Nullable
-   default bws a(czn $$0, List<bws> $$1) {
-      if ($$0.f()) {
-         return null;
-      } else {
-         dhw $$2 = $$0.a(kk.D);
-         if ($$2 != null) {
-            bws $$3 = $$2.b();
-            if (!$$1.contains($$3)) {
-               return $$3;
-            }
-         } else if (!$$1.contains(bws.a)) {
-            return bws.a;
-         }
+   public ffq a(bwu $$0, int $$1, float $$2) {
+      List<ffq> $$3 = this.a.get($$0);
+      return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
+   }
 
-         return null;
+   public ffq b(bwu $$0, int $$1, float $$2) {
+      ffq $$3 = this.a($$0, $$1, $$2);
+      if ($$3 == null) {
+         throw new IllegalStateException("Had no attachment point of type: " + $$0 + " for index: " + $$1);
+      } else {
+         return $$3;
+      }
+   }
+
+   public ffq c(bwu $$0, int $$1, float $$2) {
+      List<ffq> $$3 = this.a.get($$0);
+      if ($$3.isEmpty()) {
+         throw new IllegalStateException("Had no attachment points of type: " + $$0);
+      } else {
+         ffq $$4 = $$3.get(azo.a($$1, 0, $$3.size() - 1));
+         return a($$4, $$2);
+      }
+   }
+
+   private static ffq a(ffq $$0, float $$1) {
+      return $$0.b(-$$1 * (float) (Math.PI / 180.0));
+   }
+
+   public static class a {
+      private final Map<bwu, List<ffq>> a = new EnumMap<>(bwu.class);
+
+      a() {
+      }
+
+      public bwv.a a(bwu $$0, float $$1, float $$2, float $$3) {
+         return this.a($$0, new ffq((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      public bwv.a a(bwu $$0, ffq $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>(1)).add($$1);
+         return this;
+      }
+
+      public bwv a(float $$0, float $$1) {
+         Map<bwu, List<ffq>> $$2 = ag.a(bwu.class, $$2x -> {
+            List<ffq> $$3 = this.a.get($$2x);
+            return $$3 == null ? $$2x.a($$0, $$1) : List.copyOf($$3);
+         });
+         return new bwv($$2);
       }
    }
 }

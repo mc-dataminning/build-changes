@@ -1,23 +1,35 @@
-public class deg {
-   public static final deh a = a("crafting_building_blocks");
-   public static final deh b = a("crafting_redstone");
-   public static final deh c = a("crafting_equipment");
-   public static final deh d = a("crafting_misc");
-   public static final deh e = a("furnace_food");
-   public static final deh f = a("furnace_blocks");
-   public static final deh g = a("furnace_misc");
-   public static final deh h = a("blast_furnace_blocks");
-   public static final deh i = a("blast_furnace_misc");
-   public static final deh j = a("smoker_food");
-   public static final deh k = a("stonecutter");
-   public static final deh l = a("smithing");
-   public static final deh m = a("campfire");
-
-   private static deh a(String $$0) {
-      return js.a(mg.az, $$0, new deh());
+public class deg extends def {
+   public deg(dec $$0) {
+      super($$0);
    }
 
-   public static deh a(js<deh> $$0) {
-      return m;
+   private static czy c(ded $$0) {
+      return $$0.a(1, 0);
+   }
+
+   private static czy d(ded $$0) {
+      return $$0.a(0, 1);
+   }
+
+   private static czy e(ded $$0) {
+      return $$0.a(2, 1);
+   }
+
+   private static czy f(ded $$0) {
+      return $$0.a(1, 2);
+   }
+
+   public boolean a(ded $$0, djx $$1) {
+      return $$0.f() == 3 && $$0.g() == 3 && $$0.e() == 4 ? c($$0).a(axm.bG) && d($$0).a(axm.bG) && e($$0).a(axm.bG) && f($$0).a(axm.bG) : false;
+   }
+
+   public czy a(ded $$0, jh.a $$1) {
+      dzk $$2 = new dzk(c($$0).h(), d($$0).h(), e($$0).h(), f($$0).h());
+      return dyu.a($$2);
+   }
+
+   @Override
+   public dez<deg> a() {
+      return dez.v;
    }
 }

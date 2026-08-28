@@ -1,57 +1,57 @@
-public class cwr extends cxc {
-   private final cwp a;
-   private final crm b;
-   private int g;
-   private final dih h;
+public class cwr extends cvq {
+   public static final int m = 5;
+   private final buk n;
 
-   public cwr(crm $$0, dih $$1, cwp $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.h = $$1;
-      this.a = $$2;
+   public cwr(int $$0, crw $$1) {
+      this($$0, $$1, new buy(5));
    }
 
-   @Override
-   public boolean a(czn $$0) {
-      return false;
-   }
+   public cwr(int $$0, crw $$1, buk $$2) {
+      super(cwz.q, $$0);
+      this.n = $$2;
+      a($$2, 5);
+      $$2.c_($$1.h);
 
-   @Override
-   public czn a(int $$0) {
-      if (this.h()) {
-         this.g = this.g + Math.min($$0, this.g().M());
+      for (int $$3 = 0; $$3 < 5; $$3++) {
+         this.a(new cxn($$2, $$3, 44 + $$3 * 18, 20));
       }
 
-      return super.a($$0);
+      this.c($$1, 8, 51);
    }
 
    @Override
-   protected void a(czn $$0, int $$1) {
-      this.g += $$1;
-      this.c_($$0);
+   public boolean b(crx $$0) {
+      return this.n.a($$0);
    }
 
    @Override
-   protected void c_(czn $$0) {
-      $$0.a(this.b.dU(), this.b, this.g);
-      this.g = 0;
-   }
-
-   @Override
-   public void a(crm $$0, czn $$1) {
-      this.c_($$1);
-      dii $$2 = this.a.g();
-      if ($$2 != null) {
-         czn $$3 = this.a.a(0);
-         czn $$4 = this.a.a(1);
-         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
-            this.h.a($$2);
-            $$0.a(awx.T);
-            this.a.a(0, $$3);
-            this.a.a(1, $$4);
+   public czy b(crx $$0, int $$1) {
+      czy $$2 = czy.k;
+      cxn $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         czy $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 < this.n.b()) {
+            if (!this.a($$4, this.n.b(), this.k.size(), true)) {
+               return czy.k;
+            }
+         } else if (!this.a($$4, 0, this.n.b(), false)) {
+            return czy.k;
          }
 
-         this.h.s(this.h.t() + $$2.q());
+         if ($$4.f()) {
+            $$3.e(czy.k);
+         } else {
+            $$3.d();
+         }
       }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(crx $$0) {
+      super.a($$0);
+      this.n.c($$0);
    }
 }

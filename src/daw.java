@@ -1,21 +1,19 @@
-public class daw extends daz {
-   public daw(czj.a $$0) {
-      super($$0);
+public class daw extends czv {
+   private final art a;
+
+   public daw(art $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public bug a(djm $$0, crm $$1, buf $$2) {
-      $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), awn.zU, awo.h, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   protected void b(ali $$0, int $$1) {
+      super.b($$0, $$1);
+      this.a.f.b(new act($$0, $$1));
    }
 
    @Override
-   protected crw a(arq $$0, bxj $$1, czn $$2) {
-      return new csu($$0, $$1, $$2);
-   }
-
-   @Override
-   protected crw a(djm $$0, jp $$1, czn $$2) {
-      return new csu($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   protected void b(ali $$0) {
+      super.b($$0);
+      this.a.f.b(new act($$0, 0));
    }
 }

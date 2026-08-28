@@ -1,37 +1,140 @@
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.util.Locale;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.internal.Streams;
+import com.google.gson.stream.JsonReader;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
-public interface awv {
-   DecimalFormat a = ag.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
-   awv b = NumberFormat.getIntegerInstance(Locale.US)::format;
-   awv c = $$0 -> a.format((double)$$0 * 0.1);
-   awv d = $$0 -> {
-      double $$1 = (double)$$0 / 100.0;
-      double $$2 = $$1 / 1000.0;
-      if ($$2 > 0.5) {
-         return a.format($$2) + " km";
-      } else {
-         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
-      }
-   };
-   awv e = $$0 -> {
-      double $$1 = (double)$$0 / 20.0;
-      double $$2 = $$1 / 60.0;
-      double $$3 = $$2 / 60.0;
-      double $$4 = $$3 / 24.0;
-      double $$5 = $$4 / 365.0;
-      if ($$5 > 0.5) {
-         return a.format($$5) + " y";
-      } else if ($$4 > 0.5) {
-         return a.format($$4) + " d";
-      } else if ($$3 > 0.5) {
-         return a.format($$3) + " h";
-      } else {
-         return $$2 > 0.5 ? a.format($$2) + " min" : $$1 + " s";
-      }
-   };
+public class awv extends axa {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Codec<Map<aww<?>, Integer>> c = Codec.dispatchedMap(mg.v.q(), ag.b(awv::a)).xmap($$0 -> {
+      Map<aww<?>, Integer> $$1 = new HashMap<>();
+      $$0.forEach(($$1x, $$2) -> $$1.putAll((Map<? extends aww<?>, ? extends Integer>)$$2));
+      return $$1;
+   }, $$0 -> $$0.entrySet().stream().collect(Collectors.groupingBy($$0x -> ((aww)$$0x.getKey()).a(), ag.a())));
+   private final MinecraftServer d;
+   private final File e;
+   private final Set<aww<?>> f = Sets.newHashSet();
 
-   String format(int var1);
+   private static <T> Codec<Map<aww<?>, Integer>> a(awy<T> $$0) {
+      Codec<T> $$1 = $$0.b().q();
+      Codec<aww<?>> $$2 = $$1.flatComapMap(
+         $$0::b, $$1x -> $$1x.a() == $$0 ? DataResult.success($$1x.b()) : DataResult.error(() -> "Expected type " + $$0 + ", but got " + $$1x.a())
+      );
+      return Codec.unboundedMap($$2, Codec.INT);
+   }
+
+   public awv(MinecraftServer $$0, File $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      if ($$1.isFile()) {
+         try {
+            this.a($$0.aC(), FileUtils.readFileToString($$1));
+         } catch (IOException var4) {
+            b.error("Couldn't read statistics file {}", $$1, var4);
+         } catch (JsonParseException var5) {
+            b.error("Couldn't parse statistics file {}", $$1, var5);
+         }
+      }
+   }
+
+   public void a() {
+      try {
+         FileUtils.writeStringToFile(this.e, this.b());
+      } catch (IOException var2) {
+         b.error("Couldn't save stats", var2);
+      }
+   }
+
+   @Override
+   public void a(crx $$0, aww<?> $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.f.add($$1);
+   }
+
+   private Set<aww<?>> d() {
+      Set<aww<?>> $$0 = Sets.newHashSet(this.f);
+      this.f.clear();
+      return $$0;
+   }
+
+   public void a(DataFixer $$0, String $$1) {
+      try {
+         JsonReader $$2 = new JsonReader(new StringReader($$1));
+
+         label35: {
+            try {
+               $$2.setLenient(false);
+               JsonElement $$3 = Streams.parse($$2);
+               if (!$$3.isJsonNull()) {
+                  Dynamic<JsonElement> $$4 = new Dynamic(JsonOps.INSTANCE, $$3);
+                  $$4 = bbd.g.a($$0, $$4, uo.a($$4, 1343));
+                  this.a
+                     .putAll(
+                        c.parse($$4.get("stats").orElseEmptyMap())
+                           .resultOrPartial($$0x -> b.error("Failed to parse statistics for {}: {}", this.e, $$0x))
+                           .orElse(Map.of())
+                     );
+                  break label35;
+               }
+
+               b.error("Unable to parse Stat data from {}", this.e);
+            } catch (Throwable var7) {
+               try {
+                  $$2.close();
+               } catch (Throwable var6) {
+                  var7.addSuppressed(var6);
+               }
+
+               throw var7;
+            }
+
+            $$2.close();
+            return;
+         }
+
+         $$2.close();
+      } catch (IOException | JsonParseException var8) {
+         b.error("Unable to parse Stat data from {}", this.e, var8);
+      }
+   }
+
+   protected String b() {
+      JsonObject $$0 = new JsonObject();
+      $$0.add("stats", (JsonElement)c.encodeStart(JsonOps.INSTANCE, this.a).getOrThrow());
+      $$0.addProperty("DataVersion", ac.b().d().c());
+      return $$0.toString();
+   }
+
+   public void c() {
+      this.f.addAll(this.a.keySet());
+   }
+
+   public void a(art $$0) {
+      Object2IntMap<aww<?>> $$1 = new Object2IntOpenHashMap();
+
+      for (aww<?> $$2 : this.d()) {
+         $$1.put($$2, this.a($$2));
+      }
+
+      $$0.f.b(new abz($$1));
+   }
 }

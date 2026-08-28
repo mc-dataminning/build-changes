@@ -1,92 +1,76 @@
-import java.util.Optional;
-import org.joml.Quaternionf;
+public class gpe extends gpk {
+   private static final int a = 3;
+   private final bwt b;
+   private final bwt D;
+   private int E;
+   private final gyg F;
+   private double G;
+   private double H;
+   private double I;
+   private double J;
+   private double K;
+   private double L;
 
-public class gpe extends goz {
-   private final efx a;
-   private float b;
-   private float F;
-   private float G;
-   private float H;
+   public gpe(gyg $$0, gmb $$1, bwt $$2, bwt $$3) {
+      this($$0, $$1, $$2, $$3, $$2.dy());
+   }
 
-   gpe(gkq $$0, double $$1, double $$2, double $$3, efx $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.3F;
-      this.a = $$4;
-      this.t = $$5;
-      Optional<ffc> $$6 = $$4.a($$0);
-      if ($$6.isPresent()) {
-         ffc $$7 = $$6.get();
-         double $$8 = $$1 - $$7.a();
-         double $$9 = $$2 - $$7.b();
-         double $$10 = $$3 - $$7.c();
-         this.F = this.b = (float)azm.d($$8, $$10);
-         this.H = this.G = (float)azm.d($$9, Math.sqrt($$8 * $$8 + $$10 * $$10));
-      }
+   private gpe(gyg $$0, gmb $$1, bwt $$2, bwt $$3, ffq $$4) {
+      super($$1, $$2.dA(), $$2.dC(), $$2.dG(), $$4.d, $$4.e, $$4.f);
+      this.b = this.a($$2);
+      this.D = $$3;
+      this.F = $$0;
+      this.c();
+      this.d();
+   }
+
+   private bwt a(bwt $$0) {
+      return (bwt)(!($$0 instanceof coc) ? $$0 : ((coc)$$0).v());
    }
 
    @Override
-   public void a(fkh $$0, fpb $$1, float $$2) {
-      float $$3 = azm.a(((float)this.s + $$2 - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
-      float $$4 = azm.h($$2, this.F, this.b);
-      float $$5 = azm.h($$2, this.H, this.G) + (float) (Math.PI / 2);
-      Quaternionf $$6 = new Quaternionf();
-      $$6.rotationY($$4).rotateX(-$$5).rotateY($$3);
-      this.a($$0, $$1, $$6, $$2);
-      $$6.rotationY((float) -Math.PI + $$4).rotateX($$5).rotateY($$3);
-      this.a($$0, $$1, $$6, $$2);
+   public gpo b() {
+      return gpo.d;
    }
 
    @Override
-   public int a(float $$0) {
-      return 240;
+   public void a(flo $$0, gsa $$1, fql $$2, float $$3) {
+      float $$4 = ((float)this.E + $$3) / 3.0F;
+      $$4 *= $$4;
+      double $$5 = azo.d((double)$$3, this.J, this.G);
+      double $$6 = azo.d((double)$$3, this.K, this.H);
+      double $$7 = azo.d((double)$$3, this.L, this.I);
+      double $$8 = azo.d((double)$$4, this.b.dA(), $$5);
+      double $$9 = azo.d((double)$$4, this.b.dC(), $$6);
+      double $$10 = azo.d((double)$$4, this.b.dG(), $$7);
+      ffq $$11 = $$2.b();
+      this.F.a(this.b, $$8 - $$11.a(), $$9 - $$11.b(), $$10 - $$11.c(), $$3, new flo(), $$1, this.F.a(this.b, $$3));
    }
 
    @Override
-   public god b() {
-      return god.c;
+   public void a(flr $$0, fql $$1, float $$2) {
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
+      this.E++;
+      if (this.E == 3) {
          this.k();
-      } else {
-         Optional<ffc> $$0 = this.a.a(this.c);
-         if ($$0.isEmpty()) {
-            this.k();
-         } else {
-            int $$1 = this.t - this.s;
-            double $$2 = 1.0 / (double)$$1;
-            ffc $$3 = $$0.get();
-            this.g = azm.d($$2, this.g, $$3.a());
-            this.h = azm.d($$2, this.h, $$3.b());
-            this.i = azm.d($$2, this.i, $$3.c());
-            double $$4 = this.g - $$3.a();
-            double $$5 = this.h - $$3.b();
-            double $$6 = this.i - $$3.c();
-            this.F = this.b;
-            this.b = (float)azm.d($$4, $$6);
-            this.H = this.G;
-            this.G = (float)azm.d($$5, Math.sqrt($$4 * $$4 + $$6 * $$6));
-         }
       }
+
+      this.d();
+      this.c();
    }
 
-   public static class a implements goc<me> {
-      private final gou a;
+   private void c() {
+      this.G = this.D.dA();
+      this.H = (this.D.dC() + this.D.dE()) / 2.0;
+      this.I = this.D.dG();
+   }
 
-      public a(gou $$0) {
-         this.a = $$0;
-      }
-
-      public gnz a(me $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gpe $$8 = new gpe($$1, $$2, $$3, $$4, $$0.b(), $$0.c());
-         $$8.a(this.a);
-         $$8.e(1.0F);
-         return $$8;
-      }
+   private void d() {
+      this.J = this.G;
+      this.K = this.H;
+      this.L = this.I;
    }
 }

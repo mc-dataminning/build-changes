@@ -1,88 +1,72 @@
-public class cwl extends cvf {
-   private static final int q = 1;
-   private static final int r = 1;
-   public static final int m = 1;
-   public static final int n = 2;
-   public static final int o = 3;
-   public static final int p = 100;
-   private final btz s;
-   private final cvr t;
+public class cwl extends cvq {
+   private static final int m = 9;
+   private static final int n = 9;
+   private static final int o = 36;
+   private static final int p = 36;
+   private static final int q = 45;
+   private final buk r;
 
-   public cwl(int $$0) {
-      this($$0, new bun(1), new cxb(1));
+   public cwl(int $$0, crw $$1) {
+      this($$0, $$1, new buy(9));
    }
 
-   public cwl(int $$0, btz $$1, cvr $$2) {
-      super(cwo.r, $$0);
-      a($$1, 1);
-      a($$2, 1);
-      this.s = $$1;
-      this.t = $$2;
-      this.a(new cxc($$1, 0, 0, 0) {
-         @Override
-         public void d() {
-            super.d();
-            cwl.this.a(this.c);
-         }
-      });
-      this.a($$2);
+   public cwl(int $$0, crw $$1, buk $$2) {
+      super(cwz.g, $$0);
+      a($$2, 9);
+      this.r = $$2;
+      $$2.c_($$1.h);
+      this.d($$2, 62, 17);
+      this.c($$1, 8, 84);
    }
 
-   @Override
-   public boolean a(crm $$0, int $$1) {
-      if ($$1 >= 100) {
-         int $$2 = $$1 - 100;
-         this.b(0, $$2);
-         return true;
-      } else {
-         switch ($$1) {
-            case 1:
-               int $$4 = this.t.a(0);
-               this.b(0, $$4 - 1);
-               return true;
-            case 2:
-               int $$3 = this.t.a(0);
-               this.b(0, $$3 + 1);
-               return true;
-            case 3:
-               if (!$$0.gv()) {
-                  return false;
-               }
-
-               czn $$5 = this.s.b(0);
-               this.s.e();
-               if (!$$0.gi().g($$5)) {
-                  $$0.a($$5, false);
-               }
-
-               return true;
-            default:
-               return false;
+   protected void d(buk $$0, int $$1, int $$2) {
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 3; $$4++) {
+            int $$5 = $$4 + $$3 * 3;
+            this.a(new cxn($$0, $$5, $$1 + $$4 * 18, $$2 + $$3 * 18));
          }
       }
    }
 
    @Override
-   public czn b(crm $$0, int $$1) {
-      return czn.k;
+   public boolean b(crx $$0) {
+      return this.r.a($$0);
    }
 
    @Override
-   public void b(int $$0, int $$1) {
-      super.b($$0, $$1);
-      this.d();
+   public czy b(crx $$0, int $$1) {
+      czy $$2 = czy.k;
+      cxn $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         czy $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return czy.k;
+            }
+         } else if (!this.a($$4, 0, 9, false)) {
+            return czy.k;
+         }
+
+         if ($$4.f()) {
+            $$3.e(czy.k);
+         } else {
+            $$3.d();
+         }
+
+         if ($$4.M() == $$2.M()) {
+            return czy.k;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
    }
 
    @Override
-   public boolean b(crm $$0) {
-      return this.s.a($$0);
-   }
-
-   public czn l() {
-      return this.s.a(0);
-   }
-
-   public int m() {
-      return this.t.a(0);
+   public void a(crx $$0) {
+      super.a($$0);
+      this.r.c($$0);
    }
 }

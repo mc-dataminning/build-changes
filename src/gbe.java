@@ -1,32 +1,27 @@
-import java.util.Objects;
-import org.joml.Matrix4f;
+public class gbe extends gas<cvz> {
+   private static final ali G = ali.b("textures/gui/container/generic_54.png");
+   private final int H;
 
-public interface gbe {
-   static gbe a(ayy $$0) {
-      return new gbd($$0);
+   public gbe(cvz $$0, crw $$1, xa $$2) {
+      super($$0, $$1, $$2);
+      int $$3 = 222;
+      int $$4 = 114;
+      this.H = $$0.m();
+      this.u = 114 + this.H * 18;
+      this.y = this.u - 94;
    }
 
-   static gbe a(cxm $$0) {
-      Objects.requireNonNull($$0);
-
-      return (gbe)(switch ($$0) {
-         case cxl $$1 -> new gbc($$1.a());
-         case gbb.a $$2 -> new gbb($$2);
-         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
-      });
+   @Override
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
-   int a(fsk var1);
-
-   int b(fsk var1);
-
-   default boolean a() {
-      return false;
-   }
-
-   default void a(fsk $$0, int $$1, int $$2, Matrix4f $$3, gqr.a $$4) {
-   }
-
-   default void a(fsk $$0, int $$1, int $$2, int $$3, int $$4, fsm $$5) {
+   @Override
+   protected void a(ftx $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gsl::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.H * 18 + 17, 256, 256);
+      $$0.a(gsl::H, G, $$4, $$5 + this.H * 18 + 17, 0.0F, 126.0F, this.s, 96, 256, 256);
    }
 }

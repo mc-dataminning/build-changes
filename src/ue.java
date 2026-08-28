@@ -2,15 +2,15 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class ue extends up {
-   private static final int b = 12;
-   public static final uy<ue> a = new uy.a<ue>() {
+public record ue(int b) implements up {
+   private static final int c = 12;
+   public static final va<ue> a = new va.a<ue>() {
       public ue a(DataInput $$0, ui $$1) throws IOException {
          return ue.a(d($$0, $$1));
       }
 
       @Override
-      public ut.b a(DataInput $$0, ut $$1, ui $$2) throws IOException {
+      public uv.b a(DataInput $$0, uv $$1, ui $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
@@ -33,16 +33,13 @@ public class ue extends up {
       public String b() {
          return "TAG_Int";
       }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
    };
-   private final int c;
 
-   ue(int $$0) {
-      this.c = $$0;
+   @Deprecated(
+      forRemoval = true
+   )
+   public ue(int b) {
+      this.b = b;
    }
 
    public static ue a(int $$0) {
@@ -51,7 +48,7 @@ public class ue extends up {
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c);
+      $$0.writeInt(this.b);
    }
 
    @Override
@@ -65,7 +62,7 @@ public class ue extends up {
    }
 
    @Override
-   public uy<ue> c() {
+   public va<ue> c() {
       return a;
    }
 
@@ -74,58 +71,59 @@ public class ue extends up {
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof ue && this.c == ((ue)$$0).c;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.c;
-   }
-
-   @Override
-   public void a(va $$0) {
+   public void a(vc $$0) {
       $$0.a(this);
    }
 
    @Override
-   public long f() {
-      return (long)this.c;
+   public long g() {
+      return (long)this.b;
    }
 
    @Override
-   public int g() {
-      return this.c;
+   public int h() {
+      return this.b;
    }
 
    @Override
-   public short h() {
-      return (short)(this.c & 65535);
+   public short i() {
+      return (short)(this.b & 65535);
    }
 
    @Override
-   public byte i() {
-      return (byte)(this.c & 0xFF);
+   public byte j() {
+      return (byte)(this.b & 0xFF);
    }
 
    @Override
-   public double j() {
-      return (double)this.c;
+   public double k() {
+      return (double)this.b;
    }
 
    @Override
-   public float k() {
-      return (float)this.c;
+   public float l() {
+      return (float)this.b;
    }
 
    @Override
-   public Number l() {
-      return this.c;
+   public Number m() {
+      return this.b;
    }
 
    @Override
-   public ut.b a(ut $$0) {
-      return $$0.a(this.c);
+   public uv.b a(uv $$0) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   public String toString() {
+      ux $$0 = new ux();
+      $$0.a(this);
+      return $$0.a();
+   }
+
+   public int n() {
+      return this.b;
    }
 
    static class a {

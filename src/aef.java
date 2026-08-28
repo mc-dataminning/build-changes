@@ -1,37 +1,26 @@
-public class aef implements zf<abu> {
-   public static final yw<vu, aef> a = zf.a(aef::a, aef::new);
-   private final int b;
-   private final double c;
+import java.util.Set;
 
-   public aef(int $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public record aef(int b, byh c, Set<byi> d) implements zh<abw> {
+   public static final yy<vw, aef> a = yy.a(yw.h, aef::b, byh.a, aef::e, byi.m, aef::f, aef::new);
 
-   private aef(vu $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readDouble();
-   }
-
-   private void a(vu $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   public static aef a(int $$0, byh $$1, Set<byi> $$2) {
+      return new aef($$0, $$1, $$2);
    }
 
    @Override
-   public zh<aef> a() {
-      return agn.bj;
+   public zj<aef> a() {
+      return agp.ai;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public byh e() {
+      return this.c;
    }
 
-   public double e() {
-      return this.c;
+   public Set<byi> f() {
+      return this.d;
    }
 }

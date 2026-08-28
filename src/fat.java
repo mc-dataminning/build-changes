@@ -1,88 +1,55 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public class fat extends fbg {
-   public static final MapCodec<fat> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  fat.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  kj.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
-                  kj.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, fat::new)
-   );
-   private final fat.b b;
-   private final Optional<List<kj<?>>> c;
-   private final Optional<List<kj<?>>> d;
-   private final Predicate<kj<?>> e;
+public class fat extends faq {
+   public static final MapCodec<fat> a = a(fat::new);
 
-   fat(List<fdc> $$0, fat.b $$1, Optional<List<kj<?>>> $$2, Optional<List<kj<?>>> $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2.map(List::copyOf);
-      this.d = $$3.map(List::copyOf);
-      List<Predicate<kj<?>>> $$4 = new ArrayList<>(2);
-      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
-      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
-      this.e = ag.a($$4);
+   fat(List<fax> $$0, List<fdq> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public fbi<fat> b() {
-      return fbj.J;
+   public fay a() {
+      return fav.i;
    }
 
    @Override
-   public Set<bax<?>> a() {
-      return this.b.a();
+   protected fap a(List<? extends fap> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (fap)$$0.get(0);
+         case 2 -> {
+            fap $$1 = $$0.get(0);
+            fap $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (fap $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
+         }
+
+         return true;
+      };
+      };
    }
 
-   @Override
-   public czn a(czn $$0, ezt $$1) {
-      kh $$2 = this.b.a($$1);
-      $$0.b($$2.a(this.e));
-      return $$0;
-   }
-
-   public static fat.a a(fat.b $$0) {
+   public static fat.a a(fax.a<?>... $$0) {
       return new fat.a($$0);
    }
 
-   public static class a extends fbg.a<fat.a> {
-      private final fat.b a;
-      private Optional<Builder<kj<?>>> b = Optional.empty();
-      private Optional<Builder<kj<?>>> c = Optional.empty();
+   public static class a extends fax.a<fat.a> {
+      private final Builder<fax> a = ImmutableList.builder();
 
-      a(fat.b $$0) {
-         this.a = $$0;
-      }
-
-      public fat.a a(kj<?> $$0) {
-         if (this.b.isEmpty()) {
-            this.b = Optional.of(ImmutableList.builder());
+      public a(fax.a<?>... $$0) {
+         for (fax.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
          }
-
-         this.b.get().add($$0);
-         return this;
-      }
-
-      public fat.a b(kj<?> $$0) {
-         if (this.c.isEmpty()) {
-            this.c = Optional.of(ImmutableList.builder());
-         }
-
-         this.c.get().add($$0);
-         return this;
       }
 
       protected fat.a a() {
@@ -90,43 +57,14 @@ public class fat extends fbg {
       }
 
       @Override
-      public fbh b() {
-         return new fat(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
-      }
-   }
-
-   public static enum b implements bak {
-      a("block_entity");
-
-      public static final Codec<fat.b> b = bak.b(fat.b::values);
-      private final String c;
-
-      private b(final String $$0) {
-         this.c = $$0;
-      }
-
-      public kh a(ezt $$0) {
-         switch (this) {
-            case a:
-               dxr $$1 = $$0.c(fcn.h);
-               return $$1 != null ? $$1.q() : kh.a;
-            default:
-               throw new MatchException(null, null);
-         }
-      }
-
-      public Set<bax<?>> a() {
-         switch (this) {
-            case a:
-               return Set.of(fcn.h);
-            default:
-               throw new MatchException(null, null);
-         }
+      public fat.a b(fax.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
       }
 
       @Override
-      public String c() {
-         return this.c;
+      public fax b() {
+         return new fat(this.a.build(), this.f());
       }
    }
 }

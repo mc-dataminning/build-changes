@@ -1,13 +1,32 @@
-public class eeo {
-   public static final alf<eeq> a = a("overworld");
-   public static final alf<eeq> b = a("the_nether");
-   public static final alf<eeq> c = a("the_end");
-   public static final alf<eeq> d = a("overworld_caves");
-   public static final alg e = alg.b("overworld");
-   public static final alg f = alg.b("the_nether");
-   public static final alg g = alg.b("the_end");
+import com.mojang.datafixers.DataFixer;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+import org.apache.commons.io.FileUtils;
 
-   private static alf<eeq> a(String $$0) {
-      return alf.a(mh.aP, alg.b($$0));
+public class eeo extends eel {
+   private final een a;
+   private final Path b;
+
+   public eeo(eeu $$0, Path $$1, eeu $$2, Path $$3, DataFixer $$4, boolean $$5) {
+      super($$0, $$1, $$4, $$5);
+      this.b = $$3;
+      this.a = new een($$2, $$3, $$5);
+   }
+
+   @Override
+   public CompletableFuture<Void> a(djc $$0, Supplier<tz> $$1) {
+      this.e($$0);
+      return this.a.a($$0, $$1);
+   }
+
+   @Override
+   public void close() throws IOException {
+      super.close();
+      this.a.close();
+      if (this.b.toFile().exists()) {
+         FileUtils.deleteDirectory(this.b.toFile());
+      }
    }
 }

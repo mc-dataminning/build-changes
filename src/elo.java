@@ -1,26 +1,60 @@
 import com.mojang.serialization.Codec;
 
-public class elo extends ejy<emj> {
-   public elo(Codec<emj> $$0) {
+public class elo extends ekk<eng> {
+   public elo(Codec<eng> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eka<emj> $$0) {
-      dkl $$1 = $$0.b();
+   public boolean a(ekm<eng> $$0) {
+      dkw $$1 = $$0.b();
       iv $$2 = $$0.e();
-      $$0.f();
-      if (!$$1.v($$2)) {
+      if (!this.a($$1, $$2)) {
          return false;
       } else {
-         for (jb $$3 : jb.values()) {
-            if ($$3 != jb.a && dwe.a($$1, $$2.a($$3), $$3)) {
-               $$1.a($$2, dmt.fx.m().b(dwe.a($$3), Boolean.valueOf(true)), 2);
-               return true;
+         eng $$3 = $$0.f();
+         azx $$4 = $$0.d();
+         duf $$5 = duf.b();
+         int $$6 = $$3.f() + $$3.d();
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
+            }
+
+            boolean $$9 = $$7 < $$3.f();
+
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
+         }
+
+         iv $$11 = $$2.e();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).m($$1, $$11)) {
+            $$1.a($$2, dne.rC.m(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            iv $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).l() && $$1.a_($$14.e()).c($$1, $$14.e(), jb.b)) {
+               $$1.a($$14, dne.rD.m().b(due.d, Boolean.valueOf(true)), 3);
             }
          }
 
-         return false;
+         return true;
+      }
+   }
+
+   private boolean a(djy $$0, iv $$1) {
+      ebe $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof dua) {
+         return true;
+      } else {
+         return !$$2.l() && (!$$2.a(dne.J) || !$$2.y().b()) ? false : jb.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).m($$0, $$1x));
       }
    }
 }

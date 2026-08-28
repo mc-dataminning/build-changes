@@ -1,144 +1,49 @@
-import com.google.common.collect.Iterables;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.StreamSupport;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public interface diu extends diq {
-   ecl A_();
+public class diu extends ArrayList<dit> {
+   public static final Codec<diu> a = dit.a.listOf().optionalFieldOf("Recipes", List.of()).xmap(diu::new, Function.identity()).codec();
+   public static final yy<wl, diu> b = dit.b.a(yw.a(diu::new));
 
-   @Nullable
-   diq c(int var1, int var2);
-
-   default boolean a(@Nullable bwi $$0, ffw $$1) {
-      return true;
+   public diu() {
    }
 
-   default boolean a(eat $$0, iv $$1, ffh $$2) {
-      ffw $$3 = $$0.b(this, $$1, $$2);
-      return $$3.c() || this.a(null, $$3.a($$1));
+   private diu(int $$0) {
+      super($$0);
    }
 
-   default boolean f(bwi $$0) {
-      return this.a($$0, fft.a($$0.cQ()));
-   }
-
-   default boolean b(fex $$0) {
-      return this.a(null, $$0);
-   }
-
-   default boolean g(bwi $$0) {
-      return this.a($$0, $$0.cQ());
-   }
-
-   default boolean a(@Nullable bwi $$0, fex $$1) {
-      return this.a($$0, $$1, false);
-   }
-
-   default boolean a(@Nullable bwi $$0, fex $$1, boolean $$2) {
-      for (ffw $$4 : $$2 ? this.f($$0, $$1) : this.e($$0, $$1)) {
-         if (!$$4.c()) {
-            return false;
-         }
-      }
-
-      if (!this.c($$0, $$1).isEmpty()) {
-         return false;
-      } else if ($$0 == null) {
-         return true;
-      } else {
-         ffw $$5 = this.i($$0, $$1);
-         return $$5 == null || !fft.c($$5, fft.a($$1), ffg.i);
-      }
-   }
-
-   default boolean b(@Nullable bwi $$0, fex $$1) {
-      for (ffw $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   List<ffw> c(@Nullable bwi var1, fex var2);
-
-   default Iterable<ffw> d(@Nullable bwi $$0, fex $$1) {
-      List<ffw> $$2 = this.c($$0, $$1);
-      Iterable<ffw> $$3 = this.e($$0, $$1);
-      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
-   }
-
-   default Iterable<ffw> e(@Nullable bwi $$0, fex $$1) {
-      return () -> new dio<ffw>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
-   }
-
-   default Iterable<ffw> f(@Nullable bwi $$0, fex $$1) {
-      return () -> new dio<ffw>(this, ffh.a($$0, true), $$1, false, ($$0xx, $$1xx) -> $$1xx);
+   private diu(Collection<dit> $$0) {
+      super($$0);
    }
 
    @Nullable
-   private ffw i(bwi $$0, fex $$1) {
-      ecl $$2 = this.A_();
-      return $$2.a($$0, $$1) ? $$2.c() : null;
-   }
-
-   default fey b(dit $$0) {
-      fey $$1 = this.a($$0);
-      ecl $$2 = this.A_();
-      if ($$2.a($$0.b()) && !$$2.a($$1.g())) {
-         ffc $$3 = $$1.g().d($$0.b());
-         jb $$4 = jb.a($$3.d, $$3.e, $$3.f);
-         ffc $$5 = $$2.c($$1.g());
-         return new fey($$5, $$4, iv.a((jp)$$5), false, true);
+   public dit a(czy $$0, czy $$1, int $$2) {
+      if ($$2 > 0 && $$2 < this.size()) {
+         dit $$3 = this.get($$2);
+         return $$3.a($$0, $$1) ? $$3 : null;
       } else {
-         return $$1;
-      }
-   }
-
-   default boolean g(@Nullable bwi $$0, fex $$1) {
-      dio<ffw> $$2 = new dio<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
-
-      while ($$2.hasNext()) {
-         if (!((ffw)$$2.next()).c()) {
-            return true;
+         for (int $$4 = 0; $$4 < this.size(); $$4++) {
+            dit $$5 = this.get($$4);
+            if ($$5.a($$0, $$1)) {
+               return $$5;
+            }
          }
-      }
 
-      return false;
+         return null;
+      }
    }
 
-   default Optional<iv> h(bwi $$0, fex $$1) {
-      iv $$2 = null;
-      double $$3 = Double.MAX_VALUE;
-      dio<iv> $$4 = new dio<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
+   public diu a() {
+      diu $$0 = new diu(this.size());
 
-      while ($$4.hasNext()) {
-         iv $$5 = (iv)$$4.next();
-         double $$6 = $$5.b($$0.ds());
-         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
-            $$2 = $$5.j();
-            $$3 = $$6;
-         }
+      for (dit $$1 : this) {
+         $$0.add($$1.v());
       }
 
-      return Optional.ofNullable($$2);
-   }
-
-   default Optional<ffc> a(@Nullable bwi $$0, ffw $$1, ffc $$2, double $$3, double $$4, double $$5) {
-      if ($$1.c()) {
-         return Optional.empty();
-      } else {
-         fex $$6 = $$1.a().c($$3, $$4, $$5);
-         ffw $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
-            .filter($$0x -> this.A_() == null || this.A_().a($$0x.a()))
-            .flatMap($$0x -> $$0x.e().stream())
-            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
-            .map(fft::a)
-            .reduce(fft.a(), fft::a);
-         ffw $$8 = fft.a($$1, $$7, ffg.e);
-         return $$8.b($$2);
-      }
+      return $$0;
    }
 }

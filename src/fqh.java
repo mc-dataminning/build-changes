@@ -1,34 +1,52 @@
-import com.google.common.collect.Maps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public record fqh(float a, boolean b, Map<String, List<fqg>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<fqg>> b = Maps.newHashMap();
-      private boolean c;
+public class fqh extends fqb {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xa c = xa.c("mco.minigame.world.starting.screen.title");
+   private final long d;
+   private final fnu e;
+   private final fon f;
 
-      public static fqh.a a(float $$0) {
-         return new fqh.a($$0);
+   public fqh(long $$0, fnu $$1, fon $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   @Override
+   public void run() {
+      fmd $$0 = fmd.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            if ($$0.c(this.d, this.e.a)) {
+               a(this.f);
+               break;
+            }
+         } catch (foa var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't start mini game!");
+            this.a(var5);
+         }
       }
+   }
 
-      private a(float $$0) {
-         this.a = $$0;
-      }
-
-      public fqh.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public fqh.a a(String $$0, fqg $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> new ArrayList<>()).add($$1);
-         return this;
-      }
-
-      public fqh b() {
-         return new fqh(this.a, this.c, this.b);
-      }
+   @Override
+   public xa a() {
+      return c;
    }
 }

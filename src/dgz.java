@@ -1,24 +1,18 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public record dgz(ka d, Optional<ehz> e, eod f, Optional<jf<eft>> g) implements dgr {
+public record dgz(dgs d, dgs e, jf<bvk> f) implements dhc {
    public static final MapCodec<dgz> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               ka.g.optionalFieldOf("offset", ka.i).forGetter(dgz::b),
-               ehz.b.optionalFieldOf("predicate").forGetter(dgz::c),
-               eod.a.fieldOf("block_state").forGetter(dgz::d),
-               eft.aj.optionalFieldOf("trigger_game_event").forGetter(dgz::e)
+               dgs.b.fieldOf("min_damage").forGetter(dgz::b), dgs.b.fieldOf("max_damage").forGetter(dgz::c), bvk.b.fieldOf("damage_type").forGetter(dgz::d)
             )
             .apply($$0, dgz::new)
    );
 
    @Override
-   public void a(arq $$0, int $$1, dfz $$2, bwi $$3, ffc $$4) {
-      iv $$5 = iv.a((jp)$$4).a(this.d);
-      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dX(), $$5))) {
-         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
-      }
+   public void a(ars $$0, int $$1, dgk $$2, bwt $$3, ffq $$4) {
+      float $$5 = azo.b($$3.dY(), this.d.a($$1), this.e.a($$1));
+      $$3.a($$0, new bvi(this.f, $$2.c()), $$5);
    }
 
    @Override
@@ -26,19 +20,15 @@ public record dgz(ka d, Optional<ehz> e, eod f, Optional<jf<eft>> g) implements 
       return a;
    }
 
-   public ka b() {
+   public dgs b() {
       return this.d;
    }
 
-   public Optional<ehz> c() {
+   public dgs c() {
       return this.e;
    }
 
-   public eod d() {
+   public jf<bvk> d() {
       return this.f;
-   }
-
-   public Optional<jf<eft>> e() {
-      return this.g;
    }
 }

@@ -1,5 +1,8 @@
-public class hfl extends hef {
-   public ckf.b a = ckf.b.g;
-   public int b = -1;
-   public int c = -1;
+public class hfl extends hej {
+   public final hhs a = new hhs();
+
+   @Override
+   public boolean a() {
+      return !this.a.c();
+   }
 }

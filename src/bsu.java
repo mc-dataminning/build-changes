@@ -1,172 +1,88 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Queues;
-import com.mojang.jtracy.TracyClient;
-import com.mojang.jtracy.Zone;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.locks.LockSupport;
-import java.util.function.BooleanSupplier;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
 import java.util.function.Supplier;
-import javax.annotation.CheckReturnValue;
+import java.util.function.ToDoubleFunction;
+import java.util.stream.IntStream;
 import org.slf4j.Logger;
+import oshi.SystemInfo;
+import oshi.hardware.CentralProcessor;
 
-public abstract class bsu<R extends Runnable> implements bsd, btb<R>, Executor {
-   public static final long k = 100000L;
-   private final String b;
-   private static final Logger c = LogUtils.getLogger();
-   private final Queue<R> d = Queues.newConcurrentLinkedQueue();
-   private int e;
+public class bsu implements bsn {
+   private static final Logger a = LogUtils.getLogger();
+   private final Set<bsl> b = new ObjectOpenHashSet();
+   private final bst c = new bst();
 
-   protected bsu(String $$0) {
-      this.b = $$0;
-      bsb.a.a(this);
+   public bsu(LongSupplier $$0, boolean $$1) {
+      this.b.add(a($$0));
+      if ($$1) {
+         this.b.addAll(a());
+      }
    }
 
-   protected abstract boolean e(R var1);
+   public static Set<bsl> a() {
+      Builder<bsl> $$0 = ImmutableSet.builder();
 
-   public boolean bx() {
-      return Thread.currentThread() == this.ay();
-   }
+      try {
+         bsu.a $$1 = new bsu.a();
+         IntStream.range(0, $$1.a).mapToObj($$1x -> bsl.a("cpu#" + $$1x, bsk.h, () -> $$1.a($$1))).forEach($$0::add);
+      } catch (Throwable var2) {
+         a.warn("Failed to query cpu, no cpu stats will be recorded", var2);
+      }
 
-   protected abstract Thread ay();
-
-   protected boolean ax() {
-      return !this.bx();
-   }
-
-   public int by() {
-      return this.d.size();
+      $$0.add(bsl.a("heap MiB", bsk.e, () -> (double)ae.a(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())));
+      $$0.addAll(bsm.a.a());
+      return $$0.build();
    }
 
    @Override
-   public String v_() {
+   public Set<bsl> a(Supplier<bqy> $$0) {
+      this.b.addAll(this.c.a($$0));
       return this.b;
    }
 
-   public <V> CompletableFuture<V> a(Supplier<V> $$0) {
-      return this.ax() ? CompletableFuture.supplyAsync($$0, this) : CompletableFuture.completedFuture($$0.get());
-   }
-
-   private CompletableFuture<Void> b(Runnable $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         $$0.run();
-         return null;
-      }, this);
-   }
-
-   @CheckReturnValue
-   public CompletableFuture<Void> g(Runnable $$0) {
-      if (this.ax()) {
-         return this.b($$0);
-      } else {
-         $$0.run();
-         return CompletableFuture.completedFuture(null);
-      }
-   }
-
-   public void h(Runnable $$0) {
-      if (!this.bx()) {
-         this.b($$0).join();
-      } else {
-         $$0.run();
-      }
-   }
-
-   @Override
-   public void a_(R $$0) {
-      this.d.add($$0);
-      LockSupport.unpark(this.ay());
-   }
-
-   @Override
-   public void execute(Runnable $$0) {
-      if (this.ax()) {
-         this.a_(this.f($$0));
-      } else {
-         $$0.run();
-      }
-   }
-
-   public void c(Runnable $$0) {
-      this.execute($$0);
-   }
-
-   protected void bz() {
-      this.d.clear();
-   }
-
-   protected void bA() {
-      while (this.B()) {
-      }
-   }
-
-   public boolean B() {
-      R $$0 = this.d.peek();
-      if ($$0 == null) {
-         return false;
-      } else if (this.e == 0 && !this.e($$0)) {
-         return false;
-      } else {
-         this.d(this.d.remove());
-         return true;
-      }
-   }
-
-   public void b(BooleanSupplier $$0) {
-      this.e++;
-
-      try {
-         while (!$$0.getAsBoolean()) {
-            if (!this.B()) {
-               this.A();
-            }
+   public static bsl a(final LongSupplier $$0) {
+      Stopwatch $$1 = Stopwatch.createUnstarted(new Ticker() {
+         public long read() {
+            return $$0.getAsLong();
          }
-      } finally {
-         this.e--;
-      }
-   }
-
-   protected void A() {
-      Thread.yield();
-      LockSupport.parkNanos("waiting for tasks", 100000L);
-   }
-
-   protected void d(R $$0) {
-      try {
-         Zone $$1 = TracyClient.beginZone("Task", ac.aV);
-
-         try {
-            $$0.run();
-         } catch (Throwable var6) {
-            if ($$1 != null) {
-               try {
-                  $$1.close();
-               } catch (Throwable var5) {
-                  var6.addSuppressed(var5);
-               }
-            }
-
-            throw var6;
+      });
+      ToDoubleFunction<Stopwatch> $$2 = $$0x -> {
+         if ($$0x.isRunning()) {
+            $$0x.stop();
          }
 
-         if ($$1 != null) {
-            $$1.close();
+         long $$1x = $$0x.elapsed(TimeUnit.NANOSECONDS);
+         $$0x.reset();
+         return (double)$$1x;
+      };
+      bsl.d $$3 = new bsl.d(2.0F);
+      return bsl.a("ticktime", bsk.d, $$2, $$1).a(Stopwatch::start).a($$3).a();
+   }
+
+   static class a {
+      private final SystemInfo b = new SystemInfo();
+      private final CentralProcessor c = this.b.getHardware().getProcessor();
+      public final int a = this.c.getLogicalProcessorCount();
+      private long[][] d = this.c.getProcessorCpuLoadTicks();
+      private double[] e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+      private long f;
+
+      public double a(int $$0) {
+         long $$1 = System.currentTimeMillis();
+         if (this.f == 0L || this.f + 501L < $$1) {
+            this.e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+            this.d = this.c.getProcessorCpuLoadTicks();
+            this.f = $$1;
          }
-      } catch (Exception var7) {
-         c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.v_(), var7);
-         throw var7;
+
+         return this.e[$$0] * 100.0;
       }
-   }
-
-   @Override
-   public List<bsa> bw() {
-      return ImmutableList.of(bsa.a(this.b + "-pending-tasks", brz.b, this::by));
-   }
-
-   public static boolean a(Throwable $$0) {
-      return $$0 instanceof aa $$1 ? a($$1.getCause()) : $$0 instanceof OutOfMemoryError || $$0 instanceof StackOverflowError;
    }
 }

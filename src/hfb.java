@@ -1,4 +1,5 @@
-public class hfb extends hef {
-   public float a;
-   public int b = 1;
+public class hfb extends hfp {
+   public boolean a = true;
+   public boolean b = true;
+   public float c;
 }

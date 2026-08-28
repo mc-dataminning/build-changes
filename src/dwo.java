@@ -1,33 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwo extends dog implements dwn {
-   public static final MapCodec<dwo> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dwn.a.e.fieldOf("weathering_state").forGetter(dwo::q), t()).apply($$0, dwo::new)
-   );
-   private final dwn.a e;
-
-   @Override
-   protected MapCodec<dwo> a() {
-      return d;
-   }
-
-   public dwo(dwn.a $$0, eas.d $$1) {
-      super($$1);
-      this.e = $$0;
+public abstract class dwo extends dnc {
+   protected dwo(ebd.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void b(eat $$0, arq $$1, iv $$2, azv $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected abstract MapCodec<? extends dwo> a();
+
+   protected boolean b(ebe $$0, djb $$1, iv $$2) {
+      return $$0.a(axe.ah) || $$0.a(dne.cN);
    }
 
    @Override
-   protected boolean f(eat $$0) {
-      return dwn.c($$0.b()).isPresent();
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      return !$$0.a($$1, $$3) ? dne.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   public dwn.a q() {
-      return this.e;
+   @Override
+   protected boolean a(ebe $$0, dka $$1, iv $$2) {
+      iv $$3 = $$2.e();
+      return this.b($$1.a_($$3), $$1, $$3);
+   }
+
+   @Override
+   protected boolean e_(ebe $$0) {
+      return $$0.y().c();
+   }
+
+   @Override
+   protected boolean a(ebe $$0, eyd $$1) {
+      return $$1 == eyd.c && !this.F ? true : super.a($$0, $$1);
    }
 }

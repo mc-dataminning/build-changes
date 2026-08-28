@@ -1,42 +1,55 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class euy extends evc {
-   public static final MapCodec<euy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, euy::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
+public class euy extends esb {
+   public static final MapCodec<euy> d = a(euy::new);
 
-   public euy(float $$0, float $$1, int $$2, int $$3) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
-      } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
+   public euy(esb.c $$0) {
+      super($$0);
+   }
+
+   @Override
+   public Optional<esb.b> a(esb.a $$0) {
+      dtw $$1 = dtw.a($$0.f());
+      iv $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new esb.b($$2, (Consumer<est>)($$3 -> this.a($$3, $$0, $$2, $$1))));
+   }
+
+   private void a(est $$0, esb.a $$1, iv $$2, dtw $$3) {
+      List<eux.i> $$4 = Lists.newLinkedList();
+      eux.a($$1.e(), $$2, $$3, $$4, $$1.f());
+      $$4.forEach($$0::a);
+   }
+
+   @Override
+   public void a(dkw $$0, dkt $$1, edc $$2, azx $$3, ert $$4, djc $$5, esq $$6) {
+      iv.a $$7 = new iv.a();
+      int $$8 = $$0.K_();
+      ert $$9 = $$6.b();
+      int $$10 = $$9.i();
+
+      for (int $$11 = $$4.h(); $$11 <= $$4.k(); $$11++) {
+         for (int $$12 = $$4.j(); $$12 <= $$4.m(); $$12++) {
+            $$7.d($$11, $$10, $$12);
+            if (!$$0.v($$7) && $$9.b($$7) && $$6.a($$7)) {
+               for (int $$13 = $$10 - 1; $$13 > $$8; $$13--) {
+                  $$7.q($$13);
+                  if (!$$0.v($$7) && !$$0.a_($$7).n()) {
+                     break;
+                  }
+
+                  $$0.a($$7, dne.m.m(), 2);
+               }
+            }
+         }
       }
    }
 
    @Override
-   public boolean a(iv $$0, iv $$1, iv $$2, azv $$3) {
-      int $$4 = $$1.k($$2);
-      float $$5 = $$3.i();
-      return $$5 <= azm.b(this.b, this.d, azm.f((float)$$4, (float)this.e, (float)this.f));
-   }
-
-   @Override
-   protected evd<?> a() {
-      return evd.b;
+   public esk<?> e() {
+      return esk.p;
    }
 }

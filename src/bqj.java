@@ -1,36 +1,23 @@
-import java.util.function.BooleanSupplier;
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.concurrent.CompletableFuture;
 
-public class bqj {
-   private final LongSupplier a;
-   private final IntSupplier b;
-   private final BooleanSupplier c;
-   private bqn d = bqm.a;
+public abstract class bqj<T> implements ArgumentType<T> {
+   private final bqe<T> a;
 
-   public bqj(LongSupplier $$0, IntSupplier $$1, BooleanSupplier $$2) {
+   public bqj(bqe<T> $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
-   public boolean a() {
-      return this.d != bqm.a;
+   public T parse(StringReader $$0) throws CommandSyntaxException {
+      return this.a.a($$0);
    }
 
-   public void b() {
-      this.d = bqm.a;
-   }
-
-   public void c() {
-      this.d = new bqi(this.a, this.b, this.c);
-   }
-
-   public bqq d() {
-      return this.d;
-   }
-
-   public bqo e() {
-      return this.d.d();
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return this.a.a($$1);
    }
 }

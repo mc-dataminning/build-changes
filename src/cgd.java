@@ -1,40 +1,26 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cgd extends cgf {
-   private final byf a;
-   private bxj b;
-   private int c;
+public class cgd extends cfn {
+   public static final float i = 0.001F;
+   protected final float j;
 
-   public cgd(byf $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(cef.a.d));
+   public cgd(byc $$0, double $$1) {
+      this($$0, $$1, 0.001F);
    }
 
+   public cgd(byc $$0, double $$1, float $$2) {
+      super($$0, $$1);
+      this.j = $$2;
+   }
+
+   @Nullable
    @Override
-   public boolean b() {
-      if (this.a.q() && !this.a.gt()) {
-         bxj $$0 = this.a.e();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.et();
-            int $$1 = $$0.eu();
-            return $$1 != this.c && this.a(this.b, chy.a) && this.a.a(this.b, $$0);
-         }
+   protected ffq h() {
+      if (this.b.bi()) {
+         ffq $$0 = ciq.a(this.b, 15, 7);
+         return $$0 == null ? super.h() : $$0;
       } else {
-         return false;
+         return this.b.dY().i() >= this.j ? ciq.a(this.b, 10, 7) : super.h();
       }
-   }
-
-   @Override
-   public void d() {
-      this.e.g(this.b);
-      bxj $$0 = this.a.e();
-      if ($$0 != null) {
-         this.c = $$0.eu();
-      }
-
-      super.d();
    }
 }

@@ -1,32 +1,22 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class hix implements hiq {
-   private final giw a;
+public record hix(boolean b) implements hja {
+   public static final MapCodec<hix> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("normalize", true).forGetter(hix::b)).apply($$0, hix::new)
+   );
 
-   public hix(giw $$0) {
-      this.a = $$0;
+   @Override
+   public float a(czy $$0, @Nullable gmb $$1, @Nullable bxu $$2, int $$3) {
+      float $$4 = (float)$$0.o();
+      float $$5 = (float)$$0.p();
+      return this.b ? azo.a($$4 / $$5, 0.0F, 1.0F) : azo.a($$4, 0.0F, $$5);
    }
 
    @Override
-   public void a(czl $$0, fkd $$1, gqr $$2, int $$3, int $$4, boolean $$5) {
-      $$1.a();
-      $$1.b(1.0F, -1.0F, -1.0F);
-      fkh $$6 = gxw.a($$2, this.a.a(giw.a), false, $$5);
-      this.a.a($$1, $$6, $$3, $$4);
-      $$1.b();
-   }
-
-   public static record a() implements hiu.a {
-      public static final MapCodec<hix.a> a = MapCodec.unit(new hix.a());
-
-      @Override
-      public MapCodec<hix.a> a() {
-         return a;
-      }
-
-      @Override
-      public hiu<?> a(gjp $$0) {
-         return new hix(new giw($$0.a(gjs.dD)));
-      }
+   public MapCodec<hix> a() {
+      return a;
    }
 }

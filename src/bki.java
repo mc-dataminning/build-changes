@@ -1,61 +1,62 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
 
-public class bki extends DataFix {
-   private static final int a = 2;
-   private static final int[] b = new int[]{0, 10, 50, 100, 150};
-
-   public static int a(int $$0) {
-      return b[azm.a($$0 - 1, 0, b.length - 1)];
+public class bki extends bhv {
+   public bki(Schema $$0, String $$1) {
+      super($$0, false, "Villager profession data fix (" + $$1 + ")", bjb.D, $$1);
    }
 
-   public bki(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      Dynamic<?> $$1 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+      return $$0.set(
+         DSL.remainderFinder(),
+         $$1.remove("Profession")
+            .remove("Career")
+            .remove("CareerLevel")
+            .set(
+               "VillagerData",
+               $$1.createMap(
+                  ImmutableMap.of(
+                     $$1.createString("type"),
+                     $$1.createString("minecraft:plains"),
+                     $$1.createString("profession"),
+                     $$1.createString(a($$1.get("Profession").asInt(0), $$1.get("Career").asInt(0))),
+                     $$1.createString("level"),
+                     (Dynamic)DataFixUtils.orElse($$1.get("CareerLevel").result(), $$1.createInt(1))
+                  )
+               )
+            )
+      );
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(biz.D, "minecraft:villager");
-      OpticFinder<?> $$1 = DSL.namedChoice("minecraft:villager", $$0);
-      OpticFinder<?> $$2 = $$0.findField("Offers");
-      Type<?> $$3 = $$2.type();
-      OpticFinder<?> $$4 = $$3.findField("Recipes");
-      ListType<?> $$5 = (ListType<?>)$$4.type();
-      OpticFinder<?> $$6 = $$5.getElement().finder();
-      return this.fixTypeEverywhereTyped("Villager level and xp rebuild", this.getInputSchema().getType(biz.D), $$5x -> $$5x.updateTyped($$1, $$0, $$3xx -> {
-            Dynamic<?> $$4xx = (Dynamic<?>)$$3xx.get(DSL.remainderFinder());
-            int $$5xx = $$4xx.get("VillagerData").get("level").asInt(0);
-            Typed<?> $$6x = $$3xx;
-            if ($$5xx == 0 || $$5xx == 1) {
-               int $$7 = $$3xx.getOptionalTyped($$2).flatMap($$1xxx -> $$1xxx.getOptionalTyped($$4)).map($$1xxx -> $$1xxx.getAllTyped($$6).size()).orElse(0);
-               $$5xx = azm.a($$7 / 2, 1, 5);
-               if ($$5xx > 1) {
-                  $$6x = a($$3xx, $$5xx);
-               }
-            }
-
-            Optional<Number> $$8 = $$4xx.get("Xp").asNumber().result();
-            if ($$8.isEmpty()) {
-               $$6x = b($$6x, $$5xx);
-            }
-
-            return $$6x;
-         }));
-   }
-
-   private static Typed<?> a(Typed<?> $$0, int $$1) {
-      return $$0.update(DSL.remainderFinder(), $$1x -> $$1x.update("VillagerData", $$1xx -> $$1xx.set("level", $$1xx.createInt($$1))));
-   }
-
-   private static Typed<?> b(Typed<?> $$0, int $$1) {
-      int $$2 = a($$1);
-      return $$0.update(DSL.remainderFinder(), $$1x -> $$1x.set("Xp", $$1x.createInt($$2)));
+   private static String a(int $$0, int $$1) {
+      if ($$0 == 0) {
+         if ($$1 == 2) {
+            return "minecraft:fisherman";
+         } else if ($$1 == 3) {
+            return "minecraft:shepherd";
+         } else {
+            return $$1 == 4 ? "minecraft:fletcher" : "minecraft:farmer";
+         }
+      } else if ($$0 == 1) {
+         return $$1 == 2 ? "minecraft:cartographer" : "minecraft:librarian";
+      } else if ($$0 == 2) {
+         return "minecraft:cleric";
+      } else if ($$0 == 3) {
+         if ($$1 == 2) {
+            return "minecraft:weaponsmith";
+         } else {
+            return $$1 == 3 ? "minecraft:toolsmith" : "minecraft:armorer";
+         }
+      } else if ($$0 == 4) {
+         return $$1 == 2 ? "minecraft:leatherworker" : "minecraft:butcher";
+      } else {
+         return $$0 == 5 ? "minecraft:nitwit" : "minecraft:none";
+      }
    }
 }

@@ -8,16 +8,16 @@ public class bc extends dk<bc.a> {
       return bc.a.a;
    }
 
-   public void a(arr $$0, alf<djm> $$1, alf<djm> $$2) {
+   public void a(art $$0, alh<djx> $$1, alh<djx> $$2) {
       this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
-   public static record a(Optional<bj> b, Optional<alf<djm>> c, Optional<alf<djm>> d) implements dk.a {
+   public static record a(Optional<bj> b, Optional<alh<djx>> c, Optional<alh<djx>> d) implements dk.a {
       public static final Codec<bc.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   by.b.optionalFieldOf("player").forGetter(bc.a::a),
-                  alf.a(mh.bp).optionalFieldOf("from").forGetter(bc.a::c),
-                  alf.a(mh.bp).optionalFieldOf("to").forGetter(bc.a::d)
+                  alh.a(mh.bp).optionalFieldOf("from").forGetter(bc.a::c),
+                  alh.a(mh.bp).optionalFieldOf("to").forGetter(bc.a::d)
                )
                .apply($$0, bc.a::new)
       );
@@ -26,19 +26,19 @@ public class bc extends dk<bc.a> {
          return aq.w.a(new bc.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public static ar<bc.a> a(alf<djm> $$0, alf<djm> $$1) {
+      public static ar<bc.a> a(alh<djx> $$0, alh<djx> $$1) {
          return aq.w.a(new bc.a(Optional.empty(), Optional.of($$0), Optional.of($$1)));
       }
 
-      public static ar<bc.a> a(alf<djm> $$0) {
+      public static ar<bc.a> a(alh<djx> $$0) {
          return aq.w.a(new bc.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
       }
 
-      public static ar<bc.a> b(alf<djm> $$0) {
+      public static ar<bc.a> b(alh<djx> $$0) {
          return aq.w.a(new bc.a(Optional.empty(), Optional.of($$0), Optional.empty()));
       }
 
-      public boolean b(alf<djm> $$0, alf<djm> $$1) {
+      public boolean b(alh<djx> $$0, alh<djx> $$1) {
          return this.c.isPresent() && this.c.get() != $$0 ? false : !this.d.isPresent() || this.d.get() == $$1;
       }
 

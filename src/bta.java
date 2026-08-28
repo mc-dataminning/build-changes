@@ -1,101 +1,35 @@
-import com.google.common.collect.Queues;
-import java.util.Locale;
-import java.util.Queue;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public interface bta<T extends Runnable> {
-   @Nullable
-   Runnable a();
+public record bta<T>(T a, int b) {
+   private static final Logger c = LogUtils.getLogger();
 
-   boolean a(T var1);
-
-   boolean b();
-
-   int c();
-
-   public static final class a implements bta<bta.c> {
-      private final Queue<Runnable>[] a;
-      private final AtomicInteger b = new AtomicInteger();
-
-      public a(int $$0) {
-         this.a = new Queue[$$0];
-
-         for (int $$1 = 0; $$1 < $$0; $$1++) {
-            this.a[$$1] = Queues.newConcurrentLinkedQueue();
-         }
-      }
-
-      @Nullable
-      @Override
-      public Runnable a() {
-         for (Queue<Runnable> $$0 : this.a) {
-            Runnable $$1 = $$0.poll();
-            if ($$1 != null) {
-               this.b.decrementAndGet();
-               return $$1;
-            }
+   public bta(T a, int b) {
+      if (b < 0) {
+         throw (IllegalArgumentException)ag.b(new IllegalArgumentException("Weight should be >= 0"));
+      } else {
+         if (b == 0 && ac.aU) {
+            c.warn("Found 0 weight, make sure this is intentional!");
          }
 
-         return null;
-      }
-
-      public boolean a(bta.c $$0) {
-         int $$1 = $$0.a;
-         if ($$1 < this.a.length && $$1 >= 0) {
-            this.a[$$1].add($$0);
-            this.b.incrementAndGet();
-            return true;
-         } else {
-            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
-         }
-      }
-
-      @Override
-      public boolean b() {
-         return this.b.get() == 0;
-      }
-
-      @Override
-      public int c() {
-         return this.b.get();
+         this.a = a;
+         this.b = b;
       }
    }
 
-   public static final class b implements bta<Runnable> {
-      private final Queue<Runnable> a;
-
-      public b(Queue<Runnable> $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public Runnable a() {
-         return this.a.poll();
-      }
-
-      @Override
-      public boolean a(Runnable $$0) {
-         return this.a.add($$0);
-      }
-
-      @Override
-      public boolean b() {
-         return this.a.isEmpty();
-      }
-
-      @Override
-      public int c() {
-         return this.a.size();
-      }
+   public static <E> Codec<bta<E>> a(Codec<E> $$0) {
+      return a($$0.fieldOf("data"));
    }
 
-   public static record c(int a, Runnable b) implements Runnable {
+   public static <E> Codec<bta<E>> a(MapCodec<E> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group($$0.forGetter(bta::a), ayw.l.fieldOf("weight").forGetter(bta::b)).apply($$1, bta::new));
+   }
 
-      @Override
-      public void run() {
-         this.b.run();
-      }
+   public <U> bta<U> a(Function<T, U> $$0) {
+      return new bta<>($$0.apply(this.a()), this.b);
    }
 }

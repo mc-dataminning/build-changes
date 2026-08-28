@@ -1,19 +1,21 @@
-public class gpc extends goz {
-   private final ffc a;
+public class gpc extends gqk {
+   private final gqf a;
 
-   gpc(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ffc $$7, int $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      $$8 = axw.a($$8, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F);
-      this.v = (float)axw.b($$8) / 255.0F;
-      this.w = (float)axw.c($$8) / 255.0F;
-      this.x = (float)axw.d($$8) / 255.0F;
-      this.D = 0.26F;
-      this.a = $$7;
+   protected gpc(gmb $$0, double $$1, double $$2, double $$3, double $$4, gqf $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 6 + this.r.a(4);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
+      this.a = $$5;
+      this.b($$5);
    }
 
    @Override
-   public god b() {
-      return god.b;
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
@@ -24,31 +26,24 @@ public class gpc extends goz {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         int $$0 = this.t - this.s;
-         double $$1 = 1.0 / (double)$$0;
-         this.g = azm.d($$1, this.g, this.a.a());
-         this.h = azm.d($$1, this.h, this.a.b());
-         this.i = azm.d($$1, this.i, this.a.c());
+         this.b(this.a);
       }
    }
 
    @Override
-   public int a(float $$0) {
-      return 15728880;
+   public gpo b() {
+      return gpo.b;
    }
 
-   public static class a implements goc<md> {
-      private final gou a;
+   public static class a implements gpn<mc> {
+      private final gqf a;
 
-      public a(gou $$0) {
+      public a(gqf $$0) {
          this.a = $$0;
       }
 
-      public gnz a(md $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gpc $$8 = new gpc($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b(), $$0.c());
-         $$8.a(this.a);
-         $$8.a($$0.d());
-         return $$8;
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gpc($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

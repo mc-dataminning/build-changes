@@ -1,29 +1,18 @@
-public class ack implements zf<abu> {
-   public static final yw<vu, ack> a = zf.a(ack::a, ack::new);
-   private final boolean b;
+import io.netty.buffer.ByteBuf;
 
-   public ack(boolean $$0) {
-      this.b = $$0;
-   }
+public class ack implements zh<abw> {
+   public static final ack a = new ack();
+   public static final yy<ByteBuf, ack> b = yy.a(a);
 
-   private ack(vu $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(vu $$0) {
-      $$0.a(this.b);
+   private ack() {
    }
 
    @Override
-   public zh<ack> a() {
-      return agn.p;
+   public zj<ack> a() {
+      return agp.n;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
-   }
-
-   public boolean b() {
-      return this.b;
    }
 }

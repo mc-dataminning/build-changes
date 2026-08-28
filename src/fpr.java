@@ -1,172 +1,58 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.gson.annotations.SerializedName;
+import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import org.slf4j.Logger;
 
-public class fpr implements Comparable<fpr> {
-   private static final Map<String, fpr> h = Maps.newHashMap();
-   private static final Map<fiu.a, fpr> i = Maps.newHashMap();
-   private static final Set<String> j = Sets.newHashSet();
-   public static final String a = "key.categories.movement";
-   public static final String b = "key.categories.misc";
-   public static final String c = "key.categories.multiplayer";
-   public static final String d = "key.categories.gameplay";
-   public static final String e = "key.categories.inventory";
-   public static final String f = "key.categories.ui";
-   public static final String g = "key.categories.creative";
-   private static final Map<String, Integer> k = ag.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("key.categories.movement", 1);
-      $$0.put("key.categories.gameplay", 2);
-      $$0.put("key.categories.inventory", 3);
-      $$0.put("key.categories.creative", 4);
-      $$0.put("key.categories.multiplayer", 5);
-      $$0.put("key.categories.ui", 6);
-      $$0.put("key.categories.misc", 7);
-   });
-   private final String l;
-   private final fiu.a m;
-   private final String n;
-   private fiu.a o;
-   private boolean p;
-   private int q;
+public class fpr {
+   private static final String a = "realms_persistence.json";
+   private static final fmv b = new fmv();
+   private static final Logger c = LogUtils.getLogger();
 
-   public static void a(fiu.a $$0) {
-      fpr $$1 = i.get($$0);
-      if ($$1 != null) {
-         $$1.q++;
-      }
+   public fpr.a a() {
+      return b();
    }
 
-   public static void a(fiu.a $$0, boolean $$1) {
-      fpr $$2 = i.get($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
+   public void a(fpr.a $$0) {
+      b($$0);
    }
 
-   public static void a() {
-      for (fpr $$0 : h.values()) {
-         if ($$0.o.a() == fiu.b.a && $$0.o.b() != fiu.bv.b()) {
-            $$0.a(fiu.a(fpt.Q().aO().h(), $$0.o.b()));
+   public static fpr.a b() {
+      Path $$0 = c();
+
+      try {
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         fpr.a $$2 = b.a($$1, fpr.a.class);
+         if ($$2 != null) {
+            return $$2;
          }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
+      }
+
+      return new fpr.a();
+   }
+
+   public static void b(fpr.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
       }
    }
 
-   public static void b() {
-      for (fpr $$0 : h.values()) {
-         $$0.n();
-      }
+   private static Path c() {
+      return frd.Q().q.toPath().resolve("realms_persistence.json");
    }
 
-   public static void c() {
-      for (fpr $$0 : h.values()) {
-         if ($$0 instanceof fqe $$1) {
-            $$1.n();
-         }
-      }
-   }
-
-   public static void d() {
-      i.clear();
-
-      for (fpr $$0 : h.values()) {
-         i.put($$0.o, $$0);
-      }
-   }
-
-   public fpr(String $$0, int $$1, String $$2) {
-      this($$0, fiu.b.a, $$1, $$2);
-   }
-
-   public fpr(String $$0, fiu.b $$1, int $$2, String $$3) {
-      this.l = $$0;
-      this.o = $$1.a($$2);
-      this.m = this.o;
-      this.n = $$3;
-      h.put($$0, this);
-      i.put(this.o, this);
-      j.add($$3);
-   }
-
-   public boolean e() {
-      return this.p;
-   }
-
-   public String f() {
-      return this.n;
-   }
-
-   public boolean g() {
-      if (this.q == 0) {
-         return false;
-      } else {
-         this.q--;
-         return true;
-      }
-   }
-
-   private void n() {
-      this.q = 0;
-      this.a(false);
-   }
-
-   public String h() {
-      return this.l;
-   }
-
-   public fiu.a i() {
-      return this.m;
-   }
-
-   public void b(fiu.a $$0) {
-      this.o = $$0;
-   }
-
-   public int a(fpr $$0) {
-      return this.n.equals($$0.n) ? hky.a(this.l).compareTo(hky.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
-   }
-
-   public static Supplier<wy> a(String $$0) {
-      fpr $$1 = h.get($$0);
-      return $$1 == null ? () -> wy.c($$0) : $$1::k;
-   }
-
-   public boolean b(fpr $$0) {
-      return this.o.equals($$0.o);
-   }
-
-   public boolean j() {
-      return this.o.equals(fiu.bv);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return $$0 == fiu.bv.b() ? this.o.a() == fiu.b.b && this.o.b() == $$1 : this.o.a() == fiu.b.a && this.o.b() == $$0;
-   }
-
-   public boolean a(int $$0) {
-      return this.o.a() == fiu.b.c && this.o.b() == $$0;
-   }
-
-   public wy k() {
-      return this.o.d();
-   }
-
-   public boolean l() {
-      return this.o.equals(this.m);
-   }
-
-   public String m() {
-      return this.o.c();
-   }
-
-   public void a(boolean $$0) {
-      this.p = $$0;
-   }
-
-   @Nullable
-   public static fpr b(String $$0) {
-      return h.get($$0);
+   public static class a implements fnm {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

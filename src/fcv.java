@@ -1,32 +1,35 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record fcv(Optional<bn> b) implements fdc {
-   public static final MapCodec<fcv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bn.a.optionalFieldOf("predicate").forGetter(fcv::c)).apply($$0, fcv::new));
+public class fcv extends fbu {
+   public static final MapCodec<fcv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(ddi.h.fieldOf("pages").forGetter($$0x -> $$0x.b), fbt.a.forGetter($$0x -> $$0x.c))).apply($$0, fcv::new)
+   );
+   private final List<ask<xa>> b;
+   private final fbt c;
 
-   @Override
-   public fdd b() {
-      return fde.m;
+   protected fcv(List<fdq> $$0, List<ask<xa>> $$1, fbt $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public Set<bax<?>> a() {
-      return Set.of(fcn.f, fcn.c);
+   protected czy a(czy $$0, fah $$1) {
+      $$0.a(kk.V, ddi.a, this::a);
+      return $$0;
    }
 
-   public boolean a(ezt $$0) {
-      bux $$1 = $$0.c(fcn.c);
-      ffc $$2 = $$0.c(fcn.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   @VisibleForTesting
+   public ddi a(ddi $$0) {
+      List<ask<xa>> $$1 = this.c.a($$0.a(), this.b);
+      return $$0.b($$1);
    }
 
-   public static fdc.a a(bn.a $$0) {
-      return () -> new fcv(Optional.of($$0.b()));
-   }
-
-   public Optional<bn> c() {
-      return this.b;
+   @Override
+   public fbw<fcv> b() {
+      return fbx.N;
    }
 }

@@ -1,20 +1,14 @@
-public record ach(int b) implements zf<abu> {
-   public static final yw<vu, ach> a = zf.a(ach::a, ach::new);
-
-   private ach(vu $$0) {
-      this($$0.l());
-   }
-
-   private void a(vu $$0) {
-      $$0.c(this.b);
+public class ach extends zf<abw> {
+   public ach(Iterable<zh<? super abw>> $$0) {
+      super($$0);
    }
 
    @Override
-   public zh<ach> a() {
-      return agn.m;
+   public zj<ach> a() {
+      return agp.a;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 }

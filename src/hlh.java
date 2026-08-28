@@ -1,14 +1,17 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public record hlh(hli d) {
-   public static final hlh a = new hlh(hli.b);
-   public static final Codec<hlh> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(hli.a.optionalFieldOf("scaling", hli.b).forGetter(hlh::a)).apply($$0, hlh::new)
-   );
-   public static final auc<hlh> c = new auc<>("gui", b);
+public class hlh {
+   private static final ayw.b<ali, MapCodec<? extends hlf>> c = new ayw.b<>();
+   public static final Codec<hlf> a = c.a(ali.a).dispatch(hlf::a, $$0 -> $$0);
+   public static final Codec<List<hlf>> b = a.listOf().fieldOf("sources").codec();
 
-   public hli a() {
-      return this.d;
+   public static void a() {
+      c.a(ali.b("single"), hlm.b);
+      c.a(ali.b("directory"), hlj.b);
+      c.a(ali.b("filter"), hln.b);
+      c.a(ali.b("unstitch"), hlo.b);
+      c.a(ali.b("paletted_permutations"), hll.c);
    }
 }

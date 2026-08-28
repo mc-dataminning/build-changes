@@ -1,47 +1,39 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public record fcr(jf<dga> b, List<Float> c) implements fdc {
-   public static final MapCodec<fcr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dga.c.fieldOf("enchantment").forGetter(fcr::c), ayu.b(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(fcr::d)).apply($$0, fcr::new)
-   );
+public class fcr extends fbu {
+   static final MapCodec<fcr> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(fen.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, fcr::new));
+   private final fem b;
 
-   @Override
-   public fdd b() {
-      return fde.k;
+   private fcr(List<fdq> $$0, fem $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<bax<?>> a() {
-      return Set.of(fcn.i);
+   public Set<baz<?>> a() {
+      return this.b.a();
    }
 
-   public boolean a(ezt $$0) {
-      czn $$1 = $$0.c(fcn.i);
-      int $$2 = $$1 != null ? dgc.a(this.b, $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
+   @Override
+   public fbw<fcr> b() {
+      return fbx.Q;
    }
 
-   public static fdc.a a(jf<dga> $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
-      }
-
-      return () -> new fcr($$0, $$2);
+   @Override
+   public czy a(czy $$0, fah $$1) {
+      int $$2 = azo.a(this.b.a($$1), 0, 4);
+      $$0.b(kk.ad, new dcw($$2));
+      return $$0;
    }
 
-   public jf<dga> c() {
+   public fem c() {
       return this.b;
    }
 
-   public List<Float> d() {
-      return this.c;
+   public static fbu.a<?> a(fem $$0) {
+      return a($$1 -> new fcr($$1, $$0));
    }
 }

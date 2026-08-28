@@ -1,66 +1,73 @@
-public class gnk extends goh {
-   gnk(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
+
+public final class gnk {
+   private static final int a = 1024;
+   private final gnb b;
+   private final gnh c;
+   private final gmw d;
+   @Nullable
+   private gng e;
+
+   public gnk(gnb $$0, gnh $$1, gmw $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public god b() {
-      return god.b;
+   public static gnk a(gnh $$0, UserApiService $$1) {
+      gmw $$2 = new gmw(1024);
+      gnb $$3 = gnb.a($$0, $$1);
+      return new gnk($$3, $$0, $$2);
    }
 
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
-
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1 * 0.5F);
-   }
-
-   @Override
-   public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = azm.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
-      }
-
-      return $$3 | $$4 << 16;
-   }
-
-   public static class a implements goc<mc> {
-      private final gou a;
-
-      public a(gou $$0) {
-         this.a = $$0;
-      }
-
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gnk $$8 = new gnk($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+   public void a(frd $$0, gad $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         gng $$4 = this.e.b();
+         $$0.a(
+            new fzb(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               xa.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               xa.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               xa.c("gui.abuseReport.draft.edit"),
+               xa.c("gui.abuseReport.draft.discard")
+            )
+         );
+      } else {
+         $$2.run();
       }
    }
 
-   public static class b implements goc<mc> {
-      private final gou a;
+   public gnb a() {
+      return this.b;
+   }
 
-      public b(gou $$0) {
-         this.a = $$0;
-      }
+   public gmw b() {
+      return this.d;
+   }
 
-      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gnk $$8 = new gnk($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.d(0.5F);
-         return $$8;
-      }
+   public boolean a(gnh $$0) {
+      return Objects.equals(this.c, $$0);
+   }
+
+   public void a(@Nullable gng $$0) {
+      this.e = $$0;
+   }
+
+   public boolean c() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

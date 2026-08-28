@@ -1,142 +1,117 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.function.IntFunction;
 
-public class dtw extends dwd implements dmu, duc {
-   public static final MapCodec<dtw> a = b(dtw::new);
-   public static final int b = 4;
-   public static final ebt c = ebj.aV;
-   public static final ebk d = ebj.I;
-   private static final ffw e = dmr.b(4.0, 0.0, 6.0);
-   private static final ffw f = dmr.b(10.0, 0.0, 6.0);
-   private static final ffw g = dmr.b(12.0, 0.0, 6.0);
-   private static final ffw h = dmr.b(12.0, 0.0, 7.0);
+public enum dtw implements bam {
+   a(0, "none", h.a),
+   b(1, "clockwise_90", h.u),
+   c(2, "180", h.c),
+   d(3, "counterclockwise_90", h.v);
 
-   @Override
-   public MapCodec<dtw> a() {
-      return a;
+   public static final IntFunction<dtw> e = aye.a(dtw::b, values(), aye.a.b);
+   public static final Codec<dtw> f = bam.a(dtw::values);
+   public static final yy<ByteBuf, dtw> g = yw.a(e, dtw::b);
+   @Deprecated
+   public static final Codec<dtw> h = ayw.c(dtw::valueOf);
+   private final int i;
+   private final String j;
+   private final h k;
+
+   private dtw(final int $$0, final String $$1, final h $$2) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
    }
 
-   protected dtw(eas.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(c, Integer.valueOf(1)).b(d, Boolean.valueOf(true)));
-   }
-
-   @Nullable
-   @Override
-   public eat a(ddg $$0) {
-      eat $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         return $$1.b(c, Integer.valueOf(Math.min(4, $$1.c(c) + 1)));
-      } else {
-         exa $$2 = $$0.q().b_($$0.a());
-         boolean $$3 = $$2.a() == exb.c;
-         return super.a($$0).b(d, Boolean.valueOf($$3));
-      }
-   }
-
-   public static boolean o(eat $$0) {
-      return !$$0.c(d);
-   }
-
-   @Override
-   protected boolean b(eat $$0, diq $$1, iv $$2) {
-      return !$$0.g($$1, $$2).a(jb.b).c() || $$0.c($$1, $$2, jb.b);
-   }
-
-   @Override
-   protected boolean a(eat $$0, djp $$1, iv $$2) {
-      iv $$3 = $$2.e();
-      return this.b($$1.a_($$3), $$1, $$3);
-   }
-
-   @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      if (!$$0.a($$1, $$3)) {
-         return dmt.a.m();
-      } else {
-         if ($$0.c(d)) {
-            $$2.a($$3, exb.c, exb.c.a($$1));
+   public dtw a(dtw $$0) {
+      return switch ($$0) {
+         case b -> {
+            switch (this) {
+               case a:
+                  yield b;
+               case b:
+                  yield c;
+               case c:
+                  yield d;
+               case d:
+                  yield a;
+               default:
+                  throw new MatchException(null, null);
+            }
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-   }
-
-   @Override
-   protected boolean a(eat $$0, ddg $$1) {
-      return !$$1.h() && $$1.n().a(this.h()) && $$0.c(c) < 4 ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return switch ($$0.c(c)) {
-         case 2 -> f;
-         case 3 -> g;
-         case 4 -> h;
-         default -> e;
+         case c -> {
+            switch (this) {
+               case a:
+                  yield c;
+               case b:
+                  yield d;
+               case c:
+                  yield a;
+               case d:
+                  yield b;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case d -> {
+            switch (this) {
+               case a:
+                  yield d;
+               case b:
+                  yield a;
+               case c:
+                  yield b;
+               case d:
+                  yield c;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         default -> this;
       };
    }
 
-   @Override
-   protected exa b_(eat $$0) {
-      return $$0.c(d) ? exb.c.a(false) : super.b_($$0);
+   public h a() {
+      return this.k;
    }
 
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(c, d);
-   }
-
-   @Override
-   public boolean a(djp $$0, iv $$1, eat $$2) {
-      return !o($$2) && $$0.a_($$1.e()).a(axc.at);
-   }
-
-   @Override
-   public boolean a(djm $$0, azv $$1, iv $$2, eat $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iv $$2, eat $$3) {
-      int $$4 = 5;
-      int $$5 = 1;
-      int $$6 = 2;
-      int $$7 = 0;
-      int $$8 = $$2.u() - 2;
-      int $$9 = 0;
-
-      for (int $$10 = 0; $$10 < 5; $$10++) {
-         for (int $$11 = 0; $$11 < $$5; $$11++) {
-            int $$12 = 2 + $$2.v() - 1;
-
-            for (int $$13 = $$12 - 2; $$13 < $$12; $$13++) {
-               iv $$14 = new iv($$8 + $$10, $$13, $$2.w() - $$9 + $$11);
-               if ($$14 != $$2 && $$1.a(6) == 0 && $$0.a_($$14).a(dmt.J)) {
-                  eat $$15 = $$0.a_($$14.e());
-                  if ($$15.a(axc.at)) {
-                     $$0.a($$14, dmt.nB.m().b(c, Integer.valueOf($$1.a(4) + 1)), 3);
-                  }
-               }
-            }
-         }
-
-         if ($$7 < 2) {
-            $$5 += 2;
-            $$9++;
-         } else {
-            $$5 -= 2;
-            $$9--;
-         }
-
-         $$7++;
+   public jb a(jb $$0) {
+      if ($$0.o() == jb.a.b) {
+         return $$0;
+      } else {
+         return switch (this) {
+            case b -> $$0.h();
+            case c -> $$0.g();
+            case d -> $$0.i();
+            default -> $$0;
+         };
       }
+   }
 
-      $$0.a($$2, $$3.b(c, Integer.valueOf(4)), 2);
+   public int a(int $$0, int $$1) {
+      return switch (this) {
+         case b -> ($$0 + $$1 / 4) % $$1;
+         case c -> ($$0 + $$1 / 2) % $$1;
+         case d -> ($$0 + $$1 * 3 / 4) % $$1;
+         default -> $$0;
+      };
+   }
+
+   public static dtw a(azx $$0) {
+      return ag.a(values(), $$0);
+   }
+
+   public static List<dtw> b(azx $$0) {
+      return ag.b(values(), $$0);
    }
 
    @Override
-   protected boolean a(eat $$0, exp $$1) {
-      return false;
+   public String c() {
+      return this.j;
+   }
+
+   private int b() {
+      return this.i;
    }
 }

@@ -1,58 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class drg extends dwd implements dty {
-   public static final MapCodec<drg> a = b(drg::new);
-   public static final ebr<jb> b = ebj.T;
-   private final Function<eat, ffw> c;
-
-   public drg(eas.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, jb.c).b(this.c(), Integer.valueOf(1)));
-      this.c = this.q();
-   }
-
-   private Function<eat, ffw> q() {
-      return this.a(this.a(b, this.c()));
-   }
+public class drg extends dnc {
+   public static final MapCodec<drg> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(mg.e.q().fieldOf("host").forGetter(drg::b), t()).apply($$0, drg::new));
+   private final dnc b;
+   private static final Map<dnc, dnc> c = Maps.newIdentityHashMap();
+   private static final Map<ebe, ebe> d = Maps.newIdentityHashMap();
+   private static final Map<ebe, ebe> e = Maps.newIdentityHashMap();
 
    @Override
-   protected MapCodec<drg> a() {
+   public MapCodec<? extends drg> a() {
       return a;
    }
 
-   @Override
-   public eat a(eat $$0, dtl $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   public drg(dnc $$0, ebd.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
+   }
+
+   public dnc b() {
+      return this.b;
+   }
+
+   public static boolean o(ebe $$0) {
+      return c.containsKey($$0.b());
+   }
+
+   private void a(ars $$0, iv $$1) {
+      cpg $$2 = bxc.bf.a($$0, bxb.k);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.U();
+      }
    }
 
    @Override
-   public eat a(eat $$0, dru $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected void a(ebe $$0, ars $$1, iv $$2, czy $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.O().c(djt.i) && !dgn.a($$3, axg.t)) {
+         this.a($$1, $$2);
+      }
    }
 
-   @Override
-   public boolean a(eat $$0, ddg $$1) {
-      return this.a($$0, $$1, this.c()) ? true : super.a($$0, $$1);
+   public static ebe p(ebe $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).m());
    }
 
-   @Override
-   protected boolean a(eat $$0, djp $$1, iv $$2) {
-      return a($$1, $$2.e(), jb.b);
+   public ebe q(ebe $$0) {
+      return a(e, $$0, () -> this.b().m());
    }
 
-   @Override
-   public ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return this.c.apply($$0);
-   }
+   private static ebe a(Map<ebe, ebe> $$0, ebe $$1, Supplier<ebe> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         ebe $$2x = $$2.get();
 
-   @Override
-   public eat a(ddg $$0) {
-      return this.a($$0, this, this.c(), b);
-   }
+         for (ech $$3 : $$1x.F()) {
+            $$2x = $$2x.b($$3) ? $$2x.b($$3, $$1x.c($$3)) : $$2x;
+         }
 
-   @Override
-   protected void a(eau.a<dmr, eat> $$0) {
-      $$0.a(b, this.c());
+         return $$2x;
+      });
    }
 }

@@ -1,181 +1,94 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.function.IntFunction;
 
-public class bxd extends bwi implements bwb, byg {
-   private static final akj<Float> a = akn.a(bxd.class, akl.d);
-   private static final akj<Float> b = akn.a(bxd.class, akl.d);
-   private static final akj<Boolean> c = akn.a(bxd.class, akl.k);
-   private static final String d = "width";
-   private static final String e = "height";
-   private static final String f = "attack";
-   private static final String g = "interaction";
-   private static final String h = "response";
-   @Nullable
-   private bxd.a i;
-   @Nullable
-   private bxd.a j;
+public enum bxd implements bam {
+   a(bxd.a.a, 0, 0, "mainhand"),
+   b(bxd.a.a, 1, 5, "offhand"),
+   c(bxd.a.b, 0, 1, 1, "feet"),
+   d(bxd.a.b, 1, 1, 2, "legs"),
+   e(bxd.a.b, 2, 1, 3, "chest"),
+   f(bxd.a.b, 3, 1, 4, "head"),
+   g(bxd.a.c, 0, 1, 6, "body"),
+   h(bxd.a.d, 0, 1, 7, "saddle");
 
-   public bxd(bwr<?> $$0, djm $$1) {
-      super($$0, $$1);
-      this.ad = true;
+   public static final int i = 0;
+   public static final List<bxd> j = List.of(values());
+   public static final IntFunction<bxd> k = aye.a($$0 -> $$0.q, values(), aye.a.a);
+   public static final bam.a<bxd> l = bam.a(bxd::values);
+   public static final yy<ByteBuf, bxd> m = yw.a(k, $$0 -> $$0.q);
+   private final bxd.a n;
+   private final int o;
+   private final int p;
+   private final int q;
+   private final String r;
+
+   private bxd(final bxd.a $$0, final int $$1, final int $$2, final int $$3, final String $$4) {
+      this.n = $$0;
+      this.o = $$1;
+      this.p = $$2;
+      this.q = $$3;
+      this.r = $$4;
+   }
+
+   private bxd(final bxd.a $$0, final int $$1, final int $$2, final String $$3) {
+      this($$0, $$1, 0, $$2, $$3);
+   }
+
+   public bxd.a a() {
+      return this.n;
+   }
+
+   public int b() {
+      return this.o;
+   }
+
+   public int a(int $$0) {
+      return $$0 + this.o;
+   }
+
+   public czy a(czy $$0) {
+      return this.p > 0 ? $$0.a(this.p) : $$0;
+   }
+
+   public int d() {
+      return this.q;
+   }
+
+   public int b(int $$0) {
+      return this.q + $$0;
+   }
+
+   public String e() {
+      return this.r;
+   }
+
+   public boolean f() {
+      return this.n == bxd.a.b || this.n == bxd.a.c;
    }
 
    @Override
-   protected void a(akn.a $$0) {
-      $$0.a(a, 1.0F);
-      $$0.a(b, 1.0F);
-      $$0.a(c, false);
+   public String c() {
+      return this.r;
    }
 
-   @Override
-   protected void a(tz $$0) {
-      if ($$0.b("width", 99)) {
-         this.a($$0.h("width"));
-      }
-
-      if ($$0.b("height", 99)) {
-         this.b($$0.h("height"));
-      }
-
-      this.i = $$0.<bxd.a>a("attack", bxd.a.a).orElse(null);
-      this.j = $$0.<bxd.a>a("interaction", bxd.a.a).orElse(null);
-      this.a($$0.o("response"));
-      this.a(this.au());
+   public boolean g() {
+      return this.n != bxd.a.d;
    }
 
-   @Override
-   protected void b(tz $$0) {
-      $$0.a("width", this.g());
-      $$0.a("height", this.j());
-      $$0.b("attack", bxd.a.a, this.i);
-      $$0.b("interaction", bxd.a.a, this.j);
-      $$0.a("response", this.m());
-   }
-
-   @Override
-   public void a(akj<?> $$0) {
-      super.a($$0);
-      if (b.equals($$0) || a.equals($$0)) {
-         this.i_();
-      }
-   }
-
-   @Override
-   public boolean bD() {
-      return false;
-   }
-
-   @Override
-   public boolean bE() {
-      return true;
-   }
-
-   @Override
-   public exf j_() {
-      return exf.d;
-   }
-
-   @Override
-   public boolean g_() {
-      return true;
-   }
-
-   @Override
-   public boolean v(bwi $$0) {
-      if ($$0 instanceof crm $$1) {
-         this.i = new bxd.a($$1.cF(), this.dU().ae());
-         if ($$1 instanceof arr $$2) {
-            aq.h.a($$2, this, $$1.dV().p(), 1.0F, 1.0F, false);
-         }
-
-         return !this.m();
+   public static bxd a(String $$0) {
+      bxd $$1 = l.a($$0);
+      if ($$1 != null) {
+         return $$1;
       } else {
-         return false;
+         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
       }
    }
 
-   @Override
-   public final boolean a(arq $$0, bux $$1, float $$2) {
-      return false;
-   }
-
-   @Override
-   public bug a(crm $$0, buf $$1) {
-      if (this.dU().C) {
-         return this.m() ? bug.a : bug.c;
-      } else {
-         this.j = new bxd.a($$0.cF(), this.dU().ae());
-         return bug.c;
-      }
-   }
-
-   @Override
-   public void h() {
-   }
-
-   @Nullable
-   @Override
-   public bxj aj() {
-      return this.i != null ? this.dU().a(this.i.a()) : null;
-   }
-
-   @Nullable
-   @Override
-   public bxj f() {
-      return this.j != null ? this.dU().a(this.j.a()) : null;
-   }
-
-   private void a(float $$0) {
-      this.al.a(a, $$0);
-   }
-
-   private float g() {
-      return this.al.a(a);
-   }
-
-   private void b(float $$0) {
-      this.al.a(b, $$0);
-   }
-
-   private float j() {
-      return this.al.a(b);
-   }
-
-   private void a(boolean $$0) {
-      this.al.a(c, $$0);
-   }
-
-   private boolean m() {
-      return this.al.a(c);
-   }
-
-   private bwl n() {
-      return bwl.b(this.g(), this.j());
-   }
-
-   @Override
-   public bwl a(bxv $$0) {
-      return this.n();
-   }
-
-   @Override
-   protected fex c(ffc $$0) {
-      return this.n().a($$0);
-   }
-
-   static record a(UUID b, long c) {
-      public static final Codec<bxd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(jz.a.fieldOf("player").forGetter(bxd.a::a), Codec.LONG.fieldOf("timestamp").forGetter(bxd.a::b)).apply($$0, bxd.a::new)
-      );
-
-      public UUID a() {
-         return this.b;
-      }
-
-      public long b() {
-         return this.c;
-      }
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

@@ -1,41 +1,15 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-
-public enum czl implements bak {
-   a(0, "none"),
-   b(1, "thirdperson_lefthand"),
-   c(2, "thirdperson_righthand"),
-   d(3, "firstperson_lefthand"),
-   e(4, "firstperson_righthand"),
-   f(5, "head"),
-   g(6, "gui"),
-   h(7, "ground"),
-   i(8, "fixed");
-
-   public static final Codec<czl> j = bak.a(czl::values);
-   public static final IntFunction<czl> k = ayc.a(czl::a, values(), ayc.a.a);
-   private final byte l;
-   private final String m;
-
-   private czl(final int $$0, final String $$1) {
-      this.m = $$1;
-      this.l = (byte)$$0;
+public class czl extends czu implements dba {
+   public czl(czu.a $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.m;
-   }
-
-   public byte a() {
-      return this.l;
-   }
-
-   public boolean b() {
-      return this == d || this == e;
-   }
-
-   public boolean d() {
-      return this == d || this == b;
+   public boolean a(djx $$0, dzq $$1, boolean $$2, crx $$3) {
+      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
+         $$0.a(null, $$1.aB_(), awp.le, awq.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

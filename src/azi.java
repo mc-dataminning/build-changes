@@ -1,64 +1,15 @@
-import java.io.Serializable;
-import java.util.Deque;
-import java.util.List;
-import java.util.RandomAccess;
-import javax.annotation.Nullable;
+import com.google.common.base.Suppliers;
+import java.util.function.Supplier;
 
-public interface azi<T> extends Serializable, Cloneable, Deque<T>, List<T>, RandomAccess {
-   azi<T> b();
+@Deprecated
+public class azi<T> {
+   private final Supplier<T> a;
 
-   @Override
-   T getFirst();
-
-   @Override
-   T getLast();
-
-   @Override
-   void addFirst(T var1);
-
-   @Override
-   void addLast(T var1);
-
-   @Override
-   T removeFirst();
-
-   @Override
-   T removeLast();
-
-   @Override
-   default boolean offer(T $$0) {
-      return this.offerLast($$0);
+   public azi(Supplier<T> $$0) {
+      this.a = Suppliers.memoize($$0::get);
    }
 
-   @Override
-   default T remove() {
-      return this.removeFirst();
-   }
-
-   @Nullable
-   @Override
-   default T poll() {
-      return this.pollFirst();
-   }
-
-   @Override
-   default T element() {
-      return this.getFirst();
-   }
-
-   @Nullable
-   @Override
-   default T peek() {
-      return this.peekFirst();
-   }
-
-   @Override
-   default void push(T $$0) {
-      this.addFirst($$0);
-   }
-
-   @Override
-   default T pop() {
-      return this.removeFirst();
+   public T a() {
+      return this.a.get();
    }
 }

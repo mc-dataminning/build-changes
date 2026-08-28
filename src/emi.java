@@ -1,21 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emi extends elu {
-   public static final Codec<emi> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eod.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               ayu.m.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               ayu.m.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, emi::new)
+public class emi implements emp {
+   public static final Codec<emi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(btw.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), btw.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, emi::new)
    );
-   public final int d;
-   public final int e;
+   private final btw b;
+   private final btw c;
 
-   public emi(eod $$0, int $$1, int $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   public emi(btw $$0, btw $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public btw a() {
+      return this.b;
+   }
+
+   public btw b() {
+      return this.c;
    }
 }

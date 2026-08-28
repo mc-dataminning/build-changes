@@ -1,51 +1,48 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class eof extends eoh {
-   public static final MapCodec<eof> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               aze.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               ewd.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               ayu.o.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, eof::new)
+public class eof extends eob {
+   public static final MapCodec<eof> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(btw.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, eof::new)
    );
-   private final aze<Integer> i;
-   private final ewd.a j;
-   private final float k;
-   private final ewd l;
+   private final btw b;
 
-   public eof(aze<Integer> $$0, ewd.a $$1, float $$2, long $$3, ewd.a $$4, float $$5, List<eat> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = ewd.b(new ehr(new egt($$3)), $$1);
+   public eof(btw $$0, btw $$1, btw $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected eoe<?> a() {
-      return eoe.e;
+   protected eoc<?> a() {
+      return eoc.c;
    }
 
    @Override
-   public eat a(azv $$0, iv $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)azm.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<eat> $$4 = Lists.newArrayListWithCapacity($$3);
+   protected void a(dkd $$0, eob.b $$1, azx $$2, enl $$3, int $$4, eob.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = 0;
 
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
+      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
+         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
+            $$9--;
+         } else if ($$9 < $$7 + $$5.b()) {
+            $$9++;
+         }
       }
-
-      return this.a($$4, $$1, (double)this.e);
    }
 
-   protected double a(iv $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   @Override
+   public int a(azx $$0, int $$1) {
+      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
+   }
+
+   @Override
+   public int a(azx $$0, int $$1, enl $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azx $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

@@ -1,96 +1,71 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
 import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 
-public class epl extends epj {
-   public static final MapCodec<epl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  btl.e.fieldOf("extra_branch_steps").forGetter($$0x -> $$0x.b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter($$0x -> $$0x.h),
-                  btl.d.fieldOf("extra_branch_length").forGetter($$0x -> $$0x.i),
-                  ju.a(mh.i).fieldOf("can_grow_through").forGetter($$0x -> $$0x.j)
-               )
-            )
-            .apply($$0, epl::new)
-   );
-   private final btl b;
-   private final float h;
-   private final btl i;
-   private final jj<dmr> j;
+public abstract class epl {
+   public static final Codec<epl> h = mg.X.q().dispatch(epl::a, epm::a);
 
-   public epl(int $$0, int $$1, int $$2, btl $$3, float $$4, btl $$5, jj<dmr> $$6) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-   }
+   protected abstract epm<?> a();
 
-   @Override
-   protected epk<?> a() {
-      return epk.h;
-   }
+   public abstract void a(epl.a var1);
 
-   @Override
-   public List<eno.a> a(djs $$0, BiConsumer<iv, eat> $$1, azv $$2, int $$3, iv $$4, emy $$5) {
-      List<eno.a> $$6 = Lists.newArrayList();
-      iv.a $$7 = new iv.a();
+   public static final class a {
+      private final dkd a;
+      private final BiConsumer<iv, ebe> b;
+      private final azx c;
+      private final ObjectArrayList<iv> d;
+      private final ObjectArrayList<iv> e;
+      private final ObjectArrayList<iv> f;
 
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         int $$9 = $$4.v() + $$8;
-         if (this.b($$0, $$1, $$2, $$7.d($$4.u(), $$9, $$4.w()), $$5) && $$8 < $$3 - 1 && $$2.i() < this.h) {
-            jb $$10 = jb.c.a.a($$2);
-            int $$11 = this.i.a($$2);
-            int $$12 = Math.max(0, $$11 - this.i.a($$2) - 1);
-            int $$13 = this.b.a($$2);
-            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$9, $$10, $$12, $$13);
-         }
-
-         if ($$8 == $$3 - 1) {
-            $$6.add(new eno.a($$7.d($$4.u(), $$9 + 1, $$4.w()), 0, false));
-         }
+      public a(dkd $$0, BiConsumer<iv, ebe> $$1, azx $$2, Set<iv> $$3, Set<iv> $$4, Set<iv> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(ka::v));
+         this.e.sort(Comparator.comparingInt(ka::v));
+         this.f.sort(Comparator.comparingInt(ka::v));
       }
 
-      return $$6;
-   }
-
-   private void a(djs $$0, BiConsumer<iv, eat> $$1, azv $$2, int $$3, emy $$4, List<eno.a> $$5, iv.a $$6, int $$7, jb $$8, int $$9, int $$10) {
-      int $$11 = $$7 + $$9;
-      int $$12 = $$6.u();
-      int $$13 = $$6.w();
-      int $$14 = $$9;
-
-      while ($$14 < $$3 && $$10 > 0) {
-         if ($$14 >= 1) {
-            int $$15 = $$7 + $$14;
-            $$12 += $$8.j();
-            $$13 += $$8.l();
-            $$11 = $$15;
-            if (this.b($$0, $$1, $$2, $$6.d($$12, $$15, $$13), $$4)) {
-               $$11 = $$15 + 1;
-            }
-
-            $$5.add(new eno.a($$6.j(), 0, false));
-         }
-
-         $$14++;
-         $$10--;
+      public void a(iv $$0, ebv $$1) {
+         this.a($$0, dne.fx.m().b($$1, Boolean.valueOf(true)));
       }
 
-      if ($$11 - $$7 > 1) {
-         iv $$16 = new iv($$12, $$11, $$13);
-         $$5.add(new eno.a($$16, 0, false));
-         $$5.add(new eno.a($$16.c(2), 0, false));
+      public void a(iv $$0, ebe $$1) {
+         this.b.accept($$0, $$1);
       }
-   }
 
-   @Override
-   protected boolean a(djs $$0, iv $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.j));
+      public boolean a(iv $$0) {
+         return this.a.a($$0, ebd.a::l);
+      }
+
+      public boolean a(iv $$0, Predicate<ebe> $$1) {
+         return this.a.a($$0, $$1);
+      }
+
+      public dkd a() {
+         return this.a;
+      }
+
+      public azx b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<iv> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<iv> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<iv> e() {
+         return this.f;
+      }
    }
 }

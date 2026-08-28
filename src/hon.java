@@ -1,58 +1,44 @@
-import java.io.BufferedInputStream;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+public class hon extends hog {
+   public static final int n = 20;
+   private final gqz o;
+   private int p;
 
-public class hon implements hoh {
-   private final hon.a a;
-   private hoh b;
-   private final BufferedInputStream c;
-
-   public hon(hon.a $$0, InputStream $$1) throws IOException {
-      this.a = $$0;
-      this.c = new BufferedInputStream($$1);
-      this.c.mark(Integer.MAX_VALUE);
-      this.b = $$0.create(new hon.b(this.c));
+   public hon(gqz $$0) {
+      super(awp.iu, awq.h, hox.t());
+      this.o = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.1F;
    }
 
    @Override
-   public AudioFormat a() {
-      return this.b.a();
-   }
+   public void q() {
+      this.p++;
+      if (!this.o.dQ() && (this.p <= 20 || this.o.fJ())) {
+         this.f = (double)((float)this.o.dA());
+         this.g = (double)((float)this.o.dC());
+         this.h = (double)((float)this.o.dG());
+         float $$0 = (float)this.o.dy().h();
+         if ((double)$$0 >= 1.0E-7) {
+            this.d = azo.a($$0 / 4.0F, 0.0F, 1.0F);
+         } else {
+            this.d = 0.0F;
+         }
 
-   @Override
-   public ByteBuffer a(int $$0) throws IOException {
-      ByteBuffer $$1 = this.b.a($$0);
-      if (!$$1.hasRemaining()) {
-         this.b.close();
-         this.c.reset();
-         this.b = this.a.create(new hon.b(this.c));
-         $$1 = this.b.a($$0);
-      }
+         if (this.p < 20) {
+            this.d = 0.0F;
+         } else if (this.p < 40) {
+            this.d = this.d * ((float)(this.p - 20) / 20.0F);
+         }
 
-      return $$1;
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.b.close();
-      this.c.close();
-   }
-
-   @FunctionalInterface
-   public interface a {
-      hoh create(InputStream var1) throws IOException;
-   }
-
-   static class b extends FilterInputStream {
-      b(InputStream $$0) {
-         super($$0);
-      }
-
-      @Override
-      public void close() {
+         float $$1 = 0.8F;
+         if (this.d > 0.8F) {
+            this.e = 1.0F + (this.d - 0.8F);
+         } else {
+            this.e = 1.0F;
+         }
+      } else {
+         this.n();
       }
    }
 }

@@ -1,58 +1,103 @@
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record gfk(boolean b, float c, float d, float e, float f, float g, Set<String> h) implements gkc {
-   public gfk(Set<String> $$0) {
-      this(false, 5.0F, 2.0F, $$0);
+public class gfk extends gad {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ToIntFunction<alh<djx>> b = ag.a(new Reference2IntOpenHashMap(), $$0 -> {
+      $$0.put(djx.i, -13408734);
+      $$0.put(djx.j, -10075085);
+      $$0.put(djx.k, -8943531);
+      $$0.defaultReturnValue(-2236963);
+   });
+   private final BooleanConsumer c;
+   private final buf d;
+
+   @Nullable
+   public static gfk a(frd $$0, BooleanConsumer $$1, DataFixer $$2, ezv.c $$3, boolean $$4) {
+      try {
+         gfr $$5 = $$0.x();
+         aup $$6 = aus.a($$3);
+
+         gfk var10;
+         try (amh $$7 = $$5.a($$3.h(), false, $$6)) {
+            fab $$8 = $$7.d();
+            jt.b $$9 = $$7.c().a();
+            $$3.a($$9, $$8);
+            var10 = new gfk($$1, $$2, $$3, $$8, $$4, $$9);
+         }
+
+         return var10;
+      } catch (Exception var13) {
+         a.warn("Failed to load datapacks, can't optimize world", var13);
+         return null;
+      }
    }
 
-   public gfk(boolean $$0, float $$1, float $$2, Set<String> $$3) {
-      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F, $$3);
+   private gfk(BooleanConsumer $$0, DataFixer $$1, ezv.c $$2, fab $$3, boolean $$4, jt $$5) {
+      super(xa.a("optimizeWorld.title", $$3.J().a()));
+      this.c = $$0;
+      this.d = new buf($$2, $$1, $$3, $$5, $$4, false);
    }
 
    @Override
-   public gkb apply(gkb $$0) {
-      float $$1 = this.b ? 1.5F / this.e : 1.0F;
-      float $$2 = 1.0F / this.f;
-      UnaryOperator<gjv> $$3 = $$1x -> $$1x.c(0.0F, this.c, this.d).b($$1);
-      UnaryOperator<gjv> $$4 = $$1x -> $$1x.c(0.0F, this.g, 0.0F).b($$2);
-      gkb $$5 = new gkb();
+   protected void aS_() {
+      super.aS_();
+      this.c(ful.a(wz.e, $$0 -> {
+         this.d.a();
+         this.c.accept(false);
+      }).a(this.n / 2 - 100, this.o / 4 + 150, 200, 20).a());
+   }
 
-      for (Entry<String, gkd> $$6 : $$0.a().a()) {
-         String $$7 = $$6.getKey();
-         gkd $$8 = $$6.getValue();
-         $$5.a().a($$7, $$8.a(this.h.contains($$7) ? $$3 : $$4));
+   @Override
+   public void e() {
+      if (this.d.b()) {
+         this.c.accept(true);
       }
-
-      return $$5;
    }
 
-   public boolean a() {
-      return this.b;
+   @Override
+   public void aP_() {
+      this.c.accept(false);
    }
 
-   public float b() {
-      return this.c;
+   @Override
+   public void aJ_() {
+      this.d.a();
+      this.d.close();
    }
 
-   public float c() {
-      return this.d;
-   }
+   @Override
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
+      int $$4 = this.n / 2 - 150;
+      int $$5 = this.n / 2 + 150;
+      int $$6 = this.o / 4 + 100;
+      int $$7 = $$6 + 10;
+      $$0.a(this.p, this.d.h(), this.n / 2, $$6 - 9 - 2, 10526880);
+      if (this.d.e() > 0) {
+         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
+         $$0.b(this.p, xa.a("optimizeWorld.info.converted", this.d.f()), $$4, 40, 10526880);
+         $$0.b(this.p, xa.a("optimizeWorld.info.skipped", this.d.g()), $$4, 40 + 9 + 3, 10526880);
+         $$0.b(this.p, xa.a("optimizeWorld.info.total", this.d.e()), $$4, 40 + (9 + 3) * 2, 10526880);
+         int $$8 = 0;
 
-   public float d() {
-      return this.e;
-   }
+         for (alh<djx> $$9 : this.d.c()) {
+            int $$10 = azo.d(this.d.a($$9) * (float)($$5 - $$4));
+            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
+            $$8 += $$10;
+         }
 
-   public float e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public Set<String> g() {
-      return this.h;
+         int $$11 = this.d.f() + this.d.g();
+         xa $$12 = xa.a("optimizeWorld.progress.counter", $$11, this.d.e());
+         xa $$13 = xa.a("optimizeWorld.progress.percentage", azo.d(this.d.d() * 100.0F));
+         $$0.a(this.p, $$12, this.n / 2, $$6 + 2 * 9 + 2, 10526880);
+         $$0.a(this.p, $$13, this.n / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+      }
    }
 }

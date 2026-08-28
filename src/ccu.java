@@ -1,22 +1,15 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class ccu<E extends cqp> extends bza<E> {
-   public ccu(int $$0) {
-      super(ImmutableMap.of(cgl.aD, cgm.a, cgl.n, cgm.b, cgl.o, cgm.c), $$0);
-   }
-
-   protected boolean a(arq $$0, E $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(arq $$0, E $$1, long $$2) {
-      $$1.b(bxv.n);
-      $$1.a(awn.CQ, 5.0F, 1.0F);
-   }
-
-   protected void c(arq $$0, E $$1, long $$2) {
-      if ($$1.c(bxv.n)) {
-         $$1.b(bxv.a);
-      }
+public class ccu {
+   public static bzm<bxu> a() {
+      return ccy.a((Function<ccy.b<bxu>, ? extends App<ccy.c<bxu>, cdb<bxu>>>)($$0 -> $$0.a((cdb<bxu>)(($$0x, $$1, $$2) -> {
+            if (!$$1.ec().c(ctr.e) && $$1.fR()) {
+               $$1.fS();
+               return true;
+            } else {
+               return false;
+            }
+         }))));
    }
 }

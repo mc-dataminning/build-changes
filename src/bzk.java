@@ -1,41 +1,15 @@
-public class bzk implements bzb<bxj> {
-   private final int a;
-   private final int b;
-   private bza.a c = bza.a.a;
-   private long d;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public bzk(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Override
-   public bza.a a() {
-      return this.c;
-   }
-
-   @Override
-   public final boolean e(arq $$0, bxj $$1, long $$2) {
-      this.c = bza.a.b;
-      int $$3 = this.a + $$0.C_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
-   }
-
-   @Override
-   public final void f(arq $$0, bxj $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public final void g(arq $$0, bxj $$1, long $$2) {
-      this.c = bza.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+public class bzk {
+   public static bzm<bxu> a(cgw<?> $$0, int $$1) {
+      return ccy.a(
+         (Function<ccy.b<bxu>, ? extends App<ccy.c<bxu>, cdb<bxu>>>)($$2 -> $$2.group($$2.a(cgw.p), $$2.c(cgw.ay), $$2.b($$0))
+               .apply($$2, $$2.a(() -> "[BecomePassive if " + $$0 + " present]", ($$1xx, $$2x, $$3) -> ($$3x, $$4, $$5) -> {
+                     $$2x.a(true, (long)$$1);
+                     $$1xx.b();
+                     return true;
+                  })))
+      );
    }
 }

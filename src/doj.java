@@ -1,49 +1,96 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class doj extends dmb {
-   public static final MapCodec<doj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(doh.a.forGetter($$0x -> $$0x.c), t()).apply($$0, doj::new));
-   private final dmr c;
-   private static final ffw d = dmr.b(12.0, 0.0, 15.0);
+public class doj extends dsw {
+   public static final MapCodec<doj> a = b(doj::new);
 
    @Override
    public MapCodec<doj> a() {
       return a;
    }
 
-   protected doj(dmr $$0, eas.d $$1) {
-      super($$1);
-      this.c = $$0;
+   protected doj(ebd.d $$0) {
+      super(10.0F, $$0);
+      this.l(
+         this.C
+            .b()
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+            .b(f, Boolean.valueOf(false))
+            .b(g, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected void a(eat $$0, djm $$1, iv $$2, eat $$3, boolean $$4) {
-      this.a($$0, $$1, $$1, $$1.A, $$2);
+   public ebe a(ddr $$0) {
+      return a($$0.q(), $$0.a(), this.m());
+   }
+
+   public static ebe a(djb $$0, iv $$1, ebe $$2) {
+      ebe $$3 = $$0.a_($$1.e());
+      ebe $$4 = $$0.a_($$1.d());
+      ebe $$5 = $$0.a_($$1.f());
+      ebe $$6 = $$0.a_($$1.i());
+      ebe $$7 = $$0.a_($$1.g());
+      ebe $$8 = $$0.a_($$1.h());
+      dnc $$9 = $$2.b();
+      return $$2.c(g, Boolean.valueOf($$3.a($$9) || $$3.a(dne.lb) || $$3.a(dne.fY)))
+         .c(f, Boolean.valueOf($$4.a($$9) || $$4.a(dne.lb)))
+         .c(b, Boolean.valueOf($$5.a($$9) || $$5.a(dne.lb)))
+         .c(c, Boolean.valueOf($$6.a($$9) || $$6.a(dne.lb)))
+         .c(d, Boolean.valueOf($$7.a($$9) || $$7.a(dne.lb)))
+         .c(e, Boolean.valueOf($$8.a($$9) || $$8.a(dne.lb)));
    }
 
    @Override
-   protected void a(eat $$0, arq $$1, iv $$2, azv $$3) {
-      if (!d($$0, $$1, $$2)) {
-         $$1.a($$2, this.c.m().b(b, Boolean.valueOf(false)), 2);
-      }
-   }
-
-   @Override
-   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
-      if ($$4 == jb.a && !$$0.a($$1, $$3)) {
-         return dmt.a.m();
-      } else {
-         this.a($$0, $$1, $$2, $$7, $$3);
-         if ($$0.c(b)) {
-            $$2.a($$3, exb.c, exb.c.a($$1));
-         }
-
+   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
+      if (!$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
          return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      } else {
+         boolean $$8 = $$6.a(this) || $$6.a(dne.lb) || $$4 == jb.a && $$6.a(dne.fY);
+         return $$0.b(h.get($$4), Boolean.valueOf($$8));
       }
    }
 
    @Override
-   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
-      return d;
+   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   protected boolean a(ebe $$0, dka $$1, iv $$2) {
+      ebe $$3 = $$1.a_($$2.e());
+      boolean $$4 = !$$1.a_($$2.d()).l() && !$$3.l();
+
+      for (jb $$5 : jb.c.a) {
+         iv $$6 = $$2.a($$5);
+         ebe $$7 = $$1.a_($$6);
+         if ($$7.a(this)) {
+            if ($$4) {
+               return false;
+            }
+
+            ebe $$8 = $$1.a_($$6.e());
+            if ($$8.a(this) || $$8.a(dne.fY)) {
+               return true;
+            }
+         }
+      }
+
+      return $$3.a(this) || $$3.a(dne.fY);
+   }
+
+   @Override
+   protected void a(ebf.a<dnc, ebe> $$0) {
+      $$0.a(b, c, d, e, f, g);
+   }
+
+   @Override
+   protected boolean a(ebe $$0, eyd $$1) {
+      return false;
    }
 }

@@ -1,51 +1,25 @@
-public enum gqe {
-   a(new gqe.b(gqe.a.f, gqe.a.e, gqe.a.a), new gqe.b(gqe.a.f, gqe.a.e, gqe.a.d), new gqe.b(gqe.a.c, gqe.a.e, gqe.a.d), new gqe.b(gqe.a.c, gqe.a.e, gqe.a.a)),
-   b(new gqe.b(gqe.a.f, gqe.a.b, gqe.a.d), new gqe.b(gqe.a.f, gqe.a.b, gqe.a.a), new gqe.b(gqe.a.c, gqe.a.b, gqe.a.a), new gqe.b(gqe.a.c, gqe.a.b, gqe.a.d)),
-   c(new gqe.b(gqe.a.c, gqe.a.b, gqe.a.d), new gqe.b(gqe.a.c, gqe.a.e, gqe.a.d), new gqe.b(gqe.a.f, gqe.a.e, gqe.a.d), new gqe.b(gqe.a.f, gqe.a.b, gqe.a.d)),
-   d(new gqe.b(gqe.a.f, gqe.a.b, gqe.a.a), new gqe.b(gqe.a.f, gqe.a.e, gqe.a.a), new gqe.b(gqe.a.c, gqe.a.e, gqe.a.a), new gqe.b(gqe.a.c, gqe.a.b, gqe.a.a)),
-   e(new gqe.b(gqe.a.f, gqe.a.b, gqe.a.d), new gqe.b(gqe.a.f, gqe.a.e, gqe.a.d), new gqe.b(gqe.a.f, gqe.a.e, gqe.a.a), new gqe.b(gqe.a.f, gqe.a.b, gqe.a.a)),
-   f(new gqe.b(gqe.a.c, gqe.a.b, gqe.a.a), new gqe.b(gqe.a.c, gqe.a.e, gqe.a.a), new gqe.b(gqe.a.c, gqe.a.e, gqe.a.d), new gqe.b(gqe.a.c, gqe.a.b, gqe.a.d));
-
-   private static final gqe[] g = ag.a(new gqe[6], $$0 -> {
-      $$0[gqe.a.e] = a;
-      $$0[gqe.a.b] = b;
-      $$0[gqe.a.d] = c;
-      $$0[gqe.a.a] = d;
-      $$0[gqe.a.f] = e;
-      $$0[gqe.a.c] = f;
-   });
-   private final gqe.b[] h;
-
-   public static gqe a(jb $$0) {
-      return g[$$0.d()];
+public class gqe extends gqs {
+   gqe(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.04F;
+      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
+         this.j = $$4;
+         this.k = 0.1;
+         this.l = $$6;
+      }
    }
 
-   private gqe(final gqe.b... $$0) {
-      this.h = $$0;
-   }
+   public static class a implements gpn<mc> {
+      private final gqf a;
 
-   public gqe.b a(int $$0) {
-      return this.h[$$0];
-   }
-
-   public static final class a {
-      public static final int a = jb.d.d();
-      public static final int b = jb.b.d();
-      public static final int c = jb.f.d();
-      public static final int d = jb.c.d();
-      public static final int e = jb.a.d();
-      public static final int f = jb.e.d();
-   }
-
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-
-      b(int $$0, int $$1, int $$2) {
+      public a(gqf $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      }
+
+      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gqe $$8 = new gqe($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

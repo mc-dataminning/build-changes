@@ -1,48 +1,24 @@
-public class ggi extends ggp<hda> {
-   public static final gkc a = gkc.scaling(0.5F);
-   private final gjt b;
-   private final gjt c;
-   private final gjt d;
+public abstract class ggi extends gia<hea> {
+   private final gle a;
+   private final gle b;
 
-   public ggi(gjt $$0) {
+   public ggi(gle $$0) {
       super($$0);
-      this.b = $$0.b("body");
-      this.c = this.b.b("tail");
-      this.d = this.c.b("tail_fin");
+      this.a = $$0.b("left_paddle");
+      this.b = $$0.b("right_paddle");
    }
 
-   public static gjz a() {
-      gkb $$0 = new gkb();
-      gkd $$1 = $$0.a();
-      float $$2 = 18.0F;
-      float $$3 = -8.0F;
-      gkd $$4 = $$1.a("body", gjy.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), gjv.a(0.0F, 22.0F, -5.0F));
-      $$4.a("back_fin", gjy.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), gjv.b((float) (Math.PI / 3), 0.0F, 0.0F));
-      $$4.a(
-         "left_fin",
-         gjy.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         gjv.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
-      );
-      $$4.a(
-         "right_fin",
-         gjy.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         gjv.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
-      );
-      gkd $$5 = $$4.a("tail", gjy.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), gjv.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
-      $$5.a("tail_fin", gjy.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), gjv.a(0.0F, 0.0F, 9.0F));
-      gkd $$6 = $$4.a("head", gjy.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), gjv.a(0.0F, -4.0F, -3.0F));
-      $$6.a("nose", gjy.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), gjv.a);
-      return gjz.a($$0, 64, 64);
-   }
-
-   public void a(hda $$0) {
+   public void a(hea $$0) {
       super.a($$0);
-      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
-      if ($$0.a) {
-         this.b.e = this.b.e + (-0.05F - 0.05F * azm.b($$0.u * 0.3F));
-         this.c.e = -0.1F * azm.b($$0.u * 0.3F);
-         this.d.e = -0.2F * azm.b($$0.u * 0.3F);
+      a($$0.g, 0, this.a);
+      a($$0.h, 1, this.b);
+   }
+
+   private static void a(float $$0, int $$1, gle $$2) {
+      $$2.e = azo.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (azo.a(-$$0) + 1.0F) / 2.0F);
+      $$2.f = azo.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (azo.a(-$$0 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
       }
    }
 }

@@ -1,32 +1,107 @@
-public class gwq extends gvr<cob, hfv, ggk> {
-   private static final alg a = alg.b("textures/entity/zombie/drowned.png");
+import com.google.common.collect.Maps;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-   public gwq(gwy.a $$0) {
-      super($$0, new ggk($$0.a(gjs.aG)), new ggk($$0.a(gjs.aH)), new ggk($$0.a(gjs.aL)), new ggk($$0.a(gjs.aM)), new ggk($$0.a(gjs.aI)), new ggk($$0.a(gjs.aJ)));
-      this.a(new hau(this, $$0.f()));
-   }
+public class gwq implements gwd.a {
+   private final frd a;
+   private final Map<alh<djx>, Map<String, ert>> b = Maps.newIdentityHashMap();
+   private final Map<alh<djx>, Map<String, aaz.a>> c = Maps.newIdentityHashMap();
+   private static final int d = 500;
 
-   public hfv a() {
-      return new hfv();
+   public gwq(frd $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public alg a(hfv $$0) {
-      return a;
-   }
+   public void a(flo $$0, gsa $$1, double $$2, double $$3, double $$4) {
+      fql $$5 = this.a.j.k();
+      alh<djx> $$6 = this.a.s.aj();
+      iv $$7 = iv.a($$5.b().d, 0.0, $$5.b().f);
+      flr $$8 = $$1.getBuffer(gsl.w());
+      if (this.b.containsKey($$6)) {
+         for (ert $$9 : this.b.get($$6).values()) {
+            if ($$7.a($$9.g(), 500.0)) {
+               gst.a(
+                  $$0,
+                  $$8,
+                  (double)$$9.h() - $$2,
+                  (double)$$9.i() - $$3,
+                  (double)$$9.j() - $$4,
+                  (double)($$9.k() + 1) - $$2,
+                  (double)($$9.l() + 1) - $$3,
+                  (double)($$9.m() + 1) - $$4,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F
+               );
+            }
+         }
+      }
 
-   protected void a(hfv $$0, fkd $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = $$0.G;
-      if ($$4 > 0.0F) {
-         float $$5 = -10.0F - $$0.ab;
-         float $$6 = azm.h($$4, 0.0F, $$5);
-         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.w / 2.0F / $$3, 0.0F);
+      Map<String, aaz.a> $$10 = this.c.get($$6);
+      if ($$10 != null) {
+         for (aaz.a $$11 : $$10.values()) {
+            ert $$12 = $$11.a();
+            if ($$7.a($$12.g(), 500.0)) {
+               if ($$11.b()) {
+                  gst.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F
+                  );
+               } else {
+                  gst.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     0.0F,
+                     1.0F,
+                     1.0F,
+                     0.0F,
+                     0.0F,
+                     1.0F
+                  );
+               }
+            }
+         }
       }
    }
 
-   protected ghd.a a(cob $$0, bxa $$1) {
-      czn $$2 = $$0.a($$1);
-      return $$0.fx() == $$1 && $$0.gk() && $$2.a(czr.xd) ? ghd.a.e : ghd.a.a;
+   public void a(ert $$0, List<aaz.a> $$1, alh<djx> $$2) {
+      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
+      Map<String, aaz.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
+
+      for (aaz.a $$4 : $$1) {
+         $$3.put($$4.a().toString(), $$4);
+      }
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 }

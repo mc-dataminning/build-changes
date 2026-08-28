@@ -1,37 +1,29 @@
-public class adt implements zf<abu> {
-   public static final yw<vu, adt> a = zf.a(adt::a, adt::new);
-   private final iv b;
-   private final boolean c;
+public class adt implements zh<abw> {
+   public static final yy<vw, adt> a = zh.a(adt::a, adt::new);
+   private final buq b;
 
-   public adt(iv $$0, boolean $$1) {
+   public adt(buq $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private adt(vu $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readBoolean();
+   private adt(vw $$0) {
+      this.b = $$0.b(buq.class);
    }
 
-   private void a(vu $$0) {
+   private void a(vw $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
    }
 
    @Override
-   public zh<adt> a() {
-      return agn.Y;
+   public zj<adt> a() {
+      return agp.W;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public iv b() {
+   public buq b() {
       return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

@@ -1,40 +1,16 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cgc extends cgf {
-   private final byf a;
-   private bxj b;
-   private int c;
-
-   public cgc(byf $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(cef.a.d));
+public class cgc extends cgd {
+   public cgc(byc $$0, double $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public boolean b() {
-      if (this.a.q() && !this.a.gt()) {
-         bxj $$0 = this.a.e();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.eq();
-            int $$1 = $$0.es();
-            return $$1 != this.c && this.a(this.b, chy.a) && this.a.a(this.b, $$0);
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void d() {
-      this.e.g(this.b);
-      bxj $$0 = this.a.e();
-      if ($$0 != null) {
-         this.c = $$0.es();
-      }
-
-      super.d();
+   protected ffq h() {
+      ffq $$0 = this.b.h(0.0F);
+      int $$1 = 8;
+      ffq $$2 = cip.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : cil.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
    }
 }

@@ -1,14 +1,35 @@
-public abstract class gye<T extends bxl, S extends hef, M extends ggp<? super S>> extends gxz<T, S, M> {
-   public gye(gwy.a $$0, M $$1, float $$2) {
-      super($$0, $$1, $$2);
+public class gye extends gzo<cop, heo, ghy<heo>> {
+   private static final ali a = ali.b("textures/entity/enderman/enderman.png");
+   private final azx j = azx.a();
+
+   public gye(gyi.a $$0) {
+      super($$0, new ghy<>($$0.a(gld.aR)), 0.5F);
+      this.a(new hcf(this));
+      this.a(new hbx(this, $$0.d()));
    }
 
-   protected boolean a(T $$0, double $$1) {
-      return super.a($$0, $$1) && ($$0.cL() || $$0.h_() && $$0 == this.d.c);
+   public ffq a(heo $$0) {
+      ffq $$1 = super.a($$0);
+      if ($$0.a) {
+         double $$2 = 0.02 * (double)$$0.af;
+         return $$1.b(this.j.k() * $$2, 0.0, this.j.k() * $$2);
+      } else {
+         return $$1;
+      }
    }
 
-   @Override
-   protected float g(S $$0) {
-      return super.g($$0) * $$0.ag;
+   public ali b(heo $$0) {
+      return a;
+   }
+
+   public heo a() {
+      return new heo();
+   }
+
+   public void a(cop $$0, heo $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      gyz.a($$0, $$1, $$2, this.h);
+      $$1.a = $$0.t();
+      $$1.b = $$0.q();
    }
 }

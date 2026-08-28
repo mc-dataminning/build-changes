@@ -1,16 +1,5 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
-
-public record hgp() implements hgt {
-   public static final MapCodec<hgp> a = MapCodec.unit(new hgp());
-
-   @Override
-   public boolean get(czn $$0, @Nullable gkq $$1, @Nullable bxj $$2, int $$3, czl $$4) {
-      return $$0.r();
-   }
-
-   @Override
-   public MapCodec<hgp> a() {
-      return a;
-   }
+public class hgp extends hfp {
+   public czy a = czy.k;
+   public boolean b;
+   public boolean c;
 }

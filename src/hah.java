@@ -1,21 +1,26 @@
-public class hah extends gxp<cpj, hfx, gjl> {
-   private static final alg a = alg.b("textures/entity/piglin/zombified_piglin.png");
+public class hah extends gxc<cmg, hgh, gjr> {
+   private static final ali a = ali.b("textures/entity/sheep/sheep.png");
 
-   public hah(gwy.a $$0, gjr $$1, gjr $$2, gjr $$3, gjr $$4, gjr $$5, gjr $$6) {
-      super($$0, new gjl($$0.a($$1)), new gjl($$0.a($$2)), 0.5F, gyo.a);
-      this.a(new hbb<>(this, new ghc($$0.a($$3)), new ghc($$0.a($$4)), new ghc($$0.a($$5)), new ghc($$0.a($$6)), $$0.h()));
+   public hah(gyi.a $$0) {
+      super($$0, new gjr($$0.a(gld.cN)), new gjr($$0.a(gld.cO)), 0.7F);
+      this.a(new hcy(this, $$0.f()));
+      this.a(new hcx(this, $$0.f()));
    }
 
-   public alg a(hfx $$0) {
+   public ali a(hgh $$0) {
       return a;
    }
 
-   public hfx b() {
-      return new hfx();
+   public hgh b() {
+      return new hgh();
    }
 
-   public void a(cpj $$0, hfx $$1, float $$2) {
+   public void a(cmg $$0, hgh $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gk();
+      $$1.b = $$0.K($$2);
+      $$1.a = $$0.J($$2);
+      $$1.c = $$0.x();
+      $$1.d = $$0.t();
+      $$1.e = $$0.ao();
    }
 }

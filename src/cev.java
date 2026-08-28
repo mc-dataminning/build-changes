@@ -1,64 +1,36 @@
-import java.util.EnumSet;
+public class cev extends ceq {
+   private final ckm a;
+   private boolean b;
 
-public class cev extends cef {
-   private final bxl a;
-   private bxj b;
-   private int c;
-
-   public cev(bxl $$0) {
+   public cev(ckm $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(cef.a.a, cef.a.b));
    }
 
    @Override
    public boolean b() {
-      bxj $$0 = this.a.f();
-      if ($$0 == null) {
+      if (!(this.a.e() instanceof art $$0)) {
          return false;
       } else {
-         this.b = $$0;
-         return true;
+         boolean $$1 = !$$0.Z_() && !$$0.gk().b && !$$0.bi() && !$$0.av;
+         return !this.a.gu() && $$1 && this.a.gK();
       }
    }
 
    @Override
-   public boolean c() {
-      if (!this.b.bI()) {
-         return false;
-      } else {
-         return this.a.g((bwi)this.b) > 225.0 ? false : !this.a.O().k() || this.b();
-      }
+   public boolean U_() {
+      return !this.b;
    }
 
    @Override
-   public void e() {
-      this.b = null;
-      this.a.O().m();
-   }
-
-   @Override
-   public boolean R_() {
-      return true;
+   public void d() {
+      this.b = false;
    }
 
    @Override
    public void a() {
-      this.a.J().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.dp() * 2.0F * this.a.dp() * 2.0F);
-      double $$1 = this.a.h(this.b.dz(), this.b.dB(), this.b.dF());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
-      }
-
-      this.a.O().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.c(a(this.a), this.b);
+      if (!this.b && !this.a.x() && !this.a.S_()) {
+         if (this.a.e() instanceof art $$0 && this.a.cR().c($$0.cR())) {
+            this.b = this.a.b($$0);
          }
       }
    }

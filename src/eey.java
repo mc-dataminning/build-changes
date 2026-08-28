@@ -1,21 +1,8 @@
-import java.util.stream.Stream;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface eey extends efm {
-   int ao();
-
-   iv du();
-
-   fex cQ();
-
-   void a(eez var1);
-
-   Stream<? extends eey> cZ();
-
-   Stream<? extends eey> da();
-
-   void c(bwi.d var1);
-
-   boolean dS();
-
-   boolean dT();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface eey {
 }

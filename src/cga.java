@@ -1,36 +1,30 @@
-import javax.annotation.Nullable;
+public class cga extends ceq {
+   private final byc a;
 
-public class cga<T extends bxj> extends cfy<T> {
-   private static final int i = 200;
-   private int j = 0;
-
-   public cga(ctd $$0, Class<T> $$1, boolean $$2, @Nullable chy.a $$3) {
-      super($$0, $$1, 500, $$2, false, $$3);
-   }
-
-   public int i() {
-      return this.j;
-   }
-
-   public void k() {
-      this.j--;
+   public cga(byc $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean b() {
-      if (this.j > 0 || !this.e.dX().h()) {
-         return false;
-      } else if (!((ctd)this.e).gH()) {
-         return false;
-      } else {
-         this.h();
-         return this.c != null;
-      }
+      return this.a.aH() && !this.a.dV().b_(this.a.dv()).a(axj.a);
    }
 
    @Override
    public void d() {
-      this.j = b(200);
-      super.d();
+      iv $$0 = null;
+
+      for (iv $$2 : iv.b(
+         azo.a(this.a.dA() - 2.0), azo.a(this.a.dC() - 2.0), azo.a(this.a.dG() - 2.0), azo.a(this.a.dA() + 2.0), this.a.dB(), azo.a(this.a.dG() + 2.0)
+      )) {
+         if (this.a.dV().b_($$2).a(axj.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.L().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+      }
    }
 }

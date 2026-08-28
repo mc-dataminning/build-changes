@@ -1,69 +1,158 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import com.google.common.base.Joiner;
+import com.google.common.base.Splitter;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
-import javax.annotation.Nullable;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class gub {
-   private static final int a = 2;
-   private int b = 2;
-   private final List<gug.b.a> c = new ObjectArrayList();
+public record gub(Map<String, gub.b> c) implements gua {
+   static final Logger d = LogUtils.getLogger();
+   public static final Codec<gub> b = ayw.d(Codec.unboundedMap(Codec.STRING, gub.b.a)).xmap(gub::new, gub::a);
 
-   public synchronized void a(gug.b.a $$0) {
-      this.c.add($$0);
+   @Override
+   public <O, S extends ebg<O, S>> Predicate<S> instantiate(ebf<O, S> $$0) {
+      List<Predicate<S>> $$1 = new ArrayList<>(this.c.size());
+      this.c.forEach(($$2, $$3) -> $$1.add(a($$0, $$2, $$3)));
+      return ag.a($$1);
    }
 
-   @Nullable
-   public synchronized gug.b.a a(ffc $$0) {
-      int $$1 = -1;
-      int $$2 = -1;
-      double $$3 = Double.MAX_VALUE;
-      double $$4 = Double.MAX_VALUE;
-      ListIterator<gug.b.a> $$5 = this.c.listIterator();
+   private static <O, S extends ebg<O, S>> Predicate<S> a(ebf<O, S> $$0, String $$1, gub.b $$2) {
+      ech<?> $$3 = $$0.a($$1);
+      if ($$3 == null) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", $$1, $$0.c()));
+      } else {
+         return $$2.a($$0.c(), $$3);
+      }
+   }
 
-      while ($$5.hasNext()) {
-         int $$6 = $$5.nextIndex();
-         gug.b.a $$7 = $$5.next();
-         if ($$7.a.get()) {
-            $$5.remove();
+   public Map<String, gub.b> a() {
+      return this.c;
+   }
+
+   public static record a(String a, boolean b) {
+      private static final String c = "!";
+
+      public a(String a, boolean b) {
+         if (a.isEmpty()) {
+            throw new IllegalArgumentException("Empty term");
          } else {
-            double $$8 = $$7.d().b($$0);
-            if (!$$7.c() && $$8 < $$3) {
-               $$3 = $$8;
-               $$1 = $$6;
+            this.a = a;
+            this.b = b;
+         }
+      }
+
+      public static gub.a a(String $$0) {
+         return $$0.startsWith("!") ? new gub.a($$0.substring(1), true) : new gub.a($$0, false);
+      }
+
+      @Override
+      public String toString() {
+         return this.b ? "!" + this.a : this.a;
+      }
+   }
+
+   public static record b(List<gub.a> b) {
+      private static final char c = '|';
+      private static final Joiner d = Joiner.on('|');
+      private static final Splitter e = Splitter.on('|');
+      private static final Codec<String> f = Codec.either(Codec.INT, Codec.BOOL)
+         .flatComapMap($$0 -> (String)$$0.map(String::valueOf, String::valueOf), $$0 -> DataResult.error(() -> "This codec can't be used for encoding"));
+      public static final Codec<gub.b> a = Codec.withAlternative(Codec.STRING, f).comapFlatMap(gub.b::a, gub.b::toString);
+
+      public b(List<gub.a> b) {
+         if (b.isEmpty()) {
+            throw new IllegalArgumentException("Empty value for property");
+         } else {
+            this.b = b;
+         }
+      }
+
+      public static DataResult<gub.b> a(String $$0) {
+         List<gub.a> $$1 = e.splitToStream($$0).map(gub.a::a).toList();
+         if ($$1.isEmpty()) {
+            return DataResult.error(() -> "Empty value for property");
+         } else {
+            for (gub.a $$2 : $$1) {
+               if ($$2.a.isEmpty()) {
+                  return DataResult.error(() -> "Empty term in value '" + $$0 + "'");
+               }
             }
 
-            if ($$7.c() && $$8 < $$4) {
-               $$4 = $$8;
-               $$2 = $$6;
+            return DataResult.success(new gub.b($$1));
+         }
+      }
+
+      @Override
+      public String toString() {
+         return d.join(this.b);
+      }
+
+      public <O, S extends ebg<O, S>, T extends Comparable<T>> Predicate<S> a(O $$0, ech<T> $$1) {
+         Predicate<T> $$2 = ag.b(Lists.transform(this.b, $$2x -> this.a($$0, $$1, $$2x)));
+         List<T> $$3 = new ArrayList<>($$1.a());
+         int $$4 = $$3.size();
+         $$3.removeIf($$2.negate());
+         int $$5 = $$3.size();
+         if ($$5 == 0) {
+            gub.d.warn("Condition {} for property {} on {} is always false", new Object[]{this, $$1.f(), $$0});
+            return $$0x -> false;
+         } else {
+            int $$6 = $$4 - $$5;
+            if ($$6 == 0) {
+               gub.d.warn("Condition {} for property {} on {} is always true", new Object[]{this, $$1.f(), $$0});
+               return $$0x -> true;
+            } else {
+               boolean $$7;
+               List<T> $$8;
+               if ($$5 <= $$6) {
+                  $$7 = false;
+                  $$8 = $$3;
+               } else {
+                  $$7 = true;
+                  List<T> $$10 = new ArrayList<>($$1.a());
+                  $$10.removeIf($$2);
+                  $$8 = $$10;
+               }
+
+               if ($$8.size() == 1) {
+                  T $$12 = (T)$$8.getFirst();
+                  return $$3x -> {
+                     T $$4x = $$3x.c($$1);
+                     return $$12.equals($$4x) ^ $$7;
+                  };
+               } else {
+                  return $$3x -> {
+                     T $$4x = $$3x.c($$1);
+                     return $$8.contains($$4x) ^ $$7;
+                  };
+               }
             }
          }
       }
 
-      boolean $$9 = $$2 >= 0;
-      boolean $$10 = $$1 >= 0;
-      if (!$$9 || $$10 && (this.b <= 0 || !($$4 < $$3))) {
-         this.b = 2;
-         return this.a($$1);
-      } else {
-         this.b--;
-         return this.a($$2);
-      }
-   }
-
-   public int a() {
-      return this.c.size();
-   }
-
-   @Nullable
-   private gug.b.a a(int $$0) {
-      return $$0 >= 0 ? this.c.remove($$0) : null;
-   }
-
-   public synchronized void b() {
-      for (gug.b.a $$0 : this.c) {
-         $$0.a();
+      private <T extends Comparable<T>> T a(Object $$0, ech<T> $$1, String $$2) {
+         Optional<T> $$3 = $$1.b($$2);
+         if ($$3.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, $$1, $$0, this));
+         } else {
+            return $$3.get();
+         }
       }
 
-      this.c.clear();
+      private <T extends Comparable<T>> Predicate<T> a(Object $$0, ech<T> $$1, gub.a $$2) {
+         T $$3 = this.a($$0, $$1, $$2.a);
+         return $$2.b ? $$1x -> !$$1x.equals($$3) : $$1x -> $$1x.equals($$3);
+      }
+
+      public List<gub.a> a() {
+         return this.b;
+      }
    }
 }

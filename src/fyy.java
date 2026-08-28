@@ -1,185 +1,92 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.BanDetails;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.net.URI;
+import java.time.Duration;
+import java.time.Instant;
+import org.apache.commons.lang3.StringUtils;
 
 public class fyy {
-   private final fpt a;
-   private final fzc b;
-   private final fyz c;
-   private final int d;
-   private final ak e;
-   private final av f;
-   private final czn g;
-   private final wy h;
-   private final fza i;
-   private final Map<aj, fza> j = Maps.newLinkedHashMap();
-   private double k;
-   private double l;
-   private int m = Integer.MAX_VALUE;
-   private int n = Integer.MAX_VALUE;
-   private int o = Integer.MIN_VALUE;
-   private int p = Integer.MIN_VALUE;
-   private float q;
-   private boolean r;
+   private static final xa b = xa.c("gui.banned.title.temporary").a(o.r);
+   private static final xa c = xa.c("gui.banned.title.permanent").a(o.r);
+   public static final xa a = xa.c("gui.banned.name.title").a(o.r);
+   private static final xa d = xa.c("gui.banned.skin.title").a(o.r);
+   private static final xa e = xa.a("gui.banned.skin.description", xa.a(ayj.n));
 
-   public fyy(fpt $$0, fzc $$1, fyz $$2, int $$3, ak $$4, av $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$5.c();
-      this.h = $$5.a();
-      this.i = new fza(this, $$0, $$4, $$5);
-      this.a(this.i, $$4.b());
+   public static fza a(BooleanConsumer $$0, BanDetails $$1) {
+      return new fza($$0, a($$1), b($$1), ayj.n, wz.m, true);
    }
 
-   public fyz a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public ak c() {
-      return this.e;
-   }
-
-   public wy d() {
-      return this.h;
-   }
-
-   public av e() {
-      return this.f;
-   }
-
-   public void a(fsm $$0, int $$1, int $$2, boolean $$3) {
-      this.c.a($$0, $$1, $$2, $$3, this.d);
-   }
-
-   public void a(fsm $$0, int $$1, int $$2) {
-      this.c.a($$0, $$1, $$2, this.d, this.g);
-   }
-
-   public void b(fsm $$0, int $$1, int $$2) {
-      if (!this.r) {
-         this.k = (double)(117 - (this.o + this.m) / 2);
-         this.l = (double)(56 - (this.p + this.n) / 2);
-         this.r = true;
-      }
-
-      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
-      $$0.c().a();
-      $$0.c().a((float)$$1, (float)$$2, 0.0F);
-      alg $$3 = this.f.d().map(iw::b).orElse(hjs.a);
-      int $$4 = azm.a(this.k);
-      int $$5 = azm.a(this.l);
-      int $$6 = $$4 % 16;
-      int $$7 = $$5 % 16;
-
-      for (int $$8 = -1; $$8 <= 15; $$8++) {
-         for (int $$9 = -1; $$9 <= 8; $$9++) {
-            $$0.a(grc::H, $$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
+   public static fza a(Runnable $$0) {
+      URI $$1 = ayj.n;
+      return new fza($$2 -> {
+         if ($$2) {
+            ag.n().a($$1);
          }
-      }
 
-      this.i.a($$0, $$4, $$5, true);
-      this.i.a($$0, $$4, $$5, false);
-      this.i.a($$0, $$4, $$5);
-      $$0.c().b();
-      $$0.e();
+         $$0.run();
+      }, d, e, $$1, wz.m, true);
    }
 
-   public void a(fsm $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, -200.0F);
-      $$0.a(0, 0, 234, 113, azm.d(this.q * 255.0F) << 24);
-      boolean $$5 = false;
-      int $$6 = azm.a(this.k);
-      int $$7 = azm.a(this.l);
-      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
-         for (fza $$8 : this.j.values()) {
-            if ($$8.a($$6, $$7, $$1, $$2)) {
-               $$5 = true;
-               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
-               break;
-            }
+   public static fza a(String $$0, Runnable $$1) {
+      URI $$2 = ayj.n;
+      return new fza($$2x -> {
+         if ($$2x) {
+            ag.n().a($$2);
          }
-      }
 
-      $$0.c().b();
-      if ($$5) {
-         this.q = azm.a(this.q + 0.02F, 0.0F, 0.3F);
+         $$1.run();
+      }, a, xa.a("gui.banned.name.description", xa.b($$0).a(o.o), xa.a(ayj.n)), $$2, wz.m, true);
+   }
+
+   private static xa a(BanDetails $$0) {
+      return f($$0) ? b : c;
+   }
+
+   private static xa b(BanDetails $$0) {
+      return xa.a("gui.banned.description", c($$0), d($$0), xa.a(ayj.n));
+   }
+
+   private static xa c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         gnc $$4 = gnc.a($$3);
+         xa $$5;
+         if ($$4 != null) {
+            $$5 = xd.a($$4.a().f(), xx.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = xa.a("gui.banned.description.reason_id_message", $$3, $$2).a(o.r);
+         } else {
+            $$5 = xa.a("gui.banned.description.reason_id", $$3).a(o.r);
+         }
+
+         return xa.a("gui.banned.description.reason", $$5);
       } else {
-         this.q = azm.a(this.q - 0.04F, 0.0F, 1.0F);
+         return xa.c("gui.banned.description.unknownreason");
       }
    }
 
-   public boolean a(int $$0, int $$1, double $$2, double $$3) {
-      return this.c.a($$0, $$1, this.d, $$2, $$3);
-   }
-
-   @Nullable
-   public static fyy a(fpt $$0, fzc $$1, int $$2, ak $$3) {
-      Optional<av> $$4 = $$3.a().c();
-      if ($$4.isEmpty()) {
-         return null;
+   private static xa d(BanDetails $$0) {
+      if (f($$0)) {
+         xa $$1 = e($$0);
+         return xa.a("gui.banned.description.temporary", xa.a("gui.banned.description.temporary.duration", $$1).a(o.r));
       } else {
-         for (fyz $$5 : fyz.values()) {
-            if ($$2 < $$5.a()) {
-               return new fyy($$0, $$1, $$5, $$2, $$3, $$4.get());
-            }
-
-            $$2 -= $$5.a();
-         }
-
-         return null;
+         return xa.c("gui.banned.description.permanent").a(o.r);
       }
    }
 
-   public void a(double $$0, double $$1) {
-      if (this.o - this.m > 234) {
-         this.k = azm.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
-      }
-
-      if (this.p - this.n > 113) {
-         this.l = azm.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
-      }
-   }
-
-   public void a(ak $$0) {
-      Optional<av> $$1 = $$0.a().c();
-      if (!$$1.isEmpty()) {
-         fza $$2 = new fza(this, this.a, $$0, $$1.get());
-         this.a($$2, $$0.b());
+   private static xa e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return wz.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? wz.c($$1.toMinutes()) : wz.b($$1.toHours());
       }
    }
 
-   private void a(fza $$0, aj $$1) {
-      this.j.put($$1, $$0);
-      int $$2 = $$0.d();
-      int $$3 = $$2 + 28;
-      int $$4 = $$0.c();
-      int $$5 = $$4 + 27;
-      this.m = Math.min(this.m, $$2);
-      this.o = Math.max(this.o, $$3);
-      this.n = Math.min(this.n, $$4);
-      this.p = Math.max(this.p, $$5);
-
-      for (fza $$6 : this.j.values()) {
-         $$6.b();
-      }
-   }
-
-   @Nullable
-   public fza a(aj $$0) {
-      return this.j.get($$0);
-   }
-
-   public fzc f() {
-      return this.b;
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

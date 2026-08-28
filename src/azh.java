@@ -1,9 +1,7 @@
-public class azh {
-   private static final long a = 6364136223846793005L;
-   private static final long b = 1442695040888963407L;
+import com.mojang.serialization.MapCodec;
 
-   public static long a(long $$0, long $$1) {
-      $$0 *= $$0 * 6364136223846793005L + 1442695040888963407L;
-      return $$0 + $$1;
+public record azh<A>(MapCodec<A> a) {
+   public static <A> azh<A> a(MapCodec<A> $$0) {
+      return new azh<>($$0);
    }
 }

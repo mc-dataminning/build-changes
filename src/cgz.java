@@ -1,25 +1,35 @@
-public class cgz extends chl {
-   public static final float a = 8.0F;
+public class cgz {
+   private final caz a;
+   private final float b;
+   private final int c;
 
-   @Override
-   protected boolean a(arq $$0, bxj $$1, bxj $$2) {
-      return this.b($$1, $$2) && $$2.bh() && (this.b($$2) || this.a($$1, $$2)) && chr.c($$0, $$1, $$2);
+   public cgz(iv $$0, float $$1, int $$2) {
+      this(new bzo($$0), $$1, $$2);
    }
 
-   private boolean a(bxj $$0, bxj $$1) {
-      return !$$0.eb().a(cgl.V) && $$1.an().a(axf.j);
+   public cgz(ffq $$0, float $$1, int $$2) {
+      this(new bzo(iv.a((jp)$$0)), $$1, $$2);
    }
 
-   private boolean b(bxj $$0) {
-      return $$0.an().a(axf.i);
+   public cgz(bwt $$0, float $$1, int $$2) {
+      this(new bzw($$0, false), $$1, $$2);
    }
 
-   private boolean b(bxj $$0, bxj $$1) {
-      return $$1.g($$0) <= 64.0;
+   public cgz(caz $$0, float $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   protected cgl<bxj> b() {
-      return cgl.C;
+   public caz a() {
+      return this.a;
+   }
+
+   public float b() {
+      return this.b;
+   }
+
+   public int c() {
+      return this.c;
    }
 }

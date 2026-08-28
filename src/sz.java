@@ -1,13 +1,13 @@
 public class sz extends so {
-   protected final wy a;
+   protected final xa a;
 
-   public sz(wy $$0) {
+   public sz(xa $$0) {
       super($$0.getString());
       this.a = $$0;
    }
 
    @Override
-   public wy a() {
+   public xa a() {
       return this.a;
    }
 }

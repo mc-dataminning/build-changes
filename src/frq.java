@@ -1,33 +1,37 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.stream.Stream;
+import org.joml.Vector3f;
 
-public class frq {
-   private final Builder<String, gsr.b> a = ImmutableMap.builder();
-
-   private <T extends Comparable<T>> void a(ebw<T> $$0, gsr.b $$1) {
-      this.a.put($$0.f(), $$1);
+public record frq(frq.c a, frs... b) {
+   public interface a {
+      Vector3f apply(Vector3f var1, float var2, frs[] var3, int var4, int var5, float var6);
    }
 
-   public final <T extends Comparable<T>> frq a(ebw<T> $$0, T $$1) {
-      this.a($$0, new gsr.b(List.of(new gsr.a($$0.b($$1), false))));
-      return this;
+   public static class b {
+      public static final frq.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[$$3].b();
+         Vector3f $$7 = $$2[$$4].b();
+         return $$6.lerp($$7, $$1, $$0).mul($$5);
+      };
+      public static final frq.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
+         Vector3f $$7 = $$2[$$3].b();
+         Vector3f $$8 = $$2[$$4].b();
+         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
+         $$0.set(
+            azo.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
+            azo.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
+            azo.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
+         );
+         return $$0;
+      };
    }
 
-   @SafeVarargs
-   public final <T extends Comparable<T>> frq a(ebw<T> $$0, T $$1, T... $$2) {
-      List<gsr.a> $$3 = Stream.concat(Stream.of($$1), Stream.of($$2)).map($$0::b).sorted().distinct().map($$0x -> new gsr.a($$0x, false)).toList();
-      this.a($$0, new gsr.b($$3));
-      return this;
+   public interface c {
+      void apply(gle var1, Vector3f var2);
    }
 
-   public final <T extends Comparable<T>> frq b(ebw<T> $$0, T $$1) {
-      this.a($$0, new gsr.b(List.of(new gsr.a($$0.b($$1), true))));
-      return this;
-   }
-
-   public gsq a() {
-      return new gsr(this.a.buildOrThrow());
+   public static class d {
+      public static final frq.c a = gle::a;
+      public static final frq.c b = gle::b;
+      public static final frq.c c = gle::c;
    }
 }

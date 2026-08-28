@@ -1,33 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface eru {
+   alh<esh> a = a("villages");
+   alh<esh> b = a("desert_pyramids");
+   alh<esh> c = a("igloos");
+   alh<esh> d = a("jungle_temples");
+   alh<esh> e = a("swamp_huts");
+   alh<esh> f = a("pillager_outposts");
+   alh<esh> g = a("ocean_monuments");
+   alh<esh> h = a("woodland_mansions");
+   alh<esh> i = a("buried_treasures");
+   alh<esh> j = a("mineshafts");
+   alh<esh> k = a("ruined_portals");
+   alh<esh> l = a("shipwrecks");
+   alh<esh> m = a("ocean_ruins");
+   alh<esh> n = a("nether_complexes");
+   alh<esh> o = a("nether_fossils");
+   alh<esh> p = a("end_cities");
+   alh<esh> q = a("ancient_cities");
+   alh<esh> r = a("strongholds");
+   alh<esh> s = a("trail_ruins");
+   alh<esh> t = a("trial_chambers");
 
-public record eru(eru.a b, bsq<dlb.c> c) {
-   public static final Codec<eru> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eru.a.c.fieldOf("bounding_box").forGetter(eru::a), bsq.a(dlb.c.a).fieldOf("spawns").forGetter(eru::b)).apply($$0, eru::new)
-   );
-
-   public eru.a a() {
-      return this.b;
-   }
-
-   public bsq<dlb.c> b() {
-      return this.c;
-   }
-
-   public static enum a implements bak {
-      a("piece"),
-      b("full");
-
-      public static final Codec<eru.a> c = bak.a(eru.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   private static alh<esh> a(String $$0) {
+      return alh.a(mh.bd, ali.b($$0));
    }
 }

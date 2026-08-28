@@ -1,91 +1,64 @@
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Table;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.OptionalInt;
-import java.util.Set;
+import java.util.Objects;
 
-public class fpe extends awq {
-   private final Map<dfm, dfl> b = new HashMap<>();
-   private final Set<dfm> c = new HashSet<>();
-   private Map<ddw, List<gcv>> d = Map.of();
-   private List<gcv> e = List.of();
+public class fpe extends hrm {
+   private static final int a = 212;
+   private static final xa b = xa.c("mco.configure.world.name");
+   private static final xa c = xa.c("mco.configure.world.description");
+   private final fon C;
+   private final fne D;
+   private fuu E;
+   private fuu F;
 
-   public void a(dfl $$0) {
-      this.b.put($$0.a(), $$0);
+   public fpe(fon $$0, fne $$1) {
+      super(xa.c("mco.configure.world.settings.title"));
+      this.C = $$0;
+      this.D = $$1;
    }
 
-   public void a(dfm $$0) {
-      this.b.remove($$0);
-      this.c.remove($$0);
-   }
-
-   public void b() {
-      this.b.clear();
-      this.c.clear();
-   }
-
-   public boolean b(dfm $$0) {
-      return this.c.contains($$0);
-   }
-
-   public void c(dfm $$0) {
-      this.c.remove($$0);
-   }
-
-   public void d(dfm $$0) {
-      this.c.add($$0);
-   }
-
-   public void c() {
-      Map<deh, List<List<dfl>>> $$0 = a(this.b.values());
-      Map<ddw, List<gcv>> $$1 = new HashMap<>();
-      Builder<gcv> $$2 = ImmutableList.builder();
-      $$0.forEach(($$2x, $$3x) -> $$1.put($$2x, $$3x.stream().map(gcv::new).peek($$2::add).collect(ImmutableList.toImmutableList())));
-
-      for (gcx $$3 : gcx.values()) {
-         $$1.put($$3, $$3.a().stream().flatMap($$1x -> $$1.getOrDefault($$1x, List.of()).stream()).collect(ImmutableList.toImmutableList()));
-      }
-
-      this.d = Map.copyOf($$1);
-      this.e = $$2.build();
-   }
-
-   private static Map<deh, List<List<dfl>>> a(Iterable<dfl> $$0) {
-      Map<deh, List<List<dfl>>> $$1 = new HashMap<>();
-      Table<deh, Integer, List<dfl>> $$2 = HashBasedTable.create();
-
-      for (dfl $$3 : $$0) {
-         deh $$4 = $$3.d();
-         OptionalInt $$5 = $$3.c();
-         if ($$5.isEmpty()) {
-            $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add(List.of($$3));
+   @Override
+   public void aS_() {
+      int $$0 = this.n / 2 - 106;
+      String $$1 = this.D.e == fne.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
+      ful $$2 = ful.a(xa.c($$1), $$0x -> {
+         if (this.D.e == fne.c.b) {
+            this.m.a(fpa.a(this, xa.c("mco.configure.world.close.question.line1"), $$0xx -> this.C.b()));
          } else {
-            List<dfl> $$6 = (List<dfl>)$$2.get($$4, $$5.getAsInt());
-            if ($$6 == null) {
-               $$6 = new ArrayList<>();
-               $$2.put($$4, $$5.getAsInt(), $$6);
-               $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add($$6);
-            }
-
-            $$6.add($$3);
+            this.C.b(false);
          }
-      }
-
-      return $$1;
+      }).a(this.n / 2 - 53, g(0), 106, 20).a();
+      this.c($$2);
+      this.F = new fuu(this.m.h, $$0, g(4), 212, 20, xa.c("mco.configure.world.name"));
+      this.F.f(32);
+      this.F.a(Objects.requireNonNullElse(this.D.b(), ""));
+      this.c(this.F);
+      this.E = new fuu(this.m.h, $$0, g(8), 212, 20, xa.c("mco.configure.world.description"));
+      this.E.f(32);
+      this.E.a(this.D.a());
+      this.c(this.E);
+      ful $$3 = this.c(ful.a(xa.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
+      this.F.b($$1x -> $$3.j = !ban.h($$1x));
+      this.c(ful.a(wz.e, $$0x -> this.aP_()).a(this.n / 2 + 2, g(12), 106, 20).a());
    }
 
-   public List<gcv> d() {
-      return this.e;
+   @Override
+   protected void aG_() {
+      this.b(this.F);
    }
 
-   public List<gcv> a(ddw $$0) {
-      return this.d.getOrDefault($$0, Collections.emptyList());
+   @Override
+   public void aP_() {
+      this.m.a(this.C);
+   }
+
+   @Override
+   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      $$0.b(this.p, b, this.n / 2 - 106, g(3), -1);
+      $$0.b(this.p, c, this.n / 2 - 106, g(7), -1);
+   }
+
+   public void g() {
+      this.C.a(this.F.a(), this.E.a());
    }
 }
